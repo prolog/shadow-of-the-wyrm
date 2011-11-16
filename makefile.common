@@ -1,0 +1,15 @@
+CPP=g++
+
+ifeq ($(mode),release)
+	CPP_FLAGS = -Wall -Wunused -Wextra -O2 -I./include -I./display/include -I./world/include -I./engine/include -I./engine/XML/include -I./engine/menus/include -I./world/tiles/include -I./engine/generators/include -I/usr/include/ncursesw
+	POST =
+endif
+ifeq ($(mode), map)
+	CPP_FLAGS = -g -Wall -Wunused -Wextra -Iinclude -Igtest-1.6.0/include -Igtest-1.6.0 -I./display/include -I./engine/include -I./engine/XML/include -I./world/include -I./world/tiles/include -I./engine/menus/include -I./engine/generators/include -I/usr/include/ncursesw -L../gtest-1.6.0/lib
+	POST = ../gtest-1.6.0/lib/libgtest.a ../gtest-1.6.0/lib/libgtest_main.a
+# no unit tests!
+else
+	mode = debug
+	CPP_FLAGS = -g -Wall -Wunused -Wextra -DUNIT_TESTS -Iinclude -I../gtest-1.6.0/include -I../gtest-1.6.0 -I./display/include -I./engine/include -I./engine/XML/include -I./world/include -I./world/tiles/include -I./engine/menus/include -I./engine/generators/include -I/usr/include/ncursesw -L../gtest-1.6.0/lib
+	POST = ../gtest-1.6.0/lib/libgtest.a ../gtest-1.6.0/lib/libgtest_main.a
+endif

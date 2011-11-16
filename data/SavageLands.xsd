@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:1.0.0" targetNamespace="urn:savage_lands:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+<!-- ELEMENTS -->
+<xs:element name="SavageLands">
+	<xs:annotation><xs:documentation>The configuration root node - contains all the races, classes, and game data.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:Races"/>
+			<xs:element ref="tns:Classes"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Races">
+	<xs:annotation><xs:documentation>A list of races to be used at runtime within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:Race" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Classes">
+	<xs:annotation><xs:documentation>A list of classes to be used at runtime within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:Class" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Race">
+	<xs:annotation><xs:documentation>A race within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="NameSID" type="xs:string"/>
+			<xs:element name="DescriptionSID" type="xs:string"/>
+			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
+			<xs:element name="Size" type="tns:CreatureSizeType"/>
+			<xs:element ref="tns:RaceInitialStatistics"/>
+			<xs:element ref="tns:RaceInitialModifiers"/>
+			<xs:element ref="tns:Resistances"/>
+			<xs:element ref="tns:Skills"/>
+			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:element>
+<xs:element name="ClassInitialStatistics">
+<xs:annotation><xs:documentation>Classes control the initial value of Valour and Spirit.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Valour" type="tns:PrimaryStatistic"/>
+			<xs:element name="Spirit" type="tns:PrimaryStatistic"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="RaceInitialStatistics">
+<xs:annotation><xs:documentation>Races control the initial values of certain statistics.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Strength" type="tns:PrimaryStatistic"/>
+			<xs:element name="Dexterity" type="tns:PrimaryStatistic"/>
+			<xs:element name="Agility" type="tns:PrimaryStatistic"/>
+			<xs:element name="Health" type="tns:PrimaryStatistic"/>
+			<xs:element name="Intelligence" type="tns:PrimaryStatistic"/>
+			<xs:element name="Willpower" type="tns:PrimaryStatistic"/>
+			<xs:element name="Charisma" type="tns:PrimaryStatistic"/>
+			<xs:element name="Speed" type="tns:Statistic"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="ClassInitialModifiers">
+<xs:annotation><xs:documentation>Races have a set of modifiers for certain statistics.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="StrengthModifier" type="tns:StatisticModifier"/>
+			<xs:element name="DexterityModifier" type="tns:StatisticModifier"/>
+			<xs:element name="AgilityModifier" type="tns:StatisticModifier"/>
+			<xs:element name="HealthModifier" type="tns:StatisticModifier"/>
+			<xs:element name="IntelligenceModifier" type="tns:StatisticModifier"/>
+			<xs:element name="WillpowerModifier" type="tns:StatisticModifier"/>
+			<xs:element name="CharismaModifier" type="tns:StatisticModifier"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="RaceInitialModifiers">
+<xs:annotation><xs:documentation>Races have a set of modifiers for certain statistics.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="ValourModifier" type="tns:StatisticModifier"/>
+			<xs:element name="SpiritModifier" type="tns:StatisticModifier"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Class">
+	<xs:annotation>
+		<xs:documentation>A creature Class.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="NameSID" type="xs:string"/>
+			<xs:element name="DescriptionSID" type="xs:string"/>
+			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
+			
+<xs:element ref="tns:ClassInitialStatistics"/>
+			
+<xs:element ref="tns:ClassInitialModifiers"/>
+			<xs:element ref="tns:Resistances"/>
+			<xs:element ref="tns:Skills"/>
+			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Resistances">
+<xs:annotation><xs:documentation>Each resistance is either positive (resistance) or negative (vulnerability), and is a delta subtracted from a base value of 1.  The final resistance is a damage multiplier, so any value greater than 1 inflicts more damage, and any value less than 1 inflicts less damage (in extreme cases, values can be negative, which heal)</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Slash" type="xs:float"/>
+			<xs:element name="Pierce" type="xs:float"/>
+			<xs:element name="Pound" type="xs:float"/>
+			<xs:element name="Heat" type="xs:float"/>
+			<xs:element name="Cold" type="xs:float"/>
+			<xs:element name="Acid" type="xs:float"/>
+			<xs:element name="Poison" type="xs:float"/>
+			<xs:element name="Holy" type="xs:float"/>
+			<xs:element name="Shadow" type="xs:float"/>
+			<xs:element name="Arcane" type="xs:float"/>
+			<xs:element name="Mental" type="xs:float"/>
+			<xs:element name="Sonic" type="xs:float"/>
+			<xs:element name="Radiant" type="xs:float"/>
+			<xs:element name="Lightning" type="xs:float"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="GeneralSkills">
+	<xs:annotation>
+		<xs:documentation>General skills (not weapon or magic)</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Archery" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Awareness" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Bargaining" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Beastmastery" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="BlindFighting" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Boating" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Bowyer" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Brewing" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Cantrips" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Carrying" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Combat" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Crafting" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="DesertLore" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Detection" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="DisarmTraps" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="DualWield" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Dungeoneering" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Escape" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Fishing" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Fletchery" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Foraging" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="ForestLore" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Herbalism" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Hiding" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Hunting" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Intimidation" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Jeweler" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Jumping" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Leadership" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Literacy" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Lore" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Magic" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="MarshLore" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Medicine" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="MountainLore" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Mountaineering" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Music" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="NightSight" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Oceanography" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Papercraft" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Religion" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Scribing" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Skinning" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Smithing" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Spelunking" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Stealth" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Swimming" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Tanning" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Thievery" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Weaving" type="tns:PercentageStatistic" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="WeaponSkills">
+	<xs:annotation>
+		<xs:documentation>Melee weapon skills such as clubs, swords, etc.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Axes" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="ShortBlades" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="LongBlades" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Bludgeons" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Daggers" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="RodsAndStaves" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Spears" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Unarmed" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Whips" type="tns:PercentageStatistic" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="RangedWeaponSkills">
+	<xs:annotation>
+		<xs:documentation>Ranged weapon skills such as bows, slings, etc.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Axes" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Blades" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Bludgeons" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Bows" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Crossbows" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Daggers" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Rocks" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Slings" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Spears" type="tns:PercentageStatistic" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="MagicSkills">
+	<xs:annotation>
+		<xs:documentation>Magic skills</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Arcane" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Divine" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Mystic" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Primordial" type="tns:PercentageStatistic" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Skills">
+	<xs:annotation>
+		<xs:documentation>The general, melee, ranged, and magic skills available.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+	<xs:sequence>
+		<xs:element ref="tns:GeneralSkills"  minOccurs="0"/>
+		<xs:element ref="tns:WeaponSkills" minOccurs="0"/>
+		<xs:element ref="tns:RangedWeaponSkills" minOccurs="0"/>
+		<xs:element ref="tns:MagicSkills" minOccurs="0"/>		
+	</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<!-- COMPLEX TYPES -->
+<!-- SIMPLE TYPES -->
+<xs:simpleType name="CreatureSizeType">
+	<xs:annotation>
+		<xs:documentation>An enumeration describing creature size.
+					0 = Tiny
+					1 = Small
+					2 = Medium
+					3 = Large
+					4 = Huge
+					5 = Behemoth
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxExclusive value="5"/>		
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="Statistic">
+	<xs:annotation>
+		<xs:documentation>General statistics (like HP, AP, etc) can be any integer value.</xs:documentation>
+	</xs:annotation>
+	<xs:union memberTypes="xs:integer"/>
+</xs:simpleType>
+<xs:simpleType name="StatisticModifier">
+	<xs:annotation>
+		<xs:documentation>A modifier for a statistic (Str, HP, etc) can be any integer value.</xs:documentation>
+	</xs:annotation>
+	<xs:union memberTypes="xs:integer"/>
+</xs:simpleType>
+<xs:simpleType name="PercentageStatistic">
+	<xs:annotation>
+		<xs:documentation>Percentage statistics, for things like Skills</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxExclusive value="100"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="PrimaryStatistic">
+	<xs:annotation>
+		<xs:documentation>Primary statistics (such as Strength, Intelligence, etc) can range between 1 and 99.</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="1"/>
+		<xs:maxExclusive value="99"/>
+	</xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="NonNegativeDecimal">
+    <xs:restriction base="xs:decimal">
+      <xs:minExclusive value="0"/>
+      <xs:fractionDigits value="2"/>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

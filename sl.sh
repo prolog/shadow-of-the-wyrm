@@ -1,0 +1,2 @@
+rm SavageLands.o
+make
