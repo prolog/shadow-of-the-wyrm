@@ -1,0 +1,34 @@
+#include "RuinsGenerator.hpp"
+#include "SettlementRuinsGenerator.hpp"
+#include "KeepRuinsGenerator.hpp"
+#include "TileGenerator.hpp"
+#include "RNG.hpp"
+
+using namespace std;
+
+MapPtr RuinsGenerator::generate(MapPtr map, const RuinsType& ruins_type)
+{
+  MapPtr result_map;
+
+  if (ruins_type == RUINS_TYPE_SETTLEMENT)
+  {
+    SettlementRuinsGenerator srg;
+    result_map = srg.generate(map);
+  }
+  else
+  {
+    result_map = KeepRuinsGenerator::generate(map);
+  }
+
+  return result_map;
+}
+
+// Generate a number of ruined buildings by doing a random walk starting at the
+// top left corner of the map.
+MapPtr RuinsGenerator::generate_ruined_settlement(MapPtr map)
+{
+  MapPtr result_map = MapPtr(new Map(*map));
+
+  return result_map;
+}
+

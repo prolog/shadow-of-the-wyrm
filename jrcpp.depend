@@ -1,0 +1,388 @@
+# depslib dependency file v1.0
+1309804740 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+	<iostream>
+	"global_prototypes.hpp"
+	"gtest/gtest.h"
+
+1309700490 c:\cygwin\home\julian\jrcpp\include\global_prototypes.hpp
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest.h
+	<limits>
+	<vector>
+	"gtest/internal/gtest-internal.h"
+	"gtest/internal/gtest-string.h"
+	"gtest/gtest-death-test.h"
+	"gtest/gtest-message.h"
+	"gtest/gtest-param-test.h"
+	"gtest/gtest-printers.h"
+	"gtest/gtest_prod.h"
+	"gtest/gtest-test-part.h"
+	"gtest/gtest-typed-test.h"
+	"gtest/gtest_pred_impl.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-internal.h
+	"gtest/internal/gtest-port.h"
+	<stdlib.h>
+	<sys/types.h>
+	<sys/wait.h>
+	<unistd.h>
+	<ctype.h>
+	<string.h>
+	<iomanip>
+	<limits>
+	<set>
+	"gtest/internal/gtest-string.h"
+	"gtest/internal/gtest-filepath.h"
+	"gtest/internal/gtest-type-util.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-port.h
+	<ctype.h>
+	<stddef.h>
+	<stdlib.h>
+	<stdio.h>
+	<string.h>
+	<sys/types.h>
+	<sys/stat.h>
+	<iostream>
+	<sstream>
+	<string>
+	<unistd.h>
+	<strings.h>
+	<direct.h>
+	<io.h>
+	<regex.h>
+	<typeinfo>
+	<pthread.h>
+	<time.h>
+	"gtest/internal/gtest-tuple.h"
+	<tuple>
+	<tr1/tuple>
+	<tr1/tuple>
+	<tuple>
+	<vector>
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-tuple.h
+	<utility>
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-string.h
+	<mem.h>
+	<string.h>
+	"gtest/internal/gtest-port.h"
+	<string>
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-filepath.h
+	"gtest/internal/gtest-string.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-type-util.h
+	"gtest/internal/gtest-port.h"
+	"gtest/internal/gtest-string.h"
+	<cxxabi.h>
+	<acxx_demangle.h>
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest-death-test.h
+	"gtest/internal/gtest-death-test-internal.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-death-test-internal.h
+	"gtest/internal/gtest-internal.h"
+	<stdio.h>
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest-message.h
+	<limits>
+	"gtest/internal/gtest-string.h"
+	"gtest/internal/gtest-internal.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest-param-test.h
+	"gtest/internal/gtest-port.h"
+	<utility>
+	"gtest/internal/gtest-internal.h"
+	"gtest/internal/gtest-param-util.h"
+	"gtest/internal/gtest-param-util-generated.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-param-util.h
+	<iterator>
+	<utility>
+	<vector>
+	"gtest/internal/gtest-internal.h"
+	"gtest/internal/gtest-linked_ptr.h"
+	"gtest/internal/gtest-port.h"
+	"gtest/gtest-printers.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-linked_ptr.h
+	<stdlib.h>
+	<assert.h>
+	"gtest/internal/gtest-port.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest-printers.h
+	<ostream>
+	<sstream>
+	<string>
+	<utility>
+	<vector>
+	"gtest/internal/gtest-port.h"
+	"gtest/internal/gtest-internal.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\internal\gtest-param-util-generated.h
+	"gtest/internal/gtest-param-util.h"
+	"gtest/internal/gtest-port.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest_prod.h
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest-test-part.h
+	<iosfwd>
+	<vector>
+	"gtest/internal/gtest-internal.h"
+	"gtest/internal/gtest-string.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest-typed-test.h
+	"gtest/internal/gtest-port.h"
+	"gtest/internal/gtest-type-util.h"
+
+1302889750 c:\cygwin\home\julian\jrcpp\gtest-1.6.0\include\gtest\gtest_pred_impl.h
+
+1274063707 c:\cygwin\usr\include\boost\regex.h
+	<boost/cregex.hpp>
+
+1309698556 c:\cygwin\usr\include\boost\utility
+
+1309698552 c:\cygwin\usr\include\boost\tuple
+
+1309698515 c:\cygwin\usr\include\boost\iterator
+
+1309615792 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+	"NCursesDisplay.hpp"
+
+1309785973 c:\cygwin\home\julian\jrcpp\display\include\ncursesdisplay.hpp
+	"Display.hpp"
+
+1309785957 c:\cygwin\home\julian\jrcpp\display\include\display.hpp
+	"Map.hpp"
+
+1309785915 c:\cygwin\home\julian\jrcpp\world\include\map.hpp
+	<map>
+	"Tile.hpp"
+
+1309785935 c:\cygwin\home\julian\jrcpp\world\include\tile.hpp
+
+1301386257 c:\cygwin\usr\include\ctype.h
+	"_ansi.h"
+
+1301386257 c:\cygwin\usr\include\_ansi.h
+	<newlib.h>
+	<sys/config.h>
+
+1301386258 c:\cygwin\usr\include\newlib.h
+
+1301386259 c:\cygwin\usr\include\sys\config.h
+	<machine/ieeefp.h>
+	<sys/features.h>
+	<cygwin/config.h>
+
+1301386259 c:\cygwin\usr\include\machine\ieeefp.h
+
+1301386259 c:\cygwin\usr\include\sys\features.h
+
+1301386262 c:\cygwin\usr\include\cygwin\config.h
+	"../tlsoffsets.h"
+
+1301386258 c:\cygwin\usr\include\stdlib.h
+	<machine/ieeefp.h>
+	"_ansi.h"
+	<stddef.h>
+	<sys/reent.h>
+	<machine/stdlib.h>
+	<alloca.h>
+	<cygwin/stdlib.h>
+
+1301386259 c:\cygwin\usr\include\sys\reent.h
+	<_ansi.h>
+	<sys/_types.h>
+	<sys/types.h>
+	<sys/custom_file.h>
+	<assert.h>
+
+1301386259 c:\cygwin\usr\include\sys\_types.h
+	<machine/_types.h>
+	<sys/lock.h>
+	<stddef.h>
+
+1301386258 c:\cygwin\usr\include\machine\_types.h
+	<machine/_default_types.h>
+
+1301386258 c:\cygwin\usr\include\machine\_default_types.h
+	<limits.h>
+
+1301386261 c:\cygwin\usr\include\limits.h
+	<features.h>
+
+1301386261 c:\cygwin\usr\include\features.h
+	<sys/cdefs.h>
+	<sys/features.h>
+
+1301386259 c:\cygwin\usr\include\sys\cdefs.h
+
+1301386263 c:\cygwin\usr\include\sys\lock.h
+
+1301386259 c:\cygwin\usr\include\sys\types.h
+	<_ansi.h>
+	<machine/_types.h>
+	<sys/_types.h>
+	<stddef.h>
+	<machine/types.h>
+	<sys/features.h>
+	<sys/sched.h>
+	<cygwin/types.h>
+
+1301386259 c:\cygwin\usr\include\machine\types.h
+	<machine/_types.h>
+
+1301386259 c:\cygwin\usr\include\sys\sched.h
+
+1301386263 c:\cygwin\usr\include\cygwin\types.h
+	<sys/sysmacros.h>
+	<stdint.h>
+	<endian.h>
+
+1301386264 c:\cygwin\usr\include\sys\sysmacros.h
+
+1301386261 c:\cygwin\usr\include\stdint.h
+
+1301386261 c:\cygwin\usr\include\endian.h
+	<sys/config.h>
+	<bits/endian.h>
+	<byteswap.h>
+
+1301386262 c:\cygwin\usr\include\bits\endian.h
+
+1301386261 c:\cygwin\usr\include\byteswap.h
+
+1301386259 c:\cygwin\usr\include\sys\custom_file.h
+
+1301386257 c:\cygwin\usr\include\assert.h
+	"_ansi.h"
+
+1301386263 c:\cygwin\usr\include\machine\stdlib.h
+
+1301386257 c:\cygwin\usr\include\alloca.h
+	"_ansi.h"
+	<sys/reent.h>
+
+1301386263 c:\cygwin\usr\include\cygwin\stdlib.h
+	<cygwin/wait.h>
+
+1301386263 c:\cygwin\usr\include\cygwin\wait.h
+
+1301386258 c:\cygwin\usr\include\stdio.h
+	"_ansi.h"
+	<stddef.h>
+	<stdarg.h>
+	<sys/reent.h>
+	<sys/types.h>
+	<sys/stdio.h>
+
+1301386264 c:\cygwin\usr\include\sys\stdio.h
+	<sys/cdefs.h>
+	<sys/lock.h>
+
+1301386258 c:\cygwin\usr\include\string.h
+	"_ansi.h"
+	<sys/reent.h>
+	<sys/cdefs.h>
+	<stddef.h>
+	<sys/string.h>
+
+1301386259 c:\cygwin\usr\include\sys\string.h
+
+1301386259 c:\cygwin\usr\include\sys\stat.h
+	<_ansi.h>
+	<time.h>
+	<sys/types.h>
+	<cygwin/stat.h>
+
+1301386258 c:\cygwin\usr\include\time.h
+	"_ansi.h"
+	<sys/reent.h>
+	<machine/time.h>
+	<stddef.h>
+	<sys/types.h>
+	<sys/features.h>
+	<cygwin/time.h>
+	<signal.h>
+
+1301386259 c:\cygwin\usr\include\machine\time.h
+	<sys/types.h>
+
+1301386263 c:\cygwin\usr\include\cygwin\time.h
+
+1301386258 c:\cygwin\usr\include\signal.h
+	"_ansi.h"
+	<sys/signal.h>
+
+1301386259 c:\cygwin\usr\include\sys\signal.h
+	"_ansi.h"
+	<sys/features.h>
+	<sys/types.h>
+	<cygwin/signal.h>
+	<signal.h>
+
+1301386262 c:\cygwin\usr\include\cygwin\signal.h
+
+1301386262 c:\cygwin\usr\include\cygwin\stat.h
+
+1301386258 c:\cygwin\usr\include\unistd.h
+	<sys/unistd.h>
+
+1301386260 c:\cygwin\usr\include\sys\unistd.h
+	<_ansi.h>
+	<sys/types.h>
+	<sys/_types.h>
+	<stddef.h>
+	<getopt.h>
+	<sys/features.h>
+
+1301386261 c:\cygwin\usr\include\getopt.h
+
+1301386258 c:\cygwin\usr\include\strings.h
+	"_ansi.h"
+	<sys/reent.h>
+	<sys/types.h>
+
+1301386261 c:\cygwin\usr\include\io.h
+
+1301386261 c:\cygwin\usr\include\regex.h
+	<sys/cdefs.h>
+	<_ansi.h>
+	<sys/_types.h>
+	<stddef.h>
+
+1301386261 c:\cygwin\usr\include\pthread.h
+	<sys/types.h>
+	<signal.h>
+	<sched.h>
+
+1301386258 c:\cygwin\usr\include\sched.h
+	<sys/types.h>
+	<sys/sched.h>
+
+1301386264 c:\cygwin\usr\include\sys\wait.h
+	<sys/types.h>
+	<sys/resource.h>
+	<cygwin/wait.h>
+
+1301386263 c:\cygwin\usr\include\sys\resource.h
+	<sys/time.h>
+
+1301386259 c:\cygwin\usr\include\sys\time.h
+	<_ansi.h>
+	<sys/types.h>
+	<cygwin/sys_time.h>
+
+1301386263 c:\cygwin\usr\include\cygwin\sys_time.h
+	<sys/select.h>
+
+1301386263 c:\cygwin\usr\include\sys\select.h
+	<sys/cdefs.h>
+	<sys/types.h>
+	<sys/time.h>
+	<time.h>
+	<signal.h>
+

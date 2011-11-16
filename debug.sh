@@ -1,0 +1,1 @@
+gdb -d /cygwin/home/Julian/jrcpp/engine/source -d /cygwin/home/Julian/jrcpp/engine/generators/source -d /cygwin/home/Julian/jrcpp/display/source -d /cygwin/home/Julian/jrcpp/world/source -d /cygwin/home/Julian/jrcpp/world/tiles/source SavageLands.exe
