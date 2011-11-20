@@ -1,8 +1,12 @@
 #pragma once
 #include <ncurses.h>
+#include <menu.h>
 #include <stack>
 #include "Display.hpp"
+#include "NCursesMenuWrapper.hpp"
 #include "NCursesPromptProcessor.hpp"
+#include "TextComponent.hpp"
+#include "OptionsComponent.hpp"
 
 class NCursesDisplay : public Display
 {
@@ -16,6 +20,9 @@ class NCursesDisplay : public Display
 	  void clear_menu();
 
   protected:
+    void refresh_terminal_size();
+    void display_text_component(WINDOW* window, int* row, int* col, TextComponent* text_component);
+    NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponent* options_component);
     std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
 
     // Creation/destruction methods

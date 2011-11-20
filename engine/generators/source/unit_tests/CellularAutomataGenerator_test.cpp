@@ -9,7 +9,6 @@ class CellularAutomataGeneratorTest
 
 TEST(SL_Engine_Generators_CellularAutomataGenerator, adjacent_map_coordinates_size)
 {
-  CellularAutomataGeneratorTest cagt;
   Dimensions d; // default dimensions;
 
   // North west
@@ -46,7 +45,6 @@ TEST(SL_Engine_Generators_CellularAutomataGenerator, adjacent_map_coordinates_si
 
 TEST(SL_Engine_Generators_Generator, adjacent_map_coordinates_content)
 {
-  CellularAutomataGeneratorTest cagt;
   Dimensions d; // default dimensions;
 
   // North west

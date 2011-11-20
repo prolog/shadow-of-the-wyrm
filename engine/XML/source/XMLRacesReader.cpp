@@ -53,6 +53,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     string race_name_sid = XMLUtils::get_child_node_value(race_node, "NameSID");
     race->set_race_name_sid(race_name_sid);
 
+    string race_short_description_sid = XMLUtils::get_child_node_value(race_node, "ShortDescriptionSID");
+    race->set_race_short_description_sid(race_short_description_sid);
+
     string race_description_sid = XMLUtils::get_child_node_value(race_node, "DescriptionSID");
     race->set_race_description_sid(race_description_sid);
 

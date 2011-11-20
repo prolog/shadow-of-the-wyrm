@@ -64,6 +64,17 @@ void AnyKeyPrompt::initialize()
   text_sid = PromptTextKeys::PROMPT_ANY_KEY;
 }
 
+// NullPrompt
+NullPrompt::NullPrompt() : Prompt(PROMPT_LOCATION_LOWER_RIGHT)
+{
+  initialize();
+}
+
+void NullPrompt::initialize()
+{
+  text_sid = "";
+}
+
 // TextPrompt
 
 TextPrompt::TextPrompt() : Prompt(PROMPT_LOCATION_DEFAULT)

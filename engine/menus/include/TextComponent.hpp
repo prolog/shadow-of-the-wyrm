@@ -5,11 +5,7 @@
 class TextComponent : public MenuComponent
 {
   public:
-    TextComponent(const std::string& new_text);
-
-    void set_text(const std::string& new_text);
-    std::string get_text() const;
+    TextComponent(const std::string& str);
 
   protected:
-    std::string text;
 };

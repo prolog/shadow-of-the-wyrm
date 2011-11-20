@@ -60,10 +60,15 @@
 		<Unit filename="MapTester.cpp" />
 		<Unit filename="SavageLands.cpp" />
 		<Unit filename="display\include\Display.hpp" />
+		<Unit filename="display\include\NCursesConstants.hpp" />
 		<Unit filename="display\include\NCursesDisplay.hpp" />
+		<Unit filename="display\include\NCursesMenuWrapper.hpp" />
 		<Unit filename="display\include\NCursesPromptProcessor.hpp" />
+		<Unit filename="display\include\NCursesUtils.hpp" />
 		<Unit filename="display\source\NCursesDisplay.cpp" />
+		<Unit filename="display\source\NCursesMenuWrapper.cpp" />
 		<Unit filename="display\source\NCursesPromptProcessor.cpp" />
+		<Unit filename="display\source\NCursesUtils.cpp" />
 		<Unit filename="engine\XML\include\XMLClassesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLConfigurationReader.hpp" />
 		<Unit filename="engine\XML\include\XMLDataStructures.hpp" />
@@ -284,6 +289,7 @@
 		<Unit filename="world\source\Resistances.cpp" />
 		<Unit filename="world\source\Skills.cpp" />
 		<Unit filename="world\source\Statistic.cpp" />
+		<Unit filename="world\source\unit_tests\Creature_test.cpp" />
 		<Unit filename="world\source\unit_tests\Race_test.cpp" />
 		<Unit filename="world\source\unit_tests\Skills_test.cpp" />
 		<Unit filename="world\source\unit_tests\Statistic_test.cpp" />

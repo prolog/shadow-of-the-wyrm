@@ -31,6 +31,11 @@ class OptionsComponent : public MenuComponent
     void add_option(const Option& additional_option);
     std::vector<Option> get_options() const;
 
+    void clear_option_descriptions();
+    void add_option_description(const std::string& additional_description);
+    std::vector<std::string> get_option_descriptions() const;
+
   protected:
     std::vector<Option> options;
+    std::vector<std::string> option_descriptions; // These describe the option at the same index in "options".
 };

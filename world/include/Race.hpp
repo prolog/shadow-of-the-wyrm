@@ -24,6 +24,9 @@ class Race
     void set_race_name_sid(const std::string& race_sid);
     std::string get_race_name_sid() const;
 
+    void set_race_short_description_sid(const std::string& race_short_desc_sid);
+    std::string get_race_short_description_sid() const;
+
     void set_race_description_sid(const std::string& race_desc_sid);
     std::string get_race_description_sid() const;
 
@@ -80,6 +83,7 @@ class Race
 
     // Name & vitals
     std::string race_name_sid;
+    std::string race_short_description_sid;
     std::string race_description_sid;
     std::string race_abbreviation_sid;
     CreatureSize size;
