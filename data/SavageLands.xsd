@@ -33,6 +33,7 @@
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
 			<xs:element name="NameSID" type="xs:string"/>
+      <xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
 			<xs:element name="Size" type="tns:CreatureSizeType"/>

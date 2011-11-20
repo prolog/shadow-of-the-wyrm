@@ -1,8 +1,9 @@
 <SavageLands xmlns="urn:savage_lands:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:1.0.0 SavageLands.xsd">
 	<Races>
-		<Race id="1_human">
+		<Race id="01_human">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_1_NAME</NameSID>
+			<ShortDescriptionSID>RACE_1_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_1_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_1_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
@@ -59,9 +60,10 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 		</Race>
-		<Race id="2_woodelf">
+		<Race id="02_woodelf">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_2_NAME</NameSID>
+			<ShortDescriptionSID>RACE_2_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_2_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_2_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
@@ -115,9 +117,10 @@
 			</Skills>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>		
 		</Race>
-		<Race id="3_mountainelf">
+		<Race id="03_mountainelf">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_3_NAME</NameSID>
+			<ShortDescriptionSID>RACE_3_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_3_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_3_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
@@ -173,9 +176,10 @@
 			</Skills>
 			<ExperienceMultiplier>1.02</ExperienceMultiplier>
 		</Race>
-		<Race id="4_marshelf">
+		<Race id="04_marshelf">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_4_NAME</NameSID>
+			<ShortDescriptionSID>RACE_4_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_4_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_4_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
@@ -228,9 +232,10 @@
 			</Skills>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 		</Race>
-		<Race id="5_pixie">
+		<Race id="05_pixie">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_5_NAME</NameSID>
+			<ShortDescriptionSID>RACE_5_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_5_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_5_ABRV</DisplayAbbreviationSID>
 			<Size>0</Size>
@@ -282,9 +287,10 @@
 			</Skills>
 			<ExperienceMultiplier>1.13</ExperienceMultiplier>
 		</Race>
-		<Race id="6_dwarf">
+		<Race id="06_dwarf">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_6_NAME</NameSID>
+			<ShortDescriptionSID>RACE_6_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_6_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_6_ABRV</DisplayAbbreviationSID>			
 			<Size>1</Size>
@@ -338,9 +344,10 @@
 			</Skills>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 		</Race>
-		<Race id="7_goblin">
+		<Race id="07_goblin">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_7_NAME</NameSID>
+			<ShortDescriptionSID>RACE_7_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_7_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_7_ABRV</DisplayAbbreviationSID>
 			<Size>1</Size>
@@ -395,9 +402,10 @@
 			</Skills>
 			<ExperienceMultiplier>0.93</ExperienceMultiplier>		
 		</Race>
-		<Race id="8_gnoll">
+		<Race id="08_gnoll">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_8_NAME</NameSID>
+			<ShortDescriptionSID>RACE_8_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_8_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_8_ABRV</DisplayAbbreviationSID>
 			<Size>3</Size>
@@ -449,9 +457,10 @@
 			</Skills>
 			<ExperienceMultiplier>0.96</ExperienceMultiplier>		
 		</Race>
-		<Race id="9_giant">
+		<Race id="09_giant">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_9_NAME</NameSID>
+			<ShortDescriptionSID>RACE_9_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_9_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_9_ABRV</DisplayAbbreviationSID>
 			<Size>4</Size>
@@ -506,6 +515,7 @@
 		<Race id="10_ratling">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>RACE_10_NAME</NameSID>
+			<ShortDescriptionSID>RACE_10_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_10_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_10_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>

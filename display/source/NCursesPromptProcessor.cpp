@@ -1,3 +1,4 @@
+#include "NCursesConstants.hpp"
 #include "NCursesPromptProcessor.hpp"
 
 using namespace std;
@@ -27,6 +28,30 @@ string NCursesPromptProcessor::get_prompt(WINDOW* window, PromptPtr prompt)
   }
 
   return prompt_entry;
+}
+
+// Gets the item index of the selected menu item.
+int NCursesPromptProcessor::get_prompt(WINDOW* window, MENU* options_menu)
+{
+  int c = wgetch(window);
+  while (c != NC_ENTER_KEY)
+  {
+    switch(c)
+    {
+      case KEY_DOWN:
+        menu_driver(options_menu, REQ_DOWN_ITEM);
+        break;
+      case KEY_UP:
+        menu_driver(options_menu, REQ_UP_ITEM);
+        break;
+      default:
+        break;
+    }
+
+    c = wgetch(window);
+  }
+
+  return item_index(current_item(options_menu));
 }
 
 // JCD: Still unwieldy.  Fix.

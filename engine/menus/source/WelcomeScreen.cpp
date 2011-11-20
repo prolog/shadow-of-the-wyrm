@@ -14,13 +14,13 @@ WelcomeScreen::WelcomeScreen(DisplayPtr display) : Menu(display)
 // information, and an prompt to continue
 void WelcomeScreen::initialize()
 {
-  TextComponent game_version_synopsis(get_game_version_synopsis());
-  TextComponent copyright_info(StringTable::get(TextKeys::COPYRIGHT_NOTICE));
-  TextComponent wanderer_excerpt(get_title_poem());
+  TextComponent* game_version_synopsis = new TextComponent(get_game_version_synopsis());
+  TextComponent* copyright_info = new TextComponent(StringTable::get(TextKeys::COPYRIGHT_NOTICE));
+  TextComponent* wanderer_excerpt = new TextComponent(get_title_poem());
 
-  text.push_back(game_version_synopsis);
-  text.push_back(copyright_info);
-  text.push_back(wanderer_excerpt);
+  components.push_back(game_version_synopsis);
+  components.push_back(copyright_info);
+  components.push_back(wanderer_excerpt);
 
   user_prompt = PromptPtr(new AnyKeyPrompt());
 }

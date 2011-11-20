@@ -2,6 +2,7 @@
 #include "XMLConfigurationReader.hpp"
 #include "Class.hpp"
 #include "ClassSelectionScreen.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "NamingScreen.hpp"
 #include "RaceSelectionScreen.hpp"
@@ -58,10 +59,27 @@ void SavageLandsEngine::start()
     name = naming.display();
 
     RaceSelectionScreen race_selection(display);
-    race_selection.display();
+    string race_index = race_selection.display();
+    int race_idx = String::to_int(race_index);
+    string selected_race_id;
 
-    // ClassSelectionScreen class_selection;
-    // class_selection.display();
+    // JCD FIXME
+
+    int current_idx = 0;
+    for (RaceMap::iterator race_it = races.begin(); race_it != races.end(); race_it++)
+    {
+      if (current_idx == race_idx)
+      {
+        selected_race_id = race_it->first;
+        break;
+      }
+
+      current_idx++;
+    }
+
+    ClassSelectionScreen class_selection(display);
+    string class_index = class_selection.display();
+    int class_idx = String::to_int(class_index);
   }
   else
   {

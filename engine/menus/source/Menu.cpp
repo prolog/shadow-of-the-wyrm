@@ -1,4 +1,5 @@
 #include <boost/foreach.hpp>
+#include <boost/foreach.hpp>
 #include "Menu.hpp"
 
 using namespace boost;
@@ -8,12 +9,19 @@ using namespace std;
 Menu::Menu(DisplayPtr new_display)
 {
   game_display = new_display;
+  user_prompt = PromptPtr(new NullPrompt());
   initialize();
 }
 
 Menu::~Menu()
 {
   game_display->clear_menu();
+
+  BOOST_FOREACH(MenuComponent* mc, components)
+  {
+    delete mc;
+    mc = NULL;
+  }
 }
 
 // Do whatever work is necessary to initialize the menu
@@ -41,7 +49,7 @@ PromptPtr Menu::get_prompt() const
   return user_prompt;
 }
 
-vector<TextComponent> Menu::get_text() const
+vector<MenuComponent*> Menu::get_components() const
 {
-  return text;
+  return components;
 }

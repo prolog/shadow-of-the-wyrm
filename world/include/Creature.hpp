@@ -21,7 +21,9 @@ class Creature
     CreatureSize get_size() const;
 
 
-    // Set/Get physical stats
+    // Set/Get physical stats.
+    // JCD FIXME: THESE WILL NEED TO BE UPDATED TO RETURN REFERENCES SO WE CAN UPDATE
+    // EITHER THE BASE OR THE CURRENT VALUE.
 
     void set_strength(const Statistic& new_strength);
     Statistic get_strength() const;
@@ -90,7 +92,7 @@ class Creature
     Statistic age;
     CreatureSize size;
 
-    // Race and class.
+    // Race and class.  Maybe make this an ID instead?
     RacePtr race;
     ClassPtr character_class;
 

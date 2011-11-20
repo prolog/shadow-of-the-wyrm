@@ -10,24 +10,34 @@ string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 
 // JCD FIXME: Refactor
 string TextKeys::RACE_1_NAME = "RACE_1_NAME";
+string TextKeys::RACE_1_SHORT_DESC = "RACE_1_SHORT_DESC";
 string TextKeys::RACE_1_DESC = "RACE_1_DESC";
 string TextKeys::RACE_2_NAME = "RACE_2_NAME";
+string TextKeys::RACE_2_SHORT_DESC = "RACE_2_SHORT_DESC";
 string TextKeys::RACE_2_DESC = "RACE_2_DESC";
 string TextKeys::RACE_3_NAME = "RACE_3_NAME";
+string TextKeys::RACE_3_SHORT_DESC = "RACE_3_SHORT_DESC";
 string TextKeys::RACE_3_DESC = "RACE_3_DESC";
 string TextKeys::RACE_4_NAME = "RACE_4_NAME";
+string TextKeys::RACE_4_SHORT_DESC = "RACE_4_SHORT_DESC";
 string TextKeys::RACE_4_DESC = "RACE_4_DESC";
 string TextKeys::RACE_5_NAME = "RACE_5_NAME";
+string TextKeys::RACE_5_SHORT_DESC = "RACE_5_SHORT_DESC";
 string TextKeys::RACE_5_DESC = "RACE_5_DESC";
 string TextKeys::RACE_6_NAME = "RACE_6_NAME";
+string TextKeys::RACE_6_SHORT_DESC = "RACE_6_SHORT_DESC";
 string TextKeys::RACE_6_DESC = "RACE_6_DESC";
 string TextKeys::RACE_7_NAME = "RACE_7_NAME";
+string TextKeys::RACE_7_SHORT_DESC = "RACE_7_SHORT_DESC";
 string TextKeys::RACE_7_DESC = "RACE_7_DESC";
 string TextKeys::RACE_8_NAME = "RACE_8_NAME";
+string TextKeys::RACE_8_SHORT_DESC = "RACE_8_SHORT_DESC";
 string TextKeys::RACE_8_DESC = "RACE_8_DESC";
 string TextKeys::RACE_9_NAME = "RACE_9_NAME";
+string TextKeys::RACE_9_SHORT_DESC = "RACE_9_SHORT_DESC";
 string TextKeys::RACE_9_DESC = "RACE_8_DESC";
 string TextKeys::RACE_10_NAME = "RACE_10_NAME";
+string TextKeys::RACE_10_SHORT_DESC = "RACE_10_SHORT_DESC";
 string TextKeys::RACE_10_DESC = "RACE_10_DESC";
 
 string TextKeys::STRENGTH          = "STRENGTH";

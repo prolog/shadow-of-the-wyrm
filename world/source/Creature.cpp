@@ -217,7 +217,6 @@ Statistic Creature::get_soak() const
   return soak;
 }
 
-// JCD TODO: UNIT TESTS GO HERE
-// ifdef UNIT_TESTS
-// #include "unit_tests/Creature_test.cpp"
-// endif
+#ifdef UNIT_TESTS
+#include "unit_tests/Creature_test.cpp"
+#endif

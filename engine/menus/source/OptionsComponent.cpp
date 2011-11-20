@@ -54,3 +54,18 @@ vector<Option> OptionsComponent::get_options() const
 {
   return options;
 }
+
+void OptionsComponent::clear_option_descriptions()
+{
+  option_descriptions.clear();
+}
+
+void OptionsComponent::add_option_description(const string& desc)
+{
+  option_descriptions.push_back(desc);
+}
+
+vector<string> OptionsComponent::get_option_descriptions() const
+{
+  return option_descriptions;
+}

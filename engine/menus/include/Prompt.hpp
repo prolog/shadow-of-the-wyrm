@@ -46,6 +46,15 @@ class AnyKeyPrompt : public Prompt
     void initialize();
 };
 
+class NullPrompt : public Prompt
+{
+  public:
+    NullPrompt();
+
+  protected:
+    void initialize();
+};
+
 class TextPrompt : public Prompt
 {
   public:

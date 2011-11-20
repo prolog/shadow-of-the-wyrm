@@ -8,11 +8,12 @@ NamingScreen::NamingScreen(DisplayPtr display) : Menu(display)
 
 void NamingScreen::initialize()
 {
-  TextComponent empty("");
-  TextComponent more_emptiness("");
+  std::string empty_str = "";
+  TextComponent* empty = new TextComponent(empty_str);
+  TextComponent* more_emptiness = new TextComponent(empty_str);
 
-  text.push_back(empty);
-  text.push_back(more_emptiness);
+  components.push_back(empty);
+  components.push_back(more_emptiness);
 
   user_prompt = PromptPtr(new TextPrompt());
   user_prompt->set_text_sid(PromptTextKeys::PROMPT_ENTER_YOUR_NAME);

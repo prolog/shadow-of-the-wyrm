@@ -53,6 +53,16 @@ string Race::get_race_name_sid() const
   return race_name_sid;
 }
 
+void Race::set_race_short_description_sid(const string& race_short_desc_sid)
+{
+  race_short_description_sid = race_short_desc_sid;
+}
+
+string Race::get_race_short_description_sid() const
+{
+  return race_short_description_sid;
+}
+
 void Race::set_race_description_sid(const string& race_desc_sid)
 {
   race_description_sid = race_desc_sid;

@@ -4,13 +4,16 @@ INCLUDE=-I../include -I../../include -I../XML/include -I../menus/include -I../..
 
 all: engine
 
-engine: Conversion.o Game.o RNG.o MapUtils.o MessageManager.o Messages.o Message.o SavageLandsEngine.o StringConstants.o StringTable.o Dimensions.o
+engine: Conversion.o CreatureFactory.o Game.o RNG.o MapUtils.o MessageManager.o Messages.o Message.o SavageLandsEngine.o StringConstants.o StringTable.o Dimensions.o
 	cd ../generators/source ; make all
 	cd ../menus/source ; make all
 	cd ../XML/source ; make all
 
 Conversion.o: Conversion.cpp ../include/Conversion.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) Conversion.cpp
+
+CreatureFactory.o: CreatureFactory.cpp ../include/CreatureFactory.hpp
+	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) CreatureFactory.cpp
 
 Game.o: Game.cpp ../include/Game.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) Game.cpp
