@@ -529,6 +529,10 @@ class Skills
     void set_value(const SkillType skill_name, const unsigned int new_value);
     void mark(const SkillType skill_name);
 
+    int get_value(const SkillType& skill_name) const;
+
+    Skill get_skill(const SkillType& st) const;
+
     std::string str() const;
 
   protected:

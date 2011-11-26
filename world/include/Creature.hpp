@@ -3,6 +3,7 @@
 #include "Race.hpp"
 #include "Class.hpp"
 #include "Resistances.hpp"
+#include "Skills.hpp"
 #include "Statistic.hpp"
 #include <string>
 
@@ -49,8 +50,8 @@ class Creature
 
     // Set/get secondary statistics
 
-    void set_bravery(const Statistic& new_bravery);
-    Statistic get_bravery() const;
+    void set_valour(const Statistic& new_valour);
+    Statistic get_valour() const;
 
     void set_spirit(const Statistic& new_spirit);
     Statistic get_spirit() const;
@@ -64,6 +65,9 @@ class Creature
     void set_resistance_value(const ResistanceType type, double value);
     void set_resistances(const Resistances& resistances);
     Resistances& get_resistances();
+
+    void set_skills(const Skills& new_skills);
+    Skills& get_skills();
 
     // Set/get point-based statistics
 
@@ -106,7 +110,7 @@ class Creature
     Statistic charisma;
 
     // Secondary statistics
-    Statistic bravery;
+    Statistic valour;
     Statistic spirit;
     Statistic speed;
 
@@ -117,6 +121,9 @@ class Creature
     // Resistances/vulns.  These act as a damage multiplier.  A value of 1.0 indicates no resistance or vulnerability.
     // 0.50 indicates half damage, 2.0 indicates double damage.
     Resistances resistances;
+
+    // The creature's various skills.
+    Skills skills;
 
     // Point-based statistics
     Statistic hit_points;

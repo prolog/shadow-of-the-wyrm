@@ -3,6 +3,8 @@
 #include "Class.hpp"
 #include "ClassSelectionScreen.hpp"
 #include "Conversion.hpp"
+#include "Creature.hpp"
+#include "CreatureFactory.hpp"
 #include "Game.hpp"
 #include "NamingScreen.hpp"
 #include "RaceSelectionScreen.hpp"
@@ -33,7 +35,12 @@ SavageLandsEngine::SavageLandsEngine()
 SavageLandsEngine::~SavageLandsEngine()
 {
   Game* game_instance = Game::get_instance();
-  delete game_instance;
+
+  if (game_instance)
+  {
+    delete game_instance;
+    game_instance = NULL;
+  }
 }
 
 void SavageLandsEngine::start()
@@ -61,25 +68,14 @@ void SavageLandsEngine::start()
     RaceSelectionScreen race_selection(display);
     string race_index = race_selection.display();
     int race_idx = String::to_int(race_index);
-    string selected_race_id;
-
-    // JCD FIXME
-
-    int current_idx = 0;
-    for (RaceMap::iterator race_it = races.begin(); race_it != races.end(); race_it++)
-    {
-      if (current_idx == race_idx)
-      {
-        selected_race_id = race_it->first;
-        break;
-      }
-
-      current_idx++;
-    }
+    string selected_race_id = Integer::to_string_key_at_given_position_in_map(races, race_idx);
 
     ClassSelectionScreen class_selection(display);
     string class_index = class_selection.display();
     int class_idx = String::to_int(class_index);
+    string selected_class_id = Integer::to_string_key_at_given_position_in_map(classes, class_idx);
+
+    Creature player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name);
   }
   else
   {
