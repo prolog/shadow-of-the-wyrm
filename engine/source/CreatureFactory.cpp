@@ -1,0 +1,121 @@
+#include "Creature.hpp"
+#include "CreatureFactory.hpp"
+#include "Game.hpp"
+#include "ResistancesCalculator.hpp"
+#include "SkillsCalculator.hpp"
+#include "RNG.hpp"
+
+using namespace std;
+
+Creature CreatureFactory::create_by_creature_id(const string& creature_id)
+{
+  Creature totally_bogus_default_creature;
+
+  // Creature IDs aren't supported yet.
+
+  return totally_bogus_default_creature;
+}
+
+Creature CreatureFactory::create_by_race_and_class(const string& race_id, const string& class_id, const string& creature_name)
+{
+  Creature creature;
+
+  creature.set_name(creature_name);
+
+  Game* game = Game::get_instance();
+
+  if (game)
+  {
+    // Real work goes here.
+    RaceMap races = game->get_races_ref();
+    ClassMap classes = game->get_classes_ref();
+
+    RacePtr race = races[race_id];
+    ClassPtr char_class = classes[class_id];
+
+    if (race && char_class)
+    {
+      // Statistics, HP, and AP
+      creature = set_initial_statistics(creature, race, char_class);
+
+      // Resistances
+      creature = set_initial_resistances(creature, race, char_class);
+
+      // Skills
+      creature = set_initial_skills(creature, race, char_class);
+    }
+  }
+
+  return creature;
+}
+
+Creature CreatureFactory::set_initial_statistics(Creature current_creature, RacePtr race, ClassPtr char_class)
+{
+  Creature creature = current_creature;
+
+  Statistic strength     = race->get_starting_strength().get_base()     + char_class->get_strength_modifier()     + (RNG::range(1,4) - 2);
+  Statistic dexterity    = race->get_starting_dexterity().get_base()    + char_class->get_dexterity_modifier()    + (RNG::range(1,4) - 2);
+  Statistic agility      = race->get_starting_agility().get_base()      + char_class->get_agility_modifier()      + (RNG::range(1,4) - 2);
+  Statistic health       = race->get_starting_health().get_base()       + char_class->get_health_modifier()       + (RNG::range(1,4) - 2);
+  Statistic intelligence = race->get_starting_intelligence().get_base() + char_class->get_intelligence_modifier() + (RNG::range(1,4) - 2);
+  Statistic willpower    = race->get_starting_willpower().get_base()    + char_class->get_willpower_modifier()    + (RNG::range(1,4) - 2);
+  Statistic charisma     = race->get_starting_charisma().get_base()     + char_class->get_charisma_modifier()     + (RNG::range(1,4) - 2);
+
+  Statistic valour = char_class->get_starting_valour().get_base() + race->get_valour_modifier();
+  Statistic spirit = char_class->get_starting_spirit().get_base() + race->get_spirit_modifier();
+  Statistic speed = race->get_starting_speed();
+
+  creature.set_strength(strength);
+  creature.set_dexterity(dexterity);
+  creature.set_agility(agility);
+  creature.set_health(health);
+  creature.set_intelligence(intelligence);
+  creature.set_willpower(willpower);
+  creature.set_charisma(charisma);
+
+  creature.set_valour(valour);
+  creature.set_spirit(spirit);
+  creature.set_speed(speed);
+
+  // Also need to set: HP, AP, Piety.
+  
+  // FIXME:
+  int initial_hp = RNG::dice(3, 3);
+  
+  // Calculate HP bonus:
+
+  
+  // FIXME:
+  
+  // Calculate AP bonus:
+  int initial_ap = RNG::dice(2,3);
+
+  return creature;
+}
+
+Creature CreatureFactory::set_initial_resistances(Creature current_creature, RacePtr race, ClassPtr char_class)
+{
+  Creature creature = current_creature;
+
+  Resistances resists = ResistancesCalculator::calculate_resistances(current_creature, race, char_class);
+
+  creature.set_resistances(resists);
+
+  return creature;
+}
+
+Creature CreatureFactory::set_initial_skills(Creature current_creature, RacePtr race, ClassPtr char_class)
+{
+  Creature creature = current_creature;
+
+  // Create a SkillCalculator class!
+  Skills skills = SkillsCalculator::calculate_skills(current_creature, race, char_class);
+
+  creature.set_skills(skills);
+
+  return creature;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CreatureFactory_test.cpp"
+#endif
