@@ -23,12 +23,16 @@ Statistic& Statistic::operator=(const int& rhs)
 /*
  ********************************************************************
 
- 	Get and set the base value of the statistic.
+ 	Get and set the base value of the statistic.  The base value can't
+ 	go below 0, though the current can.
 
  ********************************************************************/
 void Statistic::set_base(int new_base)
 {
-	base = new_base;
+  if (new_base > 0)
+  {
+    base = new_base;
+  }
 }
 
 int Statistic::get_base() const

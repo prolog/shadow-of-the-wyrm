@@ -83,6 +83,12 @@
 		<Unit filename="engine\XML\source\XMLRacesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLResistancesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLSkillsReaders.cpp" />
+		<Unit filename="engine\calculators\include\ResistancesCalculator.hpp" />
+		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
+		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
+		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
+		<Unit filename="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp" />
+		<Unit filename="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp" />
 		<Unit filename="engine\generators\include\CavernGenerator.hpp" />
 		<Unit filename="engine\generators\include\CellularAutomataGenerator.hpp" />
 		<Unit filename="engine\generators\include\DungeonGenerator.hpp" />
@@ -121,6 +127,7 @@
 		<Unit filename="engine\generators\source\unit_tests\Generator_test.cpp" />
 		<Unit filename="engine\generators\source\unit_tests\TileGenerator_test.cpp" />
 		<Unit filename="engine\include\Conversion.hpp" />
+		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
 		<Unit filename="engine\include\Directions.hpp" />
 		<Unit filename="engine\include\Game.hpp" />
@@ -151,6 +158,7 @@
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
 		<Unit filename="engine\source\Conversion.cpp" />
+		<Unit filename="engine\source\CreatureFactory.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
 		<Unit filename="engine\source\Game.cpp" />
 		<Unit filename="engine\source\MapUtils.cpp" />
@@ -162,6 +170,7 @@
 		<Unit filename="engine\source\StringConstants.cpp" />
 		<Unit filename="engine\source\StringTable.cpp" />
 		<Unit filename="engine\source\unit_tests\Conversion_test.cpp" />
+		<Unit filename="engine\source\unit_tests\CreatureFactory_test.cpp" />
 		<Unit filename="engine\source\unit_tests\Dimensions_test.cpp" />
 		<Unit filename="engine\source\unit_tests\Message_test.cpp" />
 		<Unit filename="engine\source\unit_tests\Messages_test.cpp" />
@@ -275,6 +284,8 @@
 		<Unit filename="world\include\Class.hpp" />
 		<Unit filename="world\include\Creature.hpp" />
 		<Unit filename="world\include\CreatureFeatures.hpp" />
+		<Unit filename="world\include\Inventory.hpp" />
+		<Unit filename="world\include\Item.hpp" />
 		<Unit filename="world\include\Map.hpp" />
 		<Unit filename="world\include\Race.hpp" />
 		<Unit filename="world\include\ResistanceTypes.hpp" />
@@ -282,13 +293,17 @@
 		<Unit filename="world\include\SkillTypes.hpp" />
 		<Unit filename="world\include\Skills.hpp" />
 		<Unit filename="world\include\Statistic.hpp" />
+		<Unit filename="world\include\World.hpp" />
 		<Unit filename="world\source\Class.cpp" />
 		<Unit filename="world\source\Creature.cpp" />
+		<Unit filename="world\source\Inventory.cpp" />
+		<Unit filename="world\source\Item.cpp" />
 		<Unit filename="world\source\Map.cpp" />
 		<Unit filename="world\source\Race.cpp" />
 		<Unit filename="world\source\Resistances.cpp" />
 		<Unit filename="world\source\Skills.cpp" />
 		<Unit filename="world\source\Statistic.cpp" />
+		<Unit filename="world\source\World.cpp" />
 		<Unit filename="world\source\unit_tests\Creature_test.cpp" />
 		<Unit filename="world\source\unit_tests\Race_test.cpp" />
 		<Unit filename="world\source\unit_tests\Skills_test.cpp" />
@@ -384,6 +399,7 @@
 				<search_path add="C:\cygwin\home\Julian\jrcpp\display\source" />
 				<search_path add="C:\cygwin\home\Julian\jrcpp\engine\XML\source" />
 				<search_path add="C:\cygwin\home\Julian\jrcpp\engine\menus\source" />
+				<search_path add="C:\cygwin\home\Julian\jrcpp\engine\calculators\source" />
 			</debugger>
 		</Extensions>
 	</Project>

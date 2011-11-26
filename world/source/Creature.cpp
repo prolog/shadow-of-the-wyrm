@@ -102,14 +102,14 @@ Statistic Creature::get_charisma() const
   return charisma;
 }
 
-void Creature::set_bravery(const Statistic& new_bravery)
+void Creature::set_valour(const Statistic& new_valour)
 {
-  bravery = new_bravery;
+  valour = new_valour;
 }
 
-Statistic Creature::get_bravery() const
+Statistic Creature::get_valour() const
 {
-  return bravery;
+  return valour;
 }
 
 void Creature::set_spirit(const Statistic& new_spirit)
@@ -155,6 +155,16 @@ void Creature::set_resistances(const Resistances& new_resistances)
 Resistances& Creature::get_resistances()
 {
   return resistances;
+}
+
+void Creature::set_skills(const Skills& new_skills)
+{
+  skills = new_skills;
+}
+
+Skills& Creature::get_skills()
+{
+  return skills;
 }
 
 void Creature::set_hit_points(const Statistic& new_hit_points)

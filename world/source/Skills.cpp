@@ -678,6 +678,26 @@ void Skills::mark(const SkillType skill_name)
   skill_to_mark.increment_marks();
 }
 
+int Skills::get_value(const SkillType& skill_name) const
+{
+  Skill skill = get_skill(skill_name);
+  return skill.get_value();
+}
+
+Skill Skills::get_skill(const SkillType& st) const
+{
+  Skill result;
+
+  map<SkillType, Skill>::const_iterator sk_it = skills.find(st);
+
+  if (sk_it != skills.end())
+  {
+    result = sk_it->second;
+  }
+
+  return result;
+}
+
 string Skills::str() const
 {
   string skills_str;

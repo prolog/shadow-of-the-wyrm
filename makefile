@@ -12,6 +12,7 @@ map: MapTester.o
 all: SavageLands
 
 ENGINE_OBJS  := $(patsubst %.cpp,%.o,$(wildcard engine/source/*.cpp))
+ENGINE_CALCULATORS_OBJS := $(patsubst %.cpp,%.o,$(wildcard engine/calculators/source/*.cpp))
 ENGINE_GENERATORS_OBJS := $(patsubst %.cpp,%.o,$(wildcard engine/generators/source/*.cpp))
 ENGINE_XML_OBJS := $(patsubst %.cpp,%.o,$(wildcard engine/XML/source/*.cpp))
 ENGINE_MENU_OBJS := $(patsubst %.cpp,%.o,$(wildcard engine/menus/source/*.cpp))
@@ -22,10 +23,10 @@ BASE_OBJ     := $(patsubst %.cpp,%.o,$(wildcard *.cpp))
 BASE_OBJS    := $(filter-out MapTester.o, $(BASE_OBJ))
 
 SavageLands: SavageLands.o global_functions.o
-	cd ./world/source ; make world
+	cd ./world/source ; make world_structures
 	cd ./engine/source ; make engine
 	cd ./display/source ; make display
-	$(CPP) $(CPP_FLAGS) $(BASE_OBJS) $(ENGINE_OBJS) $(ENGINE_GENERATORS_OBJS) $(ENGINE_MENU_OBJS) $(ENGINE_XML_OBJS) $(DISPLAY_OBJS) $(WORLD_OBJS) $(WORLD_TILES_OBJS) $(POST) -o SavageLands -lmenu -lncurses -lxerces-c
+	$(CPP) $(CPP_FLAGS) $(BASE_OBJS) $(ENGINE_OBJS) $(ENGINE_CALCULATORS_OBJS) $(ENGINE_GENERATORS_OBJS) $(ENGINE_MENU_OBJS) $(ENGINE_XML_OBJS) $(DISPLAY_OBJS) $(WORLD_OBJS) $(WORLD_TILES_OBJS) $(POST) -o SavageLands -lmenu -lncurses -lxerces-c
 
 SavageLands.o: SavageLands.cpp
 	$(CPP) -c $(CPP_FLAGS) SavageLands.cpp
