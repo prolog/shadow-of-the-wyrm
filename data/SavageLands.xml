@@ -1108,7 +1108,7 @@
 			</Skills>
 			<ExperienceMultiplier>0.97</ExperienceMultiplier>
 		</Class>
-		<Class id="ranger">
+		<Class id="rover">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_11_NAME</NameSID>
 			<DescriptionSID>CLASS_11_DESC</DescriptionSID>

@@ -76,6 +76,13 @@ void SavageLandsEngine::start()
     string selected_class_id = Integer::to_string_key_at_given_position_in_map(classes, class_idx);
 
     Creature player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name);
+
+    // Create world map, place player on world map.
+
+    // Go...
+    WorldGenerator world_generator;
+    MapPtr current_world = world_generator.generate();
+    game->add_world(current_world);
   }
   else
   {
