@@ -2,7 +2,7 @@
 
 TEST(SL_Engine_CreatureFactory, set_name)
 {
-  Creature c = CreatureFactory::create_by_race_and_class("", "", "Rodney");
+  CreaturePtr c = CreatureFactory::create_by_race_and_class("", "", "Rodney");
 
-  EXPECT_EQ("Rodney", c.get_name());
+  EXPECT_EQ("Rodney", c->get_name());
 }

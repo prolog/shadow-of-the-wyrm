@@ -5,6 +5,7 @@
 #include "Conversion.hpp"
 #include "Creature.hpp"
 #include "CreatureFactory.hpp"
+#include "DisplayTile.hpp"
 #include "Game.hpp"
 #include "NamingScreen.hpp"
 #include "RaceSelectionScreen.hpp"
@@ -55,9 +56,11 @@ void SavageLandsEngine::start()
     // Read the races and classes from the configuration file.
     RaceMap races = reader.get_races();
     ClassMap classes = reader.get_classes();
+    vector<DisplayTile> tile_info = reader.get_tile_info();
 
     game->set_races(races);
     game->set_classes(classes);
+    game->set_tile_info(tile_info);
 
     WelcomeScreen welcome(display);
     welcome.display();
@@ -75,14 +78,14 @@ void SavageLandsEngine::start()
     int class_idx = String::to_int(class_index);
     string selected_class_id = Integer::to_string_key_at_given_position_in_map(classes, class_idx);
 
-    Creature player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name);
+    CreaturePtr player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name);
+    player->set_is_player(true);
 
     // Create world map, place player on world map.
+    game->create_new_world(player);
 
-    // Go...
-    WorldGenerator world_generator;
-    MapPtr current_world = world_generator.generate();
-    game->add_world(current_world);
+    // Play!
+    game->go();
   }
   else
   {

@@ -1,4 +1,3 @@
-#include "Creature.hpp"
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
 #include "ResistancesCalculator.hpp"
@@ -7,16 +6,16 @@
 
 using namespace std;
 
-Creature CreatureFactory::create_by_creature_id(const string& creature_id)
+CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
 {
-  Creature totally_bogus_default_creature;
+  CreaturePtr totally_bogus_default_creature_null;
 
   // Creature IDs aren't supported yet.
 
-  return totally_bogus_default_creature;
+  return totally_bogus_default_creature_null;
 }
 
-Creature CreatureFactory::create_by_race_and_class(const string& race_id, const string& class_id, const string& creature_name)
+CreaturePtr CreatureFactory::create_by_race_and_class(const string& race_id, const string& class_id, const string& creature_name)
 {
   Creature creature;
 
@@ -46,7 +45,8 @@ Creature CreatureFactory::create_by_race_and_class(const string& race_id, const 
     }
   }
 
-  return creature;
+  CreaturePtr creaturep = CreaturePtr(new Creature(creature));
+  return creaturep;
 }
 
 Creature CreatureFactory::set_initial_statistics(Creature current_creature, RacePtr race, ClassPtr char_class)
@@ -76,19 +76,25 @@ Creature CreatureFactory::set_initial_statistics(Creature current_creature, Race
   creature.set_valour(valour);
   creature.set_spirit(spirit);
   creature.set_speed(speed);
+  creature.set_piety(0); // FIXME
 
   // Also need to set: HP, AP, Piety.
-  
+
   // FIXME:
   int initial_hp = RNG::dice(3, 3);
-  
-  // Calculate HP bonus:
 
-  
+  // Calculate HP bonus:
+  creature.set_hit_points(initial_hp);
+
+
+
   // FIXME:
-  
+
   // Calculate AP bonus:
   int initial_ap = RNG::dice(2,3);
+
+  // Calculate AP bonus:
+  creature.set_arcana_points(initial_ap);
 
   return creature;
 }

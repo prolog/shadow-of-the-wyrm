@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_UpStaircaseTile, type_is_TILE_TYPE_STAIRCASE)
 {
   UpStaircaseTile ust;
 
-  EXPECT_EQ(TILE_TYPE_STAIRCASE, ust.get_tile_type());
+  EXPECT_EQ(TILE_TYPE_UP_STAIRCASE, ust.get_tile_type());
 }
 
 TEST(SL_World_Tiles_UpStaircaseTile, staircase_type)

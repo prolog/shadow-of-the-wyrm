@@ -2,6 +2,25 @@
 
 using namespace std;
 
+// Set a reasonable set of default values for simple types, which are helpfully initialized to bullshit memory.
+// Why did I write this in C++, again?
+Creature::Creature()
+: is_player(false)
+, size( CREATURE_SIZE_MEDIUM )
+// Everything else is a string, Statistic, etc.
+{
+}
+
+void Creature::set_is_player(const bool player)
+{
+  is_player = player;
+}
+
+bool Creature::get_is_player() const
+{
+  return is_player;
+}
+
 void Creature::set_name(const string& new_name)
 {
   name = new_name;

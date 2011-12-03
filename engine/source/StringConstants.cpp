@@ -172,3 +172,7 @@ string ResistanceTextKeys::RESISTANCE_LIGHTNING = "RESISTANCE_LIGHTNING";
 // Prompts
 string PromptTextKeys::PROMPT_ANY_KEY = "PROMPT_ANY_KEY";
 string PromptTextKeys::PROMPT_ENTER_YOUR_NAME = "PROMPT_ENTER_YOUR_NAME";
+
+// Special locations on the world map
+string WorldMapLocationTextKeys::STARTING_LOCATION = "STARTING_LOCATION";
+string WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION = "CURRENT_PLAYER_LOCATION";

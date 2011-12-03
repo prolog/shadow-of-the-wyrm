@@ -1,15 +1,22 @@
 #pragma once
+#include <string>
+#include <boost/shared_ptr.hpp>
 #include "CreatureFeatures.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "Resistances.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
-#include <string>
 
 class Creature
 {
   public:
+    Creature();
+
+    // Quick hack.  Later on, this'll be some sort of Strategy, where the Player strategy sends commands
+    // via keyboard/mouse/etc input.
+    void set_is_player(const bool player);
+    bool get_is_player() const;
 
     // Set/Get basic vitals
     void set_name(const std::string& new_name);
@@ -91,6 +98,8 @@ class Creature
     Statistic get_soak() const;
 
   protected:
+    bool is_player;
+
     // Basic vitals
     std::string name;
     Statistic age;
@@ -133,3 +142,5 @@ class Creature
     Statistic evade;
     Statistic soak;
 };
+
+typedef boost::shared_ptr<Creature> CreaturePtr;

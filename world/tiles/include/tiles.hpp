@@ -26,8 +26,9 @@ enum TileType
   TILE_TYPE_WEEDS     = 19,
   TILE_TYPE_SPRINGS   = 20,
   TILE_TYPE_FOREST    = 21,
-  TILE_TYPE_STAIRCASE = 22,
-  TILE_TYPE_LAST      = 22
+  TILE_TYPE_UP_STAIRCASE = 22,
+  TILE_TYPE_DOWN_STAIRCASE = 23,
+  TILE_TYPE_LAST      = 23
 };
 
 inline TileType operator--(TileType &tt, int)

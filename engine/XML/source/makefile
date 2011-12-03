@@ -1,10 +1,10 @@
 -include ../../../makefile.common
 
-INCLUDE=-I../include -I../../../world/include -I../../include -I../../../../gtest-1.6.0/include -I../../../include
+INCLUDE=-I../include -I../../../display/include -I../../../world/include -I../../include -I../../../../gtest-1.6.0/include -I../../../include
 
 all: XML
 
-XML: XMLClassesReader.o XMLConfigurationReader.o XMLDataStructures.o XMLFileReader.o XMLRacesReader.o XMLResistancesReader.o XMLSkillsReaders.o
+XML: XMLClassesReader.o XMLConfigurationReader.o XMLDataStructures.o XMLFileReader.o XMLRacesReader.o XMLResistancesReader.o XMLSkillsReaders.o XMLTilesReader.o
 
 XMLClassesReader.o: XMLClassesReader.cpp ../include/XMLClassesReader.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) XMLClassesReader.cpp
@@ -26,6 +26,9 @@ XMLResistancesReader.o: XMLResistancesReader.cpp ../include/XMLResistancesReader
 
 XMLSkillsReaders.o: XMLSkillsReaders.cpp ../include/XMLSkillsReaders.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) XMLSkillsReaders.cpp
+
+XMLTilesReader.o: XMLTilesReader.cpp ../include/XMLTilesReader.hpp
+	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) XMLTilesReader.cpp
 
 clean:
 	rm -rf *.o

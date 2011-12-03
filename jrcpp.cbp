@@ -60,11 +60,15 @@
 		<Unit filename="MapTester.cpp" />
 		<Unit filename="SavageLands.cpp" />
 		<Unit filename="display\include\Display.hpp" />
+		<Unit filename="display\include\DisplayMap.hpp" />
+		<Unit filename="display\include\DisplayTile.hpp" />
 		<Unit filename="display\include\NCursesConstants.hpp" />
 		<Unit filename="display\include\NCursesDisplay.hpp" />
 		<Unit filename="display\include\NCursesMenuWrapper.hpp" />
 		<Unit filename="display\include\NCursesPromptProcessor.hpp" />
 		<Unit filename="display\include\NCursesUtils.hpp" />
+		<Unit filename="display\source\DisplayMap.cpp" />
+		<Unit filename="display\source\DisplayTile.cpp" />
 		<Unit filename="display\source\NCursesDisplay.cpp" />
 		<Unit filename="display\source\NCursesMenuWrapper.cpp" />
 		<Unit filename="display\source\NCursesPromptProcessor.cpp" />
@@ -76,6 +80,7 @@
 		<Unit filename="engine\XML\include\XMLRacesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLResistancesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLSkillsReaders.hpp" />
+		<Unit filename="engine\XML\include\XMLTilesReader.hpp" />
 		<Unit filename="engine\XML\source\XMLClassesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLConfigurationReader.cpp" />
 		<Unit filename="engine\XML\source\XMLDataStructures.cpp" />
@@ -83,6 +88,7 @@
 		<Unit filename="engine\XML\source\XMLRacesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLResistancesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLSkillsReaders.cpp" />
+		<Unit filename="engine\XML\source\XMLTilesReader.cpp" />
 		<Unit filename="engine\calculators\include\ResistancesCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
@@ -131,6 +137,7 @@
 		<Unit filename="engine\include\Dimensions.hpp" />
 		<Unit filename="engine\include\Directions.hpp" />
 		<Unit filename="engine\include\Game.hpp" />
+		<Unit filename="engine\include\MapTranslator.hpp" />
 		<Unit filename="engine\include\MapUtils.hpp" />
 		<Unit filename="engine\include\Message.hpp" />
 		<Unit filename="engine\include\MessageManager.hpp" />
@@ -161,6 +168,7 @@
 		<Unit filename="engine\source\CreatureFactory.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
 		<Unit filename="engine\source\Game.cpp" />
+		<Unit filename="engine\source\MapTranslator.cpp" />
 		<Unit filename="engine\source\MapUtils.cpp" />
 		<Unit filename="engine\source\Message.cpp" />
 		<Unit filename="engine\source\MessageManager.cpp" />
@@ -278,6 +286,7 @@
 		<Unit filename="gtest-1.6.0\xcode\Samples\FrameworkSample\widget.cc" />
 		<Unit filename="gtest-1.6.0\xcode\Samples\FrameworkSample\widget.h" />
 		<Unit filename="gtest-1.6.0\xcode\Samples\FrameworkSample\widget_test.cc" />
+		<Unit filename="include\Colours.hpp" />
 		<Unit filename="include\buildinfo.hpp" />
 		<Unit filename="include\common.hpp" />
 		<Unit filename="include\global_prototypes.hpp" />

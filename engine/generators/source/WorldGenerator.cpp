@@ -55,6 +55,13 @@ void WorldGenerator::generate_little_island(MapPtr map)
   map->insert(height-3, width-5, field_tile);
   map->insert(height-3, width-4, forest_tile);
   map->insert(height-2, width-4, forest_tile);
+
+  // Define the starting location:
+  Coordinate c;
+  c.first  = height - 2;
+  c.second = width - 4;
+  map->add_location(WorldMapLocationTextKeys::STARTING_LOCATION, c); // JCD FIXME FIXME FIXME
+
   map->insert(height-2, width-3, forest_tile);
   map->insert(height-2, width-2, field_tile);
   map->insert(height-1, width-2, field_tile);

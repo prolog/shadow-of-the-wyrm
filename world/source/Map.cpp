@@ -47,3 +47,31 @@ std::map<std::pair<int, int>, TilePtr > Map::get_tiles() const
 {
   return tiles;
 }
+
+void Map::clear_locations()
+{
+  locations.clear();
+}
+
+void Map::add_location(const string& location, const Coordinate& coordinate)
+{
+  locations.insert(make_pair(location, coordinate));
+}
+
+TilePtr Map::get_tile_at_location(const string& location)
+{
+  TilePtr tile;
+
+  NamedMapLocations::iterator n_it = locations.find(location);
+
+  if (n_it != locations.end())
+  {
+    Coordinate coord = n_it->second;
+    int row = coord.first;
+    int col = coord.second;
+
+    tile = at(row, col);
+  }
+
+  return tile;
+}

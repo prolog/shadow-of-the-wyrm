@@ -9,6 +9,11 @@
 using namespace std;
 using namespace boost;
 
+NCursesDisplay::NCursesDisplay()
+  : TERMINAL_MAX_ROWS(0), TERMINAL_MAX_COLS(0), can_use_colour(false)
+{
+}
+
 // Create a menu and return it.
 WINDOW* NCursesDisplay::create_menu(int height, int width, int start_row, int start_col)
 {
@@ -26,6 +31,15 @@ WINDOW* NCursesDisplay::create_menu(int height, int width, int start_row, int st
 void NCursesDisplay::destroy_menu(WINDOW *menu)
 {
 	delwin(menu);
+}
+
+// Get whether the terminal can support colour.  False by
+// default, until SL actually tries to detect the terminal's
+// colour capabilities.  This can be turned off in the ini
+// settings, also.
+bool NCursesDisplay::uses_colour() const
+{
+  return can_use_colour;
 }
 
 /*
@@ -56,7 +70,13 @@ bool NCursesDisplay::create()
   keypad(stdscr, TRUE);
   nl();
   noecho(); // Don't echo the user input.
-  curs_set(0); // Cursor invisible.  Doesn't seem to work in Cygwin.
+  curs_set(0); // Cursor invisible.  Doesn't seem to work in Cygwin.  Just like colour redefinition.  Fucking Cygwin.
+
+  if (has_colors() == TRUE)
+  {
+    can_use_colour = true;
+    start_color();
+  }
 
   refresh_terminal_size();
 

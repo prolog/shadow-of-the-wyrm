@@ -5,8 +5,11 @@
 class World
 {
   public:
-    World();
+    World(MapPtr new_world_map);
     ~World();
+
+    void set_world(MapPtr new_world_map);
+    MapPtr get_world() const;
 
   protected:
     MapPtr world_map;

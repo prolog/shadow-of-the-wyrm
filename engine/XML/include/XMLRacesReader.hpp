@@ -1,6 +1,4 @@
 #pragma once
-#include <vector>
-
 #include "Race.hpp"
 #include "XMLDataStructures.hpp"
 

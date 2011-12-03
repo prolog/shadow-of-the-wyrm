@@ -1,6 +1,6 @@
 CPP=g++
 
-ifeq ($(mode),release)
+ifeq ($(mode), release)
 	CPP_FLAGS = -Wall -Wunused -Wextra -O2 -I./include -I./display/include -I./world/include -I./engine/include -I./engine/XML/include -I./engine/menus/include -I./world/tiles/include -I./engine/generators/include -I/usr/include/ncursesw
 	POST =
 endif

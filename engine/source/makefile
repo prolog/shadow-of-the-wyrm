@@ -1,10 +1,10 @@
 -include ../../makefile.common
 
-INCLUDE=-I../include -I../../include -I../calculators/include -I../XML/include -I../menus/include -I../../../gtest-1.6.0/include -I../../world/include -I../../world/tiles/include -I../../display/include
+INCLUDE=-I../include -I../../include -I../calculators/include -I../XML/include -I../menus/include -I../generators/include -I../../../gtest-1.6.0/include -I../../world/include -I../../world/tiles/include -I../../display/include
 
 all: engine
 
-engine: Conversion.o CreatureFactory.o Game.o RNG.o MapUtils.o MessageManager.o Messages.o Message.o SavageLandsEngine.o StringConstants.o StringTable.o Dimensions.o
+engine: Conversion.o CreatureFactory.o Game.o RNG.o MapTranslator.o MapUtils.o MessageManager.o Messages.o Message.o SavageLandsEngine.o StringConstants.o StringTable.o Dimensions.o
 	cd ../calculators/source ; make all
 	cd ../generators/source ; make all
 	cd ../menus/source ; make all
@@ -21,6 +21,9 @@ Game.o: Game.cpp ../include/Game.hpp
 
 RNG.o: RNG.cpp ../include/RNG.hpp 
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) RNG.cpp
+
+MapTranslator.o: MapTranslator.cpp ../include/MapTranslator.hpp
+	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) MapTranslator.cpp
 
 MapUtils.o: MapUtils.cpp ../include/MapUtils.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) MapUtils.cpp

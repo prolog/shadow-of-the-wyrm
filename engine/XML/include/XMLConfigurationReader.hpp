@@ -1,10 +1,10 @@
 #pragma once
-#include <vector>
 #include <string>
 #include "XMLClassesReader.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLFileReader.hpp"
 #include "XMLRacesReader.hpp"
+#include "XMLTilesReader.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 
@@ -15,6 +15,7 @@ class XMLConfigurationReader
 
     RaceMap get_races();
     ClassMap get_classes();
+    std::vector<DisplayTile> get_tile_info();
     // std::vector<Item> get_items();
 
   protected:
@@ -28,4 +29,5 @@ class XMLConfigurationReader
     // Member variables for reading the various XML nodes and setting the data into world objects.
     XMLClassesReader classes_reader;
     XMLRacesReader races_reader;
+    XMLTilesReader tiles_reader;
 };

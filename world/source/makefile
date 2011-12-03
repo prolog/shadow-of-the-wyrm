@@ -37,6 +37,9 @@ Statistic.o: Statistic.cpp ../include/Statistic.hpp
 World.o: World.cpp ../include/World.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) World.cpp
 
+clean-world:
+	rm *.o
+
 clean:
 	cd ../tiles/source ; make clean
-	rm -rf *.o
+	rm *.o
