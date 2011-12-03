@@ -8,6 +8,7 @@
 		<xs:sequence>
 			<xs:element ref="tns:Races"/>
 			<xs:element ref="tns:Classes"/>
+			<xs:element ref="tns:Tiles"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -27,13 +28,44 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Tiles">
+	<xs:annotation><xs:documentation>Contains information on the tile types</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="FieldTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="ScrubTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="WheatTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="CairnTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="TreeTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="DesertTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="RoadTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="RiverTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="SeaTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="ShoalsTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="DungeonTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="RockTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="GraveTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="MarshTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="ReedsTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="HillsTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="MountainsTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="BeachTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="BushTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="WeedsTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="SpringsTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="ForestTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="UpStaircaseTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="DownStaircaseTile" type="tns:Tile" minOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="Race">
 	<xs:annotation><xs:documentation>A race within Savage Lands.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
 			<xs:element name="NameSID" type="xs:string"/>
-      <xs:element name="ShortDescriptionSID" type="xs:string"/>
+   			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
 			<xs:element name="Size" type="tns:CreatureSizeType"/>
@@ -257,6 +289,21 @@
 	</xs:complexType>
 </xs:element>
 <!-- COMPLEX TYPES -->
+<xs:complexType name="Tile">
+	<xs:annotation><xs:documentation>Contains information about a particular tile type</xs:documentation></xs:annotation>
+		<xs:sequence>
+			<xs:element name="Text" type="tns:TextDetails" minOccurs="1"/>
+		</xs:sequence>
+</xs:complexType>
+<xs:complexType name="TextDetails">
+	<xs:annotation>
+		<xs:documentation>Contains information about a particular tile type</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Symbol" type="xs:string" minOccurs="1"/>
+		<xs:element name="Colour" type="tns:ColourType" minOccurs="1"/>
+	</xs:sequence>
+</xs:complexType>
 <!-- SIMPLE TYPES -->
 <xs:simpleType name="CreatureSizeType">
 	<xs:annotation>
@@ -305,6 +352,38 @@
 	</xs:restriction>
 </xs:simpleType>
 
+<xs:simpleType name="ColourType">
+	<xs:annotation>
+		<xs:documentation>
+			The colour, for text-based terminals.  See jrcpp/include/Colour.hpp.
+			0 = Black
+			1 = Red
+			2 = Green
+			3 = Yellow
+			4 = Blue
+			5 = Magenta
+			6 = Cyan
+			7 = White
+			8 = Bold Black
+			9 = Bold Red
+			10 = Bold Green
+			11 = Bold Yellow
+			12 = Bold Blue
+			13 = Bold Magenta
+			14 = Bold Cyan
+			15 = Bold White
+		</xs:documentation>
+	</xs:annotation>
+
+	<xs:restriction base="xs:int">
+
+		<xs:minInclusive value="0"/>
+
+		<xs:maxExclusive value="15"/>
+
+	</xs:restriction>
+
+</xs:simpleType>
 <xs:simpleType name="NonNegativeDecimal">
     <xs:restriction base="xs:decimal">
       <xs:minExclusive value="0"/>

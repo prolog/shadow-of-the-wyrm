@@ -11,7 +11,7 @@ enum StaircaseType
 class StaircaseTile : public Tile
 {
   public:
-    TileType get_tile_type() const;
+    virtual TileType get_tile_type() const = 0;
     virtual StaircaseType get_staircase_type() const = 0;
 };
 

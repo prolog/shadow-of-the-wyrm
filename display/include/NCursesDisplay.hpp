@@ -11,6 +11,7 @@
 class NCursesDisplay : public Display
 {
   public:
+    NCursesDisplay();
 	  bool create();
 	  void tear_down();
 
@@ -20,6 +21,7 @@ class NCursesDisplay : public Display
 	  void clear_menu();
 
   protected:
+    bool uses_colour() const;
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponent* text_component);
     NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponent* options_component);
@@ -39,4 +41,5 @@ class NCursesDisplay : public Display
 
     // Used to process the prompt
     NCursesPromptProcessor prompt_processor;
+    bool can_use_colour;
 };

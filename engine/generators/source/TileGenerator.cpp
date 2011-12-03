@@ -74,9 +74,10 @@ TilePtr TileGenerator::generate(const TileType& tile_type)
     case TILE_TYPE_FOREST:
       result_tile = TilePtr(new ForestTile());
       break;
-    // Generates a down staircase by default.  To create a specific type
-    // of staircase, use generate_staircase(const StaircaseType&);
-    case TILE_TYPE_STAIRCASE:
+    case TILE_TYPE_UP_STAIRCASE:
+      result_tile = TilePtr(new UpStaircaseTile());
+      break;
+    case TILE_TYPE_DOWN_STAIRCASE:
       result_tile = TilePtr(new DownStaircaseTile());
       break;
     default:

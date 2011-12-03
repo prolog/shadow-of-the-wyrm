@@ -5,6 +5,7 @@
 class DownStaircaseTile : public StaircaseTile
 {
   public:
+    TileType get_tile_type() const;
     StaircaseType get_staircase_type() const;
 };
 

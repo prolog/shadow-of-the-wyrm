@@ -39,6 +39,16 @@ bool Tile::get_explored() const
   return explored;
 }
 
+void Tile::set_creature(const CreaturePtr& new_creature)
+{
+  creature = new_creature;
+}
+
+CreaturePtr Tile::get_creature() const
+{
+  return creature;
+}
+
 
 TileType Tile::get_tile_type() const
 {

@@ -185,4 +185,10 @@ class PromptTextKeys
     static std::string PROMPT_ENTER_YOUR_NAME;
 };
 
+class WorldMapLocationTextKeys
+{
+  public:
+    static std::string STARTING_LOCATION;
+    static std::string CURRENT_PLAYER_LOCATION;
+};
 // Todo: Define full text/abbreviation SIDs for statistics: Strength, Piety, etc.
