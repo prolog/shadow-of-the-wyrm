@@ -49,6 +49,9 @@ StringTable.o: StringTable.cpp ../include/StringTable.hpp
 Dimensions.o: Dimensions.cpp ../include/Dimensions.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) Dimensions.cpp
 
+clean-engine:
+	rm -f *.o
+
 clean:
 	cd ../calculators/source ; make clean
 	cd ../generators/source ; make clean

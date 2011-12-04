@@ -1,13 +1,13 @@
 #include "Game.hpp"
 #include "WorldGenerator.hpp"
+#include "MapTranslator.hpp"
 
 using namespace std;
 
 Game* Game::game_instance = NULL;
 
-Game::Game()
+Game::Game() : current_world_ix(0)
 {
-
 }
 
 Game::~Game()
@@ -22,6 +22,16 @@ Game* Game::get_instance()
   }
 
   return game_instance;
+}
+
+void Game::set_display(DisplayPtr game_display)
+{
+  display = game_display;
+}
+
+DisplayPtr Game::get_display() const
+{
+  return display;
 }
 
 void Game::set_races(const RaceMap& game_races)
@@ -60,13 +70,21 @@ void Game::create_new_world(CreaturePtr creature) // pass in the player
   MapPtr current_world = world_generator.generate();
   WorldPtr world(new World(current_world));
   worlds.push_back(world);
+  current_world_ix = (worlds.size() - 1);
 
-  // FIXME: Add creature to starting location.  There are a lot of steps here...fix this up.
+  // JCD FIXME: Refactor
   TilePtr tile = current_world->get_tile_at_location(WorldMapLocationTextKeys::STARTING_LOCATION);
 
   if (tile)
   {
     tile->set_creature(creature);
+
+    // Set the starting location.
+    if (creature->get_is_player())
+    {
+      Coordinate c = current_world->get_location(WorldMapLocationTextKeys::STARTING_LOCATION);
+      current_world->add_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
+    }
   }
   else
   {
@@ -77,4 +95,14 @@ void Game::create_new_world(CreaturePtr creature) // pass in the player
 void Game::go()
 {
   // Main game loop goes here...
+  // while(keep_playing)
+  // {
+  WorldPtr current_world = worlds.at(current_world_ix);
+  current_map = current_world->get_world();
+
+  MapDisplayArea display_area = display->get_map_display_area();
+
+  DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
+  display->draw(display_map);
+  // }
 }

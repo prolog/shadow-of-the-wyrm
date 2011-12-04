@@ -1,5 +1,6 @@
 #pragma once
 #include "Map.hpp"
+#include "DisplayMap.hpp"
 
 class DisplayMap;
 
@@ -11,9 +12,11 @@ class DisplayMap;
 class MapTranslator
 {
   public:
-    static DisplayMap create_display_map(const MapPtr& map);
+    static DisplayMap create_display_map(const MapPtr& map, const MapDisplayArea& display_area, const bool centre_on_player = true);
 
   protected:
     MapTranslator();
     ~MapTranslator();
+
+    static DisplayTile create_display_tile(const TilePtr& engine_tile);
 };

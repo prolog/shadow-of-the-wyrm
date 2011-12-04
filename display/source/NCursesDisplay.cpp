@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <boost/foreach.hpp>
+#include "Colours.hpp"
 #include "Conversion.hpp"
 #include "NCursesDisplay.hpp"
 #include "Menu.hpp"
@@ -42,6 +43,55 @@ bool NCursesDisplay::uses_colour() const
   return can_use_colour;
 }
 
+// Initialize the base ncurses colours.
+void NCursesDisplay::initialize_colours()
+{
+  init_pair(0, COLOR_BLACK,   COLOR_BLACK);
+  init_pair(1, COLOR_RED,     COLOR_BLACK);
+  init_pair(2, COLOR_GREEN,   COLOR_BLACK);
+  init_pair(3, COLOR_YELLOW,  COLOR_BLACK);
+  init_pair(4, COLOR_BLUE,    COLOR_BLACK);
+  init_pair(5, COLOR_MAGENTA, COLOR_BLACK);
+  init_pair(6, COLOR_CYAN,    COLOR_BLACK);
+  init_pair(7, COLOR_WHITE,   COLOR_BLACK);
+}
+
+// Turn on colour using attron.
+//
+// Note that the enable/disable colour need to match!  Don't pass different colours!
+void NCursesDisplay::enable_colour(const int selected_colour)
+{
+  if (uses_colour())
+  {
+    if (selected_colour > COLOUR_WHITE)
+    {
+      int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
+      attron(COLOR_PAIR(actual_colour));
+      attron(COLOR_PAIR(A_BOLD));
+      return;
+    }
+
+    attron(COLOR_PAIR(selected_colour));
+  }
+}
+
+// Turn off colour using attroff.
+void NCursesDisplay::disable_colour(const int selected_colour)
+{
+  if (uses_colour())
+  {
+    if (selected_colour > COLOUR_WHITE)
+    {
+      int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
+      attroff(COLOR_PAIR(actual_colour));
+      attroff(COLOR_PAIR(A_BOLD));
+      return;
+    }
+
+    attroff(COLOR_PAIR(selected_colour));
+  }
+}
+
 /*
  **************************************************************
 
@@ -54,6 +104,8 @@ bool NCursesDisplay::uses_colour() const
 void NCursesDisplay::refresh_terminal_size()
 {
   getmaxyx(stdscr, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
+  MAP_START_COL = 0;
+  MAP_START_ROW = 2; // Lines 1 and 2 are for the message buffer.
 }
 
 /*
@@ -76,6 +128,7 @@ bool NCursesDisplay::create()
   {
     can_use_colour = true;
     start_color();
+    initialize_colours();
   }
 
   refresh_terminal_size();
@@ -105,12 +158,71 @@ void NCursesDisplay::tear_down()
 /*!
  *****************************************************************
 
- 	Draw the specified map in the term.
+  Clear the display (in practice, stdscr).
 
  *****************************************************************/
-void NCursesDisplay::draw(const Map& current_map)
+void NCursesDisplay::clear_display()
+{
+  clear();
+}
+
+/*!
+ *****************************************************************
+
+ 	Draw the specified Display in the term.  This'll be a simplified
+  map that contains only the information needed by the display -
+  no specific creature, etc., data.
+
+ *****************************************************************/
+void NCursesDisplay::draw(const DisplayMap& current_map)
 {
   refresh_terminal_size();
+
+  DisplayTile display_tile;
+  Coordinate coords;
+
+  Dimensions d = current_map.size();
+  int map_rows = d.get_y();
+  int map_cols = d.get_x();
+
+  for (int terminal_row = MAP_START_ROW; terminal_row < map_rows; terminal_row++)
+  {
+    for (int terminal_col = MAP_START_COL; terminal_col < map_cols; terminal_col++)
+    {
+      coords.first = terminal_row;
+      coords.second = terminal_col;
+
+      display_tile = current_map.at(coords);
+
+      int colour = display_tile.get_colour();
+
+      enable_colour(colour);
+
+      // Maps are always drawn on ncurses' stdscr.
+      mvprintw(terminal_row, terminal_col, "%c", display_tile.get_symbol());
+
+      disable_colour(colour);
+    }
+  }
+
+  // FIXME
+  getch();
+}
+
+/*!
+ *****************************************************************
+
+  Get the size of the map display in "tiles"
+
+ *****************************************************************/
+MapDisplayArea NCursesDisplay::get_map_display_area()
+{
+  MapDisplayArea map_display_area;
+
+  map_display_area.set_width(TERMINAL_MAX_COLS);
+  map_display_area.set_height(TERMINAL_MAX_ROWS - 4); // FIXME: Remove magic num later
+
+  return map_display_area;
 }
 
 /*!
@@ -230,6 +342,8 @@ void NCursesDisplay::clear_menu()
   if (!menus.empty())
   {
     WINDOW* current_menu_window = menus.top();
+    wclear(current_menu_window);
+    wrefresh(current_menu_window);
     destroy_menu(current_menu_window);
 
     menus.pop();

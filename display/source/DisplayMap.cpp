@@ -6,6 +6,11 @@ DisplayMap::DisplayMap()
 {
 }
 
+void DisplayMap::set(const Coordinate& key, const DisplayTile& value)
+{
+  display_map[key] = value;
+}
+
 DisplayTile DisplayMap::at(const Coordinate& c) const
 {
   DisplayTile tile;
@@ -20,7 +25,7 @@ DisplayTile DisplayMap::at(const Coordinate& c) const
   return tile;
 }
 
-Dimensions DisplayMap::get_dimensions() const
+Dimensions DisplayMap::size() const
 {
   return dimensions;
 }

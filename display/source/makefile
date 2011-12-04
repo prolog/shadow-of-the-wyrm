@@ -1,8 +1,11 @@
 include ../../makefile.common
 
-INCLUDE=-I../include -I../../engine/include -I../../engine/menus/include -I../../world/include -I../../world/tiles/include -I../../include
+INCLUDE=-I../../../gtest-1.6.0/include -I../include -I../../engine/include -I../../engine/menus/include -I../../world/include -I../../world/tiles/include -I../../include
 
-display: DisplayMap.o DisplayTile.o NCursesDisplay.o NCursesPromptProcessor.o NCursesMenuWrapper.o NCursesUtils.o
+display: Display.o DisplayMap.o DisplayTile.o NCursesDisplay.o NCursesPromptProcessor.o NCursesMenuWrapper.o NCursesUtils.o
+
+Display.o: Display.cpp ../include/Display.hpp
+	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) Display.cpp
 
 DisplayMap.o: DisplayMap.cpp ../include/DisplayMap.hpp ../include/DisplayTile.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) DisplayMap.cpp

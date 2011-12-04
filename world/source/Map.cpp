@@ -58,6 +58,23 @@ void Map::add_location(const string& location, const Coordinate& coordinate)
   locations.insert(make_pair(location, coordinate));
 }
 
+Coordinate Map::get_location(const string& location) const
+{
+  Coordinate c;
+
+  c.first = 0;
+  c.second = 0;
+
+  NamedMapLocations::const_iterator l_it = locations.find(location);
+
+  if (l_it != locations.end())
+  {
+    c = l_it->second;
+  }
+
+  return c;
+}
+
 TilePtr Map::get_tile_at_location(const string& location)
 {
   TilePtr tile;

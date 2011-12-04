@@ -17,14 +17,18 @@ class Map
 	public:
     Map(const Map& new_map);
 		Map(const Dimensions& new_dimensions);
+
 		bool insert(int row, int col, TilePtr tile);
 		TilePtr at(int row, int col);
+
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
+
 		std::map<Coordinate, TilePtr > get_tiles() const;
 
     void clear_locations();
     void add_location(const std::string& location, const Coordinate& coordinate);
+    Coordinate get_location(const std::string& location) const;
     TilePtr get_tile_at_location(const std::string& location);
 
 	protected:

@@ -5,16 +5,16 @@ DisplayTile::DisplayTile() : symbol('!'), colour(0)
 {
 }
 
-DisplayTile::DisplayTile(const UChar sym, const int color) : symbol(sym), colour(color)
+DisplayTile::DisplayTile(const uchar sym, const int color) : symbol(sym), colour(color)
 {
 }
 
-void DisplayTile::set_symbol(const UChar sym)
+void DisplayTile::set_symbol(const uchar sym)
 {
   symbol = sym;
 }
 
-UChar DisplayTile::get_symbol() const
+uchar DisplayTile::get_symbol() const
 {
   return symbol;
 }
