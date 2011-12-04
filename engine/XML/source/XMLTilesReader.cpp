@@ -74,11 +74,11 @@ void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, con
     if (!text_node.is_null())
     {
       string symbol_s = XMLUtils::get_child_node_value(text_node, "Symbol");
-      UChar symbol = '?';
+      uchar symbol = '?';
 
       if (!symbol_s.empty())
       {
-        // Well, it is a UChar!
+        // Well, it is a uchar!
         symbol = symbol_s.at(0);
       }
 

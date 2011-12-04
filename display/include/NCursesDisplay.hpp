@@ -15,13 +15,24 @@ class NCursesDisplay : public Display
 	  bool create();
 	  void tear_down();
 
-	  void draw(const Map& current_map);
+    void clear_display();
+	  void draw(const DisplayMap& current_map);
+    MapDisplayArea get_map_display_area();
 	  std::string display_menu(const Menu& current_menu);
 
 	  void clear_menu();
 
   protected:
     bool uses_colour() const;
+
+    // Setup colours the way ncurses requires.
+    void initialize_colours();
+
+    // These two methods are used to turn on/off colours for use
+    // with mvprintw, etc.
+    void enable_colour(const int colour);
+    void disable_colour(const int colour);
+
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponent* text_component);
     NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponent* options_component);
@@ -33,6 +44,9 @@ class NCursesDisplay : public Display
 
     int TERMINAL_MAX_ROWS;
     int TERMINAL_MAX_COLS;
+
+    int MAP_START_ROW;
+    int MAP_START_COL;
 
     // The display is represented as a stack of windows in ncurses; the game window is the lowest, and any menus
     // or submenus are layered as new windows on top of that.  Each time a Menu is done, a window is popped off

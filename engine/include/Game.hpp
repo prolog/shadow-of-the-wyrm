@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include "DisplayTile.hpp"
+#include "Display.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "World.hpp"
@@ -9,6 +10,9 @@ class Game
 {
   public:
     static Game* get_instance();
+
+    void set_display(DisplayPtr display);
+    DisplayPtr get_display() const;
 
     void set_races(const RaceMap& game_races);
     const RaceMap& get_races_ref() const;
@@ -34,6 +38,7 @@ class Game
 
     // The races, classes, and items are not the actual in-game items;
     // they're the template upon which the in-game items are built.
+    DisplayPtr display;
     RaceMap races;
     ClassMap classes;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
@@ -41,4 +46,10 @@ class Game
 
     // The current list of game worlds.
     std::vector<WorldPtr> worlds;
+
+    // The current world index in the list of worlds.
+    uint current_world_ix;
+
+    // The currently-loaded map
+    MapPtr current_map;
 };

@@ -14,8 +14,9 @@ class DisplayMap
   public:
     DisplayMap();
 
+    void set(const Coordinate& key, const DisplayTile& value);
     DisplayTile at(const Coordinate& coords) const;
-    Dimensions get_dimensions() const;
+    Dimensions size() const;
 
   protected:
     Dimensions dimensions;

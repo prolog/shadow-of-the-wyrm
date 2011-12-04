@@ -9,16 +9,16 @@ class DisplayTile
 {
   public:
     DisplayTile();
-    DisplayTile(const UChar symbol, const int predefined_colour);
+    DisplayTile(const uchar symbol, const int predefined_colour);
 
-    void  set_symbol(const UChar new_symbol);
-    UChar get_symbol() const;
+    void  set_symbol(const uchar new_symbol);
+    uchar get_symbol() const;
 
     void set_colour(const int new_colour);
     int  get_colour() const;
 
   protected:
-    UChar symbol;
+    uchar symbol;
     int colour;
 };
 

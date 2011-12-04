@@ -7,10 +7,27 @@
  *********************************************************************/
 #pragma once
 #include <string>
-#include "Map.hpp"
+#include "DisplayMap.hpp"
 #include "Prompt.hpp"
 
 class Menu;
+
+class MapDisplayArea
+{
+  public:
+    MapDisplayArea();
+    MapDisplayArea(const uint height, const uint width);
+
+    void set_height(const uint height);
+    uint get_height() const;
+
+    void set_width(const uint width);
+    uint get_width() const;
+
+  protected:
+    uint height;
+    uint width;
+};
 
 class Display
 {
@@ -18,7 +35,13 @@ class Display
 	  virtual bool create() = 0;
 	  virtual void tear_down() = 0;
 
-	  virtual void draw(const Map& current_map) = 0;
+    // Clears the message buffer, map, and info display.
+    virtual void clear_display() = 0;
+
+    // Draws the map, and later will also display player info.
+	  virtual void draw(const DisplayMap& current_map) = 0;
+
+    virtual MapDisplayArea get_map_display_area() = 0;
 
 	  // Return result is the response to whatever prompt is displayed
 	  virtual std::string display_menu(const Menu& current_menu) = 0;
