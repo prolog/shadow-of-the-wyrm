@@ -37,7 +37,7 @@ global_functions.o: global_functions.cpp
 ifeq ($(mode), map)
 MapTester.o: MapTester.cpp
 	$(CPP) -c $(CPP_FLAGS) MapTester.cpp
-	$(CPP) $(CPP_FLAGS) $(ENGINE_OBJS) $(ENGINE_GENERATORS_OBJS) $(ENGINE_XML_OBJS) $(WORLD_OBJS) $(WORLD_TILES_OBJS) MapTester.o -o MapTester -lxerces-c
+	$(CPP) $(CPP_FLAGS) global_functions.o $(ENGINE_OBJS) $(ENGINE_CALCULATORS_OBJS) $(ENGINE_GENERATORS_OBJS) $(ENGINE_MENU_OBJS) $(ENGINE_XML_OBJS) $(DISPLAY_OBJS) $(WORLD_OBJS) $(WORLD_TILES_OBJS) MapTester.o -o MapTester -lxerces-c -lmenu -lncursesw
 endif
 
 clean: clean_dumps
