@@ -54,7 +54,7 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapDisplay
         display_coords.second = d_col;
 
         // Get the map tile
-        TilePtr map_tile = map->at(engine_map_start_row, engine_map_start_col);
+        TilePtr map_tile = map->at(engine_map_start_row+d_row, engine_map_start_col+d_col);
 
         // Translate the map tile
         DisplayTile display_tile = create_display_tile(map_tile);
