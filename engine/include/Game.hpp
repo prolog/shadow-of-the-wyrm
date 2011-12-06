@@ -20,8 +20,10 @@ class Game
     void set_classes(const ClassMap& game_classes);
     const ClassMap& get_classes_ref() const;
 
-    void set_tile_info(const std::vector<DisplayTile>& game_tiles);
-    const std::vector<DisplayTile>& get_tile_info_ref() const;
+    void set_tile_display_info(const std::vector<DisplayTile>& game_tiles);
+    const std::vector<DisplayTile>& get_tile_display_info_ref() const;
+
+
 
     void create_new_world(CreaturePtr creature);
     void go(); // main game loop

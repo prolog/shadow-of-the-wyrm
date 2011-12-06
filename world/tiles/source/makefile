@@ -1,6 +1,6 @@
 include ../../../makefile.common
 
-INCLUDE=-I../include -I../../include -I../../../engine/include -I../tile/include -I../../../../gtest-1.6.0/include
+INCLUDE=-I../include -I../../include -I../../../engine/include -I../tile/include -I../../../include -I../../../../gtest-1.6.0/include
 
 all: tiles
 

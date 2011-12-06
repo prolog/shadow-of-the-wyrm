@@ -7,6 +7,8 @@ using namespace std;
 Creature::Creature()
 : is_player(false)
 , size( CREATURE_SIZE_MEDIUM )
+, symbol('?')
+, colour(COLOUR_BLACK)
 // Everything else is a string, Statistic, etc.
 {
 }
@@ -14,6 +16,8 @@ Creature::Creature()
 void Creature::set_is_player(const bool player)
 {
   is_player = player;
+
+  set_symbol('@');
 }
 
 bool Creature::get_is_player() const
@@ -244,6 +248,26 @@ void Creature::set_soak(const Statistic& new_soak)
 Statistic Creature::get_soak() const
 {
   return soak;
+}
+
+void Creature::set_symbol(const uchar new_symbol)
+{
+  symbol = new_symbol;
+}
+
+uchar Creature::get_symbol() const
+{
+  return symbol;
+}
+
+void Creature::set_colour(const Colour new_colour)
+{
+  colour = new_colour;
+}
+
+Colour Creature::get_colour() const
+{
+  return colour;
 }
 
 #ifdef UNIT_TESTS

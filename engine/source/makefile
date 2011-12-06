@@ -4,7 +4,7 @@ INCLUDE=-I../include -I../../include -I../calculators/include -I../XML/include -
 
 all: engine
 
-engine: Conversion.o CreatureFactory.o Game.o RNG.o MapTranslator.o MapUtils.o MessageManager.o Messages.o Message.o SavageLandsEngine.o StringConstants.o StringTable.o Dimensions.o
+engine: Conversion.o CreatureFactory.o Game.o RNG.o MapTranslator.o MapUtils.o MessageManager.o Messages.o Message.o Naming.o SavageLandsEngine.o StringConstants.o StringTable.o Dimensions.o
 	cd ../calculators/source ; make all
 	cd ../generators/source ; make all
 	cd ../menus/source ; make all
@@ -36,6 +36,9 @@ Messages.o: Messages.cpp ../include/Messages.hpp
 
 Message.o: Message.cpp ../include/Message.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) Message.cpp
+
+Naming.o: Naming.cpp ../include/Naming.hpp
+	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) Naming.cpp
 
 SavageLandsEngine.o: SavageLandsEngine.cpp ../include/SavageLandsEngine.hpp
 	$(CPP) -c $(CPP_FLAGS) $(INCLUDE) SavageLandsEngine.cpp

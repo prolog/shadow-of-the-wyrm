@@ -76,9 +76,19 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile)
 
   if (game_info)
   {
-    vector<DisplayTile> tiles_info = game_info->get_tile_info_ref();
-    DisplayTile tile_info = tiles_info.at(actual_tile->get_tile_type());
-    display_tile = tile_info; // FIXME, add actual logic later.
+    CreaturePtr creature = actual_tile->get_creature();
+
+    if (creature) // If a creature exists on this tile - will be null if the ptr is not init'd
+    {
+      display_tile.set_symbol(creature->get_symbol());
+      display_tile.set_colour(creature->get_colour());
+    }
+    else // add later: else if item exists...
+    {
+      vector<DisplayTile> tiles_info = game_info->get_tile_display_info_ref();
+      DisplayTile tile_info = tiles_info.at(actual_tile->get_tile_type());
+      display_tile = tile_info; // FIXME, add actual logic later.
+    }
   }
 
   return display_tile;
