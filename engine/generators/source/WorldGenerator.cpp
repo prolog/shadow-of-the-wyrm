@@ -32,9 +32,6 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
 void WorldGenerator::generate_little_island(MapPtr map)
 {
   Dimensions dim = map->size();
-  TilePtr field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
-  TilePtr forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
-  TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
 
   //   ..
   //    ...
@@ -48,22 +45,33 @@ void WorldGenerator::generate_little_island(MapPtr map)
   {
     for (int current_width = width - 6; current_width < width; current_width++)
     {
+      TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
       map->insert(current_height, current_width, sea_tile);
     }
   }
 
+  TilePtr field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
   map->insert(height-4, width-5, field_tile);
+
+  TilePtr forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-4, width-4, forest_tile);
+
+  forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-3, width-4, forest_tile);
 
   // Define the starting location:
   Coordinate c;
   c.first  = height - 3;
   c.second = width - 4;
-  map->add_location(WorldMapLocationTextKeys::STARTING_LOCATION, c); // JCD FIXME FIXME FIXME
+  map->add_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
 
+  forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-3, width-3, forest_tile);
+
+  field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
   map->insert(height-3, width-2, field_tile);
+
+  field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
   map->insert(height-2, width-2, field_tile);
 }
 
@@ -71,13 +79,12 @@ void WorldGenerator::generate_little_island(MapPtr map)
 void WorldGenerator::generate_far_reaches(MapPtr map)
 {
   Dimensions dim = map->size();
-  TilePtr tile = TileGenerator::generate(TILE_TYPE_SCRUB);
-  TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
 
   for (int current_height = 0; current_height < 4; current_height++)
   {
     for (int current_width = 0; current_width < 5; current_width++)
     {
+      TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
       map->insert(current_height, current_width, sea_tile);
     }
   }
@@ -86,15 +93,34 @@ void WorldGenerator::generate_far_reaches(MapPtr map)
   //   .....
   //   ...
 
+  TilePtr tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(1, 2, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(1, 3, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(1, 4, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(2, 1, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(2, 2, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(2, 3, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(2, 4, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(3, 1, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(3, 2, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
   map->insert(3, 3, tile);
 }
 
