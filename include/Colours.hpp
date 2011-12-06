@@ -1,6 +1,6 @@
 #pragma once
 
-// The first eight are the same as the COLOR_ (American spelling) values 
+// The first eight are the same as the COLOR_ (American spelling) values
 // in curses.h.  Consistency is nice.  The rest are just attributes on
 // the standard NCurses colours.
 enum Colours
@@ -22,3 +22,5 @@ enum Colours
   COLOUR_BOLD_CYAN = 14,
   COLOUR_BOLD_WHITE = 15
 };
+
+typedef Colours Colour;

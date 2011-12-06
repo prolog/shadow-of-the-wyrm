@@ -8,6 +8,7 @@
 #include "DisplayTile.hpp"
 #include "Game.hpp"
 #include "NamingScreen.hpp"
+#include "Naming.hpp"
 #include "RaceSelectionScreen.hpp"
 #include "WelcomeScreen.hpp"
 
@@ -62,13 +63,14 @@ void SavageLandsEngine::start()
       game->set_display(display);
       game->set_races(races);
       game->set_classes(classes);
-      game->set_tile_info(tile_info);
+      game->set_tile_display_info(tile_info);
 
       WelcomeScreen welcome(display);
       welcome.display();
 
       NamingScreen naming(display);
       name = naming.display();
+      name = Naming::clean_name(name);
 
       RaceSelectionScreen race_selection(display);
       string race_index = race_selection.display();

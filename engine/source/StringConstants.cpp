@@ -5,6 +5,7 @@ using namespace std;
 string TextKeys::SL_TITLE    = "SL_TITLE";
 string TextKeys::SL_TITLE_POEM = "SL_TITLE_POEM";
 string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
+string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 string TextKeys::SELECT_RACE = "SELECT_RACE";
 string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 

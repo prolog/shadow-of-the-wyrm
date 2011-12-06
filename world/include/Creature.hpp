@@ -1,6 +1,8 @@
 #pragma once
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "common.hpp"
+#include "Colours.hpp"
 #include "CreatureFeatures.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
@@ -97,6 +99,13 @@ class Creature
     void set_soak(const Statistic& new_soak);
     Statistic get_soak() const;
 
+    // Basic display info
+    void set_symbol(const uchar new_symbol);
+    uchar get_symbol() const;
+
+    void set_colour(const Colour new_colour);
+    Colour get_colour() const;
+
   protected:
     bool is_player;
 
@@ -141,6 +150,10 @@ class Creature
     // Used for evading attacks (protective statistics)
     Statistic evade;
     Statistic soak;
+
+    // Basic creature info used for the display
+    uchar symbol;
+    Colour colour;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

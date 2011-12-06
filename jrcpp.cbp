@@ -67,12 +67,14 @@
 		<Unit filename="display\include\NCursesMenuWrapper.hpp" />
 		<Unit filename="display\include\NCursesPromptProcessor.hpp" />
 		<Unit filename="display\include\NCursesUtils.hpp" />
+		<Unit filename="display\source\Display.cpp" />
 		<Unit filename="display\source\DisplayMap.cpp" />
 		<Unit filename="display\source\DisplayTile.cpp" />
 		<Unit filename="display\source\NCursesDisplay.cpp" />
 		<Unit filename="display\source\NCursesMenuWrapper.cpp" />
 		<Unit filename="display\source\NCursesPromptProcessor.cpp" />
 		<Unit filename="display\source\NCursesUtils.cpp" />
+		<Unit filename="display\source\unit_tests\Display_test.cpp" />
 		<Unit filename="engine\XML\include\XMLClassesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLConfigurationReader.hpp" />
 		<Unit filename="engine\XML\include\XMLDataStructures.hpp" />
@@ -142,6 +144,7 @@
 		<Unit filename="engine\include\Message.hpp" />
 		<Unit filename="engine\include\MessageManager.hpp" />
 		<Unit filename="engine\include\Messages.hpp" />
+		<Unit filename="engine\include\Naming.hpp" />
 		<Unit filename="engine\include\RNG.hpp" />
 		<Unit filename="engine\include\SavageLandsEngine.hpp" />
 		<Unit filename="engine\include\StringConstants.hpp" />
@@ -173,6 +176,7 @@
 		<Unit filename="engine\source\Message.cpp" />
 		<Unit filename="engine\source\MessageManager.cpp" />
 		<Unit filename="engine\source\Messages.cpp" />
+		<Unit filename="engine\source\Naming.cpp" />
 		<Unit filename="engine\source\RNG.cpp" />
 		<Unit filename="engine\source\SavageLandsEngine.cpp" />
 		<Unit filename="engine\source\StringConstants.cpp" />

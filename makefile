@@ -41,7 +41,7 @@ MapTester.o: MapTester.cpp
 endif
 
 clean: clean_dumps
-	rm -f *.o SavageLands *.html
+	rm -f *.o SavageLands.exe MapTester.exe *.html
 	cd ./world/source ; make clean
 	cd ./engine/source ; make clean
 	cd ./display/source ; make clean

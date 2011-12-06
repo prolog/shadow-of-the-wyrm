@@ -54,12 +54,12 @@ const ClassMap& Game::get_classes_ref() const
   return classes;
 }
 
-void Game::set_tile_info(const vector<DisplayTile>& game_tiles)
+void Game::set_tile_display_info(const vector<DisplayTile>& game_tiles)
 {
   tile_info = game_tiles;
 }
 
-const vector<DisplayTile>& Game::get_tile_info_ref() const
+const vector<DisplayTile>& Game::get_tile_display_info_ref() const
 {
   return tile_info;
 }

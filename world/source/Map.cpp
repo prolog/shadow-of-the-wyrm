@@ -21,6 +21,7 @@ Map::Map(const Dimensions& new_dimensions)
 
 bool Map::insert(int row, int col, TilePtr tile)
 {
+  // JCD FIXME: Tile may not be unique!
   pair<int, int> key = make_pair(row, col);
 
   tiles[key] = tile;
