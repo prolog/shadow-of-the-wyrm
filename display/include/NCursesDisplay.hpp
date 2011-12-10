@@ -1,6 +1,6 @@
 #pragma once
-#include <ncurses.h>
-#include <menu.h>
+#include <ncurses/ncurses.h>
+#include <ncurses/menu.h>
 #include <stack>
 #include "Display.hpp"
 #include "NCursesMenuWrapper.hpp"

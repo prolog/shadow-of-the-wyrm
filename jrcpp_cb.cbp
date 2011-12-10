@@ -2,23 +2,29 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="jrcpp" />
-		<Option makefile="c:\cygwin\home\Julian\jrcpp\makefile" />
-		<Option makefile_is_custom="1" />
+		<Option title="jrcpp_cb" />
+		<Option makefile="makefile" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="SavageLands" prefix_auto="1" extension_auto="1" />
+				<Option output="bin\Debug\jrcpp_cb" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 				</Compiler>
+				<Linker>
+					<Add library="..\gtest\gtest-1.6.0\lib\libgtest.a" />
+					<Add library="..\gtest\gtest-1.6.0\lib\libgtest_main.a" />
+					<Add library="..\..\..\..\MinGW\lib\libxerces-c.a" />
+					<Add library="..\..\..\..\MinGW\lib\libmenu.a" />
+					<Add library="..\..\..\..\MinGW\lib\libncurses.a" />
+				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="SavageLands" prefix_auto="1" extension_auto="1" />
+				<Option output="bin\Release\jrcpp_cb" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Release\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -29,34 +35,15 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
-			<Target title="map">
-				<Option output="MapTester" prefix_auto="1" extension_auto="1" />
-				<Option type="0" />
-				<Option compiler="gcc" />
-				<MakeCommands>
-					<Build command="$make -f $makefile $target mode=map" />
-					<CompileFile command="$make -f $makefile $file mode=map" />
-					<Clean command="$make -f $makefile clean$target mode=map" />
-					<DistClean command="$make -f $makefile distclean$target" />
-					<AskRebuildNeeded command="$make -q -f $makefile $target mode=map" />
-					<SilentBuild command="$make -s -f $makefile $target mode=map" />
-				</MakeCommands>
-			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="include" />
-			<Add directory="gtest-1.6.0\include" />
-			<Add directory="display\include" />
-			<Add directory="engine\include" />
-			<Add directory="world\include" />
-			<Add directory="..\..\..\usr\include" />
+			<Add option="-g" />
+			<Add option="-fexceptions" />
 		</Compiler>
-		<Linker>
-			<Add library="gtest-1.6.0\lib\libgtest.a" />
-			<Add library="gtest-1.6.0\lib\libgtest_main.a" />
-		</Linker>
-		<Unit filename="MapTester.cpp" />
+		<Unit filename="MapTester.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="SavageLands.cpp" />
 		<Unit filename="display\include\Display.hpp" />
 		<Unit filename="display\include\DisplayMap.hpp" />
@@ -73,7 +60,9 @@
 		<Unit filename="display\source\NCursesMenuWrapper.cpp" />
 		<Unit filename="display\source\NCursesPromptProcessor.cpp" />
 		<Unit filename="display\source\NCursesUtils.cpp" />
-		<Unit filename="display\source\unit_tests\Display_test.cpp" />
+		<Unit filename="display\source\unit_tests\Display_test.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="engine\XML\include\XMLClassesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLConfigurationReader.hpp" />
 		<Unit filename="engine\XML\include\XMLDataStructures.hpp" />
@@ -94,8 +83,12 @@
 		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
-		<Unit filename="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp" />
-		<Unit filename="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp" />
+		<Unit filename="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="engine\generators\include\CavernGenerator.hpp" />
 		<Unit filename="engine\generators\include\CellularAutomataGenerator.hpp" />
 		<Unit filename="engine\generators\include\DungeonGenerator.hpp" />
@@ -130,9 +123,12 @@
 		<Unit filename="engine\generators\source\StreamGenerator.cpp" />
 		<Unit filename="engine\generators\source\TileGenerator.cpp" />
 		<Unit filename="engine\generators\source\WorldGenerator.cpp" />
-		<Unit filename="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp" />
-		<Unit filename="engine\generators\source\unit_tests\Generator_test.cpp" />
-		<Unit filename="engine\generators\source\unit_tests\TileGenerator_test.cpp" />
+		<Unit filename="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="engine\generators\source\unit_tests\TileGenerator_test.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="engine\include\Conversion.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
@@ -180,115 +176,25 @@
 		<Unit filename="engine\source\SavageLandsEngine.cpp" />
 		<Unit filename="engine\source\StringConstants.cpp" />
 		<Unit filename="engine\source\StringTable.cpp" />
-		<Unit filename="engine\source\unit_tests\Conversion_test.cpp" />
-		<Unit filename="engine\source\unit_tests\CreatureFactory_test.cpp" />
-		<Unit filename="engine\source\unit_tests\Dimensions_test.cpp" />
-		<Unit filename="engine\source\unit_tests\Message_test.cpp" />
-		<Unit filename="engine\source\unit_tests\Messages_test.cpp" />
-		<Unit filename="engine\source\unit_tests\RNG_test.cpp" />
+		<Unit filename="engine\source\unit_tests\Conversion_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="engine\source\unit_tests\CreatureFactory_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="engine\source\unit_tests\Dimensions_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="engine\source\unit_tests\Message_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="engine\source\unit_tests\Messages_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="global_functions.cpp" />
-		<Unit filename="gtest-1.6.0\build-aux\config.h" />
-		<Unit filename="gtest-1.6.0\codegear\gtest_all.cc" />
-		<Unit filename="gtest-1.6.0\codegear\gtest_link.cc" />
-		<Unit filename="gtest-1.6.0\fused-src\gtest\gtest-all.cc" />
-		<Unit filename="gtest-1.6.0\fused-src\gtest\gtest.h" />
-		<Unit filename="gtest-1.6.0\fused-src\gtest\gtest_main.cc" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest-death-test.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest-message.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest-param-test.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest-printers.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest-spi.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest-test-part.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest-typed-test.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest_pred_impl.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\gtest_prod.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-death-test-internal.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-filepath.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-internal.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-linked_ptr.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-param-util-generated.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-param-util.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-port.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-string.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-tuple.h" />
-		<Unit filename="gtest-1.6.0\include\gtest\internal\gtest-type-util.h" />
-		<Unit filename="gtest-1.6.0\samples\prime_tables.h" />
-		<Unit filename="gtest-1.6.0\samples\sample1.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample1.h" />
-		<Unit filename="gtest-1.6.0\samples\sample10_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample1_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample2.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample2.h" />
-		<Unit filename="gtest-1.6.0\samples\sample2_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample3-inl.h" />
-		<Unit filename="gtest-1.6.0\samples\sample3_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample4.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample4.h" />
-		<Unit filename="gtest-1.6.0\samples\sample4_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample5_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample6_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample7_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample8_unittest.cc" />
-		<Unit filename="gtest-1.6.0\samples\sample9_unittest.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest-all.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest-death-test.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest-filepath.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest-internal-inl.h" />
-		<Unit filename="gtest-1.6.0\src\gtest-port.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest-printers.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest-test-part.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest-typed-test.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest.cc" />
-		<Unit filename="gtest-1.6.0\src\gtest_main.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-death-test_ex_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-death-test_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-filepath_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-linked_ptr_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-listener_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-message_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-options_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-param-test2_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-param-test_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-param-test_test.h" />
-		<Unit filename="gtest-1.6.0\test\gtest-port_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-printers_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-test-part_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-tuple_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-typed-test2_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-typed-test_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest-typed-test_test.h" />
-		<Unit filename="gtest-1.6.0\test\gtest-unittest-api_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_all_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_break_on_failure_unittest_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_catch_exceptions_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_color_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_env_var_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_environment_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_filter_unittest_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_help_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_list_tests_unittest_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_main_unittest.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_no_test_unittest.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_output_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_pred_impl_unittest.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_prod_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_repeat_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_shuffle_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_sole_header_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_stress_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_throw_on_failure_ex_test.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_throw_on_failure_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_uninitialized_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_unittest.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_xml_outfile1_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_xml_outfile2_test_.cc" />
-		<Unit filename="gtest-1.6.0\test\gtest_xml_output_unittest_.cc" />
-		<Unit filename="gtest-1.6.0\test\production.cc" />
-		<Unit filename="gtest-1.6.0\test\production.h" />
-		<Unit filename="gtest-1.6.0\xcode\Samples\FrameworkSample\widget.cc" />
-		<Unit filename="gtest-1.6.0\xcode\Samples\FrameworkSample\widget.h" />
-		<Unit filename="gtest-1.6.0\xcode\Samples\FrameworkSample\widget_test.cc" />
 		<Unit filename="include\Colours.hpp" />
 		<Unit filename="include\buildinfo.hpp" />
 		<Unit filename="include\common.hpp" />
@@ -316,10 +222,18 @@
 		<Unit filename="world\source\Skills.cpp" />
 		<Unit filename="world\source\Statistic.cpp" />
 		<Unit filename="world\source\World.cpp" />
-		<Unit filename="world\source\unit_tests\Creature_test.cpp" />
-		<Unit filename="world\source\unit_tests\Race_test.cpp" />
-		<Unit filename="world\source\unit_tests\Skills_test.cpp" />
-		<Unit filename="world\source\unit_tests\Statistic_test.cpp" />
+		<Unit filename="world\source\unit_tests\Creature_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\source\unit_tests\Race_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\source\unit_tests\Skills_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\source\unit_tests\Statistic_test.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="world\tiles\include\AllTiles.hpp" />
 		<Unit filename="world\tiles\include\BeachTile.hpp" />
 		<Unit filename="world\tiles\include\BushTile.hpp" />
@@ -374,44 +288,96 @@
 		<Unit filename="world\tiles\source\UpStaircaseTile.cpp" />
 		<Unit filename="world\tiles\source\WeedsTile.cpp" />
 		<Unit filename="world\tiles\source\WheatTile.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\BeachTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\BushTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\CairnTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\DesertTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\DownStaircaseTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\DungeonTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\FieldTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\ForestTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\GraveTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\HillsTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\MarshTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\MountainsTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\ReedsTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\RiverTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\RoadTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\RockTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\ScrubTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\SeaTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\ShoalsTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\SpringsTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\StaircaseTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\Tile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\TreeTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\UpStaircaseTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\WeedsTile_test.cpp" />
-		<Unit filename="world\tiles\source\unit_tests\WheatTile_test.cpp" />
+		<Unit filename="world\tiles\source\unit_tests\BeachTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\BushTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\CairnTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\DesertTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\DownStaircaseTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\DungeonTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\FieldTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\ForestTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\GraveTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\HillsTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\MarshTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\MountainsTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\ReedsTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\RiverTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\RoadTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\RockTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\ScrubTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\SeaTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\ShoalsTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\SpringsTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\StaircaseTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\Tile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\TreeTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\UpStaircaseTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\WeedsTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\WheatTile_test.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Extensions>
 			<code_completion />
 			<debugger>
 				<search_path add="C:\cygwin\home\Julian\jrcpp\" />
-				<search_path add="C:\cygwin\home\Julian\jrcpp\engine\source" />
-				<search_path add="C:\cygwin\home\Julian\jrcpp\engine\generators\source" />
-				<search_path add="C:\cygwin\home\Julian\jrcpp\world\source" />
-				<search_path add="C:\cygwin\home\Julian\jrcpp\world\tiles\source" />
-				<search_path add="C:\cygwin\home\Julian\jrcpp\display\source" />
-				<search_path add="C:\cygwin\home\Julian\jrcpp\engine\XML\source" />
-				<search_path add="C:\cygwin\home\Julian\jrcpp\engine\menus\source" />
-				<search_path add="C:\cygwin\home\Julian\jrcpp\engine\calculators\source" />
+				<search_path add="display\source" />
+				<search_path add="engine\calculators\source" />
+				<search_path add="engine\generators\source" />
+				<search_path add="engine\menus\source" />
+				<search_path add="engine\source" />
+				<search_path add="engine\XML\source" />
+				<search_path add="world\source" />
+				<search_path add="world\tiles\source" />
 			</debugger>
 		</Extensions>
 	</Project>

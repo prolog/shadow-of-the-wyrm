@@ -1,6 +1,6 @@
 #pragma once
-#include <ncurses.h>
-#include <menu.h>
+#include <ncurses/ncurses.h>
+#include <ncurses/menu.h>
 #include "Prompt.hpp"
 
 // Handles the output of the prompt text and the reading of the prompt from the keyboard based on the type of

@@ -1,6 +1,6 @@
 #pragma once
-#include <ncurses.h>
-#include <menu.h>
+#include <ncurses/ncurses.h>
+#include <ncurses/menu.h>
 
 // Wrapper for NCurses menu/item data, mostly to allow easy deletion
 // during program flow.
