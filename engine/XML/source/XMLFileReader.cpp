@@ -17,8 +17,6 @@ void XMLFileReader::check_file_status(const string& filename, struct stat* file_
     throw ( runtime_error("Path does not exist.") );
   else if( iretStat == ENOTDIR )
     throw ( runtime_error("One of the directories specified does not exist."));
-  else if( iretStat == ELOOP )
-    throw ( runtime_error("Too many symbolic links."));
   else if( iretStat == EACCES )
     throw ( runtime_error("Permission denied."));
   else if( iretStat == ENAMETOOLONG )

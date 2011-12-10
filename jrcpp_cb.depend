@@ -1,0 +1,876 @@
+# depslib dependency file v1.0
+1321453052 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
+	<iostream>
+	<fstream>
+	<boost/shared_ptr.hpp>
+	"RNG.hpp"
+	"CavernGenerator.hpp"
+	"FieldGenerator.hpp"
+	"ForestGenerator.hpp"
+	"RoadGenerator.hpp"
+	"RuinsGenerator.hpp"
+	"MarshGenerator.hpp"
+	"SettlementGenerator.hpp"
+	"KeepRuinsGenerator.hpp"
+	"SettlementRuinsGenerator.hpp"
+	"SpiralDungeonGenerator.hpp"
+	"WorldGenerator.hpp"
+	"XMLDataStructures.hpp"
+	"XMLConfigurationReader.hpp"
+	"XMLFileReader.hpp"
+	"StringTable.hpp"
+	"Skills.hpp"
+	"common.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\caverngenerator.hpp
+	"Generator.hpp"
+	"Map.hpp"
+	"MapUtils.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\generator.hpp
+	<vector>
+	"common.hpp"
+	"Map.hpp"
+
+1322931769 c:\cygwin\home\julian\jrcpp\include\common.hpp
+	<utility>
+
+1322926025 c:\cygwin\home\julian\jrcpp\world\include\map.hpp
+	<vector>
+	<map>
+	<boost/shared_ptr.hpp>
+	"common.hpp"
+	"Dimensions.hpp"
+	"Tile.hpp"
+
+1322411417 c:\cygwin\home\julian\jrcpp\world\tiles\include\tile.hpp
+	<vector>
+	<boost/shared_ptr.hpp>
+	"tiles.hpp"
+	"Creature.hpp"
+	"Item.hpp"
+
+1322749270 c:\cygwin\home\julian\jrcpp\world\tiles\include\tiles.hpp
+
+1323179141 c:\cygwin\home\julian\jrcpp\world\include\creature.hpp
+	<string>
+	<boost/shared_ptr.hpp>
+	"common.hpp"
+	"Colours.hpp"
+	"CreatureFeatures.hpp"
+	"Race.hpp"
+	"Class.hpp"
+	"Resistances.hpp"
+	"Skills.hpp"
+	"Statistic.hpp"
+
+1323179189 c:\cygwin\home\julian\jrcpp\include\colours.hpp
+
+1321453056 c:\cygwin\home\julian\jrcpp\world\include\creaturefeatures.hpp
+
+1321718329 c:\cygwin\home\julian\jrcpp\world\include\race.hpp
+	<boost/shared_ptr.hpp>
+	<map>
+	<string>
+	"Skills.hpp"
+	"Statistic.hpp"
+	"CreatureFeatures.hpp"
+	"Resistances.hpp"
+
+1322267056 c:\cygwin\home\julian\jrcpp\world\include\skills.hpp
+	<string>
+	"SkillTypes.hpp"
+	"StringTable.hpp"
+
+1322100838 c:\cygwin\home\julian\jrcpp\world\include\skilltypes.hpp
+
+1321453056 c:\cygwin\home\julian\jrcpp\world\include\statistic.hpp
+
+1321453056 c:\cygwin\home\julian\jrcpp\world\include\resistances.hpp
+	<map>
+	<string>
+	"ResistanceTypes.hpp"
+
+1321453056 c:\cygwin\home\julian\jrcpp\world\include\resistancetypes.hpp
+
+1321453056 c:\cygwin\home\julian\jrcpp\world\include\class.hpp
+	<boost/shared_ptr.hpp>
+	<map>
+	<string>
+	"Resistances.hpp"
+	"Skills.hpp"
+	"Statistic.hpp"
+
+1322411177 c:\cygwin\home\julian\jrcpp\world\include\item.hpp
+	<boost/shared_ptr.hpp>
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\fieldgenerator.hpp
+	"Generator.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\forestgenerator.hpp
+	"Generator.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\roadgenerator.hpp
+	"Map.hpp"
+	"Directions.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\ruinsgenerator.hpp
+	"common.hpp"
+	"Map.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\marshgenerator.hpp
+	"Generator.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\settlementgenerator.hpp
+	"Map.hpp"
+	"Directions.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\keepruinsgenerator.hpp
+	"Map.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\settlementruinsgenerator.hpp
+	"Map.hpp"
+	"SettlementGenerator.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\spiraldungeongenerator.hpp
+	"DungeonGenerator.hpp"
+	"StaircaseTile.hpp"
+	"Directions.hpp"
+
+1321453061 c:\cygwin\home\julian\jrcpp\engine\generators\include\dungeongenerator.hpp
+	"Generator.hpp"
+	"Map.hpp"
+	<map>
+
+1322749343 c:\cygwin\home\julian\jrcpp\world\tiles\include\staircasetile.hpp
+	"Tile.hpp"
+	<boost/shared_ptr.hpp>
+
+1322405983 c:\cygwin\home\julian\jrcpp\engine\generators\include\worldgenerator.hpp
+	<map>
+	"Generator.hpp"
+
+1321453057 c:\cygwin\home\julian\jrcpp\engine\xml\include\xmldatastructures.hpp
+	<vector>
+	<string>
+	<xercesc/dom/DOM.hpp>
+	<xercesc/dom/DOMDocument.hpp>
+	<xercesc/dom/DOMDocumentType.hpp>
+	<xercesc/dom/DOMElement.hpp>
+	<xercesc/dom/DOMNode.hpp>
+	<xercesc/dom/DOMNodeList.hpp>
+	<xercesc/dom/DOMImplementation.hpp>
+	<xercesc/dom/DOMImplementationLS.hpp>
+	<xercesc/dom/DOMNodeIterator.hpp>
+	<xercesc/dom/DOMNodeList.hpp>
+	<xercesc/dom/DOMText.hpp>
+	<xercesc/parsers/XercesDOMParser.hpp>
+	<xercesc/util/XMLUni.hpp>
+
+1322882983 c:\cygwin\home\julian\jrcpp\engine\xml\include\xmlconfigurationreader.hpp
+	<string>
+	"XMLClassesReader.hpp"
+	"XMLDataStructures.hpp"
+	"XMLFileReader.hpp"
+	"XMLRacesReader.hpp"
+	"XMLTilesReader.hpp"
+	"Race.hpp"
+	"Class.hpp"
+
+1321453057 c:\cygwin\home\julian\jrcpp\engine\xml\include\xmlclassesreader.hpp
+	"Class.hpp"
+
+1321453057 c:\cygwin\home\julian\jrcpp\engine\xml\include\xmlfilereader.hpp
+	<string>
+	<boost/shared_ptr.hpp>
+	"XMLDataStructures.hpp"
+
+1322833861 c:\cygwin\home\julian\jrcpp\engine\xml\include\xmlracesreader.hpp
+	"Race.hpp"
+	"XMLDataStructures.hpp"
+
+1322881698 c:\cygwin\home\julian\jrcpp\engine\xml\include\xmltilesreader.hpp
+	"XMLDataStructures.hpp"
+	<vector>
+
+1321453062 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+	<iostream>
+	<xercesc/util/PlatformUtils.hpp>
+	"common.hpp"
+	"global_prototypes.hpp"
+	"NCursesDisplay.hpp"
+	"Display.hpp"
+	"SavageLandsEngine.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
+	"XMLDataStructures.hpp"
+	"XMLFileReader.hpp"
+	"gtest/gtest.h"
+
+1321453052 c:\cygwin\home\julian\jrcpp\include\global_prototypes.hpp
+	<string>
+
+1323438371 c:\cygwin\home\julian\jrcpp\display\include\ncursesdisplay.hpp
+	<ncurses/ncurses.h>
+	<ncurses/menu.h>
+	<stack>
+	"Display.hpp"
+	"NCursesMenuWrapper.hpp"
+	"NCursesPromptProcessor.hpp"
+	"TextComponent.hpp"
+	"OptionsComponent.hpp"
+
+1323007947 c:\cygwin\home\julian\jrcpp\display\include\display.hpp
+	<string>
+	"DisplayMap.hpp"
+	"Prompt.hpp"
+
+1322949434 c:\cygwin\home\julian\jrcpp\display\include\displaymap.hpp
+	<map>
+	"Dimensions.hpp"
+	"common.hpp"
+	"DisplayTile.hpp"
+
+1322931760 c:\cygwin\home\julian\jrcpp\display\include\displaytile.hpp
+	"common.hpp"
+
+1321760342 c:\cygwin\home\julian\jrcpp\engine\menus\include\prompt.hpp
+	<string>
+	<boost/shared_ptr.hpp>
+
+1323438400 c:\cygwin\home\julian\jrcpp\display\include\ncursesmenuwrapper.hpp
+	<ncurses/ncurses.h>
+	<ncurses/menu.h>
+
+1323438426 c:\cygwin\home\julian\jrcpp\display\include\ncursespromptprocessor.hpp
+	<ncurses/ncurses.h>
+	<ncurses/menu.h>
+	"Prompt.hpp"
+
+1321500786 c:\cygwin\home\julian\jrcpp\engine\menus\include\textcomponent.hpp
+	<string>
+	"MenuComponent.hpp"
+
+1321500543 c:\cygwin\home\julian\jrcpp\engine\menus\include\menucomponent.hpp
+	<string>
+
+1321622654 c:\cygwin\home\julian\jrcpp\engine\menus\include\optionscomponent.hpp
+	<vector>
+	<string>
+	"MenuComponent.hpp"
+
+1322931821 source:c:\cygwin\home\julian\jrcpp\display\source\display.cpp
+	"Display.hpp"
+	"unit_tests/Display_test.cpp"
+
+1322927692 c:\cygwin\home\julian\jrcpp\display\source\unit_tests\display_test.cpp
+	"gtest/gtest.h"
+
+1322949450 source:c:\cygwin\home\julian\jrcpp\display\source\displaymap.cpp
+	"DisplayMap.hpp"
+
+1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
+	"DisplayTile.hpp"
+
+1323011689 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+	<iostream>
+	<sstream>
+	<boost/foreach.hpp>
+	"Colours.hpp"
+	"Conversion.hpp"
+	"NCursesDisplay.hpp"
+	"Menu.hpp"
+	"OptionsComponent.hpp"
+
+1321500637 c:\cygwin\home\julian\jrcpp\engine\menus\include\menu.hpp
+	<string>
+	<vector>
+	"TextComponent.hpp"
+	"Prompt.hpp"
+	"Display.hpp"
+
+1321714082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesmenuwrapper.cpp
+	"NCursesMenuWrapper.hpp"
+
+1321762754 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
+	"NCursesConstants.hpp"
+	"NCursesPromptProcessor.hpp"
+
+1321761685 c:\cygwin\home\julian\jrcpp\display\include\ncursesconstants.hpp
+
+1321803103 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesutils.cpp
+	"NCursesUtils.hpp"
+
+1321803135 c:\cygwin\home\julian\jrcpp\display\include\ncursesutils.hpp
+	<string>
+
+1321453057 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
+	<vector>
+	<boost/foreach.hpp>
+	"Resistances.hpp"
+	"XMLClassesReader.hpp"
+	"XMLDataStructures.hpp"
+	"XMLResistancesReader.hpp"
+	"XMLSkillsReaders.hpp"
+
+1321453057 c:\cygwin\home\julian\jrcpp\engine\xml\include\xmlresistancesreader.hpp
+
+1321453057 c:\cygwin\home\julian\jrcpp\engine\xml\include\xmlskillsreaders.hpp
+	"Skills.hpp"
+	"XMLDataStructures.hpp"
+
+1322882934 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconfigurationreader.cpp
+	"XMLConfigurationReader.hpp"
+	<iostream>
+	<vector>
+	"DisplayTile.hpp"
+
+1321453057 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmldatastructures.cpp
+	"XMLDataStructures.hpp"
+	"Conversion.hpp"
+	<iostream>
+
+1323438606 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlfilereader.cpp
+	"XMLFileReader.hpp"
+	<iostream>
+	<stdexcept>
+	<sys/types.h>
+	<sys/stat.h>
+	<unistd.h>
+	<errno.h>
+
+1321718495 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
+	<boost/foreach.hpp>
+	"Skills.hpp"
+	"StringTable.hpp"
+	"XMLRacesReader.hpp"
+	"XMLDataStructures.hpp"
+	"XMLResistancesReader.hpp"
+	"XMLSkillsReaders.hpp"
+
+1321453057 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlresistancesreader.cpp
+	"Resistances.hpp"
+	"XMLDataStructures.hpp"
+	"XMLResistancesReader.hpp"
+
+1321453057 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlskillsreaders.cpp
+	"XMLSkillsReaders.hpp"
+
+1322228790 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\resistancescalculator.cpp
+	"Resistances.hpp"
+	"ResistancesCalculator.hpp"
+	"unit_tests/ResistancesCalculator_test.cpp"
+
+1322229337 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\resistancescalculator_test.cpp
+	"gtest/gtest.h"
+
+1322228779 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\skillscalculator.cpp
+	"Creature.hpp"
+	"Skills.hpp"
+	"SkillsCalculator.hpp"
+	"unit_tests/SkillsCalculator_test.cpp"
+
+1322268339 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\skillscalculator_test.cpp
+	"gtest/gtest.h"
+
+1323488737 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmltilesreader.cpp
+	"XMLTilesReader.hpp"
+	"DisplayTile.hpp"
+
+1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\caverngenerator.cpp
+	"CavernGenerator.hpp"
+	"CellularAutomataGenerator.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+	<iostream>
+	<set>
+
+1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\cellularautomatagenerator.cpp
+	"CellularAutomataGenerator.hpp"
+	"RNG.hpp"
+	"MapUtils.hpp"
+	"unit_tests/CellularAutomataGenerator_test.cpp"
+
+1321470205 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\cellularautomatagenerator_test.cpp
+	"gtest/gtest.h"
+	<algorithm>
+
+1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
+	"DungeonGenerator.hpp"
+	"AllTiles.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+
+1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\fieldgenerator.cpp
+	<iostream>
+	"TileGenerator.hpp"
+	"FieldGenerator.hpp"
+	"Dimensions.hpp"
+	"tiles.hpp"
+	"RNG.hpp"
+
+1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\forestgenerator.cpp
+	"ForestGenerator.hpp"
+	"SpringsGenerator.hpp"
+	"StreamGenerator.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+	"Directions.hpp"
+	<vector>
+
+1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
+	"TileGenerator.hpp"
+	"Generator.hpp"
+	"Map.hpp"
+
+1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\keepruinsgenerator.cpp
+	"KeepRuinsGenerator.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+
+1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\marshgenerator.cpp
+	"AllTiles.hpp"
+	"MarshGenerator.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+
+1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\roadgenerator.cpp
+	"RoadGenerator.hpp"
+	"TileGenerator.hpp"
+
+1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\ruinsgenerator.cpp
+	"RuinsGenerator.hpp"
+	"SettlementRuinsGenerator.hpp"
+	"KeepRuinsGenerator.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+
+1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementgenerator.cpp
+	"SettlementGenerator.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+
+1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementruinsgenerator.cpp
+	"SettlementRuinsGenerator.hpp"
+
+1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\spiraldungeongenerator.cpp
+	"SpiralDungeonGenerator.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+
+1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\springsgenerator.cpp
+	"SpringsGenerator.hpp"
+	"TileGenerator.hpp"
+	"SpringsTile.hpp"
+	<iostream>
+
+1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\streamgenerator.cpp
+	<boost/math/common_factor.hpp>
+	<iostream>
+	"TileGenerator.hpp"
+	"StreamGenerator.hpp"
+	"Dimensions.hpp"
+	"RNG.hpp"
+
+1322750152 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\tilegenerator.cpp
+	"TileGenerator.hpp"
+	"tiles.hpp"
+	"AllTiles.hpp"
+	"unit_tests/TileGenerator_test.cpp"
+
+1321453060 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
+	"gtest/gtest.h"
+
+1323181472 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+	<vector>
+	"WorldGenerator.hpp"
+	"TileGenerator.hpp"
+	"RNG.hpp"
+	"CellularAutomataGenerator.hpp"
+
+1321830997 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\classselectionscreen.cpp
+	"ClassSelectionScreen.hpp"
+	<string>
+	"RaceSelectionScreen.hpp"
+	"Game.hpp"
+	"OptionsComponent.hpp"
+	"StringConstants.hpp"
+	"TextComponent.hpp"
+
+1321760403 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\menu.cpp
+	<boost/foreach.hpp>
+	<boost/foreach.hpp>
+	"Menu.hpp"
+
+1321500019 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\menucomponent.cpp
+	"MenuComponent.hpp"
+
+1321500497 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\namingscreen.cpp
+	"NamingScreen.hpp"
+	"StringConstants.hpp"
+
+1321622731 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\optionscomponent.cpp
+	"OptionsComponent.hpp"
+
+1321760323 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\prompt.cpp
+	"Prompt.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
+
+1321718524 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
+	<string>
+	"RaceSelectionScreen.hpp"
+	"Game.hpp"
+	"OptionsComponent.hpp"
+	"StringConstants.hpp"
+	"TextComponent.hpp"
+
+1321500806 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\textcomponent.cpp
+	"TextComponent.hpp"
+
+1321500839 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\welcomescreen.cpp
+	"global_prototypes.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
+	"WelcomeScreen.hpp"
+
+1322318403 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+	"Conversion.hpp"
+	"unit_tests/Conversion_test.cpp"
+
+1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
+	"gtest/gtest.h"
+
+1322574234 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+	"CreatureFactory.hpp"
+	"Game.hpp"
+	"ResistancesCalculator.hpp"
+	"SkillsCalculator.hpp"
+	"RNG.hpp"
+	"unit_tests/CreatureFactory_test.cpp"
+
+1322573907 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\creaturefactory_test.cpp
+	"gtest/gtest.h"
+
+1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\dimensions.cpp
+	"Dimensions.hpp"
+	"unit_tests/Dimensions_test.cpp"
+
+1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
+	"gtest/gtest.h"
+
+1323178670 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+	"Game.hpp"
+	"WorldGenerator.hpp"
+	"MapTranslator.hpp"
+
+1323179858 source:c:\cygwin\home\julian\jrcpp\engine\source\maptranslator.cpp
+	<algorithm>
+	"common.hpp"
+	"Display.hpp"
+	"Game.hpp"
+	"MapTranslator.hpp"
+
+1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+	"MapUtils.hpp"
+	<iostream>
+
+1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\message.cpp
+	"Message.hpp"
+	"unit_tests/Message_test.cpp"
+
+1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
+	"gtest/gtest.h"
+
+1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+	"MessageManager.hpp"
+
+1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\messages.cpp
+	"Messages.hpp"
+	"unit_tests/Messages_test.cpp"
+
+1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\messages_test.cpp
+	"gtest/gtest.h"
+
+1323178496 source:c:\cygwin\home\julian\jrcpp\engine\source\naming.cpp
+	<algorithm>
+	"Naming.hpp"
+	"StringTable.hpp"
+
+1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\rng.cpp
+	<ctime>
+	<algorithm>
+	"RNG.hpp"
+	"unit_tests/RNG_test.cpp"
+
+1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
+	"gtest/gtest.h"
+
+1323178755 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+	"SavageLandsEngine.hpp"
+	"XMLConfigurationReader.hpp"
+	"Class.hpp"
+	"ClassSelectionScreen.hpp"
+	"Conversion.hpp"
+	"Creature.hpp"
+	"CreatureFactory.hpp"
+	"DisplayTile.hpp"
+	"Game.hpp"
+	"NamingScreen.hpp"
+	"Naming.hpp"
+	"RaceSelectionScreen.hpp"
+	"WelcomeScreen.hpp"
+
+1323092044 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+	"StringConstants.hpp"
+
+1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\stringtable.cpp
+	"StringTable.hpp"
+	<boost/tokenizer.hpp>
+	<iostream>
+	<fstream>
+
+1321453062 source:c:\cygwin\home\julian\jrcpp\global_functions.cpp
+	<sstream>
+	"buildinfo.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
+
+1189864956 source:c:\cygwin\home\julian\jrcpp\main.cpp
+	<iostream>
+
+1321453052 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
+	<sstream>
+	"Class.hpp"
+
+1323179118 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+	"Creature.hpp"
+	"unit_tests/Creature_test.cpp"
+
+1321471658 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\creature_test.cpp
+	"gtest/gtest.h"
+
+1322004540 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
+	"Inventory.hpp"
+
+1322004525 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
+	"Item.hpp"
+
+1323180839 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+	"Map.hpp"
+
+1321718404 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
+	<sstream>
+	"Race.hpp"
+	"StringTable.hpp"
+	"unit_tests/Race_test.cpp"
+
+1321453052 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\race_test.cpp
+	"gtest/gtest.h"
+
+1321453052 source:c:\cygwin\home\julian\jrcpp\world\source\resistances.cpp
+	<sstream>
+	"Resistances.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
+
+1322267391 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+	<sstream>
+	<boost/foreach.hpp>
+	"Skills.hpp"
+	"SkillTypes.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
+	"unit_tests/Skills_test.cpp"
+
+1321453052 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\skills_test.cpp
+	"gtest/gtest.h"
+
+1321837508 source:c:\cygwin\home\julian\jrcpp\world\source\statistic.cpp
+	"Statistic.hpp"
+	"unit_tests/Statistic_test.cpp"
+
+1321453052 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\statistic_test.cpp
+	"gtest/gtest.h"
+
+1322405379 source:c:\cygwin\home\julian\jrcpp\world\source\world.cpp
+	"World.hpp"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\beachtile.cpp
+	"BeachTile.hpp"
+	"unit_tests/BeachTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\beachtile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\bushtile.cpp
+	"BushTile.hpp"
+	"unit_tests/BushTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\bushtile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\cairntile.cpp
+	"CairnTile.hpp"
+	"unit_tests/CairnTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\cairntile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\deserttile.cpp
+	"DesertTile.hpp"
+	"unit_tests/DesertTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\deserttile_test.cpp
+	"gtest/gtest.h"
+
+1322749449 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\downstaircasetile.cpp
+	"DownStaircaseTile.hpp"
+	"unit_tests/DownStaircaseTile_test.cpp"
+
+1322749543 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\downstaircasetile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\dungeontile.cpp
+	"DungeonTile.hpp"
+	"unit_tests/DungeonTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\dungeontile_test.cpp
+	"gtest/gtest.h"
+
+1321453053 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\fieldtile.cpp
+	"FieldTile.hpp"
+	"unit_tests/FieldTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\fieldtile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\foresttile.cpp
+	"ForestTile.hpp"
+	"unit_tests/ForestTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\foresttile_test.cpp
+	"gtest/gtest.h"
+
+1321453055 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\gravetile.cpp
+	"GraveTile.hpp"
+	"unit_tests/GraveTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\gravetile_test.cpp
+	"gtest/gtest.h"
+
+1321453055 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\hillstile.cpp
+	"HillsTile.hpp"
+	"unit_tests/HillsTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\hillstile_test.cpp
+	"gtest/gtest.h"
+
+1321453055 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\marshtile.cpp
+	"MarshTile.hpp"
+	"unit_tests/MarshTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\marshtile_test.cpp
+	"gtest/gtest.h"
+
+1321453055 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\mountainstile.cpp
+	"MountainsTile.hpp"
+	"unit_tests/MountainsTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\mountainstile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\reedstile.cpp
+	"ReedsTile.hpp"
+	"unit_tests/ReedsTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\reedstile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\rivertile.cpp
+	"RiverTile.hpp"
+	"unit_tests/RiverTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\rivertile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\roadtile.cpp
+	"RoadTile.hpp"
+	"unit_tests/RoadTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\roadtile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\rocktile.cpp
+	"RockTile.hpp"
+	"unit_tests/RockTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\rocktile_test.cpp
+	"gtest/gtest.h"
+
+1321453055 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\scrubtile.cpp
+	"ScrubTile.hpp"
+	"unit_tests/ScrubTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\scrubtile_test.cpp
+	"gtest/gtest.h"
+
+1321453055 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\seatile.cpp
+	"SeaTile.hpp"
+	"unit_tests/SeaTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\seatile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\shoalstile.cpp
+	"ShoalsTile.hpp"
+	"unit_tests/ShoalsTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\shoalstile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\springstile.cpp
+	"SpringsTile.hpp"
+	"unit_tests/SpringsTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\springstile_test.cpp
+	"gtest/gtest.h"
+
+1322749461 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\staircasetile.cpp
+	"StaircaseTile.hpp"
+
+1322406851 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
+	"Tile.hpp"
+	"unit_tests/Tile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\tile_test.cpp
+	"gtest/gtest.h"
+
+1321453054 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\treetile.cpp
+	"TreeTile.hpp"
+	"unit_tests/TreeTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\treetile_test.cpp
+	"gtest/gtest.h"
+
+1322749425 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\upstaircasetile.cpp
+	"UpStaircaseTile.hpp"
+	"unit_tests/UpStaircaseTile_test.cpp"
+
+1322749525 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\upstaircasetile_test.cpp
+	"gtest/gtest.h"
+
+1321453055 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\weedstile.cpp
+	"WeedsTile.hpp"
+	"unit_tests/WeedsTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\weedstile_test.cpp
+	"gtest/gtest.h"
+
+1321453055 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\wheattile.cpp
+	"WheatTile.hpp"
+	"unit_tests/WheatTile_test.cpp"
+
+1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\wheattile_test.cpp
+	"gtest/gtest.h"
+
