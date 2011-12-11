@@ -23,7 +23,7 @@ class Game
     void set_tile_display_info(const std::vector<DisplayTile>& game_tiles);
     const std::vector<DisplayTile>& get_tile_display_info_ref() const;
 
-
+    CreaturePtr get_current_player() const;
 
     void create_new_world(CreaturePtr creature);
     void go(); // main game loop
@@ -48,6 +48,9 @@ class Game
 
     // The current list of game worlds.
     std::vector<WorldPtr> worlds;
+
+    // The current list of players (one per game world).
+    std::vector<CreaturePtr> players;
 
     // The current world index in the list of worlds.
     uint current_world_ix;

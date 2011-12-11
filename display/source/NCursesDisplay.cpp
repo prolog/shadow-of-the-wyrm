@@ -11,7 +11,7 @@ using namespace std;
 using namespace boost;
 
 NCursesDisplay::NCursesDisplay()
-  : TERMINAL_MAX_ROWS(0), TERMINAL_MAX_COLS(0), can_use_colour(false)
+  : TERMINAL_MAX_ROWS(0), TERMINAL_MAX_COLS(0), FIELD_SPACE(3), can_use_colour(false)
 {
 }
 
@@ -348,4 +348,103 @@ void NCursesDisplay::clear_menu()
 
     menus.pop();
   }
+}
+
+// Display the player data
+void NCursesDisplay::display(const DisplayStatistics& player_stats)
+{
+  string name         = player_stats.get_name();
+
+  string strength     = player_stats.get_strength();
+  string dexterity    = player_stats.get_dexterity();
+  string agility      = player_stats.get_agility();
+  string health       = player_stats.get_health();
+  string intelligence = player_stats.get_intelligence();
+  string willpower    = player_stats.get_willpower();
+  string charisma     = player_stats.get_charisma();
+
+  int PLAYER_SYNOPSIS_START_ROW = TERMINAL_MAX_ROWS - 3;
+  int current_row = PLAYER_SYNOPSIS_START_ROW;
+  int current_col = 0;
+  bool can_print = true;
+
+  if (can_print)
+  {
+    mvprintw(current_row, current_col, name.c_str());
+    can_print = update_synopsis_row_and_column(&current_row, &current_col, name, strength);
+  }
+
+  if (can_print)
+  {
+    mvprintw(current_row, current_col, strength.c_str());
+    can_print = update_synopsis_row_and_column(&current_row, &current_col, strength, dexterity);
+  }
+
+  if (can_print)
+  {
+    mvprintw(current_row, current_col, dexterity.c_str());
+    can_print = update_synopsis_row_and_column(&current_row, &current_col, dexterity, agility);
+  }
+
+  if (can_print)
+  {
+    mvprintw(current_row, current_col, agility.c_str());
+    can_print = update_synopsis_row_and_column(&current_row, &current_col, agility, health);
+  }
+
+  if (can_print)
+  {
+    mvprintw(current_row, current_col, health.c_str());
+    can_print = update_synopsis_row_and_column(&current_row, &current_col, health, intelligence);
+  }
+
+  if (can_print)
+  {
+    mvprintw(current_row, current_col, intelligence.c_str());
+    can_print = update_synopsis_row_and_column(&current_row, &current_col, intelligence, willpower);
+  }
+
+  if (can_print)
+  {
+    mvprintw(current_row, current_col, willpower.c_str());
+    can_print = update_synopsis_row_and_column(&current_row, &current_col, willpower, charisma);
+  }
+
+  if (can_print)
+  {
+    mvprintw(current_row, current_col, charisma.c_str());
+//    can_print = update_synopsis_row_and_column(&current_row, &current_col, charisma, ?????);
+  }
+
+  refresh();
+  getch();
+}
+
+// Update the row/col for the player synopsis.  Return false if we've run out of space
+// and can't print anything else.
+bool NCursesDisplay::update_synopsis_row_and_column(int* row, int* col, const string& previous_field, const string& next_field)
+{
+  bool can_update = true;
+
+  int next_column_end = *col + previous_field.size() + FIELD_SPACE + next_field.size();
+
+  if (next_column_end < TERMINAL_MAX_COLS - 1)
+  {
+    *col = *col + previous_field.size() + FIELD_SPACE;
+  }
+  else
+  {
+    // We've gone over max cols.  Fine - but can we increment to the next row in the display?
+    if (*row < TERMINAL_MAX_ROWS-2)
+    {
+      *col = 0;
+      *row = *row + 1;
+    }
+    else
+    {
+      can_update = false;
+    }
+  }
+
+  return can_update;
 }

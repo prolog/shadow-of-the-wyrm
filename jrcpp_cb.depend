@@ -272,7 +272,7 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1323011689 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1323633020 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<boost/foreach.hpp>
@@ -559,10 +559,12 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1323178670 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1323630183 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"Game.hpp"
+	"CreatureTranslator.hpp"
 	"WorldGenerator.hpp"
 	"MapTranslator.hpp"
+	"DisplayStatistics.hpp"
 
 1323179858 source:c:\cygwin\home\julian\jrcpp\engine\source\maptranslator.cpp
 	<algorithm>
@@ -873,4 +875,15 @@
 
 1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\wheattile_test.cpp
 	"gtest/gtest.h"
+
+1323529211 source:c:\cygwin\home\julian\jrcpp\display\source\displaystatistics.cpp
+	"DisplayStatistics.hpp"
+
+1323630333 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturetranslator.cpp
+	"Creature.hpp"
+	"Conversion.hpp"
+	"DisplayStatistics.hpp"
+	"CreatureTranslator.hpp"
+	"StringTable.hpp"
+	"StringConstants.hpp"
 

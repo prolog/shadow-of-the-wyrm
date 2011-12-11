@@ -17,6 +17,7 @@ class NCursesDisplay : public Display
 
     void clear_display();
 	  void draw(const DisplayMap& current_map);
+	  void display(const DisplayStatistics& player_stats);
     MapDisplayArea get_map_display_area();
 	  std::string display_menu(const Menu& current_menu);
 
@@ -42,8 +43,13 @@ class NCursesDisplay : public Display
     WINDOW* create_menu(int height, int width, int start_row, int start_col);
     void destroy_menu(WINDOW *menu);
 
+    // Update the row/column position for the synopsis details.  Return false if we can't do any more updates (have run off the screen).
+    // Though, ideally that will never happen.
+    bool update_synopsis_row_and_column(int* row, int* column, const std::string& previous_printed_field, const std::string& next_field);
+
     int TERMINAL_MAX_ROWS;
     int TERMINAL_MAX_COLS;
+    int FIELD_SPACE;
 
     int MAP_START_ROW;
     int MAP_START_COL;

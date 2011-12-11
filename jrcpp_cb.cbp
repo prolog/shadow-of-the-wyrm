@@ -8,7 +8,8 @@
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin\Debug\jrcpp_cb" prefix_auto="1" extension_auto="1" />
+				<Option output="jrcpp_cb" prefix_auto="1" extension_auto="1" />
+				<Option working_dir="C:\cygwin\home\Julian\jrcpp" />
 				<Option object_output="obj\Debug\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -33,6 +34,11 @@
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+					<Add library="..\gtest\gtest-1.6.0\lib\libgtest.a" />
+					<Add library="..\gtest\gtest-1.6.0\lib\libgtest_main.a" />
+					<Add library="..\..\..\..\MinGW\lib\libxerces-c.a" />
+					<Add library="..\..\..\..\MinGW\lib\libmenu.a" />
+					<Add library="..\..\..\..\MinGW\lib\libncurses.a" />
 				</Linker>
 			</Target>
 		</Build>
@@ -47,6 +53,7 @@
 		<Unit filename="SavageLands.cpp" />
 		<Unit filename="display\include\Display.hpp" />
 		<Unit filename="display\include\DisplayMap.hpp" />
+		<Unit filename="display\include\DisplayStatistics.hpp" />
 		<Unit filename="display\include\DisplayTile.hpp" />
 		<Unit filename="display\include\NCursesConstants.hpp" />
 		<Unit filename="display\include\NCursesDisplay.hpp" />
@@ -55,6 +62,7 @@
 		<Unit filename="display\include\NCursesUtils.hpp" />
 		<Unit filename="display\source\Display.cpp" />
 		<Unit filename="display\source\DisplayMap.cpp" />
+		<Unit filename="display\source\DisplayStatistics.cpp" />
 		<Unit filename="display\source\DisplayTile.cpp" />
 		<Unit filename="display\source\NCursesDisplay.cpp" />
 		<Unit filename="display\source\NCursesMenuWrapper.cpp" />
@@ -131,6 +139,7 @@
 		</Unit>
 		<Unit filename="engine\include\Conversion.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
+		<Unit filename="engine\include\CreatureTranslator.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
 		<Unit filename="engine\include\Directions.hpp" />
 		<Unit filename="engine\include\Game.hpp" />
@@ -164,6 +173,7 @@
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
 		<Unit filename="engine\source\Conversion.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
+		<Unit filename="engine\source\CreatureTranslator.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
 		<Unit filename="engine\source\Game.cpp" />
 		<Unit filename="engine\source\MapTranslator.cpp" />
@@ -199,6 +209,9 @@
 		<Unit filename="include\buildinfo.hpp" />
 		<Unit filename="include\common.hpp" />
 		<Unit filename="include\global_prototypes.hpp" />
+		<Unit filename="main.cpp">
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="world\include\Class.hpp" />
 		<Unit filename="world\include\Creature.hpp" />
 		<Unit filename="world\include\CreatureFeatures.hpp" />

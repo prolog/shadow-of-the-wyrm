@@ -8,6 +8,7 @@
 #pragma once
 #include <string>
 #include "DisplayMap.hpp"
+#include "DisplayStatistics.hpp"
 #include "Prompt.hpp"
 
 class Menu;
@@ -38,9 +39,13 @@ class Display
     // Clears the message buffer, map, and info display.
     virtual void clear_display() = 0;
 
-    // Draws the map, and later will also display player info.
+    // Draws the map
 	  virtual void draw(const DisplayMap& current_map) = 0;
 
+	  // Displays the player info
+	  virtual void display(const DisplayStatistics& player_stats) = 0;
+
+    // Used by the engine to query the display size, so the DisplayMap can be created accordingly.
     virtual MapDisplayArea get_map_display_area() = 0;
 
 	  // Return result is the response to whatever prompt is displayed
