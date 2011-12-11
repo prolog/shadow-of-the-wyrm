@@ -1,25 +1,55 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="SavageLands.cpp" open="1" top="0" tabpos="5">
+	<File name="SavageLands.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1909" topLine="74" />
 	</File>
-	<File name="display\include\DisplayMap.hpp" open="1" top="0" tabpos="2">
+	<File name="display\include\Display.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="1063" topLine="33" />
+	</File>
+	<File name="display\include\DisplayMap.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="28" topLine="0" />
 	</File>
-	<File name="display\source\Display.cpp" open="1" top="0" tabpos="1">
+	<File name="display\include\DisplayStatistics.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="1420" topLine="17" />
+	</File>
+	<File name="display\include\NCursesDisplay.hpp" open="1" top="0" tabpos="6">
+		<Cursor position="179" topLine="0" />
+	</File>
+	<File name="display\source\Display.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="8083" topLine="306" />
+	<File name="display\source\DisplayStatistics.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="688" topLine="19" />
+	</File>
+	<File name="display\source\NCursesDisplay.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="8996" topLine="343" />
 	</File>
 	<File name="display\source\unit_tests\Display_test.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="86" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLTilesReader.cpp" open="1" top="0" tabpos="4">
+	<File name="engine\XML\source\XMLTilesReader.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="engine\source\SavageLandsEngine.cpp" open="1" top="1" tabpos="7">
-		<Cursor position="1283" topLine="36" />
+	<File name="engine\include\Conversion.hpp" open="1" top="0" tabpos="9">
+		<Cursor position="116" topLine="18" />
+	</File>
+	<File name="engine\source\Conversion.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="137" topLine="0" />
+	</File>
+	<File name="engine\source\CreatureTranslator.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="421" topLine="12" />
+	</File>
+	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="2144" topLine="89" />
+	</File>
+	<File name="engine\source\SavageLandsEngine.cpp" open="1" top="0" tabpos="12">
+		<Cursor position="2661" topLine="72" />
+	</File>
+	<File name="main.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="59" topLine="0" />
+	</File>
+	<File name="world\include\Statistic.hpp" open="1" top="0" tabpos="10">
+		<Cursor position="0" topLine="0" />
 	</File>
 </CodeBlocks_layout_file>

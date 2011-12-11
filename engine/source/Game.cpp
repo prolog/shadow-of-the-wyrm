@@ -1,6 +1,8 @@
 #include "Game.hpp"
+#include "CreatureTranslator.hpp"
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
+#include "DisplayStatistics.hpp"
 
 using namespace std;
 
@@ -64,6 +66,12 @@ const vector<DisplayTile>& Game::get_tile_display_info_ref() const
   return tile_info;
 }
 
+CreaturePtr Game::get_current_player() const
+{
+  CreaturePtr current_player = players.at(current_world_ix);
+  return current_player;
+}
+
 void Game::create_new_world(CreaturePtr creature) // pass in the player
 {
   WorldGenerator world_generator;
@@ -71,6 +79,8 @@ void Game::create_new_world(CreaturePtr creature) // pass in the player
   WorldPtr world(new World(current_world));
   worlds.push_back(world);
   current_world_ix = (worlds.size() - 1);
+
+  players.push_back(creature);
 
   // JCD FIXME: Refactor
   TilePtr tile = current_world->get_tile_at_location(WorldMapLocationTextKeys::STARTING_LOCATION);
@@ -104,5 +114,9 @@ void Game::go()
 
   DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
   display->draw(display_map);
+
+  CreaturePtr current_player = get_current_player();
+  DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
+  display->display(display_stats);
   // }
 }
