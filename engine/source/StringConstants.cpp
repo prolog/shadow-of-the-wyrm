@@ -56,10 +56,10 @@ string TextKeys::WILLPOWER_ABRV    = "WILLPOWER_ABRV";
 string TextKeys::CHARISMA          = "CHARISMA";
 string TextKeys::CHARISMA_ABRV     = "CHARISMA_ABRV";
 
-string TextKeys::BRAVERY           = "BRAVERY";
-string TextKeys::BRAVERY_ABRV      = "BRAVERY_ABRV";
-string TextKeys::PIETY             = "PIETY";
-string TextKeys::PIETY_ABRV        = "PIETY_ABRV";
+string TextKeys::VALOUR            = "VALOUR";
+string TextKeys::VALOUR_ABRV       = "VALOUR_ABRV";
+string TextKeys::SPIRIT            = "SPIRIT";
+string TextKeys::SPIRIT_ABRV       = "SPIRIT_ABRV";
 string TextKeys::SPEED             = "SPEED";
 string TextKeys::SPEED_ABRV        = "SPEED_ABRV";
 
@@ -72,6 +72,9 @@ string TextKeys::EVADE             = "EVADE";
 string TextKeys::EVADE_ABRV        = "EVADE_ABRV";
 string TextKeys::SOAK              = "SOAK";
 string TextKeys::SOAK_ABRV         = "SOAK_ABRV";
+
+string TextKeys::LEVEL             = "LEVEL";
+string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
 
 // SkillTextKeys
 // General (NWP)

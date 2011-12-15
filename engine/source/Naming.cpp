@@ -27,3 +27,8 @@ string Naming::clean_name(const string& name)
 
   return new_name;
 }
+
+uint Naming::get_max_name_size()
+{
+  return MAXIMUM_NAME_SIZE;
+}

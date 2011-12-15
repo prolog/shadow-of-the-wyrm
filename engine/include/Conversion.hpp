@@ -2,6 +2,7 @@
 #include <map>
 #include <sstream>
 #include <string>
+#include "common.hpp"
 
 class Convert
 {
@@ -10,6 +11,7 @@ class Convert
     friend class Integer;
 
   protected:
+    Convert();
     template <class T> static T from_string(const std::string& str);
     template <class T> static std::string to_string(const T& convert);
 };
@@ -20,6 +22,9 @@ class String
     static bool to_bool(const std::string& str);
     static int to_int(const std::string& str);
     static float to_float(const std::string& str);
+    static std::string add_trailing_spaces(const std::string& str, const uint max_size);
+  protected:
+    String();
 };
 
 class Integer
@@ -51,5 +56,8 @@ class Integer
 
       return key;
     }
+
+  protected:
+    Integer();
 };
 

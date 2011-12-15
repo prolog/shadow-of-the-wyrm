@@ -6,7 +6,7 @@ class Naming
 {
   public:
     static std::string clean_name(const std::string& name);
-
+    static uint get_max_name_size();
   protected:
     Naming();
 

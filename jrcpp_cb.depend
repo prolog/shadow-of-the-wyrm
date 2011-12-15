@@ -272,7 +272,7 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1323633020 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1323957189 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<boost/foreach.hpp>
@@ -292,7 +292,7 @@
 1321714082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesmenuwrapper.cpp
 	"NCursesMenuWrapper.hpp"
 
-1321762754 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
+1323871038 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
 	"NCursesConstants.hpp"
 	"NCursesPromptProcessor.hpp"
 
@@ -534,14 +534,14 @@
 	"StringTable.hpp"
 	"WelcomeScreen.hpp"
 
-1322318403 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+1323784549 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
 	"Conversion.hpp"
 	"unit_tests/Conversion_test.cpp"
 
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
-1322574234 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1323868976 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	"CreatureFactory.hpp"
 	"Game.hpp"
 	"ResistancesCalculator.hpp"
@@ -559,12 +559,13 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1323630183 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1323957317 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"Game.hpp"
 	"CreatureTranslator.hpp"
 	"WorldGenerator.hpp"
 	"MapTranslator.hpp"
 	"DisplayStatistics.hpp"
+	<ncurses.h>
 
 1323179858 source:c:\cygwin\home\julian\jrcpp\engine\source\maptranslator.cpp
 	<algorithm>
@@ -584,7 +585,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1323905318 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	"MessageManager.hpp"
 
 1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\messages.cpp
@@ -594,7 +595,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\messages_test.cpp
 	"gtest/gtest.h"
 
-1323178496 source:c:\cygwin\home\julian\jrcpp\engine\source\naming.cpp
+1323784767 source:c:\cygwin\home\julian\jrcpp\engine\source\naming.cpp
 	<algorithm>
 	"Naming.hpp"
 	"StringTable.hpp"
@@ -608,7 +609,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1323178755 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1323905268 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -618,12 +619,13 @@
 	"CreatureFactory.hpp"
 	"DisplayTile.hpp"
 	"Game.hpp"
+	"MessageManager.hpp"
 	"NamingScreen.hpp"
 	"Naming.hpp"
 	"RaceSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1323092044 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1323869037 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	"StringConstants.hpp"
 
 1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\stringtable.cpp
@@ -645,7 +647,7 @@
 	<sstream>
 	"Class.hpp"
 
-1323179118 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1323870343 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"unit_tests/Creature_test.cpp"
 
@@ -876,14 +878,16 @@
 1321453054 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\wheattile_test.cpp
 	"gtest/gtest.h"
 
-1323529211 source:c:\cygwin\home\julian\jrcpp\display\source\displaystatistics.cpp
+1323869381 source:c:\cygwin\home\julian\jrcpp\display\source\displaystatistics.cpp
 	"DisplayStatistics.hpp"
 
-1323630333 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturetranslator.cpp
+1323956923 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturetranslator.cpp
 	"Creature.hpp"
 	"Conversion.hpp"
 	"DisplayStatistics.hpp"
 	"CreatureTranslator.hpp"
+	"Game.hpp"
+	"Naming.hpp"
 	"StringTable.hpp"
 	"StringConstants.hpp"
 

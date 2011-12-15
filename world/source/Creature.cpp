@@ -11,6 +11,8 @@ Creature::Creature()
 , colour(COLOUR_BLACK)
 // Everything else is a string, Statistic, etc.
 {
+  set_evade(0);
+  set_soak (0);
 }
 
 void Creature::set_is_player(const bool player)
@@ -53,6 +55,26 @@ void Creature::set_size(const CreatureSize& new_size)
 CreatureSize Creature::get_size() const
 {
   return size;
+}
+
+void Creature::set_race_id(const string& new_race_id)
+{
+  race_id = new_race_id;
+}
+
+string Creature::get_race_id() const
+{
+  return race_id;
+}
+
+void Creature::set_class_id(const string& new_class_id)
+{
+  class_id = new_class_id;
+}
+
+string Creature::get_class_id() const
+{
+  return class_id;
 }
 
 void Creature::set_strength(const Statistic& new_strength)
@@ -268,6 +290,16 @@ void Creature::set_colour(const Colour new_colour)
 Colour Creature::get_colour() const
 {
   return colour;
+}
+
+void Creature::set_level(const Statistic& new_level)
+{
+  level = new_level;
+}
+
+Statistic Creature::get_level() const
+{
+  return level;
 }
 
 #ifdef UNIT_TESTS

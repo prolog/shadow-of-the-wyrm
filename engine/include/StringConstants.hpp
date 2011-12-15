@@ -58,10 +58,10 @@ class TextKeys
     static std::string CHARISMA;
     static std::string CHARISMA_ABRV;
 
-    static std::string BRAVERY;
-    static std::string BRAVERY_ABRV;
-    static std::string PIETY;
-    static std::string PIETY_ABRV;
+    static std::string VALOUR;
+    static std::string VALOUR_ABRV;
+    static std::string SPIRIT;
+    static std::string SPIRIT_ABRV;
     static std::string SPEED;
     static std::string SPEED_ABRV;
 
@@ -74,6 +74,9 @@ class TextKeys
     static std::string EVADE_ABRV;
     static std::string SOAK;
     static std::string SOAK_ABRV;
+
+    static std::string LEVEL;
+    static std::string LEVEL_ABRV;
 };
 
 class SkillTextKeys

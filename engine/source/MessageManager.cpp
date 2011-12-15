@@ -1,5 +1,26 @@
 #include "MessageManager.hpp"
 
+MessageManager* MessageManager::manager_instance = NULL;
+
+MessageManager::~MessageManager()
+{
+}
+
+/*
+ *********************************************************************
+
+  Get the singleton instance.
+
+ *********************************************************************/
+MessageManager* MessageManager::get_instance()
+{
+  if (manager_instance == NULL)
+  {
+    manager_instance = new MessageManager();
+  }
+
+  return manager_instance;
+}
 /*
  *********************************************************************
 
@@ -40,4 +61,9 @@ Messages MessageManager::get_unread_messages_and_mark_as_read()
 	Messages unread_messages = get_unread_messages();
 	unread.clear();
 	return unread_messages;
+}
+
+void MessageManager::set_display(DisplayPtr new_display)
+{
+  user_display = new_display;
 }
