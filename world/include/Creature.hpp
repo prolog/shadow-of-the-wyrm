@@ -30,6 +30,12 @@ class Creature
     void set_size(const CreatureSize& new_size);
     CreatureSize get_size() const;
 
+    // Set/Get race and class identifiers
+    void set_race_id(const std::string& new_race_id);
+    std::string get_race_id() const;
+
+    void set_class_id(const std::string& new_class_id);
+    std::string get_class_id() const;
 
     // Set/Get physical stats.
     // JCD FIXME: THESE WILL NEED TO BE UPDATED TO RETURN REFERENCES SO WE CAN UPDATE
@@ -106,6 +112,10 @@ class Creature
     void set_colour(const Colour new_colour);
     Colour get_colour() const;
 
+    // Level info
+    void set_level(const Statistic& level);
+    Statistic get_level() const;
+
   protected:
     bool is_player;
 
@@ -115,8 +125,8 @@ class Creature
     CreatureSize size;
 
     // Race and class.  Maybe make this an ID instead?
-    RacePtr race;
-    ClassPtr character_class;
+    std::string race_id;
+    std::string class_id;
 
     // Physical Statistics
     Statistic strength;
@@ -154,6 +164,9 @@ class Creature
     // Basic creature info used for the display
     uchar symbol;
     Colour colour;
+
+    // Level information
+    Statistic level;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

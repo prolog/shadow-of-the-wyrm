@@ -9,18 +9,27 @@ DisplayStatistics::DisplayStatistics()
 DisplayStatistics DisplayStatistics::create
 (
   const string& new_name,
+  const string& new_synopsis,
   const string& new_strength,
   const string& new_dexterity,
   const string& new_agility,
   const string& new_health,
   const string& new_intelligence,
   const string& new_willpower,
-  const string& new_charisma
+  const string& new_charisma,
+  const string& new_valour,
+  const string& new_spirit,
+  const string& new_speed,
+  const string& new_level,
+  const string& new_defence,
+  const string& new_hit_points,
+  const string& new_arcana_points
 )
 {
   DisplayStatistics ds;
 
   ds.set_name(new_name);
+  ds.set_synopsis(new_synopsis);
   ds.set_strength(new_strength);
   ds.set_dexterity(new_dexterity);
   ds.set_agility(new_agility);
@@ -28,6 +37,13 @@ DisplayStatistics DisplayStatistics::create
   ds.set_intelligence(new_intelligence);
   ds.set_willpower(new_willpower);
   ds.set_charisma(new_charisma);
+  ds.set_valour(new_valour);
+  ds.set_spirit(new_spirit);
+  ds.set_speed(new_speed);
+  ds.set_level(new_level);
+  ds.set_defence(new_defence);
+  ds.set_hit_points(new_hit_points);
+  ds.set_arcana_points(new_arcana_points);
 
   return ds;
 }
@@ -40,6 +56,16 @@ void DisplayStatistics::set_name(const string& new_name)
 string DisplayStatistics::get_name() const
 {
   return name;
+}
+
+void DisplayStatistics::set_synopsis(const string& new_synopsis)
+{
+  synopsis = new_synopsis;
+}
+
+string DisplayStatistics::get_synopsis() const
+{
+  return synopsis;
 }
 
 void DisplayStatistics::set_strength(const string& new_strength)
@@ -110,4 +136,74 @@ void DisplayStatistics::set_charisma(const string& new_charisma)
 string DisplayStatistics::get_charisma() const
 {
   return charisma;
+}
+
+void DisplayStatistics::set_valour(const string& new_valour)
+{
+  valour = new_valour;
+}
+
+string DisplayStatistics::get_valour() const
+{
+  return valour;
+}
+
+void DisplayStatistics::set_spirit(const string& new_spirit)
+{
+  spirit = new_spirit;
+}
+
+string DisplayStatistics::get_spirit() const
+{
+  return spirit;
+}
+
+void DisplayStatistics::set_speed(const string& new_speed)
+{
+  speed = new_speed;
+}
+
+string DisplayStatistics::get_speed() const
+{
+  return speed;
+}
+
+void DisplayStatistics::set_level(const string& new_level)
+{
+  level = new_level;
+}
+
+string DisplayStatistics::get_level() const
+{
+  return level;
+}
+
+void DisplayStatistics::set_defence(const string& new_defence)
+{
+  defence = new_defence;
+}
+
+string DisplayStatistics::get_defence() const
+{
+  return defence;
+}
+
+void DisplayStatistics::set_hit_points(const string& new_hit_points)
+{
+  hit_points = new_hit_points;
+}
+
+string DisplayStatistics::get_hit_points() const
+{
+  return hit_points;
+}
+
+void DisplayStatistics::set_arcana_points(const string& new_arcana_points)
+{
+  arcana_points = new_arcana_points;
+}
+
+string DisplayStatistics::get_arcana_points() const
+{
+  return arcana_points;
 }

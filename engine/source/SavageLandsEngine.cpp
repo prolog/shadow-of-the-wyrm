@@ -7,6 +7,7 @@
 #include "CreatureFactory.hpp"
 #include "DisplayTile.hpp"
 #include "Game.hpp"
+#include "MessageManager.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
 #include "RaceSelectionScreen.hpp"
@@ -37,11 +38,18 @@ SavageLandsEngine::SavageLandsEngine()
 SavageLandsEngine::~SavageLandsEngine()
 {
   Game* game_instance = Game::get_instance();
+  MessageManager* manager_instance = MessageManager::get_instance();
 
   if (game_instance)
   {
     delete game_instance;
     game_instance = NULL;
+  }
+
+  if (manager_instance)
+  {
+    delete manager_instance;
+    manager_instance = NULL;
   }
 }
 
@@ -51,9 +59,12 @@ void SavageLandsEngine::start()
   XMLConfigurationReader reader("data/SavageLands.xml");
 
   Game* game = Game::get_instance();
+  MessageManager* manager = MessageManager::get_instance();
 
-  if (game)
+  if (game && manager)
   {
+    manager->set_display(display);
+
     {
       // Read the races and classes from the configuration file.
       RaceMap races = reader.get_races();

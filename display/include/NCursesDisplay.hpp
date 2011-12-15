@@ -2,6 +2,7 @@
 #include <ncurses/ncurses.h>
 #include <ncurses/menu.h>
 #include <stack>
+#include <vector>
 #include "Display.hpp"
 #include "NCursesMenuWrapper.hpp"
 #include "NCursesPromptProcessor.hpp"
@@ -43,9 +44,13 @@ class NCursesDisplay : public Display
     WINDOW* create_menu(int height, int width, int start_row, int start_col);
     void destroy_menu(WINDOW *menu);
 
+    // Print the current display statistic at the specified row/column, unless we're in a different row than the initial one, and therefore
+    // should line up the column with the next-available, previously-used column from the previous row.
+    bool print_display_statistic_and_update_row_and_column(const int initial_row, int* current_row, int* current_col, const std::string& stat, const std::string& next_stat, std::vector<int>& previous_cols_used);
+
     // Update the row/column position for the synopsis details.  Return false if we can't do any more updates (have run off the screen).
     // Though, ideally that will never happen.
-    bool update_synopsis_row_and_column(int* row, int* column, const std::string& previous_printed_field, const std::string& next_field);
+    bool update_synopsis_row_and_column(const int initial_row, int* row, int* column, const std::string& previous_printed_field, const std::string& next_field, std::vector<int>& cols_used);
 
     int TERMINAL_MAX_ROWS;
     int TERMINAL_MAX_COLS;

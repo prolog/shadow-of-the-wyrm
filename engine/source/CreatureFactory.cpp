@@ -20,6 +20,9 @@ CreaturePtr CreatureFactory::create_by_race_and_class(const string& race_id, con
   Creature creature;
 
   creature.set_name(creature_name);
+  creature.set_race_id(race_id);
+  creature.set_class_id(class_id);
+  creature.set_level(1);
 
   Game* game = Game::get_instance();
 

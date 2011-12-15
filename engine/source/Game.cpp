@@ -4,6 +4,10 @@
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
 
+// JCD FIXME hack!
+#include <ncurses.h>
+// JCD FIXME
+
 using namespace std;
 
 Game* Game::game_instance = NULL;
@@ -104,19 +108,24 @@ void Game::create_new_world(CreaturePtr creature) // pass in the player
 
 void Game::go()
 {
-  // Main game loop goes here...
-  // while(keep_playing)
-  // {
-  WorldPtr current_world = worlds.at(current_world_ix);
-  current_map = current_world->get_world();
+  bool keep_playing = true;
 
-  MapDisplayArea display_area = display->get_map_display_area();
+  // Main game loop.
+  while(keep_playing)
+  {
+    WorldPtr current_world = worlds.at(current_world_ix);
+    current_map = current_world->get_world();
 
-  DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
-  display->draw(display_map);
+    MapDisplayArea display_area = display->get_map_display_area();
 
-  CreaturePtr current_player = get_current_player();
-  DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
-  display->display(display_stats);
-  // }
+    DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
+    display->draw(display_map);
+
+    CreaturePtr current_player = get_current_player();
+    DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
+    display->display(display_stats);
+
+    // FIXME: Ncurses specific, and horrifying.
+    keep_playing = (getch() != 'q');
+  }
 }

@@ -2,6 +2,8 @@
 #include "Conversion.hpp"
 #include "DisplayStatistics.hpp"
 #include "CreatureTranslator.hpp"
+#include "Game.hpp"
+#include "Naming.hpp"
 #include "StringTable.hpp"
 #include "StringConstants.hpp"
 
@@ -16,23 +18,44 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
 {
   DisplayStatistics ds;
 
-  string name         = get_display_name(creature);
-  string strength     = get_display_strength(creature);
-  string dexterity    = get_display_dexterity(creature);
-  string agility      = get_display_agility(creature);
-  string health       = get_display_health(creature);
-  string intelligence = get_display_intelligence(creature);
-  string willpower    = get_display_willpower(creature);
-  string charisma     = get_display_charisma(creature);
+  string name          = get_display_name(creature);
+  string synopsis      = get_display_synopsis(creature);
+
+  string strength      = get_display_strength(creature);
+  string dexterity     = get_display_dexterity(creature);
+  string agility       = get_display_agility(creature);
+  string health        = get_display_health(creature);
+  string intelligence  = get_display_intelligence(creature);
+  string willpower     = get_display_willpower(creature);
+  string charisma      = get_display_charisma(creature);
+
+  string valour        = get_display_valour(creature);
+  string spirit        = get_display_spirit(creature);
+  string speed         = get_display_speed(creature);
+
+  string level         = get_display_level(creature);
+  string defence       = get_display_defence(creature);
+
+  string hit_points    = get_display_hit_points(creature);
+  string arcana_points = get_display_arcana_points(creature);
 
   ds = DisplayStatistics::create(name,
+                                 synopsis,
                                  strength,
                                  dexterity,
                                  agility,
                                  health,
                                  intelligence,
                                  willpower,
-                                 charisma);
+                                 charisma,
+                                 valour,
+                                 spirit,
+                                 speed,
+                                 level,
+                                 defence,
+                                 hit_points,
+                                 arcana_points
+                                 );
 
   return ds;
 }
@@ -40,47 +63,124 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
 string CreatureTranslator::get_display_name(const CreaturePtr& c)
 {
   string name = c->get_name();
+  name = String::add_trailing_spaces(name, Naming::get_max_name_size());
+
   return name;
+}
+
+string CreatureTranslator::get_display_synopsis(const CreaturePtr& c)
+{
+  string synopsis;
+  Game* game = Game::get_instance();
+
+  if (game)
+  {
+    string race_id   = c->get_race_id();
+    string class_id  = c->get_class_id();
+    RaceMap races    = game->get_races_ref();
+    ClassMap classes = game->get_classes_ref();
+
+    RacePtr race = races[race_id];
+    ClassPtr current_class = classes[class_id];
+
+    if (race && current_class)
+    {
+      synopsis = StringTable::get(race->get_race_abbreviation_sid()) + StringTable::get(current_class->get_class_abbreviation_sid());
+    }
+  }
+
+  synopsis = String::add_trailing_spaces(synopsis, 5);
+
+  return synopsis;
 }
 
 string CreatureTranslator::get_display_strength(const CreaturePtr& c)
 {
-  string strength = StringTable::get(TextKeys::STRENGTH_ABRV) + ":" + Integer::to_string(c->get_strength().get_current());
+  string strength = StringTable::get(TextKeys::STRENGTH_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_strength().get_current()), 2);
   return strength;
 }
 
 string CreatureTranslator::get_display_dexterity(const CreaturePtr& c)
 {
-  string dexterity = StringTable::get(TextKeys::DEXTERITY_ABRV) + ":" + Integer::to_string(c->get_dexterity().get_current());
+  string dexterity = StringTable::get(TextKeys::DEXTERITY_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_dexterity().get_current()), 2);
   return dexterity;
 }
 
 string CreatureTranslator::get_display_agility(const CreaturePtr& c)
 {
-  string agility = StringTable::get(TextKeys::AGILITY_ABRV) + ":" + Integer::to_string(c->get_agility().get_current());
+  string agility = StringTable::get(TextKeys::AGILITY_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_agility().get_current()), 2);
   return agility;
 }
 
 string CreatureTranslator::get_display_health(const CreaturePtr& c)
 {
-  string health = StringTable::get(TextKeys::HEALTH_ABRV) + ":" + Integer::to_string(c->get_health().get_current());
+  string health = StringTable::get(TextKeys::HEALTH_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_health().get_current()), 2);
   return health;
 }
 
 string CreatureTranslator::get_display_intelligence(const CreaturePtr& c)
 {
-  string intelligence = StringTable::get(TextKeys::INTELLIGENCE_ABRV) + ":" + Integer::to_string(c->get_intelligence().get_current());
+  string intelligence = StringTable::get(TextKeys::INTELLIGENCE_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_intelligence().get_current()), 2);
   return intelligence;
 }
 
 string CreatureTranslator::get_display_willpower(const CreaturePtr& c)
 {
-  string willpower = StringTable::get(TextKeys::WILLPOWER_ABRV) + ":" + Integer::to_string(c->get_willpower().get_current());
+  string willpower = StringTable::get(TextKeys::WILLPOWER_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_willpower().get_current()), 2);
   return willpower;
 }
 
 string CreatureTranslator::get_display_charisma(const CreaturePtr& c)
 {
-  string charisma = StringTable::get(TextKeys::CHARISMA_ABRV) + ":" + Integer::to_string(c->get_charisma().get_current());
+  string charisma = StringTable::get(TextKeys::CHARISMA_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_charisma().get_current()), 2);
   return charisma;
+}
+
+string CreatureTranslator::get_display_valour(const CreaturePtr& c)
+{
+  string valour = StringTable::get(TextKeys::VALOUR_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_valour().get_current()), 2);
+  return valour;
+}
+
+string CreatureTranslator::get_display_spirit(const CreaturePtr& c)
+{
+  string spirit = StringTable::get(TextKeys::SPIRIT_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_spirit().get_current()), 2);
+  return spirit;
+}
+
+string CreatureTranslator::get_display_speed(const CreaturePtr& c)
+{
+  string speed = StringTable::get(TextKeys::SPEED_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_speed().get_current()), 2);
+  return speed;
+}
+
+string CreatureTranslator::get_display_level(const CreaturePtr& c)
+{
+  string level = StringTable::get(TextKeys::LEVEL_ABRV) + String::add_trailing_spaces(Integer::to_string(c->get_level().get_current()), 2);
+  return level;
+}
+
+string CreatureTranslator::get_display_defence(const CreaturePtr& c)
+{
+  string evade_text  = StringTable::get(TextKeys::EVADE_ABRV);
+  string soak_text   = StringTable::get(TextKeys::SOAK_ABRV);
+  string evade_value = Integer::to_string(c->get_evade().get_current());
+  string soak_value  = Integer::to_string(c->get_soak().get_current());
+
+  string defence = evade_text + "/" + soak_text + ": " + evade_value + "/" + soak_value;
+  return defence;
+}
+
+string CreatureTranslator::get_display_hit_points(const CreaturePtr& c)
+{
+  Statistic hp = c->get_hit_points();
+  string hit_points = StringTable::get(TextKeys::HIT_POINTS_ABRV) + ":" + Integer::to_string(hp.get_current()) + "/" + Integer::to_string(hp.get_base());
+  return hit_points;
+}
+
+string CreatureTranslator::get_display_arcana_points(const CreaturePtr& c)
+{
+  Statistic ap = c->get_arcana_points();
+  string arcana_points = StringTable::get(TextKeys::ARCANA_POINTS_ABRV) + ":" + Integer::to_string(ap.get_current()) + "/" + Integer::to_string(ap.get_base());
+  return arcana_points;
 }
