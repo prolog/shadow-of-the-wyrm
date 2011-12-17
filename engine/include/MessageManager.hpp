@@ -7,7 +7,8 @@ class MessageManager
 	public:
     static MessageManager* get_instance();
 
-		bool add_new_message(const std::string& message, const MessageImportance& importance);
+    void send();
+		bool add_new_message(const std::string& message, const MessageImportance& importance = MessageImportance_Normal);
 		Messages get_unread_messages() const;
 		Messages get_unread_messages_and_mark_as_read();
 

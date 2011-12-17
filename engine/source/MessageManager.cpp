@@ -1,4 +1,7 @@
+#include <boost/foreach.hpp>
 #include "MessageManager.hpp"
+
+using namespace std;
 
 MessageManager* MessageManager::manager_instance = NULL;
 
@@ -21,6 +24,30 @@ MessageManager* MessageManager::get_instance()
 
   return manager_instance;
 }
+
+/*
+ *********************************************************************
+
+  Send the currently-unread messages to the display.
+
+ *********************************************************************/
+void MessageManager::send()
+{
+  Messages unread_messages = get_unread_messages_and_mark_as_read();
+  string message_text;
+
+  if (user_display)
+  {
+    vector<Message> messages = unread_messages.get_messages();
+
+    BOOST_FOREACH(Message m, messages)
+    {
+      message_text = message_text + m.get_content() + " ";
+    }
+
+    user_display->add_message(message_text);
+  }
+}
 /*
  *********************************************************************
 
@@ -35,6 +62,7 @@ bool MessageManager::add_new_message
 {
 	Message message(message_text, importance);
 	unread.add(message);
+
 	return true;
 }
 

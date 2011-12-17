@@ -6,6 +6,16 @@ DisplayMap::DisplayMap()
 {
 }
 
+void DisplayMap::set_cursor_coordinate(const Coordinate& new_cursor_coordinate)
+{
+  cursor_coordinate = new_cursor_coordinate;
+}
+
+Coordinate DisplayMap::get_cursor_coordinate() const
+{
+  return cursor_coordinate;
+}
+
 void DisplayMap::set(const Coordinate& key, const DisplayTile& value)
 {
   display_map[key] = value;

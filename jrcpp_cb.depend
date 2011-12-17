@@ -266,16 +266,17 @@
 1322927692 c:\cygwin\home\julian\jrcpp\display\source\unit_tests\display_test.cpp
 	"gtest/gtest.h"
 
-1322949450 source:c:\cygwin\home\julian\jrcpp\display\source\displaymap.cpp
+1324151461 source:c:\cygwin\home\julian\jrcpp\display\source\displaymap.cpp
 	"DisplayMap.hpp"
 
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1323957189 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1324151674 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<boost/foreach.hpp>
+	<boost/tokenizer.hpp>
 	"Colours.hpp"
 	"Conversion.hpp"
 	"NCursesDisplay.hpp"
@@ -559,15 +560,16 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1323957317 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1324151608 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"Game.hpp"
 	"CreatureTranslator.hpp"
 	"WorldGenerator.hpp"
 	"MapTranslator.hpp"
 	"DisplayStatistics.hpp"
+	"MessageManager.hpp"
 	<ncurses.h>
 
-1323179858 source:c:\cygwin\home\julian\jrcpp\engine\source\maptranslator.cpp
+1324151864 source:c:\cygwin\home\julian\jrcpp\engine\source\maptranslator.cpp
 	<algorithm>
 	"common.hpp"
 	"Display.hpp"
@@ -585,7 +587,8 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1323905318 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1324146704 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
 1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\messages.cpp
@@ -625,7 +628,9 @@
 	"RaceSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1323869037 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1324144651 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+	<boost/algorithm/string/replace.hpp>
+	"StringTable.hpp"
 	"StringConstants.hpp"
 
 1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\stringtable.cpp
