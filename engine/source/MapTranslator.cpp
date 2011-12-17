@@ -59,6 +59,12 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapDisplay
         // Translate the map tile
         DisplayTile display_tile = create_display_tile(map_tile);
 
+        // JCD HACK FIXME LATER
+        if (display_tile.get_symbol() == '@')
+        {
+          display_map.set_cursor_coordinate(display_coords);
+        }
+
         // Set the display tile
         display_map.set(display_coords, display_tile);
       }

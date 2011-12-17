@@ -1,3 +1,5 @@
+#include <boost/algorithm/string/replace.hpp>
+#include "StringTable.hpp"
 #include "StringConstants.hpp"
 
 using namespace std;
@@ -180,3 +182,16 @@ string PromptTextKeys::PROMPT_ENTER_YOUR_NAME = "PROMPT_ENTER_YOUR_NAME";
 // Special locations on the world map
 string WorldMapLocationTextKeys::STARTING_LOCATION = "STARTING_LOCATION";
 string WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION = "CURRENT_PLAYER_LOCATION";
+
+// Messages that can be sent to the user in the message buffer
+string TextMessages::WELCOME_MESSAGE = "WELCOME_MESSAGE";
+
+
+// Public functions used to access protected members.  These are used to wrap any strings
+// that contain replaceable symbols.
+string TextMessages::get_welcome_message(const string& player_name)
+{
+  string welcome_message = StringTable::get(TextMessages::WELCOME_MESSAGE);
+  boost::replace_first(welcome_message, "%s", player_name);
+  return welcome_message;
+}

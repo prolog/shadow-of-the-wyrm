@@ -14,6 +14,11 @@ class DisplayMap
   public:
     DisplayMap();
 
+    // The coordinate on which to place the cursor when done - typically
+    // will be whatever coordinate the player is on.
+    void set_cursor_coordinate(const Coordinate& new_cursor_coordinate);
+    Coordinate get_cursor_coordinate() const;
+
     void set(const Coordinate& key, const DisplayTile& value);
     DisplayTile at(const Coordinate& coords) const;
     Dimensions size() const;
@@ -21,4 +26,5 @@ class DisplayMap
   protected:
     Dimensions dimensions;
     std::map<Coordinate, DisplayTile> display_map;
+    Coordinate cursor_coordinate;
 };

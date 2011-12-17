@@ -17,9 +17,15 @@ class NCursesDisplay : public Display
 	  void tear_down();
 
     void clear_display();
+
+    void add_message(const std::string& message);
+
 	  void draw(const DisplayMap& current_map);
+
 	  void display(const DisplayStatistics& player_stats);
+
     MapDisplayArea get_map_display_area();
+
 	  std::string display_menu(const Menu& current_menu);
 
 	  void clear_menu();
@@ -34,6 +40,9 @@ class NCursesDisplay : public Display
     // with mvprintw, etc.
     void enable_colour(const int colour);
     void disable_colour(const int colour);
+
+    // Clear the message buffer.
+    int clear_message_buffer();
 
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponent* text_component);

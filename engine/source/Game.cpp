@@ -3,6 +3,7 @@
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
+#include "MessageManager.hpp"
 
 // JCD FIXME hack!
 #include <ncurses.h>
@@ -110,20 +111,27 @@ void Game::go()
 {
   bool keep_playing = true;
 
+  MessageManager* manager = MessageManager::get_instance();
+  CreaturePtr current_player = get_current_player();
+  string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
+  manager->add_new_message(welcome_message);
+
   // Main game loop.
   while(keep_playing)
   {
+    // JCD FIXME: Eventually, refactor this into a separate method.
+    manager->send();
+
     WorldPtr current_world = worlds.at(current_world_ix);
     current_map = current_world->get_world();
 
     MapDisplayArea display_area = display->get_map_display_area();
 
-    DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
-    display->draw(display_map);
-
-    CreaturePtr current_player = get_current_player();
     DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
     display->display(display_stats);
+
+    DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
+    display->draw(display_map);
 
     // FIXME: Ncurses specific, and horrifying.
     keep_playing = (getch() != 'q');

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <boost/foreach.hpp>
+#include <boost/tokenizer.hpp>
 #include "Colours.hpp"
 #include "Conversion.hpp"
 #include "NCursesDisplay.hpp"
@@ -92,6 +93,20 @@ void NCursesDisplay::disable_colour(const int selected_colour)
   }
 }
 
+// Clear the message buffer.  The message buffer is always lines 0 and 1.
+int NCursesDisplay::clear_message_buffer()
+{
+  int return_val;
+  move(0, 0);
+  clrtoeol();
+
+  move(1, 0);
+  return_val = clrtoeol();
+  refresh();
+
+  return return_val;
+}
+
 /*
  **************************************************************
 
@@ -155,7 +170,7 @@ void NCursesDisplay::tear_down()
   endwin();
 }
 
-/*!
+/*
  *****************************************************************
 
   Clear the display (in practice, stdscr).
@@ -166,7 +181,56 @@ void NCursesDisplay::clear_display()
   clear();
 }
 
-/*!
+/*
+ *****************************************************************
+
+  Clear the message buffer, and then add a message to display to
+  the user.  If it's very long, "..." it.
+
+ *****************************************************************/
+void NCursesDisplay::add_message(const string& message)
+{
+  int cur_y, cur_x;
+
+  clear_message_buffer();
+
+  char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
+  tokenizer<char_separator<char> > tokens(message, separator);
+
+  move(0, 0);
+  for (tokenizer<char_separator<char> >::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
+  {
+    string current_token = *t_iter;
+    getyx(stdscr, cur_y, cur_x);
+
+    if (cur_y == 0)
+    {
+      if ((cur_x + current_token.length()) > (TERMINAL_MAX_COLS-1))
+      {
+        // Move to the second line of the buffer
+        move(1, 0);
+      }
+    }
+    else
+    {
+      if ((cur_x + current_token.length()) > (TERMINAL_MAX_COLS) - 4)
+      {
+        move(1, TERMINAL_MAX_COLS-4);
+
+        // Add "..."
+        printw("...");
+        getch();
+
+        clear_message_buffer();
+      }
+    }
+
+    printw(current_token.c_str());
+    refresh();
+  }
+}
+
+/*
  *****************************************************************
 
  	Draw the specified Display in the term.  This'll be a simplified
@@ -204,6 +268,9 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
       disable_colour(colour);
     }
   }
+
+  Coordinate cursor_coord = current_map.get_cursor_coordinate();
+  move(cursor_coord.first, cursor_coord.second);
 }
 
 /*!
@@ -397,7 +464,6 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
   if (can_print) mvprintw(current_row, current_col, arc_points.c_str());
 
   refresh();
-  getch();
 }
 
 bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const int initial_row, int* current_row, int* current_col, const string& current_stat, const string& next_stat, vector<int>& cols_used)

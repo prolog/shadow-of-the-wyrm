@@ -1,29 +1,32 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
-	<File name="SavageLands.cpp" open="1" top="0" tabpos="8">
+	<File name="SavageLands.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="1635" topLine="76" />
 	</File>
 	<File name="display\include\Display.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="1063" topLine="33" />
+		<Cursor position="993" topLine="31" />
 	</File>
-	<File name="display\include\DisplayMap.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="28" topLine="0" />
+	<File name="display\include\DisplayMap.hpp" open="1" top="0" tabpos="7">
+		<Cursor position="515" topLine="7" />
 	</File>
 	<File name="display\include\DisplayStatistics.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="2555" topLine="55" />
 	</File>
-	<File name="display\include\NCursesDisplay.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="2246" topLine="35" />
+	<File name="display\include\NCursesDisplay.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="1017" topLine="28" />
 	</File>
 	<File name="display\source\Display.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />
 	</File>
+	<File name="display\source\DisplayMap.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="205" topLine="0" />
+	</File>
 	<File name="display\source\DisplayStatistics.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1056" topLine="32" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="13703" topLine="414" />
+	<File name="display\source\NCursesDisplay.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="4551" topLine="194" />
 	</File>
 	<File name="display\source\NCursesPromptProcessor.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="360" topLine="3" />
@@ -43,14 +46,17 @@
 	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="644" topLine="12" />
 	</File>
-	<File name="engine\include\MessageManager.hpp" open="1" top="0" tabpos="5">
-		<Cursor position="501" topLine="0" />
+	<File name="engine\include\Message.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="374" topLine="0" />
+	</File>
+	<File name="engine\include\MessageManager.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="152" topLine="0" />
 	</File>
 	<File name="engine\include\Naming.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="174" topLine="0" />
 	</File>
 	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="2611" topLine="67" />
+		<Cursor position="7147" topLine="184" />
 	</File>
 	<File name="engine\source\Conversion.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="887" topLine="44" />
@@ -59,24 +65,27 @@
 		<Cursor position="651" topLine="13" />
 	</File>
 	<File name="engine\source\CreatureTranslator.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="5615" topLine="145" />
+		<Cursor position="6502" topLine="158" />
 	</File>
-	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="381" topLine="18" />
+	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="2367" topLine="113" />
 	</File>
-	<File name="engine\source\MessageManager.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="130" topLine="0" />
+	<File name="engine\source\MapTranslator.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="2137" topLine="50" />
+	</File>
+	<File name="engine\source\MessageManager.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1045" topLine="28" />
 	</File>
 	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="568" topLine="10" />
 	</File>
-	<File name="engine\source\SavageLandsEngine.cpp" open="1" top="0" tabpos="4">
+	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="1129" topLine="37" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="3425" topLine="61" />
+		<Cursor position="72" topLine="0" />
 	</File>
-	<File name="engine\source\unit_tests\Messages_test.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\source\unit_tests\Messages_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="722" topLine="0" />
 	</File>
 	<File name="include\common.hpp" open="0" top="0" tabpos="0">

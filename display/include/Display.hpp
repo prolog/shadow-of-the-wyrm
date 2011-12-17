@@ -39,6 +39,9 @@ class Display
     // Clears the message buffer, map, and info display.
     virtual void clear_display() = 0;
 
+    // Add a message to display to the user
+    virtual void add_message(const std::string& message) = 0;
+
     // Draws the map
 	  virtual void draw(const DisplayMap& current_map) = 0;
 

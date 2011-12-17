@@ -195,4 +195,13 @@ class WorldMapLocationTextKeys
     static std::string STARTING_LOCATION;
     static std::string CURRENT_PLAYER_LOCATION;
 };
+
+class TextMessages
+{
+  public:
+    static std::string get_welcome_message(const std::string& player_name);
+
+  protected:
+    static std::string WELCOME_MESSAGE;
+};
 // Todo: Define full text/abbreviation SIDs for statistics: Strength, Piety, etc.
