@@ -17,8 +17,8 @@
 					<Add option="-g" />
 				</Compiler>
 				<Linker>
-					<Add library="..\gtest\gtest-1.6.0\lib\libgtest.a" />
 					<Add library="..\gtest\gtest-1.6.0\lib\libgtest_main.a" />
+					<Add library="..\gtest\gtest-1.6.0\lib\libgtest.a" />
 					<Add library="..\..\..\..\MinGW\lib\libxerces-c.a" />
 					<Add library="..\..\..\..\MinGW\lib\libmenu.a" />
 					<Add library="..\..\..\..\MinGW\lib\libncurses.a" />
@@ -46,6 +46,7 @@
 			<Add option="-Wall" />
 			<Add option="-g" />
 			<Add option="-fexceptions" />
+			<Add option="-DUNIT_TESTS" />
 		</Compiler>
 		<Unit filename="MapTester.cpp">
 			<Option target="Release" />
@@ -87,8 +88,12 @@
 		<Unit filename="engine\XML\source\XMLResistancesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLSkillsReaders.cpp" />
 		<Unit filename="engine\XML\source\XMLTilesReader.cpp" />
+		<Unit filename="engine\calculators\include\ArcanaPointsCalculator.hpp" />
+		<Unit filename="engine\calculators\include\HitPointsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ResistancesCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
+		<Unit filename="engine\calculators\source\ArcanaPointsCalculator.cpp" />
+		<Unit filename="engine\calculators\source\HitPointsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
