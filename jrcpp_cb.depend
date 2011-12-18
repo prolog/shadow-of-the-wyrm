@@ -193,7 +193,7 @@
 	"XMLDataStructures.hpp"
 	<vector>
 
-1321453062 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1324240946 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
 	<xercesc/util/PlatformUtils.hpp>
 	"common.hpp"
@@ -542,11 +542,13 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
-1323868976 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1324240891 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	"CreatureFactory.hpp"
 	"Game.hpp"
 	"ResistancesCalculator.hpp"
 	"SkillsCalculator.hpp"
+	"HitPointsCalculator.hpp"
+	"ArcanaPointsCalculator.hpp"
 	"RNG.hpp"
 	"unit_tests/CreatureFactory_test.cpp"
 
@@ -895,4 +897,18 @@
 	"Naming.hpp"
 	"StringTable.hpp"
 	"StringConstants.hpp"
+
+1324238146 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\hitpointscalculator.cpp
+	"HitPointsCalculator.hpp"
+	"unit_tests/HitPointsCalculator_test.cpp"
+
+1324238131 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\arcanapointscalculator.cpp
+	"ArcanaPointsCalculator.hpp"
+	"unit_tests/ArcanaPointsCalculator_test.cpp"
+
+1324239445 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\arcanapointscalculator_test.cpp
+	"gtest/gtest.h"
+
+1324240373 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\hitpointscalculator_test.cpp
+	"gtest/gtest.h"
 

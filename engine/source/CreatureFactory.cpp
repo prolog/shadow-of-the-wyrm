@@ -2,6 +2,8 @@
 #include "Game.hpp"
 #include "ResistancesCalculator.hpp"
 #include "SkillsCalculator.hpp"
+#include "HitPointsCalculator.hpp"
+#include "ArcanaPointsCalculator.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -81,23 +83,19 @@ Creature CreatureFactory::set_initial_statistics(Creature current_creature, Race
   creature.set_speed(speed);
   creature.set_piety(0); // FIXME
 
-  // Also need to set: HP, AP, Piety.
-
-  // FIXME:
+  CreaturePtr cp = CreaturePtr(new Creature(creature));
   int initial_hp = RNG::dice(3, 3);
+  int hp_bonus = HitPointsCalculator::calculate_hit_points_bonus(cp);
 
   // Calculate HP bonus:
-  creature.set_hit_points(initial_hp);
-
-
-
-  // FIXME:
+  creature.set_hit_points(initial_hp + hp_bonus);
 
   // Calculate AP bonus:
   int initial_ap = RNG::dice(2,3);
+  int ap_bonus = ArcanaPointsCalculator::calculate_arcana_points_bonus(cp);
 
   // Calculate AP bonus:
-  creature.set_arcana_points(initial_ap);
+  creature.set_arcana_points(initial_ap + ap_bonus);
 
   return creature;
 }
