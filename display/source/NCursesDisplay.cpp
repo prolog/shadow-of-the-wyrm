@@ -496,7 +496,7 @@ bool NCursesDisplay::update_synopsis_row_and_column(const int initial_row, int* 
     {
       BOOST_FOREACH(int i, cols_used)
       {
-        if ((i > orig_col) && (i < next_column_end))
+        if ((i > *col) && (i < next_column_end))
         {
           *col = i;
         }
