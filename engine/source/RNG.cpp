@@ -22,7 +22,8 @@ bool RNG::initialize_if_necessary()
 {
   if (!initialized)
   {
-    rng = RNGType(static_cast<unsigned int>(std::time(0)));
+    generator.engine().seed(std::time(0));
+    generator.distribution().reset();
     initialized = true;
     return true;
   }
