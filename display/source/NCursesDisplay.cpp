@@ -1,5 +1,6 @@
 #include <iostream>
 #include <sstream>
+#include <vector>
 #include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
 #include "Colours.hpp"
@@ -438,72 +439,54 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
   string hit_points   = player_stats.get_hit_points();
   string arc_points   = player_stats.get_arcana_points();
 
-  vector<int> previous_row_columns;
-
   int PLAYER_SYNOPSIS_START_ROW = TERMINAL_MAX_ROWS - 3;
   int current_row = PLAYER_SYNOPSIS_START_ROW;
   int initial_row = current_row;
   int current_col = 0;
   bool can_print = true;
 
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, name, synopsis, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength, dexterity, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, dexterity, agility, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, agility, health, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, health, intelligence, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, intelligence, willpower, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower, charisma, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma, level, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, level, defence, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, valour, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, valour, spirit, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, spirit, speed, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points, previous_row_columns);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points, previous_row_columns);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, name, synopsis);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength, dexterity);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, dexterity, agility);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, agility, health);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, health, intelligence);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, intelligence, willpower);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower, charisma);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma, level);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, level, defence);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, valour);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, valour, spirit);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, spirit, speed);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points);
   if (can_print) mvprintw(current_row, current_col, arc_points.c_str());
 
   refresh();
 }
 
-bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const int initial_row, int* current_row, int* current_col, const string& current_stat, const string& next_stat, vector<int>& cols_used)
+bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const int initial_row, int* current_row, int* current_col, const string& current_stat, const string& next_stat)
 {
   bool can_print = true;
 
   mvprintw(*current_row, *current_col, current_stat.c_str());
-  can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat, cols_used);
+  refresh();
+
+  can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
 
   return can_print;
 }
 
 // Update the row/col for the player synopsis.  Return false if we've run out of space
 // and can't print anything else.
-bool NCursesDisplay::update_synopsis_row_and_column(const int initial_row, int* row, int* col, const string& previous_field, const string& next_field, vector<int>& cols_used)
+bool NCursesDisplay::update_synopsis_row_and_column(const int initial_row, int* row, int* col, const string& previous_field, const string& next_field)
 {
   bool can_update = true;
-  int orig_col = *col;
   int next_column_end = *col + previous_field.size() + FIELD_SPACE + next_field.size();
 
   *col = *col + previous_field.size() + FIELD_SPACE;
 
-  if (next_column_end < TERMINAL_MAX_COLS - 1)
-  {
-    if (*row == initial_row)
-    {
-      cols_used.push_back(orig_col);
-    }
-    else
-    {
-      BOOST_FOREACH(int i, cols_used)
-      {
-        if ((i > *col) && (i < next_column_end))
-        {
-          *col = i;
-        }
-      }
-    }
-  }
-  else
+  if (next_column_end > TERMINAL_MAX_COLS - 1)
   {
     // We've gone over max cols.  Fine - but can we increment to the next row in the display?
     if (*row < TERMINAL_MAX_ROWS-2)

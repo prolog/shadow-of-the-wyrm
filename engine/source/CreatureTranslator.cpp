@@ -86,6 +86,7 @@ string CreatureTranslator::get_display_synopsis(const CreaturePtr& c)
     if (race && current_class)
     {
       synopsis = StringTable::get(race->get_race_abbreviation_sid()) + StringTable::get(current_class->get_class_abbreviation_sid());
+      synopsis = String::add_trailing_spaces(synopsis, 5);
     }
   }
 

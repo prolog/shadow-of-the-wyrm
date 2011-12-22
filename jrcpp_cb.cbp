@@ -22,6 +22,10 @@
 					<Add library="..\..\..\..\MinGW\lib\libxerces-c.a" />
 					<Add library="..\..\..\..\MinGW\lib\libmenu.a" />
 					<Add library="..\..\..\..\MinGW\lib\libncurses.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_filesystem-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_filesystem-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-d-1_48.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -148,6 +152,7 @@
 		<Unit filename="engine\include\Dimensions.hpp" />
 		<Unit filename="engine\include\Directions.hpp" />
 		<Unit filename="engine\include\Game.hpp" />
+		<Unit filename="engine\include\Log.hpp" />
 		<Unit filename="engine\include\MapTranslator.hpp" />
 		<Unit filename="engine\include\MapUtils.hpp" />
 		<Unit filename="engine\include\Message.hpp" />
@@ -181,6 +186,7 @@
 		<Unit filename="engine\source\CreatureTranslator.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
 		<Unit filename="engine\source\Game.cpp" />
+		<Unit filename="engine\source\Log.cpp" />
 		<Unit filename="engine\source\MapTranslator.cpp" />
 		<Unit filename="engine\source\MapUtils.cpp" />
 		<Unit filename="engine\source\Message.cpp" />
