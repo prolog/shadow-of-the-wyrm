@@ -193,13 +193,14 @@
 	"XMLDataStructures.hpp"
 	<vector>
 
-1324240946 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1324563467 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
 	<xercesc/util/PlatformUtils.hpp>
 	"common.hpp"
 	"global_prototypes.hpp"
 	"NCursesDisplay.hpp"
 	"Display.hpp"
+	"Log.hpp"
 	"SavageLandsEngine.hpp"
 	"StringConstants.hpp"
 	"StringTable.hpp"
@@ -272,9 +273,10 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1324390502 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1324520020 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
+	<vector>
 	<boost/foreach.hpp>
 	<boost/tokenizer.hpp>
 	"Colours.hpp"
@@ -888,7 +890,7 @@
 1323869381 source:c:\cygwin\home\julian\jrcpp\display\source\displaystatistics.cpp
 	"DisplayStatistics.hpp"
 
-1323956923 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturetranslator.cpp
+1324475961 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturetranslator.cpp
 	"Creature.hpp"
 	"Conversion.hpp"
 	"DisplayStatistics.hpp"
@@ -911,4 +913,10 @@
 
 1324240373 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\hitpointscalculator_test.cpp
 	"gtest/gtest.h"
+
+1324563363 source:c:\cygwin\home\julian\jrcpp\engine\source\log.cpp
+	<sstream>
+	<limits>
+	<boost/filesystem.hpp>
+	"Log.hpp"
 

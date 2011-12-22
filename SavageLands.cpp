@@ -7,6 +7,7 @@
 #include "NCursesDisplay.hpp"
 #include "Display.hpp"
 
+#include "Log.hpp"
 #include "SavageLandsEngine.hpp"
 #include "StringConstants.hpp"
 #include "StringTable.hpp"
@@ -88,6 +89,8 @@ int main(int argc, char* argv[])
       DisplayPtr display(new NCursesDisplay());
       bool display_created = display->create();
 
+      Log* log = Log::instance(LOG_NONE);
+
       if (display_created)
       {
         display->create();
@@ -107,5 +110,9 @@ int main(int argc, char* argv[])
   }
 
   XML::tear_down();
+  Log* log_instance = Log::instance();
+  delete log_instance;
+  log_instance = NULL;
+
   return 0;
 }
