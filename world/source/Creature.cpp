@@ -1,4 +1,5 @@
 #include "Creature.hpp"
+#include "PlayerDecisionStrategy.hpp"
 
 using namespace std;
 
@@ -18,7 +19,12 @@ Creature::Creature()
 void Creature::set_is_player(const bool player)
 {
   is_player = player;
+  decision_strategy.reset();
 
+  // Players always use the PlayerDecisionStrategy class.
+  decision_strategy = DecisionStrategyPtr(new PlayerDecisionStrategy());
+
+  // Players are always @s.
   set_symbol('@');
 }
 
@@ -300,6 +306,16 @@ void Creature::set_level(const Statistic& new_level)
 Statistic Creature::get_level() const
 {
   return level;
+}
+
+void Creature::set_decision_strategy(const DecisionStrategyPtr strategy)
+{
+  decision_strategy = strategy;
+}
+
+DecisionStrategyPtr Creature::get_decision_strategy() const
+{
+  return decision_strategy;
 }
 
 #ifdef UNIT_TESTS

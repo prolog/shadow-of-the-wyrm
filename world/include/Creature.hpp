@@ -4,6 +4,7 @@
 #include "common.hpp"
 #include "Colours.hpp"
 #include "CreatureFeatures.hpp"
+#include "DecisionStrategy.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "Resistances.hpp"
@@ -116,6 +117,10 @@ class Creature
     void set_level(const Statistic& level);
     Statistic get_level() const;
 
+    // Strategy info
+    void set_decision_strategy(const DecisionStrategyPtr strategy);
+    DecisionStrategyPtr get_decision_strategy() const;
+
   protected:
     bool is_player;
 
@@ -167,6 +172,9 @@ class Creature
 
     // Level information
     Statistic level;
+
+    // Decision making strategy
+    DecisionStrategyPtr decision_strategy;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

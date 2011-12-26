@@ -30,6 +30,7 @@ class Log
     static void set_log_level(const LoggingLevel);
 
     std::string create_filename();
+    std::string create_datetimestamp();
 
     static Log* log_instance;
     static LoggingLevel level;

@@ -64,7 +64,6 @@ void SavageLandsEngine::start()
   if (game && manager)
   {
     manager->set_display(display);
-
     {
       // Read the races and classes from the configuration file.
       RaceMap races = reader.get_races();
