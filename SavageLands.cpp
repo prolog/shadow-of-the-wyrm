@@ -76,6 +76,8 @@ int main(int argc, char* argv[])
   {
     initialize_settings();
     XML::initialize();
+    Log* log = Log::instance(LOG_TRACE);
+    log->trace("main - testing");
 
     print_title();
 
@@ -88,8 +90,6 @@ int main(int argc, char* argv[])
       // JCD FIXME: Refactor
       DisplayPtr display(new NCursesDisplay());
       bool display_created = display->create();
-
-      Log* log = Log::instance(LOG_NONE);
 
       if (display_created)
       {

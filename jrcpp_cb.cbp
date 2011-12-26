@@ -26,6 +26,8 @@
 					<Add library="..\..\..\..\MinGW\lib\libboost_filesystem-mgw46-mt-d-1_48.a" />
 					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-1_48.a" />
 					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_date_time-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_date_time-mgw46-mt-d-1_48.a" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -47,11 +49,16 @@
 			</Target>
 		</Build>
 		<Compiler>
+			<Add option="-Wmain" />
 			<Add option="-Wall" />
+			<Add option="-pg" />
 			<Add option="-g" />
 			<Add option="-fexceptions" />
 			<Add option="-DUNIT_TESTS" />
 		</Compiler>
+		<Linker>
+			<Add option="-pg -lgmon" />
+		</Linker>
 		<Unit filename="MapTester.cpp">
 			<Option target="Release" />
 		</Unit>
@@ -106,6 +113,11 @@
 		<Unit filename="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp">
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="engine\commands\include\Command.hpp" />
+		<Unit filename="engine\commands\source\Command.cpp" />
+		<Unit filename="engine\decision_strategies\include\DecisionStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
 		<Unit filename="engine\generators\include\CavernGenerator.hpp" />
 		<Unit filename="engine\generators\include\CellularAutomataGenerator.hpp" />
 		<Unit filename="engine\generators\include\DungeonGenerator.hpp" />
@@ -402,6 +414,7 @@
 				<search_path add="engine\XML\source" />
 				<search_path add="world\source" />
 				<search_path add="world\tiles\source" />
+				<search_path add="world\decision_strategies\source" />
 			</debugger>
 		</Extensions>
 	</Project>

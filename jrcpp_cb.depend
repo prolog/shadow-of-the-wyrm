@@ -193,7 +193,7 @@
 	"XMLDataStructures.hpp"
 	<vector>
 
-1324563467 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1324649228 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
 	<xercesc/util/PlatformUtils.hpp>
 	"common.hpp"
@@ -616,7 +616,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1323905268 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1324648570 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -656,8 +656,9 @@
 	<sstream>
 	"Class.hpp"
 
-1323870343 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1324840221 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
+	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
 
 1321471658 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\creature_test.cpp
@@ -914,9 +915,16 @@
 1324240373 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\hitpointscalculator_test.cpp
 	"gtest/gtest.h"
 
-1324563363 source:c:\cygwin\home\julian\jrcpp\engine\source\log.cpp
+1324649312 source:c:\cygwin\home\julian\jrcpp\engine\source\log.cpp
 	<sstream>
 	<limits>
+	<boost/date_time/posix_time/posix_time.hpp>
 	<boost/filesystem.hpp>
 	"Log.hpp"
+
+1324838764 source:c:\cygwin\home\julian\jrcpp\world\decision_strategies\source\playerdecisionstrategy.cpp
+	"PlayerDecisionStrategy.hpp"
+
+1324838764 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+	"PlayerDecisionStrategy.hpp"
 
