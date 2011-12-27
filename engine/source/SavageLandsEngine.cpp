@@ -93,7 +93,7 @@ void SavageLandsEngine::start()
       string selected_class_id = Integer::to_string_key_at_given_position_in_map(classes, class_idx);
 
       CreaturePtr player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name);
-      player->set_is_player(true);
+      player->set_is_player(true, controller);
 
       // Create world map, place player on world map.
       game->create_new_world(player);
@@ -109,6 +109,11 @@ void SavageLandsEngine::start()
   {
     // Error out here!
   }
+}
+
+void SavageLandsEngine::set_controller(ControllerPtr new_controller)
+{
+  controller = new_controller;
 }
 
 void SavageLandsEngine::set_display(DisplayPtr new_display)

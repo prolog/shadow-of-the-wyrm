@@ -4,6 +4,8 @@
 #include "common.hpp"
 #include "global_prototypes.hpp"
 
+#include "NCursesKeyboardController.hpp"
+
 #include "NCursesDisplay.hpp"
 #include "Display.hpp"
 
@@ -89,6 +91,7 @@ int main(int argc, char* argv[])
     {
       // JCD FIXME: Refactor
       DisplayPtr display(new NCursesDisplay());
+      ControllerPtr controller(new NCursesKeyboardController());
       bool display_created = display->create();
 
       if (display_created)
@@ -97,6 +100,7 @@ int main(int argc, char* argv[])
         SavageLandsEngine engine;
 
         // set the display into the engine
+        engine.set_controller(controller);
         engine.set_display(display);
         engine.start();
       }

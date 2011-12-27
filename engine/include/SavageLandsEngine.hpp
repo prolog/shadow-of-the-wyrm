@@ -1,4 +1,5 @@
 #pragma once
+#include "Controller.hpp"
 #include "Display.hpp"
 
 enum EngineStateEnum
@@ -25,9 +26,12 @@ class SavageLandsEngine
     ~SavageLandsEngine();
 
     void start();
+
+    void set_controller(ControllerPtr new_controller);
     void set_display(DisplayPtr new_display);
 
   protected:
     EngineStateManager state_manager;
+    ControllerPtr controller;
     DisplayPtr display;
 };

@@ -18,6 +18,13 @@ class Map
     Map(const Map& new_map);
 		Map(const Dimensions& new_dimensions);
 
+		// These functions work on a list built up from the map itself.
+		// This allows for quicker lookup.
+		CreaturePtr get_creature(const uint idx_in_creature_list);
+		std::vector<CreaturePtr> get_creatures();
+		// Other get_creature... fns here.
+		// Other remove_creature... fns here.
+
 		bool insert(int row, int col, TilePtr tile);
 		TilePtr at(int row, int col);
 
@@ -32,6 +39,12 @@ class Map
     TilePtr get_tile_at_location(const std::string& location);
 
 	protected:
+		void create_creatures();
+
+    // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
+    // Ensure that when creatures are created or killed, both data structures are updated accordingly.
+    std::vector<CreaturePtr> creatures;
+
 		std::map<Coordinate, TilePtr > tiles;
 		Dimensions dimensions;
     NamedMapLocations locations;
