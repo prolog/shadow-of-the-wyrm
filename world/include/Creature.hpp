@@ -3,6 +3,7 @@
 #include <boost/shared_ptr.hpp>
 #include "common.hpp"
 #include "Colours.hpp"
+#include "Controller.hpp"
 #include "CreatureFeatures.hpp"
 #include "DecisionStrategy.hpp"
 #include "Race.hpp"
@@ -18,7 +19,8 @@ class Creature
 
     // Quick hack.  Later on, this'll be some sort of Strategy, where the Player strategy sends commands
     // via keyboard/mouse/etc input.
-    void set_is_player(const bool player);
+    // JCD FIXME: Rename this later.
+    void set_is_player(const bool player, ControllerPtr decision_strategy_controller);
     bool get_is_player() const;
 
     // Set/Get basic vitals

@@ -116,15 +116,17 @@ void Game::go()
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
   manager->add_new_message(welcome_message);
 
+  manager->send();
+
+  WorldPtr current_world = worlds.at(current_world_ix);
+  current_map = current_world->get_world();
+
   // Main game loop.
   while(keep_playing)
   {
+    vector<CreaturePtr> creatures = current_map->get_creatures();
+
     // JCD FIXME: Eventually, refactor this into a separate method.
-    manager->send();
-
-    WorldPtr current_world = worlds.at(current_world_ix);
-    current_map = current_world->get_world();
-
     MapDisplayArea display_area = display->get_map_display_area();
 
     DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
@@ -132,6 +134,27 @@ void Game::go()
 
     DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
     display->draw(display_map);
+
+    // FIXME: Get the actions of each creature.  This doesn't follow the ultimate
+    // model of action costs, etc.
+    for (vector<CreaturePtr>::const_iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+    {
+      CreaturePtr current_creature = *c_it;
+
+      if (current_creature)
+      {
+        DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+
+        if (strategy)
+        {
+          int x = 1;
+          int y = 2;
+          // Success, sort of.
+          // We can get here, so add to the commands and command processor to be able
+          // to get commands for any arbitrary creature in the list.
+        }
+      }
+    }
 
     // FIXME: Ncurses specific, and horrifying.
     keep_playing = (getch() != 'q');

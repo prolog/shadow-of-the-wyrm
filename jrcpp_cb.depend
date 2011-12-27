@@ -193,11 +193,12 @@
 	"XMLDataStructures.hpp"
 	<vector>
 
-1324649228 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1325011587 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
 	<xercesc/util/PlatformUtils.hpp>
 	"common.hpp"
 	"global_prototypes.hpp"
+	"NCursesKeyboardController.hpp"
 	"NCursesDisplay.hpp"
 	"Display.hpp"
 	"Log.hpp"
@@ -537,7 +538,7 @@
 	"StringTable.hpp"
 	"WelcomeScreen.hpp"
 
-1323784549 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+1324999867 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
 	"Conversion.hpp"
 	"unit_tests/Conversion_test.cpp"
 
@@ -564,7 +565,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1324151608 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1325001455 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"Game.hpp"
 	"CreatureTranslator.hpp"
 	"WorldGenerator.hpp"
@@ -616,7 +617,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1324648570 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1325011681 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -656,7 +657,7 @@
 	<sstream>
 	"Class.hpp"
 
-1324840221 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1325012032 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -670,7 +671,7 @@
 1322004525 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
 	"Item.hpp"
 
-1323180839 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1324999688 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	"Map.hpp"
 
 1321718404 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
@@ -925,6 +926,15 @@
 1324838764 source:c:\cygwin\home\julian\jrcpp\world\decision_strategies\source\playerdecisionstrategy.cpp
 	"PlayerDecisionStrategy.hpp"
 
-1324838764 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+1325012146 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
 	"PlayerDecisionStrategy.hpp"
+
+1324998351 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
+	"Command.hpp"
+
+1324998214 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+	"CommandProcessor.hpp"
+
+1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
+	"NCursesKeyboardController.hpp"
 

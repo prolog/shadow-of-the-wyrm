@@ -19,9 +19,51 @@ Map::Map(const Dimensions& new_dimensions)
   dimensions = new_dimensions;
 }
 
+// Create the creature list by iterating over all the map tiles, and adding any Creature
+// attached to a tile.
+void Map::create_creatures()
+{
+  creatures.clear();
+
+  std::map<Coordinate, TilePtr >::iterator map_it;
+
+  for (map_it = tiles.begin(); map_it != tiles.end(); map_it++)
+  {
+    TilePtr current_tile = map_it->second;
+
+    CreaturePtr potential_creature = current_tile->get_creature();
+
+    if (potential_creature)
+    {
+      creatures.push_back(potential_creature);
+    }
+  }
+}
+
+CreaturePtr Map::get_creature(const uint idx)
+{
+  CreaturePtr creature;
+
+  if (idx < creatures.size())
+  {
+    return creatures.at(idx);
+  }
+
+  return creature;
+}
+
+vector<CreaturePtr> Map::get_creatures()
+{
+  if (creatures.empty())
+  {
+    create_creatures();
+  }
+
+  return creatures;
+}
+
 bool Map::insert(int row, int col, TilePtr tile)
 {
-  // JCD FIXME: Tile may not be unique!
   pair<int, int> key = make_pair(row, col);
 
   tiles[key] = tile;

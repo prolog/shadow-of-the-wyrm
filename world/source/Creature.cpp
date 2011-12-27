@@ -16,16 +16,19 @@ Creature::Creature()
   set_soak (0);
 }
 
-void Creature::set_is_player(const bool player)
+void Creature::set_is_player(const bool player, ControllerPtr controller)
 {
   is_player = player;
   decision_strategy.reset();
 
-  // Players always use the PlayerDecisionStrategy class.
-  decision_strategy = DecisionStrategyPtr(new PlayerDecisionStrategy());
+  if (player)
+  {
+    // Players always use the PlayerDecisionStrategy class.
+    decision_strategy = DecisionStrategyPtr(new PlayerDecisionStrategy(controller));
 
-  // Players are always @s.
-  set_symbol('@');
+    // Players are always @s.
+    set_symbol('@');
+  }
 }
 
 bool Creature::get_is_player() const

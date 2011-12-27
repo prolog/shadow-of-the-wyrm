@@ -57,7 +57,7 @@ string String::add_trailing_spaces(const string& str, const uint max_size)
   {
     size_t size_diff = max_size - str_size;
 
-    for (int i = 0; i < size_diff; i++)
+    for (uint i = 0; i < size_diff; i++)
     {
       result = result + " ";
     }
