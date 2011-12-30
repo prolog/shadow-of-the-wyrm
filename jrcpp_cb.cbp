@@ -15,6 +15,7 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DUNIT_TESTS" />
 				</Compiler>
 				<Linker>
 					<Add library="..\gtest\gtest-1.6.0\lib\libgtest_main.a" />

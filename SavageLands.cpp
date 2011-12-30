@@ -67,6 +67,10 @@ int parse_command_line_arguments(int argc, char* argv[])
       cout << "Unit tests are not available in release mode." << endl;
       #endif
     }
+    else
+    {
+      cout << "Unknown argument: " << current_arg << endl;
+    }
   }
 
   return 0;

@@ -3,6 +3,7 @@
 #include <sstream>
 #include <string>
 #include "common.hpp"
+#include "Directions.hpp"
 
 class Convert
 {
@@ -24,6 +25,17 @@ class Char
 
   protected:
     Char();
+    ~Char();
+};
+
+class DirectionEnum
+{
+  public:
+    static std::string to_string(const Direction d);
+
+  protected:
+    DirectionEnum();
+    ~DirectionEnum();
 };
 
 class String
@@ -36,6 +48,7 @@ class String
 
   protected:
     String();
+    ~String();
 };
 
 class Integer
@@ -70,5 +83,6 @@ class Integer
 
   protected:
     Integer();
+    ~Integer();
 };
 

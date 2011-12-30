@@ -193,7 +193,7 @@
 	"XMLDataStructures.hpp"
 	<vector>
 
-1325011587 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1325260035 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
 	<xercesc/util/PlatformUtils.hpp>
 	"common.hpp"
@@ -538,11 +538,12 @@
 	"StringTable.hpp"
 	"WelcomeScreen.hpp"
 
-1325090184 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+1325258945 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"unit_tests/Conversion_test.cpp"
 
-1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
+1325259810 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
 1325250998 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
@@ -565,7 +566,8 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1325251344 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1325256236 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+	"global_prototypes.hpp"
 	"Game.hpp"
 	"CommandProcessor.hpp"
 	"CreatureTranslator.hpp"
@@ -939,7 +941,7 @@
 1324998351 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1325251161 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1325256085 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Game.hpp"
@@ -947,19 +949,20 @@
 1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
 
-1325086541 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1325256042 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	"KeyboardCommandMap.hpp"
 	"Log.hpp"
 
-1325091949 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1325257353 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1325086899 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1325257254 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1325089027 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1325258566 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
+	"Conversion.hpp"
 

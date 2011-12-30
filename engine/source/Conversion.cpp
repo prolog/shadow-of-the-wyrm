@@ -1,3 +1,4 @@
+#include "CommandKeys.hpp"
 #include "Conversion.hpp"
 
 using namespace std;
@@ -35,13 +36,66 @@ Char::Char()
 {
 }
 
+Char::~Char()
+{
+}
+
 string Char::to_string(const char character)
 {
   string converted_string = Convert::to_string(character);
   return converted_string;
 }
 
+DirectionEnum::DirectionEnum()
+{
+}
+
+DirectionEnum::~DirectionEnum()
+{
+}
+
+string DirectionEnum::to_string(const Direction d)
+{
+  string command_key_direction;
+
+  switch(d)
+  {
+    case DIRECTION_SOUTH_WEST:
+      command_key_direction = CommandKeys::MOVE_SOUTHWEST;
+      break;
+    case DIRECTION_SOUTH:
+      command_key_direction = CommandKeys::MOVE_SOUTH;
+      break;
+    case DIRECTION_SOUTH_EAST:
+      command_key_direction = CommandKeys::MOVE_SOUTHEAST;
+      break;
+    case DIRECTION_WEST:
+      command_key_direction = CommandKeys::MOVE_WEST;
+      break;
+    case DIRECTION_EAST:
+      command_key_direction = CommandKeys::MOVE_EAST;
+      break;
+    case DIRECTION_NORTH_WEST:
+      command_key_direction = CommandKeys::MOVE_NORTHWEST;
+      break;
+    case DIRECTION_NORTH:
+      command_key_direction = CommandKeys::MOVE_NORTH;
+      break;
+    case DIRECTION_NORTH_EAST:
+      command_key_direction = CommandKeys::MOVE_NORTHEAST;
+      break;
+    default:
+      break;
+  }
+
+  return command_key_direction;
+}
+
 String::String()
+{
+}
+
+String::~String()
 {
 }
 
@@ -77,6 +131,10 @@ string String::add_trailing_spaces(const string& str, const uint max_size)
 }
 
 Integer::Integer()
+{
+}
+
+Integer::~Integer()
 {
 }
 

@@ -39,6 +39,27 @@ TEST(SL_Engine_ConversionRoutines, string_to_float)
   EXPECT_FLOAT_EQ(54.95, String::to_float(test_3));
 }
 
+TEST(SL_Engine_ConversionRoutines, char_to_string)
+{
+  char x = 'x';
+  char three = '3';
+
+  EXPECT_EQ("x", Char::to_string(x));
+  EXPECT_EQ("3", Char::to_string(three));
+}
+
+TEST(SL_Engine_ConversionRoutines, direction_to_string)
+{
+  EXPECT_EQ(CommandKeys::MOVE_SOUTHEAST, DirectionEnum::to_string(DIRECTION_SOUTH_EAST));
+  EXPECT_EQ(CommandKeys::MOVE_SOUTH, DirectionEnum::to_string(DIRECTION_SOUTH));
+  EXPECT_EQ(CommandKeys::MOVE_SOUTHWEST, DirectionEnum::to_string(DIRECTION_SOUTH_WEST));
+  EXPECT_EQ(CommandKeys::MOVE_EAST, DirectionEnum::to_string(DIRECTION_EAST));
+  EXPECT_EQ(CommandKeys::MOVE_WEST, DirectionEnum::to_string(DIRECTION_WEST));
+  EXPECT_EQ(CommandKeys::MOVE_NORTHWEST, DirectionEnum::to_string(DIRECTION_NORTH_WEST));
+  EXPECT_EQ(CommandKeys::MOVE_NORTH, DirectionEnum::to_string(DIRECTION_NORTH));
+  EXPECT_EQ(CommandKeys::MOVE_NORTHEAST, DirectionEnum::to_string(DIRECTION_NORTH_EAST));
+}
+
 TEST(SL_Engine_ConversionRoutines, int_to_string)
 {
   int test_1 = 1;
