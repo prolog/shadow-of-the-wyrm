@@ -71,7 +71,7 @@ string CreatureTranslator::get_display_name(const CreaturePtr& c)
 string CreatureTranslator::get_display_synopsis(const CreaturePtr& c)
 {
   string synopsis;
-  Game* game = Game::get_instance();
+  Game* game = Game::instance();
 
   if (game)
   {

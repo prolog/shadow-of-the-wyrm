@@ -22,7 +22,7 @@ ClassSelectionScreen::ClassSelectionScreen(DisplayPtr display)
 // ClassPtr
 void ClassSelectionScreen::initialize()
 {
-  Game* game_instance = Game::get_instance();
+  Game* game_instance = Game::instance();
   ClassMap classes = game_instance->get_classes_ref();
 
   TextComponent* class_selection_text = new TextComponent(StringTable::get(TextKeys::SELECT_CLASS));

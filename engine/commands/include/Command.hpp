@@ -8,7 +8,7 @@ class Command
     std::string get_name() const;
 
   protected:
-    // friend class ...
+    friend class CommandFactory;
     Command(const std::string& name);
 
     std::string command_name;

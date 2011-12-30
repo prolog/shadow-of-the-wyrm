@@ -9,7 +9,7 @@
 class Game
 {
   public:
-    static Game* get_instance();
+    static Game* instance();
 
     void set_display(DisplayPtr display);
     DisplayPtr get_display() const;
@@ -33,9 +33,19 @@ class Game
 
   protected:
     friend class SavageLandsEngine;
+    friend class CommandProcessor;
+
     Game();
     ~Game();
 
+    // Game commands - protected, so they should only be called by SavageLandsEngine
+    // or CommandProcessor.
+
+    // Quits the game.  Right now this just sets a boolean flag to be false, so there will need to be
+    // additional work done later to compensate for pending actions, etc.
+    void quit();
+
+    bool keep_playing;
     static Game* game_instance;
 
     // The races, classes, and items are not the actual in-game items;

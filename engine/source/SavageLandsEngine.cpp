@@ -37,8 +37,8 @@ SavageLandsEngine::SavageLandsEngine()
 // not be deleted anywhere else!
 SavageLandsEngine::~SavageLandsEngine()
 {
-  Game* game_instance = Game::get_instance();
-  MessageManager* manager_instance = MessageManager::get_instance();
+  Game* game_instance = Game::instance();
+  MessageManager* manager_instance = MessageManager::instance();
 
   if (game_instance)
   {
@@ -58,8 +58,8 @@ void SavageLandsEngine::start()
   string name;
   XMLConfigurationReader reader("data/SavageLands.xml");
 
-  Game* game = Game::get_instance();
-  MessageManager* manager = MessageManager::get_instance();
+  Game* game = Game::instance();
+  MessageManager* manager = MessageManager::instance();
 
   if (game && manager)
   {

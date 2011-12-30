@@ -1,19 +1,18 @@
 #include "Game.hpp"
+#include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
+#include "Log.hpp"
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
 #include "MessageManager.hpp"
 
-// JCD FIXME hack!
-#include <ncurses.h>
-// JCD FIXME
-
 using namespace std;
 
 Game* Game::game_instance = NULL;
 
-Game::Game() : current_world_ix(0)
+Game::Game()
+: keep_playing(true), current_world_ix(0)
 {
 }
 
@@ -21,7 +20,7 @@ Game::~Game()
 {
 }
 
-Game* Game::get_instance()
+Game* Game::instance()
 {
   if (!game_instance)
   {
@@ -77,7 +76,8 @@ CreaturePtr Game::get_current_player() const
   return current_player;
 }
 
-void Game::create_new_world(CreaturePtr creature) // pass in the player
+// Create the new world, and set the player at the special "player's starting location" point.
+void Game::create_new_world(CreaturePtr creature)
 {
   WorldGenerator world_generator;
   MapPtr current_world = world_generator.generate();
@@ -87,7 +87,6 @@ void Game::create_new_world(CreaturePtr creature) // pass in the player
 
   players.push_back(creature);
 
-  // JCD FIXME: Refactor
   TilePtr tile = current_world->get_tile_at_location(WorldMapLocationTextKeys::STARTING_LOCATION);
 
   if (tile)
@@ -103,15 +102,13 @@ void Game::create_new_world(CreaturePtr creature) // pass in the player
   }
   else
   {
-    // FIXME: Logging would be useful to add, soon.
+    Log::instance()->log("Couldn't get player's initial starting location!");
   }
 }
 
 void Game::go()
 {
-  bool keep_playing = true;
-
-  MessageManager* manager = MessageManager::get_instance();
+  MessageManager* manager = MessageManager::instance();
   CreaturePtr current_player = get_current_player();
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
   manager->add_new_message(welcome_message);
@@ -135,7 +132,7 @@ void Game::go()
     DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
     display->draw(display_map);
 
-    // FIXME: Get the actions of each creature.  This doesn't follow the ultimate
+    // FIXME: Right now, I just get the actions of each creature, in order.  This doesn't follow the ultimate
     // model of action costs, etc.
     for (vector<CreaturePtr>::const_iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
     {
@@ -147,16 +144,15 @@ void Game::go()
 
         if (strategy)
         {
-          int x = 1;
-          int y = 2;
-          // Success, sort of.
-          // We can get here, so add to the commands and command processor to be able
-          // to get commands for any arbitrary creature in the list.
+          CommandPtr command = strategy->get_decision();
+          CommandProcessor::process(command);
         }
       }
     }
-
-    // FIXME: Ncurses specific, and horrifying.
-    keep_playing = (getch() != 'q');
   }
+}
+
+void Game::quit()
+{
+  keep_playing = false;
 }
