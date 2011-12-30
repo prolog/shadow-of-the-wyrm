@@ -131,7 +131,6 @@ MapPtr ForestGenerator::add_random_springs(MapPtr map)
 MapPtr ForestGenerator::add_random_stream(MapPtr map)
 {
   MapPtr result_map = MapPtr(new Map(*map));
-  Dimensions dim = result_map->size();
   result_map = StreamGenerator::generate(result_map);
   return result_map;
 }

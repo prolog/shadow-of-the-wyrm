@@ -78,8 +78,6 @@ void WorldGenerator::generate_little_island(MapPtr map)
 // The "last island", where the Big Baddy resides.
 void WorldGenerator::generate_far_reaches(MapPtr map)
 {
-  Dimensions dim = map->size();
-
   for (int current_height = 0; current_height < 4; current_height++)
   {
     for (int current_width = 0; current_width < 5; current_width++)

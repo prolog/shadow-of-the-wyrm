@@ -5,7 +5,7 @@
 
 using namespace std;
 
-WelcomeScreen::WelcomeScreen(DisplayPtr display) : Menu(display)
+WelcomeScreen::WelcomeScreen(DisplayPtr new_display) : Menu(new_display)
 {
   initialize();
 }
