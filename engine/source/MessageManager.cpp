@@ -15,7 +15,7 @@ MessageManager::~MessageManager()
   Get the singleton instance.
 
  *********************************************************************/
-MessageManager* MessageManager::get_instance()
+MessageManager* MessageManager::instance()
 {
   if (manager_instance == NULL)
   {

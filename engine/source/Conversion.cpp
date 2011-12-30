@@ -31,6 +31,16 @@ bool String::to_bool(const string& convert)
   return false;
 }
 
+Char::Char()
+{
+}
+
+string Char::to_string(const char character)
+{
+  string converted_string = Convert::to_string(character);
+  return converted_string;
+}
+
 String::String()
 {
 }

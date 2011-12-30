@@ -78,7 +78,7 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile)
 {
   DisplayTile display_tile;
 
-  Game* game_info = Game::get_instance();
+  Game* game_info = Game::instance();
 
   if (game_info)
   {

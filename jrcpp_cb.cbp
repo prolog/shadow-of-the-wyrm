@@ -117,9 +117,17 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="engine\commands\include\Command.hpp" />
+		<Unit filename="engine\commands\include\CommandFactory.hpp" />
+		<Unit filename="engine\commands\include\CommandKeys.hpp" />
 		<Unit filename="engine\commands\include\CommandProcessor.hpp" />
+		<Unit filename="engine\commands\include\Commands.hpp" />
+		<Unit filename="engine\commands\include\KeyboardCommandMap.hpp" />
 		<Unit filename="engine\commands\source\Command.cpp" />
+		<Unit filename="engine\commands\source\CommandFactory.cpp" />
+		<Unit filename="engine\commands\source\CommandKeys.cpp" />
 		<Unit filename="engine\commands\source\CommandProcessor.cpp" />
+		<Unit filename="engine\commands\source\Commands.cpp" />
+		<Unit filename="engine\commands\source\KeyboardCommandMap.cpp" />
 		<Unit filename="engine\decision_strategies\include\DecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />

@@ -5,7 +5,7 @@
 class MessageManager
 {
 	public:
-    static MessageManager* get_instance();
+    static MessageManager* instance();
 
     void send();
 		bool add_new_message(const std::string& message, const MessageImportance& importance = MessageImportance_Normal);

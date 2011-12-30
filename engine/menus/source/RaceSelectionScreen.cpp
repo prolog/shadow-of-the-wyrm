@@ -20,7 +20,7 @@ RaceSelectionScreen::RaceSelectionScreen(DisplayPtr display)
 // RacePtr.
 void RaceSelectionScreen::initialize()
 {
-  Game* game_instance = Game::get_instance();
+  Game* game_instance = Game::instance();
   RaceMap races = game_instance->get_races_ref();
 
   TextComponent* race_selection_text = new TextComponent(StringTable::get(TextKeys::SELECT_RACE));

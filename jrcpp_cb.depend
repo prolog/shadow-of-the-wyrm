@@ -492,7 +492,7 @@
 	"RNG.hpp"
 	"CellularAutomataGenerator.hpp"
 
-1321830997 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\classselectionscreen.cpp
+1325250796 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\classselectionscreen.cpp
 	"ClassSelectionScreen.hpp"
 	<string>
 	"RaceSelectionScreen.hpp"
@@ -521,7 +521,7 @@
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
-1321718524 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
+1325250861 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
 	<string>
 	"RaceSelectionScreen.hpp"
 	"Game.hpp"
@@ -538,14 +538,14 @@
 	"StringTable.hpp"
 	"WelcomeScreen.hpp"
 
-1324999867 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+1325090184 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
 	"Conversion.hpp"
 	"unit_tests/Conversion_test.cpp"
 
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
-1324240891 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1325250998 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	"CreatureFactory.hpp"
 	"Game.hpp"
 	"ResistancesCalculator.hpp"
@@ -565,16 +565,17 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1325001455 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1325251344 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"Game.hpp"
+	"CommandProcessor.hpp"
 	"CreatureTranslator.hpp"
+	"Log.hpp"
 	"WorldGenerator.hpp"
 	"MapTranslator.hpp"
 	"DisplayStatistics.hpp"
 	"MessageManager.hpp"
-	<ncurses.h>
 
-1324151864 source:c:\cygwin\home\julian\jrcpp\engine\source\maptranslator.cpp
+1325250851 source:c:\cygwin\home\julian\jrcpp\engine\source\maptranslator.cpp
 	<algorithm>
 	"common.hpp"
 	"Display.hpp"
@@ -592,7 +593,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1324146704 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1325250910 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -617,7 +618,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1325011681 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1325250923 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -892,7 +893,7 @@
 1323869381 source:c:\cygwin\home\julian\jrcpp\display\source\displaystatistics.cpp
 	"DisplayStatistics.hpp"
 
-1324475961 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturetranslator.cpp
+1325250841 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturetranslator.cpp
 	"Creature.hpp"
 	"Conversion.hpp"
 	"DisplayStatistics.hpp"
@@ -926,15 +927,39 @@
 1324838764 source:c:\cygwin\home\julian\jrcpp\world\decision_strategies\source\playerdecisionstrategy.cpp
 	"PlayerDecisionStrategy.hpp"
 
-1325012146 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+1325091534 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+	<string>
 	"PlayerDecisionStrategy.hpp"
+	"Command.hpp"
+	"CommandFactory.hpp"
+	"Conversion.hpp"
+	"KeyboardCommandMap.hpp"
+	"Map.hpp"
 
 1324998351 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1324998214 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1325251161 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
+	"Game.hpp"
 
 1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
+
+1325086541 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+	"KeyboardCommandMap.hpp"
+	"Log.hpp"
+
+1325091949 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+	"CommandFactory.hpp"
+	"CommandKeys.hpp"
+	"Commands.hpp"
+
+1325086899 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+	"CommandKeys.hpp"
+
+1325089027 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+	"Commands.hpp"
+	"CommandKeys.hpp"
 
