@@ -649,16 +649,16 @@ Skills::Skills()
   initialize_skills();
 }
 
-Skills::Skills(const Skills& skills)
+Skills::Skills(const Skills& copy_skills)
 {
-  *this = skills;
+  *this = copy_skills;
 }
 
-Skills& Skills::operator=(const Skills& skills)
+Skills& Skills::operator=(const Skills& copy_skills)
 {
-  if (this != &skills)
+  if (this != &copy_skills)
   {
-    this->skills = skills.skills;
+    this->skills = copy_skills.skills;
   }
 
   return *this;

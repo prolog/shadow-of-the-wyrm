@@ -1,7 +1,7 @@
 #include "NamingScreen.hpp"
 #include "StringConstants.hpp"
 
-NamingScreen::NamingScreen(DisplayPtr display) : Menu(display)
+NamingScreen::NamingScreen(DisplayPtr new_display) : Menu(new_display)
 {
   initialize();
 }

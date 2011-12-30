@@ -7,8 +7,8 @@
 
 using namespace std;
 
-RaceSelectionScreen::RaceSelectionScreen(DisplayPtr display)
-: Menu(display)
+RaceSelectionScreen::RaceSelectionScreen(DisplayPtr new_display)
+: Menu(new_display)
 {
   initialize();
 }

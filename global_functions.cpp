@@ -1,5 +1,6 @@
 #include <sstream>
 #include "buildinfo.hpp"
+#include "global_prototypes.hpp"
 #include "StringConstants.hpp"
 #include "StringTable.hpp"
 

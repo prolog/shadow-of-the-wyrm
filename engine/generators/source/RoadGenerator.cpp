@@ -1,3 +1,4 @@
+#include "Log.hpp"
 #include "RoadGenerator.hpp"
 #include "TileGenerator.hpp"
 
@@ -48,6 +49,9 @@ void RoadGenerator::generate_road(MapPtr map)
           map->insert(current_row, current_col, tile);
         }
       }
+      break;
+    default:
+      Log::instance()->log("Unhandled direction in road generation");
       break;
   }
 }

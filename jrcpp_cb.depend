@@ -438,7 +438,8 @@
 	"TileGenerator.hpp"
 	"RNG.hpp"
 
-1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\roadgenerator.cpp
+1325276347 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\roadgenerator.cpp
+	"Log.hpp"
 	"RoadGenerator.hpp"
 	"TileGenerator.hpp"
 
@@ -476,7 +477,8 @@
 	"Dimensions.hpp"
 	"RNG.hpp"
 
-1322750152 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\tilegenerator.cpp
+1325276570 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\tilegenerator.cpp
+	"Log.hpp"
 	"TileGenerator.hpp"
 	"tiles.hpp"
 	"AllTiles.hpp"
@@ -485,14 +487,14 @@
 1321453060 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
 	"gtest/gtest.h"
 
-1323181472 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+1325276617 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
 	<vector>
 	"WorldGenerator.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
 	"CellularAutomataGenerator.hpp"
 
-1325250796 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\classselectionscreen.cpp
+1325276669 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\classselectionscreen.cpp
 	"ClassSelectionScreen.hpp"
 	<string>
 	"RaceSelectionScreen.hpp"
@@ -509,7 +511,7 @@
 1321500019 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\menucomponent.cpp
 	"MenuComponent.hpp"
 
-1321500497 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\namingscreen.cpp
+1325261802 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\namingscreen.cpp
 	"NamingScreen.hpp"
 	"StringConstants.hpp"
 
@@ -521,7 +523,7 @@
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
-1325250861 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
+1325261821 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
 	<string>
 	"RaceSelectionScreen.hpp"
 	"Game.hpp"
@@ -532,7 +534,7 @@
 1321500806 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\textcomponent.cpp
 	"TextComponent.hpp"
 
-1321500839 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\welcomescreen.cpp
+1325261832 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\welcomescreen.cpp
 	"global_prototypes.hpp"
 	"StringConstants.hpp"
 	"StringTable.hpp"
@@ -647,9 +649,10 @@
 	<iostream>
 	<fstream>
 
-1321453062 source:c:\cygwin\home\julian\jrcpp\global_functions.cpp
+1325261874 source:c:\cygwin\home\julian\jrcpp\global_functions.cpp
 	<sstream>
 	"buildinfo.hpp"
+	"global_prototypes.hpp"
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
@@ -941,7 +944,7 @@
 1324998351 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1325256085 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1325260511 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Game.hpp"
@@ -953,12 +956,12 @@
 	"KeyboardCommandMap.hpp"
 	"Log.hpp"
 
-1325257353 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1325260430 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1325257254 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1325260748 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
 1325258566 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp

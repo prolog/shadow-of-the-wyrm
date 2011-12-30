@@ -1,3 +1,4 @@
+#include "Log.hpp"
 #include "TileGenerator.hpp"
 #include "tiles.hpp"
 #include "AllTiles.hpp"
@@ -8,6 +9,9 @@ TilePtr TileGenerator::generate(const TileType& tile_type)
 
   switch(tile_type)
   {
+    case TILE_TYPE_UNDEFINED:
+      Log::instance()->log("Attempting to generate an undefined tile type");
+      break;
     case TILE_TYPE_FIELD:
       result_tile = TilePtr(new FieldTile());
       break;

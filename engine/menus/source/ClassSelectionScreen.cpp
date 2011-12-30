@@ -9,8 +9,8 @@
 
 using namespace std;
 
-ClassSelectionScreen::ClassSelectionScreen(DisplayPtr display)
-: Menu(display)
+ClassSelectionScreen::ClassSelectionScreen(DisplayPtr new_display)
+: Menu(new_display)
 {
   initialize();
 }
