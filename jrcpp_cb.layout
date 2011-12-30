@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="SavageLands.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="2115" topLine="90" />
+		<Cursor position="989" topLine="48" />
 	</File>
 	<File name="controller\include\Controller.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="291" topLine="0" />
@@ -61,14 +61,14 @@
 	<File name="engine\commands\include\CommandFactory.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="99" topLine="0" />
 	</File>
-	<File name="engine\commands\include\CommandKeys.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="110" topLine="0" />
+	<File name="engine\commands\include\CommandKeys.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="649" topLine="0" />
 	</File>
-	<File name="engine\commands\include\CommandProcessor.hpp" open="1" top="0" tabpos="1">
+	<File name="engine\commands\include\CommandProcessor.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="36" topLine="0" />
 	</File>
 	<File name="engine\commands\include\Commands.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="84" topLine="0" />
+		<Cursor position="348" topLine="8" />
 	</File>
 	<File name="engine\commands\include\KeyboardCommandMap.hpp" open="0" top="0" tabpos="12">
 		<Cursor position="45" topLine="0" />
@@ -76,20 +76,20 @@
 	<File name="engine\commands\source\Command.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="105" topLine="0" />
 	</File>
-	<File name="engine\commands\source\CommandFactory.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="381" topLine="2" />
+	<File name="engine\commands\source\CommandFactory.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1594" topLine="42" />
 	</File>
-	<File name="engine\commands\source\CommandKeys.cpp" open="0" top="0" tabpos="13">
-		<Cursor position="82" topLine="0" />
+	<File name="engine\commands\source\CommandKeys.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="1152" topLine="15" />
 	</File>
-	<File name="engine\commands\source\CommandProcessor.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="193" topLine="0" />
+	<File name="engine\commands\source\CommandProcessor.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="594" topLine="15" />
 	</File>
 	<File name="engine\commands\source\Commands.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="59" topLine="0" />
+		<Cursor position="731" topLine="25" />
 	</File>
 	<File name="engine\commands\source\KeyboardCommandMap.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="847" topLine="17" />
+		<Cursor position="1034" topLine="24" />
 	</File>
 	<File name="engine\decision_strategies\include\DecisionStrategy.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="68" topLine="0" />
@@ -110,13 +110,13 @@
 		<Cursor position="802" topLine="23" />
 	</File>
 	<File name="engine\include\Conversion.hpp" open="0" top="0" tabpos="8">
-		<Cursor position="191" topLine="3" />
+		<Cursor position="644" topLine="27" />
 	</File>
 	<File name="engine\include\CreatureTranslator.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="1134" topLine="11" />
 	</File>
 	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="11">
-		<Cursor position="644" topLine="12" />
+		<Cursor position="1271" topLine="23" />
 	</File>
 	<File name="engine\include\Log.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="698" topLine="12" />
@@ -125,7 +125,7 @@
 		<Cursor position="374" topLine="0" />
 	</File>
 	<File name="engine\include\MessageManager.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="152" topLine="0" />
+		<Cursor position="120" topLine="0" />
 	</File>
 	<File name="engine\include\Naming.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="174" topLine="0" />
@@ -139,26 +139,35 @@
 	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="6845" topLine="182" />
 	</File>
+	<File name="engine\menus\source\ClassSelectionScreen.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="652" topLine="13" />
+	</File>
+	<File name="engine\menus\source\RaceSelectionScreen.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="592" topLine="12" />
+	</File>
+	<File name="engine\menus\source\WelcomeScreen.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="371" topLine="0" />
+	</File>
 	<File name="engine\source\Conversion.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="588" topLine="28" />
+		<Cursor position="2564" topLine="126" />
 	</File>
 	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="191" topLine="0" />
+		<Cursor position="762" topLine="17" />
 	</File>
 	<File name="engine\source\CreatureTranslator.cpp" open="0" top="0" tabpos="12">
-		<Cursor position="2898" topLine="68" />
+		<Cursor position="2432" topLine="62" />
 	</File>
-	<File name="engine\source\Game.cpp" open="1" top="1" tabpos="3">
-		<Cursor position="51" topLine="0" />
+	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="3507" topLine="134" />
 	</File>
 	<File name="engine\source\Log.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1869" topLine="86" />
 	</File>
 	<File name="engine\source\MapTranslator.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="1224" topLine="38" />
+		<Cursor position="2412" topLine="69" />
 	</File>
 	<File name="engine\source\MessageManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="1045" topLine="28" />
+		<Cursor position="389" topLine="6" />
 	</File>
 	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="568" topLine="10" />
@@ -167,13 +176,13 @@
 		<Cursor position="403" topLine="10" />
 	</File>
 	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2677" topLine="84" />
+		<Cursor position="3011" topLine="87" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="72" topLine="0" />
 	</File>
 	<File name="engine\source\unit_tests\Conversion_test.cpp" open="0" top="0" tabpos="11">
-		<Cursor position="218" topLine="0" />
+		<Cursor position="1251" topLine="40" />
 	</File>
 	<File name="engine\source\unit_tests\Messages_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="722" topLine="0" />

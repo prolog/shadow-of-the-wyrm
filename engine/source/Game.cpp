@@ -1,3 +1,4 @@
+#include "global_prototypes.hpp"
 #include "Game.hpp"
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
@@ -155,4 +156,13 @@ void Game::go()
 void Game::quit()
 {
   keep_playing = false;
+}
+
+void Game::version()
+{
+  MessageManager* manager = MessageManager::instance();
+  string game_version = get_game_version_synopsis();
+
+  manager->add_new_message(game_version);
+  manager->send();
 }

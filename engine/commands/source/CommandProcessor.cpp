@@ -24,5 +24,17 @@ void CommandProcessor::process(CommandPtr command)
     {
       game->quit();
     }
+    else if (command_name == CommandKeys::VERSION)
+    {
+      game->version();
+    }
+    else if (command_name == CommandKeys::SEARCH)
+    {
+      // ...
+    }
+    else if (CommandKeys::is_movement_type_key(command_name))
+    {
+      // ...
+    }
   }
 }

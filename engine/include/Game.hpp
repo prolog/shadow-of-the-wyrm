@@ -44,6 +44,7 @@ class Game
     // Quits the game.  Right now this just sets a boolean flag to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.
     void quit();
+    void version();
 
     bool keep_playing;
     static Game* game_instance;
