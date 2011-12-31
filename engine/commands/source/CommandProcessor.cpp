@@ -49,11 +49,11 @@ void CommandProcessor::process_command(CreaturePtr creature, Command* command)
     }
     else if (command_name == CommandKeys::VERSION)
     {
-      game->version();
+      game->actions.version();
     }
     else if (command_name == CommandKeys::SEARCH)
     {
-      game->search(creature);
+      game->actions.search(creature);
     }
   }
 }
@@ -70,7 +70,7 @@ void CommandProcessor::process_directional_command(CreaturePtr creature, Directi
     {
       Direction movement_direction = command->get_direction();
 
-      game->move(creature, movement_direction);
+      game->actions.move(creature, movement_direction);
     }
   }
 }

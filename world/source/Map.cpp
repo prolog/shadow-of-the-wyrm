@@ -96,9 +96,9 @@ void Map::clear_locations()
   locations.clear();
 }
 
-void Map::add_location(const string& location, const Coordinate& coordinate)
+void Map::add_or_update_location(const string& location, const Coordinate& coordinate)
 {
-  locations.insert(make_pair(location, coordinate));
+  locations[location] = coordinate;
 }
 
 Coordinate Map::get_location(const string& location) const

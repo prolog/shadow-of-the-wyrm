@@ -1,4 +1,8 @@
 #pragma once
+#include "Creature.hpp"
+#include "Directions.hpp"
+#include "Map.hpp"
+#include "MovementManager.hpp"
 
 class ActionManager
 {
@@ -6,6 +10,13 @@ class ActionManager
     ActionManager();
     ~ActionManager();
 
+    void set_current_map(MapPtr new_map);
+
+    void version();
+    void search(CreaturePtr creature);
+    void move(CreaturePtr creature, const Direction d);
+
   protected:
-    // Additional classes (movement, attacking, and so on) go here.
+    MovementManager movement_manager;
+    MapPtr map;
 };

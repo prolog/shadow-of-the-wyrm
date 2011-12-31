@@ -34,7 +34,7 @@ class Map
 		std::map<Coordinate, TilePtr > get_tiles() const;
 
     void clear_locations();
-    void add_location(const std::string& location, const Coordinate& coordinate);
+    void add_or_update_location(const std::string& location, const Coordinate& coordinate);
     Coordinate get_location(const std::string& location) const;
     TilePtr get_tile_at_location(const std::string& location);
 
