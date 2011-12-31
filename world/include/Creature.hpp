@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include <boost/uuid/uuid.hpp>
 #include "common.hpp"
 #include "Colours.hpp"
 #include "Controller.hpp"
@@ -16,6 +17,9 @@ class Creature
 {
   public:
     Creature();
+
+    void set_id(const boost::uuids::uuid& new_id);
+    boost::uuids::uuid get_id() const;
 
     // Quick hack.  Later on, this'll be some sort of Strategy, where the Player strategy sends commands
     // via keyboard/mouse/etc input.
@@ -124,6 +128,9 @@ class Creature
     DecisionStrategyPtr get_decision_strategy() const;
 
   protected:
+
+    boost::uuids::uuid id;
+
     bool is_player;
 
     // Basic vitals

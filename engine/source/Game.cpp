@@ -1,4 +1,5 @@
 #include "global_prototypes.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
@@ -98,7 +99,8 @@ void Game::create_new_world(CreaturePtr creature)
     if (creature->get_is_player())
     {
       Coordinate c = current_world->get_location(WorldMapLocationTextKeys::STARTING_LOCATION);
-      current_world->add_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
+      current_world->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c); // JCD FIXME: Can I delete CURRENT_PLAYER_LOCATION
+      current_world->add_or_update_location(Uuid::to_string(creature->get_id()), c);
     }
   }
   else
@@ -118,6 +120,7 @@ void Game::go()
 
   WorldPtr current_world = worlds.at(current_world_ix);
   current_map = current_world->get_world();
+  actions.set_current_map(current_map);
 
   // Main game loop.
   while(keep_playing)
@@ -156,35 +159,4 @@ void Game::go()
 void Game::quit()
 {
   keep_playing = false;
-}
-
-void Game::version()
-{
-  MessageManager* manager = MessageManager::instance();
-  string game_version = get_game_version_synopsis();
-
-  manager->add_new_message(game_version);
-  manager->send();
-}
-
-void Game::search(CreaturePtr creature)
-{
-  if (creature && creature->get_is_player())
-  {
-    MessageManager* manager = MessageManager::instance();
-    string search_message = StringTable::get(ActionTextKeys::ACTION_SEARCH);
-
-    manager->add_new_message(search_message);
-    manager->send();
-
-    // JCD FIXME: Add actual search to see if anything hidden was spotted.
-  }
-}
-
-void Game::move(CreaturePtr creature, const Direction d)
-{
-  if (creature)
-  {
-    cout << d << endl;
-  }
 }

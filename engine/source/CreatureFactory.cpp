@@ -1,3 +1,5 @@
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
 #include "ResistancesCalculator.hpp"
@@ -20,6 +22,10 @@ CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
 CreaturePtr CreatureFactory::create_by_race_and_class(const string& race_id, const string& class_id, const string& creature_name)
 {
   Creature creature;
+
+  // Generate a unique identifier for this creature.
+  boost::uuids::uuid id = boost::uuids::random_generator()();
+  creature.set_id(id);
 
   creature.set_name(creature_name);
   creature.set_race_id(race_id);

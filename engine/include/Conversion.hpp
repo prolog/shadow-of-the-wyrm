@@ -5,6 +5,15 @@
 #include "common.hpp"
 #include "Directions.hpp"
 
+// Forward declarations
+namespace boost
+{
+  namespace uuids
+  {
+    class uuid;
+  }
+}
+
 class Convert
 {
 
@@ -84,5 +93,15 @@ class Integer
   protected:
     Integer();
     ~Integer();
+};
+
+class Uuid
+{
+  public:
+    static std::string to_string(const boost::uuids::uuid& uuid);
+
+  protected:
+    Uuid();
+    ~Uuid();
 };
 

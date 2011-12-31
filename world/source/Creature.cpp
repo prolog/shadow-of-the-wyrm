@@ -16,6 +16,16 @@ Creature::Creature()
   set_soak (0);
 }
 
+void Creature::set_id(const boost::uuids::uuid& new_id)
+{
+  id = new_id;
+}
+
+boost::uuids::uuid Creature::get_id() const
+{
+  return id;
+}
+
 void Creature::set_is_player(const bool player, ControllerPtr controller)
 {
   is_player = player;

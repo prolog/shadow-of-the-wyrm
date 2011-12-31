@@ -1,3 +1,5 @@
+#include <boost/lexical_cast.hpp>
+#include <boost/uuid/uuid_io.hpp>
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
 
@@ -142,6 +144,21 @@ string Integer::to_string(const int convert)
 {
   string converted_int = Convert::to_string(convert);
   return converted_int;
+}
+
+// Boost uuid
+Uuid::Uuid()
+{
+}
+
+Uuid::~Uuid()
+{
+}
+
+string Uuid::to_string(const boost::uuids::uuid& convert)
+{
+  string converted_uuid = boost::lexical_cast<string>(convert);
+  return converted_uuid;
 }
 
 #ifdef UNIT_TESTS

@@ -63,7 +63,7 @@ void WorldGenerator::generate_little_island(MapPtr map)
   Coordinate c;
   c.first  = height - 3;
   c.second = width - 4;
-  map->add_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
+  map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
 
   forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-3, width-3, forest_tile);
