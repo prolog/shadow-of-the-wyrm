@@ -146,7 +146,7 @@ void Game::go()
         if (strategy)
         {
           CommandPtr command = strategy->get_decision();
-          CommandProcessor::process(command);
+          CommandProcessor::process(current_creature, command);
         }
       }
     }
@@ -165,4 +165,26 @@ void Game::version()
 
   manager->add_new_message(game_version);
   manager->send();
+}
+
+void Game::search(CreaturePtr creature)
+{
+  if (creature && creature->get_is_player())
+  {
+    MessageManager* manager = MessageManager::instance();
+    string search_message = StringTable::get(ActionTextKeys::ACTION_SEARCH);
+
+    manager->add_new_message(search_message);
+    manager->send();
+
+    // JCD FIXME: Add actual search to see if anything hidden was spotted.
+  }
+}
+
+void Game::move(CreaturePtr creature, const Direction d)
+{
+  if (creature)
+  {
+    cout << d << endl;
+  }
 }

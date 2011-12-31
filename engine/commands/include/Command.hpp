@@ -10,6 +10,7 @@ class Command
   protected:
     friend class CommandFactory;
     Command(const std::string& name);
+    virtual ~Command();
 
     std::string command_name;
 };

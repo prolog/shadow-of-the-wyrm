@@ -77,6 +77,10 @@ class TextKeys
 
     static std::string LEVEL;
     static std::string LEVEL_ABRV;
+
+  protected:
+    TextKeys();
+    ~TextKeys();
 };
 
 class SkillTextKeys
@@ -161,6 +165,10 @@ class SkillTextKeys
     static std::string SKILL_MAGIC_DIVINE;
     static std::string SKILL_MAGIC_MYSTIC;
     static std::string SKILL_MAGIC_PRIMORDIAL;
+
+  protected:
+    SkillTextKeys();
+    ~SkillTextKeys();
 };
 
 class ResistanceTextKeys
@@ -180,6 +188,10 @@ class ResistanceTextKeys
     static std::string RESISTANCE_SONIC;
     static std::string RESISTANCE_RADIANT;
     static std::string RESISTANCE_LIGHTNING;
+
+  protected:
+    ResistanceTextKeys();
+    ~ResistanceTextKeys();
 };
 
 class PromptTextKeys
@@ -187,6 +199,10 @@ class PromptTextKeys
   public:
     static std::string PROMPT_ANY_KEY;
     static std::string PROMPT_ENTER_YOUR_NAME;
+
+  protected:
+    PromptTextKeys();
+    ~PromptTextKeys();
 };
 
 class WorldMapLocationTextKeys
@@ -194,6 +210,21 @@ class WorldMapLocationTextKeys
   public:
     static std::string STARTING_LOCATION;
     static std::string CURRENT_PLAYER_LOCATION;
+
+  protected:
+    WorldMapLocationTextKeys();
+    ~WorldMapLocationTextKeys();
+};
+
+class ActionTextKeys
+{
+  public:
+    static std::string ACTION_SEARCH;
+    static std::string ACTION_MOVE_OFF_WORLD_MAP;
+
+  protected:
+    ActionTextKeys();
+    ~ActionTextKeys();
 };
 
 class TextMessages
@@ -202,6 +233,10 @@ class TextMessages
     static std::string get_welcome_message(const std::string& player_name);
 
   protected:
+    TextMessages();
+    ~TextMessages();
+
     static std::string WELCOME_MESSAGE;
 };
-// Todo: Define full text/abbreviation SIDs for statistics: Strength, Piety, etc.
+
+// JCD FIXME Todo: Define full text/abbreviation SIDs for statistics: Strength, Piety, etc.

@@ -1,12 +1,16 @@
 #pragma once
-#include "Command.hpp"
+#include "Commands.hpp"
+#include "Creature.hpp"
 
 class CommandProcessor
 {
   public:
-    static void process(CommandPtr command);
+    static void process(CreaturePtr creature, CommandPtr command);
 
   protected:
     CommandProcessor();
     ~CommandProcessor();
+
+    static void process_command(CreaturePtr creature, Command* command);
+    static void process_directional_command(CreaturePtr creature, DirectionalCommand* command);
 };

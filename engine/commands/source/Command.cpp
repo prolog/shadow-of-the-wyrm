@@ -7,6 +7,10 @@ Command::Command(const string& name)
 {
 }
 
+Command::~Command()
+{
+}
+
 string Command::get_name() const
 {
   return command_name;

@@ -183,6 +183,7 @@
 		<Unit filename="engine\generators\source\unit_tests\TileGenerator_test.cpp">
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="engine\include\ActionManager.hpp" />
 		<Unit filename="engine\include\Conversion.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\CreatureTranslator.hpp" />
@@ -218,6 +219,7 @@
 		<Unit filename="engine\menus\source\RaceSelectionScreen.cpp" />
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
+		<Unit filename="engine\source\ActionManager.cpp" />
 		<Unit filename="engine\source\Conversion.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
 		<Unit filename="engine\source\CreatureTranslator.cpp" />
