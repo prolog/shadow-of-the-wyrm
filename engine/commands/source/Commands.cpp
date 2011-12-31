@@ -24,9 +24,25 @@ VersionCommand::~VersionCommand()
 {
 }
 
+// Directional
+DirectionalCommand::DirectionalCommand(const Direction d)
+: Command("") // This will be a no-op command, since the command key is empty.
+, direction(d)
+{
+}
+
+DirectionalCommand::~DirectionalCommand()
+{
+}
+
+Direction DirectionalCommand::get_direction() const
+{
+  return direction;
+}
+
 // Movement
-MovementCommand::MovementCommand(const Direction direction)
-: Command(CommandKeys::MOVE_NORTHEAST)
+MovementCommand::MovementCommand(const Direction d)
+: DirectionalCommand(d)
 {
   // Get the direction CommandKey based on the Direction enum
   string name  = DirectionEnum::to_string(direction);

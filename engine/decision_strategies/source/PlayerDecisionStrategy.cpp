@@ -22,7 +22,7 @@ CommandPtr PlayerDecisionStrategy::get_decision()
   while (!player_command)
   {
     char key = controller->get_character();
-    string command_key_s = KeyboardCommandMap::get_command_type(Char::to_string(key));
+    string command_key_s = KeyboardCommandMap::get_command_type(Integer::to_string(key));
     player_command = CommandFactory::create(command_key_s);
   }
 

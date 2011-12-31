@@ -4,6 +4,14 @@
 
 using namespace std;
 
+TextKeys::TextKeys()
+{
+}
+
+TextKeys::~TextKeys()
+{
+}
+
 string TextKeys::SL_TITLE    = "SL_TITLE";
 string TextKeys::SL_TITLE_POEM = "SL_TITLE_POEM";
 string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
@@ -11,7 +19,6 @@ string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 string TextKeys::SELECT_RACE = "SELECT_RACE";
 string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 
-// JCD FIXME: Refactor
 string TextKeys::RACE_1_NAME = "RACE_1_NAME";
 string TextKeys::RACE_1_SHORT_DESC = "RACE_1_SHORT_DESC";
 string TextKeys::RACE_1_DESC = "RACE_1_DESC";
@@ -77,6 +84,14 @@ string TextKeys::SOAK_ABRV         = "SOAK_ABRV";
 
 string TextKeys::LEVEL             = "LEVEL";
 string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
+
+SkillTextKeys::SkillTextKeys()
+{
+}
+
+SkillTextKeys::~SkillTextKeys()
+{
+}
 
 // SkillTextKeys
 // General (NWP)
@@ -160,6 +175,14 @@ string SkillTextKeys::SKILL_MAGIC_MYSTIC = "SKILL_MAGIC_MYSTIC";
 string SkillTextKeys::SKILL_MAGIC_PRIMORDIAL = "SKILL_MAGIC_PRIMORDIAL";
 
 // Resistances
+ResistanceTextKeys::ResistanceTextKeys()
+{
+}
+
+ResistanceTextKeys::~ResistanceTextKeys()
+{
+}
+
 string ResistanceTextKeys::RESISTANCE_SLASH = "RESISTANCE_SLASH";
 string ResistanceTextKeys::RESISTANCE_POUND = "RESISTANCE_POUND";
 string ResistanceTextKeys::RESISTANCE_PIERCE = "RESISTANCE_PIERCE";
@@ -176,14 +199,50 @@ string ResistanceTextKeys::RESISTANCE_RADIANT = "RESISTANCE_RADIANT";
 string ResistanceTextKeys::RESISTANCE_LIGHTNING = "RESISTANCE_LIGHTNING";
 
 // Prompts
+PromptTextKeys::PromptTextKeys()
+{
+}
+
+PromptTextKeys::~PromptTextKeys()
+{
+}
+
 string PromptTextKeys::PROMPT_ANY_KEY = "PROMPT_ANY_KEY";
 string PromptTextKeys::PROMPT_ENTER_YOUR_NAME = "PROMPT_ENTER_YOUR_NAME";
 
 // Special locations on the world map
+WorldMapLocationTextKeys::WorldMapLocationTextKeys()
+{
+}
+
+WorldMapLocationTextKeys::~WorldMapLocationTextKeys()
+{
+}
+
 string WorldMapLocationTextKeys::STARTING_LOCATION = "STARTING_LOCATION";
 string WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION = "CURRENT_PLAYER_LOCATION";
 
+// Text keys for player/creature actions
+ActionTextKeys::ActionTextKeys()
+{
+}
+
+ActionTextKeys::~ActionTextKeys()
+{
+}
+
+string ActionTextKeys::ACTION_SEARCH = "ACTION_SEARCH";
+string ActionTextKeys::ACTION_MOVE_OFF_WORLD_MAP = "ACTION_MOVE_OFF_WORLD_MAP";
+
 // Messages that can be sent to the user in the message buffer
+TextMessages::TextMessages()
+{
+}
+
+TextMessages::~TextMessages()
+{
+}
+
 string TextMessages::WELCOME_MESSAGE = "WELCOME_MESSAGE";
 
 

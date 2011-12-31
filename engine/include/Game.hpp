@@ -1,5 +1,7 @@
 #pragma once
 #include <vector>
+#include "ActionManager.hpp"
+#include "Directions.hpp"
 #include "DisplayTile.hpp"
 #include "Display.hpp"
 #include "Race.hpp"
@@ -41,10 +43,14 @@ class Game
     // Game commands - protected, so they should only be called by SavageLandsEngine
     // or CommandProcessor.
 
+    // FIXME: Refactor the actions into a separate class, eventually.
+    //
     // Quits the game.  Right now this just sets a boolean flag to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.
     void quit();
     void version();
+    void search(CreaturePtr creature);
+    void move(CreaturePtr creature, const Direction d);
 
     bool keep_playing;
     static Game* game_instance;
@@ -68,4 +74,7 @@ class Game
 
     // The currently-loaded map
     MapPtr current_map;
+
+    // The action manager
+    ActionManager actions;
 };

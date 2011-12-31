@@ -130,11 +130,10 @@ MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
 }
 
 // When done, translate the cell map MapPtr.
-MapPtr WorldGenerator::generate_random_islands(MapPtr map)
+MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
   TilePtr tile;
-  Dimensions dimensions = map->size();
+  Dimensions dimensions = result_map->size();
 
   // Field-Islands
   CellularAutomataSettings cas(55, 50000, 4, 54, CELL_OFF);

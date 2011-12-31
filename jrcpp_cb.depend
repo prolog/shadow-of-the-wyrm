@@ -413,7 +413,7 @@
 	"tiles.hpp"
 	"RNG.hpp"
 
-1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\forestgenerator.cpp
+1325276804 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\forestgenerator.cpp
 	"ForestGenerator.hpp"
 	"SpringsGenerator.hpp"
 	"StreamGenerator.hpp"
@@ -487,7 +487,7 @@
 1321453060 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
 	"gtest/gtest.h"
 
-1325276617 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+1325279274 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
 	<vector>
 	"WorldGenerator.hpp"
 	"TileGenerator.hpp"
@@ -568,7 +568,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1325256236 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1325344282 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
 	"Game.hpp"
 	"CommandProcessor.hpp"
@@ -638,7 +638,7 @@
 	"RaceSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1324144651 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1325343240 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -695,7 +695,7 @@
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
-1322267391 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+1325276682 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	"Skills.hpp"
@@ -932,7 +932,7 @@
 1324838764 source:c:\cygwin\home\julian\jrcpp\world\decision_strategies\source\playerdecisionstrategy.cpp
 	"PlayerDecisionStrategy.hpp"
 
-1325091534 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+1325342855 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
 	<string>
 	"PlayerDecisionStrategy.hpp"
 	"Command.hpp"
@@ -941,18 +941,23 @@
 	"KeyboardCommandMap.hpp"
 	"Map.hpp"
 
-1324998351 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
+1325338902 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1325260511 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1325344296 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
+	"Commands.hpp"
 	"Game.hpp"
 
 1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
 
-1325256042 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1325342023 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+	<ncurses.h>
+	"CommandKeys.hpp"
+	"Conversion.hpp"
 	"KeyboardCommandMap.hpp"
 	"Log.hpp"
 
@@ -964,8 +969,11 @@
 1325260748 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1325258566 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1325338965 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
+
+1325345114 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
+	"ActionManager.hpp"
 
