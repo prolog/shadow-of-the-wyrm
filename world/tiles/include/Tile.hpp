@@ -18,7 +18,9 @@ class Tile
     virtual void set_explored(bool new_explored);
     virtual bool get_explored() const;
 
+    virtual bool has_creature() const;
     virtual void set_creature(const CreaturePtr& new_creature);
+    virtual void remove_creature();
     virtual CreaturePtr get_creature() const;
 
     virtual TileType get_tile_type() const;
@@ -35,7 +37,7 @@ class Tile
 
     // Each tile can have at most one creature on it.
     CreaturePtr creature;
-    
+
     // Each tile can have any number of items piled up on it.
     std::vector<ItemPtr> items;
 };
