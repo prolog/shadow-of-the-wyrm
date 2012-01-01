@@ -39,9 +39,19 @@ bool Tile::get_explored() const
   return explored;
 }
 
+bool Tile::has_creature() const
+{
+  return (creature != NULL);
+}
+
 void Tile::set_creature(const CreaturePtr& new_creature)
 {
   creature = new_creature;
+}
+
+void Tile::remove_creature()
+{
+  creature.reset();
 }
 
 CreaturePtr Tile::get_creature() const

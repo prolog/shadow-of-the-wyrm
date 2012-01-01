@@ -274,7 +274,7 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1324520020 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1325433724 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -487,7 +487,7 @@
 1321453060 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
 	"gtest/gtest.h"
 
-1325279274 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+1325353211 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
 	<vector>
 	"WorldGenerator.hpp"
 	"TileGenerator.hpp"
@@ -540,7 +540,9 @@
 	"StringTable.hpp"
 	"WelcomeScreen.hpp"
 
-1325258945 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+1325353054 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+	<boost/lexical_cast.hpp>
+	<boost/uuid/uuid_io.hpp>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"unit_tests/Conversion_test.cpp"
@@ -548,7 +550,9 @@
 1325259810 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
-1325250998 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1325352477 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+	<boost/uuid/uuid_generators.hpp>
+	<boost/uuid/uuid_io.hpp>
 	"CreatureFactory.hpp"
 	"Game.hpp"
 	"ResistancesCalculator.hpp"
@@ -568,8 +572,9 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1325344282 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1325353194 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
+	"Conversion.hpp"
 	"Game.hpp"
 	"CommandProcessor.hpp"
 	"CreatureTranslator.hpp"
@@ -586,7 +591,7 @@
 	"Game.hpp"
 	"MapTranslator.hpp"
 
-1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+1325428795 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
 	"MapUtils.hpp"
 	<iostream>
 
@@ -597,7 +602,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1325250910 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1325432942 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -663,7 +668,7 @@
 	<sstream>
 	"Class.hpp"
 
-1325012032 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1325352346 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -677,7 +682,7 @@
 1322004525 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
 	"Item.hpp"
 
-1324999688 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1325352719 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	"Map.hpp"
 
 1321718404 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
@@ -860,7 +865,7 @@
 1322749461 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\staircasetile.cpp
 	"StaircaseTile.hpp"
 
-1322406851 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
+1325429165 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
 	"Tile.hpp"
 	"unit_tests/Tile_test.cpp"
 
@@ -932,7 +937,7 @@
 1324838764 source:c:\cygwin\home\julian\jrcpp\world\decision_strategies\source\playerdecisionstrategy.cpp
 	"PlayerDecisionStrategy.hpp"
 
-1325342855 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+1325432988 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
 	<string>
 	"PlayerDecisionStrategy.hpp"
 	"Command.hpp"
@@ -944,7 +949,7 @@
 1325338902 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1325344296 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1325347122 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
@@ -954,7 +959,7 @@
 1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
 
-1325342023 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1325430039 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -974,6 +979,15 @@
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 
-1325345114 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
+1325351634 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
+	<string>
+	"global_prototypes.hpp"
 	"ActionManager.hpp"
+	"MessageManager.hpp"
+
+1325431828 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
+	"Conversion.hpp"
+	"MessageManager.hpp"
+	"MovementManager.hpp"
+	"MapUtils.hpp"
 

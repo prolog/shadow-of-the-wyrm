@@ -250,7 +250,7 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   int map_rows = d.get_y();
   int map_cols = d.get_x();
 
-  for (int terminal_row = MAP_START_ROW; terminal_row < map_rows; terminal_row++)
+  for (int terminal_row = MAP_START_ROW; terminal_row < map_rows + MAP_START_ROW-1; terminal_row++)
   {
     for (int terminal_col = MAP_START_COL; terminal_col < map_cols; terminal_col++)
     {
@@ -461,8 +461,6 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points);
   if (can_print) mvprintw(current_row, current_col, arc_points.c_str());
-
-  refresh();
 }
 
 bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const int initial_row, int* current_row, int* current_col, const string& current_stat, const string& next_stat)
@@ -470,7 +468,6 @@ bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const int
   bool can_print = true;
 
   mvprintw(*current_row, *current_col, current_stat.c_str());
-  refresh();
 
   can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
 

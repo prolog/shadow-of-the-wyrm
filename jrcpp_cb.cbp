@@ -196,6 +196,7 @@
 		<Unit filename="engine\include\Message.hpp" />
 		<Unit filename="engine\include\MessageManager.hpp" />
 		<Unit filename="engine\include\Messages.hpp" />
+		<Unit filename="engine\include\MovementManager.hpp" />
 		<Unit filename="engine\include\Naming.hpp" />
 		<Unit filename="engine\include\RNG.hpp" />
 		<Unit filename="engine\include\SavageLandsEngine.hpp" />
@@ -231,6 +232,7 @@
 		<Unit filename="engine\source\Message.cpp" />
 		<Unit filename="engine\source\MessageManager.cpp" />
 		<Unit filename="engine\source\Messages.cpp" />
+		<Unit filename="engine\source\MovementManager.cpp" />
 		<Unit filename="engine\source\Naming.cpp" />
 		<Unit filename="engine\source\RNG.cpp" />
 		<Unit filename="engine\source\SavageLandsEngine.cpp" />

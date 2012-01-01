@@ -46,19 +46,20 @@ void KeyboardCommandMap::initialize_command_mapping()
 {
   command_mapping.clear();
 
-  command_mapping.insert(make_pair("Q", CommandKeys::QUIT));
-  command_mapping.insert(make_pair("v", CommandKeys::VERSION));
-  command_mapping.insert(make_pair("s", CommandKeys::SEARCH));
-  command_mapping.insert(make_pair("5", CommandKeys::SEARCH));
-  command_mapping.insert(make_pair("1", CommandKeys::MOVE_SOUTHWEST));
-  command_mapping.insert(make_pair("2", CommandKeys::MOVE_SOUTH));
-  command_mapping.insert(make_pair("3", CommandKeys::MOVE_SOUTHEAST));
-  command_mapping.insert(make_pair("4", CommandKeys::MOVE_WEST));
-  command_mapping.insert(make_pair("6", CommandKeys::MOVE_EAST));
-  command_mapping.insert(make_pair("7", CommandKeys::MOVE_NORTHWEST));
-  command_mapping.insert(make_pair("8", CommandKeys::MOVE_NORTH));
-  command_mapping.insert(make_pair("9", CommandKeys::MOVE_NORTHEAST));
+  command_mapping.insert(make_pair(Integer::to_string('Q'), CommandKeys::QUIT));
+  command_mapping.insert(make_pair(Integer::to_string('v'), CommandKeys::VERSION));
+  command_mapping.insert(make_pair(Integer::to_string('s'), CommandKeys::SEARCH));
+  command_mapping.insert(make_pair(Integer::to_string('5'), CommandKeys::SEARCH));
+  command_mapping.insert(make_pair(Integer::to_string('1'), CommandKeys::MOVE_SOUTHWEST));
+  command_mapping.insert(make_pair(Integer::to_string('2'), CommandKeys::MOVE_SOUTH));
+  command_mapping.insert(make_pair(Integer::to_string('3'), CommandKeys::MOVE_SOUTHEAST));
+  command_mapping.insert(make_pair(Integer::to_string('4'), CommandKeys::MOVE_WEST));
+  command_mapping.insert(make_pair(Integer::to_string('6'), CommandKeys::MOVE_EAST));
+  command_mapping.insert(make_pair(Integer::to_string('7'), CommandKeys::MOVE_NORTHWEST));
+  command_mapping.insert(make_pair(Integer::to_string('8'), CommandKeys::MOVE_NORTH));
+  command_mapping.insert(make_pair(Integer::to_string('9'), CommandKeys::MOVE_NORTHEAST));
   // NCurses-specific movement keys
+  // JCD FIXME: These aren't working, yet.
   command_mapping.insert(make_pair(Integer::to_string(KEY_UP), CommandKeys::MOVE_NORTH));
   command_mapping.insert(make_pair(Integer::to_string(KEY_DOWN), CommandKeys::MOVE_SOUTH));
   command_mapping.insert(make_pair(Integer::to_string(KEY_RIGHT), CommandKeys::MOVE_EAST));

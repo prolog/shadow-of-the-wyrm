@@ -3,6 +3,68 @@
 
 using namespace std;
 
+// Check to see if movement in a given direction is valid.
+bool MapUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d)
+{
+  bool valid_move = true;
+
+  int max_row = dim.get_y();
+  int max_col = dim.get_x();
+
+  Coordinate new_coord = get_new_coordinate(c, d);
+  int new_row = new_coord.first;
+  int new_col = new_coord.second;
+
+  if (new_row < 0 || new_row >= max_row || new_col < 0 || new_col >= max_col)
+  {
+    valid_move = false;
+  }
+
+  return valid_move;
+}
+
+// Generate the next coordinate in a given direction.  Does not do correctness checking!
+Coordinate MapUtils::get_new_coordinate(const Coordinate& c, const Direction d)
+{
+  Coordinate new_coord = c;
+
+  switch(d)
+  {
+    case DIRECTION_SOUTH_WEST:
+      new_coord.first++;
+      new_coord.second--;
+      break;
+    case DIRECTION_SOUTH:
+      new_coord.first++;
+      break;
+    case DIRECTION_SOUTH_EAST:
+      new_coord.first++;
+      new_coord.second++;
+      break;
+    case DIRECTION_WEST:
+      new_coord.second--;
+      break;
+    case DIRECTION_EAST:
+      new_coord.second++;
+      break;
+    case DIRECTION_NORTH_WEST:
+      new_coord.first--;
+      new_coord.second--;
+      break;
+    case DIRECTION_NORTH:
+      new_coord.first--;
+      break;
+    case DIRECTION_NORTH_EAST:
+      new_coord.first++;
+      new_coord.second++;
+      break;
+    default:
+      break;
+  }
+
+  return new_coord;
+}
+
 // Add the tile and its connected tiles to the Component.
 void MapUtils::add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const set<TileType>& exclusion_tiles, Component* component)
 {
