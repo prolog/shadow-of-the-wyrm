@@ -55,7 +55,7 @@ Coordinate MapUtils::get_new_coordinate(const Coordinate& c, const Direction d)
       new_coord.first--;
       break;
     case DIRECTION_NORTH_EAST:
-      new_coord.first++;
+      new_coord.first--;
       new_coord.second++;
       break;
     default:
