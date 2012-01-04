@@ -244,20 +244,20 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   refresh_terminal_size();
 
   DisplayTile display_tile;
-  Coordinate coords;
+  Coordinate map_coords;
 
   Dimensions d = current_map.size();
   int map_rows = d.get_y();
   int map_cols = d.get_x();
 
-  for (int terminal_row = MAP_START_ROW; terminal_row < map_rows + MAP_START_ROW-1; terminal_row++)
+  for (int terminal_row = MAP_START_ROW; terminal_row < map_rows + MAP_START_ROW; terminal_row++)
   {
-    for (int terminal_col = MAP_START_COL; terminal_col < map_cols; terminal_col++)
+    for (int terminal_col = MAP_START_COL; terminal_col < map_cols + MAP_START_COL; terminal_col++)
     {
-      coords.first = terminal_row;
-      coords.second = terminal_col;
+      map_coords.first = terminal_row - MAP_START_ROW;
+      map_coords.second = terminal_col - MAP_START_COL;
 
-      display_tile = current_map.at(coords);
+      display_tile = current_map.at(map_coords);
 
       int colour = display_tile.get_colour();
 
@@ -271,7 +271,7 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   }
 
   Coordinate cursor_coord = current_map.get_cursor_coordinate();
-  move(cursor_coord.first, cursor_coord.second);
+  move(cursor_coord.first+MAP_START_ROW, cursor_coord.second+MAP_START_COL);
 }
 
 /*!
@@ -285,7 +285,7 @@ MapDisplayArea NCursesDisplay::get_map_display_area()
   MapDisplayArea map_display_area;
 
   map_display_area.set_width(TERMINAL_MAX_COLS);
-  map_display_area.set_height(TERMINAL_MAX_ROWS - 4); // FIXME: Remove magic num later
+  map_display_area.set_height(TERMINAL_MAX_ROWS - 5); // FIXME: Remove magic num later
 
   return map_display_area;
 }
