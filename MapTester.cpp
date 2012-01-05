@@ -451,7 +451,6 @@ int main(int argc, char** argv)
     cout << "15. Display class info" << endl;
     cout << "-1. Quit" << endl << endl;
     cin >> option;
-    //option = 1;
 
     switch(option)
     {
