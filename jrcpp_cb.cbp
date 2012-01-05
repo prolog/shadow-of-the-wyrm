@@ -48,6 +48,29 @@
 					<Add library="..\..\..\..\MinGW\lib\libncurses.a" />
 				</Linker>
 			</Target>
+			<Target title="MapTester">
+				<Option output="MapTester" prefix_auto="1" extension_auto="1" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-pg" />
+					<Add option="-g" />
+				</Compiler>
+				<Linker>
+					<Add option="-pg -lgmon" />
+					<Add library="..\gtest\gtest-1.6.0\lib\libgtest_main.a" />
+					<Add library="..\gtest\gtest-1.6.0\lib\libgtest.a" />
+					<Add library="..\..\..\..\MinGW\lib\libxerces-c.a" />
+					<Add library="..\..\..\..\MinGW\lib\libmenu.a" />
+					<Add library="..\..\..\..\MinGW\lib\libncurses.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_filesystem-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_filesystem-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_date_time-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_date_time-mgw46-mt-d-1_48.a" />
+				</Linker>
+			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wshadow" />
@@ -73,8 +96,12 @@
 		</Linker>
 		<Unit filename="MapTester.cpp">
 			<Option target="Release" />
+			<Option target="MapTester" />
 		</Unit>
-		<Unit filename="SavageLands.cpp" />
+		<Unit filename="SavageLands.cpp">
+			<Option target="Debug" />
+			<Option target="Release" />
+		</Unit>
 		<Unit filename="controller\include\Controller.hpp" />
 		<Unit filename="controller\include\NCursesKeyboardController.hpp" />
 		<Unit filename="controller\source\NCursesKeyboardController.cpp" />
@@ -261,9 +288,6 @@
 		<Unit filename="include\buildinfo.hpp" />
 		<Unit filename="include\common.hpp" />
 		<Unit filename="include\global_prototypes.hpp" />
-		<Unit filename="main.cpp">
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="world\include\Class.hpp" />
 		<Unit filename="world\include\Creature.hpp" />
 		<Unit filename="world\include\CreatureFeatures.hpp" />
