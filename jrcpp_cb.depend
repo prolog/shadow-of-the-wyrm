@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1325773467 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
+1325812825 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
 	<iostream>
 	<fstream>
 	<boost/shared_ptr.hpp>
@@ -10,6 +10,7 @@
 	"RoadGenerator.hpp"
 	"RuinsGenerator.hpp"
 	"MarshGenerator.hpp"
+	"SeaGenerator.hpp"
 	"SettlementGenerator.hpp"
 	"KeepRuinsGenerator.hpp"
 	"SettlementRuinsGenerator.hpp"
@@ -990,4 +991,7 @@
 	"MessageManager.hpp"
 	"MovementManager.hpp"
 	"MapUtils.hpp"
+
+1325810284 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\seagenerator.cpp
+	"SeaGenerator.hpp"
 

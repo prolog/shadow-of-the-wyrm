@@ -12,7 +12,6 @@ class Generator
   friend class GeneratorTest;
   #endif
 
-  // JCD FIXME: Class should probably be made static at some point.
   public:
     virtual MapPtr generate();
     virtual MapPtr generate(const Dimensions& dim) = 0;

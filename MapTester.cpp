@@ -8,6 +8,7 @@
 #include "RoadGenerator.hpp"
 #include "RuinsGenerator.hpp"
 #include "MarshGenerator.hpp"
+#include "SeaGenerator.hpp"
 #include "SettlementGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
 #include "SettlementRuinsGenerator.hpp"
@@ -41,8 +42,10 @@ string generate_settlement();
 string generate_spiral_dungeon();
 string generate_field_road();
 string generate_forest_road();
+string generate_sea();
 string generate_world();
 string generate_cavern();
+
 void   initialize_settings();
 void   print_skill_name();
 void   race_info();
@@ -269,6 +272,14 @@ string generate_spiral_dungeon()
   return map_to_string(sd_map);
 }
 
+string generate_sea()
+{
+  GeneratorPtr sea_gen = GeneratorPtr(new SeaGenerator());
+  MapPtr sea_map = sea_gen->generate();
+  cout << map_to_string(sea_map, false);
+  return map_to_string(sea_map);
+}
+
 string generate_world()
 {
   // Add inputs for parameters later!
@@ -444,11 +455,12 @@ int main(int argc, char** argv)
     cout << "8. Spiral Dungeon" << endl;
     cout << "9. Road (Field)" << endl;
     cout << "10. Road (Forest)" << endl;
-    cout << "11. World" << endl;
-    cout << "12. Cavern" << endl;
-    cout << "13. Quick skill name test" << endl;
-    cout << "14. Display race info" << endl;
-    cout << "15. Display class info" << endl;
+    cout << "11. Sea" << endl;
+    cout << "12. World" << endl;
+    cout << "13. Cavern" << endl;
+    cout << "14. Quick skill name test" << endl;
+    cout << "15. Display race info" << endl;
+    cout << "16. Display class info" << endl;
     cout << "-1. Quit" << endl << endl;
     cin >> option;
 
@@ -495,20 +507,24 @@ int main(int argc, char** argv)
         output_map(map, "forest_road_test.html");
         break;
       case 11:
+        map = generate_sea();
+        output_map(map, "sea_test.html");
+        break;
+      case 12:
         map = generate_world();
         output_map(map, "world_test.html");
         break;
-      case 12:
+      case 13:
         map = generate_cavern();
         output_map(map, "cavern_test.html");
         break;
-      case 13:
+      case 14:
         print_skill_name();
         break;
-      case 14:
+      case 15:
         race_info();
         break;
-      case 15:
+      case 16:
         class_info();
         break;
       default:
