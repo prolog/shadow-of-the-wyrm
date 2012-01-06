@@ -37,7 +37,8 @@
 				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
-					<Add option="-O2" />
+					<Add option="-Os" />
+					<Add option="-O3" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
@@ -46,11 +47,17 @@
 					<Add library="..\..\..\..\MinGW\lib\libxerces-c.a" />
 					<Add library="..\..\..\..\MinGW\lib\libmenu.a" />
 					<Add library="..\..\..\..\MinGW\lib\libncurses.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_filesystem-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_filesystem-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_date_time-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_date_time-mgw46-mt-d-1_48.a" />
 				</Linker>
 			</Target>
 			<Target title="MapTester">
 				<Option output="MapTester" prefix_auto="1" extension_auto="1" />
-				<Option type="0" />
+				<Option type="1" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-pg" />
@@ -178,8 +185,10 @@
 		<Unit filename="engine\generators\include\Generator.hpp" />
 		<Unit filename="engine\generators\include\KeepRuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\MarshGenerator.hpp" />
+		<Unit filename="engine\generators\include\MountainsGenerator.hpp" />
 		<Unit filename="engine\generators\include\RoadGenerator.hpp" />
 		<Unit filename="engine\generators\include\RuinsGenerator.hpp" />
+		<Unit filename="engine\generators\include\SeaGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementRuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\SpiralDungeonGenerator.hpp" />
@@ -195,8 +204,10 @@
 		<Unit filename="engine\generators\source\Generator.cpp" />
 		<Unit filename="engine\generators\source\KeepRuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\MarshGenerator.cpp" />
+		<Unit filename="engine\generators\source\MountainsGenerator.cpp" />
 		<Unit filename="engine\generators\source\RoadGenerator.cpp" />
 		<Unit filename="engine\generators\source\RuinsGenerator.cpp" />
+		<Unit filename="engine\generators\source\SeaGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementRuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\SpiralDungeonGenerator.cpp" />

@@ -1,7 +1,8 @@
+#pragma once
 #include "Generator.hpp"
 
 class SeaGenerator : public Generator
 {
   public:
-  protected:
+    virtual MapPtr generate(const Dimensions& dim);
 };

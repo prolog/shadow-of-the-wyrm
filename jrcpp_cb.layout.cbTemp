@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="MapTester" />
-	<File name="MapTester.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="0" topLine="0" />
+	<File name="MapTester.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="7866" topLine="262" />
 	</File>
 	<File name="SavageLands.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="989" topLine="48" />
@@ -106,26 +106,14 @@
 	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="535" topLine="7" />
 	</File>
-	<File name="engine\generators\include\Generator.hpp" open="1" top="0" tabpos="9">
-		<Cursor position="270" topLine="0" />
-	</File>
-	<File name="engine\generators\include\SeaGenerator.hpp" open="1" top="0" tabpos="12">
-		<Cursor position="94" topLine="0" />
-	</File>
 	<File name="engine\generators\source\CellularAutomataGenerator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="4865" topLine="185" />
 	</File>
-	<File name="engine\generators\source\ForestGenerator.cpp" open="1" top="0" tabpos="10">
-		<Cursor position="1002" topLine="22" />
-	</File>
-	<File name="engine\generators\source\MountainsGenerator.cpp" open="1" top="1" tabpos="13">
-		<Cursor position="193" topLine="0" />
+	<File name="engine\generators\source\ForestGenerator.cpp" open="0" top="0" tabpos="13">
+		<Cursor position="3225" topLine="113" />
 	</File>
 	<File name="engine\generators\source\RoadGenerator.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="524" topLine="12" />
-	</File>
-	<File name="engine\generators\source\SeaGenerator.cpp" open="1" top="0" tabpos="11">
-		<Cursor position="179" topLine="0" />
 	</File>
 	<File name="engine\generators\source\TileGenerator.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="19" topLine="0" />
