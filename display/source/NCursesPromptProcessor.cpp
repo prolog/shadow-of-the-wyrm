@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include "NCursesConstants.hpp"
 #include "NCursesPromptProcessor.hpp"
 
@@ -44,7 +45,22 @@ int NCursesPromptProcessor::get_prompt(WINDOW* window, MENU* options_menu)
       case KEY_UP:
         menu_driver(options_menu, REQ_UP_ITEM);
         break;
+      case KEY_LEFT:
+        menu_driver(options_menu, REQ_LEFT_ITEM);
+        break;
+      case KEY_RIGHT:
+        menu_driver(options_menu, REQ_RIGHT_ITEM);
+        break;
+      case NC_BACKSPACE_KEY:
+        menu_driver(options_menu, REQ_CLEAR_PATTERN);
+        menu_driver(options_menu, REQ_FIRST_ITEM);
+        break;
       default:
+        if (isalpha(c))
+        {
+          menu_driver(options_menu, c);
+        }
+
         break;
     }
 

@@ -31,6 +31,9 @@ class Creature
     void set_name(const std::string& new_name);
     std::string get_name() const;
 
+    void set_sex(const CreatureSex new_sex);
+    CreatureSex get_sex() const;
+
     void set_age(const Statistic& new_age);
     Statistic get_age() const;
 
@@ -135,6 +138,7 @@ class Creature
 
     // Basic vitals
     std::string name;
+    CreatureSex sex;
     Statistic age;
     CreatureSize size;
 

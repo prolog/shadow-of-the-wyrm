@@ -10,7 +10,6 @@ Menu::Menu(DisplayPtr new_display)
 {
   game_display = new_display;
   user_prompt = PromptPtr(new NullPrompt());
-  initialize();
 }
 
 Menu::~Menu()

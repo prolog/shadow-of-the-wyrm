@@ -4,13 +4,14 @@
 using namespace std;
 
 // Set a reasonable set of default values for simple types, which are helpfully initialized to bullshit memory.
-// Why did I write this in C++, again?
+// Why did I write this in C++?
 Creature::Creature()
 : is_player(false)
+, sex( CREATURE_SEX_MALE )
 , size( CREATURE_SIZE_MEDIUM )
 , symbol('?')
 , colour(COLOUR_BLACK)
-// Everything else is a string, Statistic, etc.
+// Everything else is a string, Statistic, etc, and is not a primitive type.  These'll have their own constructors.
 {
   set_evade(0);
   set_soak (0);
@@ -54,6 +55,16 @@ void Creature::set_name(const string& new_name)
 string Creature::get_name() const
 {
   return name;
+}
+
+void Creature::set_sex(const CreatureSex new_sex)
+{
+  sex = new_sex;
+}
+
+CreatureSex Creature::get_sex() const
+{
+  return sex;
 }
 
 void Creature::set_age(const Statistic& new_age)

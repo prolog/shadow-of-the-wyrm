@@ -247,6 +247,7 @@
 		<Unit filename="engine\menus\include\OptionsComponent.hpp" />
 		<Unit filename="engine\menus\include\Prompt.hpp" />
 		<Unit filename="engine\menus\include\RaceSelectionScreen.hpp" />
+		<Unit filename="engine\menus\include\SexSelectionScreen.hpp" />
 		<Unit filename="engine\menus\include\TextComponent.hpp" />
 		<Unit filename="engine\menus\include\WelcomeScreen.hpp" />
 		<Unit filename="engine\menus\source\ClassSelectionScreen.cpp" />
@@ -256,6 +257,7 @@
 		<Unit filename="engine\menus\source\OptionsComponent.cpp" />
 		<Unit filename="engine\menus\source\Prompt.cpp" />
 		<Unit filename="engine\menus\source\RaceSelectionScreen.cpp" />
+		<Unit filename="engine\menus\source\SexSelectionScreen.cpp" />
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
 		<Unit filename="engine\source\ActionManager.cpp" />

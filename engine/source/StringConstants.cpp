@@ -18,6 +18,9 @@ string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
 string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 string TextKeys::SELECT_RACE = "SELECT_RACE";
 string TextKeys::SELECT_CLASS = "SELECT_CLASS";
+string TextKeys::SELECT_SEX = "SELECT_SEX";
+string TextKeys::SEX_MALE = "SEX_MALE";
+string TextKeys::SEX_FEMALE = "SEX_FEMALE";
 
 string TextKeys::RACE_1_NAME = "RACE_1_NAME";
 string TextKeys::RACE_1_SHORT_DESC = "RACE_1_SHORT_DESC";
