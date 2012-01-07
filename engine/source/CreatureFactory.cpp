@@ -19,7 +19,13 @@ CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
   return totally_bogus_default_creature_null;
 }
 
-CreaturePtr CreatureFactory::create_by_race_and_class(const string& race_id, const string& class_id, const string& creature_name)
+CreaturePtr CreatureFactory::create_by_race_and_class
+(
+  const string& race_id
+, const string& class_id
+, const string& creature_name
+, const CreatureSex creature_sex
+)
 {
   Creature creature;
 
@@ -31,6 +37,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class(const string& race_id, con
   creature.set_race_id(race_id);
   creature.set_class_id(class_id);
   creature.set_level(1);
+  creature.set_sex(creature_sex);
 
   Game* game = Game::instance();
 

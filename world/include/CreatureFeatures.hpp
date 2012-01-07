@@ -9,3 +9,9 @@ enum CreatureSize
   CREATURE_SIZE_BEHEMOTH = 5
 };
 
+enum CreatureSex
+{
+  CREATURE_SEX_MALE = 0,
+  CREATURE_SEX_FEMALE = 1
+};
+

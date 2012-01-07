@@ -11,6 +11,7 @@
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
 #include "RaceSelectionScreen.hpp"
+#include "SexSelectionScreen.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;
@@ -56,6 +57,8 @@ SavageLandsEngine::~SavageLandsEngine()
 void SavageLandsEngine::start()
 {
   string name;
+  CreatureSex sex;
+
   XMLConfigurationReader reader("data/SavageLands.xml");
 
   Game* game = Game::instance();
@@ -82,6 +85,9 @@ void SavageLandsEngine::start()
       name = naming.display();
       name = Naming::clean_name(name);
 
+      SexSelectionScreen sex_selection(display);
+      sex = static_cast<CreatureSex>(String::to_int(sex_selection.display()));
+
       RaceSelectionScreen race_selection(display);
       string race_index = race_selection.display();
       int race_idx = String::to_int(race_index);
@@ -92,7 +98,7 @@ void SavageLandsEngine::start()
       int class_idx = String::to_int(class_index);
       string selected_class_id = Integer::to_string_key_at_given_position_in_map(classes, class_idx);
 
-      CreaturePtr player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name);
+      CreaturePtr player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name, sex);
       player->set_is_player(true, controller);
 
       // Create world map, place player on world map.

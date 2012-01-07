@@ -10,6 +10,9 @@ class TextKeys
     static std::string SL_TITLE_POEM;
     static std::string COPYRIGHT_NOTICE;
     static std::string DEFAULT_PLAYER_NAME;
+    static std::string SELECT_SEX;
+    static std::string SEX_MALE;
+    static std::string SEX_FEMALE;
     static std::string SELECT_RACE;
     static std::string SELECT_CLASS;
     static std::string RACE_1_NAME;

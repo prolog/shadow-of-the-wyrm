@@ -297,7 +297,8 @@
 1321714082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesmenuwrapper.cpp
 	"NCursesMenuWrapper.hpp"
 
-1323871038 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
+1325950388 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
+	<ctype.h>
 	"NCursesConstants.hpp"
 	"NCursesPromptProcessor.hpp"
 
@@ -504,7 +505,7 @@
 	"StringConstants.hpp"
 	"TextComponent.hpp"
 
-1321760403 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\menu.cpp
+1325946504 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\menu.cpp
 	<boost/foreach.hpp>
 	<boost/foreach.hpp>
 	"Menu.hpp"
@@ -551,7 +552,7 @@
 1325259810 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
-1325352477 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1325947632 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<boost/uuid/uuid_generators.hpp>
 	<boost/uuid/uuid_io.hpp>
 	"CreatureFactory.hpp"
@@ -563,7 +564,7 @@
 	"RNG.hpp"
 	"unit_tests/CreatureFactory_test.cpp"
 
-1322573907 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\creaturefactory_test.cpp
+1325947688 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\creaturefactory_test.cpp
 	"gtest/gtest.h"
 
 1321453058 source:c:\cygwin\home\julian\jrcpp\engine\source\dimensions.cpp
@@ -628,7 +629,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1325250923 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1325947493 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -642,9 +643,10 @@
 	"NamingScreen.hpp"
 	"Naming.hpp"
 	"RaceSelectionScreen.hpp"
+	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1325343240 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1325946165 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -669,7 +671,7 @@
 	<sstream>
 	"Class.hpp"
 
-1325352346 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1325947783 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -994,4 +996,15 @@
 
 1325810284 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\seagenerator.cpp
 	"SeaGenerator.hpp"
+
+1325813117 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\mountainsgenerator.cpp
+	"MountainsGenerator.hpp"
+
+1325948142 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\sexselectionscreen.cpp
+	"CreatureFeatures.hpp"
+	"TextComponent.hpp"
+	"OptionsComponent.hpp"
+	"SexSelectionScreen.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
 
