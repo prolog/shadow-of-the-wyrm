@@ -7,6 +7,12 @@
 #include "Dimensions.hpp"
 #include "Tile.hpp"
 
+enum MapType
+{
+  MAP_TYPE_WORLD = 0
+, MAP_TYPE_OVERWORLD = 1
+, MAP_TYPE_UNDERWORLD = 2
+};
 
 // JCD FIXME: Before delving too deep into things, it might be nice to  make this pair<int,int,int>
 // to represent a truly three dimensional map.  Maybe for v0.2.0?
@@ -31,6 +37,15 @@ class Map
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
 
+		void set_map_type(const MapType& new_type);
+		MapType get_map_type() const;
+		
+		void set_parent_map(boost::shared_ptr<Map> new_parent_map);
+		boost::shared_ptr<Map> get_parent_map() const;
+		
+		void set_child_map(boost::shared_ptr<Map> new_child_map);
+		boost::shared_ptr<Map> get_child_map() const;
+
 		std::map<Coordinate, TilePtr > get_tiles() const;
 
     void clear_locations();
@@ -48,6 +63,14 @@ class Map
 		std::map<Coordinate, TilePtr > tiles;
 		Dimensions dimensions;
     NamedMapLocations locations;
+    MapType map_type;
+    
+    // JCD FIXME FIXME FIXME
+    //
+    // Turn each of these into maps or something, so that each level can have multiple ways in/out.
+    // Or should the parent/child maps not be set on the map itself?  Should they be stored elsewhere?
+    boost::shared_ptr<Map> parent_map; // This will be null on the overworld.
+    boost::shared_ptr<Map> child_map; // Null when there is no down staircase, or is otherwise at the end of a chain of maps.
 };
 
 typedef boost::shared_ptr<Map> MapPtr;

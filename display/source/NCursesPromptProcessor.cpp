@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include "Conversion.hpp"
 #include "NCursesConstants.hpp"
 #include "NCursesPromptProcessor.hpp"
 
@@ -16,11 +17,7 @@ string NCursesPromptProcessor::get_prompt(WINDOW* window, PromptPtr prompt)
     // JCD FIX THIS LATER
     if (pt == PROMPT_TYPE_TEXT)
     {
-      echo();
-      char text[10000];
-      wgetnstr(window, text, 10000);
-      prompt_entry = text;
-      noecho();
+      prompt_entry = get_user_string(window);
     }
     else
     {
@@ -29,6 +26,42 @@ string NCursesPromptProcessor::get_prompt(WINDOW* window, PromptPtr prompt)
   }
 
   return prompt_entry;
+}
+
+// Get a prompt from the user
+string NCursesPromptProcessor::get_user_string(WINDOW* window)
+{
+  string prompt_text;
+  char c;
+  int y, x;
+        
+  for (c = getch(); (c != '\n') && (c != '\r'); c = getch())
+  {
+    getyx(window, y, x);
+    
+    if (c == NC_BACKSPACE_KEY)
+    {
+      if (prompt_text.length())
+      {
+        prompt_text.erase(prompt_text.end()-1);
+        mvwaddch(window, y, x-1, ' ');
+        wmove(window, y, x-1);
+        wrefresh(window);
+      }
+    }
+    else
+    {
+      if (isalpha(c) || isdigit(c) || (c == ' '))
+      {
+        prompt_text.push_back(c);
+        mvwaddch(window, y, x++, c);
+        wrefresh(window); 
+      }
+    }
+  }
+  
+  string result = String::clean(prompt_text);  
+  return result;
 }
 
 // Gets the item index of the selected menu item.
@@ -54,6 +87,12 @@ int NCursesPromptProcessor::get_prompt(WINDOW* window, MENU* options_menu)
       case NC_BACKSPACE_KEY:
         menu_driver(options_menu, REQ_CLEAR_PATTERN);
         menu_driver(options_menu, REQ_FIRST_ITEM);
+        break;
+      case KEY_HOME:
+        menu_driver(options_menu, REQ_FIRST_ITEM);
+        break;
+      case KEY_END:
+        menu_driver(options_menu, REQ_LAST_ITEM);
         break;
       default:
         if (isalpha(c))

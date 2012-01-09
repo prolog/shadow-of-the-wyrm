@@ -60,6 +60,14 @@ CommandPtr CommandFactory::create(const string& command_name)
   {
     command = CommandPtr(new MovementCommand(DIRECTION_SOUTH_WEST));
   }
+  else if (command_name == CommandKeys::MOVE_UP)
+  {
+    command = CommandPtr(new MoveUpLevelCommand());
+  }
+  else if (command_name == CommandKeys::MOVE_DOWN)
+  {
+    command = CommandPtr(new MoveDownLevelCommand());
+  }
 
   return command;
 }

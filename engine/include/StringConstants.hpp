@@ -224,6 +224,9 @@ class ActionTextKeys
   public:
     static std::string ACTION_SEARCH;
     static std::string ACTION_MOVE_OFF_WORLD_MAP;
+    static std::string ACTION_NO_WAY_UP_WORLD_MAP;
+    static std::string ACTION_MOVE_OFF_OVERWORLD_MAP;
+    static std::string ACTION_MOVE_OFF_UNDERWORLD_MAP;
 
   protected:
     ActionTextKeys();

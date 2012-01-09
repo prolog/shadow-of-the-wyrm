@@ -55,6 +55,14 @@ void CommandProcessor::process_command(CreaturePtr creature, Command* command)
     {
       game->actions.search(creature);
     }
+    else if (command_name == CommandKeys::MOVE_UP)
+    {
+      game->actions.ascend(creature);
+    }
+    else if (command_name == CommandKeys::MOVE_DOWN)
+    {
+      game->actions.descend(creature);
+    }
   }
 }
 

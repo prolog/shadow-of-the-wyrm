@@ -182,6 +182,8 @@ MapPtr SpiralDungeonGenerator::generate(const Dimensions& dimensions)
   fill(result_map, TILE_TYPE_ROCK);
   result_map = generate_spiral_dungeon(result_map);
  // result_map = place_staircases(result_map);
+ 
+  result_map->set_map_type(MAP_TYPE_UNDERWORLD);
 
   return result_map;
 }

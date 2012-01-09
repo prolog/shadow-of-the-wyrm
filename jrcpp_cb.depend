@@ -297,8 +297,9 @@
 1321714082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesmenuwrapper.cpp
 	"NCursesMenuWrapper.hpp"
 
-1325950388 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
+1326119797 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
 	<ctype.h>
+	"Conversion.hpp"
 	"NCursesConstants.hpp"
 	"NCursesPromptProcessor.hpp"
 
@@ -383,7 +384,7 @@
 	"XMLTilesReader.hpp"
 	"DisplayTile.hpp"
 
-1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\caverngenerator.cpp
+1326033683 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\caverngenerator.cpp
 	"CavernGenerator.hpp"
 	"CellularAutomataGenerator.hpp"
 	"TileGenerator.hpp"
@@ -401,7 +402,7 @@
 	"gtest/gtest.h"
 	<algorithm>
 
-1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
+1326033663 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
 	"DungeonGenerator.hpp"
 	"AllTiles.hpp"
 	"TileGenerator.hpp"
@@ -460,7 +461,7 @@
 1321453060 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementruinsgenerator.cpp
 	"SettlementRuinsGenerator.hpp"
 
-1321453061 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\spiraldungeongenerator.cpp
+1326033638 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\spiraldungeongenerator.cpp
 	"SpiralDungeonGenerator.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
@@ -489,7 +490,7 @@
 1321453060 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
 	"gtest/gtest.h"
 
-1325353211 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+1326033579 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
 	<vector>
 	"WorldGenerator.hpp"
 	"TileGenerator.hpp"
@@ -542,7 +543,8 @@
 	"StringTable.hpp"
 	"WelcomeScreen.hpp"
 
-1325353054 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+1326119631 source:c:\cygwin\home\julian\jrcpp\engine\source\conversion.cpp
+	<ctype.h>
 	<boost/lexical_cast.hpp>
 	<boost/uuid/uuid_io.hpp>
 	"CommandKeys.hpp"
@@ -646,7 +648,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1325946165 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1326033247 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -685,7 +687,7 @@
 1322004525 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
 	"Item.hpp"
 
-1325352719 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1326039381 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	"Map.hpp"
 
 1321718404 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
@@ -952,7 +954,7 @@
 1325338902 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1325347122 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1326034405 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
@@ -962,27 +964,27 @@
 1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
 
-1325430039 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1326033878 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"KeyboardCommandMap.hpp"
 	"Log.hpp"
 
-1325260430 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1326034320 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1325260748 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1326033808 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1325338965 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1326034087 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 
-1325351634 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
+1326034761 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
 	<string>
 	"global_prototypes.hpp"
 	"ActionManager.hpp"

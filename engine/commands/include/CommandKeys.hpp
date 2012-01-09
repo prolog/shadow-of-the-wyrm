@@ -16,6 +16,8 @@ class CommandKeys
     static std::string MOVE_SOUTHWEST;
     static std::string MOVE_SOUTH;
     static std::string MOVE_SOUTHEAST;
+    static std::string MOVE_UP;
+    static std::string MOVE_DOWN;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

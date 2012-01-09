@@ -65,4 +65,6 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string(KEY_RIGHT), CommandKeys::MOVE_EAST));
   command_mapping.insert(make_pair(Integer::to_string(KEY_LEFT), CommandKeys::MOVE_WEST));
   // End of NCurses-specific movement keys
+  command_mapping.insert(make_pair(Integer::to_string('<'), CommandKeys::MOVE_UP));
+  command_mapping.insert(make_pair(Integer::to_string('>'), CommandKeys::MOVE_DOWN));
 }

@@ -38,6 +38,20 @@ class MovementCommand : public DirectionalCommand
     ~MovementCommand();
 };
 
+class MoveUpLevelCommand : public Command
+{
+  public:
+    MoveUpLevelCommand();
+    ~MoveUpLevelCommand();
+};
+
+class MoveDownLevelCommand : public Command
+{
+  public:
+    MoveDownLevelCommand();
+    ~MoveDownLevelCommand();
+};
+
 class SearchCommand : public Command
 {
   public:

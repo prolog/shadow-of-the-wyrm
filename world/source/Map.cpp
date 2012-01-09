@@ -3,6 +3,7 @@
 using namespace std;
 
 Map::Map(const Map& new_map)
+: map_type(MAP_TYPE_OVERWORLD)
 {
   if (this != &new_map)
   {
@@ -15,6 +16,7 @@ Map::Map(const Map& new_map)
 }
 
 Map::Map(const Dimensions& new_dimensions)
+: map_type(MAP_TYPE_OVERWORLD)
 {
   dimensions = new_dimensions;
 }
@@ -84,6 +86,36 @@ void Map::set_size(const Dimensions& new_dimensions)
 Dimensions Map::size() const
 {
   return dimensions;
+}
+
+void Map::set_map_type(const MapType& new_map_type)
+{
+  map_type = new_map_type;
+}
+
+MapType Map::get_map_type() const
+{
+  return map_type;
+}
+
+void Map::set_parent_map(MapPtr new_parent_map)
+{
+  parent_map = new_parent_map;
+}
+
+MapPtr Map::get_parent_map() const
+{
+  return parent_map;
+}
+
+void Map::set_child_map(MapPtr new_child_map)
+{
+  child_map = new_child_map;
+}
+
+MapPtr Map::get_child_map() const
+{
+  return child_map;
 }
 
 std::map<std::pair<int, int>, TilePtr > Map::get_tiles() const
