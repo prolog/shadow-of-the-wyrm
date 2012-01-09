@@ -13,4 +13,5 @@ class NCursesPromptProcessor
     void show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS);
 
   protected:
+    std::string get_user_string(WINDOW* window);
 };

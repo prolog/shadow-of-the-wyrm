@@ -18,6 +18,9 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   reset_cavern_edges(result_map);
   MapComponents cc = get_cavern_components(result_map);
   connect_cavern_components(result_map, cc);
+  
+  result_map->set_map_type(MAP_TYPE_UNDERWORLD);
+  
   return result_map;
 }
 

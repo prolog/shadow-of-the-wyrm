@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <boost/lexical_cast.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "CommandKeys.hpp"
@@ -22,6 +23,26 @@ template<class T> string Convert::to_string(const T& convert)
   ostringstream buffer;
   buffer << convert;
   return buffer.str();
+}
+
+// A cleaned string should have alphanumeric characters and spaces only - no backspace, no control characters, etc.
+string String::clean(const string& to_clean)
+{
+  string cleaned_string;
+  
+  const char* c_str = to_clean.c_str();
+  
+  for (uint i = 0; i < to_clean.size(); i++)
+  {
+    char c = c_str[i];
+    
+    if (isalpha(c) || isdigit(c) || c == ' ')
+    {
+      cleaned_string = cleaned_string + Char::to_string(c);
+    }
+  }
+  
+  return cleaned_string;
 }
 
 bool String::to_bool(const string& convert)

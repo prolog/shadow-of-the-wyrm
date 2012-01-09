@@ -25,6 +25,8 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
 
   // Generate set islands/continents.
   result_map = generate_set_islands_and_continents(result_map);
+  
+  result_map->set_map_type(MAP_TYPE_WORLD);
 
   return result_map;
 }

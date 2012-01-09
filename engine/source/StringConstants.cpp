@@ -236,6 +236,9 @@ ActionTextKeys::~ActionTextKeys()
 
 string ActionTextKeys::ACTION_SEARCH = "ACTION_SEARCH";
 string ActionTextKeys::ACTION_MOVE_OFF_WORLD_MAP = "ACTION_MOVE_OFF_WORLD_MAP";
+string ActionTextKeys::ACTION_NO_WAY_UP_WORLD_MAP = "ACTION_NO_WAY_UP_WORLD_MAP";
+string ActionTextKeys::ACTION_MOVE_OFF_OVERWORLD_MAP = "ACTION_MOVE_OFF_OVERWORLD_MAP";
+string ActionTextKeys::ACTION_MOVE_OFF_UNDERWORLD_MAP = "ACTION_MOVE_OFF_UNDERWORLD_MAP";
 
 // Messages that can be sent to the user in the message buffer
 TextMessages::TextMessages()

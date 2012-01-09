@@ -22,6 +22,8 @@ string CommandKeys::MOVE_EAST      = "MOVE_EAST";
 string CommandKeys::MOVE_SOUTHWEST = "MOVE_SOUTHWEST";
 string CommandKeys::MOVE_SOUTH     = "MOVE_SOUTH";
 string CommandKeys::MOVE_SOUTHEAST = "MOVE_SOUTHEAST";
+string CommandKeys::MOVE_UP        = "MOVE_UP";
+string CommandKeys::MOVE_DOWN      = "MOVE_DOWN";
 
 bool CommandKeys::is_movement_type_key(const string& key)
 {

@@ -15,6 +15,8 @@ class ActionManager
     void version();
     void search(CreaturePtr creature);
     void move(CreaturePtr creature, const Direction d);
+    void ascend(CreaturePtr creature);
+    void descend(CreaturePtr creature);
 
   protected:
     MovementManager movement_manager;

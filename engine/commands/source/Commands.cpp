@@ -53,6 +53,25 @@ MovementCommand::~MovementCommand()
 {
 }
 
+// Move up or down a level
+MoveUpLevelCommand::MoveUpLevelCommand()
+: Command(CommandKeys::MOVE_UP)
+{
+}
+
+MoveUpLevelCommand::~MoveUpLevelCommand()
+{
+}
+
+MoveDownLevelCommand::MoveDownLevelCommand()
+: Command(CommandKeys::MOVE_DOWN)
+{
+}
+
+MoveDownLevelCommand::~MoveDownLevelCommand()
+{
+}
+
 // Search
 SearchCommand::SearchCommand()
 : Command(CommandKeys::SEARCH)
