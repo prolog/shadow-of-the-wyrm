@@ -4,8 +4,8 @@
 	<File name="MapTester.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="SavageLands.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="989" topLine="48" />
+	<File name="SavageLands.cpp" open="1" top="0" tabpos="14">
+		<Cursor position="1666" topLine="71" />
 	</File>
 	<File name="controller\include\Controller.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="291" topLine="0" />
@@ -46,7 +46,7 @@
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="989" topLine="39" />
 	</File>
-	<File name="display\source\NCursesPromptProcessor.cpp" open="1" top="1" tabpos="9">
+	<File name="display\source\NCursesPromptProcessor.cpp" open="1" top="0" tabpos="9">
 		<Cursor position="1344" topLine="46" />
 	</File>
 	<File name="display\source\unit_tests\Display_test.cpp" open="0" top="0" tabpos="8">
@@ -89,7 +89,7 @@
 		<Cursor position="130" topLine="0" />
 	</File>
 	<File name="engine\commands\source\CommandFactory.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="1800" topLine="50" />
+		<Cursor position="141" topLine="9" />
 	</File>
 	<File name="engine\commands\source\CommandKeys.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="1280" topLine="22" />
@@ -100,8 +100,8 @@
 	<File name="engine\commands\source\Commands.cpp" open="1" top="0" tabpos="2">
 		<Cursor position="959" topLine="46" />
 	</File>
-	<File name="engine\commands\source\KeyboardCommandMap.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="2704" topLine="46" />
+	<File name="engine\commands\source\KeyboardCommandMap.cpp" open="1" top="0" tabpos="19">
+		<Cursor position="789" topLine="19" />
 	</File>
 	<File name="engine\decision_strategies\include\DecisionStrategy.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="68" topLine="0" />
@@ -184,8 +184,8 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="38" topLine="0" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="7677" topLine="211" />
+	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="15">
+		<Cursor position="7888" topLine="226" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="0" topLine="0" />
@@ -217,8 +217,8 @@
 	<File name="engine\source\Conversion.cpp" open="1" top="0" tabpos="10">
 		<Cursor position="858" topLine="23" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="1009" topLine="27" />
+	<File name="engine\source\CreatureFactory.cpp" open="1" top="0" tabpos="13">
+		<Cursor position="745" topLine="21" />
 	</File>
 	<File name="engine\source\CreatureTranslator.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="2432" topLine="62" />
@@ -247,11 +247,11 @@
 	<File name="engine\source\RNG.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="403" topLine="10" />
 	</File>
-	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="3303" topLine="98" />
+	<File name="engine\source\SavageLandsEngine.cpp" open="1" top="1" tabpos="12">
+		<Cursor position="2996" topLine="86" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="11134" topLine="219" />
+	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="16">
+		<Cursor position="11951" topLine="245" />
 	</File>
 	<File name="engine\source\unit_tests\Conversion_test.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="1251" topLine="40" />

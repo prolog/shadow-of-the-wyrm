@@ -2,6 +2,7 @@
 #include <boost/uuid/uuid_io.hpp>
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
+#include "Log.hpp"
 #include "ResistancesCalculator.hpp"
 #include "SkillsCalculator.hpp"
 #include "HitPointsCalculator.hpp"
@@ -64,6 +65,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   }
 
   CreaturePtr creaturep = CreaturePtr(new Creature(creature));
+
   return creaturep;
 }
 

@@ -234,6 +234,7 @@ ActionTextKeys::~ActionTextKeys()
 {
 }
 
+string ActionTextKeys::ACTION_NOT_FOUND = "ACTION_NOT_FOUND";
 string ActionTextKeys::ACTION_SEARCH = "ACTION_SEARCH";
 string ActionTextKeys::ACTION_MOVE_OFF_WORLD_MAP = "ACTION_MOVE_OFF_WORLD_MAP";
 string ActionTextKeys::ACTION_NO_WAY_UP_WORLD_MAP = "ACTION_NO_WAY_UP_WORLD_MAP";
@@ -259,4 +260,11 @@ string TextMessages::get_welcome_message(const string& player_name)
   string welcome_message = StringTable::get(TextMessages::WELCOME_MESSAGE);
   boost::replace_first(welcome_message, "%s", player_name);
   return welcome_message;
+}
+
+string TextMessages::get_action_not_found_message(const string& command_action)
+{
+  string action_message = StringTable::get(ActionTextKeys::ACTION_NOT_FOUND);
+  boost::replace_first(action_message, "%s", command_action);
+  return action_message;
 }

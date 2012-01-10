@@ -5,6 +5,7 @@
 #include <boost/tokenizer.hpp>
 #include "Colours.hpp"
 #include "Conversion.hpp"
+#include "Log.hpp"
 #include "NCursesDisplay.hpp"
 #include "Menu.hpp"
 #include "OptionsComponent.hpp"
@@ -33,7 +34,9 @@ WINDOW* NCursesDisplay::create_menu(int height, int width, int start_row, int st
 // Delete the given window.
 void NCursesDisplay::destroy_menu(WINDOW *menu)
 {
+  Log::instance()->debug("Destroying current menu");
 	delwin(menu);
+	menu = NULL;
 }
 
 // Get whether the terminal can support colour.  False by
@@ -298,6 +301,7 @@ MapDisplayArea NCursesDisplay::get_map_display_area()
  *****************************************************************/
 string NCursesDisplay::display_menu(const Menu& current_menu)
 {
+  string result;
   refresh_terminal_size();
 
   // JCD FIXME: Refactor the shit out of this.
@@ -340,19 +344,21 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
 
   PromptPtr prompt = current_menu.get_prompt();
   prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
-  wrapper.release_pointer_structures();
 
   MENU* menu = wrapper.get_menu();
 
   if (menu)
   {
     int index = prompt_processor.get_prompt(menu_window, menu);
-    return Integer::to_string(index);
+    result = Integer::to_string(index);
   }
   else
   {
-    return prompt_processor.get_prompt(menu_window, prompt);
+    result = prompt_processor.get_prompt(menu_window, prompt);
   }
+  
+  wrapper.release_pointer_structures();
+  return result;
 }
 
 void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponent* tc)
@@ -369,11 +375,14 @@ NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* 
 
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
+
   int num_options = options.size();
+  int num_options_alloc = num_options+1;
 
   if (!options.empty())
   {
-    option_items = (ITEM**) calloc(num_options, sizeof(ITEM*));
+    Log::instance()->debug("Allocating menu structure: size " + Integer::to_string(num_options_alloc) + " for " + Integer::to_string(num_options) + " menu items.");
+    option_items = (ITEM**) calloc(num_options_alloc, sizeof(ITEM*));
 
     for (int i = 0; i < num_options; i++)
     {

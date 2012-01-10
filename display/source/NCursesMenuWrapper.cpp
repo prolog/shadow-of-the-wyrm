@@ -1,4 +1,6 @@
 #include "NCursesMenuWrapper.hpp"
+#include "Conversion.hpp"
+#include "Log.hpp"
 
 NCursesMenuWrapper::NCursesMenuWrapper()
 {
@@ -43,6 +45,7 @@ int NCursesMenuWrapper::get_num_items() const
 
 void NCursesMenuWrapper::release_pointer_structures()
 {
+  Log::instance()->debug("Releasing pointer structures (" + Integer::to_string(num_items) + " items)");
   for (int i = 0; i < num_items; i++)
   {
     ITEM* item = items[i];
@@ -55,6 +58,7 @@ void NCursesMenuWrapper::release_pointer_structures()
 
   if (menu)
   {
+    Log::instance()->debug("Freeing menu structure");
     free_menu(menu);
   }
 

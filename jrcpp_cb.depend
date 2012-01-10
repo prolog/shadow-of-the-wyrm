@@ -194,7 +194,7 @@
 	"XMLDataStructures.hpp"
 	<vector>
 
-1325260035 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1326152419 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
 	<xercesc/util/PlatformUtils.hpp>
 	"common.hpp"
@@ -275,7 +275,7 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1325683939 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1326205487 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -283,6 +283,7 @@
 	<boost/tokenizer.hpp>
 	"Colours.hpp"
 	"Conversion.hpp"
+	"Log.hpp"
 	"NCursesDisplay.hpp"
 	"Menu.hpp"
 	"OptionsComponent.hpp"
@@ -294,12 +295,15 @@
 	"Prompt.hpp"
 	"Display.hpp"
 
-1321714082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesmenuwrapper.cpp
+1326205118 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesmenuwrapper.cpp
 	"NCursesMenuWrapper.hpp"
+	"Conversion.hpp"
+	"Log.hpp"
 
-1326119797 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
+1326205196 source:c:\cygwin\home\julian\jrcpp\display\source\ncursespromptprocessor.cpp
 	<ctype.h>
 	"Conversion.hpp"
+	"Log.hpp"
 	"NCursesConstants.hpp"
 	"NCursesPromptProcessor.hpp"
 
@@ -554,11 +558,12 @@
 1325259810 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
-1325947632 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1326205287 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<boost/uuid/uuid_generators.hpp>
 	<boost/uuid/uuid_io.hpp>
 	"CreatureFactory.hpp"
 	"Game.hpp"
+	"Log.hpp"
 	"ResistancesCalculator.hpp"
 	"SkillsCalculator.hpp"
 	"HitPointsCalculator.hpp"
@@ -631,7 +636,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1325947493 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1326205213 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -641,6 +646,7 @@
 	"CreatureFactory.hpp"
 	"DisplayTile.hpp"
 	"Game.hpp"
+	"Log.hpp"
 	"MessageManager.hpp"
 	"NamingScreen.hpp"
 	"Naming.hpp"
@@ -648,7 +654,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1326033247 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1326161305 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -964,12 +970,14 @@
 1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
 
-1326033878 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1326161742 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"KeyboardCommandMap.hpp"
 	"Log.hpp"
+	"MessageManager.hpp"
+	"StringConstants.hpp"
 
 1326034320 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	"CommandFactory.hpp"
