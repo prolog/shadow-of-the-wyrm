@@ -1,5 +1,6 @@
 #include <ctype.h>
 #include "Conversion.hpp"
+#include "Log.hpp"
 #include "NCursesConstants.hpp"
 #include "NCursesPromptProcessor.hpp"
 
@@ -106,7 +107,8 @@ int NCursesPromptProcessor::get_prompt(WINDOW* window, MENU* options_menu)
     c = wgetch(window);
   }
 
-  return item_index(current_item(options_menu));
+  int item_idx = item_index(current_item(options_menu));
+  return item_idx;
 }
 
 // JCD: Still unwieldy.  Fix.

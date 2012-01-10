@@ -82,7 +82,7 @@ int main(int argc, char* argv[])
   {
     initialize_settings();
     XML::initialize();
-    Log* log = Log::instance(LOG_TRACE);
+    Log* log = Log::instance(LOG_DEBUG);
     log->trace("main - testing");
 
     print_title();

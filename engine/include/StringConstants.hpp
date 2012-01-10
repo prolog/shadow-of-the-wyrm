@@ -222,6 +222,7 @@ class WorldMapLocationTextKeys
 class ActionTextKeys
 {
   public:
+    static std::string ACTION_NOT_FOUND;
     static std::string ACTION_SEARCH;
     static std::string ACTION_MOVE_OFF_WORLD_MAP;
     static std::string ACTION_NO_WAY_UP_WORLD_MAP;
@@ -237,6 +238,7 @@ class TextMessages
 {
   public:
     static std::string get_welcome_message(const std::string& player_name);
+    static std::string get_action_not_found_message(const std::string& command_action);
 
   protected:
     TextMessages();

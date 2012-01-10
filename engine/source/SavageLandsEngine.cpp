@@ -7,6 +7,7 @@
 #include "CreatureFactory.hpp"
 #include "DisplayTile.hpp"
 #include "Game.hpp"
+#include "Log.hpp"
 #include "MessageManager.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"

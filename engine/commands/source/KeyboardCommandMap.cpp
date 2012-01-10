@@ -3,6 +3,8 @@
 #include "Conversion.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "Log.hpp"
+#include "MessageManager.hpp"
+#include "StringConstants.hpp"
 
 using namespace std;
 
@@ -35,6 +37,12 @@ string KeyboardCommandMap::get_command_type(const string& keyboard_input)
   }
   else
   {
+    // JCD FIXME: Does the wrong thing for function keys, etc.  Maybe use the String::clean function?
+    string keyboard_input_as_character = Char::to_string(String::to_int(keyboard_input));
+    MessageManager* manager = MessageManager::instance();
+    manager->add_new_message(TextMessages::get_action_not_found_message(keyboard_input_as_character));
+    manager->send();
+
     Log* log = Log::instance();
     log->debug("Could not find mapped command for input: " + keyboard_input);
   }
