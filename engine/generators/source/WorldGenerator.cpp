@@ -158,8 +158,7 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
   CellMap scrub_cell_map = cag.generate();
 
   // Now translate the various CellMaps into an overall MapPtr...
-  CellMap::const_iterator world_it, forest_it, mountains_it, scrub_it;
-  pair<int, int> coords;
+  CellValue world_val, forest_val, mountains_val, scrub_val;
 
   int y = dimensions.get_y();
   int x = dimensions.get_x();
@@ -167,32 +166,31 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
   {
     for (int col = 0; col < x; col++)
     {
-      coords = make_pair(row, col);
-      world_it  = cell_map.find(coords);
-      forest_it = forest_cell_map.find(coords);
-      mountains_it = mountains_cell_map.find(coords);
-      scrub_it = scrub_cell_map.find(coords);
+      world_val  = cell_map[row][col];
+      forest_val = forest_cell_map[row][col];
+      mountains_val = mountains_cell_map[row][col];
+      scrub_val = scrub_cell_map[row][col];
 
       // Always add fields.  Add forests if the tile is not sea.  Add mountains if the tile is field.
-      if (world_it->second == CELL_OFF)
+      if (world_val == CELL_OFF)
       {
         tile = TileGenerator::generate(TILE_TYPE_FIELD);
         result_map->insert(row, col, tile);
       }
 
-      if (forest_it->second == CELL_OFF && world_it->second == CELL_OFF)
+      if (forest_val == CELL_OFF && world_val == CELL_OFF)
       {
         tile = TileGenerator::generate(TILE_TYPE_FOREST);
         result_map->insert(row, col, tile);
       }
 
-      if (scrub_it->second == CELL_OFF && world_it->second == CELL_OFF)
+      if (scrub_val == CELL_OFF && world_val == CELL_OFF)
       {
         tile = TileGenerator::generate(TILE_TYPE_SCRUB);
         result_map->insert(row, col, tile);
       }
 
-      if (mountains_it->second == CELL_OFF && world_it->second == CELL_OFF && forest_it->second == CELL_ON)
+      if (mountains_val == CELL_OFF && world_val == CELL_OFF && forest_val == CELL_ON)
       {
         tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
         result_map->insert(row, col, tile);
