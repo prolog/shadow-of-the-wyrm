@@ -1,7 +1,10 @@
+#include <boost/make_shared.hpp>
 #include "Log.hpp"
 #include "TileGenerator.hpp"
 #include "tiles.hpp"
 #include "AllTiles.hpp"
+
+using boost::make_shared;
 
 TilePtr TileGenerator::generate(const TileType& tile_type)
 {
@@ -13,76 +16,76 @@ TilePtr TileGenerator::generate(const TileType& tile_type)
       Log::instance()->log("Attempting to generate an undefined tile type");
       break;
     case TILE_TYPE_FIELD:
-      result_tile = TilePtr(new FieldTile());
+      result_tile = make_shared<FieldTile>();
       break;
     case TILE_TYPE_SCRUB:
-      result_tile = TilePtr(new ScrubTile());
+      result_tile = make_shared<ScrubTile>();
       break;
     case TILE_TYPE_WHEAT:
-      result_tile = TilePtr(new WheatTile());
+      result_tile = make_shared<WheatTile>();
       break;
     case TILE_TYPE_CAIRN:
-      result_tile = TilePtr(new CairnTile());
+      result_tile = make_shared<CairnTile>();
       break;
     case TILE_TYPE_TREE:
-      result_tile = TilePtr(new TreeTile());
+      result_tile = make_shared<TreeTile>();
       break;
     case TILE_TYPE_DESERT:
-      result_tile = TilePtr(new DesertTile());
+      result_tile = make_shared<DesertTile>();
       break;
     case TILE_TYPE_ROAD:
-      result_tile = TilePtr(new RoadTile());
+      result_tile = make_shared<RoadTile>();
       break;
     case TILE_TYPE_RIVER:
-      result_tile = TilePtr(new RiverTile());
+      result_tile = make_shared<RiverTile>();
       break;
     case TILE_TYPE_SEA:
-      result_tile = TilePtr(new SeaTile());
+      result_tile = make_shared<SeaTile>();
       break;
     case TILE_TYPE_SHOALS:
-      result_tile = TilePtr(new ShoalsTile());
+      result_tile = make_shared<ShoalsTile>();
       break;
     case TILE_TYPE_DUNGEON:
-      result_tile = TilePtr(new DungeonTile());
+      result_tile = make_shared<DungeonTile>();
       break;
     case TILE_TYPE_ROCK:
-      result_tile = TilePtr(new RockTile());
+      result_tile = make_shared<RockTile>();
       break;
     case TILE_TYPE_GRAVE:
-      result_tile = TilePtr(new GraveTile());
+      result_tile = make_shared<GraveTile>();
       break;
     case TILE_TYPE_MARSH:
-      result_tile = TilePtr(new MarshTile());
+      result_tile = make_shared<MarshTile>();
       break;
     case TILE_TYPE_REEDS:
-      result_tile = TilePtr(new ReedsTile());
+      result_tile = make_shared<ReedsTile>();
       break;
     case TILE_TYPE_HILLS:
-      result_tile = TilePtr(new HillsTile());
+      result_tile = make_shared<HillsTile>();
       break;
     case TILE_TYPE_MOUNTAINS:
-      result_tile = TilePtr(new MountainsTile());
+      result_tile = make_shared<MountainsTile>();
       break;
     case TILE_TYPE_BEACH:
-      result_tile = TilePtr(new BeachTile());
+      result_tile = make_shared<BeachTile>();
       break;
     case TILE_TYPE_BUSH:
-      result_tile = TilePtr(new BushTile());
+      result_tile = make_shared<BushTile>();
       break;
     case TILE_TYPE_WEEDS:
-      result_tile = TilePtr(new WeedsTile());
+      result_tile = make_shared<WeedsTile>();
       break;
     case TILE_TYPE_SPRINGS:
-      result_tile = TilePtr(new SpringsTile());
+      result_tile = make_shared<SpringsTile>();
       break;
     case TILE_TYPE_FOREST:
-      result_tile = TilePtr(new ForestTile());
+      result_tile = make_shared<ForestTile>();
       break;
     case TILE_TYPE_UP_STAIRCASE:
-      result_tile = TilePtr(new UpStaircaseTile());
+      result_tile = make_shared<UpStaircaseTile>();
       break;
     case TILE_TYPE_DOWN_STAIRCASE:
-      result_tile = TilePtr(new DownStaircaseTile());
+      result_tile = make_shared<DownStaircaseTile>();
       break;
     default:
       break;

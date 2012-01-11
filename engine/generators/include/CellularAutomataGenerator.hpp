@@ -11,7 +11,8 @@ enum CellValue
 , CELL_ON  = 1
 };
 
-typedef std::map<std::pair<int, int>, CellValue> CellMap;
+typedef std::vector<std::vector<CellValue> > CellMap; 
+//typedef std::map<std::pair<int, int>, CellValue> CellMap;
 
 class CellularAutomataSettings
 {

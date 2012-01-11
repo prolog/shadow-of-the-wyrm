@@ -194,6 +194,9 @@ void NCursesDisplay::clear_display()
  *****************************************************************/
 void NCursesDisplay::add_message(const string& message)
 {
+  int orig_curs_y, orig_curs_x;
+  getyx(stdscr, orig_curs_y, orig_curs_x);
+  
   int cur_y, cur_x;
 
   clear_message_buffer();
@@ -229,9 +232,12 @@ void NCursesDisplay::add_message(const string& message)
       }
     }
 
-    printw(current_token.c_str());
-    refresh();
+    printw(current_token.c_str());    
   }
+
+  // Reset the cursor.
+  move(orig_curs_y, orig_curs_x);
+  refresh();
 }
 
 /*

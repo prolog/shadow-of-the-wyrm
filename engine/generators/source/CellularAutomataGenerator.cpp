@@ -127,27 +127,28 @@ CellMap CellularAutomataGenerator::generate()
   int close_cell;
 
   CellMap cell_map = get_initialized_cells(y, x);
-
+  
   for (int iteration = 0; iteration < ITERATIONS; iteration++)
   {
-    rand_cell_y = RNG::range(0, y);
-    rand_cell_x = RNG::range(0, x);
-
+    // vectors start at 0, go to size-1.
+    rand_cell_y = RNG::range(0, y-1);
+    rand_cell_x = RNG::range(0, x-1);
+    
     close_cell = RNG::range(0, 100);
 
     if (close_cell < P_CLOSE_CELL)
     {
-      cell_map[make_pair(rand_cell_y, rand_cell_x)] = CELL_OFF;
+      cell_map[rand_cell_y][rand_cell_x] = CELL_OFF;
     }
 
     num_closed_neighbours = get_number_closed_neighbours(cell_map, dimensions, rand_cell_y, rand_cell_x);
     if (num_closed_neighbours > NEIGHBOUR_THRESHOLD)
     {
-      cell_map[make_pair(rand_cell_y, rand_cell_x)] = CELL_OFF;
+      cell_map[rand_cell_y][rand_cell_x] = CELL_OFF;
     }
     else
     {
-      cell_map[make_pair(rand_cell_y, rand_cell_x)] = CELL_ON;
+      cell_map[rand_cell_y][rand_cell_x] = CELL_ON;
     }
   }
 
@@ -157,26 +158,29 @@ CellMap CellularAutomataGenerator::generate()
 CellMap CellularAutomataGenerator::get_initialized_cells(const int y, const int x)
 {
   CellMap result_map;
-
   int rand_closed;
 
   for (int row = 0; row < y; row++)
   {
+    vector<CellValue> cv;
+    
     for (int col = 0; col < x; col++)
     {
       rand_closed = RNG::range(0, 100);
 
       if (rand_closed < SEED_P_CLOSE_CELL)
       {
-        result_map[make_pair(row, col)] = flip_value;
+        cv.push_back(flip_value);
       }
       else
       {
-        result_map[make_pair(row, col)] = inverse_flip_value;
+        cv.push_back(inverse_flip_value);
       }
     }
+    
+    result_map.push_back(cv);
   }
-
+  
   return result_map;
 }
 
@@ -187,16 +191,13 @@ int CellularAutomataGenerator::get_number_closed_neighbours(const CellMap& cell_
 
   for (vector<pair<int, int> >::iterator n_it = neighbours.begin(); n_it != neighbours.end(); n_it++)
   {
-    CellMap::const_iterator c_it = cell_map.find(*n_it);
-
-    if (c_it != cell_map.end())
+    CellValue cell_val = cell_map[n_it->first][n_it->second];
+    
+    if (cell_val == CELL_OFF)
     {
-      if (c_it->second == CELL_OFF)
-      {
-        num_closed++;
-      }
+      num_closed++;
     }
-  }
+  }    
 
   return num_closed;
 }

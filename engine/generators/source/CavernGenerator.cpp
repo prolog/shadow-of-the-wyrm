@@ -35,8 +35,7 @@ void CavernGenerator::generate_cavern(MapPtr map)
   CellularAutomataGenerator cag(cas, dimensions);
   CellMap cavern_map = cag.generate();
 
-  CellMap::const_iterator cavern_it;
-  std::pair<int, int> coords;
+  CellValue cavern_val;
 
   int y = dimensions.get_y();
   int x = dimensions.get_x();
@@ -44,10 +43,9 @@ void CavernGenerator::generate_cavern(MapPtr map)
   {
     for (int col = 0; col < x; col++)
     {
-      coords = make_pair(row, col);
-      cavern_it = cavern_map.find(coords);
+      cavern_val = cavern_map[row][col];
 
-      if (cavern_it->second == CELL_OFF)
+      if (cavern_val == CELL_OFF)
       {
         tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
         map->insert(row, col, tile);
