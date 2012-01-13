@@ -275,7 +275,7 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1326205657 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1326248675 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -1018,4 +1018,16 @@
 	"SexSelectionScreen.hpp"
 	"StringConstants.hpp"
 	"StringTable.hpp"
+
+1326423174 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\heavyweapontohitcalculator.cpp
+	"HeavyWeaponToHitCalculator.hpp"
+
+1326423197 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magictohitcalculator.cpp
+	"MagicToHitCalculator.hpp"
+
+1326422410 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\tohitcalculatorfactory.cpp
+	"ToHitCalculatorFactory.hpp"
+
+1326423129 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\lightmeleeandrangedweapontohitcalculator.cpp
+	"LightMeleeAndRangedWeaponToHitCalculator.hpp"
 
