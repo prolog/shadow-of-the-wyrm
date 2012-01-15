@@ -4,6 +4,7 @@
 #include "Directions.hpp"
 #include "DisplayTile.hpp"
 #include "Display.hpp"
+#include "Item.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "World.hpp"
@@ -21,6 +22,9 @@ class Game
 
     void set_classes(const ClassMap& game_classes);
     const ClassMap& get_classes_ref() const;
+    
+    void set_items(const ItemMap& game_items);
+    const ItemMap& get_items_ref() const;
 
     void set_tile_display_info(const std::vector<DisplayTile>& game_tiles);
     const std::vector<DisplayTile>& get_tile_display_info_ref() const;
@@ -55,6 +59,7 @@ class Game
     DisplayPtr display;
     RaceMap races;
     ClassMap classes;
+    ItemMap items;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
     // ItemMap items;
 

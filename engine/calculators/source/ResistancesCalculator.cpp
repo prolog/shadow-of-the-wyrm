@@ -21,14 +21,14 @@ Resistances ResistancesCalculator::calculate_resistances(const Creature& creatur
     double class_val = 0.0;
     double total_val = 0.0;
 
-    for (ResistanceType rt = RESISTANCE_TYPE_SLASH; rt < RESISTANCE_TYPE_MAX; rt++)
+    for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
     {
-      race_val  = resists_race.get_resistance_value(rt);
-      class_val = resists_class.get_resistance_value(rt);
+      race_val  = resists_race.get_resistance_value(dt);
+      class_val = resists_class.get_resistance_value(dt);
       
       total_val = race_val + class_val;
       
-      resists_calculated.set_resistance_value(rt, total_val);
+      resists_calculated.set_resistance_value(dt, total_val);
     }
   }
 

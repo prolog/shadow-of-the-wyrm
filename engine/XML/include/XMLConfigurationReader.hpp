@@ -3,6 +3,7 @@
 #include "XMLClassesReader.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLFileReader.hpp"
+#include "XMLItemsReaders.hpp"
 #include "XMLRacesReader.hpp"
 #include "XMLTilesReader.hpp"
 #include "Race.hpp"
@@ -15,8 +16,8 @@ class XMLConfigurationReader
 
     RaceMap get_races();
     ClassMap get_classes();
+    ItemMap get_items();    
     std::vector<DisplayTile> get_tile_info();
-    // std::vector<Item> get_items();
 
   protected:
     void initialize_parser();
@@ -28,6 +29,7 @@ class XMLConfigurationReader
 
     // Member variables for reading the various XML nodes and setting the data into world objects.
     XMLClassesReader classes_reader;
+    XMLItemsReader items_reader;
     XMLRacesReader races_reader;
     XMLTilesReader tiles_reader;
 };

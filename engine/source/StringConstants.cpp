@@ -88,6 +88,9 @@ string TextKeys::SOAK_ABRV         = "SOAK_ABRV";
 string TextKeys::LEVEL             = "LEVEL";
 string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
 
+string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
+string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
+
 SkillTextKeys::SkillTextKeys()
 {
 }

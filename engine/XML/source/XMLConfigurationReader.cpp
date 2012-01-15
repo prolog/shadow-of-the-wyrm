@@ -18,6 +18,13 @@ ClassMap XMLConfigurationReader::get_classes()
   return classes;
 }
 
+ItemMap XMLConfigurationReader::get_items()
+{
+  XMLNode items_node = XMLUtils::get_next_element_by_local_name(root, "Items");
+  ItemMap items = items_reader.get_items(items_node);
+  return items;
+}
+
 RaceMap XMLConfigurationReader::get_races()
 {
   XMLNode races_node = XMLUtils::get_next_element_by_local_name(root, "Races");

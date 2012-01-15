@@ -10,6 +10,11 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
 
   if (creature)
   {
+    int strength = creature->get_strength().get_current();
+    int valour   = creature->get_strength().get_current();
+    
+    to_hit += (strength - 10) / 4;
+    to_hit += (valour - 50) / 5;
   }
 
   return to_hit;

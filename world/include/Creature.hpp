@@ -7,6 +7,8 @@
 #include "Controller.hpp"
 #include "CreatureFeatures.hpp"
 #include "DecisionStrategy.hpp"
+#include "Equipment.hpp"
+#include "Inventory.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "Resistances.hpp"
@@ -87,13 +89,19 @@ class Creature
     void set_speed(const Statistic& new_speed);
     Statistic get_speed() const;
 
-    void set_resistance_value(const ResistanceType type, double value);
+    void set_resistance_value(const DamageType type, double value);
     void set_resistances(const Resistances& resistances);
     Resistances& get_resistances();
 
     void set_skills(const Skills& new_skills);
     Skills& get_skills();
-
+    
+    Equipment& get_equipment();
+    Inventory& get_inventory();
+    
+    void set_ivory_pieces(const uint new_ivory_pieces);
+    uint get_ivory_pieces() const;
+    
     // Set/get point-based statistics
 
     void set_hit_points(const Statistic& new_hit_points);
@@ -163,6 +171,15 @@ class Creature
     // Not shown directly to the user - this is a hidden statistic that ranks the creature's standing with
     // his or her deity.
     Statistic piety;
+    
+    // The creature's worn items.
+    Equipment equipment;
+    
+    // The creature's inventory.
+    Inventory inventory;
+    
+    // The amount of currency (ivory pieces) owned by the character
+    uint ivory_pieces;
 
     // Resistances/vulns.  These act as a damage multiplier.  A value of 1.0 indicates no resistance or vulnerability.
     // 0.50 indicates half damage, 2.0 indicates double damage.

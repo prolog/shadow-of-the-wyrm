@@ -10,7 +10,11 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
   
   if (creature)
   {
+    int dexterity = creature->get_dexterity().get_current();
+    int valour    = creature->get_valour().get_current();
     
+    to_hit += (dexterity - 10) / 3;
+    to_hit += (valour - 50) / 5;
   }
   
   return to_hit;

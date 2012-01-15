@@ -29,20 +29,20 @@ void XMLResistancesReader::parse_resistances(Resistances& resistances, const XML
   double lightning_resist = XMLUtils::get_child_node_float_value(resistances_node, "Lightning");
 
   // Set the resistances.
-  resistances.set_resistance_value(RESISTANCE_TYPE_SLASH, slash_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_POUND, pound_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_PIERCE, pierce_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_HEAT, heat_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_COLD, cold_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_ACID, acid_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_POISON, poison_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_HOLY, holy_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_SHADOW, shadow_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_ARCANE, arcane_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_MENTAL, mental_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_SONIC, sonic_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_RADIANT, radiant_resist);
-  resistances.set_resistance_value(RESISTANCE_TYPE_LIGHTNING, lightning_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_SLASH, slash_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_POUND, pound_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_PIERCE, pierce_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_HEAT, heat_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_COLD, cold_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_ACID, acid_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_POISON, poison_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_HOLY, holy_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_SHADOW, shadow_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_ARCANE, arcane_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_MENTAL, mental_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_SONIC, sonic_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_RADIANT, radiant_resist);
+  resistances.set_resistance_value(DAMAGE_TYPE_LIGHTNING, lightning_resist);
 }
 
 

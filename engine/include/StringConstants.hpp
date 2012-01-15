@@ -80,6 +80,9 @@ class TextKeys
 
     static std::string LEVEL;
     static std::string LEVEL_ABRV;
+    
+    static std::string DAMAGE_MELEE;
+    static std::string DAMAGE_RANGED;
 
   protected:
     TextKeys();
