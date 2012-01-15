@@ -2,16 +2,16 @@
 #include <map>
 #include <string>
 
-#include "ResistanceTypes.hpp"
+#include "DamageTypes.hpp"
 
-inline ResistanceType operator--(ResistanceType &rt, int)
+inline DamageType operator--(DamageType &dt, int)
 {
-  return rt = ResistanceType(rt-1);
+  return dt = DamageType(dt-1);
 }
 
-inline ResistanceType operator++(ResistanceType &rt, int)
+inline DamageType operator++(DamageType &dt, int)
 {
-  return rt = ResistanceType(rt+1);
+  return dt = DamageType(dt+1);
 }
 
 #define DEFAULT_RESISTANCE_VALUE 0.0;
@@ -21,10 +21,10 @@ class Resistance
 {
   public:
     Resistance();
-    Resistance(const ResistanceType type, const std::string& name_sid, const double value);
+    Resistance(const DamageType type, const std::string& name_sid, const double value);
 
-    void set_type(const ResistanceType new_type);
-    ResistanceType get_type() const;
+    void set_type(const DamageType new_type);
+    DamageType get_type() const;
 
     void set_name_sid(const std::string& new_name_sid);
     std::string get_name_sid() const;
@@ -35,7 +35,7 @@ class Resistance
     std::string str() const;
 
   protected:
-    ResistanceType type;
+    DamageType type;
     std::string name_sid;
     double value;
 };
@@ -125,7 +125,7 @@ class LightningResistance : public Resistance
     LightningResistance();
 };
 
-typedef std::map<ResistanceType, Resistance> ResistancesMap;
+typedef std::map<DamageType, Resistance> ResistancesMap;
 
 // Resistance container class
 class Resistances
@@ -133,8 +133,8 @@ class Resistances
   public:
     Resistances();
 
-    void set_resistance_value(const ResistanceType type, double value);
-    double get_resistance_value(const ResistanceType type) const;
+    void set_resistance_value(const DamageType type, double value);
+    double get_resistance_value(const DamageType type) const;
 
     std::string str() const;
 

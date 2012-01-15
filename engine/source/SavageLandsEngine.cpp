@@ -68,15 +68,19 @@ void SavageLandsEngine::start()
   if (game && manager)
   {
     manager->set_display(display);
+
     {
-      // Read the races and classes from the configuration file.
+      // Read the races, classes, and items from the configuration file.
       RaceMap races = reader.get_races();
       ClassMap classes = reader.get_classes();
+      ItemMap items = reader.get_items();
+      
       vector<DisplayTile> tile_info = reader.get_tile_info();
 
       game->set_display(display);
       game->set_races(races);
       game->set_classes(classes);
+      game->set_items(items);
       game->set_tile_display_info(tile_info);
 
       WelcomeScreen welcome(display);

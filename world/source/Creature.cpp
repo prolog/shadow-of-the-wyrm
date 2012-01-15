@@ -9,6 +9,7 @@ Creature::Creature()
 : is_player(false)
 , sex( CREATURE_SEX_MALE )
 , size( CREATURE_SIZE_MEDIUM )
+, ivory_pieces(0)
 , symbol('?')
 , colour(COLOUR_BLACK)
 // Everything else is a string, Statistic, etc, and is not a primitive type.  These'll have their own constructors.
@@ -217,9 +218,9 @@ Statistic Creature::get_speed() const
   return speed;
 }
 
-void Creature::set_resistance_value(const ResistanceType resistance_type, double value)
+void Creature::set_resistance_value(const DamageType damage_type, double value)
 {
-  resistances.set_resistance_value(resistance_type, value);
+  resistances.set_resistance_value(damage_type, value);
 }
 
 void Creature::set_resistances(const Resistances& new_resistances)
@@ -240,6 +241,26 @@ void Creature::set_skills(const Skills& new_skills)
 Skills& Creature::get_skills()
 {
   return skills;
+}
+
+Equipment& Creature::get_equipment()
+{
+  return equipment;
+}
+
+Inventory& Creature::get_inventory()
+{
+  return inventory;
+}
+
+void Creature::set_ivory_pieces(const uint new_ivory_pieces)
+{
+  ivory_pieces = new_ivory_pieces;
+}
+
+uint Creature::get_ivory_pieces() const
+{
+  return ivory_pieces;
 }
 
 void Creature::set_hit_points(const Statistic& new_hit_points)

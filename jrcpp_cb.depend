@@ -330,7 +330,7 @@
 	"Skills.hpp"
 	"XMLDataStructures.hpp"
 
-1322882934 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconfigurationreader.cpp
+1326639849 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconfigurationreader.cpp
 	"XMLConfigurationReader.hpp"
 	<iostream>
 	<vector>
@@ -359,7 +359,7 @@
 	"XMLResistancesReader.hpp"
 	"XMLSkillsReaders.hpp"
 
-1321453057 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlresistancesreader.cpp
+1326551098 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlresistancesreader.cpp
 	"Resistances.hpp"
 	"XMLDataStructures.hpp"
 	"XMLResistancesReader.hpp"
@@ -367,12 +367,12 @@
 1321453057 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlskillsreaders.cpp
 	"XMLSkillsReaders.hpp"
 
-1322228790 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\resistancescalculator.cpp
+1326551031 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\resistancescalculator.cpp
 	"Resistances.hpp"
 	"ResistancesCalculator.hpp"
 	"unit_tests/ResistancesCalculator_test.cpp"
 
-1322229337 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\resistancescalculator_test.cpp
+1326550627 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\resistancescalculator_test.cpp
 	"gtest/gtest.h"
 
 1322228779 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\skillscalculator.cpp
@@ -582,7 +582,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1325353194 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1326639654 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"Game.hpp"
@@ -637,7 +637,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1326205213 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1326645073 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -655,7 +655,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1326161305 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1326508881 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -680,7 +680,7 @@
 	<sstream>
 	"Class.hpp"
 
-1325947783 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1326645662 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -688,10 +688,10 @@
 1321471658 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\creature_test.cpp
 	"gtest/gtest.h"
 
-1322004540 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
+1326554974 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	"Inventory.hpp"
 
-1322004525 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
+1326638629 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
 	"Item.hpp"
 
 1326039381 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
@@ -706,7 +706,7 @@
 1321453052 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\race_test.cpp
 	"gtest/gtest.h"
 
-1321453052 source:c:\cygwin\home\julian\jrcpp\world\source\resistances.cpp
+1326551276 source:c:\cygwin\home\julian\jrcpp\world\source\resistances.cpp
 	<sstream>
 	"Resistances.hpp"
 	"StringConstants.hpp"
@@ -1019,15 +1019,45 @@
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
-1326423174 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\heavyweapontohitcalculator.cpp
+1326425999 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\heavyweapontohitcalculator.cpp
 	"HeavyWeaponToHitCalculator.hpp"
+	"unit_tests/HeavyWeaponToHitCalculator_test.cpp"
 
-1326423197 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magictohitcalculator.cpp
+1326426072 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magictohitcalculator.cpp
 	"MagicToHitCalculator.hpp"
+	"unit_tests/MagicToHitCalculator_test.cpp"
 
 1326422410 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\tohitcalculatorfactory.cpp
 	"ToHitCalculatorFactory.hpp"
 
-1326423129 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\lightmeleeandrangedweapontohitcalculator.cpp
+1326425898 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\lightmeleeandrangedweapontohitcalculator.cpp
 	"LightMeleeAndRangedWeaponToHitCalculator.hpp"
+	"unit_tests/LightMeleeAndRangedWeaponToHitCalculator_test.cpp"
+
+1326424658 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\heavyweapontohitcalculator_test.cpp
+
+1326424606 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\magictohitcalculator_test.cpp
+
+1326424632 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\lightmeleeandrangedweapontohitcalculator_test.cpp
+
+1326550905 source:c:\cygwin\home\julian\jrcpp\world\source\damage.cpp
+	<string>
+	"Conversion.hpp"
+	"Damage.hpp"
+	"unit_tests/Damage_test.cpp"
+
+1326507577 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\damage_test.cpp
+
+1326561572 source:c:\cygwin\home\julian\jrcpp\world\source\equipment.cpp
+	"Equipment.hpp"
+
+1326635914 source:c:\cygwin\home\julian\jrcpp\world\source\weight.cpp
+	<iomanip>
+	<sstream>
+	"Weight.hpp"
+
+1326644424 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
+	"XMLItemsReaders.hpp"
 

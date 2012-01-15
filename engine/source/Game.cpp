@@ -62,6 +62,16 @@ const ClassMap& Game::get_classes_ref() const
   return classes;
 }
 
+void Game::set_items(const ItemMap& game_items)
+{
+  items = game_items;
+}
+
+const ItemMap& Game::get_items_ref() const
+{
+  return items;
+}
+
 void Game::set_tile_display_info(const vector<DisplayTile>& game_tiles)
 {
   tile_info = game_tiles;

@@ -9,6 +9,7 @@
 			<xs:element ref="tns:Races"/>
 			<xs:element ref="tns:Classes"/>
 			<xs:element ref="tns:Tiles"/>
+			<xs:element ref="tns:Items"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -58,6 +59,20 @@
 			<xs:element name="DownStaircaseTile" type="tns:Tile" minOccurs="1"/>			
 		</xs:sequence>
 	</xs:complexType>
+</xs:element>
+<xs:element name="Items">
+	<xs:annotation><xs:documentation>The items available within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:MiscItems" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- Weapons -->
+	<!-- Armour -->
+	<!-- Wands/Staves -->
+	<!-- Potions -->
+	<!-- Rings -->
+	<!-- Misc -->
 </xs:element>
 <xs:element name="Race">
 	<xs:annotation><xs:documentation>A race within Savage Lands.</xs:documentation></xs:annotation>
@@ -288,7 +303,30 @@
 	</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="MiscItems">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Item" type="tns:Item" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <!-- COMPLEX TYPES -->
+<xs:complexType name="Item">
+	<xs:sequence>
+		<xs:element name="DescriptionSID" type="xs:string"/>
+		<xs:element name="Value" type="tns:NonNegativeInt"/>
+		<xs:element name="Weight" type="tns:Weight"/>
+		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
+		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
+	</xs:sequence>
+	<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="Weight">
+	<xs:sequence>
+		<xs:element name="Pounds" type="xs:int"/>
+		<xs:element name="Ounces" type="xs:int" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="Tile">
 	<xs:annotation><xs:documentation>Contains information about a particular tile type</xs:documentation></xs:annotation>
 		<xs:sequence>
@@ -374,15 +412,51 @@
 			15 = Bold White
 		</xs:documentation>
 	</xs:annotation>
-
 	<xs:restriction base="xs:int">
-
 		<xs:minInclusive value="0"/>
 
 		<xs:maxExclusive value="15"/>
 
 	</xs:restriction>
 
+</xs:simpleType>
+<xs:simpleType name="WornLocation">
+	<xs:annotation>
+		<xs:documentation>
+			-1 = None (can't be worn)
+			0 = Head
+			1 = Neck
+			2 = Left Hand (note that any item that can be worn in 2 can be worn in 3, and vice versa)
+			3 = Right Hand
+			4 = Body
+			5 = About Body
+			6 = Left Finger (note that any item that can be worn in 6 can be worn in 7, and vice versa)
+			7 = Right Finger
+			8 = Feet
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="-1"/>
+		<xs:maxInclusive value="8"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="ItemStatus">
+	<xs:annotation>
+		<xs:documentation>
+			0 = Uncursed (default) 
+			1 = Blessed
+			2 = Cursed
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="2"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="NonNegativeInt">
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="0"/>
+	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="NonNegativeDecimal">
     <xs:restriction base="xs:decimal">
