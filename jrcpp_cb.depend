@@ -691,7 +691,7 @@
 1326554974 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	"Inventory.hpp"
 
-1326638629 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
+1326760871 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
 	"Item.hpp"
 
 1326039381 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
@@ -1056,8 +1056,47 @@
 	<sstream>
 	"Weight.hpp"
 
-1326644424 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+1326810127 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"XMLItemsReaders.hpp"
+
+1326807083 source:c:\cygwin\home\julian\jrcpp\world\source\armour.cpp
+	"Armour.hpp"
+
+1326761227 source:c:\cygwin\home\julian\jrcpp\world\source\book.cpp
+	"Book.hpp"
+
+1326807290 source:c:\cygwin\home\julian\jrcpp\world\source\ring.cpp
+	"Ring.hpp"
+
+1326761250 source:c:\cygwin\home\julian\jrcpp\world\source\scroll.cpp
+	"Scroll.hpp"
+
+1326761287 source:c:\cygwin\home\julian\jrcpp\world\source\staff.cpp
+	"Staff.hpp"
+
+1326761270 source:c:\cygwin\home\julian\jrcpp\world\source\wand.cpp
+	"Wand.hpp"
+
+1326809870 source:c:\cygwin\home\julian\jrcpp\world\source\potion.cpp
+	"Potion.hpp"
+
+1326848632 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
+	"Weapon.hpp"
+
+1326809911 source:c:\cygwin\home\julian\jrcpp\world\source\food.cpp
+	"Food.hpp"
+
+1326807259 source:c:\cygwin\home\julian\jrcpp\world\source\amulet.cpp
+	"Amulet.hpp"
+
+1326808016 source:c:\cygwin\home\julian\jrcpp\world\source\ammunition.cpp
+	"Ammunition.hpp"
+
+1326809831 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
+	"Consumable.hpp"
+
+1326849983 source:c:\cygwin\home\julian\jrcpp\world\source\wearable.cpp
+	"Wearable.hpp"
 

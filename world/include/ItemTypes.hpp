@@ -12,7 +12,8 @@ enum ItemType
   ITEM_TYPE_STAFF = 7,
   ITEM_TYPE_RING = 8,
   ITEM_TYPE_AMULET = 9,
-  ITEM_TYPE_FOOD = 10
+  ITEM_TYPE_FOOD = 10,
+  ITEM_TYPE_AMMUNITION = 11
 };
 
 enum ItemStatus

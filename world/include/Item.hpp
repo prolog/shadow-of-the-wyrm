@@ -12,20 +12,26 @@ class Item
     Item();
     ~Item();
     
-    void set_id(const std::string& new_id);
-    std::string get_id() const;
+    virtual void set_id(const std::string& new_id);
+    virtual std::string get_id() const;
     
-    void set_description_sid(const std::string& new_description_sid);
-    std::string get_description_sid() const;
+    virtual void set_description_sid(const std::string& new_description_sid);
+    virtual std::string get_description_sid() const;
     
-    void set_weight(const Weight& new_weight);
-    Weight get_weight() const;
+    virtual void set_weight(const Weight& new_weight);
+    virtual Weight get_weight() const;
     
-    void set_worn_location(const EquipmentWornLocation new_worn_location);
-    EquipmentWornLocation get_worn_location() const;
+    virtual void set_worn_location(const EquipmentWornLocation new_worn_location);
+    virtual EquipmentWornLocation get_worn_location() const;
     
-    void set_status(const ItemStatus new_status);
-    ItemStatus get_status() const;
+    virtual void set_status(const ItemStatus new_status);
+    virtual ItemStatus get_status() const;
+    
+    virtual void set_artifact(const bool new_artifact);
+    virtual bool get_artifact() const;
+    
+    virtual void set_type(const ItemType type);
+    ItemType get_type() const;
     
   protected:
     std::string id;
@@ -33,6 +39,8 @@ class Item
     Weight weight;
     EquipmentWornLocation worn_location;
     ItemStatus status;
+    bool artifact;
+    ItemType type;
 };
 
 typedef boost::shared_ptr<Item> ItemPtr;

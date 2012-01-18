@@ -43,11 +43,11 @@ ItemMap XMLItemsReader::get_misc_items(const XMLNode& misc_items_node)
     
     BOOST_FOREACH(XMLNode node, misc_items_nodes)
     {
-      ItemPtr sl_item = parse_item(node);
-      
-      if (sl_item)
+      if (!node.is_null())
       {
-        misc_items.insert(make_pair(sl_item->get_id(), sl_item));  
+        ItemPtr item = make_shared<Item>();
+        parse_item(item, node);
+        misc_items.insert(make_pair(item->get_id(), item));  
       }
     }
   }
@@ -56,10 +56,8 @@ ItemMap XMLItemsReader::get_misc_items(const XMLNode& misc_items_node)
 }
 
 // Parse the elements common to every item.
-ItemPtr XMLItemsReader::parse_item(const XMLNode& item_node)
-{
-  ItemPtr item;
-  
+void XMLItemsReader::parse_item(ItemPtr item, const XMLNode& item_node)
+{  
   if (!item_node.is_null())
   {
     item = make_shared<Item>();
@@ -84,12 +82,13 @@ ItemPtr XMLItemsReader::parse_item(const XMLNode& item_node)
       item->set_weight(weight);
     }
 
-    EquipmentWornLocation location = static_cast<EquipmentWornLocation>(XMLUtils::get_child_node_int_value(item_node, "WornLocation"));
+    EquipmentWornLocation location = static_cast<EquipmentWornLocation>(XMLUtils::get_child_node_int_value(item_node, "WornLocation", EQUIPMENT_WORN_NONE));
     item->set_worn_location(location);
 
     ItemStatus status = static_cast<ItemStatus>(XMLUtils::get_child_node_int_value(item_node, "ItemStatus"));
     item->set_status(status);
+    
+    bool is_artifact = XMLUtils::get_child_node_bool_value(item_node, "Artifact");
+    item->set_artifact(is_artifact);
   }
-  
-  return item;
 }
