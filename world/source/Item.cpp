@@ -3,7 +3,7 @@
 using std::string;
 
 Item::Item()
-: worn_location(EQUIPMENT_WORN_NONE)
+: worn_location(EQUIPMENT_WORN_NONE), artifact(false)
 {
 }
 
@@ -59,4 +59,24 @@ void Item::set_status(const ItemStatus new_status)
 ItemStatus Item::get_status() const
 {
   return status;
+}
+
+void Item::set_artifact(const bool new_artifact)
+{
+  artifact = new_artifact;
+}
+
+bool Item::get_artifact() const
+{
+  return artifact;
+}
+
+void Item::set_type(const ItemType new_type)
+{
+  type = new_type;
+}
+
+ItemType Item::get_type() const
+{
+  return type;
 }

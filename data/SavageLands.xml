@@ -1727,7 +1727,6 @@
 				<DescriptionSID>DIRT_SID</DescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>2</WornLocation>				
 			</Item>
 		</MiscItems>
 	</Items>

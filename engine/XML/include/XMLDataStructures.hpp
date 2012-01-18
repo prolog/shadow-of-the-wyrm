@@ -24,7 +24,6 @@ typedef xercesc::DOMAttr XMLAttributeImpl;
 typedef xercesc::DOMElement XMLElementImpl;
 typedef xercesc::DOMNode XMLNodeImpl;
 typedef const xercesc::DOMNodeList XMLNodeListImpl;
-//typedef xercesc::DOMNodeList* XMLNodeListImplPtr;
 
 typedef xercesc::DOMAttr* XMLAttributeImplPtr;
 typedef xercesc::DOMElement* XMLElementImplPtr;

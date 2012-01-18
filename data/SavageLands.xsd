@@ -318,6 +318,7 @@
 		<xs:element name="Weight" type="tns:Weight"/>
 		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
+		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="xs:string"/>
 </xs:complexType>
