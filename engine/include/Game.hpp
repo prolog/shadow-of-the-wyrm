@@ -13,6 +13,7 @@ class Game
 {
   public:
     static Game* instance();
+void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     void set_display(DisplayPtr display);
     DisplayPtr get_display() const;

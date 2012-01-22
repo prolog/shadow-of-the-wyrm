@@ -18,6 +18,10 @@ string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
 string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 string TextKeys::SELECT_RACE = "SELECT_RACE";
 string TextKeys::SELECT_CLASS = "SELECT_CLASS";
+string TextKeys::AGE = "AGE";
+string TextKeys::SEX = "SEX";
+string TextKeys::HAIR_COLOUR = "HAIR_COLOUR";
+string TextKeys::EYE_COLOUR = "EYE_COLOUR";
 string TextKeys::SELECT_SEX = "SELECT_SEX";
 string TextKeys::SEX_MALE = "SEX_MALE";
 string TextKeys::SEX_FEMALE = "SEX_FEMALE";
@@ -90,6 +94,131 @@ string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
 
 string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
+
+ColourTextKeys::ColourTextKeys()
+{
+}
+
+ColourTextKeys::~ColourTextKeys()
+{
+}
+
+string ColourTextKeys::get_colour_sid_from_hair_colour(const HairColour hair_colour)
+{
+  string colour_sid;
+  
+  switch(hair_colour)
+  {
+    case HAIR_COLOUR_BLACK:
+      colour_sid = COLOUR_BLACK;
+      break;
+    case HAIR_COLOUR_BROWN:
+      colour_sid = COLOUR_BROWN;
+      break;
+    case HAIR_COLOUR_BLONDE:
+      colour_sid = COLOUR_BLONDE;
+      break;
+    case HAIR_COLOUR_RED:
+      colour_sid = COLOUR_RED;
+      break;
+    case HAIR_COLOUR_GREY:
+      colour_sid = COLOUR_GREY;
+      break;
+    case HAIR_COLOUR_WHITE:
+      colour_sid = COLOUR_WHITE;
+      break;
+    default:
+      break;
+  }
+  
+  return colour_sid;
+}
+
+string ColourTextKeys::get_colour_sid_from_eye_colour(const EyeColour eye_colour)
+{
+  string colour_sid;
+  
+  switch(eye_colour)
+  {
+    case EYE_COLOUR_BROWN:
+      colour_sid = COLOUR_BROWN;
+      break;
+    case EYE_COLOUR_BLUE:
+      colour_sid = COLOUR_BLUE;
+      break;
+    case EYE_COLOUR_GREEN:
+      colour_sid = COLOUR_GREEN;
+      break;
+    case EYE_COLOUR_HAZEL:
+      colour_sid = COLOUR_HAZEL;
+      break;
+    case EYE_COLOUR_GREY:
+      colour_sid = COLOUR_GREY;
+      break;
+    default:
+      break;
+  }
+  
+  return colour_sid;
+}
+
+string ColourTextKeys::COLOUR_BLACK = "COLOUR_BLACK";
+string ColourTextKeys::COLOUR_BROWN = "COLOUR_BROWN";
+string ColourTextKeys::COLOUR_BLONDE = "COLOUR_BLONDE";
+string ColourTextKeys::COLOUR_RED = "COLOUR_RED";
+string ColourTextKeys::COLOUR_GREEN = "COLOUR_GREEN";
+string ColourTextKeys::COLOUR_HAZEL = "COLOUR_HAZEL";
+string ColourTextKeys::COLOUR_BLUE = "COLOUR_BLUE";
+string ColourTextKeys::COLOUR_GREY = "COLOUR_GREY";
+string ColourTextKeys::COLOUR_WHITE = "COLOUR_WHITE";
+
+
+SizeTextKeys::SizeTextKeys()
+{
+}
+
+SizeTextKeys::~SizeTextKeys()
+{
+}
+
+string SizeTextKeys::get_size_sid_from_creature_size(const CreatureSize size)
+{
+  string size_sid;
+  
+  switch(size)
+  {
+    case CREATURE_SIZE_TINY:
+      size_sid = SIZE_TINY;
+      break;
+    case CREATURE_SIZE_SMALL:
+      size_sid = SIZE_SMALL;
+      break;
+    case CREATURE_SIZE_MEDIUM:
+      size_sid = SIZE_MEDIUM;
+      break;
+    case CREATURE_SIZE_LARGE:
+      size_sid = SIZE_LARGE;
+      break;
+    case CREATURE_SIZE_HUGE:
+      size_sid = SIZE_HUGE;
+      break;
+    case CREATURE_SIZE_BEHEMOTH: 
+      size_sid = SIZE_BEHEMOTH;
+      break;
+    default:
+      break;
+  }
+  
+  return size_sid;
+}
+
+string SizeTextKeys::SIZE = "SIZE";
+string SizeTextKeys::SIZE_TINY = "SIZE_TINY";
+string SizeTextKeys::SIZE_SMALL = "SIZE_SMALL";
+string SizeTextKeys::SIZE_MEDIUM = "SIZE_MEDIUM";
+string SizeTextKeys::SIZE_LARGE = "SIZE_LARGE";
+string SizeTextKeys::SIZE_HUGE = "SIZE_HUGE";
+string SizeTextKeys::SIZE_BEHEMOTH = "SIZE_BEHEMOTH";
 
 SkillTextKeys::SkillTextKeys()
 {
@@ -243,6 +372,8 @@ string ActionTextKeys::ACTION_MOVE_OFF_WORLD_MAP = "ACTION_MOVE_OFF_WORLD_MAP";
 string ActionTextKeys::ACTION_NO_WAY_UP_WORLD_MAP = "ACTION_NO_WAY_UP_WORLD_MAP";
 string ActionTextKeys::ACTION_MOVE_OFF_OVERWORLD_MAP = "ACTION_MOVE_OFF_OVERWORLD_MAP";
 string ActionTextKeys::ACTION_MOVE_OFF_UNDERWORLD_MAP = "ACTION_MOVE_OFF_UNDERWORLD_MAP";
+string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED = "ACTION_PICK_UP_NOT_ALLOWED";
+string ActionTextKeys::ACTION_DROP_NOT_ALLOWED = "ACTION_DROP_NOT_ALLOWED";
 
 // Messages that can be sent to the user in the message buffer
 TextMessages::TextMessages()
@@ -254,7 +385,7 @@ TextMessages::~TextMessages()
 }
 
 string TextMessages::WELCOME_MESSAGE = "WELCOME_MESSAGE";
-
+string TextMessages::DUMPING_CHARACTER_MESSAGE = "DUMPING_CHARACTER_MESSAGE";
 
 // Public functions used to access protected members.  These are used to wrap any strings
 // that contain replaceable symbols.
@@ -270,4 +401,31 @@ string TextMessages::get_action_not_found_message(const string& command_action)
   string action_message = StringTable::get(ActionTextKeys::ACTION_NOT_FOUND);
   boost::replace_first(action_message, "%s", command_action);
   return action_message;
+}
+
+string TextMessages::get_dumping_character_message(const string& creature_name)
+{
+  string dumping_message = StringTable::get(TextMessages::DUMPING_CHARACTER_MESSAGE);
+  boost::replace_first(dumping_message, "%s", creature_name);
+  return dumping_message;
+}
+
+string TextMessages::get_sex(const CreatureSex sex)
+{
+  string creature_sex;
+  
+  switch(sex)
+  {
+    case CREATURE_SEX_MALE:
+      creature_sex = StringTable::get(TextKeys::SEX_MALE);
+      break;
+    case CREATURE_SEX_FEMALE:
+      creature_sex = StringTable::get(TextKeys::SEX_FEMALE);
+      break;
+    default:
+      creature_sex = "?";
+      break;
+  }
+  
+  return creature_sex;
 }

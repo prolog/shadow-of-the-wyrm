@@ -75,4 +75,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   // End of NCurses-specific movement keys
   command_mapping.insert(make_pair(Integer::to_string('<'), CommandKeys::MOVE_UP));
   command_mapping.insert(make_pair(Integer::to_string('>'), CommandKeys::MOVE_DOWN));
+  command_mapping.insert(make_pair(Integer::to_string(','), CommandKeys::PICK_UP_ITEM));
+  command_mapping.insert(make_pair(Integer::to_string('d'), CommandKeys::DROP_ITEM));
+  command_mapping.insert(make_pair(Integer::to_string('@'), CommandKeys::CHAR_DUMP));
 }

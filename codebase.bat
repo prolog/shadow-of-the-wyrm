@@ -1,1 +1,1 @@
-dir/s *.cpp *.hpp *.ini *.xsd *.xml makefile
+dir/s *.cpp *.hpp *.ini *.xsd *.xml

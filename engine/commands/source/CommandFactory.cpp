@@ -68,6 +68,18 @@ CommandPtr CommandFactory::create(const string& command_name)
   {
     command = CommandPtr(new MoveDownLevelCommand());
   }
+  else if (command_name == CommandKeys::PICK_UP_ITEM)
+  {
+    command = CommandPtr(new PickUpCommand());
+  }
+  else if (command_name == CommandKeys::DROP_ITEM)
+  {
+    command = CommandPtr(new DropCommand());
+  }
+  else if (command_name == CommandKeys::CHAR_DUMP)
+  {
+    command = CommandPtr(new CharDumpCommand());
+  }
 
   return command;
 }

@@ -141,6 +141,7 @@ bool NCursesDisplay::create()
   keypad(stdscr, TRUE);
   nl();
   noecho(); // Don't echo the user input.
+  raw(); // pass control characters to the program.
   curs_set(0); // Cursor invisible.  Doesn't seem to work in Cygwin.  Just like colour redefinition.  Fucking Cygwin.
 
   if (has_colors() == TRUE)
@@ -310,19 +311,14 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
   string result;
   refresh_terminal_size();
 
-  // JCD FIXME: Refactor the shit out of this.
-  int row_start = 0;
-  int col_start = 0;
-
   NCursesMenuWrapper wrapper;
-  WINDOW* menu_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, row_start, col_start);
+  WINDOW* menu_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
 
   menus.push(menu_window);
 
-  int current_row = row_start;
-  int current_col = col_start;
+  int current_row = 0;
+  int current_col = 0;
 
-  // JCD FIXME: It goes without saying that this shit needs a refactorin'.
   vector<MenuComponent*> components = current_menu.get_components();
   BOOST_FOREACH( MenuComponent* component, components)
   {

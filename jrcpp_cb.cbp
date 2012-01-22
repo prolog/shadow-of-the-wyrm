@@ -233,12 +233,15 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="engine\include\ActionManager.hpp" />
+		<Unit filename="engine\include\CharacterDumper.hpp" />
 		<Unit filename="engine\include\Conversion.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\CreatureTranslator.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
 		<Unit filename="engine\include\Directions.hpp" />
+		<Unit filename="engine\include\FileWriter.hpp" />
 		<Unit filename="engine\include\Game.hpp" />
+		<Unit filename="engine\include\ItemManager.hpp" />
 		<Unit filename="engine\include\Log.hpp" />
 		<Unit filename="engine\include\MapTranslator.hpp" />
 		<Unit filename="engine\include\MapUtils.hpp" />
@@ -272,11 +275,14 @@
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
 		<Unit filename="engine\source\ActionManager.cpp" />
+		<Unit filename="engine\source\CharacterDumper.cpp" />
 		<Unit filename="engine\source\Conversion.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
 		<Unit filename="engine\source\CreatureTranslator.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
+		<Unit filename="engine\source\FileWriter.cpp" />
 		<Unit filename="engine\source\Game.cpp" />
+		<Unit filename="engine\source\ItemManager.cpp" />
 		<Unit filename="engine\source\Log.cpp" />
 		<Unit filename="engine\source\MapTranslator.cpp" />
 		<Unit filename="engine\source\MapUtils.cpp" />

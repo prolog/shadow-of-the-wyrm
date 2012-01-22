@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:1.0.0" targetNamespace="urn:savage_lands:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
 <!-- ELEMENTS -->
 <xs:element name="SavageLands">
@@ -64,15 +63,16 @@
 	<xs:annotation><xs:documentation>The items available within Savage Lands.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
+			<xs:element ref="tns:Armours" minOccurs="0"/>
+			<xs:element name="Weapons" type="tns:Weapons" minOccurs="0"/>
+			<xs:element name="RangedWeapons" type="tns:Weapons" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
-	<!-- Weapons -->
-	<!-- Armour -->
 	<!-- Wands/Staves -->
+	<!-- Books, Scrolls -->
 	<!-- Potions -->
 	<!-- Rings -->
-	<!-- Misc -->
 </xs:element>
 <xs:element name="Race">
 	<xs:annotation><xs:documentation>A race within Savage Lands.</xs:documentation></xs:annotation>
@@ -150,10 +150,9 @@
 			<xs:element name="NameSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
-			
-<xs:element ref="tns:ClassInitialStatistics"/>
-			
-<xs:element ref="tns:ClassInitialModifiers"/>
+			<xs:element ref="tns:ClassInitialStatistics"/>
+
+			<xs:element ref="tns:ClassInitialModifiers"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
@@ -310,7 +309,19 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Armours">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Armour" type="tns:Armour" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <!-- COMPLEX TYPES -->
+<xs:complexType name="Weapons">
+	<xs:sequence>
+		<xs:element name="Weapon" type="tns:Weapon" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="Item">
 	<xs:sequence>
 		<xs:element name="DescriptionSID" type="xs:string"/>
@@ -318,9 +329,45 @@
 		<xs:element name="Weight" type="tns:Weight"/>
 		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
+<!--		<xs:element name="ItemType" type="tns:ItemType"/> -->
 		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="Wearable">
+	<xs:complexContent>
+		<xs:extension base="tns:Item">
+			<xs:sequence>
+				<xs:element name="Evade" type="xs:int" minOccurs="0"/>
+				<xs:element name="Soak" type="xs:int" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Armour">
+	<xs:complexContent>
+		<xs:extension base="tns:Wearable">
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Weapon">
+	<xs:complexContent>
+		<xs:extension base="tns:Wearable">
+			<xs:sequence>
+				<xs:element name="Skill" type="tns:TrainedWeaponSkill"/>
+				<xs:element name="Damage">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="NumSides" type="xs:int"/>
+							<xs:element name="NumDice" type="xs:int"/>
+							<xs:element name="Modifier" type="xs:int" minOccurs="0"/>
+							<xs:element name="Type" type="tns:DamageType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Weight">
 	<xs:sequence>
@@ -390,7 +437,6 @@
 		<xs:maxExclusive value="99"/>
 	</xs:restriction>
 </xs:simpleType>
-
 <xs:simpleType name="ColourType">
 	<xs:annotation>
 		<xs:documentation>
@@ -415,9 +461,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="0"/>
-
 		<xs:maxExclusive value="15"/>
-
 	</xs:restriction>
 
 </xs:simpleType>
@@ -441,6 +485,31 @@
 		<xs:maxInclusive value="8"/>
 	</xs:restriction>
 </xs:simpleType>
+<xs:simpleType name="DamageType">
+	<xs:annotation>	
+		<xs:documentation>
+			See DamageTypes.hpp:
+			  	Slash = 0
+  				Pierce = 1
+  				Pound = 2
+				Heat = 3
+ 				Cold = 4
+				Acid = 5
+				Poison = 6
+				Holy = 7
+				Shadow = 8
+				Arcane = 9
+				Mental = 10
+				Sonic = 11
+				Radiant = 12
+				Lightning = 13
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="13"/>
+	</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="ItemStatus">
 	<xs:annotation>
 		<xs:documentation>
@@ -458,6 +527,37 @@
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="0"/>
 	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="GeneralSkillType">
+	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="49"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MeleeWeaponSkillType">
+	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="1000"/>
+		<xs:maxInclusive value="1008"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="RangedWeaponSkillType">
+	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="2000"/>
+		<xs:maxInclusive value="2008"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MagicSkillType">
+	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="3000"/>
+		<xs:maxInclusive value="3003"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="TrainedWeaponSkill">
+	<xs:union memberTypes="tns:MeleeWeaponSkillType tns:RangedWeaponSkillType"/>
 </xs:simpleType>
 <xs:simpleType name="NonNegativeDecimal">
     <xs:restriction base="xs:decimal">

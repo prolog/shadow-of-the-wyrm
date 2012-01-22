@@ -21,3 +21,5 @@ class Wearable : public Item
   protected:
     int evade, soak;
 };
+
+typedef boost::shared_ptr<Wearable> WearablePtr;

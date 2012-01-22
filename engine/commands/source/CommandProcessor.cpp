@@ -26,7 +26,7 @@ void CommandProcessor::process(CreaturePtr creature, CommandPtr command)
     if (d_command)
     {
       process_directional_command(creature, d_command);
-    }
+    } 
     else
     {
       // It's a subclass of the basic command, but not one of the subclasses requiring special processing.
@@ -62,6 +62,18 @@ void CommandProcessor::process_command(CreaturePtr creature, Command* command)
     else if (command_name == CommandKeys::MOVE_DOWN)
     {
       game->actions.descend(creature);
+    }
+    else if (command_name == CommandKeys::PICK_UP_ITEM)
+    {
+      game->actions.pick_up(creature);
+    }
+    else if (command_name == CommandKeys::DROP_ITEM)
+    {
+      game->actions.drop(creature);
+    }
+    else if (command_name == CommandKeys::CHAR_DUMP)
+    {
+      game->actions.dump_character(creature);
     }
   }
 }

@@ -114,7 +114,7 @@ int main(int argc, char* argv[])
   }
   catch(...)
   {
-    // JCD FIXME: Process XML failure.
+    Log::instance()->log("Unable to run Savage Lands!");
   }
 
   XML::tear_down();

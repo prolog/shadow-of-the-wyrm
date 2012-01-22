@@ -1,5 +1,6 @@
 #pragma once
 #include "Damage.hpp"
+#include "SkillTypes.hpp"
 #include "WeaponTypes.hpp"
 #include "Wearable.hpp"
 
@@ -16,10 +17,14 @@ class Weapon : public Wearable
     
     virtual void set_damage(const Damage& new_damage);
     virtual Damage get_damage() const;
+    
+    virtual void set_trained_skill(const SkillType new_trained_skill);
+    SkillType get_trained_skill() const;
 
   protected:
     int base_to_hit;
     Damage damage;
+    SkillType trained_skill;
 };
 
 class MeleeWeapon : public Weapon

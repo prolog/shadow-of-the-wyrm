@@ -5,5 +5,6 @@ rm -rf obj
 rm -rf .objs
 rm sl-*.log
 rm gmon.out
+rm *.txt
 rm jrcpp_cb.exe
 rm MapTester.exe

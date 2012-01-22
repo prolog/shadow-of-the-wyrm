@@ -7,8 +7,10 @@ using namespace std;
 // Why did I write this in C++?
 Creature::Creature()
 : is_player(false)
-, sex( CREATURE_SEX_MALE )
-, size( CREATURE_SIZE_MEDIUM )
+, sex(CREATURE_SEX_MALE)
+, size(CREATURE_SIZE_MEDIUM)
+, eye_colour(EYE_COLOUR_BROWN)
+, hair_colour(HAIR_COLOUR_BLACK)
 , ivory_pieces(0)
 , symbol('?')
 , colour(COLOUR_BLACK)
@@ -86,6 +88,26 @@ void Creature::set_size(const CreatureSize& new_size)
 CreatureSize Creature::get_size() const
 {
   return size;
+}
+
+void Creature::set_eye_colour(const EyeColour new_eye_colour)
+{
+  eye_colour = new_eye_colour;
+}
+
+EyeColour Creature::get_eye_colour() const
+{
+  return eye_colour;
+}
+
+void Creature::set_hair_colour(const HairColour new_hair_colour)
+{
+  hair_colour = new_hair_colour;
+}
+
+HairColour Creature::get_hair_colour() const
+{
+  return hair_colour;
 }
 
 void Creature::set_race_id(const string& new_race_id)
