@@ -71,9 +71,10 @@ void SavageLandsEngine::start()
 
     {
       // Read the races, classes, and items from the configuration file.
+      // Items need to be read first so that each class's default items can be loaded.
+      ItemMap items = reader.get_items();
       RaceMap races = reader.get_races();
       ClassMap classes = reader.get_classes();
-      ItemMap items = reader.get_items();
       
       vector<DisplayTile> tile_info = reader.get_tile_info();
 
@@ -105,7 +106,7 @@ void SavageLandsEngine::start()
 
       CreaturePtr player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name, sex);
       player->set_is_player(true, controller);
-
+      
       // Create world map, place player on world map.
       game->create_new_world(player);
     }

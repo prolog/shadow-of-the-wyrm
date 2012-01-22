@@ -13,22 +13,22 @@ Damage::~Damage()
 {
 }
 
-void Damage::set_num_dice(const int new_num_dice)
+void Damage::set_num_dice(const uint new_num_dice)
 {
   num_dice = new_num_dice;
 }
 
-int Damage::get_num_dice() const
+uint Damage::get_num_dice() const
 {
   return num_dice;
 }
 
-void Damage::set_dice_sides(const int new_dice_sides)
+void Damage::set_dice_sides(const uint new_dice_sides)
 {
   dice_sides = new_dice_sides;
 }
 
-int Damage::get_dice_sides() const
+uint Damage::get_dice_sides() const
 {
   return dice_sides;
 }

@@ -81,3 +81,33 @@ SearchCommand::SearchCommand()
 SearchCommand::~SearchCommand()
 {
 }
+
+// Pick up
+PickUpCommand::PickUpCommand()
+: Command(CommandKeys::PICK_UP_ITEM)
+{
+}
+
+PickUpCommand::~PickUpCommand()
+{
+}
+
+// Drop
+DropCommand::DropCommand()
+: Command(CommandKeys::DROP_ITEM)
+{
+}
+
+DropCommand::~DropCommand()
+{
+}
+
+// Dump (pretty-print) the character to a file
+CharDumpCommand::CharDumpCommand()
+: Command(CommandKeys::CHAR_DUMP)
+{
+}
+
+CharDumpCommand::~CharDumpCommand()
+{
+}

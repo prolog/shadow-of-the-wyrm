@@ -194,7 +194,7 @@
 	"XMLDataStructures.hpp"
 	<vector>
 
-1326152419 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1326982206 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
 	<xercesc/util/PlatformUtils.hpp>
 	"common.hpp"
@@ -275,7 +275,7 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1326248675 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1326982038 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -495,7 +495,7 @@
 1321453060 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
 	"gtest/gtest.h"
 
-1326248511 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+1327157953 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
 	<vector>
 	"WorldGenerator.hpp"
 	"TileGenerator.hpp"
@@ -582,7 +582,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1326639654 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1327068932 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"Game.hpp"
@@ -637,7 +637,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1326645073 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1327068406 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -655,7 +655,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1326508881 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1327247999 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -680,7 +680,7 @@
 	<sstream>
 	"Class.hpp"
 
-1326645662 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1327244869 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -961,7 +961,7 @@
 1325338902 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1326034405 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1327157768 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
@@ -971,7 +971,7 @@
 1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
 
-1326161742 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1327155382 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -980,24 +980,27 @@
 	"MessageManager.hpp"
 	"StringConstants.hpp"
 
-1326034320 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1327155905 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1326033808 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1327155385 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1326034087 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1327155868 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 
-1326034761 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
+1327164514 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
 	<string>
 	"global_prototypes.hpp"
 	"ActionManager.hpp"
+	"CharacterDumper.hpp"
+	"FileWriter.hpp"
 	"MessageManager.hpp"
+	"Log.hpp"
 
 1325431828 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
 	"Conversion.hpp"
@@ -1040,7 +1043,7 @@
 
 1326424632 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\lightmeleeandrangedweapontohitcalculator_test.cpp
 
-1326550905 source:c:\cygwin\home\julian\jrcpp\world\source\damage.cpp
+1326930152 source:c:\cygwin\home\julian\jrcpp\world\source\damage.cpp
 	<string>
 	"Conversion.hpp"
 	"Damage.hpp"
@@ -1056,7 +1059,7 @@
 	<sstream>
 	"Weight.hpp"
 
-1326810127 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+1327116623 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"XMLItemsReaders.hpp"
@@ -1082,7 +1085,7 @@
 1326809870 source:c:\cygwin\home\julian\jrcpp\world\source\potion.cpp
 	"Potion.hpp"
 
-1326848632 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
+1326980376 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
 	"Weapon.hpp"
 
 1326809911 source:c:\cygwin\home\julian\jrcpp\world\source\food.cpp
@@ -1099,4 +1102,17 @@
 
 1326849983 source:c:\cygwin\home\julian\jrcpp\world\source\wearable.cpp
 	"Wearable.hpp"
+
+1327066395 source:c:\cygwin\home\julian\jrcpp\engine\source\itemmanager.cpp
+	"ItemManager.hpp"
+
+1327250688 source:c:\cygwin\home\julian\jrcpp\engine\source\characterdumper.cpp
+	<sstream>
+	"global_prototypes.hpp"
+	"CharacterDumper.hpp"
+	"Conversion.hpp"
+	"Game.hpp"
+
+1327243699 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
+	"FileWriter.hpp"
 

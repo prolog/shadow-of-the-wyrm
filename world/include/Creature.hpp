@@ -41,7 +41,13 @@ class Creature
 
     void set_size(const CreatureSize& new_size);
     CreatureSize get_size() const;
-
+    
+    void set_eye_colour(const EyeColour new_eye_colour);
+    EyeColour get_eye_colour() const;
+    
+    void set_hair_colour(const HairColour new_hair_colour);
+    HairColour get_hair_colour() const;
+    
     // Set/Get race and class identifiers
     void set_race_id(const std::string& new_race_id);
     std::string get_race_id() const;
@@ -149,6 +155,8 @@ class Creature
     CreatureSex sex;
     Statistic age;
     CreatureSize size;
+    EyeColour eye_colour;
+    HairColour hair_colour;
 
     // Race and class.  Maybe make this an ID instead?
     std::string race_id;

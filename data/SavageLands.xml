@@ -1722,6 +1722,44 @@
 		</DownStaircaseTile>
 	</Tiles>
 	<Items>
+		<Armours>
+			<Armour id="cap">
+				<DescriptionSID>CAP_SID</DescriptionSID>
+				<Value>5</Value>
+				<Weight><Pounds>0</Pounds><Ounces>7</Ounces></Weight>
+				<WornLocation>0</WornLocation>
+				<Evade>1</Evade>
+				<Soak>0</Soak>
+			</Armour>
+		</Armours>
+		<Weapons>
+			<Weapon id="dagger">
+				<DescriptionSID>DAGGER_SID</DescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>2</WornLocation>
+				<Skill>1004</Skill>
+				<Damage>
+					<NumSides>1</NumSides>
+					<NumDice>4</NumDice>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
+		</Weapons>
+		<RangedWeapons>
+			<Weapon id="sling">
+				<DescriptionSID>SLING_SID</DescriptionSID>
+				<Value>5</Value>
+				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Skill>2007</Skill>
+				<Damage>
+					<NumSides>1</NumSides>
+					<NumDice>4</NumDice>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
+		</RangedWeapons>
 		<MiscItems>
 			<Item id="dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>

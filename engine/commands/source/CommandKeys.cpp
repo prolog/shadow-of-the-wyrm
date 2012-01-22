@@ -24,6 +24,9 @@ string CommandKeys::MOVE_SOUTH     = "MOVE_SOUTH";
 string CommandKeys::MOVE_SOUTHEAST = "MOVE_SOUTHEAST";
 string CommandKeys::MOVE_UP        = "MOVE_UP";
 string CommandKeys::MOVE_DOWN      = "MOVE_DOWN";
+string CommandKeys::PICK_UP_ITEM   = "PICK_UP_ITEM";
+string CommandKeys::DROP_ITEM      = "DROP_ITEM";
+string CommandKeys::CHAR_DUMP      = "CHAR_DUMP";
 
 bool CommandKeys::is_movement_type_key(const string& key)
 {

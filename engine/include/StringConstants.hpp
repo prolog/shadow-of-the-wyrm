@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "CreatureFeatures.hpp"
 
 // These define all the string keys.
 // Key/value pairs are defined in savagelandstext_lang.ini, where lang=en,fr,ru,kl,etc.
@@ -10,9 +11,13 @@ class TextKeys
     static std::string SL_TITLE_POEM;
     static std::string COPYRIGHT_NOTICE;
     static std::string DEFAULT_PLAYER_NAME;
+    static std::string SEX;
     static std::string SELECT_SEX;
     static std::string SEX_MALE;
     static std::string SEX_FEMALE;
+    static std::string AGE;
+    static std::string HAIR_COLOUR;
+    static std::string EYE_COLOUR;
     static std::string SELECT_RACE;
     static std::string SELECT_CLASS;
     static std::string RACE_1_NAME;
@@ -87,6 +92,45 @@ class TextKeys
   protected:
     TextKeys();
     ~TextKeys();
+};
+
+class ColourTextKeys
+{
+  public:
+    static std::string COLOUR_BLACK;
+    static std::string COLOUR_BROWN;
+    static std::string COLOUR_BLONDE;
+    static std::string COLOUR_RED;
+    static std::string COLOUR_BLUE;
+    static std::string COLOUR_GREEN;
+    static std::string COLOUR_HAZEL;
+    static std::string COLOUR_GREY;
+    static std::string COLOUR_WHITE;
+    
+    static std::string get_colour_sid_from_hair_colour(const HairColour hair_colour);
+    static std::string get_colour_sid_from_eye_colour(const EyeColour eye_colour);
+    
+  protected:
+    ColourTextKeys();
+    ~ColourTextKeys();
+};
+
+class SizeTextKeys
+{
+  public:
+    static std::string SIZE;
+    static std::string SIZE_TINY;
+    static std::string SIZE_SMALL;
+    static std::string SIZE_MEDIUM;
+    static std::string SIZE_LARGE;
+    static std::string SIZE_HUGE;
+    static std::string SIZE_BEHEMOTH;
+    
+    static std::string get_size_sid_from_creature_size(const CreatureSize size);
+    
+  protected:
+    SizeTextKeys();
+    ~SizeTextKeys();
 };
 
 class SkillTextKeys
@@ -231,6 +275,8 @@ class ActionTextKeys
     static std::string ACTION_NO_WAY_UP_WORLD_MAP;
     static std::string ACTION_MOVE_OFF_OVERWORLD_MAP;
     static std::string ACTION_MOVE_OFF_UNDERWORLD_MAP;
+    static std::string ACTION_PICK_UP_NOT_ALLOWED;
+    static std::string ACTION_DROP_NOT_ALLOWED;
 
   protected:
     ActionTextKeys();
@@ -242,12 +288,15 @@ class TextMessages
   public:
     static std::string get_welcome_message(const std::string& player_name);
     static std::string get_action_not_found_message(const std::string& command_action);
+    static std::string get_dumping_character_message(const std::string& creature_name);
+    static std::string get_sex(const CreatureSex sex);
 
   protected:
     TextMessages();
     ~TextMessages();
 
     static std::string WELCOME_MESSAGE;
+    static std::string DUMPING_CHARACTER_MESSAGE;
 };
 
 // JCD FIXME Todo: Define full text/abbreviation SIDs for statistics: Strength, Piety, etc.

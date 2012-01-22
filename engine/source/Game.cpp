@@ -13,6 +13,33 @@ using namespace std;
 
 Game* Game::game_instance = NULL;
 
+// JCD FIXME: These items don't appear to be in the map.  Investigate!
+// Once this is working, make sure there's a function that can "copy"
+// items from their template versions.
+void Game::FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player)
+{
+  ItemMap::iterator item_it = items.find("cap");
+
+  if (item_it != items.end())
+  {
+    actions.handle_item(player, ITEM_ACTION_EQUIP, item_it->second);
+  }
+  
+  item_it = items.find("dagger");
+
+  if (item_it != items.end())
+  {
+    actions.handle_item(player, ITEM_ACTION_EQUIP, item_it->second);
+  }
+  
+  item_it = items.find("dirt");
+
+  if (item_it != items.end())
+  {
+    actions.handle_item(player, ITEM_ACTION_PICK_UP, item_it->second);
+  }
+}
+
 Game::Game()
 : keep_playing(true), current_world_ix(0)
 {
@@ -132,6 +159,10 @@ void Game::go()
   current_map = current_world->get_world();
   actions.set_current_map(current_map);
 
+
+      FIXME_REMOVE_THIS_FUNCTION(current_player);
+      
+      
   // Main game loop.
   while(keep_playing)
   {

@@ -58,3 +58,24 @@ class SearchCommand : public Command
     SearchCommand();
     ~SearchCommand();
 };
+
+class PickUpCommand : public Command
+{
+  public:
+    PickUpCommand();
+    ~PickUpCommand();
+};
+
+class DropCommand : public Command
+{
+  public:
+    DropCommand();
+    ~DropCommand();
+};
+
+class CharDumpCommand : public Command
+{
+  public:
+    CharDumpCommand();
+    ~CharDumpCommand();
+};
