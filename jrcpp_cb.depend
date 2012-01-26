@@ -655,7 +655,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1327247999 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1327413557 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -712,7 +712,7 @@
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
-1325276682 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+1327412997 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	"Skills.hpp"
@@ -1106,7 +1106,7 @@
 1327066395 source:c:\cygwin\home\julian\jrcpp\engine\source\itemmanager.cpp
 	"ItemManager.hpp"
 
-1327250688 source:c:\cygwin\home\julian\jrcpp\engine\source\characterdumper.cpp
+1327413571 source:c:\cygwin\home\julian\jrcpp\engine\source\characterdumper.cpp
 	<sstream>
 	"global_prototypes.hpp"
 	"CharacterDumper.hpp"
@@ -1115,4 +1115,36 @@
 
 1327243699 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
+
+1327413985 source:c:\cygwin\home\julian\jrcpp\engine\source\skillsdumper.cpp
+	"SkillsDumper.hpp"
+
+1327458854 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\characterdumper.cpp
+	<sstream>
+	"global_prototypes.hpp"
+	"CharacterDumper.hpp"
+	"Conversion.hpp"
+	"Game.hpp"
+	"SkillsDumper.hpp"
+
+1327459074 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\skillsdumper.cpp
+	<sstream>
+	"Conversion.hpp"
+	"SkillsDumper.hpp"
+
+1327458879 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
+	<ctype.h>
+	<boost/lexical_cast.hpp>
+	<boost/uuid/uuid_io.hpp>
+	"CommandKeys.hpp"
+	"Conversion.hpp"
+	"unit_tests/Conversion_test.cpp"
+
+1325259810 c:\cygwin\home\julian\jrcpp\engine\conversion\source\unit_tests\conversion_test.cpp
+	"gtest/gtest.h"
+
+1327548358 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\statsdumper.cpp
+	<sstream>
+	"Conversion.hpp"
+	"StatsDumper.hpp"
 

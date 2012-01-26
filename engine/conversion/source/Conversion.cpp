@@ -153,6 +153,43 @@ string String::add_trailing_spaces(const string& str, const uint max_size)
   return result;
 }
 
+void String::reset_and_pad(string& s, const uint num_cols)
+{
+  s = "";
+  s = String::add_trailing_spaces(s, num_cols);
+}
+
+// Centre the string on the number of columns stored on the object instance
+string String::centre(const std::string& justify_str, const uint num_cols)
+{
+  ostringstream ss;
+  
+  for (uint i = 0; i < (num_cols/2) - (justify_str.size()/2); i++)
+  {
+    ss << " ";
+  }
+  
+  ss << justify_str;
+  
+  return ss.str();
+}
+
+// Right-justify the string using the number of columns stored on the object instance to add left padding.
+string String::right(const std::string& justify_str, const uint num_cols)
+{
+  ostringstream ss;
+  
+  for (uint i = 0; i < (num_cols - justify_str.size()); i++)
+  {
+    ss << " "; 
+  }
+  
+  ss << justify_str;
+  
+  return ss.str();
+}
+
+
 Integer::Integer()
 {
 }

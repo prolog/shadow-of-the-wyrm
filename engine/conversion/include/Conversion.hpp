@@ -51,6 +51,10 @@ class String
 {
   public:
     static std::string clean(const std::string& str);
+    static void reset_and_pad(std::string& string_to_reset_and_pad, const uint num_cols);
+    static std::string centre(const std::string& string_to_centre, const uint num_cols);
+    static std::string right (const std::string& string_to_right_justify, const uint num_cols);
+
     static bool to_bool(const std::string& str);
     static int to_int(const std::string& str);
     static float to_float(const std::string& str);

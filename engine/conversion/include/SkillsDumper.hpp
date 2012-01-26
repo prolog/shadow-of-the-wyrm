@@ -1,0 +1,27 @@
+#pragma once
+#include "Creature.hpp"
+#include "StringConverter.hpp"
+
+class SkillsDumper
+{
+  public:
+    SkillsDumper(CreaturePtr new_creature, const uint new_num_cols);
+    ~SkillsDumper();
+    
+    std::string str() const;
+
+  protected:
+    std::string get_skills() const;
+    std::string get_general_skills_header() const;
+    std::string get_general_skills() const;
+    std::string get_weapon_skills_header() const;
+    std::string get_melee_weapon_skills() const;
+    std::string get_ranged_weapon_skills_header() const;
+    std::string get_ranged_weapon_skills() const;
+    std::string get_magical_skills_header() const;
+    std::string get_magical_skills() const;
+    std::string get_skills_by_category(const SkillCategory category, bool include_zero_valued_skills = false) const;
+
+    CreaturePtr creature;
+    const int num_cols;
+};

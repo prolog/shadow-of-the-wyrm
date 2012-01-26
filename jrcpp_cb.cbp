@@ -185,6 +185,19 @@
 		<Unit filename="engine\commands\source\CommandProcessor.cpp" />
 		<Unit filename="engine\commands\source\Commands.cpp" />
 		<Unit filename="engine\commands\source\KeyboardCommandMap.cpp" />
+		<Unit filename="engine\conversion\include\CharacterDumper.hpp" />
+		<Unit filename="engine\conversion\include\Conversion.hpp" />
+		<Unit filename="engine\conversion\include\SkillsDumper.hpp" />
+		<Unit filename="engine\conversion\include\StatsDumper.hpp" />
+		<Unit filename="engine\conversion\include\StringConverter.hpp" />
+		<Unit filename="engine\conversion\source\CharacterDumper.cpp" />
+		<Unit filename="engine\conversion\source\Conversion.cpp" />
+		<Unit filename="engine\conversion\source\SkillsDumper.cpp" />
+		<Unit filename="engine\conversion\source\StatsDumper.cpp" />
+		<Unit filename="engine\conversion\source\unit_tests\Conversion_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
 		<Unit filename="engine\decision_strategies\include\DecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
@@ -233,8 +246,6 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="engine\include\ActionManager.hpp" />
-		<Unit filename="engine\include\CharacterDumper.hpp" />
-		<Unit filename="engine\include\Conversion.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\CreatureTranslator.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
@@ -275,8 +286,6 @@
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
 		<Unit filename="engine\source\ActionManager.cpp" />
-		<Unit filename="engine\source\CharacterDumper.cpp" />
-		<Unit filename="engine\source\Conversion.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
 		<Unit filename="engine\source\CreatureTranslator.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
@@ -295,9 +304,6 @@
 		<Unit filename="engine\source\SavageLandsEngine.cpp" />
 		<Unit filename="engine\source\StringConstants.cpp" />
 		<Unit filename="engine\source\StringTable.cpp" />
-		<Unit filename="engine\source\unit_tests\Conversion_test.cpp">
-			<Option target="Release" />
-		</Unit>
 		<Unit filename="engine\source\unit_tests\CreatureFactory_test.cpp">
 			<Option target="Release" />
 		</Unit>
