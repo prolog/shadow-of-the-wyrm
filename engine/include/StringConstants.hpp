@@ -137,6 +137,7 @@ class SkillTextKeys
 {
   public:
     // General (NWP)
+    static std::string SKILLS_GENERAL;
     static std::string SKILL_GENERAL_ARCHERY;
     static std::string SKILL_GENERAL_AWARENESS;
     static std::string SKILL_GENERAL_BARGAINING;
@@ -189,6 +190,7 @@ class SkillTextKeys
     static std::string SKILL_GENERAL_WEAVING;
 
     // Weapon (Melee)
+    static std::string SKILLS_WEAPON;
     static std::string SKILL_MELEE_AXES;
     static std::string SKILL_MELEE_SHORT_BLADES;
     static std::string SKILL_MELEE_LONG_BLADES;
@@ -200,6 +202,7 @@ class SkillTextKeys
     static std::string SKILL_MELEE_WHIPS;
 
     // Weapon (Ranged)
+    static std::string SKILLS_RANGED_WEAPON;
     static std::string SKILL_RANGED_AXES;
     static std::string SKILL_RANGED_BLADES;
     static std::string SKILL_RANGED_BLUDGEONS;
@@ -211,6 +214,7 @@ class SkillTextKeys
     static std::string SKILL_RANGED_SPEARS;
 
     // Magic
+    static std::string SKILLS_MAGIC;
     static std::string SKILL_MAGIC_ARCANE;
     static std::string SKILL_MAGIC_DIVINE;
     static std::string SKILL_MAGIC_MYSTIC;

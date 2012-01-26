@@ -534,6 +534,10 @@ class Skills
     Skill get_skill(const SkillType& st) const;
 
     std::string str() const;
+    
+    // This just provides a copy of the map - direct manipulation requires the various
+    // methods above.
+    std::map<SkillType, Skill> get_raw_skills() const;
 
   protected:
     void initialize_skills();

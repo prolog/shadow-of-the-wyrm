@@ -711,6 +711,12 @@ string Skills::str() const
   return skills_str;
 }
 
+// Return a copy of the skills map
+std::map<SkillType, Skill> Skills::get_raw_skills() const
+{
+  return skills;
+}
+
 // Initialize all the general, combat, and magical skills.
 void Skills::initialize_skills()
 {
