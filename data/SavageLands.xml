@@ -7,6 +7,16 @@
 			<DescriptionSID>RACE_1_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_1_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>17</Min>
+					<Max>45</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>70</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>11</Strength>
 				<Dexterity>10</Dexterity>
@@ -67,6 +77,16 @@
 			<DescriptionSID>RACE_2_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_2_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>100</Min>
+					<Max>300</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>600</Min>
+					<Max>1000</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>8</Strength>
 				<Dexterity>14</Dexterity>
@@ -124,6 +144,16 @@
 			<DescriptionSID>RACE_3_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_3_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>60</Min>
+					<Max>150</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>300</Min>
+					<Max>400</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>9</Strength>
 				<Dexterity>13</Dexterity>
@@ -183,6 +213,16 @@
 			<DescriptionSID>RACE_4_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_4_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>50</Min>
+					<Max>75</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>200</Min>
+					<Max>300</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>7</Strength>
 				<Dexterity>11</Dexterity>
@@ -239,6 +279,16 @@
 			<DescriptionSID>RACE_5_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_5_ABRV</DisplayAbbreviationSID>
 			<Size>0</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>500</Min>
+					<Max>1000</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>2500</Min>
+					<Max>4000</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>5</Strength>
 				<Dexterity>14</Dexterity>
@@ -294,6 +344,16 @@
 			<DescriptionSID>RACE_6_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_6_ABRV</DisplayAbbreviationSID>			
 			<Size>1</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>17</Min>
+					<Max>45</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>70</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>14</Strength>
 				<Dexterity>9</Dexterity>
@@ -351,6 +411,16 @@
 			<DescriptionSID>RACE_7_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_7_ABRV</DisplayAbbreviationSID>
 			<Size>1</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>15</Min>
+					<Max>40</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>60</Min>
+					<Max>80</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>9</Strength>
 				<Dexterity>11</Dexterity>
@@ -409,6 +479,16 @@
 			<DescriptionSID>RACE_8_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_8_ABRV</DisplayAbbreviationSID>
 			<Size>3</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>17</Min>
+					<Max>45</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>70</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>14</Strength>
 				<Dexterity>9</Dexterity>
@@ -464,6 +544,16 @@
 			<DescriptionSID>RACE_9_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_9_ABRV</DisplayAbbreviationSID>
 			<Size>4</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>17</Min>
+					<Max>45</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>70</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>17</Strength>
 				<Dexterity>10</Dexterity>
@@ -519,6 +609,16 @@
 			<DescriptionSID>RACE_10_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_10_ABRV</DisplayAbbreviationSID>
 			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>17</Min>
+					<Max>45</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>70</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>9</Strength>
 				<Dexterity>12</Dexterity>
@@ -1737,7 +1837,7 @@
 				<DescriptionSID>DAGGER_SID</DescriptionSID>
 				<Value>8</Value>
 				<Weight><Pounds>1</Pounds></Weight>
-				<WornLocation>2</WornLocation>
+				<WornLocation>4</WornLocation>
 				<Skill>1004</Skill>
 				<Damage>
 					<NumSides>1</NumSides>
@@ -1751,7 +1851,7 @@
 				<DescriptionSID>SLING_SID</DescriptionSID>
 				<Value>5</Value>
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
-				<WornLocation>2</WornLocation>
+				<WornLocation>4</WornLocation>
 				<Skill>2007</Skill>
 				<Damage>
 					<NumSides>1</NumSides>

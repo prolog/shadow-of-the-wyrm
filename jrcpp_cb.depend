@@ -350,7 +350,7 @@
 	<unistd.h>
 	<errno.h>
 
-1321718495 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
+1327769360 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
 	<boost/foreach.hpp>
 	"Skills.hpp"
 	"StringTable.hpp"
@@ -559,7 +559,7 @@
 1325259810 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
-1326205287 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1327768564 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<boost/uuid/uuid_generators.hpp>
 	<boost/uuid/uuid_io.hpp>
 	"CreatureFactory.hpp"
@@ -582,7 +582,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1327068932 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1327709436 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"Game.hpp"
@@ -655,7 +655,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1327413557 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1327711656 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -688,7 +688,7 @@
 1321471658 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\creature_test.cpp
 	"gtest/gtest.h"
 
-1326554974 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
+1327672808 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	"Inventory.hpp"
 
 1326760871 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
@@ -697,7 +697,7 @@
 1326039381 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	"Map.hpp"
 
-1321718404 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
+1327766695 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
 	<sstream>
 	"Race.hpp"
 	"StringTable.hpp"
@@ -1051,7 +1051,7 @@
 
 1326507577 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\damage_test.cpp
 
-1326561572 source:c:\cygwin\home\julian\jrcpp\world\source\equipment.cpp
+1327711843 source:c:\cygwin\home\julian\jrcpp\world\source\equipment.cpp
 	"Equipment.hpp"
 
 1326635914 source:c:\cygwin\home\julian\jrcpp\world\source\weight.cpp
@@ -1103,7 +1103,7 @@
 1326849983 source:c:\cygwin\home\julian\jrcpp\world\source\wearable.cpp
 	"Wearable.hpp"
 
-1327066395 source:c:\cygwin\home\julian\jrcpp\engine\source\itemmanager.cpp
+1327709265 source:c:\cygwin\home\julian\jrcpp\engine\source\itemmanager.cpp
 	"ItemManager.hpp"
 
 1327413571 source:c:\cygwin\home\julian\jrcpp\engine\source\characterdumper.cpp
@@ -1119,15 +1119,18 @@
 1327413985 source:c:\cygwin\home\julian\jrcpp\engine\source\skillsdumper.cpp
 	"SkillsDumper.hpp"
 
-1327458854 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\characterdumper.cpp
+1327585184 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\characterdumper.cpp
 	<sstream>
 	"global_prototypes.hpp"
 	"CharacterDumper.hpp"
 	"Conversion.hpp"
+	"EquipmentDumper.hpp"
 	"Game.hpp"
+	"InventoryDumper.hpp"
 	"SkillsDumper.hpp"
+	"StatsDumper.hpp"
 
-1327459074 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\skillsdumper.cpp
+1327586211 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\skillsdumper.cpp
 	<sstream>
 	"Conversion.hpp"
 	"SkillsDumper.hpp"
@@ -1147,4 +1150,25 @@
 	<sstream>
 	"Conversion.hpp"
 	"StatsDumper.hpp"
+
+1327712164 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\equipmentdumper.cpp
+	<sstream>
+	"Conversion.hpp"
+	"EquipmentDumper.hpp"
+	"ItemDumper.hpp"
+
+1327672956 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\inventorydumper.cpp
+	<boost/foreach.hpp>
+	<sstream>
+	"Conversion.hpp"
+	"InventoryDumper.hpp"
+	"ItemDumper.hpp"
+
+1327712343 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\itemdumper.cpp
+	<sstream>
+	"ItemDumper.hpp"
+	"StringTable.hpp"
+
+1327766499 source:c:\cygwin\home\julian\jrcpp\world\source\ageinfo.cpp
+	"AgeInfo.hpp"
 

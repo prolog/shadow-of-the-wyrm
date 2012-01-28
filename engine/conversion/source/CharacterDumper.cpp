@@ -2,7 +2,9 @@
 #include "global_prototypes.hpp"
 #include "CharacterDumper.hpp"
 #include "Conversion.hpp"
+#include "EquipmentDumper.hpp"
 #include "Game.hpp"
+#include "InventoryDumper.hpp"
 #include "SkillsDumper.hpp"
 #include "StatsDumper.hpp"
 
@@ -36,6 +38,12 @@ string CharacterDumper::str() const
     
     SkillsDumper skills_dumper(creature, num_cols);
     ss << skills_dumper.str() << endl << endl;
+    
+    EquipmentDumper equipment_dumper(creature, num_cols);
+    ss << equipment_dumper.str() << endl << endl;
+    
+    InventoryDumper inventory_dumper(creature, num_cols);
+    ss << inventory_dumper.str() << endl << endl;
   }
     
   return ss.str();
