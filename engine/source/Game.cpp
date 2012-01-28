@@ -18,26 +18,10 @@ Game* Game::game_instance = NULL;
 // items from their template versions.
 void Game::FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player)
 {
-  ItemMap::iterator item_it = items.find("cap");
-
-  if (item_it != items.end())
-  {
-    actions.handle_item(player, ITEM_ACTION_EQUIP, item_it->second);
-  }
-  
-  item_it = items.find("dagger");
-
-  if (item_it != items.end())
-  {
-    actions.handle_item(player, ITEM_ACTION_EQUIP, item_it->second);
-  }
-  
-  item_it = items.find("dirt");
-
-  if (item_it != items.end())
-  {
-    actions.handle_item(player, ITEM_ACTION_PICK_UP, item_it->second);
-  }
+  ItemManager im;
+  actions.handle_item(player, ITEM_ACTION_EQUIP, im.create_item(items, "cap"));
+  actions.handle_item(player, ITEM_ACTION_EQUIP, im.create_item(items, "dagger"));
+  actions.handle_item(player, ITEM_ACTION_PICK_UP, im.create_item(items, "dirt"));
 }
 
 Game::Game()

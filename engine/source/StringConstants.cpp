@@ -95,6 +95,25 @@ string TextKeys::LEVEL_ABRV        = "LEVEL_ABRV";
 string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
 
+string TextKeys::EQUIPMENT         = "EQUIPMENT";
+string TextKeys::INVENTORY         = "INVENTORY";
+
+// Equipment
+EquipmentTextKeys::EquipmentTextKeys()
+{
+}
+
+string EquipmentTextKeys::EQUIPMENT_HEAD = "EQUIPMENT_HEAD";
+string EquipmentTextKeys::EQUIPMENT_NECK = "EQUIPMENT_NECK";
+string EquipmentTextKeys::EQUIPMENT_RIGHT_FINGER = "EQUIPMENT_RIGHT_FINGER";
+string EquipmentTextKeys::EQUIPMENT_LEFT_FINGER = "EQUIPMENT_LEFT_FINGER";
+string EquipmentTextKeys::EQUIPMENT_RIGHT_HAND = "EQUIPMENT_RIGHT_HAND";
+string EquipmentTextKeys::EQUIPMENT_LEFT_HAND = "EQUIPMENT_LEFT_HAND";
+string EquipmentTextKeys::EQUIPMENT_BODY = "EQUIPMENT_BODY";
+string EquipmentTextKeys::EQUIPMENT_ABOUT_BODY = "EQUIPMENT_ABOUT_BODY";
+string EquipmentTextKeys::EQUIPMENT_FEET = "EQUIPMENT_FEET";
+
+// Colours
 ColourTextKeys::ColourTextKeys()
 {
 }
@@ -260,7 +279,7 @@ string SkillTextKeys::SKILL_GENERAL_INTIMIDATION = "SKILL_GENERAL_INTIMIDATION";
 string SkillTextKeys::SKILL_GENERAL_JEWELER = "SKILL_GENERAL_JEWELER";
 string SkillTextKeys::SKILL_GENERAL_JUMPING = "SKILL_GENERAL_JUMPING";
 string SkillTextKeys::SKILL_GENERAL_LEADERSHIP = "SKILL_GENERAL_LEADERSHIP";
-string SkillTextKeys::SKILL_GENERAL_LITERACY = "SKILL_GENERAL_LEADERHSIP";
+string SkillTextKeys::SKILL_GENERAL_LITERACY = "SKILL_GENERAL_LITERACY";
 string SkillTextKeys::SKILL_GENERAL_LORE = "SKILL_GENERAL_LORE";
 string SkillTextKeys::SKILL_GENERAL_MAGIC = "SKILL_GENERAL_MAGIC";
 string SkillTextKeys::SKILL_GENERAL_MARSH_LORE = "SKILL_GENERAL_MARSH_LORE";
@@ -432,4 +451,47 @@ string TextMessages::get_sex(const CreatureSex sex)
   }
   
   return creature_sex;
+}
+
+string TextMessages::get_equipment_location(const EquipmentWornLocation location)
+{
+  string equipment_location;
+  
+  switch(location)
+  {
+    case EQUIPMENT_WORN_HEAD:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_HEAD);
+      break;
+    case EQUIPMENT_WORN_NECK:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_NECK);
+      break;
+    case EQUIPMENT_WORN_RIGHT_FINGER:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_RIGHT_FINGER);
+      break;
+    case EQUIPMENT_WORN_LEFT_FINGER:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_LEFT_FINGER);
+      break;
+    case EQUIPMENT_WORN_RIGHT_HAND:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_RIGHT_HAND);
+      break;
+    case EQUIPMENT_WORN_LEFT_HAND:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_LEFT_HAND);
+      break;
+    case EQUIPMENT_WORN_BODY:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_BODY);
+      break;
+    case EQUIPMENT_WORN_ABOUT_BODY:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_ABOUT_BODY);
+      break;
+    case EQUIPMENT_WORN_FEET:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_FEET);
+      break;
+    case EQUIPMENT_WORN_NONE:
+    case EQUIPMENT_WORN_LAST:
+    default:
+      equipment_location = "?";
+      break;
+  }
+  
+  return equipment_location;
 }

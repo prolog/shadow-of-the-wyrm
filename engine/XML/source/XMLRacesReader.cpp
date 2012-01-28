@@ -37,6 +37,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
 
   if (!race_node.is_null())
   {
+    XMLNode age_info_node           = XMLUtils::get_next_element_by_local_name(race_node, "AgeInfo");
     XMLNode initial_statistics_node = XMLUtils::get_next_element_by_local_name(race_node, "RaceInitialStatistics");
     XMLNode initial_modifiers_node  = XMLUtils::get_next_element_by_local_name(race_node, "RaceInitialModifiers");
     XMLNode resistances_node        = XMLUtils::get_next_element_by_local_name(race_node, "Resistances");
@@ -64,7 +65,8 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
 
     CreatureSize size = static_cast<CreatureSize>(XMLUtils::get_child_node_int_value(race_node, "Size"));
     race->set_size(size);
-
+    
+    parse_race_age_info(race, age_info_node);
     parse_race_initial_statistics(race, initial_statistics_node);
     parse_race_initial_modifiers(race, initial_modifiers_node);
     parse_race_resistances(race, resistances_node);
@@ -101,6 +103,24 @@ void XMLRacesReader::parse_race_initial_statistics(RacePtr race, const XMLNode& 
   }
 }
 
+void XMLRacesReader::parse_race_age_info(RacePtr race, const XMLNode& age_info_node)
+{
+  if (race && !age_info_node.is_null())
+  {
+    XMLNode starting_age_node = XMLUtils::get_next_element_by_local_name(age_info_node, "StartingAge");
+    XMLNode maximum_age_node  = XMLUtils::get_next_element_by_local_name(age_info_node, "MaximumAge");
+    
+    Range<uint> start_age = get_age(starting_age_node);
+    Range<uint> max_age = get_age(maximum_age_node);
+    
+    AgeInfo age_info;
+    age_info.set_starting_age(start_age);
+    age_info.set_maximum_age(max_age);
+    
+    race->set_age_info(age_info);
+  }
+}
+
 void XMLRacesReader::parse_race_initial_modifiers(RacePtr race, const XMLNode& initial_modifiers_node)
 {
   if (race && !initial_modifiers_node.is_null())
@@ -129,4 +149,20 @@ void XMLRacesReader::parse_race_skills(RacePtr race, const XMLNode& skills_node)
   Skills race_skills = skills_reader.get_skills(skills_node);
 
   race->set_skills(race_skills);
+}
+
+Range<uint> XMLRacesReader::get_age(const XMLNode& age_node)
+{
+  Range<uint> age_range(0, 0);
+
+  if (!age_node.is_null())
+  {
+    uint min = static_cast<uint>(XMLUtils::get_child_node_int_value(age_node, "Min"));
+    uint max = static_cast<uint>(XMLUtils::get_child_node_int_value(age_node, "Max"));
+    
+    age_range.set_min(min);
+    age_range.set_max(max);
+  }
+  
+  return age_range;
 }

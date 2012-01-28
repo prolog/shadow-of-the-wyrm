@@ -93,6 +93,15 @@ CreatureSize Race::get_size() const
   return size;
 }
 
+void Race::set_age_info(const AgeInfo& new_age_info)
+{
+  age_info = new_age_info;
+}
+
+AgeInfo Race::get_age_info() const
+{
+  return age_info;
+}
 
 void Race::set_starting_strength(const Statistic& new_starting_strength)
 {

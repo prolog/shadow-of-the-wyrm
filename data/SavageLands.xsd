@@ -84,6 +84,7 @@
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
 			<xs:element name="Size" type="tns:CreatureSizeType"/>
+			<xs:element ref="tns:AgeInfo"/>
 			<xs:element ref="tns:RaceInitialStatistics"/>
 			<xs:element ref="tns:RaceInitialModifiers"/>
 			<xs:element ref="tns:Resistances"/>
@@ -99,6 +100,17 @@
 		<xs:sequence>
 			<xs:element name="Valour" type="tns:PrimaryStatistic"/>
 			<xs:element name="Spirit" type="tns:PrimaryStatistic"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="AgeInfo">
+	<xs:annotation>
+		<xs:documentation>Describes starting and maximum ages for a particular race.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="StartingAge" type="tns:AgeRange"/>
+			<xs:element name="MaximumAge" type="tns:AgeRange"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -388,6 +400,13 @@
 	<xs:sequence>
 		<xs:element name="Symbol" type="xs:string" minOccurs="1"/>
 		<xs:element name="Colour" type="tns:ColourType" minOccurs="1"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="AgeRange">
+	<xs:annotation><xs:documentation>A minimum and maximum age for some purpose.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Min" type="tns:NonNegativeInt"/>
+		<xs:element name="Max" type="tns:NonNegativeInt"/>
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->

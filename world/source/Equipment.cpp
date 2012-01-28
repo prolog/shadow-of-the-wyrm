@@ -10,13 +10,13 @@ Equipment::~Equipment()
   
 }
 
-// Set an item, but only if it's not null, and if the worn location matches
-// the slot we're trying to set.
+// Set an item, but only if it's not null.  There are no checks done here to 
+// see if the slot is correct - that's a higher-level check.
 bool Equipment::set_item(ItemPtr item, const EquipmentWornLocation worn_location)
 {
   bool item_set = false;
   
-  if (item && (worn_location == item->get_worn_location()))
+  if (item)
   {
     equipment[worn_location] = item;
     item_set = true;
@@ -29,7 +29,7 @@ bool Equipment::set_item(ItemPtr item, const EquipmentWornLocation worn_location
 ItemPtr Equipment::get_item(const EquipmentWornLocation worn_location) const
 {
   ItemPtr current_item;
-  std::map<EquipmentWornLocation, ItemPtr>::const_iterator c_it = equipment.find(worn_location);
+  EquipmentMap::const_iterator c_it = equipment.find(worn_location);
   
   if (c_it != equipment.end())
   {
@@ -63,4 +63,10 @@ void Equipment::initialize()
     ItemPtr no_item;
     equipment[worn_location] = no_item;
   }
+}
+
+// Get the current set of equipment.
+EquipmentMap Equipment::get_equipment() const
+{
+  return equipment;
 }

@@ -187,11 +187,17 @@
 		<Unit filename="engine\commands\source\KeyboardCommandMap.cpp" />
 		<Unit filename="engine\conversion\include\CharacterDumper.hpp" />
 		<Unit filename="engine\conversion\include\Conversion.hpp" />
+		<Unit filename="engine\conversion\include\EquipmentDumper.hpp" />
+		<Unit filename="engine\conversion\include\InventoryDumper.hpp" />
+		<Unit filename="engine\conversion\include\ItemDumper.hpp" />
 		<Unit filename="engine\conversion\include\SkillsDumper.hpp" />
 		<Unit filename="engine\conversion\include\StatsDumper.hpp" />
 		<Unit filename="engine\conversion\include\StringConverter.hpp" />
 		<Unit filename="engine\conversion\source\CharacterDumper.cpp" />
 		<Unit filename="engine\conversion\source\Conversion.cpp" />
+		<Unit filename="engine\conversion\source\EquipmentDumper.cpp" />
+		<Unit filename="engine\conversion\source\InventoryDumper.cpp" />
+		<Unit filename="engine\conversion\source\ItemDumper.cpp" />
 		<Unit filename="engine\conversion\source\SkillsDumper.cpp" />
 		<Unit filename="engine\conversion\source\StatsDumper.cpp" />
 		<Unit filename="engine\conversion\source\unit_tests\Conversion_test.cpp">
@@ -262,6 +268,7 @@
 		<Unit filename="engine\include\MovementManager.hpp" />
 		<Unit filename="engine\include\Naming.hpp" />
 		<Unit filename="engine\include\RNG.hpp" />
+		<Unit filename="engine\include\Range.hpp" />
 		<Unit filename="engine\include\SavageLandsEngine.hpp" />
 		<Unit filename="engine\include\StringConstants.hpp" />
 		<Unit filename="engine\include\StringTable.hpp" />
@@ -324,6 +331,7 @@
 		<Unit filename="include\buildinfo.hpp" />
 		<Unit filename="include\common.hpp" />
 		<Unit filename="include\global_prototypes.hpp" />
+		<Unit filename="world\include\AgeInfo.hpp" />
 		<Unit filename="world\include\Ammunition.hpp" />
 		<Unit filename="world\include\Amulet.hpp" />
 		<Unit filename="world\include\Armour.hpp" />
@@ -356,6 +364,7 @@
 		<Unit filename="world\include\Wearable.hpp" />
 		<Unit filename="world\include\Weight.hpp" />
 		<Unit filename="world\include\World.hpp" />
+		<Unit filename="world\source\AgeInfo.cpp" />
 		<Unit filename="world\source\Ammunition.cpp" />
 		<Unit filename="world\source\Amulet.cpp" />
 		<Unit filename="world\source\Armour.cpp" />

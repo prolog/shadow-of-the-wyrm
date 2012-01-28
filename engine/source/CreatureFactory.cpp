@@ -69,7 +69,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   return creaturep;
 }
 
-Creature CreatureFactory::set_initial_statistics(Creature current_creature, RacePtr race, ClassPtr char_class)
+Creature CreatureFactory::set_initial_statistics(const Creature& current_creature, RacePtr race, ClassPtr char_class)
 {
   Creature creature = current_creature;
 
@@ -97,6 +97,12 @@ Creature CreatureFactory::set_initial_statistics(Creature current_creature, Race
   creature.set_spirit(spirit);
   creature.set_speed(speed);
   creature.set_piety(0); // FIXME
+  
+  creature.set_hair_colour(get_random_hair_colour());
+  creature.set_eye_colour(get_random_eye_colour());
+  
+  AgeInfo age_info = race->get_age_info();
+  creature = set_age(creature, age_info);
 
   CreaturePtr cp = CreaturePtr(new Creature(creature));
   int initial_hp = RNG::dice(3, 3);
@@ -115,7 +121,26 @@ Creature CreatureFactory::set_initial_statistics(Creature current_creature, Race
   return creature;
 }
 
-Creature CreatureFactory::set_initial_resistances(Creature current_creature, RacePtr race, ClassPtr char_class)
+Creature CreatureFactory::set_age(const Creature& current_creature, const AgeInfo& age_info)
+{
+  Creature creature = current_creature;
+  Range<uint> starting_age = age_info.get_starting_age();
+  Range<uint> maximum_age = age_info.get_maximum_age();
+  
+  // Age is a statistic:
+  // - Base value is the creature's maximum age (death occurs when the creature gets there)
+  // - Current value is the creature's current age
+  Statistic age;
+  
+  age.set_base(RNG::range(maximum_age.get_min(), maximum_age.get_max()));
+  age.set_current(RNG::range(starting_age.get_min(), starting_age.get_max()));
+  
+  creature.set_age(age);
+  
+  return creature;
+}
+
+Creature CreatureFactory::set_initial_resistances(const Creature& current_creature, RacePtr race, ClassPtr char_class)
 {
   Creature creature = current_creature;
 
@@ -126,7 +151,7 @@ Creature CreatureFactory::set_initial_resistances(Creature current_creature, Rac
   return creature;
 }
 
-Creature CreatureFactory::set_initial_skills(Creature current_creature, RacePtr race, ClassPtr char_class)
+Creature CreatureFactory::set_initial_skills(const Creature& current_creature, RacePtr race, ClassPtr char_class)
 {
   Creature creature = current_creature;
 
@@ -136,6 +161,22 @@ Creature CreatureFactory::set_initial_skills(Creature current_creature, RacePtr 
   creature.set_skills(skills);
 
   return creature;
+}
+
+HairColour CreatureFactory::get_random_hair_colour()
+{
+  int min = HAIR_COLOUR_BLACK;
+  int max = HAIR_COLOUR_WHITE;
+  
+  return static_cast<HairColour>(RNG::range(min, max));
+}
+
+EyeColour CreatureFactory::get_random_eye_colour()
+{
+  int min = EYE_COLOUR_BROWN;
+  int max = EYE_COLOUR_GREY;
+  
+  return static_cast<EyeColour>(RNG::range(min, max));
 }
 
 #ifdef UNIT_TESTS

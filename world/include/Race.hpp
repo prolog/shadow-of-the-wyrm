@@ -2,7 +2,7 @@
 #include <boost/shared_ptr.hpp>
 #include <map>
 #include <string>
-
+#include "AgeInfo.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
 #include "CreatureFeatures.hpp"
@@ -35,6 +35,9 @@ class Race
 
     void set_size(const CreatureSize new_size);
     CreatureSize get_size() const;
+    
+    void set_age_info(const AgeInfo& age);
+    AgeInfo get_age_info() const;
 
     void set_starting_strength(const Statistic& new_starting_strength);
     Statistic get_starting_strength() const;
@@ -87,6 +90,7 @@ class Race
     std::string race_description_sid;
     std::string race_abbreviation_sid;
     CreatureSize size;
+    AgeInfo age_info;
 
     // Initial primary statistics
     Statistic starting_strength;

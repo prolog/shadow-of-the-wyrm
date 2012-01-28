@@ -52,6 +52,7 @@ string SkillsDumper::get_general_skills() const
 string SkillsDumper::get_skills_by_category(const SkillCategory category, bool include_zero_valued_skills) const
 {
   ostringstream ss;
+  bool at_least_one_skill = false;
   
   if (creature)
   {
@@ -69,10 +70,16 @@ string SkillsDumper::get_skills_by_category(const SkillCategory category, bool i
         
         if ((skill_value > 0) || (include_zero_valued_skills))
         {
+          if (!at_least_one_skill) at_least_one_skill = true;
           ss << skill.str() << endl;
         }
       }
     }
+  }
+  
+  if (!at_least_one_skill)
+  {
+    ss << String::centre("-", num_cols);
   }
 
   return ss.str();

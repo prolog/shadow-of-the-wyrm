@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "CreatureFeatures.hpp"
+#include "EquipmentTypes.hpp"
 
 // These define all the string keys.
 // Key/value pairs are defined in savagelandstext_lang.ini, where lang=en,fr,ru,kl,etc.
@@ -88,10 +89,30 @@ class TextKeys
     
     static std::string DAMAGE_MELEE;
     static std::string DAMAGE_RANGED;
+    
+    static std::string EQUIPMENT;
+    static std::string INVENTORY;
 
   protected:
     TextKeys();
     ~TextKeys();
+};
+
+class EquipmentTextKeys
+{
+  public:
+    static std::string EQUIPMENT_HEAD;
+    static std::string EQUIPMENT_NECK;
+    static std::string EQUIPMENT_RIGHT_FINGER;
+    static std::string EQUIPMENT_LEFT_FINGER;
+    static std::string EQUIPMENT_RIGHT_HAND;
+    static std::string EQUIPMENT_LEFT_HAND;
+    static std::string EQUIPMENT_BODY;
+    static std::string EQUIPMENT_ABOUT_BODY;
+    static std::string EQUIPMENT_FEET;
+    
+  protected:
+    EquipmentTextKeys();
 };
 
 class ColourTextKeys
@@ -294,6 +315,7 @@ class TextMessages
     static std::string get_action_not_found_message(const std::string& command_action);
     static std::string get_dumping_character_message(const std::string& creature_name);
     static std::string get_sex(const CreatureSex sex);
+    static std::string get_equipment_location(const EquipmentWornLocation location);
 
   protected:
     TextMessages();
