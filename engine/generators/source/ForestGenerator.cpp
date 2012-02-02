@@ -73,7 +73,7 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
         current_tile = TileGenerator::generate(TILE_TYPE_WEEDS);
         result_map->insert(row, col, current_tile);
       }
-      else if (shrub < 50)
+      else if (shrub < 77)
       {
         current_tile = TileGenerator::generate(TILE_TYPE_FIELD);
         result_map->insert(row, col, current_tile);

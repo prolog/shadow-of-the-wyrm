@@ -1,5 +1,5 @@
+#include "Conversion.hpp"
 #include "MapUtils.hpp"
-#include <iostream>
 
 using namespace std;
 
@@ -58,6 +58,8 @@ Coordinate MapUtils::get_new_coordinate(const Coordinate& c, const Direction d)
       new_coord.first--;
       new_coord.second++;
       break;
+    case DIRECTION_UP:
+    case DIRECTION_DOWN:
     default:
       break;
   }
@@ -157,6 +159,46 @@ MapComponents MapUtils::get_map_components(MapPtr map, const set<TileType>& excl
     }
   }
   return result;
+}
+
+bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& c, TilePtr creatures_old_tile)
+{
+  bool added_location = true;
+
+  TilePtr creatures_new_tile = map->at(c);
+  
+  if (creature->get_is_player())
+  {
+    map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
+  }
+
+  map->add_or_update_location(Uuid::to_string(creature->get_id()), c);
+  
+  // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
+  // remove from the old tile, and add to the new.
+  if (creatures_new_tile && !creatures_new_tile->has_creature())
+  {
+    if (creatures_old_tile)
+    {
+      creatures_old_tile->remove_creature();      
+    }
+    
+    creatures_new_tile->set_creature(creature);
+  }
+  
+  return added_location;
+}
+
+bool MapUtils::can_exit_map(MapExitPtr map_exit)
+{
+  bool can_exit;
+  
+  if (map_exit && (map_exit->is_using_map_id() || map_exit->is_using_terrain_type()))
+  {
+    can_exit = true;
+  }
+  
+  return can_exit;
 }
 
 // Iterate through the existing components of the map, searching each one to see if the coordinates are contained within

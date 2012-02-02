@@ -2,7 +2,6 @@
 #include "Creature.hpp"
 #include "Directions.hpp"
 #include "ItemManager.hpp"
-#include "Map.hpp"
 #include "MovementManager.hpp"
 
 enum ItemAction
@@ -17,8 +16,6 @@ class ActionManager
   public:
     ActionManager();
     ~ActionManager();
-
-    void set_current_map(MapPtr new_map);
 
     void version();
     void dump_character(CreaturePtr creature);
@@ -37,5 +34,4 @@ class ActionManager
   protected:
     MovementManager movement_manager;
     ItemManager item_manager;
-    MapPtr map;
 };

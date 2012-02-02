@@ -13,6 +13,10 @@ Tile::Tile()
   tile_type = TILE_TYPE_UNDEFINED;
 }
 
+Tile::~Tile()
+{
+}
+
 void Tile::set_default_properties()
 {
   illuminated = true;
@@ -63,6 +67,11 @@ CreaturePtr Tile::get_creature() const
 TileType Tile::get_tile_type() const
 {
   return tile_type;
+}
+
+TileExitMap& Tile::get_tile_exit_map_ref()
+{
+  return map_exits;
 }
 
 #ifdef UNIT_TESTS

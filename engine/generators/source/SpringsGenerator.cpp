@@ -1,9 +1,6 @@
 #include "SpringsGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "SpringsTile.hpp"
-#include <iostream>
-
-using namespace std;
 
 MapPtr SpringsGenerator::generate(MapPtr map, const int start_row, const int start_col, const int springs_size, const SpringsType type)
 {
@@ -11,12 +8,10 @@ MapPtr SpringsGenerator::generate(MapPtr map, const int start_row, const int sta
 
   if (type == SPRINGS_TYPE_WIDE)
   {
-    cout  << "Generate wide" << endl;
     result_map = generate_wide(result_map, start_row, start_col, springs_size);
   }
   else if (type == SPRINGS_TYPE_TALL)
   {
-    cout << "Generate tall" << endl;
     result_map = generate_tall(result_map, start_row, start_col, springs_size);
   }
 
@@ -38,8 +33,6 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
   {
     centre_line++;
   }
-
-  cout << "Centre line is: " << centre_line << endl;
 
   first_row = second_row = centre_line;
 
@@ -84,8 +77,6 @@ MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const in
   {
     centre_line++;
   }
-
-  cout << "Centre line is: " << centre_line << endl;
 
   first_col = second_col = centre_line;
 

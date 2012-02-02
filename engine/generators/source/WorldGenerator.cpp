@@ -27,6 +27,8 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   result_map = generate_set_islands_and_continents(result_map);
   
   result_map->set_map_type(MAP_TYPE_WORLD);
+  result_map->set_map_id("overworld");
+  result_map->set_permanent(true);
 
   return result_map;
 }

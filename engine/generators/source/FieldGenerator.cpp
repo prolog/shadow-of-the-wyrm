@@ -45,15 +45,15 @@ TilePtr FieldGenerator::generate_tile(MapPtr map, int row, int col)
   {
     int rand = RNG::range(1, 100);
 
-    if (rand < 92)
+    if (rand < 96)
     {
       generated_tile = TileGenerator::generate(TILE_TYPE_FIELD);
     }
-    else if (rand < 93)
+    else if (rand < 97)
     {
       generated_tile = TileGenerator::generate(TILE_TYPE_BUSH);
     }
-    else if (rand < 94)
+    else if (rand < 98)
     {
       generated_tile = TileGenerator::generate(TILE_TYPE_WEEDS);
     }

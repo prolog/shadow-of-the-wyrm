@@ -3,7 +3,7 @@
 using namespace std;
 
 Map::Map(const Map& new_map)
-: map_type(MAP_TYPE_OVERWORLD)
+: map_type(MAP_TYPE_OVERWORLD), permanent(false)
 {
   if (this != &new_map)
   {
@@ -16,7 +16,7 @@ Map::Map(const Map& new_map)
 }
 
 Map::Map(const Dimensions& new_dimensions)
-: map_type(MAP_TYPE_OVERWORLD)
+: map_type(MAP_TYPE_OVERWORLD), permanent(false)
 {
   dimensions = new_dimensions;
 }
@@ -78,6 +78,11 @@ TilePtr Map::at(int row, int col)
   return tiles[key];
 }
 
+TilePtr Map::at(const Coordinate& c)
+{
+  return tiles[c];
+}
+
 void Map::set_size(const Dimensions& new_dimensions)
 {
   dimensions = new_dimensions;
@@ -96,26 +101,6 @@ void Map::set_map_type(const MapType& new_map_type)
 MapType Map::get_map_type() const
 {
   return map_type;
-}
-
-void Map::set_parent_map(MapPtr new_parent_map)
-{
-  parent_map = new_parent_map;
-}
-
-MapPtr Map::get_parent_map() const
-{
-  return parent_map;
-}
-
-void Map::set_child_map(MapPtr new_child_map)
-{
-  child_map = new_child_map;
-}
-
-MapPtr Map::get_child_map() const
-{
-  return child_map;
 }
 
 std::map<std::pair<int, int>, TilePtr > Map::get_tiles() const
@@ -166,4 +151,38 @@ TilePtr Map::get_tile_at_location(const string& location)
   }
 
   return tile;
+}
+
+// Set/get the map exit.  If this ptr is null, then the map doesn't have an exit from its
+// boundary tiles.
+void Map::set_map_exit(MapExitPtr new_map_exit)
+{
+  map_exit = new_map_exit;
+}
+
+MapExitPtr Map::get_map_exit() const
+{
+  return map_exit;
+}
+
+// Set/get the map's identifier, which is also used as its key in the map registry
+void Map::set_map_id(const string& new_map_id)
+{
+  map_id = new_map_id;
+}
+
+string Map::get_map_id() const
+{
+  return map_id;
+}
+
+// Set/get whether or not the map should be permanent (is it a random terrain map?)
+void Map::set_permanent(const bool permanence)
+{
+  permanent = permanence;
+}
+
+bool Map::get_permanent() const
+{
+  return permanent;
 }

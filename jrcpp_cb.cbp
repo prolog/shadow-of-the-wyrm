@@ -224,6 +224,7 @@
 		<Unit filename="engine\generators\include\SpiralDungeonGenerator.hpp" />
 		<Unit filename="engine\generators\include\SpringsGenerator.hpp" />
 		<Unit filename="engine\generators\include\StreamGenerator.hpp" />
+		<Unit filename="engine\generators\include\TerrainGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\include\TileGenerator.hpp" />
 		<Unit filename="engine\generators\include\WorldGenerator.hpp" />
 		<Unit filename="engine\generators\source\CavernGenerator.cpp" />
@@ -243,6 +244,7 @@
 		<Unit filename="engine\generators\source\SpiralDungeonGenerator.cpp" />
 		<Unit filename="engine\generators\source\SpringsGenerator.cpp" />
 		<Unit filename="engine\generators\source\StreamGenerator.cpp" />
+		<Unit filename="engine\generators\source\TerrainGeneratorFactory.cpp" />
 		<Unit filename="engine\generators\source\TileGenerator.cpp" />
 		<Unit filename="engine\generators\source\WorldGenerator.cpp" />
 		<Unit filename="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
@@ -260,6 +262,7 @@
 		<Unit filename="engine\include\Game.hpp" />
 		<Unit filename="engine\include\ItemManager.hpp" />
 		<Unit filename="engine\include\Log.hpp" />
+		<Unit filename="engine\include\MapRegistry.hpp" />
 		<Unit filename="engine\include\MapTranslator.hpp" />
 		<Unit filename="engine\include\MapUtils.hpp" />
 		<Unit filename="engine\include\Message.hpp" />
@@ -300,6 +303,7 @@
 		<Unit filename="engine\source\Game.cpp" />
 		<Unit filename="engine\source\ItemManager.cpp" />
 		<Unit filename="engine\source\Log.cpp" />
+		<Unit filename="engine\source\MapRegistry.cpp" />
 		<Unit filename="engine\source\MapTranslator.cpp" />
 		<Unit filename="engine\source\MapUtils.cpp" />
 		<Unit filename="engine\source\Message.cpp" />
@@ -349,6 +353,7 @@
 		<Unit filename="world\include\Item.hpp" />
 		<Unit filename="world\include\ItemTypes.hpp" />
 		<Unit filename="world\include\Map.hpp" />
+		<Unit filename="world\include\MapExit.hpp" />
 		<Unit filename="world\include\Potion.hpp" />
 		<Unit filename="world\include\Race.hpp" />
 		<Unit filename="world\include\Resistances.hpp" />
@@ -378,6 +383,7 @@
 		<Unit filename="world\source\Inventory.cpp" />
 		<Unit filename="world\source\Item.cpp" />
 		<Unit filename="world\source\Map.cpp" />
+		<Unit filename="world\source\MapExit.cpp" />
 		<Unit filename="world\source\Potion.cpp" />
 		<Unit filename="world\source\Race.cpp" />
 		<Unit filename="world\source\Resistances.cpp" />

@@ -11,6 +11,8 @@ enum Direction
   DIRECTION_NORTH_WEST = 7,
   DIRECTION_NORTH = 8,
   DIRECTION_NORTH_EAST = 9,
+  DIRECTION_UP = 10,
+  DIRECTION_DOWN = 11
 };
 
 // More general - used in terrain generation, etc.
