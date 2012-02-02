@@ -1,14 +1,20 @@
 #pragma once
 #include <vector>
+#include <map>
 #include <boost/shared_ptr.hpp>
 #include "tiles.hpp"
 #include "Creature.hpp"
+#include "Directions.hpp"
 #include "Item.hpp"
+#include "MapExit.hpp"
+
+typedef std::map<Direction, MapExitPtr> TileExitMap;
 
 class Tile
 {
   public:
     Tile();
+    ~Tile();
 
     virtual void set_illuminated(bool new_illuminated);
     virtual bool get_illuminated() const;
@@ -24,7 +30,9 @@ class Tile
     virtual CreaturePtr get_creature() const;
 
     virtual TileType get_tile_type() const;
-
+    
+    virtual TileExitMap& get_tile_exit_map_ref();
+    
   protected:
     virtual void set_default_properties();
 
@@ -40,6 +48,9 @@ class Tile
 
     // Each tile can have any number of items piled up on it.
     std::vector<ItemPtr> items;
+    
+    // A tile can have exits in various directions. These lead to other maps/levels/etc.
+    TileExitMap map_exits;
 };
 
 typedef boost::shared_ptr<Tile> TilePtr;

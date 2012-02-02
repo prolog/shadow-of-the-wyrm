@@ -1,11 +1,11 @@
 #pragma once
-
+#include <string>
 #include <vector>
 #include <map>
-#include <boost/shared_ptr.hpp>
 #include "common.hpp"
 #include "Dimensions.hpp"
 #include "Tile.hpp"
+#include "MapExit.hpp"
 
 enum MapType
 {
@@ -33,6 +33,7 @@ class Map
 
 		bool insert(int row, int col, TilePtr tile);
 		TilePtr at(int row, int col);
+		TilePtr at(const Coordinate& c);
 
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
@@ -40,18 +41,21 @@ class Map
 		void set_map_type(const MapType& new_type);
 		MapType get_map_type() const;
 		
-		void set_parent_map(boost::shared_ptr<Map> new_parent_map);
-		boost::shared_ptr<Map> get_parent_map() const;
-		
-		void set_child_map(boost::shared_ptr<Map> new_child_map);
-		boost::shared_ptr<Map> get_child_map() const;
-
 		std::map<Coordinate, TilePtr > get_tiles() const;
 
     void clear_locations();
     void add_or_update_location(const std::string& location, const Coordinate& coordinate);
     Coordinate get_location(const std::string& location) const;
     TilePtr get_tile_at_location(const std::string& location);
+    
+    void set_map_exit(MapExitPtr new_map_exit);
+    MapExitPtr get_map_exit() const;
+    
+    void set_map_id(const std::string& new_map_id);
+    std::string get_map_id() const;
+    
+    void set_permanent(const bool permenance);
+    bool get_permanent() const;
 
 	protected:
 		void create_creatures();
@@ -64,14 +68,9 @@ class Map
 		Dimensions dimensions;
     NamedMapLocations locations;
     MapType map_type;
-    
-    // JCD FIXME FIXME FIXME
-    //
-    // Turn each of these into maps or something, so that each level can have multiple ways in/out.
-    // Or should the parent/child maps not be set on the map itself?  Should they be stored elsewhere?
-    boost::shared_ptr<Map> parent_map; // This will be null on the overworld.
-    boost::shared_ptr<Map> child_map; // Null when there is no down staircase, or is otherwise at the end of a chain of maps.
+    MapExitPtr map_exit;
+    std::string map_id;
+    bool permanent;
 };
 
 typedef boost::shared_ptr<Map> MapPtr;
-

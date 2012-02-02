@@ -1,8 +1,12 @@
 #include <string>
+#include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
 #include "ActionManager.hpp"
 #include "CharacterDumper.hpp"
+#include "Conversion.hpp"
 #include "FileWriter.hpp"
+#include "Game.hpp"
+#include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "Log.hpp"
 
@@ -14,12 +18,6 @@ ActionManager::ActionManager()
 
 ActionManager::~ActionManager()
 {
-}
-
-void ActionManager::set_current_map(MapPtr new_map)
-{
-  map = new_map;
-  movement_manager.set_current_map(map);
 }
 
 void ActionManager::version()
@@ -71,28 +69,33 @@ void ActionManager::move(CreaturePtr creature, const Direction direction)
 // Move up a level
 void ActionManager::ascend(CreaturePtr creature)
 {
-  // If we're on the world map, send a message about not being able to ascend further.
-  MapType map_type = map->get_map_type();
+  Game* game = Game::instance();
   
-  if (map_type == MAP_TYPE_WORLD && creature && creature->get_is_player())
+  if (game)
   {
-    MessageManager* manager = MessageManager::instance();
-    string search_message = StringTable::get(ActionTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
+    // If we're on the world map, send a message about not being able to ascend further.
+    MapType map_type = game->get_current_map()->get_map_type();
+    
+    if (map_type == MAP_TYPE_WORLD && creature && creature->get_is_player())
+    {
+      MessageManager* manager = MessageManager::instance();
+      string search_message = StringTable::get(ActionTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
 
-    manager->add_new_message(search_message);
-    manager->send();    
-  }
-  
-  // Otherwise, check to see if the creature is on an up-staircase, and go from there.
-  // ...
+      manager->add_new_message(search_message);
+      manager->send();    
+    } 
+    
+   // Otherwise, check to see if the creature is on an up-staircase, and go from there.
+   // ...
+  }  
 }
 
 // Move down a level
+// JCD FIXME: Once entering and exiting wilderness tiles works,
+// refactor the ascend/descend methods!
 void ActionManager::descend(CreaturePtr creature)
 {
-  // If we're on the world map, we can always descend.
-  
-  // Check to see if the creature is on a down-staircase, and go from there.
+  movement_manager.descend(creature);
 }
 
 // Do something with an item:
@@ -124,8 +127,12 @@ void ActionManager::handle_item(CreaturePtr creature, const ItemAction item_acti
 // Pick up an item, doing any necessary checks first.
 void ActionManager::pick_up(CreaturePtr creature)
 {
-  if (creature)
+  Game* game = Game::instance();
+  
+  if (creature && game)
   {
+    MapPtr map = game->get_current_map();
+    
     if (map->get_map_type() == MAP_TYPE_WORLD)
     {
       MessageManager* manager = MessageManager::instance();
@@ -143,8 +150,12 @@ void ActionManager::pick_up(CreaturePtr creature)
 // Drop an item, doing any necessary checks first.
 void ActionManager::drop(CreaturePtr creature)
 {
-  if (creature)
+  Game* game = Game::instance();
+  
+  if (game && creature)
   {
+    MapPtr map = game->get_current_map();
+    
     if (map->get_map_type() == MAP_TYPE_WORLD)
     {
       MessageManager* manager = MessageManager::instance();

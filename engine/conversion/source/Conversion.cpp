@@ -107,6 +107,8 @@ string DirectionEnum::to_string(const Direction d)
     case DIRECTION_NORTH_EAST:
       command_key_direction = CommandKeys::MOVE_NORTHEAST;
       break;
+    case DIRECTION_UP:
+    case DIRECTION_DOWN:
     default:
       break;
   }

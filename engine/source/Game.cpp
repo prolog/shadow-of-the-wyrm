@@ -4,6 +4,7 @@
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
 #include "Log.hpp"
+#include "MapUtils.hpp"
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
@@ -25,7 +26,7 @@ void Game::FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player)
 }
 
 Game::Game()
-: keep_playing(true), current_world_ix(0)
+: keep_playing(true), reload_game_loop(false), current_world_ix(0)
 {
 }
 
@@ -51,6 +52,16 @@ void Game::set_display(DisplayPtr game_display)
 DisplayPtr Game::get_display() const
 {
   return display;
+}
+
+void Game::set_map_registry(const MapRegistry& new_map_registry)
+{
+  map_registry = new_map_registry;
+}
+
+MapRegistry& Game::get_map_registry_ref()
+{
+  return map_registry;
 }
 
 void Game::set_races(const RaceMap& game_races)
@@ -105,7 +116,9 @@ void Game::create_new_world(CreaturePtr creature)
   WorldGenerator world_generator;
   MapPtr current_world = world_generator.generate();
   WorldPtr world(new World(current_world));
+ 
   worlds.push_back(world);
+  set_current_map(current_world);  
   current_world_ix = (worlds.size() - 1);
 
   players.push_back(creature);
@@ -120,13 +133,27 @@ void Game::create_new_world(CreaturePtr creature)
     if (creature->get_is_player())
     {
       Coordinate c = current_world->get_location(WorldMapLocationTextKeys::STARTING_LOCATION);
-      current_world->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c); // JCD FIXME: Can I delete CURRENT_PLAYER_LOCATION
-      current_world->add_or_update_location(Uuid::to_string(creature->get_id()), c);
+      MapUtils::add_or_update_location(current_world, creature, c);
     }
   }
   else
   {
     Log::instance()->log("Couldn't get player's initial starting location!");
+  }
+}
+
+// Update the display: the statistics area, and the current map.
+void Game::update_display(CreaturePtr current_player, MapPtr current_map)
+{
+  if (current_player && current_map)
+  {
+    MapDisplayArea display_area = display->get_map_display_area();
+
+    DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
+    display->display(display_stats);
+
+    DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
+    display->draw(display_map);    
   }
 }
 
@@ -139,27 +166,20 @@ void Game::go()
 
   manager->send();
 
-  WorldPtr current_world = worlds.at(current_world_ix);
-  current_map = current_world->get_world();
-  actions.set_current_map(current_map);
+  MapPtr current_map = get_current_map();
 
 
       FIXME_REMOVE_THIS_FUNCTION(current_player);
-      
+
       
   // Main game loop.
   while(keep_playing)
   {
+    current_map = get_current_map();
     vector<CreaturePtr> creatures = current_map->get_creatures();
 
-    // JCD FIXME: Eventually, refactor this into a separate method.
-    MapDisplayArea display_area = display->get_map_display_area();
-
-    DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
-    display->display(display_stats);
-
-    DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
-    display->draw(display_map);
+    // Update the display with the result of the last round of actions.
+    update_display(current_player, current_map);
 
     // FIXME: Right now, I just get the actions of each creature, in order.  This doesn't follow the ultimate
     // model of action costs, etc.
@@ -177,6 +197,12 @@ void Game::go()
           CommandProcessor::process(current_creature, command);
         }
       }
+      
+      if (reload_game_loop)
+      {
+        reload_game_loop = false;
+        break;
+      }
     }
   }
 }
@@ -185,3 +211,32 @@ void Game::quit()
 {
   keep_playing = false;
 }
+
+void Game::reload_map()
+{
+  reload_game_loop = true;
+}
+
+// Set the current map in the map registry.
+void Game::set_current_map(MapPtr map)
+{
+  // Unload the current map
+  string old_map_id = current_map_id;
+  MapPtr old_map = map_registry.get_map(old_map_id);
+  
+  if (!old_map || !old_map->get_permanent())
+  {
+    map_registry.remove_map(old_map_id); // Boom.
+  }
+  
+  // Make the new map the current
+  current_map_id = map->get_map_id();
+  map_registry.set_map(current_map_id, map);
+}
+
+// Get the current map from the map registry.
+MapPtr Game::get_current_map()
+{
+  return map_registry.get_map(current_map_id);
+}
+
