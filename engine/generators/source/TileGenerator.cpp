@@ -87,6 +87,11 @@ TilePtr TileGenerator::generate(const TileType& tile_type)
     case TILE_TYPE_DOWN_STAIRCASE:
       result_tile = make_shared<DownStaircaseTile>();
       break;
+    case TILE_TYPE_CAVERN:
+      result_tile = make_shared<CavernTile>();
+      break;
+    case TILE_TYPE_VILLAGE:
+      result_tile = make_shared<VillageTile>();
     default:
       break;
   }

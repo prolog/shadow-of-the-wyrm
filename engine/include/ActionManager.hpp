@@ -20,9 +20,9 @@ class ActionManager
     void version();
     void dump_character(CreaturePtr creature);
     void search(CreaturePtr creature);
-    void move(CreaturePtr creature, const Direction d);
-    void ascend(CreaturePtr creature);
-    void descend(CreaturePtr creature);
+    bool move(CreaturePtr creature, const Direction d);
+    bool ascend(CreaturePtr creature);
+    bool descend(CreaturePtr creature);
 
     // Pick up/drop check the map type before proceeding.
     void pick_up(CreaturePtr creature);

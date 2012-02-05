@@ -413,6 +413,7 @@
 		<Unit filename="world\tiles\include\BeachTile.hpp" />
 		<Unit filename="world\tiles\include\BushTile.hpp" />
 		<Unit filename="world\tiles\include\CairnTile.hpp" />
+		<Unit filename="world\tiles\include\CavernTile.hpp" />
 		<Unit filename="world\tiles\include\DesertTile.hpp" />
 		<Unit filename="world\tiles\include\DownStaircaseTile.hpp" />
 		<Unit filename="world\tiles\include\DungeonTile.hpp" />
@@ -434,12 +435,14 @@
 		<Unit filename="world\tiles\include\Tile.hpp" />
 		<Unit filename="world\tiles\include\TreeTile.hpp" />
 		<Unit filename="world\tiles\include\UpStaircaseTile.hpp" />
+		<Unit filename="world\tiles\include\VillageTile.hpp" />
 		<Unit filename="world\tiles\include\WeedsTile.hpp" />
 		<Unit filename="world\tiles\include\WheatTile.hpp" />
 		<Unit filename="world\tiles\include\tiles.hpp" />
 		<Unit filename="world\tiles\source\BeachTile.cpp" />
 		<Unit filename="world\tiles\source\BushTile.cpp" />
 		<Unit filename="world\tiles\source\CairnTile.cpp" />
+		<Unit filename="world\tiles\source\CavernTile.cpp" />
 		<Unit filename="world\tiles\source\DesertTile.cpp" />
 		<Unit filename="world\tiles\source\DownStaircaseTile.cpp" />
 		<Unit filename="world\tiles\source\DungeonTile.cpp" />
@@ -461,6 +464,7 @@
 		<Unit filename="world\tiles\source\Tile.cpp" />
 		<Unit filename="world\tiles\source\TreeTile.cpp" />
 		<Unit filename="world\tiles\source\UpStaircaseTile.cpp" />
+		<Unit filename="world\tiles\source\VillageTile.cpp" />
 		<Unit filename="world\tiles\source\WeedsTile.cpp" />
 		<Unit filename="world\tiles\source\WheatTile.cpp" />
 		<Unit filename="world\tiles\source\unit_tests\BeachTile_test.cpp">
@@ -471,6 +475,10 @@
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\CairnTile_test.cpp">
 			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\CavernTile_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\DesertTile_test.cpp">
 			<Option target="Release" />
@@ -534,6 +542,10 @@
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\UpStaircaseTile_test.cpp">
 			<Option target="Release" />
+		</Unit>
+		<Unit filename="world\tiles\source\unit_tests\VillageTile_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\WeedsTile_test.cpp">
 			<Option target="Release" />

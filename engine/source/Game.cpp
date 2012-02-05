@@ -178,9 +178,6 @@ void Game::go()
     current_map = get_current_map();
     vector<CreaturePtr> creatures = current_map->get_creatures();
 
-    // Update the display with the result of the last round of actions.
-    update_display(current_player, current_map);
-
     // FIXME: Right now, I just get the actions of each creature, in order.  This doesn't follow the ultimate
     // model of action costs, etc.
     for (vector<CreaturePtr>::const_iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
@@ -188,14 +185,33 @@ void Game::go()
       CreaturePtr current_creature = *c_it;
 
       if (current_creature)
-      {
+      {        
         DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
 
         if (strategy)
         {
-          CommandPtr command = strategy->get_decision();
-          CommandProcessor::process(current_creature, command);
-        }
+          bool advance = false;
+          
+          while (!advance)
+          {
+            if (current_creature->get_is_player())
+            {
+                  // Update the display with the result of the last round of actions.
+    update_display(current_player, current_map);
+
+
+            }
+            CommandPtr command = strategy->get_decision();
+            
+            // Clear the stored messages if we're about to receive the player's action
+            if (current_creature->get_is_player())
+            {
+              manager->clear_if_necessary();            
+            }
+
+            advance = CommandProcessor::process(current_creature, command, display);
+          }
+        }        
       }
       
       if (reload_game_loop)

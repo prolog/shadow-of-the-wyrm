@@ -14,4 +14,6 @@ class CavernGenerator : public Generator
     void connect_cavern_components(MapPtr map, const MapComponents& cc);
     void connect_caverns(MapPtr map, const Coordinate& first, const Coordinate& second);
     void reset_cavern_edges(MapPtr map);
+    void generate_staircases(MapPtr map);
+    void generate_staircase(MapPtr map, const TileType tile_type);
 };

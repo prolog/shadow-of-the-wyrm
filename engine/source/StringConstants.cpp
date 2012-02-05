@@ -1,3 +1,4 @@
+#include <sstream>
 #include <boost/algorithm/string/replace.hpp>
 #include "StringTable.hpp"
 #include "StringConstants.hpp"
@@ -97,6 +98,31 @@ string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
 
 string TextKeys::EQUIPMENT         = "EQUIPMENT";
 string TextKeys::INVENTORY         = "INVENTORY";
+
+string TextKeys::DECISION_CONFIRM_KEY = "DECISION_CONFIRM_KEY";
+string TextKeys::DECISION_DENY_KEY = "DECISION_DENY_KEY";
+string TextKeys::DECISION_LEAVE_AREA = "DECISION_LEAVE_AREA";
+string TextKeys::DECISION_QUIT_GAME = "DECISION_QUIT_GAME";
+
+// Entrance
+EntranceTextKeys::EntranceTextKeys()
+{
+}
+
+EntranceTextKeys::~EntranceTextKeys()
+{
+}
+
+string EntranceTextKeys::ENTRANCE_FIELD     = "ENTRANCE_FIELD";
+string EntranceTextKeys::ENTRANCE_SCRUB     = "ENTRANCE_SCRUB";
+string EntranceTextKeys::ENTRANCE_DESERT    = "ENTRANCE_DESERT";
+string EntranceTextKeys::ENTRANCE_MOUNTAINS = "ENTRANCE_MOUNTAINS";
+string EntranceTextKeys::ENTRANCE_SEA       = "ENTRANCE_SEA";
+string EntranceTextKeys::ENTRANCE_FOREST    = "ENTRANCE_FOREST";
+string EntranceTextKeys::ENTRANCE_MARSH     = "ENTRANCE_MARSH";
+string EntranceTextKeys::ENTRANCE_HILLS     = "ENTRANCE_HILLS";
+string EntranceTextKeys::ENTRANCE_CAVERN    = "ENTRANCE_CAVERN";
+string EntranceTextKeys::ENTRANCE_VILLAGE   = "ENTRANCE_VILLAGE";
 
 // Equipment
 EquipmentTextKeys::EquipmentTextKeys()
@@ -494,4 +520,77 @@ string TextMessages::get_equipment_location(const EquipmentWornLocation location
   }
   
   return equipment_location;
+}
+
+string TextMessages::get_confirmation_message(const string& query_sid)
+{
+  ostringstream ss;
+  
+  ss << StringTable::get(query_sid);
+  ss << " [";
+  ss << StringTable::get(TextKeys::DECISION_CONFIRM_KEY);
+  ss << "/" << StringTable::get(TextKeys::DECISION_DENY_KEY);
+  ss << "] ";
+  
+  return ss.str();
+}
+
+string TextMessages::get_area_entrance_message_given_terrain_type(const TileType type)
+{
+  string entrance_message;
+  
+  switch(type)
+  {
+    case TILE_TYPE_FIELD:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_FIELD);
+      break;
+    case TILE_TYPE_SCRUB:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_SCRUB);
+      break;
+    case TILE_TYPE_DESERT:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_DESERT);
+      break;
+    case TILE_TYPE_MOUNTAINS:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_MOUNTAINS);
+      break;
+    case TILE_TYPE_SEA:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_SEA);
+      break;
+    case TILE_TYPE_FOREST:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_FOREST);
+      break;
+    case TILE_TYPE_MARSH:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_MARSH);
+      break;
+    case TILE_TYPE_HILLS:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_HILLS);
+      break;
+    case TILE_TYPE_CAVERN:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_CAVERN);
+      break;
+    case TILE_TYPE_VILLAGE:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_VILLAGE);
+      break;
+    case TILE_TYPE_UNDEFINED:
+    case TILE_TYPE_WHEAT:
+    case TILE_TYPE_CAIRN:
+    case TILE_TYPE_TREE:
+    case TILE_TYPE_ROAD:
+    case TILE_TYPE_RIVER:
+    case TILE_TYPE_SHOALS:
+    case TILE_TYPE_DUNGEON:
+    case TILE_TYPE_ROCK:
+    case TILE_TYPE_GRAVE:
+    case TILE_TYPE_REEDS:
+    case TILE_TYPE_BEACH:
+    case TILE_TYPE_BUSH:
+    case TILE_TYPE_WEEDS:
+    case TILE_TYPE_SPRINGS:
+    case TILE_TYPE_UP_STAIRCASE:
+    case TILE_TYPE_DOWN_STAIRCASE:
+    default:
+      break;
+  }
+  
+  return entrance_message;
 }

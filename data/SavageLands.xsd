@@ -55,7 +55,9 @@
 			<xs:element name="SpringsTile" type="tns:Tile" minOccurs="1"/>
 			<xs:element name="ForestTile" type="tns:Tile" minOccurs="1"/>
 			<xs:element name="UpStaircaseTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="DownStaircaseTile" type="tns:Tile" minOccurs="1"/>			
+			<xs:element name="DownStaircaseTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="CavernTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="VillageTile" type="tns:Tile" minOccurs="1"/>			
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

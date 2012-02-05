@@ -36,6 +36,8 @@ class Display
 	  virtual bool create() = 0;
 	  virtual void tear_down() = 0;
 
+    virtual void clear_messages() = 0;
+    
     // Clears the message buffer, map, and info display.
     virtual void clear_display() = 0;
 
@@ -44,7 +46,7 @@ class Display
 
     // Draws the map
 	  virtual void draw(const DisplayMap& current_map) = 0;
-
+	  
 	  // Displays the player info
 	  virtual void display(const DisplayStatistics& player_stats) = 0;
 
@@ -53,6 +55,9 @@ class Display
 
 	  // Return result is the response to whatever prompt is displayed
 	  virtual std::string display_menu(const Menu& current_menu) = 0;
+	  
+	  // Show confirmation text on the display.
+	  virtual void confirm(const std::string& confirmation_message) = 0;
 
 	  virtual void clear_menu() = 0;
 

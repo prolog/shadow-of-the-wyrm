@@ -162,6 +162,7 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
   // Now translate the various CellMaps into an overall MapPtr...
   CellValue world_val, forest_val, mountains_val, scrub_val;
 
+  int rand = 0;
   int y = dimensions.get_y();
   int x = dimensions.get_x();
   for (int row = 0; row < y; row++)
@@ -194,7 +195,18 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
 
       if (mountains_val == CELL_OFF && world_val == CELL_OFF && forest_val == CELL_ON)
       {
-        tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+        // 3% chance of being a cavern
+        rand = RNG::range(1, 100);
+        
+        if (rand <= 3)
+        {
+          tile = TileGenerator::generate(TILE_TYPE_CAVERN);
+        }
+        else
+        {
+          tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+        }
+        
         result_map->insert(row, col, tile);
       }
     }

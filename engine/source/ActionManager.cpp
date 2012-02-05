@@ -61,13 +61,13 @@ void ActionManager::search(CreaturePtr creature)
   }
 }
 
-void ActionManager::move(CreaturePtr creature, const Direction direction)
+bool ActionManager::move(CreaturePtr creature, const Direction direction)
 {
-  movement_manager.move(creature, direction);
+  return movement_manager.move(creature, direction);
 }
 
 // Move up a level
-void ActionManager::ascend(CreaturePtr creature)
+bool ActionManager::ascend(CreaturePtr creature)
 {
   Game* game = Game::instance();
   
@@ -82,20 +82,22 @@ void ActionManager::ascend(CreaturePtr creature)
       string search_message = StringTable::get(ActionTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
 
       manager->add_new_message(search_message);
-      manager->send();    
+      manager->send();
+      
+      return false;    
     } 
     
    // Otherwise, check to see if the creature is on an up-staircase, and go from there.
    // ...
-  }  
+  }
+  
+  return true;
 }
 
 // Move down a level
-// JCD FIXME: Once entering and exiting wilderness tiles works,
-// refactor the ascend/descend methods!
-void ActionManager::descend(CreaturePtr creature)
+bool ActionManager::descend(CreaturePtr creature)
 {
-  movement_manager.descend(creature);
+  return movement_manager.descend(creature);
 }
 
 // Do something with an item:

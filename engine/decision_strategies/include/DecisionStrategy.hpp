@@ -7,6 +7,7 @@ class DecisionStrategy
 {
   public:
     virtual CommandPtr get_decision() = 0;
+    virtual bool get_confirmation() = 0;
 };
 
 typedef boost::shared_ptr<DecisionStrategy> DecisionStrategyPtr;

@@ -33,7 +33,11 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     XMLNode forest_tile_node         = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "ForestTile");
     XMLNode up_staircase_tile_node   = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "UpStaircaseTile");
     XMLNode down_staircase_tile_node = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "DownStaircaseTile");
+    XMLNode cavern_tile_node         = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "CavernTile");
+    XMLNode village_tile_node        = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "VillageTile");
 
+    // These push back items into the tile details in order, so if you're defining
+    // a new tile type, add at appropriate place!
     parse_tile_text_details(tiles, field_tile_node);
     parse_tile_text_details(tiles, scrub_tile_node);
     parse_tile_text_details(tiles, wheat_tile_node);
@@ -58,6 +62,8 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     parse_tile_text_details(tiles, forest_tile_node);
     parse_tile_text_details(tiles, up_staircase_tile_node);
     parse_tile_text_details(tiles, down_staircase_tile_node);
+    parse_tile_text_details(tiles, cavern_tile_node);
+    parse_tile_text_details(tiles, village_tile_node);
   }
 
   return tiles;

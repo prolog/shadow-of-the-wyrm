@@ -10,11 +10,11 @@ class MovementManager
     MovementManager();
     ~MovementManager();
 
-    void move(CreaturePtr creature, const Direction d);
-    void ascend(CreaturePtr creature);
-    void descend(CreaturePtr creature);
+    bool move(CreaturePtr creature, const Direction d);
+    bool ascend(CreaturePtr creature);
+    bool descend(CreaturePtr creature);
     
   protected:
-    void move_to_new_map(CreaturePtr creature, MapPtr new_map);
-    void move_to_new_map(CreaturePtr creature, MapExitPtr map_exit);
+    void move_to_new_map(MapPtr new_map);
+    void move_to_new_map(MapExitPtr map_exit);
 };

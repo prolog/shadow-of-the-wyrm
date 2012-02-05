@@ -18,8 +18,9 @@ MovementManager::~MovementManager()
 {
 }
 
-void MovementManager::move(CreaturePtr creature, const Direction direction)
+bool MovementManager::move(CreaturePtr creature, const Direction direction)
 {
+  bool movement_success = false;
   Game* game = Game::instance();
   
   if (creature && game)
@@ -45,7 +46,7 @@ void MovementManager::move(CreaturePtr creature, const Direction direction)
         if (creature->get_is_player())
         {
           MessageManager* manager = MessageManager::instance();
-          // JCD FIXME: Check to see if the map is the world map.  If it isn't, get a different message.
+ 
           string movement_message = StringTable::get(ActionTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
 
           manager->add_new_message(movement_message);
@@ -54,7 +55,20 @@ void MovementManager::move(CreaturePtr creature, const Direction direction)
       }
       else
       {
-        move_to_new_map(creature, map_exit);
+        if (creature->get_is_player())
+        {
+          string leave_area = TextMessages::get_confirmation_message(TextKeys::DECISION_LEAVE_AREA);
+          game->display->confirm(leave_area);
+        }
+        
+        if (creature->get_decision_strategy()->get_confirmation())
+        {
+          move_to_new_map(map_exit);
+          movement_success = true;
+        }
+        
+        // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
+        game->display->clear_messages();
       }
     }
     // Otherwise, it's a regular move within the current map.
@@ -68,35 +82,37 @@ void MovementManager::move(CreaturePtr creature, const Direction direction)
       {
         // Update the map info
         MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
+        movement_success = true;
       }
     }
   }
+  
+  return movement_success;
 }
 
-// FIXME: Later, cleanup the ascend/descend/move to new map code.
-void MovementManager::move_to_new_map(CreaturePtr creature, MapPtr new_map)
+void MovementManager::move_to_new_map(MapPtr new_map)
 {
   Game* game = Game::instance();
   
-  if (creature && game && new_map)
+  if (game && new_map)
   {
     game->set_current_map(new_map);
     game->reload_map();    
   }
 }
 
-void MovementManager::move_to_new_map(CreaturePtr creature, MapExitPtr map_exit)
+void MovementManager::move_to_new_map(MapExitPtr map_exit)
 {
   Game* game = Game::instance();
   
-  if (creature && game && map_exit)
+  if (game && map_exit)
   {
     if (map_exit->is_using_map_id())
     {
       string new_map_id = map_exit->get_map_id();
       MapPtr new_map = game->map_registry.get_map(new_map_id);
       
-      move_to_new_map(creature, new_map);
+      move_to_new_map(new_map);
     }
     else
     {
@@ -106,8 +122,10 @@ void MovementManager::move_to_new_map(CreaturePtr creature, MapExitPtr map_exit)
   }
 }
 
-void MovementManager::ascend(CreaturePtr creature)
+bool MovementManager::ascend(CreaturePtr creature)
 {
+  bool ascend_success = false;
+  
   if (creature->get_is_player())
   {
     Game* game = Game::instance();
@@ -117,7 +135,8 @@ void MovementManager::ascend(CreaturePtr creature)
       MapPtr current_map = game->get_current_map();
       MapExitPtr map_exit = current_map->get_map_exit();
       
-      move_to_new_map(creature, map_exit);
+      move_to_new_map(map_exit);
+      ascend_success = true;
     }
   }
   else
@@ -125,10 +144,14 @@ void MovementManager::ascend(CreaturePtr creature)
     Log* log = Log::instance();
     log->log("Trying to ascend with non-player creature.  Not supported yet.");
   }
+  
+  return ascend_success;
 }
 
-void MovementManager::descend(CreaturePtr creature)
+bool MovementManager::descend(CreaturePtr creature)
 {
+  bool descend_success = false;
+  
   if (creature->get_is_player())
   {
     // If we're on the world map, we can always descend.
@@ -155,6 +178,7 @@ void MovementManager::descend(CreaturePtr creature)
           if (t_it != exit_map.end())
           {
             // JCD FIXME Fill this in later.
+            descend_success = true;
           }
           // If it's null, check to see if we're on the world map.
           else
@@ -179,7 +203,13 @@ void MovementManager::descend(CreaturePtr creature)
                 Coordinate starting_coords(0,0);
                 MapUtils::add_or_update_location(new_map, creature, starting_coords);
 
-                move_to_new_map(creature, new_map);
+                move_to_new_map(new_map);
+                
+                MessageManager* manager = MessageManager::instance();
+                manager->add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
+                manager->send();
+                
+                descend_success = true;
               }
             }
           }        
@@ -192,4 +222,6 @@ void MovementManager::descend(CreaturePtr creature)
     Log* log = Log::instance();
     log->log("Trying to descend with non-player creature.  Not supported yet.");    
   }
+  
+  return descend_success;
 }
