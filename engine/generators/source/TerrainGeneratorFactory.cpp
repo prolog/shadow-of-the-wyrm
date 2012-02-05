@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "CavernGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "MarshGenerator.hpp"
@@ -40,6 +41,9 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(const TileType terrain_ty
     case TILE_TYPE_FOREST:
       generator = make_shared<ForestGenerator>();
       break;
+    case TILE_TYPE_CAVERN:
+      generator = make_shared<CavernGenerator>();
+      break;
     case TILE_TYPE_UNDEFINED:
     case TILE_TYPE_SCRUB:
     case TILE_TYPE_WHEAT:
@@ -60,6 +64,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(const TileType terrain_ty
     case TILE_TYPE_SPRINGS:
     case TILE_TYPE_UP_STAIRCASE:
     case TILE_TYPE_DOWN_STAIRCASE:
+    case TILE_TYPE_VILLAGE:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.
       generator = make_shared<FieldGenerator>();

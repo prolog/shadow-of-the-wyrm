@@ -1739,7 +1739,7 @@
 		<DungeonTile>
 			<Text>
 				<Symbol>.</Symbol>
-				<Colour>7</Colour>
+				<Colour>3</Colour>
 			</Text>
 		</DungeonTile>
 		<RockTile>
@@ -1820,6 +1820,18 @@
 				<Colour>7</Colour>
 			</Text>
 		</DownStaircaseTile>
+		<CavernTile>
+			<Text>
+				<Symbol>o</Symbol>
+				<Colour>0</Colour>
+			</Text>
+		</CavernTile>
+		<VillageTile>
+			<Text>
+				<Symbol>v</Symbol>
+				<Colour>4</Colour>
+			</Text>
+		</VillageTile>
 	</Tiles>
 	<Items>
 		<Armours>

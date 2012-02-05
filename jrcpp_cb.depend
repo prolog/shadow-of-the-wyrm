@@ -275,7 +275,7 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1326982038 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1328452512 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -384,11 +384,11 @@
 1322268339 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\skillscalculator_test.cpp
 	"gtest/gtest.h"
 
-1323488737 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmltilesreader.cpp
+1328449200 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmltilesreader.cpp
 	"XMLTilesReader.hpp"
 	"DisplayTile.hpp"
 
-1326245484 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\caverngenerator.cpp
+1328452238 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\caverngenerator.cpp
 	"CavernGenerator.hpp"
 	"CellularAutomataGenerator.hpp"
 	"TileGenerator.hpp"
@@ -483,7 +483,7 @@
 	"Dimensions.hpp"
 	"RNG.hpp"
 
-1326237687 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\tilegenerator.cpp
+1328228103 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\tilegenerator.cpp
 	<boost/make_shared.hpp>
 	"Log.hpp"
 	"TileGenerator.hpp"
@@ -494,7 +494,7 @@
 1321453060 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
 	"gtest/gtest.h"
 
-1328142930 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+1328450035 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
 	<vector>
 	"WorldGenerator.hpp"
 	"TileGenerator.hpp"
@@ -581,7 +581,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1328146223 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1328407133 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"Game.hpp"
@@ -612,7 +612,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1325432942 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1328402519 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -655,7 +655,8 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1327711656 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1328448370 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
 	"StringConstants.hpp"
@@ -949,8 +950,10 @@
 1324838764 source:c:\cygwin\home\julian\jrcpp\world\decision_strategies\source\playerdecisionstrategy.cpp
 	"PlayerDecisionStrategy.hpp"
 
-1325432988 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+1328402194 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
 	<string>
+	<sstream>
+	<boost/algorithm/string.hpp>
 	"PlayerDecisionStrategy.hpp"
 	"Command.hpp"
 	"CommandFactory.hpp"
@@ -958,17 +961,17 @@
 	"KeyboardCommandMap.hpp"
 	"Map.hpp"
 
-1325338902 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
+1328363916 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1327157768 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1328406304 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Commands.hpp"
 	"Game.hpp"
 
-1325011084 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
+1328402005 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
 
 1327155382 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
@@ -988,12 +991,13 @@
 1327155385 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1327155868 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1328363686 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
+	"StringConstants.hpp"
 
-1328189463 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
+1328403530 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
@@ -1006,7 +1010,7 @@
 	"MessageManager.hpp"
 	"Log.hpp"
 
-1328191192 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
+1328448240 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"Conversion.hpp"
 	"Game.hpp"
@@ -1186,12 +1190,27 @@
 1327844215 source:c:\cygwin\home\julian\jrcpp\world\source\mapexit.cpp
 	"MapExit.hpp"
 
-1328146767 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\terraingeneratorfactory.cpp
+1328228829 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\terraingeneratorfactory.cpp
 	<boost/make_shared.hpp>
+	"CavernGenerator.hpp"
 	"FieldGenerator.hpp"
 	"ForestGenerator.hpp"
 	"MarshGenerator.hpp"
 	"MountainsGenerator.hpp"
 	"SeaGenerator.hpp"
 	"TerrainGeneratorFactory.hpp"
+
+1328228242 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\caverntile.cpp
+	"CavernTile.hpp"
+	"unit_tests/CavernTile_test.cpp"
+
+1328228356 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\caverntile_test.cpp
+	"gtest/gtest.h"
+
+1328228280 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\villagetile.cpp
+	"VillageTile.hpp"
+	"unit_tests/VillageTile_test.cpp"
+
+1328228393 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\villagetile_test.cpp
+	"gtest/gtest.h"
 

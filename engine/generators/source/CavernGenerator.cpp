@@ -18,6 +18,7 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   reset_cavern_edges(result_map);
   MapComponents cc = get_cavern_components(result_map);
   connect_cavern_components(result_map, cc);
+  generate_staircases(result_map);
   
   result_map->set_map_type(MAP_TYPE_UNDERWORLD);
   
@@ -147,17 +148,61 @@ void CavernGenerator::reset_cavern_edges(MapPtr map)
   Dimensions dimensions = map->size();
   int max_rows = dimensions.get_y();
   int max_cols = dimensions.get_x();
-  TilePtr rock = TileGenerator::generate(TILE_TYPE_ROCK);
 
   for (int row = 0; row < max_rows; row++)
   {
+    TilePtr rock = TileGenerator::generate(TILE_TYPE_ROCK);
     map->insert(row, 0, rock);
+    
+    rock = TileGenerator::generate(TILE_TYPE_ROCK);
     map->insert(row, max_cols-1, rock);
   }
 
   for (int col = 0; col < max_cols; col++)
   {
+    TilePtr rock = TileGenerator::generate(TILE_TYPE_ROCK);
     map->insert(0, col, rock);
+    
+    rock = TileGenerator::generate(TILE_TYPE_ROCK);
     map->insert(max_rows-1, col, rock);
+  }
+}
+
+// Generate both staircases, if necessary.  It may not be necessary
+// to generate the down staircase.
+void CavernGenerator::generate_staircases(MapPtr map)
+{
+  // Up Staircase
+  generate_staircase(map, TILE_TYPE_UP_STAIRCASE);
+  
+  // Down staircase
+  generate_staircase(map, TILE_TYPE_DOWN_STAIRCASE);
+}
+
+// Generate a particular staircase
+void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type)
+{
+  Dimensions dimensions = map->size();
+
+  bool found = false;
+  Coordinate c;
+  int max_y = dimensions.get_y();
+  int max_x = dimensions.get_x();
+  
+  while (!found)
+  {
+    c.first  = RNG::range(0, max_y-1);
+    c.second = RNG::range(0, max_x-1);
+    
+    // Check the tile to see if it's floor
+    TilePtr tile = map->at(c);
+    
+    if (!tile) break;
+    if (tile && tile->get_tile_type() == TILE_TYPE_DUNGEON)
+    {
+      TilePtr new_tile = TileGenerator::generate(tile_type);
+      map->insert(c.first, c.second, new_tile);
+      break;
+    }
   }
 }

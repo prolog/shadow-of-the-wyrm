@@ -6,5 +6,5 @@ class NCursesKeyboardController : public Controller
 {
   public:
     std::string get_line();
-    char get_character();
+    int get_char_as_int();
 };

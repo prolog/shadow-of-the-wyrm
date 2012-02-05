@@ -15,8 +15,8 @@ CommandProcessor::~CommandProcessor()
 }
 
 // Determine the type of command, and process it appropriately.
-void CommandProcessor::process(CreaturePtr creature, CommandPtr command)
-{
+bool CommandProcessor::process(CreaturePtr creature, CommandPtr command, DisplayPtr display)
+{  
   if (command)
   {
     Command* raw_command = command.get();
@@ -25,61 +25,74 @@ void CommandProcessor::process(CreaturePtr creature, CommandPtr command)
 
     if (d_command)
     {
-      process_directional_command(creature, d_command);
+      return process_directional_command(creature, d_command, display);
     } 
     else
     {
       // It's a subclass of the basic command, but not one of the subclasses requiring special processing.
-      process_command(creature, raw_command);
+      return process_command(creature, raw_command, display);
     }
   }
+  
+  return false;
 }
 
 // Process the Command
-void CommandProcessor::process_command(CreaturePtr creature, Command* command)
+bool CommandProcessor::process_command(CreaturePtr creature, Command* command, DisplayPtr display)
 {
+  bool advance = true;
+  
   if (command)
   {
-    Game* game = Game::instance();
-    string command_name = command->get_name();
-
-    if (command_name == CommandKeys::QUIT)
+    bool confirm = process_confirmation(creature, command, display);
+    
+    if (confirm)
     {
-      game->quit();
-    }
-    else if (command_name == CommandKeys::VERSION)
-    {
-      game->actions.version();
-    }
-    else if (command_name == CommandKeys::SEARCH)
-    {
-      game->actions.search(creature);
-    }
-    else if (command_name == CommandKeys::MOVE_UP)
-    {
-      game->actions.ascend(creature);
-    }
-    else if (command_name == CommandKeys::MOVE_DOWN)
-    {
-      game->actions.descend(creature);
-    }
-    else if (command_name == CommandKeys::PICK_UP_ITEM)
-    {
-      game->actions.pick_up(creature);
-    }
-    else if (command_name == CommandKeys::DROP_ITEM)
-    {
-      game->actions.drop(creature);
-    }
-    else if (command_name == CommandKeys::CHAR_DUMP)
-    {
-      game->actions.dump_character(creature);
+      Game* game = Game::instance();
+      string command_name = command->get_name();
+      
+      if (command_name == CommandKeys::QUIT)
+      {
+        game->quit();
+      }
+      else if (command_name == CommandKeys::VERSION)
+      {
+        game->actions.version();
+        advance = false;
+      }
+      else if (command_name == CommandKeys::SEARCH)
+      {
+        game->actions.search(creature);
+      }
+      else if (command_name == CommandKeys::MOVE_UP)
+      {
+        advance = game->actions.ascend(creature);
+      }
+      else if (command_name == CommandKeys::MOVE_DOWN)
+      {
+        advance = game->actions.descend(creature);
+      }
+      else if (command_name == CommandKeys::PICK_UP_ITEM)
+      {
+        game->actions.pick_up(creature);
+      }
+      else if (command_name == CommandKeys::DROP_ITEM)
+      {
+        game->actions.drop(creature);
+      }
+      else if (command_name == CommandKeys::CHAR_DUMP)
+      {
+        game->actions.dump_character(creature);
+        advance = false;
+      }
     }
   }
+  
+  return advance;
 }
 
 // Process the DirectionalCommand
-void CommandProcessor::process_directional_command(CreaturePtr creature, DirectionalCommand* command)
+bool CommandProcessor::process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr display)
 {
   if (command)
   {
@@ -90,7 +103,32 @@ void CommandProcessor::process_directional_command(CreaturePtr creature, Directi
     {
       Direction movement_direction = command->get_direction();
 
-      game->actions.move(creature, movement_direction);
+      return game->actions.move(creature, movement_direction);
     }
   }
+  
+  return false;
+}
+
+// Get a confirmation from the creature's decision strategy, if necessary
+bool CommandProcessor::process_confirmation(CreaturePtr creature, Command* command, DisplayPtr display)
+{
+  bool confirm = true;
+  
+  if (command && command->requires_confirmation())
+  {
+    if (creature->get_is_player())
+    {
+      display->confirm(TextMessages::get_confirmation_message(command->get_confirmation_sid()));
+    }
+    
+    confirm = creature->get_decision_strategy()->get_confirmation();
+    
+    if (creature->get_is_player())
+    {
+      display->clear_messages();
+    }
+  }
+  
+  return confirm;
 }

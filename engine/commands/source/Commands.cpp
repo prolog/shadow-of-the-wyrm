@@ -1,12 +1,13 @@
 #include "Commands.hpp"
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
+#include "StringConstants.hpp"
 
 using namespace std;
 
 // Quit
 QuitCommand::QuitCommand()
-: Command(CommandKeys::QUIT)
+: Command(CommandKeys::QUIT, TextKeys::DECISION_QUIT_GAME)
 {
 }
 
@@ -38,6 +39,11 @@ DirectionalCommand::~DirectionalCommand()
 Direction DirectionalCommand::get_direction() const
 {
   return direction;
+}
+
+bool DirectionalCommand::requires_confirmation() const
+{
+  return false; // This'll be determined by the movement manager.
 }
 
 // Movement

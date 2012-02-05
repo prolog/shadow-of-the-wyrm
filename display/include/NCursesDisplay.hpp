@@ -15,17 +15,21 @@ class NCursesDisplay : public Display
 	  bool create();
 	  void tear_down();
 
+    void clear_messages();
     void clear_display();
 
     void add_message(const std::string& message);
+    void add_message(const std::string& message, bool reset_prompt);
 
 	  void draw(const DisplayMap& current_map);
 
 	  void display(const DisplayStatistics& player_stats);
-
+	  
     MapDisplayArea get_map_display_area();
 
 	  std::string display_menu(const Menu& current_menu);
+
+	  void confirm(const std::string& confirmation_message);
 
 	  void clear_menu();
 

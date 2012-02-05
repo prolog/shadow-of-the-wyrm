@@ -3,6 +3,7 @@
 #include "BeachTile.hpp"
 #include "BushTile.hpp"
 #include "CairnTile.hpp"
+#include "CavernTile.hpp"
 #include "DesertTile.hpp"
 #include "DungeonTile.hpp"
 #include "FieldTile.hpp"
@@ -24,4 +25,5 @@
 #include "DownStaircaseTile.hpp"
 #include "TreeTile.hpp"
 #include "WeedsTile.hpp"
+#include "VillageTile.hpp"
 #include "WheatTile.hpp"

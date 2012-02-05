@@ -11,8 +11,8 @@ string NCursesKeyboardController::get_line()
   return line;
 }
 
-char NCursesKeyboardController::get_character()
+int NCursesKeyboardController::get_char_as_int()
 {
-  char character = getch();
+  int character = getch();
   return character;
 }

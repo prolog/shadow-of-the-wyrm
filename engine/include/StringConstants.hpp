@@ -2,6 +2,7 @@
 #include <string>
 #include "CreatureFeatures.hpp"
 #include "EquipmentTypes.hpp"
+#include "tiles.hpp"
 
 // These define all the string keys.
 // Key/value pairs are defined in savagelandstext_lang.ini, where lang=en,fr,ru,kl,etc.
@@ -92,10 +93,34 @@ class TextKeys
     
     static std::string EQUIPMENT;
     static std::string INVENTORY;
+    
+    static std::string DECISION_CONFIRM_KEY;
+    static std::string DECISION_DENY_KEY;
+    static std::string DECISION_LEAVE_AREA;
+    static std::string DECISION_QUIT_GAME;
 
   protected:
     TextKeys();
     ~TextKeys();
+};
+
+class EntranceTextKeys
+{
+  public:
+    static std::string ENTRANCE_FIELD;
+    static std::string ENTRANCE_SCRUB;
+    static std::string ENTRANCE_DESERT;
+    static std::string ENTRANCE_MOUNTAINS;
+    static std::string ENTRANCE_SEA;
+    static std::string ENTRANCE_FOREST;
+    static std::string ENTRANCE_MARSH;
+    static std::string ENTRANCE_HILLS;
+    static std::string ENTRANCE_CAVERN;
+    static std::string ENTRANCE_VILLAGE;
+    
+  protected:
+    EntranceTextKeys();
+    ~EntranceTextKeys();
 };
 
 class EquipmentTextKeys
@@ -316,6 +341,8 @@ class TextMessages
     static std::string get_dumping_character_message(const std::string& creature_name);
     static std::string get_sex(const CreatureSex sex);
     static std::string get_equipment_location(const EquipmentWornLocation location);
+    static std::string get_confirmation_message(const std::string& query_sid);
+    static std::string get_area_entrance_message_given_terrain_type(const TileType type);
 
   protected:
     TextMessages();

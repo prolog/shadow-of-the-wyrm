@@ -72,7 +72,7 @@ void NCursesDisplay::enable_colour(const int selected_colour)
     {
       int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
       attron(COLOR_PAIR(actual_colour));
-      attron(COLOR_PAIR(A_BOLD));
+      attron(A_BOLD);
       return;
     }
 
@@ -89,7 +89,7 @@ void NCursesDisplay::disable_colour(const int selected_colour)
     {
       int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
       attroff(COLOR_PAIR(actual_colour));
-      attroff(COLOR_PAIR(A_BOLD));
+      attroff(A_BOLD);
       return;
     }
 
@@ -97,15 +97,27 @@ void NCursesDisplay::disable_colour(const int selected_colour)
   }
 }
 
-// Clear the message buffer.  The message buffer is always lines 0 and 1.
-int NCursesDisplay::clear_message_buffer()
+// The Display function - hooks up to clear_message_buffer
+void NCursesDisplay::clear_messages()
 {
+  clear_message_buffer();
+}
+
+// Clear the message buffer and reset the cursor.  The message buffer is always lines 0 and 1.
+int NCursesDisplay::clear_message_buffer()
+{  
   int return_val;
+  int orig_curs_y, orig_curs_x;
+  getyx(stdscr, orig_curs_y, orig_curs_x);
+  
   move(0, 0);
   clrtoeol();
 
   move(1, 0);
   return_val = clrtoeol();
+  
+  // Reset cursor to original position
+  move(orig_curs_y, orig_curs_x);
   refresh();
 
   return return_val;
@@ -195,6 +207,11 @@ void NCursesDisplay::clear_display()
  *****************************************************************/
 void NCursesDisplay::add_message(const string& message)
 {
+  add_message(message, true);
+}
+
+void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
+{
   int orig_curs_y, orig_curs_x;
   getyx(stdscr, orig_curs_y, orig_curs_x);
   
@@ -237,7 +254,11 @@ void NCursesDisplay::add_message(const string& message)
   }
 
   // Reset the cursor.
-  move(orig_curs_y, orig_curs_x);
+  if (reset_cursor)
+  {
+    move(orig_curs_y, orig_curs_x);
+  }
+  
   refresh();
 }
 
@@ -361,6 +382,12 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
   
   wrapper.release_pointer_structures();
   return result;
+}
+
+// Show confirmation text - use the message buffer.
+void NCursesDisplay::confirm(const string& confirmation_message)
+{
+  add_message(confirmation_message, false);
 }
 
 void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponent* tc)

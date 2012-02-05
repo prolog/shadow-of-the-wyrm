@@ -5,6 +5,11 @@ using namespace std;
 
 MessageManager* MessageManager::manager_instance = NULL;
 
+MessageManager::MessageManager()
+: buffer_has_messages(false)
+{
+}
+
 MessageManager::~MessageManager()
 {
 }
@@ -23,6 +28,27 @@ MessageManager* MessageManager::instance()
   }
 
   return manager_instance;
+}
+
+/*
+ ********************************************************************
+ 
+  Clear the display of any text.
+ 
+ ********************************************************************/
+void MessageManager::clear_if_necessary()
+{
+  if (buffer_has_messages)
+  {
+    get_unread_messages_and_mark_as_read();
+    
+    if (user_display)
+    {
+      user_display->clear_messages();
+    }
+    
+    buffer_has_messages = false;
+  }
 }
 
 /*
@@ -46,6 +72,8 @@ void MessageManager::send()
     }
 
     user_display->add_message(message_text);
+    
+    buffer_has_messages = true;
   }
 }
 /*
