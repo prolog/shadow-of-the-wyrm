@@ -1,5 +1,6 @@
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
+#include "CreatureCalculator.hpp"
 #include "Game.hpp"
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
@@ -168,9 +169,7 @@ void Game::go()
 
   MapPtr current_map = get_current_map();
 
-
       FIXME_REMOVE_THIS_FUNCTION(current_player);
-
       
   // Main game loop.
   while(keep_playing)
@@ -196,11 +195,10 @@ void Game::go()
           {
             if (current_creature->get_is_player())
             {
-                  // Update the display with the result of the last round of actions.
-    update_display(current_player, current_map);
-
-
+              // Update the display with the result of the last round of actions.
+              update_display(current_player, current_map);
             }
+            
             CommandPtr command = strategy->get_decision();
             
             // Clear the stored messages if we're about to receive the player's action
@@ -209,8 +207,11 @@ void Game::go()
               manager->clear_if_necessary();            
             }
 
-            advance = CommandProcessor::process(current_creature, command, display);
+            advance = CommandProcessor::process(current_creature, command, display);            
           }
+          
+          // Update the current creature
+          CreatureCalculator::update_calculated_values(current_creature);
         }        
       }
       

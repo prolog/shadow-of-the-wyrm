@@ -30,7 +30,7 @@ void CavernGenerator::generate_cavern(MapPtr map)
   TilePtr tile;
   Dimensions dimensions = map->size();
 
-  int num_iterations = RNG::range(1000, 7500);
+  int num_iterations = RNG::range(1000, 5000);
 
   CellularAutomataSettings cas(70, num_iterations, 4, 70, CELL_OFF);
   CellularAutomataGenerator cag(cas, dimensions);
@@ -202,6 +202,13 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type)
     {
       TilePtr new_tile = TileGenerator::generate(tile_type);
       map->insert(c.first, c.second, new_tile);
+      
+      // If it's an up-staircase, default the player's position to here.
+      if (tile_type == TILE_TYPE_UP_STAIRCASE)
+      {
+        map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
+      }
+
       break;
     }
   }

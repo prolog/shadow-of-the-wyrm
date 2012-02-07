@@ -135,6 +135,14 @@ Coordinate Map::get_location(const string& location) const
   return c;
 }
 
+bool Map::has_location(const string& location)
+{
+  NamedMapLocations::iterator n_it = locations.find(location);
+
+  if (n_it != locations.end()) return true;
+  else return false;  
+}
+
 TilePtr Map::get_tile_at_location(const string& location)
 {
   TilePtr tile;
