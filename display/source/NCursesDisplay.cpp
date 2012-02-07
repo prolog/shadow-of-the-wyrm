@@ -482,7 +482,12 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
   int initial_row = current_row;
   int current_col = 0;
   bool can_print = true;
-
+  
+  // First, clear the synopsis.
+  move(PLAYER_SYNOPSIS_START_ROW, 0);
+  clrtobot();
+  
+  // Next, set the synopsis values
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, name, synopsis);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength, dexterity);

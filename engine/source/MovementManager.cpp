@@ -200,7 +200,21 @@ bool MovementManager::descend(CreaturePtr creature)
                 new_map_exit->set_map_id(map->get_map_id());
                 new_map->set_map_exit(new_map_exit);
                 
-                Coordinate starting_coords(0,0);
+                // If the map has a last known player location (e.g., up staircase),
+                // use that.  Otherwise, start at 0,0.  JCD FIXME THAT WON'T ALWAYS HOLD!
+                string player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
+                Coordinate starting_coords;
+                
+                if (new_map->has_location(player_loc))
+                {
+                  starting_coords = new_map->get_location(player_loc);
+                }
+                else
+                {
+                  starting_coords.first = 0;
+                  starting_coords.second = 0;
+                }
+                
                 MapUtils::add_or_update_location(new_map, creature, starting_coords);
 
                 move_to_new_map(new_map);

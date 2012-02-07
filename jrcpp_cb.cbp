@@ -151,27 +151,63 @@
 		<Unit filename="engine\XML\source\XMLSkillsReaders.cpp" />
 		<Unit filename="engine\XML\source\XMLTilesReader.cpp" />
 		<Unit filename="engine\calculators\include\ArcanaPointsCalculator.hpp" />
+		<Unit filename="engine\calculators\include\CreatureCalculator.hpp" />
+		<Unit filename="engine\calculators\include\EvadeCalculator.hpp" />
 		<Unit filename="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\HitPointsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\MagicToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ResistancesCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
+		<Unit filename="engine\calculators\include\SoakCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ToHitCalculatorFactory.hpp" />
 		<Unit filename="engine\calculators\source\ArcanaPointsCalculator.cpp" />
+		<Unit filename="engine\calculators\source\CreatureCalculator.cpp" />
+		<Unit filename="engine\calculators\source\EvadeCalculator.cpp" />
 		<Unit filename="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
 		<Unit filename="engine\calculators\source\HitPointsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp" />
 		<Unit filename="engine\calculators\source\MagicToHitCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
+		<Unit filename="engine\calculators\source\SoakCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ToHitCalculatorFactory.cpp" />
+		<Unit filename="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
+		<Unit filename="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
+		<Unit filename="engine\calculators\source\unit_tests\HeavyWeaponToHitCalculator_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
+		<Unit filename="engine\calculators\source\unit_tests\HitPointsCalculator_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
+		<Unit filename="engine\calculators\source\unit_tests\LightMeleeAndRangedWeaponToHitCalculator_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
+		<Unit filename="engine\calculators\source\unit_tests\MagicToHitCalculator_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
 			<Option target="Release" />
+			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp">
 			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
+		<Unit filename="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\commands\include\Command.hpp" />
 		<Unit filename="engine\commands\include\CommandFactory.hpp" />

@@ -1,5 +1,6 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -65,6 +66,13 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   }
 
   CreaturePtr creaturep = CreaturePtr(new Creature(creature));
+  
+  // Now that everything has been set, set any calculated values.
+  if (creaturep)
+  {
+    // Set calculated statistics
+    CreatureCalculator::update_calculated_values(creaturep);
+  }
 
   return creaturep;
 }
@@ -73,13 +81,13 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
 {
   Creature creature = current_creature;
 
-  Statistic strength     = race->get_starting_strength().get_base()     + char_class->get_strength_modifier()     + (RNG::range(1,4) - 2);
-  Statistic dexterity    = race->get_starting_dexterity().get_base()    + char_class->get_dexterity_modifier()    + (RNG::range(1,4) - 2);
-  Statistic agility      = race->get_starting_agility().get_base()      + char_class->get_agility_modifier()      + (RNG::range(1,4) - 2);
-  Statistic health       = race->get_starting_health().get_base()       + char_class->get_health_modifier()       + (RNG::range(1,4) - 2);
-  Statistic intelligence = race->get_starting_intelligence().get_base() + char_class->get_intelligence_modifier() + (RNG::range(1,4) - 2);
-  Statistic willpower    = race->get_starting_willpower().get_base()    + char_class->get_willpower_modifier()    + (RNG::range(1,4) - 2);
-  Statistic charisma     = race->get_starting_charisma().get_base()     + char_class->get_charisma_modifier()     + (RNG::range(1,4) - 2);
+  Statistic strength     = race->get_starting_strength().get_base()     + char_class->get_strength_modifier()     + (RNG::range(0,3));
+  Statistic dexterity    = race->get_starting_dexterity().get_base()    + char_class->get_dexterity_modifier()    + (RNG::range(0,3));
+  Statistic agility      = race->get_starting_agility().get_base()      + char_class->get_agility_modifier()      + (RNG::range(0,3));
+  Statistic health       = race->get_starting_health().get_base()       + char_class->get_health_modifier()       + (RNG::range(0,3));
+  Statistic intelligence = race->get_starting_intelligence().get_base() + char_class->get_intelligence_modifier() + (RNG::range(0,3));
+  Statistic willpower    = race->get_starting_willpower().get_base()    + char_class->get_willpower_modifier()    + (RNG::range(0,3));
+  Statistic charisma     = race->get_starting_charisma().get_base()     + char_class->get_charisma_modifier()     + (RNG::range(0,3));
 
   Statistic valour = char_class->get_starting_valour().get_base() + race->get_valour_modifier();
   Statistic spirit = char_class->get_starting_spirit().get_base() + race->get_spirit_modifier();
@@ -117,7 +125,7 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
 
   // Calculate AP bonus:
   creature.set_arcana_points(initial_ap + ap_bonus);
-
+  
   return creature;
 }
 
