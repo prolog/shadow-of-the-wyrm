@@ -47,6 +47,12 @@ class Display
     // Draws the map
 	  virtual void draw(const DisplayMap& current_map) = 0;
 	  
+	  // Displays a window with the player's equipment
+	  virtual void display_equipment() = 0;
+	  
+	  // Displays a window with the player's inventory (non-worn items)
+	  virtual void display_inventory() = 0;
+	  
 	  // Displays the player info
 	  virtual void display(const DisplayStatistics& player_stats) = 0;
 

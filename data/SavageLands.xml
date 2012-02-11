@@ -1840,6 +1840,7 @@
 				<Value>5</Value>
 				<Weight><Pounds>0</Pounds><Ounces>7</Ounces></Weight>
 				<WornLocation>0</WornLocation>
+				<Material>0</Material>
 				<Evade>1</Evade>
 				<Soak>0</Soak>
 			</Armour>
@@ -1850,6 +1851,7 @@
 				<Value>8</Value>
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>4</WornLocation>
+				<Material>4</Material>
 				<Skill>1004</Skill>
 				<Damage>
 					<NumSides>1</NumSides>
@@ -1864,6 +1866,7 @@
 				<Value>5</Value>
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
 				<WornLocation>4</WornLocation>
+				<Material>4</Material>
 				<Skill>2007</Skill>
 				<Damage>
 					<NumSides>1</NumSides>
@@ -1877,6 +1880,7 @@
 				<DescriptionSID>DIRT_SID</DescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<Material>8</Material>
 			</Item>
 		</MiscItems>
 	</Items>

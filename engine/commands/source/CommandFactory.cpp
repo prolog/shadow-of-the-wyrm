@@ -80,6 +80,10 @@ CommandPtr CommandFactory::create(const string& command_name)
   {
     command = CommandPtr(new CharDumpCommand());
   }
+  else if (command_name == CommandKeys::INVENTORY)
+  {
+    command = CommandPtr(new InventoryCommand());
+  }
 
   return command;
 }

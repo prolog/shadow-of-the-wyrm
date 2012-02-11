@@ -345,6 +345,7 @@
 		<xs:element name="ItemStatus" type="tns:ItemStatus" minOccurs="0"/>
 <!--		<xs:element name="ItemType" type="tns:ItemType"/> -->
 		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="xs:string"/>
 </xs:complexType>
@@ -456,6 +457,27 @@
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="1"/>
 		<xs:maxExclusive value="99"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="MaterialType">
+	<xs:annotation>
+		<xs:documentation>
+			The type of material the item is made from.  Mirrors the enum in MaterialTypes.hpp.
+			
+			0 = Cloth
+			1 = Dragon Scale
+			2 = Glass
+			3 = Iron
+			4 = Leather
+			5 = Paper
+			6 = Steel
+			7 = Stone
+			8 = Wood
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="8"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="ColourType">

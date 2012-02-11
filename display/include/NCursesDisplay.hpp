@@ -25,6 +25,11 @@ class NCursesDisplay : public Display
 
 	  void display(const DisplayStatistics& player_stats);
 	  
+	  // JCD FIXME: Add stuff to the function arguments and return value later.
+	  virtual void display_equipment();
+	  
+	  virtual void display_inventory();
+	  
     MapDisplayArea get_map_display_area();
 
 	  std::string display_menu(const Menu& current_menu);

@@ -104,6 +104,24 @@ class TextKeys
     ~TextKeys();
 };
 
+class MaterialTextKeys
+{
+  public:
+    static std::string MATERIAL_CLOTH;
+    static std::string MATERIAL_DRAGON_SCALE;
+    static std::string MATERIAL_GLASS;
+    static std::string MATERIAL_IRON;
+    static std::string MATERIAL_LEATHER;
+    static std::string MATERIAL_PAPER;
+    static std::string MATERIAL_STEEL;
+    static std::string MATERIAL_STONE;
+    static std::string MATERIAL_WOOD;
+    
+  protected:
+    MaterialTextKeys();
+    ~MaterialTextKeys();
+};
+
 class EntranceTextKeys
 {
   public:

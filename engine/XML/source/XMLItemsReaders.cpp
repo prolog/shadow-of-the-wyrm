@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "MaterialFactory.hpp"
 #include "XMLItemsReaders.hpp"
 
 using namespace std;
@@ -180,6 +181,10 @@ void XMLItemReader::parse(ItemPtr item, const XMLNode& item_node)
     
     bool is_artifact = XMLUtils::get_child_node_bool_value(item_node, "Artifact");
     item->set_artifact(is_artifact);
+    
+    MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", MATERIAL_TYPE_WOOD));
+    MaterialPtr material = MaterialFactory::create_material(material_type);
+    item->set_material(material);
   }
 }
 

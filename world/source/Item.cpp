@@ -1,10 +1,15 @@
+#include <boost/make_shared.hpp>
 #include "Item.hpp"
+#include "Wood.hpp"
 
 using std::string;
+using boost::make_shared;
 
 Item::Item()
 : worn_location(EQUIPMENT_WORN_NONE), artifact(false)
 {
+  // Create a default useful material.  Wood, huh?  Well, I needed something.
+  material = make_shared<Wood>();
 }
 
 Item::~Item()
@@ -79,4 +84,14 @@ void Item::set_type(const ItemType new_type)
 ItemType Item::get_type() const
 {
   return type;
+}
+
+void Item::set_material(MaterialPtr new_material)
+{
+  material = new_material;
+}
+
+MaterialPtr Item::get_material() const
+{
+  return material;
 }

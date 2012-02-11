@@ -4,6 +4,7 @@
 #include <boost/shared_ptr.hpp>
 #include "EquipmentTypes.hpp"
 #include "ItemTypes.hpp"
+#include "Material.hpp"
 #include "Weight.hpp"
 
 class Item
@@ -33,6 +34,9 @@ class Item
     virtual void set_type(const ItemType type);
     ItemType get_type() const;
     
+    virtual void set_material(MaterialPtr new_material);
+    MaterialPtr get_material() const;
+    
   protected:
     std::string id;
     std::string description_sid;
@@ -41,6 +45,7 @@ class Item
     ItemStatus status;
     bool artifact;
     ItemType type;
+    MaterialPtr material;
 };
 
 typedef boost::shared_ptr<Item> ItemPtr;

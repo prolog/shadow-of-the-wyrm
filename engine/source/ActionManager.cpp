@@ -171,3 +171,13 @@ void ActionManager::drop(CreaturePtr creature)
     }
   }
 }
+
+void ActionManager::inventory(CreaturePtr creature)
+{
+  Game* game = Game::instance();
+  
+  if (game && creature)
+  {
+    // Do stuff.
+  }
+}
