@@ -104,6 +104,25 @@ string TextKeys::DECISION_DENY_KEY = "DECISION_DENY_KEY";
 string TextKeys::DECISION_LEAVE_AREA = "DECISION_LEAVE_AREA";
 string TextKeys::DECISION_QUIT_GAME = "DECISION_QUIT_GAME";
 
+// Materials
+MaterialTextKeys::MaterialTextKeys()
+{
+}
+
+MaterialTextKeys::~MaterialTextKeys()
+{
+}
+
+string MaterialTextKeys::MATERIAL_CLOTH        = "MATERIAL_CLOTH";
+string MaterialTextKeys::MATERIAL_DRAGON_SCALE = "MATERIAL_DRAGON_SCALE";
+string MaterialTextKeys::MATERIAL_GLASS        = "MATERIAL_GLASS";
+string MaterialTextKeys::MATERIAL_IRON         = "MATERIAL_IRON";
+string MaterialTextKeys::MATERIAL_LEATHER      = "MATERIAL_LEATHER";
+string MaterialTextKeys::MATERIAL_PAPER        = "MATERIAL_PAPER";
+string MaterialTextKeys::MATERIAL_STEEL        = "MATERIAL_STEEL";
+string MaterialTextKeys::MATERIAL_STONE        = "MATERIAL_STONE";
+string MaterialTextKeys::MATERIAL_WOOD         = "MATERIAL_WOOD";
+
 // Entrance
 EntranceTextKeys::EntranceTextKeys()
 {

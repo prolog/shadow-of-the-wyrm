@@ -80,3 +80,10 @@ class CharDumpCommand : public Command
     CharDumpCommand();
     ~CharDumpCommand();
 };
+
+class InventoryCommand : public Command
+{
+  public:
+    InventoryCommand();
+    ~InventoryCommand();
+};

@@ -113,6 +113,7 @@
 		<Unit filename="controller\include\NCursesKeyboardController.hpp" />
 		<Unit filename="controller\source\NCursesKeyboardController.cpp" />
 		<Unit filename="display\include\Display.hpp" />
+		<Unit filename="display\include\DisplayItem.hpp" />
 		<Unit filename="display\include\DisplayMap.hpp" />
 		<Unit filename="display\include\DisplayStatistics.hpp" />
 		<Unit filename="display\include\DisplayTile.hpp" />
@@ -122,6 +123,7 @@
 		<Unit filename="display\include\NCursesPromptProcessor.hpp" />
 		<Unit filename="display\include\NCursesUtils.hpp" />
 		<Unit filename="display\source\Display.cpp" />
+		<Unit filename="display\source\DisplayItem.cpp" />
 		<Unit filename="display\source\DisplayMap.cpp" />
 		<Unit filename="display\source\DisplayStatistics.cpp" />
 		<Unit filename="display\source\DisplayTile.cpp" />
@@ -175,39 +177,30 @@
 		<Unit filename="engine\calculators\source\ToHitCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\HeavyWeaponToHitCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\HitPointsCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\LightMeleeAndRangedWeaponToHitCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\MagicToHitCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\commands\include\Command.hpp" />
 		<Unit filename="engine\commands\include\CommandFactory.hpp" />
@@ -238,13 +231,13 @@
 		<Unit filename="engine\conversion\source\StatsDumper.cpp" />
 		<Unit filename="engine\conversion\source\unit_tests\Conversion_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="engine\decision_strategies\include\DecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
 		<Unit filename="engine\generators\include\CavernGenerator.hpp" />
 		<Unit filename="engine\generators\include\CellularAutomataGenerator.hpp" />
+		<Unit filename="engine\generators\include\DesertGenerator.hpp" />
 		<Unit filename="engine\generators\include\DungeonGenerator.hpp" />
 		<Unit filename="engine\generators\include\FieldGenerator.hpp" />
 		<Unit filename="engine\generators\include\ForestGenerator.hpp" />
@@ -265,6 +258,7 @@
 		<Unit filename="engine\generators\include\WorldGenerator.hpp" />
 		<Unit filename="engine\generators\source\CavernGenerator.cpp" />
 		<Unit filename="engine\generators\source\CellularAutomataGenerator.cpp" />
+		<Unit filename="engine\generators\source\DesertGenerator.cpp" />
 		<Unit filename="engine\generators\source\DungeonGenerator.cpp" />
 		<Unit filename="engine\generators\source\FieldGenerator.cpp" />
 		<Unit filename="engine\generators\source\ForestGenerator.cpp" />
@@ -291,7 +285,6 @@
 		</Unit>
 		<Unit filename="engine\include\ActionManager.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
-		<Unit filename="engine\include\CreatureTranslator.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
 		<Unit filename="engine\include\Directions.hpp" />
 		<Unit filename="engine\include\FileWriter.hpp" />
@@ -299,7 +292,6 @@
 		<Unit filename="engine\include\ItemManager.hpp" />
 		<Unit filename="engine\include\Log.hpp" />
 		<Unit filename="engine\include\MapRegistry.hpp" />
-		<Unit filename="engine\include\MapTranslator.hpp" />
 		<Unit filename="engine\include\MapUtils.hpp" />
 		<Unit filename="engine\include\Message.hpp" />
 		<Unit filename="engine\include\MessageManager.hpp" />
@@ -333,14 +325,12 @@
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
 		<Unit filename="engine\source\ActionManager.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
-		<Unit filename="engine\source\CreatureTranslator.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
 		<Unit filename="engine\source\FileWriter.cpp" />
 		<Unit filename="engine\source\Game.cpp" />
 		<Unit filename="engine\source\ItemManager.cpp" />
 		<Unit filename="engine\source\Log.cpp" />
 		<Unit filename="engine\source\MapRegistry.cpp" />
-		<Unit filename="engine\source\MapTranslator.cpp" />
 		<Unit filename="engine\source\MapUtils.cpp" />
 		<Unit filename="engine\source\Message.cpp" />
 		<Unit filename="engine\source\MessageManager.cpp" />
@@ -366,6 +356,14 @@
 		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
 			<Option target="Release" />
 		</Unit>
+		<Unit filename="engine\translators\include\CreatureTranslator.hpp" />
+		<Unit filename="engine\translators\include\EquipmentTranslator.hpp" />
+		<Unit filename="engine\translators\include\InventoryTranslator.hpp" />
+		<Unit filename="engine\translators\include\MapTranslator.hpp" />
+		<Unit filename="engine\translators\source\CreatureTranslator.cpp" />
+		<Unit filename="engine\translators\source\EquipmentTranslator.cpp" />
+		<Unit filename="engine\translators\source\InventoryTranslator.cpp" />
+		<Unit filename="engine\translators\source\MapTranslator.cpp" />
 		<Unit filename="global_functions.cpp" />
 		<Unit filename="include\Colours.hpp" />
 		<Unit filename="include\buildinfo.hpp" />
@@ -405,6 +403,28 @@
 		<Unit filename="world\include\Wearable.hpp" />
 		<Unit filename="world\include\Weight.hpp" />
 		<Unit filename="world\include\World.hpp" />
+		<Unit filename="world\materials\include\Cloth.hpp" />
+		<Unit filename="world\materials\include\DragonScale.hpp" />
+		<Unit filename="world\materials\include\Glass.hpp" />
+		<Unit filename="world\materials\include\Iron.hpp" />
+		<Unit filename="world\materials\include\Leather.hpp" />
+		<Unit filename="world\materials\include\Material.hpp" />
+		<Unit filename="world\materials\include\MaterialFactory.hpp" />
+		<Unit filename="world\materials\include\MaterialTypes.hpp" />
+		<Unit filename="world\materials\include\Paper.hpp" />
+		<Unit filename="world\materials\include\Steel.hpp" />
+		<Unit filename="world\materials\include\Stone.hpp" />
+		<Unit filename="world\materials\include\Wood.hpp" />
+		<Unit filename="world\materials\source\Cloth.cpp" />
+		<Unit filename="world\materials\source\DragonScale.cpp" />
+		<Unit filename="world\materials\source\Glass.cpp" />
+		<Unit filename="world\materials\source\Iron.cpp" />
+		<Unit filename="world\materials\source\Leather.cpp" />
+		<Unit filename="world\materials\source\MaterialFactory.cpp" />
+		<Unit filename="world\materials\source\Paper.cpp" />
+		<Unit filename="world\materials\source\Steel.cpp" />
+		<Unit filename="world\materials\source\Stone.cpp" />
+		<Unit filename="world\materials\source\Wood.cpp" />
 		<Unit filename="world\source\AgeInfo.cpp" />
 		<Unit filename="world\source\Ammunition.cpp" />
 		<Unit filename="world\source\Amulet.cpp" />
@@ -514,7 +534,6 @@
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\CavernTile_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\DesertTile_test.cpp">
 			<Option target="Release" />
@@ -581,7 +600,6 @@
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\VillageTile_test.cpp">
 			<Option target="Release" />
-			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\WeedsTile_test.cpp">
 			<Option target="Release" />

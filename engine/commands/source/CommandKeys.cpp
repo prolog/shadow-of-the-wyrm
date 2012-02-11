@@ -27,6 +27,7 @@ string CommandKeys::MOVE_DOWN      = "MOVE_DOWN";
 string CommandKeys::PICK_UP_ITEM   = "PICK_UP_ITEM";
 string CommandKeys::DROP_ITEM      = "DROP_ITEM";
 string CommandKeys::CHAR_DUMP      = "CHAR_DUMP";
+string CommandKeys::INVENTORY      = "INVENTORY";
 
 bool CommandKeys::is_movement_type_key(const string& key)
 {

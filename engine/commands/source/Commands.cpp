@@ -117,3 +117,14 @@ CharDumpCommand::CharDumpCommand()
 CharDumpCommand::~CharDumpCommand()
 {
 }
+
+// Equipment and Inventory management
+InventoryCommand::InventoryCommand()
+: Command(CommandKeys::INVENTORY)
+{
+}
+
+InventoryCommand::~InventoryCommand()
+{
+}
+

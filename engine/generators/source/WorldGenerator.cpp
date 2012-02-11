@@ -147,20 +147,30 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
   // Forests
   CellularAutomataSettings cas_forest(52, 50000, 4, 54, CELL_OFF);
   CellularAutomataGenerator cag_forest(cas_forest, dimensions);
-  CellMap forest_cell_map = cag.generate();
+  CellMap forest_cell_map = cag_forest.generate();
 
   // Mountains
   CellularAutomataSettings cas_mountains(45, 50000, 4, 45, CELL_ON);
   CellularAutomataGenerator cag_mountains(cas_mountains, dimensions);
-  CellMap mountains_cell_map = cag.generate();
+  CellMap mountains_cell_map = cag_mountains.generate();
 
   // Scrubland
   CellularAutomataSettings cas_scrub(53, 50000, 4, 53, CELL_OFF);
   CellularAutomataGenerator cag_scrub(cas_scrub, dimensions);
-  CellMap scrub_cell_map = cag.generate();
+  CellMap scrub_cell_map = cag_scrub.generate();
+  
+  // Marshes
+  CellularAutomataSettings cas_marsh(20, 100, 4, 20, CELL_OFF);
+  CellularAutomataGenerator cag_marsh(cas_marsh, dimensions);
+  CellMap marsh_cell_map = cag_marsh.generate();
+  
+  // Desert
+  CellularAutomataSettings cas_desert(20, 100, 4, 20, CELL_OFF);
+  CellularAutomataGenerator cag_desert(cas_desert, dimensions);
+  CellMap desert_cell_map = cag_desert.generate();
 
   // Now translate the various CellMaps into an overall MapPtr...
-  CellValue world_val, forest_val, mountains_val, scrub_val;
+  CellValue world_val, forest_val, mountains_val, scrub_val, marsh_val, desert_val;
 
   int rand = 0;
   int y = dimensions.get_y();
@@ -173,11 +183,19 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
       forest_val = forest_cell_map[row][col];
       mountains_val = mountains_cell_map[row][col];
       scrub_val = scrub_cell_map[row][col];
+      marsh_val = marsh_cell_map[row][col];
+      desert_val = desert_cell_map[row][col];
 
-      // Always add fields.  Add forests if the tile is not sea.  Add mountains if the tile is field.
+      // Always add fields.  Add forests, scrub, marsh if the tile is not sea.  Add mountains if the tile is field.
       if (world_val == CELL_OFF)
       {
         tile = TileGenerator::generate(TILE_TYPE_FIELD);
+        result_map->insert(row, col, tile);
+      }
+      
+      if (marsh_val == CELL_OFF && world_val == CELL_OFF)
+      {
+        tile = TileGenerator::generate(TILE_TYPE_MARSH);
         result_map->insert(row, col, tile);
       }
 
@@ -190,6 +208,13 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
       if (scrub_val == CELL_OFF && world_val == CELL_OFF)
       {
         tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+        result_map->insert(row, col, tile);
+      }
+      
+      // Deserts should only appear in naturally dry areas.
+      if (desert_val == CELL_OFF && world_val == CELL_OFF && scrub_val == CELL_OFF)
+      {
+        tile = TileGenerator::generate(TILE_TYPE_DESERT);
         result_map->insert(row, col, tile);
       }
 

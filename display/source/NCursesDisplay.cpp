@@ -542,3 +542,14 @@ bool NCursesDisplay::update_synopsis_row_and_column(const int initial_row, int* 
 
   return can_update;
 }
+
+// Display the Equipment
+void NCursesDisplay::display_equipment()
+{
+  // JCD FIXME
+}
+
+// Display the Inventory
+void NCursesDisplay::display_inventory()
+{
+}

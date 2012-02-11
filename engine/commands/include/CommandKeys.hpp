@@ -21,6 +21,7 @@ class CommandKeys
     static std::string PICK_UP_ITEM;
     static std::string DROP_ITEM;
     static std::string CHAR_DUMP;
+    static std::string INVENTORY;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

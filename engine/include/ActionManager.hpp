@@ -27,6 +27,7 @@ class ActionManager
     // Pick up/drop check the map type before proceeding.
     void pick_up(CreaturePtr creature);
     void drop(CreaturePtr creature);
+    void inventory(CreaturePtr creature);
     
     // Unlike pick up/drop, handle item has no checks.
     void handle_item(CreaturePtr creature, const ItemAction, ItemPtr item);

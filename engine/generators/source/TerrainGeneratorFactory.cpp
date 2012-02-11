@@ -1,5 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "CavernGenerator.hpp"
+#include "DesertGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "MarshGenerator.hpp"
@@ -44,12 +45,14 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(const TileType terrain_ty
     case TILE_TYPE_CAVERN:
       generator = make_shared<CavernGenerator>();
       break;
+    case TILE_TYPE_DESERT:
+      generator = make_shared<DesertGenerator>();
+      break;
     case TILE_TYPE_UNDEFINED:
     case TILE_TYPE_SCRUB:
     case TILE_TYPE_WHEAT:
     case TILE_TYPE_CAIRN:
     case TILE_TYPE_TREE:
-    case TILE_TYPE_DESERT:
     case TILE_TYPE_ROAD:
     case TILE_TYPE_RIVER:
     case TILE_TYPE_SHOALS:
