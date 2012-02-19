@@ -6,10 +6,8 @@ class Armour : public Wearable
   public:
     Armour();
     ~Armour();
-
-    virtual ItemType get_type() const;
-
-  protected:
+    
+    Item* clone();
 };
 
 typedef boost::shared_ptr<Armour> ArmourPtr;

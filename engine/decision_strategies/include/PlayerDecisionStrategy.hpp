@@ -6,7 +6,7 @@ class PlayerDecisionStrategy : public DecisionStrategy
 {
   public:
     PlayerDecisionStrategy(ControllerPtr new_controller);
-    CommandPtr get_decision();
+    CommandPtr get_decision(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands);
     bool get_confirmation();
 
   protected:

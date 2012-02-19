@@ -10,8 +10,6 @@ class Wearable : public Item
     Wearable();
     virtual ~Wearable();
     
-    virtual ItemType get_type() const = 0;
-    
     void set_evade(const int new_evade);
     int get_evade() const;
     

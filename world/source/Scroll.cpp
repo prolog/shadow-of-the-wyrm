@@ -2,6 +2,7 @@
 
 Scroll::Scroll()
 {
+  type = ITEM_TYPE_SCROLL;
 }
 
 Scroll::~Scroll()

@@ -69,6 +69,22 @@ string Char::to_string(const char character)
   return converted_string;
 }
 
+EquipmentWornLocation Char::to_equipment_worn_location(const char character)
+{
+  int worn_location = -1; // EQUIPMENT_WORN_NONE
+  
+  if (character >= 'a' && character <= 'i')
+  {
+    worn_location = character - 'a';
+  }
+  else if (character >= 'A' && character <= 'I')
+  {
+    worn_location = character - 'A';
+  }
+  
+  return static_cast<EquipmentWornLocation>(worn_location);
+}
+
 DirectionEnum::DirectionEnum()
 {
 }

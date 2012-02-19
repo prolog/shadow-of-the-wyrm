@@ -27,10 +27,15 @@ class ActionManager
     // Pick up/drop check the map type before proceeding.
     void pick_up(CreaturePtr creature);
     void drop(CreaturePtr creature);
-    void inventory(CreaturePtr creature);
+    void equipment(CreaturePtr creature);
+
+    // Display the inventory.  Potentially, select an item.  ItemPtr is null if no item
+    // was selected.
+    ItemPtr inventory(CreaturePtr creature);
     
     // Unlike pick up/drop, handle item has no checks.
-    void handle_item(CreaturePtr creature, const ItemAction, ItemPtr item);
+    void wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
+    void handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
 
   protected:
     MovementManager movement_manager;

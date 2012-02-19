@@ -4,8 +4,10 @@
 #include "ActionManager.hpp"
 #include "CharacterDumper.hpp"
 #include "Conversion.hpp"
+#include "EquipmentManager.hpp"
 #include "FileWriter.hpp"
 #include "Game.hpp"
+#include "InventoryManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "Log.hpp"
@@ -100,6 +102,25 @@ bool ActionManager::descend(CreaturePtr creature)
   return movement_manager.descend(creature);
 }
 
+// Wear or remove a particular item from the worn equipment by adding/removing the item from a slot.
+void ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
+{
+  if (creature)
+  {
+    ItemPtr item_in_slot = creature->get_equipment().get_item(worn_location);
+    
+    if (item_in_slot)
+    {
+      item_manager.remove(creature, worn_location);
+    }
+    else
+    {
+      item_in_slot = inventory(creature);
+      handle_item(creature, ITEM_ACTION_EQUIP, item_in_slot, worn_location);
+    }
+  }
+}
+
 // Do something with an item:
 // - Equip it, or
 // - Pick it up from the ground, or
@@ -107,12 +128,13 @@ bool ActionManager::descend(CreaturePtr creature)
 // 
 // This function assumes everything is ok - it doesn't check for the overland map, any
 // special terrain types, etc.
-void ActionManager::handle_item(CreaturePtr creature, const ItemAction item_action, ItemPtr item)
+void ActionManager::handle_item(CreaturePtr creature, const ItemAction item_action, ItemPtr item, const EquipmentWornLocation loc)
 {
   switch(item_action)
   {
     case ITEM_ACTION_EQUIP:
-      item_manager.equip(creature, item);
+      if (loc != EQUIPMENT_WORN_NONE) item_manager.equip(creature, item, loc);
+      else item_manager.equip(creature, item);
       break;
     case ITEM_ACTION_PICK_UP:
       item_manager.pick_up(creature, item);
@@ -172,12 +194,34 @@ void ActionManager::drop(CreaturePtr creature)
   }
 }
 
-void ActionManager::inventory(CreaturePtr creature)
+// Display the inventory; potentially select something.
+ItemPtr ActionManager::inventory(CreaturePtr creature)
+{
+  ItemPtr selected_item;
+  
+  Game* game = Game::instance();
+  
+  if (game && creature)
+  {
+    DisplayPtr game_display = game->get_display();
+    InventoryManager inv_manager(game_display, creature);
+
+    selected_item = inv_manager.manage_inventory();
+  }
+  
+  return selected_item;
+}
+
+// Wear/unwear equipment
+void ActionManager::equipment(CreaturePtr creature)
 {
   Game* game = Game::instance();
   
   if (game && creature)
   {
-    // Do stuff.
+    DisplayPtr game_display = game->get_display();
+    
+    EquipmentManager equipment_manager(game_display, creature);
+    equipment_manager.manage_equipment();
   }
 }

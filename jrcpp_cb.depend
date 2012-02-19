@@ -275,7 +275,7 @@
 1322931719 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1328924094 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1329669166 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -284,9 +284,10 @@
 	"Colours.hpp"
 	"Conversion.hpp"
 	"Log.hpp"
-	"NCursesDisplay.hpp"
 	"Menu.hpp"
+	"NCursesDisplay.hpp"
 	"OptionsComponent.hpp"
+	"StringTable.hpp"
 
 1321500637 c:\cygwin\home\julian\jrcpp\engine\menus\include\menu.hpp
 	<string>
@@ -582,7 +583,7 @@
 1321453058 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1328622755 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1329581316 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"CreatureCalculator.hpp"
@@ -657,7 +658,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1328881708 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1329663441 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
@@ -694,7 +695,7 @@
 1327672808 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	"Inventory.hpp"
 
-1328839628 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
+1329669636 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
 	<boost/make_shared.hpp>
 	"Item.hpp"
 	"Wood.hpp"
@@ -954,7 +955,7 @@
 1324838764 source:c:\cygwin\home\julian\jrcpp\world\decision_strategies\source\playerdecisionstrategy.cpp
 	"PlayerDecisionStrategy.hpp"
 
-1328402194 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+1329064757 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
 	<string>
 	<sstream>
 	<boost/algorithm/string.hpp>
@@ -968,7 +969,7 @@
 1328363916 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1328967583 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1329446660 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
@@ -978,7 +979,7 @@
 1328402005 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
 
-1328966714 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1329068845 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -1001,15 +1002,17 @@
 	"Conversion.hpp"
 	"StringConstants.hpp"
 
-1328967644 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
+1329581436 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionManager.hpp"
 	"CharacterDumper.hpp"
 	"Conversion.hpp"
+	"EquipmentManager.hpp"
 	"FileWriter.hpp"
 	"Game.hpp"
+	"InventoryManager.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
 	"Log.hpp"
@@ -1075,43 +1078,44 @@
 	<sstream>
 	"Weight.hpp"
 
-1328923282 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+1329672309 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"MaterialFactory.hpp"
 	"XMLItemsReaders.hpp"
+	"MiscItem.hpp"
 
-1326807083 source:c:\cygwin\home\julian\jrcpp\world\source\armour.cpp
+1329672053 source:c:\cygwin\home\julian\jrcpp\world\source\armour.cpp
 	"Armour.hpp"
 
-1326761227 source:c:\cygwin\home\julian\jrcpp\world\source\book.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\book.cpp
 	"Book.hpp"
 
-1326807290 source:c:\cygwin\home\julian\jrcpp\world\source\ring.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\ring.cpp
 	"Ring.hpp"
 
-1326761250 source:c:\cygwin\home\julian\jrcpp\world\source\scroll.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\scroll.cpp
 	"Scroll.hpp"
 
-1326761287 source:c:\cygwin\home\julian\jrcpp\world\source\staff.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\staff.cpp
 	"Staff.hpp"
 
-1326761270 source:c:\cygwin\home\julian\jrcpp\world\source\wand.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\wand.cpp
 	"Wand.hpp"
 
-1326809870 source:c:\cygwin\home\julian\jrcpp\world\source\potion.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\potion.cpp
 	"Potion.hpp"
 
-1326980376 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
 	"Weapon.hpp"
 
-1326809911 source:c:\cygwin\home\julian\jrcpp\world\source\food.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\food.cpp
 	"Food.hpp"
 
-1326807259 source:c:\cygwin\home\julian\jrcpp\world\source\amulet.cpp
+1329670639 source:c:\cygwin\home\julian\jrcpp\world\source\amulet.cpp
 	"Amulet.hpp"
 
-1326808016 source:c:\cygwin\home\julian\jrcpp\world\source\ammunition.cpp
+1329670404 source:c:\cygwin\home\julian\jrcpp\world\source\ammunition.cpp
 	"Ammunition.hpp"
 
 1326809831 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
@@ -1120,7 +1124,8 @@
 1326849983 source:c:\cygwin\home\julian\jrcpp\world\source\wearable.cpp
 	"Wearable.hpp"
 
-1327709265 source:c:\cygwin\home\julian\jrcpp\engine\source\itemmanager.cpp
+1329672510 source:c:\cygwin\home\julian\jrcpp\engine\source\itemmanager.cpp
+	"ItemFactory.hpp"
 	"ItemManager.hpp"
 
 1327413571 source:c:\cygwin\home\julian\jrcpp\engine\source\characterdumper.cpp
@@ -1152,7 +1157,7 @@
 	"Conversion.hpp"
 	"SkillsDumper.hpp"
 
-1327846599 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
+1329226363 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
 	<ctype.h>
 	<boost/lexical_cast.hpp>
 	<boost/uuid/uuid_io.hpp>
@@ -1315,6 +1320,100 @@
 	"Game.hpp"
 	"MapTranslator.hpp"
 
-1328970044 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\equipmenttranslator.cpp
+1329061312 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\equipmenttranslator.cpp
+	<boost/foreach.hpp>
 	"EquipmentTranslator.hpp"
+	"ItemTranslator.hpp"
+
+1329669460 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
+	<boost/foreach.hpp>
+	"DisplayItemTypeFactory.hpp"
+	"InventoryTranslator.hpp"
+	"ItemTranslator.hpp"
+	"StringTable.hpp"
+
+1328972530 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemtranslator.cpp
+	"DisplayItem.hpp"
+	"ItemTranslator.hpp"
+	"StringTable.hpp"
+
+1329573225 source:c:\cygwin\home\julian\jrcpp\engine\source\equipmentmanager.cpp
+	"EquipmentCommandFactory.hpp"
+	"EquipmentCommandProcessor.hpp"
+	"EquipmentKeyboardCommandMap.hpp"
+	"EquipmentManager.hpp"
+	"EquipmentTranslator.hpp"
+
+1329227451 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
+	"EquipmentCommandKeys.hpp"
+
+1329312683 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommands.cpp
+	"EquipmentCommands.hpp"
+	"EquipmentCommandKeys.hpp"
+
+1329580605 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
+	"EquipmentCommandKeys.hpp"
+	"EquipmentCommandProcessor.hpp"
+	"EquipmentCommands.hpp"
+	"Game.hpp"
+
+1329227744 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentkeyboardcommandmap.cpp
+	"Conversion.hpp"
+	"EquipmentCommandKeys.hpp"
+	"EquipmentKeyboardCommandMap.hpp"
+
+1329312828 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandfactory.cpp
+	<boost/make_shared.hpp>
+	"EquipmentCommandFactory.hpp"
+	"EquipmentCommandKeys.hpp"
+	"EquipmentCommands.hpp"
+
+1329579211 source:c:\cygwin\home\julian\jrcpp\engine\source\inventorymanager.cpp
+	"InventoryCommandFactory.hpp"
+	"InventoryCommandProcessor.hpp"
+	"InventoryKeyboardCommandMap.hpp"
+	"InventoryManager.hpp"
+	"InventoryTranslator.hpp"
+
+1329578590 source:c:\cygwin\home\julian\jrcpp\engine\commands\inventory\source\inventorycommandfactory.cpp
+	<boost/make_shared.hpp>
+	"InventoryCommands.hpp"
+	"InventoryCommandFactory.hpp"
+	"InventoryCommandKeys.hpp"
+
+1329577406 source:c:\cygwin\home\julian\jrcpp\engine\commands\inventory\source\inventorycommandkeys.cpp
+	"InventoryCommandKeys.hpp"
+
+1329579245 source:c:\cygwin\home\julian\jrcpp\engine\commands\inventory\source\inventorycommandprocessor.cpp
+	"Game.hpp"
+	"InventoryCommandKeys.hpp"
+	"InventoryCommandProcessor.hpp"
+
+1329577536 source:c:\cygwin\home\julian\jrcpp\engine\commands\inventory\source\inventorycommands.cpp
+	"InventoryCommands.hpp"
+	"InventoryCommandKeys.hpp"
+
+1329577898 source:c:\cygwin\home\julian\jrcpp\engine\commands\inventory\source\inventorykeyboardcommandmap.cpp
+	"Conversion.hpp"
+	"InventoryCommandKeys.hpp"
+	"InventoryKeyboardCommandMap.hpp"
+
+1329661484 source:c:\cygwin\home\julian\jrcpp\display\source\displayitemtype.cpp
+	"DisplayItemType.hpp"
+
+1329666982 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\displayitemtypefactory.cpp
+	<boost/make_shared.hpp>
+	"DisplayItemTypeFactory.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
+	"unit_tests/DisplayItemTypeFactory_test.cpp"
+
+1329667254 c:\cygwin\home\julian\jrcpp\engine\translators\source\unit_tests\displayitemtypefactory_test.cpp
+	"gtest/gtest.h"
+
+1329672519 source:c:\cygwin\home\julian\jrcpp\engine\source\itemfactory.cpp
+	"ItemFactory.hpp"
+
+1329672249 source:c:\cygwin\home\julian\jrcpp\world\source\miscitem.cpp
+	"MiscItem.hpp"
 

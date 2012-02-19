@@ -15,9 +15,6 @@ using namespace std;
 
 Game* Game::game_instance = NULL;
 
-// JCD FIXME: These items don't appear to be in the map.  Investigate!
-// Once this is working, make sure there's a function that can "copy"
-// items from their template versions.
 void Game::FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player)
 {
   ItemManager im;
@@ -160,6 +157,9 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map)
 
 void Game::go()
 {
+  CommandFactoryPtr game_command_factory = CommandFactoryPtr(new CommandFactory());
+  KeyboardCommandMapPtr game_kb_command_map = KeyboardCommandMapPtr(new KeyboardCommandMap());
+  
   MessageManager* manager = MessageManager::instance();
   CreaturePtr current_player = get_current_player();
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
@@ -199,7 +199,7 @@ void Game::go()
               update_display(current_player, current_map);
             }
             
-            CommandPtr command = strategy->get_decision();
+            CommandPtr command = strategy->get_decision(game_command_factory, game_kb_command_map);
             
             // Clear the stored messages if we're about to receive the player's action
             if (current_creature->get_is_player())

@@ -1,3 +1,4 @@
+#include "ItemFactory.hpp"
 #include "ItemManager.hpp"
 
 ItemManager::ItemManager()
@@ -18,7 +19,9 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
   if (i_it != items.end())
   {
     ItemPtr found_item = i_it->second;
-    new_item = ItemPtr(new Item(*found_item));
+    
+    // JCD FIXME: Change this to an ItemFactory based on its type.
+    new_item = ItemFactory::create(found_item);
   }
   
   return new_item;
@@ -80,6 +83,7 @@ bool ItemManager::equip(CreaturePtr creature, ItemPtr item)
 }
 
 // Remove an item from a particular slot in the creature's equipment.
+// Add it to the inventory.
 ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation location)
 {
   ItemPtr item;
@@ -88,6 +92,7 @@ ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation lo
   {
     Equipment& eq = creature->get_equipment();
     item = eq.remove_item(location);
+    pick_up(creature, item);
   }
   
   return item;
