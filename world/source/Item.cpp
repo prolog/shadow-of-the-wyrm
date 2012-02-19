@@ -6,7 +6,7 @@ using std::string;
 using boost::make_shared;
 
 Item::Item()
-: worn_location(EQUIPMENT_WORN_NONE), artifact(false)
+: worn_location(EQUIPMENT_WORN_NONE), artifact(false), type(ITEM_TYPE_MISC)
 {
   // Create a default useful material.  Wood, huh?  Well, I needed something.
   material = make_shared<Wood>();

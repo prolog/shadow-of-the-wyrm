@@ -20,7 +20,7 @@ class Weapon : public Wearable
     
     virtual void set_trained_skill(const SkillType new_trained_skill);
     SkillType get_trained_skill() const;
-
+    
   protected:
     int base_to_hit;
     Damage damage;
@@ -33,7 +33,8 @@ class MeleeWeapon : public Weapon
     MeleeWeapon();
     ~MeleeWeapon();
     
-    virtual WeaponStyle get_style() const;
+    virtual WeaponStyle get_style() const;    
+    virtual Item* clone();
     
   protected:
 };
@@ -45,6 +46,7 @@ class RangedWeapon : public Weapon
     ~RangedWeapon();
     
     virtual WeaponStyle get_style() const;
+    virtual Item* clone();
     
   protected:
 };

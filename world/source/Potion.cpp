@@ -4,13 +4,9 @@
 Potion::Potion()
 : Consumable(50)
 {
+  type = ITEM_TYPE_POTION;
 }
 
 Potion::~Potion()
 {
-}
-
-ItemType Potion::get_type() const
-{
-  return ITEM_TYPE_POTION;
 }

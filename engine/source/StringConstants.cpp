@@ -97,7 +97,9 @@ string TextKeys::DAMAGE_MELEE      = "DAMAGE_MELEE";
 string TextKeys::DAMAGE_RANGED     = "DAMAGE_RANGED";
 
 string TextKeys::EQUIPMENT         = "EQUIPMENT";
+string TextKeys::EQUIPMENT_PROMPT  = "EQUIPMENT_PROMPT";
 string TextKeys::INVENTORY         = "INVENTORY";
+string TextKeys::INVENTORY_PROMPT  = "INVENTORY_PROMPT";
 
 string TextKeys::DECISION_CONFIRM_KEY = "DECISION_CONFIRM_KEY";
 string TextKeys::DECISION_DENY_KEY = "DECISION_DENY_KEY";
@@ -148,15 +150,59 @@ EquipmentTextKeys::EquipmentTextKeys()
 {
 }
 
-string EquipmentTextKeys::EQUIPMENT_HEAD = "EQUIPMENT_HEAD";
-string EquipmentTextKeys::EQUIPMENT_NECK = "EQUIPMENT_NECK";
+string EquipmentTextKeys::EQUIPMENT_HEAD         = "EQUIPMENT_HEAD";
+string EquipmentTextKeys::EQUIPMENT_NECK         = "EQUIPMENT_NECK";
 string EquipmentTextKeys::EQUIPMENT_RIGHT_FINGER = "EQUIPMENT_RIGHT_FINGER";
-string EquipmentTextKeys::EQUIPMENT_LEFT_FINGER = "EQUIPMENT_LEFT_FINGER";
-string EquipmentTextKeys::EQUIPMENT_RIGHT_HAND = "EQUIPMENT_RIGHT_HAND";
-string EquipmentTextKeys::EQUIPMENT_LEFT_HAND = "EQUIPMENT_LEFT_HAND";
-string EquipmentTextKeys::EQUIPMENT_BODY = "EQUIPMENT_BODY";
-string EquipmentTextKeys::EQUIPMENT_ABOUT_BODY = "EQUIPMENT_ABOUT_BODY";
-string EquipmentTextKeys::EQUIPMENT_FEET = "EQUIPMENT_FEET";
+string EquipmentTextKeys::EQUIPMENT_LEFT_FINGER  = "EQUIPMENT_LEFT_FINGER";
+string EquipmentTextKeys::EQUIPMENT_RIGHT_HAND   = "EQUIPMENT_RIGHT_HAND";
+string EquipmentTextKeys::EQUIPMENT_LEFT_HAND    = "EQUIPMENT_LEFT_HAND";
+string EquipmentTextKeys::EQUIPMENT_BODY         = "EQUIPMENT_BODY";
+string EquipmentTextKeys::EQUIPMENT_ABOUT_BODY   = "EQUIPMENT_ABOUT_BODY";
+string EquipmentTextKeys::EQUIPMENT_FEET         = "EQUIPMENT_FEET";
+
+string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location)
+{
+  string equipment_text;
+  string equipment_text_sid;
+  
+  switch(worn_location)
+  {
+    case EQUIPMENT_WORN_HEAD:
+      equipment_text_sid = EQUIPMENT_HEAD;
+      break;
+    case EQUIPMENT_WORN_NECK:
+      equipment_text_sid = EQUIPMENT_NECK;
+      break;
+    case EQUIPMENT_WORN_RIGHT_FINGER:
+      equipment_text_sid = EQUIPMENT_RIGHT_FINGER;
+      break;
+    case EQUIPMENT_WORN_LEFT_FINGER:
+      equipment_text_sid = EQUIPMENT_LEFT_FINGER;
+      break;
+    case EQUIPMENT_WORN_RIGHT_HAND:
+      equipment_text_sid = EQUIPMENT_RIGHT_HAND;
+      break;
+    case EQUIPMENT_WORN_LEFT_HAND:
+      equipment_text_sid = EQUIPMENT_LEFT_HAND;
+      break;
+    case EQUIPMENT_WORN_BODY:
+      equipment_text_sid = EQUIPMENT_BODY;
+      break;
+    case EQUIPMENT_WORN_ABOUT_BODY:
+      equipment_text_sid = EQUIPMENT_ABOUT_BODY;
+      break;
+    case EQUIPMENT_WORN_FEET:
+      equipment_text_sid = EQUIPMENT_FEET;
+      break;
+    case EQUIPMENT_WORN_NONE:
+    case EQUIPMENT_WORN_LAST:
+    default:
+      break;
+  }
+  
+  equipment_text = StringTable::get(equipment_text_sid);
+  return equipment_text;
+}
 
 // Colours
 ColourTextKeys::ColourTextKeys()
@@ -376,6 +422,28 @@ string SkillTextKeys::SKILL_MAGIC_ARCANE = "SKILL_MAGIC_ARCANE";
 string SkillTextKeys::SKILL_MAGIC_DIVINE = "SKILL_MAGIC_DIVINE";
 string SkillTextKeys::SKILL_MAGIC_MYSTIC = "SKILL_MAGIC_MYSTIC";
 string SkillTextKeys::SKILL_MAGIC_PRIMORDIAL = "SKILL_MAGIC_PRIMORDIAL";
+
+// Item types
+ItemTypeTextKeys::ItemTypeTextKeys()
+{
+}
+
+ItemTypeTextKeys::~ItemTypeTextKeys()
+{
+}
+
+string ItemTypeTextKeys::ITEM_TYPE_MISC       = "ITEM_TYPE_MISC";
+string ItemTypeTextKeys::ITEM_TYPE_WEAPONS    = "ITEM_TYPE_WEAPONS";
+string ItemTypeTextKeys::ITEM_TYPE_ARMOURS    = "ITEM_TYPE_ARMOURS";
+string ItemTypeTextKeys::ITEM_TYPE_POTIONS    = "ITEM_TYPE_POTIONS";
+string ItemTypeTextKeys::ITEM_TYPE_BOOKS      = "ITEM_TYPE_BOOKS";
+string ItemTypeTextKeys::ITEM_TYPE_SCROLLS    = "ITEM_TYPE_SCROLLS";
+string ItemTypeTextKeys::ITEM_TYPE_WANDS      = "ITEM_TYPE_WANDS";
+string ItemTypeTextKeys::ITEM_TYPE_STAVES     = "ITEM_TYPE_STAVES";
+string ItemTypeTextKeys::ITEM_TYPE_RINGS      = "ITEM_TYPE_RINGS";
+string ItemTypeTextKeys::ITEM_TYPE_AMULETS    = "ITEM_TYPE_AMULETS";
+string ItemTypeTextKeys::ITEM_TYPE_FOOD       = "ITEM_TYPE_FOOD";
+string ItemTypeTextKeys::ITEM_TYPE_AMMUNITION = "ITEM_TYPE_AMMUNITION";
 
 // Resistances
 ResistanceTextKeys::ResistanceTextKeys()

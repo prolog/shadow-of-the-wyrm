@@ -8,8 +8,6 @@
 
 using namespace std;
 
-std::map<std::string, std::string> KeyboardCommandMap::command_mapping;
-
 KeyboardCommandMap::KeyboardCommandMap()
 {
 }
@@ -37,17 +35,22 @@ string KeyboardCommandMap::get_command_type(const string& keyboard_input)
   }
   else
   {
-    // JCD FIXME: Does the wrong thing for function keys, etc.  Maybe use the String::clean function?
-    string keyboard_input_as_character = Char::to_string(String::to_int(keyboard_input));
-    MessageManager* manager = MessageManager::instance();
-    manager->add_new_message(TextMessages::get_action_not_found_message(keyboard_input_as_character));
-    manager->send();
-
-    Log* log = Log::instance();
-    log->debug("Could not find mapped command for input: " + keyboard_input);
+    command_not_found(keyboard_input);
   }
 
   return mapped_command;
+}
+
+void KeyboardCommandMap::command_not_found(const string& keyboard_input)
+{
+  // JCD FIXME: Does the wrong thing for function keys, etc.  Maybe use the String::clean function?
+  string keyboard_input_as_character = Char::to_string(String::to_int(keyboard_input));
+  MessageManager* manager = MessageManager::instance();
+  manager->add_new_message(TextMessages::get_action_not_found_message(keyboard_input_as_character));
+  manager->send();
+
+  Log* log = Log::instance();
+  log->debug("Could not find mapped command for input: " + keyboard_input);
 }
 
 void KeyboardCommandMap::initialize_command_mapping()

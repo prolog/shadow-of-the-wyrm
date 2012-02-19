@@ -6,9 +6,10 @@
 #include "Colours.hpp"
 #include "Conversion.hpp"
 #include "Log.hpp"
-#include "NCursesDisplay.hpp"
 #include "Menu.hpp"
+#include "NCursesDisplay.hpp"
 #include "OptionsComponent.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 using namespace boost;
@@ -544,12 +545,131 @@ bool NCursesDisplay::update_synopsis_row_and_column(const int initial_row, int* 
 }
 
 // Display the Equipment
-void NCursesDisplay::display_equipment()
+// JCD FIXME: break this off into its own class later.
+void NCursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
 {
-  // JCD FIXME
+  string equipment_header = StringTable::get(TextKeys::EQUIPMENT);
+
+  // Create the new window to display the equipment
+  WINDOW* eq_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
+  menus.push(eq_window);
+  
+  // Centre the header on the first line
+  int current_row = 0;
+  
+  int header_start = (TERMINAL_MAX_COLS/2) - (equipment_header.size()/2);
+  int header_end = (TERMINAL_MAX_COLS/2) - (equipment_header.size()/2) + equipment_header.size();
+  for (int i = 0; i < header_start-1; i++) mvwprintw(eq_window, current_row, i, "-");
+  mvwprintw(eq_window, current_row, header_start, equipment_header.c_str());
+  for (int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(eq_window, current_row, i, "-");
+
+  uint longest = 0;
+  for (DisplayEquipmentMap::const_iterator e_it = equipment.begin(); e_it != equipment.end(); e_it++)
+  {
+    EquipmentWornLocation worn_location = e_it->first;
+    string worn_location_name = EquipmentTextKeys::get_equipment_text_from_given_worn_location(worn_location);
+    if (worn_location_name.size() > longest) longest = worn_location_name.size() + 1;
+  }
+
+  char slot_char = 'A';
+  
+  // Display each individual slot
+  for (DisplayEquipmentMap::const_iterator e_it = equipment.begin(); e_it != equipment.end(); e_it++)
+  {
+    // One row for item synopsis, one row for status effects
+    current_row += 2;
+    ostringstream ss;
+    
+    EquipmentWornLocation worn_location = e_it->first;
+    DisplayItem display_item            = e_it->second;
+    
+    string worn_location_name = EquipmentTextKeys::get_equipment_text_from_given_worn_location(worn_location);
+    string item_description   = display_item.get_description();
+    ss << slot_char << " - " <<  String::add_trailing_spaces(worn_location_name, longest) << ": " << item_description;
+    
+    mvwprintw(eq_window, current_row, 0, ss.str().c_str());
+
+    slot_char++;
+  }
+  
+  string prompt_text = StringTable::get(TextKeys::EQUIPMENT_PROMPT);
+  uint prompt_col = (TERMINAL_MAX_COLS - prompt_text.size() - 1);
+  mvwprintw(eq_window, TERMINAL_MAX_ROWS-1, prompt_col, prompt_text.c_str());
+  
+  wrefresh(eq_window);
 }
 
 // Display the Inventory
-void NCursesDisplay::display_inventory()
+// JCD FIXME: Break this off into its own class later.
+void NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
 {
+  string inventory_header = StringTable::get(TextKeys::INVENTORY);
+
+  // Create the new window to display the items
+  WINDOW* inv_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
+  menus.push(inv_window);
+  
+  // Centre the header on the first line
+  int current_row = 0;
+  const int current_row_reset_value = 2;
+  const char slot_char_reset_value = 'A';
+  char slot_char = 'A';
+  
+  int header_start = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2);
+  int header_end = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2) + inventory_header.size();
+  for (int i = 0; i < header_start-1; i++) mvwprintw(inv_window, current_row, i, "-");
+  mvwprintw(inv_window, current_row, header_start, inventory_header.c_str());
+  for (int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(inv_window, current_row, i, "-");
+  
+  current_row = current_row_reset_value;
+
+  for (DisplayInventoryMap::const_iterator i_it = inventory.begin(); i_it != inventory.end(); i_it++)
+  {
+    DisplayItemTypePtr display_item_type = i_it->first;
+    vector<DisplayItem> display_items    = i_it->second;
+    
+    if (display_item_type)
+    {
+      // Display the category info
+      string category_symbol   = display_item_type->get_symbol();
+      Colour category_colour   = display_item_type->get_colour();
+      string category_desc     = display_item_type->get_description();
+      string category_synopsis = category_desc + " - " + category_symbol;
+
+      if (!display_items.empty())
+      {
+        enable_colour (category_colour);
+        mvwprintw(inv_window, current_row, 0, category_synopsis.c_str());
+        disable_colour(category_colour);
+        
+        BOOST_FOREACH(DisplayItem item, display_items)
+        {
+          current_row++;
+          if (current_row == TERMINAL_MAX_ROWS)
+          {
+            current_row = current_row_reset_value;
+            slot_char = slot_char_reset_value;
+          }
+          
+          string item_description = Char::to_string(slot_char) + " - " + item.get_description();
+          mvwprintw(inv_window, current_row, 3, item_description.c_str());        
+
+          slot_char++;
+        }
+        
+        current_row++;
+        if (current_row == TERMINAL_MAX_ROWS)
+        {
+          current_row = current_row_reset_value;
+          slot_char = slot_char_reset_value;
+        } 
+      }
+    }
+  }
+
+  string prompt_text = StringTable::get(TextKeys::INVENTORY_PROMPT);
+  uint prompt_col = (TERMINAL_MAX_COLS - prompt_text.size() - 1);
+  mvwprintw(inv_window, TERMINAL_MAX_ROWS-1, prompt_col, prompt_text.c_str());
+  
+  wrefresh(inv_window);
 }

@@ -87,7 +87,7 @@ bool CommandProcessor::process_command(CreaturePtr creature, Command* command, D
       }
       else if (command_name == CommandKeys::INVENTORY)
       {
-        game->actions.inventory(creature);
+        game->actions.equipment(creature);
       }
     }
   }

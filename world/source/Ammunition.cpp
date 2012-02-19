@@ -2,13 +2,9 @@
 
 Ammunition::Ammunition()
 {
+  type = ITEM_TYPE_AMMUNITION;
 }
 
 Ammunition::~Ammunition()
 {
-}
-
-ItemType Ammunition::get_type() const
-{
-  return ITEM_TYPE_AMMUNITION;
 }

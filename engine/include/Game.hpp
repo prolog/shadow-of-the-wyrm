@@ -47,7 +47,9 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
   protected:
     friend class SavageLandsEngine;
     friend class MovementManager;
+    friend class ItemManager;
     friend class CommandProcessor;
+    friend class EquipmentCommandProcessor;
 
     Game();
     ~Game();

@@ -32,10 +32,12 @@ class Item
     virtual bool get_artifact() const;
     
     virtual void set_type(const ItemType type);
-    ItemType get_type() const;
+    virtual ItemType get_type() const;
     
     virtual void set_material(MaterialPtr new_material);
-    MaterialPtr get_material() const;
+    virtual MaterialPtr get_material() const;
+    
+    virtual Item* clone() = 0;
     
   protected:
     std::string id;

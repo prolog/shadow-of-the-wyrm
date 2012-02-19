@@ -2,6 +2,7 @@
 #include <boost/make_shared.hpp>
 #include "MaterialFactory.hpp"
 #include "XMLItemsReaders.hpp"
+#include "MiscItem.hpp"
 
 using namespace std;
 using boost::make_shared;
@@ -70,7 +71,7 @@ ItemMap XMLItemsReader::get_misc_items(const XMLNode& misc_items_node)
     {
       if (!node.is_null())
       {
-        ItemPtr item = make_shared<Item>();
+        ItemPtr item = make_shared<MiscItem>();
         item_reader.parse(item, node);
         misc_items.insert(make_pair(item->get_id(), item));  
       }

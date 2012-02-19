@@ -2,13 +2,9 @@
 
 Amulet::Amulet()
 {
+  type = ITEM_TYPE_AMULET;
 }
 
 Amulet::~Amulet()
 {
-}
-
-ItemType Amulet::get_type() const
-{
-  return ITEM_TYPE_AMULET;
 }

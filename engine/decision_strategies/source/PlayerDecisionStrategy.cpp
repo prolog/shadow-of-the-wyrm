@@ -17,16 +17,19 @@ PlayerDecisionStrategy::PlayerDecisionStrategy(ControllerPtr new_controller)
 }
 
 // The player's decision is easy: just read a command from the keyboard, and then get a CommandPtr
-// based on that keyboard input.
-CommandPtr PlayerDecisionStrategy::get_decision()
+// based on that keyboard input, the provided KeyboardCommandMapPtr, and the CommandFactoryPtr.
+CommandPtr PlayerDecisionStrategy::get_decision(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands)
 {
   CommandPtr player_command;
 
-  while (!player_command)
+  if (command_factory && keyboard_commands)
   {
-    int key = controller->get_char_as_int();
-    string command_key_s = KeyboardCommandMap::get_command_type(Integer::to_string(key));
-    player_command = CommandFactory::create(command_key_s);
+    while (!player_command)
+    {
+      int key = controller->get_char_as_int();
+      string command_key_s = keyboard_commands->get_command_type(Integer::to_string(key));
+      player_command = command_factory->create(command_key_s);
+    }
   }
 
   return player_command;

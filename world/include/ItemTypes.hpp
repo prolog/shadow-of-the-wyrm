@@ -2,6 +2,7 @@
 
 enum ItemType
 {
+  ITEM_TYPE_FIRST = 0,
   ITEM_TYPE_MISC = 0,
   ITEM_TYPE_WEAPON = 1,
   ITEM_TYPE_ARMOUR = 2,
@@ -13,7 +14,8 @@ enum ItemType
   ITEM_TYPE_RING = 8,
   ITEM_TYPE_AMULET = 9,
   ITEM_TYPE_FOOD = 10,
-  ITEM_TYPE_AMMUNITION = 11
+  ITEM_TYPE_AMMUNITION = 11,
+  ITEM_TYPE_LAST = 12
 };
 
 enum ItemStatus

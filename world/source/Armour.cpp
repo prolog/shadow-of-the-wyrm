@@ -2,13 +2,14 @@
 
 Armour::Armour()
 {
+  type = ITEM_TYPE_ARMOUR;
 }
 
 Armour::~Armour()
 {
 }
 
-ItemType Armour::get_type() const
+Item* Armour::clone()
 {
-  return ITEM_TYPE_ARMOUR;
+  return new Armour(*this);
 }

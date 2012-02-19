@@ -92,7 +92,9 @@ class TextKeys
     static std::string DAMAGE_RANGED;
     
     static std::string EQUIPMENT;
+    static std::string EQUIPMENT_PROMPT;
     static std::string INVENTORY;
+    static std::string INVENTORY_PROMPT;
     
     static std::string DECISION_CONFIRM_KEY;
     static std::string DECISION_DENY_KEY;
@@ -153,6 +155,8 @@ class EquipmentTextKeys
     static std::string EQUIPMENT_BODY;
     static std::string EQUIPMENT_ABOUT_BODY;
     static std::string EQUIPMENT_FEET;
+    
+    static std::string get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location);
     
   protected:
     EquipmentTextKeys();
@@ -287,6 +291,26 @@ class SkillTextKeys
   protected:
     SkillTextKeys();
     ~SkillTextKeys();
+};
+
+class ItemTypeTextKeys
+{
+  public:
+    static std::string ITEM_TYPE_MISC;
+    static std::string ITEM_TYPE_WEAPONS;
+    static std::string ITEM_TYPE_ARMOURS;
+    static std::string ITEM_TYPE_POTIONS;
+    static std::string ITEM_TYPE_BOOKS;
+    static std::string ITEM_TYPE_SCROLLS;
+    static std::string ITEM_TYPE_WANDS;
+    static std::string ITEM_TYPE_STAVES;
+    static std::string ITEM_TYPE_RINGS;
+    static std::string ITEM_TYPE_AMULETS;
+    static std::string ITEM_TYPE_FOOD;
+    static std::string ITEM_TYPE_AMMUNITION;
+  protected:
+    ItemTypeTextKeys();
+    ~ItemTypeTextKeys();
 };
 
 class ResistanceTextKeys

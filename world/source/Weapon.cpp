@@ -4,6 +4,7 @@
 Weapon::Weapon()
 : base_to_hit(0), trained_skill(SKILL_MELEE_AXES)
 {
+  type = ITEM_TYPE_WEAPON;
 }
 
 ItemType Weapon::get_type() const
@@ -56,6 +57,11 @@ WeaponStyle MeleeWeapon::get_style() const
   return WEAPON_STYLE_MELEE;
 }
 
+Item* MeleeWeapon::clone()
+{
+  return new MeleeWeapon(*this);
+}
+
 // RANGEDWEAPON
 RangedWeapon::RangedWeapon() 
 : Weapon()
@@ -69,4 +75,9 @@ RangedWeapon::~RangedWeapon()
 WeaponStyle RangedWeapon::get_style() const
 {
   return WEAPON_STYLE_RANGED;
+}
+
+Item* RangedWeapon::clone()
+{
+  return new RangedWeapon(*this);
 }

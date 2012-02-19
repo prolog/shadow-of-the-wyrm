@@ -4,6 +4,7 @@
 #include <string>
 #include "common.hpp"
 #include "Directions.hpp"
+#include "EquipmentTypes.hpp"
 
 // Forward declarations
 namespace boost
@@ -31,6 +32,7 @@ class Char
 {
   public:
     static std::string to_string(const char character);
+    static EquipmentWornLocation to_equipment_worn_location(const char character);
 
   protected:
     Char();
