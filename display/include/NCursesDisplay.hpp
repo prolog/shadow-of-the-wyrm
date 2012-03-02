@@ -28,7 +28,7 @@ class NCursesDisplay : public Display
 	  // JCD FIXME: Add stuff to the function arguments and return value later.
 	  virtual void display_equipment(const DisplayEquipmentMap& equipment);
 	  
-	  virtual void display_inventory(const DisplayInventoryMap& inventory);
+	  virtual int display_inventory(const DisplayInventoryMap& inventory);
 	  
     MapDisplayArea get_map_display_area();
 

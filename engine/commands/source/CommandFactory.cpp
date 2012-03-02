@@ -12,7 +12,7 @@ CommandFactory::~CommandFactory()
 {
 }
 
-CommandPtr CommandFactory::create(const string& command_name)
+CommandPtr CommandFactory::create(const int key, const string& command_name)
 {
   CommandPtr command;
 

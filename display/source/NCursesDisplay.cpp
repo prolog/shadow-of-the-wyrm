@@ -601,8 +601,9 @@ void NCursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
 
 // Display the Inventory
 // JCD FIXME: Break this off into its own class later.
-void NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
+int NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
 {
+  int items_displayed = 0;
   string inventory_header = StringTable::get(TextKeys::INVENTORY);
 
   // Create the new window to display the items
@@ -611,8 +612,7 @@ void NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
   
   // Centre the header on the first line
   int current_row = 0;
-  const int current_row_reset_value = 2;
-  const char slot_char_reset_value = 'A';
+  const int current_row_start_value = 2;
   char slot_char = 'A';
   
   int header_start = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2);
@@ -621,49 +621,41 @@ void NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
   mvwprintw(inv_window, current_row, header_start, inventory_header.c_str());
   for (int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(inv_window, current_row, i, "-");
   
-  current_row = current_row_reset_value;
+  current_row = current_row_start_value;
 
   for (DisplayInventoryMap::const_iterator i_it = inventory.begin(); i_it != inventory.end(); i_it++)
   {
-    DisplayItemTypePtr display_item_type = i_it->first;
+    DisplayItemType display_item_type    = i_it->first;
     vector<DisplayItem> display_items    = i_it->second;
     
-    if (display_item_type)
+    // Display the category info
+    string category_symbol   = display_item_type.get_symbol();
+    Colour category_colour   = display_item_type.get_colour();
+    string category_desc     = display_item_type.get_description();
+    string category_synopsis = category_desc + " - " + category_symbol;
+
+    if (!display_items.empty())
     {
-      // Display the category info
-      string category_symbol   = display_item_type->get_symbol();
-      Colour category_colour   = display_item_type->get_colour();
-      string category_desc     = display_item_type->get_description();
-      string category_synopsis = category_desc + " - " + category_symbol;
-
-      if (!display_items.empty())
+      enable_colour (category_colour);
+      mvwprintw(inv_window, current_row, 0, category_synopsis.c_str());
+      disable_colour(category_colour);
+      
+      BOOST_FOREACH(DisplayItem item, display_items)
       {
-        enable_colour (category_colour);
-        mvwprintw(inv_window, current_row, 0, category_synopsis.c_str());
-        disable_colour(category_colour);
-        
-        BOOST_FOREACH(DisplayItem item, display_items)
-        {
-          current_row++;
-          if (current_row == TERMINAL_MAX_ROWS)
-          {
-            current_row = current_row_reset_value;
-            slot_char = slot_char_reset_value;
-          }
-          
-          string item_description = Char::to_string(slot_char) + " - " + item.get_description();
-          mvwprintw(inv_window, current_row, 3, item_description.c_str());        
-
-          slot_char++;
-        }
-        
         current_row++;
-        if (current_row == TERMINAL_MAX_ROWS)
-        {
-          current_row = current_row_reset_value;
-          slot_char = slot_char_reset_value;
-        } 
+        
+        string item_description = Char::to_string(slot_char) + " - " + item.get_description();
+        mvwprintw(inv_window, current_row, 3, item_description.c_str());        
+
+        items_displayed++;
+        slot_char++;
       }
+      
+      current_row++;
+      if (current_row == TERMINAL_MAX_ROWS-1) // Need room for the prompt at the bottom!
+      {
+        break;
+      } 
     }
   }
 
@@ -672,4 +664,6 @@ void NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
   mvwprintw(inv_window, TERMINAL_MAX_ROWS-1, prompt_col, prompt_text.c_str());
   
   wrefresh(inv_window);
+  
+  return items_displayed;
 }

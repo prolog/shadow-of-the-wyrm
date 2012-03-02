@@ -12,7 +12,7 @@ class CommandFactory
     CommandFactory();
     virtual ~CommandFactory();
 
-    virtual CommandPtr create(const std::string& command_name);
+    virtual CommandPtr create(const int key, const std::string& command_name);
 };
 
 typedef boost::shared_ptr<CommandFactory> CommandFactoryPtr;

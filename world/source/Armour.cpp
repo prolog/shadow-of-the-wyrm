@@ -9,6 +9,11 @@ Armour::~Armour()
 {
 }
 
+uchar Armour::get_symbol() const
+{
+  return '[';
+}
+
 Item* Armour::clone()
 {
   return new Armour(*this);

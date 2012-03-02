@@ -83,20 +83,62 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile)
   if (game_info)
   {
     CreaturePtr creature = actual_tile->get_creature();
+    Inventory& inv = actual_tile->get_items();
 
     if (creature) // If a creature exists on this tile - will be null if the ptr is not init'd
     {
-      display_tile.set_symbol(creature->get_symbol());
-      display_tile.set_colour(creature->get_colour());
+      display_tile = create_display_tile_from_creature(creature);
     }
-    else // add later: else if item exists...
+    else if (!inv.empty()) // If at least one item exists in the tile's inventory of items
     {
-      vector<DisplayTile> tiles_info = game_info->get_tile_display_info_ref();
-      DisplayTile tile_info = tiles_info.at(actual_tile->get_tile_type());
-      display_tile = tile_info; // FIXME, add actual logic later.
+      ItemPtr item = inv.at(0); // Get the first item
+      display_tile = create_display_tile_from_item(item);
+    }
+    else // There's no creature, and no items - display the base tile info.
+    {
+      display_tile = create_display_tile_from_tile(actual_tile);
     }
   }
 
   return display_tile;
 }
 
+// Create a display tile from a given creature
+DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& creature)
+{
+  return create_display_tile_from_symbol_and_colour(creature->get_symbol(), creature->get_colour());
+}
+
+// Create a display tile from a given item
+DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item)
+{
+  return create_display_tile_from_symbol_and_colour(item->get_symbol(), item->get_colour());
+  DisplayTile empty;
+  return empty;
+}
+
+// Create a display tile from a given tile
+DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile)
+{
+  DisplayTile display_tile;
+  Game* game_info = Game::instance();
+
+  if (game_info)
+  {
+    vector<DisplayTile> tiles_info = game_info->get_tile_display_info_ref();
+    DisplayTile tile_info = tiles_info.at(tile->get_tile_type());
+    display_tile = tile_info;    
+  }
+  
+  return display_tile;
+}
+
+DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const uchar symbol, const Colour colour)
+{
+  DisplayTile display_tile;
+  
+  display_tile.set_symbol(symbol);
+  display_tile.set_colour(colour);
+  
+  return display_tile;  
+}

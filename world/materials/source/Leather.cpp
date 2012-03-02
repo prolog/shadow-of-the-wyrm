@@ -33,3 +33,12 @@ bool Leather::get_can_rust() const
   return false;
 }
 
+Colour Leather::get_colour() const
+{
+  return COLOUR_YELLOW;
+}
+
+Material* Leather::clone()
+{
+  return new Leather(*this);
+}

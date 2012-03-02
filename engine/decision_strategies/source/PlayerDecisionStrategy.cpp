@@ -28,7 +28,7 @@ CommandPtr PlayerDecisionStrategy::get_decision(CommandFactoryPtr command_factor
     {
       int key = controller->get_char_as_int();
       string command_key_s = keyboard_commands->get_command_type(Integer::to_string(key));
-      player_command = command_factory->create(command_key_s);
+      player_command = command_factory->create(key, command_key_s);
     }
   }
 

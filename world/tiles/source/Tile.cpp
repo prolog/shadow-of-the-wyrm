@@ -1,3 +1,4 @@
+#include "Inventory.hpp"
 #include "Tile.hpp"
 
 /*
@@ -15,6 +16,11 @@ Tile::Tile()
 
 Tile::~Tile()
 {
+}
+
+bool Tile::display_description_on_arrival() const
+{
+  return false;
 }
 
 void Tile::set_default_properties()
@@ -61,6 +67,11 @@ void Tile::remove_creature()
 CreaturePtr Tile::get_creature() const
 {
   return creature;
+}
+
+Inventory& Tile::get_items()
+{
+  return items;
 }
 
 

@@ -7,5 +7,5 @@ class InventoryCommandFactory : public CommandFactory
     InventoryCommandFactory();
     virtual ~InventoryCommandFactory();
 
-    virtual CommandPtr create(const std::string& command);
+    virtual CommandPtr create(const int key, const std::string& command);
 };

@@ -172,7 +172,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
   }
 
-  map->add_or_update_location(Uuid::to_string(creature->get_id()), c);
+  map->add_or_update_location(creature->get_id(), c);
   
   // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
   // remove from the old tile, and add to the new.
@@ -187,6 +187,14 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   }
   
   return added_location;
+}
+
+TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature)
+{
+  Coordinate creature_location = map->get_location(creature->get_id());
+  TilePtr creatures_tile = map->at(creature_location.first, creature_location.second);
+  
+  return creatures_tile;
 }
 
 bool MapUtils::can_exit_map(MapExitPtr map_exit)

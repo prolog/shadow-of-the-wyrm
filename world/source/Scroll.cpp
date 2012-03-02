@@ -8,3 +8,13 @@ Scroll::Scroll()
 Scroll::~Scroll()
 {
 }
+
+uchar Scroll::get_symbol() const
+{
+  return '?';
+}
+
+Item* Scroll::clone()
+{
+  return new Scroll(*this);
+}

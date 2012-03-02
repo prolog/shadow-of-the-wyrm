@@ -95,3 +95,30 @@ MaterialPtr Item::get_material() const
 {
   return material;
 }
+
+Colour Item::get_colour() const
+{
+  if (artifact)
+  {
+    return COLOUR_BOLD_CYAN;
+  }
+  else
+  {
+    if (material)
+    {
+      return material->get_colour();
+    }
+  }
+  
+  return COLOUR_WHITE;
+}
+
+Item* Item::deep_copy()
+{
+  Item* item = clone();
+  
+  material = MaterialPtr(material->clone());
+  item->set_material(material);
+  
+  return item;
+}

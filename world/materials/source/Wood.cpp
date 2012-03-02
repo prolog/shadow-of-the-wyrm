@@ -32,3 +32,13 @@ bool Wood::get_can_rust() const
 {
   return false;
 }
+
+Colour Wood::get_colour() const
+{
+  return COLOUR_YELLOW;
+}
+
+Material* Wood::clone()
+{
+  return new Wood(*this);
+}

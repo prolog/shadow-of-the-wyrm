@@ -8,3 +8,13 @@ Ring::Ring()
 Ring::~Ring()
 {
 }
+
+uchar Ring::get_symbol() const
+{
+  return '=';
+}
+
+Item* Ring::clone()
+{
+  return new Ring(*this);
+}

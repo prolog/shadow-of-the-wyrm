@@ -13,7 +13,7 @@ InventoryCommandFactory::~InventoryCommandFactory()
 {
 }
 
-CommandPtr InventoryCommandFactory::create(const std::string& command_name)
+CommandPtr InventoryCommandFactory::create(const int key, const std::string& command_name)
 {
   CommandPtr inventory_command;
 
@@ -36,6 +36,14 @@ CommandPtr InventoryCommandFactory::create(const std::string& command_name)
   else if (command_name == InventoryCommandKeys::PREVIOUS_PAGE)
   {
     inventory_command = make_shared<InventoryPreviousPageCommand>();
+  }
+  else
+  {
+    // If the key is in the [a-y][A-Y] range, create a selection command
+    if ((key >= 'a' && key <= 'z') || (key >= 'A' && key <= 'Z'))
+    {
+      inventory_command = make_shared<ItemSelectionCommand>(key);      
+    }
   }
   
   return inventory_command;

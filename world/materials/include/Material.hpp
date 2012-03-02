@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "Colours.hpp"
 #include "MaterialTypes.hpp"
 
 enum MaterialType;
@@ -20,6 +21,11 @@ class Material
     virtual bool get_is_explosive() const = 0;
     virtual bool get_is_corrodible() const = 0;
     virtual bool get_can_rust() const = 0;
+    
+    // The colour of the material, for use in text-based displays.
+    virtual Colour get_colour() const;
+    
+    virtual Material* clone() = 0;
 };
 
 typedef boost::shared_ptr<Material> MaterialPtr;

@@ -9,6 +9,11 @@ MiscItem::~MiscItem()
 {
 }
 
+uchar MiscItem::get_symbol() const
+{
+  return ']';
+}
+
 Item* MiscItem::clone()
 {
   return new MiscItem(*this);

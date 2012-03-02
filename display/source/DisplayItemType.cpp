@@ -41,3 +41,12 @@ string DisplayItemType::get_description() const
   return description;
 }
 
+bool DisplayItemType::operator<(const DisplayItemType& compare) const
+{
+  if (get_description() < compare.get_description())
+  {
+    return true;
+  }
+  
+  return false;
+}

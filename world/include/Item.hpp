@@ -37,7 +37,11 @@ class Item
     virtual void set_material(MaterialPtr new_material);
     virtual MaterialPtr get_material() const;
     
+    virtual uchar  get_symbol() const = 0;
+    virtual Colour get_colour() const;
+    
     virtual Item* clone() = 0;
+    virtual Item* deep_copy();
     
   protected:
     std::string id;
@@ -47,6 +51,8 @@ class Item
     ItemStatus status;
     bool artifact;
     ItemType type;
+    
+    // This needs to be deep copied.
     MaterialPtr material;
 };
 

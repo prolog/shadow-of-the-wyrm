@@ -32,3 +32,8 @@ bool Glass::get_can_rust() const
 {
   return false;
 }
+
+Material* Glass::clone()
+{
+  return new Glass(*this);
+}

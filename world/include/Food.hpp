@@ -8,6 +8,11 @@ class Food : public Consumable
     Food();
     Food(const int nutr);
     ~Food();
+
+    ItemType get_type() const;
+    
+    uchar get_symbol() const;
+    Item* clone();
 };
 
 typedef boost::shared_ptr<Food> FoodPtr;

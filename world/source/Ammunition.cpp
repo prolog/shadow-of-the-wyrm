@@ -8,3 +8,13 @@ Ammunition::Ammunition()
 Ammunition::~Ammunition()
 {
 }
+
+uchar Ammunition::get_symbol() const
+{
+  return '/';
+}
+
+Item* Ammunition::clone()
+{
+  return new Ammunition(*this);
+}

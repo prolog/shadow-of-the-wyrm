@@ -47,7 +47,7 @@ bool ItemManager::drop(CreaturePtr creature, ItemPtr item)
   if (creature && item)
   {
     Inventory& inv = creature->get_inventory();
-    dropped_item = inv.remove(item);
+    dropped_item = inv.remove(item->get_id());
   }
   
   return dropped_item;

@@ -5,6 +5,11 @@ TileType BeachTile::get_tile_type() const
   return TILE_TYPE_BEACH;
 }
 
+std::string BeachTile::get_tile_description_sid() const
+{
+  return TileTextKeys::TILE_DESC_BEACH;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/BeachTile_test.cpp"
 #endif

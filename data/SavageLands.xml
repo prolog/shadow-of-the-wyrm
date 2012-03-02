@@ -1851,7 +1851,7 @@
 				<Value>8</Value>
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>4</WornLocation>
-				<Material>4</Material>
+				<Material>3</Material>
 				<Skill>1004</Skill>
 				<Damage>
 					<NumSides>1</NumSides>

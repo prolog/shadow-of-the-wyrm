@@ -11,4 +11,8 @@ class Leather : public Material
     bool get_is_explosive() const;
     bool get_is_corrodible() const;
     bool get_can_rust() const;
+    
+    virtual Colour get_colour() const;
+    
+    Material* clone();
 };

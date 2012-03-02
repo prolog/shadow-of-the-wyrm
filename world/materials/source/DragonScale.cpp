@@ -33,3 +33,12 @@ bool DragonScale::get_can_rust() const
   return false;
 }
 
+Colour DragonScale::get_colour() const
+{
+  return COLOUR_BOLD_RED;
+}
+
+Material* DragonScale::clone()
+{
+  return new DragonScale(*this);
+}
