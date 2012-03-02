@@ -24,7 +24,7 @@ void DungeonGenerator::initialize_height_and_width_maps()
   feature_width_map.insert(make_pair(DUNGEON_FEATURE_ROOM, make_pair(DEFAULT_MIN_WIDTH, DEFAULT_MAX_WIDTH)));
 }
 
-MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
+MapPtr DungeonGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 

@@ -20,12 +20,12 @@ Creature::Creature()
   set_soak (0);
 }
 
-void Creature::set_id(const boost::uuids::uuid& new_id)
+void Creature::set_id(const string& new_id)
 {
   id = new_id;
 }
 
-boost::uuids::uuid Creature::get_id() const
+string Creature::get_id() const
 {
   return id;
 }

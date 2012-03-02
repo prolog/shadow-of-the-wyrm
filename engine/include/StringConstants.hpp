@@ -358,17 +358,65 @@ class WorldMapLocationTextKeys
     ~WorldMapLocationTextKeys();
 };
 
+class MovementTextKeys
+{
+  public:
+    static std::string ACTION_MOVE_NO_EXIT;
+    static std::string ACTION_MOVE_OFF_WORLD_MAP;
+    static std::string ACTION_NO_WAY_UP_WORLD_MAP;
+    static std::string ACTION_MOVE_OFF_OVERWORLD_MAP;
+    static std::string ACTION_MOVE_OFF_UNDERWORLD_MAP;
+    static std::string ITEMS_ON_TILE;
+    
+  protected:
+    MovementTextKeys();
+    ~MovementTextKeys();
+};
+
+class TileTextKeys
+{
+  public:
+    static std::string TILE_DESC_BEACH;
+    static std::string TILE_DESC_BUSH;
+    static std::string TILE_DESC_CAIRN;
+    static std::string TILE_DESC_CAVERN;
+    static std::string TILE_DESC_DESERT;
+    static std::string TILE_DESC_DUNGEON;
+    static std::string TILE_DESC_FIELD;
+    static std::string TILE_DESC_FOREST;
+    static std::string TILE_DESC_GRAVE;
+    static std::string TILE_DESC_HILLS;
+    static std::string TILE_DESC_MARSH;
+    static std::string TILE_DESC_MOUNTAINS;
+    static std::string TILE_DESC_REEDS;
+    static std::string TILE_DESC_RIVER;
+    static std::string TILE_DESC_ROAD;
+    static std::string TILE_DESC_ROCK;
+    static std::string TILE_DESC_UP_STAIRCASE;
+    static std::string TILE_DESC_DOWN_STAIRCASE;
+    static std::string TILE_DESC_SCRUB;
+    static std::string TILE_DESC_SEA;
+    static std::string TILE_DESC_SHOALS;
+    static std::string TILE_DESC_SPRINGS;
+    static std::string TILE_DESC_TREE;
+    static std::string TILE_DESC_VILLAGE;
+    static std::string TILE_DESC_WEEDS;
+    static std::string TILE_DESC_WHEAT;
+    
+  protected:
+    TileTextKeys();
+    ~TileTextKeys();
+};
+
 class ActionTextKeys
 {
   public:
     static std::string ACTION_NOT_FOUND;
     static std::string ACTION_SEARCH;
-    static std::string ACTION_MOVE_OFF_WORLD_MAP;
-    static std::string ACTION_NO_WAY_UP_WORLD_MAP;
-    static std::string ACTION_MOVE_OFF_OVERWORLD_MAP;
-    static std::string ACTION_MOVE_OFF_UNDERWORLD_MAP;
     static std::string ACTION_PICK_UP_NOT_ALLOWED;
     static std::string ACTION_DROP_NOT_ALLOWED;
+    static std::string ACTION_DROP_NO_ITEM_SELECTED;
+    static std::string ACTION_PICK_UP_NOTHING_ON_GROUND;
 
   protected:
     ActionTextKeys();
@@ -385,6 +433,9 @@ class TextMessages
     static std::string get_equipment_location(const EquipmentWornLocation location);
     static std::string get_confirmation_message(const std::string& query_sid);
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);
+    static std::string get_item_drop_message(const std::string& item_description);
+    static std::string get_item_pick_up_message(const std::string& item_description);
+    static std::string get_item_on_ground_description_message(const std::string& item_on_ground_description);
 
   protected:
     TextMessages();
@@ -392,6 +443,9 @@ class TextMessages
 
     static std::string WELCOME_MESSAGE;
     static std::string DUMPING_CHARACTER_MESSAGE;
+    static std::string ITEM_DROP_MESSAGE;
+    static std::string ITEM_PICK_UP_MESSAGE;
+    static std::string ITEM_ON_GROUND_DESCRIPTION_MESSAGE;
 };
 
 // JCD FIXME Todo: Define full text/abbreviation SIDs for statistics: Strength, Piety, etc.

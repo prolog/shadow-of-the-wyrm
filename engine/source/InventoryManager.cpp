@@ -1,11 +1,15 @@
+#include <boost/foreach.hpp>
 #include "InventoryCommandFactory.hpp"
 #include "InventoryCommandProcessor.hpp"
 #include "InventoryKeyboardCommandMap.hpp"
 #include "InventoryManager.hpp"
 #include "InventoryTranslator.hpp"
 
+using std::string;
+using std::vector;
+
 InventoryManager::InventoryManager(DisplayPtr new_display, CreaturePtr new_creature)
-: display(new_display), creature(new_creature)
+: display(new_display), creature(new_creature), current_page_start(0), current_page_size(0)
 {
 }
 
@@ -13,7 +17,9 @@ InventoryManager::~InventoryManager()
 {
 }
 
-ItemPtr InventoryManager::manage_inventory()
+// If the inventory is read-only, the items can be viewed, but not selected.  This is for use in the "y" - View your inventory
+// mode.  If the inventory is not read-only, items can be selected.
+ItemPtr InventoryManager::manage_inventory(Inventory& inv, const bool inventory_is_read_only)
 {
   ItemPtr selected_item;
   bool manage_inv = true;
@@ -25,10 +31,12 @@ ItemPtr InventoryManager::manage_inventory()
     
     while (manage_inv)
     {
+      DisplayInventoryMap display_inventory;
+      
       if (display && creature->get_is_player())
       {
-        DisplayInventoryMap display_inventory = InventoryTranslator::create_display_inventory(creature);
-        display->display_inventory(display_inventory);
+        display_inventory = InventoryTranslator::create_display_inventory(inv);
+        current_page_size = display->display_inventory(display_inventory);
       }
 
       DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
@@ -36,7 +44,7 @@ ItemPtr InventoryManager::manage_inventory()
       if (decision_strategy)
       {
         CommandPtr inventory_command = decision_strategy->get_decision(command_factory, kb_command_map);
-        manage_inv = InventoryCommandProcessor::process(creature, inventory_command, selected_item);
+        manage_inv = InventoryCommandProcessor::process(this, display_inventory, creature, inv, inventory_command, inventory_is_read_only, selected_item);        
       }
       else
       {
@@ -48,6 +56,37 @@ ItemPtr InventoryManager::manage_inventory()
     {
       display->clear_menu();
     } 
+  }
+  
+  return selected_item;
+}
+
+ItemPtr InventoryManager::select_item(Inventory& inv, const DisplayInventoryMap& inventory_display, const uint index_in_current_page)
+{
+  ItemPtr selected_item;
+  uint internal_index = 0;
+  
+  if ((index_in_current_page < current_page_size) && creature)
+  {
+    internal_index = current_page_start + index_in_current_page;
+    
+    // Get the display item
+    uint search_ix = 0;
+    for (DisplayInventoryMap::const_iterator d_it = inventory_display.begin(); d_it != inventory_display.end(); d_it++)
+    {
+      vector<DisplayItem> items = d_it->second;
+      
+      BOOST_FOREACH(DisplayItem display_item, items)
+      {
+        if (search_ix == internal_index)
+        {
+          string id = display_item.get_id();
+          selected_item = inv.get_from_id(id);
+          return selected_item;
+        }
+        search_ix++;
+      }
+    }    
   }
   
   return selected_item;

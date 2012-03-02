@@ -15,14 +15,17 @@ class DisplayItem
     ~DisplayItem();
 
     void set_description(const std::string& new_description);
-    std::string get_description();
+    std::string get_description() const;
+    
+    void set_id(const std::string& new_id);
+    std::string get_id() const;
     
     // Additional status-related items go here.
-    
   protected:
     std::string description;
+    std::string id;
 };
 
 // Data types used by the Display
 typedef std::map<EquipmentWornLocation, DisplayItem> DisplayEquipmentMap;
-typedef std::map<DisplayItemTypePtr, std::vector<DisplayItem> > DisplayInventoryMap;
+typedef std::map<DisplayItemType, std::vector<DisplayItem> > DisplayInventoryMap;

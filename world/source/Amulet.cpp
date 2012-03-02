@@ -8,3 +8,13 @@ Amulet::Amulet()
 Amulet::~Amulet()
 {
 }
+
+uchar Amulet::get_symbol() const
+{
+  return '\"';
+}
+
+Item* Amulet::clone()
+{
+  return new Amulet(*this);
+}

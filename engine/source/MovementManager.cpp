@@ -22,14 +22,14 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
 {
   bool movement_success = false;
   Game* game = Game::instance();
-  
+  MessageManager* manager = MessageManager::instance();
+
   if (creature && game)
   {
     MapPtr map = game->get_current_map();
     
     // Get the creature's location from the map
-    string s_id = Uuid::to_string(creature->get_id());
-    Coordinate creature_location = map->get_location(s_id);
+    Coordinate creature_location = map->get_location(creature->get_id());
 
     // Get the old tile
     TilePtr creatures_old_tile = map->at(creature_location.first, creature_location.second);
@@ -44,10 +44,8 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
       if (!MapUtils::can_exit_map(map_exit))
       {
         if (creature->get_is_player())
-        {
-          MessageManager* manager = MessageManager::instance();
- 
-          string movement_message = StringTable::get(ActionTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
+        { 
+          string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
 
           manager->add_new_message(movement_message);
           manager->send();
@@ -82,6 +80,8 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
       {
         // Update the map info
         MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
+        TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
+        add_tile_related_messages(creature, manager, new_tile);
         movement_success = true;
       }
     }
@@ -129,14 +129,48 @@ bool MovementManager::ascend(CreaturePtr creature)
   if (creature->get_is_player())
   {
     Game* game = Game::instance();
+    MessageManager* manager = MessageManager::instance();
     
     if (game)
     {
       MapPtr current_map = game->get_current_map();
-      MapExitPtr map_exit = current_map->get_map_exit();
+
+      // Otherwise, check to see if the creature is on a tile with DIRECTION_UP defined.
+      TilePtr current_tile = MapUtils::get_tile_for_creature(current_map, creature);
+      TileExitMap& tile_exit_map = current_tile->get_tile_exit_map_ref();
+      TileExitMap::iterator t_it = tile_exit_map.find(DIRECTION_UP);
       
-      move_to_new_map(map_exit);
-      ascend_success = true;
+      MapExitPtr map_exit;
+      
+      if (t_it != tile_exit_map.end())
+      {
+        map_exit = t_it->second;        
+      }
+  
+      if (map_exit)
+      {
+        move_to_new_map(map_exit);
+        
+        // If the tile we've moved to has any items, notify the player, if the creature's a player.
+        MapPtr new_map = game->get_current_map();
+        TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
+        add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);
+        
+        ascend_success = true;
+      }
+      else
+      {
+        // This is so that it's easy to find/replace this later, once I add message managers
+        // per-creature
+        if (creature->get_is_player())
+        {
+          // Let the player know there is no exit.
+          string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
+          
+          manager->add_new_message(no_exit);
+          manager->send();                
+        }
+      }
     }
   }
   else
@@ -151,6 +185,8 @@ bool MovementManager::ascend(CreaturePtr creature)
 bool MovementManager::descend(CreaturePtr creature)
 {
   bool descend_success = false;
+ 
+  MessageManager* manager = MessageManager::instance();
   
   if (creature->get_is_player())
   {
@@ -164,7 +200,7 @@ bool MovementManager::descend(CreaturePtr creature)
       if (map)
       {
         // Look up the creature in the map
-        Coordinate c = map->get_location(Uuid::to_string(creature->get_id()));
+        Coordinate c = map->get_location(creature->get_id());
       
         // Get the creature's tile's MapExitPtr
         TilePtr tile = map->at(c);
@@ -193,12 +229,16 @@ bool MovementManager::descend(CreaturePtr creature)
               if (generator)
               {
                 // - Generate the map.
-                MapPtr new_map = generator->generate();
+                MapPtr new_map = generator->generate(map->get_map_id());
                 
-                // - Set the map's MapExitPtr to point to the overworld.
-                MapExitPtr new_map_exit = make_shared<MapExit>();
-                new_map_exit->set_map_id(map->get_map_id());
-                new_map->set_map_exit(new_map_exit);
+                // - Set the map's MapExitPtr to point to the previous map.
+                //   But only if it's an overworld map.
+                if (new_map->get_map_type() == MAP_TYPE_OVERWORLD)
+                {
+                  MapExitPtr new_map_exit = make_shared<MapExit>();
+                  new_map_exit->set_map_id(map->get_map_id());
+                  new_map->set_map_exit(new_map_exit);                  
+                }
                 
                 // If the map has a last known player location (e.g., up staircase),
                 // use that.  Otherwise, start at 0,0.  JCD FIXME THAT WON'T ALWAYS HOLD!
@@ -216,17 +256,30 @@ bool MovementManager::descend(CreaturePtr creature)
                 }
                 
                 MapUtils::add_or_update_location(new_map, creature, starting_coords);
+                TilePtr new_creature_tile = new_map->at(starting_coords);
 
                 move_to_new_map(new_map);
                 
-                MessageManager* manager = MessageManager::instance();
                 manager->add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
-                manager->send();
+                add_tile_related_messages(creature, manager, new_creature_tile);
                 
                 descend_success = true;
               }
             }
-          }        
+            else
+            {
+              // This is so that it's easy to find/replace this later, once I add message managers
+              // per-creature
+              if (creature->get_is_player())
+              {
+                // Let the player know there is no exit.
+                string no_exit = StringTable::get(MovementTextKeys::ACTION_MOVE_NO_EXIT);
+                
+                manager->add_new_message(no_exit);
+                manager->send();                
+              }
+            }
+          }  
         }
       }
     }
@@ -238,4 +291,67 @@ bool MovementManager::descend(CreaturePtr creature)
   }
   
   return descend_success;
+}
+
+// Add any messages after moving to a particular tile:
+// - Should a message be displayed about the tile automatically? (staircases, etc)
+//       If so, add it.
+// - Are there any items on the tile?
+//       If so, add the appropriate message.
+void MovementManager::add_tile_related_messages(const CreaturePtr& creature, MessageManager* manager, TilePtr tile)
+{
+  add_message_about_tile_if_necessary(creature, manager, tile);
+  add_message_about_items_on_tile_if_necessary(creature, manager, tile);
+
+  manager->send();
+}
+
+// Add a message about the tile if necessary.
+void MovementManager::add_message_about_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile)
+{
+  if (creature && tile && creature->get_is_player())
+  {
+    if (tile->display_description_on_arrival())
+    {
+      string tile_desc = StringTable::get(tile->get_tile_description_sid());
+      manager->add_new_message(tile_desc);
+    }
+  }
+}
+
+// Add a message if the creature is the player, and if there are items on
+// the tile.
+void MovementManager::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile)
+{
+  if (creature && creature->get_is_player())
+  {
+    Inventory& tile_items = tile->get_items();
+    
+    if (!tile_items.empty())
+    {
+      string item_message;
+      
+      // One item
+      if (tile_items.size() == 1)
+      {
+        ItemPtr item_on_tile = tile_items.at(0);
+        
+        if (item_on_tile)
+        {
+          item_message = TextMessages::get_item_on_ground_description_message(StringTable::get(item_on_tile->get_description_sid()));
+        }
+      }
+      // Multiple items
+      else
+      {
+        item_message = StringTable::get(MovementTextKeys::ITEMS_ON_TILE);
+      }
+      
+      // Send the message
+      if (!item_message.empty())
+      {
+        manager->add_new_message(item_message);
+      }
+    }
+  }
 }

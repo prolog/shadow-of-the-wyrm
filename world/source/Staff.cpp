@@ -8,3 +8,13 @@ Staff::Staff()
 Staff::~Staff()
 {
 }
+
+uchar Staff::get_symbol() const
+{
+  return '|';
+}
+
+Item* Staff::clone()
+{
+  return new Staff(*this);
+}

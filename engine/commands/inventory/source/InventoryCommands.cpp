@@ -1,9 +1,14 @@
 #include "InventoryCommands.hpp"
 #include "InventoryCommandKeys.hpp"
 
-ItemSelectionCommand::ItemSelectionCommand()
-: Command(InventoryCommandKeys::SELECT_ITEM)
+ItemSelectionCommand::ItemSelectionCommand(int new_key)
+: Command(InventoryCommandKeys::SELECT_ITEM), key(new_key)
 {
+}
+
+int ItemSelectionCommand::get_key() const
+{
+  return key;
 }
 
 InventoryClearFilterCommand::InventoryClearFilterCommand()

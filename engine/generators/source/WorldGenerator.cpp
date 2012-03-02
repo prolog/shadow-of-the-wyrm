@@ -10,10 +10,10 @@ MapPtr WorldGenerator::generate()
 {
   // Default is 100x100
   Dimensions default_dimensions(100, 100);
-  return generate(default_dimensions);
+  return generate(default_dimensions, "");
 }
 
-MapPtr WorldGenerator::generate(const Dimensions& dimensions)
+MapPtr WorldGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 

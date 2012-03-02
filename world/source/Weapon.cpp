@@ -42,6 +42,11 @@ SkillType Weapon::get_trained_skill() const
   return trained_skill;
 }
 
+uchar Weapon::get_symbol() const
+{
+  return ')';
+}
+
 // MELEEWEAPON
 MeleeWeapon::MeleeWeapon() 
 : Weapon()

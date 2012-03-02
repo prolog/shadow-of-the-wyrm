@@ -10,3 +10,18 @@ Potion::Potion()
 Potion::~Potion()
 {
 }
+
+ItemType Potion::get_type() const
+{
+  return ITEM_TYPE_POTION;
+}
+
+uchar Potion::get_symbol() const
+{
+  return '!';
+}
+
+Item* Potion::clone()
+{
+  return new Potion(*this);
+}

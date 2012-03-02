@@ -1,14 +1,16 @@
+#include <set>
+#include <boost/make_shared.hpp>
 #include "CavernGenerator.hpp"
 #include "CellularAutomataGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
-#include <iostream>
-#include <set>
+
 using namespace std;
+using boost::make_shared;
 
 // Generate a cellular automata based cavern, connecting the individual components in a second pass afterwards.
 // JCD FIXME refactor as necessary
-MapPtr CavernGenerator::generate(const Dimensions& dimensions)
+MapPtr CavernGenerator::generate(const Dimensions& dimensions, const string& map_exit_id)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 
@@ -18,7 +20,7 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   reset_cavern_edges(result_map);
   MapComponents cc = get_cavern_components(result_map);
   connect_cavern_components(result_map, cc);
-  generate_staircases(result_map);
+  generate_staircases(result_map, map_exit_id);
   
   result_map->set_map_type(MAP_TYPE_UNDERWORLD);
   
@@ -170,17 +172,17 @@ void CavernGenerator::reset_cavern_edges(MapPtr map)
 
 // Generate both staircases, if necessary.  It may not be necessary
 // to generate the down staircase.
-void CavernGenerator::generate_staircases(MapPtr map)
+void CavernGenerator::generate_staircases(MapPtr map, const string& map_exit_id)
 {
   // Up Staircase
-  generate_staircase(map, TILE_TYPE_UP_STAIRCASE);
-  
+  generate_staircase(map, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, map_exit_id);
+    
   // Down staircase
-  generate_staircase(map, TILE_TYPE_DOWN_STAIRCASE);
+  generate_staircase(map, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, "" /* JCD FIXME? */);
 }
 
 // Generate a particular staircase
-void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type)
+void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, const Direction direction, const string& map_exit_id)
 {
   Dimensions dimensions = map->size();
 
@@ -202,6 +204,17 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type)
     {
       TilePtr new_tile = TileGenerator::generate(tile_type);
       map->insert(c.first, c.second, new_tile);
+      
+      // Add the map exit info if necessary
+      if (!map_exit_id.empty())
+      {
+        TileExitMap& tile_exit_map = new_tile->get_tile_exit_map_ref();
+
+        MapExitPtr new_map_exit = make_shared<MapExit>();
+        new_map_exit->set_map_id(map_exit_id);
+        
+        tile_exit_map.insert(make_pair(direction, new_map_exit));
+      }
       
       // If it's an up-staircase, default the player's position to here.
       if (tile_type == TILE_TYPE_UP_STAIRCASE)

@@ -1,5 +1,6 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
+#include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
@@ -33,7 +34,8 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   // Generate a unique identifier for this creature.
   boost::uuids::uuid id = boost::uuids::random_generator()();
-  creature.set_id(id);
+  std::string id_s = Uuid::to_string(id);
+  creature.set_id(id_s);
 
   creature.set_name(creature_name);
   creature.set_race_id(race_id);

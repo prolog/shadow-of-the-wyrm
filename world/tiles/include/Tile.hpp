@@ -1,5 +1,4 @@
 #pragma once
-#include <vector>
 #include <map>
 #include <boost/shared_ptr.hpp>
 #include "tiles.hpp"
@@ -10,11 +9,19 @@
 
 typedef std::map<Direction, MapExitPtr> TileExitMap;
 
+class Inventory;
+
 class Tile
 {
   public:
     Tile();
     ~Tile();
+    
+    virtual std::string get_tile_description_sid() const = 0;
+    
+    // By default, this is false, but certain tiles (such as overland tiles, staircases, etc.)
+    // will be shown on each move.
+    virtual bool display_description_on_arrival() const;
 
     virtual void set_illuminated(bool new_illuminated);
     virtual bool get_illuminated() const;
@@ -28,6 +35,8 @@ class Tile
     virtual void set_creature(const CreaturePtr& new_creature);
     virtual void remove_creature();
     virtual CreaturePtr get_creature() const;
+    
+    virtual Inventory& get_items();
 
     virtual TileType get_tile_type() const;
     
@@ -47,7 +56,8 @@ class Tile
     CreaturePtr creature;
 
     // Each tile can have any number of items piled up on it.
-    std::vector<ItemPtr> items;
+    // Re-use the basic inventory data type for this purpose.
+    Inventory items;
     
     // A tile can have exits in various directions. These lead to other maps/levels/etc.
     TileExitMap map_exits;

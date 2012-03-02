@@ -33,3 +33,12 @@ bool Paper::get_can_rust() const
   return false;
 }
 
+Colour Paper::get_colour() const
+{
+  return COLOUR_BOLD_WHITE;
+}
+
+Material* Paper::clone()
+{
+  return new Paper(*this);
+}

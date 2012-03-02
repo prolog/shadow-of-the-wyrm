@@ -19,6 +19,8 @@ class DisplayItemType
     void set_description(const std::string& new_description);
     std::string get_description() const;
     
+    bool operator<(const DisplayItemType& compare) const;
+    
   protected:
     std::string symbol;
     Colour colour;

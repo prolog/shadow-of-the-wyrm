@@ -32,3 +32,13 @@ bool Cloth::get_can_rust() const
 {
   return false;
 }
+
+Colour Cloth::get_colour() const
+{
+  return COLOUR_GREEN;
+}
+
+Material* Cloth::clone()
+{
+  return new Cloth(*this);
+}

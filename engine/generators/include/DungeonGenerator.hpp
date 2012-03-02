@@ -25,7 +25,7 @@ class DungeonGenerator : public Generator
 {
   public:
     DungeonGenerator();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
 
   protected:
     virtual MapPtr  generate_dungeon(MapPtr map);

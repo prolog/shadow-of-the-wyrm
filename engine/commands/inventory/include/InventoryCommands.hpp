@@ -5,7 +5,12 @@
 class ItemSelectionCommand : public Command
 {
   public:
-    ItemSelectionCommand();
+    ItemSelectionCommand(int new_key);
+    
+    int get_key() const;
+  
+  protected:
+    int key;
 };
 
 // Class used to indicate, "clear any existing filters; show all the

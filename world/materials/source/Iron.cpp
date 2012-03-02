@@ -33,3 +33,7 @@ bool Iron::get_can_rust() const
   return true;
 }
 
+Material* Iron::clone()
+{
+  return new Iron(*this);
+}

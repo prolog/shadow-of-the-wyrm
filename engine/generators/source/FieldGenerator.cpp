@@ -14,7 +14,7 @@ using namespace std;
   Routines for generating a map that should roughly resemble a field.
 
  **********************************************************************/
-MapPtr FieldGenerator::generate(const Dimensions& dimensions)
+MapPtr FieldGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 

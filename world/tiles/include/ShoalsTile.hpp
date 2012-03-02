@@ -1,9 +1,11 @@
 #pragma once
-#include "Tile.hpp"
+#include "WorldMapTile.hpp"
 
-class ShoalsTile : public Tile
+class ShoalsTile : public WorldMapTile
 {
   public:
     TileType get_tile_type() const;
+    
+    std::string get_tile_description_sid() const;
 };
 

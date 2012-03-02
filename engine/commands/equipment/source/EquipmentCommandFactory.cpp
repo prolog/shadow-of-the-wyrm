@@ -13,7 +13,7 @@ EquipmentCommandFactory::~EquipmentCommandFactory()
 {
 }
 
-CommandPtr EquipmentCommandFactory::create(const std::string& command_name)
+CommandPtr EquipmentCommandFactory::create(const int key, const std::string& command_name)
 {
   EquipmentCommandPtr command;
 

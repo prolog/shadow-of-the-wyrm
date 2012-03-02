@@ -493,6 +493,58 @@ WorldMapLocationTextKeys::~WorldMapLocationTextKeys()
 string WorldMapLocationTextKeys::STARTING_LOCATION = "STARTING_LOCATION";
 string WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION = "CURRENT_PLAYER_LOCATION";
 
+// Text keys for text related to movement in some way.
+MovementTextKeys::MovementTextKeys()
+{
+}
+
+MovementTextKeys::~MovementTextKeys()
+{
+}
+
+string MovementTextKeys::ACTION_MOVE_NO_EXIT               = "ACTION_MOVE_NO_EXIT";
+string MovementTextKeys::ACTION_MOVE_OFF_WORLD_MAP         = "ACTION_MOVE_OFF_WORLD_MAP";
+string MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP        = "ACTION_NO_WAY_UP_WORLD_MAP";
+string MovementTextKeys::ACTION_MOVE_OFF_OVERWORLD_MAP     = "ACTION_MOVE_OFF_OVERWORLD_MAP";
+string MovementTextKeys::ACTION_MOVE_OFF_UNDERWORLD_MAP    = "ACTION_MOVE_OFF_UNDERWORLD_MAP";
+string MovementTextKeys::ITEMS_ON_TILE                     = "ITEMS_ON_TILE";
+
+// Text keys for descriptions of tiles
+TileTextKeys::TileTextKeys()
+{
+}
+
+TileTextKeys::~TileTextKeys()
+{
+}
+
+string TileTextKeys::TILE_DESC_BEACH          = "TILE_DESC_BEACH";
+string TileTextKeys::TILE_DESC_BUSH           = "TILE_DESC_BUSH";
+string TileTextKeys::TILE_DESC_CAIRN          = "TILE_DESC_CAIRN";
+string TileTextKeys::TILE_DESC_CAVERN         = "TILE_DESC_CAVERN";
+string TileTextKeys::TILE_DESC_DESERT         = "TILE_DESC_DESERT";
+string TileTextKeys::TILE_DESC_DUNGEON        = "TILE_DESC_DUNGEON";
+string TileTextKeys::TILE_DESC_FIELD          = "TILE_DESC_FIELD";
+string TileTextKeys::TILE_DESC_FOREST         = "TILE_DESC_FOREST";
+string TileTextKeys::TILE_DESC_GRAVE          = "TILE_DESC_GRAVE";
+string TileTextKeys::TILE_DESC_HILLS          = "TILE_DESC_HILLS";
+string TileTextKeys::TILE_DESC_MARSH          = "TILE_DESC_MARSH";
+string TileTextKeys::TILE_DESC_MOUNTAINS      = "TILE_DESC_MOUNTAINS";
+string TileTextKeys::TILE_DESC_REEDS          = "TILE_DESC_REEDS";
+string TileTextKeys::TILE_DESC_RIVER          = "TILE_DESC_RIVER";
+string TileTextKeys::TILE_DESC_ROAD           = "TILE_DESC_ROAD";
+string TileTextKeys::TILE_DESC_ROCK           = "TILE_DESC_ROCK";
+string TileTextKeys::TILE_DESC_UP_STAIRCASE   = "TILE_DESC_UP_STAIRCASE";
+string TileTextKeys::TILE_DESC_DOWN_STAIRCASE = "TILE_DESC_DOWN_STAIRCASE"; 
+string TileTextKeys::TILE_DESC_SCRUB          = "TILE_DESC_SCRUB";
+string TileTextKeys::TILE_DESC_SEA            = "TILE_DESC_SEA";
+string TileTextKeys::TILE_DESC_SHOALS         = "TILE_DESC_SHOALS";
+string TileTextKeys::TILE_DESC_SPRINGS        = "TILE_DESC_SPRINGS";
+string TileTextKeys::TILE_DESC_TREE           = "TILE_DESC_TREE";
+string TileTextKeys::TILE_DESC_VILLAGE        = "TILE_DESC_VILLAGE";
+string TileTextKeys::TILE_DESC_WEEDS          = "TILE_DESC_WEEDS";
+string TileTextKeys::TILE_DESC_WHEAT          = "TILE_DESC_WHEAT";
+
 // Text keys for player/creature actions
 ActionTextKeys::ActionTextKeys()
 {
@@ -502,14 +554,12 @@ ActionTextKeys::~ActionTextKeys()
 {
 }
 
-string ActionTextKeys::ACTION_NOT_FOUND = "ACTION_NOT_FOUND";
-string ActionTextKeys::ACTION_SEARCH = "ACTION_SEARCH";
-string ActionTextKeys::ACTION_MOVE_OFF_WORLD_MAP = "ACTION_MOVE_OFF_WORLD_MAP";
-string ActionTextKeys::ACTION_NO_WAY_UP_WORLD_MAP = "ACTION_NO_WAY_UP_WORLD_MAP";
-string ActionTextKeys::ACTION_MOVE_OFF_OVERWORLD_MAP = "ACTION_MOVE_OFF_OVERWORLD_MAP";
-string ActionTextKeys::ACTION_MOVE_OFF_UNDERWORLD_MAP = "ACTION_MOVE_OFF_UNDERWORLD_MAP";
-string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED = "ACTION_PICK_UP_NOT_ALLOWED";
-string ActionTextKeys::ACTION_DROP_NOT_ALLOWED = "ACTION_DROP_NOT_ALLOWED";
+string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
+string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
+string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
+string ActionTextKeys::ACTION_DROP_NOT_ALLOWED           = "ACTION_DROP_NOT_ALLOWED";
+string ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED      = "ACTION_DROP_NO_ITEM_SELECTED";
+string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP_NOTHING_ON_GROUND";
 
 // Messages that can be sent to the user in the message buffer
 TextMessages::TextMessages()
@@ -520,8 +570,11 @@ TextMessages::~TextMessages()
 {
 }
 
-string TextMessages::WELCOME_MESSAGE = "WELCOME_MESSAGE";
-string TextMessages::DUMPING_CHARACTER_MESSAGE = "DUMPING_CHARACTER_MESSAGE";
+string TextMessages::WELCOME_MESSAGE                    = "WELCOME_MESSAGE";
+string TextMessages::DUMPING_CHARACTER_MESSAGE          = "DUMPING_CHARACTER_MESSAGE";
+string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSAGE";
+string TextMessages::ITEM_PICK_UP_MESSAGE               = "ITEM_PICK_UP_MESSAGE";
+string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_DESCRIPTION_MESSAGE";
 
 // Public functions used to access protected members.  These are used to wrap any strings
 // that contain replaceable symbols.
@@ -680,4 +733,26 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
   }
   
   return entrance_message;
+}
+
+string TextMessages::get_item_drop_message(const string& item_description)
+{
+  string item_message = StringTable::get(TextMessages::ITEM_DROP_MESSAGE);
+  boost::replace_first(item_message, "%s", item_description);
+  return item_message;
+  
+}
+
+string TextMessages::get_item_pick_up_message(const string& item_description)
+{
+  string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE);
+  boost::replace_first(item_message, "%s", item_description);
+  return item_message;
+}
+
+string TextMessages::get_item_on_ground_description_message(const string& item_on_ground_description)
+{
+  string item_message = StringTable::get(TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE);
+  boost::replace_first(item_message, "%s", item_on_ground_description);
+  return item_message;
 }

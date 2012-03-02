@@ -33,3 +33,7 @@ bool Stone::get_can_rust() const
   return false;
 }
 
+Material* Stone::clone()
+{
+  return new Stone(*this);
+}

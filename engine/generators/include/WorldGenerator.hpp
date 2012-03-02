@@ -8,7 +8,7 @@ class WorldGenerator : public Generator
 {
   public:
     virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
 
   protected:
     virtual MapPtr generate_set_islands_and_continents(MapPtr map);

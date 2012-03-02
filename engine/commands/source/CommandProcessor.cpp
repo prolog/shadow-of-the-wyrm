@@ -62,7 +62,7 @@ bool CommandProcessor::process_command(CreaturePtr creature, Command* command, D
       }
       else if (command_name == CommandKeys::SEARCH)
       {
-        game->actions.search(creature);
+        advance = game->actions.search(creature);
       }
       else if (command_name == CommandKeys::MOVE_UP)
       {
@@ -74,11 +74,11 @@ bool CommandProcessor::process_command(CreaturePtr creature, Command* command, D
       }
       else if (command_name == CommandKeys::PICK_UP_ITEM)
       {
-        game->actions.pick_up(creature);
+        advance = game->actions.pick_up(creature);
       }
       else if (command_name == CommandKeys::DROP_ITEM)
       {
-        game->actions.drop(creature);
+        advance = game->actions.drop(creature);
       }
       else if (command_name == CommandKeys::CHAR_DUMP)
       {

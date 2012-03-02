@@ -5,7 +5,7 @@
 
 using namespace std;
 
-MapPtr MarshGenerator::generate(const Dimensions& dimensions)
+MapPtr MarshGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 

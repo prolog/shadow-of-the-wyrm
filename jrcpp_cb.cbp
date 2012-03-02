@@ -114,6 +114,7 @@
 		<Unit filename="controller\source\NCursesKeyboardController.cpp" />
 		<Unit filename="display\include\Display.hpp" />
 		<Unit filename="display\include\DisplayItem.hpp" />
+		<Unit filename="display\include\DisplayItemType.hpp" />
 		<Unit filename="display\include\DisplayMap.hpp" />
 		<Unit filename="display\include\DisplayStatistics.hpp" />
 		<Unit filename="display\include\DisplayTile.hpp" />
@@ -124,6 +125,7 @@
 		<Unit filename="display\include\NCursesUtils.hpp" />
 		<Unit filename="display\source\Display.cpp" />
 		<Unit filename="display\source\DisplayItem.cpp" />
+		<Unit filename="display\source\DisplayItemType.cpp" />
 		<Unit filename="display\source\DisplayMap.cpp" />
 		<Unit filename="display\source\DisplayStatistics.cpp" />
 		<Unit filename="display\source\DisplayTile.cpp" />
@@ -311,6 +313,7 @@
 		<Unit filename="engine\include\FileWriter.hpp" />
 		<Unit filename="engine\include\Game.hpp" />
 		<Unit filename="engine\include\InventoryManager.hpp" />
+		<Unit filename="engine\include\ItemFactory.hpp" />
 		<Unit filename="engine\include\ItemManager.hpp" />
 		<Unit filename="engine\include\Log.hpp" />
 		<Unit filename="engine\include\MapRegistry.hpp" />
@@ -352,6 +355,7 @@
 		<Unit filename="engine\source\FileWriter.cpp" />
 		<Unit filename="engine\source\Game.cpp" />
 		<Unit filename="engine\source\InventoryManager.cpp" />
+		<Unit filename="engine\source\ItemFactory.cpp" />
 		<Unit filename="engine\source\ItemManager.cpp" />
 		<Unit filename="engine\source\Log.cpp" />
 		<Unit filename="engine\source\MapRegistry.cpp" />
@@ -381,15 +385,21 @@
 			<Option target="Release" />
 		</Unit>
 		<Unit filename="engine\translators\include\CreatureTranslator.hpp" />
+		<Unit filename="engine\translators\include\DisplayItemTypeFactory.hpp" />
 		<Unit filename="engine\translators\include\EquipmentTranslator.hpp" />
 		<Unit filename="engine\translators\include\InventoryTranslator.hpp" />
 		<Unit filename="engine\translators\include\ItemTranslator.hpp" />
 		<Unit filename="engine\translators\include\MapTranslator.hpp" />
 		<Unit filename="engine\translators\source\CreatureTranslator.cpp" />
+		<Unit filename="engine\translators\source\DisplayItemTypeFactory.cpp" />
 		<Unit filename="engine\translators\source\EquipmentTranslator.cpp" />
 		<Unit filename="engine\translators\source\InventoryTranslator.cpp" />
 		<Unit filename="engine\translators\source\ItemTranslator.cpp" />
 		<Unit filename="engine\translators\source\MapTranslator.cpp" />
+		<Unit filename="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
+			<Option target="Release" />
+			<Option target="MapTester" />
+		</Unit>
 		<Unit filename="global_functions.cpp" />
 		<Unit filename="include\Colours.hpp" />
 		<Unit filename="include\buildinfo.hpp" />
@@ -414,6 +424,7 @@
 		<Unit filename="world\include\ItemTypes.hpp" />
 		<Unit filename="world\include\Map.hpp" />
 		<Unit filename="world\include\MapExit.hpp" />
+		<Unit filename="world\include\MiscItem.hpp" />
 		<Unit filename="world\include\Potion.hpp" />
 		<Unit filename="world\include\Race.hpp" />
 		<Unit filename="world\include\Resistances.hpp" />
@@ -446,6 +457,7 @@
 		<Unit filename="world\materials\source\Glass.cpp" />
 		<Unit filename="world\materials\source\Iron.cpp" />
 		<Unit filename="world\materials\source\Leather.cpp" />
+		<Unit filename="world\materials\source\Material.cpp" />
 		<Unit filename="world\materials\source\MaterialFactory.cpp" />
 		<Unit filename="world\materials\source\Paper.cpp" />
 		<Unit filename="world\materials\source\Steel.cpp" />
@@ -466,6 +478,7 @@
 		<Unit filename="world\source\Item.cpp" />
 		<Unit filename="world\source\Map.cpp" />
 		<Unit filename="world\source\MapExit.cpp" />
+		<Unit filename="world\source\MiscItem.cpp" />
 		<Unit filename="world\source\Potion.cpp" />
 		<Unit filename="world\source\Race.cpp" />
 		<Unit filename="world\source\Resistances.cpp" />
@@ -520,6 +533,7 @@
 		<Unit filename="world\tiles\include\VillageTile.hpp" />
 		<Unit filename="world\tiles\include\WeedsTile.hpp" />
 		<Unit filename="world\tiles\include\WheatTile.hpp" />
+		<Unit filename="world\tiles\include\WorldMapTile.hpp" />
 		<Unit filename="world\tiles\include\tiles.hpp" />
 		<Unit filename="world\tiles\source\BeachTile.cpp" />
 		<Unit filename="world\tiles\source\BushTile.cpp" />
@@ -549,6 +563,7 @@
 		<Unit filename="world\tiles\source\VillageTile.cpp" />
 		<Unit filename="world\tiles\source\WeedsTile.cpp" />
 		<Unit filename="world\tiles\source\WheatTile.cpp" />
+		<Unit filename="world\tiles\source\WorldMapTile.cpp" />
 		<Unit filename="world\tiles\source\unit_tests\BeachTile_test.cpp">
 			<Option target="Release" />
 		</Unit>

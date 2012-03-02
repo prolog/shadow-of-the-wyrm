@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include "Conversion.hpp"
 #include "InventoryCommandKeys.hpp"
 #include "InventoryKeyboardCommandMap.hpp"
@@ -25,6 +26,14 @@ void InventoryKeyboardCommandMap::initialize_command_mapping()
 {
   command_mapping.clear();
 
+  // Selection commands.
+  // 'z'/'Z' is reserved for exit.
+  for (int i = 'a'; i <= 'y'; i++)
+  {
+    command_mapping.insert(make_pair(Integer::to_string(i), InventoryCommandKeys::SELECT_ITEM));
+    command_mapping.insert(make_pair(Integer::to_string(toupper(i)), InventoryCommandKeys::SELECT_ITEM));
+  }
+  
   // Exit
   command_mapping.insert(make_pair(Integer::to_string('z'), InventoryCommandKeys::EXIT_INVENTORY));
   command_mapping.insert(make_pair(Integer::to_string('Z'), InventoryCommandKeys::EXIT_INVENTORY));

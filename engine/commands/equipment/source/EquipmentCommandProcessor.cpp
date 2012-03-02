@@ -40,7 +40,7 @@ bool EquipmentCommandProcessor::process(CreaturePtr creature, CommandPtr command
       }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
       {
-        game->actions.inventory(creature);
+        game->actions.inventory(creature, creature->get_inventory(), true);
       }
       else if (command_name == EquipmentCommandKeys::EXIT_EQUIPMENT)
       {

@@ -2,7 +2,6 @@
 
 #include "Generator.hpp"
 
-// JCD FIXME: Make static.
 class ForestGenerator : public Generator
 {
   public:
@@ -10,7 +9,7 @@ class ForestGenerator : public Generator
     ForestGenerator(const int pct_chance_stream, const int pct_chance_springs);
 
     virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dimensions);
+    virtual MapPtr generate(const Dimensions& dimensions, const std::string& map_exit_id);
 
   protected:
     virtual TilePtr generate_tile(MapPtr current_map, int row, int col);
