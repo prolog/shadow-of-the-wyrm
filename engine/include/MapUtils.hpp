@@ -28,6 +28,9 @@ class MapUtils
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
     
     static bool can_exit_map(MapExitPtr map_exit);
+    
+    static bool is_blocking_feature_present(TilePtr tile);
+    static bool is_creature_present(TilePtr tile);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

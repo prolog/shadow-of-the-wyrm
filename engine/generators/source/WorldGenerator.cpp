@@ -189,25 +189,78 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
       // Always add fields.  Add forests, scrub, marsh if the tile is not sea.  Add mountains if the tile is field.
       if (world_val == CELL_OFF)
       {
-        tile = TileGenerator::generate(TILE_TYPE_FIELD);
+        // 0.5% chance of dungeon
+        rand = RNG::range(1, 200);
+        if (rand <= 1)
+        {
+          tile = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX);
+        }
+        else
+        {
+          // 1% chance of field village.
+          rand = RNG::range(1, 100);
+          
+          if (rand <= 1)
+          {
+            tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
+          }
+          else
+          {
+            tile = TileGenerator::generate(TILE_TYPE_FIELD);
+          }            
+        }
+        
         result_map->insert(row, col, tile);
       }
       
       if (marsh_val == CELL_OFF && world_val == CELL_OFF)
       {
-        tile = TileGenerator::generate(TILE_TYPE_MARSH);
+        // 0.5% chance of marsh village
+        rand = RNG::range(1, 200);
+        
+        if (rand <= 1)
+        {
+          tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_MARSH);
+        }
+        else
+        {
+          tile = TileGenerator::generate(TILE_TYPE_MARSH);
+        }
+
         result_map->insert(row, col, tile);
       }
 
       if (forest_val == CELL_OFF && world_val == CELL_OFF)
       {
-        tile = TileGenerator::generate(TILE_TYPE_FOREST);
+        // 1% chance of forest village
+        rand = RNG::range(1, 100);
+        
+        if (rand <= 1)
+        {
+          tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FOREST);
+        }
+        else
+        {
+          tile = TileGenerator::generate(TILE_TYPE_FOREST);
+        }
+        
         result_map->insert(row, col, tile);
       }
 
       if (scrub_val == CELL_OFF && world_val == CELL_OFF)
       {
-        tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+        // 0.5% chance of scrub village.
+        rand = RNG::range(1, 200);
+        
+        if (rand <= 1)
+        {
+          tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_SCRUB);
+        }
+        else
+        {
+          tile = TileGenerator::generate(TILE_TYPE_SCRUB);          
+        }
+
         result_map->insert(row, col, tile);
       }
       
@@ -220,10 +273,15 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
 
       if (mountains_val == CELL_OFF && world_val == CELL_OFF && forest_val == CELL_ON)
       {
+        // 2% chance of being a dungeon
         // 3% chance of being a cavern
         rand = RNG::range(1, 100);
         
-        if (rand <= 3)
+        if (rand <= 2)
+        {
+          tile = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX);
+        }
+        else if (rand <= 5)
         {
           tile = TileGenerator::generate(TILE_TYPE_CAVERN);
         }

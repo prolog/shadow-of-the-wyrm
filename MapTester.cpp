@@ -3,6 +3,7 @@
 #include <boost/shared_ptr.hpp>
 #include "RNG.hpp"
 #include "CavernGenerator.hpp"
+#include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "RoadGenerator.hpp"
@@ -39,6 +40,7 @@ string generate_field_settlement_ruins();
 string generate_forest();
 string generate_marsh();
 string generate_settlement();
+string generate_dungeon();
 string generate_spiral_dungeon();
 string generate_field_road();
 string generate_forest_road();
@@ -90,77 +92,101 @@ string map_to_string(MapPtr map, bool use_html)
       TilePtr tile = map->at(row, col);
       TileType type = tile->get_tile_type();
 
-      switch(type)
+      if (tile->has_feature())
       {
-        case TILE_TYPE_FIELD:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-          tile_ascii = ".";
-          break;
-        case TILE_TYPE_BUSH:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-          tile_ascii = "\"";
-          break;
-        case TILE_TYPE_WEEDS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
-          tile_ascii = "\"";
-          break;
-        case TILE_TYPE_FOREST:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-          tile_ascii = "&";
-          break;
-        case TILE_TYPE_MOUNTAINS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-          tile_ascii = "^";
-          break;
-        case TILE_TYPE_TREE:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
-          tile_ascii = "T";
-          break;
-        case TILE_TYPE_CAIRN:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
-          tile_ascii = "*";
-          break;
-        case TILE_TYPE_SPRINGS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FFFF\">";
-          tile_ascii = "v";
-          break;
-        case TILE_TYPE_RIVER:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
-          tile_ascii = "~";
-          break;
-        case TILE_TYPE_DUNGEON:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
-          tile_ascii = ".";
-          break;
-        case TILE_TYPE_ROCK:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
-          tile_ascii = "#";
-          break;
-        case TILE_TYPE_SCRUB:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#CCFF00\">";
-          tile_ascii = ".";
-          break;
-        case TILE_TYPE_ROAD:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
-          tile_ascii = ".";
-          break;
-        case TILE_TYPE_MARSH:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"008000\">";
-          tile_ascii = "~";
-          break;
-        case TILE_TYPE_REEDS:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
-          tile_ascii = "|";
-          break;
-        case TILE_TYPE_SEA:
-          if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
-          tile_ascii = "~";
-          break;
-        default:
-          tile_ascii = "?";
-          break;
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
+            tile_ascii = "`";
       }
-
+      else
+      {
+        switch(type)
+        {
+          case TILE_TYPE_FIELD:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
+            tile_ascii = ".";
+            break;
+          case TILE_TYPE_BUSH:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
+            tile_ascii = "\"";
+            break;
+          case TILE_TYPE_WEEDS:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
+            tile_ascii = "\"";
+            break;
+          case TILE_TYPE_FOREST:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
+            tile_ascii = "&";
+            break;
+          case TILE_TYPE_MOUNTAINS:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
+            tile_ascii = "^";
+            break;
+          case TILE_TYPE_TREE:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
+            tile_ascii = "T";
+            break;
+          case TILE_TYPE_CAIRN:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
+            tile_ascii = "*";
+            break;
+          case TILE_TYPE_SPRINGS:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FFFF\">";
+            tile_ascii = "v";
+            break;
+          case TILE_TYPE_RIVER:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
+            tile_ascii = "~";
+            break;
+          case TILE_TYPE_DUNGEON:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
+            tile_ascii = ".";
+            break;
+          case TILE_TYPE_ROCK:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
+            tile_ascii = "#";
+            break;
+          case TILE_TYPE_SCRUB:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#CCFF00\">";
+            tile_ascii = ".";
+            break;
+          case TILE_TYPE_ROAD:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
+            tile_ascii = ".";
+            break;
+          case TILE_TYPE_MARSH:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"008000\">";
+            tile_ascii = "~";
+            break;
+          case TILE_TYPE_REEDS:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
+            tile_ascii = "|";
+            break;
+          case TILE_TYPE_SEA:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
+            tile_ascii = "~";
+            break;
+          case TILE_TYPE_UP_STAIRCASE:
+            if (use_html)
+            {
+              start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
+              tile_ascii = "&lt;";
+              
+            } 
+            else tile_ascii = "<";
+            break;
+          case TILE_TYPE_DOWN_STAIRCASE:
+            if (use_html)
+            {
+              start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
+              tile_ascii = "&gt;";
+            }
+            else tile_ascii = ">";
+            break;
+          default:
+            tile_ascii = "?";
+            break;
+        }
+      }
 
       map_s = map_s + start_tag + tile_ascii + end_tag;
     }
@@ -231,8 +257,8 @@ string generate_field_settlement_ruins()
 {
   GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator());
   MapPtr field_map = field_gen->generate();
-  SettlementRuinsGenerator sr_gen;
-  MapPtr ruins_map = sr_gen.generate(field_map);
+  SettlementRuinsGenerator sr_gen(field_map);
+  MapPtr ruins_map = sr_gen.generate();
   cout << map_to_string(ruins_map, false);
   return map_to_string(ruins_map);
 }
@@ -257,11 +283,19 @@ string generate_marsh()
 string generate_settlement()
 {
   GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator());
-  SettlementGenerator settle_gen;
   MapPtr field_map = field_gen->generate();
-  MapPtr settlement_map = settle_gen.generate(field_map);
+  SettlementGenerator settle_gen(field_map);
+  MapPtr settlement_map = settle_gen.generate();
   cout << map_to_string(settlement_map, false);
   return map_to_string(settlement_map);
+}
+
+string generate_dungeon()
+{
+  GeneratorPtr dun_gen = GeneratorPtr(new DungeonGenerator()); // ha ha
+  MapPtr dun_gen_map = dun_gen->generate();
+  cout << map_to_string(dun_gen_map, false);
+  return map_to_string(dun_gen_map);
 }
 
 string generate_spiral_dungeon()
@@ -451,7 +485,7 @@ int main(int argc, char** argv)
     cout << "4. Settlement (Field)" << endl;
     cout << "5. Settlement Ruins (Field)" << endl;
     cout << "6. Marsh" << endl;
-    cout << "7. Regular Dungeon (TODO)" << endl;
+    cout << "7. Regular Dungeon" << endl;
     cout << "8. Spiral Dungeon" << endl;
     cout << "9. Road (Field)" << endl;
     cout << "10. Road (Forest)" << endl;
@@ -494,6 +528,9 @@ int main(int argc, char** argv)
         output_map(map, "marsh_test.html");
         break;
       case 7:
+        map = generate_dungeon();
+        output_map(map, "dungeon_test.html");
+        break;
       case 8:
         map = generate_spiral_dungeon();
         output_map(map, "spiral_dungeon_test.html");

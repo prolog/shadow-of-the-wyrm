@@ -49,6 +49,21 @@ bool Tile::get_explored() const
   return explored;
 }
 
+bool Tile::has_feature() const
+{
+  return (feature);
+}
+
+void Tile::set_feature(FeaturePtr new_feature)
+{
+  feature = new_feature;
+}
+
+FeaturePtr Tile::get_feature()
+{
+  return feature;
+}
+
 bool Tile::has_creature() const
 {
   return (creature != NULL);
@@ -78,6 +93,11 @@ Inventory& Tile::get_items()
 TileType Tile::get_tile_type() const
 {
   return tile_type;
+}
+
+TileType Tile::get_tile_subtype() const
+{
+  return TILE_TYPE_UNDEFINED;
 }
 
 TileExitMap& Tile::get_tile_exit_map_ref()

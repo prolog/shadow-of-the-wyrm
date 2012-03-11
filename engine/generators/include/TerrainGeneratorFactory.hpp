@@ -5,7 +5,7 @@
 class TerrainGeneratorFactory
 {
   public:
-    static GeneratorPtr create_generator(const TileType terrain_type);
+    static GeneratorPtr create_generator(const TileType terrain_type, const TileType terrain_subtype = TILE_TYPE_UNDEFINED);
 
   protected:
     TerrainGeneratorFactory();

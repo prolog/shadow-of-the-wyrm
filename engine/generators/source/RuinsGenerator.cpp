@@ -12,12 +12,13 @@ MapPtr RuinsGenerator::generate(MapPtr map, const RuinsType& ruins_type)
 
   if (ruins_type == RUINS_TYPE_SETTLEMENT)
   {
-    SettlementRuinsGenerator srg;
-    result_map = srg.generate(map);
+    SettlementRuinsGenerator srg(map);
+    result_map = srg.generate();
   }
   else
   {
-    result_map = KeepRuinsGenerator::generate(map);
+    KeepRuinsGenerator krg(map);
+    result_map = krg.generate();
   }
 
   return result_map;

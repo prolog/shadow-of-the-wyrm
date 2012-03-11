@@ -13,7 +13,7 @@ Creature::Creature()
 , hair_colour(HAIR_COLOUR_BLACK)
 , ivory_pieces(0)
 , symbol('?')
-, colour(COLOUR_BLACK)
+, colour(COLOUR_WHITE)
 // Everything else is a string, Statistic, etc, and is not a primitive type.  These'll have their own constructors.
 {
   set_evade(0);

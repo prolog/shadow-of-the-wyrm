@@ -1,10 +1,11 @@
+#include "FeatureGenerator.hpp"
 #include "SettlementGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 
 using namespace std;
 
-SettlementGenerator::SettlementGenerator() :
+SettlementGenerator::SettlementGenerator(MapPtr new_base_map) :
   GROWTH_RATE(100)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)
@@ -12,10 +13,11 @@ SettlementGenerator::SettlementGenerator() :
 , BLOCK_SIZE(6)
 , NS_DIVISOR(2)
 , EW_DIVISOR(3)
+, base_map(new_base_map)
 {
 }
 
-SettlementGenerator::SettlementGenerator(const int growth_rate)
+SettlementGenerator::SettlementGenerator(MapPtr new_base_map, const int growth_rate)
 :GROWTH_RATE(growth_rate)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)
@@ -23,12 +25,18 @@ SettlementGenerator::SettlementGenerator(const int growth_rate)
 , BLOCK_SIZE(6)
 , NS_DIVISOR(2)
 , EW_DIVISOR(3)
+, base_map(new_base_map)
 {
 }
 
-MapPtr SettlementGenerator::generate(MapPtr map)
+MapPtr SettlementGenerator::generate(const Dimensions& dimensions, const string& map_exit_id)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  return generate();
+}
+
+MapPtr SettlementGenerator::generate()
+{
+  MapPtr result_map = MapPtr(new Map(*base_map));
 
   result_map = generate_roads_and_buildings(result_map);
   result_map = populate_settlement(result_map);
@@ -109,7 +117,6 @@ bool SettlementGenerator::does_building_overlap(MapPtr map, const int start_row,
     {
       if (does_tile_overlap(map, cur_row, cur_col))
       {
-        cout << "Tile overlaps.  Tile underneath: " << map->at(cur_row, cur_col)->get_tile_type() << " r/c:" << cur_row << "," << cur_col << endl;
         building_will_overlap = true;
         break;
       }
@@ -181,7 +188,6 @@ MapPtr SettlementGenerator::generate_building_if_possible(MapPtr map, const int 
 
   if (does_building_overlap(map, start_row, end_row, start_col, end_col))
   {
-    cout << "Building overlaps." << endl;
     return map;
   }
   else
@@ -216,6 +222,10 @@ MapPtr SettlementGenerator::generate_building_if_possible(MapPtr map, const int 
     // Create door
     pair<int, int> door_location = get_door_location(start_row, end_row, start_col, end_col, door_direction);
     TilePtr door_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+
+    FeaturePtr door = FeatureGenerator::generate_door();
+    door_tile->set_feature(door);
+
     result_map->insert(door_location.first, door_location.second, door_tile);
 
     return result_map;
@@ -251,7 +261,6 @@ MapPtr SettlementGenerator::generate_road_north(MapPtr map, const int start_row,
 
           if (building_size >= MIN_BLOCK_SIZE)
           {
-            cout << "Current row: " << current_row << ", end row: " << (current_row + building_size) << endl;
             result_map = generate_building_if_possible(result_map, current_row, current_row+building_size, start_col-building_size-2, start_col-2, CARDINAL_DIRECTION_EAST);
           }
         }
@@ -271,7 +280,6 @@ MapPtr SettlementGenerator::generate_road_north(MapPtr map, const int start_row,
 
           if (building_size >= MIN_BLOCK_SIZE)
           {
-            cout << "Current row: " << current_row << ", end row: " << (current_row + building_size) << endl;
             result_map = generate_building_if_possible(result_map, current_row, current_row+building_size, start_col+2, start_col+building_size+2, CARDINAL_DIRECTION_WEST);
           }
         }

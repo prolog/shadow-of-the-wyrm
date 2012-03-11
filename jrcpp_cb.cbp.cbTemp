@@ -269,7 +269,6 @@
 		<Unit filename="engine\generators\include\MountainsGenerator.hpp" />
 		<Unit filename="engine\generators\include\RoadGenerator.hpp" />
 		<Unit filename="engine\generators\include\RuinsGenerator.hpp" />
-		<Unit filename="engine\generators\include\ScrubGenerator.hpp" />
 		<Unit filename="engine\generators\include\SeaGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementRuinsGenerator.hpp" />
@@ -291,7 +290,6 @@
 		<Unit filename="engine\generators\source\MountainsGenerator.cpp" />
 		<Unit filename="engine\generators\source\RoadGenerator.cpp" />
 		<Unit filename="engine\generators\source\RuinsGenerator.cpp" />
-		<Unit filename="engine\generators\source\ScrubGenerator.cpp" />
 		<Unit filename="engine\generators\source\SeaGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementRuinsGenerator.cpp" />

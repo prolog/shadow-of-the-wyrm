@@ -209,6 +209,35 @@ bool MapUtils::can_exit_map(MapExitPtr map_exit)
   return can_exit;
 }
 
+// Is there a feature on the tile, and does it block movement?
+bool MapUtils::is_blocking_feature_present(TilePtr tile)
+{
+  if (tile)
+  {
+    FeaturePtr feature = tile->get_feature();
+    
+    if (feature)
+    {
+      return feature->get_blocking();
+    }
+  }
+  
+  return false;
+}
+
+// Is there a creature on the tile?
+bool MapUtils::is_creature_present(TilePtr tile)
+{
+  if (tile)
+  {
+    CreaturePtr creature = tile->get_creature();
+    
+    return (creature);
+  }
+  
+  return false;
+}
+
 // Iterate through the existing components of the map, searching each one to see if the coordinates are contained within
 // any one of them.
 bool MapUtils::is_tile_contained_in_an_existing_component(const Coordinate& coord, const MapComponents& components)

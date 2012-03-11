@@ -1,11 +1,14 @@
 #include <boost/make_shared.hpp>
 #include "CavernGenerator.hpp"
 #include "DesertGenerator.hpp"
+#include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "MarshGenerator.hpp"
 #include "MountainsGenerator.hpp"
+#include "ScrubGenerator.hpp"
 #include "SeaGenerator.hpp"
+#include "SettlementGenerator.hpp"
 #include "TerrainGeneratorFactory.hpp"
 
 using boost::make_shared;
@@ -21,7 +24,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // Create a generator based on the tile passed in.  The world map uses a limited
 // subset of the overall tiles (field, forest, sea, desert, etc., but not grave, 
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
-GeneratorPtr TerrainGeneratorFactory::create_generator(const TileType terrain_type)
+GeneratorPtr TerrainGeneratorFactory::create_generator(const TileType terrain_type, const TileType terrain_subtype)
 {
   GeneratorPtr generator;
   
@@ -48,8 +51,20 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(const TileType terrain_ty
     case TILE_TYPE_DESERT:
       generator = make_shared<DesertGenerator>();
       break;
-    case TILE_TYPE_UNDEFINED:
     case TILE_TYPE_SCRUB:
+      generator = make_shared<ScrubGenerator>();
+      break;
+    case TILE_TYPE_VILLAGE:
+    {
+      GeneratorPtr base_generator = create_generator(terrain_subtype);
+      MapPtr base_map = base_generator->generate();
+      generator = make_shared<SettlementGenerator>(base_map);
+    }
+      break;
+    case TILE_TYPE_DUNGEON_COMPLEX:
+      generator = make_shared<DungeonGenerator>();
+      break;
+    case TILE_TYPE_UNDEFINED:
     case TILE_TYPE_WHEAT:
     case TILE_TYPE_CAIRN:
     case TILE_TYPE_TREE:
@@ -67,7 +82,6 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(const TileType terrain_ty
     case TILE_TYPE_SPRINGS:
     case TILE_TYPE_UP_STAIRCASE:
     case TILE_TYPE_DOWN_STAIRCASE:
-    case TILE_TYPE_VILLAGE:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.
       generator = make_shared<FieldGenerator>();

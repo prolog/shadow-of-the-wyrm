@@ -2,6 +2,19 @@
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 
+using std::string;
+
+KeepRuinsGenerator::KeepRuinsGenerator(MapPtr new_base_map)
+: base_map(new_base_map)
+{
+}
+
+MapPtr KeepRuinsGenerator::generate(const Dimensions& dim, const string& map_exit_id)
+{
+  // JCD FIXME: Ignore dimensions for now.
+  return generate();
+}
+
 void KeepRuinsGenerator::create_keep(MapPtr result_map, const int start_row, const int start_col, const int height, const int width)
 {
   TilePtr tile;
@@ -110,9 +123,9 @@ void KeepRuinsGenerator::create_entrance(MapPtr result_map, const int start_row,
 }
 
 // Generate a square keep, centre it on the map.
-MapPtr KeepRuinsGenerator::generate(MapPtr map)
+MapPtr KeepRuinsGenerator::generate()
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = MapPtr(new Map(*base_map));
   Dimensions dimensions = result_map->size();
 
   int max_height = dimensions.get_y();

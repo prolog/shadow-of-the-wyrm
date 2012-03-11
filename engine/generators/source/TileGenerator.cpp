@@ -6,7 +6,7 @@
 
 using boost::make_shared;
 
-TilePtr TileGenerator::generate(const TileType& tile_type)
+TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
 {
   TilePtr result_tile;
 
@@ -91,7 +91,10 @@ TilePtr TileGenerator::generate(const TileType& tile_type)
       result_tile = make_shared<CavernTile>();
       break;
     case TILE_TYPE_VILLAGE:
-      result_tile = make_shared<VillageTile>();
+      result_tile = make_shared<VillageTile>(subtile_type);
+      break;
+    case TILE_TYPE_DUNGEON_COMPLEX:
+      result_tile = make_shared<DungeonComplexTile>();
     default:
       break;
   }
