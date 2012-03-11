@@ -1739,13 +1739,13 @@
 		<DungeonTile>
 			<Text>
 				<Symbol>.</Symbol>
-				<Colour>3</Colour>
+				<Colour>7</Colour>
 			</Text>
 		</DungeonTile>
 		<RockTile>
 			<Text>
 				<Symbol>#</Symbol>
-				<Colour>0</Colour>
+				<Colour>8</Colour>
 			</Text>
 		</RockTile>
 		<GraveTile>
@@ -1775,7 +1775,7 @@
 		<MountainsTile>
 			<Text>
 				<Symbol>^</Symbol>
-				<Colour>0</Colour>
+				<Colour>8</Colour>
 			</Text>
 		</MountainsTile>
 		<BeachTile>
@@ -1823,15 +1823,21 @@
 		<CavernTile>
 			<Text>
 				<Symbol>o</Symbol>
-				<Colour>0</Colour>
+				<Colour>8</Colour>
 			</Text>
 		</CavernTile>
 		<VillageTile>
 			<Text>
-				<Symbol>v</Symbol>
-				<Colour>4</Colour>
+				<Symbol>o</Symbol>
+				<Colour>3</Colour>
 			</Text>
 		</VillageTile>
+		<DungeonComplexTile>
+			<Text>
+				<Symbol>&gt;</Symbol>
+				<Colour>3</Colour>
+			</Text>
+		</DungeonComplexTile>
 	</Tiles>
 	<Items>
 		<Armours>

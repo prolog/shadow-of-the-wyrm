@@ -10,8 +10,9 @@ using boost::make_shared;
 
 // Generate a cellular automata based cavern, connecting the individual components in a second pass afterwards.
 // JCD FIXME refactor as necessary
-MapPtr CavernGenerator::generate(const Dimensions& dimensions, const string& map_exit_id)
+MapPtr CavernGenerator::generate(const Dimensions& dimensions, const string& new_map_exit_id)
 {
+  map_exit_id = new_map_exit_id;
   MapPtr result_map = MapPtr(new Map(dimensions));
 
   fill(result_map, TILE_TYPE_ROCK);
@@ -20,7 +21,7 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions, const string& map
   reset_cavern_edges(result_map);
   MapComponents cc = get_cavern_components(result_map);
   connect_cavern_components(result_map, cc);
-  generate_staircases(result_map, map_exit_id);
+  generate_staircases(result_map, new_map_exit_id);
   
   result_map->set_map_type(MAP_TYPE_UNDERWORLD);
   
@@ -172,17 +173,17 @@ void CavernGenerator::reset_cavern_edges(MapPtr map)
 
 // Generate both staircases, if necessary.  It may not be necessary
 // to generate the down staircase.
-void CavernGenerator::generate_staircases(MapPtr map, const string& map_exit_id)
+void CavernGenerator::generate_staircases(MapPtr map, const string& new_map_exit_id)
 {
   // Up Staircase
-  generate_staircase(map, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, map_exit_id);
+  generate_staircase(map, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, new_map_exit_id);
     
   // Down staircase
   generate_staircase(map, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, "" /* JCD FIXME? */);
 }
 
 // Generate a particular staircase
-void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, const Direction direction, const string& map_exit_id)
+void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, const Direction direction, const string& new_map_exit_id)
 {
   Dimensions dimensions = map->size();
 
@@ -208,6 +209,7 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
       // Add the map exit info if necessary
       if (!map_exit_id.empty())
       {
+        // JCD FIXME: Make this a MapUtils function
         TileExitMap& tile_exit_map = new_tile->get_tile_exit_map_ref();
 
         MapExitPtr new_map_exit = make_shared<MapExit>();

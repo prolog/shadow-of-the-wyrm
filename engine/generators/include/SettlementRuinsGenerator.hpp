@@ -5,6 +5,6 @@
 class SettlementRuinsGenerator : public SettlementGenerator
 {
   public:
-    SettlementRuinsGenerator();
-    virtual MapPtr generate(MapPtr map);
+    SettlementRuinsGenerator(MapPtr new_base_map);
+    virtual MapPtr generate();
 };

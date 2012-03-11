@@ -1,26 +1,35 @@
 #include "Door.hpp"
 
-Door::Door(LockPtr new_lock, const DoorState& new_state)
-: lock(new_lock), state(new_state)
+// By default, doors are made of wood.
+Door::Door(LockPtr new_lock, const EntranceState& new_state)
+: Entrance(new_lock, new_state)
 {
 }
 
-void Door::set_lock(LockPtr new_lock)
+bool Door::handle()
 {
-  lock = new_lock;
+  // If the door is smashed, display a message.
+  // If the door is open, close it.
+  // If the door is closed and locked, try to unlock it.
+  // If the door is closed and unlocked, open it.
+  return true;
 }
 
-LockPtr Door::get_lock()
+bool Door::kick()
 {
-  return lock;
+  // If the door is smashed or open, kick at the air.
+  // If the door is shut, kick it.
+  //   - Check for traps.
+  return true;
 }
 
-void Door::set_state(const DoorState& new_state)
+bool Door::get_blocking() const
 {
-  state = new_state;
+  // Only closed doors are blocking.
+  return (state.get_state() == ENTRANCE_TYPE_CLOSED);
 }
 
-DoorState Door::get_state()
+uchar Door::get_symbol() const
 {
-  return state;
+  return state.get_symbol();
 }

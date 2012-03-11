@@ -1,14 +1,16 @@
 #pragma once
 #include "Map.hpp"
 #include "Directions.hpp"
+#include "Generator.hpp"
 
-class SettlementGenerator
+class SettlementGenerator : public Generator
 {
   public:
-    SettlementGenerator();
-    SettlementGenerator(const int growth_rate);
+    SettlementGenerator(MapPtr new_base_map);
+    SettlementGenerator(MapPtr new_base_map, const int growth_rate);
 
-    virtual MapPtr generate(MapPtr map);
+    virtual MapPtr generate();
+    virtual MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
 
   protected:
      MapPtr generate_roads_and_buildings(MapPtr map);
@@ -36,5 +38,8 @@ class SettlementGenerator
      const int BLOCK_SIZE;
      const int NS_DIVISOR;
      const int EW_DIVISOR;
-
+     
+     MapPtr base_map;
 };
+
+typedef boost::shared_ptr<SettlementGenerator> SettlementGeneratorPtr;

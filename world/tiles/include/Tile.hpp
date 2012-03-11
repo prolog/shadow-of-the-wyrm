@@ -4,6 +4,7 @@
 #include "tiles.hpp"
 #include "Creature.hpp"
 #include "Directions.hpp"
+#include "Feature.hpp"
 #include "Item.hpp"
 #include "MapExit.hpp"
 
@@ -31,6 +32,11 @@ class Tile
     virtual void set_explored(bool new_explored);
     virtual bool get_explored() const;
 
+    // Features include doors, windows, thrones, fireplaces...
+    virtual bool has_feature() const;
+    virtual void set_feature(FeaturePtr new_feature);
+    virtual FeaturePtr get_feature();
+
     virtual bool has_creature() const;
     virtual void set_creature(const CreaturePtr& new_creature);
     virtual void remove_creature();
@@ -39,6 +45,7 @@ class Tile
     virtual Inventory& get_items();
 
     virtual TileType get_tile_type() const;
+    virtual TileType get_tile_subtype() const;
     
     virtual TileExitMap& get_tile_exit_map_ref();
     
@@ -54,6 +61,9 @@ class Tile
 
     // Each tile can have at most one creature on it.
     CreaturePtr creature;
+    
+    // Each tile can have at most one feature on it.
+    FeaturePtr feature;
 
     // Each tile can have any number of items piled up on it.
     // Re-use the basic inventory data type for this purpose.

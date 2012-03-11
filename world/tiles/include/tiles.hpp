@@ -30,7 +30,8 @@ enum TileType
   TILE_TYPE_DOWN_STAIRCASE = 23,
   TILE_TYPE_CAVERN    = 24,
   TILE_TYPE_VILLAGE   = 25,
-  TILE_TYPE_LAST      = 25
+  TILE_TYPE_DUNGEON_COMPLEX = 26,
+  TILE_TYPE_LAST      = 26
 };
 
 inline TileType operator--(TileType &tt, int)

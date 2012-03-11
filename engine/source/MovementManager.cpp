@@ -66,7 +66,7 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
         }
         
         // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
-        game->display->clear_messages();
+        game->display->clear_messages(); 
       }
     }
     // Otherwise, it's a regular move within the current map.
@@ -74,15 +74,31 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
     {
       Coordinate new_coords = MapUtils::get_new_coordinate(creature_location, direction);
       TilePtr creatures_new_tile = map->at(new_coords.first, new_coords.second);
-
-      // Can the creature be added to the new tile?
-      if (creatures_new_tile && !creatures_new_tile->has_creature())
+      
+      if (creatures_new_tile)
       {
-        // Update the map info
-        MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
-        TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
-        add_tile_related_messages(creature, manager, new_tile);
-        movement_success = true;
+        if (MapUtils::is_blocking_feature_present(creatures_new_tile))
+        {
+          string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
+          manager->add_new_message(blocked);
+          manager->send();
+          
+          movement_success = false;
+        }
+        else if (MapUtils::is_creature_present(creatures_new_tile))
+        {
+          movement_success = false;
+          
+          // Do the necessary checks here to determine whether to attack...
+        }
+        else
+        {
+          // Update the map info
+          MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
+          TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
+          add_tile_related_messages(creature, manager, new_tile);
+          movement_success = true;
+        }
       }
     }
   }
@@ -223,8 +239,9 @@ bool MovementManager::descend(CreaturePtr creature)
             
             if (map_type == MAP_TYPE_WORLD)
             {
-              TileType tile_type = tile->get_tile_type();
-              GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile_type);
+              TileType tile_type     = tile->get_tile_type();
+              TileType tile_subtype  = tile->get_tile_subtype();
+              GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile_type, tile_subtype);
               
               if (generator)
               {

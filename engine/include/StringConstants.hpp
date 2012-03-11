@@ -137,6 +137,7 @@ class EntranceTextKeys
     static std::string ENTRANCE_HILLS;
     static std::string ENTRANCE_CAVERN;
     static std::string ENTRANCE_VILLAGE;
+    static std::string ENTRANCE_DUNGEON_COMPLEX;
     
   protected:
     EntranceTextKeys();
@@ -382,6 +383,7 @@ class TileTextKeys
     static std::string TILE_DESC_CAVERN;
     static std::string TILE_DESC_DESERT;
     static std::string TILE_DESC_DUNGEON;
+    static std::string TILE_DESC_DUNGEON_COMPLEX;
     static std::string TILE_DESC_FIELD;
     static std::string TILE_DESC_FOREST;
     static std::string TILE_DESC_GRAVE;
@@ -417,6 +419,7 @@ class ActionTextKeys
     static std::string ACTION_DROP_NOT_ALLOWED;
     static std::string ACTION_DROP_NO_ITEM_SELECTED;
     static std::string ACTION_PICK_UP_NOTHING_ON_GROUND;
+    static std::string ACTION_MOVEMENT_BLOCKED;
 
   protected:
     ActionTextKeys();

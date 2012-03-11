@@ -1,13 +1,19 @@
 #pragma once
+#include "Generator.hpp"
 #include "Map.hpp"
 
-class KeepRuinsGenerator
+class KeepRuinsGenerator : public Generator
 {
  public:
-    static MapPtr generate(MapPtr map);
+    KeepRuinsGenerator(MapPtr new_base_map);
+
+    MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
+    MapPtr generate();
 
   protected:
-    static void create_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
-    static void populate_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
-    static void create_entrance(MapPtr map, const int start_row, const int start_col, const int height, const int width);
+    void create_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
+    void populate_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
+    void create_entrance(MapPtr map, const int start_row, const int start_col, const int height, const int width);
+    
+    MapPtr base_map;
 };

@@ -32,12 +32,15 @@ void Map::create_creatures()
   for (map_it = tiles.begin(); map_it != tiles.end(); map_it++)
   {
     TilePtr current_tile = map_it->second;
-
-    CreaturePtr potential_creature = current_tile->get_creature();
-
-    if (potential_creature)
+    
+    if (current_tile)
     {
-      creatures.push_back(potential_creature);
+      CreaturePtr potential_creature = current_tile->get_creature();
+
+      if (potential_creature)
+      {
+        creatures.push_back(potential_creature);
+      }
     }
   }
 }

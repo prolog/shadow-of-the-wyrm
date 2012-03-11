@@ -1,22 +1,17 @@
 #pragma once
-#include "DoorState.hpp"
-#include "Feature.hpp"
-#include "ILockable.hpp"
+#include "Entrance.hpp"
 
 // Doors are Features, but like Windows, will be re-used outside the
 // dungeon environment.
-class Door : public Feature, public ILockable
+class Door : public Entrance
 {
   public:
-    Door(LockPtr new_lock, const DoorState& new_state);
+    Door(LockPtr new_lock, const EntranceState& new_state);
 
-    void set_lock(LockPtr new_lock);
-    LockPtr get_lock();
-
-    void set_state(const DoorState& new_state);
-    DoorState get_state();
-
+    virtual bool handle();
+    virtual bool kick();
+    virtual bool get_blocking() const;
+    virtual uchar get_symbol()  const;
+    
   protected:
-    LockPtr lock;
-    DoorState state;
 };

@@ -84,6 +84,7 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile)
   {
     CreaturePtr creature = actual_tile->get_creature();
     Inventory& inv = actual_tile->get_items();
+    FeaturePtr feature = actual_tile->get_feature();
 
     if (creature) // If a creature exists on this tile - will be null if the ptr is not init'd
     {
@@ -94,7 +95,11 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile)
       ItemPtr item = inv.at(0); // Get the first item
       display_tile = create_display_tile_from_item(item);
     }
-    else // There's no creature, and no items - display the base tile info.
+    else if (feature) // There's no creature, and no items.  Is there a feature?
+    {
+      display_tile = create_display_tile_from_feature(feature);
+    }
+    else // Nothing else - display the tile.
     {
       display_tile = create_display_tile_from_tile(actual_tile);
     }
@@ -107,6 +112,12 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile)
 DisplayTile MapTranslator::create_display_tile_from_creature(const CreaturePtr& creature)
 {
   return create_display_tile_from_symbol_and_colour(creature->get_symbol(), creature->get_colour());
+}
+
+// Create a display tile from a given tile feature
+DisplayTile MapTranslator::create_display_tile_from_feature(const FeaturePtr& feature)
+{
+  return create_display_tile_from_symbol_and_colour(feature->get_symbol(), feature->get_colour());
 }
 
 // Create a display tile from a given item

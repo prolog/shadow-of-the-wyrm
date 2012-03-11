@@ -144,6 +144,7 @@ string EntranceTextKeys::ENTRANCE_MARSH     = "ENTRANCE_MARSH";
 string EntranceTextKeys::ENTRANCE_HILLS     = "ENTRANCE_HILLS";
 string EntranceTextKeys::ENTRANCE_CAVERN    = "ENTRANCE_CAVERN";
 string EntranceTextKeys::ENTRANCE_VILLAGE   = "ENTRANCE_VILLAGE";
+string EntranceTextKeys::ENTRANCE_DUNGEON_COMPLEX = "ENTRANCE_DUNGEON_COMPLEX";
 
 // Equipment
 EquipmentTextKeys::EquipmentTextKeys()
@@ -524,6 +525,7 @@ string TileTextKeys::TILE_DESC_CAIRN          = "TILE_DESC_CAIRN";
 string TileTextKeys::TILE_DESC_CAVERN         = "TILE_DESC_CAVERN";
 string TileTextKeys::TILE_DESC_DESERT         = "TILE_DESC_DESERT";
 string TileTextKeys::TILE_DESC_DUNGEON        = "TILE_DESC_DUNGEON";
+string TileTextKeys::TILE_DESC_DUNGEON_COMPLEX = "TILE_DESC_DUNGEON_COMPLEX";
 string TileTextKeys::TILE_DESC_FIELD          = "TILE_DESC_FIELD";
 string TileTextKeys::TILE_DESC_FOREST         = "TILE_DESC_FOREST";
 string TileTextKeys::TILE_DESC_GRAVE          = "TILE_DESC_GRAVE";
@@ -560,6 +562,7 @@ string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_A
 string ActionTextKeys::ACTION_DROP_NOT_ALLOWED           = "ACTION_DROP_NOT_ALLOWED";
 string ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED      = "ACTION_DROP_NO_ITEM_SELECTED";
 string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP_NOTHING_ON_GROUND";
+string ActionTextKeys::ACTION_MOVEMENT_BLOCKED           = "ACTION_MOVEMENT_BLOCKED";
 
 // Messages that can be sent to the user in the message buffer
 TextMessages::TextMessages()
@@ -710,6 +713,9 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
       break;
     case TILE_TYPE_VILLAGE:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_VILLAGE);
+      break;
+    case TILE_TYPE_DUNGEON_COMPLEX:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_DUNGEON_COMPLEX);
       break;
     case TILE_TYPE_UNDEFINED:
     case TILE_TYPE_WHEAT:
