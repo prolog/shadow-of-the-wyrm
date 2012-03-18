@@ -1,6 +1,11 @@
 #include "SeaGenerator.hpp"
 
-MapPtr SeaGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
+SeaGenerator::SeaGenerator(const std::string& new_map_exit_id)
+: Generator(new_map_exit_id)
+{
+}
+
+MapPtr SeaGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 

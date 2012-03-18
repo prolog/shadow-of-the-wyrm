@@ -4,7 +4,9 @@
 class MarshGenerator : public Generator
 {
   public:
-    virtual MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
+    MarshGenerator(const std::string& map_exit_id);
+    
+    virtual MapPtr generate(const Dimensions& dim);
 
   protected:
     virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col);

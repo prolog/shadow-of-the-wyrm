@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Map.hpp"
 
 using namespace std;
@@ -8,7 +9,7 @@ Map::Map(const Map& new_map)
   if (this != &new_map)
   {
     Dimensions new_dimensions = new_map.size();
-    std::map<std::pair<int, int>, TilePtr > new_tiles = new_map.get_tiles();
+    std::map<std::string, TilePtr > new_tiles = new_map.get_tiles();
 
     dimensions = new_dimensions;
     tiles = new_tiles;
@@ -27,7 +28,7 @@ void Map::create_creatures()
 {
   creatures.clear();
 
-  std::map<Coordinate, TilePtr >::iterator map_it;
+  std::map<string, TilePtr >::iterator map_it;
 
   for (map_it = tiles.begin(); map_it != tiles.end(); map_it++)
   {
@@ -69,21 +70,29 @@ vector<CreaturePtr> Map::get_creatures()
 
 bool Map::insert(int row, int col, TilePtr tile)
 {
-  pair<int, int> key = make_pair(row, col);
+  string key = make_key(row, col);
 
   tiles[key] = tile;
   return true;
 }
 
+string Map::make_key(const int row, const int col)
+{
+  std::ostringstream ss;
+  ss << row << "-" << col;
+  return ss.str();
+}
+
 TilePtr Map::at(int row, int col)
 {
-  pair<int, int> key = make_pair(row, col);
+  string key = make_key(row, col);
   return tiles[key];
 }
 
 TilePtr Map::at(const Coordinate& c)
 {
-  return tiles[c];
+  string key = make_key(c.first, c.second);
+  return tiles[key];
 }
 
 void Map::set_size(const Dimensions& new_dimensions)
@@ -106,7 +115,7 @@ MapType Map::get_map_type() const
   return map_type;
 }
 
-std::map<std::pair<int, int>, TilePtr > Map::get_tiles() const
+std::map<std::string, TilePtr > Map::get_tiles() const
 {
   return tiles;
 }
@@ -185,6 +194,18 @@ void Map::set_map_id(const string& new_map_id)
 string Map::get_map_id() const
 {
   return map_id;
+}
+
+string Map::get_map_exit_id() const
+{
+  string map_exit_id;
+  
+  if (map_exit)
+  {
+    map_exit_id = map_exit->get_map_id();
+  }
+  
+  return map_exit_id;
 }
 
 // Set/get whether or not the map should be permanent (is it a random terrain map?)

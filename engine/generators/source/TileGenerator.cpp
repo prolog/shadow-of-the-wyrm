@@ -95,6 +95,31 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       break;
     case TILE_TYPE_DUNGEON_COMPLEX:
       result_tile = make_shared<DungeonComplexTile>();
+      break;
+    case TILE_TYPE_BARRACKS:
+      result_tile = make_shared<BarracksTile>();
+      break;
+    case TILE_TYPE_CASTLE:
+      result_tile = make_shared<CastleTile>();
+      break;
+    case TILE_TYPE_CHURCH:
+      result_tile = make_shared<ChurchTile>();
+      break;
+    case TILE_TYPE_GRAVEYARD:
+      result_tile = make_shared<GraveyardTile>();
+      break;
+    case TILE_TYPE_KEEP:
+      result_tile = make_shared<KeepTile>();
+      break;
+    case TILE_TYPE_LIBRARY:
+      result_tile = make_shared<LibraryTile>();
+      break;
+    case TILE_TYPE_SITE_OF_DEATH:
+      result_tile = make_shared<SiteOfDeathTile>();
+      break;
+    case TILE_TYPE_TEMPLE:
+      result_tile = make_shared<TempleTile>();
+      break;
     default:
       break;
   }

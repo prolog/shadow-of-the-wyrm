@@ -8,14 +8,16 @@
 
 using namespace std;
 
-ForestGenerator::ForestGenerator():
-PCT_CHANCE_FOREST_STREAM(50),
-PCT_CHANCE_FOREST_SPRINGS(50)
+ForestGenerator::ForestGenerator(const std::string& new_map_exit_id)
+: Generator(new_map_exit_id)
+, PCT_CHANCE_FOREST_STREAM(50)
+, PCT_CHANCE_FOREST_SPRINGS(50)
 {
 }
 
 ForestGenerator::ForestGenerator(const int pct_chance_stream, const int pct_chance_springs)
-: PCT_CHANCE_FOREST_STREAM(pct_chance_stream)
+: Generator("") 
+, PCT_CHANCE_FOREST_STREAM(pct_chance_stream)
 , PCT_CHANCE_FOREST_SPRINGS(pct_chance_springs)
 {
 }
@@ -24,11 +26,11 @@ MapPtr ForestGenerator::generate()
 {
   MapPtr result_map;
   Dimensions default_dimensions;
-  result_map = generate(default_dimensions, "");
+  result_map = generate(default_dimensions);
   return result_map;
 }
 
-MapPtr ForestGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
+MapPtr ForestGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 

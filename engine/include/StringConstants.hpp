@@ -138,6 +138,14 @@ class EntranceTextKeys
     static std::string ENTRANCE_CAVERN;
     static std::string ENTRANCE_VILLAGE;
     static std::string ENTRANCE_DUNGEON_COMPLEX;
+    static std::string ENTRANCE_BARRACKS;
+    static std::string ENTRANCE_CASTLE;
+    static std::string ENTRANCE_CHURCH;
+    static std::string ENTRANCE_GRAVEYARD;
+    static std::string ENTRANCE_KEEP;
+    static std::string ENTRANCE_LIBRARY;
+    static std::string ENTRANCE_SITE_OF_DEATH;
+    static std::string ENTRANCE_TEMPLE;
     
   protected:
     EntranceTextKeys();
@@ -404,6 +412,14 @@ class TileTextKeys
     static std::string TILE_DESC_VILLAGE;
     static std::string TILE_DESC_WEEDS;
     static std::string TILE_DESC_WHEAT;
+    static std::string TILE_DESC_BARRACKS;
+    static std::string TILE_DESC_CASTLE;
+    static std::string TILE_DESC_CHURCH;
+    static std::string TILE_DESC_GRAVEYARD;
+    static std::string TILE_DESC_KEEP;
+    static std::string TILE_DESC_LIBRARY;
+    static std::string TILE_DESC_SITE_OF_DEATH;
+    static std::string TILE_DESC_TEMPLE;
     
   protected:
     TileTextKeys();

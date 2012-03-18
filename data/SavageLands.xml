@@ -1838,6 +1838,54 @@
 				<Colour>3</Colour>
 			</Text>
 		</DungeonComplexTile>
+		<BarracksTile>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>3</Colour>
+			</Text>
+		</BarracksTile>
+		<CastleTile>
+			<Text>
+				<Symbol>O</Symbol>
+				<Colour>15</Colour>
+			</Text>
+		</CastleTile>
+		<ChurchTile>
+			<Text>
+				<Symbol>+</Symbol>
+				<Colour>15</Colour>
+			</Text>
+		</ChurchTile>
+		<GraveyardTile>
+			<Text>
+				<Symbol>+</Symbol>
+				<Colour>8</Colour>
+			</Text>
+		</GraveyardTile>
+		<KeepTile>
+			<Text>
+				<Symbol>o</Symbol>
+				<Colour>8</Colour>
+			</Text>
+		</KeepTile>
+		<LibraryTile>
+			<Text>
+				<Symbol>"</Symbol>
+				<Colour>3</Colour>
+			</Text>
+		</LibraryTile>
+		<SiteOfDeathTile>
+			<Text>
+				<Symbol>+</Symbol>
+				<Colour>1</Colour>
+			</Text>
+		</SiteOfDeathTile>
+		<TempleTile>
+			<Text>
+				<Symbol>+</Symbol>
+				<Colour>3</Colour>
+			</Text>
+		</TempleTile>
 	</Tiles>
 	<Items>
 		<Armours>

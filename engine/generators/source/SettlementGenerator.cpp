@@ -5,8 +5,9 @@
 
 using namespace std;
 
-SettlementGenerator::SettlementGenerator(MapPtr new_base_map) :
-  GROWTH_RATE(100)
+SettlementGenerator::SettlementGenerator(MapPtr new_base_map)
+: Generator("")
+, GROWTH_RATE(100)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)
 , MIN_BLOCK_SIZE(3)
@@ -18,7 +19,8 @@ SettlementGenerator::SettlementGenerator(MapPtr new_base_map) :
 }
 
 SettlementGenerator::SettlementGenerator(MapPtr new_base_map, const int growth_rate)
-:GROWTH_RATE(growth_rate)
+: Generator("")
+, GROWTH_RATE(growth_rate)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)
 , MIN_BLOCK_SIZE(3)
@@ -29,7 +31,7 @@ SettlementGenerator::SettlementGenerator(MapPtr new_base_map, const int growth_r
 {
 }
 
-MapPtr SettlementGenerator::generate(const Dimensions& dimensions, const string& map_exit_id)
+MapPtr SettlementGenerator::generate(const Dimensions& dimensions)
 {
   return generate();
 }

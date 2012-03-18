@@ -3,21 +3,7 @@
 #include "Map.hpp"
 #include <map>
 
-// Used to generate the both room and its initial inhabitants.
-enum DungeonFeature
-{
-  DUNGEON_FEATURE_MIN = 0
-, DUNGEON_FEATURE_ROOM = 0
-, DUNGEON_FEATURE_CIRCULAR_WITH_PIT = 1 // Fall through to next dungeon level, take damage
-, DUNGEON_FEATURE_CAVE_IN = 2
-, DUNGEON_FEATURE_VAULT = 3
-, DUNGEON_FEATURE_OUT_OF_DEPTH_VAULT = 4
-, DUNGEON_FEATURE_BEEHIVE = 5
-, DUNGEON_FEATURE_ZOO = 6
-, DUNGEON_FEATURE_MAX = 6
-};
-
-// JCD FIXME refactor later
+// A simple class that makes dungeon generation easier.
 class Room
 {
   public:
@@ -36,56 +22,46 @@ class Room
   int y2;
 };
 
-typedef std::map<DungeonFeature, std::pair<const int, const int> > DungeonFeatureSizeMap;
-typedef std::map<DungeonFeature, std::pair<const int, const int> >::iterator DungeonFeatureSizeMapIterator;
-typedef std::map<DungeonFeature, std::pair<const int, const int> >::const_iterator DungeonFeatureSizeMapIterator_const;
-
 class DungeonGenerator : public Generator
 {
   public:
-    DungeonGenerator();
-    virtual MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
+    DungeonGenerator(const std::string& map_exit_id);
+    
+    virtual MapPtr generate(const Dimensions& dim);
 
   protected:
     virtual bool    generate_dungeon(MapPtr map);
     virtual TilePtr generate_tile(MapPtr current_map, int row, int col);
 
-    // Corridor and feature creation routines.
-
-    // Corridor and feature placement routines.  True if the attempt succeeded, false otherwise.
+    // Corridor and room placement routines.  True if the attempt succeeded, false otherwise.
     virtual bool    check_range(MapPtr map, int start_row, int start_col, int size_rows, int size_cols);
-    virtual bool    place_feature(MapPtr map, const DungeonFeature feature_type, int start_row, int start_col, int size_rows, int size_cols);
+    virtual bool    generate_and_place_room(MapPtr map, int& start_y, int& start_x, int& height, int& width);
     virtual bool    place_room(MapPtr map, int start_row, int start_col, int size_rows, int size_cols);
-    virtual bool    add_additional_corridors(MapPtr map);
     virtual bool    place_doorway(MapPtr map, int row, int col);
     virtual bool    place_doorways(MapPtr current_map);
     virtual bool    place_staircases(MapPtr current_map);
+    virtual bool    place_staircase(MapPtr current_map, const int row, const int col, const TileType tile_type, const Direction direction, bool link_to_map_exit_id, bool set_as_player_default_location);
 
-    // Helpers.
-    virtual DungeonFeature get_random_feature();
-    virtual int get_min_feature_height(const DungeonFeature feature);
-    virtual int get_max_feature_height(const DungeonFeature feature);
-    virtual int get_min_feature_width(const DungeonFeature feature);
-    virtual int get_max_feature_width(const DungeonFeature feature);
-
-    // Initialization
-    virtual void initialize_height_and_width_maps();
+    bool connect_rooms(MapPtr map, const Room& room1, const Room& room2);
+    bool is_tile_adjacent_to_room_tile(const Dimensions& dim, const int row, const int col);
+    bool tile_exists_outside_of_room(const int row, const int col, const bool check_connected, const bool check_unconnected);
+    
+    void initialize_and_seed_cheat_vectors(const Dimensions& dim);
 
     const int DEFAULT_MIN_HEIGHT;
     const int DEFAULT_MAX_HEIGHT;
     const int DEFAULT_MIN_WIDTH;
     const int DEFAULT_MAX_WIDTH;
-    const int SPACE_BETWEEN_FEATURES;
+    const int MIN_NUM_ROOMS;
+    const int MAX_NUM_ROOMS;
 
-    std::map<DungeonFeature, std::pair<const int, const int> > feature_width_map;
-    std::map<DungeonFeature, std::pair<const int, const int> > feature_height_map;
-    
     std::vector<Room> unconnected_rooms;
     std::vector<Room> connected_rooms;
-    std::vector<int> y1_cheaty_vector;
-    std::vector<int> y2_cheaty_vector;
     
-    bool connect_rooms(MapPtr map, const Room& room1, const Room& room2);
-    bool is_tile_adjacent_to_room_tile(const Dimensions& dim, const int row, const int col);
-    bool tile_exists_outside_of_room(const int row, const int col, const bool check_connected, const bool check_unconnected);
+    // These are used to cheat the otherwise uniformly random approach:
+    // By seeding them with some values, dungeons are generated that still
+    // look random, but have a distribution of rooms across the entire grid
+    // (mostly).
+    std::vector<int> y1_cheaty_vector;
+    std::vector<int> y2_cheaty_vector;    
 };

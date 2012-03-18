@@ -6,14 +6,26 @@
 
 using namespace std;
 
+WorldGenerator::WorldGenerator()
+: Generator("")
+{
+}
+
+WorldGenerator::WorldGenerator(const string& new_map_exit_id)
+: Generator(new_map_exit_id)
+{
+  // Worlds don't do anything with the map exit id.
+}
+
+
 MapPtr WorldGenerator::generate()
 {
   // Default is 100x100
   Dimensions default_dimensions(100, 100);
-  return generate(default_dimensions, "");
+  return generate(default_dimensions);
 }
 
-MapPtr WorldGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
+MapPtr WorldGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 
@@ -45,7 +57,7 @@ void WorldGenerator::generate_little_island(MapPtr map)
   int width = dim.get_x();
 
   // Refill with sea, in case there are land features here already.
-  for (int current_height = height - 4; current_height < height; current_height++)
+  for (int current_height = height - 5; current_height < height; current_height++)
   {
     for (int current_width = width - 6; current_width < width; current_width++)
     {
@@ -54,13 +66,15 @@ void WorldGenerator::generate_little_island(MapPtr map)
     }
   }
 
+  // JCD FIXME: Add a keep ruins here.
   TilePtr field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
   map->insert(height-4, width-5, field_tile);
 
   TilePtr forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-4, width-4, forest_tile);
 
-  forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
+  // JCD FIXME: Add the village of Isen Dun here.
+  forest_tile = TileGenerator::generate(TILE_TYPE_FIELD);
   map->insert(height-3, width-4, forest_tile);
 
   // Define the starting location:
@@ -69,12 +83,14 @@ void WorldGenerator::generate_little_island(MapPtr map)
   c.second = width - 4;
   map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
 
-  forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
+  // JCD FIXME: Add a graveyard here.
+  forest_tile = TileGenerator::generate(TILE_TYPE_FIELD);
   map->insert(height-3, width-3, forest_tile);
 
-  field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  field_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-3, width-2, field_tile);
 
+  // JCD FIXME: Add Crawler's Caves here.
   field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
   map->insert(height-2, width-2, field_tile);
 }

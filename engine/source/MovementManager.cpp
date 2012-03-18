@@ -4,6 +4,7 @@
 #include "Log.hpp"
 #include "MessageManager.hpp"
 #include "MovementManager.hpp"
+#include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "TerrainGeneratorFactory.hpp"
 
@@ -241,20 +242,18 @@ bool MovementManager::descend(CreaturePtr creature)
             {
               TileType tile_type     = tile->get_tile_type();
               TileType tile_subtype  = tile->get_tile_subtype();
-              GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile_type, tile_subtype);
+              GeneratorPtr generator = TerrainGeneratorFactory::create_generator(map->get_map_id(), tile_type, tile_subtype);
               
               if (generator)
               {
                 // - Generate the map.
-                MapPtr new_map = generator->generate(map->get_map_id());
+                MapPtr new_map = generator->generate();
                 
                 // - Set the map's MapExitPtr to point to the previous map.
                 //   But only if it's an overworld map.
                 if (new_map->get_map_type() == MAP_TYPE_OVERWORLD)
                 {
-                  MapExitPtr new_map_exit = make_shared<MapExit>();
-                  new_map_exit->set_map_id(map->get_map_id());
-                  new_map->set_map_exit(new_map_exit);                  
+                  MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
                 }
                 
                 // If the map has a last known player location (e.g., up staircase),

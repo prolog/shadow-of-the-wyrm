@@ -13,8 +13,9 @@ class Generator
   #endif
 
   public:
-   virtual MapPtr generate(const std::string& map_id = "");
-   virtual MapPtr generate(const Dimensions& dim, const std::string& map_exit_id) = 0;
+   Generator(const std::string& new_map_exit_id): map_exit_id(new_map_exit_id) {};
+   virtual MapPtr generate();
+   virtual MapPtr generate(const Dimensions& dim) = 0;
    
   protected:
     virtual void fill(const MapPtr map, const TileType& tile_type);

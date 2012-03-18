@@ -31,7 +31,15 @@ enum TileType
   TILE_TYPE_CAVERN    = 24,
   TILE_TYPE_VILLAGE   = 25,
   TILE_TYPE_DUNGEON_COMPLEX = 26,
-  TILE_TYPE_LAST      = 26
+  TILE_TYPE_BARRACKS  = 27,
+  TILE_TYPE_CASTLE    = 28,
+  TILE_TYPE_CHURCH    = 29,
+  TILE_TYPE_GRAVEYARD = 30,
+  TILE_TYPE_KEEP      = 31,
+  TILE_TYPE_LIBRARY   = 32,
+  TILE_TYPE_SITE_OF_DEATH = 33,
+  TILE_TYPE_TEMPLE    = 34,
+  TILE_TYPE_LAST      = 34
 };
 
 inline TileType operator--(TileType &tt, int)

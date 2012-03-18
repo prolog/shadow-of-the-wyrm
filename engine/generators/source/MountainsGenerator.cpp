@@ -1,6 +1,11 @@
 #include "MountainsGenerator.hpp"
 
-MapPtr MountainsGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
+MountainsGenerator::MountainsGenerator(const std::string& new_map_exit_id)
+: Generator(new_map_exit_id)
+{
+}
+
+MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 

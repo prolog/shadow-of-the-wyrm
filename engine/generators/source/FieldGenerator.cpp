@@ -8,13 +8,18 @@
 
 using namespace std;
 
+FieldGenerator::FieldGenerator(const std::string& new_map_exit_id)
+: Generator(new_map_exit_id)
+{
+}
+
 /*
  **********************************************************************
 
   Routines for generating a map that should roughly resemble a field.
 
  **********************************************************************/
-MapPtr FieldGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
+MapPtr FieldGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 
