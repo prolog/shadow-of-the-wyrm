@@ -59,6 +59,14 @@
 			<xs:element name="CavernTile" type="tns:Tile" minOccurs="1"/>
 			<xs:element name="VillageTile" type="tns:Tile" minOccurs="1"/>
 			<xs:element name="DungeonComplexTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="BarracksTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="CastleTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="ChurchTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="GraveyardTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="KeepTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="LibraryTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="SiteOfDeathTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="TempleTile" type="tns:Tile" minOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -505,7 +513,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="0"/>
-		<xs:maxExclusive value="15"/>
+		<xs:maxInclusive value="15"/>
 	</xs:restriction>
 
 </xs:simpleType>

@@ -2,7 +2,12 @@
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 
-MapPtr ScrubGenerator::generate(const Dimensions& dimensions, const std::string& map_exit_id)
+ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
+: Generator(new_map_exit_id)
+{
+}
+
+MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = MapPtr(new Map(dimensions));
 

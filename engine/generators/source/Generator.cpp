@@ -4,10 +4,10 @@
 
 using namespace std;
 
-MapPtr Generator::generate(const std::string& map_exit_id)
+MapPtr Generator::generate()
 {
   Dimensions default_dimensions;
-  MapPtr result_map = generate(default_dimensions, map_exit_id);
+  MapPtr result_map = generate(default_dimensions);
 
   return result_map;
 }

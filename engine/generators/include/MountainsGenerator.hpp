@@ -4,5 +4,7 @@
 class MountainsGenerator : public Generator
 {
   public:
-    MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
+    MountainsGenerator(const std::string& map_exit_id);
+
+    MapPtr generate(const Dimensions& dim);
 };

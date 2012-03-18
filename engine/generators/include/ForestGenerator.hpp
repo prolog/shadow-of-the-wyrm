@@ -5,11 +5,11 @@
 class ForestGenerator : public Generator
 {
   public:
-    ForestGenerator();
+    ForestGenerator(const std::string& map_exit_id);
     ForestGenerator(const int pct_chance_stream, const int pct_chance_springs);
 
     virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dimensions, const std::string& map_exit_id);
+    virtual MapPtr generate(const Dimensions& dimensions);
 
   protected:
     virtual TilePtr generate_tile(MapPtr current_map, int row, int col);

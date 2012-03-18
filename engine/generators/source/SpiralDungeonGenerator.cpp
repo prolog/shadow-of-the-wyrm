@@ -4,8 +4,8 @@
 
 using namespace std;
 
-SpiralDungeonGenerator::SpiralDungeonGenerator()
-: DungeonGenerator()
+SpiralDungeonGenerator::SpiralDungeonGenerator(const std::string& new_map_exit_id)
+: DungeonGenerator(new_map_exit_id)
 , SPACE_BETWEEN_SPIRALS(2)
 {
 }

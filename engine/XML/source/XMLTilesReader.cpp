@@ -36,6 +36,14 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     XMLNode cavern_tile_node         = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "CavernTile");
     XMLNode village_tile_node        = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "VillageTile");
     XMLNode dungeon_complex_tile_node= XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "DungeonComplexTile");
+    XMLNode barracks_node            = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "BarracksTile");
+    XMLNode castle_node              = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "CastleTile");
+    XMLNode church_node              = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "ChurchTile");
+    XMLNode graveyard_node           = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "GraveyardTile");
+    XMLNode keep_node                = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "KeepTile");
+    XMLNode library_node             = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "LibraryTile");
+    XMLNode site_of_death_node       = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "SiteOfDeathTile");
+    XMLNode temple_node              = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "TempleNode");
 
     // These push back items into the tile details in order, so if you're defining
     // a new tile type, add at appropriate place!
@@ -66,6 +74,14 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     parse_tile_text_details(tiles, cavern_tile_node);
     parse_tile_text_details(tiles, village_tile_node);
     parse_tile_text_details(tiles, dungeon_complex_tile_node);
+    parse_tile_text_details(tiles, barracks_node);
+    parse_tile_text_details(tiles, castle_node);
+    parse_tile_text_details(tiles, church_node);
+    parse_tile_text_details(tiles, graveyard_node);
+    parse_tile_text_details(tiles, keep_node);
+    parse_tile_text_details(tiles, library_node);
+    parse_tile_text_details(tiles, site_of_death_node);
+    parse_tile_text_details(tiles, temple_node);
   }
 
   return tiles;

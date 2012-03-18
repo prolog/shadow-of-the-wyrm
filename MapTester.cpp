@@ -6,6 +6,7 @@
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
+#include "GraveyardGeneratorFactory.hpp"
 #include "RoadGenerator.hpp"
 #include "RuinsGenerator.hpp"
 #include "MarshGenerator.hpp"
@@ -47,7 +48,10 @@ string generate_forest_road();
 string generate_sea();
 string generate_world();
 string generate_cavern();
+string generate_ordered_graveyard();
+string generate_scattered_graveyard();
 
+void   city_maps();
 void   initialize_settings();
 void   print_skill_name();
 void   race_info();
@@ -90,6 +94,12 @@ string map_to_string(MapPtr map, bool use_html)
     for (int col = 0; col < cols; col++)
     {
       TilePtr tile = map->at(row, col);
+      
+      if (!tile)
+      {
+        // sanity check
+        int x = 3;
+      }
       TileType type = tile->get_tile_type();
 
       if (tile->has_feature())
@@ -165,6 +175,10 @@ string map_to_string(MapPtr map, bool use_html)
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
             tile_ascii = "~";
             break;
+          case TILE_TYPE_GRAVE:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"C0C0C0\">";
+            tile_ascii = "+";
+            break;
           case TILE_TYPE_UP_STAIRCASE:
             if (use_html)
             {
@@ -207,15 +221,39 @@ string map_to_string(MapPtr map, bool use_html)
 
 string generate_cavern()
 {
-  GeneratorPtr cavern_gen = GeneratorPtr(new CavernGenerator());
+  GeneratorPtr cavern_gen = GeneratorPtr(new CavernGenerator(""));
   MapPtr map = cavern_gen->generate();
   cout << map_to_string(map, false);
   return map_to_string(map);
 }
 
+string generate_ordered_graveyard()
+{
+  bool inc_tomb = false;
+  int rand = RNG::range(0, 1);
+  if (rand) inc_tomb = true;
+
+  GeneratorPtr graveyard_gen = GraveyardGeneratorFactory::create_ordered_graveyard_generator("", inc_tomb);
+  MapPtr map = graveyard_gen->generate();
+  cout << map_to_string(map, false);
+  return map_to_string(map);
+}
+
+string generate_scattered_graveyard()
+{
+  bool inc_tomb = false;
+  int rand = RNG::range(0, 1);
+  if (rand) inc_tomb = true;
+  
+  GeneratorPtr graveyard_gen = GraveyardGeneratorFactory::create_scattered_graveyard_generator("", inc_tomb);
+  MapPtr map = graveyard_gen->generate();
+  cout << map_to_string(map, false);
+  return map_to_string(map);  
+}
+
 string generate_field()
 {
-  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator());
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
   MapPtr map = field_gen->generate();
   cout << map_to_string(map, false);
   return map_to_string(map);
@@ -223,7 +261,7 @@ string generate_field()
 
 string generate_forest()
 {
-  GeneratorPtr forest_gen = GeneratorPtr(new ForestGenerator());
+  GeneratorPtr forest_gen = GeneratorPtr(new ForestGenerator(""));
   MapPtr map = forest_gen->generate();
   cout << map_to_string(map, false);
   return map_to_string(map);
@@ -233,7 +271,7 @@ string generate_field_road()
 {
   CardinalDirection direction = static_cast<CardinalDirection>(RNG::range(0, 3));
   int width = RNG::range(3, 6);
-  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator());
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
   MapPtr map = field_gen->generate();
   RoadGenerator road_gen(direction, width);
   MapPtr final_map = road_gen.generate(map);
@@ -245,7 +283,7 @@ string generate_forest_road()
 {
   CardinalDirection direction = static_cast<CardinalDirection>(RNG::range(0, 3));
   int width = RNG::range(3, 6);
-  GeneratorPtr forest_gen = GeneratorPtr(new ForestGenerator());
+  GeneratorPtr forest_gen = GeneratorPtr(new ForestGenerator(""));
   MapPtr map = forest_gen->generate();
   RoadGenerator road_gen(direction, width);
   MapPtr final_map = road_gen.generate(map);
@@ -255,7 +293,7 @@ string generate_forest_road()
 
 string generate_field_settlement_ruins()
 {
-  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator());
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
   MapPtr field_map = field_gen->generate();
   SettlementRuinsGenerator sr_gen(field_map);
   MapPtr ruins_map = sr_gen.generate();
@@ -265,7 +303,7 @@ string generate_field_settlement_ruins()
 
 string generate_field_ruins()
 {
-  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator());
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
   MapPtr field_map = field_gen->generate();
   MapPtr ruins_map = RuinsGenerator::generate(field_map, RUINS_TYPE_KEEP);
   cout << map_to_string(ruins_map, false);
@@ -274,7 +312,7 @@ string generate_field_ruins()
 
 string generate_marsh()
 {
-  GeneratorPtr marsh_gen = GeneratorPtr(new MarshGenerator());
+  GeneratorPtr marsh_gen = GeneratorPtr(new MarshGenerator(""));
   MapPtr marsh_map = marsh_gen->generate();
   cout << map_to_string(marsh_map, false);
   return map_to_string(marsh_map);
@@ -282,7 +320,7 @@ string generate_marsh()
 
 string generate_settlement()
 {
-  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator());
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
   MapPtr field_map = field_gen->generate();
   SettlementGenerator settle_gen(field_map);
   MapPtr settlement_map = settle_gen.generate();
@@ -292,7 +330,7 @@ string generate_settlement()
 
 string generate_dungeon()
 {
-  GeneratorPtr dun_gen = GeneratorPtr(new DungeonGenerator()); // ha ha
+  GeneratorPtr dun_gen = GeneratorPtr(new DungeonGenerator("")); // ha ha
   MapPtr dun_gen_map = dun_gen->generate();
   cout << map_to_string(dun_gen_map, false);
   return map_to_string(dun_gen_map);
@@ -300,7 +338,7 @@ string generate_dungeon()
 
 string generate_spiral_dungeon()
 {
-  GeneratorPtr sd_gen = GeneratorPtr(new SpiralDungeonGenerator());
+  GeneratorPtr sd_gen = GeneratorPtr(new SpiralDungeonGenerator(""));
   MapPtr sd_map = sd_gen->generate();
   cout << map_to_string(sd_map, false);
   return map_to_string(sd_map);
@@ -308,7 +346,7 @@ string generate_spiral_dungeon()
 
 string generate_sea()
 {
-  GeneratorPtr sea_gen = GeneratorPtr(new SeaGenerator());
+  GeneratorPtr sea_gen = GeneratorPtr(new SeaGenerator(""));
   MapPtr sea_map = sea_gen->generate();
   cout << map_to_string(sea_map, false);
   return map_to_string(sea_map);
@@ -468,6 +506,35 @@ void test_rng()
   }
 }
 
+void city_maps()
+{
+  string map;
+  int city_adjacent_map = 0;
+  
+  while (city_adjacent_map != -1)
+  {
+    cout << "Enter a map number (-1 to quit)" << endl << endl;
+    cout << "1. Ordered Graveyard" << endl;
+    cout << "2. Scattered Graveyard" << endl;
+    
+    cin >> city_adjacent_map;
+    
+    switch(city_adjacent_map)
+    {
+      case 1:
+        map = generate_ordered_graveyard();
+        output_map(map, "graveyard_ordered_test.html");
+        break;
+      case 2:
+        map = generate_scattered_graveyard();
+        output_map(map, "graveyard_scattered_test.html");
+        break;
+      default:
+        break;
+    }
+  }
+}
+
 int main(int argc, char** argv)
 {
   string map;
@@ -495,6 +562,7 @@ int main(int argc, char** argv)
     cout << "14. Quick skill name test" << endl;
     cout << "15. Display race info" << endl;
     cout << "16. Display class info" << endl;
+    cout << "17. City-adjacent maps" << endl;
     cout << "-1. Quit" << endl << endl;
     cin >> option;
 
@@ -563,6 +631,9 @@ int main(int argc, char** argv)
         break;
       case 16:
         class_info();
+        break;
+      case 17:
+        city_maps();
         break;
       default:
         break;

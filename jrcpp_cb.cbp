@@ -102,7 +102,6 @@
 			<Add option="-pg -lgmon" />
 		</Linker>
 		<Unit filename="MapTester.cpp">
-			<Option target="Release" />
 			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="SavageLands.cpp">
@@ -134,7 +133,7 @@
 		<Unit filename="display\source\NCursesPromptProcessor.cpp" />
 		<Unit filename="display\source\NCursesUtils.cpp" />
 		<Unit filename="display\source\unit_tests\Display_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\XML\include\XMLClassesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLConfigurationReader.hpp" />
@@ -178,31 +177,31 @@
 		<Unit filename="engine\calculators\source\SoakCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ToHitCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\HeavyWeaponToHitCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\HitPointsCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\LightMeleeAndRangedWeaponToHitCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\MagicToHitCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\commands\equipment\include\EquipmentCommandFactory.hpp" />
 		<Unit filename="engine\commands\equipment\include\EquipmentCommandKeys.hpp" />
@@ -252,7 +251,7 @@
 		<Unit filename="engine\conversion\source\SkillsDumper.cpp" />
 		<Unit filename="engine\conversion\source\StatsDumper.cpp" />
 		<Unit filename="engine\conversion\source\unit_tests\Conversion_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\decision_strategies\include\DecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
@@ -264,11 +263,15 @@
 		<Unit filename="engine\generators\include\FieldGenerator.hpp" />
 		<Unit filename="engine\generators\include\ForestGenerator.hpp" />
 		<Unit filename="engine\generators\include\Generator.hpp" />
+		<Unit filename="engine\generators\include\GraveyardGenerator.hpp" />
+		<Unit filename="engine\generators\include\GraveyardGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\include\KeepRuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\MarshGenerator.hpp" />
 		<Unit filename="engine\generators\include\MountainsGenerator.hpp" />
+		<Unit filename="engine\generators\include\OrderedGraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\RoadGenerator.hpp" />
 		<Unit filename="engine\generators\include\RuinsGenerator.hpp" />
+		<Unit filename="engine\generators\include\ScatteredGraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\ScrubGenerator.hpp" />
 		<Unit filename="engine\generators\include\SeaGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementGenerator.hpp" />
@@ -286,11 +289,15 @@
 		<Unit filename="engine\generators\source\FieldGenerator.cpp" />
 		<Unit filename="engine\generators\source\ForestGenerator.cpp" />
 		<Unit filename="engine\generators\source\Generator.cpp" />
+		<Unit filename="engine\generators\source\GraveyardGenerator.cpp" />
+		<Unit filename="engine\generators\source\GraveyardGeneratorFactory.cpp" />
 		<Unit filename="engine\generators\source\KeepRuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\MarshGenerator.cpp" />
 		<Unit filename="engine\generators\source\MountainsGenerator.cpp" />
+		<Unit filename="engine\generators\source\OrderedGraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\RoadGenerator.cpp" />
 		<Unit filename="engine\generators\source\RuinsGenerator.cpp" />
+		<Unit filename="engine\generators\source\ScatteredGraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\ScrubGenerator.cpp" />
 		<Unit filename="engine\generators\source\SeaGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementGenerator.cpp" />
@@ -302,10 +309,10 @@
 		<Unit filename="engine\generators\source\TileGenerator.cpp" />
 		<Unit filename="engine\generators\source\WorldGenerator.cpp" />
 		<Unit filename="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\generators\source\unit_tests\TileGenerator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\include\ActionManager.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
@@ -318,6 +325,7 @@
 		<Unit filename="engine\include\ItemFactory.hpp" />
 		<Unit filename="engine\include\ItemManager.hpp" />
 		<Unit filename="engine\include\Log.hpp" />
+		<Unit filename="engine\include\MapExitUtils.hpp" />
 		<Unit filename="engine\include\MapRegistry.hpp" />
 		<Unit filename="engine\include\MapUtils.hpp" />
 		<Unit filename="engine\include\Message.hpp" />
@@ -360,6 +368,7 @@
 		<Unit filename="engine\source\ItemFactory.cpp" />
 		<Unit filename="engine\source\ItemManager.cpp" />
 		<Unit filename="engine\source\Log.cpp" />
+		<Unit filename="engine\source\MapExitUtils.cpp" />
 		<Unit filename="engine\source\MapRegistry.cpp" />
 		<Unit filename="engine\source\MapUtils.cpp" />
 		<Unit filename="engine\source\Message.cpp" />
@@ -372,19 +381,19 @@
 		<Unit filename="engine\source\StringConstants.cpp" />
 		<Unit filename="engine\source\StringTable.cpp" />
 		<Unit filename="engine\source\unit_tests\CreatureFactory_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\Dimensions_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\Message_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\Messages_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\translators\include\CreatureTranslator.hpp" />
 		<Unit filename="engine\translators\include\DisplayItemTypeFactory.hpp" />
@@ -399,7 +408,7 @@
 		<Unit filename="engine\translators\source\ItemTranslator.cpp" />
 		<Unit filename="engine\translators\source\MapTranslator.cpp" />
 		<Unit filename="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="global_functions.cpp" />
 		<Unit filename="include\Colours.hpp" />
@@ -494,16 +503,16 @@
 		<Unit filename="world\source\Weight.cpp" />
 		<Unit filename="world\source\World.cpp" />
 		<Unit filename="world\source\unit_tests\Creature_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\source\unit_tests\Race_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\source\unit_tests\Skills_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\source\unit_tests\Statistic_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\features\include\Door.hpp" />
 		<Unit filename="world\tiles\features\include\Entrance.hpp" />
@@ -526,17 +535,24 @@
 		<Unit filename="world\tiles\features\source\ITrappable.cpp" />
 		<Unit filename="world\tiles\features\source\Trap.cpp" />
 		<Unit filename="world\tiles\include\AllTiles.hpp" />
+		<Unit filename="world\tiles\include\BarracksTile.hpp" />
 		<Unit filename="world\tiles\include\BeachTile.hpp" />
 		<Unit filename="world\tiles\include\BushTile.hpp" />
 		<Unit filename="world\tiles\include\CairnTile.hpp" />
+		<Unit filename="world\tiles\include\CastleTile.hpp" />
 		<Unit filename="world\tiles\include\CavernTile.hpp" />
+		<Unit filename="world\tiles\include\ChurchTile.hpp" />
 		<Unit filename="world\tiles\include\DesertTile.hpp" />
 		<Unit filename="world\tiles\include\DownStaircaseTile.hpp" />
+		<Unit filename="world\tiles\include\DungeonComplexTile.hpp" />
 		<Unit filename="world\tiles\include\DungeonTile.hpp" />
 		<Unit filename="world\tiles\include\FieldTile.hpp" />
 		<Unit filename="world\tiles\include\ForestTile.hpp" />
 		<Unit filename="world\tiles\include\GraveTile.hpp" />
+		<Unit filename="world\tiles\include\GraveyardTile.hpp" />
 		<Unit filename="world\tiles\include\HillsTile.hpp" />
+		<Unit filename="world\tiles\include\KeepTile.hpp" />
+		<Unit filename="world\tiles\include\LibraryTile.hpp" />
 		<Unit filename="world\tiles\include\MarshTile.hpp" />
 		<Unit filename="world\tiles\include\MountainsTile.hpp" />
 		<Unit filename="world\tiles\include\ReedsTile.hpp" />
@@ -546,8 +562,10 @@
 		<Unit filename="world\tiles\include\ScrubTile.hpp" />
 		<Unit filename="world\tiles\include\SeaTile.hpp" />
 		<Unit filename="world\tiles\include\ShoalsTile.hpp" />
+		<Unit filename="world\tiles\include\SiteOfDeathTile.hpp" />
 		<Unit filename="world\tiles\include\SpringsTile.hpp" />
 		<Unit filename="world\tiles\include\StaircaseTile.hpp" />
+		<Unit filename="world\tiles\include\TempleTile.hpp" />
 		<Unit filename="world\tiles\include\Tile.hpp" />
 		<Unit filename="world\tiles\include\TreeTile.hpp" />
 		<Unit filename="world\tiles\include\UpStaircaseTile.hpp" />
@@ -556,17 +574,24 @@
 		<Unit filename="world\tiles\include\WheatTile.hpp" />
 		<Unit filename="world\tiles\include\WorldMapTile.hpp" />
 		<Unit filename="world\tiles\include\tiles.hpp" />
+		<Unit filename="world\tiles\source\BarracksTile.cpp" />
 		<Unit filename="world\tiles\source\BeachTile.cpp" />
 		<Unit filename="world\tiles\source\BushTile.cpp" />
 		<Unit filename="world\tiles\source\CairnTile.cpp" />
+		<Unit filename="world\tiles\source\CastleTile.cpp" />
 		<Unit filename="world\tiles\source\CavernTile.cpp" />
+		<Unit filename="world\tiles\source\ChurchTile.cpp" />
 		<Unit filename="world\tiles\source\DesertTile.cpp" />
 		<Unit filename="world\tiles\source\DownStaircaseTile.cpp" />
+		<Unit filename="world\tiles\source\DungeonComplexTile.cpp" />
 		<Unit filename="world\tiles\source\DungeonTile.cpp" />
 		<Unit filename="world\tiles\source\FieldTile.cpp" />
 		<Unit filename="world\tiles\source\ForestTile.cpp" />
 		<Unit filename="world\tiles\source\GraveTile.cpp" />
+		<Unit filename="world\tiles\source\GraveyardTile.cpp" />
 		<Unit filename="world\tiles\source\HillsTile.cpp" />
+		<Unit filename="world\tiles\source\KeepTile.cpp" />
+		<Unit filename="world\tiles\source\LibraryTile.cpp" />
 		<Unit filename="world\tiles\source\MarshTile.cpp" />
 		<Unit filename="world\tiles\source\MountainsTile.cpp" />
 		<Unit filename="world\tiles\source\ReedsTile.cpp" />
@@ -576,8 +601,10 @@
 		<Unit filename="world\tiles\source\ScrubTile.cpp" />
 		<Unit filename="world\tiles\source\SeaTile.cpp" />
 		<Unit filename="world\tiles\source\ShoalsTile.cpp" />
+		<Unit filename="world\tiles\source\SiteOfDeathTile.cpp" />
 		<Unit filename="world\tiles\source\SpringsTile.cpp" />
 		<Unit filename="world\tiles\source\StaircaseTile.cpp" />
+		<Unit filename="world\tiles\source\TempleTile.cpp" />
 		<Unit filename="world\tiles\source\Tile.cpp" />
 		<Unit filename="world\tiles\source\TreeTile.cpp" />
 		<Unit filename="world\tiles\source\UpStaircaseTile.cpp" />
@@ -586,88 +613,88 @@
 		<Unit filename="world\tiles\source\WheatTile.cpp" />
 		<Unit filename="world\tiles\source\WorldMapTile.cpp" />
 		<Unit filename="world\tiles\source\unit_tests\BeachTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\BushTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\CairnTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\CavernTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\DesertTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\DownStaircaseTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\DungeonTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\FieldTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\ForestTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\GraveTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\HillsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\MarshTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\MountainsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\ReedsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\RiverTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\RoadTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\RockTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\ScrubTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\SeaTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\ShoalsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\SpringsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\StaircaseTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\Tile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\TreeTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\UpStaircaseTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\VillageTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\WeedsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\WheatTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>
 			<code_completion />

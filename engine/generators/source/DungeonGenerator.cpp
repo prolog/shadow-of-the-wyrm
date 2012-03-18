@@ -5,6 +5,7 @@
 #include "DungeonGenerator.hpp"
 #include "AllTiles.hpp"
 #include "FeatureGenerator.hpp"
+#include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
@@ -12,7 +13,6 @@
 using namespace std;
 using boost::make_shared;
 
-// JCD FIXME refactor later
 Room::Room(int nid, int nx1, int nx2, int ny1, int ny2)
 : id(nid), x1(nx1), x2(nx2), y1(ny1), y2(ny2)
 {
@@ -69,40 +69,34 @@ Coordinate Room::get_centre() const
   return c;
 }
 
-// comparator goes here.
-
-DungeonGenerator::DungeonGenerator()
-: DEFAULT_MIN_HEIGHT(4)
+DungeonGenerator::DungeonGenerator(const std::string& new_map_exit_id)
+: Generator(new_map_exit_id)
+, DEFAULT_MIN_HEIGHT(4)
 , DEFAULT_MAX_HEIGHT(7)
-, DEFAULT_MIN_WIDTH(4)
-, DEFAULT_MAX_WIDTH(8)
-, SPACE_BETWEEN_FEATURES(2)
+, DEFAULT_MIN_WIDTH(5)
+, DEFAULT_MAX_WIDTH(9)
+, MIN_NUM_ROOMS(8)
+, MAX_NUM_ROOMS(10)
 {
-  initialize_height_and_width_maps();
 }
 
-void DungeonGenerator::initialize_height_and_width_maps()
+void DungeonGenerator::initialize_and_seed_cheat_vectors(const Dimensions& dimensions)
 {
-  // Min/Max Heights
-  feature_height_map.insert(make_pair(DUNGEON_FEATURE_ROOM, make_pair(DEFAULT_MIN_HEIGHT, DEFAULT_MAX_HEIGHT)));
-
-  // Min/Max Widths
-  feature_width_map.insert(make_pair(DUNGEON_FEATURE_ROOM, make_pair(DEFAULT_MIN_WIDTH, DEFAULT_MAX_WIDTH)));
-}
-
-MapPtr DungeonGenerator::generate(const Dimensions& dimensions, const std::string& new_map_exit_id)
-{
-  map_exit_id = new_map_exit_id;
-  MapPtr null_map; // needed to compile - should never get hit.
-  bool success = false;
-
-  // Initialize the vectors for some guided randomness.
   y1_cheaty_vector.clear();
   y2_cheaty_vector.clear();
 
   y1_cheaty_vector.push_back(1);
   y2_cheaty_vector.push_back(dimensions.get_y()-1);
-  y2_cheaty_vector.push_back(dimensions.get_y()-2);
+  y2_cheaty_vector.push_back(dimensions.get_y()-2);  
+}
+
+MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
+{
+  MapPtr null_map; // needed to compile - should never get hit.
+  bool success = false;
+
+  // Initialize the vectors for some guided randomness.
+  initialize_and_seed_cheat_vectors(dimensions);
   
   // Try until we get a resonable map
   while (!success)
@@ -110,13 +104,11 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions, const std::strin
     MapPtr result_map = MapPtr(new Map(dimensions));
 
     fill(result_map, TILE_TYPE_ROCK);
-      
     success = generate_dungeon(result_map);
     
     if (!success) continue;
     
-    result_map->set_map_type(MAP_TYPE_UNDERWORLD);    
-
+    result_map->set_map_type(MAP_TYPE_UNDERWORLD); 
     return result_map;
   }
 
@@ -134,49 +126,18 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
   unconnected_rooms.clear();
   connected_rooms.clear();
   
-  Dimensions dim = map->size();
-  int max_y = dim.get_y();
-  int max_x = dim.get_x();
-
   // This is the "place x random rooms" approach.  Looks OK some of the time.
   // Attempt to place a number of rooms.
   int cur_num_rooms = 0;
   int failure_counter = 0;
-  int max_rooms = RNG::range(8, 10);
-  while (cur_num_rooms <= max_rooms)
+  int total_rooms = RNG::range(MIN_NUM_ROOMS, MAX_NUM_ROOMS);
+  
+  while (cur_num_rooms <= total_rooms)
   {
-    // Attempt to add a room
-    DungeonFeature feature_type = get_random_feature();
-
-    int start_y;
-    int start_x;
+    int start_y, start_x, height, width;
     
-    int height;
-    int width;  
-    
-    if (!y1_cheaty_vector.empty())
-    {
-      start_y = y1_cheaty_vector.back();
-      height = RNG::range(get_min_feature_height(feature_type), get_max_feature_height(feature_type));
-      y1_cheaty_vector.pop_back();
-    }
-    else if (!y2_cheaty_vector.empty())
-    {
-      height = RNG::range(get_min_feature_height(feature_type), get_max_feature_height(feature_type));
-      start_y = y2_cheaty_vector.back() - height;
-      y2_cheaty_vector.pop_back();
-    }
-    else
-    {
-      start_y = RNG::range(1, max_y-get_max_feature_height(feature_type)-1);;
-      height = RNG::range(get_min_feature_height(feature_type), get_max_feature_height(feature_type));
-    }
-
-    start_x = RNG::range(1, max_x-get_max_feature_width(feature_type)-1);;
-    width = RNG::range(get_min_feature_width(feature_type), get_max_feature_width(feature_type));;
-    
-    bool placement_success = place_feature(map, feature_type, start_y, start_x, height, width);
-    
+    bool placement_success = generate_and_place_room(map, start_y, start_x, height, width);
+        
     if (placement_success)
     {
       cur_num_rooms++;
@@ -212,13 +173,40 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
     }
   }
 
-  // Make additional connections!
-  //add_additional_corridors(map);
-
   place_doorways(map);
   place_staircases(map);
 
   return true;
+}
+
+bool DungeonGenerator::generate_and_place_room(MapPtr map, int& start_y, int& start_x, int& height, int& width)
+{
+  Dimensions dim = map->size();
+  int max_y = dim.get_y();
+  int max_x = dim.get_x();
+
+  if (!y1_cheaty_vector.empty())
+  {
+    start_y = y1_cheaty_vector.back();
+    height = RNG::range(DEFAULT_MIN_HEIGHT, DEFAULT_MAX_HEIGHT);
+    y1_cheaty_vector.pop_back();
+  }
+  else if (!y2_cheaty_vector.empty())
+  {
+    height = RNG::range(DEFAULT_MIN_HEIGHT, DEFAULT_MAX_HEIGHT);
+    start_y = y2_cheaty_vector.back() - height;
+    y2_cheaty_vector.pop_back();
+  }
+  else
+  {
+    start_y = RNG::range(1, max_y-DEFAULT_MAX_HEIGHT-1);
+    height = RNG::range(DEFAULT_MIN_HEIGHT, DEFAULT_MAX_HEIGHT);
+  }
+
+  start_x = RNG::range(1, max_x-DEFAULT_MAX_WIDTH-1);
+  width = RNG::range(DEFAULT_MIN_WIDTH, DEFAULT_MIN_WIDTH);
+  
+  return place_room(map, start_y, start_x, height, width);  
 }
 
 bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& room2)
@@ -242,10 +230,6 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   // Checks to ensure we don't "brush up against" another room.  Need a tile's
   // separation.  Otherwise, it looks like the second room expands in strange
   // ways.
-/*  if (r1_c_second == room2.x1 - 1) r1_c_second--;
-  if (r1_c_second == room2.x2 + 1) r1_c_second++;
-  if (r1_c_first == room2.x1 - 1) r1_c_second--;
-  if (r1_c_first == room2.x2 + 1) r1_c_second++; */
   if (r1_c_second == (room2.x1))
   {
     r1_c_second -= 2;
@@ -253,7 +237,7 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   
   if (r1_c_second == (room2.x2))
   {
-    r1_c_second += 2;
+    r1_c_second += 2;      
   }
 
   if (r1_c_second == (room2.x1-1))
@@ -295,10 +279,6 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
     }
   }
 
-  // JCD FIXME: Fix the "brush up against" problem here.
-  cout << "Room1: x1: " << room1.x1 << ", x2: " << room1.x2 << ", y1: " << room1.y1 << ", y2: " << room1.y2 << endl;
-  cout << "Room2: x1: " << room2.x1 << ", x2: " << room2.x2 << ", y1: " << room2.y1 << ", y2: " << room2.y2 << endl;
-  cout << "Current coordinates are: (" << start_row << ", " << r1_c_second << ")" << endl;
   TilePtr extra_floor_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);  
   if (start_row == (room1.y1-1))
   {
@@ -403,31 +383,7 @@ bool DungeonGenerator::tile_exists_outside_of_room(const int row, const int col,
   return true;
 }
 
-bool DungeonGenerator::place_feature(MapPtr map, const DungeonFeature feature, int start_row, int start_col, int size_rows, int size_cols)
-{
-  bool placement_success = false;
-  
-  switch(feature)
-  {
-    // Update this later.
-    case DUNGEON_FEATURE_ROOM:
-    case DUNGEON_FEATURE_CIRCULAR_WITH_PIT:
-    case DUNGEON_FEATURE_CAVE_IN:
-    case DUNGEON_FEATURE_VAULT:
-    case DUNGEON_FEATURE_OUT_OF_DEPTH_VAULT:
-    case DUNGEON_FEATURE_BEEHIVE:
-    case DUNGEON_FEATURE_ZOO:
-      placement_success = place_room(map, start_row, start_col, size_rows, size_cols);
-      break;
-    default:
-      break;
-  }
-  
-  return placement_success;
-}
-
-// JCD FIXME: Rooms are generated too close in proximity to each other.  Fix this up.  They need to be at least three
-// "rocks" apart.
+// Check to see if something can be placed in the specified range, allowing for a little edge room.
 bool DungeonGenerator::check_range(MapPtr map, int start_row, int start_col, int size_rows, int size_cols)
 {
   int size_y = start_row + size_rows;
@@ -477,6 +433,7 @@ bool DungeonGenerator::place_doorway(MapPtr map, int row, int col)
 bool DungeonGenerator::place_doorways(MapPtr map)
 {
   Dimensions dim = map->size();
+  int rand;
   
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -487,10 +444,15 @@ bool DungeonGenerator::place_doorways(MapPtr map)
     {
       TilePtr tile = map->at(row, col);
       
-      if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && tile_exists_outside_of_room(row, col, true, true) && is_tile_adjacent_to_room_tile(dim, row, col))
+      // 80% chance of a door
+      rand = RNG::range(1, 100);
+      if (rand < 80)
       {
-        FeaturePtr doorway = FeatureGenerator::generate_door();
-        tile->set_feature(doorway);
+        if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && tile_exists_outside_of_room(row, col, true, true) && is_tile_adjacent_to_room_tile(dim, row, col))
+        {
+          FeaturePtr doorway = FeatureGenerator::generate_door();
+          tile->set_feature(doorway);
+        }        
       }
     }      
   }
@@ -498,138 +460,68 @@ bool DungeonGenerator::place_doorways(MapPtr map)
   return true;
 }
 
-bool DungeonGenerator::add_additional_corridors(MapPtr map)
-{
-  int num_addl_random_connections = RNG::range(10, 15);
-  cout << "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX" << endl;
-  for (int i = 0; i < num_addl_random_connections; i++)
-  {
-    Room room = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
-    
-    BOOST_FOREACH(Room& r, connected_rooms)
-    {
-      boost::shared_ptr<Room> roomp = boost::shared_ptr<Room>(new Room(room));
-      r.centre_room = roomp;      
-    }
-    
-    std::sort(connected_rooms.begin(), connected_rooms.end(), compare_rooms);
-    Room room2 = connected_rooms.at(0); // 0 would be the same room.
-    
-    connect_rooms(map, room2, room);
-  }
-  
-  return true;
-}
-
 bool DungeonGenerator::place_staircases(MapPtr map)
 {
-  Dimensions dim = map->size();
   bool location_found = false;
   int y, x;
   
+  Room first_staircase_room;
+  
   while (!location_found)
   {
-    y = RNG::range(0, dim.get_y()-1);
-    x = RNG::range(0, dim.get_x()-1);
+    Room r = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
     
-    TilePtr tile = map->at(y, x);
+    y = RNG::range(r.y1+1, r.y2-2);
+    x = RNG::range(r.x1+1, r.x2-2);
     
-    if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && !tile_exists_outside_of_room(y, x, true, true))
-    {      
-      TilePtr down_staircase = TileGenerator::generate(TILE_TYPE_DOWN_STAIRCASE);
-      map->insert(y, x, down_staircase);
-      location_found = true;
-    }
+    place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, false, false);
+
+    location_found = true;
   }
   
   location_found = false;
   
   while (!location_found)
   {
-    y = RNG::range(0, dim.get_y()-1);
-    x = RNG::range(0, dim.get_x()-1);
-
-    TilePtr tile = map->at(y, x);
+    Room r = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
+    if (r == first_staircase_room) continue;
     
-    if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && !tile_exists_outside_of_room(y, x, true, true))
-    {
-      Coordinate c;
-      c.first = y;
-      c.second = x;
-      
-      TilePtr up_staircase = TileGenerator::generate(TILE_TYPE_UP_STAIRCASE);
-
-      if (!map_exit_id.empty())
-      {
-        // JCD FIXME: Make this a MapUtils function
-        TileExitMap& tile_exit_map = up_staircase->get_tile_exit_map_ref();
-
-        MapExitPtr new_map_exit = make_shared<MapExit>();
-        new_map_exit->set_map_id(map_exit_id);
-        
-        tile_exit_map.insert(make_pair(DIRECTION_UP, new_map_exit));
-      }
-      
-      map->insert(y, x, up_staircase); 
-      map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
-      location_found = true;
-    }    
+    y = RNG::range(r.y1+1, r.y2-2);
+    x = RNG::range(r.x1+1, r.x2-2);
+    
+    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, true, true);
+    
+    location_found = true;
   }
   
   return true;
 }
 
-// Eventually, this needs to be updated to get features based on danger level, as well.
-DungeonFeature DungeonGenerator::get_random_feature()
+bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const Direction direction, bool link_to_map_exit_id, bool set_as_player_default_location)
 {
-//  DungeonFeature feature = static_cast<DungeonFeature>(RNG::range(DUNGEON_FEATURE_MIN, DUNGEON_FEATURE_MAX));
-  return DUNGEON_FEATURE_ROOM;
-}
-
-int DungeonGenerator::get_min_feature_height(const DungeonFeature feature)
-{
-  DungeonFeatureSizeMapIterator_const h_it = feature_height_map.find(feature);
-
-  if (h_it != feature_height_map.end())
+  TilePtr tile = map->at(row, col);
+  
+  if (tile)
   {
-    return h_it->second.first;
-  }
+    Coordinate c(row, col);
+    
+    TilePtr new_staircase_tile = TileGenerator::generate(tile_type);
 
-  return DEFAULT_MIN_HEIGHT;
-}
-
-int DungeonGenerator::get_max_feature_height(const DungeonFeature feature)
-{
-  DungeonFeatureSizeMapIterator_const h_it = feature_height_map.find(feature);
-
-  if (h_it != feature_height_map.end())
-  {
-    return h_it->second.second;
-  }
-
-  return DEFAULT_MAX_HEIGHT;
-}
-
-int DungeonGenerator::get_min_feature_width(const DungeonFeature feature)
-{
-  DungeonFeatureSizeMapIterator_const w_it = feature_width_map.find(feature);
-
-  if (w_it != feature_width_map.end())
-  {
-    return w_it->second.first;
-  }
-
-  return DEFAULT_MIN_WIDTH;
-}
-
-int DungeonGenerator::get_max_feature_width(const DungeonFeature feature)
-{
-  DungeonFeatureSizeMapIterator_const w_it = feature_width_map.find(feature);
-
-  if (w_it != feature_width_map.end())
-  {
-    return w_it->second.second;
-  }
-
-  return DEFAULT_MAX_WIDTH;
+    if (link_to_map_exit_id)
+    {
+      if (!map_exit_id.empty())
+      {
+        MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, map_exit_id);
+      }      
+    }
+    
+    map->insert(row, col, new_staircase_tile); 
+    
+    if (set_as_player_default_location)
+    {
+      map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
+    }
+  }  
+  
+  return true;
 }

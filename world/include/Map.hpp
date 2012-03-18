@@ -41,7 +41,7 @@ class Map
 		void set_map_type(const MapType& new_type);
 		MapType get_map_type() const;
 		
-		std::map<Coordinate, TilePtr > get_tiles() const;
+		std::map<std::string, TilePtr > get_tiles() const;
 
     void clear_locations();
     void add_or_update_location(const std::string& location, const Coordinate& coordinate);
@@ -55,17 +55,21 @@ class Map
     void set_map_id(const std::string& new_map_id);
     std::string get_map_id() const;
     
+    std::string get_map_exit_id() const;
+    
     void set_permanent(const bool permenance);
     bool get_permanent() const;
 
 	protected:
 		void create_creatures();
+		
+		std::string make_key(const int row, const int col);
 
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
     std::vector<CreaturePtr> creatures;
 
-		std::map<Coordinate, TilePtr > tiles;
+		std::map<std::string, TilePtr > tiles;
 		Dimensions dimensions;
     NamedMapLocations locations;
     MapType map_type;

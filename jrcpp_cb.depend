@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1331480769 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
+1332078871 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
 	<iostream>
 	<fstream>
 	<boost/shared_ptr.hpp>
@@ -8,6 +8,7 @@
 	"DungeonGenerator.hpp"
 	"FieldGenerator.hpp"
 	"ForestGenerator.hpp"
+	"GraveyardGeneratorFactory.hpp"
 	"RoadGenerator.hpp"
 	"RuinsGenerator.hpp"
 	"MarshGenerator.hpp"
@@ -386,15 +387,16 @@
 1322271939 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\skillscalculator_test.cpp
 	"gtest/gtest.h"
 
-1331482326 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmltilesreader.cpp
+1331815548 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmltilesreader.cpp
 	"XMLTilesReader.hpp"
 	"DisplayTile.hpp"
 
-1331484591 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\caverngenerator.cpp
+1331591428 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\caverngenerator.cpp
 	<set>
 	<boost/make_shared.hpp>
 	"CavernGenerator.hpp"
 	"CellularAutomataGenerator.hpp"
+	"MapExitUtils.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
 
@@ -408,7 +410,7 @@
 	"gtest/gtest.h"
 	<algorithm>
 
-1331484941 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
+1331687001 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
 	<algorithm>
 	<cmath>
 	<boost/make_shared.hpp>
@@ -416,11 +418,12 @@
 	"DungeonGenerator.hpp"
 	"AllTiles.hpp"
 	"FeatureGenerator.hpp"
+	"MapExitUtils.hpp"
 	"MapUtils.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
 
-1330485151 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\fieldgenerator.cpp
+1331592691 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\fieldgenerator.cpp
 	<iostream>
 	"TileGenerator.hpp"
 	"FieldGenerator.hpp"
@@ -428,7 +431,7 @@
 	"tiles.hpp"
 	"RNG.hpp"
 
-1330485414 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\forestgenerator.cpp
+1331592784 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\forestgenerator.cpp
 	"ForestGenerator.hpp"
 	"SpringsGenerator.hpp"
 	"StreamGenerator.hpp"
@@ -437,17 +440,17 @@
 	"Directions.hpp"
 	<vector>
 
-1330797563 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
+1331591208 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
 	"TileGenerator.hpp"
 	"Generator.hpp"
 	"Map.hpp"
 
-1330796403 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\keepruinsgenerator.cpp
+1331592366 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\keepruinsgenerator.cpp
 	"KeepRuinsGenerator.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
 
-1330485207 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\marshgenerator.cpp
+1331591302 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\marshgenerator.cpp
 	"AllTiles.hpp"
 	"MarshGenerator.hpp"
 	"TileGenerator.hpp"
@@ -465,16 +468,16 @@
 	"TileGenerator.hpp"
 	"RNG.hpp"
 
-1330799148 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementgenerator.cpp
+1331592032 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementgenerator.cpp
 	"FeatureGenerator.hpp"
 	"SettlementGenerator.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
 
-1330795621 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementruinsgenerator.cpp
+1331591773 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementruinsgenerator.cpp
 	"SettlementRuinsGenerator.hpp"
 
-1326037238 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\spiraldungeongenerator.cpp
+1331591855 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\spiraldungeongenerator.cpp
 	"SpiralDungeonGenerator.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
@@ -492,7 +495,7 @@
 	"Dimensions.hpp"
 	"RNG.hpp"
 
-1331481688 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\tilegenerator.cpp
+1331816618 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\tilegenerator.cpp
 	<boost/make_shared.hpp>
 	"Log.hpp"
 	"TileGenerator.hpp"
@@ -503,7 +506,7 @@
 1321456660 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
 	"gtest/gtest.h"
 
-1331482013 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+1331687645 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
 	<vector>
 	"WorldGenerator.hpp"
 	"TileGenerator.hpp"
@@ -667,7 +670,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1331481697 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1331901409 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
@@ -710,7 +713,8 @@
 	"Item.hpp"
 	"Wood.hpp"
 
-1331483910 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1332077906 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+	<sstream>
 	"Map.hpp"
 
 1327770295 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
@@ -785,7 +789,7 @@
 1322753143 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\downstaircasetile_test.cpp
 	"gtest/gtest.h"
 
-1331481635 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\dungeontile.cpp
+1331555529 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\dungeontile.cpp
 	"DungeonTile.hpp"
 	"unit_tests/DungeonTile_test.cpp"
 
@@ -1029,20 +1033,21 @@
 	"MessageManager.hpp"
 	"Log.hpp"
 
-1330822254 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
+1331592569 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"Conversion.hpp"
 	"Game.hpp"
 	"Log.hpp"
 	"MessageManager.hpp"
 	"MovementManager.hpp"
+	"MapExitUtils.hpp"
 	"MapUtils.hpp"
 	"TerrainGeneratorFactory.hpp"
 
-1330485207 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\seagenerator.cpp
+1331591662 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\seagenerator.cpp
 	"SeaGenerator.hpp"
 
-1330485207 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\mountainsgenerator.cpp
+1331592784 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\mountainsgenerator.cpp
 	"MountainsGenerator.hpp"
 
 1325951742 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\sexselectionscreen.cpp
@@ -1212,7 +1217,7 @@
 1327847815 source:c:\cygwin\home\julian\jrcpp\world\source\mapexit.cpp
 	"MapExit.hpp"
 
-1331481688 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\terraingeneratorfactory.cpp
+1331815644 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\terraingeneratorfactory.cpp
 	<boost/make_shared.hpp>
 	"CavernGenerator.hpp"
 	"DesertGenerator.hpp"
@@ -1259,7 +1264,7 @@
 1328625360 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\soakcalculator_test.cpp
 	"gtest/gtest.h"
 
-1330485117 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\desertgenerator.cpp
+1331592784 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\desertgenerator.cpp
 	"DesertGenerator.hpp"
 
 1329967707 source:c:\cygwin\home\julian\jrcpp\world\materials\source\iron.cpp
@@ -1475,8 +1480,58 @@
 	"FeatureGenerator.hpp"
 	"Door.hpp"
 
-1330898552 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\scrubgenerator.cpp
+1331592784 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\scrubgenerator.cpp
 	"ScrubGenerator.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
+
+1331555528 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\dungeoncomplextile.cpp
+	"DungeonComplexTile.hpp"
+
+1331556695 source:c:\cygwin\home\julian\jrcpp\engine\source\mapexitutils.cpp
+	<boost/make_shared.hpp>
+	"MapExitUtils.hpp"
+
+1331901573 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\barrackstile.cpp
+	"BarracksTile.hpp"
+
+1331901585 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\castletile.cpp
+	"CastleTile.hpp"
+
+1331901600 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\churchtile.cpp
+	"ChurchTile.hpp"
+
+1331901615 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\graveyardtile.cpp
+	"GraveyardTile.hpp"
+
+1331901642 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\librarytile.cpp
+	"LibraryTile.hpp"
+
+1331901631 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\keeptile.cpp
+	"KeepTile.hpp"
+
+1331901660 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\siteofdeathtile.cpp
+	"SiteOfDeathTile.hpp"
+
+1331902220 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\templetile.cpp
+	"TempleTile.hpp"
+
+1332083699 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\graveyardgenerator.cpp
+	"GraveyardGenerator.hpp"
+	"RNG.hpp"
+	"TileGenerator.hpp"
+
+1332075375 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\graveyardgeneratorfactory.cpp
+	<boost/make_shared.hpp>
+	"GraveyardGeneratorFactory.hpp"
+	"OrderedGraveyardGenerator.hpp"
+	"ScatteredGraveyardGenerator.hpp"
+
+1332074280 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\orderedgraveyardgenerator.cpp
+	"OrderedGraveyardGenerator.hpp"
+
+1332083775 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\scatteredgraveyardgenerator.cpp
+	"RNG.hpp"
+	"ScatteredGraveyardGenerator.hpp"
+	"TileGenerator.hpp"
 

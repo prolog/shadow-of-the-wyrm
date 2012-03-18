@@ -7,7 +7,7 @@ class KeepRuinsGenerator : public Generator
  public:
     KeepRuinsGenerator(MapPtr new_base_map);
 
-    MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
+    MapPtr generate(const Dimensions& dim);
     MapPtr generate();
 
   protected:

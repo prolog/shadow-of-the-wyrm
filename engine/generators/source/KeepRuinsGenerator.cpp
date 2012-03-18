@@ -5,11 +5,12 @@
 using std::string;
 
 KeepRuinsGenerator::KeepRuinsGenerator(MapPtr new_base_map)
-: base_map(new_base_map)
+: Generator(new_base_map->get_map_exit_id())
+, base_map(new_base_map)
 {
 }
 
-MapPtr KeepRuinsGenerator::generate(const Dimensions& dim, const string& map_exit_id)
+MapPtr KeepRuinsGenerator::generate(const Dimensions& dim)
 {
   // JCD FIXME: Ignore dimensions for now.
   return generate();

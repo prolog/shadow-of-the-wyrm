@@ -134,17 +134,25 @@ EntranceTextKeys::~EntranceTextKeys()
 {
 }
 
-string EntranceTextKeys::ENTRANCE_FIELD     = "ENTRANCE_FIELD";
-string EntranceTextKeys::ENTRANCE_SCRUB     = "ENTRANCE_SCRUB";
-string EntranceTextKeys::ENTRANCE_DESERT    = "ENTRANCE_DESERT";
-string EntranceTextKeys::ENTRANCE_MOUNTAINS = "ENTRANCE_MOUNTAINS";
-string EntranceTextKeys::ENTRANCE_SEA       = "ENTRANCE_SEA";
-string EntranceTextKeys::ENTRANCE_FOREST    = "ENTRANCE_FOREST";
-string EntranceTextKeys::ENTRANCE_MARSH     = "ENTRANCE_MARSH";
-string EntranceTextKeys::ENTRANCE_HILLS     = "ENTRANCE_HILLS";
-string EntranceTextKeys::ENTRANCE_CAVERN    = "ENTRANCE_CAVERN";
-string EntranceTextKeys::ENTRANCE_VILLAGE   = "ENTRANCE_VILLAGE";
+string EntranceTextKeys::ENTRANCE_FIELD           = "ENTRANCE_FIELD";
+string EntranceTextKeys::ENTRANCE_SCRUB           = "ENTRANCE_SCRUB";
+string EntranceTextKeys::ENTRANCE_DESERT          = "ENTRANCE_DESERT";
+string EntranceTextKeys::ENTRANCE_MOUNTAINS       = "ENTRANCE_MOUNTAINS";
+string EntranceTextKeys::ENTRANCE_SEA             = "ENTRANCE_SEA";
+string EntranceTextKeys::ENTRANCE_FOREST          = "ENTRANCE_FOREST";
+string EntranceTextKeys::ENTRANCE_MARSH           = "ENTRANCE_MARSH";
+string EntranceTextKeys::ENTRANCE_HILLS           = "ENTRANCE_HILLS";
+string EntranceTextKeys::ENTRANCE_CAVERN          = "ENTRANCE_CAVERN";
+string EntranceTextKeys::ENTRANCE_VILLAGE         = "ENTRANCE_VILLAGE";
 string EntranceTextKeys::ENTRANCE_DUNGEON_COMPLEX = "ENTRANCE_DUNGEON_COMPLEX";
+string EntranceTextKeys::ENTRANCE_BARRACKS        = "ENTRANCE_BARRACKS";
+string EntranceTextKeys::ENTRANCE_CASTLE          = "ENTRANCE_CASTLE";
+string EntranceTextKeys::ENTRANCE_CHURCH          = "ENTRANCE_CHURCH";
+string EntranceTextKeys::ENTRANCE_GRAVEYARD       = "ENTRANCE_GRAVEYARD";
+string EntranceTextKeys::ENTRANCE_KEEP            = "ENTRANCE_KEEP";
+string EntranceTextKeys::ENTRANCE_LIBRARY         = "ENTRANCE_LIBRARY";
+string EntranceTextKeys::ENTRANCE_SITE_OF_DEATH   = "ENTRANCE_SITE_OF_DEATH";
+string EntranceTextKeys::ENTRANCE_TEMPLE          = "ENTRANCE_TEMPLE";
 
 // Equipment
 EquipmentTextKeys::EquipmentTextKeys()
@@ -546,6 +554,14 @@ string TileTextKeys::TILE_DESC_TREE           = "TILE_DESC_TREE";
 string TileTextKeys::TILE_DESC_VILLAGE        = "TILE_DESC_VILLAGE";
 string TileTextKeys::TILE_DESC_WEEDS          = "TILE_DESC_WEEDS";
 string TileTextKeys::TILE_DESC_WHEAT          = "TILE_DESC_WHEAT";
+string TileTextKeys::TILE_DESC_BARRACKS       = "TILE_DESC_BARRACKS";
+string TileTextKeys::TILE_DESC_CASTLE         = "TILE_DESC_CASTLE";
+string TileTextKeys::TILE_DESC_CHURCH         = "TILE_DESC_CHURCH";
+string TileTextKeys::TILE_DESC_GRAVEYARD      = "TILE_DESC_GRAVEYARD";
+string TileTextKeys::TILE_DESC_KEEP           = "TILE_DESC_KEEP";
+string TileTextKeys::TILE_DESC_LIBRARY        = "TILE_DESC_LIBRARY";
+string TileTextKeys::TILE_DESC_SITE_OF_DEATH  = "TILE_DESC_SITE_OF_DEATH";
+string TileTextKeys::TILE_DESC_TEMPLE         = "TILE_DESC_TEMPLE";
 
 // Text keys for player/creature actions
 ActionTextKeys::ActionTextKeys()
@@ -716,6 +732,30 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
       break;
     case TILE_TYPE_DUNGEON_COMPLEX:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_DUNGEON_COMPLEX);
+      break;
+    case TILE_TYPE_BARRACKS:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_BARRACKS);
+      break;
+    case TILE_TYPE_CASTLE:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_CASTLE);
+      break;
+    case TILE_TYPE_CHURCH:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_CHURCH);
+      break;
+    case TILE_TYPE_GRAVEYARD:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_GRAVEYARD);
+      break;
+    case TILE_TYPE_KEEP:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_KEEP);
+      break;
+    case TILE_TYPE_LIBRARY:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_LIBRARY);
+      break;
+    case TILE_TYPE_SITE_OF_DEATH:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_SITE_OF_DEATH);
+      break;
+    case TILE_TYPE_TEMPLE:
+      entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_TEMPLE);
       break;
     case TILE_TYPE_UNDEFINED:
     case TILE_TYPE_WHEAT:

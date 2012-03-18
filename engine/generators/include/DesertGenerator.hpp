@@ -4,5 +4,7 @@
 class DesertGenerator : public Generator
 {
   public:
-    virtual MapPtr generate(const Dimensions& dim, const std::string& map_exit_id);
+    DesertGenerator(const std::string& map_exit_id);
+    
+    virtual MapPtr generate(const Dimensions& dim);
 };
