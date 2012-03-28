@@ -29,3 +29,30 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
   }
 }
 
+// I was using this sort of thing a lot, so I'm moving it here...
+void Generator::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width)
+{
+  int end_row = start_row + height;
+  int end_col = start_col + width;
+
+  TilePtr current_tile;
+
+  for (int row = start_row; row < end_row; row++)
+  {
+    for (int col = start_col; col < end_col; col++)
+    {
+      // Generate a wall at the borders, floor otherwise.
+      if ((row == start_row) || (row == (end_row - 1))
+        ||(col == start_col) || (col == (end_col - 1)))
+      {
+        current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+      }
+      else
+      {
+        current_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+      }
+
+      map->insert(row, col, current_tile);
+    }
+  }  
+}

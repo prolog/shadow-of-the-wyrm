@@ -10,6 +10,7 @@
 #include "Inventory.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
+#include "Religion.hpp"
 #include "Resistances.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
@@ -142,6 +143,11 @@ class Creature
     // Strategy info
     void set_decision_strategy(const DecisionStrategyPtr strategy);
     DecisionStrategyPtr get_decision_strategy() const;
+    
+    // Religion info
+    void set_religion(const Religion& new_religion);
+    Religion get_religion() const;
+    Religion& get_religion_ref();
 
   protected:
 
@@ -212,6 +218,9 @@ class Creature
 
     // Decision making strategy
     DecisionStrategyPtr decision_strategy;
+    
+    // Religious data
+    Religion religion;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

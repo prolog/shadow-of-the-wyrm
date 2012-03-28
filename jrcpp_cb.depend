@@ -1,19 +1,22 @@
 # depslib dependency file v1.0
-1332078871 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
+1332691289 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
 	<iostream>
 	<fstream>
 	<boost/shared_ptr.hpp>
 	"RNG.hpp"
+	"CathedralGenerator.hpp"
 	"CavernGenerator.hpp"
 	"DungeonGenerator.hpp"
 	"FieldGenerator.hpp"
 	"ForestGenerator.hpp"
+	"FortifiedChurchGenerator.hpp"
 	"GraveyardGeneratorFactory.hpp"
 	"RoadGenerator.hpp"
 	"RuinsGenerator.hpp"
 	"MarshGenerator.hpp"
 	"SeaGenerator.hpp"
 	"SettlementGenerator.hpp"
+	"SimpleChurchGenerator.hpp"
 	"KeepRuinsGenerator.hpp"
 	"SettlementRuinsGenerator.hpp"
 	"SpiralDungeonGenerator.hpp"
@@ -333,7 +336,7 @@
 	"Skills.hpp"
 	"XMLDataStructures.hpp"
 
-1326643449 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconfigurationreader.cpp
+1332334875 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconfigurationreader.cpp
 	"XMLConfigurationReader.hpp"
 	<iostream>
 	<vector>
@@ -353,7 +356,7 @@
 	<unistd.h>
 	<errno.h>
 
-1327773176 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
+1332899149 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
 	<boost/foreach.hpp>
 	"Skills.hpp"
 	"StringTable.hpp"
@@ -440,12 +443,12 @@
 	"Directions.hpp"
 	<vector>
 
-1331591208 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
+1332767273 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
 	"TileGenerator.hpp"
 	"Generator.hpp"
 	"Map.hpp"
 
-1331592366 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\keepruinsgenerator.cpp
+1332162206 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\keepruinsgenerator.cpp
 	"KeepRuinsGenerator.hpp"
 	"TileGenerator.hpp"
 	"RNG.hpp"
@@ -468,7 +471,7 @@
 	"TileGenerator.hpp"
 	"RNG.hpp"
 
-1331592032 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementgenerator.cpp
+1332161268 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\settlementgenerator.cpp
 	"FeatureGenerator.hpp"
 	"SettlementGenerator.hpp"
 	"TileGenerator.hpp"
@@ -542,8 +545,7 @@
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
-1325265421 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
-	<string>
+1332900202 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
 	"RaceSelectionScreen.hpp"
 	"Game.hpp"
 	"OptionsComponent.hpp"
@@ -570,7 +572,7 @@
 1325259810 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\conversion_test.cpp
 	"gtest/gtest.h"
 
-1330133425 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1332939348 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<boost/uuid/uuid_generators.hpp>
 	<boost/uuid/uuid_io.hpp>
 	"Conversion.hpp"
@@ -582,6 +584,7 @@
 	"SkillsCalculator.hpp"
 	"HitPointsCalculator.hpp"
 	"ArcanaPointsCalculator.hpp"
+	"ReligionFactory.hpp"
 	"RNG.hpp"
 	"unit_tests/CreatureFactory_test.cpp"
 
@@ -595,7 +598,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1329584916 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1332335798 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"CreatureCalculator.hpp"
@@ -652,7 +655,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1327072006 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1332939995 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -660,6 +663,7 @@
 	"Conversion.hpp"
 	"Creature.hpp"
 	"CreatureFactory.hpp"
+	"DeitySelectionScreen.hpp"
 	"DisplayTile.hpp"
 	"Game.hpp"
 	"Log.hpp"
@@ -670,7 +674,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1331901409 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1332900580 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
@@ -696,7 +700,7 @@
 	<sstream>
 	"Class.hpp"
 
-1330895745 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1332292026 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -717,7 +721,7 @@
 	<sstream>
 	"Map.hpp"
 
-1327770295 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
+1332898670 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
 	<sstream>
 	"Race.hpp"
 	"StringTable.hpp"
@@ -732,7 +736,7 @@
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
-1327416597 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+1332291524 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	"Skills.hpp"
@@ -1303,7 +1307,7 @@
 	"Cloth.hpp"
 	"StringConstants.hpp"
 
-1328886137 source:c:\cygwin\home\julian\jrcpp\world\materials\source\materialfactory.cpp
+1332467753 source:c:\cygwin\home\julian\jrcpp\world\materials\source\materialfactory.cpp
 	<boost/make_shared.hpp>
 	"MaterialFactory.hpp"
 	"Cloth.hpp"
@@ -1311,6 +1315,8 @@
 	"Glass.hpp"
 	"Iron.hpp"
 	"Leather.hpp"
+	"Marble.hpp"
+	"Onyx.hpp"
 	"Paper.hpp"
 	"Steel.hpp"
 	"Stone.hpp"
@@ -1453,7 +1459,7 @@
 1330277012 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worldmaptile.cpp
 	"WorldMapTile.hpp"
 
-1330752475 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\feature.cpp
+1332597942 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\feature.cpp
 	"Feature.hpp"
 
 1330698676 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\itrappable.cpp
@@ -1471,14 +1477,18 @@
 1330821380 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\entrancestate.cpp
 	"EntranceState.hpp"
 
-1330800912 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\entrance.cpp
+1332597942 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\entrance.cpp
 	"Entrance.hpp"
 	"MaterialFactory.hpp"
 
-1330798467 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\featuregenerator.cpp
+1332598923 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\featuregenerator.cpp
 	<boost/make_shared.hpp>
 	"FeatureGenerator.hpp"
+	"EvilAltar.hpp"
 	"Door.hpp"
+	"GoodAltar.hpp"
+	"NeutralAltar.hpp"
+	"Pew.hpp"
 
 1331592784 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\scrubgenerator.cpp
 	"ScrubGenerator.hpp"
@@ -1534,4 +1544,102 @@
 	"RNG.hpp"
 	"ScatteredGraveyardGenerator.hpp"
 	"TileGenerator.hpp"
+
+1332162287 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\keepgenerator.cpp
+	"FeatureGenerator.hpp"
+	"KeepGenerator.hpp"
+	"RNG.hpp"
+	"TileGenerator.hpp"
+
+1332288964 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deitystatus.cpp
+	"DeityStatus.hpp"
+
+1332939313 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religion.cpp
+	"Religion.hpp"
+
+1332851427 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deity.cpp
+	"Deity.hpp"
+
+1332291434 source:c:\cygwin\home\julian\jrcpp\world\source\alignment.cpp
+	"Alignment.hpp"
+
+1332851622 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmldeitiesreader.cpp
+	<vector>
+	<boost/foreach.hpp>
+	"XMLDataStructures.hpp"
+	"XMLDeitiesReader.hpp"
+
+1332467660 source:c:\cygwin\home\julian\jrcpp\world\materials\source\marble.cpp
+	"Marble.hpp"
+	"StringConstants.hpp"
+
+1332467685 source:c:\cygwin\home\julian\jrcpp\world\materials\source\onyx.cpp
+	"Onyx.hpp"
+	"StringConstants.hpp"
+
+1332597774 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\altar.cpp
+	"Altar.hpp"
+
+1332595636 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\churchgenerator.cpp
+	"ChurchGenerator.hpp"
+
+1332593199 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\chaoticaltar.cpp
+	"ChaoticAltar.hpp"
+	"MaterialFactory.hpp"
+
+1332593100 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\lawfulaltar.cpp
+	"LawfulAltar.hpp"
+	"MaterialFactory.hpp"
+
+1332593145 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\neutralaltar.cpp
+	"NeutralAltar.hpp"
+	"MaterialFactory.hpp"
+
+1332595151 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\churchgeneratorfactory.cpp
+	"ChurchGeneratorFactory.hpp"
+
+1332597125 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\evilaltar.cpp
+	"EvilAltar.hpp"
+	"MaterialFactory.hpp"
+
+1332597106 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\goodaltar.cpp
+	"GoodAltar.hpp"
+	"MaterialFactory.hpp"
+
+1332767524 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\simplechurchgenerator.cpp
+	"FeatureGenerator.hpp"
+	"RNG.hpp"
+	"SimpleChurchGenerator.hpp"
+	"TileGenerator.hpp"
+
+1332598978 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\pew.cpp
+	"MaterialFactory.hpp"
+	"Pew.hpp"
+
+1332767344 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\fortifiedchurchgenerator.cpp
+	"FeatureGenerator.hpp"
+	"FortifiedChurchGenerator.hpp"
+	"RNG.hpp"
+	"TileGenerator.hpp"
+
+1332853398 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\cathedralgenerator.cpp
+	"CathedralGenerator.hpp"
+	"FeatureGenerator.hpp"
+	"RNG.hpp"
+	"TileGenerator.hpp"
+
+1332766866 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\fountain.cpp
+	"Fountain.hpp"
+	"MaterialFactory.hpp"
+
+1332901690 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\deityselectionscreen.cpp
+	<boost/foreach.hpp>
+	"DeitySelectionScreen.hpp"
+	"Game.hpp"
+	"Log.hpp"
+	"OptionsComponent.hpp"
+	"StringConstants.hpp"
+
+1332939031 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religionfactory.cpp
+	"ReligionFactory.hpp"
 

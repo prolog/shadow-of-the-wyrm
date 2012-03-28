@@ -414,7 +414,7 @@ Papercraft::Papercraft()
 }
 
 // Religion
-Religion::Religion()
+ReligionSkill::ReligionSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_RELIGION;
@@ -769,7 +769,7 @@ void Skills::initialize_general_skills()
   NightSight night_sight;
   Oceanography oceanography;
   Papercraft papercraft;
-  Religion religion;
+  ReligionSkill religion;
   Scribing scribing;
   Skinning skinning;
   Smithing smithing;

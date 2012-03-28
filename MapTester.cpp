@@ -2,16 +2,19 @@
 #include <fstream>
 #include <boost/shared_ptr.hpp>
 #include "RNG.hpp"
+#include "CathedralGenerator.hpp"
 #include "CavernGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
+#include "FortifiedChurchGenerator.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "RoadGenerator.hpp"
 #include "RuinsGenerator.hpp"
 #include "MarshGenerator.hpp"
 #include "SeaGenerator.hpp"
 #include "SettlementGenerator.hpp"
+#include "SimpleChurchGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
 #include "SettlementRuinsGenerator.hpp"
 #include "SpiralDungeonGenerator.hpp"
@@ -50,8 +53,13 @@ string generate_world();
 string generate_cavern();
 string generate_ordered_graveyard();
 string generate_scattered_graveyard();
+string generate_keep();
+string generate_simple_church();
+string generate_fortified_church();
+string generate_cathedral();
 
 void   city_maps();
+void   church_maps();
 void   initialize_settings();
 void   print_skill_name();
 void   race_info();
@@ -95,17 +103,12 @@ string map_to_string(MapPtr map, bool use_html)
     {
       TilePtr tile = map->at(row, col);
       
-      if (!tile)
-      {
-        // sanity check
-        int x = 3;
-      }
       TileType type = tile->get_tile_type();
 
       if (tile->has_feature())
       {
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
-            tile_ascii = "`";
+            tile_ascii = tile->get_feature()->get_symbol(); // Previously, hard coded '`'
       }
       else
       {
@@ -249,6 +252,46 @@ string generate_scattered_graveyard()
   MapPtr map = graveyard_gen->generate();
   cout << map_to_string(map, false);
   return map_to_string(map);  
+}
+
+string generate_keep()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr base_map = field_gen->generate();
+  GeneratorPtr keep_gen = GeneratorPtr(new KeepGenerator(base_map));
+  MapPtr keep_map = keep_gen->generate();
+  cout << map_to_string(keep_map, false);
+  return map_to_string(keep_map);
+}
+
+string generate_simple_church()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr map = field_gen->generate();
+  GeneratorPtr church_gen = GeneratorPtr(new SimpleChurchGenerator("", map));
+  MapPtr church_map = church_gen->generate();
+  cout << map_to_string(church_map, false);
+  return map_to_string(church_map);
+}
+
+string generate_fortified_church()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr church_gen = GeneratorPtr(new FortifiedChurchGenerator("", field_map));
+  MapPtr church_map = church_gen->generate();
+  cout << map_to_string(church_map, false);
+  return map_to_string(church_map);
+}
+
+string generate_cathedral()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr cathedral_gen = GeneratorPtr(new CathedralGenerator("", field_map));
+  MapPtr cathedral_map = cathedral_gen->generate();
+  cout << map_to_string(cathedral_map, false);
+  return map_to_string(cathedral_map);
 }
 
 string generate_field()
@@ -516,6 +559,10 @@ void city_maps()
     cout << "Enter a map number (-1 to quit)" << endl << endl;
     cout << "1. Ordered Graveyard" << endl;
     cout << "2. Scattered Graveyard" << endl;
+    cout << "3. Keep" << endl;
+    cout << "4. Churches" << endl;
+    cout << "5. Temples" << endl;
+    cout << "6. Sites of Death" << endl;
     
     cin >> city_adjacent_map;
     
@@ -529,10 +576,51 @@ void city_maps()
         map = generate_scattered_graveyard();
         output_map(map, "graveyard_scattered_test.html");
         break;
+      case 3:
+        map = generate_keep();
+        output_map(map, "keep_test.html");
+        break;
+      case 4: 
+        church_maps();
+        break;
       default:
         break;
     }
   }
+}
+
+void church_maps()
+{
+  string map;
+  int church_map = 0;
+  
+  while (church_map != -1)
+  {
+    cout << "Enter a map number (-1 to quit)" << endl << endl;
+    cout << "1. Cathedral" << endl;
+    cout << "2. Fortified Church" << endl;
+    cout << "3. Simple Church" << endl;
+    
+    cin >> church_map;
+    
+    switch(church_map)
+    {
+      case 1: 
+        map = generate_cathedral();
+        output_map(map, "cathedral.html");
+        break;
+      case 2:
+        map = generate_fortified_church();
+        output_map(map, "fortified_church.html");
+        break;
+      case 3:
+        map = generate_simple_church();
+        output_map(map, "simple_church.html");
+        break;
+      default:
+        break;
+    }
+  }  
 }
 
 int main(int argc, char** argv)

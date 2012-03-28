@@ -16,9 +16,11 @@ TextKeys::~TextKeys()
 string TextKeys::SL_TITLE    = "SL_TITLE";
 string TextKeys::SL_TITLE_POEM = "SL_TITLE_POEM";
 string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
+string TextKeys::DEATH_MESSAGE = "DEATH_MESSAGE";
 string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 string TextKeys::SELECT_RACE = "SELECT_RACE";
 string TextKeys::SELECT_CLASS = "SELECT_CLASS";
+string TextKeys::SELECT_DEITY = "SELECT_DEITY";
 string TextKeys::AGE = "AGE";
 string TextKeys::SEX = "SEX";
 string TextKeys::HAIR_COLOUR = "HAIR_COLOUR";
@@ -124,6 +126,8 @@ string MaterialTextKeys::MATERIAL_PAPER        = "MATERIAL_PAPER";
 string MaterialTextKeys::MATERIAL_STEEL        = "MATERIAL_STEEL";
 string MaterialTextKeys::MATERIAL_STONE        = "MATERIAL_STONE";
 string MaterialTextKeys::MATERIAL_WOOD         = "MATERIAL_WOOD";
+string MaterialTextKeys::MATERIAL_MARBLE       = "MATERIAL_MARBLE";
+string MaterialTextKeys::MATERIAL_ONYX         = "MATERIAL_ONYX";
 
 // Entrance
 EntranceTextKeys::EntranceTextKeys()
@@ -602,6 +606,16 @@ string TextMessages::get_welcome_message(const string& player_name)
   string welcome_message = StringTable::get(TextMessages::WELCOME_MESSAGE);
   boost::replace_first(welcome_message, "%s", player_name);
   return welcome_message;
+}
+
+// Gets the overall death message.  This is the deity's message plus
+// "You die..." (or equivalent)
+string TextMessages::get_death_message(const string& deity_death_message_sid)
+{
+  string deity_death_message = StringTable::get(deity_death_message_sid);
+  string you_die = StringTable::get(TextKeys::DEATH_MESSAGE);
+  string death_message = deity_death_message + "  " + you_die;
+  return death_message;
 }
 
 string TextMessages::get_action_not_found_message(const string& command_action)

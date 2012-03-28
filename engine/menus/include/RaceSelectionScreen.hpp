@@ -7,7 +7,7 @@
 class RaceSelectionScreen : public Menu
 {
   public:
-    RaceSelectionScreen(DisplayPtr display);
+    RaceSelectionScreen(DisplayPtr new_display);
 
   protected:
     void initialize();

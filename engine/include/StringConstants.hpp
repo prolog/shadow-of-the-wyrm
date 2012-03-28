@@ -12,6 +12,7 @@ class TextKeys
     static std::string SL_TITLE;
     static std::string SL_TITLE_POEM;
     static std::string COPYRIGHT_NOTICE;
+    static std::string DEATH_MESSAGE;
     static std::string DEFAULT_PLAYER_NAME;
     static std::string SEX;
     static std::string SELECT_SEX;
@@ -22,6 +23,7 @@ class TextKeys
     static std::string EYE_COLOUR;
     static std::string SELECT_RACE;
     static std::string SELECT_CLASS;
+    static std::string SELECT_DEITY;
     static std::string RACE_1_NAME;
     static std::string RACE_1_SHORT_DESC;
     static std::string RACE_1_DESC;
@@ -118,6 +120,8 @@ class MaterialTextKeys
     static std::string MATERIAL_STEEL;
     static std::string MATERIAL_STONE;
     static std::string MATERIAL_WOOD;
+    static std::string MATERIAL_MARBLE;
+    static std::string MATERIAL_ONYX;
     
   protected:
     MaterialTextKeys();
@@ -446,6 +450,7 @@ class TextMessages
 {
   public:
     static std::string get_welcome_message(const std::string& player_name);
+    static std::string get_death_message(const std::string& deity_death_message_sid);
     static std::string get_action_not_found_message(const std::string& command_action);
     static std::string get_dumping_character_message(const std::string& creature_name);
     static std::string get_sex(const CreatureSex sex);

@@ -1,0 +1,9 @@
+#pragma once
+#include "Altar.hpp"
+
+// A convenience class that sets up an evil altar appropriately.
+class EvilAltar : public Altar
+{
+  public:
+    EvilAltar(const std::string& new_deity_id);
+};

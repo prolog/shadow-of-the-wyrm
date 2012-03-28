@@ -5,6 +5,16 @@ Feature::Feature(MaterialPtr new_material)
 {
 }
 
+void Feature::set_trap(TrapPtr new_trap)
+{
+  trap = new_trap;
+}
+
+TrapPtr Feature::get_trap()
+{
+  return trap;
+}
+
 void Feature::set_material(MaterialPtr new_material)
 {
   material = new_material;

@@ -5,10 +5,19 @@
 	<xs:annotation><xs:documentation>The configuration root node - contains all the races, classes, and game data.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
+			<xs:element ref="tns:Deities"/>
 			<xs:element ref="tns:Races"/>
 			<xs:element ref="tns:Classes"/>
 			<xs:element ref="tns:Tiles"/>
 			<xs:element ref="tns:Items"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Deities">
+	<xs:annotation><xs:documentation>A list of the deities available for worship within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:Deity" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -85,6 +94,19 @@
 	<!-- Potions -->
 	<!-- Rings -->
 </xs:element>
+<xs:element name="Deity">
+	<xs:annotation><xs:documentation>One of the Gods or Goddesses of Savage Lands.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="NameSID" type="xs:string"/>
+			<xs:element name="ShortDescriptionSID" type="xs:string"/>
+			<xs:element name="DescriptionSID" type="xs:string"/>
+			<xs:element name="DeathMessageSID" type="xs:string"/>
+			<xs:element name="Alignment" type="tns:AlignmentRange"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:element>
 <xs:element name="Race">
 	<xs:annotation><xs:documentation>A race within Savage Lands.</xs:documentation></xs:annotation>
 	<xs:complexType>
@@ -98,6 +120,7 @@
 			<xs:element ref="tns:AgeInfo"/>
 			<xs:element ref="tns:RaceInitialStatistics"/>
 			<xs:element ref="tns:RaceInitialModifiers"/>
+			<xs:element ref="tns:RaceInitialDeities"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
@@ -154,12 +177,21 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+
 <xs:element name="RaceInitialModifiers">
 <xs:annotation><xs:documentation>Races have a set of modifiers for certain statistics.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="ValourModifier" type="tns:StatisticModifier"/>
 			<xs:element name="SpiritModifier" type="tns:StatisticModifier"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="RaceInitialDeities">
+<xs:annotation><xs:documentation>The deities that can be selected when creating a creature of a particular race</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="DeityID" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -422,6 +454,19 @@
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->
+<xs:simpleType name="AlignmentRange">
+	<xs:annotation>
+		<xs:documentation>An enumeration describing the possible general alignment ranges.
+			0  = Evil
+			1 = Neutral
+			2 = Good
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="2"/>
+	</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="CreatureSizeType">
 	<xs:annotation>
 		<xs:documentation>An enumeration describing creature size.

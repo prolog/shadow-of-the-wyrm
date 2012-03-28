@@ -35,13 +35,3 @@ CreatureSize Entrance::get_maximum_size() const
 {
   return maximum_size;
 }
-
-void Entrance::set_trap(TrapPtr new_trap)
-{
-  trap = new_trap;
-}
-
-TrapPtr Entrance::get_trap()
-{
-  return trap;
-}
