@@ -9,6 +9,7 @@
 #include "SkillsCalculator.hpp"
 #include "HitPointsCalculator.hpp"
 #include "ArcanaPointsCalculator.hpp"
+#include "ReligionFactory.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -28,6 +29,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 , const string& class_id
 , const string& creature_name
 , const CreatureSex creature_sex
+, const string& deity_id
 )
 {
   Creature creature;
@@ -47,7 +49,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   if (game)
   {
-    // Real work goes here.
+    DeityMap deities = game->get_deities_ref();
     RaceMap races = game->get_races_ref();
     ClassMap classes = game->get_classes_ref();
 
@@ -64,6 +66,11 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
       // Skills
       creature = set_initial_skills(creature, race, char_class);
+      
+      // Religion
+      Religion religion = ReligionFactory::create_religion(deities);
+      religion.set_active_deity_id(deity_id);
+      creature.set_religion(religion);
     }
   }
 

@@ -1,4 +1,70 @@
 <SavageLands xmlns="urn:savage_lands:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:1.0.0 SavageLands.xsd">
+	<Deities>
+		<Deity id="01_celeste">
+			<NameSID>DEITY_1_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_1_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_1_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_1_DEATH</DeathMessageSID>
+			<Alignment>2</Alignment>
+		</Deity>
+		<Deity id="02_aurelion">
+			<NameSID>DEITY_2_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_2_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_2_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_2_DEATH</DeathMessageSID>
+			<Alignment>2</Alignment>
+		</Deity>
+		<Deity id="03_thelady">
+			<NameSID>DEITY_3_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_3_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_3_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_3_DEATH</DeathMessageSID>
+			<Alignment>2</Alignment>
+		</Deity>
+		<Deity id="04_vedere">
+			<NameSID>DEITY_4_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_4_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_4_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_4_DEATH</DeathMessageSID>
+			<Alignment>1</Alignment>
+		</Deity>
+		<Deity id="05_voros">
+			<NameSID>DEITY_5_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_5_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_5_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_5_DEATH</DeathMessageSID>
+			<Alignment>1</Alignment>
+		</Deity>
+		<Deity id="06_thetrickster">
+			<NameSID>DEITY_6_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_6_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_6_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_6_DEATH</DeathMessageSID>
+			<Alignment>1</Alignment>
+		</Deity>
+		<Deity id="07_shiver">
+			<NameSID>DEITY_7_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_7_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_7_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_7_DEATH</DeathMessageSID>
+			<Alignment>0</Alignment>
+		</Deity>
+		<Deity id="08_urgoth">
+			<NameSID>DEITY_8_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_8_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_8_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_8_DEATH</DeathMessageSID>
+			<Alignment>0</Alignment>
+		</Deity>
+		<Deity id="09_sceadugenga">
+			<NameSID>DEITY_9_NAME</NameSID>
+			<ShortDescriptionSID>DEITY_9_SHORT_DESC</ShortDescriptionSID>
+			<DescriptionSID>DEITY_9_DESC</DescriptionSID>
+			<DeathMessageSID>DEITY_9_DEATH</DeathMessageSID>
+			<Alignment>0</Alignment>
+		</Deity>
+
+	</Deities>
 	<Races>
 		<Race id="01_human">
 			<UserPlayable>1</UserPlayable>
@@ -31,6 +97,11 @@
 				<ValourModifier>5</ValourModifier>
 				<SpiritModifier>5</SpiritModifier>
 			</RaceInitialModifiers>
+			<RaceInitialDeities>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -101,6 +172,11 @@
 				<ValourModifier>4</ValourModifier>
 				<SpiritModifier>6</SpiritModifier>
 			</RaceInitialModifiers>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -168,6 +244,11 @@
 				<ValourModifier>6</ValourModifier>
 				<SpiritModifier>4</SpiritModifier>
 			</RaceInitialModifiers>	
+			<RaceInitialDeities>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -237,6 +318,11 @@
 				<ValourModifier>2</ValourModifier>
 				<SpiritModifier>8</SpiritModifier>
 			</RaceInitialModifiers>	
+			<RaceInitialDeities>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>-0.05</Slash>
 				<Pierce>-0.05</Pierce>
@@ -303,6 +389,11 @@
 				<ValourModifier>0</ValourModifier>
 				<SpiritModifier>10</SpiritModifier>
 			</RaceInitialModifiers>	
+			<RaceInitialDeities>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>-0.05</Slash>
 				<Pierce>-0.05</Pierce>
@@ -368,6 +459,11 @@
 				<ValourModifier>8</ValourModifier>
 				<SpiritModifier>2</SpiritModifier>
 			</RaceInitialModifiers>	
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -435,6 +531,11 @@
 				<ValourModifier>6</ValourModifier>
 				<SpiritModifier>4</SpiritModifier>
 			</RaceInitialModifiers>	
+			<RaceInitialDeities>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -503,6 +604,11 @@
 				<ValourModifier>9</ValourModifier>
 				<SpiritModifier>1</SpiritModifier>
 			</RaceInitialModifiers>	
+			<RaceInitialDeities>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.05</Slash>
 				<Pierce>0.05</Pierce>
@@ -568,6 +674,11 @@
 				<ValourModifier>7</ValourModifier>
 				<SpiritModifier>3</SpiritModifier>
 			</RaceInitialModifiers>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.20</Pierce>
@@ -633,6 +744,11 @@
 				<ValourModifier>5</ValourModifier>
 				<SpiritModifier>5</SpiritModifier>
 			</RaceInitialModifiers>			
+			<RaceInitialDeities>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>

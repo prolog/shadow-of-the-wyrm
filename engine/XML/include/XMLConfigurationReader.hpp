@@ -2,6 +2,7 @@
 #include <string>
 #include "XMLClassesReader.hpp"
 #include "XMLDataStructures.hpp"
+#include "XMLDeitiesReader.hpp"
 #include "XMLFileReader.hpp"
 #include "XMLItemsReaders.hpp"
 #include "XMLRacesReader.hpp"
@@ -14,6 +15,7 @@ class XMLConfigurationReader
   public:
     XMLConfigurationReader(const std::string& xml_filename);
 
+    DeityMap get_deities();
     RaceMap get_races();
     ClassMap get_classes();
     ItemMap get_items();    
@@ -29,6 +31,7 @@ class XMLConfigurationReader
 
     // Member variables for reading the various XML nodes and setting the data into world objects.
     XMLClassesReader classes_reader;
+    XMLDeitiesReader deities_reader;
     XMLItemsReader items_reader;
     XMLRacesReader races_reader;
     XMLTilesReader tiles_reader;

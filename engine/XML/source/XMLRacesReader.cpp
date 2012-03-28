@@ -40,6 +40,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     XMLNode age_info_node           = XMLUtils::get_next_element_by_local_name(race_node, "AgeInfo");
     XMLNode initial_statistics_node = XMLUtils::get_next_element_by_local_name(race_node, "RaceInitialStatistics");
     XMLNode initial_modifiers_node  = XMLUtils::get_next_element_by_local_name(race_node, "RaceInitialModifiers");
+    XMLNode initial_deity_ids_node  = XMLUtils::get_next_element_by_local_name(race_node, "RaceInitialDeities");
     XMLNode resistances_node        = XMLUtils::get_next_element_by_local_name(race_node, "Resistances");
     XMLNode skills_node             = XMLUtils::get_next_element_by_local_name(race_node, "Skills");
 
@@ -69,6 +70,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     parse_race_age_info(race, age_info_node);
     parse_race_initial_statistics(race, initial_statistics_node);
     parse_race_initial_modifiers(race, initial_modifiers_node);
+    parse_initial_deity_ids(race, initial_deity_ids_node);
     parse_race_resistances(race, resistances_node);
     parse_race_skills(race, skills_node);
 
@@ -130,6 +132,26 @@ void XMLRacesReader::parse_race_initial_modifiers(RacePtr race, const XMLNode& i
 
     race->set_valour_modifier(valour_modifier);
     race->set_spirit_modifier(spirit_modifier);
+  }
+}
+
+void XMLRacesReader::parse_initial_deity_ids(RacePtr race, const XMLNode& initial_deities_node)
+{
+  if (race && !initial_deities_node.is_null())
+  {
+    vector<string> race_deity_ids;
+    vector<XMLNode> initial_deity_ids = XMLUtils::get_elements_by_local_name(initial_deities_node, "DeityID");
+    
+    BOOST_FOREACH(XMLNode deity_id_node, initial_deity_ids)
+    {
+      string deity_id = XMLUtils::get_node_value(deity_id_node);
+      race_deity_ids.push_back(deity_id);
+    }
+    
+    if (!race_deity_ids.empty())
+    {
+      race->set_initial_deity_ids(race_deity_ids);
+    }
   }
 }
 

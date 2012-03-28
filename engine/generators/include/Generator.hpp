@@ -19,6 +19,9 @@ class Generator
    
   protected:
     virtual void fill(const MapPtr map, const TileType& tile_type);
+    
+    // Generates a build: walls are TILE_TYPE_ROCK, floor is TILE_TYPE_DUNGEON.
+    virtual void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width);
     std::string map_exit_id;
 };
 

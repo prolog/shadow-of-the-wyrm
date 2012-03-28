@@ -102,7 +102,6 @@
 			<Add option="-pg -lgmon" />
 		</Linker>
 		<Unit filename="MapTester.cpp">
-			<Option target="Release" />
 			<Option target="MapTester" />
 		</Unit>
 		<Unit filename="SavageLands.cpp">
@@ -134,11 +133,12 @@
 		<Unit filename="display\source\NCursesPromptProcessor.cpp" />
 		<Unit filename="display\source\NCursesUtils.cpp" />
 		<Unit filename="display\source\unit_tests\Display_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\XML\include\XMLClassesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLConfigurationReader.hpp" />
 		<Unit filename="engine\XML\include\XMLDataStructures.hpp" />
+		<Unit filename="engine\XML\include\XMLDeitiesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLFileReader.hpp" />
 		<Unit filename="engine\XML\include\XMLItemsReaders.hpp" />
 		<Unit filename="engine\XML\include\XMLRacesReader.hpp" />
@@ -148,6 +148,7 @@
 		<Unit filename="engine\XML\source\XMLClassesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLConfigurationReader.cpp" />
 		<Unit filename="engine\XML\source\XMLDataStructures.cpp" />
+		<Unit filename="engine\XML\source\XMLDeitiesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLFileReader.cpp" />
 		<Unit filename="engine\XML\source\XMLItemsReaders.cpp" />
 		<Unit filename="engine\XML\source\XMLRacesReader.cpp" />
@@ -178,31 +179,31 @@
 		<Unit filename="engine\calculators\source\SoakCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ToHitCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\HeavyWeaponToHitCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\HitPointsCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\LightMeleeAndRangedWeaponToHitCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\MagicToHitCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\commands\equipment\include\EquipmentCommandFactory.hpp" />
 		<Unit filename="engine\commands\equipment\include\EquipmentCommandKeys.hpp" />
@@ -252,47 +253,69 @@
 		<Unit filename="engine\conversion\source\SkillsDumper.cpp" />
 		<Unit filename="engine\conversion\source\StatsDumper.cpp" />
 		<Unit filename="engine\conversion\source\unit_tests\Conversion_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\decision_strategies\include\DecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
+		<Unit filename="engine\generators\include\CathedralGenerator.hpp" />
 		<Unit filename="engine\generators\include\CavernGenerator.hpp" />
 		<Unit filename="engine\generators\include\CellularAutomataGenerator.hpp" />
+		<Unit filename="engine\generators\include\ChurchGenerator.hpp" />
+		<Unit filename="engine\generators\include\ChurchGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\include\DesertGenerator.hpp" />
 		<Unit filename="engine\generators\include\DungeonGenerator.hpp" />
 		<Unit filename="engine\generators\include\FieldGenerator.hpp" />
 		<Unit filename="engine\generators\include\ForestGenerator.hpp" />
+		<Unit filename="engine\generators\include\FortifiedChurchGenerator.hpp" />
 		<Unit filename="engine\generators\include\Generator.hpp" />
+		<Unit filename="engine\generators\include\GraveyardGenerator.hpp" />
+		<Unit filename="engine\generators\include\GraveyardGeneratorFactory.hpp" />
+		<Unit filename="engine\generators\include\KeepGenerator.hpp" />
 		<Unit filename="engine\generators\include\KeepRuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\MarshGenerator.hpp" />
 		<Unit filename="engine\generators\include\MountainsGenerator.hpp" />
+		<Unit filename="engine\generators\include\OrderedGraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\RoadGenerator.hpp" />
 		<Unit filename="engine\generators\include\RuinsGenerator.hpp" />
+		<Unit filename="engine\generators\include\ScatteredGraveyardGenerator.hpp" />
+		<Unit filename="engine\generators\include\ScrubGenerator.hpp" />
 		<Unit filename="engine\generators\include\SeaGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementRuinsGenerator.hpp" />
+		<Unit filename="engine\generators\include\SimpleChurchGenerator.hpp" />
 		<Unit filename="engine\generators\include\SpiralDungeonGenerator.hpp" />
 		<Unit filename="engine\generators\include\SpringsGenerator.hpp" />
 		<Unit filename="engine\generators\include\StreamGenerator.hpp" />
 		<Unit filename="engine\generators\include\TerrainGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\include\TileGenerator.hpp" />
 		<Unit filename="engine\generators\include\WorldGenerator.hpp" />
+		<Unit filename="engine\generators\source\CathedralGenerator.cpp" />
 		<Unit filename="engine\generators\source\CavernGenerator.cpp" />
 		<Unit filename="engine\generators\source\CellularAutomataGenerator.cpp" />
+		<Unit filename="engine\generators\source\ChurchGenerator.cpp" />
+		<Unit filename="engine\generators\source\ChurchGeneratorFactory.cpp" />
 		<Unit filename="engine\generators\source\DesertGenerator.cpp" />
 		<Unit filename="engine\generators\source\DungeonGenerator.cpp" />
 		<Unit filename="engine\generators\source\FieldGenerator.cpp" />
 		<Unit filename="engine\generators\source\ForestGenerator.cpp" />
+		<Unit filename="engine\generators\source\FortifiedChurchGenerator.cpp" />
 		<Unit filename="engine\generators\source\Generator.cpp" />
+		<Unit filename="engine\generators\source\GraveyardGenerator.cpp" />
+		<Unit filename="engine\generators\source\GraveyardGeneratorFactory.cpp" />
+		<Unit filename="engine\generators\source\KeepGenerator.cpp" />
 		<Unit filename="engine\generators\source\KeepRuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\MarshGenerator.cpp" />
 		<Unit filename="engine\generators\source\MountainsGenerator.cpp" />
+		<Unit filename="engine\generators\source\OrderedGraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\RoadGenerator.cpp" />
 		<Unit filename="engine\generators\source\RuinsGenerator.cpp" />
+		<Unit filename="engine\generators\source\ScatteredGraveyardGenerator.cpp" />
+		<Unit filename="engine\generators\source\ScrubGenerator.cpp" />
 		<Unit filename="engine\generators\source\SeaGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementRuinsGenerator.cpp" />
+		<Unit filename="engine\generators\source\SimpleChurchGenerator.cpp" />
 		<Unit filename="engine\generators\source\SpiralDungeonGenerator.cpp" />
 		<Unit filename="engine\generators\source\SpringsGenerator.cpp" />
 		<Unit filename="engine\generators\source\StreamGenerator.cpp" />
@@ -300,10 +323,10 @@
 		<Unit filename="engine\generators\source\TileGenerator.cpp" />
 		<Unit filename="engine\generators\source\WorldGenerator.cpp" />
 		<Unit filename="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\generators\source\unit_tests\TileGenerator_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\include\ActionManager.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
@@ -316,6 +339,7 @@
 		<Unit filename="engine\include\ItemFactory.hpp" />
 		<Unit filename="engine\include\ItemManager.hpp" />
 		<Unit filename="engine\include\Log.hpp" />
+		<Unit filename="engine\include\MapExitUtils.hpp" />
 		<Unit filename="engine\include\MapRegistry.hpp" />
 		<Unit filename="engine\include\MapUtils.hpp" />
 		<Unit filename="engine\include\Message.hpp" />
@@ -329,6 +353,7 @@
 		<Unit filename="engine\include\StringConstants.hpp" />
 		<Unit filename="engine\include\StringTable.hpp" />
 		<Unit filename="engine\menus\include\ClassSelectionScreen.hpp" />
+		<Unit filename="engine\menus\include\DeitySelectionScreen.hpp" />
 		<Unit filename="engine\menus\include\Menu.hpp" />
 		<Unit filename="engine\menus\include\MenuComponent.hpp" />
 		<Unit filename="engine\menus\include\NamingScreen.hpp" />
@@ -339,6 +364,7 @@
 		<Unit filename="engine\menus\include\TextComponent.hpp" />
 		<Unit filename="engine\menus\include\WelcomeScreen.hpp" />
 		<Unit filename="engine\menus\source\ClassSelectionScreen.cpp" />
+		<Unit filename="engine\menus\source\DeitySelectionScreen.cpp" />
 		<Unit filename="engine\menus\source\Menu.cpp" />
 		<Unit filename="engine\menus\source\MenuComponent.cpp" />
 		<Unit filename="engine\menus\source\NamingScreen.cpp" />
@@ -358,6 +384,7 @@
 		<Unit filename="engine\source\ItemFactory.cpp" />
 		<Unit filename="engine\source\ItemManager.cpp" />
 		<Unit filename="engine\source\Log.cpp" />
+		<Unit filename="engine\source\MapExitUtils.cpp" />
 		<Unit filename="engine\source\MapRegistry.cpp" />
 		<Unit filename="engine\source\MapUtils.cpp" />
 		<Unit filename="engine\source\Message.cpp" />
@@ -370,19 +397,19 @@
 		<Unit filename="engine\source\StringConstants.cpp" />
 		<Unit filename="engine\source\StringTable.cpp" />
 		<Unit filename="engine\source\unit_tests\CreatureFactory_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\Dimensions_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\Message_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\Messages_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\translators\include\CreatureTranslator.hpp" />
 		<Unit filename="engine\translators\include\DisplayItemTypeFactory.hpp" />
@@ -397,7 +424,7 @@
 		<Unit filename="engine\translators\source\ItemTranslator.cpp" />
 		<Unit filename="engine\translators\source\MapTranslator.cpp" />
 		<Unit filename="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="global_functions.cpp" />
 		<Unit filename="include\Colours.hpp" />
@@ -405,6 +432,8 @@
 		<Unit filename="include\common.hpp" />
 		<Unit filename="include\global_prototypes.hpp" />
 		<Unit filename="world\include\AgeInfo.hpp" />
+		<Unit filename="world\include\Alignment.hpp" />
+		<Unit filename="world\include\AlignmentEnums.hpp" />
 		<Unit filename="world\include\Ammunition.hpp" />
 		<Unit filename="world\include\Amulet.hpp" />
 		<Unit filename="world\include\Armour.hpp" />
@@ -444,9 +473,11 @@
 		<Unit filename="world\materials\include\Glass.hpp" />
 		<Unit filename="world\materials\include\Iron.hpp" />
 		<Unit filename="world\materials\include\Leather.hpp" />
+		<Unit filename="world\materials\include\Marble.hpp" />
 		<Unit filename="world\materials\include\Material.hpp" />
 		<Unit filename="world\materials\include\MaterialFactory.hpp" />
 		<Unit filename="world\materials\include\MaterialTypes.hpp" />
+		<Unit filename="world\materials\include\Onyx.hpp" />
 		<Unit filename="world\materials\include\Paper.hpp" />
 		<Unit filename="world\materials\include\Steel.hpp" />
 		<Unit filename="world\materials\include\Stone.hpp" />
@@ -456,13 +487,22 @@
 		<Unit filename="world\materials\source\Glass.cpp" />
 		<Unit filename="world\materials\source\Iron.cpp" />
 		<Unit filename="world\materials\source\Leather.cpp" />
+		<Unit filename="world\materials\source\Marble.cpp" />
 		<Unit filename="world\materials\source\Material.cpp" />
 		<Unit filename="world\materials\source\MaterialFactory.cpp" />
+		<Unit filename="world\materials\source\Onyx.cpp" />
 		<Unit filename="world\materials\source\Paper.cpp" />
 		<Unit filename="world\materials\source\Steel.cpp" />
 		<Unit filename="world\materials\source\Stone.cpp" />
 		<Unit filename="world\materials\source\Wood.cpp" />
+		<Unit filename="world\religion\include\Deity.hpp" />
+		<Unit filename="world\religion\include\DeityStatus.hpp" />
+		<Unit filename="world\religion\include\Religion.hpp" />
+		<Unit filename="world\religion\source\Deity.cpp" />
+		<Unit filename="world\religion\source\DeityStatus.cpp" />
+		<Unit filename="world\religion\source\Religion.cpp" />
 		<Unit filename="world\source\AgeInfo.cpp" />
+		<Unit filename="world\source\Alignment.cpp" />
 		<Unit filename="world\source\Ammunition.cpp" />
 		<Unit filename="world\source\Amulet.cpp" />
 		<Unit filename="world\source\Armour.cpp" />
@@ -492,49 +532,69 @@
 		<Unit filename="world\source\Weight.cpp" />
 		<Unit filename="world\source\World.cpp" />
 		<Unit filename="world\source\unit_tests\Creature_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\source\unit_tests\Race_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\source\unit_tests\Skills_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\source\unit_tests\Statistic_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="world\tiles\features\include\Altar.hpp" />
 		<Unit filename="world\tiles\features\include\Door.hpp" />
 		<Unit filename="world\tiles\features\include\Entrance.hpp" />
 		<Unit filename="world\tiles\features\include\EntranceState.hpp" />
 		<Unit filename="world\tiles\features\include\EntranceTypes.hpp" />
+		<Unit filename="world\tiles\features\include\EvilAltar.hpp" />
 		<Unit filename="world\tiles\features\include\Feature.hpp" />
 		<Unit filename="world\tiles\features\include\FeatureGenerator.hpp" />
+		<Unit filename="world\tiles\features\include\Fountain.hpp" />
+		<Unit filename="world\tiles\features\include\GoodAltar.hpp" />
 		<Unit filename="world\tiles\features\include\IHandleable.hpp" />
 		<Unit filename="world\tiles\features\include\IKickable.hpp" />
 		<Unit filename="world\tiles\features\include\ILockable.hpp" />
+		<Unit filename="world\tiles\features\include\IOfferable.hpp" />
 		<Unit filename="world\tiles\features\include\ITrappable.hpp" />
 		<Unit filename="world\tiles\features\include\Lock.hpp" />
+		<Unit filename="world\tiles\features\include\NeutralAltar.hpp" />
+		<Unit filename="world\tiles\features\include\Pew.hpp" />
 		<Unit filename="world\tiles\features\include\Trap.hpp" />
+		<Unit filename="world\tiles\features\source\Altar.cpp" />
 		<Unit filename="world\tiles\features\source\Door.cpp" />
 		<Unit filename="world\tiles\features\source\Entrance.cpp" />
 		<Unit filename="world\tiles\features\source\EntranceState.cpp" />
+		<Unit filename="world\tiles\features\source\EvilAltar.cpp" />
 		<Unit filename="world\tiles\features\source\Feature.cpp" />
 		<Unit filename="world\tiles\features\source\FeatureGenerator.cpp" />
+		<Unit filename="world\tiles\features\source\Fountain.cpp" />
+		<Unit filename="world\tiles\features\source\GoodAltar.cpp" />
 		<Unit filename="world\tiles\features\source\ILockable.cpp" />
 		<Unit filename="world\tiles\features\source\ITrappable.cpp" />
+		<Unit filename="world\tiles\features\source\NeutralAltar.cpp" />
+		<Unit filename="world\tiles\features\source\Pew.cpp" />
 		<Unit filename="world\tiles\features\source\Trap.cpp" />
 		<Unit filename="world\tiles\include\AllTiles.hpp" />
+		<Unit filename="world\tiles\include\BarracksTile.hpp" />
 		<Unit filename="world\tiles\include\BeachTile.hpp" />
 		<Unit filename="world\tiles\include\BushTile.hpp" />
 		<Unit filename="world\tiles\include\CairnTile.hpp" />
+		<Unit filename="world\tiles\include\CastleTile.hpp" />
 		<Unit filename="world\tiles\include\CavernTile.hpp" />
+		<Unit filename="world\tiles\include\ChurchTile.hpp" />
 		<Unit filename="world\tiles\include\DesertTile.hpp" />
 		<Unit filename="world\tiles\include\DownStaircaseTile.hpp" />
+		<Unit filename="world\tiles\include\DungeonComplexTile.hpp" />
 		<Unit filename="world\tiles\include\DungeonTile.hpp" />
 		<Unit filename="world\tiles\include\FieldTile.hpp" />
 		<Unit filename="world\tiles\include\ForestTile.hpp" />
 		<Unit filename="world\tiles\include\GraveTile.hpp" />
+		<Unit filename="world\tiles\include\GraveyardTile.hpp" />
 		<Unit filename="world\tiles\include\HillsTile.hpp" />
+		<Unit filename="world\tiles\include\KeepTile.hpp" />
+		<Unit filename="world\tiles\include\LibraryTile.hpp" />
 		<Unit filename="world\tiles\include\MarshTile.hpp" />
 		<Unit filename="world\tiles\include\MountainsTile.hpp" />
 		<Unit filename="world\tiles\include\ReedsTile.hpp" />
@@ -544,8 +604,10 @@
 		<Unit filename="world\tiles\include\ScrubTile.hpp" />
 		<Unit filename="world\tiles\include\SeaTile.hpp" />
 		<Unit filename="world\tiles\include\ShoalsTile.hpp" />
+		<Unit filename="world\tiles\include\SiteOfDeathTile.hpp" />
 		<Unit filename="world\tiles\include\SpringsTile.hpp" />
 		<Unit filename="world\tiles\include\StaircaseTile.hpp" />
+		<Unit filename="world\tiles\include\TempleTile.hpp" />
 		<Unit filename="world\tiles\include\Tile.hpp" />
 		<Unit filename="world\tiles\include\TreeTile.hpp" />
 		<Unit filename="world\tiles\include\UpStaircaseTile.hpp" />
@@ -554,17 +616,24 @@
 		<Unit filename="world\tiles\include\WheatTile.hpp" />
 		<Unit filename="world\tiles\include\WorldMapTile.hpp" />
 		<Unit filename="world\tiles\include\tiles.hpp" />
+		<Unit filename="world\tiles\source\BarracksTile.cpp" />
 		<Unit filename="world\tiles\source\BeachTile.cpp" />
 		<Unit filename="world\tiles\source\BushTile.cpp" />
 		<Unit filename="world\tiles\source\CairnTile.cpp" />
+		<Unit filename="world\tiles\source\CastleTile.cpp" />
 		<Unit filename="world\tiles\source\CavernTile.cpp" />
+		<Unit filename="world\tiles\source\ChurchTile.cpp" />
 		<Unit filename="world\tiles\source\DesertTile.cpp" />
 		<Unit filename="world\tiles\source\DownStaircaseTile.cpp" />
+		<Unit filename="world\tiles\source\DungeonComplexTile.cpp" />
 		<Unit filename="world\tiles\source\DungeonTile.cpp" />
 		<Unit filename="world\tiles\source\FieldTile.cpp" />
 		<Unit filename="world\tiles\source\ForestTile.cpp" />
 		<Unit filename="world\tiles\source\GraveTile.cpp" />
+		<Unit filename="world\tiles\source\GraveyardTile.cpp" />
 		<Unit filename="world\tiles\source\HillsTile.cpp" />
+		<Unit filename="world\tiles\source\KeepTile.cpp" />
+		<Unit filename="world\tiles\source\LibraryTile.cpp" />
 		<Unit filename="world\tiles\source\MarshTile.cpp" />
 		<Unit filename="world\tiles\source\MountainsTile.cpp" />
 		<Unit filename="world\tiles\source\ReedsTile.cpp" />
@@ -574,8 +643,10 @@
 		<Unit filename="world\tiles\source\ScrubTile.cpp" />
 		<Unit filename="world\tiles\source\SeaTile.cpp" />
 		<Unit filename="world\tiles\source\ShoalsTile.cpp" />
+		<Unit filename="world\tiles\source\SiteOfDeathTile.cpp" />
 		<Unit filename="world\tiles\source\SpringsTile.cpp" />
 		<Unit filename="world\tiles\source\StaircaseTile.cpp" />
+		<Unit filename="world\tiles\source\TempleTile.cpp" />
 		<Unit filename="world\tiles\source\Tile.cpp" />
 		<Unit filename="world\tiles\source\TreeTile.cpp" />
 		<Unit filename="world\tiles\source\UpStaircaseTile.cpp" />
@@ -584,88 +655,88 @@
 		<Unit filename="world\tiles\source\WheatTile.cpp" />
 		<Unit filename="world\tiles\source\WorldMapTile.cpp" />
 		<Unit filename="world\tiles\source\unit_tests\BeachTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\BushTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\CairnTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\CavernTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\DesertTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\DownStaircaseTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\DungeonTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\FieldTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\ForestTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\GraveTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\HillsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\MarshTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\MountainsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\ReedsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\RiverTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\RoadTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\RockTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\ScrubTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\SeaTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\ShoalsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\SpringsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\StaircaseTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\Tile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\TreeTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\UpStaircaseTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\VillageTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\WeedsTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\source\unit_tests\WheatTile_test.cpp">
-			<Option target="Release" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>
 			<code_completion />

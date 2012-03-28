@@ -5,6 +5,8 @@
 #include "Glass.hpp"
 #include "Iron.hpp"
 #include "Leather.hpp"
+#include "Marble.hpp"
+#include "Onyx.hpp"
 #include "Paper.hpp"
 #include "Steel.hpp"
 #include "Stone.hpp"
@@ -51,6 +53,14 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
       material = make_shared<Stone>();
       break;
     case MATERIAL_TYPE_WOOD:
+      material = make_shared<Wood>();
+      break;
+    case MATERIAL_TYPE_MARBLE:
+      material = make_shared<Marble>();
+      break;
+    case MATERIAL_TYPE_ONYX:
+      material = make_shared<Onyx>();
+      break;
     default:
       material = make_shared<Wood>();
       break;

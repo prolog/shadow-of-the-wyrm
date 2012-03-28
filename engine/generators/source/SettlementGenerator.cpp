@@ -6,7 +6,7 @@
 using namespace std;
 
 SettlementGenerator::SettlementGenerator(MapPtr new_base_map)
-: Generator("")
+: Generator(new_base_map->get_map_exit_id())
 , GROWTH_RATE(100)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)
@@ -19,7 +19,7 @@ SettlementGenerator::SettlementGenerator(MapPtr new_base_map)
 }
 
 SettlementGenerator::SettlementGenerator(MapPtr new_base_map, const int growth_rate)
-: Generator("")
+: Generator(new_base_map->get_map_exit_id())
 , GROWTH_RATE(growth_rate)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)

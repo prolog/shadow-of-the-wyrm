@@ -213,6 +213,16 @@ float Race::get_experience_multiplier() const
   return experience_multiplier;
 }
 
+void Race::set_initial_deity_ids(const std::vector<std::string>& new_initial_deity_ids)
+{
+  initial_deity_ids = new_initial_deity_ids;
+}
+
+std::vector<std::string> Race::get_initial_deity_ids() const
+{
+  return initial_deity_ids;
+}
+
 void Race::set_resistances(const Resistances& new_resists)
 {
   resistances = new_resists;

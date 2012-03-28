@@ -11,6 +11,13 @@ XMLConfigurationReader::XMLConfigurationReader(const std::string& xml_filename)
   initialize_parser();
 }
 
+DeityMap XMLConfigurationReader::get_deities()
+{
+  XMLNode deities_node = XMLUtils::get_next_element_by_local_name(root, "Deities");
+  DeityMap deities = deities_reader.get_deities(deities_node);
+  return deities;  
+}
+
 ClassMap XMLConfigurationReader::get_classes()
 {
   XMLNode classes_node = XMLUtils::get_next_element_by_local_name(root, "Classes");

@@ -2,6 +2,7 @@
 #include <vector>
 #include "ActionManager.hpp"
 #include "Class.hpp"
+#include "Deity.hpp"
 #include "Directions.hpp"
 #include "DisplayTile.hpp"
 #include "Display.hpp"
@@ -22,6 +23,9 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     void set_map_registry(const MapRegistry& new_map_registry);
     MapRegistry& get_map_registry_ref();
 
+    void set_deities(const DeityMap& game_deities);
+    const DeityMap& get_deities_ref() const;
+    
     void set_races(const RaceMap& game_races);
     const RaceMap& get_races_ref() const;
 
@@ -78,6 +82,7 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     // they're the template upon which the in-game items are built.
     DisplayPtr display;
     MapRegistry map_registry;
+    DeityMap deities;
     RaceMap races;
     ClassMap classes;
     ItemMap items;

@@ -18,12 +18,8 @@ class Entrance : public Feature, public ILockable
     virtual void set_maximum_size(const CreatureSize new_maximum_size);
     virtual CreatureSize get_maximum_size() const;
     
-    virtual void set_trap(TrapPtr new_trap);
-    virtual TrapPtr get_trap();
-
   protected:
     LockPtr lock;
-    TrapPtr trap;
     EntranceState state;
     CreatureSize maximum_size; // The maximum creature size for the entrance.  Dragons can't go in Hobbit holes.
 };

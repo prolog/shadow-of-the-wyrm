@@ -31,6 +31,9 @@ class SavageLandsEngine
     void set_display(DisplayPtr new_display);
 
   protected:
+    void setup_game();
+    void setup_player_and_world();
+    
     EngineStateManager state_manager;
     ControllerPtr controller;
     DisplayPtr display;

@@ -25,12 +25,15 @@ class Feature : public ITrappable, public IHandleable, public IKickable
     virtual uchar get_symbol()  const = 0;
     virtual Colour get_colour() const; // by default, use the material's colour.
     
-    
+    virtual void set_trap(TrapPtr new_trap);
+    virtual TrapPtr get_trap();
+
     virtual void set_material(MaterialPtr new_material);
     virtual MaterialPtr get_material();
 
     // JCD FIXME fill in the rest later.
   protected:
+    TrapPtr trap;
     MaterialPtr material;
 };
 

@@ -1,4 +1,3 @@
-#include <string>
 #include "RaceSelectionScreen.hpp"
 #include "Game.hpp"
 #include "OptionsComponent.hpp"

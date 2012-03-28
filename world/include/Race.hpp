@@ -2,6 +2,7 @@
 #include <boost/shared_ptr.hpp>
 #include <map>
 #include <string>
+#include <vector>
 #include "AgeInfo.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
@@ -71,6 +72,9 @@ class Race
 
     void set_experience_multiplier(const float new_experience_multiplier);
     float get_experience_multiplier() const;
+    
+    void set_initial_deity_ids(const std::vector<std::string>& new_initial_deity_ids);
+    std::vector<std::string> get_initial_deity_ids() const;
 
     void set_resistances(const Resistances& new_resistances);
     Resistances get_resistances() const;
@@ -105,6 +109,9 @@ class Race
     int valour_modifier;
     int spirit_modifier;
     Statistic starting_speed;
+    
+    // Available deities on creation
+    std::vector<std::string> initial_deity_ids;
 
     // Resistances
     Resistances resistances;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
-	<ActiveTarget name="MapTester" />
-	<File name="MapTester.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="8981" topLine="283" />
+	<ActiveTarget name="Debug" />
+	<File name="MapTester.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="16091" topLine="603" />
 	</File>
 	<File name="SavageLands.cpp" open="0" top="0" tabpos="14">
-		<Cursor position="2377" topLine="103" />
+		<Cursor position="2264" topLine="103" />
 	</File>
 	<File name="controller\include\Controller.hpp" open="0" top="0" tabpos="15">
 		<Cursor position="228" topLine="0" />
@@ -64,35 +64,47 @@
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="34" topLine="0" />
 	</File>
-	<File name="display\source\NCursesPromptProcessor.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="2380" topLine="99" />
+	<File name="display\source\NCursesPromptProcessor.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="2386" topLine="99" />
 	</File>
 	<File name="display\source\unit_tests\Display_test.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="86" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLConfigurationReader.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="843" topLine="12" />
+	<File name="engine\XML\include\XMLClassesReader.hpp" open="0" top="0" tabpos="1">
+		<Cursor position="64" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLConfigurationReader.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="920" topLine="14" />
 	</File>
 	<File name="engine\XML\include\XMLDataStructures.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="2907" topLine="69" />
+	</File>
+	<File name="engine\XML\include\XMLDeitiesReader.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="215" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLItemsReaders.hpp" open="0" top="0" tabpos="15">
 		<Cursor position="103" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLRacesReader.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="273" topLine="0" />
+		<Cursor position="599" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="455" topLine="7" />
+	<File name="engine\XML\source\XMLClassesReader.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="475" topLine="15" />
 	</File>
 	<File name="engine\XML\source\XMLDataStructures.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="2962" topLine="115" />
 	</File>
+	<File name="engine\XML\source\XMLDeitiesReader.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="666" topLine="9" />
+	</File>
 	<File name="engine\XML\source\XMLItemsReaders.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="2500" topLine="84" />
 	</File>
-	<File name="engine\XML\source\XMLRacesReader.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2329" topLine="47" />
+	<File name="engine\XML\source\XMLRacesReader.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="348" topLine="17" />
 	</File>
 	<File name="engine\XML\source\XMLResistancesReader.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2650" topLine="21" />
@@ -298,11 +310,20 @@
 	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="1074" topLine="12" />
 	</File>
+	<File name="engine\generators\include\CathedralGenerator.hpp" open="0" top="0" tabpos="7">
+		<Cursor position="467" topLine="0" />
+	</File>
 	<File name="engine\generators\include\CavernGenerator.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="693" topLine="0" />
 	</File>
 	<File name="engine\generators\include\CellularAutomataGenerator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="186" topLine="2" />
+	</File>
+	<File name="engine\generators\include\ChurchGenerator.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="576" topLine="0" />
+	</File>
+	<File name="engine\generators\include\ChurchGeneratorFactory.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="37" topLine="0" />
 	</File>
 	<File name="engine\generators\include\DesertGenerator.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="199" topLine="0" />
@@ -316,17 +337,23 @@
 	<File name="engine\generators\include\ForestGenerator.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="314" topLine="0" />
 	</File>
-	<File name="engine\generators\include\Generator.hpp" open="0" top="0" tabpos="27">
-		<Cursor position="262" topLine="0" />
+	<File name="engine\generators\include\FortifiedChurchGenerator.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="613" topLine="0" />
 	</File>
-	<File name="engine\generators\include\GraveyardGenerator.hpp" open="1" top="0" tabpos="4">
+	<File name="engine\generators\include\Generator.hpp" open="0" top="0" tabpos="9">
+		<Cursor position="522" topLine="0" />
+	</File>
+	<File name="engine\generators\include\GraveyardGenerator.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="639" topLine="0" />
 	</File>
-	<File name="engine\generators\include\GraveyardGeneratorFactory.hpp" open="1" top="0" tabpos="3">
+	<File name="engine\generators\include\GraveyardGeneratorFactory.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="211" topLine="0" />
 	</File>
-	<File name="engine\generators\include\KeepRuinsGenerator.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="200" topLine="0" />
+	<File name="engine\generators\include\KeepGenerator.hpp" open="0" top="0" tabpos="17">
+		<Cursor position="171" topLine="0" />
+	</File>
+	<File name="engine\generators\include\KeepRuinsGenerator.hpp" open="0" top="0" tabpos="15">
+		<Cursor position="101" topLine="0" />
 	</File>
 	<File name="engine\generators\include\MarshGenerator.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="299" topLine="0" />
@@ -337,8 +364,8 @@
 	<File name="engine\generators\include\OrderedGraveyardGenerator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="168" topLine="0" />
 	</File>
-	<File name="engine\generators\include\RuinsGenerator.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="232" topLine="0" />
+	<File name="engine\generators\include\RuinsGenerator.hpp" open="0" top="0" tabpos="21">
+		<Cursor position="837" topLine="3" />
 	</File>
 	<File name="engine\generators\include\ScrubGenerator.hpp" open="0" top="0" tabpos="20">
 		<Cursor position="142" topLine="0" />
@@ -347,10 +374,13 @@
 		<Cursor position="143" topLine="0" />
 	</File>
 	<File name="engine\generators\include\SettlementGenerator.hpp" open="0" top="0" tabpos="34">
-		<Cursor position="337" topLine="0" />
+		<Cursor position="186" topLine="0" />
 	</File>
 	<File name="engine\generators\include\SettlementRuinsGenerator.hpp" open="0" top="0" tabpos="28">
 		<Cursor position="192" topLine="0" />
+	</File>
+	<File name="engine\generators\include\SimpleChurchGenerator.hpp" open="0" top="0" tabpos="1">
+		<Cursor position="212" topLine="0" />
 	</File>
 	<File name="engine\generators\include\SpiralDungeonGenerator.hpp" open="0" top="0" tabpos="23">
 		<Cursor position="285" topLine="0" />
@@ -370,11 +400,17 @@
 	<File name="engine\generators\include\WorldGenerator.hpp" open="0" top="0" tabpos="38">
 		<Cursor position="368" topLine="0" />
 	</File>
+	<File name="engine\generators\source\CathedralGenerator.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="795" topLine="28" />
+	</File>
 	<File name="engine\generators\source\CavernGenerator.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1857" topLine="51" />
 	</File>
 	<File name="engine\generators\source\CellularAutomataGenerator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="19" topLine="0" />
+	</File>
+	<File name="engine\generators\source\ChurchGenerator.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="217" topLine="0" />
 	</File>
 	<File name="engine\generators\source\DesertGenerator.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="117" topLine="0" />
@@ -388,17 +424,23 @@
 	<File name="engine\generators\source\ForestGenerator.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="294" topLine="0" />
 	</File>
-	<File name="engine\generators\source\Generator.cpp" open="1" top="0" tabpos="18">
-		<Cursor position="235" topLine="0" />
+	<File name="engine\generators\source\FortifiedChurchGenerator.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1309" topLine="36" />
 	</File>
-	<File name="engine\generators\source\GraveyardGenerator.cpp" open="1" top="0" tabpos="5">
+	<File name="engine\generators\source\Generator.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="896" topLine="33" />
+	</File>
+	<File name="engine\generators\source\GraveyardGenerator.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="560" topLine="16" />
 	</File>
-	<File name="engine\generators\source\GraveyardGeneratorFactory.cpp" open="1" top="0" tabpos="2">
+	<File name="engine\generators\source\GraveyardGeneratorFactory.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="915" topLine="6" />
 	</File>
-	<File name="engine\generators\source\KeepRuinsGenerator.cpp" open="0" top="0" tabpos="15">
-		<Cursor position="295" topLine="0" />
+	<File name="engine\generators\source\KeepGenerator.cpp" open="0" top="0" tabpos="18">
+		<Cursor position="453" topLine="0" />
+	</File>
+	<File name="engine\generators\source\KeepRuinsGenerator.cpp" open="0" top="0" tabpos="16">
+		<Cursor position="202" topLine="0" />
 	</File>
 	<File name="engine\generators\source\MarshGenerator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="226" topLine="1" />
@@ -406,16 +448,16 @@
 	<File name="engine\generators\source\MountainsGenerator.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="126" topLine="0" />
 	</File>
-	<File name="engine\generators\source\OrderedGraveyardGenerator.cpp" open="1" top="0" tabpos="19">
+	<File name="engine\generators\source\OrderedGraveyardGenerator.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="174" topLine="0" />
 	</File>
 	<File name="engine\generators\source\RoadGenerator.cpp" open="0" top="0" tabpos="17">
 		<Cursor position="1365" topLine="43" />
 	</File>
-	<File name="engine\generators\source\RuinsGenerator.cpp" open="0" top="0" tabpos="18">
-		<Cursor position="436" topLine="8" />
+	<File name="engine\generators\source\RuinsGenerator.cpp" open="0" top="0" tabpos="19">
+		<Cursor position="439" topLine="9" />
 	</File>
-	<File name="engine\generators\source\ScatteredGraveyardGenerator.cpp" open="1" top="1" tabpos="20">
+	<File name="engine\generators\source\ScatteredGraveyardGenerator.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="531" topLine="8" />
 	</File>
 	<File name="engine\generators\source\ScrubGenerator.cpp" open="0" top="0" tabpos="19">
@@ -424,11 +466,14 @@
 	<File name="engine\generators\source\SeaGenerator.cpp" open="0" top="0" tabpos="22">
 		<Cursor position="109" topLine="0" />
 	</File>
-	<File name="engine\generators\source\SettlementGenerator.cpp" open="0" top="0" tabpos="30">
-		<Cursor position="700" topLine="23" />
+	<File name="engine\generators\source\SettlementGenerator.cpp" open="0" top="0" tabpos="20">
+		<Cursor position="1040" topLine="25" />
 	</File>
 	<File name="engine\generators\source\SettlementRuinsGenerator.cpp" open="0" top="0" tabpos="29">
 		<Cursor position="493" topLine="0" />
+	</File>
+	<File name="engine\generators\source\SimpleChurchGenerator.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="1890" topLine="49" />
 	</File>
 	<File name="engine\generators\source\SpiralDungeonGenerator.cpp" open="0" top="0" tabpos="31">
 		<Cursor position="227" topLine="0" />
@@ -439,7 +484,7 @@
 	<File name="engine\generators\source\TerrainGeneratorFactory.cpp" open="0" top="0" tabpos="33">
 		<Cursor position="481" topLine="0" />
 	</File>
-	<File name="engine\generators\source\TileGenerator.cpp" open="1" top="0" tabpos="9">
+	<File name="engine\generators\source\TileGenerator.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="3554" topLine="104" />
 	</File>
 	<File name="engine\generators\source\WorldGenerator.cpp" open="0" top="0" tabpos="4">
@@ -448,8 +493,8 @@
 	<File name="engine\include\ActionManager.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="883" topLine="10" />
 	</File>
-	<File name="engine\include\CreatureFactory.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="492" topLine="0" />
+	<File name="engine\include\CreatureFactory.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="374" topLine="0" />
 	</File>
 	<File name="engine\include\Directions.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="152" topLine="0" />
@@ -460,8 +505,8 @@
 	<File name="engine\include\FileWriter.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="236" topLine="0" />
 	</File>
-	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="1336" topLine="34" />
+	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="6">
+		<Cursor position="707" topLine="18" />
 	</File>
 	<File name="engine\include\InventoryManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="313" topLine="2" />
@@ -503,19 +548,28 @@
 		<Cursor position="374" topLine="0" />
 	</File>
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="166" topLine="0" />
+		<Cursor position="597" topLine="14" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="13149" topLine="401" />
+	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="11">
+		<Cursor position="800" topLine="12" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="0" topLine="0" />
 	</File>
+	<File name="engine\menus\include\DeitySelectionScreen.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="108" topLine="0" />
+	</File>
 	<File name="engine\menus\include\Menu.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="510" topLine="5" />
 	</File>
+	<File name="engine\menus\include\RaceSelectionScreen.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="181" topLine="0" />
+	</File>
 	<File name="engine\menus\source\ClassSelectionScreen.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="332" topLine="0" />
+	</File>
+	<File name="engine\menus\source\DeitySelectionScreen.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="1111" topLine="31" />
 	</File>
 	<File name="engine\menus\source\Menu.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="644" topLine="11" />
@@ -523,8 +577,8 @@
 	<File name="engine\menus\source\NamingScreen.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="148" topLine="0" />
 	</File>
-	<File name="engine\menus\source\RaceSelectionScreen.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="1331" topLine="25" />
+	<File name="engine\menus\source\RaceSelectionScreen.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="892" topLine="27" />
 	</File>
 	<File name="engine\menus\source\SexSelectionScreen.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="978" topLine="12" />
@@ -535,8 +589,11 @@
 	<File name="engine\source\ActionManager.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="2534" topLine="88" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="989" topLine="16" />
+	<File name="engine\source\CreatureFactory.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="378" topLine="0" />
+	</File>
+	<File name="engine\source\Dimensions.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="195" topLine="0" />
 	</File>
 	<File name="engine\source\EquipmentManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="1245" topLine="33" />
@@ -544,8 +601,8 @@
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="443" topLine="4" />
 	</File>
-	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="40">
-		<Cursor position="2171" topLine="102" />
+	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="1352" topLine="58" />
 	</File>
 	<File name="engine\source\InventoryManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1923" topLine="61" />
@@ -583,11 +640,11 @@
 	<File name="engine\source\RNG.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="58" topLine="4" />
 	</File>
-	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="3394" topLine="99" />
+	<File name="engine\source\SavageLandsEngine.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="4140" topLine="145" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="22557" topLine="543" />
+	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="12">
+		<Cursor position="601" topLine="10" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1309" topLine="39" />
@@ -649,6 +706,12 @@
 	<File name="world\include\AgeInfo.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="430" topLine="0" />
 	</File>
+	<File name="world\include\Alignment.hpp" open="0" top="0" tabpos="8">
+		<Cursor position="128" topLine="0" />
+	</File>
+	<File name="world\include\AlignmentEnums.hpp" open="0" top="0" tabpos="9">
+		<Cursor position="0" topLine="0" />
+	</File>
 	<File name="world\include\Ammunition.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="175" topLine="0" />
 	</File>
@@ -667,11 +730,11 @@
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="188" topLine="0" />
 	</File>
-	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="8">
-		<Cursor position="461" topLine="0" />
+	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="3983" topLine="123" />
 	</File>
-	<File name="world\include\CreatureFeatures.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="0" topLine="0" />
+	<File name="world\include\CreatureFeatures.hpp" open="0" top="0" tabpos="6">
+		<Cursor position="580" topLine="0" />
 	</File>
 	<File name="world\include\Damage.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="662" topLine="9" />
@@ -697,7 +760,7 @@
 	<File name="world\include\ItemTypes.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="289" topLine="0" />
 	</File>
-	<File name="world\include\Map.hpp" open="1" top="0" tabpos="17">
+	<File name="world\include\Map.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="1155" topLine="32" />
 	</File>
 	<File name="world\include\MapExit.hpp" open="0" top="0" tabpos="1">
@@ -709,8 +772,8 @@
 	<File name="world\include\Potion.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="149" topLine="0" />
 	</File>
-	<File name="world\include\Race.hpp" open="0" top="0" tabpos="6">
-		<Cursor position="2869" topLine="82" />
+	<File name="world\include\Race.hpp" open="1" top="0" tabpos="7">
+		<Cursor position="2427" topLine="64" />
 	</File>
 	<File name="world\include\Resistances.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="249" topLine="0" />
@@ -724,8 +787,8 @@
 	<File name="world\include\SkillTypes.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="2588" topLine="84" />
 	</File>
-	<File name="world\include\Skills.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="3443" topLine="239" />
+	<File name="world\include\Skills.hpp" open="0" top="0" tabpos="10">
+		<Cursor position="4320" topLine="305" />
 	</File>
 	<File name="world\include\Staff.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="152" topLine="0" />
@@ -760,14 +823,23 @@
 	<File name="world\materials\include\Iron.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="317" topLine="0" />
 	</File>
-	<File name="world\materials\include\Leather.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="336" topLine="0" />
+	<File name="world\materials\include\Leather.hpp" open="0" top="0" tabpos="19">
+		<Cursor position="337" topLine="0" />
 	</File>
-	<File name="world\materials\include\Material.hpp" open="0" top="0" tabpos="1">
+	<File name="world\materials\include\Marble.hpp" open="0" top="0" tabpos="20">
+		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="world\materials\include\Material.hpp" open="0" top="0" tabpos="17">
 		<Cursor position="709" topLine="8" />
 	</File>
-	<File name="world\materials\include\MaterialTypes.hpp" open="0" top="0" tabpos="11">
-		<Cursor position="464" topLine="2" />
+	<File name="world\materials\include\MaterialFactory.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="59" topLine="0" />
+	</File>
+	<File name="world\materials\include\MaterialTypes.hpp" open="0" top="0" tabpos="9">
+		<Cursor position="337" topLine="2" />
+	</File>
+	<File name="world\materials\include\Onyx.hpp" open="0" top="0" tabpos="21">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="world\materials\include\Paper.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="308" topLine="0" />
@@ -781,26 +853,32 @@
 	<File name="world\materials\include\Wood.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="333" topLine="0" />
 	</File>
-	<File name="world\materials\source\Cloth.cpp" open="0" top="0" tabpos="2">
+	<File name="world\materials\source\Cloth.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="492" topLine="16" />
 	</File>
-	<File name="world\materials\source\DragonScale.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="581" topLine="16" />
+	<File name="world\materials\source\DragonScale.cpp" open="0" top="0" tabpos="16">
+		<Cursor position="521" topLine="21" />
 	</File>
-	<File name="world\materials\source\Glass.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="534" topLine="14" />
+	<File name="world\materials\source\Glass.cpp" open="0" top="0" tabpos="13">
+		<Cursor position="537" topLine="16" />
 	</File>
 	<File name="world\materials\source\Iron.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="503" topLine="16" />
 	</File>
-	<File name="world\materials\source\Leather.cpp" open="0" top="0" tabpos="6">
+	<File name="world\materials\source\Leather.cpp" open="0" top="0" tabpos="18">
 		<Cursor position="514" topLine="14" />
 	</File>
-	<File name="world\materials\source\Material.cpp" open="0" top="0" tabpos="0">
+	<File name="world\materials\source\Marble.cpp" open="0" top="0" tabpos="22">
+		<Cursor position="531" topLine="16" />
+	</File>
+	<File name="world\materials\source\Material.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="63" topLine="0" />
 	</File>
-	<File name="world\materials\source\MaterialFactory.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="542" topLine="18" />
+	<File name="world\materials\source\MaterialFactory.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="864" topLine="53" />
+	</File>
+	<File name="world\materials\source\Onyx.cpp" open="0" top="0" tabpos="23">
+		<Cursor position="511" topLine="16" />
 	</File>
 	<File name="world\materials\source\Paper.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="519" topLine="14" />
@@ -814,8 +892,26 @@
 	<File name="world\materials\source\Wood.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="479" topLine="21" />
 	</File>
+	<File name="world\religion\include\Deity.hpp" open="0" top="0" tabpos="5">
+		<Cursor position="994" topLine="13" />
+	</File>
+	<File name="world\religion\include\Religion.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="667" topLine="5" />
+	</File>
+	<File name="world\religion\source\Deity.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="1280" topLine="38" />
+	</File>
+	<File name="world\religion\source\Religion.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="531" topLine="3" />
+	</File>
+	<File name="world\religion\source\ReligionFactory.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="449" topLine="1" />
+	</File>
 	<File name="world\source\AgeInfo.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="422" topLine="9" />
+	</File>
+	<File name="world\source\Alignment.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="1352" topLine="42" />
 	</File>
 	<File name="world\source\Ammunition.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="234" topLine="0" />
@@ -832,8 +928,8 @@
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
 	</File>
-	<File name="world\source\Creature.cpp" open="0" top="0" tabpos="12">
-		<Cursor position="440" topLine="0" />
+	<File name="world\source\Creature.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="590" topLine="5" />
 	</File>
 	<File name="world\source\Damage.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="439" topLine="8" />
@@ -844,14 +940,14 @@
 	<File name="world\source\Food.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="208" topLine="7" />
 	</File>
-	<File name="world\source\Inventory.cpp" open="1" top="0" tabpos="14">
+	<File name="world\source\Inventory.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="134" topLine="6" />
 	</File>
 	<File name="world\source\Item.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1638" topLine="90" />
 	</File>
-	<File name="world\source\Map.cpp" open="1" top="0" tabpos="16">
-		<Cursor position="2088" topLine="106" />
+	<File name="world\source\Map.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="349" topLine="0" />
 	</File>
 	<File name="world\source\MapExit.cpp" open="0" top="0" tabpos="37">
 		<Cursor position="125" topLine="0" />
@@ -863,7 +959,7 @@
 		<Cursor position="218" topLine="0" />
 	</File>
 	<File name="world\source\Race.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1715" topLine="85" />
+		<Cursor position="3746" topLine="204" />
 	</File>
 	<File name="world\source\Resistances.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="2766" topLine="133" />
@@ -874,8 +970,8 @@
 	<File name="world\source\Scroll.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="198" topLine="0" />
 	</File>
-	<File name="world\source\Skills.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="5483" topLine="328" />
+	<File name="world\source\Skills.cpp" open="0" top="0" tabpos="11">
+		<Cursor position="6727" topLine="404" />
 	</File>
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="189" topLine="0" />
@@ -892,11 +988,14 @@
 	<File name="world\source\Weight.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="18" topLine="0" />
 	</File>
-	<File name="world\tiles\features\include\Door.hpp" open="0" top="0" tabpos="6">
+	<File name="world\tiles\features\include\Altar.hpp" open="0" top="0" tabpos="8">
+		<Cursor position="122" topLine="0" />
+	</File>
+	<File name="world\tiles\features\include\Door.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="284" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\Entrance.hpp" open="0" top="0" tabpos="10">
-		<Cursor position="623" topLine="5" />
+		<Cursor position="597" topLine="2" />
 	</File>
 	<File name="world\tiles\features\include\EntranceState.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="34" topLine="0" />
@@ -904,11 +1003,11 @@
 	<File name="world\tiles\features\include\EntranceTypes.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="74" topLine="0" />
 	</File>
-	<File name="world\tiles\features\include\Feature.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="118" topLine="0" />
+	<File name="world\tiles\features\include\Feature.hpp" open="0" top="0" tabpos="4">
+		<Cursor position="1143" topLine="13" />
 	</File>
 	<File name="world\tiles\features\include\FeatureGenerator.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="83" topLine="0" />
+		<Cursor position="273" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\IHandleable.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="267" topLine="0" />
@@ -916,20 +1015,32 @@
 	<File name="world\tiles\features\include\IKickable.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="156" topLine="0" />
 	</File>
+	<File name="world\tiles\features\include\ITrappable.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="196" topLine="0" />
+	</File>
+	<File name="world\tiles\features\include\Pew.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="139" topLine="0" />
+	</File>
+	<File name="world\tiles\features\source\Altar.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="187" topLine="0" />
+	</File>
 	<File name="world\tiles\features\source\Door.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="523" topLine="0" />
 	</File>
-	<File name="world\tiles\features\source\Entrance.cpp" open="0" top="0" tabpos="11">
-		<Cursor position="654" topLine="12" />
+	<File name="world\tiles\features\source\Entrance.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="657" topLine="14" />
 	</File>
 	<File name="world\tiles\features\source\EntranceState.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="87" topLine="0" />
 	</File>
-	<File name="world\tiles\features\source\Feature.cpp" open="0" top="0" tabpos="13">
-		<Cursor position="338" topLine="10" />
+	<File name="world\tiles\features\source\Feature.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="140" topLine="0" />
 	</File>
 	<File name="world\tiles\features\source\FeatureGenerator.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="84" topLine="0" />
+		<Cursor position="1144" topLine="32" />
+	</File>
+	<File name="world\tiles\features\source\Pew.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="283" topLine="0" />
 	</File>
 	<File name="world\tiles\include\AllTiles.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="371" topLine="5" />
@@ -1030,7 +1141,7 @@
 	<File name="world\tiles\include\Tile.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="1435" topLine="41" />
 	</File>
-	<File name="world\tiles\include\TreeTile.hpp" open="1" top="0" tabpos="12">
+	<File name="world\tiles\include\TreeTile.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="34" topLine="0" />
 	</File>
 	<File name="world\tiles\include\UpStaircaseTile.hpp" open="0" top="0" tabpos="0">
@@ -1141,7 +1252,7 @@
 	<File name="world\tiles\source\TempleTile.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="201" topLine="0" />
 	</File>
-	<File name="world\tiles\source\Tile.cpp" open="1" top="0" tabpos="13">
+	<File name="world\tiles\source\Tile.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="340" topLine="10" />
 	</File>
 	<File name="world\tiles\source\TreeTile.cpp" open="0" top="0" tabpos="0">

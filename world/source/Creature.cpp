@@ -15,6 +15,7 @@ Creature::Creature()
 , symbol('?')
 , colour(COLOUR_WHITE)
 // Everything else is a string, Statistic, etc, and is not a primitive type.  These'll have their own constructors.
+// Religion defaults to atheist.
 {
   set_evade(0);
   set_soak (0);
@@ -383,6 +384,21 @@ void Creature::set_decision_strategy(const DecisionStrategyPtr strategy)
 DecisionStrategyPtr Creature::get_decision_strategy() const
 {
   return decision_strategy;
+}
+
+void Creature::set_religion(const Religion& new_religion)
+{
+  religion = new_religion;
+}
+
+Religion Creature::get_religion() const
+{
+  return religion;
+}
+
+Religion& Creature::get_religion_ref()
+{
+  return religion;
 }
 
 #ifdef UNIT_TESTS

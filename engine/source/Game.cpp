@@ -62,6 +62,16 @@ MapRegistry& Game::get_map_registry_ref()
   return map_registry;
 }
 
+void Game::set_deities(const DeityMap& game_deities)
+{
+  deities = game_deities;
+}
+
+const DeityMap& Game::get_deities_ref() const
+{
+  return deities;
+}
+
 void Game::set_races(const RaceMap& game_races)
 {
   races = game_races;

@@ -314,10 +314,11 @@ class Papercraft : public GeneralSkill
     Papercraft();
 };
 
-class Religion : public GeneralSkill
+// Calling this "ReligionSkill" to differentiate from a creature's actual Religion (religion/include/Religion.hpp)
+class ReligionSkill : public GeneralSkill
 {
   public:
-    Religion();
+    ReligionSkill();
 };
 
 class Scribing : public GeneralSkill
