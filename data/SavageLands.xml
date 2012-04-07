@@ -98,9 +98,15 @@
 				<SpiritModifier>5</SpiritModifier>
 			</RaceInitialModifiers>
 			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
 				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
 				<Slash>0.0</Slash>
@@ -2002,6 +2008,12 @@
 				<Colour>3</Colour>
 			</Text>
 		</TempleTile>
+		<DaisTile>
+			<Text>
+				<Symbol>.</Symbol>
+				<Colour>15</Colour>
+			</Text>
+		</DaisTile>
 	</Tiles>
 	<Items>
 		<Armours>

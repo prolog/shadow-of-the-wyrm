@@ -1,5 +1,8 @@
 #include "MaterialFactory.hpp"
 #include "Pew.hpp"
+#include "StringConstants.hpp"
+
+using std::string;
 
 Pew::Pew()
 : Feature(MaterialFactory::create_material(MATERIAL_TYPE_WOOD))
@@ -21,4 +24,9 @@ bool Pew::kick()
 uchar Pew::get_symbol() const
 {
   return '-';
+}
+
+string Pew::get_description_sid() const
+{
+  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_PEW;
 }

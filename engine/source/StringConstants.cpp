@@ -566,6 +566,7 @@ string TileTextKeys::TILE_DESC_KEEP           = "TILE_DESC_KEEP";
 string TileTextKeys::TILE_DESC_LIBRARY        = "TILE_DESC_LIBRARY";
 string TileTextKeys::TILE_DESC_SITE_OF_DEATH  = "TILE_DESC_SITE_OF_DEATH";
 string TileTextKeys::TILE_DESC_TEMPLE         = "TILE_DESC_TEMPLE";
+string TileTextKeys::TILE_DESC_DAIS           = "TILE_DESC_DAIS";
 
 // Text keys for player/creature actions
 ActionTextKeys::ActionTextKeys()
@@ -786,6 +787,7 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
     case TILE_TYPE_BUSH:
     case TILE_TYPE_WEEDS:
     case TILE_TYPE_SPRINGS:
+    case TILE_TYPE_DAIS:
     case TILE_TYPE_UP_STAIRCASE:
     case TILE_TYPE_DOWN_STAIRCASE:
     default:
@@ -816,3 +818,22 @@ string TextMessages::get_item_on_ground_description_message(const string& item_o
   boost::replace_first(item_message, "%s", item_on_ground_description);
   return item_message;
 }
+
+// Descriptions of tile features
+FeatureDescriptionTextKeys::FeatureDescriptionTextKeys()
+{
+}
+
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_DOOR               = "FEATURE_DESCRIPTION_DOOR";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_EVIL_ALTAR         = "FEATURE_DESCRIPTION_EVIL_ALTAR";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_GOOD_ALTAR         = "FEATURE_DESCRIPTION_GOOD_ALTAR";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_NEUTRAL_ALTAR      = "FEATURE_DESCRIPTION_NEUTRAL_ALTAR";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FOUNTAIN           = "FEATURE_DESCRIPTION_FOUNTAIN";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FIRE_PILLAR        = "FEATURE_DESCRIPTION_FIRE_PILLAR";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_PEW                = "FEATURE_DESCRIPTION_PEW";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_KING_STATUE        = "FEATURE_DESCRIPTION_KING_STATUE";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_QUEEN_STATUE       = "FEATURE_DESCRIPTION_QUEEN_STATUE";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_WARLORD_STATUE     = "FEATURE_DESCRIPTION_WARLORD_STATUE";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_KNIGHT_STATUE      = "FEATURE_DESCRIPTION_KNIGHT_STATUE";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE = "FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SORCEROR_STATUE    = "FEATURE_DESCRIPTION_SORCEROR_STATUE";

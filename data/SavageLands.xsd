@@ -76,6 +76,7 @@
 			<xs:element name="LibraryTile" type="tns:Tile" minOccurs="1"/>
 			<xs:element name="SiteOfDeathTile" type="tns:Tile" minOccurs="1"/>
 			<xs:element name="TempleTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="DaisTile" type="tns:Tile" minOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

@@ -1,5 +1,8 @@
 #include "Fountain.hpp"
 #include "MaterialFactory.hpp"
+#include "StringConstants.hpp"
+
+using std::string;
 
 Fountain::Fountain()
 : Feature(MaterialFactory::create_material(MATERIAL_TYPE_MARBLE))
@@ -19,4 +22,9 @@ bool Fountain::kick()
 uchar Fountain::get_symbol() const
 {
   return '~';
+}
+
+string Fountain::get_description_sid() const
+{
+  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FOUNTAIN;
 }
