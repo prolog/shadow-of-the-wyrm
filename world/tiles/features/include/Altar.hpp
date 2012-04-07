@@ -12,7 +12,7 @@ class Altar : public Feature, public IOfferable
     virtual bool offer();
     
     virtual uchar get_symbol() const;
-    
+        
   protected:
     std::string deity_id;
 };

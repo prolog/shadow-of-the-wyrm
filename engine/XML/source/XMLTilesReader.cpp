@@ -43,7 +43,8 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     XMLNode keep_node                = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "KeepTile");
     XMLNode library_node             = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "LibraryTile");
     XMLNode site_of_death_node       = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "SiteOfDeathTile");
-    XMLNode temple_node              = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "TempleNode");
+    XMLNode temple_node              = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "TempleTile");
+    XMLNode dais_node                = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "DaisTile");
 
     // These push back items into the tile details in order, so if you're defining
     // a new tile type, add at appropriate place!
@@ -82,6 +83,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     parse_tile_text_details(tiles, library_node);
     parse_tile_text_details(tiles, site_of_death_node);
     parse_tile_text_details(tiles, temple_node);
+    parse_tile_text_details(tiles, dais_node);
   }
 
   return tiles;

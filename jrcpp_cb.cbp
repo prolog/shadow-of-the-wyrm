@@ -284,6 +284,8 @@
 		<Unit filename="engine\generators\include\SettlementGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementRuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\SimpleChurchGenerator.hpp" />
+		<Unit filename="engine\generators\include\SimpleTempleGenerator.hpp" />
+		<Unit filename="engine\generators\include\SnakingTempleGenerator.hpp" />
 		<Unit filename="engine\generators\include\SpiralDungeonGenerator.hpp" />
 		<Unit filename="engine\generators\include\SpringsGenerator.hpp" />
 		<Unit filename="engine\generators\include\StreamGenerator.hpp" />
@@ -316,6 +318,8 @@
 		<Unit filename="engine\generators\source\SettlementGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementRuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\SimpleChurchGenerator.cpp" />
+		<Unit filename="engine\generators\source\SimpleTempleGenerator.cpp" />
+		<Unit filename="engine\generators\source\SnakingTempleGenerator.cpp" />
 		<Unit filename="engine\generators\source\SpiralDungeonGenerator.cpp" />
 		<Unit filename="engine\generators\source\SpringsGenerator.cpp" />
 		<Unit filename="engine\generators\source\StreamGenerator.cpp" />
@@ -546,13 +550,16 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\features\include\Altar.hpp" />
+		<Unit filename="world\tiles\features\include\DecorativeStatues.hpp" />
 		<Unit filename="world\tiles\features\include\Door.hpp" />
+		<Unit filename="world\tiles\features\include\EastWestPew.hpp" />
 		<Unit filename="world\tiles\features\include\Entrance.hpp" />
 		<Unit filename="world\tiles\features\include\EntranceState.hpp" />
 		<Unit filename="world\tiles\features\include\EntranceTypes.hpp" />
 		<Unit filename="world\tiles\features\include\EvilAltar.hpp" />
 		<Unit filename="world\tiles\features\include\Feature.hpp" />
 		<Unit filename="world\tiles\features\include\FeatureGenerator.hpp" />
+		<Unit filename="world\tiles\features\include\FirePillar.hpp" />
 		<Unit filename="world\tiles\features\include\Fountain.hpp" />
 		<Unit filename="world\tiles\features\include\GoodAltar.hpp" />
 		<Unit filename="world\tiles\features\include\IHandleable.hpp" />
@@ -563,20 +570,26 @@
 		<Unit filename="world\tiles\features\include\Lock.hpp" />
 		<Unit filename="world\tiles\features\include\NeutralAltar.hpp" />
 		<Unit filename="world\tiles\features\include\Pew.hpp" />
+		<Unit filename="world\tiles\features\include\StatueGenerator.hpp" />
+		<Unit filename="world\tiles\features\include\StatueTypes.hpp" />
 		<Unit filename="world\tiles\features\include\Trap.hpp" />
 		<Unit filename="world\tiles\features\source\Altar.cpp" />
+		<Unit filename="world\tiles\features\source\DecorativeStatues.cpp" />
 		<Unit filename="world\tiles\features\source\Door.cpp" />
+		<Unit filename="world\tiles\features\source\EastWestPew.cpp" />
 		<Unit filename="world\tiles\features\source\Entrance.cpp" />
 		<Unit filename="world\tiles\features\source\EntranceState.cpp" />
 		<Unit filename="world\tiles\features\source\EvilAltar.cpp" />
 		<Unit filename="world\tiles\features\source\Feature.cpp" />
 		<Unit filename="world\tiles\features\source\FeatureGenerator.cpp" />
+		<Unit filename="world\tiles\features\source\FirePillar.cpp" />
 		<Unit filename="world\tiles\features\source\Fountain.cpp" />
 		<Unit filename="world\tiles\features\source\GoodAltar.cpp" />
 		<Unit filename="world\tiles\features\source\ILockable.cpp" />
 		<Unit filename="world\tiles\features\source\ITrappable.cpp" />
 		<Unit filename="world\tiles\features\source\NeutralAltar.cpp" />
 		<Unit filename="world\tiles\features\source\Pew.cpp" />
+		<Unit filename="world\tiles\features\source\StatueGenerator.cpp" />
 		<Unit filename="world\tiles\features\source\Trap.cpp" />
 		<Unit filename="world\tiles\include\AllTiles.hpp" />
 		<Unit filename="world\tiles\include\BarracksTile.hpp" />
@@ -586,6 +599,7 @@
 		<Unit filename="world\tiles\include\CastleTile.hpp" />
 		<Unit filename="world\tiles\include\CavernTile.hpp" />
 		<Unit filename="world\tiles\include\ChurchTile.hpp" />
+		<Unit filename="world\tiles\include\DaisTile.hpp" />
 		<Unit filename="world\tiles\include\DesertTile.hpp" />
 		<Unit filename="world\tiles\include\DownStaircaseTile.hpp" />
 		<Unit filename="world\tiles\include\DungeonComplexTile.hpp" />
@@ -625,6 +639,7 @@
 		<Unit filename="world\tiles\source\CastleTile.cpp" />
 		<Unit filename="world\tiles\source\CavernTile.cpp" />
 		<Unit filename="world\tiles\source\ChurchTile.cpp" />
+		<Unit filename="world\tiles\source\DaisTile.cpp" />
 		<Unit filename="world\tiles\source\DesertTile.cpp" />
 		<Unit filename="world\tiles\source\DownStaircaseTile.cpp" />
 		<Unit filename="world\tiles\source\DungeonComplexTile.cpp" />

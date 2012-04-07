@@ -1,7 +1,10 @@
 #include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
-#include "EvilAltar.hpp"
 #include "Door.hpp"
+#include "EastWestPew.hpp"
+#include "EvilAltar.hpp"
+#include "FirePillar.hpp"
+#include "Fountain.hpp"
 #include "GoodAltar.hpp"
 #include "NeutralAltar.hpp"
 #include "Pew.hpp"
@@ -24,14 +27,14 @@ FeaturePtr FeatureGenerator::generate_altar(const std::string& deity_id, const A
   switch(alignment)
   {
     case ALIGNMENT_RANGE_EVIL:
-      altar = FeaturePtr(new EvilAltar(deity_id));
+      altar = make_shared<EvilAltar>(deity_id);
       break;
     case ALIGNMENT_RANGE_NEUTRAL:
-      altar = FeaturePtr(new NeutralAltar(deity_id));
+      altar = make_shared<NeutralAltar>(deity_id);
       break;
     case ALIGNMENT_RANGE_GOOD:
     default:
-      altar = FeaturePtr(new GoodAltar(deity_id));
+      altar = make_shared<GoodAltar>(deity_id);
       break;    
   }
   
@@ -47,9 +50,35 @@ FeaturePtr FeatureGenerator::generate_door()
   return door;
 }
 
-// Generate a pew
-FeaturePtr FeatureGenerator::generate_pew()
+// Generate a fire pillar
+FeaturePtr FeatureGenerator::generate_fire_pillar()
 {
-  FeaturePtr pew = FeaturePtr(new Pew());
+  FeaturePtr fire_pillar = make_shared<FirePillar>();
+  return fire_pillar;
+}
+
+// Generate a happy, bubbly fountain
+FeaturePtr FeatureGenerator::generate_fountain()
+{
+  FeaturePtr fountain = make_shared<Fountain>();
+  return fountain;
+}
+
+// Generate a pew
+FeaturePtr FeatureGenerator::generate_pew(const PewDirection pew_direction)
+{
+  FeaturePtr pew;
+  
+  switch(pew_direction)
+  {
+    case PEW_DIRECTION_NORTH_SOUTH:
+      pew = make_shared<Pew>();
+      break;
+    case PEW_DIRECTION_EAST_WEST:
+    default:
+      pew = make_shared<EastWestPew>();
+      break;
+  }
+
   return pew;
 }

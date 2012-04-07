@@ -424,6 +424,7 @@ class TileTextKeys
     static std::string TILE_DESC_LIBRARY;
     static std::string TILE_DESC_SITE_OF_DEATH;
     static std::string TILE_DESC_TEMPLE;
+    static std::string TILE_DESC_DAIS;
     
   protected:
     TileTextKeys();
@@ -470,6 +471,27 @@ class TextMessages
     static std::string ITEM_DROP_MESSAGE;
     static std::string ITEM_PICK_UP_MESSAGE;
     static std::string ITEM_ON_GROUND_DESCRIPTION_MESSAGE;
+};
+
+class FeatureDescriptionTextKeys
+{
+  public:
+    static std::string FEATURE_DESCRIPTION_DOOR;
+    static std::string FEATURE_DESCRIPTION_EVIL_ALTAR;
+    static std::string FEATURE_DESCRIPTION_GOOD_ALTAR;
+    static std::string FEATURE_DESCRIPTION_NEUTRAL_ALTAR;
+    static std::string FEATURE_DESCRIPTION_FIRE_PILLAR;
+    static std::string FEATURE_DESCRIPTION_FOUNTAIN;
+    static std::string FEATURE_DESCRIPTION_PEW;
+    static std::string FEATURE_DESCRIPTION_KING_STATUE;
+    static std::string FEATURE_DESCRIPTION_QUEEN_STATUE;
+    static std::string FEATURE_DESCRIPTION_WARLORD_STATUE;
+    static std::string FEATURE_DESCRIPTION_KNIGHT_STATUE;
+    static std::string FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE;
+    static std::string FEATURE_DESCRIPTION_SORCEROR_STATUE;
+    
+  protected:
+    FeatureDescriptionTextKeys();
 };
 
 // JCD FIXME Todo: Define full text/abbreviation SIDs for statistics: Strength, Piety, etc.

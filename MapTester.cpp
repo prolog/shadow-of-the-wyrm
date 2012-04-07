@@ -17,6 +17,8 @@
 #include "SimpleChurchGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
 #include "SettlementRuinsGenerator.hpp"
+#include "SimpleTempleGenerator.hpp"
+#include "SnakingTempleGenerator.hpp"
 #include "SpiralDungeonGenerator.hpp"
 #include "WorldGenerator.hpp"
 #include "XMLDataStructures.hpp"
@@ -57,6 +59,8 @@ string generate_keep();
 string generate_simple_church();
 string generate_fortified_church();
 string generate_cathedral();
+string generate_snaking_temple();
+string generate_simple_temple();
 
 void   city_maps();
 void   church_maps();
@@ -108,12 +112,16 @@ string map_to_string(MapPtr map, bool use_html)
       if (tile->has_feature())
       {
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
-            tile_ascii = tile->get_feature()->get_symbol(); // Previously, hard coded '`'
+            tile_ascii = tile->get_feature()->get_symbol(); 
       }
       else
       {
         switch(type)
         {
+          case TILE_TYPE_DAIS:
+            if (use_html) start_tag = "<font face=\"Courier\" color=\"#848484\">";
+            tile_ascii = ".";
+            break;
           case TILE_TYPE_FIELD:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
             tile_ascii = ".";
@@ -292,6 +300,26 @@ string generate_cathedral()
   MapPtr cathedral_map = cathedral_gen->generate();
   cout << map_to_string(cathedral_map, false);
   return map_to_string(cathedral_map);
+}
+
+string generate_snaking_temple()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr temple_gen = GeneratorPtr(new SnakingTempleGenerator("", field_map));
+  MapPtr temple_map = temple_gen->generate();
+  cout << map_to_string(temple_map, false);
+  return map_to_string(temple_map);
+}
+
+string generate_simple_temple()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr temple_gen = GeneratorPtr(new SimpleTempleGenerator("", field_map));
+  MapPtr temple_map = temple_gen->generate();
+  cout << map_to_string(temple_map, false);
+  return map_to_string(temple_map);
 }
 
 string generate_field()
@@ -600,6 +628,8 @@ void church_maps()
     cout << "1. Cathedral" << endl;
     cout << "2. Fortified Church" << endl;
     cout << "3. Simple Church" << endl;
+    cout << "4. Snaking Temple" << endl;
+    cout << "5. Simple Temple" << endl;
     
     cin >> church_map;
     
@@ -616,6 +646,14 @@ void church_maps()
       case 3:
         map = generate_simple_church();
         output_map(map, "simple_church.html");
+        break;
+      case 4:
+        map = generate_snaking_temple();
+        output_map(map, "snaking_temple.html");
+        break;
+      case 5:
+        map = generate_simple_temple();
+        output_map(map, "simple_temple.html");
         break;
       default:
         break;

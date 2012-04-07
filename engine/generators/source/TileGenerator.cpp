@@ -120,6 +120,9 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
     case TILE_TYPE_TEMPLE:
       result_tile = make_shared<TempleTile>();
       break;
+    case TILE_TYPE_DAIS:
+      result_tile = make_shared<DaisTile>();
+      break;
     default:
       break;
   }

@@ -1,4 +1,7 @@
 #include "Door.hpp"
+#include "StringConstants.hpp"
+
+using std::string;
 
 // By default, doors are made of wood.
 Door::Door(LockPtr new_lock, const EntranceState& new_state)
@@ -32,4 +35,9 @@ bool Door::get_blocking() const
 uchar Door::get_symbol() const
 {
   return state.get_symbol();
+}
+
+string Door::get_description_sid() const
+{
+  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_DOOR;
 }

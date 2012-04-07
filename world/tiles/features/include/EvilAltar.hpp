@@ -6,4 +6,6 @@ class EvilAltar : public Altar
 {
   public:
     EvilAltar(const std::string& new_deity_id);
+    
+    std::string get_description_sid() const;
 };

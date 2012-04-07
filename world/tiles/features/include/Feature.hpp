@@ -30,6 +30,8 @@ class Feature : public ITrappable, public IHandleable, public IKickable
 
     virtual void set_material(MaterialPtr new_material);
     virtual MaterialPtr get_material();
+    
+    virtual std::string get_description_sid() const = 0;
 
     // JCD FIXME fill in the rest later.
   protected:
