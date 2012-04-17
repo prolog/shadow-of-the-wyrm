@@ -16,6 +16,7 @@ class FeatureGenerator
     static FeaturePtr generate_fire_pillar();
     static FeaturePtr generate_fountain();
     static FeaturePtr generate_pew(const PewDirection pew_direction = PEW_DIRECTION_NORTH_SOUTH);
+    static FeaturePtr generate_bench();
 
   protected:
     FeatureGenerator();

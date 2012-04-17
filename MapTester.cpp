@@ -1,6 +1,12 @@
+#ifndef MAP_TESTER
+#define MAP_TESTER 1
+#endif
+
 #include <iostream>
 #include <fstream>
 #include <boost/shared_ptr.hpp>
+#include "global_prototypes.hpp"
+#include "Display.hpp"
 #include "RNG.hpp"
 #include "CathedralGenerator.hpp"
 #include "CavernGenerator.hpp"
@@ -8,6 +14,7 @@
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "FortifiedChurchGenerator.hpp"
+#include "GrandTempleGenerator.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "RoadGenerator.hpp"
 #include "RuinsGenerator.hpp"
@@ -16,6 +23,8 @@
 #include "SettlementGenerator.hpp"
 #include "SimpleChurchGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
+#include "MapTranslator.hpp"
+#include "SavageLandsEngine.hpp"
 #include "SettlementRuinsGenerator.hpp"
 #include "SimpleTempleGenerator.hpp"
 #include "SnakingTempleGenerator.hpp"
@@ -61,6 +70,7 @@ string generate_fortified_church();
 string generate_cathedral();
 string generate_snaking_temple();
 string generate_simple_temple();
+string generate_grand_temple();
 
 void   city_maps();
 void   church_maps();
@@ -97,7 +107,7 @@ string map_to_string(MapPtr map, bool use_html)
 
   if (use_html)
   {
-    map_s = map_s + "<html><head><title>SL Map</title></head><body>";
+    map_s = map_s + "<html><head><title>SL Map</title></head><body bgcolor=\"#000000\">";
     end_tag = "</font>";
   }
 
@@ -107,16 +117,30 @@ string map_to_string(MapPtr map, bool use_html)
     {
       TilePtr tile = map->at(row, col);
       
-      TileType type = tile->get_tile_type();
-
-      if (tile->has_feature())
+      Inventory& items = tile->get_items();
+      if (items.size() > 0)
       {
-            if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
-            tile_ascii = tile->get_feature()->get_symbol(); 
+        ItemPtr item = items.at(0);
+        if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";
+        ostringstream ss;
+        ss << item->get_symbol();
+        tile_ascii = html_encode(ss.str());
+      }
+      else if (tile->has_feature())
+      {
+        if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(tile->get_feature()->get_colour()) + "\">";
+        ostringstream ss;
+        ss << tile->get_feature()->get_symbol();
+        tile_ascii = html_encode(ss.str()); 
       }
       else
       {
-        switch(type)
+        DisplayTile dt = MapTranslator::create_display_tile(tile);
+        if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
+        ostringstream ss;
+        ss << dt.get_symbol();
+        tile_ascii = html_encode(ss.str());
+/*        switch(type)
         {
           case TILE_TYPE_DAIS:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#848484\">";
@@ -210,7 +234,7 @@ string map_to_string(MapPtr map, bool use_html)
           default:
             tile_ascii = "?";
             break;
-        }
+        } */
       }
 
       map_s = map_s + start_tag + tile_ascii + end_tag;
@@ -317,6 +341,16 @@ string generate_simple_temple()
   GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
   MapPtr field_map = field_gen->generate();
   GeneratorPtr temple_gen = GeneratorPtr(new SimpleTempleGenerator("", field_map));
+  MapPtr temple_map = temple_gen->generate();
+  cout << map_to_string(temple_map, false);
+  return map_to_string(temple_map);
+}
+
+string generate_grand_temple()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr temple_gen = GeneratorPtr(new GrandTempleGenerator("", field_map));
   MapPtr temple_map = temple_gen->generate();
   cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
@@ -588,9 +622,7 @@ void city_maps()
     cout << "1. Ordered Graveyard" << endl;
     cout << "2. Scattered Graveyard" << endl;
     cout << "3. Keep" << endl;
-    cout << "4. Churches" << endl;
-    cout << "5. Temples" << endl;
-    cout << "6. Sites of Death" << endl;
+    cout << "4. Churches, Temples, Sites of Death" << endl;
     
     cin >> city_adjacent_map;
     
@@ -628,8 +660,9 @@ void church_maps()
     cout << "1. Cathedral" << endl;
     cout << "2. Fortified Church" << endl;
     cout << "3. Simple Church" << endl;
-    cout << "4. Snaking Temple" << endl;
-    cout << "5. Simple Temple" << endl;
+    cout << "4. Grand Temple" << endl;
+    cout << "5. Snaking Temple" << endl;
+    cout << "6. Simple Temple" << endl;
     
     cin >> church_map;
     
@@ -648,10 +681,14 @@ void church_maps()
         output_map(map, "simple_church.html");
         break;
       case 4:
+        map = generate_grand_temple();
+        output_map(map, "grand_temple.html");
+        break;
+      case 5:
         map = generate_snaking_temple();
         output_map(map, "snaking_temple.html");
         break;
-      case 5:
+      case 6:
         map = generate_simple_temple();
         output_map(map, "simple_temple.html");
         break;
@@ -667,6 +704,10 @@ int main(int argc, char** argv)
   int option = 0;
   XML::initialize();
   initialize_settings();
+  
+  // Set up the items, so that I can see what gets generated...
+  SavageLandsEngine engine;
+  engine.setup_game();
 
   while (option != -1)
   {

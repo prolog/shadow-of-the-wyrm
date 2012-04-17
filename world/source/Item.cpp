@@ -6,7 +6,8 @@ using std::string;
 using boost::make_shared;
 
 Item::Item()
-: worn_location(EQUIPMENT_WORN_NONE), artifact(false), type(ITEM_TYPE_MISC)
+: worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false),
+artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE)
 {
   // Create a default useful material.  Wood, huh?  Well, I needed something.
   material = make_shared<Wood>();
@@ -26,6 +27,16 @@ std::string Item::get_id() const
   return id;
 }
 
+void Item::set_usage_description_sid(const string& new_usage_description_sid)
+{
+  usage_description_sid = new_usage_description_sid;
+}
+
+string Item::get_usage_description_sid() const
+{
+  return usage_description_sid;
+}
+
 void Item::set_description_sid(const string& new_description_sid)
 {
   description_sid = new_description_sid;
@@ -34,6 +45,26 @@ void Item::set_description_sid(const string& new_description_sid)
 string Item::get_description_sid() const
 {
   return description_sid;
+}
+
+void Item::set_unidentified_usage_description_sid(const std::string& new_unident_usage_description_sid)
+{
+  unidentified_usage_description_sid = new_unident_usage_description_sid;
+}
+
+string Item::get_unidentified_usage_description_sid() const
+{
+  return unidentified_usage_description_sid;
+}
+
+void Item::set_unidentified_description_sid(const std::string& new_unident_description_sid)
+{
+  unidentified_description_sid = new_unident_description_sid;
+}
+
+string Item::get_unidentified_description_sid() const
+{
+  return unidentified_description_sid;
 }
 
 void Item::set_weight(const Weight& new_weight)
@@ -66,6 +97,16 @@ ItemStatus Item::get_status() const
   return status;
 }
 
+void Item::set_status_identified(const bool new_status_identified)
+{
+  status_identified = new_status_identified;
+}
+
+bool Item::get_status_identified() const
+{
+  return status_identified;
+}
+
 void Item::set_artifact(const bool new_artifact)
 {
   artifact = new_artifact;
@@ -96,6 +137,21 @@ MaterialPtr Item::get_material() const
   return material;
 }
 
+void Item::set_symbol(const uchar new_symbol)
+{
+  symbol = new_symbol;
+}
+
+uchar Item::get_symbol() const
+{
+  return symbol;
+}
+
+void Item::set_colour(const Colour new_colour)
+{
+  colour = new_colour;
+}
+
 Colour Item::get_colour() const
 {
   if (artifact)
@@ -104,13 +160,40 @@ Colour Item::get_colour() const
   }
   else
   {
-    if (material)
+    // If the colour has been overridden
+    if ((colour == COLOUR_UNDEFINED) && material)
     {
       return material->get_colour();
     }
+    else if (colour != COLOUR_UNDEFINED)
+    {
+      return colour;
+    }
   }
-  
-  return COLOUR_WHITE;
+
+  // If none of the previous rules match, return a bold white colour.  This should serve as an indication in the UI
+  // that something is amiss (maybe!).
+  return COLOUR_BOLD_WHITE;
+}
+
+void Item::set_identification_type(const ItemIdentificationType new_identification_type)
+{
+  identification_type = new_identification_type;
+}
+
+ItemIdentificationType Item::get_identification_type() const
+{
+  return identification_type;
+}
+
+void Item::set_identified(const bool new_identified)
+{
+  identified = new_identified;
+}
+
+bool Item::get_identified() const
+{
+  return identified;
 }
 
 Item* Item::deep_copy()

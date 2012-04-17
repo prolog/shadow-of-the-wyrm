@@ -3,15 +3,11 @@
 Ammunition::Ammunition()
 {
   type = ITEM_TYPE_AMMUNITION;
+  symbol = '/';
 }
 
 Ammunition::~Ammunition()
 {
-}
-
-uchar Ammunition::get_symbol() const
-{
-  return '/';
 }
 
 Item* Ammunition::clone()

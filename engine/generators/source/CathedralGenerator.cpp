@@ -76,8 +76,8 @@ void CathedralGenerator::generate_dais_and_altar(MapPtr map, const int dais_star
   }
   
   // Get the centre tile and generate a GoodAltar.
-  int altar_row = start_row + (dais_height/2);
-  int altar_col = start_col + (dais_width/2);
+  int altar_row = dais_start_row + (dais_height/2);
+  int altar_col = dais_start_col + (dais_width/2);
   dais_tile = map->at(altar_row, altar_col);
   
   FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_GOOD);

@@ -7,7 +7,6 @@ class Book : public Item
     Book();
     ~Book();
     
-    uchar get_symbol() const;
     Item* clone();
 };
 

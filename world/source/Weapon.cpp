@@ -5,6 +5,7 @@ Weapon::Weapon()
 : base_to_hit(0), trained_skill(SKILL_MELEE_AXES)
 {
   type = ITEM_TYPE_WEAPON;
+  symbol = ')';
 }
 
 ItemType Weapon::get_type() const
@@ -40,11 +41,6 @@ void Weapon::set_trained_skill(const SkillType new_trained_skill)
 SkillType Weapon::get_trained_skill() const
 {
   return trained_skill;
-}
-
-uchar Weapon::get_symbol() const
-{
-  return ')';
 }
 
 // MELEEWEAPON

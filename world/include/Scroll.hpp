@@ -7,7 +7,6 @@ class Scroll : public Item
     Scroll();
     ~Scroll();
     
-    uchar get_symbol() const;
     Item* clone();
 };
 

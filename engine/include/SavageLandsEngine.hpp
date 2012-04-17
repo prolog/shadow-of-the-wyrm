@@ -21,7 +21,7 @@ class EngineStateManager
 
 class SavageLandsEngine
 {
-  public:
+  public:    
     SavageLandsEngine();
     ~SavageLandsEngine();
 
@@ -31,6 +31,11 @@ class SavageLandsEngine
     void set_display(DisplayPtr new_display);
 
   protected:
+    // Allow the map tester class to load up all the items and creatures
+    #ifdef MAP_TESTER
+    friend int main(int argc, char** argv);
+    #endif
+
     void setup_game();
     void setup_player_and_world();
     

@@ -11,7 +11,6 @@ class Food : public Consumable
 
     ItemType get_type() const;
     
-    uchar get_symbol() const;
     Item* clone();
 };
 

@@ -3,15 +3,11 @@
 Scroll::Scroll()
 {
   type = ITEM_TYPE_SCROLL;
+  symbol = '?';
 }
 
 Scroll::~Scroll()
 {
-}
-
-uchar Scroll::get_symbol() const
-{
-  return '?';
 }
 
 Item* Scroll::clone()

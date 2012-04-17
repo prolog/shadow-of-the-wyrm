@@ -7,7 +7,6 @@ class Ammunition : public Wearable
     Ammunition();
     ~Ammunition();
     
-    uchar get_symbol() const;
     Item* clone();
 };
 

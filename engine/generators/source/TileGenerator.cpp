@@ -1,12 +1,17 @@
 #include <boost/make_shared.hpp>
 #include "Log.hpp"
 #include "TileGenerator.hpp"
+#include "ItemManager.hpp"
 #include "tiles.hpp"
 #include "AllTiles.hpp"
 
+// Trees have a small chance of having a branch generated on the tile.
+#include "RNG.hpp"
+
+
 using boost::make_shared;
 
-TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
+TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const bool generate_random_items)
 {
   TilePtr result_tile;
 
@@ -16,8 +21,14 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       Log::instance()->log("Attempting to generate an undefined tile type");
       break;
     case TILE_TYPE_FIELD:
+    {
       result_tile = make_shared<FieldTile>();
+      if (generate_random_items)
+      {
+        ItemManager::create_item_with_probability(1, 200, result_tile->get_items(), ItemIdKeys::ITEM_ID_ROCK);
+      } 
       break;
+    }
     case TILE_TYPE_SCRUB:
       result_tile = make_shared<ScrubTile>();
       break;
@@ -25,11 +36,23 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       result_tile = make_shared<WheatTile>();
       break;
     case TILE_TYPE_CAIRN:
+    {
       result_tile = make_shared<CairnTile>();
+      if (generate_random_items)
+      {
+        ItemManager::create_item_with_probability(1, 5, result_tile->get_items(), ItemIdKeys::ITEM_ID_ROCK);
+      }
       break;
+    }
     case TILE_TYPE_TREE:
+    {
       result_tile = make_shared<TreeTile>();
-      break;
+      if (generate_random_items)
+      {
+        ItemManager::create_item_with_probability(1, 100, result_tile->get_items(), ItemIdKeys::ITEM_ID_BRANCH);
+      } 
+      break;      
+    }
     case TILE_TYPE_DESERT:
       result_tile = make_shared<DesertTile>();
       break;

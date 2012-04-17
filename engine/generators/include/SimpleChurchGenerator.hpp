@@ -13,5 +13,17 @@ class SimpleChurchGenerator : public ChurchGenerator
     virtual MapPtr generate(const Dimensions& dim);
     
   protected:
+    virtual void initialize_dimensions(MapPtr map);
     virtual void generate_church(MapPtr map);
+    
+    virtual void generate_features(MapPtr map);
+    virtual void generate_altar(MapPtr map);
+    virtual void generate_pews(MapPtr map);
+    virtual void generate_door(MapPtr map);
+    
+    int start_row;
+    int start_col;
+    int church_height;
+    int church_width;
+    int altar_row;
 };

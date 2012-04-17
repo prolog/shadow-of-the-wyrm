@@ -5,6 +5,7 @@
 // the standard NCurses colours.
 enum Colours
 {
+  COLOUR_UNDEFINED = -1,
   COLOUR_BLACK = 0,
   COLOUR_RED = 1,
   COLOUR_GREEN = 2,

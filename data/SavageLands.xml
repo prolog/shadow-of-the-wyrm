@@ -1,4 +1,4 @@
-<SavageLands xmlns="urn:savage_lands:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:1.0.0 SavageLands.xsd">
+<SavageLands xmlns="urn:savage_lands:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:1.0.0 ./SavageLands.xsd">
 	<Deities>
 		<Deity id="01_celeste">
 			<NameSID>DEITY_1_NAME</NameSID>
@@ -1508,11 +1508,62 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 		</Class>
-		<Class id="smith">
+		<Class id="shepherd">
 			<UserPlayable>1</UserPlayable>
 			<NameSID>CLASS_14_NAME</NameSID>
 			<DescriptionSID>CLASS_14_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_14_ABRV</DisplayAbbreviationSID>
+			<ClassInitialStatistics>
+				<Valour>40</Valour>
+				<Spirit>40</Spirit>
+			</ClassInitialStatistics>
+			<ClassInitialModifiers>
+				<StrengthModifier>-1</StrengthModifier>
+				<DexterityModifier>-2</DexterityModifier>
+				<AgilityModifier>-2</AgilityModifier>
+				<HealthModifier>3</HealthModifier>
+				<IntelligenceModifier>-2</IntelligenceModifier>
+				<WillpowerModifier>-1</WillpowerModifier>
+				<CharismaModifier>3</CharismaModifier>
+			</ClassInitialModifiers>
+			<Resistances>
+				<Slash>0.0</Slash>
+				<Pierce>0.0</Pierce>
+				<Pound>0.0</Pound>
+				<Heat>0.0</Heat>
+				<Cold>0.5</Cold>
+				<Acid>0.0</Acid>
+				<Poison>0.0</Poison>
+				<Holy>0.0</Holy>
+				<Shadow>0.0</Shadow>
+				<Arcane>0.0</Arcane>
+				<Mental>0.0</Mental>
+				<Sonic>0.0</Sonic>
+				<Radiant>0.0</Radiant>
+				<Lightning>0.0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills>
+					<Awareness>20</Awareness>
+					<Detection>15</Detection>
+					<Fishing>20</Fishing>
+					<Foraging>15</Foraging>
+					<Herbalism>10</Herbalism>
+					<Skinning>15</Skinning>
+					<Swimming>25</Swimming>
+					<Tanning>15</Tanning>
+				</GeneralSkills>
+				<WeaponSkills>
+					<RodsAndStaves>5</RodsAndStaves>
+				</WeaponSkills>
+			</Skills>
+			<ExperienceMultiplier>0.9</ExperienceMultiplier>
+		</Class>
+		<Class id="smith">
+			<UserPlayable>1</UserPlayable>
+			<NameSID>CLASS_15_NAME</NameSID>
+			<DescriptionSID>CLASS_15_DESC</DescriptionSID>
+			<DisplayAbbreviationSID>CLASS_15_ABRV</DisplayAbbreviationSID>
 			<ClassInitialStatistics>
 				<Valour>59</Valour>
 				<Spirit>41</Spirit>
@@ -1563,9 +1614,9 @@
 		</Class>
 		<Class id="thief">
 			<UserPlayable>1</UserPlayable>
-			<NameSID>CLASS_15_NAME</NameSID>
-			<DescriptionSID>CLASS_15_DESC</DescriptionSID>
-			<DisplayAbbreviationSID>CLASS_15_ABRV</DisplayAbbreviationSID>
+			<NameSID>CLASS_16_NAME</NameSID>
+			<DescriptionSID>CLASS_16_DESC</DescriptionSID>
+			<DisplayAbbreviationSID>CLASS_16_ABRV</DisplayAbbreviationSID>
 			<ClassInitialStatistics>
 				<Valour>52</Valour>
 				<Spirit>48</Spirit>
@@ -1622,9 +1673,9 @@
 		</Class>
 		<Class id="warrior">
 			<UserPlayable>1</UserPlayable>
-			<NameSID>CLASS_16_NAME</NameSID>
-			<DescriptionSID>CLASS_16_DESC</DescriptionSID>
-			<DisplayAbbreviationSID>CLASS_16_ABRV</DisplayAbbreviationSID>
+			<NameSID>CLASS_17_NAME</NameSID>
+			<DescriptionSID>CLASS_17_DESC</DescriptionSID>
+			<DisplayAbbreviationSID>CLASS_17_ABRV</DisplayAbbreviationSID>
 			<ClassInitialStatistics>
 				<Valour>65</Valour>
 				<Spirit>35</Spirit>
@@ -1685,9 +1736,9 @@
 		</Class>
 		<Class id="witchling">
 			<UserPlayable>1</UserPlayable>
-			<NameSID>CLASS_17_NAME</NameSID>
-			<DescriptionSID>CLASS_17_DESC</DescriptionSID>
-			<DisplayAbbreviationSID>CLASS_17_ABRV</DisplayAbbreviationSID>
+			<NameSID>CLASS_18_NAME</NameSID>
+			<DescriptionSID>CLASS_18_DESC</DescriptionSID>
+			<DisplayAbbreviationSID>CLASS_18_ABRV</DisplayAbbreviationSID>
 			<ClassInitialStatistics>
 				<Valour>38</Valour>
 				<Spirit>62</Spirit>
@@ -1744,9 +1795,9 @@
 		</Class>
 		<Class id="wizard">
 			<UserPlayable>1</UserPlayable>
-			<NameSID>CLASS_18_NAME</NameSID>
-			<DescriptionSID>CLASS_18_DESC</DescriptionSID>
-			<DisplayAbbreviationSID>CLASS_18_ABRV</DisplayAbbreviationSID>
+			<NameSID>CLASS_19_NAME</NameSID>
+			<DescriptionSID>CLASS_19_DESC</DescriptionSID>
+			<DisplayAbbreviationSID>CLASS_19_ABRV</DisplayAbbreviationSID>
 			<ClassInitialStatistics>
 				<Valour>40</Valour>
 				<Spirit>60</Spirit>
@@ -1818,7 +1869,7 @@
 		</WheatTile>
 		<CairnTile>
 			<Text>
-				<Symbol>#</Symbol>
+				<Symbol>,</Symbol>
 				<Colour>7</Colour>
 			</Text>
 		</CairnTile>
@@ -2019,6 +2070,7 @@
 		<Armours>
 			<Armour id="cap">
 				<DescriptionSID>CAP_SID</DescriptionSID>
+				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
 				<Value>5</Value>
 				<Weight><Pounds>0</Pounds><Ounces>7</Ounces></Weight>
 				<WornLocation>0</WornLocation>
@@ -2030,36 +2082,259 @@
 		<Weapons>
 			<Weapon id="dagger">
 				<DescriptionSID>DAGGER_SID</DescriptionSID>
+				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
 				<Value>8</Value>
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1004</Skill>
 				<Damage>
-					<NumSides>1</NumSides>
-					<NumDice>4</NumDice>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
 					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="_branch">
+				<DescriptionSID>BRANCH_SID</DescriptionSID>
+				<UsageDescriptionSID>BRANCH_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<Skill>1003</Skill>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Type>2</Type>
 				</Damage>
 			</Weapon>
 		</Weapons>
 		<RangedWeapons>
 			<Weapon id="sling">
 				<DescriptionSID>SLING_SID</DescriptionSID>
+				<UsageDescriptionSID>SLING_USAGE_SID</UsageDescriptionSID>
 				<Value>5</Value>
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>4</Material>
 				<Skill>2007</Skill>
 				<Damage>
-					<NumSides>1</NumSides>
-					<NumDice>4</NumDice>
+					<NumDice>1</NumDice>
+					<NumSides>2</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
 		</RangedWeapons>
+		<Ammunition>
+			<Missile id="_rock">
+				<DescriptionSID>ROCK_SID</DescriptionSID>
+				<UsageDescriptionSID>ROCK_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>12</Ounces>	</Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<Skill>2006</Skill>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Missile>
+		</Ammunition>
+		<Foodstuffs>
+			<Food id="_vegetable_1">
+				<DescriptionSID>VEGETABLE1_SID</DescriptionSID>
+				<UsageDescriptionSID>VEGETABLE1_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>10</Colour>
+				</TextDetails>				
+			</Food>
+			<Food id="_vegetable_2">
+				<DescriptionSID>VEGETABLE2_SID</DescriptionSID>
+				<UsageDescriptionSID>VEGETABLE2_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>				
+			</Food>
+			<Food id="_vegetable_3">
+				<DescriptionSID>VEGETABLE3_SID</DescriptionSID>
+				<UsageDescriptionSID>VEGETABLE3_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+			</Food>
+			<Food id="_vegetable_4">
+				<DescriptionSID>VEGETABLE4_SID</DescriptionSID>
+				<UsageDescriptionSID>VEGETABLE4_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>				
+			</Food>
+			<Food id="_vegetable_5">
+				<DescriptionSID>VEGETABLE5_SID</DescriptionSID>
+				<UsageDescriptionSID>VEGETABLE5_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>				
+			</Food>
+			<Food id="_vegetable_6">
+				<DescriptionSID>VEGETABLE6_SID</DescriptionSID>
+				<UsageDescriptionSID>VEGETABLE6_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>				
+			</Food>
+		</Foodstuffs>
+		<Plants>
+			<Plant id="_kingflower">
+				<DescriptionSID>KINGFLOWER_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_KINGFLOWER_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>KINGFLOWER_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_KINGLOWER_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>				
+			</Plant>
+			<Plant id="_wildflower_1">
+				<DescriptionSID>WILDFLOWER1_SID</DescriptionSID>
+				<UsageDescriptionSID>WILDFLOWER1_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>				
+			</Plant>
+			<Plant id="_wildflower_2">
+				<DescriptionSID>WILDFLOWER2_SID</DescriptionSID>
+				<UsageDescriptionSID>WILDFLOWER2_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>				
+			</Plant>
+			<Plant id="_wildflower_3">
+				<DescriptionSID>WILDFLOWER3_SID</DescriptionSID>
+				<UsageDescriptionSID>WILDFLOWER3_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>12</Colour>
+				</TextDetails>				
+			</Plant>
+			<Plant id="_wildflower_4">
+				<DescriptionSID>WILDFLOWER4_SID</DescriptionSID>
+				<UsageDescriptionSID>WILDFLOWER4_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>13</Colour>
+				</TextDetails>				
+			</Plant>
+			<Plant id="_wildflower_5">
+				<DescriptionSID>WILDFLOWER5_SID</DescriptionSID>
+				<UsageDescriptionSID>WILDFLOWER5_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>14</Colour>
+				</TextDetails>				
+			</Plant>
+			<Plant id="_wildflower_6">
+				<DescriptionSID>WILDFLOWER6_SID</DescriptionSID>
+				<UsageDescriptionSID>WILDFLOWER6_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>				
+			</Plant>
+			<Plant id="_fiddlehead_green">
+				<DescriptionSID>FIDDLEHEAD_GREEN_SID</DescriptionSID>
+				<UsageDescriptionSID>FIDDLEHEAD_GREEN_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>f</Symbol>
+					<Colour>10</Colour>
+				</TextDetails>				
+			</Plant>
+			<Plant id="_fern">
+				<DescriptionSID>FERN_SID</DescriptionSID>
+				<UsageDescriptionSID>FERN_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>f</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>				
+			</Plant>
+		</Plants>
 		<MiscItems>
 			<Item id="dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>
+				<UsageDescriptionSID>DIRT_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
 				<Material>8</Material>

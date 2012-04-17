@@ -3,15 +3,11 @@
 Ring::Ring()
 {
   type = ITEM_TYPE_RING;
+  symbol = '=';
 }
 
 Ring::~Ring()
 {
-}
-
-uchar Ring::get_symbol() const
-{
-  return '=';
 }
 
 Item* Ring::clone()

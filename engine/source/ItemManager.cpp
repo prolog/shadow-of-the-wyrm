@@ -1,5 +1,7 @@
+#include "Game.hpp"
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
+#include "RNG.hpp"
 
 ItemManager::ItemManager()
 {
@@ -25,6 +27,38 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
   }
   
   return new_item;
+}
+
+ItemPtr ItemManager::create_item(const std::string& item_id)
+{
+  ItemPtr item;
+  Game* game = Game::instance();
+  
+  if (game)
+  {
+    const ItemMap& items = game->get_items_ref();
+    ItemManager manager;
+    item = manager.create_item(items, item_id);
+  }
+  
+  return item;
+}
+
+// Create an item with a certain probability, and add it to the given
+// inventory.  If we don't pass the probability check, do nothing.
+void ItemManager::create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_val, Inventory& inv, const std::string& item_id)
+{
+  int rand = RNG::range(1, rand_upper_val);
+  if (rand <= rand_less_than_or_equal_val)
+  {
+    ItemPtr item = ItemManager::create_item(item_id);
+    
+    // Only add the item if it was created successfully
+    if (item)
+    {
+      inv.add(item);
+    }
+  }
 }
 
 bool ItemManager::pick_up(CreaturePtr creature, ItemPtr item)

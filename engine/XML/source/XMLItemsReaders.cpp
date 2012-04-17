@@ -47,13 +47,37 @@ ItemMap XMLItemsReader::get_items(const XMLNode& items_node)
       items.insert(ranged_weapons_map.begin(), ranged_weapons_map.end());
     }
     
+    XMLNode ammunition_node = XMLUtils::get_next_element_by_local_name(items_node, "Ammunition");
+    
+    if (!ammunition_node.is_null())
+    {
+      ItemMap ammunition_map = get_ammunition(ammunition_node);
+      items.insert(ammunition_map.begin(), ammunition_map.end());
+    }
+    
+    XMLNode food_node = XMLUtils::get_next_element_by_local_name(items_node, "Foodstuffs");
+    
+    if (!food_node.is_null())
+    {
+      ItemMap food_map = get_food(food_node);
+      items.insert(food_map.begin(), food_map.end());
+    }
+    
+    XMLNode plants_node = XMLUtils::get_next_element_by_local_name(items_node, "Plants");
+    
+    if (!plants_node.is_null())
+    {
+      ItemMap plants_map = get_plants(plants_node);
+      items.insert(plants_map.begin(), plants_map.end());
+    }
+    
     XMLNode misc_items_node = XMLUtils::get_next_element_by_local_name(items_node, "MiscItems");
     
     if (!misc_items_node.is_null())
     {
       ItemMap misc_items_map = get_misc_items(misc_items_node);
       items.insert(misc_items_map.begin(), misc_items_map.end());
-    }    
+    }
   }
   
   return items;
@@ -141,131 +165,60 @@ ItemMap XMLItemsReader::get_ranged_weapons(const XMLNode& ranged_weapons_node)
   return weapons_map;
 }
 
-// Methods for reading in the base item details
-XMLItemReader::XMLItemReader()
+ItemMap XMLItemsReader::get_ammunition(const XMLNode& ammunition_node)
 {
-}
-
-XMLItemReader::~XMLItemReader()
-{
-}
-
-void XMLItemReader::parse(ItemPtr item, const XMLNode& item_node)
-{
-  if (item && !item_node.is_null())
-  {    
-    string id = XMLUtils::get_attribute_value(item_node, "id");
-    item->set_id(id);
-
-    string description_sid = XMLUtils::get_child_node_value(item_node, "DescriptionSID");
-    item->set_description_sid(description_sid);
-
-    XMLNode weight_node = XMLUtils::get_next_element_by_local_name(item_node, "Weight");
-    
-    if (!weight_node.is_null())
-    {
-      Weight weight;
-      
-      uint pounds = static_cast<uint>(XMLUtils::get_child_node_int_value(weight_node, "Pounds"));
-      uint ounces = static_cast<uint>(XMLUtils::get_child_node_int_value(weight_node, "Ounces"));
-      
-      weight.set_weight(pounds, ounces);
-            
-      item->set_weight(weight);
-    }
-
-    EquipmentWornLocation location = static_cast<EquipmentWornLocation>(XMLUtils::get_child_node_int_value(item_node, "WornLocation", EQUIPMENT_WORN_NONE));
-    item->set_worn_location(location);
-
-    ItemStatus status = static_cast<ItemStatus>(XMLUtils::get_child_node_int_value(item_node, "ItemStatus"));
-    item->set_status(status);
-    
-    bool is_artifact = XMLUtils::get_child_node_bool_value(item_node, "Artifact");
-    item->set_artifact(is_artifact);
-    
-    MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", MATERIAL_TYPE_WOOD));
-    MaterialPtr material = MaterialFactory::create_material(material_type);
-    item->set_material(material);
-  }
-}
-
-// Methods for reading in armour from the XML configuration.
-XMLArmourReader::XMLArmourReader()
-{
-}
-
-XMLArmourReader::~XMLArmourReader()
-{
-}
-
-void XMLArmourReader::parse(ArmourPtr armour, const XMLNode& armour_node)
-{
-  if (armour && !armour_node.is_null())
+  ItemMap ammunition_map;
+  
+  if (!ammunition_node.is_null())
   {
-    XMLWearableReader::parse(armour, armour_node);
-  }
-}
-
-// Methods for reading in weapons from the XML configuration.
-XMLWeaponsReader::XMLWeaponsReader()
-{
-}
-
-XMLWeaponsReader::~XMLWeaponsReader()
-{
-}
-
-void XMLWeaponsReader::parse(WeaponPtr weapon, const XMLNode& weapon_node)
-{
-  if (weapon && !weapon_node.is_null())
-  {
-    XMLWearableReader::parse(weapon, weapon_node);
+    vector<XMLNode> missiles_nodes = XMLUtils::get_elements_by_local_name(ammunition_node, "Missile");
     
-    SkillType trained_skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(weapon_node, "Skill"));
-    weapon->set_trained_skill(trained_skill);
-    
-    XMLNode damage_node = XMLUtils::get_next_element_by_local_name(weapon_node, "Damage");
-    
-    if (!damage_node.is_null())
+    BOOST_FOREACH(XMLNode node, missiles_nodes)
     {
-      Damage weapon_damage;
-      
-      uint num_sides = static_cast<uint>(XMLUtils::get_child_node_int_value(damage_node, "NumSides"));
-      weapon_damage.set_dice_sides(num_sides);
-
-      uint num_dice = static_cast<uint>(XMLUtils::get_child_node_int_value(damage_node, "NumDice"));
-      weapon_damage.set_num_dice(num_dice);
-      
-      int modifier = XMLUtils::get_child_node_int_value(damage_node, "Modifier");
-      weapon_damage.set_modifier(modifier);
-      
-      DamageType damage_type = static_cast<DamageType>(XMLUtils::get_child_node_int_value(damage_node, "Type"));
-      weapon_damage.set_damage_type(damage_type);
-      
-      weapon->set_damage(weapon_damage);
+      AmmunitionPtr ammunition = make_shared<Ammunition>();
+      ammunition_reader.parse(ammunition, node);
+      ammunition_map.insert(make_pair(ammunition->get_id(), ammunition));
     }
   }
+  
+  return ammunition_map;
 }
 
-// Methods for reading in the common elements of all Wearable items.
-XMLWearableReader::XMLWearableReader()
+ItemMap XMLItemsReader::get_food(const XMLNode& food_node)
 {
-}
-
-XMLWearableReader::~XMLWearableReader()
-{
-}
-
-void XMLWearableReader::parse(WearablePtr wearable, const XMLNode& wearable_node)
-{
-  if (wearable && !wearable_node.is_null())
+  ItemMap food_map;
+  
+  if (!food_node.is_null())
   {
-    XMLItemReader::parse(wearable, wearable_node);
+    vector<XMLNode> food_nodes = XMLUtils::get_elements_by_local_name(food_node, "Food");
     
-    int evade = XMLUtils::get_child_node_int_value(wearable_node, "Evade");
-    wearable->set_evade(evade);
-    
-    int soak = XMLUtils::get_child_node_int_value(wearable_node, "Soak");
-    wearable->set_soak(soak);
+    BOOST_FOREACH(XMLNode node, food_nodes)
+    {
+      FoodPtr food = make_shared<Food>();
+      food_reader.parse(food, node);
+      food_map.insert(make_pair(food->get_id(), food));
+    }
   }
+  
+  return food_map;
 }
+
+ItemMap XMLItemsReader::get_plants(const XMLNode& plants_node)
+{
+  ItemMap plants_map;
+  
+  if (!plants_node.is_null())
+  {
+    vector<XMLNode> plants_nodes = XMLUtils::get_elements_by_local_name(plants_node, "Plant");
+    
+    BOOST_FOREACH(XMLNode node, plants_nodes)
+    {
+      PlantPtr plant = make_shared<Plant>();
+      plant_reader.parse(plant, node);
+      plants_map.insert(make_pair(plant->get_id(), plant));
+    }
+  }
+  
+  return plants_map;
+}
+
