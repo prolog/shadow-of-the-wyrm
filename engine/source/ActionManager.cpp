@@ -236,7 +236,7 @@ bool ActionManager::pick_up(CreaturePtr creature)
             // Display a message if necessary
             if (creature->get_is_player())
             {
-              string pick_up_message = TextMessages::get_item_pick_up_message(StringTable::get(pick_up_item->get_description_sid()));
+              string pick_up_message = TextMessages::get_item_pick_up_message(StringTable::get(pick_up_item->get_usage_description_sid()));
               
               manager->add_new_message(pick_up_message);
               manager->send();        
@@ -303,7 +303,7 @@ bool ActionManager::drop(CreaturePtr creature)
         // If it's the player, remind the user what he or she dropped.
         if (creature->get_is_player())
         {
-          string drop_message = TextMessages::get_item_drop_message(StringTable::get(item_to_drop->get_description_sid()));
+          string drop_message = TextMessages::get_item_drop_message(StringTable::get(item_to_drop->get_usage_description_sid()));
           
           manager->add_new_message(drop_message);
           manager->send();

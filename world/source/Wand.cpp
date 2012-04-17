@@ -3,15 +3,11 @@
 Wand::Wand()
 {
   type = ITEM_TYPE_WAND;
+  symbol ='\\';
 }
 
 Wand::~Wand()
 {
-}
-
-uchar Wand::get_symbol() const
-{
-  return '\\';
 }
 
 Item* Wand::clone()

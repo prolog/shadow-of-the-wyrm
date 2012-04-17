@@ -1,51 +1,22 @@
 #pragma once
 #include "XMLDataStructures.hpp"
+#include "Ammunition.hpp"
 #include "Armour.hpp"
+#include "Food.hpp"
+#include "Plant.hpp"
 #include "Weapon.hpp"
 #include "Wearable.hpp"
-
-class XMLItemReader
-{
-  public:
-    XMLItemReader();
-    virtual ~XMLItemReader();
-    
-    virtual void parse(ItemPtr item, const XMLNode& item_node);
-    
-  protected:
-};
-
-class XMLWearableReader : public XMLItemReader
-{
-  public:
-    XMLWearableReader();
-    ~XMLWearableReader();
-
-  protected:
-    void parse(WearablePtr wearable, const XMLNode& wearable_node);
-};
-
-class XMLWeaponsReader : public XMLWearableReader
-{
-  public:
-    XMLWeaponsReader();
-    ~XMLWeaponsReader();
-    
-  protected:
-    friend class XMLItemsReader;
-    void parse(WeaponPtr weapon, const XMLNode& ranged_weapon_node);
-};
-
-class XMLArmourReader : public XMLWearableReader
-{
-  public:
-    XMLArmourReader();
-    ~XMLArmourReader();
-    
-  protected:
-    friend class XMLItemsReader;
-    void parse(ArmourPtr armour, const XMLNode& armour_node);
-};
+#include "XMLAmuletReader.hpp"
+#include "XMLArmourReader.hpp"
+#include "XMLBookReader.hpp"
+#include "XMLFoodReader.hpp"
+#include "XMLPlantReader.hpp"
+#include "XMLPotionReader.hpp"
+#include "XMLRingReader.hpp"
+#include "XMLScrollReader.hpp"
+#include "XMLStaffReader.hpp"
+#include "XMLWandReader.hpp"
+#include "XMLWeaponsReaders.hpp"
 
 class XMLItemsReader
 {
@@ -60,57 +31,22 @@ class XMLItemsReader
     ItemMap get_armour(const XMLNode& armour_node);
     ItemMap get_weapons(const XMLNode& weapons_node);
     ItemMap get_ranged_weapons(const XMLNode& ranged_weapons_node);
-
+    ItemMap get_ammunition(const XMLNode& ammunition_node);
+    ItemMap get_food(const XMLNode& foodstuffs_node);
+    ItemMap get_plants(const XMLNode& plants_node);
+    
     XMLItemReader item_reader;
+    XMLAmuletReader amulet_reader;
     XMLArmourReader armour_reader;
+    XMLBookReader book_reader;
     XMLWeaponsReader weapons_reader;
+    XMLAmmunitionReader ammunition_reader;
+    XMLFoodReader food_reader;
+    XMLPlantReader plant_reader;
+    XMLPotionReader potion_reader;
+    XMLRingReader ring_reader;
+    XMLScrollReader scroll_reader;
+    XMLStaffReader staff_reader;
+    XMLWandReader wand_reader;
 };
 
-class XMLPotionReader
-{
-  public:
-  
-  protected:
-};
-
-class XMLBookReader
-{
-  public:
-  
-  protected:
-};
-
-class XMLScrollReader
-{
-  public:
-  
-  protected:
-};
-
-class XMLWandReader
-{
-  public:
-  
-  protected:
-};
-
-class XMLStaffReader
-{
-  public:
-  
-  protected:
-};
-
-class XMLRingReader
-{
-  public:
-  
-  protected:
-};
-
-class XMLAmuletReader
-{
-  public:
-  
-  protected:
-};

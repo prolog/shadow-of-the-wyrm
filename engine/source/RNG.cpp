@@ -79,6 +79,12 @@ int RNG::range
   return (generator() % range) + minimum + additional_modifier;
 }
 
+bool RNG::percent_chance(const int percent_chance)
+{
+  int val = RNG::range(1, 100);  
+  return (val <= percent_chance);
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/RNG_test.cpp"
 #endif

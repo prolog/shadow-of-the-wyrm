@@ -5,6 +5,7 @@ Potion::Potion()
 : Consumable(50)
 {
   type = ITEM_TYPE_POTION;
+  symbol = '!';
 }
 
 Potion::~Potion()
@@ -14,11 +15,6 @@ Potion::~Potion()
 ItemType Potion::get_type() const
 {
   return ITEM_TYPE_POTION;
-}
-
-uchar Potion::get_symbol() const
-{
-  return '!';
 }
 
 Item* Potion::clone()

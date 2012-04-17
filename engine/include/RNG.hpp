@@ -10,6 +10,7 @@ class RNG
 
 		static int dice(int num_dice, int num_sides, int additional_modifier = 0);
 		static int range(int min, int max, int additional_modifier = 0);
+		static bool percent_chance(const int percent_chance);
     static bool initialize_if_necessary();
 
 	protected:

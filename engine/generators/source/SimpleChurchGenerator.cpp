@@ -6,7 +6,8 @@
 using std::string;
 
 SimpleChurchGenerator::SimpleChurchGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map)
+: ChurchGenerator(new_deity_id, new_base_map),
+start_row(0), start_col(0), church_height(0), church_width(0), altar_row(0)
 {
 }
 
@@ -27,35 +28,49 @@ MapPtr SimpleChurchGenerator::generate()
   return church_map;
 }
 
-void SimpleChurchGenerator::generate_church(MapPtr map)
+// Initialize the church's dimensions
+void SimpleChurchGenerator::initialize_dimensions(MapPtr map)
 {
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
 
-  int church_height = 3 * (RNG::range(4, 5));
-  int church_width  = church_height + 3;
+  church_height = 3 * (RNG::range(4, 5));
+  church_width  = church_height + 3;
   if ((church_width%2)==0) church_width++; // An odd number ensures the same number of pews on both sides.
 
-  int start_row = (rows / 2) - (church_height / 2);
-  int start_col = (cols / 2) - (church_width / 2);
+  start_row = (rows / 2) - (church_height / 2);
+  start_col = (cols / 2) - (church_width / 2);  
+}
 
+// Create the church
+void SimpleChurchGenerator::generate_church(MapPtr map)
+{
   // Generate the church.
   generate_building(map, start_row, start_col, church_height, church_width);
+  
+  // Generate the altar, pews, and doorway.
+  generate_features(map);  
+}
 
-  // Generate the doorway.
-  FeaturePtr doorway = FeatureGenerator::generate_door();
-  TilePtr door_entryway = TileGenerator::generate(TILE_TYPE_DUNGEON);
-  door_entryway->set_feature(doorway);
-  map->insert(start_row + church_height - 1, start_col + (church_width / 2), door_entryway);
+// Generate the church's features: altar, pews, and door.
+void SimpleChurchGenerator::generate_features(MapPtr map)
+{
+  generate_door(map);
+  generate_altar(map);
+  generate_pews(map);
+}
 
-  // Generate the altar.  Always right near the north of the church.
+void SimpleChurchGenerator::generate_altar(MapPtr map)
+{
   FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_GOOD);
-  int altar_row = start_row + 2;
+  altar_row = start_row + 2;
   TilePtr altar_tile = map->at(start_row+2, start_col + (church_width / 2));
-  altar_tile->set_feature(altar);
+  altar_tile->set_feature(altar);  
+}
 
-  // Generate the pews.
+void SimpleChurchGenerator::generate_pews(MapPtr map)
+{
   for (int row = altar_row+3; row < start_row + church_height-3; row = row + 2)
   {
     for (int col = start_col+2; col < start_col + church_width-2; col++)
@@ -68,5 +83,13 @@ void SimpleChurchGenerator::generate_church(MapPtr map)
         current_tile->set_feature(pew);
       }
     }
-  }
+  }  
+}
+
+void SimpleChurchGenerator::generate_door(MapPtr map)
+{
+  FeaturePtr doorway = FeatureGenerator::generate_door();
+  TilePtr door_entryway = TileGenerator::generate(TILE_TYPE_DUNGEON); // Ensure that the doorway is situated on a floor.
+  door_entryway->set_feature(doorway);
+  map->insert(start_row + church_height - 1, start_col + (church_width / 2), door_entryway);
 }

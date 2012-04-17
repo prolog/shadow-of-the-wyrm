@@ -8,7 +8,6 @@ class Potion : public Consumable
     ~Potion();
     
     ItemType get_type() const;
-    uchar get_symbol() const;
     Item* clone();
 };
 

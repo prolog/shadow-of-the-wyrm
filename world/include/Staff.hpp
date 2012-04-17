@@ -7,7 +7,6 @@ class Staff : public Item
     Staff();
     ~Staff();
     
-    uchar get_symbol() const;
     Item* clone();
 };
 

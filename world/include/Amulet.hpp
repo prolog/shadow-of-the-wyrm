@@ -7,7 +7,6 @@ class Amulet : public Wearable
     Amulet();
     ~Amulet();
     
-    uchar get_symbol() const;
     Item* clone();
 };
 

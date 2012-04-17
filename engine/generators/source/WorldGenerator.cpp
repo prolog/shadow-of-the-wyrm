@@ -67,14 +67,14 @@ void WorldGenerator::generate_little_island(MapPtr map)
   }
 
   // JCD FIXME: Add a keep ruins here.
-  TilePtr field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  TilePtr field_tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
   map->insert(height-4, width-5, field_tile);
 
   TilePtr forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-4, width-4, forest_tile);
 
   // JCD FIXME: Add the village of Isen Dun here.
-  forest_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  forest_tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
   map->insert(height-3, width-4, forest_tile);
 
   // Define the starting location:
@@ -84,14 +84,14 @@ void WorldGenerator::generate_little_island(MapPtr map)
   map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
 
   // JCD FIXME: Add a graveyard here.
-  forest_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  forest_tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
   map->insert(height-3, width-3, forest_tile);
 
   field_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-3, width-2, field_tile);
 
   // JCD FIXME: Add Crawler's Caves here.
-  field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  field_tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
   map->insert(height-2, width-2, field_tile);
 }
 
@@ -218,11 +218,11 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
           
           if (rand <= 1)
           {
-            tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
+            tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD, false);
           }
           else
           {
-            tile = TileGenerator::generate(TILE_TYPE_FIELD);
+            tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
           }            
         }
         

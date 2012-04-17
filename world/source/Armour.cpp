@@ -3,15 +3,11 @@
 Armour::Armour()
 {
   type = ITEM_TYPE_ARMOUR;
+  symbol = '[';
 }
 
 Armour::~Armour()
 {
-}
-
-uchar Armour::get_symbol() const
-{
-  return '[';
 }
 
 Item* Armour::clone()

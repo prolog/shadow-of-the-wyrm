@@ -64,6 +64,12 @@ bool Inventory::remove(const string& id)
   return false;
 }
 
+bool Inventory::clear()
+{
+  items.clear();
+  return true;
+}
+
 ItemPtr Inventory::at(const uint index)
 {
   ItemPtr selected_item;

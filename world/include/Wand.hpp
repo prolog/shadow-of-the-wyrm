@@ -7,7 +7,6 @@ class Wand : public Item
     Wand();
     ~Wand();
     
-    uchar get_symbol() const;
     Item* clone();
 };
 

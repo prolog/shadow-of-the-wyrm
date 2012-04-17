@@ -7,7 +7,6 @@ class Armour : public Wearable
     Armour();
     ~Armour();
 
-    uchar get_symbol() const;
     Item* clone();
 };
 

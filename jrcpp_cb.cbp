@@ -76,6 +76,12 @@
 					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-d-1_48.a" />
 					<Add library="..\..\..\..\MinGW\lib\libboost_date_time-mgw46-mt-1_48.a" />
 					<Add library="..\..\..\..\MinGW\lib\libboost_date_time-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_system-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_timer-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_timer-mgw46-mt-d-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_chrono-mgw46-mt-1_48.a" />
+					<Add library="..\..\..\..\MinGW\lib\libboost_chrono-mgw46-mt-d-1_48.a" />
 				</Linker>
 			</Target>
 		</Build>
@@ -268,7 +274,11 @@
 		<Unit filename="engine\generators\include\FieldGenerator.hpp" />
 		<Unit filename="engine\generators\include\ForestGenerator.hpp" />
 		<Unit filename="engine\generators\include\FortifiedChurchGenerator.hpp" />
+		<Unit filename="engine\generators\include\GardenGenerator.hpp" />
+		<Unit filename="engine\generators\include\GardenGeneratorFactory.hpp" />
+		<Unit filename="engine\generators\include\GardenTypes.hpp" />
 		<Unit filename="engine\generators\include\Generator.hpp" />
+		<Unit filename="engine\generators\include\GrandTempleGenerator.hpp" />
 		<Unit filename="engine\generators\include\GraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\GraveyardGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\include\KeepGenerator.hpp" />
@@ -277,12 +287,14 @@
 		<Unit filename="engine\generators\include\MountainsGenerator.hpp" />
 		<Unit filename="engine\generators\include\OrderedGraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\RoadGenerator.hpp" />
+		<Unit filename="engine\generators\include\RockGardenGenerator.hpp" />
 		<Unit filename="engine\generators\include\RuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\ScatteredGraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\ScrubGenerator.hpp" />
 		<Unit filename="engine\generators\include\SeaGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementGenerator.hpp" />
 		<Unit filename="engine\generators\include\SettlementRuinsGenerator.hpp" />
+		<Unit filename="engine\generators\include\ShadeGardenGenerator.hpp" />
 		<Unit filename="engine\generators\include\SimpleChurchGenerator.hpp" />
 		<Unit filename="engine\generators\include\SimpleTempleGenerator.hpp" />
 		<Unit filename="engine\generators\include\SnakingTempleGenerator.hpp" />
@@ -291,6 +303,8 @@
 		<Unit filename="engine\generators\include\StreamGenerator.hpp" />
 		<Unit filename="engine\generators\include\TerrainGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\include\TileGenerator.hpp" />
+		<Unit filename="engine\generators\include\VegetableGardenGenerator.hpp" />
+		<Unit filename="engine\generators\include\WildflowerGardenGenerator.hpp" />
 		<Unit filename="engine\generators\include\WorldGenerator.hpp" />
 		<Unit filename="engine\generators\source\CathedralGenerator.cpp" />
 		<Unit filename="engine\generators\source\CavernGenerator.cpp" />
@@ -302,7 +316,10 @@
 		<Unit filename="engine\generators\source\FieldGenerator.cpp" />
 		<Unit filename="engine\generators\source\ForestGenerator.cpp" />
 		<Unit filename="engine\generators\source\FortifiedChurchGenerator.cpp" />
+		<Unit filename="engine\generators\source\GardenGenerator.cpp" />
+		<Unit filename="engine\generators\source\GardenGeneratorFactory.cpp" />
 		<Unit filename="engine\generators\source\Generator.cpp" />
+		<Unit filename="engine\generators\source\GrandTempleGenerator.cpp" />
 		<Unit filename="engine\generators\source\GraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\GraveyardGeneratorFactory.cpp" />
 		<Unit filename="engine\generators\source\KeepGenerator.cpp" />
@@ -311,12 +328,14 @@
 		<Unit filename="engine\generators\source\MountainsGenerator.cpp" />
 		<Unit filename="engine\generators\source\OrderedGraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\RoadGenerator.cpp" />
+		<Unit filename="engine\generators\source\RockGardenGenerator.cpp" />
 		<Unit filename="engine\generators\source\RuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\ScatteredGraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\ScrubGenerator.cpp" />
 		<Unit filename="engine\generators\source\SeaGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementGenerator.cpp" />
 		<Unit filename="engine\generators\source\SettlementRuinsGenerator.cpp" />
+		<Unit filename="engine\generators\source\ShadeGardenGenerator.cpp" />
 		<Unit filename="engine\generators\source\SimpleChurchGenerator.cpp" />
 		<Unit filename="engine\generators\source\SimpleTempleGenerator.cpp" />
 		<Unit filename="engine\generators\source\SnakingTempleGenerator.cpp" />
@@ -325,6 +344,8 @@
 		<Unit filename="engine\generators\source\StreamGenerator.cpp" />
 		<Unit filename="engine\generators\source\TerrainGeneratorFactory.cpp" />
 		<Unit filename="engine\generators\source\TileGenerator.cpp" />
+		<Unit filename="engine\generators\source\VegetableGardenGenerator.cpp" />
+		<Unit filename="engine\generators\source\WildflowerGardenGenerator.cpp" />
 		<Unit filename="engine\generators\source\WorldGenerator.cpp" />
 		<Unit filename="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
@@ -457,6 +478,7 @@
 		<Unit filename="world\include\Map.hpp" />
 		<Unit filename="world\include\MapExit.hpp" />
 		<Unit filename="world\include\MiscItem.hpp" />
+		<Unit filename="world\include\Plant.hpp" />
 		<Unit filename="world\include\Potion.hpp" />
 		<Unit filename="world\include\Race.hpp" />
 		<Unit filename="world\include\Resistances.hpp" />
@@ -524,6 +546,7 @@
 		<Unit filename="world\source\Map.cpp" />
 		<Unit filename="world\source\MapExit.cpp" />
 		<Unit filename="world\source\MiscItem.cpp" />
+		<Unit filename="world\source\Plant.cpp" />
 		<Unit filename="world\source\Potion.cpp" />
 		<Unit filename="world\source\Race.cpp" />
 		<Unit filename="world\source\Resistances.cpp" />
@@ -550,6 +573,7 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="world\tiles\features\include\Altar.hpp" />
+		<Unit filename="world\tiles\features\include\Bench.hpp" />
 		<Unit filename="world\tiles\features\include\DecorativeStatues.hpp" />
 		<Unit filename="world\tiles\features\include\Door.hpp" />
 		<Unit filename="world\tiles\features\include\EastWestPew.hpp" />
@@ -574,6 +598,7 @@
 		<Unit filename="world\tiles\features\include\StatueTypes.hpp" />
 		<Unit filename="world\tiles\features\include\Trap.hpp" />
 		<Unit filename="world\tiles\features\source\Altar.cpp" />
+		<Unit filename="world\tiles\features\source\Bench.cpp" />
 		<Unit filename="world\tiles\features\source\DecorativeStatues.cpp" />
 		<Unit filename="world\tiles\features\source\Door.cpp" />
 		<Unit filename="world\tiles\features\source\EastWestPew.cpp" />

@@ -354,7 +354,7 @@ void MovementManager::add_message_about_items_on_tile_if_necessary(const Creatur
         
         if (item_on_tile)
         {
-          item_message = TextMessages::get_item_on_ground_description_message(StringTable::get(item_on_tile->get_description_sid()));
+          item_message = TextMessages::get_item_on_ground_description_message(StringTable::get(item_on_tile->get_usage_description_sid()));
         }
       }
       // Multiple items

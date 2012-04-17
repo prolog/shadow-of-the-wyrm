@@ -1,0 +1,11 @@
+#pragma once
+
+enum GardenType
+{
+  GARDEN_TYPE_FIRST = 0,
+  GARDEN_TYPE_SHADE = 0,
+  GARDEN_TYPE_ROCK  = 1,
+  GARDEN_TYPE_WILDFLOWER = 2,
+  GARDEN_TYPE_VEGETABLE = 3,
+  GARDEN_TYPE_LAST  = 4
+};

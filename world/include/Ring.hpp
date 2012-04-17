@@ -7,7 +7,6 @@ class Ring : public Wearable
     Ring();
     ~Ring();
     
-    uchar get_symbol() const;
     Item* clone();    
 };
 

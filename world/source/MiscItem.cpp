@@ -3,15 +3,11 @@
 MiscItem::MiscItem()
 {
   type = ITEM_TYPE_MISC;
+  symbol = ']';
 }
 
 MiscItem::~MiscItem()
 {
-}
-
-uchar MiscItem::get_symbol() const
-{
-  return ']';
 }
 
 Item* MiscItem::clone()

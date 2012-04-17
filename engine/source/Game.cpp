@@ -17,10 +17,9 @@ Game* Game::game_instance = NULL;
 
 void Game::FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player)
 {
-  ItemManager im;
-  actions.handle_item(player, ITEM_ACTION_EQUIP, im.create_item(items, "cap"));
-  actions.handle_item(player, ITEM_ACTION_EQUIP, im.create_item(items, "dagger"));
-  actions.handle_item(player, ITEM_ACTION_PICK_UP, im.create_item(items, "dirt"));
+  actions.handle_item(player, ITEM_ACTION_EQUIP, ItemManager::create_item("cap"));
+  actions.handle_item(player, ITEM_ACTION_EQUIP, ItemManager::create_item("dagger"));
+  actions.handle_item(player, ITEM_ACTION_PICK_UP, ItemManager::create_item("dirt"));
 }
 
 Game::Game()

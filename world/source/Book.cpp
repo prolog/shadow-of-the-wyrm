@@ -3,15 +3,11 @@
 Book::Book()
 {
   type = ITEM_TYPE_BOOK;
+  symbol = '\"';
 }
 
 Book::~Book()
 {
-}
-
-uchar Book::get_symbol() const
-{
-  return '\"';
 }
 
 Item* Book::clone()

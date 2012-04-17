@@ -7,6 +7,5 @@ class MiscItem : public Item
     MiscItem();
     ~MiscItem();
 
-    uchar get_symbol() const;
     Item* clone();
 };

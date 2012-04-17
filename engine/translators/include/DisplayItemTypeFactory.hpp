@@ -81,6 +81,12 @@ class AmmunitionDisplayItemType : public DisplayItemType
     AmmunitionDisplayItemType();
 };
 
+class PlantDisplayItemType : public DisplayItemType
+{
+  public:
+    PlantDisplayItemType();
+};
+
 class DisplayItemTypeFactory
 {
   public:

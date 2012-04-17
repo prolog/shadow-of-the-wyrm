@@ -87,6 +87,9 @@
 			<xs:element ref="tns:Armours" minOccurs="0"/>
 			<xs:element name="Weapons" type="tns:Weapons" minOccurs="0"/>
 			<xs:element name="RangedWeapons" type="tns:Weapons" minOccurs="0"/>
+			<xs:element ref="tns:Ammunition" minOccurs="0"/>
+			<xs:element ref="tns:Foodstuffs" minOccurs="0"/>
+			<xs:element ref="tns:Plants" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -358,6 +361,27 @@
 	</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Ammunition">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Missile" type="tns:Weapon" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Foodstuffs">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Food" type="tns:Item" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Plants">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Plant" type="tns:Item" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="MiscItems">
 	<xs:complexType>
 		<xs:sequence>
@@ -379,8 +403,17 @@
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Item">
+	<xs:annotation>
+		<xs:documentation>
+		The base class for all items.  If no unidentified description or usage description are provided,
+		these will default to the same value as DescriptionSID and UsageDescriptionSID.
+		</xs:documentation>
+	</xs:annotation>
 	<xs:sequence>
 		<xs:element name="DescriptionSID" type="xs:string"/>
+		<xs:element name="UnidentifiedDescriptionSID" type="xs:string" minOccurs="0"/>
+		<xs:element name="UsageDescriptionSID" type="xs:string"/>
+		<xs:element name="UnidentifiedUsageDescriptionSID" type="xs:string" minOccurs="0"/>
 		<xs:element name="Value" type="tns:NonNegativeInt"/>
 		<xs:element name="Weight" type="tns:Weight"/>
 		<xs:element name="WornLocation" type="tns:WornLocation" minOccurs="0"/>
@@ -388,6 +421,7 @@
 <!--		<xs:element name="ItemType" type="tns:ItemType"/> -->
 		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
+		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="xs:string"/>
 </xs:complexType>
@@ -415,8 +449,8 @@
 				<xs:element name="Damage">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="NumSides" type="xs:int"/>
 							<xs:element name="NumDice" type="xs:int"/>
+							<xs:element name="NumSides" type="xs:int"/>
 							<xs:element name="Modifier" type="xs:int" minOccurs="0"/>
 							<xs:element name="Type" type="tns:DamageType"/>
 						</xs:sequence>

@@ -11,7 +11,7 @@ DefaultDisplayItemType::DefaultDisplayItemType()
 }
 
 MiscDisplayItemType::MiscDisplayItemType()
-: DisplayItemType(";", COLOUR_WHITE, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_MISC))
+: DisplayItemType("]", COLOUR_WHITE, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_MISC))
 {
 }
 
@@ -70,6 +70,11 @@ AmmunitionDisplayItemType::AmmunitionDisplayItemType()
 {
 }
 
+PlantDisplayItemType::PlantDisplayItemType()
+: DisplayItemType("w", COLOUR_WHITE, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_PLANTS))
+{
+}
+
 // The factory that uses the above classes
 DisplayItemTypeFactory::DisplayItemTypeFactory()
 {
@@ -120,6 +125,9 @@ DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
       break;
     case ITEM_TYPE_AMMUNITION:
       display_item_type = make_shared<AmmunitionDisplayItemType>();
+      break;
+    case ITEM_TYPE_PLANT:
+      display_item_type = make_shared<PlantDisplayItemType>();
       break;
     case ITEM_TYPE_LAST:
     default:

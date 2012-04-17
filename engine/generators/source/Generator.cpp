@@ -1,3 +1,4 @@
+#include "FeatureGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "Generator.hpp"
 #include "Map.hpp"
@@ -55,4 +56,27 @@ void Generator::generate_building(const MapPtr map, const int start_row, const i
       map->insert(row, col, current_tile);
     }
   }  
+}
+
+void Generator::generate_door(const MapPtr map, const int row, const int col)
+{
+  TilePtr floor   = TileGenerator::generate(TILE_TYPE_DUNGEON);
+  FeaturePtr door = FeatureGenerator::generate_door();
+
+  if (floor)
+  {
+    floor->set_feature(door);
+    map->insert(row, col, floor);
+  }
+}
+
+void Generator::generate_fountain(const MapPtr map, const int row, const int col)
+{
+  FeaturePtr fountain = FeatureGenerator::generate_fountain();
+  TilePtr tile = map->at(row, col);
+  
+  if (tile)
+  {
+    tile->set_feature(fountain);
+  }
 }

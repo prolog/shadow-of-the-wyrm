@@ -3,15 +3,11 @@
 Amulet::Amulet()
 {
   type = ITEM_TYPE_AMULET;
+  symbol = '\"';
 }
 
 Amulet::~Amulet()
 {
-}
-
-uchar Amulet::get_symbol() const
-{
-  return '\"';
 }
 
 Item* Amulet::clone()

@@ -1,5 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
+#include "Bench.hpp"
 #include "Door.hpp"
 #include "EastWestPew.hpp"
 #include "EvilAltar.hpp"
@@ -81,4 +82,11 @@ FeaturePtr FeatureGenerator::generate_pew(const PewDirection pew_direction)
   }
 
   return pew;
+}
+
+// Generate a wrought-iron bench
+FeaturePtr FeatureGenerator::generate_bench()
+{
+  FeaturePtr bench = make_shared<Bench>();
+  return bench;
 }

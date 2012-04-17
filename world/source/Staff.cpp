@@ -3,15 +3,11 @@
 Staff::Staff()
 {
   type = ITEM_TYPE_STAFF;
+  symbol = '|';
 }
 
 Staff::~Staff()
 {
-}
-
-uchar Staff::get_symbol() const
-{
-  return '|';
 }
 
 Item* Staff::clone()

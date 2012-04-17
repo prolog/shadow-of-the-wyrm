@@ -21,8 +21,6 @@ class Weapon : public Wearable
     virtual void set_trained_skill(const SkillType new_trained_skill);
     SkillType get_trained_skill() const;
     
-    virtual uchar get_symbol() const;
-    
   protected:
     int base_to_hit;
     Damage damage;
