@@ -371,14 +371,14 @@
 <xs:element name="Foodstuffs">
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="Food" type="tns:Item" maxOccurs="unbounded"/>
+			<xs:element name="Food" type="tns:Consumable" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
 <xs:element name="Plants">
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="Plant" type="tns:Item" maxOccurs="unbounded"/>
+			<xs:element name="Plant" type="tns:Consumable" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -424,6 +424,15 @@
 		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="Consumable">
+	<xs:complexContent>
+		<xs:extension base="tns:Item">
+			<xs:sequence>
+				<xs:element name="Nutrition" type="xs:unsignedInt"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Wearable">
 	<xs:complexContent>

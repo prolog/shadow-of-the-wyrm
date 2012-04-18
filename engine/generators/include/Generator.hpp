@@ -20,15 +20,6 @@ class Generator
   protected:
     virtual void fill(const MapPtr map, const TileType& tile_type);
     
-    // Generates a build: walls are TILE_TYPE_ROCK, floor is TILE_TYPE_DUNGEON.
-    virtual void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width);
-    
-    // Generates a TILE_TYPE_DUNGEON tile at the given coordinates, and places a Door feature on top of it.
-    virtual void generate_door(const MapPtr map, const int row, const int col);
-    
-    // Generates a Fountain feature on top of whatever tile exists at the current coordinates.
-    virtual void generate_fountain(const MapPtr map, const int row, const int col);
-    
     std::string map_exit_id;
 };
 

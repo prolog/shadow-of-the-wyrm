@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
 <CodeBlocks_layout_file>
 	<ActiveTarget name="MapTester" />
-	<File name="MapTester.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="2883" topLine="91" />
+	<File name="MapTester.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="11926" topLine="363" />
 	</File>
 	<File name="SavageLands.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="2264" topLine="103" />
@@ -70,11 +70,23 @@
 	<File name="display\source\unit_tests\Display_test.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="86" topLine="0" />
 	</File>
+	<File name="engine\XML\include\XMLAmuletReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="114" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLArmourReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="35" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLBookReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="88" topLine="0" />
+	</File>
 	<File name="engine\XML\include\XMLClassesReader.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="64" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLConfigurationReader.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="920" topLine="14" />
+	</File>
+	<File name="engine\XML\include\XMLConsumableReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="39" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLDataStructures.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="2907" topLine="69" />
@@ -82,11 +94,50 @@
 	<File name="engine\XML\include\XMLDeitiesReader.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="215" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLItemsReaders.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="114" topLine="0" />
+	<File name="engine\XML\include\XMLFoodReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="211" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLItemReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="66" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLItemsReaders.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="1520" topLine="29" />
+	</File>
+	<File name="engine\XML\include\XMLPlantReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="57" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLPotionReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="13" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLRacesReader.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="599" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLRingReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="109" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLScrollReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="115" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLStaffReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="112" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLWandReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="93" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLWeaponsReaders.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="287" topLine="8" />
+	</File>
+	<File name="engine\XML\include\XMLWearableReader.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="37" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLAmuletReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="206" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLArmourReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="352" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLBookReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="205" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLClassesReader.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="0" topLine="0" />
@@ -94,14 +145,26 @@
 	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="475" topLine="15" />
 	</File>
+	<File name="engine\XML\source\XMLConsumableReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="517" topLine="0" />
+	</File>
 	<File name="engine\XML\source\XMLDataStructures.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="2962" topLine="115" />
 	</File>
 	<File name="engine\XML\source\XMLDeitiesReader.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLItemsReaders.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="1764" topLine="48" />
+	<File name="engine\XML\source\XMLFoodReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="259" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLItemsReaders.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="5568" topLine="201" />
+	</File>
+	<File name="engine\XML\source\XMLPlantReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="255" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLPotionReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="206" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLRacesReader.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="348" topLine="17" />
@@ -109,8 +172,26 @@
 	<File name="engine\XML\source\XMLResistancesReader.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2650" topLine="21" />
 	</File>
+	<File name="engine\XML\source\XMLRingReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="187" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLScrollReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="206" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLStaffReader.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="188" topLine="0" />
+	</File>
 	<File name="engine\XML\source\XMLTilesReader.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="7631" topLine="94" />
+	</File>
+	<File name="engine\XML\source\XMLWandReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="187" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLWeaponsReaders.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1686" topLine="38" />
+	</File>
+	<File name="engine\XML\source\XMLWearableReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="603" topLine="1" />
 	</File>
 	<File name="engine\calculators\include\ArcanaPointsCalculator.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="68" topLine="0" />
@@ -338,7 +419,7 @@
 		<Cursor position="314" topLine="0" />
 	</File>
 	<File name="engine\generators\include\FortifiedChurchGenerator.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="0" topLine="0" />
+		<Cursor position="295" topLine="0" />
 	</File>
 	<File name="engine\generators\include\GardenGenerator.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="703" topLine="3" />
@@ -349,8 +430,11 @@
 	<File name="engine\generators\include\GardenTypes.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="165" topLine="0" />
 	</File>
-	<File name="engine\generators\include\Generator.hpp" open="0" top="0" tabpos="9">
-		<Cursor position="1030" topLine="6" />
+	<File name="engine\generators\include\Generator.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="443" topLine="3" />
+	</File>
+	<File name="engine\generators\include\GeneratorUtils.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="377" topLine="2" />
 	</File>
 	<File name="engine\generators\include\GrandTempleGenerator.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="639" topLine="4" />
@@ -360,6 +444,9 @@
 	</File>
 	<File name="engine\generators\include\GraveyardGeneratorFactory.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="211" topLine="0" />
+	</File>
+	<File name="engine\generators\include\IslandSacrificeSiteGenerator.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="171" topLine="0" />
 	</File>
 	<File name="engine\generators\include\KeepGenerator.hpp" open="0" top="0" tabpos="17">
 		<Cursor position="171" topLine="0" />
@@ -375,6 +462,12 @@
 	</File>
 	<File name="engine\generators\include\OrderedGraveyardGenerator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="168" topLine="0" />
+	</File>
+	<File name="engine\generators\include\OvergrownSacrificeSiteGenerator.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="313" topLine="0" />
+	</File>
+	<File name="engine\generators\include\RockySacrificeSiteGenerator.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="529" topLine="0" />
 	</File>
 	<File name="engine\generators\include\RuinsGenerator.hpp" open="0" top="0" tabpos="21">
 		<Cursor position="837" topLine="3" />
@@ -428,7 +521,7 @@
 		<Cursor position="368" topLine="0" />
 	</File>
 	<File name="engine\generators\source\CathedralGenerator.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2168" topLine="58" />
+		<Cursor position="95" topLine="0" />
 	</File>
 	<File name="engine\generators\source\CavernGenerator.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1857" topLine="51" />
@@ -452,7 +545,7 @@
 		<Cursor position="294" topLine="0" />
 	</File>
 	<File name="engine\generators\source\FortifiedChurchGenerator.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="31" topLine="0" />
+		<Cursor position="101" topLine="0" />
 	</File>
 	<File name="engine\generators\source\GardenGenerator.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="468" topLine="0" />
@@ -460,17 +553,23 @@
 	<File name="engine\generators\source\GardenGeneratorFactory.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="200" topLine="0" />
 	</File>
-	<File name="engine\generators\source\Generator.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="1723" topLine="55" />
-	</File>
-	<File name="engine\generators\source\GrandTempleGenerator.cpp" open="0" top="0" tabpos="1">
+	<File name="engine\generators\source\Generator.cpp" open="1" top="0" tabpos="2">
 		<Cursor position="0" topLine="0" />
+	</File>
+	<File name="engine\generators\source\GeneratorUtils.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="90" topLine="0" />
+	</File>
+	<File name="engine\generators\source\GrandTempleGenerator.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="18" topLine="0" />
 	</File>
 	<File name="engine\generators\source\GraveyardGenerator.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="560" topLine="16" />
 	</File>
 	<File name="engine\generators\source\GraveyardGeneratorFactory.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="915" topLine="6" />
+	</File>
+	<File name="engine\generators\source\IslandSacrificeSiteGenerator.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="1033" topLine="34" />
 	</File>
 	<File name="engine\generators\source\KeepGenerator.cpp" open="0" top="0" tabpos="18">
 		<Cursor position="453" topLine="0" />
@@ -487,11 +586,17 @@
 	<File name="engine\generators\source\OrderedGraveyardGenerator.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="174" topLine="0" />
 	</File>
+	<File name="engine\generators\source\OvergrownSacrificeSiteGenerator.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="61" topLine="0" />
+	</File>
 	<File name="engine\generators\source\RoadGenerator.cpp" open="0" top="0" tabpos="17">
 		<Cursor position="1365" topLine="43" />
 	</File>
 	<File name="engine\generators\source\RockGardenGenerator.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="759" topLine="0" />
+	</File>
+	<File name="engine\generators\source\RockySacrificeSiteGenerator.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1589" topLine="46" />
 	</File>
 	<File name="engine\generators\source\RuinsGenerator.cpp" open="0" top="0" tabpos="19">
 		<Cursor position="439" topLine="9" />
@@ -515,13 +620,13 @@
 		<Cursor position="691" topLine="24" />
 	</File>
 	<File name="engine\generators\source\SimpleChurchGenerator.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="0" topLine="0" />
+		<Cursor position="61" topLine="0" />
 	</File>
 	<File name="engine\generators\source\SimpleTempleGenerator.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="2835" topLine="66" />
 	</File>
 	<File name="engine\generators\source\SnakingTempleGenerator.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="11205" topLine="301" />
+		<Cursor position="61" topLine="0" />
 	</File>
 	<File name="engine\generators\source\SpiralDungeonGenerator.cpp" open="0" top="0" tabpos="31">
 		<Cursor position="227" topLine="0" />
@@ -535,8 +640,8 @@
 	<File name="engine\generators\source\TileGenerator.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="1221" topLine="31" />
 	</File>
-	<File name="engine\generators\source\VegetableGardenGenerator.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="1694" topLine="36" />
+	<File name="engine\generators\source\VegetableGardenGenerator.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="1480" topLine="32" />
 	</File>
 	<File name="engine\generators\source\WildflowerGardenGenerator.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2126" topLine="42" />
@@ -748,8 +853,8 @@
 	<File name="global_functions.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2817" topLine="103" />
 	</File>
-	<File name="include\Colours.hpp" open="1" top="0" tabpos="1">
-		<Cursor position="597" topLine="4" />
+	<File name="include\Colours.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="417" topLine="0" />
 	</File>
 	<File name="include\common.hpp" open="0" top="0" tabpos="12">
 		<Cursor position="82" topLine="0" />
@@ -782,7 +887,7 @@
 		<Cursor position="2643" topLine="71" />
 	</File>
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="188" topLine="0" />
+		<Cursor position="94" topLine="0" />
 	</File>
 	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="3983" topLine="123" />

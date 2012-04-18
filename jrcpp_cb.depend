@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1334505439 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
+1334722093 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
 	<iostream>
 	<fstream>
 	<boost/shared_ptr.hpp>
@@ -14,6 +14,9 @@
 	"FortifiedChurchGenerator.hpp"
 	"GrandTempleGenerator.hpp"
 	"GraveyardGeneratorFactory.hpp"
+	"IslandSacrificeSiteGenerator.hpp"
+	"RockySacrificeSiteGenerator.hpp"
+	"OvergrownSacrificeSiteGenerator.hpp"
 	"RoadGenerator.hpp"
 	"RuinsGenerator.hpp"
 	"MarshGenerator.hpp"
@@ -450,8 +453,7 @@
 	"Directions.hpp"
 	<vector>
 
-1334431099 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
-	"FeatureGenerator.hpp"
+1334720320 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
 	"TileGenerator.hpp"
 	"Generator.hpp"
 	"Map.hpp"
@@ -1627,8 +1629,9 @@
 	"MaterialFactory.hpp"
 	"StringConstants.hpp"
 
-1333897774 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\simplechurchgenerator.cpp
+1334721055 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\simplechurchgenerator.cpp
 	"FeatureGenerator.hpp"
+	"GeneratorUtils.hpp"
 	"RNG.hpp"
 	"SimpleChurchGenerator.hpp"
 	"TileGenerator.hpp"
@@ -1638,16 +1641,18 @@
 	"Pew.hpp"
 	"StringConstants.hpp"
 
-1333896325 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\fortifiedchurchgenerator.cpp
+1334720393 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\fortifiedchurchgenerator.cpp
 	"FeatureGenerator.hpp"
 	"FortifiedChurchGenerator.hpp"
+	"GeneratorUtils.hpp"
 	"RNG.hpp"
 	"StatueGenerator.hpp"
 	"TileGenerator.hpp"
 
-1333892811 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\cathedralgenerator.cpp
+1334720372 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\cathedralgenerator.cpp
 	"CathedralGenerator.hpp"
 	"FeatureGenerator.hpp"
+	"GeneratorUtils.hpp"
 	"RNG.hpp"
 	"TileGenerator.hpp"
 
@@ -1688,8 +1693,9 @@
 	"MaterialFactory.hpp"
 	"StringConstants.hpp"
 
-1333809379 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\snakingtemplegenerator.cpp
+1334721091 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\snakingtemplegenerator.cpp
 	"FeatureGenerator.hpp"
+	"GeneratorUtils.hpp"
 	"RNG.hpp"
 	"SnakingTempleGenerator.hpp"
 	"StatueGenerator.hpp"
@@ -1705,9 +1711,10 @@
 	"MaterialFactory.hpp"
 	"StringConstants.hpp"
 
-1334622669 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\grandtemplegenerator.cpp
+1334721142 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\grandtemplegenerator.cpp
 	"FeatureGenerator.hpp"
 	"GardenGeneratorFactory.hpp"
+	"GeneratorUtils.hpp"
 	"GrandTempleGenerator.hpp"
 	"RNG.hpp"
 	"TileGenerator.hpp"
@@ -1767,12 +1774,60 @@
 1334665831 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwearablereader.cpp
 	"XMLWearableReader.hpp"
 
-1334666459 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlfoodreader.cpp
+1334706550 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlfoodreader.cpp
 	"XMLFoodReader.hpp"
 
-1334666477 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlplantreader.cpp
+1334706581 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlplantreader.cpp
 	"XMLPlantReader.hpp"
 
 1334666237 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
 	"XMLWeaponsReaders.hpp"
+
+1334667495 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlamuletreader.cpp
+	"XMLAmuletReader.hpp"
+
+1334667293 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlbookreader.cpp
+	"XMLBookReader.hpp"
+
+1334666969 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
+	"XMLPotionReader.hpp"
+
+1334667580 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlringreader.cpp
+	"XMLRingReader.hpp"
+
+1334667019 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlscrollreader.cpp
+	"XMLScrollReader.hpp"
+
+1334667645 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlstaffreader.cpp
+	"XMLStaffReader.hpp"
+
+1334667380 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwandreader.cpp
+	"XMLWandReader.hpp"
+
+1334707608 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconsumablereader.cpp
+	"XMLConsumableReader.hpp"
+
+1334721032 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\rockysacrificesitegenerator.cpp
+	"FeatureGenerator.hpp"
+	"GeneratorUtils.hpp"
+	"RockySacrificeSiteGenerator.hpp"
+	"RNG.hpp"
+
+1334720450 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\overgrownsacrificesitegenerator.cpp
+	"FeatureGenerator.hpp"
+	"GeneratorUtils.hpp"
+	"OvergrownSacrificeSiteGenerator.hpp"
+	"RNG.hpp"
+
+1334722623 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\islandsacrificesitegenerator.cpp
+	"FeatureGenerator.hpp"
+	"GeneratorUtils.hpp"
+	"IslandSacrificeSiteGenerator.hpp"
+	"RNG.hpp"
+	"TileGenerator.hpp"
+
+1334720407 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generatorutils.cpp
+	"FeatureGenerator.hpp"
+	"GeneratorUtils.hpp"
+	"TileGenerator.hpp"
 

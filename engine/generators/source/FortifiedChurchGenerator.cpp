@@ -1,5 +1,6 @@
 #include "FeatureGenerator.hpp"
 #include "FortifiedChurchGenerator.hpp"
+#include "GeneratorUtils.hpp"
 #include "RNG.hpp"
 #include "StatueGenerator.hpp"
 #include "TileGenerator.hpp"
@@ -43,7 +44,7 @@ void FortifiedChurchGenerator::initialize_dimensions(MapPtr map)
 void FortifiedChurchGenerator::generate_church(MapPtr map)
 {
   initialize_dimensions(map);
-  generate_building(map, start_row, start_col, church_height, church_width);
+  GeneratorUtils::generate_building(map, start_row, start_col, church_height, church_width);
   generate_parapets(map);
   generate_features(map);
 }
