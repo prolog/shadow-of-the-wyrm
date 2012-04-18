@@ -1,10 +1,10 @@
 #pragma once
 #include "Food.hpp"
-#include "XMLItemReader.hpp"
+#include "XMLConsumableReader.hpp"
 
 // JCD FIXME: Define a Consumable reader.
 // Then, change the inherited class for plant and food...
-class XMLFoodReader : public XMLItemReader
+class XMLFoodReader : public XMLConsumableReader
 {
   public:
     XMLFoodReader();

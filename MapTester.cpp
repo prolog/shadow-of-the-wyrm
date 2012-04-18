@@ -16,6 +16,9 @@
 #include "FortifiedChurchGenerator.hpp"
 #include "GrandTempleGenerator.hpp"
 #include "GraveyardGeneratorFactory.hpp"
+#include "IslandSacrificeSiteGenerator.hpp"
+#include "RockySacrificeSiteGenerator.hpp"
+#include "OvergrownSacrificeSiteGenerator.hpp"
 #include "RoadGenerator.hpp"
 #include "RuinsGenerator.hpp"
 #include "MarshGenerator.hpp"
@@ -71,6 +74,9 @@ string generate_cathedral();
 string generate_snaking_temple();
 string generate_simple_temple();
 string generate_grand_temple();
+string generate_island_sacrifice_site();
+string generate_rocky_sacrifice_site();
+string generate_overgrown_sacrifice_site();
 
 void   city_maps();
 void   church_maps();
@@ -354,6 +360,36 @@ string generate_grand_temple()
   MapPtr temple_map = temple_gen->generate();
   cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
+}
+
+string generate_island_sacrifice_site()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr site_gen = GeneratorPtr(new IslandSacrificeSiteGenerator("", field_map));
+  MapPtr site_map = site_gen->generate();
+  cout << map_to_string(site_map, false);
+  return map_to_string(site_map);
+}
+
+string generate_rocky_sacrifice_site()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr site_gen = GeneratorPtr(new RockySacrificeSiteGenerator("", field_map));
+  MapPtr site_map = site_gen->generate();
+  cout << map_to_string(site_map, false);
+  return map_to_string(site_map);
+}
+
+string generate_overgrown_sacrifice_site()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  GeneratorPtr site_gen = GeneratorPtr(new OvergrownSacrificeSiteGenerator("", field_map));
+  MapPtr site_map = site_gen->generate();
+  cout << map_to_string(site_map, false);
+  return map_to_string(site_map);
 }
 
 string generate_field()
@@ -657,13 +693,15 @@ void church_maps()
   while (church_map != -1)
   {
     cout << "Enter a map number (-1 to quit)" << endl << endl;
-    cout << "1. Cathedral" << endl;
-    cout << "2. Fortified Church" << endl;
-    cout << "3. Simple Church" << endl;
-    cout << "4. Grand Temple" << endl;
-    cout << "5. Snaking Temple" << endl;
-    cout << "6. Simple Temple" << endl;
-    
+    cout << "1. Cathedral (Celeste)" << endl;
+    cout << "2. Fortified Church (Aurelion)" << endl;
+    cout << "3. Simple Church (The Lady)" << endl;
+    cout << "4. Grand Temple (Vedere)" << endl;
+    cout << "5. Snaking Temple (Voros)" << endl;
+    cout << "6. Simple Temple (The Trickster)" << endl;
+    cout << "7. Island Sacrifice Site (Shiver)" << endl;
+    cout << "8. Rocky Sacrifice Site (Urgoth)" << endl;
+    cout << "9. Overgrown Sacrifice Site (Sceadugenga)" << endl;
     cin >> church_map;
     
     switch(church_map)
@@ -691,6 +729,18 @@ void church_maps()
       case 6:
         map = generate_simple_temple();
         output_map(map, "simple_temple.html");
+        break;
+      case 7:
+        map = generate_island_sacrifice_site();
+        output_map(map, "island_site.html");
+        break;
+      case 8:
+        map = generate_rocky_sacrifice_site();
+        output_map(map, "rocky_site.html");
+        break;
+      case 9:
+        map = generate_overgrown_sacrifice_site();
+        output_map(map, "overgrown_site.html");
         break;
       default:
         break;

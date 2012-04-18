@@ -1,4 +1,5 @@
 #include "FeatureGenerator.hpp"
+#include "GeneratorUtils.hpp"
 #include "RNG.hpp"
 #include "SimpleChurchGenerator.hpp"
 #include "TileGenerator.hpp"
@@ -47,7 +48,7 @@ void SimpleChurchGenerator::initialize_dimensions(MapPtr map)
 void SimpleChurchGenerator::generate_church(MapPtr map)
 {
   // Generate the church.
-  generate_building(map, start_row, start_col, church_height, church_width);
+  GeneratorUtils::generate_building(map, start_row, start_col, church_height, church_width);
   
   // Generate the altar, pews, and doorway.
   generate_features(map);  

@@ -1,4 +1,5 @@
 #include "FeatureGenerator.hpp"
+#include "GeneratorUtils.hpp"
 #include "RNG.hpp"
 #include "SnakingTempleGenerator.hpp"
 #include "StatueGenerator.hpp"
@@ -61,9 +62,9 @@ void SnakingTempleGenerator::generate_temple(MapPtr map)
   initialize_temple_values(rows, cols);
   
   // Top, bottom, and middle buildings
-  generate_building(map, temple_row_start, temple_col_start, head_height, temple_width);
-  generate_building(map, temple_row_end - head_height, temple_col_start, head_height, temple_width);
-  generate_building(map, temple_middle_start_row, temple_middle_start_col, temple_middle_height, temple_middle_width);
+  GeneratorUtils::generate_building(map, temple_row_start, temple_col_start, head_height, temple_width);
+  GeneratorUtils::generate_building(map, temple_row_end - head_height, temple_col_start, head_height, temple_width);
+  GeneratorUtils::generate_building(map, temple_middle_start_row, temple_middle_start_col, temple_middle_height, temple_middle_width);
   connect_buildings(map);
 
   generate_temple_doors(map);

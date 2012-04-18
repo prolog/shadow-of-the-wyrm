@@ -1,5 +1,6 @@
 #include "CathedralGenerator.hpp"
 #include "FeatureGenerator.hpp"
+#include "GeneratorUtils.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
@@ -53,7 +54,7 @@ void CathedralGenerator::generate_cathedral(MapPtr map)
   int dais_start_col = pew_end_col + 2; // Need some space between the pews and the dais.  
   
   // Generate a long building, unlike most of other other churches, which are taller in the N-S direction.
-  generate_building(map, start_row, start_col, church_height, church_width);
+  GeneratorUtils::generate_building(map, start_row, start_col, church_height, church_width);
   generate_doors(map);
   generate_fountains(map);
   generate_pews(map, pew_end_row, pew_end_col);

@@ -1,4 +1,3 @@
-#include "FeatureGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "Generator.hpp"
 #include "Map.hpp"
@@ -27,56 +26,5 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
       TilePtr current_tile = TileGenerator::generate(tile_type);
       map->insert(row, col, current_tile);
     }
-  }
-}
-
-// I was using this sort of thing a lot, so I'm moving it here...
-void Generator::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width)
-{
-  int end_row = start_row + height;
-  int end_col = start_col + width;
-
-  TilePtr current_tile;
-
-  for (int row = start_row; row < end_row; row++)
-  {
-    for (int col = start_col; col < end_col; col++)
-    {
-      // Generate a wall at the borders, floor otherwise.
-      if ((row == start_row) || (row == (end_row - 1))
-        ||(col == start_col) || (col == (end_col - 1)))
-      {
-        current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
-      }
-      else
-      {
-        current_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
-      }
-
-      map->insert(row, col, current_tile);
-    }
-  }  
-}
-
-void Generator::generate_door(const MapPtr map, const int row, const int col)
-{
-  TilePtr floor   = TileGenerator::generate(TILE_TYPE_DUNGEON);
-  FeaturePtr door = FeatureGenerator::generate_door();
-
-  if (floor)
-  {
-    floor->set_feature(door);
-    map->insert(row, col, floor);
-  }
-}
-
-void Generator::generate_fountain(const MapPtr map, const int row, const int col)
-{
-  FeaturePtr fountain = FeatureGenerator::generate_fountain();
-  TilePtr tile = map->at(row, col);
-  
-  if (tile)
-  {
-    tile->set_feature(fountain);
   }
 }

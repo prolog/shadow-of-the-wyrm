@@ -1,5 +1,6 @@
 #include "FeatureGenerator.hpp"
 #include "GardenGeneratorFactory.hpp"
+#include "GeneratorUtils.hpp"
 #include "GrandTempleGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -30,7 +31,7 @@ MapPtr GrandTempleGenerator::generate()
 void GrandTempleGenerator::generate_temple(MapPtr map)
 {
   initialize_dimensions(map);
-  generate_building(map, temple_start_row, temple_start_col, temple_height, temple_width);
+  GeneratorUtils::generate_building(map, temple_start_row, temple_start_col, temple_height, temple_width);
   generate_temple_gardens(map);
   generate_temple_features(map);
 }
@@ -98,10 +99,10 @@ void GrandTempleGenerator::generate_temple_features(MapPtr map)
 void GrandTempleGenerator::generate_fountains(MapPtr map)
 {
   // North hallway, S, E, W
-  generate_fountain(map, (temple_start_row + centre_row) / 2, centre_col);
-  generate_fountain(map, (centre_row + temple_start_row + temple_height) / 2, centre_col);
-  generate_fountain(map, centre_row, (temple_start_col + centre_col) / 2);
-  generate_fountain(map, centre_row, (centre_col + temple_start_col + temple_width) / 2);
+  GeneratorUtils::generate_fountain(map, (temple_start_row + centre_row) / 2, centre_col);
+  GeneratorUtils::generate_fountain(map, (centre_row + temple_start_row + temple_height) / 2, centre_col);
+  GeneratorUtils::generate_fountain(map, centre_row, (temple_start_col + centre_col) / 2);
+  GeneratorUtils::generate_fountain(map, centre_row, (centre_col + temple_start_col + temple_width) / 2);
 }
 
 // Generate the temple's altar, in the centre of all the gardens
@@ -115,8 +116,8 @@ void GrandTempleGenerator::generate_altar(MapPtr map)
 // Generate doors on the N/S/E/W walls
 void GrandTempleGenerator::generate_temple_doors(MapPtr map)
 {
-  generate_door(map, temple_start_row, centre_col);
-  generate_door(map, temple_start_row + temple_height - 1, centre_col);
-  generate_door(map, centre_row, temple_start_col + temple_width - 1);
-  generate_door(map, centre_row, temple_start_col);
+  GeneratorUtils::generate_door(map, temple_start_row, centre_col);
+  GeneratorUtils::generate_door(map, temple_start_row + temple_height - 1, centre_col);
+  GeneratorUtils::generate_door(map, centre_row, temple_start_col + temple_width - 1);
+  GeneratorUtils::generate_door(map, centre_row, temple_start_col);
 }
