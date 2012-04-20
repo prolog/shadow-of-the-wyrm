@@ -10,9 +10,12 @@
 #include "SeaGenerator.hpp"
 #include "SettlementGenerator.hpp"
 #include "TerrainGeneratorFactory.hpp"
+#include "WorshipSiteGenerator.hpp"
+#include "WorshipSiteTile.hpp"
 
 using std::string;
 using boost::make_shared;
+using boost::dynamic_pointer_cast;
 
 TerrainGeneratorFactory::TerrainGeneratorFactory()
 {
@@ -25,7 +28,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // Create a generator based on the tile passed in.  The world map uses a limited
 // subset of the overall tiles (field, forest, sea, desert, etc., but not grave, 
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
-GeneratorPtr TerrainGeneratorFactory::create_generator(const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
+GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
 {
   GeneratorPtr generator;
   
@@ -57,7 +60,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(const string& map_exit_id
       break;
     case TILE_TYPE_VILLAGE:
     {
-      GeneratorPtr base_generator = create_generator(map_exit_id, terrain_subtype);
+      GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
       MapPtr base_map = base_generator->generate();
       generator = make_shared<SettlementGenerator>(base_map);
     }
@@ -65,6 +68,22 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(const string& map_exit_id
     case TILE_TYPE_DUNGEON_COMPLEX:
       generator = make_shared<DungeonGenerator>(map_exit_id);
       break;
+    // All three worship sites use the same process:
+    case TILE_TYPE_CHURCH:
+    case TILE_TYPE_SITE_OF_DEATH:
+    case TILE_TYPE_TEMPLE:
+    {
+      WorshipSiteTilePtr worship_site_tile = dynamic_pointer_cast<WorshipSiteTile>(tile);
+      
+      if (worship_site_tile)
+      {
+        GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
+        MapPtr base_map = base_generator->generate();
+        generator = WorshipSiteGenerator::generate_worship_site(worship_site_tile->get_worship_site_type(), worship_site_tile->get_deity_id(), base_map);
+      }
+
+      break;      
+    }
     case TILE_TYPE_UNDEFINED:
     case TILE_TYPE_WHEAT:
     case TILE_TYPE_CAIRN:
@@ -85,12 +104,9 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(const string& map_exit_id
     case TILE_TYPE_DOWN_STAIRCASE:
     case TILE_TYPE_BARRACKS:
     case TILE_TYPE_CASTLE:
-    case TILE_TYPE_CHURCH:
     case TILE_TYPE_GRAVEYARD:
     case TILE_TYPE_KEEP:
     case TILE_TYPE_LIBRARY:
-    case TILE_TYPE_SITE_OF_DEATH:
-    case TILE_TYPE_TEMPLE:
     case TILE_TYPE_DAIS:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.

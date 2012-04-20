@@ -1,5 +1,10 @@
 #include "ChurchTile.hpp"
 
+ChurchTile::ChurchTile(const TileType subtype)
+{
+  tile_subtype = subtype;
+}
+
 TileType ChurchTile::get_tile_type() const
 {
   return TILE_TYPE_CHURCH;

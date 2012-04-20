@@ -107,6 +107,7 @@
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DeathMessageSID" type="xs:string"/>
 			<xs:element name="Alignment" type="tns:AlignmentRange"/>
+			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
@@ -509,6 +510,25 @@
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="2"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="WorshipSiteType">
+	<xs:annotation>
+		<xs:documentation>A site defining the type of worship site a deity uses.
+		0 = Cathedral
+		1 = Fortified Church
+		2 = Simple Church
+		3 = Grand Temple
+		4 = Snaking Temple
+		5 = Simple Temple
+		6 = Island Sacrifice Site
+		7 = Rocky Sacrifice Site
+		8 = Overgrown Sacrifice Site		
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="8"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="CreatureSizeType">

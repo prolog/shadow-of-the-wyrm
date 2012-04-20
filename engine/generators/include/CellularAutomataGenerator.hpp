@@ -1,18 +1,9 @@
 #pragma once
 #include <vector>
 #include <map>
+#include "CellularAutomataTypes.hpp"
 #include "Dimensions.hpp"
-
 class Dimensions;
-
-enum CellValue
-{
-  CELL_OFF = 0
-, CELL_ON  = 1
-};
-
-typedef std::vector<std::vector<CellValue> > CellMap; 
-//typedef std::map<std::pair<int, int>, CellValue> CellMap;
 
 class CellularAutomataSettings
 {

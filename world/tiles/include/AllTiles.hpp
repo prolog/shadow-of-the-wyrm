@@ -37,3 +37,4 @@
 #include "WeedsTile.hpp"
 #include "VillageTile.hpp"
 #include "WheatTile.hpp"
+#include "WorshipSiteTile.hpp"

@@ -3,7 +3,7 @@
 using std::string;
 
 Deity::Deity()
-: alignment_range(ALIGNMENT_RANGE_NEUTRAL)
+: alignment_range(ALIGNMENT_RANGE_NEUTRAL), worship_site_type(WORSHIP_SITE_CATHEDRAL)
 {
 }
 
@@ -71,4 +71,15 @@ void Deity::set_alignment_range(const AlignmentRange new_alignment_range)
 AlignmentRange Deity::get_alignment_range() const
 {
   return alignment_range;
+}
+
+// Set/get the worship site type.
+void Deity::set_worship_site_type(const WorshipSiteType new_worship_site_type)
+{
+  worship_site_type = new_worship_site_type;
+}
+
+WorshipSiteType Deity::get_worship_site_type() const
+{
+  return worship_site_type;
 }

@@ -12,6 +12,7 @@ Tile::Tile()
 {
   set_default_properties();
   tile_type = TILE_TYPE_UNDEFINED;
+  tile_subtype = TILE_TYPE_UNDEFINED;
 }
 
 Tile::~Tile()
