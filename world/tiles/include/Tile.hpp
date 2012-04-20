@@ -58,6 +58,7 @@ class Tile
     // This is defined by each class, and shouldn't be overridden
     // by means of a set function.
     TileType tile_type;
+    TileType tile_subtype;
 
     // Each tile can have at most one creature on it.
     CreaturePtr creature;

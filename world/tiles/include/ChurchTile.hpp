@@ -1,9 +1,11 @@
 #pragma once
-#include "WorldMapTile.hpp"
+#include "WorshipSiteTile.hpp"
 
-class ChurchTile : public WorldMapLandmarkTile
+class ChurchTile : public WorshipSiteTile
 {
   public:
+    ChurchTile(const TileType subtype);
+    
     TileType get_tile_type() const;
 
     std::string get_tile_description_sid() const;

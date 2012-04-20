@@ -1,4 +1,5 @@
 #pragma once
+#include <boost/shared_ptr.hpp>
 #include "WorldMapTile.hpp"
 
 class VillageTile : public WorldMapLandmarkTile
@@ -13,11 +14,14 @@ class VillageTile : public WorldMapLandmarkTile
     virtual bool display_description_on_arrival() const;
     
     TileType get_tile_type() const;
-    TileType get_tile_subtype() const;
     
     std::string get_tile_description_sid() const;
-
+    
+    void set_village_race_id(const std::string& new_race_id);
+    std::string get_village_race_id() const;
+    
   protected:
-    TileType tile_subtype;
+    std::string village_race_id;
 };
 
+typedef boost::shared_ptr<VillageTile> VillageTilePtr;

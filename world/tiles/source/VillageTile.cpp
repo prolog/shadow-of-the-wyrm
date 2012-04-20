@@ -1,8 +1,11 @@
 #include "VillageTile.hpp"
 
+using std::string;
+
 VillageTile::VillageTile()
-: tile_subtype(TILE_TYPE_FIELD)
 {
+  // Default, can be overridden later.
+  tile_subtype = TILE_TYPE_FIELD;
 }
 
 VillageTile::VillageTile(const TileType new_tile_subtype)
@@ -20,14 +23,19 @@ TileType VillageTile::get_tile_type() const
   return TILE_TYPE_VILLAGE;
 }
 
-TileType VillageTile::get_tile_subtype() const
-{
-  return tile_subtype;
-}
-
-std::string VillageTile::get_tile_description_sid() const
+string VillageTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_VILLAGE;
+}
+
+void VillageTile::set_village_race_id(const string& new_village_race_id)
+{
+  village_race_id = new_village_race_id;
+}
+
+string VillageTile::get_village_race_id() const
+{
+  return village_race_id;
 }
 
 #ifdef UNIT_TESTS

@@ -1,5 +1,10 @@
 #include "SiteOfDeathTile.hpp"
 
+SiteOfDeathTile::SiteOfDeathTile(const TileType subtype)
+{
+  tile_subtype = subtype;
+}
+
 TileType SiteOfDeathTile::get_tile_type() const
 {
   return TILE_TYPE_SITE_OF_DEATH;

@@ -3,6 +3,7 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "AlignmentEnums.hpp"
+#include "WorshipSiteTypes.hpp"
 
 class Deity
 {
@@ -26,6 +27,9 @@ class Deity
     
     void set_alignment_range(const AlignmentRange new_alignment_range);
     AlignmentRange get_alignment_range() const;
+    
+    void set_worship_site_type(const WorshipSiteType new_worship_site_type);
+    WorshipSiteType get_worship_site_type() const;
 
   protected:
     std::string id;
@@ -34,6 +38,7 @@ class Deity
     std::string short_description_sid;
     std::string death_message_sid;
     AlignmentRange alignment_range;
+    WorshipSiteType worship_site_type;
 };
 
 typedef boost::shared_ptr<Deity> DeityPtr;

@@ -242,7 +242,7 @@ bool MovementManager::descend(CreaturePtr creature)
             {
               TileType tile_type     = tile->get_tile_type();
               TileType tile_subtype  = tile->get_tile_subtype();
-              GeneratorPtr generator = TerrainGeneratorFactory::create_generator(map->get_map_id(), tile_type, tile_subtype);
+              GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
               
               if (generator)
               {

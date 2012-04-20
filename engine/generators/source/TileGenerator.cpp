@@ -126,7 +126,7 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       result_tile = make_shared<CastleTile>();
       break;
     case TILE_TYPE_CHURCH:
-      result_tile = make_shared<ChurchTile>();
+      result_tile = make_shared<ChurchTile>(subtile_type);
       break;
     case TILE_TYPE_GRAVEYARD:
       result_tile = make_shared<GraveyardTile>();
@@ -138,10 +138,10 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       result_tile = make_shared<LibraryTile>();
       break;
     case TILE_TYPE_SITE_OF_DEATH:
-      result_tile = make_shared<SiteOfDeathTile>();
+      result_tile = make_shared<SiteOfDeathTile>(subtile_type);
       break;
     case TILE_TYPE_TEMPLE:
-      result_tile = make_shared<TempleTile>();
+      result_tile = make_shared<TempleTile>(subtile_type);
       break;
     case TILE_TYPE_DAIS:
       result_tile = make_shared<DaisTile>();
@@ -151,6 +151,40 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
   }
 
   return result_tile;
+}
+
+// Generate an appropriate worship site, based on the given
+// alignment:
+// - Good: Churches
+// - Neutral: Temples
+// - Evil: Sacrifice Sites
+WorshipSiteTilePtr TileGenerator::generate_worship_site_tile(const AlignmentRange alignment, const std::string& deity_id, const WorshipSiteType worship_site_type)
+{
+  WorshipSiteTilePtr worship_site;
+  
+  switch(alignment)
+  {
+    // JCD FIXME: At some point, it'll be worth making the tile subtype
+    // a variable.  But for now, I just want a pretty world.
+    case ALIGNMENT_RANGE_EVIL:
+      worship_site = make_shared<SiteOfDeathTile>(TILE_TYPE_FIELD);
+      break;
+    case ALIGNMENT_RANGE_GOOD:
+      worship_site = make_shared<ChurchTile>(TILE_TYPE_FIELD);
+      break;
+    case ALIGNMENT_RANGE_NEUTRAL:
+    default:
+      worship_site = make_shared<TempleTile>(TILE_TYPE_FIELD);
+      break;
+  }
+  
+  if (worship_site)
+  {
+    worship_site->set_deity_id(deity_id);
+    worship_site->set_worship_site_type(worship_site_type);
+  }
+  
+  return worship_site;
 }
 
 StaircaseTilePtr TileGenerator::generate_staircase(const StaircaseType& staircase_type)
