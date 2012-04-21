@@ -324,14 +324,16 @@
 		<Unit filename="engine\generators\include\ScatteredGraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\ScrubGenerator.hpp" />
 		<Unit filename="engine\generators\include\SeaGenerator.hpp" />
-		<Unit filename="engine\generators\include\SettlementGenerator.hpp" />
-		<Unit filename="engine\generators\include\SettlementRuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\SpiralDungeonGenerator.hpp" />
 		<Unit filename="engine\generators\include\SpringsGenerator.hpp" />
 		<Unit filename="engine\generators\include\StreamGenerator.hpp" />
 		<Unit filename="engine\generators\include\TerrainGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\include\TileGenerator.hpp" />
 		<Unit filename="engine\generators\include\WorldGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\include\SettlementGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\include\SettlementRuinsGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\source\SettlementGenerator.cpp" />
+		<Unit filename="engine\generators\settlements\source\SettlementRuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\CavernGenerator.cpp" />
 		<Unit filename="engine\generators\source\CellularAutomataGenerator.cpp" />
 		<Unit filename="engine\generators\source\DesertGenerator.cpp" />
@@ -352,8 +354,6 @@
 		<Unit filename="engine\generators\source\ScatteredGraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\ScrubGenerator.cpp" />
 		<Unit filename="engine\generators\source\SeaGenerator.cpp" />
-		<Unit filename="engine\generators\source\SettlementGenerator.cpp" />
-		<Unit filename="engine\generators\source\SettlementRuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\SpiralDungeonGenerator.cpp" />
 		<Unit filename="engine\generators\source\SpringsGenerator.cpp" />
 		<Unit filename="engine\generators\source\StreamGenerator.cpp" />
