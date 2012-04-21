@@ -47,6 +47,8 @@ void SimpleChurchGenerator::initialize_dimensions(MapPtr map)
 // Create the church
 void SimpleChurchGenerator::generate_church(MapPtr map)
 {
+  initialize_dimensions(map);
+  
   // Generate the church.
   GeneratorUtils::generate_building(map, start_row, start_col, church_height, church_width);
   

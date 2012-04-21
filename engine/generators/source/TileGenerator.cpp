@@ -160,6 +160,7 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
 // - Evil: Sacrifice Sites
 WorshipSiteTilePtr TileGenerator::generate_worship_site_tile(const AlignmentRange alignment, const std::string& deity_id, const WorshipSiteType worship_site_type)
 {
+  std::string s_did = deity_id;
   WorshipSiteTilePtr worship_site;
   
   switch(alignment)

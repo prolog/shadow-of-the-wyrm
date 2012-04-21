@@ -448,12 +448,6 @@
 	<File name="engine\generators\include\SeaGenerator.hpp" open="0" top="0" tabpos="21">
 		<Cursor position="143" topLine="0" />
 	</File>
-	<File name="engine\generators\include\SettlementGenerator.hpp" open="0" top="0" tabpos="34">
-		<Cursor position="186" topLine="0" />
-	</File>
-	<File name="engine\generators\include\SettlementRuinsGenerator.hpp" open="0" top="0" tabpos="28">
-		<Cursor position="192" topLine="0" />
-	</File>
 	<File name="engine\generators\include\SpiralDungeonGenerator.hpp" open="0" top="0" tabpos="23">
 		<Cursor position="285" topLine="0" />
 	</File>
@@ -532,12 +526,6 @@
 	<File name="engine\generators\source\SeaGenerator.cpp" open="0" top="0" tabpos="22">
 		<Cursor position="109" topLine="0" />
 	</File>
-	<File name="engine\generators\source\SettlementGenerator.cpp" open="0" top="0" tabpos="20">
-		<Cursor position="1040" topLine="25" />
-	</File>
-	<File name="engine\generators\source\SettlementRuinsGenerator.cpp" open="0" top="0" tabpos="29">
-		<Cursor position="493" topLine="0" />
-	</File>
 	<File name="engine\generators\source\SpiralDungeonGenerator.cpp" open="0" top="0" tabpos="31">
 		<Cursor position="227" topLine="0" />
 	</File>
@@ -547,11 +535,17 @@
 	<File name="engine\generators\source\TerrainGeneratorFactory.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="2812" topLine="70" />
 	</File>
-	<File name="engine\generators\source\TileGenerator.cpp" open="1" top="1" tabpos="6">
-		<Cursor position="5271" topLine="167" />
+	<File name="engine\generators\source\TileGenerator.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="5261" topLine="165" />
 	</File>
 	<File name="engine\generators\source\WorldGenerator.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="15786" topLine="501" />
+		<Cursor position="16115" topLine="507" />
+	</File>
+	<File name="engine\generators\worship_sites\source\SimpleChurchGenerator.cpp" open="1" top="0" tabpos="20">
+		<Cursor position="1345" topLine="35" />
+	</File>
+	<File name="engine\generators\worship_sites\source\WorshipSiteGenerator.cpp" open="1" top="0" tabpos="14">
+		<Cursor position="799" topLine="29" />
 	</File>
 	<File name="engine\include\ActionManager.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="883" topLine="10" />
@@ -694,8 +688,8 @@
 	<File name="engine\source\Messages.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="100" topLine="0" />
 	</File>
-	<File name="engine\source\MovementManager.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="7106" topLine="233" />
+	<File name="engine\source\MovementManager.cpp" open="1" top="0" tabpos="19">
+		<Cursor position="7250" topLine="233" />
 	</File>
 	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="568" topLine="10" />
