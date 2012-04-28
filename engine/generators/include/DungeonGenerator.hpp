@@ -1,26 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 #include "Map.hpp"
-#include <map>
-
-// A simple class that makes dungeon generation easier.
-class Room
-{
-  public:
-  Room();
-  Room(int nid, int nx1, int nx2, int ny1, int ny2);
-  bool operator==(const Room& that);
-
-  boost::shared_ptr<Room> centre_room;
-  bool contains(Coordinate c) const;
-  Coordinate get_centre() const;
-  
-  int id;
-  int x1;
-  int x2;
-  int y1;
-  int y2;
-};
+#include "Room.hpp"
 
 class DungeonGenerator : public Generator
 {

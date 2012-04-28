@@ -5,6 +5,7 @@
 #include "EquipmentDumper.hpp"
 #include "Game.hpp"
 #include "InventoryDumper.hpp"
+#include "ReligionManager.hpp"
 #include "SkillsDumper.hpp"
 #include "StatsDumper.hpp"
 
@@ -98,13 +99,19 @@ string CharacterDumper::get_vital_statistics() const
   vitals_line_1.replace(60, size.size(), size);
 
   // Second line
+  // JCD FIXME: Ugly, refactor
+  ReligionManager rm;
+  string deity_id = creature->get_religion().get_active_deity_id();
+  string deity = StringTable::get(TextKeys::DEITY) + ": " + StringTable::get(rm.get_deity_name_sid(deity_id));
   string hair_colour = StringTable::get(TextKeys::HAIR_COLOUR) + ": " + StringTable::get(ColourTextKeys::get_colour_sid_from_hair_colour(creature->get_hair_colour()));
   string eye_colour  = StringTable::get(TextKeys::EYE_COLOUR)  + ": " + StringTable::get(ColourTextKeys::get_colour_sid_from_eye_colour(creature->get_eye_colour()));
   
-  vitals_line_2.replace(0, hair_colour.size(), hair_colour);
-  vitals_line_2.replace(30, eye_colour.size(), eye_colour);
-  
-  ss << vitals_line_1 << endl << vitals_line_2;
+  vitals_line_2.replace(0, deity.size(), deity);
+  vitals_line_2.replace(30, hair_colour.size(), hair_colour);
+  vitals_line_2.replace(60, eye_colour.size(), eye_colour);
+    
+  ss << vitals_line_1 << endl << vitals_line_2 << endl;
+    
   return ss.str();
 }
 

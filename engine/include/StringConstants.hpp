@@ -24,6 +24,7 @@ class TextKeys
     static std::string SELECT_RACE;
     static std::string SELECT_CLASS;
     static std::string SELECT_DEITY;
+    static std::string DEITY;
     static std::string RACE_1_NAME;
     static std::string RACE_1_SHORT_DESC;
     static std::string RACE_1_DESC;
@@ -479,6 +480,7 @@ class FeatureDescriptionTextKeys
 {
   public:
     static std::string FEATURE_DESCRIPTION_DOOR;
+    static std::string FEATURE_DESCRIPTION_GATE;
     static std::string FEATURE_DESCRIPTION_EVIL_ALTAR;
     static std::string FEATURE_DESCRIPTION_GOOD_ALTAR;
     static std::string FEATURE_DESCRIPTION_NEUTRAL_ALTAR;

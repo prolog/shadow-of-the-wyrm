@@ -30,11 +30,12 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
     // Really, I wonder how I wrote code when I was a kid,
     // hacking C in djgpp, with no knowledge of data structures
     // and types outside of ints, chars, and arrays.
-    
+
+    // A midpoint circle
     // Math from basic principles:
     // Knowledge gone like ghosts.
-    int y0 = rows / 2;
-    int x0 = cols / 2;
+    int y0 = row_centre;
+    int x0 = col_centre;
     
     int f = 1 - radius;
     int ddF_x = 1;

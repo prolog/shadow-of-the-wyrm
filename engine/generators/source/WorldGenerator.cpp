@@ -420,40 +420,42 @@ void WorldGenerator::set_village_races(MapPtr map)
 {
 // Sometimes useful to know:
 //  int total_villages = village_coordinates.size();
+
+  Game* game = Game::instance();
   
-  BOOST_FOREACH(Coordinate c, village_coordinates)
+  if (game)
   {
-    TilePtr tile = map->at(c.first, c.second);
-    VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
-    
-    if (village_tile)
+    RaceMap races = game->get_races_ref();
+
+    BOOST_FOREACH(Coordinate c, village_coordinates)
     {
-      if (!unused_initial_race_ids.empty())
+      TilePtr tile = map->at(c.first, c.second);
+      VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
+      
+      if (village_tile)
       {
-        int rand_race_id_idx = RNG::range(0, unused_initial_race_ids.size()-1);
-        set<string>::iterator race_id_it;
-        
-        int count = 0;
-        for (race_id_it = unused_initial_race_ids.begin(); race_id_it != unused_initial_race_ids.end(); race_id_it++)
+        if (!unused_initial_race_ids.empty())
         {
-          if (count == rand_race_id_idx)
-          {
-            village_tile->set_village_race_id(*race_id_it);
-            unused_initial_race_ids.erase(race_id_it);
-            break;
-          }
+          int rand_race_id_idx = RNG::range(0, unused_initial_race_ids.size()-1);
+          set<string>::iterator race_id_it;
           
-          count++;
+          int count = 0;
+          for (race_id_it = unused_initial_race_ids.begin(); race_id_it != unused_initial_race_ids.end(); race_id_it++)
+          {
+            if (count == rand_race_id_idx)
+            {
+              string race_id = *race_id_it;
+              village_tile->set_village_race_id(race_id);
+              village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
+              unused_initial_race_ids.erase(race_id_it);
+              break;
+            }
+            
+            count++;
+          }
         }
-      }
-      else
-      {
-        // Get a random race ID from the race map.
-        Game* game = Game::instance();
-        
-        if (game)
+        else
         {
-          RaceMap races = game->get_races_ref();
           int rand_race_idx = RNG::range(0, races.size()-1);
           
           int count = 0;
@@ -463,6 +465,7 @@ void WorldGenerator::set_village_races(MapPtr map)
             {
               string race_id = r_it->first;
               village_tile->set_village_race_id(race_id);
+              village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
             } 
             count++;
           }

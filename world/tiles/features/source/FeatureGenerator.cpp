@@ -6,6 +6,7 @@
 #include "EvilAltar.hpp"
 #include "FirePillar.hpp"
 #include "Fountain.hpp"
+#include "Gate.hpp"
 #include "GoodAltar.hpp"
 #include "NeutralAltar.hpp"
 #include "Pew.hpp"
@@ -49,6 +50,15 @@ FeaturePtr FeatureGenerator::generate_door()
   EntranceState door_state;
   FeaturePtr door = make_shared<Door>(lock_info, door_state);
   return door;
+}
+
+// Generate a gate
+FeaturePtr FeatureGenerator::generate_gate()
+{
+  LockPtr lock_info;
+  EntranceState gate_state;
+  FeaturePtr gate = make_shared<Gate>(lock_info, gate_state);
+  return gate;
 }
 
 // Generate a fire pillar

@@ -24,6 +24,9 @@
 #include "MarshGenerator.hpp"
 #include "SeaGenerator.hpp"
 #include "SettlementGenerator.hpp"
+#include "HamletGenerator.hpp"
+#include "WalledSettlementGenerator.hpp"
+#include "ScatteredSettlementGenerator.hpp"
 #include "SimpleChurchGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
 #include "MapTranslator.hpp"
@@ -58,6 +61,9 @@ string generate_field_settlement_ruins();
 string generate_forest();
 string generate_marsh();
 string generate_settlement();
+string generate_hamlet();
+string generate_walled_settlement();
+string generate_scattered_settlement();
 string generate_dungeon();
 string generate_spiral_dungeon();
 string generate_field_road();
@@ -78,6 +84,7 @@ string generate_island_sacrifice_site();
 string generate_rocky_sacrifice_site();
 string generate_overgrown_sacrifice_site();
 
+void   settlement_maps();
 void   city_maps();
 void   church_maps();
 void   initialize_settings();
@@ -469,6 +476,36 @@ string generate_settlement()
   return map_to_string(settlement_map);
 }
 
+string generate_hamlet()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  HamletGenerator hamlet_gen(field_map);
+  MapPtr hamlet_map = hamlet_gen.generate();
+  cout << map_to_string(hamlet_map, false);
+  return map_to_string(hamlet_map);
+}
+
+string generate_walled_settlement()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  WalledSettlementGenerator ws_gen(field_map);
+  MapPtr ws_map = ws_gen.generate();
+  cout << map_to_string(ws_map, false);
+  return map_to_string(ws_map);
+}
+
+string generate_scattered_settlement()
+{
+  GeneratorPtr field_gen = GeneratorPtr(new FieldGenerator(""));
+  MapPtr field_map = field_gen->generate();
+  ScatteredSettlementGenerator sc_gen(field_map);
+  MapPtr sc_map = sc_gen.generate();
+  cout << map_to_string(sc_map, false);
+  return map_to_string(sc_map);  
+}
+
 string generate_dungeon()
 {
   GeneratorPtr dun_gen = GeneratorPtr(new DungeonGenerator("")); // ha ha
@@ -647,6 +684,45 @@ void test_rng()
   }
 }
 
+void settlement_maps()
+{
+  string map;
+  int settlement_map = 0;
+  
+  while (settlement_map != -1)
+  {
+    cout << "Enter a map number (-1 to quit):" << endl << endl;
+    cout << "1. Settlement" << endl;
+    cout << "2. Hamlet" << endl;
+    cout << "3. Walled Settlement" << endl;
+    cout << "4. Scattered Settlement" << endl;
+    
+    cin >> settlement_map;
+    
+    switch(settlement_map)
+    {
+      case 1:
+        map = generate_settlement();
+        output_map(map, "settlement_test.html");
+        break;
+      case 2:
+        map = generate_hamlet();
+        output_map(map, "hamlet_test.html");
+        break;
+      case 3:
+        map = generate_walled_settlement();
+        output_map(map, "walled_settlement_test.html");
+        break;
+      case 4:
+        map = generate_scattered_settlement();
+        output_map(map, "scattered_settlement_test.html");
+        break;
+      default: 
+        break;
+    }
+  }
+}
+
 void city_maps()
 {
   string map;
@@ -766,7 +842,7 @@ int main(int argc, char** argv)
     cout << "1. Field" << endl;
     cout << "2. Forest" << endl;
     cout << "3. Ruins (Field)" << endl;
-    cout << "4. Settlement (Field)" << endl;
+    cout << "4. Settlements" << endl;
     cout << "5. Settlement Ruins (Field)" << endl;
     cout << "6. Marsh" << endl;
     cout << "7. Regular Dungeon" << endl;
@@ -801,8 +877,7 @@ int main(int argc, char** argv)
         output_map(map, "ruins_test.html");
         break;
       case 4:
-        map = generate_settlement();
-        output_map(map, "settlement_test.html");
+        settlement_maps();
         break;
       case 5:
         map = generate_field_settlement_ruins();

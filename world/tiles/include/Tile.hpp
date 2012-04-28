@@ -45,6 +45,8 @@ class Tile
     virtual Inventory& get_items();
 
     virtual TileType get_tile_type() const;
+
+    virtual void     set_tile_subtype(const TileType new_tile_subtype);
     virtual TileType get_tile_subtype() const;
     
     virtual TileExitMap& get_tile_exit_map_ref();
