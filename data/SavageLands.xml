@@ -76,6 +76,7 @@
 	<Races>
 		<Race id="01_human">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
 			<ShortDescriptionSID>RACE_1_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_1_DESC</DescriptionSID>
@@ -157,6 +158,7 @@
 		</Race>
 		<Race id="02_woodelf">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
 			<ShortDescriptionSID>RACE_2_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_2_DESC</DescriptionSID>
@@ -229,6 +231,7 @@
 		</Race>
 		<Race id="03_mountainelf">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
 			<ShortDescriptionSID>RACE_3_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_3_DESC</DescriptionSID>
@@ -303,6 +306,7 @@
 		</Race>
 		<Race id="04_marshelf">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
 			<ShortDescriptionSID>RACE_4_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_4_DESC</DescriptionSID>
@@ -374,6 +378,7 @@
 		</Race>
 		<Race id="05_pixie">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_5_NAME</NameSID>
 			<ShortDescriptionSID>RACE_5_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_5_DESC</DescriptionSID>
@@ -444,6 +449,7 @@
 		</Race>
 		<Race id="06_dwarf">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
 			<ShortDescriptionSID>RACE_6_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_6_DESC</DescriptionSID>
@@ -516,6 +522,7 @@
 		</Race>
 		<Race id="07_goblin">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
 			<ShortDescriptionSID>RACE_7_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_7_DESC</DescriptionSID>
@@ -589,6 +596,7 @@
 		</Race>
 		<Race id="08_gnoll">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
 			<ShortDescriptionSID>RACE_8_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_8_DESC</DescriptionSID>
@@ -659,6 +667,7 @@
 		</Race>
 		<Race id="09_giant">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
 			<ShortDescriptionSID>RACE_9_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_9_DESC</DescriptionSID>
@@ -729,6 +738,7 @@
 		</Race>
 		<Race id="10_ratling">
 			<UserPlayable>1</UserPlayable>
+			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>
 			<ShortDescriptionSID>RACE_10_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_10_DESC</DescriptionSID>

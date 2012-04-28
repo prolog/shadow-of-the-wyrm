@@ -96,6 +96,11 @@ TileType Tile::get_tile_type() const
   return tile_type;
 }
 
+void Tile::set_tile_subtype(const TileType new_tile_subtype)
+{
+  tile_subtype = new_tile_subtype;
+}
+
 TileType Tile::get_tile_subtype() const
 {
   return TILE_TYPE_UNDEFINED;

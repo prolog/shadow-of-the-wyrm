@@ -67,6 +67,12 @@ Coordinate MapUtils::get_new_coordinate(const Coordinate& c, const Direction d)
   return new_coord;
 }
 
+// Get the distance between two tiles using Chebyshev distance
+float MapUtils::tile_distance(Coordinate c1, Coordinate c2)
+{
+  return max(abs(c1.second - c2.second), abs(c1.first - c2.first));
+}
+
 // Add the tile and its connected tiles to the Component.
 void MapUtils::add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const set<TileType>& exclusion_tiles, Component* component)
 {

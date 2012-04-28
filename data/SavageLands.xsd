@@ -117,6 +117,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="SettlementTileSubtype" type="tns:SettlementTileSubtype"/>
 			<xs:element name="NameSID" type="xs:string"/>
    			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
@@ -499,6 +500,25 @@
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->
+<xs:simpleType name="SettlementTileSubtype">
+	<xs:annotation>
+		<xs:documentation>The subtile type for the settlement - used to generate the initial base map.
+		Allowable values:
+		0 = Field
+		1 = Scrub
+		5 = Desert
+		13 = Marsh
+		21 = Forest
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:enumeration value="0"/>
+		<xs:enumeration value="1"/>
+		<xs:enumeration value="5"/>
+		<xs:enumeration value="13"/>
+		<xs:enumeration value="21"/>
+	</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="AlignmentRange">
 	<xs:annotation>
 		<xs:documentation>An enumeration describing the possible general alignment ranges.

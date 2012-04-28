@@ -21,6 +21,7 @@ string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 string TextKeys::SELECT_RACE = "SELECT_RACE";
 string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 string TextKeys::SELECT_DEITY = "SELECT_DEITY";
+string TextKeys::DEITY = "DEITY";
 string TextKeys::AGE = "AGE";
 string TextKeys::SEX = "SEX";
 string TextKeys::HAIR_COLOUR = "HAIR_COLOUR";
@@ -826,6 +827,7 @@ FeatureDescriptionTextKeys::FeatureDescriptionTextKeys()
 }
 
 string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_DOOR               = "FEATURE_DESCRIPTION_DOOR";
+string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_GATE               = "FEATURE_DESCRIPTION_GATE";
 string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_EVIL_ALTAR         = "FEATURE_DESCRIPTION_EVIL_ALTAR";
 string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_GOOD_ALTAR         = "FEATURE_DESCRIPTION_GOOD_ALTAR";
 string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_NEUTRAL_ALTAR      = "FEATURE_DESCRIPTION_NEUTRAL_ALTAR";

@@ -5,13 +5,8 @@
 using namespace std;
 
 Race::Race()
+: user_playable(false), settlement_tile_subtype(TILE_TYPE_FIELD), size(CREATURE_SIZE_MEDIUM), valour_modifier(0), spirit_modifier(0), experience_multiplier(1.0)
 {
-  // Initialize primitive types.  Statistics will already be initialized via their class.
-  experience_multiplier = 1.0;
-  user_playable = false;
-  valour_modifier = 0;
-  spirit_modifier = 0;
-  size = CREATURE_SIZE_MEDIUM;
 }
 
 Race::~Race()
@@ -41,6 +36,16 @@ void Race::set_user_playable(const bool playable)
 bool Race::get_user_playable() const
 {
   return user_playable;
+}
+
+void Race::set_settlement_tile_subtype(const TileType new_settlement_tile_subtype)
+{
+  settlement_tile_subtype = new_settlement_tile_subtype;
+}
+
+TileType Race::get_settlement_tile_subtype() const
+{
+  return settlement_tile_subtype;
 }
 
 void Race::set_race_name_sid(const string& race_sid)

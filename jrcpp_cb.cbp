@@ -320,6 +320,7 @@
 		<Unit filename="engine\generators\include\MountainsGenerator.hpp" />
 		<Unit filename="engine\generators\include\OrderedGraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\RoadGenerator.hpp" />
+		<Unit filename="engine\generators\include\Room.hpp" />
 		<Unit filename="engine\generators\include\RuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\ScatteredGraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\ScrubGenerator.hpp" />
@@ -330,10 +331,21 @@
 		<Unit filename="engine\generators\include\TerrainGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\include\TileGenerator.hpp" />
 		<Unit filename="engine\generators\include\WorldGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\include\BaseSettlementGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\include\HamletGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\include\ScatteredSettlementGenerator.hpp" />
 		<Unit filename="engine\generators\settlements\include\SettlementGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\include\SettlementGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\settlements\include\SettlementRuinsGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\include\SettlementTypes.hpp" />
+		<Unit filename="engine\generators\settlements\include\WalledSettlementGenerator.hpp" />
+		<Unit filename="engine\generators\settlements\source\BaseSettlementGenerator.cpp" />
+		<Unit filename="engine\generators\settlements\source\HamletGenerator.cpp" />
+		<Unit filename="engine\generators\settlements\source\ScatteredSettlementGenerator.cpp" />
 		<Unit filename="engine\generators\settlements\source\SettlementGenerator.cpp" />
+		<Unit filename="engine\generators\settlements\source\SettlementGeneratorFactory.cpp" />
 		<Unit filename="engine\generators\settlements\source\SettlementRuinsGenerator.cpp" />
+		<Unit filename="engine\generators\settlements\source\WalledSettlementGenerator.cpp" />
 		<Unit filename="engine\generators\source\CavernGenerator.cpp" />
 		<Unit filename="engine\generators\source\CellularAutomataGenerator.cpp" />
 		<Unit filename="engine\generators\source\DesertGenerator.cpp" />
@@ -350,6 +362,7 @@
 		<Unit filename="engine\generators\source\MountainsGenerator.cpp" />
 		<Unit filename="engine\generators\source\OrderedGraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\RoadGenerator.cpp" />
+		<Unit filename="engine\generators\source\Room.cpp" />
 		<Unit filename="engine\generators\source\RuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\ScatteredGraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\ScrubGenerator.cpp" />
@@ -411,6 +424,7 @@
 		<Unit filename="engine\include\Naming.hpp" />
 		<Unit filename="engine\include\RNG.hpp" />
 		<Unit filename="engine\include\Range.hpp" />
+		<Unit filename="engine\include\ReligionManager.hpp" />
 		<Unit filename="engine\include\SavageLandsEngine.hpp" />
 		<Unit filename="engine\include\StringConstants.hpp" />
 		<Unit filename="engine\include\StringTable.hpp" />
@@ -455,6 +469,7 @@
 		<Unit filename="engine\source\MovementManager.cpp" />
 		<Unit filename="engine\source\Naming.cpp" />
 		<Unit filename="engine\source\RNG.cpp" />
+		<Unit filename="engine\source\ReligionManager.cpp" />
 		<Unit filename="engine\source\SavageLandsEngine.cpp" />
 		<Unit filename="engine\source\StringConstants.cpp" />
 		<Unit filename="engine\source\StringTable.cpp" />
@@ -622,6 +637,7 @@
 		<Unit filename="world\tiles\features\include\FeatureGenerator.hpp" />
 		<Unit filename="world\tiles\features\include\FirePillar.hpp" />
 		<Unit filename="world\tiles\features\include\Fountain.hpp" />
+		<Unit filename="world\tiles\features\include\Gate.hpp" />
 		<Unit filename="world\tiles\features\include\GoodAltar.hpp" />
 		<Unit filename="world\tiles\features\include\IHandleable.hpp" />
 		<Unit filename="world\tiles\features\include\IKickable.hpp" />
@@ -646,6 +662,7 @@
 		<Unit filename="world\tiles\features\source\FeatureGenerator.cpp" />
 		<Unit filename="world\tiles\features\source\FirePillar.cpp" />
 		<Unit filename="world\tiles\features\source\Fountain.cpp" />
+		<Unit filename="world\tiles\features\source\Gate.cpp" />
 		<Unit filename="world\tiles\features\source\GoodAltar.cpp" />
 		<Unit filename="world\tiles\features\source\ILockable.cpp" />
 		<Unit filename="world\tiles\features\source\ITrappable.cpp" />
@@ -836,6 +853,9 @@
 				<search_path add="engine\commands\source" />
 				<search_path add="controller\source" />
 			</debugger>
+			<wxsmith version="1">
+				<gui name="wxWidgets" src="" main="" init_handlers="necessary" language="CPP" />
+			</wxsmith>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

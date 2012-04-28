@@ -21,6 +21,9 @@ class Race
 
     void set_user_playable(const bool playable);
     bool get_user_playable() const;
+    
+    void set_settlement_tile_subtype(const TileType new_settlement_tile_subtype);
+    TileType get_settlement_tile_subtype() const;
 
     void set_race_name_sid(const std::string& race_sid);
     std::string get_race_name_sid() const;
@@ -87,6 +90,7 @@ class Race
   protected:
     std::string race_id;
     bool user_playable;
+    TileType settlement_tile_subtype;
 
     // Name & vitals
     std::string race_name_sid;

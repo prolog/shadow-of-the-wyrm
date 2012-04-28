@@ -13,37 +13,6 @@
 using namespace std;
 using boost::make_shared;
 
-Room::Room(int nid, int nx1, int nx2, int ny1, int ny2)
-: id(nid), x1(nx1), x2(nx2), y1(ny1), y2(ny2)
-{
-}
-
-Room::Room()
-: id(-1), x1(0), x2(0), y1(0), y2(0)
-{
-}
-
-bool Room::operator==(const Room& that)
-{
-  // Ignored shared ptr.
-  return ((x1 == that.x1) && (x2 == that.x2) && (y1 == that.y1) && (y2 == that.y2));
-}
-
-bool Room::contains(Coordinate c) const
-{
-  int cy = c.first;
-  int cx = c.second;
-
-  return ((cy < y2) && (cy >= y1) && (cx < x2) && (cx >= x1));
-}
-
-float tile_distance(Coordinate c1, Coordinate c2);
-float tile_distance(Coordinate c1, Coordinate c2)
-{
-  // Chebyshev distance
-  return max(abs(c1.second - c2.second), abs(c1.first - c2.first));
-}
-
 bool compare_rooms(const Room& r1, const Room& r2);
 bool compare_rooms(const Room& r1, const Room& r2)
 {
@@ -53,8 +22,8 @@ bool compare_rooms(const Room& r1, const Room& r2)
   Coordinate room2_c = r2.get_centre();
   Coordinate room2_centre_c = r2.centre_room->get_centre();
   
-  float r1_td = tile_distance(room1_c, room1_centre_c);
-  float r2_td = tile_distance(room2_c, room2_centre_c);
+  float r1_td = MapUtils::tile_distance(room1_c, room1_centre_c);
+  float r2_td = MapUtils::tile_distance(room2_c, room2_centre_c);
   
   return (r1_td < r2_td);
 }
