@@ -1,4 +1,5 @@
 #include "Gate.hpp"
+#include "MaterialFactory.hpp"
 #include "StringConstants.hpp"
 
 using std::string;
@@ -7,6 +8,8 @@ using std::string;
 Gate::Gate(LockPtr new_lock, const EntranceState& new_state)
 : Entrance(new_lock, new_state)
 {
+  MaterialPtr iron = MaterialFactory::create_material(MATERIAL_TYPE_IRON);
+  set_material(iron);
 }
 
 bool Gate::handle()

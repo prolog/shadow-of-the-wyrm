@@ -12,13 +12,15 @@
 using namespace std;
 using boost::dynamic_pointer_cast;
 
+// Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
+// shouldn't matter for the world, since there will never be creatures generated on it.
 WorldGenerator::WorldGenerator()
-: Generator("")
+: Generator("", TILE_TYPE_UNDEFINED)
 {
 }
 
 WorldGenerator::WorldGenerator(const string& new_map_exit_id)
-: Generator(new_map_exit_id)
+: Generator(new_map_exit_id, TILE_TYPE_UNDEFINED)
 {
   // Worlds don't do anything with the map exit id.
 }
@@ -445,8 +447,15 @@ void WorldGenerator::set_village_races(MapPtr map)
             if (count == rand_race_id_idx)
             {
               string race_id = *race_id_it;
-              village_tile->set_village_race_id(race_id);
-              village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
+              RacePtr race = races[race_id];
+              
+              if (race)
+              {
+                village_tile->set_village_race_id(race_id);
+                village_tile->set_settlement_type(race->get_settlement_type());
+                village_tile->set_tile_subtype(race->get_settlement_tile_subtype());                
+              }
+
               unused_initial_race_ids.erase(race_id_it);
               break;
             }

@@ -1,3 +1,4 @@
+#include <boost/make_shared.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
@@ -11,16 +12,18 @@
 #include "ArcanaPointsCalculator.hpp"
 #include "ReligionFactory.hpp"
 #include "RNG.hpp"
+#include "NullKeyboardController.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
 {
-  CreaturePtr totally_bogus_default_creature_null;
+  CreaturePtr totally_bogus_default_creature_null_null_null;
 
   // Creature IDs aren't supported yet.
 
-  return totally_bogus_default_creature_null;
+  return totally_bogus_default_creature_null_null_null;
 }
 
 CreaturePtr CreatureFactory::create_by_race_and_class
@@ -38,6 +41,11 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   boost::uuids::uuid id = boost::uuids::random_generator()();
   std::string id_s = Uuid::to_string(id);
   creature.set_id(id_s);
+  
+  // Set a null controller - this will be overridden later if the creature is a player, or has some
+  // special circumstances.
+  ControllerPtr null_controller = make_shared<NullKeyboardController>();
+  creature.set_is_player(false, null_controller);
 
   creature.set_name(creature_name);
   creature.set_race_id(race_id);

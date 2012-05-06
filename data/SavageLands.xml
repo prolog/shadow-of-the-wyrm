@@ -76,6 +76,7 @@
 	<Races>
 		<Race id="01_human">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_1_NAME</NameSID>
 			<ShortDescriptionSID>RACE_1_SHORT_DESC</ShortDescriptionSID>
@@ -158,6 +159,7 @@
 		</Race>
 		<Race id="02_woodelf">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_2_NAME</NameSID>
 			<ShortDescriptionSID>RACE_2_SHORT_DESC</ShortDescriptionSID>
@@ -231,6 +233,7 @@
 		</Race>
 		<Race id="03_mountainelf">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_3_NAME</NameSID>
 			<ShortDescriptionSID>RACE_3_SHORT_DESC</ShortDescriptionSID>
@@ -306,6 +309,7 @@
 		</Race>
 		<Race id="04_marshelf">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_4_NAME</NameSID>
 			<ShortDescriptionSID>RACE_4_SHORT_DESC</ShortDescriptionSID>
@@ -378,6 +382,7 @@
 		</Race>
 		<Race id="05_pixie">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
 			<NameSID>RACE_5_NAME</NameSID>
 			<ShortDescriptionSID>RACE_5_SHORT_DESC</ShortDescriptionSID>
@@ -449,6 +454,7 @@
 		</Race>
 		<Race id="06_dwarf">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
 			<NameSID>RACE_6_NAME</NameSID>
 			<ShortDescriptionSID>RACE_6_SHORT_DESC</ShortDescriptionSID>
@@ -522,6 +528,7 @@
 		</Race>
 		<Race id="07_goblin">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_7_NAME</NameSID>
 			<ShortDescriptionSID>RACE_7_SHORT_DESC</ShortDescriptionSID>
@@ -596,6 +603,7 @@
 		</Race>
 		<Race id="08_gnoll">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
 			<NameSID>RACE_8_NAME</NameSID>
 			<ShortDescriptionSID>RACE_8_SHORT_DESC</ShortDescriptionSID>
@@ -667,6 +675,7 @@
 		</Race>
 		<Race id="09_giant">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_9_NAME</NameSID>
 			<ShortDescriptionSID>RACE_9_SHORT_DESC</ShortDescriptionSID>
@@ -738,6 +747,7 @@
 		</Race>
 		<Race id="10_ratling">
 			<UserPlayable>1</UserPlayable>
+			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
 			<NameSID>RACE_10_NAME</NameSID>
 			<ShortDescriptionSID>RACE_10_SHORT_DESC</ShortDescriptionSID>
@@ -1866,6 +1876,25 @@
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 		</Class>
 	</Classes>
+	<Creatures>
+		<Creature id="green_slime">
+			<ShortDescriptionSID>GREEN_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GREEN_SLIME_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>j</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+			</CreatureGeneration>
+		</Creature>
+	</Creatures>
 	<Tiles>
 		<FieldTile>
 			<Text>

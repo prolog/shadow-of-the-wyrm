@@ -2,6 +2,7 @@
 #include <vector>
 #include "ActionManager.hpp"
 #include "Class.hpp"
+#include "CreatureGenerationValues.hpp"
 #include "Deity.hpp"
 #include "Directions.hpp"
 #include "DisplayTile.hpp"
@@ -15,6 +16,7 @@ class Game
 {
   public:
     static Game* instance();
+
 void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     void set_display(DisplayPtr display);
@@ -31,6 +33,12 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     void set_classes(const ClassMap& game_classes);
     const ClassMap& get_classes_ref() const;
+    
+    void set_creatures(const CreatureMap& game_creatures);
+    const CreatureMap& get_creatures_ref() const;
+    
+    void set_creature_generation_values(const CreatureGenerationValuesMap& game_cgv);
+    const CreatureGenerationValuesMap& get_creature_generation_values_ref() const;
     
     void set_items(const ItemMap& game_items);
     const ItemMap& get_items_ref() const;
@@ -85,9 +93,10 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     DeityMap deities;
     RaceMap races;
     ClassMap classes;
+    CreatureMap creatures;
+    CreatureGenerationValuesMap creature_generation_values;
     ItemMap items;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
-    // ItemMap items;
 
     // The current list of game worlds.
     std::vector<WorldPtr> worlds;

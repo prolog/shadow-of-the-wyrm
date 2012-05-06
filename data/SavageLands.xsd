@@ -8,6 +8,7 @@
 			<xs:element ref="tns:Deities"/>
 			<xs:element ref="tns:Races"/>
 			<xs:element ref="tns:Classes"/>
+			<xs:element ref="tns:Creatures"/>
 			<xs:element ref="tns:Tiles"/>
 			<xs:element ref="tns:Items"/>
 		</xs:sequence>
@@ -34,6 +35,14 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Class" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Creatures">
+	<xs:annotation><xs:documentation>A list of the creatures available for generation within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:Creature" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -117,6 +126,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
+			<xs:element name="SettlementType" type="tns:SettlementType"/>
 			<xs:element name="SettlementTileSubtype" type="tns:SettlementTileSubtype"/>
 			<xs:element name="NameSID" type="xs:string"/>
    			<xs:element name="ShortDescriptionSID" type="xs:string"/>
@@ -132,6 +142,24 @@
 			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:element>
+<xs:element name="AllowableTerrainTypes">
+	<xs:annotation><xs:documentation>Information on allowable terrain types for generation (of creatures, objects, etc)</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="TileType" type="tns:TileType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="CreatureGeneration">
+	<xs:annotation><xs:documentation>Information about how to generate a particular creature, and where.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:AllowableTerrainTypes"/>
+			<xs:element name="DangerLevel" type="xs:unsignedInt"/>
+			<xs:element name="Rarity" type="tns:Rarity"/>
+		</xs:sequence>
 	</xs:complexType>
 </xs:element>
 <xs:element name="ClassInitialStatistics">
@@ -199,6 +227,27 @@
 		<xs:sequence>
 			<xs:element name="DeityID" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Creature">
+	<xs:annotation>
+		<xs:documentation>A template for a particular creature type</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="ShortDescriptionSID" type="xs:string"/>
+			<xs:element name="DescriptionSID" type="xs:string"/>	
+            <!-- Used to create a decision strategy for the creature.  Currently accepted values:
+                 - default (or just ignore the field)
+				 - immobile_default
+				 - immobile_aggressive
+				 - Any unaccepted value provided will map to "default" in Savage Lands.
+			-->
+			<xs:element name="DecisionStrategy" type="xs:string" minOccurs="0"/>
+			<xs:element name="Text" type="tns:TextDetails"/>
+			<xs:element ref="tns:CreatureGeneration"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="Class">
@@ -500,6 +549,45 @@
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->
+<xs:simpleType name="TileType">
+	<xs:annotation>
+		<xs:documentation>See tiles.hpp for an explanation of the allowable values.</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="35"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="Rarity">
+	<xs:annotation>
+		<xs:documentation>The notion of rarity is used in creature and item generation.  While something
+		may have a particular danger level, it can be rarer than other things at that danger level.
+		
+		0 = Common
+		1 = Uncommon
+		2 = Rare
+		3 = Very Rare
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="3"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="SettlementType">
+	<xs:annotation>
+		<xs:documentation>The type of the settlement - used to generate the settlement over the base map.
+		0 = Ordered Settlement
+		1 = Hamlet
+		2 = Walled Settlement
+		3 = Scattered Settlement
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="3"/>
+	</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="SettlementTileSubtype">
 	<xs:annotation>
 		<xs:documentation>The subtile type for the settlement - used to generate the initial base map.

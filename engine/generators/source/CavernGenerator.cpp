@@ -10,7 +10,7 @@ using namespace std;
 using boost::make_shared;
 
 CavernGenerator::CavernGenerator(const string& new_map_exit_id)
-: Generator(new_map_exit_id)
+: Generator(new_map_exit_id, TILE_TYPE_CAVERN)
 {
 }
 

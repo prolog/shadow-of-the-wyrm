@@ -8,7 +8,7 @@
 using std::string;
 
 SnakingTempleGenerator::SnakingTempleGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map),
+: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_TEMPLE),
 temple_width(0), temple_height(0), temple_middle_width(0), temple_middle_height(0),
 temple_row_start(0), temple_row_end(0), temple_col_start(0), temple_col_end(0), head_height(0),
 temple_middle_start_row(0), temple_middle_end_row(0), temple_middle_start_col(0), temple_middle_end_col(0)

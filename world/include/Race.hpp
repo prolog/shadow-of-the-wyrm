@@ -8,6 +8,7 @@
 #include "Statistic.hpp"
 #include "CreatureFeatures.hpp"
 #include "Resistances.hpp"
+#include "SettlementTypes.hpp"
 
 class Race
 {
@@ -21,6 +22,9 @@ class Race
 
     void set_user_playable(const bool playable);
     bool get_user_playable() const;
+    
+    void set_settlement_type(const SettlementType new_settlement_type);
+    SettlementType get_settlement_type() const;
     
     void set_settlement_tile_subtype(const TileType new_settlement_tile_subtype);
     TileType get_settlement_tile_subtype() const;
@@ -90,6 +94,7 @@ class Race
   protected:
     std::string race_id;
     bool user_playable;
+    SettlementType settlement_type;
     TileType settlement_tile_subtype;
 
     // Name & vitals

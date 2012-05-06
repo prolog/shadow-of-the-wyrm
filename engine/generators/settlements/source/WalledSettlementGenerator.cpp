@@ -118,11 +118,11 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
   {
     case CARDINAL_DIRECTION_WEST:
     case CARDINAL_DIRECTION_NORTH:
-      generate_road_south(map, gate_row, gate_col, south_wall - north_wall - 1, growth_rate, 0, false);
+      generate_road_south(map, gate_row+1, gate_col, south_wall - north_wall - 1, growth_rate, 0, false);
       break;
     case CARDINAL_DIRECTION_EAST:
     case CARDINAL_DIRECTION_SOUTH:
-      generate_road_north(map, gate_row, gate_col, south_wall - north_wall - 1, growth_rate, 0, false);
+      generate_road_north(map, gate_row-1, gate_col, south_wall - north_wall - 1, growth_rate, 0, false);
       break;
     default: 
       break;

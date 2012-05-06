@@ -7,7 +7,7 @@
 using std::string;
 
 IslandSacrificeSiteGenerator::IslandSacrificeSiteGenerator(const string& new_deity_id, const MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map)
+: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH)
 {
 }
 

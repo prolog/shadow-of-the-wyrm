@@ -6,7 +6,7 @@
 using std::string;
 
 RockySacrificeSiteGenerator::RockySacrificeSiteGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map)
+: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_SITE_OF_DEATH)
 {
 }
 

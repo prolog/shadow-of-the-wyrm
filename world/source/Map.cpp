@@ -4,7 +4,7 @@
 using namespace std;
 
 Map::Map(const Map& new_map)
-: map_type(MAP_TYPE_OVERWORLD), permanent(false)
+: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false)
 {
   if (this != &new_map)
   {
@@ -17,7 +17,7 @@ Map::Map(const Map& new_map)
 }
 
 Map::Map(const Dimensions& new_dimensions)
-: map_type(MAP_TYPE_OVERWORLD), permanent(false)
+: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false)
 {
   dimensions = new_dimensions;
 }
@@ -103,6 +103,16 @@ void Map::set_size(const Dimensions& new_dimensions)
 Dimensions Map::size() const
 {
   return dimensions;
+}
+
+void Map::set_terrain_type(const TileType new_terrain_type)
+{
+  terrain_type = new_terrain_type;
+}
+
+TileType Map::get_terrain_type() const
+{
+  return terrain_type;
 }
 
 void Map::set_map_type(const MapType& new_map_type)

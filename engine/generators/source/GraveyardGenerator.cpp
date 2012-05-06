@@ -3,7 +3,7 @@
 #include "TileGenerator.hpp"
 
 GraveyardGenerator::GraveyardGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id)
+: Generator(new_map_exit_id, TILE_TYPE_GRAVEYARD)
 , TOMB_MIN_SIZE(7)
 , TOMB_MAX_SIZE(7)
 {

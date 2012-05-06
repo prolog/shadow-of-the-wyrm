@@ -103,7 +103,7 @@ void Tile::set_tile_subtype(const TileType new_tile_subtype)
 
 TileType Tile::get_tile_subtype() const
 {
-  return TILE_TYPE_UNDEFINED;
+  return tile_subtype;
 }
 
 TileExitMap& Tile::get_tile_exit_map_ref()

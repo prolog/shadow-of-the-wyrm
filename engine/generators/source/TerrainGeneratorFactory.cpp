@@ -4,14 +4,17 @@
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
+#include "Game.hpp"
 #include "MarshGenerator.hpp"
 #include "MountainsGenerator.hpp"
+#include "RaceManager.hpp"
 #include "ScrubGenerator.hpp"
 #include "SeaGenerator.hpp"
-#include "SettlementGenerator.hpp"
+#include "SettlementGeneratorFactory.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "WorshipSiteGenerator.hpp"
 #include "WorshipSiteTile.hpp"
+#include "VillageTile.hpp"
 
 using std::string;
 using boost::make_shared;
@@ -59,10 +62,26 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       generator = make_shared<ScrubGenerator>(map_exit_id);
       break;
     case TILE_TYPE_VILLAGE:
-    {
+    {      
       GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
       MapPtr base_map = base_generator->generate();
-      generator = make_shared<SettlementGenerator>(base_map);
+      
+      SettlementType settlement_type = SETTLEMENT_TYPE_ORDERLY_VILLAGE;
+      
+      VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
+      
+      if (village_tile)
+      {
+        RaceManager rm;
+        RacePtr race = rm.get_race(village_tile->get_village_race_id());
+        
+        if (race)
+        {
+          settlement_type = race->get_settlement_type();          
+        }
+      }
+
+      generator = SettlementGeneratorFactory::create_settlement_generator(settlement_type, base_map);
     }
       break;
     case TILE_TYPE_DUNGEON_COMPLEX:

@@ -37,6 +37,9 @@ class Map
 
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
+		
+		void set_terrain_type(const TileType new_terrain_type);
+		TileType get_terrain_type() const;
 
 		void set_map_type(const MapType& new_type);
 		MapType get_map_type() const;
@@ -72,6 +75,7 @@ class Map
 		std::map<std::string, TilePtr > tiles;
 		Dimensions dimensions;
     NamedMapLocations locations;
+    TileType terrain_type; // field, forest, village, etc.
     MapType map_type;
     MapExitPtr map_exit;
     std::string map_id;

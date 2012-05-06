@@ -20,8 +20,12 @@ class VillageTile : public WorldMapLandmarkTile
     void set_village_race_id(const std::string& new_race_id);
     std::string get_village_race_id() const;
     
+    void set_settlement_type(const SettlementType settlement_type);
+    SettlementType get_settlement_type() const;
+    
   protected:
     std::string village_race_id;
+    SettlementType settlement_type;
 };
 
 typedef boost::shared_ptr<VillageTile> VillageTilePtr;

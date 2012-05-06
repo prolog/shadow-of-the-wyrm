@@ -52,6 +52,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     bool user_playable = XMLUtils::get_child_node_bool_value(race_node, "UserPlayable");
     race->set_user_playable(user_playable);
     
+    SettlementType settlement_type = static_cast<SettlementType>(XMLUtils::get_child_node_int_value(race_node, "SettlementType"));
+    race->set_settlement_type(settlement_type);
+    
     TileType settlement_tile_subtype = static_cast<TileType>(XMLUtils::get_child_node_int_value(race_node, "SettlementTileSubtype"));
     race->set_settlement_tile_subtype(settlement_tile_subtype);
 
