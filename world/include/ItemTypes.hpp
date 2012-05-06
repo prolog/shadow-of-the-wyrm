@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 enum ItemType
 {
@@ -32,4 +33,32 @@ enum ItemIdentificationType
   ITEM_IDENTIFY_ON_USE = 1,
   ITEM_IDENTIFY_ON_SUCCESSFUL_USE = 2,
   ITEM_IDENTIFY_ON_EQUIP = 3
+};
+
+// String constants used to identify items by things like generators.
+class ItemIdKeys
+{
+  public:
+  public:
+    static std::string ITEM_ID_BRANCH;
+    static std::string ITEM_ID_ROCK;
+    static std::string ITEM_ID_KINGFLOWER;
+    static std::string ITEM_ID_FIDDLEHEAD_GREEN;
+    static std::string ITEM_ID_FERN;
+    static std::string ITEM_ID_WILDFLOWER_1;
+    static std::string ITEM_ID_WILDFLOWER_2;
+    static std::string ITEM_ID_WILDFLOWER_3;
+    static std::string ITEM_ID_WILDFLOWER_4;
+    static std::string ITEM_ID_WILDFLOWER_5;
+    static std::string ITEM_ID_WILDFLOWER_6;
+    static std::string ITEM_ID_VEGETABLE_1;
+    static std::string ITEM_ID_VEGETABLE_2;
+    static std::string ITEM_ID_VEGETABLE_3;
+    static std::string ITEM_ID_VEGETABLE_4;
+    static std::string ITEM_ID_VEGETABLE_5;
+    static std::string ITEM_ID_VEGETABLE_6;
+
+  protected:
+    ItemIdKeys();
+    ~ItemIdKeys();
 };

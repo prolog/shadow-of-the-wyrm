@@ -3,7 +3,7 @@
 #include "TileGenerator.hpp"
 
 MountainsGenerator::MountainsGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id)
+: Generator(new_map_exit_id, TILE_TYPE_MOUNTAINS)
 {
 }
 

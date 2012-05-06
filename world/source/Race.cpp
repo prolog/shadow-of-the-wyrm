@@ -5,7 +5,7 @@
 using namespace std;
 
 Race::Race()
-: user_playable(false), settlement_tile_subtype(TILE_TYPE_FIELD), size(CREATURE_SIZE_MEDIUM), valour_modifier(0), spirit_modifier(0), experience_multiplier(1.0)
+: user_playable(false), settlement_type(SETTLEMENT_TYPE_ORDERLY_VILLAGE), settlement_tile_subtype(TILE_TYPE_FIELD), size(CREATURE_SIZE_MEDIUM), valour_modifier(0), spirit_modifier(0), experience_multiplier(1.0)
 {
 }
 
@@ -36,6 +36,16 @@ void Race::set_user_playable(const bool playable)
 bool Race::get_user_playable() const
 {
   return user_playable;
+}
+
+void Race::set_settlement_type(const SettlementType new_settlement_type)
+{
+  settlement_type = new_settlement_type;
+}
+
+SettlementType Race::get_settlement_type() const
+{
+  return settlement_type;
 }
 
 void Race::set_settlement_tile_subtype(const TileType new_settlement_tile_subtype)

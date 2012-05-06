@@ -247,7 +247,7 @@ bool MovementManager::descend(CreaturePtr creature)
               if (generator)
               {
                 // - Generate the map.
-                MapPtr new_map = generator->generate();
+                MapPtr new_map = generator->generate_and_initialize();
                 
                 // - Set the map's MapExitPtr to point to the previous map.
                 //   But only if it's an overworld map.

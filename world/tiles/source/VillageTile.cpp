@@ -6,6 +6,7 @@ VillageTile::VillageTile()
 {
   // Default, can be overridden later.
   tile_subtype = TILE_TYPE_FIELD;
+  settlement_type = SETTLEMENT_TYPE_ORDERLY_VILLAGE;
 }
 
 VillageTile::VillageTile(const TileType new_tile_subtype)
@@ -36,6 +37,16 @@ void VillageTile::set_village_race_id(const string& new_village_race_id)
 string VillageTile::get_village_race_id() const
 {
   return village_race_id;
+}
+
+void VillageTile::set_settlement_type(const SettlementType new_settlement_type)
+{
+  settlement_type = new_settlement_type;
+}
+
+SettlementType VillageTile::get_settlement_type() const
+{
+  return settlement_type;
 }
 
 #ifdef UNIT_TESTS

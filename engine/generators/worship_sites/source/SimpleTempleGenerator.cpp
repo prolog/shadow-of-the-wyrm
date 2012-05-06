@@ -6,7 +6,7 @@
 using std::string;
 
 SimpleTempleGenerator::SimpleTempleGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map)
+: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_TEMPLE)
 {
 }
 

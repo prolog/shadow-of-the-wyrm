@@ -98,6 +98,7 @@ void SavageLandsEngine::setup_game()
     ItemMap items = reader.get_items();
     RaceMap races = reader.get_races();
     ClassMap classes = reader.get_classes();
+    pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures();
     
     vector<DisplayTile> tile_info = reader.get_tile_info();
 
@@ -106,6 +107,8 @@ void SavageLandsEngine::setup_game()
     game->set_races(races);
     game->set_classes(classes);
     game->set_items(items);
+    game->set_creatures(creatures.first);
+    game->set_creature_generation_values(creatures.second);
     game->set_tile_display_info(tile_info);
     
     // Set up the message manager also.

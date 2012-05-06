@@ -499,34 +499,4 @@ class FeatureDescriptionTextKeys
     FeatureDescriptionTextKeys();
 };
 
-// Pre-defined item IDs, required by generators and other things.  Hopefully, things will
-// degrade gracefully if the items are excluded from the configuration files, but...
-//
-// These don't need to be translated, so they hold the actual item ID ("_branch", "_rock", etc.)
-// The convention is to use an underscore to denote that these are not to be messed with.
-class ItemIdKeys
-{
-  public:
-    static std::string ITEM_ID_BRANCH;
-    static std::string ITEM_ID_ROCK;
-    static std::string ITEM_ID_KINGFLOWER;
-    static std::string ITEM_ID_FIDDLEHEAD_GREEN;
-    static std::string ITEM_ID_FERN;
-    static std::string ITEM_ID_WILDFLOWER_1;
-    static std::string ITEM_ID_WILDFLOWER_2;
-    static std::string ITEM_ID_WILDFLOWER_3;
-    static std::string ITEM_ID_WILDFLOWER_4;
-    static std::string ITEM_ID_WILDFLOWER_5;
-    static std::string ITEM_ID_WILDFLOWER_6;
-    static std::string ITEM_ID_VEGETABLE_1;
-    static std::string ITEM_ID_VEGETABLE_2;
-    static std::string ITEM_ID_VEGETABLE_3;
-    static std::string ITEM_ID_VEGETABLE_4;
-    static std::string ITEM_ID_VEGETABLE_5;
-    static std::string ITEM_ID_VEGETABLE_6;
-    
-  protected:
-    ItemIdKeys();
-};
-
 // JCD FIXME Todo: Define full text/abbreviation SIDs for statistics: Strength, Piety, etc.

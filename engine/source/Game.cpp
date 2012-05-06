@@ -91,6 +91,26 @@ const ClassMap& Game::get_classes_ref() const
   return classes;
 }
 
+void Game::set_creatures(const CreatureMap& game_creatures)
+{
+  creatures = game_creatures;
+}
+
+const CreatureMap& Game::get_creatures_ref() const
+{
+  return creatures;
+}
+
+void Game::set_creature_generation_values(const CreatureGenerationValuesMap& game_cgv)
+{
+  creature_generation_values = game_cgv;
+}
+
+const CreatureGenerationValuesMap& Game::get_creature_generation_values_ref() const
+{
+  return creature_generation_values;
+}
+
 void Game::set_items(const ItemMap& game_items)
 {
   items = game_items;
@@ -184,11 +204,11 @@ void Game::go()
   while(keep_playing)
   {
     current_map = get_current_map();
-    vector<CreaturePtr> creatures = current_map->get_creatures();
+    vector<CreaturePtr> map_creatures = current_map->get_creatures();
 
     // FIXME: Right now, I just get the actions of each creature, in order.  This doesn't follow the ultimate
     // model of action costs, etc.
-    for (vector<CreaturePtr>::const_iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+    for (vector<CreaturePtr>::const_iterator c_it = map_creatures.begin(); c_it != map_creatures.end(); c_it++)
     {
       CreaturePtr current_creature = *c_it;
 

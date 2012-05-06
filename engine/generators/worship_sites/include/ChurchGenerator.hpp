@@ -9,7 +9,7 @@
 class ChurchGenerator : public Generator
 {
   public:
-    ChurchGenerator(const std::string& new_deity_id, MapPtr new_base_map);
+    ChurchGenerator(const std::string& new_deity_id, MapPtr new_base_map, const TileType church_type);
 
     virtual MapPtr generate() = 0;
     virtual MapPtr generate(const Dimensions& dim) = 0;

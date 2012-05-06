@@ -7,7 +7,7 @@
 using std::string;
 
 CathedralGenerator::CathedralGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map), start_row(0), start_col(0), church_height(0), church_width(0)
+: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH), start_row(0), start_col(0), church_height(0), church_width(0)
 {
 }
 

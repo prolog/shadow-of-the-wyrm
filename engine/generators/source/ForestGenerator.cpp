@@ -9,14 +9,14 @@
 using namespace std;
 
 ForestGenerator::ForestGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id)
+: Generator(new_map_exit_id, TILE_TYPE_FOREST)
 , PCT_CHANCE_FOREST_STREAM(50)
 , PCT_CHANCE_FOREST_SPRINGS(50)
 {
 }
 
 ForestGenerator::ForestGenerator(const int pct_chance_stream, const int pct_chance_springs)
-: Generator("") 
+: Generator("", TILE_TYPE_FOREST) 
 , PCT_CHANCE_FOREST_STREAM(pct_chance_stream)
 , PCT_CHANCE_FOREST_SPRINGS(pct_chance_springs)
 {

@@ -1,6 +1,7 @@
 #include "XMLConfigurationReader.hpp"
-#include <iostream>
+#include <utility>
 #include <vector>
+#include "CreatureGenerationValues.hpp"
 #include "DisplayTile.hpp"
 
 using namespace std;
@@ -23,6 +24,13 @@ ClassMap XMLConfigurationReader::get_classes()
   XMLNode classes_node = XMLUtils::get_next_element_by_local_name(root, "Classes");
   ClassMap classes = classes_reader.get_classes(classes_node);
   return classes;
+}
+
+pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creatures()
+{
+  XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(root, "Creatures");
+  pair<CreatureMap, CreatureGenerationValuesMap> creatures = creatures_reader.get_creatures(creatures_node);
+  return creatures;
 }
 
 ItemMap XMLConfigurationReader::get_items()

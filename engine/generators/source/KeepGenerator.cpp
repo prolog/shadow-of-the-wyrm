@@ -6,7 +6,7 @@
 using std::string;
 
 KeepGenerator::KeepGenerator(MapPtr new_base_map, const int chance_decay)
-: Generator(new_base_map->get_map_exit_id())
+: Generator(new_base_map->get_map_exit_id(), TILE_TYPE_KEEP)
 , base_map(new_base_map)
 , PCT_CHANCE_DECAY(chance_decay)
 {

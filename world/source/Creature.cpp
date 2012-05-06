@@ -38,7 +38,8 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
 
   if (player)
   {
-    // Players always use the PlayerDecisionStrategy class.
+    // Players always use the PlayerDecisionStrategy class so that keyboard input
+    // can be used.
     decision_strategy = DecisionStrategyPtr(new PlayerDecisionStrategy(controller));
 
     // Players are always @s.
@@ -59,6 +60,31 @@ void Creature::set_name(const string& new_name)
 string Creature::get_name() const
 {
   return name;
+}
+
+bool Creature::has_name() const
+{
+  return (!name.empty());
+}
+
+void Creature::set_short_description_sid(const string& new_short_description_sid)
+{
+  short_description_sid = new_short_description_sid;
+}
+
+string Creature::get_short_description_sid() const
+{
+  return short_description_sid;
+}
+
+void Creature::set_description_sid(const string& new_description_sid)
+{
+  description_sid = new_description_sid;
+}
+
+string Creature::get_description_sid() const
+{
+  return description_sid;
 }
 
 void Creature::set_sex(const CreatureSex new_sex)

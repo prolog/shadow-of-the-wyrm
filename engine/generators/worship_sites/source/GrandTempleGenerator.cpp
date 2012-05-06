@@ -8,7 +8,7 @@
 using std::string;
 
 GrandTempleGenerator::GrandTempleGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map),
+: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_TEMPLE),
 temple_width(0), temple_height(0), temple_start_row(0), temple_start_col(0), centre_row(0), centre_col(0)
 {
 }

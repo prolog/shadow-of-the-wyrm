@@ -10,7 +10,7 @@ using std::pair;
 using std::make_pair;
 
 BaseSettlementGenerator::BaseSettlementGenerator(MapPtr new_base_map)
-: Generator(new_base_map->get_map_exit_id()),
+: Generator(new_base_map->get_map_exit_id(), TILE_TYPE_VILLAGE),
 base_map(new_base_map), growth_rate(100)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)
@@ -22,7 +22,7 @@ base_map(new_base_map), growth_rate(100)
 }
 
 BaseSettlementGenerator::BaseSettlementGenerator(MapPtr new_base_map, const int new_growth_rate)
-: Generator(new_base_map->get_map_exit_id()),
+: Generator(new_base_map->get_map_exit_id(), TILE_TYPE_VILLAGE),
 base_map(new_base_map), growth_rate(new_growth_rate)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)

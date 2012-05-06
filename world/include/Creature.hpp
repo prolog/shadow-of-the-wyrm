@@ -32,6 +32,15 @@ class Creature
     // Set/Get basic vitals
     void set_name(const std::string& new_name);
     std::string get_name() const;
+    bool has_name() const;
+    
+    // Used for display information and messages, particularly when no name
+    // is present.
+    void set_short_description_sid(const std::string& new_short_description_sid);
+    std::string get_short_description_sid() const;
+    
+    void set_description_sid(const std::string& new_description_sid);
+    std::string get_description_sid() const;
 
     void set_sex(const CreatureSex new_sex);
     CreatureSex get_sex() const;
@@ -162,6 +171,9 @@ class Creature
     CreatureSize size;
     EyeColour eye_colour;
     HairColour hair_colour;
+    
+    std::string short_description_sid;
+    std::string description_sid;
 
     // Race and class.  Maybe make this an ID instead?
     std::string race_id;
@@ -224,3 +236,4 @@ class Creature
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;
+typedef std::map<std::string, CreaturePtr> CreatureMap;
