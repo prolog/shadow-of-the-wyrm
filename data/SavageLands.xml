@@ -1892,7 +1892,17 @@
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>3</NumSides>
+				</HP>
 			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>5</Type>
+			</Damage>
 		</Creature>
 	</Creatures>
 	<Tiles>
@@ -2135,6 +2145,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1004</Skill>
+				<Difficulty>40</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
@@ -2149,6 +2160,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<Skill>1003</Skill>
+				<Difficulty>50</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
@@ -2165,6 +2177,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>4</Material>
 				<Skill>2007</Skill>
+				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>2</NumSides>
@@ -2185,6 +2198,7 @@
 					<Colour>8</Colour>
 				</TextDetails>
 				<Skill>2006</Skill>
+				<Difficulty>50</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>

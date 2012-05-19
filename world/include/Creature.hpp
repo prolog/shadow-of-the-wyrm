@@ -5,6 +5,7 @@
 #include "Colours.hpp"
 #include "Controller.hpp"
 #include "CreatureFeatures.hpp"
+#include "Damage.hpp"
 #include "DecisionStrategy.hpp"
 #include "Equipment.hpp"
 #include "Inventory.hpp"
@@ -111,9 +112,13 @@ class Creature
     void set_skills(const Skills& new_skills);
     Skills& get_skills();
     
+    void set_base_damage(const Damage& new_base_damage);
+    Damage get_base_damage() const;
+    
     Equipment& get_equipment();
     Inventory& get_inventory();
     
+    // JCD FIXME: Should these be items?
     void set_ivory_pieces(const uint new_ivory_pieces);
     uint get_ivory_pieces() const;
     
@@ -196,6 +201,9 @@ class Creature
     // Not shown directly to the user - this is a hidden statistic that ranks the creature's standing with
     // his or her deity.
     Statistic piety;
+    
+    // The creature's base damage.  Defaults to 1d2 of DAMAGE_TYPE_POUND.
+    Damage damage;
     
     // The creature's worn items.
     Equipment equipment;

@@ -3,6 +3,7 @@
 #include <set>
 #include <string>
 #include "common.hpp"
+#include "Dice.hpp"
 #include "RarityTypes.hpp"
 #include "tiles.hpp"
 
@@ -19,12 +20,16 @@ class CreatureGenerationValues
     void clear_allowable_terrain_types();
     void set_allowable_terrain_types(const std::set<TileType>& new_allowable_terrain_types);
     std::set<TileType> get_allowable_terrain_types() const;
+    bool is_terrain_type_allowed(const TileType terrain_type) const;
 
     void set_danger_level(const uint new_danger_level);
     uint get_danger_level() const;
     
     void set_rarity(const Rarity new_rarity);
     Rarity get_rarity() const;
+    
+    void set_initial_hit_points(const Dice& new_initial_hit_points);
+    Dice get_initial_hit_points() const;
 
   protected:
     // The terrain types in which the creature can be generated
@@ -36,6 +41,10 @@ class CreatureGenerationValues
 
     // The more rare a creature is, the less chance of it getting generated in a given spawn.
     Rarity rarity;
+    
+    // A range used to randomly generate a creature's hit points every time an instance
+    // is created from the template.
+    Dice initial_hit_points;
 };
 
 typedef std::map<std::string, CreatureGenerationValues> CreatureGenerationValuesMap;

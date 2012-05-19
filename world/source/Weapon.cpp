@@ -2,7 +2,7 @@
 
 // WEAPON
 Weapon::Weapon()
-: base_to_hit(0), trained_skill(SKILL_MELEE_AXES)
+: difficulty(0), trained_skill(SKILL_MELEE_AXES)
 {
   type = ITEM_TYPE_WEAPON;
   symbol = ')';
@@ -13,14 +13,14 @@ ItemType Weapon::get_type() const
   return ITEM_TYPE_WEAPON;
 }
 
-void Weapon::set_base_to_hit(const int new_base_to_hit)
+void Weapon::set_difficulty(const int new_difficulty)
 {
-  base_to_hit = new_base_to_hit;
+  difficulty = new_difficulty;
 }
 
-int Weapon::get_base_to_hit() const
+int Weapon::get_difficulty() const
 {
-  return base_to_hit;
+  return difficulty;
 }
 
 void Weapon::set_damage(const Damage& new_damage)

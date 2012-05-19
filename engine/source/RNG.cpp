@@ -1,5 +1,6 @@
 #include <ctime>
 #include <algorithm>
+#include "Dice.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -34,9 +35,19 @@ bool RNG::initialize_if_necessary()
 /*!
  *********************************************************************
 
-	D&D-style dice: roll XdY+Z.
+	D&D-style dice: roll XdY+Z, either by providing a Dice object, or
+	the dice values directly.
 
  *********************************************************************/
+int RNG::dice(const Dice& dice)
+{
+  int num_dice  = dice.get_num_dice();
+  int num_sides = dice.get_dice_sides();
+  int modifier  = dice.get_modifier();
+  
+  return RNG::dice(num_dice, num_sides, modifier);
+}
+
 int RNG::dice
 (
   int num_dice

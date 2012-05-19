@@ -10,7 +10,8 @@ Resistance::Resistance()
 {
   type = DAMAGE_TYPE_NULL;
   name_sid = "";
-  value = 0.0;
+  // By default, the multiplier should be 1.
+  value = 1.0;
 }
 
 Resistance::Resistance(const DamageType dt, const string& name, const double val)

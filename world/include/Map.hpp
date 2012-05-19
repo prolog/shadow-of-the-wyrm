@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
-#include <vector>
 #include <map>
+#include <vector>
 #include "common.hpp"
 #include "Dimensions.hpp"
 #include "Tile.hpp"
@@ -28,6 +28,7 @@ class Map
 		// This allows for quicker lookup.
 		CreaturePtr get_creature(const uint idx_in_creature_list);
 		std::vector<CreaturePtr> get_creatures();
+		void remove_creature(const std::string& creature_id);
 		// Other get_creature... fns here.
 		// Other remove_creature... fns here.
 

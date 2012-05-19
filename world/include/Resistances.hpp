@@ -14,9 +14,7 @@ inline DamageType operator++(DamageType &dt, int)
   return dt = DamageType(dt+1);
 }
 
-#define DEFAULT_RESISTANCE_VALUE 0.0;
-
-// JCD FIXME: Make Resistance a class similar to Skill: contains its type, value, and a name sid.
+#define DEFAULT_RESISTANCE_VALUE 1.0;
 class Resistance
 {
   public:
@@ -137,7 +135,7 @@ class Resistances
     double get_resistance_value(const DamageType type) const;
 
     std::string str() const;
-
+    
   protected:
     void default_resistances();
 

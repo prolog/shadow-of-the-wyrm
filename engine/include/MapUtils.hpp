@@ -33,6 +33,10 @@ class MapUtils
     static bool is_creature_present(TilePtr tile);
     
     static float tile_distance(Coordinate c1, Coordinate c2);
+    
+    static bool is_tile_available_for_creature(TilePtr tile);
+    
+    static bool tile_type_permits_creature_or_object(const TileType tile_type);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

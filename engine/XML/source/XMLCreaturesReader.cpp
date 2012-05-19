@@ -1,6 +1,7 @@
 #include <vector>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "CombatConstants.hpp"
 #include "CreatureGenerationValues.hpp"
 #include "XMLCreaturesReader.hpp"
 #include "DecisionStrategyFactory.hpp"
@@ -92,6 +93,20 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     {
       cgv = parse_creature_generation_values(creature_generation_node);
     }
+    
+    uint level = XMLUtils::get_child_node_int_value(creature_node, "Level");
+    creature->set_level(level);
+    
+    // Set the creature's base damage - this is the damage dealt if a weapon is not used.
+    // If a weapon is to be used (for humanoid-types), consider leaving this empty in the
+    // configuration XML.
+    XMLNode base_damage_node = XMLUtils::get_next_element_by_local_name(creature_node, "Damage");
+    Damage base_damage;
+    // The base damage type may or may not be overridden.  For most creatures (goblins, humans, etc.)
+    // it will be POUND from punching/etc.
+    base_damage.set_damage_type(CombatConstants::DEFAULT_UNARMED_DAMAGE_TYPE);
+    parse_damage(base_damage, base_damage_node);
+    creature->set_base_damage(base_damage);
   }
   
   creature_data.second = cgv;
@@ -127,6 +142,13 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
     // Creature rarity
     Rarity rarity = static_cast<Rarity>(XMLUtils::get_child_node_int_value(creature_generation_values_node, "Rarity"));
     cgv.set_rarity(rarity);
+    
+    // Initial hit point; dice are used to represent a range of possible values.  A random value will be
+    // generated when the creature is created, based on the Dice provided.
+    XMLNode dice_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "HP");
+    Dice dice;
+    parse_dice(dice, dice_node);
+    cgv.set_initial_hit_points(dice);
   }
   
   return cgv;

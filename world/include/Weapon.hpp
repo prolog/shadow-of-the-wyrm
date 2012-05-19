@@ -12,8 +12,8 @@ class Weapon : public Wearable
     virtual ItemType get_type() const;
     virtual WeaponStyle get_style() const = 0;
     
-    virtual void set_base_to_hit(const int new_base_to_hit);
-    virtual int get_base_to_hit() const;
+    virtual void set_difficulty(const int new_difficulty);
+    virtual int get_difficulty() const;
     
     virtual void set_damage(const Damage& new_damage);
     virtual Damage get_damage() const;
@@ -22,7 +22,7 @@ class Weapon : public Wearable
     SkillType get_trained_skill() const;
     
   protected:
-    int base_to_hit;
+    int difficulty;
     Damage damage;
     SkillType trained_skill;
 };

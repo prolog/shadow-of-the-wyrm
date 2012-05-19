@@ -68,6 +68,19 @@ vector<CreaturePtr> Map::get_creatures()
   return creatures;
 }
 
+void Map::remove_creature(const string& creature_id)
+{
+  for (vector<CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+  {
+    CreaturePtr creature = *c_it;
+    if (creature->get_id() == creature_id)
+    {
+      creatures.erase(c_it);
+      return;
+    }
+  }
+}
+
 bool Map::insert(int row, int col, TilePtr tile)
 {
   string key = make_key(row, col);

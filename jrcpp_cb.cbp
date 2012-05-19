@@ -157,6 +157,7 @@
 		<Unit filename="engine\XML\include\XMLPlantReader.hpp" />
 		<Unit filename="engine\XML\include\XMLPotionReader.hpp" />
 		<Unit filename="engine\XML\include\XMLRacesReader.hpp" />
+		<Unit filename="engine\XML\include\XMLReader.hpp" />
 		<Unit filename="engine\XML\include\XMLResistancesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLRingReader.hpp" />
 		<Unit filename="engine\XML\include\XMLScrollReader.hpp" />
@@ -182,6 +183,7 @@
 		<Unit filename="engine\XML\source\XMLPlantReader.cpp" />
 		<Unit filename="engine\XML\source\XMLPotionReader.cpp" />
 		<Unit filename="engine\XML\source\XMLRacesReader.cpp" />
+		<Unit filename="engine\XML\source\XMLReader.cpp" />
 		<Unit filename="engine\XML\source\XMLResistancesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLRingReader.cpp" />
 		<Unit filename="engine\XML\source\XMLScrollReader.cpp" />
@@ -192,28 +194,44 @@
 		<Unit filename="engine\XML\source\XMLWeaponsReaders.cpp" />
 		<Unit filename="engine\XML\source\XMLWearableReader.cpp" />
 		<Unit filename="engine\calculators\include\ArcanaPointsCalculator.hpp" />
+		<Unit filename="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
+		<Unit filename="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
 		<Unit filename="engine\calculators\include\CreatureCalculator.hpp" />
+		<Unit filename="engine\calculators\include\DamageCalculator.hpp" />
+		<Unit filename="engine\calculators\include\DamageCalculatorFactory.hpp" />
 		<Unit filename="engine\calculators\include\EvadeCalculator.hpp" />
 		<Unit filename="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\HitPointsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\MagicToHitCalculator.hpp" />
+		<Unit filename="engine\calculators\include\MagicalCombatTargetNumberCalculator.hpp" />
+		<Unit filename="engine\calculators\include\MagicalDamageCalculator.hpp" />
+		<Unit filename="engine\calculators\include\MeleeAndRangedCombatTargetNumberCalculator.hpp" />
+		<Unit filename="engine\calculators\include\PhysicalDamageCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ResistancesCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SoakCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ToHitCalculatorFactory.hpp" />
+		<Unit filename="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
 		<Unit filename="engine\calculators\source\ArcanaPointsCalculator.cpp" />
+		<Unit filename="engine\calculators\source\CombatTargetNumberCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\CreatureCalculator.cpp" />
+		<Unit filename="engine\calculators\source\DamageCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\EvadeCalculator.cpp" />
 		<Unit filename="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
 		<Unit filename="engine\calculators\source\HitPointsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp" />
 		<Unit filename="engine\calculators\source\MagicToHitCalculator.cpp" />
+		<Unit filename="engine\calculators\source\MagicalCombatTargetNumberCalculator.cpp" />
+		<Unit filename="engine\calculators\source\MagicalDamageCalculator.cpp" />
+		<Unit filename="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp" />
+		<Unit filename="engine\calculators\source\PhysicalDamageCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SoakCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ToHitCalculatorFactory.cpp" />
+		<Unit filename="engine\calculators\source\WeaponDifficultyCalculator.cpp" />
 		<Unit filename="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -239,6 +257,16 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="engine\combat\include\AttackTypes.hpp" />
+		<Unit filename="engine\combat\include\CombatConstants.hpp" />
+		<Unit filename="engine\combat\include\CombatManager.hpp" />
+		<Unit filename="engine\combat\include\WeaponManager.hpp" />
+		<Unit filename="engine\combat\source\CombatConstants.cpp" />
+		<Unit filename="engine\combat\source\CombatManager.cpp" />
+		<Unit filename="engine\combat\source\WeaponManager.cpp" />
+		<Unit filename="engine\combat\source\unit_tests\CombatManager_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\commands\equipment\include\EquipmentCommandFactory.hpp" />
@@ -414,6 +442,7 @@
 		<Unit filename="engine\generators\worship_sites\source\SnakingTempleGenerator.cpp" />
 		<Unit filename="engine\generators\worship_sites\source\WorshipSiteGenerator.cpp" />
 		<Unit filename="engine\include\ActionManager.hpp" />
+		<Unit filename="engine\include\CreationUtils.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\CreatureGenerationManager.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
@@ -464,6 +493,7 @@
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
 		<Unit filename="engine\source\ActionManager.cpp" />
+		<Unit filename="engine\source\CreationUtils.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
 		<Unit filename="engine\source\CreatureGenerationManager.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
@@ -538,6 +568,7 @@
 		<Unit filename="world\include\CreatureGenerationValues.hpp" />
 		<Unit filename="world\include\Damage.hpp" />
 		<Unit filename="world\include\DamageTypes.hpp" />
+		<Unit filename="world\include\Dice.hpp" />
 		<Unit filename="world\include\Equipment.hpp" />
 		<Unit filename="world\include\EquipmentTypes.hpp" />
 		<Unit filename="world\include\Food.hpp" />
@@ -609,6 +640,7 @@
 		<Unit filename="world\source\Creature.cpp" />
 		<Unit filename="world\source\CreatureGenerationValues.cpp" />
 		<Unit filename="world\source\Damage.cpp" />
+		<Unit filename="world\source\Dice.cpp" />
 		<Unit filename="world\source\Equipment.cpp" />
 		<Unit filename="world\source\Food.cpp" />
 		<Unit filename="world\source\Inventory.cpp" />
