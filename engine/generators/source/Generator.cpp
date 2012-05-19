@@ -1,8 +1,11 @@
 #include "CreatureGenerationManager.hpp"
+#include "CreationUtils.hpp"
 #include "ItemGenerationManager.hpp"
 #include "TileGenerator.hpp"
 #include "Generator.hpp"
 #include "Map.hpp"
+#include "MapUtils.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -11,27 +14,27 @@ Generator::Generator(const string& new_map_exit_id, const TileType new_map_terra
 {
 }
 
-MapPtr Generator::generate_and_initialize()
+MapPtr Generator::generate_and_initialize(const uint danger_level)
 {
   MapPtr map = generate();
-  initialize(map);
+  initialize(map, danger_level);
 
   return map;
 }
 
-MapPtr Generator::generate_and_initialize(const Dimensions& dim)
+MapPtr Generator::generate_and_initialize(const uint danger_level, const Dimensions& dim)
 {
   MapPtr map = generate(dim);
-  initialize(map);
+  initialize(map, danger_level);
   
   return map;
 }
 
-void Generator::initialize(MapPtr map)
+void Generator::initialize(MapPtr map, const uint danger_level)
 {
   map->set_terrain_type(map_terrain_type);
-  generate_creatures(map);
-  generate_initial_items(map);
+  generate_creatures(map, danger_level);
+  generate_initial_items(map, danger_level);
 }
 
 MapPtr Generator::generate()
@@ -70,29 +73,52 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
 }
 
 // Generate the creatures.  Returns true if creatures were created, false otherwise.
-bool Generator::generate_creatures(MapPtr map)
+bool Generator::generate_creatures(MapPtr map, const uint danger_level)
 {
+  Dimensions dim = map->size();
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+  
   CreatureGenerationManager cgm;
-  return false;
+
+  Rarity rarity = CreationUtils::generate_rarity();
+  
+  CreaturePtr generated_creature = cgm.generate_creature(map_terrain_type, danger_level, rarity);
+  
+  if (generated_creature)
+  {
+    int creature_row = RNG::range(0, rows-1);
+    int creature_col = RNG::range(0, cols-1);
+    
+    // Check to see if the spot is empty, and if a creature can be added there.
+    TilePtr tile = map->at(creature_row, creature_col);
+
+    if (MapUtils::is_tile_available_for_creature(tile))
+    {
+      Coordinate coords(creature_row, creature_col);
+      tile->set_creature(generated_creature);
+      map->add_or_update_location(generated_creature->get_id(), coords);
+    }
+  }
+
+  return true;
 }
 
-bool Generator::update_creatures(MapPtr map)
+bool Generator::update_creatures(MapPtr map, const uint danger_level)
 {
-  CreatureGenerationManager cgm;
+  CreatureGenerationManager cgm;  
   return false;
 }
 
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).
-bool Generator::generate_initial_items(MapPtr map)
+bool Generator::generate_initial_items(MapPtr map, const uint danger_level)
 {
-  ItemGenerationManager igm;
   return false;
 }
 
-bool Generator::update_items(MapPtr map)
+bool Generator::update_items(MapPtr map, const uint danger_level)
 {
-  ItemGenerationManager igm;
   return false;
 }

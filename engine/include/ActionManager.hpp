@@ -34,6 +34,7 @@ class ActionManager
     ItemPtr inventory(CreaturePtr creature, Inventory& inv, const bool inventory_is_read_only);
     
     // Unlike pick up/drop, handle item has no checks.
+    bool remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
     void wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
     bool handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
 

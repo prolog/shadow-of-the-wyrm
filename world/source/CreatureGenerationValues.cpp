@@ -31,6 +31,11 @@ set<TileType> CreatureGenerationValues::get_allowable_terrain_types() const
   return allowable_terrain_types;
 }
 
+bool CreatureGenerationValues::is_terrain_type_allowed(const TileType terrain_type) const
+{
+  return (allowable_terrain_types.find(terrain_type) != allowable_terrain_types.end());
+}
+
 void CreatureGenerationValues::set_danger_level(const uint new_danger_level)
 {
   danger_level = new_danger_level;
@@ -49,4 +54,14 @@ void CreatureGenerationValues::set_rarity(const Rarity new_rarity)
 Rarity CreatureGenerationValues::get_rarity() const
 {
   return rarity;
+}
+
+void CreatureGenerationValues::set_initial_hit_points(const Dice& new_initial_hit_points)
+{
+  initial_hit_points = new_initial_hit_points;
+}
+
+Dice CreatureGenerationValues::get_initial_hit_points() const
+{
+  return initial_hit_points;
 }

@@ -26,6 +26,17 @@ uint Weight::get_weight() const
   return ounces;
 }
 
+double Weight::get_weight_in_lbs() const
+{
+  double weight_in_lbs = ounces / 16;
+  return weight_in_lbs;
+}
+
+uint Weight::get_weight_in_oz_given_lbs(const uint pounds)
+{
+  return pounds * 16;
+}
+
 std::string Weight::str() const
 {
   std::ostringstream weight;

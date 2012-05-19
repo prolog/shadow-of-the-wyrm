@@ -106,8 +106,10 @@ bool ActionManager::descend(CreaturePtr creature)
   return movement_manager.descend(creature);
 }
 
-// Wear or remove a particular item from the worn equipment by adding/removing the item from a slot.
-void ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
+// Remove an item from a particular slot.
+// Return true if there was an item in the slot.
+// Return false if there was no item in the slot.
+bool ActionManager::remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
 {
   if (creature)
   {
@@ -116,10 +118,21 @@ void ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWor
     if (item_in_slot)
     {
       item_manager.remove(creature, worn_location);
+      return true;
     }
-    else
+  }
+  
+  return false;
+}
+
+// Wear or remove a particular item from the worn equipment by adding/removing the item from a slot.
+void ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
+{
+  if (creature)
+  {
+    if (!remove_item(creature, worn_location)) // Wear an item - select something.
     {
-      item_in_slot = inventory(creature, creature->get_inventory(), false);
+      ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), false);
       
       // This is null if no item was selected.
       if (item_in_slot)

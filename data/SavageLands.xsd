@@ -159,6 +159,10 @@
 			<xs:element ref="tns:AllowableTerrainTypes"/>
 			<xs:element name="DangerLevel" type="xs:unsignedInt"/>
 			<xs:element name="Rarity" type="tns:Rarity"/>
+			<!-- HP and AP are random, and get generated for each monster created. -->
+			<xs:element name="HP" type="tns:Dice"/>
+			<!-- Most creatures don't use spells, so this is optional. -->
+			<xs:element name="AP" type="tns:Dice" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -246,6 +250,8 @@
 			<xs:element name="DecisionStrategy" type="xs:string" minOccurs="0"/>
 			<xs:element name="Text" type="tns:TextDetails"/>
 			<xs:element ref="tns:CreatureGeneration"/>
+			<xs:element name="Level" type="tns:PrimaryStatistic"/>
+			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
@@ -448,6 +454,22 @@
 	</xs:complexType>
 </xs:element>
 <!-- COMPLEX TYPES -->
+<xs:complexType name="Dice">
+	<xs:sequence>
+		<xs:element name="NumDice" type="xs:int"/>
+		<xs:element name="NumSides" type="xs:int"/>
+		<xs:element name="Modifier" type="xs:int" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Damage">
+	<xs:complexContent>
+		<xs:extension base="tns:Dice">
+			<xs:sequence>
+				<xs:element name="Type" type="tns:DamageType"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
 <xs:complexType name="Weapons">
 	<xs:sequence>
 		<xs:element name="Weapon" type="tns:Weapon" maxOccurs="unbounded"/>
@@ -506,16 +528,8 @@
 		<xs:extension base="tns:Wearable">
 			<xs:sequence>
 				<xs:element name="Skill" type="tns:TrainedWeaponSkill"/>
-				<xs:element name="Damage">
-					<xs:complexType>
-						<xs:sequence>
-							<xs:element name="NumDice" type="xs:int"/>
-							<xs:element name="NumSides" type="xs:int"/>
-							<xs:element name="Modifier" type="xs:int" minOccurs="0"/>
-							<xs:element name="Type" type="tns:DamageType"/>
-						</xs:sequence>
-					</xs:complexType>
-				</xs:element>
+				<xs:element name="Difficulty" type="xs:int"/>
+				<xs:element name="Damage" type="tns:Damage"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>

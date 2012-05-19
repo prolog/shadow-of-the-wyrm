@@ -73,6 +73,27 @@ float MapUtils::tile_distance(Coordinate c1, Coordinate c2)
   return max(abs(c1.second - c2.second), abs(c1.first - c2.first));
 }
 
+// Check to see if a tile is available for a creature by checking:
+// - if a creature is present
+// - if a blocking feature is present
+// - if the tile type permits movement
+bool MapUtils::is_tile_available_for_creature(TilePtr tile)
+{
+  return (!is_creature_present(tile) && !is_blocking_feature_present(tile) && tile_type_permits_creature_or_object(tile->get_tile_type()));
+}
+
+// Check to see if the tile is available for creature or object generation
+bool MapUtils::tile_type_permits_creature_or_object(const TileType tile_type)
+{
+  // There may be other impassable types in future, but for now, just _ROCK.
+  if (tile_type == TILE_TYPE_ROCK)
+  {
+    return false;
+  }
+  
+  return true;
+}
+
 // Add the tile and its connected tiles to the Component.
 void MapUtils::add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const set<TileType>& exclusion_tiles, Component* component)
 {
@@ -197,7 +218,8 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
 
 TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature)
 {
-  Coordinate creature_location = map->get_location(creature->get_id());
+  string creature_id = creature->get_id();
+  Coordinate creature_location = map->get_location(creature_id);
   TilePtr creatures_tile = map->at(creature_location.first, creature_location.second);
   
   return creatures_tile;

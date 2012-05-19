@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -91,6 +92,15 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
           movement_success = false;
           
           // Do the necessary checks here to determine whether to attack...
+          CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
+          
+          // Sanity check
+          // Also, JCD FIXME: Move this into a separate class.  CombatManager?
+          if (adjacent_creature)
+          {
+            CombatManager cm;
+            movement_success = cm.attack(creature, adjacent_creature);
+          }
         }
         else
         {
@@ -247,7 +257,8 @@ bool MovementManager::descend(CreaturePtr creature)
               if (generator)
               {
                 // - Generate the map.
-                MapPtr new_map = generator->generate_and_initialize();
+                uint danger_level = creature->get_level().get_current();
+                MapPtr new_map = generator->generate_and_initialize(danger_level);
                 
                 // - Set the map's MapExitPtr to point to the previous map.
                 //   But only if it's an overworld map.

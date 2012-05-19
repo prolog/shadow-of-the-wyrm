@@ -19,6 +19,9 @@ Creature::Creature()
 {
   set_evade(0);
   set_soak (0);
+  
+  Damage dam(1, 2, 0, DAMAGE_TYPE_POUND);
+  set_base_damage(dam);
 }
 
 void Creature::set_id(const string& new_id)
@@ -290,6 +293,16 @@ void Creature::set_skills(const Skills& new_skills)
 Skills& Creature::get_skills()
 {
   return skills;
+}
+
+void Creature::set_base_damage(const Damage& new_base_damage)
+{
+  damage = new_base_damage;
+}
+
+Damage Creature::get_base_damage() const
+{
+  return damage;
 }
 
 Equipment& Creature::get_equipment()

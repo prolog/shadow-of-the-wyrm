@@ -233,10 +233,12 @@ void Game::go()
             // Clear the stored messages if we're about to receive the player's action
             if (current_creature->get_is_player())
             {
-              manager->clear_if_necessary();            
+              // JCD FIXME: Update MessageManager::send so it queues nicely, and offers -- more -- when appropriate.
+              // JCD FIXME: Right now, it just wipes stuff.
+              manager->send();
             }
 
-            advance = CommandProcessor::process(current_creature, command, display);            
+            advance = CommandProcessor::process(current_creature, command, display);
           }
           
           // Update the current creature

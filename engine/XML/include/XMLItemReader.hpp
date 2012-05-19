@@ -1,9 +1,10 @@
 #pragma once
 #include "Item.hpp"
 #include "XMLDataStructures.hpp"
+#include "XMLReader.hpp"
 
 // Class for reading in details common to all items.
-class XMLItemReader
+class XMLItemReader : public XMLReader
 {
   public:
     XMLItemReader();

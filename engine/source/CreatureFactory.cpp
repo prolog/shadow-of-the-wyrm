@@ -19,11 +19,38 @@ using boost::make_shared;
 
 CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
 {
-  CreaturePtr totally_bogus_default_creature_null_null_null;
-
-  // Creature IDs aren't supported yet.
-
-  return totally_bogus_default_creature_null_null_null;
+  CreaturePtr creature;
+  
+  Game* game = Game::instance();
+  
+  if (game)
+  {
+    CreatureGenerationValuesMap cgv_map = game->get_creature_generation_values_ref();
+    CreatureMap creature_map = game->get_creatures_ref();
+    
+    CreatureMap::iterator c_it = creature_map.find(creature_id);
+    CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
+    
+    if (c_it != creature_map.end() && cgv_it != cgv_map.end())
+    {
+      CreaturePtr creature_template = c_it->second;
+      CreatureGenerationValues cgv  = cgv_it->second;
+      
+      creature = make_shared<Creature>(*creature_template);
+      set_default_resistances(creature);
+      
+      // Set HP to a randomly generated value in the initial range.
+      Dice initial_hp_range = cgv.get_initial_hit_points();
+      Statistic hit_points(RNG::dice(initial_hp_range));
+      creature->set_hit_points(hit_points);
+      
+      initialize(creature);
+      
+      // JCD FIXME: Apply the values from the CreatureGenerationValues.
+    }
+  }
+  
+  return creature;
 }
 
 CreaturePtr CreatureFactory::create_by_race_and_class
@@ -37,11 +64,6 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 {
   Creature creature;
 
-  // Generate a unique identifier for this creature.
-  boost::uuids::uuid id = boost::uuids::random_generator()();
-  std::string id_s = Uuid::to_string(id);
-  creature.set_id(id_s);
-  
   // Set a null controller - this will be overridden later if the creature is a player, or has some
   // special circumstances.
   ControllerPtr null_controller = make_shared<NullKeyboardController>();
@@ -83,10 +105,13 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   }
 
   CreaturePtr creaturep = CreaturePtr(new Creature(creature));
-  
+
   // Now that everything has been set, set any calculated values.
   if (creaturep)
   {
+    // Set additional book-keeping values
+    initialize(creaturep);
+    
     // Set calculated statistics
     CreatureCalculator::update_calculated_values(creaturep);
   }
@@ -165,6 +190,12 @@ Creature CreatureFactory::set_age(const Creature& current_creature, const AgeInf
   return creature;
 }
 
+void CreatureFactory::set_default_resistances(CreaturePtr current_creature)
+{
+  Resistances resists = ResistancesCalculator::default_resistances();  
+  current_creature->set_resistances(resists);
+}
+
 Creature CreatureFactory::set_initial_resistances(const Creature& current_creature, RacePtr race, ClassPtr char_class)
 {
   Creature creature = current_creature;
@@ -202,6 +233,14 @@ EyeColour CreatureFactory::get_random_eye_colour()
   int max = EYE_COLOUR_GREY;
   
   return static_cast<EyeColour>(RNG::range(min, max));
+}
+
+void CreatureFactory::initialize(CreaturePtr creature)
+{
+  // Generate a unique identifier for this creature.
+  boost::uuids::uuid id = boost::uuids::random_generator()();
+  std::string id_s = Uuid::to_string(id);
+  creature->set_id(id_s);
 }
 
 #ifdef UNIT_TESTS

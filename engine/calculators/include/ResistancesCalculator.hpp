@@ -10,6 +10,7 @@ class Resistances;
 class ResistancesCalculator
 {
   public:
+    static Resistances default_resistances();
     static Resistances calculate_resistances(const Creature& creature, RacePtr race, ClassPtr char_class);
 
   protected:

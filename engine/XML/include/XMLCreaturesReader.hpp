@@ -3,11 +3,11 @@
 #include "Creature.hpp"
 #include "CreatureGenerationValues.hpp"
 #include "XMLDataStructures.hpp"
+#include "XMLReader.hpp"
 
-class XMLCreaturesReader
+class XMLCreaturesReader : public XMLReader
 {
   public:
-    // JCD FIXME: Make this return pair<CreatureMap, CreatureGenerationValuesMap>
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures(const XMLNode& xml_configuration_creatures_node);
 
   protected:

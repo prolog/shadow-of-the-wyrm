@@ -9,6 +9,19 @@ ResistancesCalculator::~ResistancesCalculator()
 {
 }
 
+Resistances ResistancesCalculator::default_resistances()
+{
+  Resistances resists;
+  
+  for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
+  {
+    double value = DEFAULT_RESISTANCE_VALUE;
+    resists.set_resistance_value(dt, value );
+  }
+  
+  return resists;
+}
+
 Resistances ResistancesCalculator::calculate_resistances(const Creature& creature, RacePtr race, ClassPtr cur_class)
 {
   Resistances resists_calculated;
