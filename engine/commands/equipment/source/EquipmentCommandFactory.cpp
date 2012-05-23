@@ -64,3 +64,8 @@ CommandPtr EquipmentCommandFactory::create(const int key, const std::string& com
 
   return command;
 }
+
+CommandFactoryType EquipmentCommandFactory::get_factory_type() const
+{
+  return COMMAND_FACTORY_TYPE_EQUIPMENT;
+}

@@ -1,5 +1,6 @@
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
+#include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "Game.hpp"
 #include "ToHitCalculatorFactory.hpp"
@@ -120,7 +121,7 @@ void CombatManager::deal_damage(CreaturePtr attacked_creature, const int damage_
   {
     // JCD FIXME: Message here.
   }
-  else if (game && map && attacked_creature)
+  else if (map && attacked_creature)
   {
     Statistic hp   = attacked_creature->get_hit_points();
     int current_hp = hp.get_current();
@@ -130,49 +131,9 @@ void CombatManager::deal_damage(CreaturePtr attacked_creature, const int damage_
     
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
     {
-      // Remove the creature from the tile.
-      TilePtr attacked_tile = MapUtils::get_tile_for_creature(map, attacked_creature);
-      attacked_tile->remove_creature();
-      map->remove_creature(attacked_creature->get_id());
-
-      // Remove all equipment.
-      for (int worn_slot = EQUIPMENT_WORN_HEAD; worn_slot < EQUIPMENT_WORN_LAST; worn_slot++)
-      {
-        game->actions.remove_item(attacked_creature, static_cast<EquipmentWornLocation>(worn_slot));
-      }
-
-      // Drop inventory on to the creature's tile.
-      Inventory inv = attacked_creature->get_inventory();
-      Inventory& ground = attacked_tile->get_items();
-      while (!inv.empty())
-      {
-        ItemPtr current_item = inv.at(0);
-        inv.remove(current_item->get_id());
-        ground.add_front(current_item);
-      }
-      
-      bool is_player = attacked_creature->get_is_player();
-      string death_message;
-      
-      if (is_player)
-      {
-        // Display death message with -- more --
-        death_message = TextMessages::get_death_message(attacked_creature->get_name());
-        add_combat_message(death_message);
-        
-        // JCD FIXME: need functionality to add -- more --...
-        
-        // Signal to the game that it is time to quit.
-        game->quit();
-      }
-      else
-      {
-        death_message = CombatTextKeys::get_monster_death_message(StringTable::get(attacked_creature->get_description_sid()));
-        add_combat_message(death_message);
-      }
+      DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacked_creature, map);
+      death_manager->die();      
     }
-    
-    // JCD FIXME handle death here.
   }
 }
 

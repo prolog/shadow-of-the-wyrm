@@ -6,6 +6,18 @@
 #include "EquipmentTypes.hpp"
 #include "tiles.hpp"
 
+// String constants related to the player.
+// Note that these are actual string constants that are not meant to be text keys.
+class PlayerConstants
+{
+  public:
+    static const std::string PLAYER_CREATURE_ID;
+    
+  protected:
+    PlayerConstants();
+    ~PlayerConstants();
+};
+
 // These define all the string keys.
 // Key/value pairs are defined in savagelandstext_lang.ini, where lang=en,fr,ru,kl,etc.
 class TextKeys
@@ -16,6 +28,7 @@ class TextKeys
     static const std::string COPYRIGHT_NOTICE;
     static const std::string DEATH_MESSAGE;
     static const std::string DEFAULT_PLAYER_NAME;
+    static const std::string PLAYER_CREATURE_ID;
     static const std::string SEX;
     static const std::string SELECT_SEX;
     static const std::string SEX_MALE;

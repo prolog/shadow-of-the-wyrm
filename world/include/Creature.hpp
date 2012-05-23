@@ -16,6 +16,9 @@
 #include "Skills.hpp"
 #include "Statistic.hpp"
 
+// Forward declarations.
+class DecisionStrategy;
+
 class Creature
 {
   public:
@@ -155,8 +158,8 @@ class Creature
     Statistic get_level() const;
 
     // Strategy info
-    void set_decision_strategy(const DecisionStrategyPtr strategy);
-    DecisionStrategyPtr get_decision_strategy() const;
+    void set_decision_strategy(const boost::shared_ptr<DecisionStrategy> strategy);
+    boost::shared_ptr<DecisionStrategy> get_decision_strategy() const;
     
     // Religion info
     void set_religion(const Religion& new_religion);
@@ -237,7 +240,7 @@ class Creature
     Statistic level;
 
     // Decision making strategy
-    DecisionStrategyPtr decision_strategy;
+    boost::shared_ptr<DecisionStrategy> decision_strategy;
     
     // Religious data
     Religion religion;

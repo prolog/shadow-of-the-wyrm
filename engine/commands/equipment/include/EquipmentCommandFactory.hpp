@@ -8,4 +8,5 @@ class EquipmentCommandFactory : public CommandFactory
     virtual ~EquipmentCommandFactory();
 
     virtual CommandPtr create(const int key, const std::string& command_name);
+    virtual CommandFactoryType get_factory_type() const;
 };

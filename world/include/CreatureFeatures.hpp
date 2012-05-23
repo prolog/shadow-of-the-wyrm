@@ -33,3 +33,13 @@ enum EyeColour
   EYE_COLOUR_HAZEL = 3,
   EYE_COLOUR_GREY = 4
 };
+
+class CreatureConstants
+{
+  public:
+    static const int DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH;
+  
+  protected:
+    CreatureConstants();
+    ~CreatureConstants();
+};

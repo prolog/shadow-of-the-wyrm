@@ -7,6 +7,10 @@
 #include "Tile.hpp"
 #include "MapExit.hpp"
 
+// Forward declarations.
+class Creature;
+class Tile;
+
 enum MapType
 {
   MAP_TYPE_WORLD = 0
@@ -23,18 +27,22 @@ class Map
 	public:
     Map(const Map& new_map);
 		Map(const Dimensions& new_dimensions);
+		
+		// Functions used when creating a view map - reset the
+		// creatures and locations after copying the map.
+		void reset_creatures_and_locations();
 
 		// These functions work on a list built up from the map itself.
 		// This allows for quicker lookup.
-		CreaturePtr get_creature(const uint idx_in_creature_list);
-		std::vector<CreaturePtr> get_creatures();
+		boost::shared_ptr<Creature> get_creature(const uint idx_in_creature_list);
+		std::vector<boost::shared_ptr<Creature> > get_creatures();
 		void remove_creature(const std::string& creature_id);
 		// Other get_creature... fns here.
 		// Other remove_creature... fns here.
 
-		bool insert(int row, int col, TilePtr tile);
-		TilePtr at(int row, int col);
-		TilePtr at(const Coordinate& c);
+		bool insert(int row, int col, boost::shared_ptr<Tile> tile);
+		boost::shared_ptr<Tile> at(int row, int col);
+		boost::shared_ptr<Tile> at(const Coordinate& c);
 
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
@@ -45,13 +53,13 @@ class Map
 		void set_map_type(const MapType& new_type);
 		MapType get_map_type() const;
 		
-		std::map<std::string, TilePtr > get_tiles() const;
+		std::map<std::string, boost::shared_ptr<Tile> > get_tiles() const;
 
     void clear_locations();
     void add_or_update_location(const std::string& location, const Coordinate& coordinate);
     bool has_location(const std::string& location);
     Coordinate get_location(const std::string& location) const;
-    TilePtr get_tile_at_location(const std::string& location);
+    boost::shared_ptr<Tile> get_tile_at_location(const std::string& location);
     
     void set_map_exit(MapExitPtr new_map_exit);
     MapExitPtr get_map_exit() const;
@@ -65,15 +73,15 @@ class Map
     bool get_permanent() const;
 
 	protected:
-		void create_creatures();
-		
+		void create_creatures();		
 		std::string make_key(const int row, const int col);
+		Coordinate convert_map_key_to_coordinate(const std::string& map_key);
 
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
-    std::vector<CreaturePtr> creatures;
+    std::vector<boost::shared_ptr<Creature> > creatures;
 
-		std::map<std::string, TilePtr > tiles;
+		std::map<std::string, boost::shared_ptr<Tile> > tiles;
 		Dimensions dimensions;
     NamedMapLocations locations;
     TileType terrain_type; // field, forest, village, etc.

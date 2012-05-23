@@ -18,8 +18,9 @@ PlayerDecisionStrategy::PlayerDecisionStrategy(ControllerPtr new_controller)
 
 // The player's decision is easy: just read a command from the keyboard, and then get a CommandPtr
 // based on that keyboard input, the provided KeyboardCommandMapPtr, and the CommandFactoryPtr.
-CommandPtr PlayerDecisionStrategy::get_decision(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands)
+CommandPtr PlayerDecisionStrategy::get_decision(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map)
 {
+  // view_map is ignored - keyboard input is used, instead.
   CommandPtr player_command;
 
   if (command_factory && keyboard_commands)
