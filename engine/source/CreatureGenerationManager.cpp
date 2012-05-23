@@ -16,7 +16,6 @@ CreatureGenerationManager::CreatureGenerationManager()
 CreaturePtr CreatureGenerationManager::generate_creature(const TileType map_terrain_type, const uint danger_level, const Rarity rarity)
 {
   CreaturePtr generated_creature;
-  
   Game* game = Game::instance();
   
   if (game)
@@ -67,6 +66,9 @@ CreaturePtr CreatureGenerationManager::generate_creature(const TileType map_terr
     }
   }
   
+  // JCD FIXME: Later, there should be an algorithm to determine hostility.
+//  generated_creature->get_decision_strategy().add_threat(PlayerConstants::PLAYER_CREATURE_ID);
+    
   return generated_creature;
 }
 

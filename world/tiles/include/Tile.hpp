@@ -2,6 +2,7 @@
 #include <map>
 #include <boost/shared_ptr.hpp>
 #include "tiles.hpp"
+#include "Inventory.hpp"
 #include "Creature.hpp"
 #include "Directions.hpp"
 #include "Feature.hpp"
@@ -10,7 +11,7 @@
 
 typedef std::map<Direction, MapExitPtr> TileExitMap;
 
-class Inventory;
+class Creature;
 
 class Tile
 {
@@ -38,9 +39,9 @@ class Tile
     virtual FeaturePtr get_feature();
 
     virtual bool has_creature() const;
-    virtual void set_creature(const CreaturePtr& new_creature);
+    virtual void set_creature(const boost::shared_ptr<Creature>& new_creature);
     virtual void remove_creature();
-    virtual CreaturePtr get_creature() const;
+    virtual boost::shared_ptr<Creature> get_creature() const;
     
     virtual Inventory& get_items();
 
@@ -63,7 +64,7 @@ class Tile
     TileType tile_subtype;
 
     // Each tile can have at most one creature on it.
-    CreaturePtr creature;
+    boost::shared_ptr<Creature> creature;
     
     // Each tile can have at most one feature on it.
     FeaturePtr feature;

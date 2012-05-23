@@ -1,7 +1,11 @@
 #include <sstream>
+#include <boost/foreach.hpp>
+#include <boost/tokenizer.hpp>
+#include "Conversion.hpp"
 #include "Map.hpp"
 
 using namespace std;
+using namespace boost;
 
 Map::Map(const Map& new_map)
 : terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false)
@@ -66,6 +70,27 @@ vector<CreaturePtr> Map::get_creatures()
   }
 
   return creatures;
+}
+
+// Resets the creatures and the list of locations.  For the list of
+// locations, it only re-adds the creature-based ones.
+void Map::reset_creatures_and_locations()
+{
+  creatures.clear();
+  locations.clear();
+  
+  for (map<string, TilePtr >::iterator t_it = tiles.begin(); t_it != tiles.end(); t_it++)
+  {
+    string tile_key = t_it->first;
+    TilePtr tile    = t_it->second;
+    
+    if (tile && tile->has_creature())
+    {
+      CreaturePtr creature = tile->get_creature();
+      creatures.push_back(creature);
+      locations.insert(make_pair(creature->get_id(), convert_map_key_to_coordinate(tile_key)));
+    }    
+  }
 }
 
 void Map::remove_creature(const string& creature_id)
@@ -240,4 +265,27 @@ void Map::set_permanent(const bool permanence)
 bool Map::get_permanent() const
 {
   return permanent;
+}
+
+Coordinate Map::convert_map_key_to_coordinate(const string& map_key)
+{
+  Coordinate coords(0,0);
+  
+  char_separator<char> sep("-");
+  tokenizer<char_separator<char> > tokens(map_key, sep);
+
+  tokenizer<char_separator<char> >:: iterator t_it = tokens.begin();
+  
+  if (t_it != tokens.end())
+  {
+    coords.first = String::to_int(*t_it);
+    t_it++;
+  }
+    
+  if (t_it != tokens.end())
+  {
+    coords.second = String::to_int(*t_it);
+  }
+
+  return coords;
 }

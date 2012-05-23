@@ -87,3 +87,8 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
 
   return command;
 }
+
+CommandFactoryType CommandFactory::get_factory_type() const
+{
+  return COMMAND_FACTORY_TYPE_MAP;
+}

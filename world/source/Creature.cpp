@@ -47,6 +47,9 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
 
     // Players are always @s.
     set_symbol('@');
+    
+    // Players always use "player" as their ID.
+    set_id(PlayerConstants::PLAYER_CREATURE_ID);
   }
 }
 

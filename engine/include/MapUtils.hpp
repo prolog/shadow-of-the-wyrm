@@ -37,6 +37,8 @@ class MapUtils
     static bool is_tile_available_for_creature(TilePtr tile);
     
     static bool tile_type_permits_creature_or_object(const TileType tile_type);
+    
+    static Dimensions get_dimensions(MapPtr map, const Coordinate& coords, const int size);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

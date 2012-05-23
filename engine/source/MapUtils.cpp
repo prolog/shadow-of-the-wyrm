@@ -1,6 +1,8 @@
 #include "Conversion.hpp"
 #include "MapUtils.hpp"
 
+
+#include <iostream>
 using namespace std;
 
 // Check to see if movement in a given direction is valid.
@@ -93,6 +95,50 @@ bool MapUtils::tile_type_permits_creature_or_object(const TileType tile_type)
   
   return true;
 }
+
+// Get the dimensions for a new map based on the current map, the coords, and the size.
+// If it's a large map and the coordinates are in the centre, the dimensions will likely
+// be size x size.  In other cases, the dimensions will be smaller, particularly if the
+// coordinates fall near the map's borders.
+Dimensions MapUtils::get_dimensions(MapPtr map, const Coordinate& coords, const int size)
+{
+  Dimensions new_dimensions(0, 0);
+  
+  Dimensions original_dimensions = map->size();
+  int rows_orig = original_dimensions.get_y();
+  int cols_orig = original_dimensions.get_x();
+  
+  int coord_row = coords.first;
+  int coord_col = coords.second;
+  
+  int num_rows = 0;
+  int num_cols = 0;
+  
+  for(int row = (coord_row - size); row <= (coord_row + size); row++)
+  {
+    if ((row >= 0) && (row <= rows_orig - 1))
+    {
+      if (num_cols == 0)
+      {
+        for (int col = (coord_col - size); col <= (coord_col + size); col++)
+        {
+          if ((col >= 0) && (col <= cols_orig - 1))
+          {
+            num_cols++;
+          }
+        }
+      }
+      
+      num_rows++;
+    }
+  }
+
+  new_dimensions.set_y(num_rows);
+  new_dimensions.set_x(num_cols);
+  
+  return new_dimensions;
+}
+
 
 // Add the tile and its connected tiles to the Component.
 void MapUtils::add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const set<TileType>& exclusion_tiles, Component* component)
@@ -285,3 +331,6 @@ bool MapUtils::is_tile_contained_in_an_existing_component(const Coordinate& coor
   return result;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/MapUtils_test.cpp"
+#endif

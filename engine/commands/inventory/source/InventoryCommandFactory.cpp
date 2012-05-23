@@ -48,3 +48,8 @@ CommandPtr InventoryCommandFactory::create(const int key, const std::string& com
   
   return inventory_command;
 }
+
+CommandFactoryType InventoryCommandFactory::get_factory_type() const
+{
+  return COMMAND_FACTORY_TYPE_INVENTORY;
+}

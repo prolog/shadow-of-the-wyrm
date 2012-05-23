@@ -262,9 +262,17 @@
 		<Unit filename="engine\combat\include\AttackTypes.hpp" />
 		<Unit filename="engine\combat\include\CombatConstants.hpp" />
 		<Unit filename="engine\combat\include\CombatManager.hpp" />
+		<Unit filename="engine\combat\include\CreatureDeathManager.hpp" />
+		<Unit filename="engine\combat\include\DeathManager.hpp" />
+		<Unit filename="engine\combat\include\DeathManagerFactory.hpp" />
+		<Unit filename="engine\combat\include\PlayerDeathManager.hpp" />
 		<Unit filename="engine\combat\include\WeaponManager.hpp" />
 		<Unit filename="engine\combat\source\CombatConstants.cpp" />
 		<Unit filename="engine\combat\source\CombatManager.cpp" />
+		<Unit filename="engine\combat\source\CreatureDeathManager.cpp" />
+		<Unit filename="engine\combat\source\DeathManager.cpp" />
+		<Unit filename="engine\combat\source\DeathManagerFactory.cpp" />
+		<Unit filename="engine\combat\source\PlayerDeathManager.cpp" />
 		<Unit filename="engine\combat\source\WeaponManager.cpp" />
 		<Unit filename="engine\combat\source\unit_tests\CombatManager_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
@@ -323,10 +331,12 @@
 		<Unit filename="engine\decision_strategies\include\DecisionStrategyFactory.hpp" />
 		<Unit filename="engine\decision_strategies\include\DecisionStrategyTypes.hpp" />
 		<Unit filename="engine\decision_strategies\include\ImmobileDecisionStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\include\NPCDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\source\DecisionStrategyFactory.cpp" />
 		<Unit filename="engine\decision_strategies\source\DecisionStrategyTypes.cpp" />
 		<Unit filename="engine\decision_strategies\source\ImmobileDecisionStrategy.cpp" />
+		<Unit filename="engine\decision_strategies\source\NPCDecisionStrategy.cpp" />
 		<Unit filename="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
 		<Unit filename="engine\generators\gardens\include\GardenGenerator.hpp" />
 		<Unit filename="engine\generators\gardens\include\GardenGeneratorFactory.hpp" />
@@ -525,6 +535,9 @@
 		<Unit filename="engine\source\unit_tests\Dimensions_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="engine\source\unit_tests\MapUtils_test.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="engine\source\unit_tests\Message_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -540,12 +553,14 @@
 		<Unit filename="engine\translators\include\InventoryTranslator.hpp" />
 		<Unit filename="engine\translators\include\ItemTranslator.hpp" />
 		<Unit filename="engine\translators\include\MapTranslator.hpp" />
+		<Unit filename="engine\translators\include\ViewMapTranslator.hpp" />
 		<Unit filename="engine\translators\source\CreatureTranslator.cpp" />
 		<Unit filename="engine\translators\source\DisplayItemTypeFactory.cpp" />
 		<Unit filename="engine\translators\source\EquipmentTranslator.cpp" />
 		<Unit filename="engine\translators\source\InventoryTranslator.cpp" />
 		<Unit filename="engine\translators\source\ItemTranslator.cpp" />
 		<Unit filename="engine\translators\source\MapTranslator.cpp" />
+		<Unit filename="engine\translators\source\ViewMapTranslator.cpp" />
 		<Unit filename="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
@@ -588,6 +603,7 @@
 		<Unit filename="world\include\Skills.hpp" />
 		<Unit filename="world\include\Staff.hpp" />
 		<Unit filename="world\include\Statistic.hpp" />
+		<Unit filename="world\include\ThreatRatings.hpp" />
 		<Unit filename="world\include\Wand.hpp" />
 		<Unit filename="world\include\Weapon.hpp" />
 		<Unit filename="world\include\WeaponTypes.hpp" />
@@ -638,6 +654,7 @@
 		<Unit filename="world\source\Class.cpp" />
 		<Unit filename="world\source\Consumable.cpp" />
 		<Unit filename="world\source\Creature.cpp" />
+		<Unit filename="world\source\CreatureFeatures.cpp" />
 		<Unit filename="world\source\CreatureGenerationValues.cpp" />
 		<Unit filename="world\source\Damage.cpp" />
 		<Unit filename="world\source\Dice.cpp" />
@@ -658,6 +675,7 @@
 		<Unit filename="world\source\Skills.cpp" />
 		<Unit filename="world\source\Staff.cpp" />
 		<Unit filename="world\source\Statistic.cpp" />
+		<Unit filename="world\source\ThreatRatings.cpp" />
 		<Unit filename="world\source\Wand.cpp" />
 		<Unit filename="world\source\Weapon.cpp" />
 		<Unit filename="world\source\Wearable.cpp" />
