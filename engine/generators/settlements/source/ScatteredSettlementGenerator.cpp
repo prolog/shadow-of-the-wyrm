@@ -50,7 +50,7 @@ bool ScatteredSettlementGenerator::can_building_be_placed(const int row, const i
     Coordinate c1(r.get_centre());
     Coordinate c2(cur.get_centre());
     
-    if (MapUtils::tile_distance(c1, c2) < min_distance_between_buildings)
+    if (MapUtils::tile_distance_using_chebyshev(c1, c2) < min_distance_between_buildings)
     {
       placement_allowed = false;
       break;

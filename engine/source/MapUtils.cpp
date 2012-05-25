@@ -25,6 +25,64 @@ bool MapUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const D
   return valid_move;
 }
 
+// Get the direction given start/end coordinates.
+Direction MapUtils::get_direction(const Coordinate& start, const Coordinate& end)
+{
+  Direction d;
+  
+  int y1 = start.first;
+  int x1 = start.second;
+  
+  int y2 = end.first;
+  int x2 = end.second;
+  
+  // Start greater than end - heading north
+  if (y1 > y2)
+  {
+    if (x1 < x2)
+    {
+      d = DIRECTION_NORTH_EAST;
+    }
+    else if (x1 == x2)
+    {
+      d = DIRECTION_NORTH;
+    }
+    else
+    {
+      d = DIRECTION_NORTH_WEST;
+    }
+  }
+  // Start row = end row - heading east or west
+  else if (y1 == y2)
+  {
+    if (x1 < x2)
+    {
+      d = DIRECTION_EAST;
+    }
+    {
+      d = DIRECTION_WEST;
+    }
+  }
+  // Start row > end row - heading north
+  else
+  {
+    if (x1 < x2)
+    {
+      d = DIRECTION_SOUTH_EAST;
+    }
+    else if (x1 == x2)
+    {
+      d = DIRECTION_SOUTH;
+    }
+    else
+    {
+      d = DIRECTION_SOUTH_WEST;
+    }
+  }
+  
+  return d;
+}
+
 // Generate the next coordinate in a given direction.  Does not do correctness checking!
 Coordinate MapUtils::get_new_coordinate(const Coordinate& c, const Direction d)
 {
@@ -70,7 +128,7 @@ Coordinate MapUtils::get_new_coordinate(const Coordinate& c, const Direction d)
 }
 
 // Get the distance between two tiles using Chebyshev distance
-float MapUtils::tile_distance(Coordinate c1, Coordinate c2)
+int MapUtils::tile_distance_using_chebyshev(Coordinate c1, Coordinate c2)
 {
   return max(abs(c1.second - c2.second), abs(c1.first - c2.first));
 }
@@ -139,6 +197,11 @@ Dimensions MapUtils::get_dimensions(MapPtr map, const Coordinate& coords, const 
   return new_dimensions;
 }
 
+// Check for adjacency - distance must be 1 using the Chessboard distance (Chebyshev).
+bool MapUtils::are_coordinates_adjacent(const Coordinate& c1, const Coordinate& c2)
+{
+  return (tile_distance_using_chebyshev(c1, c2) == 1);
+}
 
 // Add the tile and its connected tiles to the Component.
 void MapUtils::add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const set<TileType>& exclusion_tiles, Component* component)
@@ -332,5 +395,6 @@ bool MapUtils::is_tile_contained_in_an_existing_component(const Coordinate& coor
 }
 
 #ifdef UNIT_TESTS
+#include "unit_tests/Map_test.cpp"
 #include "unit_tests/MapUtils_test.cpp"
 #endif

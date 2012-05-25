@@ -69,11 +69,12 @@ bool CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_
 
 bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)
 {
+  string attacked_creature_desc = get_appropriate_creature_description(attacked_creature);
   DamageType damage_type = damage_info.get_damage_type();
   int base_damage = 0;
   float soak_multiplier = 1.0;
   
-  string combat_message = CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), StringTable::get(attacked_creature->get_description_sid()));
+  string combat_message = CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
 
   // Critical hit: 2x damage, no soak.
   if (is_critical_hit(d100_roll))
@@ -139,7 +140,8 @@ void CombatManager::deal_damage(CreaturePtr attacked_creature, const int damage_
 
 bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
-  string combat_message = CombatTextKeys::get_miss_message(attacking_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), StringTable::get(attacked_creature->get_description_sid()));
+  string attacked_creature_desc = get_appropriate_creature_description(attacked_creature);
+  string combat_message = CombatTextKeys::get_miss_message(attacking_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(combat_message);
 
   return true;
@@ -147,7 +149,8 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 
 bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
-  string combat_message = CombatTextKeys::get_close_miss_message(attacking_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), StringTable::get(attacked_creature->get_description_sid()));
+  string attacked_creature_desc = get_appropriate_creature_description(attacked_creature);
+  string combat_message = CombatTextKeys::get_close_miss_message(attacking_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(combat_message);
 
   return true;
@@ -228,6 +231,21 @@ bool CombatManager::is_automatic_miss(const int d100_roll)
   return (d100_roll <= CombatConstants::AUTOMATIC_MISS_THRESHOLD);
 }
 
+string CombatManager::get_appropriate_creature_description(CreaturePtr creature)
+{
+  string desc;
+  
+  if (creature->get_is_player())
+  {
+    desc = StringTable::get(TextKeys::YOU);
+  }
+  else
+  {
+    desc = StringTable::get(creature->get_description_sid());
+  }
+  
+  return desc;
+}
 #ifdef UNIT_TESTS
 #include "unit_tests/CombatManager_test.cpp"
 #endif

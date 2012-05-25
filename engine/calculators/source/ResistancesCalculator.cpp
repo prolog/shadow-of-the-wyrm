@@ -36,10 +36,14 @@ Resistances ResistancesCalculator::calculate_resistances(const Creature& creatur
 
     for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
     {
+      // A positive value (e.g., 0.25) means increased resistance.
+      // Since the resistance is a multiplier, to increase resistance,
+      // we subtract the value from 1 to get a value less than 1,
+      // which will in turn reduce damage.
       race_val  = resists_race.get_resistance_value(dt);
       class_val = resists_class.get_resistance_value(dt);
       
-      total_val = race_val + class_val;
+      total_val = 1 - (race_val + class_val);
       
       resists_calculated.set_resistance_value(dt, total_val);
     }

@@ -1,6 +1,7 @@
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
+#include "CreatureFeatures.hpp"
 #include "Game.hpp"
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
@@ -10,6 +11,7 @@
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
 #include "MessageManager.hpp"
+#include "ViewMapTranslator.hpp"
 
 using namespace std;
 
@@ -222,13 +224,19 @@ void Game::go()
           
           while (!advance)
           {
+            MapPtr view_map; // empty is fine as long as it's for the player
+
             if (current_creature->get_is_player())
             {
               // Update the display with the result of the last round of actions.
               update_display(current_player, current_map);
             }
+            else
+            {
+              view_map = ViewMapTranslator::create_view_map_around_tile(current_map, current_map->get_location(current_creature->get_id()), CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH);
+            }
             
-            CommandPtr command = strategy->get_decision(game_command_factory, game_kb_command_map);
+            CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map);
             
             // Clear the stored messages if we're about to receive the player's action
             if (current_creature->get_is_player())

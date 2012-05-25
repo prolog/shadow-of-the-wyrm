@@ -333,6 +333,7 @@
 		<Unit filename="engine\decision_strategies\include\ImmobileDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\NPCDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\source\DecisionStrategy.cpp" />
 		<Unit filename="engine\decision_strategies\source\DecisionStrategyFactory.cpp" />
 		<Unit filename="engine\decision_strategies\source\DecisionStrategyTypes.cpp" />
 		<Unit filename="engine\decision_strategies\source\ImmobileDecisionStrategy.cpp" />
@@ -536,6 +537,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\MapUtils_test.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="engine\source\unit_tests\Map_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\Message_test.cpp">

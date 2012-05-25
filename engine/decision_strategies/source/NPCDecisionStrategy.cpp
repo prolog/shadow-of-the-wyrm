@@ -10,7 +10,7 @@ bool NPCDecisionStrategy::get_confirmation()
 
 // The basic decision structure for NPCs.  The individual get_decision_for functions are pure virtual within this class,
 // and implemented by concrete decision strategies.
-CommandPtr NPCDecisionStrategy::get_decision(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_decision(const string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map)
 {
   CommandPtr command;
   
@@ -19,7 +19,7 @@ CommandPtr NPCDecisionStrategy::get_decision(CommandFactoryPtr command_factory, 
   switch(factory_type)
   {
     case COMMAND_FACTORY_TYPE_MAP:
-      command = get_decision_for_map(command_factory, keyboard_commands, view_map);
+      command = get_decision_for_map(this_creature_id, command_factory, keyboard_commands, view_map);
       break;
     case COMMAND_FACTORY_TYPE_INVENTORY:
       command = get_decision_for_inventory(command_factory, keyboard_commands);
@@ -32,11 +32,4 @@ CommandPtr NPCDecisionStrategy::get_decision(CommandFactoryPtr command_factory, 
   }
 
   return command;
-}
-
-
-// Get the threats - used to determine a course of action.
-ThreatMap NPCDecisionStrategy::get_threats() const
-{
-  return threat_ratings.get_all_threats();
 }

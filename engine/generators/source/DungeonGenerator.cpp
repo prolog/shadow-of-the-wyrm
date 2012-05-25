@@ -22,8 +22,8 @@ bool compare_rooms(const Room& r1, const Room& r2)
   Coordinate room2_c = r2.get_centre();
   Coordinate room2_centre_c = r2.centre_room->get_centre();
   
-  float r1_td = MapUtils::tile_distance(room1_c, room1_centre_c);
-  float r2_td = MapUtils::tile_distance(room2_c, room2_centre_c);
+  int r1_td = MapUtils::tile_distance_using_chebyshev(room1_c, room1_centre_c);
+  int r2_td = MapUtils::tile_distance_using_chebyshev(room2_c, room2_centre_c);
   
   return (r1_td < r2_td);
 }

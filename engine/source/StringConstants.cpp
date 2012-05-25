@@ -28,6 +28,7 @@ const string TextKeys::SL_TITLE_POEM = "SL_TITLE_POEM";
 const string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
 const string TextKeys::DEATH_MESSAGE = "DEATH_MESSAGE";
 const string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
+const string TextKeys::YOU = "YOU";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";
 const string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 const string TextKeys::SELECT_DEITY = "SELECT_DEITY";
@@ -871,6 +872,7 @@ string CombatTextKeys::get_close_miss_message(const bool is_player, const string
     close_miss_msg = StringTable::get(CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE_NP);
     boost::replace_first(close_miss_msg, "%s", attacker);
     boost::replace_first(close_miss_msg, "%s", miss_target);
+    close_miss_msg[0] = toupper(close_miss_msg[0]);
   }
   
   return close_miss_msg;
@@ -890,6 +892,7 @@ string CombatTextKeys::get_miss_message(const bool is_player, const string& atta
     miss_msg = StringTable::get(CombatTextKeys::COMBAT_MISS_MESSAGE_NP);
     boost::replace_first(miss_msg, "%s", attacker);
     boost::replace_first(miss_msg, "%s", miss_target);
+    miss_msg[0] = toupper(miss_msg[0]);
   }
   
   return miss_msg;
@@ -927,6 +930,7 @@ string CombatTextKeys::get_hit_message(const bool is_player, const DamageType da
   {
     boost::replace_first(hit_msg, "%s", attacker);
     boost::replace_first(hit_msg, "%s", hit_target);
+    hit_msg[0] = toupper(hit_msg[0]);
   }
   
   return hit_msg;

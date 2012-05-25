@@ -16,7 +16,7 @@ ViewMapTranslator::~ViewMapTranslator()
 // Create a view map around a tile with a given size.  The size will be at most (size+size+1) x (size+size+1).
 // The "+1" represents the centre row.  The original "size" is the maximum length that can be seen in a given
 // direction.
-MapPtr ViewMapTranslator::create_view_map_around_tile(MapPtr original_map, const Coordinate& centre, const uint size)
+MapPtr ViewMapTranslator::create_view_map_around_tile(MapPtr original_map, const Coordinate& centre, const int size)
 {
   Dimensions dimensions = MapUtils::get_dimensions(original_map, centre, size);
 

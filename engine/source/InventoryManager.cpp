@@ -43,7 +43,7 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const bool inventory_
       
       if (decision_strategy)
       {
-        CommandPtr inventory_command = decision_strategy->get_decision(command_factory, kb_command_map);
+        CommandPtr inventory_command = decision_strategy->get_decision(creature->get_id(), command_factory, kb_command_map);
         manage_inv = InventoryCommandProcessor::process(this, display_inventory, creature, inv, inventory_command, inventory_is_read_only, selected_item);        
       }
       else
