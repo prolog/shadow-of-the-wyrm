@@ -29,6 +29,7 @@ const string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
 const string TextKeys::DEATH_MESSAGE = "DEATH_MESSAGE";
 const string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 const string TextKeys::YOU = "YOU";
+const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";
 const string TextKeys::SELECT_CLASS = "SELECT_CLASS";
 const string TextKeys::SELECT_DEITY = "SELECT_DEITY";
@@ -630,6 +631,15 @@ string TextMessages::get_death_message(const string& deity_death_message_sid)
   string you_die = StringTable::get(TextKeys::DEATH_MESSAGE);
   string death_message = deity_death_message + "  " + you_die;
   return death_message;
+}
+
+// Gets the "The foo escapes into the wilderness." message.
+string TextMessages::get_npc_escapes_message(const string& creature_description)
+{
+  string escapes_message = StringTable::get(TextKeys::NPC_ESCAPES_MESSAGE);
+  boost::replace_first(escapes_message, "%s", creature_description);
+  escapes_message[0] = toupper(escapes_message[0]);
+  return escapes_message;
 }
 
 string TextMessages::get_action_not_found_message(const string& command_action)

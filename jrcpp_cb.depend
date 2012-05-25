@@ -889,7 +889,8 @@
 1327247299 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1337948667 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1337949613 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"CreatureCalculator.hpp"
@@ -939,7 +940,7 @@
 1327846873 source:c:\cygwin\home\julian\jrcpp\engine\source\mapregistry.cpp
 	"MapRegistry.hpp"
 
-1337909263 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+1337950306 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
 	"Conversion.hpp"
 	"MapUtils.hpp"
 	<iostream>
@@ -964,7 +965,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\messages_test.cpp
 	"gtest/gtest.h"
 
-1336739290 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
+1337950691 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
@@ -1014,7 +1015,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1337910543 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1337949993 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"

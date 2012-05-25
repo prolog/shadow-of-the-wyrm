@@ -29,6 +29,7 @@ class TextKeys
     static const std::string DEATH_MESSAGE;
     static const std::string DEFAULT_PLAYER_NAME;
     static const std::string YOU;
+    static const std::string NPC_ESCAPES_MESSAGE;
     static const std::string SEX;
     static const std::string SELECT_SEX;
     static const std::string SEX_MALE;
@@ -470,6 +471,7 @@ class TextMessages
   public:
     static std::string get_welcome_message(const std::string& player_name);
     static std::string get_death_message(const std::string& deity_death_message_sid);
+    static std::string get_npc_escapes_message(const std::string& creature_description);
     static std::string get_action_not_found_message(const std::string& command_action);
     static std::string get_dumping_character_message(const std::string& creature_name);
     static std::string get_sex(const CreatureSex sex);
