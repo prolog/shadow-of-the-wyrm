@@ -212,6 +212,13 @@ void Game::go()
     // model of action costs, etc.
     for (vector<CreaturePtr>::const_iterator c_it = map_creatures.begin(); c_it != map_creatures.end(); c_it++)
     {
+      // If we shouldn't keep playing (player has quit, has been killed, etc), then break out of the 
+      // game loop.
+      if (!keep_playing)
+      {
+        break;
+      }
+      
       CreaturePtr current_creature = *c_it;
 
       if (current_creature)
