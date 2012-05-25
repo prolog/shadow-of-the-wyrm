@@ -59,16 +59,31 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
         {
           string leave_area = TextMessages::get_confirmation_message(TextKeys::DECISION_LEAVE_AREA);
           game->display->confirm(leave_area);
-        }
         
-        if (creature->get_decision_strategy()->get_confirmation())
+          if (creature->get_decision_strategy()->get_confirmation())
+          {
+            move_to_new_map(map_exit);
+            movement_success = true;
+          }
+        
+          // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
+          game->display->clear_messages();
+        }
+        // It's an NPC leaving the map - display the exit message.
+        else
         {
-          move_to_new_map(map_exit);
+          // Remove from tile and from map's creatures.
+          creatures_old_tile->remove_creature();
+          map->remove_creature(creature->get_id());
+          
+          string npc_exit_message = TextMessages::get_npc_escapes_message(StringTable::get(creature->get_description_sid()));
+          manager->add_new_message(npc_exit_message);
+          manager->send();
+          
           movement_success = true;
-        }
-        
-        // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
-        game->display->clear_messages(); 
+          
+          // JCD FIXME: Might cause problems later with many turns.
+        } 
       }
     }
     // Otherwise, it's a regular move within the current map.
@@ -95,7 +110,6 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
           CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
           
           // Sanity check
-          // Also, JCD FIXME: Move this into a separate class.  CombatManager?
           if (adjacent_creature)
           {
             CombatManager cm;

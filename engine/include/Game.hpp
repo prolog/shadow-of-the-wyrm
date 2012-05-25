@@ -70,6 +70,7 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     // Game commands - protected, so they should only be called by SavageLandsEngine
     // or CommandProcessor.
+    void process_action_for_creature(CreaturePtr current_creature, MapPtr current_map);
 
     // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.
@@ -114,4 +115,8 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     // The action manager
     ActionManager actions;
+    
+    // The command factory and keyboard map
+    CommandFactoryPtr game_command_factory;
+    KeyboardCommandMapPtr game_kb_command_map;
 };

@@ -1,3 +1,4 @@
+#include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
@@ -14,6 +15,7 @@
 #include "ViewMapTranslator.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 Game* Game::game_instance = NULL;
 
@@ -188,14 +190,14 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map)
 
 void Game::go()
 {
-  CommandFactoryPtr game_command_factory = CommandFactoryPtr(new CommandFactory());
-  KeyboardCommandMapPtr game_kb_command_map = KeyboardCommandMapPtr(new KeyboardCommandMap());
+  game_command_factory = make_shared<CommandFactory>();
+  game_kb_command_map = make_shared<KeyboardCommandMap>();
   
-  MessageManager* manager = MessageManager::instance();
   CreaturePtr current_player = get_current_player();
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
-  manager->add_new_message(welcome_message);
 
+  MessageManager* manager = MessageManager::instance();
+  manager->add_new_message(welcome_message);
   manager->send();
 
   MapPtr current_map = get_current_map();
@@ -221,45 +223,7 @@ void Game::go()
       
       CreaturePtr current_creature = *c_it;
 
-      if (current_creature)
-      {        
-        DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
-
-        if (strategy)
-        {
-          bool advance = false;
-          
-          while (!advance)
-          {
-            MapPtr view_map; // empty is fine as long as it's for the player
-
-            if (current_creature->get_is_player())
-            {
-              // Update the display with the result of the last round of actions.
-              update_display(current_player, current_map);
-            }
-            else
-            {
-              view_map = ViewMapTranslator::create_view_map_around_tile(current_map, current_map->get_location(current_creature->get_id()), CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH);
-            }
-            
-            CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map);
-            
-            // Clear the stored messages if we're about to receive the player's action
-            if (current_creature->get_is_player())
-            {
-              // JCD FIXME: Update MessageManager::send so it queues nicely, and offers -- more -- when appropriate.
-              // JCD FIXME: Right now, it just wipes stuff.
-              manager->send();
-            }
-
-            advance = CommandProcessor::process(current_creature, command, display);
-          }
-          
-          // Update the current creature
-          CreatureCalculator::update_calculated_values(current_creature);
-        }        
-      }
+      process_action_for_creature(current_creature, current_map);
       
       if (reload_game_loop)
       {
@@ -267,6 +231,50 @@ void Game::go()
         break;
       }
     }
+  }
+}
+
+// Get and process the action for the current creature
+void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map)
+{
+  if (current_creature)
+  {        
+    DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
+
+    if (strategy)
+    {
+      bool advance = false;
+      
+      while (!advance)
+      {
+        MapPtr view_map; // empty is fine as long as it's for the player
+
+        if (current_creature->get_is_player())
+        {
+          // Update the display with the result of the last round of actions.
+          update_display(current_creature, current_map);
+        }
+        else
+        {
+          view_map = ViewMapTranslator::create_view_map_around_tile(current_map, current_map->get_location(current_creature->get_id()), CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH);
+        }
+        
+        CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map);
+        
+        // Clear the stored messages if we're about to receive the player's action
+        if (current_creature->get_is_player())
+        {
+          // JCD FIXME: Update MessageManager::send so it queues nicely, and offers -- more -- when appropriate.
+          // JCD FIXME: Right now, it just wipes stuff.
+          MessageManager::instance()->send();
+        }
+
+        advance = CommandProcessor::process(current_creature, command, display);
+      }
+      
+      // Update the current creature
+      CreatureCalculator::update_calculated_values(current_creature);
+    }        
   }
 }
 
