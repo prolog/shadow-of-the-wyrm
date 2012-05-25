@@ -50,6 +50,19 @@ void Map::create_creatures()
   }
 }
 
+bool Map::has_creature(const string& creature_id)
+{
+  BOOST_FOREACH(CreaturePtr creature, creatures)
+  {
+    if (creature_id == creature->get_id())
+    {
+      return true;
+    }
+  }
+  
+  return false;
+}
+
 CreaturePtr Map::get_creature(const uint idx)
 {
   CreaturePtr creature;
@@ -289,3 +302,7 @@ Coordinate Map::convert_map_key_to_coordinate(const string& map_key)
 
   return coords;
 }
+
+// There should be an IFDEF_UNIT_TESTS here, but the compiler isn't finding Map_test.cpp.
+// However, it's able to do do so once I add that include to MapUtils.  So, the include
+// statement is there.

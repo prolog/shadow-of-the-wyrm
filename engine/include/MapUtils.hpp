@@ -16,6 +16,9 @@ class MapUtils
   public:
     // Check to see if the direction is a valid move.
     static bool is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d);
+    
+    // Get the direction of a move given the start and end coordinates.
+    static Direction get_direction(const Coordinate& start_coord, const Coordinate& end_coord);
 
     // Get new coordinates.  "is_valid_move" should always be called first!
     static Coordinate get_new_coordinate(const Coordinate& c, const Direction d);
@@ -32,13 +35,15 @@ class MapUtils
     static bool is_blocking_feature_present(TilePtr tile);
     static bool is_creature_present(TilePtr tile);
     
-    static float tile_distance(Coordinate c1, Coordinate c2);
+    static int tile_distance_using_chebyshev(Coordinate c1, Coordinate c2);
     
     static bool is_tile_available_for_creature(TilePtr tile);
     
     static bool tile_type_permits_creature_or_object(const TileType tile_type);
     
     static Dimensions get_dimensions(MapPtr map, const Coordinate& coords, const int size);
+    
+    static bool are_coordinates_adjacent(const Coordinate& c1, const Coordinate& c2);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

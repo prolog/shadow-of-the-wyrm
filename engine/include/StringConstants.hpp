@@ -28,7 +28,7 @@ class TextKeys
     static const std::string COPYRIGHT_NOTICE;
     static const std::string DEATH_MESSAGE;
     static const std::string DEFAULT_PLAYER_NAME;
-    static const std::string PLAYER_CREATURE_ID;
+    static const std::string YOU;
     static const std::string SEX;
     static const std::string SELECT_SEX;
     static const std::string SEX_MALE;

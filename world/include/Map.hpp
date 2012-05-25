@@ -34,6 +34,7 @@ class Map
 
 		// These functions work on a list built up from the map itself.
 		// This allows for quicker lookup.
+		bool has_creature(const std::string& creature_id);
 		boost::shared_ptr<Creature> get_creature(const uint idx_in_creature_list);
 		std::vector<boost::shared_ptr<Creature> > get_creatures();
 		void remove_creature(const std::string& creature_id);
@@ -73,6 +74,8 @@ class Map
     bool get_permanent() const;
 
 	protected:
+    friend class SL_Engine_Map;
+    
 		void create_creatures();		
 		std::string make_key(const int row, const int col);
 		Coordinate convert_map_key_to_coordinate(const std::string& map_key);

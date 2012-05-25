@@ -44,6 +44,11 @@ CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
       Statistic hit_points(RNG::dice(initial_hp_range));
       creature->set_hit_points(hit_points);
       
+      // JCD FIXME: Set the creature hostile to the player.
+      DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+      ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
+      threat_ratings.add_threat(PlayerConstants::PLAYER_CREATURE_ID, 100); // FIXME
+      
       initialize(creature);
       
       // JCD FIXME: Apply the values from the CreatureGenerationValues.

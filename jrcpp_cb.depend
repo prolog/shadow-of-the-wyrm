@@ -246,7 +246,7 @@
 
 1326428206 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\magictohitcalculator_test.cpp
 
-1337345953 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\resistancescalculator.cpp
+1337911271 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\resistancescalculator.cpp
 	"Resistances.hpp"
 	"ResistancesCalculator.hpp"
 	"unit_tests/ResistancesCalculator_test.cpp"
@@ -416,7 +416,7 @@
 	"Conversion.hpp"
 	"StatsDumper.hpp"
 
-1337691551 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
+1337864493 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
 	<string>
 	<sstream>
 	<boost/algorithm/string.hpp>
@@ -524,7 +524,7 @@
 1336309921 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\desertgenerator.cpp
 	"DesertGenerator.hpp"
 
-1336310064 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
+1337906419 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
 	<algorithm>
 	<cmath>
 	<boost/make_shared.hpp>
@@ -851,7 +851,7 @@
 	"MessageManager.hpp"
 	"Log.hpp"
 
-1337345542 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1337863192 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<boost/make_shared.hpp>
 	<boost/uuid/uuid_generators.hpp>
 	<boost/uuid/uuid_io.hpp>
@@ -879,7 +879,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\dimensions_test.cpp
 	"gtest/gtest.h"
 
-1329576825 source:c:\cygwin\home\julian\jrcpp\engine\source\equipmentmanager.cpp
+1337864370 source:c:\cygwin\home\julian\jrcpp\engine\source\equipmentmanager.cpp
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
@@ -889,10 +889,11 @@
 1327247299 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1337431736 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1337864146 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"CreatureCalculator.hpp"
+	"CreatureFeatures.hpp"
 	"Game.hpp"
 	"CommandProcessor.hpp"
 	"CreatureTranslator.hpp"
@@ -902,8 +903,9 @@
 	"MapTranslator.hpp"
 	"DisplayStatistics.hpp"
 	"MessageManager.hpp"
+	"ViewMapTranslator.hpp"
 
-1330137588 source:c:\cygwin\home\julian\jrcpp\engine\source\inventorymanager.cpp
+1337864380 source:c:\cygwin\home\julian\jrcpp\engine\source\inventorymanager.cpp
 	<boost/foreach.hpp>
 	"InventoryCommandFactory.hpp"
 	"InventoryCommandProcessor.hpp"
@@ -937,10 +939,11 @@
 1327846873 source:c:\cygwin\home\julian\jrcpp\engine\source\mapregistry.cpp
 	"MapRegistry.hpp"
 
-1337776641 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+1337909263 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
 	"Conversion.hpp"
 	"MapUtils.hpp"
 	<iostream>
+	"unit_tests/Map_test.cpp"
 	"unit_tests/MapUtils_test.cpp"
 
 1321456658 source:c:\cygwin\home\julian\jrcpp\engine\source\message.cpp
@@ -1011,7 +1014,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1337548586 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1337910543 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
@@ -1209,7 +1212,7 @@
 	"Item.hpp"
 	"Wood.hpp"
 
-1337690808 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1337864579 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	<boost/tokenizer.hpp>
@@ -1615,7 +1618,7 @@
 1334892872 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1335618290 source:c:\cygwin\home\julian\jrcpp\engine\generators\settlements\source\scatteredsettlementgenerator.cpp
+1337906419 source:c:\cygwin\home\julian\jrcpp\engine\generators\settlements\source\scatteredsettlementgenerator.cpp
 	<boost/foreach.hpp>
 	"ScatteredSettlementGenerator.hpp"
 	"MapUtils.hpp"
@@ -1670,12 +1673,14 @@
 1335832775 source:c:\cygwin\home\julian\jrcpp\controller\source\nullkeyboardcontroller.cpp
 	"NullKeyboardController.hpp"
 
-1337691530 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
+1337907921 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
 	<string>
 	<sstream>
+	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"Commands.hpp"
 	"ImmobileDecisionStrategy.hpp"
+	"MapUtils.hpp"
 
 1336136339 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationvalues.cpp
 	"CreatureGenerationValues.hpp"
@@ -1705,7 +1710,7 @@
 	"Conversion.hpp"
 	"Dice.hpp"
 
-1337522129 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1337910325 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"
@@ -1779,17 +1784,26 @@
 	"MessageManager.hpp"
 	"PlayerDeathManager.hpp"
 
-1337691578 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
+1337864123 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
 	"NPCDecisionStrategy.hpp"
 
 1337547477 source:c:\cygwin\home\julian\jrcpp\world\source\threatratings.cpp
 	"ThreatRatings.hpp"
 
-1337691097 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\viewmaptranslator.cpp
+1337908381 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\viewmaptranslator.cpp
 	<boost/make_shared.hpp>
 	"MapUtils.hpp"
 	"ViewMapTranslator.hpp"
 
 1337776642 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\maputils_test.cpp
 	"gtest/gtest.h"
+
+1337776906 source:c:\cygwin\home\julian\jrcpp\world\source\creaturefeatures.cpp
+	"CreatureFeatures.hpp"
+
+1337778625 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\map_test.cpp
+	"gtest/gtest.h"
+
+1337863029 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategy.cpp
+	"DecisionStrategy.hpp"
 

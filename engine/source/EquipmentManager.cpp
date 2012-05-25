@@ -36,7 +36,7 @@ bool EquipmentManager::manage_equipment()
       
       if (decision_strategy)
       {
-        CommandPtr equipment_command = decision_strategy->get_decision(command_factory, kb_command_map);
+        CommandPtr equipment_command = decision_strategy->get_decision(creature->get_id(), command_factory, kb_command_map);
         manage_eq = EquipmentCommandProcessor::process(creature, equipment_command);
       }
       else
