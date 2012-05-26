@@ -15,7 +15,7 @@ using namespace std;
 using namespace boost;
 
 NCursesDisplay::NCursesDisplay()
-  : TERMINAL_MAX_ROWS(0), TERMINAL_MAX_COLS(0), FIELD_SPACE(2), can_use_colour(false)
+  : TERMINAL_MAX_ROWS(0), TERMINAL_MAX_COLS(0), FIELD_SPACE(2), MSG_BUFFER_LAST_Y(0), MSG_BUFFER_LAST_X(0), can_use_colour(false)
 {
 }
 
@@ -124,6 +124,14 @@ int NCursesDisplay::clear_message_buffer()
   return return_val;
 }
 
+// Halt processing and force user input to continue.
+void NCursesDisplay::halt_messages()
+{
+  move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  refresh();
+  getch();  
+}
+
 /*
  **************************************************************
 
@@ -226,6 +234,8 @@ void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
   move(0, 0);
   for (tokenizer<char_separator<char> >::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
+    getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+    
     string current_token = *t_iter;
     getyx(stdscr, cur_y, cur_x);
 
@@ -253,6 +263,9 @@ void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
 
     printw(current_token.c_str());    
   }
+
+  // Ensure that the last coordinates from the message buffer are up to date.
+  getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
 
   // Reset the cursor.
   if (reset_cursor)

@@ -66,7 +66,7 @@
 1322935319 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1330895350 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1338035813 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -940,7 +940,7 @@
 1327846873 source:c:\cygwin\home\julian\jrcpp\engine\source\mapregistry.cpp
 	"MapRegistry.hpp"
 
-1337950306 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+1338036754 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
 	"Conversion.hpp"
 	"MapUtils.hpp"
 	<iostream>
@@ -954,7 +954,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1328406119 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1338035099 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -992,7 +992,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
 
-1335319529 source:c:\cygwin\home\julian\jrcpp\engine\source\religionmanager.cpp
+1338036214 source:c:\cygwin\home\julian\jrcpp\engine\source\religionmanager.cpp
 	"ReligionManager.hpp"
 	"Game.hpp"
 
@@ -1780,10 +1780,11 @@
 	"MapUtils.hpp"
 	"MessageManager.hpp"
 
-1337521711 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\playerdeathmanager.cpp
+1338036187 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\playerdeathmanager.cpp
 	"Game.hpp"
 	"MessageManager.hpp"
 	"PlayerDeathManager.hpp"
+	"ReligionManager.hpp"
 
 1337864123 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
 	"NPCDecisionStrategy.hpp"

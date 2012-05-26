@@ -8,7 +8,8 @@ class MessageManager
     static MessageManager* instance();
 
     void clear_if_necessary();
-    void send();
+    void send(const bool halt_afterwards = false);
+    void send_and_halt();
 		bool add_new_message(const std::string& message, const MessageImportance& importance = MessageImportance_Normal);
 		Messages get_unread_messages() const;
 		Messages get_unread_messages_and_mark_as_read();

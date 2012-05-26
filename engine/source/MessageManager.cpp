@@ -57,7 +57,7 @@ void MessageManager::clear_if_necessary()
   Send the currently-unread messages to the display.
 
  *********************************************************************/
-void MessageManager::send()
+void MessageManager::send(const bool halt_after)
 {
   Messages unread_messages = get_unread_messages_and_mark_as_read();
   string message_text;
@@ -75,6 +75,16 @@ void MessageManager::send()
     
     buffer_has_messages = true;
   }
+  
+  if (halt_after)
+  {
+    user_display->halt_messages();
+  }
+}
+
+void MessageManager::send_and_halt()
+{
+  send(true);
 }
 /*
  *********************************************************************
