@@ -20,6 +20,8 @@ class NCursesDisplay : public Display
 
     void add_message(const std::string& message);
     void add_message(const std::string& message, bool reset_prompt);
+    
+    void halt_messages();
 
 	  void draw(const DisplayMap& current_map);
 
@@ -75,6 +77,9 @@ class NCursesDisplay : public Display
 
     int MAP_START_ROW;
     int MAP_START_COL;
+    
+    int MSG_BUFFER_LAST_Y;
+    int MSG_BUFFER_LAST_X;
 
     // The display is represented as a stack of windows in ncurses; the game window is the lowest, and any menus
     // or submenus are layered as new windows on top of that.  Each time a Menu is done, a window is popped off

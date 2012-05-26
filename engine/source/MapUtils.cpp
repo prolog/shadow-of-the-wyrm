@@ -59,6 +59,7 @@ Direction MapUtils::get_direction(const Coordinate& start, const Coordinate& end
     {
       d = DIRECTION_EAST;
     }
+    else
     {
       d = DIRECTION_WEST;
     }

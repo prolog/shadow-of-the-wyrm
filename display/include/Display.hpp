@@ -44,6 +44,9 @@ class Display
 
     // Add a message to display to the user
     virtual void add_message(const std::string& message) = 0;
+    
+    // Halt the messages - require some form of input from the user to continue
+    virtual void halt_messages() = 0;
 
     // Draws the map
 	  virtual void draw(const DisplayMap& current_map) = 0;
