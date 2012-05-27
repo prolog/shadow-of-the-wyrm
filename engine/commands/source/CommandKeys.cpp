@@ -11,23 +11,32 @@ CommandKeys::~CommandKeys()
 }
 
 // Initialize the command keys
-string CommandKeys::QUIT           = "QUIT";
-string CommandKeys::VERSION        = "VERSION";
-string CommandKeys::MOVE_NORTHWEST = "MOVE_NORTHWEST";
-string CommandKeys::MOVE_NORTH     = "MOVE_NORTH";
-string CommandKeys::MOVE_NORTHEAST = "MOVE_NORTHEAST";
-string CommandKeys::MOVE_WEST      = "MOVE_WEST";
-string CommandKeys::SEARCH         = "SEARCH";
-string CommandKeys::MOVE_EAST      = "MOVE_EAST";
-string CommandKeys::MOVE_SOUTHWEST = "MOVE_SOUTHWEST";
-string CommandKeys::MOVE_SOUTH     = "MOVE_SOUTH";
-string CommandKeys::MOVE_SOUTHEAST = "MOVE_SOUTHEAST";
-string CommandKeys::MOVE_UP        = "MOVE_UP";
-string CommandKeys::MOVE_DOWN      = "MOVE_DOWN";
-string CommandKeys::PICK_UP_ITEM   = "PICK_UP_ITEM";
-string CommandKeys::DROP_ITEM      = "DROP_ITEM";
-string CommandKeys::CHAR_DUMP      = "CHAR_DUMP";
-string CommandKeys::INVENTORY      = "INVENTORY";
+const string CommandKeys::QUIT           = "QUIT";
+const string CommandKeys::VERSION        = "VERSION";
+const string CommandKeys::MOVE_NORTHWEST = "MOVE_NORTHWEST";
+const string CommandKeys::MOVE_NORTH     = "MOVE_NORTH";
+const string CommandKeys::MOVE_NORTHEAST = "MOVE_NORTHEAST";
+const string CommandKeys::MOVE_WEST      = "MOVE_WEST";
+const string CommandKeys::SEARCH         = "SEARCH";
+const string CommandKeys::MOVE_EAST      = "MOVE_EAST";
+const string CommandKeys::MOVE_SOUTHWEST = "MOVE_SOUTHWEST";
+const string CommandKeys::MOVE_SOUTH     = "MOVE_SOUTH";
+const string CommandKeys::MOVE_SOUTHEAST = "MOVE_SOUTHEAST";
+const string CommandKeys::MOVE_UP        = "MOVE_UP";
+const string CommandKeys::MOVE_DOWN      = "MOVE_DOWN";
+const string CommandKeys::PICK_UP_ITEM   = "PICK_UP_ITEM";
+const string CommandKeys::DROP_ITEM      = "DROP_ITEM";
+const string CommandKeys::CHAR_DUMP      = "CHAR_DUMP";
+const string CommandKeys::INVENTORY      = "INVENTORY";
+
+const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
+const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";
+const string CommandKeys::ATTACK_NORTHEAST = "ATTACK_NORTHEAST";
+const string CommandKeys::ATTACK_WEST      = "ATTACK_WEST";
+const string CommandKeys::ATTACK_EAST      = "ATTACK_EAST";
+const string CommandKeys::ATTACK_SOUTHWEST = "ATTACK_SOUTHWEST";
+const string CommandKeys::ATTACK_SOUTH     = "ATTACK_SOUTH";
+const string CommandKeys::ATTACK_SOUTHEAST = "ATTACK_SOUTHEAST";
 
 bool CommandKeys::is_movement_type_key(const string& key)
 {
@@ -46,4 +55,23 @@ bool CommandKeys::is_movement_type_key(const string& key)
   }
 
   return is_movement;
+}
+
+bool CommandKeys::is_attack_type_key(const string& key)
+{
+  bool is_attack = false;
+
+  if ((key == CommandKeys::ATTACK_NORTHWEST)
+   || (key == CommandKeys::ATTACK_NORTH)
+   || (key == CommandKeys::ATTACK_NORTHEAST)
+   || (key == CommandKeys::ATTACK_WEST)
+   || (key == CommandKeys::ATTACK_EAST)
+   || (key == CommandKeys::ATTACK_SOUTHWEST)
+   || (key == CommandKeys::ATTACK_SOUTH)
+   || (key == CommandKeys::ATTACK_SOUTHEAST))
+  {
+    is_attack = true;
+  }
+
+  return is_attack;
 }

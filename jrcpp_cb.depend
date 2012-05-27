@@ -285,7 +285,7 @@
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommands.hpp"
 
-1329231051 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
+1338124397 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
 1330137756 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
@@ -309,7 +309,7 @@
 	"InventoryCommandFactory.hpp"
 	"InventoryCommandKeys.hpp"
 
-1329581006 source:c:\cygwin\home\julian\jrcpp\engine\commands\inventory\source\inventorycommandkeys.cpp
+1338124419 source:c:\cygwin\home\julian\jrcpp\engine\commands\inventory\source\inventorycommandkeys.cpp
 	"InventoryCommandKeys.hpp"
 
 1330137397 source:c:\cygwin\home\julian\jrcpp\engine\commands\inventory\source\inventorycommandprocessor.cpp
@@ -340,17 +340,17 @@
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1328970201 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1338129352 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1330133902 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1338125280 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Commands.hpp"
 	"Game.hpp"
 
-1328970297 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1338123921 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -377,7 +377,7 @@
 	"SkillsDumper.hpp"
 	"StatsDumper.hpp"
 
-1329229963 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
+1338123804 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
 	<ctype.h>
 	<boost/lexical_cast.hpp>
 	<boost/uuid/uuid_io.hpp>
@@ -836,7 +836,7 @@
 	"StringTable.hpp"
 	"WelcomeScreen.hpp"
 
-1337430846 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
+1338125375 source:c:\cygwin\home\julian\jrcpp\engine\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
@@ -889,7 +889,7 @@
 1327247299 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1337949613 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1338129040 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"Conversion.hpp"
@@ -954,7 +954,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1338035099 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1338046976 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -965,7 +965,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\messages_test.cpp
 	"gtest/gtest.h"
 
-1337950691 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
+1338128968 source:c:\cygwin\home\julian\jrcpp\engine\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
@@ -1015,7 +1015,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1337949993 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1338047239 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
@@ -1674,7 +1674,7 @@
 1335832775 source:c:\cygwin\home\julian\jrcpp\controller\source\nullkeyboardcontroller.cpp
 	"NullKeyboardController.hpp"
 
-1337907921 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
+1338125104 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
 	<string>
 	<sstream>
 	<boost/foreach.hpp>
@@ -1711,7 +1711,7 @@
 	"Conversion.hpp"
 	"Dice.hpp"
 
-1337910325 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1338125805 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"

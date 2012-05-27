@@ -16,6 +16,33 @@ CombatManager::CombatManager()
 {
 }
 
+bool CombatManager::attack(CreaturePtr creature, const Direction d)
+{
+  bool attack_success = false;
+  
+  Game* game = Game::instance();
+
+  if (game)
+  {
+    MapPtr map = game->get_current_map();
+    
+    Coordinate creature_location = map->get_location(creature->get_id());
+    Coordinate new_coords = MapUtils::get_new_coordinate(creature_location, d);
+    TilePtr adjacent_tile = map->at(new_coords.first, new_coords.second);
+
+    // Do the necessary checks here to determine whether to attack...
+    CreaturePtr adjacent_creature = adjacent_tile->get_creature();
+    
+    // Sanity check
+    if (adjacent_creature)
+    {
+      attack_success = attack(creature, adjacent_creature);
+    }
+  }
+  
+  return attack_success;
+}
+
 // Attempt to attack.
 //
 // An attack is successful if:

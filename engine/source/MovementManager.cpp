@@ -23,10 +23,10 @@ MovementManager::~MovementManager()
 bool MovementManager::move(CreaturePtr creature, const Direction direction)
 {
   bool movement_success = false;
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
 
-  if (creature && game)
+  Game* game = Game::instance();
+
+  if (game && creature)
   {
     MapPtr map = game->get_current_map();
     
@@ -41,50 +41,7 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
     // Otherwise, move the creature.
     if (!MapUtils::is_valid_move(map->size(), creature_location, direction))
     {
-      MapExitPtr map_exit = map->get_map_exit();
-      
-      if (!MapUtils::can_exit_map(map_exit))
-      {
-        if (creature->get_is_player())
-        { 
-          string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
-
-          manager->add_new_message(movement_message);
-          manager->send();
-        }
-      }
-      else
-      {
-        if (creature->get_is_player())
-        {
-          string leave_area = TextMessages::get_confirmation_message(TextKeys::DECISION_LEAVE_AREA);
-          game->display->confirm(leave_area);
-        
-          if (creature->get_decision_strategy()->get_confirmation())
-          {
-            move_to_new_map(map_exit);
-            movement_success = true;
-          }
-        
-          // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
-          game->display->clear_messages();
-        }
-        // It's an NPC leaving the map - display the exit message.
-        else
-        {
-          // Remove from tile and from map's creatures.
-          creatures_old_tile->remove_creature();
-          map->remove_creature(creature->get_id());
-          
-          string npc_exit_message = TextMessages::get_npc_escapes_message(StringTable::get(creature->get_description_sid()));
-          manager->add_new_message(npc_exit_message);
-          manager->send();
-          
-          movement_success = true;
-          
-          // JCD FIXME: Might cause problems later with many turns.
-        } 
-      }
+      movement_success = move_off_map(creature, map, creatures_old_tile);
     }
     // Otherwise, it's a regular move within the current map.
     else
@@ -92,39 +49,108 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
       Coordinate new_coords = MapUtils::get_new_coordinate(creature_location, direction);
       TilePtr creatures_new_tile = map->at(new_coords.first, new_coords.second);
       
-      if (creatures_new_tile)
+      movement_success = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords);
+    }
+  }
+  
+  return movement_success;
+}
+
+bool MovementManager::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile)
+{
+  bool movement_success = false;
+
+  Game* game = Game::instance();
+  MessageManager* manager = MessageManager::instance();  
+  MapExitPtr map_exit = map->get_map_exit();
+
+  if (game && manager)
+  {
+    if (!MapUtils::can_exit_map(map_exit))
+    {
+      if (creature->get_is_player())
+      { 
+        string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
+
+        manager->add_new_message(movement_message);
+        manager->send();
+      }
+    }
+    else
+    {
+      if (creature->get_is_player())
       {
-        if (MapUtils::is_blocking_feature_present(creatures_new_tile))
+        string leave_area = TextMessages::get_confirmation_message(TextKeys::DECISION_LEAVE_AREA);
+        game->display->confirm(leave_area);
+      
+        if (creature->get_decision_strategy()->get_confirmation())
         {
-          string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
-          manager->add_new_message(blocked);
-          manager->send();
-          
-          movement_success = false;
-        }
-        else if (MapUtils::is_creature_present(creatures_new_tile))
-        {
-          movement_success = false;
-          
-          // Do the necessary checks here to determine whether to attack...
-          CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
-          
-          // Sanity check
-          if (adjacent_creature)
-          {
-            CombatManager cm;
-            movement_success = cm.attack(creature, adjacent_creature);
-          }
-        }
-        else
-        {
-          // Update the map info
-          MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
-          TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
-          add_tile_related_messages(creature, manager, new_tile);
+          move_to_new_map(map_exit);
           movement_success = true;
         }
+      
+        // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
+        game->display->clear_messages();
       }
+      // It's an NPC leaving the map - display the exit message.
+      else
+      {
+        // Remove from tile and from map's creatures.
+        creatures_old_tile->remove_creature();
+        map->remove_creature(creature->get_id());
+        
+        string npc_exit_message = TextMessages::get_npc_escapes_message(StringTable::get(creature->get_description_sid()));
+        manager->add_new_message(npc_exit_message);
+        manager->send();
+        
+        movement_success = true;
+        
+        // JCD FIXME: Might cause problems later with many turns.
+      } 
+    }
+  }
+  
+  return movement_success;
+}
+
+bool MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords)
+{
+  bool movement_success = false;
+
+  Game* game = Game::instance();
+  MessageManager* manager = MessageManager::instance();
+  
+  if (game && manager && creatures_new_tile)
+  {
+    if (MapUtils::is_blocking_feature_present(creatures_new_tile))
+    {
+      string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
+      manager->add_new_message(blocked);
+      manager->send();
+      
+      movement_success = false;
+    }
+    else if (MapUtils::is_creature_present(creatures_new_tile))
+    {
+      movement_success = false;
+      
+      // Do the necessary checks here to determine whether to attack...
+      CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
+      
+      // Sanity check
+      if (adjacent_creature)
+      {
+        CombatManager cm;
+        movement_success = cm.attack(creature, adjacent_creature);
+      }
+    }
+    else
+    {
+      // Update the map info
+      MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
+      TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
+      add_tile_related_messages(creature, manager, new_tile);
+      movement_success = true;
     }
   }
   

@@ -1,4 +1,5 @@
 #pragma once
+#include "CombatManager.hpp"
 #include "Creature.hpp"
 #include "Directions.hpp"
 #include "ItemManager.hpp"
@@ -21,6 +22,7 @@ class ActionManager
     void dump_character(CreaturePtr creature);
     bool search(CreaturePtr creature);
     bool move(CreaturePtr creature, const Direction d);
+    bool attack(CreaturePtr creature, const Direction d);
     bool ascend(CreaturePtr creature);
     bool descend(CreaturePtr creature);
 
@@ -39,6 +41,7 @@ class ActionManager
     bool handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
 
   protected:
+    CombatManager combat_manager;
     MovementManager movement_manager;
     ItemManager item_manager;
 };

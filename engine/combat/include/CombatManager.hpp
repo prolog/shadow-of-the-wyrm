@@ -12,6 +12,7 @@ class CombatManager
     CombatManager();
     
     // JCD FIXME make this ActionCost later
+    bool attack(CreaturePtr creature, const Direction d);
     bool attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     
   protected:

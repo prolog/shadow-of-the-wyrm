@@ -17,6 +17,9 @@ class MovementManager
     bool descend(CreaturePtr creature);
     
   protected:
+    bool move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);
+    bool move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords);
+    
     void add_tile_related_messages(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);
     void add_message_about_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);
     void add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);

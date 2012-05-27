@@ -60,6 +60,13 @@ class SearchCommand : public Command
     ~SearchCommand();
 };
 
+class AttackCommand : public DirectionalCommand
+{
+  public:
+    AttackCommand(const Direction d);
+    ~AttackCommand();
+};
+
 class PickUpCommand : public Command
 {
   public:
