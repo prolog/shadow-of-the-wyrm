@@ -43,6 +43,7 @@ class DirectionEnum
 {
   public:
     static std::string to_string(const Direction d);
+    static std::string to_attack_string(const Direction d);
 
   protected:
     DirectionEnum();

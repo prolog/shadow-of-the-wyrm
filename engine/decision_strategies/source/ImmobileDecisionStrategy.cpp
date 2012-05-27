@@ -43,7 +43,7 @@ CommandPtr ImmobileDecisionStrategy::get_decision_for_map(const std::string& thi
             Direction direction = MapUtils::get_direction(c_this, c_threat);
             
             // create movement command, return.
-            command = make_shared<MovementCommand>(direction);
+            command = make_shared<AttackCommand>(direction);
             return command;
           }
         }

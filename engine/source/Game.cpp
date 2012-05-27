@@ -209,7 +209,7 @@ void Game::go()
   {
     current_map = get_current_map();
     vector<CreaturePtr> map_creatures = current_map->get_creatures();
-
+    
     // FIXME: Right now, I just get the actions of each creature, in order.  This doesn't follow the ultimate
     // model of action costs, etc.
     for (vector<CreaturePtr>::const_iterator c_it = map_creatures.begin(); c_it != map_creatures.end(); c_it++)

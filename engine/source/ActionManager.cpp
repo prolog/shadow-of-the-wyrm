@@ -72,6 +72,11 @@ bool ActionManager::move(CreaturePtr creature, const Direction direction)
   return movement_manager.move(creature, direction);
 }
 
+bool ActionManager::attack(CreaturePtr creature, const Direction direction)
+{
+  return combat_manager.attack(creature, direction);
+}
+
 // Move up a level
 bool ActionManager::ascend(CreaturePtr creature)
 {

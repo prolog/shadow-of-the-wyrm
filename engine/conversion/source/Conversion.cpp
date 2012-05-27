@@ -132,6 +132,45 @@ string DirectionEnum::to_string(const Direction d)
   return command_key_direction;
 }
 
+string DirectionEnum::to_attack_string(const Direction d)
+{
+  string command_key_direction;
+
+  switch(d)
+  {
+    case DIRECTION_SOUTH_WEST:
+      command_key_direction = CommandKeys::ATTACK_SOUTHWEST;
+      break;
+    case DIRECTION_SOUTH:
+      command_key_direction = CommandKeys::ATTACK_SOUTH;
+      break;
+    case DIRECTION_SOUTH_EAST:
+      command_key_direction = CommandKeys::ATTACK_SOUTHEAST;
+      break;
+    case DIRECTION_WEST:
+      command_key_direction = CommandKeys::ATTACK_WEST;
+      break;
+    case DIRECTION_EAST:
+      command_key_direction = CommandKeys::ATTACK_EAST;
+      break;
+    case DIRECTION_NORTH_WEST:
+      command_key_direction = CommandKeys::ATTACK_NORTHWEST;
+      break;
+    case DIRECTION_NORTH:
+      command_key_direction = CommandKeys::ATTACK_NORTH;
+      break;
+    case DIRECTION_NORTH_EAST:
+      command_key_direction = CommandKeys::ATTACK_NORTHEAST;
+      break;
+    case DIRECTION_UP:
+    case DIRECTION_DOWN:
+    default:
+      break;
+  }
+
+  return command_key_direction;  
+}
+
 String::String()
 {
 }

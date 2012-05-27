@@ -629,7 +629,7 @@ string TextMessages::get_death_message(const string& deity_death_message_sid)
 {
   string deity_death_message = StringTable::get(deity_death_message_sid);
   string you_die = StringTable::get(TextKeys::DEATH_MESSAGE);
-  string death_message = deity_death_message + "  " + you_die;
+  string death_message = deity_death_message + " " + you_die;
   return death_message;
 }
 

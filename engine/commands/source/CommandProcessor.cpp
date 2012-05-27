@@ -102,12 +102,15 @@ bool CommandProcessor::process_directional_command(CreaturePtr creature, Directi
   {
     Game* game = Game::instance();
     string command_name = command->get_name();
+    Direction direction = command->get_direction();
 
     if (CommandKeys::is_movement_type_key(command_name))
     {
-      Direction movement_direction = command->get_direction();
-
-      return game->actions.move(creature, movement_direction);
+      return game->actions.move(creature, direction);
+    }
+    else if (CommandKeys::is_attack_type_key(command_name))
+    {
+      return game->actions.attack(creature, direction);
     }
   }
   

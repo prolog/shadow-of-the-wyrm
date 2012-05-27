@@ -4,12 +4,12 @@
 class InventoryCommandKeys
 {
   public:
-    static std::string EXIT_INVENTORY;
-    static std::string CLEAR_FILTER;
-    static std::string FILTER_VIEW;
-    static std::string NEXT_PAGE;
-    static std::string PREVIOUS_PAGE;
-    static std::string SELECT_ITEM;
+    static const std::string EXIT_INVENTORY;
+    static const std::string CLEAR_FILTER;
+    static const std::string FILTER_VIEW;
+    static const std::string NEXT_PAGE;
+    static const std::string PREVIOUS_PAGE;
+    static const std::string SELECT_ITEM;
     
   protected:
     InventoryCommandKeys();
