@@ -1674,14 +1674,10 @@
 1335832775 source:c:\cygwin\home\julian\jrcpp\controller\source\nullkeyboardcontroller.cpp
 	"NullKeyboardController.hpp"
 
-1338125104 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
+1338295657 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
 	<string>
 	<sstream>
-	<boost/foreach.hpp>
-	<boost/make_shared.hpp>
-	"Commands.hpp"
 	"ImmobileDecisionStrategy.hpp"
-	"MapUtils.hpp"
 
 1336136339 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationvalues.cpp
 	"CreatureGenerationValues.hpp"
@@ -1786,7 +1782,11 @@
 	"PlayerDeathManager.hpp"
 	"ReligionManager.hpp"
 
-1337864123 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
+1338295657 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
+	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
+	"Commands.hpp"
+	"MapUtils.hpp"
 	"NPCDecisionStrategy.hpp"
 
 1337547477 source:c:\cygwin\home\julian\jrcpp\world\source\threatratings.cpp
