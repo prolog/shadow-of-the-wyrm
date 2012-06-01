@@ -1,9 +1,11 @@
+#include <cmath>
 #include <boost/make_shared.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureGenerationConstants.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "ResistancesCalculator.hpp"
@@ -43,6 +45,11 @@ CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
       Dice initial_hp_range = cgv.get_initial_hit_points();
       Statistic hit_points(RNG::dice(initial_hp_range));
       creature->set_hit_points(hit_points);
+      
+      // Set the exp value to a randomly generated value around the base.
+      uint base_experience_value = cgv.get_base_experience_value();
+      uint actual_experience_value = RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER));
+      creature->set_experience_value(actual_experience_value);
       
       // JCD FIXME: Set the creature hostile to the player.
       DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();

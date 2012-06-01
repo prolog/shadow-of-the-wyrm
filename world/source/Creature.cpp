@@ -14,6 +14,8 @@ Creature::Creature()
 , ivory_pieces(0)
 , symbol('?')
 , colour(COLOUR_WHITE)
+, experience_value(0)
+, experience_points(0)
 // Everything else is a string, Statistic, etc, and is not a primitive type.  These'll have their own constructors.
 // Religion defaults to atheist.
 {
@@ -441,6 +443,26 @@ Religion Creature::get_religion() const
 Religion& Creature::get_religion_ref()
 {
   return religion;
+}
+
+void Creature::set_experience_value(const uint new_experience_value)
+{
+  experience_value = new_experience_value;
+}
+
+uint Creature::get_experience_value() const
+{
+  return experience_value;
+}
+
+void Creature::set_experience_points(const uint new_experience_points)
+{
+  experience_points = new_experience_points;
+}
+
+uint Creature::get_experience_points() const
+{
+  return experience_points;
 }
 
 #ifdef UNIT_TESTS

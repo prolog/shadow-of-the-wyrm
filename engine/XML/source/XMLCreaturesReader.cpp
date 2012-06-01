@@ -149,6 +149,11 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
     Dice dice;
     parse_dice(dice, dice_node);
     cgv.set_initial_hit_points(dice);
+    
+    // Base experience value; a range around this value will be used to generate the experience value
+    // for each generated creature.
+    uint base_experience = XMLUtils::get_child_node_int_value(creature_generation_values_node, "Exp");
+    cgv.set_base_experience_value(base_experience);
   }
   
   return cgv;

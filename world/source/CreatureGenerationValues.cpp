@@ -3,7 +3,9 @@
 using std::set;
 
 CreatureGenerationValues::CreatureGenerationValues()
-: danger_level(0), rarity(RARITY_COMMON)
+: danger_level(0), 
+rarity(RARITY_COMMON), 
+base_experience_value(0)
 {
 }
 
@@ -64,4 +66,14 @@ void CreatureGenerationValues::set_initial_hit_points(const Dice& new_initial_hi
 Dice CreatureGenerationValues::get_initial_hit_points() const
 {
   return initial_hit_points;
+}
+
+void CreatureGenerationValues::set_base_experience_value(const uint new_base_experience)
+{
+  base_experience_value = new_base_experience;
+}
+
+uint CreatureGenerationValues::get_base_experience_value() const
+{
+  return base_experience_value;
 }
