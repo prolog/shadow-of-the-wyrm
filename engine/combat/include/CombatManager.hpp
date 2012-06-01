@@ -22,7 +22,7 @@ class CombatManager
     bool miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     bool close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
     
-    void deal_damage(CreaturePtr attacked_creature, const int damage_dealt);
+    void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt);
     
     void add_any_necessary_damage_messages(const int damage);
     void add_combat_message(const std::string& message);

@@ -265,6 +265,7 @@
 		<Unit filename="engine\combat\include\CreatureDeathManager.hpp" />
 		<Unit filename="engine\combat\include\DeathManager.hpp" />
 		<Unit filename="engine\combat\include\DeathManagerFactory.hpp" />
+		<Unit filename="engine\combat\include\ExperienceManager.hpp" />
 		<Unit filename="engine\combat\include\PlayerDeathManager.hpp" />
 		<Unit filename="engine\combat\include\WeaponManager.hpp" />
 		<Unit filename="engine\combat\source\CombatConstants.cpp" />
@@ -272,6 +273,7 @@
 		<Unit filename="engine\combat\source\CreatureDeathManager.cpp" />
 		<Unit filename="engine\combat\source\DeathManager.cpp" />
 		<Unit filename="engine\combat\source\DeathManagerFactory.cpp" />
+		<Unit filename="engine\combat\source\ExperienceManager.cpp" />
 		<Unit filename="engine\combat\source\PlayerDeathManager.cpp" />
 		<Unit filename="engine\combat\source\WeaponManager.cpp" />
 		<Unit filename="engine\combat\source\unit_tests\CombatManager_test.cpp">
@@ -455,7 +457,9 @@
 		<Unit filename="engine\include\ActionManager.hpp" />
 		<Unit filename="engine\include\CreationUtils.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
+		<Unit filename="engine\include\CreatureGenerationConstants.hpp" />
 		<Unit filename="engine\include\CreatureGenerationManager.hpp" />
+		<Unit filename="engine\include\CreatureGenerationValues.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
 		<Unit filename="engine\include\Directions.hpp" />
 		<Unit filename="engine\include\EquipmentManager.hpp" />
@@ -506,6 +510,7 @@
 		<Unit filename="engine\source\ActionManager.cpp" />
 		<Unit filename="engine\source\CreationUtils.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
+		<Unit filename="engine\source\CreatureGenerationConstants.cpp" />
 		<Unit filename="engine\source\CreatureGenerationManager.cpp" />
 		<Unit filename="engine\source\Dimensions.cpp" />
 		<Unit filename="engine\source\EquipmentManager.cpp" />
@@ -584,7 +589,6 @@
 		<Unit filename="world\include\Consumable.hpp" />
 		<Unit filename="world\include\Creature.hpp" />
 		<Unit filename="world\include\CreatureFeatures.hpp" />
-		<Unit filename="world\include\CreatureGenerationValues.hpp" />
 		<Unit filename="world\include\Damage.hpp" />
 		<Unit filename="world\include\DamageTypes.hpp" />
 		<Unit filename="world\include\Dice.hpp" />

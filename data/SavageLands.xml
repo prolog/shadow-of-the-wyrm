@@ -1896,6 +1896,7 @@
 					<NumDice>2</NumDice>
 					<NumSides>3</NumSides>
 				</HP>
+				<Exp>2</Exp>
 			</CreatureGeneration>
 			<Level>1</Level>
 			<Damage>

@@ -165,6 +165,14 @@ class Creature
     void set_religion(const Religion& new_religion);
     Religion get_religion() const;
     Religion& get_religion_ref();
+    
+    // Experience value when killed
+    void set_experience_value(const uint new_experience_value);
+    uint get_experience_value() const;
+    
+    // Creature's current experience
+    void set_experience_points(const uint new_experience_points);
+    uint get_experience_points() const;
 
   protected:
 
@@ -244,6 +252,12 @@ class Creature
     
     // Religious data
     Religion religion;
+    
+    // Experience gained by attacker when this creature is killed.
+    uint experience_value;
+    
+    // The creature's overall experience
+    uint experience_points;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

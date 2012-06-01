@@ -30,6 +30,9 @@ class CreatureGenerationValues
     
     void set_initial_hit_points(const Dice& new_initial_hit_points);
     Dice get_initial_hit_points() const;
+    
+    void set_base_experience_value(const uint new_base_experience_value);
+    uint get_base_experience_value() const;
 
   protected:
     // The terrain types in which the creature can be generated
@@ -45,6 +48,10 @@ class CreatureGenerationValues
     // A range used to randomly generate a creature's hit points every time an instance
     // is created from the template.
     Dice initial_hit_points;
+    
+    // The base experience value.  Stored here so that a slightly different value can
+    // be generated for each creature.
+    uint base_experience_value;
 };
 
 typedef std::map<std::string, CreatureGenerationValues> CreatureGenerationValuesMap;

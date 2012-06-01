@@ -2,6 +2,7 @@
 #include "CombatManager.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
@@ -122,7 +123,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
     base_damage = RNG::dice(damage_info);
   }
   
-  // Deal damage.  JCD FIXME HANDLE MIGHTY BLOWS AND CRITICALS
+  // Deal damage.
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
   int damage_dealt = damage_calc->calculate(attacked_creature, damage_info, base_damage, soak_multiplier);
 
@@ -130,8 +131,16 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   add_combat_message(combat_message);
   add_any_necessary_damage_messages(damage_dealt);
 
-  // Deal the damage, handling death if necessary.
-  deal_damage(attacked_creature, damage_dealt);
+  if (damage_dealt > 0)
+  {
+    // Deal the damage, handling death if necessary.
+    deal_damage(attacking_creature, attacked_creature, damage_dealt);
+  }
+  else
+  {
+    string no_damage_message = CombatTextKeys::get_no_damage_message(attacked_creature->get_is_player(), StringTable::get(attacked_creature->get_description_sid()));
+    add_combat_message(no_damage_message);
+  }
 
   return true;
 }
@@ -140,16 +149,16 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 // positive or negative.
 //
 // Healing is for extreme resistance cases, like casting fireball on a fire elemental.
-void CombatManager::deal_damage(CreaturePtr attacked_creature, const int damage_dealt)
+//
+// Once damage is dealt, check for death.  If the attack has lowered the attacked creature's
+// HP to 0, kill it, and award the dead creature's experience value to the attacking
+// creature.
+void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt)
 {
   Game* game = Game::instance();
   MapPtr map = game->get_current_map();
   
-  if (!damage_dealt)
-  {
-    // JCD FIXME: Message here.
-  }
-  else if (map && attacked_creature)
+  if (map && attacking_creature && attacked_creature)
   {
     Statistic hp   = attacked_creature->get_hit_points();
     int current_hp = hp.get_current();
@@ -159,8 +168,13 @@ void CombatManager::deal_damage(CreaturePtr attacked_creature, const int damage_
     
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
     {
+      uint experience_value = attacked_creature->get_experience_value();
+      
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacked_creature, map);
-      death_manager->die();      
+      death_manager->die();
+      
+      ExperienceManager em;
+      em.gain_experience(attacking_creature, experience_value);
     }
   }
 }

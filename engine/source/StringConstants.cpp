@@ -954,6 +954,24 @@ string CombatTextKeys::get_monster_death_message(const std::string& monster_name
   return death_message;
 }
 
+string CombatTextKeys::get_no_damage_message(const bool is_player, const string& target)
+{
+  string no_damage_message;
+  
+  if (is_player)
+  {
+    no_damage_message = StringTable::get(CombatTextKeys::COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE);
+    boost::replace_first(no_damage_message, "%s", StringTable::get(TextKeys::YOU));
+  }
+  else
+  {
+    no_damage_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE);
+    boost::replace_first(no_damage_message, "%s", target);
+  }
+  
+  return no_damage_message;
+}
+
 void CombatTextKeys::populate_combat_messages()
 {
   combat_damage_hit_messages.insert(make_pair(create_key(0, DAMAGE_TYPE_SLASH), CombatTextKeys::COMBAT_HIT_SLASH_NP));
@@ -1006,6 +1024,8 @@ string CombatTextKeys::create_key(const bool is_player, const DamageType damage_
   return ss.str();
 }
 
+const string CombatTextKeys::COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE  = "COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE";
+const string CombatTextKeys::COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE = "COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE";
 const string CombatTextKeys::COMBAT_MONSTER_DEATH_MESSAGE  = "COMBAT_MONSTER_DEATH_MESSAGE";
 const string CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE     = "COMBAT_CLOSE_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE_NP  = "COMBAT_CLOSE_MISS_MESSAGE_NP"; 
