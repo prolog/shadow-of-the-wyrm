@@ -4,17 +4,17 @@
 using namespace std;
 
 Class::Class()
+: strength_modifier(0)
+, dexterity_modifier(0)
+, agility_modifier(0)
+, health_modifier(0)
+, intelligence_modifier(0)
+, willpower_modifier(0)
+, charisma_modifier(0)
+, user_playable(false)
+, hit_dice(1)
+, ap_dice(0)
 {
-  class_id = "";
-  strength_modifier = 0;
-  dexterity_modifier = 0;
-  agility_modifier = 0;
-  health_modifier = 0;
-  intelligence_modifier = 0;
-  willpower_modifier = 0;
-  charisma_modifier = 0;
-  user_playable = false;
-  experience_multiplier = 1.0;
 }
 
 Class::~Class()
@@ -191,6 +191,26 @@ float Class::get_experience_multiplier() const
   return experience_multiplier;
 }
 
+void Class::set_hit_dice(const uint new_hit_dice)
+{
+  hit_dice = new_hit_dice;
+}
+
+uint Class::get_hit_dice() const
+{
+  return hit_dice;
+}
+
+void Class::set_ap_dice(const uint new_ap_dice)
+{
+  ap_dice = new_ap_dice;
+}
+
+uint Class::get_ap_dice() const
+{
+  return ap_dice;
+}
+
 string Class::str() const
 {
   ostringstream class_details;
@@ -200,6 +220,7 @@ string Class::str() const
   string class_abrv_value = StringTable::get(class_abbreviation_sid);
 
   class_details << class_id << endl;
+  class_details << hit_dice << " " << ap_dice << endl;
   class_details << starting_valour.get_base() << " " << starting_spirit.get_base() << endl;
   class_details << strength_modifier << " " << dexterity_modifier << " " << agility_modifier << " " << health_modifier << " " << intelligence_modifier << " " << willpower_modifier << " " << charisma_modifier << endl;
   class_details << class_name_value << endl;

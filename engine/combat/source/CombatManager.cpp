@@ -160,11 +160,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
   
   if (map && attacking_creature && attacked_creature)
   {
-    Statistic hp   = attacked_creature->get_hit_points();
-    int current_hp = hp.get_current();
-    current_hp    -= damage_dealt;
-    hp.set_current(current_hp);
-    attacked_creature->set_hit_points(hp);
+    int current_hp = attacked_creature->decrement_hit_points(damage_dealt);
     
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
     {
@@ -264,7 +260,7 @@ bool CombatManager::is_miss(const int total_roll, const int target_number_value)
 
 bool CombatManager::is_close_miss(const int total_roll, const int target_number_value)
 {
-  return (is_miss(total_roll, target_number_value) && ((target_number_value - total_roll) > CombatConstants::CLOSE_MISS_THRESHOLD));
+  return (is_miss(total_roll, target_number_value) && ((target_number_value - total_roll) < CombatConstants::CLOSE_MISS_THRESHOLD));
 }
 
 bool CombatManager::is_automatic_miss(const int d100_roll)

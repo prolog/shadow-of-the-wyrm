@@ -268,8 +268,9 @@
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
 			<xs:element ref="tns:ClassInitialStatistics"/>
-
 			<xs:element ref="tns:ClassInitialModifiers"/>
+			<xs:element name="HitDice" type="xs:unsignedInt"/>
+			<xs:element name="APDice" type="xs:unsignedInt"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>

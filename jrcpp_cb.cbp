@@ -266,6 +266,7 @@
 		<Unit filename="engine\combat\include\DeathManager.hpp" />
 		<Unit filename="engine\combat\include\DeathManagerFactory.hpp" />
 		<Unit filename="engine\combat\include\ExperienceManager.hpp" />
+		<Unit filename="engine\combat\include\LevelConstants.hpp" />
 		<Unit filename="engine\combat\include\PlayerDeathManager.hpp" />
 		<Unit filename="engine\combat\include\WeaponManager.hpp" />
 		<Unit filename="engine\combat\source\CombatConstants.cpp" />
@@ -274,6 +275,7 @@
 		<Unit filename="engine\combat\source\DeathManager.cpp" />
 		<Unit filename="engine\combat\source\DeathManagerFactory.cpp" />
 		<Unit filename="engine\combat\source\ExperienceManager.cpp" />
+		<Unit filename="engine\combat\source\LevelConstants.cpp" />
 		<Unit filename="engine\combat\source\PlayerDeathManager.cpp" />
 		<Unit filename="engine\combat\source\WeaponManager.cpp" />
 		<Unit filename="engine\combat\source\unit_tests\CombatManager_test.cpp">

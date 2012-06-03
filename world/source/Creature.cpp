@@ -335,14 +335,16 @@ void Creature::set_hit_points(const Statistic& new_hit_points)
   hit_points = new_hit_points;
 }
 
-void Creature::increment_hit_points(const int amount)
+int Creature::increment_hit_points(const int amount)
 {
   hit_points.set_current(hit_points.get_current() + amount);
+  return hit_points.get_current();
 }
 
-void Creature::decrement_hit_points(const int amount)
+int Creature::decrement_hit_points(const int amount)
 {
   hit_points.set_current(hit_points.get_current() - amount);
+  return hit_points.get_current();
 }
 
 Statistic Creature::get_hit_points() const

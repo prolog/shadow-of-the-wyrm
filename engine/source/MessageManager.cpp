@@ -69,11 +69,14 @@ void MessageManager::send(const bool halt_after)
     BOOST_FOREACH(Message m, messages)
     {
       message_text = message_text + m.get_content() + " ";
+      buffer_has_messages = true;
     }
 
-    user_display->add_message(message_text);
-    
-    buffer_has_messages = true;
+    // Don't immediately clear, and only send text if the message buffer has something.
+    if (!message_text.empty())
+    {
+      user_display->add_message(message_text, false);
+    }
   }
   
   if (halt_after)

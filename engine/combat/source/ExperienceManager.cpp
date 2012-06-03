@@ -1,9 +1,13 @@
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
+#include "LevelConstants.hpp"
+#include "MessageManager.hpp"
+#include "RNG.hpp"
 
 using std::string;
 
-// The experience table, owned as a static member by the manager
+// The experience table, owned as a static member by the manager.
+// Ideally, the only C-style array in the entire game.
 const uint ExperienceManager::base_experience_table[] = 
 {
 /* L1-10  */  0,10,25,50,90,150,220,350,500,700,
@@ -35,7 +39,7 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
     
     if (can_gain_level(creature))
     {
-      gain_level(creature);
+      level_up(creature);
     }
     
     experience_gained = true;
@@ -102,6 +106,27 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
 }
 
 // Gain a level, increase HP/AP, and do anything else that needs to be done.
+void ExperienceManager::level_up(CreaturePtr creature)
+{
+  MessageManager* manager = MessageManager::instance();
+  
+  if (creature && manager)
+  {
+    gain_level(creature);
+    gain_hp_and_ap(creature);
+    gain_statistics_if_necessary(creature);
+    
+    if (creature->get_is_player())
+    {
+      string level_up_message = StringTable::get(TextKeys::GAIN_LEVEL);
+      manager->add_new_message(level_up_message);
+      manager->send();
+      
+      // Should monsters' level-ups be broadcast?
+    }    
+  }
+}
+
 void ExperienceManager::gain_level(CreaturePtr creature)
 {
   if (creature)
@@ -123,5 +148,47 @@ void ExperienceManager::gain_level(CreaturePtr creature)
     }
     
     creature->set_level(level);
+  }
+}
+
+void ExperienceManager::gain_hp_and_ap(CreaturePtr creature)
+{
+  if (creature)
+  {
+    uint hit_dice = LevelConstants::DEFAULT_HIT_DICE;
+    uint ap_dice  = LevelConstants::DEFAULT_AP_DICE;
+
+    string class_id = creature->get_class_id();
+    Game* game = Game::instance();
+    
+    if (game && !class_id.empty())
+    {
+      ClassMap class_map = game->get_classes_ref();
+      ClassPtr current_class = class_map[class_id];
+      
+      hit_dice = current_class->get_hit_dice();
+      ap_dice = current_class->get_ap_dice();
+    }
+
+    uint hp_gained = RNG::dice(1, hit_dice, 2);
+    uint ap_gained = RNG::dice(1, ap_dice);
+    
+    Statistic hp = creature->get_hit_points();
+    hp.set_base(hp.get_base() + hp_gained);
+    hp.set_current(hp.get_current() + hp_gained);
+    creature->set_hit_points(hp);
+    
+    Statistic ap = creature->get_arcana_points();
+    ap.set_base(ap.get_base() + ap_gained);
+    ap.set_current(ap.get_current() + ap_gained);
+    creature->set_arcana_points(ap);
+  }
+}
+
+void ExperienceManager::gain_statistics_if_necessary(CreaturePtr creature)
+{
+  if (creature)
+  {
+    // JCD FIXME
   }
 }

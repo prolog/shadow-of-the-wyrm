@@ -2,6 +2,7 @@
 #include <boost/shared_ptr.hpp>
 #include <map>
 #include <string>
+#include "common.hpp"
 #include "Resistances.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
@@ -63,6 +64,13 @@ class Class
     void set_experience_multiplier(const float new_multiplier);
     float get_experience_multiplier() const;
 
+    // Hit and AP dice.
+    void set_hit_dice(const uint new_hit_dice);
+    uint get_hit_dice() const;
+
+    void set_ap_dice(const uint new_ap_dice);
+    uint get_ap_dice() const;
+
     std::string str() const;
 
   protected:
@@ -88,6 +96,10 @@ class Class
 
     bool user_playable;
     float experience_multiplier;
+    
+    // The dice to use each level for a creature's HP and AP
+    uint hit_dice;
+    uint ap_dice;
 };
 
 typedef boost::shared_ptr<Class> ClassPtr;

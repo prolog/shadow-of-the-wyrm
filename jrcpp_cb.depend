@@ -66,7 +66,7 @@
 1322935319 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1338035813 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1338726539 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -104,7 +104,7 @@
 1334667293 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlbookreader.cpp
 	"XMLBookReader.hpp"
 
-1321456657 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
+1338642188 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"Resistances.hpp"
@@ -251,7 +251,7 @@
 	"ResistancesCalculator.hpp"
 	"unit_tests/ResistancesCalculator_test.cpp"
 
-1326554227 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\resistancescalculator_test.cpp
+1338726922 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\resistancescalculator_test.cpp
 	"gtest/gtest.h"
 
 1322232379 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\skillscalculator.cpp
@@ -891,7 +891,7 @@
 1327247299 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1338129040 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1338643380 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"Conversion.hpp"
@@ -956,7 +956,7 @@
 1321456658 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1338046976 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1338644137 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -1017,7 +1017,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1338555249 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1338642674 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"StringTable.hpp"
@@ -1177,14 +1177,14 @@
 1334148974 source:c:\cygwin\home\julian\jrcpp\world\source\book.cpp
 	"Book.hpp"
 
-1321456652 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
+1338641917 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
 	<sstream>
 	"Class.hpp"
 
 1326813431 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1338467556 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1338641382 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -1709,7 +1709,7 @@
 	"Conversion.hpp"
 	"Dice.hpp"
 
-1338555217 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1338726762 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"
@@ -1817,7 +1817,13 @@
 1338382849 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationconstants.cpp
 	"CreatureGenerationConstants.hpp"
 
-1338554376 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\experiencemanager.cpp
+1338642014 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\experiencemanager.cpp
 	"ExperienceManager.hpp"
 	"Game.hpp"
+	"LevelConstants.hpp"
+	"MessageManager.hpp"
+	"RNG.hpp"
+
+1338641524 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\levelconstants.cpp
+	"LevelConstants.hpp"
 
