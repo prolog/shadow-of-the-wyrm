@@ -121,6 +121,7 @@ const string TextKeys::DECISION_DENY_KEY = "DECISION_DENY_KEY";
 const string TextKeys::DECISION_LEAVE_AREA = "DECISION_LEAVE_AREA";
 const string TextKeys::DECISION_QUIT_GAME = "DECISION_QUIT_GAME";
 
+const string TextKeys::GAIN_LEVEL = "GAIN_LEVEL";
 // Materials
 MaterialTextKeys::MaterialTextKeys()
 {
@@ -969,6 +970,8 @@ string CombatTextKeys::get_no_damage_message(const bool is_player, const string&
     boost::replace_first(no_damage_message, "%s", target);
   }
   
+  no_damage_message[0] = toupper(no_damage_message[0]);
+
   return no_damage_message;
 }
 

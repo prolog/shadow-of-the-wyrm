@@ -11,7 +11,11 @@ class ExperienceManager
     
   protected:
     bool can_gain_level(CreaturePtr creature);
+
+    void level_up(CreaturePtr creature);
     void gain_level(CreaturePtr creature);
+    void gain_hp_and_ap(CreaturePtr creature);
+    void gain_statistics_if_necessary(CreaturePtr creature);
     
     // The actual experience table
     static const uint base_experience_table[];

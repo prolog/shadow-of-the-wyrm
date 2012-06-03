@@ -117,6 +117,10 @@ int NCursesDisplay::clear_message_buffer()
   move(1, 0);
   return_val = clrtoeol();
   
+  // Reset the internal state
+  MSG_BUFFER_LAST_Y = 0;
+  MSG_BUFFER_LAST_X = 0;
+  
   // Reset cursor to original position
   move(orig_curs_y, orig_curs_x);
   refresh();
@@ -226,12 +230,19 @@ void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
   
   int cur_y, cur_x;
 
-  clear_message_buffer();
+  if (reset_cursor)
+  {
+    clear_message_buffer();
+    move(0, 0);
+  }
+  else
+  {
+    move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
+  }
 
   char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
   tokenizer<char_separator<char> > tokens(message, separator);
 
-  move(0, 0);
   for (tokenizer<char_separator<char> >::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
     getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);

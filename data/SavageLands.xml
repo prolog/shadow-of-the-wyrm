@@ -839,6 +839,8 @@
 				<WillpowerModifier>1</WillpowerModifier>
 				<CharismaModifier>-1</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>8</HitDice>
+			<APDice>4</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -894,6 +896,8 @@
 				<WillpowerModifier>1</WillpowerModifier>
 				<CharismaModifier>0</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>6</HitDice>
+			<APDice>6</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -943,6 +947,8 @@
 				 <WillpowerModifier>0</WillpowerModifier>
 				 <CharismaModifier>0</CharismaModifier>
 			</ClassInitialModifiers>		
+			<HitDice>8</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -999,6 +1005,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>0</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>6</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1049,6 +1057,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>2</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>6</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1101,6 +1111,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>2</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>6</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1153,6 +1165,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>0</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>10</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1211,6 +1225,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>0</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>8</HitDice>
+			<APDice>8</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1267,6 +1283,8 @@
 				<WillpowerModifier>2</WillpowerModifier>
 				<CharismaModifier>1</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>6</HitDice>
+			<APDice>10</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1324,6 +1342,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>-1</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>10</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1376,6 +1396,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>-1</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>10</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1443,6 +1465,8 @@
 				<WillpowerModifier>3</WillpowerModifier>
 				<CharismaModifier>0</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>4</HitDice>
+			<APDice>12</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1500,6 +1524,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>-1</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>8</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1554,6 +1580,8 @@
 				<WillpowerModifier>-1</WillpowerModifier>
 				<CharismaModifier>3</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>4</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1605,6 +1633,8 @@
 				<WillpowerModifier>-1</WillpowerModifier>
 				<CharismaModifier>-1</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>10</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1658,6 +1688,8 @@
 				<WillpowerModifier>0</WillpowerModifier>
 				<CharismaModifier>-2</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>6</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1717,6 +1749,8 @@
 				<WillpowerModifier>-1</WillpowerModifier>
 				<CharismaModifier>-1</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>12</HitDice>
+			<APDice>3</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1780,6 +1814,8 @@
 				<WillpowerModifier>4</WillpowerModifier>
 				<CharismaModifier>-3</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>4</HitDice>
+			<APDice>12</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
@@ -1839,6 +1875,8 @@
 				<WillpowerModifier>1</WillpowerModifier>
 				<CharismaModifier>0</CharismaModifier>
 			</ClassInitialModifiers>
+			<HitDice>4</HitDice>
+			<APDice>12</APDice>
 			<Resistances>
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>

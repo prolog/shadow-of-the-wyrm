@@ -119,6 +119,8 @@ class TextKeys
     static const std::string DECISION_DENY_KEY;
     static const std::string DECISION_LEAVE_AREA;
     static const std::string DECISION_QUIT_GAME;
+    
+    static const std::string GAIN_LEVEL;
 
   protected:
     TextKeys();

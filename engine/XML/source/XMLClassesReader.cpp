@@ -57,6 +57,12 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     parse_class_initial_statistics(current_class, initial_statistics_node);
     parse_class_initial_modifiers(current_class, initial_modifiers_node);
 
+    uint hit_dice = XMLUtils::get_child_node_int_value(class_node, "HitDice");
+    current_class->set_hit_dice(hit_dice);
+    
+    uint ap_dice = XMLUtils::get_child_node_int_value(class_node, "APDice");
+    current_class->set_ap_dice(ap_dice);
+
     XMLNode resistances_node = XMLUtils::get_next_element_by_local_name(class_node, "Resistances");
     XMLNode skills_node = XMLUtils::get_next_element_by_local_name(class_node, "Skills");
 

@@ -26,8 +26,8 @@ TEST(SL_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
 
   Resistances calc_resists = ResistancesCalculator::calculate_resistances(creature, racep, classp);
 
-  EXPECT_DOUBLE_EQ(0.20, calc_resists.get_resistance_value(DAMAGE_TYPE_SLASH));
-  EXPECT_DOUBLE_EQ(0.25, calc_resists.get_resistance_value(DAMAGE_TYPE_HOLY));
-  EXPECT_DOUBLE_EQ(0.15, calc_resists.get_resistance_value(DAMAGE_TYPE_POISON));
-  EXPECT_DOUBLE_EQ(0.30, calc_resists.get_resistance_value(DAMAGE_TYPE_LIGHTNING));
+  EXPECT_DOUBLE_EQ(0.80, calc_resists.get_resistance_value(DAMAGE_TYPE_SLASH));
+  EXPECT_DOUBLE_EQ(0.75, calc_resists.get_resistance_value(DAMAGE_TYPE_HOLY));
+  EXPECT_DOUBLE_EQ(0.85, calc_resists.get_resistance_value(DAMAGE_TYPE_POISON));
+  EXPECT_DOUBLE_EQ(0.70, calc_resists.get_resistance_value(DAMAGE_TYPE_LIGHTNING));
 }

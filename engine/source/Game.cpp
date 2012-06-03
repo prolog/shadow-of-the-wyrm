@@ -266,7 +266,7 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
         {
           // JCD FIXME: Update MessageManager::send so it queues nicely, and offers -- more -- when appropriate.
           // JCD FIXME: Right now, it just wipes stuff.
-          MessageManager::instance()->send();
+          MessageManager::instance()->clear_if_necessary();
         }
 
         advance = CommandProcessor::process(current_creature, command, display);

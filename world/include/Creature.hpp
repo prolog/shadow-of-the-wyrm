@@ -128,8 +128,8 @@ class Creature
     // Set/get point-based statistics
 
     void set_hit_points(const Statistic& new_hit_points);
-    void increment_hit_points(int amount);
-    void decrement_hit_points(int amount);
+    int increment_hit_points(int amount);
+    int decrement_hit_points(int amount);
     Statistic get_hit_points() const;
 
     void set_arcana_points(const Statistic& new_arcana_points);
@@ -173,7 +173,7 @@ class Creature
     // Creature's current experience
     void set_experience_points(const uint new_experience_points);
     uint get_experience_points() const;
-
+    
   protected:
 
     std::string id;
@@ -257,7 +257,7 @@ class Creature
     uint experience_value;
     
     // The creature's overall experience
-    uint experience_points;
+    uint experience_points;    
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;
