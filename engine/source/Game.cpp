@@ -261,20 +261,20 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
         
         CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map);
         
-        // Clear the stored messages if we're about to receive the player's action
+        // Clear the stored messages if we're about to receive the player's action.
+        // The player will already have had a chance to read the messages.
         if (current_creature->get_is_player())
         {
-          // JCD FIXME: Update MessageManager::send so it queues nicely, and offers -- more -- when appropriate.
-          // JCD FIXME: Right now, it just wipes stuff.
           MessageManager::instance()->clear_if_necessary();
         }
 
         advance = CommandProcessor::process(current_creature, command, display);
       }
       
-      // Update the current creature
+      // Update the current creature as well as its number of turns.
       CreatureCalculator::update_calculated_values(current_creature);
-    }        
+      current_creature->increment_turns();
+    }
   }
 }
 

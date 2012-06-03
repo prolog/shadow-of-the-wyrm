@@ -134,6 +134,7 @@
 		<Unit filename="display\source\DisplayMap.cpp" />
 		<Unit filename="display\source\DisplayStatistics.cpp" />
 		<Unit filename="display\source\DisplayTile.cpp" />
+		<Unit filename="display\source\NCursesConstants.cpp" />
 		<Unit filename="display\source\NCursesDisplay.cpp" />
 		<Unit filename="display\source\NCursesMenuWrapper.cpp" />
 		<Unit filename="display\source\NCursesPromptProcessor.cpp" />

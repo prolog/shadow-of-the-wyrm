@@ -63,10 +63,10 @@
 1323872981 source:c:\cygwin\home\julian\jrcpp\display\source\displaystatistics.cpp
 	"DisplayStatistics.hpp"
 
-1322935319 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
+1338728541 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
 
-1338726539 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1338752289 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -76,6 +76,7 @@
 	"Conversion.hpp"
 	"Log.hpp"
 	"Menu.hpp"
+	"NCursesConstants.hpp"
 	"NCursesDisplay.hpp"
 	"OptionsComponent.hpp"
 	"StringTable.hpp"
@@ -891,7 +892,7 @@
 1327247299 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1338643380 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1338728470 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"Conversion.hpp"
@@ -1029,10 +1030,11 @@
 	<iostream>
 	<fstream>
 
-1325254441 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\creaturetranslator.cpp
+1338751540 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\creaturetranslator.cpp
 	"Creature.hpp"
 	"Conversion.hpp"
 	"DisplayStatistics.hpp"
+	"ExperienceManager.hpp"
 	"CreatureTranslator.hpp"
 	"Game.hpp"
 	"Naming.hpp"
@@ -1184,7 +1186,7 @@
 1326813431 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1338641382 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1338728174 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -1817,7 +1819,7 @@
 1338382849 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationconstants.cpp
 	"CreatureGenerationConstants.hpp"
 
-1338642014 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\experiencemanager.cpp
+1338730839 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\experiencemanager.cpp
 	"ExperienceManager.hpp"
 	"Game.hpp"
 	"LevelConstants.hpp"
@@ -1826,4 +1828,7 @@
 
 1338641524 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\levelconstants.cpp
 	"LevelConstants.hpp"
+
+1338729210 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
+	"NCursesConstants.hpp"
 
