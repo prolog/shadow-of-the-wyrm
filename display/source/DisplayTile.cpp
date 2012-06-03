@@ -1,6 +1,5 @@
 #include "DisplayTile.hpp"
 
-// FIXME: Create default constants.
 DisplayTile::DisplayTile() : symbol('!'), colour(0)
 {
 }

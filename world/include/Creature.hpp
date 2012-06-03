@@ -174,6 +174,10 @@ class Creature
     void set_experience_points(const uint new_experience_points);
     uint get_experience_points() const;
     
+    // The number of turns a creature has taken.
+    void increment_turns();
+    uint get_turns() const;
+    
   protected:
 
     std::string id;
@@ -257,7 +261,10 @@ class Creature
     uint experience_value;
     
     // The creature's overall experience
-    uint experience_points;    
+    uint experience_points;
+    
+    // The number of actions the creature has taken.
+    uint turns;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

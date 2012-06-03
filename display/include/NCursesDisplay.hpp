@@ -75,9 +75,6 @@ class NCursesDisplay : public Display
     int TERMINAL_MAX_COLS;
     int FIELD_SPACE;
 
-    int MAP_START_ROW;
-    int MAP_START_COL;
-    
     int MSG_BUFFER_LAST_Y;
     int MSG_BUFFER_LAST_X;
 

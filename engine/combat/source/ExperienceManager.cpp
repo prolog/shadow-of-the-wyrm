@@ -48,6 +48,76 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
   return experience_gained;
 }
 
+// Get how far the creature is to the next level, expressed as a percentage.
+uint ExperienceManager::get_pct_to_next_level(CreaturePtr creature)
+{
+  uint tnl_pct = 0;
+  
+  if (creature)
+  {
+    Statistic level   = creature->get_level();
+    int current_level = level.get_current();
+    
+    if ((current_level > 0) && (current_level < base_experience_table_size))
+    {
+      uint current_experience = creature->get_experience_points();
+      uint needed_for_current = get_experience_needed_for_level(creature, current_level-1);
+      uint needed_for_next    = get_experience_needed_for_level(creature, current_level);
+      uint normalized_current = current_experience - needed_for_current;
+      uint normalized_next    = needed_for_next - needed_for_current;
+      float normalized_pct    = (float) normalized_current / (float) normalized_next;
+      
+      tnl_pct = normalized_pct * 100;
+    }
+    else
+    {
+      tnl_pct = 100;
+    }
+  }
+  
+  return tnl_pct;
+}
+
+// Get the experience required for a particular level, taking into account any race/class modifiers.
+uint ExperienceManager::get_experience_needed_for_level(CreaturePtr creature, const uint level)
+{
+  uint exp_needed = 0;
+  
+  if (creature)
+  {
+    int base_exp_needed = base_experience_table[level];
+    
+    Game* game = Game::instance();
+    
+    if (game)
+    {
+      string race_id = creature->get_race_id();
+      string class_id = creature->get_class_id();
+      
+      float race_multiplier = 1.0f;
+      float class_multiplier = 1.0f;
+
+      if (!race_id.empty())
+      {
+        RaceMap races = game->get_races_ref();
+        RacePtr race = races[race_id];
+        race_multiplier = race->get_experience_multiplier();
+      }
+      
+      if (!class_id.empty())
+      {
+        ClassMap classes = game->get_classes_ref();
+        ClassPtr cur_class = classes[class_id];
+        class_multiplier = cur_class->get_experience_multiplier();
+      }
+      
+      exp_needed = base_exp_needed * race_multiplier * class_multiplier;      
+    }
+  }
+  
+  return exp_needed;
+}
+
 // Check to see if a creature can gain a level, based on its current level
 // and experience totals.
 bool ExperienceManager::can_gain_level(CreaturePtr creature)
@@ -60,44 +130,11 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
     
     if (creature_level < base_experience_table_size)
     {
-      int creature_exp   = creature->get_experience_points();
-      
-      // If creature_level 1 is, index 1 in table gets the exp needed for
-      // level 2, and so on.
-      int base_exp_needed = base_experience_table[creature_level];
-      
-      // Modify by race/class multiplier.
-      Game* game = Game::instance();
-      
-      if (game)
+      uint exp_needed = get_experience_needed_for_level(creature, creature_level+1);
+
+      if ( creature->get_experience_points() >= exp_needed )
       {
-        string race_id = creature->get_race_id();
-        string class_id = creature->get_class_id();
-        
-        float race_multiplier = 1.0f;
-        float class_multiplier = 1.0f;
-        int actual_exp_required;
-        
-        if (!race_id.empty())
-        {
-          RaceMap races = game->get_races_ref();
-          RacePtr race = races[race_id];
-          race_multiplier = race->get_experience_multiplier();
-        }
-        
-        if (!class_id.empty())
-        {
-          ClassMap classes = game->get_classes_ref();
-          ClassPtr cur_class = classes[class_id];
-          class_multiplier = cur_class->get_experience_multiplier();
-        }
-        
-        actual_exp_required = base_exp_needed * race_multiplier * class_multiplier;
-        
-        if ( creature_exp >= actual_exp_required )
-        {
-          can_gain = true;
-        }
+        can_gain = true;
       }
     }    
   }

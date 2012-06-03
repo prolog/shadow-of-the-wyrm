@@ -7,6 +7,7 @@
 #include "Conversion.hpp"
 #include "Log.hpp"
 #include "Menu.hpp"
+#include "NCursesConstants.hpp"
 #include "NCursesDisplay.hpp"
 #include "OptionsComponent.hpp"
 #include "StringTable.hpp"
@@ -15,7 +16,12 @@ using namespace std;
 using namespace boost;
 
 NCursesDisplay::NCursesDisplay()
-  : TERMINAL_MAX_ROWS(0), TERMINAL_MAX_COLS(0), FIELD_SPACE(2), MSG_BUFFER_LAST_Y(0), MSG_BUFFER_LAST_X(0), can_use_colour(false)
+: TERMINAL_MAX_ROWS(0), 
+TERMINAL_MAX_COLS(0), 
+FIELD_SPACE(2), 
+MSG_BUFFER_LAST_Y(0), 
+MSG_BUFFER_LAST_X(0), 
+can_use_colour(false)
 {
 }
 
@@ -108,8 +114,6 @@ void NCursesDisplay::clear_messages()
 int NCursesDisplay::clear_message_buffer()
 {  
   int return_val;
-  int orig_curs_y, orig_curs_x;
-  getyx(stdscr, orig_curs_y, orig_curs_x);
   
   move(0, 0);
   clrtoeol();
@@ -122,7 +126,7 @@ int NCursesDisplay::clear_message_buffer()
   MSG_BUFFER_LAST_X = 0;
   
   // Reset cursor to original position
-  move(orig_curs_y, orig_curs_x);
+  move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
   refresh();
 
   return return_val;
@@ -145,11 +149,12 @@ void NCursesDisplay::halt_messages()
 //
 // JCD FIXME: This doesn't seem to work.
 //
+// Fix this up once SL is compiling on Linux/FreeBSD and I can
+// resize terminals.
+//
 void NCursesDisplay::refresh_terminal_size()
 {
   getmaxyx(stdscr, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
-  MAP_START_COL = 0;
-  MAP_START_ROW = 2; // Lines 1 and 2 are for the message buffer.
 }
 
 /*
@@ -306,12 +311,12 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   int map_rows = d.get_y();
   int map_cols = d.get_x();
 
-  for (int terminal_row = MAP_START_ROW; terminal_row < map_rows + MAP_START_ROW; terminal_row++)
+  for (int terminal_row = NCursesConstants::MAP_START_ROW; terminal_row < map_rows + NCursesConstants::MAP_START_ROW; terminal_row++)
   {
-    for (int terminal_col = MAP_START_COL; terminal_col < map_cols + MAP_START_COL; terminal_col++)
+    for (int terminal_col = NCursesConstants::MAP_START_COL; terminal_col < map_cols + NCursesConstants::MAP_START_COL; terminal_col++)
     {
-      map_coords.first = terminal_row - MAP_START_ROW;
-      map_coords.second = terminal_col - MAP_START_COL;
+      map_coords.first = terminal_row - NCursesConstants::MAP_START_ROW;
+      map_coords.second = terminal_col - NCursesConstants::MAP_START_COL;
 
       display_tile = current_map.at(map_coords);
 
@@ -327,7 +332,7 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   }
 
   Coordinate cursor_coord = current_map.get_cursor_coordinate();
-  move(cursor_coord.first+MAP_START_ROW, cursor_coord.second+MAP_START_COL);
+  move(cursor_coord.first+NCursesConstants::MAP_START_ROW, cursor_coord.second+NCursesConstants::MAP_START_COL);
 }
 
 /*!
