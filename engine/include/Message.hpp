@@ -3,6 +3,7 @@
 #include <string>
 #include <boost/uuid/uuid.hpp>
 #include <boost/uuid/uuid_generators.hpp>
+#include "Colours.hpp"
 
 enum MessageImportance
 {
@@ -15,11 +16,14 @@ enum MessageImportance
 class Message
 {
 	public:
-		Message(const std::string& new_content, const MessageImportance& new_importance);
+		Message(const std::string& new_content, const Colour colour, const MessageImportance& new_importance);
 
 		void set_content(const std::string& new_content);
 		std::string get_content() const;
 
+    void set_colour(const Colour colour);
+    Colour get_colour() const;
+    
 		void set_importance(const MessageImportance& new_importance);
 		MessageImportance get_importance() const;
 
@@ -28,6 +32,7 @@ class Message
 
 	private:
 		std::string content;
+		Colour colour;
 		MessageImportance importance;
 		boost::uuids::uuid id;
 };

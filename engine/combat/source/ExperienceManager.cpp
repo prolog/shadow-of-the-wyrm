@@ -37,7 +37,9 @@ bool ExperienceManager::gain_experience(CreaturePtr creature, const uint experie
   {
     creature->set_experience_points(creature->get_experience_points() + experience_value);
     
-    if (can_gain_level(creature))
+    // If the creature has killed something particularly dangerous, the creature might have
+    // received sufficient experience to gain more than one level.
+    while (can_gain_level(creature))
     {
       level_up(creature);
     }
@@ -130,7 +132,7 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
     
     if (creature_level < base_experience_table_size)
     {
-      uint exp_needed = get_experience_needed_for_level(creature, creature_level+1);
+      uint exp_needed = get_experience_needed_for_level(creature, creature_level);
 
       if ( creature->get_experience_points() >= exp_needed )
       {
@@ -156,7 +158,7 @@ void ExperienceManager::level_up(CreaturePtr creature)
     if (creature->get_is_player())
     {
       string level_up_message = StringTable::get(TextKeys::GAIN_LEVEL);
-      manager->add_new_message(level_up_message);
+      manager->add_new_message(level_up_message, COLOUR_BOLD_YELLOW);
       manager->send();
       
       // Should monsters' level-ups be broadcast?

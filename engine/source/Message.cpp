@@ -3,11 +3,13 @@
 Message::Message
 (
   const std::string& new_content
+, const Colour new_colour
 , const MessageImportance& new_importance
 )
+: content(new_content)
+, colour(new_colour)
+, importance(new_importance)
 {
-	content    = new_content;
-	importance = new_importance;
 }
 
 void Message::set_content(const std::string& new_content)
@@ -18,6 +20,16 @@ void Message::set_content(const std::string& new_content)
 std::string Message::get_content() const
 {
 	return content;
+}
+
+void Message::set_colour(const Colour new_colour)
+{
+  colour = new_colour;
+}
+
+Colour Message::get_colour() const
+{
+  return colour;
 }
 
 void Message::set_importance(const MessageImportance& new_importance)
