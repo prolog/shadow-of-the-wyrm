@@ -61,21 +61,22 @@ void MessageManager::send(const bool halt_after)
 {
   Messages unread_messages = get_unread_messages_and_mark_as_read();
   string message_text;
-
+  
   if (user_display)
   {
     vector<Message> messages = unread_messages.get_messages();
 
     BOOST_FOREACH(Message m, messages)
     {
-      message_text = message_text + m.get_content() + " ";
-      buffer_has_messages = true;
-    }
+      message_text = m.get_content() + " ";
 
-    // Don't immediately clear, and only send text if the message buffer has something.
-    if (!message_text.empty())
-    {
-      user_display->add_message(message_text, false);
+      // Don't immediately clear, and only send text if the message buffer has something.
+      if (!message_text.empty())
+      {
+        user_display->add_message(message_text, m.get_colour(), false);
+      }
+
+      buffer_has_messages = true;
     }
   }
   
@@ -98,10 +99,11 @@ void MessageManager::send_and_halt()
 bool MessageManager::add_new_message
 (
 	const std::string& message_text
+, const Colour colour
 , const MessageImportance& importance
 )
 {
-	Message message(message_text, importance);
+	Message message(message_text, colour, importance);
 	unread.add(message);
 
 	return true;

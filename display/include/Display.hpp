@@ -44,7 +44,7 @@ class Display
 
     // Add a message to display to the user
     virtual void add_message(const std::string& message) = 0;
-    virtual void add_message(const std::string& message, const bool clear_prior_to_adding_message = true) = 0;
+    virtual void add_message(const std::string& message, const Colour colour, const bool clear_prior_to_adding_message) = 0;
     
     // Halt the messages - require some form of input from the user to continue
     virtual void halt_messages() = 0;

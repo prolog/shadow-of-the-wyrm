@@ -19,7 +19,7 @@ class NCursesDisplay : public Display
     void clear_display();
 
     void add_message(const std::string& message);
-    void add_message(const std::string& message, bool reset_prompt);
+    void add_message(const std::string& message, const Colour colour, const bool reset_prompt);
     
     void halt_messages();
 

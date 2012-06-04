@@ -10,7 +10,7 @@ TEST(SL_Engine_Message, MessageImportanceValues)
 
 TEST(SL_Engine_Message, Content)
 {
-  Message msg("test", MessageImportance_UNDEFINED);
+  Message msg("test", COLOUR_WHITE, MessageImportance_UNDEFINED);
 
   EXPECT_EQ("test", msg.get_content());
 
@@ -19,9 +19,16 @@ TEST(SL_Engine_Message, Content)
   EXPECT_EQ("test2", msg.get_content());
 }
 
+TEST(SL_Engine_Message, Colour)
+{
+  Message msg("test", COLOUR_RED, MessageImportance_UNDEFINED);
+
+  EXPECT_EQ(COLOUR_RED, msg.get_colour());
+}
+
 TEST(SL_Engine_Message, Importance)
 {
-  Message msg("test", MessageImportance_UNDEFINED);
+  Message msg("test", COLOUR_WHITE, MessageImportance_UNDEFINED);
 
   EXPECT_EQ(MessageImportance_UNDEFINED, msg.get_importance());
 
@@ -41,7 +48,7 @@ TEST(SL_Engine_Message, Importance)
 TEST(SL_Engine_Message, Id)
 {
   boost::uuids::uuid id = boost::uuids::random_generator()();
-  Message msg("test", MessageImportance_UNDEFINED);
+  Message msg("test", COLOUR_WHITE, MessageImportance_UNDEFINED);
 
   msg.set_id(id);
   EXPECT_EQ(id, msg.get_id());

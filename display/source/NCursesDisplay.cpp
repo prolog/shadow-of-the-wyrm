@@ -225,10 +225,10 @@ void NCursesDisplay::clear_display()
  *****************************************************************/
 void NCursesDisplay::add_message(const string& message)
 {
-  add_message(message, true);
+  add_message(message, COLOUR_WHITE, true);
 }
 
-void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
+void NCursesDisplay::add_message(const string& message, const Colour colour, const bool reset_cursor)
 {
   int orig_curs_y, orig_curs_x;
   getyx(stdscr, orig_curs_y, orig_curs_x);
@@ -247,6 +247,8 @@ void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
 
   char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
   tokenizer<char_separator<char> > tokens(message, separator);
+
+  enable_colour(colour);
 
   for (tokenizer<char_separator<char> >::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
@@ -270,8 +272,10 @@ void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
         move(1, TERMINAL_MAX_COLS-4);
 
         // Add "..."
+        disable_colour(colour);
         printw("...");
         getch();
+        enable_colour(colour);
 
         clear_message_buffer();
       }
@@ -288,6 +292,8 @@ void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
   {
     move(orig_curs_y, orig_curs_x);
   }
+  
+  disable_colour(colour);
   
   refresh();
 }
@@ -417,7 +423,7 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
 // Show confirmation text - use the message buffer.
 void NCursesDisplay::confirm(const string& confirmation_message)
 {
-  add_message(confirmation_message, false);
+  add_message(confirmation_message);
 }
 
 void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponent* tc)
