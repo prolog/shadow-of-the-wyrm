@@ -5,7 +5,7 @@
 using namespace std;
 
 Race::Race()
-: user_playable(false), settlement_type(SETTLEMENT_TYPE_ORDERLY_VILLAGE), settlement_tile_subtype(TILE_TYPE_FIELD), size(CREATURE_SIZE_MEDIUM), valour_modifier(0), spirit_modifier(0), experience_multiplier(1.0)
+: user_playable(false), settlement_type(SETTLEMENT_TYPE_ORDERLY_VILLAGE), settlement_tile_subtype(TILE_TYPE_FIELD), size(CREATURE_SIZE_MEDIUM), experience_multiplier(1.0)
 {
 }
 
@@ -188,24 +188,14 @@ Statistic Race::get_starting_charisma() const
   return starting_charisma;
 }
 
-void Race::set_valour_modifier(const int new_valour_modifier)
+void Race::set_statistics_modifier(const StatisticsModifier& new_statistics_modifier)
 {
-  valour_modifier = new_valour_modifier;
+  statistics_modifier = new_statistics_modifier;
 }
 
-int Race::get_valour_modifier() const
+StatisticsModifier Race::get_statistics_modifier() const
 {
-  return valour_modifier;
-}
-
-void Race::set_spirit_modifier(const int new_spirit_modifier)
-{
-  spirit_modifier = new_spirit_modifier;
-}
-
-int Race::get_spirit_modifier() const
-{
-  return spirit_modifier;
+  return statistics_modifier;
 }
 
 void Race::set_starting_speed(const Statistic& new_starting_speed)
@@ -269,7 +259,7 @@ string Race::str() const
 
   race_details << race_id << endl;
   race_details << starting_strength.get_base() << " " << starting_dexterity.get_base() << " " << starting_agility.get_base() << " " << starting_health.get_base() << " " << starting_intelligence.get_base() << " " << starting_willpower.get_base() << " " << starting_charisma.get_base() << " " << starting_speed.get_base() << endl;
-  race_details << valour_modifier << " " << spirit_modifier << endl;
+  race_details << statistics_modifier.get_valour_modifier() << " " << statistics_modifier.get_spirit_modifier() << endl;
   race_details << race_name_value << endl;
   race_details << race_abrv_value << endl;
   race_details << race_desc_value << endl;

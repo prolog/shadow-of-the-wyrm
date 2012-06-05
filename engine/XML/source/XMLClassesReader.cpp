@@ -103,13 +103,17 @@ void XMLClassesReader::parse_class_initial_modifiers(ClassPtr current_class, con
     int willpower_modifier    = XMLUtils::get_child_node_int_value(initial_modifiers_node, "WillpowerModifier");
     int charisma_modifier     = XMLUtils::get_child_node_int_value(initial_modifiers_node, "CharismaModifier");
 
-    current_class->set_strength_modifier(strength_modifier);
-    current_class->set_dexterity_modifier(dexterity_modifier);
-    current_class->set_agility_modifier(agility_modifier);
-    current_class->set_health_modifier(health_modifier);
-    current_class->set_intelligence_modifier(intelligence_modifier);
-    current_class->set_willpower_modifier(willpower_modifier);
-    current_class->set_charisma_modifier(charisma_modifier);
+    StatisticsModifier sm;
+    
+    sm.set_strength_modifier(strength_modifier);
+    sm.set_dexterity_modifier(dexterity_modifier);
+    sm.set_agility_modifier(agility_modifier);
+    sm.set_health_modifier(health_modifier);
+    sm.set_intelligence_modifier(intelligence_modifier);
+    sm.set_willpower_modifier(willpower_modifier);
+    sm.set_charisma_modifier(charisma_modifier);
+    
+    current_class->set_statistics_modifier(sm);
   }
 }
 
