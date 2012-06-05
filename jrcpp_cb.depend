@@ -105,7 +105,7 @@
 1334667293 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlbookreader.cpp
 	"XMLBookReader.hpp"
 
-1338642188 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
+1338900698 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"Resistances.hpp"
@@ -164,7 +164,7 @@
 1334666969 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
 	"XMLPotionReader.hpp"
 
-1335629247 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
+1338901102 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
 	<boost/foreach.hpp>
 	"Skills.hpp"
 	"StringTable.hpp"
@@ -852,7 +852,7 @@
 	"MessageManager.hpp"
 	"Log.hpp"
 
-1338383123 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1338900786 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<cmath>
 	<boost/make_shared.hpp>
 	<boost/uuid/uuid_generators.hpp>
@@ -957,7 +957,7 @@
 1338813792 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1338813882 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1338815153 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -1179,7 +1179,7 @@
 1334148974 source:c:\cygwin\home\julian\jrcpp\world\source\book.cpp
 	"Book.hpp"
 
-1338641917 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
+1338900615 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
 	<sstream>
 	"Class.hpp"
 
@@ -1236,7 +1236,7 @@
 1334148974 source:c:\cygwin\home\julian\jrcpp\world\source\potion.cpp
 	"Potion.hpp"
 
-1335628953 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
+1338901057 source:c:\cygwin\home\julian\jrcpp\world\source\race.cpp
 	<sstream>
 	"Race.hpp"
 	"StringTable.hpp"
@@ -1831,4 +1831,7 @@
 
 1338729210 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
 	"NCursesConstants.hpp"
+
+1338900227 source:c:\cygwin\home\julian\jrcpp\world\source\statisticsmodifier.cpp
+	"StatisticsModifier.hpp"
 

@@ -4,14 +4,7 @@
 using namespace std;
 
 Class::Class()
-: strength_modifier(0)
-, dexterity_modifier(0)
-, agility_modifier(0)
-, health_modifier(0)
-, intelligence_modifier(0)
-, willpower_modifier(0)
-, charisma_modifier(0)
-, user_playable(false)
+: user_playable(false)
 , hit_dice(1)
 , ap_dice(0)
 {
@@ -81,74 +74,14 @@ Statistic Class::get_starting_spirit() const
   return starting_spirit;
 }
 
-void Class::set_strength_modifier(const int new_strength_modifier)
+void Class::set_statistics_modifier(const StatisticsModifier& new_statistics_modifier)
 {
-  strength_modifier = new_strength_modifier;
+  statistics_modifier = new_statistics_modifier;
 }
 
-int Class::get_strength_modifier() const
+StatisticsModifier Class::get_statistics_modifier() const
 {
-  return strength_modifier;
-}
-
-void Class::set_dexterity_modifier(const int new_dexterity_modifier)
-{
-  dexterity_modifier = new_dexterity_modifier;
-}
-
-int Class::get_dexterity_modifier() const
-{
-  return dexterity_modifier;
-}
-
-void Class::set_agility_modifier(const int new_agility_modifier)
-{
-  agility_modifier = new_agility_modifier;
-}
-
-int Class::get_agility_modifier() const
-{
-  return agility_modifier;
-}
-
-void Class::set_health_modifier(const int new_health_modifier)
-{
-  health_modifier = new_health_modifier;
-}
-
-int Class::get_health_modifier() const
-{
-  return health_modifier;
-}
-
-void Class::set_intelligence_modifier(const int new_intelligence_modifier)
-{
-  intelligence_modifier = new_intelligence_modifier;
-}
-
-int Class::get_intelligence_modifier() const
-{
-  return intelligence_modifier;
-}
-
-void Class::set_willpower_modifier(const int new_willpower_modifier)
-{
-  willpower_modifier = new_willpower_modifier;
-}
-
-int Class::get_willpower_modifier() const
-{
-  return willpower_modifier;
-}
-
-void Class::set_charisma_modifier(const int new_charisma_modifier)
-{
-  charisma_modifier = new_charisma_modifier;
-}
-
-int Class::get_charisma_modifier() const
-{
-  return charisma_modifier;
+  return statistics_modifier;
 }
 
 void Class::set_resistances(const Resistances& new_resistances)
@@ -222,7 +155,14 @@ string Class::str() const
   class_details << class_id << endl;
   class_details << hit_dice << " " << ap_dice << endl;
   class_details << starting_valour.get_base() << " " << starting_spirit.get_base() << endl;
-  class_details << strength_modifier << " " << dexterity_modifier << " " << agility_modifier << " " << health_modifier << " " << intelligence_modifier << " " << willpower_modifier << " " << charisma_modifier << endl;
+  class_details << statistics_modifier.get_strength_modifier() << " " 
+                << statistics_modifier.get_dexterity_modifier() << " " 
+                << statistics_modifier.get_agility_modifier() << " " 
+                << statistics_modifier.get_health_modifier() << " "
+                << statistics_modifier.get_intelligence_modifier() << " " 
+                << statistics_modifier.get_willpower_modifier() << " " 
+                << statistics_modifier.get_charisma_modifier() 
+                << endl;
   class_details << class_name_value << endl;
   class_details << class_abrv_value << endl;
   class_details << class_desc_value << endl;

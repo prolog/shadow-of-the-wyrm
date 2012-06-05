@@ -9,6 +9,7 @@
 #include "CreatureFeatures.hpp"
 #include "Resistances.hpp"
 #include "SettlementTypes.hpp"
+#include "StatisticsModifier.hpp"
 
 class Race
 {
@@ -68,11 +69,8 @@ class Race
     void set_starting_charisma(const Statistic& new_starting_charisma);
     Statistic get_starting_charisma() const;
 
-    void set_valour_modifier(const int new_valour_modifier);
-    int get_valour_modifier() const;
-
-    void set_spirit_modifier(const int new_spirit_modifier);
-    int get_spirit_modifier() const;
+    void set_statistics_modifier(const StatisticsModifier& new_statistics_modifier);
+    StatisticsModifier get_statistics_modifier() const;
 
     void set_starting_speed(const Statistic& new_starting_speed);
     Statistic get_starting_speed() const;
@@ -115,9 +113,8 @@ class Race
     Statistic starting_charisma;
 
     // Initial secondary statistics or their modifiers
-    int valour_modifier;
-    int spirit_modifier;
-    Statistic starting_speed;
+    StatisticsModifier statistics_modifier; // valour/spirit are modified, not set, by race.    
+    Statistic starting_speed; // starting speed is set by race.
     
     // Available deities on creation
     std::vector<std::string> initial_deity_ids;

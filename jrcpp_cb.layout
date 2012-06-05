@@ -64,7 +64,7 @@
 	<File name="display\source\DisplayTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="28" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="5">
+	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="5451" topLine="221" />
 	</File>
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
@@ -916,7 +916,7 @@
 	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="1219" topLine="46" />
 	</File>
-	<File name="engine\source\Message.cpp" open="1" top="0" tabpos="4">
+	<File name="engine\source\Message.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="506" topLine="9" />
 	</File>
 	<File name="engine\source\MessageManager.cpp" open="1" top="1" tabpos="2">

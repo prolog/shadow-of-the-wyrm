@@ -136,8 +136,11 @@ void XMLRacesReader::parse_race_initial_modifiers(RacePtr race, const XMLNode& i
     int valour_modifier = XMLUtils::get_child_node_int_value(initial_modifiers_node, "ValourModifier");
     int spirit_modifier = XMLUtils::get_child_node_int_value(initial_modifiers_node, "SpiritModifier");
 
-    race->set_valour_modifier(valour_modifier);
-    race->set_spirit_modifier(spirit_modifier);
+    StatisticsModifier sm;
+    sm.set_valour_modifier(valour_modifier);
+    sm.set_spirit_modifier(spirit_modifier);
+    
+    race->set_statistics_modifier(sm);
   }
 }
 
