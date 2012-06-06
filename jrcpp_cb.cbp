@@ -614,6 +614,7 @@
 		<Unit filename="world\include\Skills.hpp" />
 		<Unit filename="world\include\Staff.hpp" />
 		<Unit filename="world\include\Statistic.hpp" />
+		<Unit filename="world\include\StatisticsModifier.hpp" />
 		<Unit filename="world\include\ThreatRatings.hpp" />
 		<Unit filename="world\include\Wand.hpp" />
 		<Unit filename="world\include\Weapon.hpp" />
@@ -686,6 +687,7 @@
 		<Unit filename="world\source\Skills.cpp" />
 		<Unit filename="world\source\Staff.cpp" />
 		<Unit filename="world\source\Statistic.cpp" />
+		<Unit filename="world\source\StatisticsModifier.cpp" />
 		<Unit filename="world\source\ThreatRatings.cpp" />
 		<Unit filename="world\source\Wand.cpp" />
 		<Unit filename="world\source\Weapon.cpp" />

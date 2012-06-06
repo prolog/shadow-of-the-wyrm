@@ -105,7 +105,7 @@
 1334667293 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlbookreader.cpp
 	"XMLBookReader.hpp"
 
-1338900698 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
+1339016423 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"Resistances.hpp"
@@ -113,6 +113,7 @@
 	"XMLDataStructures.hpp"
 	"XMLResistancesReader.hpp"
 	"XMLSkillsReaders.hpp"
+	"XMLStatisticsModifierReader.hpp"
 
 1336224005 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconfigurationreader.cpp
 	"XMLConfigurationReader.hpp"
@@ -164,7 +165,7 @@
 1334666969 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
 	"XMLPotionReader.hpp"
 
-1338901102 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
+1339016362 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
 	<boost/foreach.hpp>
 	"Skills.hpp"
 	"StringTable.hpp"
@@ -172,6 +173,7 @@
 	"XMLDataStructures.hpp"
 	"XMLResistancesReader.hpp"
 	"XMLSkillsReaders.hpp"
+	"XMLStatisticsModifierReader.hpp"
 
 1326554698 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlresistancesreader.cpp
 	"Resistances.hpp"
@@ -852,7 +854,7 @@
 	"MessageManager.hpp"
 	"Log.hpp"
 
-1338900786 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1338901141 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<cmath>
 	<boost/make_shared.hpp>
 	<boost/uuid/uuid_generators.hpp>
@@ -1149,7 +1151,7 @@
 	"StringConstants.hpp"
 	"Wood.hpp"
 
-1334892557 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deity.cpp
+1339015701 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deity.cpp
 	"Deity.hpp"
 
 1332288964 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deitystatus.cpp

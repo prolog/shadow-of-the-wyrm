@@ -1,11 +1,11 @@
 #include <vector>
 #include <boost/foreach.hpp>
-
 #include "Resistances.hpp"
 #include "XMLClassesReader.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLResistancesReader.hpp"
 #include "XMLSkillsReaders.hpp"
+#include "XMLStatisticsModifierReader.hpp"
 
 using namespace std;
 
@@ -95,24 +95,8 @@ void XMLClassesReader::parse_class_initial_modifiers(ClassPtr current_class, con
 {
   if (current_class && !initial_modifiers_node.is_null())
   {
-    int strength_modifier     = XMLUtils::get_child_node_int_value(initial_modifiers_node, "StrengthModifier");
-    int dexterity_modifier    = XMLUtils::get_child_node_int_value(initial_modifiers_node, "DexterityModifier");
-    int agility_modifier      = XMLUtils::get_child_node_int_value(initial_modifiers_node, "AgilityModifier");
-    int health_modifier       = XMLUtils::get_child_node_int_value(initial_modifiers_node, "HealthModifier");
-    int intelligence_modifier = XMLUtils::get_child_node_int_value(initial_modifiers_node, "IntelligenceModifier");
-    int willpower_modifier    = XMLUtils::get_child_node_int_value(initial_modifiers_node, "WillpowerModifier");
-    int charisma_modifier     = XMLUtils::get_child_node_int_value(initial_modifiers_node, "CharismaModifier");
-
-    StatisticsModifier sm;
-    
-    sm.set_strength_modifier(strength_modifier);
-    sm.set_dexterity_modifier(dexterity_modifier);
-    sm.set_agility_modifier(agility_modifier);
-    sm.set_health_modifier(health_modifier);
-    sm.set_intelligence_modifier(intelligence_modifier);
-    sm.set_willpower_modifier(willpower_modifier);
-    sm.set_charisma_modifier(charisma_modifier);
-    
+    XMLStatisticsModifierReader stat_modifier_reader;
+    StatisticsModifier sm = stat_modifier_reader.get_statistics_modifier(initial_modifiers_node);    
     current_class->set_statistics_modifier(sm);
   }
 }
