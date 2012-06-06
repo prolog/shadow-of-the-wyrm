@@ -83,3 +83,13 @@ WorshipSiteType Deity::get_worship_site_type() const
 {
   return worship_site_type;
 }
+
+void Deity::set_initial_statistics_modifier(const StatisticsModifier& new_initial_statistics_modifier)
+{
+  initial_statistics_modifier = new_initial_statistics_modifier;
+}
+
+StatisticsModifier Deity::get_initial_statistics_modifier() const
+{
+  return initial_statistics_modifier;
+}

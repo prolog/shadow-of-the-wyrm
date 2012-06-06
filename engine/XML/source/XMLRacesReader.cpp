@@ -6,6 +6,7 @@
 #include "XMLDataStructures.hpp"
 #include "XMLResistancesReader.hpp"
 #include "XMLSkillsReaders.hpp"
+#include "XMLStatisticsModifierReader.hpp"
 
 using namespace std;
 
@@ -133,13 +134,9 @@ void XMLRacesReader::parse_race_initial_modifiers(RacePtr race, const XMLNode& i
 {
   if (race && !initial_modifiers_node.is_null())
   {
-    int valour_modifier = XMLUtils::get_child_node_int_value(initial_modifiers_node, "ValourModifier");
-    int spirit_modifier = XMLUtils::get_child_node_int_value(initial_modifiers_node, "SpiritModifier");
-
-    StatisticsModifier sm;
-    sm.set_valour_modifier(valour_modifier);
-    sm.set_spirit_modifier(spirit_modifier);
+    XMLStatisticsModifierReader stat_modifier_reader;
     
+    StatisticsModifier sm = stat_modifier_reader.get_statistics_modifier(initial_modifiers_node);
     race->set_statistics_modifier(sm);
   }
 }

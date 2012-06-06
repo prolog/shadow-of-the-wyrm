@@ -4,6 +4,7 @@
 #include <boost/shared_ptr.hpp>
 #include "AlignmentEnums.hpp"
 #include "WorshipSiteTypes.hpp"
+#include "StatisticsModifier.hpp"
 
 class Deity
 {
@@ -30,6 +31,9 @@ class Deity
     
     void set_worship_site_type(const WorshipSiteType new_worship_site_type);
     WorshipSiteType get_worship_site_type() const;
+    
+    void set_initial_statistics_modifier(const StatisticsModifier& new_initial_statistics_modifier);
+    StatisticsModifier get_initial_statistics_modifier() const;
 
   protected:
     std::string id;
@@ -39,6 +43,7 @@ class Deity
     std::string death_message_sid;
     AlignmentRange alignment_range;
     WorshipSiteType worship_site_type;
+    StatisticsModifier initial_statistics_modifier; // only used for creature creation
 };
 
 typedef boost::shared_ptr<Deity> DeityPtr;
