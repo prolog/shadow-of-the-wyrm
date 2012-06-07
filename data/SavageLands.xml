@@ -6,6 +6,9 @@
 			<DescriptionSID>DEITY_1_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_1_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
+			<DeityInitialModifiers>
+				<IntelligenceModifier>1</IntelligenceModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>0</WorshipSiteType>
 		</Deity>
 		<Deity id="02_aurelion">
@@ -14,6 +17,9 @@
 			<DescriptionSID>DEITY_2_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_2_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
+			<DeityInitialModifiers>
+				<StrengthModifier>1</StrengthModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>1</WorshipSiteType>
 		</Deity>
 		<Deity id="03_thelady">
@@ -22,6 +28,9 @@
 			<DescriptionSID>DEITY_3_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_3_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
+			<DeityInitialModifiers>
+				<CharismaModifier>1</CharismaModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>2</WorshipSiteType>
 		</Deity>
 		<Deity id="04_vedere">
@@ -30,6 +39,9 @@
 			<DescriptionSID>DEITY_4_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_4_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
+			<DeityInitialModifiers>
+				<HealthModifier>1</HealthModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>3</WorshipSiteType>
 		</Deity>
 		<Deity id="05_voros">
@@ -38,6 +50,9 @@
 			<DescriptionSID>DEITY_5_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_5_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
+			<DeityInitialModifiers>
+				<StrengthModifier>1</StrengthModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>4</WorshipSiteType>
 		</Deity>
 		<Deity id="06_thetrickster">
@@ -46,6 +61,9 @@
 			<DescriptionSID>DEITY_6_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_6_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
+			<DeityInitialModifiers>
+				<AgilityModifier>1</AgilityModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>5</WorshipSiteType>
 		</Deity>
 		<Deity id="07_shiver">
@@ -54,6 +72,9 @@
 			<DescriptionSID>DEITY_7_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_7_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
+			<DeityInitialModifiers>
+				<WillpowerModifier>1</WillpowerModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>6</WorshipSiteType>
 		</Deity>
 		<Deity id="08_urgoth">
@@ -62,6 +83,9 @@
 			<DescriptionSID>DEITY_8_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_8_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
+			<DeityInitialModifiers>
+				<StrengthModifier>1</StrengthModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>7</WorshipSiteType>
 		</Deity>
 		<Deity id="09_sceadugenga">
@@ -70,6 +94,9 @@
 			<DescriptionSID>DEITY_9_DESC</DescriptionSID>
 			<DeathMessageSID>DEITY_9_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
+			<DeityInitialModifiers>
+				<IntelligenceModifier>1</IntelligenceModifier>
+			</DeityInitialModifiers>
 			<WorshipSiteType>8</WorshipSiteType>
 		</Deity>
 	</Deities>

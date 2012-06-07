@@ -64,7 +64,7 @@
 	<File name="display\source\DisplayTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="28" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="4">
+	<File name="display\source\NCursesDisplay.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="5451" topLine="221" />
 	</File>
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
@@ -118,7 +118,7 @@
 	<File name="engine\XML\include\XMLPotionReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="13" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLRacesReader.hpp" open="0" top="0" tabpos="2">
+	<File name="engine\XML\include\XMLRacesReader.hpp" open="1" top="0" tabpos="1">
 		<Cursor position="188" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLReader.hpp" open="0" top="0" tabpos="2">
@@ -132,6 +132,9 @@
 	</File>
 	<File name="engine\XML\include\XMLStaffReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="112" topLine="0" />
+	</File>
+	<File name="engine\XML\include\XMLStatisticsModifierReader.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="12" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLWandReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="93" topLine="0" />
@@ -151,8 +154,8 @@
 	<File name="engine\XML\source\XMLBookReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="205" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLClassesReader.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="4272" topLine="94" />
+	<File name="engine\XML\source\XMLClassesReader.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="249" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="734" topLine="17" />
@@ -166,8 +169,8 @@
 	<File name="engine\XML\source\XMLDataStructures.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="2962" topLine="115" />
 	</File>
-	<File name="engine\XML\source\XMLDeitiesReader.cpp" open="0" top="0" tabpos="13">
-		<Cursor position="585" topLine="0" />
+	<File name="engine\XML\source\XMLDeitiesReader.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="1835" topLine="35" />
 	</File>
 	<File name="engine\XML\source\XMLFoodReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="259" topLine="0" />
@@ -184,8 +187,8 @@
 	<File name="engine\XML\source\XMLPotionReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="206" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLRacesReader.cpp" open="1" top="0" tabpos="12">
-		<Cursor position="5944" topLine="127" />
+	<File name="engine\XML\source\XMLRacesReader.cpp" open="0" top="0" tabpos="12">
+		<Cursor position="5775" topLine="121" />
 	</File>
 	<File name="engine\XML\source\XMLReader.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="974" topLine="9" />
@@ -201,6 +204,9 @@
 	</File>
 	<File name="engine\XML\source\XMLStaffReader.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="188" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLStatisticsModifierReader.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="1371" topLine="14" />
 	</File>
 	<File name="engine\XML\source\XMLTilesReader.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="7631" topLine="94" />
@@ -352,7 +358,7 @@
 	<File name="engine\combat\source\DeathManagerFactory.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="416" topLine="8" />
 	</File>
-	<File name="engine\combat\source\ExperienceManager.cpp" open="1" top="0" tabpos="1">
+	<File name="engine\combat\source\ExperienceManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="4633" topLine="138" />
 	</File>
 	<File name="engine\combat\source\LevelConstants.cpp" open="0" top="0" tabpos="9">
@@ -772,8 +778,8 @@
 	<File name="engine\include\ActionManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="41" topLine="0" />
 	</File>
-	<File name="engine\include\CreatureFactory.hpp" open="0" top="0" tabpos="12">
-		<Cursor position="639" topLine="0" />
+	<File name="engine\include\CreatureFactory.hpp" open="1" top="0" tabpos="8">
+		<Cursor position="76" topLine="0" />
 	</File>
 	<File name="engine\include\CreatureGenerationManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="481" topLine="0" />
@@ -877,8 +883,8 @@
 	<File name="engine\source\ActionManager.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1626" topLine="58" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="1" top="1" tabpos="9">
-		<Cursor position="5608" topLine="137" />
+	<File name="engine\source\CreatureFactory.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="7142" topLine="168" />
 	</File>
 	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="2443" topLine="55" />
@@ -916,10 +922,10 @@
 	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="1219" topLine="46" />
 	</File>
-	<File name="engine\source\Message.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="506" topLine="9" />
 	</File>
-	<File name="engine\source\MessageManager.cpp" open="1" top="0" tabpos="2">
+	<File name="engine\source\MessageManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1508" topLine="61" />
 	</File>
 	<File name="engine\source\Messages.cpp" open="0" top="0" tabpos="10">
@@ -1039,7 +1045,7 @@
 	<File name="world\include\Book.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\include\Class.hpp" open="1" top="0" tabpos="5">
+	<File name="world\include\Class.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="1069" topLine="18" />
 	</File>
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
@@ -1093,7 +1099,7 @@
 	<File name="world\include\Potion.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="150" topLine="0" />
 	</File>
-	<File name="world\include\Race.hpp" open="1" top="0" tabpos="10">
+	<File name="world\include\Race.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="3752" topLine="103" />
 	</File>
 	<File name="world\include\Resistances.hpp" open="0" top="0" tabpos="8">
@@ -1220,13 +1226,13 @@
 		<Cursor position="479" topLine="21" />
 	</File>
 	<File name="world\religion\include\Deity.hpp" open="0" top="0" tabpos="8">
-		<Cursor position="481" topLine="0" />
+		<Cursor position="1525" topLine="23" />
 	</File>
 	<File name="world\religion\include\Religion.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="554" topLine="5" />
 	</File>
 	<File name="world\religion\source\Deity.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="1564" topLine="61" />
+		<Cursor position="2094" topLine="55" />
 	</File>
 	<File name="world\religion\source\Religion.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="531" topLine="3" />
@@ -1252,7 +1258,7 @@
 	<File name="world\source\Book.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="100" topLine="0" />
 	</File>
-	<File name="world\source\Class.cpp" open="1" top="0" tabpos="7">
+	<File name="world\source\Class.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="3342" topLine="144" />
 	</File>
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
@@ -1300,7 +1306,7 @@
 	<File name="world\source\Potion.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="238" topLine="0" />
 	</File>
-	<File name="world\source\Race.cpp" open="1" top="0" tabpos="11">
+	<File name="world\source\Race.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="5553" topLine="253" />
 	</File>
 	<File name="world\source\Resistances.cpp" open="0" top="0" tabpos="13">
@@ -1318,7 +1324,7 @@
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="105" topLine="0" />
 	</File>
-	<File name="world\source\StatisticsModifier.cpp" open="1" top="0" tabpos="6">
+	<File name="world\source\StatisticsModifier.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2869" topLine="109" />
 	</File>
 	<File name="world\source\ThreatRatings.cpp" open="0" top="0" tabpos="0">

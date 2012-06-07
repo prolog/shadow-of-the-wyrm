@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "Creature.hpp"
+#include "Deity.hpp"
 
 class CreatureFactory
 {
@@ -10,7 +11,7 @@ class CreatureFactory
 
   protected:
     static Creature set_age(const Creature& creature, const AgeInfo& age_info);
-    static Creature set_initial_statistics(const Creature& creature, RacePtr race, ClassPtr char_class);
+    static Creature set_initial_statistics(const Creature& creature, RacePtr race, ClassPtr char_class, DeityPtr deity);
     static void     set_default_resistances(CreaturePtr creature);
     static Creature set_initial_resistances(const Creature& creature, RacePtr race, ClassPtr char_class);
     static Creature set_initial_skills(const Creature& creature, RacePtr race, ClassPtr char_class);

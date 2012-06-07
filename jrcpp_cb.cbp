@@ -164,6 +164,7 @@
 		<Unit filename="engine\XML\include\XMLScrollReader.hpp" />
 		<Unit filename="engine\XML\include\XMLSkillsReaders.hpp" />
 		<Unit filename="engine\XML\include\XMLStaffReader.hpp" />
+		<Unit filename="engine\XML\include\XMLStatisticsModifierReader.hpp" />
 		<Unit filename="engine\XML\include\XMLTilesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLWandReader.hpp" />
 		<Unit filename="engine\XML\include\XMLWeaponsReaders.hpp" />
@@ -190,6 +191,7 @@
 		<Unit filename="engine\XML\source\XMLScrollReader.cpp" />
 		<Unit filename="engine\XML\source\XMLSkillsReaders.cpp" />
 		<Unit filename="engine\XML\source\XMLStaffReader.cpp" />
+		<Unit filename="engine\XML\source\XMLStatisticsModifierReader.cpp" />
 		<Unit filename="engine\XML\source\XMLTilesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLWandReader.cpp" />
 		<Unit filename="engine\XML\source\XMLWeaponsReaders.cpp" />
