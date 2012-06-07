@@ -778,7 +778,7 @@
 	<File name="engine\include\ActionManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="41" topLine="0" />
 	</File>
-	<File name="engine\include\CreatureFactory.hpp" open="1" top="0" tabpos="8">
+	<File name="engine\include\CreatureFactory.hpp" open="1" top="0" tabpos="7">
 		<Cursor position="76" topLine="0" />
 	</File>
 	<File name="engine\include\CreatureGenerationManager.hpp" open="0" top="0" tabpos="2">
@@ -883,7 +883,7 @@
 	<File name="engine\source\ActionManager.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1626" topLine="58" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="1" top="1" tabpos="7">
+	<File name="engine\source\CreatureFactory.cpp" open="1" top="1" tabpos="6">
 		<Cursor position="7142" topLine="168" />
 	</File>
 	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="3">
