@@ -2,6 +2,7 @@
 #include <boost/foreach.hpp>
 #include "XMLDataStructures.hpp"
 #include "XMLDeitiesReader.hpp"
+#include "XMLStatisticsModifierReader.hpp"
 
 using namespace std;
 
@@ -44,6 +45,10 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     string death_sid = XMLUtils::get_child_node_value(deity_node, "DeathMessageSID");
     AlignmentRange alignment = static_cast<AlignmentRange>(XMLUtils::get_child_node_int_value(deity_node, "Alignment"));
     WorshipSiteType worship_site_type = static_cast<WorshipSiteType>(XMLUtils::get_child_node_int_value(deity_node, "WorshipSiteType"));
+
+    XMLStatisticsModifierReader smr;
+    XMLNode statistics_modifier_node = XMLUtils::get_next_element_by_local_name(deity_node, "DeityInitialModifiers");
+    StatisticsModifier sm = smr.get_statistics_modifier(statistics_modifier_node);
     
     deity->set_id(deity_id);
     deity->set_name_sid(name_sid);
@@ -52,6 +57,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     deity->set_death_message_sid(death_sid);
     deity->set_alignment_range(alignment);
     deity->set_worship_site_type(worship_site_type);
+    deity->set_initial_statistics_modifier(sm);
   }
   
   return deity;

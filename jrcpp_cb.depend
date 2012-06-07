@@ -130,11 +130,12 @@
 	"Conversion.hpp"
 	<iostream>
 
-1334893469 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmldeitiesreader.cpp
+1339072342 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmldeitiesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"XMLDataStructures.hpp"
 	"XMLDeitiesReader.hpp"
+	"XMLStatisticsModifierReader.hpp"
 
 1323442206 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlfilereader.cpp
 	"XMLFileReader.hpp"
@@ -854,7 +855,7 @@
 	"MessageManager.hpp"
 	"Log.hpp"
 
-1338901141 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1339074168 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<cmath>
 	<boost/make_shared.hpp>
 	<boost/uuid/uuid_generators.hpp>
@@ -1835,5 +1836,10 @@
 	"NCursesConstants.hpp"
 
 1338900227 source:c:\cygwin\home\julian\jrcpp\world\source\statisticsmodifier.cpp
+	"StatisticsModifier.hpp"
+
+1339016521 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlstatisticsmodifierreader.cpp
+	"XMLDataStructures.hpp"
+	"XMLStatisticsModifierReader.hpp"
 	"StatisticsModifier.hpp"
 
