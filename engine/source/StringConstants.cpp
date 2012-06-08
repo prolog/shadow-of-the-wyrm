@@ -1,5 +1,6 @@
 #include <sstream>
 #include <boost/algorithm/string/replace.hpp>
+#include "Conversion.hpp"
 #include "StringTable.hpp"
 #include "StringConstants.hpp"
 
@@ -646,7 +647,7 @@ string TextMessages::get_npc_escapes_message(const string& creature_description)
 string TextMessages::get_action_not_found_message(const string& command_action)
 {
   string action_message = StringTable::get(ActionTextKeys::ACTION_NOT_FOUND);
-  boost::replace_first(action_message, "%s", command_action);
+  boost::replace_first(action_message, "%s", String::clean(command_action));
   return action_message;
 }
 
