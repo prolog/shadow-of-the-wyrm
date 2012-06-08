@@ -36,7 +36,7 @@ string String::clean(const string& to_clean)
   {
     char c = c_str[i];
     
-    if (isalpha(c) || isdigit(c) || c == ' ')
+    if (isalpha(c) || isdigit(c) || c >= ' ')
     {
       cleaned_string = cleaned_string + Char::to_string(c);
     }

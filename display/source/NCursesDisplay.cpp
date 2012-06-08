@@ -280,8 +280,14 @@ void NCursesDisplay::add_message(const string& message, const Colour colour, con
         clear_message_buffer();
       }
     }
+    
+    // If the user presses enter
+    if (cur_y > NCursesConstants::MESSAGE_BUFFER_END_ROW)
+    {
+      cur_y--;
+    }
 
-    printw(current_token.c_str());    
+    printw(current_token.c_str());        
   }
 
   // Ensure that the last coordinates from the message buffer are up to date.
