@@ -122,13 +122,9 @@ bool MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr 
   
   if (game && manager && creatures_new_tile)
   {
-    if (MapUtils::is_blocking_feature_present(creatures_new_tile))
+    if (creatures_new_tile->get_is_blocking())
     {
-      string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
-      manager->add_new_message(blocked);
-      manager->send();
-      
-      movement_success = false;
+      // Do nothing, and return false.
     }
     else if (MapUtils::is_creature_present(creatures_new_tile))
     {
@@ -143,6 +139,14 @@ bool MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr 
         CombatManager cm;
         movement_success = cm.attack(creature, adjacent_creature);
       }
+    }
+    else if (MapUtils::is_blocking_feature_present(creatures_new_tile))
+    {
+      string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
+      manager->add_new_message(blocked);
+      manager->send();
+      
+      movement_success = false;
     }
     else
     {

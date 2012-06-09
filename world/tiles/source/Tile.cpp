@@ -40,6 +40,16 @@ bool Tile::get_illuminated() const
   return illuminated;
 }
 
+bool Tile::get_is_blocking() const
+{
+  return (get_movement_multiplier() == 0);
+}
+
+int Tile::get_movement_multiplier() const
+{
+  return 1;
+}
+
 void Tile::set_explored(bool new_explored)
 {
   explored = new_explored;
