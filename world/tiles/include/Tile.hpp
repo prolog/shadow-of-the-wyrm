@@ -27,6 +27,9 @@ class Tile
 
     virtual void set_illuminated(bool new_illuminated);
     virtual bool get_illuminated() const;
+    
+    virtual bool get_is_blocking() const;
+    virtual int get_movement_multiplier() const;
 
     // This is player-centric.  Probably OK for now, but may need to be
     // revisited later.
