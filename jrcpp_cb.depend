@@ -960,7 +960,7 @@
 1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1339254128 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -1843,4 +1843,7 @@
 	"XMLDataStructures.hpp"
 	"XMLStatisticsModifierReader.hpp"
 	"StatisticsModifier.hpp"
+
+1339339237 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\raycastingfieldofviewstrategy.cpp
+	"RayCastingFieldOfViewStrategy.hpp"
 

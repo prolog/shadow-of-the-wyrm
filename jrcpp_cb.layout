@@ -16,7 +16,7 @@
 	<File name="controller\include\NullKeyboardController.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="178" topLine="0" />
 	</File>
-	<File name="controller\source\NCursesKeyboardController.cpp" open="1" top="0" tabpos="21">
+	<File name="controller\source\NCursesKeyboardController.cpp" open="0" top="0" tabpos="21">
 		<Cursor position="307" topLine="0" />
 	</File>
 	<File name="controller\source\NullKeyboardController.cpp" open="0" top="0" tabpos="9">
@@ -37,7 +37,7 @@
 	<File name="display\include\DisplayStatistics.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="2555" topLine="55" />
 	</File>
-	<File name="display\include\NCursesConstants.hpp" open="1" top="0" tabpos="13">
+	<File name="display\include\NCursesConstants.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="265" topLine="0" />
 	</File>
 	<File name="display\include\NCursesDisplay.hpp" open="0" top="0" tabpos="18">
@@ -64,11 +64,11 @@
 	<File name="display\source\DisplayTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="28" topLine="0" />
 	</File>
-	<File name="display\source\NCursesConstants.cpp" open="1" top="0" tabpos="12">
+	<File name="display\source\NCursesConstants.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="352" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="11">
-		<Cursor position="6683" topLine="270" />
+	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="7005" topLine="281" />
 	</File>
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="34" topLine="0" />
@@ -121,7 +121,7 @@
 	<File name="engine\XML\include\XMLPotionReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="13" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLRacesReader.hpp" open="1" top="0" tabpos="1">
+	<File name="engine\XML\include\XMLRacesReader.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="188" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLReader.hpp" open="0" top="0" tabpos="2">
@@ -136,7 +136,7 @@
 	<File name="engine\XML\include\XMLStaffReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="112" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLStatisticsModifierReader.hpp" open="1" top="0" tabpos="3">
+	<File name="engine\XML\include\XMLStatisticsModifierReader.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="12" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLWandReader.hpp" open="0" top="0" tabpos="0">
@@ -157,7 +157,7 @@
 	<File name="engine\XML\source\XMLBookReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="205" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLClassesReader.cpp" open="1" top="0" tabpos="2">
+	<File name="engine\XML\source\XMLClassesReader.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="249" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="7">
@@ -172,7 +172,7 @@
 	<File name="engine\XML\source\XMLDataStructures.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="2962" topLine="115" />
 	</File>
-	<File name="engine\XML\source\XMLDeitiesReader.cpp" open="1" top="0" tabpos="5">
+	<File name="engine\XML\source\XMLDeitiesReader.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1835" topLine="35" />
 	</File>
 	<File name="engine\XML\source\XMLFoodReader.cpp" open="0" top="0" tabpos="0">
@@ -208,7 +208,7 @@
 	<File name="engine\XML\source\XMLStaffReader.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="188" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLStatisticsModifierReader.cpp" open="1" top="0" tabpos="4">
+	<File name="engine\XML\source\XMLStatisticsModifierReader.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="1371" topLine="14" />
 	</File>
 	<File name="engine\XML\source\XMLTilesReader.cpp" open="0" top="0" tabpos="4">
@@ -454,25 +454,25 @@
 	<File name="engine\commands\source\Command.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="480" topLine="7" />
 	</File>
-	<File name="engine\commands\source\CommandFactory.cpp" open="1" top="0" tabpos="16">
+	<File name="engine\commands\source\CommandFactory.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="2280" topLine="65" />
 	</File>
-	<File name="engine\commands\source\CommandKeys.cpp" open="1" top="0" tabpos="14">
+	<File name="engine\commands\source\CommandKeys.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="2470" topLine="54" />
 	</File>
-	<File name="engine\commands\source\CommandProcessor.cpp" open="1" top="0" tabpos="18">
+	<File name="engine\commands\source\CommandProcessor.cpp" open="0" top="0" tabpos="18">
 		<Cursor position="2548" topLine="95" />
 	</File>
-	<File name="engine\commands\source\Commands.cpp" open="1" top="0" tabpos="17">
+	<File name="engine\commands\source\Commands.cpp" open="0" top="0" tabpos="17">
 		<Cursor position="1375" topLine="70" />
 	</File>
-	<File name="engine\commands\source\KeyboardCommandMap.cpp" open="1" top="1" tabpos="15">
+	<File name="engine\commands\source\KeyboardCommandMap.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="2327" topLine="55" />
 	</File>
 	<File name="engine\conversion\include\CharacterDumper.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="280" topLine="0" />
 	</File>
-	<File name="engine\conversion\include\Conversion.hpp" open="1" top="0" tabpos="9">
+	<File name="engine\conversion\include\Conversion.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="1497" topLine="41" />
 	</File>
 	<File name="engine\conversion\include\EquipmentDumper.hpp" open="0" top="0" tabpos="3">
@@ -496,7 +496,7 @@
 	<File name="engine\conversion\source\CharacterDumper.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="221" topLine="0" />
 	</File>
-	<File name="engine\conversion\source\Conversion.cpp" open="1" top="0" tabpos="10">
+	<File name="engine\conversion\source\Conversion.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="5344" topLine="238" />
 	</File>
 	<File name="engine\conversion\source\EquipmentDumper.cpp" open="0" top="0" tabpos="1">
@@ -544,8 +544,20 @@
 	<File name="engine\decision_strategies\source\NPCDecisionStrategy.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2024" topLine="48" />
 	</File>
-	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="1" top="0" tabpos="19">
+	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="0" top="0" tabpos="19">
 		<Cursor position="983" topLine="19" />
+	</File>
+	<File name="engine\field_of_view\include\FieldOfViewStrategy.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="115" topLine="0" />
+	</File>
+	<File name="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="40" topLine="0" />
+	</File>
+	<File name="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="100" topLine="0" />
+	</File>
+	<File name="engine\generators\gardens\source\VegetableGardenGenerator.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="engine\generators\include\CavernGenerator.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="693" topLine="0" />
@@ -781,7 +793,7 @@
 	<File name="engine\include\ActionManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="41" topLine="0" />
 	</File>
-	<File name="engine\include\CreatureFactory.hpp" open="1" top="0" tabpos="7">
+	<File name="engine\include\CreatureFactory.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="76" topLine="0" />
 	</File>
 	<File name="engine\include\CreatureGenerationManager.hpp" open="0" top="0" tabpos="2">
@@ -818,7 +830,7 @@
 		<Cursor position="348" topLine="0" />
 	</File>
 	<File name="engine\include\MapUtils.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="1003" topLine="14" />
+		<Cursor position="1425" topLine="23" />
 	</File>
 	<File name="engine\include\Message.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="127" topLine="0" />
@@ -886,7 +898,7 @@
 	<File name="engine\source\ActionManager.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1626" topLine="58" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="1" top="0" tabpos="6">
+	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="7142" topLine="168" />
 	</File>
 	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="3">
@@ -901,7 +913,7 @@
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="443" topLine="4" />
 	</File>
-	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="20">
+	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="20">
 		<Cursor position="6354" topLine="242" />
 	</File>
 	<File name="engine\source\InventoryManager.cpp" open="0" top="0" tabpos="2">
@@ -928,14 +940,14 @@
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="506" topLine="9" />
 	</File>
-	<File name="engine\source\MessageManager.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="1508" topLine="61" />
+	<File name="engine\source\MessageManager.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1731" topLine="61" />
 	</File>
 	<File name="engine\source\Messages.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="100" topLine="0" />
 	</File>
 	<File name="engine\source\MovementManager.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="1488" topLine="32" />
+		<Cursor position="3880" topLine="116" />
 	</File>
 	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="568" topLine="10" />
@@ -952,7 +964,7 @@
 	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="4599" topLine="154" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="8">
+	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="27730" topLine="638" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="5">
@@ -1511,7 +1523,7 @@
 		<Cursor position="189" topLine="0" />
 	</File>
 	<File name="world\tiles\include\MarshTile.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="31" topLine="0" />
+		<Cursor position="228" topLine="0" />
 	</File>
 	<File name="world\tiles\include\MountainsTile.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="31" topLine="0" />
@@ -1526,7 +1538,7 @@
 		<Cursor position="165" topLine="0" />
 	</File>
 	<File name="world\tiles\include\RockTile.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="165" topLine="0" />
+		<Cursor position="171" topLine="0" />
 	</File>
 	<File name="world\tiles\include\ScrubTile.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="31" topLine="0" />
@@ -1550,7 +1562,7 @@
 		<Cursor position="86" topLine="0" />
 	</File>
 	<File name="world\tiles\include\Tile.hpp" open="0" top="0" tabpos="13">
-		<Cursor position="293" topLine="0" />
+		<Cursor position="796" topLine="24" />
 	</File>
 	<File name="world\tiles\include\TreeTile.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="34" topLine="0" />
@@ -1637,7 +1649,7 @@
 		<Cursor position="206" topLine="0" />
 	</File>
 	<File name="world\tiles\source\MarshTile.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="196" topLine="0" />
+		<Cursor position="260" topLine="0" />
 	</File>
 	<File name="world\tiles\source\MountainsTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="216" topLine="0" />
@@ -1652,7 +1664,7 @@
 		<Cursor position="191" topLine="0" />
 	</File>
 	<File name="world\tiles\source\RockTile.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="191" topLine="0" />
+		<Cursor position="194" topLine="0" />
 	</File>
 	<File name="world\tiles\source\ScrubTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="196" topLine="0" />
@@ -1673,7 +1685,7 @@
 		<Cursor position="74" topLine="0" />
 	</File>
 	<File name="world\tiles\source\Tile.cpp" open="0" top="0" tabpos="19">
-		<Cursor position="1176" topLine="68" />
+		<Cursor position="843" topLine="35" />
 	</File>
 	<File name="world\tiles\source\TreeTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="191" topLine="0" />
