@@ -3,6 +3,8 @@
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFeatures.hpp"
+#include "FieldOfViewStrategy.hpp"
+#include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
@@ -174,7 +176,7 @@ void Game::create_new_world(CreaturePtr creature)
 }
 
 // Update the display: the statistics area, and the current map.
-void Game::update_display(CreaturePtr current_player, MapPtr current_map)
+void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr fov_map)
 {
   if (current_player && current_map)
   {
@@ -183,7 +185,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map)
     DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
     display->display(display_stats);
 
-    DisplayMap display_map = MapTranslator::create_display_map(current_map, display_area);
+    DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area);
     display->draw(display_map);    
   }
 }
@@ -247,19 +249,23 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
       
       while (!advance)
       {
-        MapPtr view_map; // empty is fine as long as it's for the player
+        MapPtr view_map;
+        MapPtr fov_map;
+
+        Coordinate creature_coords = current_map->get_location(current_creature->get_id());
+        view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
+        
+        FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy();
+        fov_map = fov_strategy->calculate(view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
 
         if (current_creature->get_is_player())
         {
+          // JCD FIXME update this when LOS is done
           // Update the display with the result of the last round of actions.
-          update_display(current_creature, current_map);
-        }
-        else
-        {
-          view_map = ViewMapTranslator::create_view_map_around_tile(current_map, current_map->get_location(current_creature->get_id()), CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH);
+          update_display(current_creature, current_map, fov_map);
         }
         
-        CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map);
+        CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
         
         // Clear the stored messages if we're about to receive the player's action.
         // The player will already have had a chance to read the messages.

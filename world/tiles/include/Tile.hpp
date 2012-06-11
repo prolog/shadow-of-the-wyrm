@@ -35,6 +35,9 @@ class Tile
     // revisited later.
     virtual void set_explored(bool new_explored);
     virtual bool get_explored() const;
+    
+    virtual void set_viewed(bool new_viewed);
+    virtual bool get_viewed() const;
 
     // Features include doors, windows, thrones, fireplaces...
     virtual bool has_feature() const;
@@ -60,6 +63,7 @@ class Tile
 
     bool illuminated;
     bool explored;
+    bool viewed;
 
     // This is defined by each class, and shouldn't be overridden
     // by means of a set function.

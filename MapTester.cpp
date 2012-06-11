@@ -4,8 +4,10 @@
 
 #include <iostream>
 #include <fstream>
+#include <boost/foreach.hpp>
 #include <boost/shared_ptr.hpp>
 #include "global_prototypes.hpp"
+#include "BresenhamLine.hpp"
 #include "Display.hpp"
 #include "RNG.hpp"
 #include "CathedralGenerator.hpp"
@@ -53,6 +55,9 @@ void output_map(string map, string filename);
 void test_rng();
 void test_range();
 void test_dice();
+
+// Map testing stuff
+void test_bresenham_line();
 
 // Terrain generation function prototypes
 string generate_field();
@@ -652,6 +657,38 @@ void test_dice()
   }
 }
 
+void test_bresenham_line()
+{
+  int start_y, start_x, end_y, end_x;
+  BresenhamLine bl;
+  
+  start_y = start_x = end_y = end_x = 0;
+  
+  while (start_y != -1 && start_x != -1 && end_y != -1 && end_x != -1)
+  {
+    cout << "-1 for any value to quit." << endl;
+    cout << "Start y: ";
+    cin >> start_y;
+    cout << "Start x: ";
+    cin >> start_x;
+    cout << "End y: ";
+    cin >> end_y;
+    cout << "End x: ";
+    cin >> end_x;
+    cout << "Line contains points: " << endl;
+
+    if (start_y != -1 && start_x != -1 && end_y != -1 && end_x != -1)
+    {
+      vector<Coordinate> coords = bl.get_points_in_line(start_y, start_x, end_y, end_x);
+      
+      BOOST_FOREACH(Coordinate c, coords)
+      {
+        cout << "(" << c.first << "," << c.second << ")" << endl;
+      }
+    }
+  }  
+}
+
 void print_skill_name()
 {
   Awareness awareness;
@@ -856,6 +893,7 @@ int main(int argc, char** argv)
     cout << "15. Display race info" << endl;
     cout << "16. Display class info" << endl;
     cout << "17. City-adjacent maps" << endl;
+    cout << "18. Bresenham's Line" << endl;
     cout << "-1. Quit" << endl << endl;
     cin >> option;
 
@@ -926,6 +964,9 @@ int main(int argc, char** argv)
         break;
       case 17:
         city_maps();
+        break;
+      case 18:
+        test_bresenham_line();
         break;
       default:
         break;
