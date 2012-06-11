@@ -346,12 +346,17 @@
 		<Unit filename="engine\decision_strategies\source\ImmobileDecisionStrategy.cpp" />
 		<Unit filename="engine\decision_strategies\source\NPCDecisionStrategy.cpp" />
 		<Unit filename="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
+		<Unit filename="engine\field_of_view\include\BresenhamLine.hpp" />
 		<Unit filename="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
 		<Unit filename="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" />
 		<Unit filename="engine\field_of_view\include\FieldOfViewTypes.hpp" />
 		<Unit filename="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" />
+		<Unit filename="engine\field_of_view\source\BresenhamLine.cpp" />
 		<Unit filename="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" />
 		<Unit filename="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" />
+		<Unit filename="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
 		<Unit filename="engine\generators\gardens\include\GardenGenerator.hpp" />
 		<Unit filename="engine\generators\gardens\include\GardenGeneratorFactory.hpp" />
 		<Unit filename="engine\generators\gardens\include\GardenTypes.hpp" />

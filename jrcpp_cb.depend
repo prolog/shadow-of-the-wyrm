@@ -1,48 +1,25 @@
 # depslib dependency file v1.0
-1335616836 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
+1339107601 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
-	<fstream>
-	<boost/shared_ptr.hpp>
-	"global_prototypes.hpp"
-	"Display.hpp"
-	"RNG.hpp"
-	"CathedralGenerator.hpp"
-	"CavernGenerator.hpp"
-	"DungeonGenerator.hpp"
-	"FieldGenerator.hpp"
-	"ForestGenerator.hpp"
-	"FortifiedChurchGenerator.hpp"
-	"GrandTempleGenerator.hpp"
-	"GraveyardGeneratorFactory.hpp"
-	"IslandSacrificeSiteGenerator.hpp"
-	"RockySacrificeSiteGenerator.hpp"
-	"OvergrownSacrificeSiteGenerator.hpp"
-	"RoadGenerator.hpp"
-	"RuinsGenerator.hpp"
-	"MarshGenerator.hpp"
-	"SeaGenerator.hpp"
-	"SettlementGenerator.hpp"
-	"HamletGenerator.hpp"
-	"WalledSettlementGenerator.hpp"
-	"ScatteredSettlementGenerator.hpp"
-	"SimpleChurchGenerator.hpp"
-	"KeepRuinsGenerator.hpp"
-	"MapTranslator.hpp"
-	"SavageLandsEngine.hpp"
-	"SettlementRuinsGenerator.hpp"
-	"SimpleTempleGenerator.hpp"
-	"SnakingTempleGenerator.hpp"
-	"SpiralDungeonGenerator.hpp"
-	"WorldGenerator.hpp"
-	"XMLDataStructures.hpp"
-	"XMLConfigurationReader.hpp"
-	"XMLFileReader.hpp"
-	"StringTable.hpp"
-	"Skills.hpp"
+	<xercesc/util/PlatformUtils.hpp>
 	"common.hpp"
+	"global_prototypes.hpp"
+	"NCursesKeyboardController.hpp"
+	"NCursesDisplay.hpp"
+	"Display.hpp"
+	"Log.hpp"
+	"SavageLandsEngine.hpp"
+	"StringConstants.hpp"
+	"StringTable.hpp"
+	"XMLDataStructures.hpp"
+	"XMLFileReader.hpp"
+	"gtest/gtest.h"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\controller\source\ncurseskeyboardcontroller.cpp
 	"NCursesKeyboardController.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\controller\source\nullkeyboardcontroller.cpp
+	"NullKeyboardController.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\display\source\display.cpp
 	"Display.hpp"
@@ -65,6 +42,9 @@
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
 	"DisplayTile.hpp"
+
+1339159082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
+	"NCursesConstants.hpp"
 
 1339159080 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
@@ -125,6 +105,15 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconsumablereader.cpp
 	"XMLConsumableReader.hpp"
 
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlcreaturesreader.cpp
+	<vector>
+	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
+	"CombatConstants.hpp"
+	"CreatureGenerationValues.hpp"
+	"XMLCreaturesReader.hpp"
+	"DecisionStrategyFactory.hpp"
+
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmldatastructures.cpp
 	"XMLDataStructures.hpp"
 	"Conversion.hpp"
@@ -176,6 +165,10 @@
 	"XMLSkillsReaders.hpp"
 	"XMLStatisticsModifierReader.hpp"
 
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlreader.cpp
+	"XMLReader.hpp"
+	"CombatConstants.hpp"
+
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlresistancesreader.cpp
 	"Resistances.hpp"
 	"XMLDataStructures.hpp"
@@ -192,6 +185,11 @@
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlstaffreader.cpp
 	"XMLStaffReader.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlstatisticsmodifierreader.cpp
+	"XMLDataStructures.hpp"
+	"XMLStatisticsModifierReader.hpp"
+	"StatisticsModifier.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmltilesreader.cpp
 	"XMLTilesReader.hpp"
@@ -213,10 +211,22 @@
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\arcanapointscalculator_test.cpp
 	"gtest/gtest.h"
 
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\combattargetnumbercalculatorfactory.cpp
+	<boost/make_shared.hpp>
+	"CombatTargetNumberCalculatorFactory.hpp"
+	"MagicalCombatTargetNumberCalculator.hpp"
+	"MeleeAndRangedCombatTargetNumberCalculator.hpp"
+
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\creaturecalculator.cpp
 	"CreatureCalculator.hpp"
 	"EvadeCalculator.hpp"
 	"SoakCalculator.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\damagecalculatorfactory.cpp
+	<boost/make_shared.hpp>
+	"DamageCalculatorFactory.hpp"
+	"MagicalDamageCalculator.hpp"
+	"PhysicalDamageCalculator.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\evadecalculator.cpp
 	"EvadeCalculator.hpp"
@@ -250,6 +260,20 @@
 
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\magictohitcalculator_test.cpp
 
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicalcombattargetnumbercalculator.cpp
+	"MagicalCombatTargetNumberCalculator.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicaldamagecalculator.cpp
+	"MagicalDamageCalculator.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\meleeandrangedcombattargetnumbercalculator.cpp
+	"MeleeAndRangedCombatTargetNumberCalculator.hpp"
+	"WeaponDifficultyCalculator.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\physicaldamagecalculator.cpp
+	<cmath>
+	"PhysicalDamageCalculator.hpp"
+
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\resistancescalculator.cpp
 	"Resistances.hpp"
 	"ResistancesCalculator.hpp"
@@ -281,6 +305,66 @@
 	"LightMeleeAndRangedWeaponToHitCalculator.hpp"
 	"HeavyWeaponToHitCalculator.hpp"
 	"MagicToHitCalculator.hpp"
+	"WeaponManager.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\weapondifficultycalculator.cpp
+	"CombatConstants.hpp"
+	"WeaponDifficultyCalculator.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatconstants.cpp
+	"CombatConstants.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+	"CombatConstants.hpp"
+	"CombatManager.hpp"
+	"DeathManagerFactory.hpp"
+	"DamageCalculatorFactory.hpp"
+	"ExperienceManager.hpp"
+	"Game.hpp"
+	"ToHitCalculatorFactory.hpp"
+	"CombatTargetNumberCalculatorFactory.hpp"
+	"MapUtils.hpp"
+	"MessageManager.hpp"
+	"RNG.hpp"
+	"WeaponManager.hpp"
+	"unit_tests/CombatManager_test.cpp"
+
+1339107602 c:\cygwin\home\julian\jrcpp\engine\combat\source\unit_tests\combatmanager_test.cpp
+	"gtest/gtest.h"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\creaturedeathmanager.cpp
+	"CreatureDeathManager.hpp"
+	"Game.hpp"
+	"MapUtils.hpp"
+	"MessageManager.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\deathmanager.cpp
+	"DeathManager.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\deathmanagerfactory.cpp
+	<boost/make_shared.hpp>
+	"CreatureDeathManager.hpp"
+	"PlayerDeathManager.hpp"
+	"DeathManagerFactory.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\experiencemanager.cpp
+	"ExperienceManager.hpp"
+	"Game.hpp"
+	"LevelConstants.hpp"
+	"MessageManager.hpp"
+	"RNG.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\levelconstants.cpp
+	"LevelConstants.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\playerdeathmanager.cpp
+	"Game.hpp"
+	"MessageManager.hpp"
+	"PlayerDeathManager.hpp"
+	"ReligionManager.hpp"
+
+1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
+	"CombatConstants.hpp"
 	"WeaponManager.hpp"
 
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandfactory.cpp
@@ -420,6 +504,33 @@
 	"Conversion.hpp"
 	"StatsDumper.hpp"
 
+1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategy.cpp
+	"DecisionStrategy.hpp"
+
+1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategyfactory.cpp
+	<boost/make_shared.hpp>
+	"DecisionStrategyFactory.hpp"
+	"DecisionStrategyTypes.hpp"
+	"ImmobileDecisionStrategy.hpp"
+	"NullKeyboardController.hpp"
+
+1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategytypes.cpp
+	"DecisionStrategyTypes.hpp"
+
+1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
+	<string>
+	<sstream>
+	"ImmobileDecisionStrategy.hpp"
+
+1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
+	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
+	"Commands.hpp"
+	"Game.hpp"
+	"MapUtils.hpp"
+	"NPCDecisionStrategy.hpp"
+	"RNG.hpp"
+
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
 	<string>
 	<sstream>
@@ -430,6 +541,28 @@
 	"Conversion.hpp"
 	"KeyboardCommandMap.hpp"
 	"Map.hpp"
+
+1339365435 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\bresenhamline.cpp
+	<algorithm>
+	<cmath>
+	"BresenhamLine.hpp"
+	"unit_tests/BresenhamLine_test.cpp"
+
+1339368000 c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\unit_tests\bresenhamline_test.cpp
+	"gtest/gtest.h"
+	<boost/foreach.hpp>
+	<iostream>
+
+1339339429 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategyfactory.cpp
+	<boost/make_shared.hpp>
+	"FieldOfViewStrategyFactory.hpp"
+	"RayCastingFieldOfViewStrategy.hpp"
+
+1339425143 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\raycastingfieldofviewstrategy.cpp
+	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
+	"RayCastingFieldOfViewStrategy.hpp"
+	"BresenhamLine.hpp"
 
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\gardens\source\gardengenerator.cpp
 	"GardenGenerator.hpp"
@@ -480,6 +613,13 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\settlements\source\hamletgenerator.cpp
 	"GeneratorUtils.hpp"
 	"HamletGenerator.hpp"
+	"RNG.hpp"
+	"TileGenerator.hpp"
+
+1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\settlements\source\scatteredsettlementgenerator.cpp
+	<boost/foreach.hpp>
+	"ScatteredSettlementGenerator.hpp"
+	"MapUtils.hpp"
 	"RNG.hpp"
 	"TileGenerator.hpp"
 
@@ -613,6 +753,9 @@
 	"Log.hpp"
 	"RoadGenerator.hpp"
 	"TileGenerator.hpp"
+
+1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\room.cpp
+	"Room.hpp"
 
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\ruinsgenerator.cpp
 	"RuinsGenerator.hpp"
@@ -855,6 +998,9 @@
 	"MessageManager.hpp"
 	"Log.hpp"
 
+1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creationutils.cpp
+	"CreationUtils.hpp"
+
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<cmath>
 	<boost/make_shared.hpp>
@@ -878,6 +1024,17 @@
 1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\creaturefactory_test.cpp
 	"gtest/gtest.h"
 
+1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationconstants.cpp
+	"CreatureGenerationConstants.hpp"
+
+1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationmanager.cpp
+	<map>
+	<boost/foreach.hpp>
+	"CreatureGenerationManager.hpp"
+	"CreatureFactory.hpp"
+	"Game.hpp"
+	"RNG.hpp"
+
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\dimensions.cpp
 	"Dimensions.hpp"
 	"unit_tests/Dimensions_test.cpp"
@@ -895,12 +1052,14 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1339423337 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"CreatureCalculator.hpp"
 	"CreatureFeatures.hpp"
+	"FieldOfViewStrategy.hpp"
+	"FieldOfViewStrategyFactory.hpp"
 	"Game.hpp"
 	"CommandProcessor.hpp"
 	"CreatureTranslator.hpp"
@@ -925,6 +1084,9 @@
 	<boost/uuid/uuid_io.hpp>
 	"Conversion.hpp"
 	"ItemFactory.hpp"
+
+1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\itemgenerationmanager.cpp
+	"ItemGenerationManager.hpp"
 
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\itemmanager.cpp
 	"Game.hpp"
@@ -952,6 +1114,12 @@
 	<iostream>
 	"unit_tests/Map_test.cpp"
 	"unit_tests/MapUtils_test.cpp"
+
+1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\map_test.cpp
+	"gtest/gtest.h"
+
+1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\maputils_test.cpp
+	"gtest/gtest.h"
 
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\message.cpp
 	"Message.hpp"
@@ -997,6 +1165,10 @@
 
 1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\rng_test.cpp
 	"gtest/gtest.h"
+
+1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\racemanager.cpp
+	"RaceManager.hpp"
+	"Game.hpp"
 
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\religionmanager.cpp
 	"ReligionManager.hpp"
@@ -1072,12 +1244,17 @@
 	"ItemTranslator.hpp"
 	"StringTable.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
+1339424891 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
 	<algorithm>
 	"common.hpp"
 	"Display.hpp"
 	"Game.hpp"
 	"MapTranslator.hpp"
+
+1339107604 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\viewmaptranslator.cpp
+	<boost/make_shared.hpp>
+	"MapUtils.hpp"
+	"ViewMapTranslator.hpp"
 
 1339107604 source:c:\cygwin\home\julian\jrcpp\global_functions.cpp
 	<sstream>
@@ -1198,6 +1375,12 @@
 1339107605 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\creature_test.cpp
 	"gtest/gtest.h"
 
+1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\creaturefeatures.cpp
+	"CreatureFeatures.hpp"
+
+1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\creaturegenerationvalues.cpp
+	"CreatureGenerationValues.hpp"
+
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\damage.cpp
 	<string>
 	"Conversion.hpp"
@@ -1205,6 +1388,10 @@
 	"unit_tests/Damage_test.cpp"
 
 1339107605 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\damage_test.cpp
+
+1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\dice.cpp
+	"Conversion.hpp"
+	"Dice.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\equipment.cpp
 	"Equipment.hpp"
@@ -1220,6 +1407,9 @@
 	<boost/make_shared.hpp>
 	"Item.hpp"
 	"Wood.hpp"
+
+1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
+	"ItemTypes.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	<sstream>
@@ -1282,6 +1472,12 @@
 
 1339107605 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\statistic_test.cpp
 	"gtest/gtest.h"
+
+1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\statisticsmodifier.cpp
+	"StatisticsModifier.hpp"
+
+1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\threatratings.cpp
+	"ThreatRatings.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\wand.cpp
 	"Wand.hpp"
@@ -1577,7 +1773,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\templetile.cpp
 	"TempleTile.hpp"
 
-1339253314 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
+1339424965 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
 	"Inventory.hpp"
 	"Tile.hpp"
 	"unit_tests/Tile_test.cpp"
@@ -1627,223 +1823,50 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\settlements\source\scatteredsettlementgenerator.cpp
-	<boost/foreach.hpp>
-	"ScatteredSettlementGenerator.hpp"
-	"MapUtils.hpp"
-	"RNG.hpp"
-	"TileGenerator.hpp"
-
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\room.cpp
-	"Room.hpp"
-
-1339107601 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1339421761 source:c:\cygwin\home\julian\jrcpp\maptester.cpp
 	<iostream>
-	<xercesc/util/PlatformUtils.hpp>
-	"common.hpp"
+	<fstream>
+	<boost/foreach.hpp>
+	<boost/shared_ptr.hpp>
 	"global_prototypes.hpp"
-	"NCursesKeyboardController.hpp"
-	"NCursesDisplay.hpp"
+	"BresenhamLine.hpp"
 	"Display.hpp"
-	"Log.hpp"
+	"RNG.hpp"
+	"CathedralGenerator.hpp"
+	"CavernGenerator.hpp"
+	"DungeonGenerator.hpp"
+	"FieldGenerator.hpp"
+	"ForestGenerator.hpp"
+	"FortifiedChurchGenerator.hpp"
+	"GrandTempleGenerator.hpp"
+	"GraveyardGeneratorFactory.hpp"
+	"IslandSacrificeSiteGenerator.hpp"
+	"RockySacrificeSiteGenerator.hpp"
+	"OvergrownSacrificeSiteGenerator.hpp"
+	"RoadGenerator.hpp"
+	"RuinsGenerator.hpp"
+	"MarshGenerator.hpp"
+	"SeaGenerator.hpp"
+	"SettlementGenerator.hpp"
+	"HamletGenerator.hpp"
+	"WalledSettlementGenerator.hpp"
+	"ScatteredSettlementGenerator.hpp"
+	"SimpleChurchGenerator.hpp"
+	"KeepRuinsGenerator.hpp"
+	"MapTranslator.hpp"
 	"SavageLandsEngine.hpp"
-	"StringConstants.hpp"
-	"StringTable.hpp"
+	"SettlementRuinsGenerator.hpp"
+	"SimpleTempleGenerator.hpp"
+	"SnakingTempleGenerator.hpp"
+	"SpiralDungeonGenerator.hpp"
+	"WorldGenerator.hpp"
 	"XMLDataStructures.hpp"
+	"XMLConfigurationReader.hpp"
 	"XMLFileReader.hpp"
-	"gtest/gtest.h"
+	"StringTable.hpp"
+	"Skills.hpp"
+	"common.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlcreaturesreader.cpp
-	<vector>
-	<boost/foreach.hpp>
-	<boost/make_shared.hpp>
-	"CombatConstants.hpp"
-	"CreatureGenerationValues.hpp"
-	"XMLCreaturesReader.hpp"
-	"DecisionStrategyFactory.hpp"
-
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategyfactory.cpp
-	<boost/make_shared.hpp>
-	"DecisionStrategyFactory.hpp"
-	"DecisionStrategyTypes.hpp"
-	"ImmobileDecisionStrategy.hpp"
-	"NullKeyboardController.hpp"
-
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategytypes.cpp
-	"DecisionStrategyTypes.hpp"
-
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\racemanager.cpp
-	"RaceManager.hpp"
-	"Game.hpp"
-
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
-	"ItemTypes.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\controller\source\nullkeyboardcontroller.cpp
-	"NullKeyboardController.hpp"
-
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
-	<string>
-	<sstream>
-	"ImmobileDecisionStrategy.hpp"
-
-1338382549 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationvalues.cpp
-	"CreatureGenerationValues.hpp"
-
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationmanager.cpp
-	<map>
-	<boost/foreach.hpp>
-	"CreatureGenerationManager.hpp"
-	"CreatureFactory.hpp"
-	"Game.hpp"
-	"RNG.hpp"
-
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\creaturegenerationvalues.cpp
-	"CreatureGenerationValues.hpp"
-
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\itemgenerationmanager.cpp
-	"ItemGenerationManager.hpp"
-
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creationutils.cpp
-	"CreationUtils.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlreader.cpp
-	"XMLReader.hpp"
-	"CombatConstants.hpp"
-
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\dice.cpp
-	"Conversion.hpp"
-	"Dice.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
-	"CombatConstants.hpp"
-	"CombatManager.hpp"
-	"DeathManagerFactory.hpp"
-	"DamageCalculatorFactory.hpp"
-	"ExperienceManager.hpp"
-	"Game.hpp"
-	"ToHitCalculatorFactory.hpp"
-	"CombatTargetNumberCalculatorFactory.hpp"
-	"MapUtils.hpp"
-	"MessageManager.hpp"
-	"RNG.hpp"
-	"WeaponManager.hpp"
-	"unit_tests/CombatManager_test.cpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\combattargetnumbercalculatorfactory.cpp
-	<boost/make_shared.hpp>
-	"CombatTargetNumberCalculatorFactory.hpp"
-	"MagicalCombatTargetNumberCalculator.hpp"
-	"MeleeAndRangedCombatTargetNumberCalculator.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicalcombattargetnumbercalculator.cpp
-	"MagicalCombatTargetNumberCalculator.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\meleeandrangedcombattargetnumbercalculator.cpp
-	"MeleeAndRangedCombatTargetNumberCalculator.hpp"
-	"WeaponDifficultyCalculator.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatconstants.cpp
-	"CombatConstants.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\weapondifficultycalculator.cpp
-	"CombatConstants.hpp"
-	"WeaponDifficultyCalculator.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
-	"CombatConstants.hpp"
-	"WeaponManager.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\physicaldamagecalculator.cpp
-	<cmath>
-	"PhysicalDamageCalculator.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicaldamagecalculator.cpp
-	"MagicalDamageCalculator.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\damagecalculatorfactory.cpp
-	<boost/make_shared.hpp>
-	"DamageCalculatorFactory.hpp"
-	"MagicalDamageCalculator.hpp"
-	"PhysicalDamageCalculator.hpp"
-
-1339107602 c:\cygwin\home\julian\jrcpp\engine\combat\source\unit_tests\combatmanager_test.cpp
-	"gtest/gtest.h"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\deathmanagerfactory.cpp
-	<boost/make_shared.hpp>
-	"CreatureDeathManager.hpp"
-	"PlayerDeathManager.hpp"
-	"DeathManagerFactory.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\deathmanager.cpp
-	"DeathManager.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\creaturedeathmanager.cpp
-	"CreatureDeathManager.hpp"
-	"Game.hpp"
-	"MapUtils.hpp"
-	"MessageManager.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\playerdeathmanager.cpp
-	"Game.hpp"
-	"MessageManager.hpp"
-	"PlayerDeathManager.hpp"
-	"ReligionManager.hpp"
-
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
-	<boost/foreach.hpp>
-	<boost/make_shared.hpp>
-	"Commands.hpp"
-	"Game.hpp"
-	"MapUtils.hpp"
-	"NPCDecisionStrategy.hpp"
-	"RNG.hpp"
-
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\threatratings.cpp
-	"ThreatRatings.hpp"
-
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\viewmaptranslator.cpp
-	<boost/make_shared.hpp>
-	"MapUtils.hpp"
-	"ViewMapTranslator.hpp"
-
-1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\maputils_test.cpp
-	"gtest/gtest.h"
-
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\creaturefeatures.cpp
-	"CreatureFeatures.hpp"
-
-1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\map_test.cpp
-	"gtest/gtest.h"
-
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategy.cpp
-	"DecisionStrategy.hpp"
-
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationconstants.cpp
-	"CreatureGenerationConstants.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\experiencemanager.cpp
-	"ExperienceManager.hpp"
-	"Game.hpp"
-	"LevelConstants.hpp"
-	"MessageManager.hpp"
-	"RNG.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\levelconstants.cpp
-	"LevelConstants.hpp"
-
-1339159082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
-	"NCursesConstants.hpp"
-
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\statisticsmodifier.cpp
-	"StatisticsModifier.hpp"
-
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlstatisticsmodifierreader.cpp
-	"XMLDataStructures.hpp"
-	"XMLStatisticsModifierReader.hpp"
-	"StatisticsModifier.hpp"
-
-1339339237 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\raycastingfieldofviewstrategy.cpp
-	"RayCastingFieldOfViewStrategy.hpp"
+1339425108 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategy.cpp
+	"FieldOfViewStrategy.hpp"
 

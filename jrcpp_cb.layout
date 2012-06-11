@@ -67,7 +67,7 @@
 	<File name="display\source\NCursesConstants.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="352" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="1">
+	<File name="display\source\NCursesDisplay.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="7005" topLine="281" />
 	</File>
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
@@ -547,16 +547,28 @@
 	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="0" top="0" tabpos="19">
 		<Cursor position="983" topLine="19" />
 	</File>
-	<File name="engine\field_of_view\include\FieldOfViewStrategy.hpp" open="1" top="0" tabpos="5">
+	<File name="engine\field_of_view\include\BresenhamLine.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="163" topLine="0" />
+	</File>
+	<File name="engine\field_of_view\include\FieldOfViewStrategy.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="115" topLine="0" />
 	</File>
-	<File name="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" open="1" top="0" tabpos="4">
+	<File name="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="40" topLine="0" />
 	</File>
-	<File name="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="100" topLine="0" />
+	<File name="engine\field_of_view\source\BresenhamLine.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="758" topLine="39" />
 	</File>
-	<File name="engine\generators\gardens\source\VegetableGardenGenerator.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="598" topLine="5" />
+	</File>
+	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="74" topLine="0" />
+	</File>
+	<File name="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="802" topLine="15" />
+	</File>
+	<File name="engine\generators\gardens\source\VegetableGardenGenerator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="engine\generators\include\CavernGenerator.hpp" open="0" top="0" tabpos="9">
@@ -940,7 +952,7 @@
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="506" topLine="9" />
 	</File>
-	<File name="engine\source\MessageManager.cpp" open="1" top="0" tabpos="2">
+	<File name="engine\source\MessageManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1731" topLine="61" />
 	</File>
 	<File name="engine\source\Messages.cpp" open="0" top="0" tabpos="10">

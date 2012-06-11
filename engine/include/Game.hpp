@@ -80,7 +80,7 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     void reload_map();
     
     // Update the physical display
-    void update_display(CreaturePtr creature, MapPtr map);
+    void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map);
 
     // Set the map to be used as the current for the game's computational purposes.
     void set_current_map(MapPtr map);

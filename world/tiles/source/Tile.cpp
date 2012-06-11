@@ -28,6 +28,7 @@ void Tile::set_default_properties()
 {
   illuminated = true;
   explored    = false;
+  viewed      = false;
 }
 
 void Tile::set_illuminated(bool new_illuminated)
@@ -60,6 +61,16 @@ bool Tile::get_explored() const
   return explored;
 }
 
+void Tile::set_viewed(bool new_viewed)
+{
+  viewed = new_viewed;
+}
+
+bool Tile::get_viewed() const
+{
+  return viewed;
+}
+
 bool Tile::has_feature() const
 {
   return (feature);
@@ -83,6 +94,11 @@ bool Tile::has_creature() const
 void Tile::set_creature(const CreaturePtr& new_creature)
 {
   creature = new_creature;
+  
+  if (creature->get_is_player())
+  {
+    set_explored(true);
+  }
 }
 
 void Tile::remove_creature()

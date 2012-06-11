@@ -14,7 +14,7 @@ MapTranslator::~MapTranslator()
 {
 }
 
-DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapDisplayArea& display_area, const bool centre_on_player)
+DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const bool centre_on_player)
 {
   uint display_width = display_area.get_width();
   uint display_height = display_area.get_height();
@@ -36,6 +36,8 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapDisplay
     // Ignore the decimal part - we only care about the int part.
     int engine_map_start_row = std::min(map_height - display_height, ((int)(player_row / display_height)) * display_height);
     int engine_map_start_col = std::min(map_width - display_width, ((int)(player_col / display_width)) * display_width);
+    
+    int actual_row, actual_col;
 
     for (uint d_row = 0; d_row < display_height; d_row++)
     {
@@ -53,11 +55,17 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapDisplay
         display_coords.first = d_row;
         display_coords.second = d_col;
 
+        actual_row = engine_map_start_row+d_row;
+        actual_col = engine_map_start_col+d_col;
+
         // Get the map tile
-        TilePtr map_tile = map->at(engine_map_start_row+d_row, engine_map_start_col+d_col);
+        TilePtr map_tile = map->at(actual_row, actual_col);
+        
+        // Check to see if a corresponding FOV tile exists
+        TilePtr fov_map_tile = fov_map->at(actual_row, actual_col);
 
         // Translate the map tile
-        DisplayTile display_tile = create_display_tile(map_tile);
+        DisplayTile display_tile = create_display_tile(map_tile, fov_map_tile);
 
         // JCD HACK FIXME LATER
         if (display_tile.get_symbol() == '@')
@@ -74,7 +82,7 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapDisplay
   return display_map;
 }
 
-DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile)
+DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile, const TilePtr& fov_tile)
 {
   DisplayTile display_tile;
 
@@ -82,26 +90,47 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile)
 
   if (game_info)
   {
-    CreaturePtr creature = actual_tile->get_creature();
-    Inventory& inv = actual_tile->get_items();
-    FeaturePtr feature = actual_tile->get_feature();
+    if (fov_tile)
+    {
+      CreaturePtr creature = actual_tile->get_creature();
+      Inventory& inv = actual_tile->get_items();
+      FeaturePtr feature = actual_tile->get_feature();
 
-    if (creature) // If a creature exists on this tile - will be null if the ptr is not init'd
-    {
-      display_tile = create_display_tile_from_creature(creature);
+      if (creature) // If a creature exists on this tile - will be null if the ptr is not init'd
+      {
+        display_tile = create_display_tile_from_creature(creature);
+      }
+      else if (!inv.empty()) // If at least one item exists in the tile's inventory of items
+      {
+        ItemPtr item = inv.at(0); // Get the first item
+        display_tile = create_display_tile_from_item(item);
+      }
+      else if (feature) // There's no creature, and no items.  Is there a feature?
+      {
+        display_tile = create_display_tile_from_feature(feature);
+      }
+      else // Nothing else - display the tile.
+      {
+        display_tile = create_display_tile_from_tile(actual_tile);
+      }      
     }
-    else if (!inv.empty()) // If at least one item exists in the tile's inventory of items
+    else
     {
-      ItemPtr item = inv.at(0); // Get the first item
-      display_tile = create_display_tile_from_item(item);
-    }
-    else if (feature) // There's no creature, and no items.  Is there a feature?
-    {
-      display_tile = create_display_tile_from_feature(feature);
-    }
-    else // Nothing else - display the tile.
-    {
-      display_tile = create_display_tile_from_tile(actual_tile);
+      if (actual_tile->get_explored())
+      {
+        display_tile = create_unseen_and_explored_display_tile(actual_tile);
+      }
+      else
+      {
+        if (actual_tile->get_viewed())
+        {
+          display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile);          
+        }
+        else
+        {
+          display_tile = create_unseen_and_unexplored_display_tile();
+        }
+      }
     }
   }
 
@@ -150,6 +179,31 @@ DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const ucha
   
   display_tile.set_symbol(symbol);
   display_tile.set_colour(colour);
+  
+  return display_tile;  
+}
+
+DisplayTile MapTranslator::create_unseen_and_previously_viewed_display_tile(const TilePtr& tile)
+{
+  // JCD FIXME LATER
+  return create_unseen_and_explored_display_tile(tile);
+}
+
+DisplayTile MapTranslator::create_unseen_and_explored_display_tile(const TilePtr& tile)
+{
+  DisplayTile display_tile;
+  
+  display_tile = create_display_tile_from_tile(tile);
+  
+  return display_tile;
+}
+
+DisplayTile MapTranslator::create_unseen_and_unexplored_display_tile()
+{
+  DisplayTile display_tile;
+  
+  display_tile.set_symbol(' ');
+  display_tile.set_colour(COLOUR_BLACK);
   
   return display_tile;  
 }
