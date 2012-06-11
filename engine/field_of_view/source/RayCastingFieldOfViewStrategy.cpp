@@ -8,7 +8,7 @@ using boost::make_shared;
 
 MapPtr RayCastingFieldOfViewStrategy::calculate(MapPtr view_map, const Coordinate& centre_coord, const int los_length)
 {
-  MapPtr fov_map = make_shared<Map>(*view_map);
+  MapPtr fov_map = make_shared<Map>(view_map->size());
   BresenhamLine bl;
   
   int row = centre_coord.first;

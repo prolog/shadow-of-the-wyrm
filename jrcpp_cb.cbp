@@ -352,6 +352,7 @@
 		<Unit filename="engine\field_of_view\include\FieldOfViewTypes.hpp" />
 		<Unit filename="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" />
 		<Unit filename="engine\field_of_view\source\BresenhamLine.cpp" />
+		<Unit filename="engine\field_of_view\source\FieldOfViewStrategy.cpp" />
 		<Unit filename="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" />
 		<Unit filename="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" />
 		<Unit filename="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp">
