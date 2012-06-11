@@ -2,7 +2,7 @@
 <CodeBlocks_layout_file>
 	<ActiveTarget name="Debug" />
 	<File name="MapTester.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="3973" topLine="130" />
+		<Cursor position="20150" topLine="677" />
 	</File>
 	<File name="SavageLands.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="2264" topLine="103" />
@@ -547,25 +547,31 @@
 	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="0" top="0" tabpos="19">
 		<Cursor position="983" topLine="19" />
 	</File>
-	<File name="engine\field_of_view\include\BresenhamLine.hpp" open="1" top="0" tabpos="1">
+	<File name="engine\field_of_view\include\BresenhamLine.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="163" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\include\FieldOfViewStrategy.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="115" topLine="0" />
+		<Cursor position="311" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="40" topLine="0" />
+		<Cursor position="243" topLine="0" />
 	</File>
-	<File name="engine\field_of_view\source\BresenhamLine.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="758" topLine="39" />
+	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="355" topLine="0" />
+	</File>
+	<File name="engine\field_of_view\source\BresenhamLine.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="987" topLine="44" />
+	</File>
+	<File name="engine\field_of_view\source\FieldOfViewStrategy.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="41" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="598" topLine="5" />
 	</File>
-	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="74" topLine="0" />
+	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="2166" topLine="48" />
 	</File>
-	<File name="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="802" topLine="15" />
 	</File>
 	<File name="engine\generators\gardens\source\VegetableGardenGenerator.cpp" open="0" top="0" tabpos="3">
@@ -821,7 +827,7 @@
 		<Cursor position="236" topLine="0" />
 	</File>
 	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="6">
-		<Cursor position="3819" topLine="99" />
+		<Cursor position="2578" topLine="71" />
 	</File>
 	<File name="engine\include\InventoryManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="313" topLine="2" />
@@ -926,7 +932,7 @@
 		<Cursor position="443" topLine="4" />
 	</File>
 	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="20">
-		<Cursor position="6354" topLine="242" />
+		<Cursor position="6261" topLine="234" />
 	</File>
 	<File name="engine\source\InventoryManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1563" topLine="34" />
@@ -959,7 +965,7 @@
 		<Cursor position="100" topLine="0" />
 	</File>
 	<File name="engine\source\MovementManager.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="3880" topLine="116" />
+		<Cursor position="3772" topLine="116" />
 	</File>
 	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="568" topLine="10" />
@@ -1010,7 +1016,7 @@
 		<Cursor position="185" topLine="0" />
 	</File>
 	<File name="engine\translators\include\MapTranslator.hpp" open="0" top="0" tabpos="15">
-		<Cursor position="432" topLine="4" />
+		<Cursor position="1281" topLine="7" />
 	</File>
 	<File name="engine\translators\include\ViewMapTranslator.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="168" topLine="0" />
@@ -1031,10 +1037,10 @@
 		<Cursor position="591" topLine="7" />
 	</File>
 	<File name="engine\translators\source\MapTranslator.cpp" open="0" top="0" tabpos="14">
-		<Cursor position="4039" topLine="105" />
+		<Cursor position="5587" topLine="180" />
 	</File>
 	<File name="engine\translators\source\ViewMapTranslator.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="590" topLine="18" />
+		<Cursor position="242" topLine="11" />
 	</File>
 	<File name="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="118" topLine="0" />
@@ -1574,7 +1580,7 @@
 		<Cursor position="86" topLine="0" />
 	</File>
 	<File name="world\tiles\include\Tile.hpp" open="0" top="0" tabpos="13">
-		<Cursor position="796" topLine="24" />
+		<Cursor position="1862" topLine="63" />
 	</File>
 	<File name="world\tiles\include\TreeTile.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="34" topLine="0" />
@@ -1696,8 +1702,8 @@
 	<File name="world\tiles\source\TempleTile.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="74" topLine="0" />
 	</File>
-	<File name="world\tiles\source\Tile.cpp" open="0" top="0" tabpos="19">
-		<Cursor position="843" topLine="35" />
+	<File name="world\tiles\source\Tile.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="916" topLine="55" />
 	</File>
 	<File name="world\tiles\source\TreeTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="191" topLine="0" />

@@ -16,6 +16,9 @@ MapTranslator::~MapTranslator()
 
 DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const bool centre_on_player)
 {
+  int map_size = map->get_tiles().size();
+  int fov_size = fov_map->get_tiles().size();
+  
   uint display_width = display_area.get_width();
   uint display_height = display_area.get_height();
 
