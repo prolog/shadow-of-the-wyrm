@@ -137,7 +137,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         }
       }
       // If we're in the south-east region, and the current tile is south or east of a ground cell in the FOV map, add it to the FOV map.
-      else if ((c.first > centre_coord.first) && (c.second < centre_coord.second))
+      else if ((c.first > centre_coord.first) && (c.second > centre_coord.second))
       {
         if (is_artifact_se(fov_map, c, type))
         {
