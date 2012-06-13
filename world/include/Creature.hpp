@@ -264,7 +264,7 @@ class Creature
     uint experience_points;
     
     // The number of actions the creature has taken.
-    uint turns;
+    ulonglong turns;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

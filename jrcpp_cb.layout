@@ -556,8 +556,8 @@
 	<File name="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="233" topLine="0" />
 	</File>
-	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="195" topLine="0" />
+	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="421" topLine="2" />
 	</File>
 	<File name="engine\field_of_view\source\BresenhamLine.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="987" topLine="44" />
@@ -568,8 +568,8 @@
 	<File name="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="659" topLine="5" />
 	</File>
-	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="3527" topLine="89" />
+	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="5297" topLine="128" />
 	</File>
 	<File name="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="802" topLine="15" />
@@ -953,7 +953,7 @@
 		<Cursor position="1086" topLine="28" />
 	</File>
 	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="10550" topLine="399" />
+		<Cursor position="9299" topLine="349" />
 	</File>
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="506" topLine="9" />
@@ -1379,10 +1379,10 @@
 		<Cursor position="276" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\DecorativeStatues.hpp" open="0" top="0" tabpos="10">
-		<Cursor position="1511" topLine="48" />
+		<Cursor position="308" topLine="1" />
 	</File>
 	<File name="world\tiles\features\include\Door.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="415" topLine="0" />
+		<Cursor position="285" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\Entrance.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="597" topLine="2" />
@@ -1397,19 +1397,19 @@
 		<Cursor position="240" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\Feature.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="375" topLine="2" />
+		<Cursor position="722" topLine="10" />
 	</File>
 	<File name="world\tiles\features\include\FeatureGenerator.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="361" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\FirePillar.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="271" topLine="0" />
+		<Cursor position="141" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\Fountain.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="228" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\Gate.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="292" topLine="0" />
+		<Cursor position="216" topLine="0" />
 	</File>
 	<File name="world\tiles\features\include\GoodAltar.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="282" topLine="0" />
@@ -1442,10 +1442,10 @@
 		<Cursor position="83" topLine="0" />
 	</File>
 	<File name="world\tiles\features\source\DecorativeStatues.cpp" open="0" top="0" tabpos="11">
-		<Cursor position="1098" topLine="39" />
+		<Cursor position="398" topLine="11" />
 	</File>
 	<File name="world\tiles\features\source\Door.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="783" topLine="14" />
+		<Cursor position="611" topLine="17" />
 	</File>
 	<File name="world\tiles\features\source\Entrance.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="657" topLine="14" />
@@ -1457,19 +1457,19 @@
 		<Cursor position="359" topLine="0" />
 	</File>
 	<File name="world\tiles\features\source\Feature.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="140" topLine="0" />
+		<Cursor position="418" topLine="17" />
 	</File>
 	<File name="world\tiles\features\source\FeatureGenerator.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1303" topLine="44" />
 	</File>
 	<File name="world\tiles\features\source\FirePillar.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="575" topLine="14" />
+		<Cursor position="318" topLine="10" />
 	</File>
 	<File name="world\tiles\features\source\Fountain.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="106" topLine="0" />
 	</File>
 	<File name="world\tiles\features\source\Gate.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="230" topLine="0" />
+		<Cursor position="488" topLine="15" />
 	</File>
 	<File name="world\tiles\features\source\GoodAltar.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="361" topLine="0" />
@@ -1703,7 +1703,7 @@
 		<Cursor position="74" topLine="0" />
 	</File>
 	<File name="world\tiles\source\Tile.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="916" topLine="55" />
+		<Cursor position="839" topLine="34" />
 	</File>
 	<File name="world\tiles\source\TreeTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="191" topLine="0" />
