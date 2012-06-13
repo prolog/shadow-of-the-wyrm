@@ -12,6 +12,7 @@ using std::string;
 using std::vector;
 using boost::make_shared;
 
+
 RayCastingFieldOfViewStrategy::RayCastingFieldOfViewStrategy(const bool set_view_property)
 : FieldOfViewStrategy(set_view_property)
 {
@@ -55,7 +56,11 @@ MapPtr RayCastingFieldOfViewStrategy::calculate(MapPtr view_map, const Coordinat
     add_points_to_map_as_appropriate(line_points, view_map, fov_map);
   }
   
-  post_process_to_remove_artifacts(centre_coord, view_map, fov_map);
+  // Pass 1: regular walls/blocking tiles
+  post_process_to_remove_artifacts(centre_coord, view_map, fov_map, PASS_NON_CORNER_BLOCKING_TILES);
+  
+  // Pass 2: corner walls/blocking tiles
+  post_process_to_remove_artifacts(centre_coord, view_map, fov_map, PASS_CORNER_BLOCKING_TILES);
   
   return fov_map;
 }
@@ -83,7 +88,7 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(const std::
 }
 
 // Credit where credit is due: this is based on jice's "piece of cake visibility determination" page.
-void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coordinate& centre_coord, MapPtr view_map, MapPtr fov_map)
+void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coordinate& centre_coord, MapPtr view_map, MapPtr fov_map, const PassType type)
 {
   std::map<std::string, boost::shared_ptr<Tile> > tile_map = view_map->get_tiles();
   std::map<std::string, boost::shared_ptr<Tile> > fov_tile_map = fov_map->get_tiles();
@@ -107,8 +112,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       // If we're in the north-west region, and the current tile is north or west of a ground cell in the FOV map, add it to the FOV map.
       if ((c.first < centre_coord.first) && (c.second < centre_coord.second))
       {
-        if (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_SOUTH)
-        || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_EAST)))
+        if (is_artifact_nw(fov_map, c, type))
         {
           Log::instance()->log(tile_coords + " not in list, NW, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
@@ -117,8 +121,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       // If we're in the north-east region, and the current tile is north or east of a ground cell in the FOV map, add it to the FOV map.
       else if ((c.first < centre_coord.first) && (c.second > centre_coord.second))
       {
-        if (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_SOUTH)
-        || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_WEST)))
+        if (is_artifact_ne(fov_map, c, type))
         {
           Log::instance()->log(tile_coords + " not in list, NE, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
@@ -127,8 +130,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       // If we're in the south-west region, and the current tile is south or west of a ground cell in the FOV map, add it to the FOV map.
       else if ((c.first > centre_coord.first) && (c.second < centre_coord.second))
       {
-        if (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_NORTH)
-        || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_EAST)))
+        if (is_artifact_sw(fov_map, c, type))
         {
           Log::instance()->log(tile_coords + " not in list, SW, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
@@ -137,8 +139,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       // If we're in the south-east region, and the current tile is south or east of a ground cell in the FOV map, add it to the FOV map.
       else if ((c.first > centre_coord.first) && (c.second < centre_coord.second))
       {
-        if (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_NORTH)
-        || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_WEST)))
+        if (is_artifact_se(fov_map, c, type))
         {
           Log::instance()->log(tile_coords + " not in list, SE, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
@@ -161,4 +162,81 @@ bool RayCastingFieldOfViewStrategy::does_adjacent_non_blocking_tile_exist_in_fov
   }
   
   return (tile && (tile->get_is_blocking() == false));
+}
+
+bool RayCastingFieldOfViewStrategy::does_adjacent_blocking_tile_exist_in_fov_map(MapPtr fov_map, const Coordinate& centre_coord, const Direction direction)
+{
+  Coordinate c_dir = MapUtils::get_new_coordinate(centre_coord, direction);
+  TilePtr tile = fov_map->at(c_dir);
+
+  return (tile && tile->get_is_blocking());
+}
+
+bool RayCastingFieldOfViewStrategy::is_artifact_nw(MapPtr fov_map, const Coordinate& c, const PassType type)
+{
+  switch(type)
+  {
+    case PASS_NON_CORNER_BLOCKING_TILES:
+      return (is_non_corner_blocking_tile(fov_map, c, DIRECTION_SOUTH, DIRECTION_EAST));
+    case PASS_CORNER_BLOCKING_TILES:
+      return (is_corner_blocking_tile(fov_map, c, DIRECTION_SOUTH, DIRECTION_EAST, DIRECTION_SOUTH_EAST));
+    default: return false;
+  }
+  
+  return false;
+}
+
+bool RayCastingFieldOfViewStrategy::is_artifact_ne(MapPtr fov_map, const Coordinate& c, const PassType type)
+{
+  switch(type)
+  {
+    case PASS_NON_CORNER_BLOCKING_TILES:
+      return (is_non_corner_blocking_tile(fov_map, c, DIRECTION_SOUTH, DIRECTION_WEST));
+    case PASS_CORNER_BLOCKING_TILES:
+      return (is_corner_blocking_tile(fov_map, c, DIRECTION_SOUTH, DIRECTION_WEST, DIRECTION_SOUTH_WEST));
+    default: return false;
+  }
+  
+  return false;
+}
+
+bool RayCastingFieldOfViewStrategy::is_artifact_sw(MapPtr fov_map, const Coordinate& c, const PassType type)
+{
+  switch(type)
+  {
+    case PASS_NON_CORNER_BLOCKING_TILES:
+      return (is_non_corner_blocking_tile(fov_map, c, DIRECTION_NORTH, DIRECTION_EAST));
+    case PASS_CORNER_BLOCKING_TILES:
+      return (is_corner_blocking_tile(fov_map, c, DIRECTION_NORTH, DIRECTION_EAST, DIRECTION_NORTH_EAST));
+    default: return false;
+  }
+  
+  return false;
+}
+
+bool RayCastingFieldOfViewStrategy::is_artifact_se(MapPtr fov_map, const Coordinate& c, const PassType type)
+{
+  switch(type)
+  {
+    case PASS_NON_CORNER_BLOCKING_TILES:
+      return (is_non_corner_blocking_tile(fov_map, c, DIRECTION_NORTH, DIRECTION_WEST));
+    case PASS_CORNER_BLOCKING_TILES:
+      return (is_corner_blocking_tile(fov_map, c, DIRECTION_NORTH, DIRECTION_WEST, DIRECTION_NORTH_WEST));
+    default: return false;
+  }
+  
+  return false;
+}
+
+bool RayCastingFieldOfViewStrategy::is_non_corner_blocking_tile(MapPtr fov_map, const Coordinate& c, const Direction direction1, const Direction direction2)
+{
+  return ((does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, direction1)
+  || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, direction2))));
+}
+
+bool RayCastingFieldOfViewStrategy::is_corner_blocking_tile(MapPtr fov_map, const Coordinate& c, const Direction blocking1, const Direction blocking2, const Direction non_blocking)
+{
+  return ((does_adjacent_blocking_tile_exist_in_fov_map(fov_map, c, blocking1))
+       && (does_adjacent_blocking_tile_exist_in_fov_map(fov_map, c, blocking2))
+       && (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, non_blocking)));
 }
