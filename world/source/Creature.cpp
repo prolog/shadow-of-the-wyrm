@@ -1,3 +1,4 @@
+#include <limits>
 #include "Creature.hpp"
 #include "PlayerDecisionStrategy.hpp"
 
@@ -470,7 +471,10 @@ uint Creature::get_experience_points() const
 
 void Creature::increment_turns()
 {
-  ++turns;
+  if (turns < numeric_limits<ulonglong>::max())
+  {
+    turns++;
+  }
 }
 
 uint Creature::get_turns() const
