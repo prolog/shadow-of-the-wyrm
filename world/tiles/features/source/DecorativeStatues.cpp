@@ -20,7 +20,7 @@ bool DecorativeStatue::handle()
   return true;
 }
 
-bool DecorativeStatue::get_blocking() const
+bool DecorativeStatue::get_is_blocking() const
 {
   return true;
 }

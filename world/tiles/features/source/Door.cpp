@@ -26,7 +26,7 @@ bool Door::kick()
   return true;
 }
 
-bool Door::get_blocking() const
+bool Door::get_is_blocking() const
 {
   // Only closed doors are blocking.
   return (state.get_state() == ENTRANCE_TYPE_CLOSED);

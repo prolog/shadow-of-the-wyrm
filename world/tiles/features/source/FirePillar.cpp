@@ -19,7 +19,7 @@ bool FirePillar::kick()
   return true;
 }
 
-bool FirePillar::get_blocking() const
+bool FirePillar::get_is_blocking() const
 {
   return true;
 }

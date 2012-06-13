@@ -19,7 +19,7 @@ class Feature : public ITrappable, public IHandleable, public IKickable
     // If a feature is blocking, the square it occupies cannot be
     // occupied by another creature, and any items thrown, kicked, etc.,
     // in its direction will stop before reaching the tile.
-    virtual bool get_blocking() const;
+    virtual bool get_is_blocking() const;
 
     // Display information.
     virtual uchar get_symbol()  const = 0;

@@ -8,7 +8,7 @@ class Gate : public Entrance
 
     virtual bool handle();
     virtual bool kick();
-    virtual bool get_blocking() const;
+    virtual bool get_is_blocking() const;
     virtual uchar get_symbol() const;
     virtual std::string get_description_sid() const;
 

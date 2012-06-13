@@ -24,7 +24,7 @@ bool Gate::kick()
   return false;
 }
 
-bool Gate::get_blocking() const
+bool Gate::get_is_blocking() const
 {
   return (state.get_state() == ENTRANCE_TYPE_CLOSED);
 }
