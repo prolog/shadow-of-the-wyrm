@@ -4,6 +4,8 @@
 class RayCastingFieldOfViewStrategy : public FieldOfViewStrategy
 {
   public:
+    RayCastingFieldOfViewStrategy(const bool set_view_property);
+    
     MapPtr calculate(MapPtr view_map, const Coordinate& creature_coords, const int los_length);
     
   protected:

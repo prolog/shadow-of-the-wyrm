@@ -12,6 +12,11 @@ using std::string;
 using std::vector;
 using boost::make_shared;
 
+RayCastingFieldOfViewStrategy::RayCastingFieldOfViewStrategy(const bool set_view_property)
+: FieldOfViewStrategy(set_view_property)
+{
+}
+
 MapPtr RayCastingFieldOfViewStrategy::calculate(MapPtr view_map, const Coordinate& centre_coord, const int los_length)
 {
   MapPtr fov_map = make_shared<Map>(view_map->size());
@@ -104,7 +109,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_EAST)))
         {
           Log::instance()->log(tile_coords + " not in list, NW, adjacent to a lit tile.");
-          fov_map->insert(c.first, c.second, current_view_tile);
+          add_point_to_map(c, view_map, fov_map);
         }
       }
       // If we're in the north-east region, and the current tile is north or east of a ground cell in the FOV map, add it to the FOV map.
@@ -114,7 +119,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_WEST)))
         {
           Log::instance()->log(tile_coords + " not in list, NE, adjacent to a lit tile.");
-          fov_map->insert(c.first, c.second, current_view_tile);          
+          add_point_to_map(c, view_map, fov_map);
         }
       }
       // If we're in the south-west region, and the current tile is south or west of a ground cell in the FOV map, add it to the FOV map.
@@ -124,7 +129,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_EAST)))
         {
           Log::instance()->log(tile_coords + " not in list, SW, adjacent to a lit tile.");
-          fov_map->insert(c.first, c.second, current_view_tile);
+          add_point_to_map(c, view_map, fov_map);
         }
       }
       // If we're in the south-east region, and the current tile is south or east of a ground cell in the FOV map, add it to the FOV map.
@@ -134,7 +139,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         || (does_adjacent_non_blocking_tile_exist_in_fov_map(fov_map, c, DIRECTION_WEST)))
         {
           Log::instance()->log(tile_coords + " not in list, SE, adjacent to a lit tile.");
-          fov_map->insert(c.first, c.second, current_view_tile);
+          add_point_to_map(c, view_map, fov_map);
         }
       }
     }

@@ -12,7 +12,7 @@ FieldOfViewStrategyFactory::~FieldOfViewStrategyFactory()
 {
 }
 
-FieldOfViewStrategyPtr FieldOfViewStrategyFactory::create_field_of_view_strategy(const FieldOfViewAlgorithmType fov_type)
+FieldOfViewStrategyPtr FieldOfViewStrategyFactory::create_field_of_view_strategy(const bool set_fov_tiles_view_flags, const FieldOfViewAlgorithmType fov_type)
 {
   FieldOfViewStrategyPtr strategy;
 
@@ -20,7 +20,7 @@ FieldOfViewStrategyPtr FieldOfViewStrategyFactory::create_field_of_view_strategy
   {
     case FOV_RAY_CASTING:
     default:
-      strategy = make_shared<RayCastingFieldOfViewStrategy>();
+      strategy = make_shared<RayCastingFieldOfViewStrategy>(set_fov_tiles_view_flags);
       break;
   }
 
