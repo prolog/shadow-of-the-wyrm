@@ -13,14 +13,14 @@ string SL_Engine_Map::make_key(const Coordinate& c)
 {
   MapPtr map = make_map();
 
-  return map->make_key(c.first, c.second);
+  return map->make_map_key(c.first, c.second);
 }
 
 Coordinate SL_Engine_Map::convert_map_key_to_coordinate(const string& key)
 {
   MapPtr map = make_map();
 
-  return map->convert_map_key_to_coordinate(key);
+  return MapUtils::convert_map_key_to_coordinate(key);
 }
 
 MapPtr SL_Engine_Map::make_map() const

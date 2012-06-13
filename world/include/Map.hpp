@@ -77,8 +77,9 @@ class Map
     friend class SL_Engine_Map;
     
 		void create_creatures();		
-		std::string make_key(const int row, const int col);
-		Coordinate convert_map_key_to_coordinate(const std::string& map_key);
+
+    static std::string make_map_key(const int row, const int col);
+    static Coordinate convert_map_key_to_coordinate(const std::string& map_key);
 
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.

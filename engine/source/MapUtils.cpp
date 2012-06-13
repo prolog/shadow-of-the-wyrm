@@ -1,9 +1,11 @@
 #include "Conversion.hpp"
 #include "MapUtils.hpp"
+#include <boost/tokenizer.hpp>
 
 
 #include <iostream>
 using namespace std;
+using namespace boost;
 
 // Check to see if movement in a given direction is valid.
 bool MapUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d)
@@ -394,6 +396,30 @@ bool MapUtils::is_tile_contained_in_an_existing_component(const Coordinate& coor
 
   return result;
 }
+
+Coordinate MapUtils::convert_map_key_to_coordinate(const string& map_key)
+{
+  Coordinate coords(0,0);
+  
+  char_separator<char> sep("-");
+  tokenizer<char_separator<char> > tokens(map_key, sep);
+
+  tokenizer<char_separator<char> >:: iterator t_it = tokens.begin();
+  
+  if (t_it != tokens.end())
+  {
+    coords.first = String::to_int(*t_it);
+    t_it++;
+  }
+    
+  if (t_it != tokens.end())
+  {
+    coords.second = String::to_int(*t_it);
+  }
+
+  return coords;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
