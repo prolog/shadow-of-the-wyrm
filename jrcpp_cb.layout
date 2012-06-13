@@ -556,8 +556,8 @@
 	<File name="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="243" topLine="0" />
 	</File>
-	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="355" topLine="0" />
+	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="524" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\source\BresenhamLine.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="987" topLine="44" />
@@ -568,8 +568,8 @@
 	<File name="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="598" topLine="5" />
 	</File>
-	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2166" topLine="48" />
+	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="1735" topLine="37" />
 	</File>
 	<File name="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="802" topLine="15" />
@@ -847,8 +847,8 @@
 	<File name="engine\include\MapRegistry.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="348" topLine="0" />
 	</File>
-	<File name="engine\include\MapUtils.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="1425" topLine="23" />
+	<File name="engine\include\MapUtils.hpp" open="1" top="0" tabpos="6">
+		<Cursor position="1963" topLine="27" />
 	</File>
 	<File name="engine\include\Message.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="127" topLine="0" />
@@ -952,8 +952,8 @@
 	<File name="engine\source\MapRegistry.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1086" topLine="28" />
 	</File>
-	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="11">
-		<Cursor position="1219" topLine="46" />
+	<File name="engine\source\MapUtils.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="10550" topLine="399" />
 	</File>
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="506" topLine="9" />
@@ -994,8 +994,8 @@
 	<File name="engine\source\unit_tests\MapUtils_test.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1193" topLine="32" />
 	</File>
-	<File name="engine\source\unit_tests\Map_test.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="776" topLine="31" />
+	<File name="engine\source\unit_tests\Map_test.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="279" topLine="4" />
 	</File>
 	<File name="engine\source\unit_tests\Message_test.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1248" topLine="34" />
@@ -1036,8 +1036,8 @@
 	<File name="engine\translators\source\ItemTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="591" topLine="7" />
 	</File>
-	<File name="engine\translators\source\MapTranslator.cpp" open="0" top="0" tabpos="14">
-		<Cursor position="5587" topLine="180" />
+	<File name="engine\translators\source\MapTranslator.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="5623" topLine="163" />
 	</File>
 	<File name="engine\translators\source\ViewMapTranslator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="242" topLine="11" />
@@ -1117,8 +1117,8 @@
 	<File name="world\include\ItemTypes.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="753" topLine="34" />
 	</File>
-	<File name="world\include\Map.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="948" topLine="25" />
+	<File name="world\include\Map.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="2554" topLine="70" />
 	</File>
 	<File name="world\include\MapExit.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="514" topLine="2" />
@@ -1324,8 +1324,8 @@
 	<File name="world\source\ItemTypes.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\source\Map.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="2607" topLine="96" />
+	<File name="world\source\Map.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="148" topLine="0" />
 	</File>
 	<File name="world\source\MapExit.cpp" open="0" top="0" tabpos="37">
 		<Cursor position="125" topLine="0" />
@@ -1555,8 +1555,8 @@
 	<File name="world\tiles\include\RoadTile.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="165" topLine="0" />
 	</File>
-	<File name="world\tiles\include\RockTile.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="171" topLine="0" />
+	<File name="world\tiles\include\RockTile.hpp" open="0" top="0" tabpos="4">
+		<Cursor position="200" topLine="0" />
 	</File>
 	<File name="world\tiles\include\ScrubTile.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="31" topLine="0" />
@@ -1580,7 +1580,7 @@
 		<Cursor position="86" topLine="0" />
 	</File>
 	<File name="world\tiles\include\Tile.hpp" open="0" top="0" tabpos="13">
-		<Cursor position="1862" topLine="63" />
+		<Cursor position="868" topLine="19" />
 	</File>
 	<File name="world\tiles\include\TreeTile.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="34" topLine="0" />
@@ -1681,8 +1681,8 @@
 	<File name="world\tiles\source\RoadTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="191" topLine="0" />
 	</File>
-	<File name="world\tiles\source\RockTile.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="194" topLine="0" />
+	<File name="world\tiles\source\RockTile.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="65" topLine="1" />
 	</File>
 	<File name="world\tiles\source\ScrubTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="196" topLine="0" />
@@ -1702,7 +1702,7 @@
 	<File name="world\tiles\source\TempleTile.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="74" topLine="0" />
 	</File>
-	<File name="world\tiles\source\Tile.cpp" open="1" top="0" tabpos="2">
+	<File name="world\tiles\source\Tile.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="916" topLine="55" />
 	</File>
 	<File name="world\tiles\source\TreeTile.cpp" open="0" top="0" tabpos="0">

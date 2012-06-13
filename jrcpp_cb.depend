@@ -558,11 +558,15 @@
 	"FieldOfViewStrategyFactory.hpp"
 	"RayCastingFieldOfViewStrategy.hpp"
 
-1339427004 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\raycastingfieldofviewstrategy.cpp
+1339548615 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\raycastingfieldofviewstrategy.cpp
+	<sstream>
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"RayCastingFieldOfViewStrategy.hpp"
 	"BresenhamLine.hpp"
+	"MapUtils.hpp"
+	"Conversion.hpp"
+	"Log.hpp"
 
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\gardens\source\gardengenerator.cpp
 	"GardenGenerator.hpp"
@@ -1108,14 +1112,15 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\mapregistry.cpp
 	"MapRegistry.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+1339535967 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
 	"Conversion.hpp"
 	"MapUtils.hpp"
+	<boost/tokenizer.hpp>
 	<iostream>
 	"unit_tests/Map_test.cpp"
 	"unit_tests/MapUtils_test.cpp"
 
-1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\map_test.cpp
+1339536038 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\map_test.cpp
 	"gtest/gtest.h"
 
 1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\maputils_test.cpp
@@ -1244,7 +1249,7 @@
 	"ItemTranslator.hpp"
 	"StringTable.hpp"
 
-1339426653 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
+1339506579 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
 	<algorithm>
 	"common.hpp"
 	"Display.hpp"
@@ -1411,12 +1416,13 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
 	"ItemTypes.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1339536012 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	<boost/tokenizer.hpp>
 	"Conversion.hpp"
 	"Map.hpp"
+	"MapUtils.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\mapexit.cpp
 	"MapExit.hpp"

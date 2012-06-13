@@ -44,6 +44,8 @@ class MapUtils
     static Dimensions get_dimensions(MapPtr map, const Coordinate& coords, const int size);
     
     static bool are_coordinates_adjacent(const Coordinate& c1, const Coordinate& c2);
+  
+    static Coordinate convert_map_key_to_coordinate(const std::string& map_key);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);

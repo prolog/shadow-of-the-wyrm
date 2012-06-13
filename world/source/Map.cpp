@@ -3,6 +3,7 @@
 #include <boost/tokenizer.hpp>
 #include "Conversion.hpp"
 #include "Map.hpp"
+#include "MapUtils.hpp"
 
 using namespace std;
 using namespace boost;
@@ -101,7 +102,7 @@ void Map::reset_creatures_and_locations()
     {
       CreaturePtr creature = tile->get_creature();
       creatures.push_back(creature);
-      locations.insert(make_pair(creature->get_id(), convert_map_key_to_coordinate(tile_key)));
+      locations.insert(make_pair(creature->get_id(), MapUtils::convert_map_key_to_coordinate(tile_key)));
     }    
   }
 }
@@ -121,29 +122,30 @@ void Map::remove_creature(const string& creature_id)
 
 bool Map::insert(int row, int col, TilePtr tile)
 {
-  string key = make_key(row, col);
+  string key = make_map_key(row, col);
 
   tiles[key] = tile;
   return true;
 }
 
-string Map::make_key(const int row, const int col)
-{
-  std::ostringstream ss;
-  ss << row << "-" << col;
-  return ss.str();
-}
-
 TilePtr Map::at(int row, int col)
 {
-  string key = make_key(row, col);
-  return tiles[key];
+  string key = make_map_key(row, col);
+  TilePtr tile;
+
+  std::map<std::string, boost::shared_ptr<Tile> >::iterator t_it = tiles.find(key);
+  
+  if (t_it != tiles.end())
+  {
+    tile = t_it->second;
+  }
+  
+  return tile;
 }
 
 TilePtr Map::at(const Coordinate& c)
 {
-  string key = make_key(c.first, c.second);
-  return tiles[key];
+  return at(c.first, c.second);
 }
 
 void Map::set_size(const Dimensions& new_dimensions)
@@ -280,28 +282,15 @@ bool Map::get_permanent() const
   return permanent;
 }
 
-Coordinate Map::convert_map_key_to_coordinate(const string& map_key)
+// The format of the key used by the Map class to store its keys.  Some other classes (eg, ray casting) need to make these keys
+// to check existence.
+string Map::make_map_key(const int row, const int col)
 {
-  Coordinate coords(0,0);
-  
-  char_separator<char> sep("-");
-  tokenizer<char_separator<char> > tokens(map_key, sep);
-
-  tokenizer<char_separator<char> >:: iterator t_it = tokens.begin();
-  
-  if (t_it != tokens.end())
-  {
-    coords.first = String::to_int(*t_it);
-    t_it++;
-  }
-    
-  if (t_it != tokens.end())
-  {
-    coords.second = String::to_int(*t_it);
-  }
-
-  return coords;
+  std::ostringstream ss;
+  ss << row << "-" << col;
+  return ss.str();
 }
+
 
 // There should be an IFDEF_UNIT_TESTS here, but the compiler isn't finding Map_test.cpp.
 // However, it's able to do do so once I add that include to MapUtils.  So, the include
