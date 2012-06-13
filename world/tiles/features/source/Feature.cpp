@@ -26,7 +26,7 @@ MaterialPtr Feature::get_material()
 }
 
 // By default, Features are not blocking.
-bool Feature::get_blocking() const
+bool Feature::get_is_blocking() const
 {
   return false;
 }

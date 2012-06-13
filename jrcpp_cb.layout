@@ -551,25 +551,25 @@
 		<Cursor position="163" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\include\FieldOfViewStrategy.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="311" topLine="0" />
+		<Cursor position="409" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="243" topLine="0" />
+		<Cursor position="233" topLine="0" />
 	</File>
-	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="1" top="0" tabpos="5">
-		<Cursor position="524" topLine="0" />
+	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="0" top="0" tabpos="5">
+		<Cursor position="195" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\source\BresenhamLine.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="987" topLine="44" />
 	</File>
 	<File name="engine\field_of_view\source\FieldOfViewStrategy.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="41" topLine="0" />
+		<Cursor position="140" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="598" topLine="5" />
+		<Cursor position="659" topLine="5" />
 	</File>
-	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="1735" topLine="37" />
+	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="0">
+		<Cursor position="3527" topLine="89" />
 	</File>
 	<File name="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="802" topLine="15" />
@@ -847,7 +847,7 @@
 	<File name="engine\include\MapRegistry.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="348" topLine="0" />
 	</File>
-	<File name="engine\include\MapUtils.hpp" open="1" top="0" tabpos="6">
+	<File name="engine\include\MapUtils.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="1963" topLine="27" />
 	</File>
 	<File name="engine\include\Message.hpp" open="0" top="0" tabpos="0">
@@ -932,7 +932,7 @@
 		<Cursor position="443" topLine="4" />
 	</File>
 	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="20">
-		<Cursor position="6261" topLine="234" />
+		<Cursor position="6401" topLine="246" />
 	</File>
 	<File name="engine\source\InventoryManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1563" topLine="34" />
@@ -952,7 +952,7 @@
 	<File name="engine\source\MapRegistry.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1086" topLine="28" />
 	</File>
-	<File name="engine\source\MapUtils.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="10550" topLine="399" />
 	</File>
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
@@ -994,7 +994,7 @@
 	<File name="engine\source\unit_tests\MapUtils_test.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1193" topLine="32" />
 	</File>
-	<File name="engine\source\unit_tests\Map_test.cpp" open="1" top="0" tabpos="7">
+	<File name="engine\source\unit_tests\Map_test.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="279" topLine="4" />
 	</File>
 	<File name="engine\source\unit_tests\Message_test.cpp" open="0" top="0" tabpos="0">
@@ -1117,7 +1117,7 @@
 	<File name="world\include\ItemTypes.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="753" topLine="34" />
 	</File>
-	<File name="world\include\Map.hpp" open="1" top="0" tabpos="2">
+	<File name="world\include\Map.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="2554" topLine="70" />
 	</File>
 	<File name="world\include\MapExit.hpp" open="0" top="0" tabpos="1">
@@ -1324,7 +1324,7 @@
 	<File name="world\source\ItemTypes.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\source\Map.cpp" open="1" top="0" tabpos="1">
+	<File name="world\source\Map.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="148" topLine="0" />
 	</File>
 	<File name="world\source\MapExit.cpp" open="0" top="0" tabpos="37">

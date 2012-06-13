@@ -358,7 +358,7 @@ bool MapUtils::is_blocking_feature_present(TilePtr tile)
     
     if (feature)
     {
-      return feature->get_blocking();
+      return feature->get_is_blocking();
     }
   }
   
