@@ -29,7 +29,8 @@ string get_version()
  *******************************************************************/
 string get_code_name()
 {
-  return "\"Knut\"";
+  // First king of Sussex
+  return "\"Aelle\"";
 }
 
 /*
