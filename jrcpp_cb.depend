@@ -1877,7 +1877,7 @@
 1339550763 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategy.cpp
 	"FieldOfViewStrategy.hpp"
 
-1339706539 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1339708835 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
@@ -1892,14 +1892,14 @@
 	"MessageManager.hpp"
 	"Log.hpp"
 
-1339706554 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
+1339708801 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
 	"EquipmentManager.hpp"
 	"EquipmentTranslator.hpp"
 
-1339706564 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
+1339708810 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
 	<boost/foreach.hpp>
 	"InventoryCommandFactory.hpp"
 	"InventoryCommandProcessor.hpp"
@@ -1907,13 +1907,13 @@
 	"InventoryManager.hpp"
 	"InventoryTranslator.hpp"
 
-1339706547 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
+1339708822 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
 	"Game.hpp"
 	"ItemFactory.hpp"
 	"ItemManager.hpp"
 	"RNG.hpp"
 
-1339706558 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+1339708833 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
