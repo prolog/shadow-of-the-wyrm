@@ -55,3 +55,9 @@ bool EquipmentManager::manage_equipment()
 
   return equipment_success;
 }
+
+uint EquipmentManager::get_current_action_cost()
+{
+  // JCD FIXME
+  return 0;
+}

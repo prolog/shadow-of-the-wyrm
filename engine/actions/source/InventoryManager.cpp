@@ -91,3 +91,9 @@ ItemPtr InventoryManager::select_item(Inventory& inv, const DisplayInventoryMap&
   
   return selected_item;
 }
+
+uint InventoryManager::get_current_action_cost()
+{
+  // JCD FIXME
+  return 0;
+}

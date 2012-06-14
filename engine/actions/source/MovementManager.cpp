@@ -426,3 +426,9 @@ void MovementManager::add_message_about_items_on_tile_if_necessary(const Creatur
     }
   }
 }
+
+uint MovementManager::get_current_action_cost()
+{
+  // JCD FIXME
+  return 0;
+}

@@ -370,3 +370,9 @@ void ActionManager::equipment(CreaturePtr creature)
     equipment_manager.manage_equipment();
   }
 }
+
+uint ActionManager::get_current_action_cost()
+{
+  // JCD FIXME
+  return 0;
+}

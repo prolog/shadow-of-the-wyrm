@@ -1372,7 +1372,8 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1339624213 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+	<limits>
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
 	"unit_tests/Creature_test.cpp"
@@ -1875,4 +1876,59 @@
 
 1339550763 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategy.cpp
 	"FieldOfViewStrategy.hpp"
+
+1339706539 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+	<string>
+	<boost/make_shared.hpp>
+	"global_prototypes.hpp"
+	"ActionManager.hpp"
+	"CharacterDumper.hpp"
+	"Conversion.hpp"
+	"EquipmentManager.hpp"
+	"FileWriter.hpp"
+	"Game.hpp"
+	"InventoryManager.hpp"
+	"MapUtils.hpp"
+	"MessageManager.hpp"
+	"Log.hpp"
+
+1339706554 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
+	"EquipmentCommandFactory.hpp"
+	"EquipmentCommandProcessor.hpp"
+	"EquipmentKeyboardCommandMap.hpp"
+	"EquipmentManager.hpp"
+	"EquipmentTranslator.hpp"
+
+1339706564 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
+	<boost/foreach.hpp>
+	"InventoryCommandFactory.hpp"
+	"InventoryCommandProcessor.hpp"
+	"InventoryKeyboardCommandMap.hpp"
+	"InventoryManager.hpp"
+	"InventoryTranslator.hpp"
+
+1339706547 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
+	"Game.hpp"
+	"ItemFactory.hpp"
+	"ItemManager.hpp"
+	"RNG.hpp"
+
+1339706558 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+	<boost/make_shared.hpp>
+	"CombatManager.hpp"
+	"Conversion.hpp"
+	"Game.hpp"
+	"Log.hpp"
+	"MessageManager.hpp"
+	"MovementManager.hpp"
+	"MapExitUtils.hpp"
+	"MapUtils.hpp"
+	"TerrainGeneratorFactory.hpp"
+
+1339707643 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncost.cpp
+	<sstream>
+	"ActionCost.hpp"
+
+1339708506 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\iactionmanager.cpp
+	"IActionManager.hpp"
 

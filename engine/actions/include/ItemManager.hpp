@@ -1,8 +1,9 @@
 #pragma once
 #include "Creature.hpp"
+#include "IActionManager.hpp"
 #include "Item.hpp"
 
-class ItemManager
+class ItemManager : public IActionManager
 {
   public:
     ItemManager();
@@ -22,4 +23,8 @@ class ItemManager
     bool equip(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation location);
     bool equip(CreaturePtr creature, ItemPtr item);
     ItemPtr remove(CreaturePtr creature, const EquipmentWornLocation location);
+    
+  protected:
+    uint get_current_action_cost();
+
 };

@@ -2,8 +2,9 @@
 #include "Creature.hpp"
 #include "Display.hpp"
 #include "DisplayItem.hpp"
+#include "IActionManager.hpp"
 
-class InventoryManager
+class InventoryManager : public IActionManager
 {
   public:
     InventoryManager(DisplayPtr new_display, CreaturePtr new_creature);
@@ -16,7 +17,8 @@ class InventoryManager
     ItemPtr select_item(Inventory& inv, const DisplayInventoryMap& inventory_display, const uint item_index);
 
   protected:
-    
+    uint get_current_action_cost();
+
     DisplayPtr display;
     CreaturePtr creature;
     
