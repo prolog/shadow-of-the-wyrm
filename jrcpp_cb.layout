@@ -556,7 +556,7 @@
 	<File name="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="233" topLine="0" />
 	</File>
-	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="1" top="0" tabpos="2">
+	<File name="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="421" topLine="2" />
 	</File>
 	<File name="engine\field_of_view\source\BresenhamLine.cpp" open="0" top="0" tabpos="2">
@@ -568,7 +568,7 @@
 	<File name="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="659" topLine="5" />
 	</File>
-	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="1" top="1" tabpos="1">
+	<File name="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="5297" topLine="128" />
 	</File>
 	<File name="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp" open="0" top="0" tabpos="3">
@@ -932,7 +932,7 @@
 		<Cursor position="443" topLine="4" />
 	</File>
 	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="20">
-		<Cursor position="6401" topLine="246" />
+		<Cursor position="7568" topLine="264" />
 	</File>
 	<File name="engine\source\InventoryManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1563" topLine="34" />
@@ -1084,8 +1084,8 @@
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="94" topLine="0" />
 	</File>
-	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="5394" topLine="166" />
+	<File name="world\include\Creature.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="7541" topLine="248" />
 	</File>
 	<File name="world\include\CreatureFeatures.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="483" topLine="22" />
@@ -1297,8 +1297,8 @@
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
 	</File>
-	<File name="world\source\Creature.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="8147" topLine="456" />
+	<File name="world\source\Creature.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="8146" topLine="461" />
 	</File>
 	<File name="world\source\CreatureGenerationValues.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="155" topLine="0" />
