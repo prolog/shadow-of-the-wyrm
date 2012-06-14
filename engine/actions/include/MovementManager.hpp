@@ -1,12 +1,13 @@
 #pragma once
 #include "Directions.hpp"
 #include "Creature.hpp"
+#include "IActionManager.hpp"
 #include "MapExit.hpp"
 #include "Map.hpp"
 
 class MessageManager;
 
-class MovementManager
+class MovementManager : public IActionManager
 {
   public:
     MovementManager();
@@ -17,6 +18,8 @@ class MovementManager
     bool descend(CreaturePtr creature);
     
   protected:
+    uint get_current_action_cost();
+
     bool move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);
     bool move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords);
     
