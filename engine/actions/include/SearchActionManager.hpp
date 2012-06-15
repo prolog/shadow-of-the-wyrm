@@ -5,8 +5,11 @@
 class SearchActionManager : public IActionManager
 {
   public:
-    bool search(CreaturePtr creature);
+    ActionCostValue search(CreaturePtr creature);
 
   protected:
-    virtual uint get_current_action_cost() const;
+    friend class ActionManager;
+    SearchActionManager();
+    
+    ActionCostValue get_action_cost_value() const;
 };

@@ -1,11 +1,15 @@
 #pragma once
 #include "IActionManager.hpp"
 
+// Owned/controlled by ActionManager
 class CharacterDumpManager : public IActionManager
 {
   public:
     void dump_character(CreaturePtr creature);
 
   protected:
-    uint get_current_action_cost() const;
+    friend class ActionManager;
+    CharacterDumpManager();
+    
+    uint get_action_cost_value() const;
 };

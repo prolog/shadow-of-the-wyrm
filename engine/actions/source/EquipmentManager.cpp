@@ -56,7 +56,7 @@ bool EquipmentManager::manage_equipment()
   return equipment_success;
 }
 
-uint EquipmentManager::get_current_action_cost() const
+ActionCostValue EquipmentManager::get_action_cost_value() const
 {
   // JCD FIXME
   return 1;

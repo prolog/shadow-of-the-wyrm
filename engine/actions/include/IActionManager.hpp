@@ -4,12 +4,8 @@
 
 class IActionManager
 {
-  public:
-    ActionCost get_total_action_cost(CreaturePtr creature);
-  
-  private:
-    ActionCost create_action_cost(CreaturePtr creature);
-    
   protected:
-    virtual uint get_current_action_cost() const = 0;
+    // Does not take into account creature speed: this value gets added to the creature speed if the value
+    // is greater than zero.
+    virtual uint get_action_cost_value() const = 0;
 };

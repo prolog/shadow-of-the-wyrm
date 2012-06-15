@@ -3,10 +3,12 @@
 
 using std::string;
 
-bool SearchActionManager::search(CreaturePtr creature)
+SearchActionManager::SearchActionManager()
 {
-  bool advance_turn = true;
-  
+}
+
+ActionCostValue SearchActionManager::search(CreaturePtr creature)
+{
   if (creature && creature->get_is_player())
   {
     MessageManager* manager = MessageManager::instance();
@@ -18,10 +20,10 @@ bool SearchActionManager::search(CreaturePtr creature)
     // JCD FIXME: Add actual search to see if anything hidden was spotted.
   }
   
-  return advance_turn;
+  return get_action_cost_value();
 }
 
-uint SearchActionManager::get_current_action_cost() const
+ActionCostValue SearchActionManager::get_action_cost_value() const
 {
   return 1;
 }
