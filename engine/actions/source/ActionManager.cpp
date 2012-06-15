@@ -38,7 +38,8 @@ void ActionManager::dump_character(CreaturePtr creature)
 bool ActionManager::search(CreaturePtr creature)
 {
   SearchActionManager sam;
-  return sam.search(creature);
+  // JCD FIXME: return sam.search(creature);
+  return true;
 }
 
 bool ActionManager::move(CreaturePtr creature, const Direction direction)
@@ -343,10 +344,4 @@ void ActionManager::equipment(CreaturePtr creature)
     EquipmentManager equipment_manager(game_display, creature);
     equipment_manager.manage_equipment();
   }
-}
-
-uint ActionManager::get_current_action_cost() const
-{
-  // JCD FIXME
-  return 1;
 }

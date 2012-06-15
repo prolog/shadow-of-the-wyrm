@@ -5,6 +5,10 @@
 
 using std::string;
 
+CharacterDumpManager::CharacterDumpManager()
+{
+}
+
 void CharacterDumpManager::dump_character(CreaturePtr creature)
 {
   if (creature)
@@ -24,7 +28,7 @@ void CharacterDumpManager::dump_character(CreaturePtr creature)
 }
 
 
-uint CharacterDumpManager::get_current_action_cost() const
+ActionCostValue CharacterDumpManager::get_action_cost_value() const
 {
   return 0;
 }

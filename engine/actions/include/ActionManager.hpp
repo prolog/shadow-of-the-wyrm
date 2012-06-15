@@ -2,7 +2,6 @@
 #include "CombatManager.hpp"
 #include "Creature.hpp"
 #include "Directions.hpp"
-#include "IActionManager.hpp"
 #include "ItemManager.hpp"
 #include "MovementManager.hpp"
 
@@ -13,7 +12,7 @@ enum ItemAction
   ITEM_ACTION_DROP = 2
 };
 
-class ActionManager : public IActionManager
+class ActionManager
 {
   public:
     ActionManager();
@@ -42,8 +41,6 @@ class ActionManager : public IActionManager
     bool handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
 
   protected:
-    uint get_current_action_cost() const;
-
     CombatManager combat_manager;
     MovementManager movement_manager;
     ItemManager item_manager;

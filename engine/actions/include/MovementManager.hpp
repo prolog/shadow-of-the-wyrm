@@ -10,15 +10,17 @@ class MessageManager;
 class MovementManager : public IActionManager
 {
   public:
-    MovementManager();
-    ~MovementManager();
-
     bool move(CreaturePtr creature, const Direction d);
     bool ascend(CreaturePtr creature);
     bool descend(CreaturePtr creature);
 
   protected:
-    uint get_current_action_cost() const;
+    friend class ActionManager;
+
+    MovementManager();
+    ~MovementManager();
+    
+    ActionCostValue get_action_cost_value() const;
 
     bool move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);
     bool move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords);

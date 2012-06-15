@@ -2,6 +2,8 @@
 #include <string>
 #include "common.hpp"
 
+typedef unsigned int ActionCostValue;
+
 class ActionCost
 {
   public:   
@@ -12,8 +14,7 @@ class ActionCost
     bool operator<=(const ActionCost& rhs);
     bool operator>=(const ActionCost& rhs);
 
-    std::string get_action_creature_id() const;
-    uint get_cost() const;
+    ActionCostValue get_cost() const;
     bool get_turn_advanced() const;
    
     std::string str() const;
@@ -21,9 +22,8 @@ class ActionCost
   protected:
     friend class IActionManager;
     
-    ActionCost(const std::string& new_id, const uint new_cost);
+    ActionCost(const ActionCostValue new_cost);
 
-    std::string id;
-    int cost;
+    ActionCostValue cost;
     bool turn_advanced;
 };

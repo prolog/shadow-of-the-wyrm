@@ -4,8 +4,11 @@
 class VersionActionManager : public IActionManager
 {
   public:
-    void version() const;
+    ActionCostValue version() const;
     
   protected:
-    uint get_current_action_cost() const;
+    friend class ActionManager;
+    VersionActionManager();
+    
+    ActionCostValue get_action_cost_value() const;
 };

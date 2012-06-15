@@ -1877,7 +1877,7 @@
 1339550763 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategy.cpp
 	"FieldOfViewStrategy.hpp"
 
-1339765076 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1339797701 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -1893,14 +1893,14 @@
 	"VersionActionManager.hpp"
 	"Log.hpp"
 
-1339763942 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
+1339798139 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
 	"EquipmentManager.hpp"
 	"EquipmentTranslator.hpp"
 
-1339763942 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
+1339798154 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
 	<boost/foreach.hpp>
 	"InventoryCommandFactory.hpp"
 	"InventoryCommandProcessor.hpp"
@@ -1926,19 +1926,25 @@
 	"MapUtils.hpp"
 	"TerrainGeneratorFactory.hpp"
 
-1339707643 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncost.cpp
+1339797937 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncost.cpp
 	<sstream>
 	"ActionCost.hpp"
 
-1339763902 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\iactionmanager.cpp
+1339798045 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\iactionmanager.cpp
 	"IActionManager.hpp"
 
-1339763960 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\searchactionmanager.cpp
+1339798442 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\searchactionmanager.cpp
 	"MessageManager.hpp"
 	"SearchActionManager.hpp"
 
-1339764349 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\versionactionmanager.cpp
+1339798424 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\versionactionmanager.cpp
 	"global_prototypes.hpp"
 	"MessageManager.hpp"
 	"VersionActionManager.hpp"
+
+1339798126 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\characterdumpmanager.cpp
+	"CharacterDumpManager.hpp"
+	"CharacterDumper.hpp"
+	"FileWriter.hpp"
+	"MessageManager.hpp"
 
