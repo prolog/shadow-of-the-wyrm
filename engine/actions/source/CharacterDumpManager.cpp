@@ -9,7 +9,7 @@ CharacterDumpManager::CharacterDumpManager()
 {
 }
 
-void CharacterDumpManager::dump_character(CreaturePtr creature)
+ActionCostValue CharacterDumpManager::dump_character(CreaturePtr creature)
 {
   if (creature)
   {
@@ -25,6 +25,8 @@ void CharacterDumpManager::dump_character(CreaturePtr creature)
     manager->add_new_message(dump_message);
     manager->send();
   }
+  
+  return get_action_cost_value();
 }
 
 

@@ -41,6 +41,8 @@ class ActionManager
     bool handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
 
   protected:
+    ActionCost get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value);
+    
     CombatManager combat_manager;
     MovementManager movement_manager;
     ItemManager item_manager;

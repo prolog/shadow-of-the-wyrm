@@ -20,7 +20,7 @@ class ActionCost
     std::string str() const;
    
   protected:
-    friend class IActionManager;
+    friend class ActionManager;
     
     ActionCost(const ActionCostValue new_cost);
 

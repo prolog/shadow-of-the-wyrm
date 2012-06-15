@@ -38,7 +38,7 @@ void ActionManager::dump_character(CreaturePtr creature)
 bool ActionManager::search(CreaturePtr creature)
 {
   SearchActionManager sam;
-  // JCD FIXME: return sam.search(creature);
+  sam.search(creature);
   return true;
 }
 
@@ -344,4 +344,18 @@ void ActionManager::equipment(CreaturePtr creature)
     EquipmentManager equipment_manager(game_display, creature);
     equipment_manager.manage_equipment();
   }
+}
+
+// Create an ActionCost based on the ActionCostValue already generated
+ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value)
+{
+  ActionCostValue total_action_cost_value = 0;
+  
+  if (creature && (action_cost_value > 0))
+  {
+    total_action_cost_value = creature->get_speed().get_current() + action_cost_value;
+  }
+  
+  ActionCost ac(total_action_cost_value);
+  return ac;
 }
