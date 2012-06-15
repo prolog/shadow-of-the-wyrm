@@ -1,8 +1,7 @@
 #include <string>
 #include <boost/make_shared.hpp>
-#include "global_prototypes.hpp"
 #include "ActionManager.hpp"
-#include "CharacterDumper.hpp"
+#include "CharacterDumpManager.hpp"
 #include "Conversion.hpp"
 #include "EquipmentManager.hpp"
 #include "FileWriter.hpp"
@@ -10,6 +9,8 @@
 #include "InventoryManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
+#include "SearchActionManager.hpp"
+#include "VersionActionManager.hpp"
 #include "Log.hpp"
 
 using namespace std;
@@ -22,49 +23,22 @@ ActionManager::~ActionManager()
 {
 }
 
-void ActionManager::version()
+void ActionManager::version() const
 {
-  MessageManager* manager = MessageManager::instance();
-  string game_version = get_game_version_synopsis();
-
-  manager->add_new_message(game_version);
-  manager->send();
+  VersionActionManager vam;
+  vam.version();
 }
 
 void ActionManager::dump_character(CreaturePtr creature)
 {
-  if (creature)
-  {
-    MessageManager* manager = MessageManager::instance();
-    string name = creature->get_name();
-    string dump_message = TextMessages::get_dumping_character_message(name);
-    
-    CharacterDumper dumper(creature);
-    FileWriter file(creature->get_name());
-    
-    file.write(dumper.str());
-    
-    manager->add_new_message(dump_message);
-    manager->send();
-  }
+  CharacterDumpManager cdm;
+  cdm.dump_character(creature);
 }
 
 bool ActionManager::search(CreaturePtr creature)
 {
-  bool advance_turn = true;
-  
-  if (creature && creature->get_is_player())
-  {
-    MessageManager* manager = MessageManager::instance();
-    string search_message = StringTable::get(ActionTextKeys::ACTION_SEARCH);
-
-    manager->add_new_message(search_message);
-    manager->send();
-
-    // JCD FIXME: Add actual search to see if anything hidden was spotted.
-  }
-  
-  return advance_turn;
+  SearchActionManager sam;
+  return sam.search(creature);
 }
 
 bool ActionManager::move(CreaturePtr creature, const Direction direction)
@@ -371,8 +345,8 @@ void ActionManager::equipment(CreaturePtr creature)
   }
 }
 
-uint ActionManager::get_current_action_cost()
+uint ActionManager::get_current_action_cost() const
 {
   // JCD FIXME
-  return 0;
+  return 1;
 }

@@ -11,5 +11,5 @@ class IActionManager
     ActionCost create_action_cost(CreaturePtr creature);
     
   protected:
-    virtual uint get_current_action_cost() = 0;
+    virtual uint get_current_action_cost() const = 0;
 };

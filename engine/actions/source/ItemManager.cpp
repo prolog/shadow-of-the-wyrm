@@ -132,8 +132,8 @@ ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation lo
   return item;
 }
 
-uint ItemManager::get_current_action_cost()
+uint ItemManager::get_current_action_cost() const
 {
   // JCD FIXME
-  return 0;
+  return 1;
 }

@@ -25,6 +25,6 @@ class ItemManager : public IActionManager
     ItemPtr remove(CreaturePtr creature, const EquipmentWornLocation location);
     
   protected:
-    uint get_current_action_cost();
+    uint get_current_action_cost() const;
 
 };

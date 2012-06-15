@@ -12,7 +12,7 @@ class EquipmentManager : public IActionManager
     bool manage_equipment();
 
   protected:
-    uint get_current_action_cost();
+    uint get_current_action_cost() const;
 
     DisplayPtr display;
     CreaturePtr creature;
