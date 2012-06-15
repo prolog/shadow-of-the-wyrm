@@ -23,16 +23,16 @@ ActionManager::~ActionManager()
 {
 }
 
-void ActionManager::version() const
+ActionCost ActionManager::version(CreaturePtr creature)
 {
   VersionActionManager vam;
-  vam.version();
+  return get_action_cost(creature, vam.version());
 }
 
-void ActionManager::dump_character(CreaturePtr creature)
+ActionCost ActionManager::dump_character(CreaturePtr creature)
 {
   CharacterDumpManager cdm;
-  cdm.dump_character(creature);
+  return get_action_cost(creature, cdm.dump_character(creature));
 }
 
 bool ActionManager::search(CreaturePtr creature)

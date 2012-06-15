@@ -4,6 +4,11 @@
 using std::ostringstream;
 using std::string;
 
+ActionCost::ActionCost()
+: cost(0)
+{
+}
+
 ActionCost::ActionCost(const ActionCostValue new_cost)
 : cost(new_cost)
 {

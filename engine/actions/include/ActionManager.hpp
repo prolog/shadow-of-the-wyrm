@@ -18,8 +18,8 @@ class ActionManager
     ActionManager();
     ~ActionManager();
 
-    void version() const;
-    void dump_character(CreaturePtr creature);
+    ActionCost version(CreaturePtr creature);
+    ActionCost dump_character(CreaturePtr creature);
     bool search(CreaturePtr creature);
     bool move(CreaturePtr creature, const Direction d);
     bool attack(CreaturePtr creature, const Direction d);
