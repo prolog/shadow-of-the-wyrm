@@ -253,7 +253,7 @@
 	<File name="engine\actions\source\EquipmentManager.cpp" open="1" top="0" tabpos="8">
 		<Cursor position="1615" topLine="40" />
 	</File>
-	<File name="engine\actions\source\IActionManager.cpp" open="1" top="1" tabpos="5">
+	<File name="engine\actions\source\IActionManager.cpp" open="1" top="0" tabpos="5">
 		<Cursor position="329" topLine="0" />
 	</File>
 	<File name="engine\actions\source\InventoryManager.cpp" open="1" top="0" tabpos="9">
@@ -1057,8 +1057,8 @@
 	<File name="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="118" topLine="0" />
 	</File>
-	<File name="global_functions.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="2817" topLine="103" />
+	<File name="global_functions.cpp" open="1" top="1" tabpos="15">
+		<Cursor position="775" topLine="20" />
 	</File>
 	<File name="include\Colours.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="417" topLine="0" />

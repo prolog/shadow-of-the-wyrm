@@ -19,7 +19,7 @@ class ActionManager : public IActionManager
     ActionManager();
     ~ActionManager();
 
-    void version();
+    void version() const;
     void dump_character(CreaturePtr creature);
     bool search(CreaturePtr creature);
     bool move(CreaturePtr creature, const Direction d);
@@ -42,7 +42,7 @@ class ActionManager : public IActionManager
     bool handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
 
   protected:
-    uint get_current_action_cost();
+    uint get_current_action_cost() const;
 
     CombatManager combat_manager;
     MovementManager movement_manager;

@@ -1261,7 +1261,7 @@
 	"MapUtils.hpp"
 	"ViewMapTranslator.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\global_functions.cpp
+1339710422 source:c:\cygwin\home\julian\jrcpp\global_functions.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"buildinfo.hpp"
@@ -1877,12 +1877,11 @@
 1339550763 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategy.cpp
 	"FieldOfViewStrategy.hpp"
 
-1339708835 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1339765076 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
-	"global_prototypes.hpp"
 	"ActionManager.hpp"
-	"CharacterDumper.hpp"
+	"CharacterDumpManager.hpp"
 	"Conversion.hpp"
 	"EquipmentManager.hpp"
 	"FileWriter.hpp"
@@ -1890,16 +1889,18 @@
 	"InventoryManager.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
+	"SearchActionManager.hpp"
+	"VersionActionManager.hpp"
 	"Log.hpp"
 
-1339708801 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
+1339763942 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
 	"EquipmentManager.hpp"
 	"EquipmentTranslator.hpp"
 
-1339708810 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
+1339763942 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
 	<boost/foreach.hpp>
 	"InventoryCommandFactory.hpp"
 	"InventoryCommandProcessor.hpp"
@@ -1907,13 +1908,13 @@
 	"InventoryManager.hpp"
 	"InventoryTranslator.hpp"
 
-1339708822 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
+1339763942 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
 	"Game.hpp"
 	"ItemFactory.hpp"
 	"ItemManager.hpp"
 	"RNG.hpp"
 
-1339708833 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+1339763795 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
@@ -1929,6 +1930,15 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1339708506 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\iactionmanager.cpp
+1339763902 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\iactionmanager.cpp
 	"IActionManager.hpp"
+
+1339763960 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\searchactionmanager.cpp
+	"MessageManager.hpp"
+	"SearchActionManager.hpp"
+
+1339764349 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\versionactionmanager.cpp
+	"global_prototypes.hpp"
+	"MessageManager.hpp"
+	"VersionActionManager.hpp"
 

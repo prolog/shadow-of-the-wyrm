@@ -16,9 +16,9 @@ class MovementManager : public IActionManager
     bool move(CreaturePtr creature, const Direction d);
     bool ascend(CreaturePtr creature);
     bool descend(CreaturePtr creature);
-    
+
   protected:
-    uint get_current_action_cost();
+    uint get_current_action_cost() const;
 
     bool move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);
     bool move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords);
