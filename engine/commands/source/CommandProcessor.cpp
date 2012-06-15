@@ -57,7 +57,7 @@ bool CommandProcessor::process_command(CreaturePtr creature, Command* command, D
       }
       else if (command_name == CommandKeys::VERSION)
       {
-        game->actions.version();
+        game->actions.version(creature);
         advance = false;
       }
       else if (command_name == CommandKeys::SEARCH)

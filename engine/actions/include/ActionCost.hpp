@@ -6,7 +6,12 @@ typedef unsigned int ActionCostValue;
 
 class ActionCost
 {
-  public:   
+  public:
+    // Default constructor sets the cost to 0, disallowing a turn.
+    // The ActionManager is responsible for the construction of a
+    // "real" ActionCost - see the protected constructor.
+    ActionCost();
+    
     bool operator==(const ActionCost& rhs);
     bool operator!=(const ActionCost& rhs);
     bool operator< (const ActionCost& rhs);

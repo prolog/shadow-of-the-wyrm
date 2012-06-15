@@ -260,8 +260,6 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
 
         if (current_creature->get_is_player())
         {
-          // JCD FIXME update this when LOS is done
-          // Update the display with the result of the last round of actions.
           update_display(current_creature, current_map, fov_map);
         }
         
@@ -274,6 +272,9 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
           MessageManager::instance()->clear_if_necessary();
         }
 
+        // JCD FIXME:
+        // ActionCost action_cost = CommandProcessor::process(current_creature, command, display);
+        // advance = action_cost.get_turn_advanced();
         advance = CommandProcessor::process(current_creature, command, display);
       }
       
