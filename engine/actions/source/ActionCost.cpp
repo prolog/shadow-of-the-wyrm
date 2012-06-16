@@ -14,34 +14,39 @@ ActionCost::ActionCost(const ActionCostValue new_cost)
 {
 }
 
-bool ActionCost::operator==(const ActionCost& rhs)
+bool ActionCost::operator==(const ActionCost& rhs) const
 {
   return (cost == rhs.cost);
 }
 
-bool ActionCost::operator!=(const ActionCost& rhs)
+bool ActionCost::operator!=(const ActionCost& rhs) const
 {
   return !operator==(rhs);
 }
 
-bool ActionCost::operator< (const ActionCost& rhs)
+bool ActionCost::operator< (const ActionCost& rhs) const
 {
   return (cost < rhs.cost);
 }
 
-bool ActionCost::operator> (const ActionCost& rhs)
+bool ActionCost::operator> (const ActionCost& rhs) const
 {
   return  operator<(rhs);
 }
 
-bool ActionCost::operator<=(const ActionCost& rhs)
+bool ActionCost::operator<=(const ActionCost& rhs) const
 {
   return !operator>(rhs);
 }
 
-bool ActionCost::operator>=(const ActionCost& rhs)
+bool ActionCost::operator>=(const ActionCost& rhs) const
 {
   return !operator<(rhs);
+}
+
+void ActionCost::set_cost(const ActionCostValue new_cost)
+{
+  cost = new_cost;
 }
 
 ActionCostValue ActionCost::get_cost() const

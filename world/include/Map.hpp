@@ -35,8 +35,7 @@ class Map
 		// These functions work on a list built up from the map itself.
 		// This allows for quicker lookup.
 		bool has_creature(const std::string& creature_id);
-		boost::shared_ptr<Creature> get_creature(const uint idx_in_creature_list);
-		std::vector<boost::shared_ptr<Creature> > get_creatures();
+		std::map<std::string, boost::shared_ptr<Creature> > get_creatures();
 		void remove_creature(const std::string& creature_id);
 		// Other get_creature... fns here.
 		// Other remove_creature... fns here.
@@ -83,7 +82,7 @@ class Map
 
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
-    std::vector<boost::shared_ptr<Creature> > creatures;
+    std::map<std::string, boost::shared_ptr<Creature> > creatures;
 
 		std::map<std::string, boost::shared_ptr<Tile> > tiles;
 		Dimensions dimensions;

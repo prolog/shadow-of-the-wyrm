@@ -1,5 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
+#include "ActionCoordinator.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFeatures.hpp"
@@ -210,35 +211,50 @@ void Game::go()
   while(keep_playing)
   {
     current_map = get_current_map();
-    vector<CreaturePtr> map_creatures = current_map->get_creatures();
+    map<string, CreaturePtr> map_creatures = current_map->get_creatures();
     
-    // FIXME: Right now, I just get the actions of each creature, in order.  This doesn't follow the ultimate
-    // model of action costs, etc.
-    for (vector<CreaturePtr>::const_iterator c_it = map_creatures.begin(); c_it != map_creatures.end(); c_it++)
+    ActionCoordinator ac;
+    ac.set(map_creatures);
+    
+    
+    while (ac.has_actions())
     {
-      // If we shouldn't keep playing (player has quit, has been killed, etc), then break out of the 
-      // game loop.
-      if (!keep_playing)
+      CreaturePtr current_creature;
+      string creature_id = ac.get_next_creature_id_and_update_actions();      
+      map<string, CreaturePtr>::iterator c_it = map_creatures.find(creature_id);
+
+      if (c_it != map_creatures.end())
       {
-        break;
+        current_creature = c_it->second;
       }
       
-      CreaturePtr current_creature = *c_it;
-
-      process_action_for_creature(current_creature, current_map);
-      
-      if (reload_game_loop)
+      if (current_creature)
       {
-        reload_game_loop = false;
-        break;
+        // If we shouldn't keep playing (player has quit, has been killed, etc), then break out of the 
+        // game loop.
+        if (!keep_playing)
+        {
+          break;
+        }
+        
+        ActionCost action_cost = process_action_for_creature(current_creature, current_map);
+        ac.add(action_cost, current_creature->get_id());
+        
+        if (reload_game_loop)
+        {
+          reload_game_loop = false;
+          break;
+        }
       }
     }
   }
 }
 
 // Get and process the action for the current creature
-void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map)
+ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map)
 {
+  ActionCost action_cost;
+  
   if (current_creature)
   {        
     DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
@@ -272,7 +288,7 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
           MessageManager::instance()->clear_if_necessary();
         }
 
-        ActionCost action_cost = CommandProcessor::process(current_creature, command, display);
+        action_cost = CommandProcessor::process(current_creature, command, display);
         advance = action_cost.get_turn_advanced();
       }
       
@@ -281,6 +297,8 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
       current_creature->increment_turns();
     }
   }
+  
+  return action_cost;
 }
 
 void Game::stop_playing()

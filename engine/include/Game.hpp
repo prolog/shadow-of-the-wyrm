@@ -71,7 +71,7 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     // Game commands - protected, so they should only be called by SavageLandsEngine
     // or CommandProcessor.
-    void process_action_for_creature(CreaturePtr current_creature, MapPtr current_map);
+    ActionCost process_action_for_creature(CreaturePtr current_creature, MapPtr current_map);
 
     // Re-gets the map, and restarts the game loop
     void reload_map();

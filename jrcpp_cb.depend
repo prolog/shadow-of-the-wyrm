@@ -1056,9 +1056,10 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1339850217 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1339857997 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
+	"ActionCoordinator.hpp"
 	"Conversion.hpp"
 	"CreatureCalculator.hpp"
 	"CreatureFeatures.hpp"
@@ -1417,7 +1418,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
 	"ItemTypes.hpp"
 
-1339536012 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1339855485 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	<boost/tokenizer.hpp>
@@ -1926,7 +1927,7 @@
 	"MapUtils.hpp"
 	"TerrainGeneratorFactory.hpp"
 
-1339800672 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncost.cpp
+1339852636 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncost.cpp
 	<sstream>
 	"ActionCost.hpp"
 
@@ -1947,4 +1948,8 @@
 	"CharacterDumper.hpp"
 	"FileWriter.hpp"
 	"MessageManager.hpp"
+
+1339857725 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncoordinator.cpp
+	<boost/foreach.hpp>
+	"ActionCoordinator.hpp"
 
