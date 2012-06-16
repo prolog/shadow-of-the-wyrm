@@ -61,27 +61,34 @@ void ItemManager::create_item_with_probability(const int rand_less_than_or_equal
   }
 }
 
-bool ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
+ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
 {
-  bool picked_up_item = false;
+  ActionCostValue picked_up_item = 0;
   
   if (creature && item)
   {
     Inventory& inv = creature->get_inventory();
-    picked_up_item = inv.add(item);
+    if (inv.add(item))
+    {
+      picked_up_item = get_action_cost_value();
+    }
   }
   
   return picked_up_item;
 }
 
-bool ItemManager::drop(CreaturePtr creature, ItemPtr item)
+ActionCostValue ItemManager::drop(CreaturePtr creature, ItemPtr item)
 {
-  bool dropped_item = false;
+  ActionCostValue dropped_item = 0;
   
   if (creature && item)
   {
     Inventory& inv = creature->get_inventory();
-    dropped_item = inv.remove(item->get_id());
+    
+    if (inv.remove(item->get_id()))
+    {
+      dropped_item = get_action_cost_value();
+    }
   }
   
   return dropped_item;
@@ -91,22 +98,26 @@ bool ItemManager::drop(CreaturePtr creature, ItemPtr item)
 // By default, try to equip to the slot specified in the ItemPtr.
 // The override is so that an item can be equipped to a similar slot:
 // e.g., left hand instead of right hand.
-bool ItemManager::equip(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot)
+ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot)
 {
-  bool equipped_item = false;
+  ActionCostValue equipped_item = 0;
   
   if (creature && item)
   {
     Equipment& eq = creature->get_equipment();
-    equipped_item = eq.set_item(item, eq_worn_slot);
+
+    if (eq.set_item(item, eq_worn_slot))
+    {
+      equipped_item = get_action_cost_value();
+    }
   }
   
   return equipped_item;  
 }
 
-bool ItemManager::equip(CreaturePtr creature, ItemPtr item)
+ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item)
 {
-  bool equipped_item = false;
+  ActionCostValue equipped_item = 0;
   
   if (creature && item)
   {

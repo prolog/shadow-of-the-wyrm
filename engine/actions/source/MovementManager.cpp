@@ -20,9 +20,9 @@ MovementManager::~MovementManager()
 {
 }
 
-bool MovementManager::move(CreaturePtr creature, const Direction direction)
+ActionCostValue MovementManager::move(CreaturePtr creature, const Direction direction)
 {
-  bool movement_success = false;
+  ActionCostValue movement_success = 0;
 
   Game* game = Game::instance();
 
@@ -56,9 +56,9 @@ bool MovementManager::move(CreaturePtr creature, const Direction direction)
   return movement_success;
 }
 
-bool MovementManager::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile)
+ActionCostValue MovementManager::move_off_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile)
 {
-  bool movement_success = false;
+  ActionCostValue movement_success = 0;
 
   Game* game = Game::instance();
   MessageManager* manager = MessageManager::instance();  
@@ -86,7 +86,7 @@ bool MovementManager::move_off_map(CreaturePtr creature, MapPtr map, TilePtr cre
         if (creature->get_decision_strategy()->get_confirmation())
         {
           move_to_new_map(map_exit);
-          movement_success = true;
+          movement_success = get_action_cost_value();
         }
       
         // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
@@ -103,7 +103,7 @@ bool MovementManager::move_off_map(CreaturePtr creature, MapPtr map, TilePtr cre
         manager->add_new_message(npc_exit_message);
         manager->send();
         
-        movement_success = true;
+        movement_success = get_action_cost_value();
         
         // JCD FIXME: Might cause problems later with many turns.
       } 
@@ -113,9 +113,9 @@ bool MovementManager::move_off_map(CreaturePtr creature, MapPtr map, TilePtr cre
   return movement_success;
 }
 
-bool MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords)
+ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords)
 {
-  bool movement_success = false;
+  ActionCostValue movement_success = 0;
 
   Game* game = Game::instance();
   MessageManager* manager = MessageManager::instance();
@@ -128,7 +128,7 @@ bool MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr 
     }
     else if (MapUtils::is_creature_present(creatures_new_tile))
     {
-      movement_success = false;
+      movement_success = 0;
       
       // Do the necessary checks here to determine whether to attack...
       CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
@@ -146,7 +146,7 @@ bool MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr 
       manager->add_new_message(blocked);
       manager->send();
       
-      movement_success = false;
+      movement_success = 0;
     }
     else
     {
@@ -154,7 +154,7 @@ bool MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr 
       MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
       TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
       add_tile_related_messages(creature, manager, new_tile);
-      movement_success = true;
+      movement_success = get_action_cost_value();
     }
   }
   
@@ -193,9 +193,9 @@ void MovementManager::move_to_new_map(MapExitPtr map_exit)
   }
 }
 
-bool MovementManager::ascend(CreaturePtr creature)
+ActionCostValue MovementManager::ascend(CreaturePtr creature)
 {
-  bool ascend_success = false;
+  ActionCostValue ascend_success = 0;
   
   if (creature->get_is_player())
   {
@@ -227,7 +227,7 @@ bool MovementManager::ascend(CreaturePtr creature)
         TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
         add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);
         
-        ascend_success = true;
+        ascend_success = get_action_cost_value();
       }
       else
       {
@@ -253,9 +253,9 @@ bool MovementManager::ascend(CreaturePtr creature)
   return ascend_success;
 }
 
-bool MovementManager::descend(CreaturePtr creature)
+ActionCostValue MovementManager::descend(CreaturePtr creature)
 {
-  bool descend_success = false;
+  ActionCostValue descend_success = 0;
  
   MessageManager* manager = MessageManager::instance();
   
@@ -285,7 +285,7 @@ bool MovementManager::descend(CreaturePtr creature)
           if (t_it != exit_map.end())
           {
             // JCD FIXME Fill this in later.
-            descend_success = true;
+            descend_success = get_action_cost_value();
           }
           // If it's null, check to see if we're on the world map.
           else
@@ -334,7 +334,7 @@ bool MovementManager::descend(CreaturePtr creature)
                 manager->add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
                 add_tile_related_messages(creature, manager, new_creature_tile);
                 
-                descend_success = true;
+                descend_success = get_action_cost_value();
               }
             }
             else

@@ -31,6 +31,6 @@ void PlayerDeathManager::die()
     // JCD FIXME: need functionality to add -- more --...
     
     // Signal to the game that it is time to quit.
-    game->quit();
+    game->stop_playing();
   }
 }

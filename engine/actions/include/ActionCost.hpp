@@ -10,7 +10,7 @@ class ActionCost
     // Default constructor sets the cost to 0, disallowing a turn.
     // The ActionManager is responsible for the construction of a
     // "real" ActionCost - see the protected constructor.
-    ActionCost();
+    explicit ActionCost();
     
     bool operator==(const ActionCost& rhs);
     bool operator!=(const ActionCost& rhs);
@@ -27,7 +27,7 @@ class ActionCost
   protected:
     friend class ActionManager;
     
-    ActionCost(const ActionCostValue new_cost);
+    explicit ActionCost(const ActionCostValue new_cost);
 
     ActionCostValue cost;
     bool turn_advanced;

@@ -357,7 +357,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\levelconstants.cpp
 	"LevelConstants.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\playerdeathmanager.cpp
+1339848243 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\playerdeathmanager.cpp
 	"Game.hpp"
 	"MessageManager.hpp"
 	"PlayerDeathManager.hpp"
@@ -376,7 +376,7 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
+1339849391 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentCommands.hpp"
@@ -431,7 +431,7 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1339800389 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1339847520 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
@@ -1056,7 +1056,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1339800284 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1339850217 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"Conversion.hpp"
@@ -1877,7 +1877,7 @@
 1339550763 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategy.cpp
 	"FieldOfViewStrategy.hpp"
 
-1339800363 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1339848165 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -1893,7 +1893,7 @@
 	"VersionActionManager.hpp"
 	"Log.hpp"
 
-1339798139 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
+1339849796 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
@@ -1908,13 +1908,13 @@
 	"InventoryManager.hpp"
 	"InventoryTranslator.hpp"
 
-1339798167 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
+1339848877 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
 	"Game.hpp"
 	"ItemFactory.hpp"
 	"ItemManager.hpp"
 	"RNG.hpp"
 
-1339798179 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+1339848550 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
@@ -1926,7 +1926,7 @@
 	"MapUtils.hpp"
 	"TerrainGeneratorFactory.hpp"
 
-1339797937 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncost.cpp
+1339800672 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncost.cpp
 	<sstream>
 	"ActionCost.hpp"
 

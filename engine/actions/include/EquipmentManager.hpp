@@ -7,7 +7,7 @@ class EquipmentManager : public IActionManager
 {
   public:
 
-    bool manage_equipment();
+    ActionCostValue manage_equipment();
 
   protected:
     friend class ActionManager;

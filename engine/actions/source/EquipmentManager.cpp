@@ -14,9 +14,10 @@ EquipmentManager::~EquipmentManager()
 }
 
 // Do the actual equipment management, interfacing with the UI as needed.
-bool EquipmentManager::manage_equipment()
+ActionCostValue EquipmentManager::manage_equipment()
 {
-  bool equipment_success = false;
+  ActionCostValue action_cost = 0;
+  
   bool manage_eq = true; // For looping
 
   if (creature)
@@ -37,11 +38,16 @@ bool EquipmentManager::manage_equipment()
       if (decision_strategy)
       {
         CommandPtr equipment_command = decision_strategy->get_decision(creature->get_id(), command_factory, kb_command_map);
-        manage_eq = EquipmentCommandProcessor::process(creature, equipment_command);
+        action_cost = EquipmentCommandProcessor::process(creature, equipment_command);
       }
       else
       {
-        manage_eq = false;
+        manage_eq = 0;
+      }
+      
+      if (action_cost == 0)
+      {
+        manage_eq = 0;
       }
     }
     
@@ -50,10 +56,10 @@ bool EquipmentManager::manage_equipment()
       display->clear_menu();
     }
     
-    equipment_success = true;
+    action_cost = get_action_cost_value();
   }
 
-  return equipment_success;
+  return action_cost;
 }
 
 ActionCostValue EquipmentManager::get_action_cost_value() const

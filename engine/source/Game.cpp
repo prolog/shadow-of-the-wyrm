@@ -272,10 +272,8 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
           MessageManager::instance()->clear_if_necessary();
         }
 
-        // JCD FIXME:
-        // ActionCost action_cost = CommandProcessor::process(current_creature, command, display);
-        // advance = action_cost.get_turn_advanced();
-        advance = CommandProcessor::process(current_creature, command, display);
+        ActionCost action_cost = CommandProcessor::process(current_creature, command, display);
+        advance = action_cost.get_turn_advanced();
       }
       
       // Update the current creature as well as its number of turns.
@@ -285,7 +283,7 @@ void Game::process_action_for_creature(CreaturePtr current_creature, MapPtr curr
   }
 }
 
-void Game::quit()
+void Game::stop_playing()
 {
   keep_playing = false;
 }

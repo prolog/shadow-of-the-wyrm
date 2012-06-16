@@ -13,12 +13,10 @@ class ItemManager : public IActionManager
     static ItemPtr create_item(const std::string& item_id); // This version assumes that we use the collection on the Game singleton.
     static void create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_bound, Inventory& inv, const std::string& item_id);
 
-    // JCD FIXME: This will need to be updated to have functionality that
-    // adds/removes the item from its tile, when applicable.
-    bool pick_up(CreaturePtr creature, ItemPtr item);
-    bool drop(CreaturePtr creature, ItemPtr item);
-    bool equip(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation location);
-    bool equip(CreaturePtr creature, ItemPtr item);
+    ActionCostValue pick_up(CreaturePtr creature, ItemPtr item);
+    ActionCostValue drop(CreaturePtr creature, ItemPtr item);
+    ActionCostValue equip(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation location);
+    ActionCostValue equip(CreaturePtr creature, ItemPtr item);
     ItemPtr remove(CreaturePtr creature, const EquipmentWornLocation location);
     
   protected:

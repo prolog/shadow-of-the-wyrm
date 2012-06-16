@@ -1,4 +1,5 @@
 #pragma once
+#include "ActionCost.hpp"
 #include "Commands.hpp"
 #include "Creature.hpp"
 #include "Display.hpp"
@@ -10,13 +11,13 @@
 class CommandProcessor
 {
   public:
-    static bool process(CreaturePtr creature, CommandPtr command, DisplayPtr display);
+    static ActionCost process(CreaturePtr creature, CommandPtr command, DisplayPtr display);
 
   protected:
     CommandProcessor();
     ~CommandProcessor();
 
-    static bool process_command(CreaturePtr creature, Command* command, DisplayPtr display);
-    static bool process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr display);
+    static ActionCost process_command(CreaturePtr creature, Command* command, DisplayPtr display);
+    static ActionCost process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr display);
     static bool process_confirmation(CreaturePtr creature, Command* command, DisplayPtr display);
 };
