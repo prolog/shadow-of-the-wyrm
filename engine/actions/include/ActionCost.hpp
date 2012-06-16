@@ -12,14 +12,16 @@ class ActionCost
     // "real" ActionCost - see the protected constructor.
     explicit ActionCost();
     
-    bool operator==(const ActionCost& rhs);
-    bool operator!=(const ActionCost& rhs);
-    bool operator< (const ActionCost& rhs);
-    bool operator> (const ActionCost& rhs);
-    bool operator<=(const ActionCost& rhs);
-    bool operator>=(const ActionCost& rhs);
+    bool operator==(const ActionCost& rhs) const;
+    bool operator!=(const ActionCost& rhs) const;
+    bool operator< (const ActionCost& rhs) const;
+    bool operator> (const ActionCost& rhs) const;
+    bool operator<=(const ActionCost& rhs) const;
+    bool operator>=(const ActionCost& rhs) const;
 
+    void set_cost(const ActionCostValue new_cost);
     ActionCostValue get_cost() const;
+
     bool get_turn_advanced() const;
    
     std::string str() const;

@@ -45,7 +45,7 @@ void Map::create_creatures()
 
       if (potential_creature)
       {
-        creatures.push_back(potential_creature);
+        creatures.insert(make_pair(potential_creature->get_id(), potential_creature));
       }
     }
   }
@@ -53,30 +53,10 @@ void Map::create_creatures()
 
 bool Map::has_creature(const string& creature_id)
 {
-  BOOST_FOREACH(CreaturePtr creature, creatures)
-  {
-    if (creature_id == creature->get_id())
-    {
-      return true;
-    }
-  }
-  
-  return false;
+  return (creatures.find(creature_id) != creatures.end());
 }
 
-CreaturePtr Map::get_creature(const uint idx)
-{
-  CreaturePtr creature;
-
-  if (idx < creatures.size())
-  {
-    return creatures.at(idx);
-  }
-
-  return creature;
-}
-
-vector<CreaturePtr> Map::get_creatures()
+map<string, CreaturePtr> Map::get_creatures()
 {
   if (creatures.empty())
   {
@@ -101,7 +81,12 @@ void Map::reset_creatures_and_locations()
     if (tile && tile->has_creature())
     {
       CreaturePtr creature = tile->get_creature();
-      creatures.push_back(creature);
+      
+      if (creature)
+      {
+        creatures.insert(make_pair(creature->get_id(), creature));
+      }
+
       locations.insert(make_pair(creature->get_id(), MapUtils::convert_map_key_to_coordinate(tile_key)));
     }    
   }
@@ -109,14 +94,11 @@ void Map::reset_creatures_and_locations()
 
 void Map::remove_creature(const string& creature_id)
 {
-  for (vector<CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+  map<string, CreaturePtr>::iterator c_it = creatures.find(creature_id);
+  
+  if (c_it != creatures.end())
   {
-    CreaturePtr creature = *c_it;
-    if (creature->get_id() == creature_id)
-    {
-      creatures.erase(c_it);
-      return;
-    }
+    creatures.erase(c_it);
   }
 }
 
