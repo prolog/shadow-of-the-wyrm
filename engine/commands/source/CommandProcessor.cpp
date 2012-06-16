@@ -15,8 +15,10 @@ CommandProcessor::~CommandProcessor()
 }
 
 // Determine the type of command, and process it appropriately.
-bool CommandProcessor::process(CreaturePtr creature, CommandPtr command, DisplayPtr display)
+ActionCost CommandProcessor::process(CreaturePtr creature, CommandPtr command, DisplayPtr display)
 {  
+  ActionCost ac;
+
   if (command)
   {
     Command* raw_command = command.get();
@@ -33,14 +35,14 @@ bool CommandProcessor::process(CreaturePtr creature, CommandPtr command, Display
       return process_command(creature, raw_command, display);
     }
   }
-  
-  return false;
+
+  return ac;
 }
 
 // Process the Command
-bool CommandProcessor::process_command(CreaturePtr creature, Command* command, DisplayPtr display)
+ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* command, DisplayPtr display)
 {
-  bool advance = true;
+  ActionCost ac;
   
   if (command)
   {
@@ -53,51 +55,51 @@ bool CommandProcessor::process_command(CreaturePtr creature, Command* command, D
       
       if (command_name == CommandKeys::QUIT)
       {
-        game->quit();
+        ac = game->actions.quit(creature);
       }
       else if (command_name == CommandKeys::VERSION)
       {
-        game->actions.version(creature);
-        advance = false;
+        ac = game->actions.version(creature);
       }
       else if (command_name == CommandKeys::SEARCH)
       {
-        advance = game->actions.search(creature);
+        ac = game->actions.search(creature);
       }
       else if (command_name == CommandKeys::MOVE_UP)
       {
-        advance = game->actions.ascend(creature);
+        ac = game->actions.ascend(creature);
       }
       else if (command_name == CommandKeys::MOVE_DOWN)
       {
-        advance = game->actions.descend(creature);
+        ac = game->actions.descend(creature);
       }
       else if (command_name == CommandKeys::PICK_UP_ITEM)
       {
-        advance = game->actions.pick_up(creature);
+        ac = game->actions.pick_up(creature);
       }
       else if (command_name == CommandKeys::DROP_ITEM)
       {
-        advance = game->actions.drop(creature);
+        ac = game->actions.drop(creature);
       }
       else if (command_name == CommandKeys::CHAR_DUMP)
       {
-        game->actions.dump_character(creature);
-        advance = false;
+        ac = game->actions.dump_character(creature);
       }
       else if (command_name == CommandKeys::INVENTORY)
       {
-        game->actions.equipment(creature);
+        ac = game->actions.equipment(creature);
       }
     }
   }
   
-  return advance;
+  return ac;
 }
 
 // Process the DirectionalCommand
-bool CommandProcessor::process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr display)
+ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, DirectionalCommand* command, DisplayPtr display)
 {
+  ActionCost ac;
+  
   if (command)
   {
     Game* game = Game::instance();
@@ -114,7 +116,7 @@ bool CommandProcessor::process_directional_command(CreaturePtr creature, Directi
     }
   }
   
-  return false;
+  return ac;
 }
 
 // Get a confirmation from the creature's decision strategy, if necessary

@@ -52,6 +52,7 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     void create_new_world(CreaturePtr creature);
     void go(); // main game loop
+    void stop_playing(); // end the game
 
     // Additional operations will eventually be needed to do many
     // worlds and rebirth.
@@ -72,10 +73,6 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     // or CommandProcessor.
     void process_action_for_creature(CreaturePtr current_creature, MapPtr current_map);
 
-    // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
-    // additional work done later to compensate for pending actions, etc.
-    void quit();
-    
     // Re-gets the map, and restarts the game loop
     void reload_map();
     

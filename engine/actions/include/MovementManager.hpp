@@ -10,9 +10,9 @@ class MessageManager;
 class MovementManager : public IActionManager
 {
   public:
-    bool move(CreaturePtr creature, const Direction d);
-    bool ascend(CreaturePtr creature);
-    bool descend(CreaturePtr creature);
+    ActionCostValue move(CreaturePtr creature, const Direction d);
+    ActionCostValue ascend(CreaturePtr creature);
+    ActionCostValue descend(CreaturePtr creature);
 
   protected:
     friend class ActionManager;
@@ -22,8 +22,8 @@ class MovementManager : public IActionManager
     
     ActionCostValue get_action_cost_value() const;
 
-    bool move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);
-    bool move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords);
+    ActionCostValue move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);
+    ActionCostValue move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords);
     
     void add_tile_related_messages(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);
     void add_message_about_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);

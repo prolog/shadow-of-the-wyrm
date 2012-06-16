@@ -13,9 +13,9 @@ EquipmentCommandProcessor::~EquipmentCommandProcessor()
 {
 }
 
-bool EquipmentCommandProcessor::process(CreaturePtr creature, CommandPtr command)
+ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, CommandPtr command)
 {
-  bool process_result = true;
+  ActionCostValue process_result = 1;
   Game* game = Game::instance();
   
   if (game && creature && command)
@@ -44,7 +44,7 @@ bool EquipmentCommandProcessor::process(CreaturePtr creature, CommandPtr command
       }
       else if (command_name == EquipmentCommandKeys::EXIT_EQUIPMENT)
       {
-        process_result = false;
+        process_result = 0;
       }
     }
   }

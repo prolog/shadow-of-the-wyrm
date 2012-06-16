@@ -35,25 +35,24 @@ ActionCost ActionManager::dump_character(CreaturePtr creature)
   return get_action_cost(creature, cdm.dump_character(creature));
 }
 
-bool ActionManager::search(CreaturePtr creature)
+ActionCost ActionManager::search(CreaturePtr creature)
 {
   SearchActionManager sam;
-  sam.search(creature);
-  return true;
+  return get_action_cost(creature, sam.search(creature));
 }
 
-bool ActionManager::move(CreaturePtr creature, const Direction direction)
+ActionCost ActionManager::move(CreaturePtr creature, const Direction direction)
 {
-  return movement_manager.move(creature, direction);
+  return get_action_cost(creature, movement_manager.move(creature, direction));
 }
 
-bool ActionManager::attack(CreaturePtr creature, const Direction direction)
+ActionCost ActionManager::attack(CreaturePtr creature, const Direction direction)
 {
-  return combat_manager.attack(creature, direction);
+  return get_action_cost(creature, combat_manager.attack(creature, direction));
 }
 
 // Move up a level
-bool ActionManager::ascend(CreaturePtr creature)
+ActionCost ActionManager::ascend(CreaturePtr creature)
 {
   Game* game = Game::instance();
   
@@ -71,25 +70,25 @@ bool ActionManager::ascend(CreaturePtr creature)
       manager->add_new_message(search_message);
       manager->send();
       
-      return false;    
+      return get_action_cost(creature, 0);
     } 
     
     movement_manager.ascend(creature);
   }
   
-  return true;
+  return get_action_cost(creature, 1); // JCD FIXME
 }
 
 // Move down a level
-bool ActionManager::descend(CreaturePtr creature)
+ActionCost ActionManager::descend(CreaturePtr creature)
 {
-  return movement_manager.descend(creature);
+  return get_action_cost(creature, movement_manager.descend(creature));
 }
 
 // Remove an item from a particular slot.
-// Return true if there was an item in the slot.
-// Return false if there was no item in the slot.
-bool ActionManager::remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
+// Advance the turn if there was an item in the slot.
+// Do not advance if there was no item in the slot.
+ActionCostValue ActionManager::remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
 {
   if (creature)
   {
@@ -98,11 +97,11 @@ bool ActionManager::remove_item(CreaturePtr creature, const EquipmentWornLocatio
     if (item_in_slot)
     {
       item_manager.remove(creature, worn_location);
-      return true;
+      return 1;
     }
   }
   
-  return false;
+  return 0;
 }
 
 // Wear or remove a particular item from the worn equipment by adding/removing the item from a slot.
@@ -138,9 +137,9 @@ void ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWor
 // 
 // This function assumes everything is ok - it doesn't check for the overland map, any
 // special terrain types, etc.
-bool ActionManager::handle_item(CreaturePtr creature, const ItemAction item_action, ItemPtr item, const EquipmentWornLocation loc)
+ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemAction item_action, ItemPtr item, const EquipmentWornLocation loc)
 {
-  bool item_handled = true;
+  ActionCostValue action_cost_value = 1;
   
   switch(item_action)
   {
@@ -156,18 +155,17 @@ bool ActionManager::handle_item(CreaturePtr creature, const ItemAction item_acti
       break;
     default:
       Log::instance()->log("Error: Unhandled item action!");
-      item_handled = false;
+      action_cost_value = 0;
       break;
   }
   
-  return item_handled;
+  return action_cost_value;
 }
 
 // Pick up an item, doing any necessary checks first.
-bool ActionManager::pick_up(CreaturePtr creature)
+ActionCost ActionManager::pick_up(CreaturePtr creature)
 {
-  bool advance_turn = false;
-
+  ActionCostValue action_cost_value = 0;
   Game* game = Game::instance();
   MessageManager* manager = MessageManager::instance();
   
@@ -237,19 +235,19 @@ bool ActionManager::pick_up(CreaturePtr creature)
           }
           
           // Advance the turn
-          advance_turn = true;
+          action_cost_value = 1;
         }   
       }      
     }
   }
-  
-  return advance_turn;
+
+  return get_action_cost(creature, action_cost_value);
 }
 
 // Drop an item, doing any necessary checks first.
-bool ActionManager::drop(CreaturePtr creature)
+ActionCost ActionManager::drop(CreaturePtr creature)
 {
-  bool advance_turn = false;
+  ActionCostValue action_cost_value = 0;
   
   Game* game = Game::instance();
   MessageManager* manager = MessageManager::instance();
@@ -290,7 +288,7 @@ bool ActionManager::drop(CreaturePtr creature)
         creature->get_inventory().remove(item_to_drop->get_id());
         
         // Advance the turn
-        advance_turn = true;
+        action_cost_value = 1;
         
         // Display a message if appropriate.
         // If it's the player, remind the user what he or she dropped.
@@ -311,7 +309,7 @@ bool ActionManager::drop(CreaturePtr creature)
     }
   }
   
-  return advance_turn;
+  return get_action_cost(creature, action_cost_value);
 }
 
 // Display the inventory; potentially select something.
@@ -333,8 +331,10 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const boo
 }
 
 // Wear/unwear equipment
-void ActionManager::equipment(CreaturePtr creature)
+ActionCost ActionManager::equipment(CreaturePtr creature)
 {
+  ActionCostValue action_cost_value;
+  
   Game* game = Game::instance();
   
   if (game && creature)
@@ -342,8 +342,22 @@ void ActionManager::equipment(CreaturePtr creature)
     DisplayPtr game_display = game->get_display();
     
     EquipmentManager equipment_manager(game_display, creature);
-    equipment_manager.manage_equipment();
+    action_cost_value = equipment_manager.manage_equipment();
   }
+
+  return get_action_cost(creature, action_cost_value);
+}
+
+ActionCost ActionManager::quit(CreaturePtr creature)
+{
+  Game* game = Game::instance();
+  
+  if (game)
+  {
+    game->stop_playing();
+  }
+  
+  return get_action_cost(creature, 1);
 }
 
 // Create an ActionCost based on the ActionCostValue already generated
@@ -359,3 +373,4 @@ ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCost
   ActionCost ac(total_action_cost_value);
   return ac;
 }
+

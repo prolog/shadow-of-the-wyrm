@@ -210,7 +210,6 @@
 		<Unit filename="engine\actions\source\ActionManager.cpp" />
 		<Unit filename="engine\actions\source\CharacterDumpManager.cpp" />
 		<Unit filename="engine\actions\source\EquipmentManager.cpp" />
-		<Unit filename="engine\actions\source\IActionManager.cpp" />
 		<Unit filename="engine\actions\source\InventoryManager.cpp" />
 		<Unit filename="engine\actions\source\ItemManager.cpp" />
 		<Unit filename="engine\actions\source\MovementManager.cpp" />

@@ -1,4 +1,5 @@
 #pragma once
+#include "ActionCost.hpp"
 #include "Creature.hpp"
 
 // A command processor that processes exclusively equipment-related
@@ -6,7 +7,7 @@
 class EquipmentCommandProcessor 
 {
   public:
-    static bool process(CreaturePtr creature, CommandPtr command);
+    static ActionCostValue process(CreaturePtr creature, CommandPtr command);
 
   protected:
     EquipmentCommandProcessor();
