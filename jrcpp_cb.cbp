@@ -196,6 +196,7 @@
 		<Unit filename="engine\XML\source\XMLWandReader.cpp" />
 		<Unit filename="engine\XML\source\XMLWeaponsReaders.cpp" />
 		<Unit filename="engine\XML\source\XMLWearableReader.cpp" />
+		<Unit filename="engine\actions\include\ActionCoordinator.hpp" />
 		<Unit filename="engine\actions\include\ActionCost.hpp" />
 		<Unit filename="engine\actions\include\ActionManager.hpp" />
 		<Unit filename="engine\actions\include\CharacterDumpManager.hpp" />
@@ -206,6 +207,7 @@
 		<Unit filename="engine\actions\include\MovementManager.hpp" />
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
 		<Unit filename="engine\actions\include\VersionActionManager.hpp" />
+		<Unit filename="engine\actions\source\ActionCoordinator.cpp" />
 		<Unit filename="engine\actions\source\ActionCost.cpp" />
 		<Unit filename="engine\actions\source\ActionManager.cpp" />
 		<Unit filename="engine\actions\source\CharacterDumpManager.cpp" />

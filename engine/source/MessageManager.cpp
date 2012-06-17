@@ -73,7 +73,7 @@ void MessageManager::send(const bool halt_after)
       // Don't immediately clear, and only send text if the message buffer has something.
       if (!message_text.empty())
       {
-        user_display->add_message(message_text, m.get_colour(), true);
+        user_display->add_message(message_text, m.get_colour(), false);
       }
 
       buffer_has_messages = true;
