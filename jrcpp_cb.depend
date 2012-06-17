@@ -1134,7 +1134,7 @@
 1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1339254128 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1339956190 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
 	"MessageManager.hpp"
 
@@ -1373,7 +1373,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1339624213 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1339858525 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	<limits>
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
