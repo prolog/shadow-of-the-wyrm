@@ -46,8 +46,9 @@ void KeyboardCommandMap::command_not_found(const string& keyboard_input)
   // JCD FIXME: Does the wrong thing for function keys, etc.  Maybe use the String::clean function?
   string keyboard_input_as_character = Char::to_string(String::to_int(keyboard_input));
   MessageManager* manager = MessageManager::instance();
+//  manager->clear_if_necessary();
   manager->add_new_message(TextMessages::get_action_not_found_message(keyboard_input_as_character));
-  manager->send();
+  manager->send(false /* Don't halt */, true /* Reset the cursor on the player */);
 
   Log* log = Log::instance();
   log->debug("Could not find mapped command for input: " + keyboard_input);
