@@ -17,3 +17,8 @@ MapPtr World::get_world() const
 {
   return world_map;
 }
+
+Calendar& World::get_calendar()
+{
+  return calendar;
+}
