@@ -8,7 +8,7 @@ class MessageManager
     static MessageManager* instance();
 
     void clear_if_necessary();
-    void send(const bool halt_afterwards = false);
+    void send(const bool halt_afterwards = false, const bool reset_afterwards = false);
     void send_and_halt();
 		bool add_new_message(const std::string& message, const Colour colour = COLOUR_WHITE, const MessageImportance& importance = MessageImportance_Normal);
 		Messages get_unread_messages() const;

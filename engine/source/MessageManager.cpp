@@ -57,7 +57,7 @@ void MessageManager::clear_if_necessary()
   Send the currently-unread messages to the display.
 
  *********************************************************************/
-void MessageManager::send(const bool halt_after)
+void MessageManager::send(const bool halt_after, const bool reset_cursor_after)
 {
   Messages unread_messages = get_unread_messages_and_mark_as_read();
   string message_text;
@@ -73,7 +73,7 @@ void MessageManager::send(const bool halt_after)
       // Don't immediately clear, and only send text if the message buffer has something.
       if (!message_text.empty())
       {
-        user_display->add_message(message_text, m.get_colour(), false);
+        user_display->add_message(message_text, m.get_colour(), reset_cursor_after);
       }
 
       buffer_has_messages = true;
