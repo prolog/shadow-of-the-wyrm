@@ -24,6 +24,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = CommandPtr(new VersionCommand());
   }
+  else if (command_name == CommandKeys::GAME_DATE_TIME)
+  {
+    command = CommandPtr(new GameDateTimeCommand());
+  }
   else if (command_name == CommandKeys::MOVE_NORTHEAST)
   {
     command = CommandPtr(new MovementCommand(DIRECTION_NORTH_EAST));

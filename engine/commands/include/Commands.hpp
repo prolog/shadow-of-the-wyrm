@@ -17,6 +17,13 @@ class VersionCommand : public Command
     ~VersionCommand();
 };
 
+class GameDateTimeCommand : public Command
+{
+  public:
+    GameDateTimeCommand();
+    ~GameDateTimeCommand();
+};
+
 class DirectionalCommand : public Command
 {
   public:

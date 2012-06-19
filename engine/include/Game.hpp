@@ -62,6 +62,7 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     friend class CreatureDeathManager;
     friend class PlayerDeathManager;
     friend class MovementManager;
+    friend class DateTimeManager;
     friend class ItemManager;
     friend class CommandProcessor;
     friend class EquipmentCommandProcessor;

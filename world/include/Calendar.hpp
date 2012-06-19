@@ -1,14 +1,22 @@
 #pragma once
 #include "common.hpp"
 
+class Date;
+
 class Calendar
 {
   public:
     Calendar();
     
-    void add_seconds(const uint seconds);
+    void add_days(const uint days);
+    void add_seconds(const double seconds);
 
+    Date get_date() const;
+    
   protected:
     // Number of seconds since day 1 of month 1 of year 832.
-    ulonglong seconds;
+    // This actually needs to be floating point to account for edge cases where
+    // creatures have very low speeds (e.g., 1).
+    double seconds;
+    const uint STARTING_YEAR;
 };

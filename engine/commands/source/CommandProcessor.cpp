@@ -61,6 +61,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.version(creature);
       }
+      else if (command_name == CommandKeys::GAME_DATE_TIME)
+      {
+        ac = game->actions.date_and_time(creature);
+      }
       else if (command_name == CommandKeys::SEARCH)
       {
         ac = game->actions.search(creature);

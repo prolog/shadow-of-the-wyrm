@@ -25,6 +25,16 @@ VersionCommand::~VersionCommand()
 {
 }
 
+// Date/Time
+GameDateTimeCommand::GameDateTimeCommand()
+: Command(CommandKeys::GAME_DATE_TIME)
+{
+}
+
+GameDateTimeCommand::~GameDateTimeCommand()
+{
+}
+
 // Directional
 DirectionalCommand::DirectionalCommand(const Direction d)
 : Command("") // This will be a no-op command, since the command key is empty.

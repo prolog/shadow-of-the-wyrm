@@ -3,6 +3,7 @@
 #include "ActionManager.hpp"
 #include "CharacterDumpManager.hpp"
 #include "Conversion.hpp"
+#include "DateTimeManager.hpp"
 #include "EquipmentManager.hpp"
 #include "FileWriter.hpp"
 #include "Game.hpp"
@@ -27,6 +28,12 @@ ActionCost ActionManager::version(CreaturePtr creature)
 {
   VersionActionManager vam;
   return get_action_cost(creature, vam.version());
+}
+
+ActionCost ActionManager::date_and_time(CreaturePtr creature)
+{
+  DateTimeManager dtm;
+  return get_action_cost(creature, dtm.date_and_time());
 }
 
 ActionCost ActionManager::dump_character(CreaturePtr creature)
