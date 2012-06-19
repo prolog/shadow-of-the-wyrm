@@ -10,6 +10,8 @@
 #include "BresenhamLine.hpp"
 #include "Display.hpp"
 #include "RNG.hpp"
+#include "Calendar.hpp"
+#include "Date.hpp"
 #include "CathedralGenerator.hpp"
 #include "CavernGenerator.hpp"
 #include "DungeonGenerator.hpp"
@@ -55,6 +57,10 @@ void output_map(string map, string filename);
 void test_rng();
 void test_range();
 void test_dice();
+
+// Miscellaneous testing
+void misc();
+void test_calendar();
 
 // Map testing stuff
 void test_bresenham_line();
@@ -153,7 +159,7 @@ string map_to_string(MapPtr map, bool use_html)
       }
       else
       {
-        DisplayTile dt = MapTranslator::create_display_tile(tile);
+        DisplayTile dt = MapTranslator::create_display_tile(tile, tile);
         if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(static_cast<Colour>(dt.get_colour())) + "\">";
         ostringstream ss;
         ss << dt.get_symbol();
@@ -657,6 +663,53 @@ void test_dice()
   }
 }
 
+void misc()
+{
+  int choice = 0;
+  while (choice != -1)
+  {
+    cout << "-1 to quit." << endl;
+    cout << "1. Bresenham's Line" << endl;
+    cout << "2. Calendar" << endl;
+    cin >> choice;
+    
+    switch(choice)
+    {
+      case 1: 
+        test_bresenham_line();
+        break;
+      case 2:
+      default:
+        test_calendar();
+        break;
+    }
+  }
+}
+
+void test_calendar()
+{
+  double seconds = 0;
+  
+  while (seconds > -1)
+  {
+    cout << "-1 to quit." << endl;
+    cout << "Number of elapsed seconds: " << endl;
+    cin >> seconds;
+    
+    if (seconds >= 0)
+    {
+      Calendar c;
+      c.add_seconds(seconds);
+      Date d = c.get_date();
+      
+      cout << "Calendar Info: " << endl;
+      cout << "Time: " << d.get_hours() << ":" << d.get_minutes() << ":" << d.get_seconds() << endl;
+      cout << "Day: Day " << d.get_day_of_week() << " of week, day " << d.get_day_of_month() << " of month" << endl;
+      cout << "Month: " << d.get_month() << endl;
+      cout << "Year: " << d.get_year() << endl; 
+    }
+  }
+}
 void test_bresenham_line()
 {
   int start_y, start_x, end_y, end_x;
@@ -893,7 +946,7 @@ int main(int argc, char** argv)
     cout << "15. Display race info" << endl;
     cout << "16. Display class info" << endl;
     cout << "17. City-adjacent maps" << endl;
-    cout << "18. Bresenham's Line" << endl;
+    cout << "18. Misc" << endl;
     cout << "-1. Quit" << endl << endl;
     cin >> option;
 
@@ -966,7 +1019,7 @@ int main(int argc, char** argv)
         city_maps();
         break;
       case 18:
-        test_bresenham_line();
+        misc();
         break;
       default:
         break;

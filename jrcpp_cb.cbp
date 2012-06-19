@@ -200,6 +200,7 @@
 		<Unit filename="engine\actions\include\ActionCost.hpp" />
 		<Unit filename="engine\actions\include\ActionManager.hpp" />
 		<Unit filename="engine\actions\include\CharacterDumpManager.hpp" />
+		<Unit filename="engine\actions\include\DateTimeManager.hpp" />
 		<Unit filename="engine\actions\include\EquipmentManager.hpp" />
 		<Unit filename="engine\actions\include\IActionManager.hpp" />
 		<Unit filename="engine\actions\include\InventoryManager.hpp" />
@@ -211,6 +212,7 @@
 		<Unit filename="engine\actions\source\ActionCost.cpp" />
 		<Unit filename="engine\actions\source\ActionManager.cpp" />
 		<Unit filename="engine\actions\source\CharacterDumpManager.cpp" />
+		<Unit filename="engine\actions\source\DateTimeManager.cpp" />
 		<Unit filename="engine\actions\source\EquipmentManager.cpp" />
 		<Unit filename="engine\actions\source\InventoryManager.cpp" />
 		<Unit filename="engine\actions\source\ItemManager.cpp" />
@@ -613,12 +615,14 @@
 		<Unit filename="world\include\Amulet.hpp" />
 		<Unit filename="world\include\Armour.hpp" />
 		<Unit filename="world\include\Book.hpp" />
+		<Unit filename="world\include\Calendar.hpp" />
 		<Unit filename="world\include\Class.hpp" />
 		<Unit filename="world\include\Consumable.hpp" />
 		<Unit filename="world\include\Creature.hpp" />
 		<Unit filename="world\include\CreatureFeatures.hpp" />
 		<Unit filename="world\include\Damage.hpp" />
 		<Unit filename="world\include\DamageTypes.hpp" />
+		<Unit filename="world\include\Date.hpp" />
 		<Unit filename="world\include\Dice.hpp" />
 		<Unit filename="world\include\Equipment.hpp" />
 		<Unit filename="world\include\EquipmentTypes.hpp" />
@@ -688,12 +692,14 @@
 		<Unit filename="world\source\Amulet.cpp" />
 		<Unit filename="world\source\Armour.cpp" />
 		<Unit filename="world\source\Book.cpp" />
+		<Unit filename="world\source\Calendar.cpp" />
 		<Unit filename="world\source\Class.cpp" />
 		<Unit filename="world\source\Consumable.cpp" />
 		<Unit filename="world\source\Creature.cpp" />
 		<Unit filename="world\source\CreatureFeatures.cpp" />
 		<Unit filename="world\source\CreatureGenerationValues.cpp" />
 		<Unit filename="world\source\Damage.cpp" />
+		<Unit filename="world\source\Date.cpp" />
 		<Unit filename="world\source\Dice.cpp" />
 		<Unit filename="world\source\Equipment.cpp" />
 		<Unit filename="world\source\Food.cpp" />

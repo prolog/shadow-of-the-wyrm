@@ -13,12 +13,12 @@ class MapTranslator
 {
   public:
     static DisplayMap create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const bool centre_on_player = true);
+    static DisplayTile create_display_tile(const TilePtr& engine_tile, const TilePtr& fov_tile);
 
   protected:
     MapTranslator();
     ~MapTranslator();
 
-    static DisplayTile create_display_tile(const TilePtr& engine_tile, const TilePtr& fov_tile);
     static DisplayTile create_display_tile_from_creature(const CreaturePtr& creature);
     static DisplayTile create_display_tile_from_feature(const FeaturePtr& feature);
     static DisplayTile create_display_tile_from_item(const ItemPtr& item);

@@ -13,6 +13,7 @@ CommandKeys::~CommandKeys()
 // Initialize the command keys
 const string CommandKeys::QUIT           = "QUIT";
 const string CommandKeys::VERSION        = "VERSION";
+const string CommandKeys::GAME_DATE_TIME = "GAME_DATE_TIME";
 const string CommandKeys::MOVE_NORTHWEST = "MOVE_NORTHWEST";
 const string CommandKeys::MOVE_NORTH     = "MOVE_NORTH";
 const string CommandKeys::MOVE_NORTHEAST = "MOVE_NORTHEAST";

@@ -7,6 +7,7 @@ class CommandKeys
   public:
     static const std::string QUIT;
     static const std::string VERSION;
+    static const std::string GAME_DATE_TIME;
     static const std::string MOVE_NORTHWEST;
     static const std::string MOVE_NORTH;
     static const std::string MOVE_NORTHEAST;
