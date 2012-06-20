@@ -276,6 +276,36 @@ string Uuid::to_string(const boost::uuids::uuid& convert)
   return converted_uuid;
 }
 
+double ActionCostConverter::to_seconds(const ActionCostValue action_cost_value, const MapType map_type)
+{
+  double seconds = 0.0d;
+  
+  if (map_type == MAP_TYPE_WORLD)
+  {
+    seconds = ActionCostConverter::to_seconds_on_world_map(action_cost_value);
+  }
+  else
+  {
+    seconds = ActionCostConverter::to_seconds_on_submap(action_cost_value);
+  }
+  
+  return seconds;
+}
+
+// Each action on the world map takes the action cost in minutes.  So moving at a base speed
+// of 50 would take 50 minutes.
+double ActionCostConverter::to_seconds_on_world_map(const ActionCostValue action_cost_value)
+{
+  return (action_cost_value * 60);
+}
+
+// Each action on a submap takes half the amount of action cost in seconds.  So moving at a base,
+// default speed of 50ish would take about 25 seconds.
+double ActionCostConverter::to_seconds_on_submap(const ActionCostValue action_cost_value)
+{
+  return (action_cost_value / 2);
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Conversion_test.cpp"
 #endif

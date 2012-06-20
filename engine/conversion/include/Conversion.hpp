@@ -2,9 +2,11 @@
 #include <map>
 #include <sstream>
 #include <string>
+#include "ActionCost.hpp"
 #include "common.hpp"
 #include "Directions.hpp"
 #include "EquipmentTypes.hpp"
+#include "MapTypes.hpp"
 
 // Forward declarations
 namespace boost
@@ -113,3 +115,13 @@ class Uuid
     ~Uuid();
 };
 
+class ActionCostConverter
+{
+  public:
+    static double to_seconds(const ActionCostValue action_cost_value, const MapType map_type);
+    static double to_seconds_on_world_map(const ActionCostValue action_cost_value);
+    static double to_seconds_on_submap(const ActionCostValue action_cost_value);
+  protected:
+    ActionCostConverter();
+    ~ActionCostConverter();
+};

@@ -215,11 +215,13 @@ void Game::go()
     
     ActionCoordinator ac;
     ac.set(map_creatures);
-    
+
+    Calendar& calendar = worlds[current_world_ix]->get_calendar();
     
     while (ac.has_actions())
     {
       CreaturePtr current_creature;
+      ActionCost next_action_cost = ac.get_next_action_cost();
       string creature_id = ac.get_next_creature_id_and_update_actions();      
       map<string, CreaturePtr>::iterator c_it = map_creatures.find(creature_id);
 
@@ -236,6 +238,9 @@ void Game::go()
         {
           break;
         }
+        
+        // Update the calendar based on how much time elapsed to this creature's action
+        calendar.add_seconds(ActionCostConverter::to_seconds(next_action_cost.get_cost(), current_map->get_map_type()));
         
         ActionCost action_cost = process_action_for_creature(current_creature, current_map);
         ac.add(action_cost, current_creature->get_id());
