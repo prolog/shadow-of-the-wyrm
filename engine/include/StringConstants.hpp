@@ -3,6 +3,7 @@
 #include <string>
 #include "CreatureFeatures.hpp"
 #include "DamageTypes.hpp"
+#include "Date.hpp"
 #include "EquipmentTypes.hpp"
 #include "tiles.hpp"
 
@@ -145,6 +146,19 @@ class MaterialTextKeys
   protected:
     MaterialTextKeys();
     ~MaterialTextKeys();
+};
+
+class DateTextKeys
+{
+  public:
+    static std::string get_date_time_message(const Date& date);
+    static std::string get_time(const Date& date);
+    
+  protected:
+    static const std::string DATE_TIME_MESSAGE;
+    
+    DateTextKeys();
+    ~DateTextKeys();
 };
 
 class EntranceTextKeys

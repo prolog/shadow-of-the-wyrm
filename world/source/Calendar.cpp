@@ -24,9 +24,9 @@ Date Calendar::get_date() const
   uint min = (usec / 60) % 60;
   uint hr  = ((usec / 60) / 60) % 24;
   uint total_days_elapsed = (usec / 86400);
-  uint day_week = (total_days_elapsed % 7) + 1 /* Week starts at day 1 */;
+  uint day_week = (total_days_elapsed % 7) + 1;
   uint day_month = (total_days_elapsed % 30) + 1 /* Days of month start at 1, too */;
-  uint month = ((total_days_elapsed / 30) % 12) + 1; /* Month, too.  There will be a map provided to look up the name, based on the value. */
+  uint month = ((total_days_elapsed / 30) % 12) + 1;
   uint year = STARTING_YEAR + (total_days_elapsed / 365);
 
   Date calculated_date(sec, min, hr, day_week, day_month, month, year);
