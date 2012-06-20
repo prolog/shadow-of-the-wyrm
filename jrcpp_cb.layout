@@ -271,7 +271,7 @@
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
 	</File>
-	<File name="engine\actions\source\DateTimeManager.cpp" open="1" top="0" tabpos="9">
+	<File name="engine\actions\source\DateTimeManager.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="916" topLine="14" />
 	</File>
 	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="9">
@@ -1024,7 +1024,7 @@
 	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="4">
 		<Cursor position="6687" topLine="157" />
 	</File>
-	<File name="engine\source\StringTable.cpp" open="1" top="0" tabpos="10">
+	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
 	</File>
 	<File name="engine\source\unit_tests\CreatureFactory_test.cpp" open="0" top="0" tabpos="0">
@@ -1336,8 +1336,8 @@
 	<File name="world\source\Book.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="100" topLine="0" />
 	</File>
-	<File name="world\source\Calendar.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="807" topLine="11" />
+	<File name="world\source\Calendar.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="797" topLine="11" />
 	</File>
 	<File name="world\source\Class.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="3342" topLine="144" />

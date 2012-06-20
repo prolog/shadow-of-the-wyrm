@@ -18,7 +18,7 @@ class NCursesDisplay : public Display
     void clear_messages();
     void clear_display();
 
-    void add_message(const std::string& message);
+    void add_message(const std::string& message, const bool reset_prompt);
     void add_message(const std::string& message, const Colour colour, const bool reset_prompt);
     
     void halt_messages();
@@ -27,9 +27,7 @@ class NCursesDisplay : public Display
 
 	  void display(const DisplayStatistics& player_stats);
 	  
-	  // JCD FIXME: Add stuff to the function arguments and return value later.
-	  virtual void display_equipment(const DisplayEquipmentMap& equipment);
-	  
+	  virtual void display_equipment(const DisplayEquipmentMap& equipment);	  
 	  virtual int display_inventory(const DisplayInventoryMap& inventory);
 	  
     MapDisplayArea get_map_display_area();
