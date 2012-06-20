@@ -223,9 +223,9 @@ void NCursesDisplay::clear_display()
   the user.  If it's very long, "..." it.
 
  *****************************************************************/
-void NCursesDisplay::add_message(const string& message)
+void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
 {
-  add_message(message, COLOUR_WHITE, true);
+  add_message(message, COLOUR_WHITE, reset_cursor);
 }
 
 void NCursesDisplay::add_message(const string& message, const Colour colour, const bool reset_cursor)
@@ -429,7 +429,7 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
 // Show confirmation text - use the message buffer.
 void NCursesDisplay::confirm(const string& confirmation_message)
 {
-  add_message(confirmation_message);
+  add_message(confirmation_message, COLOUR_WHITE, false);
 }
 
 void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponent* tc)
