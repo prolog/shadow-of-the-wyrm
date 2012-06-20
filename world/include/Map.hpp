@@ -6,21 +6,11 @@
 #include "Dimensions.hpp"
 #include "Tile.hpp"
 #include "MapExit.hpp"
+#include "MapTypes.hpp"
 
 // Forward declarations.
 class Creature;
 class Tile;
-
-enum MapType
-{
-  MAP_TYPE_WORLD = 0
-, MAP_TYPE_OVERWORLD = 1
-, MAP_TYPE_UNDERWORLD = 2
-};
-
-// JCD FIXME: Before delving too deep into things, it might be nice to  make this pair<int,int,int>
-// to represent a truly three dimensional map.  Maybe for v0.2.0?
-typedef std::map<std::string, Coordinate> NamedMapLocations;
 
 class Map
 {

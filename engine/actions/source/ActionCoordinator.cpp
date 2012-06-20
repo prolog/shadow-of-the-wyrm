@@ -61,6 +61,20 @@ string ActionCoordinator::get_next_creature_id() const
   return next_creature_id;
 }
 
+// Get the cost of the next action - used to determine how much
+// to increment the world's calendar by, among other things.
+ActionCost ActionCoordinator::get_next_action_cost() const
+{
+  ActionCost next_action_cost;
+  
+  if (!creature_action_order.empty())
+  {
+    next_action_cost = creature_action_order.begin()->first;
+  }
+  
+  return next_action_cost;
+}
+
 // Return the creature ID of the next creature to act,
 // and then remove the first item from the map via update()
 string ActionCoordinator::get_next_creature_id_and_update_actions()

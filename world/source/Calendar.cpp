@@ -9,7 +9,7 @@ Calendar::Calendar()
 void Calendar::add_days(const uint days)
 {
   double ddays = static_cast<double>(days);
-  add_seconds(ddays * 8600);
+  add_seconds(ddays * 86400);
 }
 void Calendar::add_seconds(const double additional_seconds)
 {
