@@ -1199,7 +1199,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1339110949 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1340197107 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1956,15 +1956,17 @@
 	<boost/foreach.hpp>
 	"ActionCoordinator.hpp"
 
-1340025359 source:c:\cygwin\home\julian\jrcpp\world\source\calendar.cpp
+1340196685 source:c:\cygwin\home\julian\jrcpp\world\source\calendar.cpp
 	"Calendar.hpp"
 	"Date.hpp"
 
-1340022749 source:c:\cygwin\home\julian\jrcpp\world\source\date.cpp
+1340196824 source:c:\cygwin\home\julian\jrcpp\world\source\date.cpp
 	"Date.hpp"
 
-1340109660 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\datetimemanager.cpp
+1340197297 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\datetimemanager.cpp
+	"Date.hpp"
 	"DateTimeManager.hpp"
+	"Game.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
 
