@@ -444,7 +444,7 @@
 	"Conversion.hpp"
 	"StringConstants.hpp"
 
-1340109092 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1340413274 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -1056,7 +1056,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1340234830 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1340456503 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1075,6 +1075,7 @@
 	"DisplayStatistics.hpp"
 	"MessageManager.hpp"
 	"ViewMapTranslator.hpp"
+	"WorldTimeKeeperCoordinator.hpp"
 
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\inventorymanager.cpp
 	<boost/foreach.hpp>
@@ -1373,7 +1374,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1339858525 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1340455891 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	<limits>
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
@@ -1969,4 +1970,30 @@
 	"Game.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
+
+1340457231 source:c:\cygwin\home\julian\jrcpp\engine\time\source\itimeobserver.cpp
+	<boost/uuid/uuid_generators.hpp>
+	<boost/uuid/uuid_io.hpp>
+	"Conversion.hpp"
+	"ITimeObserver.hpp"
+
+1340456918 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeeper.cpp
+	"WorldTimeKeeper.hpp"
+
+1340457246 source:c:\cygwin\home\julian\jrcpp\engine\time\source\hpregenerationtimeobserver.cpp
+	"HPRegenerationTimeObserver.hpp"
+	"Game.hpp"
+	"RegenerationConstants.hpp"
+
+1340454163 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\hpregenerationcalculator.cpp
+	"HPRegenerationCalculator.hpp"
+
+1340454385 source:c:\cygwin\home\julian\jrcpp\engine\time\source\regenerationconstants.cpp
+	"RegenerationConstants.hpp"
+
+1340456221 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
+	<boost/make_shared.hpp>
+	"HPRegenerationTimeObserver.hpp"
+	"WorldTimeKeeperCoordinator.hpp"
+	"WorldTimeKeeper.hpp"
 

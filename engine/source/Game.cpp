@@ -16,6 +16,7 @@
 #include "DisplayStatistics.hpp"
 #include "MessageManager.hpp"
 #include "ViewMapTranslator.hpp"
+#include "WorldTimeKeeperCoordinator.hpp"
 
 using namespace std;
 using boost::make_shared;
@@ -195,6 +196,9 @@ void Game::go()
 {
   game_command_factory = make_shared<CommandFactory>();
   game_kb_command_map = make_shared<KeyboardCommandMap>();
+
+  WorldTimeKeeperCoordinator time_coordinator;
+  time_coordinator.setup_time_keeper(time_keeper);
   
   CreaturePtr current_player = get_current_player();
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
@@ -240,7 +244,9 @@ void Game::go()
         }
         
         // Update the calendar based on how much time elapsed to this creature's action
-        calendar.add_seconds(ActionCostConverter::to_seconds(next_action_cost.get_cost(), current_map->get_map_type()));
+        double seconds = ActionCostConverter::to_seconds(next_action_cost.get_cost(), current_map->get_map_type());
+        calendar.add_seconds(seconds);
+        time_keeper.tick(seconds);
         
         ActionCost action_cost = process_action_for_creature(current_creature, current_map);
         ac.add(action_cost, current_creature->get_id());

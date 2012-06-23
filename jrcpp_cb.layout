@@ -223,7 +223,7 @@
 	<File name="engine\XML\source\XMLWearableReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="603" topLine="1" />
 	</File>
-	<File name="engine\actions\include\ActionCoordinator.hpp" open="1" top="0" tabpos="6">
+	<File name="engine\actions\include\ActionCoordinator.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="321" topLine="0" />
 	</File>
 	<File name="engine\actions\include\ActionCost.hpp" open="0" top="0" tabpos="6">
@@ -259,10 +259,10 @@
 	<File name="engine\actions\include\VersionActionManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="226" topLine="0" />
 	</File>
-	<File name="engine\actions\source\ActionCoordinator.cpp" open="1" top="0" tabpos="7">
+	<File name="engine\actions\source\ActionCoordinator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="1928" topLine="52" />
 	</File>
-	<File name="engine\actions\source\ActionCost.cpp" open="1" top="0" tabpos="11">
+	<File name="engine\actions\source\ActionCost.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="887" topLine="35" />
 	</File>
 	<File name="engine\actions\source\ActionManager.cpp" open="0" top="0" tabpos="12">
@@ -536,7 +536,7 @@
 		<Cursor position="528" topLine="12" />
 	</File>
 	<File name="engine\commands\source\KeyboardCommandMap.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="20" topLine="0" />
+		<Cursor position="1570" topLine="47" />
 	</File>
 	<File name="engine\conversion\include\CharacterDumper.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="280" topLine="0" />
@@ -565,8 +565,8 @@
 	<File name="engine\conversion\source\CharacterDumper.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="221" topLine="0" />
 	</File>
-	<File name="engine\conversion\source\Conversion.cpp" open="1" top="0" tabpos="12">
-		<Cursor position="5899" topLine="269" />
+	<File name="engine\conversion\source\Conversion.cpp" open="0" top="0" tabpos="12">
+		<Cursor position="5548" topLine="269" />
 	</File>
 	<File name="engine\conversion\source\EquipmentDumper.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="567" topLine="16" />
@@ -968,7 +968,7 @@
 		<Cursor position="207" topLine="0" />
 	</File>
 	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="7142" topLine="168" />
+		<Cursor position="10231" topLine="275" />
 	</File>
 	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="2443" topLine="55" />
@@ -979,7 +979,7 @@
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="443" topLine="4" />
 	</File>
-	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="5">
+	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="5805" topLine="231" />
 	</File>
 	<File name="engine\source\ItemFactory.cpp" open="0" top="0" tabpos="1">
@@ -1041,6 +1041,15 @@
 	</File>
 	<File name="engine\source\unit_tests\Messages_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="324" topLine="12" />
+	</File>
+	<File name="engine\time\include\ITimeObserver.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="555" topLine="0" />
+	</File>
+	<File name="engine\time\source\ITimeObserver.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="458" topLine="0" />
+	</File>
+	<File name="engine\time\source\WorldTimeKeeper.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="443" topLine="12" />
 	</File>
 	<File name="engine\translators\include\CreatureTranslator.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="0" topLine="0" />
@@ -1117,7 +1126,7 @@
 	<File name="world\include\Book.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\include\Calendar.hpp" open="1" top="0" tabpos="2">
+	<File name="world\include\Calendar.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="97" topLine="0" />
 	</File>
 	<File name="world\include\Class.hpp" open="0" top="0" tabpos="5">
@@ -1162,13 +1171,13 @@
 	<File name="world\include\ItemTypes.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="753" topLine="34" />
 	</File>
-	<File name="world\include\Map.hpp" open="1" top="0" tabpos="3">
+	<File name="world\include\Map.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="63" topLine="0" />
 	</File>
 	<File name="world\include\MapExit.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="514" topLine="2" />
 	</File>
-	<File name="world\include\MapTypes.hpp" open="1" top="0" tabpos="4">
+	<File name="world\include\MapTypes.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="35" topLine="0" />
 	</File>
 	<File name="world\include\MiscItem.hpp" open="0" top="0" tabpos="12">
@@ -1222,7 +1231,7 @@
 	<File name="world\include\Weight.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="341" topLine="0" />
 	</File>
-	<File name="world\include\World.hpp" open="1" top="0" tabpos="8">
+	<File name="world\include\World.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="68" topLine="0" />
 	</File>
 	<File name="world\materials\include\Cloth.hpp" open="0" top="0" tabpos="0">
@@ -1339,7 +1348,7 @@
 	<File name="world\source\Book.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="100" topLine="0" />
 	</File>
-	<File name="world\source\Calendar.cpp" open="1" top="0" tabpos="1">
+	<File name="world\source\Calendar.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="285" topLine="0" />
 	</File>
 	<File name="world\source\Class.cpp" open="0" top="0" tabpos="7">
@@ -1378,7 +1387,7 @@
 	<File name="world\source\ItemTypes.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\source\Map.cpp" open="1" top="0" tabpos="10">
+	<File name="world\source\Map.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="3346" topLine="137" />
 	</File>
 	<File name="world\source\MapExit.cpp" open="0" top="0" tabpos="37">
