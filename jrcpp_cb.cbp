@@ -632,6 +632,7 @@
 		<Unit filename="world\include\ItemTypes.hpp" />
 		<Unit filename="world\include\Map.hpp" />
 		<Unit filename="world\include\MapExit.hpp" />
+		<Unit filename="world\include\MapTypes.hpp" />
 		<Unit filename="world\include\MiscItem.hpp" />
 		<Unit filename="world\include\Plant.hpp" />
 		<Unit filename="world\include\Potion.hpp" />

@@ -78,7 +78,16 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string(KEY_DOWN), CommandKeys::MOVE_SOUTH));
   command_mapping.insert(make_pair(Integer::to_string(KEY_RIGHT), CommandKeys::MOVE_EAST));
   command_mapping.insert(make_pair(Integer::to_string(KEY_LEFT), CommandKeys::MOVE_WEST));
-  // End of NCurses-specific movement keys
+  // vi movement keys
+  command_mapping.insert(make_pair(Integer::to_string('b'), CommandKeys::MOVE_SOUTHWEST));
+  command_mapping.insert(make_pair(Integer::to_string('j'), CommandKeys::MOVE_SOUTH));
+  command_mapping.insert(make_pair(Integer::to_string('n'), CommandKeys::MOVE_SOUTHEAST));
+  command_mapping.insert(make_pair(Integer::to_string('h'), CommandKeys::MOVE_WEST));
+  command_mapping.insert(make_pair(Integer::to_string('l'), CommandKeys::MOVE_EAST));
+  command_mapping.insert(make_pair(Integer::to_string('y'), CommandKeys::MOVE_NORTHWEST));
+  command_mapping.insert(make_pair(Integer::to_string('k'), CommandKeys::MOVE_NORTH));
+  command_mapping.insert(make_pair(Integer::to_string('u'), CommandKeys::MOVE_NORTHEAST));
+  
   command_mapping.insert(make_pair(Integer::to_string('<'), CommandKeys::MOVE_UP));
   command_mapping.insert(make_pair(Integer::to_string('>'), CommandKeys::MOVE_DOWN));
   command_mapping.insert(make_pair(Integer::to_string(','), CommandKeys::PICK_UP_ITEM));
