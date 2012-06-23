@@ -131,6 +131,8 @@ class Creature
     int increment_hit_points(int amount);
     int decrement_hit_points(int amount);
     Statistic get_hit_points() const;
+    bool is_hp_full() const;
+    bool is_ap_full() const;
 
     void set_arcana_points(const Statistic& new_arcana_points);
     void increment_arcana_points(int amount);

@@ -586,6 +586,10 @@
 		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="engine\time\include\ITimeObserver.hpp" />
+		<Unit filename="engine\time\include\WorldTimeKeeper.hpp" />
+		<Unit filename="engine\time\source\ITimeObserver.cpp" />
+		<Unit filename="engine\time\source\WorldTimeKeeper.cpp" />
 		<Unit filename="engine\translators\include\CreatureTranslator.hpp" />
 		<Unit filename="engine\translators\include\DisplayItemTypeFactory.hpp" />
 		<Unit filename="engine\translators\include\EquipmentTranslator.hpp" />

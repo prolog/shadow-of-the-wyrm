@@ -357,6 +357,16 @@ Statistic Creature::get_hit_points() const
   return hit_points;
 }
 
+bool Creature::is_hp_full() const
+{
+  return (hit_points.get_base() <= hit_points.get_current());
+}
+
+bool Creature::is_ap_full() const
+{
+  return (arcana_points.get_base() <= arcana_points.get_current());
+}
+
 void Creature::set_arcana_points(const Statistic& new_arcana_points)
 {
   arcana_points = new_arcana_points;

@@ -11,6 +11,7 @@
 #include "MapRegistry.hpp"
 #include "Race.hpp"
 #include "World.hpp"
+#include "WorldTimeKeeper.hpp"
 
 class Game
 {
@@ -113,6 +114,9 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     // The action manager
     ActionManager actions;
+    
+    // The time keeper, used to handle notifications for HP regeneration, status effects wearing off, etc.
+    WorldTimeKeeper time_keeper;
     
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;
