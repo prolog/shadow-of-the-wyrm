@@ -532,6 +532,19 @@ class FeatureDescriptionTextKeys
     FeatureDescriptionTextKeys();
 };
 
+class PrayerTextKeys
+{
+  public:
+    static std::string get_prayer_message(const std::string& deity_sid);
+    
+    static const std::string PRAYER_INITIAL_MESSAGE;
+    static const std::string PRAYER_DO_NOTHING;
+    
+  protected:
+    PrayerTextKeys();
+    ~PrayerTextKeys();
+};
+
 // Contains player and non-player versions of all combat strings.
 class CombatTextKeys
 {

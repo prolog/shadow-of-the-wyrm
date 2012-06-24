@@ -196,7 +196,6 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
   creature.set_valour(valour);
   creature.set_spirit(spirit);
   creature.set_speed(speed);
-  creature.set_piety(0); // FIXME
   
   creature.set_hair_colour(get_random_hair_colour());
   creature.set_eye_colour(get_random_eye_colour());

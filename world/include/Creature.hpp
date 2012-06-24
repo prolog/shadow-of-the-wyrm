@@ -102,9 +102,6 @@ class Creature
     void set_spirit(const Statistic& new_spirit);
     Statistic get_spirit() const;
 
-    void set_piety(const Statistic& new_piety);
-    Statistic get_piety() const;
-
     void set_speed(const Statistic& new_speed);
     Statistic get_speed() const;
 
@@ -215,10 +212,6 @@ class Creature
     Statistic spirit;
     Statistic speed;
 
-    // Not shown directly to the user - this is a hidden statistic that ranks the creature's standing with
-    // his or her deity.
-    Statistic piety;
-    
     // The creature's base damage.  Defaults to 1d2 of DAMAGE_TYPE_POUND.
     Damage damage;
     

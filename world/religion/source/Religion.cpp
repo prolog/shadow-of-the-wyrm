@@ -40,3 +40,21 @@ DeityRelations& Religion::get_deity_relations_ref()
 {
   return deity_relations;
 }
+
+void Religion::set_deity_status(const std::string& new_deity_id, const DeityStatus& new_deity_status)
+{
+  deity_relations[new_deity_id] = new_deity_status;
+}
+
+DeityStatus Religion::get_deity_status(const std::string& find_deity_id) const
+{
+  DeityStatus status;
+  DeityRelations::const_iterator d_it = deity_relations.find(find_deity_id);
+  
+  if (d_it != deity_relations.end())
+  {
+    status = d_it->second;
+  }
+  
+  return status;
+}

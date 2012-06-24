@@ -24,6 +24,9 @@ class Religion
     void set_deity_relations(const DeityRelations& new_deity_relations);
     DeityRelations get_deity_relations() const;
     DeityRelations& get_deity_relations_ref();
+    
+    void set_deity_status(const std::string& deity_id, const DeityStatus& new_deity_status);
+    DeityStatus get_deity_status(const std::string& deity_id) const;
 
   protected:
     std::string deity_id;

@@ -260,16 +260,6 @@ Statistic Creature::get_spirit() const
   return spirit;
 }
 
-void Creature::set_piety(const Statistic& new_piety)
-{
-  piety = new_piety;
-}
-
-Statistic Creature::get_piety() const
-{
-  return piety;
-}
-
 void Creature::set_speed(const Statistic& new_speed)
 {
   speed = new_speed;

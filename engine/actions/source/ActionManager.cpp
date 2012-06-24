@@ -10,6 +10,7 @@
 #include "InventoryManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
+#include "PrayerManager.hpp"
 #include "SearchActionManager.hpp"
 #include "VersionActionManager.hpp"
 #include "Log.hpp"
@@ -363,6 +364,8 @@ ActionCost ActionManager::pray(CreaturePtr creature)
   
   if (game && creature)
   {
+    PrayerManager prayer_manager;
+    action_cost_value = prayer_manager.pray(creature);
   }
 
   return get_action_cost(creature, action_cost_value);

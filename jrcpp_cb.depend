@@ -1005,7 +1005,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creationutils.cpp
 	"CreationUtils.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1340545004 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<cmath>
 	<boost/make_shared.hpp>
 	<boost/uuid/uuid_generators.hpp>
@@ -1177,7 +1177,7 @@
 	"RaceManager.hpp"
 	"Game.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\religionmanager.cpp
+1340546221 source:c:\cygwin\home\julian\jrcpp\engine\source\religionmanager.cpp
 	"ReligionManager.hpp"
 	"Game.hpp"
 
@@ -1200,7 +1200,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1340197107 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1340549856 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1340,10 +1340,11 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deity.cpp
 	"Deity.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deitystatus.cpp
+1340545561 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deitystatus.cpp
+	<limits>
 	"DeityStatus.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religion.cpp
+1340546900 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religion.cpp
 	"Religion.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religionfactory.cpp
@@ -1374,7 +1375,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1340455891 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1340544991 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	<limits>
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
@@ -1881,7 +1882,7 @@
 1339550763 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategy.cpp
 	"FieldOfViewStrategy.hpp"
 
-1340541721 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1340543090 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -1894,6 +1895,7 @@
 	"InventoryManager.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
+	"PrayerManager.hpp"
 	"SearchActionManager.hpp"
 	"VersionActionManager.hpp"
 	"Log.hpp"
@@ -1991,17 +1993,45 @@
 1340454385 source:c:\cygwin\home\julian\jrcpp\engine\time\source\regenerationconstants.cpp
 	"RegenerationConstants.hpp"
 
-1340456221 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
+1340542876 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
 	<boost/make_shared.hpp>
-	"HPRegenerationTimeObserver.hpp"
+	"CreatureTimeObserver.hpp"
 	"WorldTimeKeeperCoordinator.hpp"
 	"WorldTimeKeeper.hpp"
 
-1340541969 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\prayermanager.cpp
+1340551161 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\prayermanager.cpp
+	"DeityDecisionStrategyFactory.hpp"
+	"DeityDecisionStrategyHandlerFactory.hpp"
+	"MessageManager.hpp"
 	"PrayerManager.hpp"
+	"ReligionManager.hpp"
+	"StringConstants.hpp"
 
 1340542401 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
 	"CreatureTimeObserver.hpp"
 	"Game.hpp"
 	"RegenerationConstants.hpp"
+
+1340547451 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategy.cpp
+	"DeityDecisionStrategy.hpp"
+
+1340547670 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategyfactory.cpp
+	<boost/make_shared.hpp>
+	"DeityDecisionStrategyFactory.hpp"
+	"DeityDecisionStrategy.hpp"
+
+1340550007 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\donothingdeitydecisionstrategyhandler.cpp
+	"DoNothingDeityDecisionStrategyHandler.hpp"
+	"StringConstants.hpp"
+
+1340549070 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategyhandlerfactory.cpp
+	<boost/make_shared.hpp>
+	"DeityDecisionStrategyHandlerFactory.hpp"
+	"DoNothingDeityDecisionStrategyHandler.hpp"
+
+1340549614 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionimplications.cpp
+	"DeityDecisionImplications.hpp"
+
+1340549990 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\ideitydecisionstrategyhandler.cpp
+	"IDeityDecisionStrategyHandler.hpp"
 
