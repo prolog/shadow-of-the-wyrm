@@ -2,7 +2,7 @@
 #include "Creature.hpp"
 #include "IActionManager.hpp"
 
-class DecisionImplications;
+class DeityDecisionImplications;
 
 class PrayerManager : public IActionManager
 {
