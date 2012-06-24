@@ -110,6 +110,16 @@ SearchCommand::~SearchCommand()
 {
 }
 
+// Pray
+PrayCommand::PrayCommand()
+: Command(CommandKeys::PRAY)
+{
+}
+
+PrayCommand::~PrayCommand()
+{
+}
+
 // Pick up
 PickUpCommand::PickUpCommand()
 : Command(CommandKeys::PICK_UP_ITEM)

@@ -94,4 +94,5 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('d'), CommandKeys::DROP_ITEM));
   command_mapping.insert(make_pair(Integer::to_string('i'), CommandKeys::INVENTORY));
   command_mapping.insert(make_pair(Integer::to_string('@'), CommandKeys::CHAR_DUMP));
+  command_mapping.insert(make_pair(Integer::to_string('_'), CommandKeys::PRAY));
 }

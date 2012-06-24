@@ -36,6 +36,9 @@ class ActionManager
     // was selected.
     ItemPtr inventory(CreaturePtr creature, Inventory& inv, const bool inventory_is_read_only);
     
+    // Miscellaneous actions
+    ActionCost pray(CreaturePtr creature);
+    
     // Unlike pick up/drop, handle item has no checks.
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
     void wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);

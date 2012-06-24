@@ -93,6 +93,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.equipment(creature);
       }
+      else if (command_name == CommandKeys::PRAY)
+      {
+        ac = game->actions.pray(creature);
+      }
     }
   }
   

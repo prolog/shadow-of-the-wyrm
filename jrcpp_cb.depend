@@ -423,28 +423,28 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1340109192 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1340540723 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1340109148 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1340540617 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1340109302 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1340541318 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Commands.hpp"
 	"Game.hpp"
 
-1340109255 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1340540648 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"StringConstants.hpp"
 
-1340413274 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1340540696 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -1056,7 +1056,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1340456503 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1340539438 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1881,7 +1881,7 @@
 1339550763 source:c:\cygwin\home\julian\jrcpp\engine\field_of_view\source\fieldofviewstrategy.cpp
 	"FieldOfViewStrategy.hpp"
 
-1340109696 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1340541721 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -1996,4 +1996,7 @@
 	"HPRegenerationTimeObserver.hpp"
 	"WorldTimeKeeperCoordinator.hpp"
 	"WorldTimeKeeper.hpp"
+
+1340541969 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\prayermanager.cpp
+	"PrayerManager.hpp"
 

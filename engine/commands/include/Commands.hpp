@@ -67,6 +67,13 @@ class SearchCommand : public Command
     ~SearchCommand();
 };
 
+class PrayCommand : public Command
+{
+  public:
+    PrayCommand();
+    ~PrayCommand();
+};
+
 class AttackCommand : public DirectionalCommand
 {
   public:
