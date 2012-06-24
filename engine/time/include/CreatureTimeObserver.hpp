@@ -2,10 +2,10 @@
 #include "HPRegenerationCalculator.hpp"
 #include "ITimeObserver.hpp"
 
-class HPRegenerationTimeObserver : public ITimeObserver
+class CreatureTimeObserver : public ITimeObserver
 {
   public:
-    HPRegenerationTimeObserver();
+    CreatureTimeObserver();
     
     void notify(const ulonglong minutes_elapsed);
     

@@ -2000,3 +2000,8 @@
 1340541969 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\prayermanager.cpp
 	"PrayerManager.hpp"
 
+1340542401 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
+	"CreatureTimeObserver.hpp"
+	"Game.hpp"
+	"RegenerationConstants.hpp"
+
