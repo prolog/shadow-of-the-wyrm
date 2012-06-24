@@ -206,6 +206,7 @@
 		<Unit filename="engine\actions\include\InventoryManager.hpp" />
 		<Unit filename="engine\actions\include\ItemManager.hpp" />
 		<Unit filename="engine\actions\include\MovementManager.hpp" />
+		<Unit filename="engine\actions\include\PrayerManager.hpp" />
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
 		<Unit filename="engine\actions\include\VersionActionManager.hpp" />
 		<Unit filename="engine\actions\source\ActionCoordinator.cpp" />
@@ -217,6 +218,7 @@
 		<Unit filename="engine\actions\source\InventoryManager.cpp" />
 		<Unit filename="engine\actions\source\ItemManager.cpp" />
 		<Unit filename="engine\actions\source\MovementManager.cpp" />
+		<Unit filename="engine\actions\source\PrayerManager.cpp" />
 		<Unit filename="engine\actions\source\SearchActionManager.cpp" />
 		<Unit filename="engine\actions\source\VersionActionManager.cpp" />
 		<Unit filename="engine\calculators\include\ArcanaPointsCalculator.hpp" />
@@ -359,6 +361,20 @@
 		<Unit filename="engine\conversion\source\unit_tests\Conversion_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
+		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionStrategyFactory.hpp" />
+		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionStrategyHandlerFactory.hpp" />
+		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionTypes.hpp" />
+		<Unit filename="engine\decision_strategies\deity\include\DoNothingDeityDecisionStrategyHandler.hpp" />
+		<Unit filename="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\deity\include\IDeityDecisionStrategyHandler.hpp" />
+		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionImplications.cpp" />
+		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionStrategy.cpp" />
+		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionStrategyFactory.cpp" />
+		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionStrategyHandlerFactory.cpp" />
+		<Unit filename="engine\decision_strategies\deity\source\DoNothingDeityDecisionStrategyHandler.cpp" />
+		<Unit filename="engine\decision_strategies\deity\source\IDeityDecisionStrategyHandler.cpp" />
 		<Unit filename="engine\decision_strategies\include\DecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\DecisionStrategyFactory.hpp" />
 		<Unit filename="engine\decision_strategies\include\DecisionStrategyTypes.hpp" />
@@ -588,12 +604,12 @@
 		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
-		<Unit filename="engine\time\include\HPRegenerationTimeObserver.hpp" />
+		<Unit filename="engine\time\include\CreatureTimeObserver.hpp" />
 		<Unit filename="engine\time\include\ITimeObserver.hpp" />
 		<Unit filename="engine\time\include\RegenerationConstants.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeper.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
-		<Unit filename="engine\time\source\HPRegenerationTimeObserver.cpp" />
+		<Unit filename="engine\time\source\CreatureTimeObserver.cpp" />
 		<Unit filename="engine\time\source\ITimeObserver.cpp" />
 		<Unit filename="engine\time\source\RegenerationConstants.cpp" />
 		<Unit filename="engine\time\source\WorldTimeKeeper.cpp" />
