@@ -2,6 +2,8 @@
 #include "Creature.hpp"
 #include "IActionManager.hpp"
 
+class DecisionImplications;
+
 class PrayerManager : public IActionManager
 {
   public:
@@ -10,6 +12,9 @@ class PrayerManager : public IActionManager
   protected:
     friend class ActionManager;
     PrayerManager();
+    
+    void say_prayer(CreaturePtr creature);
+    void finish_prayer(CreaturePtr creature, const DeityDecisionImplications& implications);
 
     ActionCostValue get_action_cost_value() const;
 };

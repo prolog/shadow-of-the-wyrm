@@ -925,6 +925,26 @@ const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE 
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SORCEROR_STATUE    = "FEATURE_DESCRIPTION_SORCEROR_STATUE";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BENCH              = "FEATURE_DESCRIPTION_BENCH";
 
+// Strings for Prayer
+PrayerTextKeys::PrayerTextKeys()
+{
+}
+
+PrayerTextKeys::~PrayerTextKeys()
+{
+}
+
+string PrayerTextKeys::get_prayer_message(const string& deity_sid)
+{
+  string prayer_message = StringTable::get(PrayerTextKeys::PRAYER_INITIAL_MESSAGE);
+  boost::replace_first(prayer_message, "%s", StringTable::get(deity_sid));
+  
+  return prayer_message;
+}
+
+const string PrayerTextKeys::PRAYER_INITIAL_MESSAGE = "PRAYER_INITIAL_MESSAGE";
+const string PrayerTextKeys::PRAYER_DO_NOTHING = "PRAYER_DO_NOTHING";
+
 // Strings for Combat
 CombatTextKeys::CombatTextKeys()
 {
