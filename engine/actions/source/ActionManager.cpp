@@ -340,7 +340,7 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const boo
 // Wear/unwear equipment
 ActionCost ActionManager::equipment(CreaturePtr creature)
 {
-  ActionCostValue action_cost_value;
+  ActionCostValue action_cost_value = 0;
   
   Game* game = Game::instance();
   
@@ -350,6 +350,19 @@ ActionCost ActionManager::equipment(CreaturePtr creature)
     
     EquipmentManager equipment_manager(game_display, creature);
     action_cost_value = equipment_manager.manage_equipment();
+  }
+
+  return get_action_cost(creature, action_cost_value);
+}
+
+ActionCost ActionManager::pray(CreaturePtr creature)
+{
+  ActionCostValue action_cost_value = 0;
+  
+  Game* game = Game::instance();
+  
+  if (game && creature)
+  {
   }
 
   return get_action_cost(creature, action_cost_value);

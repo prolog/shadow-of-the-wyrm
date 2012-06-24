@@ -29,6 +29,7 @@ const string CommandKeys::PICK_UP_ITEM   = "PICK_UP_ITEM";
 const string CommandKeys::DROP_ITEM      = "DROP_ITEM";
 const string CommandKeys::CHAR_DUMP      = "CHAR_DUMP";
 const string CommandKeys::INVENTORY      = "INVENTORY";
+const string CommandKeys::PRAY           = "PRAY";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

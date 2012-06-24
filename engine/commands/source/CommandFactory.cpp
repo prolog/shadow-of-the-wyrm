@@ -88,6 +88,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = CommandPtr(new InventoryCommand());
   }
+  else if (command_name == CommandKeys::PRAY)
+  {
+    command = CommandPtr(new PrayCommand());
+  }
 
   return command;
 }
