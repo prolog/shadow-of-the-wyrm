@@ -243,11 +243,8 @@ void Game::go()
           break;
         }
         
-        // Update the calendar based on how much time elapsed to this creature's action
-        double seconds = ActionCostConverter::to_seconds(next_action_cost.get_cost(), current_map->get_map_type());
-        calendar.add_seconds(seconds);
-        time_keeper.tick(seconds);
-        
+        process_elapsed_time(calendar, next_action_cost);
+                
         ActionCost action_cost = process_action_for_creature(current_creature, current_map);
         ac.add(action_cost, current_creature->get_id());
         
@@ -259,6 +256,14 @@ void Game::go()
       }
     }
   }
+}
+
+// Update the calendar based on how much time elapsed to this creature's action
+void Game::process_elapsed_time(Calendar& calendar, const ActionCost& next_action_cost)
+{
+  double seconds = ActionCostConverter::to_seconds(next_action_cost.get_cost(), get_current_map()->get_map_type());
+  calendar.add_seconds(seconds);
+  time_keeper.tick(seconds);
 }
 
 // Get and process the action for the current creature

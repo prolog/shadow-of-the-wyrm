@@ -84,6 +84,9 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     // Set the map to be used as the current for the game's computational purposes.
     void set_current_map(MapPtr map);
     
+    // Process the elapsed time: update the calendar, and notify any time observers.
+    void process_elapsed_time(Calendar& calendar, const ActionCost& next_action_cost);
+    
     bool keep_playing;
     bool reload_game_loop;
     static Game* game_instance;
