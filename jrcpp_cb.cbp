@@ -226,6 +226,7 @@
 		<Unit filename="engine\calculators\include\DamageCalculator.hpp" />
 		<Unit filename="engine\calculators\include\DamageCalculatorFactory.hpp" />
 		<Unit filename="engine\calculators\include\EvadeCalculator.hpp" />
+		<Unit filename="engine\calculators\include\HPRegenerationCalculator.hpp" />
 		<Unit filename="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\HitPointsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
@@ -245,6 +246,7 @@
 		<Unit filename="engine\calculators\source\CreatureCalculator.cpp" />
 		<Unit filename="engine\calculators\source\DamageCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\EvadeCalculator.cpp" />
+		<Unit filename="engine\calculators\source\HPRegenerationCalculator.cpp" />
 		<Unit filename="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
 		<Unit filename="engine\calculators\source\HitPointsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp" />
@@ -586,10 +588,16 @@
 		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="engine\time\include\HPRegenerationTimeObserver.hpp" />
 		<Unit filename="engine\time\include\ITimeObserver.hpp" />
+		<Unit filename="engine\time\include\RegenerationConstants.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeper.hpp" />
+		<Unit filename="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
+		<Unit filename="engine\time\source\HPRegenerationTimeObserver.cpp" />
 		<Unit filename="engine\time\source\ITimeObserver.cpp" />
+		<Unit filename="engine\time\source\RegenerationConstants.cpp" />
 		<Unit filename="engine\time\source\WorldTimeKeeper.cpp" />
+		<Unit filename="engine\time\source\WorldTimeKeeperCoordinator.cpp" />
 		<Unit filename="engine\translators\include\CreatureTranslator.hpp" />
 		<Unit filename="engine\translators\include\DisplayItemTypeFactory.hpp" />
 		<Unit filename="engine\translators\include\EquipmentTranslator.hpp" />
