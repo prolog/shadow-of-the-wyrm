@@ -1,20 +1,21 @@
-#include "HPRegenerationTimeObserver.hpp"
+#include "CreatureTimeObserver.hpp"
 #include "Game.hpp"
 #include "RegenerationConstants.hpp"
 
 using namespace std;
 
-HPRegenerationTimeObserver::HPRegenerationTimeObserver()
+CreatureTimeObserver::CreatureTimeObserver()
 : ITimeObserver()
 {
 }
 
-void HPRegenerationTimeObserver::notify(const ulonglong additional_minutes_elapsed)
+void CreatureTimeObserver::notify(const ulonglong additional_minutes_elapsed)
 {
   update_minutes_elapsed(additional_minutes_elapsed);
 
   Game* game = Game::instance();
 
+  // JCD FIXME: Move this to separate classes for HP, MP, etc.
   if (game)
   {
     // Get the list of creatures.
