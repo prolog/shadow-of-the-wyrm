@@ -539,6 +539,7 @@ class PrayerTextKeys
     
     static const std::string PRAYER_INITIAL_MESSAGE;
     static const std::string PRAYER_DO_NOTHING;
+    static const std::string PRAYER_FULL_HP;
     
   protected:
     PrayerTextKeys();
