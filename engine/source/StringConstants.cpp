@@ -943,7 +943,8 @@ string PrayerTextKeys::get_prayer_message(const string& deity_sid)
 }
 
 const string PrayerTextKeys::PRAYER_INITIAL_MESSAGE = "PRAYER_INITIAL_MESSAGE";
-const string PrayerTextKeys::PRAYER_DO_NOTHING = "PRAYER_DO_NOTHING";
+const string PrayerTextKeys::PRAYER_DO_NOTHING      = "PRAYER_DO_NOTHING";
+const string PrayerTextKeys::PRAYER_FULL_HP         = "PRAYER_FULL_HP";
 
 // Strings for Combat
 CombatTextKeys::CombatTextKeys()

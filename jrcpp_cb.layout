@@ -253,8 +253,8 @@
 	<File name="engine\actions\include\MovementManager.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="1217" topLine="10" />
 	</File>
-	<File name="engine\actions\include\PrayerManager.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="372" topLine="0" />
+	<File name="engine\actions\include\PrayerManager.hpp" open="1" top="1" tabpos="2">
+		<Cursor position="101" topLine="0" />
 	</File>
 	<File name="engine\actions\include\SearchActionManager.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="179" topLine="0" />
@@ -289,8 +289,8 @@
 	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="12297" topLine="365" />
 	</File>
-	<File name="engine\actions\source\PrayerManager.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2331" topLine="47" />
+	<File name="engine\actions\source\PrayerManager.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="2078" topLine="47" />
 	</File>
 	<File name="engine\actions\source\SearchActionManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="128" topLine="0" />

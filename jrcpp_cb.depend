@@ -1200,7 +1200,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1340549856 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1340628294 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2012,7 +2012,8 @@
 	"Game.hpp"
 	"RegenerationConstants.hpp"
 
-1340547451 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategy.cpp
+1340627896 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategy.cpp
+	"DeityDecisionConstants.hpp"
 	"DeityDecisionStrategy.hpp"
 
 1340547670 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategyfactory.cpp
@@ -2034,4 +2035,11 @@
 
 1340549990 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\ideitydecisionstrategyhandler.cpp
 	"IDeityDecisionStrategyHandler.hpp"
+
+1340627864 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionconstants.cpp
+	"DeityDecisionConstants.hpp"
+
+1340628472 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\fullhpdeitydecisionstrategyhandler.cpp
+	"FullHPDeityDecisionStrategyHandler.hpp"
+	"StringConstants.hpp"
 

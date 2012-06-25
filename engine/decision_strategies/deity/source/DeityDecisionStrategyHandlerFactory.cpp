@@ -1,6 +1,7 @@
 #include <boost/make_shared.hpp>
 #include "DeityDecisionStrategyHandlerFactory.hpp"
 #include "DoNothingDeityDecisionStrategyHandler.hpp"
+#include "FullHPDeityDecisionStrategyHandler.hpp"
 
 using boost::make_shared;
 
@@ -18,8 +19,10 @@ IDeityDecisionStrategyHandlerPtr DeityDecisionStrategyHandlerFactory::create_dec
 
   switch(decision_type)
   {
-    case DEITY_DECISION_NOTHING:
     case DEITY_DECISION_FULL_HP:
+      decision_handler = make_shared<FullHPDeityDecisionStrategyHandler>();
+      break;
+    case DEITY_DECISION_NOTHING:
     default:
       decision_handler = make_shared<DoNothingDeityDecisionStrategyHandler>();
       break;
