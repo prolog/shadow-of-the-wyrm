@@ -253,7 +253,7 @@
 	<File name="engine\actions\include\MovementManager.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="1217" topLine="10" />
 	</File>
-	<File name="engine\actions\include\PrayerManager.hpp" open="1" top="1" tabpos="2">
+	<File name="engine\actions\include\PrayerManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="101" topLine="0" />
 	</File>
 	<File name="engine\actions\include\SearchActionManager.hpp" open="0" top="0" tabpos="5">
@@ -289,7 +289,7 @@
 	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="12297" topLine="365" />
 	</File>
-	<File name="engine\actions\source\PrayerManager.cpp" open="1" top="0" tabpos="1">
+	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2078" topLine="47" />
 	</File>
 	<File name="engine\actions\source\SearchActionManager.cpp" open="0" top="0" tabpos="6">
@@ -595,8 +595,14 @@
 	<File name="engine\decision_strategies\deity\include\DeityDecisionStrategyHandlerFactory.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="47" topLine="0" />
 	</File>
+	<File name="engine\decision_strategies\deity\include\DeityDecisionTypes.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="101" topLine="0" />
+	</File>
 	<File name="engine\decision_strategies\deity\include\DoNothingDeityDecisionStrategyHandler.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="278" topLine="0" />
+	</File>
+	<File name="engine\decision_strategies\deity\include\FullHPDeityDecisionStrategyHandler.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="157" topLine="0" />
@@ -604,14 +610,20 @@
 	<File name="engine\decision_strategies\deity\include\IDeityDecisionStrategyHandler.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="365" topLine="0" />
 	</File>
+	<File name="engine\decision_strategies\deity\source\DeityDecisionConstants.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="154" topLine="0" />
+	</File>
+	<File name="engine\decision_strategies\deity\source\DeityDecisionStrategy.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="397" topLine="0" />
+	</File>
 	<File name="engine\decision_strategies\deity\source\DeityDecisionStrategyFactory.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="114" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\deity\source\DeityDecisionStrategyHandlerFactory.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="137" topLine="0" />
+		<Cursor position="187" topLine="0" />
 	</File>
-	<File name="engine\decision_strategies\deity\source\DoNothingDeityDecisionStrategyHandler.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="439" topLine="0" />
+	<File name="engine\decision_strategies\deity\source\DoNothingDeityDecisionStrategyHandler.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="104" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\deity\source\IDeityDecisionStrategyHandler.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="209" topLine="0" />
@@ -962,7 +974,7 @@
 		<Cursor position="412" topLine="22" />
 	</File>
 	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="19484" topLine="524" />
+		<Cursor position="19529" topLine="532" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="0" topLine="0" />
@@ -1051,8 +1063,8 @@
 	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="4599" topLine="154" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="37581" topLine="925" />
+	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="37167" topLine="925" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1402,8 +1414,8 @@
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
 	</File>
-	<File name="world\source\Creature.cpp" open="0" top="0" tabpos="12">
-		<Cursor position="4606" topLine="251" />
+	<File name="world\source\Creature.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="5664" topLine="316" />
 	</File>
 	<File name="world\source\CreatureGenerationValues.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="155" topLine="0" />

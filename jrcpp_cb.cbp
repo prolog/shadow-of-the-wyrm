@@ -361,19 +361,23 @@
 		<Unit filename="engine\conversion\source\unit_tests\Conversion_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
 		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
 		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionStrategyFactory.hpp" />
 		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionStrategyHandlerFactory.hpp" />
 		<Unit filename="engine\decision_strategies\deity\include\DeityDecisionTypes.hpp" />
 		<Unit filename="engine\decision_strategies\deity\include\DoNothingDeityDecisionStrategyHandler.hpp" />
+		<Unit filename="engine\decision_strategies\deity\include\FullHPDeityDecisionStrategyHandler.hpp" />
 		<Unit filename="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\deity\include\IDeityDecisionStrategyHandler.hpp" />
+		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionConstants.cpp" />
 		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionImplications.cpp" />
 		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionStrategy.cpp" />
 		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionStrategyFactory.cpp" />
 		<Unit filename="engine\decision_strategies\deity\source\DeityDecisionStrategyHandlerFactory.cpp" />
 		<Unit filename="engine\decision_strategies\deity\source\DoNothingDeityDecisionStrategyHandler.cpp" />
+		<Unit filename="engine\decision_strategies\deity\source\FullHPDeityDecisionStrategyHandler.cpp" />
 		<Unit filename="engine\decision_strategies\deity\source\IDeityDecisionStrategyHandler.cpp" />
 		<Unit filename="engine\decision_strategies\include\DecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\DecisionStrategyFactory.hpp" />
