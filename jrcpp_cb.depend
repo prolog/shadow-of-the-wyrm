@@ -2025,10 +2025,11 @@
 	"DoNothingDeityDecisionStrategyHandler.hpp"
 	"StringConstants.hpp"
 
-1340549070 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategyhandlerfactory.cpp
+1340628737 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategyhandlerfactory.cpp
 	<boost/make_shared.hpp>
 	"DeityDecisionStrategyHandlerFactory.hpp"
 	"DoNothingDeityDecisionStrategyHandler.hpp"
+	"FullHPDeityDecisionStrategyHandler.hpp"
 
 1340549614 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionimplications.cpp
 	"DeityDecisionImplications.hpp"
