@@ -4,7 +4,7 @@
 using std::numeric_limits;
 
 DeityStatus::DeityStatus()
-: piety(0)
+: piety(100), crowned(false)
 {
 }
 
@@ -50,4 +50,15 @@ void DeityStatus::decrement_piety(const int dec_amount)
   {
     piety = numeric_limits<int>::min();
   }
+}
+
+// Set/get whether the creature is a champion of the deity, and has been crowned.
+void DeityStatus::set_crowned(const bool new_crowned_status)
+{
+  crowned = new_crowned_status;
+}
+
+bool DeityStatus::get_crowned() const
+{
+  return crowned;
 }

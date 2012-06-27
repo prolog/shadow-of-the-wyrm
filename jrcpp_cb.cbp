@@ -608,11 +608,15 @@
 		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="engine\time\include\CreatureHPRegeneration.hpp" />
+		<Unit filename="engine\time\include\CreaturePietyRegeneration.hpp" />
 		<Unit filename="engine\time\include\CreatureTimeObserver.hpp" />
 		<Unit filename="engine\time\include\ITimeObserver.hpp" />
 		<Unit filename="engine\time\include\RegenerationConstants.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeper.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
+		<Unit filename="engine\time\source\CreatureHPRegeneration.cpp" />
+		<Unit filename="engine\time\source\CreaturePietyRegeneration.cpp" />
 		<Unit filename="engine\time\source\CreatureTimeObserver.cpp" />
 		<Unit filename="engine\time\source\ITimeObserver.cpp" />
 		<Unit filename="engine\time\source\RegenerationConstants.cpp" />

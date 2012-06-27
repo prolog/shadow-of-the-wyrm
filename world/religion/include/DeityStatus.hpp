@@ -11,6 +11,10 @@ class DeityStatus
     void increment_piety(const int inc_amount);
     void decrement_piety(const int dec_amount);
 
+    void set_crowned(const bool new_crowned_status);
+    bool get_crowned() const;
+    
   protected:
     int piety;
+    bool crowned;
 };

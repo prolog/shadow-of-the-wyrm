@@ -1340,7 +1340,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deity.cpp
 	"Deity.hpp"
 
-1340545561 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deitystatus.cpp
+1340801380 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deitystatus.cpp
 	<limits>
 	"DeityStatus.hpp"
 
@@ -2007,12 +2007,16 @@
 	"ReligionManager.hpp"
 	"StringConstants.hpp"
 
-1340542401 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
+1340715075 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
+	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
+	"CreatureHPRegeneration.hpp"
+	"CreaturePietyRegeneration.hpp"
 	"CreatureTimeObserver.hpp"
 	"Game.hpp"
 	"RegenerationConstants.hpp"
 
-1340627896 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategy.cpp
+1340714122 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\deitydecisionstrategy.cpp
 	"DeityDecisionConstants.hpp"
 	"DeityDecisionStrategy.hpp"
 
@@ -2043,4 +2047,14 @@
 1340628472 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\fullhpdeitydecisionstrategyhandler.cpp
 	"FullHPDeityDecisionStrategyHandler.hpp"
 	"StringConstants.hpp"
+
+1340714844 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturehpregeneration.cpp
+	"CreatureHPRegeneration.hpp"
+
+1340801398 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturepietyregeneration.cpp
+	"CreaturePietyRegeneration.hpp"
+	"ReligionConstants.hpp"
+
+1340800534 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religionconstants.cpp
+	"ReligionConstants.hpp"
 

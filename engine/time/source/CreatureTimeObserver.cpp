@@ -1,12 +1,28 @@
+#include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
+#include "CreatureHPRegeneration.hpp"
+#include "CreaturePietyRegeneration.hpp"
 #include "CreatureTimeObserver.hpp"
 #include "Game.hpp"
 #include "RegenerationConstants.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 CreatureTimeObserver::CreatureTimeObserver()
 : ITimeObserver()
 {
+  initialize_regeneration_helpers();
+}
+
+// Set the list of regeneration helpers to apply to each creature on each "tick" (1 min passed)
+void CreatureTimeObserver::initialize_regeneration_helpers()
+{
+  ICreatureRegenerationPtr hp_regen    = make_shared<CreatureHPRegeneration>();
+  ICreatureRegenerationPtr piety_regen = make_shared<CreaturePietyRegeneration>();
+  
+  regen.push_back(hp_regen);
+  regen.push_back(piety_regen);
 }
 
 void CreatureTimeObserver::notify(const ulonglong additional_minutes_elapsed)
@@ -15,26 +31,22 @@ void CreatureTimeObserver::notify(const ulonglong additional_minutes_elapsed)
 
   Game* game = Game::instance();
 
-  // JCD FIXME: Move this to separate classes for HP, MP, etc.
   if (game)
   {
     // Get the list of creatures.
     MapPtr current_map = game->get_current_map();
     map<string, CreaturePtr> creatures = current_map->get_creatures();
     
-    // Calculate minutes-per-HP for each.
+    // Apply each creature regeneration helper to each creature on the map
     for (map<string, CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
     {
       CreaturePtr creature = c_it->second;
       
-      if (creature && !creature->is_hp_full())
+      BOOST_FOREACH(ICreatureRegenerationPtr regen_helper, regen)
       {
-        // If any of them pass the check, regenerate a hit point.
-        uint minutes_per_hp = hp_regen_calc.calculate_minutes_per_hit_point(creature);
-        
-        if (minutes_elapsed % minutes_per_hp == 0)
+        if (regen_helper)
         {
-          creature->increment_hit_points(1);
+          regen_helper->regen(creature, minutes_elapsed); 
         }
       }
     }

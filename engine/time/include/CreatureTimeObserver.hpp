@@ -1,5 +1,6 @@
 #pragma once
-#include "HPRegenerationCalculator.hpp"
+#include <vector>
+#include "ICreatureRegeneration.hpp"
 #include "ITimeObserver.hpp"
 
 class CreatureTimeObserver : public ITimeObserver
@@ -10,5 +11,7 @@ class CreatureTimeObserver : public ITimeObserver
     void notify(const ulonglong minutes_elapsed);
     
   protected:
-    HPRegenerationCalculator hp_regen_calc;
+    void initialize_regeneration_helpers();
+  
+    std::vector<ICreatureRegenerationPtr> regen;
 };
