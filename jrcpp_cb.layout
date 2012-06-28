@@ -1108,8 +1108,8 @@
 	<File name="engine\time\source\CreatureHPRegeneration.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="432" topLine="0" />
 	</File>
-	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2197" topLine="54" />
+	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="2294" topLine="54" />
 	</File>
 	<File name="engine\time\source\CreatureTimeObserver.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1046" topLine="14" />
@@ -1330,7 +1330,7 @@
 	<File name="world\materials\include\MaterialFactory.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="59" topLine="0" />
 	</File>
-	<File name="world\materials\include\MaterialTypes.hpp" open="0" top="0" tabpos="4">
+	<File name="world\materials\include\MaterialTypes.hpp" open="1" top="1" tabpos="4">
 		<Cursor position="337" topLine="2" />
 	</File>
 	<File name="world\materials\include\Onyx.hpp" open="0" top="0" tabpos="21">
@@ -1425,6 +1425,9 @@
 	</File>
 	<File name="world\source\Armour.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="111" topLine="0" />
+	</File>
+	<File name="world\source\Boat.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="92" topLine="0" />
 	</File>
 	<File name="world\source\Book.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="100" topLine="0" />

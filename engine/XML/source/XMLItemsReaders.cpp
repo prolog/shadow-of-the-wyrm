@@ -71,6 +71,14 @@ ItemMap XMLItemsReader::get_items(const XMLNode& items_node)
       items.insert(plants_map.begin(), plants_map.end());
     }
     
+    XMLNode boats_node = XMLUtils::get_next_element_by_local_name(items_node, "Boats");
+    
+    if (!boats_node.is_null())
+    {
+      ItemMap boats_map = get_boats(boats_node);
+      items.insert(boats_map.begin(), boats_map.end());
+    }
+    
     XMLNode misc_items_node = XMLUtils::get_next_element_by_local_name(items_node, "MiscItems");
     
     if (!misc_items_node.is_null())
@@ -220,5 +228,24 @@ ItemMap XMLItemsReader::get_plants(const XMLNode& plants_node)
   }
   
   return plants_map;
+}
+
+ItemMap XMLItemsReader::get_boats(const XMLNode& boats_node)
+{
+  ItemMap boats_map;
+  
+  if (!boats_node.is_null())
+  {
+    vector<XMLNode> boats_nodes = XMLUtils::get_elements_by_local_name(boats_node, "Boat");
+    
+    BOOST_FOREACH(XMLNode node, boats_nodes)
+    {
+      BoatPtr boat = make_shared<Boat>();
+      boat_reader.parse(boat, node);
+      boats_map.insert(make_pair(boat->get_id(), boat));
+    }
+  }
+  
+  return boats_map;
 }
 
