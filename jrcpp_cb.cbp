@@ -516,6 +516,7 @@
 		<Unit filename="engine\generators\worship_sites\source\SimpleTempleGenerator.cpp" />
 		<Unit filename="engine\generators\worship_sites\source\SnakingTempleGenerator.cpp" />
 		<Unit filename="engine\generators\worship_sites\source\WorshipSiteGenerator.cpp" />
+		<Unit filename="engine\include\ClassManager.hpp" />
 		<Unit filename="engine\include\CreationUtils.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\CreatureGenerationConstants.hpp" />
@@ -564,6 +565,7 @@
 		<Unit filename="engine\menus\source\SexSelectionScreen.cpp" />
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
+		<Unit filename="engine\source\ClassManager.cpp" />
 		<Unit filename="engine\source\CreationUtils.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
 		<Unit filename="engine\source\CreatureGenerationConstants.cpp" />
@@ -718,10 +720,12 @@
 		<Unit filename="world\religion\include\Deity.hpp" />
 		<Unit filename="world\religion\include\DeityStatus.hpp" />
 		<Unit filename="world\religion\include\Religion.hpp" />
+		<Unit filename="world\religion\include\ReligionConstants.hpp" />
 		<Unit filename="world\religion\include\ReligionFactory.hpp" />
 		<Unit filename="world\religion\source\Deity.cpp" />
 		<Unit filename="world\religion\source\DeityStatus.cpp" />
 		<Unit filename="world\religion\source\Religion.cpp" />
+		<Unit filename="world\religion\source\ReligionConstants.cpp" />
 		<Unit filename="world\religion\source\ReligionFactory.cpp" />
 		<Unit filename="world\source\AgeInfo.cpp" />
 		<Unit filename="world\source\Alignment.cpp" />

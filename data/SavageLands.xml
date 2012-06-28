@@ -1349,6 +1349,8 @@
 					<Divine>25</Divine>
 				</MagicSkills>
 			</Skills>
+			<PietyCostMultiplier>0.75</PietyCostMultiplier>
+			<PietyRegenBonus>3</PietyRegenBonus>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
 		</Class>
 		<Class id="pugilist">
@@ -1640,6 +1642,8 @@
 					<RodsAndStaves>5</RodsAndStaves>
 				</WeaponSkills>
 			</Skills>
+			<PietyCostMultiplier>0.40</PietyCostMultiplier>
+			<PietyRegenBonus>5</PietyRegenBonus>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 		</Class>
 		<Class id="smith">
@@ -1882,6 +1886,7 @@
 					<Primordial>20</Primordial>
 				</MagicSkills>
 			</Skills>
+			<PietyCostMultiplier>1.25</PietyCostMultiplier>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 		</Class>
 		<Class id="wizard">

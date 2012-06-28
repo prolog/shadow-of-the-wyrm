@@ -1,3 +1,4 @@
+#include "ClassManager.hpp"
 #include "CreaturePietyRegeneration.hpp"
 #include "ReligionConstants.hpp"
 
@@ -9,22 +10,27 @@ void CreaturePietyRegeneration::regen(CreaturePtr creature, const ulonglong minu
 {
   if (creature)
   {
+    ClassManager cm;
+    
     Religion& religion = creature->get_religion_ref();
     string deity_id = religion.get_active_deity_id();
     DeityStatus deity_status = religion.get_deity_status(deity_id);
     int piety = deity_status.get_piety();
     int new_piety = piety;
     bool crowned = deity_status.get_crowned();
+    
+    ClassPtr cur_class = cm.get_class(creature->get_class_id());
+    int piety_regen_bonus = cur_class->get_piety_regen_bonus();
 
     if (piety < 0)
     {
-      new_piety = regenerate_piety(piety, minutes_elapsed, crowned);
+      new_piety = regenerate_piety(piety, piety_regen_bonus, minutes_elapsed, crowned);
     }
     else
     {
       if (!crowned)
       {
-        new_piety = degenerate_piety(piety, minutes_elapsed);
+        new_piety = degenerate_piety(piety, piety_regen_bonus, minutes_elapsed);
       }
     }
     
@@ -37,13 +43,15 @@ void CreaturePietyRegeneration::regen(CreaturePtr creature, const ulonglong minu
 }
 
 // Over time, the Nine like their favoured less - they expect regular sacrifice.  Return the new piety.
-int CreaturePietyRegeneration::degenerate_piety(const int piety, const ulonglong minutes_elapsed)
+int CreaturePietyRegeneration::degenerate_piety(const int piety, const int piety_regen_bonus, const ulonglong minutes_elapsed)
 {
   int new_piety = piety;
   
   if (piety >= ReligionConstants::MIN_PIETY_FOR_DEGENERATION)
   {
-    if (minutes_elapsed % MINUTES_PER_POINT_OF_PIETY == 0)
+    int minutes_per_point = std::max(1, MINUTES_PER_POINT_OF_PIETY + piety_regen_bonus);
+
+    if (minutes_elapsed % minutes_per_point == 0)
     {
       new_piety -= ReligionConstants::BASIC_PIETY_INCREMENT;
     }
@@ -53,13 +61,15 @@ int CreaturePietyRegeneration::degenerate_piety(const int piety, const ulonglong
 }
 
 // Over time, the anger of the Nine lessens.  Return the new piety.
-int CreaturePietyRegeneration::regenerate_piety(const int piety, const ulonglong minutes_elapsed, const bool crowned)
+int CreaturePietyRegeneration::regenerate_piety(const int piety, const int piety_regen_bonus, const ulonglong minutes_elapsed, const bool crowned)
 {
   int new_piety = piety;
   
   if (piety <= ReligionConstants::MAX_PIETY_FOR_REGENERATION)
   {
-    if (minutes_elapsed % MINUTES_PER_POINT_OF_PIETY == 0)
+    int minutes_per_point = std::max(1, MINUTES_PER_POINT_OF_PIETY - piety_regen_bonus);
+
+    if (minutes_elapsed % minutes_per_point == 0)
     {
       int increment = ReligionConstants::BASIC_PIETY_INCREMENT;
       

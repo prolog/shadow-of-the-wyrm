@@ -158,7 +158,7 @@
 		<Cursor position="205" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLClassesReader.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="249" topLine="0" />
+		<Cursor position="2723" topLine="60" />
 	</File>
 	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="734" topLine="17" />
@@ -290,7 +290,7 @@
 		<Cursor position="12297" topLine="365" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2014" topLine="48" />
+		<Cursor position="2522" topLine="60" />
 	</File>
 	<File name="engine\actions\source\SearchActionManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="128" topLine="0" />
@@ -437,7 +437,7 @@
 		<Cursor position="416" topLine="8" />
 	</File>
 	<File name="engine\combat\source\ExperienceManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="4633" topLine="138" />
+		<Cursor position="3260" topLine="99" />
 	</File>
 	<File name="engine\combat\source\LevelConstants.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="31" topLine="0" />
@@ -823,8 +823,8 @@
 	<File name="engine\generators\source\ForestGenerator.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="517" topLine="9" />
 	</File>
-	<File name="engine\generators\source\Generator.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2418" topLine="80" />
+	<File name="engine\generators\source\Generator.cpp" open="0" top="0" tabpos="9">
+		<Cursor position="2355" topLine="81" />
 	</File>
 	<File name="engine\generators\source\GeneratorUtils.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="3226" topLine="100" />
@@ -932,7 +932,7 @@
 		<Cursor position="236" topLine="0" />
 	</File>
 	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="2741" topLine="69" />
+		<Cursor position="874" topLine="24" />
 	</File>
 	<File name="engine\include\ItemFactory.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="117" topLine="0" />
@@ -946,8 +946,8 @@
 	<File name="engine\include\MapRegistry.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="348" topLine="0" />
 	</File>
-	<File name="engine\include\MapUtils.hpp" open="0" top="0" tabpos="6">
-		<Cursor position="1963" topLine="27" />
+	<File name="engine\include\MapUtils.hpp" open="0" top="0" tabpos="11">
+		<Cursor position="1688" topLine="28" />
 	</File>
 	<File name="engine\include\Message.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="127" topLine="0" />
@@ -1009,11 +1009,14 @@
 	<File name="engine\menus\source\WelcomeScreen.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="207" topLine="0" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="7349" topLine="187" />
+	<File name="engine\source\ClassManager.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="247" topLine="0" />
 	</File>
-	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="2443" topLine="55" />
+	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="3233" topLine="84" />
+	</File>
+	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="155" topLine="5" />
 	</File>
 	<File name="engine\source\Dimensions.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="195" topLine="0" />
@@ -1022,7 +1025,7 @@
 		<Cursor position="443" topLine="4" />
 	</File>
 	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="6483" topLine="252" />
+		<Cursor position="1905" topLine="85" />
 	</File>
 	<File name="engine\source\ItemFactory.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="526" topLine="5" />
@@ -1036,8 +1039,8 @@
 	<File name="engine\source\MapRegistry.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1086" topLine="28" />
 	</File>
-	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="9299" topLine="349" />
+	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="8831" topLine="329" />
 	</File>
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="506" topLine="9" />
@@ -1055,13 +1058,13 @@
 		<Cursor position="1203" topLine="46" />
 	</File>
 	<File name="engine\source\RaceManager.cpp" open="0" top="0" tabpos="23">
-		<Cursor position="46" topLine="0" />
+		<Cursor position="228" topLine="0" />
 	</File>
 	<File name="engine\source\ReligionManager.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="199" topLine="0" />
 	</File>
 	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="4599" topLine="154" />
+		<Cursor position="3124" topLine="124" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="37167" topLine="925" />
@@ -1088,7 +1091,7 @@
 		<Cursor position="238" topLine="0" />
 	</File>
 	<File name="engine\time\include\CreaturePietyRegeneration.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="366" topLine="0" />
+		<Cursor position="411" topLine="0" />
 	</File>
 	<File name="engine\time\include\CreatureTimeObserver.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="30" topLine="0" />
@@ -1102,11 +1105,11 @@
 	<File name="engine\time\include\WorldTimeKeeperCoordinator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="91" topLine="0" />
 	</File>
-	<File name="engine\time\source\CreatureHPRegeneration.cpp" open="0" top="0" tabpos="0">
+	<File name="engine\time\source\CreatureHPRegeneration.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="432" topLine="0" />
 	</File>
 	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="1186" topLine="22" />
+		<Cursor position="2197" topLine="54" />
 	</File>
 	<File name="engine\time\source\CreatureTimeObserver.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1046" topLine="14" />
@@ -1139,7 +1142,7 @@
 		<Cursor position="168" topLine="0" />
 	</File>
 	<File name="engine\translators\source\CreatureTranslator.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="5681" topLine="152" />
+		<Cursor position="2623" topLine="70" />
 	</File>
 	<File name="engine\translators\source\DisplayItemTypeFactory.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="2098" topLine="54" />
@@ -1199,7 +1202,7 @@
 		<Cursor position="97" topLine="0" />
 	</File>
 	<File name="world\include\Class.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="1069" topLine="18" />
+		<Cursor position="2220" topLine="66" />
 	</File>
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="94" topLine="0" />
@@ -1387,8 +1390,8 @@
 	<File name="world\religion\include\Deity.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="97" topLine="0" />
 	</File>
-	<File name="world\religion\include\DeityStatus.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="252" topLine="0" />
+	<File name="world\religion\include\DeityStatus.hpp" open="0" top="0" tabpos="4">
+		<Cursor position="329" topLine="0" />
 	</File>
 	<File name="world\religion\include\Religion.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="897" topLine="9" />
@@ -1396,11 +1399,14 @@
 	<File name="world\religion\source\Deity.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="2094" topLine="55" />
 	</File>
-	<File name="world\religion\source\DeityStatus.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="715" topLine="30" />
+	<File name="world\religion\source\DeityStatus.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="129" topLine="0" />
 	</File>
 	<File name="world\religion\source\Religion.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="984" topLine="32" />
+	</File>
+	<File name="world\religion\source\ReligionConstants.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="201" topLine="0" />
 	</File>
 	<File name="world\religion\source\ReligionFactory.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="449" topLine="1" />
@@ -1427,7 +1433,7 @@
 		<Cursor position="285" topLine="0" />
 	</File>
 	<File name="world\source\Class.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="3342" topLine="144" />
+		<Cursor position="4141" topLine="174" />
 	</File>
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
@@ -1844,7 +1850,7 @@
 		<Cursor position="74" topLine="0" />
 	</File>
 	<File name="world\tiles\source\Tile.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="839" topLine="34" />
+		<Cursor position="729" topLine="32" />
 	</File>
 	<File name="world\tiles\source\TreeTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="191" topLine="0" />

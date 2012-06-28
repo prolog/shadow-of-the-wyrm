@@ -85,7 +85,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlbookreader.cpp
 	"XMLBookReader.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
+1340846858 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"Resistances.hpp"
@@ -1114,7 +1114,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\mapregistry.cpp
 	"MapRegistry.hpp"
 
-1339590417 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+1340802070 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
 	"Conversion.hpp"
 	"MapUtils.hpp"
 	<boost/tokenizer.hpp>
@@ -1368,7 +1368,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\book.cpp
 	"Book.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
+1340846616 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
 	<sstream>
 	"Class.hpp"
 
@@ -1999,7 +1999,8 @@
 	"WorldTimeKeeperCoordinator.hpp"
 	"WorldTimeKeeper.hpp"
 
-1340551161 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\prayermanager.cpp
+1340847755 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\prayermanager.cpp
+	"ClassManager.hpp"
 	"DeityDecisionStrategyFactory.hpp"
 	"DeityDecisionStrategyHandlerFactory.hpp"
 	"MessageManager.hpp"
@@ -2051,10 +2052,15 @@
 1340714844 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturehpregeneration.cpp
 	"CreatureHPRegeneration.hpp"
 
-1340801398 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturepietyregeneration.cpp
+1340848679 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturepietyregeneration.cpp
+	"ClassManager.hpp"
 	"CreaturePietyRegeneration.hpp"
 	"ReligionConstants.hpp"
 
-1340800534 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religionconstants.cpp
+1340801687 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religionconstants.cpp
 	"ReligionConstants.hpp"
+
+1340845973 source:c:\cygwin\home\julian\jrcpp\engine\source\classmanager.cpp
+	"ClassManager.hpp"
+	"Game.hpp"
 

@@ -142,19 +142,7 @@ int MapUtils::tile_distance_using_chebyshev(Coordinate c1, Coordinate c2)
 // - if the tile type permits movement
 bool MapUtils::is_tile_available_for_creature(TilePtr tile)
 {
-  return (!is_creature_present(tile) && !is_blocking_feature_present(tile) && tile_type_permits_creature_or_object(tile->get_tile_type()));
-}
-
-// Check to see if the tile is available for creature or object generation
-bool MapUtils::tile_type_permits_creature_or_object(const TileType tile_type)
-{
-  // There may be other impassable types in future, but for now, just _ROCK.
-  if (tile_type == TILE_TYPE_ROCK)
-  {
-    return false;
-  }
-  
-  return true;
+  return (!is_creature_present(tile) && !tile->get_is_blocking());
 }
 
 // Get the dimensions for a new map based on the current map, the coords, and the size.

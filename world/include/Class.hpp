@@ -37,6 +37,12 @@ class Class
 
     void set_resistances(const Resistances& resistances);
     Resistances get_resistances() const;
+    
+    void set_piety_cost_multiplier(const float new_piety_cost);
+    float get_piety_cost_multiplier() const;
+    
+    void set_piety_regen_bonus(const int new_piety_regen_bonus);
+    int get_piety_regen_bonus() const;
 
     void set_skills(const Skills& skills);
     Skills get_skills() const;
@@ -70,6 +76,9 @@ class Class
 
     Resistances resistances;
     Skills skills;
+    
+    float piety_cost_multiplier;
+    int piety_regen_bonus;
 
     bool user_playable;
     float experience_multiplier;

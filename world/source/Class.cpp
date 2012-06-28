@@ -4,7 +4,9 @@
 using namespace std;
 
 Class::Class()
-: user_playable(false)
+: piety_cost_multiplier(1)
+, piety_regen_bonus(0)
+, user_playable(false)
 , hit_dice(1)
 , ap_dice(0)
 {
@@ -104,6 +106,26 @@ Skills Class::get_skills() const
   return skills;
 }
 
+void Class::set_piety_cost_multiplier(const float new_piety_cost_multiplier)
+{
+  piety_cost_multiplier = new_piety_cost_multiplier;
+}
+
+float Class::get_piety_cost_multiplier() const
+{
+  return piety_cost_multiplier;
+}
+
+void Class::set_piety_regen_bonus(const int new_piety_regen_bonus)
+{
+  piety_regen_bonus = new_piety_regen_bonus;
+}
+
+int Class::get_piety_regen_bonus() const
+{
+  return piety_regen_bonus;
+}
+
 void Class::set_user_playable(const bool playable)
 {
   user_playable = playable;
@@ -169,6 +191,7 @@ string Class::str() const
   class_details << resistances.str() << endl;
   class_details << skills.str() << endl;
   class_details << experience_multiplier << endl;
+  class_details << piety_cost_multiplier << " " << piety_regen_bonus << endl;
 
   return class_details.str();
 }
