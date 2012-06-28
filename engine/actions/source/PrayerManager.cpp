@@ -1,3 +1,4 @@
+#include "ClassManager.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
 #include "DeityDecisionStrategyHandlerFactory.hpp"
 #include "MessageManager.hpp"
@@ -58,11 +59,18 @@ void PrayerManager::finish_prayer(CreaturePtr creature, const DeityDecisionImpli
 
   // Get the deity and the creature's status with that deity.
   ReligionManager rm;
+  ClassManager cm;
+  
   Religion& religion = creature->get_religion_ref();
   string deity_id = religion.get_active_deity_id();
   DeityPtr creature_deity = rm.get_deity(deity_id);
   DeityStatus status = religion.get_deity_status(deity_id);
-  status.decrement_piety(piety_loss);
+
+  ClassPtr cur_class = cm.get_class(creature->get_class_id());
+  float piety_cost_multiplier = cur_class->get_piety_cost_multiplier();
+  int piety_cost = piety_loss * piety_cost_multiplier;
+  
+  status.decrement_piety(piety_cost);
   religion.set_deity_status(deity_id, status);
   
   if (creature->get_is_player())

@@ -39,8 +39,6 @@ class MapUtils
     
     static bool is_tile_available_for_creature(TilePtr tile);
     
-    static bool tile_type_permits_creature_or_object(const TileType tile_type);
-    
     static Dimensions get_dimensions(MapPtr map, const Coordinate& coords, const int size);
     
     static bool are_coordinates_adjacent(const Coordinate& c1, const Coordinate& c2);

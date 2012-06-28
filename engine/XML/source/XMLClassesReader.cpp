@@ -68,11 +68,17 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
     parse_class_resistances(current_class, resistances_node);
     parse_class_skills(current_class, skills_node);
+    
+    float piety_cost_multiplier = XMLUtils::get_child_node_float_value(class_node, "PietyCostMultiplier", current_class->get_piety_cost_multiplier());
+    current_class->set_piety_cost_multiplier(piety_cost_multiplier);
+
+    int piety_regen_bonus = XMLUtils::get_child_node_int_value(class_node, "PietyRegenBonus", current_class->get_piety_regen_bonus());
+    current_class->set_piety_regen_bonus(piety_regen_bonus);
 
     bool user_playable = XMLUtils::get_child_node_bool_value(class_node, "UserPlayable");
     current_class->set_user_playable(user_playable);
 
-    float experience_multiplier = XMLUtils::get_child_node_float_value(class_node, "ExperienceMultiplier", 1.0);
+    float experience_multiplier = XMLUtils::get_child_node_float_value(class_node, "ExperienceMultiplier", current_class->get_experience_multiplier());
     current_class->set_experience_multiplier(experience_multiplier);
   }
 

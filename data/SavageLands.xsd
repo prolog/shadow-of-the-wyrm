@@ -294,7 +294,9 @@
 			<xs:element name="APDice" type="xs:unsignedInt"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
-			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+			<xs:element name="PietyCostMultiplier" type="tns:NonNegativeDecimal" minOccurs="0"/>
+			<xs:element name="PietyRegenBonus" type="xs:int" minOccurs="0"/>
+			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
