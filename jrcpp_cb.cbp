@@ -652,6 +652,7 @@
 		<Unit filename="world\include\Ammunition.hpp" />
 		<Unit filename="world\include\Amulet.hpp" />
 		<Unit filename="world\include\Armour.hpp" />
+		<Unit filename="world\include\Boat.hpp" />
 		<Unit filename="world\include\Book.hpp" />
 		<Unit filename="world\include\Calendar.hpp" />
 		<Unit filename="world\include\Class.hpp" />
@@ -732,6 +733,7 @@
 		<Unit filename="world\source\Ammunition.cpp" />
 		<Unit filename="world\source\Amulet.cpp" />
 		<Unit filename="world\source\Armour.cpp" />
+		<Unit filename="world\source\Boat.cpp" />
 		<Unit filename="world\source\Book.cpp" />
 		<Unit filename="world\source\Calendar.cpp" />
 		<Unit filename="world\source\Class.cpp" />

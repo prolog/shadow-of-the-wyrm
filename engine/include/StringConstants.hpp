@@ -355,6 +355,7 @@ class ItemTypeTextKeys
     static const std::string ITEM_TYPE_FOOD;
     static const std::string ITEM_TYPE_AMMUNITION;
     static const std::string ITEM_TYPE_PLANTS;
+    static const std::string ITEM_TYPE_BOATS;
 
   protected:
     ItemTypeTextKeys();

@@ -2478,6 +2478,15 @@
 				<Nutrition>1</Nutrition>
 			</Plant>
 		</Plants>
+		<Boats>
+			<Boat id="coracle">
+				<DescriptionSID>CORACLE_SID</DescriptionSID>
+				<UsageDescriptionSID>CORACLE_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>30</Pounds></Weight>
+				<Material>8</Material>
+			</Boat>
+		</Boats>
 		<MiscItems>
 			<Item id="dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>

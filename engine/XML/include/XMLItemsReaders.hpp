@@ -9,6 +9,7 @@
 #include "XMLAmuletReader.hpp"
 #include "XMLArmourReader.hpp"
 #include "XMLBookReader.hpp"
+#include "XMLBoatReader.hpp"
 #include "XMLFoodReader.hpp"
 #include "XMLPlantReader.hpp"
 #include "XMLPotionReader.hpp"
@@ -34,11 +35,13 @@ class XMLItemsReader
     ItemMap get_ammunition(const XMLNode& ammunition_node);
     ItemMap get_food(const XMLNode& foodstuffs_node);
     ItemMap get_plants(const XMLNode& plants_node);
+    ItemMap get_boats(const XMLNode& boats_node);
     
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;
     XMLArmourReader armour_reader;
     XMLBookReader book_reader;
+    XMLBoatReader boat_reader;
     XMLWeaponsReader weapons_reader;
     XMLAmmunitionReader ammunition_reader;
     XMLFoodReader food_reader;

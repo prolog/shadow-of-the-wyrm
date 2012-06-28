@@ -87,6 +87,12 @@ class PlantDisplayItemType : public DisplayItemType
     PlantDisplayItemType();
 };
 
+class BoatDisplayItemType : public DisplayItemType
+{
+  public:
+    BoatDisplayItemType();
+};
+
 class DisplayItemTypeFactory
 {
   public:

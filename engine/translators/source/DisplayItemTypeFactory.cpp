@@ -75,6 +75,11 @@ PlantDisplayItemType::PlantDisplayItemType()
 {
 }
 
+BoatDisplayItemType::BoatDisplayItemType()
+: DisplayItemType("&", COLOUR_WHITE, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_BOATS))
+{
+}
+
 // The factory that uses the above classes
 DisplayItemTypeFactory::DisplayItemTypeFactory()
 {
@@ -128,6 +133,9 @@ DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
       break;
     case ITEM_TYPE_PLANT:
       display_item_type = make_shared<PlantDisplayItemType>();
+      break;
+    case ITEM_TYPE_BOAT:
+      display_item_type = make_shared<BoatDisplayItemType>();
       break;
     case ITEM_TYPE_LAST:
     default:

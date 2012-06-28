@@ -142,7 +142,7 @@
 	"MaterialFactory.hpp"
 	"XMLItemReader.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+1340888448 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"MaterialFactory.hpp"
@@ -1056,7 +1056,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1340539438 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1340887785 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1200,7 +1200,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1340628294 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1340887353 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1224,7 +1224,7 @@
 	"StringTable.hpp"
 	"StringConstants.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\displayitemtypefactory.cpp
+1340887532 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\displayitemtypefactory.cpp
 	<boost/make_shared.hpp>
 	"DisplayItemTypeFactory.hpp"
 	"StringConstants.hpp"
@@ -2063,4 +2063,10 @@
 1340845973 source:c:\cygwin\home\julian\jrcpp\engine\source\classmanager.cpp
 	"ClassManager.hpp"
 	"Game.hpp"
+
+1340853743 source:c:\cygwin\home\julian\jrcpp\world\source\boat.cpp
+	"Boat.hpp"
+
+1340888238 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlboatreader.cpp
+	"XMLBoatReader.hpp"
 

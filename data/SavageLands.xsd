@@ -99,6 +99,7 @@
 			<xs:element ref="tns:Ammunition" minOccurs="0"/>
 			<xs:element ref="tns:Foodstuffs" minOccurs="0"/>
 			<xs:element ref="tns:Plants" minOccurs="0"/>
+			<xs:element ref="tns:Boats" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -461,6 +462,13 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="Plant" type="tns:Consumable" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Boats">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Boat" type="tns:Item" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
