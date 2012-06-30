@@ -173,20 +173,23 @@ bool MovementManager::confirm_move_to_tile_if_necessary(CreaturePtr creature, Ti
   // Probably should break out of MapUtils...
   if (manager && MapUtils::is_moving_from_land_type_tile_to_water_type_tile(creatures_old_tile, creatures_new_tile))
   {
-    if (creature->get_is_player())
-    { 
-      string swim = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);
-      manager->add_new_confirmation_message(swim);
-    }
+    Inventory& inv = creature->get_inventory();
     
-    bool confirmation = (creature->get_decision_strategy()->get_confirmation());
-    manager->clear_if_necessary();
-    return confirmation;
+    if (!inv.has_item_type(ITEM_TYPE_BOAT))
+    {
+      if (creature->get_is_player())
+      { 
+        string swim = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);
+        manager->add_new_confirmation_message(swim);
+      }
+      
+      bool confirmation = (creature->get_decision_strategy()->get_confirmation());
+      manager->clear_if_necessary();
+      return confirmation;
+    }
   }
-  else
-  {
-    return true;
-  }
+  
+  return true;
 }
 
 void MovementManager::move_to_new_map(MapPtr new_map)
