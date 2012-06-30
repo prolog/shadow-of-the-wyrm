@@ -85,6 +85,9 @@
 	<File name="engine\XML\include\XMLArmourReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="35" topLine="0" />
 	</File>
+	<File name="engine\XML\include\XMLBoatReader.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="62" topLine="0" />
+	</File>
 	<File name="engine\XML\include\XMLBookReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="88" topLine="0" />
 	</File>
@@ -112,8 +115,8 @@
 	<File name="engine\XML\include\XMLItemReader.hpp" open="0" top="0" tabpos="16">
 		<Cursor position="91" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLItemsReaders.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="1520" topLine="29" />
+	<File name="engine\XML\include\XMLItemsReaders.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="1148" topLine="21" />
 	</File>
 	<File name="engine\XML\include\XMLPlantReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="57" topLine="0" />
@@ -154,6 +157,9 @@
 	<File name="engine\XML\source\XMLArmourReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="352" topLine="0" />
 	</File>
+	<File name="engine\XML\source\XMLBoatReader.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="227" topLine="0" />
+	</File>
 	<File name="engine\XML\source\XMLBookReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="205" topLine="0" />
 	</File>
@@ -181,8 +187,8 @@
 	<File name="engine\XML\source\XMLItemReader.cpp" open="0" top="0" tabpos="18">
 		<Cursor position="2015" topLine="51" />
 	</File>
-	<File name="engine\XML\source\XMLItemsReaders.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="5568" topLine="201" />
+	<File name="engine\XML\source\XMLItemsReaders.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="11" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLPlantReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="255" topLine="0" />
@@ -974,7 +980,7 @@
 		<Cursor position="412" topLine="22" />
 	</File>
 	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="19529" topLine="532" />
+		<Cursor position="12957" topLine="337" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="0" topLine="0" />
@@ -1025,7 +1031,7 @@
 		<Cursor position="443" topLine="4" />
 	</File>
 	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1905" topLine="85" />
+		<Cursor position="1040" topLine="19" />
 	</File>
 	<File name="engine\source\ItemFactory.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="526" topLine="5" />
@@ -1067,7 +1073,7 @@
 		<Cursor position="3124" topLine="124" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="37167" topLine="925" />
+		<Cursor position="21046" topLine="523" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1090,7 +1096,7 @@
 	<File name="engine\time\include\CreatureHPRegeneration.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="238" topLine="0" />
 	</File>
-	<File name="engine\time\include\CreaturePietyRegeneration.hpp" open="1" top="0" tabpos="2">
+	<File name="engine\time\include\CreaturePietyRegeneration.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="411" topLine="0" />
 	</File>
 	<File name="engine\time\include\CreatureTimeObserver.hpp" open="0" top="0" tabpos="0">
@@ -1108,7 +1114,7 @@
 	<File name="engine\time\source\CreatureHPRegeneration.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="432" topLine="0" />
 	</File>
-	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="1" top="0" tabpos="1">
+	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2294" topLine="54" />
 	</File>
 	<File name="engine\time\source\CreatureTimeObserver.cpp" open="0" top="0" tabpos="0">
@@ -1127,7 +1133,7 @@
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="engine\translators\include\DisplayItemTypeFactory.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="1473" topLine="68" />
+		<Cursor position="1567" topLine="75" />
 	</File>
 	<File name="engine\translators\include\EquipmentTranslator.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="13" topLine="0" />
@@ -1145,7 +1151,7 @@
 		<Cursor position="2623" topLine="70" />
 	</File>
 	<File name="engine\translators\source\DisplayItemTypeFactory.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="2098" topLine="54" />
+		<Cursor position="3970" topLine="117" />
 	</File>
 	<File name="engine\translators\source\EquipmentTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="494" topLine="8" />
@@ -1330,7 +1336,7 @@
 	<File name="world\materials\include\MaterialFactory.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="59" topLine="0" />
 	</File>
-	<File name="world\materials\include\MaterialTypes.hpp" open="1" top="1" tabpos="4">
+	<File name="world\materials\include\MaterialTypes.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="337" topLine="2" />
 	</File>
 	<File name="world\materials\include\Onyx.hpp" open="0" top="0" tabpos="21">
@@ -1426,8 +1432,8 @@
 	<File name="world\source\Armour.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="111" topLine="0" />
 	</File>
-	<File name="world\source\Boat.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="92" topLine="0" />
+	<File name="world\source\Boat.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="76" topLine="0" />
 	</File>
 	<File name="world\source\Book.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="100" topLine="0" />

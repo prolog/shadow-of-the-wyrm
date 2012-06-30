@@ -14,12 +14,7 @@ MessageManager::~MessageManager()
 {
 }
 
-/*
- *********************************************************************
-
-  Get the singleton instance.
-
- *********************************************************************/
+// Get the singleton instance.
 MessageManager* MessageManager::instance()
 {
   if (manager_instance == NULL)
@@ -30,12 +25,7 @@ MessageManager* MessageManager::instance()
   return manager_instance;
 }
 
-/*
- ********************************************************************
- 
-  Clear the display of any text.
- 
- ********************************************************************/
+// Clear the display of any text.
 void MessageManager::clear_if_necessary()
 {
   if (buffer_has_messages)
@@ -51,12 +41,7 @@ void MessageManager::clear_if_necessary()
   }
 }
 
-/*
- *********************************************************************
-
-  Send the currently-unread messages to the display.
-
- *********************************************************************/
+// Send the currently-unread messages to the display.
 void MessageManager::send(const bool halt_after, const bool reset_cursor_after)
 {
   Messages unread_messages = get_unread_messages_and_mark_as_read();
@@ -86,16 +71,13 @@ void MessageManager::send(const bool halt_after, const bool reset_cursor_after)
   }
 }
 
+
 void MessageManager::send_and_halt()
 {
   send(true);
 }
-/*
- *********************************************************************
 
- 	Add a new message to the set of unread messages.
-
- *********************************************************************/
+// Add a new message to the set of unread messages.
 bool MessageManager::add_new_message
 (
 	const std::string& message_text
@@ -105,28 +87,37 @@ bool MessageManager::add_new_message
 {
 	Message message(message_text, colour, importance);
 	unread.add(message);
-
+	
 	return true;
 }
 
-/*
- **********************************************************************
+// This is a simpler method than add_new_message - it doesn't queue the message, and instead
+// displays it directly.
+bool MessageManager::add_new_confirmation_message
+(
+  const std::string& message_text
+, const Colour colour
+, const MessageImportance& importance
+)
+{
+  buffer_has_messages = true;
+  
+	if (user_display)
+	{
+	  user_display->confirm(message_text);
+	}
 
- 	Get the current unread messages.
+  return true;
+}
 
- **********************************************************************/
+// Get the current unread messages.
 Messages MessageManager::get_unread_messages() const
 {
 	return unread;
 }
 
-/*
- ***********************************************************************
-
- 	Get the current unread messages, and mark them as read by adding them
-	to the list of read messages, and clearing the unread pile.
-
- ***********************************************************************/
+// Get the current unread messages, and mark them as read by adding them
+// to the list of read messages, and clearing the unread pile.
 Messages MessageManager::get_unread_messages_and_mark_as_read()
 {
 	Messages unread_messages = get_unread_messages();

@@ -1,5 +1,11 @@
 #pragma once
 
+enum TileSuperType
+{
+  TILE_SUPER_TYPE_GROUND = 0,
+  TILE_SUPER_TYPE_WATER = 1
+};
+
 enum TileType
 {
   TILE_TYPE_UNDEFINED = -1,

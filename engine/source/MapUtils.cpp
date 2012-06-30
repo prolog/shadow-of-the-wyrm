@@ -408,6 +408,21 @@ Coordinate MapUtils::convert_map_key_to_coordinate(const string& map_key)
   return coords;
 }
 
+bool MapUtils::is_moving_from_land_type_tile_to_water_type_tile(TilePtr old_tile, TilePtr new_tile)
+{
+  bool moving_from_land_to_water = false;
+  
+  if (old_tile && new_tile)
+  {
+    TileSuperType old_st = old_tile->get_tile_super_type();
+    TileSuperType new_st = new_tile->get_tile_super_type();
+    
+    moving_from_land_to_water = (old_st == TILE_SUPER_TYPE_GROUND) && (new_st == TILE_SUPER_TYPE_WATER);    
+  }
+  
+  return moving_from_land_to_water;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
