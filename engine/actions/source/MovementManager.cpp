@@ -150,15 +150,43 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
     }
     else
     {
-      // Update the map info
-      MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
-      TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
-      add_tile_related_messages(creature, manager, new_tile);
-      movement_success = get_action_cost_value();
+      if (confirm_move_to_tile_if_necessary(creature, creatures_old_tile, creatures_new_tile))
+      {
+        // Update the map info
+        MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
+        TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
+        add_tile_related_messages(creature, manager, new_tile);
+        movement_success = get_action_cost_value();
+      }
     }
   }
   
   return movement_success;
+}
+
+// Confirm if moving to a potentially dangerous tile from a safe one.
+bool MovementManager::confirm_move_to_tile_if_necessary(CreaturePtr creature, TilePtr creatures_old_tile, TilePtr creatures_new_tile)
+{
+  MessageManager* manager = MessageManager::instance();
+  
+  // If there get to be enough of these, break these out into a map or a class or something.
+  // Probably should break out of MapUtils...
+  if (manager && MapUtils::is_moving_from_land_type_tile_to_water_type_tile(creatures_old_tile, creatures_new_tile))
+  {
+    if (creature->get_is_player())
+    { 
+      string swim = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);
+      manager->add_new_confirmation_message(swim);
+    }
+    
+    bool confirmation = (creature->get_decision_strategy()->get_confirmation());
+    manager->clear_if_necessary();
+    return confirmation;
+  }
+  else
+  {
+    return true;
+  }
 }
 
 void MovementManager::move_to_new_map(MapPtr new_map)

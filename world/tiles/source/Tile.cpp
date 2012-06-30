@@ -122,6 +122,12 @@ TileType Tile::get_tile_type() const
   return tile_type;
 }
 
+// All tiles are assumed to be ground tiles, unless the derived class declares otherwise.
+TileSuperType Tile::get_tile_super_type() const
+{
+  return TILE_SUPER_TYPE_GROUND;
+}
+
 void Tile::set_tile_subtype(const TileType new_tile_subtype)
 {
   tile_subtype = new_tile_subtype;

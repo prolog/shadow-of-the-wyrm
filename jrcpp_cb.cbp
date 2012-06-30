@@ -144,6 +144,7 @@
 		</Unit>
 		<Unit filename="engine\XML\include\XMLAmuletReader.hpp" />
 		<Unit filename="engine\XML\include\XMLArmourReader.hpp" />
+		<Unit filename="engine\XML\include\XMLBoatReader.hpp" />
 		<Unit filename="engine\XML\include\XMLBookReader.hpp" />
 		<Unit filename="engine\XML\include\XMLClassesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLConfigurationReader.hpp" />
@@ -171,6 +172,7 @@
 		<Unit filename="engine\XML\include\XMLWearableReader.hpp" />
 		<Unit filename="engine\XML\source\XMLAmuletReader.cpp" />
 		<Unit filename="engine\XML\source\XMLArmourReader.cpp" />
+		<Unit filename="engine\XML\source\XMLBoatReader.cpp" />
 		<Unit filename="engine\XML\source\XMLBookReader.cpp" />
 		<Unit filename="engine\XML\source\XMLClassesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLConfigurationReader.cpp" />
