@@ -123,3 +123,17 @@ list<ItemPtr> Inventory::get_items()
 {
   return items;
 }
+
+// Check to see if a particular item type exists within the Inventory
+bool Inventory::has_item_type(const ItemType type) const
+{
+  BOOST_FOREACH(ItemPtr item, items)
+  {
+    if (item && item->get_type() == type)
+    {
+      return true;
+    }
+  }
+  
+  return false;
+}
