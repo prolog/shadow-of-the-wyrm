@@ -20,7 +20,13 @@ void CreaturePietyRegeneration::regen(CreaturePtr creature, const ulonglong minu
     bool crowned = deity_status.get_crowned();
     
     ClassPtr cur_class = cm.get_class(creature->get_class_id());
-    int piety_regen_bonus = cur_class->get_piety_regen_bonus();
+    
+    int piety_regen_bonus = 0;
+    
+    if (cur_class)
+    {
+      piety_regen_bonus = cur_class->get_piety_regen_bonus();
+    }
 
     if (piety < 0)
     {

@@ -34,6 +34,13 @@ enum EyeColour
   EYE_COLOUR_GREY = 4
 };
 
+// This should always mirror the worn location enumeration!
+enum Handedness
+{
+  RIGHT_HANDED = 4,
+  LEFT_HANDED = 5
+};
+
 class CreatureConstants
 {
   public:

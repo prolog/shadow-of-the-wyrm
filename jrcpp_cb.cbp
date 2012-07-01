@@ -262,6 +262,7 @@
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SoakCalculator.cpp" />
+		<Unit filename="engine\calculators\source\ToHitCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ToHitCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\WeaponDifficultyCalculator.cpp" />
 		<Unit filename="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
@@ -543,6 +544,7 @@
 		<Unit filename="engine\include\Range.hpp" />
 		<Unit filename="engine\include\ReligionManager.hpp" />
 		<Unit filename="engine\include\SavageLandsEngine.hpp" />
+		<Unit filename="engine\include\SkillManager.hpp" />
 		<Unit filename="engine\include\StringConstants.hpp" />
 		<Unit filename="engine\include\StringTable.hpp" />
 		<Unit filename="engine\menus\include\ClassSelectionScreen.hpp" />
@@ -589,6 +591,7 @@
 		<Unit filename="engine\source\RaceManager.cpp" />
 		<Unit filename="engine\source\ReligionManager.cpp" />
 		<Unit filename="engine\source\SavageLandsEngine.cpp" />
+		<Unit filename="engine\source\SkillManager.cpp" />
 		<Unit filename="engine\source\StringConstants.cpp" />
 		<Unit filename="engine\source\StringTable.cpp" />
 		<Unit filename="engine\source\unit_tests\CreatureFactory_test.cpp">

@@ -1,6 +1,12 @@
 #include "LightMeleeAndRangedWeaponToHitCalculator.hpp"
 
 LightMeleeAndRangedWeaponToHitCalculator::LightMeleeAndRangedWeaponToHitCalculator()
+: ToHitCalculator()
+{
+}
+
+LightMeleeAndRangedWeaponToHitCalculator::LightMeleeAndRangedWeaponToHitCalculator(const AttackType new_attack_type)
+: ToHitCalculator(new_attack_type)
 {
 }
 
@@ -12,9 +18,11 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
   {
     int dexterity = creature->get_dexterity().get_current();
     int valour    = creature->get_valour().get_current();
+    int weapon    = get_weapon_bonus(creature);
     
     to_hit += (dexterity - 10) / 3;
     to_hit += (valour - 50) / 5;
+    to_hit +=  weapon;
   }
   
   return to_hit;

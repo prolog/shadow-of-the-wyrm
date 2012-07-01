@@ -4,6 +4,11 @@ HeavyWeaponToHitCalculator::HeavyWeaponToHitCalculator()
 {
 }
 
+HeavyWeaponToHitCalculator::HeavyWeaponToHitCalculator(const AttackType new_attack_type)
+: ToHitCalculator(new_attack_type)
+{
+}
+
 int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
 {
   int to_hit = 0;

@@ -12,6 +12,7 @@ Creature::Creature()
 , size(CREATURE_SIZE_MEDIUM)
 , eye_colour(EYE_COLOUR_BROWN)
 , hair_colour(HAIR_COLOUR_BLACK)
+, handedness(RIGHT_HANDED)
 , ivory_pieces(0)
 , symbol('?')
 , colour(COLOUR_WHITE)
@@ -148,6 +149,28 @@ void Creature::set_hair_colour(const HairColour new_hair_colour)
 HairColour Creature::get_hair_colour() const
 {
   return hair_colour;
+}
+
+void Creature::set_handedness(const Handedness new_handedness)
+{
+  handedness = new_handedness;
+}
+
+Handedness Creature::get_handedness() const
+{
+  return handedness;
+}
+
+Handedness Creature::get_off_handedness() const
+{
+  if (handedness == RIGHT_HANDED)
+  {
+    return LEFT_HANDED;
+  }
+  else
+  {
+    return RIGHT_HANDED;
+  }
 }
 
 void Creature::set_race_id(const string& new_race_id)
