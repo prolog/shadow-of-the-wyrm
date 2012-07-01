@@ -1,6 +1,7 @@
 #include "MagicToHitCalculator.hpp"
 
 MagicToHitCalculator::MagicToHitCalculator()
+: ToHitCalculator(ATTACK_TYPE_MAGICAL)
 {
 }
 

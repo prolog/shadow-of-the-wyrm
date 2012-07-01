@@ -61,6 +61,10 @@ class Creature
     void set_hair_colour(const HairColour new_hair_colour);
     HairColour get_hair_colour() const;
     
+    void set_handedness(const Handedness new_handedness);
+    Handedness get_handedness() const;
+    Handedness get_off_handedness() const;
+    
     // Set/Get race and class identifiers
     void set_race_id(const std::string& new_race_id);
     std::string get_race_id() const;
@@ -190,6 +194,7 @@ class Creature
     CreatureSize size;
     EyeColour eye_colour;
     HairColour hair_colour;
+    Handedness handedness;
     
     std::string short_description_sid;
     std::string description_sid;

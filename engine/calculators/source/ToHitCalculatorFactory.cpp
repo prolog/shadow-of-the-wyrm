@@ -30,17 +30,17 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator(CreaturePtr 
     case ATTACK_TYPE_MELEE_PRIMARY:
     {
       creature_weapon = weapon_manager.get_weapon(creature, attack_type);
-      calculator = create_to_hit_calculator_given_weapon(size, creature_weapon);
+      calculator = create_to_hit_calculator_given_weapon(size, creature_weapon, attack_type);
       break;
     }
     case ATTACK_TYPE_MELEE_SECONDARY:
     {
       creature_weapon = weapon_manager.get_weapon(creature, attack_type);
-      calculator = create_to_hit_calculator_given_weapon(size, creature_weapon);
+      calculator = create_to_hit_calculator_given_weapon(size, creature_weapon, attack_type);
       break;
     }
     case ATTACK_TYPE_RANGED:
-      calculator = make_shared<LightMeleeAndRangedWeaponToHitCalculator>();
+      calculator = make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
       break;
     case ATTACK_TYPE_MAGICAL: // Fall through intentionally
     default:
@@ -63,7 +63,7 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator(CreaturePtr 
 // If a goblin kicks you, it's a light attack.
 //
 // And if a dragon claws you, it's a heavy attack.
-ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator_given_weapon(const CreatureSize creature_size, WeaponPtr weapon)
+ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator_given_weapon(const CreatureSize creature_size, WeaponPtr weapon, const AttackType attack_type)
 {
   ToHitCalculatorPtr calculator;
   
@@ -74,11 +74,11 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator_given_weapon
     // JCD FIXME magic number
     if (weight > CombatConstants::HEAVY_WEAPON_THRESHOLD_IN_LBS)
     {
-      calculator = make_shared<HeavyWeaponToHitCalculator>();
+      calculator = make_shared<HeavyWeaponToHitCalculator>(attack_type);
     }
     else
     {
-      calculator = make_shared<LightMeleeAndRangedWeaponToHitCalculator>();
+      calculator = make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
     }
   }
   else

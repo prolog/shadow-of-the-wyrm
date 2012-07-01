@@ -15,10 +15,10 @@ WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attac
     {
       case ATTACK_TYPE_RANGED:
       case ATTACK_TYPE_MELEE_PRIMARY:
-        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_RIGHT_HAND));
+        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_handedness())));
         break;
       case ATTACK_TYPE_MELEE_SECONDARY:
-        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_LEFT_HAND));
+        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_off_handedness())));
         break;
       case ATTACK_TYPE_MAGICAL:
       default:
