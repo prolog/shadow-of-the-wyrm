@@ -6,7 +6,7 @@ using std::string;
 
 const int CreaturePietyRegeneration::MINUTES_PER_POINT_OF_PIETY = 10;
 
-void CreaturePietyRegeneration::regen(CreaturePtr creature, const ulonglong minutes_elapsed)
+void CreaturePietyRegeneration::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
   if (creature)
   {
@@ -30,13 +30,13 @@ void CreaturePietyRegeneration::regen(CreaturePtr creature, const ulonglong minu
 
     if (piety < 0)
     {
-      new_piety = regenerate_piety(piety, piety_regen_bonus, minutes_elapsed, crowned);
+      new_piety = regenerate_piety(piety, piety_regen_bonus, total_minutes_elapsed, crowned);
     }
     else
     {
       if (!crowned)
       {
-        new_piety = degenerate_piety(piety, piety_regen_bonus, minutes_elapsed);
+        new_piety = degenerate_piety(piety, piety_regen_bonus, total_minutes_elapsed);
       }
     }
     

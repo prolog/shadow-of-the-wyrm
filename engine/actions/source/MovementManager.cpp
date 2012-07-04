@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MessageManager.hpp"
+#include "MovementAccumulationUpdater.hpp"
 #include "MovementManager.hpp"
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
@@ -104,8 +105,6 @@ ActionCostValue MovementManager::move_off_map(CreaturePtr creature, MapPtr map, 
         manager->send();
         
         movement_success = get_action_cost_value();
-        
-        // JCD FIXME: Might cause problems later with many turns.
       } 
     }
   }
@@ -155,6 +154,10 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
         // Update the map info
         MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
         TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
+        
+        MovementAccumulationUpdater mau;
+        mau.update(creature, new_tile);
+        
         add_tile_related_messages(creature, manager, new_tile);
         movement_success = get_action_cost_value();
       }

@@ -4,7 +4,7 @@
 class CreaturePietyRegeneration : public ICreatureRegeneration
 {
   public:
-    void regen(CreaturePtr creature, const ulonglong minutes_elapsed);
+    void tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed);
     
   protected:
     int regenerate_piety(const int piety, const int piety_regen_bonus, const ulonglong minutes_elapsed, const bool crowned);

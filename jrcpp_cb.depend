@@ -267,13 +267,14 @@
 	"ItemManager.hpp"
 	"RNG.hpp"
 
-1341065373 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+1341405602 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
 	"Game.hpp"
 	"Log.hpp"
 	"MessageManager.hpp"
+	"MovementAccumulationUpdater.hpp"
 	"MovementManager.hpp"
 	"MapExitUtils.hpp"
 	"MapUtils.hpp"
@@ -1299,21 +1300,23 @@
 	<iostream>
 	<fstream>
 
-1340714844 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturehpregeneration.cpp
+1341405023 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturehpregeneration.cpp
 	"CreatureHPRegeneration.hpp"
 
-1341153123 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturepietyregeneration.cpp
+1341405050 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturepietyregeneration.cpp
 	"ClassManager.hpp"
 	"CreaturePietyRegeneration.hpp"
 	"ReligionConstants.hpp"
 
-1340715075 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
+1341406571 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"CreatureHPRegeneration.hpp"
 	"CreaturePietyRegeneration.hpp"
 	"CreatureTimeObserver.hpp"
 	"Game.hpp"
+	"MovementAccumulationChecker.hpp"
+	"MovementAccumulator.hpp"
 	"RegenerationConstants.hpp"
 
 1340457231 source:c:\cygwin\home\julian\jrcpp\engine\time\source\itimeobserver.cpp
@@ -1506,7 +1509,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1341148107 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1341240480 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	<limits>
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
@@ -1975,4 +1978,17 @@
 	"HeavyWeaponToHitCalculator.hpp"
 	"MagicToHitCalculator.hpp"
 	"WeaponManager.hpp"
+
+1341239963 source:c:\cygwin\home\julian\jrcpp\world\source\movementaccumulation.cpp
+	"MovementAccumulation.hpp"
+
+1341404993 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulator.cpp
+	"MovementAccumulator.hpp"
+	"MovementAccumulation.hpp"
+
+1341405643 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementaccumulationupdater.cpp
+	"MovementAccumulationUpdater.hpp"
+
+1341406065 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulationchecker.cpp
+	"MovementAccumulationChecker.hpp"
 

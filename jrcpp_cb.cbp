@@ -207,6 +207,7 @@
 		<Unit filename="engine\actions\include\IActionManager.hpp" />
 		<Unit filename="engine\actions\include\InventoryManager.hpp" />
 		<Unit filename="engine\actions\include\ItemManager.hpp" />
+		<Unit filename="engine\actions\include\MovementAccumulationUpdater.hpp" />
 		<Unit filename="engine\actions\include\MovementManager.hpp" />
 		<Unit filename="engine\actions\include\PrayerManager.hpp" />
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
@@ -219,6 +220,7 @@
 		<Unit filename="engine\actions\source\EquipmentManager.cpp" />
 		<Unit filename="engine\actions\source\InventoryManager.cpp" />
 		<Unit filename="engine\actions\source\ItemManager.cpp" />
+		<Unit filename="engine\actions\source\MovementAccumulationUpdater.cpp" />
 		<Unit filename="engine\actions\source\MovementManager.cpp" />
 		<Unit filename="engine\actions\source\PrayerManager.cpp" />
 		<Unit filename="engine\actions\source\SearchActionManager.cpp" />
@@ -618,7 +620,9 @@
 		<Unit filename="engine\time\include\CreatureHPRegeneration.hpp" />
 		<Unit filename="engine\time\include\CreaturePietyRegeneration.hpp" />
 		<Unit filename="engine\time\include\CreatureTimeObserver.hpp" />
+		<Unit filename="engine\time\include\ICreatureRegeneration.hpp" />
 		<Unit filename="engine\time\include\ITimeObserver.hpp" />
+		<Unit filename="engine\time\include\MovementAccumulator.hpp" />
 		<Unit filename="engine\time\include\RegenerationConstants.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeper.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
@@ -626,6 +630,7 @@
 		<Unit filename="engine\time\source\CreaturePietyRegeneration.cpp" />
 		<Unit filename="engine\time\source\CreatureTimeObserver.cpp" />
 		<Unit filename="engine\time\source\ITimeObserver.cpp" />
+		<Unit filename="engine\time\source\MovementAccumulator.cpp" />
 		<Unit filename="engine\time\source\RegenerationConstants.cpp" />
 		<Unit filename="engine\time\source\WorldTimeKeeper.cpp" />
 		<Unit filename="engine\time\source\WorldTimeKeeperCoordinator.cpp" />
@@ -678,6 +683,8 @@
 		<Unit filename="world\include\MapExit.hpp" />
 		<Unit filename="world\include\MapTypes.hpp" />
 		<Unit filename="world\include\MiscItem.hpp" />
+		<Unit filename="world\include\MovementAccumulation.hpp" />
+		<Unit filename="world\include\MovementTypes.hpp" />
 		<Unit filename="world\include\Plant.hpp" />
 		<Unit filename="world\include\Potion.hpp" />
 		<Unit filename="world\include\Race.hpp" />
@@ -757,6 +764,7 @@
 		<Unit filename="world\source\Map.cpp" />
 		<Unit filename="world\source\MapExit.cpp" />
 		<Unit filename="world\source\MiscItem.cpp" />
+		<Unit filename="world\source\MovementAccumulation.cpp" />
 		<Unit filename="world\source\Plant.cpp" />
 		<Unit filename="world\source\Potion.cpp" />
 		<Unit filename="world\source\Race.cpp" />
