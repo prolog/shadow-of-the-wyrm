@@ -318,6 +318,16 @@ Skills& Creature::get_skills()
   return skills;
 }
 
+void Creature::set_movement_accumulation(const MovementAccumulation& new_accumulation)
+{
+  movement_accumulation = new_accumulation;
+}
+
+MovementAccumulation& Creature::get_movement_accumulation_ref()
+{
+  return movement_accumulation;
+}
+
 void Creature::set_base_damage(const Damage& new_base_damage)
 {
   damage = new_base_damage;

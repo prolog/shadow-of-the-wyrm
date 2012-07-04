@@ -11,6 +11,7 @@
 #include "Inventory.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
+#include "MovementAccumulation.hpp"
 #include "Religion.hpp"
 #include "Resistances.hpp"
 #include "Skills.hpp"
@@ -115,6 +116,9 @@ class Creature
 
     void set_skills(const Skills& new_skills);
     Skills& get_skills();
+    
+    void set_movement_accumulation(const MovementAccumulation& new_accumulation);
+    MovementAccumulation& get_movement_accumulation_ref();
     
     void set_base_damage(const Damage& new_base_damage);
     Damage get_base_damage() const;
@@ -235,6 +239,9 @@ class Creature
 
     // The creature's various skills.
     Skills skills;
+    
+    // Movement accumulation information.
+    MovementAccumulation movement_accumulation;
 
     // Point-based statistics
     Statistic hit_points;

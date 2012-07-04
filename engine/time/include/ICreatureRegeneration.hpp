@@ -6,7 +6,7 @@
 class ICreatureRegeneration
 {
   public:
-    virtual void regen(CreaturePtr creature, const ulonglong minutes_elapsed) = 0;
+    virtual void tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed) = 0;
 };
 
 typedef boost::shared_ptr<ICreatureRegeneration> ICreatureRegenerationPtr;

@@ -4,6 +4,8 @@
 #include "CreaturePietyRegeneration.hpp"
 #include "CreatureTimeObserver.hpp"
 #include "Game.hpp"
+#include "MovementAccumulationChecker.hpp"
+#include "MovementAccumulator.hpp"
 #include "RegenerationConstants.hpp"
 
 using namespace std;
@@ -18,16 +20,24 @@ CreatureTimeObserver::CreatureTimeObserver()
 // Set the list of regeneration helpers to apply to each creature on each "tick" (1 min passed)
 void CreatureTimeObserver::initialize_regeneration_helpers()
 {
+  // Regenerate the creature's HP
   ICreatureRegenerationPtr hp_regen    = make_shared<CreatureHPRegeneration>();
+  // Regenerate or degenerate the creature's piety, depending on the value.
   ICreatureRegenerationPtr piety_regen = make_shared<CreaturePietyRegeneration>();
+  // Update the minute values for the current movement accumulations.
+  ICreatureRegenerationPtr move_accum  = make_shared<MovementAccumulator>();
+  // Do things based on current movement accumulations - drown, fall from mountains, etc.
+  ICreatureRegenerationPtr move_checkr = make_shared<MovementAccumulationChecker>();
   
-  regen.push_back(hp_regen);
+  regen.push_back(hp_regen   );
   regen.push_back(piety_regen);
+  regen.push_back(move_accum );
+  regen.push_back(move_checkr);
 }
 
-void CreatureTimeObserver::notify(const ulonglong additional_minutes_elapsed)
+void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
 {
-  update_minutes_elapsed(additional_minutes_elapsed);
+  update_minutes_elapsed(minutes_this_tick);
 
   Game* game = Game::instance();
 
@@ -46,7 +56,7 @@ void CreatureTimeObserver::notify(const ulonglong additional_minutes_elapsed)
       {
         if (regen_helper)
         {
-          regen_helper->regen(creature, minutes_elapsed); 
+          regen_helper->tick(creature, minutes_this_tick, minutes_elapsed); 
         }
       }
     }
