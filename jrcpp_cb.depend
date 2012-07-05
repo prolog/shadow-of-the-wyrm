@@ -1989,6 +1989,23 @@
 1341405643 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementaccumulationupdater.cpp
 	"MovementAccumulationUpdater.hpp"
 
-1341406065 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulationchecker.cpp
+1341492118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulationchecker.cpp
 	"MovementAccumulationChecker.hpp"
+	"TerrainMovementAccumulationCheckerFactory.hpp"
+
+1341491731 source:c:\cygwin\home\julian\jrcpp\engine\time\source\nullmovementaccumulationchecker.cpp
+	"NullMovementAccumulationChecker.hpp"
+
+1341492443 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
+	"SwimmingMovementAccumulationChecker.hpp"
+
+1341492471 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+	"MountainClimbingMovementAccumulationChecker.hpp"
+
+1341492561 source:c:\cygwin\home\julian\jrcpp\engine\time\source\terrainmovementaccumulationcheckerfactory.cpp
+	<boost/make_shared.hpp>
+	"MountainClimbingMovementAccumulationChecker.hpp"
+	"NullMovementAccumulationChecker.hpp"
+	"SwimmingMovementAccumulationChecker.hpp"
+	"TerrainMovementAccumulationCheckerFactory.hpp"
 

@@ -256,7 +256,7 @@
 	<File name="engine\actions\include\ItemManager.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="674" topLine="0" />
 	</File>
-	<File name="engine\actions\include\MovementAccumulationUpdater.hpp" open="1" top="0" tabpos="7">
+	<File name="engine\actions\include\MovementAccumulationUpdater.hpp" open="1" top="0" tabpos="6">
 		<Cursor position="171" topLine="0" />
 	</File>
 	<File name="engine\actions\include\MovementManager.hpp" open="0" top="0" tabpos="6">
@@ -295,11 +295,11 @@
 	<File name="engine\actions\source\ItemManager.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1792" topLine="76" />
 	</File>
-	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="253" topLine="0" />
+	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="1250" topLine="14" />
 	</File>
-	<File name="engine\actions\source\MovementManager.cpp" open="1" top="0" tabpos="8">
-		<Cursor position="199" topLine="0" />
+	<File name="engine\actions\source\MovementManager.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="9753" topLine="304" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2522" topLine="60" />
@@ -1111,23 +1111,29 @@
 	<File name="engine\source\unit_tests\Messages_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="324" topLine="12" />
 	</File>
-	<File name="engine\time\include\CreatureHPRegeneration.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="176" topLine="0" />
+	<File name="engine\time\include\CreatureHPRegeneration.hpp" open="1" top="0" tabpos="10">
+		<Cursor position="234" topLine="0" />
 	</File>
 	<File name="engine\time\include\CreaturePietyRegeneration.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="50" topLine="0" />
+		<Cursor position="219" topLine="0" />
 	</File>
-	<File name="engine\time\include\CreatureTimeObserver.hpp" open="1" top="0" tabpos="5">
+	<File name="engine\time\include\CreatureTimeObserver.hpp" open="1" top="0" tabpos="4">
 		<Cursor position="30" topLine="0" />
 	</File>
-	<File name="engine\time\include\ICreatureRegeneration.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="153" topLine="0" />
+	<File name="engine\time\include\ICreatureRegeneration.hpp" open="1" top="0" tabpos="11">
+		<Cursor position="233" topLine="0" />
+	</File>
+	<File name="engine\time\include\ITerrainMovementAccumulationChecker.hpp" open="1" top="0" tabpos="16">
+		<Cursor position="280" topLine="0" />
 	</File>
 	<File name="engine\time\include\ITimeObserver.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="462" topLine="0" />
 	</File>
 	<File name="engine\time\include\MovementAccumulator.hpp" open="1" top="0" tabpos="1">
-		<Cursor position="320" topLine="0" />
+		<Cursor position="504" topLine="0" />
+	</File>
+	<File name="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" open="1" top="1" tabpos="17">
+		<Cursor position="174" topLine="0" />
 	</File>
 	<File name="engine\time\include\WorldTimeKeeper.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="402" topLine="0" />
@@ -1135,22 +1141,25 @@
 	<File name="engine\time\include\WorldTimeKeeperCoordinator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="91" topLine="0" />
 	</File>
-	<File name="engine\time\source\CreatureHPRegeneration.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="72" topLine="0" />
+	<File name="engine\time\source\CreatureHPRegeneration.cpp" open="1" top="0" tabpos="12">
+		<Cursor position="382" topLine="0" />
 	</File>
-	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="230" topLine="7" />
+	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="1" top="0" tabpos="13">
+		<Cursor position="1110" topLine="21" />
 	</File>
-	<File name="engine\time\source\CreatureTimeObserver.cpp" open="1" top="1" tabpos="4">
-		<Cursor position="1699" topLine="29" />
+	<File name="engine\time\source\CreatureTimeObserver.cpp" open="1" top="0" tabpos="14">
+		<Cursor position="2126" topLine="39" />
 	</File>
-	<File name="engine\time\source\ITimeObserver.cpp" open="1" top="0" tabpos="10">
+	<File name="engine\time\source\ITimeObserver.cpp" open="1" top="0" tabpos="9">
 		<Cursor position="590" topLine="5" />
 	</File>
-	<File name="engine\time\source\MovementAccumulator.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="329" topLine="0" />
+	<File name="engine\time\source\MovementAccumulationChecker.cpp" open="1" top="0" tabpos="15">
+		<Cursor position="205" topLine="0" />
 	</File>
-	<File name="engine\time\source\WorldTimeKeeper.cpp" open="1" top="0" tabpos="9">
+	<File name="engine\time\source\MovementAccumulator.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="315" topLine="0" />
+	</File>
+	<File name="engine\time\source\WorldTimeKeeper.cpp" open="1" top="0" tabpos="8">
 		<Cursor position="891" topLine="32" />
 	</File>
 	<File name="engine\time\source\WorldTimeKeeperCoordinator.cpp" open="0" top="0" tabpos="0">
