@@ -239,12 +239,12 @@ void Game::go()
       {
         // If we shouldn't keep playing (player has quit, has been killed, etc), then break out of the 
         // game loop.
-        if (!keep_playing)
-        {
-          break;
-        }
+        if (!keep_playing) break;
         
         process_elapsed_time(calendar, next_action_cost);
+
+        // Player may have been killed by some time-related effect.
+        if (!keep_playing) break;
                 
         ActionCost action_cost = process_action_for_creature(current_creature, current_map);
         ac.add(action_cost, current_creature->get_id());
@@ -321,6 +321,11 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 void Game::stop_playing()
 {
   keep_playing = false;
+}
+
+bool Game::should_keep_playing() const
+{
+  return keep_playing;
 }
 
 void Game::reload_map()

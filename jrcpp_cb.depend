@@ -407,7 +407,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatconstants.cpp
 	"CombatConstants.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1341579923 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"
@@ -1166,7 +1166,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1340887785 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1341665383 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1287,7 +1287,7 @@
 1341153647 source:c:\cygwin\home\julian\jrcpp\engine\source\skillmanager.cpp
 	"SkillManager.hpp"
 
-1341062635 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1341579441 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1308,7 +1308,7 @@
 	"CreaturePietyRegeneration.hpp"
 	"ReligionConstants.hpp"
 
-1341406571 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
+1341664951 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"CreatureHPRegeneration.hpp"
@@ -1328,7 +1328,8 @@
 1340454385 source:c:\cygwin\home\julian\jrcpp\engine\time\source\regenerationconstants.cpp
 	"RegenerationConstants.hpp"
 
-1340456918 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeeper.cpp
+1341665032 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeeper.cpp
+	"Game.hpp"
 	"WorldTimeKeeper.hpp"
 
 1340542876 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
@@ -1989,17 +1990,20 @@
 1341405643 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementaccumulationupdater.cpp
 	"MovementAccumulationUpdater.hpp"
 
-1341492118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulationchecker.cpp
+1341580583 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulationchecker.cpp
 	"MovementAccumulationChecker.hpp"
 	"TerrainMovementAccumulationCheckerFactory.hpp"
 
 1341491731 source:c:\cygwin\home\julian\jrcpp\engine\time\source\nullmovementaccumulationchecker.cpp
 	"NullMovementAccumulationChecker.hpp"
 
-1341492443 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
+1341664376 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
+	"CombatManager.hpp"
+	"StringConstants.hpp"
+	"SwimmingCalculator.hpp"
 	"SwimmingMovementAccumulationChecker.hpp"
 
-1341492471 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+1341493299 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
 	"MountainClimbingMovementAccumulationChecker.hpp"
 
 1341492561 source:c:\cygwin\home\julian\jrcpp\engine\time\source\terrainmovementaccumulationcheckerfactory.cpp
@@ -2008,4 +2012,8 @@
 	"NullMovementAccumulationChecker.hpp"
 	"SwimmingMovementAccumulationChecker.hpp"
 	"TerrainMovementAccumulationCheckerFactory.hpp"
+
+1341664630 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\swimmingcalculator.cpp
+	<algorithm>
+	"SwimmingCalculator.hpp"
 
