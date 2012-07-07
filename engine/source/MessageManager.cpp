@@ -1,4 +1,5 @@
 #include <boost/foreach.hpp>
+#include "Conversion.hpp"
 #include "MessageManager.hpp"
 
 using namespace std;
@@ -53,7 +54,7 @@ void MessageManager::send(const bool halt_after, const bool reset_cursor_after)
 
     BOOST_FOREACH(Message m, messages)
     {
-      message_text = m.get_content() + " ";
+      message_text = m.get_content() + get_count_indicator(m) + " ";
 
       // Don't immediately clear, and only send text if the message buffer has something.
       if (!message_text.empty())
@@ -86,7 +87,27 @@ bool MessageManager::add_new_message
 )
 {
 	Message message(message_text, colour, importance);
-	unread.add(message);
+  boost::uuids::uuid id = boost::uuids::random_generator()();
+	message.set_id(id);
+	
+	if (unread.empty())
+	{
+    unread.add(message);
+	}
+	else
+	{
+	  vector<Message>& messages = unread.get_messages_ref();
+	  Message& last_message = messages[messages.size()-1];
+	  
+	  if (last_message.get_content() == message_text)
+	  {
+	    last_message.set_count(last_message.get_count()+1);
+	  }
+	  else
+	  {
+	    unread.add(message);
+	  }
+	}
 	
 	return true;
 }
@@ -128,4 +149,17 @@ Messages MessageManager::get_unread_messages_and_mark_as_read()
 void MessageManager::set_display(DisplayPtr new_display)
 {
   user_display = new_display;
+}
+
+string MessageManager::get_count_indicator(const Message& m)
+{
+  string count_indicator;
+  int count = m.get_count();
+
+  if (count > 1)
+  {
+    count_indicator = " (x" + Integer::to_string(count) + ")"; 
+  }
+  
+  return count_indicator;
 }

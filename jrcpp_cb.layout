@@ -343,7 +343,7 @@
 	<File name="engine\calculators\include\ResistancesCalculator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="288" topLine="0" />
 	</File>
-	<File name="engine\calculators\include\SwimmingCalculator.hpp" open="1" top="0" tabpos="1">
+	<File name="engine\calculators\include\SwimmingCalculator.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="343" topLine="0" />
 	</File>
 	<File name="engine\calculators\include\ToHitCalculator.hpp" open="0" top="0" tabpos="5">
@@ -398,7 +398,7 @@
 		<Cursor position="505" topLine="12" />
 	</File>
 	<File name="engine\calculators\source\SwimmingCalculator.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="177" topLine="0" />
+		<Cursor position="629" topLine="1" />
 	</File>
 	<File name="engine\calculators\source\ToHitCalculator.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="598" topLine="6" />
@@ -427,7 +427,7 @@
 	<File name="engine\combat\include\CombatConstants.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="508" topLine="0" />
 	</File>
-	<File name="engine\combat\include\CombatManager.hpp" open="1" top="0" tabpos="3">
+	<File name="engine\combat\include\CombatManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="524" topLine="6" />
 	</File>
 	<File name="engine\combat\include\CreatureDeathManager.hpp" open="0" top="0" tabpos="8">
@@ -454,8 +454,8 @@
 	<File name="engine\combat\source\CombatConstants.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="79" topLine="0" />
 	</File>
-	<File name="engine\combat\source\CombatManager.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="5449" topLine="155" />
+	<File name="engine\combat\source\CombatManager.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="5858" topLine="164" />
 	</File>
 	<File name="engine\combat\source\CreatureDeathManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="764" topLine="19" />
@@ -469,8 +469,8 @@
 	<File name="engine\combat\source\LevelConstants.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="31" topLine="0" />
 	</File>
-	<File name="engine\combat\source\PlayerDeathManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="958" topLine="13" />
+	<File name="engine\combat\source\PlayerDeathManager.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="742" topLine="13" />
 	</File>
 	<File name="engine\combat\source\WeaponManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="668" topLine="9" />
@@ -959,7 +959,7 @@
 		<Cursor position="236" topLine="0" />
 	</File>
 	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="874" topLine="24" />
+		<Cursor position="1742" topLine="44" />
 	</File>
 	<File name="engine\include\ItemFactory.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="117" topLine="0" />
@@ -976,11 +976,14 @@
 	<File name="engine\include\MapUtils.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="1976" topLine="28" />
 	</File>
-	<File name="engine\include\Message.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="127" topLine="0" />
+	<File name="engine\include\Message.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="836" topLine="19" />
 	</File>
-	<File name="engine\include\MessageManager.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="600" topLine="3" />
+	<File name="engine\include\MessageManager.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="766" topLine="6" />
+	</File>
+	<File name="engine\include\Messages.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="245" topLine="0" />
 	</File>
 	<File name="engine\include\Naming.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="174" topLine="0" />
@@ -1000,7 +1003,7 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="412" topLine="22" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="4">
+	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="16974" topLine="469" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
@@ -1039,8 +1042,8 @@
 	<File name="engine\source\ClassManager.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="247" topLine="0" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="3233" topLine="84" />
+	<File name="engine\source\CreatureFactory.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="10063" topLine="274" />
 	</File>
 	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="155" topLine="5" />
@@ -1052,7 +1055,7 @@
 		<Cursor position="443" topLine="4" />
 	</File>
 	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="6256" topLine="246" />
+		<Cursor position="7115" topLine="261" />
 	</File>
 	<File name="engine\source\ItemFactory.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="526" topLine="5" />
@@ -1070,13 +1073,13 @@
 		<Cursor position="10622" topLine="400" />
 	</File>
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="506" topLine="9" />
+		<Cursor position="1053" topLine="46" />
 	</File>
-	<File name="engine\source\MessageManager.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="2288" topLine="93" />
+	<File name="engine\source\MessageManager.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="2226" topLine="88" />
 	</File>
-	<File name="engine\source\Messages.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="100" topLine="0" />
+	<File name="engine\source\Messages.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="249" topLine="2" />
 	</File>
 	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="568" topLine="10" />
@@ -1096,7 +1099,7 @@
 	<File name="engine\source\SkillManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="325" topLine="0" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="5">
+	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="27322" topLine="652" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
@@ -1159,8 +1162,8 @@
 	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="1110" topLine="21" />
 	</File>
-	<File name="engine\time\source\CreatureTimeObserver.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="1222" topLine="18" />
+	<File name="engine\time\source\CreatureTimeObserver.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="2250" topLine="47" />
 	</File>
 	<File name="engine\time\source\ITimeObserver.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="590" topLine="5" />
@@ -1168,20 +1171,20 @@
 	<File name="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="331" topLine="0" />
 	</File>
-	<File name="engine\time\source\MovementAccumulationChecker.cpp" open="1" top="1" tabpos="8">
-		<Cursor position="570" topLine="0" />
+	<File name="engine\time\source\MovementAccumulationChecker.cpp" open="0" top="0" tabpos="8">
+		<Cursor position="345" topLine="0" />
 	</File>
 	<File name="engine\time\source\MovementAccumulator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="315" topLine="0" />
 	</File>
-	<File name="engine\time\source\SwimmingMovementAccumulationChecker.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="145" topLine="4" />
+	<File name="engine\time\source\SwimmingMovementAccumulationChecker.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="912" topLine="15" />
 	</File>
 	<File name="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1105" topLine="6" />
 	</File>
 	<File name="engine\time\source\WorldTimeKeeper.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="891" topLine="32" />
+		<Cursor position="815" topLine="34" />
 	</File>
 	<File name="engine\time\source\WorldTimeKeeperCoordinator.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="329" topLine="0" />
