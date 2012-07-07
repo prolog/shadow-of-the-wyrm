@@ -153,24 +153,36 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 // Once damage is dealt, check for death.  If the attack has lowered the attacked creature's
 // HP to 0, kill it, and award the dead creature's experience value to the attacking
 // creature.
-void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt)
+void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const string message_sid)
 {
   Game* game = Game::instance();
   MapPtr map = game->get_current_map();
   
-  if (map && attacking_creature && attacked_creature)
+  if (map && attacked_creature)
   {
     int current_hp = attacked_creature->decrement_hit_points(damage_dealt);
     
-    if (current_hp <= CombatConstants::DEATH_THRESHOLD)
+    if (!message_sid.empty())
     {
-      uint experience_value = attacked_creature->get_experience_value();
-      
+      MessageManager* manager = MessageManager::instance();
+      if (manager)
+      {
+        manager->add_new_message(StringTable::get(message_sid));
+      }        
+    }
+    
+    if (current_hp <= CombatConstants::DEATH_THRESHOLD)
+    {      
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacked_creature, map);
       death_manager->die();
-      
-      ExperienceManager em;
-      em.gain_experience(attacking_creature, experience_value);
+
+      // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.
+      if (attacking_creature)
+      {
+        ExperienceManager em;
+        uint experience_value = attacked_creature->get_experience_value();
+        em.gain_experience(attacking_creature, experience_value);
+      }
     }
   }
 }

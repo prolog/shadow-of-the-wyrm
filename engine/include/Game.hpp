@@ -54,6 +54,7 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     void create_new_world(CreaturePtr creature);
     void go(); // main game loop
     void stop_playing(); // end the game
+    bool should_keep_playing() const; // Check to see if the "game over" flag's been set.
 
     // Additional operations will eventually be needed to do many
     // worlds and rebirth.

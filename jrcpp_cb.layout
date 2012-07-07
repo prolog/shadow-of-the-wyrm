@@ -256,7 +256,7 @@
 	<File name="engine\actions\include\ItemManager.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="674" topLine="0" />
 	</File>
-	<File name="engine\actions\include\MovementAccumulationUpdater.hpp" open="1" top="0" tabpos="6">
+	<File name="engine\actions\include\MovementAccumulationUpdater.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="171" topLine="0" />
 	</File>
 	<File name="engine\actions\include\MovementManager.hpp" open="0" top="0" tabpos="6">
@@ -295,10 +295,10 @@
 	<File name="engine\actions\source\ItemManager.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1792" topLine="76" />
 	</File>
-	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="1" top="0" tabpos="5">
+	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1250" topLine="14" />
 	</File>
-	<File name="engine\actions\source\MovementManager.cpp" open="1" top="0" tabpos="7">
+	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="9753" topLine="304" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
@@ -342,6 +342,9 @@
 	</File>
 	<File name="engine\calculators\include\ResistancesCalculator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="288" topLine="0" />
+	</File>
+	<File name="engine\calculators\include\SwimmingCalculator.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="343" topLine="0" />
 	</File>
 	<File name="engine\calculators\include\ToHitCalculator.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="308" topLine="0" />
@@ -394,6 +397,9 @@
 	<File name="engine\calculators\source\SoakCalculator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="505" topLine="12" />
 	</File>
+	<File name="engine\calculators\source\SwimmingCalculator.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="177" topLine="0" />
+	</File>
 	<File name="engine\calculators\source\ToHitCalculator.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="598" topLine="6" />
 	</File>
@@ -421,8 +427,8 @@
 	<File name="engine\combat\include\CombatConstants.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="508" topLine="0" />
 	</File>
-	<File name="engine\combat\include\CombatManager.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="879" topLine="17" />
+	<File name="engine\combat\include\CombatManager.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="524" topLine="6" />
 	</File>
 	<File name="engine\combat\include\CreatureDeathManager.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="149" topLine="0" />
@@ -448,8 +454,8 @@
 	<File name="engine\combat\source\CombatConstants.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="79" topLine="0" />
 	</File>
-	<File name="engine\combat\source\CombatManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2055" topLine="60" />
+	<File name="engine\combat\source\CombatManager.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="5449" topLine="155" />
 	</File>
 	<File name="engine\combat\source\CreatureDeathManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="764" topLine="19" />
@@ -994,8 +1000,8 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="412" topLine="22" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="4389" topLine="107" />
+	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="16974" topLine="469" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="0" topLine="0" />
@@ -1090,8 +1096,8 @@
 	<File name="engine\source\SkillManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="325" topLine="0" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="5398" topLine="111" />
+	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="27322" topLine="652" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1111,29 +1117,35 @@
 	<File name="engine\source\unit_tests\Messages_test.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="324" topLine="12" />
 	</File>
-	<File name="engine\time\include\CreatureHPRegeneration.hpp" open="1" top="0" tabpos="10">
+	<File name="engine\time\include\CreatureHPRegeneration.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="234" topLine="0" />
 	</File>
-	<File name="engine\time\include\CreaturePietyRegeneration.hpp" open="1" top="0" tabpos="2">
+	<File name="engine\time\include\CreaturePietyRegeneration.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="219" topLine="0" />
 	</File>
-	<File name="engine\time\include\CreatureTimeObserver.hpp" open="1" top="0" tabpos="4">
+	<File name="engine\time\include\CreatureTimeObserver.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="30" topLine="0" />
 	</File>
-	<File name="engine\time\include\ICreatureRegeneration.hpp" open="1" top="0" tabpos="11">
+	<File name="engine\time\include\ICreatureRegeneration.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="233" topLine="0" />
 	</File>
-	<File name="engine\time\include\ITerrainMovementAccumulationChecker.hpp" open="1" top="0" tabpos="16">
-		<Cursor position="280" topLine="0" />
+	<File name="engine\time\include\ITerrainMovementAccumulationChecker.hpp" open="0" top="0" tabpos="1">
+		<Cursor position="204" topLine="0" />
 	</File>
 	<File name="engine\time\include\ITimeObserver.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="462" topLine="0" />
 	</File>
-	<File name="engine\time\include\MovementAccumulator.hpp" open="1" top="0" tabpos="1">
+	<File name="engine\time\include\MountainClimbingMovementAccumulationChecker.hpp" open="0" top="0" tabpos="8">
+		<Cursor position="114" topLine="0" />
+	</File>
+	<File name="engine\time\include\MovementAccumulator.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="504" topLine="0" />
 	</File>
-	<File name="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" open="1" top="1" tabpos="17">
-		<Cursor position="174" topLine="0" />
+	<File name="engine\time\include\SwimmingMovementAccumulationChecker.hpp" open="0" top="0" tabpos="6">
+		<Cursor position="296" topLine="0" />
+	</File>
+	<File name="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" open="0" top="0" tabpos="4">
+		<Cursor position="263" topLine="0" />
 	</File>
 	<File name="engine\time\include\WorldTimeKeeper.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="402" topLine="0" />
@@ -1141,25 +1153,34 @@
 	<File name="engine\time\include\WorldTimeKeeperCoordinator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="91" topLine="0" />
 	</File>
-	<File name="engine\time\source\CreatureHPRegeneration.cpp" open="1" top="0" tabpos="12">
+	<File name="engine\time\source\CreatureHPRegeneration.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="382" topLine="0" />
 	</File>
-	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="1" top="0" tabpos="13">
+	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="1110" topLine="21" />
 	</File>
-	<File name="engine\time\source\CreatureTimeObserver.cpp" open="1" top="0" tabpos="14">
-		<Cursor position="2126" topLine="39" />
+	<File name="engine\time\source\CreatureTimeObserver.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="1222" topLine="18" />
 	</File>
-	<File name="engine\time\source\ITimeObserver.cpp" open="1" top="0" tabpos="9">
+	<File name="engine\time\source\ITimeObserver.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="590" topLine="5" />
 	</File>
-	<File name="engine\time\source\MovementAccumulationChecker.cpp" open="1" top="0" tabpos="15">
-		<Cursor position="205" topLine="0" />
+	<File name="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="331" topLine="0" />
 	</File>
-	<File name="engine\time\source\MovementAccumulator.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\time\source\MovementAccumulationChecker.cpp" open="1" top="1" tabpos="8">
+		<Cursor position="570" topLine="0" />
+	</File>
+	<File name="engine\time\source\MovementAccumulator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="315" topLine="0" />
 	</File>
-	<File name="engine\time\source\WorldTimeKeeper.cpp" open="1" top="0" tabpos="8">
+	<File name="engine\time\source\SwimmingMovementAccumulationChecker.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="145" topLine="4" />
+	</File>
+	<File name="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="1105" topLine="6" />
+	</File>
+	<File name="engine\time\source\WorldTimeKeeper.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="891" topLine="32" />
 	</File>
 	<File name="engine\time\source\WorldTimeKeeperCoordinator.cpp" open="0" top="0" tabpos="0">

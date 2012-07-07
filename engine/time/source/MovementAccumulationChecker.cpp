@@ -7,5 +7,10 @@ void MovementAccumulationChecker::tick(CreaturePtr creature, const ulonglong min
   {
     MovementAccumulation& movement_accumulation = creature->get_movement_accumulation_ref();
     ITerrainMovementAccumulationCheckerPtr checker = TerrainMovementAccumulationCheckerFactory::create_terrain_movement_accumulation_checker(movement_accumulation);
+    
+    if (checker)
+    {
+      checker->check(creature);
+    }
   }
 }

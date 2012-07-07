@@ -54,9 +54,16 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
       
       BOOST_FOREACH(ICreatureRegenerationPtr regen_helper, regen)
       {
-        if (regen_helper)
+        if (game->should_keep_playing())
         {
-          regen_helper->tick(creature, minutes_this_tick, minutes_elapsed); 
+          if (regen_helper)
+          {
+            regen_helper->tick(creature, minutes_this_tick, minutes_elapsed); 
+          }
+        }
+        else
+        {
+          return;
         }
       }
     }

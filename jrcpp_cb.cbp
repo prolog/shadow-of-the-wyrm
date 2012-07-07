@@ -244,6 +244,7 @@
 		<Unit filename="engine\calculators\include\ResistancesCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SoakCalculator.hpp" />
+		<Unit filename="engine\calculators\include\SwimmingCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ToHitCalculatorFactory.hpp" />
 		<Unit filename="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
@@ -264,6 +265,7 @@
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SoakCalculator.cpp" />
+		<Unit filename="engine\calculators\source\SwimmingCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ToHitCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ToHitCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\WeaponDifficultyCalculator.cpp" />
@@ -623,9 +625,12 @@
 		<Unit filename="engine\time\include\ICreatureRegeneration.hpp" />
 		<Unit filename="engine\time\include\ITerrainMovementAccumulationChecker.hpp" />
 		<Unit filename="engine\time\include\ITimeObserver.hpp" />
+		<Unit filename="engine\time\include\MountainClimbingMovementAccumulationChecker.hpp" />
 		<Unit filename="engine\time\include\MovementAccumulationChecker.hpp" />
 		<Unit filename="engine\time\include\MovementAccumulator.hpp" />
+		<Unit filename="engine\time\include\NullMovementAccumulationChecker.hpp" />
 		<Unit filename="engine\time\include\RegenerationConstants.hpp" />
+		<Unit filename="engine\time\include\SwimmingMovementAccumulationChecker.hpp" />
 		<Unit filename="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeper.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
@@ -633,9 +638,12 @@
 		<Unit filename="engine\time\source\CreaturePietyRegeneration.cpp" />
 		<Unit filename="engine\time\source\CreatureTimeObserver.cpp" />
 		<Unit filename="engine\time\source\ITimeObserver.cpp" />
+		<Unit filename="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" />
 		<Unit filename="engine\time\source\MovementAccumulationChecker.cpp" />
 		<Unit filename="engine\time\source\MovementAccumulator.cpp" />
+		<Unit filename="engine\time\source\NullMovementAccumulationChecker.cpp" />
 		<Unit filename="engine\time\source\RegenerationConstants.cpp" />
+		<Unit filename="engine\time\source\SwimmingMovementAccumulationChecker.cpp" />
 		<Unit filename="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp" />
 		<Unit filename="engine\time\source\WorldTimeKeeper.cpp" />
 		<Unit filename="engine\time\source\WorldTimeKeeperCoordinator.cpp" />

@@ -662,6 +662,7 @@ const string ActionTextKeys::ACTION_DROP_NOT_ALLOWED           = "ACTION_DROP_NO
 const string ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED      = "ACTION_DROP_NO_ITEM_SELECTED";
 const string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP_NOTHING_ON_GROUND";
 const string ActionTextKeys::ACTION_MOVEMENT_BLOCKED           = "ACTION_MOVEMENT_BLOCKED";
+const string ActionTextKeys::ACTION_PLAYER_DROWNING            = "ACTION_PLAYER_DROWNING";
 
 // Messages that can be sent to the user in the message buffer
 TextMessages::TextMessages()

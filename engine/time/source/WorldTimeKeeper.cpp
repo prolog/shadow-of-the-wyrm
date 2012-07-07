@@ -1,3 +1,4 @@
+#include "Game.hpp"
 #include "WorldTimeKeeper.hpp"
 
 using std::map;
@@ -31,13 +32,14 @@ void WorldTimeKeeper::reset()
 
 void WorldTimeKeeper::tick(const double seconds)
 {
+  Game* game = Game::instance();
   seconds_counter += seconds;
   
-  while (seconds_counter > 60)
+  while (game && game->should_keep_playing() && seconds_counter > 60)
   {
     notify_all(1 /* one minutes has passed */);
     
-    seconds_counter -= 60; 
+    seconds_counter -= 60;       
   }  
 }
 
