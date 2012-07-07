@@ -1288,7 +1288,7 @@
 1341153647 source:c:\cygwin\home\julian\jrcpp\engine\source\skillmanager.cpp
 	"SkillManager.hpp"
 
-1341579441 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1341680080 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2004,7 +2004,8 @@
 	"SwimmingCalculator.hpp"
 	"SwimmingMovementAccumulationChecker.hpp"
 
-1341493299 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+1341682057 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+	"CombatManager.hpp"
 	"MountainClimbingMovementAccumulationChecker.hpp"
 
 1341492561 source:c:\cygwin\home\julian\jrcpp\engine\time\source\terrainmovementaccumulationcheckerfactory.cpp
@@ -2017,4 +2018,8 @@
 1341664630 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\swimmingcalculator.cpp
 	<algorithm>
 	"SwimmingCalculator.hpp"
+
+1341681580 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\mountainclimbingcalculator.cpp
+	"MountainClimbingCalculator.hpp"
+	"RNG.hpp"
 
