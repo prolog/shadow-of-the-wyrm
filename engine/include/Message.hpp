@@ -16,6 +16,7 @@ enum MessageImportance
 class Message
 {
 	public:
+    Message(); // empty message - not typically used.
 		Message(const std::string& new_content, const Colour colour, const MessageImportance& new_importance);
 
 		void set_content(const std::string& new_content);
@@ -29,10 +30,14 @@ class Message
 
 		void set_id(const boost::uuids::uuid& new_id);
 		boost::uuids::uuid get_id() const;
+		
+		void set_count(const int new_count);
+		int get_count() const;
 
 	private:
 		std::string content;
 		Colour colour;
 		MessageImportance importance;
 		boost::uuids::uuid id;
+		int count;
 };

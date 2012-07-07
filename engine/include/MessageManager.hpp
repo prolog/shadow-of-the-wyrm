@@ -18,6 +18,8 @@ class MessageManager
 		Messages get_unread_messages_and_mark_as_read();
 
 	protected:
+    std::string get_count_indicator(const Message& m);
+    
     friend class SavageLandsEngine;
     MessageManager();
     ~MessageManager();

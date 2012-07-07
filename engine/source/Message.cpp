@@ -1,5 +1,12 @@
 #include "Message.hpp"
 
+Message::Message()
+: colour(COLOUR_WHITE)
+, importance(MessageImportance_UNDEFINED)
+, count(1)
+{
+}
+
 Message::Message
 (
   const std::string& new_content
@@ -9,6 +16,7 @@ Message::Message
 : content(new_content)
 , colour(new_colour)
 , importance(new_importance)
+, count(1)
 {
 }
 
@@ -50,6 +58,16 @@ void Message::set_id(const boost::uuids::uuid& new_id)
 boost::uuids::uuid Message::get_id() const
 {
 	return id;
+}
+
+void Message::set_count(const int new_count)
+{
+  count = new_count;
+}
+
+int Message::get_count() const
+{
+  return count;
 }
 
 #ifdef UNIT_TESTS

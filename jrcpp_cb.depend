@@ -1224,18 +1224,19 @@
 1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\maputils_test.cpp
 	"gtest/gtest.h"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\message.cpp
+1341668305 source:c:\cygwin\home\julian\jrcpp\engine\source\message.cpp
 	"Message.hpp"
 	"unit_tests/Message_test.cpp"
 
 1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\message_test.cpp
 	"gtest/gtest.h"
 
-1341064277 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
+1341669204 source:c:\cygwin\home\julian\jrcpp\engine\source\messagemanager.cpp
 	<boost/foreach.hpp>
+	"Conversion.hpp"
 	"MessageManager.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\messages.cpp
+1341668588 source:c:\cygwin\home\julian\jrcpp\engine\source\messages.cpp
 	"Messages.hpp"
 	"unit_tests/Messages_test.cpp"
 
