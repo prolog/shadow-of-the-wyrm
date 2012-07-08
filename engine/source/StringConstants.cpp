@@ -665,6 +665,17 @@ const string ActionTextKeys::ACTION_MOVEMENT_BLOCKED           = "ACTION_MOVEMEN
 const string ActionTextKeys::ACTION_PLAYER_DROWNING            = "ACTION_PLAYER_DROWNING";
 const string ActionTextKeys::ACTION_PLAYER_FALL_FROM_MOUNTAIN  = "ACTION_PLAYER_FALL_FROM_MOUNTAIN";
 
+// Confirmation messages for moving on to dangerous tiles
+TileDangerConfirmationKeys::TileDangerConfirmationKeys()
+{
+}
+
+TileDangerConfirmationKeys::~TileDangerConfirmationKeys()
+{
+}
+
+const string TileDangerConfirmationKeys::TILE_DANGER_MOUNTAINS = "TILE_DANGER_MOUNTAINS";
+
 // Messages that can be sent to the user in the message buffer
 TextMessages::TextMessages()
 {

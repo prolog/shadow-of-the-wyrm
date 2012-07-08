@@ -36,7 +36,10 @@ void MountainClimbingMovementAccumulationChecker::check_for_fall(CreaturePtr cre
       
       CombatManager cm;
       CreaturePtr no_attacker;
-      cm.deal_damage(no_attacker, creature, mcc.generate_falling_damage(), fall_message_sid); 
+      cm.deal_damage(no_attacker, creature, mcc.generate_falling_damage(), fall_message_sid);
+
+      // Reset counter, since we're no longer "on" the mt.
+      creature->get_movement_accumulation_ref().set_minutes_on_tile_type_given_movement(0); 
     }
   }
 }

@@ -9,6 +9,7 @@
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "TerrainGeneratorFactory.hpp"
+#include "TileMovementConfirmation.hpp"
 
 using namespace std;
 using boost::make_shared;
@@ -167,32 +168,30 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
   return movement_success;
 }
 
-// Confirm if moving to a potentially dangerous tile from a safe one.
+// Confirm if moving to a potentially dangerous tile.
 bool MovementManager::confirm_move_to_tile_if_necessary(CreaturePtr creature, TilePtr creatures_old_tile, TilePtr creatures_new_tile)
 {
-  MessageManager* manager = MessageManager::instance();
+  TileMovementConfirmation tmc;
+  pair<bool, string> details = tmc.get_confirmation_details(creature, creatures_old_tile, creatures_new_tile);
   
-  // If there get to be enough of these, break these out into a map or a class or something.
-  // Probably should break out of MapUtils...
-  if (manager && MapUtils::is_moving_from_land_type_tile_to_water_type_tile(creatures_old_tile, creatures_new_tile))
+  if (details.first == true)
   {
-    Inventory& inv = creature->get_inventory();
+    MessageManager* manager = MessageManager::instance();
     
-    if (!inv.has_item_type(ITEM_TYPE_BOAT))
+    if (manager)
     {
       if (creature->get_is_player())
       { 
-        string swim = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);
-        manager->add_new_confirmation_message(swim);
+        manager->add_new_confirmation_message(details.second);
       }
       
       bool confirmation = (creature->get_decision_strategy()->get_confirmation());
       manager->clear_if_necessary();
-      return confirmation;
+      return confirmation;      
     }
   }
   
-  return true;
+  return true;  
 }
 
 void MovementManager::move_to_new_map(MapPtr new_map)

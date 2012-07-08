@@ -240,6 +240,7 @@
 		<Unit filename="engine\calculators\include\MagicalCombatTargetNumberCalculator.hpp" />
 		<Unit filename="engine\calculators\include\MagicalDamageCalculator.hpp" />
 		<Unit filename="engine\calculators\include\MeleeAndRangedCombatTargetNumberCalculator.hpp" />
+		<Unit filename="engine\calculators\include\MountainClimbingCalculator.hpp" />
 		<Unit filename="engine\calculators\include\PhysicalDamageCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ResistancesCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
@@ -261,6 +262,7 @@
 		<Unit filename="engine\calculators\source\MagicalCombatTargetNumberCalculator.cpp" />
 		<Unit filename="engine\calculators\source\MagicalDamageCalculator.cpp" />
 		<Unit filename="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp" />
+		<Unit filename="engine\calculators\source\MountainClimbingCalculator.cpp" />
 		<Unit filename="engine\calculators\source\PhysicalDamageCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
