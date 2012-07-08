@@ -267,7 +267,7 @@
 	"ItemManager.hpp"
 	"RNG.hpp"
 
-1341405602 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+1341752230 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
@@ -279,6 +279,7 @@
 	"MapExitUtils.hpp"
 	"MapUtils.hpp"
 	"TerrainGeneratorFactory.hpp"
+	"TileMovementConfirmation.hpp"
 
 1340847755 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\prayermanager.cpp
 	"ClassManager.hpp"
@@ -1288,7 +1289,7 @@
 1341153647 source:c:\cygwin\home\julian\jrcpp\engine\source\skillmanager.cpp
 	"SkillManager.hpp"
 
-1341680080 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1341750678 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1850,8 +1851,9 @@
 1339107606 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\marshtile_test.cpp
 	"gtest/gtest.h"
 
-1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\mountainstile.cpp
+1341750714 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\mountainstile.cpp
 	"MountainsTile.hpp"
+	"StringConstants.hpp"
 	"unit_tests/MountainsTile_test.cpp"
 
 1339107606 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\mountainstile_test.cpp
@@ -1922,7 +1924,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\templetile.cpp
 	"TempleTile.hpp"
 
-1341061990 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
+1341750469 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
 	"Inventory.hpp"
 	"Tile.hpp"
 	"unit_tests/Tile_test.cpp"
@@ -2004,7 +2006,7 @@
 	"SwimmingCalculator.hpp"
 	"SwimmingMovementAccumulationChecker.hpp"
 
-1341682057 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+1341749818 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
 	"CombatManager.hpp"
 	"MountainClimbingMovementAccumulationChecker.hpp"
 
@@ -2022,4 +2024,8 @@
 1341681580 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\mountainclimbingcalculator.cpp
 	"MountainClimbingCalculator.hpp"
 	"RNG.hpp"
+
+1341752549 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tilemovementconfirmation.cpp
+	"MapUtils.hpp"
+	"TileMovementConfirmation.hpp"
 

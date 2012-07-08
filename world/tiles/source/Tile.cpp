@@ -1,6 +1,8 @@
 #include "Inventory.hpp"
 #include "Tile.hpp"
 
+using std::string;
+
 /*
  ******************************************************************
 
@@ -141,6 +143,17 @@ TileType Tile::get_tile_subtype() const
 TileExitMap& Tile::get_tile_exit_map_ref()
 {
   return map_exits;
+}
+
+bool Tile::get_dangerous() const
+{
+  return false;
+}
+
+string Tile::get_danger_confirmation_sid() const
+{
+  string empty_sid;
+  return empty_sid;
 }
 
 #ifdef UNIT_TESTS

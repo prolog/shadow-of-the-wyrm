@@ -59,6 +59,9 @@ class Tile
     
     virtual TileExitMap& get_tile_exit_map_ref();
     
+    virtual bool get_dangerous() const;
+    virtual std::string get_danger_confirmation_sid() const;
+    
   protected:
     virtual void set_default_properties();
 
