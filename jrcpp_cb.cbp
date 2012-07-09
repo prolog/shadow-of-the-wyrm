@@ -211,6 +211,7 @@
 		<Unit filename="engine\actions\include\MovementManager.hpp" />
 		<Unit filename="engine\actions\include\PrayerManager.hpp" />
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
+		<Unit filename="engine\actions\include\TileMovementConfirmation.hpp" />
 		<Unit filename="engine\actions\include\VersionActionManager.hpp" />
 		<Unit filename="engine\actions\source\ActionCoordinator.cpp" />
 		<Unit filename="engine\actions\source\ActionCost.cpp" />
@@ -224,6 +225,7 @@
 		<Unit filename="engine\actions\source\MovementManager.cpp" />
 		<Unit filename="engine\actions\source\PrayerManager.cpp" />
 		<Unit filename="engine\actions\source\SearchActionManager.cpp" />
+		<Unit filename="engine\actions\source\TileMovementConfirmation.cpp" />
 		<Unit filename="engine\actions\source\VersionActionManager.cpp" />
 		<Unit filename="engine\calculators\include\ArcanaPointsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
@@ -755,6 +757,19 @@
 		<Unit filename="world\religion\source\Religion.cpp" />
 		<Unit filename="world\religion\source\ReligionConstants.cpp" />
 		<Unit filename="world\religion\source\ReligionFactory.cpp" />
+		<Unit filename="world\seasons\include\Autumn.hpp" />
+		<Unit filename="world\seasons\include\CalendarTypes.hpp" />
+		<Unit filename="world\seasons\include\ISeason.hpp" />
+		<Unit filename="world\seasons\include\SeasonFactory.hpp" />
+		<Unit filename="world\seasons\include\Spring.hpp" />
+		<Unit filename="world\seasons\include\Summer.hpp" />
+		<Unit filename="world\seasons\include\Winter.hpp" />
+		<Unit filename="world\seasons\source\Autumn.cpp" />
+		<Unit filename="world\seasons\source\ISeason.cpp" />
+		<Unit filename="world\seasons\source\SeasonFactory.cpp" />
+		<Unit filename="world\seasons\source\Spring.cpp" />
+		<Unit filename="world\seasons\source\Summer.cpp" />
+		<Unit filename="world\seasons\source\Winter.cpp" />
 		<Unit filename="world\source\AgeInfo.cpp" />
 		<Unit filename="world\source\Alignment.cpp" />
 		<Unit filename="world\source\Ammunition.cpp" />

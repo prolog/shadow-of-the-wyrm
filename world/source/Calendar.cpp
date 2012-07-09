@@ -1,9 +1,11 @@
 #include "Calendar.hpp"
 #include "Date.hpp"
+#include "SeasonFactory.hpp"
 
 Calendar::Calendar()
 : seconds(0), STARTING_YEAR(832)
 {
+  season = SeasonFactory::create_season(SEASON_WINTER);
 }
 
 void Calendar::add_days(const uint days)
@@ -11,8 +13,10 @@ void Calendar::add_days(const uint days)
   double ddays = static_cast<double>(days);
   add_seconds(ddays * 86400);
 }
+
 void Calendar::add_seconds(const double additional_seconds)
 {
+  update_season_if_necessary(seconds, additional_seconds);
   seconds += additional_seconds;
 }
 
@@ -32,3 +36,13 @@ Date Calendar::get_date() const
   Date calculated_date(sec, min, hr, day_week, day_month, month, year);
   return calculated_date;
 }
+
+ISeasonPtr Calendar::get_season() const
+{
+  return season;
+}
+
+void Calendar::update_season_if_necessary(const double current_seconds, const double additional_seconds)
+{
+}
+
