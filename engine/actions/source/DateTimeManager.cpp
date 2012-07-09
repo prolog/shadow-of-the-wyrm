@@ -22,8 +22,10 @@ ActionCostValue DateTimeManager::date_and_time()
     
     if (world)
     {
-      Date date = world->get_calendar().get_date();
-      string date_time_message = DateTextKeys::get_date_time_message(date);
+      Calendar calendar = world->get_calendar();
+      Date date = calendar.get_date();
+      ISeasonPtr season = calendar.get_season();
+      string date_time_message = DateTextKeys::get_date_time_message(date, season->get_description_sid());
       
       manager->add_new_message(date_time_message);
       manager->send();

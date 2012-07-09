@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include "CreatureFeatures.hpp"
+#include "CalendarTypes.hpp"
 #include "DamageTypes.hpp"
 #include "Date.hpp"
 #include "EquipmentTypes.hpp"
@@ -152,7 +153,7 @@ class MaterialTextKeys
 class DateTextKeys
 {
   public:
-    static std::string get_date_time_message(const Date& date);
+    static std::string get_date_time_message(const Date& date, const std::string& season_sid);
     static std::string get_time(const Date& date);
     
   protected:
@@ -484,6 +485,19 @@ class ActionTextKeys
   protected:
     ActionTextKeys();
     ~ActionTextKeys();
+};
+
+class SeasonTextKeys
+{
+  public:
+    static const std::string SEASON_TEXT_SPRING;
+    static const std::string SEASON_TEXT_SUMMER;
+    static const std::string SEASON_TEXT_AUTUMN;
+    static const std::string SEASON_TEXT_WINTER;
+    
+  protected:
+    SeasonTextKeys();
+    ~SeasonTextKeys();
 };
 
 class TileDangerConfirmationKeys

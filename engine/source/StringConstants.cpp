@@ -156,9 +156,10 @@ DateTextKeys::~DateTextKeys()
 
 const string DateTextKeys::DATE_TIME_MESSAGE = "DATE_TIME_MESSAGE";
 
-string DateTextKeys::get_date_time_message(const Date& date)
+string DateTextKeys::get_date_time_message(const Date& date, const string& season_sid)
 {
   string date_time_message = StringTable::get(DateTextKeys::DATE_TIME_MESSAGE);
+  string season = StringTable::get(season_sid);
   
   string time = DateTextKeys::get_time(date);
   string day_of_week = StringTable::get(date.get_day_of_week_sid());
@@ -169,6 +170,7 @@ string DateTextKeys::get_date_time_message(const Date& date)
   boost::replace_first(date_time_message, "%s", Integer::to_string(date.get_day_of_month()));
   boost::replace_first(date_time_message, "%s", month);
   boost::replace_first(date_time_message, "%s", Integer::to_string(date.get_year()));
+  boost::replace_first(date_time_message, "%s", season);
   
   return date_time_message;
 }
@@ -664,6 +666,20 @@ const string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP
 const string ActionTextKeys::ACTION_MOVEMENT_BLOCKED           = "ACTION_MOVEMENT_BLOCKED";
 const string ActionTextKeys::ACTION_PLAYER_DROWNING            = "ACTION_PLAYER_DROWNING";
 const string ActionTextKeys::ACTION_PLAYER_FALL_FROM_MOUNTAIN  = "ACTION_PLAYER_FALL_FROM_MOUNTAIN";
+
+// Strings for the various seasons
+SeasonTextKeys::SeasonTextKeys()
+{
+}
+
+SeasonTextKeys::~SeasonTextKeys()
+{
+}
+
+const string SeasonTextKeys::SEASON_TEXT_SPRING = "SEASON_TEXT_SPRING";
+const string SeasonTextKeys::SEASON_TEXT_SUMMER = "SEASON_TEXT_SUMMER";
+const string SeasonTextKeys::SEASON_TEXT_AUTUMN = "SEASON_TEXT_AUTUMN";
+const string SeasonTextKeys::SEASON_TEXT_WINTER = "SEASON_TEXT_WINTER";
 
 // Confirmation messages for moving on to dangerous tiles
 TileDangerConfirmationKeys::TileDangerConfirmationKeys()
