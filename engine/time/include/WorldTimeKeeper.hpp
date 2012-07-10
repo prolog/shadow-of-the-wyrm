@@ -8,16 +8,15 @@ class WorldTimeKeeper
   public:
     WorldTimeKeeper();
     
-    void register_observer(ITimeObserverPtr new_observer);
-    void deregister_observer(ITimeObserverPtr old_observer);
+    void register_observer(const uint minutes_key, ITimeObserverPtr new_observer);
+    void deregister_observer(const uint minutes_key, ITimeObserverPtr old_observer);
     void reset();
 
     void tick(const double seconds);
-
+    
   protected:
-    void notify_all(const int minutes_passed);
-    
     double seconds_counter;
+    double total_seconds_counter;
     
-    std::map<std::string, ITimeObserverPtr> observers;
+    std::map<uint, std::map<std::string, ITimeObserverPtr> > observers;
 };
