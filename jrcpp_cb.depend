@@ -1330,13 +1330,14 @@
 1340454385 source:c:\cygwin\home\julian\jrcpp\engine\time\source\regenerationconstants.cpp
 	"RegenerationConstants.hpp"
 
-1341665032 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeeper.cpp
+1341924718 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeeper.cpp
 	"Game.hpp"
 	"WorldTimeKeeper.hpp"
 
-1340542876 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
+1341923618 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
 	<boost/make_shared.hpp>
 	"CreatureTimeObserver.hpp"
+	"SeasonsTimeObserver.hpp"
 	"WorldTimeKeeperCoordinator.hpp"
 	"WorldTimeKeeper.hpp"
 
@@ -2056,4 +2057,7 @@
 
 1341838381 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\iseason.cpp
 	"ISeason.hpp"
+
+1341923701 source:c:\cygwin\home\julian\jrcpp\engine\time\source\seasonstimeobserver.cpp
+	"SeasonsTimeObserver.hpp"
 
