@@ -10,17 +10,17 @@ enum Season
 
 enum Months
 {
-  MONTH_1 = 1,
-  MONTH_2 = 2,
-  MONTH_3 = 3,
-  MONTH_4 = 4,
-  MONTH_5 = 5,
-  MONTH_6 = 6,
-  MONTH_7 = 7,
-  MONTH_8 = 8,
-  MONTH_9 = 9,
-  MONTH_10 = 10,
-  MONTH_11 = 11,
-  MONTH_12 = 12
+  MONTH_1 = 0,
+  MONTH_2 = 1,
+  MONTH_3 = 2,
+  MONTH_4 = 3,
+  MONTH_5 = 4,
+  MONTH_6 = 5,
+  MONTH_7 = 6,
+  MONTH_8 = 7,
+  MONTH_9 = 8,
+  MONTH_10 = 9,
+  MONTH_11 = 10,
+  MONTH_12 = 11
 };
 

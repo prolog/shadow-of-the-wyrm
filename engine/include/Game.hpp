@@ -68,6 +68,7 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     friend class ItemManager;
     friend class CommandProcessor;
     friend class EquipmentCommandProcessor;
+    friend class SeasonsTimeObserver;
 
     Game();
     ~Game();

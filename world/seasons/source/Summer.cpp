@@ -15,9 +15,9 @@ void Summer::initialize_months()
     months_in_season.clear();
   }
 
-  months_in_season.push_back(MONTH_6);
-  months_in_season.push_back(MONTH_7);
-  months_in_season.push_back(MONTH_8);
+  months_in_season.insert(MONTH_6);
+  months_in_season.insert(MONTH_7);
+  months_in_season.insert(MONTH_8);
 }
 
 Season Summer::get_season() const

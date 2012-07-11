@@ -19,5 +19,9 @@ void WorldTimeKeeperCoordinator::setup_time_keeper(WorldTimeKeeper& time_keeper)
   ITimeObserverPtr seasons  = make_shared<SeasonsTimeObserver>();
 
   time_keeper.register_observer(1, hp_regen);
-  time_keeper.register_observer(43200, seasons);
+  
+  // Once a day, check to see if the season needs to be incremented - necessary because the game itself
+  // will eventually start on a random day, so we can't key in on the fact that the game always starts on
+  // the first of the month.
+  time_keeper.register_observer(1440, seasons);
 }
