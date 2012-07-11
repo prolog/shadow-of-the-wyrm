@@ -2,6 +2,8 @@
 #include "Date.hpp"
 #include "SeasonFactory.hpp"
 
+using std::set;
+
 Calendar::Calendar()
 : seconds(0), STARTING_YEAR(832)
 {
@@ -16,7 +18,6 @@ void Calendar::add_days(const uint days)
 
 void Calendar::add_seconds(const double additional_seconds)
 {
-  update_season_if_necessary(seconds, additional_seconds);
   seconds += additional_seconds;
 }
 
@@ -42,7 +43,18 @@ ISeasonPtr Calendar::get_season() const
   return season;
 }
 
-void Calendar::update_season_if_necessary(const double current_seconds, const double additional_seconds)
+void Calendar::update_season_if_necessary()
 {
+  Date date = get_date();
+  uint month = date.get_month();
+  
+  set<Months> months = season->get_months_in_season();
+  
+  // If the current month is now outside of the current season's
+  // months, increment the season.
+  if (months.find(static_cast<Months>(month)) == months.end())
+  {
+    season = SeasonFactory::create_season(season->get_next_season());
+  }
 }
 

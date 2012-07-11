@@ -559,7 +559,7 @@
 	"SkillsDumper.hpp"
 	"StatsDumper.hpp"
 
-1340234103 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
+1341968383 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
 	<ctype.h>
 	<boost/lexical_cast.hpp>
 	<boost/uuid/uuid_io.hpp>
@@ -1334,7 +1334,7 @@
 	"Game.hpp"
 	"WorldTimeKeeper.hpp"
 
-1341923618 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
+1341925801 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
 	<boost/make_shared.hpp>
 	"CreatureTimeObserver.hpp"
 	"SeasonsTimeObserver.hpp"
@@ -1502,10 +1502,12 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\book.cpp
 	"Book.hpp"
 
-1341838003 source:c:\cygwin\home\julian\jrcpp\world\source\calendar.cpp
+1341968201 source:c:\cygwin\home\julian\jrcpp\world\source\calendar.cpp
 	"Calendar.hpp"
 	"Date.hpp"
 	"SeasonFactory.hpp"
+	"Conversion.hpp"
+	"Log.hpp"
 
 1340846616 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
 	<sstream>
@@ -2031,19 +2033,19 @@
 	"MapUtils.hpp"
 	"TileMovementConfirmation.hpp"
 
-1341839110 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\autumn.cpp
+1341967636 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\autumn.cpp
 	"Autumn.hpp"
 	"StringConstants.hpp"
 
-1341838470 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\spring.cpp
+1341967654 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\spring.cpp
 	"Spring.hpp"
 	"StringConstants.hpp"
 
-1341838903 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\summer.cpp
+1341967673 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\summer.cpp
 	"Summer.hpp"
 	"StringConstants.hpp"
 
-1341839025 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\winter.cpp
+1341967692 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\winter.cpp
 	"Winter.hpp"
 	"StringConstants.hpp"
 
@@ -2055,9 +2057,10 @@
 	"Autumn.hpp"
 	"Winter.hpp"
 
-1341838381 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\iseason.cpp
+1341967038 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\iseason.cpp
 	"ISeason.hpp"
 
-1341923701 source:c:\cygwin\home\julian\jrcpp\engine\time\source\seasonstimeobserver.cpp
+1341925864 source:c:\cygwin\home\julian\jrcpp\engine\time\source\seasonstimeobserver.cpp
+	"Game.hpp"
 	"SeasonsTimeObserver.hpp"
 

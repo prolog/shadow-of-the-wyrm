@@ -15,9 +15,9 @@ void Winter::initialize_months()
     months_in_season.clear();
   }
 
-  months_in_season.push_back(MONTH_1);
-  months_in_season.push_back(MONTH_2);
-  months_in_season.push_back(MONTH_12);
+  months_in_season.insert(MONTH_1);
+  months_in_season.insert(MONTH_2);
+  months_in_season.insert(MONTH_12);
 }
 
 Season Winter::get_season() const

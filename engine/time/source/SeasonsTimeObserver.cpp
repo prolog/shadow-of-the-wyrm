@@ -1,11 +1,22 @@
+#include "Game.hpp"
 #include "SeasonsTimeObserver.hpp"
 
 SeasonsTimeObserver::SeasonsTimeObserver()
 {
 }
 
-void SeasonsTimeObserver::notify(const ulonglong seconds_passed)
+void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
 {
-  int x = 1;
-  int y = x;
+  Game* game = Game::instance();
+  
+  if (game)
+  {
+    WorldPtr world = game->worlds.at(game->current_world_ix);
+    
+    if (world)
+    {
+      Calendar& calendar = world->get_calendar();
+      calendar.update_season_if_necessary();
+    }
+  }
 }

@@ -15,9 +15,9 @@ void Spring::initialize_months()
     months_in_season.clear();
   }
 
-  months_in_season.push_back(MONTH_3);
-  months_in_season.push_back(MONTH_4);
-  months_in_season.push_back(MONTH_5);
+  months_in_season.insert(MONTH_3);
+  months_in_season.insert(MONTH_4);
+  months_in_season.insert(MONTH_5);
 }
 
 Season Spring::get_season() const

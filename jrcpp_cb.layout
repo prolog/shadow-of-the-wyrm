@@ -286,8 +286,8 @@
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
 	</File>
-	<File name="engine\actions\source\DateTimeManager.cpp" open="1" top="0" tabpos="15">
-		<Cursor position="778" topLine="15" />
+	<File name="engine\actions\source\DateTimeManager.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="586" topLine="9" />
 	</File>
 	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="1498" topLine="30" />
@@ -970,8 +970,8 @@
 	<File name="engine\include\FileWriter.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="236" topLine="0" />
 	</File>
-	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="1742" topLine="44" />
+	<File name="engine\include\Game.hpp" open="1" top="0" tabpos="9">
+		<Cursor position="2177" topLine="58" />
 	</File>
 	<File name="engine\include\ItemFactory.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="117" topLine="0" />
@@ -1015,7 +1015,7 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="412" topLine="22" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="4">
+	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="5296" topLine="144" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
@@ -1066,8 +1066,8 @@
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="443" topLine="4" />
 	</File>
-	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="7115" topLine="261" />
+	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="6726" topLine="261" />
 	</File>
 	<File name="engine\source\ItemFactory.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="526" topLine="5" />
@@ -1111,7 +1111,7 @@
 	<File name="engine\source\SkillManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="325" topLine="0" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="16">
+	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="27628" topLine="667" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
@@ -1162,8 +1162,8 @@
 	<File name="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="263" topLine="0" />
 	</File>
-	<File name="engine\time\include\WorldTimeKeeper.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="402" topLine="0" />
+	<File name="engine\time\include\WorldTimeKeeper.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="410" topLine="0" />
 	</File>
 	<File name="engine\time\include\WorldTimeKeeperCoordinator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="91" topLine="0" />
@@ -1175,7 +1175,7 @@
 		<Cursor position="1110" topLine="21" />
 	</File>
 	<File name="engine\time\source\CreatureTimeObserver.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="739" topLine="15" />
+		<Cursor position="1254" topLine="15" />
 	</File>
 	<File name="engine\time\source\ITimeObserver.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="590" topLine="5" />
@@ -1189,17 +1189,20 @@
 	<File name="engine\time\source\MovementAccumulator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="315" topLine="0" />
 	</File>
+	<File name="engine\time\source\SeasonsTimeObserver.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="0" topLine="0" />
+	</File>
 	<File name="engine\time\source\SwimmingMovementAccumulationChecker.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1231" topLine="18" />
 	</File>
 	<File name="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1105" topLine="6" />
 	</File>
-	<File name="engine\time\source\WorldTimeKeeper.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="1110" topLine="33" />
+	<File name="engine\time\source\WorldTimeKeeper.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="engine\time\source\WorldTimeKeeperCoordinator.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="329" topLine="0" />
+	<File name="engine\time\source\WorldTimeKeeperCoordinator.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="834" topLine="1" />
 	</File>
 	<File name="engine\translators\include\CreatureTranslator.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="0" topLine="0" />
@@ -1276,8 +1279,8 @@
 	<File name="world\include\Book.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\include\Calendar.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="685" topLine="6" />
+	<File name="world\include\Calendar.hpp" open="1" top="0" tabpos="6">
+		<Cursor position="369" topLine="6" />
 	</File>
 	<File name="world\include\Class.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="2220" topLine="66" />
@@ -1385,7 +1388,7 @@
 		<Cursor position="341" topLine="0" />
 	</File>
 	<File name="world\include\World.hpp" open="0" top="0" tabpos="8">
-		<Cursor position="68" topLine="0" />
+		<Cursor position="267" topLine="0" />
 	</File>
 	<File name="world\materials\include\Cloth.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="337" topLine="0" />
@@ -1492,31 +1495,31 @@
 	<File name="world\religion\source\ReligionFactory.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="449" topLine="1" />
 	</File>
-	<File name="world\seasons\include\Autumn.hpp" open="1" top="0" tabpos="11">
+	<File name="world\seasons\include\Autumn.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="251" topLine="0" />
 	</File>
-	<File name="world\seasons\include\CalendarTypes.hpp" open="1" top="0" tabpos="6">
+	<File name="world\seasons\include\CalendarTypes.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="313" topLine="0" />
 	</File>
-	<File name="world\seasons\include\ISeason.hpp" open="1" top="0" tabpos="5">
+	<File name="world\seasons\include\ISeason.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="392" topLine="0" />
 	</File>
-	<File name="world\seasons\include\Spring.hpp" open="1" top="0" tabpos="8">
+	<File name="world\seasons\include\Spring.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="251" topLine="0" />
 	</File>
-	<File name="world\seasons\include\Summer.hpp" open="1" top="0" tabpos="10">
+	<File name="world\seasons\include\Summer.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="251" topLine="0" />
 	</File>
-	<File name="world\seasons\include\Winter.hpp" open="1" top="1" tabpos="12">
+	<File name="world\seasons\include\Winter.hpp" open="0" top="0" tabpos="12">
 		<Cursor position="251" topLine="0" />
 	</File>
-	<File name="world\seasons\source\Autumn.cpp" open="1" top="0" tabpos="13">
+	<File name="world\seasons\source\Autumn.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="73" topLine="0" />
 	</File>
-	<File name="world\seasons\source\Spring.cpp" open="1" top="0" tabpos="9">
+	<File name="world\seasons\source\Spring.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="642" topLine="19" />
 	</File>
-	<File name="world\seasons\source\Winter.cpp" open="1" top="0" tabpos="14">
+	<File name="world\seasons\source\Winter.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="304" topLine="0" />
 	</File>
 	<File name="world\source\AgeInfo.cpp" open="0" top="0" tabpos="0">
@@ -1540,8 +1543,8 @@
 	<File name="world\source\Book.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="100" topLine="0" />
 	</File>
-	<File name="world\source\Calendar.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="186" topLine="0" />
+	<File name="world\source\Calendar.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="1306" topLine="25" />
 	</File>
 	<File name="world\source\Class.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="4141" topLine="174" />

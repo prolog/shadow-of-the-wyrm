@@ -15,9 +15,9 @@ void Autumn::initialize_months()
     months_in_season.clear();
   }
 
-  months_in_season.push_back(MONTH_9);
-  months_in_season.push_back(MONTH_10);
-  months_in_season.push_back(MONTH_11);
+  months_in_season.insert(MONTH_9);
+  months_in_season.insert(MONTH_10);
+  months_in_season.insert(MONTH_11);
 }
 
 Season Autumn::get_season() const

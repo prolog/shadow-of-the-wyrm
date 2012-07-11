@@ -292,11 +292,11 @@ double ActionCostConverter::to_seconds(const ActionCostValue action_cost_value, 
   return seconds;
 }
 
-// Each action on the world map takes the action cost in minutes.  So moving at a base speed
-// of 50 would take 50 minutes.
+// Each action on the world map takes the action cost in minutes, times 1.5.  So moving at a base speed
+// of 50 would take 75 minutes.
 double ActionCostConverter::to_seconds_on_world_map(const ActionCostValue action_cost_value)
 {
-  return (action_cost_value * 60);
+  return (action_cost_value * 60 * 1.5);
 }
 
 // Each action on a submap takes half the amount of action cost in seconds.  So moving at a base,

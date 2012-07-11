@@ -634,6 +634,7 @@
 		<Unit filename="engine\time\include\MovementAccumulator.hpp" />
 		<Unit filename="engine\time\include\NullMovementAccumulationChecker.hpp" />
 		<Unit filename="engine\time\include\RegenerationConstants.hpp" />
+		<Unit filename="engine\time\include\SeasonsTimeObserver.hpp" />
 		<Unit filename="engine\time\include\SwimmingMovementAccumulationChecker.hpp" />
 		<Unit filename="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeper.hpp" />
@@ -647,6 +648,7 @@
 		<Unit filename="engine\time\source\MovementAccumulator.cpp" />
 		<Unit filename="engine\time\source\NullMovementAccumulationChecker.cpp" />
 		<Unit filename="engine\time\source\RegenerationConstants.cpp" />
+		<Unit filename="engine\time\source\SeasonsTimeObserver.cpp" />
 		<Unit filename="engine\time\source\SwimmingMovementAccumulationChecker.cpp" />
 		<Unit filename="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp" />
 		<Unit filename="engine\time\source\WorldTimeKeeper.cpp" />
