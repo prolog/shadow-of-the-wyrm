@@ -9,6 +9,7 @@ class ISeason
   public:
     virtual Season get_season() const = 0;
     virtual std::string get_description_sid() const = 0;
+    virtual std::string get_new_season_message_sid() const = 0;
 
     virtual Season get_previous_season() const = 0;
     virtual Season get_next_season() const = 0;

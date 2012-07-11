@@ -1289,7 +1289,7 @@
 1341153647 source:c:\cygwin\home\julian\jrcpp\engine\source\skillmanager.cpp
 	"SkillManager.hpp"
 
-1341839409 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1342008917 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1502,12 +1502,10 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\book.cpp
 	"Book.hpp"
 
-1341968201 source:c:\cygwin\home\julian\jrcpp\world\source\calendar.cpp
+1341969803 source:c:\cygwin\home\julian\jrcpp\world\source\calendar.cpp
 	"Calendar.hpp"
 	"Date.hpp"
 	"SeasonFactory.hpp"
-	"Conversion.hpp"
-	"Log.hpp"
 
 1340846616 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
 	<sstream>
@@ -2033,19 +2031,19 @@
 	"MapUtils.hpp"
 	"TileMovementConfirmation.hpp"
 
-1341967636 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\autumn.cpp
+1342009215 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\autumn.cpp
 	"Autumn.hpp"
 	"StringConstants.hpp"
 
-1341967654 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\spring.cpp
+1342009239 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\spring.cpp
 	"Spring.hpp"
 	"StringConstants.hpp"
 
-1341967673 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\summer.cpp
+1342009258 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\summer.cpp
 	"Summer.hpp"
 	"StringConstants.hpp"
 
-1341967692 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\winter.cpp
+1342009277 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\winter.cpp
 	"Winter.hpp"
 	"StringConstants.hpp"
 

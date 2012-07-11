@@ -30,6 +30,11 @@ string Autumn::get_description_sid() const
   return SeasonTextKeys::SEASON_TEXT_AUTUMN;
 }
 
+string Autumn::get_new_season_message_sid() const
+{
+  return SeasonTextKeys::SEASON_TRANSITION_AUTUMN;
+}
+
 Season Autumn::get_previous_season() const
 {
   return SEASON_SUMMER;

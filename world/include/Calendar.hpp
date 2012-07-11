@@ -17,7 +17,7 @@ class Calendar
     Date get_date() const;
     ISeasonPtr get_season() const;
     
-    void update_season_if_necessary();
+    bool update_season_if_necessary();
     
   protected:
     // Number of seconds since day 1 of month 1 of year 832.
