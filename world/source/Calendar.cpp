@@ -43,8 +43,9 @@ ISeasonPtr Calendar::get_season() const
   return season;
 }
 
-void Calendar::update_season_if_necessary()
+bool Calendar::update_season_if_necessary()
 {
+  bool season_updated = false;
   Date date = get_date();
   uint month = date.get_month();
   
@@ -55,6 +56,9 @@ void Calendar::update_season_if_necessary()
   if (months.find(static_cast<Months>(month)) == months.end())
   {
     season = SeasonFactory::create_season(season->get_next_season());
+    season_updated = true;
   }
+  
+  return season_updated;
 }
 
