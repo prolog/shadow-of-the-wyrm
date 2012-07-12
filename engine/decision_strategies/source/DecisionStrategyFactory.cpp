@@ -2,6 +2,7 @@
 #include "DecisionStrategyFactory.hpp"
 #include "DecisionStrategyTypes.hpp"
 #include "ImmobileDecisionStrategy.hpp"
+#include "MobileDecisionStrategy.hpp"
 #include "NullKeyboardController.hpp"
 
 using std::string;
@@ -27,10 +28,14 @@ DecisionStrategyPtr DecisionStrategyFactory::create_decision_strategy(const stri
   {
     strategy = make_shared<ImmobileDecisionStrategy>(controller);
   }
+  else if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_MOBILE)
+  {
+    strategy = make_shared<MobileDecisionStrategy>(controller);
+  }
   // ??? == PLAYER?  Could be interesting...
   else // Assume == DecisionStrategyID::DECISION_STRATEGY_DEFAULT
   {
-//    strategy = make_shared<DefaultDecisionStrategy>();
+    strategy = make_shared<ImmobileDecisionStrategy>(controller);
   }
   
   return strategy;

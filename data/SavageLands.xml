@@ -1975,6 +1975,40 @@
 				<Type>5</Type>
 			</Damage>
 		</Creature>
+		<Creature id="kestrel">
+			<ShortDescriptionSID>KESTREL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>KESTREL_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>b</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>2</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>5</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 	</Creatures>
 	<Tiles>
 		<FieldTile>
