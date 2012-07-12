@@ -50,13 +50,15 @@ CreaturePtr CreatureGenerationManager::generate_creature(const TileType map_terr
       p_denominator += cgv.get_danger_level();
     }
     
+    float p_denominator_f = static_cast<float>(p_denominator);
+
     // Determine the creature to generate
     for(CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
     {
       CreatureGenerationValues cgv = c_it->second.second;
 
       int p_numerator = cgv.get_danger_level();
-      int P = (p_numerator / p_denominator) * 100;
+      int P = (static_cast<float>(p_numerator) / p_denominator_f) * 100;
       
       if (RNG::percent_chance(P))
       {
