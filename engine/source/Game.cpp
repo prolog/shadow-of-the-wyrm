@@ -216,15 +216,20 @@ void Game::go()
   while(keep_playing)
   {
     current_map = get_current_map();
-    map<string, CreaturePtr> map_creatures = current_map->get_creatures();
     
+    map<string, CreaturePtr> map_creatures = current_map->get_creatures();
+
     ActionCoordinator ac;
     ac.set(map_creatures);
 
     Calendar& calendar = worlds[current_world_ix]->get_calendar();
     
     while (ac.has_actions())
-    {
+    {      
+      // Update the list of creatures after each action; otherwise, creatures that are killed
+      // might persist.
+      map_creatures = current_map->get_creatures();
+
       CreaturePtr current_creature;
       ActionCost next_action_cost = ac.get_next_action_cost();
       string creature_id = ac.get_next_creature_id_and_update_actions();      
