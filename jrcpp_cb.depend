@@ -1168,7 +1168,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1341665383 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1342110140 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -2068,4 +2068,20 @@
 	<string>
 	<sstream>
 	"MobileDecisionStrategy.hpp"
+
+1342194244 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\greedysearchstrategy.cpp
+	"GreedySearchStrategy.hpp"
+
+1342193767 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
+	<algorithm>
+	"SearchNode.hpp"
+
+1342193967 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
+	<boost/foreach.hpp>
+	"MapUtils.hpp"
+	"Search.hpp"
+
+1342192310 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\breadthfirstsearchstrategy.cpp
+	<boost/foreach.hpp>
+	"BreadthFirstSearchStrategy.hpp"
 

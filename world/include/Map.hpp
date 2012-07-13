@@ -43,13 +43,13 @@ class Map
 		void set_map_type(const MapType& new_type);
 		MapType get_map_type() const;
 		
-		std::map<std::string, boost::shared_ptr<Tile> > get_tiles() const;
+		std::map<TileKey, boost::shared_ptr<Tile> > get_tiles() const;
 
     void clear_locations();
-    void add_or_update_location(const std::string& location, const Coordinate& coordinate);
-    bool has_location(const std::string& location);
-    Coordinate get_location(const std::string& location) const;
-    boost::shared_ptr<Tile> get_tile_at_location(const std::string& location);
+    void add_or_update_location(const TileKey& location, const Coordinate& coordinate);
+    bool has_location(const TileKey& location);
+    Coordinate get_location(const TileKey& location) const;
+    boost::shared_ptr<Tile> get_tile_at_location(const TileKey& location);
     
     void set_map_exit(MapExitPtr new_map_exit);
     MapExitPtr get_map_exit() const;
@@ -67,8 +67,8 @@ class Map
     
 		void create_creatures();		
 
-    static std::string make_map_key(const int row, const int col);
-    static Coordinate convert_map_key_to_coordinate(const std::string& map_key);
+    static TileKey make_map_key(const int row, const int col);
+    static Coordinate convert_map_key_to_coordinate(const TileKey& map_key);
 
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
