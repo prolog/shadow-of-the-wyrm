@@ -2,19 +2,24 @@
 #include "SearchNode.hpp"
 
 SearchNode::SearchNode()
-: location(-1,-1), depth(-1), path_cost(-1)
+: location(-1,-1), path_cost(-1)
 {
   
 }
 
 SearchNode::SearchNode(const Coordinate& c)
-: location(c), depth(0), path_cost(0)
+: location(c), path_cost(0)
 {
 }
 
-SearchNode::SearchNode(const Coordinate& c, const std::vector<Coordinate>& new_ancestors, const int new_depth, const int new_path_cost)
-: location(c), ancestors(new_ancestors), depth(new_depth), path_cost(new_path_cost)
+SearchNode::SearchNode(const Coordinate& c, const std::vector<Coordinate>& new_ancestors, const int new_path_cost)
+: location(c), ancestors(new_ancestors), path_cost(new_path_cost)
 {
+}
+
+void SearchNode::set_location(const Coordinate& new_location)
+{
+  location = new_location;
 }
 
 Coordinate SearchNode::get_location() const
@@ -35,6 +40,11 @@ Coordinate SearchNode::get_parent() const
   return parent;
 }
 
+void SearchNode::set_ancestors(const std::vector<Coordinate>& new_ancestors)
+{
+  ancestors = new_ancestors;
+}
+
 std::vector<Coordinate> SearchNode::get_ancestors() const
 {
   return ancestors;
@@ -42,7 +52,12 @@ std::vector<Coordinate> SearchNode::get_ancestors() const
 
 int SearchNode::get_depth() const
 {
-  return depth;
+  return ancestors.size();
+}
+
+void SearchNode::set_path_cost(const int new_path_cost)
+{
+  path_cost = new_path_cost;
 }
 
 int SearchNode::get_path_cost() const
@@ -52,7 +67,7 @@ int SearchNode::get_path_cost() const
 
 // Check to see if a coordinate has already been visited (is part of the node's ancestors),
 // so that cycles can be avoided.
-bool SearchNode::is_previously_visited(const Coordinate& c)
+bool SearchNode::is_previously_visited(const Coordinate& c) const
 {
   // JCD FIXME DIDN'T HAVE INTERNET WHEN WRITING THIS - DOUBLE CHECK:
   return (std::find(ancestors.begin(), ancestors.end(), c) != ancestors.end());

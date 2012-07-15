@@ -99,6 +99,9 @@ string DirectionEnum::to_string(const Direction d)
 
   switch(d)
   {
+    case DIRECTION_NULL:
+      command_key_direction = CommandKeys::SEARCH;
+      break;
     case DIRECTION_SOUTH_WEST:
       command_key_direction = CommandKeys::MOVE_SOUTHWEST;
       break;
@@ -138,6 +141,9 @@ string DirectionEnum::to_attack_string(const Direction d)
 
   switch(d)
   {
+    case DIRECTION_NULL:
+      command_key_direction = CommandKeys::SEARCH;
+      break;
     case DIRECTION_SOUTH_WEST:
       command_key_direction = CommandKeys::ATTACK_SOUTHWEST;
       break;

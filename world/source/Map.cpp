@@ -17,6 +17,7 @@ Map::Map(const Map& new_map)
     std::map<std::string, TilePtr > new_tiles = new_map.get_tiles();
 
     dimensions = new_dimensions;
+    original_dimensions = new_dimensions;
     tiles = new_tiles;
   }
 }
@@ -25,6 +26,7 @@ Map::Map(const Dimensions& new_dimensions)
 : terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false)
 {
   dimensions = new_dimensions;
+  original_dimensions = dimensions;
 }
 
 // Create the creature list by iterating over all the map tiles, and adding any Creature
@@ -138,6 +140,16 @@ void Map::set_size(const Dimensions& new_dimensions)
 Dimensions Map::size() const
 {
   return dimensions;
+}
+
+void Map::set_original_size(const Dimensions& new_original_dimensions)
+{
+  original_dimensions = new_original_dimensions;
+}
+
+Dimensions Map::original_size() const
+{
+  return original_dimensions;
 }
 
 void Map::set_terrain_type(const TileType new_terrain_type)

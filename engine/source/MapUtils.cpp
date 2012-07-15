@@ -30,6 +30,11 @@ bool MapUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const D
 // Get the direction given start/end coordinates.
 Direction MapUtils::get_direction(const Coordinate& start, const Coordinate& end)
 {
+  if ((end.first == -1) && (end.second == -1))
+  {
+    return DIRECTION_NULL;
+  }
+  
   Direction d;
   
   int y1 = start.first;
@@ -93,6 +98,9 @@ Coordinate MapUtils::get_new_coordinate(const Coordinate& c, const Direction d)
 
   switch(d)
   {
+    case DIRECTION_NULL:
+      new_coord = c;
+      break;
     case DIRECTION_SOUTH_WEST:
       new_coord.first++;
       new_coord.second--;

@@ -18,9 +18,11 @@ ViewMapTranslator::~ViewMapTranslator()
 // direction.
 MapPtr ViewMapTranslator::create_view_map_around_tile(MapPtr original_map, const Coordinate& centre, const int size)
 {
+  Dimensions original_dimensions = original_map->size();
   Dimensions dimensions = MapUtils::get_dimensions(original_map, centre, size);
 
   MapPtr view_map = make_shared<Map>(dimensions);
+  view_map->set_original_size(original_dimensions);
   
   // Use the same shared pointer.  This is only a temporary view map, so that's fine.
   for (int row = centre.first - size; row <= (centre.first + size); row++)
