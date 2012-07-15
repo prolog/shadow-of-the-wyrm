@@ -52,10 +52,10 @@ class Map
 		std::map<TileKey, boost::shared_ptr<Tile> > get_tiles() const;
 
     void clear_locations();
-    void add_or_update_location(const TileKey& location, const Coordinate& coordinate);
-    bool has_location(const TileKey& location);
-    Coordinate get_location(const TileKey& location) const;
-    boost::shared_ptr<Tile> get_tile_at_location(const TileKey& location);
+    void add_or_update_location(const std::string& location, const Coordinate& coordinate);
+    bool has_location(const std::string& location);
+    Coordinate get_location(const std::string& location) const;
+    boost::shared_ptr<Tile> get_tile_at_location(const std::string& location);
     
     void set_map_exit(MapExitPtr new_map_exit);
     MapExitPtr get_map_exit() const;

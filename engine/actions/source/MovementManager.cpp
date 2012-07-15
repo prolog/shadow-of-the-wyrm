@@ -27,8 +27,9 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
   ActionCostValue movement_success = 0;
 
   Game* game = Game::instance();
+  MessageManager* manager = MessageManager::instance();  
 
-  if (game && creature)
+  if (game && creature && manager)
   {
     MapPtr map = game->get_current_map();
     
@@ -43,7 +44,16 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
     // Otherwise, move the creature.
     if (!MapUtils::is_valid_move(map->size(), creature_location, direction))
     {
-      movement_success = move_off_map(creature, map, creatures_old_tile);
+      if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map))
+      {
+        movement_success = move_off_map(creature, map, creatures_old_tile);
+      }
+      else
+      {
+        string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
+        manager->add_new_message(cannot_escape);
+        manager->send();
+      }
     }
     // Otherwise, it's a regular move within the current map.
     else
