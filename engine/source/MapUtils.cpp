@@ -1,9 +1,8 @@
 #include "Conversion.hpp"
 #include "MapUtils.hpp"
+#include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
 
-
-#include <iostream>
 using namespace std;
 using namespace boost;
 
@@ -429,6 +428,37 @@ bool MapUtils::is_moving_from_land_type_tile_to_water_type_tile(TilePtr old_tile
   }
   
   return moving_from_land_to_water;
+}
+
+bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPtr map)
+{
+  if (map)
+  {
+    Coordinate creature_location = map->get_location(creature_id);
+    
+    vector<Coordinate> adjacent_coords = MapUtils::get_adjacent_map_coordinates(map->size(), creature_location.first, creature_location.second);
+    
+    BOOST_FOREACH(Coordinate& c, adjacent_coords)
+    {
+      TilePtr tile = map->at(c);
+      
+      if (tile)
+      {
+        CreaturePtr creature = tile->get_creature();
+        
+        if (creature)
+        {
+          // Is the creature on this tile hostile to the ID passed in?
+          if (creature->get_decision_strategy()->get_threats().has_threat(creature_id))
+          {
+            return true;
+          }
+        }
+      }
+    }
+  }
+  
+  return false;
 }
 
 

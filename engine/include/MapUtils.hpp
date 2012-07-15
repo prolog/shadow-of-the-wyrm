@@ -46,6 +46,8 @@ class MapUtils
     static Coordinate convert_map_key_to_coordinate(const std::string& map_key);
     
     static bool is_moving_from_land_type_tile_to_water_type_tile(TilePtr creatures_old_tile, TilePtr creatures_new_tile);
+    
+    static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
 
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
