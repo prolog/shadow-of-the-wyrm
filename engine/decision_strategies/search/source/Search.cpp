@@ -2,6 +2,7 @@
 #include "MapUtils.hpp"
 #include "Search.hpp"
 
+using std::set;
 using std::list;
 using std::vector;
 
@@ -10,24 +11,31 @@ using std::vector;
 // been learned.
 Coordinate Search::search(MapPtr view_map, const Coordinate& start, const Coordinate& end)
 {
-  Coordinate next_step;
-  bool searching = true;
+  Coordinate stay_put;
   
-  list<SearchNode> nodes = make_search_nodes(view_map, start);
-  
-  while(searching)
+  set<Coordinate> visited;
+  list<SearchNode> nodes = make_search_nodes(view_map, visited, start);
+
+  while(true)
   {
     if (nodes.empty())
     {
       break;
     }
     
-//    SearchNode node = remove_front()
-//    if (goal_test(node, end)) ...
-//    nodes = queueing_fn(...)
+    SearchNode node = remove_front(nodes);
+    visited.insert(node.get_location());
+
+    if (goal_test(node, end))
+    {
+      vector<Coordinate> ancestors = node.get_ancestors();
+      return ancestors[0];
+    }
+    
+    nodes = queueing_fn(nodes, make_search_nodes(view_map, visited, node));
   }
   
-  return next_step;
+  return stay_put;
 }
 
 bool Search::goal_test(const SearchNode& sn, const Coordinate& end_coord)
@@ -54,28 +62,50 @@ SearchNode Search::remove_front(list<SearchNode>& search_queue)
   return front;
 }
 
-list<SearchNode> Search::make_search_nodes(MapPtr view_map, const Coordinate& c)
+list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& c, const SearchNode* const parent)
 {
   list<SearchNode> search_nodes;
 
-  vector<Coordinate> coords = MapUtils::get_adjacent_map_coordinates(view_map->size(), c.first, c.second);
+  Dimensions orig_map_dimensions = view_map->original_size();
+  vector<Coordinate> coords = MapUtils::get_adjacent_map_coordinates(orig_map_dimensions, c.first, c.second);
   
   BOOST_FOREACH(Coordinate coord, coords)
   {
-    TilePtr tile = view_map->at(coord);
-    
-    if (tile)
+    if (visited.find(coord) != visited.end())
     {
-      SearchNode sn(coord);
-      search_nodes.push_back(sn);
+      continue;
+    }
+    else
+    {
+      TilePtr tile = view_map->at(coord);
+      
+      if (tile)
+      {
+        SearchNode sn(coord);
+        
+        if (parent)
+        {
+          sn.set_location(coord);
+          
+          vector<Coordinate> ancestors = parent->get_ancestors();
+          ancestors.push_back(parent->get_location());
+          sn.set_ancestors(ancestors);
+          
+          sn.set_path_cost(parent->get_path_cost() + 1);
+        }
+        
+        search_nodes.push_back(sn);
+        visited.insert(coord);
+      }
     }
   }
   
   return search_nodes;
 }
 
-list<SearchNode> Search::make_search_nodes(MapPtr view_map, const SearchNode& sn)
+// JCD FIXME refactor
+list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const SearchNode& sn)
 {
   Coordinate c = sn.get_location();
-  return make_search_nodes(view_map, c);
+  return make_search_nodes(view_map, visited, c, &sn);
 }

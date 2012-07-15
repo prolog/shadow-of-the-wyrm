@@ -37,6 +37,12 @@ class Map
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
 		
+		// If the map is not a view map, this will return the same as
+		// size().  If the map is a view map, this will return the map's
+		// original dimensions, as if it were a "regular" map.
+    void set_original_size(const Dimensions& new_original_dimensions);
+		Dimensions original_size() const;
+		
 		void set_terrain_type(const TileType new_terrain_type);
 		TileType get_terrain_type() const;
 
@@ -76,6 +82,7 @@ class Map
 
 		std::map<std::string, boost::shared_ptr<Tile> > tiles;
 		Dimensions dimensions;
+		Dimensions original_dimensions;
     NamedMapLocations locations;
     TileType terrain_type; // field, forest, village, etc.
     MapType map_type;

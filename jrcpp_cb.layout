@@ -197,7 +197,7 @@
 		<Cursor position="206" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLRacesReader.cpp" open="0" top="0" tabpos="12">
-		<Cursor position="5775" topLine="121" />
+		<Cursor position="2846" topLine="63" />
 	</File>
 	<File name="engine\XML\source\XMLReader.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="974" topLine="9" />
@@ -611,7 +611,7 @@
 		<Cursor position="221" topLine="0" />
 	</File>
 	<File name="engine\conversion\source\Conversion.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="6189" topLine="288" />
+		<Cursor position="3000" topLine="127" />
 	</File>
 	<File name="engine\conversion\source\EquipmentDumper.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="567" topLine="16" />
@@ -673,7 +673,7 @@
 	<File name="engine\decision_strategies\include\DecisionStrategyTypes.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="218" topLine="0" />
 	</File>
-	<File name="engine\decision_strategies\include\ImmobileDecisionStrategy.hpp" open="1" top="0" tabpos="1">
+	<File name="engine\decision_strategies\include\ImmobileDecisionStrategy.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="284" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\include\NPCDecisionStrategy.hpp" open="0" top="0" tabpos="3">
@@ -681,6 +681,36 @@
 	</File>
 	<File name="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" open="0" top="0" tabpos="12">
 		<Cursor position="257" topLine="0" />
+	</File>
+	<File name="engine\decision_strategies\search\include\BreadthFirstSearchStrategy.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="221" topLine="0" />
+	</File>
+	<File name="engine\decision_strategies\search\include\GreedySearchStrategy.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="93" topLine="0" />
+	</File>
+	<File name="engine\decision_strategies\search\include\Search.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="688" topLine="10" />
+	</File>
+	<File name="engine\decision_strategies\search\include\SearchNode.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="457" topLine="6" />
+	</File>
+	<File name="engine\decision_strategies\search\include\SearchStrategyFactory.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="252" topLine="0" />
+	</File>
+	<File name="engine\decision_strategies\search\source\BreadthFirstSearchStrategy.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="72" topLine="0" />
+	</File>
+	<File name="engine\decision_strategies\search\source\GreedySearchStrategy.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="37" topLine="0" />
+	</File>
+	<File name="engine\decision_strategies\search\source\Search.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="1452" topLine="53" />
+	</File>
+	<File name="engine\decision_strategies\search\source\SearchNode.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="1378" topLine="51" />
+	</File>
+	<File name="engine\decision_strategies\search\source\SearchStrategyFactory.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="48" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\source\DecisionStrategy.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="280" topLine="0" />
@@ -694,11 +724,11 @@
 	<File name="engine\decision_strategies\source\ImmobileDecisionStrategy.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="77" topLine="0" />
 	</File>
-	<File name="engine\decision_strategies\source\MobileDecisionStrategy.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="0" topLine="0" />
+	<File name="engine\decision_strategies\source\MobileDecisionStrategy.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="628" topLine="4" />
 	</File>
 	<File name="engine\decision_strategies\source\NPCDecisionStrategy.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="4421" topLine="118" />
+		<Cursor position="3290" topLine="86" />
 	</File>
 	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1178" topLine="19" />
@@ -737,7 +767,7 @@
 		<Cursor position="693" topLine="0" />
 	</File>
 	<File name="engine\generators\include\CellularAutomataGenerator.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="128" topLine="0" />
+		<Cursor position="1244" topLine="36" />
 	</File>
 	<File name="engine\generators\include\CellularAutomataTypes.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="120" topLine="0" />
@@ -971,7 +1001,7 @@
 		<Cursor position="481" topLine="0" />
 	</File>
 	<File name="engine\include\Directions.hpp" open="0" top="0" tabpos="8">
-		<Cursor position="399" topLine="2" />
+		<Cursor position="214" topLine="1" />
 	</File>
 	<File name="engine\include\FileWriter.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="236" topLine="0" />
@@ -992,7 +1022,7 @@
 		<Cursor position="348" topLine="0" />
 	</File>
 	<File name="engine\include\MapUtils.hpp" open="0" top="0" tabpos="11">
-		<Cursor position="1976" topLine="28" />
+		<Cursor position="1952" topLine="30" />
 	</File>
 	<File name="engine\include\Message.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="836" topLine="19" />
@@ -1088,7 +1118,7 @@
 		<Cursor position="1086" topLine="28" />
 	</File>
 	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="10622" topLine="400" />
+		<Cursor position="6481" topLine="237" />
 	</File>
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="1053" topLine="46" />
@@ -1244,10 +1274,10 @@
 		<Cursor position="591" topLine="7" />
 	</File>
 	<File name="engine\translators\source\MapTranslator.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="5623" topLine="163" />
+		<Cursor position="5279" topLine="163" />
 	</File>
 	<File name="engine\translators\source\ViewMapTranslator.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="242" topLine="11" />
+		<Cursor position="819" topLine="13" />
 	</File>
 	<File name="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="118" topLine="0" />
@@ -1331,13 +1361,13 @@
 		<Cursor position="753" topLine="34" />
 	</File>
 	<File name="world\include\Map.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="63" topLine="0" />
+		<Cursor position="1346" topLine="31" />
 	</File>
 	<File name="world\include\MapExit.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="514" topLine="2" />
 	</File>
 	<File name="world\include\MapTypes.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="35" topLine="0" />
+		<Cursor position="27" topLine="0" />
 	</File>
 	<File name="world\include\MiscItem.hpp" open="0" top="0" tabpos="12">
 		<Cursor position="109" topLine="0" />
@@ -1595,7 +1625,7 @@
 		<Cursor position="101" topLine="0" />
 	</File>
 	<File name="world\source\Map.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="3346" topLine="137" />
+		<Cursor position="3242" topLine="125" />
 	</File>
 	<File name="world\source\MapExit.cpp" open="0" top="0" tabpos="37">
 		<Cursor position="125" topLine="0" />

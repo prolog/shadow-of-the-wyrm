@@ -397,6 +397,17 @@
 		<Unit filename="engine\decision_strategies\include\MobileDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\NPCDecisionStrategy.hpp" />
 		<Unit filename="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\search\include\BreadthFirstSearchStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\search\include\GreedySearchStrategy.hpp" />
+		<Unit filename="engine\decision_strategies\search\include\Search.hpp" />
+		<Unit filename="engine\decision_strategies\search\include\SearchNode.hpp" />
+		<Unit filename="engine\decision_strategies\search\include\SearchStrategyFactory.hpp" />
+		<Unit filename="engine\decision_strategies\search\include\SearchTypes.hpp" />
+		<Unit filename="engine\decision_strategies\search\source\BreadthFirstSearchStrategy.cpp" />
+		<Unit filename="engine\decision_strategies\search\source\GreedySearchStrategy.cpp" />
+		<Unit filename="engine\decision_strategies\search\source\Search.cpp" />
+		<Unit filename="engine\decision_strategies\search\source\SearchNode.cpp" />
+		<Unit filename="engine\decision_strategies\search\source\SearchStrategyFactory.cpp" />
 		<Unit filename="engine\decision_strategies\source\DecisionStrategy.cpp" />
 		<Unit filename="engine\decision_strategies\source\DecisionStrategyFactory.cpp" />
 		<Unit filename="engine\decision_strategies\source\DecisionStrategyTypes.cpp" />

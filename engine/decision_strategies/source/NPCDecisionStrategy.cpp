@@ -5,6 +5,7 @@
 #include "MapUtils.hpp"
 #include "NPCDecisionStrategy.hpp"
 #include "RNG.hpp"
+#include "SearchStrategyFactory.hpp"
 
 using std::set;
 using std::string;
@@ -100,6 +101,16 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
           CommandPtr command = make_shared<AttackCommand>(direction);
           return command;
         }
+        else
+        {
+          if (can_move())
+          {
+            SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST);
+            Direction direction = MapUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
+            CommandPtr command = make_shared<MovementCommand>(direction);
+            return command;
+          }
+        }
       }
     }
     
@@ -111,6 +122,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
 }
 
 // Get the decision for where to move.
+// Move stupidly (randomly) when no threat is present.
 CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creature_id)
 {   
   CommandPtr movement_command;

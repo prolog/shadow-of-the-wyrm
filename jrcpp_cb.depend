@@ -559,7 +559,7 @@
 	"SkillsDumper.hpp"
 	"StatsDumper.hpp"
 
-1341968383 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
+1342200367 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\conversion.cpp
 	<ctype.h>
 	<boost/lexical_cast.hpp>
 	<boost/uuid/uuid_io.hpp>
@@ -649,7 +649,7 @@
 	<sstream>
 	"ImmobileDecisionStrategy.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
+1342199432 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"Commands.hpp"
@@ -657,6 +657,7 @@
 	"MapUtils.hpp"
 	"NPCDecisionStrategy.hpp"
 	"RNG.hpp"
+	"SearchStrategyFactory.hpp"
 
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\playerdecisionstrategy.cpp
 	<string>
@@ -1212,7 +1213,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\mapregistry.cpp
 	"MapRegistry.hpp"
 
-1341061907 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+1342199949 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
 	"Conversion.hpp"
 	"MapUtils.hpp"
 	<boost/tokenizer.hpp>
@@ -1387,7 +1388,7 @@
 	"Game.hpp"
 	"MapTranslator.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\viewmaptranslator.cpp
+1342201402 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\viewmaptranslator.cpp
 	<boost/make_shared.hpp>
 	"MapUtils.hpp"
 	"ViewMapTranslator.hpp"
@@ -1563,7 +1564,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
 	"ItemTypes.hpp"
 
-1339855485 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1342201390 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	<boost/tokenizer.hpp>
@@ -2072,16 +2073,21 @@
 1342194244 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\greedysearchstrategy.cpp
 	"GreedySearchStrategy.hpp"
 
-1342193767 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
+1342306393 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
 	<algorithm>
 	"SearchNode.hpp"
 
-1342193967 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
+1342354637 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
 	<boost/foreach.hpp>
 	"MapUtils.hpp"
 	"Search.hpp"
 
-1342192310 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\breadthfirstsearchstrategy.cpp
+1342198511 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\breadthfirstsearchstrategy.cpp
 	<boost/foreach.hpp>
 	"BreadthFirstSearchStrategy.hpp"
+
+1342194768 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
+	<boost/make_shared.hpp>
+	"BreadthFirstSearchStrategy.hpp"
+	"SearchStrategyFactory.hpp"
 
