@@ -2,9 +2,7 @@
 #include "MapUtils.hpp"
 #include "Search.hpp"
 
-using std::set;
-using std::list;
-using std::vector;
+using namespace std;
 
 // Try to find a path from start to end, given what can be seen in view_map.  This allows
 // for imperfect knowledge, and prevents search using information that has not already
@@ -14,7 +12,7 @@ Coordinate Search::search(MapPtr view_map, const Coordinate& start, const Coordi
   Coordinate stay_put;
   
   set<Coordinate> visited;
-  list<SearchNode> nodes = make_search_nodes(view_map, visited, start);
+  list<SearchNode> nodes = make_search_nodes(view_map, visited, start, end);
 
   while(true)
   {
@@ -32,16 +30,16 @@ Coordinate Search::search(MapPtr view_map, const Coordinate& start, const Coordi
       return ancestors[0];
     }
     
-    nodes = queueing_fn(nodes, make_search_nodes(view_map, visited, node));
+    nodes = queueing_fn(nodes, make_search_nodes(view_map, visited, end, node));
   }
   
   return stay_put;
 }
 
-bool Search::goal_test(const SearchNode& sn, const Coordinate& end_coord)
+bool Search::goal_test(const SearchNode& sn, const Coordinate& goal_coord)
 {
   Coordinate c = sn.get_location();
-  return (c == end_coord);
+  return (c == goal_coord);
 }
 
 bool Search::is_empty(const list<SearchNode>& search_queue) const
@@ -62,7 +60,7 @@ SearchNode Search::remove_front(list<SearchNode>& search_queue)
   return front;
 }
 
-list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& c, const SearchNode* const parent)
+list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& c, const Coordinate& goal_coordinate, const SearchNode* const parent)
 {
   list<SearchNode> search_nodes;
 
@@ -94,6 +92,9 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
           sn.set_path_cost(parent->get_path_cost() + 1);
         }
         
+        // Used for A* search.  Use Chebyshev distance for now.
+        sn.set_estimated_cost_to_goal(MapUtils::tile_distance_using_chebyshev(coord, goal_coordinate));
+        
         search_nodes.push_back(sn);
         visited.insert(coord);
       }
@@ -104,8 +105,8 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
 }
 
 // JCD FIXME refactor
-list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const SearchNode& sn)
+list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& goal_coordinate, const SearchNode& sn)
 {
   Coordinate c = sn.get_location();
-  return make_search_nodes(view_map, visited, c, &sn);
+  return make_search_nodes(view_map, visited, c, goal_coordinate, &sn);
 }

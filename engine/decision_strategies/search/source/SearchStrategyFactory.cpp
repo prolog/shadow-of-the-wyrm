@@ -1,6 +1,6 @@
 #include <boost/make_shared.hpp>
+#include "AStarSearchStrategy.hpp"
 #include "BreadthFirstSearchStrategy.hpp"
-#include "DepthFirstSearchStrategy.hpp"
 #include "SearchStrategyFactory.hpp"
 #include "UniformCostSearchStrategy.hpp"
 
@@ -16,6 +16,6 @@ SearchStrategyFactory::~SearchStrategyFactory()
 
 SearchStrategyPtr SearchStrategyFactory::create_search_strategy(const SearchType st)
 {
-  SearchStrategyPtr ss = make_shared<DepthFirstSearchStrategy>();
+  SearchStrategyPtr ss = make_shared<AStarSearchStrategy>();
   return ss;
 }
