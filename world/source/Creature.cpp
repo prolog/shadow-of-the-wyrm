@@ -492,6 +492,18 @@ DecisionStrategyPtr Creature::get_decision_strategy() const
   return decision_strategy;
 }
 
+bool Creature::hostile_to(const string& creature_id)
+{
+  DecisionStrategyPtr strategy = get_decision_strategy();
+  
+  if (strategy && strategy->get_threats().has_threat(creature_id))
+  {
+    return true;
+  }
+
+  return false;
+}
+
 void Creature::set_religion(const Religion& new_religion)
 {
   religion = new_religion;

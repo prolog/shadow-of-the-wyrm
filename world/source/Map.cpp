@@ -1,6 +1,8 @@
 #include <sstream>
 #include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
 #include "Map.hpp"
 #include "MapUtils.hpp"
@@ -27,6 +29,10 @@ Map::Map(const Dimensions& new_dimensions)
 {
   dimensions = new_dimensions;
   original_dimensions = dimensions;
+  
+  // Generate a default unique identifier for this map
+  boost::uuids::uuid id = boost::uuids::random_generator()();
+  map_id = Uuid::to_string(id);
 }
 
 // Create the creature list by iterating over all the map tiles, and adding any Creature
@@ -65,6 +71,16 @@ map<string, CreaturePtr> Map::get_creatures()
     create_creatures();
   }
 
+  return creatures;
+}
+
+map<string, CreaturePtr>& Map::get_creatures_ref()
+{
+  if (creatures.empty())
+  {
+    create_creatures();
+  }
+  
   return creatures;
 }
 

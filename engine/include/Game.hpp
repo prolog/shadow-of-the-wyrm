@@ -80,6 +80,8 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
     // Re-gets the map, and restarts the game loop
     void reload_map();
     
+    void detect_creatures_if_necessary(CreaturePtr player, const std::string& original_map_id);
+    
     // Update the physical display
     void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map);
 

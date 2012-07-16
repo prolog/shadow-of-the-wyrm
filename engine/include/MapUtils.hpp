@@ -47,8 +47,9 @@ class MapUtils
     
     static bool is_moving_from_land_type_tile_to_water_type_tile(TilePtr creatures_old_tile, TilePtr creatures_new_tile);
     
+    static bool hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
-
+    
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

@@ -1169,7 +1169,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1342110140 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1342458296 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1187,6 +1187,7 @@
 	"MapTranslator.hpp"
 	"DisplayStatistics.hpp"
 	"MessageManager.hpp"
+	"SkillManager.hpp"
 	"ViewMapTranslator.hpp"
 	"WorldTimeKeeperCoordinator.hpp"
 
@@ -1213,7 +1214,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\mapregistry.cpp
 	"MapRegistry.hpp"
 
-1342356497 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
+1342460711 source:c:\cygwin\home\julian\jrcpp\engine\source\maputils.cpp
 	"Conversion.hpp"
 	"MapUtils.hpp"
 	<boost/foreach.hpp>
@@ -1288,10 +1289,11 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1341153647 source:c:\cygwin\home\julian\jrcpp\engine\source\skillmanager.cpp
+1342457449 source:c:\cygwin\home\julian\jrcpp\engine\source\skillmanager.cpp
+	"RNG.hpp"
 	"SkillManager.hpp"
 
-1342355424 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1342457872 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1516,7 +1518,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1342454766 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1342460828 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	<limits>
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
@@ -1564,10 +1566,12 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
 	"ItemTypes.hpp"
 
-1342201390 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1342459486 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	<boost/tokenizer.hpp>
+	<boost/uuid/uuid_generators.hpp>
+	<boost/uuid/uuid_io.hpp>
 	"Conversion.hpp"
 	"Map.hpp"
 	"MapUtils.hpp"

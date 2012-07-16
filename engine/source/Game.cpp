@@ -15,6 +15,7 @@
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
 #include "MessageManager.hpp"
+#include "SkillManager.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WorldTimeKeeperCoordinator.hpp"
 
@@ -211,12 +212,17 @@ void Game::go()
   MapPtr current_map = get_current_map();
 
       FIXME_REMOVE_THIS_FUNCTION(current_player);
-      
+ 
+  string map_id = "";
+
   // Main game loop.
   while(keep_playing)
   {
+    detect_creatures_if_necessary(current_player, map_id);
+        
     current_map = get_current_map();
-    
+    map_id = current_map_id;
+
     map<string, CreaturePtr> map_creatures = current_map->get_creatures();
 
     ActionCoordinator ac;
@@ -336,6 +342,30 @@ bool Game::should_keep_playing() const
 void Game::reload_map()
 {
   reload_game_loop = true;
+}
+
+void Game::detect_creatures_if_necessary(CreaturePtr player, const string& original_map_id)
+{
+  MessageManager* manager = MessageManager::instance();
+  
+  if (manager && (original_map_id != current_map_id)) // We've just loaded a new map
+  {
+    MapPtr map = get_current_map();
+    
+    if (map && map->get_map_type() != MAP_TYPE_WORLD) // Player's the only creature on the map in this case, so no msgs.
+    {
+      if (MapUtils::hostile_creature_exists(player->get_id(), map))
+      {
+        SkillManager sm;
+        if (sm.check_skill(player, SKILL_GENERAL_DETECTION))
+        {
+          string detected_creatures = StringTable::get(ActionTextKeys::ACTION_DETECTED_HOSTILE_CREATURES);
+          manager->add_new_message(detected_creatures);
+          manager->send();
+        }
+      }
+    }
+  }
 }
 
 // Set the current map in the map registry.
