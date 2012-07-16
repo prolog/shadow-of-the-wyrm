@@ -2073,11 +2073,13 @@
 1342194244 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\greedysearchstrategy.cpp
 	"GreedySearchStrategy.hpp"
 
-1342306393 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
+1342451882 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
 	<algorithm>
+	<sstream>
+	<boost/foreach.hpp>
 	"SearchNode.hpp"
 
-1342443641 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
+1342452323 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
 	<boost/foreach.hpp>
 	"MapUtils.hpp"
 	"Search.hpp"
@@ -2086,14 +2088,13 @@
 	<boost/foreach.hpp>
 	"BreadthFirstSearchStrategy.hpp"
 
-1342445722 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
+1342450924 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
 	<boost/make_shared.hpp>
 	"BreadthFirstSearchStrategy.hpp"
-	"DepthFirstSearchStrategy.hpp"
 	"SearchStrategyFactory.hpp"
 	"UniformCostSearchStrategy.hpp"
 
-1342444341 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\depthfirstsearchstrategy.cpp
+1342449545 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\depthfirstsearchstrategy.cpp
 	<boost/foreach.hpp>
 	"DepthFirstSearchStrategy.hpp"
 
@@ -2101,4 +2102,9 @@
 	<algorithm>
 	<boost/foreach.hpp>
 	"UniformCostSearchStrategy.hpp"
+
+1342452632 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\astarsearchstrategy.cpp
+	<algorithm>
+	<boost/foreach.hpp>
+	"AStarSearchStrategy.hpp"
 
