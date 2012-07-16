@@ -268,6 +268,7 @@
                  - default (or just ignore the field)
 				 - immobile_default
 				 - immobile_aggressive
+				 - mobile
 				 - Any unaccepted value provided will map to "default" in Savage Lands.
 			-->
 			<xs:element name="DecisionStrategy" type="xs:string" minOccurs="0"/>
@@ -275,6 +276,8 @@
 			<xs:element ref="tns:CreatureGeneration"/>
 			<xs:element name="Level" type="tns:PrimaryStatistic"/>
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
+			<xs:element name="Evade" type="xs:int" minOccurs="0"/>
+			<xs:element name="Soak" type="xs:int" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>

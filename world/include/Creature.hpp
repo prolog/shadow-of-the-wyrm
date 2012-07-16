@@ -145,7 +145,13 @@ class Creature
     Statistic get_arcana_points() const;
 
 
-    // Set/get protective statistics
+    // Set/get protective statistics.  The "base_evade" and "base_soak" are
+    // stored (not calculated) values that exist regardless of any armour worn.
+    void set_base_evade(const Statistic& new_base_evade);
+    Statistic get_base_evade() const;
+    
+    void set_base_soak(const Statistic& new_base_soak);
+    Statistic get_base_soak() const;
 
     void set_evade(const Statistic& new_evade);
     Statistic get_evade() const;
@@ -248,6 +254,8 @@ class Creature
     Statistic arcana_points;
 
     // Used for evading attacks (protective statistics)
+    Statistic base_evade;
+    Statistic base_soak;
     Statistic evade;
     Statistic soak;
 

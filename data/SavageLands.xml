@@ -1959,6 +1959,8 @@
 				<AllowableTerrainTypes>
 					<TileType>10</TileType>
 					<TileType>13</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -1993,6 +1995,7 @@
 					<TileType>15</TileType>
 					<TileType>16</TileType>
 					<TileType>21</TileType>
+					<TileType>26</TileType>
 				</AllowableTerrainTypes>
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
@@ -2008,6 +2011,35 @@
 				<NumSides>5</NumSides>
 				<Type>1</Type>
 			</Damage>
+		</Creature>
+		<Creature id="armoured_beetle">
+			<ShortDescriptionSID>ARMOURED_BEETLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ARMOURED_BEETLE_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>i</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>2</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>2</Soak>
 		</Creature>
 	</Creatures>
 	<Tiles>
