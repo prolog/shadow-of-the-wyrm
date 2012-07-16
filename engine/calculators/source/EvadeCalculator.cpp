@@ -19,6 +19,8 @@ int EvadeCalculator::calculate_evade(const CreaturePtr& c)
   
   if (c)
   {
+    evade = c->get_base_evade().get_current();
+    
     int agility = c->get_agility().get_current();
     int valour  = c->get_valour().get_current();
 

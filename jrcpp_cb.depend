@@ -108,7 +108,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlconsumablereader.cpp
 	"XMLConsumableReader.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlcreaturesreader.cpp
+1342455032 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlcreaturesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
@@ -323,7 +323,7 @@
 	"MagicalDamageCalculator.hpp"
 	"PhysicalDamageCalculator.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\evadecalculator.cpp
+1342454826 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\evadecalculator.cpp
 	"EvadeCalculator.hpp"
 	"unit_tests/EvadeCalculator_test.cpp"
 
@@ -389,7 +389,7 @@
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\skillscalculator_test.cpp
 	"gtest/gtest.h"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\soakcalculator.cpp
+1342454844 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\soakcalculator.cpp
 	"SoakCalculator.hpp"
 	"unit_tests/SoakCalculator_test.cpp"
 
@@ -1516,7 +1516,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1341240480 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1342454766 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	<limits>
 	"Creature.hpp"
 	"PlayerDecisionStrategy.hpp"
@@ -2073,7 +2073,7 @@
 1342194244 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\greedysearchstrategy.cpp
 	"GreedySearchStrategy.hpp"
 
-1342451882 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
+1342452726 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
 	<algorithm>
 	<sstream>
 	<boost/foreach.hpp>
@@ -2088,8 +2088,9 @@
 	<boost/foreach.hpp>
 	"BreadthFirstSearchStrategy.hpp"
 
-1342450924 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
+1342452694 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
 	<boost/make_shared.hpp>
+	"AStarSearchStrategy.hpp"
 	"BreadthFirstSearchStrategy.hpp"
 	"SearchStrategyFactory.hpp"
 	"UniformCostSearchStrategy.hpp"

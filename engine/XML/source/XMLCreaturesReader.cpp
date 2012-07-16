@@ -107,6 +107,16 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     base_damage.set_damage_type(CombatConstants::DEFAULT_UNARMED_DAMAGE_TYPE);
     parse_damage(base_damage, base_damage_node);
     creature->set_base_damage(base_damage);
+    
+    // Read the base evade and soak for the creature.  For most creatures, this will be 0,
+    // but some creatures (armoured beetles, dragons, etc) will have higher than usual values.
+    // Evade
+    int base_evade = XMLUtils::get_child_node_int_value(creature_node, "Evade", 0);
+    creature->set_base_evade(base_evade);
+    
+    // Soak
+    int base_soak = XMLUtils::get_child_node_int_value(creature_node, "Soak", 0);
+    creature->set_base_soak(base_soak);
   }
   
   creature_data.second = cgv;

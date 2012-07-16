@@ -22,6 +22,8 @@ Creature::Creature()
 // Everything else is a string, Statistic, etc, and is not a primitive type.  These'll have their own constructors.
 // Religion defaults to atheist.
 {
+  set_base_evade(0);
+  set_base_soak(0);
   set_evade(0);
   set_soak (0);
   
@@ -408,6 +410,26 @@ void Creature::decrement_arcana_points(const int amount)
 Statistic Creature::get_arcana_points() const
 {
   return arcana_points;
+}
+
+void Creature::set_base_evade(const Statistic& new_base_evade)
+{
+  base_evade = new_base_evade;
+}
+
+Statistic Creature::get_base_evade() const
+{
+  return base_evade;
+}
+
+void Creature::set_base_soak(const Statistic& new_base_soak)
+{
+  base_soak = new_base_soak;
+}
+
+Statistic Creature::get_base_soak() const
+{
+  return base_soak;
 }
 
 void Creature::set_evade(const Statistic& new_evade)

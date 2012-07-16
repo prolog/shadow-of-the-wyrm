@@ -16,6 +16,8 @@ int SoakCalculator::calculate_soak(const CreaturePtr& c)
 
   if (c)
   {
+    soak = c->get_base_soak().get_current();
+    
     int health = c->get_health().get_current();
     int health_bonus = 0;
 
