@@ -79,7 +79,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
     {
       TilePtr tile = view_map->at(coord);
       
-      if (tile)
+      if (tile && !tile->get_is_blocking())
       {
         SearchNode sn(coord);
         
