@@ -267,7 +267,7 @@
 	"ItemManager.hpp"
 	"RNG.hpp"
 
-1342355727 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+1342443617 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
@@ -2077,7 +2077,7 @@
 	<algorithm>
 	"SearchNode.hpp"
 
-1342354845 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
+1342443641 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
 	<boost/foreach.hpp>
 	"MapUtils.hpp"
 	"Search.hpp"
@@ -2086,8 +2086,19 @@
 	<boost/foreach.hpp>
 	"BreadthFirstSearchStrategy.hpp"
 
-1342194768 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
+1342445722 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
 	<boost/make_shared.hpp>
 	"BreadthFirstSearchStrategy.hpp"
+	"DepthFirstSearchStrategy.hpp"
 	"SearchStrategyFactory.hpp"
+	"UniformCostSearchStrategy.hpp"
+
+1342444341 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\depthfirstsearchstrategy.cpp
+	<boost/foreach.hpp>
+	"DepthFirstSearchStrategy.hpp"
+
+1342445237 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\uniformcostsearchstrategy.cpp
+	<algorithm>
+	<boost/foreach.hpp>
+	"UniformCostSearchStrategy.hpp"
 
