@@ -174,6 +174,9 @@ class Creature
     void set_decision_strategy(const boost::shared_ptr<DecisionStrategy> strategy);
     boost::shared_ptr<DecisionStrategy> get_decision_strategy() const;
     
+    // Is the creature hostile towards a given creature's ID?
+    bool hostile_to(const std::string& creature_id);
+    
     // Religion info
     void set_religion(const Religion& new_religion);
     Religion get_religion() const;

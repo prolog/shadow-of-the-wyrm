@@ -430,6 +430,29 @@ bool MapUtils::is_moving_from_land_type_tile_to_water_type_tile(TilePtr old_tile
   return moving_from_land_to_water;
 }
 
+// Check to see if there are any creatures hostile to the given creature ID on the map
+bool MapUtils::hostile_creature_exists(const string& creature_id, MapPtr current_map)
+{
+  if (current_map)
+  {
+    map<std::string, CreaturePtr>& creature_map = current_map->get_creatures_ref();
+    
+    for (map<string, CreaturePtr>::const_iterator cr_it = creature_map.begin(); cr_it != creature_map.end(); cr_it++)
+    {
+      CreaturePtr creature = cr_it->second;
+      
+      if (creature->hostile_to(creature_id))
+      {
+        return true;
+      }
+    }
+  }
+  
+  return false;
+}
+
+// Check to see if there is a hostile creature adjacent to the creature represented by
+// the given creature ID.
 bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPtr map)
 {
   if (map)
@@ -449,7 +472,7 @@ bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPt
         if (creature)
         {
           // Is the creature on this tile hostile to the ID passed in?
-          if (creature->get_decision_strategy()->get_threats().has_threat(creature_id))
+          if (creature->hostile_to(creature_id))
           {
             return true;
           }

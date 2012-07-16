@@ -667,6 +667,7 @@ const string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP
 const string ActionTextKeys::ACTION_MOVEMENT_BLOCKED           = "ACTION_MOVEMENT_BLOCKED";
 const string ActionTextKeys::ACTION_PLAYER_DROWNING            = "ACTION_PLAYER_DROWNING";
 const string ActionTextKeys::ACTION_PLAYER_FALL_FROM_MOUNTAIN  = "ACTION_PLAYER_FALL_FROM_MOUNTAIN";
+const string ActionTextKeys::ACTION_DETECTED_HOSTILE_CREATURES = "ACTION_DETECTED_HOSTILE_CREATURES";
 
 // Strings for the various seasons
 SeasonTextKeys::SeasonTextKeys()

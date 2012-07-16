@@ -26,6 +26,7 @@ class Map
 		// This allows for quicker lookup.
 		bool has_creature(const std::string& creature_id);
 		std::map<std::string, boost::shared_ptr<Creature> > get_creatures();
+		std::map<std::string, boost::shared_ptr<Creature> >& get_creatures_ref();
 		void remove_creature(const std::string& creature_id);
 		// Other get_creature... fns here.
 		// Other remove_creature... fns here.
