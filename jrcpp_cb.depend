@@ -588,7 +588,7 @@
 	"ItemDumper.hpp"
 	"StringTable.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\skillsdumper.cpp
+1342545664 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\skillsdumper.cpp
 	<sstream>
 	"Conversion.hpp"
 	"SkillsDumper.hpp"
@@ -1314,11 +1314,12 @@
 	"CreaturePietyRegeneration.hpp"
 	"ReligionConstants.hpp"
 
-1341664951 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
+1342544608 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"CreatureHPRegeneration.hpp"
 	"CreaturePietyRegeneration.hpp"
+	"CreatureSkillIncrementer.hpp"
 	"CreatureTimeObserver.hpp"
 	"Game.hpp"
 	"MovementAccumulationChecker.hpp"
@@ -1338,7 +1339,7 @@
 	"Game.hpp"
 	"WorldTimeKeeper.hpp"
 
-1341925801 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
+1342544021 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeepercoordinator.cpp
 	<boost/make_shared.hpp>
 	"CreatureTimeObserver.hpp"
 	"SeasonsTimeObserver.hpp"
@@ -1609,7 +1610,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\scroll.cpp
 	"Scroll.hpp"
 
-1342538772 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+1342545730 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	"Skills.hpp"
@@ -2014,7 +2015,7 @@
 	"SwimmingCalculator.hpp"
 	"SwimmingMovementAccumulationChecker.hpp"
 
-1342539491 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+1342541919 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
 	"CombatManager.hpp"
 	"MountainClimbingMovementAccumulationChecker.hpp"
 
@@ -2127,8 +2128,11 @@
 1342539503 source:c:\cygwin\home\julian\jrcpp\engine\time\source\boatingmovementaccumulationchecker.cpp
 	"BoatingMovementAccumulationChecker.hpp"
 
-1342541298 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\mountaineering.cpp
+1342541909 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\mountaineering.cpp
+	"CombatManager.hpp"
 	"Mountaineering.hpp"
+	"MountainClimbingCalculator.hpp"
+	"SkillManager.hpp"
 
 1342541525 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\swimming.cpp
 	"CombatManager.hpp"
@@ -2136,4 +2140,7 @@
 	"StringConstants.hpp"
 	"Swimming.hpp"
 	"SwimmingCalculator.hpp"
+
+1342546054 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
+	"CreatureSkillIncrementer.hpp"
 

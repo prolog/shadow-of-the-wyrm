@@ -56,7 +56,7 @@ string SkillsDumper::get_skills_by_category(const SkillCategory category, bool i
   
   if (creature)
   {
-    SkillMap skills = creature->get_skills().get_raw_skills();
+    SkillMap& skills = creature->get_skills().get_raw_skills();
     
     for (SkillMap::const_iterator sk_it = skills.begin(); sk_it != skills.end(); sk_it++)
     {

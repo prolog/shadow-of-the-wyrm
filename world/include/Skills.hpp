@@ -24,6 +24,8 @@ class Skill
     virtual void increment_marks();
 
     virtual void set_threshold(const int new_threshold);
+    virtual void set_threshold_for_value(const int skill_value);
+    
     virtual int  get_threshold() const;
 
     virtual SkillCategory get_category() const;
@@ -536,9 +538,7 @@ class Skills
 
     std::string str() const;
     
-    // This just provides a copy of the map - direct manipulation requires the various
-    // methods above.
-    std::map<SkillType, Skill> get_raw_skills() const;
+    std::map<SkillType, Skill>& get_raw_skills();
 
   protected:
     void initialize_skills();
