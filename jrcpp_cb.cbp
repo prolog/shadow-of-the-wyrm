@@ -593,9 +593,13 @@
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
 		<Unit filename="engine\skills\include\Detection.hpp" />
+		<Unit filename="engine\skills\include\Mountaineering.hpp" />
 		<Unit filename="engine\skills\include\SkillManager.hpp" />
+		<Unit filename="engine\skills\include\Swimming.hpp" />
 		<Unit filename="engine\skills\source\Detection.cpp" />
+		<Unit filename="engine\skills\source\Mountaineering.cpp" />
 		<Unit filename="engine\skills\source\SkillManager.cpp" />
+		<Unit filename="engine\skills\source\Swimming.cpp" />
 		<Unit filename="engine\source\ClassManager.cpp" />
 		<Unit filename="engine\source\CreationUtils.cpp" />
 		<Unit filename="engine\source\CreatureFactory.cpp" />
@@ -641,8 +645,10 @@
 		<Unit filename="engine\source\unit_tests\RNG_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
+		<Unit filename="engine\time\include\BoatingMovementAccumulationChecker.hpp" />
 		<Unit filename="engine\time\include\CreatureHPRegeneration.hpp" />
 		<Unit filename="engine\time\include\CreaturePietyRegeneration.hpp" />
+		<Unit filename="engine\time\include\CreatureSkillIncrementer.hpp" />
 		<Unit filename="engine\time\include\CreatureTimeObserver.hpp" />
 		<Unit filename="engine\time\include\ICreatureRegeneration.hpp" />
 		<Unit filename="engine\time\include\ITerrainMovementAccumulationChecker.hpp" />
@@ -657,8 +663,10 @@
 		<Unit filename="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeper.hpp" />
 		<Unit filename="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
+		<Unit filename="engine\time\source\BoatingMovementAccumulationChecker.cpp" />
 		<Unit filename="engine\time\source\CreatureHPRegeneration.cpp" />
 		<Unit filename="engine\time\source\CreaturePietyRegeneration.cpp" />
+		<Unit filename="engine\time\source\CreatureSkillIncrementer.cpp" />
 		<Unit filename="engine\time\source\CreatureTimeObserver.cpp" />
 		<Unit filename="engine\time\source\ITimeObserver.cpp" />
 		<Unit filename="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" />

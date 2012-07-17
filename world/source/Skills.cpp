@@ -46,9 +46,12 @@ void Skill::initialize()
   threshold = 0;
 }
 
+// Set the value, and then also update the threshold for the new value.
 void Skill::set_value(const int new_value)
 {
   value = new_value;
+  
+  set_threshold_for_value(value);
 }
 
 int Skill::get_value() const
@@ -79,6 +82,13 @@ void Skill::increment_marks()
 void Skill::set_threshold(const int new_threshold)
 {
   threshold = new_threshold;
+}
+
+// By default, the threshold for a skill is the skill's value.
+// Certain classes of skills (weapon skills, etc) may override this.
+void Skill::set_threshold_for_value(const int skill_value)
+{
+  threshold = skill_value;
 }
 
 int Skill::get_threshold() const
@@ -717,8 +727,8 @@ string Skills::str() const
   return skills_str;
 }
 
-// Return a copy of the skills map
-std::map<SkillType, Skill> Skills::get_raw_skills() const
+// Return a reference to the skills map
+std::map<SkillType, Skill>& Skills::get_raw_skills()
 {
   return skills;
 }
