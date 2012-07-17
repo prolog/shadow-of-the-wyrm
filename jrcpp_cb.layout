@@ -1057,9 +1057,6 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="412" topLine="22" />
 	</File>
-	<File name="engine\include\SkillManager.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="190" topLine="0" />
-	</File>
 	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="17230" topLine="462" />
 	</File>
@@ -1096,6 +1093,9 @@
 	<File name="engine\menus\source\WelcomeScreen.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="207" topLine="0" />
 	</File>
+	<File name="engine\skills\source\Detection.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="655" topLine="0" />
+	</File>
 	<File name="engine\source\ClassManager.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="247" topLine="0" />
 	</File>
@@ -1111,8 +1111,8 @@
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="443" topLine="4" />
 	</File>
-	<File name="engine\source\Game.cpp" open="1" top="1" tabpos="0">
-		<Cursor position="9576" topLine="344" />
+	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="5125" topLine="209" />
 	</File>
 	<File name="engine\source\ItemFactory.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="526" topLine="5" />
@@ -1152,9 +1152,6 @@
 	</File>
 	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="3124" topLine="124" />
-	</File>
-	<File name="engine\source\SkillManager.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="155" topLine="0" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="27768" topLine="657" />
@@ -1406,7 +1403,7 @@
 		<Cursor position="2503" topLine="63" />
 	</File>
 	<File name="world\include\Skills.hpp" open="0" top="0" tabpos="9">
-		<Cursor position="7218" topLine="519" />
+		<Cursor position="3868" topLine="251" />
 	</File>
 	<File name="world\include\Staff.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="104" topLine="0" />
@@ -1664,7 +1661,7 @@
 		<Cursor position="111" topLine="0" />
 	</File>
 	<File name="world\source\Skills.cpp" open="0" top="0" tabpos="11">
-		<Cursor position="6727" topLine="404" />
+		<Cursor position="13973" topLine="760" />
 	</File>
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="105" topLine="0" />
@@ -1689,6 +1686,9 @@
 	</File>
 	<File name="world\source\World.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="254" topLine="0" />
+	</File>
+	<File name="world\source\unit_tests\Skills_test.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1419" topLine="48" />
 	</File>
 	<File name="world\tiles\features\include\Altar.hpp" open="0" top="0" tabpos="17">
 		<Cursor position="276" topLine="0" />

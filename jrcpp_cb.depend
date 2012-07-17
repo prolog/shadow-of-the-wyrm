@@ -1169,13 +1169,14 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1342460920 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1342532182 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
 	"Conversion.hpp"
 	"CreatureCalculator.hpp"
 	"CreatureFeatures.hpp"
+	"Detection.hpp"
 	"FieldOfViewStrategy.hpp"
 	"FieldOfViewStrategyFactory.hpp"
 	"Game.hpp"
@@ -1187,7 +1188,6 @@
 	"MapTranslator.hpp"
 	"DisplayStatistics.hpp"
 	"MessageManager.hpp"
-	"SkillManager.hpp"
 	"ViewMapTranslator.hpp"
 	"WorldTimeKeeperCoordinator.hpp"
 
@@ -1609,7 +1609,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\scroll.cpp
 	"Scroll.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+1342531394 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	"Skills.hpp"
@@ -1618,7 +1618,7 @@
 	"StringTable.hpp"
 	"unit_tests/Skills_test.cpp"
 
-1339107605 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\skills_test.cpp
+1342531289 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\skills_test.cpp
 	"gtest/gtest.h"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\staff.cpp
@@ -2112,4 +2112,14 @@
 	<algorithm>
 	<boost/foreach.hpp>
 	"AStarSearchStrategy.hpp"
+
+1342536437 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\skillmanager.cpp
+	"RNG.hpp"
+	"SkillManager.hpp"
+
+1342532786 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\detection.cpp
+	"Detection.hpp"
+	"MapUtils.hpp"
+	"MessageManager.hpp"
+	"SkillManager.hpp"
 

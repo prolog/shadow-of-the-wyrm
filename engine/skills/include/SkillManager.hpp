@@ -12,5 +12,8 @@ class SkillManager
     int get_skill_value(CreaturePtr creature, const SkillType skill_type);
 
     // Mark a particular NWP, weapon, or magic skill
-    void mark_skill(CreaturePtr creature, const SkillType skill_type);
+    void mark_skill(CreaturePtr creature, const SkillType skill_type, const bool skill_check_result);
+    
+  protected:
+    static const int PERCENT_CHANCE_TO_MARK_SKILL_ON_FAILURE;
 };
