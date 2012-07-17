@@ -1,6 +1,6 @@
 #pragma once
 #include "ITerrainMovementAccumulationChecker.hpp"
-#include "SwimmingCalculator.hpp"
+#include "Swimming.hpp"
 
 class SwimmingMovementAccumulationChecker : public ITerrainMovementAccumulationChecker
 {
@@ -8,7 +8,5 @@ class SwimmingMovementAccumulationChecker : public ITerrainMovementAccumulationC
     void check(CreaturePtr creature);
     
   protected:
-    void drown(CreaturePtr creature);
-    
-    SwimmingCalculator sc;
+    Swimming swim;
 };

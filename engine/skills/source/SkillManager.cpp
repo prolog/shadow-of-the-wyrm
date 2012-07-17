@@ -37,5 +37,7 @@ void SkillManager::mark_skill(CreaturePtr creature, const SkillType skill_type, 
     Skill skill    = skills.get_skill(skill_type);
     
     skill.increment_marks();
+    
+    skills.set_skill(skill_type, skill);
   }
 }
