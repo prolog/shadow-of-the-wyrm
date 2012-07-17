@@ -134,280 +134,280 @@ MagicSkill::MagicSkill() : Skill(SKILL_CATEGORY_MAGIC)
 // Individual Skills
 
 // Archery
-Archery::Archery()
+ArcherySkill::ArcherySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_ARCHERY;
 }
 
 // Awareness
-Awareness::Awareness()
+AwarenessSkill::AwarenessSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_AWARENESS;
 }
 
 // Bargaining
-Bargaining::Bargaining()
+BargainingSkill::BargainingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BARGAINING;
 }
 
 // Beastmastery
-Beastmastery::Beastmastery()
+BeastmasterySkill::BeastmasterySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BEASTMASTERY;
 }
 
 // Blind Fighting
-BlindFighting::BlindFighting()
+BlindFightingSkill::BlindFightingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BLIND_FIGHTING;
 }
 
 // Boating
-Boating::Boating()
+BoatingSkill::BoatingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BOATING;
 }
 
 // Bowyer
-Bowyer::Bowyer()
+BowyerSkill::BowyerSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BOWYER;
 }
 
 // Brewing
-Brewing::Brewing()
+BrewingSkill::BrewingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BREWING;
 }
 
 // Cantrips
-Cantrips::Cantrips()
+CantripsSkill::CantripsSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_CANTRIPS;
 }
 
 // Carrying
-Carrying::Carrying()
+CarryingSkill::CarryingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_CARRYING;
 }
 
 // Combat
-Combat::Combat()
+CombatSkill::CombatSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_COMBAT;
 }
 
 // Crafting
-Crafting::Crafting()
+CraftingSkill::CraftingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_CRAFTING;
 }
 
 // Desert Lore
-DesertLore::DesertLore()
+DesertLoreSkill::DesertLoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_DESERT_LORE;
 }
 
 // Detection
-Detection::Detection()
+DetectionSkill::DetectionSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_DETECTION;
 }
 
 // Disarm Traps
-DisarmTraps::DisarmTraps()
+DisarmTrapsSkill::DisarmTrapsSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_DISARM_TRAPS;
 }
 
 // Dual Wield
-DualWield::DualWield()
+DualWieldSkill::DualWieldSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_DUAL_WIELD;
 }
 
 // Dungeoneering
-Dungeoneering::Dungeoneering()
+DungeoneeringSkill::DungeoneeringSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_DUNGEONEERING;
 }
 
 // Escape
-Escape::Escape()
+EscapeSkill::EscapeSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_ESCAPE;
 }
 
 // Foraging
-Foraging::Foraging()
+ForagingSkill::ForagingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_FORAGING;
 }
 
 // Forest Lore
-ForestLore::ForestLore()
+ForestLoreSkill::ForestLoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_FOREST_LORE;
 }
 
 // Fishing
-Fishing::Fishing()
+FishingSkill::FishingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_FISHING;
 }
 
 // Fletchery
-Fletchery::Fletchery()
+FletcherySkill::FletcherySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_FLETCHERY;
 }
 
 // Herbalism
-Herbalism::Herbalism()
+HerbalismSkill::HerbalismSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_HERBALISM;
 }
 
 // Hiding
-Hiding::Hiding()
+HidingSkill::HidingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_HIDING;
 }
 
 // Hunting
-Hunting::Hunting()
+HuntingSkill::HuntingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_HUNTING;
 }
 
 // Intimidation
-Intimidation::Intimidation()
+IntimidationSkill::IntimidationSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_INTIMIDATION;
 }
 
 // Jeweler
-Jeweler::Jeweler()
+JewelerSkill::JewelerSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_JEWELER;
 }
 
 // Jumping
-Jumping::Jumping()
+JumpingSkill::JumpingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_JUMPING;
 }
 
 // Leadership
-Leadership::Leadership()
+LeadershipSkill::LeadershipSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_LEADERSHIP;
 }
 
 // Literacy
-Literacy::Literacy()
+LiteracySkill::LiteracySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_LITERACY;
 }
 
 // Lore
-Lore::Lore()
+LoreSkill::LoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_LORE;
 }
 
 // Magic
-Magic::Magic()
+MagicGeneralSkill::MagicGeneralSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MAGIC;
 }
 
 // Marsh Lore
-MarshLore::MarshLore()
+MarshLoreSkill::MarshLoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MARSH_LORE;
 }
 
 // Medicine
-Medicine::Medicine()
+MedicineSkill::MedicineSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MEDICINE;
 }
 
 // Mountain Lore
-MountainLore::MountainLore()
+MountainLoreSkill::MountainLoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MOUNTAIN_LORE;
 }
 
 // Mountaineering
-Mountaineering::Mountaineering()
+MountaineeringSkill::MountaineeringSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MOUNTAINEERING;
 }
 
 // Music
-Music::Music()
+MusicSkill::MusicSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MUSIC;
 }
 
 // Night Sight
-NightSight::NightSight()
+NightSightSkill::NightSightSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_NIGHT_SIGHT;
 }
 
 // Oceanography
-Oceanography::Oceanography()
+OceanographySkill::OceanographySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_OCEANOGRAPHY;
 }
 
 // Papercraft
-Papercraft::Papercraft()
+PapercraftSkill::PapercraftSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_PAPERCRAFT;
@@ -421,63 +421,63 @@ ReligionSkill::ReligionSkill()
 }
 
 // Scribing
-Scribing::Scribing()
+ScribingSkill::ScribingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_SCRIBING;
 }
 
 // Skinning
-Skinning::Skinning()
+SkinningSkill::SkinningSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_SKINNING;
 }
 
 // Smithing
-Smithing::Smithing()
+SmithingSkill::SmithingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_SMITHING;
 }
 
 // Spelunking
-Spelunking::Spelunking()
+SpelunkingSkill::SpelunkingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_SPELUNKING;
 }
 
 // Stealth
-Stealth::Stealth()
+StealthSkill::StealthSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_STEALTH;
 }
 
 // Swimming
-Swimming::Swimming()
+SwimmingSkill::SwimmingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_SWIMMING;
 }
 
 // Tanning
-Tanning::Tanning()
+TanningSkill::TanningSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_TANNING;
 }
 
 // Thievery
-Thievery::Thievery()
+ThieverySkill::ThieverySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_THIEVERY;
 }
 
 // Weaving
-Weaving::Weaving()
+WeavingSkill::WeavingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_WEAVING;
@@ -486,63 +486,63 @@ Weaving::Weaving()
 // MELEE WEAPON SKILLS
 
 // Axes
-Axes::Axes()
+AxesSkill::AxesSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_AXES;
 }
 
 // Short Blades
-ShortBlades::ShortBlades()
+ShortBladesSkill::ShortBladesSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_SHORT_BLADES;
 }
 
 // Long Blades
-LongBlades::LongBlades()
+LongBladesSkill::LongBladesSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_LONG_BLADES;
 }
 
 // Bludgeons
-Bludgeons::Bludgeons()
+BludgeonsSkill::BludgeonsSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_BLUDGEONS;
 }
 
 // Daggers
-Daggers::Daggers()
+DaggersSkill::DaggersSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_DAGGERS;
 }
 
 // Rods and Staves
-RodsAndStaves::RodsAndStaves()
+RodsAndStavesSkill::RodsAndStavesSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_RODS_AND_STAVES;
 }
 
 // Spears
-Spears::Spears()
+SpearsSkill::SpearsSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_SPEARS;
 }
 
 // Unarmed
-Unarmed::Unarmed()
+UnarmedSkill::UnarmedSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_UNARMED;
 }
 
 // Whips
-Whips::Whips()
+WhipsSkill::WhipsSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_WHIPS;
@@ -551,63 +551,63 @@ Whips::Whips()
 // RANGED WEAPON SKILLS
 
 // Thrown Axes
-ThrownAxes::ThrownAxes()
+ThrownAxesSkill::ThrownAxesSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_AXES;
 }
 
 // Thrown Blades
-ThrownBlades::ThrownBlades()
+ThrownBladesSkill::ThrownBladesSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BLADES;
 }
 
 // Thrown Bludgeons
-ThrownBludgeons::ThrownBludgeons()
+ThrownBludgeonsSkill::ThrownBludgeonsSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS;
 }
 
 // Bows
-Bows::Bows()
+BowsSkill::BowsSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BOWS;
 }
 
 // Crossbows
-Crossbows::Crossbows()
+CrossbowsSkill::CrossbowsSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS;
 }
 
 // Daggers
-ThrownDaggers::ThrownDaggers()
+ThrownDaggersSkill::ThrownDaggersSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_DAGGERS;
 }
 
 // Rocks
-Rocks::Rocks()
+RocksSkill::RocksSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_ROCKS;
 }
 
 // Slings
-Slings::Slings()
+SlingsSkill::SlingsSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_SLINGS;
 }
 
 // Spears
-ThrownSpears::ThrownSpears()
+ThrownSpearsSkill::ThrownSpearsSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_SPEARS;
@@ -616,28 +616,28 @@ ThrownSpears::ThrownSpears()
 // MAGIC SKILLS
 
 // Arcane
-ArcaneMagic::ArcaneMagic()
+ArcaneMagicSkill::ArcaneMagicSkill()
 : MagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_ARCANE;
 }
 
 // Divine
-DivineMagic::DivineMagic()
+DivineMagicSkill::DivineMagicSkill()
 : MagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_DIVINE;
 }
 
 // Mystic
-MysticMagic::MysticMagic()
+MysticMagicSkill::MysticMagicSkill()
 : MagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_MYSTIC;
 }
 
 // Primordial
-PrimordialMagic::PrimordialMagic()
+PrimordialMagicSkill::PrimordialMagicSkill()
 : MagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_PRIMORDIAL;
@@ -729,56 +729,56 @@ void Skills::initialize_skills()
 // Initialize the list of general skills.
 void Skills::initialize_general_skills()
 {
-  Archery archery;
-  Awareness awareness;
-  Bargaining bargaining;
-  Beastmastery beastmastery;
-  BlindFighting blind_fighting;
-  Boating boating;
-  Bowyer bowyer;
-  Brewing brewing;
-  Cantrips cantrips;
-  Carrying carrying;
-  Combat combat;
-  Crafting crafting;
-  DesertLore desert_lore;
-  Detection detection;
-  DisarmTraps disarm_traps;
-  DualWield dual_wield;
-  Dungeoneering dungeoneering;
-  Escape escape;
-  Fishing fishing;
-  Fletchery fletchery;
-  Foraging foraging;
-  ForestLore forest_lore;
-  Herbalism herbalism;
-  Hiding hiding;
-  Hunting hunting;
-  Intimidation intimidation;
-  Jeweler jeweler;
-  Jumping jumping;
-  Leadership leadership;
-  Literacy literacy;
-  Lore lore;
-  Magic magic;
-  MarshLore marsh_lore;
-  Medicine medicine;
-  MountainLore mountain_lore;
-  Mountaineering mountaineering;
-  Music music;
-  NightSight night_sight;
-  Oceanography oceanography;
-  Papercraft papercraft;
+  ArcherySkill archery;
+  AwarenessSkill awareness;
+  BargainingSkill bargaining;
+  BeastmasterySkill beastmastery;
+  BlindFightingSkill blind_fighting;
+  BoatingSkill boating;
+  BowyerSkill bowyer;
+  BrewingSkill brewing;
+  CantripsSkill cantrips;
+  CarryingSkill carrying;
+  CombatSkill combat;
+  CraftingSkill crafting;
+  DesertLoreSkill desert_lore;
+  DetectionSkill detection;
+  DisarmTrapsSkill disarm_traps;
+  DualWieldSkill dual_wield;
+  DungeoneeringSkill dungeoneering;
+  EscapeSkill escape;
+  FishingSkill fishing;
+  FletcherySkill fletchery;
+  ForagingSkill foraging;
+  ForestLoreSkill forest_lore;
+  HerbalismSkill herbalism;
+  HidingSkill hiding;
+  HuntingSkill hunting;
+  IntimidationSkill intimidation;
+  JewelerSkill jeweler;
+  JumpingSkill jumping;
+  LeadershipSkill leadership;
+  LiteracySkill literacy;
+  LoreSkill lore;
+  MagicGeneralSkill magic;
+  MarshLoreSkill marsh_lore;
+  MedicineSkill medicine;
+  MountainLoreSkill mountain_lore;
+  MountaineeringSkill mountaineering;
+  MusicSkill music;
+  NightSightSkill night_sight;
+  OceanographySkill oceanography;
+  PapercraftSkill papercraft;
   ReligionSkill religion;
-  Scribing scribing;
-  Skinning skinning;
-  Smithing smithing;
-  Spelunking spelunking;
-  Stealth stealth;
-  Swimming swimming;
-  Tanning tanning;
-  Thievery thievery;
-  Weaving weaving;
+  ScribingSkill scribing;
+  SkinningSkill skinning;
+  SmithingSkill smithing;
+  SpelunkingSkill spelunking;
+  StealthSkill stealth;
+  SwimmingSkill swimming;
+  TanningSkill tanning;
+  ThieverySkill thievery;
+  WeavingSkill weaving;
 
   skills.insert(make_pair(SKILL_GENERAL_ARCHERY, archery));
   skills.insert(make_pair(SKILL_GENERAL_AWARENESS, awareness));
@@ -835,15 +835,15 @@ void Skills::initialize_general_skills()
 // Initialize all the melee skills.
 void Skills::initialize_melee_skills()
 {
-  Axes axes;
-  ShortBlades short_blades;
-  LongBlades long_blades;
-  Bludgeons bludgeons;
-  Daggers daggers;
-  RodsAndStaves rods_and_staves;
-  Spears spears;
-  Unarmed unarmed;
-  Whips whips;
+  AxesSkill axes;
+  ShortBladesSkill short_blades;
+  LongBladesSkill long_blades;
+  BludgeonsSkill bludgeons;
+  DaggersSkill daggers;
+  RodsAndStavesSkill rods_and_staves;
+  SpearsSkill spears;
+  UnarmedSkill unarmed;
+  WhipsSkill whips;
 
   skills.insert(make_pair(SKILL_MELEE_AXES, axes));
   skills.insert(make_pair(SKILL_MELEE_SHORT_BLADES, short_blades));
@@ -859,15 +859,15 @@ void Skills::initialize_melee_skills()
 // Initialize all the ranged weapon skills.
 void Skills::initialize_ranged_skills()
 {
-  ThrownAxes axes;
-  ThrownBlades blades;
-  ThrownBludgeons bludgeons;
-  Bows bows;
-  Crossbows crossbows;
-  ThrownDaggers daggers;
-  Rocks rocks;
-  Slings slings;
-  ThrownSpears spears;
+  ThrownAxesSkill axes;
+  ThrownBladesSkill blades;
+  ThrownBludgeonsSkill bludgeons;
+  BowsSkill bows;
+  CrossbowsSkill crossbows;
+  ThrownDaggersSkill daggers;
+  RocksSkill rocks;
+  SlingsSkill slings;
+  ThrownSpearsSkill spears;
 
   skills.insert(make_pair(SKILL_RANGED_AXES, axes));
   skills.insert(make_pair(SKILL_RANGED_BLADES, blades));
@@ -883,10 +883,10 @@ void Skills::initialize_ranged_skills()
 // Initialize all the magic skills.
 void Skills::initialize_magic_skills()
 {
-  ArcaneMagic arcane;
-  DivineMagic divine;
-  MysticMagic mystic;
-  PrimordialMagic primordial;
+  ArcaneMagicSkill arcane;
+  DivineMagicSkill divine;
+  MysticMagicSkill mystic;
+  PrimordialMagicSkill primordial;
 
   skills.insert(make_pair(SKILL_MAGIC_ARCANE, arcane));
   skills.insert(make_pair(SKILL_MAGIC_DIVINE, divine));
