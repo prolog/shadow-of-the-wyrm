@@ -18,6 +18,10 @@ void SwimmingMovementAccumulationChecker::check(CreaturePtr creature)
     {
       drown(creature);
     }
+    else
+    {
+      sm.mark_skill(creature, SKILL_GENERAL_SWIMMING, true);
+    }
   }
 }
 

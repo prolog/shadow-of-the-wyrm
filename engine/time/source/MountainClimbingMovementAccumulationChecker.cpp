@@ -18,6 +18,10 @@ void MountainClimbingMovementAccumulationChecker::check(CreaturePtr creature)
     {
       check_for_fall(creature, mountaineering_skill_value);
     }
+    else
+    {
+      sm.mark_skill(creature, SKILL_GENERAL_MOUNTAINEERING, true);
+    }
   }
 }
 
