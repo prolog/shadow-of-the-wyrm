@@ -74,443 +74,442 @@ class MagicSkill : public Skill
 };
 
 // Individual skills
-class Archery : public GeneralSkill
+class ArcherySkill : public GeneralSkill
 {
   public:
-    Archery();
+    ArcherySkill();
 };
 
-class Awareness : public GeneralSkill
+class AwarenessSkill : public GeneralSkill
 {
   public:
-    Awareness();
+    AwarenessSkill();
 };
 
-class Bargaining : public GeneralSkill
+class BargainingSkill : public GeneralSkill
 {
   public:
-    Bargaining();
+    BargainingSkill();
 };
 
-class Beastmastery : public GeneralSkill
+class BeastmasterySkill : public GeneralSkill
 {
   public:
-    Beastmastery();
+    BeastmasterySkill();
 };
 
-class BlindFighting : public GeneralSkill
+class BlindFightingSkill : public GeneralSkill
 {
   public:
-    BlindFighting();
+    BlindFightingSkill();
 };
 
-class Boating : public GeneralSkill
+class BoatingSkill : public GeneralSkill
 {
   public:
-    Boating();
+    BoatingSkill();
 };
 
-class Bowyer : public GeneralSkill
+class BowyerSkill : public GeneralSkill
 {
   public:
-    Bowyer();
+    BowyerSkill();
 };
 
-class Brewing : public GeneralSkill
+class BrewingSkill : public GeneralSkill
 {
   public:
-    Brewing();
+    BrewingSkill();
 };
 
-class Cantrips : public GeneralSkill
+class CantripsSkill : public GeneralSkill
 {
   public:
-    Cantrips();
+    CantripsSkill();
 };
 
-class Carrying : public GeneralSkill
+class CarryingSkill : public GeneralSkill
 {
   public:
-    Carrying();
+    CarryingSkill();
 };
 
-class Combat : public GeneralSkill
+class CombatSkill : public GeneralSkill
 {
   public:
-    Combat();
+    CombatSkill();
 };
 
-class Crafting : public GeneralSkill
+class CraftingSkill : public GeneralSkill
 {
   public:
-    Crafting();
+    CraftingSkill();
 };
 
-class DesertLore : public GeneralSkill
+class DesertLoreSkill : public GeneralSkill
 {
   public:
-    DesertLore();
+    DesertLoreSkill();
 };
 
-class Detection : public GeneralSkill
+class DetectionSkill : public GeneralSkill
 {
   public:
-    Detection();
+    DetectionSkill();
 };
 
-class DisarmTraps : public GeneralSkill
+class DisarmTrapsSkill : public GeneralSkill
 {
   public:
-    DisarmTraps();
+    DisarmTrapsSkill();
 };
 
-class DualWield : public GeneralSkill
+class DualWieldSkill : public GeneralSkill
 {
   public:
-    DualWield();
+    DualWieldSkill();
 };
 
-class Dungeoneering : public GeneralSkill
+class DungeoneeringSkill : public GeneralSkill
 {
   public:
-    Dungeoneering();
+    DungeoneeringSkill();
 };
 
-class Escape : public GeneralSkill
+class EscapeSkill : public GeneralSkill
 {
   public:
-    Escape();
+    EscapeSkill();
 };
 
-class Fishing : public GeneralSkill
+class FishingSkill : public GeneralSkill
 {
   public:
-    Fishing();
+    FishingSkill();
 };
 
-class Fletchery : public GeneralSkill
+class FletcherySkill : public GeneralSkill
 {
   public:
-    Fletchery();
+    FletcherySkill();
 };
 
-class Foraging : public GeneralSkill
+class ForagingSkill : public GeneralSkill
 {
   public:
-    Foraging();
+    ForagingSkill();
 };
 
-class ForestLore : public GeneralSkill
+class ForestLoreSkill : public GeneralSkill
 {
   public:
-    ForestLore();
+    ForestLoreSkill();
 };
 
-class Herbalism : public GeneralSkill
+class HerbalismSkill : public GeneralSkill
 {
   public:
-    Herbalism();
+    HerbalismSkill();
 };
 
-class Hiding : public GeneralSkill
+class HidingSkill : public GeneralSkill
 {
   public:
-    Hiding();
+    HidingSkill();
 };
 
-class Hunting : public GeneralSkill
+class HuntingSkill : public GeneralSkill
 {
   public:
-    Hunting();
+    HuntingSkill();
 };
 
-class Intimidation : public GeneralSkill
+class IntimidationSkill : public GeneralSkill
 {
   public:
-    Intimidation();
+    IntimidationSkill();
 };
 
-class Jeweler : public GeneralSkill
+class JewelerSkill : public GeneralSkill
 {
   public:
-    Jeweler();
+    JewelerSkill();
 };
 
-class Jumping : public GeneralSkill
+class JumpingSkill : public GeneralSkill
 {
   public:
-    Jumping();
+    JumpingSkill();
 };
 
-class Leadership : public GeneralSkill
+class LeadershipSkill : public GeneralSkill
 {
   public:
-    Leadership();
+    LeadershipSkill();
 };
 
-class Literacy : public GeneralSkill
+class LiteracySkill : public GeneralSkill
 {
   public:
-    Literacy();
+    LiteracySkill();
 };
 
-class Lore : public GeneralSkill
+class LoreSkill : public GeneralSkill
 {
   public:
-    Lore();
+    LoreSkill();
 };
 
-class Magic : public GeneralSkill
+class MagicGeneralSkill : public GeneralSkill
 {
   public:
-    Magic();
+    MagicGeneralSkill();
 };
 
-class MarshLore : public GeneralSkill
+class MarshLoreSkill : public GeneralSkill
 {
   public:
-    MarshLore();
+    MarshLoreSkill();
 };
 
-class Medicine : public GeneralSkill
+class MedicineSkill : public GeneralSkill
 {
   public:
-    Medicine();
+    MedicineSkill();
 };
 
-class MountainLore : public GeneralSkill
+class MountainLoreSkill : public GeneralSkill
 {
   public:
-    MountainLore();
+    MountainLoreSkill();
 };
 
-class Mountaineering : public GeneralSkill
+class MountaineeringSkill : public GeneralSkill
 {
   public:
-    Mountaineering();
+    MountaineeringSkill();
 };
 
-class Music : public GeneralSkill
+class MusicSkill : public GeneralSkill
 {
   public:
-    Music();
+    MusicSkill();
 };
 
-class NightSight : public GeneralSkill
+class NightSightSkill : public GeneralSkill
 {
   public:
-    NightSight();
+    NightSightSkill();
 };
 
-class Oceanography : public GeneralSkill
+class OceanographySkill : public GeneralSkill
 {
   public:
-    Oceanography();
+    OceanographySkill();
 };
 
-class Papercraft : public GeneralSkill
+class PapercraftSkill : public GeneralSkill
 {
   public:
-    Papercraft();
+    PapercraftSkill();
 };
 
-// Calling this "ReligionSkill" to differentiate from a creature's actual Religion (religion/include/Religion.hpp)
 class ReligionSkill : public GeneralSkill
 {
   public:
     ReligionSkill();
 };
 
-class Scribing : public GeneralSkill
+class ScribingSkill : public GeneralSkill
 {
   public:
-    Scribing();
+    ScribingSkill();
 };
 
-class Skinning : public GeneralSkill
+class SkinningSkill : public GeneralSkill
 {
   public:
-    Skinning();
+    SkinningSkill();
 };
 
-class Smithing : public GeneralSkill
+class SmithingSkill : public GeneralSkill
 {
   public:
-    Smithing();
+    SmithingSkill();
 };
 
-class Spelunking : public GeneralSkill
+class SpelunkingSkill : public GeneralSkill
 {
   public:
-    Spelunking();
+    SpelunkingSkill();
 };
 
-class Stealth : public GeneralSkill
+class StealthSkill : public GeneralSkill
 {
   public:
-    Stealth();
+    StealthSkill();
 };
 
-class Swimming : public GeneralSkill
+class SwimmingSkill : public GeneralSkill
 {
   public:
-    Swimming();
+    SwimmingSkill();
 };
 
-class Tanning : public GeneralSkill
+class TanningSkill : public GeneralSkill
 {
   public:
-    Tanning();
+    TanningSkill();
 };
 
-class Thievery : public GeneralSkill
+class ThieverySkill : public GeneralSkill
 {
   public:
-    Thievery();
+    ThieverySkill();
 };
 
-class Weaving : public GeneralSkill
+class WeavingSkill : public GeneralSkill
 {
   public:
-    Weaving();
+    WeavingSkill();
 };
 
 // WEAPON SKILLS (MELEE)
 
-class Axes : public WeaponSkill
+class AxesSkill : public WeaponSkill
 {
   public:
-    Axes();
+    AxesSkill();
 };
 
-class ShortBlades : public WeaponSkill
+class ShortBladesSkill : public WeaponSkill
 {
   public:
-    ShortBlades();
+    ShortBladesSkill();
 };
 
-class LongBlades : public WeaponSkill
+class LongBladesSkill : public WeaponSkill
 {
   public:
-    LongBlades();
+    LongBladesSkill();
 };
 
-class Bludgeons : public WeaponSkill
+class BludgeonsSkill : public WeaponSkill
 {
   public:
-    Bludgeons();
+    BludgeonsSkill();
 };
 
-class Daggers : public WeaponSkill
+class DaggersSkill : public WeaponSkill
 {
   public:
-    Daggers();
+    DaggersSkill();
 };
 
-class RodsAndStaves : public WeaponSkill
+class RodsAndStavesSkill : public WeaponSkill
 {
   public:
-    RodsAndStaves();
+    RodsAndStavesSkill();
 };
 
-class Spears : public WeaponSkill
+class SpearsSkill : public WeaponSkill
 {
   public:
-    Spears();
+    SpearsSkill();
 };
 
-class Unarmed : public WeaponSkill
+class UnarmedSkill : public WeaponSkill
 {
   public:
-    Unarmed();
+    UnarmedSkill();
 };
 
-class Whips : public WeaponSkill
+class WhipsSkill : public WeaponSkill
 {
   public:
-    Whips();
+    WhipsSkill();
 };
 
 // WEAPON SKILLS (RANGED)
 
-class ThrownAxes : public RangedWeaponSkill
+class ThrownAxesSkill : public RangedWeaponSkill
 {
   public:
-    ThrownAxes();
+    ThrownAxesSkill();
 };
 
-class ThrownBlades : public RangedWeaponSkill
+class ThrownBladesSkill : public RangedWeaponSkill
 {
   public:
-    ThrownBlades();
+    ThrownBladesSkill();
 };
 
-class ThrownBludgeons : public RangedWeaponSkill
+class ThrownBludgeonsSkill : public RangedWeaponSkill
 {
   public:
-    ThrownBludgeons();
+    ThrownBludgeonsSkill();
 };
 
-class Bows : public RangedWeaponSkill
+class BowsSkill : public RangedWeaponSkill
 {
   public:
-    Bows();
+    BowsSkill();
 };
 
-class Crossbows : public RangedWeaponSkill
+class CrossbowsSkill : public RangedWeaponSkill
 {
   public:
-    Crossbows();
+    CrossbowsSkill();
 };
 
-class ThrownDaggers : public RangedWeaponSkill
+class ThrownDaggersSkill : public RangedWeaponSkill
 {
   public:
-    ThrownDaggers();
+    ThrownDaggersSkill();
 };
 
-class Rocks : public RangedWeaponSkill
+class RocksSkill : public RangedWeaponSkill
 {
   public:
-    Rocks();
+    RocksSkill();
 };
 
-class Slings : public RangedWeaponSkill
+class SlingsSkill : public RangedWeaponSkill
 {
   public:
-    Slings();
+    SlingsSkill();
 };
 
-class ThrownSpears : public RangedWeaponSkill
+class ThrownSpearsSkill : public RangedWeaponSkill
 {
   public:
-    ThrownSpears();
+    ThrownSpearsSkill();
 };
 
 // MAGICAL SKILLS
 
-class ArcaneMagic : public MagicSkill
+class ArcaneMagicSkill : public MagicSkill
 {
   public:
-    ArcaneMagic();
+    ArcaneMagicSkill();
 };
 
-class DivineMagic : public MagicSkill
+class DivineMagicSkill : public MagicSkill
 {
   public:
-    DivineMagic();
+    DivineMagicSkill();
 };
 
-class MysticMagic : public MagicSkill
+class MysticMagicSkill : public MagicSkill
 {
   public:
-    MysticMagic();
+    MysticMagicSkill();
 };
 
-class PrimordialMagic : public MagicSkill
+class PrimordialMagicSkill : public MagicSkill
 {
   public:
-    PrimordialMagic();
+    PrimordialMagicSkill();
 };
 
 // Classes aggregating skills
