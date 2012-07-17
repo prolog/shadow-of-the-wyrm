@@ -25,7 +25,10 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, const ulonglong minute
         int skill_threshold = skill.get_threshold();
         int skill_value = skill.get_value();
         
-        if (skill.get_marks() > skill_threshold)
+        // Skills aren't automatically learned when at 0 and enough success/failure occurs.  This is meant to be a model
+        // similar to ADOM and not DCSS, and is absolutely intentional.  Classes matter, and the initial skill set is
+        // important. 
+        if ((skill_value > 0) && (skill.get_marks() > skill_threshold))
         {
           // Update the value, which also updates the threshold.
           skill.set_value(skill_value + 1);

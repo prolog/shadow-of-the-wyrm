@@ -622,7 +622,7 @@
 	<File name="engine\conversion\source\ItemDumper.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="265" topLine="0" />
 	</File>
-	<File name="engine\conversion\source\SkillsDumper.cpp" open="1" top="0" tabpos="4">
+	<File name="engine\conversion\source\SkillsDumper.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="1454" topLine="47" />
 	</File>
 	<File name="engine\conversion\source\StatsDumper.cpp" open="0" top="0" tabpos="12">
@@ -1427,7 +1427,7 @@
 		<Cursor position="2503" topLine="63" />
 	</File>
 	<File name="world\include\Skills.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="8099" topLine="529" />
+		<Cursor position="1313" topLine="42" />
 	</File>
 	<File name="world\include\Staff.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="104" topLine="0" />
@@ -1684,8 +1684,8 @@
 	<File name="world\source\Scroll.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="111" topLine="0" />
 	</File>
-	<File name="world\source\Skills.cpp" open="1" top="0" tabpos="3">
-		<Cursor position="838" topLine="37" />
+	<File name="world\source\Skills.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="2461" topLine="118" />
 	</File>
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="105" topLine="0" />
