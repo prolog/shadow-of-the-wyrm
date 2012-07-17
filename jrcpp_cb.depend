@@ -1293,7 +1293,7 @@
 	"RNG.hpp"
 	"SkillManager.hpp"
 
-1342457872 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1342555489 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1610,7 +1610,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\scroll.cpp
 	"Scroll.hpp"
 
-1342545730 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+1342556516 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	"Skills.hpp"
@@ -2141,6 +2141,6 @@
 	"Swimming.hpp"
 	"SwimmingCalculator.hpp"
 
-1342546054 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
+1342552894 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
 	"CreatureSkillIncrementer.hpp"
 

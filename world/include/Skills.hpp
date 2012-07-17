@@ -25,13 +25,15 @@ class Skill
 
     virtual void set_threshold(const int new_threshold);
     virtual void set_threshold_for_value(const int skill_value);
-    
     virtual int  get_threshold() const;
 
     virtual SkillCategory get_category() const;
 
     virtual void set_skill_name_sid(const std::string& new_skill_name_sid);
     virtual std::string get_skill_name_sid() const;
+    
+    virtual void set_skill_increment_message_sid(const std::string& new_skill_increment_message_sid);
+    virtual std::string get_skill_increment_message_sid() const;
 
     std::string str() const;
 
@@ -41,6 +43,7 @@ class Skill
     int threshold;
     SkillCategory category;
     std::string skill_name_sid;
+    std::string skill_increment_message_sid;
 };
 
 class GeneralSkill : public Skill
@@ -55,6 +58,8 @@ class WeaponSkill : public Skill
 {
   public:
     WeaponSkill();
+
+    virtual void set_threshold_for_value(const int skill_value);
 
   protected:
 };
@@ -140,6 +145,8 @@ class CombatSkill : public GeneralSkill
 {
   public:
     CombatSkill();
+
+    virtual void set_threshold_for_value(const int skill_value);
 };
 
 class CraftingSkill : public GeneralSkill
@@ -266,6 +273,8 @@ class MagicGeneralSkill : public GeneralSkill
 {
   public:
     MagicGeneralSkill();
+
+    virtual void set_threshold_for_value(const int skill_value);
 };
 
 class MarshLoreSkill : public GeneralSkill
