@@ -531,6 +531,7 @@ class Skills
 
     int get_value(const SkillType& skill_name) const;
 
+    void set_skill(const SkillType& skill_name, const Skill& skill);
     Skill get_skill(const SkillType& st) const;
 
     std::string str() const;

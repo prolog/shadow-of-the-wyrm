@@ -684,6 +684,12 @@ int Skills::get_value(const SkillType& skill_name) const
   return skill.get_value();
 }
 
+void Skills::set_skill(const SkillType& st, const Skill& skill)
+{
+  // Always overwrite any previously existing skill.
+  skills[st] = skill;
+}
+
 Skill Skills::get_skill(const SkillType& st) const
 {
   Skill result;
