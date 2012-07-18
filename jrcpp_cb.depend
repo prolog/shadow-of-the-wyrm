@@ -267,7 +267,7 @@
 	"ItemManager.hpp"
 	"RNG.hpp"
 
-1342443617 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+1342613578 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
@@ -278,6 +278,7 @@
 	"MovementManager.hpp"
 	"MapExitUtils.hpp"
 	"MapUtils.hpp"
+	"SkillManager.hpp"
 	"TerrainGeneratorFactory.hpp"
 	"TileMovementConfirmation.hpp"
 

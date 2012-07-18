@@ -1,3 +1,4 @@
+#include <iterator>
 #include <map>
 #include <boost/foreach.hpp>
 #include "CreatureGenerationManager.hpp"
@@ -60,7 +61,9 @@ CreaturePtr CreatureGenerationManager::generate_creature(const TileType map_terr
       int p_numerator = cgv.get_danger_level();
       int P = (static_cast<float>(p_numerator) / p_denominator_f) * 100;
       
-      if (RNG::percent_chance(P))
+      // Generate the creatur if we hit the percentage, or if we're on the last item in the map
+      // and a creature has not yet been generated.
+      if (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1) && !generated_creature))
       {
         string creature_id = c_it->first;
         generated_creature = CreatureFactory::create_by_creature_id(creature_id);

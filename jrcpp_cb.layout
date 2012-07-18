@@ -301,8 +301,8 @@
 	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1250" topLine="14" />
 	</File>
-	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="6440" topLine="195" />
+	<File name="engine\actions\source\MovementManager.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="5808" topLine="160" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2522" topLine="60" />
@@ -1117,8 +1117,8 @@
 	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="10131" topLine="274" />
 	</File>
-	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="536" topLine="20" />
+	<File name="engine\source\CreatureGenerationManager.cpp" open="1" top="1" tabpos="6">
+		<Cursor position="1939" topLine="44" />
 	</File>
 	<File name="engine\source\Dimensions.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="195" topLine="0" />
@@ -1685,7 +1685,7 @@
 		<Cursor position="111" topLine="0" />
 	</File>
 	<File name="world\source\Skills.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="18187" topLine="734" />
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="105" topLine="0" />
