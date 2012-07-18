@@ -42,10 +42,12 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
 
     // Is the proposed movement valid?
     // If it is not, and there is no map exit, and the creature is the player, display a message.
-    // Otherwise, move the creature.
     if (!MapUtils::is_valid_move(map->size(), creature_location, direction))
     {
       SkillManager sm;
+      // Otherwise, move the creature, if:
+      // - there are no hostile adjacent creatures
+      // - there is at least one hostile adjacent creature, and a successful Escape check is made.
       if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SKILL_GENERAL_ESCAPE))
       {
         movement_success = move_off_map(creature, map, creatures_old_tile);
