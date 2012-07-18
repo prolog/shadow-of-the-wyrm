@@ -28,6 +28,7 @@ Skill& Skill::operator=(const Skill& skill)
     this->marks = skill.marks;
     this->threshold = skill.threshold;
     this->skill_name_sid = skill.skill_name_sid;
+    this->skill_increment_message_sid = skill.skill_increment_message_sid;
   }
 
   return *this;
