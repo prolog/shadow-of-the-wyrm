@@ -8,6 +8,7 @@
 #include "MovementManager.hpp"
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
+#include "SkillManager.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "TileMovementConfirmation.hpp"
 
@@ -44,12 +45,14 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
     // Otherwise, move the creature.
     if (!MapUtils::is_valid_move(map->size(), creature_location, direction))
     {
-      if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map))
+      SkillManager sm;
+      if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SKILL_GENERAL_ESCAPE))
       {
         movement_success = move_off_map(creature, map, creatures_old_tile);
       }
       else
       {
+        movement_success = true;
         string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
         manager->add_new_message(cannot_escape);
         manager->send();
