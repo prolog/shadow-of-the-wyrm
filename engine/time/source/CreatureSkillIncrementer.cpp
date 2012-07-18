@@ -1,6 +1,8 @@
 #include "CreatureSkillIncrementer.hpp"
+#include "MessageManager.hpp"
 
 using std::map;
+using std::string;
 
 CreatureSkillIncrementer::CreatureSkillIncrementer(const uint new_minutes_interval)
 : ICreatureRegeneration(), 
@@ -10,7 +12,9 @@ CreatureSkillIncrementer::CreatureSkillIncrementer(const uint new_minutes_interv
 
 void CreatureSkillIncrementer::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
-  if (creature)
+  MessageManager* manager = MessageManager::instance();
+  
+  if (manager && creature)
   {
     if (total_minutes_elapsed % minutes_interval == 0)
     {
@@ -35,7 +39,9 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, const ulonglong minute
           
           if (creature->get_is_player())
           {
-            // JCD FIXME
+            string skill_increase_message = StringTable::get(skill.get_skill_increment_message_sid());
+            manager->add_new_message(skill_increase_message);
+            manager->send();
           }
           
           skill.set_marks(0);
