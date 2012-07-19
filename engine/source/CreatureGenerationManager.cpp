@@ -1,6 +1,7 @@
 #include <iterator>
 #include <map>
 #include <boost/foreach.hpp>
+#include "CreatureCalculator.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
@@ -73,6 +74,11 @@ CreaturePtr CreatureGenerationManager::generate_creature(const TileType map_terr
   
   // JCD FIXME: Later, there should be an algorithm to determine hostility.
 //  generated_creature->get_decision_strategy().add_threat(PlayerConstants::PLAYER_CREATURE_ID);
+ 
+  if (generated_creature)
+  {
+    CreatureCalculator::update_calculated_values(generated_creature);
+  }
     
   return generated_creature;
 }
