@@ -520,6 +520,13 @@
 	</xs:complexType>
 </xs:element>
 <!-- COMPLEX TYPES -->
+<!-- The "InitialItem complex type should have a choice of
+		1. An item ID
+		   or
+		2. A list of potential item IDs (random selection will occur)
+		   or
+		3. A list of string-string pairs, which represent a race/item-ID override of #1.
+  -->
 <xs:complexType name="Dice">
 	<xs:sequence>
 		<xs:element name="NumDice" type="xs:int"/>
