@@ -2,7 +2,7 @@
 #include <string>
 #include "common.hpp"
 
-typedef unsigned int ActionCostValue;
+typedef int ActionCostValue;
 
 class ActionCost
 {

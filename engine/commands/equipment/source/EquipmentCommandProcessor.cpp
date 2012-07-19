@@ -35,16 +35,20 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
         {
           EquipmentWornLocation worn_slot = wear_raw_command->get_equipment_worn_location();
           
-          game->actions.wear_or_remove_item(creature, worn_slot);
+          // Only advance the turn if something was actually either worn or removed.
+          process_result = game->actions.wear_or_remove_item(creature, worn_slot);
         }
       }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
       {
         game->actions.inventory(creature, creature->get_inventory(), true);
+        // Because the player is just looking at the items, this shouldn't
+        // advance any turn information.
+        process_result = 0;
       }
       else if (command_name == EquipmentCommandKeys::EXIT_EQUIPMENT)
       {
-        process_result = 0;
+        process_result = -1;
       }
     }
   }

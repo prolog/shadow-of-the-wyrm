@@ -16,7 +16,8 @@ EquipmentManager::~EquipmentManager()
 // Do the actual equipment management, interfacing with the UI as needed.
 ActionCostValue EquipmentManager::manage_equipment()
 {
-  ActionCostValue action_cost = 0;
+  ActionCostValue total_action_cost = 0;
+  ActionCostValue action_cost = 0; // Looking at eq has no cost - adding or removing items will update this.
   
   bool manage_eq = true; // For looping
 
@@ -39,13 +40,20 @@ ActionCostValue EquipmentManager::manage_equipment()
       {
         CommandPtr equipment_command = decision_strategy->get_decision(creature->get_id(), command_factory, kb_command_map);
         action_cost = EquipmentCommandProcessor::process(creature, equipment_command);
+        
+        if ((action_cost > 0) && (total_action_cost == 0))
+        {
+          total_action_cost = action_cost;
+        }
       }
       else
       {
         manage_eq = 0;
       }
       
-      if (action_cost == 0)
+      // -1 is a special value for the equipment command.  "0" means "don't advance the turn,
+      // but keep the equipment screen up."  "-1" means "exit was selected."
+      if (action_cost == -1)
       {
         manage_eq = 0;
       }
@@ -55,11 +63,9 @@ ActionCostValue EquipmentManager::manage_equipment()
     {
       display->clear_menu();
     }
-    
-    action_cost = get_action_cost_value();
   }
 
-  return action_cost;
+  return total_action_cost;
 }
 
 ActionCostValue EquipmentManager::get_action_cost_value() const

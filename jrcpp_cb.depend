@@ -215,7 +215,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1340543090 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1342719714 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -246,7 +246,7 @@
 	"MessageManager.hpp"
 	"StringConstants.hpp"
 
-1339849796 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
+1342720751 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
@@ -479,7 +479,7 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
-1339849391 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
+1342718832 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentCommands.hpp"
@@ -1160,10 +1160,11 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationconstants.cpp
 	"CreatureGenerationConstants.hpp"
 
-1342615752 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationmanager.cpp
+1342716776 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationmanager.cpp
 	<iterator>
 	<map>
 	<boost/foreach.hpp>
+	"CreatureCalculator.hpp"
 	"CreatureGenerationManager.hpp"
 	"CreatureFactory.hpp"
 	"Game.hpp"

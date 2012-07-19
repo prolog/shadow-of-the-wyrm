@@ -113,12 +113,17 @@ ActionCostValue ActionManager::remove_item(CreaturePtr creature, const Equipment
 }
 
 // Wear or remove a particular item from the worn equipment by adding/removing the item from a slot.
-void ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
+ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location)
 {
+  ActionCostValue action_cost = 0;
+  
   if (creature)
   {
-    if (!remove_item(creature, worn_location)) // Wear an item - select something.
-    {
+    ActionCostValue item_removed = remove_item(creature, worn_location);
+    action_cost = item_removed;
+    
+    if (!item_removed) // Wear an item - select something.
+    {      
       ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), false);
       
       // This is null if no item was selected.
@@ -132,10 +137,13 @@ void ActionManager::wear_or_remove_item(CreaturePtr creature, const EquipmentWor
         {
           string item_id = item_in_slot->get_id();
           creature->get_inventory().remove(item_id);
+          action_cost = 1;
         }
       }
     }
   }
+  
+  return action_cost;
 }
 
 // Do something with an item:

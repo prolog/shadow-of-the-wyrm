@@ -41,7 +41,7 @@ class ActionManager
     
     // Unlike pick up/drop, handle item has no checks.
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
-    void wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
+    ActionCostValue wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
     ActionCostValue handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
 
     // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
