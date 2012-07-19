@@ -1320,7 +1320,7 @@
 	"CreaturePietyRegeneration.hpp"
 	"ReligionConstants.hpp"
 
-1342544608 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
+1342715075 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"CreatureHPRegeneration.hpp"
@@ -2015,15 +2015,17 @@
 1341491731 source:c:\cygwin\home\julian\jrcpp\engine\time\source\nullmovementaccumulationchecker.cpp
 	"NullMovementAccumulationChecker.hpp"
 
-1342541583 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
+1342714743 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
 	"CombatManager.hpp"
 	"StringConstants.hpp"
 	"SwimmingCalculator.hpp"
 	"SwimmingMovementAccumulationChecker.hpp"
+	"RNG.hpp"
 
-1342541919 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+1342714765 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
 	"CombatManager.hpp"
 	"MountainClimbingMovementAccumulationChecker.hpp"
+	"RNG.hpp"
 
 1342538047 source:c:\cygwin\home\julian\jrcpp\engine\time\source\terrainmovementaccumulationcheckerfactory.cpp
 	<boost/make_shared.hpp>
@@ -2131,8 +2133,9 @@
 	"MessageManager.hpp"
 	"SkillManager.hpp"
 
-1342539503 source:c:\cygwin\home\julian\jrcpp\engine\time\source\boatingmovementaccumulationchecker.cpp
+1342714801 source:c:\cygwin\home\julian\jrcpp\engine\time\source\boatingmovementaccumulationchecker.cpp
 	"BoatingMovementAccumulationChecker.hpp"
+	"RNG.hpp"
 
 1342541909 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\mountaineering.cpp
 	"CombatManager.hpp"

@@ -2,6 +2,7 @@
 #include "StringConstants.hpp"
 #include "SwimmingCalculator.hpp"
 #include "SwimmingMovementAccumulationChecker.hpp"
+#include "RNG.hpp"
 
 // Check for damage due to swimming past the point of exhaustion.
 void SwimmingMovementAccumulationChecker::check(CreaturePtr creature)
@@ -20,7 +21,10 @@ void SwimmingMovementAccumulationChecker::check(CreaturePtr creature)
     }
     else
     {
-      sm.check_skill(creature, SKILL_GENERAL_SWIMMING);
+      if (RNG::percent_chance(10))
+      {
+        sm.check_skill(creature, SKILL_GENERAL_SWIMMING);
+      }
     }
   }
 }

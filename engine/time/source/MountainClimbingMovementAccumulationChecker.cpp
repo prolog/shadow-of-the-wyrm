@@ -1,5 +1,6 @@
 #include "CombatManager.hpp"
 #include "MountainClimbingMovementAccumulationChecker.hpp"
+#include "RNG.hpp"
 
 // Check to see if the creature falls.  Falling deals lump sum damage, influenced
 // by how many turns past exhaustion have been spent mountain climbing.
@@ -18,7 +19,10 @@ void MountainClimbingMovementAccumulationChecker::check(CreaturePtr creature)
     }
     else
     {
-      sm.check_skill(creature, SKILL_GENERAL_MOUNTAINEERING);
+      if (RNG::percent_chance(10))
+      {
+        sm.check_skill(creature, SKILL_GENERAL_MOUNTAINEERING);
+      }
     }
   }
 }
