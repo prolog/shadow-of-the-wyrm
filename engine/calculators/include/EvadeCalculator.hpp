@@ -7,6 +7,8 @@ class EvadeCalculator
     static int calculate_evade(const CreaturePtr& c);
 
   protected:
+    static int get_equipment_bonus(const CreaturePtr& c);
+    
     EvadeCalculator();
     ~EvadeCalculator();
 };
