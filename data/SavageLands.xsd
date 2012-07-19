@@ -142,6 +142,7 @@
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+			<xs:element ref="tns:StartingEquipment" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
@@ -439,12 +440,41 @@
 		<xs:documentation>The general, melee, ranged, and magic skills available.</xs:documentation>
 	</xs:annotation>
 	<xs:complexType>
-	<xs:sequence>
-		<xs:element ref="tns:GeneralSkills"  minOccurs="0"/>
-		<xs:element ref="tns:WeaponSkills" minOccurs="0"/>
-		<xs:element ref="tns:RangedWeaponSkills" minOccurs="0"/>
-		<xs:element ref="tns:MagicSkills" minOccurs="0"/>		
-	</xs:sequence>
+		<xs:sequence>
+			<xs:element ref="tns:GeneralSkills"  minOccurs="0"/>
+			<xs:element ref="tns:WeaponSkills" minOccurs="0"/>
+			<xs:element ref="tns:RangedWeaponSkills" minOccurs="0"/>
+			<xs:element ref="tns:MagicSkills" minOccurs="0"/>		
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="StartingEquipment">
+	<xs:annotation>
+		<xs:documentation>Starting equipment for a particular class.  Each xs:string represents an item ID.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Head" type="xs:string" minOccurs="0"/>
+			<xs:element name="Neck" type="xs:string" minOccurs="0"/>
+			<xs:element name="RightFinger" type="xs:string" minOccurs="0"/>
+			<xs:element name="LeftFinger" type="xs:string" minOccurs="0"/>
+			<xs:element name="RightHand" type="xs:string" minOccurs="0"/>
+			<xs:element name="LeftHand" type="xs:string" minOccurs="0"/>
+			<xs:element name="Body" type="xs:string" minOccurs="0"/>
+			<xs:element name="AboutBody" type="xs:string" minOccurs="0"/>
+			<xs:element name="Feet" type="xs:string" minOccurs="0"/>
+			<xs:element ref="tns:StartingInventory" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="StartingInventory">
+	<xs:annotation>
+		<xs:documentation>Starting inventory for a particular class.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Item" type="xs:string" maxOccurs="unbounded"/>
+		</xs:sequence>
 	</xs:complexType>
 </xs:element>
 <xs:element name="Ammunition">
