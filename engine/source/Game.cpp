@@ -212,6 +212,7 @@ void Game::go()
   MapPtr current_map = get_current_map();
 
       FIXME_REMOVE_THIS_FUNCTION(current_player);
+  CreatureCalculator::update_calculated_values(current_player);
  
   string map_id = "";
 

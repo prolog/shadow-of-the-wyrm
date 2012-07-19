@@ -324,8 +324,10 @@
 	"MagicalDamageCalculator.hpp"
 	"PhysicalDamageCalculator.hpp"
 
-1342454826 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\evadecalculator.cpp
+1342716256 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\evadecalculator.cpp
+	<boost/foreach.hpp>
 	"EvadeCalculator.hpp"
+	"Wearable.hpp"
 	"unit_tests/EvadeCalculator_test.cpp"
 
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\evadecalculator_test.cpp
@@ -393,8 +395,10 @@
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\skillscalculator_test.cpp
 	"gtest/gtest.h"
 
-1342454844 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\soakcalculator.cpp
+1342716291 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\soakcalculator.cpp
+	<boost/foreach.hpp>
 	"SoakCalculator.hpp"
+	"Wearable.hpp"
 	"unit_tests/SoakCalculator_test.cpp"
 
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\soakcalculator_test.cpp
@@ -2015,14 +2019,14 @@
 1341491731 source:c:\cygwin\home\julian\jrcpp\engine\time\source\nullmovementaccumulationchecker.cpp
 	"NullMovementAccumulationChecker.hpp"
 
-1342714743 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
+1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
 	"CombatManager.hpp"
 	"StringConstants.hpp"
 	"SwimmingCalculator.hpp"
 	"SwimmingMovementAccumulationChecker.hpp"
 	"RNG.hpp"
 
-1342714765 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
 	"CombatManager.hpp"
 	"MountainClimbingMovementAccumulationChecker.hpp"
 	"RNG.hpp"
@@ -2133,7 +2137,7 @@
 	"MessageManager.hpp"
 	"SkillManager.hpp"
 
-1342714801 source:c:\cygwin\home\julian\jrcpp\engine\time\source\boatingmovementaccumulationchecker.cpp
+1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\boatingmovementaccumulationchecker.cpp
 	"BoatingMovementAccumulationChecker.hpp"
 	"RNG.hpp"
 
