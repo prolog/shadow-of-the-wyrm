@@ -1,9 +1,13 @@
 #include "BoatingMovementAccumulationChecker.hpp"
+#include "RNG.hpp"
 
 void BoatingMovementAccumulationChecker::check(CreaturePtr creature)
 {
   if (creature)
   {
-    sm.check_skill(creature, SKILL_GENERAL_BOATING);
+    if (RNG::percent_chance(10))
+    {
+      sm.check_skill(creature, SKILL_GENERAL_BOATING);
+    }
   }
 }
