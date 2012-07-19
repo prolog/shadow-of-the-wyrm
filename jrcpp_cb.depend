@@ -409,7 +409,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatconstants.cpp
 	"CombatConstants.hpp"
 
-1341579923 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1342701070 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"
@@ -420,6 +420,7 @@
 	"CombatTargetNumberCalculatorFactory.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
+	"SkillManager.hpp"
 	"RNG.hpp"
 	"WeaponManager.hpp"
 	"unit_tests/CombatManager_test.cpp"
@@ -458,7 +459,7 @@
 	"PlayerDeathManager.hpp"
 	"ReligionManager.hpp"
 
-1341148131 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
+1342701036 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
 	"CombatConstants.hpp"
 	"WeaponManager.hpp"
 
@@ -1612,7 +1613,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\scroll.cpp
 	"Scroll.hpp"
 
-1342556516 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+1342616834 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	"Skills.hpp"

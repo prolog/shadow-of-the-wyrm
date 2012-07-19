@@ -301,7 +301,7 @@
 	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1250" topLine="14" />
 	</File>
-	<File name="engine\actions\source\MovementManager.cpp" open="1" top="0" tabpos="5">
+	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="5808" topLine="160" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
@@ -439,8 +439,8 @@
 	<File name="engine\combat\include\CombatConstants.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="508" topLine="0" />
 	</File>
-	<File name="engine\combat\include\CombatManager.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="524" topLine="6" />
+	<File name="engine\combat\include\CombatManager.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="1685" topLine="18" />
 	</File>
 	<File name="engine\combat\include\CreatureDeathManager.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="149" topLine="0" />
@@ -460,14 +460,14 @@
 	<File name="engine\combat\include\PlayerDeathManager.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="130" topLine="0" />
 	</File>
-	<File name="engine\combat\include\WeaponManager.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="197" topLine="0" />
+	<File name="engine\combat\include\WeaponManager.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="305" topLine="0" />
 	</File>
 	<File name="engine\combat\source\CombatConstants.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="79" topLine="0" />
 	</File>
-	<File name="engine\combat\source\CombatManager.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="1585" topLine="44" />
+	<File name="engine\combat\source\CombatManager.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="3217" topLine="98" />
 	</File>
 	<File name="engine\combat\source\CreatureDeathManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="476" topLine="23" />
@@ -484,8 +484,8 @@
 	<File name="engine\combat\source\PlayerDeathManager.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="425" topLine="13" />
 	</File>
-	<File name="engine\combat\source\WeaponManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="668" topLine="9" />
+	<File name="engine\combat\source\WeaponManager.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="1853" topLine="45" />
 	</File>
 	<File name="engine\combat\source\unit_tests\CombatManager_test.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="26" topLine="0" />
@@ -1117,8 +1117,8 @@
 	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="10131" topLine="274" />
 	</File>
-	<File name="engine\source\CreatureGenerationManager.cpp" open="1" top="1" tabpos="6">
-		<Cursor position="1939" topLine="44" />
+	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="2691" topLine="61" />
 	</File>
 	<File name="engine\source\Dimensions.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="195" topLine="0" />
@@ -1237,8 +1237,8 @@
 	<File name="engine\time\source\CreaturePietyRegeneration.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="1110" topLine="21" />
 	</File>
-	<File name="engine\time\source\CreatureSkillIncrementer.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1263" topLine="19" />
+	<File name="engine\time\source\CreatureSkillIncrementer.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="1626" topLine="28" />
 	</File>
 	<File name="engine\time\source\CreatureTimeObserver.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="180" topLine="0" />
@@ -1426,7 +1426,7 @@
 	<File name="world\include\SkillTypes.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="2503" topLine="63" />
 	</File>
-	<File name="world\include\Skills.hpp" open="1" top="0" tabpos="2">
+	<File name="world\include\Skills.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="1306" topLine="23" />
 	</File>
 	<File name="world\include\Staff.hpp" open="0" top="0" tabpos="0">
@@ -1441,11 +1441,11 @@
 	<File name="world\include\Wand.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\include\Weapon.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="617" topLine="7" />
+	<File name="world\include\Weapon.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="229" topLine="7" />
 	</File>
-	<File name="world\include\WeaponTypes.hpp" open="0" top="0" tabpos="6">
-		<Cursor position="0" topLine="0" />
+	<File name="world\include\WeaponTypes.hpp" open="1" top="0" tabpos="5">
+		<Cursor position="14" topLine="0" />
 	</File>
 	<File name="world\include\Wearable.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="333" topLine="0" />
@@ -1684,8 +1684,8 @@
 	<File name="world\source\Scroll.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="111" topLine="0" />
 	</File>
-	<File name="world\source\Skills.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="0" topLine="0" />
+	<File name="world\source\Skills.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="730" topLine="18" />
 	</File>
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="105" topLine="0" />
