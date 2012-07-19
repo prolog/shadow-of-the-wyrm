@@ -2,6 +2,8 @@
 #include "ToHitCalculator.hpp"
 #include "WeaponManager.hpp"
 
+const int ToHitCalculator::NWP_SKILL_BONUS_DIVISOR = 5;
+
 ToHitCalculator::ToHitCalculator()
 : attack_type(ATTACK_TYPE_MELEE_PRIMARY)
 {
