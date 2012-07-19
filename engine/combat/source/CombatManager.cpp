@@ -8,6 +8,7 @@
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
+#include "SkillManager.hpp"
 #include "RNG.hpp"
 #include "WeaponManager.hpp"
 
@@ -55,7 +56,8 @@ bool CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_
 {
   WeaponManager wm;
   AttackType FIXME_ATTACK_TYPE = ATTACK_TYPE_MELEE_PRIMARY;
-  
+  bool mark_for_weapon_and_combat_skills = false;
+ 
   // JCD FIXME add support for other types later.
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(attacking_creature, FIXME_ATTACK_TYPE);
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(FIXME_ATTACK_TYPE);
@@ -77,6 +79,7 @@ bool CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_
     else if (is_hit(total_roll, target_number_value))
     {
       hit(attacking_creature, attacked_creature, d100_roll, damage, FIXME_ATTACK_TYPE);
+      mark_for_weapon_and_combat_skills = true;
     }
     // Close miss (flavour text only.)
     else if (is_close_miss(total_roll, target_number_value))
@@ -89,7 +92,13 @@ bool CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_
       miss(attacking_creature, attacked_creature);
     }    
   }
-  
+
+  // If the attack was a PvM type attack, mark the weapon and combat skills of the attacking creature.
+  if (attacking_creature)
+  {
+    mark_weapon_and_combat_skills(attacking_creature, FIXME_ATTACK_TYPE, mark_for_weapon_and_combat_skills);
+  }
+
   send_combat_messages();
   
   return true;
@@ -295,6 +304,25 @@ string CombatManager::get_appropriate_creature_description(CreaturePtr creature)
   
   return desc;
 }
+
+void CombatManager::mark_weapon_and_combat_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success)
+{
+  WeaponManager wm;
+  SkillManager sm;
+  
+  WeaponStyle ws = wm.get_style(attack_type);
+  
+  SkillType combat_type_skill_to_mark = SKILL_GENERAL_COMBAT;
+  
+  if (ws == WEAPON_STYLE_RANGED)
+  {
+    combat_type_skill_to_mark = SKILL_GENERAL_ARCHERY;
+  }
+  
+  sm.mark_skill(attacking_creature, combat_type_skill_to_mark, attack_success);
+  sm.mark_skill(attacking_creature, wm.get_skill_type(attacking_creature, attack_type), attack_success);
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CombatManager_test.cpp"
 #endif

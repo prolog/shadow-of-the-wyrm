@@ -37,5 +37,7 @@ class CombatManager
     bool is_close_miss(const int total_roll, const int target_number_value);
     bool is_automatic_miss(const int d100_roll);
     
+    void mark_weapon_and_combat_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success);
+    
     std::string get_appropriate_creature_description(CreaturePtr creature);
 };
