@@ -334,8 +334,9 @@
 1340454163 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\hpregenerationcalculator.cpp
 	"HPRegenerationCalculator.hpp"
 
-1341149892 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\heavyweapontohitcalculator.cpp
+1342705525 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\heavyweapontohitcalculator.cpp
 	"HeavyWeaponToHitCalculator.hpp"
+	"SkillManager.hpp"
 	"unit_tests/HeavyWeaponToHitCalculator_test.cpp"
 
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\heavyweapontohitcalculator_test.cpp
@@ -347,14 +348,16 @@
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\hitpointscalculator_test.cpp
 	"gtest/gtest.h"
 
-1341150161 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\lightmeleeandrangedweapontohitcalculator.cpp
+1342705610 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\lightmeleeandrangedweapontohitcalculator.cpp
 	"LightMeleeAndRangedWeaponToHitCalculator.hpp"
+	"SkillManager.hpp"
 	"unit_tests/LightMeleeAndRangedWeaponToHitCalculator_test.cpp"
 
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\lightmeleeandrangedweapontohitcalculator_test.cpp
 
-1341149851 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magictohitcalculator.cpp
+1342706646 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magictohitcalculator.cpp
 	"MagicToHitCalculator.hpp"
+	"SkillManager.hpp"
 	"unit_tests/MagicToHitCalculator_test.cpp"
 
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\magictohitcalculator_test.cpp
@@ -397,7 +400,7 @@
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\soakcalculator_test.cpp
 	"gtest/gtest.h"
 
-1341150328 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\tohitcalculator.cpp
+1342705573 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\tohitcalculator.cpp
 	"SkillManager.hpp"
 	"ToHitCalculator.hpp"
 	"WeaponManager.hpp"
