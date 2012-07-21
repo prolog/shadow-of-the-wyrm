@@ -166,6 +166,26 @@ uint Class::get_ap_dice() const
   return ap_dice;
 }
 
+void Class::set_initial_equipment(const map<EquipmentWornLocation, InitialItem>& new_initial_equipment)
+{
+  initial_equipment = new_initial_equipment;
+}
+
+map<EquipmentWornLocation, InitialItem> Class::get_initial_equipment() const
+{
+  return initial_equipment;
+}
+
+void Class::set_initial_inventory(const vector<InitialItem>& new_initial_inventory)
+{
+  initial_inventory = new_initial_inventory;
+}
+
+vector<InitialItem> Class::get_initial_inventory() const
+{
+  return initial_inventory;
+}
+
 string Class::str() const
 {
   ostringstream class_details;

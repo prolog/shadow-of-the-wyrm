@@ -88,7 +88,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlbookreader.cpp
 	"XMLBookReader.hpp"
 
-1340846858 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
+1342878442 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"Resistances.hpp"
@@ -141,7 +141,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlfoodreader.cpp
 	"XMLFoodReader.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemreader.cpp
+1342879134 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemreader.cpp
 	"MaterialFactory.hpp"
 	"XMLItemReader.hpp"
 
@@ -246,7 +246,7 @@
 	"MessageManager.hpp"
 	"StringConstants.hpp"
 
-1342720751 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
+1342722098 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\equipmentmanager.cpp
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
@@ -479,7 +479,7 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
-1342718832 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
+1342721711 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentCommands.hpp"
@@ -1523,7 +1523,7 @@
 	"Date.hpp"
 	"SeasonFactory.hpp"
 
-1340846616 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
+1342877529 source:c:\cygwin\home\julian\jrcpp\world\source\class.cpp
 	<sstream>
 	"Class.hpp"
 
@@ -2158,4 +2158,11 @@
 1342616636 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
 	"CreatureSkillIncrementer.hpp"
 	"MessageManager.hpp"
+
+1342879193 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
+	"InitialItem.hpp"
+
+1342879520 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlinitialitemreader.cpp
+	<boost/foreach.hpp>
+	"XMLInitialItemReader.hpp"
 

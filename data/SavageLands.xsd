@@ -141,8 +141,8 @@
 			<xs:element ref="tns:RaceInitialDeities"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
-			<xs:element  name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
-			<xs:element ref="tns:StartingEquipment" minOccurs="0"/>
+			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
@@ -448,32 +448,32 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
-<xs:element name="StartingEquipment">
+<xs:element name="InitialEquipmentAndInventory">
 	<xs:annotation>
-		<xs:documentation>Starting equipment for a particular class.  Each xs:string represents an item ID.</xs:documentation>
+		<xs:documentation>Starting equipment and inventory for a particular class.</xs:documentation>
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="Head" type="xs:string" minOccurs="0"/>
-			<xs:element name="Neck" type="xs:string" minOccurs="0"/>
-			<xs:element name="RightFinger" type="xs:string" minOccurs="0"/>
-			<xs:element name="LeftFinger" type="xs:string" minOccurs="0"/>
-			<xs:element name="RightHand" type="xs:string" minOccurs="0"/>
-			<xs:element name="LeftHand" type="xs:string" minOccurs="0"/>
-			<xs:element name="Body" type="xs:string" minOccurs="0"/>
-			<xs:element name="AboutBody" type="xs:string" minOccurs="0"/>
-			<xs:element name="Feet" type="xs:string" minOccurs="0"/>
-			<xs:element ref="tns:StartingInventory" minOccurs="0"/>
+			<xs:element name="Head" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="Neck" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="RightFinger" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="LeftFinger" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="RightHand" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="LeftHand" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="Body" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="AboutBody" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="Feet" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element ref="tns:InitialInventory" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
-<xs:element name="StartingInventory">
+<xs:element name="InitialInventory">
 	<xs:annotation>
 		<xs:documentation>Starting inventory for a particular class.</xs:documentation>
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="Item" type="xs:string" maxOccurs="unbounded"/>
+			<xs:element name="InitialItem" type="tns:InitialItem" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -527,6 +527,32 @@
 		   or
 		3. A list of string-string pairs, which represent a race/item-ID override of #1.
   -->
+<xs:complexType name="InitialItem">
+	<xs:sequence>
+		<xs:element name="ID" type="xs:string"/>
+		<xs:element name="Random" minOccurs="0">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="ID" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+		<xs:element name="Races" minOccurs="0">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="Race" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="RaceID" type="xs:string"/>
+								<xs:element name="ID" type="xs:string"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:complexType>
+		</xs:element>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="Dice">
 	<xs:sequence>
 		<xs:element name="NumDice" type="xs:int"/>

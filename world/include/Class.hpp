@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include "common.hpp"
+#include "InitialItem.hpp"
 #include "Resistances.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
@@ -59,6 +60,14 @@ class Class
 
     void set_ap_dice(const uint new_ap_dice);
     uint get_ap_dice() const;
+    
+    // Initial equipment/inventory - this is used when generating a new character, and
+    // is ignored thereafter.
+    void set_initial_equipment(const std::map<EquipmentWornLocation, InitialItem>& new_initial_equipment);
+    std::map<EquipmentWornLocation, InitialItem> get_initial_equipment() const;
+    
+    void set_initial_inventory(const std::vector<InitialItem>& new_initial_inventory);
+    std::vector<InitialItem> get_initial_inventory() const;
 
     std::string str() const;
 
@@ -86,6 +95,10 @@ class Class
     // The dice to use each level for a creature's HP and AP
     uint hit_dice;
     uint ap_dice;
+    
+    // The initial equipment/inventory, used in character generation.
+    std::map<EquipmentWornLocation, InitialItem> initial_equipment;
+    std::vector<InitialItem> initial_inventory;
 };
 
 typedef boost::shared_ptr<Class> ClassPtr;
