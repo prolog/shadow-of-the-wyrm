@@ -1,4 +1,5 @@
 #pragma once
+#include "XMLInitialItemReader.hpp"
 #include "Class.hpp"
 
 class XMLNode;
@@ -15,4 +16,10 @@ class XMLClassesReader
     void parse_class_initial_modifiers(ClassPtr current_class, const XMLNode& initial_modifiers_node);
     void parse_class_resistances(ClassPtr current_class, const XMLNode& resistances_node);
     void parse_class_skills(ClassPtr current_class, const XMLNode& skills_node);
+    
+    void parse_initial_equipment_and_inventory(ClassPtr current_class, const XMLNode& initial_equipment_and_inventory_node);
+    void parse_initial_equipment(ClassPtr current_class, const XMLNode& initial_equipment_node);
+    void parse_initial_inventory(ClassPtr current_class, const XMLNode& initial_inventory_node);
+    
+    XMLInitialItemReader initial_item_reader;
 };

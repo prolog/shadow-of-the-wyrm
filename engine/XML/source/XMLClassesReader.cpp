@@ -130,3 +130,88 @@ void XMLClassesReader::parse_class_skills(ClassPtr current_class, const XMLNode&
     current_class->set_skills(skills);
   }
 }
+
+void XMLClassesReader::parse_initial_equipment_and_inventory(ClassPtr current_class, const XMLNode& initial_eq_and_inv_node)
+{
+  if (current_class && !initial_eq_and_inv_node.is_null())
+  {
+    parse_initial_equipment(current_class, initial_eq_and_inv_node);
+    
+    XMLNode initial_inv_node = XMLUtils::get_next_element_by_local_name(initial_eq_and_inv_node, "InitialInventory");
+    parse_initial_inventory(current_class, initial_inv_node);
+  }
+}
+
+// Parse the initial items into the eq.
+void XMLClassesReader::parse_initial_equipment(ClassPtr current_class, const XMLNode& initial_eq_node)
+{
+  if (current_class && !initial_eq_node.is_null())
+  {
+    map<EquipmentWornLocation, InitialItem> initial_equipment;
+    
+    // Head
+    XMLNode head_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Head");
+    InitialItem head_item = initial_item_reader.get_initial_item(head_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_HEAD, head_item));
+    
+    // Neck
+    XMLNode neck_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Neck");
+    InitialItem neck_item = initial_item_reader.get_initial_item(neck_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_NECK, neck_item));
+
+    // RFinger
+    XMLNode right_finger_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "RightFinger");
+    InitialItem right_finger_item = initial_item_reader.get_initial_item(right_finger_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_RIGHT_FINGER, right_finger_item));
+    
+    // LFinger
+    XMLNode left_finger_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "LeftFinger");
+    InitialItem left_finger_item = initial_item_reader.get_initial_item(left_finger_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_LEFT_FINGER, left_finger_item));
+    
+    // RHand
+    XMLNode right_hand_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "RightHand");
+    InitialItem right_hand_item = initial_item_reader.get_initial_item(right_hand_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_RIGHT_HAND, right_hand_item));
+    
+    // LHand
+    XMLNode left_hand_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "LeftHand");
+    InitialItem left_hand_item = initial_item_reader.get_initial_item(left_hand_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_LEFT_HAND, left_hand_item));
+
+    // Body
+    XMLNode body_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Body");
+    InitialItem body_item = initial_item_reader.get_initial_item(body_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_BODY, body_item));
+    
+    // About Body
+    XMLNode about_body_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "AboutBody");
+    InitialItem about_body_item = initial_item_reader.get_initial_item(about_body_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_ABOUT_BODY, about_body_item));
+    
+    // Feet
+    XMLNode feet_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Feet");
+    InitialItem feet_item = initial_item_reader.get_initial_item(feet_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_FEET, feet_item));
+    
+    current_class->set_initial_equipment(initial_equipment);
+  }
+}
+
+// Parse the initial items into the inv.
+void XMLClassesReader::parse_initial_inventory(ClassPtr current_class, const XMLNode& initial_inv_node)
+{
+  if (current_class && !initial_inv_node.is_null())
+  {
+    vector<InitialItem> initial_inventory;
+    vector<XMLNode> initial_item_nodes = XMLUtils::get_elements_by_local_name(initial_inv_node, "InitialItem");
+    
+    BOOST_FOREACH(XMLNode node, initial_item_nodes)
+    {
+      InitialItem initial_item = initial_item_reader.get_initial_item(node);
+      initial_inventory.push_back(initial_item);
+    }
+    
+    current_class->set_initial_inventory(initial_inventory);
+  }
+}

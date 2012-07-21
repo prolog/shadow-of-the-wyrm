@@ -1,7 +1,7 @@
 #include "MaterialFactory.hpp"
 #include "XMLItemReader.hpp"
 
-using std::string;
+using namespace std;
 
 // Methods for reading in the base item details
 XMLItemReader::XMLItemReader()
