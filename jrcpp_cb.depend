@@ -842,11 +842,12 @@
 	"Directions.hpp"
 	<vector>
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
+1342984267 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
 	"CreatureGenerationManager.hpp"
 	"CreationUtils.hpp"
 	"ItemGenerationManager.hpp"
 	"TileGenerator.hpp"
+	"Game.hpp"
 	"Generator.hpp"
 	"Map.hpp"
 	"MapUtils.hpp"
@@ -1134,7 +1135,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creationutils.cpp
 	"CreationUtils.hpp"
 
-1340545004 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1342983708 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<cmath>
 	<boost/make_shared.hpp>
 	<boost/uuid/uuid_generators.hpp>
@@ -1144,6 +1145,7 @@
 	"CreatureFactory.hpp"
 	"CreatureGenerationConstants.hpp"
 	"Game.hpp"
+	"InitialItemEquipper.hpp"
 	"Log.hpp"
 	"ResistancesCalculator.hpp"
 	"SkillsCalculator.hpp"
@@ -1154,13 +1156,13 @@
 	"NullKeyboardController.hpp"
 	"unit_tests/CreatureFactory_test.cpp"
 
-1339107604 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\creaturefactory_test.cpp
+1342983736 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\creaturefactory_test.cpp
 	"gtest/gtest.h"
 
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationconstants.cpp
 	"CreatureGenerationConstants.hpp"
 
-1342716776 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationmanager.cpp
+1342984032 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturegenerationmanager.cpp
 	<iterator>
 	<map>
 	<boost/foreach.hpp>
@@ -1180,7 +1182,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1342716416 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1342984248 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1281,7 +1283,7 @@
 	"ReligionManager.hpp"
 	"Game.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
+1342984286 source:c:\cygwin\home\julian\jrcpp\engine\source\savagelandsengine.cpp
 	"SavageLandsEngine.hpp"
 	"XMLConfigurationReader.hpp"
 	"Class.hpp"
@@ -2173,4 +2175,12 @@
 
 1342962479 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\initialitemselector_test.cpp
 	"gtest/gtest.h"
+
+1342983230 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemequipper.cpp
+	<boost/foreach.hpp>
+	"ActionManager.hpp"
+	"ClassManager.hpp"
+	"InitialItemEquipper.hpp"
+	"InitialItemSelector.hpp"
+	"ItemManager.hpp"
 

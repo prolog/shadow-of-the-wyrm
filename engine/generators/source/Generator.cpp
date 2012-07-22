@@ -2,6 +2,7 @@
 #include "CreationUtils.hpp"
 #include "ItemGenerationManager.hpp"
 #include "TileGenerator.hpp"
+#include "Game.hpp"
 #include "Generator.hpp"
 #include "Map.hpp"
 #include "MapUtils.hpp"
@@ -82,22 +83,29 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
   CreatureGenerationManager cgm;
 
   Rarity rarity = CreationUtils::generate_rarity();
-  
-  CreaturePtr generated_creature = cgm.generate_creature(map_terrain_type, danger_level, rarity);
-  
-  if (generated_creature)
-  {
-    int creature_row = RNG::range(0, rows-1);
-    int creature_col = RNG::range(0, cols-1);
-    
-    // Check to see if the spot is empty, and if a creature can be added there.
-    TilePtr tile = map->at(creature_row, creature_col);
 
-    if (MapUtils::is_tile_available_for_creature(tile))
+  Game* game = Game::instance();
+  
+  if (game)
+  {
+    ActionManager am = game->get_action_manager_ref();
+    
+    CreaturePtr generated_creature = cgm.generate_creature(am, map_terrain_type, danger_level, rarity);
+    
+    if (generated_creature)
     {
-      Coordinate coords(creature_row, creature_col);
-      tile->set_creature(generated_creature);
-      map->add_or_update_location(generated_creature->get_id(), coords);
+      int creature_row = RNG::range(0, rows-1);
+      int creature_col = RNG::range(0, cols-1);
+      
+      // Check to see if the spot is empty, and if a creature can be added there.
+      TilePtr tile = map->at(creature_row, creature_col);
+
+      if (MapUtils::is_tile_available_for_creature(tile))
+      {
+        Coordinate coords(creature_row, creature_col);
+        tile->set_creature(generated_creature);
+        map->add_or_update_location(generated_creature->get_id(), coords);
+      }
     }
   }
 
@@ -106,7 +114,6 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
 
 bool Generator::update_creatures(MapPtr map, const uint danger_level)
 {
-  CreatureGenerationManager cgm;  
   return false;
 }
 

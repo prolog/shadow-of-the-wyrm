@@ -32,7 +32,7 @@
 				</Linker>
 			</Target>
 			<Target title="Release">
-				<Option output="bin\Release\jrcpp_cb" prefix_auto="1" extension_auto="1" />
+				<Option output="SavageLands" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj\Release\" />
 				<Option type="1" />
 				<Option compiler="gcc" />
@@ -554,6 +554,7 @@
 		<Unit filename="engine\include\Directions.hpp" />
 		<Unit filename="engine\include\FileWriter.hpp" />
 		<Unit filename="engine\include\Game.hpp" />
+		<Unit filename="engine\include\InitialItemSelector.hpp" />
 		<Unit filename="engine\include\ItemFactory.hpp" />
 		<Unit filename="engine\include\ItemGenerationManager.hpp" />
 		<Unit filename="engine\include\Log.hpp" />
@@ -609,6 +610,7 @@
 		<Unit filename="engine\source\Dimensions.cpp" />
 		<Unit filename="engine\source\FileWriter.cpp" />
 		<Unit filename="engine\source\Game.cpp" />
+		<Unit filename="engine\source\InitialItemSelector.cpp" />
 		<Unit filename="engine\source\ItemFactory.cpp" />
 		<Unit filename="engine\source\ItemGenerationManager.cpp" />
 		<Unit filename="engine\source\Log.cpp" />
@@ -629,6 +631,9 @@
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\Dimensions_test.cpp">
+			<Option target="&lt;{~None~}&gt;" />
+		</Unit>
+		<Unit filename="engine\source\unit_tests\InitialItemSelector_test.cpp">
 			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="engine\source\unit_tests\MapUtils_test.cpp">

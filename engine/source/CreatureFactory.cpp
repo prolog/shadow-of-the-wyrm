@@ -7,6 +7,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "Game.hpp"
+#include "InitialItemEquipper.hpp"
 #include "Log.hpp"
 #include "ResistancesCalculator.hpp"
 #include "SkillsCalculator.hpp"
@@ -19,7 +20,11 @@
 using namespace std;
 using boost::make_shared;
 
-CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
+CreaturePtr CreatureFactory::create_by_creature_id
+(
+  ActionManager& action_manager
+, const string& creature_id
+)
 {
   CreaturePtr creature;
   
@@ -60,6 +65,9 @@ CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
       
       // JCD FIXME: Apply the values from the CreatureGenerationValues.
     }
+    
+    InitialItemEquipper iie;
+    iie.equip(creature, action_manager);
   }
   
   return creature;
@@ -67,7 +75,8 @@ CreaturePtr CreatureFactory::create_by_creature_id(const string& creature_id)
 
 CreaturePtr CreatureFactory::create_by_race_and_class
 (
-  const string& race_id
+  ActionManager& action_manager
+, const string& race_id
 , const string& class_id
 , const string& creature_name
 , const CreatureSex creature_sex
@@ -125,6 +134,10 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Set additional book-keeping values
     initialize(creaturep);
     
+    // Equip the initial set of race/class equipment.
+    InitialItemEquipper iie;
+    iie.equip(creaturep, action_manager);
+
     // Set calculated statistics
     CreatureCalculator::update_calculated_values(creaturep);
   }

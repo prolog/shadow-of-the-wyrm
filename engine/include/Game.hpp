@@ -18,8 +18,6 @@ class Game
   public:
     static Game* instance();
 
-void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
-
     void set_display(DisplayPtr display);
     DisplayPtr get_display() const;
 
@@ -58,6 +56,8 @@ void FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player);
 
     // Additional operations will eventually be needed to do many
     // worlds and rebirth.
+    
+    ActionManager& get_action_manager_ref();
 
   protected:
     friend class SavageLandsEngine;

@@ -1,13 +1,14 @@
 #pragma once
 #include <string>
+#include "ActionManager.hpp"
 #include "Creature.hpp"
 #include "Deity.hpp"
 
 class CreatureFactory
 {
   public:
-    static CreaturePtr create_by_creature_id(const std::string& creature_id);
-    static CreaturePtr create_by_race_and_class(const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const std::string& deity_id = "");
+    static CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id);
+    static CreaturePtr create_by_race_and_class(ActionManager& am, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const std::string& deity_id = "");
 
   protected:
     static Creature set_age(const Creature& creature, const AgeInfo& age_info);

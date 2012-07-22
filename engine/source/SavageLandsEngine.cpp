@@ -169,7 +169,7 @@ void SavageLandsEngine::setup_player_and_world()
       }
     }
 
-    CreaturePtr player = CreatureFactory::create_by_race_and_class(selected_race_id, selected_class_id, name, sex, selected_deity_id);
+    CreaturePtr player = CreatureFactory::create_by_race_and_class(game->get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
     player->set_is_player(true, controller);  
 
     game->create_new_world(player); 

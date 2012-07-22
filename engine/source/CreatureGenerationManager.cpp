@@ -15,7 +15,7 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreaturePtr CreatureGenerationManager::generate_creature(const TileType map_terrain_type, const uint danger_level, const Rarity rarity)
+CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, const TileType map_terrain_type, const uint danger_level, const Rarity rarity)
 {
   CreaturePtr generated_creature;
   Game* game = Game::instance();
@@ -67,7 +67,7 @@ CreaturePtr CreatureGenerationManager::generate_creature(const TileType map_terr
       if (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1) && !generated_creature))
       {
         string creature_id = c_it->first;
-        generated_creature = CreatureFactory::create_by_creature_id(creature_id);
+        generated_creature = CreatureFactory::create_by_creature_id(am, creature_id);
       }
     }
   }

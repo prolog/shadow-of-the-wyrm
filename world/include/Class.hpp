@@ -103,3 +103,4 @@ class Class
 
 typedef boost::shared_ptr<Class> ClassPtr;
 typedef std::map<std::string, ClassPtr> ClassMap;
+typedef std::map<EquipmentWornLocation, InitialItem> InitialEquipmentMap;
