@@ -900,10 +900,18 @@
 				<WeaponSkills>
 					<ShortBlades>5</ShortBlades>
 					<LongBlades>5</LongBlades>
+					<Bludgeons>5</Bludgeons>
 					<Daggers>5</Daggers>
+					<Spears>5</Spears>
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<Head><ID>cap</ID></Head>
+				<RightHand><ID>short_sword</ID></RightHand>
+				<Body><ID>chain_scraps</ID></Body>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="apothecary">
  			<UserPlayable>1</UserPlayable>
@@ -2272,6 +2280,26 @@
 				<Evade>1</Evade>
 				<Soak>0</Soak>
 			</Armour>
+			<Armour id="chain_scraps">
+				<DescriptionSID>CHAIN_SCRAPS_SID</DescriptionSID>
+				<UsageDescriptionSID>CHAIN_SCRAPS_USAGE_SID</UsageDescriptionSID>
+				<Value>150</Value>
+				<Weight><Pounds>30</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>3</Material>
+				<Evade>1</Evade>
+				<Soak>2</Soak>
+			</Armour>
+			<Armour id="leather_boots">
+				<DescriptionSID>LEATHER_BOOTS_SID</DescriptionSID>
+				<UsageDescriptionSID>LEATHER_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<Value>50</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>4</Material>
+				<Evade>2</Evade>
+				<Soak>0</Soak>
+			</Armour>
 		</Armours>
 		<Weapons>
 			<Weapon id="dagger">
@@ -2287,6 +2315,21 @@
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
 					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="short_sword">
+				<DescriptionSID>SHORT_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1001</Skill>
+				<Difficulty>43</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="_branch">

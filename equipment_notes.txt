@@ -1,4 +1,4 @@
-Adventurer: cap, chain scraps, short sword, leather boots
+Adventurer: cap, chain scraps, short sword/broad sword/mace/dagger/spear, leather boots
 Apothecary: robes, club, shoes
 Archer: by race
 Artisan: dagger, clothes, leather boots
