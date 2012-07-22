@@ -529,7 +529,7 @@
   -->
 <xs:complexType name="InitialItem">
 	<xs:sequence>
-		<xs:element name="ID" type="xs:string"/>
+		<xs:element name="ID" type="xs:string" minOccurs="0"/>
 		<xs:element name="Random" minOccurs="0">
 			<xs:complexType>
 				<xs:sequence>

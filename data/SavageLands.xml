@@ -969,8 +969,16 @@
 					<Papercraft>10</Papercraft>
 					<Scribing>15</Scribing>
 				</GeneralSkills>
+				<WeaponSkills>
+					<Bludgeons>3</Bludgeons>
+				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>club</ID></RightHand>
+				<Body><ID>robes</ID></Body>
+				<Feet><ID>shoes</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="archer">
 			<UserPlayable>1</UserPlayable>
@@ -2298,6 +2306,16 @@
 				<Evade>1</Evade>
 				<Soak>2</Soak>
 			</Armour>
+			<Armour id="robes">
+				<DescriptionSID>ROBES_SID</DescriptionSID>
+				<UsageDescriptionSID>ROBES_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<Evade>2</Evade>
+				<Soak>0</Soak>
+			</Armour>
 			<Armour id="leather_boots">
 				<DescriptionSID>LEATHER_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_BOOTS_USAGE_SID</UsageDescriptionSID>
@@ -2306,6 +2324,16 @@
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
 				<Evade>2</Evade>
+				<Soak>0</Soak>
+			</Armour>
+			<Armour id="shoes">
+				<DescriptionSID>SHOES_SID</DescriptionSID>
+				<UsageDescriptionSID>SHOES_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>4</Material>
+				<Evade>1</Evade>
 				<Soak>0</Soak>
 			</Armour>
 		</Armours>
@@ -2384,6 +2412,21 @@
 					<NumSides>6</NumSides>
 					<Modifier>2</Modifier>
 					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="club">
+				<DescriptionSID>CLUB_SID</DescriptionSID>
+				<UsageDescriptionSID>CLUB_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<Skill>1003</Skill>
+				<Difficulty>45</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Type>2</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="_branch">
