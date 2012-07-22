@@ -142,7 +142,6 @@
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
-			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
@@ -302,6 +301,7 @@
 			<xs:element name="PietyCostMultiplier" type="tns:NonNegativeDecimal" minOccurs="0"/>
 			<xs:element name="PietyRegenBonus" type="xs:int" minOccurs="0"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
