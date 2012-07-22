@@ -91,7 +91,7 @@
 	<File name="engine\XML\include\XMLBookReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="88" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLClassesReader.hpp" open="1" top="0" tabpos="6">
+	<File name="engine\XML\include\XMLClassesReader.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="992" topLine="2" />
 	</File>
 	<File name="engine\XML\include\XMLConfigurationReader.hpp" open="0" top="0" tabpos="3">
@@ -112,7 +112,7 @@
 	<File name="engine\XML\include\XMLFoodReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="211" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLInitialItemReader.hpp" open="1" top="0" tabpos="8">
+	<File name="engine\XML\include\XMLInitialItemReader.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="260" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLItemReader.hpp" open="0" top="0" tabpos="16">
@@ -166,7 +166,7 @@
 	<File name="engine\XML\source\XMLBookReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="205" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLClassesReader.cpp" open="1" top="0" tabpos="7">
+	<File name="engine\XML\source\XMLClassesReader.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="5639" topLine="127" />
 	</File>
 	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="7">
@@ -187,7 +187,7 @@
 	<File name="engine\XML\source\XMLFoodReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="259" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLInitialItemReader.cpp" open="1" top="1" tabpos="9">
+	<File name="engine\XML\source\XMLInitialItemReader.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="1698" topLine="36" />
 	</File>
 	<File name="engine\XML\source\XMLItemReader.cpp" open="0" top="0" tabpos="18">
@@ -242,7 +242,7 @@
 		<Cursor position="62" topLine="0" />
 	</File>
 	<File name="engine\actions\include\ActionManager.hpp" open="0" top="0" tabpos="11">
-		<Cursor position="1393" topLine="32" />
+		<Cursor position="1220" topLine="32" />
 	</File>
 	<File name="engine\actions\include\CharacterDumpManager.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="300" topLine="0" />
@@ -295,7 +295,7 @@
 	<File name="engine\actions\source\DateTimeManager.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="586" topLine="9" />
 	</File>
-	<File name="engine\actions\source\EquipmentManager.cpp" open="1" top="0" tabpos="1">
+	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1638" topLine="37" />
 	</File>
 	<File name="engine\actions\source\InventoryManager.cpp" open="0" top="0" tabpos="9">
@@ -311,7 +311,7 @@
 		<Cursor position="5808" topLine="160" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2522" topLine="60" />
+		<Cursor position="1970" topLine="46" />
 	</File>
 	<File name="engine\actions\source\SearchActionManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="128" topLine="0" />
@@ -406,7 +406,7 @@
 	<File name="engine\calculators\source\MagicalDamageCalculator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="538" topLine="0" />
 	</File>
-	<File name="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp" open="1" top="0" tabpos="20">
+	<File name="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp" open="0" top="0" tabpos="20">
 		<Cursor position="860" topLine="5" />
 	</File>
 	<File name="engine\calculators\source\MountainClimbingCalculator.cpp" open="0" top="0" tabpos="3">
@@ -418,8 +418,8 @@
 	<File name="engine\calculators\source\ResistancesCalculator.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="913" topLine="14" />
 	</File>
-	<File name="engine\calculators\source\SoakCalculator.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="83" topLine="0" />
+	<File name="engine\calculators\source\SoakCalculator.cpp" open="1" top="1" tabpos="14">
+		<Cursor position="632" topLine="23" />
 	</File>
 	<File name="engine\calculators\source\SwimmingCalculator.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="629" topLine="1" />
@@ -430,7 +430,7 @@
 	<File name="engine\calculators\source\ToHitCalculatorFactory.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="719" topLine="15" />
 	</File>
-	<File name="engine\calculators\source\WeaponDifficultyCalculator.cpp" open="1" top="0" tabpos="19">
+	<File name="engine\calculators\source\WeaponDifficultyCalculator.cpp" open="0" top="0" tabpos="19">
 		<Cursor position="1092" topLine="20" />
 	</File>
 	<File name="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp" open="0" top="0" tabpos="1">
@@ -916,8 +916,8 @@
 	<File name="engine\generators\source\ForestGenerator.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="517" topLine="9" />
 	</File>
-	<File name="engine\generators\source\Generator.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="2355" topLine="81" />
+	<File name="engine\generators\source\Generator.cpp" open="1" top="0" tabpos="11">
+		<Cursor position="155" topLine="0" />
 	</File>
 	<File name="engine\generators\source\GeneratorUtils.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="3226" topLine="100" />
@@ -1012,11 +1012,11 @@
 	<File name="engine\generators\worship_sites\source\WorshipSiteGenerator.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="799" topLine="29" />
 	</File>
-	<File name="engine\include\CreatureFactory.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="76" topLine="0" />
+	<File name="engine\include\CreatureFactory.hpp" open="1" top="0" tabpos="7">
+		<Cursor position="59" topLine="0" />
 	</File>
-	<File name="engine\include\CreatureGenerationManager.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="481" topLine="0" />
+	<File name="engine\include\CreatureGenerationManager.hpp" open="1" top="0" tabpos="10">
+		<Cursor position="41" topLine="0" />
 	</File>
 	<File name="engine\include\Directions.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="214" topLine="1" />
@@ -1024,10 +1024,13 @@
 	<File name="engine\include\FileWriter.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="236" topLine="0" />
 	</File>
-	<File name="engine\include\Game.hpp" open="0" top="0" tabpos="8">
-		<Cursor position="2551" topLine="62" />
+	<File name="engine\include\Game.hpp" open="1" top="0" tabpos="6">
+		<Cursor position="1829" topLine="52" />
 	</File>
-	<File name="engine\include\InitialItemSelector.hpp" open="1" top="0" tabpos="10">
+	<File name="engine\include\InitialItemEquipper.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="236" topLine="0" />
+	</File>
+	<File name="engine\include\InitialItemSelector.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="283" topLine="0" />
 	</File>
 	<File name="engine\include\ItemFactory.hpp" open="0" top="0" tabpos="2">
@@ -1129,11 +1132,11 @@
 	<File name="engine\source\ClassManager.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="247" topLine="0" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="9199" topLine="257" />
+	<File name="engine\source\CreatureFactory.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="2691" topLine="73" />
 	</File>
-	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="590" topLine="20" />
+	<File name="engine\source\CreatureGenerationManager.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="2714" topLine="47" />
 	</File>
 	<File name="engine\source\Dimensions.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="195" topLine="0" />
@@ -1141,10 +1144,13 @@
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="443" topLine="4" />
 	</File>
-	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="5108" topLine="210" />
+	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="12">
+		<Cursor position="9618" topLine="347" />
 	</File>
-	<File name="engine\source\InitialItemSelector.cpp" open="1" top="0" tabpos="11">
+	<File name="engine\source\InitialItemEquipper.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="754" topLine="8" />
+	</File>
+	<File name="engine\source\InitialItemSelector.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="1579" topLine="39" />
 	</File>
 	<File name="engine\source\ItemFactory.cpp" open="0" top="0" tabpos="1">
@@ -1183,8 +1189,8 @@
 	<File name="engine\source\ReligionManager.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="199" topLine="0" />
 	</File>
-	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="3124" topLine="124" />
+	<File name="engine\source\SavageLandsEngine.cpp" open="1" top="0" tabpos="13">
+		<Cursor position="4541" topLine="154" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="27353" topLine="563" />
@@ -1192,8 +1198,8 @@
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
 	</File>
-	<File name="engine\source\unit_tests\CreatureFactory_test.cpp" open="1" top="0" tabpos="12">
-		<Cursor position="209" topLine="0" />
+	<File name="engine\source\unit_tests\CreatureFactory_test.cpp" open="1" top="0" tabpos="8">
+		<Cursor position="154" topLine="0" />
 	</File>
 	<File name="engine\source\unit_tests\InitialItemSelector_test.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1244" topLine="35" />
@@ -1370,13 +1376,13 @@
 		<Cursor position="356" topLine="6" />
 	</File>
 	<File name="world\include\Class.hpp" open="1" top="0" tabpos="4">
-		<Cursor position="2331" topLine="64" />
+		<Cursor position="3259" topLine="82" />
 	</File>
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="94" topLine="0" />
 	</File>
 	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="3835" topLine="114" />
+		<Cursor position="4715" topLine="137" />
 	</File>
 	<File name="world\include\CreatureFeatures.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="692" topLine="26" />
@@ -1384,7 +1390,7 @@
 	<File name="world\include\Damage.hpp" open="0" top="0" tabpos="22">
 		<Cursor position="60" topLine="0" />
 	</File>
-	<File name="world\include\DamageTypes.hpp" open="1" top="0" tabpos="15">
+	<File name="world\include\DamageTypes.hpp" open="0" top="0" tabpos="15">
 		<Cursor position="203" topLine="0" />
 	</File>
 	<File name="world\include\Date.hpp" open="0" top="0" tabpos="1">
@@ -1396,13 +1402,13 @@
 	<File name="world\include\Equipment.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="594" topLine="2" />
 	</File>
-	<File name="world\include\EquipmentTypes.hpp" open="1" top="0" tabpos="13">
+	<File name="world\include\EquipmentTypes.hpp" open="1" top="0" tabpos="2">
 		<Cursor position="125" topLine="0" />
 	</File>
 	<File name="world\include\Food.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="203" topLine="0" />
 	</File>
-	<File name="world\include\InitialItem.hpp" open="1" top="0" tabpos="2">
+	<File name="world\include\InitialItem.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="794" topLine="10" />
 	</File>
 	<File name="world\include\Inventory.hpp" open="0" top="0" tabpos="10">
@@ -1447,10 +1453,10 @@
 	<File name="world\include\Scroll.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="107" topLine="0" />
 	</File>
-	<File name="world\include\SkillTypes.hpp" open="1" top="0" tabpos="17">
+	<File name="world\include\SkillTypes.hpp" open="0" top="0" tabpos="17">
 		<Cursor position="1688" topLine="57" />
 	</File>
-	<File name="world\include\Skills.hpp" open="1" top="0" tabpos="16">
+	<File name="world\include\Skills.hpp" open="0" top="0" tabpos="16">
 		<Cursor position="8747" topLine="539" />
 	</File>
 	<File name="world\include\Staff.hpp" open="0" top="0" tabpos="0">
@@ -1465,7 +1471,7 @@
 	<File name="world\include\Wand.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\include\Weapon.hpp" open="1" top="0" tabpos="18">
+	<File name="world\include\Weapon.hpp" open="0" top="0" tabpos="18">
 		<Cursor position="229" topLine="7" />
 	</File>
 	<File name="world\include\WeaponTypes.hpp" open="0" top="0" tabpos="5">
@@ -1504,7 +1510,7 @@
 	<File name="world\materials\include\MaterialFactory.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="59" topLine="0" />
 	</File>
-	<File name="world\materials\include\MaterialTypes.hpp" open="1" top="0" tabpos="14">
+	<File name="world\materials\include\MaterialTypes.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="337" topLine="2" />
 	</File>
 	<File name="world\materials\include\Onyx.hpp" open="0" top="0" tabpos="21">
@@ -1642,7 +1648,7 @@
 	<File name="world\source\Calendar.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="1129" topLine="34" />
 	</File>
-	<File name="world\source\Class.cpp" open="1" top="0" tabpos="5">
+	<File name="world\source\Class.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="3264" topLine="172" />
 	</File>
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
@@ -1669,7 +1675,7 @@
 	<File name="world\source\Food.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="321" topLine="6" />
 	</File>
-	<File name="world\source\InitialItem.cpp" open="1" top="0" tabpos="3">
+	<File name="world\source\InitialItem.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="81" topLine="0" />
 	</File>
 	<File name="world\source\Inventory.cpp" open="0" top="0" tabpos="11">
