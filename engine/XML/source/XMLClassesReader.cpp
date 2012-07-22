@@ -80,6 +80,9 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
     float experience_multiplier = XMLUtils::get_child_node_float_value(class_node, "ExperienceMultiplier", current_class->get_experience_multiplier());
     current_class->set_experience_multiplier(experience_multiplier);
+    
+    XMLNode initial_equipment_and_inventory_node = XMLUtils::get_next_element_by_local_name(class_node, "InitialEquipmentAndInventory");
+    parse_initial_equipment_and_inventory(current_class, initial_equipment_and_inventory_node);
   }
 
   return current_class;
