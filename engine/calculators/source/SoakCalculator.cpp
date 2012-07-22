@@ -30,6 +30,7 @@ int SoakCalculator::calculate_soak(const CreaturePtr& c)
       health_bonus = (health - 10) / 4;
     }
 
+    soak += get_equipment_bonus(c);
     soak += health_bonus;
   }
 

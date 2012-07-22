@@ -908,7 +908,15 @@
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
-				<RightHand><ID>short_sword</ID></RightHand>
+				<RightHand>
+					<Random>
+						<ID>short_sword</ID>
+						<ID>broad_sword</ID>
+						<ID>dagger</ID>
+						<ID>mace</ID>
+						<ID>spear</ID>
+					</Random>
+				</RightHand>
 				<Body><ID>chain_scraps</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -2330,6 +2338,52 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="broad_sword">
+				<DescriptionSID>BROAD_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>BROAD_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>65</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1002</Skill>
+				<Difficulty>45</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="mace">
+				<DescriptionSID>MACE_SID</DescriptionSID>
+				<UsageDescriptionSID>MACE_USAGE_SID</UsageDescriptionSID>
+				<Value>55</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1003</Skill>
+				<Difficulty>44</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="spear">
+				<DescriptionSID>SPEAR_SID</DescriptionSID>
+				<UsageDescriptionSID>SPEAR_USAGE_SID</UsageDescriptionSID>
+				<Value>50</Value>
+				<Weight><Pounds>12</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1006</Skill>
+				<Difficulty>46</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>1</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="_branch">

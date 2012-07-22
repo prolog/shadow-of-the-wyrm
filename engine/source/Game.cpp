@@ -24,14 +24,6 @@ using boost::make_shared;
 
 Game* Game::game_instance = NULL;
 
-void Game::FIXME_REMOVE_THIS_FUNCTION(CreaturePtr player)
-{
-  actions.handle_item(player, ITEM_ACTION_EQUIP, ItemManager::create_item("cap"));
-  actions.handle_item(player, ITEM_ACTION_EQUIP, ItemManager::create_item("dagger"));
-  actions.handle_item(player, ITEM_ACTION_PICK_UP, ItemManager::create_item("dirt"));
-  actions.handle_item(player, ITEM_ACTION_PICK_UP, ItemManager::create_item("coracle"));
-}
-
 Game::Game()
 : keep_playing(true), reload_game_loop(false), current_world_ix(0)
 {
@@ -210,8 +202,6 @@ void Game::go()
   manager->send();
 
   MapPtr current_map = get_current_map();
-
-      FIXME_REMOVE_THIS_FUNCTION(current_player);
   CreatureCalculator::update_calculated_values(current_player);
  
   string map_id = "";
@@ -374,3 +364,7 @@ MapPtr Game::get_current_map()
   return map_registry.get_map(current_map_id);
 }
 
+ActionManager& Game::get_action_manager_ref()
+{
+  return actions;
+}
