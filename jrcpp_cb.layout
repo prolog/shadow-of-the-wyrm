@@ -91,8 +91,8 @@
 	<File name="engine\XML\include\XMLBookReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="88" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLClassesReader.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="64" topLine="0" />
+	<File name="engine\XML\include\XMLClassesReader.hpp" open="1" top="0" tabpos="6">
+		<Cursor position="992" topLine="2" />
 	</File>
 	<File name="engine\XML\include\XMLConfigurationReader.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="62" topLine="0" />
@@ -112,11 +112,14 @@
 	<File name="engine\XML\include\XMLFoodReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="211" topLine="0" />
 	</File>
+	<File name="engine\XML\include\XMLInitialItemReader.hpp" open="1" top="0" tabpos="8">
+		<Cursor position="260" topLine="0" />
+	</File>
 	<File name="engine\XML\include\XMLItemReader.hpp" open="0" top="0" tabpos="16">
-		<Cursor position="91" topLine="0" />
+		<Cursor position="66" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLItemsReaders.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="1148" topLine="21" />
+		<Cursor position="181" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLPlantReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="57" topLine="0" />
@@ -163,8 +166,8 @@
 	<File name="engine\XML\source\XMLBookReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="205" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLClassesReader.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2723" topLine="60" />
+	<File name="engine\XML\source\XMLClassesReader.cpp" open="1" top="1" tabpos="7">
+		<Cursor position="6553" topLine="158" />
 	</File>
 	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="734" topLine="17" />
@@ -184,8 +187,11 @@
 	<File name="engine\XML\source\XMLFoodReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="259" topLine="0" />
 	</File>
+	<File name="engine\XML\source\XMLInitialItemReader.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="281" topLine="10" />
+	</File>
 	<File name="engine\XML\source\XMLItemReader.cpp" open="0" top="0" tabpos="18">
-		<Cursor position="2015" topLine="51" />
+		<Cursor position="83" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLItemsReaders.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="11" topLine="0" />
@@ -289,7 +295,7 @@
 	<File name="engine\actions\source\DateTimeManager.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="586" topLine="9" />
 	</File>
-	<File name="engine\actions\source\EquipmentManager.cpp" open="1" top="1" tabpos="0">
+	<File name="engine\actions\source\EquipmentManager.cpp" open="1" top="0" tabpos="1">
 		<Cursor position="1638" topLine="37" />
 	</File>
 	<File name="engine\actions\source\InventoryManager.cpp" open="0" top="0" tabpos="9">
@@ -1354,8 +1360,8 @@
 	<File name="world\include\Calendar.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="356" topLine="6" />
 	</File>
-	<File name="world\include\Class.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="2220" topLine="66" />
+	<File name="world\include\Class.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="2331" topLine="64" />
 	</File>
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="94" topLine="0" />
@@ -1386,6 +1392,9 @@
 	</File>
 	<File name="world\include\Food.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="203" topLine="0" />
+	</File>
+	<File name="world\include\InitialItem.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="573" topLine="12" />
 	</File>
 	<File name="world\include\Inventory.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="518" topLine="1" />
@@ -1624,8 +1633,8 @@
 	<File name="world\source\Calendar.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="1129" topLine="34" />
 	</File>
-	<File name="world\source\Class.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="4141" topLine="174" />
+	<File name="world\source\Class.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="3264" topLine="172" />
 	</File>
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
@@ -1650,6 +1659,9 @@
 	</File>
 	<File name="world\source\Food.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="321" topLine="6" />
+	</File>
+	<File name="world\source\InitialItem.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="81" topLine="0" />
 	</File>
 	<File name="world\source\Inventory.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="2045" topLine="115" />

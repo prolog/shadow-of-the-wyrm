@@ -88,7 +88,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlbookreader.cpp
 	"XMLBookReader.hpp"
 
-1342878442 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
+1342880836 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"Resistances.hpp"

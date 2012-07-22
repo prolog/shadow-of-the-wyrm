@@ -154,6 +154,7 @@
 		<Unit filename="engine\XML\include\XMLDeitiesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLFileReader.hpp" />
 		<Unit filename="engine\XML\include\XMLFoodReader.hpp" />
+		<Unit filename="engine\XML\include\XMLInitialItemReader.hpp" />
 		<Unit filename="engine\XML\include\XMLItemReader.hpp" />
 		<Unit filename="engine\XML\include\XMLItemsReaders.hpp" />
 		<Unit filename="engine\XML\include\XMLPlantReader.hpp" />
@@ -182,6 +183,7 @@
 		<Unit filename="engine\XML\source\XMLDeitiesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLFileReader.cpp" />
 		<Unit filename="engine\XML\source\XMLFoodReader.cpp" />
+		<Unit filename="engine\XML\source\XMLInitialItemReader.cpp" />
 		<Unit filename="engine\XML\source\XMLItemReader.cpp" />
 		<Unit filename="engine\XML\source\XMLItemsReaders.cpp" />
 		<Unit filename="engine\XML\source\XMLPlantReader.cpp" />
@@ -548,7 +550,6 @@
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\CreatureGenerationConstants.hpp" />
 		<Unit filename="engine\include\CreatureGenerationManager.hpp" />
-		<Unit filename="engine\include\CreatureGenerationValues.hpp" />
 		<Unit filename="engine\include\Dimensions.hpp" />
 		<Unit filename="engine\include\Directions.hpp" />
 		<Unit filename="engine\include\FileWriter.hpp" />
@@ -721,6 +722,7 @@
 		<Unit filename="world\include\Equipment.hpp" />
 		<Unit filename="world\include\EquipmentTypes.hpp" />
 		<Unit filename="world\include\Food.hpp" />
+		<Unit filename="world\include\InitialItem.hpp" />
 		<Unit filename="world\include\Inventory.hpp" />
 		<Unit filename="world\include\Item.hpp" />
 		<Unit filename="world\include\ItemTypes.hpp" />
@@ -816,6 +818,7 @@
 		<Unit filename="world\source\Dice.cpp" />
 		<Unit filename="world\source\Equipment.cpp" />
 		<Unit filename="world\source\Food.cpp" />
+		<Unit filename="world\source\InitialItem.cpp" />
 		<Unit filename="world\source\Inventory.cpp" />
 		<Unit filename="world\source\Item.cpp" />
 		<Unit filename="world\source\ItemTypes.cpp" />

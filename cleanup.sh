@@ -7,4 +7,5 @@ rm *.html
 rm sl-*.log
 rm gmon.out
 rm jrcpp_cb.exe
+rm SavageLands.exe
 rm MapTester.exe
