@@ -60,18 +60,18 @@ string SkillsDumper::get_skills_by_category(const SkillCategory category, bool i
     
     for (SkillMap::const_iterator sk_it = skills.begin(); sk_it != skills.end(); sk_it++)
     {
-      Skill skill = sk_it->second;
+      SkillPtr skill = sk_it->second;
       
-      SkillCategory skill_category = skill.get_category();
+      SkillCategory skill_category = skill->get_category();
       
       if (skill_category == category)
       {
-        int skill_value = skill.get_value();
+        int skill_value = skill->get_value();
         
         if ((skill_value > 0) || (include_zero_valued_skills))
         {
           if (!at_least_one_skill) at_least_one_skill = true;
-          ss << skill.str() << endl;
+          ss << skill->str() << endl;
         }
       }
     }

@@ -1,11 +1,14 @@
 #include <sstream>
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include "Skills.hpp"
 #include "SkillTypes.hpp"
 #include "StringConstants.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
+using boost::make_shared;
+using boost::shared_ptr;
 
 // Skill
 Skill::Skill()
@@ -60,6 +63,17 @@ int Skill::get_value() const
   return value;
 }
 
+bool Skill::is_learned() const
+{
+  return (value > 0);
+}
+
+// NWPs and magic skills can't be trained from unlearned.  Melee and ranged weapons can.
+bool Skill::can_train_from_unlearned() const
+{
+  return false;
+}
+
 void Skill::increment_value()
 {
   value++;
@@ -89,12 +103,18 @@ void Skill::set_threshold(const int new_threshold)
 // Certain classes of skills (weapon skills, etc) may override this.
 void Skill::set_threshold_for_value(const int skill_value)
 {
-  threshold = skill_value;
+  threshold = skill_value * get_threshold_multiplier();
 }
 
 int Skill::get_threshold() const
 {
   return threshold;
+}
+
+
+float Skill::get_threshold_multiplier() const
+{
+  return 1.0f;
 }
 
 SkillCategory Skill::get_category() const
@@ -142,18 +162,24 @@ WeaponSkill::WeaponSkill() : Skill(SKILL_CATEGORY_MELEE)
 {
 }
 
-void WeaponSkill::set_threshold_for_value(const int skill_value)
+float WeaponSkill::get_threshold_multiplier() const
 {
-  // As the majority of skill use in-game will be weapon skills,
-  // these should be harder to train to max.  Ranged weapon skills
-  // will be easier due to the scarcity of ammunition.
-  threshold = (skill_value * 2);
+  return 2.0f;
 }
 
+bool WeaponSkill::can_train_from_unlearned() const
+{
+  return true;
+}
 
 // RangedWeaponSkill
 RangedWeaponSkill::RangedWeaponSkill() : Skill(SKILL_CATEGORY_RANGED)
 {
+}
+
+bool RangedWeaponSkill::can_train_from_unlearned() const
+{
+  return true;
 }
 
 // MagicSkill
@@ -251,12 +277,10 @@ CombatSkill::CombatSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_COMBAT_INCREMENT;
 }
 
-// Combat is a much more difficult skill to increase.
-void CombatSkill::set_threshold_for_value(const int skill_value)
+float CombatSkill::get_threshold_multiplier() const
 {
-  threshold = (skill_value * 2);
+  return 2.0f;
 }
-
 
 // Crafting
 CraftingSkill::CraftingSkill()
@@ -426,10 +450,9 @@ MagicGeneralSkill::MagicGeneralSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_MAGIC_INCREMENT;
 }
 
-// Magic, like Combat, is a much more difficult skill to increase.
-void MagicGeneralSkill::set_threshold_for_value(const int skill_value)
+float MagicGeneralSkill::get_threshold_multiplier() const
 {
-  threshold = skill_value * 2;
+  return 2.0f;
 }
 
 // Marsh Lore
@@ -782,34 +805,34 @@ Skills& Skills::operator=(const Skills& copy_skills)
 // Set the value of a skill
 void Skills::set_value(const SkillType skill_name, const unsigned int value)
 {
-  Skill& skill_to_set = skills[skill_name];
-  skill_to_set.set_value(value);
+  SkillPtr skill_to_set = skills[skill_name];
+  skill_to_set->set_value(value);
 }
 
 // Mark a skill.  JCD FIXME: A skill manager should control this...
 void Skills::mark(const SkillType skill_name)
 {
-  Skill& skill_to_mark = skills[skill_name];
-  skill_to_mark.increment_marks();
+  SkillPtr skill_to_mark = skills[skill_name];
+  skill_to_mark->increment_marks();
 }
 
 int Skills::get_value(const SkillType& skill_name) const
 {
-  Skill skill = get_skill(skill_name);
-  return skill.get_value();
+  SkillPtr skill = get_skill(skill_name);
+  return skill->get_value();
 }
 
-void Skills::set_skill(const SkillType& st, const Skill& skill)
+void Skills::set_skill(const SkillType& st, const SkillPtr skill)
 {
   // Always overwrite any previously existing skill.
   skills[st] = skill;
 }
 
-Skill Skills::get_skill(const SkillType& st) const
+SkillPtr Skills::get_skill(const SkillType& st) const
 {
-  Skill result;
+  SkillPtr result;
 
-  map<SkillType, Skill>::const_iterator sk_it = skills.find(st);
+  map<SkillType, SkillPtr>::const_iterator sk_it = skills.find(st);
 
   if (sk_it != skills.end())
   {
@@ -825,15 +848,15 @@ string Skills::str() const
 
   for (SkillMap::const_iterator sk_it = skills.begin(); sk_it != skills.end(); sk_it++)
   {
-    Skill skill = sk_it->second;
-    skills_str = skills_str + skill.str() + " ";
+    SkillPtr skill = sk_it->second;
+    skills_str = skills_str + skill->str() + " ";
   }
 
   return skills_str;
 }
 
 // Return a reference to the skills map
-std::map<SkillType, Skill>& Skills::get_raw_skills()
+std::map<SkillType, SkillPtr>& Skills::get_raw_skills()
 {
   return skills;
 }
@@ -850,56 +873,56 @@ void Skills::initialize_skills()
 // Initialize the list of general skills.
 void Skills::initialize_general_skills()
 {
-  ArcherySkill archery;
-  AwarenessSkill awareness;
-  BargainingSkill bargaining;
-  BeastmasterySkill beastmastery;
-  BlindFightingSkill blind_fighting;
-  BoatingSkill boating;
-  BowyerSkill bowyer;
-  BrewingSkill brewing;
-  CantripsSkill cantrips;
-  CarryingSkill carrying;
-  CombatSkill combat;
-  CraftingSkill crafting;
-  DesertLoreSkill desert_lore;
-  DetectionSkill detection;
-  DisarmTrapsSkill disarm_traps;
-  DualWieldSkill dual_wield;
-  DungeoneeringSkill dungeoneering;
-  EscapeSkill escape;
-  FishingSkill fishing;
-  FletcherySkill fletchery;
-  ForagingSkill foraging;
-  ForestLoreSkill forest_lore;
-  HerbalismSkill herbalism;
-  HidingSkill hiding;
-  HuntingSkill hunting;
-  IntimidationSkill intimidation;
-  JewelerSkill jeweler;
-  JumpingSkill jumping;
-  LeadershipSkill leadership;
-  LiteracySkill literacy;
-  LoreSkill lore;
-  MagicGeneralSkill magic;
-  MarshLoreSkill marsh_lore;
-  MedicineSkill medicine;
-  MountainLoreSkill mountain_lore;
-  MountaineeringSkill mountaineering;
-  MusicSkill music;
-  NightSightSkill night_sight;
-  OceanographySkill oceanography;
-  PapercraftSkill papercraft;
-  ReligionSkill religion;
-  ScribingSkill scribing;
-  SkinningSkill skinning;
-  SmithingSkill smithing;
-  SpelunkingSkill spelunking;
-  StealthSkill stealth;
-  SwimmingSkill swimming;
-  TanningSkill tanning;
-  ThieverySkill thievery;
-  WeavingSkill weaving;
+  shared_ptr<ArcherySkill> archery = make_shared<ArcherySkill>();
+  shared_ptr<AwarenessSkill> awareness = make_shared<AwarenessSkill>();
+  shared_ptr<BargainingSkill> bargaining = make_shared<BargainingSkill>();
+  shared_ptr<BeastmasterySkill> beastmastery = make_shared<BeastmasterySkill>();
+  shared_ptr<BlindFightingSkill> blind_fighting = make_shared<BlindFightingSkill>();
+  shared_ptr<BoatingSkill> boating = make_shared<BoatingSkill>();
+  shared_ptr<BowyerSkill> bowyer = make_shared<BowyerSkill>();
+  shared_ptr<BrewingSkill> brewing = make_shared<BrewingSkill>();
+  shared_ptr<CantripsSkill> cantrips = make_shared<CantripsSkill>();
+  shared_ptr<CarryingSkill> carrying = make_shared<CarryingSkill>();
+  shared_ptr<CombatSkill> combat = make_shared<CombatSkill>();
+  shared_ptr<CraftingSkill> crafting = make_shared<CraftingSkill>();
+  shared_ptr<DesertLoreSkill> desert_lore = make_shared<DesertLoreSkill>();
+  shared_ptr<DetectionSkill> detection = make_shared<DetectionSkill>();
+  shared_ptr<DisarmTrapsSkill> disarm_traps = make_shared<DisarmTrapsSkill>();
+  shared_ptr<DualWieldSkill> dual_wield = make_shared<DualWieldSkill>();
+  shared_ptr<DungeoneeringSkill> dungeoneering = make_shared<DungeoneeringSkill>();
+  shared_ptr<EscapeSkill> escape = make_shared<EscapeSkill>();
+  shared_ptr<FishingSkill> fishing = make_shared<FishingSkill>();
+  shared_ptr<FletcherySkill> fletchery = make_shared<FletcherySkill>();
+  shared_ptr<ForagingSkill> foraging = make_shared<ForagingSkill>();
+  shared_ptr<ForestLoreSkill> forest_lore = make_shared<ForestLoreSkill>();
+  shared_ptr<HerbalismSkill> herbalism = make_shared<HerbalismSkill>();
+  shared_ptr<HidingSkill> hiding = make_shared<HidingSkill>();
+  shared_ptr<HuntingSkill> hunting = make_shared<HuntingSkill>();
+  shared_ptr<IntimidationSkill> intimidation = make_shared<IntimidationSkill>();
+  shared_ptr<JewelerSkill> jeweler = make_shared<JewelerSkill>();
+  shared_ptr<JumpingSkill> jumping = make_shared<JumpingSkill>();
+  shared_ptr<LeadershipSkill> leadership = make_shared<LeadershipSkill>();
+  shared_ptr<LiteracySkill> literacy = make_shared<LiteracySkill>();
+  shared_ptr<LoreSkill> lore = make_shared<LoreSkill>();
+  shared_ptr<MagicGeneralSkill> magic = make_shared<MagicGeneralSkill>();
+  shared_ptr<MarshLoreSkill> marsh_lore = make_shared<MarshLoreSkill>();
+  shared_ptr<MedicineSkill> medicine = make_shared<MedicineSkill>();
+  shared_ptr<MountainLoreSkill> mountain_lore = make_shared<MountainLoreSkill>();
+  shared_ptr<MountaineeringSkill> mountaineering = make_shared<MountaineeringSkill>();
+  shared_ptr<MusicSkill> music = make_shared<MusicSkill>();
+  shared_ptr<NightSightSkill> night_sight = make_shared<NightSightSkill>();
+  shared_ptr<OceanographySkill> oceanography = make_shared<OceanographySkill>();
+  shared_ptr<PapercraftSkill> papercraft = make_shared<PapercraftSkill>();
+  shared_ptr<ReligionSkill> religion = make_shared<ReligionSkill>();
+  shared_ptr<ScribingSkill> scribing = make_shared<ScribingSkill>();
+  shared_ptr<SkinningSkill> skinning = make_shared<SkinningSkill>();
+  shared_ptr<SmithingSkill> smithing = make_shared<SmithingSkill>();
+  shared_ptr<SpelunkingSkill> spelunking = make_shared<SpelunkingSkill>();
+  shared_ptr<StealthSkill> stealth = make_shared<StealthSkill>();
+  shared_ptr<SwimmingSkill> swimming = make_shared<SwimmingSkill>();
+  shared_ptr<TanningSkill> tanning = make_shared<TanningSkill>();
+  shared_ptr<ThieverySkill> thievery = make_shared<ThieverySkill>();
+  shared_ptr<WeavingSkill> weaving = make_shared<WeavingSkill>();
 
   skills.insert(make_pair(SKILL_GENERAL_ARCHERY, archery));
   skills.insert(make_pair(SKILL_GENERAL_AWARENESS, awareness));
@@ -956,15 +979,15 @@ void Skills::initialize_general_skills()
 // Initialize all the melee skills.
 void Skills::initialize_melee_skills()
 {
-  AxesSkill axes;
-  ShortBladesSkill short_blades;
-  LongBladesSkill long_blades;
-  BludgeonsSkill bludgeons;
-  DaggersSkill daggers;
-  RodsAndStavesSkill rods_and_staves;
-  SpearsSkill spears;
-  UnarmedSkill unarmed;
-  WhipsSkill whips;
+  shared_ptr<AxesSkill> axes = make_shared<AxesSkill>();
+  shared_ptr<ShortBladesSkill> short_blades = make_shared<ShortBladesSkill>();
+  shared_ptr<LongBladesSkill> long_blades = make_shared<LongBladesSkill>();
+  shared_ptr<BludgeonsSkill> bludgeons = make_shared<BludgeonsSkill>();
+  shared_ptr<DaggersSkill> daggers = make_shared<DaggersSkill>();
+  shared_ptr<RodsAndStavesSkill> rods_and_staves = make_shared<RodsAndStavesSkill>();
+  shared_ptr<SpearsSkill> spears = make_shared<SpearsSkill>();
+  shared_ptr<UnarmedSkill> unarmed = make_shared<UnarmedSkill>();
+  shared_ptr<WhipsSkill> whips = make_shared<WhipsSkill>();
 
   skills.insert(make_pair(SKILL_MELEE_AXES, axes));
   skills.insert(make_pair(SKILL_MELEE_SHORT_BLADES, short_blades));
@@ -980,15 +1003,15 @@ void Skills::initialize_melee_skills()
 // Initialize all the ranged weapon skills.
 void Skills::initialize_ranged_skills()
 {
-  ThrownAxesSkill axes;
-  ThrownBladesSkill blades;
-  ThrownBludgeonsSkill bludgeons;
-  BowsSkill bows;
-  CrossbowsSkill crossbows;
-  ThrownDaggersSkill daggers;
-  RocksSkill rocks;
-  SlingsSkill slings;
-  ThrownSpearsSkill spears;
+  shared_ptr<ThrownAxesSkill> axes = make_shared<ThrownAxesSkill>();
+  shared_ptr<ThrownBladesSkill> blades = make_shared<ThrownBladesSkill>();
+  shared_ptr<ThrownBludgeonsSkill> bludgeons = make_shared<ThrownBludgeonsSkill>();
+  shared_ptr<BowsSkill> bows = make_shared<BowsSkill>();
+  shared_ptr<CrossbowsSkill> crossbows = make_shared<CrossbowsSkill>();
+  shared_ptr<ThrownDaggersSkill> daggers = make_shared<ThrownDaggersSkill>();
+  shared_ptr<RocksSkill> rocks = make_shared<RocksSkill>();
+  shared_ptr<SlingsSkill> slings = make_shared<SlingsSkill>();
+  shared_ptr<ThrownSpearsSkill> spears = make_shared<ThrownSpearsSkill>();
 
   skills.insert(make_pair(SKILL_RANGED_AXES, axes));
   skills.insert(make_pair(SKILL_RANGED_BLADES, blades));
@@ -1004,10 +1027,10 @@ void Skills::initialize_ranged_skills()
 // Initialize all the magic skills.
 void Skills::initialize_magic_skills()
 {
-  ArcaneMagicSkill arcane;
-  DivineMagicSkill divine;
-  MysticMagicSkill mystic;
-  PrimordialMagicSkill primordial;
+  shared_ptr<ArcaneMagicSkill> arcane = make_shared<ArcaneMagicSkill>();
+  shared_ptr<DivineMagicSkill> divine = make_shared<DivineMagicSkill>();
+  shared_ptr<MysticMagicSkill> mystic = make_shared<MysticMagicSkill>();
+  shared_ptr<PrimordialMagicSkill> primordial = make_shared<PrimordialMagicSkill>();
 
   skills.insert(make_pair(SKILL_MAGIC_ARCANE, arcane));
   skills.insert(make_pair(SKILL_MAGIC_DIVINE, divine));

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <boost/shared_ptr.hpp>
 #include "SkillTypes.hpp"
 #include "StringTable.hpp"
 
@@ -19,6 +20,9 @@ class Skill
     virtual int  get_value() const;
     virtual void increment_value();
 
+    bool is_learned() const;
+    virtual bool can_train_from_unlearned() const;
+    
     virtual void set_marks(const int new_marks);
     virtual int  get_marks() const;
     virtual void increment_marks();
@@ -26,6 +30,7 @@ class Skill
     virtual void set_threshold(const int new_threshold);
     virtual void set_threshold_for_value(const int skill_value);
     virtual int  get_threshold() const;
+    virtual float get_threshold_multiplier() const;
 
     virtual SkillCategory get_category() const;
 
@@ -59,9 +64,8 @@ class WeaponSkill : public Skill
   public:
     WeaponSkill();
 
-    virtual void set_threshold_for_value(const int skill_value);
-
-  protected:
+    float get_threshold_multiplier() const;
+    bool can_train_from_unlearned() const;
 };
 
 class RangedWeaponSkill : public Skill
@@ -69,7 +73,7 @@ class RangedWeaponSkill : public Skill
   public:
     RangedWeaponSkill();
 
-  protected:
+    bool can_train_from_unlearned() const;
 };
 
 class MagicSkill : public Skill
@@ -145,8 +149,8 @@ class CombatSkill : public GeneralSkill
 {
   public:
     CombatSkill();
-
-    virtual void set_threshold_for_value(const int skill_value);
+    
+    float get_threshold_multiplier() const;
 };
 
 class CraftingSkill : public GeneralSkill
@@ -273,8 +277,8 @@ class MagicGeneralSkill : public GeneralSkill
 {
   public:
     MagicGeneralSkill();
-
-    virtual void set_threshold_for_value(const int skill_value);
+    
+    float get_threshold_multiplier() const;
 };
 
 class MarshLoreSkill : public GeneralSkill
@@ -525,8 +529,9 @@ class PrimordialMagicSkill : public MagicSkill
 
 // Classes aggregating skills
 
-typedef std::map<SkillType, Skill> SkillMap;
-typedef std::map<SkillType, Skill>* SkillMapPtr;
+typedef boost::shared_ptr<Skill> SkillPtr;
+typedef std::map<SkillType, SkillPtr> SkillMap;
+typedef std::map<SkillType, SkillPtr>* SkillMapPtr;
 
 class Skills
 {
@@ -541,13 +546,13 @@ class Skills
     void mark(const SkillType skill_name);
 
     int get_value(const SkillType& skill_name) const;
-
-    void set_skill(const SkillType& skill_name, const Skill& skill);
-    Skill get_skill(const SkillType& st) const;
+    
+    void set_skill(const SkillType& skill_name, SkillPtr skill);
+    SkillPtr get_skill(const SkillType& st) const;
 
     std::string str() const;
     
-    std::map<SkillType, Skill>& get_raw_skills();
+    std::map<SkillType, SkillPtr>& get_raw_skills();
 
   protected:
     void initialize_skills();
@@ -557,6 +562,6 @@ class Skills
     void initialize_ranged_skills();
     void initialize_magic_skills();
 
-    std::map<SkillType, Skill> skills;
+    std::map<SkillType, SkillPtr> skills;
 };
 
