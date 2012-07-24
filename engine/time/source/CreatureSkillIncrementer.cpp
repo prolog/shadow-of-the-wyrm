@@ -21,8 +21,6 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, const ulonglong minute
       Skills& skills = creature->get_skills();
       map<SkillType, SkillPtr>& raw_skills = skills.get_raw_skills();
       
-      int monkey = raw_skills.size();
-      
       // If the skill has been marked enough, increment the value of the skill, display a message
       // (when the creature is the player), and then reset the number of marks back to zero.
       for (map<SkillType, SkillPtr>::iterator sk_it = raw_skills.begin(); sk_it != raw_skills.end(); sk_it++)

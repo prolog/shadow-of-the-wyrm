@@ -1087,8 +1087,16 @@
 					<Tanning>10</Tanning>
 					<Weaving>15</Weaving>
 				</GeneralSkills>
+				<WeaponSkills>
+					<Daggers>2</Daggers>
+				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>dagger</ID></RightHand>
+				<Body><ID>clothes</ID></Body>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="merchant">
 			<UserPlayable>1</UserPlayable>
@@ -1143,6 +1151,16 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand>
+					<Random>
+						<ID>leather_whip</ID>
+						<ID>thorn_whip</ID>
+					</Random>
+				</RightHand>
+				<Body><ID>wayfarer_clothes</ID></Body>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="minstrel">
 			<UserPlayable>1</UserPlayable>
@@ -1315,6 +1333,11 @@
 				</MagicSkills>
 			</Skills>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>cypress_rod</ID></RightHand>
+				<Body><ID>robes</ID></Body>
+				<Feet><ID>shoes</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="pilgrim">
 			<UserPlayable>1</UserPlayable>
@@ -1376,6 +1399,12 @@
 			<PietyCostMultiplier>0.75</PietyCostMultiplier>
 			<PietyRegenBonus>3</PietyRegenBonus>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<Head><ID>cap</ID></Head>
+				<RightHand><ID>mace</ID></RightHand>
+				<Body><ID>wayfarer_clothes</ID></Body>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="pugilist">
 			<UserPlayable>1</UserPlayable>
@@ -1430,6 +1459,11 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>0.97</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<Head><ID>cap</ID></Head>
+				<Body><ID>clothes</ID></Body>
+				<Feet><ID>shoes</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="rover">
 			<UserPlayable>1</UserPlayable>
@@ -1912,6 +1946,11 @@
 			</Skills>
 			<PietyCostMultiplier>1.25</PietyCostMultiplier>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>leather_whip</ID></RightHand>
+				<Body><ID>robes</ID></Body>
+				<Feet><ID>shoes</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="wizard">
 			<UserPlayable>1</UserPlayable>
@@ -1963,11 +2002,19 @@
 					<Scribing>15</Scribing>
 					<Weaving>15</Weaving>
 				</GeneralSkills>
+				<WeaponSkills>
+					<Daggers>1</Daggers>
+				</WeaponSkills>
 				<MagicSkills>
 					<Arcane>20</Arcane>
 				</MagicSkills>
 			</Skills>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>dagger</ID></RightHand>
+				<Body><ID>robes</ID></Body>
+				<Feet><ID>shoes</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 	</Classes>
 	<Creatures>
@@ -2316,6 +2363,36 @@
 				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
+			<Armour id="clothes">
+				<DescriptionSID>CLOTHES_SID</DescriptionSID>
+				<UsageDescriptionSID>CLOTHES_USAGE_SID</UsageDescriptionSID>
+				<Value>3</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<Evade>1</Evade>
+				<Soak>0</Soak>
+			</Armour>
+			<Armour id="wayfarer_clothes">
+				<DescriptionSID>WAYFARER_CLOTHES_SID</DescriptionSID>
+				<UsageDescriptionSID>WAYFARER_CLOTHES_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<Evade>0</Evade>
+				<Soak>1</Soak>
+			</Armour>
+			<Armour id="cloak">
+				<DescriptionSID>CLOAK_SID</DescriptionSID>
+				<UsageDescriptionSID>CLOAK_USAGE_SID</UsageDescriptionSID>
+				<Value>2</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>7</WornLocation>
+				<Material>0</Material>
+				<Evade>1</Evade>
+				<Soak>0</Soak>
+			</Armour>
 			<Armour id="leather_boots">
 				<DescriptionSID>LEATHER_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_BOOTS_USAGE_SID</UsageDescriptionSID>
@@ -2427,6 +2504,51 @@
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="cypress_rod">
+				<DescriptionSID>CYPRESS_ROD_SID</DescriptionSID>
+				<UsageDescriptionSID>CYPRESS_ROD_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<Skill>1005</Skill>
+				<Difficulty>44</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="leather_whip">
+				<DescriptionSID>LEATHER_WHIP_SID</DescriptionSID>
+				<UsageDescriptionSID>LEATHER_WHIP_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>4</Material>
+				<Skill>1008</Skill>
+				<Difficulty>45</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="thorn_whip">
+				<DescriptionSID>THORN_WHIP_SID</DescriptionSID>
+				<UsageDescriptionSID>THORN_WHIP_USAGE_SID</UsageDescriptionSID>
+				<Value>60</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>4</Material>
+				<Skill>1008</Skill>
+				<Difficulty>46</Difficulty>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>4</NumSides>
+					<Type>1</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="_branch">
