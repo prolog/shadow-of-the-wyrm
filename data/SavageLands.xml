@@ -1592,6 +1592,11 @@
 				</MagicSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>yew_staff</ID></RightHand>
+				<Body><ID>robes</ID></Body>
+				<Feet><ID>shoes</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="seafarer">
 			<UserPlayable>1</UserPlayable>
@@ -1648,6 +1653,13 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<Head><ID>cap</ID></Head>
+				<RightHand><ID>long_spear</ID></RightHand>
+				<Body><ID>wayfarer_clothes</ID></Body>
+				<AboutBody><ID>cloak</ID></AboutBody>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="shepherd">
 			<UserPlayable>1</UserPlayable>
@@ -1703,6 +1715,13 @@
 			<PietyCostMultiplier>0.40</PietyCostMultiplier>
 			<PietyRegenBonus>5</PietyRegenBonus>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<Head><ID>cap</ID></Head>
+				<RightHand><ID>shepherd_crook</ID></RightHand>
+				<Body><ID>wayfarer_clothes</ID></Body>
+				<AboutBody><ID>cloak</ID></AboutBody>
+				<Feet><ID>shoes</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="smith">
 			<UserPlayable>1</UserPlayable>
@@ -1758,6 +1777,12 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>iron_hammer</ID></RightHand>
+				<LeftHand><ID>buckler</ID></LeftHand>
+				<Body><ID>chain_mail</ID></Body>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="thief">
 			<UserPlayable>1</UserPlayable>
@@ -1819,6 +1844,12 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>0.92</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<Head><ID>cap</ID></Head>
+				<RightHand><ID>dagger</ID></RightHand>
+				<Body><ID>leather_armour</ID></Body>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="warrior">
 			<UserPlayable>1</UserPlayable>
@@ -2351,7 +2382,17 @@
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
 				<Evade>1</Evade>
-				<Soak>2</Soak>
+				<Soak>3</Soak>
+			</Armour>
+			<Armour id="chain_mail">
+				<DescriptionSID>CHAIN_MAIL_SID</DescriptionSID>
+				<UsageDescriptionSID>CHAIN_MAIL_USAGE_SID</UsageDescriptionSID>
+				<Value>250</Value>
+				<Weight><Pounds>40</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>3</Material>
+				<Evade>0</Evade>
+				<Soak>4</Soak>
 			</Armour>
 			<Armour id="robes">
 				<DescriptionSID>ROBES_SID</DescriptionSID>
@@ -2382,6 +2423,36 @@
 				<Material>0</Material>
 				<Evade>0</Evade>
 				<Soak>1</Soak>
+			</Armour>
+			<Armour id="leather_armour">
+				<DescriptionSID>LEATHER_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>LEATHER_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>75</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>4</Material>
+				<Evade>0</Evade>
+				<Soak>2</Soak>
+			</Armour>
+			<Armour id="buckler">
+				<DescriptionSID>BUCKLER_SID</DescriptionSID>
+				<UsageDescriptionSID>BUCKLER_USAGE_SID</UsageDescriptionSID>
+				<Value>50</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Material>3</Material>
+				<Evade>2</Evade>
+				<Soak>1</Soak>
+			</Armour>
+			<Armour id="iron_shield">
+				<DescriptionSID>IRON_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>IRON_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>75</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Material>3</Material>
+				<Evade>0</Evade>
+				<Soak>2</Soak>
 			</Armour>
 			<Armour id="cloak">
 				<DescriptionSID>CLOAK_SID</DescriptionSID>
@@ -2415,6 +2486,21 @@
 			</Armour>
 		</Armours>
 		<Weapons>
+			<Weapon id="iron_hammer">
+				<DescriptionSID>IRON_HAMMER_SID</DescriptionSID>
+				<UsageDescriptionSID>IRON_HAMMER_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight><Pounds>12</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1003</Skill>
+				<Difficulty>45</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>10</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="dagger">
 				<DescriptionSID>DAGGER_SID</DescriptionSID>
 				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
@@ -2479,15 +2565,29 @@
 				<DescriptionSID>SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>SPEAR_USAGE_SID</UsageDescriptionSID>
 				<Value>50</Value>
+				<Weight><Pounds>7</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1006</Skill>
+				<Difficulty>45</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="long_spear">
+				<DescriptionSID>LONG_SPEAR_SID</DescriptionSID>
+				<UsageDescriptionSID>LONG_SPEAR_USAGE_SID</UsageDescriptionSID>
+				<Value>75</Value>
 				<Weight><Pounds>12</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1006</Skill>
-				<Difficulty>46</Difficulty>
+				<Difficulty>47</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>2</Modifier>
+					<NumSides>10</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
@@ -2549,6 +2649,36 @@
 					<NumDice>2</NumDice>
 					<NumSides>4</NumSides>
 					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="shepherd_crook">
+				<DescriptionSID>SHEPHERD_CROOK_SID</DescriptionSID>
+				<UsageDescriptionSID>SHEPHERD_CROOK_USAGE_SID</UsageDescriptionSID>
+				<Value>5</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<Skill>1005</Skill>
+				<Difficulty>46</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>3</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="yew_staff">
+				<DescriptionSID>YEW_STAFF_SID</DescriptionSID>
+				<UsageDescriptionSID>YEW_STAFF_USAGE_SID</UsageDescriptionSID>
+				<Value>4</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<Skill>1005</Skill>
+				<Difficulty>45</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Type>2</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="_branch">

@@ -9,11 +9,11 @@ xxx Oracle: robes, cypress rod, shoes
 xxx Pilgrim: cap, wayfarer's clothes, leather boots, mace
 xxx Pugilist: cap, clothes, shoes
 Rover: leather armour, cloak, leather boots, axe
-Sage: robes, shoes, yew staff
-Seafarer: long spear, wayfarer's clothes, cap, leather boots, harpoon
-Shepherd: shepherd's crook, clothes, cloak, shoes
-Smith: chain mail, iron hammer, buckler, leather boots
-Thief: leather armour, dagger, leather boots, cap
+xxx Sage: robes, shoes, yew staff
+xxx Seafarer: long spear, wayfarer's clothes, cap, leather boots
+xxx Shepherd: shepherd's crook, wayfarer clothes, cloak, shoes
+xxx Smith: chain mail, iron hammer, buckler, leather boots
+xxx Thief: leather armour, dagger, leather boots, cap
 Warrior: weapon by race, chain mail, medium shield, iron helm, iron boots
 xxx Witchling: robes, shoes, leather whip
 xxx Wizard: robes, shoes, dagger
