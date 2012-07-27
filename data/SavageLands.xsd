@@ -540,7 +540,7 @@
 		<xs:element name="Races" minOccurs="0">
 			<xs:complexType>
 				<xs:sequence>
-					<xs:element name="Race" minOccurs="0">
+					<xs:element name="Race" minOccurs="0" maxOccurs="unbounded">
 						<xs:complexType>
 							<xs:sequence>
 								<xs:element name="RaceID" type="xs:string"/>
