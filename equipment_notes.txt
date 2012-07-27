@@ -1,19 +1,19 @@
 xxx Adventurer: cap, chain scraps, short sword/broad sword/mace/dagger/spear, leather boots
 xxx Apothecary: robes, club, shoes
-Archer: leather helm, leather armour, ranged weapon by race, cloak, leather boots.
+needs ranged by race xxx Archer: leather helm, leather armour, ranged weapon by race, cloak, leather boots.
 xxx Artisan: dagger, clothes, leather boots
 xxx Merchant: cap, leather whip, wayfarer's clothes, cloak, leather boots
-Minstrel: clothes, flute, leather boots, dagger
-Noble: rapier, crossbow, leather armour, leather boots, buckler
+xxx Minstrel: clothes, flute, leather boots, dagger
+needs cr xxx Noble: rapier, crossbow, leather armour, leather boots
 xxx Oracle: robes, cypress rod, shoes
 xxx Pilgrim: cap, wayfarer's clothes, leather boots, mace
 xxx Pugilist: cap, clothes, shoes
-Rover: leather armour, cloak, leather boots, axe
+xxx Rover: leather armour, cloak, leather boots, axe
 xxx Sage: robes, shoes, yew staff
 xxx Seafarer: long spear, wayfarer's clothes, cap, leather boots
 xxx Shepherd: shepherd's crook, wayfarer clothes, cloak, shoes
 xxx Smith: chain mail, iron hammer, buckler, leather boots
 xxx Thief: leather armour, dagger, leather boots, cap
-Warrior: weapon by race, chain mail, medium shield, iron helm, iron boots
+Warrior: weapon by race, chain mail, iron shield, iron helm, iron boots
 xxx Witchling: robes, shoes, leather whip
 xxx Wizard: robes, shoes, dagger

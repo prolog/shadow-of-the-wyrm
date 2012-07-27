@@ -1215,6 +1215,11 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>dagger</ID></RightHand>
+				<Body><ID>clothes</ID></Body>
+				<Feet><ID>shoes</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="noble">
 			<UserPlayable>1</UserPlayable>
@@ -1275,6 +1280,11 @@
 				</RangedWeaponSkills>				
 			</Skills>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>rapier</ID></RightHand>
+				<Body><ID>leather_armour</ID></Body>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="oracle">
 			<UserPlayable>1</UserPlayable>
@@ -1533,6 +1543,12 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<RightHand><ID>woodsman_axe</ID></RightHand>
+				<Body><ID>leather_armour</ID></Body>
+				<AboutBody><ID>cloak</ID></AboutBody>
+				<Feet><ID>leather_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="sage">
 			<UserPlayable>1</UserPlayable>
@@ -1915,6 +1931,57 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>0.95</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<Head><ID>iron_helm</ID></Head>
+				<RightHand>
+					<ID>short_sword</ID>
+					<Races>
+						<Race>
+							<RaceID>01_human</RaceID>
+							<ID>broad_sword</ID>
+						</Race>
+						<Race>
+							<RaceID>02_woodelf</RaceID>
+							<ID>short_sword</ID>
+						</Race>
+						<Race>
+							<RaceID>03_mountainelf</RaceID>
+							<ID>stone_hammer</ID>
+						</Race>
+						<Race>
+							<RaceID>04_marshelf</RaceID>
+							<ID>long_spear</ID>
+						</Race>
+						<Race>
+							<RaceID>05_pixie</RaceID>
+							<ID>dagger</ID>
+						</Race>
+						<Race>
+							<RaceID>06_dwarf</RaceID>
+							<ID>battle_axe</ID>
+						</Race>
+						<Race>
+							<RaceID>07_goblin</RaceID>
+							<ID>short_sword</ID>
+						</Race>
+						<Race>
+							<RaceID>08_gnoll</RaceID>
+							<ID>battle_axe</ID>
+						</Race>
+						<Race>
+							<RaceID>09_giant</RaceID>
+							<ID>iron_hammer</ID>
+						</Race>
+						<Race>
+							<RaceID>10_ratling</RaceID>
+							<ID>dagger</ID>
+						</Race>
+					</Races>
+				</RightHand>
+				<LeftHand><ID>iron_shield</ID></LeftHand>
+				<Body><ID>chain_mail</ID></Body>
+				<Feet><ID>iron_boots</ID></Feet>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="witchling">
 			<UserPlayable>1</UserPlayable>
@@ -2374,6 +2441,26 @@
 				<Evade>1</Evade>
 				<Soak>0</Soak>
 			</Armour>
+			<Armour id="leather_helm">
+				<DescriptionSID>LEATHER_HELM_SID</DescriptionSID>
+				<UsageDescriptionSID>LEATHER_HELM_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>4</Material>
+				<Evade>1</Evade>
+				<Soak>1</Soak>
+			</Armour>
+			<Armour id="iron_helm">
+				<DescriptionSID>IRON_HELM_SID</DescriptionSID>
+				<UsageDescriptionSID>IRON_HELM_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>3</Material>
+				<Evade>0</Evade>
+				<Soak>2</Soak>
+			</Armour>
 			<Armour id="chain_scraps">
 				<DescriptionSID>CHAIN_SCRAPS_SID</DescriptionSID>
 				<UsageDescriptionSID>CHAIN_SCRAPS_USAGE_SID</UsageDescriptionSID>
@@ -2474,6 +2561,16 @@
 				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
+			<Armour id="iron_boots">
+				<DescriptionSID>IRON_BOOTS_SID</DescriptionSID>
+				<UsageDescriptionSID>IRON_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<Value>60</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>3</Material>
+				<Evade>0</Evade>
+				<Soak>1</Soak>
+			</Armour>
 			<Armour id="shoes">
 				<DescriptionSID>SHOES_SID</DescriptionSID>
 				<UsageDescriptionSID>SHOES_USAGE_SID</UsageDescriptionSID>
@@ -2531,6 +2628,21 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="rapier">
+				<DescriptionSID>RAPIER_SID</DescriptionSID>
+				<UsageDescriptionSID>RAPIER_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1001</Skill>
+				<Difficulty>40</Difficulty>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>3</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="broad_sword">
 				<DescriptionSID>BROAD_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>BROAD_SWORD_USAGE_SID</UsageDescriptionSID>
@@ -2559,6 +2671,51 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="stone_hammer">
+				<DescriptionSID>STONE_HAMMER_SID</DescriptionSID>
+				<UsageDescriptionSID>STONE_HAMMER_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>7</Material>
+				<Skill>1003</Skill>
+				<Difficulty>45</Difficulty>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>3</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="woodsman_axe">
+				<DescriptionSID>WOODSMAN_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>WOODSMAN_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>60</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1000</Skill>
+				<Difficulty>44</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="battle_axe">
+				<DescriptionSID>BATTLE_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>BATTLE_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>80</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1000</Skill>
+				<Difficulty>46</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
+					<Type>1</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="spear">

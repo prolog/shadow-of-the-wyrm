@@ -1459,8 +1459,8 @@
 	<File name="world\include\Scroll.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="107" topLine="0" />
 	</File>
-	<File name="world\include\SkillTypes.hpp" open="1" top="1" tabpos="2">
-		<Cursor position="1688" topLine="57" />
+	<File name="world\include\SkillTypes.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="2180" topLine="57" />
 	</File>
 	<File name="world\include\Skills.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="4604" topLine="264" />
