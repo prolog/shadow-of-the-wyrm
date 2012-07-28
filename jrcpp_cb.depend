@@ -470,7 +470,7 @@
 	"CombatConstants.hpp"
 	"WeaponManager.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandfactory.cpp
+1343480342 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandfactory.cpp
 	<boost/make_shared.hpp>
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandKeys.hpp"
