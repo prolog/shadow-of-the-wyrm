@@ -203,6 +203,8 @@ class EquipmentTextKeys
     static const std::string EQUIPMENT_BODY;
     static const std::string EQUIPMENT_ABOUT_BODY;
     static const std::string EQUIPMENT_FEET;
+    static const std::string EQUIPMENT_RANGED;
+    static const std::string EQUIPMENT_AMMUNITION;
     
     static std::string get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location);
     

@@ -7,6 +7,10 @@ EquipmentCommand::EquipmentCommand(const std::string& equipment_command_name)
 {
 }
 
+EquipmentCommand::~EquipmentCommand()
+{
+}
+
 bool EquipmentCommand::is_wear_or_remove_command() const
 {
   return false;
@@ -120,6 +124,28 @@ WearOrRemoveFeetCommand::WearOrRemoveFeetCommand()
 EquipmentWornLocation WearOrRemoveFeetCommand::get_equipment_worn_location() const
 {
   return EQUIPMENT_WORN_FEET;
+}
+
+// Ranged slot
+WearOrRemoveRangedCommand::WearOrRemoveRangedCommand()
+: WearOrRemoveCommand(EquipmentCommandKeys::WEAR_OR_REMOVE_RANGED)
+{
+}
+
+EquipmentWornLocation WearOrRemoveRangedCommand::get_equipment_worn_location() const
+{
+  return EQUIPMENT_WORN_RANGED_WEAPON;
+}
+
+// Ammunition slot
+WearOrRemoveAmmunitionCommand::WearOrRemoveAmmunitionCommand()
+: WearOrRemoveCommand(EquipmentCommandKeys::WEAR_OR_REMOVE_AMMUNITION)
+{
+}
+
+EquipmentWornLocation WearOrRemoveAmmunitionCommand::get_equipment_worn_location() const
+{
+  return EQUIPMENT_WORN_AMMUNITION;
 }
 
 // View inventory

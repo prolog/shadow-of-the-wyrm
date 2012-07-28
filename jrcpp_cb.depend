@@ -46,7 +46,7 @@
 1339159082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
 	"NCursesConstants.hpp"
 
-1341066941 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1343478691 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -476,7 +476,7 @@
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommands.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
+1343479740 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
 1342721711 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
@@ -485,11 +485,11 @@
 	"EquipmentCommands.hpp"
 	"Game.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommands.cpp
+1343479674 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommands.cpp
 	"EquipmentCommands.hpp"
 	"EquipmentCommandKeys.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentkeyboardcommandmap.cpp
+1343480054 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentkeyboardcommandmap.cpp
 	"Conversion.hpp"
 	"EquipmentCommandKeys.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
@@ -1306,7 +1306,7 @@
 	"RNG.hpp"
 	"SkillManager.hpp"
 
-1342555489 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1343479228 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2158,7 +2158,7 @@
 	"Swimming.hpp"
 	"SwimmingCalculator.hpp"
 
-1343086282 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
+1343088346 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
 	"CreatureSkillIncrementer.hpp"
 	"MessageManager.hpp"
 

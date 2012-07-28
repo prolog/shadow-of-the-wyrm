@@ -59,6 +59,14 @@ void EquipmentKeyboardCommandMap::initialize_command_mapping()
   // Feet
   command_mapping.insert(make_pair(Integer::to_string('i'), EquipmentCommandKeys::WEAR_OR_REMOVE_FEET));
   command_mapping.insert(make_pair(Integer::to_string('I'), EquipmentCommandKeys::WEAR_OR_REMOVE_FEET));
+  
+  // Ranged
+  command_mapping.insert(make_pair(Integer::to_string('j'), EquipmentCommandKeys::WEAR_OR_REMOVE_RANGED));
+  command_mapping.insert(make_pair(Integer::to_string('J'), EquipmentCommandKeys::WEAR_OR_REMOVE_RANGED));
+  
+  // Ammunition
+  command_mapping.insert(make_pair(Integer::to_string('k'), EquipmentCommandKeys::WEAR_OR_REMOVE_AMMUNITION));
+  command_mapping.insert(make_pair(Integer::to_string('K'), EquipmentCommandKeys::WEAR_OR_REMOVE_AMMUNITION));
 
   // View inventory
   command_mapping.insert(make_pair(Integer::to_string('y'), EquipmentCommandKeys::YOUR_ITEMS));
