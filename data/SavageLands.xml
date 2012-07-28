@@ -1284,6 +1284,8 @@
 				<RightHand><ID>rapier</ID></RightHand>
 				<Body><ID>leather_armour</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
+				<Ranged><ID>crossbow</ID></Ranged>
+				<Ammunition><ID>bolt</ID></Ammunition>
 			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="oracle">
@@ -1942,7 +1944,7 @@
 						</Race>
 						<Race>
 							<RaceID>02_woodelf</RaceID>
-							<ID>short_sword</ID>
+							<ID>elven_short_sword</ID>
 						</Race>
 						<Race>
 							<RaceID>03_mountainelf</RaceID>
@@ -1978,8 +1980,60 @@
 						</Race>
 					</Races>
 				</RightHand>
-				<LeftHand><ID>iron_shield</ID></LeftHand>
-				<Body><ID>chain_mail</ID></Body>
+				<LeftHand>
+					<ID>iron_shield</ID>
+					<Races>
+						<Race>
+							<RaceID>02_woodelf</RaceID>
+							<ID>buckler</ID>
+						</Race>
+						<Race>
+							<RaceID>04_marshelf</RaceID>
+							<ID>buckler</ID>
+						</Race>
+						<Race>
+							<RaceID>05_pixie</RaceID>
+							<ID>buckler</ID>
+						</Race>
+						<Race>
+							<RaceID>07_goblin</RaceID>
+							<ID>buckler</ID>
+						</Race>
+						<Race>
+							<RaceID>10_ratling</RaceID>
+							<ID>buckler</ID>
+						</Race>
+					</Races>
+				</LeftHand>
+				<Body>
+					<ID>chain_mail</ID>
+					<Races>
+						<Race>
+							<RaceID>02_woodelf</RaceID>
+							<ID>leather_armour</ID>
+						</Race>
+						<Race>
+							<RaceID>04_marshelf</RaceID>
+							<ID>leather_armour</ID>
+						</Race>
+						<Race>
+							<RaceID>05_pixie</RaceID>
+							<ID>leather_armour</ID>
+						</Race>
+						<Race>
+							<RaceID>07_goblin</RaceID>
+							<ID>chain_scraps</ID>
+						</Race>
+						<Race>
+							<RaceID>08_gnoll</RaceID>
+							<ID>chain_scraps</ID>
+						</Race>
+						<Race>
+							<RaceID>10_ratling</RaceID>
+							<ID>leather_armour</ID>
+						</Race>
+					</Races>
+				</Body>
 				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
 		</Class>
@@ -2481,6 +2535,16 @@
 				<Evade>0</Evade>
 				<Soak>4</Soak>
 			</Armour>
+			<Armour id="elven_chain">
+				<DescriptionSID>ELVEN_CHAIN_SID</DescriptionSID>
+				<UsageDescriptionSID>ELVEN_CHAIN_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>3</Material>
+				<Evade>4</Evade>
+				<Soak>5</Soak>
+			</Armour>
 			<Armour id="robes">
 				<DescriptionSID>ROBES_SID</DescriptionSID>
 				<UsageDescriptionSID>ROBES_USAGE_SID</UsageDescriptionSID>
@@ -2621,10 +2685,26 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1001</Skill>
-				<Difficulty>43</Difficulty>
+				<Difficulty>44</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="elven_short_sword">
+				<DescriptionSID>ELVEN_SHORT_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>ELVEN_SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>200</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<Skill>1001</Skill>
+				<Difficulty>40</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>1</Modifier>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
@@ -2651,7 +2731,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1002</Skill>
-				<Difficulty>45</Difficulty>
+				<Difficulty>46</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>8</NumSides>
@@ -2867,6 +2947,21 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>2</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="crossbow">
+				<DescriptionSID>CROSSBOW_SID</DescriptionSID>
+				<UsageDescriptionSID>CROSSBOW_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>9</WornLocation>
+				<Material>8</Material>
+				<Skill>2004</Skill>
+				<Difficulty>43</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
@@ -2889,6 +2984,20 @@
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Missile>
+			<Missile id="bolt">
+				<DescriptionSID>BOLT_SID</DescriptionSID>
+				<UsageDescriptionSID>BOLT_USAGE_SID</UsageDescriptionSID>
+				<Value>8</Value>
+				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
+				<Material>3</Material>
+				<Skill>2004</Skill>
+				<Difficulty>43</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>2</NumSides>
+					<Type>1</Type>
 				</Damage>
 			</Missile>
 		</Ammunition>

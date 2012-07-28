@@ -463,6 +463,8 @@
 			<xs:element name="Body" type="tns:InitialItem" minOccurs="0"/>
 			<xs:element name="AboutBody" type="tns:InitialItem" minOccurs="0"/>
 			<xs:element name="Feet" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="Ranged" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="Ammunition" type="tns:InitialItem" minOccurs="0"/>
 			<xs:element ref="tns:InitialInventory" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
