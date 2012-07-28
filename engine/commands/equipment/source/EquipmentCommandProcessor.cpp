@@ -41,7 +41,7 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
       }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
       {
-        game->actions.inventory(creature, creature->get_inventory(), true);
+        game->actions.inventory(creature, creature->get_inventory(), EQUIPMENT_WORN_NONE, true);
         // Because the player is just looking at the items, this shouldn't
         // advance any turn information.
         process_result = 0;

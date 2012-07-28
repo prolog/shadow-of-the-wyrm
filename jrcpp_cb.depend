@@ -215,7 +215,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1342719714 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1343498267 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -253,7 +253,7 @@
 	"EquipmentManager.hpp"
 	"EquipmentTranslator.hpp"
 
-1339798154 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
+1343498122 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
 	<boost/foreach.hpp>
 	"InventoryCommandFactory.hpp"
 	"InventoryCommandProcessor.hpp"
@@ -479,7 +479,7 @@
 1343479740 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
-1342721711 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
+1343498304 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentCommands.hpp"
@@ -1385,7 +1385,7 @@
 	"EquipmentTranslator.hpp"
 	"ItemTranslator.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
+1343499557 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
 	<boost/foreach.hpp>
 	"DisplayItemTypeFactory.hpp"
 	"InventoryTranslator.hpp"
@@ -1505,7 +1505,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\alignment.cpp
 	"Alignment.hpp"
 
-1343484057 source:c:\cygwin\home\julian\jrcpp\world\source\ammunition.cpp
+1343484356 source:c:\cygwin\home\julian\jrcpp\world\source\ammunition.cpp
 	"Ammunition.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\amulet.cpp

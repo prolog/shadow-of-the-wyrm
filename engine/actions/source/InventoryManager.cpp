@@ -19,7 +19,7 @@ InventoryManager::~InventoryManager()
 
 // If the inventory is read-only, the items can be viewed, but not selected.  This is for use in the "y" - View your inventory
 // mode.  If the inventory is not read-only, items can be selected.
-ItemPtr InventoryManager::manage_inventory(Inventory& inv, const bool inventory_is_read_only)
+ItemPtr InventoryManager::manage_inventory(Inventory& inv, const EquipmentWornLocation ewl, const bool inventory_is_read_only)
 {
   ItemPtr selected_item;
   bool manage_inv = true;
@@ -35,7 +35,7 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const bool inventory_
       
       if (display && creature->get_is_player())
       {
-        display_inventory = InventoryTranslator::create_display_inventory(inv);
+        display_inventory = InventoryTranslator::create_display_inventory(inv, ewl);
         current_page_size = display->display_inventory(display_inventory);
       }
 
