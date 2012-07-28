@@ -215,7 +215,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1343498267 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1343504185 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -231,6 +231,7 @@
 	"PrayerManager.hpp"
 	"SearchActionManager.hpp"
 	"VersionActionManager.hpp"
+	"WeaponInfoManager.hpp"
 	"Log.hpp"
 
 1339799599 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\characterdumpmanager.cpp
@@ -526,28 +527,28 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1340540723 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1343504863 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1340540617 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1343504612 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1340541318 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1343505150 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Commands.hpp"
 	"Game.hpp"
 
-1340540648 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1343504815 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"StringConstants.hpp"
 
-1340540696 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1343504522 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -1385,7 +1386,7 @@
 	"EquipmentTranslator.hpp"
 	"ItemTranslator.hpp"
 
-1343499557 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
+1343499716 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
 	<boost/foreach.hpp>
 	"DisplayItemTypeFactory.hpp"
 	"InventoryTranslator.hpp"
@@ -2184,4 +2185,7 @@
 	"InitialItemEquipper.hpp"
 	"InitialItemSelector.hpp"
 	"ItemManager.hpp"
+
+1343504397 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+	"WeaponInfoManager.hpp"
 

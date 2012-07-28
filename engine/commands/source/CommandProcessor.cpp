@@ -97,6 +97,14 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.pray(creature);
       }
+      else if (command_name == CommandKeys::MELEE_WEAPON_INFO)
+      {
+        ac = game->actions.weapon_info(creature, WEAPON_STYLE_MELEE);
+      }
+      else if (command_name == CommandKeys::RANGED_WEAPON_INFO)
+      {
+        ac = game->actions.weapon_info(creature, WEAPON_STYLE_RANGED);
+      }
     }
   }
   

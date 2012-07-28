@@ -108,3 +108,17 @@ class InventoryCommand : public Command
     InventoryCommand();
     ~InventoryCommand();
 };
+
+class MeleeWeaponInfoCommand : public Command
+{
+  public:
+    MeleeWeaponInfoCommand();
+    ~MeleeWeaponInfoCommand();
+};
+
+class RangedWeaponInfoCommand : public Command
+{
+  public:
+    RangedWeaponInfoCommand();
+    ~RangedWeaponInfoCommand();
+};

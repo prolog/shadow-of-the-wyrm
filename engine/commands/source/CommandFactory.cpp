@@ -92,6 +92,14 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = CommandPtr(new PrayCommand());
   }
+  else if (command_name == CommandKeys::MELEE_WEAPON_INFO)
+  {
+    command = CommandPtr(new MeleeWeaponInfoCommand());
+  }
+  else if (command_name == CommandKeys::RANGED_WEAPON_INFO)
+  {
+    command = CommandPtr(new RangedWeaponInfoCommand());
+  }
 
   return command;
 }
