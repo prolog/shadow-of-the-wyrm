@@ -30,6 +30,8 @@ const string CommandKeys::DROP_ITEM      = "DROP_ITEM";
 const string CommandKeys::CHAR_DUMP      = "CHAR_DUMP";
 const string CommandKeys::INVENTORY      = "INVENTORY";
 const string CommandKeys::PRAY           = "PRAY";
+const string CommandKeys::MELEE_WEAPON_INFO = "MELEE_WEAPON_INFO";
+const string CommandKeys::RANGED_WEAPON_INFO = "RANGED_WEAPON_INFO";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

@@ -4,6 +4,7 @@
 #include "Directions.hpp"
 #include "ItemManager.hpp"
 #include "MovementManager.hpp"
+#include "WeaponTypes.hpp"
 
 enum ItemAction
 {
@@ -38,6 +39,7 @@ class ActionManager
     
     // Miscellaneous actions
     ActionCost pray(CreaturePtr creature);
+    ActionCost weapon_info(CreaturePtr creature, const WeaponStyle weapon_style);
     
     // Unlike pick up/drop, handle item has no checks.
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);

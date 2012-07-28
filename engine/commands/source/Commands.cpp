@@ -160,3 +160,21 @@ InventoryCommand::~InventoryCommand()
 {
 }
 
+// Melee and ranged weapon info commands
+MeleeWeaponInfoCommand::MeleeWeaponInfoCommand()
+: Command(CommandKeys::MELEE_WEAPON_INFO)
+{
+}
+
+MeleeWeaponInfoCommand::~MeleeWeaponInfoCommand()
+{
+}
+
+RangedWeaponInfoCommand::RangedWeaponInfoCommand()
+: Command(CommandKeys::RANGED_WEAPON_INFO)
+{
+}
+
+RangedWeaponInfoCommand::~RangedWeaponInfoCommand()
+{
+}

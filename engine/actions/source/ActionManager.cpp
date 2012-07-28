@@ -13,6 +13,7 @@
 #include "PrayerManager.hpp"
 #include "SearchActionManager.hpp"
 #include "VersionActionManager.hpp"
+#include "WeaponInfoManager.hpp"
 #include "Log.hpp"
 
 using namespace std;
@@ -376,6 +377,30 @@ ActionCost ActionManager::pray(CreaturePtr creature)
     action_cost_value = prayer_manager.pray(creature);
   }
 
+  return get_action_cost(creature, action_cost_value);
+}
+
+ActionCost ActionManager::weapon_info(CreaturePtr creature, const WeaponStyle weapon_style)
+{
+  ActionCostValue action_cost_value = 0;
+  
+  if (creature)
+  {
+    WeaponInfoManager weapon_info_manager;
+    
+    switch(weapon_style)
+    {
+      case WEAPON_STYLE_MELEE:
+        action_cost_value = weapon_info_manager.melee_weapon_info(creature);
+        break;
+      case WEAPON_STYLE_RANGED:
+        action_cost_value = weapon_info_manager.ranged_weapon_info(creature);
+        break;
+      default:
+        break;
+    }    
+  }
+  
   return get_action_cost(creature, action_cost_value);
 }
 
