@@ -11,7 +11,7 @@ class InventoryManager : public IActionManager
     ~InventoryManager();
 
     // Do the actual managing of the inventory
-    ItemPtr manage_inventory(Inventory& inv, const bool inventory_is_read_only);
+    ItemPtr manage_inventory(Inventory& inv, const EquipmentWornLocation ewl, const bool inventory_is_read_only);
 
     // Select an item from the current 'page'.
     ItemPtr select_item(Inventory& inv, const DisplayInventoryMap& inventory_display, const uint item_index);

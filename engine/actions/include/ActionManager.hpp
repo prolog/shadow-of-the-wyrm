@@ -34,7 +34,7 @@ class ActionManager
 
     // Display the inventory.  Potentially, select an item.  ItemPtr is null if no item
     // was selected.
-    ItemPtr inventory(CreaturePtr creature, Inventory& inv, const bool inventory_is_read_only);
+    ItemPtr inventory(CreaturePtr creature, Inventory& inv, const EquipmentWornLocation ewl, const bool inventory_is_read_only);
     
     // Miscellaneous actions
     ActionCost pray(CreaturePtr creature);
