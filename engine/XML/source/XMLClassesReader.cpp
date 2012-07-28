@@ -197,6 +197,16 @@ void XMLClassesReader::parse_initial_equipment(ClassPtr current_class, const XML
     InitialItem feet_item = initial_item_reader.get_initial_item(feet_node);
     initial_equipment.insert(make_pair(EQUIPMENT_WORN_FEET, feet_item));
     
+    // Ranged
+    XMLNode ranged_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Ranged");
+    InitialItem ranged_item = initial_item_reader.get_initial_item(ranged_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_RANGED_WEAPON, ranged_item));
+    
+    // Ammunition
+    XMLNode ammunition_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Ammunition");
+    InitialItem ammunition = initial_item_reader.get_initial_item(ammunition_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_AMMUNITION, ammunition));
+    
     current_class->set_initial_equipment(initial_equipment);
   }
 }

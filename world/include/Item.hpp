@@ -11,7 +11,7 @@ class Item
 {
   public:
     Item();
-    ~Item();
+    virtual ~Item();
     
     virtual void set_id(const std::string& new_id);
     virtual std::string get_id() const;

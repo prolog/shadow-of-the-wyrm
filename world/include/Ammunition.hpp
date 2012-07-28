@@ -7,6 +7,8 @@ class Ammunition : public Wearable
     Ammunition();
     ~Ammunition();
     
+    virtual EquipmentWornLocation get_worn_location() const;
+    
     Item* clone();
 };
 

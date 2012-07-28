@@ -10,6 +10,11 @@ Ammunition::~Ammunition()
 {
 }
 
+EquipmentWornLocation Ammunition::get_worn_location() const
+{
+  return EQUIPMENT_WORN_AMMUNITION;
+}
+
 Item* Ammunition::clone()
 {
   return new Ammunition(*this);
