@@ -7,6 +7,7 @@ class EquipmentCommand : public Command
 {
   public:
     EquipmentCommand(const std::string& command_name);
+    virtual ~EquipmentCommand();
     
     virtual bool is_wear_or_remove_command() const;
 };
@@ -92,6 +93,22 @@ class WearOrRemoveFeetCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveFeetCommand();
 
+    virtual EquipmentWornLocation get_equipment_worn_location() const;
+};
+
+class WearOrRemoveRangedCommand : public WearOrRemoveCommand
+{
+  public:
+    WearOrRemoveRangedCommand();
+    
+    virtual EquipmentWornLocation get_equipment_worn_location() const;
+};
+
+class WearOrRemoveAmmunitionCommand : public WearOrRemoveCommand
+{
+  public:
+    WearOrRemoveAmmunitionCommand();
+    
     virtual EquipmentWornLocation get_equipment_worn_location() const;
 };
 

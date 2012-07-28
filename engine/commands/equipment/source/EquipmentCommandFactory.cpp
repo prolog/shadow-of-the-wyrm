@@ -53,6 +53,14 @@ CommandPtr EquipmentCommandFactory::create(const int key, const std::string& com
   {
     command = make_shared<WearOrRemoveFeetCommand>();
   }
+  else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_RANGED)
+  {
+    command = make_shared<WearOrRemoveRangedCommand>();
+  }
+  else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_AMMUNITION)
+  {
+    command = make_shared<WearOrRemoveAmmunitionCommand>();
+  }
   else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
   {
     command = make_shared<YourItemsCommand>();

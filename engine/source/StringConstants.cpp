@@ -250,6 +250,8 @@ const string EquipmentTextKeys::EQUIPMENT_LEFT_HAND    = "EQUIPMENT_LEFT_HAND";
 const string EquipmentTextKeys::EQUIPMENT_BODY         = "EQUIPMENT_BODY";
 const string EquipmentTextKeys::EQUIPMENT_ABOUT_BODY   = "EQUIPMENT_ABOUT_BODY";
 const string EquipmentTextKeys::EQUIPMENT_FEET         = "EQUIPMENT_FEET";
+const string EquipmentTextKeys::EQUIPMENT_RANGED       = "EQUIPMENT_RANGED";
+const string EquipmentTextKeys::EQUIPMENT_AMMUNITION   = "EQUIPMENT_AMMUNITION";
 
 string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location)
 {
@@ -284,6 +286,12 @@ string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const Equi
       break;
     case EQUIPMENT_WORN_FEET:
       equipment_text_sid = EQUIPMENT_FEET;
+      break;
+    case EQUIPMENT_WORN_RANGED_WEAPON:
+      equipment_text_sid = EQUIPMENT_RANGED;
+      break;
+    case EQUIPMENT_WORN_AMMUNITION:
+      equipment_text_sid = EQUIPMENT_AMMUNITION;
       break;
     case EQUIPMENT_WORN_NONE:
     case EQUIPMENT_WORN_LAST:
@@ -880,6 +888,12 @@ string TextMessages::get_equipment_location(const EquipmentWornLocation location
       break;
     case EQUIPMENT_WORN_FEET:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_FEET);
+      break;
+    case EQUIPMENT_WORN_RANGED_WEAPON:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_RANGED);
+      break;
+    case EQUIPMENT_WORN_AMMUNITION:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_AMMUNITION);
       break;
     case EQUIPMENT_WORN_NONE:
     case EQUIPMENT_WORN_LAST:

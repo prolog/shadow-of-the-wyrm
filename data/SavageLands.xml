@@ -1932,7 +1932,7 @@
 			</Skills>
 			<ExperienceMultiplier>0.95</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<Head><ID>iron_helm</ID></Head>
+				<Head><ID>leather_helm</ID></Head>
 				<RightHand>
 					<ID>short_sword</ID>
 					<Races>
@@ -1980,7 +1980,7 @@
 				</RightHand>
 				<LeftHand><ID>iron_shield</ID></LeftHand>
 				<Body><ID>chain_mail</ID></Body>
-				<Feet><ID>iron_boots</ID></Feet>
+				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="witchling">

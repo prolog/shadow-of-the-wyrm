@@ -12,7 +12,9 @@ enum EquipmentWornLocation
   EQUIPMENT_WORN_BODY = 6,
   EQUIPMENT_WORN_ABOUT_BODY = 7,
   EQUIPMENT_WORN_FEET = 8,
-  EQUIPMENT_WORN_LAST = 9
+  EQUIPMENT_WORN_RANGED_WEAPON = 9,
+  EQUIPMENT_WORN_AMMUNITION = 10,
+  EQUIPMENT_WORN_LAST = 11
 };
 
 inline EquipmentWornLocation operator--(EquipmentWornLocation &ewl, int)

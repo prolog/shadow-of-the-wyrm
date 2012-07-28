@@ -614,6 +614,9 @@ void NCursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
 
   char slot_char = 'A';
   
+  // Ensure that the first row of the equipment is right below the "---"
+  current_row--;
+  
   // Display each individual slot
   for (DisplayEquipmentMap::const_iterator e_it = equipment.begin(); e_it != equipment.end(); e_it++)
   {
