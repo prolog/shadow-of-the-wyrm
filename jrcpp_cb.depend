@@ -145,7 +145,7 @@
 	"MaterialFactory.hpp"
 	"XMLItemReader.hpp"
 
-1340888448 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+1343575295 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"MaterialFactory.hpp"
@@ -201,7 +201,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwandreader.cpp
 	"XMLWandReader.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
+1343575218 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
 	"XMLWeaponsReaders.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwearablereader.cpp
@@ -319,11 +319,12 @@
 	"EvadeCalculator.hpp"
 	"SoakCalculator.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\damagecalculatorfactory.cpp
+1343573958 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\damagecalculatorfactory.cpp
 	<boost/make_shared.hpp>
 	"DamageCalculatorFactory.hpp"
 	"MagicalDamageCalculator.hpp"
 	"PhysicalDamageCalculator.hpp"
+	"RangedPhysicalDamageCalculator.hpp"
 
 1342716256 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\evadecalculator.cpp
 	<boost/foreach.hpp>
@@ -368,16 +369,17 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicalcombattargetnumbercalculator.cpp
 	"MagicalCombatTargetNumberCalculator.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicaldamagecalculator.cpp
+1343574013 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicaldamagecalculator.cpp
 	"MagicalDamageCalculator.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\meleeandrangedcombattargetnumbercalculator.cpp
 	"MeleeAndRangedCombatTargetNumberCalculator.hpp"
 	"WeaponDifficultyCalculator.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\physicaldamagecalculator.cpp
+1343573924 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\physicaldamagecalculator.cpp
 	<cmath>
 	"PhysicalDamageCalculator.hpp"
+	"WeaponManager.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\resistancescalculator.cpp
 	"Resistances.hpp"
@@ -467,8 +469,11 @@
 	"PlayerDeathManager.hpp"
 	"ReligionManager.hpp"
 
-1342701036 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
+1343578175 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
+	<boost/make_shared.hpp>
+	"Ammunition.hpp"
 	"CombatConstants.hpp"
+	"WeaponDifficultyCalculator.hpp"
 	"WeaponManager.hpp"
 
 1343480342 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandfactory.cpp
@@ -1307,7 +1312,7 @@
 	"RNG.hpp"
 	"SkillManager.hpp"
 
-1343479228 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1343581032 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1548,8 +1553,9 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\creaturegenerationvalues.cpp
 	"CreatureGenerationValues.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\damage.cpp
+1343581743 source:c:\cygwin\home\julian\jrcpp\world\source\damage.cpp
 	<string>
+	<sstream>
 	"Conversion.hpp"
 	"Damage.hpp"
 	"unit_tests/Damage_test.cpp"
@@ -2186,6 +2192,17 @@
 	"InitialItemSelector.hpp"
 	"ItemManager.hpp"
 
-1343505279 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+1343580804 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+	"DamageCalculatorFactory.hpp"
+	"MessageManager.hpp"
+	"StringConstants.hpp"
+	"WeaponDifficultyCalculator.hpp"
 	"WeaponInfoManager.hpp"
+	"WeaponManager.hpp"
+
+1343574105 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\damagecalculator.cpp
+	"DamageCalculator.hpp"
+
+1343573560 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\rangedphysicaldamagecalculator.cpp
+	"RangedPhysicalDamageCalculator.hpp"
 

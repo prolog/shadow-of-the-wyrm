@@ -252,6 +252,8 @@ const string EquipmentTextKeys::EQUIPMENT_ABOUT_BODY   = "EQUIPMENT_ABOUT_BODY";
 const string EquipmentTextKeys::EQUIPMENT_FEET         = "EQUIPMENT_FEET";
 const string EquipmentTextKeys::EQUIPMENT_RANGED       = "EQUIPMENT_RANGED";
 const string EquipmentTextKeys::EQUIPMENT_AMMUNITION   = "EQUIPMENT_AMMUNITION";
+const string EquipmentTextKeys::EQUIPMENT_RANGED_SYNOPSIS = "EQUIPMENT_RANGED_SYNOPSIS";
+const string EquipmentTextKeys::EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS";
 
 string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location)
 {
@@ -301,6 +303,39 @@ string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const Equi
   
   equipment_text = StringTable::get(equipment_text_sid);
   return equipment_text;
+}
+
+string EquipmentTextKeys::get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, WeaponPtr ammunition, const string& difficulty_and_damage_synopsis)
+{
+  string ranged_synopsis = StringTable::get(EQUIPMENT_RANGED_SYNOPSIS);
+  string weapon_string = "/";
+  string ammunition_string = "/";
+  
+  if (ranged_weapon)
+  {
+    weapon_string = StringTable::get(ranged_weapon->get_description_sid());
+  }
+  
+  if (ammunition)
+  {
+    ammunition_string = StringTable::get(ammunition->get_description_sid());
+  }
+  
+  boost::replace_first(ranged_synopsis, "%s", weapon_string);
+  boost::replace_first(ranged_synopsis, "%s", ammunition_string);
+  boost::replace_first(ranged_synopsis, "%s", difficulty_and_damage_synopsis);
+  
+  return ranged_synopsis;
+}
+
+string EquipmentTextKeys::get_weapon_difficulty_and_damage_synopsis(const int difficulty, const Damage& damage)
+{
+  string synopsis = StringTable::get(EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS);
+
+  boost::replace_first(synopsis, "%s", Integer::to_string(difficulty));
+  boost::replace_first(synopsis, "%s", damage.str());
+  
+  return synopsis;
 }
 
 // Colours

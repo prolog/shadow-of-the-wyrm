@@ -2977,7 +2977,7 @@
 				<UsageDescriptionSID>ROCK_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>12</Ounces>	</Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>10</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>7</Material>
 				<TextDetails>
 					<Symbol>*</Symbol>
@@ -2996,6 +2996,7 @@
 				<UsageDescriptionSID>BOLT_USAGE_SID</UsageDescriptionSID>
 				<Value>8</Value>
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>3</Material>
 				<Skill>2004</Skill>
 				<Difficulty>43</Difficulty>

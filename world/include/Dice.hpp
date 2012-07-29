@@ -7,7 +7,7 @@ class Dice
   public:
     Dice();
     Dice(const uint new_num_dice, const uint new_dice_sides, const int modifier);
-    ~Dice();
+    virtual ~Dice();
 
     int max() const;
     

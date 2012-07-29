@@ -1,5 +1,11 @@
 #include <cmath>
 #include "PhysicalDamageCalculator.hpp"
+#include "WeaponManager.hpp"
+
+PhysicalDamageCalculator::PhysicalDamageCalculator(const AttackType new_attack_type)
+: DamageCalculator(new_attack_type)
+{
+}
 
 // Physical Damage =
 // (Rolled damage * Resistance to that damage type)
@@ -30,4 +36,11 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const Da
   }
 
   return damage;
+}
+
+// Get the base damage.
+Damage PhysicalDamageCalculator::calculate_base_damage_object(CreaturePtr attacking_creature)
+{
+  WeaponManager wm;
+  return wm.get_damage(attacking_creature, attack_type);
 }
