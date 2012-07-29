@@ -166,7 +166,7 @@
 	<File name="engine\XML\source\XMLBookReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="205" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLClassesReader.cpp" open="1" top="0" tabpos="6">
+	<File name="engine\XML\source\XMLClassesReader.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="8761" topLine="188" />
 	</File>
 	<File name="engine\XML\source\XMLConfigurationReader.cpp" open="0" top="0" tabpos="7">
@@ -187,13 +187,13 @@
 	<File name="engine\XML\source\XMLFoodReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="259" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLInitialItemReader.cpp" open="1" top="0" tabpos="7">
+	<File name="engine\XML\source\XMLInitialItemReader.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="71" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLItemReader.cpp" open="0" top="0" tabpos="18">
 		<Cursor position="83" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLItemsReaders.cpp" open="1" top="0" tabpos="16">
+	<File name="engine\XML\source\XMLItemsReaders.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="5070" topLine="175" />
 	</File>
 	<File name="engine\XML\source\XMLPlantReader.cpp" open="0" top="0" tabpos="0">
@@ -242,7 +242,7 @@
 		<Cursor position="62" topLine="0" />
 	</File>
 	<File name="engine\actions\include\ActionManager.hpp" open="0" top="0" tabpos="11">
-		<Cursor position="1220" topLine="32" />
+		<Cursor position="176" topLine="0" />
 	</File>
 	<File name="engine\actions\include\CharacterDumpManager.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="300" topLine="0" />
@@ -257,7 +257,7 @@
 		<Cursor position="263" topLine="0" />
 	</File>
 	<File name="engine\actions\include\InventoryManager.hpp" open="0" top="0" tabpos="10">
-		<Cursor position="594" topLine="3" />
+		<Cursor position="399" topLine="2" />
 	</File>
 	<File name="engine\actions\include\ItemManager.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="1140" topLine="7" />
@@ -280,14 +280,17 @@
 	<File name="engine\actions\include\VersionActionManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="226" topLine="0" />
 	</File>
+	<File name="engine\actions\include\WeaponInfoManager.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="193" topLine="0" />
+	</File>
 	<File name="engine\actions\source\ActionCoordinator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="1068" topLine="25" />
 	</File>
 	<File name="engine\actions\source\ActionCost.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="887" topLine="35" />
 	</File>
-	<File name="engine\actions\source\ActionManager.cpp" open="1" top="0" tabpos="14">
-		<Cursor position="4531" topLine="155" />
+	<File name="engine\actions\source\ActionManager.cpp" open="0" top="0" tabpos="14">
+		<Cursor position="10972" topLine="385" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
@@ -296,13 +299,13 @@
 		<Cursor position="586" topLine="9" />
 	</File>
 	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1638" topLine="37" />
+		<Cursor position="2166" topLine="52" />
 	</File>
 	<File name="engine\actions\source\InventoryManager.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="1942" topLine="38" />
+		<Cursor position="1298" topLine="25" />
 	</File>
-	<File name="engine\actions\source\ItemManager.cpp" open="1" top="0" tabpos="9">
-		<Cursor position="2856" topLine="108" />
+	<File name="engine\actions\source\ItemManager.cpp" open="0" top="0" tabpos="9">
+		<Cursor position="3415" topLine="127" />
 	</File>
 	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1250" topLine="14" />
@@ -321,6 +324,9 @@
 	</File>
 	<File name="engine\actions\source\VersionActionManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="169" topLine="0" />
+	</File>
+	<File name="engine\actions\source\WeaponInfoManager.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="305" topLine="8" />
 	</File>
 	<File name="engine\calculators\include\ArcanaPointsCalculator.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="68" topLine="0" />
@@ -530,7 +536,7 @@
 		<Cursor position="1202" topLine="0" />
 	</File>
 	<File name="engine\commands\equipment\source\EquipmentCommandProcessor.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="269" topLine="13" />
+		<Cursor position="1365" topLine="32" />
 	</File>
 	<File name="engine\commands\equipment\source\EquipmentCommands.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="219" topLine="0" />
@@ -545,13 +551,13 @@
 		<Cursor position="219" topLine="0" />
 	</File>
 	<File name="engine\commands\include\CommandKeys.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="1299" topLine="19" />
+		<Cursor position="1396" topLine="19" />
 	</File>
 	<File name="engine\commands\include\CommandProcessor.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="462" topLine="0" />
 	</File>
 	<File name="engine\commands\include\Commands.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="1283" topLine="51" />
+		<Cursor position="2047" topLine="100" />
 	</File>
 	<File name="engine\commands\include\KeyboardCommandMap.hpp" open="0" top="0" tabpos="12">
 		<Cursor position="154" topLine="0" />
@@ -575,10 +581,10 @@
 		<Cursor position="503" topLine="0" />
 	</File>
 	<File name="engine\commands\inventory\source\InventoryCommandProcessor.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2090" topLine="51" />
+		<Cursor position="2403" topLine="60" />
 	</File>
 	<File name="engine\commands\inventory\source\InventoryCommands.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="247" topLine="0" />
+		<Cursor position="781" topLine="16" />
 	</File>
 	<File name="engine\commands\inventory\source\InventoryKeyboardCommandMap.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="630" topLine="23" />
@@ -587,19 +593,19 @@
 		<Cursor position="481" topLine="8" />
 	</File>
 	<File name="engine\commands\source\CommandFactory.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="2477" topLine="71" />
+		<Cursor position="2720" topLine="83" />
 	</File>
 	<File name="engine\commands\source\CommandKeys.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="1111" topLine="8" />
+		<Cursor position="1358" topLine="19" />
 	</File>
 	<File name="engine\commands\source\CommandProcessor.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="888" topLine="39" />
+		<Cursor position="2775" topLine="90" />
 	</File>
 	<File name="engine\commands\source\Commands.cpp" open="0" top="0" tabpos="17">
-		<Cursor position="1926" topLine="97" />
+		<Cursor position="2794" topLine="156" />
 	</File>
 	<File name="engine\commands\source\KeyboardCommandMap.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="4554" topLine="74" />
+		<Cursor position="4823" topLine="76" />
 	</File>
 	<File name="engine\conversion\include\CharacterDumper.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="280" topLine="0" />
@@ -1150,10 +1156,10 @@
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="443" topLine="4" />
 	</File>
-	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="12">
+	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="919" topLine="37" />
 	</File>
-	<File name="engine\source\InitialItemEquipper.cpp" open="1" top="0" tabpos="8">
+	<File name="engine\source\InitialItemEquipper.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="825" topLine="8" />
 	</File>
 	<File name="engine\source\InitialItemSelector.cpp" open="0" top="0" tabpos="11">
@@ -1313,7 +1319,7 @@
 		<Cursor position="13" topLine="0" />
 	</File>
 	<File name="engine\translators\include\InventoryTranslator.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="185" topLine="0" />
+		<Cursor position="517" topLine="0" />
 	</File>
 	<File name="engine\translators\include\MapTranslator.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="698" topLine="8" />
@@ -1331,7 +1337,7 @@
 		<Cursor position="591" topLine="12" />
 	</File>
 	<File name="engine\translators\source\InventoryTranslator.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="559" topLine="15" />
+		<Cursor position="1784" topLine="57" />
 	</File>
 	<File name="engine\translators\source\ItemTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="298" topLine="7" />
@@ -1366,7 +1372,7 @@
 	<File name="world\include\AlignmentEnums.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="world\include\Ammunition.hpp" open="1" top="0" tabpos="18">
+	<File name="world\include\Ammunition.hpp" open="0" top="0" tabpos="18">
 		<Cursor position="187" topLine="0" />
 	</File>
 	<File name="world\include\Amulet.hpp" open="0" top="0" tabpos="0">
@@ -1408,8 +1414,8 @@
 	<File name="world\include\Equipment.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="594" topLine="2" />
 	</File>
-	<File name="world\include\EquipmentTypes.hpp" open="1" top="0" tabpos="3">
-		<Cursor position="442" topLine="0" />
+	<File name="world\include\EquipmentTypes.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="318" topLine="6" />
 	</File>
 	<File name="world\include\Food.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="203" topLine="0" />
@@ -1420,7 +1426,7 @@
 	<File name="world\include\Inventory.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="518" topLine="1" />
 	</File>
-	<File name="world\include\Item.hpp" open="1" top="0" tabpos="15">
+	<File name="world\include\Item.hpp" open="0" top="0" tabpos="15">
 		<Cursor position="1552" topLine="29" />
 	</File>
 	<File name="world\include\ItemTypes.hpp" open="0" top="0" tabpos="2">
@@ -1459,7 +1465,7 @@
 	<File name="world\include\Scroll.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="107" topLine="0" />
 	</File>
-	<File name="world\include\SkillTypes.hpp" open="1" top="0" tabpos="2">
+	<File name="world\include\SkillTypes.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="2180" topLine="57" />
 	</File>
 	<File name="world\include\Skills.hpp" open="0" top="0" tabpos="1">
@@ -1516,7 +1522,7 @@
 	<File name="world\materials\include\MaterialFactory.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="59" topLine="0" />
 	</File>
-	<File name="world\materials\include\MaterialTypes.hpp" open="1" top="0" tabpos="1">
+	<File name="world\materials\include\MaterialTypes.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="203" topLine="2" />
 	</File>
 	<File name="world\materials\include\Onyx.hpp" open="0" top="0" tabpos="21">
@@ -1636,8 +1642,8 @@
 	<File name="world\source\Alignment.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="1352" topLine="42" />
 	</File>
-	<File name="world\source\Ammunition.cpp" open="1" top="1" tabpos="19">
-		<Cursor position="232" topLine="0" />
+	<File name="world\source\Ammunition.cpp" open="0" top="0" tabpos="19">
+		<Cursor position="133" topLine="0" />
 	</File>
 	<File name="world\source\Amulet.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="112" topLine="0" />
@@ -1687,7 +1693,7 @@
 	<File name="world\source\Inventory.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="2045" topLine="115" />
 	</File>
-	<File name="world\source\Item.cpp" open="1" top="0" tabpos="17">
+	<File name="world\source\Item.cpp" open="0" top="0" tabpos="17">
 		<Cursor position="2223" topLine="86" />
 	</File>
 	<File name="world\source\ItemTypes.cpp" open="0" top="0" tabpos="4">

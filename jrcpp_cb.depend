@@ -215,7 +215,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1343504185 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1343505125 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -1136,7 +1136,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creationutils.cpp
 	"CreationUtils.hpp"
 
-1342983708 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1343566897 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<cmath>
 	<boost/make_shared.hpp>
 	<boost/uuid/uuid_generators.hpp>
@@ -2178,7 +2178,7 @@
 1342962479 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\initialitemselector_test.cpp
 	"gtest/gtest.h"
 
-1342984510 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemequipper.cpp
+1343566931 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemequipper.cpp
 	<boost/foreach.hpp>
 	"ActionManager.hpp"
 	"ClassManager.hpp"
@@ -2186,6 +2186,6 @@
 	"InitialItemSelector.hpp"
 	"ItemManager.hpp"
 
-1343504397 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+1343505279 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
 	"WeaponInfoManager.hpp"
 
