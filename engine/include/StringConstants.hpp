@@ -7,6 +7,8 @@
 #include "Date.hpp"
 #include "EquipmentTypes.hpp"
 #include "tiles.hpp"
+#include "Weapon.hpp"
+#include "Ammunition.hpp"
 
 // String constants related to the player.
 // Note that these are actual string constants that are not meant to be text keys.
@@ -207,9 +209,14 @@ class EquipmentTextKeys
     static const std::string EQUIPMENT_AMMUNITION;
     
     static std::string get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location);
+    static std::string get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, WeaponPtr ammunition, const std::string& difficulty_and_damage_synopsis);
+    static std::string get_weapon_difficulty_and_damage_synopsis(const int difficulty, const Damage& damage);
     
   protected:
     EquipmentTextKeys();
+    
+    static const std::string EQUIPMENT_RANGED_SYNOPSIS;
+    static const std::string EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS;
 };
 
 class ColourTextKeys

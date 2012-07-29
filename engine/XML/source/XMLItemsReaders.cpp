@@ -183,7 +183,7 @@ ItemMap XMLItemsReader::get_ammunition(const XMLNode& ammunition_node)
     
     BOOST_FOREACH(XMLNode node, missiles_nodes)
     {
-      AmmunitionPtr ammunition = make_shared<Ammunition>();
+      WeaponPtr ammunition = make_shared<MeleeWeapon>();
       ammunition_reader.parse(ammunition, node);
       ammunition_map.insert(make_pair(ammunition->get_id(), ammunition));
     }

@@ -1,5 +1,10 @@
 #include "MagicalDamageCalculator.hpp"
 
+MagicalDamageCalculator::MagicalDamageCalculator()
+: DamageCalculator(ATTACK_TYPE_MAGICAL)
+{
+}
+
 // Magical damage =
 // Rolled damage * Resistance to that damage
 //
@@ -16,4 +21,11 @@ int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const Dam
   }
   
   return damage;
+}
+
+Damage MagicalDamageCalculator::calculate_base_damage_object(CreaturePtr creature)
+{
+  // JCD FIXME
+  Damage d;
+  return d;
 }

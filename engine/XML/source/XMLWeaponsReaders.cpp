@@ -39,11 +39,11 @@ XMLAmmunitionReader::~XMLAmmunitionReader()
 {
 }
 
-void XMLAmmunitionReader::parse(AmmunitionPtr ammunition, const XMLNode& missile_node)
+void XMLAmmunitionReader::parse(WeaponPtr ammunition, const XMLNode& missile_node)
 {
   if (ammunition && !missile_node.is_null())
   {
-    XMLWearableReader::parse(ammunition, missile_node);
+    XMLWeaponsReader::parse(ammunition, missile_node);
   }
 }
 

@@ -7,7 +7,5 @@ class WeaponDifficultyCalculator
 {
   public:
     int calculate(CreaturePtr creature, AttackType attack_type);
-
-  protected:
     int get_difficulty_for_weapon(WeaponPtr weapon);
 };
