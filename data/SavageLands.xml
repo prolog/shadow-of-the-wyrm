@@ -1677,6 +1677,11 @@
 				<Body><ID>wayfarer_clothes</ID></Body>
 				<AboutBody><ID>cloak</ID></AboutBody>
 				<Feet><ID>leather_boots</ID></Feet>
+				<InitialInventory>
+					<InitialItem>
+						<ID>coracle</ID>
+					</InitialItem>
+				</InitialInventory>
 			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="shepherd">

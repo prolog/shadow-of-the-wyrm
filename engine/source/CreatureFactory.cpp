@@ -68,6 +68,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     
     InitialItemEquipper iie;
     iie.equip(creature, action_manager);
+    iie.add_inventory_items(creature, action_manager);
   }
   
   return creature;
@@ -137,6 +138,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Equip the initial set of race/class equipment.
     InitialItemEquipper iie;
     iie.equip(creaturep, action_manager);
+    iie.add_inventory_items(creaturep, action_manager);
 
     // Set calculated statistics
     CreatureCalculator::update_calculated_values(creaturep);

@@ -215,6 +215,7 @@
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
 		<Unit filename="engine\actions\include\TileMovementConfirmation.hpp" />
 		<Unit filename="engine\actions\include\VersionActionManager.hpp" />
+		<Unit filename="engine\actions\include\WeaponInfoManager.hpp" />
 		<Unit filename="engine\actions\source\ActionCoordinator.cpp" />
 		<Unit filename="engine\actions\source\ActionCost.cpp" />
 		<Unit filename="engine\actions\source\ActionManager.cpp" />
@@ -229,6 +230,7 @@
 		<Unit filename="engine\actions\source\SearchActionManager.cpp" />
 		<Unit filename="engine\actions\source\TileMovementConfirmation.cpp" />
 		<Unit filename="engine\actions\source\VersionActionManager.cpp" />
+		<Unit filename="engine\actions\source\WeaponInfoManager.cpp" />
 		<Unit filename="engine\calculators\include\ArcanaPointsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
 		<Unit filename="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
