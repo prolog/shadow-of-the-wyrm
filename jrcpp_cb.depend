@@ -88,7 +88,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlbookreader.cpp
 	"XMLBookReader.hpp"
 
-1343483360 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
+1343737834 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlclassesreader.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"Resistances.hpp"
@@ -201,7 +201,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwandreader.cpp
 	"XMLWandReader.hpp"
 
-1343575218 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
+1343581947 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
 	"XMLWeaponsReaders.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwearablereader.cpp
@@ -412,7 +412,7 @@
 	"ToHitCalculator.hpp"
 	"WeaponManager.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\weapondifficultycalculator.cpp
+1343737441 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\weapondifficultycalculator.cpp
 	"CombatConstants.hpp"
 	"WeaponDifficultyCalculator.hpp"
 
@@ -476,13 +476,13 @@
 	"WeaponDifficultyCalculator.hpp"
 	"WeaponManager.hpp"
 
-1343480342 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandfactory.cpp
+1343737834 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandfactory.cpp
 	<boost/make_shared.hpp>
 	"EquipmentCommandFactory.hpp"
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommands.hpp"
 
-1343479740 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
+1343737593 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
 1343498304 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
@@ -491,11 +491,11 @@
 	"EquipmentCommands.hpp"
 	"Game.hpp"
 
-1343479674 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommands.cpp
+1343737702 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommands.cpp
 	"EquipmentCommands.hpp"
 	"EquipmentCommandKeys.hpp"
 
-1343480054 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentkeyboardcommandmap.cpp
+1343737593 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentkeyboardcommandmap.cpp
 	"Conversion.hpp"
 	"EquipmentCommandKeys.hpp"
 	"EquipmentKeyboardCommandMap.hpp"
@@ -1312,7 +1312,7 @@
 	"RNG.hpp"
 	"SkillManager.hpp"
 
-1343581032 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1343737592 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1391,7 +1391,7 @@
 	"EquipmentTranslator.hpp"
 	"ItemTranslator.hpp"
 
-1343499716 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
+1343737441 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
 	<boost/foreach.hpp>
 	"DisplayItemTypeFactory.hpp"
 	"InventoryTranslator.hpp"
@@ -2192,7 +2192,7 @@
 	"InitialItemSelector.hpp"
 	"ItemManager.hpp"
 
-1343580804 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+1343739417 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
 	"DamageCalculatorFactory.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"

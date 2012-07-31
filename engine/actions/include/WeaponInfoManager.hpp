@@ -15,7 +15,7 @@ class WeaponInfoManager
     friend class ActionManager;
     WeaponInfoManager();
 
-    std::string get_melee_weapon_info(WeaponPtr weapon, const Damage& damage) const;
+    std::string get_melee_weapon_info(CreaturePtr creature, WeaponPtr weapon, const AttackType attack_type, const Damage& damage) const;
     std::string get_ranged_weapon_info(CreaturePtr creature, WeaponPtr ranged_weapon, WeaponPtr ammunition) const;
     ActionCostValue get_action_cost_value() const;
 };

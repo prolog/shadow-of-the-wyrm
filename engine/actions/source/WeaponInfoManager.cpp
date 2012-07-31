@@ -23,14 +23,20 @@ ActionCostValue WeaponInfoManager::melee_weapon_info(CreaturePtr creature) const
     Equipment& eq = creature->get_equipment();
     Damage base_damage = creature->get_base_damage();
 
-    ItemPtr right_item = eq.get_item(EQUIPMENT_WORN_WIELDED);
-    WeaponPtr right_weapon = dynamic_pointer_cast<Weapon>(right_item);
+    ItemPtr wielded_item = eq.get_item(EQUIPMENT_WORN_WIELDED);
+    WeaponPtr wielded_weapon = dynamic_pointer_cast<Weapon>(wielded_item);
 
-    ItemPtr left_item = eq.get_item(EQUIPMENT_WORN_OFF_HAND);
-    WeaponPtr left_weapon = dynamic_pointer_cast<Weapon>(left_item);
+    ItemPtr off_hand_item = eq.get_item(EQUIPMENT_WORN_OFF_HAND);
+    WeaponPtr off_hand_weapon = dynamic_pointer_cast<Weapon>(off_hand_item);
     
-    string WIELDED_weapon_text = get_melee_weapon_info(right_weapon, base_damage);
-    string OFF_HAND_weapon_text = get_melee_weapon_info(left_weapon, base_damage);
+    string wielded_weapon_text = get_melee_weapon_info(creature, wielded_weapon, ATTACK_TYPE_MELEE_PRIMARY, base_damage);
+    string off_hand_weapon_text = get_melee_weapon_info(creature, off_hand_weapon, ATTACK_TYPE_MELEE_SECONDARY, base_damage);
+    
+    // JCD FIXME: Do something here to get them on separate lines, if necessary.
+    // Test...
+    manager->add_new_message(wielded_weapon_text);
+    manager->add_new_message(off_hand_weapon_text);
+    manager->send();
   }
 
   return get_action_cost_value();
@@ -58,9 +64,20 @@ ActionCostValue WeaponInfoManager::ranged_weapon_info(CreaturePtr creature) cons
   return get_action_cost_value();
 }
 
-string WeaponInfoManager::get_melee_weapon_info(WeaponPtr weapon, const Damage& damage) const
+string WeaponInfoManager::get_melee_weapon_info(CreaturePtr creature, WeaponPtr weapon, const AttackType attack_type, const Damage& damage) const
 {
-  return "";
+  string melee_info;
+  
+  if (weapon)
+  {
+    DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
+    WeaponDifficultyCalculator wdc;
+    
+    int difficulty = wdc.calculate(creature, attack_type);
+    Damage weapon_damage = damage_calc->calculate_base_damage_object(creature);
+  }
+  
+  return melee_info;
 }
 
 string WeaponInfoManager::get_ranged_weapon_info(CreaturePtr creature, WeaponPtr ranged_weapon, WeaponPtr ammunition) const
