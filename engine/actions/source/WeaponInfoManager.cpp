@@ -23,14 +23,14 @@ ActionCostValue WeaponInfoManager::melee_weapon_info(CreaturePtr creature) const
     Equipment& eq = creature->get_equipment();
     Damage base_damage = creature->get_base_damage();
 
-    ItemPtr right_item = eq.get_item(EQUIPMENT_WORN_RIGHT_HAND);
+    ItemPtr right_item = eq.get_item(EQUIPMENT_WORN_WIELDED);
     WeaponPtr right_weapon = dynamic_pointer_cast<Weapon>(right_item);
 
-    ItemPtr left_item = eq.get_item(EQUIPMENT_WORN_LEFT_HAND);
+    ItemPtr left_item = eq.get_item(EQUIPMENT_WORN_OFF_HAND);
     WeaponPtr left_weapon = dynamic_pointer_cast<Weapon>(left_item);
     
-    string right_hand_weapon_text = get_melee_weapon_info(right_weapon, base_damage);
-    string left_hand_weapon_text = get_melee_weapon_info(left_weapon, base_damage);
+    string WIELDED_weapon_text = get_melee_weapon_info(right_weapon, base_damage);
+    string OFF_HAND_weapon_text = get_melee_weapon_info(left_weapon, base_damage);
   }
 
   return get_action_cost_value();

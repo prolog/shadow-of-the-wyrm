@@ -245,8 +245,8 @@ const string EquipmentTextKeys::EQUIPMENT_HEAD         = "EQUIPMENT_HEAD";
 const string EquipmentTextKeys::EQUIPMENT_NECK         = "EQUIPMENT_NECK";
 const string EquipmentTextKeys::EQUIPMENT_RIGHT_FINGER = "EQUIPMENT_RIGHT_FINGER";
 const string EquipmentTextKeys::EQUIPMENT_LEFT_FINGER  = "EQUIPMENT_LEFT_FINGER";
-const string EquipmentTextKeys::EQUIPMENT_RIGHT_HAND   = "EQUIPMENT_RIGHT_HAND";
-const string EquipmentTextKeys::EQUIPMENT_LEFT_HAND    = "EQUIPMENT_LEFT_HAND";
+const string EquipmentTextKeys::EQUIPMENT_WIELDED   = "EQUIPMENT_WIELDED";
+const string EquipmentTextKeys::EQUIPMENT_OFF_HAND    = "EQUIPMENT_OFF_HAND";
 const string EquipmentTextKeys::EQUIPMENT_BODY         = "EQUIPMENT_BODY";
 const string EquipmentTextKeys::EQUIPMENT_ABOUT_BODY   = "EQUIPMENT_ABOUT_BODY";
 const string EquipmentTextKeys::EQUIPMENT_FEET         = "EQUIPMENT_FEET";
@@ -274,11 +274,11 @@ string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const Equi
     case EQUIPMENT_WORN_LEFT_FINGER:
       equipment_text_sid = EQUIPMENT_LEFT_FINGER;
       break;
-    case EQUIPMENT_WORN_RIGHT_HAND:
-      equipment_text_sid = EQUIPMENT_RIGHT_HAND;
+    case EQUIPMENT_WORN_WIELDED:
+      equipment_text_sid = EQUIPMENT_WIELDED;
       break;
-    case EQUIPMENT_WORN_LEFT_HAND:
-      equipment_text_sid = EQUIPMENT_LEFT_HAND;
+    case EQUIPMENT_WORN_OFF_HAND:
+      equipment_text_sid = EQUIPMENT_OFF_HAND;
       break;
     case EQUIPMENT_WORN_BODY:
       equipment_text_sid = EQUIPMENT_BODY;
@@ -909,11 +909,11 @@ string TextMessages::get_equipment_location(const EquipmentWornLocation location
     case EQUIPMENT_WORN_LEFT_FINGER:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_LEFT_FINGER);
       break;
-    case EQUIPMENT_WORN_RIGHT_HAND:
-      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_RIGHT_HAND);
+    case EQUIPMENT_WORN_WIELDED:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_WIELDED);
       break;
-    case EQUIPMENT_WORN_LEFT_HAND:
-      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_LEFT_HAND);
+    case EQUIPMENT_WORN_OFF_HAND:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_OFF_HAND);
       break;
     case EQUIPMENT_WORN_BODY:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_BODY);

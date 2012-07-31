@@ -458,8 +458,8 @@
 			<xs:element name="Neck" type="tns:InitialItem" minOccurs="0"/>
 			<xs:element name="RightFinger" type="tns:InitialItem" minOccurs="0"/>
 			<xs:element name="LeftFinger" type="tns:InitialItem" minOccurs="0"/>
-			<xs:element name="RightHand" type="tns:InitialItem" minOccurs="0"/>
-			<xs:element name="LeftHand" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="Wielded" type="tns:InitialItem" minOccurs="0"/>
+			<xs:element name="OffHand" type="tns:InitialItem" minOccurs="0"/>
 			<xs:element name="Body" type="tns:InitialItem" minOccurs="0"/>
 			<xs:element name="AboutBody" type="tns:InitialItem" minOccurs="0"/>
 			<xs:element name="Feet" type="tns:InitialItem" minOccurs="0"/>

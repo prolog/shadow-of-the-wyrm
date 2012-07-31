@@ -56,18 +56,18 @@ class WearOrRemoveLeftFingerCommand : public WearOrRemoveCommand
     virtual EquipmentWornLocation get_equipment_worn_location() const;
 };
 
-class WearOrRemoveRightHandCommand : public WearOrRemoveCommand
+class WearOrRemoveWieldedCommand : public WearOrRemoveCommand
 {
   public:
-    WearOrRemoveRightHandCommand();
+    WearOrRemoveWieldedCommand();
 
     virtual EquipmentWornLocation get_equipment_worn_location() const;
 };
 
-class WearOrRemoveLeftHandCommand : public WearOrRemoveCommand
+class WearOrRemoveOffHandCommand : public WearOrRemoveCommand
 {
   public:
-    WearOrRemoveLeftHandCommand();
+    WearOrRemoveOffHandCommand();
 
     virtual EquipmentWornLocation get_equipment_worn_location() const;
 };

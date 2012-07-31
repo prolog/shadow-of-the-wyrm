@@ -14,11 +14,11 @@ int WeaponDifficultyCalculator::calculate(CreaturePtr creature, AttackType attac
     {
       case ATTACK_TYPE_RANGED:
       case ATTACK_TYPE_MELEE_PRIMARY:
-        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_RIGHT_HAND));
+        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_WIELDED));
         difficulty = get_difficulty_for_weapon(weapon);
         break;
       case ATTACK_TYPE_MELEE_SECONDARY:
-        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_LEFT_HAND));
+        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_OFF_HAND));
         difficulty = get_difficulty_for_weapon(weapon);
         break;
       case ATTACK_TYPE_MAGICAL:

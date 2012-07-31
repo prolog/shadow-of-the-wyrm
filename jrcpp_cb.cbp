@@ -248,6 +248,7 @@
 		<Unit filename="engine\calculators\include\MeleeAndRangedCombatTargetNumberCalculator.hpp" />
 		<Unit filename="engine\calculators\include\MountainClimbingCalculator.hpp" />
 		<Unit filename="engine\calculators\include\PhysicalDamageCalculator.hpp" />
+		<Unit filename="engine\calculators\include\RangedPhysicalDamageCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ResistancesCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SkillsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\SoakCalculator.hpp" />
@@ -258,6 +259,7 @@
 		<Unit filename="engine\calculators\source\ArcanaPointsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\CombatTargetNumberCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\CreatureCalculator.cpp" />
+		<Unit filename="engine\calculators\source\DamageCalculator.cpp" />
 		<Unit filename="engine\calculators\source\DamageCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\EvadeCalculator.cpp" />
 		<Unit filename="engine\calculators\source\HPRegenerationCalculator.cpp" />
@@ -270,6 +272,7 @@
 		<Unit filename="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp" />
 		<Unit filename="engine\calculators\source\MountainClimbingCalculator.cpp" />
 		<Unit filename="engine\calculators\source\PhysicalDamageCalculator.cpp" />
+		<Unit filename="engine\calculators\source\RangedPhysicalDamageCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ResistancesCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SkillsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\SoakCalculator.cpp" />

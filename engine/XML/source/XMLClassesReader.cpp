@@ -173,14 +173,14 @@ void XMLClassesReader::parse_initial_equipment(ClassPtr current_class, const XML
     initial_equipment.insert(make_pair(EQUIPMENT_WORN_LEFT_FINGER, left_finger_item));
     
     // RHand
-    XMLNode right_hand_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "RightHand");
-    InitialItem right_hand_item = initial_item_reader.get_initial_item(right_hand_node);
-    initial_equipment.insert(make_pair(EQUIPMENT_WORN_RIGHT_HAND, right_hand_item));
+    XMLNode WIELDED_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Wielded");
+    InitialItem WIELDED_item = initial_item_reader.get_initial_item(WIELDED_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_WIELDED, WIELDED_item));
     
     // LHand
-    XMLNode left_hand_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "LeftHand");
-    InitialItem left_hand_item = initial_item_reader.get_initial_item(left_hand_node);
-    initial_equipment.insert(make_pair(EQUIPMENT_WORN_LEFT_HAND, left_hand_item));
+    XMLNode OFF_HAND_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "OffHand");
+    InitialItem OFF_HAND_item = initial_item_reader.get_initial_item(OFF_HAND_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_OFF_HAND, OFF_HAND_item));
 
     // Body
     XMLNode body_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Body");
