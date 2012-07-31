@@ -33,13 +33,13 @@ CommandPtr EquipmentCommandFactory::create(const int key, const std::string& com
   {
     command = make_shared<WearOrRemoveLeftFingerCommand>();
   }
-  else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_RIGHT_HAND)
+  else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_WIELDED)
   {
-    command = make_shared<WearOrRemoveRightHandCommand>();
+    command = make_shared<WearOrRemoveWieldedCommand>();
   }
-  else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_LEFT_HAND)
+  else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_OFF_HAND)
   {
-    command = make_shared<WearOrRemoveLeftHandCommand>();
+    command = make_shared<WearOrRemoveOffHandCommand>();
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_BODY)
   {

@@ -41,12 +41,12 @@ void EquipmentKeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('D'), EquipmentCommandKeys::WEAR_OR_REMOVE_LEFT_FINGER));
 
   // Right hand
-  command_mapping.insert(make_pair(Integer::to_string('e'), EquipmentCommandKeys::WEAR_OR_REMOVE_RIGHT_HAND));
-  command_mapping.insert(make_pair(Integer::to_string('E'), EquipmentCommandKeys::WEAR_OR_REMOVE_RIGHT_HAND));
+  command_mapping.insert(make_pair(Integer::to_string('e'), EquipmentCommandKeys::WEAR_OR_REMOVE_WIELDED));
+  command_mapping.insert(make_pair(Integer::to_string('E'), EquipmentCommandKeys::WEAR_OR_REMOVE_WIELDED));
 
   // Left hand
-  command_mapping.insert(make_pair(Integer::to_string('f'), EquipmentCommandKeys::WEAR_OR_REMOVE_LEFT_HAND));
-  command_mapping.insert(make_pair(Integer::to_string('F'), EquipmentCommandKeys::WEAR_OR_REMOVE_LEFT_HAND));
+  command_mapping.insert(make_pair(Integer::to_string('f'), EquipmentCommandKeys::WEAR_OR_REMOVE_OFF_HAND));
+  command_mapping.insert(make_pair(Integer::to_string('F'), EquipmentCommandKeys::WEAR_OR_REMOVE_OFF_HAND));
 
   // Body
   command_mapping.insert(make_pair(Integer::to_string('g'), EquipmentCommandKeys::WEAR_OR_REMOVE_BODY));

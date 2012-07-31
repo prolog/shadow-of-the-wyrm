@@ -71,26 +71,26 @@ EquipmentWornLocation WearOrRemoveLeftFingerCommand::get_equipment_worn_location
   return EQUIPMENT_WORN_LEFT_FINGER;
 }
 
-// Right hand slot
-WearOrRemoveRightHandCommand::WearOrRemoveRightHandCommand()
-: WearOrRemoveCommand(EquipmentCommandKeys::WEAR_OR_REMOVE_RIGHT_HAND)
+// Wielded slot
+WearOrRemoveWieldedCommand::WearOrRemoveWieldedCommand()
+: WearOrRemoveCommand(EquipmentCommandKeys::WEAR_OR_REMOVE_WIELDED)
 {
 }
 
-EquipmentWornLocation WearOrRemoveRightHandCommand::get_equipment_worn_location() const
+EquipmentWornLocation WearOrRemoveWieldedCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_RIGHT_HAND;
+  return EQUIPMENT_WORN_WIELDED;
 }
 
-// Left hand slot
-WearOrRemoveLeftHandCommand::WearOrRemoveLeftHandCommand()
-: WearOrRemoveCommand(EquipmentCommandKeys::WEAR_OR_REMOVE_LEFT_HAND)
+// Off hand slot
+WearOrRemoveOffHandCommand::WearOrRemoveOffHandCommand()
+: WearOrRemoveCommand(EquipmentCommandKeys::WEAR_OR_REMOVE_OFF_HAND)
 {
 }
 
-EquipmentWornLocation WearOrRemoveLeftHandCommand::get_equipment_worn_location() const
+EquipmentWornLocation WearOrRemoveOffHandCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_LEFT_HAND;
+  return EQUIPMENT_WORN_OFF_HAND;
 }
 
 // Body slot

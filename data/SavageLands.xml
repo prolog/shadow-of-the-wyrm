@@ -908,7 +908,7 @@
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
-				<RightHand>
+				<Wielded>
 					<Random>
 						<ID>short_sword</ID>
 						<ID>broad_sword</ID>
@@ -916,7 +916,7 @@
 						<ID>mace</ID>
 						<ID>spear</ID>
 					</Random>
-				</RightHand>
+				</Wielded>
 				<Body><ID>chain_scraps</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -975,7 +975,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>club</ID></RightHand>
+				<Wielded><ID>club</ID></Wielded>
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1093,7 +1093,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>dagger</ID></RightHand>
+				<Wielded><ID>dagger</ID></Wielded>
 				<Body><ID>clothes</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1152,12 +1152,12 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand>
+				<Wielded>
 					<Random>
 						<ID>leather_whip</ID>
 						<ID>thorn_whip</ID>
 					</Random>
-				</RightHand>
+				</Wielded>
 				<Body><ID>wayfarer_clothes</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1216,7 +1216,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>dagger</ID></RightHand>
+				<Wielded><ID>dagger</ID></Wielded>
 				<Body><ID>clothes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1281,7 +1281,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>rapier</ID></RightHand>
+				<Wielded><ID>rapier</ID></Wielded>
 				<Body><ID>leather_armour</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 				<Ranged><ID>crossbow</ID></Ranged>
@@ -1346,7 +1346,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>cypress_rod</ID></RightHand>
+				<Wielded><ID>cypress_rod</ID></Wielded>
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1413,7 +1413,7 @@
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
-				<RightHand><ID>mace</ID></RightHand>
+				<Wielded><ID>mace</ID></Wielded>
 				<Body><ID>wayfarer_clothes</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1546,7 +1546,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>woodsman_axe</ID></RightHand>
+				<Wielded><ID>woodsman_axe</ID></Wielded>
 				<Body><ID>leather_armour</ID></Body>
 				<AboutBody><ID>cloak</ID></AboutBody>
 				<Feet><ID>leather_boots</ID></Feet>
@@ -1611,7 +1611,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>yew_staff</ID></RightHand>
+				<Wielded><ID>yew_staff</ID></Wielded>
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1673,7 +1673,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
-				<RightHand><ID>long_spear</ID></RightHand>
+				<Wielded><ID>long_spear</ID></Wielded>
 				<Body><ID>wayfarer_clothes</ID></Body>
 				<AboutBody><ID>cloak</ID></AboutBody>
 				<Feet><ID>leather_boots</ID></Feet>
@@ -1740,7 +1740,7 @@
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
-				<RightHand><ID>shepherd_crook</ID></RightHand>
+				<Wielded><ID>shepherd_crook</ID></Wielded>
 				<Body><ID>wayfarer_clothes</ID></Body>
 				<AboutBody><ID>cloak</ID></AboutBody>
 				<Feet><ID>shoes</ID></Feet>
@@ -1801,8 +1801,8 @@
 			</Skills>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>iron_hammer</ID></RightHand>
-				<LeftHand><ID>buckler</ID></LeftHand>
+				<Wielded><ID>iron_hammer</ID></Wielded>
+				<OffHand><ID>buckler</ID></OffHand>
 				<Body><ID>chain_mail</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1869,7 +1869,7 @@
 			<ExperienceMultiplier>0.92</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
-				<RightHand><ID>dagger</ID></RightHand>
+				<Wielded><ID>dagger</ID></Wielded>
 				<Body><ID>leather_armour</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -1940,7 +1940,7 @@
 			<ExperienceMultiplier>0.95</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>leather_helm</ID></Head>
-				<RightHand>
+				<Wielded>
 					<ID>short_sword</ID>
 					<Races>
 						<Race>
@@ -1984,8 +1984,8 @@
 							<ID>dagger</ID>
 						</Race>
 					</Races>
-				</RightHand>
-				<LeftHand>
+				</Wielded>
+				<OffHand>
 					<ID>iron_shield</ID>
 					<Races>
 						<Race>
@@ -2009,7 +2009,7 @@
 							<ID>buckler</ID>
 						</Race>
 					</Races>
-				</LeftHand>
+				</OffHand>
 				<Body>
 					<ID>chain_mail</ID>
 					<Races>
@@ -2104,7 +2104,7 @@
 			<PietyCostMultiplier>1.25</PietyCostMultiplier>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>leather_whip</ID></RightHand>
+				<Wielded><ID>leather_whip</ID></Wielded>
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 			</InitialEquipmentAndInventory>
@@ -2168,7 +2168,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
-				<RightHand><ID>dagger</ID></RightHand>
+				<Wielded><ID>dagger</ID></Wielded>
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 			</InitialEquipmentAndInventory>

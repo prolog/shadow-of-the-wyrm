@@ -200,8 +200,8 @@ class EquipmentTextKeys
     static const std::string EQUIPMENT_NECK;
     static const std::string EQUIPMENT_RIGHT_FINGER;
     static const std::string EQUIPMENT_LEFT_FINGER;
-    static const std::string EQUIPMENT_RIGHT_HAND;
-    static const std::string EQUIPMENT_LEFT_HAND;
+    static const std::string EQUIPMENT_WIELDED;
+    static const std::string EQUIPMENT_OFF_HAND;
     static const std::string EQUIPMENT_BODY;
     static const std::string EQUIPMENT_ABOUT_BODY;
     static const std::string EQUIPMENT_FEET;

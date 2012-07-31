@@ -73,8 +73,8 @@ bool InventoryTranslator::check_squishy(const EquipmentWornLocation slot_locatio
   bool squishy_ring  = ((slot_location == EQUIPMENT_WORN_RIGHT_FINGER) || (slot_location == EQUIPMENT_WORN_LEFT_FINGER));
   bool item_ring     = ((item_ewl == EQUIPMENT_WORN_RIGHT_FINGER) || (item_ewl == EQUIPMENT_WORN_LEFT_FINGER));
 
-  bool squishy_wield = ((slot_location == EQUIPMENT_WORN_RIGHT_HAND) || (slot_location == EQUIPMENT_WORN_LEFT_HAND) || (slot_location == EQUIPMENT_WORN_AMMUNITION));
-  bool item_wield    = ((item_ewl == EQUIPMENT_WORN_RIGHT_HAND) || (item_ewl == EQUIPMENT_WORN_LEFT_HAND) || (item_ewl == EQUIPMENT_WORN_AMMUNITION));
+  bool squishy_wield = ((slot_location == EQUIPMENT_WORN_WIELDED) || (slot_location == EQUIPMENT_WORN_OFF_HAND) || (slot_location == EQUIPMENT_WORN_AMMUNITION));
+  bool item_wield    = ((item_ewl == EQUIPMENT_WORN_WIELDED) || (item_ewl == EQUIPMENT_WORN_OFF_HAND) || (item_ewl == EQUIPMENT_WORN_AMMUNITION));
 
   return ((squishy_ring && item_ring) || (squishy_wield && item_wield));
 }
