@@ -312,7 +312,7 @@
 	"MessageManager.hpp"
 	"VersionActionManager.hpp"
 
-1343871469 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+1343911733 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
 	"DamageCalculatorFactory.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
