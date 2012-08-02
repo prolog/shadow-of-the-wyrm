@@ -8,4 +8,10 @@ class PhysicalDamageCalculator : public DamageCalculator
     
     virtual int calculate(CreaturePtr defending_creature, const Damage& damage, const int base_damage, const float soak_multiplier);
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature);
+    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature);
+    virtual int get_statistic_based_damage_modifier(CreaturePtr attacking_creature);
+    
+  protected:
+    static const int DAMAGE_STAT_BASELINE;
+    static const int DAMAGE_STAT_DIVISOR;
 };
