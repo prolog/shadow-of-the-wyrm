@@ -124,6 +124,9 @@ const string TextKeys::DECISION_QUIT_GAME   = "DECISION_QUIT_GAME";
 const string TextKeys::DECISION_JUMP_INTO_WATER = "DECISION_JUMP_INTO_WATER";
 
 const string TextKeys::GAIN_LEVEL = "GAIN_LEVEL";
+
+const string TextKeys::UNARMED = "UNARMED";
+
 // Materials
 MaterialTextKeys::MaterialTextKeys()
 {
@@ -254,6 +257,8 @@ const string EquipmentTextKeys::EQUIPMENT_RANGED       = "EQUIPMENT_RANGED";
 const string EquipmentTextKeys::EQUIPMENT_AMMUNITION   = "EQUIPMENT_AMMUNITION";
 const string EquipmentTextKeys::EQUIPMENT_RANGED_SYNOPSIS = "EQUIPMENT_RANGED_SYNOPSIS";
 const string EquipmentTextKeys::EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS";
+const string EquipmentTextKeys::EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS";
+const string EquipmentTextKeys::EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS";
 
 string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location)
 {
@@ -332,6 +337,33 @@ string EquipmentTextKeys::get_weapon_difficulty_and_damage_synopsis(const int di
 {
   string synopsis = StringTable::get(EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS);
 
+  boost::replace_first(synopsis, "%s", Integer::to_string(difficulty));
+  boost::replace_first(synopsis, "%s", damage.str());
+  
+  return synopsis;
+}
+
+string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int difficulty, const Damage& damage)
+{
+  string synopsis;
+  
+  if (attack_type == ATTACK_TYPE_MELEE_PRIMARY)
+  {
+    synopsis = StringTable::get(EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS);
+  }
+  else if (attack_type == ATTACK_TYPE_MELEE_SECONDARY)
+  {
+    synopsis = StringTable::get(EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS);
+  }
+  
+  string weapon_description_sid = TextKeys::UNARMED;
+  
+  if (weapon)
+  {
+    weapon_description_sid = weapon->get_description_sid();
+  }
+  
+  boost::replace_first(synopsis, "%s", StringTable::get(weapon_description_sid));
   boost::replace_first(synopsis, "%s", Integer::to_string(difficulty));
   boost::replace_first(synopsis, "%s", damage.str());
   

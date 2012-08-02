@@ -1312,7 +1312,7 @@
 	"RNG.hpp"
 	"SkillManager.hpp"
 
-1343737592 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1343870981 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2192,7 +2192,7 @@
 	"InitialItemSelector.hpp"
 	"ItemManager.hpp"
 
-1343739417 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+1343871469 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
 	"DamageCalculatorFactory.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
