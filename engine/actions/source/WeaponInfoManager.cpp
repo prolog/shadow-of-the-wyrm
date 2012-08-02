@@ -64,17 +64,22 @@ ActionCostValue WeaponInfoManager::ranged_weapon_info(CreaturePtr creature) cons
   return get_action_cost_value();
 }
 
+// Get the UI string for either the primary or off-hand weapon.
 string WeaponInfoManager::get_melee_weapon_info(CreaturePtr creature, WeaponPtr weapon, const AttackType attack_type, const Damage& damage) const
 {
   string melee_info;
-  
-  if (weapon)
+
+  // Always display the info for the primary slot (it may not hold a weapon - that's fine, that's considered
+  // unarmed).
+  if (weapon || (attack_type == ATTACK_TYPE_MELEE_PRIMARY))
   {
     DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
     WeaponDifficultyCalculator wdc;
     
     int difficulty = wdc.calculate(creature, attack_type);
     Damage weapon_damage = damage_calc->calculate_base_damage_object(creature);
+
+    melee_info = EquipmentTextKeys::get_melee_weapon_synopsis(attack_type, weapon, difficulty, weapon_damage);
   }
   
   return melee_info;

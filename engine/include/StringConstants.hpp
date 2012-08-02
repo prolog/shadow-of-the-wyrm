@@ -1,6 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
+#include "AttackTypes.hpp"
 #include "CreatureFeatures.hpp"
 #include "CalendarTypes.hpp"
 #include "DamageTypes.hpp"
@@ -126,6 +127,7 @@ class TextKeys
     static const std::string DECISION_QUIT_GAME;
     
     static const std::string GAIN_LEVEL;
+    static const std::string UNARMED;
 
   protected:
     TextKeys();
@@ -211,12 +213,15 @@ class EquipmentTextKeys
     static std::string get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location);
     static std::string get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, WeaponPtr ammunition, const std::string& difficulty_and_damage_synopsis);
     static std::string get_weapon_difficulty_and_damage_synopsis(const int difficulty, const Damage& damage);
+    static std::string get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int difficulty, const Damage& damage);
     
   protected:
     EquipmentTextKeys();
     
     static const std::string EQUIPMENT_RANGED_SYNOPSIS;
     static const std::string EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS;
+    static const std::string EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS;
+    static const std::string EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS;
 };
 
 class ColourTextKeys
