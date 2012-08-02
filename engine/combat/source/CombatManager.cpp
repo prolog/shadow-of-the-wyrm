@@ -54,7 +54,6 @@ bool CombatManager::attack(CreaturePtr creature, const Direction d)
 // The generated to-hit value is >= the target number (regular damage)
 bool CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
-  WeaponManager wm;
   AttackType FIXME_ATTACK_TYPE = ATTACK_TYPE_MELEE_PRIMARY;
   bool mark_for_weapon_and_combat_skills = false;
  
@@ -64,12 +63,14 @@ bool CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_
   
   if (th_calculator && ctn_calculator)
   {
+    DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(FIXME_ATTACK_TYPE);
+    
     int d100_roll = RNG::range(1, 100);
     int to_hit_value = th_calculator->calculate(attacking_creature);
     int total_roll = d100_roll + to_hit_value;
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
-    Damage damage = wm.get_damage(attacking_creature, FIXME_ATTACK_TYPE);
-    
+    Damage damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
+        
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
     {
