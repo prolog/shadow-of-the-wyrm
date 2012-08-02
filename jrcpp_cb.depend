@@ -141,6 +141,10 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlfoodreader.cpp
 	"XMLFoodReader.hpp"
 
+1342879520 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlinitialitemreader.cpp
+	<boost/foreach.hpp>
+	"XMLInitialItemReader.hpp"
+
 1342879134 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemreader.cpp
 	"MaterialFactory.hpp"
 	"XMLItemReader.hpp"
@@ -268,6 +272,9 @@
 	"ItemManager.hpp"
 	"RNG.hpp"
 
+1341405643 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementaccumulationupdater.cpp
+	"MovementAccumulationUpdater.hpp"
+
 1342613578 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
@@ -296,10 +303,22 @@
 	"MessageManager.hpp"
 	"SearchActionManager.hpp"
 
+1341752549 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tilemovementconfirmation.cpp
+	"MapUtils.hpp"
+	"TileMovementConfirmation.hpp"
+
 1339798424 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\versionactionmanager.cpp
 	"global_prototypes.hpp"
 	"MessageManager.hpp"
 	"VersionActionManager.hpp"
+
+1343871469 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+	"DamageCalculatorFactory.hpp"
+	"MessageManager.hpp"
+	"StringConstants.hpp"
+	"WeaponDifficultyCalculator.hpp"
+	"WeaponInfoManager.hpp"
+	"WeaponManager.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\arcanapointscalculator.cpp
 	"ArcanaPointsCalculator.hpp"
@@ -318,6 +337,9 @@
 	"CreatureCalculator.hpp"
 	"EvadeCalculator.hpp"
 	"SoakCalculator.hpp"
+
+1343574105 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\damagecalculator.cpp
+	"DamageCalculator.hpp"
 
 1343573958 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\damagecalculatorfactory.cpp
 	<boost/make_shared.hpp>
@@ -369,17 +391,13 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicalcombattargetnumbercalculator.cpp
 	"MagicalCombatTargetNumberCalculator.hpp"
 
-1343574013 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicaldamagecalculator.cpp
-	"MagicalDamageCalculator.hpp"
-
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\meleeandrangedcombattargetnumbercalculator.cpp
 	"MeleeAndRangedCombatTargetNumberCalculator.hpp"
 	"WeaponDifficultyCalculator.hpp"
 
-1343573924 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\physicaldamagecalculator.cpp
-	<cmath>
-	"PhysicalDamageCalculator.hpp"
-	"WeaponManager.hpp"
+1341681580 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\mountainclimbingcalculator.cpp
+	"MountainClimbingCalculator.hpp"
+	"RNG.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\resistancescalculator.cpp
 	"Resistances.hpp"
@@ -407,9 +425,22 @@
 1339107602 c:\cygwin\home\julian\jrcpp\engine\calculators\source\unit_tests\soakcalculator_test.cpp
 	"gtest/gtest.h"
 
+1341664630 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\swimmingcalculator.cpp
+	<algorithm>
+	"SwimmingCalculator.hpp"
+
 1342705573 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\tohitcalculator.cpp
 	"SkillManager.hpp"
 	"ToHitCalculator.hpp"
+	"WeaponManager.hpp"
+
+1341149867 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\tohitcalculatorfactory.cpp
+	<boost/make_shared.hpp>
+	"CombatConstants.hpp"
+	"ToHitCalculatorFactory.hpp"
+	"LightMeleeAndRangedWeaponToHitCalculator.hpp"
+	"HeavyWeaponToHitCalculator.hpp"
+	"MagicToHitCalculator.hpp"
 	"WeaponManager.hpp"
 
 1343737441 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\weapondifficultycalculator.cpp
@@ -645,6 +676,38 @@
 1340549990 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\deity\source\ideitydecisionstrategyhandler.cpp
 	"IDeityDecisionStrategyHandler.hpp"
 
+1342452632 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\astarsearchstrategy.cpp
+	<algorithm>
+	<boost/foreach.hpp>
+	"AStarSearchStrategy.hpp"
+
+1342198511 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\breadthfirstsearchstrategy.cpp
+	<boost/foreach.hpp>
+	"BreadthFirstSearchStrategy.hpp"
+
+1342452323 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
+	<boost/foreach.hpp>
+	"MapUtils.hpp"
+	"Search.hpp"
+
+1342452726 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
+	<algorithm>
+	<sstream>
+	<boost/foreach.hpp>
+	"SearchNode.hpp"
+
+1342452694 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
+	<boost/make_shared.hpp>
+	"AStarSearchStrategy.hpp"
+	"BreadthFirstSearchStrategy.hpp"
+	"SearchStrategyFactory.hpp"
+	"UniformCostSearchStrategy.hpp"
+
+1342445237 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\uniformcostsearchstrategy.cpp
+	<algorithm>
+	<boost/foreach.hpp>
+	"UniformCostSearchStrategy.hpp"
+
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategy.cpp
 	"DecisionStrategy.hpp"
 
@@ -663,6 +726,11 @@
 	<string>
 	<sstream>
 	"ImmobileDecisionStrategy.hpp"
+
+1342107965 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\mobiledecisionstrategy.cpp
+	<string>
+	<sstream>
+	"MobileDecisionStrategy.hpp"
 
 1342199432 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
 	<boost/foreach.hpp>
@@ -1134,6 +1202,29 @@
 	"StringTable.hpp"
 	"WelcomeScreen.hpp"
 
+1342532786 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\detection.cpp
+	"Detection.hpp"
+	"MapUtils.hpp"
+	"MessageManager.hpp"
+	"SkillManager.hpp"
+
+1342541909 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\mountaineering.cpp
+	"CombatManager.hpp"
+	"Mountaineering.hpp"
+	"MountainClimbingCalculator.hpp"
+	"SkillManager.hpp"
+
+1343085965 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\skillmanager.cpp
+	"RNG.hpp"
+	"SkillManager.hpp"
+
+1342541525 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\swimming.cpp
+	"CombatManager.hpp"
+	"MessageManager.hpp"
+	"StringConstants.hpp"
+	"Swimming.hpp"
+	"SwimmingCalculator.hpp"
+
 1340845973 source:c:\cygwin\home\julian\jrcpp\engine\source\classmanager.cpp
 	"ClassManager.hpp"
 	"Game.hpp"
@@ -1209,6 +1300,22 @@
 	"MessageManager.hpp"
 	"ViewMapTranslator.hpp"
 	"WorldTimeKeeperCoordinator.hpp"
+
+1343566931 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemequipper.cpp
+	<boost/foreach.hpp>
+	"ActionManager.hpp"
+	"ClassManager.hpp"
+	"InitialItemEquipper.hpp"
+	"InitialItemSelector.hpp"
+	"ItemManager.hpp"
+
+1342961016 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemselector.cpp
+	"InitialItemSelector.hpp"
+	"RNG.hpp"
+	"unit_tests/InitialItemSelector_test.cpp"
+
+1342962479 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\initialitemselector_test.cpp
+	"gtest/gtest.h"
 
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\itemfactory.cpp
 	<boost/uuid/uuid_generators.hpp>
@@ -1308,11 +1415,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1342457449 source:c:\cygwin\home\julian\jrcpp\engine\source\skillmanager.cpp
-	"RNG.hpp"
-	"SkillManager.hpp"
-
-1343870981 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1343871900 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1325,6 +1428,10 @@
 	<iostream>
 	<fstream>
 
+1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\boatingmovementaccumulationchecker.cpp
+	"BoatingMovementAccumulationChecker.hpp"
+	"RNG.hpp"
+
 1341405023 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturehpregeneration.cpp
 	"CreatureHPRegeneration.hpp"
 
@@ -1332,6 +1439,10 @@
 	"ClassManager.hpp"
 	"CreaturePietyRegeneration.hpp"
 	"ReligionConstants.hpp"
+
+1343088346 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
+	"CreatureSkillIncrementer.hpp"
+	"MessageManager.hpp"
 
 1342715075 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturetimeobserver.cpp
 	<boost/foreach.hpp>
@@ -1351,8 +1462,44 @@
 	"Conversion.hpp"
 	"ITimeObserver.hpp"
 
+1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
+	"CombatManager.hpp"
+	"MountainClimbingMovementAccumulationChecker.hpp"
+	"RNG.hpp"
+
+1341580583 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulationchecker.cpp
+	"MovementAccumulationChecker.hpp"
+	"TerrainMovementAccumulationCheckerFactory.hpp"
+
+1341404993 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulator.cpp
+	"MovementAccumulator.hpp"
+	"MovementAccumulation.hpp"
+
+1341491731 source:c:\cygwin\home\julian\jrcpp\engine\time\source\nullmovementaccumulationchecker.cpp
+	"NullMovementAccumulationChecker.hpp"
+
 1340454385 source:c:\cygwin\home\julian\jrcpp\engine\time\source\regenerationconstants.cpp
 	"RegenerationConstants.hpp"
+
+1342009492 source:c:\cygwin\home\julian\jrcpp\engine\time\source\seasonstimeobserver.cpp
+	"Game.hpp"
+	"MessageManager.hpp"
+	"SeasonsTimeObserver.hpp"
+
+1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
+	"CombatManager.hpp"
+	"StringConstants.hpp"
+	"SwimmingCalculator.hpp"
+	"SwimmingMovementAccumulationChecker.hpp"
+	"RNG.hpp"
+
+1342538047 source:c:\cygwin\home\julian\jrcpp\engine\time\source\terrainmovementaccumulationcheckerfactory.cpp
+	<boost/make_shared.hpp>
+	"BoatingMovementAccumulationChecker.hpp"
+	"MountainClimbingMovementAccumulationChecker.hpp"
+	"NullMovementAccumulationChecker.hpp"
+	"SwimmingMovementAccumulationChecker.hpp"
+	"TerrainMovementAccumulationCheckerFactory.hpp"
 
 1341924718 source:c:\cygwin\home\julian\jrcpp\engine\time\source\worldtimekeeper.cpp
 	"Game.hpp"
@@ -1505,6 +1652,33 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\religion\source\religionfactory.cpp
 	"ReligionFactory.hpp"
 
+1342009215 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\autumn.cpp
+	"Autumn.hpp"
+	"StringConstants.hpp"
+
+1341967038 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\iseason.cpp
+	"ISeason.hpp"
+
+1341837587 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\seasonfactory.cpp
+	<boost/make_shared.hpp>
+	"SeasonFactory.hpp"
+	"Spring.hpp"
+	"Summer.hpp"
+	"Autumn.hpp"
+	"Winter.hpp"
+
+1342009239 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\spring.cpp
+	"Spring.hpp"
+	"StringConstants.hpp"
+
+1342009258 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\summer.cpp
+	"Summer.hpp"
+	"StringConstants.hpp"
+
+1342009277 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\winter.cpp
+	"Winter.hpp"
+	"StringConstants.hpp"
+
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\ageinfo.cpp
 	"AgeInfo.hpp"
 
@@ -1575,6 +1749,9 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\food.cpp
 	"Food.hpp"
 
+1342879193 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
+	"InitialItem.hpp"
+
 1341066953 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	<boost/foreach.hpp>
 	"Inventory.hpp"
@@ -1602,6 +1779,9 @@
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\miscitem.cpp
 	"MiscItem.hpp"
+
+1341239963 source:c:\cygwin\home\julian\jrcpp\world\source\movementaccumulation.cpp
+	"MovementAccumulation.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\plant.cpp
 	"Plant.hpp"
@@ -2004,205 +2184,14 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1341149867 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\tohitcalculatorfactory.cpp
-	<boost/make_shared.hpp>
-	"CombatConstants.hpp"
-	"ToHitCalculatorFactory.hpp"
-	"LightMeleeAndRangedWeaponToHitCalculator.hpp"
-	"HeavyWeaponToHitCalculator.hpp"
-	"MagicToHitCalculator.hpp"
-	"WeaponManager.hpp"
+1343910687 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicaldamagecalculator.cpp
+	"MagicalDamageCalculator.hpp"
 
-1341239963 source:c:\cygwin\home\julian\jrcpp\world\source\movementaccumulation.cpp
-	"MovementAccumulation.hpp"
-
-1341404993 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulator.cpp
-	"MovementAccumulator.hpp"
-	"MovementAccumulation.hpp"
-
-1341405643 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementaccumulationupdater.cpp
-	"MovementAccumulationUpdater.hpp"
-
-1341580583 source:c:\cygwin\home\julian\jrcpp\engine\time\source\movementaccumulationchecker.cpp
-	"MovementAccumulationChecker.hpp"
-	"TerrainMovementAccumulationCheckerFactory.hpp"
-
-1341491731 source:c:\cygwin\home\julian\jrcpp\engine\time\source\nullmovementaccumulationchecker.cpp
-	"NullMovementAccumulationChecker.hpp"
-
-1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\swimmingmovementaccumulationchecker.cpp
-	"CombatManager.hpp"
-	"StringConstants.hpp"
-	"SwimmingCalculator.hpp"
-	"SwimmingMovementAccumulationChecker.hpp"
-	"RNG.hpp"
-
-1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\mountainclimbingmovementaccumulationchecker.cpp
-	"CombatManager.hpp"
-	"MountainClimbingMovementAccumulationChecker.hpp"
-	"RNG.hpp"
-
-1342538047 source:c:\cygwin\home\julian\jrcpp\engine\time\source\terrainmovementaccumulationcheckerfactory.cpp
-	<boost/make_shared.hpp>
-	"BoatingMovementAccumulationChecker.hpp"
-	"MountainClimbingMovementAccumulationChecker.hpp"
-	"NullMovementAccumulationChecker.hpp"
-	"SwimmingMovementAccumulationChecker.hpp"
-	"TerrainMovementAccumulationCheckerFactory.hpp"
-
-1341664630 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\swimmingcalculator.cpp
-	<algorithm>
-	"SwimmingCalculator.hpp"
-
-1341681580 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\mountainclimbingcalculator.cpp
-	"MountainClimbingCalculator.hpp"
-	"RNG.hpp"
-
-1341752549 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tilemovementconfirmation.cpp
-	"MapUtils.hpp"
-	"TileMovementConfirmation.hpp"
-
-1342009215 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\autumn.cpp
-	"Autumn.hpp"
-	"StringConstants.hpp"
-
-1342009239 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\spring.cpp
-	"Spring.hpp"
-	"StringConstants.hpp"
-
-1342009258 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\summer.cpp
-	"Summer.hpp"
-	"StringConstants.hpp"
-
-1342009277 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\winter.cpp
-	"Winter.hpp"
-	"StringConstants.hpp"
-
-1341837587 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\seasonfactory.cpp
-	<boost/make_shared.hpp>
-	"SeasonFactory.hpp"
-	"Spring.hpp"
-	"Summer.hpp"
-	"Autumn.hpp"
-	"Winter.hpp"
-
-1341967038 source:c:\cygwin\home\julian\jrcpp\world\seasons\source\iseason.cpp
-	"ISeason.hpp"
-
-1342009492 source:c:\cygwin\home\julian\jrcpp\engine\time\source\seasonstimeobserver.cpp
-	"Game.hpp"
-	"MessageManager.hpp"
-	"SeasonsTimeObserver.hpp"
-
-1342107965 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\mobiledecisionstrategy.cpp
-	<string>
-	<sstream>
-	"MobileDecisionStrategy.hpp"
-
-1342194244 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\greedysearchstrategy.cpp
-	"GreedySearchStrategy.hpp"
-
-1342452726 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchnode.cpp
-	<algorithm>
-	<sstream>
-	<boost/foreach.hpp>
-	"SearchNode.hpp"
-
-1342452323 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\search.cpp
-	<boost/foreach.hpp>
-	"MapUtils.hpp"
-	"Search.hpp"
-
-1342198511 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\breadthfirstsearchstrategy.cpp
-	<boost/foreach.hpp>
-	"BreadthFirstSearchStrategy.hpp"
-
-1342452694 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\searchstrategyfactory.cpp
-	<boost/make_shared.hpp>
-	"AStarSearchStrategy.hpp"
-	"BreadthFirstSearchStrategy.hpp"
-	"SearchStrategyFactory.hpp"
-	"UniformCostSearchStrategy.hpp"
-
-1342449545 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\depthfirstsearchstrategy.cpp
-	<boost/foreach.hpp>
-	"DepthFirstSearchStrategy.hpp"
-
-1342445237 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\uniformcostsearchstrategy.cpp
-	<algorithm>
-	<boost/foreach.hpp>
-	"UniformCostSearchStrategy.hpp"
-
-1342452632 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\search\source\astarsearchstrategy.cpp
-	<algorithm>
-	<boost/foreach.hpp>
-	"AStarSearchStrategy.hpp"
-
-1343085965 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\skillmanager.cpp
-	"RNG.hpp"
-	"SkillManager.hpp"
-
-1342532786 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\detection.cpp
-	"Detection.hpp"
-	"MapUtils.hpp"
-	"MessageManager.hpp"
-	"SkillManager.hpp"
-
-1342715118 source:c:\cygwin\home\julian\jrcpp\engine\time\source\boatingmovementaccumulationchecker.cpp
-	"BoatingMovementAccumulationChecker.hpp"
-	"RNG.hpp"
-
-1342541909 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\mountaineering.cpp
-	"CombatManager.hpp"
-	"Mountaineering.hpp"
-	"MountainClimbingCalculator.hpp"
-	"SkillManager.hpp"
-
-1342541525 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\swimming.cpp
-	"CombatManager.hpp"
-	"MessageManager.hpp"
-	"StringConstants.hpp"
-	"Swimming.hpp"
-	"SwimmingCalculator.hpp"
-
-1343088346 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
-	"CreatureSkillIncrementer.hpp"
-	"MessageManager.hpp"
-
-1342879193 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
-	"InitialItem.hpp"
-
-1342879520 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlinitialitemreader.cpp
-	<boost/foreach.hpp>
-	"XMLInitialItemReader.hpp"
-
-1342961016 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemselector.cpp
-	"InitialItemSelector.hpp"
-	"RNG.hpp"
-	"unit_tests/InitialItemSelector_test.cpp"
-
-1342962479 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\initialitemselector_test.cpp
-	"gtest/gtest.h"
-
-1343566931 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemequipper.cpp
-	<boost/foreach.hpp>
-	"ActionManager.hpp"
-	"ClassManager.hpp"
-	"InitialItemEquipper.hpp"
-	"InitialItemSelector.hpp"
-	"ItemManager.hpp"
-
-1343871469 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
-	"DamageCalculatorFactory.hpp"
-	"MessageManager.hpp"
-	"StringConstants.hpp"
-	"WeaponDifficultyCalculator.hpp"
-	"WeaponInfoManager.hpp"
-	"WeaponManager.hpp"
-
-1343574105 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\damagecalculator.cpp
-	"DamageCalculator.hpp"
-
-1343573560 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\rangedphysicaldamagecalculator.cpp
+1343911534 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\rangedphysicaldamagecalculator.cpp
 	"RangedPhysicalDamageCalculator.hpp"
+
+1343911617 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\physicaldamagecalculator.cpp
+	<cmath>
+	"PhysicalDamageCalculator.hpp"
+	"WeaponManager.hpp"
 

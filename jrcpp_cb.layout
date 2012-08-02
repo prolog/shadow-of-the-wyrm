@@ -325,8 +325,8 @@
 	<File name="engine\actions\source\VersionActionManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="169" topLine="0" />
 	</File>
-	<File name="engine\actions\source\WeaponInfoManager.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2689" topLine="65" />
+	<File name="engine\actions\source\WeaponInfoManager.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="3246" topLine="67" />
 	</File>
 	<File name="engine\calculators\include\ArcanaPointsCalculator.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="68" topLine="0" />
@@ -409,8 +409,8 @@
 	<File name="engine\calculators\source\HitPointsCalculator.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="269" topLine="7" />
 	</File>
-	<File name="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="964" topLine="20" />
+	<File name="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="946" topLine="11" />
 	</File>
 	<File name="engine\calculators\source\MagicToHitCalculator.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="709" topLine="8" />
@@ -449,7 +449,7 @@
 		<Cursor position="145" topLine="0" />
 	</File>
 	<File name="engine\calculators\source\ToHitCalculatorFactory.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="719" topLine="15" />
+		<Cursor position="719" topLine="25" />
 	</File>
 	<File name="engine\calculators\source\WeaponDifficultyCalculator.cpp" open="0" top="0" tabpos="19">
 		<Cursor position="684" topLine="8" />
@@ -1099,8 +1099,8 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="412" topLine="22" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="6837" topLine="195" />
+	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="4626" topLine="115" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="0" topLine="0" />
@@ -1216,8 +1216,8 @@
 	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="4541" topLine="154" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="45156" topLine="1030" />
+	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="5">
+		<Cursor position="5494" topLine="114" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />

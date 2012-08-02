@@ -29,3 +29,9 @@ Damage MagicalDamageCalculator::calculate_base_damage_object(CreaturePtr creatur
   Damage d;
   return d;
 }
+
+Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(CreaturePtr creature)
+{
+  // JCD FIXME
+  return calculate_base_damage_object(creature);
+}

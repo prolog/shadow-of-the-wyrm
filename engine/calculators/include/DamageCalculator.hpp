@@ -10,6 +10,7 @@ class DamageCalculator
   
     virtual int calculate(CreaturePtr defending_creature, const Damage& damage, const int base_damage, const float soak_multiplier) = 0;
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature) = 0;
+    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature) = 0;
     
   protected:
     AttackType attack_type;
