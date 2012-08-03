@@ -450,7 +450,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatconstants.cpp
 	"CombatConstants.hpp"
 
-1342701070 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1343912373 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"
