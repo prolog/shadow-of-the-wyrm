@@ -1028,6 +1028,9 @@
 					<Hunting>15</Hunting>
 					<Jumping>10</Jumping>
 				</GeneralSkills>
+				<WeaponSkills>
+					<Daggers>5</Daggers>
+				</WeaponSkills>
 				<RangedWeaponSkills>
 					<Bows>7</Bows>
 					<Crossbows>7</Crossbows>
@@ -1037,6 +1040,90 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
+			<InitialEquipmentAndInventory>
+				<Head><ID>leather_helm</ID></Head>
+				<Wielded><ID>dagger</ID></Wielded>
+				<Body><ID>leather_armour</ID></Body>
+				<AboutBody><ID>cloak</ID></AboutBody>
+				<Feet><ID>leather_boots</ID></Feet>
+				<Ranged>
+					<Races>
+						<Race>
+							<RaceID>01_human</RaceID>
+							<ID>yew_bow</ID>
+						</Race>
+						<Race>
+							<RaceID>02_woodelf</RaceID>
+							<ID>ash_bow</ID>
+						</Race>
+						<Race>
+							<RaceID>03_mountainelf</RaceID>
+							<ID>ash_bow</ID>
+						</Race>
+						<Race>
+							<RaceID>04_marshelf</RaceID>
+							<ID></ID>
+						</Race>
+						<Race>
+							<RaceID>05_pixie</RaceID>
+							<ID>sling</ID>
+						</Race>
+						<Race>
+							<RaceID>06_dwarf</RaceID>
+							<ID>crossbow</ID>
+						</Race>
+						<Race>
+							<RaceID>07_goblin</RaceID>
+							<ID>sling</ID>
+						</Race>
+						<Race>
+							<RaceID>08_gnoll</RaceID>
+							<ID></ID>
+						</Race>
+						<Race>
+							<RaceID>09_giant</RaceID>
+							<ID></ID>
+						</Race>
+						<Race>
+							<RaceID>10_ratling</RaceID>
+							<ID>sling</ID>
+						</Race>
+					</Races>
+				</Ranged>
+				<Ammunition>
+					<ID>arrow</ID>
+					<Races>
+						<Race>
+							<RaceID>04_marshelf</RaceID>
+							<ID>javelin</ID>
+						</Race>
+						<Race>
+							<RaceID>05_pixie</RaceID>
+							<ID>_rock</ID>
+						</Race>
+						<Race>
+							<RaceID>06_dwarf</RaceID>
+							<ID>bolt</ID>
+						</Race>
+						<Race>
+							<RaceID>07_goblin</RaceID>
+							<ID>_rock</ID>
+						</Race>
+						<Race>
+							<RaceID>08_gnoll</RaceID>
+							<ID>_rock</ID>
+						</Race>
+						<Race>
+							<RaceID>09_giant</RaceID>
+							<ID>throwing_club</ID>
+						</Race>
+						<Race>
+							<RaceID>10_ratling</RaceID>
+							<ID>_rock</ID>
+						</Race>
+					</Races>
+				</Ammunition>
+			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="artisan">
 			<UserPlayable>1</UserPlayable>
@@ -2945,7 +3032,7 @@
 				<UsageDescriptionSID>SLING_USAGE_SID</UsageDescriptionSID>
 				<Value>5</Value>
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
-				<WornLocation>4</WornLocation>
+				<WornLocation>9</WornLocation>
 				<Material>4</Material>
 				<Skill>2007</Skill>
 				<Difficulty>45</Difficulty>
@@ -2953,6 +3040,36 @@
 					<NumDice>1</NumDice>
 					<NumSides>2</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="yew_bow">
+				<DescriptionSID>YEW_BOW_SID</DescriptionSID>
+				<UsageDescriptionSID>YEW_BOW_USAGE_SID</UsageDescriptionSID>
+				<Value>65</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>9</WornLocation>
+				<Material>8</Material>
+				<Skill>2003</Skill>
+				<Difficulty>45</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="ash_bow">
+				<DescriptionSID>ASH_BOW_SID</DescriptionSID>
+				<UsageDescriptionSID>ASH_BOW_USAGE_SID</UsageDescriptionSID>
+				<Value>80</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>9</WornLocation>
+				<Material>8</Material>
+				<Skill>2003</Skill>
+				<Difficulty>41</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Type>1</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="crossbow">
@@ -2991,6 +3108,21 @@
 					<Type>2</Type>
 				</Damage>
 			</Missile>
+			<Missile id="arrow">
+				<DescriptionSID>ARROW_SID</DescriptionSID>
+				<UsageDescriptionSID>ARROW_USAGE_SID</UsageDescriptionSID>
+				<Value>3</Value>
+				<Weight><Pounds>0</Pounds><Ounces>9</Ounces></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<Skill>2003</Skill>
+				<Difficulty>43</Difficulty>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>2</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
 			<Missile id="bolt">
 				<DescriptionSID>BOLT_SID</DescriptionSID>
 				<UsageDescriptionSID>BOLT_USAGE_SID</UsageDescriptionSID>
@@ -3004,6 +3136,36 @@
 					<NumDice>1</NumDice>
 					<NumSides>2</NumSides>
 					<Type>1</Type>
+				</Damage>
+			</Missile>
+			<Missile id="javelin">
+				<DescriptionSID>JAVELIN_SID</DescriptionSID>
+				<UsageDescriptionSID>JAVELIN_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<Skill>2008</Skill>
+				<Difficulty>46</Difficulty>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>3</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Missile>
+			<Missile id="throwing_club">
+				<DescriptionSID>THROWING_CLUB_SID</DescriptionSID>
+				<UsageDescriptionSID>THROWING_CLUB_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<Skill>2002</Skill>
+				<Difficulty>46</Difficulty>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>2</NumSides>
+					<Type>2</Type>
 				</Damage>
 			</Missile>
 		</Ammunition>
