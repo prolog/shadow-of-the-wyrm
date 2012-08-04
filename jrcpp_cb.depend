@@ -117,10 +117,11 @@
 	"XMLCreaturesReader.hpp"
 	"DecisionStrategyFactory.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmldatastructures.cpp
+1344093366 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmldatastructures.cpp
+	<iostream>
+	"buildinfo.hpp"
 	"XMLDataStructures.hpp"
 	"Conversion.hpp"
-	<iostream>
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmldeitiesreader.cpp
 	<vector>
@@ -2194,4 +2195,7 @@
 	<cmath>
 	"PhysicalDamageCalculator.hpp"
 	"WeaponManager.hpp"
+
+1344092919 source:c:\cygwin\home\julian\jrcpp\engine\source\buildinfo.cpp
+	"buildinfo.hpp"
 

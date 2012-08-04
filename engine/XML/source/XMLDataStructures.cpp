@@ -1,9 +1,14 @@
+#include <iostream>
+#include "buildinfo.hpp"
 #include "XMLDataStructures.hpp"
 #include "Conversion.hpp"
-#include <iostream>
 
 using namespace xercesc;
 using namespace std;
+
+// XML static vars
+// Right now, there is only one namespace used for SavageLands.
+string XML::xml_namespace = "urn:savage_lands:1.0.0";
 
 // Routines for setting up/tearing down the XML Library.  Xerces requires these.
 void XML::initialize()
@@ -33,6 +38,11 @@ void XML::tear_down()
   }
 }
 
+string XML::get_namespace()
+{
+  return xml_namespace;
+}
+
 // By default, always search using the Savage Lands namespace - no need to try anything else, yet.
 XMLNode XMLUtils::get_next_element_by_local_name(const XMLNode& node, const string& node_name)
 {
@@ -57,7 +67,7 @@ vector<XMLNode> XMLUtils::get_elements_by_local_name(const XMLNode& node, const 
 
   if (!node.is_null())
   {
-    XMLTypeString xml_s_ns("urn:savage_lands:1.0.0");
+    XMLTypeString xml_s_ns(XML::get_namespace().c_str());
     XMLTypeString xml_local_name(node_name.c_str());
 
     XMLElementImplPtr internal_node = node.get_node();
@@ -69,9 +79,17 @@ vector<XMLNode> XMLUtils::get_elements_by_local_name(const XMLNode& node, const 
       XMLNodeImplPtr current_node = node_list->item(x);
       if (current_node->getNodeType() == DOMNode::ELEMENT_NODE)
       {
-        XMLElementImplPtr element = static_cast<XMLElementImplPtr>(current_node);
-        XMLNode new_result_node(element);
-        result.push_back(new_result_node);
+        XMLNodeImplPtr parent_node = current_node->getParentNode();
+        
+        CTypeString parent_name(parent_node->getLocalName());
+        CTypeString param_node_name(node.get_node()->getLocalName());
+        
+        if (strcmp(parent_name.get_cstr(), param_node_name.get_cstr()) == 0)
+        {
+          XMLElementImplPtr element = static_cast<XMLElementImplPtr>(current_node);
+          XMLNode new_result_node(element);
+          result.push_back(new_result_node);          
+        }
       }
     }
   }
