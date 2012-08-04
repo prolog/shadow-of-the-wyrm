@@ -48,6 +48,7 @@ class XMLNode
 
     void set_node(XMLElementImplPtr new_node);
     XMLElementImplPtr get_node() const;
+    
 
     bool is_null() const;
 
@@ -60,6 +61,11 @@ class XML
   public:
     static void initialize();
     static void tear_down();
+    
+    static std::string get_namespace();
+    
+  protected:
+    static std::string xml_namespace;
 };
 
 class XMLUtils
