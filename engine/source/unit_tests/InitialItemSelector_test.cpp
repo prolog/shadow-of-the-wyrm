@@ -27,6 +27,24 @@ InitialItem make_populated_initial_item(const bool populate_random)
   return ii;
 }
 
+TEST(SL_Engine_InitialItemSelector, empty)
+{
+  InitialItem ii;
+  InitialItemSelector iis;
+  string empty_string;
+  
+  EXPECT_EQ(empty_string, iis.get_item_id("dwarf", ii));
+}
+
+TEST(SL_Engine_InitialItemSelector, no_base_id_and_race_not_found)
+{
+  InitialItemSelector iis;
+  InitialItem ii = make_populated_initial_item(false);
+  ii.set_item_id("");
+  
+  EXPECT_EQ("", iis.get_item_id("nina_cow", ii));  
+}
+
 TEST(SL_Engine_InitialItemSelector, base_id)
 {
   InitialItem ii;
