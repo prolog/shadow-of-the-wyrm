@@ -921,29 +921,37 @@
 		<xs:maxInclusive value="49"/>
 	</xs:restriction>
 </xs:simpleType>
-<xs:simpleType name="MeleeWeaponSkillType">
-	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
-	<xs:restriction base="xs:int">
-		<xs:minInclusive value="1000"/>
-		<xs:maxInclusive value="1008"/>
-	</xs:restriction>
-</xs:simpleType>
-<xs:simpleType name="RangedWeaponSkillType">
-	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
-	<xs:restriction base="xs:int">
-		<xs:minInclusive value="2000"/>
-		<xs:maxInclusive value="2008"/>
-	</xs:restriction>
-</xs:simpleType>
 <xs:simpleType name="MagicSkillType">
 	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
 	<xs:restriction base="xs:int">
-		<xs:minInclusive value="3000"/>
-		<xs:maxInclusive value="3003"/>
+		<xs:enumeration value="3000"/>
+		<xs:enumeration value="3001"/>
+		<xs:enumeration value="3002"/>
+		<xs:enumeration value="3003"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TrainedWeaponSkill">
-	<xs:union memberTypes="tns:MeleeWeaponSkillType tns:RangedWeaponSkillType"/>
+	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:enumeration value="1000"/>
+		<xs:enumeration value="1001"/>
+		<xs:enumeration value="1002"/>
+		<xs:enumeration value="1003"/>
+		<xs:enumeration value="1004"/>
+		<xs:enumeration value="1005"/>
+		<xs:enumeration value="1006"/>
+		<xs:enumeration value="1007"/>
+		<xs:enumeration value="1008"/>
+		<xs:enumeration value="2000"/>
+		<xs:enumeration value="2001"/>
+		<xs:enumeration value="2002"/>
+		<xs:enumeration value="2003"/>
+		<xs:enumeration value="2004"/>
+		<xs:enumeration value="2005"/>
+		<xs:enumeration value="2006"/>
+		<xs:enumeration value="2007"/>
+		<xs:enumeration value="2008"/>
+	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="NonNegativeDecimal">
     <xs:restriction base="xs:decimal">

@@ -111,7 +111,6 @@ int NCursesPromptProcessor::get_prompt(WINDOW* window, MENU* options_menu)
   return item_idx;
 }
 
-// JCD: Still unwieldy.  Fix.
 void NCursesPromptProcessor::show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
   string empty_string;
