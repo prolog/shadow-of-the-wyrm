@@ -256,7 +256,7 @@
 					<Bows>7</Bows>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.05</ExperienceMultiplier>		
+			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
 		</Race>
 		<Race id="03_mountainelf">
 			<UserPlayable>1</UserPlayable>
@@ -281,9 +281,9 @@
 				<Strength>9</Strength>
 				<Dexterity>13</Dexterity>
 				<Agility>12</Agility>
-				<Health>11</Health>
+				<Health>10</Health>
 				<Intelligence>12</Intelligence>
-				<Willpower>11</Willpower>
+				<Willpower>12</Willpower>
 				<Charisma>9</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
@@ -332,7 +332,7 @@
 					<Slings>7</Slings>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.02</ExperienceMultiplier>
+			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 		</Race>
 		<Race id="04_marshelf">
 			<UserPlayable>1</UserPlayable>
@@ -358,7 +358,7 @@
 				<Dexterity>11</Dexterity>
 				<Agility>12</Agility>
 				<Health>8</Health>
-				<Intelligence>14</Intelligence>
+				<Intelligence>15</Intelligence>
 				<Willpower>14</Willpower>
 				<Charisma>7</Charisma>
 				<Speed>50</Speed>
@@ -405,7 +405,7 @@
 					<Spears>7</Spears>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.08</ExperienceMultiplier>
+			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 		</Race>
 		<Race id="05_pixie">
 			<UserPlayable>1</UserPlayable>
@@ -551,7 +551,7 @@
 					<Crossbows>5</Crossbows>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.04</ExperienceMultiplier>
+			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 		</Race>
 		<Race id="07_goblin">
 			<UserPlayable>1</UserPlayable>
@@ -626,9 +626,9 @@
 					<Slings>7</Slings>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>0.93</ExperienceMultiplier>		
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 		</Race>
-		<Race id="08_gnoll">
+		<Race id="08_ogre">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
@@ -648,18 +648,18 @@
 				</MaximumAge>
 			</AgeInfo>
 			<RaceInitialStatistics>
-				<Strength>14</Strength>
+				<Strength>16</Strength>
 				<Dexterity>9</Dexterity>
 				<Agility>9</Agility>
-				<Health>14</Health>
-				<Intelligence>8</Intelligence>
+				<Health>16</Health>
+				<Intelligence>7</Intelligence>
 				<Willpower>12</Willpower>
 				<Charisma>7</Charisma>
 				<Speed>52</Speed>
 			</RaceInitialStatistics>
 			<RaceInitialModifiers>
-				<ValourModifier>9</ValourModifier>
-				<SpiritModifier>1</SpiritModifier>
+				<ValourModifier>10</ValourModifier>
+				<SpiritModifier>0</SpiritModifier>
 			</RaceInitialModifiers>	
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
@@ -673,7 +673,7 @@
 				<Heat>0.05</Heat>
 				<Cold>0.0</Cold>
 				<Acid>0.1</Acid>
-				<Poison>0.15</Poison>
+				<Poison>0</Poison>
 				<Holy>-0.2</Holy>
 				<Shadow>0.15</Shadow>
 				<Arcane>-0.1</Arcane>
@@ -694,11 +694,10 @@
 					<Tanning>10</Tanning>
 				</GeneralSkills>
 				<WeaponSkills>
-					<Axes>7</Axes>
-					<Bludgeons>7</Bludgeons>
+					<Bludgeons>9</Bludgeons>
 				</WeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>0.96</ExperienceMultiplier>		
+			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
 		</Race>
 		<Race id="09_giant">
 			<UserPlayable>1</UserPlayable>
@@ -770,9 +769,9 @@
 					<Bludgeons>7</Bludgeons>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 		</Race>
-		<Race id="10_ratling">
+		<Race id="10_gnome">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
@@ -792,12 +791,12 @@
 				</MaximumAge>
 			</AgeInfo>
 			<RaceInitialStatistics>
-				<Strength>9</Strength>
+				<Strength>7</Strength>
 				<Dexterity>12</Dexterity>
 				<Agility>12</Agility>
-				<Health>13</Health>
-				<Intelligence>10</Intelligence>
-				<Willpower>11</Willpower>
+				<Health>11</Health>
+				<Intelligence>13</Intelligence>
+				<Willpower>13</Willpower>
 				<Charisma>9</Charisma>
 				<Speed>48</Speed>
 			</RaceInitialStatistics>
@@ -815,15 +814,15 @@
 				<Pierce>0.0</Pierce>
 				<Pound>0.0</Pound>
 				<Heat>0.0</Heat>
-				<Cold>0.0</Cold>
-				<Acid>0.0</Acid>
-				<Poison>0.25</Poison>
+				<Cold>-0.1</Cold>
+				<Acid>-0.1</Acid>
+				<Poison>0.1</Poison>
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
-				<Arcane>0.0</Arcane>
+				<Arcane>0.1</Arcane>
 				<Mental>0.0</Mental>
 				<Sonic>0.0</Sonic>
-				<Radiant>-0.2</Radiant>
+				<Radiant>0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -844,7 +843,7 @@
 					<Rocks>5</Rocks>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.0</ExperienceMultiplier>
+			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 		</Race>
 	</Races>
 	<Classes>
@@ -1077,7 +1076,7 @@
 							<ID>sling</ID>
 						</Race>
 						<Race>
-							<RaceID>08_gnoll</RaceID>
+							<RaceID>08_ogre</RaceID>
 							<ID></ID>
 						</Race>
 						<Race>
@@ -1085,7 +1084,7 @@
 							<ID></ID>
 						</Race>
 						<Race>
-							<RaceID>10_ratling</RaceID>
+							<RaceID>10_gnome</RaceID>
 							<ID>sling</ID>
 						</Race>
 					</Races>
@@ -1110,7 +1109,7 @@
 							<ID>_rock</ID>
 						</Race>
 						<Race>
-							<RaceID>08_gnoll</RaceID>
+							<RaceID>08_ogre</RaceID>
 							<ID>_rock</ID>
 						</Race>
 						<Race>
@@ -1118,7 +1117,7 @@
 							<ID>throwing_club</ID>
 						</Race>
 						<Race>
-							<RaceID>10_ratling</RaceID>
+							<RaceID>10_gnome</RaceID>
 							<ID>_rock</ID>
 						</Race>
 					</Races>
@@ -2059,7 +2058,7 @@
 							<ID>short_sword</ID>
 						</Race>
 						<Race>
-							<RaceID>08_gnoll</RaceID>
+							<RaceID>08_ogre</RaceID>
 							<ID>battle_axe</ID>
 						</Race>
 						<Race>
@@ -2067,7 +2066,7 @@
 							<ID>iron_hammer</ID>
 						</Race>
 						<Race>
-							<RaceID>10_ratling</RaceID>
+							<RaceID>10_gnome</RaceID>
 							<ID>dagger</ID>
 						</Race>
 					</Races>
@@ -2092,7 +2091,7 @@
 							<ID>buckler</ID>
 						</Race>
 						<Race>
-							<RaceID>10_ratling</RaceID>
+							<RaceID>10_gnome</RaceID>
 							<ID>buckler</ID>
 						</Race>
 					</Races>
@@ -2117,11 +2116,11 @@
 							<ID>chain_scraps</ID>
 						</Race>
 						<Race>
-							<RaceID>08_gnoll</RaceID>
+							<RaceID>08_ogre</RaceID>
 							<ID>chain_scraps</ID>
 						</Race>
 						<Race>
-							<RaceID>10_ratling</RaceID>
+							<RaceID>10_gnome</RaceID>
 							<ID>leather_armour</ID>
 						</Race>
 					</Races>
