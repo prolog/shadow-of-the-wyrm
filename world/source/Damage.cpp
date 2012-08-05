@@ -28,6 +28,7 @@ Damage& Damage::operator=(const Damage& d)
     num_dice   = d.num_dice;
     dice_sides = d.dice_sides;
     modifier   = d.modifier;
+    damage_type= d.damage_type;
   }
   
   return *this;
