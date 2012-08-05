@@ -73,7 +73,7 @@
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="34" topLine="0" />
 	</File>
-	<File name="display\source\NCursesPromptProcessor.cpp" open="1" top="0" tabpos="14">
+	<File name="display\source\NCursesPromptProcessor.cpp" open="1" top="1" tabpos="14">
 		<Cursor position="2465" topLine="108" />
 	</File>
 	<File name="display\source\unit_tests\Display_test.cpp" open="0" top="0" tabpos="6">

@@ -1015,7 +1015,7 @@
 	"Dimensions.hpp"
 	"RNG.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\terraingeneratorfactory.cpp
+1344173304 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\terraingeneratorfactory.cpp
 	<boost/make_shared.hpp>
 	"CavernGenerator.hpp"
 	"DesertGenerator.hpp"
@@ -1023,6 +1023,7 @@
 	"FieldGenerator.hpp"
 	"ForestGenerator.hpp"
 	"Game.hpp"
+	"HillsGenerator.hpp"
 	"MarshGenerator.hpp"
 	"MountainsGenerator.hpp"
 	"RaceManager.hpp"
@@ -1047,7 +1048,7 @@
 1339107604 c:\cygwin\home\julian\jrcpp\engine\generators\source\unit_tests\tilegenerator_test.cpp
 	"gtest/gtest.h"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
+1344171804 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\worldgenerator.cpp
 	<vector>
 	<boost/foreach.hpp>
 	"AlignmentEnums.hpp"

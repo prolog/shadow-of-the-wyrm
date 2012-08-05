@@ -174,10 +174,10 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();
   
-  CellMap cell_map, forest_cell_map, mountains_cell_map, scrub_cell_map, marsh_cell_map, desert_cell_map;
-  CellValue world_val, forest_val, mountains_val, scrub_val, marsh_val, desert_val;
+  CellMap cell_map, forest_cell_map, hills_cell_map, mountains_cell_map, scrub_cell_map, marsh_cell_map, desert_cell_map;
+  CellValue world_val, forest_val, hills_val, mountains_val, scrub_val, marsh_val, desert_val;
   
-  populate_terrain_cell_maps(dimensions, cell_map, forest_cell_map, mountains_cell_map, scrub_cell_map, marsh_cell_map, desert_cell_map);
+  populate_terrain_cell_maps(dimensions, cell_map, forest_cell_map, hills_cell_map, mountains_cell_map, scrub_cell_map, marsh_cell_map, desert_cell_map);
 
   for (int row = 0; row < rows; row++)
   {
@@ -185,6 +185,7 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
     {
       world_val  = cell_map[row][col];
       forest_val = forest_cell_map[row][col];
+      hills_val = hills_cell_map[row][col];
       mountains_val = mountains_cell_map[row][col];
       scrub_val = scrub_cell_map[row][col];
       marsh_val = marsh_cell_map[row][col];
@@ -192,6 +193,7 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
 
       // Always add field, if available.  Add forests, scrub, marsh if the tile is not sea.  Add mountains if the tile is field.
       process_field_cell(result_map, row, col, world_val);
+      process_hill_cell(result_map, row, col, hills_val, world_val);
       process_marsh_cell(result_map, row, col, marsh_val, world_val);
       process_forest_cell(result_map, row, col, forest_val, world_val);
       process_scrub_cell(result_map, row, col, scrub_val, world_val);
@@ -204,7 +206,17 @@ MapPtr WorldGenerator::generate_random_islands(MapPtr result_map)
 }
 
 // Populate the various cell maps by running cellular automata simulations and assigning the values to the maps.
-void WorldGenerator::populate_terrain_cell_maps(const Dimensions& dimensions, CellMap& field_cell_map, CellMap& forest_cell_map, CellMap& mountains_cell_map, CellMap& marsh_cell_map, CellMap& scrub_cell_map, CellMap& desert_cell_map)
+void WorldGenerator::populate_terrain_cell_maps
+(
+  const Dimensions& dimensions
+, CellMap& field_cell_map
+, CellMap& forest_cell_map
+, CellMap& hills_cell_map
+, CellMap& mountains_cell_map
+, CellMap& marsh_cell_map
+, CellMap& scrub_cell_map
+, CellMap& desert_cell_map
+)
 {
   // Field-Islands
   CellularAutomataSettings cas(55, 50000, 4, 54, CELL_OFF);
@@ -215,6 +227,11 @@ void WorldGenerator::populate_terrain_cell_maps(const Dimensions& dimensions, Ce
   CellularAutomataSettings cas_forest(52, 50000, 4, 54, CELL_OFF);
   CellularAutomataGenerator cag_forest(cas_forest, dimensions);
   forest_cell_map = cag_forest.generate();
+  
+  // Hills
+  CellularAutomataSettings cas_hills(51, 50000, 4, 54, CELL_OFF);
+  CellularAutomataGenerator cag_hills(cas_hills, dimensions);
+  hills_cell_map = cag_hills.generate();
 
   // Mountains
   CellularAutomataSettings cas_mountains(45, 50000, 4, 45, CELL_ON);
@@ -268,6 +285,32 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
         remove_village_coordinates_if_present(c);
         tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
       }            
+    }
+    
+    result_map->insert(row, col, tile);
+  }
+}
+
+void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const int col, const CellValue hills_val, const CellValue world_val)
+{
+  if (hills_val == CELL_OFF && world_val == CELL_OFF)
+  {
+    TilePtr tile;
+    int rand;
+    
+    // 1% chance of a hills village
+    rand = RNG::range(1, 100);
+    Coordinate c(row, col);
+    
+    if (rand <= 1)
+    {
+      tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_HILLS);
+      village_coordinates.insert(c);
+    }
+    else
+    {
+      remove_village_coordinates_if_present(c);
+      tile = TileGenerator::generate(TILE_TYPE_HILLS);      
     }
     
     result_map->insert(row, col, tile);
