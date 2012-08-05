@@ -461,6 +461,7 @@
 		<Unit filename="engine\generators\include\GeneratorUtils.hpp" />
 		<Unit filename="engine\generators\include\GraveyardGenerator.hpp" />
 		<Unit filename="engine\generators\include\GraveyardGeneratorFactory.hpp" />
+		<Unit filename="engine\generators\include\HillsGenerator.hpp" />
 		<Unit filename="engine\generators\include\KeepGenerator.hpp" />
 		<Unit filename="engine\generators\include\KeepRuinsGenerator.hpp" />
 		<Unit filename="engine\generators\include\MarshGenerator.hpp" />
@@ -503,6 +504,7 @@
 		<Unit filename="engine\generators\source\GeneratorUtils.cpp" />
 		<Unit filename="engine\generators\source\GraveyardGenerator.cpp" />
 		<Unit filename="engine\generators\source\GraveyardGeneratorFactory.cpp" />
+		<Unit filename="engine\generators\source\HillsGenerator.cpp" />
 		<Unit filename="engine\generators\source\KeepGenerator.cpp" />
 		<Unit filename="engine\generators\source\KeepRuinsGenerator.cpp" />
 		<Unit filename="engine\generators\source\MarshGenerator.cpp" />

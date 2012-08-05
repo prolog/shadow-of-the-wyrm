@@ -5,6 +5,7 @@
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "Game.hpp"
+#include "HillsGenerator.hpp"
 #include "MarshGenerator.hpp"
 #include "MountainsGenerator.hpp"
 #include "RaceManager.hpp"
@@ -48,6 +49,9 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       break;
     case TILE_TYPE_MOUNTAINS:
       generator = make_shared<MountainsGenerator>(map_exit_id);
+      break;
+    case TILE_TYPE_HILLS:
+      generator = make_shared<HillsGenerator>(map_exit_id);
       break;
     case TILE_TYPE_FOREST:
       generator = make_shared<ForestGenerator>(map_exit_id);
@@ -114,7 +118,6 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TILE_TYPE_ROCK:
     case TILE_TYPE_GRAVE:
     case TILE_TYPE_REEDS:
-    case TILE_TYPE_HILLS:
     case TILE_TYPE_BEACH:
     case TILE_TYPE_BUSH:
     case TILE_TYPE_WEEDS:
