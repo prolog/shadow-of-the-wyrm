@@ -4,6 +4,7 @@
 #include "Directions.hpp"
 #include "ItemManager.hpp"
 #include "MovementManager.hpp"
+#include "TileSelectionManager.hpp"
 #include "WeaponTypes.hpp"
 
 enum ItemAction
@@ -40,6 +41,8 @@ class ActionManager
     // Miscellaneous actions
     ActionCost pray(CreaturePtr creature);
     ActionCost weapon_info(CreaturePtr creature, const WeaponStyle weapon_style);
+    ActionCost select_tile(CreaturePtr creature); // Examines the tiles on the current map
+    ActionCost select_tile(CreaturePtr creature, const Direction d);
     
     // Unlike pick up/drop, handle item has no checks.
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
@@ -56,4 +59,5 @@ class ActionManager
     CombatManager combat_manager;
     MovementManager movement_manager;
     ItemManager item_manager;
+    TileSelectionManager tile_selection_manager;
 };

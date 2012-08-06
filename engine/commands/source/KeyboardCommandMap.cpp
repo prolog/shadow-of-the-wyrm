@@ -97,4 +97,5 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('_'), CommandKeys::PRAY));
   command_mapping.insert(make_pair(Integer::to_string('W'), CommandKeys::MELEE_WEAPON_INFO));
   command_mapping.insert(make_pair(Integer::to_string('R'), CommandKeys::RANGED_WEAPON_INFO));
+  command_mapping.insert(make_pair(Integer::to_string('L'), CommandKeys::SELECT_TILE));
 }

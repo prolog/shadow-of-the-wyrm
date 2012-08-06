@@ -21,6 +21,12 @@ CommandPtr ImmobileDecisionStrategy::get_decision_for_equipment(CommandFactoryPt
   return null;
 }
 
+CommandPtr ImmobileDecisionStrategy::get_decision_for_tile_selection(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands)
+{
+  CommandPtr null;
+  return null;
+}
+
 bool ImmobileDecisionStrategy::can_move() const
 {
   return false;

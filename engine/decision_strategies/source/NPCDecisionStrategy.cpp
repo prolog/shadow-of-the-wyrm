@@ -36,6 +36,9 @@ CommandPtr NPCDecisionStrategy::get_decision(const string& this_creature_id, Com
     case COMMAND_FACTORY_TYPE_EQUIPMENT:
       command = get_decision_for_equipment(command_factory, keyboard_commands);
       break;
+    case COMMAND_FACTORY_TYPE_SELECT_TILE:
+      command = get_decision_for_tile_selection(command_factory, keyboard_commands);
+      break;
     default:
       break;
   }

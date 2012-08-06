@@ -32,6 +32,7 @@ const string CommandKeys::INVENTORY      = "INVENTORY";
 const string CommandKeys::PRAY           = "PRAY";
 const string CommandKeys::MELEE_WEAPON_INFO = "MELEE_WEAPON_INFO";
 const string CommandKeys::RANGED_WEAPON_INFO = "RANGED_WEAPON_INFO";
+const string CommandKeys::SELECT_TILE    = "SELECT_TILE";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";
@@ -41,6 +42,7 @@ const string CommandKeys::ATTACK_EAST      = "ATTACK_EAST";
 const string CommandKeys::ATTACK_SOUTHWEST = "ATTACK_SOUTHWEST";
 const string CommandKeys::ATTACK_SOUTH     = "ATTACK_SOUTH";
 const string CommandKeys::ATTACK_SOUTHEAST = "ATTACK_SOUTHEAST";
+
 
 bool CommandKeys::is_movement_type_key(const string& key)
 {

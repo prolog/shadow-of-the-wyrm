@@ -34,6 +34,7 @@ class CommandKeys
     static const std::string PRAY;
     static const std::string MELEE_WEAPON_INFO;
     static const std::string RANGED_WEAPON_INFO;
+    static const std::string SELECT_TILE; // aka "look" - this can be reused for general targetting code
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);
