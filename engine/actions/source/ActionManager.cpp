@@ -404,6 +404,30 @@ ActionCost ActionManager::weapon_info(CreaturePtr creature, const WeaponStyle we
   return get_action_cost(creature, action_cost_value);
 }
 
+ActionCost ActionManager::select_tile(CreaturePtr creature)
+{
+  ActionCostValue action_cost_value = 0;
+  
+  if (creature)
+  {
+    action_cost_value = tile_selection_manager.select_tile(creature);
+  }
+  
+  return get_action_cost(creature, action_cost_value);
+}
+
+ActionCost ActionManager::select_tile(CreaturePtr creature, const Direction d)
+{
+  ActionCostValue action_cost_value = 0;
+  
+  if (creature)
+  {
+    action_cost_value = tile_selection_manager.select_tile(creature, d);
+  }
+  
+  return get_action_cost(creature, action_cost_value);
+}
+
 ActionCost ActionManager::quit(CreaturePtr creature)
 {
   Game* game = Game::instance();

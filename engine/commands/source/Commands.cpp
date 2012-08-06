@@ -178,3 +178,13 @@ RangedWeaponInfoCommand::RangedWeaponInfoCommand()
 RangedWeaponInfoCommand::~RangedWeaponInfoCommand()
 {
 }
+
+// Select Tile (aka, "Look")
+SelectTileCommand::SelectTileCommand()
+: Command(CommandKeys::SELECT_TILE)
+{
+}
+
+SelectTileCommand::~SelectTileCommand()
+{
+}

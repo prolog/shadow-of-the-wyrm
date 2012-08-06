@@ -105,6 +105,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.weapon_info(creature, WEAPON_STYLE_RANGED);
       }
+      else if (command_name == CommandKeys::SELECT_TILE)
+      {
+        ac = game->actions.select_tile(creature);
+      }
     }
   }
   

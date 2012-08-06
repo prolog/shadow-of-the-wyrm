@@ -636,7 +636,7 @@
 			<ShortDescriptionSID>RACE_8_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_8_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_8_ABRV</DisplayAbbreviationSID>
-			<Size>3</Size>
+			<Size>4</Size>
 			<AgeInfo>
 				<StartingAge>
 					<Min>17</Min>
@@ -648,14 +648,14 @@
 				</MaximumAge>
 			</AgeInfo>
 			<RaceInitialStatistics>
-				<Strength>16</Strength>
+				<Strength>18</Strength>
 				<Dexterity>9</Dexterity>
-				<Agility>9</Agility>
+				<Agility>8</Agility>
 				<Health>16</Health>
 				<Intelligence>7</Intelligence>
 				<Willpower>12</Willpower>
-				<Charisma>7</Charisma>
-				<Speed>52</Speed>
+				<Charisma>6</Charisma>
+				<Speed>53</Speed>
 			</RaceInitialStatistics>
 			<RaceInitialModifiers>
 				<ValourModifier>10</ValourModifier>
@@ -722,7 +722,7 @@
 				<Strength>17</Strength>
 				<Dexterity>10</Dexterity>
 				<Agility>10</Agility>
-				<Health>14</Health>
+				<Health>13</Health>
 				<Intelligence>9</Intelligence>
 				<Willpower>9</Willpower>
 				<Charisma>8</Charisma>

@@ -100,6 +100,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = CommandPtr(new RangedWeaponInfoCommand());
   }
+  else if (command_name == CommandKeys::SELECT_TILE)
+  {
+    command = CommandPtr(new SelectTileCommand());
+  }
 
   return command;
 }

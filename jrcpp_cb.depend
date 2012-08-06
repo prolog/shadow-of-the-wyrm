@@ -220,7 +220,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1343505125 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1344265583 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -564,28 +564,28 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1343504863 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1344258726 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1343504612 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1344258566 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1343505150 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1344265426 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Commands.hpp"
 	"Game.hpp"
 
-1343504815 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1344258891 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"StringConstants.hpp"
 
-1343504522 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1344258602 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -723,17 +723,17 @@
 1342107653 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategytypes.cpp
 	"DecisionStrategyTypes.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
+1344265077 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\immobiledecisionstrategy.cpp
 	<string>
 	<sstream>
 	"ImmobileDecisionStrategy.hpp"
 
-1342107965 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\mobiledecisionstrategy.cpp
+1344265037 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\mobiledecisionstrategy.cpp
 	<string>
 	<sstream>
 	"MobileDecisionStrategy.hpp"
 
-1342199432 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
+1344264988 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\npcdecisionstrategy.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"Commands.hpp"
@@ -1729,7 +1729,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\creaturegenerationvalues.cpp
 	"CreatureGenerationValues.hpp"
 
-1343581743 source:c:\cygwin\home\julian\jrcpp\world\source\damage.cpp
+1344175249 source:c:\cygwin\home\julian\jrcpp\world\source\damage.cpp
 	<string>
 	<sstream>
 	"Conversion.hpp"
@@ -2204,4 +2204,34 @@
 	"HillsGenerator.hpp"
 	"RNG.hpp"
 	"TileGenerator.hpp"
+
+1344269377 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+	"Game.hpp"
+	"TileSelectionManager.hpp"
+	"TileSelectionCommandProcessor.hpp"
+	"TileSelectionCommandFactory.hpp"
+	"TileSelectionKeyboardCommandMap.hpp"
+
+1344269128 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandfactory.cpp
+	<boost/make_shared.hpp>
+	"Directions.hpp"
+	"TileSelectionCommands.hpp"
+	"TileSelectionCommandFactory.hpp"
+	"TileSelectionCommandKeys.hpp"
+
+1344270943 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandkeys.cpp
+	"TileSelectionCommandKeys.hpp"
+
+1344268519 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommands.cpp
+	"Conversion.hpp"
+	"TileSelectionCommands.hpp"
+
+1344269635 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectionkeyboardcommandmap.cpp
+	<ncurses.h>
+	"Conversion.hpp"
+	"TileSelectionCommandKeys.hpp"
+	"TileSelectionKeyboardCommandMap.hpp"
+
+1344269469 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
+	"TileSelectionCommandProcessor.hpp"
 

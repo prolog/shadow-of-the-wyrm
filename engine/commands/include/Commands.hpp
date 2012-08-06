@@ -122,3 +122,10 @@ class RangedWeaponInfoCommand : public Command
     RangedWeaponInfoCommand();
     ~RangedWeaponInfoCommand();
 };
+
+class SelectTileCommand : public Command
+{
+  public:
+    SelectTileCommand();
+    ~SelectTileCommand();
+};

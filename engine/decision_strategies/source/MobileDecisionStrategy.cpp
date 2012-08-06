@@ -21,6 +21,12 @@ CommandPtr MobileDecisionStrategy::get_decision_for_equipment(CommandFactoryPtr 
   return null;
 }
 
+CommandPtr MobileDecisionStrategy::get_decision_for_tile_selection(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands)
+{
+  CommandPtr null;
+  return null;
+}
+
 bool MobileDecisionStrategy::can_move() const
 {
   return true;
