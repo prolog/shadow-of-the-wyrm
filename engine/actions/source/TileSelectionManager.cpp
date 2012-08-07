@@ -1,8 +1,12 @@
 #include "Game.hpp"
+#include "MessageManager.hpp"
+#include "StringConstants.hpp"
 #include "TileSelectionManager.hpp"
 #include "TileSelectionCommandProcessor.hpp"
 #include "TileSelectionCommandFactory.hpp"
 #include "TileSelectionKeyboardCommandMap.hpp"
+
+using std::string;
 
 TileSelectionManager::TileSelectionManager()
 {
@@ -10,13 +14,26 @@ TileSelectionManager::TileSelectionManager()
 
 ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature)
 {  
-  if (creature)
+  Game* game = Game::instance();
+  MessageManager* manager = MessageManager::instance();
+  
+  if (creature && game)
   {
     ActionCostValue action_cost = 0;
     bool continue_select_tiles = true;
     
     CommandFactoryPtr command_factory    = CommandFactoryPtr(new TileSelectionCommandFactory());
     KeyboardCommandMapPtr kb_command_map = KeyboardCommandMapPtr(new TileSelectionKeyboardCommandMap());
+   
+    if (manager && creature->get_is_player())
+    {
+      string look_msg = StringTable::get(ActionTextKeys::ACTION_LOOK);
+      
+      manager->add_new_message(look_msg);
+      manager->send();
+      
+      game->update_display(creature, game->get_current_map(), creature->get_decision_strategy()->get_fov_map());
+    }
     
     while (continue_select_tiles)
     {
@@ -36,6 +53,12 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature)
       if (action_cost == -1)
       {
         continue_select_tiles = false;
+      }
+      
+      // Update the screen after the creature's choice
+      if (creature->get_is_player())
+      {
+        game->update_display(creature, game->get_current_map(), creature->get_decision_strategy()->get_fov_map());        
       }
     }
   }

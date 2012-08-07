@@ -709,7 +709,7 @@
 	<boost/foreach.hpp>
 	"UniformCostSearchStrategy.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategy.cpp
+1344343669 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategy.cpp
 	"DecisionStrategy.hpp"
 
 1342108031 source:c:\cygwin\home\julian\jrcpp\engine\decision_strategies\source\decisionstrategyfactory.cpp
@@ -1281,7 +1281,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1342984248 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1344343115 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1417,7 +1417,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1343871900 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1344342133 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2205,8 +2205,10 @@
 	"RNG.hpp"
 	"TileGenerator.hpp"
 
-1344269377 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+1344344110 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
 	"Game.hpp"
+	"MessageManager.hpp"
+	"StringConstants.hpp"
 	"TileSelectionManager.hpp"
 	"TileSelectionCommandProcessor.hpp"
 	"TileSelectionCommandFactory.hpp"

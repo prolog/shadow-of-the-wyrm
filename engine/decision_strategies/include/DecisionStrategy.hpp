@@ -18,7 +18,11 @@ class DecisionStrategy
     ThreatRatings& get_threats_ref();
     ThreatRatings  get_threats() const;
 
+    void set_fov_map(boost::shared_ptr<Map> new_fov_map);
+    boost::shared_ptr<Map> get_fov_map();
+
   protected:
+    boost::shared_ptr<Map> current_fov_map;
     ThreatRatings threat_ratings;
 };
 

@@ -293,6 +293,14 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
         fov_map = fov_strategy->calculate(view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
 
+        DecisionStrategyPtr decision_strategy = current_creature->get_decision_strategy();
+        
+        if (decision_strategy)
+        {
+          decision_strategy->set_fov_map(fov_map);
+        }
+        
+        
         if (current_creature->get_is_player())
         {
           update_display(current_creature, current_map, fov_map);

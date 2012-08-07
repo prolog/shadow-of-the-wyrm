@@ -569,6 +569,7 @@ class ActionTextKeys
     static const std::string ACTION_PLAYER_DROWNING;
     static const std::string ACTION_PLAYER_FALL_FROM_MOUNTAIN;
     static const std::string ACTION_DETECTED_HOSTILE_CREATURES;
+    static const std::string ACTION_LOOK;
 
   protected:
     ActionTextKeys();
