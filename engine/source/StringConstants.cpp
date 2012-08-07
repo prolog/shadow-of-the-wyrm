@@ -815,6 +815,7 @@ const string ActionTextKeys::ACTION_MOVEMENT_BLOCKED           = "ACTION_MOVEMEN
 const string ActionTextKeys::ACTION_PLAYER_DROWNING            = "ACTION_PLAYER_DROWNING";
 const string ActionTextKeys::ACTION_PLAYER_FALL_FROM_MOUNTAIN  = "ACTION_PLAYER_FALL_FROM_MOUNTAIN";
 const string ActionTextKeys::ACTION_DETECTED_HOSTILE_CREATURES = "ACTION_DETECTED_HOSTILE_CREATURES";
+const string ActionTextKeys::ACTION_LOOK                       = "ACTION_LOOK";
 
 // Strings for the various seasons
 SeasonTextKeys::SeasonTextKeys()
@@ -1339,3 +1340,4 @@ const string CombatTextKeys::COMBAT_HIT_LIGHTNING          = "COMBAT_HIT_LIGHTNI
 const string CombatTextKeys::COMBAT_HIT_LIGHTNING_NP       = "COMBAT_HIT_LIGHTNING_NP";
 
 std::map<std::string, std::string> CombatTextKeys::combat_damage_hit_messages;
+

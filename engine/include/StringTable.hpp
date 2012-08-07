@@ -10,5 +10,7 @@ class StringTable
     static std::string get(const std::string& key);
 
   protected:
+    friend class SL_Engine_StringConstants;
+    
     static std::map<std::string, std::string> string_table;
 };

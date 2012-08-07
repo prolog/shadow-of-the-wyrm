@@ -69,6 +69,7 @@ class Game
     friend class CommandProcessor;
     friend class EquipmentCommandProcessor;
     friend class SeasonsTimeObserver;
+    friend class TileSelectionManager;
 
     Game();
     ~Game();

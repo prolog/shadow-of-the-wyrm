@@ -214,6 +214,7 @@
 		<Unit filename="engine\actions\include\PrayerManager.hpp" />
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
 		<Unit filename="engine\actions\include\TileMovementConfirmation.hpp" />
+		<Unit filename="engine\actions\include\TileSelectionManager.hpp" />
 		<Unit filename="engine\actions\include\VersionActionManager.hpp" />
 		<Unit filename="engine\actions\include\WeaponInfoManager.hpp" />
 		<Unit filename="engine\actions\source\ActionCoordinator.cpp" />
@@ -229,6 +230,7 @@
 		<Unit filename="engine\actions\source\PrayerManager.cpp" />
 		<Unit filename="engine\actions\source\SearchActionManager.cpp" />
 		<Unit filename="engine\actions\source\TileMovementConfirmation.cpp" />
+		<Unit filename="engine\actions\source\TileSelectionManager.cpp" />
 		<Unit filename="engine\actions\source\VersionActionManager.cpp" />
 		<Unit filename="engine\actions\source\WeaponInfoManager.cpp" />
 		<Unit filename="engine\calculators\include\ArcanaPointsCalculator.hpp" />
@@ -355,6 +357,17 @@
 		<Unit filename="engine\commands\inventory\source\InventoryCommandProcessor.cpp" />
 		<Unit filename="engine\commands\inventory\source\InventoryCommands.cpp" />
 		<Unit filename="engine\commands\inventory\source\InventoryKeyboardCommandMap.cpp" />
+		<Unit filename="engine\commands\select_tile\include\TileSelectionCommandFactory.hpp" />
+		<Unit filename="engine\commands\select_tile\include\TileSelectionCommandKeys.hpp" />
+		<Unit filename="engine\commands\select_tile\include\TileSelectionCommandProcessor.hpp" />
+		<Unit filename="engine\commands\select_tile\include\TileSelectionCommands.hpp" />
+		<Unit filename="engine\commands\select_tile\include\TileSelectionKeyboardCommandMap.hpp" />
+		<Unit filename="engine\commands\select_tile\source\TileSelectionCommandFactory.cpp" />
+		<Unit filename="engine\commands\select_tile\source\TileSelectionCommandFactory.hpp" />
+		<Unit filename="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp" />
+		<Unit filename="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" />
+		<Unit filename="engine\commands\select_tile\source\TileSelectionCommands.cpp" />
+		<Unit filename="engine\commands\select_tile\source\TileSelectionKeyboardCommandMap.cpp" />
 		<Unit filename="engine\commands\source\Command.cpp" />
 		<Unit filename="engine\commands\source\CommandFactory.cpp" />
 		<Unit filename="engine\commands\source\CommandKeys.cpp" />
