@@ -203,6 +203,11 @@ void Map::add_or_update_location(const string& location, const Coordinate& coord
   locations[location] = coordinate;
 }
 
+void Map::remove_location(const string& location)
+{
+  locations.erase(location);
+}
+
 Coordinate Map::get_location(const string& location) const
 {
   Coordinate c;

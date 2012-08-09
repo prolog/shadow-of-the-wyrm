@@ -54,6 +54,7 @@ class Map
 
     void clear_locations();
     void add_or_update_location(const std::string& location, const Coordinate& coordinate);
+    void remove_location(const std::string& location);
     bool has_location(const std::string& location);
     Coordinate get_location(const std::string& location) const;
     boost::shared_ptr<Tile> get_tile_at_location(const std::string& location);
