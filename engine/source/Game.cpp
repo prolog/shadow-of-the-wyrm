@@ -11,6 +11,7 @@
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
 #include "Log.hpp"
+#include "MapCursor.hpp"
 #include "MapUtils.hpp"
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
@@ -181,7 +182,9 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
     display->display(display_stats);
 
-    DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area);
+    MapCursor mc;
+    Coordinate reference_coords = mc.get_cursor_location(current_map);
+    DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords);
     display->draw(display_map);    
   }
 }

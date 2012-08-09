@@ -1281,7 +1281,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1344343115 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1344483110 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1295,6 +1295,7 @@
 	"CommandProcessor.hpp"
 	"CreatureTranslator.hpp"
 	"Log.hpp"
+	"MapCursor.hpp"
 	"MapUtils.hpp"
 	"WorldGenerator.hpp"
 	"MapTranslator.hpp"
@@ -1552,11 +1553,12 @@
 	"ItemTranslator.hpp"
 	"StringTable.hpp"
 
-1339506579 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
+1344483037 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
 	<algorithm>
 	"common.hpp"
 	"Display.hpp"
 	"Game.hpp"
+	"MapCursor.hpp"
 	"MapTranslator.hpp"
 
 1342201402 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\viewmaptranslator.cpp
@@ -1766,7 +1768,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
 	"ItemTypes.hpp"
 
-1342459486 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1344480628 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	<boost/tokenizer.hpp>
@@ -2234,6 +2236,12 @@
 	"TileSelectionCommandKeys.hpp"
 	"TileSelectionKeyboardCommandMap.hpp"
 
-1344269469 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
+1344481642 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
+	"Game.hpp"
+	"MapCursor.hpp"
 	"TileSelectionCommandProcessor.hpp"
+
+1344481963 source:c:\cygwin\home\julian\jrcpp\engine\source\mapcursor.cpp
+	"MapCursor.hpp"
+	"MapUtils.hpp"
 

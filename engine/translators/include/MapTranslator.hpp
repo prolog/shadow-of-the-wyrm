@@ -12,7 +12,7 @@ class DisplayMap;
 class MapTranslator
 {
   public:
-    static DisplayMap create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const bool centre_on_player = true);
+    static DisplayMap create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords);
     static DisplayTile create_display_tile(const TilePtr& engine_tile, const TilePtr& fov_tile);
 
   protected:
