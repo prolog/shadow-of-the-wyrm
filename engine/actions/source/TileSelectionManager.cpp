@@ -72,7 +72,6 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const Di
 
   if (game && creature)
   {
-    
   }
   
   return get_action_cost_value();

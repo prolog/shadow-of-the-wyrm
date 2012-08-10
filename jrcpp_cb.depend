@@ -1418,7 +1418,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1344342133 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1344603150 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1553,7 +1553,7 @@
 	"ItemTranslator.hpp"
 	"StringTable.hpp"
 
-1344483037 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
+1344483525 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
 	<algorithm>
 	"common.hpp"
 	"Display.hpp"
@@ -1756,7 +1756,7 @@
 1342879193 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
 	"InitialItem.hpp"
 
-1341066953 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
+1344603347 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	<boost/foreach.hpp>
 	"Inventory.hpp"
 
@@ -2207,7 +2207,7 @@
 	"RNG.hpp"
 	"TileGenerator.hpp"
 
-1344344110 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+1344602979 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
 	"Game.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
@@ -2236,12 +2236,47 @@
 	"TileSelectionCommandKeys.hpp"
 	"TileSelectionKeyboardCommandMap.hpp"
 
-1344481642 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
+1344603109 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
 	"Game.hpp"
 	"MapCursor.hpp"
+	"TileDescription.hpp"
 	"TileSelectionCommandProcessor.hpp"
 
 1344481963 source:c:\cygwin\home\julian\jrcpp\engine\source\mapcursor.cpp
 	"MapCursor.hpp"
 	"MapUtils.hpp"
+
+1344516915 source:c:\cygwin\home\julian\jrcpp\engine\description\source\featuredescriber.cpp
+	"FeatureDescriber.hpp"
+	"StringTable.hpp"
+
+1344516991 source:c:\cygwin\home\julian\jrcpp\engine\description\source\tiledescriber.cpp
+	"TileDescriber.hpp"
+	"StringTable.hpp"
+
+1344603101 source:c:\cygwin\home\julian\jrcpp\engine\description\source\tiledescription.cpp
+	"DescriberFactory.hpp"
+	"TileDescription.hpp"
+
+1344602468 source:c:\cygwin\home\julian\jrcpp\engine\description\source\describerfactory.cpp
+	<boost/make_shared.hpp>
+	"CreatureDescriber.hpp"
+	"DescriberFactory.hpp"
+	"FeatureDescriber.hpp"
+	"InventoryDescriber.hpp"
+	"TileDescriber.hpp"
+
+1344602333 source:c:\cygwin\home\julian\jrcpp\engine\description\source\creaturedescriber.cpp
+	"CreatureDescriber.hpp"
+
+1344602792 source:c:\cygwin\home\julian\jrcpp\engine\description\source\itemdescriber.cpp
+	"ItemDescriber.hpp"
+
+1344603281 source:c:\cygwin\home\julian\jrcpp\engine\description\source\inventorydescriber.cpp
+	<boost/foreach.hpp>
+	"InventoryDescriber.hpp"
+	"ItemDescriber.hpp"
+
+1344603883 source:c:\cygwin\home\julian\jrcpp\engine\description\source\idescriber.cpp
+	"IDescriber.hpp"
 

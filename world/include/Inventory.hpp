@@ -25,6 +25,7 @@ class Inventory
     bool has_item_type(const ItemType type) const;
     
     std::list<ItemPtr> get_items();
+    const std::list<ItemPtr> get_items_const() const;
     
   protected:
     std::list<ItemPtr> items;

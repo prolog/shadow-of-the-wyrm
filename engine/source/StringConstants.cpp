@@ -816,10 +816,12 @@ const string ActionTextKeys::ACTION_PLAYER_DROWNING            = "ACTION_PLAYER_
 const string ActionTextKeys::ACTION_PLAYER_FALL_FROM_MOUNTAIN  = "ACTION_PLAYER_FALL_FROM_MOUNTAIN";
 const string ActionTextKeys::ACTION_DETECTED_HOSTILE_CREATURES = "ACTION_DETECTED_HOSTILE_CREATURES";
 const string ActionTextKeys::ACTION_LOOK                       = "ACTION_LOOK";
+const string ActionTextKeys::ACTION_LOOK_UNEXPLORED_TILE       = "ACTION_LOOK_UNEXPLORED_TILE";
+const string ActionTextKeys::ACTION_LOOK_TILE_OUT_OF_RANGE     = "ACTION_LOOK_TILE_OUT_OF_RANGE";
 
 // Strings for the various seasons
 SeasonTextKeys::SeasonTextKeys()
-{\
+{
 }
 
 SeasonTextKeys::~SeasonTextKeys()
