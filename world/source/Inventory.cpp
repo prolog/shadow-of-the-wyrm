@@ -124,6 +124,12 @@ list<ItemPtr> Inventory::get_items()
   return items;
 }
 
+// Get a list useful for iteration, etc., but not updating.
+const list<ItemPtr> Inventory::get_items_const() const
+{
+  return items;
+}
+
 // Check to see if a particular item type exists within the Inventory
 bool Inventory::has_item_type(const ItemType type) const
 {
