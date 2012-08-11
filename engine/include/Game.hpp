@@ -68,6 +68,7 @@ class Game
     friend class ItemManager;
     friend class CommandProcessor;
     friend class EquipmentCommandProcessor;
+    friend class TileSelectionCommandProcessor;
     friend class SeasonsTimeObserver;
     friend class TileSelectionManager;
 

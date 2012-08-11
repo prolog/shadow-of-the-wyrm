@@ -1,6 +1,4 @@
 #include "Game.hpp"
-#include "MapCursor.hpp"
-#include "TileDescription.hpp"
 #include "TileSelectionCommandProcessor.hpp"
 
 using std::string;
@@ -32,9 +30,7 @@ ActionCostValue TileSelectionCommandProcessor::process(CreaturePtr creature, Com
     {
       if (command_name == TileSelectionCommandKeys::CANCEL_TILE_SELECTION)
       {
-        MapCursor mc;
-        mc.reset_cursor(game->get_current_map());
-        
+        game->actions.select_tile_cancel(creature);        
         return -1;
       }
     }
@@ -50,22 +46,7 @@ ActionCostValue TileSelectionCommandProcessor::process_cursor_directional_comman
 
   if (creature && cursor_command && game)
   {
-    // JCD FIXME move into a better class
-    MapCursor mc;
-    MapPtr current_map = game->get_current_map();
-    Direction direction = cursor_command->get_direction();
-    
-    mc.update_cursor_location(current_map, direction);
-    Coordinate c = mc.get_cursor_location(current_map);
-    
-    TilePtr selected_tile = current_map->at(c);
-    
-    // If the tile exists in the FOV map, note that, so that the
-    // describer can return full details.  If the at(..) function
-    // returns a null shared pointer, the boolean will be false.
-    bool tile_exists_in_fov_map = (creature->get_decision_strategy()->get_fov_map()->at(c));
-    // JCD FIXME: REMOVE TILEDESCRIPTION.HPP
-    // ...
+    action_cost = game->actions.select_tile(creature, cursor_command->get_direction());
   }
 
   return action_cost;

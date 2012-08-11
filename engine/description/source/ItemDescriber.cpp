@@ -1,4 +1,5 @@
 #include "ItemDescriber.hpp"
+#include "StringTable.hpp"
 
 using std::string;
 
@@ -13,7 +14,7 @@ string ItemDescriber::describe() const
 
   if (item)
   {
-    item_description += item->get_description_sid();
+    item_description = StringTable::get(item->get_usage_description_sid());
   }
 
   return item_description;
