@@ -41,8 +41,12 @@ class ActionManager
     // Miscellaneous actions
     ActionCost pray(CreaturePtr creature);
     ActionCost weapon_info(CreaturePtr creature, const WeaponStyle weapon_style);
+
+    // Tile selection actions.  The function with just the CreaturePtr is the main entry point - the others are used
+    // for processing directional commands, cancellation, etc.
     ActionCost select_tile(CreaturePtr creature); // Examines the tiles on the current map
-    ActionCost select_tile(CreaturePtr creature, const Direction d);
+    ActionCostValue select_tile(CreaturePtr creature, const Direction d);
+    ActionCostValue select_tile_cancel(CreaturePtr creature);
     
     // Unlike pick up/drop, handle item has no checks.
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);

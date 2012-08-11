@@ -220,7 +220,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1344265583 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1344695128 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -2207,10 +2207,12 @@
 	"RNG.hpp"
 	"TileGenerator.hpp"
 
-1344602979 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+1344695234 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
 	"Game.hpp"
+	"MapCursor.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
+	"TileDescription.hpp"
 	"TileSelectionManager.hpp"
 	"TileSelectionCommandProcessor.hpp"
 	"TileSelectionCommandFactory.hpp"
@@ -2236,10 +2238,8 @@
 	"TileSelectionCommandKeys.hpp"
 	"TileSelectionKeyboardCommandMap.hpp"
 
-1344603109 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
+1344695059 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
 	"Game.hpp"
-	"MapCursor.hpp"
-	"TileDescription.hpp"
 	"TileSelectionCommandProcessor.hpp"
 
 1344481963 source:c:\cygwin\home\julian\jrcpp\engine\source\mapcursor.cpp
@@ -2254,7 +2254,9 @@
 	"TileDescriber.hpp"
 	"StringTable.hpp"
 
-1344603101 source:c:\cygwin\home\julian\jrcpp\engine\description\source\tiledescription.cpp
+1344693486 source:c:\cygwin\home\julian\jrcpp\engine\description\source\tiledescription.cpp
+	<sstream>
+	<boost/foreach.hpp>
 	"DescriberFactory.hpp"
 	"TileDescription.hpp"
 
@@ -2269,8 +2271,9 @@
 1344602333 source:c:\cygwin\home\julian\jrcpp\engine\description\source\creaturedescriber.cpp
 	"CreatureDescriber.hpp"
 
-1344602792 source:c:\cygwin\home\julian\jrcpp\engine\description\source\itemdescriber.cpp
+1344693194 source:c:\cygwin\home\julian\jrcpp\engine\description\source\itemdescriber.cpp
 	"ItemDescriber.hpp"
+	"StringTable.hpp"
 
 1344603281 source:c:\cygwin\home\julian\jrcpp\engine\description\source\inventorydescriber.cpp
 	<boost/foreach.hpp>

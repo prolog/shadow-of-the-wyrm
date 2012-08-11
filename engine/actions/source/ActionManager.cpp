@@ -416,7 +416,7 @@ ActionCost ActionManager::select_tile(CreaturePtr creature)
   return get_action_cost(creature, action_cost_value);
 }
 
-ActionCost ActionManager::select_tile(CreaturePtr creature, const Direction d)
+ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction d)
 {
   ActionCostValue action_cost_value = 0;
   
@@ -425,7 +425,19 @@ ActionCost ActionManager::select_tile(CreaturePtr creature, const Direction d)
     action_cost_value = tile_selection_manager.select_tile(creature, d);
   }
   
-  return get_action_cost(creature, action_cost_value);
+  return action_cost_value;
+}
+
+ActionCostValue ActionManager::select_tile_cancel(CreaturePtr creature)
+{
+  ActionCostValue action_cost_value = 0;
+  
+  if (creature)
+  {
+    action_cost_value = tile_selection_manager.select_tile_cancel(creature);
+  }
+  
+  return action_cost_value;
 }
 
 ActionCost ActionManager::quit(CreaturePtr creature)
