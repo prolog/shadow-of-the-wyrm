@@ -18,6 +18,9 @@ class CreatureFactory
     static Creature set_initial_skills(const Creature& creature, RacePtr race, ClassPtr char_class);
     static HairColour get_random_hair_colour();
     static EyeColour get_random_eye_colour();
+    
+    // Additional NPC functions
+    static void set_hostility_to_player(CreaturePtr npc);
 
     // Called to initialize a new ID and set any other ID-like values that are more for
     // book-keeping than game-playing.

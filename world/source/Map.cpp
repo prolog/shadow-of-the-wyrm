@@ -64,6 +64,20 @@ bool Map::has_creature(const string& creature_id)
   return (creatures.find(creature_id) != creatures.end());
 }
 
+CreaturePtr Map::get_creature(const string& creature_id)
+{
+  CreaturePtr creature;
+  
+  map<string, CreaturePtr>::iterator c_it = creatures.find(creature_id);
+  
+  if (c_it != creatures.end())
+  {
+    creature = c_it->second;
+  }
+  
+  return creature;
+}
+
 map<string, CreaturePtr> Map::get_creatures()
 {
   if (creatures.empty())
