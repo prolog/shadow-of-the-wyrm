@@ -25,6 +25,7 @@ class Map
 		// These functions work on a list built up from the map itself.
 		// This allows for quicker lookup.
 		bool has_creature(const std::string& creature_id);
+		boost::shared_ptr<Creature> get_creature(const std::string& creature_id);
 		std::map<std::string, boost::shared_ptr<Creature> > get_creatures();
 		std::map<std::string, boost::shared_ptr<Creature> >& get_creatures_ref();
 		void remove_creature(const std::string& creature_id);

@@ -56,14 +56,10 @@ CreaturePtr CreatureFactory::create_by_creature_id
       uint actual_experience_value = RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER));
       creature->set_experience_value(actual_experience_value);
       
-      // JCD FIXME: Set the creature hostile to the player.
-      DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
-      ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
-      threat_ratings.add_threat(PlayerConstants::PLAYER_CREATURE_ID, 100); // FIXME
+      // Set the creature hostile to the player, if the player fails a charisma check.
+      set_hostility_to_player(creature);
       
       initialize(creature);
-      
-      // JCD FIXME: Apply the values from the CreatureGenerationValues.
     }
     
     InitialItemEquipper iie;
@@ -305,6 +301,23 @@ void CreatureFactory::initialize(CreaturePtr creature)
   boost::uuids::uuid id = boost::uuids::random_generator()();
   std::string id_s = Uuid::to_string(id);
   creature->set_id(id_s);
+}
+
+void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
+{
+  Game* game = Game::instance();
+  
+  if (game)
+  {
+    CreaturePtr player = game->get_current_map()->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
+    
+    if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
+    {
+      DecisionStrategyPtr decision_strategy = npc->get_decision_strategy();
+      ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
+      threat_ratings.add_threat(PlayerConstants::PLAYER_CREATURE_ID, 100);
+    }
+  }
 }
 
 #ifdef UNIT_TESTS
