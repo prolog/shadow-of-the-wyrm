@@ -1,4 +1,5 @@
 #include "RangedCombatActionManager.hpp"
+#include "RangedCombatEquipmentChecker.hpp"
 
 RangedCombatActionManager::RangedCombatActionManager()
 {
@@ -6,6 +7,11 @@ RangedCombatActionManager::RangedCombatActionManager()
 
 ActionCostValue RangedCombatActionManager::fire_missile(CreaturePtr creature)
 {
+  if (creature)
+  {
+    RangedCombatEquipmentChecker rcec;
+  }
+  
   return get_action_cost_value();
 }
 
