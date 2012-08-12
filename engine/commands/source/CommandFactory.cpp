@@ -104,6 +104,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = CommandPtr(new SelectTileCommand());
   }
+  else if (command_name == CommandKeys::FIRE_MISSILE)
+  {
+    command = CommandPtr(new FireMissileCommand());
+  }
 
   return command;
 }

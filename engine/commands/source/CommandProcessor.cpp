@@ -109,6 +109,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.select_tile(creature);
       }
+      else if (command_name == CommandKeys::FIRE_MISSILE)
+      {
+        ac = game->actions.fire_missile(creature);
+      }
     }
   }
   

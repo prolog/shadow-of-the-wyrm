@@ -129,3 +129,10 @@ class SelectTileCommand : public Command
     SelectTileCommand();
     ~SelectTileCommand();
 };
+
+class FireMissileCommand : public Command
+{
+  public:
+    FireMissileCommand();
+    ~FireMissileCommand();
+};
