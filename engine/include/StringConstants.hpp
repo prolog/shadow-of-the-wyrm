@@ -729,3 +729,15 @@ class CombatTextKeys
     static std::string create_key(const bool is_player, const DamageType damage_type);
     static std::map<std::string, std::string> combat_damage_hit_messages;
 };
+
+class RangedCombatTextKeys
+{
+  public:
+    static const std::string RANGED_COMBAT_WEAPON_NOT_EQUIPPED;
+    static const std::string RANGED_COMBAT_AMMUNITION_NOT_EQUIPPED;
+    static const std::string RANGED_COMBAT_WEAPON_AMMUNITION_MISMATCH;
+    
+  protected:
+    RangedCombatTextKeys();
+    ~RangedCombatTextKeys();
+};

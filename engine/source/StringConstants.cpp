@@ -1343,3 +1343,15 @@ const string CombatTextKeys::COMBAT_HIT_LIGHTNING_NP       = "COMBAT_HIT_LIGHTNI
 
 std::map<std::string, std::string> CombatTextKeys::combat_damage_hit_messages;
 
+// Ranged combat messages
+RangedCombatTextKeys::RangedCombatTextKeys()
+{
+}
+
+RangedCombatTextKeys::~RangedCombatTextKeys()
+{
+}
+
+const string RangedCombatTextKeys::RANGED_COMBAT_WEAPON_NOT_EQUIPPED        = "RANGED_COMBAT_WEAPON_NOT_EQUIPPED";
+const string RangedCombatTextKeys::RANGED_COMBAT_AMMUNITION_NOT_EQUIPPED    = "RANGED_COMBAT_AMMUNITION_NOT_EQUIPPED";
+const string RangedCombatTextKeys::RANGED_COMBAT_WEAPON_AMMUNITION_MISMATCH = "RANGED_COMBAT_WEAPON_AMMUNITION_MISMATCH";
