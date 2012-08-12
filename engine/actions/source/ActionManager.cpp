@@ -440,6 +440,18 @@ ActionCostValue ActionManager::select_tile_cancel(CreaturePtr creature)
   return action_cost_value;
 }
 
+ActionCost ActionManager::fire_missile(CreaturePtr creature)
+{
+  ActionCostValue action_cost_value = 0;
+  
+  if (creature)
+  {
+    
+  }
+  
+  return get_action_cost(creature, action_cost_value);
+}
+
 ActionCost ActionManager::quit(CreaturePtr creature)
 {
   Game* game = Game::instance();

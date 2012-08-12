@@ -188,3 +188,14 @@ SelectTileCommand::SelectTileCommand()
 SelectTileCommand::~SelectTileCommand()
 {
 }
+
+// Fire currently-equipped Ammunition
+FireMissileCommand::FireMissileCommand()
+: Command(CommandKeys::FIRE_MISSILE)
+{
+}
+
+FireMissileCommand::~FireMissileCommand()
+{
+}
+

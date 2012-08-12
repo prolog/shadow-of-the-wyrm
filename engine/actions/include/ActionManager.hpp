@@ -48,6 +48,9 @@ class ActionManager
     ActionCostValue select_tile(CreaturePtr creature, const Direction d);
     ActionCostValue select_tile_cancel(CreaturePtr creature);
     
+    // Actions utilizing tile selection actions:
+    ActionCost fire_missile(CreaturePtr creature);
+
     // Unlike pick up/drop, handle item has no checks.
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
     ActionCostValue wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);

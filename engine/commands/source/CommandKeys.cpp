@@ -33,6 +33,7 @@ const string CommandKeys::PRAY           = "PRAY";
 const string CommandKeys::MELEE_WEAPON_INFO = "MELEE_WEAPON_INFO";
 const string CommandKeys::RANGED_WEAPON_INFO = "RANGED_WEAPON_INFO";
 const string CommandKeys::SELECT_TILE    = "SELECT_TILE";
+const string CommandKeys::FIRE_MISSILE   = "FIRE_MISSILE";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";
