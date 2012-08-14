@@ -4,6 +4,7 @@
 #include "Directions.hpp"
 #include "ItemManager.hpp"
 #include "MovementManager.hpp"
+#include "RangedCombatActionManager.hpp"
 #include "TileSelectionManager.hpp"
 #include "WeaponTypes.hpp"
 
@@ -67,4 +68,5 @@ class ActionManager
     MovementManager movement_manager;
     ItemManager item_manager;
     TileSelectionManager tile_selection_manager;
+    RangedCombatActionManager ranged_combat_manager;
 };

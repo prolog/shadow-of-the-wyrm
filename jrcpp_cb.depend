@@ -1510,7 +1510,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1344782868 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1344861993 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2280,10 +2280,13 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1344781382 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1344861286 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+	"MessageManager.hpp"
 	"RangedCombatActionManager.hpp"
 	"RangedCombatEquipmentChecker.hpp"
 
-1344781925 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatequipmentchecker.cpp
+1344863015 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatequipmentchecker.cpp
+	"Game.hpp"
 	"RangedCombatEquipmentChecker.hpp"
+	"StringTable.hpp"
 
