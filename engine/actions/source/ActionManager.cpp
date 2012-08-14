@@ -446,7 +446,7 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature)
   
   if (creature)
   {
-    
+    action_cost_value = ranged_combat_manager.fire_missile(creature);
   }
   
   return get_action_cost(creature, action_cost_value);
