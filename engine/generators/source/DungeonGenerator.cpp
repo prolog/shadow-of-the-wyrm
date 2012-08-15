@@ -70,7 +70,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
   // Try until we get a resonable map
   while (!success)
   {
-    MapPtr result_map = MapPtr(new Map(dimensions));
+    MapPtr result_map = make_shared<Map>(dimensions);
 
     fill(result_map, TILE_TYPE_ROCK);
     success = generate_dungeon(result_map);

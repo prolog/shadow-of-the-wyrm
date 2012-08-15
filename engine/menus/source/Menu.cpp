@@ -1,5 +1,5 @@
 #include <boost/foreach.hpp>
-#include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include "Menu.hpp"
 
 using namespace boost;
@@ -9,7 +9,7 @@ using namespace std;
 Menu::Menu(DisplayPtr new_display)
 {
   game_display = new_display;
-  user_prompt = PromptPtr(new NullPrompt());
+  user_prompt = make_shared<NullPrompt>();
 }
 
 Menu::~Menu()

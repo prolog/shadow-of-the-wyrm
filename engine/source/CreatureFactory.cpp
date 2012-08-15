@@ -123,7 +123,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     }
   }
 
-  CreaturePtr creaturep = CreaturePtr(new Creature(creature));
+  CreaturePtr creaturep = make_shared<Creature>(creature);
 
   // Now that everything has been set, set any calculated values.
   if (creaturep)
@@ -214,7 +214,7 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
   AgeInfo age_info = race->get_age_info();
   creature = set_age(creature, age_info);
 
-  CreaturePtr cp = CreaturePtr(new Creature(creature));
+  CreaturePtr cp = make_shared<Creature>(creature);
   int initial_hp = RNG::dice(3, 3);
   int hp_bonus = HitPointsCalculator::calculate_hit_points_bonus(cp);
 

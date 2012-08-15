@@ -1,5 +1,6 @@
 #include <iostream>
 
+#include <boost/make_shared.hpp>
 #include "TileGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "Dimensions.hpp"
@@ -7,6 +8,7 @@
 #include "RNG.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 FieldGenerator::FieldGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TILE_TYPE_FIELD)
@@ -21,7 +23,7 @@ FieldGenerator::FieldGenerator(const std::string& new_map_exit_id)
  **********************************************************************/
 MapPtr FieldGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = MapPtr(new Map(dimensions));
+  MapPtr result_map = make_shared<Map>(dimensions);
 
   int rows = dimensions.get_y();
   int columns = dimensions.get_x();

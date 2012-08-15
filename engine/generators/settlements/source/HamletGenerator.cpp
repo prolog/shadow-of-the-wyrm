@@ -1,7 +1,10 @@
+#include <boost/make_shared.hpp>
 #include "GeneratorUtils.hpp"
 #include "HamletGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
+
+using boost::make_shared;
 
 HamletGenerator::HamletGenerator(MapPtr new_base_map)
 : BaseSettlementGenerator(new_base_map)
@@ -36,7 +39,7 @@ MapPtr HamletGenerator::generate(const Dimensions& dim)
 
 MapPtr HamletGenerator::generate()
 {
-  MapPtr map = MapPtr(new Map(*base_map));
+  MapPtr map = make_shared<Map>(*base_map);
 
   generate_circular_hamlet(map);
   

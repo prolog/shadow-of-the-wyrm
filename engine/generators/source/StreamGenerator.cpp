@@ -1,19 +1,20 @@
-#include <boost/math/common_factor.hpp>
 #include <iostream>
-
+#include <boost/math/common_factor.hpp>
+#include <boost/make_shared.hpp>
 #include "TileGenerator.hpp"
 #include "StreamGenerator.hpp"
 #include "Dimensions.hpp"
 #include "RNG.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 const int StreamGenerator::MIN_STREAM_WIDTH;
 const int StreamGenerator::MAX_STREAM_WIDTH;
 
 MapPtr StreamGenerator::generate(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
   Dimensions dimensions = map->size();
 
   result_map = generate_stream(map, RNG::range(0, dimensions.get_x()));
@@ -23,7 +24,7 @@ MapPtr StreamGenerator::generate(MapPtr map)
 
 MapPtr StreamGenerator::generate_stream(MapPtr map, const int start_col)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
   Dimensions d = result_map->size();
 
   int max_rows = d.get_y();

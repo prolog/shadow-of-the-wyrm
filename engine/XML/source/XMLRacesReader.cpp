@@ -1,5 +1,5 @@
 #include <boost/foreach.hpp>
-
+#include <boost/make_shared.hpp>
 #include "Skills.hpp"
 #include "StringTable.hpp"
 #include "XMLRacesReader.hpp"
@@ -9,6 +9,7 @@
 #include "XMLStatisticsModifierReader.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 RaceMap XMLRacesReader::get_races(const XMLNode& races_node)
 {
@@ -45,7 +46,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     XMLNode resistances_node        = XMLUtils::get_next_element_by_local_name(race_node, "Resistances");
     XMLNode skills_node             = XMLUtils::get_next_element_by_local_name(race_node, "Skills");
 
-    race = RacePtr(new Race());
+    race = make_shared<Race>();
 
     string id = XMLUtils::get_attribute_value(race_node, "id");
     race->set_race_id(id);

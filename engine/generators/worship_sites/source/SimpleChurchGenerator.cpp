@@ -1,3 +1,4 @@
+#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "RNG.hpp"
@@ -5,6 +6,7 @@
 #include "TileGenerator.hpp"
 
 using std::string;
+using boost::make_shared;
 
 SimpleChurchGenerator::SimpleChurchGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH),
@@ -22,7 +24,7 @@ MapPtr SimpleChurchGenerator::generate(const Dimensions& dim)
 // Generate a simple stone church on the base map.
 MapPtr SimpleChurchGenerator::generate()
 {
-  MapPtr church_map = MapPtr(new Map(*base_map));
+  MapPtr church_map = make_shared<Map>(*base_map);
 
   generate_church(church_map);
 

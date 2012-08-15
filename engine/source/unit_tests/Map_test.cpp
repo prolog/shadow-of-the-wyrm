@@ -1,4 +1,7 @@
 #include "gtest/gtest.h"
+#include <boost/make_shared.hpp>
+
+using boost::make_shared;
 
 class SL_Engine_Map : public ::testing::Test
 {
@@ -26,7 +29,7 @@ Coordinate SL_Engine_Map::convert_map_key_to_coordinate(const string& key)
 MapPtr SL_Engine_Map::make_map() const
 {
   Dimensions d;
-  MapPtr map = MapPtr(new Map(d));
+  MapPtr map = make_shared<Map>(d);
 
   return map;
 }

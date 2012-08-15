@@ -18,7 +18,7 @@ CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 // JCD FIXME refactor as necessary
 MapPtr CavernGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = MapPtr(new Map(dimensions));
+  MapPtr result_map = make_shared<Map>(dimensions);
 
   fill(result_map, TILE_TYPE_ROCK);
 

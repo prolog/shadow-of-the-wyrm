@@ -1,9 +1,11 @@
+#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "OvergrownSacrificeSiteGenerator.hpp"
 #include "RNG.hpp"
 
 using std::string;
+using boost::make_shared;
 
 OvergrownSacrificeSiteGenerator::OvergrownSacrificeSiteGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_SITE_OF_DEATH)
@@ -18,7 +20,7 @@ MapPtr OvergrownSacrificeSiteGenerator::generate(const Dimensions& dim)
 
 MapPtr OvergrownSacrificeSiteGenerator::generate()
 {
-  MapPtr map = MapPtr(new Map(*base_map));
+  MapPtr map = make_shared<Map>(*base_map);
 
   generate_site(map);
   

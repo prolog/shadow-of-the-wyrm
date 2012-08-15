@@ -1,9 +1,11 @@
 #include "global_prototypes.hpp"
 #include "StringConstants.hpp"
 #include "StringTable.hpp"
+#include <boost/make_shared.hpp>
 #include "WelcomeScreen.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 WelcomeScreen::WelcomeScreen(DisplayPtr new_display) : Menu(new_display)
 {
@@ -22,5 +24,5 @@ void WelcomeScreen::initialize()
   components.push_back(copyright_info);
   components.push_back(wanderer_excerpt);
 
-  user_prompt = PromptPtr(new AnyKeyPrompt());
+  user_prompt = make_shared<AnyKeyPrompt>();
 }

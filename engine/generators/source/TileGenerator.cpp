@@ -8,7 +8,6 @@
 // Trees have a small chance of having a branch generated on the tile.
 #include "RNG.hpp"
 
-
 using boost::make_shared;
 
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const bool generate_random_items)
@@ -195,10 +194,10 @@ StaircaseTilePtr TileGenerator::generate_staircase(const StaircaseType& staircas
   switch(staircase_type)
   {
     case STAIRCASE_UP:
-      result_tile = UpStaircaseTilePtr(new UpStaircaseTile());
+      result_tile = make_shared<UpStaircaseTile>();
       break;
     case STAIRCASE_DOWN:
-      result_tile = DownStaircaseTilePtr(new DownStaircaseTile());
+      result_tile = make_shared<DownStaircaseTile>();
       break;
     default:
       break;

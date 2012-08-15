@@ -1,6 +1,9 @@
+#include <boost/make_shared.hpp>
 #include "ScrubGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
+
+using boost::make_shared;
 
 ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TILE_TYPE_SCRUB)
@@ -9,7 +12,7 @@ ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
 
 MapPtr ScrubGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = MapPtr(new Map(dimensions));
+  MapPtr result_map = make_shared<Map>(dimensions);
 
   int rows = dimensions.get_y();
   int cols = dimensions.get_x();

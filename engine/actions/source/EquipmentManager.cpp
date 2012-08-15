@@ -1,8 +1,11 @@
+#include <boost/make_shared.hpp>
 #include "EquipmentCommandFactory.hpp"
 #include "EquipmentCommandProcessor.hpp"
 #include "EquipmentKeyboardCommandMap.hpp"
 #include "EquipmentManager.hpp"
 #include "EquipmentTranslator.hpp"
+
+using boost::make_shared;
 
 EquipmentManager::EquipmentManager(DisplayPtr new_display, CreaturePtr new_creature)
 : display(new_display), creature(new_creature)
@@ -23,8 +26,8 @@ ActionCostValue EquipmentManager::manage_equipment()
 
   if (creature)
   {
-    CommandFactoryPtr command_factory    = CommandFactoryPtr(new EquipmentCommandFactory());
-    KeyboardCommandMapPtr kb_command_map = KeyboardCommandMapPtr(new EquipmentKeyboardCommandMap());
+    CommandFactoryPtr command_factory    = make_shared<EquipmentCommandFactory>();
+    KeyboardCommandMapPtr kb_command_map = make_shared<EquipmentKeyboardCommandMap>();
     
     while (manage_eq)
     {

@@ -1,9 +1,12 @@
 #include "gtest/gtest.h"
+#include <boost/make_shared.hpp>
+
+using boost::make_shared;
 
 TEST(SL_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
 {
-  RacePtr racep = RacePtr(new Race());
-  ClassPtr classp = ClassPtr(new Class());
+  RacePtr racep = make_shared<Race>();
+  ClassPtr classp = make_shared<Class>();
 
   // JCD FIXME: Update this for creature equipment, later!
   Creature creature;
