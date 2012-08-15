@@ -1,6 +1,9 @@
+#include <boost/make_shared.hpp>
 #include "MountainsGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
+
+using boost::make_shared;
 
 MountainsGenerator::MountainsGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TILE_TYPE_MOUNTAINS)
@@ -9,7 +12,7 @@ MountainsGenerator::MountainsGenerator(const std::string& new_map_exit_id)
 
 MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = MapPtr(new Map(dimensions));
+  MapPtr result_map = make_shared<Map>(dimensions);
   Dimensions dim = result_map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();

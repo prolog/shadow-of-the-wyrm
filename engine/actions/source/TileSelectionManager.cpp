@@ -1,3 +1,4 @@
+#include <boost/make_shared.hpp>
 #include "Game.hpp"
 #include "MapCursor.hpp"
 #include "MessageManager.hpp"
@@ -9,6 +10,7 @@
 #include "TileSelectionKeyboardCommandMap.hpp"
 
 using std::string;
+using boost::make_shared;
 
 TileSelectionManager::TileSelectionManager()
 {
@@ -24,8 +26,8 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature)
     ActionCostValue action_cost = 0;
     bool continue_select_tiles = true;
     
-    CommandFactoryPtr command_factory    = CommandFactoryPtr(new TileSelectionCommandFactory());
-    KeyboardCommandMapPtr kb_command_map = KeyboardCommandMapPtr(new TileSelectionKeyboardCommandMap());
+    CommandFactoryPtr command_factory    = make_shared<TileSelectionCommandFactory>();
+    KeyboardCommandMapPtr kb_command_map = make_shared<TileSelectionKeyboardCommandMap>();
    
     if (manager && creature->get_is_player())
     {

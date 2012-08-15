@@ -1,9 +1,11 @@
+#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "KeepGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
 using std::string;
+using boost::make_shared;
 
 KeepGenerator::KeepGenerator(MapPtr new_base_map, const int chance_decay)
 : Generator(new_base_map->get_map_exit_id(), TILE_TYPE_KEEP)
@@ -21,7 +23,7 @@ MapPtr KeepGenerator::generate(const Dimensions& dim)
 // Generate a square keep, centre it on the map.
 MapPtr KeepGenerator::generate()
 {
-  MapPtr result_map = MapPtr(new Map(*base_map));
+  MapPtr result_map = make_shared<Map>(*base_map);
   Dimensions dimensions = result_map->size();
 
   int max_height = dimensions.get_y();

@@ -200,8 +200,8 @@ Item* Item::deep_copy()
 {
   Item* item = clone();
   
-  material = MaterialPtr(material->clone());
-  item->set_material(material);
+  MaterialPtr new_material = MaterialPtr(material->clone());
+  item->set_material(new_material);
   
   return item;
 }

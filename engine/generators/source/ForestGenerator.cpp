@@ -1,12 +1,14 @@
+#include <vector>
+#include <boost/make_shared.hpp>
 #include "ForestGenerator.hpp"
 #include "SpringsGenerator.hpp"
 #include "StreamGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 #include "Directions.hpp"
-#include <vector>
 
 using namespace std;
+using boost::make_shared;
 
 ForestGenerator::ForestGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TILE_TYPE_FOREST)
@@ -32,7 +34,7 @@ MapPtr ForestGenerator::generate()
 
 MapPtr ForestGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = MapPtr(new Map(dimensions));
+  MapPtr result_map = make_shared<Map>(dimensions);
 
   fill(result_map, TILE_TYPE_TREE);
 
@@ -51,7 +53,7 @@ TilePtr ForestGenerator::generate_tile(MapPtr current_map, int row, int col)
 
 MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
 
   Dimensions dim = map->size();
   int rows = dim.get_y();
@@ -88,7 +90,7 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
 
 MapPtr ForestGenerator::add_random_stream_or_springs(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
 
   int additional_random_feature = RNG::range(1, 100);
 
@@ -111,7 +113,7 @@ MapPtr ForestGenerator::add_random_stream_or_springs(MapPtr map)
 
 MapPtr ForestGenerator::add_random_springs(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
 
   Dimensions dim = result_map->size();
   int springs_size = RNG::dice(3, 2); // min size should be 3.
@@ -132,7 +134,7 @@ MapPtr ForestGenerator::add_random_springs(MapPtr map)
 
 MapPtr ForestGenerator::add_random_stream(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
   result_map = StreamGenerator::generate(result_map);
   return result_map;
 }

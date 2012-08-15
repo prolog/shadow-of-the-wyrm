@@ -213,7 +213,7 @@
 		<Unit filename="engine\actions\include\MovementManager.hpp" />
 		<Unit filename="engine\actions\include\PrayerManager.hpp" />
 		<Unit filename="engine\actions\include\RangedCombatActionManager.hpp" />
-		<Unit filename="engine\actions\include\RangedCombatEquipmentChecker.hpp" />
+		<Unit filename="engine\actions\include\RangedCombatApplicabilityChecker.hpp" />
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
 		<Unit filename="engine\actions\include\TileMovementConfirmation.hpp" />
 		<Unit filename="engine\actions\include\TileSelectionManager.hpp" />
@@ -231,7 +231,7 @@
 		<Unit filename="engine\actions\source\MovementManager.cpp" />
 		<Unit filename="engine\actions\source\PrayerManager.cpp" />
 		<Unit filename="engine\actions\source\RangedCombatActionManager.cpp" />
-		<Unit filename="engine\actions\source\RangedCombatEquipmentChecker.cpp" />
+		<Unit filename="engine\actions\source\RangedCombatApplicabilityChecker.cpp" />
 		<Unit filename="engine\actions\source\SearchActionManager.cpp" />
 		<Unit filename="engine\actions\source\TileMovementConfirmation.cpp" />
 		<Unit filename="engine\actions\source\TileSelectionManager.cpp" />

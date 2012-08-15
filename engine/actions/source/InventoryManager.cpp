@@ -1,4 +1,5 @@
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include "InventoryCommandFactory.hpp"
 #include "InventoryCommandProcessor.hpp"
 #include "InventoryKeyboardCommandMap.hpp"
@@ -7,6 +8,7 @@
 
 using std::string;
 using std::vector;
+using boost::make_shared;
 
 InventoryManager::InventoryManager(DisplayPtr new_display, CreaturePtr new_creature)
 : display(new_display), creature(new_creature), current_page_start(0), current_page_size(0)
@@ -26,8 +28,8 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const EquipmentWornLo
 
   if (creature)
   {
-    CommandFactoryPtr command_factory    = CommandFactoryPtr(new InventoryCommandFactory());
-    KeyboardCommandMapPtr kb_command_map = KeyboardCommandMapPtr(new InventoryKeyboardCommandMap());
+    CommandFactoryPtr command_factory    = make_shared<InventoryCommandFactory>();
+    KeyboardCommandMapPtr kb_command_map = make_shared<InventoryKeyboardCommandMap>();
     
     while (manage_inv)
     {

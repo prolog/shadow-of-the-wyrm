@@ -1,8 +1,10 @@
+#include <boost/make_shared.hpp>
 #include "SpiralDungeonGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 SpiralDungeonGenerator::SpiralDungeonGenerator(const std::string& new_map_exit_id)
 : DungeonGenerator(new_map_exit_id)
@@ -159,7 +161,7 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
 // Generate a spiral dungeon
 MapPtr SpiralDungeonGenerator::generate_spiral_dungeon(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
   Dimensions d = result_map->size();
   int max_row = d.get_y();
   int max_col = d.get_x();
@@ -177,7 +179,7 @@ MapPtr SpiralDungeonGenerator::generate_spiral_dungeon(MapPtr map)
 
 MapPtr SpiralDungeonGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = MapPtr(new Map(dimensions));
+  MapPtr result_map = make_shared<Map>(dimensions);
 
   fill(result_map, TILE_TYPE_ROCK);
   result_map = generate_spiral_dungeon(result_map);

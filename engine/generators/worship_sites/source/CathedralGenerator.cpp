@@ -1,3 +1,4 @@
+#include <boost/make_shared.hpp>
 #include "CathedralGenerator.hpp"
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
@@ -5,6 +6,7 @@
 #include "TileGenerator.hpp"
 
 using std::string;
+using boost::make_shared;
 
 CathedralGenerator::CathedralGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH), start_row(0), start_col(0), church_height(0), church_width(0)
@@ -19,7 +21,7 @@ MapPtr CathedralGenerator::generate(const Dimensions& dim)
 // Generate the cathedral
 MapPtr CathedralGenerator::generate()
 {
-  MapPtr map = MapPtr(new Map(*base_map));
+  MapPtr map = make_shared<Map>(*base_map);
 
   generate_cathedral(map);
 

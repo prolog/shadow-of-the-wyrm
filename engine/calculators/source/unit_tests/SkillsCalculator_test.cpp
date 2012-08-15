@@ -1,9 +1,12 @@
 #include "gtest/gtest.h"
+#include <boost/make_shared.hpp>
+
+using boost::make_shared;
 
 TEST(SL_Engine_Calculators_SkillsCalculator, calculate_general_skills)
 {
-  RacePtr racep = RacePtr(new Race());
-  ClassPtr classp = ClassPtr(new Class());
+  RacePtr racep = make_shared<Race>();
+  ClassPtr classp = make_shared<Class>();
 
   Creature creature;
 
@@ -30,8 +33,8 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_general_skills)
 
 TEST(SL_Engine_Calculators_SkillsCalculator, calculate_melee_weapon_skills)
 {
-  RacePtr racep = RacePtr(new Race());
-  ClassPtr classp = ClassPtr(new Class());
+  RacePtr racep = make_shared<Race>();
+  ClassPtr classp = make_shared<Class>();
 
   Creature creature;
 
@@ -58,8 +61,8 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_melee_weapon_skills)
 
 TEST(SL_Engine_Calculators_SkillsCalculator, calculate_ranged_weapon_skills)
 {
-  RacePtr racep = RacePtr(new Race());
-  ClassPtr classp = ClassPtr(new Class());
+  RacePtr racep = make_shared<Race>();
+  ClassPtr classp = make_shared<Class>();
 
   Creature creature;
 
@@ -86,8 +89,8 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_ranged_weapon_skills)
 
 TEST(SL_Engine_Calculators_SkillsCalculator, calculate_magic_skills)
 {
-  RacePtr racep = RacePtr(new Race());
-  ClassPtr classp = ClassPtr(new Class());
+  RacePtr racep = make_shared<Race>();
+  ClassPtr classp = make_shared<Class>();
 
   Creature creature;
 

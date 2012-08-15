@@ -1,8 +1,10 @@
+#include <boost/make_shared.hpp>
 #include "CommandFactory.hpp"
 #include "CommandKeys.hpp"
 #include "Commands.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 CommandFactory::CommandFactory()
 {
@@ -18,95 +20,95 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
 
   if (command_name == CommandKeys::QUIT)
   {
-    command = CommandPtr(new QuitCommand());
+    command = make_shared<QuitCommand>();
   }
   else if (command_name == CommandKeys::VERSION)
   {
-    command = CommandPtr(new VersionCommand());
+    command = make_shared<VersionCommand>();
   }
   else if (command_name == CommandKeys::GAME_DATE_TIME)
   {
-    command = CommandPtr(new GameDateTimeCommand());
+    command = make_shared<GameDateTimeCommand>();
   }
   else if (command_name == CommandKeys::MOVE_NORTHEAST)
   {
-    command = CommandPtr(new MovementCommand(DIRECTION_NORTH_EAST));
+    command = make_shared<MovementCommand>(DIRECTION_NORTH_EAST);
   }
   else if (command_name == CommandKeys::MOVE_NORTH)
   {
-    command = CommandPtr(new MovementCommand(DIRECTION_NORTH));
+    command = make_shared<MovementCommand>(DIRECTION_NORTH);
   }
   else if (command_name == CommandKeys::MOVE_NORTHWEST)
   {
-    command = CommandPtr(new MovementCommand(DIRECTION_NORTH_WEST));
+    command = make_shared<MovementCommand>(DIRECTION_NORTH_WEST);
   }
   else if (command_name == CommandKeys::MOVE_EAST)
   {
-    command = CommandPtr(new MovementCommand(DIRECTION_EAST));
+    command = make_shared<MovementCommand>(DIRECTION_EAST);
   }
   else if (command_name == CommandKeys::SEARCH)
   {
-    command = CommandPtr(new SearchCommand());
+    command = make_shared<SearchCommand>();
   }
   else if (command_name == CommandKeys::MOVE_WEST)
   {
-    command = CommandPtr(new MovementCommand(DIRECTION_WEST));
+    command = make_shared<MovementCommand>(DIRECTION_WEST);
   }
   else if (command_name == CommandKeys::MOVE_SOUTHEAST)
   {
-    command = CommandPtr(new MovementCommand(DIRECTION_SOUTH_EAST));
+    command = make_shared<MovementCommand>(DIRECTION_SOUTH_EAST);
   }
   else if (command_name == CommandKeys::MOVE_SOUTH)
   {
-    command = CommandPtr(new MovementCommand(DIRECTION_SOUTH));
+    command = make_shared<MovementCommand>(DIRECTION_SOUTH);
   }
   else if (command_name == CommandKeys::MOVE_SOUTHWEST)
   {
-    command = CommandPtr(new MovementCommand(DIRECTION_SOUTH_WEST));
+    command = make_shared<MovementCommand>(DIRECTION_SOUTH_WEST);
   }
   else if (command_name == CommandKeys::MOVE_UP)
   {
-    command = CommandPtr(new MoveUpLevelCommand());
+    command = make_shared<MoveUpLevelCommand>();
   }
   else if (command_name == CommandKeys::MOVE_DOWN)
   {
-    command = CommandPtr(new MoveDownLevelCommand());
+    command = make_shared<MoveDownLevelCommand>();
   }
   else if (command_name == CommandKeys::PICK_UP_ITEM)
   {
-    command = CommandPtr(new PickUpCommand());
+    command = make_shared<PickUpCommand>();
   }
   else if (command_name == CommandKeys::DROP_ITEM)
   {
-    command = CommandPtr(new DropCommand());
+    command = make_shared<DropCommand>();
   }
   else if (command_name == CommandKeys::CHAR_DUMP)
   {
-    command = CommandPtr(new CharDumpCommand());
+    command = make_shared<CharDumpCommand>();
   }
   else if (command_name == CommandKeys::INVENTORY)
   {
-    command = CommandPtr(new InventoryCommand());
+    command = make_shared<InventoryCommand>();
   }
   else if (command_name == CommandKeys::PRAY)
   {
-    command = CommandPtr(new PrayCommand());
+    command = make_shared<PrayCommand>();
   }
   else if (command_name == CommandKeys::MELEE_WEAPON_INFO)
   {
-    command = CommandPtr(new MeleeWeaponInfoCommand());
+    command = make_shared<MeleeWeaponInfoCommand>();
   }
   else if (command_name == CommandKeys::RANGED_WEAPON_INFO)
   {
-    command = CommandPtr(new RangedWeaponInfoCommand());
+    command = make_shared<RangedWeaponInfoCommand>();
   }
   else if (command_name == CommandKeys::SELECT_TILE)
   {
-    command = CommandPtr(new SelectTileCommand());
+    command = make_shared<SelectTileCommand>();
   }
   else if (command_name == CommandKeys::FIRE_MISSILE)
   {
-    command = CommandPtr(new FireMissileCommand());
+    command = make_shared<FireMissileCommand>();
   }
 
   return command;

@@ -1,5 +1,6 @@
 #include <vector>
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include "Resistances.hpp"
 #include "XMLClassesReader.hpp"
 #include "XMLDataStructures.hpp"
@@ -8,6 +9,7 @@
 #include "XMLStatisticsModifierReader.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 ClassMap XMLClassesReader::get_classes(const XMLNode& classes_node)
 {
@@ -37,7 +39,7 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
   if (!class_node.is_null())
   {
-    current_class = ClassPtr(new Class());
+    current_class = make_shared<Class>();
 
     string internal_class_id = XMLUtils::get_attribute_value(class_node, "id");
 

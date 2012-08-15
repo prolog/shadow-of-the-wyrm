@@ -1,9 +1,11 @@
+#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 #include "SimpleTempleGenerator.hpp"
 
 using std::string;
+using boost::make_shared;
 
 SimpleTempleGenerator::SimpleTempleGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_TEMPLE)
@@ -18,7 +20,7 @@ MapPtr SimpleTempleGenerator::generate(const Dimensions& dim)
 // Generate the simple, open-air temple and its features
 MapPtr SimpleTempleGenerator::generate()
 {
-  MapPtr map = MapPtr(new Map(*base_map));
+  MapPtr map = make_shared<Map>(*base_map);
   
   generate_temple(map);
 

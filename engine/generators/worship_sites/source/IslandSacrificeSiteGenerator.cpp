@@ -1,3 +1,4 @@
+#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "IslandSacrificeSiteGenerator.hpp"
@@ -5,6 +6,7 @@
 #include "TileGenerator.hpp"
 
 using std::string;
+using boost::make_shared;
 
 IslandSacrificeSiteGenerator::IslandSacrificeSiteGenerator(const string& new_deity_id, const MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH)
@@ -19,7 +21,7 @@ MapPtr IslandSacrificeSiteGenerator::generate(const Dimensions& dim)
 
 MapPtr IslandSacrificeSiteGenerator::generate()
 {
-  MapPtr map = MapPtr(new Map(*base_map));
+  MapPtr map = make_shared<Map>(*base_map);
 
   generate_site(map);
 

@@ -1,9 +1,11 @@
+#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "SettlementGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 SettlementGenerator::SettlementGenerator(MapPtr new_base_map)
 : BaseSettlementGenerator(new_base_map)
@@ -22,7 +24,7 @@ MapPtr SettlementGenerator::generate(const Dimensions& dimensions)
 
 MapPtr SettlementGenerator::generate()
 {
-  MapPtr result_map = MapPtr(new Map(*base_map));
+  MapPtr result_map = make_shared<Map>(*base_map);
 
   result_map = generate_roads_and_buildings(result_map);
   result_map = populate_settlement(result_map);
@@ -32,7 +34,7 @@ MapPtr SettlementGenerator::generate()
 
 MapPtr SettlementGenerator::generate_roads_and_buildings(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
 
   int settlement_type = RNG::range(1, 2);
 
@@ -51,7 +53,7 @@ MapPtr SettlementGenerator::generate_roads_and_buildings(MapPtr map)
 
 MapPtr SettlementGenerator::generate_square(MapPtr map, const int start_row, const int start_col, const int square_size)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
 
   int road_top    = start_row - 1;
   int road_bottom = start_row+square_size+1;
@@ -95,7 +97,7 @@ MapPtr SettlementGenerator::generate_square(MapPtr map, const int start_row, con
 
 MapPtr SettlementGenerator::generate_settlement_with_square_and_cardinal_roads(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
   Dimensions dim    = result_map->size();
   int num_rows      = dim.get_y();
   int num_cols      = dim.get_x();
@@ -125,7 +127,7 @@ MapPtr SettlementGenerator::generate_settlement_with_winding_road(MapPtr map)
 
 MapPtr SettlementGenerator::populate_settlement(MapPtr map)
 {
-  MapPtr result_map = MapPtr(new Map(*map));
+  MapPtr result_map = make_shared<Map>(*map);
 
   return result_map;
 }

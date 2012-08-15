@@ -1,8 +1,10 @@
 #include <limits>
+#include <boost/make_shared.hpp>
 #include "Creature.hpp"
 #include "PlayerDecisionStrategy.hpp"
 
 using namespace std;
+using boost::make_shared;
 
 // Set a reasonable set of default values for simple types, which are helpfully initialized to bullshit memory.
 // Why did I write this in C++?
@@ -53,7 +55,7 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
   {
     // Players always use the PlayerDecisionStrategy class so that keyboard input
     // can be used.
-    decision_strategy = DecisionStrategyPtr(new PlayerDecisionStrategy(controller));
+    decision_strategy = make_shared<PlayerDecisionStrategy>(controller);
 
     // Players are always @s.
     set_symbol('@');
