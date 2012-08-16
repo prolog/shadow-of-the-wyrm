@@ -3115,6 +3115,7 @@
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
 				<RangedSkill>2003</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
 				<Difficulty>43</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3130,6 +3131,7 @@
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
 				<RangedSkill>2004</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
 				<Difficulty>43</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>

@@ -3,6 +3,7 @@
 #include "StringTable.hpp"
 
 using namespace std;
+using boost::dynamic_pointer_cast;
 
 // Check to see if the creature is capable of doing ranged combat by
 // performing a number of checks on their equipment, and the configuration
@@ -23,6 +24,10 @@ pair<bool, string> RangedCombatApplicabilityChecker::can_creature_do_ranged_comb
   else if (!is_ranged_weapon_and_ammunition_equipped(creature))
   {
     ranged_combat_info.second = get_ammunition_not_equipped_message();
+  }
+  else if (!is_ranged_weapon_required_and_equipped(creature))
+  {
+    ranged_combat_info.second = get_ammunition_requires_ranged_weapon_message();
   }
   else if (!does_ranged_weapon_match_ammunition(creature))
   {
@@ -126,4 +131,32 @@ string RangedCombatApplicabilityChecker::get_weapon_and_ammunition_mismatch_mess
 {
   string weapon_mismatch = StringTable::get(RangedCombatTextKeys::RANGED_COMBAT_WEAPON_AMMUNITION_MISMATCH);
   return weapon_mismatch;
+}
+
+// Check to see if the ammunition requires a ranged weapon.
+bool RangedCombatApplicabilityChecker::is_ranged_weapon_required_and_equipped(CreaturePtr creature)
+{
+  bool ranged_weapon_required_and_equipped = true;
+  
+  if (creature)
+  {
+    Equipment& equipment = creature->get_equipment();
+    WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_AMMUNITION));
+    ItemPtr ranged_weapon = equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON);
+    
+    bool ammunition_requires_ranged_weapon = ammunition->get_requires_ranged_weapon();
+    
+    if (ammunition_requires_ranged_weapon && !ranged_weapon)
+    {
+      ranged_weapon_required_and_equipped = false;
+    }
+  }
+  
+  return ranged_weapon_required_and_equipped;
+}
+
+string RangedCombatApplicabilityChecker::get_ammunition_requires_ranged_weapon_message() const
+{
+  string ammo_requires_ranged = StringTable::get(RangedCombatTextKeys::RANGED_COMBAT_AMMUNITION_REQUIRES_RANGED_WEAPON);
+  return ammo_requires_ranged;
 }

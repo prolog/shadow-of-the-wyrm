@@ -2,7 +2,7 @@
 
 // WEAPON
 Weapon::Weapon()
-: difficulty(0), trained_skill(SKILL_MELEE_EXOTIC), trained_ranged_skill(SKILL_MELEE_EXOTIC)
+: difficulty(0), trained_skill(SKILL_MELEE_EXOTIC), trained_ranged_skill(SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
 {
   type = ITEM_TYPE_WEAPON;
   symbol = ')';
@@ -124,7 +124,17 @@ void Weapon::synchronize_trained_melee_with_ranged()
   }
 }
 
-// 
+void Weapon::set_requires_ranged_weapon(const bool new_requires_ranged_weapon)
+{
+  requires_ranged_weapon = new_requires_ranged_weapon;
+}
+
+bool Weapon::get_requires_ranged_weapon() const
+{
+  return requires_ranged_weapon;
+}
+
+
 
 // MELEEWEAPON
 MeleeWeapon::MeleeWeapon() 
