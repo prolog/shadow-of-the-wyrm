@@ -673,6 +673,19 @@ WhipsSkill::WhipsSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_WHIPS_INCREMENT;
 }
 
+// Exotic
+ExoticMeleeSkill::ExoticMeleeSkill()
+: WeaponSkill()
+{
+  skill_name_sid = SkillTextKeys::SKILL_MELEE_EXOTIC;
+  skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_EXOTIC_INCREMENT;
+}
+
+float ExoticMeleeSkill::get_threshold_multiplier() const
+{
+  return 3.0;
+}
+
 // RANGED WEAPON SKILLS
 
 // Thrown Axes
@@ -746,6 +759,20 @@ ThrownSpearsSkill::ThrownSpearsSkill()
   skill_name_sid = SkillTextKeys::SKILL_RANGED_SPEARS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_SPEARS_INCREMENT;
 }
+
+// Exotic
+ExoticRangedSkill::ExoticRangedSkill()
+: RangedWeaponSkill()
+{
+  skill_name_sid = SkillTextKeys::SKILL_RANGED_EXOTIC;
+  skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_EXOTIC_INCREMENT;
+}
+
+float ExoticRangedSkill::get_threshold_multiplier() const
+{
+  return 3.0;
+}
+
 
 // MAGIC SKILLS
 
@@ -988,6 +1015,7 @@ void Skills::initialize_melee_skills()
   shared_ptr<SpearsSkill> spears = make_shared<SpearsSkill>();
   shared_ptr<UnarmedSkill> unarmed = make_shared<UnarmedSkill>();
   shared_ptr<WhipsSkill> whips = make_shared<WhipsSkill>();
+  shared_ptr<ExoticMeleeSkill> exotic = make_shared<ExoticMeleeSkill>();
 
   skills.insert(make_pair(SKILL_MELEE_AXES, axes));
   skills.insert(make_pair(SKILL_MELEE_SHORT_BLADES, short_blades));
@@ -998,6 +1026,7 @@ void Skills::initialize_melee_skills()
   skills.insert(make_pair(SKILL_MELEE_SPEARS, spears));
   skills.insert(make_pair(SKILL_MELEE_UNARMED, unarmed));
   skills.insert(make_pair(SKILL_MELEE_WHIPS, whips));
+  skills.insert(make_pair(SKILL_MELEE_EXOTIC, exotic));
 }
 
 // Initialize all the ranged weapon skills.
@@ -1012,6 +1041,7 @@ void Skills::initialize_ranged_skills()
   shared_ptr<RocksSkill> rocks = make_shared<RocksSkill>();
   shared_ptr<SlingsSkill> slings = make_shared<SlingsSkill>();
   shared_ptr<ThrownSpearsSkill> spears = make_shared<ThrownSpearsSkill>();
+  shared_ptr<ExoticRangedSkill> exotic = make_shared<ExoticRangedSkill>();
 
   skills.insert(make_pair(SKILL_RANGED_AXES, axes));
   skills.insert(make_pair(SKILL_RANGED_BLADES, blades));
@@ -1022,6 +1052,7 @@ void Skills::initialize_ranged_skills()
   skills.insert(make_pair(SKILL_RANGED_ROCKS, rocks));
   skills.insert(make_pair(SKILL_RANGED_SLINGS, slings));
   skills.insert(make_pair(SKILL_RANGED_SPEARS, spears));
+  skills.insert(make_pair(SKILL_RANGED_EXOTIC, exotic));
 }
 
 // Initialize all the magic skills.

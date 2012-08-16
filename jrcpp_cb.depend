@@ -209,7 +209,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwandreader.cpp
 	"XMLWandReader.hpp"
 
-1343581947 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
+1345035808 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
 	"XMLWeaponsReaders.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwearablereader.cpp
@@ -1555,7 +1555,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1344861993 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1345075721 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1952,7 +1952,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\scroll.cpp
 	"Scroll.hpp"
 
-1343087230 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
+1345076146 source:c:\cygwin\home\julian\jrcpp\world\source\skills.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
@@ -1984,7 +1984,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\wand.cpp
 	"Wand.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
+1345036183 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
 	"Weapon.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\wearable.cpp

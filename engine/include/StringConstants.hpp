@@ -389,6 +389,8 @@ class SkillTextKeys
     static const std::string SKILL_MELEE_UNARMED_INCREMENT;
     static const std::string SKILL_MELEE_WHIPS;
     static const std::string SKILL_MELEE_WHIPS_INCREMENT;
+    static const std::string SKILL_MELEE_EXOTIC;
+    static const std::string SKILL_MELEE_EXOTIC_INCREMENT;
 
     // Weapon (Ranged)
     static const std::string SKILLS_RANGED_WEAPON;
@@ -410,6 +412,8 @@ class SkillTextKeys
     static const std::string SKILL_RANGED_SLINGS_INCREMENT;
     static const std::string SKILL_RANGED_SPEARS;
     static const std::string SKILL_RANGED_SPEARS_INCREMENT;
+    static const std::string SKILL_RANGED_EXOTIC;
+    static const std::string SKILL_RANGED_EXOTIC_INCREMENT;
 
     // Magic
     static const std::string SKILLS_MAGIC;
