@@ -3033,7 +3033,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>4</Material>
-				<Skill>2007</Skill>
+				<RangedSkill>2007</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3048,7 +3048,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
-				<Skill>2003</Skill>
+				<RangedSkill>2003</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3063,7 +3063,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
-				<Skill>2003</Skill>
+				<RangedSkill>2003</RangedSkill>
 				<Difficulty>41</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3078,7 +3078,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
-				<Skill>2004</Skill>
+				<RangedSkill>2004</RangedSkill>
 				<Difficulty>43</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3099,7 +3099,7 @@
 					<Symbol>*</Symbol>
 					<Colour>8</Colour>
 				</TextDetails>
-				<Skill>2006</Skill>
+				<RangedSkill>2006</RangedSkill>
 				<Difficulty>50</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3114,7 +3114,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>9</Ounces></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
-				<Skill>2003</Skill>
+				<RangedSkill>2003</RangedSkill>
 				<Difficulty>43</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3129,7 +3129,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
-				<Skill>2004</Skill>
+				<RangedSkill>2004</RangedSkill>
 				<Difficulty>43</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3144,7 +3144,7 @@
 				<Weight><Pounds>3</Pounds></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
-				<Skill>2008</Skill>
+				<RangedSkill>2008</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Damage>
 					<NumDice>2</NumDice>
@@ -3159,7 +3159,7 @@
 				<Weight><Pounds>6</Pounds></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
-				<Skill>2002</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Damage>
 					<NumDice>2</NumDice>

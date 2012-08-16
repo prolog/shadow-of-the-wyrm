@@ -120,14 +120,8 @@ int WeaponManager::get_difficulty(WeaponPtr weapon)
 // Get the skill type for a given attack type (it will be based on the weapon used)
 SkillType WeaponManager::get_skill_type(CreaturePtr creature, const AttackType attack_type)
 {
-  SkillType skill_type = SKILL_MELEE_UNARMED;
   WeaponPtr weapon = get_weapon(creature, attack_type);
-  
-  if (weapon)
-  {
-    skill_type = weapon->get_trained_skill();
-  }
-  // Otherwise, if there's no weapon in the slot, unarmed will always be trained.
+  SkillType skill_type = get_appropriate_trained_skill(weapon, attack_type);
   
   return skill_type;
 }
@@ -137,4 +131,24 @@ DamageType WeaponManager::get_damage_type(CreaturePtr creature, const AttackType
 {
   Damage damage = get_damage(creature, attack_type);
   return damage.get_damage_type();
+}
+
+// Get the trained skill from the weapon based on the type of attack being done (ranged or not)
+SkillType WeaponManager::get_appropriate_trained_skill(WeaponPtr weapon, const AttackType attack_type)
+{
+  SkillType skill = SKILL_MELEE_UNARMED;
+  
+  if (weapon)
+  {
+    if (attack_type == ATTACK_TYPE_RANGED)
+    {
+      skill = weapon->get_trained_ranged_skill();
+    }
+    else
+    {
+      skill = weapon->get_trained_skill();
+    }
+  }
+  
+  return skill;
 }

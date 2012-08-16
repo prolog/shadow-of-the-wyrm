@@ -625,10 +625,16 @@
 	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Weapon">
+	<xs:annotation>
+		<xs:documentation>If Skill is not provided, Savage Lands will attempt to deduce it based on the other.
+						  If neither is provided, the skill trained will default to Exoti
+		</xs:documentation>
+	</xs:annotation>
 	<xs:complexContent>
 		<xs:extension base="tns:Wearable">
 			<xs:sequence>
-				<xs:element name="Skill" type="tns:TrainedWeaponSkill"/>
+				<xs:element name="Skill" type="tns:TrainedWeaponSkill" minOccurs="0"/>
+				<xs:element name="RangedSkill" type="tns:TrainedWeaponSkill" minOccurs="0"/>
 				<xs:element name="Difficulty" type="xs:int"/>
 				<xs:element name="Damage" type="tns:Damage"/>
 			</xs:sequence>
@@ -942,6 +948,7 @@
 		<xs:enumeration value="1006"/>
 		<xs:enumeration value="1007"/>
 		<xs:enumeration value="1008"/>
+		<xs:enumeration value="1009"/>
 		<xs:enumeration value="2000"/>
 		<xs:enumeration value="2001"/>
 		<xs:enumeration value="2002"/>
@@ -951,6 +958,7 @@
 		<xs:enumeration value="2006"/>
 		<xs:enumeration value="2007"/>
 		<xs:enumeration value="2008"/>
+		<xs:enumeration value="2009"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="NonNegativeDecimal">

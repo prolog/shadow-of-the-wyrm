@@ -445,6 +445,14 @@ class WhipsSkill : public WeaponSkill
     WhipsSkill();
 };
 
+class ExoticMeleeSkill : public WeaponSkill
+{
+  public:
+    ExoticMeleeSkill();
+
+    float get_threshold_multiplier() const;
+};
+
 // WEAPON SKILLS (RANGED)
 
 class ThrownAxesSkill : public RangedWeaponSkill
@@ -499,6 +507,14 @@ class ThrownSpearsSkill : public RangedWeaponSkill
 {
   public:
     ThrownSpearsSkill();
+};
+
+class ExoticRangedSkill : public RangedWeaponSkill
+{
+  public:
+    ExoticRangedSkill();
+
+    float get_threshold_multiplier() const;
 };
 
 // MAGICAL SKILLS
