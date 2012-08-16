@@ -209,7 +209,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwandreader.cpp
 	"XMLWandReader.hpp"
 
-1345035808 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
+1345078041 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
 	"XMLWeaponsReaders.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwearablereader.cpp
@@ -534,7 +534,7 @@
 	"PlayerDeathManager.hpp"
 	"ReligionManager.hpp"
 
-1343578175 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
+1345076854 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
 	<boost/make_shared.hpp>
 	"Ammunition.hpp"
 	"CombatConstants.hpp"
@@ -1555,7 +1555,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1345075721 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1345078780 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1826,7 +1826,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\alignment.cpp
 	"Alignment.hpp"
 
-1343484356 source:c:\cygwin\home\julian\jrcpp\world\source\ammunition.cpp
+1345077816 source:c:\cygwin\home\julian\jrcpp\world\source\ammunition.cpp
 	"Ammunition.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\amulet.cpp
@@ -1984,7 +1984,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\wand.cpp
 	"Wand.hpp"
 
-1345036183 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
+1345077857 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
 	"Weapon.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\wearable.cpp
@@ -2336,7 +2336,7 @@
 	"RangedCombatEquipmentChecker.hpp"
 	"StringTable.hpp"
 
-1344947205 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatapplicabilitychecker.cpp
+1345080332 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatapplicabilitychecker.cpp
 	"Game.hpp"
 	"RangedCombatApplicabilityChecker.hpp"
 	"StringTable.hpp"

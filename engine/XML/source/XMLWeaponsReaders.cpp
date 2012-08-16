@@ -23,6 +23,9 @@ void XMLWeaponsReader::parse(WeaponPtr weapon, const XMLNode& weapon_node)
     
     weapon->synchronize_trained_skills();
     
+    bool requires_ranged_weapon = XMLUtils::get_child_node_bool_value(weapon_node, "RequiresRangedWeapon", false);
+    weapon->set_requires_ranged_weapon(requires_ranged_weapon);
+    
     int difficulty = XMLUtils::get_child_node_int_value(weapon_node, "Difficulty");
     weapon->set_difficulty(difficulty);
     

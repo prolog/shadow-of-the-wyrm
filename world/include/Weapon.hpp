@@ -26,6 +26,9 @@ class Weapon : public Wearable
     
     virtual void synchronize_trained_skills();
     
+    virtual void set_requires_ranged_weapon(const bool new_requires_ranged_weapon);
+    virtual bool get_requires_ranged_weapon() const;
+    
   protected:
     virtual void synchronize_trained_ranged_with_melee();
     virtual void synchronize_trained_melee_with_ranged();
@@ -34,6 +37,7 @@ class Weapon : public Wearable
     Damage damage;
     SkillType trained_skill;
     SkillType trained_ranged_skill;
+    bool requires_ranged_weapon;
 };
 
 class MeleeWeapon : public Weapon

@@ -13,6 +13,11 @@ class Ammunition : public MeleeWeapon
     // MeleeWeapon, and delete the Ammunition class.
     
     Item* clone();
+    
+  protected:
+    // Whether the ammunition requires a ranged weapon.  Some (arrows, bolts) do.
+    // Others (clubs, rocks) don't.
+    bool requires_ranged_weapon;
 };
 
 typedef boost::shared_ptr<Ammunition> AmmunitionPtr;
