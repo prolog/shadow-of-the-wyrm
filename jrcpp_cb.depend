@@ -46,7 +46,7 @@
 1339159082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
 	"NCursesConstants.hpp"
 
-1343478691 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1345206803 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -1272,24 +1272,26 @@
 	"OvergrownSacrificeSiteGenerator.hpp"
 	"WorshipSiteGenerator.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\classselectionscreen.cpp
-	"ClassSelectionScreen.hpp"
+1345206227 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\classselectionscreen.cpp
 	<string>
+	<boost/make_shared.hpp>
+	"ClassSelectionScreen.hpp"
 	"RaceSelectionScreen.hpp"
 	"Game.hpp"
 	"OptionsComponent.hpp"
 	"StringConstants.hpp"
 	"TextComponent.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\deityselectionscreen.cpp
+1345206333 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\deityselectionscreen.cpp
 	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
 	"DeitySelectionScreen.hpp"
 	"Game.hpp"
 	"Log.hpp"
 	"OptionsComponent.hpp"
 	"StringConstants.hpp"
 
-1345033358 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\menu.cpp
+1345206655 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\menu.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"Menu.hpp"
@@ -1297,7 +1299,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\menucomponent.cpp
 	"MenuComponent.hpp"
 
-1345033454 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\namingscreen.cpp
+1345206569 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\namingscreen.cpp
 	<boost/make_shared.hpp>
 	"NamingScreen.hpp"
 	"StringConstants.hpp"
@@ -1310,14 +1312,16 @@
 	"StringConstants.hpp"
 	"StringTable.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
+1345206549 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\raceselectionscreen.cpp
+	<boost/make_shared.hpp>
 	"RaceSelectionScreen.hpp"
 	"Game.hpp"
 	"OptionsComponent.hpp"
 	"StringConstants.hpp"
 	"TextComponent.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\sexselectionscreen.cpp
+1345206584 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\sexselectionscreen.cpp
+	<boost/make_shared.hpp>
 	"CreatureFeatures.hpp"
 	"TextComponent.hpp"
 	"OptionsComponent.hpp"
@@ -1328,11 +1332,11 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\textcomponent.cpp
 	"TextComponent.hpp"
 
-1345033433 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\welcomescreen.cpp
+1345206533 source:c:\cygwin\home\julian\jrcpp\engine\menus\source\welcomescreen.cpp
+	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"StringConstants.hpp"
 	"StringTable.hpp"
-	<boost/make_shared.hpp>
 	"WelcomeScreen.hpp"
 
 1342532786 source:c:\cygwin\home\julian\jrcpp\engine\skills\source\detection.cpp
@@ -2336,7 +2340,7 @@
 	"RangedCombatEquipmentChecker.hpp"
 	"StringTable.hpp"
 
-1345080332 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatapplicabilitychecker.cpp
+1345207849 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatapplicabilitychecker.cpp
 	"Game.hpp"
 	"RangedCombatApplicabilityChecker.hpp"
 	"StringTable.hpp"

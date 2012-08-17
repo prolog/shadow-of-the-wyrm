@@ -382,10 +382,10 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
   int current_row = 0;
   int current_col = 0;
 
-  vector<MenuComponent*> components = current_menu.get_components();
-  BOOST_FOREACH( MenuComponent* component, components)
+  vector<MenuComponentPtr> components = current_menu.get_components();
+  BOOST_FOREACH( MenuComponentPtr component, components)
   {
-    TextComponent* tc = dynamic_cast<TextComponent*>(component);
+    TextComponentPtr tc = dynamic_pointer_cast<TextComponent>(component);
 
     if (tc != NULL)
     {
@@ -393,7 +393,7 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
     }
     else
     {
-      OptionsComponent* oc = dynamic_cast<OptionsComponent*>(component);
+      OptionsComponentPtr oc = dynamic_pointer_cast<OptionsComponent>(component);
 
       if (oc != NULL)
       {
@@ -432,14 +432,14 @@ void NCursesDisplay::confirm(const string& confirmation_message)
   add_message(confirmation_message, COLOUR_WHITE, false);
 }
 
-void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponent* tc)
+void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr tc)
 {
   string current_text = tc->get_text();
   mvwprintw(window, *row, *col, current_text.c_str());
   *row += 2;
 }
 
-NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponent* oc)
+NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
 {
   MENU* options_menu;
   ITEM** option_items;

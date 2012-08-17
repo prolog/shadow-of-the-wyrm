@@ -53,8 +53,8 @@ class NCursesDisplay : public Display
     int clear_message_buffer();
 
     void refresh_terminal_size();
-    void display_text_component(WINDOW* window, int* row, int* col, TextComponent* text_component);
-    NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponent* options_component);
+    void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component);
+    NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
 
     // Creation/destruction methods
