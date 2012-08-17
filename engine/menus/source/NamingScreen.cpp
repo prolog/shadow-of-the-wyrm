@@ -12,8 +12,8 @@ NamingScreen::NamingScreen(DisplayPtr new_display) : Menu(new_display)
 void NamingScreen::initialize()
 {
   std::string empty_str = "";
-  TextComponent* empty = new TextComponent(empty_str);
-  TextComponent* more_emptiness = new TextComponent(empty_str);
+  TextComponentPtr empty = make_shared<TextComponent>(empty_str);
+  TextComponentPtr more_emptiness = make_shared<TextComponent>(empty_str);
 
   components.push_back(empty);
   components.push_back(more_emptiness);

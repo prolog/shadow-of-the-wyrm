@@ -16,12 +16,12 @@ class Menu
 
     PromptPtr get_prompt() const;
 
-    std::vector<MenuComponent*> get_components() const;
+    std::vector<MenuComponentPtr> get_components() const;
 
   protected:
     virtual void initialize();
 
-    std::vector<MenuComponent*> components;
+    std::vector<MenuComponentPtr> components;
     PromptPtr user_prompt;
 
     DisplayPtr game_display;

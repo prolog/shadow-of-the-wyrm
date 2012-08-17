@@ -119,7 +119,26 @@ bool RangedCombatApplicabilityChecker::does_ranged_weapon_match_ammunition(Creat
 
   if (creature)
   {
-    // JCD FIXME implement this :)
+    Equipment& equipment = creature->get_equipment();
+    
+    WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
+    WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_AMMUNITION));
+    
+    if (ammunition)
+    { 
+      // JCD FIXME move elsewhere
+      if (ranged_weapon)
+      {
+        SkillType ranged_trained_skill = ranged_weapon->get_trained_ranged_skill();
+        SkillType ammo_trained_skill = ammunition->get_trained_ranged_skill();
+        
+        if (((ammo_trained_skill == SKILL_RANGED_ROCKS) && (ranged_trained_skill == SKILL_RANGED_SLINGS))
+          || (ammo_trained_skill == ranged_trained_skill))
+        {
+          weapon_match = true;
+        }
+      }
+    }
   }
 
   return weapon_match;

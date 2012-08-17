@@ -15,12 +15,6 @@ Menu::Menu(DisplayPtr new_display)
 Menu::~Menu()
 {
   game_display->clear_menu();
-
-  BOOST_FOREACH(MenuComponent* mc, components)
-  {
-    delete mc;
-    mc = NULL;
-  }
 }
 
 // Do whatever work is necessary to initialize the menu
@@ -48,7 +42,7 @@ PromptPtr Menu::get_prompt() const
   return user_prompt;
 }
 
-vector<MenuComponent*> Menu::get_components() const
+vector<MenuComponentPtr> Menu::get_components() const
 {
   return components;
 }

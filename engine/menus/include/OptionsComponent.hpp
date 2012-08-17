@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <boost/shared_ptr.hpp>
 #include "MenuComponent.hpp"
 
 class Option
@@ -39,3 +40,5 @@ class OptionsComponent : public MenuComponent
     std::vector<Option> options;
     std::vector<std::string> option_descriptions; // These describe the option at the same index in "options".
 };
+
+typedef boost::shared_ptr<OptionsComponent> OptionsComponentPtr;

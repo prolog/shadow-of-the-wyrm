@@ -1,7 +1,7 @@
 #pragma once
 #include "Weapon.hpp"
 
-class Ammunition : public MeleeWeapon
+class Ammunition : public RangedWeapon
 {
   public:
     Ammunition();

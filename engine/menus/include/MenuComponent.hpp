@@ -1,4 +1,5 @@
 #pragma once
+#include <boost/shared_ptr.hpp>
 #include <string>
 
 class MenuComponent
@@ -13,3 +14,5 @@ class MenuComponent
   protected:
     std::string text;
 };
+
+typedef boost::shared_ptr<MenuComponent> MenuComponentPtr;
