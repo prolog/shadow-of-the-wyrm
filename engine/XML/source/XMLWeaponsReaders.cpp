@@ -21,8 +21,6 @@ void XMLWeaponsReader::parse(WeaponPtr weapon, const XMLNode& weapon_node)
     SkillType trained_ranged_skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(weapon_node, "RangedSkill", SKILL_RANGED_EXOTIC));
     weapon->set_trained_ranged_skill(trained_ranged_skill);
     
-    weapon->synchronize_trained_skills();
-    
     bool requires_ranged_weapon = XMLUtils::get_child_node_bool_value(weapon_node, "RequiresRangedWeapon", false);
     weapon->set_requires_ranged_weapon(requires_ranged_weapon);
     

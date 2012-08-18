@@ -152,3 +152,33 @@ SkillType WeaponManager::get_appropriate_trained_skill(WeaponPtr weapon, const A
   
   return skill;
 }
+
+// Is the ranged weapon's trained ranged skill compatible with that of the provided ammunition?
+bool WeaponManager::is_ranged_weapon_skill_type_compatible_with_ammunition(WeaponPtr ranged_weapon, WeaponPtr ammunition)
+{
+  bool weapon_match = false;
+
+  if (ammunition)
+  { 
+    if (ammunition->get_requires_ranged_weapon())
+    {
+      if (ranged_weapon)
+      {
+        SkillType ranged_trained_skill = ranged_weapon->get_trained_ranged_skill();
+        SkillType ammo_trained_skill = ammunition->get_trained_ranged_skill();
+        
+        if (((ammo_trained_skill == SKILL_RANGED_ROCKS) && (ranged_trained_skill == SKILL_RANGED_SLINGS))
+          || (ammo_trained_skill == ranged_trained_skill))
+        {
+          weapon_match = true;
+        }
+      }
+    }
+    else
+    {
+      weapon_match = true;
+    }
+  }
+
+  return weapon_match;
+}

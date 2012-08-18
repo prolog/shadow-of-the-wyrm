@@ -209,7 +209,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwandreader.cpp
 	"XMLWandReader.hpp"
 
-1345078041 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
+1345246782 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
 	"XMLWeaponsReaders.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwearablereader.cpp
@@ -1988,7 +1988,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\wand.cpp
 	"Wand.hpp"
 
-1345077857 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
+1345246883 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
 	"Weapon.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\wearable.cpp

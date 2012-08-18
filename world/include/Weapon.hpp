@@ -24,14 +24,10 @@ class Weapon : public Wearable
     virtual void set_trained_ranged_skill(const SkillType new_trained_ranged_skill);
     SkillType get_trained_ranged_skill() const;
     
-    virtual void synchronize_trained_skills();
-    
     virtual void set_requires_ranged_weapon(const bool new_requires_ranged_weapon);
     virtual bool get_requires_ranged_weapon() const;
     
   protected:
-    virtual void synchronize_trained_ranged_with_melee();
-    virtual void synchronize_trained_melee_with_ranged();
   
     int difficulty;
     Damage damage;
