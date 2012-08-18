@@ -2746,6 +2746,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2761,6 +2762,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
 				<Difficulty>40</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2776,6 +2778,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
 				<Difficulty>44</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2791,6 +2794,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
 				<Difficulty>40</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2807,6 +2811,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
 				<Difficulty>40</Difficulty>
 				<Damage>
 					<NumDice>2</NumDice>
@@ -2822,6 +2827,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2837,6 +2843,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>44</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2852,6 +2859,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>7</Material>
 				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>2</NumDice>
@@ -2867,6 +2875,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
 				<Difficulty>44</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2882,6 +2891,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2897,6 +2907,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2912,6 +2923,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
 				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
 				<Difficulty>47</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2927,6 +2939,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2942,6 +2955,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>44</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2957,6 +2971,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>4</Material>
 				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -2972,6 +2987,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>4</Material>
 				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Damage>
 					<NumDice>2</NumDice>
@@ -2987,6 +3003,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3002,6 +3019,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3017,6 +3035,7 @@
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
 				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>50</Difficulty>
 				<Damage>
 					<NumDice>1</NumDice>
@@ -3033,6 +3052,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>4</Material>
+				<Skill>1009</Skill>
 				<RangedSkill>2007</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
@@ -3048,6 +3068,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
+				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<Difficulty>45</Difficulty>
 				<Damage>
@@ -3063,6 +3084,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
+				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<Difficulty>41</Difficulty>
 				<Damage>
@@ -3078,6 +3100,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>9</WornLocation>
 				<Material>8</Material>
+				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<Difficulty>43</Difficulty>
 				<Damage>
@@ -3099,6 +3122,7 @@
 					<Symbol>*</Symbol>
 					<Colour>8</Colour>
 				</TextDetails>
+				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
 				<Difficulty>50</Difficulty>
 				<Damage>
@@ -3114,6 +3138,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>9</Ounces></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
+				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
 				<Difficulty>43</Difficulty>
@@ -3130,6 +3155,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
+				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
 				<Difficulty>43</Difficulty>
@@ -3146,6 +3172,7 @@
 				<Weight><Pounds>3</Pounds></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
+				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Damage>
@@ -3161,6 +3188,7 @@
 				<Weight><Pounds>6</Pounds></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
+				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
 				<Damage>

@@ -633,8 +633,8 @@
 	<xs:complexContent>
 		<xs:extension base="tns:Wearable">
 			<xs:sequence>
-				<xs:element name="Skill" type="tns:TrainedWeaponSkill" minOccurs="0"/>
-				<xs:element name="RangedSkill" type="tns:TrainedWeaponSkill" minOccurs="0"/>
+				<xs:element name="Skill" type="tns:TrainedWeaponSkill"/>
+				<xs:element name="RangedSkill" type="tns:TrainedWeaponSkill"/>
 				<xs:element name="RequiresRangedWeapon" type="xs:boolean" minOccurs="0"/>
 				<xs:element name="Difficulty" type="xs:int"/>
 				<xs:element name="Damage" type="tns:Damage"/>

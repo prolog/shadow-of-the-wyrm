@@ -1,6 +1,7 @@
 #include "Game.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "StringTable.hpp"
+#include "WeaponManager.hpp"
 
 using namespace std;
 using boost::dynamic_pointer_cast;
@@ -124,21 +125,8 @@ bool RangedCombatApplicabilityChecker::does_ranged_weapon_match_ammunition(Creat
     WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
     WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_AMMUNITION));
     
-    if (ammunition)
-    { 
-      // JCD FIXME move elsewhere
-      if (ranged_weapon)
-      {
-        SkillType ranged_trained_skill = ranged_weapon->get_trained_ranged_skill();
-        SkillType ammo_trained_skill = ammunition->get_trained_ranged_skill();
-        
-        if (((ammo_trained_skill == SKILL_RANGED_ROCKS) && (ranged_trained_skill == SKILL_RANGED_SLINGS))
-          || (ammo_trained_skill == ranged_trained_skill))
-        {
-          weapon_match = true;
-        }
-      }
-    }
+    WeaponManager wm;
+    weapon_match = wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged_weapon, ammunition);    
   }
 
   return weapon_match;
