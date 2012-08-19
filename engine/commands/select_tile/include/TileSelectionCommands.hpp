@@ -23,5 +23,12 @@ class CancelTileSelectionCommand : public Command
     ~CancelTileSelectionCommand();
 };
 
+class TargetTileCommand : public Command
+{
+  public:
+    TargetTileCommand();
+    ~TargetTileCommand();
+};
+
 typedef boost::shared_ptr<CursorDirectionalCommand> CursorDirectionalCommandPtr;
 

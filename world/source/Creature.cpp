@@ -554,6 +554,21 @@ uint Creature::get_turns() const
   return turns;
 }
 
+void Creature::set_target_map(const TargetMap& new_target_map)
+{
+  targets = new_target_map;
+}
+
+TargetMap Creature::get_target_map() const
+{
+  return targets;
+}
+
+TargetMap& Creature::get_target_map_ref()
+{
+  return targets;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Creature_test.cpp"
 #endif

@@ -20,6 +20,8 @@
 // Forward declarations.
 class DecisionStrategy;
 
+typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
+
 class Creature
 {
   public:
@@ -194,6 +196,10 @@ class Creature
     void increment_turns();
     uint get_turns() const;
     
+    void set_target_map(const TargetMap& new_previous_target);
+    TargetMap get_target_map() const;
+    TargetMap& get_target_map_ref();
+    
   protected:
 
     std::string id;
@@ -283,6 +289,12 @@ class Creature
     
     // The number of actions the creature has taken.
     ulonglong turns;
+    
+    // Previous targets for ranged/magical combat.  The value is structured
+    // so that:
+    // - string is a creature ID, possible empty
+    // - Coordinate is the coordinate that the creature was previously at
+    TargetMap targets;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

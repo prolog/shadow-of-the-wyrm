@@ -410,31 +410,24 @@ ActionCost ActionManager::select_tile(CreaturePtr creature)
   
   if (creature)
   {
-    action_cost_value = tile_selection_manager.select_tile(creature);
+    action_cost_value = tile_selection_manager.select_tile(creature, ActionTextKeys::ACTION_LOOK);
   }
   
   return get_action_cost(creature, action_cost_value);
 }
 
-ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction d)
+ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction d, TileSelectionManager* const tsm)
 {
   ActionCostValue action_cost_value = 0;
   
   if (creature)
   {
-    action_cost_value = tile_selection_manager.select_tile(creature, d);
-  }
-  
-  return action_cost_value;
-}
-
-ActionCostValue ActionManager::select_tile_cancel(CreaturePtr creature)
-{
-  ActionCostValue action_cost_value = 0;
-  
-  if (creature)
-  {
-    action_cost_value = tile_selection_manager.select_tile_cancel(creature);
+    // Ensure that we use the passed-in tile selection manager, as it may have certain properties
+    // set (to exclude parts of the overall tile description, etc).
+    if (tsm)
+    {
+      action_cost_value = tsm->select_tile(creature, d);
+    }
   }
   
   return action_cost_value;
