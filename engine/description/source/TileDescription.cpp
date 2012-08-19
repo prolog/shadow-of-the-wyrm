@@ -5,6 +5,11 @@
 
 using namespace std;
 
+TileDescription::TileDescription(const bool tile, const bool feature, const bool creature, const bool items)
+: show_tile(tile), show_feature(feature), show_creature(creature), show_items(items)
+{
+}
+
 // Get the description for the tile, based on the following:
 // - Whether the tile is non-null
 // - Whether it contains a creature
@@ -17,34 +22,51 @@ string TileDescription::describe(TilePtr tile, bool tile_is_in_fov)
   if (tile)
   {
     // If the tile hasn't been seen (still dark), get a message saying so.
-    if (!tile->get_viewed())
+    if (show_tile && !tile->get_viewed())
     {
       tile_info_strings.push_back(StringTable::get(ActionTextKeys::ACTION_LOOK_UNEXPLORED_TILE));      
     }
     // Otherwise, get details from the tile.
     else
     {
-      IDescriberPtr describer = DescriberFactory::create_describer(tile);
-      tile_info_strings.push_back(describer->describe());
+      IDescriberPtr describer;
+      
+      if (show_tile)
+      {
+        describer = DescriberFactory::create_describer(tile);
+        tile_info_strings.push_back(describer->describe());
+      }
 
       if (tile_is_in_fov)
       {
-        FeaturePtr feature = tile->get_feature();
-        describer = DescriberFactory::create_describer(feature);
-        tile_info_strings.push_back(describer->describe());
+        if (show_feature)
+        {
+          FeaturePtr feature = tile->get_feature();
+          describer = DescriberFactory::create_describer(feature);
+          tile_info_strings.push_back(describer->describe());
+        }
         
-        CreaturePtr creature = tile->get_creature();
-        describer = DescriberFactory::create_describer(creature);
-        tile_info_strings.push_back(describer->describe());
+        if (show_creature)
+        {
+          CreaturePtr creature = tile->get_creature();
+          describer = DescriberFactory::create_describer(creature);
+          tile_info_strings.push_back(describer->describe());
+        }
         
-        Inventory& inventory = tile->get_items();
-        describer = DescriberFactory::create_describer(inventory);
-        tile_info_strings.push_back(describer->describe());
+        if (show_items)
+        {
+          Inventory& inventory = tile->get_items();
+          describer = DescriberFactory::create_describer(inventory);
+          tile_info_strings.push_back(describer->describe());
+        }
       }
       // If the tile's been explored, but is out of range, add another message.
       else
       {
-        tile_info_strings.push_back(StringTable::get(ActionTextKeys::ACTION_LOOK_TILE_OUT_OF_RANGE));
+        if (show_tile)
+        {
+          tile_info_strings.push_back(StringTable::get(ActionTextKeys::ACTION_LOOK_TILE_OUT_OF_RANGE));
+        }
       }
     }
   }

@@ -13,6 +13,9 @@ class TileSelectionCommandKeys
     static const std::string CURSOR_MOVE_SOUTH;
     static const std::string CURSOR_MOVE_SOUTHEAST;
     static const std::string CANCEL_TILE_SELECTION;
+    
+    // Used for targetting creatures for ranged combat/magic:
+    static const std::string TARGET_TILE;
 
   protected:
     TileSelectionCommandKeys();

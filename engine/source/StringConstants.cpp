@@ -822,6 +822,7 @@ const string ActionTextKeys::ACTION_DETECTED_HOSTILE_CREATURES = "ACTION_DETECTE
 const string ActionTextKeys::ACTION_LOOK                       = "ACTION_LOOK";
 const string ActionTextKeys::ACTION_LOOK_UNEXPLORED_TILE       = "ACTION_LOOK_UNEXPLORED_TILE";
 const string ActionTextKeys::ACTION_LOOK_TILE_OUT_OF_RANGE     = "ACTION_LOOK_TILE_OUT_OF_RANGE";
+const string ActionTextKeys::ACTION_FIRE                       = "ACTION_FIRE";
 
 // Strings for the various seasons
 SeasonTextKeys::SeasonTextKeys()

@@ -46,8 +46,7 @@ class ActionManager
     // Tile selection actions.  The function with just the CreaturePtr is the main entry point - the others are used
     // for processing directional commands, cancellation, etc.
     ActionCost select_tile(CreaturePtr creature); // Examines the tiles on the current map
-    ActionCostValue select_tile(CreaturePtr creature, const Direction d);
-    ActionCostValue select_tile_cancel(CreaturePtr creature);
+    ActionCostValue select_tile(CreaturePtr creature, const Direction d, TileSelectionManager* const tsm);
     
     // Actions utilizing tile selection actions:
     ActionCost fire_missile(CreaturePtr creature);

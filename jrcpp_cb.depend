@@ -223,7 +223,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1344946821 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1345382500 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -313,7 +313,7 @@
 	"MapUtils.hpp"
 	"TileMovementConfirmation.hpp"
 
-1344948186 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+1345381608 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
 	<boost/make_shared.hpp>
 	"Game.hpp"
 	"MapCursor.hpp"
@@ -534,7 +534,7 @@
 	"PlayerDeathManager.hpp"
 	"ReligionManager.hpp"
 
-1345076854 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
+1345248176 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
 	<boost/make_shared.hpp>
 	"Ammunition.hpp"
 	"CombatConstants.hpp"
@@ -594,21 +594,21 @@
 	"InventoryCommandKeys.hpp"
 	"InventoryKeyboardCommandMap.hpp"
 
-1344269128 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandfactory.cpp
+1345379541 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandfactory.cpp
 	<boost/make_shared.hpp>
 	"Directions.hpp"
 	"TileSelectionCommands.hpp"
 	"TileSelectionCommandFactory.hpp"
 	"TileSelectionCommandKeys.hpp"
 
-1344270943 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandkeys.cpp
+1345301636 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandkeys.cpp
 	"TileSelectionCommandKeys.hpp"
 
-1344695059 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
+1345382559 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
 	"Game.hpp"
 	"TileSelectionCommandProcessor.hpp"
 
-1344268519 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommands.cpp
+1345301800 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommands.cpp
 	"Conversion.hpp"
 	"TileSelectionCommands.hpp"
 
@@ -843,7 +843,7 @@
 	"TileDescriber.hpp"
 	"StringTable.hpp"
 
-1344693486 source:c:\cygwin\home\julian\jrcpp\engine\description\source\tiledescription.cpp
+1345298296 source:c:\cygwin\home\julian\jrcpp\engine\description\source\tiledescription.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	"DescriberFactory.hpp"
@@ -1559,7 +1559,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1345078780 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1345297040 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1857,7 +1857,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\consumable.cpp
 	"Consumable.hpp"
 
-1345033712 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
+1345293768 source:c:\cygwin\home\julian\jrcpp\world\source\creature.cpp
 	<limits>
 	<boost/make_shared.hpp>
 	"Creature.hpp"
@@ -2330,18 +2330,29 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1344947229 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1345381934 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+	<boost/make_shared.hpp>
+	"Conversion.hpp"
+	"FireWeaponTileSelectionKeyboardCommandMap.hpp"
 	"MessageManager.hpp"
 	"RangedCombatActionManager.hpp"
 	"RangedCombatApplicabilityChecker.hpp"
+	"TileSelectionManager.hpp"
 
 1344863015 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatequipmentchecker.cpp
 	"Game.hpp"
 	"RangedCombatEquipmentChecker.hpp"
 	"StringTable.hpp"
 
-1345207849 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatapplicabilitychecker.cpp
+1345247966 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatapplicabilitychecker.cpp
 	"Game.hpp"
 	"RangedCombatApplicabilityChecker.hpp"
 	"StringTable.hpp"
+	"WeaponManager.hpp"
+
+1345379405 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\fireweapontileselectionkeyboardcommandmap.cpp
+	<ncurses.h>
+	"Conversion.hpp"
+	"TileSelectionCommandKeys.hpp"
+	"FireWeaponTileSelectionKeyboardCommandMap.hpp"
 

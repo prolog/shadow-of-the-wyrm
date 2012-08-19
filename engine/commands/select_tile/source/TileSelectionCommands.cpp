@@ -28,3 +28,13 @@ CancelTileSelectionCommand::CancelTileSelectionCommand()
 CancelTileSelectionCommand::~CancelTileSelectionCommand()
 {
 }
+
+// Target a particular tile
+TargetTileCommand::TargetTileCommand()
+: Command(TileSelectionCommandKeys::TARGET_TILE)
+{
+}
+
+TargetTileCommand::~TargetTileCommand()
+{
+}

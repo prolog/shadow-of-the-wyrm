@@ -54,6 +54,10 @@ CommandPtr TileSelectionCommandFactory::create(const int key, const std::string&
   {
     command = make_shared<CancelTileSelectionCommand>();
   }
+  else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
+  {
+    command = make_shared<TargetTileCommand>();
+  }
   
   return command;
 }

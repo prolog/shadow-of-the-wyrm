@@ -576,6 +576,7 @@ class ActionTextKeys
     static const std::string ACTION_LOOK;
     static const std::string ACTION_LOOK_UNEXPLORED_TILE;
     static const std::string ACTION_LOOK_TILE_OUT_OF_RANGE;
+    static const std::string ACTION_FIRE;
 
   protected:
     ActionTextKeys();

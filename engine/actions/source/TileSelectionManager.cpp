@@ -9,29 +9,85 @@
 #include "TileSelectionCommandFactory.hpp"
 #include "TileSelectionKeyboardCommandMap.hpp"
 
-using std::string;
+using namespace std;
 using boost::make_shared;
 
 TileSelectionManager::TileSelectionManager()
+: show_tile_description(true), show_feature_description(true), show_creature_description(true), show_item_descriptions(true)
 {
+  command_factory = make_shared<TileSelectionCommandFactory>();
+  kb_command_map  = make_shared<TileSelectionKeyboardCommandMap>();
 }
 
-ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature)
+void TileSelectionManager::set_keyboard_command_map(const KeyboardCommandMapPtr new_command_map)
+{
+  kb_command_map = new_command_map;
+}
+
+KeyboardCommandMapPtr TileSelectionManager::get_keyboard_command_map()
+{
+  return kb_command_map;
+}
+
+void TileSelectionManager::set_show_tile_description(const bool tile_desc)
+{
+  show_tile_description = tile_desc;
+}
+
+bool TileSelectionManager::get_show_tile_description() const
+{
+  return show_tile_description;
+}
+
+void TileSelectionManager::set_show_feature_description(const bool feature_desc)
+{
+  show_feature_description = feature_desc;
+}
+
+bool TileSelectionManager::get_show_feature_description() const
+{
+  return show_feature_description;
+}
+
+void TileSelectionManager::set_show_creature_description(const bool creature_desc)
+{
+  show_creature_description = creature_desc;
+}
+
+bool TileSelectionManager::get_show_creature_description() const
+{
+  return show_creature_description;
+}
+
+void TileSelectionManager::set_show_item_descriptions(const bool items_desc)
+{
+  show_item_descriptions = items_desc;
+}
+
+bool TileSelectionManager::get_show_item_descriptions() const
+{
+  return show_item_descriptions;
+}
+
+void TileSelectionManager::set_selection_key(const string& new_selection_key)
+{
+  selection_key = new_selection_key;
+}
+
+ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const string& initial_message_sid)
 {  
+  pair<bool, ActionCostValue> command_result(false, 0);
+  
   Game* game = Game::instance();
   MessageManager* manager = MessageManager::instance();
   
   if (creature && game)
   {
-    ActionCostValue action_cost = 0;
     bool continue_select_tiles = true;
-    
-    CommandFactoryPtr command_factory    = make_shared<TileSelectionCommandFactory>();
-    KeyboardCommandMapPtr kb_command_map = make_shared<TileSelectionKeyboardCommandMap>();
-   
+       
     if (manager && creature->get_is_player())
     {
-      string look_msg = StringTable::get(ActionTextKeys::ACTION_LOOK);
+      string look_msg = StringTable::get(initial_message_sid);
       
       manager->add_new_message(look_msg);
       manager->send();
@@ -46,15 +102,11 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature)
       if (decision_strategy)
       {
         CommandPtr tile_selection_command = decision_strategy->get_decision(creature->get_id(), command_factory, kb_command_map);
-        action_cost = TileSelectionCommandProcessor::process(creature, tile_selection_command);      
+        command_result = TileSelectionCommandProcessor::process(creature, tile_selection_command, this);
+        
+        continue_select_tiles = command_result.first;
       }
       else
-      {
-        continue_select_tiles = false;
-      }
-      
-      // "Cancel" action received
-      if (action_cost == -1)
       {
         continue_select_tiles = false;
       }
@@ -64,10 +116,16 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature)
       {
         game->update_display(creature, game->get_current_map(), creature->get_decision_strategy()->get_fov_map());        
       }
+
+      if (!continue_select_tiles)
+      {
+        // If we're no longer selecting the tile, clear the map cursor info.
+        select_tile_cancel(creature);
+      }
     }
   }
   
-  return get_action_cost_value();
+  return command_result.second;
 }
 
 ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const Direction direction)
@@ -75,7 +133,7 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const Di
   Game* game = Game::instance();
   MessageManager* manager = MessageManager::instance();
 
-  if (game && creature && manager)
+  if (game && creature && manager && command_factory && kb_command_map)
   {
     MapCursor mc;
     MapPtr current_map = game->get_current_map();
@@ -90,9 +148,17 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const Di
     // returns a null shared pointer, the boolean will be false.
     bool tile_exists_in_fov_map = (creature->get_decision_strategy()->get_fov_map()->at(c));
     
-    TileDescription td;
+    TileDescription td(show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
     string tile_desc = td.describe(selected_tile, tile_exists_in_fov_map);
 
+    if (!selection_key.empty())
+    {
+      pair<string, Coordinate> target(selection_key, c);
+
+      TargetMap& current_targets = creature->get_target_map_ref();
+      current_targets[selection_key] = target;
+    }
+    
     if (creature->get_is_player())
     {
       manager->clear_if_necessary();

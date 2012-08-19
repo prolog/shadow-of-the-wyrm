@@ -361,11 +361,13 @@
 		<Unit filename="engine\commands\inventory\source\InventoryCommandProcessor.cpp" />
 		<Unit filename="engine\commands\inventory\source\InventoryCommands.cpp" />
 		<Unit filename="engine\commands\inventory\source\InventoryKeyboardCommandMap.cpp" />
+		<Unit filename="engine\commands\select_tile\include\FireWeaponTileSelectionKeyboardCommandMap.hpp" />
 		<Unit filename="engine\commands\select_tile\include\TileSelectionCommandFactory.hpp" />
 		<Unit filename="engine\commands\select_tile\include\TileSelectionCommandKeys.hpp" />
 		<Unit filename="engine\commands\select_tile\include\TileSelectionCommandProcessor.hpp" />
 		<Unit filename="engine\commands\select_tile\include\TileSelectionCommands.hpp" />
 		<Unit filename="engine\commands\select_tile\include\TileSelectionKeyboardCommandMap.hpp" />
+		<Unit filename="engine\commands\select_tile\source\FireWeaponTileSelectionKeyboardCommandMap.cpp" />
 		<Unit filename="engine\commands\select_tile\source\TileSelectionCommandFactory.cpp" />
 		<Unit filename="engine\commands\select_tile\source\TileSelectionCommandFactory.hpp" />
 		<Unit filename="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp" />

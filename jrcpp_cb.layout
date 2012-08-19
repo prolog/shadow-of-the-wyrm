@@ -40,10 +40,10 @@
 	<File name="display\include\NCursesConstants.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="265" topLine="0" />
 	</File>
-	<File name="display\include\NCursesDisplay.hpp" open="1" top="0" tabpos="23">
+	<File name="display\include\NCursesDisplay.hpp" open="0" top="0" tabpos="23">
 		<Cursor position="1669" topLine="44" />
 	</File>
-	<File name="display\include\NCursesMenuWrapper.hpp" open="1" top="0" tabpos="22">
+	<File name="display\include\NCursesMenuWrapper.hpp" open="0" top="0" tabpos="22">
 		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="display\include\NCursesPromptProcessor.hpp" open="0" top="0" tabpos="11">
@@ -70,7 +70,7 @@
 	<File name="display\source\NCursesConstants.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="352" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="21">
+	<File name="display\source\NCursesDisplay.cpp" open="0" top="0" tabpos="21">
 		<Cursor position="11076" topLine="430" />
 	</File>
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
@@ -232,8 +232,8 @@
 	<File name="engine\XML\source\XMLWandReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="187" topLine="0" />
 	</File>
-	<File name="engine\XML\source\XMLWeaponsReaders.cpp" open="1" top="0" tabpos="6">
-		<Cursor position="1595" topLine="30" />
+	<File name="engine\XML\source\XMLWeaponsReaders.cpp" open="0" top="0" tabpos="6">
+		<Cursor position="769" topLine="12" />
 	</File>
 	<File name="engine\XML\source\XMLWearableReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="603" topLine="1" />
@@ -244,8 +244,8 @@
 	<File name="engine\actions\include\ActionCost.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="62" topLine="0" />
 	</File>
-	<File name="engine\actions\include\ActionManager.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="190" topLine="0" />
+	<File name="engine\actions\include\ActionManager.hpp" open="0" top="0" tabpos="9">
+		<Cursor position="1707" topLine="38" />
 	</File>
 	<File name="engine\actions\include\CharacterDumpManager.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="300" topLine="0" />
@@ -277,7 +277,7 @@
 	<File name="engine\actions\include\RangedCombatActionManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="270" topLine="0" />
 	</File>
-	<File name="engine\actions\include\RangedCombatApplicabilityChecker.hpp" open="1" top="0" tabpos="2">
+	<File name="engine\actions\include\RangedCombatApplicabilityChecker.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="795" topLine="1" />
 	</File>
 	<File name="engine\actions\include\SearchActionManager.hpp" open="0" top="0" tabpos="5">
@@ -286,8 +286,8 @@
 	<File name="engine\actions\include\TileMovementConfirmation.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="407" topLine="0" />
 	</File>
-	<File name="engine\actions\include\TileSelectionManager.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="297" topLine="0" />
+	<File name="engine\actions\include\TileSelectionManager.hpp" open="0" top="0" tabpos="4">
+		<Cursor position="311" topLine="0" />
 	</File>
 	<File name="engine\actions\include\VersionActionManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="226" topLine="0" />
@@ -298,11 +298,11 @@
 	<File name="engine\actions\source\ActionCoordinator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="1068" topLine="25" />
 	</File>
-	<File name="engine\actions\source\ActionCost.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\actions\source\ActionCost.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="209" topLine="5" />
 	</File>
-	<File name="engine\actions\source\ActionManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="12141" topLine="428" />
+	<File name="engine\actions\source\ActionManager.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="11929" topLine="424" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
@@ -328,11 +328,11 @@
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
 	</File>
-	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="137" topLine="5" />
+	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1574" topLine="28" />
 	</File>
-	<File name="engine\actions\source\RangedCombatApplicabilityChecker.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="4479" topLine="120" />
+	<File name="engine\actions\source\RangedCombatApplicabilityChecker.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="engine\actions\source\SearchActionManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="128" topLine="0" />
@@ -340,8 +340,8 @@
 	<File name="engine\actions\source\TileMovementConfirmation.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1569" topLine="27" />
 	</File>
-	<File name="engine\actions\source\TileSelectionManager.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="710" topLine="16" />
+	<File name="engine\actions\source\TileSelectionManager.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="3551" topLine="109" />
 	</File>
 	<File name="engine\actions\source\VersionActionManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="169" topLine="0" />
@@ -521,7 +521,7 @@
 		<Cursor position="130" topLine="0" />
 	</File>
 	<File name="engine\combat\include\WeaponManager.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="637" topLine="0" />
+		<Cursor position="751" topLine="0" />
 	</File>
 	<File name="engine\combat\source\CombatConstants.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="79" topLine="0" />
@@ -545,7 +545,7 @@
 		<Cursor position="425" topLine="13" />
 	</File>
 	<File name="engine\combat\source\WeaponManager.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="3270" topLine="113" />
+		<Cursor position="4829" topLine="160" />
 	</File>
 	<File name="engine\combat\source\unit_tests\CombatManager_test.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="26" topLine="0" />
@@ -629,28 +629,28 @@
 		<Cursor position="630" topLine="23" />
 	</File>
 	<File name="engine\commands\select_tile\include\TileSelectionCommandKeys.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="524" topLine="0" />
+		<Cursor position="633" topLine="0" />
 	</File>
 	<File name="engine\commands\select_tile\include\TileSelectionCommandProcessor.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="38" topLine="0" />
+		<Cursor position="873" topLine="2" />
 	</File>
 	<File name="engine\commands\select_tile\include\TileSelectionCommands.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="491" topLine="4" />
+		<Cursor position="599" topLine="7" />
 	</File>
 	<File name="engine\commands\select_tile\include\TileSelectionKeyboardCommandMap.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="234" topLine="0" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionCommandFactory.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="1847" topLine="35" />
+		<Cursor position="2048" topLine="44" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp" open="0" top="0" tabpos="13">
-		<Cursor position="257" topLine="0" />
+		<Cursor position="984" topLine="0" />
 	</File>
-	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1198" topLine="30" />
+	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="910" topLine="22" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionCommands.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="544" topLine="5" />
+		<Cursor position="776" topLine="16" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionKeyboardCommandMap.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="3024" topLine="33" />
@@ -847,8 +847,8 @@
 	<File name="engine\description\include\TileDescriber.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="59" topLine="0" />
 	</File>
-	<File name="engine\description\include\TileDescription.hpp" open="0" top="0" tabpos="14">
-		<Cursor position="30" topLine="0" />
+	<File name="engine\description\include\TileDescription.hpp" open="0" top="0" tabpos="6">
+		<Cursor position="187" topLine="0" />
 	</File>
 	<File name="engine\description\source\DescriberFactory.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="624" topLine="5" />
@@ -865,8 +865,8 @@
 	<File name="engine\description\source\TileDescriber.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="276" topLine="0" />
 	</File>
-	<File name="engine\description\source\TileDescription.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="2269" topLine="52" />
+	<File name="engine\description\source\TileDescription.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="983" topLine="18" />
 	</File>
 	<File name="engine\field_of_view\include\BresenhamLine.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="163" topLine="0" />
@@ -1202,7 +1202,7 @@
 		<Cursor position="412" topLine="22" />
 	</File>
 	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="29995" topLine="725" />
+		<Cursor position="23088" topLine="567" />
 	</File>
 	<File name="engine\include\StringTable.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="224" topLine="0" />
@@ -1213,46 +1213,46 @@
 	<File name="engine\menus\include\DeitySelectionScreen.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="108" topLine="0" />
 	</File>
-	<File name="engine\menus\include\Menu.hpp" open="1" top="0" tabpos="7">
+	<File name="engine\menus\include\Menu.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="336" topLine="5" />
 	</File>
-	<File name="engine\menus\include\MenuComponent.hpp" open="1" top="0" tabpos="8">
+	<File name="engine\menus\include\MenuComponent.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="365" topLine="0" />
 	</File>
-	<File name="engine\menus\include\OptionsComponent.hpp" open="1" top="0" tabpos="15">
+	<File name="engine\menus\include\OptionsComponent.hpp" open="0" top="0" tabpos="15">
 		<Cursor position="1185" topLine="20" />
 	</File>
-	<File name="engine\menus\include\Prompt.hpp" open="1" top="0" tabpos="11">
+	<File name="engine\menus\include\Prompt.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="1095" topLine="44" />
 	</File>
-	<File name="engine\menus\include\RaceSelectionScreen.hpp" open="1" top="0" tabpos="10">
+	<File name="engine\menus\include\RaceSelectionScreen.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="181" topLine="0" />
 	</File>
-	<File name="engine\menus\include\TextComponent.hpp" open="1" top="0" tabpos="14">
+	<File name="engine\menus\include\TextComponent.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="267" topLine="0" />
 	</File>
-	<File name="engine\menus\include\WelcomeScreen.hpp" open="1" top="0" tabpos="9">
+	<File name="engine\menus\include\WelcomeScreen.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="engine\menus\source\ClassSelectionScreen.cpp" open="1" top="0" tabpos="12">
+	<File name="engine\menus\source\ClassSelectionScreen.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="527" topLine="21" />
 	</File>
-	<File name="engine\menus\source\DeitySelectionScreen.cpp" open="1" top="0" tabpos="13">
+	<File name="engine\menus\source\DeitySelectionScreen.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="1044" topLine="16" />
 	</File>
-	<File name="engine\menus\source\Menu.cpp" open="1" top="0" tabpos="20">
+	<File name="engine\menus\source\Menu.cpp" open="0" top="0" tabpos="20">
 		<Cursor position="294" topLine="14" />
 	</File>
-	<File name="engine\menus\source\NamingScreen.cpp" open="1" top="0" tabpos="16">
+	<File name="engine\menus\source\NamingScreen.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="390" topLine="0" />
 	</File>
-	<File name="engine\menus\source\RaceSelectionScreen.cpp" open="1" top="0" tabpos="17">
+	<File name="engine\menus\source\RaceSelectionScreen.cpp" open="0" top="0" tabpos="17">
 		<Cursor position="27" topLine="0" />
 	</File>
-	<File name="engine\menus\source\SexSelectionScreen.cpp" open="1" top="0" tabpos="18">
+	<File name="engine\menus\source\SexSelectionScreen.cpp" open="0" top="0" tabpos="18">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="engine\menus\source\WelcomeScreen.cpp" open="1" top="0" tabpos="19">
+	<File name="engine\menus\source\WelcomeScreen.cpp" open="0" top="0" tabpos="19">
 		<Cursor position="910" topLine="5" />
 	</File>
 	<File name="engine\skills\include\Mountaineering.hpp" open="0" top="0" tabpos="0">
@@ -1289,7 +1289,7 @@
 		<Cursor position="443" topLine="4" />
 	</File>
 	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="9903" topLine="352" />
+		<Cursor position="9656" topLine="352" />
 	</File>
 	<File name="engine\source\InitialItemEquipper.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="741" topLine="9" />
@@ -1340,7 +1340,7 @@
 		<Cursor position="4541" topLine="154" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="60905" topLine="1340" />
+		<Cursor position="38373" topLine="810" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1510,7 +1510,7 @@
 	<File name="world\include\AlignmentEnums.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="world\include\Ammunition.hpp" open="1" top="0" tabpos="24">
+	<File name="world\include\Ammunition.hpp" open="0" top="0" tabpos="24">
 		<Cursor position="68" topLine="0" />
 	</File>
 	<File name="world\include\Amulet.hpp" open="0" top="0" tabpos="0">
@@ -1532,7 +1532,7 @@
 		<Cursor position="94" topLine="0" />
 	</File>
 	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="4715" topLine="137" />
+		<Cursor position="589" topLine="1" />
 	</File>
 	<File name="world\include\CreatureFeatures.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="690" topLine="26" />
@@ -1604,7 +1604,7 @@
 		<Cursor position="107" topLine="0" />
 	</File>
 	<File name="world\include\SkillTypes.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="2417" topLine="61" />
+		<Cursor position="1913" topLine="59" />
 	</File>
 	<File name="world\include\Skills.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="7862" topLine="499" />
@@ -1622,7 +1622,7 @@
 		<Cursor position="101" topLine="0" />
 	</File>
 	<File name="world\include\Weapon.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="1186" topLine="19" />
+		<Cursor position="724" topLine="19" />
 	</File>
 	<File name="world\include\WeaponTypes.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="14" topLine="0" />
@@ -1805,7 +1805,7 @@
 		<Cursor position="128" topLine="0" />
 	</File>
 	<File name="world\source\Creature.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="160" topLine="0" />
+		<Cursor position="9757" topLine="550" />
 	</File>
 	<File name="world\source\CreatureGenerationValues.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="155" topLine="0" />
@@ -1867,7 +1867,7 @@
 	<File name="world\source\Scroll.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="111" topLine="0" />
 	</File>
-	<File name="world\source\Skills.cpp" open="1" top="0" tabpos="5">
+	<File name="world\source\Skills.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="19103" topLine="810" />
 	</File>
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
@@ -1882,8 +1882,8 @@
 	<File name="world\source\Wand.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="99" topLine="0" />
 	</File>
-	<File name="world\source\Weapon.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="2912" topLine="116" />
+	<File name="world\source\Weapon.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="977" topLine="32" />
 	</File>
 	<File name="world\source\Wearable.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="69" topLine="0" />
