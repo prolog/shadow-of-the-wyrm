@@ -262,8 +262,8 @@
 	<File name="engine\actions\include\InventoryManager.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="399" topLine="2" />
 	</File>
-	<File name="engine\actions\include\ItemManager.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="1140" topLine="7" />
+	<File name="engine\actions\include\ItemManager.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="1173" topLine="7" />
 	</File>
 	<File name="engine\actions\include\MovementAccumulationUpdater.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="171" topLine="0" />
@@ -274,8 +274,8 @@
 	<File name="engine\actions\include\PrayerManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="engine\actions\include\RangedCombatActionManager.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="270" topLine="0" />
+	<File name="engine\actions\include\RangedCombatActionManager.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="1252" topLine="13" />
 	</File>
 	<File name="engine\actions\include\RangedCombatApplicabilityChecker.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="795" topLine="1" />
@@ -301,8 +301,8 @@
 	<File name="engine\actions\source\ActionCost.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="209" topLine="5" />
 	</File>
-	<File name="engine\actions\source\ActionManager.cpp" open="1" top="0" tabpos="1">
-		<Cursor position="11929" topLine="424" />
+	<File name="engine\actions\source\ActionManager.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="2850" topLine="96" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
@@ -317,19 +317,19 @@
 		<Cursor position="1105" topLine="18" />
 	</File>
 	<File name="engine\actions\source\ItemManager.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="3415" topLine="127" />
+		<Cursor position="3371" topLine="127" />
 	</File>
 	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1250" topLine="14" />
 	</File>
 	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="5808" topLine="160" />
+		<Cursor position="4886" topLine="143" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
 	</File>
-	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="1574" topLine="28" />
+	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="1" top="1" tabpos="3">
+		<Cursor position="4094" topLine="108" />
 	</File>
 	<File name="engine\actions\source\RangedCombatApplicabilityChecker.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="0" topLine="0" />
@@ -340,7 +340,7 @@
 	<File name="engine\actions\source\TileMovementConfirmation.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1569" topLine="27" />
 	</File>
-	<File name="engine\actions\source\TileSelectionManager.cpp" open="1" top="1" tabpos="4">
+	<File name="engine\actions\source\TileSelectionManager.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="3551" topLine="109" />
 	</File>
 	<File name="engine\actions\source\VersionActionManager.cpp" open="0" top="0" tabpos="2">
@@ -348,6 +348,9 @@
 	</File>
 	<File name="engine\actions\source\WeaponInfoManager.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="3684" topLine="87" />
+	</File>
+	<File name="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" open="0" top="0" tabpos="2">
+		<Cursor position="344" topLine="0" />
 	</File>
 	<File name="engine\calculators\include\ArcanaPointsCalculator.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="68" topLine="0" />
@@ -405,6 +408,9 @@
 	</File>
 	<File name="engine\calculators\include\WeaponDifficultyCalculator.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="196" topLine="0" />
+	</File>
+	<File name="engine\calculators\source\AmmunitionSurvivalCalculator.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="1402" topLine="22" />
 	</File>
 	<File name="engine\calculators\source\ArcanaPointsCalculator.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="311" topLine="13" />
@@ -500,7 +506,7 @@
 		<Cursor position="508" topLine="0" />
 	</File>
 	<File name="engine\combat\include\CombatManager.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="1685" topLine="18" />
+		<Cursor position="447" topLine="0" />
 	</File>
 	<File name="engine\combat\include\CreatureDeathManager.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="149" topLine="0" />
@@ -527,7 +533,7 @@
 		<Cursor position="79" topLine="0" />
 	</File>
 	<File name="engine\combat\source\CombatManager.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="2253" topLine="54" />
+		<Cursor position="1850" topLine="46" />
 	</File>
 	<File name="engine\combat\source\CreatureDeathManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="476" topLine="23" />
@@ -646,7 +652,7 @@
 	<File name="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="984" topLine="0" />
 	</File>
-	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="910" topLine="22" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionCommands.cpp" open="0" top="0" tabpos="0">
@@ -1313,7 +1319,7 @@
 		<Cursor position="714" topLine="11" />
 	</File>
 	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="11330" topLine="431" />
+		<Cursor position="8494" topLine="314" />
 	</File>
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="1053" topLine="46" />
@@ -2224,8 +2230,8 @@
 	<File name="world\tiles\source\TempleTile.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="74" topLine="0" />
 	</File>
-	<File name="world\tiles\source\Tile.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2381" topLine="136" />
+	<File name="world\tiles\source\Tile.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="1853" topLine="122" />
 	</File>
 	<File name="world\tiles\source\TreeTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="191" topLine="0" />

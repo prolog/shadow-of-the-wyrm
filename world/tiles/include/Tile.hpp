@@ -41,6 +41,7 @@ class Tile
 
     // Features include doors, windows, thrones, fireplaces...
     virtual bool has_feature() const;
+    virtual bool has_blocking_feature() const;
     virtual void set_feature(FeaturePtr new_feature);
     virtual FeaturePtr get_feature();
 

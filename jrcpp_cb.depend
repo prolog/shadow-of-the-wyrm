@@ -272,7 +272,7 @@
 	"InventoryManager.hpp"
 	"InventoryTranslator.hpp"
 
-1339848877 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
+1345386906 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
 	"Game.hpp"
 	"ItemFactory.hpp"
 	"ItemManager.hpp"
@@ -313,7 +313,7 @@
 	"MapUtils.hpp"
 	"TileMovementConfirmation.hpp"
 
-1345381608 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+1345382674 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
 	<boost/make_shared.hpp>
 	"Game.hpp"
 	"MapCursor.hpp"
@@ -484,7 +484,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatconstants.cpp
 	"CombatConstants.hpp"
 
-1343912373 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1345386070 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"
@@ -2280,7 +2280,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\templetile.cpp
 	"TempleTile.hpp"
 
-1341750469 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
+1345385642 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\tile.cpp
 	"Inventory.hpp"
 	"Tile.hpp"
 	"unit_tests/Tile_test.cpp"
@@ -2330,13 +2330,20 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1345381934 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1345554706 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
+	"AmmunitionSurvivalCalculator.hpp"
+	"BresenhamLine.hpp"
+	"CombatManager.hpp"
 	"Conversion.hpp"
 	"FireWeaponTileSelectionKeyboardCommandMap.hpp"
+	"Game.hpp"
+	"ItemManager.hpp"
 	"MessageManager.hpp"
 	"RangedCombatActionManager.hpp"
 	"RangedCombatApplicabilityChecker.hpp"
+	"RNG.hpp"
 	"TileSelectionManager.hpp"
 
 1344863015 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatequipmentchecker.cpp
@@ -2355,4 +2362,8 @@
 	"Conversion.hpp"
 	"TileSelectionCommandKeys.hpp"
 	"FireWeaponTileSelectionKeyboardCommandMap.hpp"
+
+1345552144 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\ammunitionsurvivalcalculator.cpp
+	"AmmunitionSurvivalCalculator.hpp"
+	"RNG.hpp"
 

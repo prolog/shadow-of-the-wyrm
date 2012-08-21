@@ -78,6 +78,11 @@ bool Tile::has_feature() const
   return (feature);
 }
 
+bool Tile::has_blocking_feature() const
+{
+  return (feature && feature->get_is_blocking());
+}
+
 void Tile::set_feature(FeaturePtr new_feature)
 {
   feature = new_feature;
