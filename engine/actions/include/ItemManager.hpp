@@ -17,10 +17,11 @@ class ItemManager : public IActionManager
     ActionCostValue drop(CreaturePtr creature, ItemPtr item);
     ActionCostValue equip(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation location);
     ActionCostValue equip(CreaturePtr creature, ItemPtr item);
-    ItemPtr remove(CreaturePtr creature, const EquipmentWornLocation location);
+    ItemPtr remove(CreaturePtr creature, const EquipmentWornLocation location, bool transfer_to_inventory = true);
     
   protected:
     friend class ActionManager;
+    friend class RangedCombatActionManager;
     
     ItemManager();
     ~ItemManager();

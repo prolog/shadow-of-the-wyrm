@@ -129,7 +129,7 @@ ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item)
 
 // Remove an item from a particular slot in the creature's equipment.
 // Add it to the inventory.
-ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation location)
+ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation location, bool transfer_to_inventory)
 {
   ItemPtr item;
   
@@ -137,7 +137,11 @@ ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation lo
   {
     Equipment& eq = creature->get_equipment();
     item = eq.remove_item(location);
-    pick_up(creature, item);
+    
+    if (transfer_to_inventory)
+    {
+      pick_up(creature, item);
+    }
   }
   
   return item;

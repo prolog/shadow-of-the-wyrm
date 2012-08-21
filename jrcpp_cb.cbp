@@ -237,6 +237,7 @@
 		<Unit filename="engine\actions\source\TileSelectionManager.cpp" />
 		<Unit filename="engine\actions\source\VersionActionManager.cpp" />
 		<Unit filename="engine\actions\source\WeaponInfoManager.cpp" />
+		<Unit filename="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ArcanaPointsCalculator.hpp" />
 		<Unit filename="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
 		<Unit filename="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
@@ -262,6 +263,7 @@
 		<Unit filename="engine\calculators\include\ToHitCalculator.hpp" />
 		<Unit filename="engine\calculators\include\ToHitCalculatorFactory.hpp" />
 		<Unit filename="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
+		<Unit filename="engine\calculators\source\AmmunitionSurvivalCalculator.cpp" />
 		<Unit filename="engine\calculators\source\ArcanaPointsCalculator.cpp" />
 		<Unit filename="engine\calculators\source\CombatTargetNumberCalculatorFactory.cpp" />
 		<Unit filename="engine\calculators\source\CreatureCalculator.cpp" />

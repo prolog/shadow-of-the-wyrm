@@ -3138,6 +3138,10 @@
 				<Weight><Pounds>0</Pounds><Ounces>9</Ounces></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>
@@ -3155,6 +3159,10 @@
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>3</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
 				<Skill>1009</Skill>
 				<RangedSkill>2004</RangedSkill>
 				<RequiresRangedWeapon>1</RequiresRangedWeapon>

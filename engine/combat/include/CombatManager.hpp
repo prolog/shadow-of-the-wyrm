@@ -13,7 +13,7 @@ class CombatManager
     
     // JCD FIXME make this ActionCost later
     bool attack(CreaturePtr creature, const Direction d);
-    bool attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
+    bool attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY);
 
     void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const std::string combat_message = "");
 
@@ -28,7 +28,6 @@ class CombatManager
     void add_combat_message(const std::string& message);
     void send_combat_messages();
     
-    // JCD FIXME NOT IMPLEMENTED FULLY:
     // Functions to determine whether a particular attack hits, misses, etc.
     bool is_critical_hit(const int d100_roll);
     bool is_mighty_blow(const int d100_roll);
