@@ -152,7 +152,7 @@
 	"MaterialFactory.hpp"
 	"XMLItemReader.hpp"
 
-1343575295 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+1345592665 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"MaterialFactory.hpp"
@@ -534,7 +534,7 @@
 	"PlayerDeathManager.hpp"
 	"ReligionManager.hpp"
 
-1345248176 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
+1345596308 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\weaponmanager.cpp
 	<boost/make_shared.hpp>
 	"Ammunition.hpp"
 	"CombatConstants.hpp"
@@ -1559,7 +1559,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1345297040 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1345595846 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2330,7 +2330,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1345554706 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1345595972 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"AmmunitionSurvivalCalculator.hpp"

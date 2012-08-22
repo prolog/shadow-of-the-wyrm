@@ -154,7 +154,9 @@ void RangedCombatActionManager::fire_at_given_coordinates(CreaturePtr creature, 
 {
   TilePtr tile = current_map->at(target_coords);
   CreaturePtr target_creature = tile->get_creature();
-  
+
+  add_ranged_combat_message(creature, target_creature);
+    
   if (target_creature)
   {
     CombatManager cm;
@@ -162,6 +164,44 @@ void RangedCombatActionManager::fire_at_given_coordinates(CreaturePtr creature, 
   }
 
   destroy_ammunition_or_drop_on_tile(creature, tile);
+}
+
+// Add an appropriate ranged combat message based on creature details, weapon details, etc.
+void RangedCombatActionManager::add_ranged_combat_message(CreaturePtr creature, CreaturePtr target_creature)
+{
+  string target_creature_desc_sid;
+  
+  // If a target creature is specified, a message is added noting that the ammunition is fired "at something".
+  if (target_creature)
+  {
+    target_creature_desc_sid = target_creature->get_description_sid();
+  }
+  
+  ItemPtr ranged = creature->get_equipment().get_item(EQUIPMENT_WORN_RANGED_WEAPON);
+  ItemPtr item = creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION);
+  
+  // This is mostly a sanity check.  Ammunition can only be fired if there's ammunition!
+  if (item)
+  {
+    string usage_description_sid = item->get_usage_description_sid();
+    
+    // Another sanity check - every item should have a usage description string ID.
+    if (!usage_description_sid.empty())
+    {
+      // Add a message based on whether:
+      // - the attacking creature is the player
+      // - a launcher/ranged weapon (bow, crossbow, etc) is used
+      // - target creature (may be empty - it's perfectly legitimate to target a random tile!)
+      string ranged_attack_message = CombatTextKeys::get_ranged_attack_message(creature->get_is_player(), ranged, StringTable::get(creature->get_description_sid()), StringTable::get(item->get_usage_description_sid()), StringTable::get(target_creature_desc_sid));
+
+      if (!ranged_attack_message.empty())
+      {
+        MessageManager* manager = MessageManager::instance();
+        manager->add_new_message(ranged_attack_message);
+        manager->send();
+      }
+    }
+  }
 }
 
 // Either destroy the ammunition, or drop it on the appropriate tile.

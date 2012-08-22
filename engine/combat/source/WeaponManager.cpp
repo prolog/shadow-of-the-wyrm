@@ -164,11 +164,7 @@ bool WeaponManager::is_ranged_weapon_skill_type_compatible_with_ammunition(Weapo
     {
       if (ranged_weapon)
       {
-        SkillType ranged_trained_skill = ranged_weapon->get_trained_ranged_skill();
-        SkillType ammo_trained_skill = ammunition->get_trained_ranged_skill();
-        
-        if (((ammo_trained_skill == SKILL_RANGED_ROCKS) && (ranged_trained_skill == SKILL_RANGED_SLINGS))
-          || (ammo_trained_skill == ranged_trained_skill))
+        if (do_trained_ranged_skills_match(ranged_weapon, ammunition))
         {
           weapon_match = true;
         }
@@ -176,9 +172,26 @@ bool WeaponManager::is_ranged_weapon_skill_type_compatible_with_ammunition(Weapo
     }
     else
     {
-      weapon_match = true;
+      if (!ranged_weapon || (ranged_weapon && do_trained_ranged_skills_match(ranged_weapon, ammunition)))
+      {
+        weapon_match = true;
+      }
     }
   }
 
   return weapon_match;
+}
+
+bool WeaponManager::do_trained_ranged_skills_match(WeaponPtr ranged_weapon, WeaponPtr ammunition)
+{
+  if (ranged_weapon && ammunition)
+  {
+    SkillType ranged_trained_skill = ranged_weapon->get_trained_ranged_skill();
+    SkillType ammo_trained_skill = ammunition->get_trained_ranged_skill();
+    
+    return (((ammo_trained_skill == SKILL_RANGED_ROCKS) && (ranged_trained_skill == SKILL_RANGED_SLINGS))
+      || (ammo_trained_skill == ranged_trained_skill));
+  }
+  
+  return false;
 }
