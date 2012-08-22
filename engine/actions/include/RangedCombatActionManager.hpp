@@ -24,6 +24,10 @@ class RangedCombatActionManager : public IActionManager
     // if present, and then either destroy or drop the ammunition.
     void fire_at_given_coordinates(CreaturePtr creature, MapPtr map, const Coordinate& coordinate);
     
+    // Add a ranged combat message based on whether a launcher is being used, whether a creature is being targetted,
+    // and whether the attacking creature is the player or ont.
+    void add_ranged_combat_message(CreaturePtr attacking_creature, CreaturePtr target_creature);
+    
     // Either destroy the ammo (it didn't survive being fired), or drop it
     // on the appropriate tile.
     void destroy_ammunition_or_drop_on_tile(CreaturePtr creature, TilePtr tile);

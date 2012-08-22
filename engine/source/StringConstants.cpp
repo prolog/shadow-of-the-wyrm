@@ -1256,6 +1256,74 @@ string CombatTextKeys::get_no_damage_message(const bool is_player, const string&
   return no_damage_message;
 }
 
+string CombatTextKeys::get_ranged_attack_message(const bool is_player, const bool uses_launcher, const string& attacker, const string& ammunition, const string& target)
+{
+  string ranged_attack_message;
+  bool has_target = !target.empty();
+  
+  if (is_player)
+  {
+    if (uses_launcher)
+    {
+      if (has_target)
+      {
+        ranged_attack_message = StringTable::get(CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_MESSAGE);
+      }
+      else
+      {
+        ranged_attack_message = StringTable::get(CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE);
+      }
+    }
+    else
+    {
+      if (has_target)
+      {
+        ranged_attack_message = StringTable::get(CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_MESSAGE);
+      }
+      else
+      {
+        ranged_attack_message = StringTable::get(CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_NO_TARGET_MESSAGE);
+      }
+    }
+
+    boost::replace_first(ranged_attack_message, "%s", StringTable::get(TextKeys::YOU));
+    boost::replace_first(ranged_attack_message, "%s", ammunition);
+    if (has_target) boost::replace_first(ranged_attack_message, "%s", target);
+  }
+  else
+  {
+    if (uses_launcher)
+    {
+      if (has_target)
+      {
+        ranged_attack_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_LAUNCHER_MESSAGE);
+      }
+      else
+      {
+        ranged_attack_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE);
+      }
+    }
+    else
+    {
+      if (has_target)
+      {
+        ranged_attack_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_MESSAGE);
+      }
+      else
+      {
+        ranged_attack_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_NO_TARGET_MESSAGE);
+      }
+    }
+    
+    boost::replace_first(ranged_attack_message, "%s", attacker);
+    boost::replace_first(ranged_attack_message, "%s", ammunition);
+    if (has_target) boost::replace_first(ranged_attack_message, "%s", target);
+  }
+  
+  ranged_attack_message[0] = toupper(ranged_attack_message[0]);
+  return ranged_attack_message;
+}
+
 void CombatTextKeys::populate_combat_messages()
 {
   combat_damage_hit_messages.insert(make_pair(create_key(0, DAMAGE_TYPE_SLASH), CombatTextKeys::COMBAT_HIT_SLASH_NP));
@@ -1308,6 +1376,14 @@ string CombatTextKeys::create_key(const bool is_player, const DamageType damage_
   return ss.str();
 }
 
+const string CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_MESSAGE = "COMBAT_PLAYER_RANGED_ATTACK_MESSAGE";
+const string CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_MESSAGE = "COMBAT_MONSTER_RANGED_ATTACK_MESSAGE";
+const string CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_MESSAGE = "COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_MESSAGE";
+const string CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_LAUNCHER_MESSAGE = "COMBAT_MONSTER_RANGED_ATTACK_LAUNCHER_MESSAGE";
+const string CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_NO_TARGET_MESSAGE = "COMBAT_PLAYER_RANGED_ATTACK_NO_TARGET_MESSAGE";
+const string CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_NO_TARGET_MESSAGE = "COMBAT_MONSTER_RANGED_ATTACK_NO_TARGET_MESSAGE";
+const string CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE = "COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE";
+const string CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE = "COMBAT_MONSTER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE";
 const string CombatTextKeys::COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE  = "COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE";
 const string CombatTextKeys::COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE = "COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE";
 const string CombatTextKeys::COMBAT_MONSTER_DEATH_MESSAGE  = "COMBAT_MONSTER_DEATH_MESSAGE";
