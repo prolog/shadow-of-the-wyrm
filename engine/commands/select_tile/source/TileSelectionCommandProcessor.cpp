@@ -38,10 +38,17 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
       {
-        // Return the action cost.  The appropriate function in Game* will
-        // regain control, and the target details will be present in the
-        // creature's map;
-        result.second = action_cost;
+        AttackType JCD_FIXME_ATTACK_TYPE = ATTACK_TYPE_RANGED;
+        if (tsm->is_tile_in_range_and_add_message_if_not(creature, JCD_FIXME_ATTACK_TYPE))
+        {
+          // Stop selecting, advance turn.
+          result.second = action_cost;
+        }
+        else
+        {          
+          // Keep selecting, do not advance turn.
+          result.first = true;
+        }
         
         // Unlike cancelling, selecting a tile should advance the turn.
       }

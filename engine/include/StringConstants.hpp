@@ -688,6 +688,7 @@ class CombatTextKeys
     static std::string get_no_damage_message(const bool is_player, const std::string& target);
     static std::string get_ranged_attack_message(const bool is_player, const bool uses_launcher, const std::string& attacker, const std::string& ammunition, const std::string& target);
 
+    static const std::string COMBAT_TARGET_TOO_FAR_AWAY;
     static const std::string COMBAT_CRITICAL_HIT_MESSAGE; // Common to both - no substitutions
     static const std::string COMBAT_MIGHTY_BLOW_MESSAGE; // Common to both - no substitutions
     static const std::string COMBAT_ATTACK_NO_EFFECT;
