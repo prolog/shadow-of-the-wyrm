@@ -313,7 +313,7 @@
 	"MapUtils.hpp"
 	"TileMovementConfirmation.hpp"
 
-1345382674 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+1345726688 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
 	<boost/make_shared.hpp>
 	"Game.hpp"
 	"MapCursor.hpp"
@@ -324,6 +324,7 @@
 	"TileSelectionCommandProcessor.hpp"
 	"TileSelectionCommandFactory.hpp"
 	"TileSelectionKeyboardCommandMap.hpp"
+	"TileSelectionRangeChecker.hpp"
 
 1339798424 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\versionactionmanager.cpp
 	"global_prototypes.hpp"
@@ -604,7 +605,7 @@
 1345301636 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandkeys.cpp
 	"TileSelectionCommandKeys.hpp"
 
-1345382559 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
+1345726742 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
 	"Game.hpp"
 	"TileSelectionCommandProcessor.hpp"
 
@@ -1559,7 +1560,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1345595846 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1345725499 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2330,7 +2331,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1345595972 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1345596656 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"AmmunitionSurvivalCalculator.hpp"
@@ -2366,4 +2367,8 @@
 1345552144 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\ammunitionsurvivalcalculator.cpp
 	"AmmunitionSurvivalCalculator.hpp"
 	"RNG.hpp"
+
+1345726238 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectionrangechecker.cpp
+	"Conversion.hpp"
+	"TileSelectionRangeChecker.hpp"
 

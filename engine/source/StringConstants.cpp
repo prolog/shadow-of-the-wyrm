@@ -1376,6 +1376,7 @@ string CombatTextKeys::create_key(const bool is_player, const DamageType damage_
   return ss.str();
 }
 
+const string CombatTextKeys::COMBAT_TARGET_TOO_FAR_AWAY = "COMBAT_TARGET_TOO_FAR_AWAY";
 const string CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_MESSAGE = "COMBAT_PLAYER_RANGED_ATTACK_MESSAGE";
 const string CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_MESSAGE = "COMBAT_MONSTER_RANGED_ATTACK_MESSAGE";
 const string CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_MESSAGE = "COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_MESSAGE";

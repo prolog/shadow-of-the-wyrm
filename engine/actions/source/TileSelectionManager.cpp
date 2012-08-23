@@ -8,6 +8,7 @@
 #include "TileSelectionCommandProcessor.hpp"
 #include "TileSelectionCommandFactory.hpp"
 #include "TileSelectionKeyboardCommandMap.hpp"
+#include "TileSelectionRangeChecker.hpp"
 
 using namespace std;
 using boost::make_shared;
@@ -193,4 +194,29 @@ ActionCostValue TileSelectionManager::select_tile_cancel(CreaturePtr creature)
 ActionCostValue TileSelectionManager::get_action_cost_value() const
 {
   return 0;
+}
+
+// Check to see if the given tile is in range for a particular attack. If it isn't,
+// add a message to inform the user.
+bool TileSelectionManager::is_tile_in_range_and_add_message_if_not(CreaturePtr creature, AttackType attack_type) const
+{
+  bool tile_in_range = true;
+  TileSelectionRangeChecker tsrc;
+
+  if (!tsrc.is_selected_tile_in_range(creature, attack_type))
+  {
+    tile_in_range = false;
+    
+    MessageManager* manager = MessageManager::instance();
+    
+    if (manager)
+    {
+      string target_too_far = StringTable::get(CombatTextKeys::COMBAT_TARGET_TOO_FAR_AWAY);
+      manager->clear_if_necessary();
+      manager->add_new_message(target_too_far);
+      manager->send();
+    }
+  }
+  
+  return tile_in_range;
 }
