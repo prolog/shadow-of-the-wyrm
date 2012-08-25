@@ -1,13 +1,13 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "IItemDisplayFilter.hpp"
 #include "InventoryCommandFactory.hpp"
 #include "InventoryCommandProcessor.hpp"
 #include "InventoryKeyboardCommandMap.hpp"
 #include "InventoryManager.hpp"
 #include "InventoryTranslator.hpp"
 
-using std::string;
-using std::vector;
+using namespace std;
 using boost::make_shared;
 
 InventoryManager::InventoryManager(DisplayPtr new_display, CreaturePtr new_creature)
@@ -21,7 +21,7 @@ InventoryManager::~InventoryManager()
 
 // If the inventory is read-only, the items can be viewed, but not selected.  This is for use in the "y" - View your inventory
 // mode.  If the inventory is not read-only, items can be selected.
-ItemPtr InventoryManager::manage_inventory(Inventory& inv, const EquipmentWornLocation ewl, const bool inventory_is_read_only)
+ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemDisplayFilterPtr>& display_filter_list, const bool inventory_is_read_only)
 {
   ItemPtr selected_item;
   bool manage_inv = true;
@@ -37,7 +37,7 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const EquipmentWornLo
       
       if (display && creature->get_is_player())
       {
-        display_inventory = InventoryTranslator::create_display_inventory(inv, ewl);
+        display_inventory = InventoryTranslator::create_display_inventory(inv, display_filter_list);
         current_page_size = display->display_inventory(display_inventory);
       }
 

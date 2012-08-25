@@ -7,6 +7,7 @@
 #include "EquipmentManager.hpp"
 #include "FileWriter.hpp"
 #include "Game.hpp"
+#include "ItemDisplayFilterFactory.hpp"
 #include "InventoryManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
@@ -124,8 +125,12 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
     action_cost = item_removed;
     
     if (!item_removed) // Wear an item - select something.
-    {      
-      ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), worn_location, false);
+    {
+      list<EquipmentWornLocation> worn_list;
+      worn_list.push_back(worn_location);
+      
+      list<IItemDisplayFilterPtr> worn_filter = ItemDisplayFilterFactory::create_equipment_filter(worn_list);
+      ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), worn_filter, false);
       
       // This is null if no item was selected.
       if (item_in_slot)
@@ -231,7 +236,8 @@ ActionCost ActionManager::pick_up(CreaturePtr creature)
           // If there are many items, get one of them.
           else
           {
-            pick_up_item = inventory(creature, inv, EQUIPMENT_WORN_NONE, false);
+            list<IItemDisplayFilterPtr> no_filter = ItemDisplayFilterFactory::create_empty_filter();
+            pick_up_item = inventory(creature, inv, no_filter, false);
           }
           
           if (pick_up_item)
@@ -282,7 +288,8 @@ ActionCost ActionManager::drop(CreaturePtr creature)
     }
     else
     {
-      ItemPtr item_to_drop = inventory(creature, creature->get_inventory(), EQUIPMENT_WORN_NONE, false);
+      list<IItemDisplayFilterPtr> no_filter = ItemDisplayFilterFactory::create_empty_filter();
+      ItemPtr item_to_drop = inventory(creature, creature->get_inventory(), no_filter, false);
       
       if (!item_to_drop)
       {
@@ -330,7 +337,7 @@ ActionCost ActionManager::drop(CreaturePtr creature)
 }
 
 // Display the inventory; potentially select something.
-ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const EquipmentWornLocation ewl, const bool inventory_is_read_only)
+ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const list<IItemDisplayFilterPtr>& display_filter_list, const bool inventory_is_read_only)
 {
   ItemPtr selected_item;
   
@@ -341,7 +348,7 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const Equ
     DisplayPtr game_display = game->get_display();
     InventoryManager inv_manager(game_display, creature);
 
-    selected_item = inv_manager.manage_inventory(inv, ewl, inventory_is_read_only);
+    selected_item = inv_manager.manage_inventory(inv, display_filter_list, inventory_is_read_only);
   }
   
   return selected_item;

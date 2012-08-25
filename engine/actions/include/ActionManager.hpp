@@ -1,7 +1,9 @@
 #pragma once
+#include <list>
 #include "CombatManager.hpp"
 #include "Creature.hpp"
 #include "Directions.hpp"
+#include "IItemDisplayFilter.hpp"
 #include "ItemManager.hpp"
 #include "MovementManager.hpp"
 #include "RangedCombatActionManager.hpp"
@@ -37,7 +39,7 @@ class ActionManager
 
     // Display the inventory.  Potentially, select an item.  ItemPtr is null if no item
     // was selected.
-    ItemPtr inventory(CreaturePtr creature, Inventory& inv, const EquipmentWornLocation ewl, const bool inventory_is_read_only);
+    ItemPtr inventory(CreaturePtr creature, Inventory& inv, const std::list<IItemDisplayFilterPtr>& display_filter_list, const bool inventory_is_read_only);
     
     // Miscellaneous actions
     ActionCost pray(CreaturePtr creature);
