@@ -223,7 +223,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1345382500 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1345900043 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -233,6 +233,7 @@
 	"EquipmentManager.hpp"
 	"FileWriter.hpp"
 	"Game.hpp"
+	"ItemDisplayFilterFactory.hpp"
 	"InventoryManager.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
@@ -263,9 +264,10 @@
 	"EquipmentManager.hpp"
 	"EquipmentTranslator.hpp"
 
-1344948136 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
+1345898211 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
+	"IItemDisplayFilter.hpp"
 	"InventoryCommandFactory.hpp"
 	"InventoryCommandProcessor.hpp"
 	"InventoryKeyboardCommandMap.hpp"
@@ -313,7 +315,7 @@
 	"MapUtils.hpp"
 	"TileMovementConfirmation.hpp"
 
-1345726688 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+1345726801 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
 	<boost/make_shared.hpp>
 	"Game.hpp"
 	"MapCursor.hpp"
@@ -551,11 +553,12 @@
 1343737593 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
-1343498304 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
+1345898669 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentCommands.hpp"
 	"Game.hpp"
+	"ItemDisplayFilterFactory.hpp"
 
 1343737702 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommands.cpp
 	"EquipmentCommands.hpp"
@@ -1683,7 +1686,7 @@
 	"EquipmentTranslator.hpp"
 	"ItemTranslator.hpp"
 
-1343737441 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
+1345898104 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
 	<boost/foreach.hpp>
 	"DisplayItemTypeFactory.hpp"
 	"InventoryTranslator.hpp"
@@ -2371,4 +2374,20 @@
 1345726238 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectionrangechecker.cpp
 	"Conversion.hpp"
 	"TileSelectionRangeChecker.hpp"
+
+1345811552 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\squishyequipwornlocationfilter.cpp
+	"SquishyEquipWornLocationFilter.hpp"
+
+1345811728 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\nulldisplayfilter.cpp
+	"NullDisplayFilter.hpp"
+
+1345899790 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemdisplayfilterfactory.cpp
+	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
+	"ItemDisplayFilterFactory.hpp"
+	"NullDisplayFilter.hpp"
+	"SquishyEquipWornLocationDisplayFilter.hpp"
+
+1345812999 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\squishyequipwornlocationdisplayfilter.cpp
+	"SquishyEquipWornLocationDisplayFilter.hpp"
 

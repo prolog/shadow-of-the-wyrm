@@ -70,8 +70,8 @@
 	<File name="display\source\NCursesConstants.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="352" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="0" top="0" tabpos="21">
-		<Cursor position="11076" topLine="430" />
+	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="9">
+		<Cursor position="19772" topLine="636" />
 	</File>
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="34" topLine="0" />
@@ -259,8 +259,8 @@
 	<File name="engine\actions\include\IActionManager.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="263" topLine="0" />
 	</File>
-	<File name="engine\actions\include\InventoryManager.hpp" open="0" top="0" tabpos="10">
-		<Cursor position="399" topLine="2" />
+	<File name="engine\actions\include\InventoryManager.hpp" open="1" top="0" tabpos="8">
+		<Cursor position="322" topLine="2" />
 	</File>
 	<File name="engine\actions\include\ItemManager.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="1173" topLine="7" />
@@ -274,7 +274,7 @@
 	<File name="engine\actions\include\PrayerManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="engine\actions\include\RangedCombatActionManager.hpp" open="1" top="0" tabpos="4">
+	<File name="engine\actions\include\RangedCombatActionManager.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="1349" topLine="13" />
 	</File>
 	<File name="engine\actions\include\RangedCombatApplicabilityChecker.hpp" open="0" top="0" tabpos="2">
@@ -286,8 +286,8 @@
 	<File name="engine\actions\include\TileMovementConfirmation.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="407" topLine="0" />
 	</File>
-	<File name="engine\actions\include\TileSelectionManager.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="311" topLine="0" />
+	<File name="engine\actions\include\TileSelectionManager.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="1353" topLine="18" />
 	</File>
 	<File name="engine\actions\include\VersionActionManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="226" topLine="0" />
@@ -301,8 +301,8 @@
 	<File name="engine\actions\source\ActionCost.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="209" topLine="5" />
 	</File>
-	<File name="engine\actions\source\ActionManager.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="2850" topLine="96" />
+	<File name="engine\actions\source\ActionManager.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="6383" topLine="222" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
@@ -313,11 +313,11 @@
 	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="754" topLine="15" />
 	</File>
-	<File name="engine\actions\source\InventoryManager.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="1105" topLine="18" />
+	<File name="engine\actions\source\InventoryManager.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="738" topLine="12" />
 	</File>
-	<File name="engine\actions\source\ItemManager.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="3371" topLine="127" />
+	<File name="engine\actions\source\ItemManager.cpp" open="1" top="0" tabpos="6">
+		<Cursor position="1864" topLine="68" />
 	</File>
 	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1250" topLine="14" />
@@ -328,10 +328,10 @@
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
 	</File>
-	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="1" top="1" tabpos="5">
-		<Cursor position="6008" topLine="162" />
+	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="0" top="0" tabpos="5">
+		<Cursor position="2240" topLine="61" />
 	</File>
-	<File name="engine\actions\source\RangedCombatApplicabilityChecker.cpp" open="1" top="0" tabpos="7">
+	<File name="engine\actions\source\RangedCombatApplicabilityChecker.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="3983" topLine="113" />
 	</File>
 	<File name="engine\actions\source\SearchActionManager.cpp" open="0" top="0" tabpos="6">
@@ -340,8 +340,8 @@
 	<File name="engine\actions\source\TileMovementConfirmation.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1569" topLine="27" />
 	</File>
-	<File name="engine\actions\source\TileSelectionManager.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="3551" topLine="109" />
+	<File name="engine\actions\source\TileSelectionManager.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="6314" topLine="187" />
 	</File>
 	<File name="engine\actions\source\VersionActionManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="169" topLine="0" />
@@ -526,7 +526,7 @@
 	<File name="engine\combat\include\PlayerDeathManager.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="130" topLine="0" />
 	</File>
-	<File name="engine\combat\include\WeaponManager.hpp" open="1" top="0" tabpos="9">
+	<File name="engine\combat\include\WeaponManager.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="823" topLine="0" />
 	</File>
 	<File name="engine\combat\source\CombatConstants.cpp" open="0" top="0" tabpos="7">
@@ -550,7 +550,7 @@
 	<File name="engine\combat\source\PlayerDeathManager.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="425" topLine="13" />
 	</File>
-	<File name="engine\combat\source\WeaponManager.cpp" open="1" top="0" tabpos="8">
+	<File name="engine\combat\source\WeaponManager.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="4774" topLine="167" />
 	</File>
 	<File name="engine\combat\source\unit_tests\CombatManager_test.cpp" open="0" top="0" tabpos="1">
@@ -652,14 +652,17 @@
 	<File name="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="984" topLine="0" />
 	</File>
-	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="910" topLine="22" />
+	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="1159" topLine="30" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionCommands.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="776" topLine="16" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionKeyboardCommandMap.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="3024" topLine="33" />
+	</File>
+	<File name="engine\commands\select_tile\source\TileSelectionRangeChecker.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="1085" topLine="13" />
 	</File>
 	<File name="engine\commands\source\Command.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="481" topLine="8" />
@@ -671,7 +674,7 @@
 		<Cursor position="1475" topLine="15" />
 	</File>
 	<File name="engine\commands\source\CommandProcessor.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="3016" topLine="102" />
+		<Cursor position="2124" topLine="72" />
 	</File>
 	<File name="engine\commands\source\Commands.cpp" open="0" top="0" tabpos="17">
 		<Cursor position="3146" topLine="177" />
@@ -1207,10 +1210,10 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="412" topLine="22" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="1">
-		<Cursor position="28427" topLine="682" />
+	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="1">
+		<Cursor position="27605" topLine="686" />
 	</File>
-	<File name="engine\include\StringTable.hpp" open="1" top="0" tabpos="6">
+	<File name="engine\include\StringTable.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="159" topLine="0" />
 	</File>
 	<File name="engine\menus\include\ClassSelectionScreen.hpp" open="0" top="0" tabpos="14">
@@ -1345,8 +1348,8 @@
 	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="4541" topLine="154" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="54940" topLine="1294" />
+	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="59175" topLine="1363" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1465,6 +1468,9 @@
 	<File name="engine\translators\include\MapTranslator.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="146" topLine="0" />
 	</File>
+	<File name="engine\translators\include\NullDisplayFilter.hpp" open="1" top="0" tabpos="11">
+		<Cursor position="222" topLine="0" />
+	</File>
 	<File name="engine\translators\include\ViewMapTranslator.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="168" topLine="0" />
 	</File>
@@ -1477,14 +1483,23 @@
 	<File name="engine\translators\source\EquipmentTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="591" topLine="12" />
 	</File>
-	<File name="engine\translators\source\InventoryTranslator.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="2470" topLine="55" />
+	<File name="engine\translators\source\InventoryTranslator.cpp" open="1" top="1" tabpos="5">
+		<Cursor position="1710" topLine="48" />
+	</File>
+	<File name="engine\translators\source\ItemDisplayFilterFactory.cpp" open="1" top="0" tabpos="10">
+		<Cursor position="460" topLine="0" />
 	</File>
 	<File name="engine\translators\source\ItemTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="298" topLine="7" />
 	</File>
 	<File name="engine\translators\source\MapTranslator.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="2823" topLine="72" />
+	</File>
+	<File name="engine\translators\source\NullDisplayFilter.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="52" topLine="0" />
+	</File>
+	<File name="engine\translators\source\SquishyEquipWornLocationDisplayFilter.cpp" open="1" top="0" tabpos="12">
+		<Cursor position="41" topLine="0" />
 	</File>
 	<File name="engine\translators\source\ViewMapTranslator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="819" topLine="13" />
@@ -1811,7 +1826,7 @@
 		<Cursor position="128" topLine="0" />
 	</File>
 	<File name="world\source\Creature.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="9757" topLine="550" />
+		<Cursor position="6150" topLine="351" />
 	</File>
 	<File name="world\source\CreatureGenerationValues.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="155" topLine="0" />

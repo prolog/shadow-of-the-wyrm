@@ -2,8 +2,9 @@
 #include "EquipmentCommandProcessor.hpp"
 #include "EquipmentCommands.hpp"
 #include "Game.hpp"
+#include "ItemDisplayFilterFactory.hpp"
 
-using std::string;
+using namespace std;
 
 EquipmentCommandProcessor::EquipmentCommandProcessor()
 {
@@ -41,7 +42,9 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
       }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
       {
-        game->actions.inventory(creature, creature->get_inventory(), EQUIPMENT_WORN_NONE, true);
+        list<IItemDisplayFilterPtr> display_filter = ItemDisplayFilterFactory::create_empty_filter();
+        
+        game->actions.inventory(creature, creature->get_inventory(), display_filter, true);
         // Because the player is just looking at the items, this shouldn't
         // advance any turn information.
         process_result = 0;
