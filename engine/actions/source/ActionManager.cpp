@@ -11,6 +11,7 @@
 #include "InventoryManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
+#include "PickupManager.hpp"
 #include "PrayerManager.hpp"
 #include "SearchActionManager.hpp"
 #include "VersionActionManager.hpp"
@@ -187,84 +188,8 @@ ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemActio
 // Pick up an item, doing any necessary checks first.
 ActionCost ActionManager::pick_up(CreaturePtr creature)
 {
-  ActionCostValue action_cost_value = 0;
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
-  
-  if (creature && game)
-  {
-    MapPtr map = game->get_current_map();
-    
-    if (map->get_map_type() == MAP_TYPE_WORLD)
-    {
-      string pick_up_not_allowed = StringTable::get(ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED);
-      
-      manager->add_new_message(pick_up_not_allowed);
-      manager->send();
-    }
-    else
-    {
-      TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
-      
-      if (tile)
-      {
-        Inventory& inv = tile->get_items();
-
-        // If there is no item, inform the user.
-        if (inv.empty())
-        {
-          if (creature->get_is_player())
-          {
-            string no_item_on_ground = StringTable::get(ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND);
-            
-            manager->add_new_message(no_item_on_ground);
-            manager->send();
-          }
-        }
-        else
-        {
-          // If there is one item, pick it up.
-          uint num_items = inv.size();
-          
-          ItemPtr pick_up_item;
-          
-          if (num_items == 1)
-          {
-            pick_up_item = inv.at(0);
-          }
-
-          // If there are many items, get one of them.
-          else
-          {
-            list<IItemDisplayFilterPtr> no_filter = ItemDisplayFilterFactory::create_empty_filter();
-            pick_up_item = inventory(creature, inv, no_filter, false);
-          }
-          
-          if (pick_up_item)
-          {
-            // Remove the item from the ground; add it to the creature's
-            // inventory.
-            inv.remove(pick_up_item->get_id());
-            creature->get_inventory().add(pick_up_item);
-
-            // Display a message if necessary
-            if (creature->get_is_player())
-            {
-              string pick_up_message = TextMessages::get_item_pick_up_message(StringTable::get(pick_up_item->get_usage_description_sid()));
-              
-              manager->add_new_message(pick_up_message);
-              manager->send();        
-            }
-          }
-          
-          // Advance the turn
-          action_cost_value = 1;
-        }   
-      }      
-    }
-  }
-
-  return get_action_cost(creature, action_cost_value);
+  PickupManager pm;
+  return get_action_cost(creature, pm.pick_up(creature, this));
 }
 
 // Drop an item, doing any necessary checks first.

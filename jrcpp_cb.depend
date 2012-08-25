@@ -2388,6 +2388,16 @@
 	"NullDisplayFilter.hpp"
 	"SquishyEquipWornLocationDisplayFilter.hpp"
 
-1345812999 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\squishyequipwornlocationdisplayfilter.cpp
+1345902809 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\squishyequipwornlocationdisplayfilter.cpp
 	"SquishyEquipWornLocationDisplayFilter.hpp"
+
+1345903978 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\pickupmanager.cpp
+	<list>
+	"Game.hpp"
+	"Inventory.hpp"
+	"ItemDisplayFilterFactory.hpp"
+	"MapUtils.hpp"
+	"MessageManager.hpp"
+	"PickupManager.hpp"
+	"StringConstants.hpp"
 

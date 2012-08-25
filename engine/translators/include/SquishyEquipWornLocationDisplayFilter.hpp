@@ -13,5 +13,9 @@ class SquishyEquipWornLocationDisplayFilter : public IItemDisplayFilter
     bool passes_filter(ItemPtr item) const;
 
   protected:
+    bool passes_slot_equality(const EquipmentWornLocation ewl) const;
+    bool passes_squishy_ring_comparison(const EquipmentWornLocation ewl) const;
+    bool passes_squishy_wield_comparison(const EquipmentWornLocation ewl) const;
+  
     EquipmentWornLocation slot_location;
 };
