@@ -70,7 +70,7 @@
 	<File name="display\source\NCursesConstants.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="352" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="9">
+	<File name="display\source\NCursesDisplay.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="19772" topLine="636" />
 	</File>
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
@@ -244,8 +244,8 @@
 	<File name="engine\actions\include\ActionCost.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="62" topLine="0" />
 	</File>
-	<File name="engine\actions\include\ActionManager.hpp" open="0" top="0" tabpos="9">
-		<Cursor position="1707" topLine="38" />
+	<File name="engine\actions\include\ActionManager.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="1033" topLine="30" />
 	</File>
 	<File name="engine\actions\include\CharacterDumpManager.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="300" topLine="0" />
@@ -259,8 +259,8 @@
 	<File name="engine\actions\include\IActionManager.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="263" topLine="0" />
 	</File>
-	<File name="engine\actions\include\InventoryManager.hpp" open="1" top="0" tabpos="8">
-		<Cursor position="322" topLine="2" />
+	<File name="engine\actions\include\InventoryManager.hpp" open="0" top="0" tabpos="8">
+		<Cursor position="161" topLine="0" />
 	</File>
 	<File name="engine\actions\include\ItemManager.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="1173" topLine="7" />
@@ -270,6 +270,9 @@
 	</File>
 	<File name="engine\actions\include\MovementManager.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="1279" topLine="10" />
+	</File>
+	<File name="engine\actions\include\PickupManager.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="198" topLine="0" />
 	</File>
 	<File name="engine\actions\include\PrayerManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="101" topLine="0" />
@@ -286,7 +289,7 @@
 	<File name="engine\actions\include\TileMovementConfirmation.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="407" topLine="0" />
 	</File>
-	<File name="engine\actions\include\TileSelectionManager.hpp" open="1" top="0" tabpos="2">
+	<File name="engine\actions\include\TileSelectionManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="1353" topLine="18" />
 	</File>
 	<File name="engine\actions\include\VersionActionManager.hpp" open="0" top="0" tabpos="3">
@@ -301,8 +304,8 @@
 	<File name="engine\actions\source\ActionCost.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="209" topLine="5" />
 	</File>
-	<File name="engine\actions\source\ActionManager.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="6383" topLine="222" />
+	<File name="engine\actions\source\ActionManager.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="5393" topLine="180" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
@@ -313,10 +316,10 @@
 	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="754" topLine="15" />
 	</File>
-	<File name="engine\actions\source\InventoryManager.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="738" topLine="12" />
+	<File name="engine\actions\source\InventoryManager.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="903" topLine="12" />
 	</File>
-	<File name="engine\actions\source\ItemManager.cpp" open="1" top="0" tabpos="6">
+	<File name="engine\actions\source\ItemManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="1864" topLine="68" />
 	</File>
 	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
@@ -324,6 +327,9 @@
 	</File>
 	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="4886" topLine="143" />
+	</File>
+	<File name="engine\actions\source\PickupManager.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="390" topLine="4" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
@@ -340,7 +346,7 @@
 	<File name="engine\actions\source\TileMovementConfirmation.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1569" topLine="27" />
 	</File>
-	<File name="engine\actions\source\TileSelectionManager.cpp" open="1" top="0" tabpos="3">
+	<File name="engine\actions\source\TileSelectionManager.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="6314" topLine="187" />
 	</File>
 	<File name="engine\actions\source\VersionActionManager.cpp" open="0" top="0" tabpos="2">
@@ -578,7 +584,7 @@
 		<Cursor position="738" topLine="0" />
 	</File>
 	<File name="engine\commands\equipment\source\EquipmentCommandProcessor.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="1447" topLine="33" />
+		<Cursor position="191" topLine="0" />
 	</File>
 	<File name="engine\commands\equipment\source\EquipmentCommands.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="218" topLine="0" />
@@ -652,7 +658,7 @@
 	<File name="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="984" topLine="0" />
 	</File>
-	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="1" top="0" tabpos="1">
+	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1159" topLine="30" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionCommands.cpp" open="0" top="0" tabpos="0">
@@ -1463,13 +1469,16 @@
 		<Cursor position="13" topLine="0" />
 	</File>
 	<File name="engine\translators\include\InventoryTranslator.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="517" topLine="0" />
+		<Cursor position="140" topLine="0" />
 	</File>
 	<File name="engine\translators\include\MapTranslator.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="146" topLine="0" />
 	</File>
-	<File name="engine\translators\include\NullDisplayFilter.hpp" open="1" top="0" tabpos="11">
+	<File name="engine\translators\include\NullDisplayFilter.hpp" open="0" top="0" tabpos="11">
 		<Cursor position="222" topLine="0" />
+	</File>
+	<File name="engine\translators\include\SquishyEquipWornLocationDisplayFilter.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="794" topLine="0" />
 	</File>
 	<File name="engine\translators\include\ViewMapTranslator.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="168" topLine="0" />
@@ -1483,11 +1492,11 @@
 	<File name="engine\translators\source\EquipmentTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="591" topLine="12" />
 	</File>
-	<File name="engine\translators\source\InventoryTranslator.cpp" open="1" top="1" tabpos="5">
-		<Cursor position="1710" topLine="48" />
+	<File name="engine\translators\source\InventoryTranslator.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="1465" topLine="37" />
 	</File>
-	<File name="engine\translators\source\ItemDisplayFilterFactory.cpp" open="1" top="0" tabpos="10">
-		<Cursor position="460" topLine="0" />
+	<File name="engine\translators\source\ItemDisplayFilterFactory.cpp" open="0" top="0" tabpos="10">
+		<Cursor position="832" topLine="1" />
 	</File>
 	<File name="engine\translators\source\ItemTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="298" topLine="7" />
@@ -1498,8 +1507,8 @@
 	<File name="engine\translators\source\NullDisplayFilter.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="52" topLine="0" />
 	</File>
-	<File name="engine\translators\source\SquishyEquipWornLocationDisplayFilter.cpp" open="1" top="0" tabpos="12">
-		<Cursor position="41" topLine="0" />
+	<File name="engine\translators\source\SquishyEquipWornLocationDisplayFilter.cpp" open="0" top="0" tabpos="12">
+		<Cursor position="1638" topLine="18" />
 	</File>
 	<File name="engine\translators\source\ViewMapTranslator.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="819" topLine="13" />

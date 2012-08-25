@@ -211,6 +211,7 @@
 		<Unit filename="engine\actions\include\ItemManager.hpp" />
 		<Unit filename="engine\actions\include\MovementAccumulationUpdater.hpp" />
 		<Unit filename="engine\actions\include\MovementManager.hpp" />
+		<Unit filename="engine\actions\include\PickupManager.hpp" />
 		<Unit filename="engine\actions\include\PrayerManager.hpp" />
 		<Unit filename="engine\actions\include\RangedCombatActionManager.hpp" />
 		<Unit filename="engine\actions\include\RangedCombatApplicabilityChecker.hpp" />
@@ -229,6 +230,7 @@
 		<Unit filename="engine\actions\source\ItemManager.cpp" />
 		<Unit filename="engine\actions\source\MovementAccumulationUpdater.cpp" />
 		<Unit filename="engine\actions\source\MovementManager.cpp" />
+		<Unit filename="engine\actions\source\PickupManager.cpp" />
 		<Unit filename="engine\actions\source\PrayerManager.cpp" />
 		<Unit filename="engine\actions\source\RangedCombatActionManager.cpp" />
 		<Unit filename="engine\actions\source\RangedCombatApplicabilityChecker.cpp" />
