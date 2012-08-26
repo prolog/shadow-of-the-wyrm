@@ -12,6 +12,29 @@ WeaponInfoManager::WeaponInfoManager()
 {
 }
 
+// Get the weapon info for the given creature and given weapon style
+ActionCostValue WeaponInfoManager::weapon_info(CreaturePtr creature, const WeaponStyle ws) const
+{
+  ActionCostValue action_cost_value = 0;
+  
+  if (creature)
+  {
+    switch(ws)
+    {
+      case WEAPON_STYLE_MELEE:
+        action_cost_value = melee_weapon_info(creature);
+        break;
+      case WEAPON_STYLE_RANGED:
+        action_cost_value = ranged_weapon_info(creature);
+        break;
+      default:
+        break;
+    }    
+  }
+  
+  return action_cost_value;
+}
+
 // Get the actual melee weapon info.  Output it to the message manager if the
 // creature is the player.
 ActionCostValue WeaponInfoManager::melee_weapon_info(CreaturePtr creature) const

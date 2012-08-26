@@ -4,6 +4,7 @@
 #include "CharacterDumpManager.hpp"
 #include "Conversion.hpp"
 #include "DateTimeManager.hpp"
+#include "DropManager.hpp"
 #include "EquipmentManager.hpp"
 #include "FileWriter.hpp"
 #include "Game.hpp"
@@ -195,70 +196,8 @@ ActionCost ActionManager::pick_up(CreaturePtr creature)
 // Drop an item, doing any necessary checks first.
 ActionCost ActionManager::drop(CreaturePtr creature)
 {
-  ActionCostValue action_cost_value = 0;
-  
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
-  
-  if (game && creature)
-  {
-    MapPtr map = game->get_current_map();
-    
-    if (map->get_map_type() == MAP_TYPE_WORLD)
-    {
-      string drop_not_allowed = StringTable::get(ActionTextKeys::ACTION_DROP_NOT_ALLOWED);
-      
-      manager->add_new_message(drop_not_allowed);
-      manager->send();
-    }
-    else
-    {
-      list<IItemDisplayFilterPtr> no_filter = ItemDisplayFilterFactory::create_empty_filter();
-      ItemPtr item_to_drop = inventory(creature, creature->get_inventory(), no_filter, false);
-      
-      if (!item_to_drop)
-      {
-        string no_item_to_drop = StringTable::get(ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED);
-        
-        manager->add_new_message(no_item_to_drop);
-        manager->send();
-      }
-      else // Item selected
-      {
-        TilePtr creatures_tile = MapUtils::get_tile_for_creature(map, creature);
-        
-        if (creatures_tile)
-        {
-          // Add the item to the list currently on the tile.
-          creatures_tile->get_items().add_front(item_to_drop);
-        }
-        
-        // Remove it from the inventory
-        creature->get_inventory().remove(item_to_drop->get_id());
-        
-        // Advance the turn
-        action_cost_value = 1;
-        
-        // Display a message if appropriate.
-        // If it's the player, remind the user what he or she dropped.
-        if (creature->get_is_player())
-        {
-          string drop_message = TextMessages::get_item_drop_message(StringTable::get(item_to_drop->get_usage_description_sid()));
-          
-          manager->add_new_message(drop_message);
-          manager->send();
-        }
-        // If it's not the player, and the player is in range, inform the player
-        // what the creature dropped.
-        else
-        {
-          
-        }
-      }      
-    }
-  }
-  
-  return get_action_cost(creature, action_cost_value);
+  DropManager dm;
+  return get_action_cost(creature, dm.drop(creature, this));
 }
 
 // Display the inventory; potentially select something.
@@ -314,26 +253,8 @@ ActionCost ActionManager::pray(CreaturePtr creature)
 
 ActionCost ActionManager::weapon_info(CreaturePtr creature, const WeaponStyle weapon_style)
 {
-  ActionCostValue action_cost_value = 0;
-  
-  if (creature)
-  {
-    WeaponInfoManager weapon_info_manager;
-    
-    switch(weapon_style)
-    {
-      case WEAPON_STYLE_MELEE:
-        action_cost_value = weapon_info_manager.melee_weapon_info(creature);
-        break;
-      case WEAPON_STYLE_RANGED:
-        action_cost_value = weapon_info_manager.ranged_weapon_info(creature);
-        break;
-      default:
-        break;
-    }    
-  }
-  
-  return get_action_cost(creature, action_cost_value);
+  WeaponInfoManager wm;
+  return get_action_cost(creature, wm.weapon_info(creature, weapon_style));
 }
 
 ActionCost ActionManager::select_tile(CreaturePtr creature)
