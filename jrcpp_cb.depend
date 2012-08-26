@@ -223,13 +223,14 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1345900043 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1345984126 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
 	"CharacterDumpManager.hpp"
 	"Conversion.hpp"
 	"DateTimeManager.hpp"
+	"DropManager.hpp"
 	"EquipmentManager.hpp"
 	"FileWriter.hpp"
 	"Game.hpp"
@@ -237,6 +238,7 @@
 	"InventoryManager.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
+	"PickupManager.hpp"
 	"PrayerManager.hpp"
 	"SearchActionManager.hpp"
 	"VersionActionManager.hpp"
@@ -333,7 +335,7 @@
 	"MessageManager.hpp"
 	"VersionActionManager.hpp"
 
-1343911733 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+1345983329 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
 	"DamageCalculatorFactory.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
@@ -2400,4 +2402,14 @@
 	"MessageManager.hpp"
 	"PickupManager.hpp"
 	"StringConstants.hpp"
+
+1345985514 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
+	"ActionManager.hpp"
+	"DropManager.hpp"
+	"Game.hpp"
+	"ItemDisplayFilterFactory.hpp"
+	"MapUtils.hpp"
+	"MessageManager.hpp"
+	"StringConstants.hpp"
+	"Tile.hpp"
 
