@@ -36,6 +36,39 @@ CommandPtr PlayerDecisionStrategy::get_decision(const string& creature_id, Comma
   return player_command;
 }
 
+// When the player is presented with a number of something (items to drop, turns to wait, etc.),
+// get that number
+uint PlayerDecisionStrategy::get_count(const uint max_count)
+{
+  int count = max_count;
+  
+  if (controller)
+  {
+    string selected_count = controller->get_line();
+    
+    if (!selected_count.empty()) 
+    {
+      try
+      {
+        count = static_cast<uint>(String::to_int(selected_count));
+      }
+      // If the user entered a value that isn't a valid int, and isn't "enter" (empty str),
+      // default to 0:
+      catch(...)
+      {
+        count = 0;
+      }
+    }
+    // User hit enter: default to maximum
+    else
+    {
+      count = max_count;
+    }
+  }
+  
+  return count;
+}
+
 
 // Get confirmation - true or false.  Used for commands that require confirmation, like quitting,
 // saving, or leaving an area.

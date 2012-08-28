@@ -205,6 +205,7 @@
 		<Unit filename="engine\actions\include\ActionManager.hpp" />
 		<Unit filename="engine\actions\include\CharacterDumpManager.hpp" />
 		<Unit filename="engine\actions\include\DateTimeManager.hpp" />
+		<Unit filename="engine\actions\include\DropManager.hpp" />
 		<Unit filename="engine\actions\include\EquipmentManager.hpp" />
 		<Unit filename="engine\actions\include\IActionManager.hpp" />
 		<Unit filename="engine\actions\include\InventoryManager.hpp" />
@@ -225,6 +226,7 @@
 		<Unit filename="engine\actions\source\ActionManager.cpp" />
 		<Unit filename="engine\actions\source\CharacterDumpManager.cpp" />
 		<Unit filename="engine\actions\source\DateTimeManager.cpp" />
+		<Unit filename="engine\actions\source\DropManager.cpp" />
 		<Unit filename="engine\actions\source\EquipmentManager.cpp" />
 		<Unit filename="engine\actions\source\InventoryManager.cpp" />
 		<Unit filename="engine\actions\source\ItemManager.cpp" />

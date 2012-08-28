@@ -54,6 +54,9 @@ class Game
     void stop_playing(); // end the game
     bool should_keep_playing() const; // Check to see if the "game over" flag's been set.
 
+    // Update the physical display
+    void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map);
+
     // Additional operations will eventually be needed to do many
     // worlds and rebirth.
     
@@ -84,9 +87,6 @@ class Game
     
     void detect_creatures_if_necessary(CreaturePtr player, const std::string& original_map_id);
     
-    // Update the physical display
-    void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map);
-
     // Set the map to be used as the current for the game's computational purposes.
     void set_current_map(MapPtr map);
     

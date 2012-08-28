@@ -7,6 +7,7 @@ class NPCDecisionStrategy : public DecisionStrategy
 {
   public:
     virtual CommandPtr get_decision(const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map = MapPtr());
+    virtual uint get_count(const uint max_count);
     virtual bool get_confirmation();
     
   protected:

@@ -568,6 +568,8 @@ class ActionTextKeys
     static const std::string ACTION_PICK_UP_NOT_ALLOWED;
     static const std::string ACTION_DROP_NOT_ALLOWED;
     static const std::string ACTION_DROP_NO_ITEM_SELECTED;
+    static const std::string ACTION_DROP_QUANTITY_PROMPT;
+    static const std::string ACTION_DROP_INVALID_QUANTITY;
     static const std::string ACTION_PICK_UP_NOTHING_ON_GROUND;
     static const std::string ACTION_MOVEMENT_BLOCKED;
     static const std::string ACTION_PLAYER_DROWNING;
@@ -623,8 +625,8 @@ class TextMessages
     static std::string get_equipment_location(const EquipmentWornLocation location);
     static std::string get_confirmation_message(const std::string& query_sid);
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);
-    static std::string get_item_drop_message(const std::string& item_description);
-    static std::string get_item_pick_up_message(const std::string& item_description);
+    static std::string get_item_drop_message(const std::string& item_description, const uint quantity_dropped);
+    static std::string get_item_pick_up_message(const std::string& item_description, const uint quantity_taken);
     static std::string get_item_on_ground_description_message(const std::string& item_on_ground_description);
 
   protected:

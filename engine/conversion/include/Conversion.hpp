@@ -73,6 +73,7 @@ class String
 class Integer
 {
   public:
+    static std::string to_string(const uint integer);
     static std::string to_string(const int integer);
     template <class T> inline static std::string to_string_key_at_given_position_in_map(const std::map<std::string, T>& map, const int pos)
     {

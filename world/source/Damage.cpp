@@ -19,19 +19,56 @@ Damage::Damage(const uint dice, const uint sides, const int mod, const DamageTyp
 Damage::Damage(const Damage& d)
 : Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type)
 {
+  DamagePtr addl_damage = d.get_additional_damage();
+  
+  if (addl_damage)
+  {
+    additional_damage = boost::shared_ptr<Damage>(new Damage(*addl_damage));
+  }
 }
 
 Damage& Damage::operator=(const Damage& d)
 {
   if (this != &d)
   {
-    num_dice   = d.num_dice;
-    dice_sides = d.dice_sides;
-    modifier   = d.modifier;
-    damage_type= d.damage_type;
+    num_dice    = d.num_dice;
+    dice_sides  = d.dice_sides;
+    modifier    = d.modifier;
+    damage_type = d.damage_type;
+    
+    DamagePtr addl_damage = d.get_additional_damage();
+    
+    if (addl_damage)
+    {
+      additional_damage = boost::shared_ptr<Damage>(new Damage(*d.get_additional_damage()));
+    }
   }
   
   return *this;
+}
+
+bool Damage::operator==(const Damage& d)
+{
+  if (this != &d)
+  {
+    bool match = true;
+    
+    match &= (num_dice    == d.get_num_dice()   );
+    match &= (dice_sides  == d.get_dice_sides() );
+    match &= (modifier    == d.get_modifier()   );
+    match &= (damage_type == d.get_damage_type());
+    
+    DamagePtr d_add_damage = d.get_additional_damage();
+    bool add_damage_matches = true;
+    
+    add_damage_matches = (additional_damage && d_add_damage && (*additional_damage == *d_add_damage)) || (!additional_damage && !d_add_damage);
+
+    match &= add_damage_matches;
+    
+    return match;
+  }
+  
+  return false;
 }
 
 Damage::~Damage()
@@ -58,7 +95,7 @@ bool Damage::has_additional_damage() const
   return (additional_damage);
 }
 
-DamagePtr Damage::get_additional_damage()
+DamagePtr Damage::get_additional_damage() const
 {
   return additional_damage;
 }

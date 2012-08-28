@@ -1,5 +1,7 @@
 #include "Weapon.hpp"
 
+using boost::dynamic_pointer_cast;
+
 // WEAPON
 Weapon::Weapon()
 : difficulty(0), trained_skill(SKILL_MELEE_EXOTIC), trained_ranged_skill(SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
@@ -63,6 +65,23 @@ bool Weapon::get_requires_ranged_weapon() const
   return requires_ranged_weapon;
 }
 
+bool Weapon::additional_item_attributes_match(boost::shared_ptr<Item> i)
+{
+  bool match = (i);
+  WeaponPtr i_weap = dynamic_pointer_cast<Weapon>(i);
+  
+  match = (i_weap);
+  
+  if (i_weap)
+  {
+    match &= (difficulty           == i_weap->get_difficulty());
+    match &= (damage               == i_weap->get_damage()    );
+    match &= (trained_skill        == i_weap->get_trained_skill());
+    match &= (trained_ranged_skill == i_weap->get_trained_ranged_skill());
+  }
+  
+  return match;
+}
 
 
 // MELEEWEAPON
