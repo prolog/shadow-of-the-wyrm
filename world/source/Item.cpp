@@ -1,4 +1,7 @@
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
 #include <boost/make_shared.hpp>
+#include "Conversion.hpp"
 #include "Item.hpp"
 #include "Wood.hpp"
 
@@ -6,7 +9,7 @@ using std::string;
 using boost::make_shared;
 
 Item::Item()
-: worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false),
+: quantity(1), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false),
 artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE)
 {
   // Create a default useful material.  Wood, huh?  Well, I needed something.
@@ -25,6 +28,21 @@ void Item::set_id(const std::string& new_id)
 std::string Item::get_id() const
 {
   return id;
+}
+
+void Item::set_quantity(const uint new_quantity)
+{
+  quantity = new_quantity;
+}
+
+uint Item::get_quantity() const
+{
+  return quantity;
+}
+
+bool Item::is_valid_quantity(const uint selected_quantity) const
+{
+  return ((selected_quantity >= 1) && (selected_quantity <= quantity));
 }
 
 void Item::set_usage_description_sid(const string& new_usage_description_sid)
@@ -196,12 +214,54 @@ bool Item::get_identified() const
   return identified;
 }
 
+bool Item::matches(boost::shared_ptr<Item> i)
+{
+  bool match = (i);
+  
+  if (i)
+  {
+    match &= (usage_description_sid == i->get_usage_description_sid());
+    match &= (description_sid       == i->get_description_sid()      );
+    match &= (status_identified     == i->get_status_identified()    );
+    match &= (weight.get_weight()   == i->get_weight().get_weight()  );
+    match &= (worn_location         == i->get_worn_location()        );
+    match &= (status                == i->get_status()               );
+    match &= (artifact              == i->get_artifact()             );
+    match &= (type                  == i->get_type()                 );
+    match &= (material->get_type()  == i->get_material()->get_type() );
+    
+    // Check the concrete implementation class's attributes:
+    match &= additional_item_attributes_match(i);
+  }
+  
+  return match;
+}
+
+// This function always returns true.  Any type-specific behaviour must
+// be implemented in the various Item subclasses.
+bool Item::additional_item_attributes_match(boost::shared_ptr<Item> i)
+{
+  return true;
+}
+
 Item* Item::deep_copy()
 {
   Item* item = clone();
   
   MaterialPtr new_material = MaterialPtr(material->clone());
   item->set_material(new_material);
+  
+  return item;
+}
+
+Item* Item::deep_copy_with_new_id()
+{
+  Item* item = deep_copy();
+  
+  // Create and set a new item ID.  deep_copy just makes a true copy.
+  boost::uuids::uuid new_id = boost::uuids::random_generator()();
+  std::string id_s = Uuid::to_string(new_id);
+  item->set_id(id_s);
   
   return item;
 }

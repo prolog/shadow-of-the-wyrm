@@ -27,6 +27,8 @@ class Weapon : public Wearable
     virtual void set_requires_ranged_weapon(const bool new_requires_ranged_weapon);
     virtual bool get_requires_ranged_weapon() const;
     
+    virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
+    
   protected:
   
     int difficulty;

@@ -16,6 +16,8 @@ class Wearable : public Item
     void set_soak(const int new_soak);
     int get_soak() const;
     
+    virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
+    
   protected:
     int evade, soak;
 };

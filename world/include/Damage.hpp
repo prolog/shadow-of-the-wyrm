@@ -11,7 +11,8 @@ class Damage : public Dice
     Damage();
     Damage(const uint dice, const uint sides, const int mod, const DamageType dtype);
     Damage(const Damage& d);
-    Damage&  operator=(const Damage& d);
+    Damage&  operator= (const Damage& d);
+    bool     operator==(const Damage& d);
     
     ~Damage();
 
@@ -23,7 +24,7 @@ class Damage : public Dice
     // of both the ranged weapon and the missile.
     void set_additional_damage(boost::shared_ptr<Damage> new_additional_damage);
     bool has_additional_damage() const;
-    boost::shared_ptr<Damage> get_additional_damage();
+    boost::shared_ptr<Damage> get_additional_damage() const;
     
     std::string str() const;
     

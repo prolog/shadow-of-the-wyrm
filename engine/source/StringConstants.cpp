@@ -814,6 +814,8 @@ const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH"
 const string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
 const string ActionTextKeys::ACTION_DROP_NOT_ALLOWED           = "ACTION_DROP_NOT_ALLOWED";
 const string ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED      = "ACTION_DROP_NO_ITEM_SELECTED";
+const string ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT       = "ACTION_DROP_QUANTITY_PROMPT";
+const string ActionTextKeys::ACTION_DROP_INVALID_QUANTITY      = "ACTION_DROP_INVALID_QUANTITY";
 const string ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND  = "ACTION_PICK_UP_NOTHING_ON_GROUND";
 const string ActionTextKeys::ACTION_MOVEMENT_BLOCKED           = "ACTION_MOVEMENT_BLOCKED";
 const string ActionTextKeys::ACTION_PLAYER_DROWNING            = "ACTION_PLAYER_DROWNING";
@@ -1081,18 +1083,34 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
   return entrance_message;
 }
 
-string TextMessages::get_item_drop_message(const string& item_description)
+string TextMessages::get_item_drop_message(const string& item_description, const uint quantity)
 {
+  // JCD FIXME: Once working, refactor to use ItemTranslator
+  string desc = item_description;
+  
+  if (quantity > 1)
+  {
+    desc = item_description + " (" + Integer::to_string(quantity) + ")";
+  }
+  
   string item_message = StringTable::get(TextMessages::ITEM_DROP_MESSAGE);
-  boost::replace_first(item_message, "%s", item_description);
+  boost::replace_first(item_message, "%s", desc);
   return item_message;
   
 }
 
-string TextMessages::get_item_pick_up_message(const string& item_description)
+string TextMessages::get_item_pick_up_message(const string& item_description, const uint quantity_taken)
 {
+  // JCD FIXME: Once working, refactor to use ItemTranslator
+  string desc = item_description;
+  
+  if (quantity_taken > 1)
+  {
+    desc = desc + " (" + Integer::to_string(quantity_taken) + ")";
+  }
+  
   string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE);
-  boost::replace_first(item_message, "%s", item_description);
+  boost::replace_first(item_message, "%s", desc);
   return item_message;
 }
 

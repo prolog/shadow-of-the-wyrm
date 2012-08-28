@@ -12,6 +12,12 @@ using std::string;
 using std::vector;
 using boost::make_shared;
 
+// By default, always get/pick up/etc the maximum.
+uint NPCDecisionStrategy::get_count(const uint max_count)
+{
+  return max_count;
+}
+
 bool NPCDecisionStrategy::get_confirmation()
 {
   return true;

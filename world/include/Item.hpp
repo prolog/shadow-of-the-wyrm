@@ -16,6 +16,10 @@ class Item
     virtual void set_id(const std::string& new_id);
     virtual std::string get_id() const;
     
+    virtual void set_quantity(const uint new_quantity);
+    virtual uint get_quantity() const;
+    virtual bool is_valid_quantity(const uint selected_quantity) const;
+    
     // Used when picking up, dropping, or otherwise describing an item.
     // E.g. (in angle brackets), "You throw <a dagger>"
     //                           "You drop <an egg>"
@@ -66,12 +70,23 @@ class Item
     
     virtual void   set_identified(const bool new_identified);
     virtual bool   get_identified() const;
+
+    // Functions for stack management
+    virtual bool matches(boost::shared_ptr<Item> item);
+    
+    // additional_item_attributes_match needs to be implemented by the subclasses of item.
+    // It is included in the checks in matches, and is used to determine item type-specific
+    // match behaviour. (e.g., potions need to match on spells, weapons need to match on
+    // to-hit and damage, etc.).  The base class version just returns true.
+    virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
     
     virtual Item* clone() = 0;
     virtual Item* deep_copy();
+    virtual Item* deep_copy_with_new_id();
     
   protected:
     std::string id;
+    uint quantity; // the number of items in the stack
     std::string usage_description_sid; // the description is usually of the form "a foo", "an eggplant" "the fabled sword x".
     std::string description_sid; // the short description is displayed on the inventory and equipment screens.
     std::string unidentified_usage_description_sid; // the usage description seen when unidentified

@@ -16,8 +16,8 @@
 	<File name="controller\include\NullKeyboardController.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="178" topLine="0" />
 	</File>
-	<File name="controller\source\NCursesKeyboardController.cpp" open="0" top="0" tabpos="21">
-		<Cursor position="307" topLine="0" />
+	<File name="controller\source\NCursesKeyboardController.cpp" open="1" top="0" tabpos="7">
+		<Cursor position="135" topLine="0" />
 	</File>
 	<File name="controller\source\NullKeyboardController.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="95" topLine="0" />
@@ -244,7 +244,7 @@
 	<File name="engine\actions\include\ActionCost.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="62" topLine="0" />
 	</File>
-	<File name="engine\actions\include\ActionManager.hpp" open="1" top="0" tabpos="4">
+	<File name="engine\actions\include\ActionManager.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="1033" topLine="30" />
 	</File>
 	<File name="engine\actions\include\CharacterDumpManager.hpp" open="0" top="0" tabpos="13">
@@ -252,6 +252,9 @@
 	</File>
 	<File name="engine\actions\include\DateTimeManager.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="136" topLine="0" />
+	</File>
+	<File name="engine\actions\include\DropManager.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="531" topLine="0" />
 	</File>
 	<File name="engine\actions\include\EquipmentManager.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="155" topLine="0" />
@@ -271,8 +274,8 @@
 	<File name="engine\actions\include\MovementManager.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="1279" topLine="10" />
 	</File>
-	<File name="engine\actions\include\PickupManager.hpp" open="1" top="0" tabpos="3">
-		<Cursor position="198" topLine="0" />
+	<File name="engine\actions\include\PickupManager.hpp" open="0" top="0" tabpos="2">
+		<Cursor position="386" topLine="0" />
 	</File>
 	<File name="engine\actions\include\PrayerManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="101" topLine="0" />
@@ -296,7 +299,7 @@
 		<Cursor position="226" topLine="0" />
 	</File>
 	<File name="engine\actions\include\WeaponInfoManager.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="437" topLine="0" />
+		<Cursor position="241" topLine="0" />
 	</File>
 	<File name="engine\actions\source\ActionCoordinator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="1068" topLine="25" />
@@ -304,14 +307,17 @@
 	<File name="engine\actions\source\ActionCost.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="209" topLine="5" />
 	</File>
-	<File name="engine\actions\source\ActionManager.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="5393" topLine="180" />
+	<File name="engine\actions\source\ActionManager.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="8776" topLine="303" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
 	</File>
 	<File name="engine\actions\source\DateTimeManager.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="586" topLine="9" />
+	</File>
+	<File name="engine\actions\source\DropManager.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="3440" topLine="110" />
 	</File>
 	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="754" topLine="15" />
@@ -325,11 +331,11 @@
 	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1250" topLine="14" />
 	</File>
-	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="4886" topLine="143" />
+	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="206" topLine="0" />
 	</File>
-	<File name="engine\actions\source\PickupManager.cpp" open="1" top="0" tabpos="2">
-		<Cursor position="390" topLine="4" />
+	<File name="engine\actions\source\PickupManager.cpp" open="0" top="0" tabpos="1">
+		<Cursor position="3213" topLine="98" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
@@ -353,7 +359,7 @@
 		<Cursor position="169" topLine="0" />
 	</File>
 	<File name="engine\actions\source\WeaponInfoManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="3684" topLine="87" />
+		<Cursor position="549" topLine="10" />
 	</File>
 	<File name="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="344" topLine="0" />
@@ -773,7 +779,7 @@
 		<Cursor position="209" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\include\DecisionStrategy.hpp" open="0" top="0" tabpos="5">
-		<Cursor position="768" topLine="6" />
+		<Cursor position="692" topLine="6" />
 	</File>
 	<File name="engine\decision_strategies\include\DecisionStrategyTypes.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="218" topLine="0" />
@@ -785,10 +791,10 @@
 		<Cursor position="666" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\include\NPCDecisionStrategy.hpp" open="0" top="0" tabpos="3">
-		<Cursor position="1343" topLine="0" />
+		<Cursor position="455" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\include\PlayerDecisionStrategy.hpp" open="0" top="0" tabpos="12">
-		<Cursor position="257" topLine="0" />
+		<Cursor position="388" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\search\include\BreadthFirstSearchStrategy.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="221" topLine="0" />
@@ -827,7 +833,7 @@
 		<Cursor position="544" topLine="3" />
 	</File>
 	<File name="engine\decision_strategies\source\DecisionStrategy.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="451" topLine="2" />
+		<Cursor position="146" topLine="2" />
 	</File>
 	<File name="engine\decision_strategies\source\DecisionStrategyFactory.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="1181" topLine="19" />
@@ -842,10 +848,10 @@
 		<Cursor position="563" topLine="10" />
 	</File>
 	<File name="engine\decision_strategies\source\NPCDecisionStrategy.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1399" topLine="17" />
+		<Cursor position="354" topLine="4" />
 	</File>
-	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="1179" topLine="20" />
+	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="1" top="0" tabpos="2">
+		<Cursor position="1410" topLine="34" />
 	</File>
 	<File name="engine\description\include\CreatureDescriber.hpp" open="0" top="0" tabpos="16">
 		<Cursor position="64" topLine="0" />
@@ -1217,7 +1223,7 @@
 		<Cursor position="412" topLine="22" />
 	</File>
 	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="27605" topLine="686" />
+		<Cursor position="22647" topLine="564" />
 	</File>
 	<File name="engine\include\StringTable.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="159" topLine="0" />
@@ -1313,7 +1319,7 @@
 		<Cursor position="1447" topLine="41" />
 	</File>
 	<File name="engine\source\ItemFactory.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="349" topLine="6" />
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="engine\source\Log.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1869" topLine="86" />
@@ -1339,8 +1345,8 @@
 	<File name="engine\source\Messages.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="249" topLine="2" />
 	</File>
-	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="568" topLine="10" />
+	<File name="engine\source\Naming.cpp" open="1" top="1" tabpos="8">
+		<Cursor position="356" topLine="11" />
 	</File>
 	<File name="engine\source\RNG.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="1203" topLine="46" />
@@ -1355,7 +1361,7 @@
 		<Cursor position="4541" topLine="154" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="59175" topLine="1363" />
+		<Cursor position="37628" topLine="803" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1499,7 +1505,7 @@
 		<Cursor position="832" topLine="1" />
 	</File>
 	<File name="engine\translators\source\ItemTranslator.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="298" topLine="7" />
+		<Cursor position="25" topLine="0" />
 	</File>
 	<File name="engine\translators\source\MapTranslator.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="2823" topLine="72" />
@@ -1562,13 +1568,13 @@
 		<Cursor position="94" topLine="0" />
 	</File>
 	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="589" topLine="1" />
+		<Cursor position="959" topLine="24" />
 	</File>
 	<File name="world\include\CreatureFeatures.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="690" topLine="26" />
 	</File>
 	<File name="world\include\Damage.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="137" topLine="9" />
+		<Cursor position="887" topLine="13" />
 	</File>
 	<File name="world\include\DamageTypes.hpp" open="0" top="0" tabpos="15">
 		<Cursor position="203" topLine="0" />
@@ -1594,11 +1600,11 @@
 	<File name="world\include\Inventory.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="612" topLine="8" />
 	</File>
-	<File name="world\include\Item.hpp" open="0" top="0" tabpos="15">
-		<Cursor position="1552" topLine="29" />
+	<File name="world\include\Item.hpp" open="0" top="0" tabpos="2">
+		<Cursor position="3371" topLine="71" />
 	</File>
 	<File name="world\include\ItemTypes.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="753" topLine="34" />
+		<Cursor position="529" topLine="19" />
 	</File>
 	<File name="world\include\Map.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="711" topLine="15" />
@@ -1651,14 +1657,14 @@
 	<File name="world\include\Wand.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="world\include\Weapon.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="724" topLine="19" />
+	<File name="world\include\Weapon.hpp" open="0" top="0" tabpos="1">
+		<Cursor position="718" topLine="8" />
 	</File>
 	<File name="world\include\WeaponTypes.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="14" topLine="0" />
 	</File>
 	<File name="world\include\Wearable.hpp" open="0" top="0" tabpos="10">
-		<Cursor position="333" topLine="0" />
+		<Cursor position="552" topLine="0" />
 	</File>
 	<File name="world\include\Weight.hpp" open="0" top="0" tabpos="7">
 		<Cursor position="341" topLine="0" />
@@ -1709,7 +1715,7 @@
 		<Cursor position="333" topLine="0" />
 	</File>
 	<File name="world\materials\source\Cloth.cpp" open="0" top="0" tabpos="15">
-		<Cursor position="492" topLine="16" />
+		<Cursor position="518" topLine="21" />
 	</File>
 	<File name="world\materials\source\DragonScale.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="521" topLine="21" />
@@ -1834,14 +1840,14 @@
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
 	</File>
-	<File name="world\source\Creature.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="6150" topLine="351" />
+	<File name="world\source\Creature.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="8660" topLine="471" />
 	</File>
 	<File name="world\source\CreatureGenerationValues.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="155" topLine="0" />
 	</File>
 	<File name="world\source\Damage.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="638" topLine="11" />
+		<Cursor position="463" topLine="12" />
 	</File>
 	<File name="world\source\Date.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1072" topLine="27" />
@@ -1861,8 +1867,8 @@
 	<File name="world\source\Inventory.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="2108" topLine="115" />
 	</File>
-	<File name="world\source\Item.cpp" open="0" top="0" tabpos="17">
-		<Cursor position="3812" topLine="172" />
+	<File name="world\source\Item.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="5485" topLine="244" />
 	</File>
 	<File name="world\source\ItemTypes.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="101" topLine="0" />
@@ -1913,10 +1919,10 @@
 		<Cursor position="99" topLine="0" />
 	</File>
 	<File name="world\source\Weapon.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="977" topLine="32" />
+		<Cursor position="1516" topLine="66" />
 	</File>
 	<File name="world\source\Wearable.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="69" topLine="0" />
+		<Cursor position="570" topLine="23" />
 	</File>
 	<File name="world\source\Weight.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="549" topLine="17" />

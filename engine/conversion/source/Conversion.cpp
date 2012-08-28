@@ -261,6 +261,12 @@ Integer::~Integer()
 {
 }
 
+string Integer::to_string(const uint convert_uint)
+{
+  string converted_int = Convert::to_string(convert_uint);
+  return converted_int;  
+}
+
 string Integer::to_string(const int convert)
 {
   string converted_int = Convert::to_string(convert);

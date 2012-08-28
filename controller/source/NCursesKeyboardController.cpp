@@ -1,14 +1,14 @@
 #include "NCursesKeyboardController.hpp"
+#include "NCursesPromptProcessor.hpp"
 
 using namespace std;
 
+// Important: this currently only works on STDSCR!  If the general keyboard controller needs a particular window,
+// extra code will be needed.
 string NCursesKeyboardController::get_line()
 {
-  char line_char[1000];
-  getnstr(line_char, 1000);
-
-  string line = line_char;
-  return line;
+  NCursesPromptProcessor ncpp;
+  return ncpp.get_user_string(stdscr);
 }
 
 int NCursesKeyboardController::get_char_as_int()
