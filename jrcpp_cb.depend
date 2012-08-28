@@ -286,7 +286,7 @@
 1341405643 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementaccumulationupdater.cpp
 	"MovementAccumulationUpdater.hpp"
 
-1342613578 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
+1346172339 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\movementmanager.cpp
 	<boost/make_shared.hpp>
 	"CombatManager.hpp"
 	"Conversion.hpp"
@@ -842,7 +842,8 @@
 	"InventoryDescriber.hpp"
 	"ItemDescriber.hpp"
 
-1344693194 source:c:\cygwin\home\julian\jrcpp\engine\description\source\itemdescriber.cpp
+1346171949 source:c:\cygwin\home\julian\jrcpp\engine\description\source\itemdescriber.cpp
+	"Conversion.hpp"
 	"ItemDescriber.hpp"
 	"StringTable.hpp"
 
@@ -1563,10 +1564,11 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1346170970 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1346172303 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
+	"ItemDescriber.hpp"
 	"StringTable.hpp"
 	"StringConstants.hpp"
 
@@ -1903,7 +1905,7 @@
 1342879193 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
 	"InitialItem.hpp"
 
-1344603347 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
+1346171691 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	<boost/foreach.hpp>
 	"Inventory.hpp"
 
@@ -2395,7 +2397,7 @@
 1345902809 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\squishyequipwornlocationdisplayfilter.cpp
 	"SquishyEquipWornLocationDisplayFilter.hpp"
 
-1346170854 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\pickupmanager.cpp
+1346172072 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\pickupmanager.cpp
 	<list>
 	<boost/foreach.hpp>
 	"Game.hpp"
@@ -2406,7 +2408,7 @@
 	"PickupManager.hpp"
 	"StringConstants.hpp"
 
-1346170607 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
+1346171750 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
 	<ncurses.h>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"

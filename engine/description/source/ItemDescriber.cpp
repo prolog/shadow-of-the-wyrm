@@ -1,3 +1,4 @@
+#include "Conversion.hpp"
 #include "ItemDescriber.hpp"
 #include "StringTable.hpp"
 
@@ -15,6 +16,13 @@ string ItemDescriber::describe() const
   if (item)
   {
     item_description = StringTable::get(item->get_usage_description_sid());
+    
+    uint quantity = item->get_quantity();
+    
+    if (quantity > 1)
+    {
+      item_description += " (" + Integer::to_string(quantity) + ")";
+    }
   }
 
   return item_description;
