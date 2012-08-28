@@ -45,6 +45,25 @@ bool Inventory::add(ItemPtr item)
   return added_item;
 }
 
+bool Inventory::merge(ItemPtr item)
+{
+  BOOST_FOREACH(ItemPtr inv_item, items)
+  {
+    if (inv_item && inv_item->matches(item))
+    {
+      // Pick up the item by adding the picked up item's quantity to the
+      // current item's quantity.
+      uint quantity = inv_item->get_quantity() + item->get_quantity();
+      inv_item->set_quantity(quantity);
+      
+      // Merged successfully:
+      return true;
+    }
+  }
+
+  return false;
+}
+
 bool Inventory::remove(const string& id)
 {
   if (items.size() > 0)

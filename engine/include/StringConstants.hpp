@@ -626,8 +626,8 @@ class TextMessages
     static std::string get_confirmation_message(const std::string& query_sid);
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);
     static std::string get_item_drop_message(const std::string& item_description, const uint quantity_dropped);
-    static std::string get_item_pick_up_message(const std::string& item_description, const uint quantity_taken);
-    static std::string get_item_on_ground_description_message(const std::string& item_on_ground_description);
+    static std::string get_item_pick_up_message(ItemPtr item);
+    static std::string get_item_on_ground_description_message(ItemPtr item);
 
   protected:
     TextMessages();

@@ -11,6 +11,10 @@ class Inventory
     bool add_front(ItemPtr new_item);
     bool add(ItemPtr new_item);
     
+    // Attempt to merge the item.  Return true if the item could be merged into an existing item
+    // in the inventory, false otherwise.  When returning false, the item is not added to the inventory.
+    bool merge(ItemPtr new_item);
+    
     bool remove(const std::string& id);
     
     bool clear();

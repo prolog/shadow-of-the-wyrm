@@ -1,6 +1,7 @@
 #include <sstream>
 #include <boost/algorithm/string/replace.hpp>
 #include "Conversion.hpp"
+#include "ItemDescriber.hpp"
 #include "StringTable.hpp"
 #include "StringConstants.hpp"
 
@@ -1099,25 +1100,21 @@ string TextMessages::get_item_drop_message(const string& item_description, const
   
 }
 
-string TextMessages::get_item_pick_up_message(const string& item_description, const uint quantity_taken)
+string TextMessages::get_item_pick_up_message(ItemPtr item)
 {
-  // JCD FIXME: Once working, refactor to use ItemTranslator
-  string desc = item_description;
-  
-  if (quantity_taken > 1)
-  {
-    desc = desc + " (" + Integer::to_string(quantity_taken) + ")";
-  }
+  ItemDescriber id(item);
   
   string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE);
-  boost::replace_first(item_message, "%s", desc);
+  boost::replace_first(item_message, "%s", id.describe());
   return item_message;
 }
 
-string TextMessages::get_item_on_ground_description_message(const string& item_on_ground_description)
+string TextMessages::get_item_on_ground_description_message(ItemPtr item)
 {
+  ItemDescriber id(item);
+
   string item_message = StringTable::get(TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE);
-  boost::replace_first(item_message, "%s", item_on_ground_description);
+  boost::replace_first(item_message, "%s", id.describe());
   return item_message;
 }
 

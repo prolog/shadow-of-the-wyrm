@@ -61,6 +61,20 @@ void DropManager::handle_world_drop(CreaturePtr creature)
   }  
 }
 
+// Handle trying to drop an invalid quantity (0, "a bajillion", etc)
+void DropManager::handle_invalid_drop_quantity(CreaturePtr creature)
+{
+  MessageManager* manager = MessageManager::instance();
+  
+  if (manager && creature && creature->get_is_player())
+  {
+    manager->clear_if_necessary();
+    string invalid_drop_quantity = StringTable::get(ActionTextKeys::ACTION_DROP_INVALID_QUANTITY);
+    manager->add_new_message(invalid_drop_quantity);
+    manager->send();
+  }
+}
+
 // Show the description of the item being dropped, if applicable
 void DropManager::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
 {
@@ -68,6 +82,8 @@ void DropManager::handle_item_dropped_message(CreaturePtr creature, ItemPtr item
   
   if (manager && item && creature && creature->get_is_player())
   {
+    manager->clear_if_necessary();
+    
     uint quantity = item->get_quantity();
     
     string drop_message = TextMessages::get_item_drop_message(StringTable::get(item->get_usage_description_sid()), quantity);
@@ -113,11 +129,10 @@ ActionCostValue DropManager::do_drop(CreaturePtr creature, MapPtr current_map, I
     {
       if (creature && creature->get_is_player())
       {
-        // JCD FIXME: Redraw screen here?
-        // JCD FIXME
         Game* game = Game::instance();
         game->update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map());
                   
+        // Prompt the user in the message buffer
         string quantity_prompt = StringTable::get(ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT);
         manager->add_new_message(quantity_prompt);
         manager->send();
@@ -130,10 +145,7 @@ ActionCostValue DropManager::do_drop(CreaturePtr creature, MapPtr current_map, I
     // Drop quantity
     if (!item_to_drop->is_valid_quantity(selected_quantity))
     {
-      manager->clear_if_necessary();
-      string invalid_drop_quantity = StringTable::get(ActionTextKeys::ACTION_DROP_INVALID_QUANTITY);
-      manager->add_new_message(invalid_drop_quantity);
-      manager->send();
+      handle_invalid_drop_quantity(creature);
     }
     else
     {
@@ -145,8 +157,13 @@ ActionCostValue DropManager::do_drop(CreaturePtr creature, MapPtr current_map, I
 
       if (creatures_tile)
       {
-        // Add the item to the list currently on the tile.
-        creatures_tile->get_items().add_front(new_item);
+        Inventory& inv = creatures_tile->get_items();
+        
+        if (!inv.merge(new_item))
+        {
+          // Add the item to the top of the pile on the tile.
+          inv.add_front(new_item);
+        }
 
         // Display a message if appropriate.
         // If it's the player, remind the user what he or she dropped.
