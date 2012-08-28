@@ -22,9 +22,7 @@ ActionCostValue DropManager::drop(CreaturePtr creature, ActionManager * const am
   
   if (game && creature)
   {
-    MapPtr map = game->get_current_map();
-    
-    if (map->get_map_type() == MAP_TYPE_WORLD)
+    if (game->get_current_map()->get_map_type() == MAP_TYPE_WORLD)
     {
       handle_world_drop(creature);
     }
@@ -39,7 +37,7 @@ ActionCostValue DropManager::drop(CreaturePtr creature, ActionManager * const am
       }
       else // Item selected
       {
-        do_drop(creature, map, item_to_drop);
+        do_drop(creature, game->get_current_map(), item_to_drop);
       }      
     }
   }
@@ -118,8 +116,7 @@ ActionCostValue DropManager::do_drop(CreaturePtr creature, MapPtr current_map, I
 {
   ActionCostValue action_cost_value = 0;
   TilePtr creatures_tile = MapUtils::get_tile_for_creature(current_map, creature);
-  MessageManager* manager = MessageManager::instance();
-  
+
   if (item_to_drop)
   {
     uint quantity = item_to_drop->get_quantity();
@@ -127,19 +124,7 @@ ActionCostValue DropManager::do_drop(CreaturePtr creature, MapPtr current_map, I
 
     if (quantity > 1)
     {
-      if (creature && creature->get_is_player())
-      {
-        Game* game = Game::instance();
-        game->update_display(creature, current_map, creature->get_decision_strategy()->get_fov_map());
-                  
-        // Prompt the user in the message buffer
-        string quantity_prompt = StringTable::get(ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT);
-        manager->add_new_message(quantity_prompt);
-        manager->send();
-      }
-      
-      // Get quantity
-      selected_quantity = creature->get_decision_strategy()->get_count(quantity);
+      selected_quantity = get_drop_quantity(creature, quantity);
     }
 
     // Drop quantity
@@ -182,6 +167,27 @@ ActionCostValue DropManager::do_drop(CreaturePtr creature, MapPtr current_map, I
   }
   
   return action_cost_value;
+}
+
+// Get the quantity to drop
+uint DropManager::get_drop_quantity(CreaturePtr creature, const uint max_quantity) const
+{
+  MessageManager* manager = MessageManager::instance();
+  
+  if (manager && creature && creature->get_is_player())
+  {
+    Game* game = Game::instance();
+    game->update_display(creature, game->get_current_map(), creature->get_decision_strategy()->get_fov_map());
+              
+    // Prompt the user in the message buffer
+    string quantity_prompt = StringTable::get(ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT);
+
+    manager->add_new_message(quantity_prompt);
+    manager->send();
+  }
+  
+  // Get quantity
+  return creature->get_decision_strategy()->get_count(max_quantity);
 }
 
 // Dropping always has a base action cost of 1.
