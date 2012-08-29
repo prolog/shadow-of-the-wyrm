@@ -21,6 +21,8 @@ class Equipment
     // multiple items are allowed (ammunition).
     bool can_equip_multiple_items(const EquipmentWornLocation location) const;
     
+    bool merge(ItemPtr item);
+    
     EquipmentMap get_equipment() const;
 
   protected:

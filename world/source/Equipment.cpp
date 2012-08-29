@@ -71,6 +71,23 @@ bool Equipment::can_equip_multiple_items(const EquipmentWornLocation ewl) const
   return (ewl == EQUIPMENT_WORN_AMMUNITION);
 }
 
+bool Equipment::merge(ItemPtr item)
+{
+  for (EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD; ewl < EQUIPMENT_WORN_LAST; ewl++)
+  {
+    ItemPtr slot_item = get_item(ewl);
+    
+    if (slot_item && slot_item->matches(item))
+    {
+      slot_item->set_quantity(slot_item->get_quantity() + item->get_quantity());
+      
+      return true;
+    }
+  }
+  
+  return false;
+}
+
 // Get the current set of equipment.
 EquipmentMap Equipment::get_equipment() const
 {

@@ -870,6 +870,7 @@ const string TextMessages::WELCOME_MESSAGE                    = "WELCOME_MESSAGE
 const string TextMessages::DUMPING_CHARACTER_MESSAGE          = "DUMPING_CHARACTER_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSAGE";
 const string TextMessages::ITEM_PICK_UP_MESSAGE               = "ITEM_PICK_UP_MESSAGE";
+const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE     = "ITEM_PICK_UP_AND_MERGE_MESSAGE";
 const string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_DESCRIPTION_MESSAGE";
 
 // Public functions used to access protected members.  These are used to wrap any const strings
@@ -1105,6 +1106,15 @@ string TextMessages::get_item_pick_up_message(ItemPtr item)
   ItemDescriber id(item);
   
   string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE);
+  boost::replace_first(item_message, "%s", id.describe());
+  return item_message;
+}
+
+string TextMessages::get_item_pick_up_and_merge_message(ItemPtr item)
+{
+  ItemDescriber id(item);
+
+  string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE);
   boost::replace_first(item_message, "%s", id.describe());
   return item_message;
 }
