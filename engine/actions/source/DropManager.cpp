@@ -143,12 +143,7 @@ ActionCostValue DropManager::do_drop(CreaturePtr creature, MapPtr current_map, I
       if (creatures_tile)
       {
         Inventory& inv = creatures_tile->get_items();
-        
-        if (!inv.merge(new_item))
-        {
-          // Add the item to the top of the pile on the tile.
-          inv.add_front(new_item);
-        }
+        inv.merge_or_add(new_item, INVENTORY_ADDITION_FRONT);
 
         // Display a message if appropriate.
         // If it's the player, remind the user what he or she dropped.

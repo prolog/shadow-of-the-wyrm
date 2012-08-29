@@ -210,7 +210,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwandreader.cpp
 	"XMLWandReader.hpp"
 
-1345246782 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
+1346259690 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlweaponsreaders.cpp
 	"XMLWeaponsReaders.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwearablereader.cpp
@@ -224,7 +224,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1346196598 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1346259805 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -277,7 +277,7 @@
 	"InventoryManager.hpp"
 	"InventoryTranslator.hpp"
 
-1346205412 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
+1346256335 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
 	"Game.hpp"
 	"ItemFactory.hpp"
 	"ItemManager.hpp"
@@ -490,7 +490,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatconstants.cpp
 	"CombatConstants.hpp"
 
-1345386070 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1346261201 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"
@@ -502,6 +502,7 @@
 	"MapUtils.hpp"
 	"MessageManager.hpp"
 	"SkillManager.hpp"
+	"SpeedCalculatorFactory.hpp"
 	"RNG.hpp"
 	"WeaponManager.hpp"
 	"unit_tests/CombatManager_test.cpp"
@@ -1905,7 +1906,7 @@
 1342879193 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
 	"InitialItem.hpp"
 
-1346171691 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
+1346256179 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	<boost/foreach.hpp>
 	"Inventory.hpp"
 
@@ -1998,7 +1999,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\wand.cpp
 	"Wand.hpp"
 
-1346082004 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
+1346259650 source:c:\cygwin\home\julian\jrcpp\world\source\weapon.cpp
 	"Weapon.hpp"
 
 1346083175 source:c:\cygwin\home\julian\jrcpp\world\source\wearable.cpp
@@ -2340,7 +2341,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1345596656 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1346256362 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"AmmunitionSurvivalCalculator.hpp"
@@ -2408,7 +2409,7 @@
 	"PickupManager.hpp"
 	"StringConstants.hpp"
 
-1346173251 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
+1346256317 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
 	<ncurses.h>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -2419,4 +2420,36 @@
 	"MessageManager.hpp"
 	"StringConstants.hpp"
 	"Tile.hpp"
+
+1346264068 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\speedcalculatorfactory.cpp
+	<boost/make_shared.hpp>
+	"MagicalAttackSpeedCalculator.hpp"
+	"NullSpeedCalculator.hpp"
+	"PrimaryPhysicalAttackSpeedCalculator.hpp"
+	"RangedAttackSpeedCalculator.hpp"
+	"SecondaryPhysicalAttackSpeedCalculator.hpp"
+	"SpeedCalculatorFactory.hpp"
+
+1346261439 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\nullspeedcalculator.cpp
+	"NullSpeedCalculator.hpp"
+
+1346262405 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\rangedattackspeedcalculator.cpp
+	"NullSpeedCalculator.hpp"
+	"RangedAttackSpeedCalculator.hpp"
+
+1346262693 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\magicalattackspeedcalculator.cpp
+	"MagicalAttackSpeedCalculator.hpp"
+	"NullSpeedCalculator.hpp"
+
+1346264468 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\iphysicalattackspeedcalculator.cpp
+	"IPhysicalAttackSpeedCalculator.hpp"
+	"NullSpeedCalculator.hpp"
+
+1346264971 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\primaryphysicalattackspeedcalculator.cpp
+	"NullSpeedCalculator.hpp"
+	"PrimaryPhysicalAttackSpeedCalculator.hpp"
+
+1346264920 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\secondaryphysicalattackspeedcalculator.cpp
+	"NullSpeedCalculator.hpp"
+	"SecondaryPhysicalAttackSpeedCalculator.hpp"
 

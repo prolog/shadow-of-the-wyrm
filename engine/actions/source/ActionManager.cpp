@@ -60,7 +60,8 @@ ActionCost ActionManager::move(CreaturePtr creature, const Direction direction)
 
 ActionCost ActionManager::attack(CreaturePtr creature, const Direction direction)
 {
-  return get_action_cost(creature, combat_manager.attack(creature, direction));
+  ActionCostValue action_cost_value = combat_manager.attack(creature, direction);
+  return get_action_cost(creature, action_cost_value);
 }
 
 // Move up a level

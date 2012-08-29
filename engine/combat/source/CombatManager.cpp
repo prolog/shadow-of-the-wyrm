@@ -9,6 +9,7 @@
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "SkillManager.hpp"
+#include "SpeedCalculatorFactory.hpp"
 #include "RNG.hpp"
 #include "WeaponManager.hpp"
 
@@ -18,9 +19,9 @@ CombatManager::CombatManager()
 {
 }
 
-bool CombatManager::attack(CreaturePtr creature, const Direction d)
+ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 {
-  bool attack_success = false;
+  ActionCostValue action_cost_value = 0;
   
   Game* game = Game::instance();
 
@@ -38,11 +39,11 @@ bool CombatManager::attack(CreaturePtr creature, const Direction d)
     // Sanity check
     if (adjacent_creature)
     {
-      attack_success = attack(creature, adjacent_creature);
+      action_cost_value = attack(creature, adjacent_creature);
     }
   }
   
-  return attack_success;
+  return action_cost_value;
 }
 
 // Attempt to attack.
@@ -52,17 +53,21 @@ bool CombatManager::attack(CreaturePtr creature, const Direction d)
 // The generated to-hit value is 100 (ignore Soak, 2x max damage, any resistance is min 100%)
 // The generated to-hit value is >= 96 (ignore Soak, max damage, any resistance is min 100%)
 // The generated to-hit value is >= the target number (regular damage)
-bool CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type)
+ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type)
 {
+  ActionCostValue action_cost_value = 0;
+
   bool mark_for_weapon_and_combat_skills = false;
  
  // JCD FIXME: Test factory class generation and values with ranged
  // JCD FIXME FIXME FIXME: Anywhere where there is an "attack_type", audit and confirm that it's good!
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(attacking_creature, attack_type);
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(attack_type);
+  ISpeedCalculatorPtr speed_calculator = SpeedCalculatorFactory::create_speed_calculator(attack_type);
   
   if (th_calculator && ctn_calculator)
   {
+    action_cost_value = speed_calculator->calculate(attacking_creature);
     DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(attack_type);
     
     int d100_roll = RNG::range(1, 100);
@@ -102,7 +107,7 @@ bool CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_
 
   send_combat_messages();
   
-  return true;
+  return action_cost_value;
 }
 
 bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)

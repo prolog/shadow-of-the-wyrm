@@ -70,10 +70,7 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
   if (creature && item)
   {
     Inventory& inv = creature->get_inventory();
-    if (!inv.merge(item))
-    {
-      inv.add(item);
-    }
+    inv.merge_or_add(item, INVENTORY_ADDITION_BACK);
 
     picked_up_item = get_action_cost_value();
   }

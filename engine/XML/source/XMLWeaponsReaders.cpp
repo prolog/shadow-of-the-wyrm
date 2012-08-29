@@ -27,6 +27,9 @@ void XMLWeaponsReader::parse(WeaponPtr weapon, const XMLNode& weapon_node)
     int difficulty = XMLUtils::get_child_node_int_value(weapon_node, "Difficulty");
     weapon->set_difficulty(difficulty);
     
+    int speed = XMLUtils::get_child_node_int_value(weapon_node, "Speed");
+    weapon->set_speed(speed);
+    
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(weapon_node, "Damage");
     
     Damage weapon_damage;
