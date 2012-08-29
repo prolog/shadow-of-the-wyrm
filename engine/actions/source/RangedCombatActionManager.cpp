@@ -22,7 +22,7 @@ RangedCombatActionManager::RangedCombatActionManager()
 
 ActionCostValue RangedCombatActionManager::fire_missile(CreaturePtr creature)
 {
-  ActionCostValue action_cost_value = get_action_cost_value();
+  ActionCostValue action_cost_value = 0;
   MessageManager* manager = MessageManager::instance();
   
   if (creature && manager)
@@ -209,12 +209,36 @@ void RangedCombatActionManager::destroy_ammunition_or_drop_on_tile(CreaturePtr c
 {
   // Drop ammo on tile, assuming the ammunition survived being fired.
   ItemManager im;
-  ItemPtr ammunition = im.remove(creature, EQUIPMENT_WORN_AMMUNITION, false);
-  AmmunitionSurvivalCalculator ammunition_survival_calc;
   
-  if (ammunition_survival_calc.survives(creature, ammunition))
+  if (creature)
   {
-    tile->get_items().add(ammunition);
+    // Check to see if there is a quantity of ammunition > 1; if so, reduce the quantity by
+    // 1, but don't remove it.
+    Equipment& eq = creature->get_equipment();
+    ItemPtr ammunition = eq.get_item(EQUIPMENT_WORN_AMMUNITION);
+    
+    if (ammunition->get_quantity() > 1)
+    {
+      // Reduce the quantity by 1.
+      ammunition->set_quantity(ammunition->get_quantity() - 1);
+      
+      // Clone the item so that a "new" item can be added to the ground,
+      // assuming the ammunition survives.
+      ammunition = ItemPtr(ammunition->deep_copy_with_new_id());
+      ammunition->set_quantity(1);
+    }
+    else
+    {
+      // Last ammunition - remove it from the equipment.
+      ammunition = im.remove(creature, EQUIPMENT_WORN_AMMUNITION, false);
+    }
+    
+    AmmunitionSurvivalCalculator ammunition_survival_calc;
+    
+    if (ammunition_survival_calc.survives(creature, ammunition))
+    {
+      tile->get_items().add(ammunition);
+    }
   }
 }
 
