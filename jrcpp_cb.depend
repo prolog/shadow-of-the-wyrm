@@ -1564,7 +1564,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1346172303 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1346217894 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1896,7 +1896,7 @@
 	"Conversion.hpp"
 	"Dice.hpp"
 
-1346186279 source:c:\cygwin\home\julian\jrcpp\world\source\equipment.cpp
+1346218208 source:c:\cygwin\home\julian\jrcpp\world\source\equipment.cpp
 	"Equipment.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\food.cpp

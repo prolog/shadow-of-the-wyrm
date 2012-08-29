@@ -627,6 +627,7 @@ class TextMessages
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);
     static std::string get_item_drop_message(const std::string& item_description, const uint quantity_dropped);
     static std::string get_item_pick_up_message(ItemPtr item);
+    static std::string get_item_pick_up_and_merge_message(ItemPtr item);
     static std::string get_item_on_ground_description_message(ItemPtr item);
 
   protected:
@@ -637,6 +638,7 @@ class TextMessages
     static const std::string DUMPING_CHARACTER_MESSAGE;
     static const std::string ITEM_DROP_MESSAGE;
     static const std::string ITEM_PICK_UP_MESSAGE;
+    static const std::string ITEM_PICK_UP_AND_MERGE_MESSAGE;
     static const std::string ITEM_ON_GROUND_DESCRIPTION_MESSAGE;
 };
 
