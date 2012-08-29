@@ -65,6 +65,12 @@ void Equipment::initialize()
   }
 }
 
+// Check to see if a heap of items can be equipped
+bool Equipment::can_equip_multiple_items(const EquipmentWornLocation ewl) const
+{
+  return (ewl == EQUIPMENT_WORN_AMMUNITION);
+}
+
 // Get the current set of equipment.
 EquipmentMap Equipment::get_equipment() const
 {

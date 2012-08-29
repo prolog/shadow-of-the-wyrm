@@ -143,8 +143,6 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
         // inventory.
         if (item_equipped)
         {
-          string item_id = item_in_slot->get_id();
-          creature->get_inventory().remove(item_id);
           action_cost = 1;
         }
       }

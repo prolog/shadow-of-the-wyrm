@@ -17,6 +17,10 @@ class Equipment
     ItemPtr get_item(const EquipmentWornLocation location) const;
     ItemPtr remove_item(const EquipmentWornLocation location);
     
+    // Used to determine if a single item must be equipped (most slots), or if
+    // multiple items are allowed (ammunition).
+    bool can_equip_multiple_items(const EquipmentWornLocation location) const;
+    
     EquipmentMap get_equipment() const;
 
   protected:
