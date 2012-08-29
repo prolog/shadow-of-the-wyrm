@@ -4,7 +4,7 @@ using boost::dynamic_pointer_cast;
 
 // WEAPON
 Weapon::Weapon()
-: difficulty(0), trained_skill(SKILL_MELEE_EXOTIC), trained_ranged_skill(SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
+: difficulty(0), speed(0), trained_skill(SKILL_MELEE_EXOTIC), trained_ranged_skill(SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
 {
   type = ITEM_TYPE_WEAPON;
   symbol = ')';
@@ -23,6 +23,16 @@ void Weapon::set_difficulty(const int new_difficulty)
 int Weapon::get_difficulty() const
 {
   return difficulty;
+}
+
+void Weapon::set_speed(const int new_speed)
+{
+  speed = new_speed;
+}
+
+int Weapon::get_speed() const
+{
+  return speed;
 }
 
 void Weapon::set_damage(const Damage& new_damage)

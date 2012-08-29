@@ -45,6 +45,23 @@ bool Inventory::add(ItemPtr item)
   return added_item;
 }
 
+void Inventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_loc)
+{
+  if (!merge(item))
+  {
+    switch(inv_add_loc)
+    {
+      case INVENTORY_ADDITION_FRONT:
+        add_front(item);
+        break;
+      case INVENTORY_ADDITION_BACK:
+      default:
+        add(item);
+        break;
+    }
+  }
+}
+
 bool Inventory::merge(ItemPtr item)
 {
   BOOST_FOREACH(ItemPtr inv_item, items)

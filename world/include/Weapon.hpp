@@ -15,6 +15,9 @@ class Weapon : public Wearable
     virtual void set_difficulty(const int new_difficulty);
     virtual int get_difficulty() const;
     
+    virtual void set_speed(const int new_speed);
+    virtual int get_speed() const;
+    
     virtual void set_damage(const Damage& new_damage);
     virtual Damage get_damage() const;
     
@@ -32,6 +35,7 @@ class Weapon : public Wearable
   protected:
   
     int difficulty;
+    int speed;
     Damage damage;
     SkillType trained_skill;
     SkillType trained_ranged_skill;

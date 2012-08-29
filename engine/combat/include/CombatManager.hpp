@@ -1,4 +1,5 @@
 #pragma once
+#include "ActionCost.hpp"
 #include "AttackTypes.hpp"
 #include "Creature.hpp"
 #include "Damage.hpp"
@@ -11,9 +12,8 @@ class CombatManager
 
     CombatManager();
     
-    // JCD FIXME make this ActionCost later
-    bool attack(CreaturePtr creature, const Direction d);
-    bool attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY);
+    ActionCostValue attack(CreaturePtr creature, const Direction d);
+    ActionCostValue attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY);
 
     void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const std::string combat_message = "");
 
