@@ -253,7 +253,7 @@
 	<File name="engine\actions\include\DateTimeManager.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="136" topLine="0" />
 	</File>
-	<File name="engine\actions\include\DropManager.hpp" open="1" top="0" tabpos="2">
+	<File name="engine\actions\include\DropManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="614" topLine="0" />
 	</File>
 	<File name="engine\actions\include\EquipmentManager.hpp" open="0" top="0" tabpos="8">
@@ -266,7 +266,7 @@
 		<Cursor position="161" topLine="0" />
 	</File>
 	<File name="engine\actions\include\ItemManager.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="1173" topLine="7" />
+		<Cursor position="1507" topLine="11" />
 	</File>
 	<File name="engine\actions\include\MovementAccumulationUpdater.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="171" topLine="0" />
@@ -274,8 +274,8 @@
 	<File name="engine\actions\include\MovementManager.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="1279" topLine="10" />
 	</File>
-	<File name="engine\actions\include\PickupManager.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="386" topLine="0" />
+	<File name="engine\actions\include\PickupManager.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="111" topLine="0" />
 	</File>
 	<File name="engine\actions\include\PrayerManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="101" topLine="0" />
@@ -308,7 +308,7 @@
 		<Cursor position="209" topLine="5" />
 	</File>
 	<File name="engine\actions\source\ActionManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="3889" topLine="128" />
+		<Cursor position="4796" topLine="147" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
@@ -316,17 +316,17 @@
 	<File name="engine\actions\source\DateTimeManager.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="586" topLine="9" />
 	</File>
-	<File name="engine\actions\source\DropManager.cpp" open="1" top="1" tabpos="1">
+	<File name="engine\actions\source\DropManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="5655" topLine="162" />
 	</File>
 	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="754" topLine="15" />
+		<Cursor position="251" topLine="0" />
 	</File>
 	<File name="engine\actions\source\InventoryManager.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="903" topLine="12" />
 	</File>
 	<File name="engine\actions\source\ItemManager.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="1864" topLine="68" />
+		<Cursor position="4762" topLine="157" />
 	</File>
 	<File name="engine\actions\source\MovementAccumulationUpdater.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1250" topLine="14" />
@@ -334,8 +334,8 @@
 	<File name="engine\actions\source\MovementManager.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="14605" topLine="448" />
 	</File>
-	<File name="engine\actions\source\PickupManager.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="2105" topLine="64" />
+	<File name="engine\actions\source\PickupManager.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="4129" topLine="142" />
 	</File>
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
@@ -1223,7 +1223,7 @@
 		<Cursor position="412" topLine="22" />
 	</File>
 	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="24994" topLine="618" />
+		<Cursor position="25387" topLine="617" />
 	</File>
 	<File name="engine\include\StringTable.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="159" topLine="0" />
@@ -1361,7 +1361,7 @@
 		<Cursor position="4541" topLine="154" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="48207" topLine="1102" />
+		<Cursor position="48177" topLine="1096" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1585,8 +1585,8 @@
 	<File name="world\include\Dice.hpp" open="0" top="0" tabpos="14">
 		<Cursor position="183" topLine="7" />
 	</File>
-	<File name="world\include\Equipment.hpp" open="0" top="0" tabpos="6">
-		<Cursor position="594" topLine="2" />
+	<File name="world\include\Equipment.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="796" topLine="2" />
 	</File>
 	<File name="world\include\EquipmentTypes.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="249" topLine="4" />
@@ -1855,8 +1855,8 @@
 	<File name="world\source\Dice.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="302" topLine="3" />
 	</File>
-	<File name="world\source\Equipment.cpp" open="0" top="0" tabpos="9">
-		<Cursor position="1100" topLine="44" />
+	<File name="world\source\Equipment.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="1607" topLine="62" />
 	</File>
 	<File name="world\source\Food.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="321" topLine="6" />
