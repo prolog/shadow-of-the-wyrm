@@ -3,6 +3,8 @@
 #include "ItemManager.hpp"
 #include "RNG.hpp"
 
+using namespace std;
+
 ItemManager::ItemManager()
 {
 }
@@ -68,10 +70,12 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
   if (creature && item)
   {
     Inventory& inv = creature->get_inventory();
-    if (inv.add(item))
+    if (!inv.merge(item))
     {
-      picked_up_item = get_action_cost_value();
+      inv.add(item);
     }
+
+    picked_up_item = get_action_cost_value();
   }
   
   return picked_up_item;
@@ -100,19 +104,83 @@ ActionCostValue ItemManager::drop(CreaturePtr creature, ItemPtr item)
 // e.g., left hand instead of right hand.
 ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot)
 {
-  ActionCostValue equipped_item = 0;
+  ActionCostValue action_cost_value = 0;
   
   if (creature && item)
   {
     Equipment& eq = creature->get_equipment();
+    bool slot_allows_multiple_items = eq.can_equip_multiple_items(eq_worn_slot);
+    
+    // Case 1: slot allows multiple items.  Equip the entire heap.
+    if (slot_allows_multiple_items)
+    {
+      action_cost_value = equip_and_remove_from_inventory(creature, item, eq_worn_slot);
+    }
+    else
+    {
+      uint quantity = item->get_quantity();
+      
+      // Case 2: slot requires single item, item quantity = 1
+      if (quantity == 1)
+      {
+        action_cost_value = equip_and_remove_from_inventory(creature, item, eq_worn_slot);
+      }
+      // Case 3: slot requires single item, item quantity > 1 (create a copy with a new id)
+      else
+      {
+        action_cost_value = equip_and_reduce_inventory_quantity(creature, item, eq_worn_slot, quantity);
+      }
+    }    
+  }
+  
+  return action_cost_value; 
+}
 
+// Equip the item.  If successful, remove it from the inventory.
+ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot)
+{
+  ActionCostValue action_cost_value = 0;
+  
+  if (creature)
+  {
+    Equipment& eq = creature->get_equipment();
+    
     if (eq.set_item(item, eq_worn_slot))
     {
-      equipped_item = get_action_cost_value();
+      action_cost_value = get_action_cost_value();
+
+      string item_id = item->get_id();
+      creature->get_inventory().remove(item_id);
+    }
+  }
+    
+  return action_cost_value;
+}
+
+// Equip the item.  If successful, reduce the amount in the inventory by the quantity of the item.
+ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot, const uint quantity)
+{
+  ActionCostValue action_cost_value = 0;
+  
+  if (creature)
+  {
+    Equipment& eq = creature->get_equipment();
+    
+    ItemPtr new_item = ItemPtr(item->deep_copy_with_new_id());
+    
+    if (eq.set_item(new_item, eq_worn_slot))
+    {
+      new_item->set_quantity(1);
+      item->set_quantity(quantity-1);
+      uint inv_item_quantity = item->get_quantity();
+      
+      if (inv_item_quantity == 0) creature->get_inventory().remove(item->get_id());
+      
+      action_cost_value = 1;
     }
   }
   
-  return equipped_item;  
+  return action_cost_value;
 }
 
 ActionCostValue ItemManager::equip(CreaturePtr creature, ItemPtr item)

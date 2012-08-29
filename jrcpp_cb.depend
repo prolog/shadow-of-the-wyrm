@@ -224,7 +224,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1345985596 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1346196598 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -277,7 +277,7 @@
 	"InventoryManager.hpp"
 	"InventoryTranslator.hpp"
 
-1345386906 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
+1346205412 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
 	"Game.hpp"
 	"ItemFactory.hpp"
 	"ItemManager.hpp"
@@ -1896,7 +1896,7 @@
 	"Conversion.hpp"
 	"Dice.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\equipment.cpp
+1346186279 source:c:\cygwin\home\julian\jrcpp\world\source\equipment.cpp
 	"Equipment.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\food.cpp
