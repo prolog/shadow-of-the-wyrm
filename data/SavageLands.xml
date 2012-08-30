@@ -1140,11 +1140,11 @@
 						</Race>
 						<Race>
 							<RaceID>08_ogre</RaceID>
-							<ID>_rock</ID>
+							<ID>huge_rock</ID>
 							<Quantity>
 								<Random>
-									<NumDice>4</NumDice>
-									<NumSides>3</NumSides>
+									<NumDice>1</NumDice>
+									<NumSides>4</NumSides>
 								</Random>
 							</Quantity>
 						</Race>
@@ -3195,11 +3195,32 @@
 				</TextDetails>
 				<Skill>1009</Skill>
 				<RangedSkill>2006</RangedSkill>
-				<Difficulty>50</Difficulty>
+				<Difficulty>48</Difficulty>
 				<Speed>2</Speed>
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Missile>
+			<Missile id="huge_rock">
+				<DescriptionSID>HUGE_ROCK_SID</DescriptionSID>
+				<UsageDescriptionSID>HUGE_ROCK_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>30</Pounds></Weight>
+				<WornLocation>10</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<Skill>1009</Skill>
+				<RangedSkill>2006</RangedSkill>
+				<Difficulty>52</Difficulty>
+				<Speed>10</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
 					<Type>2</Type>
 				</Damage>
 			</Missile>
