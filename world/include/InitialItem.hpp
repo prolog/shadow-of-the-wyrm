@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <vector>
+#include "Dice.hpp"
 
 // An initial item is generated on character creation based on the details in this class.
 //
@@ -16,21 +17,25 @@ class InitialItem
 {
   public:
     InitialItem();
-    InitialItem(const std::string& new_item_id, const std::vector<std::string>& new_random_item_ids, const std::map<std::string, std::string>& new_racial_item_ids);
+    InitialItem(const std::string& new_item_id, const Dice& quant, const std::vector<std::pair<std::string, Dice> >& new_random_item_ids, const std::map<std::string, std::pair<std::string, Dice> >& new_racial_item_ids);
 
     void set_item_id(const std::string& new_item_id);
     std::string get_item_id() const;
+    
+    void set_item_quantity(const Dice& new_item_quantity);
+    Dice get_item_quantity() const;
 
-    void set_random_item_ids(const std::vector<std::string>& new_random_item_ids);
-    std::vector<std::string> get_random_item_ids() const;
+    void set_random_item_ids(const std::vector<std::pair<std::string, Dice> >& new_random_item_ids);
+    std::vector<std::pair<std::string, Dice> > get_random_item_ids() const;
 
-    void set_racial_item_ids(const std::map<std::string, std::string>& new_racial_item_ids);
-    std::map<std::string, std::string> get_racial_item_ids() const;
+    void set_racial_item_ids(const std::map<std::string, std::pair<std::string, Dice> >& new_racial_item_ids);
+    std::map<std::string, std::pair<std::string, Dice> > get_racial_item_ids() const;
 
   protected:
     std::string item_id;
-    std::vector<std::string> random_item_ids;
-    std::map<std::string, std::string> racial_item_ids;
+    Dice item_quantity;
+    std::vector<std::pair<std::string, Dice> > random_item_ids;
+    std::map<std::string, std::pair<std::string, Dice> > racial_item_ids;
 };
 
 

@@ -532,10 +532,12 @@
 <xs:complexType name="InitialItem">
 	<xs:sequence>
 		<xs:element name="ID" type="xs:string" minOccurs="0"/>
+		<xs:element name="Quantity" type="tns:Quantity" minOccurs="0"/>
 		<xs:element name="Random" minOccurs="0">
 			<xs:complexType>
 				<xs:sequence>
 					<xs:element name="ID" maxOccurs="unbounded"/>
+					<xs:element name="Quantity" type="tns:Quantity" minOccurs="0"/>
 				</xs:sequence>
 			</xs:complexType>
 		</xs:element>
@@ -547,6 +549,7 @@
 							<xs:sequence>
 								<xs:element name="RaceID" type="xs:string"/>
 								<xs:element name="ID" type="xs:string"/>
+								<xs:element name="Quantity" type="tns:Quantity" minOccurs="0"/>
 							</xs:sequence>
 						</xs:complexType>
 					</xs:element>
@@ -648,6 +651,12 @@
 		<xs:element name="Pounds" type="xs:int"/>
 		<xs:element name="Ounces" type="xs:int" minOccurs="0"/>
 	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Quantity">
+	<xs:choice>
+		<xs:element name="Amount" type="xs:unsignedInt"/>
+		<xs:element name="Random" type="tns:Dice"/>
+	</xs:choice>
 </xs:complexType>
 <xs:complexType name="Tile">
 	<xs:annotation><xs:documentation>Contains information about a particular tile type</xs:documentation></xs:annotation>
