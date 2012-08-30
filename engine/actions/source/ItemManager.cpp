@@ -15,7 +15,7 @@ ItemManager::~ItemManager()
 
 // Create a new shared pointer to an Item, given the items in the game,
 // and the ID of the item to create.
-ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_id)
+ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_id, const uint quantity)
 {
   ItemPtr new_item;
   
@@ -26,12 +26,13 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
     
     // JCD FIXME: Change this to an ItemFactory based on its type.
     new_item = ItemFactory::create(found_item);
+    new_item->set_quantity(quantity);
   }
   
   return new_item;
 }
 
-ItemPtr ItemManager::create_item(const std::string& item_id)
+ItemPtr ItemManager::create_item(const std::string& item_id, const uint quantity)
 {
   ItemPtr item;
   Game* game = Game::instance();
@@ -40,7 +41,7 @@ ItemPtr ItemManager::create_item(const std::string& item_id)
   {
     const ItemMap& items = game->get_items_ref();
     ItemManager manager;
-    item = manager.create_item(items, item_id);
+    item = manager.create_item(items, item_id, quantity);
   }
   
   return item;
@@ -53,12 +54,12 @@ void ItemManager::create_item_with_probability(const int rand_less_than_or_equal
   int rand = RNG::range(1, rand_upper_val);
   if (rand <= rand_less_than_or_equal_val)
   {
-    ItemPtr item = ItemManager::create_item(item_id);
+    ItemPtr item = ItemManager::create_item(item_id, 1 /* Quantity - change this is multiple items need to be generated! */);
     
     // Only add the item if it was created successfully
     if (item)
     {
-      inv.add(item);
+      inv.merge_or_add(item, INVENTORY_ADDITION_BACK);
     }
   }
 }

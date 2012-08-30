@@ -2,7 +2,7 @@
 #include "CombatConstants.hpp"
 
 // Parse the dice from a node according to the Dice format.
-void XMLReader::parse_dice(Dice& dice, const XMLNode& dice_node)
+void XMLReader::parse_dice(Dice& dice, const XMLNode& dice_node) const
 {
   if (!dice_node.is_null())
   {
@@ -19,7 +19,7 @@ void XMLReader::parse_dice(Dice& dice, const XMLNode& dice_node)
 
 // Parse the damage from a node according to the Damage format in the schemas, and return a
 // Damage object containing the appropriate values.
-void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node)
+void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
 {
   if (!damage_node.is_null())
   {

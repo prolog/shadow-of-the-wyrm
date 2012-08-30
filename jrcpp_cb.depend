@@ -145,7 +145,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlfoodreader.cpp
 	"XMLFoodReader.hpp"
 
-1342879520 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlinitialitemreader.cpp
+1346340450 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlinitialitemreader.cpp
 	<boost/foreach.hpp>
 	"XMLInitialItemReader.hpp"
 
@@ -177,7 +177,7 @@
 	"XMLSkillsReaders.hpp"
 	"XMLStatisticsModifierReader.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlreader.cpp
+1346340441 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlreader.cpp
 	"XMLReader.hpp"
 	"CombatConstants.hpp"
 
@@ -1448,7 +1448,7 @@
 	"ViewMapTranslator.hpp"
 	"WorldTimeKeeperCoordinator.hpp"
 
-1343566931 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemequipper.cpp
+1346356168 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemequipper.cpp
 	<boost/foreach.hpp>
 	"ActionManager.hpp"
 	"ClassManager.hpp"
@@ -1456,12 +1456,12 @@
 	"InitialItemSelector.hpp"
 	"ItemManager.hpp"
 
-1342961016 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemselector.cpp
+1346355335 source:c:\cygwin\home\julian\jrcpp\engine\source\initialitemselector.cpp
 	"InitialItemSelector.hpp"
 	"RNG.hpp"
 	"unit_tests/InitialItemSelector_test.cpp"
 
-1344087827 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\initialitemselector_test.cpp
+1346355687 c:\cygwin\home\julian\jrcpp\engine\source\unit_tests\initialitemselector_test.cpp
 	"gtest/gtest.h"
 
 1346129918 source:c:\cygwin\home\julian\jrcpp\engine\source\itemfactory.cpp
@@ -1903,7 +1903,7 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\food.cpp
 	"Food.hpp"
 
-1342879193 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
+1346273918 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
 	"InitialItem.hpp"
 
 1346256179 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp

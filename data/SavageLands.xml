@@ -1091,34 +1091,82 @@
 				</Ranged>
 				<Ammunition>
 					<ID>arrow</ID>
+					<Quantity>
+						<Random>
+							<NumDice>4</NumDice>
+							<NumSides>3</NumSides>
+						</Random>
+					</Quantity>
 					<Races>
 						<Race>
 							<RaceID>04_marshelf</RaceID>
 							<ID>javelin</ID>
+							<Quantity>
+								<Random>
+									<NumDice>2</NumDice>
+									<NumSides>3</NumSides>
+								</Random>
+							</Quantity>
 						</Race>
 						<Race>
 							<RaceID>05_pixie</RaceID>
 							<ID>_rock</ID>
+							<Quantity>
+								<Random>
+									<NumDice>4</NumDice>
+									<NumSides>3</NumSides>
+								</Random>
+							</Quantity>
 						</Race>
 						<Race>
 							<RaceID>06_dwarf</RaceID>
 							<ID>bolt</ID>
+							<Quantity>
+								<Random>
+									<NumDice>4</NumDice>
+									<NumSides>3</NumSides>
+								</Random>
+							</Quantity>
 						</Race>
 						<Race>
 							<RaceID>07_goblin</RaceID>
 							<ID>_rock</ID>
+							<Quantity>
+								<Random>
+									<NumDice>4</NumDice>
+									<NumSides>3</NumSides>
+								</Random>
+							</Quantity>
 						</Race>
 						<Race>
 							<RaceID>08_ogre</RaceID>
 							<ID>_rock</ID>
+							<Quantity>
+								<Random>
+									<NumDice>4</NumDice>
+									<NumSides>3</NumSides>
+								</Random>
+							</Quantity>
 						</Race>
 						<Race>
 							<RaceID>09_giant</RaceID>
 							<ID>throwing_club</ID>
+							<Quantity>
+								<Random>
+									<NumDice>2</NumDice>
+									<NumSides>3</NumSides>
+								</Random>
+							</Quantity>
 						</Race>
 						<Race>
 							<RaceID>10_gnome</RaceID>
 							<ID>_rock</ID>
+							<Quantity>
+								<Random>
+									<NumDice>4</NumDice>
+									<NumSides>3</NumSides>
+								</Random>
+							</Quantity>
 						</Race>
 					</Races>
 				</Ammunition>

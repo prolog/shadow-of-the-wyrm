@@ -23,11 +23,23 @@ void InitialItemEquipper::equip(CreaturePtr creature, ActionManager& am)
       BOOST_FOREACH(InitialEquipmentMap::value_type& ii_i, initial_item_map)
       {
         InitialItem ii = ii_i.second;
-        string item_id = iis.get_item_id(creature_race, ii);
+        pair<string, uint> item_details = iis.get_item_details(creature_race, ii);
+        string item_id = item_details.first;
+        uint item_quantity = item_details.second;
         
         if (!item_id.empty())
         {
-          am.handle_item(creature, ITEM_ACTION_EQUIP, ItemManager::create_item(item_id));
+          ItemPtr item = ItemManager::create_item(item_id, item_quantity);
+          item->set_quantity(item_quantity);
+          
+          Equipment& eq = creature->get_equipment();
+          if (item->get_quantity() > 1 && !eq.can_equip_multiple_items(ii_i.first))
+          {
+            // Sanity check: only allow multiple items for slots that allow this.
+            item->set_quantity(1); 
+          }
+          
+          am.handle_item(creature, ITEM_ACTION_EQUIP, item);
         }
       }
     }  
@@ -50,11 +62,13 @@ void InitialItemEquipper::add_inventory_items(CreaturePtr creature, ActionManage
 
       BOOST_FOREACH(InitialItem& ii, vii)
       {
-        string item_id = iis.get_item_id(creature_race, ii);
+        pair<string, uint> item_details = iis.get_item_details(creature_race, ii);
+        string item_id = item_details.first;
+        uint item_quantity = item_details.second;
         
         if (!item_id.empty())
         {
-          am.handle_item(creature, ITEM_ACTION_PICK_UP, ItemManager::create_item(item_id));
+          am.handle_item(creature, ITEM_ACTION_PICK_UP, ItemManager::create_item(item_id, item_quantity));
         }
       }
     }
