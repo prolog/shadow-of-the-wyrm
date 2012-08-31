@@ -36,5 +36,15 @@ class RangedCombatActionManager : public IActionManager
     // anything is hit along the way.
     void fire_weapon_at_tile(CreaturePtr creature);
     
+    // Check to see if the creature has a ranged combat target selected.
+    bool has_ranged_combat_target(CreaturePtr creature);
+    
+    // select the nearest hostile creature.  This is done so that the player doesn't have to constantly select
+    // a creature to target when 'f'ire is selected.
+    void select_nearest_hostile_target(CreaturePtr creature, MapPtr current_map);
+    
+    // Select the existing ranged combat target for the given creature, on the given map.
+    void select_existing_target(CreaturePtr creature, MapPtr map);
+    
     ActionCostValue get_action_cost_value() const;
 };

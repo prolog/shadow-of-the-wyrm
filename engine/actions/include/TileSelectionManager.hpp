@@ -31,6 +31,8 @@ class TileSelectionManager : public IActionManager
     ActionCostValue select_tile_cancel(CreaturePtr creature);
     
     bool is_tile_in_range_and_add_message_if_not(CreaturePtr creature, AttackType attack_type) const;
+    
+    bool remove_target(CreaturePtr creature, const AttackType attack_type);
 
   protected:
     friend class ActionManager;
