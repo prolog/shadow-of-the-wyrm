@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "MapCursor.hpp"
 #include "MessageManager.hpp"
@@ -219,4 +220,23 @@ bool TileSelectionManager::is_tile_in_range_and_add_message_if_not(CreaturePtr c
   }
   
   return tile_in_range;
+}
+
+bool TileSelectionManager::remove_target(CreaturePtr creature, const AttackType attack_type)
+{
+  bool target_removed = false;
+  
+  if (creature)
+  {
+    TargetMap& target_map = creature->get_target_map_ref();
+    TargetMap::iterator t_it = target_map.find(Integer::to_string(attack_type));
+    
+    if (t_it != target_map.end())
+    {
+      target_map.erase(t_it);
+      target_removed = true;
+    }
+  }
+  
+  return target_removed;
 }

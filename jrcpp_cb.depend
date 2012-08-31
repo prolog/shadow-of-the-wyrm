@@ -277,7 +277,7 @@
 	"InventoryManager.hpp"
 	"InventoryTranslator.hpp"
 
-1346256335 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
+1346356333 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\itemmanager.cpp
 	"Game.hpp"
 	"ItemFactory.hpp"
 	"ItemManager.hpp"
@@ -318,8 +318,9 @@
 	"MapUtils.hpp"
 	"TileMovementConfirmation.hpp"
 
-1345726801 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
+1346424974 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\tileselectionmanager.cpp
 	<boost/make_shared.hpp>
+	"Conversion.hpp"
 	"Game.hpp"
 	"MapCursor.hpp"
 	"MessageManager.hpp"
@@ -612,7 +613,7 @@
 1345301636 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandkeys.cpp
 	"TileSelectionCommandKeys.hpp"
 
-1345726742 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
+1346424850 source:c:\cygwin\home\julian\jrcpp\engine\commands\select_tile\source\tileselectioncommandprocessor.cpp
 	"Game.hpp"
 	"TileSelectionCommandProcessor.hpp"
 
@@ -1702,12 +1703,11 @@
 	"ItemTranslator.hpp"
 	"StringTable.hpp"
 
-1344483525 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
+1346390433 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\maptranslator.cpp
 	<algorithm>
 	"common.hpp"
 	"Display.hpp"
 	"Game.hpp"
-	"MapCursor.hpp"
 	"MapTranslator.hpp"
 
 1342201402 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\viewmaptranslator.cpp
@@ -2341,7 +2341,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1346256362 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1346425442 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"AmmunitionSurvivalCalculator.hpp"
@@ -2351,6 +2351,8 @@
 	"FireWeaponTileSelectionKeyboardCommandMap.hpp"
 	"Game.hpp"
 	"ItemManager.hpp"
+	"MapCursor.hpp"
+	"MapUtils.hpp"
 	"MessageManager.hpp"
 	"RangedCombatActionManager.hpp"
 	"RangedCombatApplicabilityChecker.hpp"

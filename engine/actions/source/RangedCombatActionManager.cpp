@@ -7,6 +7,8 @@
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
 #include "ItemManager.hpp"
+#include "MapCursor.hpp"
+#include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "RangedCombatActionManager.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
@@ -61,8 +63,25 @@ ActionCostValue RangedCombatActionManager::fire_missile(CreaturePtr creature)
 ActionCostValue RangedCombatActionManager::get_selected_tile(CreaturePtr creature)
 {
   ActionCostValue action_cost_value;
+  Game* game = Game::instance();
   
-  // We can do ranged combat.  Select the tile, and then fire.
+  // We can do ranged combat.  
+  //
+  // First, check to see if the creature is the player.  If the creature is the player, then check to 
+  // see if a ranged target has been defined.  If not, select the closest hostile creature.
+  if (creature && game && creature->get_is_player())
+  {
+    if (!has_ranged_combat_target(creature))
+    {
+      select_nearest_hostile_target(creature, game->get_current_map());
+    }
+    else
+    {
+      select_existing_target(creature, game->get_current_map());
+    }
+  }
+  
+  //Select the tile, and then fire.
   TileSelectionManager tsm;
   KeyboardCommandMapPtr fire_weapon_keyboard_bindings = make_shared<FireWeaponTileSelectionKeyboardCommandMap>();
   tsm.set_keyboard_command_map(fire_weapon_keyboard_bindings);
@@ -240,6 +259,108 @@ void RangedCombatActionManager::destroy_ammunition_or_drop_on_tile(CreaturePtr c
       Inventory& inv = tile->get_items();
       
       inv.merge_or_add(ammunition, INVENTORY_ADDITION_FRONT);
+    }
+  }
+}
+
+bool RangedCombatActionManager::has_ranged_combat_target(CreaturePtr creature)
+{
+  bool has_target = false;
+  
+  if (creature)
+  {
+    TargetMap tmap = creature->get_target_map();
+    return (tmap.find(Integer::to_string(ATTACK_TYPE_RANGED)) != tmap.end());
+  }
+  
+  return has_target;
+}
+
+// select the nearest hostile target for the initial cursor location - this is done so that the user has to do less
+// to select a target, and "nearest hostile" is a good enough heuristic, for now.
+void RangedCombatActionManager::select_nearest_hostile_target(CreaturePtr creature, MapPtr map)
+{
+  if (creature && map)
+  {
+    string creature_id = creature->get_id();
+    MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+    Coordinate creature_location = map->get_location(creature->get_id());
+    
+    // Sort hostile creatures by location.  Since this is a regular map, there is only one creature allowed per
+    // distance - so if there are several distance-1 creatures, only one will be chosen for the map.
+    std::map<int, pair<string, Coordinate> > hostile_creature_distance_map;
+    
+    if (fov_map)
+    {
+      std::map<string, CreaturePtr>& creatures = fov_map->get_creatures_ref();
+      
+      for (std::map<string, CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+      {
+        CreaturePtr potential_target_creature = c_it->second;
+        string potential_creature_id = potential_target_creature->get_id();
+        
+        // Is the creature not the creature doing ranged combat?  Because targetting one's self
+        // would be unfortunate.
+        if (potential_target_creature && (potential_creature_id != creature_id))
+        {
+          // Get the potential target's coordinate from the main map, using its creature ID.
+          Coordinate c = map->get_location(c_it->first);
+
+          // Is the creature hostile towards the ranged combat creature?
+          ThreatRatings& threat_ratings = potential_target_creature->get_decision_strategy()->get_threats_ref();
+          
+          if (threat_ratings.has_threat(creature_id))
+          {
+            int distance = MapUtils::tile_distance_using_chebyshev(creature_location, c);
+            hostile_creature_distance_map.insert(make_pair(distance, make_pair(potential_creature_id, c)));
+          }
+        }
+      }
+    }
+    
+    // We may by this point have the nearest hostile creature:
+    if (!hostile_creature_distance_map.empty())
+    {
+      pair<string, Coordinate> target_creature_details = hostile_creature_distance_map.begin()->second;
+      Coordinate target_coordinates = target_creature_details.second;
+      
+      // Set it in the targetting map attached to the creature:
+      TargetMap& target_map = creature->get_target_map_ref();
+      target_map[Integer::to_string(ATTACK_TYPE_RANGED)] = target_creature_details;
+
+      // Set it on the actual map:
+      MapCursor mc;
+      mc.set_cursor_location(map, target_coordinates);
+    }
+  }
+}
+
+// Select an existing target.  Because creatures can move about after the target was previously
+// acquired, update the target (if necessary) to reflect the creature's current position on the
+// map.
+void RangedCombatActionManager::select_existing_target(CreaturePtr creature, MapPtr map)
+{
+  if (creature && map && has_ranged_combat_target(creature))
+  {
+    // Set the target:
+    string ranged_s = Integer::to_string(ATTACK_TYPE_RANGED);
+    TargetMap& target_map = creature->get_target_map_ref();
+    TargetMap::iterator t_it = target_map.find(ranged_s);
+    pair<string, Coordinate>& target_details = t_it->second;
+    string creature_id = target_details.first;
+    
+    MapCursor mc;
+    
+    if (map->has_location(creature_id))
+    {
+      Coordinate creature_loc = map->get_location(creature_id);
+      target_details.second = creature_loc; // Ensure the location of the creature is up to date!
+      mc.set_cursor_location(map, creature_loc);
+    }
+    else
+    {
+      target_map.erase(t_it);
+      mc.reset_cursor(map);
     }
   }
 }

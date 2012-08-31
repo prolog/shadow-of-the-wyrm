@@ -33,8 +33,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
     {
       if (command_name == TileSelectionCommandKeys::CANCEL_TILE_SELECTION)
       {
-        // Do nothing.  TileSelectionManager handles resetting the cursor,
-        // etc.
+        tsm->remove_target(creature, ATTACK_TYPE_RANGED);
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
       {

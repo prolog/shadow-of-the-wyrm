@@ -2,7 +2,6 @@
 #include "common.hpp"
 #include "Display.hpp"
 #include "Game.hpp"
-#include "MapCursor.hpp"
 #include "MapTranslator.hpp"
 
 using namespace std;
