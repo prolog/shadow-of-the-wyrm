@@ -185,6 +185,12 @@ ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemActio
   return action_cost_value;
 }
 
+// "q"uaff a potion
+ActionCost ActionManager::quaff(CreaturePtr creature)
+{
+  return get_action_cost(creature, quaff_manager.quaff(creature, this));
+}
+
 // Pick up an item, doing any necessary checks first.
 ActionCost ActionManager::pick_up(CreaturePtr creature)
 {

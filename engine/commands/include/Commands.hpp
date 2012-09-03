@@ -136,3 +136,10 @@ class FireMissileCommand : public Command
     FireMissileCommand();
     ~FireMissileCommand();
 };
+
+class QuaffCommand : public Command
+{
+  public:
+    QuaffCommand();
+    ~QuaffCommand();
+};

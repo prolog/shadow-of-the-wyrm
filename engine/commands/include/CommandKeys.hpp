@@ -36,6 +36,7 @@ class CommandKeys
     static const std::string RANGED_WEAPON_INFO;
     static const std::string SELECT_TILE; // aka "look" - this can be reused for general targetting code
     static const std::string FIRE_MISSILE;
+    static const std::string QUAFF;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);
