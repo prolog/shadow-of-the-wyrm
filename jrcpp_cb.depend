@@ -153,7 +153,7 @@
 	"MaterialFactory.hpp"
 	"XMLItemReader.hpp"
 
-1345592665 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+1346627718 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"MaterialFactory.hpp"
@@ -163,7 +163,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlplantreader.cpp
 	"XMLPlantReader.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
+1346629355 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
 	"XMLPotionReader.hpp"
 
 1345033678 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
@@ -2341,7 +2341,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1346425442 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1346426047 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"AmmunitionSurvivalCalculator.hpp"

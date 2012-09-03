@@ -1,11 +1,14 @@
 #pragma once
+#include "XMLDataStructures.hpp"
+#include "XMLItemReader.hpp"
+#include "Potion.hpp"
 
-class XMLPotionReader
+class XMLPotionReader : public XMLItemReader
 {
   public:
     XMLPotionReader();
     ~XMLPotionReader();
-  
-  protected:
+
+    void parse(PotionPtr potion, const XMLNode& potion_node);
 };
 

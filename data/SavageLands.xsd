@@ -100,12 +100,12 @@
 			<xs:element ref="tns:Foodstuffs" minOccurs="0"/>
 			<xs:element ref="tns:Plants" minOccurs="0"/>
 			<xs:element ref="tns:Boats" minOccurs="0"/>
+			<xs:element ref="tns:Potions" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- Wands/Staves -->
 	<!-- Books, Scrolls -->
-	<!-- Potions -->
 	<!-- Rings -->
 </xs:element>
 <xs:element name="Deity">
@@ -507,6 +507,13 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Potions">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Potion" type="tns:Potion" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="MiscItems">
 	<xs:complexType>
 		<xs:sequence>
@@ -607,6 +614,16 @@
 		<xs:extension base="tns:Item">
 			<xs:sequence>
 				<xs:element name="Nutrition" type="xs:unsignedInt"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Potion">
+	<xs:complexContent>
+		<xs:extension base="tns:Consumable">
+			<xs:sequence>
+				<!-- JCD FIXME: Just a placeholder! -->
+				<xs:element name="Effect" type="xs:unsignedInt"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
