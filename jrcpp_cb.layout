@@ -70,7 +70,7 @@
 	<File name="display\source\NCursesConstants.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="352" topLine="0" />
 	</File>
-	<File name="display\source\NCursesDisplay.cpp" open="1" top="0" tabpos="6">
+	<File name="display\source\NCursesDisplay.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2953" topLine="116" />
 	</File>
 	<File name="display\source\NCursesMenuWrapper.cpp" open="0" top="0" tabpos="8">
@@ -280,8 +280,8 @@
 	<File name="engine\actions\include\PrayerManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="101" topLine="0" />
 	</File>
-	<File name="engine\actions\include\RangedCombatActionManager.hpp" open="1" top="0" tabpos="2">
-		<Cursor position="1951" topLine="9" />
+	<File name="engine\actions\include\RangedCombatActionManager.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="2242" topLine="24" />
 	</File>
 	<File name="engine\actions\include\RangedCombatApplicabilityChecker.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="795" topLine="1" />
@@ -293,7 +293,7 @@
 		<Cursor position="407" topLine="0" />
 	</File>
 	<File name="engine\actions\include\TileSelectionManager.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="1353" topLine="18" />
+		<Cursor position="1433" topLine="18" />
 	</File>
 	<File name="engine\actions\include\VersionActionManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="226" topLine="0" />
@@ -308,7 +308,7 @@
 		<Cursor position="209" topLine="5" />
 	</File>
 	<File name="engine\actions\source\ActionManager.cpp" open="0" top="0" tabpos="2">
-		<Cursor position="7873" topLine="276" />
+		<Cursor position="1062" topLine="46" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
@@ -340,8 +340,8 @@
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
 	</File>
-	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="10295" topLine="273" />
+	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="12818" topLine="348" />
 	</File>
 	<File name="engine\actions\source\RangedCombatApplicabilityChecker.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="2538" topLine="67" />
@@ -352,8 +352,8 @@
 	<File name="engine\actions\source\TileMovementConfirmation.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1569" topLine="27" />
 	</File>
-	<File name="engine\actions\source\TileSelectionManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="1971" topLine="74" />
+	<File name="engine\actions\source\TileSelectionManager.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="862" topLine="23" />
 	</File>
 	<File name="engine\actions\source\VersionActionManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="169" topLine="0" />
@@ -692,7 +692,7 @@
 		<Cursor position="984" topLine="0" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="202" topLine="0" />
+		<Cursor position="974" topLine="22" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionCommands.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="776" topLine="16" />
@@ -701,7 +701,7 @@
 		<Cursor position="3024" topLine="33" />
 	</File>
 	<File name="engine\commands\select_tile\source\TileSelectionRangeChecker.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="1085" topLine="13" />
+		<Cursor position="538" topLine="5" />
 	</File>
 	<File name="engine\commands\source\Command.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="481" topLine="8" />
@@ -1213,7 +1213,7 @@
 	<File name="engine\include\Log.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="698" topLine="12" />
 	</File>
-	<File name="engine\include\MapCursor.hpp" open="1" top="0" tabpos="3">
+	<File name="engine\include\MapCursor.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="323" topLine="0" />
 	</File>
 	<File name="engine\include\MapExitUtils.hpp" open="0" top="0" tabpos="2">
@@ -1339,8 +1339,8 @@
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="443" topLine="4" />
 	</File>
-	<File name="engine\source\Game.cpp" open="1" top="0" tabpos="7">
-		<Cursor position="3915" topLine="170" />
+	<File name="engine\source\Game.cpp" open="0" top="0" tabpos="7">
+		<Cursor position="9903" topLine="352" />
 	</File>
 	<File name="engine\source\InitialItemEquipper.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2138" topLine="54" />
@@ -1354,7 +1354,7 @@
 	<File name="engine\source\Log.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="1869" topLine="86" />
 	</File>
-	<File name="engine\source\MapCursor.cpp" open="1" top="0" tabpos="8">
+	<File name="engine\source\MapCursor.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="69" topLine="0" />
 	</File>
 	<File name="engine\source\MapExitUtils.cpp" open="0" top="0" tabpos="3">
@@ -1363,7 +1363,7 @@
 	<File name="engine\source\MapRegistry.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="714" topLine="11" />
 	</File>
-	<File name="engine\source\MapUtils.cpp" open="1" top="0" tabpos="11">
+	<File name="engine\source\MapUtils.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="10315" topLine="392" />
 	</File>
 	<File name="engine\source\Message.cpp" open="0" top="0" tabpos="3">
@@ -1537,7 +1537,7 @@
 	<File name="engine\translators\source\ItemTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="25" topLine="0" />
 	</File>
-	<File name="engine\translators\source\MapTranslator.cpp" open="1" top="0" tabpos="5">
+	<File name="engine\translators\source\MapTranslator.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="5874" topLine="180" />
 	</File>
 	<File name="engine\translators\source\NullDisplayFilter.cpp" open="0" top="0" tabpos="0">
@@ -1597,8 +1597,8 @@
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="94" topLine="0" />
 	</File>
-	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="959" topLine="24" />
+	<File name="world\include\Creature.hpp" open="1" top="0" tabpos="1">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="world\include\CreatureFeatures.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="690" topLine="26" />
@@ -1636,7 +1636,7 @@
 	<File name="world\include\ItemTypes.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="529" topLine="19" />
 	</File>
-	<File name="world\include\Map.hpp" open="1" top="0" tabpos="4">
+	<File name="world\include\Map.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="1805" topLine="44" />
 	</File>
 	<File name="world\include\MapExit.hpp" open="0" top="0" tabpos="1">

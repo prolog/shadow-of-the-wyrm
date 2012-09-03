@@ -977,6 +977,12 @@
 				<Wielded><ID>club</ID></Wielded>
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
+				<InitialInventory>
+					<InitialItem>
+						<ID>healing_potion</ID>
+						<Quantity><Random><NumDice>2</NumDice><NumSides>2</NumSides></Random></Quantity>
+					</InitialItem>
+				</InitialInventory>
 			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="archer">
@@ -3513,6 +3519,23 @@
 				<Material>8</Material>
 			</Boat>
 		</Boats>
+		<Potions>
+			<Potion id="healing_potion">
+				<DescriptionSID>HEALING_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_HEALING_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>HEALING_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_HEALING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<Nutrition>100</Nutrition>
+				<Effect>1</Effect>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>14</Colour>
+				</TextDetails>
+			</Potion>
+		</Potions>
 		<MiscItems>
 			<Item id="dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>
