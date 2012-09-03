@@ -99,4 +99,5 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('R'), CommandKeys::RANGED_WEAPON_INFO));
   command_mapping.insert(make_pair(Integer::to_string('L'), CommandKeys::SELECT_TILE));
   command_mapping.insert(make_pair(Integer::to_string('f'), CommandKeys::FIRE_MISSILE));
+  command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUAFF));
 }

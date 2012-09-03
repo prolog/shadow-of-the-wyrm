@@ -110,6 +110,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = make_shared<FireMissileCommand>();
   }
+  else if (command_name == CommandKeys::QUAFF)
+  {
+    command = make_shared<QuaffCommand>();
+  }
 
   return command;
 }

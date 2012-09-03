@@ -113,6 +113,11 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.fire_missile(creature);
       }
+      else if (command_name == CommandKeys::QUAFF)
+      {
+        int x = 1;
+        ac = game->actions.quaff(creature);
+      }
     }
   }
   

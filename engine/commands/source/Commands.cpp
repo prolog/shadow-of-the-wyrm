@@ -199,3 +199,13 @@ FireMissileCommand::~FireMissileCommand()
 {
 }
 
+// 'q'uaff a potion
+QuaffCommand::QuaffCommand()
+: Command(CommandKeys::QUAFF)
+{
+}
+
+QuaffCommand::~QuaffCommand()
+{
+}
+

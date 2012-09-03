@@ -6,6 +6,7 @@
 #include "IItemDisplayFilter.hpp"
 #include "ItemManager.hpp"
 #include "MovementManager.hpp"
+#include "QuaffManager.hpp"
 #include "RangedCombatActionManager.hpp"
 #include "TileSelectionManager.hpp"
 #include "WeaponTypes.hpp"
@@ -57,6 +58,9 @@ class ActionManager
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
     ActionCostValue wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
     ActionCostValue handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
+    
+    // Use a potion
+    ActionCost quaff(CreaturePtr creature);
 
     // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.
@@ -70,4 +74,5 @@ class ActionManager
     ItemManager item_manager;
     TileSelectionManager tile_selection_manager;
     RangedCombatActionManager ranged_combat_manager;
+    QuaffManager quaff_manager;
 };

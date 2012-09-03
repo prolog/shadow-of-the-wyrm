@@ -163,7 +163,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlplantreader.cpp
 	"XMLPlantReader.hpp"
 
-1346629355 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
+1346630969 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
 	"XMLPotionReader.hpp"
 
 1345033678 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
@@ -224,7 +224,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1346259805 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1346680584 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -630,29 +630,29 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1344948723 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1346633312 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	<boost/make_shared.hpp>
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1344777639 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1346633224 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1344778278 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1346678174 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Commands.hpp"
 	"Game.hpp"
 
-1344777674 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1346633258 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"StringConstants.hpp"
 
-1344777783 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1346633288 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -2390,10 +2390,11 @@
 1345811728 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\nulldisplayfilter.cpp
 	"NullDisplayFilter.hpp"
 
-1345899790 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemdisplayfilterfactory.cpp
+1346679902 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemdisplayfilterfactory.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"ItemDisplayFilterFactory.hpp"
+	"ItemTypeDisplayFilter.hpp"
 	"NullDisplayFilter.hpp"
 	"SquishyEquipWornLocationDisplayFilter.hpp"
 
@@ -2454,4 +2455,12 @@
 1346264920 source:c:\cygwin\home\julian\jrcpp\engine\calculators\source\secondaryphysicalattackspeedcalculator.cpp
 	"NullSpeedCalculator.hpp"
 	"SecondaryPhysicalAttackSpeedCalculator.hpp"
+
+1346680813 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
+	"ActionManager.hpp"
+	"ItemDisplayFilterFactory.hpp"
+	"QuaffManager.hpp"
+
+1346680972 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemtypedisplayfilter.cpp
+	"ItemTypeDisplayFilter.hpp"
 
