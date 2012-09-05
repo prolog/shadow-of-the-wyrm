@@ -3528,12 +3528,12 @@
 				<Value>100</Value>
 				<Weight><Pounds>1</Pounds></Weight>
 				<Material>2</Material>
-				<Nutrition>100</Nutrition>
-				<Effect>1</Effect>
 				<TextDetails>
 					<Symbol>!</Symbol>
 					<Colour>14</Colour>
 				</TextDetails>
+				<Nutrition>100</Nutrition>
+				<Effect>1</Effect>
 			</Potion>
 		</Potions>
 		<MiscItems>

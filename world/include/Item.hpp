@@ -3,9 +3,12 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "EquipmentTypes.hpp"
+#include "Effect.hpp"
 #include "ItemTypes.hpp"
 #include "Material.hpp"
 #include "Weight.hpp"
+
+class Effect;
 
 class Item
 {
@@ -79,6 +82,9 @@ class Item
     // match behaviour. (e.g., potions need to match on spells, weapons need to match on
     // to-hit and damage, etc.).  The base class version just returns true.
     virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
+
+    virtual void set_effect(EffectPtr new_effect);
+    virtual EffectPtr get_effect();
     
     virtual Item* clone() = 0;
     virtual Item* deep_copy();
@@ -101,6 +107,7 @@ class Item
     Colour colour;
     ItemIdentificationType identification_type;
     bool identified;
+    EffectPtr effect;
     
     // This needs to be deep copied.
     MaterialPtr material;

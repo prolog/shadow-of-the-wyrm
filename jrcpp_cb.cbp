@@ -214,6 +214,7 @@
 		<Unit filename="engine\actions\include\MovementManager.hpp" />
 		<Unit filename="engine\actions\include\PickupManager.hpp" />
 		<Unit filename="engine\actions\include\PrayerManager.hpp" />
+		<Unit filename="engine\actions\include\QuaffManager.hpp" />
 		<Unit filename="engine\actions\include\RangedCombatActionManager.hpp" />
 		<Unit filename="engine\actions\include\RangedCombatApplicabilityChecker.hpp" />
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
@@ -234,6 +235,7 @@
 		<Unit filename="engine\actions\source\MovementManager.cpp" />
 		<Unit filename="engine\actions\source\PickupManager.cpp" />
 		<Unit filename="engine\actions\source\PrayerManager.cpp" />
+		<Unit filename="engine\actions\source\QuaffManager.cpp" />
 		<Unit filename="engine\actions\source\RangedCombatActionManager.cpp" />
 		<Unit filename="engine\actions\source\RangedCombatApplicabilityChecker.cpp" />
 		<Unit filename="engine\actions\source\SearchActionManager.cpp" />
@@ -483,6 +485,14 @@
 		<Unit filename="engine\description\source\ItemDescriber.cpp" />
 		<Unit filename="engine\description\source\TileDescriber.cpp" />
 		<Unit filename="engine\description\source\TileDescription.cpp" />
+		<Unit filename="engine\effects\include\EffectFactory.hpp" />
+		<Unit filename="engine\effects\include\EffectTypes.hpp" />
+		<Unit filename="engine\effects\include\HealingEffect.hpp" />
+		<Unit filename="engine\effects\include\IEffect.hpp" />
+		<Unit filename="engine\effects\include\NullEffect.hpp" />
+		<Unit filename="engine\effects\source\EffectFactory.cpp" />
+		<Unit filename="engine\effects\source\HealingEffect.cpp" />
+		<Unit filename="engine\effects\source\NullEffect.cpp" />
 		<Unit filename="engine\field_of_view\include\BresenhamLine.hpp" />
 		<Unit filename="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
 		<Unit filename="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" />
@@ -761,6 +771,7 @@
 		<Unit filename="engine\translators\include\InventoryTranslator.hpp" />
 		<Unit filename="engine\translators\include\ItemDisplayFilterFactory.hpp" />
 		<Unit filename="engine\translators\include\ItemTranslator.hpp" />
+		<Unit filename="engine\translators\include\ItemTypeDisplayFilter.hpp" />
 		<Unit filename="engine\translators\include\MapTranslator.hpp" />
 		<Unit filename="engine\translators\include\NullDisplayFilter.hpp" />
 		<Unit filename="engine\translators\include\SquishyEquipWornLocationDisplayFilter.hpp" />
@@ -771,6 +782,7 @@
 		<Unit filename="engine\translators\source\InventoryTranslator.cpp" />
 		<Unit filename="engine\translators\source\ItemDisplayFilterFactory.cpp" />
 		<Unit filename="engine\translators\source\ItemTranslator.cpp" />
+		<Unit filename="engine\translators\source\ItemTypeDisplayFilter.cpp" />
 		<Unit filename="engine\translators\source\MapTranslator.cpp" />
 		<Unit filename="engine\translators\source\NullDisplayFilter.cpp" />
 		<Unit filename="engine\translators\source\SquishyEquipWornLocationDisplayFilter.cpp" />
