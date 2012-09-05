@@ -115,7 +115,6 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::QUAFF)
       {
-        int x = 1;
         ac = game->actions.quaff(creature);
       }
     }

@@ -163,7 +163,8 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlplantreader.cpp
 	"XMLPlantReader.hpp"
 
-1346630969 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
+1346849351 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlpotionreader.cpp
+	"EffectFactory.hpp"
 	"XMLPotionReader.hpp"
 
 1345033678 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlracesreader.cpp
@@ -639,7 +640,7 @@
 1346633224 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1346678174 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1346682222 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
@@ -1910,12 +1911,13 @@
 	<boost/foreach.hpp>
 	"Inventory.hpp"
 
-1346129962 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
+1346848163 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
 	<boost/uuid/uuid_generators.hpp>
 	<boost/uuid/uuid_io.hpp>
 	<boost/make_shared.hpp>
 	"Conversion.hpp"
 	"Item.hpp"
+	"NullEffect.hpp"
 	"Wood.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
@@ -2456,11 +2458,32 @@
 	"NullSpeedCalculator.hpp"
 	"SecondaryPhysicalAttackSpeedCalculator.hpp"
 
-1346680813 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
+1346849955 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
 	"ActionManager.hpp"
+	"ConsumableManager.hpp"
 	"ItemDisplayFilterFactory.hpp"
 	"QuaffManager.hpp"
 
 1346680972 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemtypedisplayfilter.cpp
 	"ItemTypeDisplayFilter.hpp"
+
+1346848675 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\healingeffect.cpp
+	"Creature.hpp"
+	"HealingEffect.hpp"
+
+1346848711 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\nulleffect.cpp
+	"Creature.hpp"
+	"NullEffect.hpp"
+
+1346848078 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effectfactory.cpp
+	<boost/make_shared.hpp>
+	"EffectFactory.hpp"
+	"HealingEffect.hpp"
+	"NullEffect.hpp"
+
+1346849208 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effect.cpp
+	"Effect.hpp"
+
+1346849644 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\consumablemanager.cpp
+	"ConsumableManager.hpp"
 

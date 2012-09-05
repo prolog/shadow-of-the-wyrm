@@ -3,6 +3,7 @@
 #include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "Item.hpp"
+#include "NullEffect.hpp"
 #include "Wood.hpp"
 
 using std::string;
@@ -14,6 +15,7 @@ artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), id
 {
   // Create a default useful material.  Wood, huh?  Well, I needed something.
   material = make_shared<Wood>();
+  effect = make_shared<NullEffect>();
 }
 
 Item::~Item()
@@ -244,12 +246,25 @@ bool Item::additional_item_attributes_match(boost::shared_ptr<Item> i)
   return true;
 }
 
+void Item::set_effect(EffectPtr new_effect)
+{
+  effect = new_effect;
+}
+
+EffectPtr Item::get_effect()
+{
+  return effect;
+}
+
 Item* Item::deep_copy()
 {
   Item* item = clone();
   
   MaterialPtr new_material = MaterialPtr(material->clone());
   item->set_material(new_material);
+
+  EffectPtr new_effect = EffectPtr(effect->clone());
+  item->set_effect(new_effect);
   
   return item;
 }

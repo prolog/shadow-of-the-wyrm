@@ -622,8 +622,7 @@
 	<xs:complexContent>
 		<xs:extension base="tns:Consumable">
 			<xs:sequence>
-				<!-- JCD FIXME: Just a placeholder! -->
-				<xs:element name="Effect" type="xs:unsignedInt"/>
+				<xs:element name="Effect" type="tns:EffectType"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -903,6 +902,19 @@
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="-1"/>
 		<xs:maxInclusive value="10"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="EffectType">
+	<xs:annotation>
+		<xs:documentation>
+			Enumeration describing a type of magical effect.  See engine/effects/include/EffectTypes.hpp:
+				Null = 0
+				Healing = 1
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="1"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
