@@ -2,6 +2,7 @@
 #include "IActionManager.hpp"
 #include "Potion.hpp"
 
+class ItemIdentifier;
 class ActionManager;
 
 class QuaffManager : public IActionManager
@@ -11,5 +12,6 @@ class QuaffManager : public IActionManager
 
   protected:
     void quaff_potion(CreaturePtr creature, PotionPtr potion);
+    void add_quaff_message(CreaturePtr creature, PotionPtr potion, const ItemIdentifier& item_id);
     ActionCostValue get_action_cost_value() const;
 };

@@ -16,8 +16,13 @@ class Item
     Item();
     virtual ~Item();
     
+    // A unique ID for each item
     virtual void set_id(const std::string& new_id);
     virtual std::string get_id() const;
+    
+    // The ID of the item in the configuration XML - used for lookup to set global values.
+    virtual void set_base_id(const std::string& new_base_id);
+    virtual std::string get_base_id() const;
     
     virtual void set_quantity(const uint new_quantity);
     virtual uint get_quantity() const;
@@ -91,7 +96,17 @@ class Item
     virtual Item* deep_copy_with_new_id();
     
   protected:
+    friend class ItemIdentifier;
+    
+    // Functions to check identification.  This should not be called on an individual item created from the templates -
+    // rather, an instance of ItemIdentifier should be created, and this should be queried.  This class will check the
+    // item templates.  This ensures that if a type of item (potion of speed, for example) is identified, any already-
+    // created items on the current level will be correctly identified as well.
+    virtual void set_item_identified(const bool new_item_identified);
+    virtual bool get_item_identified() const;
+    
     std::string id;
+    std::string base_id;
     uint quantity; // the number of items in the stack
     std::string usage_description_sid; // the description is usually of the form "a foo", "an eggplant" "the fabled sword x".
     std::string description_sid; // the short description is displayed on the inventory and equipment screens.
@@ -101,6 +116,7 @@ class Item
     EquipmentWornLocation worn_location;
     ItemStatus status;
     bool status_identified;
+    bool item_identified;
     bool artifact;
     ItemType type;
     uchar symbol;

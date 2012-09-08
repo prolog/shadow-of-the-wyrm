@@ -15,6 +15,8 @@ class Effect
   public:
     virtual bool effect(boost::shared_ptr<Creature> creature, const ItemStatus item_status) const;
 
+    virtual std::string get_effect_identification_message(boost::shared_ptr<Creature> creature) const = 0;
+
     // Create an exact copy
     virtual Effect* clone() = 0;
 
@@ -22,6 +24,11 @@ class Effect
     virtual bool effect_blessed(boost::shared_ptr<Creature> creature) const = 0;
     virtual bool effect_uncursed(boost::shared_ptr<Creature> creature) const = 0;
     virtual bool effect_cursed(boost::shared_ptr<Creature> creature) const = 0;
+    
+    // Effect identification functions
+    virtual void identify_effect_as_necessary(boost::shared_ptr<Creature> creature, const bool is_identified) const;
+    virtual void identify_effect_if_player(boost::shared_ptr<Creature> creature) const;
+    virtual void inform_unidentified_if_player(boost::shared_ptr<Creature> creature) const;
 };
 
 typedef boost::shared_ptr<Effect> EffectPtr;

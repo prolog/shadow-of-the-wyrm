@@ -810,6 +810,24 @@ ActionTextKeys::~ActionTextKeys()
 {
 }
 
+string ActionTextKeys::get_quaff_message(const string& desc_sid, const string& potion_desc_sid, const bool is_player)
+{
+  string message = StringTable::get(ACTION_QUAFF_PLAYER);
+  
+  if (!is_player)
+  {
+    message = StringTable::get(ACTION_QUAFF_MONSTER);
+    // Replace the creature part
+    boost::replace_first(message, "%s", StringTable::get(desc_sid));
+    message[0] = toupper(message[0]);
+  }
+  
+  // Replace the potion part.
+  boost::replace_first(message, "%s", StringTable::get(potion_desc_sid));
+  
+  return message;
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
@@ -826,6 +844,37 @@ const string ActionTextKeys::ACTION_LOOK                       = "ACTION_LOOK";
 const string ActionTextKeys::ACTION_LOOK_UNEXPLORED_TILE       = "ACTION_LOOK_UNEXPLORED_TILE";
 const string ActionTextKeys::ACTION_LOOK_TILE_OUT_OF_RANGE     = "ACTION_LOOK_TILE_OUT_OF_RANGE";
 const string ActionTextKeys::ACTION_FIRE                       = "ACTION_FIRE";
+const string ActionTextKeys::ACTION_NOTHING_HAPPENS            = "ACTION_NOTHING_HAPPENS";
+
+const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_PLAYER";
+const string ActionTextKeys::ACTION_QUAFF_MONSTER              = "ACTION_QUAFF_MONSTER";
+
+// Strings for various magical effects
+EffectTextKeys::EffectTextKeys()
+{
+}
+
+EffectTextKeys::~EffectTextKeys()
+{
+}
+
+string EffectTextKeys::get_healing_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  string heal_message = StringTable::get(EFFECT_HEALING_PLAYER);
+
+  if (!is_player)
+  {
+    heal_message = StringTable::get(EFFECT_HEALING_MONSTER);
+    boost::replace_first(heal_message, "%s", StringTable::get(monster_desc_sid));
+    heal_message[0] = toupper(heal_message[0]);
+  }
+  
+  return heal_message;
+}
+
+const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
+const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
+const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
 
 // Strings for the various seasons
 SeasonTextKeys::SeasonTextKeys()

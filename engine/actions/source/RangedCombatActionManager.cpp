@@ -6,6 +6,7 @@
 #include "Conversion.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
+#include "ItemIdentifier.hpp"
 #include "ItemManager.hpp"
 #include "MapCursor.hpp"
 #include "MapUtils.hpp"
@@ -202,7 +203,8 @@ void RangedCombatActionManager::add_ranged_combat_message(CreaturePtr creature, 
   // This is mostly a sanity check.  Ammunition can only be fired if there's ammunition!
   if (item)
   {
-    string usage_description_sid = item->get_usage_description_sid();
+    ItemIdentifier item_id;
+    string usage_description_sid = item_id.get_appropriate_usage_description_sid(item->get_base_id());
     
     // Another sanity check - every item should have a usage description string ID.
     if (!usage_description_sid.empty())
@@ -211,7 +213,7 @@ void RangedCombatActionManager::add_ranged_combat_message(CreaturePtr creature, 
       // - the attacking creature is the player
       // - a launcher/ranged weapon (bow, crossbow, etc) is used
       // - target creature (may be empty - it's perfectly legitimate to target a random tile!)
-      string ranged_attack_message = CombatTextKeys::get_ranged_attack_message(creature->get_is_player(), ranged, StringTable::get(creature->get_description_sid()), StringTable::get(item->get_usage_description_sid()), StringTable::get(target_creature_desc_sid));
+      string ranged_attack_message = CombatTextKeys::get_ranged_attack_message(creature->get_is_player(), ranged, StringTable::get(creature->get_description_sid()), StringTable::get(usage_description_sid), StringTable::get(target_creature_desc_sid));
 
       if (!ranged_attack_message.empty())
       {

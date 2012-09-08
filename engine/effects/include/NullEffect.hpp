@@ -4,6 +4,7 @@
 class NullEffect : public Effect
 {
   public:
+    virtual std::string get_effect_identification_message(boost::shared_ptr<Creature> creature) const;
     virtual Effect* clone();
 
   protected:

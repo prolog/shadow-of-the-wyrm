@@ -10,7 +10,7 @@ using std::string;
 using boost::make_shared;
 
 Item::Item()
-: quantity(1), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false),
+: quantity(1), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false), item_identified(false),
 artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE)
 {
   // Create a default useful material.  Wood, huh?  Well, I needed something.
@@ -30,6 +30,16 @@ void Item::set_id(const std::string& new_id)
 std::string Item::get_id() const
 {
   return id;
+}
+
+void Item::set_base_id(const std::string& new_base_id)
+{
+  base_id = new_base_id;
+}
+
+string Item::get_base_id() const
+{
+  return base_id;
 }
 
 void Item::set_quantity(const uint new_quantity)
@@ -279,4 +289,14 @@ Item* Item::deep_copy_with_new_id()
   item->set_id(id_s);
   
   return item;
+}
+
+void Item::set_item_identified(const bool new_item_identified)
+{
+  item_identified = new_item_identified;
+}
+
+bool Item::get_item_identified() const
+{
+  return item_identified;
 }

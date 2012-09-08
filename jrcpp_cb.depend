@@ -149,7 +149,7 @@
 	<boost/foreach.hpp>
 	"XMLInitialItemReader.hpp"
 
-1342879134 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemreader.cpp
+1347119287 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemreader.cpp
 	"MaterialFactory.hpp"
 	"XMLItemReader.hpp"
 
@@ -698,9 +698,10 @@
 	"InventoryDumper.hpp"
 	"ItemDumper.hpp"
 
-1339107603 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\itemdumper.cpp
+1347120061 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\itemdumper.cpp
 	<sstream>
 	"ItemDumper.hpp"
+	"ItemIdentifier.hpp"
 	"StringTable.hpp"
 
 1343085821 source:c:\cygwin\home\julian\jrcpp\engine\conversion\source\skillsdumper.cpp
@@ -845,9 +846,10 @@
 	"InventoryDescriber.hpp"
 	"ItemDescriber.hpp"
 
-1346171949 source:c:\cygwin\home\julian\jrcpp\engine\description\source\itemdescriber.cpp
+1347120061 source:c:\cygwin\home\julian\jrcpp\engine\description\source\itemdescriber.cpp
 	"Conversion.hpp"
 	"ItemDescriber.hpp"
+	"ItemIdentifier.hpp"
 	"StringTable.hpp"
 
 1344516991 source:c:\cygwin\home\julian\jrcpp\engine\description\source\tiledescriber.cpp
@@ -1567,7 +1569,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1346217894 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1347023018 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1698,9 +1700,10 @@
 	"ItemTranslator.hpp"
 	"StringTable.hpp"
 
-1346100219 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemtranslator.cpp
+1347119677 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemtranslator.cpp
 	"Conversion.hpp"
 	"DisplayItem.hpp"
+	"ItemIdentifier.hpp"
 	"ItemTranslator.hpp"
 	"StringTable.hpp"
 
@@ -1911,7 +1914,7 @@
 	<boost/foreach.hpp>
 	"Inventory.hpp"
 
-1346848163 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
+1347108640 source:c:\cygwin\home\julian\jrcpp\world\source\item.cpp
 	<boost/uuid/uuid_generators.hpp>
 	<boost/uuid/uuid_io.hpp>
 	<boost/make_shared.hpp>
@@ -2343,7 +2346,7 @@
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\worshipsitetile.cpp
 	"WorshipSiteTile.hpp"
 
-1346426047 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
+1347120061 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\rangedcombatactionmanager.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"AmmunitionSurvivalCalculator.hpp"
@@ -2352,6 +2355,7 @@
 	"Conversion.hpp"
 	"FireWeaponTileSelectionKeyboardCommandMap.hpp"
 	"Game.hpp"
+	"ItemIdentifier.hpp"
 	"ItemManager.hpp"
 	"MapCursor.hpp"
 	"MapUtils.hpp"
@@ -2414,13 +2418,14 @@
 	"PickupManager.hpp"
 	"StringConstants.hpp"
 
-1346256317 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
+1347119916 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
 	<ncurses.h>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
 	"DropManager.hpp"
 	"Game.hpp"
 	"ItemDisplayFilterFactory.hpp"
+	"ItemIdentifier.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
@@ -2458,22 +2463,26 @@
 	"NullSpeedCalculator.hpp"
 	"SecondaryPhysicalAttackSpeedCalculator.hpp"
 
-1346849955 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
+1347119191 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
 	"ActionManager.hpp"
 	"ConsumableManager.hpp"
 	"ItemDisplayFilterFactory.hpp"
+	"ItemIdentifier.hpp"
+	"MessageManager.hpp"
 	"QuaffManager.hpp"
 
 1346680972 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemtypedisplayfilter.cpp
 	"ItemTypeDisplayFilter.hpp"
 
-1346848675 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\healingeffect.cpp
+1347122061 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\healingeffect.cpp
 	"Creature.hpp"
 	"HealingEffect.hpp"
+	"RNG.hpp"
 
-1346848711 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\nulleffect.cpp
+1347022401 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\nulleffect.cpp
 	"Creature.hpp"
 	"NullEffect.hpp"
+	"StringConstants.hpp"
 
 1346848078 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effectfactory.cpp
 	<boost/make_shared.hpp>
@@ -2481,9 +2490,38 @@
 	"HealingEffect.hpp"
 	"NullEffect.hpp"
 
-1346849208 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effect.cpp
+1347022519 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effect.cpp
+	"Creature.hpp"
 	"Effect.hpp"
+	"StringConstants.hpp"
+	"MessageManager.hpp"
 
 1346849644 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\consumablemanager.cpp
 	"ConsumableManager.hpp"
+
+1347108883 source:c:\cygwin\home\julian\jrcpp\engine\items\source\initialitemequipper.cpp
+	<boost/foreach.hpp>
+	"ActionManager.hpp"
+	"ClassManager.hpp"
+	"InitialItemEquipper.hpp"
+	"InitialItemSelector.hpp"
+	"ItemManager.hpp"
+
+1347108889 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemfactory.cpp
+	"ItemFactory.hpp"
+
+1347108889 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemgenerationmanager.cpp
+	"ItemGenerationManager.hpp"
+
+1347117183 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemidentifier.cpp
+	"Game.hpp"
+	"ItemIdentifier.hpp"
+
+1347108883 source:c:\cygwin\home\julian\jrcpp\engine\items\source\initialitemselector.cpp
+	"InitialItemSelector.hpp"
+	"RNG.hpp"
+	"unit_tests/InitialItemSelector_test.cpp"
+
+1347109019 c:\cygwin\home\julian\jrcpp\engine\items\source\unit_tests\initialitemselector_test.cpp
+	"gtest/gtest.h"
 
