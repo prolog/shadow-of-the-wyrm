@@ -61,7 +61,7 @@ void QuaffManager::quaff_potion(CreaturePtr creature, PotionPtr potion)
       bool effect_identified = potion_effect->effect(creature, potion->get_status());
       
       // Was the item identified?
-      if (effect_identified || potion_originally_identified)
+      if (effect_identified)
       {        
         // If the item was not identified prior to quaffing, identify it now.
         if (!potion_originally_identified)
