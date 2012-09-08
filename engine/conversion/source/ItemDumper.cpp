@@ -1,5 +1,6 @@
 #include <sstream>
 #include "ItemDumper.hpp"
+#include "ItemIdentifier.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -15,7 +16,8 @@ string ItemDumper::str() const
 
   if (item)
   {
-    ss << StringTable::get(item->get_description_sid());
+    ItemIdentifier item_id;
+    ss << StringTable::get(item_id.get_appropriate_description_sid(item->get_base_id()));
   }
 
   // This may be empty - that's fine if we've passed in a null ItemPtr.

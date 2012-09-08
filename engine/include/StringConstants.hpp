@@ -563,6 +563,8 @@ class TileTextKeys
 class ActionTextKeys
 {
   public:
+    static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc_sid, const bool is_player);
+    
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
     static const std::string ACTION_PICK_UP_NOT_ALLOWED;
@@ -579,10 +581,29 @@ class ActionTextKeys
     static const std::string ACTION_LOOK_UNEXPLORED_TILE;
     static const std::string ACTION_LOOK_TILE_OUT_OF_RANGE;
     static const std::string ACTION_FIRE;
+    static const std::string ACTION_NOTHING_HAPPENS;
 
   protected:
     ActionTextKeys();
     ~ActionTextKeys();
+    
+    static const std::string ACTION_QUAFF_PLAYER;
+    static const std::string ACTION_QUAFF_MONSTER;
+};
+
+class EffectTextKeys
+{
+  public:
+    static std::string get_healing_effect_message(const std::string& monster_desc_sid, bool is_player);
+  
+    static const std::string EFFECT_NULL;
+    
+  protected:
+    EffectTextKeys();
+    ~EffectTextKeys();
+
+    static const std::string EFFECT_HEALING_PLAYER;
+    static const std::string EFFECT_HEALING_MONSTER;
 };
 
 class SeasonTextKeys

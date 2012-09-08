@@ -1,5 +1,6 @@
 #include "Conversion.hpp"
 #include "ItemDescriber.hpp"
+#include "ItemIdentifier.hpp"
 #include "StringTable.hpp"
 
 using std::string;
@@ -15,7 +16,8 @@ string ItemDescriber::describe() const
 
   if (item)
   {
-    item_description = StringTable::get(item->get_usage_description_sid());
+    ItemIdentifier item_id;
+    item_description = StringTable::get(item_id.get_appropriate_usage_description_sid(item->get_base_id()));
     
     uint quantity = item->get_quantity();
     

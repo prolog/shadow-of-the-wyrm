@@ -18,6 +18,7 @@ void XMLItemReader::parse(ItemPtr item, const XMLNode& item_node)
   {    
     string id = XMLUtils::get_attribute_value(item_node, "id");
     item->set_id(id);
+    item->set_base_id(id);
     
     string description_sid = XMLUtils::get_child_node_value(item_node, "DescriptionSID");
     item->set_description_sid(description_sid);

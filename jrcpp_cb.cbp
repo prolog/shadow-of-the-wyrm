@@ -204,6 +204,7 @@
 		<Unit filename="engine\actions\include\ActionCost.hpp" />
 		<Unit filename="engine\actions\include\ActionManager.hpp" />
 		<Unit filename="engine\actions\include\CharacterDumpManager.hpp" />
+		<Unit filename="engine\actions\include\ConsumableManager.hpp" />
 		<Unit filename="engine\actions\include\DateTimeManager.hpp" />
 		<Unit filename="engine\actions\include\DropManager.hpp" />
 		<Unit filename="engine\actions\include\EquipmentManager.hpp" />
@@ -226,6 +227,7 @@
 		<Unit filename="engine\actions\source\ActionCost.cpp" />
 		<Unit filename="engine\actions\source\ActionManager.cpp" />
 		<Unit filename="engine\actions\source\CharacterDumpManager.cpp" />
+		<Unit filename="engine\actions\source\ConsumableManager.cpp" />
 		<Unit filename="engine\actions\source\DateTimeManager.cpp" />
 		<Unit filename="engine\actions\source\DropManager.cpp" />
 		<Unit filename="engine\actions\source\EquipmentManager.cpp" />
@@ -485,11 +487,12 @@
 		<Unit filename="engine\description\source\ItemDescriber.cpp" />
 		<Unit filename="engine\description\source\TileDescriber.cpp" />
 		<Unit filename="engine\description\source\TileDescription.cpp" />
+		<Unit filename="engine\effects\include\Effect.hpp" />
 		<Unit filename="engine\effects\include\EffectFactory.hpp" />
 		<Unit filename="engine\effects\include\EffectTypes.hpp" />
 		<Unit filename="engine\effects\include\HealingEffect.hpp" />
-		<Unit filename="engine\effects\include\IEffect.hpp" />
 		<Unit filename="engine\effects\include\NullEffect.hpp" />
+		<Unit filename="engine\effects\source\Effect.cpp" />
 		<Unit filename="engine\effects\source\EffectFactory.cpp" />
 		<Unit filename="engine\effects\source\HealingEffect.cpp" />
 		<Unit filename="engine\effects\source\NullEffect.cpp" />

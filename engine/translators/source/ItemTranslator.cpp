@@ -1,5 +1,6 @@
 #include "Conversion.hpp"
 #include "DisplayItem.hpp"
+#include "ItemIdentifier.hpp"
 #include "ItemTranslator.hpp"
 #include "StringTable.hpp"
 
@@ -19,7 +20,8 @@ DisplayItem ItemTranslator::create_display_item(const ItemPtr& item)
 
   if (item)
   {
-    string item_description_sid = item->get_description_sid();
+    ItemIdentifier item_id;
+    string item_description_sid = item_id.get_appropriate_description_sid(item->get_base_id());
     string display_item_description = StringTable::get(item_description_sid);
     
     uint quantity = item->get_quantity();

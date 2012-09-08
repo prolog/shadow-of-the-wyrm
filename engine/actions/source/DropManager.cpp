@@ -5,6 +5,7 @@
 #include "DropManager.hpp"
 #include "Game.hpp"
 #include "ItemDisplayFilterFactory.hpp"
+#include "ItemIdentifier.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "StringConstants.hpp"
@@ -84,7 +85,8 @@ void DropManager::handle_item_dropped_message(CreaturePtr creature, ItemPtr item
     
     uint quantity = item->get_quantity();
     
-    string drop_message = TextMessages::get_item_drop_message(StringTable::get(item->get_usage_description_sid()), quantity);
+    ItemIdentifier item_id;
+    string drop_message = TextMessages::get_item_drop_message(StringTable::get(item_id.get_appropriate_usage_description_sid(item->get_base_id())), quantity);
     
     manager->add_new_message(drop_message);
     manager->send();
