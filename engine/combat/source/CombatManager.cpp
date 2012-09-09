@@ -4,6 +4,7 @@
 #include "DamageCalculatorFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
+#include "HostilityManager.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
@@ -59,8 +60,6 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 
   bool mark_for_weapon_and_combat_skills = false;
  
- // JCD FIXME: Test factory class generation and values with ranged
- // JCD FIXME FIXME FIXME: Anywhere where there is an "attack_type", audit and confirm that it's good!
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(attacking_creature, attack_type);
   CombatTargetNumberCalculatorPtr ctn_calculator = CombatTargetNumberCalculatorFactory::create_target_number_calculator(attack_type);
   ISpeedCalculatorPtr speed_calculator = SpeedCalculatorFactory::create_speed_calculator(attack_type);
@@ -99,10 +98,14 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     }    
   }
 
-  // If the attack was a PvM type attack, mark the weapon and combat skills of the attacking creature.
+  // If the attack was a PvM type attack, mark the weapon and combat skills of the attacking creature,
+  // and add the attacking creature as a threat to the attacked creature.
   if (attacking_creature)
   {
     mark_weapon_and_combat_skills(attacking_creature, attack_type, mark_for_weapon_and_combat_skills);
+    
+    HostilityManager hm;
+    hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id());
   }
 
   send_combat_messages();
