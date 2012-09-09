@@ -7,6 +7,7 @@
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
 #include "Game.hpp"
+#include "HostilityManager.hpp"
 #include "InitialItemEquipper.hpp"
 #include "Log.hpp"
 #include "ResistancesCalculator.hpp"
@@ -305,6 +306,7 @@ void CreatureFactory::initialize(CreaturePtr creature)
 
 void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
 {
+  HostilityManager hostility_manager;
   Game* game = Game::instance();
   
   if (game)
@@ -313,9 +315,7 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
     
     if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
     {
-      DecisionStrategyPtr decision_strategy = npc->get_decision_strategy();
-      ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
-      threat_ratings.add_threat(PlayerConstants::PLAYER_CREATURE_ID, 100);
+      hostility_manager.set_hostility_to_player(npc);
     }
   }
 }

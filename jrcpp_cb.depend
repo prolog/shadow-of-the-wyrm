@@ -492,13 +492,14 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatconstants.cpp
 	"CombatConstants.hpp"
 
-1346261201 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
+1347200216 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\combatmanager.cpp
 	"CombatConstants.hpp"
 	"CombatManager.hpp"
 	"DeathManagerFactory.hpp"
 	"DamageCalculatorFactory.hpp"
 	"ExperienceManager.hpp"
 	"Game.hpp"
+	"HostilityManager.hpp"
 	"ToHitCalculatorFactory.hpp"
 	"CombatTargetNumberCalculatorFactory.hpp"
 	"MapUtils.hpp"
@@ -1382,7 +1383,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\creationutils.cpp
 	"CreationUtils.hpp"
 
-1345033559 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
+1347196903 source:c:\cygwin\home\julian\jrcpp\engine\source\creaturefactory.cpp
 	<cmath>
 	<boost/make_shared.hpp>
 	<boost/uuid/uuid_generators.hpp>
@@ -1392,6 +1393,7 @@
 	"CreatureFactory.hpp"
 	"CreatureGenerationConstants.hpp"
 	"Game.hpp"
+	"HostilityManager.hpp"
 	"InitialItemEquipper.hpp"
 	"Log.hpp"
 	"ResistancesCalculator.hpp"
@@ -2463,7 +2465,7 @@
 	"NullSpeedCalculator.hpp"
 	"SecondaryPhysicalAttackSpeedCalculator.hpp"
 
-1347119191 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
+1347123265 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
 	"ActionManager.hpp"
 	"ConsumableManager.hpp"
 	"ItemDisplayFilterFactory.hpp"
@@ -2524,4 +2526,8 @@
 
 1347109019 c:\cygwin\home\julian\jrcpp\engine\items\source\unit_tests\initialitemselector_test.cpp
 	"gtest/gtest.h"
+
+1347196969 source:c:\cygwin\home\julian\jrcpp\engine\combat\source\hostilitymanager.cpp
+	"Game.hpp"
+	"HostilityManager.hpp"
 
