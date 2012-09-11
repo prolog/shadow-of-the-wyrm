@@ -216,16 +216,6 @@ ItemIdentificationType Item::get_identification_type() const
   return identification_type;
 }
 
-void Item::set_identified(const bool new_identified)
-{
-  identified = new_identified;
-}
-
-bool Item::get_identified() const
-{
-  return identified;
-}
-
 bool Item::matches(boost::shared_ptr<Item> i)
 {
   bool match = (i);

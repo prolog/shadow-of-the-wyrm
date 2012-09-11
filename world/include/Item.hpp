@@ -76,9 +76,6 @@ class Item
     virtual void   set_identification_type(const ItemIdentificationType new_id_type);
     ItemIdentificationType get_identification_type() const;
     
-    virtual void   set_identified(const bool new_identified);
-    virtual bool   get_identified() const;
-
     // Functions for stack management
     virtual bool matches(boost::shared_ptr<Item> item);
     
@@ -122,7 +119,6 @@ class Item
     uchar symbol;
     Colour colour;
     ItemIdentificationType identification_type;
-    bool identified;
     EffectPtr effect;
     
     // This needs to be deep copied.

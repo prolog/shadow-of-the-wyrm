@@ -1364,7 +1364,7 @@
 		<Cursor position="247" topLine="0" />
 	</File>
 	<File name="engine\source\CreatureFactory.cpp" open="1" top="1" tabpos="1">
-		<Cursor position="2246" topLine="62" />
+		<Cursor position="2246" topLine="291" />
 	</File>
 	<File name="engine\source\CreatureGenerationManager.cpp" open="1" top="0" tabpos="6">
 		<Cursor position="18" topLine="0" />
@@ -1405,7 +1405,7 @@
 	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="356" topLine="11" />
 	</File>
-	<File name="engine\source\RNG.cpp" open="1" top="0" tabpos="11">
+	<File name="engine\source\RNG.cpp" open="1" top="0" tabpos="9">
 		<Cursor position="2102" topLine="73" />
 	</File>
 	<File name="engine\source\RaceManager.cpp" open="0" top="0" tabpos="23">
@@ -1903,7 +1903,7 @@
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
 	</File>
-	<File name="world\source\Creature.cpp" open="1" top="0" tabpos="9">
+	<File name="world\source\Creature.cpp" open="1" top="0" tabpos="7">
 		<Cursor position="4758" topLine="244" />
 	</File>
 	<File name="world\source\CreatureGenerationValues.cpp" open="0" top="0" tabpos="8">
@@ -1972,7 +1972,7 @@
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="105" topLine="0" />
 	</File>
-	<File name="world\source\Statistic.cpp" open="1" top="0" tabpos="10">
+	<File name="world\source\Statistic.cpp" open="1" top="0" tabpos="8">
 		<Cursor position="1015" topLine="33" />
 	</File>
 	<File name="world\source\StatisticsModifier.cpp" open="0" top="0" tabpos="6">
