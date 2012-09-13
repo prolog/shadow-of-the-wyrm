@@ -1,12 +1,12 @@
 #include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
-#include "ItemDisplayFilterFactory.hpp"
+#include "ItemFilterFactory.hpp"
 
 using namespace std;
 
 // Identify all the possessions, both equipment and inventory, of a creature.
-void ItemIdentifier::set_possessions_identified(CreaturePtr creature, const list<IItemDisplayFilterPtr> * const filter_v)
+void ItemIdentifier::set_possessions_identified(CreaturePtr creature, const list<IItemFilterPtr> * const filter_v)
 {
   if (creature)
   {
@@ -17,7 +17,7 @@ void ItemIdentifier::set_possessions_identified(CreaturePtr creature, const list
 
 // Identify items in the equipment based on the filter provided.  If no filter is provided,
 // then identify everything.
-void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<IItemDisplayFilterPtr> * const filter_v)
+void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<IItemFilterPtr> * const filter_v)
 {
   if (creature)
   {
@@ -31,8 +31,8 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
 
       if (filter_v)
       {
-        const list<IItemDisplayFilterPtr> filters = *filter_v;
-        BOOST_FOREACH(IItemDisplayFilterPtr filter, filters)
+        const list<IItemFilterPtr> filters = *filter_v;
+        BOOST_FOREACH(IItemFilterPtr filter, filters)
         {
           passes_filter = filter->passes_filter(item);
           
@@ -46,7 +46,7 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
       // This is an item to be identified (it passes all the filters), so identify it.
       if (passes_filter) 
       {
-        set_item_identified(item->get_base_id(), true);
+        set_item_identified(item, item->get_base_id(), true);
       }
     }
   }
@@ -54,7 +54,7 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
 
 // Identify items in the inventory based on the filter provided.  If no filter is provided,
 // then identify everything.
-void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<IItemDisplayFilterPtr> * const filter_v)
+void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<IItemFilterPtr> * const filter_v)
 {
   if (creature)
   {
@@ -66,8 +66,8 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
       
       if (filter_v)
       {
-        list<IItemDisplayFilterPtr> filters = *filter_v;
-        BOOST_FOREACH(IItemDisplayFilterPtr filter, filters)
+        list<IItemFilterPtr> filters = *filter_v;
+        BOOST_FOREACH(IItemFilterPtr filter, filters)
         {
           passes_filter = filter->passes_filter(item);
           
@@ -81,7 +81,7 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
       // This is an item to be identified (it passes all the filters), so identify it.
       if (passes_filter) 
       {
-        set_item_identified(item->get_base_id(), true);
+        set_item_identified(item, item->get_base_id(), true);
       }
     }    
   }
@@ -92,19 +92,24 @@ void ItemIdentifier::set_possessions_identified_by_type(CreaturePtr creature, co
 {
   if (item_type != ITEM_TYPE_NULL)
   {
-    list<IItemDisplayFilterPtr> item_filter = ItemDisplayFilterFactory::create_item_type_filter(item_type);
+    list<IItemFilterPtr> item_filter = ItemFilterFactory::create_item_type_filter(item_type);
     set_possessions_identified(creature, &item_filter);
   }
 }
 
 // Identify an item
-void ItemIdentifier::set_item_identified(const string& base_item_id, const bool is_identified) const
+void ItemIdentifier::set_item_identified(ItemPtr item, const string& base_item_id, const bool is_identified) const
 {
-  ItemPtr item = get_base_item(base_item_id);
+  ItemPtr base_item = get_base_item(base_item_id);
   
-  if (item)
+  if (item && base_item)
   {
-    item->set_item_identified(is_identified);
+    // "Base identify" all items of that type.
+    base_item->set_item_identified(is_identified);
+    
+    // "Fully identify" this particular item.  It's already going to be marked as identified by the
+    // line of code above; setting the status identified means that its B/U/C status is known.
+    item->set_status_identified(true);
   }
 }
 

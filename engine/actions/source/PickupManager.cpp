@@ -2,7 +2,7 @@
 #include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "Inventory.hpp"
-#include "ItemDisplayFilterFactory.hpp"
+#include "ItemFilterFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "PickupManager.hpp"
@@ -65,7 +65,7 @@ ActionCostValue PickupManager::handle_pickup(CreaturePtr creature, MapPtr map, A
         // If there are many items, get one of them.
         else
         {
-          list<IItemDisplayFilterPtr> no_filter = ItemDisplayFilterFactory::create_empty_filter();
+          list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
           pick_up_item = am->inventory(creature, inv, no_filter, false);
         }
         

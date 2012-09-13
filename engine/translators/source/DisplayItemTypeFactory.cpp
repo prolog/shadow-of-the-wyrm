@@ -95,6 +95,7 @@ DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
 
   switch(item_type)
   {
+    case ITEM_TYPE_NULL:
     case ITEM_TYPE_MISC:
       display_item_type = make_shared<MiscDisplayItemType>();
       break;

@@ -4,7 +4,7 @@
 #include "Display.hpp"
 #include "DisplayItem.hpp"
 #include "IActionManager.hpp"
-#include "IItemDisplayFilter.hpp"
+#include "IItemFilter.hpp"
 
 class InventoryManager : public IActionManager
 {
@@ -13,7 +13,7 @@ class InventoryManager : public IActionManager
     ~InventoryManager();
 
     // Do the actual managing of the inventory
-    ItemPtr manage_inventory(Inventory& inv, const std::list<IItemDisplayFilterPtr>& display_filter_list, const bool inventory_is_read_only);
+    ItemPtr manage_inventory(Inventory& inv, const std::list<IItemFilterPtr>& display_filter_list, const bool inventory_is_read_only);
 
     // Select an item from the current 'page'.
     ItemPtr select_item(Inventory& inv, const DisplayInventoryMap& inventory_display, const uint item_index);

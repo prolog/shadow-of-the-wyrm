@@ -1,11 +1,11 @@
 #pragma once
 #include "Item.hpp"
 
-class IItemDisplayFilter
+class IItemFilter
 {
   public:
     virtual bool passes_filter(ItemPtr item) const = 0;
 };
 
-typedef boost::shared_ptr<IItemDisplayFilter> IItemDisplayFilterPtr;
+typedef boost::shared_ptr<IItemFilter> IItemFilterPtr;
 

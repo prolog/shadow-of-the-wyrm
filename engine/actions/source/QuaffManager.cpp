@@ -1,6 +1,6 @@
 #include "ActionManager.hpp"
 #include "ConsumableManager.hpp"
-#include "ItemDisplayFilterFactory.hpp"
+#include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManager.hpp"
 #include "QuaffManager.hpp"
@@ -15,7 +15,7 @@ ActionCostValue QuaffManager::quaff(CreaturePtr creature, ActionManager * const 
   
   if (creature)
   {
-    list<IItemDisplayFilterPtr> display_filter_list = ItemDisplayFilterFactory::create_item_type_filter(ITEM_TYPE_POTION);
+    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ITEM_TYPE_POTION);
     ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, false);
     
     if (selected_item)
@@ -24,7 +24,7 @@ ActionCostValue QuaffManager::quaff(CreaturePtr creature, ActionManager * const 
       
       if (potion)
       {
-        quaff_potion(creature, potion);
+        quaff_potion(creature, am, potion);
         action_cost_value = get_action_cost_value();
       }
     }
@@ -34,7 +34,7 @@ ActionCostValue QuaffManager::quaff(CreaturePtr creature, ActionManager * const 
 }
 
 // A valid potion's been selected.  Quaff it: get the potion's nutrition, and then do the magical effect.
-void QuaffManager::quaff_potion(CreaturePtr creature, PotionPtr potion)
+void QuaffManager::quaff_potion(CreaturePtr creature, ActionManager * const am, PotionPtr potion)
 {
   if (creature && potion)
   {
@@ -58,7 +58,7 @@ void QuaffManager::quaff_potion(CreaturePtr creature, PotionPtr potion)
       
       // Process the effect.  This will do any necessary updates to the creature, and will also
       // add a status message based on whether the item was identified.
-      bool effect_identified = potion_effect->effect(creature, potion->get_status());
+      bool effect_identified = potion_effect->effect(creature, am, potion->get_status());
       
       // Was the item identified?
       if (effect_identified)
@@ -66,7 +66,7 @@ void QuaffManager::quaff_potion(CreaturePtr creature, PotionPtr potion)
         // If the item was not identified prior to quaffing, identify it now.
         if (!potion_originally_identified)
         {
-          item_id.set_item_identified(potion_base_id, true);
+          item_id.set_item_identified(potion, potion_base_id, true);
         }
       }
     }

@@ -2,7 +2,7 @@
 #include "EquipmentCommandProcessor.hpp"
 #include "EquipmentCommands.hpp"
 #include "Game.hpp"
-#include "ItemDisplayFilterFactory.hpp"
+#include "ItemFilterFactory.hpp"
 
 using namespace std;
 
@@ -42,7 +42,7 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
       }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
       {
-        list<IItemDisplayFilterPtr> display_filter = ItemDisplayFilterFactory::create_empty_filter();
+        list<IItemFilterPtr> display_filter = ItemFilterFactory::create_empty_filter();
         
         game->actions.inventory(creature, creature->get_inventory(), display_filter, true);
         // Because the player is just looking at the items, this shouldn't

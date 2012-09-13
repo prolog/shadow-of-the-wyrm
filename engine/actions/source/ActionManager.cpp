@@ -8,7 +8,7 @@
 #include "EquipmentManager.hpp"
 #include "FileWriter.hpp"
 #include "Game.hpp"
-#include "ItemDisplayFilterFactory.hpp"
+#include "ItemFilterFactory.hpp"
 #include "InventoryManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
@@ -133,7 +133,7 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
       list<EquipmentWornLocation> worn_list;
       worn_list.push_back(worn_location);
       
-      list<IItemDisplayFilterPtr> worn_filter = ItemDisplayFilterFactory::create_equipment_filter(worn_list);
+      list<IItemFilterPtr> worn_filter = ItemFilterFactory::create_equipment_filter(worn_list);
       ItemPtr item_in_slot = inventory(creature, creature->get_inventory(), worn_filter, false);
       
       // This is null if no item was selected.
@@ -214,7 +214,7 @@ ActionCost ActionManager::drop(CreaturePtr creature)
 }
 
 // Display the inventory; potentially select something.
-ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const list<IItemDisplayFilterPtr>& display_filter_list, const bool inventory_is_read_only)
+ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const list<IItemFilterPtr>& display_filter_list, const bool inventory_is_read_only)
 {
   ItemPtr selected_item;
   

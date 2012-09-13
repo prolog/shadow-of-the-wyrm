@@ -1,5 +1,5 @@
 #include "ActionManager.hpp"
-#include "ItemDisplayFilterFactory.hpp"
+#include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManager.hpp"
 #include "ReadManager.hpp"
@@ -16,7 +16,7 @@ ActionCostValue ReadManager::read(CreaturePtr creature, ActionManager * const am
 
   if (creature && am)
   {
-    list<IItemDisplayFilterPtr> display_list = ItemDisplayFilterFactory::create_readable_filter();
+    list<IItemFilterPtr> display_list = ItemFilterFactory::create_readable_filter();
     ItemPtr selected_readable_item = am->inventory(creature, creature->get_inventory(), display_list, false);
     
     if (selected_readable_item)
@@ -26,7 +26,7 @@ ActionCostValue ReadManager::read(CreaturePtr creature, ActionManager * const am
       if (readable)
       {
         // Read it - cast or learn the spell
-        read_item(creature, readable);
+        read_item(creature, am, readable);
         
         // Scroll/spellbook's been read as expected - increment the turn.
         action_cost_value = get_action_cost_value();
@@ -37,7 +37,7 @@ ActionCostValue ReadManager::read(CreaturePtr creature, ActionManager * const am
   return action_cost_value;
 }
 
-void ReadManager::read_item(CreaturePtr creature, ReadablePtr readable)
+void ReadManager::read_item(CreaturePtr creature, ActionManager * const am, ReadablePtr readable)
 {
   if (creature && readable)
   {
@@ -61,10 +61,10 @@ void ReadManager::read_item(CreaturePtr creature, ReadablePtr readable)
       
       // Was the effect identified?  If it was, and if the item wasn't previously identified,
       // identify the item in the item templates.
-      bool effect_identified = spell_effect->effect(creature, readable->get_status());      
+      bool effect_identified = spell_effect->effect(creature, am, readable->get_status());      
       if (effect_identified && !readable_originally_identified)
       {
-        item_id.set_item_identified(base_id, true);
+        item_id.set_item_identified(readable, base_id, true);
       }
     }
   }
