@@ -2518,9 +2518,11 @@
 1347108889 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemgenerationmanager.cpp
 	"ItemGenerationManager.hpp"
 
-1347117183 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemidentifier.cpp
+1347540722 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemidentifier.cpp
+	<boost/foreach.hpp>
 	"Game.hpp"
 	"ItemIdentifier.hpp"
+	"ItemDisplayFilterFactory.hpp"
 
 1347108883 source:c:\cygwin\home\julian\jrcpp\engine\items\source\initialitemselector.cpp
 	"InitialItemSelector.hpp"
@@ -2544,7 +2546,7 @@
 	"MessageManager.hpp"
 	"ReadManager.hpp"
 
-1347413651 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\identifyeffect.cpp
+1347540381 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\identifyeffect.cpp
 	<boost/foreach.hpp>
 	"Creature.hpp"
 	"IdentifyEffect.hpp"

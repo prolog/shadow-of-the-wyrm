@@ -3,6 +3,7 @@
 
 enum ItemType
 {
+  ITEM_TYPE_NULL = -1,
   ITEM_TYPE_FIRST = 0,
   ITEM_TYPE_MISC = 0,
   ITEM_TYPE_WEAPON = 1,

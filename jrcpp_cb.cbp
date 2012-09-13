@@ -160,6 +160,7 @@
 		<Unit filename="engine\XML\include\XMLPlantReader.hpp" />
 		<Unit filename="engine\XML\include\XMLPotionReader.hpp" />
 		<Unit filename="engine\XML\include\XMLRacesReader.hpp" />
+		<Unit filename="engine\XML\include\XMLReadableReader.hpp" />
 		<Unit filename="engine\XML\include\XMLReader.hpp" />
 		<Unit filename="engine\XML\include\XMLResistancesReader.hpp" />
 		<Unit filename="engine\XML\include\XMLRingReader.hpp" />
@@ -189,6 +190,7 @@
 		<Unit filename="engine\XML\source\XMLPlantReader.cpp" />
 		<Unit filename="engine\XML\source\XMLPotionReader.cpp" />
 		<Unit filename="engine\XML\source\XMLRacesReader.cpp" />
+		<Unit filename="engine\XML\source\XMLReadableReader.cpp" />
 		<Unit filename="engine\XML\source\XMLReader.cpp" />
 		<Unit filename="engine\XML\source\XMLResistancesReader.cpp" />
 		<Unit filename="engine\XML\source\XMLRingReader.cpp" />
