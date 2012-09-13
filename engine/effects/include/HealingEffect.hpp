@@ -8,9 +8,9 @@ class HealingEffect : public Effect
     virtual Effect* clone();
 
   protected:
-    virtual bool effect_blessed(boost::shared_ptr<Creature> creature);
-    virtual bool effect_uncursed(boost::shared_ptr<Creature> creature);
-    virtual bool effect_cursed(boost::shared_ptr<Creature> creature);
+    virtual bool effect_blessed(boost::shared_ptr<Creature> creature, ActionManager * const am);
+    virtual bool effect_uncursed(boost::shared_ptr<Creature> creature, ActionManager * const am);
+    virtual bool effect_cursed(boost::shared_ptr<Creature> creature, ActionManager * const am);
     
     virtual bool heal(boost::shared_ptr<Creature> creature, const float healing_multiplier) const;
     

@@ -4,7 +4,7 @@
 #include "ActionManager.hpp"
 #include "DropManager.hpp"
 #include "Game.hpp"
-#include "ItemDisplayFilterFactory.hpp"
+#include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
@@ -29,7 +29,7 @@ ActionCostValue DropManager::drop(CreaturePtr creature, ActionManager * const am
     }
     else
     {
-      list<IItemDisplayFilterPtr> no_filter = ItemDisplayFilterFactory::create_empty_filter();
+      list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
       ItemPtr item_to_drop = am->inventory(creature, creature->get_inventory(), no_filter, false);
       
       if (!item_to_drop)

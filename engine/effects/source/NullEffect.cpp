@@ -15,17 +15,17 @@ Effect* NullEffect::clone()
   return new NullEffect(*this);
 }
 
-bool NullEffect::effect_blessed(CreaturePtr creature)
+bool NullEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
 {
   return false;
 }
 
-bool NullEffect::effect_uncursed(CreaturePtr creature)
+bool NullEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
 {
   return false;
 }
 
-bool NullEffect::effect_cursed(CreaturePtr creature)
+bool NullEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
 {
   return false;
 }

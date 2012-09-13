@@ -14,7 +14,7 @@ InventoryTranslator::~InventoryTranslator()
 {
 }
 
-DisplayInventoryMap InventoryTranslator::create_display_inventory(Inventory& inv, const list<IItemDisplayFilterPtr>& display_filter_list)
+DisplayInventoryMap InventoryTranslator::create_display_inventory(Inventory& inv, const list<IItemFilterPtr>& display_filter_list)
 {
   DisplayInventoryMap display_inventory;
 
@@ -45,9 +45,9 @@ DisplayInventoryMap InventoryTranslator::create_display_inventory(Inventory& inv
 //
 // If the squishy filter is false, then the types must match exactly.  Otherwise, similar slots (left hand/right hand/ammunition, or right
 // finger/left finger).
-bool InventoryTranslator::is_applicable_for_display(ItemPtr item, const list<IItemDisplayFilterPtr>& display_filter_list)
+bool InventoryTranslator::is_applicable_for_display(ItemPtr item, const list<IItemFilterPtr>& display_filter_list)
 {
-  BOOST_FOREACH(IItemDisplayFilterPtr display_filter, display_filter_list)
+  BOOST_FOREACH(IItemFilterPtr display_filter, display_filter_list)
   {
     if (!display_filter->passes_filter(item))
     {

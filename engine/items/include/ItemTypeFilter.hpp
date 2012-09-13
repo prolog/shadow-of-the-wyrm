@@ -1,12 +1,12 @@
 #pragma once
-#include "IItemDisplayFilter.hpp"
+#include "IItemFilter.hpp"
 
 // Display an item based on whether its item type matches a particular
 // item type.
-class ItemTypeDisplayFilter : public IItemDisplayFilter
+class ItemTypeFilter : public IItemFilter
 {
   public:
-    ItemTypeDisplayFilter(const ItemType it);
+    ItemTypeFilter(const ItemType it);
     bool passes_filter(ItemPtr item) const;
 
   protected:

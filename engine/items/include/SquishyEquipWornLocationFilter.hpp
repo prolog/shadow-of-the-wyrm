@@ -1,14 +1,14 @@
 #pragma once
-#include "IItemDisplayFilter.hpp"
+#include "IItemFilter.hpp"
 
 // This class checks to see whether an item can be equipped in a particular
 // slot.  It is not strict, and allows squishiness, so if an item specifies
 // wielded, it can also be equipped in the offhand.  Similarly, if an item
 // specifies "left ring", it can also be equipped as the "right ring".
-class SquishyEquipWornLocationDisplayFilter : public IItemDisplayFilter
+class SquishyEquipWornLocationFilter : public IItemFilter
 {
   public:
-    SquishyEquipWornLocationDisplayFilter(const EquipmentWornLocation ewl);
+    SquishyEquipWornLocationFilter(const EquipmentWornLocation ewl);
 
     bool passes_filter(ItemPtr item) const;
 

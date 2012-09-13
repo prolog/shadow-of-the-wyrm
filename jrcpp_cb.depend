@@ -225,7 +225,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1347367644 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1347576612 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -236,7 +236,7 @@
 	"EquipmentManager.hpp"
 	"FileWriter.hpp"
 	"Game.hpp"
-	"ItemDisplayFilterFactory.hpp"
+	"ItemFilterFactory.hpp"
 	"InventoryManager.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
@@ -269,10 +269,10 @@
 	"EquipmentManager.hpp"
 	"EquipmentTranslator.hpp"
 
-1345898211 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
+1347575420 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\inventorymanager.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
-	"IItemDisplayFilter.hpp"
+	"IItemFilter.hpp"
 	"InventoryCommandFactory.hpp"
 	"InventoryCommandProcessor.hpp"
 	"InventoryKeyboardCommandMap.hpp"
@@ -561,12 +561,12 @@
 1343737593 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandkeys.cpp
 	"EquipmentCommandKeys.hpp"
 
-1345898669 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
+1347575528 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommandprocessor.cpp
 	"EquipmentCommandKeys.hpp"
 	"EquipmentCommandProcessor.hpp"
 	"EquipmentCommands.hpp"
 	"Game.hpp"
-	"ItemDisplayFilterFactory.hpp"
+	"ItemFilterFactory.hpp"
 
 1343737702 source:c:\cygwin\home\julian\jrcpp\engine\commands\equipment\source\equipmentcommands.cpp
 	"EquipmentCommands.hpp"
@@ -1681,7 +1681,7 @@
 	"StringTable.hpp"
 	"StringConstants.hpp"
 
-1340887532 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\displayitemtypefactory.cpp
+1347540883 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\displayitemtypefactory.cpp
 	<boost/make_shared.hpp>
 	"DisplayItemTypeFactory.hpp"
 	"StringConstants.hpp"
@@ -1696,7 +1696,7 @@
 	"EquipmentTranslator.hpp"
 	"ItemTranslator.hpp"
 
-1345898104 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
+1347576423 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\inventorytranslator.cpp
 	<boost/foreach.hpp>
 	"DisplayItemTypeFactory.hpp"
 	"InventoryTranslator.hpp"
@@ -2411,24 +2411,24 @@
 1345902809 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\squishyequipwornlocationdisplayfilter.cpp
 	"SquishyEquipWornLocationDisplayFilter.hpp"
 
-1346219105 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\pickupmanager.cpp
+1347541406 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\pickupmanager.cpp
 	<list>
 	<boost/foreach.hpp>
 	"Game.hpp"
 	"Inventory.hpp"
-	"ItemDisplayFilterFactory.hpp"
+	"ItemFilterFactory.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
 	"PickupManager.hpp"
 	"StringConstants.hpp"
 
-1347119916 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
+1347541306 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\dropmanager.cpp
 	<ncurses.h>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
 	"DropManager.hpp"
 	"Game.hpp"
-	"ItemDisplayFilterFactory.hpp"
+	"ItemFilterFactory.hpp"
 	"ItemIdentifier.hpp"
 	"MapUtils.hpp"
 	"MessageManager.hpp"
@@ -2467,10 +2467,10 @@
 	"NullSpeedCalculator.hpp"
 	"SecondaryPhysicalAttackSpeedCalculator.hpp"
 
-1347123265 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
+1347577464 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
 	"ActionManager.hpp"
 	"ConsumableManager.hpp"
-	"ItemDisplayFilterFactory.hpp"
+	"ItemFilterFactory.hpp"
 	"ItemIdentifier.hpp"
 	"MessageManager.hpp"
 	"QuaffManager.hpp"
@@ -2478,12 +2478,12 @@
 1346680972 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemtypedisplayfilter.cpp
 	"ItemTypeDisplayFilter.hpp"
 
-1347414414 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\healingeffect.cpp
+1347578059 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\healingeffect.cpp
 	"Creature.hpp"
 	"HealingEffect.hpp"
 	"RNG.hpp"
 
-1347413651 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\nulleffect.cpp
+1347578059 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\nulleffect.cpp
 	"Creature.hpp"
 	"NullEffect.hpp"
 	"StringConstants.hpp"
@@ -2495,7 +2495,7 @@
 	"IdentifyEffect.hpp"
 	"NullEffect.hpp"
 
-1347414381 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effect.cpp
+1347578059 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effect.cpp
 	"Creature.hpp"
 	"Effect.hpp"
 	"StringConstants.hpp"
@@ -2518,11 +2518,11 @@
 1347108889 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemgenerationmanager.cpp
 	"ItemGenerationManager.hpp"
 
-1347540722 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemidentifier.cpp
+1347577437 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemidentifier.cpp
 	<boost/foreach.hpp>
 	"Game.hpp"
 	"ItemIdentifier.hpp"
-	"ItemDisplayFilterFactory.hpp"
+	"ItemFilterFactory.hpp"
 
 1347108883 source:c:\cygwin\home\julian\jrcpp\engine\items\source\initialitemselector.cpp
 	"InitialItemSelector.hpp"
@@ -2539,14 +2539,14 @@
 1347366969 source:c:\cygwin\home\julian\jrcpp\world\source\readable.cpp
 	"Readable.hpp"
 
-1347454985 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\readmanager.cpp
+1347578485 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\readmanager.cpp
 	"ActionManager.hpp"
-	"ItemDisplayFilterFactory.hpp"
+	"ItemFilterFactory.hpp"
 	"ItemIdentifier.hpp"
 	"MessageManager.hpp"
 	"ReadManager.hpp"
 
-1347540381 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\identifyeffect.cpp
+1347540759 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\identifyeffect.cpp
 	<boost/foreach.hpp>
 	"Creature.hpp"
 	"IdentifyEffect.hpp"
@@ -2559,4 +2559,25 @@
 1347495072 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlreadablereader.cpp
 	"EffectFactory.hpp"
 	"XMLReadableReader.hpp"
+
+1347575039 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemtypefilter.cpp
+	"ItemTypeFilter.hpp"
+
+1347575067 source:c:\cygwin\home\julian\jrcpp\engine\items\source\readableitemfilter.cpp
+	"ReadableItemFilter.hpp"
+
+1347575911 source:c:\cygwin\home\julian\jrcpp\engine\items\source\nullitemfilter.cpp
+	"NullItemFilter.hpp"
+
+1347575327 source:c:\cygwin\home\julian\jrcpp\engine\items\source\squishyequipwornlocationfilter.cpp
+	"SquishyEquipWornLocationFilter.hpp"
+
+1347576050 source:c:\cygwin\home\julian\jrcpp\engine\items\source\itemfilterfactory.cpp
+	<boost/foreach.hpp>
+	<boost/make_shared.hpp>
+	"ItemFilterFactory.hpp"
+	"ItemTypeFilter.hpp"
+	"NullItemFilter.hpp"
+	"ReadableItemFilter.hpp"
+	"SquishyEquipWornLocationFilter.hpp"
 
