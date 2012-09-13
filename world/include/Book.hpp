@@ -1,11 +1,13 @@
 #pragma once
-#include "Item.hpp"
+#include "Readable.hpp"
 
-class Book : public Item
+class Book : public Readable
 {
   public:
     Book();
     ~Book();
+    
+    bool destroy_on_read() const;
     
     Item* clone();
 };

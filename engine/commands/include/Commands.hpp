@@ -143,3 +143,11 @@ class QuaffCommand : public Command
     QuaffCommand();
     ~QuaffCommand();
 };
+
+class ReadCommand : public Command
+{
+  public:
+    ReadCommand();
+    ~ReadCommand();
+};
+

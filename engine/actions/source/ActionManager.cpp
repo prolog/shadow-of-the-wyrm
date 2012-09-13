@@ -14,6 +14,7 @@
 #include "MessageManager.hpp"
 #include "PickupManager.hpp"
 #include "PrayerManager.hpp"
+#include "ReadManager.hpp"
 #include "SearchActionManager.hpp"
 #include "VersionActionManager.hpp"
 #include "WeaponInfoManager.hpp"
@@ -189,6 +190,13 @@ ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemActio
 ActionCost ActionManager::quaff(CreaturePtr creature)
 {
   return get_action_cost(creature, quaff_manager.quaff(creature, this));
+}
+
+// 'r'ead a scroll or spellbook
+ActionCost ActionManager::read(CreaturePtr creature)
+{
+  ReadManager rm;
+  return get_action_cost(creature, rm.read(creature, this));
 }
 
 // Pick up an item, doing any necessary checks first.

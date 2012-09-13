@@ -218,6 +218,7 @@
 		<Unit filename="engine\actions\include\QuaffManager.hpp" />
 		<Unit filename="engine\actions\include\RangedCombatActionManager.hpp" />
 		<Unit filename="engine\actions\include\RangedCombatApplicabilityChecker.hpp" />
+		<Unit filename="engine\actions\include\ReadManager.hpp" />
 		<Unit filename="engine\actions\include\SearchActionManager.hpp" />
 		<Unit filename="engine\actions\include\TileMovementConfirmation.hpp" />
 		<Unit filename="engine\actions\include\TileSelectionManager.hpp" />
@@ -240,6 +241,7 @@
 		<Unit filename="engine\actions\source\QuaffManager.cpp" />
 		<Unit filename="engine\actions\source\RangedCombatActionManager.cpp" />
 		<Unit filename="engine\actions\source\RangedCombatApplicabilityChecker.cpp" />
+		<Unit filename="engine\actions\source\ReadManager.cpp" />
 		<Unit filename="engine\actions\source\SearchActionManager.cpp" />
 		<Unit filename="engine\actions\source\TileMovementConfirmation.cpp" />
 		<Unit filename="engine\actions\source\TileSelectionManager.cpp" />
@@ -493,10 +495,12 @@
 		<Unit filename="engine\effects\include\EffectFactory.hpp" />
 		<Unit filename="engine\effects\include\EffectTypes.hpp" />
 		<Unit filename="engine\effects\include\HealingEffect.hpp" />
+		<Unit filename="engine\effects\include\IdentifyEffect.hpp" />
 		<Unit filename="engine\effects\include\NullEffect.hpp" />
 		<Unit filename="engine\effects\source\Effect.cpp" />
 		<Unit filename="engine\effects\source\EffectFactory.cpp" />
 		<Unit filename="engine\effects\source\HealingEffect.cpp" />
+		<Unit filename="engine\effects\source\IdentifyEffect.cpp" />
 		<Unit filename="engine\effects\source\NullEffect.cpp" />
 		<Unit filename="engine\field_of_view\include\BresenhamLine.hpp" />
 		<Unit filename="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
@@ -781,6 +785,7 @@
 		<Unit filename="engine\translators\include\ItemTypeDisplayFilter.hpp" />
 		<Unit filename="engine\translators\include\MapTranslator.hpp" />
 		<Unit filename="engine\translators\include\NullDisplayFilter.hpp" />
+		<Unit filename="engine\translators\include\ReadableItemDisplayFilter.hpp" />
 		<Unit filename="engine\translators\include\SquishyEquipWornLocationDisplayFilter.hpp" />
 		<Unit filename="engine\translators\include\ViewMapTranslator.hpp" />
 		<Unit filename="engine\translators\source\CreatureTranslator.cpp" />
@@ -792,6 +797,7 @@
 		<Unit filename="engine\translators\source\ItemTypeDisplayFilter.cpp" />
 		<Unit filename="engine\translators\source\MapTranslator.cpp" />
 		<Unit filename="engine\translators\source\NullDisplayFilter.cpp" />
+		<Unit filename="engine\translators\source\ReadableItemDisplayFilter.cpp" />
 		<Unit filename="engine\translators\source\SquishyEquipWornLocationDisplayFilter.cpp" />
 		<Unit filename="engine\translators\source\ViewMapTranslator.cpp" />
 		<Unit filename="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
@@ -835,6 +841,7 @@
 		<Unit filename="world\include\Plant.hpp" />
 		<Unit filename="world\include\Potion.hpp" />
 		<Unit filename="world\include\Race.hpp" />
+		<Unit filename="world\include\Readable.hpp" />
 		<Unit filename="world\include\Resistances.hpp" />
 		<Unit filename="world\include\Ring.hpp" />
 		<Unit filename="world\include\Scroll.hpp" />
@@ -929,6 +936,7 @@
 		<Unit filename="world\source\Plant.cpp" />
 		<Unit filename="world\source\Potion.cpp" />
 		<Unit filename="world\source\Race.cpp" />
+		<Unit filename="world\source\Readable.cpp" />
 		<Unit filename="world\source\Resistances.cpp" />
 		<Unit filename="world\source\Ring.cpp" />
 		<Unit filename="world\source\Scroll.cpp" />

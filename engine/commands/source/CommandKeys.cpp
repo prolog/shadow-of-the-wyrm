@@ -35,6 +35,7 @@ const string CommandKeys::RANGED_WEAPON_INFO = "RANGED_WEAPON_INFO";
 const string CommandKeys::SELECT_TILE    = "SELECT_TILE";
 const string CommandKeys::FIRE_MISSILE   = "FIRE_MISSILE";
 const string CommandKeys::QUAFF          = "QUAFF";
+const string CommandKeys::READ           = "READ";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

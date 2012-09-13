@@ -3,6 +3,7 @@
 #include "ItemDisplayFilterFactory.hpp"
 #include "ItemTypeDisplayFilter.hpp"
 #include "NullDisplayFilter.hpp"
+#include "ReadableItemDisplayFilter.hpp"
 #include "SquishyEquipWornLocationDisplayFilter.hpp"
 
 using std::list;
@@ -60,6 +61,17 @@ list<IItemDisplayFilterPtr> ItemDisplayFilterFactory::create_item_type_filter(co
     IItemDisplayFilterPtr display_filter = make_shared<ItemTypeDisplayFilter>(it);
     it_filter.push_back(display_filter);
   }
+  
+  return it_filter;
+}
+
+// Create a filter containing all readable items (books and scrolls)
+list<IItemDisplayFilterPtr> ItemDisplayFilterFactory::create_readable_filter()
+{
+  list<IItemDisplayFilterPtr> it_filter;
+  
+  IItemDisplayFilterPtr readable_filter = make_shared<ReadableItemDisplayFilter>();
+  it_filter.push_back(readable_filter);
   
   return it_filter;
 }

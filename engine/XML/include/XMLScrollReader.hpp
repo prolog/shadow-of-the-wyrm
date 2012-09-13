@@ -1,6 +1,8 @@
 #pragma once
+#include "XMLReadableReader.hpp"
+#include "Scroll.hpp"
 
-class XMLScrollReader
+class XMLScrollReader : public XMLReadableReader
 {
   public:
     XMLScrollReader();

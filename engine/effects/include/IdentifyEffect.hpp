@@ -1,7 +1,7 @@
 #pragma once
 #include "Effect.hpp"
 
-class HealingEffect : public Effect
+class IdentifyEffect : public Effect
 {
   public:
     virtual std::string get_effect_identification_message(boost::shared_ptr<Creature> creature) const;
@@ -12,13 +12,7 @@ class HealingEffect : public Effect
     virtual bool effect_uncursed(boost::shared_ptr<Creature> creature);
     virtual bool effect_cursed(boost::shared_ptr<Creature> creature);
     
-    virtual bool heal(boost::shared_ptr<Creature> creature, const float healing_multiplier) const;
-    
-    virtual int get_random_healing_amount() const;
-
-    static const float BLESSED_MULTIPLIER;
-    static const float UNCURSED_MULTIPLIER;
-    static const float CURSED_MULTIPLIER;
-    static const int BASE_MIN_HP;
-    static const int BASE_MAX_HP;
+    // The actual identification message
+    std::string identification_msg;
 };
+

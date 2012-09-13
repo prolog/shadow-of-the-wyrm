@@ -828,6 +828,25 @@ string ActionTextKeys::get_quaff_message(const string& desc_sid, const string& p
   return message;
 }
 
+// JCD FIXME: COMBINE THIS AND THE ABOVE FN.
+string ActionTextKeys::get_read_message(const string& desc_sid, const string& readable_desc_sid, const bool is_player)
+{
+  string message = StringTable::get(ACTION_READ_PLAYER);
+  
+  if (!is_player)
+  {
+    message = StringTable::get(ACTION_READ_MONSTER);
+    // Replace the creature part
+    boost::replace_first(message, "%s", StringTable::get(desc_sid));
+    message[0] = toupper(message[0]);
+  }
+  
+  // Replace the readable part.
+  boost::replace_first(message, "%s", StringTable::get(readable_desc_sid));
+
+  return message;
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
@@ -848,6 +867,8 @@ const string ActionTextKeys::ACTION_NOTHING_HAPPENS            = "ACTION_NOTHING
 
 const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_PLAYER";
 const string ActionTextKeys::ACTION_QUAFF_MONSTER              = "ACTION_QUAFF_MONSTER";
+const string ActionTextKeys::ACTION_READ_PLAYER                = "ACTION_READ_PLAYER";
+const string ActionTextKeys::ACTION_READ_MONSTER               = "ACTION_READ_MONSTER";
 
 // Strings for various magical effects
 EffectTextKeys::EffectTextKeys()
@@ -872,9 +893,22 @@ string EffectTextKeys::get_healing_effect_message(const string& monster_desc_sid
   return heal_message;
 }
 
+string EffectTextKeys::get_identify_individual_item_message(const string& unid_usage_desc_sid, const string& id_usage_desc_sid)
+{
+  string id_message = StringTable::get(EFFECT_IDENTIFY_ITEM);
+  
+  boost::replace_first(id_message, "%s", StringTable::get(unid_usage_desc_sid));
+  boost::replace_first(id_message, "%s", StringTable::get(id_usage_desc_sid));
+  
+  return id_message;
+}
+
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
 const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
+const string EffectTextKeys::EFFECT_IDENTIFY_ALL_ITEMS = "EFFECT_IDENTIFY_ALL_ITEMS";
+const string EffectTextKeys::EFFECT_IDENTIFY_TYPE = "EFFECT_IDENTIFY_TYPE";
+const string EffectTextKeys::EFFECT_IDENTIFY_ITEM = "EFFECT_IDENTIFY_ITEM";
 
 // Strings for the various seasons
 SeasonTextKeys::SeasonTextKeys()

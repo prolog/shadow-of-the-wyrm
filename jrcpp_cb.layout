@@ -245,7 +245,7 @@
 		<Cursor position="54" topLine="0" />
 	</File>
 	<File name="engine\actions\include\ActionManager.hpp" open="0" top="0" tabpos="6">
-		<Cursor position="227" topLine="0" />
+		<Cursor position="2578" topLine="51" />
 	</File>
 	<File name="engine\actions\include\CharacterDumpManager.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="300" topLine="0" />
@@ -292,6 +292,9 @@
 	<File name="engine\actions\include\RangedCombatApplicabilityChecker.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="795" topLine="1" />
 	</File>
+	<File name="engine\actions\include\ReadManager.hpp" open="1" top="0" tabpos="3">
+		<Cursor position="426" topLine="0" />
+	</File>
 	<File name="engine\actions\include\SearchActionManager.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="179" topLine="0" />
 	</File>
@@ -314,7 +317,7 @@
 		<Cursor position="209" topLine="5" />
 	</File>
 	<File name="engine\actions\source\ActionManager.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="5357" topLine="180" />
+		<Cursor position="5490" topLine="186" />
 	</File>
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
@@ -346,14 +349,17 @@
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
 	</File>
-	<File name="engine\actions\source\QuaffManager.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="2119" topLine="52" />
+	<File name="engine\actions\source\QuaffManager.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="2975" topLine="73" />
 	</File>
 	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="7358" topLine="204" />
 	</File>
 	<File name="engine\actions\source\RangedCombatApplicabilityChecker.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="2538" topLine="67" />
+	</File>
+	<File name="engine\actions\source\ReadManager.cpp" open="1" top="1" tabpos="2">
+		<Cursor position="2623" topLine="67" />
 	</File>
 	<File name="engine\actions\source\SearchActionManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="128" topLine="0" />
@@ -568,7 +574,7 @@
 	<File name="engine\combat\include\ExperienceManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="323" topLine="3" />
 	</File>
-	<File name="engine\combat\include\HostilityManager.hpp" open="1" top="0" tabpos="3">
+	<File name="engine\combat\include\HostilityManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="36" topLine="0" />
 	</File>
 	<File name="engine\combat\include\LevelConstants.hpp" open="0" top="0" tabpos="8">
@@ -583,7 +589,7 @@
 	<File name="engine\combat\source\CombatConstants.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="79" topLine="0" />
 	</File>
-	<File name="engine\combat\source\CombatManager.cpp" open="1" top="0" tabpos="4">
+	<File name="engine\combat\source\CombatManager.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="218" topLine="0" />
 	</File>
 	<File name="engine\combat\source\CreatureDeathManager.cpp" open="0" top="0" tabpos="8">
@@ -595,7 +601,7 @@
 	<File name="engine\combat\source\ExperienceManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="3260" topLine="99" />
 	</File>
-	<File name="engine\combat\source\HostilityManager.cpp" open="1" top="0" tabpos="2">
+	<File name="engine\combat\source\HostilityManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="287" topLine="4" />
 	</File>
 	<File name="engine\combat\source\LevelConstants.cpp" open="0" top="0" tabpos="9">
@@ -647,13 +653,13 @@
 		<Cursor position="259" topLine="0" />
 	</File>
 	<File name="engine\commands\include\CommandKeys.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="1580" topLine="23" />
+		<Cursor position="1615" topLine="23" />
 	</File>
 	<File name="engine\commands\include\CommandProcessor.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="462" topLine="0" />
 	</File>
 	<File name="engine\commands\include\Commands.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="2361" topLine="122" />
+		<Cursor position="2453" topLine="130" />
 	</File>
 	<File name="engine\commands\include\KeyboardCommandMap.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="177" topLine="0" />
@@ -722,19 +728,19 @@
 		<Cursor position="481" topLine="8" />
 	</File>
 	<File name="engine\commands\source\CommandFactory.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="3034" topLine="97" />
+		<Cursor position="3130" topLine="97" />
 	</File>
 	<File name="engine\commands\source\CommandKeys.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="1527" topLine="32" />
+		<Cursor position="1578" topLine="32" />
 	</File>
 	<File name="engine\commands\source\CommandProcessor.cpp" open="0" top="0" tabpos="4">
-		<Cursor position="3396" topLine="106" />
+		<Cursor position="3287" topLine="106" />
 	</File>
 	<File name="engine\commands\source\Commands.cpp" open="0" top="0" tabpos="17">
-		<Cursor position="3266" topLine="188" />
+		<Cursor position="3391" topLine="197" />
 	</File>
 	<File name="engine\commands\source\KeyboardCommandMap.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="5082" topLine="78" />
+		<Cursor position="5163" topLine="79" />
 	</File>
 	<File name="engine\conversion\include\CharacterDumper.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="280" topLine="0" />
@@ -931,26 +937,35 @@
 	<File name="engine\description\source\TileDescription.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="983" topLine="18" />
 	</File>
-	<File name="engine\effects\include\Effect.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="1327" topLine="8" />
+	<File name="engine\effects\include\Effect.hpp" open="0" top="0" tabpos="1">
+		<Cursor position="549" topLine="12" />
 	</File>
 	<File name="engine\effects\include\EffectFactory.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="63" topLine="0" />
 	</File>
 	<File name="engine\effects\include\HealingEffect.hpp" open="0" top="0" tabpos="2">
-		<Cursor position="563" topLine="0" />
+		<Cursor position="441" topLine="0" />
+	</File>
+	<File name="engine\effects\include\IdentifyEffect.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="442" topLine="0" />
 	</File>
 	<File name="engine\effects\include\NullEffect.hpp" open="0" top="0" tabpos="18">
-		<Cursor position="182" topLine="0" />
+		<Cursor position="438" topLine="0" />
 	</File>
-	<File name="engine\effects\source\Effect.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="127" topLine="0" />
+	<File name="engine\effects\source\Effect.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="756" topLine="5" />
 	</File>
-	<File name="engine\effects\source\HealingEffect.cpp" open="0" top="0" tabpos="1">
-		<Cursor position="1095" topLine="34" />
+	<File name="engine\effects\source\EffectFactory.cpp" open="0" top="0" tabpos="4">
+		<Cursor position="210" topLine="0" />
+	</File>
+	<File name="engine\effects\source\HealingEffect.cpp" open="0" top="0" tabpos="3">
+		<Cursor position="1419" topLine="46" />
+	</File>
+	<File name="engine\effects\source\IdentifyEffect.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="508" topLine="33" />
 	</File>
 	<File name="engine\effects\source\NullEffect.cpp" open="0" top="0" tabpos="5">
-		<Cursor position="606" topLine="9" />
+		<Cursor position="417" topLine="0" />
 	</File>
 	<File name="engine\field_of_view\include\BresenhamLine.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="163" topLine="0" />
@@ -1279,8 +1294,8 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="412" topLine="22" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="4">
-		<Cursor position="22435" topLine="554" />
+	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="4">
+		<Cursor position="23786" topLine="579" />
 	</File>
 	<File name="engine\include\StringTable.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="159" topLine="0" />
@@ -1363,10 +1378,10 @@
 	<File name="engine\source\ClassManager.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="247" topLine="0" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="1" top="1" tabpos="1">
+	<File name="engine\source\CreatureFactory.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2246" topLine="291" />
 	</File>
-	<File name="engine\source\CreatureGenerationManager.cpp" open="1" top="0" tabpos="6">
+	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="18" topLine="0" />
 	</File>
 	<File name="engine\source\Dimensions.cpp" open="0" top="0" tabpos="0">
@@ -1405,7 +1420,7 @@
 	<File name="engine\source\Naming.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="356" topLine="11" />
 	</File>
-	<File name="engine\source\RNG.cpp" open="1" top="0" tabpos="9">
+	<File name="engine\source\RNG.cpp" open="0" top="0" tabpos="9">
 		<Cursor position="2102" topLine="73" />
 	</File>
 	<File name="engine\source\RaceManager.cpp" open="0" top="0" tabpos="23">
@@ -1418,7 +1433,7 @@
 		<Cursor position="4541" topLine="154" />
 	</File>
 	<File name="engine\source\StringConstants.cpp" open="0" top="0" tabpos="7">
-		<Cursor position="49439" topLine="1141" />
+		<Cursor position="40149" topLine="852" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1535,7 +1550,7 @@
 		<Cursor position="140" topLine="0" />
 	</File>
 	<File name="engine\translators\include\ItemDisplayFilterFactory.hpp" open="0" top="0" tabpos="7">
-		<Cursor position="531" topLine="0" />
+		<Cursor position="617" topLine="0" />
 	</File>
 	<File name="engine\translators\include\MapTranslator.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="146" topLine="0" />
@@ -1562,7 +1577,7 @@
 		<Cursor position="1465" topLine="37" />
 	</File>
 	<File name="engine\translators\source\ItemDisplayFilterFactory.cpp" open="0" top="0" tabpos="8">
-		<Cursor position="2063" topLine="42" />
+		<Cursor position="212" topLine="0" />
 	</File>
 	<File name="engine\translators\source\ItemTranslator.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="413" topLine="12" />
@@ -1588,8 +1603,8 @@
 	<File name="global_functions.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="1035" topLine="31" />
 	</File>
-	<File name="include\Colours.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="392" topLine="0" />
+	<File name="include\Colours.hpp" open="0" top="0" tabpos="3">
+		<Cursor position="392" topLine="2" />
 	</File>
 	<File name="include\buildinfo.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="135" topLine="0" />
@@ -1619,7 +1634,7 @@
 		<Cursor position="111" topLine="0" />
 	</File>
 	<File name="world\include\Book.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="101" topLine="0" />
+		<Cursor position="142" topLine="0" />
 	</File>
 	<File name="world\include\Calendar.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="356" topLine="6" />
@@ -1664,7 +1679,7 @@
 		<Cursor position="271" topLine="9" />
 	</File>
 	<File name="world\include\Item.hpp" open="0" top="0" tabpos="16">
-		<Cursor position="1108" topLine="24" />
+		<Cursor position="178" topLine="0" />
 	</File>
 	<File name="world\include\ItemTypes.hpp" open="0" top="0" tabpos="22">
 		<Cursor position="528" topLine="19" />
@@ -1693,6 +1708,9 @@
 	<File name="world\include\Race.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="3752" topLine="103" />
 	</File>
+	<File name="world\include\Readable.hpp" open="0" top="0" tabpos="0">
+		<Cursor position="332" topLine="0" />
+	</File>
 	<File name="world\include\Resistances.hpp" open="0" top="0" tabpos="8">
 		<Cursor position="283" topLine="15" />
 	</File>
@@ -1700,7 +1718,7 @@
 		<Cursor position="109" topLine="0" />
 	</File>
 	<File name="world\include\Scroll.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="107" topLine="0" />
+		<Cursor position="12" topLine="0" />
 	</File>
 	<File name="world\include\SkillTypes.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="1913" topLine="59" />
@@ -1759,7 +1777,7 @@
 	<File name="world\materials\include\MaterialFactory.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="59" topLine="0" />
 	</File>
-	<File name="world\materials\include\MaterialTypes.hpp" open="0" top="0" tabpos="1">
+	<File name="world\materials\include\MaterialTypes.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="257" topLine="2" />
 	</File>
 	<File name="world\materials\include\Onyx.hpp" open="0" top="0" tabpos="21">
@@ -1892,7 +1910,7 @@
 		<Cursor position="76" topLine="0" />
 	</File>
 	<File name="world\source\Book.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="100" topLine="0" />
+		<Cursor position="152" topLine="0" />
 	</File>
 	<File name="world\source\Calendar.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="1129" topLine="34" />
@@ -1903,7 +1921,7 @@
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
 	</File>
-	<File name="world\source\Creature.cpp" open="1" top="0" tabpos="7">
+	<File name="world\source\Creature.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="4758" topLine="244" />
 	</File>
 	<File name="world\source\CreatureGenerationValues.cpp" open="0" top="0" tabpos="8">
@@ -1931,7 +1949,7 @@
 		<Cursor position="1075" topLine="38" />
 	</File>
 	<File name="world\source\Item.cpp" open="0" top="0" tabpos="19">
-		<Cursor position="951" topLine="41" />
+		<Cursor position="2340" topLine="88" />
 	</File>
 	<File name="world\source\ItemTypes.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="101" topLine="0" />
@@ -1957,6 +1975,9 @@
 	<File name="world\source\Race.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="5553" topLine="253" />
 	</File>
+	<File name="world\source\Readable.cpp" open="0" top="0" tabpos="0">
+		<Cursor position="75" topLine="0" />
+	</File>
 	<File name="world\source\Resistances.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="3203" topLine="140" />
 	</File>
@@ -1964,7 +1985,7 @@
 		<Cursor position="99" topLine="0" />
 	</File>
 	<File name="world\source\Scroll.cpp" open="0" top="0" tabpos="0">
-		<Cursor position="111" topLine="0" />
+		<Cursor position="148" topLine="0" />
 	</File>
 	<File name="world\source\Skills.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="19103" topLine="810" />
@@ -1972,13 +1993,13 @@
 	<File name="world\source\Staff.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="105" topLine="0" />
 	</File>
-	<File name="world\source\Statistic.cpp" open="1" top="0" tabpos="8">
+	<File name="world\source\Statistic.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="1015" topLine="33" />
 	</File>
 	<File name="world\source\StatisticsModifier.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2869" topLine="109" />
 	</File>
-	<File name="world\source\ThreatRatings.cpp" open="1" top="0" tabpos="5">
+	<File name="world\source\ThreatRatings.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="1783" topLine="49" />
 	</File>
 	<File name="world\source\Wand.cpp" open="0" top="0" tabpos="0">

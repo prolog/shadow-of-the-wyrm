@@ -564,6 +564,7 @@ class ActionTextKeys
 {
   public:
     static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc_sid, const bool is_player);
+    static std::string get_read_message(const std::string& desc_sid, const std::string& readable_desc_sid, const bool is_player);
     
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -589,14 +590,19 @@ class ActionTextKeys
     
     static const std::string ACTION_QUAFF_PLAYER;
     static const std::string ACTION_QUAFF_MONSTER;
+    static const std::string ACTION_READ_PLAYER;
+    static const std::string ACTION_READ_MONSTER;
 };
 
 class EffectTextKeys
 {
   public:
     static std::string get_healing_effect_message(const std::string& monster_desc_sid, bool is_player);
+    static std::string get_identify_individual_item_message(const std::string& unid_usage_desc_sid, const std::string& id_usage_desc_sid);
   
     static const std::string EFFECT_NULL;
+    static const std::string EFFECT_IDENTIFY_ALL_ITEMS;
+    static const std::string EFFECT_IDENTIFY_TYPE;
     
   protected:
     EffectTextKeys();
@@ -604,6 +610,7 @@ class EffectTextKeys
 
     static const std::string EFFECT_HEALING_PLAYER;
     static const std::string EFFECT_HEALING_MONSTER;
+    static const std::string EFFECT_IDENTIFY_ITEM;
 };
 
 class SeasonTextKeys
