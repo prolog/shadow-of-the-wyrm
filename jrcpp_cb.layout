@@ -92,7 +92,7 @@
 		<Cursor position="62" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLBookReader.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="88" topLine="0" />
+		<Cursor position="93" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLClassesReader.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="992" topLine="2" />
@@ -122,7 +122,7 @@
 		<Cursor position="66" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLItemsReaders.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="1645" topLine="29" />
+		<Cursor position="1255" topLine="33" />
 	</File>
 	<File name="engine\XML\include\XMLPlantReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="57" topLine="0" />
@@ -133,14 +133,17 @@
 	<File name="engine\XML\include\XMLRacesReader.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="188" topLine="0" />
 	</File>
+	<File name="engine\XML\include\XMLReadableReader.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="146" topLine="0" />
+	</File>
 	<File name="engine\XML\include\XMLReader.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="357" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLRingReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="109" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLScrollReader.hpp" open="0" top="0" tabpos="0">
-		<Cursor position="115" topLine="0" />
+	<File name="engine\XML\include\XMLScrollReader.hpp" open="1" top="0" tabpos="6">
+		<Cursor position="66" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLStaffReader.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="112" topLine="0" />
@@ -196,17 +199,20 @@
 	<File name="engine\XML\source\XMLItemReader.cpp" open="0" top="0" tabpos="18">
 		<Cursor position="429" topLine="7" />
 	</File>
-	<File name="engine\XML\source\XMLItemsReaders.cpp" open="0" top="0" tabpos="6">
-		<Cursor position="2631" topLine="64" />
+	<File name="engine\XML\source\XMLItemsReaders.cpp" open="1" top="1" tabpos="4">
+		<Cursor position="7844" topLine="281" />
 	</File>
 	<File name="engine\XML\source\XMLPlantReader.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="255" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLPotionReader.cpp" open="0" top="0" tabpos="24">
-		<Cursor position="341" topLine="0" />
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLRacesReader.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="332" topLine="0" />
+	</File>
+	<File name="engine\XML\source\XMLReadableReader.cpp" open="1" top="0" tabpos="1">
+		<Cursor position="549" topLine="1" />
 	</File>
 	<File name="engine\XML\source\XMLReader.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="187" topLine="0" />
@@ -292,7 +298,7 @@
 	<File name="engine\actions\include\RangedCombatApplicabilityChecker.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="795" topLine="1" />
 	</File>
-	<File name="engine\actions\include\ReadManager.hpp" open="1" top="0" tabpos="3">
+	<File name="engine\actions\include\ReadManager.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="426" topLine="0" />
 	</File>
 	<File name="engine\actions\include\SearchActionManager.hpp" open="0" top="0" tabpos="5">
@@ -349,7 +355,7 @@
 	<File name="engine\actions\source\PrayerManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="1970" topLine="46" />
 	</File>
-	<File name="engine\actions\source\QuaffManager.cpp" open="1" top="0" tabpos="1">
+	<File name="engine\actions\source\QuaffManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="2975" topLine="73" />
 	</File>
 	<File name="engine\actions\source\RangedCombatActionManager.cpp" open="0" top="0" tabpos="2">
@@ -358,8 +364,8 @@
 	<File name="engine\actions\source\RangedCombatApplicabilityChecker.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="2538" topLine="67" />
 	</File>
-	<File name="engine\actions\source\ReadManager.cpp" open="1" top="1" tabpos="2">
-		<Cursor position="2623" topLine="67" />
+	<File name="engine\actions\source\ReadManager.cpp" open="0" top="0" tabpos="2">
+		<Cursor position="2937" topLine="64" />
 	</File>
 	<File name="engine\actions\source\SearchActionManager.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="128" topLine="0" />
@@ -1294,8 +1300,8 @@
 	<File name="engine\include\SavageLandsEngine.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="412" topLine="22" />
 	</File>
-	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="4">
-		<Cursor position="23786" topLine="579" />
+	<File name="engine\include\StringConstants.hpp" open="0" top="0" tabpos="4">
+		<Cursor position="23955" topLine="579" />
 	</File>
 	<File name="engine\include\StringTable.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="159" topLine="0" />
@@ -1708,7 +1714,7 @@
 	<File name="world\include\Race.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="3752" topLine="103" />
 	</File>
-	<File name="world\include\Readable.hpp" open="0" top="0" tabpos="0">
+	<File name="world\include\Readable.hpp" open="1" top="0" tabpos="3">
 		<Cursor position="332" topLine="0" />
 	</File>
 	<File name="world\include\Resistances.hpp" open="0" top="0" tabpos="8">
