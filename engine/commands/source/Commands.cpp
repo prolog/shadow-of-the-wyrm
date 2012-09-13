@@ -209,3 +209,12 @@ QuaffCommand::~QuaffCommand()
 {
 }
 
+// 'r'ead a scroll or spellbook
+ReadCommand::ReadCommand()
+: Command(CommandKeys::READ)
+{
+}
+
+ReadCommand::~ReadCommand()
+{
+}

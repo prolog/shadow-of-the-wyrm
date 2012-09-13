@@ -10,6 +10,11 @@ Book::~Book()
 {
 }
 
+bool Book::destroy_on_read() const
+{
+  return false;
+}
+
 Item* Book::clone()
 {
   return new Book(*this);

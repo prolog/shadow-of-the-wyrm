@@ -114,6 +114,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = make_shared<QuaffCommand>();
   }
+  else if (command_name == CommandKeys::READ)
+  {
+    command = make_shared<ReadCommand>();
+  }
 
   return command;
 }

@@ -1,6 +1,7 @@
 #pragma once
+#include "XMLReadableReader.hpp"
 
-class XMLBookReader
+class XMLBookReader : public XMLReadableReader
 {
   public:
     XMLBookReader();

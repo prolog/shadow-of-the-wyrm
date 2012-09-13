@@ -101,11 +101,12 @@
 			<xs:element ref="tns:Plants" minOccurs="0"/>
 			<xs:element ref="tns:Boats" minOccurs="0"/>
 			<xs:element ref="tns:Potions" minOccurs="0"/>
+			<xs:element ref="tns:Scrolls" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 	<!-- Wands/Staves -->
-	<!-- Books, Scrolls -->
+	<!-- Books -->
 	<!-- Rings -->
 </xs:element>
 <xs:element name="Deity">
@@ -514,6 +515,13 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Scrolls">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Scroll" type="tns:Scroll" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="MiscItems">
 	<xs:complexType>
 		<xs:sequence>
@@ -621,6 +629,15 @@
 <xs:complexType name="Potion">
 	<xs:complexContent>
 		<xs:extension base="tns:Consumable">
+			<xs:sequence>
+				<xs:element name="Effect" type="tns:EffectType"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Scroll">
+	<xs:complexContent>
+		<xs:extension base="tns:Item">
 			<xs:sequence>
 				<xs:element name="Effect" type="tns:EffectType"/>
 			</xs:sequence>
@@ -910,11 +927,12 @@
 			Enumeration describing a type of magical effect.  See engine/effects/include/EffectTypes.hpp:
 				Null = 0
 				Healing = 1
+				Identify = 2
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="1"/>
+		<xs:maxInclusive value="2"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

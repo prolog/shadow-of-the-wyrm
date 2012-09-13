@@ -61,6 +61,9 @@ class ActionManager
     
     // Use a potion
     ActionCost quaff(CreaturePtr creature);
+    
+    // Read a scroll, or spellbook
+    ActionCost read(CreaturePtr creature);
 
     // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.

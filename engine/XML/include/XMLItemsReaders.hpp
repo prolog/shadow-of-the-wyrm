@@ -37,6 +37,7 @@ class XMLItemsReader
     ItemMap get_plants(const XMLNode& plants_node);
     ItemMap get_boats(const XMLNode& boats_node);
     ItemMap get_potions(const XMLNode& potions_node);
+    ItemMap get_scrolls(const XMLNode& scrolls_node);
     
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;

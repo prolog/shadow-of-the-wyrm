@@ -87,6 +87,14 @@ ItemMap XMLItemsReader::get_items(const XMLNode& items_node)
       items.insert(potions_map.begin(), potions_map.end());
     }
     
+    XMLNode scrolls_node = XMLUtils::get_next_element_by_local_name(items_node, "Scrolls");
+    
+    if (!scrolls_node.is_null())
+    {
+      ItemMap scrolls_map = get_scrolls(scrolls_node);
+      items.insert(scrolls_map.begin(), scrolls_map.end());
+    }
+    
     XMLNode misc_items_node = XMLUtils::get_next_element_by_local_name(items_node, "MiscItems");
     
     if (!misc_items_node.is_null())
@@ -274,4 +282,23 @@ ItemMap XMLItemsReader::get_potions(const XMLNode& potions_node)
   }
   
   return potions_map;
+}
+
+ItemMap XMLItemsReader::get_scrolls(const XMLNode& scrolls_node)
+{
+  ItemMap scrolls_map;
+  
+  if (!scrolls_node.is_null())
+  {
+    vector <XMLNode> scrolls_nodes = XMLUtils::get_elements_by_local_name(scrolls_node, "Scroll");
+
+    BOOST_FOREACH(XMLNode node, scrolls_nodes)
+    {
+      ScrollPtr scroll = make_shared<Scroll>();
+      scroll_reader.parse(scroll, node);
+      scrolls_map.insert(make_pair(scroll->get_id(), scroll));
+    }
+  }
+  
+  return scrolls_map;
 }

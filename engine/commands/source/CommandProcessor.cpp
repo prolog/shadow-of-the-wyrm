@@ -117,6 +117,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.quaff(creature);
       }
+      else if (command_name == CommandKeys::READ)
+      {
+        ac = game->actions.read(creature);
+      }
     }
   }
   

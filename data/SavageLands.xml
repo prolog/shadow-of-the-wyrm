@@ -918,6 +918,16 @@
 				</Wielded>
 				<Body><ID>chain_scraps</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
+				<InitialInventory>
+					<InitialItem>
+						<ID>healing_potion</ID>
+						<Quantity><Random><NumDice>2</NumDice><NumSides>2</NumSides></Random></Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>identify_scroll</ID>
+						<Quantity><Random><NumDice>2</NumDice><NumSides>2</NumSides></Random></Quantity>
+					</InitialItem>
+				</InitialInventory>
 			</InitialEquipmentAndInventory>
 		</Class>
 		<Class id="apothecary">
@@ -3536,6 +3546,22 @@
 				<Effect>1</Effect>
 			</Potion>
 		</Potions>
+		<Scrolls>
+			<Scroll id="identify_scroll">
+				<DescriptionSID>IDENTIFY_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_IDENTIFY_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>IDENTIFY_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_IDENTIFY_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>133</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<Effect>2</Effect>				
+			</Scroll>
+		</Scrolls>
 		<MiscItems>
 			<Item id="dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>

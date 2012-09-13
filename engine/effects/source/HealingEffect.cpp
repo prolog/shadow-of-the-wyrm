@@ -55,17 +55,17 @@ bool HealingEffect::heal(CreaturePtr creature, const float healing_multiplier) c
   return effect_identified;
 }
 
-bool HealingEffect::effect_blessed(boost::shared_ptr<Creature> creature) const
+bool HealingEffect::effect_blessed(boost::shared_ptr<Creature> creature)
 {
   return heal(creature, BLESSED_MULTIPLIER);
 }
 
-bool HealingEffect::effect_uncursed(CreaturePtr creature) const
+bool HealingEffect::effect_uncursed(CreaturePtr creature)
 {
   return heal(creature, UNCURSED_MULTIPLIER);
 }
 
-bool HealingEffect::effect_cursed(CreaturePtr creature) const
+bool HealingEffect::effect_cursed(CreaturePtr creature)
 {
   return heal(creature, CURSED_MULTIPLIER);
 }

@@ -46,6 +46,11 @@ class Item
     virtual void set_unidentified_description_sid(const std::string& new_unident_description_sid);
     virtual std::string get_unidentified_description_sid() const;
     
+    // Whether the item can be used as part of a read command - scrolls and spellbooks will, and all
+    // other items should not set this.
+    virtual void set_readable(const bool new_readable);
+    virtual bool get_readable() const;
+    
     virtual void set_weight(const Weight& new_weight);
     virtual Weight get_weight() const;
     
@@ -110,6 +115,7 @@ class Item
     std::string unidentified_usage_description_sid; // the usage description seen when unidentified
     std::string unidentified_description_sid; // the description seen when the item is unidentified
     Weight weight;
+    bool readable;
     EquipmentWornLocation worn_location;
     ItemStatus status;
     bool status_identified;

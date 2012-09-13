@@ -7,7 +7,7 @@ using std::string;
 
 // Call the correct item effect function based on the item status.  Blessed effects can often be
 // much better than uncursed, and cursed are often more hurtful than helpful.
-bool Effect::effect(boost::shared_ptr<Creature> creature, const ItemStatus item_status) const
+bool Effect::effect(boost::shared_ptr<Creature> creature, const ItemStatus item_status) 
 {
   bool effect_identified = false;
 
