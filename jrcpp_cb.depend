@@ -153,7 +153,7 @@
 	"MaterialFactory.hpp"
 	"XMLItemReader.hpp"
 
-1347495440 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
+1347715866 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlitemsreaders.cpp
 	<boost/foreach.hpp>
 	<boost/make_shared.hpp>
 	"MaterialFactory.hpp"
@@ -225,12 +225,13 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1347576612 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1347716768 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
 	"CharacterDumpManager.hpp"
 	"Conversion.hpp"
+	"CurrencyManager.hpp"
 	"DateTimeManager.hpp"
 	"DropManager.hpp"
 	"EquipmentManager.hpp"
@@ -633,29 +634,29 @@
 1339107603 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\command.cpp
 	"Command.hpp"
 
-1347367450 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
+1347716756 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandfactory.cpp
 	<boost/make_shared.hpp>
 	"CommandFactory.hpp"
 	"CommandKeys.hpp"
 	"Commands.hpp"
 
-1347367428 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
+1347716075 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandkeys.cpp
 	"CommandKeys.hpp"
 
-1347367562 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
+1347716099 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commandprocessor.cpp
 	<boost/make_shared.hpp>
 	"CommandKeys.hpp"
 	"CommandProcessor.hpp"
 	"Commands.hpp"
 	"Game.hpp"
 
-1347367535 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1347716141 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"StringConstants.hpp"
 
-1347367386 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1347716164 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -1572,7 +1573,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1347454739 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1347717733 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1681,7 +1682,7 @@
 	"StringTable.hpp"
 	"StringConstants.hpp"
 
-1347540883 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\displayitemtypefactory.cpp
+1347715057 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\displayitemtypefactory.cpp
 	<boost/make_shared.hpp>
 	"DisplayItemTypeFactory.hpp"
 	"StringConstants.hpp"
@@ -1757,13 +1758,14 @@
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\materials\source\material.cpp
 	"Material.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\materials\source\materialfactory.cpp
+1347713914 source:c:\cygwin\home\julian\jrcpp\world\materials\source\materialfactory.cpp
 	<boost/make_shared.hpp>
 	"MaterialFactory.hpp"
 	"Cloth.hpp"
 	"DragonScale.hpp"
 	"Glass.hpp"
 	"Iron.hpp"
+	"Ivory.hpp"
 	"Leather.hpp"
 	"Marble.hpp"
 	"Onyx.hpp"
@@ -1926,7 +1928,7 @@
 	"NullEffect.hpp"
 	"Wood.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
+1347716671 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
 	"ItemTypes.hpp"
 
 1344696945 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
@@ -2467,7 +2469,7 @@
 	"NullSpeedCalculator.hpp"
 	"SecondaryPhysicalAttackSpeedCalculator.hpp"
 
-1347577464 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
+1347713365 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\quaffmanager.cpp
 	"ActionManager.hpp"
 	"ConsumableManager.hpp"
 	"ItemFilterFactory.hpp"
@@ -2546,10 +2548,12 @@
 	"MessageManager.hpp"
 	"ReadManager.hpp"
 
-1347540759 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\identifyeffect.cpp
+1347578198 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\identifyeffect.cpp
 	<boost/foreach.hpp>
+	"ActionManager.hpp"
 	"Creature.hpp"
 	"IdentifyEffect.hpp"
+	"ItemFilterFactory.hpp"
 	"ItemIdentifier.hpp"
 	"StringConstants.hpp"
 
@@ -2580,4 +2584,16 @@
 	"NullItemFilter.hpp"
 	"ReadableItemFilter.hpp"
 	"SquishyEquipWornLocationFilter.hpp"
+
+1347713875 source:c:\cygwin\home\julian\jrcpp\world\materials\source\ivory.cpp
+	"Ivory.hpp"
+	"StringConstants.hpp"
+
+1347715785 source:c:\cygwin\home\julian\jrcpp\world\source\currency.cpp
+	"Currency.hpp"
+
+1347717797 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\currencymanager.cpp
+	"CurrencyManager.hpp"
+	"MessageManager.hpp"
+	"StringConstants.hpp"
 

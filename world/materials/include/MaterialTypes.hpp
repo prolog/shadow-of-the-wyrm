@@ -12,7 +12,8 @@ enum MaterialType
   MATERIAL_TYPE_STONE = 7,
   MATERIAL_TYPE_WOOD = 8,
   MATERIAL_TYPE_MARBLE = 9,
-  MATERIAL_TYPE_ONYX = 10
+  MATERIAL_TYPE_ONYX = 10,
+  MATERIAL_TYPE_IVORY = 11
 };
 
 inline MaterialType operator--(MaterialType &mt, int)

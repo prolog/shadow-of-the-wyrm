@@ -101,4 +101,5 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('f'), CommandKeys::FIRE_MISSILE));
   command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUAFF));
   command_mapping.insert(make_pair(Integer::to_string('r'), CommandKeys::READ));
+  command_mapping.insert(make_pair(Integer::to_string('$'), CommandKeys::CHECK_CURRENCY));
 }

@@ -148,6 +148,7 @@ const string MaterialTextKeys::MATERIAL_STONE        = "MATERIAL_STONE";
 const string MaterialTextKeys::MATERIAL_WOOD         = "MATERIAL_WOOD";
 const string MaterialTextKeys::MATERIAL_MARBLE       = "MATERIAL_MARBLE";
 const string MaterialTextKeys::MATERIAL_ONYX         = "MATERIAL_ONYX";
+const string MaterialTextKeys::MATERIAL_IVORY        = "MATERIAL_IVORY";
 
 // Date/time
 DateTextKeys::DateTextKeys()
@@ -689,6 +690,7 @@ const string ItemTypeTextKeys::ITEM_TYPE_FOOD       = "ITEM_TYPE_FOOD";
 const string ItemTypeTextKeys::ITEM_TYPE_AMMUNITION = "ITEM_TYPE_AMMUNITION";
 const string ItemTypeTextKeys::ITEM_TYPE_PLANTS     = "ITEM_TYPE_PLANTS";
 const string ItemTypeTextKeys::ITEM_TYPE_BOATS      = "ITEM_TYPE_BOATS";
+const string ItemTypeTextKeys::ITEM_TYPE_CURRENCY   = "ITEM_TYPE_CURRENCY";
 
 // Resistances
 ResistanceTextKeys::ResistanceTextKeys()
@@ -955,6 +957,8 @@ const string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSA
 const string TextMessages::ITEM_PICK_UP_MESSAGE               = "ITEM_PICK_UP_MESSAGE";
 const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE     = "ITEM_PICK_UP_AND_MERGE_MESSAGE";
 const string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_DESCRIPTION_MESSAGE";
+const string TextMessages::CURRENCY_MESSAGE_SINGLE            = "CURRENCY_MESSAGE_SINGLE";
+const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAGE_MULTIPLE";
 
 // Public functions used to access protected members.  These are used to wrap any const strings
 // that contain replaceable symbols.
@@ -1209,6 +1213,19 @@ string TextMessages::get_item_on_ground_description_message(ItemPtr item)
   string item_message = StringTable::get(TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE);
   boost::replace_first(item_message, "%s", id.describe());
   return item_message;
+}
+
+string TextMessages::get_currency_amount_message(const uint currency_amount)
+{
+  string currency_message = StringTable::get(CURRENCY_MESSAGE_SINGLE);
+
+  if (currency_amount != 1)
+  {
+    currency_message = StringTable::get(CURRENCY_MESSAGE_MULTIPLE);
+    boost::replace_first(currency_message, "%s", Integer::to_string(currency_amount));
+  }
+  
+  return currency_message;
 }
 
 // Descriptions of tile features

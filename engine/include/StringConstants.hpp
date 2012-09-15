@@ -148,6 +148,7 @@ class MaterialTextKeys
     static const std::string MATERIAL_WOOD;
     static const std::string MATERIAL_MARBLE;
     static const std::string MATERIAL_ONYX;
+    static const std::string MATERIAL_IVORY;
     
   protected:
     MaterialTextKeys();
@@ -448,6 +449,7 @@ class ItemTypeTextKeys
     static const std::string ITEM_TYPE_AMMUNITION;
     static const std::string ITEM_TYPE_PLANTS;
     static const std::string ITEM_TYPE_BOATS;
+    static const std::string ITEM_TYPE_CURRENCY;
 
   protected:
     ItemTypeTextKeys();
@@ -657,6 +659,7 @@ class TextMessages
     static std::string get_item_pick_up_message(ItemPtr item);
     static std::string get_item_pick_up_and_merge_message(ItemPtr item);
     static std::string get_item_on_ground_description_message(ItemPtr item);
+    static std::string get_currency_amount_message(const uint currency_amount);
 
   protected:
     TextMessages();
@@ -668,6 +671,8 @@ class TextMessages
     static const std::string ITEM_PICK_UP_MESSAGE;
     static const std::string ITEM_PICK_UP_AND_MERGE_MESSAGE;
     static const std::string ITEM_ON_GROUND_DESCRIPTION_MESSAGE;
+    static const std::string CURRENCY_MESSAGE_SINGLE;
+    static const std::string CURRENCY_MESSAGE_MULTIPLE;
 };
 
 class FeatureDescriptionTextKeys

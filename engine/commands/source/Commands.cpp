@@ -218,3 +218,13 @@ ReadCommand::ReadCommand()
 ReadCommand::~ReadCommand()
 {
 }
+
+// '$': check how much currency is currently held
+CheckCurrencyCommand::CheckCurrencyCommand()
+: Command(CommandKeys::CHECK_CURRENCY)
+{
+}
+
+CheckCurrencyCommand::~CheckCurrencyCommand()
+{
+}

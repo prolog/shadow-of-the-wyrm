@@ -143,6 +143,22 @@ ItemPtr Inventory::get_from_id(const std::string& id)
   return selected_item;
 }
 
+ItemPtr Inventory::get_from_base_id(const std::string& base_id)
+{
+  ItemPtr selected_item;
+  
+  BOOST_FOREACH(ItemPtr item, items)
+  {
+    if (item->get_base_id() == base_id)
+    {
+      selected_item = item;
+      break;
+    }
+  }
+  
+  return selected_item;
+}
+
 // Get whether the inventory is empty
 bool Inventory::empty() const
 {

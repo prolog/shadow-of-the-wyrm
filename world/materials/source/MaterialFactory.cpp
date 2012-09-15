@@ -4,6 +4,7 @@
 #include "DragonScale.hpp"
 #include "Glass.hpp"
 #include "Iron.hpp"
+#include "Ivory.hpp"
 #include "Leather.hpp"
 #include "Marble.hpp"
 #include "Onyx.hpp"
@@ -60,6 +61,9 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
       break;
     case MATERIAL_TYPE_ONYX:
       material = make_shared<Onyx>();
+      break;
+    case MATERIAL_TYPE_IVORY:
+      material = make_shared<Ivory>();
       break;
     default:
       material = make_shared<Wood>();
