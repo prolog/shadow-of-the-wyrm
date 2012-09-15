@@ -151,3 +151,10 @@ class ReadCommand : public Command
     ~ReadCommand();
 };
 
+class CheckCurrencyCommand : public Command
+{
+  public:
+    CheckCurrencyCommand();
+    ~CheckCurrencyCommand();
+};
+

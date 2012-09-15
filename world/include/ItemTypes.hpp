@@ -19,7 +19,8 @@ enum ItemType
   ITEM_TYPE_AMMUNITION = 11,
   ITEM_TYPE_PLANT = 12,
   ITEM_TYPE_BOAT = 13,
-  ITEM_TYPE_LAST = 14
+  ITEM_TYPE_CURRENCY = 14,
+  ITEM_TYPE_LAST = 15
 };
 
 enum ItemStatus
@@ -41,24 +42,24 @@ enum ItemIdentificationType
 class ItemIdKeys
 {
   public:
-  public:
-    static std::string ITEM_ID_BRANCH;
-    static std::string ITEM_ID_ROCK;
-    static std::string ITEM_ID_KINGFLOWER;
-    static std::string ITEM_ID_FIDDLEHEAD_GREEN;
-    static std::string ITEM_ID_FERN;
-    static std::string ITEM_ID_WILDFLOWER_1;
-    static std::string ITEM_ID_WILDFLOWER_2;
-    static std::string ITEM_ID_WILDFLOWER_3;
-    static std::string ITEM_ID_WILDFLOWER_4;
-    static std::string ITEM_ID_WILDFLOWER_5;
-    static std::string ITEM_ID_WILDFLOWER_6;
-    static std::string ITEM_ID_VEGETABLE_1;
-    static std::string ITEM_ID_VEGETABLE_2;
-    static std::string ITEM_ID_VEGETABLE_3;
-    static std::string ITEM_ID_VEGETABLE_4;
-    static std::string ITEM_ID_VEGETABLE_5;
-    static std::string ITEM_ID_VEGETABLE_6;
+    static const std::string ITEM_ID_CURRENCY;
+    static const std::string ITEM_ID_BRANCH;
+    static const std::string ITEM_ID_ROCK;
+    static const std::string ITEM_ID_KINGFLOWER;
+    static const std::string ITEM_ID_FIDDLEHEAD_GREEN;
+    static const std::string ITEM_ID_FERN;
+    static const std::string ITEM_ID_WILDFLOWER_1;
+    static const std::string ITEM_ID_WILDFLOWER_2;
+    static const std::string ITEM_ID_WILDFLOWER_3;
+    static const std::string ITEM_ID_WILDFLOWER_4;
+    static const std::string ITEM_ID_WILDFLOWER_5;
+    static const std::string ITEM_ID_WILDFLOWER_6;
+    static const std::string ITEM_ID_VEGETABLE_1;
+    static const std::string ITEM_ID_VEGETABLE_2;
+    static const std::string ITEM_ID_VEGETABLE_3;
+    static const std::string ITEM_ID_VEGETABLE_4;
+    static const std::string ITEM_ID_VEGETABLE_5;
+    static const std::string ITEM_ID_VEGETABLE_6;
 
   protected:
     ItemIdKeys();

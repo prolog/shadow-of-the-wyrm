@@ -118,6 +118,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = make_shared<ReadCommand>();
   }
+  else if (command_name == CommandKeys::CHECK_CURRENCY)
+  {
+    command = make_shared<CheckCurrencyCommand>();
+  }
 
   return command;
 }

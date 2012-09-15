@@ -102,6 +102,7 @@
 			<xs:element ref="tns:Boats" minOccurs="0"/>
 			<xs:element ref="tns:Potions" minOccurs="0"/>
 			<xs:element ref="tns:Scrolls" minOccurs="0"/>
+			<xs:element ref="tns:Currencies" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -522,6 +523,14 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Currencies">
+	<xs:complexType>
+		<xs:sequence>
+			<!-- There is only support for one currency within the game world. -->
+			<xs:element name="Currency" type="tns:Item" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="MiscItems">
 	<xs:complexType>
 		<xs:sequence>
@@ -864,11 +873,14 @@
 			6 = Steel
 			7 = Stone
 			8 = Wood
+			9 = Marble
+			10 = Onyx
+			11 = Ivory
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="8"/>
+		<xs:maxInclusive value="11"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="ColourType">

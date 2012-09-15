@@ -38,6 +38,7 @@ class CommandKeys
     static const std::string FIRE_MISSILE;
     static const std::string QUAFF;
     static const std::string READ;
+    static const std::string CHECK_CURRENCY;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

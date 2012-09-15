@@ -121,6 +121,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.read(creature);
       }
+      else if (command_name == CommandKeys::CHECK_CURRENCY)
+      {
+        ac = game->actions.check_currency(creature);
+      }
     }
   }
   

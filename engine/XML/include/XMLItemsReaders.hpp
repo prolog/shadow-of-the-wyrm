@@ -2,6 +2,7 @@
 #include "XMLDataStructures.hpp"
 #include "Ammunition.hpp"
 #include "Armour.hpp"
+#include "Currency.hpp"
 #include "Food.hpp"
 #include "Plant.hpp"
 #include "Weapon.hpp"
@@ -38,6 +39,7 @@ class XMLItemsReader
     ItemMap get_boats(const XMLNode& boats_node);
     ItemMap get_potions(const XMLNode& potions_node);
     ItemMap get_scrolls(const XMLNode& scrolls_node);
+    ItemMap get_currencies(const XMLNode& currencies_node);
     
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;

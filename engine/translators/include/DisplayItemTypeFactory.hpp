@@ -93,6 +93,12 @@ class BoatDisplayItemType : public DisplayItemType
     BoatDisplayItemType();
 };
 
+class CurrencyDisplayItemType : public DisplayItemType
+{
+  public:
+    CurrencyDisplayItemType();
+};
+
 class DisplayItemTypeFactory
 {
   public:

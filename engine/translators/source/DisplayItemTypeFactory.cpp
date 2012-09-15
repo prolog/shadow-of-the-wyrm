@@ -80,6 +80,11 @@ BoatDisplayItemType::BoatDisplayItemType()
 {
 }
 
+CurrencyDisplayItemType::CurrencyDisplayItemType()
+: DisplayItemType("$", COLOUR_BOLD_YELLOW, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_CURRENCY))
+{
+}
+
 // The factory that uses the above classes
 DisplayItemTypeFactory::DisplayItemTypeFactory()
 {
@@ -137,6 +142,9 @@ DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
       break;
     case ITEM_TYPE_BOAT:
       display_item_type = make_shared<BoatDisplayItemType>();
+      break;
+    case ITEM_TYPE_CURRENCY:
+      display_item_type = make_shared<CurrencyDisplayItemType>();
       break;
     case ITEM_TYPE_LAST:
     default:

@@ -3,6 +3,7 @@
 #include "ActionManager.hpp"
 #include "CharacterDumpManager.hpp"
 #include "Conversion.hpp"
+#include "CurrencyManager.hpp"
 #include "DateTimeManager.hpp"
 #include "DropManager.hpp"
 #include "EquipmentManager.hpp"
@@ -197,6 +198,13 @@ ActionCost ActionManager::read(CreaturePtr creature)
 {
   ReadManager rm;
   return get_action_cost(creature, rm.read(creature, this));
+}
+
+// '$': check how much currency is held (free action)
+ActionCost ActionManager::check_currency(CreaturePtr creature)
+{
+  CurrencyManager cm;
+  return get_action_cost(creature, cm.count_currency(creature));
 }
 
 // Pick up an item, doing any necessary checks first.
