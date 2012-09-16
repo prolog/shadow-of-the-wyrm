@@ -207,6 +207,7 @@
 		<Unit filename="engine\actions\include\ActionManager.hpp" />
 		<Unit filename="engine\actions\include\CharacterDumpManager.hpp" />
 		<Unit filename="engine\actions\include\ConsumableManager.hpp" />
+		<Unit filename="engine\actions\include\CurrencyManager.hpp" />
 		<Unit filename="engine\actions\include\DateTimeManager.hpp" />
 		<Unit filename="engine\actions\include\DropManager.hpp" />
 		<Unit filename="engine\actions\include\EquipmentManager.hpp" />
@@ -231,6 +232,7 @@
 		<Unit filename="engine\actions\source\ActionManager.cpp" />
 		<Unit filename="engine\actions\source\CharacterDumpManager.cpp" />
 		<Unit filename="engine\actions\source\ConsumableManager.cpp" />
+		<Unit filename="engine\actions\source\CurrencyManager.cpp" />
 		<Unit filename="engine\actions\source\DateTimeManager.cpp" />
 		<Unit filename="engine\actions\source\DropManager.cpp" />
 		<Unit filename="engine\actions\source\EquipmentManager.cpp" />
@@ -823,6 +825,7 @@
 		<Unit filename="world\include\Consumable.hpp" />
 		<Unit filename="world\include\Creature.hpp" />
 		<Unit filename="world\include\CreatureFeatures.hpp" />
+		<Unit filename="world\include\Currency.hpp" />
 		<Unit filename="world\include\Damage.hpp" />
 		<Unit filename="world\include\DamageTypes.hpp" />
 		<Unit filename="world\include\Date.hpp" />
@@ -863,6 +866,7 @@
 		<Unit filename="world\materials\include\DragonScale.hpp" />
 		<Unit filename="world\materials\include\Glass.hpp" />
 		<Unit filename="world\materials\include\Iron.hpp" />
+		<Unit filename="world\materials\include\Ivory.hpp" />
 		<Unit filename="world\materials\include\Leather.hpp" />
 		<Unit filename="world\materials\include\Marble.hpp" />
 		<Unit filename="world\materials\include\Material.hpp" />
@@ -877,6 +881,7 @@
 		<Unit filename="world\materials\source\DragonScale.cpp" />
 		<Unit filename="world\materials\source\Glass.cpp" />
 		<Unit filename="world\materials\source\Iron.cpp" />
+		<Unit filename="world\materials\source\Ivory.cpp" />
 		<Unit filename="world\materials\source\Leather.cpp" />
 		<Unit filename="world\materials\source\Marble.cpp" />
 		<Unit filename="world\materials\source\Material.cpp" />
@@ -922,6 +927,7 @@
 		<Unit filename="world\source\Creature.cpp" />
 		<Unit filename="world\source\CreatureFeatures.cpp" />
 		<Unit filename="world\source\CreatureGenerationValues.cpp" />
+		<Unit filename="world\source\Currency.cpp" />
 		<Unit filename="world\source\Damage.cpp" />
 		<Unit filename="world\source\Date.cpp" />
 		<Unit filename="world\source\Dice.cpp" />

@@ -340,9 +340,10 @@
 	"MessageManager.hpp"
 	"VersionActionManager.hpp"
 
-1345983329 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
+1347801840 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\weaponinfomanager.cpp
 	"DamageCalculatorFactory.hpp"
 	"MessageManager.hpp"
+	"RangedAttackSpeedCalculator.hpp"
 	"StringConstants.hpp"
 	"WeaponDifficultyCalculator.hpp"
 	"WeaponInfoManager.hpp"
@@ -1915,7 +1916,7 @@
 1346273918 source:c:\cygwin\home\julian\jrcpp\world\source\initialitem.cpp
 	"InitialItem.hpp"
 
-1346256179 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
+1347718048 source:c:\cygwin\home\julian\jrcpp\world\source\inventory.cpp
 	<boost/foreach.hpp>
 	"Inventory.hpp"
 
@@ -2592,7 +2593,7 @@
 1347715785 source:c:\cygwin\home\julian\jrcpp\world\source\currency.cpp
 	"Currency.hpp"
 
-1347717797 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\currencymanager.cpp
+1347718081 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\currencymanager.cpp
 	"CurrencyManager.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
