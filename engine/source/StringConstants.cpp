@@ -258,9 +258,9 @@ const string EquipmentTextKeys::EQUIPMENT_FEET         = "EQUIPMENT_FEET";
 const string EquipmentTextKeys::EQUIPMENT_RANGED       = "EQUIPMENT_RANGED";
 const string EquipmentTextKeys::EQUIPMENT_AMMUNITION   = "EQUIPMENT_AMMUNITION";
 const string EquipmentTextKeys::EQUIPMENT_RANGED_SYNOPSIS = "EQUIPMENT_RANGED_SYNOPSIS";
-const string EquipmentTextKeys::EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS";
-const string EquipmentTextKeys::EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS";
-const string EquipmentTextKeys::EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS";
+const string EquipmentTextKeys::EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS";
+const string EquipmentTextKeys::EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS";
+const string EquipmentTextKeys::EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS = "EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS";
 
 string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location)
 {
@@ -312,7 +312,7 @@ string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const Equi
   return equipment_text;
 }
 
-string EquipmentTextKeys::get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, WeaponPtr ammunition, const string& difficulty_and_damage_synopsis)
+string EquipmentTextKeys::get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, WeaponPtr ammunition, const string& difficulty_speed_and_damage_synopsis)
 {
   string ranged_synopsis = StringTable::get(EQUIPMENT_RANGED_SYNOPSIS);
   string weapon_string = "/";
@@ -330,32 +330,33 @@ string EquipmentTextKeys::get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, We
   
   boost::replace_first(ranged_synopsis, "%s", weapon_string);
   boost::replace_first(ranged_synopsis, "%s", ammunition_string);
-  boost::replace_first(ranged_synopsis, "%s", difficulty_and_damage_synopsis);
+  boost::replace_first(ranged_synopsis, "%s", difficulty_speed_and_damage_synopsis);
   
   return ranged_synopsis;
 }
 
-string EquipmentTextKeys::get_weapon_difficulty_and_damage_synopsis(const int difficulty, const Damage& damage)
+string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const int difficulty, const int speed, const Damage& damage)
 {
-  string synopsis = StringTable::get(EQUIPMENT_WEAPON_DIFFICULTY_AND_DAMAGE_SYNOPSIS);
+  string synopsis = StringTable::get(EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
 
   boost::replace_first(synopsis, "%s", Integer::to_string(difficulty));
+  boost::replace_first(synopsis, "%s", Integer::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
   
   return synopsis;
 }
 
-string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int difficulty, const Damage& damage)
+string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int difficulty, const int speed, const Damage& damage)
 {
   string synopsis;
   
   if (attack_type == ATTACK_TYPE_MELEE_PRIMARY)
   {
-    synopsis = StringTable::get(EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS);
+    synopsis = StringTable::get(EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
   }
   else if (attack_type == ATTACK_TYPE_MELEE_SECONDARY)
   {
-    synopsis = StringTable::get(EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_AND_DAMAGE_SYNOPSIS);
+    synopsis = StringTable::get(EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
   }
   
   string weapon_description_sid = TextKeys::UNARMED;
@@ -367,6 +368,7 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
   
   boost::replace_first(synopsis, "%s", StringTable::get(weapon_description_sid));
   boost::replace_first(synopsis, "%s", Integer::to_string(difficulty));
+  boost::replace_first(synopsis, "%s", Integer::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
   
   return synopsis;

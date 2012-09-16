@@ -1,5 +1,6 @@
 #include "DamageCalculatorFactory.hpp"
 #include "MessageManager.hpp"
+#include "RangedAttackSpeedCalculator.hpp"
 #include "StringConstants.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponInfoManager.hpp"
@@ -101,8 +102,14 @@ string WeaponInfoManager::get_melee_weapon_info(CreaturePtr creature, WeaponPtr 
     
     int difficulty = wdc.calculate(creature, attack_type);
     Damage weapon_damage = damage_calc->calculate_base_damage_with_bonuses_or_penalties(creature);
+    
+    int speed = 0;
+    if (weapon)
+    {
+      speed = weapon->get_speed();
+    }
 
-    melee_info = EquipmentTextKeys::get_melee_weapon_synopsis(attack_type, weapon, difficulty, weapon_damage);
+    melee_info = EquipmentTextKeys::get_melee_weapon_synopsis(attack_type, weapon, difficulty, speed, weapon_damage);
   }
   
   return melee_info;
@@ -121,7 +128,10 @@ string WeaponInfoManager::get_ranged_weapon_info(CreaturePtr creature, WeaponPtr
     int difficulty = wdc.calculate(creature, ATTACK_TYPE_RANGED);
     Damage ranged_damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(creature);
     
-    ranged_attack_info = EquipmentTextKeys::get_weapon_difficulty_and_damage_synopsis(difficulty, ranged_damage);
+    RangedAttackSpeedCalculator rasc;
+    int speed = rasc.calculate(creature);
+    
+    ranged_attack_info = EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(difficulty, speed, ranged_damage);
   }
   
   return EquipmentTextKeys::get_ranged_weapon_synopsis(ranged_weapon, ammunition, ranged_attack_info);
