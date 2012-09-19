@@ -600,3 +600,8 @@ void WorldGenerator::remove_village_coordinates_if_present(const Coordinate& c)
     }
   }
 }
+
+MapType WorldGenerator::get_map_type() const
+{
+  return MAP_TYPE_WORLD;
+}

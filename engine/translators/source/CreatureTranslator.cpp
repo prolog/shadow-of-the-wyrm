@@ -161,13 +161,13 @@ string CreatureTranslator::get_display_speed(const CreaturePtr& c)
 
 string CreatureTranslator::get_display_level(const CreaturePtr& c)
 {
-  string level = StringTable::get(TextKeys::LEVEL_ABRV) + String::add_trailing_spaces(Integer::to_string(c->get_level().get_current()), 2);
+  string level = StringTable::get(TextKeys::LEVEL_ABRV) + Integer::to_string(c->get_level().get_current()) + ",";
 
   ExperienceManager em;
   string expct = Integer::to_string(em.get_pct_to_next_level(c));
 
   // Display %tnl after the level.  This is a Crawl-ism/MUD-ism I really enjoy.
-  level = level + "(" + expct + "%)";
+  level = level + expct + "%%";
   return level;
 }
 

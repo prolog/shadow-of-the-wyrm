@@ -227,3 +227,9 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
     }
   }
 }
+
+MapType CavernGenerator::get_map_type() const
+{
+  return MAP_TYPE_UNDERWORLD;
+}
+

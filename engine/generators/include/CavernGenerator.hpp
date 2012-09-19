@@ -11,6 +11,7 @@ class CavernGenerator : public Generator
     virtual MapPtr generate(const Dimensions& dimensions);
 
   protected:
+    virtual MapType get_map_type() const;
     void generate_cavern(MapPtr map);
     MapComponents get_cavern_components(MapPtr map);
     void connect_cavern_components(MapPtr map, const MapComponents& cc);
