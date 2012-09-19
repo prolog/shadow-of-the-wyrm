@@ -15,18 +15,12 @@ Generator::Generator(const string& new_map_exit_id, const TileType new_map_terra
 {
 }
 
-// JCD FIXME: Too much shared code.
 MapPtr Generator::generate_and_initialize(const uint danger_level)
 {
   Dimensions dim;
-  Dimensions new_dim = update_dimensions_if_necessary(dim, get_map_type(), danger_level);
-  MapPtr map = generate(new_dim);
-  initialize(map, danger_level);
-
-  return map;
+  return generate_and_initialize(danger_level, dim);
 }
 
-// JCD FIXME: Too much shared code.
 MapPtr Generator::generate_and_initialize(const uint danger_level, const Dimensions& dim)
 {
   Dimensions new_dim = update_dimensions_if_necessary(dim, get_map_type(), danger_level);

@@ -1672,7 +1672,7 @@
 	"WorldTimeKeeperCoordinator.hpp"
 	"WorldTimeKeeper.hpp"
 
-1348018823 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\creaturetranslator.cpp
+1348059853 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\creaturetranslator.cpp
 	"Creature.hpp"
 	"Conversion.hpp"
 	"DisplayStatistics.hpp"
