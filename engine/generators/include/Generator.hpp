@@ -26,6 +26,8 @@ class Generator
    virtual TileType get_terrain_type() const;
    
   protected:
+    virtual MapType get_map_type() const;
+    virtual Dimensions update_dimensions_if_necessary(const Dimensions& dim, const MapType map_type, const uint danger_level);
     virtual void initialize(MapPtr map, const uint danger_level);
     virtual void fill(const MapPtr map, const TileType& tile_type);
     

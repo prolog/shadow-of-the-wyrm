@@ -8,6 +8,7 @@ class Depth
 {
   public:
     Depth();
+    Depth(const int cur, const int max);
 
     void set_current(const int new_current);
     int get_current() const;

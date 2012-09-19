@@ -3,10 +3,17 @@
 
 using std::string;
 
-const int Depth::DEPTH_MULTIPLIER = 50;
+// Depth 1 is -50 feet (under ground, positive depth).
+// Depth -1 is 50 feet (above ground, negative depth).
+const int Depth::DEPTH_MULTIPLIER = -50;
 
 Depth::Depth()
 : current(0), maximum(0)
+{
+}
+
+Depth::Depth(const int cur, const int max)
+: current(cur), maximum(max)
 {
 }
 

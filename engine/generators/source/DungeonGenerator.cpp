@@ -494,3 +494,9 @@ bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col,
   
   return true;
 }
+
+MapType DungeonGenerator::get_map_type() const
+{
+  return MAP_TYPE_UNDERWORLD;
+}
+

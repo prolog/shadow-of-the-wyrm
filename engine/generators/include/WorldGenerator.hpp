@@ -16,6 +16,7 @@ class WorldGenerator : public Generator
     virtual MapPtr generate(const Dimensions& dim);
 
   protected:
+    virtual MapType get_map_type() const;
     virtual MapPtr generate_set_islands_and_continents(MapPtr map);
     virtual MapPtr generate_random_islands(MapPtr map);
     virtual void   generate_village_surroundings(MapPtr map);
