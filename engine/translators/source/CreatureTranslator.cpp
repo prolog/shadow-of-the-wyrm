@@ -15,7 +15,7 @@ CreatureTranslator::CreatureTranslator()
 }
 
 // Create a display-readable statistics object out of the main CreaturePtr.
-DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePtr& creature)
+DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePtr& creature, const MapPtr& map)
 {
   DisplayStatistics ds;
 
@@ -39,6 +39,8 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
 
   string hit_points    = get_display_hit_points(creature);
   string arcana_points = get_display_arcana_points(creature);
+  
+  string map_depth     = map->size().depth().str();
 
   ds = DisplayStatistics::create(name,
                                  synopsis,
@@ -55,7 +57,8 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
                                  level,
                                  defence,
                                  hit_points,
-                                 arcana_points
+                                 arcana_points,
+                                 map_depth
                                  );
 
   return ds;

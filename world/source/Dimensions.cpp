@@ -34,6 +34,16 @@ int Dimensions::get_y() const
   return y;
 }
 
+void Dimensions::set_depth(const Depth& new_depth)
+{
+  dim_depth = new_depth;
+}
+
+Depth Dimensions::depth() const
+{
+  return dim_depth;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Dimensions_test.cpp"
 #endif

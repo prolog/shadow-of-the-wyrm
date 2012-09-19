@@ -179,7 +179,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
   {
     MapDisplayArea display_area = display->get_map_display_area();
 
-    DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player);
+    DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player, current_map);
     display->display(display_stats);
 
     MapCursor mc;

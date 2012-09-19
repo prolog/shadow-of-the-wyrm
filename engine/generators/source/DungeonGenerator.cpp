@@ -67,7 +67,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
   // Initialize the vectors for some guided randomness.
   initialize_and_seed_cheat_vectors(dimensions);
   
-  // Try until we get a resonable map
+  // Try until we get a reasonable map
   while (!success)
   {
     MapPtr result_map = make_shared<Map>(dimensions);
