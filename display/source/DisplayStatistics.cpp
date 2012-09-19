@@ -23,7 +23,8 @@ DisplayStatistics DisplayStatistics::create
   const string& new_level,
   const string& new_defence,
   const string& new_hit_points,
-  const string& new_arcana_points
+  const string& new_arcana_points,
+  const string& new_map_depth
 )
 {
   DisplayStatistics ds;
@@ -44,6 +45,7 @@ DisplayStatistics DisplayStatistics::create
   ds.set_defence(new_defence);
   ds.set_hit_points(new_hit_points);
   ds.set_arcana_points(new_arcana_points);
+  ds.set_map_depth(new_map_depth);
 
   return ds;
 }
@@ -207,3 +209,14 @@ string DisplayStatistics::get_arcana_points() const
 {
   return arcana_points;
 }
+
+void DisplayStatistics::set_map_depth(const string& new_map_depth)
+{
+  map_depth = new_map_depth;
+}
+
+string DisplayStatistics::get_map_depth() const
+{
+  return map_depth;
+}
+

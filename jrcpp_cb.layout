@@ -259,7 +259,7 @@
 	<File name="engine\actions\include\ConsumableManager.hpp" open="0" top="0" tabpos="25">
 		<Cursor position="69" topLine="0" />
 	</File>
-	<File name="engine\actions\include\CurrencyManager.hpp" open="1" top="0" tabpos="2">
+	<File name="engine\actions\include\CurrencyManager.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="243" topLine="0" />
 	</File>
 	<File name="engine\actions\include\DateTimeManager.hpp" open="0" top="0" tabpos="14">
@@ -331,7 +331,7 @@
 	<File name="engine\actions\source\CharacterDumpManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="697" topLine="11" />
 	</File>
-	<File name="engine\actions\source\CurrencyManager.cpp" open="1" top="1" tabpos="1">
+	<File name="engine\actions\source\CurrencyManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="324" topLine="0" />
 	</File>
 	<File name="engine\actions\source\DateTimeManager.cpp" open="0" top="0" tabpos="5">
@@ -343,7 +343,7 @@
 	<File name="engine\actions\source\EquipmentManager.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="251" topLine="0" />
 	</File>
-	<File name="engine\actions\source\InventoryManager.cpp" open="1" top="0" tabpos="7">
+	<File name="engine\actions\source\InventoryManager.cpp" open="0" top="0" tabpos="7">
 		<Cursor position="2778" topLine="74" />
 	</File>
 	<File name="engine\actions\source\ItemManager.cpp" open="0" top="0" tabpos="17">
@@ -385,8 +385,8 @@
 	<File name="engine\actions\source\VersionActionManager.cpp" open="0" top="0" tabpos="2">
 		<Cursor position="169" topLine="0" />
 	</File>
-	<File name="engine\actions\source\WeaponInfoManager.cpp" open="0" top="0" tabpos="3">
-		<Cursor position="549" topLine="10" />
+	<File name="engine\actions\source\WeaponInfoManager.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="4547" topLine="121" />
 	</File>
 	<File name="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" open="0" top="0" tabpos="2">
 		<Cursor position="344" topLine="0" />
@@ -1307,7 +1307,7 @@
 		<Cursor position="412" topLine="22" />
 	</File>
 	<File name="engine\include\StringConstants.hpp" open="1" top="0" tabpos="3">
-		<Cursor position="26910" topLine="661" />
+		<Cursor position="8103" topLine="203" />
 	</File>
 	<File name="engine\include\StringTable.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="159" topLine="0" />
@@ -1456,8 +1456,8 @@
 	<File name="engine\source\SavageLandsEngine.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="4541" topLine="154" />
 	</File>
-	<File name="engine\source\StringConstants.cpp" open="1" top="0" tabpos="4">
-		<Cursor position="52235" topLine="1205" />
+	<File name="engine\source\StringConstants.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="11175" topLine="249" />
 	</File>
 	<File name="engine\source\StringTable.cpp" open="0" top="0" tabpos="10">
 		<Cursor position="1307" topLine="39" />
@@ -1678,7 +1678,7 @@
 	<File name="world\include\InitialItem.hpp" open="0" top="0" tabpos="4">
 		<Cursor position="1400" topLine="11" />
 	</File>
-	<File name="world\include\Inventory.hpp" open="1" top="0" tabpos="6">
+	<File name="world\include\Inventory.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="989" topLine="22" />
 	</File>
 	<File name="world\include\Item.hpp" open="0" top="0" tabpos="16">
@@ -1948,7 +1948,7 @@
 	<File name="world\source\InitialItem.cpp" open="0" top="0" tabpos="3">
 		<Cursor position="128" topLine="0" />
 	</File>
-	<File name="world\source\Inventory.cpp" open="1" top="0" tabpos="5">
+	<File name="world\source\Inventory.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="2824" topLine="135" />
 	</File>
 	<File name="world\source\Item.cpp" open="0" top="0" tabpos="19">

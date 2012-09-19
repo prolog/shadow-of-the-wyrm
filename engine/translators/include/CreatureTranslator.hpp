@@ -6,7 +6,7 @@ class DisplayStatistics;
 class CreatureTranslator
 {
   public:
-    static DisplayStatistics create_display_statistics(const CreaturePtr& creature);
+    static DisplayStatistics create_display_statistics(const CreaturePtr& creature, const MapPtr& map);
 
   protected:
     CreatureTranslator();

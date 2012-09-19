@@ -38,7 +38,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\display\source\displaymap.cpp
 	"DisplayMap.hpp"
 
-1339107602 source:c:\cygwin\home\julian\jrcpp\display\source\displaystatistics.cpp
+1348018573 source:c:\cygwin\home\julian\jrcpp\display\source\displaystatistics.cpp
 	"DisplayStatistics.hpp"
 
 1339107602 source:c:\cygwin\home\julian\jrcpp\display\source\displaytile.cpp
@@ -47,7 +47,7 @@
 1339159082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
 	"NCursesConstants.hpp"
 
-1346168319 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1348018541 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -1004,7 +1004,7 @@
 	<boost/make_shared.hpp>
 	"DesertGenerator.hpp"
 
-1344949208 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
+1348014888 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\dungeongenerator.cpp
 	<algorithm>
 	<cmath>
 	<boost/make_shared.hpp>
@@ -1434,7 +1434,7 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1344483110 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1348018963 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
 	"ActionCoordinator.hpp"
@@ -1574,7 +1574,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1347717733 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1347802027 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -1672,7 +1672,7 @@
 	"WorldTimeKeeperCoordinator.hpp"
 	"WorldTimeKeeper.hpp"
 
-1339107604 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\creaturetranslator.cpp
+1348018823 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\creaturetranslator.cpp
 	"Creature.hpp"
 	"Conversion.hpp"
 	"DisplayStatistics.hpp"
@@ -1932,7 +1932,7 @@
 1347716671 source:c:\cygwin\home\julian\jrcpp\world\source\itemtypes.cpp
 	"ItemTypes.hpp"
 
-1344696945 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
+1348017359 source:c:\cygwin\home\julian\jrcpp\world\source\map.cpp
 	<sstream>
 	<boost/foreach.hpp>
 	<boost/tokenizer.hpp>
@@ -2597,4 +2597,18 @@
 	"CurrencyManager.hpp"
 	"MessageManager.hpp"
 	"StringConstants.hpp"
+
+1348013809 source:c:\cygwin\home\julian\jrcpp\world\source\mapdepth.cpp
+	"MapDepth.hpp"
+
+1348018856 source:c:\cygwin\home\julian\jrcpp\world\source\dimensions.cpp
+	"Dimensions.hpp"
+	"unit_tests/Dimensions_test.cpp"
+
+1348015139 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\dimensions_test.cpp
+	"gtest/gtest.h"
+
+1348019019 source:c:\cygwin\home\julian\jrcpp\world\source\depth.cpp
+	"Conversion.hpp"
+	"Depth.hpp"
 

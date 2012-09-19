@@ -519,6 +519,8 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
   string hit_points   = player_stats.get_hit_points();
   string arc_points   = player_stats.get_arcana_points();
 
+  string map_depth    = player_stats.get_map_depth();
+
   int PLAYER_SYNOPSIS_START_ROW = TERMINAL_MAX_ROWS - 3;
   int current_row = PLAYER_SYNOPSIS_START_ROW;
   int initial_row = current_row;
@@ -545,7 +547,8 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, spirit, speed);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points);
-  if (can_print) mvprintw(current_row, current_col, arc_points.c_str());
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth);
+  mvprintw(current_row, current_col, map_depth.c_str());
 }
 
 bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const int initial_row, int* current_row, int* current_col, const string& current_stat, const string& next_stat)

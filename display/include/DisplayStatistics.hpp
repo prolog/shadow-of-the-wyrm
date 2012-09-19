@@ -19,7 +19,8 @@ class DisplayStatistics
                                     const std::string& level,
                                     const std::string& defence,
                                     const std::string& hit_points,
-                                    const std::string& arcana_points
+                                    const std::string& arcana_points,
+                                    const std::string& map_depth
                                     );
 
     std::string get_name() const;
@@ -42,6 +43,8 @@ class DisplayStatistics
 
     std::string get_hit_points() const;
     std::string get_arcana_points() const;
+
+    std::string get_map_depth() const;
 
 
   protected:
@@ -69,6 +72,8 @@ class DisplayStatistics
     void set_hit_points(const std::string& new_hit_points);
     void set_arcana_points(const std::string& new_arcana_points);
 
+    void set_map_depth(const std::string& new_map_depth);
+
     std::string name;
     std::string synopsis;
 
@@ -89,4 +94,6 @@ class DisplayStatistics
 
     std::string hit_points;
     std::string arcana_points;
+
+    std::string map_depth;
 };
