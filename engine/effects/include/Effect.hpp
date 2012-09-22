@@ -1,5 +1,7 @@
 #pragma once
+#include <vector>
 #include <boost/shared_ptr.hpp>
+#include "AdditionalEffectMessage.hpp"
 #include "ItemTypes.hpp"
 
 class ActionManager;
@@ -30,6 +32,14 @@ class Effect
     virtual void identify_effect_as_necessary(boost::shared_ptr<Creature> creature, const bool is_identified) const;
     virtual void identify_effect_if_player(boost::shared_ptr<Creature> creature) const;
     virtual void inform_unidentified_if_player(boost::shared_ptr<Creature> creature) const;
+
+    // Add all the additional effect messages, if the creature is the
+    // player.
+    virtual void add_additional_effect_messages() const;
+
+    // Additional messages that are displayed regardless of identification
+    // success or failure.
+    std::vector<AdditionalEffectMessagePtr> additional_effect_messages;
 };
 
 typedef boost::shared_ptr<Effect> EffectPtr;

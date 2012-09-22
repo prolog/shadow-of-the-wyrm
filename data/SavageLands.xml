@@ -3596,6 +3596,36 @@
 				<Nutrition>100</Nutrition>
 				<Effect>1</Effect>
 			</Potion>
+			<Potion id="ether_potion">
+				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>ETHER_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_ETHER_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>500</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>5</Colour>
+				</TextDetails>
+				<Nutrition>200</Nutrition>
+				<Effect>3</Effect>
+			</Potion>
+			<Potion id="fruit_juice_potion">
+				<DescriptionSID>FRUIT_JUICE_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FRUIT_JUICE_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FRUIT_JUICE_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FRUIT_JUICE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>30</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
+				<Nutrition>300</Nutrition>
+				<Effect>4</Effect>
+			</Potion>
 		</Potions>
 		<Scrolls>
 			<Scroll id="identify_scroll">

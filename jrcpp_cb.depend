@@ -1036,7 +1036,7 @@
 	"RNG.hpp"
 	"Directions.hpp"
 
-1348058662 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
+1348060233 source:c:\cygwin\home\julian\jrcpp\engine\generators\source\generator.cpp
 	"CreatureGenerationManager.hpp"
 	"CreationUtils.hpp"
 	"ItemGenerationManager.hpp"
@@ -1574,7 +1574,7 @@
 	"SexSelectionScreen.hpp"
 	"WelcomeScreen.hpp"
 
-1347802027 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
+1348321514 source:c:\cygwin\home\julian\jrcpp\engine\source\stringconstants.cpp
 	<sstream>
 	<boost/algorithm/string/replace.hpp>
 	"Conversion.hpp"
@@ -2481,7 +2481,7 @@
 1346680972 source:c:\cygwin\home\julian\jrcpp\engine\translators\source\itemtypedisplayfilter.cpp
 	"ItemTypeDisplayFilter.hpp"
 
-1347578059 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\healingeffect.cpp
+1348230793 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\healingeffect.cpp
 	"Creature.hpp"
 	"HealingEffect.hpp"
 	"RNG.hpp"
@@ -2491,14 +2491,17 @@
 	"NullEffect.hpp"
 	"StringConstants.hpp"
 
-1347415357 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effectfactory.cpp
+1348324153 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effectfactory.cpp
 	<boost/make_shared.hpp>
 	"EffectFactory.hpp"
+	"EtherEffect.hpp"
 	"HealingEffect.hpp"
 	"IdentifyEffect.hpp"
 	"NullEffect.hpp"
+	"FruitJuiceEffect.hpp"
 
-1347578059 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effect.cpp
+1348321008 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\effect.cpp
+	<boost/foreach.hpp>
 	"Creature.hpp"
 	"Effect.hpp"
 	"StringConstants.hpp"
@@ -2611,4 +2614,26 @@
 1348059185 source:c:\cygwin\home\julian\jrcpp\world\source\depth.cpp
 	"Conversion.hpp"
 	"Depth.hpp"
+
+1348324067 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\ethereffect.cpp
+	<boost/make_shared.hpp>
+	"AdditionalEffectMessages.hpp"
+	"Creature.hpp"
+	"EtherEffect.hpp"
+
+1348322490 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\fruitjuiceeffect.cpp
+	<boost/make_shared.hpp>
+	"AdditionalEffectMessages.hpp"
+	"Creature.hpp"
+	"MessageManager.hpp"
+	"FruitJuiceEffect.hpp"
+
+1348321813 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\additionaleffectmessage.cpp
+	"AdditionalEffectMessage.hpp"
+	"MessageManager.hpp"
+	"StringTable.hpp"
+
+1348321889 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\additionaleffectmessages.cpp
+	"StringConstants.hpp"
+	"AdditionalEffectMessages.hpp"
 
