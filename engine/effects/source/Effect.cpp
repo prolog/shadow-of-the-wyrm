@@ -1,9 +1,10 @@
+#include <boost/foreach.hpp>
 #include "Creature.hpp"
 #include "Effect.hpp"
 #include "StringConstants.hpp"
 #include "MessageManager.hpp"
 
-using std::string;
+using namespace std;
 
 // Call the correct item effect function based on the item status.  Blessed effects can often be
 // much better than uncursed, and cursed are often more hurtful than helpful.
@@ -24,7 +25,14 @@ bool Effect::effect(boost::shared_ptr<Creature> creature, ActionManager * const 
       effect_identified = effect_uncursed(creature, am);
       break;
   }
-  
+ 
+  // Display any additional effect messages that only the target of the
+  // effect should see.
+  if (creature && creature->get_is_player())
+  {
+    add_additional_effect_messages();
+  }
+
   identify_effect_as_necessary(creature, effect_identified);
 
   return effect_identified;
@@ -74,5 +82,16 @@ void Effect::inform_unidentified_if_player(boost::shared_ptr<Creature> creature)
 
     manager->add_new_message(nothing_happens);
     manager->send();
+  }
+}
+
+void Effect::add_additional_effect_messages() const
+{
+  BOOST_FOREACH(AdditionalEffectMessagePtr msg, additional_effect_messages)
+  {
+    if (msg)
+    {
+      msg->add_effect_message();
+    }
   }
 }

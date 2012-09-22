@@ -498,11 +498,15 @@
 		<Unit filename="engine\effects\include\Effect.hpp" />
 		<Unit filename="engine\effects\include\EffectFactory.hpp" />
 		<Unit filename="engine\effects\include\EffectTypes.hpp" />
+		<Unit filename="engine\effects\include\EtherEffect.hpp" />
+		<Unit filename="engine\effects\include\FruitJuiceEffect.hpp" />
 		<Unit filename="engine\effects\include\HealingEffect.hpp" />
 		<Unit filename="engine\effects\include\IdentifyEffect.hpp" />
 		<Unit filename="engine\effects\include\NullEffect.hpp" />
 		<Unit filename="engine\effects\source\Effect.cpp" />
 		<Unit filename="engine\effects\source\EffectFactory.cpp" />
+		<Unit filename="engine\effects\source\EtherEffect.cpp" />
+		<Unit filename="engine\effects\source\FruitJuiceEffect.cpp" />
 		<Unit filename="engine\effects\source\HealingEffect.cpp" />
 		<Unit filename="engine\effects\source\IdentifyEffect.cpp" />
 		<Unit filename="engine\effects\source\NullEffect.cpp" />

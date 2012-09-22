@@ -940,11 +940,13 @@
 				Null = 0
 				Healing = 1
 				Identify = 2
+				Ether (sweet; restore AP) = 3
+				Fruit Juice (sweet) = 4
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="2"/>
+		<xs:maxInclusive value="4"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
