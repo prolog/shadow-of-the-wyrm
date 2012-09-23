@@ -6,7 +6,9 @@ class MobileDecisionStrategy : public NPCDecisionStrategy
 {
   public:
     MobileDecisionStrategy(ControllerPtr new_controller);
-    
+
+    DecisionStrategy* copy();
+        
   protected:
     // Functions that are called based on the factory type
     virtual CommandPtr get_decision_for_inventory(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands);

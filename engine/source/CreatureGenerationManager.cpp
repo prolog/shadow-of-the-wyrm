@@ -71,10 +71,7 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, cons
       }
     }
   }
-  
-  // JCD FIXME: Later, there should be an algorithm to determine hostility.
-//  generated_creature->get_decision_strategy().add_threat(PlayerConstants::PLAYER_CREATURE_ID);
- 
+   
   if (generated_creature)
   {
     CreatureCalculator::update_calculated_values(generated_creature);

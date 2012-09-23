@@ -495,6 +495,8 @@
 		<Unit filename="engine\description\source\ItemDescriber.cpp" />
 		<Unit filename="engine\description\source\TileDescriber.cpp" />
 		<Unit filename="engine\description\source\TileDescription.cpp" />
+		<Unit filename="engine\effects\include\AdditionalEffectMessage.hpp" />
+		<Unit filename="engine\effects\include\AdditionalEffectMessages.hpp" />
 		<Unit filename="engine\effects\include\Effect.hpp" />
 		<Unit filename="engine\effects\include\EffectFactory.hpp" />
 		<Unit filename="engine\effects\include\EffectTypes.hpp" />
@@ -503,6 +505,8 @@
 		<Unit filename="engine\effects\include\HealingEffect.hpp" />
 		<Unit filename="engine\effects\include\IdentifyEffect.hpp" />
 		<Unit filename="engine\effects\include\NullEffect.hpp" />
+		<Unit filename="engine\effects\source\AdditionalEffectMessage.cpp" />
+		<Unit filename="engine\effects\source\AdditionalEffectMessages.cpp" />
 		<Unit filename="engine\effects\source\Effect.cpp" />
 		<Unit filename="engine\effects\source\EffectFactory.cpp" />
 		<Unit filename="engine\effects\source\EtherEffect.cpp" />

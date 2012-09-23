@@ -26,6 +26,8 @@ class Creature
 {
   public:
     Creature();
+    Creature(const Creature& cr);
+    Creature& operator=(const Creature& cr);
 
     void set_id(const std::string& new_id);
     std::string get_id() const;
@@ -128,10 +130,6 @@ class Creature
     Equipment& get_equipment();
     Inventory& get_inventory();
     
-    // JCD FIXME: Should these be items?
-    void set_ivory_pieces(const uint new_ivory_pieces);
-    uint get_ivory_pieces() const;
-    
     // Set/get point-based statistics
 
     void set_hit_points(const Statistic& new_hit_points);
@@ -200,6 +198,10 @@ class Creature
     TargetMap get_target_map() const;
     TargetMap& get_target_map_ref();
     
+  private:
+    void assert_size() const;
+    void swap(Creature& c) throw ();
+
   protected:
 
     std::string id;
@@ -245,9 +247,6 @@ class Creature
     // The creature's inventory.
     Inventory inventory;
     
-    // The amount of currency (ivory pieces) owned by the character
-    uint ivory_pieces;
-
     // Resistances/vulns.  These act as a damage multiplier.  A value of 1.0 indicates no resistance or vulnerability.
     // 0.50 indicates half damage, 2.0 indicates double damage.
     Resistances resistances;

@@ -16,6 +16,11 @@ PlayerDecisionStrategy::PlayerDecisionStrategy(ControllerPtr new_controller)
 {
 }
 
+DecisionStrategy* PlayerDecisionStrategy::copy()
+{
+  return new PlayerDecisionStrategy(*this);
+}
+
 // The player's decision is easy: just read a command from the keyboard, and then get a CommandPtr
 // based on that keyboard input, the provided KeyboardCommandMapPtr, and the CommandFactoryPtr.
 CommandPtr PlayerDecisionStrategy::get_decision(const string& creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map)

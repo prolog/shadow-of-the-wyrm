@@ -10,6 +10,8 @@ class PlayerDecisionStrategy : public DecisionStrategy
     uint get_count(const uint max_count);
     bool get_confirmation();
 
+    DecisionStrategy* copy();
+
   protected:
     ControllerPtr controller;
 };

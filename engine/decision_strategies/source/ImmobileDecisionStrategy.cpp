@@ -9,6 +9,11 @@ ImmobileDecisionStrategy::ImmobileDecisionStrategy(ControllerPtr new_controller)
 {
 }
 
+DecisionStrategy* ImmobileDecisionStrategy::copy()
+{
+  return new ImmobileDecisionStrategy(*this);
+}
+
 CommandPtr ImmobileDecisionStrategy::get_decision_for_inventory(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands)
 {
   CommandPtr null;
