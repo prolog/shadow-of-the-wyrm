@@ -628,12 +628,13 @@ TargetMap& Creature::get_target_map_ref()
   return targets;
 }
 
+  // Uncomment the code below to find out the size of Creature. :)
+  //template<int s> struct creature_size;
+  //creature_size<sizeof(Creature)> creature_size;
+
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
 {
-  // Uncomment the code below to find out the size of Creature. :)
-  // template<int s> struct csize;
-  // Wow<sizeof(Creature)> csize;
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
 }
 
