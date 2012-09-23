@@ -22,6 +22,8 @@ class DecisionStrategy
     void set_fov_map(boost::shared_ptr<Map> new_fov_map);
     boost::shared_ptr<Map> get_fov_map();
 
+    virtual DecisionStrategy* copy() = 0;
+
   protected:
     boost::shared_ptr<Map> current_fov_map;
     ThreatRatings threat_ratings;

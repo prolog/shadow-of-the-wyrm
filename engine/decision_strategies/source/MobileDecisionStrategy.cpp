@@ -9,6 +9,11 @@ MobileDecisionStrategy::MobileDecisionStrategy(ControllerPtr new_controller)
 {
 }
 
+DecisionStrategy* MobileDecisionStrategy::copy()
+{
+  return new MobileDecisionStrategy(*this);
+}
+
 CommandPtr MobileDecisionStrategy::get_decision_for_inventory(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands)
 {
   CommandPtr null;

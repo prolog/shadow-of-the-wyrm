@@ -44,7 +44,8 @@ CreaturePtr CreatureFactory::create_by_creature_id
       CreaturePtr creature_template = c_it->second;
       CreatureGenerationValues cgv  = cgv_it->second;
       
-      creature = make_shared<Creature>(*creature_template);
+      Creature creature_instance = *creature_template;
+      creature = make_shared<Creature>(creature_instance);
       set_default_resistances(creature);
       
       // Set HP to a randomly generated value in the initial range.

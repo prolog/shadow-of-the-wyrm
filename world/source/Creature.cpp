@@ -4,6 +4,7 @@
 #include "PlayerDecisionStrategy.hpp"
 
 using namespace std;
+using boost::shared_ptr;
 using boost::make_shared;
 
 // Set a reasonable set of default values for simple types, which are helpfully initialized to bullshit memory.
@@ -15,7 +16,6 @@ Creature::Creature()
 , eye_colour(EYE_COLOUR_BROWN)
 , hair_colour(HAIR_COLOUR_BLACK)
 , handedness(RIGHT_HANDED)
-, ivory_pieces(0)
 , symbol('?')
 , colour(COLOUR_WHITE)
 , experience_value(0)
@@ -34,6 +34,75 @@ Creature::Creature()
   
   Damage dam(1, 2, 0, DAMAGE_TYPE_POUND);
   set_base_damage(dam);
+}
+
+// Need to define these because of the ControllerPtr and DecisionStrategyPtr
+// defined in the class - without it, a shared_ptr to a decision strategy 
+// doesn't always do what you expect!
+Creature::Creature(const Creature& cr)
+{
+  id = cr.id;
+  is_player = cr.is_player;
+  name = cr.name;
+  sex = cr.sex;
+  age = cr.age;
+  size = cr.size;
+  eye_colour = cr.eye_colour;
+  hair_colour = cr.hair_colour;
+  handedness = cr.handedness;
+  short_description_sid = cr.short_description_sid;
+  description_sid = cr.description_sid;
+  race_id = cr.race_id;
+  class_id = cr.class_id;
+  strength = cr.strength;
+  dexterity = cr.dexterity;
+  agility = cr.agility;
+  health = cr.health;
+  intelligence = cr.intelligence;
+  willpower = cr.willpower;
+  charisma = cr.charisma;
+  valour = cr.valour;
+  spirit = cr.spirit;
+  speed = cr.speed;
+  damage = cr.damage;
+  equipment = cr.equipment;
+  inventory = cr.inventory;
+  resistances = cr.resistances;
+  skills = cr.skills;
+  movement_accumulation = cr.movement_accumulation;
+  hit_points = cr.hit_points;
+  arcana_points = cr.arcana_points;
+  base_evade = cr.base_evade;
+  base_soak = cr.base_soak;
+  evade = cr.evade;
+  soak = cr.soak;
+  symbol = cr.symbol;
+  colour = cr.colour;
+  level = cr.level;
+  
+  if (cr.decision_strategy)
+  {
+    // Without the copy constuctor, the raw pointer was being shared between creature instances,
+    // and the threat map for supposedly peaceful creatures contained the player, making the creature hostile!
+    decision_strategy = shared_ptr<DecisionStrategy>(cr.decision_strategy->copy());
+  }
+  
+  religion = cr.religion;
+  experience_value = cr.experience_value;
+  experience_points = cr.experience_points;
+  turns = cr.turns;
+  targets = cr.targets;  
+}
+
+Creature& Creature::operator=(const Creature& cr)
+{
+  if (this != &cr)
+  {
+    Creature temp(cr);
+    temp.swap(*this);
+  }
+
+  return *this;
 }
 
 void Creature::set_id(const string& new_id)
@@ -352,16 +421,6 @@ Inventory& Creature::get_inventory()
   return inventory;
 }
 
-void Creature::set_ivory_pieces(const uint new_ivory_pieces)
-{
-  ivory_pieces = new_ivory_pieces;
-}
-
-uint Creature::get_ivory_pieces() const
-{
-  return ivory_pieces;
-}
-
 void Creature::set_hit_points(const Statistic& new_hit_points)
 {
   hit_points = new_hit_points;
@@ -567,6 +626,64 @@ TargetMap Creature::get_target_map() const
 TargetMap& Creature::get_target_map_ref()
 {
   return targets;
+}
+
+// Ensure that I haven't missed anything in the copy constructor, IO, etc!
+void Creature::assert_size() const
+{
+  // Uncomment the code below to find out the size of Creature. :)
+  // template<int s> struct csize;
+  // Wow<sizeof(Creature)> csize;
+  BOOST_STATIC_ASSERT(sizeof(*this) == 424);
+}
+
+// Swap values, no throw
+void Creature::swap(Creature &cr) throw ()
+{
+  std::swap(this->id, cr.id);
+  std::swap(this->is_player, cr.is_player);
+  std::swap(this->name, cr.name);
+  std::swap(this->sex, cr.sex);
+  std::swap(this->age, cr.age);
+  std::swap(this->size, cr.size);
+  std::swap(this->eye_colour, cr.eye_colour);
+  std::swap(this->hair_colour, cr.hair_colour);
+  std::swap(this->handedness, cr.handedness);
+  std::swap(this->short_description_sid, cr.short_description_sid);
+  std::swap(this->description_sid, cr.description_sid);
+  std::swap(this->race_id, cr.race_id);
+  std::swap(this->class_id, cr.class_id);
+  std::swap(this->strength, cr.strength);
+  std::swap(this->dexterity, cr.dexterity);
+  std::swap(this->agility, cr.agility);
+  std::swap(this->health, cr.health);
+  std::swap(this->intelligence, cr.intelligence);
+  std::swap(this->willpower, cr.willpower);
+  std::swap(this->charisma, cr.charisma);
+  std::swap(this->valour, cr.valour);
+  std::swap(this->spirit, cr.spirit);
+  std::swap(this->speed, cr.speed);
+  std::swap(this->damage, cr.damage);
+  std::swap(this->equipment, cr.equipment);
+  std::swap(this->inventory, cr.inventory);
+  std::swap(this->resistances, cr.resistances);
+  std::swap(this->skills, cr.skills);
+  std::swap(this->movement_accumulation, cr.movement_accumulation);
+  std::swap(this->hit_points, cr.hit_points);
+  std::swap(this->arcana_points, cr.arcana_points);
+  std::swap(this->base_evade, cr.base_evade);
+  std::swap(this->base_soak, cr.base_soak);
+  std::swap(this->evade, cr.evade);
+  std::swap(this->soak, cr.soak);
+  std::swap(this->symbol, cr.symbol);
+  std::swap(this->colour, cr.colour);
+  std::swap(this->level, cr.level);
+  std::swap(this->decision_strategy, cr.decision_strategy);
+  std::swap(this->religion, cr.religion);
+  std::swap(this->experience_value, cr.experience_value);
+  std::swap(this->experience_points, cr.experience_points);
+  std::swap(this->turns, cr.turns);
+  std::swap(this->targets, cr.targets);
 }
 
 #ifdef UNIT_TESTS
