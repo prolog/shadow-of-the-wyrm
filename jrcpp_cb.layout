@@ -613,7 +613,7 @@
 	<File name="engine\combat\source\ExperienceManager.cpp" open="0" top="0" tabpos="1">
 		<Cursor position="3260" topLine="99" />
 	</File>
-	<File name="engine\combat\source\HostilityManager.cpp" open="1" top="0" tabpos="18">
+	<File name="engine\combat\source\HostilityManager.cpp" open="0" top="0" tabpos="18">
 		<Cursor position="260" topLine="6" />
 	</File>
 	<File name="engine\combat\source\LevelConstants.cpp" open="0" top="0" tabpos="9">
@@ -892,7 +892,7 @@
 	<File name="engine\decision_strategies\search\source\UniformCostSearchStrategy.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="544" topLine="3" />
 	</File>
-	<File name="engine\decision_strategies\source\DecisionStrategy.cpp" open="1" top="1" tabpos="22">
+	<File name="engine\decision_strategies\source\DecisionStrategy.cpp" open="0" top="0" tabpos="22">
 		<Cursor position="275" topLine="0" />
 	</File>
 	<File name="engine\decision_strategies\source\DecisionStrategyFactory.cpp" open="0" top="0" tabpos="13">
@@ -904,10 +904,10 @@
 	<File name="engine\decision_strategies\source\ImmobileDecisionStrategy.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="753" topLine="3" />
 	</File>
-	<File name="engine\decision_strategies\source\MobileDecisionStrategy.cpp" open="1" top="0" tabpos="13">
+	<File name="engine\decision_strategies\source\MobileDecisionStrategy.cpp" open="0" top="0" tabpos="13">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="engine\decision_strategies\source\NPCDecisionStrategy.cpp" open="1" top="0" tabpos="14">
+	<File name="engine\decision_strategies\source\NPCDecisionStrategy.cpp" open="0" top="0" tabpos="14">
 		<Cursor position="2618" topLine="76" />
 	</File>
 	<File name="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" open="0" top="0" tabpos="2">
@@ -956,18 +956,18 @@
 		<Cursor position="79" topLine="0" />
 	</File>
 	<File name="engine\effects\include\Effect.hpp" open="0" top="0" tabpos="20">
-		<Cursor position="126" topLine="0" />
+		<Cursor position="712" topLine="12" />
 	</File>
 	<File name="engine\effects\include\EffectFactory.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="63" topLine="0" />
 	</File>
-	<File name="engine\effects\include\EtherEffect.hpp" open="1" top="0" tabpos="10">
+	<File name="engine\effects\include\EtherEffect.hpp" open="0" top="0" tabpos="10">
 		<Cursor position="199" topLine="0" />
 	</File>
 	<File name="engine\effects\include\FruitJuiceEffect.hpp" open="0" top="0" tabpos="0">
 		<Cursor position="553" topLine="0" />
 	</File>
-	<File name="engine\effects\include\HealingEffect.hpp" open="1" top="0" tabpos="9">
+	<File name="engine\effects\include\HealingEffect.hpp" open="0" top="0" tabpos="9">
 		<Cursor position="229" topLine="0" />
 	</File>
 	<File name="engine\effects\include\IdentifyEffect.hpp" open="0" top="0" tabpos="22">
@@ -982,19 +982,19 @@
 	<File name="engine\effects\source\AdditionalEffectMessages.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="124" topLine="0" />
 	</File>
-	<File name="engine\effects\source\Effect.cpp" open="1" top="0" tabpos="4">
+	<File name="engine\effects\source\Effect.cpp" open="0" top="0" tabpos="4">
 		<Cursor position="752" topLine="10" />
 	</File>
-	<File name="engine\effects\source\EffectFactory.cpp" open="1" top="0" tabpos="11">
+	<File name="engine\effects\source\EffectFactory.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="968" topLine="25" />
 	</File>
-	<File name="engine\effects\source\EtherEffect.cpp" open="1" top="0" tabpos="12">
+	<File name="engine\effects\source\EtherEffect.cpp" open="0" top="0" tabpos="12">
 		<Cursor position="1310" topLine="24" />
 	</File>
 	<File name="engine\effects\source\FruitJuiceEffect.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="1403" topLine="32" />
 	</File>
-	<File name="engine\effects\source\HealingEffect.cpp" open="1" top="0" tabpos="8">
+	<File name="engine\effects\source\HealingEffect.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="1691" topLine="41" />
 	</File>
 	<File name="engine\effects\source\IdentifyEffect.cpp" open="0" top="0" tabpos="3">
@@ -1423,10 +1423,10 @@
 	<File name="engine\source\ClassManager.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="247" topLine="0" />
 	</File>
-	<File name="engine\source\CreatureFactory.cpp" open="1" top="0" tabpos="15">
-		<Cursor position="1259" topLine="44" />
+	<File name="engine\source\CreatureFactory.cpp" open="1" top="0" tabpos="3">
+		<Cursor position="1609" topLine="42" />
 	</File>
-	<File name="engine\source\CreatureGenerationManager.cpp" open="1" top="0" tabpos="16">
+	<File name="engine\source\CreatureGenerationManager.cpp" open="0" top="0" tabpos="16">
 		<Cursor position="2748" topLine="63" />
 	</File>
 	<File name="engine\source\FileWriter.cpp" open="0" top="0" tabpos="2">
@@ -1624,14 +1624,14 @@
 	<File name="global_functions.cpp" open="0" top="0" tabpos="15">
 		<Cursor position="1035" topLine="31" />
 	</File>
-	<File name="include\Colours.hpp" open="1" top="0" tabpos="1">
+	<File name="include\Colours.hpp" open="0" top="0" tabpos="1">
 		<Cursor position="392" topLine="2" />
 	</File>
 	<File name="include\buildinfo.hpp" open="0" top="0" tabpos="13">
 		<Cursor position="135" topLine="0" />
 	</File>
 	<File name="include\common.hpp" open="0" top="0" tabpos="12">
-		<Cursor position="123" topLine="0" />
+		<Cursor position="56" topLine="0" />
 	</File>
 	<File name="include\global_prototypes.hpp" open="0" top="0" tabpos="16">
 		<Cursor position="301" topLine="0" />
@@ -1666,8 +1666,8 @@
 	<File name="world\include\Consumable.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="94" topLine="0" />
 	</File>
-	<File name="world\include\Creature.hpp" open="0" top="0" tabpos="1">
-		<Cursor position="1440" topLine="38" />
+	<File name="world\include\Creature.hpp" open="1" top="0" tabpos="2">
+		<Cursor position="8731" topLine="275" />
 	</File>
 	<File name="world\include\CreatureFeatures.hpp" open="0" top="0" tabpos="5">
 		<Cursor position="690" topLine="26" />
@@ -1756,7 +1756,7 @@
 	<File name="world\include\Statistic.hpp" open="0" top="0" tabpos="6">
 		<Cursor position="0" topLine="0" />
 	</File>
-	<File name="world\include\ThreatRatings.hpp" open="1" top="0" tabpos="17">
+	<File name="world\include\ThreatRatings.hpp" open="0" top="0" tabpos="17">
 		<Cursor position="443" topLine="4" />
 	</File>
 	<File name="world\include\Wand.hpp" open="0" top="0" tabpos="0">
@@ -1945,8 +1945,8 @@
 	<File name="world\source\Consumable.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="128" topLine="0" />
 	</File>
-	<File name="world\source\Creature.cpp" open="1" top="0" tabpos="21">
-		<Cursor position="4758" topLine="244" />
+	<File name="world\source\Creature.cpp" open="1" top="1" tabpos="1">
+		<Cursor position="11673" topLine="621" />
 	</File>
 	<File name="world\source\CreatureGenerationValues.cpp" open="0" top="0" tabpos="8">
 		<Cursor position="155" topLine="0" />
@@ -2029,7 +2029,7 @@
 	<File name="world\source\StatisticsModifier.cpp" open="0" top="0" tabpos="6">
 		<Cursor position="2869" topLine="109" />
 	</File>
-	<File name="world\source\ThreatRatings.cpp" open="1" top="0" tabpos="19">
+	<File name="world\source\ThreatRatings.cpp" open="0" top="0" tabpos="19">
 		<Cursor position="730" topLine="20" />
 	</File>
 	<File name="world\source\Wand.cpp" open="0" top="0" tabpos="0">

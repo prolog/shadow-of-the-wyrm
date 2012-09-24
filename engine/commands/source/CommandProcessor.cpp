@@ -125,6 +125,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.check_currency(creature);
       }
+      else if (command_name == CommandKeys::SAVE_GAME)
+      {
+        ac = game->actions.save(creature);
+      }
     }
   }
   

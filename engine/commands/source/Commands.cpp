@@ -228,3 +228,14 @@ CheckCurrencyCommand::CheckCurrencyCommand()
 CheckCurrencyCommand::~CheckCurrencyCommand()
 {
 }
+
+// 'S'ave the game
+SaveGameCommand::SaveGameCommand()
+: Command(CommandKeys::SAVE_GAME)
+{
+}
+
+SaveGameCommand::~SaveGameCommand()
+{
+}
+

@@ -122,6 +122,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = make_shared<CheckCurrencyCommand>();
   }
+  else if (command_name == CommandKeys::SAVE_GAME)
+  {
+    command = make_shared<SaveGameCommand>();
+  }
 
   return command;
 }

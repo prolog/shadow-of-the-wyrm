@@ -319,6 +319,19 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature)
   return get_action_cost(creature, action_cost_value);
 }
 
+ActionCost ActionManager::save(CreaturePtr creature)
+{
+  Game* game = Game::instance();
+  
+  if (game)
+  {
+    // JCD FIXME save game here
+    quit(creature);
+  }
+  
+  return get_action_cost(creature, 1);
+}
+
 ActionCost ActionManager::quit(CreaturePtr creature)
 {
   Game* game = Game::instance();

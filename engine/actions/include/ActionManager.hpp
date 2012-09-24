@@ -68,6 +68,9 @@ class ActionManager
     // Check the current amount of currency held
     ActionCost check_currency(CreaturePtr creature);
 
+    // Saves the game.
+    ActionCost save(CreaturePtr creature);
+
     // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.
     ActionCost quit(CreaturePtr creature);
