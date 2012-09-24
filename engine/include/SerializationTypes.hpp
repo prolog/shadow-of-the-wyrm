@@ -1,0 +1,10 @@
+#pragma once
+
+enum SerializationReturnCode
+{
+  SERIALIZATION_OK = 0,
+  SERIALIZATION_ACCESS_ERROR = 1,
+  SERIALIZATION_VERSION_ERROR = 2,
+  SERIALIZATION_DATA_ERROR = 3 
+};
+

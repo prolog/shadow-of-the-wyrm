@@ -13,6 +13,16 @@
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
 
+#include "NCursesDisplay.hpp"
+
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 class Game
 {
   public:
@@ -130,4 +140,19 @@ class Game
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;
     KeyboardCommandMapPtr game_kb_command_map;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const uint version)
+    {
+      ar.register_type(static_cast<NCursesDisplay *>(NULL));
+      ar & keep_playing & reload_game_loop & game_instance;
+//      ar & /* & display - not needed & */ map_registry;
+      //& map_registry & deities & races & classes;
+//      ar & creatures & creature_generation_values & items & tile_info;
+//      ar & worlds & players & current_world_ix & current_map_id;
+//      ar & actions & time_keeper & game_command_factory & game_kb_command_map;
+    }
 };

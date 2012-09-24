@@ -17,6 +17,7 @@
 #include "PrayerManager.hpp"
 #include "ReadManager.hpp"
 #include "SearchActionManager.hpp"
+#include "Serialization.hpp"
 #include "VersionActionManager.hpp"
 #include "WeaponInfoManager.hpp"
 #include "Log.hpp"
@@ -325,7 +326,7 @@ ActionCost ActionManager::save(CreaturePtr creature)
   
   if (game)
   {
-    // JCD FIXME save game here
+    Serialization::save(creature);
     quit(creature);
   }
   

@@ -47,7 +47,7 @@
 1339159082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
 	"NCursesConstants.hpp"
 
-1348018541 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1348511569 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -225,7 +225,7 @@
 	<sstream>
 	"ActionCost.hpp"
 
-1348494320 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
+1348499214 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actionmanager.cpp
 	<string>
 	<boost/make_shared.hpp>
 	"ActionManager.hpp"
@@ -245,6 +245,7 @@
 	"PrayerManager.hpp"
 	"ReadManager.hpp"
 	"SearchActionManager.hpp"
+	"Serialization.hpp"
 	"VersionActionManager.hpp"
 	"WeaponInfoManager.hpp"
 	"Log.hpp"
@@ -651,13 +652,13 @@
 	"Commands.hpp"
 	"Game.hpp"
 
-1347716141 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
+1348494338 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\commands.cpp
 	"Commands.hpp"
 	"CommandKeys.hpp"
 	"Conversion.hpp"
 	"StringConstants.hpp"
 
-1347716164 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
+1348494164 source:c:\cygwin\home\julian\jrcpp\engine\commands\source\keyboardcommandmap.cpp
 	<ncurses.h>
 	"CommandKeys.hpp"
 	"Conversion.hpp"
@@ -2636,4 +2637,20 @@
 1348321889 source:c:\cygwin\home\julian\jrcpp\engine\effects\source\additionaleffectmessages.cpp
 	"StringConstants.hpp"
 	"AdditionalEffectMessages.hpp"
+
+1348511301 source:c:\cygwin\home\julian\jrcpp\engine\source\serialization.cpp
+	<fstream>
+	<boost/archive/text_iarchive.hpp>
+	<boost/archive/text_oarchive.hpp>
+	<boost/functional/hash.hpp>
+	"global_prototypes.hpp"
+	"Conversion.hpp"
+	"Environment.hpp"
+	"Game.hpp"
+	"Serialization.hpp"
+
+1348498956 source:c:\cygwin\home\julian\jrcpp\engine\source\environment.cpp
+	"Environment.hpp"
+	<windows.h>
+	<Lmcons.h>
 
