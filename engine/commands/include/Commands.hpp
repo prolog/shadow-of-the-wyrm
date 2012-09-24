@@ -158,3 +158,10 @@ class CheckCurrencyCommand : public Command
     ~CheckCurrencyCommand();
 };
 
+class SaveGameCommand : public Command
+{
+  public:
+    SaveGameCommand();
+    ~SaveGameCommand();
+};
+
