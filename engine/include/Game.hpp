@@ -147,6 +147,7 @@ class Game
     template<typename Archive>
     void serialize(Archive& ar, const uint version)
     {
+      BOOST_STATIC_ASSERT(sizeof(Game) == 328);
       ar.register_type(static_cast<NCursesDisplay *>(NULL));
       ar & keep_playing & reload_game_loop & game_instance;
 //      ar & /* & display - not needed & */ map_registry;
@@ -156,3 +157,4 @@ class Game
 //      ar & actions & time_keeper & game_command_factory & game_kb_command_map;
     }
 };
+

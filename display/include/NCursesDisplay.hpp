@@ -7,6 +7,7 @@
 #include "NCursesPromptProcessor.hpp"
 #include "TextComponent.hpp"
 #include "OptionsComponent.hpp"
+#include "Serialization.hpp"
 
 namespace boost
 {

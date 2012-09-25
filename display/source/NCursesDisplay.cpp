@@ -377,7 +377,7 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
   NCursesMenuWrapper wrapper;
   WINDOW* menu_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
 
-  menus.push(menu_window);
+  menus.push_back(menu_window);
 
   int current_row = 0;
   int current_col = 0;
@@ -486,12 +486,12 @@ void NCursesDisplay::clear_menu()
 {
   if (!menus.empty())
   {
-    WINDOW* current_menu_window = menus.top();
+    WINDOW* current_menu_window = menus.back();
     wclear(current_menu_window);
     wrefresh(current_menu_window);
     destroy_menu(current_menu_window);
 
-    menus.pop();
+    menus.pop_back();
   }
 }
 
@@ -596,7 +596,7 @@ void NCursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
 
   // Create the new window to display the equipment
   WINDOW* eq_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
-  menus.push(eq_window);
+  menus.push_back(eq_window);
   
   // Centre the header on the first line
   int current_row = 0;
@@ -655,7 +655,7 @@ int NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
 
   // Create the new window to display the items
   WINDOW* inv_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
-  menus.push(inv_window);
+  menus.push_back(inv_window);
   
   // Centre the header on the first line
   int current_row = 0;
