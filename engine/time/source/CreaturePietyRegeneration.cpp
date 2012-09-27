@@ -4,7 +4,7 @@
 
 using std::string;
 
-const int CreaturePietyRegeneration::MINUTES_PER_POINT_OF_PIETY = 10;
+int CreaturePietyRegeneration::MINUTES_PER_POINT_OF_PIETY = 10;
 
 void CreaturePietyRegeneration::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {

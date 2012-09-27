@@ -23,6 +23,11 @@ void ActionCoordinator::add(const ActionCost& ac, const string& creature_id)
   creature_action_order.insert(make_pair(ac, creature_id));
 }
 
+void ActionCoordinator::clear()
+{
+  creature_action_order.clear();
+}
+
 void ActionCoordinator::update_actions()
 {
   // Remove the first item from the map, and update the remaining costs based on the current minus the cost of the first.

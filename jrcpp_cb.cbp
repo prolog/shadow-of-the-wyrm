@@ -645,6 +645,7 @@
 		<Unit filename="engine\generators\worship_sites\source\SnakingTempleGenerator.cpp" />
 		<Unit filename="engine\generators\worship_sites\source\WorshipSiteGenerator.cpp" />
 		<Unit filename="engine\include\ClassManager.hpp" />
+		<Unit filename="engine\include\ClassSerializationExports.hpp" />
 		<Unit filename="engine\include\CreationUtils.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\CreatureGenerationConstants.hpp" />

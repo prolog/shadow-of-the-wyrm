@@ -42,6 +42,8 @@ class MapDisplayArea
 class Display
 {
 	public:
+    virtual ~Display() {};
+    
 	  virtual bool create() = 0;
 	  virtual void tear_down() = 0;
 

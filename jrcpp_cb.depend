@@ -47,7 +47,7 @@
 1339159082 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesconstants.cpp
 	"NCursesConstants.hpp"
 
-1348511569 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
+1348595260 source:c:\cygwin\home\julian\jrcpp\display\source\ncursesdisplay.cpp
 	<iostream>
 	<sstream>
 	<vector>
@@ -217,7 +217,7 @@
 1339107602 source:c:\cygwin\home\julian\jrcpp\engine\xml\source\xmlwearablereader.cpp
 	"XMLWearableReader.hpp"
 
-1340234660 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncoordinator.cpp
+1348788693 source:c:\cygwin\home\julian\jrcpp\engine\actions\source\actioncoordinator.cpp
 	<boost/foreach.hpp>
 	"ActionCoordinator.hpp"
 
@@ -1435,10 +1435,9 @@
 1339107604 source:c:\cygwin\home\julian\jrcpp\engine\source\filewriter.cpp
 	"FileWriter.hpp"
 
-1348018963 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
+1348788763 source:c:\cygwin\home\julian\jrcpp\engine\source\game.cpp
 	<boost/make_shared.hpp>
 	"global_prototypes.hpp"
-	"ActionCoordinator.hpp"
 	"Conversion.hpp"
 	"CreatureCalculator.hpp"
 	"CreatureFeatures.hpp"
@@ -1596,12 +1595,12 @@
 1341405023 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturehpregeneration.cpp
 	"CreatureHPRegeneration.hpp"
 
-1341405050 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturepietyregeneration.cpp
+1348789331 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creaturepietyregeneration.cpp
 	"ClassManager.hpp"
 	"CreaturePietyRegeneration.hpp"
 	"ReligionConstants.hpp"
 
-1343088346 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
+1348788100 source:c:\cygwin\home\julian\jrcpp\engine\time\source\creatureskillincrementer.cpp
 	"CreatureSkillIncrementer.hpp"
 	"MessageManager.hpp"
 
@@ -2638,16 +2637,21 @@
 	"StringConstants.hpp"
 	"AdditionalEffectMessages.hpp"
 
-1348511301 source:c:\cygwin\home\julian\jrcpp\engine\source\serialization.cpp
+1348786979 source:c:\cygwin\home\julian\jrcpp\engine\source\serialization.cpp
 	<fstream>
 	<boost/archive/text_iarchive.hpp>
 	<boost/archive/text_oarchive.hpp>
 	<boost/functional/hash.hpp>
+	<boost/serialization/base_object.hpp>
+	<boost/serialization/deque.hpp>
+	<boost/serialization/map.hpp>
+	<boost/serialization/vector.hpp>
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"Environment.hpp"
 	"Game.hpp"
 	"Serialization.hpp"
+	"ClassSerializationExports.hpp"
 
 1348498956 source:c:\cygwin\home\julian\jrcpp\engine\source\environment.cpp
 	"Environment.hpp"

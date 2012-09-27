@@ -4,6 +4,12 @@
 using std::map;
 using std::string;
 
+CreatureSkillIncrementer::CreatureSkillIncrementer()
+: ICreatureRegeneration(),
+minutes_interval(0)
+{
+}
+
 CreatureSkillIncrementer::CreatureSkillIncrementer(const uint new_minutes_interval)
 : ICreatureRegeneration(), 
   minutes_interval(new_minutes_interval)

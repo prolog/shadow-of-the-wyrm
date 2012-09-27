@@ -2,6 +2,14 @@
 #include <string>
 #include "common.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 typedef int ActionCostValue;
 
 class ActionCost
@@ -33,4 +41,13 @@ class ActionCost
 
     ActionCostValue cost;
     bool turn_advanced;
+
+  private:
+    friend class boost::serialization::access;
+
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & cost & turn_advanced;
+    }
 };

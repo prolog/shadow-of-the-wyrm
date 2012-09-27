@@ -1,5 +1,14 @@
 #pragma once
+#include <boost/serialization/base_object.hpp>
 #include "ICreatureRegeneration.hpp"
+
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
 
 class CreaturePietyRegeneration : public ICreatureRegeneration
 {
@@ -10,5 +19,15 @@ class CreaturePietyRegeneration : public ICreatureRegeneration
     int regenerate_piety(const int piety, const int piety_regen_bonus, const ulonglong minutes_elapsed, const bool crowned);
     int degenerate_piety(const int piety, const int piety_regen_bonus, const ulonglong minutes_elapsed);
     
-    static const int MINUTES_PER_POINT_OF_PIETY;
+    static int MINUTES_PER_POINT_OF_PIETY;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object<ICreatureRegeneration>(*this);
+      ar & MINUTES_PER_POINT_OF_PIETY;
+    }
 };
