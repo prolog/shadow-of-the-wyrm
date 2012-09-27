@@ -6,6 +6,8 @@
 class ITerrainMovementAccumulationChecker
 {
   public:
+    virtual ~ITerrainMovementAccumulationChecker() {};
+
     virtual void check(CreaturePtr creature) = 0;
     
   protected:

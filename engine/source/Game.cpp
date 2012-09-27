@@ -1,6 +1,5 @@
 #include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
-#include "ActionCoordinator.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureFeatures.hpp"
@@ -219,7 +218,7 @@ void Game::go()
 
     map<string, CreaturePtr> map_creatures = current_map->get_creatures();
 
-    ActionCoordinator ac;
+    ac.clear();
     ac.set(map_creatures);
 
     Calendar& calendar = worlds[current_world_ix]->get_calendar();

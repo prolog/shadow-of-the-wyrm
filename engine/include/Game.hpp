@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "ActionCoordinator.hpp"
 #include "ActionManager.hpp"
 #include "Class.hpp"
 #include "CreatureGenerationValues.hpp"
@@ -134,6 +135,9 @@ class Game
     // The action manager
     ActionManager actions;
     
+    // The action coordinator, used to keep track of action order and timing costs.
+    ActionCoordinator ac;
+    
     // The time keeper, used to handle notifications for HP regeneration, status effects wearing off, etc.
     WorldTimeKeeper time_keeper;
     
@@ -147,14 +151,14 @@ class Game
     template<typename Archive>
     void serialize(Archive& ar, const uint version)
     {
-      BOOST_STATIC_ASSERT(sizeof(Game) == 328);
-      ar.register_type(static_cast<NCursesDisplay *>(NULL));
-      ar & keep_playing & reload_game_loop & game_instance;
-//      ar & /* & display - not needed & */ map_registry;
+      BOOST_STATIC_ASSERT(sizeof(Game) == 352);
+      ar & keep_playing & reload_game_loop & game_instance & display;
+//      ar & map_registry;
       //& map_registry & deities & races & classes;
 //      ar & creatures & creature_generation_values & items & tile_info;
-//      ar & worlds & players & current_world_ix & current_map_id;
-//      ar & actions & time_keeper & game_command_factory & game_kb_command_map;
+      ar /* & worlds & players */ & current_world_ix & current_map_id;
+      ar & ac & /*& time_keeper & */ game_command_factory & game_kb_command_map;
     }
 };
+
 

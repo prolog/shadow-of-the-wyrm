@@ -1,6 +1,15 @@
 #pragma once
+#include <boost/serialization/base_object.hpp>
 #include "HPRegenerationCalculator.hpp"
 #include "ICreatureRegeneration.hpp"
+
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
 
 class CreatureHPRegeneration : public ICreatureRegeneration
 {
@@ -9,4 +18,14 @@ class CreatureHPRegeneration : public ICreatureRegeneration
     
   protected:
     HPRegenerationCalculator hp_regen_calc;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object<ICreatureRegeneration>(*this);
+      ar & hp_regen_calc;
+    }
 };

@@ -2,13 +2,21 @@
 #include <boost/archive/text_iarchive.hpp>
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/functional/hash.hpp>
+#include <boost/serialization/base_object.hpp>
 #include <boost/serialization/deque.hpp>
 #include <boost/serialization/map.hpp>
+#include <boost/serialization/vector.hpp>
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
 #include "Environment.hpp"
 #include "Game.hpp"
 #include "Serialization.hpp"
+
+// * ! * ! *
+// Do not include any files after the include below.
+// It's needed to be able to handle polymorphic classes.
+// ! * ! * !
+#include "ClassSerializationExports.hpp"
 
 using namespace std;
 using boost::hash;
@@ -46,7 +54,6 @@ void Serialization::save(CreaturePtr creature)
   // Game
   Game* game = Game::instance();
   ar << game;
-  // Map Registry
   // RNG
 }
 
