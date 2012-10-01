@@ -2,6 +2,14 @@
 #include <list>
 #include "Item.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 enum InventoryAdditionType
 {
   INVENTORY_ADDITION_FRONT = 0,
@@ -45,4 +53,13 @@ class Inventory
     
   protected:
     std::list<ItemPtr> items;
+
+  private:
+    friend class boost::serialization::access;
+
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & items;
+    }
 };

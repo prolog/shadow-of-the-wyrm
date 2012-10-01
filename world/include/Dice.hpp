@@ -2,6 +2,14 @@
 #include <string>
 #include "common.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 class Dice
 {
   public:
@@ -27,4 +35,13 @@ class Dice
     uint num_dice;
     uint dice_sides;
     int modifier;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & num_dice & dice_sides & modifier;
+    }
 };

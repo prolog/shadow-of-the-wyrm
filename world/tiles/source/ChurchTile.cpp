@@ -1,5 +1,11 @@
 #include "ChurchTile.hpp"
 
+// Needed by boost's serialization library:
+ChurchTile::ChurchTile()
+{
+  tile_subtype = TILE_TYPE_UNDEFINED;
+}
+
 ChurchTile::ChurchTile(const TileType subtype)
 {
   tile_subtype = subtype;

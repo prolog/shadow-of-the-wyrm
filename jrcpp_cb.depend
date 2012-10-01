@@ -1,7 +1,8 @@
 # depslib dependency file v1.0
-1339107601 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
+1348837495 source:c:\cygwin\home\julian\jrcpp\savagelands.cpp
 	<iostream>
 	<xercesc/util/PlatformUtils.hpp>
+	<boost/archive/archive_exception.hpp>
 	"common.hpp"
 	"global_prototypes.hpp"
 	"NCursesKeyboardController.hpp"
@@ -1799,7 +1800,7 @@
 	"StringConstants.hpp"
 	"Wood.hpp"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deity.cpp
+1348924075 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deity.cpp
 	"Deity.hpp"
 
 1340801380 source:c:\cygwin\home\julian\jrcpp\world\religion\source\deitystatus.cpp
@@ -1966,8 +1967,9 @@
 1339107605 c:\cygwin\home\julian\jrcpp\world\source\unit_tests\race_test.cpp
 	"gtest/gtest.h"
 
-1339107605 source:c:\cygwin\home\julian\jrcpp\world\source\resistances.cpp
+1348925823 source:c:\cygwin\home\julian\jrcpp\world\source\resistances.cpp
 	<sstream>
+	<boost/make_shared.hpp>
 	"Resistances.hpp"
 	"StringConstants.hpp"
 	"StringTable.hpp"
@@ -2021,7 +2023,8 @@
 	<sstream>
 	"Weight.hpp"
 
-1339987924 source:c:\cygwin\home\julian\jrcpp\world\source\world.cpp
+1348835854 source:c:\cygwin\home\julian\jrcpp\world\source\world.cpp
+	"MapRegistry.hpp"
 	"World.hpp"
 
 1339107605 source:c:\cygwin\home\julian\jrcpp\world\tiles\features\source\altar.cpp
@@ -2151,7 +2154,7 @@
 1339107606 c:\cygwin\home\julian\jrcpp\world\tiles\source\unit_tests\caverntile_test.cpp
 	"gtest/gtest.h"
 
-1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\churchtile.cpp
+1349012434 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\churchtile.cpp
 	"ChurchTile.hpp"
 
 1339107606 source:c:\cygwin\home\julian\jrcpp\world\tiles\source\daistile.cpp
@@ -2637,7 +2640,7 @@
 	"StringConstants.hpp"
 	"AdditionalEffectMessages.hpp"
 
-1348786979 source:c:\cygwin\home\julian\jrcpp\engine\source\serialization.cpp
+1348922807 source:c:\cygwin\home\julian\jrcpp\engine\source\serialization.cpp
 	<fstream>
 	<boost/archive/text_iarchive.hpp>
 	<boost/archive/text_oarchive.hpp>
@@ -2645,11 +2648,13 @@
 	<boost/serialization/base_object.hpp>
 	<boost/serialization/deque.hpp>
 	<boost/serialization/map.hpp>
+	<boost/serialization/set.hpp>
 	<boost/serialization/vector.hpp>
 	"global_prototypes.hpp"
 	"Conversion.hpp"
 	"Environment.hpp"
 	"Game.hpp"
+	"Log.hpp"
 	"Serialization.hpp"
 	"ClassSerializationExports.hpp"
 
@@ -2657,4 +2662,47 @@
 	"Environment.hpp"
 	<windows.h>
 	<Lmcons.h>
+
+1348963822 source:c:\cygwin\home\julian\jrcpp\engine\serialization\source\serialization.cpp
+	<fstream>
+	<boost/archive/text_iarchive.hpp>
+	<boost/archive/text_oarchive.hpp>
+	<boost/functional/hash.hpp>
+	<boost/serialization/base_object.hpp>
+	<boost/serialization/deque.hpp>
+	<boost/serialization/map.hpp>
+	<boost/serialization/set.hpp>
+	<boost/serialization/vector.hpp>
+	"global_prototypes.hpp"
+	"Conversion.hpp"
+	"Environment.hpp"
+	"Game.hpp"
+	"Log.hpp"
+	"Serialization.hpp"
+	"TemplatesSerialization.hpp"
+
+1348965836 source:c:\cygwin\home\julian\jrcpp\engine\serialization\source\templateserialization.cpp
+	<boost/serialization/base_object.hpp>
+	<boost/serialization/deque.hpp>
+	<boost/serialization/list.hpp>
+	<boost/serialization/map.hpp>
+	<boost/serialization/set.hpp>
+	<boost/serialization/vector.hpp>
+	"Game.hpp"
+	"TemplatesSerialization.hpp"
+	"ClassSerializationExports.hpp"
+
+1348963861 source:c:\cygwin\home\julian\jrcpp\engine\serialization\source\gamestateserialization.cpp
+	"Game.hpp"
+	"GameStateSerialization.hpp"
+
+1348964063 source:c:\cygwin\home\julian\jrcpp\engine\serialization\source\gameengineserialization.cpp
+	<boost/serialization/base_object.hpp>
+	<boost/serialization/deque.hpp>
+	<boost/serialization/map.hpp>
+	<boost/serialization/set.hpp>
+	<boost/serialization/vector.hpp>
+	"Game.hpp"
+	"GameEngineSerialization.hpp"
+	"GameEngineExports.hpp"
 

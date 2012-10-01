@@ -4,8 +4,6 @@
 #include "PlayerDecisionStrategy.hpp"
 
 using namespace std;
-using boost::shared_ptr;
-using boost::make_shared;
 
 // Set a reasonable set of default values for simple types, which are helpfully initialized to bullshit memory.
 // Why did I write this in C++?
@@ -84,7 +82,7 @@ Creature::Creature(const Creature& cr)
   {
     // Without the copy constuctor, the raw pointer was being shared between creature instances,
     // and the threat map for supposedly peaceful creatures contained the player, making the creature hostile!
-    decision_strategy = shared_ptr<DecisionStrategy>(cr.decision_strategy->copy());
+    decision_strategy = boost::shared_ptr<DecisionStrategy>(cr.decision_strategy->copy());
   }
   
   religion = cr.religion;
@@ -124,7 +122,7 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
   {
     // Players always use the PlayerDecisionStrategy class so that keyboard input
     // can be used.
-    decision_strategy = make_shared<PlayerDecisionStrategy>(controller);
+    decision_strategy = boost::make_shared<PlayerDecisionStrategy>(controller);
 
     // Players are always @s.
     set_symbol('@');
@@ -608,7 +606,7 @@ void Creature::increment_turns()
   }
 }
 
-uint Creature::get_turns() const
+ulonglong Creature::get_turns() const
 {
   return turns;
 }

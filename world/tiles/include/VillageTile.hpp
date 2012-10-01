@@ -1,6 +1,15 @@
 #pragma once
 #include <boost/shared_ptr.hpp>
+#include <boost/serialization/base_object.hpp>
 #include "WorldMapTile.hpp"
+
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
 
 class VillageTile : public WorldMapLandmarkTile
 {
@@ -26,6 +35,16 @@ class VillageTile : public WorldMapLandmarkTile
   protected:
     std::string village_race_id;
     SettlementType settlement_type;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & boost::serialization::base_object<WorldMapLandmarkTile>(*this);
+      ar & village_race_id & settlement_type;
+    }
 };
 
 typedef boost::shared_ptr<VillageTile> VillageTilePtr;

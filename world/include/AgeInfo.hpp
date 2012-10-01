@@ -2,6 +2,13 @@
 #include "common.hpp"
 #include "Range.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
 
 class AgeInfo
 {
@@ -18,5 +25,14 @@ class AgeInfo
   protected:
     Range<uint> starting_age;
     Range<uint> maximum_age;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & starting_age & maximum_age;
+    }
 };
 

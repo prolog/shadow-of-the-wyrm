@@ -13,7 +13,7 @@ namespace boost
 {
   namespace uuids
   {
-    class uuid;
+    struct uuid;
   }
 }
 

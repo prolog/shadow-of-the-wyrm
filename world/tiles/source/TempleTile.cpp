@@ -1,5 +1,11 @@
 #include "TempleTile.hpp"
 
+// Needed for boost's serialization library
+TempleTile::TempleTile()
+{
+  tile_subtype = TILE_TYPE_UNDEFINED;
+}
+
 TempleTile::TempleTile(const TileType subtype)
 {
   tile_subtype = subtype;

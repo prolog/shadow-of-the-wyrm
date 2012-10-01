@@ -1,0 +1,3422 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Header Files\controller">
+      <UniqueIdentifier>{5702cdd9-01d5-4785-8cdc-f72ae42ad922}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\display">
+      <UniqueIdentifier>{813fc858-3f97-4a60-970a-3ca43535370b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine">
+      <UniqueIdentifier>{e30da692-f803-4591-9e51-bed8db084717}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{1d471f0d-6fb0-48a6-a018-927f537d00f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world">
+      <UniqueIdentifier>{a6b674e7-c96a-4f96-8964-e9381b8e5688}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controller">
+      <UniqueIdentifier>{0075a794-75c9-46ba-b9a4-0982d29d86d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\display">
+      <UniqueIdentifier>{049a46a8-ac17-46ec-aa29-36674dfecb8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine">
+      <UniqueIdentifier>{0eeb8671-1a7a-429d-963f-3b75c9e97496}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world">
+      <UniqueIdentifier>{4d9a8019-8cc8-4085-85be-3418579ea68e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\display\unit_tests">
+      <UniqueIdentifier>{6ce24f13-6ee4-4f56-b437-89a443fed296}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\include">
+      <UniqueIdentifier>{adbc23de-5673-4eb9-9e44-0c3fed3d98ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\materials">
+      <UniqueIdentifier>{b063d765-49a2-4774-b63a-d3bb6d76121d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\religion">
+      <UniqueIdentifier>{51d134e3-b347-4035-aa32-a33c1b20b47b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\seasons">
+      <UniqueIdentifier>{0a5d6de1-087d-4733-8ab1-afddabd83c96}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\tiles">
+      <UniqueIdentifier>{23bdd228-23ab-4ddc-817a-7500b38802dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\tiles\features">
+      <UniqueIdentifier>{592309ba-2386-417f-bd89-032dee3b07b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\tiles\include">
+      <UniqueIdentifier>{51663017-b089-4042-b2a9-1a11391eb8b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\materials\include">
+      <UniqueIdentifier>{f0f08bb5-e71c-4135-a66a-112b56e4fe62}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\tiles\features\include">
+      <UniqueIdentifier>{2026dec0-cda1-404c-ac08-4b86bc7a0ebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\seasons\include">
+      <UniqueIdentifier>{b47942a6-0ddf-4872-ba82-81c99c4c8cc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\religion\include">
+      <UniqueIdentifier>{75232e04-d0e1-4851-8b24-3babfa94ef85}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\actions">
+      <UniqueIdentifier>{0361c747-943c-435f-8146-ad405749e015}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\calculators">
+      <UniqueIdentifier>{29aaf305-c7b6-4649-8f8f-9a89b348317f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\combat">
+      <UniqueIdentifier>{431bd9e4-c56b-470c-a087-ef369e28c544}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands">
+      <UniqueIdentifier>{c0e047e9-4d8c-4c13-b194-30355118202a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\conversion">
+      <UniqueIdentifier>{9551972a-b471-4326-9106-0dc355d97596}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\decision_strategies">
+      <UniqueIdentifier>{518c9e25-bdad-44ff-a861-fc8dd4540883}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\description">
+      <UniqueIdentifier>{eb0c20db-ec62-4468-b639-15070bdb66ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\effects">
+      <UniqueIdentifier>{23128f3e-1704-451d-8703-18cea8661150}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\field_of_view">
+      <UniqueIdentifier>{1775fd98-03fb-4b3f-ac2e-9f63899dcc46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators">
+      <UniqueIdentifier>{606c49cc-4922-47b4-af1b-3edeff7db15a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\include">
+      <UniqueIdentifier>{b12a8782-27c8-4f2c-b0da-681c0285f16a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\items">
+      <UniqueIdentifier>{65f9a287-a605-4db7-8896-47525a687bba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\menus">
+      <UniqueIdentifier>{16ab4664-e3ca-4262-8d72-60ffe6e737ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\serialization">
+      <UniqueIdentifier>{fcb10ae7-d554-4bad-8d48-a0394f4c372e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\skills">
+      <UniqueIdentifier>{5ac48af2-2005-4d68-8de1-9d94957bdeeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\time">
+      <UniqueIdentifier>{d9e27eef-51dd-44df-bc48-47dc2366077c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\translators">
+      <UniqueIdentifier>{d24e45d6-30ae-4ac5-8088-e7c05502d037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\XML">
+      <UniqueIdentifier>{6004723a-3c98-4c4e-9e96-c319ddfba4f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\materials">
+      <UniqueIdentifier>{3ce5c061-61f2-4a4f-b23d-531d06edbff2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\religion">
+      <UniqueIdentifier>{7bdc802a-ff82-401e-8b90-c01a4259da1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\seasons">
+      <UniqueIdentifier>{c0052886-a675-4eac-9e79-e0f6f25851ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\source">
+      <UniqueIdentifier>{657276d5-9a11-470e-857a-21f636e0a005}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\tiles">
+      <UniqueIdentifier>{fac2f27d-18ff-4263-a98b-e2786d26687e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\materials\source">
+      <UniqueIdentifier>{0ed0bf90-8518-4161-863c-3143727eb3df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\tiles\source">
+      <UniqueIdentifier>{0fc06280-bd58-4a6b-885a-fab5c5ac76bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\seasons\source">
+      <UniqueIdentifier>{fcd7f3ef-15e1-47ca-9c61-7f0188da912a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\religion\source">
+      <UniqueIdentifier>{c8e32205-0623-4ca5-bfe2-b7e9974e0fe3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\materials\unit_tests">
+      <UniqueIdentifier>{e86da33b-c1a2-48de-861d-f1d356b0e806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\source\unit_tests">
+      <UniqueIdentifier>{4153f3fb-7032-48a0-9d91-a1b31db6bd59}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\tiles\features">
+      <UniqueIdentifier>{51661f23-8da2-4322-91af-85f8be402fe4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\tiles\features\source">
+      <UniqueIdentifier>{92f47f60-0a12-4ea3-a767-998c3f8780c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\tiles\source\unit_tests">
+      <UniqueIdentifier>{9bf40d53-3931-485f-aa27-f24727b4acd2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\actions\include">
+      <UniqueIdentifier>{d0e3c4bf-cba1-419e-aa53-0b01fad8725b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\calculators\include">
+      <UniqueIdentifier>{dcec42f4-f235-4ecb-ae5f-36f8cd995aff}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\combat\include">
+      <UniqueIdentifier>{39f84816-0743-49a6-8161-a5a8a2ca1b75}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\equipment">
+      <UniqueIdentifier>{33691f64-b87f-41a1-b875-4741cf932fc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\include">
+      <UniqueIdentifier>{c85791d4-b2cf-49d3-93bd-2ec71a1779ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\inventory">
+      <UniqueIdentifier>{6e9a38ed-7e05-4fbe-a101-d68a6931af32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\select_tile">
+      <UniqueIdentifier>{67c2efd7-5389-48fe-bae9-bdbee02410c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\equipment\include">
+      <UniqueIdentifier>{36497503-df22-4a8b-8784-4ba2ce05ccbb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\inventory\include">
+      <UniqueIdentifier>{673b65f2-66ec-4f71-ab6d-4fb8d11ea5f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\select_tile\include">
+      <UniqueIdentifier>{13fed329-a654-42c4-b1c5-e681303dfdc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\conversion\include">
+      <UniqueIdentifier>{50544c01-c6de-49fe-b9be-82622ed17b74}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\decision_strategies\deity">
+      <UniqueIdentifier>{121f7167-1a7c-480c-a00a-b6bcc857b0b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\decision_strategies\include">
+      <UniqueIdentifier>{0e814c3b-b75d-469a-8681-34644eaa7a31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\decision_strategies\search">
+      <UniqueIdentifier>{8c6f8b71-9dac-436a-9a20-949d74162719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\decision_strategies\deity\include">
+      <UniqueIdentifier>{43ddaaec-be40-4de5-8981-d85a7cdcc29c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\decision_strategies\search\include">
+      <UniqueIdentifier>{75b2b687-1eb1-4931-8a34-4622f2199075}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\description\include">
+      <UniqueIdentifier>{4d3abd85-6e53-4ec8-8e70-d18a57454dc8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\effects\include">
+      <UniqueIdentifier>{8de6be5e-2d6d-4fc2-8b06-8544ed6ba661}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\field_of_view\include">
+      <UniqueIdentifier>{2646e2bb-0963-421e-bb25-737b0bfdb47d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\gardens">
+      <UniqueIdentifier>{f68523fe-8a94-4291-b09b-41a53cf26a69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\include">
+      <UniqueIdentifier>{4e2165b8-2cbd-4b20-ac15-3f9c9979782a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\settlements">
+      <UniqueIdentifier>{59b5d7a2-4d8d-4276-87b7-4afe97355866}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\worship_sites">
+      <UniqueIdentifier>{592b909b-3ec2-48a0-9651-d520c5088b6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\gardens\include">
+      <UniqueIdentifier>{4ed997b1-ac27-4cfb-91c2-6b85ad1a3dde}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\worship_sites\include">
+      <UniqueIdentifier>{a329a2dc-632d-48b6-907f-9c028f77b47a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\settlements\include">
+      <UniqueIdentifier>{cec82734-c51d-44e0-8a6a-e963b1fc5337}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\items\include">
+      <UniqueIdentifier>{bb84e9f4-5799-4937-927f-1ce04e13615f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\menus\include">
+      <UniqueIdentifier>{5afc028a-76b5-4850-9135-ead4f12db8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\XML\include">
+      <UniqueIdentifier>{ab286ad1-d7ae-4b54-9750-8f840f319973}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\translators\include">
+      <UniqueIdentifier>{193fd9ee-ae1e-4a7a-9341-9c92e3114fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\time\include">
+      <UniqueIdentifier>{8b398b29-2960-4fc0-bf33-467fd4624e46}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\skills\include">
+      <UniqueIdentifier>{aebfab2b-cd9b-4fe2-af0e-cd980cbbecf3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\serialization\include">
+      <UniqueIdentifier>{88a33087-67b2-4e8e-9e48-5bbfa16b0352}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\actions">
+      <UniqueIdentifier>{762cb044-b6f8-4bf9-a2bc-5ca8de91cc5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\calculators">
+      <UniqueIdentifier>{eb236d8c-6dcf-4c8d-b1b7-b47faf40dac8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\combat">
+      <UniqueIdentifier>{eb491c64-ca5a-4998-b7e4-2ff4e06886a7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands">
+      <UniqueIdentifier>{4ea7540d-daf8-4d84-9f47-a308899f9fce}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion">
+      <UniqueIdentifier>{cf4e923c-1dfc-4200-9bfc-434cd20ae140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\decision_strategies">
+      <UniqueIdentifier>{7439766f-a4d5-4aa2-bef1-dd368fb1abd8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\description">
+      <UniqueIdentifier>{120bb93d-be27-49d5-9cbf-a9dd956a2e39}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\effects">
+      <UniqueIdentifier>{ff19ba81-ace8-44ca-bd02-be38e59a61a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\field_of_view">
+      <UniqueIdentifier>{2fade847-4945-4f7c-8434-87ed6ad90427}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators">
+      <UniqueIdentifier>{326e846e-f592-483a-93d7-f70a641a7228}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\items">
+      <UniqueIdentifier>{8c6b922f-f9cc-4099-abcb-f00b36f7cd9d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\menus">
+      <UniqueIdentifier>{cf7bbb43-40ff-43fb-8549-101a073590c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\serialization">
+      <UniqueIdentifier>{e9c949f8-a9f0-46a5-8cf6-0262830affed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\skills">
+      <UniqueIdentifier>{528e0612-7a65-4322-a70e-fe1c95cd1226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\source">
+      <UniqueIdentifier>{07a71702-5214-421b-97d9-a13fe70d7454}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\time">
+      <UniqueIdentifier>{e6ed738a-71e1-4541-8fa8-451cc9efe19b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\translators">
+      <UniqueIdentifier>{85056ae1-eb7a-433b-bb05-1ad288f3e42a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\XML">
+      <UniqueIdentifier>{6dc79545-c21d-46e1-9923-c1b0a72d3c0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\actions\source">
+      <UniqueIdentifier>{a87e5402-cd83-47a6-b354-d0d2fbab9ad8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\calculators\source">
+      <UniqueIdentifier>{4cbf6689-9170-4356-8326-40f3d1354b53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\calculators\source\unit_tests">
+      <UniqueIdentifier>{959e9537-8a19-4643-9df5-de03888beb5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\combat\source">
+      <UniqueIdentifier>{aa38bbf0-7220-4585-9eee-8a58782f5349}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\combat\source\unit_tests">
+      <UniqueIdentifier>{d68a8b92-763d-40d5-a765-96dab7fe580b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\equipment">
+      <UniqueIdentifier>{7b4828c6-853f-42a1-b45f-bf558c6180a1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\inventory">
+      <UniqueIdentifier>{2d2fe45b-03c1-4277-be93-8ef8999a133e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\select_tile">
+      <UniqueIdentifier>{d1bb8869-89d1-4120-9e54-89f1a1a37418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\source">
+      <UniqueIdentifier>{69a5ee89-2905-4701-8058-754a78af79b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\equipment\source">
+      <UniqueIdentifier>{17787b79-a214-4dd5-b085-8b93e23c2a2f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\inventory\source">
+      <UniqueIdentifier>{d1ed2a08-93d4-46ab-9aaf-db10a54e59ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\select_tile\source">
+      <UniqueIdentifier>{9fbcdb6e-12b1-4fa7-a932-1f38f2664f12}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion\source">
+      <UniqueIdentifier>{a2c1829e-696e-446b-9d33-922240a3568f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\conversion\source\unit_tests">
+      <UniqueIdentifier>{0e99037b-4b54-48f3-858f-0e29cdda3eed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\deity">
+      <UniqueIdentifier>{af6e5e4d-fd04-44b8-bee9-d927afa7fccb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\search">
+      <UniqueIdentifier>{6e726317-ab6c-4b8d-91a2-47517339fff5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\source">
+      <UniqueIdentifier>{8aebcf42-7053-4548-9be8-1114c188d9ba}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\deity\source">
+      <UniqueIdentifier>{cea3fddd-c92a-4f7c-b3ad-de55846f8935}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\search\source">
+      <UniqueIdentifier>{a15aa6f2-88fe-401a-bece-e5354b62ec89}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\description\source">
+      <UniqueIdentifier>{b2e77dc7-6cac-4e96-ab00-6fa69a340800}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\effects\source">
+      <UniqueIdentifier>{9163f49f-302f-46b7-b84f-f21bcd8cb145}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\field_of_view\source">
+      <UniqueIdentifier>{0e42d7f3-b23d-4e63-bd3c-e1e5270baf5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\field_of_view\source\unit_tests">
+      <UniqueIdentifier>{be7ea23e-ac6b-4ee1-a134-52a589b64090}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\gardens">
+      <UniqueIdentifier>{750c67aa-6dab-4ccf-afe5-3252dc73b34a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\settlements">
+      <UniqueIdentifier>{5b55171e-0eb3-461f-a968-54360a4ec83f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\source">
+      <UniqueIdentifier>{9b223222-6d1d-40a2-8418-c8b2c06f16d5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\worship_sites">
+      <UniqueIdentifier>{6956f82d-e171-4a08-ad28-036326728bfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\gardens\source">
+      <UniqueIdentifier>{03931893-485a-4a79-a1da-d293bf0b7901}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\worship_sites\source">
+      <UniqueIdentifier>{241039ea-de06-4cb6-9c50-b6a3d3d71ec2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\source\unit_tests">
+      <UniqueIdentifier>{97aafc4a-b745-46c1-b9dc-a9d11a60fb08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\settlements\source">
+      <UniqueIdentifier>{471c0745-8953-45e6-bb8a-55ba3b5030fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\items\source">
+      <UniqueIdentifier>{1bf62e61-3131-4ce6-ba34-b331bf6ed6b0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\items\source\unit_tests">
+      <UniqueIdentifier>{f928a8c2-7a81-406c-b41c-421c3e6c0164}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\menus\source">
+      <UniqueIdentifier>{9c3bce33-c1fb-4154-b8a5-2ab15fad47e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\translators\source">
+      <UniqueIdentifier>{520faf25-fa68-4599-a46b-f57428d6649d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\translators\source\unit_tests">
+      <UniqueIdentifier>{a3888ee5-0632-4052-9126-350439e419f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\time\source">
+      <UniqueIdentifier>{38551d0f-c297-4817-8cd5-dee8be5c3fc9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\source\unit_tests">
+      <UniqueIdentifier>{66044dd9-0e96-4071-ae2e-e839c5e55250}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\skills\source">
+      <UniqueIdentifier>{315aaa84-7056-40fb-812f-4c4a4934f430}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\serialization\source">
+      <UniqueIdentifier>{c1da6536-7541-4781-a98e-9487bce3d719}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\XML\source">
+      <UniqueIdentifier>{14d46239-ffee-486e-ae4d-7071e511f4c1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="controller\include\Controller.hpp">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\include\NCursesKeyboardController.hpp">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\include\NullKeyboardController.hpp">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\Display.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayItem.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayItemType.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayMap.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayStatistics.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayTile.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\NCursesConstants.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\NCursesDisplay.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\NCursesMenuWrapper.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\NCursesPromptProcessor.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\NCursesUtils.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="include\buildinfo.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\Colours.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\common.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\global_prototypes.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\AgeInfo.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Alignment.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\AlignmentEnums.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Ammunition.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Amulet.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Armour.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Boat.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Book.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Calendar.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Class.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Consumable.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Creature.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\CreatureFeatures.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\CreatureGenerationValues.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Currency.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Damage.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\DamageTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Date.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Depth.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Dice.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Dimensions.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Directions.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Equipment.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\EquipmentTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Food.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\InitialItem.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Inventory.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Item.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\ItemTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Map.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\MapExit.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\MapTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\MiscItem.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\MovementAccumulation.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\MovementTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Plant.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Potion.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Race.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\RarityTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Readable.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Resistances.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Ring.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Scroll.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Skills.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\SkillTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Staff.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Statistic.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\StatisticsModifier.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\ThreatRatings.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Wand.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Weapon.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\WeaponTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Wearable.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Weight.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\World.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Cloth.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\DragonScale.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Glass.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Iron.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Ivory.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Leather.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Marble.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Material.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\MaterialFactory.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\MaterialTypes.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Onyx.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Paper.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Steel.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Stone.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\materials\include\Wood.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\AllTiles.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\BarracksTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\BeachTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\BushTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\CairnTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\CastleTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\CavernTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\ChurchTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\DaisTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\DesertTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\DownStaircaseTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\DungeonComplexTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\DungeonTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\FieldTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\ForestTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\GraveTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\GraveyardTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\HillsTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\KeepTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\LibraryTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\MarshTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\MountainsTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\ReedsTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\RiverTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\RoadTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\RockTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\ScrubTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\SeaTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\ShoalsTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\SiteOfDeathTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\SpringsTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\StaircaseTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TempleTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\Tile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\tiles.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TreeTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\UpStaircaseTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\VillageTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\WeedsTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\WheatTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\WorldMapTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\WorshipSiteTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\WorshipSiteTypes.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Altar.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Bench.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\DecorativeStatues.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Door.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\EastWestPew.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Entrance.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\EntranceState.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\EntranceTypes.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\EvilAltar.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Feature.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\FeatureGenerator.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\FirePillar.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Fountain.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Gate.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\GoodAltar.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\IHandleable.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\IKickable.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\ILockable.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\IOfferable.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\ITrappable.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Lock.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\NeutralAltar.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Pew.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\StatueTypes.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Trap.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\seasons\include\Autumn.hpp">
+      <Filter>Header Files\world\seasons\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\seasons\include\CalendarTypes.hpp">
+      <Filter>Header Files\world\seasons\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\seasons\include\ISeason.hpp">
+      <Filter>Header Files\world\seasons\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\seasons\include\SeasonFactory.hpp">
+      <Filter>Header Files\world\seasons\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\seasons\include\Spring.hpp">
+      <Filter>Header Files\world\seasons\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\seasons\include\Summer.hpp">
+      <Filter>Header Files\world\seasons\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\seasons\include\Winter.hpp">
+      <Filter>Header Files\world\seasons\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\religion\include\Deity.hpp">
+      <Filter>Header Files\world\religion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\religion\include\DeityStatus.hpp">
+      <Filter>Header Files\world\religion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\religion\include\Religion.hpp">
+      <Filter>Header Files\world\religion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\religion\include\ReligionConstants.hpp">
+      <Filter>Header Files\world\religion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\religion\include\ReligionFactory.hpp">
+      <Filter>Header Files\world\religion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ActionCoordinator.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ActionCost.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ActionManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\CharacterDumpManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ConsumableManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\CurrencyManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\DateTimeManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\DropManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\EquipmentManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\IActionManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\InventoryManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ItemManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\MovementAccumulationUpdater.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\MovementManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\PickupManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\PrayerManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\QuaffManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\RangedCombatActionManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\RangedCombatApplicabilityChecker.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ReadManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\SearchActionManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\TileMovementConfirmation.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\TileSelectionManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\VersionActionManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\WeaponInfoManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\CreatureCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\DamageCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\DamageCalculatorFactory.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\HeavyWeaponToHitCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\HitPointsCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\MagicalAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\MagicalCombatTargetNumberCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\MagicalDamageCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\MagicToHitCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\MeleeAndRangedCombatTargetNumberCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\MountainClimbingCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\NullSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\PhysicalDamageCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\PrimaryPhysicalAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\RangedAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\RangedPhysicalDamageCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ResistancesCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\SecondaryPhysicalAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\SkillsCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\SoakCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\SpeedCalculatorFactory.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\WeaponDifficultyCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\AttackTypes.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\CombatConstants.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\CombatManager.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\CreatureDeathManager.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\DeathManager.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\DeathManagerFactory.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\ExperienceManager.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\HostilityManager.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\LevelConstants.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\PlayerDeathManager.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\WeaponManager.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\equipment\include\EquipmentCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\equipment\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\equipment\include\EquipmentCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\equipment\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\equipment\include\EquipmentCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\equipment\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\equipment\include\EquipmentCommands.hpp">
+      <Filter>Header Files\engine\commands\equipment\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\equipment\include\EquipmentKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\equipment\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\include\Command.hpp">
+      <Filter>Header Files\engine\commands\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\include\CommandFactory.hpp">
+      <Filter>Header Files\engine\commands\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\include\CommandKeys.hpp">
+      <Filter>Header Files\engine\commands\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\include\CommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\include\Commands.hpp">
+      <Filter>Header Files\engine\commands\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\include\KeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\inventory\include\InventoryCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\inventory\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\inventory\include\InventoryCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\inventory\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\inventory\include\InventoryCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\inventory\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\inventory\include\InventoryCommands.hpp">
+      <Filter>Header Files\engine\commands\inventory\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\inventory\include\InventoryKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\inventory\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\select_tile\include\FireWeaponTileSelectionKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\select_tile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\select_tile\include\TileSelectionCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\select_tile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\select_tile\include\TileSelectionCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\select_tile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\select_tile\include\TileSelectionCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\select_tile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\select_tile\include\TileSelectionCommands.hpp">
+      <Filter>Header Files\engine\commands\select_tile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\select_tile\include\TileSelectionKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\select_tile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\select_tile\include\TileSelectionRangeChecker.hpp">
+      <Filter>Header Files\engine\commands\select_tile\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\CharacterDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\Conversion.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\EquipmentDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\InventoryDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\ItemDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\SkillsDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\StatsDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\StringConverter.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyFactory.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyHandlerFactory.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionTypes.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DoNothingDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\FullHPDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\DecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\DecisionStrategyFactory.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\DecisionStrategyTypes.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\ImmobileDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\MobileDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\NPCDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\PlayerDecisionStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\AStarSearchStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\BreadthFirstSearchStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\GreedySearchStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\Search.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\SearchNode.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\SearchStrategyFactory.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\SearchTypes.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\UniformCostSearchStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\CreatureDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\DescriberFactory.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\FeatureDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\IDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\InventoryDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\ItemDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\TileDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\TileDescription.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\Effect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\EffectFactory.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\EffectTypes.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\EtherEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\FruitJuiceEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\HealingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\IdentifyEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\NullEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp">
+      <Filter>Header Files\engine\field_of_view\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp">
+      <Filter>Header Files\engine\field_of_view\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp">
+      <Filter>Header Files\engine\field_of_view\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\field_of_view\include\FieldOfViewTypes.hpp">
+      <Filter>Header Files\engine\field_of_view\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp">
+      <Filter>Header Files\engine\field_of_view\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\gardens\include\GardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\gardens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\gardens\include\GardenGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\gardens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\gardens\include\GardenTypes.hpp">
+      <Filter>Header Files\engine\generators\gardens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\gardens\include\RockGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\gardens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\gardens\include\ShadeGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\gardens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\gardens\include\VegetableGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\gardens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\gardens\include\WildflowerGardenGenerator.hpp">
+      <Filter>Header Files\engine\generators\gardens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\CavernGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\CellularAutomataGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\CellularAutomataTypes.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\DesertGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\DungeonGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\FieldGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\ForestGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\Generator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\GeneratorUtils.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\GraveyardGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\GraveyardGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\HillsGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\KeepGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\KeepRuinsGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\MarshGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\MountainsGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\OrderedGraveyardGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\RoadGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\Room.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\RuinsGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\ScatteredGraveyardGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\ScrubGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\SeaGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\SpiralDungeonGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\SpringsGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\StreamGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\TerrainGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\TileGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\include\WorldGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\CathedralGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\ChurchGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\ChurchGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\FortifiedChurchGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\GrandTempleGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\IslandSacrificeSiteGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\OvergrownSacrificeSiteGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\RockySacrificeSiteGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\SimpleChurchGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\SimpleTempleGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\SnakingTempleGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\worship_sites\include\WorshipSiteGenerator.hpp">
+      <Filter>Header Files\engine\generators\worship_sites\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\ScatteredSettlementGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementGeneratorFactory.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementRuinsGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\SettlementTypes.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp">
+      <Filter>Header Files\engine\generators\settlements\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\ClassManager.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\CreationUtils.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\CreatureFactory.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\CreatureGenerationConstants.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\CreatureGenerationManager.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\Environment.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\FileWriter.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\Game.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\Log.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\MapCursor.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\MapExitUtils.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\MapRegistry.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\MapUtils.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\Message.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\MessageManager.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\Messages.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\Naming.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\RaceManager.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\Range.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\ReligionManager.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\RNG.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\SavageLandsEngine.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\SerializationTypes.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\StringConstants.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\StringTable.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\IItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\InitialItemEquipper.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\InitialItemSelector.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\ItemFactory.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\ItemFilterFactory.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\ItemGenerationManager.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\ItemIdentifier.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\ItemTypeFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\NullItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\ReadableItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\SquishyEquipWornLocationFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\ClassSelectionScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\DeitySelectionScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\Menu.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\MenuComponent.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\NamingScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\OptionsComponent.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\Prompt.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\RaceSelectionScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\SexSelectionScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\TextComponent.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\WelcomeScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLAmuletReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLArmourReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLBoatReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLBookReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLClassesReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLConfigurationReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLConsumableReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLCreaturesReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLDataStructures.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLDeitiesReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLFileReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLFoodReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLInitialItemReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLItemReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLItemsReaders.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLPlantReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLPotionReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLRacesReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLReadableReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLResistancesReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLRingReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLScrollReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLSkillsReaders.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLStaffReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLStatisticsModifierReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLTilesReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLWandReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLWeaponsReaders.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLWearableReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\CreatureTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\DisplayItemTypeFactory.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\EquipmentTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\InventoryTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\ItemTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\MapTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\ViewMapTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\BoatingMovementAccumulationChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureHPRegeneration.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\CreaturePietyRegeneration.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureSkillIncrementer.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureTimeObserver.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\ICreatureRegeneration.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\ITerrainMovementAccumulationChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\ITimeObserver.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\MountainClimbingMovementAccumulationChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\MovementAccumulationChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\MovementAccumulator.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\NullMovementAccumulationChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\RegenerationConstants.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\SeasonsTimeObserver.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\SwimmingMovementAccumulationChecker.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\WorldTimeKeeper.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\WorldTimeKeeperCoordinator.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\Detection.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\Mountaineering.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\SkillManager.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\skills\include\Swimming.hpp">
+      <Filter>Header Files\engine\skills\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\ClassSerializationExports.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\GameEngineExports.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\GameEngineSerialization.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\GameStateSerialization.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\Serialization.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\TemplatesSerialization.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\TileAndFeaturesExports.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="controller\source\NCursesKeyboardController.cpp">
+      <Filter>Source Files\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\source\NullKeyboardController.cpp">
+      <Filter>Source Files\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\Display.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayItem.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayItemType.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayMap.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayStatistics.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayTile.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\NCursesConstants.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\NCursesDisplay.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\NCursesMenuWrapper.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\NCursesPromptProcessor.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\NCursesUtils.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\Display_test.cpp">
+      <Filter>Source Files\display\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\Deity.cpp">
+      <Filter>Source Files\world\religion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\DeityStatus.cpp">
+      <Filter>Source Files\world\religion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\Religion.cpp">
+      <Filter>Source Files\world\religion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\ReligionConstants.cpp">
+      <Filter>Source Files\world\religion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\ReligionFactory.cpp">
+      <Filter>Source Files\world\religion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\Autumn.cpp">
+      <Filter>Source Files\world\seasons\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\ISeason.cpp">
+      <Filter>Source Files\world\seasons\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\SeasonFactory.cpp">
+      <Filter>Source Files\world\seasons\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\Spring.cpp">
+      <Filter>Source Files\world\seasons\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\Summer.cpp">
+      <Filter>Source Files\world\seasons\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\Winter.cpp">
+      <Filter>Source Files\world\seasons\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Cloth.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\DragonScale.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Glass.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Iron.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Ivory.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Leather.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Marble.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Material.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\MaterialFactory.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Onyx.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Paper.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Steel.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Stone.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Wood.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\unit_tests\MaterialFactory_test.cpp">
+      <Filter>Source Files\world\materials\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\AgeInfo.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Alignment.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Ammunition.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Amulet.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Armour.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Boat.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Book.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Calendar.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Class.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Consumable.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Creature.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\CreatureFeatures.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\CreatureGenerationValues.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Currency.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Damage.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Date.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Depth.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Dice.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Dimensions.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Equipment.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Food.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\InitialItem.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Inventory.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Item.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\ItemTypes.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Map.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\MapExit.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\MiscItem.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\MovementAccumulation.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Plant.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Potion.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Race.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Readable.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Resistances.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Ring.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Scroll.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Skills.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Staff.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Statistic.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\StatisticsModifier.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\ThreatRatings.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Wand.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Weapon.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Wearable.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Weight.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\World.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Creature_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Damage_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Dimensions_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Race_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Skills_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Statistic_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\BarracksTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\BeachTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\BushTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\CairnTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\CastleTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\CavernTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\ChurchTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\DaisTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\DesertTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\DownStaircaseTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\DungeonComplexTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\DungeonTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\FieldTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\ForestTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\GraveTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\GraveyardTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\HillsTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\KeepTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\LibraryTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\MarshTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\MountainsTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\ReedsTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\RiverTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\RoadTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\RockTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\ScrubTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\SeaTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\ShoalsTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\SiteOfDeathTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\SpringsTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\StaircaseTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TempleTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\Tile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TreeTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\UpStaircaseTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\VillageTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\WeedsTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\WheatTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\WorldMapTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\WorshipSiteTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Altar.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Bench.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\DecorativeStatues.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Door.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\EastWestPew.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Entrance.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\EntranceState.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\EvilAltar.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Feature.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\FeatureGenerator.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\FirePillar.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Fountain.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Gate.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\GoodAltar.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\ILockable.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\ITrappable.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\NeutralAltar.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Pew.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Trap.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ActionCoordinator.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ActionCost.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ActionManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\CharacterDumpManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ConsumableManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\CurrencyManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\DateTimeManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\DropManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\EquipmentManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\InventoryManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ItemManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\MovementAccumulationUpdater.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\MovementManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\PickupManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\PrayerManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\QuaffManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\RangedCombatActionManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\RangedCombatApplicabilityChecker.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ReadManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\SearchActionManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\TileMovementConfirmation.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\TileSelectionManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\VersionActionManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\WeaponInfoManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CombatTargetNumberCalculatorFactory.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CreatureCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DamageCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DamageCalculatorFactory.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\EvadeCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\HeavyWeaponToHitCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\HitPointsCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\HPRegenerationCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\IPhysicalAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MagicalAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MagicalCombatTargetNumberCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MagicalDamageCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MagicToHitCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MountainClimbingCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\PhysicalDamageCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\PrimaryPhysicalAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\RangedAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\RangedPhysicalDamageCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ResistancesCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\SecondaryPhysicalAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\SkillsCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\SoakCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\SpeedCalculatorFactory.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ToHitCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WeaponDifficultyCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\HeavyWeaponToHitCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\HitPointsCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\LightMeleeAndRangedWeaponToHitCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\MagicToHitCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\CombatConstants.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\CombatManager.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\CreatureDeathManager.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\DeathManager.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\DeathManagerFactory.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\ExperienceManager.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\HostilityManager.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\LevelConstants.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\PlayerDeathManager.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\WeaponManager.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\unit_tests\CombatManager_test.cpp">
+      <Filter>Source Files\engine\combat\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\equipment\source\EquipmentCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\equipment\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\equipment\source\EquipmentCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\equipment\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\equipment\source\EquipmentCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\equipment\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\equipment\source\EquipmentCommands.cpp">
+      <Filter>Source Files\engine\commands\equipment\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\equipment\source\EquipmentKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\equipment\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\inventory\source\InventoryCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\inventory\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\inventory\source\InventoryCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\inventory\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\inventory\source\InventoryCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\inventory\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\inventory\source\InventoryCommands.cpp">
+      <Filter>Source Files\engine\commands\inventory\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\inventory\source\InventoryKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\inventory\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\FireWeaponTileSelectionKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommands.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\TileSelectionKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\TileSelectionRangeChecker.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\Command.cpp">
+      <Filter>Source Files\engine\commands\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\CommandFactory.cpp">
+      <Filter>Source Files\engine\commands\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\CommandKeys.cpp">
+      <Filter>Source Files\engine\commands\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\CommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\Commands.cpp">
+      <Filter>Source Files\engine\commands\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\KeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\CharacterDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\Conversion.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\EquipmentDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\InventoryDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\ItemDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\SkillsDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\StatsDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\unit_tests\Conversion_test.cpp">
+      <Filter>Source Files\engine\conversion\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionConstants.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionImplications.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyFactory.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyHandlerFactory.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\DoNothingDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\FullHPDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\IDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\DecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\DecisionStrategyFactory.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\DecisionStrategyTypes.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\ImmobileDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\MobileDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\NPCDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\PlayerDecisionStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\search\source\AStarSearchStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\search\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\search\source\BreadthFirstSearchStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\search\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\search\source\GreedySearchStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\search\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\search\source\Search.cpp">
+      <Filter>Source Files\engine\decision_strategies\search\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\search\source\SearchNode.cpp">
+      <Filter>Source Files\engine\decision_strategies\search\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\search\source\SearchStrategyFactory.cpp">
+      <Filter>Source Files\engine\decision_strategies\search\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\search\source\UniformCostSearchStrategy.cpp">
+      <Filter>Source Files\engine\decision_strategies\search\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\CreatureDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\DescriberFactory.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\FeatureDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\IDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\InventoryDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\ItemDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\TileDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\TileDescription.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\Effect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\EffectFactory.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\EtherEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\FruitJuiceEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\HealingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\IdentifyEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\NullEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp">
+      <Filter>Source Files\engine\field_of_view\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategy.cpp">
+      <Filter>Source Files\engine\field_of_view\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp">
+      <Filter>Source Files\engine\field_of_view\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\field_of_view\source\RayCastingFieldOfViewStrategy.cpp">
+      <Filter>Source Files\engine\field_of_view\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\field_of_view\source\unit_tests\BresenhamLine_test.cpp">
+      <Filter>Source Files\engine\field_of_view\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\gardens\source\GardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\gardens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\gardens\source\GardenGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\gardens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\gardens\source\RockGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\gardens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\gardens\source\ShadeGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\gardens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\gardens\source\VegetableGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\gardens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\gardens\source\WildflowerGardenGenerator.cpp">
+      <Filter>Source Files\engine\generators\gardens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\CathedralGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\ChurchGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\ChurchGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\FortifiedChurchGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\GrandTempleGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\IslandSacrificeSiteGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\OvergrownSacrificeSiteGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\RockySacrificeSiteGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\SimpleChurchGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\SimpleTempleGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\SnakingTempleGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\worship_sites\source\WorshipSiteGenerator.cpp">
+      <Filter>Source Files\engine\generators\worship_sites\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\CavernGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\CellularAutomataGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\DesertGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\DungeonGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\FieldGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\ForestGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\Generator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\GeneratorUtils.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\GraveyardGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\GraveyardGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\HillsGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\KeepGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\KeepRuinsGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\MarshGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\MountainsGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\OrderedGraveyardGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\RoadGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\Room.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\RuinsGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\ScatteredGraveyardGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\ScrubGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\SeaGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\SpiralDungeonGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\SpringsGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\StreamGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\TerrainGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\TileGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\WorldGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
+      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\unit_tests\TileGenerator_test.cpp">
+      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\BaseSettlementGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\ScatteredSettlementGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SettlementGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SettlementGeneratorFactory.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\SettlementRuinsGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\settlements\source\WalledSettlementGenerator.cpp">
+      <Filter>Source Files\engine\generators\settlements\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\InitialItemEquipper.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\InitialItemSelector.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemFactory.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemFilterFactory.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemGenerationManager.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemIdentifier.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemTypeFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\NullItemFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ReadableItemFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\SquishyEquipWornLocationFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\InitialItemSelector_test.cpp">
+      <Filter>Source Files\engine\items\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\ClassSelectionScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\DeitySelectionScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\Menu.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\MenuComponent.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\NamingScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\OptionsComponent.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\Prompt.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\RaceSelectionScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\SexSelectionScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\TextComponent.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\WelcomeScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\CreatureTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\DisplayItemTypeFactory.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\EquipmentTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\InventoryTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\ItemTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\MapTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\ViewMapTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
+      <Filter>Source Files\engine\translators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\BoatingMovementAccumulationChecker.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureHPRegeneration.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreaturePietyRegeneration.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureSkillIncrementer.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureTimeObserver.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\ITimeObserver.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\MovementAccumulationChecker.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\MovementAccumulator.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\NullMovementAccumulationChecker.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\RegenerationConstants.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\SeasonsTimeObserver.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\SwimmingMovementAccumulationChecker.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\WorldTimeKeeper.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\WorldTimeKeeperCoordinator.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\ClassManager.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\CreationUtils.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\CreatureFactory.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\CreatureGenerationConstants.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\CreatureGenerationManager.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Environment.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\FileWriter.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Game.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Log.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\MapCursor.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\MapExitUtils.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\MapRegistry.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\MapUtils.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Message.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\MessageManager.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Messages.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Naming.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\RaceManager.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\ReligionManager.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\RNG.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\SavageLandsEngine.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\StringConstants.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\StringTable.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\CreatureFactory_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\Map_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\MapUtils_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\Message_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\Messages_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\RNG_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\Detection.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\Mountaineering.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\SkillManager.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\skills\source\Swimming.cpp">
+      <Filter>Source Files\engine\skills\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serialization\source\GameEngineSerialization.cpp">
+      <Filter>Source Files\engine\serialization\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serialization\source\GameStateSerialization.cpp">
+      <Filter>Source Files\engine\serialization\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serialization\source\Serialization.cpp">
+      <Filter>Source Files\engine\serialization\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serialization\source\TemplateSerialization.cpp">
+      <Filter>Source Files\engine\serialization\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLAmuletReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLArmourReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLBoatReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLBookReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLClassesReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLConfigurationReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLConsumableReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLCreaturesReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLDataStructures.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLDeitiesReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLFileReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLFoodReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLInitialItemReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLItemReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLItemsReaders.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLPlantReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLPotionReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLRacesReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLReadableReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLResistancesReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLRingReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLScrollReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLSkillsReaders.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLStaffReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLStatisticsModifierReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLTilesReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLWandReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLWeaponsReaders.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLWearableReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\BeachTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\BushTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\CairnTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\CavernTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\DaisTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\DesertTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\DownStaircaseTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\DungeonTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\FieldTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\ForestTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\GraveTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\HillsTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\MarshTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\MountainsTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\ReedsTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\RiverTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\RoadTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\RockTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\ScrubTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SeaTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\ShoalsTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SpringsTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\StaircaseTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\Tile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TreeTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\UpStaircaseTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\VillageTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\WeedsTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\WheatTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="world\tiles\source\make.exe.stackdump">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </None>
+  </ItemGroup>
+</Project>

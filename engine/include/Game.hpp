@@ -147,18 +147,27 @@ class Game
     
   private:
     friend class boost::serialization::access;
+    friend class TemplatesSerialization;
+    friend class GameStateSerialization;
+    friend class GameEngineSerialization;
     
+    template<typename Archive>
+    void serialize(Archive& ar, const uint version)
+    {
+    }
+/* This is what WOULD be here if MinGW wasn't a festering piece of shit:
+
     template<typename Archive>
     void serialize(Archive& ar, const uint version)
     {
       BOOST_STATIC_ASSERT(sizeof(Game) == 352);
       ar & keep_playing & reload_game_loop & game_instance & display;
-//      ar & map_registry;
-      //& map_registry & deities & races & classes;
-//      ar & creatures & creature_generation_values & items & tile_info;
-      ar /* & worlds & players */ & current_world_ix & current_map_id;
-      ar & ac & /*& time_keeper & */ game_command_factory & game_kb_command_map;
-    }
+      ar & map_registry;
+      ar & deities & races & classes;
+      ar & creatures & creature_generation_values & items & tile_info;
+      ar & worlds & players & current_world_ix & current_map_id;
+      ar & ac & time_keeper & game_command_factory & game_kb_command_map;
+    } */
 };
 
 

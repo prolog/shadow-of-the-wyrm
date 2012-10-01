@@ -12,6 +12,14 @@
 class Creature;
 class Tile;
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 class Map
 {
 	public:
@@ -92,6 +100,16 @@ class Map
     MapExitPtr map_exit;
     std::string map_id;
     bool permanent;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & creatures & tiles & dimensions & original_dimensions & locations & terrain_type & map_type;
+      ar & map_exit & map_id & permanent;
+    }
 };
 
 typedef boost::shared_ptr<Map> MapPtr;

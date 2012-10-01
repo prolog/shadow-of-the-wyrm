@@ -9,6 +9,14 @@
 #include "Item.hpp"
 #include "MapExit.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 typedef std::map<Direction, MapExitPtr> TileExitMap;
 
 class Creature;
@@ -87,6 +95,16 @@ class Tile
     
     // A tile can have exits in various directions. These lead to other maps/levels/etc.
     TileExitMap map_exits;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & illuminated & explored & viewed & tile_type & tile_subtype & creature;
+      ar & feature & items & map_exits;
+    }
 };
 
 typedef boost::shared_ptr<Tile> TilePtr;
