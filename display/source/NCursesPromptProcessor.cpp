@@ -7,7 +7,7 @@
 using namespace std;
 
 // JCD FIXME: Refactor.  Subclasses?  Split up into PromptReader/PromptWriter with applicable subclasses?
-string NCursesPromptProcessor::get_prompt(WINDOW* window, PromptPtr prompt)
+string NCursesPromptProcessor::get_prompt(WINDOW* window, const NCursesMenuWrapper& menu_wrapper, PromptPtr prompt)
 {
   string prompt_entry;
 
@@ -23,6 +23,11 @@ string NCursesPromptProcessor::get_prompt(WINDOW* window, PromptPtr prompt)
     else
     {
       prompt_entry = wgetch(window);
+
+      while (menu_wrapper.has_options() && !menu_wrapper.is_option_in_set(prompt_entry.at(0)))
+      {
+        prompt_entry = wgetch(window);
+      }
     }
   }
 

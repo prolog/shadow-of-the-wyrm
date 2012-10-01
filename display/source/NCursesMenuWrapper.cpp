@@ -1,36 +1,15 @@
 #include "NCursesMenuWrapper.hpp"
 #include "Conversion.hpp"
 #include "Log.hpp"
-/*
+
 NCursesMenuWrapper::NCursesMenuWrapper()
-{
-  menu = NULL;
-  items = NULL;
-  num_items = 0;
-}
-
-NCursesMenuWrapper::NCursesMenuWrapper(MENU* new_menu, ITEM** new_items, const int new_num_items) : menu(new_menu), items(new_items), num_items(new_num_items)
+: num_items(0)
 {
 }
 
-void NCursesMenuWrapper::set_menu(MENU* new_menu)
+NCursesMenuWrapper::NCursesMenuWrapper(const int new_num_items) 
+: num_items(new_num_items)
 {
-  menu = new_menu;
-}
-
-MENU* NCursesMenuWrapper::get_menu() const
-{
-  return menu;
-}
-
-void NCursesMenuWrapper::set_items(ITEM** new_items)
-{
-  items = new_items;
-}
-
-ITEM** NCursesMenuWrapper::get_items() const
-{
-  return items;
 }
 
 void NCursesMenuWrapper::set_num_items(const int new_num_items)
@@ -43,25 +22,23 @@ int NCursesMenuWrapper::get_num_items() const
   return num_items;
 }
 
-void NCursesMenuWrapper::release_pointer_structures()
+bool NCursesMenuWrapper::has_options() const
 {
-  Log::instance()->debug("Releasing pointer structures (" + Integer::to_string(num_items) + " items)");
-  for (int i = 0; i < num_items; i++)
-  {
-    ITEM* item = items[i];
-    
-    if (item)
-    {
-      free_item(item);
-    }
-  }
-
-  if (menu)
-  {
-    Log::instance()->debug("Freeing menu structure");
-    free_menu(menu);
-  }
-
-  num_items = 0;
+  return (!options.empty());
 }
-*/
+
+void NCursesMenuWrapper::clear_options()
+{
+  options.clear();
+}
+
+void NCursesMenuWrapper::add_option(const char option)
+{
+  options.insert(option);
+}
+
+bool NCursesMenuWrapper::is_option_in_set(const char option) const
+{
+  return (options.find(option) != options.end());
+}
+

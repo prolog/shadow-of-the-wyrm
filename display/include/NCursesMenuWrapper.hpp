@@ -1,28 +1,24 @@
 #pragma once
+#include <set>
 
 // Wrapper for NCurses menu/item data, mostly to allow easy deletion
 // during program flow.
-/*
+
 class NCursesMenuWrapper
 {
   public:
     NCursesMenuWrapper();
-    NCursesMenuWrapper(MENU* new_menu, ITEM** new_items, const int n_items);
+    NCursesMenuWrapper(const int n_items);
     
-    void set_menu(MENU* new_menu);
-    MENU* get_menu() const;
-
-    void set_items(ITEM** new_items);
-    ITEM** get_items() const;
-
     void set_num_items(const int new_num_items);
     int get_num_items() const;
-    
-    void release_pointer_structures(); // Frees its associated pointers
+
+    bool has_options() const;
+    void clear_options();
+    void add_option(const char option);
+    bool is_option_in_set(const char option) const;
 
   protected:
-    MENU* menu;
-    ITEM** items;
     int num_items;
+    std::set<char> options;
 };
-*/
