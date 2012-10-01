@@ -345,6 +345,7 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
 
   Coordinate cursor_coord = current_map.get_cursor_coordinate();
   move(cursor_coord.first+NCursesConstants::MAP_START_ROW, cursor_coord.second+NCursesConstants::MAP_START_COL);
+  refresh();
 }
 
 /*!
@@ -374,8 +375,7 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
   string result;
   refresh_terminal_size();
 
-  // JCD FIXME
-//  NCursesMenuWrapper wrapper;
+  NCursesMenuWrapper wrapper;
   WINDOW* menu_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
 
   menus.push_back(menu_window);
@@ -399,7 +399,7 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
       if (oc != NULL)
       {
         // Process the options...
-//        wrapper = display_and_return_options_component(menu_window, &current_row, &current_col, oc);
+        wrapper = display_and_return_options_component(menu_window, &current_row, &current_col, oc);
       }
     }
   }
@@ -411,19 +411,8 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
   PromptPtr prompt = current_menu.get_prompt();
   prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
-  //MENU* menu = wrapper.get_menu();
-
-/*  if (menu)
-  {
-    int index = prompt_processor.get_prompt(menu_window, menu);
-    result = Integer::to_string(index);
-  }
-  else
-  {
-    result = prompt_processor.get_prompt(menu_window, prompt);
-  }
+  result = prompt_processor.get_prompt(menu_window, wrapper, prompt);
   
-  wrapper.release_pointer_structures(); */
   return result;
 }
 
@@ -440,48 +429,62 @@ void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, 
   *row += 2;
 }
 
-/*NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
+// Get a somewhat nice (it's ASCII...) option.
+pair<char, string> NCursesDisplay::get_formatted_option(const int incr, const string& option_name, const string& option_desc) const
 {
-  MENU* options_menu;
-  ITEM** option_items;
+  pair<char, string> result;
+
+  char ascii_letter = 'a';
+  ascii_letter += incr;
+
+  result.first = ascii_letter;
+
+  string formatted_option = "[" + Char::to_string(ascii_letter) + "] " + option_name;
+
+  if (!option_desc.empty())
+  {
+    formatted_option += " - " + option_desc;
+  }
+
+  result.second = formatted_option;
+
+  return result;
+}
+
+NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
+{
+  NCursesMenuWrapper wrapper;
 
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
-
+ 
   int num_options = options.size();
-  int num_options_alloc = num_options+1;
 
   if (!options.empty())
   {
-    Log::instance()->debug("Allocating menu structure: size " + Integer::to_string(num_options_alloc) + " for " + Integer::to_string(num_options) + " menu items.");
-    option_items = (ITEM**) calloc(num_options_alloc, sizeof(ITEM*));
+    int temp_row = *row;
 
     for (int i = 0; i < num_options; i++)
     {
       Option current_option = options.at(i);
       string option_name = current_option.get_description();
       string option_desc = option_descriptions.at(i);
-      option_items[i] = new_item(option_name.c_str(), option_desc.c_str());
+
+      pair<char, string> option_details = get_formatted_option(i, option_name, option_desc);
+      wrapper.add_option(option_details.first);
+
+      mvwprintw(window, temp_row, (*col)+2, option_details.second.c_str());
+
+      temp_row++;
     }
 
-    option_items[num_options] = (ITEM *) NULL;
-
-    options_menu = new_menu(option_items);
-    set_menu_win(options_menu, window);
-    set_menu_sub(options_menu, derwin(window, TERMINAL_MAX_ROWS - *row, TERMINAL_MAX_COLS, *row, *col));
-    set_menu_mark(options_menu, " --> ");
-    set_menu_format(options_menu, TERMINAL_MAX_ROWS - *row, 1); // By default, 1 column.  Change later.
-    post_menu(options_menu);
     wrefresh(window);
   }
 
-  NCursesMenuWrapper wrapper;
-  wrapper.set_menu(options_menu);
-  wrapper.set_items(option_items);
   wrapper.set_num_items(num_options);
 
   return wrapper;
-} */
+}
 
 void NCursesDisplay::clear_menu()
 {

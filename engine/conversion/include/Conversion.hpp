@@ -35,6 +35,7 @@ class Char
   public:
     static std::string to_string(const char character);
     static EquipmentWornLocation to_equipment_worn_location(const char character);
+    static int keyboard_selection_char_to_int(const char character);
 
   protected:
     Char();

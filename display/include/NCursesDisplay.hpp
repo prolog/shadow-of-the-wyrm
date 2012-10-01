@@ -64,9 +64,12 @@ class NCursesDisplay : public Display
     // Clear the message buffer.
     int clear_message_buffer();
 
+    // Make the option look a little nicer.
+    std::pair<char, std::string> get_formatted_option(const int option_num, const std::string& option_name, const std::string& option_desc) const;
+
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component);
-    //NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
+    NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
 
     // Creation/destruction methods

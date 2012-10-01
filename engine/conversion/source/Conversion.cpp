@@ -85,6 +85,11 @@ EquipmentWornLocation Char::to_equipment_worn_location(const char character)
   return static_cast<EquipmentWornLocation>(worn_location);
 }
 
+int Char::keyboard_selection_char_to_int(const char character)
+{
+  return static_cast<int>(character - 'a');
+}
+
 DirectionEnum::DirectionEnum()
 {
 }
