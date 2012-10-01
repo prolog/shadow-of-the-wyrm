@@ -7,7 +7,6 @@
 #include "TileGenerator.hpp"
 
 using std::string;
-using boost::make_shared;
 
 FortifiedChurchGenerator::FortifiedChurchGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH),
@@ -22,7 +21,7 @@ MapPtr FortifiedChurchGenerator::generate(const Dimensions& dim)
 
 MapPtr FortifiedChurchGenerator::generate()
 {
-  MapPtr map = make_shared<Map>(*base_map);
+  MapPtr map = boost::make_shared<Map>(*base_map);
 
   generate_church(map);
 

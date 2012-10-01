@@ -2,7 +2,7 @@
 #include "SwimmingCalculator.hpp"
 
 const int SwimmingCalculator::MAXIMUM_SWIMMING_TIME_MULTIPLIER = 6;
-const float SwimmingCalculator::SWIMMING_DAMAGE_MAX_HP_MULTIPLIER = 0.10;
+const float SwimmingCalculator::SWIMMING_DAMAGE_MAX_HP_MULTIPLIER = 0.10f;
 
 int SwimmingCalculator::calculate_maximum_swimming_time(const int swimming_skill_value) const
 {
@@ -17,7 +17,7 @@ int SwimmingCalculator::calculate_swimming_damage(CreaturePtr creature) const
   if (creature)
   {
     Statistic hit_points = creature->get_hit_points();    
-    swimming_damage = std::max(1.0f, static_cast<float>(hit_points.get_base()) * SWIMMING_DAMAGE_MAX_HP_MULTIPLIER);
+    swimming_damage = static_cast<int>(std::max(1.0f, static_cast<float>(hit_points.get_base()) * SWIMMING_DAMAGE_MAX_HP_MULTIPLIER));
   }
   
   return swimming_damage;

@@ -1,7 +1,7 @@
 #include "NCursesMenuWrapper.hpp"
 #include "Conversion.hpp"
 #include "Log.hpp"
-
+/*
 NCursesMenuWrapper::NCursesMenuWrapper()
 {
   menu = NULL;
@@ -64,3 +64,4 @@ void NCursesMenuWrapper::release_pointer_structures()
 
   num_items = 0;
 }
+*/

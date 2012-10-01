@@ -1,4 +1,8 @@
+#ifdef _MSC_VER
+#include <curses.h>
+#else
 #include <ncurses.h>
+#endif
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
 #include "KeyboardCommandMap.hpp"

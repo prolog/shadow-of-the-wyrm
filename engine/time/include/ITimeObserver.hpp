@@ -22,7 +22,7 @@ class ITimeObserver
 
   protected:
     virtual std::string generate_id();
-    virtual void update_minutes_elapsed(const int minutes_elapsed);
+    virtual void update_minutes_elapsed(const ulonglong minutes_elapsed);
 
     ulonglong minutes_elapsed;
     std::string id;

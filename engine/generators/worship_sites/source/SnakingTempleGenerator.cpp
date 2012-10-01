@@ -7,7 +7,6 @@
 #include "TileGenerator.hpp"
 
 using std::string;
-using boost::make_shared;
 
 SnakingTempleGenerator::SnakingTempleGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_TEMPLE),
@@ -24,7 +23,7 @@ MapPtr SnakingTempleGenerator::generate(const Dimensions& dim)
 
 MapPtr SnakingTempleGenerator::generate()
 {
-  MapPtr map = make_shared<Map>(*base_map);
+  MapPtr map = boost::make_shared<Map>(*base_map);
 
   generate_temple(map);
 
@@ -334,20 +333,20 @@ void SnakingTempleGenerator::generate_statues(MapPtr map)
 // For the following methods, the assumption is, as always, a minimum map size of 80x20
 int SnakingTempleGenerator::get_temple_width_min(const int cols)
 {
-  return cols * 0.66;
+  return static_cast<int>(cols * 0.66);
 }
 
 int SnakingTempleGenerator::get_temple_width_max(const int cols)
 {
-  return cols * 0.85;
+  return static_cast<int>(cols * 0.85);
 }
 
 int SnakingTempleGenerator::get_temple_height_min(const int rows)  
 {
-  return rows * 0.9;
+  return static_cast<int>(rows * 0.9);
 }
 
 int SnakingTempleGenerator::get_temple_height_max(const int rows)
 {
-  return rows * 0.9;
+  return static_cast<int>(rows * 0.9);
 }

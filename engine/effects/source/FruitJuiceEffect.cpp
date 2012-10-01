@@ -5,12 +5,11 @@
 #include "FruitJuiceEffect.hpp"
 
 using std::string;
-using boost::make_shared;
 
 // Add an additional message about sweet taste
 FruitJuiceEffect::FruitJuiceEffect()
 {
-  AdditionalEffectMessagePtr sweet_taste = make_shared<SweetTasteEffectMessage>();
+  AdditionalEffectMessagePtr sweet_taste = boost::make_shared<SweetTasteEffectMessage>();
   additional_effect_messages.push_back(sweet_taste);
 }
 

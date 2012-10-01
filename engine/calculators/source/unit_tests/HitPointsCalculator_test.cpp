@@ -1,8 +1,6 @@
 #include "gtest/gtest.h"
 #include <boost/make_shared.hpp>
 
-using boost::make_shared;
-
 TEST(SL_Engine_Calculators_HitPointsCalculator, calculate_hit_points_bonus)
 {
   Creature c;
@@ -17,7 +15,7 @@ TEST(SL_Engine_Calculators_HitPointsCalculator, calculate_hit_points_bonus)
   c.set_valour(55);
   c.set_spirit(55);
 
-  CreaturePtr cp = make_shared<Creature>(c);
+  CreaturePtr cp = boost::make_shared<Creature>(c);
 
   EXPECT_EQ(0, HitPointsCalculator::calculate_hit_points_bonus(cp));
 

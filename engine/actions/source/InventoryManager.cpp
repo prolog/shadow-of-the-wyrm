@@ -8,7 +8,6 @@
 #include "InventoryTranslator.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 InventoryManager::InventoryManager(DisplayPtr new_display, CreaturePtr new_creature)
 : display(new_display), creature(new_creature), current_page_start(0), current_page_size(0)
@@ -28,8 +27,8 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
 
   if (creature)
   {
-    CommandFactoryPtr command_factory    = make_shared<InventoryCommandFactory>();
-    KeyboardCommandMapPtr kb_command_map = make_shared<InventoryKeyboardCommandMap>();
+    CommandFactoryPtr command_factory    = boost::make_shared<InventoryCommandFactory>();
+    KeyboardCommandMapPtr kb_command_map = boost::make_shared<InventoryKeyboardCommandMap>();
     
     while (manage_inv)
     {

@@ -66,9 +66,11 @@ string NCursesPromptProcessor::get_user_string(WINDOW* window)
 }
 
 // Gets the item index of the selected menu item.
-int NCursesPromptProcessor::get_prompt(WINDOW* window, MENU* options_menu)
+int NCursesPromptProcessor::get_prompt(WINDOW* window/*, MENU* options_menu*/)
 {
   int c = wgetch(window);
+
+  /*
   while (c != NC_ENTER_KEY)
   {
     switch(c)
@@ -106,9 +108,12 @@ int NCursesPromptProcessor::get_prompt(WINDOW* window, MENU* options_menu)
 
     c = wgetch(window);
   }
-
+  
   int item_idx = item_index(current_item(options_menu));
   return item_idx;
+  */
+
+  return c; // JCD FIXME
 }
 
 void NCursesPromptProcessor::show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)

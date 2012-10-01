@@ -10,8 +10,6 @@
 
 using std::string;
 using std::vector;
-using boost::make_shared;
-
 
 RayCastingFieldOfViewStrategy::RayCastingFieldOfViewStrategy(const bool set_view_property)
 : FieldOfViewStrategy(set_view_property)
@@ -20,7 +18,7 @@ RayCastingFieldOfViewStrategy::RayCastingFieldOfViewStrategy(const bool set_view
 
 MapPtr RayCastingFieldOfViewStrategy::calculate(MapPtr view_map, const Coordinate& centre_coord, const int los_length)
 {
-  MapPtr fov_map = make_shared<Map>(view_map->size());
+  MapPtr fov_map = boost::make_shared<Map>(view_map->size());
   BresenhamLine bl;
   
   int row = centre_coord.first;

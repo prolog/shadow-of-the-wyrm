@@ -4,8 +4,6 @@
 #include "PhysicalDamageCalculator.hpp"
 #include "RangedPhysicalDamageCalculator.hpp"
 
-using boost::make_shared;
-
 DamageCalculatorFactory::DamageCalculatorFactory()
 {
 }
@@ -21,14 +19,14 @@ DamageCalculatorPtr DamageCalculatorFactory::create_damage_calculator(const Atta
   switch(attack_type)
   {
     case ATTACK_TYPE_RANGED:
-      calculator = make_shared<RangedPhysicalDamageCalculator>();
+      calculator = boost::make_shared<RangedPhysicalDamageCalculator>();
       break;
     case ATTACK_TYPE_MELEE_PRIMARY:
     case ATTACK_TYPE_MELEE_SECONDARY:
-      calculator = make_shared<PhysicalDamageCalculator>(attack_type);
+      calculator = boost::make_shared<PhysicalDamageCalculator>(attack_type);
       break;
     case ATTACK_TYPE_MAGICAL:
-      calculator = make_shared<MagicalDamageCalculator>();
+      calculator = boost::make_shared<MagicalDamageCalculator>();
       break;
     default: break;
   }

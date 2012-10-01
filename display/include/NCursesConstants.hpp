@@ -7,9 +7,9 @@
 class NCursesConstants
 {
   public:
-    static const int MAP_START_ROW;
-    static const int MAP_START_COL;
-    static const int MESSAGE_BUFFER_END_ROW;
+    static const unsigned int MAP_START_ROW;
+    static const unsigned int MAP_START_COL;
+    static const unsigned int MESSAGE_BUFFER_END_ROW;
     
   protected:
     NCursesConstants();

@@ -2,8 +2,6 @@
 #include "DecorativeStatues.hpp"
 #include "StatueGenerator.hpp"
 
-using boost::make_shared;
-
 StatueGenerator::StatueGenerator()
 {
 }
@@ -16,22 +14,22 @@ FeaturePtr StatueGenerator::generate_decorative_statue(const DecorativeStatueTyp
   switch(type)
   {
     case DECORATIVE_STATUE_TYPE_KING:
-      statue = make_shared<KingDecorativeStatue>();
+      statue = boost::make_shared<KingDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_QUEEN:
-      statue = make_shared<QueenDecorativeStatue>();
+      statue = boost::make_shared<QueenDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_WARLORD:
-      statue = make_shared<WarlordDecorativeStatue>();
+      statue = boost::make_shared<WarlordDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_KNIGHT:
-      statue = make_shared<KnightDecorativeStatue>();
+      statue = boost::make_shared<KnightDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_HIGH_PRIEST:
-      statue = make_shared<HighPriestDecorativeStatue>();
+      statue = boost::make_shared<HighPriestDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_SORCEROR:
-      statue = make_shared<SorcerorDecorativeStatue>();
+      statue = boost::make_shared<SorcerorDecorativeStatue>();
       break;
     default:
       break;

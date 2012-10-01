@@ -106,8 +106,8 @@
 	<File name="engine\XML\include\XMLCreaturesReader.hpp" open="0" top="0" tabpos="15">
 		<Cursor position="211" topLine="0" />
 	</File>
-	<File name="engine\XML\include\XMLDataStructures.hpp" open="0" top="0" tabpos="11">
-		<Cursor position="1414" topLine="23" />
+	<File name="engine\XML\include\XMLDataStructures.hpp" open="1" top="1" tabpos="5">
+		<Cursor position="12" topLine="0" />
 	</File>
 	<File name="engine\XML\include\XMLDeitiesReader.hpp" open="0" top="0" tabpos="3">
 		<Cursor position="215" topLine="0" />
@@ -184,8 +184,8 @@
 	<File name="engine\XML\source\XMLCreaturesReader.cpp" open="0" top="0" tabpos="11">
 		<Cursor position="4419" topLine="96" />
 	</File>
-	<File name="engine\XML\source\XMLDataStructures.cpp" open="0" top="0" tabpos="10">
-		<Cursor position="4398" topLine="155" />
+	<File name="engine\XML\source\XMLDataStructures.cpp" open="1" top="0" tabpos="4">
+		<Cursor position="0" topLine="0" />
 	</File>
 	<File name="engine\XML\source\XMLDeitiesReader.cpp" open="0" top="0" tabpos="5">
 		<Cursor position="235" topLine="0" />
@@ -2428,7 +2428,7 @@
 	<File name="world\tiles\source\SpringsTile.cpp" open="0" top="0" tabpos="0">
 		<Cursor position="161" topLine="0" />
 	</File>
-	<File name="world\tiles\source\TempleTile.cpp" open="1" top="1" tabpos="3">
+	<File name="world\tiles\source\TempleTile.cpp" open="1" top="0" tabpos="3">
 		<Cursor position="97" topLine="0" />
 	</File>
 	<File name="world\tiles\source\Tile.cpp" open="0" top="0" tabpos="9">

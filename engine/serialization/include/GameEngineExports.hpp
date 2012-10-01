@@ -14,6 +14,11 @@
 // This file is used to declare class exports, needed to properly handle
 // derived classes.  Base classes aren't declared!
 
+// These are never actually tracked via a pointer, so suppress Boost's warning
+// from my otherwise pristine build window.
+BOOST_CLASS_TRACKING( ActionCoordinator, boost::serialization::track_never )
+BOOST_CLASS_TRACKING( WorldTimeKeeper, boost::serialization::track_never )
+
 // engine/time
 BOOST_CLASS_EXPORT(CreatureTimeObserver)
 BOOST_CLASS_EXPORT(SeasonsTimeObserver)

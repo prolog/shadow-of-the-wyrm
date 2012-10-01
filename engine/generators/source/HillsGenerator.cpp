@@ -4,7 +4,6 @@
 #include "TileGenerator.hpp"
 
 using std::string;
-using boost::make_shared;
 
 HillsGenerator::HillsGenerator(const string& new_map_exit_id)
 : Generator(new_map_exit_id, TILE_TYPE_HILLS)
@@ -13,7 +12,7 @@ HillsGenerator::HillsGenerator(const string& new_map_exit_id)
 
 MapPtr HillsGenerator::generate(const Dimensions& dim)
 {
-  MapPtr result_map = make_shared<Map>(dim);
+  MapPtr result_map = boost::make_shared<Map>(dim);
 
   int rows = dim.get_y();
   int cols = dim.get_x();

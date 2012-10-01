@@ -1,10 +1,8 @@
 #pragma once
-#include <ncurses/ncurses.h>
-#include <ncurses/menu.h>
 
 // Wrapper for NCurses menu/item data, mostly to allow easy deletion
 // during program flow.
-
+/*
 class NCursesMenuWrapper
 {
   public:
@@ -27,3 +25,4 @@ class NCursesMenuWrapper
     ITEM** items;
     int num_items;
 };
+*/

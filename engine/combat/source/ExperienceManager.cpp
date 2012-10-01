@@ -69,7 +69,7 @@ uint ExperienceManager::get_pct_to_next_level(CreaturePtr creature)
       uint normalized_next    = needed_for_next - needed_for_current;
       float normalized_pct    = (float) normalized_current / (float) normalized_next;
       
-      tnl_pct = normalized_pct * 100;
+      tnl_pct = static_cast<uint>(normalized_pct * 100);
     }
     else
     {
@@ -113,7 +113,7 @@ uint ExperienceManager::get_experience_needed_for_level(CreaturePtr creature, co
         class_multiplier = cur_class->get_experience_multiplier();
       }
       
-      exp_needed = base_exp_needed * race_multiplier * class_multiplier;      
+      exp_needed = static_cast<int>(base_exp_needed * race_multiplier * class_multiplier);      
     }
   }
   

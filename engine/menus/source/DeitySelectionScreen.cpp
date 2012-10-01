@@ -7,7 +7,6 @@
 #include "StringConstants.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 DeitySelectionScreen::DeitySelectionScreen(DisplayPtr new_display, RacePtr selected_race)
 : Menu(new_display), race(selected_race)
@@ -27,8 +26,8 @@ void DeitySelectionScreen::initialize()
     DeityMap deities = game_instance->get_deities_ref();
     vector<string> deity_ids = race->get_initial_deity_ids();
 
-    TextComponentPtr deity_selection_text = make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_DEITY));
-    OptionsComponentPtr options = make_shared<OptionsComponent>();
+    TextComponentPtr deity_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_DEITY));
+    OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
     int current_id = 0;
     
     BOOST_FOREACH(string deity_id, deity_ids)

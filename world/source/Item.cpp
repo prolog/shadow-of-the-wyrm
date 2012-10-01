@@ -7,15 +7,14 @@
 #include "Wood.hpp"
 
 using std::string;
-using boost::make_shared;
 
 Item::Item()
 : quantity(1), readable(false), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false), item_identified(false),
 artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE)
 {
   // Create a default useful material.  Wood, huh?  Well, I needed something.
-  material = make_shared<Wood>();
-  effect = make_shared<NullEffect>();
+  material = boost::make_shared<Wood>();
+  effect = boost::make_shared<NullEffect>();
 }
 
 Item::~Item()

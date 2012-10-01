@@ -7,7 +7,6 @@
 #include "StringTable.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 SexSelectionScreen::SexSelectionScreen(DisplayPtr new_display)
 : Menu(new_display)
@@ -17,9 +16,9 @@ SexSelectionScreen::SexSelectionScreen(DisplayPtr new_display)
 
 void SexSelectionScreen::initialize()
 {
-  TextComponentPtr sex_selection_text = make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SEX));
+  TextComponentPtr sex_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SEX));
 
-  OptionsComponentPtr options = make_shared<OptionsComponent>();
+  OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
   string male = StringTable::get(TextKeys::SEX_MALE);
   string female = StringTable::get(TextKeys::SEX_FEMALE);
 

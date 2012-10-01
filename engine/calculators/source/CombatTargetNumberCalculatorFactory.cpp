@@ -2,7 +2,6 @@
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MagicalCombatTargetNumberCalculator.hpp"
 #include "MeleeAndRangedCombatTargetNumberCalculator.hpp"
-using boost::make_shared;
 
 CombatTargetNumberCalculatorFactory::CombatTargetNumberCalculatorFactory()
 {
@@ -23,10 +22,10 @@ CombatTargetNumberCalculatorPtr CombatTargetNumberCalculatorFactory::create_targ
     case ATTACK_TYPE_MELEE_PRIMARY:
     case ATTACK_TYPE_MELEE_SECONDARY:
     case ATTACK_TYPE_RANGED:
-      tn_calc = make_shared<MeleeAndRangedCombatTargetNumberCalculator>(attack_type);
+      tn_calc = boost::make_shared<MeleeAndRangedCombatTargetNumberCalculator>(attack_type);
       break;
     case ATTACK_TYPE_MAGICAL:
-      tn_calc = make_shared<MagicalCombatTargetNumberCalculator>();
+      tn_calc = boost::make_shared<MagicalCombatTargetNumberCalculator>();
       break;
     default:
       break;

@@ -6,8 +6,6 @@
 #include "SecondaryPhysicalAttackSpeedCalculator.hpp"
 #include "SpeedCalculatorFactory.hpp"
 
-using boost::make_shared;
-
 SpeedCalculatorFactory::SpeedCalculatorFactory()
 {
 }
@@ -24,17 +22,17 @@ ISpeedCalculatorPtr SpeedCalculatorFactory::create_speed_calculator(const Attack
   switch(attack_type)
   {
     case ATTACK_TYPE_MELEE_PRIMARY:
-      speed_calculator = make_shared<PrimaryPhysicalAttackSpeedCalculator>();
+      speed_calculator = boost::make_shared<PrimaryPhysicalAttackSpeedCalculator>();
       break;
     case ATTACK_TYPE_MELEE_SECONDARY:
-      speed_calculator = make_shared<SecondaryPhysicalAttackSpeedCalculator>();
+      speed_calculator = boost::make_shared<SecondaryPhysicalAttackSpeedCalculator>();
       break;
     case ATTACK_TYPE_RANGED:
-      speed_calculator = make_shared<RangedAttackSpeedCalculator>();
+      speed_calculator = boost::make_shared<RangedAttackSpeedCalculator>();
       break;
     case ATTACK_TYPE_MAGICAL:
     default:
-      speed_calculator = make_shared<MagicalAttackSpeedCalculator>();
+      speed_calculator = boost::make_shared<MagicalAttackSpeedCalculator>();
       break;
   }
 

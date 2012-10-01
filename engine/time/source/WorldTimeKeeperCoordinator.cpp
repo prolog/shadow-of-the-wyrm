@@ -4,8 +4,6 @@
 #include "WorldTimeKeeperCoordinator.hpp"
 #include "WorldTimeKeeper.hpp"
 
-using boost::make_shared;
-
 // Set up all the in game observers.
 //
 // E.g.:
@@ -15,8 +13,8 @@ using boost::make_shared;
 // -- etc
 void WorldTimeKeeperCoordinator::setup_time_keeper(WorldTimeKeeper& time_keeper)
 {
-  ITimeObserverPtr creature_minute_tick = make_shared<CreatureTimeObserver>();
-  ITimeObserverPtr seasons  = make_shared<SeasonsTimeObserver>();
+  ITimeObserverPtr creature_minute_tick = boost::make_shared<CreatureTimeObserver>();
+  ITimeObserverPtr seasons  = boost::make_shared<SeasonsTimeObserver>();
 
   time_keeper.register_observer(1, creature_minute_tick);
   

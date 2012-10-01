@@ -6,10 +6,9 @@
 #include "ItemIdentifier.hpp"
 #include "StringConstants.hpp"
 
-using boost::shared_ptr;
 using namespace std;
 
-string IdentifyEffect::get_effect_identification_message(shared_ptr<Creature> creature) const
+string IdentifyEffect::get_effect_identification_message(boost::shared_ptr<Creature> creature) const
 {
   return identification_msg;
 }
@@ -21,7 +20,7 @@ Effect* IdentifyEffect::clone()
 
 // A blessed identify effect identifies everything in the character's inventory, as well as its
 // worn equipment.
-bool IdentifyEffect::effect_blessed(shared_ptr<Creature> creature, ActionManager * const am) 
+bool IdentifyEffect::effect_blessed(boost::shared_ptr<Creature> creature, ActionManager * const am) 
 {
   if (creature)
   {
@@ -34,7 +33,7 @@ bool IdentifyEffect::effect_blessed(shared_ptr<Creature> creature, ActionManager
 }
 
 // Uncursed identify identifies all items of a particular type.
-bool IdentifyEffect::effect_uncursed(shared_ptr<Creature> creature, ActionManager * const am)
+bool IdentifyEffect::effect_uncursed(boost::shared_ptr<Creature> creature, ActionManager * const am)
 {
   if (creature)
   {
@@ -57,7 +56,7 @@ bool IdentifyEffect::effect_uncursed(shared_ptr<Creature> creature, ActionManage
 
 // Cursed identify still helps, but not as much as the other statuses.  It only identifies the
 // item selected by the player.
-bool IdentifyEffect::effect_cursed(shared_ptr<Creature> creature, ActionManager * const am)
+bool IdentifyEffect::effect_cursed(boost::shared_ptr<Creature> creature, ActionManager * const am)
 {
   if (creature)
   {

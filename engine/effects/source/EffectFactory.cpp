@@ -6,8 +6,6 @@
 #include "NullEffect.hpp"
 #include "FruitJuiceEffect.hpp"
 
-using boost::make_shared;
-
 EffectFactory::EffectFactory()
 {
 }
@@ -26,20 +24,20 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
   switch(effect_type)
   {
     case EFFECT_TYPE_HEALING:
-      effect = make_shared<HealingEffect>();
+      effect = boost::make_shared<HealingEffect>();
       break;
     case EFFECT_TYPE_IDENTIFY:
-      effect = make_shared<IdentifyEffect>();
+      effect = boost::make_shared<IdentifyEffect>();
       break;
     case EFFECT_TYPE_ETHER:
-      effect = make_shared<EtherEffect>();
+      effect = boost::make_shared<EtherEffect>();
       break;
     case EFFECT_TYPE_FRUIT_JUICE:
-      effect = make_shared<FruitJuiceEffect>();
+      effect = boost::make_shared<FruitJuiceEffect>();
       break;
     case EFFECT_TYPE_NULL:
     default:
-      effect = make_shared<NullEffect>();
+      effect = boost::make_shared<NullEffect>();
       break;
   }
 

@@ -1,6 +1,9 @@
 #pragma once
-#include <ncurses/ncurses.h>
-#include <ncurses/menu.h>
+#ifdef _MSC_VER
+#include <curses.h>
+#else
+#include <ncurses.h>
+#endif
 #include <deque>
 #include "Display.hpp"
 #include "NCursesMenuWrapper.hpp"
@@ -63,7 +66,7 @@ class NCursesDisplay : public Display
 
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component);
-    NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
+    //NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
 
     // Creation/destruction methods
@@ -72,18 +75,18 @@ class NCursesDisplay : public Display
 
     // Print the current display statistic at the specified row/column, unless we're in a different row than the initial one, and therefore
     // should line up the column with the next-available, previously-used column from the previous row.
-    bool print_display_statistic_and_update_row_and_column(const int initial_row, int* current_row, int* current_col, const std::string& stat, const std::string& next_stat);
+    bool print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const std::string& stat, const std::string& next_stat);
 
     // Update the row/column position for the synopsis details.  Return false if we can't do any more updates (have run off the screen).
     // Though, ideally that will never happen.
-    bool update_synopsis_row_and_column(const int initial_row, int* row, int* column, const std::string& previous_printed_field, const std::string& next_field);
+    bool update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* column, const std::string& previous_printed_field, const std::string& next_field);
 
-    int TERMINAL_MAX_ROWS;
-    int TERMINAL_MAX_COLS;
-    int FIELD_SPACE;
+    uint TERMINAL_MAX_ROWS;
+    uint TERMINAL_MAX_COLS;
+    uint FIELD_SPACE;
 
-    int MSG_BUFFER_LAST_Y;
-    int MSG_BUFFER_LAST_X;
+    uint MSG_BUFFER_LAST_Y;
+    uint MSG_BUFFER_LAST_X;
 
     // The display is represented as a stack of windows in ncurses; the game window is the lowest, and any menus
     // or submenus are layered as new windows on top of that.  Each time a Menu is done, a window is popped off

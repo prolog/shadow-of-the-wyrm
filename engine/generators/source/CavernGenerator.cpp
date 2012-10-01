@@ -7,7 +7,6 @@
 #include "RNG.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 : Generator(new_map_exit_id, TILE_TYPE_CAVERN)
@@ -18,7 +17,7 @@ CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 // JCD FIXME refactor as necessary
 MapPtr CavernGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = make_shared<Map>(dimensions);
+  MapPtr result_map = boost::make_shared<Map>(dimensions);
 
   fill(result_map, TILE_TYPE_ROCK);
 

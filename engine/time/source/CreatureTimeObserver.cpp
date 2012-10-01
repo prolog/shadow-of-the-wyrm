@@ -10,7 +10,6 @@
 #include "RegenerationConstants.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 CreatureTimeObserver::CreatureTimeObserver()
 : ITimeObserver()
@@ -22,15 +21,15 @@ CreatureTimeObserver::CreatureTimeObserver()
 void CreatureTimeObserver::initialize_regeneration_helpers()
 {
   // Regenerate the creature's HP
-  ICreatureRegenerationPtr hp_regen     = make_shared<CreatureHPRegeneration>();
+  ICreatureRegenerationPtr hp_regen     = boost::make_shared<CreatureHPRegeneration>();
   // Regenerate or degenerate the creature's piety, depending on the value.
-  ICreatureRegenerationPtr piety_regen  = make_shared<CreaturePietyRegeneration>();
+  ICreatureRegenerationPtr piety_regen  = boost::make_shared<CreaturePietyRegeneration>();
   // Update the minute values for the current movement accumulations.
-  ICreatureRegenerationPtr move_accum   = make_shared<MovementAccumulator>();
+  ICreatureRegenerationPtr move_accum   = boost::make_shared<MovementAccumulator>();
   // Do things based on current movement accumulations - drown, fall from mountains, etc.
-  ICreatureRegenerationPtr move_checkr  = make_shared<MovementAccumulationChecker>();
+  ICreatureRegenerationPtr move_checkr  = boost::make_shared<MovementAccumulationChecker>();
   // Every day, increment the creature's skills if they have been used enough.
-  ICreatureRegenerationPtr skill_checkr = make_shared<CreatureSkillIncrementer>(1440);
+  ICreatureRegenerationPtr skill_checkr = boost::make_shared<CreatureSkillIncrementer>(1440);
   
   regen.push_back(hp_regen    );
   regen.push_back(piety_regen );

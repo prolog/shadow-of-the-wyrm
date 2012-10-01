@@ -10,7 +10,6 @@
 using std::set;
 using std::string;
 using std::vector;
-using boost::make_shared;
 
 // By default, always get/pick up/etc the maximum.
 uint NPCDecisionStrategy::get_count(const uint max_count)
@@ -73,7 +72,7 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   // advance to the next turn.
   if (!command)
   {
-    command = make_shared<SearchCommand>();
+    command = boost::make_shared<SearchCommand>();
   }
   
   return command;
@@ -107,7 +106,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
           Direction direction = MapUtils::get_direction(c_this, c_threat);
           
           // create movement command, return.
-          CommandPtr command = make_shared<AttackCommand>(direction);
+          CommandPtr command = boost::make_shared<AttackCommand>(direction);
           return command;
         }
         else
@@ -116,7 +115,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
           {
             SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST);
             Direction direction = MapUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
-            CommandPtr command = make_shared<MovementCommand>(direction);
+            CommandPtr command = boost::make_shared<MovementCommand>(direction);
             return command;
           }
         }
@@ -155,7 +154,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     {
       Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size()-1));
       Direction direction = MapUtils::get_direction(this_creature_coords, movement_coord);
-      movement_command = make_shared<MovementCommand>(direction);
+      movement_command = boost::make_shared<MovementCommand>(direction);
     }
   }
 

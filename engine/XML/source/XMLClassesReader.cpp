@@ -9,7 +9,6 @@
 #include "XMLStatisticsModifierReader.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 ClassMap XMLClassesReader::get_classes(const XMLNode& classes_node)
 {
@@ -39,7 +38,7 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
   if (!class_node.is_null())
   {
-    current_class = make_shared<Class>();
+    current_class = boost::make_shared<Class>();
 
     string internal_class_id = XMLUtils::get_attribute_value(class_node, "id");
 

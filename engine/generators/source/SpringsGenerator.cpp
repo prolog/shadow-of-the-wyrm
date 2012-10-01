@@ -3,11 +3,9 @@
 #include "TileGenerator.hpp"
 #include "SpringsTile.hpp"
 
-using boost::make_shared;
-
 MapPtr SpringsGenerator::generate(MapPtr map, const int start_row, const int start_col, const int springs_size, const SpringsType type)
 {
-  MapPtr result_map = make_shared<Map>(*map);
+  MapPtr result_map = boost::make_shared<Map>(*map);
 
   if (type == SPRINGS_TYPE_WIDE)
   {
@@ -23,7 +21,7 @@ MapPtr SpringsGenerator::generate(MapPtr map, const int start_row, const int sta
 
 MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const int start_col, const int springs_size)
 {
-  MapPtr result_map = make_shared<Map>(*map);
+  MapPtr result_map = boost::make_shared<Map>(*map);
 
   int first_row;
   int second_row;
@@ -67,7 +65,7 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
 
 MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const int start_col, const int springs_size)
 {
-  MapPtr result_map = make_shared<Map>(*map);
+  MapPtr result_map = boost::make_shared<Map>(*map);
 
   int first_col;
   int second_col;

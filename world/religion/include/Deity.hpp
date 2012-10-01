@@ -12,14 +12,15 @@ namespace boost
 {
   namespace serialization
   {
-    template<typename Archive>
-    void serialize(Archive& ar, Deity& deity, const unsigned int version);
+    class access;
   }
 }
+
 class Deity
 {
   public:
     Deity();
+    virtual ~Deity() {};
  
     void set_id(const std::string& new_id);
     std::string get_id() const;
@@ -56,8 +57,14 @@ class Deity
     StatisticsModifier initial_statistics_modifier; // only used for creature creation
     
   private:
-    template<typename Archive> friend
-    void boost::serialization::serialize(Archive& ar, Deity& d, const unsigned int version);    
+    friend class boost::serialization::access;
+
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & id & name_sid & description_sid & short_description_sid;
+      ar & death_message_sid & alignment_range & worship_site_type & initial_statistics_modifier;
+    }
 };
 
 typedef boost::shared_ptr<Deity> DeityPtr;

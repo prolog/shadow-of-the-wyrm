@@ -3,8 +3,6 @@
 #include "RoadGenerator.hpp"
 #include "TileGenerator.hpp"
 
-using boost::make_shared;
-
 RoadGenerator::RoadGenerator(const int width)
 : ROAD_WIDTH(width)
 , ROAD_DIRECTION( CARDINAL_DIRECTION_SOUTH )
@@ -61,7 +59,7 @@ void RoadGenerator::generate_road(MapPtr map)
 
 MapPtr RoadGenerator::generate(MapPtr map)
 {
-  MapPtr result_map = make_shared<Map>(*map);
+  MapPtr result_map = boost::make_shared<Map>(*map);
 
   generate_road(result_map);
 

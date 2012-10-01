@@ -6,7 +6,6 @@
 #include "TextComponent.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 RaceSelectionScreen::RaceSelectionScreen(DisplayPtr new_display)
 : Menu(new_display)
@@ -24,10 +23,10 @@ void RaceSelectionScreen::initialize()
   Game* game_instance = Game::instance();
   RaceMap races = game_instance->get_races_ref();
 
-  TextComponentPtr race_selection_text = make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_RACE));
+  TextComponentPtr race_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_RACE));
 
   // Each option represents a player-selectable race.
-  OptionsComponentPtr options = make_shared<OptionsComponent>();
+  OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
 
   int current_id = 0;
   for (RaceMap::iterator races_it = races.begin(); races_it != races.end(); races_it++)

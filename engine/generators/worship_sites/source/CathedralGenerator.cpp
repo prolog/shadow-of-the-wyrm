@@ -6,7 +6,6 @@
 #include "TileGenerator.hpp"
 
 using std::string;
-using boost::make_shared;
 
 CathedralGenerator::CathedralGenerator(const string& new_deity_id, MapPtr new_base_map)
 : ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH), start_row(0), start_col(0), church_height(0), church_width(0)
@@ -21,7 +20,7 @@ MapPtr CathedralGenerator::generate(const Dimensions& dim)
 // Generate the cathedral
 MapPtr CathedralGenerator::generate()
 {
-  MapPtr map = make_shared<Map>(*base_map);
+  MapPtr map = boost::make_shared<Map>(*base_map);
 
   generate_cathedral(map);
 
@@ -167,7 +166,7 @@ void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_sta
 void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_start_col)
 {
   TilePtr current_tile;
-  int wall_row = start_row + church_height - (church_height/2.5);
+  int wall_row = start_row + church_height - static_cast<int>((church_height/2.5));
   for (int col = room_start_col; col < start_col + church_width; col++)
   {
     if (col == start_col + church_width-3)
@@ -184,7 +183,7 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
   }  
   
   // 50% chance of a treasure room and crypt
-  bool generate_treasure_room_and_crypt  = RNG::range(0, 1);
+  int generate_treasure_room_and_crypt = RNG::range(0, 1);
   
   if (generate_treasure_room_and_crypt)
   {
