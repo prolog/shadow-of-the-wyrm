@@ -6,6 +6,16 @@
 #include "WorshipSiteTypes.hpp"
 #include "StatisticsModifier.hpp"
 
+class Deity;
+
+namespace boost
+{
+  namespace serialization
+  {
+    template<typename Archive>
+    void serialize(Archive& ar, Deity& deity, const unsigned int version);
+  }
+}
 class Deity
 {
   public:
@@ -44,6 +54,10 @@ class Deity
     AlignmentRange alignment_range;
     WorshipSiteType worship_site_type;
     StatisticsModifier initial_statistics_modifier; // only used for creature creation
+    
+  private:
+    template<typename Archive> friend
+    void boost::serialization::serialize(Archive& ar, Deity& d, const unsigned int version);    
 };
 
 typedef boost::shared_ptr<Deity> DeityPtr;

@@ -1,5 +1,11 @@
 #include "SiteOfDeathTile.hpp"
 
+// Needed by boost's serialization library:
+SiteOfDeathTile::SiteOfDeathTile()
+{
+  tile_subtype = TILE_TYPE_UNDEFINED;
+}
+
 SiteOfDeathTile::SiteOfDeathTile(const TileType subtype)
 {
   tile_subtype = subtype;

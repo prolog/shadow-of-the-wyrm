@@ -3,6 +3,14 @@
 #include "MovementTypes.hpp"
 #include "tiles.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 // Measures the accumulation of movement across tile types and super types, given a particular method.
 // This is essentially an endurance tracker.  A character with a low swim score can swim, but not for
 // a particularly long time.  As a result, the system needs to track how long they've been on a
@@ -41,4 +49,16 @@ class MovementAccumulation
     ulonglong minutes_on_tile_type_given_movement;
     TileType tile_type;
     MovementType movement_type;
+
+  private:
+    friend class boost::serialization::access;
+
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & minutes_on_super_type_given_movement;
+      ar & tile_super_type;
+      ar & minutes_on_tile_type_given_movement;
+      ar & tile_type & movement_type;
+    }
 };

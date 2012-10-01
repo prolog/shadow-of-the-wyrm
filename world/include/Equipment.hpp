@@ -3,6 +3,14 @@
 #include "EquipmentTypes.hpp"
 #include "Item.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 typedef std::map<EquipmentWornLocation, ItemPtr> EquipmentMap;
 
 // Equipment is a class that represents all the "worn" equipment of a particular creature -
@@ -28,4 +36,13 @@ class Equipment
   protected:
     void initialize();
     EquipmentMap equipment;
+
+  private:
+    friend class boost::serialization::access;
+
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & equipment;
+    }
 };

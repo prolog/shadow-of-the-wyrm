@@ -645,7 +645,6 @@
 		<Unit filename="engine\generators\worship_sites\source\SnakingTempleGenerator.cpp" />
 		<Unit filename="engine\generators\worship_sites\source\WorshipSiteGenerator.cpp" />
 		<Unit filename="engine\include\ClassManager.hpp" />
-		<Unit filename="engine\include\ClassSerializationExports.hpp" />
 		<Unit filename="engine\include\CreationUtils.hpp" />
 		<Unit filename="engine\include\CreatureFactory.hpp" />
 		<Unit filename="engine\include\CreatureGenerationConstants.hpp" />
@@ -667,7 +666,6 @@
 		<Unit filename="engine\include\Range.hpp" />
 		<Unit filename="engine\include\ReligionManager.hpp" />
 		<Unit filename="engine\include\SavageLandsEngine.hpp" />
-		<Unit filename="engine\include\Serialization.hpp" />
 		<Unit filename="engine\include\SerializationTypes.hpp" />
 		<Unit filename="engine\include\StringConstants.hpp" />
 		<Unit filename="engine\include\StringTable.hpp" />
@@ -714,6 +712,19 @@
 		<Unit filename="engine\menus\source\SexSelectionScreen.cpp" />
 		<Unit filename="engine\menus\source\TextComponent.cpp" />
 		<Unit filename="engine\menus\source\WelcomeScreen.cpp" />
+		<Unit filename="engine\serialization\include\ClassSerializationExports.hpp" />
+		<Unit filename="engine\serialization\include\GameEngineExports.hpp" />
+		<Unit filename="engine\serialization\include\GameEngineSerialization.hpp" />
+		<Unit filename="engine\serialization\include\GameStateSerialization.hpp" />
+		<Unit filename="engine\serialization\include\Serialization.hpp" />
+		<Unit filename="engine\serialization\include\TemplatesSerialization.hpp" />
+		<Unit filename="engine\serialization\include\TileAndFeaturesExports.hpp" />
+		<Unit filename="engine\serialization\source\GameEngineSerialization.cpp" />
+		<Unit filename="engine\serialization\source\GameStateSerialization.cpp" />
+		<Unit filename="engine\serialization\source\Serialization.cpp" />
+		<Unit filename="engine\serialization\source\TemplateSerialization.cpp">
+			<Option compiler="gcc" use="1" buildCommand="$compiler -O3 $includes -c $file -o $object" />
+		</Unit>
 		<Unit filename="engine\skills\include\Detection.hpp" />
 		<Unit filename="engine\skills\include\Mountaineering.hpp" />
 		<Unit filename="engine\skills\include\SkillManager.hpp" />
@@ -743,7 +754,6 @@
 		<Unit filename="engine\source\RaceManager.cpp" />
 		<Unit filename="engine\source\ReligionManager.cpp" />
 		<Unit filename="engine\source\SavageLandsEngine.cpp" />
-		<Unit filename="engine\source\Serialization.cpp" />
 		<Unit filename="engine\source\StringConstants.cpp" />
 		<Unit filename="engine\source\StringTable.cpp" />
 		<Unit filename="engine\source\unit_tests\CreatureFactory_test.cpp">

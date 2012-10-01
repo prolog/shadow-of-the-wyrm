@@ -3,6 +3,16 @@
 #include "Calendar.hpp"
 #include "Map.hpp"
 
+class MapRegistry;
+
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 class World
 {
   public:
@@ -10,13 +20,22 @@ class World
     ~World();
 
     void set_world(MapPtr new_world_map);
-    MapPtr get_world() const;
+    MapPtr get_world(const MapRegistry& map_registry) const;
     
     Calendar& get_calendar();
 
   protected:
-    MapPtr world_map;
+    std::string world_map_id;
     Calendar calendar;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & world_map_id & calendar;
+    }
 };
 
 typedef boost::shared_ptr<World> WorldPtr;

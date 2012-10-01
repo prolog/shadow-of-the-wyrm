@@ -1,4 +1,5 @@
 #include <sstream>
+#include <boost/make_shared.hpp>
 #include "Resistances.hpp"
 #include "StringConstants.hpp"
 #include "StringTable.hpp"
@@ -69,7 +70,7 @@ Resistances::Resistances()
 
 void Resistances::set_resistance_value(const DamageType type, double value)
 {
-  resistances[type].set_value(value);
+  resistances[type]->set_value(value);
 }
 
 // Individual resistance classes
@@ -149,7 +150,7 @@ double Resistances::get_resistance_value(const DamageType type) const
 
   if (map_it != resistances.end())
   {
-    return (map_it->second).get_value();
+    return (map_it->second)->get_value();
   }
 
   return DEFAULT_RESISTANCE_VALUE;
@@ -161,9 +162,9 @@ string Resistances::str() const
 
   for (ResistancesMap::const_iterator res_it = resistances.begin(); res_it != resistances.end(); res_it++)
   {
-    Resistance current_resistance = res_it->second;
+    boost::shared_ptr<Resistance> current_resistance = res_it->second;
 
-    resistances_str = resistances_str + current_resistance.str() + " ";
+    resistances_str = resistances_str + current_resistance->str() + " ";
   }
 
   return resistances_str;
@@ -172,20 +173,20 @@ string Resistances::str() const
 // Reset the resistances to an absolute default - 1.0 for each value
 void Resistances::default_resistances()
 {
-  SlashResistance slash;
-  PoundResistance pound;
-  PierceResistance pierce;
-  HeatResistance heat;
-  ColdResistance cold;
-  AcidResistance acid;
-  PoisonResistance poison;
-  HolyResistance holy;
-  ShadowResistance shadow;
-  ArcaneResistance arcane;
-  MentalResistance mental;
-  SonicResistance sonic;
-  RadiantResistance radiant;
-  LightningResistance lightning;
+  boost::shared_ptr<Resistance> slash = boost::make_shared<SlashResistance>();
+  boost::shared_ptr<Resistance> pound = boost::make_shared<PoundResistance>();
+  boost::shared_ptr<Resistance> pierce = boost::make_shared<PierceResistance>();
+  boost::shared_ptr<Resistance> heat = boost::make_shared<HeatResistance>();
+  boost::shared_ptr<Resistance> cold = boost::make_shared<ColdResistance>();
+  boost::shared_ptr<Resistance> acid = boost::make_shared<AcidResistance>();
+  boost::shared_ptr<Resistance> poison = boost::make_shared<PoisonResistance>();
+  boost::shared_ptr<Resistance> holy = boost::make_shared<HolyResistance>();
+  boost::shared_ptr<Resistance> shadow = boost::make_shared<ShadowResistance>();
+  boost::shared_ptr<Resistance> arcane = boost::make_shared<ArcaneResistance>();
+  boost::shared_ptr<Resistance> mental = boost::make_shared<MentalResistance>();
+  boost::shared_ptr<Resistance> sonic = boost::make_shared<SonicResistance>();
+  boost::shared_ptr<Resistance> radiant = boost::make_shared<RadiantResistance>();
+  boost::shared_ptr<Resistance> lightning = boost::make_shared<LightningResistance>();
 
   resistances.clear();
 

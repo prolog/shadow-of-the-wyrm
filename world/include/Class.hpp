@@ -9,6 +9,14 @@
 #include "Statistic.hpp"
 #include "StatisticsModifier.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 class Class
 {
   public:
@@ -99,6 +107,18 @@ class Class
     // The initial equipment/inventory, used in character generation.
     std::map<EquipmentWornLocation, InitialItem> initial_equipment;
     std::vector<InitialItem> initial_inventory;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & class_id & class_name_sid & class_description_sid & class_abbreviation_sid;
+      ar & starting_valour & starting_spirit & statistics_modifier & resistances & skills;
+      ar & piety_cost_multiplier & piety_regen_bonus & user_playable & experience_multiplier;
+      ar & hit_dice & ap_dice & initial_equipment & initial_inventory;
+    }
 };
 
 typedef boost::shared_ptr<Class> ClassPtr;

@@ -1,5 +1,13 @@
 #pragma once
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 class StatisticsModifier
 {
   public:
@@ -44,4 +52,15 @@ class StatisticsModifier
 
     int valour_modifier;
     int spirit_modifier;
+    
+  private:
+    friend class boost::serialization::access;
+    
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & strength_modifier & dexterity_modifier & agility_modifier & health_modifier;
+      ar & intelligence_modifier & willpower_modifier & charisma_modifier;
+      ar & valour_modifier & spirit_modifier;
+    }
 };

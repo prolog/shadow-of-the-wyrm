@@ -8,6 +8,14 @@
 #include "Material.hpp"
 #include "Weight.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 class Effect;
 
 class Item
@@ -129,6 +137,18 @@ class Item
     
     // This needs to be deep copied.
     MaterialPtr material;
+
+  private:
+    friend class boost::serialization::access;
+
+    // JCD FIXME FIXME FIXME!!!!
+    template<typename Archive>
+    void serialize(Archive& ar)
+    {
+      ar & id & base_id & quantity & usage_description_sid & description_sid & unidentified_description_sid & unidentified_usage_description_sid;
+      ar & weight & readable & worn_location & status & status_identified & item_identified & artifact;
+      ar & type & symbol & colour & identification_type & effect & material;
+    }
 };
 
 typedef boost::shared_ptr<Item> ItemPtr;
