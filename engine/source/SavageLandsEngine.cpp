@@ -160,18 +160,22 @@ void SavageLandsEngine::setup_player_and_world()
     string deity_index = deity_selection.display();
     int deity_idx = String::to_int(deity_index);
     string selected_deity_id;
-    vector<string> deity_ids = selected_race->get_initial_deity_ids();
-    for (uint i = 0; i < deity_ids.size(); i++)
+
+    if (selected_race)
     {
-      if (static_cast<int>(i) == deity_idx)
+      vector<string> deity_ids = selected_race->get_initial_deity_ids();
+      for (uint i = 0; i < deity_ids.size(); i++)
       {
-        selected_deity_id = deity_ids.at(i);
+        if (static_cast<int>(i) == deity_idx)
+        {
+          selected_deity_id = deity_ids.at(i);
+        }
       }
+
+      CreaturePtr player = CreatureFactory::create_by_race_and_class(game->get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
+      player->set_is_player(true, controller);  
+
+      game->create_new_world(player); 
     }
-
-    CreaturePtr player = CreatureFactory::create_by_race_and_class(game->get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
-    player->set_is_player(true, controller);  
-
-    game->create_new_world(player); 
   }
 }
