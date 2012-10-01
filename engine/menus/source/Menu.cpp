@@ -9,7 +9,7 @@ using namespace std;
 Menu::Menu(DisplayPtr new_display)
 {
   game_display = new_display;
-  user_prompt = make_shared<NullPrompt>();
+  user_prompt = boost::make_shared<NullPrompt>();
 }
 
 Menu::~Menu()

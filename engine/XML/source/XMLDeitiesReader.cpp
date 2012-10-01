@@ -6,7 +6,6 @@
 #include "XMLStatisticsModifierReader.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 // Read all the deities from the XML and place them into a map keyed by deity ID.
 DeityMap XMLDeitiesReader::get_deities(const XMLNode& deities_node)
@@ -38,7 +37,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
   
   if (!deity_node.is_null())
   {
-    deity = make_shared<Deity>();
+    deity = boost::make_shared<Deity>();
     
     string deity_id  = XMLUtils::get_attribute_value (deity_node, "id");
     string name_sid  = XMLUtils::get_child_node_value(deity_node, "NameSID");

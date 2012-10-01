@@ -4,7 +4,6 @@
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponManager.hpp"
 
-using boost::make_shared;
 using boost::dynamic_pointer_cast;
 
 // Get the weapon for the given attack type.  The returned pointer
@@ -93,7 +92,7 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
     else
     {
       // Set the additional damage based on the ammunition
-      DamagePtr additional_damage = make_shared<Damage>(ammunition_damage);
+      DamagePtr additional_damage = boost::make_shared<Damage>(ammunition_damage);
       d.set_additional_damage(additional_damage);
     }
   }

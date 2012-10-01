@@ -12,7 +12,6 @@
 
 using namespace std;
 using boost::dynamic_pointer_cast;
-using boost::make_shared;
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
@@ -41,7 +40,7 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   village_coordinates.clear();
   unused_initial_race_ids.clear();
   
-  MapPtr result_map = make_shared<Map>(dimensions);
+  MapPtr result_map = boost::make_shared<Map>(dimensions);
 
   // Fill the world with water.
   fill(result_map, TILE_TYPE_SEA);

@@ -1,4 +1,9 @@
+#ifdef _MSC_VER
+#include <curses.h>
+#else
 #include <ncurses.h>
+#endif
+
 #include "Conversion.hpp"
 #include "TileSelectionCommandKeys.hpp"
 #include "TileSelectionKeyboardCommandMap.hpp"

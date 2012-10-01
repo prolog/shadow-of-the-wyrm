@@ -7,7 +7,6 @@
 #include "SquishyEquipWornLocationFilter.hpp"
 
 using std::list;
-using boost::make_shared;
 
 // Create a 1-item list that always passes - used for things like pickup,
 // drop, etc., where the initial filter is always empty.
@@ -15,7 +14,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_empty_filter()
 {
   list<IItemFilterPtr> null_filter_list;
 
-  IItemFilterPtr null_filter = make_shared<NullFilter>();
+  IItemFilterPtr null_filter = boost::make_shared<NullFilter>();
   null_filter_list.push_back(null_filter);
 
   return null_filter_list;
@@ -38,7 +37,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_equipment_filter(const std::list<
 // Create a filter by equipment worn location
 IItemFilterPtr ItemFilterFactory::create_equipment_worn_location_filter(const EquipmentWornLocation& ewl)
 {
-  IItemFilterPtr eq_filter = make_shared<SquishyEquipWornLocationFilter>(ewl);
+  IItemFilterPtr eq_filter = boost::make_shared<SquishyEquipWornLocationFilter>(ewl);
   return eq_filter;
 }
 
@@ -58,7 +57,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const std::list<
 
   BOOST_FOREACH(ItemType it, item_type_list)
   {
-    IItemFilterPtr display_filter = make_shared<ItemTypeFilter>(it);
+    IItemFilterPtr display_filter = boost::make_shared<ItemTypeFilter>(it);
     it_filter.push_back(display_filter);
   }
   
@@ -70,7 +69,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_readable_filter()
 {
   list<IItemFilterPtr> it_filter;
   
-  IItemFilterPtr readable_filter = make_shared<ReadableItemFilter>();
+  IItemFilterPtr readable_filter = boost::make_shared<ReadableItemFilter>();
   it_filter.push_back(readable_filter);
   
   return it_filter;

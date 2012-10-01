@@ -4,11 +4,10 @@
 #include "EtherEffect.hpp"
 
 using std::string;
-using boost::make_shared;
 
 EtherEffect::EtherEffect()
 {
-  AdditionalEffectMessagePtr sweet_taste = make_shared<SweetTasteEffectMessage>();
+  AdditionalEffectMessagePtr sweet_taste = boost::make_shared<SweetTasteEffectMessage>();
   additional_effect_messages.push_back(sweet_taste);
 }
 
@@ -32,7 +31,7 @@ bool EtherEffect::heal(CreaturePtr creature, const float healing_multiplier) con
 
   if (creature)
   {
-    int ether_amount = get_random_healing_amount() * healing_multiplier;
+    int ether_amount = static_cast<int>(get_random_healing_amount() * healing_multiplier);
 
     Statistic ap = creature->get_arcana_points();
 

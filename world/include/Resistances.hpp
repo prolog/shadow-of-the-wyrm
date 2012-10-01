@@ -28,6 +28,7 @@ class Resistance
 {
   public:
     Resistance();
+    virtual ~Resistance() {};
     Resistance(const DamageType type, const std::string& name_sid, const double value);
 
     void set_type(const DamageType new_type);

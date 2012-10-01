@@ -5,8 +5,6 @@
 #include "SwimmingMovementAccumulationChecker.hpp"
 #include "TerrainMovementAccumulationCheckerFactory.hpp"
 
-using boost::make_shared;
-
 TerrainMovementAccumulationCheckerFactory::TerrainMovementAccumulationCheckerFactory()
 {
 }
@@ -27,20 +25,20 @@ ITerrainMovementAccumulationCheckerPtr TerrainMovementAccumulationCheckerFactory
   {
     if (movement == MOVEMENT_TYPE_WALKING)
     {
-      checker = make_shared<SwimmingMovementAccumulationChecker>();
+      checker = boost::make_shared<SwimmingMovementAccumulationChecker>();
     }
     else if (movement == MOVEMENT_TYPE_BOAT)
     {
-      checker = make_shared<BoatingMovementAccumulationChecker>();
+      checker = boost::make_shared<BoatingMovementAccumulationChecker>();
     }
   }
   else if (tile_type == TILE_TYPE_MOUNTAINS && (movement == MOVEMENT_TYPE_WALKING))
   {
-    checker = make_shared<MountainClimbingMovementAccumulationChecker>();
+    checker = boost::make_shared<MountainClimbingMovementAccumulationChecker>();
   }
   else
   {
-    checker = make_shared<NullMovementAccumulationChecker>();
+    checker = boost::make_shared<NullMovementAccumulationChecker>();
   }
   
   return checker;

@@ -5,7 +5,6 @@
 #include "MiscItem.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 XMLItemsReader::XMLItemsReader()
 {
@@ -127,7 +126,7 @@ ItemMap XMLItemsReader::get_misc_items(const XMLNode& misc_items_node)
     {
       if (!node.is_null())
       {
-        ItemPtr item = make_shared<MiscItem>();
+        ItemPtr item = boost::make_shared<MiscItem>();
         item_reader.parse(item, node);
         misc_items.insert(make_pair(item->get_id(), item));  
       }
@@ -149,7 +148,7 @@ ItemMap XMLItemsReader::get_armour(const XMLNode& armours_node)
     {
       if (!node.is_null())
       {
-        ArmourPtr armour = make_shared<Armour>();
+        ArmourPtr armour = boost::make_shared<Armour>();
         armour_reader.parse(armour, node);
         armour_map.insert(make_pair(armour->get_id(), armour));
       }
@@ -169,7 +168,7 @@ ItemMap XMLItemsReader::get_weapons(const XMLNode& weapons_node)
     
     BOOST_FOREACH(XMLNode node, weapons_nodes)
     {
-      MeleeWeaponPtr weapon = make_shared<MeleeWeapon>();
+      MeleeWeaponPtr weapon = boost::make_shared<MeleeWeapon>();
       weapons_reader.parse(weapon, node);
       weapons_map.insert(make_pair(weapon->get_id(), weapon));
     }
@@ -188,7 +187,7 @@ ItemMap XMLItemsReader::get_ranged_weapons(const XMLNode& ranged_weapons_node)
     
     BOOST_FOREACH(XMLNode node, ranged_weapons_nodes)
     {
-      RangedWeaponPtr ranged_weapon = make_shared<RangedWeapon>();
+      RangedWeaponPtr ranged_weapon = boost::make_shared<RangedWeapon>();
       weapons_reader.parse(ranged_weapon, node);
       weapons_map.insert(make_pair(ranged_weapon->get_id(), ranged_weapon));
     }
@@ -207,7 +206,7 @@ ItemMap XMLItemsReader::get_ammunition(const XMLNode& ammunition_node)
     
     BOOST_FOREACH(XMLNode node, missiles_nodes)
     {
-      WeaponPtr ammunition = make_shared<MeleeWeapon>();
+      WeaponPtr ammunition = boost::make_shared<MeleeWeapon>();
       ammunition_reader.parse(ammunition, node);
       ammunition_map.insert(make_pair(ammunition->get_id(), ammunition));
     }
@@ -226,7 +225,7 @@ ItemMap XMLItemsReader::get_food(const XMLNode& food_node)
     
     BOOST_FOREACH(XMLNode node, food_nodes)
     {
-      FoodPtr food = make_shared<Food>();
+      FoodPtr food = boost::make_shared<Food>();
       food_reader.parse(food, node);
       food_map.insert(make_pair(food->get_id(), food));
     }
@@ -245,7 +244,7 @@ ItemMap XMLItemsReader::get_plants(const XMLNode& plants_node)
     
     BOOST_FOREACH(XMLNode node, plants_nodes)
     {
-      PlantPtr plant = make_shared<Plant>();
+      PlantPtr plant = boost::make_shared<Plant>();
       plant_reader.parse(plant, node);
       plants_map.insert(make_pair(plant->get_id(), plant));
     }
@@ -264,7 +263,7 @@ ItemMap XMLItemsReader::get_boats(const XMLNode& boats_node)
     
     BOOST_FOREACH(XMLNode node, boats_nodes)
     {
-      BoatPtr boat = make_shared<Boat>();
+      BoatPtr boat = boost::make_shared<Boat>();
       boat_reader.parse(boat, node);
       boats_map.insert(make_pair(boat->get_id(), boat));
     }
@@ -283,7 +282,7 @@ ItemMap XMLItemsReader::get_potions(const XMLNode& potions_node)
     
     BOOST_FOREACH(XMLNode node, potions_nodes)
     {
-      PotionPtr potion = make_shared<Potion>();
+      PotionPtr potion = boost::make_shared<Potion>();
       potion_reader.parse(potion, node);
       potions_map.insert(make_pair(potion->get_id(), potion));
     }
@@ -302,7 +301,7 @@ ItemMap XMLItemsReader::get_scrolls(const XMLNode& scrolls_node)
 
     BOOST_FOREACH(XMLNode node, scrolls_nodes)
     {
-      ScrollPtr scroll = make_shared<Scroll>();
+      ScrollPtr scroll = boost::make_shared<Scroll>();
       scroll_reader.parse(scroll, node);
       scrolls_map.insert(make_pair(scroll->get_id(), scroll));
     }
@@ -321,7 +320,7 @@ ItemMap XMLItemsReader::get_currencies(const XMLNode& currencies_node)
     
     BOOST_FOREACH(XMLNode node, currencies_nodes)
     {
-      CurrencyPtr currency = make_shared<Currency>();
+      CurrencyPtr currency = boost::make_shared<Currency>();
       item_reader.parse(currency, node);
       currencies_map.insert(make_pair(currency->get_id(), currency));
     }

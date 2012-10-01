@@ -11,7 +11,6 @@
 #include "RNG.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 bool compare_rooms(const Room& r1, const Room& r2);
 bool compare_rooms(const Room& r1, const Room& r2)
@@ -70,7 +69,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
   // Try until we get a reasonable map
   while (!success)
   {
-    MapPtr result_map = make_shared<Map>(dimensions);
+    MapPtr result_map = boost::make_shared<Map>(dimensions);
 
     fill(result_map, TILE_TYPE_ROCK);
     success = generate_dungeon(result_map);

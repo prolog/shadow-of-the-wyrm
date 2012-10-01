@@ -6,8 +6,6 @@
 #include "VegetableGardenGenerator.hpp"
 #include "WildflowerGardenGenerator.hpp"
 
-using boost::make_shared;
-
 GardenGeneratorFactory::GardenGeneratorFactory()
 {
 }
@@ -24,18 +22,18 @@ GardenGeneratorPtr GardenGeneratorFactory::create_garden_generator(const GardenT
   switch(type)
   {
     case GARDEN_TYPE_SHADE:
-      garden_gen = make_shared<ShadeGardenGenerator>(map, start_row, start_col, height, width);
+      garden_gen = boost::make_shared<ShadeGardenGenerator>(map, start_row, start_col, height, width);
       break;
     case GARDEN_TYPE_ROCK:
-      garden_gen = make_shared<RockGardenGenerator>(map, start_row, start_col, height, width);
+      garden_gen = boost::make_shared<RockGardenGenerator>(map, start_row, start_col, height, width);
       break;
     case GARDEN_TYPE_WILDFLOWER:
-      garden_gen = make_shared<WildflowerGardenGenerator>(map, start_row, start_col, height, width);
+      garden_gen = boost::make_shared<WildflowerGardenGenerator>(map, start_row, start_col, height, width);
       break;
     case GARDEN_TYPE_VEGETABLE:
     case GARDEN_TYPE_LAST:
     default:
-      garden_gen = make_shared<VegetableGardenGenerator>(map, start_row, start_col, height, width);
+      garden_gen = boost::make_shared<VegetableGardenGenerator>(map, start_row, start_col, height, width);
       break;
   }
 

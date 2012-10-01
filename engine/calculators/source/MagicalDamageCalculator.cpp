@@ -17,7 +17,7 @@ int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const Dam
   {
     double resistance_multiplier = defending_creature->get_resistances().get_resistance_value(magical_damage.get_damage_type());
     
-    damage = base_damage * resistance_multiplier;
+    damage = static_cast<int>(base_damage * resistance_multiplier);
   }
   
   return damage;

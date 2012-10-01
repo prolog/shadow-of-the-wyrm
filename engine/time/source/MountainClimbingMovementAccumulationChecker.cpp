@@ -9,9 +9,9 @@ void MountainClimbingMovementAccumulationChecker::check(CreaturePtr creature)
   if (creature)
   {
     int mountaineering_skill_value = sm.get_skill_value(creature, SKILL_GENERAL_MOUNTAINEERING);
-    int max_climbing_time = mcc.calculate_max_mountain_climbing_time(mountaineering_skill_value);
+    ulonglong max_climbing_time = static_cast<ulonglong>(mcc.calculate_max_mountain_climbing_time(mountaineering_skill_value));
     MovementAccumulation& movement_accumulation = creature->get_movement_accumulation_ref();
-    int time_on_mt = movement_accumulation.get_minutes_on_tile_type_given_movement();
+    ulonglong time_on_mt = movement_accumulation.get_minutes_on_tile_type_given_movement();
 
     if (time_on_mt > max_climbing_time)
     {

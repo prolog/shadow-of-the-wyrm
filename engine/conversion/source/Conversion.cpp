@@ -290,7 +290,7 @@ string Uuid::to_string(const boost::uuids::uuid& convert)
 
 double ActionCostConverter::to_seconds(const ActionCostValue action_cost_value, const MapType map_type)
 {
-  double seconds = 0.0d;
+  double seconds = 0.0;
   
   if (map_type == MAP_TYPE_WORLD)
   {

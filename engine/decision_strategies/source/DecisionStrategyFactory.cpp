@@ -6,7 +6,6 @@
 #include "NullKeyboardController.hpp"
 
 using std::string;
-using boost::make_shared;
 
 DecisionStrategyFactory::DecisionStrategyFactory()
 {
@@ -22,20 +21,20 @@ DecisionStrategyPtr DecisionStrategyFactory::create_decision_strategy(const stri
 {
   DecisionStrategyPtr strategy;
   ControllerPtr controller;
-  controller = make_shared<NullKeyboardController>();
+  controller = boost::make_shared<NullKeyboardController>();
   
   if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_IMMOBILE)
   {
-    strategy = make_shared<ImmobileDecisionStrategy>(controller);
+    strategy = boost::make_shared<ImmobileDecisionStrategy>(controller);
   }
   else if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_MOBILE)
   {
-    strategy = make_shared<MobileDecisionStrategy>(controller);
+    strategy = boost::make_shared<MobileDecisionStrategy>(controller);
   }
   // ??? == PLAYER?  Could be interesting...
   else // Assume == DecisionStrategyID::DECISION_STRATEGY_DEFAULT
   {
-    strategy = make_shared<ImmobileDecisionStrategy>(controller);
+    strategy = boost::make_shared<ImmobileDecisionStrategy>(controller);
   }
   
   return strategy;

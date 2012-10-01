@@ -68,7 +68,7 @@ void PrayerManager::finish_prayer(CreaturePtr creature, const DeityDecisionImpli
 
   ClassPtr cur_class = cm.get_class(creature->get_class_id());
   float piety_cost_multiplier = cur_class->get_piety_cost_multiplier();
-  int piety_cost = piety_loss * piety_cost_multiplier;
+  int piety_cost = static_cast<int>(piety_loss * piety_cost_multiplier);
   
   status.decrement_piety(piety_cost);
   religion.set_deity_status(deity_id, status);

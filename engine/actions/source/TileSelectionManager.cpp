@@ -12,13 +12,12 @@
 #include "TileSelectionRangeChecker.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 TileSelectionManager::TileSelectionManager()
 : show_tile_description(true), show_feature_description(true), show_creature_description(true), show_item_descriptions(true)
 {
-  command_factory = make_shared<TileSelectionCommandFactory>();
-  kb_command_map  = make_shared<TileSelectionKeyboardCommandMap>();
+  command_factory = boost::make_shared<TileSelectionCommandFactory>();
+  kb_command_map  = boost::make_shared<TileSelectionKeyboardCommandMap>();
 }
 
 void TileSelectionManager::set_keyboard_command_map(const KeyboardCommandMapPtr new_command_map)

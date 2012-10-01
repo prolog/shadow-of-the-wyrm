@@ -16,7 +16,6 @@
 #include "TemplatesSerialization.hpp"
 
 using namespace std;
-using boost::hash;
 using namespace boost::archive;
 
 // Save the entire game state to disk
@@ -35,7 +34,7 @@ void Serialization::save(CreaturePtr creature)
     // Get the user's name
     string user_name = Environment::get_user_name();
     string string_to_hash = user_name + name;
-    hash<string> string_hash;
+    boost::hash<string> string_hash;
     size_t hash = string_hash(string_to_hash);
     string filename = Integer::to_string(hash) + ".sls"; // "sls" = "Savage Lands Save"
 

@@ -1,4 +1,5 @@
 #include <boost/serialization/export.hpp>
+#include "Resistances.hpp"
 #include "Cloth.hpp"
 #include "DragonScale.hpp"
 #include "Glass.hpp"
@@ -20,7 +21,7 @@
 BOOST_CLASS_EXPORT(NCursesDisplay)
 
 // world/religion
-BOOST_CLASS_EXPORT(Deity)
+//BOOST_CLASS_EXPORT(Deity)
 
 // world
 BOOST_CLASS_EXPORT(SlashResistance)

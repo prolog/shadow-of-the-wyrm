@@ -141,7 +141,7 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
       // This is null if no item was selected.
       if (item_in_slot)
       {        
-        bool item_equipped = handle_item(creature, ITEM_ACTION_EQUIP, item_in_slot, worn_location);
+        ActionCostValue item_equipped = handle_item(creature, ITEM_ACTION_EQUIP, item_in_slot, worn_location);
         
         // If the item was successfully equipped, remove it from the
         // inventory.

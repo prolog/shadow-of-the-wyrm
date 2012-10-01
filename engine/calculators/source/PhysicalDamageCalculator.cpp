@@ -33,12 +33,12 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const Da
       // fire damage, etc.
       double total_soak = defending_creature->get_soak().get_current() * soak_multiplier;
       
-      damage = ceil(fmax(0, resisted_damage - total_soak));
+      damage = static_cast<int>(ceil(std::max<double>(0, resisted_damage - total_soak)));
     }
     else
     {
       // If the damage is negative (healing), ignore soak.
-      damage = ceil(damage);
+      damage = static_cast<int>(resisted_damage);
     }
   }
 

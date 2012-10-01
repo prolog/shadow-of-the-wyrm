@@ -22,7 +22,7 @@ string ITimeObserver::get_id() const
   return id;
 }
 
-void ITimeObserver::update_minutes_elapsed(const int new_minutes_elapsed)
+void ITimeObserver::update_minutes_elapsed(const ulonglong new_minutes_elapsed)
 {
   minutes_elapsed += new_minutes_elapsed;
 }

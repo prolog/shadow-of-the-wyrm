@@ -633,7 +633,12 @@ TargetMap& Creature::get_target_map_ref()
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
 {
+  // VS 2010
+  #ifdef _MSC_VER
+  BOOST_STATIC_ASSERT(sizeof(*this) == 608);
+  #else // gcc
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
+  #endif
 }
 
 // Swap values, no throw

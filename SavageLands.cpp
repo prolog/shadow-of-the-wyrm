@@ -1,3 +1,7 @@
+#ifdef _MSC_VER
+#include <tchar.h>
+#endif
+
 #include <iostream>
 #include <xercesc/util/PlatformUtils.hpp>
 #include <boost/archive/archive_exception.hpp>
@@ -77,7 +81,11 @@ int parse_command_line_arguments(int argc, char* argv[])
   return 0;
 }
 
+#ifdef _MSC_VER
+int _tmain(int argc, _TCHAR* argv[])
+#else
 int main(int argc, char* argv[])
+#endif
 {
   try
   {

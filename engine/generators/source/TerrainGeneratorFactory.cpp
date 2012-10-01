@@ -18,7 +18,6 @@
 #include "VillageTile.hpp"
 
 using std::string;
-using boost::make_shared;
 using boost::dynamic_pointer_cast;
 
 TerrainGeneratorFactory::TerrainGeneratorFactory()
@@ -39,31 +38,31 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
   switch(terrain_type)
   {
     case TILE_TYPE_FIELD:
-      generator = make_shared<FieldGenerator>(map_exit_id);
+      generator = boost::make_shared<FieldGenerator>(map_exit_id);
       break;
     case TILE_TYPE_SEA:
-      generator = make_shared<SeaGenerator>(map_exit_id);
+      generator = boost::make_shared<SeaGenerator>(map_exit_id);
       break;
     case TILE_TYPE_MARSH:
-      generator = make_shared<MarshGenerator>(map_exit_id);
+      generator = boost::make_shared<MarshGenerator>(map_exit_id);
       break;
     case TILE_TYPE_MOUNTAINS:
-      generator = make_shared<MountainsGenerator>(map_exit_id);
+      generator = boost::make_shared<MountainsGenerator>(map_exit_id);
       break;
     case TILE_TYPE_HILLS:
-      generator = make_shared<HillsGenerator>(map_exit_id);
+      generator = boost::make_shared<HillsGenerator>(map_exit_id);
       break;
     case TILE_TYPE_FOREST:
-      generator = make_shared<ForestGenerator>(map_exit_id);
+      generator = boost::make_shared<ForestGenerator>(map_exit_id);
       break;
     case TILE_TYPE_CAVERN:
-      generator = make_shared<CavernGenerator>(map_exit_id);
+      generator = boost::make_shared<CavernGenerator>(map_exit_id);
       break;
     case TILE_TYPE_DESERT:
-      generator = make_shared<DesertGenerator>(map_exit_id);
+      generator = boost::make_shared<DesertGenerator>(map_exit_id);
       break;
     case TILE_TYPE_SCRUB:
-      generator = make_shared<ScrubGenerator>(map_exit_id);
+      generator = boost::make_shared<ScrubGenerator>(map_exit_id);
       break;
     case TILE_TYPE_VILLAGE:
     {      
@@ -89,7 +88,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     }
       break;
     case TILE_TYPE_DUNGEON_COMPLEX:
-      generator = make_shared<DungeonGenerator>(map_exit_id);
+      generator = boost::make_shared<DungeonGenerator>(map_exit_id);
       break;
     // All three worship sites use the same process:
     case TILE_TYPE_CHURCH:
@@ -132,7 +131,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TILE_TYPE_DAIS:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.
-      generator = make_shared<FieldGenerator>(map_exit_id);
+      generator = boost::make_shared<FieldGenerator>(map_exit_id);
       break;
   }
   

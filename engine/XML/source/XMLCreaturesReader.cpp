@@ -6,7 +6,6 @@
 #include "XMLCreaturesReader.hpp"
 #include "DecisionStrategyFactory.hpp"
 
-using boost::make_shared;
 using namespace std;
 
 pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures(const XMLNode& xml_configuration_creatures_node)
@@ -50,7 +49,7 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
 
   if (!creature_node.is_null())
   {
-    creature = make_shared<Creature>();
+    creature = boost::make_shared<Creature>();
     creature_data.first = creature;
       
     // The creature ID for the templates gives a unique value - for each individual

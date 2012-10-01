@@ -13,7 +13,6 @@
 #include "TileMovementConfirmation.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 MovementManager::MovementManager()
 {

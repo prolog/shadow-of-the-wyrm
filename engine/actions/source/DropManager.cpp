@@ -1,5 +1,3 @@
-#include <ncurses.h>
-
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
 #include "DropManager.hpp"
@@ -12,7 +10,6 @@
 #include "Tile.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 // Drop the item on to the square, if possible.
 ActionCostValue DropManager::drop(CreaturePtr creature, ActionManager * const am)

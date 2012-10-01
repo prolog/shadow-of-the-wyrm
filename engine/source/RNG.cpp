@@ -8,7 +8,7 @@ using namespace std;
 // Declaration of the random number generator
 RNGType RNG::rng;
 
-int RNG::seed = std::time(0);
+int RNG::seed = static_cast<int>(std::time(0));
 boost::uniform_int<> RNG::udist = boost::uniform_int<>(0, std::numeric_limits<int>::max());
 boost::variate_generator<RNGType, boost::uniform_int<> > RNG::generator(rng, udist);
 bool RNG::initialized = false;
@@ -23,7 +23,7 @@ bool RNG::initialize_if_necessary()
 {
   if (!initialized)
   {
-    generator.engine().seed(std::time(0));
+    generator.engine().seed(static_cast<uint32_t>(std::time(0)));
     generator.distribution().reset();
     initialized = true;
     return true;
@@ -75,6 +75,14 @@ int RNG::dice
  	Get a number in the range of [min, max], with uniform probability.
 
  **********************************************************************/
+int RNG::range(double first, double second)
+{
+  int i_first = static_cast<int>(first);
+  int i_second = static_cast<int>(second);
+
+  return RNG::range(i_first, i_second);
+}
+
 int RNG::range
 (
   int first

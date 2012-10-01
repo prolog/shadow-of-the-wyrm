@@ -233,7 +233,7 @@ void NCursesDisplay::add_message(const string& message, const Colour colour, con
   int orig_curs_y, orig_curs_x;
   getyx(stdscr, orig_curs_y, orig_curs_x);
   
-  int cur_y, cur_x;
+  uint cur_y, cur_x;
 
   if (reset_cursor)
   {
@@ -320,12 +320,12 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   Coordinate map_coords;
 
   Dimensions d = current_map.size();
-  int map_rows = d.get_y();
-  int map_cols = d.get_x();
+  unsigned int map_rows = d.get_y();
+  unsigned int map_cols = d.get_x();
 
-  for (int terminal_row = NCursesConstants::MAP_START_ROW; terminal_row < map_rows + NCursesConstants::MAP_START_ROW; terminal_row++)
+  for (unsigned int terminal_row = NCursesConstants::MAP_START_ROW; terminal_row < map_rows + NCursesConstants::MAP_START_ROW; terminal_row++)
   {
-    for (int terminal_col = NCursesConstants::MAP_START_COL; terminal_col < map_cols + NCursesConstants::MAP_START_COL; terminal_col++)
+    for (unsigned int terminal_col = NCursesConstants::MAP_START_COL; terminal_col < map_cols + NCursesConstants::MAP_START_COL; terminal_col++)
     {
       map_coords.first = terminal_row - NCursesConstants::MAP_START_ROW;
       map_coords.second = terminal_col - NCursesConstants::MAP_START_COL;
@@ -374,7 +374,8 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
   string result;
   refresh_terminal_size();
 
-  NCursesMenuWrapper wrapper;
+  // JCD FIXME
+//  NCursesMenuWrapper wrapper;
   WINDOW* menu_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
 
   menus.push_back(menu_window);
@@ -398,7 +399,7 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
       if (oc != NULL)
       {
         // Process the options...
-        wrapper = display_and_return_options_component(menu_window, &current_row, &current_col, oc);
+//        wrapper = display_and_return_options_component(menu_window, &current_row, &current_col, oc);
       }
     }
   }
@@ -410,9 +411,9 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
   PromptPtr prompt = current_menu.get_prompt();
   prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
-  MENU* menu = wrapper.get_menu();
+  //MENU* menu = wrapper.get_menu();
 
-  if (menu)
+/*  if (menu)
   {
     int index = prompt_processor.get_prompt(menu_window, menu);
     result = Integer::to_string(index);
@@ -422,7 +423,7 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
     result = prompt_processor.get_prompt(menu_window, prompt);
   }
   
-  wrapper.release_pointer_structures();
+  wrapper.release_pointer_structures(); */
   return result;
 }
 
@@ -439,7 +440,7 @@ void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, 
   *row += 2;
 }
 
-NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
+/*NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
 {
   MENU* options_menu;
   ITEM** option_items;
@@ -480,7 +481,7 @@ NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* 
   wrapper.set_num_items(num_options);
 
   return wrapper;
-}
+} */
 
 void NCursesDisplay::clear_menu()
 {
@@ -521,10 +522,10 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
 
   string map_depth    = player_stats.get_map_depth();
 
-  int PLAYER_SYNOPSIS_START_ROW = TERMINAL_MAX_ROWS - 3;
-  int current_row = PLAYER_SYNOPSIS_START_ROW;
-  int initial_row = current_row;
-  int current_col = 0;
+  unsigned int PLAYER_SYNOPSIS_START_ROW = TERMINAL_MAX_ROWS - 3;
+  unsigned int current_row = PLAYER_SYNOPSIS_START_ROW;
+  unsigned int initial_row = current_row;
+  unsigned int current_col = 0;
   bool can_print = true;
   
   // First, clear the synopsis.
@@ -551,7 +552,7 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
   mvprintw(current_row, current_col, map_depth.c_str());
 }
 
-bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const int initial_row, int* current_row, int* current_col, const string& current_stat, const string& next_stat)
+bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat)
 {
   bool can_print = true;
 
@@ -564,10 +565,10 @@ bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const int
 
 // Update the row/col for the player synopsis.  Return false if we've run out of space
 // and can't print anything else.
-bool NCursesDisplay::update_synopsis_row_and_column(const int initial_row, int* row, int* col, const string& previous_field, const string& next_field)
+bool NCursesDisplay::update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
 {
   bool can_update = true;
-  int next_column_end = *col + previous_field.size() + FIELD_SPACE + next_field.size();
+  unsigned int next_column_end = *col + previous_field.size() + FIELD_SPACE + next_field.size();
 
   *col = *col + previous_field.size() + FIELD_SPACE;
 
@@ -601,11 +602,11 @@ void NCursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
   // Centre the header on the first line
   int current_row = 0;
   
-  int header_start = (TERMINAL_MAX_COLS/2) - (equipment_header.size()/2);
-  int header_end = (TERMINAL_MAX_COLS/2) - (equipment_header.size()/2) + equipment_header.size();
-  for (int i = 0; i < header_start-1; i++) mvwprintw(eq_window, current_row, i, "-");
+  unsigned int header_start = (TERMINAL_MAX_COLS/2) - (equipment_header.size()/2);
+  unsigned int header_end = (TERMINAL_MAX_COLS/2) - (equipment_header.size()/2) + equipment_header.size();
+  for (unsigned int i = 0; i < header_start-1; i++) mvwprintw(eq_window, current_row, i, "-");
   mvwprintw(eq_window, current_row, header_start, equipment_header.c_str());
-  for (int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(eq_window, current_row, i, "-");
+  for (unsigned int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(eq_window, current_row, i, "-");
 
   uint longest = 0;
   for (DisplayEquipmentMap::const_iterator e_it = equipment.begin(); e_it != equipment.end(); e_it++)
@@ -662,11 +663,11 @@ int NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
   const int current_row_start_value = 2;
   char slot_char = 'A';
   
-  int header_start = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2);
-  int header_end = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2) + inventory_header.size();
-  for (int i = 0; i < header_start-1; i++) mvwprintw(inv_window, current_row, i, "-");
+  unsigned int header_start = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2);
+  unsigned int header_end = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2) + inventory_header.size();
+  for (unsigned int i = 0; i < header_start-1; i++) mvwprintw(inv_window, current_row, i, "-");
   mvwprintw(inv_window, current_row, header_start, inventory_header.c_str());
-  for (int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(inv_window, current_row, i, "-");
+  for (unsigned int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(inv_window, current_row, i, "-");
   
   current_row = current_row_start_value;
 

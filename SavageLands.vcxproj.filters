@@ -448,6 +448,9 @@
     <Filter Include="Source Files\engine\XML\source">
       <UniqueIdentifier>{14d46239-ffee-486e-ae4d-7071e511f4c1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\source">
+      <UniqueIdentifier>{c113b40f-ffc0-48b4-9799-6ebc117fc9e1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2960,12 +2963,6 @@
     <ClCompile Include="engine\generators\source\WorldGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
-      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\generators\source\unit_tests\TileGenerator_test.cpp">
-      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\generators\settlements\source\HamletGenerator.cpp">
       <Filter>Source Files\engine\generators\settlements\source</Filter>
     </ClCompile>
@@ -3412,6 +3409,21 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\WheatTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
+      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\unit_tests\TileGenerator_test.cpp">
+      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="global_functions.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="MapTester.cpp">
+      <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="SavageLands.cpp">
+      <Filter>Source Files\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

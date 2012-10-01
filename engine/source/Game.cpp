@@ -20,7 +20,6 @@
 #include "WorldTimeKeeperCoordinator.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 Game* Game::game_instance = NULL;
 
@@ -190,8 +189,8 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
 void Game::go()
 {
-  game_command_factory = make_shared<CommandFactory>();
-  game_kb_command_map = make_shared<KeyboardCommandMap>();
+  game_command_factory = boost::make_shared<CommandFactory>();
+  game_kb_command_map = boost::make_shared<KeyboardCommandMap>();
 
   WorldTimeKeeperCoordinator time_coordinator;
   time_coordinator.setup_time_keeper(time_keeper);

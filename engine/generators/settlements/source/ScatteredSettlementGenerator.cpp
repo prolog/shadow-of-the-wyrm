@@ -5,8 +5,6 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
-using boost::make_shared;
-
 ScatteredSettlementGenerator::ScatteredSettlementGenerator(MapPtr new_base_map)
 : BaseSettlementGenerator(new_base_map)
 {
@@ -32,7 +30,7 @@ MapPtr ScatteredSettlementGenerator::generate(const Dimensions& dim)
 
 MapPtr ScatteredSettlementGenerator::generate()
 {
-  MapPtr map = make_shared<Map>(*base_map);
+  MapPtr map = boost::make_shared<Map>(*base_map);
   current_buildings.clear();
   
   generate_scattered_settlement(map);

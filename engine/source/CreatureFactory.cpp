@@ -19,7 +19,6 @@
 #include "NullKeyboardController.hpp"
 
 using namespace std;
-using boost::make_shared;
 
 CreaturePtr CreatureFactory::create_by_creature_id
 (
@@ -45,7 +44,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
       CreatureGenerationValues cgv  = cgv_it->second;
       
       Creature creature_instance = *creature_template;
-      creature = make_shared<Creature>(creature_instance);
+      creature = boost::make_shared<Creature>(creature_instance);
       set_default_resistances(creature);
       
       // Set HP to a randomly generated value in the initial range.
@@ -86,7 +85,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   // Set a null controller - this will be overridden later if the creature is a player, or has some
   // special circumstances.
-  ControllerPtr null_controller = make_shared<NullKeyboardController>();
+  ControllerPtr null_controller = boost::make_shared<NullKeyboardController>();
   creature.set_is_player(false, null_controller);
 
   creature.set_name(creature_name);
@@ -125,7 +124,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     }
   }
 
-  CreaturePtr creaturep = make_shared<Creature>(creature);
+  CreaturePtr creaturep = boost::make_shared<Creature>(creature);
 
   // Now that everything has been set, set any calculated values.
   if (creaturep)
@@ -216,7 +215,7 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
   AgeInfo age_info = race->get_age_info();
   creature = set_age(creature, age_info);
 
-  CreaturePtr cp = make_shared<Creature>(creature);
+  CreaturePtr cp = boost::make_shared<Creature>(creature);
   int initial_hp = RNG::dice(3, 3);
   int hp_bonus = HitPointsCalculator::calculate_hit_points_bonus(cp);
 
