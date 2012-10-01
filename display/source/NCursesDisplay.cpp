@@ -202,6 +202,8 @@ bool NCursesDisplay::create()
  ***************************************************************/
 void NCursesDisplay::tear_down()
 {
+  clear_display();
+  refresh();
   endwin();
 }
 
@@ -315,6 +317,7 @@ void NCursesDisplay::add_message(const string& message, const Colour colour, con
 void NCursesDisplay::draw(const DisplayMap& current_map)
 {
   refresh_terminal_size();
+  clear_display();
 
   DisplayTile display_tile;
   Coordinate map_coords;
