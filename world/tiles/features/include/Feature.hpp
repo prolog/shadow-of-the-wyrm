@@ -6,6 +6,14 @@
 #include "ITrappable.hpp"
 #include "Material.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 // An abstract base class representing a dungeon feature.  A feature is
 // like an item, but cannot move.  Examples include fireplaces, thrones,
 // bookshelves, levers, etc.
@@ -15,6 +23,7 @@ class Feature : public ITrappable, public IHandleable, public IKickable
 {
   public:
     Feature(MaterialPtr new_material);
+    virtual ~Feature() {};
 
     // If a feature is blocking, the square it occupies cannot be
     // occupied by another creature, and any items thrown, kicked, etc.,
@@ -33,10 +42,18 @@ class Feature : public ITrappable, public IHandleable, public IKickable
     
     virtual std::string get_description_sid() const = 0;
 
-    // JCD FIXME fill in the rest later.
   protected:
     TrapPtr trap;
     MaterialPtr material;
+
+  private:
+    friend class boost::serialization::access;
+
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+      ar & trap & material;
+    }
 };
 
 typedef boost::shared_ptr<Feature> FeaturePtr;

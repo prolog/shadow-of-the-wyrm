@@ -6,6 +6,7 @@
 class GoodAltar : public Altar
 {
   public:
+    GoodAltar();
     GoodAltar(const std::string& new_deity_id);
     
     virtual std::string get_description_sid() const;

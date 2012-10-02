@@ -4,6 +4,7 @@
 class Gate : public Entrance
 {
   public:
+    Gate();
     Gate(LockPtr new_lock, const EntranceState& new_state);
 
     virtual bool handle();

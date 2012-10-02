@@ -3,6 +3,11 @@
 
 using std::string;
 
+// This constructor is really only used by serialization.
+Door::Door()
+{
+}
+
 // By default, doors are made of wood.
 Door::Door(LockPtr new_lock, const EntranceState& new_state)
 : Entrance(new_lock, new_state)

@@ -1,6 +1,14 @@
 #pragma once
 #include "Trap.hpp"
 
+namespace boost
+{
+  namespace serialization
+  {
+    class access;
+  }
+}
+
 class ITrappable
 {
   public:
@@ -11,4 +19,12 @@ class ITrappable
   protected:
     ITrappable();
     ~ITrappable();
+
+  private:
+    friend class boost::serialization::access;
+
+    template<typename Archive>
+    void serialize(Archive& ar, const unsigned int version)
+    {
+    }
 };

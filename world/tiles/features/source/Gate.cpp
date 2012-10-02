@@ -4,6 +4,10 @@
 
 using std::string;
 
+Gate::Gate()
+{
+}
+
 // Gates are always made of iron
 Gate::Gate(LockPtr new_lock, const EntranceState& new_state)
 : Entrance(new_lock, new_state)

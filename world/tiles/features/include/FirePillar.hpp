@@ -1,3 +1,4 @@
+#pragma once
 #include "Feature.hpp"
 
 class FirePillar : public Feature
