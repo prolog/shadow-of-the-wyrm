@@ -12,6 +12,21 @@
 #include "Steel.hpp"
 #include "Stone.hpp"
 #include "Wood.hpp"
+#include "Altar.hpp"
+#include "Bench.hpp"
+#include "Door.hpp"
+#include "DecorativeStatues.hpp"
+#include "EastWestPew.hpp"
+#include "Entrance.hpp"
+#include "EvilAltar.hpp"
+#include "FirePillar.hpp"
+#include "Fountain.hpp"
+#include "Gate.hpp"
+#include "GoodAltar.hpp"
+#include "NeutralAltar.hpp"
+#include "Pew.hpp"
+#include "Trap.hpp"
+#include "FirePillar.hpp"
 
 // INCLUDES ALL THE TILE AND FEATURE INFORMATION
 #include "TileAndFeaturesExports.hpp"
@@ -134,3 +149,21 @@ BOOST_CLASS_EXPORT(Steel)
 BOOST_CLASS_EXPORT(Stone)
 BOOST_CLASS_EXPORT(Wood)
 
+BOOST_CLASS_EXPORT(Altar)
+BOOST_CLASS_EXPORT(Bench)
+BOOST_CLASS_EXPORT(Door)
+BOOST_CLASS_EXPORT(EastWestPew)
+BOOST_CLASS_EXPORT(Entrance)
+BOOST_CLASS_EXPORT(EvilAltar)
+BOOST_CLASS_EXPORT(FirePillar)
+BOOST_CLASS_EXPORT(Fountain)
+BOOST_CLASS_EXPORT(Gate)
+BOOST_CLASS_EXPORT(GoodAltar)
+BOOST_CLASS_EXPORT(NeutralAltar)
+BOOST_CLASS_EXPORT(Pew)
+BOOST_CLASS_EXPORT(KingDecorativeStatue)
+BOOST_CLASS_EXPORT(QueenDecorativeStatue)
+BOOST_CLASS_EXPORT(WarlordDecorativeStatue)
+BOOST_CLASS_EXPORT(KnightDecorativeStatue)
+BOOST_CLASS_EXPORT(HighPriestDecorativeStatue)
+BOOST_CLASS_EXPORT(SorcerorDecorativeStatue)

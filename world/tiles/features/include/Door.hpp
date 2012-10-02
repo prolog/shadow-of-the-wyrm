@@ -6,7 +6,9 @@
 class Door : public Entrance
 {
   public:
+    Door();
     Door(LockPtr new_lock, const EntranceState& new_state);
+    virtual ~Door() {};
 
     virtual bool handle();
     virtual bool kick();
