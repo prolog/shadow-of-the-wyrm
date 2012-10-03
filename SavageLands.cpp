@@ -121,11 +121,6 @@ int main(int argc, char* argv[])
       display->tear_down();
     }
   }
-  catch(boost::archive::archive_exception archive_except)
-  {
-    Log::instance()->log("Archive exception.");
-    Log::instance()->log(archive_except.what());
-  }
   catch(...)
   {
     Log::instance()->log("Unable to run Savage Lands!");
