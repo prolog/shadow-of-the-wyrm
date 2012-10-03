@@ -2,12 +2,11 @@
 #include <ostream>
 #include "SerializationTypes.hpp"
 
-class Game;
+class MapRegistry;
 
-class TemplatesSerialization
+class TilesSerialization
 {
   public:
-    static void save(std::ostream& stream, Game* game);
+    static void save(std::ostream& stream, MapRegistry& registry);
     static SerializationReturnCode load();
 };
-

@@ -5,14 +5,6 @@
 
 class MapRegistry;
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class World
 {
   public:
@@ -27,15 +19,6 @@ class World
   protected:
     std::string world_map_id;
     Calendar calendar;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & world_map_id & calendar;
-    }
 };
 
 typedef boost::shared_ptr<World> WorldPtr;

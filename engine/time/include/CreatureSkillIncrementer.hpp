@@ -1,14 +1,5 @@
 #pragma once
-#include <boost/serialization/base_object.hpp>
 #include "ICreatureRegeneration.hpp"
-
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
 
 class CreatureSkillIncrementer : public ICreatureRegeneration
 {
@@ -20,14 +11,4 @@ class CreatureSkillIncrementer : public ICreatureRegeneration
 
   protected:
     int minutes_interval;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & boost::serialization::base_object<ICreatureRegeneration>(*this);
-      ar & minutes_interval;
-    }
 };

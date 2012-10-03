@@ -6,14 +6,6 @@
 
 class Date;
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class Calendar
 {
   public:
@@ -34,13 +26,4 @@ class Calendar
     double seconds;
     uint STARTING_YEAR;
     ISeasonPtr season;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & seconds & STARTING_YEAR & season;
-    }
 };

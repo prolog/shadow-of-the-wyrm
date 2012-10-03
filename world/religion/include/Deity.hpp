@@ -8,14 +8,6 @@
 
 class Deity;
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class Deity
 {
   public:
@@ -55,16 +47,6 @@ class Deity
     AlignmentRange alignment_range;
     WorshipSiteType worship_site_type;
     StatisticsModifier initial_statistics_modifier; // only used for creature creation
-    
-  private:
-    friend class boost::serialization::access;
-
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & id & name_sid & description_sid & short_description_sid;
-      ar & death_message_sid & alignment_range & worship_site_type & initial_statistics_modifier;
-    }
 };
 
 typedef boost::shared_ptr<Deity> DeityPtr;

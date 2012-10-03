@@ -1,17 +1,8 @@
 #pragma once
-#include <boost/serialization/base_object.hpp>
 #include "CreatureFeatures.hpp"
 #include "EntranceState.hpp"
 #include "Feature.hpp"
 #include "ILockable.hpp"
-
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
 
 class Entrance : public Feature, public ILockable
 {
@@ -32,15 +23,4 @@ class Entrance : public Feature, public ILockable
     LockPtr lock;
     EntranceState state;
     CreatureSize maximum_size; // The maximum creature size for the entrance.  Dragons can't go in Hobbit holes.
-
-  private:
-    friend class boost::serialization::access;
-
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & boost::serialization::base_object<Feature>(*this);
-      ar & boost::serialization::base_object<ILockable>(*this);
-      ar & lock & state & maximum_size;
-    }
 };

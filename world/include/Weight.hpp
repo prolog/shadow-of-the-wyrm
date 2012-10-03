@@ -2,14 +2,6 @@
 #include <string>
 #include "common.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class Weight
 {
   public:
@@ -27,13 +19,4 @@ class Weight
 
   protected:
     uint ounces;
-
-  private:
-    friend class boost::serialization::access;
-
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & ounces;
-    }
 };

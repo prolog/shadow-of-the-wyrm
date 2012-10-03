@@ -3,14 +3,6 @@
 #include <string>
 #include "DeityStatus.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 // Religion describes a creature's religion.  A creature can only worship 
 // one deity, but can be converted to other deities later on.  A container
 // of relations to all deities is kept so that relations with the
@@ -39,13 +31,4 @@ class Religion
   protected:
     std::string deity_id;
     DeityRelations deity_relations;
-
-  private:
-    friend class boost::serialization::access;
-
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & deity_id & deity_relations;
-    }
 };

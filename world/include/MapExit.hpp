@@ -3,14 +3,6 @@
 #include <string>
 #include "tiles.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class MapExit
 {
   public:
@@ -29,15 +21,6 @@ class MapExit
   protected:
     std::string map_id;
     TileType terrain_type;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & map_id & terrain_type;
-    }
 };
 
 typedef boost::shared_ptr<MapExit> MapExitPtr;

@@ -4,14 +4,6 @@
 #include <boost/shared_ptr.hpp>
 #include "CalendarTypes.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class ISeason
 {
   public:
@@ -27,15 +19,6 @@ class ISeason
     virtual void initialize_months() = 0;
     
     std::set<Months> months_in_season;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & months_in_season;
-    }
 };
 
 typedef boost::shared_ptr<ISeason> ISeasonPtr;
