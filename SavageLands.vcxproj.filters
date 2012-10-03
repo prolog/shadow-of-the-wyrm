@@ -456,9 +456,6 @@
     <ClInclude Include="controller\include\Controller.hpp">
       <Filter>Header Files\controller</Filter>
     </ClInclude>
-    <ClInclude Include="controller\include\NCursesKeyboardController.hpp">
-      <Filter>Header Files\controller</Filter>
-    </ClInclude>
     <ClInclude Include="controller\include\NullKeyboardController.hpp">
       <Filter>Header Files\controller</Filter>
     </ClInclude>
@@ -478,21 +475,6 @@
       <Filter>Header Files\display</Filter>
     </ClInclude>
     <ClInclude Include="display\include\DisplayTile.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\NCursesConstants.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\NCursesDisplay.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\NCursesMenuWrapper.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\NCursesPromptProcessor.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\NCursesUtils.hpp">
       <Filter>Header Files\display</Filter>
     </ClInclude>
     <ClInclude Include="include\buildinfo.hpp">
@@ -1917,11 +1899,26 @@
     <ClInclude Include="engine\serialization\include\TilesSerialization.hpp">
       <Filter>Header Files\engine\serialization\include</Filter>
     </ClInclude>
+    <ClInclude Include="display\include\CursesConstants.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesDisplay.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesMenuWrapper.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesPromptProcessor.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesUtils.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\include\CursesKeyboardController.hpp">
+      <Filter>Header Files\controller</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="controller\source\NCursesKeyboardController.cpp">
-      <Filter>Source Files\controller</Filter>
-    </ClCompile>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
       <Filter>Source Files\controller</Filter>
     </ClCompile>
@@ -1941,21 +1938,6 @@
       <Filter>Source Files\display</Filter>
     </ClCompile>
     <ClCompile Include="display\source\DisplayTile.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\NCursesConstants.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\NCursesDisplay.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\NCursesMenuWrapper.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\NCursesPromptProcessor.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\NCursesUtils.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -3430,6 +3412,24 @@
     </ClCompile>
     <ClCompile Include="engine\serialization\source\TilesSerialization.cpp">
       <Filter>Source Files\engine\serialization\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesConstants.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesDisplay.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesMenuWrapper.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesPromptProcessor.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesUtils.cpp">
+      <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\source\CursesKeyboardController.cpp">
+      <Filter>Source Files\controller</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

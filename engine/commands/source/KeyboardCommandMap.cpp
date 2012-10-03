@@ -77,7 +77,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('7'), CommandKeys::MOVE_NORTHWEST));
   command_mapping.insert(make_pair(Integer::to_string('8'), CommandKeys::MOVE_NORTH));
   command_mapping.insert(make_pair(Integer::to_string('9'), CommandKeys::MOVE_NORTHEAST));
-  // NCurses-specific movement keys
+  // Curses-specific movement keys
   command_mapping.insert(make_pair(Integer::to_string(KEY_UP), CommandKeys::MOVE_NORTH));
   command_mapping.insert(make_pair(Integer::to_string(KEY_DOWN), CommandKeys::MOVE_SOUTH));
   command_mapping.insert(make_pair(Integer::to_string(KEY_RIGHT), CommandKeys::MOVE_EAST));
