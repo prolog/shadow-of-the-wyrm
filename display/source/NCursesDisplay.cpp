@@ -317,7 +317,6 @@ void NCursesDisplay::add_message(const string& message, const Colour colour, con
 void NCursesDisplay::draw(const DisplayMap& current_map)
 {
   refresh_terminal_size();
-  clear_display();
 
   DisplayTile display_tile;
   Coordinate map_coords;
@@ -348,7 +347,7 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
 
   Coordinate cursor_coord = current_map.get_cursor_coordinate();
   move(cursor_coord.first+NCursesConstants::MAP_START_ROW, cursor_coord.second+NCursesConstants::MAP_START_COL);
-  refresh();
+  wredrawln(stdscr, NCursesConstants::MAP_START_ROW, map_rows);
 }
 
 /*!

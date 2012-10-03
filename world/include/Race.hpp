@@ -11,14 +11,6 @@
 #include "SettlementTypes.hpp"
 #include "StatisticsModifier.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class Race
 {
   public:
@@ -135,21 +127,6 @@ class Race
 
     // Level info
     float experience_multiplier;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & race_id & user_playable & settlement_type & settlement_tile_subtype;
-      ar & race_name_sid & race_short_description_sid & race_description_sid & race_abbreviation_sid;
-      ar & size & age_info;
-      ar & starting_strength & starting_dexterity & starting_agility & starting_health;
-      ar & starting_intelligence & starting_willpower & starting_charisma;
-      ar & statistics_modifier & starting_speed & initial_deity_ids;
-      ar & resistances & skills & experience_multiplier;
-    }
 };
 
 typedef boost::shared_ptr<Race> RacePtr;

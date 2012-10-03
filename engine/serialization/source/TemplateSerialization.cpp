@@ -14,10 +14,10 @@
 // dies otherwise.
 void TemplatesSerialization::save(boost::archive::text_oarchive& ar, Game* game)
 {
-  // JCD FIXME: Are these needed, or can they be built up on load?
-  ar << game->deities << game->races << game->classes;
-
-  // JCD FIXME: This one is for sure needed.
+  // Races, classes, and deities are reloaded each game from disk.
+  // 
+  // The map registry, which contains maps (which contains tiles which contains creatures, items, and features)
+  // is what actually gets persisted.
   ar << game->map_registry;
 }
 

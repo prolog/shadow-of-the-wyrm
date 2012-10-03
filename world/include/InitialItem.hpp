@@ -4,14 +4,6 @@
 #include <vector>
 #include "Dice.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 // An initial item is generated on character creation based on the details in this class.
 //
 // The "item_id" is the base item ID, which is used if there is no random or racial override.
@@ -44,15 +36,6 @@ class InitialItem
     Dice item_quantity;
     std::vector<std::pair<std::string, Dice> > random_item_ids;
     std::map<std::string, std::pair<std::string, Dice> > racial_item_ids;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & item_id & item_quantity & random_item_ids & racial_item_ids;
-    }
 };
 
 
