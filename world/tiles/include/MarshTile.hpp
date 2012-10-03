@@ -1,14 +1,5 @@
 #pragma once
-#include <boost/serialization/base_object.hpp>
 #include "WorldMapTile.hpp"
-
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
 
 class MarshTile : public WorldMapTile
 {
@@ -18,14 +9,5 @@ class MarshTile : public WorldMapTile
     std::string get_tile_description_sid() const;
     
     int get_movement_multiplier() const;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & boost::serialization::base_object<WorldMapTile>(*this);
-    }
 };
 

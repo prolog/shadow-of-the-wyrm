@@ -1914,6 +1914,9 @@
     <ClInclude Include="engine\serialization\include\TileAndFeaturesExports.hpp">
       <Filter>Header Files\engine\serialization\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\serialization\include\TilesSerialization.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NCursesKeyboardController.cpp">
@@ -3424,6 +3427,9 @@
     </ClCompile>
     <ClCompile Include="SavageLands.cpp">
       <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serialization\source\TilesSerialization.cpp">
+      <Filter>Source Files\engine\serialization\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

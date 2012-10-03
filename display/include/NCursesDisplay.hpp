@@ -12,14 +12,6 @@
 #include "OptionsComponent.hpp"
 #include "Serialization.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class NCursesDisplay : public Display
 {
   public:
@@ -99,17 +91,4 @@ class NCursesDisplay : public Display
     // Used to process the prompt
     NCursesPromptProcessor prompt_processor;
     bool can_use_colour;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & boost::serialization::base_object<Display>(*this);
-      
-      ar & TERMINAL_MAX_ROWS & TERMINAL_MAX_COLS & FIELD_SPACE;
-      ar & MSG_BUFFER_LAST_X & MSG_BUFFER_LAST_Y; //& menus;
-      ar & can_use_colour; /* NCursesPromptProcessor has no state, doesn't need serialization */
-    }
 };

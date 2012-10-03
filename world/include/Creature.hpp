@@ -20,14 +20,6 @@
 // Forward declarations.
 class DecisionStrategy;
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
 
 class Creature
@@ -302,20 +294,6 @@ class Creature
     // - string is a creature ID, possible empty
     // - Coordinate is the coordinate that the creature was previously at
     TargetMap targets;
-    
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & id & is_player & name & sex & age & size & eye_colour & hair_colour & handedness;
-      ar & short_description_sid & description_sid & race_id & class_id;
-      ar & strength & dexterity & agility & health & intelligence & willpower & charisma;
-      ar & valour & spirit & speed & damage & equipment & inventory & resistances & skills;
-      ar & movement_accumulation & hit_points & arcana_points & base_evade & base_soak & evade & soak;
-      ar & symbol & colour & level & decision_strategy & religion & experience_value & experience_points & turns & targets;
-    }
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

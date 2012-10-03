@@ -16,14 +16,6 @@
 
 #include "NCursesDisplay.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class Game
 {
   public:
@@ -87,7 +79,7 @@ class Game
     friend class TileSelectionManager;
 
     Game();
-    ~Game();
+    virtual ~Game();
 
     // Game commands - protected, so they should only be called by SavageLandsEngine
     // or CommandProcessor.
@@ -144,30 +136,6 @@ class Game
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;
     KeyboardCommandMapPtr game_kb_command_map;
-    
-  private:
-    friend class boost::serialization::access;
-    friend class TemplatesSerialization;
-    friend class GameStateSerialization;
-    friend class GameEngineSerialization;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const uint version)
-    {
-    }
-/* This is what WOULD be here if MinGW wasn't a festering piece of shit:
-
-    template<typename Archive>
-    void serialize(Archive& ar, const uint version)
-    {
-      BOOST_STATIC_ASSERT(sizeof(Game) == 352);
-      ar & keep_playing & reload_game_loop & game_instance & display;
-      ar & map_registry;
-      ar & deities & races & classes;
-      ar & creatures & creature_generation_values & items & tile_info;
-      ar & worlds & players & current_world_ix & current_map_id;
-      ar & ac & time_keeper & game_command_factory & game_kb_command_map;
-    } */
 };
 
 

@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/archive/text_oarchive.hpp>
+#include <ostream>
 #include "SerializationTypes.hpp"
 
 class Game;
@@ -9,7 +9,7 @@ class Game;
 // classes.
 class GameStateSerialization
 {
-  static void save(boost::archive::text_oarchive& ar, Game* game);
+  static void save(std::ostream& stream, Game* game);
   static SerializationReturnCode load();
 };
 

@@ -4,14 +4,6 @@
 #include "Colours.hpp"
 #include "MaterialTypes.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 enum MaterialType;
 
 class Material
@@ -36,14 +28,6 @@ class Material
     virtual Colour get_colour() const;
     
     virtual Material* clone() = 0;
-
-  private:
-    friend class boost::serialization::access;
-
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-    }
 };
 
 typedef boost::shared_ptr<Material> MaterialPtr;

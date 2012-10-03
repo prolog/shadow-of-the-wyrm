@@ -4,14 +4,6 @@
 #define DEFAULT_DIMENSIONS_Y 20;
 #define DEFAULT_DIMENSIONS_X 80;
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class Dimensions
 {
   public:
@@ -31,14 +23,5 @@ class Dimensions
     int y;
     int x;
     Depth dim_depth;
-
-  private:
-    friend class boost::serialization::access;
-
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & y & x & dim_depth;
-    }
 };
 

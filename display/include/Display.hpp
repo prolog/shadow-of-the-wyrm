@@ -14,14 +14,6 @@
 
 class Menu;
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class MapDisplayArea
 {
   public:
@@ -84,14 +76,6 @@ class Display
 	  virtual void confirm(const std::string& confirmation_message) = 0;
 
 	  virtual void clear_menu() = 0;
-	  
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-    }
 };
 
 typedef boost::shared_ptr<Display> DisplayPtr;

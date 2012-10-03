@@ -3,14 +3,6 @@
 #include <string>
 #include "Map.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 class MapRegistry
 {
   public:
@@ -25,11 +17,5 @@ class MapRegistry
     std::map<std::string, MapPtr> map_registry;
     
   private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & map_registry;
-    }
+    friend class TemplatesSerialization;
 };

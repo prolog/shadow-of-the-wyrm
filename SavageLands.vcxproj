@@ -348,6 +348,7 @@
     <ClInclude Include="engine\serialization\include\Serialization.hpp" />
     <ClInclude Include="engine\serialization\include\TemplatesSerialization.hpp" />
     <ClInclude Include="engine\serialization\include\TileAndFeaturesExports.hpp" />
+    <ClInclude Include="engine\serialization\include\TilesSerialization.hpp" />
     <ClInclude Include="engine\skills\include\Detection.hpp" />
     <ClInclude Include="engine\skills\include\Mountaineering.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
@@ -844,6 +845,7 @@
     <ClCompile Include="engine\serialization\source\TemplateSerialization.cpp">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
+    <ClCompile Include="engine\serialization\source\TilesSerialization.cpp" />
     <ClCompile Include="engine\skills\source\Detection.cpp" />
     <ClCompile Include="engine\skills\source\Mountaineering.cpp" />
     <ClCompile Include="engine\skills\source\SkillManager.cpp" />

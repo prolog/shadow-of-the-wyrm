@@ -1,14 +1,5 @@
 #pragma once
-#include <boost/serialization/base_object.hpp>
 #include "ISeason.hpp"
-
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
 
 class Winter : public ISeason
 {
@@ -24,13 +15,4 @@ class Winter : public ISeason
     
   protected:
     void initialize_months();
-
-  private:
-    friend class boost::serialization::access;
-    
-    template<typename Archive>
-    void serialize(Archive& ar, const unsigned int version)
-    {
-      ar & boost::serialization::base_object<ISeason>(*this);
-    }
 };
