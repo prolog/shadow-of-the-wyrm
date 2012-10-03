@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-class NCursesMenuUtils
+class CursesMenuUtils
 {
   public:
     static std::string get_first_menu_selection_shortcut();

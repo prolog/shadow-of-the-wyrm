@@ -1,20 +1,20 @@
-#include "NCursesUtils.hpp"
+#include "CursesUtils.hpp"
 
 using namespace std;
 
-string NCursesMenuUtils::get_first_menu_selection_shortcut()
+string CursesMenuUtils::get_first_menu_selection_shortcut()
 {
   string first = "a";
   return first;
 }
 
-string NCursesMenuUtils::get_last_menu_selection_shortcut()
+string CursesMenuUtils::get_last_menu_selection_shortcut()
 {
   string last = "z";
   return last;
 }
 
-string NCursesMenuUtils::get_next_menu_selection_shortcut(const char* cur)
+string CursesMenuUtils::get_next_menu_selection_shortcut(const char* cur)
 {
   string result;
 

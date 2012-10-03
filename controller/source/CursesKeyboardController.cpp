@@ -1,17 +1,17 @@
-#include "NCursesKeyboardController.hpp"
-#include "NCursesPromptProcessor.hpp"
+#include "CursesKeyboardController.hpp"
+#include "CursesPromptProcessor.hpp"
 
 using namespace std;
 
 // Important: this currently only works on STDSCR!  If the general keyboard controller needs a particular window,
 // extra code will be needed.
-string NCursesKeyboardController::get_line()
+string CursesKeyboardController::get_line()
 {
-  NCursesPromptProcessor ncpp;
+  CursesPromptProcessor ncpp;
   return ncpp.get_user_string(stdscr);
 }
 
-int NCursesKeyboardController::get_char_as_int()
+int CursesKeyboardController::get_char_as_int()
 {
   int character = getch();
   return character;

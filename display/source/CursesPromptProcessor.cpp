@@ -1,13 +1,13 @@
 #include <ctype.h>
 #include "Conversion.hpp"
 #include "Log.hpp"
-#include "NCursesConstants.hpp"
-#include "NCursesPromptProcessor.hpp"
+#include "CursesConstants.hpp"
+#include "CursesPromptProcessor.hpp"
 
 using namespace std;
 
 // JCD FIXME: Refactor.  Subclasses?  Split up into PromptReader/PromptWriter with applicable subclasses?
-string NCursesPromptProcessor::get_prompt(WINDOW* window, const NCursesMenuWrapper& menu_wrapper, PromptPtr prompt)
+string CursesPromptProcessor::get_prompt(WINDOW* window, const CursesMenuWrapper& menu_wrapper, PromptPtr prompt)
 {
   string prompt_entry;
 
@@ -35,7 +35,7 @@ string NCursesPromptProcessor::get_prompt(WINDOW* window, const NCursesMenuWrapp
 }
 
 // Get a prompt from the user
-string NCursesPromptProcessor::get_user_string(WINDOW* window)
+string CursesPromptProcessor::get_user_string(WINDOW* window)
 {
   string prompt_text;
   char c;
@@ -71,7 +71,7 @@ string NCursesPromptProcessor::get_user_string(WINDOW* window)
 }
 
 // Gets the item index of the selected menu item.
-int NCursesPromptProcessor::get_prompt(WINDOW* window/*, MENU* options_menu*/)
+int CursesPromptProcessor::get_prompt(WINDOW* window/*, MENU* options_menu*/)
 {
   int c = wgetch(window);
 
@@ -121,7 +121,7 @@ int NCursesPromptProcessor::get_prompt(WINDOW* window/*, MENU* options_menu*/)
   return c; // JCD FIXME
 }
 
-void NCursesPromptProcessor::show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
+void CursesPromptProcessor::show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS)
 {
   string empty_string;
   int prompt_row = row;

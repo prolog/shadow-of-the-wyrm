@@ -7,7 +7,7 @@
 
 #include "Controller.hpp"
 
-class NCursesKeyboardController : public Controller
+class CursesKeyboardController : public Controller
 {
   public:
     std::string get_line();

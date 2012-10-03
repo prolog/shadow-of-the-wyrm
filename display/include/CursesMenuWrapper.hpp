@@ -1,14 +1,14 @@
 #pragma once
 #include <set>
 
-// Wrapper for NCurses menu/item data, mostly to allow easy deletion
+// Wrapper for Curses menu/item data, mostly to allow easy deletion
 // during program flow.
 
-class NCursesMenuWrapper
+class CursesMenuWrapper
 {
   public:
-    NCursesMenuWrapper();
-    NCursesMenuWrapper(const int n_items);
+    CursesMenuWrapper();
+    CursesMenuWrapper(const int n_items);
     
     void set_num_items(const int new_num_items);
     int get_num_items() const;

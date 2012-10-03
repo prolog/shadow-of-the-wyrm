@@ -6,16 +6,16 @@
 #endif
 #include <deque>
 #include "Display.hpp"
-#include "NCursesMenuWrapper.hpp"
-#include "NCursesPromptProcessor.hpp"
+#include "CursesMenuWrapper.hpp"
+#include "CursesPromptProcessor.hpp"
 #include "TextComponent.hpp"
 #include "OptionsComponent.hpp"
 #include "Serialization.hpp"
 
-class NCursesDisplay : public Display
+class CursesDisplay : public Display
 {
   public:
-    NCursesDisplay();
+    CursesDisplay();
 	  bool create();
 	  void tear_down();
 
@@ -61,7 +61,7 @@ class NCursesDisplay : public Display
 
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component);
-    NCursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
+    CursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
 
     // Creation/destruction methods
@@ -89,6 +89,6 @@ class NCursesDisplay : public Display
     std::deque<WINDOW*> menus;
 
     // Used to process the prompt
-    NCursesPromptProcessor prompt_processor;
+    CursesPromptProcessor prompt_processor;
     bool can_use_colour;
 };
