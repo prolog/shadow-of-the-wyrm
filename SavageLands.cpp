@@ -9,9 +9,9 @@
 #include "common.hpp"
 #include "global_prototypes.hpp"
 
-#include "NCursesKeyboardController.hpp"
+#include "CursesKeyboardController.hpp"
 
-#include "NCursesDisplay.hpp"
+#include "CursesDisplay.hpp"
 #include "Display.hpp"
 
 #include "Log.hpp"
@@ -103,8 +103,8 @@ int main(int argc, char* argv[])
     else
     {
       // JCD FIXME: Refactor
-      DisplayPtr display(new NCursesDisplay());
-      ControllerPtr controller(new NCursesKeyboardController());
+      DisplayPtr display(new CursesDisplay());
+      ControllerPtr controller(new CursesKeyboardController());
       bool display_created = display->create();
 
       if (display_created)

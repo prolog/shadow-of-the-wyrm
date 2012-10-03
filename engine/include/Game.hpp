@@ -14,7 +14,7 @@
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
 
-#include "NCursesDisplay.hpp"
+#include "CursesDisplay.hpp"
 
 class Game
 {

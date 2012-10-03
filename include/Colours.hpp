@@ -2,7 +2,7 @@
 
 // The first eight are the same as the COLOR_ (American spelling) values
 // in curses.h.  Consistency is nice.  The rest are just attributes on
-// the standard 16 NCurses colours.
+// the standard 16 Curses colours.
 enum Colours
 {
   COLOUR_UNDEFINED = -1,
