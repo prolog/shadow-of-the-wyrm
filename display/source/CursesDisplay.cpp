@@ -7,15 +7,15 @@
 #include "Conversion.hpp"
 #include "Log.hpp"
 #include "Menu.hpp"
-#include "NCursesConstants.hpp"
-#include "NCursesDisplay.hpp"
+#include "CursesConstants.hpp"
+#include "CursesDisplay.hpp"
 #include "OptionsComponent.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
 using namespace boost;
 
-NCursesDisplay::NCursesDisplay()
+CursesDisplay::CursesDisplay()
 : TERMINAL_MAX_ROWS(0), 
 TERMINAL_MAX_COLS(0), 
 FIELD_SPACE(2), 
@@ -26,7 +26,7 @@ can_use_colour(false)
 }
 
 // Create a menu and return it.
-WINDOW* NCursesDisplay::create_menu(int height, int width, int start_row, int start_col)
+WINDOW* CursesDisplay::create_menu(int height, int width, int start_row, int start_col)
 {
   WINDOW* menu;
 
@@ -39,7 +39,7 @@ WINDOW* NCursesDisplay::create_menu(int height, int width, int start_row, int st
 }
 
 // Delete the given window.
-void NCursesDisplay::destroy_menu(WINDOW *menu)
+void CursesDisplay::destroy_menu(WINDOW *menu)
 {
   Log::instance()->debug("Destroying current menu");
 	delwin(menu);
@@ -50,13 +50,13 @@ void NCursesDisplay::destroy_menu(WINDOW *menu)
 // default, until SL actually tries to detect the terminal's
 // colour capabilities.  This can be turned off in the ini
 // settings, also.
-bool NCursesDisplay::uses_colour() const
+bool CursesDisplay::uses_colour() const
 {
   return can_use_colour;
 }
 
 // Initialize the base ncurses colours.
-void NCursesDisplay::initialize_colours()
+void CursesDisplay::initialize_colours()
 {
   init_pair(1, COLOR_BLACK,   COLOR_BLACK);
   init_pair(2, COLOR_RED,     COLOR_BLACK);
@@ -71,7 +71,7 @@ void NCursesDisplay::initialize_colours()
 // Turn on colour using attron.
 //
 // Note that the enable/disable colour need to match!  Don't pass different colours!
-void NCursesDisplay::enable_colour(const int selected_colour)
+void CursesDisplay::enable_colour(const int selected_colour)
 {
   if (uses_colour())
   {
@@ -88,7 +88,7 @@ void NCursesDisplay::enable_colour(const int selected_colour)
 }
 
 // Turn off colour using attroff.
-void NCursesDisplay::disable_colour(const int selected_colour)
+void CursesDisplay::disable_colour(const int selected_colour)
 {
   if (uses_colour())
   {
@@ -105,13 +105,13 @@ void NCursesDisplay::disable_colour(const int selected_colour)
 }
 
 // The Display function - hooks up to clear_message_buffer
-void NCursesDisplay::clear_messages()
+void CursesDisplay::clear_messages()
 {
   clear_message_buffer();
 }
 
 // Clear the message buffer and reset the cursor.  The message buffer is always lines 0 and 1.
-int NCursesDisplay::clear_message_buffer()
+int CursesDisplay::clear_message_buffer()
 {  
   int return_val;
   
@@ -133,7 +133,7 @@ int NCursesDisplay::clear_message_buffer()
 }
 
 // Halt processing and force user input to continue.
-void NCursesDisplay::halt_messages()
+void CursesDisplay::halt_messages()
 {
   move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
   refresh();
@@ -152,7 +152,7 @@ void NCursesDisplay::halt_messages()
 // Fix this up once SL is compiling on Linux/FreeBSD and I can
 // resize terminals.
 //
-void NCursesDisplay::refresh_terminal_size()
+void CursesDisplay::refresh_terminal_size()
 {
   getmaxyx(stdscr, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 }
@@ -160,10 +160,10 @@ void NCursesDisplay::refresh_terminal_size()
 /*
  **************************************************************
 
-	Set up the NCurses-based display.
+	Set up the Curses-based display.
 
  **************************************************************/
-bool NCursesDisplay::create()
+bool CursesDisplay::create()
 {
   bool creation_success = true;
 
@@ -197,10 +197,10 @@ bool NCursesDisplay::create()
 /*
  ***************************************************************
 
- 	Do anything necessary to tear down the NCurses-based display.
+ 	Do anything necessary to tear down the Curses-based display.
 
  ***************************************************************/
-void NCursesDisplay::tear_down()
+void CursesDisplay::tear_down()
 {
   clear_display();
   refresh();
@@ -213,7 +213,7 @@ void NCursesDisplay::tear_down()
   Clear the display (in practice, stdscr).
 
  *****************************************************************/
-void NCursesDisplay::clear_display()
+void CursesDisplay::clear_display()
 {
   clear();
 }
@@ -225,12 +225,12 @@ void NCursesDisplay::clear_display()
   the user.  If it's very long, "..." it.
 
  *****************************************************************/
-void NCursesDisplay::add_message(const string& message, const bool reset_cursor)
+void CursesDisplay::add_message(const string& message, const bool reset_cursor)
 {
   add_message(message, COLOUR_WHITE, reset_cursor);
 }
 
-void NCursesDisplay::add_message(const string& message, const Colour colour, const bool reset_cursor)
+void CursesDisplay::add_message(const string& message, const Colour colour, const bool reset_cursor)
 {
   int orig_curs_y, orig_curs_x;
   getyx(stdscr, orig_curs_y, orig_curs_x);
@@ -284,7 +284,7 @@ void NCursesDisplay::add_message(const string& message, const Colour colour, con
     }
     
     // If the user presses enter
-    if (cur_y > NCursesConstants::MESSAGE_BUFFER_END_ROW)
+    if (cur_y > CursesConstants::MESSAGE_BUFFER_END_ROW)
     {
       cur_y--;
     }
@@ -314,7 +314,7 @@ void NCursesDisplay::add_message(const string& message, const Colour colour, con
   no specific creature, etc., data.
 
  *****************************************************************/
-void NCursesDisplay::draw(const DisplayMap& current_map)
+void CursesDisplay::draw(const DisplayMap& current_map)
 {
   refresh_terminal_size();
 
@@ -325,12 +325,12 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   unsigned int map_rows = d.get_y();
   unsigned int map_cols = d.get_x();
 
-  for (unsigned int terminal_row = NCursesConstants::MAP_START_ROW; terminal_row < map_rows + NCursesConstants::MAP_START_ROW; terminal_row++)
+  for (unsigned int terminal_row = CursesConstants::MAP_START_ROW; terminal_row < map_rows + CursesConstants::MAP_START_ROW; terminal_row++)
   {
-    for (unsigned int terminal_col = NCursesConstants::MAP_START_COL; terminal_col < map_cols + NCursesConstants::MAP_START_COL; terminal_col++)
+    for (unsigned int terminal_col = CursesConstants::MAP_START_COL; terminal_col < map_cols + CursesConstants::MAP_START_COL; terminal_col++)
     {
-      map_coords.first = terminal_row - NCursesConstants::MAP_START_ROW;
-      map_coords.second = terminal_col - NCursesConstants::MAP_START_COL;
+      map_coords.first = terminal_row - CursesConstants::MAP_START_ROW;
+      map_coords.second = terminal_col - CursesConstants::MAP_START_COL;
 
       display_tile = current_map.at(map_coords);
 
@@ -346,8 +346,8 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   }
 
   Coordinate cursor_coord = current_map.get_cursor_coordinate();
-  move(cursor_coord.first+NCursesConstants::MAP_START_ROW, cursor_coord.second+NCursesConstants::MAP_START_COL);
-  wredrawln(stdscr, NCursesConstants::MAP_START_ROW, map_rows);
+  move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
+  wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
 }
 
 /*!
@@ -356,7 +356,7 @@ void NCursesDisplay::draw(const DisplayMap& current_map)
   Get the size of the map display in "tiles"
 
  *****************************************************************/
-MapDisplayArea NCursesDisplay::get_map_display_area()
+MapDisplayArea CursesDisplay::get_map_display_area()
 {
   MapDisplayArea map_display_area;
 
@@ -372,12 +372,12 @@ MapDisplayArea NCursesDisplay::get_map_display_area()
   Draw the specified menu, full-screen.
 
  *****************************************************************/
-string NCursesDisplay::display_menu(const Menu& current_menu)
+string CursesDisplay::display_menu(const Menu& current_menu)
 {
   string result;
   refresh_terminal_size();
 
-  NCursesMenuWrapper wrapper;
+  CursesMenuWrapper wrapper;
   WINDOW* menu_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
 
   menus.push_back(menu_window);
@@ -419,12 +419,12 @@ string NCursesDisplay::display_menu(const Menu& current_menu)
 }
 
 // Show confirmation text - use the message buffer.
-void NCursesDisplay::confirm(const string& confirmation_message)
+void CursesDisplay::confirm(const string& confirmation_message)
 {
   add_message(confirmation_message, COLOUR_WHITE, false);
 }
 
-void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr tc)
+void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr tc)
 {
   string current_text = tc->get_text();
   mvwprintw(window, *row, *col, current_text.c_str());
@@ -432,7 +432,7 @@ void NCursesDisplay::display_text_component(WINDOW* window, int* row, int* col, 
 }
 
 // Get a somewhat nice (it's ASCII...) option.
-pair<char, string> NCursesDisplay::get_formatted_option(const int incr, const string& option_name, const string& option_desc) const
+pair<char, string> CursesDisplay::get_formatted_option(const int incr, const string& option_name, const string& option_desc) const
 {
   pair<char, string> result;
 
@@ -453,9 +453,9 @@ pair<char, string> NCursesDisplay::get_formatted_option(const int incr, const st
   return result;
 }
 
-NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
+CursesMenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
 {
-  NCursesMenuWrapper wrapper;
+  CursesMenuWrapper wrapper;
 
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
@@ -488,7 +488,7 @@ NCursesMenuWrapper NCursesDisplay::display_and_return_options_component(WINDOW* 
   return wrapper;
 }
 
-void NCursesDisplay::clear_menu()
+void CursesDisplay::clear_menu()
 {
   if (!menus.empty())
   {
@@ -502,7 +502,7 @@ void NCursesDisplay::clear_menu()
 }
 
 // Display the player data
-void NCursesDisplay::display(const DisplayStatistics& player_stats)
+void CursesDisplay::display(const DisplayStatistics& player_stats)
 {
   string name         = player_stats.get_name();
   string synopsis     = player_stats.get_synopsis();
@@ -557,7 +557,7 @@ void NCursesDisplay::display(const DisplayStatistics& player_stats)
   mvprintw(current_row, current_col, map_depth.c_str());
 }
 
-bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat)
+bool CursesDisplay::print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat)
 {
   bool can_print = true;
 
@@ -570,7 +570,7 @@ bool NCursesDisplay::print_display_statistic_and_update_row_and_column(const uns
 
 // Update the row/col for the player synopsis.  Return false if we've run out of space
 // and can't print anything else.
-bool NCursesDisplay::update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
+bool CursesDisplay::update_synopsis_row_and_column(const unsigned int initial_row, unsigned int* row, unsigned int* col, const string& previous_field, const string& next_field)
 {
   bool can_update = true;
   unsigned int next_column_end = *col + previous_field.size() + FIELD_SPACE + next_field.size();
@@ -596,7 +596,7 @@ bool NCursesDisplay::update_synopsis_row_and_column(const unsigned int initial_r
 
 // Display the Equipment
 // JCD FIXME: break this off into its own class later.
-void NCursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
+void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
 {
   string equipment_header = StringTable::get(TextKeys::EQUIPMENT);
 
@@ -654,7 +654,7 @@ void NCursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
 
 // Display the Inventory
 // JCD FIXME: Break this off into its own class later.
-int NCursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
+int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
 {
   int items_displayed = 0;
   string inventory_header = StringTable::get(TextKeys::INVENTORY);

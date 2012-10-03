@@ -4,7 +4,7 @@
 #define NC_BACKSPACE_KEY 8
 #define NC_ENTER_KEY 10
 
-class NCursesConstants
+class CursesConstants
 {
   public:
     static const unsigned int MAP_START_ROW;
@@ -12,6 +12,6 @@ class NCursesConstants
     static const unsigned int MESSAGE_BUFFER_END_ROW;
     
   protected:
-    NCursesConstants();
-    ~NCursesConstants();
+    CursesConstants();
+    ~CursesConstants();
 };
