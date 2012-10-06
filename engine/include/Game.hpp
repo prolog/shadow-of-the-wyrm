@@ -9,6 +9,7 @@
 #include "DisplayTile.hpp"
 #include "Display.hpp"
 #include "Item.hpp"
+#include "ISerializable.hpp"
 #include "MapRegistry.hpp"
 #include "Race.hpp"
 #include "World.hpp"
@@ -16,7 +17,7 @@
 
 #include "CursesDisplay.hpp"
 
-class Game
+class Game : public ISerializable
 {
   public:
     static Game* instance();
@@ -45,7 +46,7 @@ class Game
     void set_items(const ItemMap& game_items);
     const ItemMap& get_items_ref() const;
     
-    MapPtr get_current_map();
+    MapPtr get_current_map() const;
 
     void set_tile_display_info(const std::vector<DisplayTile>& game_tiles);
     const std::vector<DisplayTile>& get_tile_display_info_ref() const;
@@ -64,6 +65,10 @@ class Game
     // worlds and rebirth.
     
     ActionManager& get_action_manager_ref();
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
 
   protected:
     friend class SavageLandsEngine;
@@ -112,11 +117,8 @@ class Game
     ItemMap items;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
 
-    // The current list of game worlds.
+    // The current list of game worlds.  For a long, long time, this should always be size=1.
     std::vector<WorldPtr> worlds;
-
-    // The current list of players (one per game world).
-    std::vector<CreaturePtr> players;
 
     // The current world index in the list of worlds.
     uint current_world_ix;
@@ -136,6 +138,9 @@ class Game
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;
     KeyboardCommandMapPtr game_kb_command_map;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 

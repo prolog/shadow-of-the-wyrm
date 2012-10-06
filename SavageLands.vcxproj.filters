@@ -1875,28 +1875,7 @@
     <ClInclude Include="engine\skills\include\Swimming.hpp">
       <Filter>Header Files\engine\skills\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\serialization\include\ClassSerializationExports.hpp">
-      <Filter>Header Files\engine\serialization\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\serialization\include\GameEngineExports.hpp">
-      <Filter>Header Files\engine\serialization\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\serialization\include\GameEngineSerialization.hpp">
-      <Filter>Header Files\engine\serialization\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\serialization\include\GameStateSerialization.hpp">
-      <Filter>Header Files\engine\serialization\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\serialization\include\Serialization.hpp">
-      <Filter>Header Files\engine\serialization\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\serialization\include\TemplatesSerialization.hpp">
-      <Filter>Header Files\engine\serialization\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\serialization\include\TileAndFeaturesExports.hpp">
-      <Filter>Header Files\engine\serialization\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\serialization\include\TilesSerialization.hpp">
       <Filter>Header Files\engine\serialization\include</Filter>
     </ClInclude>
     <ClInclude Include="display\include\CursesConstants.hpp">
@@ -1916,6 +1895,21 @@
     </ClInclude>
     <ClInclude Include="controller\include\CursesKeyboardController.hpp">
       <Filter>Header Files\controller</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ISerializable.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="include\ClassIdentifiers.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\Serialize.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\SerializationExceptions.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayFactory.hpp">
+      <Filter>Header Files\display</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3206,16 +3200,7 @@
     <ClCompile Include="engine\skills\source\Swimming.cpp">
       <Filter>Source Files\engine\skills\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\serialization\source\GameEngineSerialization.cpp">
-      <Filter>Source Files\engine\serialization\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\serialization\source\GameStateSerialization.cpp">
-      <Filter>Source Files\engine\serialization\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\serialization\source\Serialization.cpp">
-      <Filter>Source Files\engine\serialization\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\serialization\source\TemplateSerialization.cpp">
       <Filter>Source Files\engine\serialization\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLAmuletReader.cpp">
@@ -3410,9 +3395,6 @@
     <ClCompile Include="SavageLands.cpp">
       <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\serialization\source\TilesSerialization.cpp">
-      <Filter>Source Files\engine\serialization\source</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\CursesConstants.cpp">
       <Filter>Source Files\display</Filter>
     </ClCompile>
@@ -3430,6 +3412,15 @@
     </ClCompile>
     <ClCompile Include="controller\source\CursesKeyboardController.cpp">
       <Filter>Source Files\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serialization\source\Serialize.cpp">
+      <Filter>Source Files\engine\serialization\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serialization\source\SerializationExceptions.cpp">
+      <Filter>Source Files\engine\serialization\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayFactory.cpp">
+      <Filter>Source Files\display</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

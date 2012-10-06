@@ -61,11 +61,21 @@ void Map::create_creatures()
 
 bool Map::has_creature(const string& creature_id)
 {
+  if (creatures.empty())
+  {
+    create_creatures();
+  }
+
   return (creatures.find(creature_id) != creatures.end());
 }
 
 CreaturePtr Map::get_creature(const string& creature_id)
 {
+  if (creatures.empty())
+  {
+    create_creatures();
+  }
+
   CreaturePtr creature;
   
   map<string, CreaturePtr>::iterator c_it = creatures.find(creature_id);

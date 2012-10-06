@@ -10,6 +10,7 @@
 #include "CursesConstants.hpp"
 #include "CursesDisplay.hpp"
 #include "OptionsComponent.hpp"
+#include "Serialize.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -719,4 +720,45 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
   wrefresh(inv_window);
   
   return items_displayed;
+}
+
+bool CursesDisplay::serialize(ostream& stream)
+{
+  Serialize::write_uint(stream, TERMINAL_MAX_ROWS);
+  Serialize::write_uint(stream, TERMINAL_MAX_COLS);
+  Serialize::write_uint(stream, FIELD_SPACE);
+  Serialize::write_uint(stream, MSG_BUFFER_LAST_Y);
+  Serialize::write_uint(stream, MSG_BUFFER_LAST_X);
+  
+  // Menus are not serialized.  Saving can only be done on the main screen,
+  // which will be reconstructed based on the game's map/etc data.
+
+  // CursesPromptProcessor is stateless; don't write it.
+
+  Serialize::write_bool(stream, can_use_colour);
+
+  return true;
+}
+
+bool CursesDisplay::deserialize(istream& stream)
+{
+  Serialize::read_uint(stream, TERMINAL_MAX_ROWS);
+  Serialize::read_uint(stream, TERMINAL_MAX_COLS);
+  Serialize::read_uint(stream, FIELD_SPACE);
+  Serialize::read_uint(stream, MSG_BUFFER_LAST_Y);
+  Serialize::read_uint(stream, MSG_BUFFER_LAST_X);
+
+  // Menus are not serialized.  Saving can only be done on the main screen,
+  // which will be reconstructed based on the game's map/etc data.
+
+  // CursesPromptProcessor is stateless; don't load it.
+
+  Serialize::read_bool(stream, can_use_colour);
+
+  return true;
+}
+
+ClassIdentifier CursesDisplay::internal_class_identifier() const
+{
+  return CLASS_ID_CURSES_DISPLAY;
 }

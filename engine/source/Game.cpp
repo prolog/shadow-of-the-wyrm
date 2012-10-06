@@ -4,6 +4,7 @@
 #include "CreatureCalculator.hpp"
 #include "CreatureFeatures.hpp"
 #include "Detection.hpp"
+#include "DisplayFactory.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
@@ -16,6 +17,7 @@
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
 #include "MessageManager.hpp"
+#include "Serialize.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WorldTimeKeeperCoordinator.hpp"
 
@@ -134,7 +136,7 @@ const vector<DisplayTile>& Game::get_tile_display_info_ref() const
 
 CreaturePtr Game::get_current_player() const
 {
-  CreaturePtr current_player = players.at(current_world_ix);
+  CreaturePtr current_player = get_current_map()->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
   return current_player;
 }
 
@@ -148,8 +150,6 @@ void Game::create_new_world(CreaturePtr creature)
   worlds.push_back(world);
   set_current_map(current_world);  
   current_world_ix = (worlds.size() - 1);
-
-  players.push_back(creature);
 
   TilePtr tile = current_world->get_tile_at_location(WorldMapLocationTextKeys::STARTING_LOCATION);
 
@@ -195,6 +195,7 @@ void Game::go()
   WorldTimeKeeperCoordinator time_coordinator;
   time_coordinator.setup_time_keeper(time_keeper);
   
+  MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
 
@@ -202,7 +203,6 @@ void Game::go()
   manager->add_new_message(welcome_message);
   manager->send();
 
-  MapPtr current_map = get_current_map();
   CreatureCalculator::update_calculated_values(current_player);
  
   string map_id = "";
@@ -368,7 +368,7 @@ void Game::set_current_map(MapPtr map)
 }
 
 // Get the current map from the map registry.
-MapPtr Game::get_current_map()
+MapPtr Game::get_current_map() const
 {
   return map_registry.get_map(current_map_id);
 }
@@ -376,4 +376,71 @@ MapPtr Game::get_current_map()
 ActionManager& Game::get_action_manager_ref()
 {
   return actions;
+}
+
+bool Game::serialize(ostream& stream)
+{
+  Log::instance()->trace("Game::serialize - start");
+
+  Serialize::write_bool(stream, keep_playing);
+  Serialize::write_bool(stream, reload_game_loop);
+  // Ignore game_instance - it's a singleton, and the write/read code is already handling it
+  Serialize::write_class_id(stream, display->get_class_identifier());
+  display->serialize(stream);
+
+  // JCD TODO: MapRegistry
+
+  // Ignore deity map - this will be built up on startup.
+  // Ignore race map - this will be built up on startup.
+  // Ignore class map - this will be built up on startup.
+  // Ignore creature map - this will be built up on startup.
+  // Ignore creature generation values map - this will be built up on startup.
+  // Ignore items map - this will be built up on startup.
+  // Ignore tile_info map - this will be built up on startup.
+
+  // JCD TODO: vector<WorldPtr>
+
+  Serialize::write_uint(stream, current_world_ix);
+  Serialize::write_string(stream, current_map_id);
+
+  Log::instance()->trace("Game::serialize - end");
+
+  return true;
+}
+
+bool Game::deserialize(istream& stream)
+{
+  Log::instance()->trace("Game::deserialize - start");
+
+  Serialize::read_bool(stream, keep_playing);
+  Serialize::read_bool(stream, reload_game_loop);
+  // Ignore game_instance - it's a singleton, and the write/read code is already handling it
+  
+  ClassIdentifier display_ci;
+  Serialize::read_class_id(stream, display_ci);
+  display = DisplayFactory::create_display(display_ci);
+  if (!display) return false;
+  if (!display->deserialize(stream)) return false;
+
+  // JCD TODO: MapRegistry
+
+  // Ignore deity map - this will be built up on startup.
+  // Ignore race map - this will be built up on startup.
+  // Ignore class map - this will be built up on startup.
+  // Ignore creature map - this will be built up on startup.
+  // Ignore creature generation values map - this will be built up on startup.
+  // Ignore items map - this will be built up on startup.
+  // Ignore tile_info map - this will be built up on startup.
+
+  // JCD TODO: vector<WorldPtr>
+
+  Serialize::read_uint(stream, current_world_ix);
+  Serialize::read_string(stream, current_map_id);
+  Log::instance()->trace("Game::deserialize - end");
+  return true;
+}
+
+ClassIdentifier Game::internal_class_identifier() const
+{
+  return CLASS_ID_GAME;
 }

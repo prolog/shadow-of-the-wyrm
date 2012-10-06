@@ -79,6 +79,7 @@
     <ClInclude Include="controller\include\CursesKeyboardController.hpp" />
     <ClInclude Include="controller\include\NullKeyboardController.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
+    <ClInclude Include="display\include\DisplayFactory.hpp" />
     <ClInclude Include="display\include\DisplayItem.hpp" />
     <ClInclude Include="display\include\DisplayItemType.hpp" />
     <ClInclude Include="display\include\DisplayMap.hpp" />
@@ -341,14 +342,9 @@
     <ClInclude Include="engine\menus\include\SexSelectionScreen.hpp" />
     <ClInclude Include="engine\menus\include\TextComponent.hpp" />
     <ClInclude Include="engine\menus\include\WelcomeScreen.hpp" />
-    <ClInclude Include="engine\serialization\include\ClassSerializationExports.hpp" />
-    <ClInclude Include="engine\serialization\include\GameEngineExports.hpp" />
-    <ClInclude Include="engine\serialization\include\GameEngineSerialization.hpp" />
-    <ClInclude Include="engine\serialization\include\GameStateSerialization.hpp" />
     <ClInclude Include="engine\serialization\include\Serialization.hpp" />
-    <ClInclude Include="engine\serialization\include\TemplatesSerialization.hpp" />
-    <ClInclude Include="engine\serialization\include\TileAndFeaturesExports.hpp" />
-    <ClInclude Include="engine\serialization\include\TilesSerialization.hpp" />
+    <ClInclude Include="engine\serialization\include\SerializationExceptions.hpp" />
+    <ClInclude Include="engine\serialization\include\Serialize.hpp" />
     <ClInclude Include="engine\skills\include\Detection.hpp" />
     <ClInclude Include="engine\skills\include\Mountaineering.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
@@ -409,9 +405,11 @@
     <ClInclude Include="engine\XML\include\XMLWeaponsReaders.hpp" />
     <ClInclude Include="engine\XML\include\XMLWearableReader.hpp" />
     <ClInclude Include="include\buildinfo.hpp" />
+    <ClInclude Include="include\ClassIdentifiers.hpp" />
     <ClInclude Include="include\Colours.hpp" />
     <ClInclude Include="include\common.hpp" />
     <ClInclude Include="include\global_prototypes.hpp" />
+    <ClInclude Include="include\ISerializable.hpp" />
     <ClInclude Include="world\include\AgeInfo.hpp" />
     <ClInclude Include="world\include\Alignment.hpp" />
     <ClInclude Include="world\include\AlignmentEnums.hpp" />
@@ -568,6 +566,7 @@
     <ClCompile Include="controller\source\CursesKeyboardController.cpp" />
     <ClCompile Include="controller\source\NullKeyboardController.cpp" />
     <ClCompile Include="display\source\Display.cpp" />
+    <ClCompile Include="display\source\DisplayFactory.cpp" />
     <ClCompile Include="display\source\DisplayItem.cpp" />
     <ClCompile Include="display\source\DisplayItemType.cpp" />
     <ClCompile Include="display\source\DisplayMap.cpp" />
@@ -839,13 +838,9 @@
     <ClCompile Include="engine\menus\source\SexSelectionScreen.cpp" />
     <ClCompile Include="engine\menus\source\TextComponent.cpp" />
     <ClCompile Include="engine\menus\source\WelcomeScreen.cpp" />
-    <ClCompile Include="engine\serialization\source\GameEngineSerialization.cpp" />
-    <ClCompile Include="engine\serialization\source\GameStateSerialization.cpp" />
     <ClCompile Include="engine\serialization\source\Serialization.cpp" />
-    <ClCompile Include="engine\serialization\source\TemplateSerialization.cpp">
-      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/bigobj %(AdditionalOptions)</AdditionalOptions>
-    </ClCompile>
-    <ClCompile Include="engine\serialization\source\TilesSerialization.cpp" />
+    <ClCompile Include="engine\serialization\source\SerializationExceptions.cpp" />
+    <ClCompile Include="engine\serialization\source\Serialize.cpp" />
     <ClCompile Include="engine\skills\source\Detection.cpp" />
     <ClCompile Include="engine\skills\source\Mountaineering.cpp" />
     <ClCompile Include="engine\skills\source\SkillManager.cpp" />

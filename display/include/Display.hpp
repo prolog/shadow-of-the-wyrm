@@ -10,6 +10,7 @@
 #include "DisplayItem.hpp"
 #include "DisplayMap.hpp"
 #include "DisplayStatistics.hpp"
+#include "ISerializable.hpp"
 #include "Prompt.hpp"
 
 class Menu;
@@ -31,7 +32,7 @@ class MapDisplayArea
     uint width;
 };
 
-class Display
+class Display : public ISerializable
 {
 	public:
     virtual ~Display() {};
@@ -76,6 +77,13 @@ class Display
 	  virtual void confirm(const std::string& confirmation_message) = 0;
 
 	  virtual void clear_menu() = 0;
+
+    // ISerializable methods
+    virtual bool serialize(std::ostream& stream) = 0;
+    virtual bool deserialize(std::istream& stream) = 0;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
 typedef boost::shared_ptr<Display> DisplayPtr;
