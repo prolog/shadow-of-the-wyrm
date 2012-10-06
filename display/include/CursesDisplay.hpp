@@ -8,9 +8,9 @@
 #include "Display.hpp"
 #include "CursesMenuWrapper.hpp"
 #include "CursesPromptProcessor.hpp"
+#include "ISerializable.hpp"
 #include "TextComponent.hpp"
 #include "OptionsComponent.hpp"
-#include "Serialization.hpp"
 
 class CursesDisplay : public Display
 {
@@ -41,6 +41,12 @@ class CursesDisplay : public Display
 	  void confirm(const std::string& confirmation_message);
 
 	  void clear_menu();
+
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 
   protected:
     bool uses_colour() const;

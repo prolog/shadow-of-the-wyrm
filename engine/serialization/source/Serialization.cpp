@@ -6,13 +6,14 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "Serialization.hpp"
-#include "TemplatesSerialization.hpp"
 
 using namespace std;
 
 // Save the entire game state to disk
 void Serialization::save(CreaturePtr creature)
 {
+  Game* game = Game::instance();
+
   try
   {
     // Get the creature's name
@@ -31,12 +32,16 @@ void Serialization::save(CreaturePtr creature)
     string filename = Integer::to_string(hash) + ".sls"; // "sls" = "Savage Lands Save"
 
     // Name the file and do the appropriate setup
+    std::ofstream save_file(filename, ios::binary);
     
     // Save the metadata
     string version = get_version();
     
     // Save the game data
-    // Game
+    if (game)
+    {
+      game->serialize(save_file);
+    }
   }
   catch(...)
   {
