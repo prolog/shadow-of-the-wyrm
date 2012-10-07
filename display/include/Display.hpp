@@ -82,6 +82,8 @@ class Display : public ISerializable
     virtual bool serialize(std::ostream& stream) = 0;
     virtual bool deserialize(std::istream& stream) = 0;
 
+    virtual Display* clone() = 0;
+
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };

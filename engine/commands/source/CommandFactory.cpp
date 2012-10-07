@@ -133,3 +133,25 @@ CommandFactoryType CommandFactory::get_factory_type() const
 {
   return COMMAND_FACTORY_TYPE_MAP;
 }
+
+CommandFactory* CommandFactory::clone()
+{
+  return new CommandFactory(*this);
+}
+
+// Save/load.
+bool CommandFactory::serialize(std::ostream& stream)
+{
+  return true;
+}
+
+bool CommandFactory::deserialize(std::istream& stream)
+{
+  return true;
+}
+
+ClassIdentifier CommandFactory::internal_class_identifier() const
+{
+  return CLASS_ID_COMMAND_FACTORY;
+}
+

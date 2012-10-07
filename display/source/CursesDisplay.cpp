@@ -16,6 +16,12 @@
 using namespace std;
 using namespace boost;
 
+// Assumption: menus is empty (prototype object), and so this is safe.
+Display* CursesDisplay::clone()
+{
+  return new CursesDisplay(*this);
+}
+
 CursesDisplay::CursesDisplay()
 : TERMINAL_MAX_ROWS(0), 
 TERMINAL_MAX_COLS(0), 

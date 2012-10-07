@@ -1911,6 +1911,9 @@
     <ClInclude Include="display\include\DisplayFactory.hpp">
       <Filter>Header Files\display</Filter>
     </ClInclude>
+    <ClInclude Include="engine\commands\include\CommandFactoryFactory.hpp">
+      <Filter>Header Files\engine\commands\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3421,6 +3424,9 @@
     </ClCompile>
     <ClCompile Include="display\source\DisplayFactory.cpp">
       <Filter>Source Files\display</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\CommandFactoryFactory.cpp">
+      <Filter>Source Files\engine\commands\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
