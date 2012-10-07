@@ -359,3 +359,21 @@ ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCost
   return ac;
 }
 
+bool ActionManager::serialize(std::ostream& stream)
+{
+  tile_selection_manager.serialize(stream);
+
+  return true;
+}
+
+bool ActionManager::deserialize(std::istream& stream)
+{
+  tile_selection_manager.deserialize(stream);
+
+  return true;
+}
+
+ClassIdentifier ActionManager::internal_class_identifier() const
+{
+  return CLASS_ID_ACTION_MANAGER;
+}

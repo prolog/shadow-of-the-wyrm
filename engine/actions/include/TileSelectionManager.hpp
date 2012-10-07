@@ -1,7 +1,7 @@
 #pragma once
 #include "IActionManager.hpp"
 
-class TileSelectionManager : public IActionManager
+class TileSelectionManager : public IActionManager, ISerializable
 {
   public:
     void set_selection_key(const std::string& new_selection_key);
@@ -34,6 +34,9 @@ class TileSelectionManager : public IActionManager
     
     bool remove_target(CreaturePtr creature, const AttackType attack_type);
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
     friend class ActionManager;
     friend class RangedCombatActionManager;
@@ -53,4 +56,7 @@ class TileSelectionManager : public IActionManager
     bool show_feature_description;
     bool show_creature_description;
     bool show_item_descriptions;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

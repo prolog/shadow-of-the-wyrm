@@ -11,6 +11,9 @@ class DisplayFactory
     static DisplayPtr create_display(const ClassIdentifier ci);
 
   private:
+    DisplayFactory();
+    ~DisplayFactory();
+
     static void initialize_display_map();
 
     static DisplaySerializationMap display_map;

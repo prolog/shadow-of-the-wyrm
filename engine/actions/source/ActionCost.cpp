@@ -1,5 +1,6 @@
 #include <sstream>
 #include "ActionCost.hpp"
+#include "Serialize.hpp"
 
 using std::ostringstream;
 using std::string;
@@ -66,4 +67,25 @@ string ActionCost::str() const
   ss << cost << ":" << turn_advanced;
  
   return ss.str();
+}
+
+bool ActionCost::serialize(std::ostream& stream)
+{
+  Serialize::write_int(stream, cost);
+  Serialize::write_bool(stream, turn_advanced);
+
+  return true;
+}
+
+bool ActionCost::deserialize(std::istream& stream)
+{
+  Serialize::read_int(stream, cost);
+  Serialize::read_bool(stream, turn_advanced);
+
+  return true;
+}
+
+ClassIdentifier ActionCost::internal_class_identifier() const
+{
+  return CLASS_ID_ACTION_COST;
 }

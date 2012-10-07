@@ -76,3 +76,14 @@ void EquipmentKeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('z'), EquipmentCommandKeys::EXIT_EQUIPMENT));
   command_mapping.insert(make_pair(Integer::to_string('Z'), EquipmentCommandKeys::EXIT_EQUIPMENT));
 }
+
+KeyboardCommandMap* EquipmentKeyboardCommandMap::clone()
+{
+  return new EquipmentKeyboardCommandMap(*this);
+}
+
+ClassIdentifier EquipmentKeyboardCommandMap::internal_class_identifier() const
+{
+  return CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP;
+}
+

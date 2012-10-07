@@ -50,3 +50,13 @@ void InventoryKeyboardCommandMap::initialize_command_mapping()
   // Previous page
   command_mapping.insert(make_pair(Integer::to_string(','), InventoryCommandKeys::PREVIOUS_PAGE));
 }
+
+KeyboardCommandMap* InventoryKeyboardCommandMap::clone()
+{
+  return new InventoryKeyboardCommandMap(*this);
+}
+
+ClassIdentifier InventoryKeyboardCommandMap::internal_class_identifier() const
+{
+  return CLASS_ID_INVENTORY_KEYBOARD_COMMAND_MAP;
+}

@@ -1,3 +1,4 @@
+#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
@@ -23,6 +24,8 @@
 // Used by serialization code:
 #include "CommandFactoryFactory.hpp"
 #include "DisplayFactory.hpp"
+#include "KeyboardCommandMapFactory.hpp"
+#include "WorldFactory.hpp"
 
 using namespace std;
 
@@ -401,22 +404,28 @@ bool Game::serialize(ostream& stream)
   // Ignore items map - this will be built up on startup.
   // Ignore tile_info map - this will be built up on startup.
 
-  // JCD TODO: vector<WorldPtr>
+  size_t num_worlds = worlds.size();
+  Serialize::write_size_t(stream, num_worlds);
+
+  BOOST_FOREACH(WorldPtr world, worlds)
+  {
+    world->serialize(stream);
+  }
 
   Serialize::write_uint(stream, current_world_ix);
   Serialize::write_string(stream, current_map_id);
 
-  // JCD TODO: ActionManager actions;
-    
-  // JCD TODO: ActionCoordinator ac;
+  actions.serialize(stream);
+
+  ac.serialize(stream);
     
   // JCD TODO: WorldTimeKeeper time_keeper;
     
-  // JCD TODO: CommandFactoryPtr game_command_factory;
   Serialize::write_class_id(stream, game_command_factory->get_class_identifier());
   game_command_factory->serialize(stream);
 
-  // JCD TODO: KeyboardCommandMapPtr game_kb_command_map;
+  Serialize::write_class_id(stream, game_kb_command_map->get_class_identifier());
+  game_kb_command_map->serialize(stream);
 
   Log::instance()->trace("Game::serialize - end");
 
@@ -447,25 +456,36 @@ bool Game::deserialize(istream& stream)
   // Ignore items map - this will be built up on startup.
   // Ignore tile_info map - this will be built up on startup.
 
-  // JCD TODO: vector<WorldPtr>
+  size_t num_worlds;
+  Serialize::read_size_t(stream, num_worlds);
+
+  for (unsigned int i = 0; i < num_worlds; i++)
+  {
+    WorldPtr world = WorldFactory::create_world();
+    if (!world) return false;
+    if (!world->deserialize(stream)) return false;
+  }
 
   Serialize::read_uint(stream, current_world_ix);
   Serialize::read_string(stream, current_map_id);
 
-  // JCD TODO: ActionManager actions;
+  actions.deserialize(stream);
     
-  // JCD TODO: ActionCoordinator ac;
+  ac.deserialize(stream);
     
   // JCD TODO: WorldTimeKeeper time_keeper;
     
-  // JCD TODO: CommandFactoryPtr game_command_factory;
-  ClassIdentifier key_cf_ci;
-  Serialize::read_class_id(stream, key_cf_ci);
-  game_command_factory = CommandFactoryFactory::create_command_factory(key_cf_ci);
+  ClassIdentifier cf_ci;
+  Serialize::read_class_id(stream, cf_ci);
+  game_command_factory = CommandFactoryFactory::create_command_factory(cf_ci);
   if (!game_command_factory) return false;
   if (!game_command_factory->deserialize(stream)) return false;
 
-  // JCD TODO: KeyboardCommandMapPtr game_kb_command_map;
+  ClassIdentifier kb_cm_ci;
+  Serialize::read_class_id(stream, kb_cm_ci);
+  game_kb_command_map = KeyboardCommandMapFactory::create_keyboard_command_map(kb_cm_ci);
+  if (!game_kb_command_map) return false;
+  if (!game_kb_command_map->deserialize(stream)) return false;
 
   Log::instance()->trace("Game::deserialize - end");
   return true;

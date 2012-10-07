@@ -4,6 +4,7 @@
 #include "Creature.hpp"
 #include "Directions.hpp"
 #include "IItemFilter.hpp"
+#include "ISerializable.hpp"
 #include "ItemManager.hpp"
 #include "MovementManager.hpp"
 #include "QuaffManager.hpp"
@@ -18,7 +19,7 @@ enum ItemAction
   ITEM_ACTION_DROP = 2
 };
 
-class ActionManager
+class ActionManager : public ISerializable
 {
   public:
     ActionManager();
@@ -74,6 +75,9 @@ class ActionManager
     // Quits the game.  Right now this just sets a boolean flag in the game loop to be false, so there will need to be
     // additional work done later to compensate for pending actions, etc.
     ActionCost quit(CreaturePtr creature);
+
+    bool serialize(std::ostream& ostream);
+    bool deserialize(std::istream& istream);
     
   protected:
     ActionCost get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value);
@@ -84,4 +88,7 @@ class ActionManager
     TileSelectionManager tile_selection_manager;
     RangedCombatActionManager ranged_combat_manager;
     QuaffManager quaff_manager;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include "common.hpp"
+#include "ISerializable.hpp"
 
 namespace boost
 {
@@ -12,7 +13,7 @@ namespace boost
 
 typedef int ActionCostValue;
 
-class ActionCost
+class ActionCost : public ISerializable
 {
   public:
     // Default constructor sets the cost to 0, disallowing a turn.
@@ -33,6 +34,9 @@ class ActionCost
     bool get_turn_advanced() const;
    
     std::string str() const;
+
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
    
   protected:
     friend class ActionManager;
@@ -41,4 +45,7 @@ class ActionCost
 
     ActionCostValue cost;
     bool turn_advanced;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

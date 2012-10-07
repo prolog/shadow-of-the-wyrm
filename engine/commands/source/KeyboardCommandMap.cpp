@@ -3,11 +3,13 @@
 #else
 #include <ncurses.h>
 #endif
+#include <boost/foreach.hpp>
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "Log.hpp"
 #include "MessageManager.hpp"
+#include "Serialize.hpp"
 #include "StringConstants.hpp"
 
 using namespace std;
@@ -107,4 +109,55 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('r'), CommandKeys::READ));
   command_mapping.insert(make_pair(Integer::to_string('$'), CommandKeys::CHECK_CURRENCY));
   command_mapping.insert(make_pair(Integer::to_string('S'), CommandKeys::SAVE_GAME));
+}
+
+// Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses
+// will be handled automatically by this function.
+bool KeyboardCommandMap::serialize(std::ostream& stream)
+{
+  Serialize::write_size_t(stream, command_mapping.size());
+
+  BOOST_FOREACH(KeyboardCommandMappingMap::value_type& kb_pair, command_mapping)
+  {
+    string keyboard_keypress = kb_pair.first;
+    string command_key = kb_pair.second;
+
+    Serialize::write_string(stream, keyboard_keypress);
+    Serialize::write_string(stream, command_key);
+  }
+
+  return true;
+}
+
+// Handle deserialization of the map.  Any additional values added by the subclasses will be handled
+// automatically.
+bool KeyboardCommandMap::deserialize(std::istream& stream)
+{
+  size_t mapping_size;
+  Serialize::read_size_t(stream, mapping_size);
+
+  command_mapping.clear();
+
+  for (unsigned int i = 0; i < mapping_size; i++)
+  {
+    string keyboard_keypress;
+    string command_key;
+
+    Serialize::read_string(stream, keyboard_keypress);
+    Serialize::read_string(stream, command_key);
+
+    command_mapping.insert(make_pair(keyboard_keypress, command_key));
+  }
+
+  return true;
+}
+
+KeyboardCommandMap* KeyboardCommandMap::clone()
+{
+  return new KeyboardCommandMap(*this);
+}
+
+ClassIdentifier KeyboardCommandMap::internal_class_identifier() const
+{
+  return CLASS_ID_KEYBOARD_COMMAND_MAP;
 }

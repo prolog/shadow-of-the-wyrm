@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include "ActionCoordinator.hpp"
+#include "Serialize.hpp"
 
 using namespace std;
 
@@ -93,4 +94,44 @@ string ActionCoordinator::get_next_creature_id_and_update_actions()
 bool ActionCoordinator::has_actions() const
 {
   return (!creature_action_order.empty());
+}
+
+bool ActionCoordinator::serialize(std::ostream& stream)
+{
+  Serialize::write_size_t(stream, creature_action_order.size());
+
+  BOOST_FOREACH(CreatureActionMultimap::value_type& action_pair, creature_action_order)
+  {
+    ActionCost cost = action_pair.first;
+    cost.serialize(stream);
+    Serialize::write_string(stream, action_pair.second);
+  }
+
+  return true;
+}
+
+bool ActionCoordinator::deserialize(std::istream& stream)
+{
+  size_t multimap_size;
+  Serialize::read_size_t(stream, multimap_size);
+
+  creature_action_order.clear();
+
+  for (unsigned int i = 0; i < multimap_size; i++)
+  {
+    ActionCost cost;
+    cost.deserialize(stream);
+
+    string id;
+    Serialize::read_string(stream, id);
+
+    creature_action_order.insert(make_pair(cost, id));
+  }
+
+  return true;
+}
+
+ClassIdentifier ActionCoordinator::internal_class_identifier() const
+{
+  return CLASS_ID_ACTION_COORDINATOR;
 }

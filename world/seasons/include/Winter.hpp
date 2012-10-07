@@ -12,7 +12,12 @@ class Winter : public ISeason
 
     Season get_previous_season() const;
     Season get_next_season() const;
+
+    ISeason* clone();
     
   protected:
     void initialize_months();
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

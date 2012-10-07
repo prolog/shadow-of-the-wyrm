@@ -45,3 +45,12 @@ Season Autumn::get_next_season() const
   return SEASON_WINTER;
 }
 
+ISeason* Autumn::clone()
+{
+  return new Autumn(*this);
+}
+
+ClassIdentifier Autumn::internal_class_identifier() const
+{
+  return CLASS_ID_AUTUMN;
+}
