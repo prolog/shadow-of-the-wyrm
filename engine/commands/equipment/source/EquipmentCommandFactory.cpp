@@ -75,3 +75,14 @@ CommandFactoryType EquipmentCommandFactory::get_factory_type() const
 {
   return COMMAND_FACTORY_TYPE_EQUIPMENT;
 }
+
+CommandFactory* EquipmentCommandFactory::clone()
+{
+  return new CommandFactory(*this);
+}
+
+ClassIdentifier EquipmentCommandFactory::internal_class_identifier() const
+{
+  return CLASS_ID_EQUIPMENT_COMMAND_FACTORY;
+}
+

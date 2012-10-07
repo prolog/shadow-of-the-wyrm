@@ -1,7 +1,9 @@
 #pragma once
+#include <map>
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "Command.hpp"
+#include "ISerializable.hpp"
 
 enum CommandFactoryType
 {
@@ -14,7 +16,7 @@ enum CommandFactoryType
 // The base CommandFactory, used for commands on the current map.  Other classes
 // can subclass this and other classes to define commands for other screens
 // (equipment, etc).
-class CommandFactory
+class CommandFactory : public ISerializable
 {
   public:
     CommandFactory();
@@ -22,6 +24,14 @@ class CommandFactory
 
     virtual CommandPtr create(const int key, const std::string& command_name);
     virtual CommandFactoryType get_factory_type() const;
+
+    virtual CommandFactory* clone();
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<CommandFactory> CommandFactoryPtr;

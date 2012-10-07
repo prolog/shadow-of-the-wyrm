@@ -42,6 +42,8 @@ class CursesDisplay : public Display
 
 	  void clear_menu();
 
+    virtual Display* clone();
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 

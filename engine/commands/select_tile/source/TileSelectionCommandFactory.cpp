@@ -60,8 +60,18 @@ CommandPtr TileSelectionCommandFactory::create(const int key, const std::string&
   return command;
 }
 
+CommandFactory* TileSelectionCommandFactory::clone()
+{
+  return new TileSelectionCommandFactory(*this);
+}
+
 
 CommandFactoryType TileSelectionCommandFactory::get_factory_type() const
 {
   return COMMAND_FACTORY_TYPE_SELECT_TILE;
+}
+
+ClassIdentifier TileSelectionCommandFactory::internal_class_identifier() const
+{
+  return CLASS_ID_TILE_SELECTION_COMMAND_FACTORY;
 }

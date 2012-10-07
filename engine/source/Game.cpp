@@ -4,7 +4,6 @@
 #include "CreatureCalculator.hpp"
 #include "CreatureFeatures.hpp"
 #include "Detection.hpp"
-#include "DisplayFactory.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
 #include "Game.hpp"
@@ -20,6 +19,10 @@
 #include "Serialize.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WorldTimeKeeperCoordinator.hpp"
+
+// Used by serialization code:
+#include "CommandFactoryFactory.hpp"
+#include "DisplayFactory.hpp"
 
 using namespace std;
 
@@ -403,6 +406,18 @@ bool Game::serialize(ostream& stream)
   Serialize::write_uint(stream, current_world_ix);
   Serialize::write_string(stream, current_map_id);
 
+  // JCD TODO: ActionManager actions;
+    
+  // JCD TODO: ActionCoordinator ac;
+    
+  // JCD TODO: WorldTimeKeeper time_keeper;
+    
+  // JCD TODO: CommandFactoryPtr game_command_factory;
+  Serialize::write_class_id(stream, game_command_factory->get_class_identifier());
+  game_command_factory->serialize(stream);
+
+  // JCD TODO: KeyboardCommandMapPtr game_kb_command_map;
+
   Log::instance()->trace("Game::serialize - end");
 
   return true;
@@ -436,6 +451,22 @@ bool Game::deserialize(istream& stream)
 
   Serialize::read_uint(stream, current_world_ix);
   Serialize::read_string(stream, current_map_id);
+
+  // JCD TODO: ActionManager actions;
+    
+  // JCD TODO: ActionCoordinator ac;
+    
+  // JCD TODO: WorldTimeKeeper time_keeper;
+    
+  // JCD TODO: CommandFactoryPtr game_command_factory;
+  ClassIdentifier key_cf_ci;
+  Serialize::read_class_id(stream, key_cf_ci);
+  game_command_factory = CommandFactoryFactory::create_command_factory(key_cf_ci);
+  if (!game_command_factory) return false;
+  if (!game_command_factory->deserialize(stream)) return false;
+
+  // JCD TODO: KeyboardCommandMapPtr game_kb_command_map;
+
   Log::instance()->trace("Game::deserialize - end");
   return true;
 }

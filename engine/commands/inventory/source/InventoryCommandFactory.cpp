@@ -51,3 +51,13 @@ CommandFactoryType InventoryCommandFactory::get_factory_type() const
 {
   return COMMAND_FACTORY_TYPE_INVENTORY;
 }
+
+CommandFactory* InventoryCommandFactory::clone()
+{
+  return new InventoryCommandFactory(*this);
+}
+
+ClassIdentifier InventoryCommandFactory::internal_class_identifier() const
+{
+  return CLASS_ID_INVENTORY_COMMAND_FACTORY;
+}

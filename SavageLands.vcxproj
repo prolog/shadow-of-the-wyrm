@@ -167,6 +167,7 @@
     <ClInclude Include="engine\commands\equipment\include\EquipmentKeyboardCommandMap.hpp" />
     <ClInclude Include="engine\commands\include\Command.hpp" />
     <ClInclude Include="engine\commands\include\CommandFactory.hpp" />
+    <ClInclude Include="engine\commands\include\CommandFactoryFactory.hpp" />
     <ClInclude Include="engine\commands\include\CommandKeys.hpp" />
     <ClInclude Include="engine\commands\include\CommandProcessor.hpp" />
     <ClInclude Include="engine\commands\include\Commands.hpp" />
@@ -695,6 +696,7 @@
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionRangeChecker.cpp" />
     <ClCompile Include="engine\commands\source\Command.cpp" />
     <ClCompile Include="engine\commands\source\CommandFactory.cpp" />
+    <ClCompile Include="engine\commands\source\CommandFactoryFactory.cpp" />
     <ClCompile Include="engine\commands\source\CommandKeys.cpp" />
     <ClCompile Include="engine\commands\source\CommandProcessor.cpp" />
     <ClCompile Include="engine\commands\source\Commands.cpp" />
