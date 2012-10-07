@@ -8,6 +8,14 @@ using namespace std;
 
 CommandFactorySerializationMap CommandFactoryFactory::command_factory_map;
 
+CommandFactoryFactory::CommandFactoryFactory()
+{
+}
+
+CommandFactoryFactory::~CommandFactoryFactory()
+{
+}
+
 CommandFactoryPtr CommandFactoryFactory::create_command_factory(const ClassIdentifier ci)
 {
   CommandFactoryPtr factory;

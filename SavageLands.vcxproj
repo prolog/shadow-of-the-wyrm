@@ -172,6 +172,7 @@
     <ClInclude Include="engine\commands\include\CommandProcessor.hpp" />
     <ClInclude Include="engine\commands\include\Commands.hpp" />
     <ClInclude Include="engine\commands\include\KeyboardCommandMap.hpp" />
+    <ClInclude Include="engine\commands\include\KeyboardCommandMapFactory.hpp" />
     <ClInclude Include="engine\commands\inventory\include\InventoryCommandFactory.hpp" />
     <ClInclude Include="engine\commands\inventory\include\InventoryCommandKeys.hpp" />
     <ClInclude Include="engine\commands\inventory\include\InventoryCommandProcessor.hpp" />
@@ -466,6 +467,7 @@
     <ClInclude Include="world\include\Wearable.hpp" />
     <ClInclude Include="world\include\Weight.hpp" />
     <ClInclude Include="world\include\World.hpp" />
+    <ClInclude Include="world\include\WorldFactory.hpp" />
     <ClInclude Include="world\materials\include\Cloth.hpp" />
     <ClInclude Include="world\materials\include\DragonScale.hpp" />
     <ClInclude Include="world\materials\include\Glass.hpp" />
@@ -701,6 +703,7 @@
     <ClCompile Include="engine\commands\source\CommandProcessor.cpp" />
     <ClCompile Include="engine\commands\source\Commands.cpp" />
     <ClCompile Include="engine\commands\source\KeyboardCommandMap.cpp" />
+    <ClCompile Include="engine\commands\source\KeyboardCommandMapFactory.cpp" />
     <ClCompile Include="engine\conversion\source\CharacterDumper.cpp" />
     <ClCompile Include="engine\conversion\source\Conversion.cpp" />
     <ClCompile Include="engine\conversion\source\EquipmentDumper.cpp" />
@@ -1041,6 +1044,7 @@
     <ClCompile Include="world\source\Wearable.cpp" />
     <ClCompile Include="world\source\Weight.cpp" />
     <ClCompile Include="world\source\World.cpp" />
+    <ClCompile Include="world\source\WorldFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\Altar.cpp" />
     <ClCompile Include="world\tiles\features\source\Bench.cpp" />
     <ClCompile Include="world\tiles\features\source\DecorativeStatues.cpp" />

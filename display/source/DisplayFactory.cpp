@@ -4,6 +4,14 @@
 
 using namespace std;
 
+DisplayFactory::DisplayFactory()
+{
+}
+
+DisplayFactory::~DisplayFactory()
+{
+}
+
 DisplaySerializationMap DisplayFactory::display_map;
 
 DisplayPtr DisplayFactory::create_display(const ClassIdentifier ci)

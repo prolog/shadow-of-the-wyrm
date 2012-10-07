@@ -3,6 +3,9 @@
 #include <string>
 #include "ActionCost.hpp"
 #include "Creature.hpp"
+#include "ISerializable.hpp"
+
+typedef std::multimap<ActionCost, std::string> CreatureActionMultimap;
 
 class ActionCoordinator
 {
@@ -16,11 +19,17 @@ class ActionCoordinator
     
     bool has_actions() const;
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
     void update_actions();
     std::string get_next_creature_id() const;
 
-    std::multimap<ActionCost, std::string> creature_action_order;
+    CreatureActionMultimap creature_action_order;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef std::multimap<ActionCost, std::string>::iterator ActionOrderIterator;

@@ -61,3 +61,12 @@ void TileSelectionKeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('n'), TileSelectionCommandKeys::CURSOR_MOVE_SOUTHEAST));
 }
 
+KeyboardCommandMap* TileSelectionKeyboardCommandMap::clone()
+{
+  return new TileSelectionKeyboardCommandMap(*this);
+}
+
+ClassIdentifier TileSelectionKeyboardCommandMap::internal_class_identifier() const
+{
+  return CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP;
+}

@@ -45,3 +45,12 @@ Season Spring::get_next_season() const
   return SEASON_SUMMER;
 }
 
+ISeason* Spring::clone()
+{
+  return new Spring(*this);
+}
+
+ClassIdentifier Spring::internal_class_identifier() const
+{
+  return CLASS_ID_SPRING;
+}

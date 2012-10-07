@@ -3,10 +3,11 @@
 #include "common.hpp"
 #include "CalendarTypes.hpp"
 #include "ISeason.hpp"
+#include "ISerializable.hpp"
 
 class Date;
 
-class Calendar
+class Calendar : public ISerializable
 {
   public:
     Calendar();
@@ -18,6 +19,9 @@ class Calendar
     ISeasonPtr get_season() const;
     
     bool update_season_if_necessary();
+
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
     
   protected:
     // Number of seconds since day 1 of month 1 of year 832.
@@ -26,4 +30,7 @@ class Calendar
     double seconds;
     uint STARTING_YEAR;
     ISeasonPtr season;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

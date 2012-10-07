@@ -1,6 +1,7 @@
 #include "Calendar.hpp"
 #include "Date.hpp"
 #include "SeasonFactory.hpp"
+#include "Serialize.hpp"
 
 using std::set;
 
@@ -62,3 +63,32 @@ bool Calendar::update_season_if_necessary()
   return season_updated;
 }
 
+bool Calendar::serialize(std::ostream& stream)
+{
+  Serialize::write_double(stream, seconds);
+  Serialize::write_uint(stream, STARTING_YEAR);
+
+  Serialize::write_class_id(stream, season->get_class_identifier());
+  season->serialize(stream);
+
+  return true;
+}
+
+bool Calendar::deserialize(std::istream& stream)
+{
+  Serialize::read_double(stream, seconds);
+  Serialize::read_uint(stream, STARTING_YEAR);
+
+  ClassIdentifier season_ci;
+  Serialize::read_class_id(stream, season_ci);
+  season = SeasonFactory::create_season(season_ci);
+  if (!season) return false;
+  if (!season->deserialize(stream)) return false;
+
+  return true;
+}
+
+ClassIdentifier Calendar::internal_class_identifier() const
+{
+  return CLASS_ID_CALENDAR;
+}

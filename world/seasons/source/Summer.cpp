@@ -44,3 +44,13 @@ Season Summer::get_next_season() const
 {
   return SEASON_AUTUMN;
 }
+
+ISeason* Summer::clone()
+{
+  return new Summer(*this);
+}
+
+ClassIdentifier Summer::internal_class_identifier() const
+{
+  return CLASS_ID_SUMMER;
+}

@@ -1,8 +1,11 @@
 #include <boost/make_shared.hpp>
+#include "CommandFactoryFactory.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
+#include "KeyboardCommandMapFactory.hpp"
 #include "MapCursor.hpp"
 #include "MessageManager.hpp"
+#include "Serialize.hpp"
 #include "StringConstants.hpp"
 #include "TileDescription.hpp"
 #include "TileSelectionManager.hpp"
@@ -238,4 +241,49 @@ bool TileSelectionManager::remove_target(CreaturePtr creature, const AttackType 
   }
   
   return target_removed;
+}
+
+bool TileSelectionManager::serialize(std::ostream& stream)
+{
+  Serialize::write_class_id(stream, command_factory->get_class_identifier());
+  command_factory->serialize(stream);
+
+  Serialize::write_class_id(stream, kb_command_map->get_class_identifier());
+  kb_command_map->serialize(stream);
+
+  Serialize::write_string(stream, selection_key);
+  Serialize::write_bool(stream, show_tile_description);
+  Serialize::write_bool(stream, show_feature_description);
+  Serialize::write_bool(stream, show_creature_description);
+  Serialize::write_bool(stream, show_item_descriptions);
+
+  return true;
+}
+
+bool TileSelectionManager::deserialize(std::istream& stream)
+{
+  ClassIdentifier cf_ci;
+  Serialize::read_class_id(stream, cf_ci);
+  command_factory = CommandFactoryFactory::create_command_factory(cf_ci);
+  if (!command_factory) return false;
+  if (!command_factory->deserialize(stream)) return false;
+
+  ClassIdentifier kb_cm_ci;
+  Serialize::read_class_id(stream, kb_cm_ci);
+  kb_command_map = KeyboardCommandMapFactory::create_keyboard_command_map(kb_cm_ci);
+  if (!kb_command_map) return false;
+  if (!kb_command_map->deserialize(stream)) return false;
+
+  Serialize::read_string(stream, selection_key);
+  Serialize::read_bool(stream, show_tile_description);
+  Serialize::read_bool(stream, show_feature_description);
+  Serialize::read_bool(stream, show_creature_description);
+  Serialize::read_bool(stream, show_item_descriptions);
+
+  return true;
+}
+
+ClassIdentifier TileSelectionManager::internal_class_identifier() const
+{
+  return CLASS_ID_TILE_SELECTION_MANAGER;
 }

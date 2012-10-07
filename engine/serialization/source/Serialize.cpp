@@ -175,6 +175,40 @@ void Serialize::read_int(istream& stream, signed int& val)
   }
 }
 
+// Write a double value.
+void Serialize::write_double(ostream& stream, const double val)
+{
+  if (stream.good())
+  {
+    stream.write((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not write double");
+    throw stream_error;
+  }
+}
+
+// Read a double value.
+void Serialize::read_double(istream& stream, double& val)
+{
+  if (stream.good())
+  {
+    stream.read((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not read double");
+    throw stream_error;
+  }
+
+  if (stream.fail())
+  {
+    SerializationException stream_error("Could not read double");
+    throw stream_error;
+  }
+}
+
 // Write a std::string
 void Serialize::write_string(ostream& stream, const string& val)
 {
