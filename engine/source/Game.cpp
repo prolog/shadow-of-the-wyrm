@@ -464,6 +464,7 @@ bool Game::deserialize(istream& stream)
     WorldPtr world = WorldFactory::create_world();
     if (!world) return false;
     if (!world->deserialize(stream)) return false;
+    worlds.push_back(world);
   }
 
   Serialize::read_uint(stream, current_world_ix);
