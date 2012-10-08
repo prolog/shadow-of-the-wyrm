@@ -1,8 +1,8 @@
 #include "CreatureSkillIncrementer.hpp"
 #include "MessageManager.hpp"
+#include "Serialize.hpp"
 
-using std::map;
-using std::string;
+using namespace std;
 
 CreatureSkillIncrementer::CreatureSkillIncrementer()
 : ICreatureRegeneration(),
@@ -58,4 +58,4 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, const ulonglong minute
       }
     }
   }
-};
+}

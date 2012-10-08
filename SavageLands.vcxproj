@@ -367,6 +367,7 @@
     <ClInclude Include="engine\time\include\SeasonsTimeObserver.hpp" />
     <ClInclude Include="engine\time\include\SwimmingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\TerrainMovementAccumulationCheckerFactory.hpp" />
+    <ClInclude Include="engine\time\include\TimeObserverFactory.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeKeeper.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
     <ClInclude Include="engine\translators\include\CreatureTranslator.hpp" />
@@ -905,6 +906,7 @@
     <ClCompile Include="engine\time\source\SeasonsTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\SwimmingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp" />
+    <ClCompile Include="engine\time\source\TimeObserverFactory.cpp" />
     <ClCompile Include="engine\time\source\WorldTimeKeeper.cpp" />
     <ClCompile Include="engine\time\source\WorldTimeKeeperCoordinator.cpp" />
     <ClCompile Include="engine\translators\source\CreatureTranslator.cpp" />

@@ -14,3 +14,4 @@ void MovementAccumulationChecker::tick(CreaturePtr creature, const ulonglong min
     }
   }
 }
+

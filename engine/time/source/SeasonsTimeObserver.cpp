@@ -38,3 +38,13 @@ void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
     }
   }
 }
+
+ITimeObserver* SeasonsTimeObserver::clone() 
+{
+  return new SeasonsTimeObserver(*this);
+}
+
+ClassIdentifier SeasonsTimeObserver::internal_class_identifier() const
+{
+  return CLASS_ID_SEASONS_TIME_OBSERVER;
+}

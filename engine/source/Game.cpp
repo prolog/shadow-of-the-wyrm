@@ -419,7 +419,7 @@ bool Game::serialize(ostream& stream)
 
   ac.serialize(stream);
     
-  // JCD TODO: WorldTimeKeeper time_keeper;
+  time_keeper.serialize(stream);
     
   Serialize::write_class_id(stream, game_command_factory->get_class_identifier());
   game_command_factory->serialize(stream);
@@ -459,6 +459,8 @@ bool Game::deserialize(istream& stream)
   size_t num_worlds;
   Serialize::read_size_t(stream, num_worlds);
 
+  worlds.clear();
+
   for (unsigned int i = 0; i < num_worlds; i++)
   {
     WorldPtr world = WorldFactory::create_world();
@@ -473,8 +475,8 @@ bool Game::deserialize(istream& stream)
   actions.deserialize(stream);
     
   ac.deserialize(stream);
-    
-  // JCD TODO: WorldTimeKeeper time_keeper;
+
+  time_keeper.deserialize(stream);
     
   ClassIdentifier cf_ci;
   Serialize::read_class_id(stream, cf_ci);

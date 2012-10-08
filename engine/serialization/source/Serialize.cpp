@@ -175,6 +175,40 @@ void Serialize::read_int(istream& stream, signed int& val)
   }
 }
 
+// Write an unsigned long long
+void Serialize::write_ulonglong(ostream& stream, const unsigned long long val)
+{
+  if (stream.good())
+  {
+    stream.write((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not write ulonglong");
+    throw stream_error;
+  }
+}
+
+// Read an unsigned long long
+void Serialize::read_ulonglong(istream& stream, unsigned long long& val)
+{
+  if (stream.good())
+  {
+    stream.read((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not read unsigned long long");
+    throw stream_error;
+  }
+
+  if (stream.fail())
+  {
+    SerializationException stream_error("Could not read full unsigned long long");
+    throw stream_error;
+  }
+}
+
 // Write a double value.
 void Serialize::write_double(ostream& stream, const double val)
 {

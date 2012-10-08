@@ -1920,6 +1920,9 @@
     <ClInclude Include="world\include\WorldFactory.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\TimeObserverFactory.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3439,6 +3442,9 @@
     </ClCompile>
     <ClCompile Include="world\source\WorldFactory.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\TimeObserverFactory.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

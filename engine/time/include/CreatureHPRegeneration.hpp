@@ -6,7 +6,7 @@ class CreatureHPRegeneration : public ICreatureRegeneration
 {
   public:
     void tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed);
-    
+
   protected:
     HPRegenerationCalculator hp_regen_calc;
 };
