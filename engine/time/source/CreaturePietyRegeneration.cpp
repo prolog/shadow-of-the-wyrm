@@ -1,8 +1,9 @@
 #include "ClassManager.hpp"
 #include "CreaturePietyRegeneration.hpp"
 #include "ReligionConstants.hpp"
+#include "Serialize.hpp"
 
-using std::string;
+using namespace std;
 
 int CreaturePietyRegeneration::MINUTES_PER_POINT_OF_PIETY = 10;
 
@@ -90,4 +91,3 @@ int CreaturePietyRegeneration::regenerate_piety(const int piety, const int piety
   
   return new_piety;
 }
-

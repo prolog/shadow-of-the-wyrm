@@ -9,9 +9,17 @@ class CreatureTimeObserver : public ITimeObserver
     CreatureTimeObserver();
     
     void notify(const ulonglong minutes_elapsed);
+
+    ITimeObserver* clone();
+
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
     
   protected:
     void initialize_regeneration_helpers();
   
     std::vector<ICreatureRegenerationPtr> regen;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

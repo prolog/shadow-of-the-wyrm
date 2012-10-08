@@ -20,6 +20,9 @@ class Serialize
     static void write_int(std::ostream& stream, const signed int val);
     static void read_int(std::istream& stream, signed int& val);
 
+    static void write_ulonglong(std::ostream& stream, const unsigned long long val);
+    static void read_ulonglong(std::istream& stream, unsigned long long& val);
+
     static void write_double(std::ostream& stream, const double val);
     static void read_double(std::istream& stream, double& val);
 

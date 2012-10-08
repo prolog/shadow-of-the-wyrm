@@ -8,6 +8,7 @@
 #include "MovementAccumulationChecker.hpp"
 #include "MovementAccumulator.hpp"
 #include "RegenerationConstants.hpp"
+#include "Serialize.hpp"
 
 using namespace std;
 
@@ -20,6 +21,8 @@ CreatureTimeObserver::CreatureTimeObserver()
 // Set the list of regeneration helpers to apply to each creature on each "tick" (1 min passed)
 void CreatureTimeObserver::initialize_regeneration_helpers()
 {
+  regen.clear();
+
   // Regenerate the creature's HP
   ICreatureRegenerationPtr hp_regen     = boost::make_shared<CreatureHPRegeneration>();
   // Regenerate or degenerate the creature's piety, depending on the value.
@@ -71,4 +74,31 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
       }
     }
   }
+}
+
+ITimeObserver* CreatureTimeObserver::clone()
+{
+  return new CreatureTimeObserver(*this);
+}
+
+// No need to serialize the vector - a new list gets built up each time the object is created,
+// and it's never actually updated (yet, anyway).
+bool CreatureTimeObserver::serialize(ostream& stream)
+{
+  ITimeObserver::serialize(stream);
+
+  return true;
+}
+
+// See serialization note.
+bool CreatureTimeObserver::deserialize(istream& stream)
+{
+  ITimeObserver::deserialize(stream);
+
+  return true;
+}
+
+ClassIdentifier CreatureTimeObserver::internal_class_identifier() const
+{
+  return CLASS_ID_CREATURE_TIME_OBSERVER;
 }

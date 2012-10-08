@@ -13,4 +13,3 @@ void CreatureHPRegeneration::tick(CreaturePtr creature, const ulonglong minutes_
     }
   }
 }
-
