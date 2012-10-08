@@ -1,7 +1,11 @@
+#include <boost/foreach.hpp>
 #include "MapRegistry.hpp"
+#include "Serialize.hpp"
 
-using std::map;
-using std::string;
+// Needed for serialization
+#include "MapFactory.hpp"
+
+using namespace std;
 
 MapRegistry::MapRegistry()
 {
@@ -48,4 +52,51 @@ bool MapRegistry::remove_map(const string& map_id)
   }
   
   return map_removed;
+}
+
+bool MapRegistry::serialize(ostream& stream)
+{
+  Serialize::write_size_t(stream, map_registry.size());
+
+  BOOST_FOREACH(MapRegistryMap::value_type& map_pair, map_registry)
+  {
+    string map_guid = map_pair.first;
+    MapPtr map = map_pair.second;
+
+    Serialize::write_string(stream, map_guid);
+
+    Serialize::write_class_id(stream, map->get_class_identifier());
+    map->serialize(stream);
+  }
+
+  return true;
+}
+
+bool MapRegistry::deserialize(istream& stream)
+{
+  size_t map_registry_size;
+  Serialize::read_size_t(stream, map_registry_size);
+
+  map_registry.clear();
+
+  for (unsigned int i = 0; i < map_registry_size; i++)
+  {
+    string map_guid;
+    Serialize::read_string(stream, map_guid);
+
+    // There's only one kind of map - consume and ignore the class ID for now.
+    ClassIdentifier map_clid;
+    Serialize::read_class_id(stream, map_clid);
+    MapPtr map = MapFactory::create_map();
+    map->deserialize(stream);
+
+    map_registry.insert(make_pair(map_guid, map));
+  }
+
+  return true;
+}
+
+ClassIdentifier MapRegistry::internal_class_identifier() const
+{
+  return CLASS_ID_MAP_REGISTRY;
 }

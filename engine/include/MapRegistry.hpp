@@ -1,9 +1,11 @@
 #pragma once
 #include <map>
 #include <string>
+#include "ISerializable.hpp"
 #include "Map.hpp"
+typedef std::map<std::string, MapPtr> MapRegistryMap;
 
-class MapRegistry
+class MapRegistry : public ISerializable
 {
   public:
     MapRegistry();
@@ -13,9 +15,12 @@ class MapRegistry
     MapPtr get_map(const std::string& map_id) const;
     bool remove_map(const std::string& map_id);
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
-    std::map<std::string, MapPtr> map_registry;
+    MapRegistryMap map_registry;
     
   private:
-    friend class TemplatesSerialization;
+    ClassIdentifier internal_class_identifier() const;
 };

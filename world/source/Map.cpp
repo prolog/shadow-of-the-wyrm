@@ -330,6 +330,20 @@ string Map::make_map_key(const int row, const int col)
   return ss.str();
 }
 
+bool Map::serialize(ostream& stream)
+{
+  return true;
+}
+
+bool Map::deserialize(istream& stream)
+{
+  return true;
+}
+
+ClassIdentifier Map::internal_class_identifier() const
+{
+  return CLASS_ID_MAP;
+}
 
 // There should be an IFDEF_UNIT_TESTS here, but the compiler isn't finding Map_test.cpp.
 // However, it's able to do do so once I add that include to MapUtils.  So, the include
