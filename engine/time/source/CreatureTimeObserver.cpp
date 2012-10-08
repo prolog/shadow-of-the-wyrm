@@ -78,7 +78,13 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
 
 ITimeObserver* CreatureTimeObserver::clone()
 {
-  return new CreatureTimeObserver(*this);
+  CreatureTimeObserver* creature_observer = new CreatureTimeObserver(*this);
+
+  // Ensure that the new CreatureTimeObserver points to a *different*
+  // set of regeneration helpers than the current object.
+  creature_observer->initialize_regeneration_helpers();
+
+  return creature_observer;
 }
 
 // No need to serialize the vector - a new list gets built up each time the object is created,
