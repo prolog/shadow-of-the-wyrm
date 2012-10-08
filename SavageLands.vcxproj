@@ -1009,6 +1009,7 @@
     <ClCompile Include="world\source\ItemTypes.cpp" />
     <ClCompile Include="world\source\Map.cpp" />
     <ClCompile Include="world\source\MapExit.cpp" />
+    <ClCompile Include="world\source\MapFactory.cpp" />
     <ClCompile Include="world\source\MiscItem.cpp" />
     <ClCompile Include="world\source\MovementAccumulation.cpp" />
     <ClCompile Include="world\source\Plant.cpp" />

@@ -3446,6 +3446,9 @@
     <ClCompile Include="engine\time\source\TimeObserverFactory.cpp">
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\MapFactory.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="world\tiles\source\make.exe.stackdump">

@@ -4,6 +4,7 @@
 #include <vector>
 #include "common.hpp"
 #include "Dimensions.hpp"
+#include "ISerializable.hpp"
 #include "Tile.hpp"
 #include "MapExit.hpp"
 #include "MapTypes.hpp"
@@ -12,7 +13,7 @@
 class Creature;
 class Tile;
 
-class Map
+class Map : public ISerializable
 {
 	public:
     Map(const Map& new_map);
@@ -71,6 +72,9 @@ class Map
     void set_permanent(const bool permenance);
     bool get_permanent() const;
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
 	protected:
     friend class SL_Engine_Map;
     
@@ -92,6 +96,9 @@ class Map
     MapExitPtr map_exit;
     std::string map_id;
     bool permanent;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Map> MapPtr;

@@ -394,7 +394,7 @@ bool Game::serialize(ostream& stream)
   Serialize::write_class_id(stream, display->get_class_identifier());
   display->serialize(stream);
 
-  // JCD TODO: MapRegistry
+  map_registry.serialize(stream);
 
   // Ignore deity map - this will be built up on startup.
   // Ignore race map - this will be built up on startup.
@@ -446,7 +446,7 @@ bool Game::deserialize(istream& stream)
   if (!display) return false;
   if (!display->deserialize(stream)) return false;
 
-  // JCD TODO: MapRegistry
+  map_registry.deserialize(stream);
 
   // Ignore deity map - this will be built up on startup.
   // Ignore race map - this will be built up on startup.
