@@ -5,6 +5,7 @@
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
 #include "Map.hpp"
+#include "MapFactory.hpp"
 #include "MapUtils.hpp"
 #include "Serialize.hpp"
 
@@ -350,7 +351,18 @@ bool Map::serialize(ostream& stream)
   Serialize::write_enum(stream, terrain_type);
   Serialize::write_enum(stream, map_type);
 
-  // map_exit
+  // Map exit can be null (for overworld, maybe dungeon maps, etc.),
+  // so guard against this case in both serialization and deserialization.
+  if (map_exit)
+  {
+    Serialize::write_class_id(stream, map_exit->get_class_identifier());
+    map_exit->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
   Serialize::write_string(stream, map_id);
   Serialize::write_bool(stream, permanent);
 
@@ -384,7 +396,18 @@ bool Map::deserialize(istream& stream)
   Serialize::read_enum(stream, terrain_type);
   Serialize::read_enum(stream, map_type);
 
-  // map_exit
+  // Consume and ignore class ID for now.  Then create the map exit, and deserialize.
+  ClassIdentifier map_exit_clid;
+  Serialize::read_class_id(stream, map_exit_clid);
+
+  // If the map exit wasn't null originally (e.g., map exit on overworld map),
+  // then read the details.
+  if (map_exit_clid != CLASS_ID_NULL)
+  {
+    map_exit = MapFactory::create_map_exit();
+    map_exit->deserialize(stream);
+  }
+
   Serialize::read_string(stream, map_id);
   Serialize::read_bool(stream, permanent);
 
