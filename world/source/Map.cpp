@@ -6,6 +6,7 @@
 #include "Conversion.hpp"
 #include "Map.hpp"
 #include "MapUtils.hpp"
+#include "Serialize.hpp"
 
 using namespace std;
 using namespace boost;
@@ -332,11 +333,61 @@ string Map::make_map_key(const int row, const int col)
 
 bool Map::serialize(ostream& stream)
 {
+  // creatures - not serialized.  build up after deserialization.
+  // tiles
+  dimensions.serialize(stream);
+  original_dimensions.serialize(stream);
+
+  Serialize::write_size_t(stream, locations.size());
+
+  BOOST_FOREACH(NamedMapLocations::value_type& map_pair, locations)
+  {
+    Serialize::write_string(stream, map_pair.first);
+    Serialize::write_int(stream, map_pair.second.first); // coords
+    Serialize::write_int(stream, map_pair.second.second); // coords
+  }
+
+  Serialize::write_enum(stream, terrain_type);
+  Serialize::write_enum(stream, map_type);
+
+  // map_exit
+  Serialize::write_string(stream, map_id);
+  Serialize::write_bool(stream, permanent);
+
   return true;
 }
 
 bool Map::deserialize(istream& stream)
 {
+  // tiles
+  // creatures - build up after deserialization
+  dimensions.deserialize(stream);
+  original_dimensions.deserialize(stream);
+
+  size_t map_size;
+  Serialize::read_size_t(stream, map_size);
+
+  locations.clear();
+
+  for (unsigned int i = 0; i < map_size; i++)
+  {
+    string location_name;
+    Coordinate coord;
+
+    Serialize::read_string(stream, location_name);
+    Serialize::read_int(stream, coord.first);
+    Serialize::read_int(stream, coord.second);
+
+    locations.insert(make_pair(location_name, coord));
+  }
+
+  Serialize::read_enum(stream, terrain_type);
+  Serialize::read_enum(stream, map_type);
+
+  // map_exit
+  Serialize::read_string(stream, map_id);
+  Serialize::read_bool(stream, permanent);
+
   return true;
 }
 

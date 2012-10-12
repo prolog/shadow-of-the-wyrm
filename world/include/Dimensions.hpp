@@ -1,10 +1,11 @@
 #pragma once
 #include "Depth.hpp"
+#include "ISerializable.hpp"
 
 #define DEFAULT_DIMENSIONS_Y 20;
 #define DEFAULT_DIMENSIONS_X 80;
 
-class Dimensions
+class Dimensions : public ISerializable
 {
   public:
     Dimensions();
@@ -19,9 +20,15 @@ class Dimensions
     void set_depth(const Depth& new_depth);
     Depth depth() const;
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
     int y;
     int x;
     Depth dim_depth;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 

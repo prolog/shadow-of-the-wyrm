@@ -1,10 +1,11 @@
 #pragma once
 #include <string>
 #include "common.hpp"
+#include "ISerializable.hpp"
 
 // Depth is used to represent the character's general location in the
 // world.  Each integer value represents 25 feet above or below ground.
-class Depth
+class Depth : public ISerializable
 {
   public:
     Depth();
@@ -18,10 +19,16 @@ class Depth
 
     std::string str() const;
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
     // Negative depths: dungeons, caverns, etc.
     // Positive depths: towers, castles, etc.
     int current, maximum;
     static const int DEPTH_MULTIPLIER;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
