@@ -17,3 +17,9 @@ MapPtr MapFactory::create_map()
   return map;
 }
 
+MapExitPtr MapFactory::create_map_exit()
+{
+  MapExitPtr map_exit = boost::make_shared<MapExit>();
+
+  return map_exit;
+}

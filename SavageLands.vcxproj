@@ -444,6 +444,7 @@
     <ClInclude Include="world\include\ItemTypes.hpp" />
     <ClInclude Include="world\include\Map.hpp" />
     <ClInclude Include="world\include\MapExit.hpp" />
+    <ClInclude Include="world\include\MapFactory.hpp" />
     <ClInclude Include="world\include\MapTypes.hpp" />
     <ClInclude Include="world\include\MiscItem.hpp" />
     <ClInclude Include="world\include\MovementAccumulation.hpp" />

@@ -1,9 +1,10 @@
 #pragma once
 #include <boost/shared_ptr.hpp>
 #include <string>
+#include "ISerializable.hpp"
 #include "tiles.hpp"
 
-class MapExit
+class MapExit : public ISerializable
 {
   public:
     MapExit();
@@ -18,9 +19,15 @@ class MapExit
     bool is_using_map_id() const;
     bool is_using_terrain_type() const;
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
     std::string map_id;
     TileType terrain_type;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<MapExit> MapExitPtr;
