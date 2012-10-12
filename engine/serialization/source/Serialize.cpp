@@ -1,6 +1,5 @@
 #include <boost/scoped_array.hpp>
 #include "Serialize.hpp"
-#include "SerializationExceptions.hpp"
 
 using namespace std;
 

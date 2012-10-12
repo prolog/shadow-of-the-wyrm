@@ -1,7 +1,8 @@
 #include "Conversion.hpp"
 #include "Depth.hpp"
+#include "Serialize.hpp"
 
-using std::string;
+using namespace std;
 
 // Depth 1 is -50 feet (under ground, positive depth).
 // Depth -1 is 50 feet (above ground, negative depth).
@@ -50,4 +51,29 @@ string Depth::str() const
   }
   
   return depth_s;
+}
+
+bool Depth::serialize(ostream& stream)
+{
+  Serialize::write_int(stream, current);
+  Serialize::write_int(stream, maximum);
+  Serialize::write_int(stream, DEPTH_MULTIPLIER);
+
+  return true;
+}
+
+bool Depth::deserialize(istream& stream)
+{
+  int* mult_p = const_cast<int*>(&DEPTH_MULTIPLIER);
+
+  Serialize::read_int(stream, current);
+  Serialize::read_int(stream, maximum);
+  Serialize::read_int(stream, *mult_p); // I'm sorry, I'm sorry, I'm sorry.
+
+  return true;
+}
+
+ClassIdentifier Depth::internal_class_identifier() const
+{
+  return CLASS_ID_DEPTH;
 }

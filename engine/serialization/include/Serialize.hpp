@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include "ClassIdentifiers.hpp"
+#include "SerializationExceptions.hpp"
 
 class Serialize
 {
@@ -28,5 +29,33 @@ class Serialize
 
     static void write_string(std::ostream& stream, const std::string& val);
     static void read_string(std::istream& stream, std::string& val);
+
+    template<typename T> 
+    static void write_enum(std::ostream& stream, const T enum_type)
+    {
+      if (stream.good())
+      {
+        stream.write((char*)&enum_type, sizeof(enum_type));
+      }
+      else
+      {
+        SerializationException stream_error("Could not write enum");
+        throw stream_error;
+      }
+    }
+
+    template<typename T>
+    static void read_enum(std::istream& stream, const T enum_type)
+    {
+      if (stream.good())
+      {
+        stream.read((char*)&enum_type, sizeof(enum_type));
+      }
+      else
+      {
+        SerializationException stream_error("Could not read an enum");
+        throw stream_error;
+      }
+    }
 };
 

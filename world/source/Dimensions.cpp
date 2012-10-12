@@ -1,4 +1,7 @@
 #include "Dimensions.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 Dimensions::Dimensions()
 {
@@ -42,6 +45,29 @@ void Dimensions::set_depth(const Depth& new_depth)
 Depth Dimensions::depth() const
 {
   return dim_depth;
+}
+
+bool Dimensions::serialize(ostream& stream)
+{
+  Serialize::write_int(stream, y);
+  Serialize::write_int(stream, x);
+  dim_depth.serialize(stream);
+
+  return true;
+}
+
+bool Dimensions::deserialize(istream& stream)
+{
+  Serialize::read_int(stream, y);
+  Serialize::read_int(stream, x);
+  dim_depth.deserialize(stream);
+
+  return true;
+}
+
+ClassIdentifier Dimensions::internal_class_identifier() const
+{
+  return CLASS_ID_DIMENSIONS;
 }
 
 #ifdef UNIT_TESTS
