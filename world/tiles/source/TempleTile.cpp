@@ -20,3 +20,13 @@ std::string TempleTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_TEMPLE;
 }
+
+Tile* TempleTile::clone()
+{
+  return new TempleTile(*this);
+}
+
+ClassIdentifier TempleTile::internal_class_identifier() const
+{
+  return CLASS_ID_TEMPLE_TILE;
+}

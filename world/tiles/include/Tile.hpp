@@ -7,13 +7,14 @@
 #include "Directions.hpp"
 #include "Feature.hpp"
 #include "Item.hpp"
+#include "ISerializable.hpp"
 #include "MapExit.hpp"
 
 typedef std::map<Direction, MapExitPtr> TileExitMap;
 
 class Creature;
 
-class Tile
+class Tile : public ISerializable
 {
   public:
     Tile();
@@ -63,6 +64,11 @@ class Tile
     virtual bool get_dangerous() const;
     virtual std::string get_danger_confirmation_sid() const;
     
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
+    virtual Tile* clone() = 0;
+
   protected:
     virtual void set_default_properties();
 
@@ -87,6 +93,9 @@ class Tile
     
     // A tile can have exits in various directions. These lead to other maps/levels/etc.
     TileExitMap map_exits;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Tile> TilePtr;

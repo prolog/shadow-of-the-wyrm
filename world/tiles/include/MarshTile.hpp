@@ -9,5 +9,10 @@ class MarshTile : public WorldMapTile
     std::string get_tile_description_sid() const;
     
     int get_movement_multiplier() const;
+
+    virtual Tile* clone();
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 

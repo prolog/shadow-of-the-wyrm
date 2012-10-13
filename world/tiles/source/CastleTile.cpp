@@ -9,3 +9,13 @@ std::string CastleTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_CASTLE;
 }
+
+Tile* CastleTile::clone()
+{
+  return new CastleTile(*this);
+}
+
+ClassIdentifier CastleTile::internal_class_identifier() const
+{
+  return CLASS_ID_CASTLE_TILE;
+}

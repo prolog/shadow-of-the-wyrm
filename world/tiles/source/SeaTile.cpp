@@ -15,6 +15,16 @@ std::string SeaTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_SEA;
 }
 
+Tile* SeaTile::clone()
+{
+  return new SeaTile(*this);
+}
+
+ClassIdentifier SeaTile::internal_class_identifier() const
+{
+  return CLASS_ID_SEA_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/SeaTile_test.cpp"
 #endif

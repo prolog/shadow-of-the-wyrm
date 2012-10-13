@@ -557,6 +557,7 @@
     <ClInclude Include="world\tiles\include\StaircaseTile.hpp" />
     <ClInclude Include="world\tiles\include\TempleTile.hpp" />
     <ClInclude Include="world\tiles\include\Tile.hpp" />
+    <ClInclude Include="world\tiles\include\TileFactory.hpp" />
     <ClInclude Include="world\tiles\include\tiles.hpp" />
     <ClInclude Include="world\tiles\include\TreeTile.hpp" />
     <ClInclude Include="world\tiles\include\UpStaircaseTile.hpp" />
@@ -1102,6 +1103,7 @@
     <ClCompile Include="world\tiles\source\StaircaseTile.cpp" />
     <ClCompile Include="world\tiles\source\TempleTile.cpp" />
     <ClCompile Include="world\tiles\source\Tile.cpp" />
+    <ClCompile Include="world\tiles\source\TileFactory.cpp" />
     <ClCompile Include="world\tiles\source\TreeTile.cpp" />
     <ClCompile Include="world\tiles\source\unit_tests\BeachTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1196,9 +1198,6 @@
     <ClCompile Include="world\tiles\source\WheatTile.cpp" />
     <ClCompile Include="world\tiles\source\WorldMapTile.cpp" />
     <ClCompile Include="world\tiles\source\WorshipSiteTile.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="world\tiles\source\make.exe.stackdump" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

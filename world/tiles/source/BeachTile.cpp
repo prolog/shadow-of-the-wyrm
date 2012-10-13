@@ -10,6 +10,16 @@ std::string BeachTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_BEACH;
 }
 
+Tile* BeachTile::clone()
+{
+  return new BeachTile(*this);
+}
+
+ClassIdentifier BeachTile::internal_class_identifier() const
+{
+  return CLASS_ID_BEACH_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/BeachTile_test.cpp"
 #endif

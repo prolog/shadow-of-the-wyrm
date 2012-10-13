@@ -1,6 +1,7 @@
+#include "Serialize.hpp"
 #include "WorshipSiteTile.hpp"
 
-using std::string;
+using namespace std;
 
 WorshipSiteTile::WorshipSiteTile()
 : WorldMapLandmarkTile()
@@ -28,3 +29,27 @@ WorshipSiteType WorshipSiteTile::get_worship_site_type() const
   return site_type;
 }
 
+bool WorshipSiteTile::serialize(ostream& stream)
+{
+  WorldMapLandmarkTile::serialize(stream);
+
+  Serialize::write_string(stream, deity_id);
+  Serialize::write_enum(stream, site_type);
+
+  return true;
+}
+
+bool WorshipSiteTile::deserialize(istream& stream)
+{
+  WorldMapLandmarkTile::deserialize(stream);
+
+  Serialize::read_string(stream, deity_id);
+  Serialize::read_enum(stream, site_type);
+
+  return true;
+}
+
+ClassIdentifier WorshipSiteTile::internal_class_identifier() const
+{
+  return CLASS_ID_WORSHIP_SITE_TILE;
+}

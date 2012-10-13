@@ -11,6 +11,16 @@ std::string DaisTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_DAIS;
 }
 
+Tile* DaisTile::clone()
+{
+  return new DaisTile(*this);
+}
+
+ClassIdentifier DaisTile::internal_class_identifier() const
+{
+  return CLASS_ID_DAIS_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/DaisTile_test.cpp"
 #endif

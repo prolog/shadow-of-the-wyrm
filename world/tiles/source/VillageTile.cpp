@@ -1,6 +1,7 @@
+#include "Serialize.hpp"
 #include "VillageTile.hpp"
 
-using std::string;
+using namespace std;
 
 VillageTile::VillageTile()
 {
@@ -47,6 +48,36 @@ void VillageTile::set_settlement_type(const SettlementType new_settlement_type)
 SettlementType VillageTile::get_settlement_type() const
 {
   return settlement_type;
+}
+
+bool VillageTile::serialize(ostream& stream)
+{
+  WorldMapLandmarkTile::serialize(stream);
+
+  Serialize::write_string(stream, village_race_id);
+  Serialize::write_enum(stream, settlement_type);
+
+  return true;
+}
+
+bool VillageTile::deserialize(istream& stream)
+{
+  WorldMapLandmarkTile::deserialize(stream);
+
+  Serialize::read_string(stream, village_race_id);
+  Serialize::read_enum(stream, settlement_type);
+
+  return true;
+}
+
+Tile* VillageTile::clone()
+{
+  return new VillageTile(*this);
+}
+
+ClassIdentifier VillageTile::internal_class_identifier() const
+{
+  return CLASS_ID_VILLAGE_TILE;
 }
 
 #ifdef UNIT_TESTS

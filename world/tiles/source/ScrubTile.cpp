@@ -10,6 +10,16 @@ std::string ScrubTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_SCRUB;
 }
 
+Tile* ScrubTile::clone()
+{
+  return new ScrubTile(*this);
+}
+
+ClassIdentifier ScrubTile::internal_class_identifier() const
+{
+  return CLASS_ID_SCRUB_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/ScrubTile_test.cpp"
 #endif

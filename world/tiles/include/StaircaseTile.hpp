@@ -15,6 +15,9 @@ class StaircaseTile : public Tile
     virtual StaircaseType get_staircase_type() const = 0;
     
     virtual bool display_description_on_arrival() const { return true; }
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<StaircaseTile> StaircaseTilePtr;

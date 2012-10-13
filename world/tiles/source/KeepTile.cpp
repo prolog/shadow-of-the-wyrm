@@ -9,3 +9,13 @@ std::string KeepTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_KEEP;
 }
+
+Tile* KeepTile::clone()
+{
+  return new KeepTile(*this);
+}
+
+ClassIdentifier KeepTile::internal_class_identifier() const
+{
+  return CLASS_ID_KEEP_TILE;
+}

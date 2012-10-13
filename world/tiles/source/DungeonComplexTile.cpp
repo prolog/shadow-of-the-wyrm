@@ -10,3 +10,13 @@ std::string DungeonComplexTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_DUNGEON_COMPLEX;
 }
+
+Tile* DungeonComplexTile::clone()
+{
+  return new DungeonComplexTile(*this);
+}
+
+ClassIdentifier DungeonComplexTile::internal_class_identifier() const
+{
+  return CLASS_ID_DUNGEON_COMPLEX_TILE;
+}

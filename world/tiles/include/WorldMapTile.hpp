@@ -7,6 +7,9 @@ class WorldMapTile : public Tile
     WorldMapTile();
 
     virtual bool display_description_on_arrival() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 class WorldMapLandmarkTile : public WorldMapTile
@@ -15,4 +18,7 @@ class WorldMapLandmarkTile : public WorldMapTile
     WorldMapLandmarkTile();
     
     virtual bool display_description_on_arrival() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

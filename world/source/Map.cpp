@@ -8,6 +8,7 @@
 #include "MapFactory.hpp"
 #include "MapUtils.hpp"
 #include "Serialize.hpp"
+#include "TileFactory.hpp"
 
 using namespace std;
 using namespace boost;
@@ -335,7 +336,19 @@ string Map::make_map_key(const int row, const int col)
 bool Map::serialize(ostream& stream)
 {
   // creatures - not serialized.  build up after deserialization.
+
   // tiles
+  Serialize::write_size_t(stream, tiles.size());
+
+  BOOST_FOREACH(TilesMap::value_type& map_pair, tiles)
+  {
+    Serialize::write_string(stream, map_pair.first);
+
+    TilePtr tile = map_pair.second;
+    Serialize::write_class_id(stream, tile->get_class_identifier());
+    tile->serialize(stream);
+  }
+
   dimensions.serialize(stream);
   original_dimensions.serialize(stream);
 
@@ -372,7 +385,27 @@ bool Map::serialize(ostream& stream)
 bool Map::deserialize(istream& stream)
 {
   // tiles
+  size_t num_tiles;
+  Serialize::read_size_t(stream, num_tiles);
+
+  tiles.clear();
+
+  for (unsigned int i = 0; i < num_tiles; i++)
+  {
+    string map_key;
+    Serialize::read_string(stream, map_key);
+
+    ClassIdentifier tile_clid;
+    Serialize::read_class_id(stream, tile_clid);
+    TilePtr tile = TileFactory::create_tile(tile_clid);
+    tile->deserialize(stream);
+
+    tiles.insert(make_pair(map_key, tile));
+  }
+
   // creatures - build up after deserialization
+  create_creatures();
+
   dimensions.deserialize(stream);
   original_dimensions.deserialize(stream);
 

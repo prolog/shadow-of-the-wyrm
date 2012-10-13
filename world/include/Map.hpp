@@ -13,6 +13,8 @@
 class Creature;
 class Tile;
 
+typedef std::map<std::string, boost::shared_ptr<Tile> > TilesMap;
+
 class Map : public ISerializable
 {
 	public:
@@ -87,7 +89,7 @@ class Map : public ISerializable
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
     std::map<std::string, boost::shared_ptr<Creature> > creatures;
 
-		std::map<std::string, boost::shared_ptr<Tile> > tiles;
+		TilesMap tiles;
 		Dimensions dimensions;
 		Dimensions original_dimensions;
     NamedMapLocations locations;

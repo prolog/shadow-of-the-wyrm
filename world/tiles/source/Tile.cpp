@@ -1,7 +1,10 @@
+#include <boost/foreach.hpp>
 #include "Inventory.hpp"
+#include "MapFactory.hpp"
+#include "Serialize.hpp"
 #include "Tile.hpp"
 
-using std::string;
+using namespace std;
 
 /*
  ******************************************************************
@@ -159,6 +162,86 @@ string Tile::get_danger_confirmation_sid() const
 {
   string empty_sid;
   return empty_sid;
+}
+
+bool Tile::serialize(ostream& stream)
+{
+  Serialize::write_bool(stream, illuminated);
+  Serialize::write_bool(stream, explored);
+  Serialize::write_bool(stream, viewed);
+  Serialize::write_enum(stream, tile_type);
+  Serialize::write_enum(stream, tile_subtype);
+
+  // creature
+
+  // feature
+
+  // items
+
+  Serialize::write_size_t(stream, map_exits.size());
+
+  BOOST_FOREACH(TileExitMap::value_type& tile_exit_map_pair, map_exits)
+  {
+    Direction d = tile_exit_map_pair.first;
+    MapExitPtr map_exit = tile_exit_map_pair.second;
+
+    Serialize::write_enum(stream, d);
+
+    if (map_exit)
+    {
+      Serialize::write_class_id(stream, map_exit->get_class_identifier());
+      map_exit->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, CLASS_ID_NULL);
+    }
+  }
+
+  return true;
+}
+
+bool Tile::deserialize(istream& stream)
+{
+  Serialize::read_bool(stream, illuminated);
+  Serialize::read_bool(stream, explored);
+  Serialize::read_bool(stream, viewed);
+  Serialize::read_enum(stream, tile_type);
+  Serialize::read_enum(stream, tile_subtype);
+
+  // creature
+
+  // feature
+
+  // items
+
+  size_t map_size;
+  Serialize::read_size_t(stream, map_size);
+
+  map_exits.clear();
+
+  for (unsigned int i = 0; i < map_size; i++)
+  {
+    Direction d = DIRECTION_NORTH; // just a random default value - otherwise, compiler warnings.
+    Serialize::read_enum(stream, d);
+
+    ClassIdentifier map_exit_clid;
+    Serialize::read_class_id(stream, map_exit_clid);
+    MapExitPtr current_dir_map_exit = MapFactory::create_map_exit();
+    if (map_exit_clid != CLASS_ID_NULL)
+    {
+      current_dir_map_exit->deserialize(stream);
+    }
+
+    map_exits.insert(make_pair(d, current_dir_map_exit));
+  }
+
+  return true;
+}
+
+ClassIdentifier Tile::internal_class_identifier() const
+{
+  return CLASS_ID_TILE;
 }
 
 #ifdef UNIT_TESTS

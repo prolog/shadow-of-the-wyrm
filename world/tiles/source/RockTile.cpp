@@ -20,6 +20,15 @@ int RockTile::get_movement_multiplier() const
   return 0;
 }
 
+Tile* RockTile::clone()
+{
+  return new RockTile(*this);
+}
+ClassIdentifier RockTile::internal_class_identifier() const
+{
+  return CLASS_ID_ROCK_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/RockTile_test.cpp"
 #endif

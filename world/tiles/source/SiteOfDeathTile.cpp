@@ -20,3 +20,13 @@ std::string SiteOfDeathTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_SITE_OF_DEATH;
 }
+
+Tile* SiteOfDeathTile::clone()
+{
+  return new SiteOfDeathTile(*this);
+}
+
+ClassIdentifier SiteOfDeathTile::internal_class_identifier() const
+{
+  return CLASS_ID_SITE_OF_DEATH_TILE;
+}
