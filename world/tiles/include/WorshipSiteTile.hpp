@@ -17,9 +17,15 @@ class WorshipSiteTile : public WorldMapLandmarkTile
     virtual void set_worship_site_type(const WorshipSiteType new_site_type);
     virtual WorshipSiteType get_worship_site_type() const;
 
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     std::string deity_id;
     WorshipSiteType site_type;    
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<WorshipSiteTile> WorshipSiteTilePtr;

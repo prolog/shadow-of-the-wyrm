@@ -22,10 +22,18 @@ class VillageTile : public WorldMapLandmarkTile
     
     void set_settlement_type(const SettlementType settlement_type);
     SettlementType get_settlement_type() const;
-    
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
+    virtual Tile* clone();
+
   protected:
     std::string village_race_id;
     SettlementType settlement_type;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<VillageTile> VillageTilePtr;

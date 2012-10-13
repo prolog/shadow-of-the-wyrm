@@ -1926,6 +1926,9 @@
     <ClInclude Include="world\include\MapFactory.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\TileFactory.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3452,10 +3455,8 @@
     <ClCompile Include="world\source\MapFactory.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="world\tiles\source\make.exe.stackdump">
+    <ClCompile Include="world\tiles\source\TileFactory.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
-    </None>
+    </ClCompile>
   </ItemGroup>
 </Project>

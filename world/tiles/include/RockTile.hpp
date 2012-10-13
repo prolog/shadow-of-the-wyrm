@@ -10,5 +10,10 @@ class RockTile : public Tile
 
     bool get_is_blocking() const;
     int get_movement_multiplier() const;
+
+    virtual Tile* clone();
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 

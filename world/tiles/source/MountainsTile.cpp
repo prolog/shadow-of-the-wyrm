@@ -24,6 +24,16 @@ string MountainsTile::get_danger_confirmation_sid() const
   return danger_confirmation;
 }
 
+Tile* MountainsTile::clone()
+{
+  return new MountainsTile(*this);
+}
+
+ClassIdentifier MountainsTile::internal_class_identifier() const
+{
+  return CLASS_ID_MOUNTAINS_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/MountainsTile_test.cpp"
 #endif

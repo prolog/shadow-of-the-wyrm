@@ -15,6 +15,16 @@ std::string RiverTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_RIVER;
 }
 
+Tile* RiverTile::clone()
+{
+  return new RiverTile(*this);
+}
+
+ClassIdentifier RiverTile::internal_class_identifier() const
+{
+  return CLASS_ID_RIVER_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/RiverTile_test.cpp"
 #endif

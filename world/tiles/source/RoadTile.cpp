@@ -10,6 +10,16 @@ std::string RoadTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_ROAD;
 }
 
+Tile* RoadTile::clone()
+{
+  return new RoadTile(*this);
+}
+
+ClassIdentifier RoadTile::internal_class_identifier() const
+{
+  return CLASS_ID_ROAD_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/RoadTile_test.cpp"
 #endif

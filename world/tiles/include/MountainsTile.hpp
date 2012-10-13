@@ -8,5 +8,10 @@ class MountainsTile : public WorldMapTile
     std::string get_tile_description_sid() const;
     bool get_dangerous() const;
     std::string get_danger_confirmation_sid() const;
+
+    virtual Tile* clone();
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 

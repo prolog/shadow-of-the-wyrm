@@ -15,6 +15,16 @@ std::string DownStaircaseTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_DOWN_STAIRCASE;
 }
 
+Tile* DownStaircaseTile::clone()
+{
+  return new DownStaircaseTile(*this);
+}
+
+ClassIdentifier DownStaircaseTile::internal_class_identifier() const
+{
+  return CLASS_ID_DOWN_STAIRCASE_TILE;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/DownStaircaseTile_test.cpp"
 #endif
