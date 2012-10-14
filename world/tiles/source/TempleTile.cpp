@@ -5,7 +5,7 @@ TempleTile::TempleTile()
 {
   tile_subtype = TILE_TYPE_UNDEFINED;
 }
-
+ 
 TempleTile::TempleTile(const TileType subtype)
 {
   tile_subtype = subtype;

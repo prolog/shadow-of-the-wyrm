@@ -2,9 +2,8 @@
 #include "CreatureFeatures.hpp"
 #include "EntranceState.hpp"
 #include "Feature.hpp"
-#include "ILockable.hpp"
 
-class Entrance : public Feature, public ILockable
+class Entrance : public Feature
 {
   public:
     Entrance();
@@ -18,6 +17,8 @@ class Entrance : public Feature, public ILockable
     
     virtual void set_maximum_size(const CreatureSize new_maximum_size);
     virtual CreatureSize get_maximum_size() const;
+
+    virtual bool can_open() const;
     
   protected:
     LockPtr lock;

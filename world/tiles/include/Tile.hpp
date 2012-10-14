@@ -17,7 +17,9 @@ class Creature;
 class Tile : public ISerializable
 {
   public:
-    Tile();
+    // No public constructor - making tiles copyable would be bad, because then all the various shared pointers
+    // associated with them would also be copied, which might not be intended.  Use TileGenerator to ensure each
+    // copy starts fresh.
     virtual ~Tile();
     
     virtual std::string get_tile_description_sid() const = 0;
@@ -70,6 +72,8 @@ class Tile : public ISerializable
     virtual Tile* clone() = 0;
 
   protected:
+    Tile();
+
     virtual void set_default_properties();
 
     bool illuminated;

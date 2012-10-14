@@ -5,6 +5,11 @@ Altar::Altar(const std::string& new_deity_id, MaterialPtr new_material)
 {
 }
 
+bool Altar::can_offer() const
+{
+  return true;
+}
+
 bool Altar::handle()
 {
   return offer();

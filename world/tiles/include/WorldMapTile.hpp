@@ -4,8 +4,6 @@
 class WorldMapTile : public Tile
 {
   public:
-    WorldMapTile();
-
     virtual bool display_description_on_arrival() const;
 
   private:
@@ -15,8 +13,6 @@ class WorldMapTile : public Tile
 class WorldMapLandmarkTile : public WorldMapTile
 {
   public:
-    WorldMapLandmarkTile();
-    
     virtual bool display_description_on_arrival() const;
 
   private:

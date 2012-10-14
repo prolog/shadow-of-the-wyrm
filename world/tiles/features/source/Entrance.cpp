@@ -41,3 +41,8 @@ CreatureSize Entrance::get_maximum_size() const
 {
   return maximum_size;
 }
+
+bool Entrance::can_open() const
+{
+  return true;
+}
