@@ -27,3 +27,7 @@ uchar Bench::get_symbol() const
   return '-';
 }
 
+ClassIdentifier Bench::internal_class_identifier() const
+{
+  return CLASS_ID_BENCH;
+}

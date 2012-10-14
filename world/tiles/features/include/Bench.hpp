@@ -14,4 +14,7 @@ class Bench : public Feature
     virtual std::string get_description_sid() const;
     
     virtual uchar get_symbol() const;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

@@ -9,4 +9,7 @@ class EvilAltar : public Altar
     EvilAltar(const std::string& new_deity_id);
     
     std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include "Inventory.hpp"
+#include "FeatureFactory.hpp"
 #include "MapFactory.hpp"
 #include "Serialize.hpp"
 #include "Tile.hpp"
@@ -174,7 +175,15 @@ bool Tile::serialize(ostream& stream)
 
   // creature
 
-  // feature
+  if (feature)
+  {
+    Serialize::write_class_id(stream, feature->get_class_identifier());
+    feature->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
 
   // items
 
@@ -211,7 +220,15 @@ bool Tile::deserialize(istream& stream)
 
   // creature
 
-  // feature
+  ClassIdentifier feature_clid;
+  Serialize::read_class_id(stream, feature_clid);
+
+  if (feature_clid != CLASS_ID_NULL)
+  {
+    FeaturePtr feature = FeatureFactory::create_feature(feature_clid);
+    if (!feature) return false;
+    if (!feature->deserialize(stream)) return false;
+  }
 
   // items
 

@@ -14,7 +14,13 @@ class Altar : public Feature
     virtual bool offer();
     
     virtual uchar get_symbol() const;
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
         
   protected:
     std::string deity_id;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

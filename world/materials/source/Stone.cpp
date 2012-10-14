@@ -37,3 +37,8 @@ Material* Stone::clone()
 {
   return new Stone(*this);
 }
+
+ClassIdentifier Stone::internal_class_identifier() const
+{
+  return CLASS_ID_STONE;
+}

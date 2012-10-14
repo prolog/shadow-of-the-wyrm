@@ -42,3 +42,8 @@ Material* Paper::clone()
 {
   return new Paper(*this);
 }
+
+ClassIdentifier Paper::internal_class_identifier() const
+{
+  return CLASS_ID_PAPER;
+}

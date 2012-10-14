@@ -13,4 +13,7 @@ class Pew : public Feature
 
     virtual uchar get_symbol() const;
     virtual std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

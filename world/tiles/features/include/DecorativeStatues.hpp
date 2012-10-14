@@ -17,6 +17,9 @@ class DecorativeStatue : public Feature
     // Purposefully does not implement get_description() - this allows
     // the class to be abstract, and ensures one of the concrete
     // descendents is used.
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 
@@ -27,6 +30,9 @@ class KingDecorativeStatue : public DecorativeStatue
     KingDecorativeStatue();
     
     std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 class QueenDecorativeStatue : public DecorativeStatue
@@ -35,6 +41,9 @@ class QueenDecorativeStatue : public DecorativeStatue
     QueenDecorativeStatue();
     
     std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 class WarlordDecorativeStatue : public DecorativeStatue
@@ -43,6 +52,9 @@ class WarlordDecorativeStatue : public DecorativeStatue
     WarlordDecorativeStatue();
     
     std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 class KnightDecorativeStatue : public DecorativeStatue
@@ -51,6 +63,9 @@ class KnightDecorativeStatue : public DecorativeStatue
     KnightDecorativeStatue();
     
     std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 class HighPriestDecorativeStatue : public DecorativeStatue
@@ -59,6 +74,9 @@ class HighPriestDecorativeStatue : public DecorativeStatue
     HighPriestDecorativeStatue();
     
     std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 class SorcerorDecorativeStatue : public DecorativeStatue
@@ -67,5 +85,8 @@ class SorcerorDecorativeStatue : public DecorativeStatue
     SorcerorDecorativeStatue();
     
     std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
