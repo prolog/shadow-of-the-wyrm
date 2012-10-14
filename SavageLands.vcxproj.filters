@@ -873,21 +873,6 @@
     <ClInclude Include="world\tiles\features\include\GoodAltar.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\features\include\IHandleable.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\IKickable.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\ILockable.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\IOfferable.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="world\tiles\features\include\ITrappable.hpp">
-      <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\features\include\Lock.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
@@ -2349,12 +2334,6 @@
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\GoodAltar.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\ILockable.cpp">
-      <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\tiles\features\source\ITrappable.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\NeutralAltar.cpp">

@@ -1,12 +1,13 @@
 #pragma once
 #include "Feature.hpp"
-#include "IOfferable.hpp"
 
-class Altar : public Feature, public IOfferable
+class Altar : public Feature
 {
   public:
     Altar(const std::string& new_deity_id, MaterialPtr new_material);
     virtual ~Altar() {};
+
+    virtual bool can_offer() const;
 
     virtual bool handle();
     virtual bool kick();

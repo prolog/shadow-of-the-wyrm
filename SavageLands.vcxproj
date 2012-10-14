@@ -512,11 +512,6 @@
     <ClInclude Include="world\tiles\features\include\Fountain.hpp" />
     <ClInclude Include="world\tiles\features\include\Gate.hpp" />
     <ClInclude Include="world\tiles\features\include\GoodAltar.hpp" />
-    <ClInclude Include="world\tiles\features\include\IHandleable.hpp" />
-    <ClInclude Include="world\tiles\features\include\IKickable.hpp" />
-    <ClInclude Include="world\tiles\features\include\ILockable.hpp" />
-    <ClInclude Include="world\tiles\features\include\IOfferable.hpp" />
-    <ClInclude Include="world\tiles\features\include\ITrappable.hpp" />
     <ClInclude Include="world\tiles\features\include\Lock.hpp" />
     <ClInclude Include="world\tiles\features\include\NeutralAltar.hpp" />
     <ClInclude Include="world\tiles\features\include\Pew.hpp" />
@@ -1064,8 +1059,6 @@
     <ClCompile Include="world\tiles\features\source\Fountain.cpp" />
     <ClCompile Include="world\tiles\features\source\Gate.cpp" />
     <ClCompile Include="world\tiles\features\source\GoodAltar.cpp" />
-    <ClCompile Include="world\tiles\features\source\ILockable.cpp" />
-    <ClCompile Include="world\tiles\features\source\ITrappable.cpp" />
     <ClCompile Include="world\tiles\features\source\NeutralAltar.cpp" />
     <ClCompile Include="world\tiles\features\source\Pew.cpp" />
     <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp" />
