@@ -10,4 +10,7 @@ class GoodAltar : public Altar
     GoodAltar(const std::string& new_deity_id);
     
     virtual std::string get_description_sid() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

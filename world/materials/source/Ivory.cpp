@@ -42,3 +42,8 @@ Material* Ivory::clone()
 {
   return new Ivory(*this);
 }
+
+ClassIdentifier Ivory::internal_class_identifier() const
+{
+  return CLASS_ID_IVORY;
+}

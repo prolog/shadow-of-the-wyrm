@@ -11,3 +11,8 @@ uchar EastWestPew::get_symbol() const
 {
   return '|';
 }
+
+ClassIdentifier EastWestPew::internal_class_identifier() const
+{
+  return CLASS_ID_EAST_WEST_PEW;
+}

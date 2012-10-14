@@ -42,3 +42,8 @@ Material* Wood::clone()
 {
   return new Wood(*this);
 }
+
+ClassIdentifier Wood::internal_class_identifier() const
+{
+  return CLASS_ID_WOOD;
+}

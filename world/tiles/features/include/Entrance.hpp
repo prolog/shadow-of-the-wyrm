@@ -24,4 +24,7 @@ class Entrance : public Feature
     LockPtr lock;
     EntranceState state;
     CreatureSize maximum_size; // The maximum creature size for the entrance.  Dragons can't go in Hobbit holes.
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

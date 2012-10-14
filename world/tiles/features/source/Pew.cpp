@@ -30,3 +30,8 @@ string Pew::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_PEW;
 }
+
+ClassIdentifier Pew::internal_class_identifier() const
+{
+  return CLASS_ID_PEW;
+}

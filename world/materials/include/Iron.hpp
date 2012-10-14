@@ -13,4 +13,7 @@ class Iron : public Material
     bool get_can_rust() const;
     
     Material* clone();
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

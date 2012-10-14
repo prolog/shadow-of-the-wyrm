@@ -37,3 +37,8 @@ Material* Glass::clone()
 {
   return new Glass(*this);
 }
+
+ClassIdentifier Glass::internal_class_identifier() const
+{
+  return CLASS_ID_GLASS;
+}

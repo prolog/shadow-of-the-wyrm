@@ -15,4 +15,7 @@ class DragonScale : public Material
     virtual Colour get_colour() const;
     
     Material* clone();
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

@@ -46,3 +46,8 @@ bool Entrance::can_open() const
 {
   return true;
 }
+
+ClassIdentifier Entrance::internal_class_identifier() const
+{
+  return CLASS_ID_ENTRANCE;
+}

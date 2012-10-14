@@ -25,7 +25,7 @@ class WorshipSiteTile : public WorldMapLandmarkTile
     WorshipSiteType site_type;    
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<WorshipSiteTile> WorshipSiteTilePtr;

@@ -507,6 +507,7 @@
     <ClInclude Include="world\tiles\features\include\EntranceTypes.hpp" />
     <ClInclude Include="world\tiles\features\include\EvilAltar.hpp" />
     <ClInclude Include="world\tiles\features\include\Feature.hpp" />
+    <ClInclude Include="world\tiles\features\include\FeatureFactory.hpp" />
     <ClInclude Include="world\tiles\features\include\FeatureGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\FirePillar.hpp" />
     <ClInclude Include="world\tiles\features\include\Fountain.hpp" />
@@ -1054,11 +1055,13 @@
     <ClCompile Include="world\tiles\features\source\EntranceState.cpp" />
     <ClCompile Include="world\tiles\features\source\EvilAltar.cpp" />
     <ClCompile Include="world\tiles\features\source\Feature.cpp" />
+    <ClCompile Include="world\tiles\features\source\FeatureFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\FeatureGenerator.cpp" />
     <ClCompile Include="world\tiles\features\source\FirePillar.cpp" />
     <ClCompile Include="world\tiles\features\source\Fountain.cpp" />
     <ClCompile Include="world\tiles\features\source\Gate.cpp" />
     <ClCompile Include="world\tiles\features\source\GoodAltar.cpp" />
+    <ClCompile Include="world\tiles\features\source\Lock.cpp" />
     <ClCompile Include="world\tiles\features\source\NeutralAltar.cpp" />
     <ClCompile Include="world\tiles\features\source\Pew.cpp" />
     <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp" />

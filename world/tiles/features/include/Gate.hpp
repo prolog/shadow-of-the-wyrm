@@ -13,5 +13,6 @@ class Gate : public Entrance
     virtual uchar get_symbol() const;
     virtual std::string get_description_sid() const;
 
-  protected:
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

@@ -4,13 +4,14 @@
 #include "Lock.hpp"
 #include "Trap.hpp"
 #include "Material.hpp"
+#include "ISerializable.hpp"
 
 // An abstract base class representing a dungeon feature.  A feature is
 // like an item, but cannot move.  Examples include fireplaces, thrones,
 // bookshelves, levers, etc.
 //
 // Features can be trapped.
-class Feature
+class Feature : public ISerializable
 {
   public:
     Feature(MaterialPtr new_material);
@@ -48,10 +49,16 @@ class Feature
     virtual bool offer();
     virtual bool open();
 
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     TrapPtr trap;
     LockPtr lock;
     MaterialPtr material;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Feature> FeaturePtr;

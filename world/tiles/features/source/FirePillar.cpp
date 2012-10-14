@@ -34,4 +34,8 @@ string FirePillar::get_description_sid() const
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FIRE_PILLAR;
 }
 
+ClassIdentifier FirePillar::internal_class_identifier() const
+{
+  return CLASS_ID_FIRE_PILLAR;
+}
 // FIXME: Still need to add lit/unlit state.

@@ -43,4 +43,7 @@ string Gate::get_description_sid() const
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_GATE;
 }
 
-
+ClassIdentifier Gate::internal_class_identifier() const
+{
+  return CLASS_ID_GATE;
+}

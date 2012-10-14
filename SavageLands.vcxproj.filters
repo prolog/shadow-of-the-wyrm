@@ -1914,6 +1914,9 @@
     <ClInclude Include="world\tiles\include\TileFactory.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\features\include\FeatureFactory.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3436,6 +3439,12 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\TileFactory.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Lock.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\FeatureFactory.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

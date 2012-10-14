@@ -2,11 +2,12 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "Colours.hpp"
+#include "ISerializable.hpp"
 #include "MaterialTypes.hpp"
 
 enum MaterialType;
 
-class Material
+class Material : public ISerializable
 {
   public:
     virtual ~Material() {};
@@ -28,6 +29,12 @@ class Material
     virtual Colour get_colour() const;
     
     virtual Material* clone() = 0;
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Material> MaterialPtr;

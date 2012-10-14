@@ -7,4 +7,7 @@ class EastWestPew : public Pew
     EastWestPew();
 
     uchar get_symbol() const;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

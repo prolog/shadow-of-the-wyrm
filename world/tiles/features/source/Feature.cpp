@@ -1,4 +1,9 @@
 #include "Feature.hpp"
+#include "FeatureFactory.hpp"
+#include "MaterialFactory.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 // JCD FIXME NEED COPY CONSTRUCTOR FOR MATERIAL PTR/ TRAP PTR
 
@@ -100,4 +105,77 @@ Colour Feature::get_colour() const
   }
   
   return colour;
+}
+
+bool Feature::serialize(ostream& stream)
+{
+  if (trap)
+  {
+    Serialize::write_class_id(stream, trap->get_class_identifier());
+    trap->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
+  if (lock)
+  {
+    Serialize::write_class_id(stream, lock->get_class_identifier());
+    lock->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
+  if (material)
+  {
+    Serialize::write_class_id(stream, material->get_class_identifier());
+    material->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
+  return true;
+}
+
+bool Feature::deserialize(istream& stream)
+{
+  ClassIdentifier trap_clid;
+  Serialize::read_class_id(stream, trap_clid);
+
+  if (trap_clid != CLASS_ID_NULL)
+  {
+    trap = FeatureFactory::create_trap();
+    trap->deserialize(stream);
+  }
+
+  ClassIdentifier lock_clid;
+  Serialize::read_class_id(stream, lock_clid);
+
+  if (lock_clid != CLASS_ID_NULL)
+  {
+    lock = FeatureFactory::create_lock();
+    lock->deserialize(stream);
+  }
+
+  ClassIdentifier material_clid;
+  Serialize::read_class_id(stream, material_clid);
+
+  if (material_clid != CLASS_ID_NULL)
+  {
+    material = MaterialFactory::create_material(material_clid);
+    if (!material) return false;
+    if (!material->deserialize(stream)) return false;
+  }
+
+  return true;
+}
+
+ClassIdentifier Feature::internal_class_identifier() const
+{
+  return CLASS_ID_FEATURE;
 }

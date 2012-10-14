@@ -37,3 +37,8 @@ Material* Steel::clone()
 {
   return new Steel(*this);
 }
+
+ClassIdentifier Steel::internal_class_identifier() const
+{
+  return CLASS_ID_STEEL;
+}
