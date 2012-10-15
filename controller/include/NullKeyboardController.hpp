@@ -8,4 +8,9 @@ class NullKeyboardController : public Controller
   public:
     std::string get_line();
     int get_char_as_int();
+
+    virtual Controller* clone();
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

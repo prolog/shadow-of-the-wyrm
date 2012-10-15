@@ -12,7 +12,7 @@ using namespace std;
 using std::tolower;
 
 PlayerDecisionStrategy::PlayerDecisionStrategy(ControllerPtr new_controller)
-: controller(new_controller)
+: DecisionStrategy(new_controller)
 {
 }
 
@@ -94,4 +94,9 @@ bool PlayerDecisionStrategy::get_confirmation()
   }
   
   return confirm;
+}
+
+ClassIdentifier PlayerDecisionStrategy::internal_class_identifier() const
+{
+  return CLASS_ID_PLAYER_DECISION_STRATEGY;
 }

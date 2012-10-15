@@ -2,13 +2,14 @@
 #include <map>
 #include <string>
 #include <set>
+#include "ISerializable.hpp"
 
 // Shorthand for easy typin'.
 typedef std::map<int, std::set<std::string> > ThreatMap;
 
 // ThreatRatings is a class representing the threat rating of various
 // creatures.
-class ThreatRatings
+class ThreatRatings : public ISerializable
 {
   public:
     ThreatRatings();
@@ -22,6 +23,12 @@ class ThreatRatings
     
     ThreatMap get_all_threats() const;
 
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     ThreatMap threat_ratings;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

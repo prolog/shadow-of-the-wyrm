@@ -11,6 +11,11 @@ using std::set;
 using std::string;
 using std::vector;
 
+NPCDecisionStrategy::NPCDecisionStrategy(ControllerPtr new_controller)
+: DecisionStrategy(new_controller)
+{
+}
+
 // By default, always get/pick up/etc the maximum.
 uint NPCDecisionStrategy::get_count(const uint max_count)
 {
