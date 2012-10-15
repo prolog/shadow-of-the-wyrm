@@ -1,4 +1,5 @@
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include "Inventory.hpp"
 #include "FeatureFactory.hpp"
 #include "MapFactory.hpp"
@@ -173,7 +174,15 @@ bool Tile::serialize(ostream& stream)
   Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
 
-  // creature
+  if (creature)
+  {
+    Serialize::write_class_id(stream, creature->get_class_identifier());
+    creature->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
 
   if (feature)
   {
@@ -218,7 +227,14 @@ bool Tile::deserialize(istream& stream)
   Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
 
-  // creature
+  ClassIdentifier creature_clid;
+  Serialize::read_class_id(stream, creature_clid);
+
+  if (creature_clid != CLASS_ID_NULL)
+  {
+    creature = boost::make_shared<Creature>();
+    creature->deserialize(stream);
+  }
 
   ClassIdentifier feature_clid;
   Serialize::read_class_id(stream, feature_clid);

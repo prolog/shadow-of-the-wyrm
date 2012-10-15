@@ -1,6 +1,8 @@
 #include <sstream>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "Serialize.hpp"
+#include "SkillFactory.hpp"
 #include "Skills.hpp"
 #include "SkillTypes.hpp"
 #include "StringConstants.hpp"
@@ -150,6 +152,30 @@ string Skill::str() const
   return ss.str();
 }
 
+bool Skill::serialize(ostream& stream)
+{
+  Serialize::write_int(stream, value);
+  Serialize::write_int(stream, marks);
+  Serialize::write_int(stream, threshold);
+  Serialize::write_enum(stream, category);
+  Serialize::write_string(stream, skill_name_sid);
+  Serialize::write_string(stream, skill_increment_message_sid);
+
+  return true;
+}
+
+bool Skill::deserialize(istream& stream)
+{
+  Serialize::read_int(stream, value);
+  Serialize::read_int(stream, marks);
+  Serialize::read_int(stream, threshold);
+  Serialize::read_enum(stream, category);
+  Serialize::read_string(stream, skill_name_sid);
+  Serialize::read_string(stream, skill_increment_message_sid);
+
+  return false;
+}
+
 // GeneralSkill
 GeneralSkill::GeneralSkill() : Skill(SKILL_CATEGORY_GENERAL)
 {
@@ -195,12 +221,32 @@ ArcherySkill::ArcherySkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_ARCHERY_INCREMENT;
 }
 
+Skill* ArcherySkill::clone()
+{
+  return new ArcherySkill(*this);
+}
+
+ClassIdentifier ArcherySkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_ARCHERY;
+}
+
 // Awareness
 AwarenessSkill::AwarenessSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_AWARENESS;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_AWARENESS_INCREMENT;
+}
+
+Skill* AwarenessSkill::clone()
+{
+  return new AwarenessSkill(*this);
+}
+
+ClassIdentifier AwarenessSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_AWARENESS;
 }
 
 // Bargaining
@@ -211,12 +257,32 @@ BargainingSkill::BargainingSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_BARGAINING_INCREMENT;
 }
 
+Skill* BargainingSkill::clone()
+{
+  return new BargainingSkill(*this);
+}
+
+ClassIdentifier BargainingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_BARGAINING;
+}
+
 // Beastmastery
 BeastmasterySkill::BeastmasterySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BEASTMASTERY;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_BEASTMASTERY_INCREMENT;
+}
+
+Skill* BeastmasterySkill::clone()
+{
+  return new BeastmasterySkill(*this);
+}
+
+ClassIdentifier BeastmasterySkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_BEASTMASTERY;
 }
 
 // Blind Fighting
@@ -227,12 +293,32 @@ BlindFightingSkill::BlindFightingSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_BLIND_FIGHTING_INCREMENT;
 }
 
+Skill* BlindFightingSkill::clone()
+{
+  return new BlindFightingSkill(*this);
+}
+
+ClassIdentifier BlindFightingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_BLINDFIGHTING;
+}
+
 // Boating
 BoatingSkill::BoatingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BOATING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_BOATING_INCREMENT;
+}
+
+Skill* BoatingSkill::clone()
+{
+  return new BoatingSkill(*this);
+}
+
+ClassIdentifier BoatingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_BOATING;
 }
 
 // Bowyer
@@ -243,12 +329,32 @@ BowyerSkill::BowyerSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_BOWYER_INCREMENT;
 }
 
+Skill* BowyerSkill::clone()
+{
+  return new BowyerSkill(*this);
+}
+
+ClassIdentifier BowyerSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_BOWYER;
+}
+
 // Brewing
 BrewingSkill::BrewingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_BREWING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_BREWING_INCREMENT;
+}
+
+Skill* BrewingSkill::clone()
+{
+  return new BrewingSkill(*this);
+}
+
+ClassIdentifier BrewingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_BREWING;
 }
 
 // Cantrips
@@ -259,12 +365,32 @@ CantripsSkill::CantripsSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_CANTRIPS_INCREMENT;
 }
 
+Skill* CantripsSkill::clone()
+{
+  return new CantripsSkill(*this);
+}
+
+ClassIdentifier CantripsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_CANTRIPS;
+}
+
 // Carrying
 CarryingSkill::CarryingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_CARRYING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_CARRYING_INCREMENT;
+}
+
+Skill* CarryingSkill::clone()
+{
+  return new CarryingSkill(*this);
+}
+
+ClassIdentifier CarryingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_CARRYING;
 }
 
 // Combat
@@ -275,9 +401,19 @@ CombatSkill::CombatSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_COMBAT_INCREMENT;
 }
 
+Skill* CombatSkill::clone()
+{
+  return new CombatSkill(*this);
+}
+
 float CombatSkill::get_threshold_multiplier() const
 {
   return 2.0f;
+}
+
+ClassIdentifier CombatSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_COMBAT;
 }
 
 // Crafting
@@ -288,12 +424,32 @@ CraftingSkill::CraftingSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_CRAFTING_INCREMENT;
 }
 
+Skill* CraftingSkill::clone()
+{
+  return new CraftingSkill(*this);
+}
+
+ClassIdentifier CraftingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_CRAFTING;
+}
+
 // Desert Lore
 DesertLoreSkill::DesertLoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_DESERT_LORE;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_DESERT_LORE_INCREMENT;
+}
+
+Skill* DesertLoreSkill::clone()
+{
+  return new DesertLoreSkill(*this);
+}
+
+ClassIdentifier DesertLoreSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_DESERT_LORE;
 }
 
 // Detection
@@ -304,12 +460,32 @@ DetectionSkill::DetectionSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_DETECTION_INCREMENT;
 }
 
+Skill* DetectionSkill::clone()
+{
+  return new DetectionSkill(*this);
+}
+
+ClassIdentifier DetectionSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_DETECTION;
+}
+
 // Disarm Traps
 DisarmTrapsSkill::DisarmTrapsSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_DISARM_TRAPS;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_DISARM_TRAPS_INCREMENT;
+}
+
+Skill* DisarmTrapsSkill::clone()
+{
+  return new DisarmTrapsSkill(*this);
+}
+
+ClassIdentifier DisarmTrapsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_DISARM_TRAPS;
 }
 
 // Dual Wield
@@ -320,12 +496,32 @@ DualWieldSkill::DualWieldSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_DUAL_WIELD_INCREMENT;
 }
 
+Skill* DualWieldSkill::clone()
+{
+  return new DualWieldSkill(*this);
+}
+
+ClassIdentifier DualWieldSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_DUAL_WIELD;
+}
+
 // Dungeoneering
 DungeoneeringSkill::DungeoneeringSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_DUNGEONEERING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_DUNGEONEERING_INCREMENT;
+}
+
+Skill* DungeoneeringSkill::clone()
+{
+  return new DungeoneeringSkill(*this);
+}
+
+ClassIdentifier DungeoneeringSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_DUNGEONEERING;
 }
 
 // Escape
@@ -336,12 +532,32 @@ EscapeSkill::EscapeSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_ESCAPE_INCREMENT;
 }
 
+Skill* EscapeSkill::clone()
+{
+  return new EscapeSkill(*this);
+}
+
+ClassIdentifier EscapeSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_ESCAPE;
+}
+
 // Foraging
 ForagingSkill::ForagingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_FORAGING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_FORAGING_INCREMENT;
+}
+
+Skill* ForagingSkill::clone()
+{
+  return new ForagingSkill(*this);
+}
+
+ClassIdentifier ForagingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_FORAGING;
 }
 
 // Forest Lore
@@ -352,12 +568,32 @@ ForestLoreSkill::ForestLoreSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_FOREST_LORE_INCREMENT;
 }
 
+Skill* ForestLoreSkill::clone()
+{
+  return new ForestLoreSkill(*this);
+}
+
+ClassIdentifier ForestLoreSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_FOREST_LORE;
+}
+
 // Fishing
 FishingSkill::FishingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_FISHING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_FISHING_INCREMENT;
+}
+
+Skill* FishingSkill::clone()
+{
+  return new FishingSkill(*this);
+}
+
+ClassIdentifier FishingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_FISHING;
 }
 
 // Fletchery
@@ -368,12 +604,32 @@ FletcherySkill::FletcherySkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_FLETCHERY_INCREMENT;
 }
 
+Skill* FletcherySkill::clone()
+{
+  return new FletcherySkill(*this);
+}
+
+ClassIdentifier FletcherySkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_FLETCHERY;
+}
+
 // Herbalism
 HerbalismSkill::HerbalismSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_HERBALISM;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_HERBALISM_INCREMENT;
+}
+
+Skill* HerbalismSkill::clone()
+{
+  return new HerbalismSkill(*this);
+}
+
+ClassIdentifier HerbalismSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_HERBALISM;
 }
 
 // Hiding
@@ -384,12 +640,32 @@ HidingSkill::HidingSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_HIDING_INCREMENT;
 }
 
+Skill* HidingSkill::clone()
+{
+  return new HidingSkill(*this);
+}
+
+ClassIdentifier HidingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_HIDING;
+}
+
 // Hunting
 HuntingSkill::HuntingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_HUNTING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_HUNTING_INCREMENT;
+}
+
+Skill* HuntingSkill::clone()
+{
+  return new HuntingSkill(*this);
+}
+
+ClassIdentifier HuntingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_HUNTING;
 }
 
 // Intimidation
@@ -400,12 +676,32 @@ IntimidationSkill::IntimidationSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_INTIMIDATION_INCREMENT;
 }
 
+Skill* IntimidationSkill::clone()
+{
+  return new IntimidationSkill(*this);
+}
+
+ClassIdentifier IntimidationSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_INTIMIDATION;
+}
+
 // Jeweler
 JewelerSkill::JewelerSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_JEWELER;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_JEWELER_INCREMENT;
+}
+
+Skill* JewelerSkill::clone()
+{
+  return new JewelerSkill(*this);
+}
+
+ClassIdentifier JewelerSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_JEWELER;
 }
 
 // Jumping
@@ -416,12 +712,32 @@ JumpingSkill::JumpingSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_JUMPING_INCREMENT;
 }
 
+Skill* JumpingSkill::clone()
+{
+  return new JumpingSkill(*this);
+}
+
+ClassIdentifier JumpingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_JUMPING;
+}
+
 // Leadership
 LeadershipSkill::LeadershipSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_LEADERSHIP;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_LEADERSHIP_INCREMENT;
+}
+
+Skill* LeadershipSkill::clone()
+{
+  return new LeadershipSkill(*this);
+}
+
+ClassIdentifier LeadershipSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_LEADERSHIP;
 }
 
 // Literacy
@@ -432,12 +748,32 @@ LiteracySkill::LiteracySkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_LEADERSHIP_INCREMENT;
 }
 
+Skill* LiteracySkill::clone()
+{
+  return new LiteracySkill(*this);
+}
+
+ClassIdentifier LiteracySkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_LITERACY;
+}
+
 // Lore
 LoreSkill::LoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_LORE;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_LORE_INCREMENT;
+}
+
+Skill* LoreSkill::clone()
+{
+  return new LoreSkill(*this);
+}
+
+ClassIdentifier LoreSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_LORE;
 }
 
 // Magic
@@ -453,12 +789,32 @@ float MagicGeneralSkill::get_threshold_multiplier() const
   return 2.0f;
 }
 
+Skill* MagicGeneralSkill::clone()
+{
+  return new MagicGeneralSkill(*this);
+}
+
+ClassIdentifier MagicGeneralSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_MAGICGENERAL;
+}
+
 // Marsh Lore
 MarshLoreSkill::MarshLoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MARSH_LORE;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_MARSH_LORE_INCREMENT;
+}
+
+Skill* MarshLoreSkill::clone()
+{
+  return new MarshLoreSkill(*this);
+}
+
+ClassIdentifier MarshLoreSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_MARSH_LORE;
 }
 
 // Medicine
@@ -469,12 +825,32 @@ MedicineSkill::MedicineSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_MEDICINE_INCREMENT;
 }
 
+Skill* MedicineSkill::clone()
+{
+  return new MedicineSkill(*this);
+}
+
+ClassIdentifier MedicineSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_MEDICINE;
+}
+
 // Mountain Lore
 MountainLoreSkill::MountainLoreSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MOUNTAIN_LORE;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_MOUNTAIN_LORE_INCREMENT;
+}
+
+Skill* MountainLoreSkill::clone()
+{
+  return new MountainLoreSkill(*this);
+}
+
+ClassIdentifier MountainLoreSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_MOUNTAIN_LORE;
 }
 
 // Mountaineering
@@ -485,12 +861,32 @@ MountaineeringSkill::MountaineeringSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_MOUNTAINEERING_INCREMENT;
 }
 
+Skill* MountaineeringSkill::clone()
+{
+  return new MountaineeringSkill(*this);
+}
+
+ClassIdentifier MountaineeringSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_MOUNTAINEERING;
+}
+
 // Music
 MusicSkill::MusicSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_MUSIC;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_MUSIC_INCREMENT;
+}
+
+Skill* MusicSkill::clone()
+{
+  return new MusicSkill(*this);
+}
+
+ClassIdentifier MusicSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_MUSIC;
 }
 
 // Night Sight
@@ -501,12 +897,32 @@ NightSightSkill::NightSightSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_NIGHT_SIGHT_INCREMENT;
 }
 
+Skill* NightSightSkill::clone()
+{
+  return new NightSightSkill(*this);
+}
+
+ClassIdentifier NightSightSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_NIGHT_SIGHT;
+}
+
 // Oceanography
 OceanographySkill::OceanographySkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_OCEANOGRAPHY;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_OCEANOGRAPHY_INCREMENT;
+}
+
+Skill* OceanographySkill::clone()
+{
+  return new OceanographySkill(*this);
+}
+
+ClassIdentifier OceanographySkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_OCEANOGRAPHY;
 }
 
 // Papercraft
@@ -517,12 +933,32 @@ PapercraftSkill::PapercraftSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_PAPERCRAFT_INCREMENT;
 }
 
+Skill* PapercraftSkill::clone()
+{
+  return new PapercraftSkill(*this);
+}
+
+ClassIdentifier PapercraftSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_PAPERCRAFT;
+}
+
 // Religion
 ReligionSkill::ReligionSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_RELIGION;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_RELIGION_INCREMENT;
+}
+
+Skill* ReligionSkill::clone()
+{
+  return new ReligionSkill(*this);
+}
+
+ClassIdentifier ReligionSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_RELIGION;
 }
 
 // Scribing
@@ -533,12 +969,32 @@ ScribingSkill::ScribingSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_SCRIBING_INCREMENT;
 }
 
+Skill* ScribingSkill::clone()
+{
+  return new ScribingSkill(*this);
+}
+
+ClassIdentifier ScribingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_SCRIBING;
+}
+
 // Skinning
 SkinningSkill::SkinningSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_SKINNING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_SKINNING_INCREMENT;
+}
+
+Skill* SkinningSkill::clone()
+{
+  return new SkinningSkill(*this);
+}
+
+ClassIdentifier SkinningSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_SKINNING;
 }
 
 // Smithing
@@ -549,12 +1005,32 @@ SmithingSkill::SmithingSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_SMITHING_INCREMENT;
 }
 
+Skill* SmithingSkill::clone()
+{
+  return new SmithingSkill(*this);
+}
+
+ClassIdentifier SmithingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_SMITHING;
+}
+
 // Spelunking
 SpelunkingSkill::SpelunkingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_SPELUNKING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_SPELUNKING_INCREMENT;
+}
+
+Skill* SpelunkingSkill::clone()
+{
+  return new SpelunkingSkill(*this);
+}
+
+ClassIdentifier SpelunkingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_SPELUNKING;
 }
 
 // Stealth
@@ -565,12 +1041,32 @@ StealthSkill::StealthSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_STEALTH_INCREMENT;
 }
 
+Skill* StealthSkill::clone()
+{
+  return new StealthSkill(*this);
+}
+
+ClassIdentifier StealthSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_STEALTH;
+}
+
 // Swimming
 SwimmingSkill::SwimmingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_SWIMMING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_SWIMMING_INCREMENT;
+}
+
+Skill* SwimmingSkill::clone()
+{
+  return new SwimmingSkill(*this);
+}
+
+ClassIdentifier SwimmingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_SWIMMING;
 }
 
 // Tanning
@@ -581,6 +1077,16 @@ TanningSkill::TanningSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_TANNING_INCREMENT;
 }
 
+Skill* TanningSkill::clone()
+{
+  return new TanningSkill(*this);
+}
+
+ClassIdentifier TanningSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_TANNING;
+}
+
 // Thievery
 ThieverySkill::ThieverySkill()
 : GeneralSkill()
@@ -589,12 +1095,32 @@ ThieverySkill::ThieverySkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_THIEVERY_INCREMENT;
 }
 
+Skill* ThieverySkill::clone()
+{
+  return new ThieverySkill(*this);
+}
+
+ClassIdentifier ThieverySkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_THIEVERY;
+}
+
 // Weaving
 WeavingSkill::WeavingSkill()
 : GeneralSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_GENERAL_WEAVING;
   skill_increment_message_sid = SkillTextKeys::SKILL_GENERAL_WEAVING_INCREMENT;
+}
+
+Skill* WeavingSkill::clone()
+{
+  return new WeavingSkill(*this);
+}
+
+ClassIdentifier WeavingSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_WEAVING;
 }
 
 // MELEE WEAPON SKILLS
@@ -607,12 +1133,32 @@ AxesSkill::AxesSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_AXES_INCREMENT;
 }
 
+Skill* AxesSkill::clone()
+{
+  return new AxesSkill(*this);
+}
+
+ClassIdentifier AxesSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_AXES;
+}
+
 // Short Blades
 ShortBladesSkill::ShortBladesSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_SHORT_BLADES;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_SHORT_BLADES_INCREMENT;
+}
+
+Skill* ShortBladesSkill::clone()
+{
+  return new ShortBladesSkill(*this);
+}
+
+ClassIdentifier ShortBladesSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_SHORT_BLADES;
 }
 
 // Long Blades
@@ -623,12 +1169,32 @@ LongBladesSkill::LongBladesSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_LONG_BLADES_INCREMENT;
 }
 
+Skill* LongBladesSkill::clone()
+{
+  return new LongBladesSkill(*this);
+}
+
+ClassIdentifier LongBladesSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_LONG_BLADES;
+}
+
 // Bludgeons
 BludgeonsSkill::BludgeonsSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_BLUDGEONS;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_BLUDGEONS_INCREMENT;
+}
+
+Skill* BludgeonsSkill::clone()
+{
+  return new BludgeonsSkill(*this);
+}
+
+ClassIdentifier BludgeonsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_BLUDGEONS;
 }
 
 // Daggers
@@ -639,12 +1205,32 @@ DaggersSkill::DaggersSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_DAGGERS_INCREMENT;
 }
 
+Skill* DaggersSkill::clone()
+{
+  return new DaggersSkill(*this);
+}
+
+ClassIdentifier DaggersSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_DAGGERS;
+}
+
 // Rods and Staves
 RodsAndStavesSkill::RodsAndStavesSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_RODS_AND_STAVES;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_RODS_AND_STAVES_INCREMENT;
+}
+
+Skill* RodsAndStavesSkill::clone()
+{
+  return new RodsAndStavesSkill(*this);
+}
+
+ClassIdentifier RodsAndStavesSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_RODS_AND_STAVES;
 }
 
 // Spears
@@ -655,6 +1241,16 @@ SpearsSkill::SpearsSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_SPEARS_INCREMENT;
 }
 
+Skill* SpearsSkill::clone()
+{
+  return new SpearsSkill(*this);
+}
+
+ClassIdentifier SpearsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_SPEARS;
+}
+
 // Unarmed
 UnarmedSkill::UnarmedSkill()
 : WeaponSkill()
@@ -663,12 +1259,32 @@ UnarmedSkill::UnarmedSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_UNARMED_INCREMENT;
 }
 
+Skill* UnarmedSkill::clone()
+{
+  return new UnarmedSkill(*this);
+}
+
+ClassIdentifier UnarmedSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_UNARMED;
+}
+
 // Whips
 WhipsSkill::WhipsSkill()
 : WeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MELEE_WHIPS;
   skill_increment_message_sid = SkillTextKeys::SKILL_MELEE_WHIPS_INCREMENT;
+}
+
+Skill* WhipsSkill::clone()
+{
+  return new WhipsSkill(*this);
+}
+
+ClassIdentifier WhipsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_WHIPS;
 }
 
 // Exotic
@@ -684,6 +1300,16 @@ float ExoticMeleeSkill::get_threshold_multiplier() const
   return 3.0;
 }
 
+Skill* ExoticMeleeSkill::clone()
+{
+  return new ExoticMeleeSkill(*this);
+}
+
+ClassIdentifier ExoticMeleeSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_EXOTIC;
+}
+
 // RANGED WEAPON SKILLS
 
 // Thrown Axes
@@ -694,12 +1320,32 @@ ThrownAxesSkill::ThrownAxesSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_AXES_INCREMENT;
 }
 
+Skill* ThrownAxesSkill::clone()
+{
+  return new ThrownAxesSkill(*this);
+}
+
+ClassIdentifier ThrownAxesSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_THROWN_AXES;
+}
+
 // Thrown Blades
 ThrownBladesSkill::ThrownBladesSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BLADES;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BLADES_INCREMENT;
+}
+
+Skill* ThrownBladesSkill::clone()
+{
+  return new ThrownBladesSkill(*this);
+}
+
+ClassIdentifier ThrownBladesSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_THROWN_BLADES;
 }
 
 // Thrown Bludgeons
@@ -710,12 +1356,32 @@ ThrownBludgeonsSkill::ThrownBludgeonsSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BLUDGEONS_INCREMENT;
 }
 
+Skill* ThrownBludgeonsSkill::clone()
+{
+  return new ThrownBludgeonsSkill(*this);
+}
+
+ClassIdentifier ThrownBludgeonsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_THROWN_BLUDGEONS;
+}
+
 // Bows
 BowsSkill::BowsSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_BOWS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_BOWS_INCREMENT;
+}
+
+Skill* BowsSkill::clone()
+{
+  return new BowsSkill(*this);
+}
+
+ClassIdentifier BowsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_BOWS;
 }
 
 // Crossbows
@@ -726,12 +1392,32 @@ CrossbowsSkill::CrossbowsSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_CROSSBOWS_INCREMENT;
 }
 
+Skill* CrossbowsSkill::clone()
+{
+  return new CrossbowsSkill(*this);
+}
+
+ClassIdentifier CrossbowsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_CROSSBOWS;
+}
+
 // Daggers
 ThrownDaggersSkill::ThrownDaggersSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_DAGGERS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_DAGGERS_INCREMENT;
+}
+
+Skill* ThrownDaggersSkill::clone()
+{
+  return new ThrownDaggersSkill(*this);
+}
+
+ClassIdentifier ThrownDaggersSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_THROWN_DAGGERS;
 }
 
 // Rocks
@@ -742,6 +1428,16 @@ RocksSkill::RocksSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_ROCKS_INCREMENT;
 }
 
+Skill* RocksSkill::clone()
+{
+  return new RocksSkill(*this);
+}
+
+ClassIdentifier RocksSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_ROCKS;
+}
+
 // Slings
 SlingsSkill::SlingsSkill()
 : RangedWeaponSkill()
@@ -750,12 +1446,32 @@ SlingsSkill::SlingsSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_SLINGS_INCREMENT;
 }
 
+Skill* SlingsSkill::clone()
+{
+  return new SlingsSkill(*this);
+}
+
+ClassIdentifier SlingsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_SLINGS;
+}
+
 // Spears
 ThrownSpearsSkill::ThrownSpearsSkill()
 : RangedWeaponSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_RANGED_SPEARS;
   skill_increment_message_sid = SkillTextKeys::SKILL_RANGED_SPEARS_INCREMENT;
+}
+
+Skill* ThrownSpearsSkill::clone()
+{
+  return new ThrownSpearsSkill(*this);
+}
+
+ClassIdentifier ThrownSpearsSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_THROWN_SPEARS;
 }
 
 // Exotic
@@ -771,6 +1487,15 @@ float ExoticRangedSkill::get_threshold_multiplier() const
   return 3.0;
 }
 
+Skill* ExoticRangedSkill::clone()
+{
+  return new ExoticRangedSkill(*this);
+}
+
+ClassIdentifier ExoticRangedSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_THROWN_EXOTIC;
+}
 
 // MAGIC SKILLS
 
@@ -782,12 +1507,32 @@ ArcaneMagicSkill::ArcaneMagicSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_MAGIC_ARCANE_INCREMENT;
 }
 
+Skill* ArcaneMagicSkill::clone()
+{
+  return new ArcaneMagicSkill(*this);
+}
+
+ClassIdentifier ArcaneMagicSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_ARCANE;
+}
+
 // Divine
 DivineMagicSkill::DivineMagicSkill()
 : MagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_DIVINE;
   skill_increment_message_sid = SkillTextKeys::SKILL_MAGIC_DIVINE_INCREMENT;
+}
+
+Skill* DivineMagicSkill::clone()
+{
+  return new DivineMagicSkill(*this);
+}
+
+ClassIdentifier DivineMagicSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_DIVINE;
 }
 
 // Mystic
@@ -798,12 +1543,32 @@ MysticMagicSkill::MysticMagicSkill()
   skill_increment_message_sid = SkillTextKeys::SKILL_MAGIC_MYSTIC_INCREMENT;
 }
 
+Skill* MysticMagicSkill::clone()
+{
+  return new MysticMagicSkill(*this);
+}
+
+ClassIdentifier MysticMagicSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_MYSTIC;
+}
+
 // Primordial
 PrimordialMagicSkill::PrimordialMagicSkill()
 : MagicSkill()
 {
   skill_name_sid = SkillTextKeys::SKILL_MAGIC_PRIMORDIAL;
   skill_increment_message_sid = SkillTextKeys::SKILL_MAGIC_PRIMORDIAL_INCREMENT;
+}
+
+Skill* PrimordialMagicSkill::clone()
+{
+  return new PrimordialMagicSkill(*this);
+}
+
+ClassIdentifier PrimordialMagicSkill::internal_class_identifier() const
+{
+  return CLASS_ID_SKILL_PRIMORDIAL;
 }
 
 // Skills
@@ -878,6 +1643,63 @@ string Skills::str() const
   }
 
   return skills_str;
+}
+
+bool Skills::serialize(ostream& stream)
+{
+  Serialize::write_size_t(stream, skills.size());
+
+  BOOST_FOREACH(RawSkillMap::value_type& skill_pair, skills)
+  {
+    Serialize::write_enum(stream, skill_pair.first);
+
+    SkillPtr skill = skill_pair.second;
+
+    if (skill)
+    {
+      Serialize::write_class_id(stream, skill->get_class_identifier());
+      skill->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, CLASS_ID_NULL);
+    }
+  }
+
+  return true;
+}
+
+bool Skills::deserialize(istream& stream)
+{
+  size_t skills_size = 0;
+  Serialize::read_size_t(stream, skills_size);
+
+  skills.clear();
+
+  for (unsigned int i = 0; i < skills_size; i++)
+  {
+    SkillType skill_type = SKILL_GENERAL_ARCHERY;
+    Serialize::read_enum(stream, skill_type);
+
+    ClassIdentifier skill_ci = CLASS_ID_NULL;
+    Serialize::read_class_id(stream, skill_ci);
+
+    if (skill_ci != CLASS_ID_NULL)
+    {
+      SkillPtr skill = SkillFactory::create_skill(skill_ci);
+      if (!skill) return false;
+      if (!skill->deserialize(stream)) return false;
+
+      skills.insert(make_pair(skill_type, skill));
+    }
+  }
+
+  return true;
+}
+
+ClassIdentifier Skills::internal_class_identifier() const
+{
+  return CLASS_ID_SKILLS;
 }
 
 // Return a reference to the skills map

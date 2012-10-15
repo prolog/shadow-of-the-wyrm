@@ -9,6 +9,7 @@
 #include "DecisionStrategy.hpp"
 #include "Equipment.hpp"
 #include "Inventory.hpp"
+#include "ISerializable.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 #include "ISerializable.hpp"
@@ -23,7 +24,7 @@ class DecisionStrategy;
 
 typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
 
-class Creature
+class Creature : public ISerializable
 {
   public:
     Creature();
