@@ -1,6 +1,9 @@
 #include <sstream>
+#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Resistances.hpp"
+#include "ResistanceFactory.hpp"
+#include "Serialize.hpp"
 #include "StringConstants.hpp"
 #include "StringTable.hpp"
 
@@ -62,6 +65,24 @@ string Resistance::str() const
   return ss.str();
 }
 
+bool Resistance::serialize(ostream& stream)
+{
+  Serialize::write_enum(stream, type);
+  Serialize::write_string(stream, name_sid);
+  Serialize::write_double(stream, value);
+
+  return true;
+}
+
+bool Resistance::deserialize(istream& stream)
+{
+  Serialize::read_enum(stream, type);
+  Serialize::read_string(stream, name_sid);
+  Serialize::read_double(stream, value);
+
+  return true;
+}
+
 // Initialize the resistances to a set of default values
 Resistances::Resistances()
 {
@@ -73,10 +94,76 @@ void Resistances::set_resistance_value(const DamageType type, double value)
   resistances[type]->set_value(value);
 }
 
+bool Resistances::serialize(ostream& stream)
+{
+  Serialize::write_size_t(stream, resistances.size());
+
+  BOOST_FOREACH(ResistancesMap::value_type& r_pair, resistances)
+  {
+    Serialize::write_enum(stream, r_pair.first);
+
+    boost::shared_ptr<Resistance> resistance = r_pair.second;
+
+    if (resistance)
+    {
+      Serialize::write_class_id(stream, resistance->get_class_identifier());
+      resistance->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, CLASS_ID_NULL);
+    }
+  }
+
+  return true;
+}
+
+bool Resistances::deserialize(istream& stream)
+{
+  size_t resistances_size = 0;
+  Serialize::read_size_t(stream, resistances_size);
+
+  resistances.clear();
+
+  for (unsigned int i = 0; i < resistances_size; i++)
+  {
+    DamageType type = DAMAGE_TYPE_SLASH;
+    Serialize::read_enum(stream, type);
+
+    ClassIdentifier resistance_clid = CLASS_ID_NULL;
+    Serialize::read_class_id(stream, resistance_clid);
+
+    if (resistance_clid != CLASS_ID_NULL)
+    {
+      boost::shared_ptr<Resistance> resistance = ResistanceFactory::create_resistance(resistance_clid);
+      if (!resistance) return false;
+      if (!resistance->deserialize(stream)) return false;
+
+      resistances.insert(make_pair(type, resistance));
+    }
+  }
+  return true;
+}
+
+ClassIdentifier Resistances::internal_class_identifier() const
+{
+  return CLASS_ID_RESISTANCES;
+}
+
 // Individual resistance classes
 SlashResistance::SlashResistance()
 : Resistance(DAMAGE_TYPE_SLASH, ResistanceTextKeys::RESISTANCE_SLASH, 0.0)
 {
+}
+
+Resistance* SlashResistance::clone()
+{
+  return new SlashResistance(*this);
+}
+
+ClassIdentifier SlashResistance::internal_class_identifier() const
+{
+  return CLASS_ID_SLASH_RESISTANCE;
 }
 
 PoundResistance::PoundResistance()
@@ -84,9 +171,29 @@ PoundResistance::PoundResistance()
 {
 }
 
+Resistance* PoundResistance::clone()
+{
+  return new PoundResistance(*this);
+}
+
+ClassIdentifier PoundResistance::internal_class_identifier() const
+{
+  return CLASS_ID_POUND_RESISTANCE;
+}
+
 PierceResistance::PierceResistance()
 : Resistance(DAMAGE_TYPE_PIERCE, ResistanceTextKeys::RESISTANCE_PIERCE, 0.0)
 {
+}
+
+Resistance* PierceResistance::clone()
+{
+  return new PierceResistance(*this);
+}
+
+ClassIdentifier PierceResistance::internal_class_identifier() const
+{
+  return CLASS_ID_PIERCE_RESISTANCE;
 }
 
 HeatResistance::HeatResistance()
@@ -94,9 +201,29 @@ HeatResistance::HeatResistance()
 {
 }
 
+Resistance* HeatResistance::clone()
+{
+  return new HeatResistance(*this);
+}
+
+ClassIdentifier HeatResistance::internal_class_identifier() const
+{
+  return CLASS_ID_HEAT_RESISTANCE;
+}
+
 ColdResistance::ColdResistance()
 : Resistance(DAMAGE_TYPE_COLD, ResistanceTextKeys::RESISTANCE_COLD, 0.0)
 {
+}
+
+Resistance* ColdResistance::clone()
+{
+  return new ColdResistance(*this);
+}
+
+ClassIdentifier ColdResistance::internal_class_identifier() const
+{
+  return CLASS_ID_COLD_RESISTANCE;
 }
 
 AcidResistance::AcidResistance()
@@ -104,9 +231,29 @@ AcidResistance::AcidResistance()
 {
 }
 
+Resistance* AcidResistance::clone()
+{
+  return new AcidResistance(*this);
+}
+
+ClassIdentifier AcidResistance::internal_class_identifier() const
+{
+  return CLASS_ID_ACID_RESISTANCE;
+}
+
 PoisonResistance::PoisonResistance()
 : Resistance(DAMAGE_TYPE_POISON, ResistanceTextKeys::RESISTANCE_POISON, 0.0)
 {
+}
+
+Resistance* PoisonResistance::clone()
+{
+  return new PoisonResistance(*this);
+}
+
+ClassIdentifier PoisonResistance::internal_class_identifier() const
+{
+  return CLASS_ID_POISON_RESISTANCE;
 }
 
 HolyResistance::HolyResistance()
@@ -114,9 +261,29 @@ HolyResistance::HolyResistance()
 {
 }
 
+Resistance* HolyResistance::clone()
+{
+  return new HolyResistance(*this);
+}
+
+ClassIdentifier HolyResistance::internal_class_identifier() const
+{
+  return CLASS_ID_HOLY_RESISTANCE;
+}
+
 ShadowResistance::ShadowResistance()
 : Resistance(DAMAGE_TYPE_SHADOW, ResistanceTextKeys::RESISTANCE_SHADOW, 0.0)
 {
+}
+
+Resistance* ShadowResistance::clone()
+{
+  return new ShadowResistance(*this);
+}
+
+ClassIdentifier ShadowResistance::internal_class_identifier() const
+{
+  return CLASS_ID_SHADOW_RESISTANCE;
 }
 
 ArcaneResistance::ArcaneResistance()
@@ -124,9 +291,29 @@ ArcaneResistance::ArcaneResistance()
 {
 }
 
+Resistance* ArcaneResistance::clone()
+{
+  return new ArcaneResistance(*this);
+}
+
+ClassIdentifier ArcaneResistance::internal_class_identifier() const
+{
+  return CLASS_ID_ARCANE_RESISTANCE;
+}
+
 MentalResistance::MentalResistance()
 : Resistance(DAMAGE_TYPE_MENTAL, ResistanceTextKeys::RESISTANCE_MENTAL, 0.0)
 {
+}
+
+Resistance* MentalResistance::clone()
+{
+  return new MentalResistance(*this);
+}
+
+ClassIdentifier MentalResistance::internal_class_identifier() const
+{
+  return CLASS_ID_MENTAL_RESISTANCE;
 }
 
 SonicResistance::SonicResistance()
@@ -134,14 +321,44 @@ SonicResistance::SonicResistance()
 {
 }
 
+Resistance* SonicResistance::clone()
+{
+  return new SonicResistance(*this);
+}
+
+ClassIdentifier SonicResistance::internal_class_identifier() const
+{
+  return CLASS_ID_SONIC_RESISTANCE;
+}
+
 RadiantResistance::RadiantResistance()
 : Resistance(DAMAGE_TYPE_RADIANT, ResistanceTextKeys::RESISTANCE_RADIANT, 0.0)
 {
 }
 
+Resistance* RadiantResistance::clone()
+{
+  return new RadiantResistance(*this);
+}
+
+ClassIdentifier RadiantResistance::internal_class_identifier() const
+{
+  return CLASS_ID_RADIANT_RESISTANCE;
+}
+
 LightningResistance::LightningResistance()
 : Resistance(DAMAGE_TYPE_LIGHTNING, ResistanceTextKeys::RESISTANCE_LIGHTNING, 0.0)
 {
+}
+
+Resistance* LightningResistance::clone()
+{
+  return new LightningResistance(*this);
+}
+
+ClassIdentifier LightningResistance::internal_class_identifier() const
+{
+  return CLASS_ID_LIGHTNING_RESISTANCE;
 }
 
 double Resistances::get_resistance_value(const DamageType type) const

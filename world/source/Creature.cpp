@@ -638,7 +638,7 @@ void Creature::assert_size() const
 {
   // VS 2010
   #ifdef _MSC_VER
-  BOOST_STATIC_ASSERT(sizeof(*this) == 696);
+  BOOST_STATIC_ASSERT(sizeof(*this) == 704);
   #else // gcc
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
   #endif
@@ -728,8 +728,10 @@ bool Creature::serialize(ostream& stream)
 
   // Equipment - todo
   // Inventory - todo
-  // Resistances
-  // Skills
+  
+  resistances.serialize(stream);
+
+  skills.serialize(stream);
 
   movement_accumulation.serialize(stream);
 
@@ -813,8 +815,10 @@ bool Creature::deserialize(istream& stream)
 
   // Equipment - todo
   // Inventory - todo
-  // Resistances
-  // Skills
+  
+  resistances.deserialize(stream);
+
+  skills.deserialize(stream);
 
   movement_accumulation.deserialize(stream);
 

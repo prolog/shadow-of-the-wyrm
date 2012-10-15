@@ -455,9 +455,11 @@
     <ClInclude Include="world\include\Race.hpp" />
     <ClInclude Include="world\include\RarityTypes.hpp" />
     <ClInclude Include="world\include\Readable.hpp" />
+    <ClInclude Include="world\include\ResistanceFactory.hpp" />
     <ClInclude Include="world\include\Resistances.hpp" />
     <ClInclude Include="world\include\Ring.hpp" />
     <ClInclude Include="world\include\Scroll.hpp" />
+    <ClInclude Include="world\include\SkillFactory.hpp" />
     <ClInclude Include="world\include\Skills.hpp" />
     <ClInclude Include="world\include\SkillTypes.hpp" />
     <ClInclude Include="world\include\Staff.hpp" />
@@ -1017,9 +1019,11 @@
     <ClCompile Include="world\source\Potion.cpp" />
     <ClCompile Include="world\source\Race.cpp" />
     <ClCompile Include="world\source\Readable.cpp" />
+    <ClCompile Include="world\source\ResistanceFactory.cpp" />
     <ClCompile Include="world\source\Resistances.cpp" />
     <ClCompile Include="world\source\Ring.cpp" />
     <ClCompile Include="world\source\Scroll.cpp" />
+    <ClCompile Include="world\source\SkillFactory.cpp" />
     <ClCompile Include="world\source\Skills.cpp" />
     <ClCompile Include="world\source\Staff.cpp" />
     <ClCompile Include="world\source\Statistic.cpp" />

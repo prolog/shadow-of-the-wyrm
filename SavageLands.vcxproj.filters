@@ -1920,6 +1920,12 @@
     <ClInclude Include="controller\include\ControllerFactory.hpp">
       <Filter>Header Files\controller</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\ResistanceFactory.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\SkillFactory.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3454,6 +3460,12 @@
     </ClCompile>
     <ClCompile Include="controller\source\ControllerFactory.cpp">
       <Filter>Source Files\controller</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\ResistanceFactory.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\SkillFactory.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
