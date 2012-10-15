@@ -17,6 +17,9 @@ class Wearable : public Item
     int get_soak() const;
     
     virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
     
   protected:
     int evade, soak;

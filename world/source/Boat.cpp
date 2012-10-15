@@ -14,3 +14,8 @@ Item* Boat::clone()
 {
   return new Boat(*this);
 }
+
+ClassIdentifier Boat::internal_class_identifier() const
+{
+  return CLASS_ID_BOAT;
+}

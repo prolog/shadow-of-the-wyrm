@@ -2,12 +2,13 @@
 #include <map>
 #include "EquipmentTypes.hpp"
 #include "Item.hpp"
+#include "ISerializable.hpp"
 
 typedef std::map<EquipmentWornLocation, ItemPtr> EquipmentMap;
 
 // Equipment is a class that represents all the "worn" equipment of a particular creature -
 // the items that are not carried as inventory.
-class Equipment
+class Equipment : public ISerializable
 {
   public:
     Equipment();
@@ -25,7 +26,13 @@ class Equipment
     
     EquipmentMap get_equipment() const;
 
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     void initialize();
     EquipmentMap equipment;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

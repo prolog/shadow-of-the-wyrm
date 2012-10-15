@@ -52,3 +52,8 @@ bool FruitJuiceEffect::effect_cursed(CreaturePtr creature, ActionManager * am)
 {
   return false;
 }
+
+ClassIdentifier FruitJuiceEffect::internal_class_identifier() const
+{
+  return CLASS_ID_FRUIT_JUICE_EFFECT;
+}

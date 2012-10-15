@@ -20,3 +20,8 @@ Item* Scroll::clone()
 {
   return new Scroll(*this);
 }
+
+ClassIdentifier Scroll::internal_class_identifier() const
+{
+  return CLASS_ID_SCROLL;
+}

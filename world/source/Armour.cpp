@@ -14,3 +14,8 @@ Item* Armour::clone()
 {
   return new Armour(*this);
 }
+
+ClassIdentifier Armour::internal_class_identifier() const
+{
+  return CLASS_ID_ARMOUR;
+}

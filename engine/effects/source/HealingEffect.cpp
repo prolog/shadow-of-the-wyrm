@@ -1,12 +1,13 @@
 #include "Creature.hpp"
 #include "HealingEffect.hpp"
 #include "RNG.hpp"
+#include "Serialize.hpp"
 
-using std::string;
+using namespace std;
 
-const float HealingEffect::BLESSED_MULTIPLIER = 2.0;
-const float HealingEffect::UNCURSED_MULTIPLIER = 1.0;
-const float HealingEffect::CURSED_MULTIPLIER = 0.5;
+const double HealingEffect::BLESSED_MULTIPLIER = 2.0;
+const double HealingEffect::UNCURSED_MULTIPLIER = 1.0;
+const double HealingEffect::CURSED_MULTIPLIER = 0.5;
 const int HealingEffect::BASE_MIN_HP = 5;
 const int HealingEffect::BASE_MAX_HP = 30;
 
@@ -29,7 +30,7 @@ Effect* HealingEffect::clone()
   return new HealingEffect(*this);
 }
 
-bool HealingEffect::heal(CreaturePtr creature, const float healing_multiplier) const
+bool HealingEffect::heal(CreaturePtr creature, const double healing_multiplier) const
 {
   bool effect_identified = false;
 
@@ -73,4 +74,41 @@ bool HealingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am
 int HealingEffect::get_random_healing_amount() const
 {
   return RNG::range(BASE_MIN_HP, BASE_MAX_HP);
+}
+
+bool HealingEffect::serialize(ostream& stream)
+{
+  Effect::serialize(stream);
+
+  Serialize::write_double(stream, BLESSED_MULTIPLIER);
+  Serialize::write_double(stream, UNCURSED_MULTIPLIER);
+  Serialize::write_double(stream, CURSED_MULTIPLIER);
+  Serialize::write_int(stream, BASE_MIN_HP);
+  Serialize::write_int(stream, BASE_MAX_HP);
+
+  return true;
+}
+
+bool HealingEffect::deserialize(istream& stream)
+{
+  Effect::deserialize(stream);
+
+  double& bmult = const_cast<double&>(BLESSED_MULTIPLIER);
+  double& umult = const_cast<double&>(UNCURSED_MULTIPLIER);
+  double& cmult = const_cast<double&>(CURSED_MULTIPLIER);
+  int& min      = const_cast<int&>(BASE_MIN_HP);
+  int& max      = const_cast<int&>(BASE_MAX_HP);
+
+  Serialize::read_double(stream, bmult);
+  Serialize::read_double(stream, umult);
+  Serialize::read_double(stream, cmult);
+  Serialize::read_int(stream, min);
+  Serialize::read_int(stream, max);
+
+  return true;
+}
+
+ClassIdentifier HealingEffect::internal_class_identifier() const
+{
+  return CLASS_ID_HEALING_EFFECT;
 }

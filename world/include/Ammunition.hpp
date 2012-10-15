@@ -13,11 +13,17 @@ class Ammunition : public RangedWeapon
     // MeleeWeapon, and delete the Ammunition class.
     
     Item* clone();
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
     
   protected:
     // Whether the ammunition requires a ranged weapon.  Some (arrows, bolts) do.
     // Others (clubs, rocks) don't.
     bool requires_ranged_weapon;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Ammunition> AmmunitionPtr;

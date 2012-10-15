@@ -8,4 +8,7 @@ class MiscItem : public Item
     ~MiscItem();
 
     Item* clone();
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

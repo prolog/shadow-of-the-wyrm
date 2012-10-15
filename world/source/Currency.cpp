@@ -15,3 +15,8 @@ Item* Currency::clone()
   return new Currency(*this);
 }
 
+ClassIdentifier Currency::internal_class_identifier() const
+{
+  return CLASS_ID_CURRENCY;
+}
+

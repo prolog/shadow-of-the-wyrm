@@ -21,3 +21,8 @@ Item* Potion::clone()
 {
   return new Potion(*this);
 }
+
+ClassIdentifier Potion::internal_class_identifier() const
+{
+  return CLASS_ID_POTION;
+}

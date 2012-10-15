@@ -1,4 +1,9 @@
+#include <boost/foreach.hpp>
 #include "Equipment.hpp"
+#include "ItemSerializationFactory.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 Equipment::Equipment()
 {
@@ -92,4 +97,62 @@ bool Equipment::merge(ItemPtr item)
 EquipmentMap Equipment::get_equipment() const
 {
   return equipment;
+}
+
+bool Equipment::serialize(ostream& stream)
+{
+  Serialize::write_size_t(stream, equipment.size());
+
+  BOOST_FOREACH(EquipmentMap::value_type& eq_pair, equipment)
+  {
+    Serialize::write_enum(stream, eq_pair.first);
+
+    ItemPtr item = eq_pair.second;
+
+    if (item)
+    {
+      Serialize::write_class_id(stream, item->get_class_identifier());
+      item->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, CLASS_ID_NULL);
+    }
+  }
+
+  return true;
+}
+
+bool Equipment::deserialize(istream& stream)
+{
+  size_t equipment_size = 0;
+  Serialize::read_size_t(stream, equipment_size);
+
+  for (unsigned int i = 0; i < equipment_size; i++)
+  {
+    EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD;
+    ItemPtr item;
+    Serialize::read_enum(stream, ewl);
+
+    ClassIdentifier eq_clid = CLASS_ID_NULL;
+    Serialize::read_class_id(stream, eq_clid);
+
+    if (eq_clid != CLASS_ID_NULL)
+    {
+      item = ItemSerializationFactory::create_item(eq_clid);
+      if (!item) return false;
+      if (!item->deserialize(stream)) return false;
+    }
+
+    // Always insert, even if the shared pointer to the item is "null" -
+    // this just means that nothing is equipped at that slot.
+    equipment.insert(make_pair(ewl, item));
+  }
+
+  return true;
+}
+
+ClassIdentifier Equipment::internal_class_identifier() const
+{
+  return CLASS_ID_EQUIPMENT;
 }

@@ -1,6 +1,9 @@
 #include <iomanip>
 #include <sstream>
+#include "Serialize.hpp"
 #include "Weight.hpp"
+
+using namespace std;
 
 Weight::Weight()
 : ounces(0)
@@ -48,4 +51,23 @@ std::string Weight::str() const
   weight << std::setprecision(2) << wgt << "lbs";
 
   return weight.str();
+}
+
+bool Weight::serialize(ostream& stream)
+{
+  Serialize::write_uint(stream, ounces);
+
+  return true;
+}
+
+bool Weight::deserialize(istream& stream)
+{
+  Serialize::read_uint(stream, ounces);
+
+  return true;
+}
+
+ClassIdentifier Weight::internal_class_identifier() const
+{
+  return CLASS_ID_WEIGHT;
 }

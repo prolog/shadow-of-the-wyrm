@@ -27,3 +27,8 @@ Item* Plant::clone()
 {
   return new Plant(*this);
 }
+
+ClassIdentifier Plant::internal_class_identifier() const
+{
+  return CLASS_ID_PLANT;
+}

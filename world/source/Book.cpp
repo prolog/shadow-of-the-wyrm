@@ -19,3 +19,8 @@ Item* Book::clone()
 {
   return new Book(*this);
 }
+
+ClassIdentifier Book::internal_class_identifier() const
+{
+  return CLASS_ID_BOOK;
+}

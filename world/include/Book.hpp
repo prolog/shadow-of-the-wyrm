@@ -10,6 +10,9 @@ class Book : public Readable
     bool destroy_on_read() const;
     
     Item* clone();
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Book> BookPtr;

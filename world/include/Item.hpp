@@ -4,13 +4,14 @@
 #include <boost/shared_ptr.hpp>
 #include "EquipmentTypes.hpp"
 #include "Effect.hpp"
+#include "ISerializable.hpp"
 #include "ItemTypes.hpp"
 #include "Material.hpp"
 #include "Weight.hpp"
 
 class Effect;
 
-class Item
+class Item : public ISerializable
 {
   public:
     Item();
@@ -96,6 +97,9 @@ class Item
     virtual Item* clone() = 0;
     virtual Item* deep_copy();
     virtual Item* deep_copy_with_new_id();
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
     
   protected:
     friend class ItemIdentifier;
@@ -125,10 +129,15 @@ class Item
     uchar symbol;
     Colour colour;
     ItemIdentificationType identification_type;
+
+    // This needs to be deep copied.
     EffectPtr effect;
     
     // This needs to be deep copied.
     MaterialPtr material;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
 typedef boost::shared_ptr<Item> ItemPtr;

@@ -27,3 +27,8 @@ Item* Food::clone()
 {
   return new Food(*this);
 }
+
+ClassIdentifier Food::internal_class_identifier() const
+{
+  return CLASS_ID_FOOD;
+}

@@ -1,8 +1,9 @@
 #include <boost/foreach.hpp>
 #include "Inventory.hpp"
+#include "ItemSerializationFactory.hpp"
+#include "Serialize.hpp"
 
-using std::list;
-using std::string;
+using namespace std;
 
 Inventory::Inventory()
 {
@@ -194,4 +195,54 @@ bool Inventory::has_item_type(const ItemType type) const
   }
   
   return false;
+}
+
+bool Inventory::serialize(ostream& stream)
+{
+  Serialize::write_size_t(stream, items.size());
+
+  BOOST_FOREACH(ItemPtr item, items)
+  {
+    if (item)
+    {
+      Serialize::write_class_id(stream, item->get_class_identifier());
+      item->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, CLASS_ID_NULL);
+    }
+  }
+
+  return true;
+}
+
+bool Inventory::deserialize(istream& stream)
+{
+  size_t items_size = 0;
+  Serialize::read_size_t(stream, items_size);
+
+  items.clear();
+
+  for (unsigned int i = 0; i < items_size; i++)
+  {
+    ClassIdentifier item_clid = CLASS_ID_NULL;
+    Serialize::read_class_id(stream, item_clid);
+
+    if (item_clid != CLASS_ID_NULL)
+    {
+      ItemPtr item = ItemSerializationFactory::create_item(item_clid);
+      if (!item) return false;
+      if (!item->deserialize(stream)) return false;
+
+      items.push_back(item);
+    }
+  }
+
+  return true;
+}
+
+ClassIdentifier Inventory::internal_class_identifier() const
+{
+  return CLASS_ID_INVENTORY;
 }

@@ -10,6 +10,9 @@ class Scroll : public Readable
     bool destroy_on_read() const;
     
     Item* clone();
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Scroll> ScrollPtr;

@@ -1,5 +1,7 @@
+#include "Serialize.hpp"
 #include "Wearable.hpp"
 
+using namespace std;
 using boost::dynamic_pointer_cast;
 
 Wearable::Wearable()
@@ -45,4 +47,22 @@ bool Wearable::additional_item_attributes_match(boost::shared_ptr<Item> i)
   }
   
   return match;
+}
+
+bool Wearable::serialize(ostream& stream)
+{
+  Item::serialize(stream);
+  Serialize::write_int(stream, evade);
+  Serialize::write_int(stream, soak);
+
+  return true;
+}
+
+bool Wearable::deserialize(istream& stream)
+{
+  Item::deserialize(stream);
+  Serialize::read_int(stream, evade);
+  Serialize::read_int(stream, soak);
+
+  return true;
 }

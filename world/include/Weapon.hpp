@@ -31,7 +31,10 @@ class Weapon : public Wearable
     virtual bool get_requires_ranged_weapon() const;
     
     virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
-    
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
   
     int difficulty;
@@ -51,7 +54,8 @@ class MeleeWeapon : public Weapon
     virtual WeaponStyle get_style() const;    
     virtual Item* clone();
     
-  protected:
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 class RangedWeapon : public Weapon
@@ -63,7 +67,8 @@ class RangedWeapon : public Weapon
     virtual WeaponStyle get_style() const;
     virtual Item* clone();
     
-  protected:
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Weapon> WeaponPtr;
