@@ -1,10 +1,11 @@
 #include <string>
 #include <sstream>
+#include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "Damage.hpp"
+#include "Serialize.hpp"
 
-using std::string;
-using std::ostringstream;
+using namespace std;
 
 Damage::Damage()
 : Dice(0, 0, 0), damage_type(DAMAGE_TYPE_SLASH)
@@ -127,6 +128,46 @@ string Damage::str() const
   }
 
   return ss.str();
+}
+
+bool Damage::serialize(ostream& stream)
+{
+  Dice::serialize(stream);
+  Serialize::write_enum(stream, damage_type);
+
+  if (additional_damage)
+  {
+    Serialize::write_class_id(stream, additional_damage->get_class_identifier());
+    additional_damage->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
+  return true;
+}
+
+bool Damage::deserialize(istream& stream)
+{
+  Dice::deserialize(stream);
+  Serialize::read_enum(stream, damage_type);
+
+  ClassIdentifier ci = CLASS_ID_NULL;
+  Serialize::read_class_id(stream, ci);
+
+  if (ci != CLASS_ID_NULL)
+  {
+    additional_damage = boost::make_shared<Damage>();
+    additional_damage->deserialize(stream);
+  }
+
+  return true;
+}
+
+ClassIdentifier Damage::internal_class_identifier() const
+{
+  return CLASS_ID_DAMAGE;
 }
 
 #ifdef UNIT_TESTS

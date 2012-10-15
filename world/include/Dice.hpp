@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
 #include "common.hpp"
+#include "ISerializable.hpp"
 
-class Dice
+class Dice : public ISerializable
 {
   public:
     Dice();
@@ -23,8 +24,14 @@ class Dice
     // Convert to a string (for UI use, etc)
     std::string str() const;
 
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     uint num_dice;
     uint dice_sides;
     int modifier;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

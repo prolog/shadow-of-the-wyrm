@@ -1,7 +1,8 @@
 #include "Conversion.hpp"
 #include "Dice.hpp"
+#include "Serialize.hpp"
 
-using std::string;
+using namespace std;
 
 Dice::Dice()
 : num_dice(0), dice_sides(0), modifier(0)
@@ -72,3 +73,25 @@ string Dice::str() const
   return damage;
 }
 
+bool Dice::serialize(ostream& stream)
+{
+  Serialize::write_uint(stream, num_dice);
+  Serialize::write_uint(stream, dice_sides);
+  Serialize::write_int(stream, modifier);
+
+  return true;
+}
+
+bool Dice::deserialize(istream& stream)
+{
+  Serialize::read_uint(stream, num_dice);
+  Serialize::read_uint(stream, dice_sides);
+  Serialize::read_int(stream, modifier);
+
+  return true;
+}
+
+ClassIdentifier Dice::internal_class_identifier() const
+{
+  return CLASS_ID_DICE;
+}

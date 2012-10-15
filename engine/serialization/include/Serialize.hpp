@@ -15,6 +15,9 @@ class Serialize
     static void write_bool(std::ostream& stream, const bool val);
     static void read_bool(std::istream& stream, bool& val);
 
+    static void write_uchar(std::ostream& stream, const unsigned char val);
+    static void read_uchar(std::istream& stream, unsigned char& val);
+
     static void write_uint(std::ostream& stream, const unsigned int val);
     static void read_uint(std::istream& stream, unsigned int& val);
 

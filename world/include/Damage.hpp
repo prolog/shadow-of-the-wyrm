@@ -28,9 +28,15 @@ class Damage : public Dice
     
     std::string str() const;
     
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
     DamageType damage_type;
     boost::shared_ptr<Damage> additional_damage;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Damage> DamagePtr;

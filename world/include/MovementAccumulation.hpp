@@ -2,6 +2,7 @@
 #include "common.hpp"
 #include "MovementTypes.hpp"
 #include "tiles.hpp"
+#include "ISerializable.hpp"
 
 // Measures the accumulation of movement across tile types and super types, given a particular method.
 // This is essentially an endurance tracker.  A character with a low swim score can swim, but not for
@@ -11,7 +12,7 @@
 // Another example is mountaineering: a character with a reasonable mountaineering score can cross
 // mountains, but attempting to scale an entire range without resting (by loading one of the mountain
 // maps) will likely lead to certain doom.
-class MovementAccumulation
+class MovementAccumulation : public ISerializable
 {
   public:
     MovementAccumulation();
@@ -33,6 +34,9 @@ class MovementAccumulation
     void set_movement_type(const MovementType new_method);
     MovementType get_movement_type() const;
 
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     // Later add a map to track movement across various
     // tile types, etc., for challenge purposes?
@@ -41,4 +45,7 @@ class MovementAccumulation
     ulonglong minutes_on_tile_type_given_movement;
     TileType tile_type;
     MovementType movement_type;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

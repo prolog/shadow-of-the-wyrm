@@ -11,6 +11,7 @@
 #include "Inventory.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
+#include "ISerializable.hpp"
 #include "MovementAccumulation.hpp"
 #include "Religion.hpp"
 #include "Resistances.hpp"
@@ -198,9 +199,14 @@ class Creature
     TargetMap get_target_map() const;
     TargetMap& get_target_map_ref();
     
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   private:
     void assert_size() const;
     void swap(Creature& c) throw ();
+
+    ClassIdentifier internal_class_identifier() const;
 
   protected:
 

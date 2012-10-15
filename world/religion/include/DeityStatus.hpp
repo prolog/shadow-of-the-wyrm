@@ -1,6 +1,7 @@
 #pragma once
+#include "ISerializable.hpp"
 
-class DeityStatus
+class DeityStatus : public ISerializable
 {
   public:
     DeityStatus();
@@ -13,8 +14,14 @@ class DeityStatus
 
     void set_crowned(const bool new_crowned_status);
     bool get_crowned() const;
+
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
     
   protected:
     int piety;
     bool crowned;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

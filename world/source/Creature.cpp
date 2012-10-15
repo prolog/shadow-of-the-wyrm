@@ -1,7 +1,10 @@
 #include <limits>
+#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Creature.hpp"
+#include "DecisionStrategyFactory.hpp"
 #include "PlayerDecisionStrategy.hpp"
+#include "Serialize.hpp"
 
 using namespace std;
 
@@ -635,7 +638,7 @@ void Creature::assert_size() const
 {
   // VS 2010
   #ifdef _MSC_VER
-  BOOST_STATIC_ASSERT(sizeof(*this) == 608);
+  BOOST_STATIC_ASSERT(sizeof(*this) == 696);
   #else // gcc
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
   #endif
@@ -688,6 +691,187 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->experience_points, cr.experience_points);
   std::swap(this->turns, cr.turns);
   std::swap(this->targets, cr.targets);
+}
+
+bool Creature::serialize(ostream& stream)
+{
+  Serialize::write_string(stream, id);
+  Serialize::write_bool(stream, is_player);
+
+  Serialize::write_string(stream, name);
+  Serialize::write_enum(stream, sex);
+  age.serialize(stream);
+  Serialize::write_enum(stream, size);
+  Serialize::write_enum(stream, eye_colour);
+  Serialize::write_enum(stream, hair_colour);
+  Serialize::write_enum(stream, handedness);
+
+  Serialize::write_string(stream, short_description_sid);
+  Serialize::write_string(stream, description_sid);
+
+  Serialize::write_string(stream, race_id);
+  Serialize::write_string(stream, class_id);
+
+  strength.serialize(stream);
+  dexterity.serialize(stream);
+  agility.serialize(stream);
+  health.serialize(stream);
+  intelligence.serialize(stream);
+  willpower.serialize(stream);
+  charisma.serialize(stream);
+
+  valour.serialize(stream);
+  spirit.serialize(stream);
+  speed.serialize(stream);
+
+  damage.serialize(stream);
+
+  // Equipment - todo
+  // Inventory - todo
+  // Resistances
+  // Skills
+
+  movement_accumulation.serialize(stream);
+
+  hit_points.serialize(stream);
+  arcana_points.serialize(stream);
+
+  base_evade.serialize(stream);
+  base_soak.serialize(stream);
+  evade.serialize(stream);
+  soak.serialize(stream);
+
+  Serialize::write_uchar(stream, symbol);
+  Serialize::write_enum(stream, colour);
+
+  level.serialize(stream);
+
+  if (decision_strategy)
+  {
+    Serialize::write_class_id(stream, decision_strategy->get_class_identifier());
+    decision_strategy->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
+  religion.serialize(stream);
+
+  Serialize::write_uint(stream, experience_value);
+  Serialize::write_uint(stream, experience_points);
+  Serialize::write_ulonglong(stream, turns);
+
+  Serialize::write_size_t(stream, targets.size());
+
+  BOOST_FOREACH(TargetMap::value_type& target_map_pair, targets)
+  {
+    Serialize::write_string(stream, target_map_pair.first);
+
+    pair<string, Coordinate> target_pair = target_map_pair.second;
+
+    Serialize::write_string(stream, target_pair.first);
+    Serialize::write_int(stream, target_pair.second.first);
+    Serialize::write_int(stream, target_pair.second.second);
+  }
+
+  return true;
+}
+
+bool Creature::deserialize(istream& stream)
+{
+  Serialize::read_string(stream, id);
+  Serialize::read_bool(stream, is_player);
+
+  Serialize::read_string(stream, name);
+  Serialize::read_enum(stream, sex);
+  age.deserialize(stream);
+  Serialize::read_enum(stream, size);
+  Serialize::read_enum(stream, eye_colour);
+  Serialize::read_enum(stream, hair_colour);
+  Serialize::read_enum(stream, handedness);
+
+  Serialize::read_string(stream, short_description_sid);
+  Serialize::read_string(stream, description_sid);
+  
+  Serialize::read_string(stream, race_id);
+  Serialize::read_string(stream, class_id);
+
+  strength.deserialize(stream);
+  dexterity.deserialize(stream);
+  agility.deserialize(stream);
+  health.deserialize(stream);
+  intelligence.deserialize(stream);
+  willpower.deserialize(stream);
+  charisma.deserialize(stream);
+
+  valour.deserialize(stream);
+  spirit.deserialize(stream);
+  speed.deserialize(stream);
+
+  damage.deserialize(stream);
+
+  // Equipment - todo
+  // Inventory - todo
+  // Resistances
+  // Skills
+
+  movement_accumulation.deserialize(stream);
+
+  hit_points.deserialize(stream);
+  arcana_points.deserialize(stream);
+
+  base_evade.deserialize(stream);
+  base_soak.deserialize(stream);
+  evade.deserialize(stream);
+  soak.deserialize(stream);
+
+  Serialize::read_uchar(stream, symbol);
+  Serialize::read_enum(stream, colour);
+
+  level.deserialize(stream);
+
+  ClassIdentifier dc_clid = CLASS_ID_NULL;
+  Serialize::read_class_id(stream, dc_clid);
+
+  if (dc_clid != CLASS_ID_NULL)
+  {
+    decision_strategy = DecisionStrategyFactory::create_decision_strategy(dc_clid);
+    if (!decision_strategy) return false;
+    if (!decision_strategy->deserialize(stream)) return false;
+  }
+
+  religion.deserialize(stream);
+
+  Serialize::read_uint(stream, experience_value);
+  Serialize::read_uint(stream, experience_points);
+  Serialize::read_ulonglong(stream, turns);
+
+  size_t targets_size = 0;
+  Serialize::read_size_t(stream, targets_size);
+
+  targets.clear();
+
+  for (unsigned int i = 0; i < targets_size; i++)
+  {
+    string attack_type;
+    Serialize::read_string(stream, attack_type);
+
+    string creature_id;
+    Coordinate coord;
+    Serialize::read_string(stream, creature_id);
+    Serialize::read_int(stream, coord.first);
+    Serialize::read_int(stream, coord.second);
+
+    targets.insert(make_pair(attack_type, make_pair(creature_id, coord)));
+  }
+
+  return true;
+}
+
+ClassIdentifier Creature::internal_class_identifier() const
+{
+  return CLASS_ID_CREATURE;
 }
 
 #ifdef UNIT_TESTS

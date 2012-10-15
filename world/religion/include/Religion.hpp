@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include "DeityStatus.hpp"
+#include "ISerializable.hpp"
 
 // Religion describes a creature's religion.  A creature can only worship 
 // one deity, but can be converted to other deities later on.  A container
@@ -11,7 +12,7 @@
 // Typedef'd because typing C++ templates is hard
 typedef std::map<std::string, DeityStatus> DeityRelations;
 
-class Religion
+class Religion : public ISerializable
 {
   public:
     Religion(const std::string& new_deity_id = "");
@@ -28,7 +29,13 @@ class Religion
     void set_deity_status(const std::string& deity_id, const DeityStatus& new_deity_status);
     DeityStatus get_deity_status(const std::string& deity_id) const;
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
     std::string deity_id;
     DeityRelations deity_relations;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
