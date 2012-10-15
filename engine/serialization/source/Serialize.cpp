@@ -106,6 +106,40 @@ void Serialize::read_bool(istream& stream, bool& val)
   }
 }
 
+// Write an unsigned char value
+void Serialize::write_uchar(ostream& stream, const unsigned char val)
+{
+  if (stream.good())
+  {
+    stream.write((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not write unsigned char");
+    throw stream_error;
+  }
+}
+
+// Read an unsigned char value
+void Serialize::read_uchar(istream& stream, unsigned char& val)
+{
+  if (stream.good())
+  {
+    stream.read((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not read unsigned char");
+    throw stream_error;
+  }
+
+  if (stream.fail())
+  {
+    SerializationException stream_error("Could not read full unsigned char");
+    throw stream_error;
+  }
+}
+
 // Write an unsigned int value.
 void Serialize::write_uint(ostream& stream, const unsigned int val)
 {

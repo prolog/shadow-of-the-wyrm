@@ -1,4 +1,7 @@
 #include "Statistic.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 Statistic::Statistic()
 {
@@ -54,6 +57,27 @@ void Statistic::set_current(int new_current)
 int Statistic::get_current() const
 {
 	return current;
+}
+
+bool Statistic::serialize(ostream& stream)
+{
+  Serialize::write_int(stream, base);
+  Serialize::write_int(stream, current);
+
+  return true;
+}
+
+bool Statistic::deserialize(istream& stream)
+{
+  Serialize::read_int(stream, base);
+  Serialize::read_int(stream, current);
+
+  return false;
+}
+
+ClassIdentifier Statistic::internal_class_identifier() const
+{
+  return CLASS_ID_STATISTIC;
 }
 
 #ifdef UNIT_TESTS

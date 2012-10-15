@@ -1,6 +1,8 @@
+#include <boost/foreach.hpp>
 #include "Religion.hpp"
+#include "Serialize.hpp"
 
-using std::string;
+using namespace std;
 
 Religion::Religion(const string& new_deity_id)
 : deity_id(new_deity_id)
@@ -57,4 +59,45 @@ DeityStatus Religion::get_deity_status(const std::string& find_deity_id) const
   }
   
   return status;
+}
+
+bool Religion::serialize(ostream& stream)
+{
+  Serialize::write_string(stream, deity_id);
+  Serialize::write_size_t(stream, deity_relations.size());
+
+  BOOST_FOREACH(DeityRelations::value_type& relation, deity_relations)
+  {
+    Serialize::write_string(stream, relation.first);
+    relation.second.serialize(stream);
+  }
+
+  return true;
+}
+
+bool Religion::deserialize(istream& stream)
+{
+  Serialize::read_string(stream, deity_id);
+  size_t deity_relations_size = 0;
+  Serialize::read_size_t(stream, deity_relations_size);
+  
+  deity_relations.clear();
+
+  for (unsigned int i = 0; i < deity_relations_size; i++)
+  {
+    string deity_id;
+    DeityStatus deity_status;
+
+    Serialize::read_string(stream, deity_id);
+    deity_status.deserialize(stream);
+
+    deity_relations.insert(make_pair(deity_id, deity_status));
+  }
+
+  return true;
+}
+
+ClassIdentifier Religion::internal_class_identifier() const
+{
+  return CLASS_ID_RELIGION;
 }

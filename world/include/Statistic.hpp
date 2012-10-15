@@ -1,6 +1,7 @@
 #pragma once
+#include "ISerializable.hpp"
 
-class Statistic
+class Statistic : public ISerializable
 {
 	public:
     Statistic();
@@ -13,7 +14,13 @@ class Statistic
     void set_current(int new_current);
     int  get_current() const;
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
 	protected:
 		int base;
 		int current;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

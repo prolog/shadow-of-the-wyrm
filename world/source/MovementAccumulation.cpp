@@ -1,4 +1,7 @@
 #include "MovementAccumulation.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 MovementAccumulation::MovementAccumulation()
 {
@@ -63,4 +66,31 @@ void MovementAccumulation::set_movement_type(const MovementType new_type)
 MovementType MovementAccumulation::get_movement_type() const
 {
   return movement_type;
+}
+
+bool MovementAccumulation::serialize(ostream& stream)
+{
+  Serialize::write_ulonglong(stream, minutes_on_super_type_given_movement);
+  Serialize::write_enum(stream, tile_super_type);
+  Serialize::write_ulonglong(stream, minutes_on_tile_type_given_movement);
+  Serialize::write_enum(stream, tile_type);
+  Serialize::write_enum(stream, movement_type);
+
+  return true;
+}
+
+bool MovementAccumulation::deserialize(istream& stream)
+{
+  Serialize::read_ulonglong(stream, minutes_on_super_type_given_movement);
+  Serialize::read_enum(stream, tile_super_type);
+  Serialize::read_ulonglong(stream, minutes_on_tile_type_given_movement);
+  Serialize::read_enum(stream, tile_type);
+  Serialize::read_enum(stream, movement_type);
+
+  return true;
+}
+
+ClassIdentifier MovementAccumulation::internal_class_identifier() const
+{
+  return CLASS_ID_MOVEMENT_ACCUMULATION;
 }

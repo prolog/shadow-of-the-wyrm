@@ -1,7 +1,8 @@
 #include <limits>
 #include "DeityStatus.hpp"
+#include "Serialize.hpp"
 
-using std::numeric_limits;
+using namespace std;
 
 DeityStatus::DeityStatus()
 : piety(100), crowned(false)
@@ -61,4 +62,25 @@ void DeityStatus::set_crowned(const bool new_crowned_status)
 bool DeityStatus::get_crowned() const
 {
   return crowned;
+}
+
+bool DeityStatus::serialize(ostream& stream)
+{
+  Serialize::write_int(stream, piety);
+  Serialize::write_bool(stream, crowned);
+
+  return true;
+}
+
+bool DeityStatus::deserialize(istream& stream)
+{
+  Serialize::read_int(stream, piety);
+  Serialize::read_bool(stream, crowned);
+
+  return true;
+}
+
+ClassIdentifier DeityStatus::internal_class_identifier() const
+{
+  return CLASS_ID_DEITY_STATUS;
 }
