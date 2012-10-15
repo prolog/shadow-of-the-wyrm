@@ -12,6 +12,6 @@ class PlayerDecisionStrategy : public DecisionStrategy
 
     DecisionStrategy* copy();
 
-  protected:
-    ControllerPtr controller;
+private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

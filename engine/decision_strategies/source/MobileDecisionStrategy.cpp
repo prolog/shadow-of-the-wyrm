@@ -5,7 +5,7 @@
 using namespace std;
 
 MobileDecisionStrategy::MobileDecisionStrategy(ControllerPtr new_controller)
-: controller(new_controller)
+: NPCDecisionStrategy(new_controller)
 {
 }
 
@@ -35,4 +35,9 @@ CommandPtr MobileDecisionStrategy::get_decision_for_tile_selection(CommandFactor
 bool MobileDecisionStrategy::can_move() const
 {
   return true;
+}
+
+ClassIdentifier MobileDecisionStrategy::internal_class_identifier() const
+{
+  return CLASS_ID_MOBILE_DECISION_STRATEGY;
 }

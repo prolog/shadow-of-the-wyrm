@@ -10,3 +10,13 @@ int NullKeyboardController::get_char_as_int()
 {
   return -1;
 }
+
+Controller* NullKeyboardController::clone()
+{
+  return new NullKeyboardController(*this);
+}
+
+ClassIdentifier NullKeyboardController::internal_class_identifier() const
+{
+  return CLASS_ID_NULL_KEYBOARD_CONTROLLER;
+}

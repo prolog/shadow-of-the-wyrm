@@ -5,7 +5,7 @@
 using namespace std;
 
 ImmobileDecisionStrategy::ImmobileDecisionStrategy(ControllerPtr new_controller)
-: controller(new_controller)
+: NPCDecisionStrategy(new_controller)
 {
 }
 
@@ -35,4 +35,9 @@ CommandPtr ImmobileDecisionStrategy::get_decision_for_tile_selection(CommandFact
 bool ImmobileDecisionStrategy::can_move() const
 {
   return false;
+}
+
+ClassIdentifier ImmobileDecisionStrategy::internal_class_identifier() const
+{
+  return CLASS_ID_IMMOBILE_DECISION_STRATEGY;
 }

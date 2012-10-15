@@ -1,4 +1,13 @@
+#include "ControllerFactory.hpp"
 #include "DecisionStrategy.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
+
+DecisionStrategy::DecisionStrategy(ControllerPtr new_controller)
+: controller(new_controller)
+{
+}
 
 // Get the threats - used to determine a course of action.
 ThreatRatings& DecisionStrategy::get_threats_ref()
@@ -23,3 +32,36 @@ boost::shared_ptr<Map> DecisionStrategy::get_fov_map()
   return current_fov_map;
 }
 
+bool DecisionStrategy::serialize(ostream& stream)
+{
+  threat_ratings.serialize(stream);
+
+  if (controller)
+  {
+    Serialize::write_class_id(stream, controller->get_class_identifier());
+    controller->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
+  return true;
+}
+
+bool DecisionStrategy::deserialize(istream& stream)
+{
+  threat_ratings.deserialize(stream);
+
+  ClassIdentifier cl_id = CLASS_ID_NULL;
+  Serialize::read_class_id(stream, cl_id);
+
+  if (cl_id != CLASS_ID_NULL)
+  {
+    controller = ControllerFactory::create_controller(cl_id);
+    if (!controller) return false;
+    if (!controller->deserialize(stream)) return false;
+  }
+
+  return true;
+}

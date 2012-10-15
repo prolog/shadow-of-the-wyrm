@@ -76,6 +76,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp" />
+    <ClInclude Include="controller\include\ControllerFactory.hpp" />
     <ClInclude Include="controller\include\CursesKeyboardController.hpp" />
     <ClInclude Include="controller\include\NullKeyboardController.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
@@ -565,6 +566,8 @@
     <ClInclude Include="world\tiles\include\WorshipSiteTypes.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="controller\source\Controller.cpp" />
+    <ClCompile Include="controller\source\ControllerFactory.cpp" />
     <ClCompile Include="controller\source\CursesKeyboardController.cpp" />
     <ClCompile Include="controller\source\NullKeyboardController.cpp" />
     <ClCompile Include="display\source\Display.cpp" />

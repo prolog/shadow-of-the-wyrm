@@ -16,3 +16,13 @@ int CursesKeyboardController::get_char_as_int()
   int character = getch();
   return character;
 }
+
+Controller* CursesKeyboardController::clone()
+{
+  return new CursesKeyboardController(*this);
+}
+
+ClassIdentifier CursesKeyboardController::internal_class_identifier() const
+{
+  return CLASS_ID_CURSES_KEYBOARD_CONTROLLER;
+}

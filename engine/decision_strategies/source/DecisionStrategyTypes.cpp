@@ -19,4 +19,5 @@ DecisionStrategyID::~DecisionStrategyID()
 string DecisionStrategyID::DECISION_STRATEGY_DEFAULT  = "";
 string DecisionStrategyID::DECISION_STRATEGY_IMMOBILE = "immobile";
 string DecisionStrategyID::DECISION_STRATEGY_MOBILE   = "mobile";
+string DecisionStrategyID::DECISION_STRATEGY_PLAYER   = "player";
  

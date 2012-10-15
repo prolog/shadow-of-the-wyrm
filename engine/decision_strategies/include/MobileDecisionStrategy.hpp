@@ -17,5 +17,6 @@ class MobileDecisionStrategy : public NPCDecisionStrategy
     
     virtual bool can_move() const;
 
-    ControllerPtr controller;
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };
