@@ -12,7 +12,10 @@ class Consumable : public Item
     
     void set_nutrition(const int new_nutrition);
     int get_nutrition() const;
-    
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     int nutrition;
 };

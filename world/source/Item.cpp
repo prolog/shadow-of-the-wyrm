@@ -6,7 +6,11 @@
 #include "NullEffect.hpp"
 #include "Wood.hpp"
 
-using std::string;
+#include "EffectFactory.hpp"
+#include "MaterialFactory.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 Item::Item()
 : quantity(1), readable(false), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false), item_identified(false),
@@ -298,4 +302,92 @@ void Item::set_item_identified(const bool new_item_identified)
 bool Item::get_item_identified() const
 {
   return item_identified;
+}
+
+bool Item::serialize(ostream& stream)
+{
+  Serialize::write_string(stream, id);
+  Serialize::write_string(stream, base_id);
+  Serialize::write_uint(stream, quantity);
+  Serialize::write_string(stream, usage_description_sid);
+  Serialize::write_string(stream, description_sid);
+  Serialize::write_string(stream, unidentified_usage_description_sid);
+  Serialize::write_string(stream, unidentified_description_sid);
+  weight.serialize(stream);
+  Serialize::write_bool(stream, readable);
+  Serialize::write_enum(stream, worn_location);
+  Serialize::write_enum(stream, status);
+  Serialize::write_bool(stream, status_identified);
+  Serialize::write_bool(stream, item_identified);
+  Serialize::write_bool(stream, artifact);
+  Serialize::write_enum(stream, type);
+  Serialize::write_uchar(stream, symbol);
+  Serialize::write_enum(stream, colour);
+  Serialize::write_enum(stream, identification_type);
+
+  if (effect)
+  {
+    Serialize::write_class_id(stream, effect->get_class_identifier());
+    effect->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
+  if (material)
+  {
+    Serialize::write_class_id(stream, material->get_class_identifier());
+    material->serialize(stream);
+  }
+  else
+  {
+    Serialize::write_class_id(stream, CLASS_ID_NULL);
+  }
+
+  return true;
+}
+
+bool Item::deserialize(istream& stream)
+{
+  Serialize::read_string(stream, id);
+  Serialize::read_string(stream, base_id);
+  Serialize::read_uint(stream, quantity);
+  Serialize::read_string(stream, usage_description_sid);
+  Serialize::read_string(stream, description_sid);
+  Serialize::read_string(stream, unidentified_usage_description_sid);
+  Serialize::read_string(stream, unidentified_description_sid);
+  weight.deserialize(stream);
+  Serialize::read_bool(stream, readable);
+  Serialize::read_enum(stream, worn_location);
+  Serialize::read_enum(stream, status);
+  Serialize::read_bool(stream, status_identified);
+  Serialize::read_bool(stream, item_identified);
+  Serialize::read_bool(stream, artifact);
+  Serialize::read_enum(stream, type);
+  Serialize::read_uchar(stream, symbol);
+  Serialize::read_enum(stream, colour);
+  Serialize::read_enum(stream, identification_type);
+
+  ClassIdentifier effect_clid = CLASS_ID_NULL;
+  Serialize::read_class_id(stream, effect_clid);
+
+  if (effect_clid != CLASS_ID_NULL)
+  {
+    effect = EffectFactory::create_effect(effect_clid);
+    if (!effect) return false;
+    if (!effect->deserialize(stream)) return false;
+  }
+
+  ClassIdentifier material_clid = CLASS_ID_NULL;
+  Serialize::read_class_id(stream, material_clid);
+
+  if (material_clid != CLASS_ID_NULL)
+  {
+    material = MaterialFactory::create_material(material_clid);
+    if (!material) return false;
+    if (!material->deserialize(stream)) return false;
+  }
+
+  return true;
 }

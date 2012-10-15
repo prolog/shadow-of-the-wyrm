@@ -1,5 +1,7 @@
+#include "Serialize.hpp"
 #include "Weapon.hpp"
 
+using namespace std;
 using boost::dynamic_pointer_cast;
 
 // WEAPON
@@ -93,6 +95,31 @@ bool Weapon::additional_item_attributes_match(boost::shared_ptr<Item> i)
   return match;
 }
 
+bool Weapon::serialize(ostream& stream)
+{
+  Wearable::serialize(stream);
+  Serialize::write_int(stream, difficulty);
+  Serialize::write_int(stream, speed);
+  damage.serialize(stream);
+  Serialize::write_enum(stream, trained_skill);
+  Serialize::write_enum(stream, trained_ranged_skill);
+  Serialize::write_bool(stream, requires_ranged_weapon);
+
+  return true;
+}
+
+bool Weapon::deserialize(istream& stream)
+{
+  Wearable::deserialize(stream);
+  Serialize::read_int(stream, difficulty);
+  Serialize::read_int(stream, speed);
+  damage.deserialize(stream);
+  Serialize::read_enum(stream, trained_skill);
+  Serialize::read_enum(stream, trained_ranged_skill);
+  Serialize::read_bool(stream, requires_ranged_weapon);
+
+  return true;
+}
 
 // MELEEWEAPON
 MeleeWeapon::MeleeWeapon() 
@@ -114,6 +141,11 @@ Item* MeleeWeapon::clone()
   return new MeleeWeapon(*this);
 }
 
+ClassIdentifier MeleeWeapon::internal_class_identifier() const
+{
+  return CLASS_ID_MELEE_WEAPON;
+}
+
 // RANGEDWEAPON
 RangedWeapon::RangedWeapon() 
 : Weapon()
@@ -132,4 +164,9 @@ WeaponStyle RangedWeapon::get_style() const
 Item* RangedWeapon::clone()
 {
   return new RangedWeapon(*this);
+}
+
+ClassIdentifier RangedWeapon::internal_class_identifier() const
+{
+  return CLASS_ID_RANGED_WEAPON;
 }

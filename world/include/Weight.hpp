@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
 #include "common.hpp"
+#include "ISerializable.hpp"
 
-class Weight
+class Weight : public ISerializable
 {
   public:
     Weight();
@@ -17,6 +18,12 @@ class Weight
     
     std::string str() const;
 
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     uint ounces;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

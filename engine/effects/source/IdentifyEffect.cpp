@@ -4,6 +4,7 @@
 #include "IdentifyEffect.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
+#include "Serialize.hpp"
 #include "StringConstants.hpp"
 
 using namespace std;
@@ -76,3 +77,23 @@ bool IdentifyEffect::effect_cursed(boost::shared_ptr<Creature> creature, ActionM
   return false;
 }
 
+bool IdentifyEffect::serialize(ostream& stream)
+{
+  Effect::serialize(stream);
+  Serialize::write_string(stream, identification_msg);
+
+  return true;
+}
+
+bool IdentifyEffect::deserialize(istream& stream)
+{
+  Effect::deserialize(stream);
+  Serialize::read_string(stream, identification_msg);
+
+  return true;
+}
+
+ClassIdentifier IdentifyEffect::internal_class_identifier() const
+{
+  return CLASS_ID_IDENTIFY_EFFECT;
+}

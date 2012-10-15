@@ -14,3 +14,8 @@ Item* Amulet::clone()
 {
   return new Amulet(*this);
 }
+
+ClassIdentifier Amulet::internal_class_identifier() const
+{
+  return CLASS_ID_AMULET;
+}

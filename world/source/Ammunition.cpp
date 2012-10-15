@@ -1,4 +1,7 @@
 #include "Ammunition.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 Ammunition::Ammunition()
 {
@@ -18,4 +21,25 @@ EquipmentWornLocation Ammunition::get_worn_location() const
 Item* Ammunition::clone()
 {
   return new Ammunition(*this);
+}
+
+bool Ammunition::serialize(ostream& stream)
+{
+  RangedWeapon::serialize(stream);
+  Serialize::write_bool(stream, requires_ranged_weapon);
+
+  return true;
+}
+
+bool Ammunition::deserialize(istream& stream)
+{
+  RangedWeapon::deserialize(stream);
+  Serialize::read_bool(stream, requires_ranged_weapon);
+
+  return true;
+}
+
+ClassIdentifier Ammunition::internal_class_identifier() const
+{
+  return CLASS_ID_AMMUNITION;
 }

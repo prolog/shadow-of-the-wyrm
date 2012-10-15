@@ -30,3 +30,7 @@ bool NullEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
   return false;
 }
 
+ClassIdentifier NullEffect::internal_class_identifier() const
+{
+  return CLASS_ID_NULL_EFFECT;
+}

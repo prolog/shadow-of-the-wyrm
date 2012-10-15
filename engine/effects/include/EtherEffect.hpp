@@ -13,4 +13,7 @@ class EtherEffect : public HealingEffect
 
   protected:
     virtual bool heal(boost::shared_ptr<Creature> creature, const float healing_multiplier) const;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

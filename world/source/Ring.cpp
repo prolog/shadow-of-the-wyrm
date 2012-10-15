@@ -14,3 +14,8 @@ Item* Ring::clone()
 {
   return new Ring(*this);
 }
+
+ClassIdentifier Ring::internal_class_identifier() const
+{
+  return CLASS_ID_RING;
+}

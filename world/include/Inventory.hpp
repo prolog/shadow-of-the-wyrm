@@ -1,6 +1,7 @@
 #pragma once
 #include <list>
 #include "Item.hpp"
+#include "ISerializable.hpp"
 
 enum InventoryAdditionType
 {
@@ -8,7 +9,7 @@ enum InventoryAdditionType
   INVENTORY_ADDITION_BACK = 1
 };
 
-class Inventory
+class Inventory : public ISerializable
 {
   public:
     Inventory();
@@ -42,7 +43,13 @@ class Inventory
     
     std::list<ItemPtr> get_items();
     const std::list<ItemPtr> get_items_const() const;
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
     
   protected:
     std::list<ItemPtr> items;
+
+  private:
+    virtual ClassIdentifier internal_class_identifier() const;
 };

@@ -228,6 +228,7 @@
     <ClInclude Include="engine\description\include\TileDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescription.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
+    <ClInclude Include="engine\effects\include\AdditionalEffectMessageFactory.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\Effect.hpp" />
     <ClInclude Include="engine\effects\include\EffectFactory.hpp" />
@@ -442,6 +443,7 @@
     <ClInclude Include="world\include\InitialItem.hpp" />
     <ClInclude Include="world\include\Inventory.hpp" />
     <ClInclude Include="world\include\Item.hpp" />
+    <ClInclude Include="world\include\ItemSerializationFactory.hpp" />
     <ClInclude Include="world\include\ItemTypes.hpp" />
     <ClInclude Include="world\include\Map.hpp" />
     <ClInclude Include="world\include\MapExit.hpp" />
@@ -749,6 +751,7 @@
     <ClCompile Include="engine\description\source\TileDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescription.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />
+    <ClCompile Include="engine\effects\source\AdditionalEffectMessageFactory.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp" />
     <ClCompile Include="engine\effects\source\Effect.cpp" />
     <ClCompile Include="engine\effects\source\EffectFactory.cpp" />
@@ -1009,6 +1012,7 @@
     <ClCompile Include="world\source\InitialItem.cpp" />
     <ClCompile Include="world\source\Inventory.cpp" />
     <ClCompile Include="world\source\Item.cpp" />
+    <ClCompile Include="world\source\ItemSerializationFactory.cpp" />
     <ClCompile Include="world\source\ItemTypes.cpp" />
     <ClCompile Include="world\source\Map.cpp" />
     <ClCompile Include="world\source\MapExit.cpp" />

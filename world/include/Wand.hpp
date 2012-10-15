@@ -8,6 +8,9 @@ class Wand : public Item
     ~Wand();
     
     Item* clone();
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Wand> WandPtr;

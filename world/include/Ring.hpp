@@ -7,7 +7,10 @@ class Ring : public Wearable
     Ring();
     ~Ring();
     
-    Item* clone();    
+    Item* clone();  
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef boost::shared_ptr<Ring> RingPtr;
