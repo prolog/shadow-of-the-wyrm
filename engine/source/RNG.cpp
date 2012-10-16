@@ -8,7 +8,6 @@ using namespace std;
 // Declaration of the random number generator
 RNGType RNG::rng;
 
-int RNG::seed = static_cast<int>(std::time(0));
 boost::uniform_int<> RNG::udist = boost::uniform_int<>(0, std::numeric_limits<int>::max());
 boost::variate_generator<RNGType, boost::uniform_int<> > RNG::generator(rng, udist);
 bool RNG::initialized = false;
