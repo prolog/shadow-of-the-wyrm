@@ -37,7 +37,7 @@ void Serialization::save(CreaturePtr creature)
     // Save the metadata
     string version = get_version();
     
-    // Save the game data
+    // Save the state and game data
     if (game)
     {
       game->serialize(save_file);

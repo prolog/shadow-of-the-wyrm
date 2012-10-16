@@ -8,8 +8,6 @@ class Dice;
 class RNG
 {
 	public:
-    RNG();
-
     static int dice(const Dice& dice);
 		static int dice(int num_dice, int num_sides, int additional_modifier = 0);
 		static int range(int min, int max, int additional_modifier = 0);
@@ -18,8 +16,9 @@ class RNG
     static bool initialize_if_necessary();
 
 	protected:
-		static RNGType rng;
-		static int seed;
+    RNG();
+
+    static RNGType rng;
 		static boost::uniform_int<> udist;
 		static boost::variate_generator<RNGType, boost::uniform_int<> > generator;
 		static bool initialized;
