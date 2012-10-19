@@ -5,7 +5,9 @@
 #include "Environment.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
+#include "RNG.hpp"
 #include "Serialization.hpp"
+#include "Serialize.hpp"
 
 using namespace std;
 
@@ -40,6 +42,7 @@ void Serialization::save(CreaturePtr creature)
     // Save the state and game data
     if (game)
     {
+      Serialize::write_uint(save_file, RNG::get_seed());
       game->serialize(save_file);
     }
   }
