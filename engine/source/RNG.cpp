@@ -8,6 +8,7 @@ using namespace std;
 // Declaration of the random number generator
 RNGType RNG::rng;
 
+uint32_t RNG::seed = static_cast<uint32_t>(std::time(0));
 boost::uniform_int<> RNG::udist = boost::uniform_int<>(0, std::numeric_limits<int>::max());
 boost::variate_generator<RNGType, boost::uniform_int<> > RNG::generator(rng, udist);
 bool RNG::initialized = false;
@@ -22,13 +23,35 @@ bool RNG::initialize_if_necessary()
 {
   if (!initialized)
   {
-    generator.engine().seed(static_cast<uint32_t>(std::time(0)));
+    seed = static_cast<uint32_t>(std::time(0));
+    generator.engine().seed(seed);
     generator.distribution().reset();
     initialized = true;
     return true;
   }
 
   return false;
+}
+
+// Re-initialize.  Useful for saved games where a given seed is known, and needs to be used.
+bool RNG::reinitialize()
+{
+  initialized = false;
+
+  return initialize_if_necessary();
+}
+
+// Set a particular seed.  This does not actually reinitialize the RNG - this needs to be done
+// separately.
+void RNG::set_seed(const uint32_t new_seed)
+{
+  seed = new_seed;
+}
+
+// Get the current seed
+uint32_t RNG::get_seed()
+{
+  return seed;
 }
 
 /*!

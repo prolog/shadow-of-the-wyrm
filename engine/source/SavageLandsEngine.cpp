@@ -138,9 +138,19 @@ void SavageLandsEngine::setup_player_and_world()
     WelcomeScreen welcome(display);
     welcome.display();
 
-    NamingScreen naming(display);
-    name = naming.display();
-    name = Naming::clean_name(name);
+    bool user_and_name_selected = true;
+
+    while (user_and_name_selected)
+    {
+      NamingScreen naming(display);
+      name = naming.display();
+      name = Naming::clean_name(name);
+
+      // Now that a name has been entered, check to see if there is already a save file
+      // in place for this user/character-name, and re-prompt the user for a name if
+      // necessary.
+      user_and_name_selected = false;
+    }
 
     SexSelectionScreen sex_selection(display);
     sex = static_cast<CreatureSex>(String::to_int(sex_selection.display()));

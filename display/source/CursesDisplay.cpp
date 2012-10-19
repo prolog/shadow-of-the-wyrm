@@ -479,7 +479,7 @@ CursesMenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* wi
       string option_name = current_option.get_description();
       string option_desc = option_descriptions.at(i);
 
-      pair<char, string> option_details = get_formatted_option(i, option_name, option_desc);
+      pair<char, string> option_details = get_formatted_option(current_option.get_id(), option_name, option_desc);
       wrapper.add_option(option_details.first);
 
       mvwprintw(window, temp_row, (*col)+2, option_details.second.c_str());
