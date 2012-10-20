@@ -8,6 +8,7 @@
 #include "DeitySelectionScreen.hpp"
 #include "DisplayTile.hpp"
 #include "Game.hpp"
+#include "LoadGameScreen.hpp"
 #include "Log.hpp"
 #include "MessageManager.hpp"
 #include "NamingScreen.hpp"
@@ -21,19 +22,54 @@ using namespace std;
 // State manager functionality.
 EngineStateManager::EngineStateManager()
 {
-  current_state = ENGINE_STATE_START;
+  current_state = ENGINE_STATE_START_NEW_GAME;
 }
 
-bool EngineStateManager::continue_execution() const
+void EngineStateManager::set_state(const EngineStateEnum new_state)
 {
-  return (current_state != ENGINE_STATE_STOP);
+  current_state = new_state;
+}
+
+EngineStateEnum EngineStateManager::get_state() const
+{
+  return current_state;
+}
+
+bool EngineStateManager::start_new_game() const
+{
+  return (current_state == ENGINE_STATE_START_NEW_GAME);
+}
+
+bool EngineStateManager::load_existing_game() const
+{
+  return (current_state == ENGINE_STATE_LOAD_GAME);
+}
+
+bool EngineStateManager::exit() const
+{
+  return (current_state == ENGINE_STATE_STOP);
 }
 
 // Core engine functionality
 
-// JCD FIXME refactor
 SavageLandsEngine::SavageLandsEngine()
 {
+  initialize_game_option_map();
+  initialize_game_flow_map();
+}
+
+void SavageLandsEngine::initialize_game_option_map()
+{
+  game_option_map.insert(make_pair("a", ENGINE_STATE_START_NEW_GAME));
+  game_option_map.insert(make_pair("b", ENGINE_STATE_LOAD_GAME));
+  game_option_map.insert(make_pair("z", ENGINE_STATE_STOP));
+}
+
+void SavageLandsEngine::initialize_game_flow_map()
+{
+  game_flow_functions.insert(make_pair(ENGINE_STATE_START_NEW_GAME, &SavageLandsEngine::process_new_game));
+  game_flow_functions.insert(make_pair(ENGINE_STATE_LOAD_GAME, &SavageLandsEngine::process_load_game));
+  game_flow_functions.insert(make_pair(ENGINE_STATE_STOP, &SavageLandsEngine::process_exit_game));
 }
 
 // The SavageLandsEngine is responsible for the deletion of the Game object.  The Game should
@@ -62,10 +98,17 @@ void SavageLandsEngine::start()
 
   if (game)
   {
-    setup_game();
+    if (state_manager.start_new_game())
+    {
+      setup_game();
+    }
+
     setup_player_and_world();
     
-    game->go();
+    if (!state_manager.exit())
+    {
+      game->go();
+    }
   }
   else
   {
@@ -128,6 +171,35 @@ void SavageLandsEngine::setup_player_and_world()
   
   if (game)
   {
+    bool done = false;
+
+    while (!done)
+    {
+      WelcomeScreen welcome(display);
+      string game_option = welcome.display();
+
+      done = process_game_option(game_option);
+    }
+  }
+}
+
+// Process the game option.
+bool SavageLandsEngine::process_game_option(const string& game_option)
+{
+  EngineStateEnum engine_state = game_option_map[game_option];
+  state_manager.set_state(engine_state);
+
+  map<EngineStateEnum, bool (SavageLandsEngine::*)(void)>::iterator g_it = game_flow_functions.find(engine_state);
+  return (this->*(g_it->second))();
+}
+
+// Process a new game command
+bool SavageLandsEngine::process_new_game()
+{
+  Game* game = Game::instance();
+
+  if (game)
+  {
     string name;
     CreatureSex sex;
     
@@ -135,22 +207,9 @@ void SavageLandsEngine::setup_player_and_world()
     RaceMap  races   = game->get_races_ref();
     ClassMap classes = game->get_classes_ref();
 
-    WelcomeScreen welcome(display);
-    welcome.display();
-
-    bool user_and_name_selected = true;
-
-    while (user_and_name_selected)
-    {
-      NamingScreen naming(display);
-      name = naming.display();
-      name = Naming::clean_name(name);
-
-      // Now that a name has been entered, check to see if there is already a save file
-      // in place for this user/character-name, and re-prompt the user for a name if
-      // necessary.
-      user_and_name_selected = false;
-    }
+    NamingScreen naming(display);
+    name = naming.display();
+    name = Naming::clean_name(name);
 
     SexSelectionScreen sex_selection(display);
     sex = static_cast<CreatureSex>(String::to_int(sex_selection.display()));
@@ -188,4 +247,21 @@ void SavageLandsEngine::setup_player_and_world()
       game->create_new_world(player); 
     }
   }
+
+  return true;
+}
+
+// Process a load game command
+bool SavageLandsEngine::process_load_game()
+{
+  LoadGameScreen load_game(display);
+  string option = load_game.display();
+
+  return false;
+}
+
+// Exit
+bool SavageLandsEngine::process_exit_game()
+{
+  return true;
 }
