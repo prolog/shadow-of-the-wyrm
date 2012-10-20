@@ -1932,6 +1932,9 @@
     <ClInclude Include="engine\effects\include\AdditionalEffectMessageFactory.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\menus\include\LoadGameScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3478,6 +3481,9 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\AdditionalEffectMessageFactory.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\LoadGameScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

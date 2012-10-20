@@ -34,6 +34,7 @@ class TextKeys
     static const std::string SL_TITLE_NEW_GAME;
     static const std::string SL_TITLE_LOAD_GAME;
     static const std::string SL_TITLE_QUIT_GAME;
+    static const std::string EXIT;
     static const std::string DEATH_MESSAGE;
     static const std::string DEFAULT_PLAYER_NAME;
     static const std::string YOU;
@@ -48,6 +49,7 @@ class TextKeys
     static const std::string SELECT_RACE;
     static const std::string SELECT_CLASS;
     static const std::string SELECT_DEITY;
+    static const std::string SELECT_SAVED_GAME;
     static const std::string DEITY;
     static const std::string RACE_1_NAME;
     static const std::string RACE_1_SHORT_DESC;
