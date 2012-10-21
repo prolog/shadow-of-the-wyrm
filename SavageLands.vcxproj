@@ -321,7 +321,6 @@
     <ClInclude Include="engine\include\ReligionManager.hpp" />
     <ClInclude Include="engine\include\RNG.hpp" />
     <ClInclude Include="engine\include\SavageLandsEngine.hpp" />
-    <ClInclude Include="engine\include\SerializationTypes.hpp" />
     <ClInclude Include="engine\include\StringConstants.hpp" />
     <ClInclude Include="engine\include\StringTable.hpp" />
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
@@ -349,6 +348,7 @@
     <ClInclude Include="engine\menus\include\WelcomeScreen.hpp" />
     <ClInclude Include="engine\serialization\include\Serialization.hpp" />
     <ClInclude Include="engine\serialization\include\SerializationExceptions.hpp" />
+    <ClInclude Include="engine\serialization\include\SerializationTypes.hpp" />
     <ClInclude Include="engine\serialization\include\Serialize.hpp" />
     <ClInclude Include="engine\skills\include\Detection.hpp" />
     <ClInclude Include="engine\skills\include\Mountaineering.hpp" />

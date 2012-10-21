@@ -1,6 +1,7 @@
 #include <fstream>
 #include <boost/filesystem.hpp>
 #include <boost/functional/hash/hash.hpp>
+#include <boost/regex.hpp>
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
 #include "Environment.hpp"
@@ -40,12 +41,17 @@ void Serialization::save(CreaturePtr creature)
     
     // Save the metadata
     string version = get_version();
+    string compiler_details = get_compiler_details();
+
+    Serialize::write_string(save_file, user_name);
+    Serialize::write_string(save_file, version);
+    Serialize::write_string(save_file, compiler_details);    
     
     // Save the state and game data
     if (game)
     {
-      Serialize::write_uint(save_file, RNG::get_seed());
       game->serialize(save_file);
+      Serialize::write_uint(save_file, RNG::get_seed());
     }
   }
   catch(...)
@@ -55,27 +61,127 @@ void Serialization::save(CreaturePtr creature)
 }
 
 // Restore the game state from a particular file
-SerializationReturnCode Serialization::load()
+SerializationReturnCode Serialization::load(const string& filename)
 {
-  // JCD FIXME  
+  Game* game = Game::instance();
+  ifstream stream;
+
+  if (game)
+  {
+    stream.open(filename, ios::in | ios::binary);
+
+    Serialize::consume_string(stream); // username
+    Serialize::consume_string(stream); // game version
+    Serialize::consume_string(stream); // compiler details
+
+    Serialize::consume_string(stream); // character synopsis
+
+    game->deserialize(stream);
+
+    uint rng_seed = 0;
+    Serialize::read_uint(stream, rng_seed);
+    RNG::set_seed(rng_seed);
+    RNG::reinitialize();
+  }
+  else
+  {
+    return SERIALIZATION_ERROR;
+  }
+
+  if (stream.is_open())
+  {
+    stream.close();
+  }
+
   return SERIALIZATION_OK;
 }
+
+// JCD FIXME SPLIT THESE INTO THEIR OWN CLASS.
 
 // Get a list of savefile names for the current user.
 vector<pair<string, string>> Serialization::get_save_file_names()
 {
   vector<pair<string,string>> save_files;
   string user_name = Environment::get_user_name();
-  path save_file_filter("*.sls");
+  path save_file_filter(".");
   directory_iterator end_it;
+
+  boost::regex e(".(sls)$");
 
   if (exists(save_file_filter))
   {
     for (directory_iterator d_it(save_file_filter); d_it != end_it; d_it++)
     {
-      int x = 1;
+      string filename = d_it->path().string();
+
+      if (boost::regex_search(filename,e))
+      {
+        pair<bool, string> save_file_availability = get_save_file_availability_and_synopsis(d_it->path().string());
+
+        if (save_file_availability.first == true)
+        {
+          save_files.push_back(make_pair(filename, save_file_availability.second));
+        }
+      }
     }
   }
 
   return save_files;
+}
+
+// Check to see if the save file is available.  This is done by:
+// - Checking the user name stored in the file.  This must match the
+//   current user's name.
+// - Checking the version stored in the file.  The version must
+//   match exactly.
+// - Checking the compiler info stored in the file.  This must
+//   exactly match.
+pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const string& filename)
+{
+  pair<bool, string> save_file_availability(false, "");
+
+  ifstream save_file;
+
+  try
+  {
+    save_file.open(filename, ios::in | ios::binary);
+
+    if (save_file.good())
+    {
+      string user_name_from_file;
+      Serialize::read_string(save_file, user_name_from_file);
+      string current_user = Environment::get_user_name();
+
+      string version_from_file;
+      Serialize::read_string(save_file, version_from_file);
+      string current_version = get_version();
+
+      string compiler_details_from_file;
+      Serialize::read_string(save_file, compiler_details_from_file);
+      string current_compiler = get_compiler_details();
+
+      string character_synopsis_from_file;
+      Serialize::read_string(save_file, character_synopsis_from_file);
+
+      bool save_file_available = true;
+
+      save_file_available &= (user_name_from_file == current_user);
+      save_file_available &= (version_from_file == current_version);
+      save_file_available &= (compiler_details_from_file == current_compiler);
+
+      save_file_availability.first = save_file_available;
+
+      if (save_file_available)
+      {
+        save_file_availability.second = character_synopsis_from_file;
+      }
+    }
+  }
+  catch(...)
+  {
+  }
+
+  save_file.close();
+
+  return save_file_availability;
 }

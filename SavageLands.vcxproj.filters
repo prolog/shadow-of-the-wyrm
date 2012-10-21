@@ -1608,9 +1608,6 @@
     <ClInclude Include="engine\include\SavageLandsEngine.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\SerializationTypes.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\include\StringConstants.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
@@ -1934,6 +1931,9 @@
     </ClInclude>
     <ClInclude Include="engine\menus\include\LoadGameScreen.hpp">
       <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\serialization\include\SerializationTypes.hpp">
+      <Filter>Header Files\engine\serialization\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

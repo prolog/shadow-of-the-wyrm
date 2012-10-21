@@ -9,6 +9,8 @@ class CreatureDescriber : public IDescriber
 
     std::string describe() const;
 
+    std::string describe_for_save_file() const;
+
   protected:
     CreaturePtr creature;
 };

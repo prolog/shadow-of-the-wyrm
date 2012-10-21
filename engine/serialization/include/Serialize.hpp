@@ -32,6 +32,7 @@ class Serialize
 
     static void write_string(std::ostream& stream, const std::string& val);
     static void read_string(std::istream& stream, std::string& val);
+    static void consume_string(std::istream& stream);
 
     template<typename T> 
     static void write_enum(std::ostream& stream, const T enum_type)

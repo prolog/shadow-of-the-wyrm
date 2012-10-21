@@ -254,10 +254,20 @@ bool SavageLandsEngine::process_new_game()
 // Process a load game command
 bool SavageLandsEngine::process_load_game()
 {
+  bool result = false;
+
   LoadGameScreen load_game(display);
   string option = load_game.display();
 
-  return false;
+  string filename = load_game.get_file_name(option);
+
+  if (!filename.empty())
+  {
+    // Do serialization
+    result = true;
+  }
+
+  return result;
 }
 
 // Exit

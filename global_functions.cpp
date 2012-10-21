@@ -1,4 +1,5 @@
 #include <sstream>
+#include <boost/static_assert.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include "buildinfo.hpp"
 #include "global_prototypes.hpp"
@@ -46,6 +47,33 @@ string get_game_version_synopsis()
   string code_name = get_code_name();
 
   return game_name + " " + version + " " + code_name;
+}
+
+// Get the compiler details, for use in save file metadata.
+string get_compiler_details()
+{
+  ostringstream compiler_details;
+
+  #ifdef _MSC_VER
+  compiler_details << "MSVC " << _MSC_VER;
+
+    #ifdef _M_IX86
+    compiler_details << " x86 ";
+    #endif
+
+    #ifdef _M_IA64
+    compiler_details << " IA64 ";
+    #endif
+
+    #ifdef _M_X64
+    compiler_details << " x64 ";
+    #endif
+  #else
+  // This needs to be filled in when porting to use gcc/etc
+  BOOST_STATIC_ASSERT( false );
+  #endif
+
+  return compiler_details.str();
 }
 
 // Get the poem for the title screen.
