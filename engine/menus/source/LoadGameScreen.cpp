@@ -1,5 +1,6 @@
 #include <vector>
 #include <boost/make_shared.hpp>
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "LoadGameScreen.hpp"
 #include "OptionsComponent.hpp"
@@ -21,6 +22,8 @@ void LoadGameScreen::initialize()
 
   if (game)
   {
+    menu_selection_to_filename_map.clear();
+
     TextComponentPtr game_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SAVED_GAME));
 
     OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
@@ -35,11 +38,17 @@ void LoadGameScreen::initialize()
       string save_file_desc = save_file.second;
 
       Option current_option;
-      current_option.set_id(current_id++);
-      current_option.set_description(save_file_name);
+      current_option.set_id(current_id);
+      current_option.set_description(save_file_desc);
 
       options->add_option(current_option);
-      options->add_option_description(save_file_desc);
+      options->add_option_description("");
+
+      char option_c = 'a' + current_id;
+      string option_s = Char::to_string(option_c);
+      menu_selection_to_filename_map.insert(make_pair(option_s, save_file_name));
+
+      current_id++;
     }
 
     Option exit_option;
@@ -54,4 +63,18 @@ void LoadGameScreen::initialize()
     components.push_back(game_selection_text);
     components.push_back(options);
   }
+}
+
+string LoadGameScreen::get_file_name(const string& option) const
+{
+  string filename;
+
+  map<string, string>::const_iterator m_it = menu_selection_to_filename_map.find(option);
+
+  if (m_it != menu_selection_to_filename_map.end())
+  {
+    filename = m_it->second;
+  }
+
+  return filename;
 }

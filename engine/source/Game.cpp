@@ -3,6 +3,7 @@
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
+#include "CreatureDescriber.hpp"
 #include "CreatureFeatures.hpp"
 #include "Detection.hpp"
 #include "FieldOfViewStrategy.hpp"
@@ -387,6 +388,11 @@ ActionManager& Game::get_action_manager_ref()
 bool Game::serialize(ostream& stream)
 {
   Log::instance()->trace("Game::serialize - start");
+
+  // Write a synopsis about the player's character, to be used when viewing
+  // the list of saved games.
+  CreatureDescriber cd(get_current_player());
+  Serialize::write_string(stream, cd.describe_for_save_file());
 
   Serialize::write_bool(stream, keep_playing);
   Serialize::write_bool(stream, reload_game_loop);

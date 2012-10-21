@@ -302,9 +302,11 @@ void Serialize::read_string(istream& stream, string& val)
     size_t string_size;
     Serialize::read_size_t(stream, string_size);
  
-    boost::scoped_array<char> raw_str(new char[string_size]);
+    boost::scoped_array<char> raw_str(new char[string_size+1]);
 
-    stream.read(raw_str.get(), sizeof(string_size));
+    stream.read(raw_str.get(), string_size);
+
+    raw_str.get()[string_size] = '\0';
 
     // Now that we have the actual string, create a copy and assign it to the passed-in
     // reference.  The scoped pointer should take care of deletion afterwards.
@@ -323,3 +325,11 @@ void Serialize::read_string(istream& stream, string& val)
   }
 }
 
+// Read a string and return nothing.  Useful for when something has been saved,
+// but isn't explicitly needed at a certain point. (e.g., metadata when doing
+// the actual read of the game data.)
+void Serialize::consume_string(istream& stream)
+{
+  string ignore;
+  Serialize::read_string(stream, ignore);
+}
