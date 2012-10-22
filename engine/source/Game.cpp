@@ -246,7 +246,13 @@ void Game::go()
         current_creature = c_it->second;
       }
       
-      if (current_creature)
+      if (!current_creature)
+      {
+        // Creature's been killed - advance to the next creature in the
+        // queue.
+        ac.update_actions(); 
+      }
+      else // Creature's fine, process its action
       {
         // If we shouldn't keep playing (player has quit, has been killed, etc), then break out of the 
         // game loop.
