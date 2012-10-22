@@ -26,7 +26,7 @@ class Depth : public ISerializable
     // Negative depths: dungeons, caverns, etc.
     // Positive depths: towers, castles, etc.
     int current, maximum;
-    static const int DEPTH_MULTIPLIER;
+    static int DEPTH_MULTIPLIER;
 
   private:
     ClassIdentifier internal_class_identifier() const;

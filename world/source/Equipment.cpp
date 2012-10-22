@@ -128,6 +128,8 @@ bool Equipment::deserialize(istream& stream)
   size_t equipment_size = 0;
   Serialize::read_size_t(stream, equipment_size);
 
+  // Don't clear the equipment - by default it will have all empty slots, which we
+  // want.  Use operator[] instead of insert() to ensure that the values are updated.
   for (unsigned int i = 0; i < equipment_size; i++)
   {
     EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD;
@@ -146,7 +148,7 @@ bool Equipment::deserialize(istream& stream)
 
     // Always insert, even if the shared pointer to the item is "null" -
     // this just means that nothing is equipped at that slot.
-    equipment.insert(make_pair(ewl, item));
+    equipment[ewl] = item;
   }
 
   return true;

@@ -268,7 +268,11 @@ bool SavageLandsEngine::process_load_game()
 
     SerializationReturnCode src = Serialization::load(filename);
 
-    result = (src == SERIALIZATION_OK);
+    if (src == SERIALIZATION_OK)
+    {
+      Serialization::delete_savefile(filename);
+      result = true;
+    }
   }
 
   return result;

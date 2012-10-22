@@ -49,7 +49,7 @@ class Serialize
     }
 
     template<typename T>
-    static void read_enum(std::istream& stream, const T enum_type)
+    static void read_enum(std::istream& stream, T& enum_type)
     {
       if (stream.good())
       {

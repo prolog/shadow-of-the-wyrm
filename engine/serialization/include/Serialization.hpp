@@ -10,6 +10,8 @@ class Serialization
   public:
     static void save(CreaturePtr creature);
     static SerializationReturnCode load(const std::string& filename);
+    static bool delete_savefile(const std::string& filename);
+
     static std::vector<std::pair<std::string, std::string>> get_save_file_names();
 
   protected:
