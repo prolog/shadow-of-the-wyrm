@@ -6,7 +6,7 @@ using namespace std;
 
 // Depth 1 is -50 feet (under ground, positive depth).
 // Depth -1 is 50 feet (above ground, negative depth).
-const int Depth::DEPTH_MULTIPLIER = -50;
+int Depth::DEPTH_MULTIPLIER = -50;
 
 Depth::Depth()
 : current(0), maximum(0)
@@ -64,11 +64,9 @@ bool Depth::serialize(ostream& stream)
 
 bool Depth::deserialize(istream& stream)
 {
-  int* mult_p = const_cast<int*>(&DEPTH_MULTIPLIER);
-
   Serialize::read_int(stream, current);
   Serialize::read_int(stream, maximum);
-  Serialize::read_int(stream, *mult_p); // I'm sorry, I'm sorry, I'm sorry.
+  Serialize::read_int(stream, DEPTH_MULTIPLIER);
 
   return true;
 }

@@ -139,7 +139,7 @@ bool Resistances::deserialize(istream& stream)
       if (!resistance) return false;
       if (!resistance->deserialize(stream)) return false;
 
-      resistances.insert(make_pair(type, resistance));
+      resistances[type] = resistance;
     }
   }
   return true;

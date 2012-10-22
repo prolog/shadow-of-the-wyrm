@@ -35,6 +35,11 @@ Game* Game::game_instance = NULL;
 Game::Game()
 : keep_playing(true), reload_game_loop(false), current_world_ix(0)
 {
+  // Setup the time keeper.  On a new game, this will initialize everything as
+  // expected - when loading an existing game, this will be overwritten later,
+  // which is fine.
+  WorldTimeKeeperCoordinator time_coordinator;
+  time_coordinator.setup_time_keeper(time_keeper);
 }
 
 Game::~Game()
@@ -199,9 +204,6 @@ void Game::go()
   game_command_factory = boost::make_shared<CommandFactory>();
   game_kb_command_map = boost::make_shared<KeyboardCommandMap>();
 
-  WorldTimeKeeperCoordinator time_coordinator;
-  time_coordinator.setup_time_keeper(time_keeper);
-  
   MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
@@ -426,13 +428,9 @@ bool Game::serialize(ostream& stream)
   ac.serialize(stream);
     
   time_keeper.serialize(stream);
+
+  // Game command factory and keyboard map get built up every time - don't save these.
     
-  Serialize::write_class_id(stream, game_command_factory->get_class_identifier());
-  game_command_factory->serialize(stream);
-
-  Serialize::write_class_id(stream, game_kb_command_map->get_class_identifier());
-  game_kb_command_map->serialize(stream);
-
   Log::instance()->trace("Game::serialize - end");
 
   return true;
@@ -486,17 +484,7 @@ bool Game::deserialize(istream& stream)
 
   time_keeper.deserialize(stream);
     
-  ClassIdentifier cf_ci;
-  Serialize::read_class_id(stream, cf_ci);
-  game_command_factory = CommandFactoryFactory::create_command_factory(cf_ci);
-  if (!game_command_factory) return false;
-  if (!game_command_factory->deserialize(stream)) return false;
-
-  ClassIdentifier kb_cm_ci;
-  Serialize::read_class_id(stream, kb_cm_ci);
-  game_kb_command_map = KeyboardCommandMapFactory::create_keyboard_command_map(kb_cm_ci);
-  if (!game_kb_command_map) return false;
-  if (!game_kb_command_map->deserialize(stream)) return false;
+  // Game command factory and keyboard map get built up every time - don't load these.
 
   Log::instance()->trace("Game::deserialize - end");
   return true;

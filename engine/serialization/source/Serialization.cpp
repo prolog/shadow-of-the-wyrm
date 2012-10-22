@@ -92,6 +92,12 @@ SerializationReturnCode Serialization::load(const string& filename)
   return SERIALIZATION_OK;
 }
 
+bool Serialization::delete_savefile(const std::string& filename)
+{
+  path savefile(filename);
+  return remove(savefile);
+}
+
 // JCD FIXME SPLIT THESE INTO THEIR OWN CLASS.
 
 // Get a list of savefile names for the current user.

@@ -173,7 +173,7 @@ bool Skill::deserialize(istream& stream)
   Serialize::read_string(stream, skill_name_sid);
   Serialize::read_string(stream, skill_increment_message_sid);
 
-  return false;
+  return true;
 }
 
 // GeneralSkill
