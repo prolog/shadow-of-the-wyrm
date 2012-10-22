@@ -7,6 +7,7 @@
 #include "Environment.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
+#include "Metadata.hpp"
 #include "RNG.hpp"
 #include "Serialization.hpp"
 #include "Serialize.hpp"
@@ -29,29 +30,27 @@ void Serialization::save(CreaturePtr creature)
       name = creature->get_name();
     }
     
+    Metadata meta;
+
     // Get the user's name
-    string user_name = Environment::get_user_name();
+    string user_name = meta.get_user_name();
     string string_to_hash = user_name + name;
     boost::hash<string> string_hash;
     size_t hash = string_hash(string_to_hash);
     string filename = Integer::to_string(hash) + ".sls"; // "sls" = "Savage Lands Save"
 
     // Name the file and do the appropriate setup
-    std::ofstream save_file(filename, ios::binary);
-    
-    // Save the metadata
-    string version = get_version();
-    string compiler_details = get_compiler_details();
-
-    Serialize::write_string(save_file, user_name);
-    Serialize::write_string(save_file, version);
-    Serialize::write_string(save_file, compiler_details);    
-    
+    std::ofstream stream(filename, ios::binary);
+        
     // Save the state and game data
     if (game)
     {
-      game->serialize(save_file);
-      Serialize::write_uint(save_file, RNG::get_seed());
+      // Save the metadata
+      meta.serialize(stream);
+
+      // Save the game and RNG data
+      game->serialize(stream);
+      Serialize::write_uint(stream, RNG::get_seed());
     }
   }
   catch(...)
@@ -70,16 +69,13 @@ SerializationReturnCode Serialization::load(const string& filename)
   {
     stream.open(filename, ios::in | ios::binary);
 
-    Serialize::consume_string(stream); // username
-    Serialize::consume_string(stream); // game version
-    Serialize::consume_string(stream); // compiler details
-
-    Serialize::consume_string(stream); // character synopsis
-
-    game->deserialize(stream);
-
+    Metadata meta;
     uint rng_seed = 0;
+
+    meta.deserialize(stream);
+    game->deserialize(stream);
     Serialize::read_uint(stream, rng_seed);
+
     RNG::set_seed(rng_seed);
     RNG::reinitialize();
   }
@@ -148,17 +144,19 @@ pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const 
 
     if (save_file.good())
     {
+      Metadata meta;
+
       string user_name_from_file;
       Serialize::read_string(save_file, user_name_from_file);
       string current_user = Environment::get_user_name();
 
       string version_from_file;
       Serialize::read_string(save_file, version_from_file);
-      string current_version = get_version();
+      string current_version = meta.get_version();
 
       string compiler_details_from_file;
       Serialize::read_string(save_file, compiler_details_from_file);
-      string current_compiler = get_compiler_details();
+      string current_compiler = meta.get_compiler_details();
 
       string character_synopsis_from_file;
       Serialize::read_string(save_file, character_synopsis_from_file);

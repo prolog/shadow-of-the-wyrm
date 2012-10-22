@@ -1,5 +1,6 @@
 #include "ActionManager.hpp"
 #include "ConsumableManager.hpp"
+#include "EffectFactory.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManager.hpp"
@@ -41,7 +42,7 @@ void QuaffManager::quaff_potion(CreaturePtr creature, ActionManager * const am, 
     ConsumableManager cm;
     cm.consume(creature, potion);
     
-    EffectPtr potion_effect = potion->get_effect();
+    EffectPtr potion_effect = EffectFactory::create_effect(potion->get_effect_type());
     
     if (potion_effect)
     {
@@ -75,7 +76,7 @@ void QuaffManager::quaff_potion(CreaturePtr creature, ActionManager * const am, 
 
 void QuaffManager::add_quaff_message(CreaturePtr creature, PotionPtr potion, const ItemIdentifier& item_id)
 {
-  EffectPtr effect = potion->get_effect();
+  EffectPtr effect = EffectFactory::create_effect(potion->get_effect_type());
   string base_id = potion->get_base_id();
   
   // Get "You/monster quaffs a foo-ey potion" message

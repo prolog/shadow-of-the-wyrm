@@ -4,6 +4,7 @@
 #include "Conversion.hpp"
 #include "Item.hpp"
 #include "NullEffect.hpp"
+#include "MaterialFactory.hpp"
 #include "Wood.hpp"
 
 #include "EffectFactory.hpp"
@@ -13,12 +14,10 @@
 using namespace std;
 
 Item::Item()
-: quantity(1), readable(false), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false), item_identified(false),
-artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE)
+: quantity(1), readable(false), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false), 
+item_identified(false), artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), 
+identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EFFECT_TYPE_NULL), material(MATERIAL_TYPE_WOOD)
 {
-  // Create a default useful material.  Wood, huh?  Well, I needed something.
-  material = boost::make_shared<Wood>();
-  effect = boost::make_shared<NullEffect>();
 }
 
 Item::~Item()
@@ -170,12 +169,12 @@ ItemType Item::get_type() const
   return type;
 }
 
-void Item::set_material(MaterialPtr new_material)
+void Item::set_material_type(const MaterialType new_material)
 {
   material = new_material;
 }
 
-MaterialPtr Item::get_material() const
+MaterialType Item::get_material_type() const
 {
   return material;
 }
@@ -204,9 +203,10 @@ Colour Item::get_colour() const
   else
   {
     // If the colour has been overridden
-    if ((colour == COLOUR_UNDEFINED) && material)
+    if (colour == COLOUR_UNDEFINED)
     {
-      return material->get_colour();
+      MaterialPtr materialp = MaterialFactory::create_material(material);
+      return materialp->get_colour();
     }
     else if (colour != COLOUR_UNDEFINED)
     {
@@ -243,8 +243,9 @@ bool Item::matches(boost::shared_ptr<Item> i)
     match &= (status                == i->get_status()               );
     match &= (artifact              == i->get_artifact()             );
     match &= (type                  == i->get_type()                 );
-    match &= (material->get_type()  == i->get_material()->get_type() );
-    
+    match &= (material              == i->get_material_type()        );
+    match &= (effect                == i->get_effect_type()          );
+
     // Check the concrete implementation class's attributes:
     match &= additional_item_attributes_match(i);
   }
@@ -259,32 +260,19 @@ bool Item::additional_item_attributes_match(boost::shared_ptr<Item> i)
   return true;
 }
 
-void Item::set_effect(EffectPtr new_effect)
+void Item::set_effect_type(const EffectType new_effect)
 {
   effect = new_effect;
 }
 
-EffectPtr Item::get_effect()
+EffectType Item::get_effect_type() const
 {
   return effect;
 }
 
-Item* Item::deep_copy()
+Item* Item::clone_with_new_id()
 {
   Item* item = clone();
-  
-  MaterialPtr new_material = MaterialPtr(material->clone());
-  item->set_material(new_material);
-
-  EffectPtr new_effect = EffectPtr(effect->clone());
-  item->set_effect(new_effect);
-  
-  return item;
-}
-
-Item* Item::deep_copy_with_new_id()
-{
-  Item* item = deep_copy();
   
   // Create and set a new item ID.  deep_copy just makes a true copy.
   boost::uuids::uuid new_id = boost::uuids::random_generator()();
@@ -324,26 +312,8 @@ bool Item::serialize(ostream& stream)
   Serialize::write_uchar(stream, symbol);
   Serialize::write_enum(stream, colour);
   Serialize::write_enum(stream, identification_type);
-
-  if (effect)
-  {
-    Serialize::write_class_id(stream, effect->get_class_identifier());
-    effect->serialize(stream);
-  }
-  else
-  {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
-  }
-
-  if (material)
-  {
-    Serialize::write_class_id(stream, material->get_class_identifier());
-    material->serialize(stream);
-  }
-  else
-  {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
-  }
+  Serialize::write_enum(stream, effect);
+  Serialize::write_enum(stream, material);
 
   return true;
 }
@@ -368,26 +338,8 @@ bool Item::deserialize(istream& stream)
   Serialize::read_uchar(stream, symbol);
   Serialize::read_enum(stream, colour);
   Serialize::read_enum(stream, identification_type);
-
-  ClassIdentifier effect_clid = CLASS_ID_NULL;
-  Serialize::read_class_id(stream, effect_clid);
-
-  if (effect_clid != CLASS_ID_NULL)
-  {
-    effect = EffectFactory::create_effect(effect_clid);
-    if (!effect) return false;
-    if (!effect->deserialize(stream)) return false;
-  }
-
-  ClassIdentifier material_clid = CLASS_ID_NULL;
-  Serialize::read_class_id(stream, material_clid);
-
-  if (material_clid != CLASS_ID_NULL)
-  {
-    material = MaterialFactory::create_material(material_clid);
-    if (!material) return false;
-    if (!material->deserialize(stream)) return false;
-  }
+  Serialize::read_enum(stream, effect);
+  Serialize::read_enum(stream, material);
 
   return true;
 }

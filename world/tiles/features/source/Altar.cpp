@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Altar::Altar(const std::string& new_deity_id, MaterialPtr new_material)
+Altar::Altar(const std::string& new_deity_id, const MaterialType new_material)
 : Feature(new_material), deity_id(new_deity_id)
 {
 }

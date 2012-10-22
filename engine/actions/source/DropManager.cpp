@@ -133,7 +133,7 @@ ActionCostValue DropManager::do_drop(CreaturePtr creature, MapPtr current_map, I
     }
     else
     {
-      ItemPtr new_item = ItemPtr(item_to_drop->deep_copy_with_new_id());
+      ItemPtr new_item = ItemPtr(item_to_drop->clone_with_new_id());
       new_item->set_quantity(selected_quantity);
       
       uint old_item_quantity = item_to_drop->get_quantity() - selected_quantity;

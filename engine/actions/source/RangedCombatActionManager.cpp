@@ -244,7 +244,7 @@ void RangedCombatActionManager::destroy_ammunition_or_drop_on_tile(CreaturePtr c
       
       // Clone the item so that a "new" item can be added to the ground,
       // assuming the ammunition survives.
-      ammunition = ItemPtr(ammunition->deep_copy_with_new_id());
+      ammunition = ItemPtr(ammunition->clone_with_new_id());
       ammunition->set_quantity(1);
     }
     else

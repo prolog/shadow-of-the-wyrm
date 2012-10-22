@@ -5,7 +5,7 @@
 using std::string;
 
 Fountain::Fountain()
-: Feature(MaterialFactory::create_material(MATERIAL_TYPE_MARBLE))
+: Feature(MATERIAL_TYPE_MARBLE)
 {
 }
 

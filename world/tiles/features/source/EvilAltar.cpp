@@ -1,16 +1,15 @@
 #include "EvilAltar.hpp"
-#include "MaterialFactory.hpp"
 #include "StringConstants.hpp"
 
 using std::string;
 
 EvilAltar::EvilAltar()
-: Altar("", MaterialFactory::create_material(MATERIAL_TYPE_ONYX))
+: Altar("", MATERIAL_TYPE_ONYX)
 {
 }
 
 EvilAltar::EvilAltar(const std::string& new_deity_id)
-: Altar(new_deity_id, MaterialFactory::create_material(MATERIAL_TYPE_ONYX))
+: Altar(new_deity_id, MATERIAL_TYPE_ONYX)
 {
 }
 

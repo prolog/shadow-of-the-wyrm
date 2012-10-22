@@ -442,6 +442,8 @@ bool Game::deserialize(istream& stream)
 {
   Log::instance()->trace("Game::deserialize - start");
 
+  Serialize::consume_string(stream); // character synopsis
+
   Serialize::read_bool(stream, keep_playing);
   Serialize::read_bool(stream, reload_game_loop);
   // Ignore game_instance - it's a singleton, and the write/read code is already handling it

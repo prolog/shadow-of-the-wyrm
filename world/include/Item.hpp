@@ -2,11 +2,13 @@
 #include <map>
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "common.hpp"
+#include "Colours.hpp"
 #include "EquipmentTypes.hpp"
-#include "Effect.hpp"
+#include "EffectTypes.hpp"
 #include "ISerializable.hpp"
 #include "ItemTypes.hpp"
-#include "Material.hpp"
+#include "MaterialTypes.hpp"
 #include "Weight.hpp"
 
 class Effect;
@@ -70,8 +72,8 @@ class Item : public ISerializable
     virtual void set_type(const ItemType type);
     virtual ItemType get_type() const;
     
-    virtual void set_material(MaterialPtr new_material);
-    virtual MaterialPtr get_material() const;
+    virtual void set_material_type(const MaterialType new_material);
+    virtual MaterialType get_material_type() const;
     
     virtual void   set_symbol(const uchar new_symbol);
     virtual uchar  get_symbol() const;
@@ -91,12 +93,11 @@ class Item : public ISerializable
     // to-hit and damage, etc.).  The base class version just returns true.
     virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
 
-    virtual void set_effect(EffectPtr new_effect);
-    virtual EffectPtr get_effect();
+    virtual void set_effect_type(const EffectType new_effect_type);
+    virtual EffectType get_effect_type() const;
     
     virtual Item* clone() = 0;
-    virtual Item* deep_copy();
-    virtual Item* deep_copy_with_new_id();
+    virtual Item* clone_with_new_id();
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
@@ -129,12 +130,8 @@ class Item : public ISerializable
     uchar symbol;
     Colour colour;
     ItemIdentificationType identification_type;
-
-    // This needs to be deep copied.
-    EffectPtr effect;
-    
-    // This needs to be deep copied.
-    MaterialPtr material;
+    EffectType effect;
+    MaterialType material;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

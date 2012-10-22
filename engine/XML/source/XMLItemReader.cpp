@@ -1,4 +1,3 @@
-#include "MaterialFactory.hpp"
 #include "XMLItemReader.hpp"
 
 using namespace std;
@@ -72,8 +71,7 @@ void XMLItemReader::parse(ItemPtr item, const XMLNode& item_node)
     item->set_artifact(is_artifact);
     
     MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", MATERIAL_TYPE_WOOD));
-    MaterialPtr material = MaterialFactory::create_material(material_type);
-    item->set_material(material);
+    item->set_material_type(material_type);
     
     // Overridden text details - most items will not have this, unless a very specific
     // symbol or colour is desired.

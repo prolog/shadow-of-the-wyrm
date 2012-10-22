@@ -1,11 +1,10 @@
 #include "FirePillar.hpp"
-#include "MaterialFactory.hpp"
 #include "StringConstants.hpp"
 
 using std::string;
 
 FirePillar::FirePillar()
-: Feature(MaterialFactory::create_material(MATERIAL_TYPE_STONE))
+: Feature(MATERIAL_TYPE_STONE)
 {
 }
 

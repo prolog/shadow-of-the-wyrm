@@ -1,14 +1,13 @@
 #include "Entrance.hpp"
-#include "MaterialFactory.hpp"
 
 // This constructor is only used by the serialization code
 Entrance::Entrance()
-: Feature(MaterialFactory::create_material(MATERIAL_TYPE_WOOD))
+: Feature(MATERIAL_TYPE_WOOD)
 {
 }
 
 Entrance::Entrance(LockPtr new_lock, const EntranceState& new_state)
-: Feature(MaterialFactory::create_material(MATERIAL_TYPE_WOOD)), lock(new_lock), state(new_state)
+: Feature(MATERIAL_TYPE_WOOD), lock(new_lock), state(new_state)
 {
 }
 

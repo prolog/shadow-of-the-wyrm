@@ -164,7 +164,7 @@ ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr cre
   {
     Equipment& eq = creature->get_equipment();
     
-    ItemPtr new_item = ItemPtr(item->deep_copy_with_new_id());
+    ItemPtr new_item = ItemPtr(item->clone_with_new_id());
     
     if (eq.set_item(new_item, eq_worn_slot))
     {
