@@ -1,4 +1,3 @@
-#include "EffectFactory.hpp"
 #include "XMLReadableReader.hpp"
 
 XMLReadableReader::XMLReadableReader()
@@ -16,9 +15,7 @@ void XMLReadableReader::parse(ReadablePtr readable, const XMLNode& node)
     XMLItemReader::parse(readable, node);
 
     EffectType effect_type = static_cast<EffectType>(XMLUtils::get_child_node_int_value(node, "Effect", EFFECT_TYPE_NULL));
-    EffectPtr readable_effect = EffectFactory::create_effect(effect_type);
-
-    readable->set_effect(readable_effect);
+    readable->set_effect_type(effect_type);
   }
 }
 

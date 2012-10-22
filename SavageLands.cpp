@@ -15,6 +15,7 @@
 #include "Display.hpp"
 
 #include "Log.hpp"
+#include "Metadata.hpp"
 #include "SavageLandsEngine.hpp"
 #include "StringConstants.hpp"
 #include "StringTable.hpp"
@@ -44,8 +45,10 @@ int run_unit_tests()
 
 void print_title()
 {
+  Metadata meta;
+
   std::string title = StringTable::get(TextKeys::SL_TITLE);
-  std::string version = get_version();
+  std::string version = meta.get_version();
 	std::cout << title << " " << version << std::endl;
 
 }

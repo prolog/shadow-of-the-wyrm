@@ -4,7 +4,7 @@
 class Altar : public Feature
 {
   public:
-    Altar(const std::string& new_deity_id, MaterialPtr new_material);
+    Altar(const std::string& new_deity_id, const MaterialType new_material);
     virtual ~Altar() {};
 
     virtual bool can_offer() const;

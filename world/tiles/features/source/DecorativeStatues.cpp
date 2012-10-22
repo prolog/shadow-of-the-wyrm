@@ -1,12 +1,11 @@
 #include "DecorativeStatues.hpp"
-#include "MaterialFactory.hpp"
 #include "StringConstants.hpp"
 
 using std::string;
 
 // Abstract base decorative statue class.
 DecorativeStatue::DecorativeStatue()
-: Feature(MaterialFactory::create_material(MATERIAL_TYPE_MARBLE))
+: Feature(MATERIAL_TYPE_MARBLE)
 {
 }
 

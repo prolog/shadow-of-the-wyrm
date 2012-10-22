@@ -1,9 +1,8 @@
 #include "Bench.hpp"
-#include "MaterialFactory.hpp"
 #include "StringConstants.hpp"
 
 Bench::Bench()
-: Feature(MaterialFactory::create_material(MATERIAL_TYPE_IRON))
+: Feature(MATERIAL_TYPE_IRON)
 {
 }
 

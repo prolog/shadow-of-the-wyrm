@@ -14,7 +14,7 @@
 class Feature : public ISerializable
 {
   public:
-    Feature(MaterialPtr new_material);
+    Feature(const MaterialType new_material);
     virtual ~Feature() {};
 
     // If a feature is blocking, the square it occupies cannot be
@@ -33,8 +33,8 @@ class Feature : public ISerializable
     virtual void set_lock(LockPtr new_lock);
     virtual LockPtr get_lock();
 
-    virtual void set_material(MaterialPtr new_material);
-    virtual MaterialPtr get_material();
+    virtual void set_material_type(const MaterialType new_material);
+    virtual MaterialType get_material_type() const;
     
     virtual std::string get_description_sid() const = 0;
     
@@ -55,7 +55,7 @@ class Feature : public ISerializable
   protected:
     TrapPtr trap;
     LockPtr lock;
-    MaterialPtr material;
+    MaterialType material;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const;

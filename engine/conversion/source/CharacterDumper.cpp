@@ -5,6 +5,7 @@
 #include "EquipmentDumper.hpp"
 #include "Game.hpp"
 #include "InventoryDumper.hpp"
+#include "Metadata.hpp"
 #include "ReligionManager.hpp"
 #include "SkillsDumper.hpp"
 #include "StatsDumper.hpp"
@@ -28,7 +29,8 @@ string CharacterDumper::str() const
   
   if (game)
   {
-    string version = get_game_version_synopsis();
+    Metadata meta;
+    string version = meta.get_game_version_synopsis();
     ss << String::centre(version, num_cols) << endl << endl;
     ss << String::centre(creature->get_name(), num_cols) << endl;
     ss << get_synopsis() << endl << endl;

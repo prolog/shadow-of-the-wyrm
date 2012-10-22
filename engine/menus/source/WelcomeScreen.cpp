@@ -1,5 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
+#include "Metadata.hpp"
 #include "OptionsComponent.hpp"
 #include "StringConstants.hpp"
 #include "StringTable.hpp"
@@ -16,7 +17,9 @@ WelcomeScreen::WelcomeScreen(DisplayPtr new_display) : Menu(new_display)
 // information, and an prompt to continue
 void WelcomeScreen::initialize()
 {
-  TextComponentPtr game_version_synopsis = boost::make_shared<TextComponent>(get_game_version_synopsis());
+  Metadata meta;
+
+  TextComponentPtr game_version_synopsis = boost::make_shared<TextComponent>(meta.get_game_version_synopsis());
   TextComponentPtr copyright_info = boost::make_shared<TextComponent>(StringTable::get(TextKeys::COPYRIGHT_NOTICE));
   TextComponentPtr wanderer_excerpt = boost::make_shared<TextComponent>(get_title_poem());
 

@@ -7,7 +7,7 @@ using namespace std;
 
 // JCD FIXME NEED COPY CONSTRUCTOR FOR MATERIAL PTR/ TRAP PTR
 
-Feature::Feature(MaterialPtr new_material)
+Feature::Feature(const MaterialType new_material)
 : material(new_material)
 {
 }
@@ -78,12 +78,12 @@ LockPtr Feature::get_lock()
   return lock;
 }
 
-void Feature::set_material(MaterialPtr new_material)
+void Feature::set_material_type(const MaterialType new_material)
 {
   material = new_material;
 }
 
-MaterialPtr Feature::get_material()
+MaterialType Feature::get_material_type() const
 {
   return material;
 }
@@ -99,10 +99,8 @@ Colour Feature::get_colour() const
 {
   Colour colour = COLOUR_WHITE;
   
-  if (material)
-  {
-    colour = material->get_colour();
-  }
+  MaterialPtr materialp = MaterialFactory::create_material(material);
+  colour = materialp->get_colour();
   
   return colour;
 }
@@ -129,15 +127,7 @@ bool Feature::serialize(ostream& stream)
     Serialize::write_class_id(stream, CLASS_ID_NULL);
   }
 
-  if (material)
-  {
-    Serialize::write_class_id(stream, material->get_class_identifier());
-    material->serialize(stream);
-  }
-  else
-  {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
-  }
+  Serialize::write_enum(stream, material);
 
   return true;
 }
@@ -162,15 +152,7 @@ bool Feature::deserialize(istream& stream)
     lock->deserialize(stream);
   }
 
-  ClassIdentifier material_clid;
-  Serialize::read_class_id(stream, material_clid);
-
-  if (material_clid != CLASS_ID_NULL)
-  {
-    material = MaterialFactory::create_material(material_clid);
-    if (!material) return false;
-    if (!material->deserialize(stream)) return false;
-  }
+  Serialize::read_enum(stream, material);
 
   return true;
 }

@@ -14,6 +14,7 @@
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
 #include "RaceSelectionScreen.hpp"
+#include "Serialization.hpp"
 #include "SexSelectionScreen.hpp"
 #include "WelcomeScreen.hpp"
 
@@ -263,8 +264,11 @@ bool SavageLandsEngine::process_load_game()
 
   if (!filename.empty())
   {
-    // Do serialization
-    result = true;
+    Game* game = Game::instance();
+
+    SerializationReturnCode src = Serialization::load(filename);
+
+    result = (src == SERIALIZATION_OK);
   }
 
   return result;

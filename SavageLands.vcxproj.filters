@@ -1935,6 +1935,9 @@
     <ClInclude Include="engine\serialization\include\SerializationTypes.hpp">
       <Filter>Header Files\engine\serialization\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\Metadata.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3484,6 +3487,9 @@
     </ClCompile>
     <ClCompile Include="engine\menus\source\LoadGameScreen.cpp">
       <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Metadata.cpp">
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
