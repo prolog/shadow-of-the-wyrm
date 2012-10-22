@@ -231,7 +231,7 @@ CheckCurrencyCommand::~CheckCurrencyCommand()
 
 // 'S'ave the game
 SaveGameCommand::SaveGameCommand()
-: Command(CommandKeys::SAVE_GAME)
+: Command(CommandKeys::SAVE_GAME, TextKeys::DECISION_SAVE_GAME)
 {
 }
 
