@@ -128,6 +128,7 @@ const string TextKeys::DECISION_DENY_KEY    = "DECISION_DENY_KEY";
 const string TextKeys::DECISION_LEAVE_AREA  = "DECISION_LEAVE_AREA";
 const string TextKeys::DECISION_QUIT_GAME   = "DECISION_QUIT_GAME";
 const string TextKeys::DECISION_JUMP_INTO_WATER = "DECISION_JUMP_INTO_WATER";
+const string TextKeys::DECISION_SAVE_GAME = "DECISION_SAVE_GAME";
 
 const string TextKeys::GAIN_LEVEL = "GAIN_LEVEL";
 
