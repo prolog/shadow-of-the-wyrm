@@ -4,6 +4,22 @@
 
 using namespace std;
 
+// If the new map ID is different than the current one, then clear the action coordinator, rebuild it, and set the
+// current ID to the new ID.
+bool ActionCoordinator::reset_if_necessary(const string& new_map_id, const map<string, CreaturePtr>& map_creatures)
+{
+  bool ac_reset = (new_map_id != current_map_id);
+
+  if (ac_reset)
+  {
+    clear();
+    set(map_creatures);
+    current_map_id = new_map_id;
+  }
+
+  return ac_reset;
+}
+
 void ActionCoordinator::set(const map<string, CreaturePtr>& creatures)
 {
   creature_action_order.clear();
@@ -107,6 +123,8 @@ bool ActionCoordinator::serialize(std::ostream& stream)
     Serialize::write_string(stream, action_pair.second);
   }
 
+  Serialize::write_string(stream, current_map_id);
+
   return true;
 }
 
@@ -127,6 +145,8 @@ bool ActionCoordinator::deserialize(std::istream& stream)
 
     creature_action_order.insert(make_pair(cost, id));
   }
+
+  Serialize::read_string(stream, current_map_id);
 
   return true;
 }

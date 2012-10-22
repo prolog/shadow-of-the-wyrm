@@ -14,8 +14,12 @@ class ActionCoordinator
     void add(const ActionCost& action_cost, const std::string& creature_id);
     void clear();
 
+    bool reset_if_necessary(const std::string& new_map_guid, const std::map<std::string, CreaturePtr>& new_map_creatures);
+
     ActionCost get_next_action_cost() const;
     std::string get_next_creature_id_and_update_actions();
+    std::string get_next_creature_id() const;
+    void update_actions();
     
     bool has_actions() const;
 
@@ -23,10 +27,8 @@ class ActionCoordinator
     bool deserialize(std::istream& stream);
 
   protected:
-    void update_actions();
-    std::string get_next_creature_id() const;
-
     CreatureActionMultimap creature_action_order;
+    std::string current_map_id;
 
   private:
     ClassIdentifier internal_class_identifier() const;

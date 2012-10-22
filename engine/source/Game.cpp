@@ -226,8 +226,7 @@ void Game::go()
 
     map<string, CreaturePtr> map_creatures = current_map->get_creatures();
 
-    ac.clear();
-    ac.set(map_creatures);
+    ac.reset_if_necessary(current_map->get_map_id(), map_creatures);
 
     Calendar& calendar = worlds[current_world_ix]->get_calendar();
     
@@ -239,7 +238,7 @@ void Game::go()
 
       CreaturePtr current_creature;
       ActionCost next_action_cost = ac.get_next_action_cost();
-      string creature_id = ac.get_next_creature_id_and_update_actions();      
+      string creature_id = ac.get_next_creature_id();      
       map<string, CreaturePtr>::iterator c_it = map_creatures.find(creature_id);
 
       if (c_it != map_creatures.end())
@@ -259,7 +258,15 @@ void Game::go()
         if (!keep_playing) break;
                 
         ActionCost action_cost = process_action_for_creature(current_creature, current_map);
-        ac.add(action_cost, current_creature->get_id());
+
+        // Remove the creature's current action.  This is done after the "keep_playing"
+        // check so that saving, etc., does not advance the turn.
+
+        if (keep_playing)
+        {
+          ac.update_actions(); 
+          ac.add(action_cost, current_creature->get_id());
+        }
         
         if (reload_game_loop)
         {
@@ -329,9 +336,15 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         advance = action_cost.get_turn_advanced();
       }
       
-      // Update the current creature as well as its number of turns.
+      // Update the current creature 
       CreatureCalculator::update_calculated_values(current_creature);
-      current_creature->increment_turns();
+      
+      // Also update its number of turns, as long as we should keep playing
+      // (player hasn't saved, been killed, and so on)
+      if (keep_playing)
+      {
+        current_creature->increment_turns();
+      }
     }
   }
   
@@ -396,7 +409,7 @@ bool Game::serialize(ostream& stream)
   CreatureDescriber cd(get_current_player());
   Serialize::write_string(stream, cd.describe_for_save_file());
 
-  Serialize::write_bool(stream, keep_playing);
+  // Ignore keep_playing
   Serialize::write_bool(stream, reload_game_loop);
   // Ignore game_instance - it's a singleton, and the write/read code is already handling it
   Serialize::write_class_id(stream, display->get_class_identifier());
@@ -442,7 +455,7 @@ bool Game::deserialize(istream& stream)
 
   Serialize::consume_string(stream); // character synopsis
 
-  Serialize::read_bool(stream, keep_playing);
+  // Ignore keep_playing
   Serialize::read_bool(stream, reload_game_loop);
   // Ignore game_instance - it's a singleton, and the write/read code is already handling it
   
