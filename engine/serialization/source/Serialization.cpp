@@ -34,7 +34,7 @@ void Serialization::save(CreaturePtr creature)
 
     // Get the user's name
     string user_name = meta.get_user_name();
-    string string_to_hash = user_name + name;
+    string string_to_hash = user_name + "_" + name;
     boost::hash<string> string_hash;
     size_t hash = string_hash(string_to_hash);
     string filename = Integer::to_string(hash) + ".sls"; // "sls" = "Savage Lands Save"
