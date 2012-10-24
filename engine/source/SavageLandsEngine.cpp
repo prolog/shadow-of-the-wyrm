@@ -208,9 +208,24 @@ bool SavageLandsEngine::process_new_game()
     RaceMap  races   = game->get_races_ref();
     ClassMap classes = game->get_classes_ref();
 
-    NamingScreen naming(display);
-    name = naming.display();
-    name = Naming::clean_name(name);
+    bool user_and_character_exist = true;
+    string warning_message;
+
+    while (user_and_character_exist)
+    {
+      NamingScreen naming(display, warning_message);
+      name = naming.display();
+      name = Naming::clean_name(name);
+
+      if (Serialization::does_savefile_exist_for_user_and_character(Environment::get_user_name(), name))
+      {
+        warning_message = StringTable::get(TextKeys::CHARACTER_ALREADY_EXISTS);
+      }
+      else
+      {
+        user_and_character_exist = false;
+      }
+    }
 
     SexSelectionScreen sex_selection(display);
     sex = static_cast<CreatureSex>(String::to_int(sex_selection.display()));

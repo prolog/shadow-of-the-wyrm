@@ -34,13 +34,10 @@ void Serialization::save(CreaturePtr creature)
 
     // Get the user's name
     string user_name = meta.get_user_name();
-    string string_to_hash = user_name + "_" + name;
-    boost::hash<string> string_hash;
-    size_t hash = string_hash(string_to_hash);
-    string filename = Integer::to_string(hash) + ".sls"; // "sls" = "Savage Lands Save"
+    string filename = generate_savefile_name(user_name, name);
 
     // Name the file and do the appropriate setup
-    std::ofstream stream(filename, ios::binary);
+    ofstream stream(filename, ios::binary);
         
     // Save the state and game data
     if (game)
@@ -92,10 +89,29 @@ SerializationReturnCode Serialization::load(const string& filename)
   return SERIALIZATION_OK;
 }
 
-bool Serialization::delete_savefile(const std::string& filename)
+bool Serialization::delete_savefile(const string& filename)
 {
   path savefile(filename);
   return remove(savefile);
+}
+
+// Generate the savefile name based on the user name and character name provided.
+string Serialization::generate_savefile_name(const string& user_name, const string& character_name)
+{
+  string string_to_hash = user_name + "_" + character_name;
+  boost::hash<string> string_hash;
+  size_t hash = string_hash(string_to_hash);
+  string savefile_name = "./" + Integer::to_string(hash) + ".sls"; // "sls" = "Savage Lands Save"
+
+  return savefile_name;
+}
+
+bool Serialization::does_savefile_exist_for_user_and_character(const string& user_name, const string& character_name)
+{
+  string filename = generate_savefile_name(user_name, character_name);
+  path save_file_filter(filename);
+
+  return (exists(save_file_filter));
 }
 
 // JCD FIXME SPLIT THESE INTO THEIR OWN CLASS.

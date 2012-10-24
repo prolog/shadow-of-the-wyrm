@@ -32,6 +32,7 @@ class TextKeys
     static const std::string SL_TITLE_POEM;
     static const std::string COPYRIGHT_NOTICE;
     static const std::string SL_TITLE_NEW_GAME;
+    static const std::string CHARACTER_ALREADY_EXISTS;
     static const std::string SL_TITLE_LOAD_GAME;
     static const std::string SL_TITLE_QUIT_GAME;
     static const std::string EXIT;
