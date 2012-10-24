@@ -206,7 +206,13 @@ void Game::go()
 
   MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();
-  string welcome_message = TextMessages::get_welcome_message(current_player->get_name());
+
+  // To see if this is a new game, check the ActionCoordinator to see if there is
+  // a map, yet.  If there isn't, the game hasn't been restored, so it must be a
+  // new game.
+  bool new_game = ac.get_current_map_id().empty();
+
+  string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), new_game);
 
   MessageManager* manager = MessageManager::instance();
   manager->add_new_message(welcome_message);
