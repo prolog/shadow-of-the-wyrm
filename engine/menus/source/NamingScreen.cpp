@@ -2,20 +2,29 @@
 #include "NamingScreen.hpp"
 #include "StringConstants.hpp"
 
+using namespace std;
 
-NamingScreen::NamingScreen(DisplayPtr new_display) : Menu(new_display)
+NamingScreen::NamingScreen(DisplayPtr new_display, const string& warning) 
+: Menu(new_display), warning_message(warning)
 {
   initialize();
 }
 
 void NamingScreen::initialize()
 {
-  std::string empty_str = "";
-  TextComponentPtr empty = boost::make_shared<TextComponent>(empty_str);
-  TextComponentPtr more_emptiness = boost::make_shared<TextComponent>(empty_str);
+  string optional_message;
+  string empty_str;
 
-  components.push_back(empty);
-  components.push_back(more_emptiness);
+  if (!warning_message.empty())
+  {
+    optional_message = warning_message;
+  }
+
+  TextComponentPtr optional_warning_message = boost::make_shared<TextComponent>(optional_message);
+  TextComponentPtr blank_space = boost::make_shared<TextComponent>(empty_str);
+
+  components.push_back(optional_warning_message);
+  components.push_back(blank_space);
 
   user_prompt = boost::make_shared<TextPrompt>();
   user_prompt->set_text_sid(PromptTextKeys::PROMPT_ENTER_YOUR_NAME);

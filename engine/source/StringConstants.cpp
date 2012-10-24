@@ -29,6 +29,7 @@ const string TextKeys::SL_TITLE    = "SL_TITLE";
 const string TextKeys::SL_TITLE_POEM = "SL_TITLE_POEM";
 const string TextKeys::COPYRIGHT_NOTICE = "COPYRIGHT_NOTICE";
 const string TextKeys::SL_TITLE_NEW_GAME = "SL_TITLE_NEW_GAME";
+const string TextKeys::CHARACTER_ALREADY_EXISTS = "CHARACTER_ALREADY_EXISTS";
 const string TextKeys::SL_TITLE_LOAD_GAME = "SL_TITLE_LOAD_GAME";
 const string TextKeys::SL_TITLE_QUIT_GAME = "SL_TITLE_QUIT_GAME";
 const string TextKeys::EXIT = "EXIT";
