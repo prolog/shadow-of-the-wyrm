@@ -21,10 +21,12 @@ class ActionCoordinator
     std::string get_next_creature_id() const;
     void update_actions();
     
+    virtual std::string get_current_map_id() const;
+
     bool has_actions() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
 
   protected:
     CreatureActionMultimap creature_action_order;

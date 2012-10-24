@@ -974,6 +974,7 @@ TextMessages::~TextMessages()
 }
 
 const string TextMessages::WELCOME_MESSAGE                    = "WELCOME_MESSAGE";
+const string TextMessages::WELCOME_BACK_MESSAGE               = "WELCOME_BACK_MESSAGE";
 const string TextMessages::DUMPING_CHARACTER_MESSAGE          = "DUMPING_CHARACTER_MESSAGE";
 const string TextMessages::ITEM_DROP_MESSAGE                  = "ITEM_DROP_MESSAGE";
 const string TextMessages::ITEM_PICK_UP_MESSAGE               = "ITEM_PICK_UP_MESSAGE";
@@ -984,9 +985,15 @@ const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAG
 
 // Public functions used to access protected members.  These are used to wrap any const strings
 // that contain replaceable symbols.
-string TextMessages::get_welcome_message(const string& player_name)
+string TextMessages::get_welcome_message(const string& player_name, const bool new_player)
 {
-  string welcome_message = StringTable::get(TextMessages::WELCOME_MESSAGE);
+  string welcome_message = StringTable::get(TextMessages::WELCOME_BACK_MESSAGE);
+
+  if (new_player)
+  {
+    welcome_message = StringTable::get(TextMessages::WELCOME_MESSAGE);
+  }
+
   boost::replace_first(welcome_message, "%s", player_name);
   return welcome_message;
 }

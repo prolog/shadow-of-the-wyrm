@@ -659,7 +659,7 @@ class TileDangerConfirmationKeys
 class TextMessages
 {
   public:
-    static std::string get_welcome_message(const std::string& player_name);
+    static std::string get_welcome_message(const std::string& player_name, const bool new_player);
     static std::string get_death_message(const std::string& deity_death_message_sid);
     static std::string get_npc_escapes_message(const std::string& creature_description);
     static std::string get_action_not_found_message(const std::string& command_action);
@@ -679,6 +679,7 @@ class TextMessages
     ~TextMessages();
 
     static const std::string WELCOME_MESSAGE;
+    static const std::string WELCOME_BACK_MESSAGE;
     static const std::string DUMPING_CHARACTER_MESSAGE;
     static const std::string ITEM_DROP_MESSAGE;
     static const std::string ITEM_PICK_UP_MESSAGE;
