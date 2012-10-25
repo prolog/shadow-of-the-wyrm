@@ -1,4 +1,5 @@
 #include <fstream>
+#include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 #include <boost/functional/hash/hash.hpp>
 #include <boost/regex.hpp>
@@ -13,6 +14,7 @@
 #include "Serialize.hpp"
 
 using namespace std;
+using namespace boost::algorithm;
 using namespace boost::filesystem;
 
 // Save the entire game state to disk
@@ -98,7 +100,12 @@ bool Serialization::delete_savefile(const string& filename)
 // Generate the savefile name based on the user name and character name provided.
 string Serialization::generate_savefile_name(const string& user_name, const string& character_name)
 {
-  string string_to_hash = user_name + "_" + character_name;
+  string string_to_hash = trim_copy(user_name) + "_" + trim_copy(character_name);
+
+  // Convert the string to lower case so that we don't care about whether the user is named
+  // "FOO" or "foo" or "foo    ", etc.
+  to_lower(string_to_hash); 
+  
   boost::hash<string> string_hash;
   size_t hash = string_hash(string_to_hash);
   string savefile_name = "./" + Integer::to_string(hash) + ".sls"; // "sls" = "Savage Lands Save"
