@@ -43,7 +43,3 @@ Material* Cloth::clone()
   return new Cloth(*this);
 }
 
-ClassIdentifier Cloth::internal_class_identifier() const
-{
-  return CLASS_ID_CLOTH;
-}

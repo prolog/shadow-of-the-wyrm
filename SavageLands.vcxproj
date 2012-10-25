@@ -228,7 +228,6 @@
     <ClInclude Include="engine\description\include\TileDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescription.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
-    <ClInclude Include="engine\effects\include\AdditionalEffectMessageFactory.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\Effect.hpp" />
     <ClInclude Include="engine\effects\include\EffectFactory.hpp" />
@@ -753,7 +752,6 @@
     <ClCompile Include="engine\description\source\TileDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescription.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />
-    <ClCompile Include="engine\effects\source\AdditionalEffectMessageFactory.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp" />
     <ClCompile Include="engine\effects\source\Effect.cpp" />
     <ClCompile Include="engine\effects\source\EffectFactory.cpp" />

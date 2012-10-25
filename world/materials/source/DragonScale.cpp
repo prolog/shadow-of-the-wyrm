@@ -43,7 +43,3 @@ Material* DragonScale::clone()
   return new DragonScale(*this);
 }
 
-ClassIdentifier DragonScale::internal_class_identifier() const
-{
-  return CLASS_ID_DRAGONSCALE;
-}

@@ -23,16 +23,3 @@ void AdditionalEffectMessage::add_effect_message() const
   }
 }
 
-bool AdditionalEffectMessage::serialize(ostream& stream)
-{
-  Serialize::write_string(stream, effect_message_sid);
-
-  return true;
-}
-
-bool AdditionalEffectMessage::deserialize(istream& stream)
-{
-  Serialize::read_string(stream, effect_message_sid);
-
-  return true;
-}

@@ -1,5 +1,4 @@
 #include <boost/foreach.hpp>
-#include "AdditionalEffectMessageFactory.hpp"
 #include "Creature.hpp"
 #include "Effect.hpp"
 #include "Serialize.hpp"
@@ -98,44 +97,3 @@ void Effect::add_additional_effect_messages() const
   }
 }
 
-bool Effect::serialize(ostream& stream)
-{
-  Serialize::write_size_t(stream, additional_effect_messages.size());
-
-  BOOST_FOREACH(AdditionalEffectMessagePtr message, additional_effect_messages)
-  {
-    if (message)
-    {
-      Serialize::write_class_id(stream, message->get_class_identifier());
-      message->serialize(stream);
-    }
-    else
-    {
-      Serialize::write_class_id(stream, CLASS_ID_NULL);
-    }
-  }
-
-  return true;
-}
-
-bool Effect::deserialize(istream& stream)
-{
-  size_t messages_size = 0;
-  Serialize::read_size_t(stream, messages_size);
-
-  for (unsigned int i = 0; i < messages_size; i++)
-  {
-    ClassIdentifier cl_id = CLASS_ID_NULL;
-    Serialize::read_class_id(stream, cl_id);
-
-    if (cl_id != CLASS_ID_NULL)
-    {
-      AdditionalEffectMessagePtr message = AdditionalEffectMessageFactory::create_additional_effect_message(cl_id);
-      if (!message) return false;
-      if (!message->deserialize(stream)) return false;
-
-      additional_effect_messages.push_back(message);
-    }
-  }
-  return true;
-}
