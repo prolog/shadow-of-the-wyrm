@@ -43,7 +43,3 @@ Material* Marble::clone()
   return new Marble(*this);
 }
 
-ClassIdentifier Marble::internal_class_identifier() const
-{
-  return CLASS_ID_MARBLE;
-}

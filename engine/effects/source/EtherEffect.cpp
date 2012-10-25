@@ -51,7 +51,3 @@ bool EtherEffect::heal(CreaturePtr creature, const float healing_multiplier) con
   return effect_identified;
 }
 
-ClassIdentifier EtherEffect::internal_class_identifier() const
-{
-  return CLASS_ID_ETHER_EFFECT;
-}

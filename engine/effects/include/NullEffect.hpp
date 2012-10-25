@@ -11,8 +11,5 @@ class NullEffect : public Effect
     virtual bool effect_blessed(boost::shared_ptr<Creature> creature, ActionManager * const am);
     virtual bool effect_uncursed(boost::shared_ptr<Creature> creature, ActionManager * const am);
     virtual bool effect_cursed(boost::shared_ptr<Creature> creature, ActionManager * const am);
-
-  private:
-    ClassIdentifier internal_class_identifier() const;
 };
 

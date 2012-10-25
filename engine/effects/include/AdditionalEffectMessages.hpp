@@ -6,8 +6,5 @@ class SweetTasteEffectMessage : public AdditionalEffectMessage
     SweetTasteEffectMessage();
 
     AdditionalEffectMessage* clone();
-
-  private:
-    ClassIdentifier internal_class_identifier() const;
 };
 

@@ -43,7 +43,3 @@ Material* Onyx::clone()
   return new Onyx(*this);
 }
 
-ClassIdentifier Onyx::internal_class_identifier() const
-{
-  return CLASS_ID_ONYX;
-}

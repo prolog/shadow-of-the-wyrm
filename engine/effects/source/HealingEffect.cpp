@@ -76,39 +76,3 @@ int HealingEffect::get_random_healing_amount() const
   return RNG::range(BASE_MIN_HP, BASE_MAX_HP);
 }
 
-bool HealingEffect::serialize(ostream& stream)
-{
-  Effect::serialize(stream);
-
-  Serialize::write_double(stream, BLESSED_MULTIPLIER);
-  Serialize::write_double(stream, UNCURSED_MULTIPLIER);
-  Serialize::write_double(stream, CURSED_MULTIPLIER);
-  Serialize::write_int(stream, BASE_MIN_HP);
-  Serialize::write_int(stream, BASE_MAX_HP);
-
-  return true;
-}
-
-bool HealingEffect::deserialize(istream& stream)
-{
-  Effect::deserialize(stream);
-
-  double& bmult = const_cast<double&>(BLESSED_MULTIPLIER);
-  double& umult = const_cast<double&>(UNCURSED_MULTIPLIER);
-  double& cmult = const_cast<double&>(CURSED_MULTIPLIER);
-  int& min      = const_cast<int&>(BASE_MIN_HP);
-  int& max      = const_cast<int&>(BASE_MAX_HP);
-
-  Serialize::read_double(stream, bmult);
-  Serialize::read_double(stream, umult);
-  Serialize::read_double(stream, cmult);
-  Serialize::read_int(stream, min);
-  Serialize::read_int(stream, max);
-
-  return true;
-}
-
-ClassIdentifier HealingEffect::internal_class_identifier() const
-{
-  return CLASS_ID_HEALING_EFFECT;
-}

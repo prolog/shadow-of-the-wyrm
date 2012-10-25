@@ -43,7 +43,3 @@ Material* Leather::clone()
   return new Leather(*this);
 }
 
-ClassIdentifier Leather::internal_class_identifier() const
-{
-  return CLASS_ID_LEATHER;
-}

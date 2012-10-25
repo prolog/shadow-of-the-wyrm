@@ -3,7 +3,6 @@
 #include <boost/shared_ptr.hpp>
 #include "AdditionalEffectMessage.hpp"
 #include "ItemTypes.hpp"
-#include "ISerializable.hpp"
 
 class ActionManager;
 class Creature;
@@ -14,15 +13,12 @@ class Creature;
 //
 // As an example, zapping a wand of light in a lit area should not identify
 // the wand, but zapping it in a dark room should.
-class Effect : public ISerializable
+class Effect
 {
   public:
     virtual bool effect(boost::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status);
 
     virtual std::string get_effect_identification_message(boost::shared_ptr<Creature> creature) const = 0;
-
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
 
     // Create an exact copy
     virtual Effect* clone() = 0;
@@ -44,9 +40,6 @@ class Effect : public ISerializable
     // Additional messages that are displayed regardless of identification
     // success or failure.
     std::vector<AdditionalEffectMessagePtr> additional_effect_messages;
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
 typedef boost::shared_ptr<Effect> EffectPtr;

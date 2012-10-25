@@ -1926,9 +1926,6 @@
     <ClInclude Include="world\include\ItemSerializationFactory.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\effects\include\AdditionalEffectMessageFactory.hpp">
-      <Filter>Header Files\engine\effects\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\menus\include\LoadGameScreen.hpp">
       <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
@@ -2798,9 +2795,6 @@
     <ClCompile Include="engine\effects\source\EtherEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\effects\source\FruitJuiceEffect.cpp">
-      <Filter>Source Files\engine\effects\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\effects\source\HealingEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
@@ -3482,14 +3476,14 @@
     <ClCompile Include="world\source\ItemSerializationFactory.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\effects\source\AdditionalEffectMessageFactory.cpp">
-      <Filter>Source Files\engine\effects\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\menus\source\LoadGameScreen.cpp">
       <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Metadata.cpp">
       <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\FruitJuiceEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
