@@ -69,6 +69,9 @@ class ActionManager : public ISerializable
     // Check the current amount of currency held
     ActionCost check_currency(CreaturePtr creature);
 
+    // Eat something
+    ActionCost eat(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

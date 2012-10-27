@@ -1935,6 +1935,12 @@
     <ClInclude Include="engine\include\Metadata.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\FoodManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\items\include\EdibleItemFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3484,6 +3490,12 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\FruitJuiceEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\FoodManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\EdibleItemFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

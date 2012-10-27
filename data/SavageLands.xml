@@ -920,6 +920,10 @@
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
+					<InitialItem>
 						<ID>healing_potion</ID>
 						<Quantity><Random><NumDice>2</NumDice><NumSides>2</NumSides></Random></Quantity>
 					</InitialItem>
@@ -989,6 +993,10 @@
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem>
 						<ID>healing_potion</ID>
 						<Quantity><Random><NumDice>2</NumDice><NumSides>2</NumSides></Random></Quantity>
@@ -1189,6 +1197,10 @@
 					</Races>
 				</Ammunition>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1201,8 +1213,7 @@
 			<ClassInitialStatistics>
 				<Valour>50</Valour>
 				<Spirit>50</Spirit>
-			</ClassInitialStatistics>
-			<ClassInitialModifiers>
+			</ClassInitialStatistics>			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>2</DexterityModifier>
 				<AgilityModifier>0</AgilityModifier>
@@ -1252,6 +1263,10 @@
 				<Body><ID>clothes</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1319,6 +1334,10 @@
 				<Body><ID>wayfarer_clothes</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>20</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1381,6 +1400,10 @@
 				<Body><ID>clothes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1451,6 +1474,10 @@
 				<Ranged><ID>crossbow</ID></Ranged>
 				<Ammunition><ID>bolt</ID></Ammunition>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>30</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1517,6 +1544,10 @@
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1587,6 +1618,10 @@
 				<Body><ID>wayfarer_clothes</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1649,6 +1684,10 @@
 				<Body><ID>clothes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1727,6 +1766,10 @@
 				<AboutBody><ID>cloak</ID></AboutBody>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>5</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1794,6 +1837,10 @@
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1860,6 +1907,10 @@
 				<AboutBody><ID>cloak</ID></AboutBody>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem>
 						<ID>coracle</ID>
 					</InitialItem>
@@ -1928,6 +1979,10 @@
 				<AboutBody><ID>cloak</ID></AboutBody>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>2</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -1992,6 +2047,10 @@
 				<Body><ID>chain_mail</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -2062,6 +2121,10 @@
 				<Body><ID>leather_armour</ID></Body>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -2233,6 +2296,10 @@
 				</Body>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -2303,6 +2370,10 @@
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -2370,6 +2441,10 @@
 				<Body><ID>robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>food_ration</ID>
+						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -3448,6 +3523,19 @@
 					<Colour>11</Colour>
 				</TextDetails>				
 				<Nutrition>150</Nutrition>
+			</Food>
+			<Food id="food_ration">
+				<DescriptionSID>FOOD_RATION_SID</DescriptionSID>
+				<UsageDescriptionSID>FOOD_RATION_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>				
+				<Nutrition>1440</Nutrition>	
 			</Food>
 		</Foodstuffs>
 		<Plants>

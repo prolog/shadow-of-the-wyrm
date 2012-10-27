@@ -38,6 +38,7 @@ const string CommandKeys::QUAFF          = "QUAFF";
 const string CommandKeys::READ           = "READ";
 const string CommandKeys::CHECK_CURRENCY = "CHECK_CURRENCY";
 const string CommandKeys::SAVE_GAME      = "SAVE_GAME";
+const string CommandKeys::EAT            = "EAT";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

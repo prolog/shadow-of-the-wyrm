@@ -109,6 +109,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('r'), CommandKeys::READ));
   command_mapping.insert(make_pair(Integer::to_string('$'), CommandKeys::CHECK_CURRENCY));
   command_mapping.insert(make_pair(Integer::to_string('S'), CommandKeys::SAVE_GAME));
+  command_mapping.insert(make_pair(Integer::to_string('e'), CommandKeys::EAT));
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses

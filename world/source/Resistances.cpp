@@ -123,8 +123,6 @@ bool Resistances::deserialize(istream& stream)
   size_t resistances_size = 0;
   Serialize::read_size_t(stream, resistances_size);
 
-  resistances.clear();
-
   for (unsigned int i = 0; i < resistances_size; i++)
   {
     DamageType type = DAMAGE_TYPE_SLASH;
