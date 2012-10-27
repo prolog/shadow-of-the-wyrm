@@ -165,3 +165,9 @@ class SaveGameCommand : public Command
     ~SaveGameCommand();
 };
 
+class EatCommand : public Command
+{
+  public:
+    EatCommand();
+    ~EatCommand();
+};

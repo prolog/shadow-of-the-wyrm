@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "EdibleItemFilter.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemTypeFilter.hpp"
 #include "NullItemFilter.hpp"
@@ -70,6 +71,18 @@ list<IItemFilterPtr> ItemFilterFactory::create_readable_filter()
   list<IItemFilterPtr> it_filter;
   
   IItemFilterPtr readable_filter = boost::make_shared<ReadableItemFilter>();
+  it_filter.push_back(readable_filter);
+  
+  return it_filter;
+}
+
+// Create a filter containing all edible items (food and plants, but not
+// potions)
+list<IItemFilterPtr> ItemFilterFactory::create_edible_filter()
+{
+  list<IItemFilterPtr> it_filter;
+  
+  IItemFilterPtr readable_filter = boost::make_shared<EdibleItemFilter>();
   it_filter.push_back(readable_filter);
   
   return it_filter;

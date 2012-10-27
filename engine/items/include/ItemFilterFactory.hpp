@@ -11,6 +11,7 @@ class ItemFilterFactory
     static std::list<IItemFilterPtr> create_item_type_filter(const ItemType item_type);
     static std::list<IItemFilterPtr> create_item_type_filter(const std::list<ItemType>& item_type_list);
     static std::list<IItemFilterPtr> create_readable_filter();
+    static std::list<IItemFilterPtr> create_edible_filter();
     
     static IItemFilterPtr create_equipment_worn_location_filter(const EquipmentWornLocation& ewl);
 

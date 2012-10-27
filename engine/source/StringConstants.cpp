@@ -821,41 +821,37 @@ ActionTextKeys::~ActionTextKeys()
 {
 }
 
-string ActionTextKeys::get_quaff_message(const string& desc_sid, const string& potion_desc_sid, const bool is_player)
+string ActionTextKeys::get_general_action_message(const string& desc_sid, const string& item_desc_sid, const string& player_sid, const string& monster_sid, const bool is_player)
 {
-  string message = StringTable::get(ACTION_QUAFF_PLAYER);
+  string message = StringTable::get(player_sid);
   
   if (!is_player)
   {
-    message = StringTable::get(ACTION_QUAFF_MONSTER);
+    message = StringTable::get(monster_sid);
     // Replace the creature part
     boost::replace_first(message, "%s", StringTable::get(desc_sid));
     message[0] = toupper(message[0]);
   }
   
-  // Replace the potion part.
-  boost::replace_first(message, "%s", StringTable::get(potion_desc_sid));
+  // Replace the item part.
+  boost::replace_first(message, "%s", StringTable::get(item_desc_sid));
   
   return message;
 }
 
-// JCD FIXME: COMBINE THIS AND THE ABOVE FN.
+string ActionTextKeys::get_quaff_message(const string& desc_sid, const string& potion_desc_sid, const bool is_player)
+{
+  return get_general_action_message(desc_sid, potion_desc_sid, ACTION_QUAFF_PLAYER, ACTION_QUAFF_MONSTER, is_player);
+}
+
 string ActionTextKeys::get_read_message(const string& desc_sid, const string& readable_desc_sid, const bool is_player)
 {
-  string message = StringTable::get(ACTION_READ_PLAYER);
-  
-  if (!is_player)
-  {
-    message = StringTable::get(ACTION_READ_MONSTER);
-    // Replace the creature part
-    boost::replace_first(message, "%s", StringTable::get(desc_sid));
-    message[0] = toupper(message[0]);
-  }
-  
-  // Replace the readable part.
-  boost::replace_first(message, "%s", StringTable::get(readable_desc_sid));
+  return get_general_action_message(desc_sid, readable_desc_sid, ACTION_READ_PLAYER, ACTION_READ_MONSTER, is_player);
+}
 
-  return message;
+string ActionTextKeys::get_eat_message(const string& desc_sid, const string& consumable_desc_sid, const bool is_player)
+{
+  return get_general_action_message(desc_sid, consumable_desc_sid, ACTION_EAT_PLAYER, ACTION_EAT_MONSTER, is_player);
 }
 
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
@@ -880,6 +876,8 @@ const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_P
 const string ActionTextKeys::ACTION_QUAFF_MONSTER              = "ACTION_QUAFF_MONSTER";
 const string ActionTextKeys::ACTION_READ_PLAYER                = "ACTION_READ_PLAYER";
 const string ActionTextKeys::ACTION_READ_MONSTER               = "ACTION_READ_MONSTER";
+const string ActionTextKeys::ACTION_EAT_PLAYER                 = "ACTION_EAT_PLAYER";
+const string ActionTextKeys::ACTION_EAT_MONSTER                = "ACTION_EAT_MONSTER";
 
 // Strings for various magical effects
 EffectTextKeys::EffectTextKeys()

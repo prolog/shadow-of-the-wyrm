@@ -8,6 +8,7 @@
 #include "DropManager.hpp"
 #include "EquipmentManager.hpp"
 #include "FileWriter.hpp"
+#include "FoodManager.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "InventoryManager.hpp"
@@ -206,6 +207,13 @@ ActionCost ActionManager::check_currency(CreaturePtr creature)
 {
   CurrencyManager cm;
   return get_action_cost(creature, cm.count_currency(creature));
+}
+
+// 'e'at something
+ActionCost ActionManager::eat(CreaturePtr creature)
+{
+  FoodManager fm;
+  return get_action_cost(creature, fm.eat(creature, this));
 }
 
 // Pick up an item, doing any necessary checks first.

@@ -574,6 +574,7 @@ class ActionTextKeys
   public:
     static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc_sid, const bool is_player);
     static std::string get_read_message(const std::string& desc_sid, const std::string& readable_desc_sid, const bool is_player);
+    static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc_sid, const bool is_player);
     
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -596,11 +597,15 @@ class ActionTextKeys
   protected:
     ActionTextKeys();
     ~ActionTextKeys();
+
+    static std::string get_general_action_message(const std::string& desc_sid, const std::string& consumable_desc_sid, const std::string& player_message_sid, const std::string& monster_message_sid, const bool is_player);
     
     static const std::string ACTION_QUAFF_PLAYER;
     static const std::string ACTION_QUAFF_MONSTER;
     static const std::string ACTION_READ_PLAYER;
     static const std::string ACTION_READ_MONSTER;
+    static const std::string ACTION_EAT_PLAYER;
+    static const std::string ACTION_EAT_MONSTER;
 };
 
 class EffectTextKeys

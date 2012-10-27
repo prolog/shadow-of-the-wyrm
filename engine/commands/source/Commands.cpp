@@ -239,3 +239,12 @@ SaveGameCommand::~SaveGameCommand()
 {
 }
 
+// 'e'at
+EatCommand::EatCommand()
+: Command(CommandKeys::EAT)
+{
+}
+
+EatCommand::~EatCommand()
+{
+}

@@ -125,6 +125,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<SaveGameCommand>();
   }
+  else if (command_name == CommandKeys::EAT)
+  {
+    command = boost::make_shared<EatCommand>();
+  }
 
   return command;
 }
