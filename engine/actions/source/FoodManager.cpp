@@ -1,8 +1,11 @@
 #include "ActionManager.hpp"
+#include "ConsumableManager.hpp"
+#include "Food.hpp"
 #include "FoodManager.hpp"
 #include "ItemFilterFactory.hpp"
+#include "MessageManager.hpp"
 
-using std::list;
+using namespace std;
 
 FoodManager::FoodManager()
 {
@@ -24,19 +27,73 @@ ActionCostValue FoodManager::eat(CreaturePtr creature, ActionManager * const am)
     
     if (selected_edible_item)
     {
-      // Try to eat the item
-      int x = 1;
-
-      // The item has been eaten.  Advance the turn:
-      action_cost_value = get_action_cost_value();
+      if (eat_food(creature, selected_edible_item))
+      {
+        // The item has been eaten.  Advance the turn:
+        action_cost_value = get_action_cost_value();
+      }
     }    
   }
 
   return action_cost_value;
 }
 
+// Eat the selected item.  Return true if it can be eaten, false otherwise.
+bool FoodManager::eat_food(CreaturePtr creature, ItemPtr food)
+{
+  bool turn_advanced = false;
+
+  FoodPtr item_as_food = boost::dynamic_pointer_cast<Food>(food);
+
+  if (food)
+  {
+    ConsumableManager cm;
+    bool eat_success = false;
+
+    // Is the character full?  If not, eat the food.
+    HungerClock& hunger = creature->get_hunger_clock_ref();
+
+    if (!hunger.is_stuffed())
+    {
+      food->set_quantity(food->get_quantity() - 1);
+      if (food->get_quantity() == 0) creature->get_inventory().remove(food->get_id());
+
+      cm.consume(creature, item_as_food);
+      eat_success = true;
+    }
+
+    add_food_message(creature, food, eat_success);
+
+    turn_advanced = true;
+  }
+
+  return turn_advanced;
+}
+
+// Add a message about whether the creature could eat the item, or not.
+void FoodManager::add_food_message(CreaturePtr creature, ItemPtr food, const bool eat_success)
+{
+  MessageManager* manager = MessageManager::instance();
+
+  if (manager)
+  {
+    string message;
+
+    if (eat_success)
+    {
+      message = ActionTextKeys::get_eat_message(creature->get_description_sid(), food->get_usage_description_sid(), creature->get_is_player());
+    }
+    else
+    {
+      message = ActionTextKeys::get_full_message(creature->get_description_sid(), food->get_usage_description_sid(), creature->get_is_player());
+    }
+
+    manager->add_new_message(message);
+    manager->send();
+  }
+}
+
 ActionCostValue FoodManager::get_action_cost_value() const
 {
   return 1;
 }
-

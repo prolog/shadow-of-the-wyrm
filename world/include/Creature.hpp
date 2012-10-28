@@ -8,6 +8,7 @@
 #include "Damage.hpp"
 #include "DecisionStrategy.hpp"
 #include "Equipment.hpp"
+#include "HungerClock.hpp"
 #include "Inventory.hpp"
 #include "ISerializable.hpp"
 #include "Race.hpp"
@@ -200,6 +201,10 @@ class Creature : public ISerializable
     TargetMap get_target_map() const;
     TargetMap& get_target_map_ref();
     
+    void set_hunger_clock(const HungerClock& new_hunger_clock);
+    HungerClock get_hunger_clock() const;
+    HungerClock& get_hunger_clock_ref();
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
@@ -301,6 +306,9 @@ class Creature : public ISerializable
     // - string is a creature ID, possible empty
     // - Coordinate is the coordinate that the creature was previously at
     TargetMap targets;
+
+    // The creature's hunger details
+    HungerClock hunger;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

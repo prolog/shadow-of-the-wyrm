@@ -1941,6 +1941,9 @@
     <ClInclude Include="engine\items\include\EdibleItemFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\HungerClock.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3496,6 +3499,9 @@
     </ClCompile>
     <ClCompile Include="engine\items\source\EdibleItemFilter.cpp">
       <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\HungerClock.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
