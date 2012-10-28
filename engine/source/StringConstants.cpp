@@ -854,6 +854,11 @@ string ActionTextKeys::get_eat_message(const string& desc_sid, const string& con
   return get_general_action_message(desc_sid, consumable_desc_sid, ACTION_EAT_PLAYER, ACTION_EAT_MONSTER, is_player);
 }
 
+string ActionTextKeys::get_full_message(const string& desc_sid, const string& consumable_desc_sid, const bool is_player)
+{
+  return get_general_action_message(desc_sid, consumable_desc_sid, ACTION_FULL_PLAYER, ACTION_FULL_MONSTER, is_player);
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
@@ -878,6 +883,8 @@ const string ActionTextKeys::ACTION_READ_PLAYER                = "ACTION_READ_PL
 const string ActionTextKeys::ACTION_READ_MONSTER               = "ACTION_READ_MONSTER";
 const string ActionTextKeys::ACTION_EAT_PLAYER                 = "ACTION_EAT_PLAYER";
 const string ActionTextKeys::ACTION_EAT_MONSTER                = "ACTION_EAT_MONSTER";
+const string ActionTextKeys::ACTION_FULL_PLAYER                = "ACTION_FULL_PLAYER";
+const string ActionTextKeys::ACTION_FULL_MONSTER               = "ACTION_FULL_MONSTER";
 
 // Strings for various magical effects
 EffectTextKeys::EffectTextKeys()

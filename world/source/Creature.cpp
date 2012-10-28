@@ -93,6 +93,7 @@ Creature::Creature(const Creature& cr)
   experience_points = cr.experience_points;
   turns = cr.turns;
   targets = cr.targets;  
+  hunger = cr.hunger;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -119,6 +120,7 @@ string Creature::get_id() const
 void Creature::set_is_player(const bool player, ControllerPtr controller)
 {
   is_player = player;
+  hunger.set_requires_food(true);
   decision_strategy.reset();
 
   if (player)
@@ -629,6 +631,21 @@ TargetMap& Creature::get_target_map_ref()
   return targets;
 }
 
+void Creature::set_hunger_clock(const HungerClock& new_hunger_clock)
+{
+  hunger = new_hunger_clock;
+}
+
+HungerClock Creature::get_hunger_clock() const
+{
+  return hunger;
+}
+
+HungerClock& Creature::get_hunger_clock_ref()
+{
+  return hunger;
+}
+
   // Uncomment the code below to find out the size of Creature. :)
   //template<int s> struct creature_size;
   //creature_size<sizeof(Creature)> creature_size;
@@ -638,7 +655,7 @@ void Creature::assert_size() const
 {
   // VS 2010
   #ifdef _MSC_VER
-  BOOST_STATIC_ASSERT(sizeof(*this) == 712);
+  BOOST_STATIC_ASSERT(sizeof(*this) == 720);
   #else // gcc
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
   #endif
@@ -691,6 +708,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->experience_points, cr.experience_points);
   std::swap(this->turns, cr.turns);
   std::swap(this->targets, cr.targets);
+  std::swap(this->hunger, cr.hunger);
 }
 
 bool Creature::serialize(ostream& stream)
@@ -776,6 +794,8 @@ bool Creature::serialize(ostream& stream)
     Serialize::write_int(stream, target_pair.second.first);
     Serialize::write_int(stream, target_pair.second.second);
   }
+
+  hunger.serialize(stream);
 
   return true;
 }
@@ -869,6 +889,8 @@ bool Creature::deserialize(istream& stream)
 
     targets.insert(make_pair(attack_type, make_pair(creature_id, coord)));
   }
+
+  hunger.deserialize(stream);
 
   return true;
 }
