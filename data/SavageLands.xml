@@ -929,7 +929,7 @@
 					</InitialItem>
 					<InitialItem>
 						<ID>identify_scroll</ID>
-						<Quantity><Random><NumDice>2</NumDice><NumSides>2</NumSides></Random></Quantity>
+						<Quantity><Amount>1</Amount></Quantity>
 					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
@@ -3718,9 +3718,7 @@
 		<Scrolls>
 			<Scroll id="identify_scroll">
 				<DescriptionSID>IDENTIFY_SCROLL_SID</DescriptionSID>
-				<UnidentifiedDescriptionSID>UNID_IDENTIFY_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>IDENTIFY_SCROLL_USAGE_SID</UsageDescriptionSID>
-				<UnidentifiedUsageDescriptionSID>UNID_IDENTIFY_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>133</Value>
 				<Weight><Pounds>1</Pounds></Weight>
 				<Material>5</Material>
