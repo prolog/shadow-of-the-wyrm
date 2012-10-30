@@ -1602,9 +1602,15 @@ const string RangedCombatTextKeys::RANGED_COMBAT_WEAPON_AMMUNITION_MISMATCH = "R
 const string RangedCombatTextKeys::RANGED_COMBAT_AMMUNITION_REQUIRES_RANGED_WEAPON = "RANGED_COMBAT_AMMUNITION_REQUIRES_RANGED_WEAPON";
 
 // Status ailment text keys:
-const string StatusAilmentTextKeys::STATUS_HUNGER_STUFFED  = "STATUS_HUNGER_STUFFED";
-const string StatusAilmentTextKeys::STATUS_HUNGER_FULL     = "STATUS_HUNGER_FULL";
-const string StatusAilmentTextKeys::STATUS_HUNGER_NORMAL   = "STATUS_HUNGER_NORMAL";
-const string StatusAilmentTextKeys::STATUS_HUNGER_HUNGRY   = "STATUS_HUNGER_HUNGRY";
-const string StatusAilmentTextKeys::STATUS_HUNGER_STARVING = "STATUS_HUNGER_STARVING";
-const string StatusAilmentTextKeys::STATUS_HUNGER_DYING    = "STATUS_HUNGER_DYING";
+const string StatusAilmentTextKeys::STATUS_HUNGER_STUFFED          = "STATUS_HUNGER_STUFFED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STUFFED  = "STATUS_MESSAGE_HUNGER_STUFFED";
+const string StatusAilmentTextKeys::STATUS_HUNGER_FULL             = "STATUS_HUNGER_FULL";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_FULL     = "STATUS_MESSAGE_HUNGER_FULL";
+const string StatusAilmentTextKeys::STATUS_HUNGER_NORMAL           = "STATUS_HUNGER_NORMAL";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_NORMAL   = "STATUS_MESSAGE_HUNGER_NORMAL";
+const string StatusAilmentTextKeys::STATUS_HUNGER_HUNGRY           = "STATUS_HUNGER_HUNGRY";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_HUNGRY   = "STATUS_MESSAGE_HUNGER_HUNGRY";
+const string StatusAilmentTextKeys::STATUS_HUNGER_STARVING         = "STATUS_HUNGER_STARVING";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STARVING = "STATUS_MESSAGE_HUNGER_STARVING";
+const string StatusAilmentTextKeys::STATUS_HUNGER_DYING            = "STATUS_HUNGER_DYING";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING    = "STATUS_MESSAGE_HUNGER_DYING";

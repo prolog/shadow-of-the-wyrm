@@ -1,5 +1,8 @@
+#include "Conversion.hpp"
 #include "CreatureHungerTimer.hpp"
 #include "CombatManager.hpp"
+#include "FoodManager.hpp"
+#include "MessageManager.hpp"
 #include "StringConstants.hpp"
 
 using namespace std;
@@ -14,15 +17,19 @@ void CreatureHungerTimer::tick(CreaturePtr creature, const ulonglong minutes_thi
 
     if (hunger_clock.get_requires_food())
     {
-      hunger_clock.set_hunger(hunger_clock.get_hunger() - 1);
+      int old_hunger = hunger_clock.get_hunger();
+      int new_hunger = old_hunger - 1;
+      hunger_clock.set_hunger(new_hunger);
 
+      FoodManager fm;
+      fm.add_hunger_level_message_if_necessary(creature, old_hunger, new_hunger);
       apply_hunger_damage_if_appropriate(creature, minutes_this_tick);
     }
   }
 }
 
 // If the creature is in HUNGER_LEVEL_DEAD, start killing the creature with hunger damage
-void CreatureHungerTimer::apply_hunger_damage_if_appropriate(CreaturePtr creature, const int minutes_this_tick)
+void CreatureHungerTimer::apply_hunger_damage_if_appropriate(CreaturePtr creature, const ulonglong minutes_this_tick)
 {
   if (creature)
   {
@@ -38,4 +45,3 @@ void CreatureHungerTimer::apply_hunger_damage_if_appropriate(CreaturePtr creatur
     }
   }
 }
-
