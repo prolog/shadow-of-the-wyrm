@@ -1,5 +1,6 @@
 #include "ActionManager.hpp"
 #include "ConsumableManager.hpp"
+#include "Conversion.hpp"
 #include "Food.hpp"
 #include "FoodManager.hpp"
 #include "ItemFilterFactory.hpp"
@@ -7,8 +8,24 @@
 
 using namespace std;
 
+map<HungerLevel, string> FoodManager::hunger_message_sid_map;
+
 FoodManager::FoodManager()
 {
+}
+
+// Initialize the map of message SIDs.  Messages are shown when the creature
+// (the player, realistically) transitions to a new state.
+void FoodManager::initialize_hunger_message_sid_map()
+{
+  hunger_message_sid_map.clear();
+
+  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_STUFFED, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STUFFED));
+  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_FULL, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_FULL));
+  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_NORMAL, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_NORMAL));
+  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_HUNGRY, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_HUNGRY));
+  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_STARVING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STARVING));
+  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING));
 }
 
 // Try to eat something.  First check the inventory, and warn the player
@@ -52,17 +69,23 @@ bool FoodManager::eat_food(CreaturePtr creature, ItemPtr food)
 
     // Is the character full?  If not, eat the food.
     HungerClock& hunger = creature->get_hunger_clock_ref();
+    int hunger_before = hunger.get_hunger();
 
     if (!hunger.is_stuffed())
     {
+
       food->set_quantity(food->get_quantity() - 1);
       if (food->get_quantity() == 0) creature->get_inventory().remove(food->get_id());
 
       cm.consume(creature, item_as_food);
+
       eat_success = true;
     }
 
+    int hunger_after = hunger.get_hunger();
+
     add_food_message(creature, food, eat_success);
+    add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
 
     turn_advanced = true;
   }
@@ -90,6 +113,31 @@ void FoodManager::add_food_message(CreaturePtr creature, ItemPtr food, const boo
 
     manager->add_new_message(message);
     manager->send();
+  }
+}
+
+// Add a message about a change in hunger status, if appropriate.
+void FoodManager::add_hunger_level_message_if_necessary(CreaturePtr creature, const int old_hunger, const int new_hunger)
+{
+  HungerLevel old_level = HungerLevelConverter::to_hunger_level(old_hunger);
+  HungerLevel new_level = HungerLevelConverter::to_hunger_level(new_hunger);
+
+  if (old_level != new_level)
+  {
+    MessageManager* manager = MessageManager::instance();
+
+    if (manager)
+    {
+      if (hunger_message_sid_map.empty())
+      {
+        initialize_hunger_message_sid_map();
+      }
+
+      string message_sid = hunger_message_sid_map[new_level];
+
+      manager->add_new_message(StringTable::get(message_sid));
+      manager->send();
+    }
   }
 }
 
