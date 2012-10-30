@@ -1,3 +1,5 @@
+#include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include "Creature.hpp"
 #include "Conversion.hpp"
 #include "DisplayStatistics.hpp"
@@ -5,10 +7,13 @@
 #include "CreatureTranslator.hpp"
 #include "Game.hpp"
 #include "Naming.hpp"
+#include "StatusAilmentTranslators.hpp"
 #include "StringTable.hpp"
 #include "StringConstants.hpp"
 
 using namespace std;
+
+vector<IStatusAilmentTranslatorPtr> CreatureTranslator::status_ailment_checkers;
 
 CreatureTranslator::CreatureTranslator()
 {
@@ -42,6 +47,8 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
   
   string map_depth     = map->size().depth().str();
 
+  std::vector<std::pair<std::string, Colour>> status_ailments = get_display_status_ailments(creature);
+
   ds = DisplayStatistics::create(name,
                                  synopsis,
                                  strength,
@@ -58,7 +65,8 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
                                  defence,
                                  hit_points,
                                  arcana_points,
-                                 map_depth
+                                 map_depth,
+                                 status_ailments
                                  );
 
   return ds;
@@ -194,4 +202,34 @@ string CreatureTranslator::get_display_arcana_points(const CreaturePtr& c)
   Statistic ap = c->get_arcana_points();
   string arcana_points = StringTable::get(TextKeys::ARCANA_POINTS_ABRV) + ":" + Integer::to_string(ap.get_current()) + "/" + Integer::to_string(ap.get_base());
   return arcana_points;
+}
+
+vector<pair<string, Colour>> CreatureTranslator::get_display_status_ailments(const CreaturePtr& c)
+{
+  vector<pair<string, Colour>> status_ailments;
+
+  if (status_ailment_checkers.empty())
+  {
+    initialize_status_ailment_checkers();
+  }
+
+  BOOST_FOREACH(IStatusAilmentTranslatorPtr status_ailment_checker, status_ailment_checkers)
+  {
+    if (status_ailment_checker && status_ailment_checker->has_ailment(c))
+    {
+      pair<string, Colour> ailment = status_ailment_checker->get_status_ailment(c);
+      status_ailments.push_back(ailment);
+    }
+  }
+
+  return status_ailments;
+}
+
+void CreatureTranslator::initialize_status_ailment_checkers()
+{
+  status_ailment_checkers.clear();
+
+  IStatusAilmentTranslatorPtr hunger_checker = boost::make_shared<HungerStatusAilmentTranslator>();
+
+  status_ailment_checkers.push_back(hunger_checker);
 }

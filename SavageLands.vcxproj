@@ -381,8 +381,10 @@
     <ClInclude Include="engine\translators\include\DisplayItemTypeFactory.hpp" />
     <ClInclude Include="engine\translators\include\EquipmentTranslator.hpp" />
     <ClInclude Include="engine\translators\include\InventoryTranslator.hpp" />
+    <ClInclude Include="engine\translators\include\IStatusAilmentTranslator.hpp" />
     <ClInclude Include="engine\translators\include\ItemTranslator.hpp" />
     <ClInclude Include="engine\translators\include\MapTranslator.hpp" />
+    <ClInclude Include="engine\translators\include\StatusAilmentTranslators.hpp" />
     <ClInclude Include="engine\translators\include\ViewMapTranslator.hpp" />
     <ClInclude Include="engine\XML\include\XMLAmuletReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLArmourReader.hpp" />
@@ -473,6 +475,7 @@
     <ClInclude Include="world\include\Staff.hpp" />
     <ClInclude Include="world\include\Statistic.hpp" />
     <ClInclude Include="world\include\StatisticsModifier.hpp" />
+    <ClInclude Include="world\include\StatusTypes.hpp" />
     <ClInclude Include="world\include\ThreatRatings.hpp" />
     <ClInclude Include="world\include\Wand.hpp" />
     <ClInclude Include="world\include\Weapon.hpp" />
@@ -930,8 +933,10 @@
     <ClCompile Include="engine\translators\source\DisplayItemTypeFactory.cpp" />
     <ClCompile Include="engine\translators\source\EquipmentTranslator.cpp" />
     <ClCompile Include="engine\translators\source\InventoryTranslator.cpp" />
+    <ClCompile Include="engine\translators\source\IStatusAilmentTranslator.cpp" />
     <ClCompile Include="engine\translators\source\ItemTranslator.cpp" />
     <ClCompile Include="engine\translators\source\MapTranslator.cpp" />
+    <ClCompile Include="engine\translators\source\StatusAilmentTranslators.cpp" />
     <ClCompile Include="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

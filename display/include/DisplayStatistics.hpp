@@ -1,5 +1,8 @@
 #pragma once
 #include <string>
+#include <vector>
+#include <utility>
+#include "Colours.hpp"
 
 class DisplayStatistics
 {
@@ -20,7 +23,8 @@ class DisplayStatistics
                                     const std::string& defence,
                                     const std::string& hit_points,
                                     const std::string& arcana_points,
-                                    const std::string& map_depth
+                                    const std::string& map_depth,
+                                    const std::vector<std::pair<std::string, Colour>>& status_ailments
                                     );
 
     std::string get_name() const;
@@ -46,6 +50,7 @@ class DisplayStatistics
 
     std::string get_map_depth() const;
 
+    std::vector<std::pair<std::string, Colour>> get_status_ailments() const;
 
   protected:
     friend class CreatureTranslator;
@@ -74,6 +79,8 @@ class DisplayStatistics
 
     void set_map_depth(const std::string& new_map_depth);
 
+    void set_status_ailments(const std::vector<std::pair<std::string, Colour>>& new_status_ailments);
+
     std::string name;
     std::string synopsis;
 
@@ -96,4 +103,6 @@ class DisplayStatistics
     std::string arcana_points;
 
     std::string map_depth;
+
+    std::vector<std::pair<std::string, Colour>> status_ailments;
 };

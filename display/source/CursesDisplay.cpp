@@ -534,6 +534,8 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
 
   string map_depth    = player_stats.get_map_depth();
 
+  vector<pair<string, Colour>> status_ailments = player_stats.get_status_ailments();
+
   unsigned int PLAYER_SYNOPSIS_START_ROW = TERMINAL_MAX_ROWS - 3;
   unsigned int current_row = PLAYER_SYNOPSIS_START_ROW;
   unsigned int initial_row = current_row;
@@ -562,6 +564,41 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth);
   mvprintw(current_row, current_col, map_depth.c_str());
+
+  // Last row: status ailments
+  current_row = TERMINAL_MAX_ROWS-1;
+  current_col = 0;
+
+  for (uint x = 0; x < status_ailments.size(); x++)
+  {
+    pair<string, Colour> status_ailment = status_ailments.at(x);
+    bool has_more = (x != (status_ailments.size() - 1));
+
+    if (has_more)
+    {
+      pair<string, Colour> next_ailment = status_ailments.at(x+1);
+
+      if (can_print)
+      {
+        Colour colour = status_ailment.second;
+
+        enable_colour(colour);
+        print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, status_ailment.first, next_ailment.first); 
+        disable_colour(colour);
+      }
+    }
+    else
+    {
+      if (can_print)
+      {
+        Colour colour = status_ailment.second;
+
+        enable_colour(colour);
+        mvprintw(current_row, current_col, status_ailment.first.c_str());
+        disable_colour(colour);
+      }
+    }
+  }
 }
 
 bool CursesDisplay::print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat)

@@ -24,7 +24,8 @@ DisplayStatistics DisplayStatistics::create
   const string& new_defence,
   const string& new_hit_points,
   const string& new_arcana_points,
-  const string& new_map_depth
+  const string& new_map_depth,
+  const std::vector<std::pair<std::string, Colour>>& new_status_ailments
 )
 {
   DisplayStatistics ds;
@@ -46,6 +47,7 @@ DisplayStatistics DisplayStatistics::create
   ds.set_hit_points(new_hit_points);
   ds.set_arcana_points(new_arcana_points);
   ds.set_map_depth(new_map_depth);
+  ds.set_status_ailments(new_status_ailments);
 
   return ds;
 }
@@ -220,3 +222,12 @@ string DisplayStatistics::get_map_depth() const
   return map_depth;
 }
 
+void DisplayStatistics::set_status_ailments(const std::vector<std::pair<std::string, Colour>>& new_status_ailments)
+{
+  status_ailments = new_status_ailments;
+}
+
+std::vector<std::pair<std::string, Colour>> DisplayStatistics::get_status_ailments() const
+{
+  return status_ailments;
+}

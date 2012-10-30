@@ -30,13 +30,6 @@ class HungerClock : public ISerializable
     bool requires_food;
     int hunger;
 
-    static const int HUNGER_LEVEL_STUFFED;
-    static const int HUNGER_LEVEL_FULL;
-    static const int HUNGER_LEVEL_NORMAL;
-    static const int HUNGER_LEVEL_HUNGRY;
-    static const int HUNGER_LEVEL_STARVING;
-    static const int HUNGER_LEVEL_DEAD;
-
   private:
     ClassIdentifier internal_class_identifier() const;
 };
