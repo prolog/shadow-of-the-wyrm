@@ -323,6 +323,50 @@ double ActionCostConverter::to_seconds_on_submap(const ActionCostValue action_co
   return (action_cost_value / 2);
 }
 
+// Convert raw hunger values to general levels
+const int HungerLevelConverter::INT_HUNGER_LEVEL_STUFFED = 10000;
+const int HungerLevelConverter::INT_HUNGER_LEVEL_FULL = 7500;
+const int HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL = 4000;
+const int HungerLevelConverter::INT_HUNGER_LEVEL_HUNGRY = 2000;
+const int HungerLevelConverter::INT_HUNGER_LEVEL_STARVING = 1000;
+const int HungerLevelConverter::INT_HUNGER_LEVEL_DYING = 0;
+
+HungerLevelConverter::HungerLevelConverter()
+{
+}
+
+HungerLevelConverter::~HungerLevelConverter()
+{
+}
+
+HungerLevel HungerLevelConverter::to_hunger_level(const int hunger)
+{
+  HungerLevel hunger_level = HUNGER_LEVEL_NORMAL;
+
+  if (hunger <= INT_HUNGER_LEVEL_STUFFED && hunger > INT_HUNGER_LEVEL_FULL)
+  {
+    hunger_level = HUNGER_LEVEL_STUFFED;
+  }
+  else if (hunger <= INT_HUNGER_LEVEL_FULL && hunger > INT_HUNGER_LEVEL_NORMAL)
+  {
+    hunger_level = HUNGER_LEVEL_FULL;
+  }
+  else if (hunger <= INT_HUNGER_LEVEL_HUNGRY && hunger > INT_HUNGER_LEVEL_STARVING)
+  {
+    hunger_level = HUNGER_LEVEL_HUNGRY;
+  }
+  else if (hunger <= INT_HUNGER_LEVEL_STARVING && hunger > INT_HUNGER_LEVEL_DYING)
+  {
+    hunger_level = HUNGER_LEVEL_STARVING;
+  }
+  else if (hunger <= INT_HUNGER_LEVEL_DYING)
+  {
+    hunger_level = HUNGER_LEVEL_DYING;
+  }
+
+  return hunger_level;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Conversion_test.cpp"
 #endif

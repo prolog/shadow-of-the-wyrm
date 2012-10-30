@@ -7,6 +7,7 @@
 #include "Directions.hpp"
 #include "EquipmentTypes.hpp"
 #include "MapTypes.hpp"
+#include "StatusTypes.hpp"
 
 // Forward declarations
 namespace boost
@@ -126,4 +127,21 @@ class ActionCostConverter
   protected:
     ActionCostConverter();
     ~ActionCostConverter();
+};
+
+class HungerLevelConverter
+{
+  public:
+    static HungerLevel to_hunger_level(const int raw_hunger_value);
+
+    static const int INT_HUNGER_LEVEL_STUFFED;
+    static const int INT_HUNGER_LEVEL_FULL;
+    static const int INT_HUNGER_LEVEL_NORMAL;
+    static const int INT_HUNGER_LEVEL_HUNGRY;
+    static const int INT_HUNGER_LEVEL_STARVING;
+    static const int INT_HUNGER_LEVEL_DYING;
+
+  protected:
+    HungerLevelConverter();
+    ~HungerLevelConverter();
 };

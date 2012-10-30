@@ -1,17 +1,11 @@
+#include "Conversion.hpp"
 #include "HungerClock.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
 
-const int HungerClock::HUNGER_LEVEL_STUFFED = 10000;
-const int HungerClock::HUNGER_LEVEL_FULL = 7500;
-const int HungerClock::HUNGER_LEVEL_NORMAL = 4000;
-const int HungerClock::HUNGER_LEVEL_HUNGRY = 2000;
-const int HungerClock::HUNGER_LEVEL_STARVING = 1000;
-const int HungerClock::HUNGER_LEVEL_DEAD = 0;
-
 HungerClock::HungerClock()
-: requires_food(false) /* Only player requires food, for now */, hunger(HUNGER_LEVEL_NORMAL)
+: requires_food(false) /* Only player requires food, for now */, hunger(HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL)
 {
 }
 
@@ -43,32 +37,32 @@ int HungerClock::get_hunger() const
 // they're naturally a lot slower, too.
 bool HungerClock::is_stuffed() const
 {
-  return (hunger <= HUNGER_LEVEL_STUFFED && hunger > HUNGER_LEVEL_FULL);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_STUFFED);
 }
 
 // Check to see if the creature is full.  Creatures that are full are a
 // little slower than others.
 bool HungerClock::is_full() const
 {
-  return (hunger <= HUNGER_LEVEL_FULL && hunger > HUNGER_LEVEL_NORMAL);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_FULL);
 }
 
 // Check to see if the character is hungry.
 bool HungerClock::is_hungry() const
 {
-  return (hunger <= HUNGER_LEVEL_HUNGRY && hunger > HUNGER_LEVEL_STARVING);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_HUNGRY);
 }
 
 // Check to see if the character is starving (near death!)
 bool HungerClock::is_starving() const
 {
-  return (hunger <= HUNGER_LEVEL_STARVING && hunger > HUNGER_LEVEL_DEAD);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_STARVING);
 }
 
 // Uh oh!
 bool HungerClock::is_dead() const
 {
-  return (hunger <= HUNGER_LEVEL_DEAD);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_DYING);
 }
 
 // Serialization details

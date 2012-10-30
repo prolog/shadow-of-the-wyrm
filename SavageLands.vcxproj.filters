@@ -1950,6 +1950,15 @@
     <ClInclude Include="engine\calculators\include\HungerDamageCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\StatusTypes.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\IStatusAilmentTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\StatusAilmentTranslators.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3514,6 +3523,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\HungerDamageCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\IStatusAilmentTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\StatusAilmentTranslators.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
