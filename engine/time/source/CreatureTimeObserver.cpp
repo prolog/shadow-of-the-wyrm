@@ -1,6 +1,7 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "CreatureHPRegeneration.hpp"
+#include "CreatureHungerTimer.hpp"
 #include "CreaturePietyRegeneration.hpp"
 #include "CreatureSkillIncrementer.hpp"
 #include "CreatureTimeObserver.hpp"
@@ -33,12 +34,15 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   ICreatureRegenerationPtr move_checkr  = boost::make_shared<MovementAccumulationChecker>();
   // Every day, increment the creature's skills if they have been used enough.
   ICreatureRegenerationPtr skill_checkr = boost::make_shared<CreatureSkillIncrementer>(1440);
+  // Every minute, reduce the player's hunger clock...
+  ICreatureRegenerationPtr hungr_checkr = boost::make_shared<CreatureHungerTimer>();
   
   regen.push_back(hp_regen    );
   regen.push_back(piety_regen );
   regen.push_back(move_accum  );
   regen.push_back(move_checkr );
   regen.push_back(skill_checkr);
+  regen.push_back(hungr_checkr);
 }
 
 void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
