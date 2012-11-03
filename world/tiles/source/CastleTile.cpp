@@ -19,3 +19,7 @@ ClassIdentifier CastleTile::internal_class_identifier() const
 {
   return CLASS_ID_CASTLE_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CastleTile_test.cpp"
+#endif
