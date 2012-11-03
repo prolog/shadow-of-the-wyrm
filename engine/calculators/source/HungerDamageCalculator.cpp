@@ -6,3 +6,7 @@ int HungerDamageCalculator::calculate_hunger_damage(CreaturePtr creature, const 
 {
   return static_cast<int>(num_ticks * HUNGER_DAMAGE_PER_TICK);
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/HungerDamageCalculator_test.cpp"
+#endif

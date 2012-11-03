@@ -16,9 +16,10 @@ class HungerClock : public ISerializable
 
     bool is_stuffed() const;
     bool is_full() const;
+    bool is_normal() const;
     bool is_hungry() const;
     bool is_starving() const;
-    bool is_dead() const;
+    bool is_dying() const;
 
     void set_hunger(const int new_hunger_level);
     int get_hunger() const;

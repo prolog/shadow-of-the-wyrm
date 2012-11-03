@@ -47,6 +47,12 @@ bool HungerClock::is_full() const
   return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_FULL);
 }
 
+// Is everything peachy?
+bool HungerClock::is_normal() const
+{
+  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_NORMAL);
+}
+
 // Check to see if the character is hungry.
 bool HungerClock::is_hungry() const
 {
@@ -60,7 +66,7 @@ bool HungerClock::is_starving() const
 }
 
 // Uh oh!
-bool HungerClock::is_dead() const
+bool HungerClock::is_dying() const
 {
   return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_DYING);
 }
@@ -88,5 +94,5 @@ ClassIdentifier HungerClock::internal_class_identifier() const
 }
 
 #ifdef UNIT_TESTS
-// JCD FIXME Add unit tests for hunger levels!
+#include "unit_tests/HungerClock_test.cpp"
 #endif
