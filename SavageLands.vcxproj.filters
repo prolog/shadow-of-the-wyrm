@@ -3530,5 +3530,11 @@
     <ClCompile Include="engine\translators\source\StatusAilmentTranslators.cpp">
       <Filter>Source Files\engine\translators\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\HungerDamageCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\HungerClock_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
