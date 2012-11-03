@@ -1135,6 +1135,9 @@
     <ClCompile Include="world\tiles\source\Tile.cpp" />
     <ClCompile Include="world\tiles\source\TileFactory.cpp" />
     <ClCompile Include="world\tiles\source\TreeTile.cpp" />
+    <ClCompile Include="world\tiles\source\unit_tests\BarracksTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\BeachTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

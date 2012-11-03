@@ -35,7 +35,7 @@ void CreatureHungerTimer::apply_hunger_damage_if_appropriate(CreaturePtr creatur
   {
     HungerClock& hunger_clock = creature->get_hunger_clock_ref();
 
-    if (hunger_clock.is_dead())
+    if (hunger_clock.is_dying())
     {
       string hunger_message_sid = ActionTextKeys::ACTION_PLAYER_STARVING_TO_DEATH;
 

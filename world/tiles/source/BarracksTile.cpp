@@ -19,3 +19,7 @@ ClassIdentifier BarracksTile::internal_class_identifier() const
 {
   return CLASS_ID_BARRACKS_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/BarracksTile_test.cpp"
+#endif
