@@ -30,3 +30,7 @@ ClassIdentifier ChurchTile::internal_class_identifier() const
 {
   return CLASS_ID_CHURCH_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ChurchTile_test.cpp"
+#endif

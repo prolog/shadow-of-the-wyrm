@@ -19,3 +19,7 @@ ClassIdentifier LibraryTile::internal_class_identifier() const
 {
   return CLASS_ID_LIBRARY_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/LibraryTile_test.cpp"
+#endif

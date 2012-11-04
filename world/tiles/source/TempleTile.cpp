@@ -30,3 +30,7 @@ ClassIdentifier TempleTile::internal_class_identifier() const
 {
   return CLASS_ID_TEMPLE_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/TempleTile_test.cpp"
+#endif

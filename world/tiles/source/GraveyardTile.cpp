@@ -19,3 +19,7 @@ ClassIdentifier GraveyardTile::internal_class_identifier() const
 {
   return CLASS_ID_GRAVEYARD_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/GraveyardTile_test.cpp"
+#endif

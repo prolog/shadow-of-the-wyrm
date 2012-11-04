@@ -30,3 +30,7 @@ ClassIdentifier SiteOfDeathTile::internal_class_identifier() const
 {
   return CLASS_ID_SITE_OF_DEATH_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/SiteOfDeathTile_test.cpp"
+#endif

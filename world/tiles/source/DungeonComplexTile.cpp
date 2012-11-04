@@ -20,3 +20,7 @@ ClassIdentifier DungeonComplexTile::internal_class_identifier() const
 {
   return CLASS_ID_DUNGEON_COMPLEX_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/DungeonComplexTile_test.cpp"
+#endif
