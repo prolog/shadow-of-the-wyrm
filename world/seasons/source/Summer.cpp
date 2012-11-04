@@ -54,3 +54,8 @@ ClassIdentifier Summer::internal_class_identifier() const
 {
   return CLASS_ID_SUMMER;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Summer_test.cpp"
+#endif
+

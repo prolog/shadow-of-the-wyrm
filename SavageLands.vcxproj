@@ -948,6 +948,15 @@
     <ClCompile Include="engine\time\source\SwimmingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp" />
     <ClCompile Include="engine\time\source\TimeObserverFactory.cpp" />
+    <ClCompile Include="engine\time\source\unit_tests\CreatureTimeObserver_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\SeasonsTimeObserver_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\WorldTimeKeeper_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\time\source\WorldTimeKeeper.cpp" />
     <ClCompile Include="engine\time\source\WorldTimeKeeperCoordinator.cpp" />
     <ClCompile Include="engine\translators\source\CreatureTranslator.cpp" />
@@ -1024,6 +1033,18 @@
     <ClCompile Include="world\seasons\source\SeasonFactory.cpp" />
     <ClCompile Include="world\seasons\source\Spring.cpp" />
     <ClCompile Include="world\seasons\source\Summer.cpp" />
+    <ClCompile Include="world\seasons\source\unit_tests\Autumn_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\unit_tests\Spring_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\unit_tests\Summer_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\unit_tests\Winter_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\seasons\source\Winter.cpp" />
     <ClCompile Include="world\source\AgeInfo.cpp" />
     <ClCompile Include="world\source\Alignment.cpp" />
@@ -1071,6 +1092,9 @@
     <ClCompile Include="world\source\Statistic.cpp" />
     <ClCompile Include="world\source\StatisticsModifier.cpp" />
     <ClCompile Include="world\source\ThreatRatings.cpp" />
+    <ClCompile Include="world\source\unit_tests\Calendar_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\source\unit_tests\Creature_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -1090,6 +1114,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Statistic_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\World_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\Wand.cpp" />

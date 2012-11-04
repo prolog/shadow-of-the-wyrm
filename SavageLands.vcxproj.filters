@@ -463,6 +463,12 @@
     <Filter Include="Source Files\engine\commands\select_tile\source\unit_tests">
       <UniqueIdentifier>{2e0f55ba-e075-4190-a615-e6d9dff11380}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\world\seasons\source\unit_tests">
+      <UniqueIdentifier>{67a1fc13-cd50-489e-acd4-5cfbc97686dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\time\source\unit_tests">
+      <UniqueIdentifier>{9c30714c-a5dd-4fa9-8528-6b5f590983e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -3592,6 +3598,33 @@
     </ClCompile>
     <ClCompile Include="engine\commands\select_tile\source\unit_tests\TileSelectionCommandFactory_test.cpp">
       <Filter>Source Files\engine\commands\select_tile\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Calendar_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\World_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\unit_tests\Autumn_test.cpp">
+      <Filter>Source Files\world\seasons\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\unit_tests\Spring_test.cpp">
+      <Filter>Source Files\world\seasons\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\unit_tests\Summer_test.cpp">
+      <Filter>Source Files\world\seasons\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\seasons\source\unit_tests\Winter_test.cpp">
+      <Filter>Source Files\world\seasons\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\WorldTimeKeeper_test.cpp">
+      <Filter>Source Files\engine\time\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\CreatureTimeObserver_test.cpp">
+      <Filter>Source Files\engine\time\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\SeasonsTimeObserver_test.cpp">
+      <Filter>Source Files\engine\time\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
