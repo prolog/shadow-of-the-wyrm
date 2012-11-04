@@ -89,3 +89,7 @@ ClassIdentifier ActionCost::internal_class_identifier() const
 {
   return CLASS_ID_ACTION_COST;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ActionCost_test.cpp"
+#endif

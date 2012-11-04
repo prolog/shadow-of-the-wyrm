@@ -70,3 +70,8 @@ ClassIdentifier TileSelectionKeyboardCommandMap::internal_class_identifier() con
 {
   return CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/TileSelectionKeyboardCommandMap_test.cpp"
+#endif
+

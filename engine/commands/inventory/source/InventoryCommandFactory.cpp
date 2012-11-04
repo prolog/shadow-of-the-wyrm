@@ -61,3 +61,7 @@ ClassIdentifier InventoryCommandFactory::internal_class_identifier() const
 {
   return CLASS_ID_INVENTORY_COMMAND_FACTORY;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/InventoryCommandFactory_test.cpp"
+#endif

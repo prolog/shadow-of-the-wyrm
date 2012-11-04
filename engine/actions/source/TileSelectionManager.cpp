@@ -287,3 +287,8 @@ ClassIdentifier TileSelectionManager::internal_class_identifier() const
 {
   return CLASS_ID_TILE_SELECTION_MANAGER;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/TileSelectionManager_test.cpp"
+#endif
+

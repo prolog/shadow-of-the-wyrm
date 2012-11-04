@@ -451,6 +451,18 @@
     <Filter Include="Source Files\source">
       <UniqueIdentifier>{c113b40f-ffc0-48b4-9799-6ebc117fc9e1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\commands\source\unit_tests">
+      <UniqueIdentifier>{316f386c-54ae-4f9f-8f83-e5d3f1833824}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\equipment\source\unit_tests">
+      <UniqueIdentifier>{4b5252ab-db31-497b-913a-e78224ee7c70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\inventory\source\unit_tests">
+      <UniqueIdentifier>{7f4e8896-1d31-4b3b-8860-9de2eecda730}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\select_tile\source\unit_tests">
+      <UniqueIdentifier>{2e0f55ba-e075-4190-a615-e6d9dff11380}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -3538,6 +3550,48 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\BarracksTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\Game_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\CastleTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\ChurchTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\DungeonComplexTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\GraveyardTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\KeepTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\LibraryTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SiteOfDeathTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TempleTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\CursesDisplay_test.cpp">
+      <Filter>Source Files\display\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\unit_tests\CommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\equipment\source\unit_tests\EquipmentCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\equipment\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\inventory\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\unit_tests\TileSelectionCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
