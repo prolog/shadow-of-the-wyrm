@@ -82,6 +82,7 @@ class Game : public ISerializable
     friend class TileSelectionCommandProcessor;
     friend class SeasonsTimeObserver;
     friend class TileSelectionManager;
+    friend class SL_Engine_Game; // unit testing
 
     Game();
     virtual ~Game();

@@ -86,3 +86,6 @@ ClassIdentifier EquipmentCommandFactory::internal_class_identifier() const
   return CLASS_ID_EQUIPMENT_COMMAND_FACTORY;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/EquipmentCommandFactory_test.cpp"
+#endif

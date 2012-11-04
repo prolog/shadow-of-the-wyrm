@@ -160,3 +160,8 @@ ClassIdentifier ActionCoordinator::internal_class_identifier() const
 {
   return CLASS_ID_ACTION_COORDINATOR;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ActionCoordinator_test.cpp"
+#endif
+

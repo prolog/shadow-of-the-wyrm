@@ -87,3 +87,6 @@ ClassIdentifier EquipmentKeyboardCommandMap::internal_class_identifier() const
   return CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/EquipmentKeyboardCommandMap_test.cpp"
+#endif

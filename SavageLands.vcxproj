@@ -595,6 +595,9 @@
     <ClCompile Include="display\source\CursesMenuWrapper.cpp" />
     <ClCompile Include="display\source\CursesPromptProcessor.cpp" />
     <ClCompile Include="display\source\CursesUtils.cpp" />
+    <ClCompile Include="display\source\unit_tests\CursesDisplay_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -704,11 +707,17 @@
     <ClCompile Include="engine\commands\equipment\source\EquipmentCommandProcessor.cpp" />
     <ClCompile Include="engine\commands\equipment\source\EquipmentCommands.cpp" />
     <ClCompile Include="engine\commands\equipment\source\EquipmentKeyboardCommandMap.cpp" />
+    <ClCompile Include="engine\commands\equipment\source\unit_tests\EquipmentCommandFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\commands\inventory\source\InventoryCommandFactory.cpp" />
     <ClCompile Include="engine\commands\inventory\source\InventoryCommandKeys.cpp" />
     <ClCompile Include="engine\commands\inventory\source\InventoryCommandProcessor.cpp" />
     <ClCompile Include="engine\commands\inventory\source\InventoryCommands.cpp" />
     <ClCompile Include="engine\commands\inventory\source\InventoryKeyboardCommandMap.cpp" />
+    <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryCommandFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\commands\select_tile\source\FireWeaponTileSelectionKeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommandFactory.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp" />
@@ -716,6 +725,9 @@
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommands.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionKeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionRangeChecker.cpp" />
+    <ClCompile Include="engine\commands\select_tile\source\unit_tests\TileSelectionCommandFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\commands\source\Command.cpp" />
     <ClCompile Include="engine\commands\source\CommandFactory.cpp" />
     <ClCompile Include="engine\commands\source\CommandFactoryFactory.cpp" />
@@ -724,6 +736,9 @@
     <ClCompile Include="engine\commands\source\Commands.cpp" />
     <ClCompile Include="engine\commands\source\KeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\source\KeyboardCommandMapFactory.cpp" />
+    <ClCompile Include="engine\commands\source\unit_tests\CommandFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\conversion\source\CharacterDumper.cpp" />
     <ClCompile Include="engine\conversion\source\Conversion.cpp" />
     <ClCompile Include="engine\conversion\source\EquipmentDumper.cpp" />
@@ -897,6 +912,9 @@
     <ClCompile Include="engine\source\StringConstants.cpp" />
     <ClCompile Include="engine\source\StringTable.cpp" />
     <ClCompile Include="engine\source\unit_tests\CreatureFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\Game_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\MapUtils_test.cpp">
@@ -1147,7 +1165,13 @@
     <ClCompile Include="world\tiles\source\unit_tests\CairnTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\CastleTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\CavernTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\ChurchTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\DaisTile_test.cpp">
@@ -1157,6 +1181,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\DownStaircaseTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\DungeonComplexTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\DungeonTile_test.cpp">
@@ -1171,7 +1198,16 @@
     <ClCompile Include="world\tiles\source\unit_tests\GraveTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\GraveyardTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\HillsTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\KeepTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\LibraryTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\MarshTile_test.cpp">
@@ -1201,10 +1237,16 @@
     <ClCompile Include="world\tiles\source\unit_tests\ShoalsTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\SiteOfDeathTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\SpringsTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\StaircaseTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TempleTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\Tile_test.cpp">

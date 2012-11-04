@@ -805,3 +805,7 @@ ClassIdentifier CursesDisplay::internal_class_identifier() const
 {
   return CLASS_ID_CURSES_DISPLAY;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CursesDisplay_test.cpp"
+#endif

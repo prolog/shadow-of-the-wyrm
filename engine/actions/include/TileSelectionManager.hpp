@@ -40,6 +40,7 @@ class TileSelectionManager : public IActionManager, ISerializable
   protected:
     friend class ActionManager;
     friend class RangedCombatActionManager;
+    friend class SL_Engine_Actions_TileSelectionManager; // test fixture
     TileSelectionManager();
 
     ActionCostValue get_action_cost_value() const;

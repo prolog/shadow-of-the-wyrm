@@ -7,7 +7,7 @@
 
 typedef std::multimap<ActionCost, std::string> CreatureActionMultimap;
 
-class ActionCoordinator
+class ActionCoordinator : public ISerializable
 {
   public:
     void set(const std::map<std::string, CreaturePtr>& creatures);

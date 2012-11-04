@@ -6,7 +6,7 @@
 
 class MapRegistry;
 
-class World
+class World : public ISerializable
 {
   public:
     World();

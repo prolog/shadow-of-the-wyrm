@@ -519,3 +519,7 @@ ClassIdentifier Game::internal_class_identifier() const
 {
   return CLASS_ID_GAME;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Game_test.cpp"
+#endif

@@ -385,3 +385,8 @@ ClassIdentifier ActionManager::internal_class_identifier() const
 {
   return CLASS_ID_ACTION_MANAGER;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ActionManager_test.cpp"
+#endif
+

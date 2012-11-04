@@ -53,3 +53,7 @@ ClassIdentifier World::internal_class_identifier() const
 {
   return CLASS_ID_WORLD;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/World_test.cpp"
+#endif
