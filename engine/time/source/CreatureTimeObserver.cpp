@@ -112,3 +112,8 @@ ClassIdentifier CreatureTimeObserver::internal_class_identifier() const
 {
   return CLASS_ID_CREATURE_TIME_OBSERVER;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CreatureTimeObserver_test.cpp"
+#endif
+

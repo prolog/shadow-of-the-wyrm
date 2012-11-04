@@ -54,3 +54,8 @@ ClassIdentifier Winter::internal_class_identifier() const
 {
   return CLASS_ID_WINTER;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Winter_test.cpp"
+#endif
+

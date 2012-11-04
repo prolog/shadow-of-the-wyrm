@@ -92,3 +92,8 @@ ClassIdentifier Calendar::internal_class_identifier() const
 {
   return CLASS_ID_CALENDAR;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Calendar_test.cpp"
+#endif
+

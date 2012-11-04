@@ -54,3 +54,8 @@ ClassIdentifier Spring::internal_class_identifier() const
 {
   return CLASS_ID_SPRING;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Spring_test.cpp"
+#endif
+

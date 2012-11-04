@@ -48,3 +48,8 @@ ClassIdentifier SeasonsTimeObserver::internal_class_identifier() const
 {
   return CLASS_ID_SEASONS_TIME_OBSERVER;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/SeasonsTimeObserver_test.cpp"
+#endif
+
