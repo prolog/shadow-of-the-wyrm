@@ -19,3 +19,7 @@ ClassIdentifier KeepTile::internal_class_identifier() const
 {
   return CLASS_ID_KEEP_TILE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/KeepTile_test.cpp"
+#endif
