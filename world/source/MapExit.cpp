@@ -62,3 +62,8 @@ ClassIdentifier MapExit::internal_class_identifier() const
 {
   return CLASS_ID_MAP_EXIT;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MapExit_test.cpp"
+#endif
+

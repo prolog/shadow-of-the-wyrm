@@ -75,3 +75,8 @@ ClassIdentifier Depth::internal_class_identifier() const
 {
   return CLASS_ID_DEPTH;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Depth_test.cpp"
+#endif
+

@@ -1,6 +1,6 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Dimensions, DefaultDimensions)
+TEST(SL_World_Dimensions, DefaultDimensions)
 {
   Dimensions dimensions;
 
@@ -14,7 +14,7 @@ TEST(SL_Engine_Dimensions, DefaultDimensions)
   EXPECT_EQ(EXPECTED_X, x);
 }
 
-TEST(SL_Engine_Dimensions, Accessors)
+TEST(SL_World_Dimensions, Accessors)
 {
   Dimensions dimensions;
 
@@ -25,5 +25,10 @@ TEST(SL_Engine_Dimensions, Accessors)
   EXPECT_EQ(2, dimensions.get_y());
 }
 
+TEST(SL_World_Dimensions, serialization_id)
+{
+  Dimensions dim;
 
+  EXPECT_EQ(CLASS_ID_DIMENSIONS, dim.get_class_identifier());
+}
 
