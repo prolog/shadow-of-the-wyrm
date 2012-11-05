@@ -6,6 +6,7 @@ class SL_Engine_Map : public ::testing::Test
   public:
     string make_key(const Coordinate& c);
     Coordinate convert_map_key_to_coordinate(const string &s);
+    ClassIdentifier get_class_identifier();
     
     MapPtr make_map() const;
 };
@@ -19,9 +20,14 @@ string SL_Engine_Map::make_key(const Coordinate& c)
 
 Coordinate SL_Engine_Map::convert_map_key_to_coordinate(const string& key)
 {
+  return MapUtils::convert_map_key_to_coordinate(key);
+}
+
+ClassIdentifier SL_Engine_Map::get_class_identifier()
+{
   MapPtr map = make_map();
 
-  return MapUtils::convert_map_key_to_coordinate(key);
+  return map->get_class_identifier();
 }
 
 MapPtr SL_Engine_Map::make_map() const
@@ -56,5 +62,10 @@ TEST_F(SL_Engine_Map, key_to_coordinate)
 
   EXPECT_EQ(c.first, 18);
   EXPECT_EQ(c.second, 67);
+}
+
+TEST_F(SL_Engine_Map, serialization_id)
+{
+  EXPECT_EQ(CLASS_ID_MAP, get_class_identifier());
 }
 

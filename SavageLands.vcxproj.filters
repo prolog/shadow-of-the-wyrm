@@ -3626,5 +3626,14 @@
     <ClCompile Include="engine\time\source\unit_tests\SeasonsTimeObserver_test.cpp">
       <Filter>Source Files\engine\time\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\MapRegistry_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Depth_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\MapExit_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -100,3 +100,8 @@ ClassIdentifier MapRegistry::internal_class_identifier() const
 {
   return CLASS_ID_MAP_REGISTRY;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MapRegistry_test.cpp"
+#endif
+
