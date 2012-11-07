@@ -14,3 +14,10 @@ TEST(SL_World_Tiles_GraveyardTile, tile_description_sid)
   EXPECT_EQ(TileTextKeys::TILE_DESC_GRAVEYARD, graveyard_tile.get_tile_description_sid());
 }
 
+TEST(SL_World_Tiles_GraveyardTile, serialization_id)
+{
+  GraveyardTile graveyard_tile;
+
+  EXPECT_EQ(CLASS_ID_GRAVEYARD_TILE, graveyard_tile.get_class_identifier());
+}
+

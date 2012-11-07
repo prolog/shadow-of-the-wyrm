@@ -2,15 +2,23 @@
 
 TEST(SL_World_Tiles_DungeonComplexTile, type_is_TILE_TYPE_DUNGEON_COMPLEX)
 {
-  DungeonComplexTile castle_tile;
+  DungeonComplexTile dungeon_complex_tile;
 
-  EXPECT_EQ(TILE_TYPE_DUNGEON_COMPLEX, castle_tile.get_tile_type());
+  EXPECT_EQ(TILE_TYPE_DUNGEON_COMPLEX, dungeon_complex_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_DungeonComplexTile, tile_description_sid)
 {
-  DungeonComplexTile castle_tile;
+  DungeonComplexTile dungeon_complex_tile;
 
-  EXPECT_EQ(TileTextKeys::TILE_DESC_DUNGEON_COMPLEX, castle_tile.get_tile_description_sid());
+  EXPECT_EQ(TileTextKeys::TILE_DESC_DUNGEON_COMPLEX, dungeon_complex_tile.get_tile_description_sid());
 }
+
+TEST(SL_World_Tiles_DungeonComplexTile, serialization_id)
+{
+  DungeonComplexTile dungeon_complex_tile;
+
+  EXPECT_EQ(CLASS_ID_DUNGEON_COMPLEX_TILE, dungeon_complex_tile.get_class_identifier());
+}
+
 

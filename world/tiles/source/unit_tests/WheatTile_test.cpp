@@ -6,3 +6,11 @@ TEST(SL_World_Tiles_WheatTile, type_is_TILE_TYPE_WHEAT)
 
   EXPECT_EQ(TILE_TYPE_WHEAT, wheat_tile.get_tile_type());
 }
+
+TEST(SL_World_Tiles_WheatTile, serialization_id)
+{
+  WheatTile wheat_tile;
+
+  EXPECT_EQ(CLASS_ID_WHEAT_TILE, wheat_tile.get_class_identifier());
+}
+

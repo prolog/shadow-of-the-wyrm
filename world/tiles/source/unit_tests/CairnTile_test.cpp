@@ -6,3 +6,11 @@ TEST(SL_World_Tiles_CairnTile, type_is_TILE_TYPE_CAIRN)
 
   EXPECT_EQ(TILE_TYPE_CAIRN, cairn_tile.get_tile_type());
 }
+
+TEST(SL_World_Tiles_CairnTile, serialization_id)
+{
+  CairnTile cairn_tile;
+
+  EXPECT_EQ(CLASS_ID_CAIRN_TILE, cairn_tile.get_class_identifier());
+}
+

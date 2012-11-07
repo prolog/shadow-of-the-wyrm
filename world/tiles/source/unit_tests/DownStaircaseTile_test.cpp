@@ -13,3 +13,11 @@ TEST(SL_World_Tiles_DownStaircaseTile, staircase_type)
 
   EXPECT_EQ(STAIRCASE_DOWN, dst.get_staircase_type());
 }
+
+TEST(SL_World_Tiles_DownStaircaseTile, serialization_id)
+{
+  DownStaircaseTile dst;
+
+  EXPECT_EQ(CLASS_ID_DOWN_STAIRCASE_TILE, dst.get_class_identifier());
+}
+

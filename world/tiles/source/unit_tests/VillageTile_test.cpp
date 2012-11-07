@@ -28,3 +28,11 @@ TEST(SL_World_Tiles_VillageTile, village_race)
 
   EXPECT_EQ("robot_monkeys", village_tile.get_village_race_id());
 }
+
+TEST(SL_World_Tiles_VillageTile, serialization_id)
+{
+  VillageTile village_tile;
+
+  EXPECT_EQ(CLASS_ID_VILLAGE_TILE, village_tile.get_class_identifier());
+}
+

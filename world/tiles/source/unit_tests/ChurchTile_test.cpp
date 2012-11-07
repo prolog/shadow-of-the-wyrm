@@ -24,3 +24,11 @@ TEST(SL_World_Tiles_ChurchTile, worship_site_deity_id)
 
   EXPECT_EQ("test", church_tile.get_deity_id());
 }
+
+TEST(SL_World_Tiles_ChurchTile, serialization_id)
+{
+  ChurchTile church_tile;
+
+  EXPECT_EQ(CLASS_ID_CHURCH_TILE, church_tile.get_class_identifier());
+}
+

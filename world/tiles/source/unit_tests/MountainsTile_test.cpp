@@ -6,3 +6,11 @@ TEST(SL_World_Tiles_MountainsTile, type_is_TILE_TYPE_MOUNTAINS)
 
   EXPECT_EQ(TILE_TYPE_MOUNTAINS, mountains_tile.get_tile_type());
 }
+
+TEST(SL_World_Tiles_MountainsTile, serialization_id)
+{
+  MountainsTile mountains_tile;
+
+  EXPECT_EQ(CLASS_ID_MOUNTAINS_TILE, mountains_tile.get_class_identifier());
+}
+
