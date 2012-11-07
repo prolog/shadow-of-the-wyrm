@@ -6,3 +6,10 @@ TEST(SL_World_Tiles_ReedsTile, type_is_TILE_TYPE_REEDS)
 
   EXPECT_EQ(TILE_TYPE_REEDS, reeds_tile.get_tile_type());
 }
+
+TEST(SL_World_Tiles_ReedsTile, serialization_id)
+{
+  ReedsTile reeds_tile;
+
+  EXPECT_EQ(CLASS_ID_REEDS_TILE, reeds_tile.get_class_identifier());
+}

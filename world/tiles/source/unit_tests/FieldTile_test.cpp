@@ -6,3 +6,11 @@ TEST(SL_World_Tiles_FieldTile, type_is_TILE_TYPE_FIELD)
 
   EXPECT_EQ(TILE_TYPE_FIELD, field_tile.get_tile_type());
 }
+
+TEST(SL_World_Tiles_FieldTile, serialization_id)
+{
+  FieldTile field_tile;
+
+  EXPECT_EQ(CLASS_ID_FIELD_TILE, field_tile.get_class_identifier());
+}
+

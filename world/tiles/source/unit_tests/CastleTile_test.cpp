@@ -14,3 +14,10 @@ TEST(SL_World_Tiles_CastleTile, tile_description_sid)
   EXPECT_EQ(TileTextKeys::TILE_DESC_CASTLE, castle_tile.get_tile_description_sid());
 }
 
+TEST(SL_World_Tiles_CastleTile, serialization_id)
+{
+  CastleTile castle_tile;
+
+  EXPECT_EQ(CLASS_ID_CASTLE_TILE, castle_tile.get_class_identifier());
+}
+

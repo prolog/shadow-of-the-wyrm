@@ -14,3 +14,10 @@ TEST(SL_World_Tiles_SiteOfDeathTile, tile_description_sid)
   EXPECT_EQ(TileTextKeys::TILE_DESC_SITE_OF_DEATH, site_of_death_tile.get_tile_description_sid());
 }
 
+TEST(SL_World_Tiles_SiteOfDeathTile, serialization_id)
+{
+  SiteOfDeathTile site_of_death_tile;
+
+  EXPECT_EQ(CLASS_ID_SITE_OF_DEATH_TILE, site_of_death_tile.get_class_identifier());
+}
+
