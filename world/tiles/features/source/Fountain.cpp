@@ -33,3 +33,8 @@ ClassIdentifier Fountain::internal_class_identifier() const
 {
   return CLASS_ID_FOUNTAIN;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Fountain_test.cpp"
+#endif
+

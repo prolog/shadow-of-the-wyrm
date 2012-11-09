@@ -30,3 +30,8 @@ ClassIdentifier Bench::internal_class_identifier() const
 {
   return CLASS_ID_BENCH;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Bench_test.cpp"
+#endif
+

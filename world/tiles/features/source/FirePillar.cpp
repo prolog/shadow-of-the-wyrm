@@ -38,3 +38,8 @@ ClassIdentifier FirePillar::internal_class_identifier() const
   return CLASS_ID_FIRE_PILLAR;
 }
 // FIXME: Still need to add lit/unlit state.
+
+#ifdef UNIT_TESTS
+#include "unit_tests/FirePillar_test.cpp"
+#endif
+

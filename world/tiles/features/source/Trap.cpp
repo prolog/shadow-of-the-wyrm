@@ -20,3 +20,8 @@ ClassIdentifier Trap::internal_class_identifier() const
 {
   return CLASS_ID_TRAP;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Trap_test.cpp"
+#endif
+

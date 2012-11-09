@@ -20,6 +20,9 @@ class Entrance : public Feature
 
     virtual bool can_open() const;
     
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
+
   protected:
     LockPtr lock;
     EntranceState state;

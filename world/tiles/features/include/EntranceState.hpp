@@ -1,8 +1,9 @@
 #pragma once
 #include "common.hpp"
 #include "EntranceTypes.hpp"
+#include "ISerializable.hpp"
 
-class EntranceState
+class EntranceState : public ISerializable
 {
   public:
     EntranceState();
@@ -12,7 +13,13 @@ class EntranceState
     EntranceStateType get_state() const;
     
     uchar get_symbol() const;
+
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
     
   protected:
     EntranceStateType state;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };

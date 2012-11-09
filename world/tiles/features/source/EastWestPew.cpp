@@ -16,3 +16,8 @@ ClassIdentifier EastWestPew::internal_class_identifier() const
 {
   return CLASS_ID_EAST_WEST_PEW;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/EastWestPew_test.cpp"
+#endif
+

@@ -469,6 +469,9 @@
     <Filter Include="Source Files\engine\time\source\unit_tests">
       <UniqueIdentifier>{9c30714c-a5dd-4fa9-8528-6b5f590983e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\world\tiles\features\source\unit_tests">
+      <UniqueIdentifier>{9fe99958-a14f-4bd8-a914-8dc77b5b30f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -3634,6 +3637,39 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\MapExit_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\AllAltars_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\AllEntrances_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Bench_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\DecorativeStatues_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Pew_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\EastWestPew_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\EntranceState_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\FirePillar_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Fountain_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Lock_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Trap_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

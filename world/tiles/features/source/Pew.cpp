@@ -35,3 +35,8 @@ ClassIdentifier Pew::internal_class_identifier() const
 {
   return CLASS_ID_PEW;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Pew_test.cpp"
+#endif
+
