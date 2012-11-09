@@ -1,4 +1,7 @@
 #include "EntranceState.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 EntranceState::EntranceState()
 : state(ENTRANCE_TYPE_OPEN)
@@ -40,3 +43,27 @@ uchar EntranceState::get_symbol() const
   
   return symbol;
 }
+
+bool EntranceState::serialize(ostream& stream)
+{
+  Serialize::write_enum(stream, state);
+  
+  return true;
+}
+
+bool EntranceState::deserialize(istream& stream)
+{
+  Serialize::read_enum(stream, state);
+
+  return true;
+}
+
+ClassIdentifier EntranceState::internal_class_identifier() const
+{
+  return CLASS_ID_ENTRANCE_STATE;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/EntranceState_test.cpp"
+#endif
+

@@ -17,3 +17,7 @@ ClassIdentifier Lock::internal_class_identifier() const
   return CLASS_ID_LOCK;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Lock_test.cpp"
+#endif
+

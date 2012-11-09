@@ -8,6 +8,11 @@ Altar::Altar(const std::string& new_deity_id, const MaterialType new_material)
 {
 }
 
+string Altar::get_deity_id() const
+{
+  return deity_id;
+}
+
 bool Altar::can_offer() const
 {
   return true;
@@ -55,3 +60,8 @@ ClassIdentifier Altar::internal_class_identifier() const
 {
   return CLASS_ID_ALTAR;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/AllAltars_test.cpp"
+#endif
+

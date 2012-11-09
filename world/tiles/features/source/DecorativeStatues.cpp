@@ -129,3 +129,8 @@ ClassIdentifier SorcerorDecorativeStatue::internal_class_identifier() const
 {
   return CLASS_ID_SORCEROR_DECORATIVE_STATUE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/DecorativeStatues_test.cpp"
+#endif
+

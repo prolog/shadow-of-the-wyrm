@@ -12,6 +12,8 @@ class Altar : public Feature
     virtual bool handle();
     virtual bool kick();
     virtual bool offer();
+
+    virtual std::string get_deity_id() const;
     
     virtual uchar get_symbol() const;
 
