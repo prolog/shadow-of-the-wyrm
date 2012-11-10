@@ -4,7 +4,7 @@
 // Contains information related to the user, version, compiler,
 // architecture, and other details that are not actually game data,
 // but which need to be checked and serialized.
-class Metadata
+class Metadata : public ISerializable
 {
   public:
     std::string get_user_name() const;

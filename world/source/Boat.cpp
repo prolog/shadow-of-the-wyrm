@@ -19,3 +19,8 @@ ClassIdentifier Boat::internal_class_identifier() const
 {
   return CLASS_ID_BOAT;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Boat_test.cpp"
+#endif
+

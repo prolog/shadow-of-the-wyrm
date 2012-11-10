@@ -32,3 +32,8 @@ ClassIdentifier Food::internal_class_identifier() const
 {
   return CLASS_ID_FOOD;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Food_test.cpp"
+#endif
+

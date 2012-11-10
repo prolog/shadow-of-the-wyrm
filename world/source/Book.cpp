@@ -24,3 +24,8 @@ ClassIdentifier Book::internal_class_identifier() const
 {
   return CLASS_ID_BOOK;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Book_test.cpp"
+#endif
+

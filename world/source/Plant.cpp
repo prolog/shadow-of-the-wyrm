@@ -32,3 +32,8 @@ ClassIdentifier Plant::internal_class_identifier() const
 {
   return CLASS_ID_PLANT;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Plant_test.cpp"
+#endif
+

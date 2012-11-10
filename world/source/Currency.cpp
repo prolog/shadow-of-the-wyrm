@@ -20,3 +20,7 @@ ClassIdentifier Currency::internal_class_identifier() const
   return CLASS_ID_CURRENCY;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Currency_test.cpp"
+#endif
+

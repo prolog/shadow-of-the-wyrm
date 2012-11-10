@@ -26,3 +26,8 @@ ClassIdentifier Potion::internal_class_identifier() const
 {
   return CLASS_ID_POTION;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Potion_test.cpp"
+#endif
+
