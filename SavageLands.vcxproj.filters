@@ -478,6 +478,9 @@
     <Filter Include="Source Files\world\religion\source\unit_tests">
       <UniqueIdentifier>{98e27bda-62b4-49af-9b8e-ed9ff5489318}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\actions\source\unit_tests">
+      <UniqueIdentifier>{7a06959b-480a-4d30-83e5-c1bc0481620e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -3760,6 +3763,18 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Weight_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\ActionCoordinator_test.cpp">
+      <Filter>Source Files\engine\actions\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\ActionCost_test.cpp">
+      <Filter>Source Files\engine\actions\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\ActionManager_test.cpp">
+      <Filter>Source Files\engine\actions\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\TileSelectionManager_test.cpp">
+      <Filter>Source Files\engine\actions\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

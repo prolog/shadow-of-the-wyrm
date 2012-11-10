@@ -4,6 +4,16 @@
 
 using namespace std;
 
+bool ActionCoordinator::operator==(const ActionCoordinator& ac)
+{
+  bool result = true;
+
+  result = result && (creature_action_order == ac.creature_action_order);
+  result = result && (current_map_id == ac.current_map_id);
+
+  return result;
+}
+
 // If the new map ID is different than the current one, then clear the action coordinator, rebuild it, and set the
 // current ID to the new ID.
 bool ActionCoordinator::reset_if_necessary(const string& new_map_id, const map<string, CreaturePtr>& map_creatures)

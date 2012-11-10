@@ -32,6 +32,34 @@ can_use_colour(false)
 {
 }
 
+bool CursesDisplay::operator==(const CursesDisplay& cd)
+{
+  bool result = true;
+
+  result = result && (TERMINAL_MAX_ROWS == cd.TERMINAL_MAX_ROWS);
+  result = result && (TERMINAL_MAX_COLS == cd.TERMINAL_MAX_COLS);
+  result = result && (FIELD_SPACE == cd.FIELD_SPACE);
+  result = result && (MSG_BUFFER_LAST_Y == cd.MSG_BUFFER_LAST_Y);
+  result = result && (MSG_BUFFER_LAST_X == cd.MSG_BUFFER_LAST_X);
+  result = result && (menus.size() == cd.menus.size());
+
+  if (result)
+  {
+    for (uint i = 0; i < menus.size(); i++)
+    {
+      WINDOW* menu = menus.at(i);
+      WINDOW* cd_menu = cd.menus.at(i);
+
+      result = result && menu && cd_menu && (memcmp(menu, cd_menu, sizeof(menu)) == 0);
+    }
+  }
+
+  result = result && (prompt_processor == cd.prompt_processor);
+  result = result && (can_use_colour == cd.can_use_colour);
+
+  return result;
+}
+
 // Create a menu and return it.
 WINDOW* CursesDisplay::create_menu(int height, int width, int start_row, int start_col)
 {

@@ -16,6 +16,8 @@ class CursesDisplay : public Display
 {
   public:
     CursesDisplay();
+    bool operator==(const CursesDisplay& cd);
+
 	  bool create();
 	  void tear_down();
 
@@ -51,6 +53,8 @@ class CursesDisplay : public Display
     ClassIdentifier internal_class_identifier() const;
 
   protected:
+    friend class SL_Display_CursesDisplayFixture; // test fixture
+
     bool uses_colour() const;
 
     // Setup colours the way ncurses requires.

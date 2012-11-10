@@ -2,8 +2,7 @@
 #include "ActionCost.hpp"
 #include "Serialize.hpp"
 
-using std::ostringstream;
-using std::string;
+using namespace std;
 
 ActionCost::ActionCost()
 : cost(0)
@@ -69,7 +68,7 @@ string ActionCost::str() const
   return ss.str();
 }
 
-bool ActionCost::serialize(std::ostream& stream)
+bool ActionCost::serialize(ostream& stream)
 {
   Serialize::write_int(stream, cost);
   Serialize::write_bool(stream, turn_advanced);
@@ -77,7 +76,7 @@ bool ActionCost::serialize(std::ostream& stream)
   return true;
 }
 
-bool ActionCost::deserialize(std::istream& stream)
+bool ActionCost::deserialize(istream& stream)
 {
   Serialize::read_int(stream, cost);
   Serialize::read_bool(stream, turn_advanced);
