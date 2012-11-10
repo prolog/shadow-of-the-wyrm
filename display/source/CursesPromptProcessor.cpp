@@ -6,6 +6,12 @@
 
 using namespace std;
 
+bool CursesPromptProcessor::operator==(const CursesPromptProcessor& cpp)
+{
+  // Stateless, return true.
+  return true;
+}
+
 // JCD FIXME: Refactor.  Subclasses?  Split up into PromptReader/PromptWriter with applicable subclasses?
 string CursesPromptProcessor::get_prompt(WINDOW* window, const CursesMenuWrapper& menu_wrapper, PromptPtr prompt)
 {

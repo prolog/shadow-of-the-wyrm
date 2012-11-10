@@ -10,6 +10,8 @@ typedef std::multimap<ActionCost, std::string> CreatureActionMultimap;
 class ActionCoordinator : public ISerializable
 {
   public:
+    bool operator==(const ActionCoordinator& ac);
+
     void set(const std::map<std::string, CreaturePtr>& creatures);
     void add(const ActionCost& action_cost, const std::string& creature_id);
     void clear();
@@ -29,6 +31,8 @@ class ActionCoordinator : public ISerializable
     virtual bool deserialize(std::istream& stream);
 
   protected:
+    friend class SL_Engine_Actions_ActionCoordinatorFixture; // test fixture
+
     CreatureActionMultimap creature_action_order;
     std::string current_map_id;
 

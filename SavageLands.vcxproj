@@ -624,6 +624,18 @@
     <ClCompile Include="engine\actions\source\SearchActionManager.cpp" />
     <ClCompile Include="engine\actions\source\TileMovementConfirmation.cpp" />
     <ClCompile Include="engine\actions\source\TileSelectionManager.cpp" />
+    <ClCompile Include="engine\actions\source\unit_tests\ActionCoordinator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\ActionCost_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\ActionManager_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\TileSelectionManager_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\actions\source\VersionActionManager.cpp" />
     <ClCompile Include="engine\actions\source\WeaponInfoManager.cpp" />
     <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp" />
