@@ -95,3 +95,8 @@ ClassIdentifier Dice::internal_class_identifier() const
 {
   return CLASS_ID_DICE;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Dice_test.cpp"
+#endif
+

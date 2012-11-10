@@ -94,3 +94,8 @@ ClassIdentifier MovementAccumulation::internal_class_identifier() const
 {
   return CLASS_ID_MOVEMENT_ACCUMULATION;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MovementAccumulation_test.cpp"
+#endif
+

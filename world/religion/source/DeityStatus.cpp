@@ -84,3 +84,9 @@ ClassIdentifier DeityStatus::internal_class_identifier() const
 {
   return CLASS_ID_DEITY_STATUS;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/DeityStatus_test.cpp"
+#endif
+
+

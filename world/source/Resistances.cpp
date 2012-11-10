@@ -420,3 +420,9 @@ void Resistances::default_resistances()
   resistances.insert(make_pair(DAMAGE_TYPE_RADIANT, radiant));
   resistances.insert(make_pair(DAMAGE_TYPE_LIGHTNING, lightning));
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Resistances_test.cpp"
+#endif
+
+

@@ -771,6 +771,15 @@
     <ClCompile Include="engine\decision_strategies\source\MobileDecisionStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\source\NPCDecisionStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
+    <ClCompile Include="engine\decision_strategies\source\unit_tests\ImmobileDecisionStrategy_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\unit_tests\MobileDecisionStrategy_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\unit_tests\PlayerDecisionStrategy_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\description\source\CreatureDescriber.cpp" />
     <ClCompile Include="engine\description\source\DescriberFactory.cpp" />
     <ClCompile Include="engine\description\source\FeatureDescriber.cpp" />
@@ -1031,6 +1040,12 @@
     <ClCompile Include="world\religion\source\Religion.cpp" />
     <ClCompile Include="world\religion\source\ReligionConstants.cpp" />
     <ClCompile Include="world\religion\source\ReligionFactory.cpp" />
+    <ClCompile Include="world\religion\source\unit_tests\DeityStatus_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\unit_tests\Religion_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\seasons\source\Autumn.cpp" />
     <ClCompile Include="world\seasons\source\ISeason.cpp" />
     <ClCompile Include="world\seasons\source\SeasonFactory.cpp" />
@@ -1107,6 +1122,9 @@
     <ClCompile Include="world\source\unit_tests\Depth_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Dice_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\source\unit_tests\Dimensions_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -1116,13 +1134,22 @@
     <ClCompile Include="world\source\unit_tests\MapExit_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\MovementAccumulation_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\source\unit_tests\Race_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Resistances_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Skills_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Statistic_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\ThreatRatings_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\World_test.cpp">

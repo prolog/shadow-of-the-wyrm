@@ -472,6 +472,12 @@
     <Filter Include="Source Files\world\tiles\features\source\unit_tests">
       <UniqueIdentifier>{9fe99958-a14f-4bd8-a914-8dc77b5b30f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\decision_strategies\source\unit_tests">
+      <UniqueIdentifier>{2beca0ce-04a1-4bc5-bffb-a6210b785718}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\religion\source\unit_tests">
+      <UniqueIdentifier>{98e27bda-62b4-49af-9b8e-ed9ff5489318}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -3670,6 +3676,33 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Trap_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\unit_tests\ImmobileDecisionStrategy_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\unit_tests\MobileDecisionStrategy_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\unit_tests\PlayerDecisionStrategy_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Dice_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\ThreatRatings_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\MovementAccumulation_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\unit_tests\DeityStatus_test.cpp">
+      <Filter>Source Files\world\religion\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\unit_tests\Religion_test.cpp">
+      <Filter>Source Files\world\religion\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Resistances_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
