@@ -37,3 +37,11 @@ TEST(SL_World_Creature, strength)
   EXPECT_EQ(strength, c.get_strength().get_base());
   EXPECT_EQ(strength, c.get_strength().get_current());
 }
+
+TEST(SL_World_Creature, serialization_id)
+{
+  Creature c;
+
+  EXPECT_EQ(CLASS_ID_CREATURE, c.get_class_identifier());
+}
+

@@ -128,3 +128,9 @@ ClassIdentifier ThreatRatings::internal_class_identifier() const
 {
   return CLASS_ID_THREAT_RATINGS;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ThreatRatings_test.cpp"
+#endif
+
+

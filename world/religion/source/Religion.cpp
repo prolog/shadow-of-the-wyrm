@@ -101,3 +101,8 @@ ClassIdentifier Religion::internal_class_identifier() const
 {
   return CLASS_ID_RELIGION;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Religion_test.cpp"
+#endif
+

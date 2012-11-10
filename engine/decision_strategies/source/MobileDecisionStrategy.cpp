@@ -41,3 +41,8 @@ ClassIdentifier MobileDecisionStrategy::internal_class_identifier() const
 {
   return CLASS_ID_MOBILE_DECISION_STRATEGY;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MobileDecisionStrategy_test.cpp"
+#endif
+

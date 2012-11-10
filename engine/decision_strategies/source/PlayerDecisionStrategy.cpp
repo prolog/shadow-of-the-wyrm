@@ -100,3 +100,9 @@ ClassIdentifier PlayerDecisionStrategy::internal_class_identifier() const
 {
   return CLASS_ID_PLAYER_DECISION_STRATEGY;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/PlayerDecisionStrategy_test.cpp"
+#endif
+
+

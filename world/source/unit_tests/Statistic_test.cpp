@@ -33,3 +33,11 @@ TEST(SL_World_Statistic, CurrentValue)
 
   EXPECT_EQ(99, stat.get_current());
 }
+
+TEST(SL_World_Statistic, serialization_id)
+{
+  Statistic stat;
+
+  EXPECT_EQ(CLASS_ID_STATISTIC, stat.get_class_identifier());
+}
+
