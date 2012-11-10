@@ -19,3 +19,8 @@ ClassIdentifier Staff::internal_class_identifier() const
 {
   return CLASS_ID_STAFF;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Staff_test.cpp"
+#endif
+

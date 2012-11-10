@@ -43,3 +43,8 @@ ClassIdentifier Ammunition::internal_class_identifier() const
 {
   return CLASS_ID_AMMUNITION;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Ammunition_test.cpp"
+#endif
+

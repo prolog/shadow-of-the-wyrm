@@ -170,3 +170,9 @@ ClassIdentifier RangedWeapon::internal_class_identifier() const
 {
   return CLASS_ID_RANGED_WEAPON;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Weapon_test.cpp"
+#endif
+
+

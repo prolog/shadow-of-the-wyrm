@@ -158,3 +158,8 @@ ClassIdentifier Equipment::internal_class_identifier() const
 {
   return CLASS_ID_EQUIPMENT;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Equipment_test.cpp"
+#endif
+

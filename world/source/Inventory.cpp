@@ -246,3 +246,8 @@ ClassIdentifier Inventory::internal_class_identifier() const
 {
   return CLASS_ID_INVENTORY;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Inventory_test.cpp"
+#endif
+

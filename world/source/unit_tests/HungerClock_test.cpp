@@ -74,4 +74,9 @@ TEST(SL_World_HungerClock, hunger_levels)
   EXPECT_TRUE(hc.is_dying());
 }
 
+TEST(SL_World_HungerClock, serialization_id)
+{
+  HungerClock hc;
 
+  EXPECT_EQ(CLASS_ID_HUNGER_CLOCK, hc.get_class_identifier());
+}

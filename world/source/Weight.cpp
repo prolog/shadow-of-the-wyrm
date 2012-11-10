@@ -71,3 +71,8 @@ ClassIdentifier Weight::internal_class_identifier() const
 {
   return CLASS_ID_WEIGHT;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Weight_test.cpp"
+#endif
+
