@@ -2,6 +2,11 @@
 #include "ISeason.hpp"
 #include "Serialize.hpp"
 
+bool ISeason::operator==(ISeason& season)
+{
+  return (internal_class_identifier() == season.internal_class_identifier());
+}
+
 std::set<Months> ISeason::get_months_in_season() const
 {
   return months_in_season;

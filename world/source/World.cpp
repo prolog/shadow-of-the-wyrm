@@ -2,6 +2,8 @@
 #include "Serialize.hpp"
 #include "World.hpp"
 
+using namespace std;
+
 World::World()
 {
 }
@@ -12,6 +14,16 @@ World::World(MapPtr new_world_map) : world_map_id(new_world_map->get_map_id())
 
 World::~World()
 {
+}
+
+bool World::operator==(const World& world)
+{
+  bool result = true;
+
+  result = result && (world_map_id == world.world_map_id);
+  result = result && (calendar == world.calendar);
+
+  return result;
 }
 
 void World::set_world(MapPtr new_world_map)

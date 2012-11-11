@@ -1,7 +1,7 @@
 #include "Autumn.hpp"
 #include "StringConstants.hpp"
 
-using std::string;
+using namespace std;
 
 Autumn::Autumn()
 {

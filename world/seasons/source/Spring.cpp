@@ -1,7 +1,7 @@
 #include "Spring.hpp"
 #include "StringConstants.hpp"
 
-using std::string;
+using namespace std;
 
 Spring::Spring()
 {

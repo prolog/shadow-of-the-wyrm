@@ -3,12 +3,23 @@
 #include "SeasonFactory.hpp"
 #include "Serialize.hpp"
 
-using std::set;
+using namespace std;
 
 Calendar::Calendar()
 : seconds(0), STARTING_YEAR(832)
 {
   season = SeasonFactory::create_season(SEASON_WINTER);
+}
+
+bool Calendar::operator==(const Calendar& c)
+{
+  bool result = true;
+
+  result = result && (seconds == c.seconds);
+  result = result && (STARTING_YEAR == c.STARTING_YEAR);
+  result = result && season && c.season && (*season == *c.season);
+
+  return result;
 }
 
 void Calendar::add_days(const uint days)
@@ -63,7 +74,7 @@ bool Calendar::update_season_if_necessary()
   return season_updated;
 }
 
-bool Calendar::serialize(std::ostream& stream)
+bool Calendar::serialize(ostream& stream)
 {
   Serialize::write_double(stream, seconds);
   Serialize::write_uint(stream, STARTING_YEAR);
@@ -74,7 +85,7 @@ bool Calendar::serialize(std::ostream& stream)
   return true;
 }
 
-bool Calendar::deserialize(std::istream& stream)
+bool Calendar::deserialize(istream& stream)
 {
   Serialize::read_double(stream, seconds);
   Serialize::read_uint(stream, STARTING_YEAR);

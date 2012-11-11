@@ -12,6 +12,7 @@ class World : public ISerializable
     World();
     World(MapPtr new_world_map);
     ~World();
+    bool operator==(const World& world);
 
     void set_world(MapPtr new_world_map);
     MapPtr get_world(const MapRegistry& map_registry) const;
