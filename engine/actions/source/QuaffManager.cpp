@@ -9,6 +9,11 @@
 using namespace std;
 using boost::dynamic_pointer_cast;
 
+bool QuaffManager::operator==(const QuaffManager& qm)
+{
+  return true;
+}
+
 // Select a potion to quaff
 ActionCostValue QuaffManager::quaff(CreaturePtr creature, ActionManager * const am)
 {

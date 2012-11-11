@@ -22,6 +22,11 @@ RangedCombatActionManager::RangedCombatActionManager()
 {
 }
 
+bool RangedCombatActionManager::operator==(const RangedCombatActionManager& rcam)
+{
+  return true;
+}
+
 ActionCostValue RangedCombatActionManager::fire_missile(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = 0;

@@ -3776,5 +3776,14 @@
     <ClCompile Include="engine\actions\source\unit_tests\TileSelectionManager_test.cpp">
       <Filter>Source Files\engine\actions\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\commands\source\unit_tests\KeyboardCommandMap_test.cpp">
+      <Filter>Source Files\engine\commands\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\unit_tests\TileSelectionKeyboardCommandMap_test.cpp">
+      <Filter>Source Files\engine\commands\select_tile\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryKeyboardCommandMap_test.cpp">
+      <Filter>Source Files\engine\commands\inventory\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

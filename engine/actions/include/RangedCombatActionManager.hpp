@@ -5,6 +5,7 @@
 class RangedCombatActionManager : public IActionManager
 {
   public:
+    bool operator==(const RangedCombatActionManager& rcam);
     ActionCostValue fire_missile(CreaturePtr creature);
 
   protected:

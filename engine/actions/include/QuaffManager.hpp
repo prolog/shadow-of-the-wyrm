@@ -8,6 +8,7 @@ class ActionManager;
 class QuaffManager : public IActionManager
 {
   public:
+    bool operator==(const QuaffManager& qm);
     ActionCostValue quaff(CreaturePtr creature, ActionManager * const am);
 
   protected:

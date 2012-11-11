@@ -33,6 +33,20 @@ ActionManager::~ActionManager()
 {
 }
 
+bool ActionManager::operator==(const ActionManager& am)
+{
+  bool result = true;
+
+  result = result && (combat_manager == am.combat_manager);
+  result = result && (movement_manager == am.movement_manager);
+  result = result && (item_manager == am.item_manager);
+  result = result && (tile_selection_manager == am.tile_selection_manager);
+  result = result && (ranged_combat_manager == am.ranged_combat_manager);
+  result = result && (quaff_manager == am.quaff_manager);
+
+  return result;
+}
+
 ActionCost ActionManager::version(CreaturePtr creature)
 {
   VersionActionManager vam;

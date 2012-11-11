@@ -23,6 +23,20 @@ TileSelectionManager::TileSelectionManager()
   kb_command_map  = boost::make_shared<TileSelectionKeyboardCommandMap>();
 }
 
+bool TileSelectionManager::operator==(const TileSelectionManager& tsm)
+{
+  bool result = true;
+
+  result = result && kb_command_map && tsm.kb_command_map && (*kb_command_map == *tsm.kb_command_map);
+  result = result && (selection_key == tsm.selection_key);
+  result = result && (show_tile_description == tsm.show_tile_description);
+  result = result && (show_creature_description == tsm.show_creature_description);
+  result = result && (show_feature_description == tsm.show_feature_description);
+  result = result && (show_item_descriptions == tsm.show_item_descriptions);
+
+  return result;
+}
+
 void TileSelectionManager::set_keyboard_command_map(const KeyboardCommandMapPtr new_command_map)
 {
   kb_command_map = new_command_map;

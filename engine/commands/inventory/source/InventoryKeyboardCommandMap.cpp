@@ -3,7 +3,7 @@
 #include "InventoryCommandKeys.hpp"
 #include "InventoryKeyboardCommandMap.hpp"
 
-using std::string;
+using namespace std;
 
 InventoryKeyboardCommandMap::InventoryKeyboardCommandMap()
 {

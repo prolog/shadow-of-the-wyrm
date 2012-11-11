@@ -24,6 +24,7 @@ class ActionManager : public ISerializable
   public:
     ActionManager();
     ~ActionManager();
+    bool operator==(const ActionManager& am);
 
     ActionCost version(CreaturePtr creature);
     ActionCost date_and_time(CreaturePtr creature);

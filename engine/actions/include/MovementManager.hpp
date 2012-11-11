@@ -10,6 +10,8 @@ class MessageManager;
 class MovementManager : public IActionManager
 {
   public:
+    bool operator==(const MovementManager& mm);
+
     ActionCostValue move(CreaturePtr creature, const Direction d);
     ActionCostValue ascend(CreaturePtr creature);
     ActionCostValue descend(CreaturePtr creature);
