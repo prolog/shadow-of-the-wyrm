@@ -8,6 +8,8 @@
 class ISeason : public ISerializable
 {
   public:
+    virtual bool operator==(ISeason& season);
+
     virtual Season get_season() const = 0;
     virtual std::string get_description_sid() const = 0;
     virtual std::string get_new_season_message_sid() const = 0;

@@ -11,6 +11,7 @@ class Calendar : public ISerializable
 {
   public:
     Calendar();
+    bool operator==(const Calendar& c);
     
     void add_days(const uint days);
     void add_seconds(const double seconds);

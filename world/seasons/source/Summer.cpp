@@ -1,7 +1,7 @@
 #include "Summer.hpp"
 #include "StringConstants.hpp"
 
-using std::string;
+using namespace std;
 
 Summer::Summer()
 {

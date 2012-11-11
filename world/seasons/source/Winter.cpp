@@ -1,7 +1,7 @@
 #include "Winter.hpp"
 #include "StringConstants.hpp"
 
-using std::string;
+using namespace std;
 
 Winter::Winter()
 {
