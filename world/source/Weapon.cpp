@@ -12,6 +12,22 @@ Weapon::Weapon()
   symbol = ')';
 }
 
+bool Weapon::operator==(const Weapon& weapon)
+{
+  bool result = true;
+
+  result = result && (difficulty == weapon.difficulty);
+  result = result && (speed == weapon.speed);
+  result = result && (damage == weapon.damage);
+  result = result && (trained_skill == weapon.trained_skill);
+  result = result && (trained_ranged_skill == weapon.trained_ranged_skill);
+  result = result && (requires_ranged_weapon == weapon.requires_ranged_weapon);
+
+  result = result && (get_style() == weapon.get_style());
+
+  return result;
+}
+
 ItemType Weapon::get_type() const
 {
   return ITEM_TYPE_WEAPON;

@@ -18,6 +18,7 @@ class Item : public ISerializable
   public:
     Item();
     virtual ~Item();
+    bool operator==(const Item& item);
     
     // A unique ID for each item
     virtual void set_id(const std::string& new_id);

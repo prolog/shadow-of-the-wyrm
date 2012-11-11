@@ -17,6 +17,16 @@ Consumable::~Consumable()
 {
 }
 
+bool Consumable::operator==(const Consumable& consumable)
+{
+  bool result = true;
+
+  result = result && Item::operator==(consumable);
+  result = result && (nutrition == consumable.nutrition);
+
+  return result;
+}
+
 void Consumable::set_nutrition(const int new_nutrition)
 {
   nutrition = new_nutrition;

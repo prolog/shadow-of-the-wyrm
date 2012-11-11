@@ -8,6 +8,7 @@ class Weapon : public Wearable
 {
   public:
     Weapon();
+    bool operator==(const Weapon& weapon);
     
     virtual ItemType get_type() const;
     virtual WeaponStyle get_style() const = 0;

@@ -14,6 +14,11 @@ Weight::~Weight()
 {
 }
 
+bool Weight::operator==(const Weight& weight)
+{
+  return (ounces == weight.ounces);
+}
+
 void Weight::set_weight(const uint new_pounds, const uint new_ounces)
 {
   ounces = new_ounces + (16 * new_pounds);

@@ -6,7 +6,8 @@ class Ammunition : public RangedWeapon
   public:
     Ammunition();
     ~Ammunition();
-    
+    bool operator==(const Ammunition& ammo);
+
     virtual EquipmentWornLocation get_worn_location() const;
     
     // TODO: Add a function to let me figure out if the ammunition works with the ranged weapon...probbaly put this in

@@ -13,6 +13,16 @@ Ammunition::~Ammunition()
 {
 }
 
+bool Ammunition::operator==(const Ammunition& ammo)
+{
+  bool result = true;
+
+  result = result && Item::operator==(ammo);
+  result = result && (requires_ranged_weapon == ammo.requires_ranged_weapon);
+
+  return result;
+}
+
 EquipmentWornLocation Ammunition::get_worn_location() const
 {
   return EQUIPMENT_WORN_AMMUNITION;

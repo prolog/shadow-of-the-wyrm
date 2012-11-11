@@ -24,6 +24,34 @@ Item::~Item()
 {
 }
 
+bool Item::operator==(const Item& i)
+{
+  bool result = true;
+
+  result = result && (id == i.id);
+  result = result && (base_id == i.base_id);
+  result = result && (quantity == i.quantity);
+  result = result && (usage_description_sid == i.usage_description_sid);
+  result = result && (unidentified_usage_description_sid == i.unidentified_usage_description_sid);
+  result = result && (description_sid == i.description_sid);
+  result = result && (unidentified_description_sid == i.description_sid);
+  result = result && (weight == i.weight);
+  result = result && (readable == i.readable);
+  result = result && (worn_location == i.worn_location);
+  result = result && (status == i.status);
+  result = result && (item_identified == i.item_identified);
+  result = result && (status_identified == i.status_identified);
+  result = result && (artifact == i.artifact);
+  result = result && (type == i.type);
+  result = result && (symbol == i.symbol);
+  result = result && (colour == i.colour);
+  result = result && (identification_type == i.identification_type);
+  result = result && (effect == i.effect);
+  result = result && (material == i.material);
+
+  return result;
+}
+
 void Item::set_id(const std::string& new_id)
 {
   id = new_id;

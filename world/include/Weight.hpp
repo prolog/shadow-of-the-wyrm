@@ -8,6 +8,7 @@ class Weight : public ISerializable
   public:
     Weight();
     ~Weight();
+    bool operator==(const Weight& weight);
 
     void set_weight(const uint ounces);
     void set_weight(const uint pounds, const uint ounces);
