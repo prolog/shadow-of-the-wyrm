@@ -730,6 +730,9 @@
     <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryCommandFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryKeyboardCommandMap_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\commands\select_tile\source\FireWeaponTileSelectionKeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommandFactory.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommandKeys.cpp" />
@@ -738,6 +741,9 @@
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionKeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionRangeChecker.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\unit_tests\TileSelectionCommandFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\commands\select_tile\source\unit_tests\TileSelectionKeyboardCommandMap_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\commands\source\Command.cpp" />
@@ -749,6 +755,9 @@
     <ClCompile Include="engine\commands\source\KeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\source\KeyboardCommandMapFactory.cpp" />
     <ClCompile Include="engine\commands\source\unit_tests\CommandFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\commands\source\unit_tests\KeyboardCommandMap_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\conversion\source\CharacterDumper.cpp" />

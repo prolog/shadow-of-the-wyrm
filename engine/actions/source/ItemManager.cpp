@@ -13,6 +13,11 @@ ItemManager::~ItemManager()
 {
 }
 
+bool ItemManager::operator==(const ItemManager& im)
+{
+  return true;
+}
+
 // Create a new shared pointer to an Item, given the items in the game,
 // and the ID of the item to create.
 ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_id, const uint quantity)

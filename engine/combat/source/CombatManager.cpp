@@ -20,6 +20,11 @@ CombatManager::CombatManager()
 {
 }
 
+bool CombatManager::operator==(const CombatManager& cm)
+{
+  return true;
+}
+
 ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 {
   ActionCostValue action_cost_value = 0;

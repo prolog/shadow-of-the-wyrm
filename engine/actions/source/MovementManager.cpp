@@ -22,6 +22,11 @@ MovementManager::~MovementManager()
 {
 }
 
+bool MovementManager::operator==(const MovementManager& mm)
+{
+  return true;
+}
+
 ActionCostValue MovementManager::move(CreaturePtr creature, const Direction direction)
 {
   ActionCostValue movement_success = 0;

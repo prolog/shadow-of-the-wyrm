@@ -2,7 +2,7 @@
 #include "EquipmentCommandKeys.hpp"
 #include "EquipmentKeyboardCommandMap.hpp"
 
-using std::string;
+using namespace std;
 
 EquipmentKeyboardCommandMap::EquipmentKeyboardCommandMap()
 {

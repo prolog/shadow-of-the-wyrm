@@ -22,6 +22,15 @@ KeyboardCommandMap::~KeyboardCommandMap()
 {
 }
 
+bool KeyboardCommandMap::operator==(const KeyboardCommandMap& kcm)
+{
+  bool result = true;
+
+  result = (command_mapping == kcm.command_mapping);
+
+  return result;
+}
+
 // Returns the internal command name, which can be passed to the
 // CommandFactory to get the appropriate CommandPtr.
 string KeyboardCommandMap::get_command_type(const string& keyboard_input)

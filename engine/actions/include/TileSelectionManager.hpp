@@ -4,6 +4,8 @@
 class TileSelectionManager : public IActionManager, ISerializable
 {
   public:
+    bool operator==(const TileSelectionManager& tsm);
+
     void set_selection_key(const std::string& new_selection_key);
     
     void set_keyboard_command_map(const KeyboardCommandMapPtr new_command_map);

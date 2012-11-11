@@ -6,6 +6,8 @@
 class ItemManager : public IActionManager
 {
   public:
+    bool operator==(const ItemManager& im);
+
     // Create a new item from a given item.  This is used to make copies of the
     // template items, so that, say, fifty distinct broadswords can be created.
     ItemPtr create_item(const ItemMap& items, const std::string& item_id, const uint quantity);

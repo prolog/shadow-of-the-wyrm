@@ -8,7 +8,7 @@
 #include "TileSelectionCommandKeys.hpp"
 #include "TileSelectionKeyboardCommandMap.hpp"
 
-using std::string;
+using namespace std;
 
 TileSelectionKeyboardCommandMap::TileSelectionKeyboardCommandMap()
 {
