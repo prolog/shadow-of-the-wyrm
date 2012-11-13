@@ -1,5 +1,7 @@
 #include "Amulet.hpp"
 
+using namespace std;
+
 Amulet::Amulet()
 {
   type = ITEM_TYPE_AMULET;

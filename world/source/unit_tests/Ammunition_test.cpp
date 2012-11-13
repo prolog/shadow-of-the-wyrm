@@ -13,6 +13,8 @@ TEST(SL_World_Ammunition, saveload)
 
   ostringstream ss;
 
+  ammo.set_description_sid("test");
+
   ammo.serialize(ss);
 
   istringstream iss(ss.str());

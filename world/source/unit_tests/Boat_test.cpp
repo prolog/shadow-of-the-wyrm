@@ -6,3 +6,21 @@ TEST(SL_World_Boat, serialization_id)
 
   EXPECT_EQ(CLASS_ID_BOAT, boat.get_class_identifier());
 }
+
+TEST(SL_World_Boat, saveload)
+{
+  Boat boat, boat2;
+
+  // Not the greatest boat, really.
+  boat.set_material_type(MATERIAL_TYPE_STONE);
+
+  ostringstream ss;
+
+  boat.serialize(ss);
+
+  istringstream iss(ss.str());
+
+  boat2.deserialize(iss);
+
+  EXPECT_TRUE(boat == boat2);
+}

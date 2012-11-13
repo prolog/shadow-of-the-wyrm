@@ -1,5 +1,7 @@
 #include "Plant.hpp"
 
+using namespace std;
+
 Plant::Plant()
 : Consumable(20)
 {

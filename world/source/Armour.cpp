@@ -1,5 +1,7 @@
 #include "Armour.hpp"
 
+using namespace std;
+
 Armour::Armour()
 {
   type = ITEM_TYPE_ARMOUR;

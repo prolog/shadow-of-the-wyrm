@@ -34,7 +34,7 @@ bool Item::operator==(const Item& i)
   result = result && (usage_description_sid == i.usage_description_sid);
   result = result && (unidentified_usage_description_sid == i.unidentified_usage_description_sid);
   result = result && (description_sid == i.description_sid);
-  result = result && (unidentified_description_sid == i.description_sid);
+  result = result && (unidentified_description_sid == i.unidentified_description_sid);
   result = result && (weight == i.weight);
   result = result && (readable == i.readable);
   result = result && (worn_location == i.worn_location);

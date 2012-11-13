@@ -1,5 +1,7 @@
 #include "Ring.hpp"
 
+using namespace std;
+
 Ring::Ring()
 {
   type = ITEM_TYPE_RING;

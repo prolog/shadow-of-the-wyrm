@@ -1,5 +1,7 @@
 #include "MiscItem.hpp"
 
+using namespace std;
+
 MiscItem::MiscItem()
 {
   type = ITEM_TYPE_MISC;
