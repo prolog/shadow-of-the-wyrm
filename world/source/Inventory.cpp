@@ -14,6 +14,22 @@ Inventory::~Inventory()
 {
 }
 
+bool Inventory::operator==(const Inventory& inv)
+{
+  bool result = true;
+
+  int num_items = items.size();
+
+  result = (num_items == inv.items.size());
+
+  if (result)
+  {
+    // check item by item...
+  }
+
+  return result;
+}
+
 // Add an item to the front of the inventory.  "add" is usually
 // used for creatures; "add_front" for tiles, to get stack-like
 // behaviour

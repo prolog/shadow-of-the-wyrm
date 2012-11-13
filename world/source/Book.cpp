@@ -1,5 +1,7 @@
 #include "Book.hpp"
 
+using namespace std;
+
 Book::Book()
 {
   type = ITEM_TYPE_BOOK;

@@ -1,5 +1,7 @@
 #include "Currency.hpp"
 
+using namespace std;
+
 Currency::Currency()
 {
   type = ITEM_TYPE_CURRENCY;

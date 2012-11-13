@@ -1,5 +1,7 @@
 #include "Food.hpp"
 
+using namespace std;
+
 Food::Food()
 : Consumable(100)
 {

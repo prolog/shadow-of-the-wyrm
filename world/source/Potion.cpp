@@ -1,5 +1,7 @@
 #include "Potion.hpp"
 
+using namespace std;
+
 // Potions will provide a bit of nutrition.
 Potion::Potion()
 : Consumable(50)

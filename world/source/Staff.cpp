@@ -1,5 +1,7 @@
 #include "Staff.hpp"
 
+using namespace std;
+
 Staff::Staff()
 {
   type = ITEM_TYPE_STAFF;

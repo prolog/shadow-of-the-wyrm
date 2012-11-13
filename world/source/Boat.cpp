@@ -1,5 +1,7 @@
 #include "Boat.hpp"
 
+using namespace std;
+
 Boat::Boat()
 {
   type = ITEM_TYPE_BOAT;

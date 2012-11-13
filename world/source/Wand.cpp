@@ -1,5 +1,7 @@
 #include "Wand.hpp"
 
+using namespace std;
+
 Wand::Wand()
 {
   type = ITEM_TYPE_WAND;
