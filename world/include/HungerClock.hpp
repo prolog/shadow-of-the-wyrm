@@ -6,6 +6,7 @@ class HungerClock : public ISerializable
 {
   public:
     HungerClock();
+    bool operator==(const HungerClock& hc);
 
     void set_requires_food(const bool requires_food);
     bool get_requires_food() const;

@@ -13,6 +13,7 @@ class Equipment : public ISerializable
   public:
     Equipment();
     ~Equipment();
+    bool operator==(const Equipment& e);
     
     bool set_item(ItemPtr item, const EquipmentWornLocation location);
     ItemPtr get_item(const EquipmentWornLocation location) const;

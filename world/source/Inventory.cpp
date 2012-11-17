@@ -24,7 +24,22 @@ bool Inventory::operator==(const Inventory& inv)
 
   if (result)
   {
-    // check item by item...
+    list<ItemPtr> items_b = inv.get_items_const();
+    list<ItemPtr>::iterator lista_it = items.begin();
+    list<ItemPtr>::iterator listb_it = items_b.begin();
+
+    while ((lista_it != items.end()) && (listb_it != items_b.end()))
+    {
+      ItemPtr item_a = *lista_it;
+      ItemPtr item_b = *listb_it;
+
+      result = result && (*item_a == *item_b);
+
+      if (!result) break;
+      
+      lista_it++;
+      listb_it++;
+    }
   }
 
   return result;

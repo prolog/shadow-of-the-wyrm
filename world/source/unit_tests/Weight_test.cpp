@@ -7,3 +7,19 @@ TEST(SL_World_Weight, serialization_id)
   EXPECT_EQ(CLASS_ID_WEIGHT, weight.get_class_identifier());
 }
 
+TEST(SL_World_Weight, saveload)
+{
+  Weight weight, weight2;
+
+  weight.set_weight(1234);
+
+  ostringstream ss;
+
+  weight.serialize(ss);
+
+  istringstream iss(ss.str());
+
+  weight2.deserialize(iss);
+
+  EXPECT_TRUE(weight == weight2);
+}

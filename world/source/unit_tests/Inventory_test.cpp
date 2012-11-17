@@ -25,6 +25,6 @@ TEST(SL_World_Inventory, saveload)
 
   inv2.deserialize(iss);
 
-  // ...
+  EXPECT_TRUE(inv == inv2);
 }
 

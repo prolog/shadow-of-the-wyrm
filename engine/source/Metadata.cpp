@@ -8,6 +8,13 @@
 
 using namespace std;
 
+bool Metadata::operator==(const Metadata& meta)
+{
+  bool result = true;
+
+  return result;
+}
+
 string Metadata::get_user_name() const
 {
   return Environment::get_user_name();

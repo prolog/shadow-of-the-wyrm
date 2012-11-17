@@ -80,3 +80,21 @@ TEST(SL_World_HungerClock, serialization_id)
 
   EXPECT_EQ(CLASS_ID_HUNGER_CLOCK, hc.get_class_identifier());
 }
+
+TEST(SL_World_HungerClock, saveload)
+{
+  HungerClock hc, hc2;
+
+  hc.set_requires_food(true);
+  hc.set_hunger(1234);
+
+  ostringstream ss;
+
+  hc.serialize(ss);
+
+  istringstream iss(ss.str());
+
+  hc2.deserialize(iss);
+
+  EXPECT_TRUE(hc == hc2);
+}

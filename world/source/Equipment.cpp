@@ -12,11 +12,30 @@ Equipment::Equipment()
 
 Equipment::~Equipment()
 {
-  
 }
 
-// Set an item, but only if it's not null.  There are no checks done here to 
-// see if the slot is correct - that's a higher-level check.
+bool Equipment::operator==(const Equipment& e)
+{
+  bool result = true;
+
+  for (int i = EQUIPMENT_WORN_HEAD; i < EQUIPMENT_WORN_LAST; i++)
+  {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(i);
+
+    ItemPtr item_a = get_item(ewl);
+    ItemPtr item_b = e.get_item(ewl);
+
+    // To be equivalent, the slots either both need to be empty, or both
+    // contain an item and have the items match.
+    result = result && ((!item_a && !item_b) || ((item_a && item_b) && (*item_a == *item_b)));
+
+    if (!result) break;
+  }
+
+  return result;
+}
+
+// Set an item, but only if it's not null.  There are no checks done here to// see if the slot is correct - that's a higher-level check.
 bool Equipment::set_item(ItemPtr item, const EquipmentWornLocation worn_location)
 {
   bool item_set = false;
