@@ -4,6 +4,16 @@
 
 using namespace std;
 
+bool HungerClock::operator==(const HungerClock& hc)
+{
+  bool result = true;
+
+  result = result && (requires_food == hc.requires_food);
+  result = result && (hunger == hc.hunger);
+
+  return result;
+}
+
 HungerClock::HungerClock()
 : requires_food(false) /* Only player requires food, for now */, hunger(HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL)
 {
