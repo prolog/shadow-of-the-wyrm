@@ -14,6 +14,7 @@ class Skill : public ISerializable
     Skill(const SkillCategory skill_category);
     Skill(const Skill& skill);
     Skill& operator=(const Skill& skill);
+    bool operator==(const Skill& skill);
 
     void initialize();
 

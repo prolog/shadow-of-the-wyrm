@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "SkillFactory.hpp"
 
 // Can't instantiate Skill directly, so test the methods of a
 // descendent.
@@ -231,5 +232,62 @@ TEST(SL_World_Skills, serialization_ids_ranged_skills)
   EXPECT_EQ(CLASS_ID_SKILL_SLINGS, slings.get_class_identifier());
   EXPECT_EQ(CLASS_ID_SKILL_THROWN_SPEARS, ts.get_class_identifier());
   EXPECT_EQ(CLASS_ID_SKILL_THROWN_EXOTIC, te.get_class_identifier());
+}
+
+void serialize_test_skills(ClassIdentifier skill_ci)
+{
+  SkillPtr skill, skill2;
+  skill = SkillFactory::create_skill(skill_ci);
+  skill2 = SkillFactory::create_skill(skill_ci);
+
+  ostringstream ss;
+
+  skill->serialize(ss);
+
+  istringstream iss(ss.str());
+
+  skill2->deserialize(iss);
+
+  EXPECT_TRUE(*skill == *skill2);
+}
+
+TEST(SL_World_Skills, saveload_general_skills)
+{
+  for(int i = CLASS_ID_SKILL_ARCHERY; i <= CLASS_ID_SKILL_WEAVING; i++)
+  {
+    ClassIdentifier skill_ci = static_cast<ClassIdentifier>(i);
+  
+    serialize_test_skills(skill_ci);
+  }
+}
+
+TEST(SL_World_Skills, saveload_melee_skills)
+{
+  for(int i = CLASS_ID_SKILL_AXES; i <= CLASS_ID_SKILL_EXOTIC; i++)
+  {
+    ClassIdentifier skill_ci = static_cast<ClassIdentifier>(i);
+  
+    serialize_test_skills(skill_ci);
+  }
+}
+
+TEST(SL_World_Skills, saveload_ranged_skills)
+{
+  for(int i = CLASS_ID_SKILL_THROWN_AXES; i <= CLASS_ID_SKILL_THROWN_EXOTIC; i++)
+  {
+    ClassIdentifier skill_ci = static_cast<ClassIdentifier>(i);
+  
+    serialize_test_skills(skill_ci);
+  }
+}
+
+TEST(SL_World_Skills, saveload_magic_skills)
+{
+  for(int i = CLASS_ID_SKILL_ARCANE; i <= CLASS_ID_SKILL_PRIMORDIAL; i++)
+  {
+    ClassIdentifier skill_ci = static_cast<ClassIdentifier>(i);
+  
+    serialize_test_skills(skill_ci);
+  }
 }
 
