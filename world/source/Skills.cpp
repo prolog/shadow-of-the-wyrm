@@ -37,6 +37,21 @@ Skill& Skill::operator=(const Skill& skill)
   return *this;
 }
 
+bool Skill::operator==(const Skill& skill)
+{
+  bool result = true;
+
+  result = result && (category == skill.category);
+  result = result && (value == skill.value);
+  result = result && (marks == skill.marks);
+  result = result && (threshold == skill.threshold);
+  result = result && (skill_name_sid == skill.skill_name_sid);
+  result = result && (skill_increment_message_sid == skill.skill_increment_message_sid);
+  result = result && (internal_class_identifier() == skill.internal_class_identifier());
+
+  return result;
+}
+
 Skill::Skill(const Skill& skill)
 {
   *this = skill;
