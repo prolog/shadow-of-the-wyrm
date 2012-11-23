@@ -5,11 +5,24 @@
 
 using namespace std;
 
-// JCD FIXME NEED COPY CONSTRUCTOR FOR MATERIAL PTR/ TRAP PTR
+// JCD FIXME NEED COPY CONSTRUCTOR FOR TRAP/LOCK PTR WHEN THIS IS COMPLETED
 
 Feature::Feature(const MaterialType new_material)
 : material(new_material)
 {
+}
+
+bool Feature::operator==(const Feature& feature)
+{
+  bool result = true;
+
+  result = result && (internal_class_identifier() == feature.internal_class_identifier());
+
+  result = result && (material == feature.material);
+  result = result && ((!trap && !(feature.trap)) || (trap && feature.trap && (*trap == *(feature.trap))));
+  result = result && ((!lock && !(feature.lock)) || (lock && feature.lock && (*lock == *(feature.lock))));
+
+  return result;
 }
 
 bool Feature::has_trap() const

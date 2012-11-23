@@ -8,6 +8,15 @@ Altar::Altar(const std::string& new_deity_id, const MaterialType new_material)
 {
 }
 
+bool Altar::operator==(const Altar& altar)
+{
+  bool result = Feature::operator==(altar);
+
+  result = result && (deity_id == altar.deity_id);
+
+  return result;
+}
+
 string Altar::get_deity_id() const
 {
   return deity_id;

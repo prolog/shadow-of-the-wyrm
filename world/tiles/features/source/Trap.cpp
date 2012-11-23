@@ -6,6 +6,11 @@ Trap::Trap()
 {
 }
 
+bool Trap::operator==(const Trap& trap)
+{
+  return true;
+}
+
 bool Trap::serialize(std::ostream& stream)
 {
   return true;
