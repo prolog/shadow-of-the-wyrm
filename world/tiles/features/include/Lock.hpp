@@ -5,6 +5,8 @@
 class Lock : public ISerializable
 {
   public:
+    virtual bool operator==(const Lock& lock);
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 

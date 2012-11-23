@@ -8,9 +8,7 @@ class Entrance : public Feature
   public:
     Entrance();
     Entrance(LockPtr new_lock, const EntranceState& new_state);
-
-    virtual void set_lock(LockPtr new_lock);
-    virtual LockPtr get_lock();
+    virtual bool operator==(const Entrance& door);
 
     virtual void set_state(const EntranceState& new_state);
     virtual EntranceState get_state() const;
@@ -24,7 +22,6 @@ class Entrance : public Feature
     virtual bool deserialize(std::istream& stream);
 
   protected:
-    LockPtr lock;
     EntranceState state;
     CreatureSize maximum_size; // The maximum creature size for the entrance.  Dragons can't go in Hobbit holes.
 

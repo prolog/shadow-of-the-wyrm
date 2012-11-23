@@ -2,6 +2,11 @@
 
 using namespace std;
 
+bool Lock::operator==(const Lock& lock)
+{
+  return true;
+}
+
 bool Lock::serialize(ostream& stream)
 {
   return true;

@@ -16,6 +16,7 @@ class Feature : public ISerializable
   public:
     Feature(const MaterialType new_material);
     virtual ~Feature() {};
+    virtual bool operator==(const Feature& feature);
 
     // If a feature is blocking, the square it occupies cannot be
     // occupied by another creature, and any items thrown, kicked, etc.,

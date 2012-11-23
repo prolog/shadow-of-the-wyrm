@@ -10,18 +10,19 @@ Entrance::Entrance()
 }
 
 Entrance::Entrance(LockPtr new_lock, const EntranceState& new_state)
-: Feature(MATERIAL_TYPE_WOOD), lock(new_lock), state(new_state)
+: Feature(MATERIAL_TYPE_WOOD), state(new_state)
 {
+  set_lock(new_lock);
 }
 
-void Entrance::set_lock(LockPtr new_lock)
+bool Entrance::operator==(const Entrance& entr)
 {
-  lock = new_lock;
-}
+  bool result = Feature::operator==(entr);
 
-LockPtr Entrance::get_lock()
-{
-  return lock;
+  result = result && (state == entr.state);
+  result = result && (maximum_size == entr.maximum_size);
+
+  return result;
 }
 
 void Entrance::set_state(const EntranceState& new_state)

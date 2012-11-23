@@ -13,6 +13,15 @@ EntranceState::EntranceState(const EntranceStateType new_state)
 {
 }
 
+bool EntranceState::operator==(const EntranceState& st)
+{
+  bool result = true;
+
+  result = result && (state == st.state);
+
+  return result;
+}
+
 void EntranceState::set_state(const EntranceStateType new_state)
 {
   state = new_state;
