@@ -12,6 +12,15 @@ ThreatRatings::~ThreatRatings()
 {
 }
 
+bool ThreatRatings::operator==(const ThreatRatings& threat)
+{
+  bool result = true;
+
+  result = result && (threat_ratings == threat.threat_ratings);
+
+  return result;
+}
+
 // Check to see if a particular creature ID exists at any threat level
 bool ThreatRatings::has_threat(const string& creature_id) const
 {

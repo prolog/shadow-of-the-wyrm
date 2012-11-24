@@ -41,3 +41,18 @@ TEST(SL_World_Statistic, serialization_id)
   EXPECT_EQ(CLASS_ID_STATISTIC, stat.get_class_identifier());
 }
 
+TEST(SL_World_Statistic, saveload)
+{
+  Statistic stat(45);
+  Statistic stat2;
+
+  ostringstream ss;
+
+  stat.serialize(ss);
+
+  istringstream iss(ss.str());
+
+  stat2.deserialize(iss);
+
+  EXPECT_TRUE(stat == stat2);
+}

@@ -13,6 +13,16 @@ DeityStatus::~DeityStatus()
 {
 }
 
+bool DeityStatus::operator==(const DeityStatus& status)
+{
+  bool result = true;
+
+  result = result && (piety == status.piety);
+  result = result && (crowned == status.crowned);
+
+  return result;
+}
+
 void DeityStatus::set_piety(const int new_piety)
 {
   piety = new_piety;

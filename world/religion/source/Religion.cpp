@@ -9,6 +9,35 @@ Religion::Religion(const string& new_deity_id)
 {
 }
 
+bool Religion::operator==(const Religion& r)
+{
+  bool result = true;
+
+  result = result && (deity_id == r.deity_id);
+
+  DeityRelations r2 = r.deity_relations;
+
+  result = result  && (deity_relations.size() == r2.size());
+
+  if (result)
+  {
+    DeityRelations::iterator d_it = deity_relations.begin();
+    DeityRelations::iterator d_it2 = r2.begin();
+
+    while (d_it != deity_relations.end())
+    {
+      result = result && (d_it->first == d_it2->first);
+      result = result && (d_it->second == d_it2->second);
+
+      if (!result) break;
+      d_it++;
+      d_it2++;
+    }
+  }
+
+  return result;
+}
+
 // If the creature does not worship any deity, the creature is an atheist.
 bool Religion::is_atheist() const
 {

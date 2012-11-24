@@ -23,6 +23,16 @@ Statistic& Statistic::operator=(const int& rhs)
   return *this;
 }
 
+bool Statistic::operator==(const Statistic& stat)
+{
+  bool result = true;
+
+  result = result && (base == stat.base);
+  result = result && (current == stat.current);
+
+  return result;
+}
+
 /*
  ********************************************************************
 

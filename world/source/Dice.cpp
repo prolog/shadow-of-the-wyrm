@@ -18,6 +18,17 @@ Dice::~Dice()
 {
 }
 
+bool Dice::operator==(const Dice& dice)
+{
+  bool result = true;
+
+  result = result && (num_dice == dice.num_dice);
+  result = result && (dice_sides == dice.dice_sides);
+  result = result && (modifier == dice.modifier);
+
+  return result;
+}
+
 int Dice::max() const
 {
   return ((num_dice * dice_sides) + modifier);
