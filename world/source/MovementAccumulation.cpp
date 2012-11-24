@@ -8,6 +8,19 @@ MovementAccumulation::MovementAccumulation()
   reset();
 }
 
+bool MovementAccumulation::operator==(const MovementAccumulation& movement)
+{
+  bool result = true;
+
+  result = result && (minutes_on_super_type_given_movement == movement.minutes_on_super_type_given_movement);
+  result = result && (tile_super_type == movement.tile_super_type);
+  result = result && (minutes_on_tile_type_given_movement == movement.minutes_on_tile_type_given_movement);
+  result = result && (tile_type == movement.tile_type);
+  result = result && (movement_type == movement.movement_type);
+
+  return result;
+}
+
 // Reset all the values back to the default
 void MovementAccumulation::reset()
 {

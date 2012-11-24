@@ -14,6 +14,7 @@ class ThreatRatings : public ISerializable
   public:
     ThreatRatings();
     ~ThreatRatings();
+    virtual bool operator==(const ThreatRatings& threat_ratings);
     
     // Check to see if the creature is contained in any threat level.
     bool has_threat(const std::string& creature_id) const;
