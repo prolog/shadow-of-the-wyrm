@@ -9,6 +9,7 @@ class MapExit : public ISerializable
   public:
     MapExit();
     ~MapExit();
+    bool operator==(const MapExit& me);
 
     void set_map_id(const std::string& map_id);
     std::string get_map_id() const;

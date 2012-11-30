@@ -21,6 +21,7 @@ class Tile : public ISerializable
     // associated with them would also be copied, which might not be intended.  Use TileGenerator to ensure each
     // copy starts fresh.
     virtual ~Tile();
+    virtual bool operator==(const Tile& tile);
     
     virtual std::string get_tile_description_sid() const = 0;
     

@@ -10,6 +10,7 @@ class Depth : public ISerializable
   public:
     Depth();
     Depth(const int cur, const int max);
+    bool operator==(const Depth& d);
 
     void set_current(const int new_current);
     int get_current() const;

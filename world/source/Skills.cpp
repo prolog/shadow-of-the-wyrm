@@ -1607,6 +1607,32 @@ Skills& Skills::operator=(const Skills& copy_skills)
   return *this;
 }
 
+bool Skills::operator==(const Skills& sk)
+{
+  bool result = true;
+
+  result = result && (skills.size() == sk.skills.size());
+
+  if (result)
+  {
+    SkillMap sk2 = sk.skills;
+    SkillMap::iterator s_it = skills.begin();
+    SkillMap::iterator s_it2 = sk2.begin();
+
+    while (s_it != skills.end())
+    {
+      result = result && (s_it->second == s_it2->second);
+
+      if (!result) break;
+
+      s_it++;
+      s_it2++;
+    }
+  }
+
+  return result;
+}
+
 // Set the value of a skill
 void Skills::set_value(const SkillType skill_name, const unsigned int value)
 {

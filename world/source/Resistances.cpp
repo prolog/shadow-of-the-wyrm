@@ -89,6 +89,35 @@ Resistances::Resistances()
   default_resistances();
 }
 
+bool Resistances::operator==(const Resistances& res)
+{
+  bool result = true;
+
+  result = result && (resistances.size() == res.resistances.size());
+
+  if (result)
+  {
+    ResistancesMap r2_map = res.resistances;
+    ResistancesMap::iterator r_it;
+    ResistancesMap::iterator r_it2;
+
+    r_it = resistances.begin();
+    r_it2 = r2_map.begin();
+
+    while (r_it != resistances.end())
+    {
+      result = result && (r_it->second == r_it2->second);
+
+      if (!result) break;
+
+      r_it++;
+      r_it2++;
+    }
+  }
+
+  return result;
+}
+
 void Resistances::set_resistance_value(const DamageType type, double value)
 {
   resistances[type]->set_value(value);

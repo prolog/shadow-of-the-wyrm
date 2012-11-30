@@ -9,6 +9,31 @@ DecisionStrategy::DecisionStrategy(ControllerPtr new_controller)
 {
 }
 
+bool DecisionStrategy::operator==(const DecisionStrategy& ds)
+{
+  bool result = true;
+
+  result = result && (internal_class_identifier() == ds.internal_class_identifier());
+
+  result = result && ((current_fov_map && ds.current_fov_map) || (!current_fov_map && !ds.current_fov_map));
+  
+  if (result && current_fov_map)
+  {
+    result = result && (*current_fov_map == *ds.current_fov_map);
+  }
+
+  result = result && (threat_ratings == ds.threat_ratings);
+
+  result = result && ((controller && ds.controller) || (!controller && !ds.controller));
+
+  if (result && controller)
+  {
+    result = result && (*controller == *ds.controller);
+  }
+
+  return result;
+}
+
 // Get the threats - used to determine a course of action.
 ThreatRatings& DecisionStrategy::get_threats_ref()
 {

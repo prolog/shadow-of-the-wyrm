@@ -15,6 +15,17 @@ VillageTile::VillageTile(const TileType new_tile_subtype)
   tile_subtype = new_tile_subtype;
 }
 
+bool VillageTile::operator==(const VillageTile& vt)
+{
+  bool result = true;
+
+  result = Tile::operator==(vt);
+  result = result && (village_race_id == vt.village_race_id);
+  result = result && (settlement_type == vt.settlement_type);
+
+  return result;
+}
+
 bool VillageTile::display_description_on_arrival() const
 {
   return true;

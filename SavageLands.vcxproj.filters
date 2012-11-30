@@ -3785,5 +3785,8 @@
     <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryKeyboardCommandMap_test.cpp">
       <Filter>Source Files\engine\commands\inventory\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Map_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

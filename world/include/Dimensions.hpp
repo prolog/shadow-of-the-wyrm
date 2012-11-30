@@ -10,6 +10,7 @@ class Dimensions : public ISerializable
   public:
     Dimensions();
     Dimensions(const int new_x, const int new_y);
+    bool operator==(const Dimensions& dim);
 
     void set_y(int new_y);
     int  get_y() const;

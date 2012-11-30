@@ -26,6 +26,53 @@ Tile::~Tile()
 {
 }
 
+bool Tile::operator==(const Tile& tile)
+{
+  bool result = true;
+
+  result = result && (illuminated == tile.illuminated);
+  result = result && (explored == tile.explored);
+  result = result && (viewed == tile.viewed);
+  result = result && (tile_type == tile.tile_type);
+  result = result && (tile_subtype == tile.tile_subtype);
+  result = result && ((creature && tile.creature) || (!creature && !tile.creature));
+
+  if (result)
+  {
+    result = result && (*creature == *tile.creature);
+  }
+
+  result = result && ((feature && tile.feature) || (!feature && !tile.feature));
+
+  if (result)
+  {
+    result = result && (*feature == *tile.feature);
+  }
+
+  result = result && (items == tile.items);
+
+  result = result && (map_exits.size() == tile.map_exits.size());
+
+  if (result)
+  {
+    TileExitMap map2 = tile.map_exits;
+    TileExitMap::iterator t_it = map_exits.begin();
+    TileExitMap::iterator t_it2 = map2.begin();
+
+    while (t_it != map_exits.end())
+    {
+      result = result && (*t_it->second == *t_it2->second);
+
+      if (!result) break;
+
+      t_it++;
+      t_it2++;
+    }
+  }
+
+  return result;
+}
+
 bool Tile::display_description_on_arrival() const
 {
   return false;

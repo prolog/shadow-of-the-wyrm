@@ -31,6 +31,7 @@ class Creature : public ISerializable
     Creature();
     Creature(const Creature& cr);
     Creature& operator=(const Creature& cr);
+    bool operator==(const Creature& cr);
 
     void set_id(const std::string& new_id);
     std::string get_id() const;
