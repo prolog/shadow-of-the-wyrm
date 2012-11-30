@@ -210,6 +210,7 @@ class Resistances : public ISerializable
 {
   public:
     Resistances();
+    virtual bool operator==(const Resistances& resistances);
 
     void set_resistance_value(const DamageType type, double value);
     double get_resistance_value(const DamageType type) const;

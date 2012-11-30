@@ -17,6 +17,17 @@ Dimensions::Dimensions(const int new_x, const int new_y)
   y = new_y;
 }
 
+bool Dimensions::operator==(const Dimensions& d)
+{
+  bool result = true;
+
+  result = result && (x == d.x);
+  result = result && (y == d.y);
+  result = result && (dim_depth == d.dim_depth);
+
+  return result;
+}
+
 void Dimensions::set_x(int new_x)
 {
   x = new_x;

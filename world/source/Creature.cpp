@@ -107,6 +107,65 @@ Creature& Creature::operator=(const Creature& cr)
   return *this;
 }
 
+bool Creature::operator==(const Creature& cr)
+{
+  bool result = true;
+
+  result = result && (id == cr.id);
+  result = result && (is_player == cr.is_player);
+  result = result && (name == cr.name);
+  result = result && (sex == cr.sex);
+  result = result && (age == cr.age);
+  result = result && (size == cr.size);
+  result = result && (eye_colour == cr.eye_colour);
+  result = result && (hair_colour == cr.hair_colour);
+  result = result && (handedness == cr.handedness);
+  result = result && (short_description_sid == cr.short_description_sid);
+  result = result && (description_sid == cr.description_sid);
+  result = result && (race_id == cr.race_id);
+  result = result && (class_id == cr.class_id);
+  result = result && (strength == cr.strength);
+  result = result && (dexterity == cr.dexterity);
+  result = result && (agility == cr.agility);
+  result = result && (health == cr.health);
+  result = result && (intelligence == cr.intelligence);
+  result = result && (willpower == cr.willpower);
+  result = result && (charisma == cr.charisma);
+  result = result && (valour == cr.valour);
+  result = result && (spirit == cr.spirit);
+  result = result && (speed == cr.speed);
+  result = result && (damage == cr.damage);
+  result = result && (equipment == cr.equipment);
+  result = result && (inventory == cr.inventory);
+  result = result && (resistances == cr.resistances);
+  result = result && (skills == cr.skills);
+  result = result && (movement_accumulation == cr.movement_accumulation);
+  result = result && (hit_points == cr.hit_points);
+  result = result && (arcana_points == cr.arcana_points);
+  result = result && (base_evade == cr.base_evade);
+  result = result && (evade == cr.evade);
+  result = result && (base_soak == cr.base_soak);
+  result = result && (soak == cr.soak);
+  result = result && (symbol == cr.symbol);
+  result = result && (colour == cr.colour);
+  result = result && (level == cr.level);
+  result = result && ((decision_strategy && cr.decision_strategy) || (!decision_strategy && !cr.decision_strategy));
+
+  if (result)
+  {
+    result = result && (*decision_strategy == *cr.decision_strategy);
+  }
+
+  result = result && (religion == cr.religion);
+  result = result && (experience_value == cr.experience_value);
+  result = result && (experience_points == cr.experience_points);
+  result = result && (turns == cr.turns);
+  result = result && (targets == cr.targets);
+  result = result && (hunger == cr.hunger);
+
+  return result;
+}
+
 void Creature::set_id(const string& new_id)
 {
   id = new_id;

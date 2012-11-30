@@ -38,6 +38,45 @@ Map::Map(const Dimensions& new_dimensions)
   map_id = Uuid::to_string(id);
 }
 
+bool Map::operator==(const Map& map)
+{
+  bool result = true;
+
+  result = result && (tiles.size() == map.tiles.size());
+
+  if (result)
+  {
+    TilesMap tilesmap = map.tiles;
+    TilesMap::iterator t_it = tiles.begin();
+    TilesMap::iterator t_it2 = tilesmap.begin();
+
+    while (t_it != tiles.end())
+    {
+      result = result && (*(t_it->second) == *(t_it2->second));
+
+      t_it++;
+      t_it2++;
+    }
+  }
+
+  result = result && (dimensions == map.dimensions);
+  result = result && (original_dimensions == map.original_dimensions);
+  result = result && (locations == map.locations);
+  result = result && (terrain_type == map.terrain_type);
+  result = result && (map_type == map.map_type);
+  result = result && ((map_exit && map.map_exit) || (!map_exit && !map.map_exit));
+
+  if (result)
+  {
+    result = result && (*map_exit == *map.map_exit);
+  }
+
+  result = result && (map_id == map.map_id);
+  result = result && (permanent == map.permanent);
+
+  return result;
+}
+
 // Create the creature list by iterating over all the map tiles, and adding any Creature
 // attached to a tile.
 void Map::create_creatures()
@@ -452,6 +491,6 @@ ClassIdentifier Map::internal_class_identifier() const
   return CLASS_ID_MAP;
 }
 
-// There should be an IFDEF_UNIT_TESTS here, but the compiler isn't finding Map_test.cpp.
-// However, it's able to do do so once I add that include to MapUtils.  So, the include
-// statement is there.
+#ifdef UNIT_TESTS
+#include "unit_tests/Map_test.cpp"
+#endif

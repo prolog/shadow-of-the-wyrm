@@ -18,6 +18,16 @@ Depth::Depth(const int cur, const int max)
 {
 }
 
+bool Depth::operator==(const Depth& d)
+{
+  bool result = true;
+
+  result = result && (current == d.current);
+  result = result && (maximum == d.maximum);
+
+  return result;
+}
+
 void Depth::set_current(const int new_current)
 {
   current = new_current;

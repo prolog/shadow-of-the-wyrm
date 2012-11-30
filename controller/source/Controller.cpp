@@ -2,6 +2,12 @@
 
 using namespace std;
 
+// Just check the class identifier.
+bool Controller::operator==(const Controller& c)
+{
+  return (internal_class_identifier() == c.internal_class_identifier());
+}
+
 // Controllers are stateless.
 bool Controller::serialize(ostream& stream)
 {

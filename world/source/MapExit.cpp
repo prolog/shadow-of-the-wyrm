@@ -12,6 +12,16 @@ MapExit::~MapExit()
 {
 }
 
+bool MapExit::operator==(const MapExit& me)
+{
+  bool result = true;
+
+  result = result && (map_id == me.map_id);
+  result = result && (terrain_type == me.terrain_type);
+
+  return result;
+}
+
 void MapExit::set_map_id(const string& new_map_id)
 {
   map_id = new_map_id;
