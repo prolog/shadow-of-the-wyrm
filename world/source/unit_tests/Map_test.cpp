@@ -16,6 +16,7 @@ TEST(SL_World_Map, saveload)
 
   FieldGenerator field_gen("test");
   map = field_gen.generate(d);
+  map2 = MapPtr(new Map(d));
 
   ostringstream ss;
 

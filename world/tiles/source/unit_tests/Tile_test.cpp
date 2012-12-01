@@ -1,5 +1,6 @@
 #include "DungeonTile.hpp"
 #include "gtest/gtest.h"
+#include "TileGenerator.hpp"
 
 TEST(SL_World_Tiles_Tile, set_default_properties)
 {
@@ -39,3 +40,21 @@ TEST(SL_World_Tiles_Tile, explored)
   EXPECT_FALSE(tile.get_explored());
 }
 
+TEST(SL_World_Tiles_Tile, saveload)
+{
+  for (int i = TILE_TYPE_FIRST; i < TILE_TYPE_LAST; i++)
+  {
+    TilePtr tp = TileGenerator::generate(static_cast<TileType>(i));
+    TilePtr tp2 = TileGenerator::generate(static_cast<TileType>(i));
+
+    ostringstream ss;
+
+    tp->serialize(ss);
+
+    istringstream iss(ss.str());
+
+    tp2->deserialize(iss);
+
+    EXPECT_TRUE(*tp == *tp2);
+  }
+}

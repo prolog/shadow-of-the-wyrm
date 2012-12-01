@@ -52,6 +52,7 @@ bool Map::operator==(const Map& map)
 
     while (t_it != tiles.end())
     {
+      string foo = t_it->first;
       result = result && (*(t_it->second) == *(t_it2->second));
 
       t_it++;
@@ -66,7 +67,7 @@ bool Map::operator==(const Map& map)
   result = result && (map_type == map.map_type);
   result = result && ((map_exit && map.map_exit) || (!map_exit && !map.map_exit));
 
-  if (result)
+  if (result && map_exit)
   {
     result = result && (*map_exit == *map.map_exit);
   }
