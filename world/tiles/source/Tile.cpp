@@ -37,14 +37,14 @@ bool Tile::operator==(const Tile& tile)
   result = result && (tile_subtype == tile.tile_subtype);
   result = result && ((creature && tile.creature) || (!creature && !tile.creature));
 
-  if (result)
+  if (result && creature)
   {
     result = result && (*creature == *tile.creature);
   }
 
   result = result && ((feature && tile.feature) || (!feature && !tile.feature));
 
-  if (result)
+  if (result && feature)
   {
     result = result && (*feature == *tile.feature);
   }

@@ -1,6 +1,7 @@
 #include <sstream>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "global_prototypes.hpp"
 #include "Resistances.hpp"
 #include "ResistanceFactory.hpp"
 #include "Serialize.hpp"
@@ -16,6 +17,17 @@ Resistance::Resistance()
   name_sid = "";
   // By default, the multiplier should be 1.
   value = 1.0;
+}
+
+bool Resistance::operator==(const Resistance& r)
+{
+  bool result = true;
+
+  result = result && (type == r.type);
+  result = result && (name_sid == r.name_sid);
+  result = result && (dequal(value, r.value));
+
+  return result;
 }
 
 Resistance::Resistance(const DamageType dt, const string& name, const double val)
@@ -106,7 +118,7 @@ bool Resistances::operator==(const Resistances& res)
 
     while (r_it != resistances.end())
     {
-      result = result && (r_it->second == r_it2->second);
+      result = result && (*r_it->second == *r_it2->second);
 
       if (!result) break;
 

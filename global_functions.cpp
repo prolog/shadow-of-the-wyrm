@@ -1,3 +1,5 @@
+#include <cmath>
+#include <limits>
 #include <sstream>
 #include <boost/static_assert.hpp>
 #include <boost/algorithm/string/replace.hpp>
@@ -92,4 +94,16 @@ std::string html_encode(const std::string& str)
   replace_all(replace, ">",  "&gt;");
   
   return replace;
+}
+
+// Check for double equality
+bool dequal(const double double1, const double double2)
+{
+  return std::fabs(double1 - double2) < std::numeric_limits<double>::epsilon();
+}
+
+// Check for float equality
+bool fequal(const float float1, const float float2)
+{
+  return std::fabs(float1 - float2) < std::numeric_limits<float>::epsilon();
 }

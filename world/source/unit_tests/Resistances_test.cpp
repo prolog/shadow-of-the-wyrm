@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "ResistanceFactory.hpp"
 
 TEST(SL_World_Resistances, serialization_id)
 {
@@ -38,4 +39,26 @@ TEST(SL_World_Resistances, serialization_ids_for_individual_types)
   EXPECT_EQ(CLASS_ID_SONIC_RESISTANCE, sr3.get_class_identifier());
   EXPECT_EQ(CLASS_ID_RADIANT_RESISTANCE, rr.get_class_identifier());
   EXPECT_EQ(CLASS_ID_LIGHTNING_RESISTANCE, lr.get_class_identifier());
+}
+
+TEST(SL_World_Resistances, saveload)
+{
+  for (int i = CLASS_ID_SLASH_RESISTANCE; i <= CLASS_ID_LIGHTNING_RESISTANCE; i++)
+  {
+    boost::shared_ptr<Resistance> res1, res2;
+    res1 = ResistanceFactory::create_resistance(static_cast<ClassIdentifier>(i));
+    res2 = ResistanceFactory::create_resistance(static_cast<ClassIdentifier>(i));
+
+    res1->set_value(0.23);
+
+    ostringstream ss;
+
+    res1->serialize(ss);
+
+    istringstream iss(ss.str());
+
+    res2->deserialize(iss);
+
+    EXPECT_TRUE(*res1 == *res2);
+  }
 }

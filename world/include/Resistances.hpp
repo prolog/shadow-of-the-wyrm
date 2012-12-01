@@ -22,6 +22,7 @@ class Resistance : public ISerializable
     Resistance();
     virtual ~Resistance() {};
     Resistance(const DamageType type, const std::string& name_sid, const double value);
+    virtual bool operator==(const Resistance& res);
 
     void set_type(const DamageType new_type);
     DamageType get_type() const;
