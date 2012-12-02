@@ -25,6 +25,8 @@
 class ISerializable
 {
   public:
+    virtual ~ISerializable() {};
+
     virtual bool serialize(std::ostream& stream) = 0;
     virtual bool deserialize(std::istream& stream) = 0;
 

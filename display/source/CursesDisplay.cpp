@@ -68,6 +68,9 @@ WINDOW* CursesDisplay::create_menu(int height, int width, int start_row, int sta
 	menu = newwin(height, width, start_row, start_col);
 	keypad(menu, TRUE);
 
+  // Because menus don't display the player (or have any other meaningful reason to have
+  // the cursor present), turn off the cursor.
+  curs_set(0);
 	wrefresh(menu);
 
 	return menu;
@@ -162,7 +165,7 @@ int CursesDisplay::clear_message_buffer()
   
   // Reset cursor to original position
   move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
-  refresh();
+//  refresh();
 
   return return_val;
 }
@@ -338,7 +341,7 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
   
   disable_colour(colour);
   
-  refresh();
+  //refresh();
 }
 
 /*
@@ -381,6 +384,10 @@ void CursesDisplay::draw(const DisplayMap& current_map)
   }
 
   Coordinate cursor_coord = current_map.get_cursor_coordinate();
+
+  // Since we're drawing the map (with, presumably, the player) we need the cursor present to show the
+  // position of the player's character.
+  curs_set(1);
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
 }
