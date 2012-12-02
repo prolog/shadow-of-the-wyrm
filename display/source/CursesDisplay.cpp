@@ -450,13 +450,13 @@ string CursesDisplay::display_menu(const Menu& current_menu)
 
   // Menu driver for any options window goes here...
 
-  wrefresh(menu_window);
-
   PromptPtr prompt = current_menu.get_prompt();
   prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
   result = prompt_processor.get_prompt(menu_window, wrapper, prompt);
-  
+
+  wrefresh(menu_window);
+
   return result;
 }
 
@@ -728,6 +728,7 @@ void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
   uint prompt_col = (TERMINAL_MAX_COLS - prompt_text.size() - 1);
   mvwprintw(eq_window, TERMINAL_MAX_ROWS-1, prompt_col, prompt_text.c_str());
   
+  refresh();
   wrefresh(eq_window);
 }
 
