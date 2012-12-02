@@ -1621,7 +1621,12 @@ bool Skills::operator==(const Skills& sk)
 
     while (s_it != skills.end())
     {
-      result = result && (s_it->second == s_it2->second);
+      result = result && (*s_it->second == *s_it2->second);
+
+      if (!s_it->second || !s_it2->second)
+      {
+        int trap = 1;
+      }
 
       if (!result) break;
 

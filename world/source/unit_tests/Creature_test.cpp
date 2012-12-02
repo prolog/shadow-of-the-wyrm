@@ -45,3 +45,34 @@ TEST(SL_World_Creature, serialization_id)
   EXPECT_EQ(CLASS_ID_CREATURE, c.get_class_identifier());
 }
 
+TEST(SL_World_Creature, saveload)
+{
+  Creature c, c2;
+
+  Statistic str(12);
+  Statistic dex(11);
+  Statistic agi(10);
+  Statistic hea(11);
+  Statistic intel(12);
+  Statistic will(13);
+  Statistic cha(14);
+
+  c.set_strength(str);
+  c.set_dexterity(dex);
+  c.set_agility(agi);
+  c.set_health(hea);
+  c.set_intelligence(intel);
+  c.set_willpower(will);
+  c.set_charisma(cha);
+
+  ostringstream ss;
+
+  c.serialize(ss);
+
+  istringstream iss(ss.str());
+
+  c2.deserialize(iss);
+
+  EXPECT_TRUE(c == c2);
+}
+
