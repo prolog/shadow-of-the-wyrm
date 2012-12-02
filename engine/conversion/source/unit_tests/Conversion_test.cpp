@@ -34,9 +34,9 @@ TEST(SL_Engine_ConversionRoutines, string_to_float)
   string test_2 = "-3.6";
   string test_3 = "54.95";
 
-  EXPECT_FLOAT_EQ(0.0, String::to_float(test_1));
-  EXPECT_FLOAT_EQ(-3.6, String::to_float(test_2));
-  EXPECT_FLOAT_EQ(54.95, String::to_float(test_3));
+  EXPECT_FLOAT_EQ(0.0f, String::to_float(test_1));
+  EXPECT_FLOAT_EQ(-3.6f, String::to_float(test_2));
+  EXPECT_FLOAT_EQ(54.95f, String::to_float(test_3));
 }
 
 TEST(SL_Engine_ConversionRoutines, char_to_string)
