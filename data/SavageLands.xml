@@ -3451,7 +3451,7 @@
 				<UsageDescriptionSID>VEGETABLE1_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>%</Symbol>
@@ -3464,7 +3464,7 @@
 				<UsageDescriptionSID>VEGETABLE2_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>%</Symbol>
@@ -3477,7 +3477,7 @@
 				<UsageDescriptionSID>VEGETABLE3_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>%</Symbol>
@@ -3490,7 +3490,7 @@
 				<UsageDescriptionSID>VEGETABLE4_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>%</Symbol>
@@ -3503,7 +3503,7 @@
 				<UsageDescriptionSID>VEGETABLE5_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>%</Symbol>
@@ -3516,7 +3516,7 @@
 				<UsageDescriptionSID>VEGETABLE6_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>%</Symbol>
@@ -3529,7 +3529,7 @@
 				<UsageDescriptionSID>FOOD_RATION_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>1</Pounds></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>%</Symbol>
@@ -3546,7 +3546,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_KINGLOWER_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>w</Symbol>
@@ -3559,7 +3559,7 @@
 				<UsageDescriptionSID>WILDFLOWER1_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>w</Symbol>
@@ -3572,7 +3572,7 @@
 				<UsageDescriptionSID>WILDFLOWER2_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>w</Symbol>
@@ -3585,7 +3585,7 @@
 				<UsageDescriptionSID>WILDFLOWER3_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>w</Symbol>
@@ -3598,7 +3598,7 @@
 				<UsageDescriptionSID>WILDFLOWER4_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>w</Symbol>
@@ -3611,7 +3611,7 @@
 				<UsageDescriptionSID>WILDFLOWER5_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>w</Symbol>
@@ -3624,7 +3624,7 @@
 				<UsageDescriptionSID>WILDFLOWER6_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>w</Symbol>
@@ -3637,7 +3637,7 @@
 				<UsageDescriptionSID>FIDDLEHEAD_GREEN_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>f</Symbol>
@@ -3650,7 +3650,7 @@
 				<UsageDescriptionSID>FERN_USAGE_SID</UsageDescriptionSID>
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
-				<WornLocation>4</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>f</Symbol>
