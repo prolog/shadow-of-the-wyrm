@@ -151,7 +151,7 @@ bool Creature::operator==(const Creature& cr)
   result = result && (level == cr.level);
   result = result && ((decision_strategy && cr.decision_strategy) || (!decision_strategy && !cr.decision_strategy));
 
-  if (result)
+  if (result && decision_strategy)
   {
     result = result && (*decision_strategy == *cr.decision_strategy);
   }
