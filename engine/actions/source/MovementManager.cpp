@@ -1,6 +1,7 @@
 #include <boost/make_shared.hpp>
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
+#include "DangerLevelCalculatorFactory.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MessageManager.hpp"
@@ -337,6 +338,8 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
           if (t_it != exit_map.end())
           {
             // JCD FIXME Fill this in later.
+            // Refactor with the appropriate code from the else
+            // clause below.
             descend_success = get_action_cost_value();
           }
           // If it's null, check to see if we're on the world map.
@@ -355,6 +358,14 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
                 // - Generate the map.
                 uint danger_level = creature->get_level().get_current();
                 MapPtr new_map = generator->generate_and_initialize(danger_level);
+
+                // JCD FIXME Refactor into a common fn later.
+                if (new_map->get_map_type() != MAP_TYPE_WORLD)
+                {
+                  // Set the danger level appropriately, using the OLD MAP's map type.
+                  IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
+                  new_map->set_danger(calc->calculate(map, new_map));
+                }
                 
                 // - Set the map's MapExitPtr to point to the previous map.
                 //   But only if it's an overworld map.

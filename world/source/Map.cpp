@@ -14,7 +14,7 @@ using namespace std;
 using namespace boost;
 
 Map::Map(const Map& new_map)
-: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false)
+: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0)
 {
   if (this != &new_map)
   {
@@ -28,7 +28,7 @@ Map::Map(const Map& new_map)
 }
 
 Map::Map(const Dimensions& new_dimensions)
-: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false)
+: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0)
 {
   dimensions = new_dimensions;
   original_dimensions = dimensions;
@@ -74,6 +74,7 @@ bool Map::operator==(const Map& map)
 
   result = result && (map_id == map.map_id);
   result = result && (permanent == map.permanent);
+  result = result && (danger == map.danger);
 
   return result;
 }
@@ -364,6 +365,17 @@ bool Map::get_permanent() const
   return permanent;
 }
 
+// Set/get the danger level used to generate the monsters and items on the map.
+void Map::set_danger(const uint new_danger)
+{
+  danger = new_danger;
+}
+
+uint Map::get_danger() const
+{
+  return danger;
+}
+
 // The format of the key used by the Map class to store its keys.  Some other classes (eg, ray casting) need to make these keys
 // to check existence.
 string Map::make_map_key(const int row, const int col)
@@ -418,6 +430,7 @@ bool Map::serialize(ostream& stream)
 
   Serialize::write_string(stream, map_id);
   Serialize::write_bool(stream, permanent);
+  Serialize::write_uint(stream, danger);
 
   return true;
 }
@@ -483,6 +496,7 @@ bool Map::deserialize(istream& stream)
 
   Serialize::read_string(stream, map_id);
   Serialize::read_bool(stream, permanent);
+  Serialize::read_uint(stream, danger);
 
   return true;
 }
