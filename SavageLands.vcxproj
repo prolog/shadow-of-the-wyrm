@@ -124,11 +124,13 @@
     <ClInclude Include="engine\calculators\include\CreatureCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DamageCalculatorFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HitPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HungerDamageCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\IDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
@@ -139,6 +141,7 @@
     <ClInclude Include="engine\calculators\include\MeleeAndRangedCombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MountainClimbingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\NullSpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\OverworldMapDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhysicalDamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PrimaryPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\RangedAttackSpeedCalculator.hpp" />
@@ -151,7 +154,9 @@
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\UnderworldMapDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\WorldMapDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\combat\include\AttackTypes.hpp" />
     <ClInclude Include="engine\combat\include\CombatConstants.hpp" />
     <ClInclude Include="engine\combat\include\CombatManager.hpp" />
@@ -644,6 +649,7 @@
     <ClCompile Include="engine\calculators\source\CreatureCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DamageCalculatorFactory.cpp" />
+    <ClCompile Include="engine\calculators\source\DangerLevelCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\EvadeCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HitPointsCalculator.cpp" />
@@ -658,6 +664,7 @@
     <ClCompile Include="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MountainClimbingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\OverworldMapDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhysicalDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PrimaryPhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\RangedAttackSpeedCalculator.cpp" />
@@ -670,6 +677,7 @@
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp" />
+    <ClCompile Include="engine\calculators\source\UnderworldMapDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -691,6 +699,9 @@
     <ClCompile Include="engine\calculators\source\unit_tests\MagicToHitCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\OverworldMapDangerLevelCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -700,7 +711,11 @@
     <ClCompile Include="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\UnderworldMapDangerLevelCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\WeaponDifficultyCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\WorldMapDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\combat\source\CombatConstants.cpp" />
     <ClCompile Include="engine\combat\source\CombatManager.cpp" />
     <ClCompile Include="engine\combat\source\CreatureDeathManager.cpp" />

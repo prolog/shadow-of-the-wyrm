@@ -75,6 +75,11 @@ class Map : public ISerializable
     void set_permanent(const bool permenance);
     bool get_permanent() const;
 
+    // Set/get the base danger level.  This is used to determine the danger of the monsters to
+    // generate, as well as the quality of the items.
+    void set_danger(const uint new_danger);
+    uint get_danger() const;
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
@@ -99,6 +104,7 @@ class Map : public ISerializable
     MapExitPtr map_exit;
     std::string map_id;
     bool permanent;
+    uint danger;
 
   private:
     ClassIdentifier internal_class_identifier() const;
