@@ -99,6 +99,8 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
 // Generate the creatures.  Returns true if creatures were created, false otherwise.
 bool Generator::generate_creatures(MapPtr map, const uint danger_level)
 {
+  bool creatures_generated = false;
+
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -112,27 +114,39 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
   if (game)
   {
     ActionManager am = game->get_action_manager_ref();
-    
-    CreaturePtr generated_creature = cgm.generate_creature(am, map_terrain_type, danger_level, rarity);
-    
-    if (generated_creature)
-    {
-      int creature_row = RNG::range(0, rows-1);
-      int creature_col = RNG::range(0, cols-1);
-      
-      // Check to see if the spot is empty, and if a creature can be added there.
-      TilePtr tile = map->at(creature_row, creature_col);
+    uint num_creatures_to_place = RNG::range(1, CreationUtils::random_maximum_creatures(dim.get_y(), dim.get_x()));
+    uint current_creatures_placed = 0;
+    uint unsuccessful_attempts = 0;
 
-      if (MapUtils::is_tile_available_for_creature(tile))
+    while ((current_creatures_placed < num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
+    {
+      CreaturePtr generated_creature = cgm.generate_creature(am, map_terrain_type, danger_level, rarity);
+    
+      if (generated_creature)
       {
-        Coordinate coords(creature_row, creature_col);
-        tile->set_creature(generated_creature);
-        map->add_or_update_location(generated_creature->get_id(), coords);
+        int creature_row = RNG::range(0, rows-1);
+        int creature_col = RNG::range(0, cols-1);
+      
+        // Check to see if the spot is empty, and if a creature can be added there.
+        TilePtr tile = map->at(creature_row, creature_col);
+
+        if (MapUtils::is_tile_available_for_creature(tile))
+        {
+          Coordinate coords(creature_row, creature_col);
+          tile->set_creature(generated_creature);
+          map->add_or_update_location(generated_creature->get_id(), coords);
+          if (!creatures_generated) creatures_generated = true;
+          current_creatures_placed++;
+        }
+        else
+        {
+          unsuccessful_attempts++;
+        }
       }
     }
   }
 
-  return true;
+  return creatures_generated;
 }
 
 bool Generator::update_creatures(MapPtr map, const uint danger_level)
