@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
 #include "CreatureCalculator.hpp"
@@ -304,7 +305,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
   ActionCost action_cost;
   
   if (current_creature)
-  {        
+  {
     DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
 
     if (strategy)
@@ -313,8 +314,29 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
       
       while (!advance)
       {
+        // Comment/un-comment this as necessary to figure out if creatures are taking too long to process turns.
+        // boost::timer::auto_cpu_timer timer;
         MapPtr view_map;
         MapPtr fov_map;
+
+                // Skip the creature's action if it is not the player, and does not have LOS of the player.
+        // This is necessary for speedup purposes when there are lots of creatures on the map.
+        CreaturePtr player = get_current_player();
+
+        if (current_creature->get_is_player() == false)
+        {
+          // Quick and dirty - check to see if the tile distance between the player
+          // and the creature is more than the creature's LOS.
+          int distance = MapUtils::tile_distance_using_chebyshev(current_map->get_location(player->get_id()), current_map->get_location(current_creature->get_id()));
+
+          // This is such a gigantic hack it's scary.  Fix.
+          if (distance > CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH)
+          {
+            action_cost.set_cost(50); // JCD FIXME!
+            advance = true;
+            continue;
+          }
+        }
 
         Coordinate creature_coords = current_map->get_location(current_creature->get_id());
         view_map = ViewMapTranslator::create_view_map_around_tile(current_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
@@ -329,12 +351,11 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           decision_strategy->set_fov_map(fov_map);
         }
         
-        
         if (current_creature->get_is_player())
         {
           update_display(current_creature, current_map, fov_map);
         }
-        
+
         CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
         
         // Clear the stored messages if we're about to receive the player's action.
