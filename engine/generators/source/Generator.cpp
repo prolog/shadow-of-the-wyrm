@@ -118,9 +118,12 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
     uint current_creatures_placed = 0;
     uint unsuccessful_attempts = 0;
 
+    // Generate the list of possible creatures for this map.
+    CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, danger_level, rarity);
+
     while ((current_creatures_placed < num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
     {
-      CreaturePtr generated_creature = cgm.generate_creature(am, map_terrain_type, danger_level, rarity);
+      CreaturePtr generated_creature = cgm.generate_creature(am, generation_map);
     
       if (generated_creature)
       {

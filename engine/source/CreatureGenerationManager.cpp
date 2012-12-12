@@ -9,21 +9,19 @@
 
 using namespace std;
 
-typedef map<string, pair<CreaturePtr, CreatureGenerationValues> > CreatureGenerationMap;
-
 CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, const TileType map_terrain_type, const uint danger_level, const Rarity rarity)
+CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const uint danger_level, const Rarity rarity)
 {
+  CreatureGenerationMap generation_map;
+
   CreaturePtr generated_creature;
   Game* game = Game::instance();
   
   if (game)
   {
-    CreatureGenerationMap generation_map;
-    
     CreatureMap creatures = game->get_creatures_ref();
     CreatureGenerationValuesMap cgv_map = game->get_creature_generation_values_ref();
     
@@ -39,7 +37,18 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, cons
         generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
       }
     }
-    
+  }
+  
+  return generation_map;
+}
+
+CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationMap& generation_map)
+{
+  CreaturePtr generated_creature;
+  Game* game = Game::instance();
+  
+  if (game)
+  {
     // Iterate through the generation map, and attempt to generate a creature with probability P,
     // where P = (danger level / danger_level + num_creatures_in_map)
     uint p_denominator = 0;
@@ -68,6 +77,7 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, cons
       {
         string creature_id = c_it->first;
         generated_creature = CreatureFactory::create_by_creature_id(am, creature_id);
+        break;
       }
     }
   }
