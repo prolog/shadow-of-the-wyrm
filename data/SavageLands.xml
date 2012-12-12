@@ -2535,7 +2535,40 @@
 					<NumDice>3</NumDice>
 					<NumSides>2</NumSides>
 				</HP>
-				<Exp>6</Exp>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>2</Soak>
+		</Creature>
+		<Creature id="fox">
+			<ShortDescriptionSID>FOX_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FOX_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>f</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>4</NumSides>
+				</HP>
+				<Exp>2</Exp>
 			</CreatureGeneration>
 			<Level>1</Level>
 			<Damage>
