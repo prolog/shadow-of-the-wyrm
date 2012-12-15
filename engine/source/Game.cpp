@@ -329,10 +329,11 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           // and the creature is more than the creature's LOS.
           int distance = MapUtils::tile_distance_using_chebyshev(current_map->get_location(player->get_id()), current_map->get_location(current_creature->get_id()));
 
-          // This is such a gigantic hack it's scary.  Fix.
+          // For now, burn a creature's action (do nothing!) if the creature falls outside
+          // of the player's LOS.
           if (distance > CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH)
           {
-            action_cost.set_cost(50); // JCD FIXME!
+            action_cost.set_cost(current_creature->get_speed().get_current());
             advance = true;
             continue;
           }

@@ -146,6 +146,10 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
           unsuccessful_attempts++;
         }
       }
+      else
+      {
+        unsuccessful_attempts++;
+      }
     }
   }
 
