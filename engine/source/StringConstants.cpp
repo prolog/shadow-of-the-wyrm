@@ -812,6 +812,18 @@ const string TileTextKeys::TILE_DESC_SITE_OF_DEATH  = "TILE_DESC_SITE_OF_DEATH";
 const string TileTextKeys::TILE_DESC_TEMPLE         = "TILE_DESC_TEMPLE";
 const string TileTextKeys::TILE_DESC_DAIS           = "TILE_DESC_DAIS";
 
+// Text keys for tile extra descriptions
+TileExtraDescriptionKeys::TileExtraDescriptionKeys()
+{
+}
+
+TileExtraDescriptionKeys::~TileExtraDescriptionKeys()
+{
+}
+
+const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD = "TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD";
+const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON   = "TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON";
+
 // Text keys for player/creature actions
 ActionTextKeys::ActionTextKeys()
 {

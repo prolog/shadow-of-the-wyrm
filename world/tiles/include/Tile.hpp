@@ -24,6 +24,13 @@ class Tile : public ISerializable
     virtual bool operator==(const Tile& tile);
     
     virtual std::string get_tile_description_sid() const = 0;
+
+    // The "extra" description is a description that is always shown when
+    // moving over a tile, in addition to any other description that is
+    // shown.  Can be used for signposts, warnings, etc.
+    virtual void set_extra_description_sid(const std::string& new_extra_description_sid);
+    virtual std::string get_extra_description_sid() const;
+    virtual bool has_extra_description() const;
     
     // By default, this is false, but certain tiles (such as overland tiles, staircases, etc.)
     // will be shown on each move.
@@ -80,6 +87,8 @@ class Tile : public ISerializable
     bool illuminated;
     bool explored;
     bool viewed;
+
+    std::string extra_description_sid;
 
     // This is defined by each class, and shouldn't be overridden
     // by means of a set function.
