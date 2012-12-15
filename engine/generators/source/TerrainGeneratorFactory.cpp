@@ -5,6 +5,7 @@
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
 #include "Game.hpp"
+#include "GraveyardGeneratorFactory.hpp"
 #include "HillsGenerator.hpp"
 #include "MarshGenerator.hpp"
 #include "MountainsGenerator.hpp"
@@ -87,6 +88,9 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       generator = SettlementGeneratorFactory::create_settlement_generator(settlement_type, base_map);
     }
       break;
+    case TILE_TYPE_GRAVEYARD:
+      generator = GraveyardGeneratorFactory::create_scattered_graveyard_generator(map_exit_id, true);
+      break;
     case TILE_TYPE_DUNGEON_COMPLEX:
       generator = boost::make_shared<DungeonGenerator>(map_exit_id);
       break;
@@ -125,7 +129,6 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TILE_TYPE_DOWN_STAIRCASE:
     case TILE_TYPE_BARRACKS:
     case TILE_TYPE_CASTLE:
-    case TILE_TYPE_GRAVEYARD:
     case TILE_TYPE_KEEP:
     case TILE_TYPE_LIBRARY:
     case TILE_TYPE_DAIS:
