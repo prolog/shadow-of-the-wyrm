@@ -11,6 +11,7 @@
 #include "MapUtils.hpp"
 #include "SkillManager.hpp"
 #include "TerrainGeneratorFactory.hpp"
+#include "TileDescriber.hpp"
 #include "TileMovementConfirmation.hpp"
 
 using namespace std;
@@ -445,10 +446,10 @@ void MovementManager::add_message_about_tile_if_necessary(const CreaturePtr& cre
 {
   if (creature && tile && creature->get_is_player())
   {
-    if (tile->display_description_on_arrival())
+    if (tile->display_description_on_arrival() || tile->has_extra_description())
     {
-      string tile_desc = StringTable::get(tile->get_tile_description_sid());
-      manager->add_new_message(tile_desc);
+      TileDescriber td(tile);
+      manager->add_new_message(td.describe());
     }
   }
 }

@@ -33,6 +33,7 @@ bool Tile::operator==(const Tile& tile)
   result = result && (illuminated == tile.illuminated);
   result = result && (explored == tile.explored);
   result = result && (viewed == tile.viewed);
+  result = result && (extra_description_sid == tile.extra_description_sid);
   result = result && (tile_type == tile.tile_type);
   result = result && (tile_subtype == tile.tile_subtype);
   result = result && ((creature && tile.creature) || (!creature && !tile.creature));
@@ -76,6 +77,21 @@ bool Tile::operator==(const Tile& tile)
 bool Tile::display_description_on_arrival() const
 {
   return false;
+}
+
+void Tile::set_extra_description_sid(const string& new_extra_description_sid)
+{
+  extra_description_sid = new_extra_description_sid;
+}
+
+string Tile::get_extra_description_sid() const
+{
+  return extra_description_sid;
+}
+
+bool Tile::has_extra_description() const
+{
+  return (!extra_description_sid.empty());
 }
 
 void Tile::set_default_properties()
@@ -218,6 +234,7 @@ bool Tile::serialize(ostream& stream)
   Serialize::write_bool(stream, illuminated);
   Serialize::write_bool(stream, explored);
   Serialize::write_bool(stream, viewed);
+  Serialize::write_string(stream, extra_description_sid);
   Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
 
@@ -241,7 +258,7 @@ bool Tile::serialize(ostream& stream)
     Serialize::write_class_id(stream, CLASS_ID_NULL);
   }
 
-  // items
+  items.serialize(stream);
 
   Serialize::write_size_t(stream, map_exits.size());
 
@@ -271,6 +288,7 @@ bool Tile::deserialize(istream& stream)
   Serialize::read_bool(stream, illuminated);
   Serialize::read_bool(stream, explored);
   Serialize::read_bool(stream, viewed);
+  Serialize::read_string(stream, extra_description_sid);
   Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
 
@@ -293,7 +311,7 @@ bool Tile::deserialize(istream& stream)
     if (!feature->deserialize(stream)) return false;
   }
 
-  // items
+  items.deserialize(stream);
 
   size_t map_size;
   Serialize::read_size_t(stream, map_size);
