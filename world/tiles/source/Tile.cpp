@@ -33,10 +33,11 @@ bool Tile::operator==(const Tile& tile)
   result = result && (illuminated == tile.illuminated);
   result = result && (explored == tile.explored);
   result = result && (viewed == tile.viewed);
-  result = result && (extra_description_sid == tile.extra_description_sid);
   result = result && (tile_type == tile.tile_type);
   result = result && (tile_subtype == tile.tile_subtype);
   result = result && ((creature && tile.creature) || (!creature && !tile.creature));
+
+  result = result && (additional_properties == tile.additional_properties);
 
   if (result && creature)
   {
@@ -81,17 +82,56 @@ bool Tile::display_description_on_arrival() const
 
 void Tile::set_extra_description_sid(const string& new_extra_description_sid)
 {
-  extra_description_sid = new_extra_description_sid;
+  set_additional_property(TILE_PROPERTY_EXTRA_DESCRIPTION_SID, new_extra_description_sid);
 }
 
 string Tile::get_extra_description_sid() const
 {
-  return extra_description_sid;
+  return get_additional_property(TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
 }
 
 bool Tile::has_extra_description() const
 {
-  return (!extra_description_sid.empty());
+  return has_additional_property(TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
+}
+
+void Tile::set_map_generator_id(const string& map_generator_id)
+{
+  set_additional_property(TILE_PROPERTY_MAP_GENERATOR_ID, map_generator_id);
+}
+
+string Tile::get_map_generator_id() const
+{
+  return get_additional_property(TILE_PROPERTY_MAP_GENERATOR_ID);
+}
+
+bool Tile::has_map_generator_id() const
+{
+  return has_additional_property(TILE_PROPERTY_MAP_GENERATOR_ID);
+}
+
+void Tile::set_additional_property(const TilePropertyType property_type, const string& property_value)
+{
+  additional_properties[property_type] = property_value;
+}
+
+string Tile::get_additional_property(const TilePropertyType property_type) const
+{
+  string property_value;
+
+  TileProperties::const_iterator t_it = additional_properties.find(property_type);
+  if (t_it != additional_properties.end())
+  {
+    property_value = t_it->second;
+  }
+
+  return property_value;
+}
+
+bool Tile::has_additional_property(const TilePropertyType property_type) const
+{
+  string property_value = get_additional_property(property_type);
+  return (!property_value.empty());
 }
 
 void Tile::set_default_properties()
@@ -234,9 +274,20 @@ bool Tile::serialize(ostream& stream)
   Serialize::write_bool(stream, illuminated);
   Serialize::write_bool(stream, explored);
   Serialize::write_bool(stream, viewed);
-  Serialize::write_string(stream, extra_description_sid);
   Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
+
+  size_t addl_prop_size = additional_properties.size();
+  Serialize::write_size_t(stream, addl_prop_size);
+
+  if (addl_prop_size > 0)
+  {
+    BOOST_FOREACH(TileProperties::value_type& tile_property, additional_properties)
+    {
+      Serialize::write_enum(stream, tile_property.first);
+      Serialize::write_string(stream, tile_property.second);
+    }
+  }
 
   if (creature)
   {
@@ -288,9 +339,27 @@ bool Tile::deserialize(istream& stream)
   Serialize::read_bool(stream, illuminated);
   Serialize::read_bool(stream, explored);
   Serialize::read_bool(stream, viewed);
-  Serialize::read_string(stream, extra_description_sid);
   Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
+
+  size_t properties_size;
+  Serialize::read_size_t(stream, properties_size);
+
+  if (properties_size > 0)
+  {
+    additional_properties.clear();
+
+    for (unsigned int i = 0; i < properties_size; i++)
+    {
+      TilePropertyType tile_property;
+      Serialize::read_enum(stream, tile_property);
+
+      string property_value;
+      Serialize::read_string(stream, property_value);
+
+      additional_properties[tile_property] = property_value;
+    }
+  }
 
   ClassIdentifier creature_clid;
   Serialize::read_class_id(stream, creature_clid);

@@ -2004,6 +2004,12 @@
     <ClInclude Include="engine\calculators\include\UnderworldMapDangerLevelCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\TileProperties.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TileIDs.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3820,6 +3826,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\DangerLevelCalculatorFactory.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\TileIDs.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

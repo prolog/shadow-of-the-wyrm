@@ -821,6 +821,7 @@ TileExtraDescriptionKeys::~TileExtraDescriptionKeys()
 {
 }
 
+const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN           = "TILE_EXTRA_DESCRIPTION_ISEN_DUN";
 const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD = "TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD";
 const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON   = "TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON";
 

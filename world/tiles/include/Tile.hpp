@@ -9,6 +9,7 @@
 #include "Item.hpp"
 #include "ISerializable.hpp"
 #include "MapExit.hpp"
+#include "TileProperties.hpp"
 
 typedef std::map<Direction, MapExitPtr> TileExitMap;
 
@@ -31,6 +32,19 @@ class Tile : public ISerializable
     virtual void set_extra_description_sid(const std::string& new_extra_description_sid);
     virtual std::string get_extra_description_sid() const;
     virtual bool has_extra_description() const;
+
+    // The map generator ID is a unique ID used to identify a generator for a
+    // particular tile.  In most cases, this will not be needed, and the default
+    // generator (based on tile type, etc) should be used instead.  But for
+    // cases where something unique is needed, this is the mechanism to use.
+    virtual void set_map_generator_id(const std::string& map_generator_id);
+    virtual std::string get_map_generator_id() const;
+    virtual bool has_map_generator_id() const;
+
+    // The generic way to set additional properties.
+    virtual void set_additional_property(const TilePropertyType property_type, const std::string& property_value);
+    virtual std::string get_additional_property(const TilePropertyType property_type) const;
+    virtual bool has_additional_property(const TilePropertyType property_type) const;
     
     // By default, this is false, but certain tiles (such as overland tiles, staircases, etc.)
     // will be shown on each move.
@@ -88,7 +102,7 @@ class Tile : public ISerializable
     bool explored;
     bool viewed;
 
-    std::string extra_description_sid;
+    TileProperties additional_properties;
 
     // This is defined by each class, and shouldn't be overridden
     // by means of a set function.
