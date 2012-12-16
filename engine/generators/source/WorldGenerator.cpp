@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "WorldGenerator.hpp"
 #include "TileGenerator.hpp"
+#include "TileIDs.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "CellularAutomataGenerator.hpp"
@@ -91,13 +92,15 @@ void WorldGenerator::generate_little_island(MapPtr map)
   TilePtr forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-4, width-4, forest_tile);
 
-  // JCD FIXME: Add the village of Isen Dun here.
-  forest_tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
-  map->insert(height-3, width-4, forest_tile);
+  // Village of Isen Dun.
+  TilePtr isen_dun = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD, false);
+  isen_dun->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN);
+  isen_dun->set_map_generator_id(TileMapGeneratorIDs::MAP_GENERATOR_ID_ISEN_DUN);
+  map->insert(height-3, width-4, isen_dun);
 
   // Define the starting location:
   Coordinate c;
-  c.first  = height - 3;
+  c.first  = height - 4;
   c.second = width - 4;
   map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
 
@@ -115,7 +118,7 @@ void WorldGenerator::generate_little_island(MapPtr map)
   map->insert(height-2, width-2, village_dungeon);
 }
 
-// The "last island", where the Big Baddy resides.
+// The "last island", where Amaurosis resides.
 void WorldGenerator::generate_far_reaches(MapPtr map)
 {
   for (int current_height = 0; current_height < 4; current_height++)
@@ -131,34 +134,35 @@ void WorldGenerator::generate_far_reaches(MapPtr map)
   //   .....
   //   ...
 
-  TilePtr tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  TilePtr tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(1, 2, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(1, 3, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(1, 4, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(2, 1, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  // Amaurosis' lair.
+  tile = TileGenerator::generate(TILE_TYPE_CAVERN);
   map->insert(2, 2, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(2, 3, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(2, 4, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(3, 1, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(3, 2, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(3, 3, tile);
 }
 

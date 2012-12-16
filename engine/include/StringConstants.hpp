@@ -572,6 +572,7 @@ class TileTextKeys
 class TileExtraDescriptionKeys
 {
   public:
+    static const std::string TILE_EXTRA_DESCRIPTION_ISEN_DUN;
     static const std::string TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD;
     static const std::string TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON;
 
