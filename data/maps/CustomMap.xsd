@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:maps:1.0.0" targetNamespace="urn:savage_lands:maps:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+<xs:element name="CustomMap">
+	<xs:annotation><xs:documentation>XML element describing the custom maps that describe fixed locations within Savage Lands.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:Dimensions"/>
+			<!-- This is a string of tiles, rows x cols, that represents a particular tile type.  The map is created by
+				 adding the corresponding tile to the corresponding row/col.  Whitespace is ignored, as is any
+				 unrecognized character. -->
+			<xs:element name="Tiles" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Dimensions">
+	<xs:annotation><xs:documentation>The dimensions of the map.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Rows" type="xs:unsignedInt"/>
+			<xs:element name="Columns" type="xs:unsignedInt"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+</xs:schema>
