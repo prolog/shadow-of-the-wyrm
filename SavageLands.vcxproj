@@ -406,6 +406,7 @@
     <ClInclude Include="engine\XML\include\XMLInitialItemReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLItemReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLItemsReaders.hpp" />
+    <ClInclude Include="engine\XML\include\XMLMapReaders.hpp" />
     <ClInclude Include="engine\XML\include\XMLPlantReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLPotionReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLRacesReader.hpp" />
@@ -1039,6 +1040,7 @@
     <ClCompile Include="engine\XML\source\XMLInitialItemReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLItemReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLItemsReaders.cpp" />
+    <ClCompile Include="engine\XML\source\XMLMapReaders.cpp" />
     <ClCompile Include="engine\XML\source\XMLPlantReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLPotionReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLRacesReader.cpp" />

@@ -2010,6 +2010,9 @@
     <ClInclude Include="world\tiles\include\TileIDs.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLMapReaders.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3829,6 +3832,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\TileIDs.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLMapReaders.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
