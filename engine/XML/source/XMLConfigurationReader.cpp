@@ -3,6 +3,7 @@
 #include <vector>
 #include "CreatureGenerationValues.hpp"
 #include "DisplayTile.hpp"
+#include "XMLMapReaders.hpp"
 
 using namespace std;
 
@@ -52,6 +53,13 @@ vector<DisplayTile> XMLConfigurationReader::get_tile_info()
   XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(root, "Tiles");
   vector<DisplayTile> tile_info = tiles_reader.get_tiles(tiles_node);
   return tile_info;
+}
+
+vector<MapPtr> XMLConfigurationReader::get_custom_maps()
+{
+  XMLMapsReader maps_reader;
+
+  return maps_reader.get_custom_maps();
 }
 
 void XMLConfigurationReader::initialize_parser()

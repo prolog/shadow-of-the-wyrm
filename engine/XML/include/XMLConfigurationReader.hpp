@@ -22,6 +22,7 @@ class XMLConfigurationReader
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
     ItemMap get_items();    
     std::vector<DisplayTile> get_tile_info();
+    std::vector<MapPtr> get_custom_maps();
 
   protected:
     void initialize_parser();
