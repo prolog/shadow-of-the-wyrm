@@ -16,6 +16,7 @@
 #include "RaceSelectionScreen.hpp"
 #include "Serialization.hpp"
 #include "SexSelectionScreen.hpp"
+#include "StringConstants.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;
@@ -134,7 +135,7 @@ void SavageLandsEngine::setup_game()
   
   if (game)
   {
-    XMLConfigurationReader reader("data/SavageLands.xml");
+    XMLConfigurationReader reader(FileConstants::XML_CONFIGURATION_FILE);
 
     // Read the races, classes, and items from the configuration file.
     // Items need to be read first so that each class's default items can be loaded.

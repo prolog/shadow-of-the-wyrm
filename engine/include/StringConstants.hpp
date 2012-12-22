@@ -11,6 +11,19 @@
 #include "Weapon.hpp"
 #include "Ammunition.hpp"
 
+// Constant filenames, patterns, etc.
+class FileConstants
+{
+  public:
+    static const std::string XML_CONFIGURATION_FILE;
+    static const std::string SAVEFILE_PATTERN;
+    static const std::string CUSTOM_MAPS_PATTERN;
+
+  protected:
+    FileConstants();
+    ~FileConstants();
+};
+
 // String constants related to the player.
 // Note that these are actual string constants that are not meant to be text keys.
 class PlayerConstants
