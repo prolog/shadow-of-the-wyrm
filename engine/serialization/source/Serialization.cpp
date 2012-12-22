@@ -131,7 +131,7 @@ vector<pair<string, string>> Serialization::get_save_file_names()
   path save_file_filter(".");
   directory_iterator end_it;
 
-  boost::regex e(".(sls)$");
+  boost::regex e(FileConstants::SAVEFILE_PATTERN);
 
   if (exists(save_file_filter))
   {

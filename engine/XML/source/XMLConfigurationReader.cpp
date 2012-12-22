@@ -10,7 +10,7 @@ using namespace std;
 XMLConfigurationReader::XMLConfigurationReader(const std::string& xml_filename)
 : filename(xml_filename)
 {
-  initialize_parser();
+  initialize_parser(xml_filename);
 }
 
 DeityMap XMLConfigurationReader::get_deities()
@@ -62,10 +62,10 @@ vector<MapPtr> XMLConfigurationReader::get_custom_maps()
   return maps_reader.get_custom_maps();
 }
 
-void XMLConfigurationReader::initialize_parser()
+void XMLConfigurationReader::initialize_parser(const string& xml_filename)
 {
   XMLFileReader reader;
-  root = reader.get_xml_from_file("data/SavageLands.xml");
+  root = reader.get_xml_from_file(xml_filename);
 }
 
 

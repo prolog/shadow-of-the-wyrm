@@ -25,7 +25,7 @@ class XMLConfigurationReader
     std::vector<MapPtr> get_custom_maps();
 
   protected:
-    void initialize_parser();
+    void initialize_parser(const std::string& xml_filename);
 
     // Member variables for the base XML configuration file parsing.
     //xercesc::XercesDOMParser* parser;
