@@ -33,13 +33,14 @@ class Tile : public ISerializable
     virtual std::string get_extra_description_sid() const;
     virtual bool has_extra_description() const;
 
-    // The map generator ID is a unique ID used to identify a generator for a
-    // particular tile.  In most cases, this will not be needed, and the default
-    // generator (based on tile type, etc) should be used instead.  But for
-    // cases where something unique is needed, this is the mechanism to use.
-    virtual void set_map_generator_id(const std::string& map_generator_id);
-    virtual std::string get_map_generator_id() const;
-    virtual bool has_map_generator_id() const;
+    // The custom map ID is a unique ID used to identify the pre-generated map
+    // for a particular tile.  In most cases, this will not be needed, and the 
+    // default generator (based on tile type, etc) should be used instead.  
+    // But for cases where something unique is needed, this is the mechanism
+    // to use.
+    virtual void set_custom_map_id(const std::string& custom_map_id);
+    virtual std::string get_custom_map_id() const;
+    virtual bool has_custom_map_id() const;
 
     // The generic way to set additional properties.
     virtual void set_additional_property(const TilePropertyType property_type, const std::string& property_value);

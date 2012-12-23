@@ -36,6 +36,10 @@ class Map : public ISerializable
 		// Other get_creature... fns here.
 		// Other remove_creature... fns here.
 
+    // Shouldn't generally be called - used by the XML readers to directly set
+    // the tiles.
+    void set_tiles(const TilesMap& new_tiles);
+
 		bool insert(int row, int col, boost::shared_ptr<Tile> tile);
 		boost::shared_ptr<Tile> at(int row, int col);
 		boost::shared_ptr<Tile> at(const Coordinate& c);
@@ -83,13 +87,13 @@ class Map : public ISerializable
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
+    static TileKey make_map_key(const int row, const int col);
+    static Coordinate convert_map_key_to_coordinate(const TileKey& map_key);
+
 	protected:
     friend class SL_Engine_Map;
     
 		void create_creatures();		
-
-    static TileKey make_map_key(const int row, const int col);
-    static Coordinate convert_map_key_to_coordinate(const TileKey& map_key);
 
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.

@@ -95,7 +95,7 @@ void WorldGenerator::generate_little_island(MapPtr map)
   // Village of Isen Dun.
   TilePtr isen_dun = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD, false);
   isen_dun->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN);
-  isen_dun->set_map_generator_id(TileMapGeneratorIDs::MAP_GENERATOR_ID_ISEN_DUN);
+  isen_dun->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_ISEN_DUN);
   map->insert(height-3, width-4, isen_dun);
 
   // Define the starting location:

@@ -38,6 +38,12 @@ void XML::tear_down()
   }
 }
 
+// JCD FIXME: This is a hack.
+void XML::set_namespace(const std::string& new_ns)
+{
+  xml_namespace = new_ns;
+}
+
 string XML::get_namespace()
 {
   return xml_namespace;

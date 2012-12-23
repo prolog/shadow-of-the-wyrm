@@ -188,6 +188,11 @@ void Map::remove_creature(const string& creature_id)
   }
 }
 
+void Map::set_tiles(const TilesMap& new_tiles)
+{
+  tiles = new_tiles;
+}
+
 bool Map::insert(int row, int col, TilePtr tile)
 {
   string key = make_map_key(row, col);
