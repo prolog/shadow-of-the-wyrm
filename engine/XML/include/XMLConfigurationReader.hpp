@@ -11,10 +11,14 @@
 #include "Race.hpp"
 #include "Class.hpp"
 
+// The XMLConfigurationReader provides methods for reading in data structures
+// based on XML configuration files of various sorts.  It is the responsibility
+// of the caller to know when to "switch" files by means of "set_new_file".
 class XMLConfigurationReader
 {
   public:
     XMLConfigurationReader(const std::string& xml_filename);
+    void set_new_file(const std::string& xml_filename);
 
     DeityMap get_deities();
     RaceMap get_races();
@@ -22,13 +26,12 @@ class XMLConfigurationReader
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
     ItemMap get_items();    
     std::vector<DisplayTile> get_tile_info();
-    std::vector<MapPtr> get_custom_maps();
+    std::vector<MapPtr> get_custom_maps(const std::string& directory, const std::string& filename_pattern);
 
   protected:
     void initialize_parser(const std::string& xml_filename);
 
     // Member variables for the base XML configuration file parsing.
-    //xercesc::XercesDOMParser* parser;
     std::string filename;
     XMLNode root;
 

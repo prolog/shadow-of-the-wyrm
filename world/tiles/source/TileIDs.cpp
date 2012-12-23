@@ -2,14 +2,14 @@
 
 using namespace std;
 
-TileMapGeneratorIDs::TileMapGeneratorIDs()
+TileCustomMapIDs::TileCustomMapIDs()
 {
 }
 
-TileMapGeneratorIDs::~TileMapGeneratorIDs()
+TileCustomMapIDs::~TileCustomMapIDs()
 {
 }
 
-const string TileMapGeneratorIDs::MAP_GENERATOR_ID_ISEN_DUN = "MAP_GENERATOR_ID_ISEN_DUN";
-const string TileMapGeneratorIDs::MAP_GENERATOR_ID_LAST_ISLAND_LAIR = "MAP_GENERATOR_ID_LAST_ISLAND_LAIR";
+const string TileCustomMapIDs::CUSTOM_MAP_ID_ISEN_DUN = "CUSTOM_MAP_ID_ISEN_DUN";
+const string TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR = "CUSTOM_MAP_ID_LAST_ISLAND_LAIR";
 

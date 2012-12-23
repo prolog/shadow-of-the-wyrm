@@ -45,6 +45,10 @@ class Game : public ISerializable
     
     void set_items(const ItemMap& game_items);
     const ItemMap& get_items_ref() const;
+
+    void set_custom_maps(const std::vector<MapPtr>& custom_maps);
+    // No getter - once the maps are in the registry, there's no way to determine which are custom.
+    // (Realistically, nor should there need to be.)
     
     MapPtr get_current_map() const;
 

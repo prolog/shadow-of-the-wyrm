@@ -62,6 +62,7 @@ class XML
     static void initialize();
     static void tear_down();
     
+    static void set_namespace(const std::string& new_ns);
     static std::string get_namespace();
     
   protected:

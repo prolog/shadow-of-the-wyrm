@@ -95,19 +95,19 @@ bool Tile::has_extra_description() const
   return has_additional_property(TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
 }
 
-void Tile::set_map_generator_id(const string& map_generator_id)
+void Tile::set_custom_map_id(const string& map_generator_id)
 {
-  set_additional_property(TILE_PROPERTY_MAP_GENERATOR_ID, map_generator_id);
+  set_additional_property(TILE_PROPERTY_CUSTOM_MAP_ID, map_generator_id);
 }
 
-string Tile::get_map_generator_id() const
+string Tile::get_custom_map_id() const
 {
-  return get_additional_property(TILE_PROPERTY_MAP_GENERATOR_ID);
+  return get_additional_property(TILE_PROPERTY_CUSTOM_MAP_ID);
 }
 
-bool Tile::has_map_generator_id() const
+bool Tile::has_custom_map_id() const
 {
-  return has_additional_property(TILE_PROPERTY_MAP_GENERATOR_ID);
+  return has_additional_property(TILE_PROPERTY_CUSTOM_MAP_ID);
 }
 
 void Tile::set_additional_property(const TilePropertyType property_type, const string& property_value)

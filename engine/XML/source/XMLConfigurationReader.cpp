@@ -1,11 +1,14 @@
-#include "XMLConfigurationReader.hpp"
 #include <utility>
 #include <vector>
+#include <boost/filesystem.hpp>
+#include <boost/regex.hpp>
 #include "CreatureGenerationValues.hpp"
 #include "DisplayTile.hpp"
 #include "XMLMapReaders.hpp"
+#include "XMLConfigurationReader.hpp"
 
 using namespace std;
+using namespace boost::filesystem;
 
 XMLConfigurationReader::XMLConfigurationReader(const std::string& xml_filename)
 : filename(xml_filename)
@@ -55,11 +58,43 @@ vector<DisplayTile> XMLConfigurationReader::get_tile_info()
   return tile_info;
 }
 
-vector<MapPtr> XMLConfigurationReader::get_custom_maps()
+vector<MapPtr> XMLConfigurationReader::get_custom_maps(const string& directory, const string& filename_pattern)
 {
-  XMLMapsReader maps_reader;
+  vector<MapPtr> custom_maps;
+  XMLMapReader map_reader;
 
-  return maps_reader.get_custom_maps();
+  directory_iterator end_it;
+  boost::regex e(filename_pattern);
+
+  for (directory_iterator d_it(directory); d_it != end_it; d_it++)
+  {
+    string filename = d_it->path().string();
+
+    if (boost::regex_search(filename, e))
+    {
+      initialize_parser(filename);
+
+      if (!root.is_null())
+      {
+        string xmlns = XMLUtils::get_attribute_value(root, "xmlns");
+        XML::set_namespace(xmlns); // these use a different ns than the main savage lands xml.
+      }
+
+      MapPtr custom_map = map_reader.get_custom_map(root);
+
+      if (custom_map)
+      {
+        custom_maps.push_back(custom_map);
+      }
+    }
+  }
+
+  return custom_maps;
+}
+
+void XMLConfigurationReader::set_new_file(const string& xml_filename)
+{
+  initialize_parser(xml_filename);
 }
 
 void XMLConfigurationReader::initialize_parser(const string& xml_filename)

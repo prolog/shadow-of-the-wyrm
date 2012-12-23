@@ -137,6 +137,15 @@ const ItemMap& Game::get_items_ref() const
   return items;
 }
 
+void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
+{
+  BOOST_FOREACH(MapPtr custom_map, custom_maps)
+  {
+    string id = custom_map->get_map_id();
+    map_registry.set_map(id, custom_map);
+  }
+}
+
 void Game::set_tile_display_info(const vector<DisplayTile>& game_tiles)
 {
   tile_info = game_tiles;
