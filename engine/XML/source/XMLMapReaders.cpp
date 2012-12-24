@@ -22,7 +22,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     Dimensions dim = parse_dimensions(dimensions_node);
     TilesMap tiles = parse_tiles(tiles_node, dim.get_y(), dim.get_x());
 
-    MapPtr custom_map = MapPtr(new Map(dim));
+    custom_map = MapPtr(new Map(dim));
     
     custom_map->set_map_id(map_id);
     custom_map->set_tiles(tiles);
@@ -86,6 +86,10 @@ TilesMap XMLMapReader::parse_tiles(const XMLNode& tiles_node, const int rows, co
       }
     }
   }
+
+  // JCD FIXME REMOVE
+  TilePtr test2 = tiles.at("19-78");
+  TilePtr test = tiles.at("19-79");
 
   return tiles;
 }

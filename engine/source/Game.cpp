@@ -328,7 +328,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         MapPtr view_map;
         MapPtr fov_map;
 
-                // Skip the creature's action if it is not the player, and does not have LOS of the player.
+        // Skip the creature's action if it is not the player, and does not have LOS of the player.
         // This is necessary for speedup purposes when there are lots of creatures on the map.
         CreaturePtr player = get_current_player();
 
