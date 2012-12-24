@@ -10,6 +10,7 @@
 				 adding the corresponding tile to the corresponding row/col.  Whitespace is ignored, as is any
 				 unrecognized character. -->
 			<xs:element name="Tiles" type="xs:string"/>
+			<xs:element name="PlayerStart" type="tns:Coord" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
@@ -23,6 +24,14 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<!-- Complex Types -->
+<xs:complexType name="Coord">
+	<xs:annotation><xs:documentation>A (y,x) coordinate.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Row" type="xs:unsignedInt"/>
+		<xs:element name="Col" type="xs:unsignedInt"/>
+	</xs:sequence>
+</xs:complexType>
 <!-- Simple Types -->
 <xs:simpleType name="MapType">
 	<xs:annotation>

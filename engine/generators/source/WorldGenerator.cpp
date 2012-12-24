@@ -147,8 +147,10 @@ void WorldGenerator::generate_far_reaches(MapPtr map)
   map->insert(2, 1, tile);
 
   // Amaurosis' lair.
-  tile = TileGenerator::generate(TILE_TYPE_CAVERN);
-  map->insert(2, 2, tile);
+  TilePtr lair_tile = TileGenerator::generate(TILE_TYPE_CAVERN);
+  lair_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR);
+  lair_tile->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR);
+  map->insert(2, 2, lair_tile);
 
   tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(2, 3, tile);
