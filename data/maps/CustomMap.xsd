@@ -5,6 +5,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Dimensions"/>
+			<xs:element name="MapType" type="tns:MapType"/>
 			<!-- This is a string of tiles, rows x cols, that represents a particular tile type.  The map is created by
 				 adding the corresponding tile to the corresponding row/col.  Whitespace is ignored, as is any
 				 unrecognized character. -->
@@ -22,4 +23,21 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<!-- Simple Types -->
+<xs:simpleType name="MapType">
+	<xs:annotation>
+		<xs:documentation>
+			See: world/include/MapTypes.hpp
+			
+			0 = World (do not use)
+			1 = Overworld (forests, fields, villages, etc)
+			2 = Underworld (caverns, dungeons, etc)
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:enumeration value="0"/>
+		<xs:enumeration value="1"/>
+		<xs:enumeration value="2"/>
+	</xs:restriction>
+</xs:simpleType>
 </xs:schema>
