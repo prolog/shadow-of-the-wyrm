@@ -17,11 +17,13 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
   {
     XMLNode dimensions_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Dimensions");
     XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Tiles");
+    XMLNode player_start_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "PlayerStart");
     string map_id = XMLUtils::get_attribute_value(custom_map_node, "id");
     MapType map_type = static_cast<MapType>(XMLUtils::get_child_node_int_value(custom_map_node, "MapType"));
 
     Dimensions dim = parse_dimensions(dimensions_node);
     TilesMap tiles = parse_tiles(tiles_node, dim.get_y(), dim.get_x());
+    Coordinate player_start_location = parse_coordinate(player_start_node);
 
     custom_map = MapPtr(new Map(dim));
     
@@ -29,6 +31,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     custom_map->set_map_type(map_type);
     custom_map->set_tiles(tiles);
     custom_map->set_permanent(true); // custom maps are always permanent.
+    custom_map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, player_start_location);
   }
 
   return custom_map;
@@ -127,4 +130,18 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   }
 
   return tile;
+}
+
+// Given a node of type Coord in the schema, return an engine Coordinate.
+Coordinate XMLMapReader::parse_coordinate(const XMLNode& coord_node)
+{
+  Coordinate c(0,0);
+
+  if (!coord_node.is_null())
+  {
+    c.first = XMLUtils::get_child_node_int_value(coord_node, "Row");
+    c.second = XMLUtils::get_child_node_int_value(coord_node, "Col");
+  }
+
+  return c;
 }
