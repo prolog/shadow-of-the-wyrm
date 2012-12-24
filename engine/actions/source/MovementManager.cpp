@@ -356,16 +356,28 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
               
               if (generator)
               {
-                // - Generate the map.
-                uint danger_level = creature->get_level().get_current();
-                MapPtr new_map = generator->generate_and_initialize(danger_level);
+                MapPtr new_map;
 
-                // JCD FIXME Refactor into a common fn later.
-                if (new_map->get_map_type() != MAP_TYPE_WORLD)
+                // If a custom map ID is specified, use that:
+                string custom_map_id = tile->get_custom_map_id();
+
+                if (!custom_map_id.empty())
                 {
-                  // Set the danger level appropriately, using the OLD MAP's map type.
-                  IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
-                  new_map->set_danger(calc->calculate(map, new_map));
+                  new_map = game->get_map_registry_ref().get_map(custom_map_id);
+                }
+                else
+                {
+                  // Otherwise, if there's no custom map ID, generate the map:
+                  uint danger_level = creature->get_level().get_current();
+                  new_map = generator->generate_and_initialize(danger_level);
+
+                  // JCD FIXME Refactor into a common fn later.
+                  if (new_map->get_map_type() != MAP_TYPE_WORLD)
+                  {
+                    // Set the danger level appropriately, using the OLD MAP's map type.
+                    IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
+                    new_map->set_danger(calc->calculate(map, new_map));
+                  }
                 }
                 
                 // - Set the map's MapExitPtr to point to the previous map.

@@ -10,6 +10,6 @@ TileCustomMapIDs::~TileCustomMapIDs()
 {
 }
 
-const string TileCustomMapIDs::CUSTOM_MAP_ID_ISEN_DUN = "CUSTOM_MAP_ID_ISEN_DUN";
-const string TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR = "CUSTOM_MAP_ID_LAST_ISLAND_LAIR";
+const string TileCustomMapIDs::CUSTOM_MAP_ID_ISEN_DUN = "isen_dun";
+const string TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR = "last_island_lair";
 
