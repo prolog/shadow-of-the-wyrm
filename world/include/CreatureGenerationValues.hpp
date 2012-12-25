@@ -22,6 +22,9 @@ class CreatureGenerationValues
     std::set<TileType> get_allowable_terrain_types() const;
     bool is_terrain_type_allowed(const TileType terrain_type) const;
 
+    void set_friendly(const bool new_friendly);
+    bool get_friendly() const;
+
     void set_danger_level(const uint new_danger_level);
     uint get_danger_level() const;
     
@@ -37,6 +40,11 @@ class CreatureGenerationValues
   protected:
     // The terrain types in which the creature can be generated
     std::set<TileType> allowable_terrain_types;
+
+    // Whether the creature is initially generated as hostile.
+    // If "friendly" is set, the creature will never be generated
+    // hostile towards the player.
+    bool friendly;
 
     // The "danger level" at which the creature may start appearing,
     // if it is not out of depth/danger-depth.

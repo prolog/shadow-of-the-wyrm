@@ -163,6 +163,9 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:AllowableTerrainTypes"/>
+			<!-- If Friendly is true, the creature is guaranteed to be generated
+			     without hostility towards the player. -->
+			<xs:element name="Friendly" type="xs:bool" minOccurs="0"/>
 			<xs:element name="DangerLevel" type="xs:unsignedInt"/>
 			<xs:element name="Rarity" type="tns:Rarity"/>
 			<!-- HP and AP are random, and get generated for each monster created. -->

@@ -3,7 +3,8 @@
 using std::set;
 
 CreatureGenerationValues::CreatureGenerationValues()
-: danger_level(0), 
+: friendly(false),
+danger_level(0), 
 rarity(RARITY_COMMON), 
 base_experience_value(0)
 {
@@ -36,6 +37,16 @@ set<TileType> CreatureGenerationValues::get_allowable_terrain_types() const
 bool CreatureGenerationValues::is_terrain_type_allowed(const TileType terrain_type) const
 {
   return (allowable_terrain_types.find(terrain_type) != allowable_terrain_types.end());
+}
+
+void CreatureGenerationValues::set_friendly(const bool new_friendly)
+{
+  friendly = new_friendly;
+}
+
+bool CreatureGenerationValues::get_friendly() const
+{
+  return friendly;
 }
 
 void CreatureGenerationValues::set_danger_level(const uint new_danger_level)
