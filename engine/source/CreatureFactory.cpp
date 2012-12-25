@@ -311,10 +311,23 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
   
   if (game)
   {
-    CreaturePtr player = game->get_current_map()->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
-    
-    if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
+    MapPtr map = game->get_current_map();
+
+    // This may be called during the initial game set up, at which point
+    // the game will not have a map.
+    if (map)
     {
+      CreaturePtr player = map->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
+    
+      if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
+      {
+        hostility_manager.set_hostility_to_player(npc);
+      }
+    }
+    else
+    {
+      // JCD FIXME: Quick test for the lair.  Once that's working, add flags
+      // so that hostility can be set in the configuration.
       hostility_manager.set_hostility_to_player(npc);
     }
   }

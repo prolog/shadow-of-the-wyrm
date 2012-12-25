@@ -318,6 +318,12 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     }
     
     creatures_new_tile->set_creature(creature);
+
+    // If this is a new creature, add this to the map's temporary creature list.
+    if (!creatures_old_tile)
+    {
+      map->add_creature(creature);
+    }
   }
   
   return added_location;

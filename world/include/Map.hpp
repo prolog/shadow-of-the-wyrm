@@ -32,6 +32,7 @@ class Map : public ISerializable
 		boost::shared_ptr<Creature> get_creature(const std::string& creature_id);
 		std::map<std::string, boost::shared_ptr<Creature> > get_creatures();
 		std::map<std::string, boost::shared_ptr<Creature> >& get_creatures_ref();
+    void add_creature(boost::shared_ptr<Creature> creature);
 		void remove_creature(const std::string& creature_id);
 		// Other get_creature... fns here.
 		// Other remove_creature... fns here.
@@ -90,11 +91,11 @@ class Map : public ISerializable
     static TileKey make_map_key(const int row, const int col);
     static Coordinate convert_map_key_to_coordinate(const TileKey& map_key);
 
+		void create_creatures();		
+
 	protected:
     friend class SL_Engine_Map;
     
-		void create_creatures();		
-
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
     std::map<std::string, boost::shared_ptr<Creature> > creatures;

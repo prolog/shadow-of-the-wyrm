@@ -1,11 +1,12 @@
-#include <boost/filesystem.hpp>
-#include <boost/regex.hpp>
+#include <boost/foreach.hpp>
+#include "CreatureFactory.hpp"
+#include "Game.hpp"
+#include "MapUtils.hpp"
 #include "TileGenerator.hpp"
 #include "XMLMapReaders.hpp"
 #include "XMLDataStructures.hpp"
 
 using namespace std;
-using namespace boost::filesystem;
 
 // XMLMapReader reads in the details from a CustomMap element, and
 // creates a MapPtr based on it.
@@ -18,6 +19,8 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLNode dimensions_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Dimensions");
     XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Tiles");
     XMLNode player_start_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "PlayerStart");
+    XMLNode initial_placements_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "InitialPlacements");
+
     string map_id = XMLUtils::get_attribute_value(custom_map_node, "id");
     MapType map_type = static_cast<MapType>(XMLUtils::get_child_node_int_value(custom_map_node, "MapType"));
 
@@ -32,6 +35,12 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     custom_map->set_tiles(tiles);
     custom_map->set_permanent(true); // custom maps are always permanent.
     custom_map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, player_start_location);
+
+    parse_initial_placements(initial_placements_node, custom_map);
+
+    // Generate the list of creatures on the map, so that it can be accessed
+    // later on.
+    custom_map->create_creatures();
   }
 
   return custom_map;
@@ -144,4 +153,49 @@ Coordinate XMLMapReader::parse_coordinate(const XMLNode& coord_node)
   }
 
   return c;
+}
+
+// Parse the initial placement of items and creatures.
+void XMLMapReader::parse_initial_placements(const XMLNode& initial_placements_node, MapPtr map)
+{
+  if (!initial_placements_node.is_null())
+  {
+    XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(initial_placements_node, "Creatures");
+    parse_initial_creature_placements(creatures_node, map);
+  }
+}
+
+// Parse the initial placement of creatures, and place them on the map at the specified location.
+void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_node, MapPtr map)
+{
+  if (!creatures_node.is_null())
+  {
+    vector<XMLNode> placement_nodes = XMLUtils::get_elements_by_local_name(creatures_node, "Placement");
+
+    BOOST_FOREACH(const XMLNode& placement_node, placement_nodes)
+    {
+      XMLNode coord_node = XMLUtils::get_next_element_by_local_name(placement_node, "Coord");
+
+      string id = XMLUtils::get_child_node_value(placement_node, "ID");
+      Coordinate coord = parse_coordinate(coord_node);
+
+      // Place the specified creature on the map.
+      Game* game = Game::instance();
+
+      if (game)
+      {
+        CreaturePtr creature = CreatureFactory::create_by_creature_id(game->get_action_manager_ref(), id);
+
+        TilePtr placement_tile = map->at(coord);
+
+        if (placement_tile)
+        {
+          if (MapUtils::is_tile_available_for_creature(placement_tile))
+          {
+            MapUtils::add_or_update_location(map, creature, coord);
+          }
+        }
+      }
+    }
+  }
 }

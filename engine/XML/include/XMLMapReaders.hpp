@@ -14,6 +14,8 @@ class XMLMapReader
     Dimensions parse_dimensions(const XMLNode& dimensions_node);
     TilesMap parse_tiles(const XMLNode& tiles_node, const int rows, const int cols);
     Coordinate parse_coordinate(const XMLNode& coord_node);
+    void parse_initial_placements(const XMLNode& initial_placements_node, MapPtr map);
+    void parse_initial_creature_placements(const XMLNode& creatures_node, MapPtr map);
 };
 
 // Maps individual characters from the XML file into tiles as would be found

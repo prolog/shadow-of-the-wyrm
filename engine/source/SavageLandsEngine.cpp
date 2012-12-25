@@ -139,23 +139,30 @@ void SavageLandsEngine::setup_game()
 
     // Read the races, classes, and items from the configuration file.
     // Items need to be read first so that each class's default items can be loaded.
-    DeityMap deities = reader.get_deities();      
-    ItemMap items = reader.get_items();
-    RaceMap races = reader.get_races();
-    ClassMap classes = reader.get_classes();
-    pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures();    
-    vector<DisplayTile> tile_info = reader.get_tile_info();
-
-    vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
-
+    // Custom maps are read last because they rely on creatures (which rely on races
+    // and classes), and items.
     game->set_display(display);
-    game->set_deities(deities);
-    game->set_races(races);
-    game->set_classes(classes);
+
+    ItemMap items = reader.get_items();
     game->set_items(items);
+
+    DeityMap deities = reader.get_deities();      
+    game->set_deities(deities);
+
+    RaceMap races = reader.get_races();
+    game->set_races(races);
+
+    ClassMap classes = reader.get_classes();
+    game->set_classes(classes);
+
+    pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures();    
     game->set_creatures(creatures.first);
     game->set_creature_generation_values(creatures.second);
+
+    vector<DisplayTile> tile_info = reader.get_tile_info();
     game->set_tile_display_info(tile_info);
+
+    vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
     game->set_custom_maps(custom_maps);
     
     // Set up the message manager also.

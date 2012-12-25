@@ -30,4 +30,15 @@
 		<Row>1</Row>
 		<Col>4</Col>
 	</PlayerStart>
+	<InitialPlacements>
+		<Creatures>
+			<Placement>
+				<ID>amaurosis</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>26</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
+	</InitialPlacements>
 </CustomMap>

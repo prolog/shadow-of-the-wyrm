@@ -152,7 +152,9 @@
 	<xs:annotation><xs:documentation>Information on allowable terrain types for generation (of creatures, objects, etc)</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="TileType" type="tns:TileType" maxOccurs="unbounded"/>
+			<!-- minOccurs can be 0 for creatures with no tiletype.  This is useful for specifying creatures that cannot
+			     be randomly generated - special creatures only found on a certain map, etc. -->
+			<xs:element name="TileType" type="tns:TileType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
