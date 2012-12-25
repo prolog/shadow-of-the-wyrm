@@ -334,17 +334,28 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
 
         if (current_creature->get_is_player() == false)
         {
-          // Quick and dirty - check to see if the tile distance between the player
-          // and the creature is more than the creature's LOS.
-          int distance = MapUtils::tile_distance_using_chebyshev(current_map->get_location(player->get_id()), current_map->get_location(current_creature->get_id()));
-
-          // For now, burn a creature's action (do nothing!) if the creature falls outside
-          // of the player's LOS.
-          if (distance > CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH)
+          // The player shared pointer might be null (creature might be acting before the player
+          // has been officially placed on the map).  Advance (skip) the creature's turn in this
+          // case.
+          if (!player)
           {
-            action_cost.set_cost(current_creature->get_speed().get_current());
             advance = true;
             continue;
+          }
+          else
+          {
+            // Quick and dirty - check to see if the tile distance between the player
+            // and the creature is more than the creature's LOS.
+            int distance = MapUtils::tile_distance_using_chebyshev(current_map->get_location(player->get_id()), current_map->get_location(current_creature->get_id()));
+
+            // For now, burn a creature's action (do nothing!) if the creature falls outside
+            // of the player's LOS.
+            if (distance > CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH)
+            {
+              action_cost.set_cost(current_creature->get_speed().get_current());
+              advance = true;
+              continue;
+            }
           }
         }
 

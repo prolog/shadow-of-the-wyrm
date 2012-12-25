@@ -2578,6 +2578,33 @@
 			</Damage>
 			<Soak>2</Soak>
 		</Creature>
+		<Creature id="amaurosis">
+			<ShortDescriptionSID>AMAUROSIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>AMAUROSIS_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>W</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<DangerLevel>50</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>300</NumDice>
+					<NumSides>2</NumSides>
+				</HP>
+				<Exp>2000000</Exp>
+			</CreatureGeneration>
+			<Level>50</Level>
+			<Damage>
+				<NumDice>30</NumDice>
+				<NumSides>4</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Evade>50</Evade>
+			<Soak>40</Soak>
+		</Creature>
 	</Creatures>
 	<Tiles>
 		<FieldTile>

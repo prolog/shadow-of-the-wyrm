@@ -97,7 +97,7 @@ void Map::create_creatures()
 
       if (potential_creature)
       {
-        creatures.insert(make_pair(potential_creature->get_id(), potential_creature));
+        add_creature(potential_creature);
       }
     }
   }
@@ -111,6 +111,14 @@ bool Map::has_creature(const string& creature_id)
   }
 
   return (creatures.find(creature_id) != creatures.end());
+}
+
+void Map::add_creature(CreaturePtr creature)
+{
+  if (creature)
+  {
+    creatures.insert(make_pair(creature->get_id(), creature));
+  }
 }
 
 CreaturePtr Map::get_creature(const string& creature_id)
@@ -170,7 +178,7 @@ void Map::reset_creatures_and_locations()
       
       if (creature)
       {
-        creatures.insert(make_pair(creature->get_id(), creature));
+        add_creature(creature);
       }
 
       locations.insert(make_pair(creature->get_id(), MapUtils::convert_map_key_to_coordinate(tile_key)));
