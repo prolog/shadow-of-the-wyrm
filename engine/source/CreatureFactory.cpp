@@ -57,8 +57,13 @@ CreaturePtr CreatureFactory::create_by_creature_id
       uint actual_experience_value = RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER));
       creature->set_experience_value(actual_experience_value);
       
-      // Set the creature hostile to the player, if the player fails a charisma check.
-      set_hostility_to_player(creature);
+      // If the creature is guaranteed to be generated as friendly, then be sure
+      // that hostility isn't set.
+      if (!cgv.get_friendly())
+      {
+        // Set the creature hostile to the player, if the player fails a charisma check.
+        set_hostility_to_player(creature);
+      }
       
       initialize(creature);
     }
@@ -326,8 +331,6 @@ void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
     }
     else
     {
-      // JCD FIXME: Quick test for the lair.  Once that's working, add flags
-      // so that hostility can be set in the configuration.
       hostility_manager.set_hostility_to_player(npc);
     }
   }

@@ -144,6 +144,10 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
       }
     }
     
+    // Friendly?
+    bool friendly = XMLUtils::get_child_node_bool_value(creature_generation_values_node, "Friendly", false);
+    cgv.set_friendly(friendly);
+
     // Danger level
     uint danger_level = XMLUtils::get_child_node_int_value(creature_generation_values_node, "DangerLevel");
     cgv.set_danger_level(danger_level);

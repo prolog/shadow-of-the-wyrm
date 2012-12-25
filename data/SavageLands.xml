@@ -2605,6 +2605,34 @@
 			<Evade>50</Evade>
 			<Soak>40</Soak>
 		</Creature>
+		<Creature id="fisherman">
+			<ShortDescriptionSID>FISHERMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FISHERMAN_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>5</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>50</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>3</Evade>
+			<Soak>1</Soak>
+		</Creature>
 	</Creatures>
 	<Tiles>
 		<FieldTile>
