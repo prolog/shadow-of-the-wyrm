@@ -29,6 +29,13 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>hrimgar</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>37</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>fisherman</ID>
 				<Coord>
 					<Row>17</Row>

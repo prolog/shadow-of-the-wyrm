@@ -339,6 +339,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           // case.
           if (!player)
           {
+            action_cost.set_cost(current_creature->get_speed().get_current());
             advance = true;
             continue;
           }

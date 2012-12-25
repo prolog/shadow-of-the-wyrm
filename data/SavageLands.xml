@@ -2624,7 +2624,7 @@
 				</HP>
 				<Exp>5</Exp>
 			</CreatureGeneration>
-			<Level>50</Level>
+			<Level>1</Level>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
@@ -2632,6 +2632,34 @@
 			</Damage>
 			<Evade>3</Evade>
 			<Soak>1</Soak>
+		</Creature>
+		<Creature id="hrimgar">
+			<ShortDescriptionSID>HRIMGAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HRIMGAR_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>100</NumDice>
+					<NumSides>3</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>10</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>22</Evade>
+			<Soak>15</Soak>
 		</Creature>
 	</Creatures>
 	<Tiles>
