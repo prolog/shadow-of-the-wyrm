@@ -2633,6 +2633,34 @@
 			<Evade>3</Evade>
 			<Soak>1</Soak>
 		</Creature>
+		<Creature id="farmer">
+			<ShortDescriptionSID>FARMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FARMER_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>3</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>3</Evade>
+			<Soak>0</Soak>
+		</Creature>
 		<Creature id="hrimgar">
 			<ShortDescriptionSID>HRIMGAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HRIMGAR_DESCRIPTION_SID</DescriptionSID>
