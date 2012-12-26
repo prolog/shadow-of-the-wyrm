@@ -37,7 +37,7 @@
 	<xs:annotation><xs:documentation>Initial, set placements of creatures and items.</xs:documentation></xs:annotation>
 	<xs:sequence>
 		<xs:element name="Creatures" type="tns:IdentifiedPlacementList" minOccurs="0"/>
-		<!-- TODO: Items -->
+		<xs:element name="Items" type="tns:IdentifiedPlacementList" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="IdentifiedPlacementList">
