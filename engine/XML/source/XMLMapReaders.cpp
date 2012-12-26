@@ -1,6 +1,7 @@
 #include <boost/foreach.hpp>
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
+#include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "TileGenerator.hpp"
 #include "XMLMapReaders.hpp"
@@ -162,6 +163,9 @@ void XMLMapReader::parse_initial_placements(const XMLNode& initial_placements_no
   {
     XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(initial_placements_node, "Creatures");
     parse_initial_creature_placements(creatures_node, map);
+
+    XMLNode items_node = XMLUtils::get_next_element_by_local_name(initial_placements_node, "Items");
+    parse_initial_item_placements(items_node, map);
   }
 }
 
@@ -194,6 +198,36 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
           {
             MapUtils::add_or_update_location(map, creature, coord);
           }
+        }
+      }
+    }
+  }
+}
+
+// Parse the initial placement of items, and place them at the specified coordinates.
+void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapPtr map)
+{
+  if (!items_node.is_null())
+  {
+    Game* game = Game::instance();
+
+    if (game)
+    {
+      vector<XMLNode> placement_nodes = XMLUtils::get_elements_by_local_name(items_node, "Placement");
+
+      BOOST_FOREACH(const XMLNode& item_node, placement_nodes)
+      {
+        string id = XMLUtils::get_child_node_value(item_node, "ID");
+        XMLNode coord_node = XMLUtils::get_next_element_by_local_name(item_node, "Coord");
+        Coordinate c = parse_coordinate(coord_node);
+
+        // Create the item, and set it on the specified coordinate.
+        ItemPtr item = ItemManager::create_item(id);
+        TilePtr tile = map->at(c);
+
+        if (item && tile)
+        {
+          tile->get_items().add(item);
         }
       }
     }

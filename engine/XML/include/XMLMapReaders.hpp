@@ -16,6 +16,7 @@ class XMLMapReader
     Coordinate parse_coordinate(const XMLNode& coord_node);
     void parse_initial_placements(const XMLNode& initial_placements_node, MapPtr map);
     void parse_initial_creature_placements(const XMLNode& creatures_node, MapPtr map);
+    void parse_initial_item_placements(const XMLNode& items_node, MapPtr map);
 };
 
 // Maps individual characters from the XML file into tiles as would be found
