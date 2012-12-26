@@ -56,6 +56,20 @@
 					<Col>59</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>farmer</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>15</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>farmer</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>54</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 	</InitialPlacements>
 </CustomMap>
