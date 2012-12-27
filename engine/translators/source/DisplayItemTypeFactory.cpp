@@ -59,7 +59,7 @@ AmuletDisplayItemType::AmuletDisplayItemType()
 }
 
 FoodDisplayItemType::FoodDisplayItemType()
-: DisplayItemType("%", COLOUR_WHITE, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_FOOD))
+: DisplayItemType("%%", COLOUR_WHITE, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_FOOD))
 {
 }
 
