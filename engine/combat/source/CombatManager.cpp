@@ -1,5 +1,6 @@
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
+#include "CoordUtils.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "ExperienceManager.hpp"
@@ -36,7 +37,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
     MapPtr map = game->get_current_map();
     
     Coordinate creature_location = map->get_location(creature->get_id());
-    Coordinate new_coords = MapUtils::get_new_coordinate(creature_location, d);
+    Coordinate new_coords = CoordUtils::get_new_coordinate(creature_location, d);
     TilePtr adjacent_tile = map->at(new_coords.first, new_coords.second);
 
     // Do the necessary checks here to determine whether to attack...

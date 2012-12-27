@@ -4,12 +4,12 @@
 #include "BresenhamLine.hpp"
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemManager.hpp"
 #include "MapCursor.hpp"
-#include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "RangedCombatActionManager.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
@@ -317,7 +317,7 @@ void RangedCombatActionManager::select_nearest_hostile_target(CreaturePtr creatu
           
           if (threat_ratings.has_threat(creature_id))
           {
-            int distance = MapUtils::tile_distance_using_chebyshev(creature_location, c);
+            int distance = CoordUtils::chebyshev_distance(creature_location, c);
             hostile_creature_distance_map.insert(make_pair(distance, make_pair(potential_creature_id, c)));
           }
         }

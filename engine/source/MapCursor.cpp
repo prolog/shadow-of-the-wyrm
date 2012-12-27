@@ -1,5 +1,5 @@
+#include "CoordUtils.hpp"
 #include "MapCursor.hpp"
-#include "MapUtils.hpp"
 
 using std::string;
 
@@ -15,9 +15,9 @@ void MapCursor::update_cursor_location(MapPtr current_map, const Direction direc
 {
   Coordinate current_coords = get_cursor_location(current_map);
   
-  if (MapUtils::is_valid_move(current_map->size(), current_coords, direction))
+  if (CoordUtils::is_valid_move(current_map->size(), current_coords, direction))
   {
-    Coordinate new_coords = MapUtils::get_new_coordinate(current_coords, direction);
+    Coordinate new_coords = CoordUtils::get_new_coordinate(current_coords, direction);
     set_cursor_location(current_map, new_coords);
   }
 }

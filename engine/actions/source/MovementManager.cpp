@@ -49,7 +49,7 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
 
     // Is the proposed movement valid?
     // If it is not, and there is no map exit, and the creature is the player, display a message.
-    if (!MapUtils::is_valid_move(map->size(), creature_location, direction))
+    if (!CoordUtils::is_valid_move(map->size(), creature_location, direction))
     {
       SkillManager sm;
       // Otherwise, move the creature, if:
@@ -70,7 +70,7 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
     // Otherwise, it's a regular move within the current map.
     else
     {
-      Coordinate new_coords = MapUtils::get_new_coordinate(creature_location, direction);
+      Coordinate new_coords = CoordUtils::get_new_coordinate(creature_location, direction);
       TilePtr creatures_new_tile = map->at(new_coords.first, new_coords.second);
       
       movement_success = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords);
