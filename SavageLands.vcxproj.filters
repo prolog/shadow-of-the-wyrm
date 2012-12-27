@@ -2013,6 +2013,9 @@
     <ClInclude Include="engine\XML\include\XMLMapReaders.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\CoordUtils.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3835,6 +3838,12 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLMapReaders.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\CoordUtils.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\CoordUtils_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

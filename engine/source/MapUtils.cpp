@@ -297,7 +297,7 @@ MapComponents MapUtils::get_map_components(MapPtr map, const set<TileType>& excl
 
 bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& c, TilePtr creatures_old_tile)
 {
-  bool added_location = true;
+  bool added_location = false;
 
   TilePtr creatures_new_tile = map->at(c);
   
@@ -310,7 +310,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   
   // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
   // remove from the old tile, and add to the new.
-  if (creatures_new_tile && !creatures_new_tile->has_creature())
+  if (creatures_new_tile && is_tile_available_for_creature(creatures_new_tile))
   {
     if (creatures_old_tile)
     {
@@ -318,6 +318,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
     }
     
     creatures_new_tile->set_creature(creature);
+    added_location = true;
 
     // If this is a new creature, add this to the map's temporary creature list.
     if (!creatures_old_tile)

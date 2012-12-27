@@ -1,6 +1,7 @@
 #include <boost/make_shared.hpp>
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "DangerLevelCalculatorFactory.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -402,7 +403,18 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
                   starting_coords.second = 0;
                 }
                 
-                MapUtils::add_or_update_location(new_map, creature, starting_coords);
+                bool placed_creature = false;
+                while (placed_creature == false && (CoordUtils::is_end(starting_coords) == false))
+                {
+                  placed_creature = MapUtils::add_or_update_location(new_map, creature, starting_coords);
+
+                  // If we still haven't placed the creature, try the next tile...
+                  if (!placed_creature)
+                  {
+                    starting_coords = CoordUtils::incr(starting_coords, new_map->size());
+                  }
+                }
+
                 TilePtr new_creature_tile = new_map->at(starting_coords);
 
                 move_to_new_map(new_map);
