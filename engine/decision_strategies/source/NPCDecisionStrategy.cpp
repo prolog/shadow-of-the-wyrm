@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
@@ -106,7 +107,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
         // Check if adjacent to this_creature_id
         Coordinate c_threat = view_map->get_location(threatening_creature_id);
 
-        if (MapUtils::are_coordinates_adjacent(c_this, c_threat))
+        if (CoordUtils::are_coordinates_adjacent(c_this, c_threat))
         {
           Direction direction = MapUtils::get_direction(c_this, c_threat);
           

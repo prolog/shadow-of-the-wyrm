@@ -1,6 +1,6 @@
 #include <algorithm>
+#include "CoordUtils.hpp"
 #include "CreatureFeatures.hpp"
-#include "MapUtils.hpp"
 #include "StringConstants.hpp"
 #include "WorldMapDangerLevelCalculator.hpp"
 
@@ -27,7 +27,7 @@ uint WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
     starting_location = map->get_location(WorldMapLocationTextKeys::STARTING_LOCATION);
     current_location = map->get_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION);
 
-    int distance = MapUtils::tile_distance_using_chebyshev(starting_location, current_location);
+    int distance = CoordUtils::chebyshev_distance(starting_location, current_location);
 
     if (distance > 0)
     {

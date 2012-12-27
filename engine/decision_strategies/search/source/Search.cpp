@@ -1,4 +1,5 @@
 #include <boost/foreach.hpp>
+#include "CoordUtils.hpp"
 #include "MapUtils.hpp"
 #include "Search.hpp"
 
@@ -93,7 +94,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
         }
         
         // Used for A* search.  Use Chebyshev distance for now.
-        sn.set_estimated_cost_to_goal(MapUtils::tile_distance_using_chebyshev(coord, goal_coordinate));
+        sn.set_estimated_cost_to_goal(CoordUtils::chebyshev_distance(coord, goal_coordinate));
         
         search_nodes.push_back(sn);
         visited.insert(coord);

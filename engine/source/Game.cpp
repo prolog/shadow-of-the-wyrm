@@ -3,6 +3,7 @@
 #include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
+#include "CoordUtils.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureDescriber.hpp"
 #include "CreatureFeatures.hpp"
@@ -347,7 +348,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           {
             // Quick and dirty - check to see if the tile distance between the player
             // and the creature is more than the creature's LOS.
-            int distance = MapUtils::tile_distance_using_chebyshev(current_map->get_location(player->get_id()), current_map->get_location(current_creature->get_id()));
+            int distance = CoordUtils::chebyshev_distance(current_map->get_location(player->get_id()), current_map->get_location(current_creature->get_id()));
 
             // For now, burn a creature's action (do nothing!) if the creature falls outside
             // of the player's LOS.

@@ -6,26 +6,6 @@
 using namespace std;
 using namespace boost;
 
-// Check to see if movement in a given direction is valid.
-bool MapUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d)
-{
-  bool valid_move = true;
-
-  int max_row = dim.get_y();
-  int max_col = dim.get_x();
-
-  Coordinate new_coord = get_new_coordinate(c, d);
-  int new_row = new_coord.first;
-  int new_col = new_coord.second;
-
-  if (new_row < 0 || new_row >= max_row || new_col < 0 || new_col >= max_col)
-  {
-    valid_move = false;
-  }
-
-  return valid_move;
-}
-
 // Get the direction given start/end coordinates.
 Direction MapUtils::get_direction(const Coordinate& start, const Coordinate& end)
 {
@@ -90,59 +70,6 @@ Direction MapUtils::get_direction(const Coordinate& start, const Coordinate& end
   return d;
 }
 
-// Generate the next coordinate in a given direction.  Does not do correctness checking!
-Coordinate MapUtils::get_new_coordinate(const Coordinate& c, const Direction d)
-{
-  Coordinate new_coord = c;
-
-  switch(d)
-  {
-    case DIRECTION_NULL:
-      new_coord = c;
-      break;
-    case DIRECTION_SOUTH_WEST:
-      new_coord.first++;
-      new_coord.second--;
-      break;
-    case DIRECTION_SOUTH:
-      new_coord.first++;
-      break;
-    case DIRECTION_SOUTH_EAST:
-      new_coord.first++;
-      new_coord.second++;
-      break;
-    case DIRECTION_WEST:
-      new_coord.second--;
-      break;
-    case DIRECTION_EAST:
-      new_coord.second++;
-      break;
-    case DIRECTION_NORTH_WEST:
-      new_coord.first--;
-      new_coord.second--;
-      break;
-    case DIRECTION_NORTH:
-      new_coord.first--;
-      break;
-    case DIRECTION_NORTH_EAST:
-      new_coord.first--;
-      new_coord.second++;
-      break;
-    case DIRECTION_UP:
-    case DIRECTION_DOWN:
-    default:
-      break;
-  }
-
-  return new_coord;
-}
-
-// Get the distance between two tiles using Chebyshev distance
-int MapUtils::tile_distance_using_chebyshev(Coordinate c1, Coordinate c2)
-{
-  return max(abs(c1.second - c2.second), abs(c1.first - c2.first));
-}
-
 // Check to see if a tile is available for a creature by checking:
 // - if a creature is present
 // - if a blocking feature is present
@@ -193,12 +120,6 @@ Dimensions MapUtils::get_dimensions(MapPtr map, const Coordinate& coords, const 
   new_dimensions.set_x(num_cols);
   
   return new_dimensions;
-}
-
-// Check for adjacency - distance must be 1 using the Chessboard distance (Chebyshev).
-bool MapUtils::are_coordinates_adjacent(const Coordinate& c1, const Coordinate& c2)
-{
-  return (tile_distance_using_chebyshev(c1, c2) == 1);
 }
 
 // Add the tile and its connected tiles to the Component.

@@ -1,6 +1,7 @@
 #include <sstream>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "CoordUtils.hpp"
 #include "RayCastingFieldOfViewStrategy.hpp"
 #include "BresenhamLine.hpp"
 #include "MapUtils.hpp"
@@ -149,7 +150,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
 
 bool RayCastingFieldOfViewStrategy::does_adjacent_non_blocking_tile_exist_in_fov_map(MapPtr fov_map, const Coordinate& centre_coord, const Direction direction)
 {
-  Coordinate c_dir = MapUtils::get_new_coordinate(centre_coord, direction);
+  Coordinate c_dir = CoordUtils::get_new_coordinate(centre_coord, direction);
   TilePtr tile = fov_map->at(c_dir);
   
   if (tile)
@@ -164,7 +165,7 @@ bool RayCastingFieldOfViewStrategy::does_adjacent_non_blocking_tile_exist_in_fov
 
 bool RayCastingFieldOfViewStrategy::does_adjacent_blocking_tile_exist_in_fov_map(MapPtr fov_map, const Coordinate& centre_coord, const Direction direction)
 {
-  Coordinate c_dir = MapUtils::get_new_coordinate(centre_coord, direction);
+  Coordinate c_dir = CoordUtils::get_new_coordinate(centre_coord, direction);
   TilePtr tile = fov_map->at(c_dir);
 
   return (tile && tile->get_is_blocking());
