@@ -14,10 +14,6 @@ typedef std::set<Coordinate>::const_iterator ComponentItc;
 class MapUtils
 {
   public:    
-    // Get the direction of a move given the start and end coordinates.
-    static Direction get_direction(const Coordinate& start_coord, const Coordinate& end_coord);
-
-    static std::vector<Coordinate> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col);
     static MapComponents get_map_components(MapPtr map, const std::set<TileType>& exclusion_tiles);
     
     static bool add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, TilePtr creatures_old_tile = TilePtr() /* NULL by default*/);
