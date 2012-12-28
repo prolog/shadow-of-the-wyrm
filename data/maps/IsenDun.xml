@@ -70,6 +70,27 @@
 					<Col>54</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>small_child</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>45</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>small_child</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>23</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>village_priest</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>62</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>

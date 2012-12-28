@@ -2633,6 +2633,62 @@
 			<Evade>3</Evade>
 			<Soak>1</Soak>
 		</Creature>
+		<Creature id="small_child">
+			<ShortDescriptionSID>SMALL_CHILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SMALL_CHILD_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>3</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>2</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>3</Evade>
+			<Soak>1</Soak>
+		</Creature>
+		<Creature id="village_priest">
+			<ShortDescriptionSID>VILLAGE_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VILLAGE_PRIEST_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>25</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6000</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>20</NumDice>
+				<NumSides>3</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>20</Evade>
+			<Soak>15</Soak>
+		</Creature>
 		<Creature id="farmer">
 			<ShortDescriptionSID>FARMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FARMER_DESCRIPTION_SID</DescriptionSID>
