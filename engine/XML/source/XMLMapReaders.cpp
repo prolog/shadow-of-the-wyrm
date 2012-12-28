@@ -114,6 +114,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
   }
+  else if (xml_tile == 'D')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_DAIS);
+  }
   else if (xml_tile == '<')
   {
     tile = TileGenerator::generate_staircase(STAIRCASE_UP);
