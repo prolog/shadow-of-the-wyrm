@@ -2689,6 +2689,34 @@
 			<Evade>20</Evade>
 			<Soak>15</Soak>
 		</Creature>
+		<Creature id="kew">
+			<ShortDescriptionSID>KEW_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>KEW_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>12</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>500</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>3</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>10</Evade>
+			<Soak>5</Soak>
+		</Creature>
 		<Creature id="farmer">
 			<ShortDescriptionSID>FARMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FARMER_DESCRIPTION_SID</DescriptionSID>

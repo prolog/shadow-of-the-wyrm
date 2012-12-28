@@ -91,6 +91,13 @@
 					<Col>62</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>kew</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
@@ -154,6 +161,20 @@
 				<Coord>
 					<Row>11</Row>
 					<Col>38</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>stone_hammer</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>64</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>buckler</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>64</Col>
 				</Coord>
 			</Placement>
 		</Items>
