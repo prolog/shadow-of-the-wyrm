@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include "common.hpp"
 #include "Dimensions.hpp"
 #include "Directions.hpp"
@@ -19,7 +20,13 @@ class CoordUtils
     // Get new coordinates.  "is_valid_move" should always be called first!
     static Coordinate get_new_coordinate(const Coordinate& c, const Direction d);
 
-  protected:
+    // Get the direction of a move given the start and end coordinates.
+    static Direction get_direction(const Coordinate& start_coord, const Coordinate& end_coord);
+
+    // Get all the adjacent coordinates for the current row and column, given the map's dimensions.
+    static std::vector<Coordinate> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col);
+
+protected:
     CoordUtils();
     ~CoordUtils();
 };

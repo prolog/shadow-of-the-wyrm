@@ -3,7 +3,6 @@
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "Game.hpp"
-#include "MapUtils.hpp"
 #include "NPCDecisionStrategy.hpp"
 #include "RNG.hpp"
 #include "SearchStrategyFactory.hpp"
@@ -109,7 +108,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
 
         if (CoordUtils::are_coordinates_adjacent(c_this, c_threat))
         {
-          Direction direction = MapUtils::get_direction(c_this, c_threat);
+          Direction direction = CoordUtils::get_direction(c_this, c_threat);
           
           // create movement command, return.
           CommandPtr command = boost::make_shared<AttackCommand>(direction);
@@ -120,7 +119,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
           if (can_move())
           {
             SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST);
-            Direction direction = MapUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
+            Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
             CommandPtr command = boost::make_shared<MovementCommand>(direction);
             return command;
           }
@@ -152,14 +151,14 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
     int this_row = this_creature_coords.first;
     int this_col = this_creature_coords.second;
    
-    vector<Coordinate> adjacent_coordinates = MapUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
+    vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
     vector<Coordinate> choice_coordinates = get_adjacent_coordinates_without_creatures(current_map, adjacent_coordinates);
     
     // Pick a tile if not empty
     if (!choice_coordinates.empty())
     {
       Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size()-1));
-      Direction direction = MapUtils::get_direction(this_creature_coords, movement_coord);
+      Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
       movement_command = boost::make_shared<MovementCommand>(direction);
     }
   }

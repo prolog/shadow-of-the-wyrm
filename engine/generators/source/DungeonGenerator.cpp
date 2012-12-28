@@ -7,7 +7,6 @@
 #include "AllTiles.hpp"
 #include "FeatureGenerator.hpp"
 #include "MapExitUtils.hpp"
-#include "MapUtils.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 
@@ -304,7 +303,7 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
 
 bool DungeonGenerator::is_tile_adjacent_to_room_tile(const Dimensions& dim, const int row, const int col)
 {
-  vector<Coordinate> adjacent_coords = MapUtils::get_adjacent_map_coordinates(dim, row, col);
+  vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(dim, row, col);
   
   BOOST_FOREACH(Coordinate c, adjacent_coords)
   {

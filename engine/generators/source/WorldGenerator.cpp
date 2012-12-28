@@ -2,11 +2,11 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "AlignmentEnums.hpp"
+#include "CoordUtils.hpp"
 #include "Game.hpp"
 #include "WorldGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "TileIDs.hpp"
-#include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "CellularAutomataGenerator.hpp"
 #include "VillageTile.hpp"
@@ -564,7 +564,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
         string race_id = village_tile->get_village_race_id();
         
         // Get the adjacent tiles
-        vector<Coordinate> adjacent_to_village = MapUtils::get_adjacent_map_coordinates(dim, village_row, village_col);
+        vector<Coordinate> adjacent_to_village = CoordUtils::get_adjacent_map_coordinates(dim, village_row, village_col);
         
         BOOST_FOREACH(Coordinate c2, adjacent_to_village)
         {

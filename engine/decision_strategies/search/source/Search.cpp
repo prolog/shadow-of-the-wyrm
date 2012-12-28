@@ -1,6 +1,5 @@
 #include <boost/foreach.hpp>
 #include "CoordUtils.hpp"
-#include "MapUtils.hpp"
 #include "Search.hpp"
 
 using namespace std;
@@ -66,7 +65,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
   list<SearchNode> search_nodes;
 
   Dimensions orig_map_dimensions = view_map->original_size();
-  vector<Coordinate> coords = MapUtils::get_adjacent_map_coordinates(orig_map_dimensions, c.first, c.second);
+  vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(orig_map_dimensions, c.first, c.second);
   
   BOOST_FOREACH(Coordinate coord, coords)
   {

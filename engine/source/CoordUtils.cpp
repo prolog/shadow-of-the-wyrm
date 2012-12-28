@@ -1,6 +1,8 @@
 #include "CoordUtils.hpp"
 #include "MapUtils.hpp"
 
+using namespace std;
+
 CoordUtils::CoordUtils()
 {
 }
@@ -126,6 +128,97 @@ Coordinate CoordUtils::get_new_coordinate(const Coordinate& c, const Direction d
   }
 
   return new_coord;
+}
+
+// Get the direction given start/end coordinates.
+Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& end)
+{
+  if ((end.first == -1) && (end.second == -1))
+  {
+    return DIRECTION_NULL;
+  }
+  
+  Direction d;
+  
+  int y1 = start.first;
+  int x1 = start.second;
+  
+  int y2 = end.first;
+  int x2 = end.second;
+  
+  // Start greater than end - heading north
+  if (y1 > y2)
+  {
+    if (x1 < x2)
+    {
+      d = DIRECTION_NORTH_EAST;
+    }
+    else if (x1 == x2)
+    {
+      d = DIRECTION_NORTH;
+    }
+    else
+    {
+      d = DIRECTION_NORTH_WEST;
+    }
+  }
+  // Start row = end row - heading east or west
+  else if (y1 == y2)
+  {
+    if (x1 < x2)
+    {
+      d = DIRECTION_EAST;
+    }
+    else
+    {
+      d = DIRECTION_WEST;
+    }
+  }
+  // Start row > end row - heading north
+  else
+  {
+    if (x1 < x2)
+    {
+      d = DIRECTION_SOUTH_EAST;
+    }
+    else if (x1 == x2)
+    {
+      d = DIRECTION_SOUTH;
+    }
+    else
+    {
+      d = DIRECTION_SOUTH_WEST;
+    }
+  }
+  
+  return d;
+}
+
+// Get the coordinates adjacent to a given set within the current dimensions
+vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col)
+{
+  vector<Coordinate> adjacent_coordinates;
+
+  int max_rows = dim.get_y();
+  int max_cols = dim.get_x();
+
+  for (int cur_row = row - 1; cur_row <= row+1; cur_row++)
+  {
+    for (int cur_col = col - 1; cur_col <= col+1; cur_col++)
+    {
+      // Check bounds
+      if (cur_row >= 0 && cur_row < max_rows && cur_col >= 0 && cur_col < max_cols)
+      {
+        // Neighbours can't include the current tile
+        if (cur_row != row || cur_col != col)
+        {
+          adjacent_coordinates.push_back(make_pair(cur_row, cur_col));
+        }
+      }
+    }
+  }
+
+  return adjacent_coordinates;
 }
 
 #ifdef UNIT_TESTS
