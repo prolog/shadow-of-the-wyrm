@@ -130,6 +130,9 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
   
   if (!creature_generation_values_node.is_null())
   {
+    int max = XMLUtils::get_child_node_int_value(creature_generation_values_node, "Max", -1);
+    cgv.set_maximum(max);
+
     XMLNode allowable_terrain_types_node = XMLUtils::get_next_element_by_local_name(creature_generation_values_node, "AllowableTerrainTypes");
     
     // The tile (map) types that the creature can be generated for. (dungeon, forest, mountains, etc)

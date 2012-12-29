@@ -162,10 +162,15 @@
 	<xs:annotation><xs:documentation>Information about how to generate a particular creature, and where.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
+			<!-- If max is < 0, then there is no limit on the number of creatures that can be generated.
+			     Otherwise, max functions as a generation limit.  max = 0 doesn't make sense, but isn't
+				 disallowed (it could be included to temporarily exclude a creature from the game.
+				 max = 1 is a unique. -->
+			<xs:element name="Max" type="xs:int" minOccurs="0"/>
 			<xs:element ref="tns:AllowableTerrainTypes"/>
 			<!-- If Friendly is true, the creature is guaranteed to be generated
 			     without hostility towards the player. -->
-			<xs:element name="Friendly" type="xs:bool" minOccurs="0"/>
+			<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
 			<xs:element name="DangerLevel" type="xs:unsignedInt"/>
 			<xs:element name="Rarity" type="tns:Rarity"/>
 			<!-- HP and AP are random, and get generated for each monster created. -->

@@ -196,7 +196,7 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
 
         TilePtr placement_tile = map->at(coord);
 
-        if (placement_tile)
+        if (creature && placement_tile)
         {
           if (MapUtils::is_tile_available_for_creature(placement_tile))
           {

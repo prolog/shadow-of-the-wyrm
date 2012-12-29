@@ -40,8 +40,21 @@ CreaturePtr CreatureFactory::create_by_creature_id
     
     if (c_it != creature_map.end() && cgv_it != cgv_map.end())
     {
+      // If the current generation amount is equal to the maximum, then
+      // we can't generate any more instances of that creature - return
+      // the null shared ptr.
+      //
+      // The default values for current and maximum are 0 and -1,
+      // respectively, so by default, there should be no limit to the
+      // number of creatures generated for a particular type, so long
+      // as a limit has not been specified by the configuration.
+      CreatureGenerationValues& cgv  = cgv_it->second;
+      if (cgv.is_maximum_reached())
+      {
+        return creature;
+      }
+
       CreaturePtr creature_template = c_it->second;
-      CreatureGenerationValues cgv  = cgv_it->second;
       
       Creature creature_instance = *creature_template;
       creature = boost::make_shared<Creature>(creature_instance);
@@ -66,6 +79,10 @@ CreaturePtr CreatureFactory::create_by_creature_id
       }
       
       initialize(creature);
+
+      // Now that the creature has been generated, increment the number of such
+      // creatures.
+      cgv.incr_current();
     }
     
     InitialItemEquipper iie;
