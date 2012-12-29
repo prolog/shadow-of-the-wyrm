@@ -136,8 +136,7 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
         if (MapUtils::is_tile_available_for_creature(tile))
         {
           Coordinate coords(creature_row, creature_col);
-          tile->set_creature(generated_creature);
-          map->add_or_update_location(generated_creature->get_id(), coords);
+          MapUtils::add_or_update_location(map, generated_creature, coords);
           if (!creatures_generated) creatures_generated = true;
           current_creatures_placed++;
         }

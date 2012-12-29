@@ -1,9 +1,13 @@
+#include <boost/foreach.hpp>
 #include "CreatureGenerationValues.hpp"
+#include "Serialize.hpp"
 
-using std::set;
+using namespace std;
 
 CreatureGenerationValues::CreatureGenerationValues()
-: friendly(false),
+: current(0),
+maximum(-1),
+friendly(false),
 danger_level(0), 
 rarity(RARITY_COMMON), 
 base_experience_value(0)
@@ -12,6 +16,53 @@ base_experience_value(0)
 
 CreatureGenerationValues::~CreatureGenerationValues()
 {
+}
+
+bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv)
+{
+  bool result = true;
+
+  result = result && (current == cgv.current);
+  result = result && (maximum == cgv.maximum);
+  result = result && (allowable_terrain_types == cgv.allowable_terrain_types);
+  result = result && (friendly == cgv.friendly);
+  result = result && (rarity == cgv.rarity);
+  result = result && (initial_hit_points == cgv.initial_hit_points);
+  result = result && (base_experience_value == cgv.base_experience_value);
+
+  return result;
+}
+
+void CreatureGenerationValues::set_current(const int new_current)
+{
+  current = new_current;
+}
+
+int CreatureGenerationValues::incr_current()
+{
+  return ++current;
+}
+
+int CreatureGenerationValues::get_current() const
+{
+  return current;
+}
+
+void CreatureGenerationValues::set_maximum(const int new_maximum)
+{
+  maximum = new_maximum;
+}
+
+int CreatureGenerationValues::get_maximum() const
+{
+  return maximum;
+}
+
+// Check to see if the maximum number of generatable creatures has been
+// reached.
+bool CreatureGenerationValues::is_maximum_reached() const
+{
+  return (current == maximum);
 }
 
 void CreatureGenerationValues::add_allowable_terrain_type(const TileType additional_terrain_type)
@@ -88,3 +139,65 @@ uint CreatureGenerationValues::get_base_experience_value() const
 {
   return base_experience_value;
 }
+
+bool CreatureGenerationValues::serialize(ostream& stream)
+{
+  Serialize::write_int(stream, current);
+  Serialize::write_int(stream, maximum);
+
+  size_t terrain_types_size = allowable_terrain_types.size();
+  Serialize::write_size_t(stream, terrain_types_size);
+
+  if (terrain_types_size > 0)
+  {
+    BOOST_FOREACH(TileType allowable_type, allowable_terrain_types)
+    {
+      Serialize::write_enum(stream, allowable_type);
+    }
+  }
+
+  Serialize::write_bool(stream, friendly);
+  Serialize::write_enum(stream, rarity);
+  initial_hit_points.serialize(stream);
+  Serialize::write_uint(stream, base_experience_value);
+
+  return true;
+}
+
+bool CreatureGenerationValues::deserialize(istream& stream)
+{
+  Serialize::read_int(stream, current);
+  Serialize::read_int(stream, maximum);
+
+  size_t terrain_types_size = 0;
+  Serialize::read_size_t(stream, terrain_types_size);
+
+  if (terrain_types_size > 0)
+  {
+    allowable_terrain_types.clear();
+
+    for (unsigned int i = 0; i < terrain_types_size; i++)
+    {
+      TileType allowable_type = TILE_TYPE_UNDEFINED;
+      Serialize::read_enum(stream, allowable_type);
+
+      allowable_terrain_types.insert(allowable_type);
+    }
+  }
+
+  Serialize::read_bool(stream, friendly);
+  Serialize::read_enum(stream, rarity);
+  initial_hit_points.deserialize(stream);
+  Serialize::read_uint(stream, base_experience_value);
+
+  return true;
+}
+
+ClassIdentifier CreatureGenerationValues::internal_class_identifier() const
+{
+  return CLASS_ID_CREATURE_GENERATION_VALUES;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/CreatureGenerationValues_test.cpp"
+#endif

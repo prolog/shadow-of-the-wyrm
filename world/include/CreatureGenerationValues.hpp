@@ -4,17 +4,27 @@
 #include <string>
 #include "common.hpp"
 #include "Dice.hpp"
+#include "ISerializable.hpp"
 #include "RarityTypes.hpp"
 #include "tiles.hpp"
 
 // Values that are used to generate a creature, without being a necessary
 // part of the creature itself.  Prevents values that only need a single
 // instance from being duplicated on every creature.
-class CreatureGenerationValues
+class CreatureGenerationValues : public ISerializable
 {
   public:
     CreatureGenerationValues();
     ~CreatureGenerationValues();
+    bool operator==(const CreatureGenerationValues& cgv);
+
+    void set_current(const int new_current);
+    int incr_current();
+    int get_current() const;
+
+    void set_maximum(const int new_maximum);
+    int get_maximum() const;
+    bool is_maximum_reached() const;
 
     void add_allowable_terrain_type(const TileType additional_terrain_type);
     void clear_allowable_terrain_types();
@@ -37,7 +47,16 @@ class CreatureGenerationValues
     void set_base_experience_value(const uint new_base_experience_value);
     uint get_base_experience_value() const;
 
+    bool serialize(std::ostream& stream);
+    bool deserialize(std::istream& stream);
+
   protected:
+    // The current number that has been generated.
+    int current;
+
+    // The maximum number of creatures, if non-negative.  If negative, ignored.
+    int maximum;
+
     // The terrain types in which the creature can be generated
     std::set<TileType> allowable_terrain_types;
 
@@ -60,6 +79,9 @@ class CreatureGenerationValues
     // The base experience value.  Stored here so that a slightly different value can
     // be generated for each creature.
     uint base_experience_value;
+
+  private:
+    ClassIdentifier internal_class_identifier() const;
 };
 
 typedef std::map<std::string, CreatureGenerationValues> CreatureGenerationValuesMap;

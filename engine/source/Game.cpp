@@ -477,7 +477,22 @@ bool Game::serialize(ostream& stream)
   // Ignore race map - this will be built up on startup.
   // Ignore class map - this will be built up on startup.
   // Ignore creature map - this will be built up on startup.
-  // Ignore creature generation values map - this will be built up on startup.
+
+  // The creature generation values map needs to be serialized because it
+  // contains information on the current and maximum allowable values for
+  // generation.
+  size_t cgv_size = creature_generation_values.size();
+  Serialize::write_size_t(stream, cgv_size);
+
+  if (cgv_size > 0)
+  {
+    BOOST_FOREACH(CreatureGenerationValuesMap::value_type& cgv_val, creature_generation_values)
+    {
+      Serialize::write_string(stream, cgv_val.first);
+      cgv_val.second.serialize(stream);
+    }
+  }
+
   // Ignore items map - this will be built up on startup.
   // Ignore tile_info map - this will be built up on startup.
 
@@ -527,7 +542,28 @@ bool Game::deserialize(istream& stream)
   // Ignore race map - this will be built up on startup.
   // Ignore class map - this will be built up on startup.
   // Ignore creature map - this will be built up on startup.
-  // Ignore creature generation values map - this will be built up on startup.
+
+  // Keep track of creature generation values for the current/maximum allowable
+  // generation amounts.
+  size_t cgv_size = 0;
+  Serialize::read_size_t(stream, cgv_size);
+
+  if (cgv_size > 0)
+  {
+    creature_generation_values.clear();
+
+    for (uint i = 0; i < cgv_size; i++)
+    {
+      string creature_id;
+      Serialize::read_string(stream, creature_id);
+
+      CreatureGenerationValues cgv;
+      cgv.deserialize(stream);
+
+      creature_generation_values.insert(make_pair(creature_id, cgv));
+    }
+  }
+
   // Ignore items map - this will be built up on startup.
   // Ignore tile_info map - this will be built up on startup.
 

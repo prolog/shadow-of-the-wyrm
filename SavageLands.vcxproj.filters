@@ -3845,5 +3845,8 @@
     <ClCompile Include="engine\source\unit_tests\CoordUtils_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\CreatureGenerationValues_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
