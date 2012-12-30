@@ -109,7 +109,7 @@ ActionCostValue MovementManager::move_off_map(CreaturePtr creature, MapPtr map, 
       
         if (creature->get_decision_strategy()->get_confirmation())
         {
-          move_to_new_map(map_exit);
+          move_to_new_map(creatures_old_tile, map, map_exit);
           movement_success = get_action_cost_value();
         }
       
@@ -216,18 +216,24 @@ bool MovementManager::confirm_move_to_tile_if_necessary(CreaturePtr creature, Ti
   return true;  
 }
 
-void MovementManager::move_to_new_map(MapPtr new_map)
+void MovementManager::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
   Game* game = Game::instance();
   
   if (game && new_map)
   {
+    // Remove the creature from its present tile, and from the temporary
+    // vector of creatures as well.
+    CreaturePtr current_creature = current_tile->get_creature();
+    MapUtils::remove_creature(old_map, current_creature);
+
+    // Set the new map to be loaded in the next iteration of the game loop.
     game->set_current_map(new_map);
     game->reload_map();    
   }
 }
 
-void MovementManager::move_to_new_map(MapExitPtr map_exit)
+void MovementManager::move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit)
 {
   Game* game = Game::instance();
   
@@ -238,7 +244,7 @@ void MovementManager::move_to_new_map(MapExitPtr map_exit)
       string new_map_id = map_exit->get_map_id();
       MapPtr new_map = game->map_registry.get_map(new_map_id);
       
-      move_to_new_map(new_map);
+      move_to_new_map(old_tile, old_map, new_map);
     }
     else
     {
@@ -275,7 +281,7 @@ ActionCostValue MovementManager::ascend(CreaturePtr creature)
   
       if (map_exit)
       {
-        move_to_new_map(map_exit);
+        move_to_new_map(current_tile, current_map, map_exit);
         
         // If the tile we've moved to has any items, notify the player, if the creature's a player.
         MapPtr new_map = game->get_current_map();
@@ -417,7 +423,7 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
 
                 TilePtr new_creature_tile = new_map->at(starting_coords);
 
-                move_to_new_map(new_map);
+                move_to_new_map(tile, map, new_map);
                 
                 manager->add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
                 add_tile_related_messages(creature, manager, new_creature_tile);

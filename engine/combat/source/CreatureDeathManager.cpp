@@ -22,8 +22,7 @@ void CreatureDeathManager::die()
   {
     // Remove the creature from the tile.
     TilePtr attacked_tile = MapUtils::get_tile_for_creature(map, creature);
-    attacked_tile->remove_creature();
-    map->remove_creature(creature->get_id());
+    MapUtils::remove_creature(map, creature);
 
     // Remove all equipment.
     for (int worn_slot = EQUIPMENT_WORN_HEAD; worn_slot < EQUIPMENT_WORN_LAST; worn_slot++)

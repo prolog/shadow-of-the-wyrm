@@ -41,4 +41,14 @@
 			</Placement>
 		</Creatures>
 	</InitialPlacements>
+	<Exits>
+		<Exit>
+			<Coord>
+				<Row>1</Row>
+				<Col>4</Col>
+			</Coord>
+			<Direction>10</Direction>
+			<MapID>overworld</MapID>
+		</Exit>
+	</Exits>
 </CustomMap>
