@@ -30,7 +30,7 @@ class MovementManager : public IActionManager
     void add_tile_related_messages(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);
     void add_message_about_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);
     void add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);
-    void move_to_new_map(MapPtr new_map);
-    void move_to_new_map(MapExitPtr map_exit);
+    void move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map);
+    void move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit);
     bool confirm_move_to_tile_if_necessary(CreaturePtr creature, TilePtr creatures_old_tile, TilePtr creatures_new_tile);
 };

@@ -12,6 +12,7 @@
 			<xs:element name="Tiles" type="xs:string"/>
 			<xs:element name="PlayerStart" type="tns:Coord" minOccurs="0"/>
 			<xs:element name="InitialPlacements" type="tns:InitialPlacements" minOccurs="0"/>
+			<xs:element name="Exits" type="tns:Exits" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
@@ -53,6 +54,20 @@
 		<xs:element name="Coord" type="tns:Coord"/>
 	</xs:sequence>
 </xs:complexType>
+<xs:complexType name="Exits">
+	<xs:annotation><xs:documentation>Contains details about tile exits to other set maps or the previous map.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Exit" type="tns:Exit" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Exit">
+	<xs:annotation><xs:documentation>Contains details about a particular exit on a tile.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Coord" type="tns:Coord"/>
+		<xs:element name="Direction" type="tns:Direction"/>
+		<xs:element name="MapID" type="xs:string"/>
+	</xs:sequence>
+</xs:complexType>
 <!-- Simple Types -->
 <xs:simpleType name="MapType">
 	<xs:annotation>
@@ -68,6 +83,21 @@
 		<xs:enumeration value="0"/>
 		<xs:enumeration value="1"/>
 		<xs:enumeration value="2"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="Direction">
+	<xs:annotation>
+		<xs:documentation>
+			See: world/include/Directions.hpp.
+			
+			This type corresponds to enum Direction.  Though any direction
+			can be set, in general, up/down are the ones that should see the
+			most use, via stairways, etc.
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="1"/>
+		<xs:maxInclusive value="11"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>

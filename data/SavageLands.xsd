@@ -164,7 +164,7 @@
 		<xs:sequence>
 			<!-- If max is < 0, then there is no limit on the number of creatures that can be generated.
 			     Otherwise, max functions as a generation limit.  max = 0 doesn't make sense, but isn't
-				 disallowed (it could be included to temporarily exclude a creature from the game.
+				 disallowed (it could be included to temporarily exclude a creature from the game).
 				 max = 1 is a unique. -->
 			<xs:element name="Max" type="xs:int" minOccurs="0"/>
 			<xs:element ref="tns:AllowableTerrainTypes"/>

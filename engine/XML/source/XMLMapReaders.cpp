@@ -21,6 +21,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Tiles");
     XMLNode player_start_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "PlayerStart");
     XMLNode initial_placements_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "InitialPlacements");
+    XMLNode exits_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Exits");
 
     string map_id = XMLUtils::get_attribute_value(custom_map_node, "id");
     MapType map_type = static_cast<MapType>(XMLUtils::get_child_node_int_value(custom_map_node, "MapType"));
@@ -38,6 +39,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     custom_map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, player_start_location);
 
     parse_initial_placements(initial_placements_node, custom_map);
+    parse_exits(exits_node, custom_map);
 
     // Generate the list of creatures on the map, so that it can be accessed
     // later on.
@@ -235,5 +237,48 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
         }
       }
     }
+  }
+}
+
+// Parse the list of exits on the map
+void XMLMapReader::parse_exits(const XMLNode& exits_node, MapPtr map)
+{
+  if (!exits_node.is_null())
+  {
+    vector<XMLNode> exit_nodes = XMLUtils::get_elements_by_local_name(exits_node, "Exit");
+
+    BOOST_FOREACH(const XMLNode& node, exit_nodes)
+    {
+      parse_exit(node, map);
+    }
+  }
+}
+
+// Parse an individual exit, setting the exit information for a particular
+// direction on to the appropriate tile.
+void XMLMapReader::parse_exit(const XMLNode& exit_node, MapPtr map)
+{
+  if (!exit_node.is_null())
+  {
+    XMLNode coord_node = XMLUtils::get_next_element_by_local_name(exit_node, "Coord");
+    
+    Coordinate c = parse_coordinate(coord_node);
+    Direction dir = static_cast<Direction>(XMLUtils::get_child_node_int_value(exit_node, "Direction"));
+    string exit_map = XMLUtils::get_child_node_value(exit_node, "MapID");
+
+    // JCD FIXME: Once "exit to previous map, and use some sort of tile ID" is
+    // implemented, change this so that map ID isn't necessary to create a
+    // map exit.
+    TilePtr tile = map->at(c);
+
+    if (tile && !exit_map.empty())
+    {
+      MapExitPtr map_exit = MapExitPtr(new MapExit());
+      map_exit->set_map_id(exit_map);
+
+      TileExitMap& exits = tile->get_tile_exit_map_ref();
+      exits.insert(make_pair(dir, map_exit));
+    }
+
   }
 }

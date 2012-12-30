@@ -170,6 +170,39 @@ TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& cr
   return creatures_tile;
 }
 
+bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
+{
+  bool result = false;
+
+  if (creature)
+  {
+    TilePtr creature_tile = get_tile_for_creature(map, creature);
+    
+    if (creature_tile && map)
+    {
+      // If the creature is not the player, be sure to remove the creature from
+      // the locations as well.  If it's the player, just remove the creature
+      // from the tile.  If the player's dead, this doesn't much matter, and if
+      // the player's just leaving the map, this allows the map to "remember"
+      // the player's previous location for returning.
+      if (!creature->get_is_player())
+      {
+        map->remove_creature(creature->get_id());
+      }
+
+      // If the map is the world map, don't remove the player from it.
+      if (map->get_map_type() != MAP_TYPE_WORLD)
+      {
+        creature_tile->remove_creature();
+      }
+
+      result = true;
+    }
+  }
+
+  return result;
+}
+
 bool MapUtils::can_exit_map(MapExitPtr map_exit)
 {
   bool can_exit;
