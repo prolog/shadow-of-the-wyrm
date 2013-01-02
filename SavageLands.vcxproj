@@ -46,7 +46,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_48_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cygwin\home\Julian\jrcpp\engine\events\include;C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_48_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -244,6 +244,7 @@
     <ClInclude Include="engine\effects\include\HealingEffect.hpp" />
     <ClInclude Include="engine\effects\include\IdentifyEffect.hpp" />
     <ClInclude Include="engine\effects\include\NullEffect.hpp" />
+    <ClInclude Include="engine\events\include\EventFunctions.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" />
@@ -312,7 +313,6 @@
     <ClInclude Include="engine\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\include\Environment.hpp" />
-    <ClInclude Include="engine\include\EventFunctions.hpp" />
     <ClInclude Include="engine\include\FileWriter.hpp" />
     <ClInclude Include="engine\include\Game.hpp" />
     <ClInclude Include="engine\include\Log.hpp" />
@@ -838,6 +838,7 @@
     <ClCompile Include="engine\effects\source\HealingEffect.cpp" />
     <ClCompile Include="engine\effects\source\IdentifyEffect.cpp" />
     <ClCompile Include="engine\effects\source\NullEffect.cpp" />
+    <ClCompile Include="engine\events\source\EventFunctions.cpp" />
     <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategy.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" />
@@ -944,7 +945,6 @@
     <ClCompile Include="engine\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\source\CreatureGenerationManager.cpp" />
     <ClCompile Include="engine\source\Environment.cpp" />
-    <ClCompile Include="engine\source\EventFunctions.cpp" />
     <ClCompile Include="engine\source\FileWriter.cpp" />
     <ClCompile Include="engine\source\Game.cpp" />
     <ClCompile Include="engine\source\Log.cpp" />
