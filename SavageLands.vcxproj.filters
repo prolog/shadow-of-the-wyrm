@@ -2016,6 +2016,9 @@
     <ClInclude Include="engine\include\CoordUtils.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\EventFunctions.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3847,6 +3850,9 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\CreatureGenerationValues_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\EventFunctions.cpp">
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

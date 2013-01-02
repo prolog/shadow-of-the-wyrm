@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+
 enum CreatureSize
 {
   CREATURE_SIZE_TINY = 0,
@@ -50,4 +52,14 @@ class CreatureConstants
   protected:
     CreatureConstants();
     ~CreatureConstants();
+};
+
+class CreatureEvents
+{
+  public:
+    static const std::string CREATURE_EVENT_DEATH;
+
+  protected:
+    CreatureEvents();
+    ~CreatureEvents();
 };

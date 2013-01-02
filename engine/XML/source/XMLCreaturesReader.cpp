@@ -116,6 +116,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // Soak
     int base_soak = XMLUtils::get_child_node_int_value(creature_node, "Soak", 0);
     creature->set_base_soak(base_soak);
+
+    // Event functions
+    XMLNode event_functions_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventFunctions");
+    parse_event_functions(event_functions_node, creature);
   }
   
   creature_data.second = cgv;
@@ -173,4 +177,19 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
   }
   
   return cgv;
+}
+
+// Parse in the list of event functions for the creature
+void XMLCreaturesReader::parse_event_functions(const XMLNode& event_functions_node, CreaturePtr creature)
+{
+  if (!event_functions_node.is_null())
+  {
+    XMLNode death_function_node = XMLUtils::get_next_element_by_local_name(event_functions_node, "Death");
+
+    if (!death_function_node.is_null())
+    {
+      string function_name = XMLUtils::get_node_value(death_function_node);
+      creature->add_event_function(CreatureEvents::CREATURE_EVENT_DEATH, function_name);
+    }
+  }
 }

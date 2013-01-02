@@ -312,6 +312,7 @@
     <ClInclude Include="engine\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\include\Environment.hpp" />
+    <ClInclude Include="engine\include\EventFunctions.hpp" />
     <ClInclude Include="engine\include\FileWriter.hpp" />
     <ClInclude Include="engine\include\Game.hpp" />
     <ClInclude Include="engine\include\Log.hpp" />
@@ -943,6 +944,7 @@
     <ClCompile Include="engine\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\source\CreatureGenerationManager.cpp" />
     <ClCompile Include="engine\source\Environment.cpp" />
+    <ClCompile Include="engine\source\EventFunctions.cpp" />
     <ClCompile Include="engine\source\FileWriter.cpp" />
     <ClCompile Include="engine\source\Game.cpp" />
     <ClCompile Include="engine\source\Log.cpp" />

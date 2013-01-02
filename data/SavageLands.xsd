@@ -290,8 +290,19 @@
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 			<xs:element name="Evade" type="xs:int" minOccurs="0"/>
 			<xs:element name="Soak" type="xs:int" minOccurs="0"/>
+			<xs:element ref="tns:EventFunctions" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
+	</xs:complexType>
+</xs:element>
+<xs:element name="EventFunctions">
+	<xs:annotation>
+		<xs:documentation>Names functions that can be used when a particular event (death, etc) occurs.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Death" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
 	</xs:complexType>
 </xs:element>
 <xs:element name="Class">
