@@ -13,4 +13,6 @@ class XMLCreaturesReader : public XMLReader
   protected:
     std::pair<CreaturePtr, CreatureGenerationValues> parse_creature(const XMLNode& creature_node);
     CreatureGenerationValues parse_creature_generation_values(const XMLNode& creature_generation_values_node);
+
+    void parse_event_functions(const XMLNode& event_functions_node, CreaturePtr creature);
 };

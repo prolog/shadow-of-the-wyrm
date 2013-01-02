@@ -3,6 +3,7 @@
 #include "CoordUtils.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "EventFunctions.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
@@ -198,7 +199,10 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
     {      
       DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacked_creature, map);
+
+      // Kill the creature, and run the death event function, if necessary.
       death_manager->die();
+      run_death_event(attacking_creature, attacked_creature, map);
 
       // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.
       if (attacking_creature)
@@ -336,6 +340,15 @@ void CombatManager::mark_weapon_and_combat_skills(CreaturePtr attacking_creature
   
   sm.mark_skill(attacking_creature, combat_type_skill_to_mark, attack_success);
   sm.mark_skill(attacking_creature, wm.get_skill_type(attacking_creature, attack_type), attack_success);
+}
+
+// Run the death event.  By default, this will be the null death function,
+// which does nothing and is always safe to call.
+void CombatManager::run_death_event(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map)
+{
+  string event_function_name = attacked_creature->get_event_function(CreatureEvents::CREATURE_EVENT_DEATH);
+  DeathEventFunction death_fn = EventFunctions::get_death_event_function(event_function_name);
+  death_fn(attacking_creature, attacked_creature, map);
 }
 
 #ifdef UNIT_TESTS

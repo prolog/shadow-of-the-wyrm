@@ -2592,19 +2592,22 @@
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>300</NumDice>
+					<NumDice>1</NumDice> <!-- should be 750d1 -->
 					<NumSides>2</NumSides>
 				</HP>
 				<Exp>2000000</Exp>
 			</CreatureGeneration>
 			<Level>50</Level>
 			<Damage>
-				<NumDice>30</NumDice>
-				<NumSides>4</NumSides>
+				<NumDice>1</NumDice> <!-- was 30d4 -->
+				<NumSides>1</NumSides>
 				<Type>0</Type>
 			</Damage>
-			<Evade>50</Evade>
-			<Soak>40</Soak>
+			<Evade>1</Evade>
+			<Soak>1</Soak>
+			<EventFunctions>
+				<Death>win</Death>
+			</EventFunctions>
 		</Creature>
 		<Creature id="fisherman">
 			<ShortDescriptionSID>FISHERMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

@@ -24,6 +24,7 @@
 class DecisionStrategy;
 
 typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
+typedef std::map<std::string, std::string> EventFunctionMap;
 
 class Creature : public ISerializable
 {
@@ -206,6 +207,11 @@ class Creature : public ISerializable
     HungerClock get_hunger_clock() const;
     HungerClock& get_hunger_clock_ref();
 
+    void clear_event_functions();
+    void add_event_function(const std::string& event_name, const std::string& function_name);
+    bool has_event_function(const std::string& event_name);
+    std::string get_event_function(const std::string& event_name) const;
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
@@ -310,6 +316,10 @@ class Creature : public ISerializable
 
     // The creature's hunger details
     HungerClock hunger;
+
+    // Event functions - used to look up engine or user-defined functions
+    // when the event occurs.
+    EventFunctionMap event_functions;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

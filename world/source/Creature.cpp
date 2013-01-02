@@ -94,6 +94,7 @@ Creature::Creature(const Creature& cr)
   turns = cr.turns;
   targets = cr.targets;  
   hunger = cr.hunger;
+  event_functions = cr.event_functions;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -162,6 +163,7 @@ bool Creature::operator==(const Creature& cr)
   result = result && (turns == cr.turns);
   result = result && (targets == cr.targets);
   result = result && (hunger == cr.hunger);
+  result = result && (event_functions == cr.event_functions);
 
   return result;
 }
@@ -705,16 +707,54 @@ HungerClock& Creature::get_hunger_clock_ref()
   return hunger;
 }
 
+void Creature::clear_event_functions()
+{
+  event_functions.clear();
+}
+
+void Creature::add_event_function(const string& event_name, const string& function_name)
+{
+  event_functions[event_name] = function_name;
+}
+
+bool Creature::has_event_function(const string& event_name)
+{
+  bool has_event = false;
+
+  EventFunctionMap::iterator e_it = event_functions.find(event_name);
+
+  if (e_it != event_functions.end())
+  {
+    has_event = true;
+  }
+
+  return has_event;
+}
+
+string Creature::get_event_function(const string& event_name) const
+{
+  string function_name;
+
+  EventFunctionMap::const_iterator e_it = event_functions.find(event_name);
+
+  if (e_it != event_functions.end())
+  {
+    function_name = e_it->second;
+  }
+
+  return function_name;
+}
+
   // Uncomment the code below to find out the size of Creature. :)
-  //template<int s> struct creature_size;
-  //creature_size<sizeof(Creature)> creature_size;
+  // template<int s> struct creature_size;
+  // creature_size<sizeof(Creature)> creature_size;
 
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
 {
   // VS 2010
   #ifdef _MSC_VER
-  BOOST_STATIC_ASSERT(sizeof(*this) == 720);
+  BOOST_STATIC_ASSERT(sizeof(*this) == 744);
   #else // gcc
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
   #endif
@@ -768,6 +808,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->turns, cr.turns);
   std::swap(this->targets, cr.targets);
   std::swap(this->hunger, cr.hunger);
+  std::swap(this->event_functions, cr.event_functions);
 }
 
 bool Creature::serialize(ostream& stream)
@@ -855,6 +896,17 @@ bool Creature::serialize(ostream& stream)
   }
 
   hunger.serialize(stream);
+
+  Serialize::write_size_t(stream, event_functions.size());
+
+  if (!event_functions.empty())
+  {
+    BOOST_FOREACH(EventFunctionMap::value_type& event_function, event_functions)
+    {
+      Serialize::write_string(stream, event_function.first);
+      Serialize::write_string(stream, event_function.second);
+    }
+  }
 
   return true;
 }
@@ -950,6 +1002,24 @@ bool Creature::deserialize(istream& stream)
   }
 
   hunger.deserialize(stream);
+
+  size_t event_functions_size = 0;
+  Serialize::read_size_t(stream, event_functions_size);
+
+  if (event_functions_size > 0)
+  {
+    event_functions.clear();
+
+    for (unsigned int i = 0; i < event_functions_size; i++)
+    {
+      string event_name, function_name;
+
+      Serialize::read_string(stream, event_name);
+      Serialize::read_string(stream, function_name);
+
+      event_functions.insert(make_pair(event_name, function_name));
+    }
+  }
 
   return true;
 }
