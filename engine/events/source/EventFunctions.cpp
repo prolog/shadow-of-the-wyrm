@@ -1,19 +1,6 @@
 #include "EventFunctions.hpp"
-#include "Game.hpp"
 
 using namespace std;
-
-// The event function identifiers
-DeathEventFunctionNames::DeathEventFunctionNames()
-{
-}
-
-DeathEventFunctionNames::~DeathEventFunctionNames()
-{
-}
-
-const string DeathEventFunctionNames::DEATH_EVENT_WIN = "win";
-
 
 // The actual event functions
 DeathEventFunctionMap EventFunctions::death_functions;
@@ -60,30 +47,4 @@ void EventFunctions::initialize_death_functions()
   DeathEventFunction win_function = boost::bind(&DeathEventFunctions::win, _1, _2, _3);
 
   death_functions.insert(make_pair(DeathEventFunctionNames::DEATH_EVENT_WIN, win_function));
-}
-
-// Individual death event functions
-DeathEventFunctions::DeathEventFunctions()
-{
-}
-
-DeathEventFunctions::~DeathEventFunctions()
-{
-}
-
-// Win the game!  Great riches and hot elf babes/Legolas-lookalike strippers await!
-void DeathEventFunctions::win(CreaturePtr attacking, CreaturePtr dead, MapPtr map)
-{
-  Game* game = Game::instance();
-
-  if (game)
-  {
-    game->stop_playing();
-  }
-}
-
-// This function should stay empty!  This is the default function that's called after each creature death.
-// If the creature doesn't have a death event (and most won't), we want nothing to happen.
-void DeathEventFunctions::null(CreaturePtr attacking, CreaturePtr dead, MapPtr map)
-{
 }

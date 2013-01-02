@@ -1,18 +1,7 @@
 #pragma once
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
-#include "Creature.hpp"
-#include "Map.hpp"
-
-class DeathEventFunctionNames
-{
-  public:
-    static const std::string DEATH_EVENT_WIN;
-
-  protected:
-    DeathEventFunctionNames();
-    ~DeathEventFunctionNames();
-};
+#include "DeathEventFunctions.hpp"
 
 // Engine death functions return no value, and take three pointers:
 // - To the attacking creature (may be null - damage is not always dealt
@@ -37,14 +26,3 @@ class EventFunctions
     ~EventFunctions();
 };
 
-class DeathEventFunctions
-{
-  public:
-    // null should be called when a lookup fails - this function will do absolutely nothing.
-    static void null(boost::shared_ptr<Creature> attacking, boost::shared_ptr<Creature> dead, boost::shared_ptr<Map> map);
-    static void win(boost::shared_ptr<Creature> attacking, boost::shared_ptr<Creature> dead, boost::shared_ptr<Map> map);
-
-  protected:
-    DeathEventFunctions();
-    ~DeathEventFunctions();
-};

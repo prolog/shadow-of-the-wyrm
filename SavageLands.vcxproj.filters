@@ -2031,6 +2031,9 @@
     <ClInclude Include="engine\events\include\EventFunctions.hpp">
       <Filter>Header Files\engine\events\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\events\include\DeathEventFunctions.hpp">
+      <Filter>Header Files\engine\events\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3864,6 +3867,9 @@
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\events\source\EventFunctions.cpp">
+      <Filter>Source Files\engine\events\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\events\source\DeathEventFunctions.cpp">
       <Filter>Source Files\engine\events\source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -244,6 +244,7 @@
     <ClInclude Include="engine\effects\include\HealingEffect.hpp" />
     <ClInclude Include="engine\effects\include\IdentifyEffect.hpp" />
     <ClInclude Include="engine\effects\include\NullEffect.hpp" />
+    <ClInclude Include="engine\events\include\DeathEventFunctions.hpp" />
     <ClInclude Include="engine\events\include\EventFunctions.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
@@ -838,6 +839,7 @@
     <ClCompile Include="engine\effects\source\HealingEffect.cpp" />
     <ClCompile Include="engine\effects\source\IdentifyEffect.cpp" />
     <ClCompile Include="engine\effects\source\NullEffect.cpp" />
+    <ClCompile Include="engine\events\source\DeathEventFunctions.cpp" />
     <ClCompile Include="engine\events\source\EventFunctions.cpp" />
     <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategy.cpp" />
