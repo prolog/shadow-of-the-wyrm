@@ -554,6 +554,7 @@ class TileTextKeys
     static const std::string TILE_DESC_HILLS;
     static const std::string TILE_DESC_MARSH;
     static const std::string TILE_DESC_MOUNTAINS;
+    static const std::string TILE_DESC_PIER;
     static const std::string TILE_DESC_REEDS;
     static const std::string TILE_DESC_RIVER;
     static const std::string TILE_DESC_ROAD;

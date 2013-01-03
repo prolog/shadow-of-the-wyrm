@@ -801,6 +801,7 @@ const string TileTextKeys::TILE_DESC_GRAVE          = "TILE_DESC_GRAVE";
 const string TileTextKeys::TILE_DESC_HILLS          = "TILE_DESC_HILLS";
 const string TileTextKeys::TILE_DESC_MARSH          = "TILE_DESC_MARSH";
 const string TileTextKeys::TILE_DESC_MOUNTAINS      = "TILE_DESC_MOUNTAINS";
+const string TileTextKeys::TILE_DESC_PIER           = "TILE_DESC_PIER";
 const string TileTextKeys::TILE_DESC_REEDS          = "TILE_DESC_REEDS";
 const string TileTextKeys::TILE_DESC_RIVER          = "TILE_DESC_RIVER";
 const string TileTextKeys::TILE_DESC_ROAD           = "TILE_DESC_ROAD";

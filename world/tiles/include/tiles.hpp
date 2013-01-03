@@ -47,7 +47,8 @@ enum TileType
   TILE_TYPE_SITE_OF_DEATH = 33,
   TILE_TYPE_TEMPLE    = 34,
   TILE_TYPE_DAIS      = 35,
-  TILE_TYPE_LAST      = 35
+  TILE_TYPE_PIER      = 36,
+  TILE_TYPE_LAST      = 36
 };
 
 inline TileType operator--(TileType &tt, int)

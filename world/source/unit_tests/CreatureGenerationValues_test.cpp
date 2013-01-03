@@ -19,6 +19,7 @@ TEST(SL_World_CreatureGenerationValues, saveload)
 
   cgv.add_allowable_terrain_type(TILE_TYPE_BARRACKS);
   cgv.add_allowable_terrain_type(TILE_TYPE_MARSH);
+  cgv.add_allowable_terrain_type(TILE_TYPE_PIER);
 
   Dice hp(5, 6, 7);
   cgv.set_initial_hit_points(hp);

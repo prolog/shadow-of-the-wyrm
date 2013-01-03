@@ -143,6 +143,9 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
     case TILE_TYPE_DAIS:
       result_tile = boost::make_shared<DaisTile>();
       break;
+    case TILE_TYPE_PIER:
+      result_tile = boost::make_shared<PierTile>();
+      break;
     default:
       break;
   }

@@ -36,7 +36,7 @@ TilePtr TileFactory::create_tile(const ClassIdentifier cl_id)
 
 void TileFactory::initialize_tile_map()
 {
-  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 35);
+  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 36);
 
   TilePtr barracks = boost::make_shared<BarracksTile>();
   TilePtr beach    = boost::make_shared<BeachTile>();
@@ -59,6 +59,7 @@ void TileFactory::initialize_tile_map()
   TilePtr library  = boost::make_shared<LibraryTile>();
   TilePtr marsh    = boost::make_shared<MarshTile>();
   TilePtr mtns     = boost::make_shared<MountainsTile>();
+  TilePtr pier     = boost::make_shared<PierTile>();
   TilePtr reeds    = boost::make_shared<ReedsTile>();
   TilePtr river    = boost::make_shared<RiverTile>();
   TilePtr road     = boost::make_shared<RoadTile>();
@@ -96,6 +97,7 @@ void TileFactory::initialize_tile_map()
   tiles_map.insert(make_pair(CLASS_ID_LIBRARY_TILE, library));
   tiles_map.insert(make_pair(CLASS_ID_MARSH_TILE, marsh));
   tiles_map.insert(make_pair(CLASS_ID_MOUNTAINS_TILE, mtns));
+  tiles_map.insert(make_pair(CLASS_ID_PIER_TILE, pier));
   tiles_map.insert(make_pair(CLASS_ID_REEDS_TILE, reeds));
   tiles_map.insert(make_pair(CLASS_ID_RIVER_TILE, river));
   tiles_map.insert(make_pair(CLASS_ID_ROAD_TILE, road));

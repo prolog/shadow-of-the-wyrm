@@ -128,6 +128,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = TileGenerator::generate(TILE_TYPE_ROCK);
   }
+  else if (xml_tile == 'P')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_PIER);
+  }
   else if (xml_tile == 'T')
   {
     tile = TileGenerator::generate(TILE_TYPE_TREE);

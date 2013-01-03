@@ -20,6 +20,7 @@
 #include "HillsTile.hpp"
 #include "MarshTile.hpp"
 #include "MountainsTile.hpp"
+#include "PierTile.hpp"
 #include "ReedsTile.hpp"
 #include "RiverTile.hpp"
 #include "RoadTile.hpp"
