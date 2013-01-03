@@ -102,7 +102,7 @@ void WorldGenerator::generate_little_island(MapPtr map)
   Coordinate c;
   c.first  = height - 4;
   c.second = width - 4;
-//  map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
+  map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
 
   // Village Graveyard
   TilePtr isen_dun_graveyard = TileGenerator::generate(TILE_TYPE_GRAVEYARD, TILE_TYPE_UNDEFINED, false);
@@ -151,8 +151,6 @@ void WorldGenerator::generate_far_reaches(MapPtr map)
   lair_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR);
   lair_tile->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR);
   map->insert(2, 2, lair_tile);
-  Coordinate c(2,2);
-  map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
   
   tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(2, 3, tile);

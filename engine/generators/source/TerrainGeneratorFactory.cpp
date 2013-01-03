@@ -132,6 +132,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TILE_TYPE_KEEP:
     case TILE_TYPE_LIBRARY:
     case TILE_TYPE_DAIS:
+    case TILE_TYPE_PIER:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.
       generator = boost::make_shared<FieldGenerator>(map_exit_id);

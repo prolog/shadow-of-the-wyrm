@@ -50,42 +50,43 @@
 	<xs:annotation><xs:documentation>Contains information on the tile types</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="FieldTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="ScrubTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="WheatTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="CairnTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="TreeTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="DesertTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="RoadTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="RiverTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="SeaTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="ShoalsTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="DungeonTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="RockTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="GraveTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="MarshTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="ReedsTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="HillsTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="MountainsTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="BeachTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="BushTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="WeedsTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="SpringsTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="ForestTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="UpStaircaseTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="DownStaircaseTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="CavernTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="VillageTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="DungeonComplexTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="BarracksTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="CastleTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="ChurchTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="GraveyardTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="KeepTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="LibraryTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="SiteOfDeathTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="TempleTile" type="tns:Tile" minOccurs="1"/>
-			<xs:element name="DaisTile" type="tns:Tile" minOccurs="1"/>
+			<xs:element name="FieldTile" type="tns:Tile"/>
+			<xs:element name="ScrubTile" type="tns:Tile"/>
+			<xs:element name="WheatTile" type="tns:Tile"/>
+			<xs:element name="CairnTile" type="tns:Tile"/>
+			<xs:element name="TreeTile" type="tns:Tile"/>
+			<xs:element name="DesertTile" type="tns:Tile"/>
+			<xs:element name="RoadTile" type="tns:Tile"/>
+			<xs:element name="RiverTile" type="tns:Tile"/>
+			<xs:element name="SeaTile" type="tns:Tile"/>
+			<xs:element name="ShoalsTile" type="tns:Tile"/>
+			<xs:element name="DungeonTile" type="tns:Tile"/>
+			<xs:element name="RockTile" type="tns:Tile"/>
+			<xs:element name="GraveTile" type="tns:Tile"/>
+			<xs:element name="MarshTile" type="tns:Tile"/>
+			<xs:element name="ReedsTile" type="tns:Tile"/>
+			<xs:element name="HillsTile" type="tns:Tile"/>
+			<xs:element name="MountainsTile" type="tns:Tile"/>
+			<xs:element name="BeachTile" type="tns:Tile"/>
+			<xs:element name="BushTile" type="tns:Tile"/>
+			<xs:element name="WeedsTile" type="tns:Tile"/>
+			<xs:element name="SpringsTile" type="tns:Tile"/>
+			<xs:element name="ForestTile" type="tns:Tile"/>
+			<xs:element name="UpStaircaseTile" type="tns:Tile"/>
+			<xs:element name="DownStaircaseTile" type="tns:Tile"/>
+			<xs:element name="CavernTile" type="tns:Tile"/>
+			<xs:element name="VillageTile" type="tns:Tile"/>
+			<xs:element name="DungeonComplexTile" type="tns:Tile"/>
+			<xs:element name="BarracksTile" type="tns:Tile"/>
+			<xs:element name="CastleTile" type="tns:Tile"/>
+			<xs:element name="ChurchTile" type="tns:Tile"/>
+			<xs:element name="GraveyardTile" type="tns:Tile"/>
+			<xs:element name="KeepTile" type="tns:Tile"/>
+			<xs:element name="LibraryTile" type="tns:Tile"/>
+			<xs:element name="SiteOfDeathTile" type="tns:Tile"/>
+			<xs:element name="TempleTile" type="tns:Tile"/>
+			<xs:element name="DaisTile" type="tns:Tile"/>
+			<xs:element name="PierTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

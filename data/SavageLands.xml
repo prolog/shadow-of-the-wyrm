@@ -2998,6 +2998,12 @@
 				<Colour>15</Colour>
 			</Text>
 		</DaisTile>
+		<PierTile>
+			<Text>
+				<Symbol>#</Symbol>
+				<Colour>3</Colour>
+			</Text>
+		</PierTile>
 	</Tiles>
 	<Items>
 		<Armours>
@@ -3900,6 +3906,13 @@
 				<UsageDescriptionSID>CORACLE_USAGE_SID</UsageDescriptionSID>
 				<Value>20</Value>
 				<Weight><Pounds>30</Pounds></Weight>
+				<Material>8</Material>
+			</Boat>
+			<Boat id="rowboat">
+				<DescriptionSID>ROWBOAT_SID</DescriptionSID>
+				<UsageDescriptionSID>ROWBOAT_USAGE_SID</UsageDescriptionSID>
+				<Value>50</Value>
+				<Weight><Pounds>50</Pounds></Weight>
 				<Material>8</Material>
 			</Boat>
 		</Boats>

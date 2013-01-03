@@ -2034,6 +2034,9 @@
     <ClInclude Include="engine\events\include\DeathEventFunctions.hpp">
       <Filter>Header Files\engine\events\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\PierTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3871,6 +3874,12 @@
     </ClCompile>
     <ClCompile Include="engine\events\source\DeathEventFunctions.cpp">
       <Filter>Source Files\engine\events\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\PierTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\PierTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
