@@ -1,3 +1,4 @@
+#include <boost/foreach.hpp>
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "MapUtils.hpp"
@@ -170,6 +171,31 @@ TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& cr
   return creatures_tile;
 }
 
+// Get the adjacent tiles to a creature by getting the adjacent coordinates,
+// mapping each coordinate to a direction, then looking up the tile and placing
+// it in the result map.
+std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature)
+{
+  std::map<Direction, TilePtr> result_map;
+
+  if (map && creature)
+  {
+    Coordinate creature_coord = map->get_location(creature->get_id());
+
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
+
+    BOOST_FOREACH(const Coordinate& c, adjacent_coords)
+    {
+      Direction d = CoordUtils::get_direction(creature_coord, c);
+      TilePtr tile = map->at(c);
+
+      result_map.insert(make_pair(d, tile));
+    }
+  }
+  
+  return result_map;
+}
+
 bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
 {
   bool result = false;
@@ -313,6 +339,28 @@ bool MapUtils::hostile_creature_exists(const string& creature_id, MapPtr current
       CreaturePtr creature = cr_it->second;
       
       if (creature->hostile_to(creature_id))
+      {
+        return true;
+      }
+    }
+  }
+  
+  return false;
+}
+
+// Check to see if there is a creature (any!) adjacent to the creature
+// represented by the given creature ID
+bool MapUtils::adjacent_creature_exists(CreaturePtr creature, MapPtr map)
+{
+  if (map)
+  {
+    std::map<Direction, TilePtr> adjacent_tiles = MapUtils::get_adjacent_tiles_to_creature(map, creature);
+
+    for (std::map<Direction, TilePtr>::const_iterator t_it = adjacent_tiles.begin(); t_it != adjacent_tiles.end(); t_it++)
+    {
+      TilePtr tile = t_it->second;
+
+      if (tile && tile->has_creature())
       {
         return true;
       }

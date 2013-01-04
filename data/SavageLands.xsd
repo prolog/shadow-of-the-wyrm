@@ -276,7 +276,8 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
-			<xs:element name="DescriptionSID" type="xs:string"/>	
+			<xs:element name="DescriptionSID" type="xs:string"/>
+			<xs:element name="SpeechTextSID" type="xs:string" minOccurs="0"/>
             <!-- Used to create a decision strategy for the creature.  Currently accepted values:
                  - default (or just ignore the field)
 				 - immobile_default

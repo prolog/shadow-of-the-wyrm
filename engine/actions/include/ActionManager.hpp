@@ -73,6 +73,9 @@ class ActionManager : public ISerializable
     // Eat something
     ActionCost eat(CreaturePtr creature);
 
+    // Chat with another creature
+    ActionCost chat(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

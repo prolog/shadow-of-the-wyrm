@@ -623,6 +623,7 @@ class ActionTextKeys
     static const std::string ACTION_LOOK_TILE_OUT_OF_RANGE;
     static const std::string ACTION_FIRE;
     static const std::string ACTION_NOTHING_HAPPENS;
+    static const std::string ACTION_CHAT_NOBODY_NEARBY;
 
   protected:
     ActionTextKeys();

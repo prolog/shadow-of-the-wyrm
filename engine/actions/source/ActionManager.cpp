@@ -2,6 +2,7 @@
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
 #include "CharacterDumpManager.hpp"
+#include "ChatManager.hpp"
 #include "Conversion.hpp"
 #include "CurrencyManager.hpp"
 #include "DateTimeManager.hpp"
@@ -228,6 +229,13 @@ ActionCost ActionManager::eat(CreaturePtr creature)
 {
   FoodManager fm;
   return get_action_cost(creature, fm.eat(creature, this));
+}
+
+// Chat with some (hopefully) friendly critter
+ActionCost ActionManager::chat(CreaturePtr creature)
+{
+  ChatManager cm;
+  return get_action_cost(creature, cm.chat(creature));
 }
 
 // Pick up an item, doing any necessary checks first.

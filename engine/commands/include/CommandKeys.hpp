@@ -41,6 +41,7 @@ class CommandKeys
     static const std::string CHECK_CURRENCY;
     static const std::string SAVE_GAME;
     static const std::string EAT;
+    static const std::string CHAT;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

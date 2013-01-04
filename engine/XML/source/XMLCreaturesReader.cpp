@@ -65,6 +65,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // "a goblin warrior", "some grey ooze", etc.
     string description_sid = XMLUtils::get_child_node_value(creature_node, "DescriptionSID");
     creature->set_description_sid(description_sid);
+
+    // What the creature says when chatted with, if anything at all.
+    string speech_text_sid = XMLUtils::get_child_node_value(creature_node, "SpeechTextSID");
+    creature->set_speech_text_sid(speech_text_sid);
     
     // A decision strategy for the creature, which provides a set of actions (move, attack, and so on)
     // as appropriate.  ImmobileDecisionStrategy, for example, disallows movement, and is used for

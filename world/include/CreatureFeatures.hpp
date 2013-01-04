@@ -63,3 +63,13 @@ class CreatureEvents
     CreatureEvents();
     ~CreatureEvents();
 };
+
+class CreatureAdditionalProperties
+{
+  public:
+    static const std::string CREATURE_PROPERTY_SPEECH_TEXT_SID;
+
+  protected:
+    CreatureAdditionalProperties();
+    ~CreatureAdditionalProperties();
+};

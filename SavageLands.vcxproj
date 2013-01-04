@@ -95,6 +95,7 @@
     <ClInclude Include="engine\actions\include\ActionCost.hpp" />
     <ClInclude Include="engine\actions\include\ActionManager.hpp" />
     <ClInclude Include="engine\actions\include\CharacterDumpManager.hpp" />
+    <ClInclude Include="engine\actions\include\ChatManager.hpp" />
     <ClInclude Include="engine\actions\include\ConsumableManager.hpp" />
     <ClInclude Include="engine\actions\include\CurrencyManager.hpp" />
     <ClInclude Include="engine\actions\include\DateTimeManager.hpp" />
@@ -617,6 +618,7 @@
     <ClCompile Include="engine\actions\source\ActionCost.cpp" />
     <ClCompile Include="engine\actions\source\ActionManager.cpp" />
     <ClCompile Include="engine\actions\source\CharacterDumpManager.cpp" />
+    <ClCompile Include="engine\actions\source\ChatManager.cpp" />
     <ClCompile Include="engine\actions\source\ConsumableManager.cpp" />
     <ClCompile Include="engine\actions\source\CurrencyManager.cpp" />
     <ClCompile Include="engine\actions\source\DateTimeManager.cpp" />

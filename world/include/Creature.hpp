@@ -212,6 +212,18 @@ class Creature : public ISerializable
     bool has_event_function(const std::string& event_name);
     std::string get_event_function(const std::string& event_name) const;
 
+    // The generic "chat" text a creature uses.  Not all creatures will have chat
+    // text.
+    void set_speech_text_sid(const std::string& speech_text_sid);
+    std::string get_speech_text_sid() const;
+
+    // Additional traits not all creatures will have, so a bit of space is saved
+    // by using a map.
+    bool has_additional_property(const std::string& property_name) const;
+    void set_additional_property(const std::string& property_name, const std::string& property_value);
+    void set_additional_properties_map(const std::map<std::string, std::string>& additional_properties_map);
+    std::map<std::string, std::string> get_additional_properties_map() const;
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
@@ -320,6 +332,10 @@ class Creature : public ISerializable
     // Event functions - used to look up engine or user-defined functions
     // when the event occurs.
     EventFunctionMap event_functions;
+
+    // Additional properties - properties a creature can have that are
+    // not common to all creatures (speech, etc).
+    std::map<std::string, std::string> additional_properties;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

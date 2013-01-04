@@ -248,3 +248,13 @@ EatCommand::EatCommand()
 EatCommand::~EatCommand()
 {
 }
+
+// Chat with another creature
+ChatCommand::ChatCommand()
+: Command(CommandKeys::CHAT)
+{
+}
+
+ChatCommand::~ChatCommand()
+{
+}
