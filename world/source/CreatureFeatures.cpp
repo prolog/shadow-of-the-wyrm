@@ -22,3 +22,13 @@ CreatureEvents::~CreatureEvents()
 }
 
 const string CreatureEvents::CREATURE_EVENT_DEATH = "CREATURE_EVENT_DEATH";
+
+CreatureAdditionalProperties::CreatureAdditionalProperties()
+{
+}
+
+CreatureAdditionalProperties::~CreatureAdditionalProperties()
+{
+}
+
+const string CreatureAdditionalProperties::CREATURE_PROPERTY_SPEECH_TEXT_SID = "CREATURE_PROPERTY_SPEECH_TEXT_SID";

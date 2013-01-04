@@ -19,6 +19,7 @@ class MapUtils
     static bool add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, TilePtr creatures_old_tile = TilePtr() /* NULL by default*/);
 
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
+    static std::map<Direction, TilePtr> get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
     static bool remove_creature(const MapPtr& map, const CreaturePtr& creature);
     
     static bool can_exit_map(MapExitPtr map_exit);
@@ -35,6 +36,7 @@ class MapUtils
     static bool is_moving_from_land_type_tile_to_water_type_tile(TilePtr creatures_old_tile, TilePtr creatures_new_tile);
     
     static bool hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
+    static bool adjacent_creature_exists(CreaturePtr creature, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
     
   protected: 

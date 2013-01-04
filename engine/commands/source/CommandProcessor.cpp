@@ -133,6 +133,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.eat(creature);
       }
+      else if (command_name == CommandKeys::CHAT)
+      {
+        ac = game->actions.chat(creature);
+      }
     }
   }
   

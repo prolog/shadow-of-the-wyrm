@@ -95,6 +95,7 @@ Creature::Creature(const Creature& cr)
   targets = cr.targets;  
   hunger = cr.hunger;
   event_functions = cr.event_functions;
+  additional_properties = cr.additional_properties;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -164,6 +165,7 @@ bool Creature::operator==(const Creature& cr)
   result = result && (targets == cr.targets);
   result = result && (hunger == cr.hunger);
   result = result && (event_functions == cr.event_functions);
+  result = result && (additional_properties == cr.additional_properties);
 
   return result;
 }
@@ -745,6 +747,54 @@ string Creature::get_event_function(const string& event_name) const
   return function_name;
 }
 
+// Set and get the generic speech text sid.
+void Creature::set_speech_text_sid(const string& speech_text_sid)
+{
+  additional_properties[CreatureAdditionalProperties::CREATURE_PROPERTY_SPEECH_TEXT_SID] = speech_text_sid;
+}
+
+string Creature::get_speech_text_sid() const
+{
+  string speech_text_sid;
+
+  map<string, string>::const_iterator p_it = additional_properties.find(CreatureAdditionalProperties::CREATURE_PROPERTY_SPEECH_TEXT_SID);
+
+  if (p_it != additional_properties.end())
+  {
+    speech_text_sid = p_it->second;
+  }
+
+  return speech_text_sid;
+}
+
+bool Creature::has_additional_property(const string& property_name) const
+{
+  bool has_property = false;
+
+  if (additional_properties.find(property_name) != additional_properties.end())
+  {
+    has_property = true;
+  }
+
+  return has_property;
+}
+
+void Creature::set_additional_property(const string& property_name, const string& property_value)
+{
+  additional_properties[property_name] = property_value;
+}
+
+void Creature::set_additional_properties_map(const map<string, string>& properties_map)
+{
+  additional_properties = properties_map;
+}
+
+map<string, string> Creature::get_additional_properties_map() const
+{
+  return additional_properties;
+}
+
+// Set, get, and query additional (string) properties
   // Uncomment the code below to find out the size of Creature. :)
   // template<int s> struct creature_size;
   // creature_size<sizeof(Creature)> creature_size;
@@ -754,7 +804,7 @@ void Creature::assert_size() const
 {
   // VS 2010
   #ifdef _MSC_VER
-  BOOST_STATIC_ASSERT(sizeof(*this) == 744);
+  BOOST_STATIC_ASSERT(sizeof(*this) == 760);
   #else // gcc
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
   #endif
@@ -809,6 +859,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->targets, cr.targets);
   std::swap(this->hunger, cr.hunger);
   std::swap(this->event_functions, cr.event_functions);
+  std::swap(this->additional_properties, cr.additional_properties);
 }
 
 bool Creature::serialize(ostream& stream)
@@ -905,6 +956,19 @@ bool Creature::serialize(ostream& stream)
     {
       Serialize::write_string(stream, event_function.first);
       Serialize::write_string(stream, event_function.second);
+    }
+  }
+
+  Serialize::write_size_t(stream, additional_properties.size());
+
+  if (!additional_properties.empty())
+  {
+    // Not "really" the type of the map from a conceptual standpoint...
+    // But, it compiles!
+    BOOST_FOREACH(EventFunctionMap::value_type& additional_property, additional_properties)
+    {
+      Serialize::write_string(stream, additional_property.first);
+      Serialize::write_string(stream, additional_property.second);
     }
   }
 
@@ -1018,6 +1082,24 @@ bool Creature::deserialize(istream& stream)
       Serialize::read_string(stream, function_name);
 
       event_functions.insert(make_pair(event_name, function_name));
+    }
+  }
+
+  size_t additional_properties_size = 0;
+  Serialize::read_size_t(stream, additional_properties_size);
+
+  if (additional_properties_size > 0)
+  {
+    additional_properties.clear();
+
+    for (unsigned int i = 0; i < additional_properties_size; i++)
+    {
+      string prop_name, prop_value;
+
+      Serialize::read_string(stream, prop_name);
+      Serialize::read_string(stream, prop_value);
+
+      additional_properties.insert(make_pair(prop_name, prop_value));
     }
   }
 

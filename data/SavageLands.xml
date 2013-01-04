@@ -2640,6 +2640,7 @@
 		<Creature id="the_ploughman">
 			<ShortDescriptionSID>THE_PLOUGHMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_PLOUGHMAN_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>THE_PLOUGHMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -2668,6 +2669,7 @@
 		<Creature id="the_blacksmith">
 			<ShortDescriptionSID>THE_BLACKSMITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_BLACKSMITH_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>THE_BLACKSMITH_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>

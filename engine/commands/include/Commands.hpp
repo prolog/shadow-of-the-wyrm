@@ -171,3 +171,10 @@ class EatCommand : public Command
     EatCommand();
     ~EatCommand();
 };
+
+class ChatCommand : public Command
+{
+  public:
+    ChatCommand();
+    ~ChatCommand();
+};

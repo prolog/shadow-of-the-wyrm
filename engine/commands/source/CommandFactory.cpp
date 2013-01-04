@@ -129,6 +129,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<EatCommand>();
   }
+  else if (command_name == CommandKeys::CHAT)
+  {
+    command = boost::make_shared<ChatCommand>();
+  }
 
   return command;
 }

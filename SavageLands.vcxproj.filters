@@ -2037,6 +2037,9 @@
     <ClInclude Include="world\tiles\include\PierTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\ChatManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
@@ -3880,6 +3883,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\PierTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ChatManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
