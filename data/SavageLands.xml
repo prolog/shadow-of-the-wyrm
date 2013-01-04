@@ -2637,6 +2637,62 @@
 			<Evade>3</Evade>
 			<Soak>1</Soak>
 		</Creature>
+		<Creature id="the_ploughman">
+			<ShortDescriptionSID>THE_PLOUGHMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_PLOUGHMAN_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>6</NumDice>
+					<NumSides>5</NumSides>
+				</HP>
+				<Exp>20</Exp>
+			</CreatureGeneration>
+			<Level>6</Level>
+			<Damage>
+				<NumDice>2</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>4</Evade>
+			<Soak>1</Soak>
+		</Creature>
+		<Creature id="the_blacksmith">
+			<ShortDescriptionSID>THE_BLACKSMITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THE_BLACKSMITH_DESCRIPTION_SID</DescriptionSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>40</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>5</NumDice>
+				<NumSides>3</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>0</Evade>
+			<Soak>3</Soak>
+		</Creature>
 		<Creature id="small_child">
 			<ShortDescriptionSID>SMALL_CHILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SMALL_CHILD_DESCRIPTION_SID</DescriptionSID>
