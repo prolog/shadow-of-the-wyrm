@@ -10,6 +10,8 @@ typedef std::vector<std::set<Coordinate> > MapComponents;
 typedef std::vector<std::set<Coordinate> >::const_iterator MapComponentsItc;
 typedef std::set<Coordinate> Component;
 typedef std::set<Coordinate>::const_iterator ComponentItc;
+typedef std::map<Direction, TilePtr> TileAdjacencyMap;
+typedef std::map<Direction, CreaturePtr> CreatureAdjacencyMap;
 
 class MapUtils
 {
@@ -19,7 +21,9 @@ class MapUtils
     static bool add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, TilePtr creatures_old_tile = TilePtr() /* NULL by default*/);
 
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
-    static std::map<Direction, TilePtr> get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
+    static TileAdjacencyMap get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
+    static uint get_num_adjacent_creatures(const TileAdjacencyMap& adjacency_map);
+    static CreatureAdjacencyMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
     static bool remove_creature(const MapPtr& map, const CreaturePtr& creature);
     
     static bool can_exit_map(MapExitPtr map_exit);
