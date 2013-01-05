@@ -196,6 +196,53 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
   return result_map;
 }
 
+// Get the number of adjacenct creatures
+uint MapUtils::get_num_adjacent_creatures(const TileAdjacencyMap& adjacency_map)
+{
+  uint num_adjacent = 0;
+
+  BOOST_FOREACH(const TileAdjacencyMap::value_type& adjacent, adjacency_map)
+  {
+    TilePtr adjacent_tile = adjacent.second;
+
+    if (adjacent_tile && adjacent_tile->has_creature())
+    {
+      num_adjacent++;
+    }
+  }
+
+  return num_adjacent;
+}
+
+// Get a map of adjacent creatures to the current creature on the current
+// map, keyed by their direction from the creature.
+CreatureAdjacencyMap MapUtils::get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature)
+{
+  CreatureAdjacencyMap adjacent_creatures;
+
+  if (map && creature)
+  {
+    Coordinate creature_coord = map->get_location(creature->get_id());
+
+    vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
+
+    BOOST_FOREACH(const Coordinate& c, adjacent_coords)
+    {
+      Direction d = CoordUtils::get_direction(creature_coord, c);
+      TilePtr tile = map->at(c);
+      CreaturePtr creature;
+
+      if (tile && tile->has_creature())
+      {
+        creature = tile->get_creature();
+        adjacent_creatures.insert(make_pair(d, creature));
+      }
+    }
+  }
+  
+  return adjacent_creatures;
+}
+
 bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
 {
   bool result = false;
