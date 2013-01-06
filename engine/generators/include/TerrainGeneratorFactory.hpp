@@ -10,4 +10,6 @@ class TerrainGeneratorFactory
   protected:
     TerrainGeneratorFactory();
     ~TerrainGeneratorFactory();
+
+    static void copy_properties(TilePtr tile, GeneratorPtr generator);
 };

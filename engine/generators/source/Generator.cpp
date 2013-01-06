@@ -178,3 +178,32 @@ MapType Generator::get_map_type() const
 {
   return MAP_TYPE_OVERWORLD;
 }
+
+// Clear, set, and get additional properties.
+void Generator::clear_additional_properties()
+{
+  additional_properties.clear();
+}
+
+void Generator::set_additional_property(const string& property_name, const string& property_value)
+{
+  additional_properties[property_name] = property_value;
+}
+
+void Generator::set_additional_properties(const map<string, string>& new_additional_properties)
+{
+  additional_properties = new_additional_properties;
+}
+
+string Generator::get_additional_property(const string& property_name) const
+{
+  string property_value;
+
+  map<string, string>::const_iterator p_it = additional_properties.find(property_name);
+  if (p_it != additional_properties.end())
+  {
+    property_value = p_it->second;
+  }
+  
+  return property_value;
+}

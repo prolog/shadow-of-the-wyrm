@@ -3887,5 +3887,8 @@
     <ClCompile Include="engine\actions\source\ChatManager.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\TileProperties.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

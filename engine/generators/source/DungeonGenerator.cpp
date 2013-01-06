@@ -2,6 +2,7 @@
 #include <cmath>
 #include <boost/make_shared.hpp>
 #include <boost/foreach.hpp>
+#include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DungeonGenerator.hpp"
 #include "AllTiles.hpp"
@@ -12,6 +13,20 @@
 
 using namespace std;
 
+// Dungeon generation properties: max depth, etc.
+DungeonGeneratorProperties::DungeonGeneratorProperties()
+{
+}
+
+DungeonGeneratorProperties::~DungeonGeneratorProperties()
+{
+}
+
+// If present, used (along with the current depth to determine whether down
+// staircases should be generated.
+const string DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH = "DUNGEON_PROPERTY_MAX_DEPTH";
+
+// Dungeon Generator
 bool compare_rooms(const Room& r1, const Room& r2);
 bool compare_rooms(const Room& r1, const Room& r2)
 {
@@ -434,17 +449,39 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   int y, x;
   
   Room first_staircase_room;
-  
-  while (!location_found)
-  {
-    Room r = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
-    
-    y = RNG::range(r.y1+1, r.y2-2);
-    x = RNG::range(r.x1+1, r.x2-2);
-    
-    place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, false, false);
 
-    location_found = true;
+  // Update the map's depth information.
+  // JCD FIXME refactor
+  string max_depth_property = get_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH);
+  if (!max_depth_property.empty())
+  {
+    Dimensions dim = map->size();
+    Depth depth = dim.depth();
+
+    depth.set_maximum(String::to_int(max_depth_property));
+    dim.set_depth(depth);
+
+    map->set_size(dim);
+  }
+
+  Depth depth = map->size().depth();
+
+  // Generate a down staircase if:
+  // - The max_depth property is defined
+  // - Our current depth is less than the max depth
+  if (depth.get_current() < depth.get_maximum())
+  {
+    while (!location_found)
+    {
+      Room r = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
+    
+      y = RNG::range(r.y1+1, r.y2-2);
+      x = RNG::range(r.x1+1, r.x2-2);
+    
+      place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, false, false);
+
+      location_found = true;
+    }
   }
   
   location_found = false;

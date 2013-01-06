@@ -1365,6 +1365,7 @@
     <ClCompile Include="world\tiles\source\Tile.cpp" />
     <ClCompile Include="world\tiles\source\TileFactory.cpp" />
     <ClCompile Include="world\tiles\source\TileIDs.cpp" />
+    <ClCompile Include="world\tiles\source\TileProperties.cpp" />
     <ClCompile Include="world\tiles\source\TreeTile.cpp" />
     <ClCompile Include="world\tiles\source\unit_tests\BarracksTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
