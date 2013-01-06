@@ -2484,6 +2484,7 @@
 		<Creature id="kestrel">
 			<ShortDescriptionSID>KESTREL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KESTREL_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>KESTREL_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>b</Symbol>
@@ -2548,6 +2549,7 @@
 		<Creature id="fox">
 			<ShortDescriptionSID>FOX_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FOX_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>FOX_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>f</Symbol>
@@ -2581,6 +2583,7 @@
 		<Creature id="amaurosis">
 			<ShortDescriptionSID>AMAUROSIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AMAUROSIS_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>AMAUROSIS_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>W</Symbol>
@@ -2612,6 +2615,7 @@
 		<Creature id="fisherman">
 			<ShortDescriptionSID>FISHERMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FISHERMAN_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>FISHERMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -2698,6 +2702,7 @@
 		<Creature id="small_child">
 			<ShortDescriptionSID>SMALL_CHILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SMALL_CHILD_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>SMALL_CHILD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -2726,6 +2731,7 @@
 		<Creature id="village_priest">
 			<ShortDescriptionSID>VILLAGE_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VILLAGE_PRIEST_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>VILLAGE_PRIEST_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -2755,6 +2761,7 @@
 		<Creature id="kew">
 			<ShortDescriptionSID>KEW_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KEW_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>KEW_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>@</Symbol>
@@ -2784,6 +2791,7 @@
 		<Creature id="farmer">
 			<ShortDescriptionSID>FARMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FARMER_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>FARMER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -2812,6 +2820,7 @@
 		<Creature id="hrimgar">
 			<ShortDescriptionSID>HRIMGAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HRIMGAR_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>HRIMGAR_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
