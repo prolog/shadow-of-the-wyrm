@@ -1,11 +1,14 @@
 #pragma once
 #include <map>
 
-enum TilePropertyType
+class TileProperties
 {
-  TILE_PROPERTY_EXTRA_DESCRIPTION_SID = 0,
-  TILE_PROPERTY_CUSTOM_MAP_ID = 1
-};
+  public:
+    static const std::string TILE_PROPERTY_EXTRA_DESCRIPTION_SID;
+    static const std::string TILE_PROPERTY_CUSTOM_MAP_ID;
 
-typedef std::map<TilePropertyType, std::string> TileProperties;
+  protected:
+    TileProperties();
+    ~TileProperties();
+};
 

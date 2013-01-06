@@ -82,44 +82,44 @@ bool Tile::display_description_on_arrival() const
 
 void Tile::set_extra_description_sid(const string& new_extra_description_sid)
 {
-  set_additional_property(TILE_PROPERTY_EXTRA_DESCRIPTION_SID, new_extra_description_sid);
+  set_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID, new_extra_description_sid);
 }
 
 string Tile::get_extra_description_sid() const
 {
-  return get_additional_property(TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
+  return get_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
 }
 
 bool Tile::has_extra_description() const
 {
-  return has_additional_property(TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
+  return has_additional_property(TileProperties::TILE_PROPERTY_EXTRA_DESCRIPTION_SID);
 }
 
 void Tile::set_custom_map_id(const string& map_generator_id)
 {
-  set_additional_property(TILE_PROPERTY_CUSTOM_MAP_ID, map_generator_id);
+  set_additional_property(TileProperties::TILE_PROPERTY_CUSTOM_MAP_ID, map_generator_id);
 }
 
 string Tile::get_custom_map_id() const
 {
-  return get_additional_property(TILE_PROPERTY_CUSTOM_MAP_ID);
+  return get_additional_property(TileProperties::TILE_PROPERTY_CUSTOM_MAP_ID);
 }
 
 bool Tile::has_custom_map_id() const
 {
-  return has_additional_property(TILE_PROPERTY_CUSTOM_MAP_ID);
+  return has_additional_property(TileProperties::TILE_PROPERTY_CUSTOM_MAP_ID);
 }
 
-void Tile::set_additional_property(const TilePropertyType property_type, const string& property_value)
+void Tile::set_additional_property(const string& property_name, const string& property_value)
 {
-  additional_properties[property_type] = property_value;
+  additional_properties[property_name] = property_value;
 }
 
-string Tile::get_additional_property(const TilePropertyType property_type) const
+string Tile::get_additional_property(const string& property_name) const
 {
   string property_value;
 
-  TileProperties::const_iterator t_it = additional_properties.find(property_type);
+  map<string, string>::const_iterator t_it = additional_properties.find(property_name);
   if (t_it != additional_properties.end())
   {
     property_value = t_it->second;
@@ -128,9 +128,14 @@ string Tile::get_additional_property(const TilePropertyType property_type) const
   return property_value;
 }
 
-bool Tile::has_additional_property(const TilePropertyType property_type) const
+map<string, string> Tile::get_additional_properties() const
 {
-  string property_value = get_additional_property(property_type);
+  return additional_properties;
+}
+
+bool Tile::has_additional_property(const std::string& property_name) const
+{
+  string property_value = get_additional_property(property_name);
   return (!property_value.empty());
 }
 
@@ -282,10 +287,10 @@ bool Tile::serialize(ostream& stream)
 
   if (addl_prop_size > 0)
   {
-    BOOST_FOREACH(TileProperties::value_type& tile_property, additional_properties)
+    for (map<string, string>::iterator p_it = additional_properties.begin(); p_it != additional_properties.end(); p_it++)
     {
-      Serialize::write_enum(stream, tile_property.first);
-      Serialize::write_string(stream, tile_property.second);
+      Serialize::write_string(stream, p_it->first);
+      Serialize::write_string(stream, p_it->second);
     }
   }
 
@@ -351,13 +356,13 @@ bool Tile::deserialize(istream& stream)
 
     for (unsigned int i = 0; i < properties_size; i++)
     {
-      TilePropertyType tile_property;
-      Serialize::read_enum(stream, tile_property);
+      string tile_name;
+      Serialize::read_string(stream, tile_name);
 
       string property_value;
       Serialize::read_string(stream, property_value);
 
-      additional_properties[tile_property] = property_value;
+      additional_properties[tile_name] = property_value;
     }
   }
 

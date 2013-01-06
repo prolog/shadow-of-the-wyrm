@@ -18,7 +18,7 @@
 #include "WorshipSiteTile.hpp"
 #include "VillageTile.hpp"
 
-using std::string;
+using namespace std;
 using boost::dynamic_pointer_cast;
 
 TerrainGeneratorFactory::TerrainGeneratorFactory()
@@ -138,6 +138,22 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       generator = boost::make_shared<FieldGenerator>(map_exit_id);
       break;
   }
+
+  copy_properties(tile, generator);
   
   return generator;
+}
+
+// Copy properties from the tile to the generator's additional properties.
+void TerrainGeneratorFactory::copy_properties(TilePtr tile, GeneratorPtr generator)
+{
+  if (tile && generator)
+  {
+    map<string, string> tile_properties = tile->get_additional_properties();
+
+    for (map<string, string>::const_iterator p_it = tile_properties.begin(); p_it != tile_properties.end(); p_it++)
+    {
+      generator->set_additional_property(p_it->first, p_it->second);
+    }
+  }
 }

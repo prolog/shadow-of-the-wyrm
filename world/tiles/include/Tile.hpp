@@ -43,9 +43,10 @@ class Tile : public ISerializable
     virtual bool has_custom_map_id() const;
 
     // The generic way to set additional properties.
-    virtual void set_additional_property(const TilePropertyType property_type, const std::string& property_value);
-    virtual std::string get_additional_property(const TilePropertyType property_type) const;
-    virtual bool has_additional_property(const TilePropertyType property_type) const;
+    virtual void set_additional_property(const std::string& property_name, const std::string& property_value);
+    virtual std::string get_additional_property(const std::string& property_name) const;
+    virtual std::map<std::string, std::string> get_additional_properties() const;
+    virtual bool has_additional_property(const std::string& property_name) const;
     
     // By default, this is false, but certain tiles (such as overland tiles, staircases, etc.)
     // will be shown on each move.
@@ -103,7 +104,7 @@ class Tile : public ISerializable
     bool explored;
     bool viewed;
 
-    TileProperties additional_properties;
+    std::map<std::string, std::string> additional_properties;
 
     // This is defined by each class, and shouldn't be overridden
     // by means of a set function.
