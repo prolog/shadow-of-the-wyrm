@@ -21,6 +21,9 @@ class DungeonGenerator : public Generator
     virtual MapPtr generate(const Dimensions& dim);
 
   protected:
+
+    virtual bool get_permanence_default() const;
+    
     virtual MapType get_map_type() const;
     virtual bool    generate_dungeon(MapPtr map);
     virtual TilePtr generate_tile(MapPtr current_map, int row, int col);

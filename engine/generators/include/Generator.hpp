@@ -32,6 +32,10 @@ class Generator
     virtual std::string get_additional_property(const std::string& property_name) const;
     
   protected:
+
+    virtual void set_map_permanence(MapPtr map);
+    virtual bool get_permanence_default() const;
+
     virtual MapType get_map_type() const;
     virtual Dimensions update_dimensions_if_necessary(const Dimensions& dim, const MapType map_type, const uint danger_level);
     virtual void initialize(MapPtr map, const uint danger_level);

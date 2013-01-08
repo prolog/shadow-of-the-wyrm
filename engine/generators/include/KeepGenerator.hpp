@@ -10,6 +10,8 @@ class KeepGenerator : public Generator
     virtual MapPtr generate();
 
   protected:
+    virtual bool get_permanence_default() const;
+
     virtual void create_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
     virtual void populate_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
     virtual void create_entrance(MapPtr map, const int start_row, const int start_col, const int height, const int width);

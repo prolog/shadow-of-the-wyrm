@@ -32,6 +32,11 @@ TilePtr GraveyardGenerator::generate_tile(MapPtr current_map, const int row, con
   return grave_tile;
 }
 
+bool GraveyardGenerator::get_permanence_default() const
+{
+  return true;
+}
+
 void GraveyardGenerator::add_tomb_if_necessary(MapPtr map)
 {
   // 50/50 chance

@@ -7,4 +7,10 @@ ChurchGenerator::ChurchGenerator(const std::string& new_deity_id, MapPtr new_bas
 {
 }
 
+// Once generated, all worship sites (good, neutral, and evil) are permanent,
+// and linked accordingly.
+bool ChurchGenerator::get_permanence_default() const
+{
+  return true;
+}
 

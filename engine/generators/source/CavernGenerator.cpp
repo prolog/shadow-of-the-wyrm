@@ -232,3 +232,7 @@ MapType CavernGenerator::get_map_type() const
   return MAP_TYPE_UNDERWORLD;
 }
 
+bool CavernGenerator::get_permanence_default() const
+{
+  return true;
+}

@@ -33,6 +33,12 @@ base_map(new_base_map), growth_rate(new_growth_rate)
 {
 }
 
+// Once generated, settlements are permanent.
+bool BaseSettlementGenerator::get_permanence_default() const
+{
+  return true;
+}
+
 // Routines to check to see whether a proposed building overlaps an existing generated building
 // or road.
 bool BaseSettlementGenerator::does_building_overlap(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col, const int offset_extra)

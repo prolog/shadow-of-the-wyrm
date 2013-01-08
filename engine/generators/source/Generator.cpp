@@ -59,6 +59,7 @@ void Generator::initialize(MapPtr map, const uint danger_level)
   map->set_terrain_type(map_terrain_type);
   generate_creatures(map, danger_level);
   generate_initial_items(map, danger_level);
+  set_map_permanence(map);
 }
 
 MapPtr Generator::generate()
@@ -173,6 +174,14 @@ bool Generator::update_items(MapPtr map, const uint danger_level)
   return false;
 }
 
+void Generator::set_map_permanence(MapPtr map)
+{
+  if (map)
+  {
+    map->set_permanent(get_permanence_default());
+  }
+}
+
 // By default, overworld.  Override as necessary.
 MapType Generator::get_map_type() const
 {
@@ -206,4 +215,12 @@ string Generator::get_additional_property(const string& property_name) const
   }
   
   return property_value;
+}
+
+// Maps are not permanent by default.  For certain map types (fields, forests, etc),
+// this is okay.  For others (dungeons, graveyards - really, anything readily
+// exploitable), permanence will need to be set.
+bool Generator::get_permanence_default() const
+{
+  return false;
 }
