@@ -41,6 +41,11 @@ MapPtr KeepGenerator::generate()
   return result_map;
 }
 
+bool KeepGenerator::get_permanence_default() const
+{
+  return true;
+}
+
 void KeepGenerator::create_keep(MapPtr result_map, const int start_row, const int start_col, const int height, const int width)
 {
   TilePtr tile;

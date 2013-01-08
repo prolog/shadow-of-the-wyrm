@@ -378,6 +378,13 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
                   uint danger_level = creature->get_level().get_current();
                   new_map = generator->generate_and_initialize(danger_level);
 
+                  if (new_map->get_permanent())
+                  {
+                    // If it's a permanent map, set up a link between
+                    // the tile and the new map.
+                    tile->set_custom_map_id(new_map->get_map_id());
+                  }
+
                   // JCD FIXME Refactor into a common fn later.
                   if (new_map->get_map_type() != MAP_TYPE_WORLD)
                   {

@@ -9,6 +9,8 @@ class GraveyardGenerator : public Generator
     virtual MapPtr generate(const Dimensions& dim);
 
   protected:
+    virtual bool get_permanence_default() const;
+
     virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col);
 
     // This is the function that determines whether a graveyard is ordered or scattered, and

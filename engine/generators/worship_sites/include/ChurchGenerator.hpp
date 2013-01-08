@@ -15,6 +15,8 @@ class ChurchGenerator : public Generator
     virtual MapPtr generate(const Dimensions& dim) = 0;
 
   protected:
+    virtual bool get_permanence_default() const;
+
     std::string deity_id;
     MapPtr base_map;
 };
