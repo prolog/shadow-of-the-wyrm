@@ -5,6 +5,8 @@ class EastWestPew : public Pew
 {
   public:
     EastWestPew();
+    virtual Feature* clone();
+
 
     uchar get_symbol() const;
 

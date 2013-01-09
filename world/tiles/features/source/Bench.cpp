@@ -6,6 +6,11 @@ Bench::Bench()
 {
 }
 
+Feature* Bench::clone()
+{
+  return new Bench(*this);
+}
+
 bool Bench::handle()
 {
   return true;

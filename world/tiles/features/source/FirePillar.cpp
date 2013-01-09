@@ -8,6 +8,11 @@ FirePillar::FirePillar()
 {
 }
 
+Feature* FirePillar::clone()
+{
+  return new FirePillar(*this);
+}
+
 bool FirePillar::handle()
 {
   return true;

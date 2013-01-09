@@ -313,7 +313,7 @@ bool Tile::serialize(ostream& stream)
   {
     Serialize::write_class_id(stream, CLASS_ID_NULL);
   }
-
+  
   items.serialize(stream);
 
   Serialize::write_size_t(stream, map_exits.size());
@@ -383,6 +383,7 @@ bool Tile::deserialize(istream& stream)
     FeaturePtr feature = FeatureFactory::create_feature(feature_clid);
     if (!feature) return false;
     if (!feature->deserialize(stream)) return false;
+    set_feature(feature);
   }
 
   items.deserialize(stream);

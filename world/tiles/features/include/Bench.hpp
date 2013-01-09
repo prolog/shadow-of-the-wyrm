@@ -7,6 +7,7 @@ class Bench : public Feature
 {
   public:
     Bench();
+    virtual Feature* clone();
 
     virtual bool handle();
     virtual bool kick();

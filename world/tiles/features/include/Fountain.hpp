@@ -4,6 +4,7 @@ class Fountain : public Feature
 {
   public:
     Fountain();
+    virtual Feature* clone();
 
     virtual bool handle();
     virtual bool kick();

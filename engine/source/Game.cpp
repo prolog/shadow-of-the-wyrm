@@ -389,7 +389,9 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         }
 
         action_cost = CommandProcessor::process(current_creature, command, display);
-        advance = action_cost.get_turn_advanced();
+
+        // Poor NPCs...they're discriminated against even at the code level!
+        advance = action_cost.get_turn_advanced() || (!current_creature->get_is_player());
       }
       
       // Update the current creature 

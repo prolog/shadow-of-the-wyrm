@@ -458,6 +458,11 @@ bool Map::deserialize(istream& stream)
 
   for (unsigned int i = 0; i < num_tiles; i++)
   {
+    // JCD FIXME BUGHUNT
+    if (i == 543)
+    {
+      int x = 1;
+    }
     string map_key;
     Serialize::read_string(stream, map_key);
 

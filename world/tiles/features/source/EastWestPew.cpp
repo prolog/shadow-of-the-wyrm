@@ -5,6 +5,11 @@ EastWestPew::EastWestPew()
 {
 }
 
+Feature* EastWestPew::clone()
+{
+  return new EastWestPew(*this);
+}
+
 // Because the pews face east/west, a nicer symbol is needed for ASCII
 // displays.
 uchar EastWestPew::get_symbol() const

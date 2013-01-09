@@ -8,6 +8,8 @@ class Door : public Entrance
   public:
     Door();
     Door(LockPtr new_lock, const EntranceState& new_state);
+    virtual Feature* clone();
+
     virtual ~Door() {};
 
     virtual bool handle();

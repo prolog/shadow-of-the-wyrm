@@ -9,6 +9,11 @@ Fountain::Fountain()
 {
 }
 
+Feature* Fountain::clone()
+{
+  return new Fountain(*this);
+}
+
 bool Fountain::handle()
 {
   return true;

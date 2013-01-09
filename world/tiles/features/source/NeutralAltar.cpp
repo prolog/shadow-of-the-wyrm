@@ -15,6 +15,11 @@ NeutralAltar::NeutralAltar(const std::string& new_deity_id)
 {
 }
 
+Feature* NeutralAltar::clone()
+{
+  return new NeutralAltar(*this);
+}
+
 string NeutralAltar::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_NEUTRAL_ALTAR;

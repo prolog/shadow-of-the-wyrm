@@ -7,6 +7,7 @@ class Pew : public Feature
 {
   public:
     Pew();
+    virtual Feature* clone();
 
     virtual bool handle();
     virtual bool kick();
