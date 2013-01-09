@@ -158,7 +158,9 @@ bool Tile::get_illuminated() const
 
 bool Tile::get_is_blocking() const
 {
-  return (get_movement_multiplier() == 0) || (feature && feature->get_is_blocking());
+  return (get_movement_multiplier() == 0)
+      || (creature && !creature->get_is_player())
+      || (feature && feature->get_is_blocking());
 }
 
 int Tile::get_movement_multiplier() const
