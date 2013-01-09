@@ -13,6 +13,11 @@ EvilAltar::EvilAltar(const std::string& new_deity_id)
 {
 }
 
+Feature* EvilAltar::clone()
+{
+  return new EvilAltar(*this);
+}
+
 string EvilAltar::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_EVIL_ALTAR;

@@ -6,6 +6,7 @@ class Gate : public Entrance
   public:
     Gate();
     Gate(LockPtr new_lock, const EntranceState& new_state);
+    virtual Feature* clone();
 
     virtual bool handle();
     virtual bool kick();

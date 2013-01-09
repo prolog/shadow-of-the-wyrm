@@ -1,3 +1,6 @@
+#include <boost/uuid/uuid_generators.hpp>
+#include <boost/uuid/uuid_io.hpp>
+#include "Conversion.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreationUtils.hpp"
 #include "ItemGenerationManager.hpp"
@@ -15,6 +18,8 @@ Generator::Generator(const string& new_map_exit_id, const TileType new_map_terra
 {
 }
 
+// Always calls the version with both a danger_level and dimensions, so that
+// everything is set up properly.
 MapPtr Generator::generate_and_initialize(const uint danger_level)
 {
   Dimensions dim;
@@ -59,6 +64,9 @@ void Generator::initialize(MapPtr map, const uint danger_level)
   map->set_terrain_type(map_terrain_type);
   generate_creatures(map, danger_level);
   generate_initial_items(map, danger_level);
+
+  boost::uuids::uuid id = boost::uuids::random_generator()();
+  map->set_map_id(Uuid::to_string(id));
   set_map_permanence(map);
 }
 

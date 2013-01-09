@@ -40,6 +40,11 @@ KingDecorativeStatue::KingDecorativeStatue()
 {
 }
 
+Feature* KingDecorativeStatue::clone()
+{
+  return new KingDecorativeStatue(*this);
+}
+
 string KingDecorativeStatue::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_KING_STATUE;
@@ -54,6 +59,11 @@ ClassIdentifier KingDecorativeStatue::internal_class_identifier() const
 QueenDecorativeStatue::QueenDecorativeStatue()
 : DecorativeStatue()
 {
+}
+
+Feature* QueenDecorativeStatue::clone()
+{
+  return new QueenDecorativeStatue(*this);
 }
 
 string QueenDecorativeStatue::get_description_sid() const
@@ -72,6 +82,11 @@ WarlordDecorativeStatue::WarlordDecorativeStatue()
 {
 }
 
+Feature* WarlordDecorativeStatue::clone()
+{
+  return new WarlordDecorativeStatue(*this);
+}
+
 string WarlordDecorativeStatue::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_WARLORD_STATUE;
@@ -86,6 +101,11 @@ ClassIdentifier WarlordDecorativeStatue::internal_class_identifier() const
 KnightDecorativeStatue::KnightDecorativeStatue()
 : DecorativeStatue()
 {
+}
+
+Feature* KnightDecorativeStatue::clone()
+{
+  return new KnightDecorativeStatue(*this);
 }
 
 string KnightDecorativeStatue::get_description_sid() const
@@ -104,6 +124,11 @@ HighPriestDecorativeStatue::HighPriestDecorativeStatue()
 {
 }
 
+Feature* HighPriestDecorativeStatue::clone()
+{
+  return new HighPriestDecorativeStatue(*this);
+}
+
 string HighPriestDecorativeStatue::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE;
@@ -118,6 +143,11 @@ ClassIdentifier HighPriestDecorativeStatue::internal_class_identifier() const
 SorcerorDecorativeStatue::SorcerorDecorativeStatue()
 : DecorativeStatue()
 {
+}
+
+Feature* SorcerorDecorativeStatue::clone()
+{
+  return new SorcerorDecorativeStatue(*this);
 }
 
 string SorcerorDecorativeStatue::get_description_sid() const

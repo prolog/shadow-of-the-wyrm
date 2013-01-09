@@ -14,6 +14,11 @@ Door::Door(LockPtr new_lock, const EntranceState& new_state)
 {
 }
 
+Feature* Door::clone()
+{
+  return new Door(*this);
+}
+
 bool Door::handle()
 {
   // If the door is smashed, display a message.

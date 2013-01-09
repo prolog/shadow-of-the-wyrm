@@ -28,6 +28,7 @@ class KingDecorativeStatue : public DecorativeStatue
 {
   public:
     KingDecorativeStatue();
+    virtual Feature* clone();
     
     std::string get_description_sid() const;
 
@@ -39,6 +40,7 @@ class QueenDecorativeStatue : public DecorativeStatue
 {
   public:
     QueenDecorativeStatue();
+    virtual Feature* clone();
     
     std::string get_description_sid() const;
 
@@ -50,6 +52,7 @@ class WarlordDecorativeStatue : public DecorativeStatue
 {
   public:
     WarlordDecorativeStatue();
+    virtual Feature* clone();
     
     std::string get_description_sid() const;
 
@@ -61,6 +64,7 @@ class KnightDecorativeStatue : public DecorativeStatue
 {
   public:
     KnightDecorativeStatue();
+    virtual Feature* clone();
     
     std::string get_description_sid() const;
 
@@ -72,6 +76,7 @@ class HighPriestDecorativeStatue : public DecorativeStatue
 {
   public:
     HighPriestDecorativeStatue();
+    virtual Feature* clone();
     
     std::string get_description_sid() const;
 
@@ -83,6 +88,7 @@ class SorcerorDecorativeStatue : public DecorativeStatue
 {
   public:
     SorcerorDecorativeStatue();
+    virtual Feature* clone();
     
     std::string get_description_sid() const;
 

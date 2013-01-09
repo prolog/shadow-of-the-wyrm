@@ -5,6 +5,7 @@ class FirePillar : public Feature
 {
   public:
     FirePillar();
+    virtual Feature* clone();
 
     virtual bool handle();
     virtual bool kick();

@@ -26,7 +26,7 @@ FeatureFactory::~FeatureFactory()
 
 FeaturePtr FeatureFactory::create_feature(const ClassIdentifier ci)
 {
-  FeaturePtr jcd_fixme;
+  FeaturePtr feature;
 
   if (feature_map.empty())
   {
@@ -37,11 +37,10 @@ FeaturePtr FeatureFactory::create_feature(const ClassIdentifier ci)
 
   if (f_it != feature_map.end())
   {
-    // JCD FIXME ENSURE THAT SHARED PTRS ARE HANDLED APPROPRIATELY
-    // jcd_fixme = f_it->second->clone();
+    feature = FeaturePtr(f_it->second->clone());
   }
 
-  return jcd_fixme;
+  return feature;
 }
 
 LockPtr FeatureFactory::create_lock()

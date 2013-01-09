@@ -9,6 +9,11 @@ Pew::Pew()
 {
 }
 
+Feature* Pew::clone()
+{
+  return new Pew(*this);
+}
+
 // Sit or stand, depending on the creature's current state.
 bool Pew::handle()
 {

@@ -16,6 +16,7 @@ class Feature : public ISerializable
   public:
     Feature(const MaterialType new_material);
     virtual ~Feature() {};
+    virtual Feature* clone() = 0;
     virtual bool operator==(const Feature& feature);
 
     // If a feature is blocking, the square it occupies cannot be

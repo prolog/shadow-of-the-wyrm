@@ -14,6 +14,11 @@ GoodAltar::GoodAltar(const std::string& new_deity_id)
 {
 }
 
+Feature* GoodAltar::clone()
+{
+  return new GoodAltar(*this);
+}
+
 string GoodAltar::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_GOOD_ALTAR;
