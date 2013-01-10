@@ -156,10 +156,10 @@ bool Tile::get_illuminated() const
   return illuminated;
 }
 
-bool Tile::get_is_blocking() const
+bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
 {
   return (get_movement_multiplier() == 0)
-      || (creature && !creature->get_is_player())
+      || (creature && perspective_creature && (creature->get_id() != perspective_creature->get_id()))
       || (feature && feature->get_is_blocking());
 }
 

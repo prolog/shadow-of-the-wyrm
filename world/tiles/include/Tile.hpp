@@ -1,5 +1,6 @@
 #pragma once
 #include <map>
+#include <boost/make_shared.hpp>
 #include <boost/shared_ptr.hpp>
 #include "tiles.hpp"
 #include "Inventory.hpp"
@@ -55,7 +56,7 @@ class Tile : public ISerializable
     virtual void set_illuminated(bool new_illuminated);
     virtual bool get_illuminated() const;
     
-    virtual bool get_is_blocking() const;
+    virtual bool get_is_blocking(boost::shared_ptr<Creature> perspective_creature = boost::shared_ptr<Creature>()) const;
     virtual int get_movement_multiplier() const;
 
     // This is player-centric.  Probably OK for now, but may need to be

@@ -144,11 +144,7 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
   
   if (game && manager && creatures_new_tile)
   {
-    if (creatures_new_tile->get_is_blocking())
-    {
-      // Do nothing, and return false.
-    }
-    else if (MapUtils::is_creature_present(creatures_new_tile))
+    if (MapUtils::is_creature_present(creatures_new_tile))
     {
       movement_success = 0;
       
@@ -162,6 +158,11 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
         movement_success = cm.attack(creature, adjacent_creature);
       }
     }
+    else if (creatures_new_tile->get_is_blocking(creature))
+    {
+      // Do nothing, and return false.
+    }
+    // JCD FIXME: This probably needs to be deleted later.
     else if (MapUtils::is_blocking_feature_present(creatures_new_tile))
     {
       string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
