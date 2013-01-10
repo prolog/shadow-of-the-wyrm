@@ -12,9 +12,9 @@ using namespace boost;
 // - if a creature is present
 // - if a blocking feature is present
 // - if the tile type permits movement
-bool MapUtils::is_tile_available_for_creature(TilePtr tile)
+bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile)
 {
-  return (!is_creature_present(tile) && !tile->get_is_blocking());
+  return (!is_creature_present(tile) && !tile->get_is_blocking(creature));
 }
 
 // Get the dimensions for a new map based on the current map, the coords, and the size.
@@ -142,7 +142,7 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   
   // Did the creature belong to a previous tile?  Can we move it to the new tile?  If so, then
   // remove from the old tile, and add to the new.
-  if (creatures_new_tile && is_tile_available_for_creature(creatures_new_tile))
+  if (creatures_new_tile && is_tile_available_for_creature(creature, creatures_new_tile))
   {
     if (creatures_old_tile)
     {

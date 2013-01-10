@@ -142,7 +142,7 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
         // Check to see if the spot is empty, and if a creature can be added there.
         TilePtr tile = map->at(creature_row, creature_col);
 
-        if (MapUtils::is_tile_available_for_creature(tile))
+        if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
         {
           Coordinate coords(creature_row, creature_col);
           MapUtils::add_or_update_location(map, generated_creature, coords);
