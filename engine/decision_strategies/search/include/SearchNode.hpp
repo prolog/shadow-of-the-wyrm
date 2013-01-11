@@ -17,7 +17,7 @@ class SearchNode
     Coordinate get_parent() const;
     
     void set_ancestors(const std::vector<Coordinate>& new_ancestors);
-    std::vector<Coordinate> get_ancestors() const;
+    std::vector<Coordinate>& get_ancestors_ref();
     
     // Calculated
     int get_depth() const;

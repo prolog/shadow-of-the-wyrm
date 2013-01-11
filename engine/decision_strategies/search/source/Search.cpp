@@ -26,7 +26,7 @@ Coordinate Search::search(MapPtr view_map, const Coordinate& start, const Coordi
 
     if (goal_test(node, end))
     {
-      vector<Coordinate> ancestors = node.get_ancestors();
+      vector<Coordinate>& ancestors = node.get_ancestors_ref();
       return ancestors[0];
     }
     
@@ -60,7 +60,7 @@ SearchNode Search::remove_front(list<SearchNode>& search_queue)
   return front;
 }
 
-list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& c, const Coordinate& goal_coordinate, const SearchNode* const parent)
+list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& c, const Coordinate& goal_coordinate, SearchNode * const parent)
 {
   list<SearchNode> search_nodes;
 
@@ -85,7 +85,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
         {
           sn.set_location(coord);
           
-          vector<Coordinate> ancestors = parent->get_ancestors();
+          vector<Coordinate>& ancestors = parent->get_ancestors_ref();
           ancestors.push_back(parent->get_location());
           sn.set_ancestors(ancestors);
           
@@ -105,7 +105,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
 }
 
 // JCD FIXME refactor
-list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& goal_coordinate, const SearchNode& sn)
+list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& goal_coordinate, SearchNode& sn)
 {
   Coordinate c = sn.get_location();
   return make_search_nodes(view_map, visited, c, goal_coordinate, &sn);
