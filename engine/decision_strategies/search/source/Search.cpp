@@ -9,7 +9,7 @@ using namespace std;
 // been learned.
 Coordinate Search::search(MapPtr view_map, const Coordinate& start, const Coordinate& end)
 {
-  Coordinate stay_put;
+  Coordinate stay_put = start; // If a goal state can't be reached, stay put!
   
   set<Coordinate> visited;
   list<SearchNode> nodes = make_search_nodes(view_map, visited, start, end);
@@ -77,27 +77,32 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
     {
       TilePtr tile = view_map->at(coord);
       
-      if (tile && !tile->get_is_blocking())
+      if (tile)
       {
-        SearchNode sn(coord);
-        
-        if (parent)
+        if (!tile->get_is_blocking())
         {
-          sn.set_location(coord);
+          SearchNode sn(coord);
+        
+          if (parent)
+          {
+            sn.set_location(coord);
           
-          vector<Coordinate>& ancestors = parent->get_ancestors_ref();
-          ancestors.push_back(parent->get_location());
-          sn.set_ancestors(ancestors);
+            vector<Coordinate>& ancestors = parent->get_ancestors_ref();
+            ancestors.push_back(parent->get_location());
+            sn.set_ancestors(ancestors);
           
-          sn.set_path_cost(parent->get_path_cost() + 1);
+            sn.set_path_cost(parent->get_path_cost() + 1);
+          }
+        
+          // Used for A* search.  Use Chebyshev distance for now.
+          sn.set_estimated_cost_to_goal(CoordUtils::chebyshev_distance(coord, goal_coordinate));
+        
+          search_nodes.push_back(sn);
         }
-        
-        // Used for A* search.  Use Chebyshev distance for now.
-        sn.set_estimated_cost_to_goal(CoordUtils::chebyshev_distance(coord, goal_coordinate));
-        
-        search_nodes.push_back(sn);
-        visited.insert(coord);
       }
+ 
+      // Always set it visited, regardless.
+      visited.insert(coord);
     }
   }
   
