@@ -133,7 +133,8 @@ Coordinate CoordUtils::get_new_coordinate(const Coordinate& c, const Direction d
 // Get the direction given start/end coordinates.
 Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& end)
 {
-  if ((end.first == -1) && (end.second == -1))
+  if ((start == end) ||
+      ((end.first == -1) && (end.second == -1)))
   {
     return DIRECTION_NULL;
   }
