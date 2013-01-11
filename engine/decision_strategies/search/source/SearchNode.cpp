@@ -49,7 +49,7 @@ void SearchNode::set_ancestors(const vector<Coordinate>& new_ancestors)
   ancestors = new_ancestors;
 }
 
-vector<Coordinate> SearchNode::get_ancestors() const
+vector<Coordinate>& SearchNode::get_ancestors_ref()
 {
   return ancestors;
 }
