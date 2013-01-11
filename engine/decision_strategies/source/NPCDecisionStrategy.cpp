@@ -120,8 +120,12 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
           {
             SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST);
             Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
-            CommandPtr command = boost::make_shared<MovementCommand>(direction);
-            return command;
+
+            if (direction != DIRECTION_NULL)
+            {
+              CommandPtr command = boost::make_shared<MovementCommand>(direction);
+              return command;
+            }
           }
         }
       }
