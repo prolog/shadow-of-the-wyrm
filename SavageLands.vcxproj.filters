@@ -493,6 +493,18 @@
     <Filter Include="Source Files\engine\events\source">
       <UniqueIdentifier>{d4c8d7d9-b444-49d8-a7dc-60916febd6a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\XML\custom_maps">
+      <UniqueIdentifier>{f713401e-b781-48f6-84fd-5b0245b2085c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\XML\custom_maps\include">
+      <UniqueIdentifier>{171feeaf-9852-4015-abde-1ada57085e9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\XML\custom_maps">
+      <UniqueIdentifier>{10805f0a-4542-4706-b030-bb73fac60282}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\XML\custom_maps\source">
+      <UniqueIdentifier>{91dfeecc-e36c-4a30-af2b-364702670015}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2022,9 +2034,6 @@
     <ClInclude Include="world\tiles\include\TileIDs.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\XML\include\XMLMapReaders.hpp">
-      <Filter>Header Files\engine\XML\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\include\CoordUtils.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
@@ -2039,6 +2048,24 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\ChatManager.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\include\XMLMapReaders.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\include\XMLMapTilesReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\include\XMLMapExitReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\include\XMLMapCoordinateReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\include\XMLMapFeatureReaders.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\include\XMLMapFeatureFactory.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3860,9 +3887,6 @@
     <ClCompile Include="world\tiles\source\TileIDs.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\XML\source\XMLMapReaders.cpp">
-      <Filter>Source Files\engine\XML\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\source\CoordUtils.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
@@ -3889,6 +3913,24 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\TileProperties.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\source\XMLMapReaders.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\source\XMLMapTilesReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\source\XMLMapExitReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\source\XMLMapCoordinateReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\source\XMLMapFeatureReaders.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\source\XMLMapFeatureFactory.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
