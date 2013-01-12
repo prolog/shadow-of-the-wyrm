@@ -13,6 +13,7 @@
 			<xs:element name="PlayerStart" type="tns:Coord" minOccurs="0"/>
 			<xs:element name="InitialPlacements" type="tns:InitialPlacements" minOccurs="0"/>
 			<xs:element name="Exits" type="tns:Exits" minOccurs="0"/>
+			<xs:element name="Features" type="tns:Features" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
@@ -68,6 +69,28 @@
 		<xs:element name="MapID" type="xs:string"/>
 	</xs:sequence>
 </xs:complexType>
+<xs:complexType name="Features">
+	<xs:annotation><xs:documentation>Tile features to be placed on the map.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="FeaturePlacement" type="tns:FeaturePlacement" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="FeaturePlacement">
+	<xs:annotation><xs:documentation>A type consisting of a coordinate, and a type of feature.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Coord" type="tns:Coord"/>
+		<xs:choice>
+			<xs:element name="Altar" type="tns:Altar"/>
+		</xs:choice>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Altar">
+	<xs:annotation><xs:documentation></xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="DeityID" type="xs:string"/>
+		<xs:element name="Alignment" type="tns:AlignmentRange"/>
+	</xs:sequence>
+</xs:complexType>
 <!-- Simple Types -->
 <xs:simpleType name="MapType">
 	<xs:annotation>
@@ -98,6 +121,17 @@
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="1"/>
 		<xs:maxInclusive value="11"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="AlignmentRange">
+	<xs:annotation>
+		<xs:documentation>
+			A particular alignment.  See: world/include/AlignmentEnums.hpp.
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="2"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>
