@@ -19,7 +19,7 @@ Map::Map(const Map& new_map)
   if (this != &new_map)
   {
     Dimensions new_dimensions = new_map.size();
-    std::map<std::string, TilePtr > new_tiles = new_map.get_tiles();
+    TilesContainer new_tiles = new_map.get_tiles();
 
     dimensions = new_dimensions;
     original_dimensions = new_dimensions;
@@ -269,7 +269,7 @@ MapType Map::get_map_type() const
   return map_type;
 }
 
-std::map<std::string, TilePtr > Map::get_tiles() const
+TilesContainer Map::get_tiles() const
 {
   return tiles;
 }

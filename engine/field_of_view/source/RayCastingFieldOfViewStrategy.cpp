@@ -89,18 +89,18 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(const std::
 // Credit where credit is due: this is based on jice's "piece of cake visibility determination" page.
 void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coordinate& centre_coord, MapPtr view_map, MapPtr fov_map, const PassType type)
 {
-  std::map<std::string, boost::shared_ptr<Tile> > tile_map = view_map->get_tiles();
-  std::map<std::string, boost::shared_ptr<Tile> > fov_tile_map = fov_map->get_tiles();
-  std::map<std::string, boost::shared_ptr<Tile> >::iterator t_it;
+  TilesContainer tile_cont = view_map->get_tiles();
+  TilesContainer fov_tile_cont = fov_map->get_tiles();
+  TilesContainer::iterator t_it;
   
   Log::instance()->log("Centre coord: " + Integer::to_string(centre_coord.first) + "," + Integer::to_string(centre_coord.second));
 
-  for (t_it = tile_map.begin(); t_it != tile_map.end(); t_it++)
+  for (t_it = tile_cont.begin(); t_it != tile_cont.end(); t_it++)
   {
     string tile_coords = t_it->first;
     TilePtr current_view_tile = t_it->second;
     
-    if (current_view_tile && current_view_tile->get_is_blocking() && (fov_tile_map.find(tile_coords) == fov_tile_map.end()))
+    if (current_view_tile && current_view_tile->get_is_blocking() && (fov_tile_cont.find(tile_coords) == fov_tile_cont.end()))
     {
       Coordinate c = MapUtils::convert_map_key_to_coordinate(tile_coords);
       
