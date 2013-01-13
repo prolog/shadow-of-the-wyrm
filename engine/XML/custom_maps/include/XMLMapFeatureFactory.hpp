@@ -14,5 +14,6 @@ class XMLMapFeatureFactory
     ~XMLMapFeatureFactory();
 
     static FeaturePtr create_altar(const XMLNode& altar_node);
+    static FeaturePtr create_door(const XMLNode& door_node);
 };
 

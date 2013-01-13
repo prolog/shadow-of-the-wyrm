@@ -211,5 +211,23 @@
 				<Alignment>2</Alignment>
 			</Altar>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>65</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>16</Row>
+				<Col>8</Col>
+			</Coord>
+			<Door>
+				<Material>3</Material>
+			</Door>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>
