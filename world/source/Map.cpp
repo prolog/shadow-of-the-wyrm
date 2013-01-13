@@ -27,11 +27,11 @@ Map::Map(const Map& new_map)
   }
 }
 
-Map::Map(const Dimensions& new_dimensions)
+Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
 : terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0)
 {
   dimensions = new_dimensions;
-  original_dimensions = dimensions;
+  original_dimensions = orig_dimensions;
   
   // Generate a default unique identifier for this map
   boost::uuids::uuid id = boost::uuids::random_generator()();
@@ -46,9 +46,9 @@ bool Map::operator==(const Map& map)
 
   if (result)
   {
-    TilesMap tilesmap = map.tiles;
-    TilesMap::iterator t_it = tiles.begin();
-    TilesMap::iterator t_it2 = tilesmap.begin();
+    TilesContainer tiles_cont = map.tiles;
+    TilesContainer::iterator t_it = tiles.begin();
+    TilesContainer::iterator t_it2 = tiles_cont.begin();
 
     while (t_it != tiles.end())
     {
@@ -196,7 +196,7 @@ void Map::remove_creature(const string& creature_id)
   }
 }
 
-void Map::set_tiles(const TilesMap& new_tiles)
+void Map::set_tiles(const TilesContainer& new_tiles)
 {
   tiles = new_tiles;
 }
@@ -405,7 +405,7 @@ bool Map::serialize(ostream& stream)
   // tiles
   Serialize::write_size_t(stream, tiles.size());
 
-  BOOST_FOREACH(TilesMap::value_type& map_pair, tiles)
+  BOOST_FOREACH(TilesContainer::value_type& map_pair, tiles)
   {
     Serialize::write_string(stream, map_pair.first);
 

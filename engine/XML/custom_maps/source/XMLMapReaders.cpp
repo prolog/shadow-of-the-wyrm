@@ -33,7 +33,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     Dimensions dim = parse_dimensions(dimensions_node);
 
     XMLMapTilesReader tiles_reader;
-    TilesMap tiles = tiles_reader.parse_tiles(tiles_node, dim.get_y(), dim.get_x());
+    TilesContainer tiles = tiles_reader.parse_tiles(tiles_node, dim.get_y(), dim.get_x());
 
     XMLMapCoordinateReader coord_reader;
     Coordinate player_start_location = coord_reader.parse_coordinate(player_start_node);
