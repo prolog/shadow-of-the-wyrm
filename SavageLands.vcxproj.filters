@@ -505,6 +505,12 @@
     <Filter Include="Source Files\engine\XML\custom_maps\source">
       <UniqueIdentifier>{91dfeecc-e36c-4a30-af2b-364702670015}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\display\source">
+      <UniqueIdentifier>{b77c5de5-4dd9-4977-948b-f96a97a4d641}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\controller\source">
+      <UniqueIdentifier>{04a57926-ccf1-40bc-bbeb-1f21aa4574d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2069,27 +2075,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="controller\source\NullKeyboardController.cpp">
-      <Filter>Source Files\controller</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\Display.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\DisplayItem.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\DisplayItemType.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\DisplayMap.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\DisplayStatistics.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\DisplayTile.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
       <Filter>Source Files\display\unit_tests</Filter>
     </ClCompile>
@@ -3542,32 +3527,11 @@
     <ClCompile Include="SavageLands.cpp">
       <Filter>Source Files\source</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\CursesConstants.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\CursesDisplay.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\CursesMenuWrapper.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\CursesPromptProcessor.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\CursesUtils.cpp">
-      <Filter>Source Files\display</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\source\CursesKeyboardController.cpp">
-      <Filter>Source Files\controller</Filter>
-    </ClCompile>
     <ClCompile Include="engine\serialization\source\Serialize.cpp">
       <Filter>Source Files\engine\serialization\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\serialization\source\SerializationExceptions.cpp">
       <Filter>Source Files\engine\serialization\source</Filter>
-    </ClCompile>
-    <ClCompile Include="display\source\DisplayFactory.cpp">
-      <Filter>Source Files\display</Filter>
     </ClCompile>
     <ClCompile Include="engine\commands\source\CommandFactoryFactory.cpp">
       <Filter>Source Files\engine\commands\source</Filter>
@@ -3592,12 +3556,6 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\FeatureFactory.cpp">
       <Filter>Source Files\world\tiles\features\source</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\source\Controller.cpp">
-      <Filter>Source Files\controller</Filter>
-    </ClCompile>
-    <ClCompile Include="controller\source\ControllerFactory.cpp">
-      <Filter>Source Files\controller</Filter>
     </ClCompile>
     <ClCompile Include="world\source\ResistanceFactory.cpp">
       <Filter>Source Files\world\source</Filter>
@@ -3931,6 +3889,54 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapFeatureFactory.cpp">
       <Filter>Source Files\engine\XML\custom_maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesConstants.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesDisplay.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesMenuWrapper.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesPromptProcessor.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\CursesUtils.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\Display.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayFactory.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayItem.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayItemType.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayMap.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayStatistics.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayTile.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\source\Controller.cpp">
+      <Filter>Source Files\controller\source</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\source\ControllerFactory.cpp">
+      <Filter>Source Files\controller\source</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\source\CursesKeyboardController.cpp">
+      <Filter>Source Files\controller\source</Filter>
+    </ClCompile>
+    <ClCompile Include="controller\source\NullKeyboardController.cpp">
+      <Filter>Source Files\controller\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

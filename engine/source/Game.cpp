@@ -205,6 +205,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
     MapCursor mc;
     Coordinate reference_coords = mc.get_cursor_location(current_map);
+
     DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords);
     display->draw(display_map);    
   }
