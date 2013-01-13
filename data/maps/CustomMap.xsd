@@ -83,6 +83,7 @@
 		<xs:choice>
 			<xs:element name="Altar" type="tns:Altar"/>
 			<xs:element name="Door" type="tns:Door"/>
+			<xs:element name="Pew" type="tns:Pew"/>
 		</xs:choice>
 	</xs:sequence>
 </xs:complexType>
@@ -97,6 +98,12 @@
 	<xs:annotation><xs:documentation>Defines a Door feature.</xs:documentation></xs:annotation>
 	<xs:sequence>
 		<xs:element name="Material" type="sl:MaterialType"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Pew">
+	<xs:annotation><xs:documentation>Defines a Pew feature.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Orientation" type="tns:OrientationType"/>
 	</xs:sequence>
 </xs:complexType>
 <!-- Simple Types -->
@@ -140,6 +147,19 @@
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="2"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="OrientationType">
+	<xs:annotation>
+		<xs:documentation>
+			The orientation *of the building*:
+			0 = Exits are North/south
+			1 = Exits are East/west
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="1"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>
