@@ -25,6 +25,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     {
       feature = create_altar(feature_node);
     }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Door")).is_null())
+    {
+      feature = create_door(feature_node);
+    }
     // else if ...
   }
 
@@ -39,4 +43,15 @@ FeaturePtr XMLMapFeatureFactory::create_altar(const XMLNode& altar_node)
 
   FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, alignment);
   return altar;
+}
+
+// Create a door, reading in its material, entrance state, key info, etc., from the XML.
+FeaturePtr XMLMapFeatureFactory::create_door(const XMLNode& door_node)
+{
+  FeaturePtr door = FeatureGenerator::generate_door();
+
+  MaterialType material = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(door_node, "Material", MATERIAL_TYPE_WOOD));
+  door->set_material_type(material);
+
+  return door;
 }

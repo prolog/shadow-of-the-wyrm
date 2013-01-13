@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:maps:1.0.0" targetNamespace="urn:savage_lands:maps:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:maps:1.0.0" xmlns:sl="urn:savage_lands:1.0.0" targetNamespace="urn:savage_lands:maps:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+<xs:import namespace="urn:savage_lands:1.0.0" schemaLocation="../SavageLands.xsd"/>
 <xs:element name="CustomMap">
 	<xs:annotation><xs:documentation>XML element describing the custom maps that describe fixed locations within Savage Lands.</xs:documentation></xs:annotation>
 	<xs:complexType>
@@ -81,14 +82,21 @@
 		<xs:element name="Coord" type="tns:Coord"/>
 		<xs:choice>
 			<xs:element name="Altar" type="tns:Altar"/>
+			<xs:element name="Door" type="tns:Door"/>
 		</xs:choice>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Altar">
-	<xs:annotation><xs:documentation></xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>Defines an Altar feature.</xs:documentation></xs:annotation>
 	<xs:sequence>
 		<xs:element name="DeityID" type="xs:string"/>
 		<xs:element name="Alignment" type="tns:AlignmentRange"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Door">
+	<xs:annotation><xs:documentation>Defines a Door feature.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Material" type="sl:MaterialType"/>
 	</xs:sequence>
 </xs:complexType>
 <!-- Simple Types -->
