@@ -23,8 +23,6 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
   int map_height = d.get_y();
   int map_width  = d.get_x();
 
-  DisplayMap display_map;
-
   int cursor_row = reference_coords.first;
   int cursor_col = reference_coords.second;
 
@@ -33,6 +31,8 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
   int engine_map_start_col = std::min(map_width - display_width, ((int)(cursor_col / display_width)) * display_width);
   
   int actual_row, actual_col;
+
+  DisplayMap display_map(display_height, display_width);
 
   for (uint d_row = 0; d_row < display_height; d_row++)
   {

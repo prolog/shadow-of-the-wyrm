@@ -1,5 +1,5 @@
 #pragma once
-#include <map>
+#include <vector>
 #include "Dimensions.hpp"
 #include "common.hpp"
 #include "DisplayTile.hpp"
@@ -12,7 +12,7 @@ class DisplayTile;
 class DisplayMap
 {
   public:
-    DisplayMap();
+    DisplayMap(const int rows, const int cols);
 
     // The coordinate on which to place the cursor when done - typically
     // will be whatever coordinate the player is on.
@@ -24,7 +24,7 @@ class DisplayMap
     Dimensions size() const;
 
   protected:
-    Dimensions dimensions;
-    std::map<Coordinate, DisplayTile> display_map;
+    int rows, cols;
+    std::vector<DisplayTile> display_map;
     Coordinate cursor_coordinate;
 };

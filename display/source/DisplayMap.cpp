@@ -2,8 +2,12 @@
 
 using namespace std;
 
-DisplayMap::DisplayMap()
+DisplayMap::DisplayMap(const int r, const int c)
+: rows(r), cols(c)
 {
+  // Because display maps' sizes are known in advance,
+  // reserve the amount for a speed boost.
+  display_map.resize(rows * cols);
 }
 
 void DisplayMap::set_cursor_coordinate(const Coordinate& new_cursor_coordinate)
@@ -16,26 +20,20 @@ Coordinate DisplayMap::get_cursor_coordinate() const
   return cursor_coordinate;
 }
 
-void DisplayMap::set(const Coordinate& key, const DisplayTile& value)
+void DisplayMap::set(const Coordinate& c, const DisplayTile& value)
 {
-  display_map[key] = value;
+  display_map[c.first * cols + c.second] = value;
 }
 
 DisplayTile DisplayMap::at(const Coordinate& c) const
 {
   DisplayTile tile;
 
-  std::map<Coordinate, DisplayTile>::const_iterator map_it = display_map.find(c);
-
-  if (map_it != display_map.end())
-  {
-    tile = map_it->second;
-  }
-
-  return tile;
+  return display_map.at(c.first * cols + c.second);
 }
 
 Dimensions DisplayMap::size() const
 {
-  return dimensions;
+  Dimensions d(cols, rows);
+  return d;
 }
