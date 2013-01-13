@@ -229,5 +229,23 @@
 				<Material>3</Material>
 			</Door>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>11</Row>
+				<Col>61</Col>
+			</Coord>
+			<Pew>
+				<Orientation>0</Orientation>
+			</Pew>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>11</Row>
+				<Col>63</Col>
+			</Coord>
+			<Pew>
+				<Orientation>0</Orientation>
+			</Pew>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>

@@ -29,7 +29,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     {
       feature = create_door(feature_node);
     }
-    // else if ...
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Pew")).is_null())
+    {
+      feature = create_pew(feature_node);
+    }
   }
 
   return feature;
@@ -54,4 +57,12 @@ FeaturePtr XMLMapFeatureFactory::create_door(const XMLNode& door_node)
   door->set_material_type(material);
 
   return door;
+}
+
+// Create a pew, reading its orientation (n/s, e/w) from the XML.
+FeaturePtr XMLMapFeatureFactory::create_pew(const XMLNode& pew_node)
+{
+  PewDirection pew_direction = static_cast<PewDirection>(XMLUtils::get_child_node_int_value(pew_node, "Orientation", PEW_DIRECTION_NORTH_SOUTH));
+  FeaturePtr pew = FeatureGenerator::generate_pew(pew_direction);
+  return pew;
 }
