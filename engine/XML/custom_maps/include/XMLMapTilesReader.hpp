@@ -5,7 +5,7 @@
 class XMLMapTilesReader
 {
   public:
-    TilesMap parse_tiles(const XMLNode& tiles_node, const int rows, const int cols);
+    TilesContainer parse_tiles(const XMLNode& tiles_node, const int rows, const int cols);
 };
 
 // Maps individual characters from the XML file into tiles as would be found

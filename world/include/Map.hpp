@@ -13,13 +13,13 @@
 class Creature;
 class Tile;
 
-typedef std::map<std::string, boost::shared_ptr<Tile> > TilesMap;
+typedef std::map<std::string, boost::shared_ptr<Tile> > TilesContainer;
 
 class Map : public ISerializable
 {
 	public:
     Map(const Map& new_map);
-		Map(const Dimensions& new_dimensions);
+		Map(const Dimensions& new_dimensions, const Dimensions& original_dimensions = Dimensions());
     bool operator==(const Map& map);
 		
 		// Functions used when creating a view map - reset the
@@ -39,7 +39,7 @@ class Map : public ISerializable
 
     // Shouldn't generally be called - used by the XML readers to directly set
     // the tiles.
-    void set_tiles(const TilesMap& new_tiles);
+    void set_tiles(const TilesContainer& new_tiles);
 
 		bool insert(int row, int col, boost::shared_ptr<Tile> tile);
 		boost::shared_ptr<Tile> at(int row, int col);
@@ -100,7 +100,7 @@ class Map : public ISerializable
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
     std::map<std::string, boost::shared_ptr<Creature> > creatures;
 
-		TilesMap tiles;
+		TilesContainer tiles;
 		Dimensions dimensions;
 		Dimensions original_dimensions;
     NamedMapLocations locations;
