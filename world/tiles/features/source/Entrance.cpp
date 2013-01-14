@@ -35,6 +35,11 @@ EntranceState Entrance::get_state() const
   return state;
 }
 
+EntranceState& Entrance::get_state_ref()
+{
+  return state;
+}
+
 void Entrance::set_maximum_size(const CreatureSize new_size)
 {
   maximum_size = new_size;

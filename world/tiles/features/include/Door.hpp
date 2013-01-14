@@ -21,3 +21,5 @@ class Door : public Entrance
   private:
     virtual ClassIdentifier internal_class_identifier() const;
  };
+
+typedef boost::shared_ptr<Door> DoorPtr;

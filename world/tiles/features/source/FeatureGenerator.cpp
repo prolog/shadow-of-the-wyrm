@@ -42,11 +42,11 @@ FeaturePtr FeatureGenerator::generate_altar(const std::string& deity_id, const A
 }
 
 // Generate a door based on the parameters provided.
-FeaturePtr FeatureGenerator::generate_door()
+DoorPtr FeatureGenerator::generate_door()
 {
   LockPtr lock_info;
   EntranceState door_state;
-  FeaturePtr door = boost::make_shared<Door>(lock_info, door_state);
+  DoorPtr door = boost::make_shared<Door>(lock_info, door_state);
   return door;
 }
 

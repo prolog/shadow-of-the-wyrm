@@ -12,6 +12,7 @@ class Entrance : public Feature
 
     virtual void set_state(const EntranceState& new_state);
     virtual EntranceState get_state() const;
+    virtual EntranceState& get_state_ref();
     
     virtual void set_maximum_size(const CreatureSize new_maximum_size);
     virtual CreatureSize get_maximum_size() const;
