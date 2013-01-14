@@ -98,12 +98,23 @@
 	<xs:annotation><xs:documentation>Defines a Door feature.</xs:documentation></xs:annotation>
 	<xs:sequence>
 		<xs:element name="Material" type="sl:MaterialType"/>
+		<xs:element name="Entrance" type="tns:Entrance" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Pew">
 	<xs:annotation><xs:documentation>Defines a Pew feature.</xs:documentation></xs:annotation>
 	<xs:sequence>
 		<xs:element name="Orientation" type="tns:OrientationType"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Entrance">
+	<xs:annotation>
+		<xs:documentation>
+			Contains details about the entrance: open/closed/destroyed status, lock info, etc.
+		</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="EntranceState" type="tns:EntranceStateType"/>
 	</xs:sequence>
 </xs:complexType>
 <!-- Simple Types -->
@@ -160,6 +171,20 @@
 	<xs:restriction base="xs:int">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="1"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="EntranceStateType">
+	<xs:annotation>
+		<xs:documentation>
+			The state of the entrance.  See world/tiles/features/include/EntranceTypes.hpp.
+			0 = destroyed
+			1 = open
+			2 = closed
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:int">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="2"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>

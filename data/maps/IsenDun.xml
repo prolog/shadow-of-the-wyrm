@@ -218,6 +218,9 @@
 			</Coord>
 			<Door>
 				<Material>3</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
 			</Door>
 		</FeaturePlacement>
 		<FeaturePlacement>
@@ -227,6 +230,9 @@
 			</Coord>
 			<Door>
 				<Material>3</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
 			</Door>
 		</FeaturePlacement>
 		<FeaturePlacement>

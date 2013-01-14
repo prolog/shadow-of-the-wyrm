@@ -1,5 +1,6 @@
 #include <string>
 #include "AlignmentEnums.hpp"
+#include "EntranceTypes.hpp"
 #include "FeatureGenerator.hpp"
 #include "XMLMapFeatureFactory.hpp"
 
@@ -51,10 +52,19 @@ FeaturePtr XMLMapFeatureFactory::create_altar(const XMLNode& altar_node)
 // Create a door, reading in its material, entrance state, key info, etc., from the XML.
 FeaturePtr XMLMapFeatureFactory::create_door(const XMLNode& door_node)
 {
-  FeaturePtr door = FeatureGenerator::generate_door();
+  DoorPtr door = FeatureGenerator::generate_door();
 
   MaterialType material = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(door_node, "Material", MATERIAL_TYPE_WOOD));
   door->set_material_type(material);
+
+  // JCD FIXME: Refactor this (plus invididual features) into appropriate new files).
+  XMLNode entrance_node = XMLUtils::get_next_element_by_local_name(door_node, "Entrance");
+
+  if (!entrance_node.is_null())
+  {
+    EntranceStateType entrance_state = static_cast<EntranceStateType>(XMLUtils::get_child_node_int_value(entrance_node, "EntranceState", ENTRANCE_TYPE_OPEN));
+    door->get_state_ref().set_state(entrance_state);
+  }
 
   return door;
 }
