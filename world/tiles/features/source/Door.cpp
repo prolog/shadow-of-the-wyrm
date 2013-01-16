@@ -21,11 +21,31 @@ Feature* Door::clone()
 
 bool Door::handle()
 {
-  // If the door is smashed, display a message.
-  // If the door is open, close it.
-  // If the door is closed and locked, try to unlock it.
-  // If the door is closed and unlocked, open it.
-  return true;
+  bool result = false;
+
+  LockPtr lock = get_lock();
+  EntranceState& entrance_state = get_state_ref();
+  EntranceStateType state = entrance_state.get_state();
+
+  switch (state)
+  {
+    // If the door is smashed, display a message.
+    // JCD FIXME
+
+    // If the door is open, close it.
+    // JCD FIXME
+
+    // If the door is closed and locked, try to unlock it.
+    // JCD FIXME
+
+    // If the door is closed and unlocked, open it.
+    case ENTRANCE_TYPE_CLOSED:
+    default:
+      result = open();
+      break;
+  }
+
+  return result;
 }
 
 bool Door::kick()

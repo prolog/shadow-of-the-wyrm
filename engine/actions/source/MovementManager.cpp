@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DangerLevelCalculatorFactory.hpp"
+#include "FeatureManager.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MessageManager.hpp"
@@ -144,7 +145,24 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
   
   if (game && manager && creatures_new_tile)
   {
-    if (MapUtils::is_creature_present(creatures_new_tile))
+    if (MapUtils::is_blocking_feature_present(creatures_new_tile))
+    {
+      // If there is a feature, handle it, prompting the creature for confirmation
+      // if necessary.
+      FeatureManager fm;
+      bool handled = fm.handle(creatures_new_tile->get_feature());
+
+      // Did the handling do anything?
+      if (!handled)
+      {
+        string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
+        manager->add_new_message(blocked);
+        manager->send();
+      }
+      
+      movement_success = 0;
+    }
+    else if (MapUtils::is_creature_present(creatures_new_tile))
     {
       movement_success = 0;
       
@@ -160,15 +178,11 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
     }
     else if (creatures_new_tile->get_is_blocking(creature))
     {
-      // Do nothing, and return false.
-    }
-    // JCD FIXME: This probably needs to be deleted later.
-    else if (MapUtils::is_blocking_feature_present(creatures_new_tile))
-    {
-      string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
-      manager->add_new_message(blocked);
-      manager->send();
-      
+      // Can't move into the tile.  It's not a blocking feature (handled above),
+      // nor is it a creature (ditto), so most likely, it's impassable terrain -
+      // stone, etc.
+      //
+      // Do nothing.  Don't advance the turn.
       movement_success = 0;
     }
     else

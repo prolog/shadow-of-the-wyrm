@@ -77,6 +77,12 @@ bool Feature::open()
   return false;
 }
 
+string Feature::get_handle_message_sid() const
+{
+  string empty_sid;
+  return empty_sid;
+}
+
 void Feature::set_lock(LockPtr new_lock)
 {
   if (can_lock())

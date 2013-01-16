@@ -1,5 +1,6 @@
 #include "Entrance.hpp"
 #include "Serialize.hpp"
+#include "StringConstants.hpp"
 
 using namespace std;
 
@@ -53,6 +54,26 @@ CreatureSize Entrance::get_maximum_size() const
 bool Entrance::can_open() const
 {
   return true;
+}
+
+bool Entrance::open()
+{
+  bool result = false;
+
+  EntranceState& state = get_state_ref();
+
+  if (state.get_state() == ENTRANCE_TYPE_CLOSED)
+  {
+    state.set_state(ENTRANCE_TYPE_OPEN);
+    result = true;
+  }
+
+  return result;
+}
+
+string Entrance::get_handle_message_sid() const
+{
+  return ActionTextKeys::ACTION_OPEN_DOOR;
 }
 
 bool Entrance::serialize(ostream& stream)

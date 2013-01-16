@@ -40,16 +40,20 @@ class Feature : public ISerializable
     
     virtual std::string get_description_sid() const = 0;
     
-    virtual bool can_handle() const;
     virtual bool can_kick() const;
     virtual bool can_offer() const;
     virtual bool can_open() const;
     virtual bool can_lock() const;
 
     virtual bool kick() = 0;
-    virtual bool handle() = 0;
     virtual bool offer();
     virtual bool open();
+
+    virtual bool can_handle() const;
+    virtual bool handle() = 0;
+    // Potential handle message for the current feature.
+    // By default, returns the empty SID.
+    virtual std::string get_handle_message_sid() const;
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);

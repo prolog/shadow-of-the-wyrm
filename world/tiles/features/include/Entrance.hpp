@@ -18,7 +18,13 @@ class Entrance : public Feature
     virtual CreatureSize get_maximum_size() const;
 
     virtual bool can_open() const;
+    virtual bool open();
     
+    // Returns a value based on the current state of the entrance -
+    // if the entrance is open, a message about opening the door; if
+    // the entrance is closed, a message about closing the door (etc).
+    virtual std::string get_handle_message_sid() const;
+
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
 
