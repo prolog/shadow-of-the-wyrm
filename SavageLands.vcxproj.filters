@@ -2073,6 +2073,9 @@
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapFeatureFactory.hpp">
       <Filter>Header Files\engine\XML\custom_maps\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\FeatureManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -3937,6 +3940,9 @@
     </ClCompile>
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
       <Filter>Source Files\controller\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\FeatureManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

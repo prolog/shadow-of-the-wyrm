@@ -604,7 +604,7 @@ class ActionTextKeys
     static std::string get_read_message(const std::string& desc_sid, const std::string& readable_desc_sid, const bool is_player);
     static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc_sid, const bool is_player);
     static std::string get_full_message(const std::string& desc_sid, const std::string& consumable_desc_sid, const bool is_player);
-    
+
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
     static const std::string ACTION_PICK_UP_NOT_ALLOWED;
@@ -626,6 +626,7 @@ class ActionTextKeys
     static const std::string ACTION_CHAT_NOBODY_NEARBY;
     static const std::string ACTION_CHAT_NO_RESPONSE;
     static const std::string ACTION_GET_DIRECTION;
+    static const std::string ACTION_OPEN_DOOR;
 
   protected:
     ActionTextKeys();
