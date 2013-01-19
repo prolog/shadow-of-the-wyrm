@@ -8,6 +8,7 @@
 #include "DateTimeManager.hpp"
 #include "DropManager.hpp"
 #include "EquipmentManager.hpp"
+#include "FeatureManager.hpp"
 #include "FileWriter.hpp"
 #include "FoodManager.hpp"
 #include "Game.hpp"
@@ -236,6 +237,13 @@ ActionCost ActionManager::chat(CreaturePtr creature)
 {
   ChatManager cm;
   return get_action_cost(creature, cm.chat(creature));
+}
+
+// Apply/handle a terrain feature
+ActionCost ActionManager::apply(CreaturePtr creature)
+{
+  FeatureManager fm;
+  return get_action_cost(creature, fm.apply(creature));
 }
 
 // Pick up an item, doing any necessary checks first.

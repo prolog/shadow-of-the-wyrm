@@ -51,6 +51,12 @@ CreatureSize Entrance::get_maximum_size() const
   return maximum_size;
 }
 
+bool Entrance::can_handle(const bool feature_tile_occupied) const
+{
+  // entrances can only be handled if the space is not occupied.
+  return (!feature_tile_occupied);
+}
+
 bool Entrance::can_open() const
 {
   return true;
@@ -71,9 +77,41 @@ bool Entrance::open()
   return result;
 }
 
+bool Entrance::close()
+{
+  bool result = false;
+
+  EntranceState& state = get_state_ref();
+
+  if (state.get_state() == ENTRANCE_TYPE_OPEN)
+  {
+    state.set_state(ENTRANCE_TYPE_CLOSED);
+    result = true;
+  }
+
+  return result;
+}
+
 string Entrance::get_handle_message_sid() const
 {
-  return ActionTextKeys::ACTION_OPEN_DOOR;
+  string handle_message_sid;
+  EntranceStateType entrance_state = state.get_state();
+
+  switch (entrance_state)
+  {
+    case ENTRANCE_TYPE_DESTROYED:
+      handle_message_sid = ActionTextKeys::ACTION_DOOR_DESTROYED;
+      break;
+    case ENTRANCE_TYPE_OPEN:
+      handle_message_sid = ActionTextKeys::ACTION_OPEN_DOOR;
+      break;
+    case ENTRANCE_TYPE_CLOSED:
+    default:
+      handle_message_sid = ActionTextKeys::ACTION_CLOSE_DOOR;
+      break;
+  }
+
+  return handle_message_sid;
 }
 
 bool Entrance::serialize(ostream& stream)

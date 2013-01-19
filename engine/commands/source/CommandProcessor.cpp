@@ -137,6 +137,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game->actions.chat(creature);
       }
+      else if (command_name == CommandKeys::APPLY_FEATURE)
+      {
+        ac = game->actions.apply(creature);
+      }
     }
   }
   

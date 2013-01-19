@@ -196,12 +196,42 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
   return result_map;
 }
 
+// Get the adjacent tiles, plus the tile that the creature is standing on.
+TileDirectionMap MapUtils::get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature)
+{
+  TileDirectionMap direction_map = get_adjacent_tiles_to_creature(map, creature);
+  TilePtr creature_tile = get_tile_for_creature(map, creature);
+  direction_map.insert(make_pair(DIRECTION_NULL, creature_tile));
+
+  return direction_map;
+}
+
+// Get all the tiles the creature can access (its own tile, and those adjacent) 
+// that have terrain features.
+TileDirectionMap MapUtils::get_tiles_with_features(MapPtr& map, CreaturePtr& creature)
+{
+  TileDirectionMap tiles_to_consider = MapUtils::get_adjacent_and_creature_tiles(map, creature);
+  TileDirectionMap result_map;
+
+  BOOST_FOREACH(const TileDirectionMap::value_type& tile_pair, tiles_to_consider)
+  {
+    TilePtr tile = tile_pair.second;
+
+    if (tile && tile->get_feature()) 
+    {
+      result_map.insert(tile_pair);
+    }
+  }
+
+  return result_map;
+}
+
 // Get the number of adjacenct creatures
-uint MapUtils::get_num_adjacent_creatures(const TileAdjacencyMap& adjacency_map)
+uint MapUtils::get_num_adjacent_creatures(const TileDirectionMap& adjacency_map)
 {
   uint num_adjacent = 0;
 
-  BOOST_FOREACH(const TileAdjacencyMap::value_type& adjacent, adjacency_map)
+  BOOST_FOREACH(const TileDirectionMap::value_type& adjacent, adjacency_map)
   {
     TilePtr adjacent_tile = adjacent.second;
 
@@ -216,9 +246,9 @@ uint MapUtils::get_num_adjacent_creatures(const TileAdjacencyMap& adjacency_map)
 
 // Get a map of adjacent creatures to the current creature on the current
 // map, keyed by their direction from the creature.
-CreatureAdjacencyMap MapUtils::get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature)
+CreatureDirectionMap MapUtils::get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature)
 {
-  CreatureAdjacencyMap adjacent_creatures;
+  CreatureDirectionMap adjacent_creatures;
 
   if (map && creature)
   {

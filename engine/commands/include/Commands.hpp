@@ -178,3 +178,10 @@ class ChatCommand : public Command
     ChatCommand();
     ~ChatCommand();
 };
+
+class ApplyFeatureCommand : public Command
+{
+  public:
+    ApplyFeatureCommand();
+    ~ApplyFeatureCommand();
+};

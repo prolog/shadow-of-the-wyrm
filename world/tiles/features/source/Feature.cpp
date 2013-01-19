@@ -40,7 +40,7 @@ TrapPtr Feature::get_trap()
   return trap;
 }
 
-bool Feature::can_handle() const
+bool Feature::can_handle(const bool feature_tile_occupied) const
 {
   return true;
 }

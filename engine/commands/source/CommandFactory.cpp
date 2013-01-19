@@ -133,6 +133,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<ChatCommand>();
   }
+  else if (command_name == CommandKeys::APPLY_FEATURE)
+  {
+    command = boost::make_shared<ApplyFeatureCommand>();
+  }
 
   return command;
 }

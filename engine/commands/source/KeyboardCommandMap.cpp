@@ -78,6 +78,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('T'), CommandKeys::GAME_DATE_TIME));
   command_mapping.insert(make_pair(Integer::to_string('s'), CommandKeys::SEARCH));
   command_mapping.insert(make_pair(Integer::to_string('5'), CommandKeys::SEARCH));
+  command_mapping.insert(make_pair(Integer::to_string('.'), CommandKeys::SEARCH));
   command_mapping.insert(make_pair(Integer::to_string('1'), CommandKeys::MOVE_SOUTHWEST));
   command_mapping.insert(make_pair(Integer::to_string('2'), CommandKeys::MOVE_SOUTH));
   command_mapping.insert(make_pair(Integer::to_string('3'), CommandKeys::MOVE_SOUTHEAST));
@@ -120,6 +121,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('S'), CommandKeys::SAVE_GAME));
   command_mapping.insert(make_pair(Integer::to_string('e'), CommandKeys::EAT));
   command_mapping.insert(make_pair(Integer::to_string('C'), CommandKeys::CHAT));
+  command_mapping.insert(make_pair(Integer::to_string('a'), CommandKeys::APPLY_FEATURE));
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses
