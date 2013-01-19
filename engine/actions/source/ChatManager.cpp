@@ -23,7 +23,7 @@ ActionCostValue ChatManager::chat(CreaturePtr creature) const
 
     if (MapUtils::adjacent_creature_exists(creature, current_map))
     {
-      CreatureAdjacencyMap creature_map = MapUtils::get_adjacent_creatures(current_map, creature);
+      CreatureDirectionMap creature_map = MapUtils::get_adjacent_creatures(current_map, creature);
 
       if (creature_map.size() == 1)
       {
@@ -75,7 +75,7 @@ bool ChatManager::chat_single_creature(CreaturePtr speaking_creature) const
 
 // When there are multiple creatures, select a single creature to speak with,
 // and then speak with it.
-bool ChatManager::chat_multiple_options(CreaturePtr querying_creature, const CreatureAdjacencyMap& creature_map) const
+bool ChatManager::chat_multiple_options(CreaturePtr querying_creature, const CreatureDirectionMap& creature_map) const
 {
   bool spoke = false;
 
@@ -104,7 +104,7 @@ bool ChatManager::chat_multiple_options(CreaturePtr querying_creature, const Cre
       // a creature in that direction.
       Direction requested_direction = dcommand->get_direction();
 
-      CreatureAdjacencyMap::const_iterator c_it = creature_map.find(requested_direction);
+      CreatureDirectionMap::const_iterator c_it = creature_map.find(requested_direction);
       if (c_it != creature_map.end())
       {
         CreaturePtr speaking_creature = c_it->second;

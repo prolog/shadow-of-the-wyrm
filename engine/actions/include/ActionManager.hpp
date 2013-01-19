@@ -76,6 +76,9 @@ class ActionManager : public ISerializable
     // Chat with another creature
     ActionCost chat(CreaturePtr creature);
 
+    // 'a'pply/h'a'ndle a terrain feature
+    ActionCost apply(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

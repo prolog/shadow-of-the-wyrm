@@ -29,17 +29,17 @@ bool Door::handle()
 
   switch (state)
   {
-    // If the door is smashed, display a message.
-    // JCD FIXME
+    // If the door is smashed, nothing can be done.
+    case ENTRANCE_TYPE_DESTROYED:
+      break;
 
-    // If the door is open, close it.
-    // JCD FIXME
+    case ENTRANCE_TYPE_OPEN:
+      result = close();
+      break;
 
-    // If the door is closed and locked, try to unlock it.
-    // JCD FIXME
-
-    // If the door is closed and unlocked, open it.
     case ENTRANCE_TYPE_CLOSED:
+      // If the door is closed and locked, try to unlock it.
+      // If the door is closed and unlocked, open it.
     default:
       result = open();
       break;

@@ -13,7 +13,7 @@ class ChatManager : public IActionManager
     ChatManager();
 
     bool chat_single_creature(CreaturePtr speaking_creature) const;
-    bool chat_multiple_options(CreaturePtr querying_creature, const CreatureAdjacencyMap& creature_map) const;
+    bool chat_multiple_options(CreaturePtr querying_creature, const CreatureDirectionMap& creature_map) const;
     void add_chat_message(const std::string& chat_text_sid) const;
 
     ActionCostValue get_action_cost_value() const;

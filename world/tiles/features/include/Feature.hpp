@@ -49,7 +49,9 @@ class Feature : public ISerializable
     virtual bool offer();
     virtual bool open();
 
-    virtual bool can_handle() const;
+    // Can the feature be handled, given whether the tile it is on is
+    // currently occupied?
+    virtual bool can_handle(const bool feature_tile_occupied) const;
     virtual bool handle() = 0;
     // Potential handle message for the current feature.
     // By default, returns the empty SID.

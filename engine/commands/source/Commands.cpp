@@ -258,3 +258,13 @@ ChatCommand::ChatCommand()
 ChatCommand::~ChatCommand()
 {
 }
+
+// Apply a terrain feature: open a door, etc.
+ApplyFeatureCommand::ApplyFeatureCommand()
+: Command(CommandKeys::APPLY_FEATURE)
+{
+}
+
+ApplyFeatureCommand::~ApplyFeatureCommand()
+{
+}
