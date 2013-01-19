@@ -116,32 +116,22 @@ string Entrance::get_handle_message_sid() const
 
 bool Entrance::serialize(ostream& stream)
 {
-  if (lock)
-  {
-    Serialize::write_class_id(stream, lock->get_class_identifier());
-    lock->serialize(stream);
-  }
-  else
-  {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
-  }
+  Feature::serialize(stream);
 
+  // Entrance-specific values.
   state.serialize(stream);
+  Serialize::write_enum(stream, maximum_size);
 
   return true;
 }
 
 bool Entrance::deserialize(istream& stream)
 {
-  ClassIdentifier class_id;
-  Serialize::read_class_id(stream, class_id);
+  Feature::deserialize(stream);
 
-  if (class_id != CLASS_ID_NULL)
-  {
-    lock = LockPtr(new Lock());
-    lock->deserialize(stream);
-  }
+  // Entrance-specific values.
   state.deserialize(stream);
+  Serialize::read_enum(stream, maximum_size);
 
   return true;
 }
