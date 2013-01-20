@@ -205,6 +205,98 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
   return movement_success;
 }
 
+ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile)
+{
+  ActionCostValue action_cost_value = 0;
+
+  TileType tile_type     = tile->get_tile_type();
+  TileType tile_subtype  = tile->get_tile_subtype();
+
+  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
+
+  Game* game = Game::instance();
+  MessageManager* manager = MessageManager::instance();
+
+  if (game && manager && generator)
+  {
+    MapPtr new_map;
+
+    // If a custom map ID is specified, use that:
+    string custom_map_id = tile->get_custom_map_id();
+
+    if (!custom_map_id.empty())
+    {
+      new_map = game->get_map_registry_ref().get_map(custom_map_id);
+    }
+    else
+    {
+      // Otherwise, if there's no custom map ID, generate the map:
+      uint danger_level = creature->get_level().get_current();
+      new_map = generator->generate_and_initialize(danger_level);
+
+      if (new_map->get_permanent())
+      {
+        // If it's a permanent map, set up a link between
+        // the tile and the new map.
+        tile->set_custom_map_id(new_map->get_map_id());
+      }
+
+      // JCD FIXME Refactor into a common fn later.
+      if (new_map->get_map_type() != MAP_TYPE_WORLD)
+      {
+        // Set the danger level appropriately, using the OLD MAP's map type.
+        IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
+        new_map->set_danger(calc->calculate(map, new_map));
+      }
+    }
+                
+    // - Set the map's MapExitPtr to point to the previous map.
+    //   But only if it's an overworld map.
+    if (new_map->get_map_type() == MAP_TYPE_OVERWORLD)
+    {
+      MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
+    }
+                
+    // If the map has a last known player location (e.g., up staircase),
+    // use that.  Otherwise, start at 0,0.  JCD FIXME THAT WON'T ALWAYS HOLD!
+    string player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
+    Coordinate starting_coords;
+                
+    if (new_map->has_location(player_loc))
+    {
+      starting_coords = new_map->get_location(player_loc);
+    }
+    else
+    {
+      starting_coords.first = 0;
+      starting_coords.second = 0;
+    }
+                
+    bool placed_creature = false;
+    while (placed_creature == false && (CoordUtils::is_end(starting_coords) == false))
+    {
+      placed_creature = MapUtils::add_or_update_location(new_map, creature, starting_coords);
+
+      // If we still haven't placed the creature, try the next tile...
+      if (!placed_creature)
+      {
+        starting_coords = CoordUtils::incr(starting_coords, new_map->size());
+      }
+    }
+
+    TilePtr new_creature_tile = new_map->at(starting_coords);
+
+    move_to_new_map(tile, map, new_map);
+                
+    manager->add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
+    add_tile_related_messages(creature, manager, new_creature_tile);
+                
+    action_cost_value = get_action_cost_value();
+  }
+
+  return action_cost_value;
+}
+
 // Confirm if moving to a potentially dangerous tile.
 bool MovementManager::confirm_move_to_tile_if_necessary(CreaturePtr creature, TilePtr creatures_old_tile, TilePtr creatures_new_tile)
 {
@@ -372,86 +464,7 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
             
             if (map_type == MAP_TYPE_WORLD)
             {
-              TileType tile_type     = tile->get_tile_type();
-              TileType tile_subtype  = tile->get_tile_subtype();
-              GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
-              
-              if (generator)
-              {
-                MapPtr new_map;
-
-                // If a custom map ID is specified, use that:
-                string custom_map_id = tile->get_custom_map_id();
-
-                if (!custom_map_id.empty())
-                {
-                  new_map = game->get_map_registry_ref().get_map(custom_map_id);
-                }
-                else
-                {
-                  // Otherwise, if there's no custom map ID, generate the map:
-                  uint danger_level = creature->get_level().get_current();
-                  new_map = generator->generate_and_initialize(danger_level);
-
-                  if (new_map->get_permanent())
-                  {
-                    // If it's a permanent map, set up a link between
-                    // the tile and the new map.
-                    tile->set_custom_map_id(new_map->get_map_id());
-                  }
-
-                  // JCD FIXME Refactor into a common fn later.
-                  if (new_map->get_map_type() != MAP_TYPE_WORLD)
-                  {
-                    // Set the danger level appropriately, using the OLD MAP's map type.
-                    IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
-                    new_map->set_danger(calc->calculate(map, new_map));
-                  }
-                }
-                
-                // - Set the map's MapExitPtr to point to the previous map.
-                //   But only if it's an overworld map.
-                if (new_map->get_map_type() == MAP_TYPE_OVERWORLD)
-                {
-                  MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
-                }
-                
-                // If the map has a last known player location (e.g., up staircase),
-                // use that.  Otherwise, start at 0,0.  JCD FIXME THAT WON'T ALWAYS HOLD!
-                string player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
-                Coordinate starting_coords;
-                
-                if (new_map->has_location(player_loc))
-                {
-                  starting_coords = new_map->get_location(player_loc);
-                }
-                else
-                {
-                  starting_coords.first = 0;
-                  starting_coords.second = 0;
-                }
-                
-                bool placed_creature = false;
-                while (placed_creature == false && (CoordUtils::is_end(starting_coords) == false))
-                {
-                  placed_creature = MapUtils::add_or_update_location(new_map, creature, starting_coords);
-
-                  // If we still haven't placed the creature, try the next tile...
-                  if (!placed_creature)
-                  {
-                    starting_coords = CoordUtils::incr(starting_coords, new_map->size());
-                  }
-                }
-
-                TilePtr new_creature_tile = new_map->at(starting_coords);
-
-                move_to_new_map(tile, map, new_map);
-                
-                manager->add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
-                add_tile_related_messages(creature, manager, new_creature_tile);
-                
-                descend_success = get_action_cost_value();
-              }
+              descend_success = generate_and_move_to_new_map(creature, map, tile);
             }
             else
             {

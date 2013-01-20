@@ -519,7 +519,7 @@ bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col,
         MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, map_exit_id);
       }      
     }
-    
+
     map->insert(row, col, new_staircase_tile); 
     
     if (set_as_player_default_location)

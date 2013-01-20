@@ -110,6 +110,17 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
 
       break;      
     }
+    case TILE_TYPE_UP_STAIRCASE:
+    case TILE_TYPE_DOWN_STAIRCASE:
+      if (terrain_subtype != TILE_TYPE_UP_STAIRCASE && terrain_subtype != TILE_TYPE_DOWN_STAIRCASE)
+      {
+        // The subtype will function as the terrain type.  The idea is that if we have a set of stairs,
+        // the subtype can be dungeon, cavern, etc., and guide the generation process.
+        generator = TerrainGeneratorFactory::create_generator(tile, map_exit_id, terrain_subtype);
+      }
+
+      break;
+
     case TILE_TYPE_UNDEFINED:
     case TILE_TYPE_WHEAT:
     case TILE_TYPE_CAIRN:
@@ -125,8 +136,6 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TILE_TYPE_BUSH:
     case TILE_TYPE_WEEDS:
     case TILE_TYPE_SPRINGS:
-    case TILE_TYPE_UP_STAIRCASE:
-    case TILE_TYPE_DOWN_STAIRCASE:
     case TILE_TYPE_BARRACKS:
     case TILE_TYPE_CASTLE:
     case TILE_TYPE_KEEP:
