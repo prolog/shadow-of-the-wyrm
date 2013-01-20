@@ -452,10 +452,7 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
           // If there is an exit in the down direction, do the appropriate action.
           if (t_it != exit_map.end())
           {
-            // JCD FIXME Fill this in later.
-            // Refactor with the appropriate code from the else
-            // clause below.
-            descend_success = get_action_cost_value();
+            descend_success = generate_and_move_to_new_map(creature, map, tile);
           }
           // If it's null, check to see if we're on the world map.
           else

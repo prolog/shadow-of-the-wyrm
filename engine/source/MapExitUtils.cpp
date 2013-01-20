@@ -17,7 +17,21 @@ void MapExitUtils::add_exit_to_map(MapPtr map, const std::string& map_exit_id)
   map->set_map_exit(map_exit);
 }
 
-// Attach an exit to a tile, in a particular direction.
+// Attach a tile-type map exit to a tile, in a particular direction.
+void MapExitUtils::add_exit_to_tile(TilePtr tile, const Direction direction, const TileType tile_type)
+{
+  if (tile)
+  {
+    TileExitMap& tile_exit_map = tile->get_tile_exit_map_ref();
+
+    MapExitPtr map_exit = boost::make_shared<MapExit>();
+    map_exit->set_terrain_type(tile_type);
+    
+    tile_exit_map[direction] = map_exit;    
+  }
+}
+
+// Attach a map exit to a tile, in a particular direction.
 void MapExitUtils::add_exit_to_tile(TilePtr tile, const Direction direction, const std::string& map_exit_id)
 {
   if (tile)

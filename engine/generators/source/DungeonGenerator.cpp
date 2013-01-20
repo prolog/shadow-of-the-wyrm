@@ -511,6 +511,7 @@ bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col,
     Coordinate c(row, col);
     
     TilePtr new_staircase_tile = TileGenerator::generate(tile_type);
+    new_staircase_tile->set_tile_subtype(TILE_TYPE_DUNGEON_COMPLEX);
 
     if (link_to_map_exit_id)
     {
@@ -518,6 +519,11 @@ bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col,
       {
         MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, map_exit_id);
       }      
+    }
+    // Otherwise, if we're not linking to a map exit ID, we should map to a tile exit.
+    else
+    {
+      MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, TILE_TYPE_DUNGEON_COMPLEX);
     }
 
     map->insert(row, col, new_staircase_tile); 
