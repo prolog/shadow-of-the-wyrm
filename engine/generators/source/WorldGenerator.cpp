@@ -3,6 +3,8 @@
 #include <boost/make_shared.hpp>
 #include "AlignmentEnums.hpp"
 #include "CoordUtils.hpp"
+#include "Conversion.hpp"
+#include "DungeonGenerator.hpp"
 #include "Game.hpp"
 #include "WorldGenerator.hpp"
 #include "TileGenerator.hpp"
@@ -115,6 +117,7 @@ void WorldGenerator::generate_little_island(MapPtr map)
   // Siriath's Dungeons
   TilePtr village_dungeon = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED, false);
   village_dungeon->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON);
+  village_dungeon->set_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH, Integer::to_string(2));
   map->insert(height-2, width-2, village_dungeon);
 }
 
