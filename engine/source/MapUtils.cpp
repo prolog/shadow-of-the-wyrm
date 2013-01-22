@@ -480,6 +480,28 @@ bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPt
   return false;
 }
 
+void MapUtils::place_creature_on_previous_or_first_available_location(MapPtr map, CreaturePtr creature, const string& player_loc)
+{
+  Coordinate coords(0,0);
+  
+  if (map->has_location(player_loc))
+  {
+    coords = map->get_location(player_loc);
+  }
+                
+  bool placed_creature = false;
+  while (placed_creature == false && (CoordUtils::is_end(coords) == false))
+  {
+    placed_creature = MapUtils::add_or_update_location(map, creature, coords);
+
+    // If we still haven't placed the creature, try the next tile...
+    if (!placed_creature)
+    {
+      coords = CoordUtils::incr(coords, map->size());
+    }
+  }
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
