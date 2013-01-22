@@ -212,6 +212,10 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
   TileType tile_type     = tile->get_tile_type();
   TileType tile_subtype  = tile->get_tile_subtype();
 
+  // Set the previous map ID, so that if there are staircases, etc., the
+  // link to the current map can be maintained.
+  tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID, map->get_map_id());
+
   GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
 
   Game* game = Game::instance();
@@ -261,28 +265,8 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
     // use that.  Otherwise, start at 0,0.  JCD FIXME THAT WON'T ALWAYS HOLD!
     string player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
     Coordinate starting_coords;
-                
-    if (new_map->has_location(player_loc))
-    {
-      starting_coords = new_map->get_location(player_loc);
-    }
-    else
-    {
-      starting_coords.first = 0;
-      starting_coords.second = 0;
-    }
-                
-    bool placed_creature = false;
-    while (placed_creature == false && (CoordUtils::is_end(starting_coords) == false))
-    {
-      placed_creature = MapUtils::add_or_update_location(new_map, creature, starting_coords);
-
-      // If we still haven't placed the creature, try the next tile...
-      if (!placed_creature)
-      {
-        starting_coords = CoordUtils::incr(starting_coords, new_map->size());
-      }
-    }
+    
+    MapUtils::place_creature_on_previous_or_first_available_location(new_map, creature, player_loc);
 
     TilePtr new_creature_tile = new_map->at(starting_coords);
 
@@ -392,6 +376,8 @@ ActionCostValue MovementManager::ascend(CreaturePtr creature)
         
         // If the tile we've moved to has any items, notify the player, if the creature's a player.
         MapPtr new_map = game->get_current_map();
+        MapUtils::place_creature_on_previous_or_first_available_location(new_map, creature, creature->get_id());
+
         TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
         add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);
         

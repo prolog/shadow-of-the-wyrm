@@ -495,6 +495,9 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     x = RNG::range(r.x1+1, r.x2-2);
     
     place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, true, true);
+
+    TilePtr up_stairs = map->at(y, x);
+    up_stairs->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
     
     location_found = true;
   }
