@@ -266,8 +266,6 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
     string player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
     Coordinate starting_coords;
     
-    MapUtils::place_creature_on_previous_or_first_available_location(new_map, creature, player_loc);
-
     TilePtr new_creature_tile = new_map->at(starting_coords);
 
     move_to_new_map(tile, map, new_map);
@@ -317,6 +315,8 @@ void MovementManager::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapP
     // vector of creatures as well.
     CreaturePtr current_creature = current_tile->get_creature();
     MapUtils::remove_creature(old_map, current_creature);
+
+    MapUtils::place_creature_on_previous_or_first_available_location(new_map, current_creature, current_creature->get_id());
 
     // Set the new map to be loaded in the next iteration of the game loop.
     game->set_current_map(new_map);
@@ -376,7 +376,6 @@ ActionCostValue MovementManager::ascend(CreaturePtr creature)
         
         // If the tile we've moved to has any items, notify the player, if the creature's a player.
         MapPtr new_map = game->get_current_map();
-        MapUtils::place_creature_on_previous_or_first_available_location(new_map, creature, creature->get_id());
 
         TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
         add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);

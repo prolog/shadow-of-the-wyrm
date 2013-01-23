@@ -49,7 +49,7 @@ bool MapExit::is_using_map_id() const
 
 bool MapExit::is_using_terrain_type() const
 {
-  return (terrain_type != TILE_TYPE_UNDEFINED);
+  return (!is_using_map_id() && terrain_type != TILE_TYPE_UNDEFINED);
 }
 
 bool MapExit::serialize(ostream& stream)

@@ -293,11 +293,7 @@ bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
         map->remove_creature(creature->get_id());
       }
 
-      // If the map is the world map, don't remove the player from it.
-      if (map->get_map_type() != MAP_TYPE_WORLD)
-      {
-        creature_tile->remove_creature();
-      }
+      creature_tile->remove_creature();
 
       result = true;
     }
@@ -483,7 +479,17 @@ bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPt
 void MapUtils::place_creature_on_previous_or_first_available_location(MapPtr map, CreaturePtr creature, const string& player_loc)
 {
   Coordinate coords(0,0);
-  
+
+  // First, check the generic "player location" coordinates.
+  if (creature->get_is_player())
+  {
+    string current_player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
+    if (map->has_location(current_player_loc))
+    {
+      coords = map->get_location(current_player_loc);
+    }
+  }
+
   if (map->has_location(player_loc))
   {
     coords = map->get_location(player_loc);
