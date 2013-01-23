@@ -14,6 +14,11 @@ class TileProperties
     // maps.
     static const std::string TILE_PROPERTY_PREVIOUS_MAP_ID;
 
+    // The "original" map ID - used for linking back to the original,
+    // permanent map.  E.g.: linking to the overworld from the first
+    // level of a random, impermanent dungeon complex.
+    static const std::string TILE_PROPERTY_ORIGINAL_MAP_ID;
+
   protected:
     TileProperties();
     ~TileProperties();

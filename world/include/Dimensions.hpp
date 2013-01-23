@@ -20,6 +20,7 @@ class Dimensions : public ISerializable
 
     void set_depth(const Depth& new_depth);
     Depth depth() const;
+    Depth& depth_ref();
 
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);

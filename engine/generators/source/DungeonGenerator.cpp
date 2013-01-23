@@ -480,6 +480,14 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     
       place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, false, false);
 
+      // Ensure that the original map ID is set on the down staircase.  This will
+      // allow it to be set on future maps.  In a fully randomized dungeon, this
+      // will keep the value persistent, and allow it to be used on the up staircase
+      // on the first dungeon level.
+      TilePtr down_tile = map->at(y, x);
+      down_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
+      down_tile->set_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH, max_depth_property);
+
       location_found = true;
     }
   }
@@ -494,11 +502,21 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     y = RNG::range(r.y1+1, r.y2-2);
     x = RNG::range(r.x1+1, r.x2-2);
     
-    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, true, true);
+    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, get_permanence_default(), true);
 
     TilePtr up_stairs = map->at(y, x);
+
+    // This may be empty, in which case, the custom map ID will be empty
+    // and terrain will be checked instead, which is the desired behaviour.
     up_stairs->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
-    
+
+    // If we're on level 1, set the custom map ID to be the original map ID.
+    if (depth.get_current() == 1)
+    {
+      string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
+      up_stairs->set_custom_map_id(original_map_id);
+    }
+
     location_found = true;
   }
   

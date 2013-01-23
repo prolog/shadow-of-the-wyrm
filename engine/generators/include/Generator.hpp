@@ -17,6 +17,7 @@ class Generator
 
     // Generate the map and its contents (creatures, features, items, etc.)
     virtual MapPtr generate_and_initialize(const uint danger_level);
+    virtual MapPtr generate_and_initialize(const uint danger_level, const Depth& depth);
     virtual MapPtr generate_and_initialize(const uint danger_level, const Dimensions& dim);
    
     virtual MapPtr generate();
