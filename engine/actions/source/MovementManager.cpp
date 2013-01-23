@@ -205,16 +205,25 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
   return movement_success;
 }
 
-ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile)
+ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const int depth_increment)
 {
   ActionCostValue action_cost_value = 0;
 
   TileType tile_type     = tile->get_tile_type();
   TileType tile_subtype  = tile->get_tile_subtype();
 
-  // Set the previous map ID, so that if there are staircases, etc., the
+  // If permanent, set the previous map ID, so that if there are staircases, etc., the
   // link to the current map can be maintained.
-  tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID, map->get_map_id());
+  if (map->get_permanent())
+  {
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID, map->get_map_id());
+  }
+
+  // Special case: set the original map ID if this is the overworld.
+  if (map->get_map_type() == MAP_TYPE_WORLD)
+  {
+    tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id());
+  }
 
   GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
 
@@ -236,7 +245,10 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
     {
       // Otherwise, if there's no custom map ID, generate the map:
       uint danger_level = creature->get_level().get_current();
-      new_map = generator->generate_and_initialize(danger_level);
+      Dimensions dim = map->size();
+      Depth& depth = dim.depth_ref();
+      depth.set_current(depth.get_current() + depth_increment);
+      new_map = generator->generate_and_initialize(danger_level, depth);
 
       if (new_map->get_permanent())
       {
@@ -245,7 +257,6 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
         tile->set_custom_map_id(new_map->get_map_id());
       }
 
-      // JCD FIXME Refactor into a common fn later.
       if (new_map->get_map_type() != MAP_TYPE_WORLD)
       {
         // Set the danger level appropriately, using the OLD MAP's map type.
@@ -262,7 +273,7 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
     }
                 
     // If the map has a last known player location (e.g., up staircase),
-    // use that.  Otherwise, start at 0,0.  JCD FIXME THAT WON'T ALWAYS HOLD!
+    // use that.  Otherwise, start at the first open location.
     string player_loc = WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION;
     Coordinate starting_coords;
     
@@ -372,15 +383,22 @@ ActionCostValue MovementManager::ascend(CreaturePtr creature)
   
       if (map_exit)
       {
-        move_to_new_map(current_tile, current_map, map_exit);
+        if (map_exit->is_using_map_id())
+        {
+          move_to_new_map(current_tile, current_map, map_exit);
         
-        // If the tile we've moved to has any items, notify the player, if the creature's a player.
-        MapPtr new_map = game->get_current_map();
+          // If the tile we've moved to has any items, notify the player, if the creature's a player.
+          MapPtr new_map = game->get_current_map();
 
-        TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
-        add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);
+          TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
+          add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);
         
-        ascend_success = get_action_cost_value();
+          ascend_success = get_action_cost_value();
+        }
+        else
+        {
+          ascend_success = generate_and_move_to_new_map(creature, current_map, current_tile, -1);
+        }
       }
       else
       {
@@ -437,7 +455,7 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
           // If there is an exit in the down direction, do the appropriate action.
           if (t_it != exit_map.end())
           {
-            descend_success = generate_and_move_to_new_map(creature, map, tile);
+            descend_success = generate_and_move_to_new_map(creature, map, tile, 1);
           }
           // If it's null, check to see if we're on the world map.
           else
@@ -446,7 +464,7 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
             
             if (map_type == MAP_TYPE_WORLD)
             {
-              descend_success = generate_and_move_to_new_map(creature, map, tile);
+              descend_success = generate_and_move_to_new_map(creature, map, tile, 1);
             }
             else
             {

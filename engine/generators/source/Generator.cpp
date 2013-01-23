@@ -26,6 +26,14 @@ MapPtr Generator::generate_and_initialize(const uint danger_level)
   return generate_and_initialize(danger_level, dim);
 }
 
+MapPtr Generator::generate_and_initialize(const uint danger_level, const Depth& depth)
+{
+  Dimensions dim;
+  dim.set_depth(depth);
+
+  return generate_and_initialize(danger_level, dim);
+}
+
 MapPtr Generator::generate_and_initialize(const uint danger_level, const Dimensions& dim)
 {
   Dimensions new_dim = update_dimensions_if_necessary(dim, get_map_type(), danger_level);

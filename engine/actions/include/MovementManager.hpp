@@ -29,7 +29,7 @@ class MovementManager : public IActionManager
     // A standard move within a map.
     ActionCostValue move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords);
     // Generate a new map, and move to it - staircases, etc.
-    ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile);
+    ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const int depth_increment = 0);
     
     void add_tile_related_messages(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);
     void add_message_about_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile);

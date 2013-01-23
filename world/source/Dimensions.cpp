@@ -58,6 +58,11 @@ Depth Dimensions::depth() const
   return dim_depth;
 }
 
+Depth& Dimensions::depth_ref()
+{
+  return dim_depth;
+}
+
 bool Dimensions::serialize(ostream& stream)
 {
   Serialize::write_int(stream, y);
