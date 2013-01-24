@@ -219,13 +219,11 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
     tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID, map->get_map_id());
   }
 
-  // Special case: set the original map ID if this is the overworld.
-  if (map->get_map_type() == MAP_TYPE_WORLD)
-  {
-    tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id());
-  }
-
   GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
+
+  // Ensure that the overworld map ID is always available to the generator!
+  map->get_map_type() == MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())
+    : generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, tile->get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
   Game* game = Game::instance();
   MessageManager* manager = MessageManager::instance();
