@@ -509,9 +509,10 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     // This may be empty, in which case, the custom map ID will be empty
     // and terrain will be checked instead, which is the desired behaviour.
     up_stairs->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
+    up_stairs->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
     // If we're on level 1, set the custom map ID to be the original map ID.
-    if (depth.get_current() == 1)
+    if (depth.get_current() <= 1)
     {
       string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
       up_stairs->set_custom_map_id(original_map_id);
@@ -560,7 +561,7 @@ bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col,
 
 bool DungeonGenerator::get_permanence_default() const
 {
-  return true;
+  return false;
 }
 
 MapType DungeonGenerator::get_map_type() const
