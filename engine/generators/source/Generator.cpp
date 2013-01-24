@@ -36,35 +36,10 @@ MapPtr Generator::generate_and_initialize(const uint danger_level, const Depth& 
 
 MapPtr Generator::generate_and_initialize(const uint danger_level, const Dimensions& dim)
 {
-  Dimensions new_dim = update_dimensions_if_necessary(dim, get_map_type(), danger_level);
-  MapPtr map = generate(new_dim);
+  MapPtr map = generate(dim);
   initialize(map, danger_level);
   
   return map;
-}
-
-// JCD FIXME: Right now this only handles positive depth (underground).
-// Extend this later to handle negative depth (multiple floors, etc.)
-Dimensions Generator::update_dimensions_if_necessary(const Dimensions& dim, const MapType map_type, const uint danger_level)
-{
-  Dimensions d = dim;
-
-  // This is theoretically dangerous.
-  //
-  // However, since danger level will be more of a byte than an int, 
-  // I think I can sleep at night.
-  const int signed_danger_level = static_cast<int>(danger_level);
-
-  if (map_type == MAP_TYPE_UNDERWORLD)
-  {
-    if (signed_danger_level > d.depth().get_maximum())
-    {
-      Depth depth(signed_danger_level, signed_danger_level);
-      d.set_depth(depth);
-    }
-  }
-
-  return d;
 }
 
 void Generator::initialize(MapPtr map, const uint danger_level)
