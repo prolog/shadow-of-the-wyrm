@@ -18,6 +18,11 @@ class TileProperties
     // permanent map.  E.g.: linking to the overworld from the first
     // level of a random, impermanent dungeon complex.
     static const std::string TILE_PROPERTY_ORIGINAL_MAP_ID;
+    
+    // Used to determine if the player should be placed on the up staircase
+    // (when descending), or the down staircase (when ascending).  If the
+    // increment = "1", the player's going down the stairs.
+    static const std::string TILE_PROPERTY_DEPTH_INCREMENT;
 
   protected:
     TileProperties();
