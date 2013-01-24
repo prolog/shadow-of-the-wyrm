@@ -449,6 +449,8 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   int y, x;
   
   Room first_staircase_room;
+  string depth_increment = get_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT);
+  bool place_player_on_down_staircase = (depth_increment.empty());
 
   // Update the map's depth information.
   // JCD FIXME refactor
@@ -478,7 +480,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
       y = RNG::range(r.y1+1, r.y2-2);
       x = RNG::range(r.x1+1, r.x2-2);
     
-      place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, false, false);
+      place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, false, place_player_on_down_staircase);
 
       // Ensure that the original map ID is set on the down staircase.  This will
       // allow it to be set on future maps.  In a fully randomized dungeon, this
@@ -502,7 +504,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     y = RNG::range(r.y1+1, r.y2-2);
     x = RNG::range(r.x1+1, r.x2-2);
     
-    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, get_permanence_default(), true);
+    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, get_permanence_default(), !place_player_on_down_staircase);
 
     TilePtr up_stairs = map->at(y, x);
 
@@ -561,7 +563,7 @@ bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col,
 
 bool DungeonGenerator::get_permanence_default() const
 {
-  return false;
+  return true;
 }
 
 MapType DungeonGenerator::get_map_type() const

@@ -246,6 +246,7 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
       Dimensions dim = map->size();
       Depth& depth = dim.depth_ref();
       depth.set_current(depth.get_current() + depth_increment);
+      if (depth_increment > 0) generator->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, Integer::to_string(depth_increment));
       new_map = generator->generate_and_initialize(danger_level, depth);
 
       if (new_map->get_permanent())
