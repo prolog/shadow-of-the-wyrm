@@ -46,7 +46,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\include;C:\cygwin\home\Julian\jrcpp\engine\events\include;C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_48_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cygwin\home\Julian\jrcpp\engine\maps\include;C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\include;C:\cygwin\home\Julian\jrcpp\engine\events\include;C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_48_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -115,6 +115,7 @@
     <ClInclude Include="engine\actions\include\RangedCombatApplicabilityChecker.hpp" />
     <ClInclude Include="engine\actions\include\ReadManager.hpp" />
     <ClInclude Include="engine\actions\include\SearchActionManager.hpp" />
+    <ClInclude Include="engine\actions\include\StairwayMovementManager.hpp" />
     <ClInclude Include="engine\actions\include\TileMovementConfirmation.hpp" />
     <ClInclude Include="engine\actions\include\TileSelectionManager.hpp" />
     <ClInclude Include="engine\actions\include\VersionActionManager.hpp" />
@@ -319,10 +320,6 @@
     <ClInclude Include="engine\include\FileWriter.hpp" />
     <ClInclude Include="engine\include\Game.hpp" />
     <ClInclude Include="engine\include\Log.hpp" />
-    <ClInclude Include="engine\include\MapCursor.hpp" />
-    <ClInclude Include="engine\include\MapExitUtils.hpp" />
-    <ClInclude Include="engine\include\MapRegistry.hpp" />
-    <ClInclude Include="engine\include\MapUtils.hpp" />
     <ClInclude Include="engine\include\Message.hpp" />
     <ClInclude Include="engine\include\MessageManager.hpp" />
     <ClInclude Include="engine\include\Messages.hpp" />
@@ -347,6 +344,13 @@
     <ClInclude Include="engine\items\include\NullItemFilter.hpp" />
     <ClInclude Include="engine\items\include\ReadableItemFilter.hpp" />
     <ClInclude Include="engine\items\include\SquishyEquipWornLocationFilter.hpp" />
+    <ClInclude Include="engine\maps\include\IMapTypeQuery.hpp" />
+    <ClInclude Include="engine\maps\include\MapCursor.hpp" />
+    <ClInclude Include="engine\maps\include\MapExitUtils.hpp" />
+    <ClInclude Include="engine\maps\include\MapRegistry.hpp" />
+    <ClInclude Include="engine\maps\include\MapTypeQueries.hpp" />
+    <ClInclude Include="engine\maps\include\MapTypeQueryFactory.hpp" />
+    <ClInclude Include="engine\maps\include\MapUtils.hpp" />
     <ClInclude Include="engine\menus\include\ClassSelectionScreen.hpp" />
     <ClInclude Include="engine\menus\include\DeitySelectionScreen.hpp" />
     <ClInclude Include="engine\menus\include\LoadGameScreen.hpp" />
@@ -644,6 +648,7 @@
     <ClCompile Include="engine\actions\source\RangedCombatApplicabilityChecker.cpp" />
     <ClCompile Include="engine\actions\source\ReadManager.cpp" />
     <ClCompile Include="engine\actions\source\SearchActionManager.cpp" />
+    <ClCompile Include="engine\actions\source\StairwayMovementManager.cpp" />
     <ClCompile Include="engine\actions\source\TileMovementConfirmation.cpp" />
     <ClCompile Include="engine\actions\source\TileSelectionManager.cpp" />
     <ClCompile Include="engine\actions\source\unit_tests\ActionCoordinator_test.cpp">
@@ -932,6 +937,21 @@
     <ClCompile Include="engine\items\source\unit_tests\InitialItemSelector_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\maps\source\MapCursor.cpp" />
+    <ClCompile Include="engine\maps\source\MapExitUtils.cpp" />
+    <ClCompile Include="engine\maps\source\MapRegistry.cpp" />
+    <ClCompile Include="engine\maps\source\MapTypeQueries.cpp" />
+    <ClCompile Include="engine\maps\source\MapTypeQueryFactory.cpp" />
+    <ClCompile Include="engine\maps\source\MapUtils.cpp" />
+    <ClCompile Include="engine\maps\source\unit_tests\MapRegistry_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\MapUtils_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\Map_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\menus\source\ClassSelectionScreen.cpp" />
     <ClCompile Include="engine\menus\source\DeitySelectionScreen.cpp" />
     <ClCompile Include="engine\menus\source\LoadGameScreen.cpp" />
@@ -961,10 +981,6 @@
     <ClCompile Include="engine\source\FileWriter.cpp" />
     <ClCompile Include="engine\source\Game.cpp" />
     <ClCompile Include="engine\source\Log.cpp" />
-    <ClCompile Include="engine\source\MapCursor.cpp" />
-    <ClCompile Include="engine\source\MapExitUtils.cpp" />
-    <ClCompile Include="engine\source\MapRegistry.cpp" />
-    <ClCompile Include="engine\source\MapUtils.cpp" />
     <ClCompile Include="engine\source\Message.cpp" />
     <ClCompile Include="engine\source\MessageManager.cpp" />
     <ClCompile Include="engine\source\Messages.cpp" />

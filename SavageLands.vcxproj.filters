@@ -511,6 +511,21 @@
     <Filter Include="Source Files\controller\source">
       <UniqueIdentifier>{04a57926-ccf1-40bc-bbeb-1f21aa4574d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\maps">
+      <UniqueIdentifier>{e8227a15-cec6-4264-ab30-bf7bf78f4acd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\maps\include">
+      <UniqueIdentifier>{47368791-b52b-40d8-9693-214f78c8267a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\maps">
+      <UniqueIdentifier>{cf99e4e3-2d4f-47d8-9d9c-91b2f0d55140}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\maps\source">
+      <UniqueIdentifier>{d0b116d8-2d4a-482f-8643-63cff1585474}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\maps\source\unit_tests">
+      <UniqueIdentifier>{21270ff3-3f50-4c1f-8fbc-bb6f29af6d87}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -1629,18 +1644,6 @@
     <ClInclude Include="engine\include\Log.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\MapCursor.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\include\MapExitUtils.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\include\MapRegistry.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\include\MapUtils.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\include\Message.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
@@ -2078,6 +2081,30 @@
     </ClInclude>
     <ClInclude Include="world\include\MapProperties.hpp">
       <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\include\MapCursor.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\include\MapExitUtils.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\include\MapRegistry.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\include\MapUtils.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\include\IMapTypeQuery.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\include\MapTypeQueries.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\include\MapTypeQueryFactory.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\StairwayMovementManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3266,18 +3293,6 @@
     <ClCompile Include="engine\source\Log.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\MapCursor.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\MapExitUtils.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\MapRegistry.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\MapUtils.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\source\Message.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
@@ -3949,6 +3964,36 @@
     </ClCompile>
     <ClCompile Include="world\source\MapProperties.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\MapCursor.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\MapExitUtils.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\MapRegistry.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\MapUtils.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\Map_test.cpp">
+      <Filter>Source Files\engine\maps\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\MapRegistry_test.cpp">
+      <Filter>Source Files\engine\maps\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\MapUtils_test.cpp">
+      <Filter>Source Files\engine\maps\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\MapTypeQueries.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\StairwayMovementManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\MapTypeQueryFactory.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

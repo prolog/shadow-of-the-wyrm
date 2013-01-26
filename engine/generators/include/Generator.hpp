@@ -32,14 +32,15 @@ class Generator
     virtual void set_additional_properties(const std::map<std::string, std::string>& additional_properties);
     virtual std::string get_additional_property(const std::string& property_name) const;
     
-  protected:
+    virtual MapType get_map_type() const;
+
+protected:
 
     virtual void set_map_permanence(MapPtr map);
     virtual bool get_permanence() const; // Check additional properties, and only then check the default
     virtual bool get_permanence_default() const;
     virtual void update_map_permanence_from_additional_properties(MapPtr map);
 
-    virtual MapType get_map_type() const;
     virtual void initialize(MapPtr map, const uint danger_level);
     virtual void fill(const MapPtr map, const TileType& tile_type);
     
