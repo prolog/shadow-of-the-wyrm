@@ -2076,6 +2076,9 @@
     <ClInclude Include="engine\actions\include\FeatureManager.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\MapProperties.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -3943,6 +3946,9 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\FeatureManager.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\MapProperties.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

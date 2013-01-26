@@ -90,6 +90,20 @@ int Char::keyboard_selection_char_to_int(const char character)
   return static_cast<int>(character - 'a');
 }
 
+Bool::Bool()
+{
+}
+
+Bool::~Bool()
+{
+}
+
+string Bool::to_string(const bool b)
+{
+  string converted_string = Convert::to_string(b);
+  return converted_string;
+}
+
 DirectionEnum::DirectionEnum()
 {
 }
