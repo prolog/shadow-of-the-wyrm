@@ -244,7 +244,7 @@ void Game::go()
 
     map<string, CreaturePtr> map_creatures = current_map->get_creatures();
 
-    ac.reset_if_necessary(current_map->get_map_id(), map_creatures);
+    ac.reset_if_necessary(current_map->get_permanent(), current_map->get_map_id(), map_creatures);
 
     Calendar& calendar = worlds[current_world_ix]->get_calendar();
     
