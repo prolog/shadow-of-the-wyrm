@@ -18,6 +18,7 @@ class MovementManager : public IActionManager
 
   protected:
     friend class ActionManager;
+    friend class StairwayMovementManager;
 
     MovementManager();
     ~MovementManager();
