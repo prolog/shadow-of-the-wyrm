@@ -304,7 +304,7 @@ bool MapUtils::remove_creature(const MapPtr& map, const CreaturePtr& creature)
 
 bool MapUtils::can_exit_map(MapExitPtr map_exit)
 {
-  bool can_exit;
+  bool can_exit = false;
   
   if (map_exit && (map_exit->is_using_map_id() || map_exit->is_using_terrain_type()))
   {
