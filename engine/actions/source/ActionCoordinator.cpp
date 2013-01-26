@@ -16,9 +16,9 @@ bool ActionCoordinator::operator==(const ActionCoordinator& ac)
 
 // If the new map ID is different than the current one, then clear the action coordinator, rebuild it, and set the
 // current ID to the new ID.
-bool ActionCoordinator::reset_if_necessary(const string& new_map_id, const map<string, CreaturePtr>& map_creatures)
+bool ActionCoordinator::reset_if_necessary(const bool map_is_permanent, const string& new_map_id, const map<string, CreaturePtr>& map_creatures)
 {
-  bool ac_reset = (new_map_id != current_map_id);
+  bool ac_reset = (new_map_id != current_map_id) || (!map_is_permanent);
 
   if (ac_reset)
   {

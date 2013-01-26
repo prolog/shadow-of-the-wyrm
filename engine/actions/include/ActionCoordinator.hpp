@@ -16,7 +16,7 @@ class ActionCoordinator : public ISerializable
     void add(const ActionCost& action_cost, const std::string& creature_id);
     void clear();
 
-    bool reset_if_necessary(const std::string& new_map_guid, const std::map<std::string, CreaturePtr>& new_map_creatures);
+    bool reset_if_necessary(const bool map_is_permanent, const std::string& new_map_guid, const std::map<std::string, CreaturePtr>& new_map_creatures);
 
     ActionCost get_next_action_cost() const;
     std::string get_next_creature_id_and_update_actions();
