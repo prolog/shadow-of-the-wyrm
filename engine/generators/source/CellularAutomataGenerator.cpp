@@ -160,9 +160,12 @@ CellMap CellularAutomataGenerator::get_initialized_cells(const int y, const int 
   CellMap result_map;
   int rand_closed;
 
+  result_map.reserve(y);
+
   for (int row = 0; row < y; row++)
   {
     vector<CellValue> cv;
+    cv.reserve(x);
     
     for (int col = 0; col < x; col++)
     {
