@@ -20,11 +20,11 @@ namespace boost
 
 class Convert
 {
-
   protected:
     friend class String;
     friend class Integer;
     friend class Char;
+    friend class Bool;
 
     Convert();
     template <class T> static T from_string(const std::string& str);
@@ -41,6 +41,16 @@ class Char
   protected:
     Char();
     ~Char();
+};
+
+class Bool
+{
+  public:
+    static std::string to_string(const bool boolean);
+
+  protected:
+    Bool();
+    ~Bool();
 };
 
 class DirectionEnum

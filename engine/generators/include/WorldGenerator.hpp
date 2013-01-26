@@ -32,6 +32,7 @@ class WorldGenerator : public Generator
     virtual void process_mountain_cell(MapPtr map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue field_val);
 
     void generate_little_island(MapPtr map);
+    void generate_infinite_dungeon_island(MapPtr map);
     void generate_far_reaches(MapPtr map);
     
     void populate_race_information();

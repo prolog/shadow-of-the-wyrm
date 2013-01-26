@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreationUtils.hpp"
+#include "MapProperties.hpp"
 #include "ItemGenerationManager.hpp"
 #include "TileGenerator.hpp"
 #include "Game.hpp"
@@ -170,6 +171,28 @@ void Generator::set_map_permanence(MapPtr map)
   if (map)
   {
     map->set_permanent(get_permanence_default());
+    update_map_permanence_from_additional_properties(map);
+  }
+}
+
+void Generator::update_map_permanence_from_additional_properties(MapPtr map)
+{
+  if (map)
+  {
+    string permanence_flag = get_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE);
+
+    if (!permanence_flag.empty())
+    {
+      string no_map_id;
+      bool permanence = String::to_bool(permanence_flag);
+
+      map->set_permanent(permanence);
+
+      if (!permanence)
+      {
+        map->set_map_id(no_map_id);
+      }
+    }
   }
 }
 
@@ -214,4 +237,18 @@ string Generator::get_additional_property(const string& property_name) const
 bool Generator::get_permanence_default() const
 {
   return false;
+}
+
+// If the permanence property has been set, check that, and then the default.
+bool Generator::get_permanence() const
+{
+  bool result = get_permanence_default();
+  string permanence_flag = get_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE);
+
+  if (!permanence_flag.empty())
+  {
+    result = String::to_bool(permanence_flag);
+  }
+
+  return result;
 }

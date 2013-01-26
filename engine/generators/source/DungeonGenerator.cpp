@@ -8,6 +8,7 @@
 #include "AllTiles.hpp"
 #include "FeatureGenerator.hpp"
 #include "MapExitUtils.hpp"
+#include "MapProperties.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 
@@ -504,7 +505,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     y = RNG::range(r.y1+1, r.y2-2);
     x = RNG::range(r.x1+1, r.x2-2);
     
-    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, get_permanence_default(), !place_player_on_down_staircase);
+    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
 
     TilePtr up_stairs = map->at(y, x);
 
@@ -549,6 +550,10 @@ bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col,
     {
       MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, TILE_TYPE_DUNGEON_COMPLEX);
     }
+
+    // Allow for "infinite dungeons" by setting the permanence flag on the staircases, which will then get copied 
+    // to the next generator, which will then set it on the down staircase...
+    new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, get_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE));
 
     map->insert(row, col, new_staircase_tile); 
     
