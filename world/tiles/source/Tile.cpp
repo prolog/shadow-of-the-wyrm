@@ -316,11 +316,6 @@ bool Tile::serialize(ostream& stream)
     Serialize::write_class_id(stream, CLASS_ID_NULL);
   }
   
-  if (!map_exits.empty())
-  {
-    int x = 1;
-  }
-
   items.serialize(stream);
 
   Serialize::write_size_t(stream, map_exits.size());
