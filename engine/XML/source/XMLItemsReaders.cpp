@@ -102,6 +102,14 @@ ItemMap XMLItemsReader::get_items(const XMLNode& items_node)
       items.insert(currencies_map.begin(), currencies_map.end());
     }
     
+    XMLNode tools_node = XMLUtils::get_next_element_by_local_name(items_node, "Tools");
+
+    if (!tools_node.is_null())
+    {
+      ItemMap tools_map = get_tools(tools_node);
+      items.insert(tools_map.begin(), tools_map.end());
+    }
+
     XMLNode misc_items_node = XMLUtils::get_next_element_by_local_name(items_node, "MiscItems");
     
     if (!misc_items_node.is_null())
@@ -327,4 +335,23 @@ ItemMap XMLItemsReader::get_currencies(const XMLNode& currencies_node)
   }
   
   return currencies_map;
+}
+
+ItemMap XMLItemsReader::get_tools(const XMLNode& tools_node)
+{
+  ItemMap tools_map;
+
+  if (!tools_node.is_null())
+  {
+    vector<XMLNode> tools_nodes = XMLUtils::get_elements_by_local_name(tools_node, "Tool");
+
+    BOOST_FOREACH(XMLNode node, tools_nodes)
+    {
+      ToolPtr tool = boost::make_shared<Tool>();
+      tool_reader.parse(tool, node);
+      tools_map.insert(make_pair(tool->get_id(), tool));
+    }
+  }
+
+  return tools_map;
 }

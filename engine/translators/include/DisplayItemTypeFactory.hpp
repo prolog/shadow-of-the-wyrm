@@ -99,6 +99,12 @@ class CurrencyDisplayItemType : public DisplayItemType
     CurrencyDisplayItemType();
 };
 
+class ToolsDisplayItemType : public DisplayItemType
+{
+  public:
+    ToolsDisplayItemType();
+};
+
 class DisplayItemTypeFactory
 {
   public:

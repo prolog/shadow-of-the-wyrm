@@ -104,6 +104,7 @@
 			<xs:element ref="tns:Potions" minOccurs="0"/>
 			<xs:element ref="tns:Scrolls" minOccurs="0"/>
 			<xs:element ref="tns:Currencies" minOccurs="0"/>
+			<xs:element ref="tns:Tools" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -554,6 +555,13 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Tools">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Tool" type="tns:Tool" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="MiscItems">
 	<xs:complexType>
 		<xs:sequence>
@@ -648,6 +656,16 @@
 		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="xs:string"/>
+</xs:complexType>
+<xs:complexType name="Tool">
+	<xs:complexContent>
+		<xs:extension base="tns:Item">
+			<xs:sequence>
+				<!-- Keys can set this to be able to open all locks with a particular ID -->
+				<xs:element name="LockID" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Consumable">
 	<xs:complexContent>

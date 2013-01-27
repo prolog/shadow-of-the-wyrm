@@ -433,6 +433,7 @@
     <ClInclude Include="engine\XML\include\XMLStaffReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLStatisticsModifierReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLToolReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLWandReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLWeaponsReaders.hpp" />
     <ClInclude Include="engine\XML\include\XMLWearableReader.hpp" />
@@ -498,6 +499,7 @@
     <ClInclude Include="world\include\StatisticsModifier.hpp" />
     <ClInclude Include="world\include\StatusTypes.hpp" />
     <ClInclude Include="world\include\ThreatRatings.hpp" />
+    <ClInclude Include="world\include\Tool.hpp" />
     <ClInclude Include="world\include\Wand.hpp" />
     <ClInclude Include="world\include\Weapon.hpp" />
     <ClInclude Include="world\include\WeaponTypes.hpp" />
@@ -1094,6 +1096,7 @@
     <ClCompile Include="engine\XML\source\XMLStaffReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStatisticsModifierReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLTilesReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLToolReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLWandReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLWeaponsReaders.cpp" />
     <ClCompile Include="engine\XML\source\XMLWearableReader.cpp" />
@@ -1195,6 +1198,7 @@
     <ClCompile Include="world\source\Statistic.cpp" />
     <ClCompile Include="world\source\StatisticsModifier.cpp" />
     <ClCompile Include="world\source\ThreatRatings.cpp" />
+    <ClCompile Include="world\source\Tool.cpp" />
     <ClCompile Include="world\source\unit_tests\Ammunition_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -1286,6 +1290,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\ThreatRatings_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Tool_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Wand_test.cpp">

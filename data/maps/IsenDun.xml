@@ -115,6 +115,13 @@
 		</Creatures>
 		<Items>
 			<Placement>
+				<ID>_iron_key</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>65</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>_vegetable_3</ID>
 				<Coord>
 					<Row>9</Row>

@@ -4057,6 +4057,16 @@
 				</TextDetails>
 			</Currency>
 		</Currencies>
+		<Tools>
+			<Tool id="_iron_key">
+				<DescriptionSID>IRON_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>IRON_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
+				<Material>3</Material>
+				<LockID>isen_dun</LockID>
+			</Tool>
+		</Tools>
 		<MiscItems>
 			<Item id="dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>

@@ -471,6 +471,7 @@ class ItemTypeTextKeys
     static const std::string ITEM_TYPE_PLANTS;
     static const std::string ITEM_TYPE_BOATS;
     static const std::string ITEM_TYPE_CURRENCY;
+    static const std::string ITEM_TYPE_TOOLS;
 
   protected:
     ItemTypeTextKeys();

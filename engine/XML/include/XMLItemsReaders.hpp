@@ -17,6 +17,7 @@
 #include "XMLRingReader.hpp"
 #include "XMLScrollReader.hpp"
 #include "XMLStaffReader.hpp"
+#include "XMLToolReader.hpp"
 #include "XMLWandReader.hpp"
 #include "XMLWeaponsReaders.hpp"
 
@@ -40,6 +41,7 @@ class XMLItemsReader
     ItemMap get_potions(const XMLNode& potions_node);
     ItemMap get_scrolls(const XMLNode& scrolls_node);
     ItemMap get_currencies(const XMLNode& currencies_node);
+    ItemMap get_tools(const XMLNode& tools_node);
     
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;
@@ -54,6 +56,7 @@ class XMLItemsReader
     XMLRingReader ring_reader;
     XMLScrollReader scroll_reader;
     XMLStaffReader staff_reader;
+    XMLToolReader tool_reader;
     XMLWandReader wand_reader;
 };
 

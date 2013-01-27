@@ -20,7 +20,8 @@ enum ItemType
   ITEM_TYPE_PLANT = 12,
   ITEM_TYPE_BOAT = 13,
   ITEM_TYPE_CURRENCY = 14,
-  ITEM_TYPE_LAST = 15
+  ITEM_TYPE_TOOL = 15,
+  ITEM_TYPE_LAST = 16
 };
 
 enum ItemStatus
