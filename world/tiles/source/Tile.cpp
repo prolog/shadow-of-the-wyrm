@@ -316,6 +316,11 @@ bool Tile::serialize(ostream& stream)
     Serialize::write_class_id(stream, CLASS_ID_NULL);
   }
   
+  if (!map_exits.empty())
+  {
+    int x = 1;
+  }
+
   items.serialize(stream);
 
   Serialize::write_size_t(stream, map_exits.size());
@@ -402,13 +407,12 @@ bool Tile::deserialize(istream& stream)
 
     ClassIdentifier map_exit_clid;
     Serialize::read_class_id(stream, map_exit_clid);
-    MapExitPtr current_dir_map_exit = MapFactory::create_map_exit();
     if (map_exit_clid != CLASS_ID_NULL)
     {
+      MapExitPtr current_dir_map_exit = MapFactory::create_map_exit();
       current_dir_map_exit->deserialize(stream);
+      map_exits.insert(make_pair(d, current_dir_map_exit));
     }
-
-    map_exits.insert(make_pair(d, current_dir_map_exit));
   }
 
   return true;

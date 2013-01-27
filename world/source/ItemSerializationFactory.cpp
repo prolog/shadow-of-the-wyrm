@@ -12,7 +12,9 @@
 #include "Potion.hpp"
 #include "Ring.hpp"
 #include "Scroll.hpp"
+#include "SerializationExceptions.hpp"
 #include "Staff.hpp"
+#include "Tool.hpp"
 #include "Wand.hpp"
 #include "Weapon.hpp"
 
@@ -44,6 +46,12 @@ ItemPtr ItemSerializationFactory::create_item(const ClassIdentifier ci)
     item = ItemPtr(i_it->second->clone());
   }
 
+  // Sanity check: throw an exception if the item is null!
+  if (!item)
+  {
+    throw SerializationException("Couldn't re-create an item - missing type in map?");
+  }
+
   return item;
 }
 
@@ -67,6 +75,7 @@ void ItemSerializationFactory::initialize_item_map()
   ItemPtr wand   = boost::make_shared<Wand>();
   ItemPtr melee  = boost::make_shared<MeleeWeapon>();
   ItemPtr ranged = boost::make_shared<RangedWeapon>();
+  ItemPtr tool   = boost::make_shared<Tool>();
 
   item_map.insert(make_pair(CLASS_ID_AMMUNITION, ammo));
   item_map.insert(make_pair(CLASS_ID_AMULET, amulet));
@@ -84,5 +93,6 @@ void ItemSerializationFactory::initialize_item_map()
   item_map.insert(make_pair(CLASS_ID_WAND, wand));
   item_map.insert(make_pair(CLASS_ID_MELEE_WEAPON, melee));
   item_map.insert(make_pair(CLASS_ID_RANGED_WEAPON, ranged));
+  item_map.insert(make_pair(CLASS_ID_TOOL, tool));
 }
 
