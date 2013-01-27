@@ -459,7 +459,7 @@ bool Map::deserialize(istream& stream)
   for (unsigned int i = 0; i < num_tiles; i++)
   {
     // JCD FIXME BUGHUNT
-    if (i == 543)
+    if (i == 1261)
     {
       int x = 1;
     }
