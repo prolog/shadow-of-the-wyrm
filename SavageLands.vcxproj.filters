@@ -2106,6 +2106,12 @@
     <ClInclude Include="engine\actions\include\StairwayMovementManager.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\Tool.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLToolReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -3994,6 +4000,15 @@
     </ClCompile>
     <ClCompile Include="engine\maps\source\MapTypeQueryFactory.cpp">
       <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Tool.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Tool_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLToolReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

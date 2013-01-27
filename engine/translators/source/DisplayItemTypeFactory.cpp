@@ -83,6 +83,11 @@ CurrencyDisplayItemType::CurrencyDisplayItemType()
 {
 }
 
+ToolsDisplayItemType::ToolsDisplayItemType()
+: DisplayItemType("(", COLOUR_WHITE, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_TOOLS))
+{
+}
+
 // The factory that uses the above classes
 DisplayItemTypeFactory::DisplayItemTypeFactory()
 {
@@ -143,6 +148,9 @@ DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
       break;
     case ITEM_TYPE_CURRENCY:
       display_item_type = boost::make_shared<CurrencyDisplayItemType>();
+      break;
+    case ITEM_TYPE_TOOL:
+      display_item_type = boost::make_shared<ToolsDisplayItemType>();
       break;
     case ITEM_TYPE_LAST:
     default:

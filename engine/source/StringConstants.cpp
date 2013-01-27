@@ -713,6 +713,7 @@ const string ItemTypeTextKeys::ITEM_TYPE_AMMUNITION = "ITEM_TYPE_AMMUNITION";
 const string ItemTypeTextKeys::ITEM_TYPE_PLANTS     = "ITEM_TYPE_PLANTS";
 const string ItemTypeTextKeys::ITEM_TYPE_BOATS      = "ITEM_TYPE_BOATS";
 const string ItemTypeTextKeys::ITEM_TYPE_CURRENCY   = "ITEM_TYPE_CURRENCY";
+const string ItemTypeTextKeys::ITEM_TYPE_TOOLS      = "ITEM_TYPE_TOOLS";
 
 // Resistances
 ResistanceTextKeys::ResistanceTextKeys()
