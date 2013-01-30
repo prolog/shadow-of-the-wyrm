@@ -5,12 +5,16 @@
 TEST(SL_World_Tiles_Feature_Entrances, saveload)
 {
   Door door, door2;
+  LockPtr lock = LockPtr(new Lock());
   Gate gate, gate2;
+
+  lock->set_lock_id("fdsafdsa");
 
   ostringstream ss, ss2;
 
   door.get_state_ref().set_state(ENTRANCE_TYPE_OPEN);
   door.set_maximum_size(CREATURE_SIZE_SMALL);
+  door.set_lock(lock);
 
   gate.get_state_ref().set_state(ENTRANCE_TYPE_CLOSED);
   gate.set_maximum_size(CREATURE_SIZE_LARGE);

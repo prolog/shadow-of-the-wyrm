@@ -1,3 +1,4 @@
+#include <boost/make_shared.hpp>
 #include "Feature.hpp"
 #include "FeatureFactory.hpp"
 #include "MaterialFactory.hpp"
@@ -10,6 +11,33 @@ using namespace std;
 Feature::Feature(const MaterialType new_material)
 : material(new_material)
 {
+}
+
+// Feature itself is very small, so I'm intentionally taking the slightly-
+// slower performance instead of having duplicated code.
+Feature::Feature(const Feature& feature)
+{
+  *this = feature;
+}
+
+Feature& Feature::operator=(const Feature& feature)
+{
+  if (this != &feature)
+  {
+    if (feature.trap)
+    {
+      trap = boost::make_shared<Trap>(*feature.trap);
+    }
+
+    if (feature.lock)
+    {
+      lock = boost::make_shared<Lock>(*feature.lock);
+    }
+
+    material = feature.material;
+  }
+
+  return *this;
 }
 
 bool Feature::operator==(const Feature& feature)

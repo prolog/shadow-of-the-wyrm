@@ -224,6 +224,7 @@
 				<Col>65</Col>
 			</Coord>
 			<Door>
+				<LockID>isen_dun</LockID>
 				<Material>3</Material>
 				<Entrance>
 					<EntranceState>2</EntranceState>
@@ -236,6 +237,7 @@
 				<Col>8</Col>
 			</Coord>
 			<Door>
+				<LockID>isen_dun</LockID>
 				<Material>3</Material>
 				<Entrance>
 					<EntranceState>2</EntranceState>

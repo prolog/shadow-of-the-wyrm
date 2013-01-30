@@ -19,6 +19,7 @@ class Entrance : public Feature
 
     virtual bool can_handle(const bool feature_tile_occupied) const;
     virtual bool can_open() const;
+    virtual bool can_lock() const;
     virtual bool open();
     virtual bool close();
     
