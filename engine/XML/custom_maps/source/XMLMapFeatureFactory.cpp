@@ -1,4 +1,5 @@
 #include <string>
+#include <boost/make_shared.hpp>
 #include "AlignmentEnums.hpp"
 #include "EntranceTypes.hpp"
 #include "FeatureGenerator.hpp"
@@ -53,6 +54,13 @@ FeaturePtr XMLMapFeatureFactory::create_altar(const XMLNode& altar_node)
 FeaturePtr XMLMapFeatureFactory::create_door(const XMLNode& door_node)
 {
   DoorPtr door = FeatureGenerator::generate_door();
+
+  string lock_id = XMLUtils::get_child_node_value(door_node, "LockID");
+  if (!lock_id.empty())
+  {
+    LockPtr lock = boost::make_shared<Lock>(lock_id, true);
+    door->set_lock(lock);
+  }
 
   MaterialType material = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(door_node, "Material", MATERIAL_TYPE_WOOD));
   door->set_material_type(material);

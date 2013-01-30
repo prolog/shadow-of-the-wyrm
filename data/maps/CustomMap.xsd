@@ -97,6 +97,7 @@
 <xs:complexType name="Door">
 	<xs:annotation><xs:documentation>Defines a Door feature.</xs:documentation></xs:annotation>
 	<xs:sequence>
+		<xs:element name="LockID" type="xs:string" minOccurs="0"/>
 		<xs:element name="Material" type="sl:MaterialType"/>
 		<xs:element name="Entrance" type="tns:Entrance" minOccurs="0"/>
 	</xs:sequence>

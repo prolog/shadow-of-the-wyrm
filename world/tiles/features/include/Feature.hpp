@@ -15,6 +15,9 @@ class Feature : public ISerializable
 {
   public:
     Feature(const MaterialType new_material);
+    Feature(const Feature& feature);
+    Feature& operator=(const Feature& feature);
+
     virtual ~Feature() {};
     virtual Feature* clone() = 0;
     virtual bool operator==(const Feature& feature);

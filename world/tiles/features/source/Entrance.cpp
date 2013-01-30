@@ -62,6 +62,11 @@ bool Entrance::can_open() const
   return true;
 }
 
+bool Entrance::can_lock() const
+{
+  return true;
+}
+
 bool Entrance::open()
 {
   bool result = false;
