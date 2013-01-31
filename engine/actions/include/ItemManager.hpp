@@ -8,6 +8,11 @@ class ItemManager : public IActionManager
   public:
     bool operator==(const ItemManager& im);
 
+    // Get all items by a particular type
+    static std::list<ItemPtr> get_items_by_type(CreaturePtr creature, const ItemType item_type); // both eq and inv are checked in this case.
+    static std::list<ItemPtr> get_items_by_type(const Inventory& inv, const ItemType item_type); // Only the given inventory is checked.
+    static std::list<ItemPtr> get_items_by_type(const Equipment& eq, const ItemType item_type); // Only the given equipment is checked.
+
     // Create a new item from a given item.  This is used to make copies of the
     // template items, so that, say, fifty distinct broadswords can be created.
     ItemPtr create_item(const ItemMap& items, const std::string& item_id, const uint quantity);

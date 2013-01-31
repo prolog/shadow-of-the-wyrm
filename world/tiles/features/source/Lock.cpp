@@ -38,6 +38,13 @@ bool Lock::get_locked() const
   return locked;
 }
 
+bool Lock::handle()
+{
+  locked = !locked;
+
+  return true;
+}
+
 bool Lock::serialize(ostream& stream)
 {
   Serialize::write_string(stream, lock_id);

@@ -152,7 +152,7 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
       // If there is a feature, handle it, prompting the creature for confirmation
       // if necessary.
       FeatureManager fm;
-      bool handled = fm.handle(creatures_new_tile->get_feature(), creatures_new_tile->get_creature());
+      bool handled = fm.handle(creatures_new_tile->get_feature(), creatures_old_tile->get_creature(), creatures_new_tile->get_creature());
 
       // Did the handling do anything?
       if (!handled)
