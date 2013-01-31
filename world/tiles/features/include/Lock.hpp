@@ -19,6 +19,9 @@ class Lock : public ISerializable
     void set_locked(bool new_locked);
     bool get_locked() const;
 
+    // Return true if the lock changed state, false otherwise.
+    bool handle();
+
   protected:
     std::string lock_id;
     bool locked;

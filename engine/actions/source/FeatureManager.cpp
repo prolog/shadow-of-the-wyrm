@@ -2,6 +2,7 @@
 #include "Commands.hpp"
 #include "FeatureManager.hpp"
 #include "Game.hpp"
+#include "KeyManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "StringTable.hpp"
@@ -44,7 +45,7 @@ ActionCostValue FeatureManager::apply(CreaturePtr creature)
     {
       TilePtr tile = features.begin()->second;
       FeaturePtr feature = tile->get_feature();
-      handled = handle(feature, tile->get_creature());
+      handled = handle(feature, creature, tile->get_creature());
     }
     else
     {
@@ -60,23 +61,67 @@ ActionCostValue FeatureManager::apply(CreaturePtr creature)
   return apply_cost;
 }
 
+// Handle a particular lock.
+bool FeatureManager::handle_lock(LockPtr lock, CreaturePtr creature)
+{
+  bool lock_handled = false;
+  string lock_message_sid = ActionTextKeys::ACTION_HANDLE_LOCK_NO_KEY;
+
+  // Check to see if the creature has the correct key for locking or
+  // unlocking this lock.
+  KeyManager km;
+  if (km.has_key(creature, lock))
+  {
+    lock->handle();
+    lock_handled = true;
+    lock_message_sid = ActionTextKeys::ACTION_HANDLE_LOCK;
+  }
+
+  MessageManager* manager = MessageManager::instance();
+  manager->add_new_message(StringTable::get(lock_message_sid));
+  manager->send();
+
+  return lock_handled;
+}
+
 // Handle a particular terrain feature
-bool FeatureManager::handle(FeaturePtr feature, const bool tile_has_creature)
+bool FeatureManager::handle(FeaturePtr feature, CreaturePtr creature, const bool tile_has_creature)
 {
   bool result = false;
 
   if (feature && feature->can_handle(tile_has_creature))
   {
-    result = feature->handle();
+    // Check to see if the lock prevents the handling.
+    LockPtr lock = feature->get_lock();
+    bool feature_locked = lock;
+    bool creature_unlocked_lock = false;
 
-    if (result)
+    // Check to see if there is a lock, and it is locked.
+    if (lock && lock->get_locked())
     {
-      string handle_message_sid = feature->get_handle_message_sid();
+      creature_unlocked_lock = handle_lock(lock, creature);
+    }
 
-      if (!handle_message_sid.empty())
+    if (feature_locked == false || creature_unlocked_lock)
+    {
+      result = feature->handle();
+
+      if (result)
       {
-        add_application_message(handle_message_sid);
+        string handle_message_sid = feature->get_handle_message_sid();
+
+        if (!handle_message_sid.empty())
+        {
+          add_application_message(handle_message_sid);
+        }
       }
+    }
+
+    // If there's a lock, and the creature didn't unlock it prior to handling
+    // the feature, try to lock the feature.
+    if (lock && !lock->get_locked() && creature_unlocked_lock == false)
+    {
+      handle_lock(lock, creature);
     }
   }
 
@@ -130,7 +175,7 @@ bool FeatureManager::apply_multiple_options(CreaturePtr creature, const TileDire
       {
         TilePtr tile = t_it->second;
         FeaturePtr feature = tile->get_feature();
-        applied = handle(feature, tile->get_creature());
+        applied = handle(feature, creature, tile->get_creature());
       }
     }
   }

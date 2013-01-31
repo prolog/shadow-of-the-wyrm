@@ -631,6 +631,8 @@ class ActionTextKeys
     static const std::string ACTION_CLOSE_DOOR;
     static const std::string ACTION_DOOR_DESTROYED;
     static const std::string ACTION_APPLY_NO_FEATURES_PRESENT;
+    static const std::string ACTION_HANDLE_LOCK;
+    static const std::string ACTION_HANDLE_LOCK_NO_KEY;
 
   protected:
     ActionTextKeys();

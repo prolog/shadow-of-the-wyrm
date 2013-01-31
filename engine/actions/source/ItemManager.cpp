@@ -1,3 +1,5 @@
+#include <algorithm>
+#include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
@@ -16,6 +18,58 @@ ItemManager::~ItemManager()
 bool ItemManager::operator==(const ItemManager& im)
 {
   return true;
+}
+
+// Get all items of a certain type from a creature's equipment and inventory.
+list<ItemPtr> ItemManager::get_items_by_type(CreaturePtr creature, const ItemType item_type)
+{
+  list<ItemPtr> all_items;
+
+  list<ItemPtr> eq_items = get_items_by_type(creature->get_equipment(), item_type);
+  list<ItemPtr> inv_items = get_items_by_type(creature->get_inventory(), item_type);
+
+  all_items.insert(all_items.begin(), eq_items.begin(), eq_items.end());
+  all_items.insert(all_items.begin(), inv_items.begin(), inv_items.end());
+
+  return all_items;
+}
+
+// Get all items of a certain type from a given set of equipment.
+list<ItemPtr> ItemManager::get_items_by_type(const Equipment& eq, const ItemType item_type)
+{
+  list<ItemPtr> result_items;
+ 
+  EquipmentMap eq_map = eq.get_equipment();
+
+  BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq_map)
+  {
+    ItemPtr item = eq_pair.second;
+
+    if (item && item->get_type() == item_type)
+    {
+      result_items.push_front(item);
+    }
+  }
+
+  return result_items;
+}
+
+// Get all items of a certain type from a given set of inventory.
+list<ItemPtr> ItemManager::get_items_by_type(const Inventory& inv, const ItemType item_type)
+{
+  list<ItemPtr> result_items;
+
+  list<ItemPtr> raw_items = inv.get_items_const();
+
+  BOOST_FOREACH(ItemPtr item, raw_items)
+  {
+    if (item && item->get_type() == item_type)
+    {
+      result_items.push_front(item);
+    }
+  }
+
+  return result_items;
 }
 
 // Create a new shared pointer to an Item, given the items in the game,

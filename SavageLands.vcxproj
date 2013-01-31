@@ -106,6 +106,7 @@
     <ClInclude Include="engine\actions\include\IActionManager.hpp" />
     <ClInclude Include="engine\actions\include\InventoryManager.hpp" />
     <ClInclude Include="engine\actions\include\ItemManager.hpp" />
+    <ClInclude Include="engine\actions\include\KeyManager.hpp" />
     <ClInclude Include="engine\actions\include\MovementAccumulationUpdater.hpp" />
     <ClInclude Include="engine\actions\include\MovementManager.hpp" />
     <ClInclude Include="engine\actions\include\PickupManager.hpp" />
@@ -641,6 +642,7 @@
     <ClCompile Include="engine\actions\source\FoodManager.cpp" />
     <ClCompile Include="engine\actions\source\InventoryManager.cpp" />
     <ClCompile Include="engine\actions\source\ItemManager.cpp" />
+    <ClCompile Include="engine\actions\source\KeyManager.cpp" />
     <ClCompile Include="engine\actions\source\MovementAccumulationUpdater.cpp" />
     <ClCompile Include="engine\actions\source\MovementManager.cpp" />
     <ClCompile Include="engine\actions\source\PickupManager.cpp" />

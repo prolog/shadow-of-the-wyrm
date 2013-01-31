@@ -15,10 +15,13 @@ class FeatureManager : public IActionManager
     // allows creatures to do things like open doors, pull levers, etc.
     ActionCostValue apply(CreaturePtr creature);
 
+    // Handle a given lock.
+    bool handle_lock(LockPtr lock, CreaturePtr creature);
+
     // Handle a given terrain feature.  This method can be called by other managers that
     // need handling functionality, but shouldn't be called directly to "handle something
     // for a particular creature" - that functionality is encapsulated by handle(CreaturePtr).
-    bool handle(FeaturePtr feature, const bool tile_has_creature);
+    bool handle(FeaturePtr feature, CreaturePtr creature, const bool feature_tile_has_creature);
 
   protected:
     // If the creature is the player, inform them that there are no features
