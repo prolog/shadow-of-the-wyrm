@@ -79,9 +79,18 @@ bool FeatureManager::handle_lock(LockPtr lock, CreaturePtr creature)
 
   MessageManager* manager = MessageManager::instance();
   manager->add_new_message(StringTable::get(lock_message_sid));
-  manager->send();
 
   return lock_handled;
+}
+
+void FeatureManager::send_application_messages()
+{
+  MessageManager* manager = MessageManager::instance();
+  
+  if (manager)
+  {
+    manager->send();
+  }
 }
 
 // Handle a particular terrain feature
@@ -93,7 +102,7 @@ bool FeatureManager::handle(FeaturePtr feature, CreaturePtr creature, const bool
   {
     // Check to see if the lock prevents the handling.
     LockPtr lock = feature->get_lock();
-    bool feature_locked = lock;
+    bool feature_locked = lock && lock->get_locked();
     bool creature_unlocked_lock = false;
 
     // Check to see if there is a lock, and it is locked.
@@ -115,6 +124,14 @@ bool FeatureManager::handle(FeaturePtr feature, CreaturePtr creature, const bool
           add_application_message(handle_message_sid);
         }
       }
+
+      // Now that the door has been closed, check to see if
+      // there is a lock, and if the creature hasn't opened it, yet.
+      // This will lock the door when closing it.
+      if (lock && !creature_unlocked_lock)
+      {
+        handle_lock(lock, creature);
+      }
     }
 
     // If there's a lock, and the creature didn't unlock it prior to handling
@@ -124,6 +141,8 @@ bool FeatureManager::handle(FeaturePtr feature, CreaturePtr creature, const bool
       handle_lock(lock, creature);
     }
   }
+
+  send_application_messages();
 
   return result;
 }
@@ -135,9 +154,9 @@ void FeatureManager::add_application_message(const string& app_msg_sid)
   if (manager)
   {
     manager->add_new_message(StringTable::get(app_msg_sid));
-    manager->send();
   }
 }
+
 // When there are features present in multiple directions, force the creature
 // to choose one.
 bool FeatureManager::apply_multiple_options(CreaturePtr creature, const TileDirectionMap& tile_map) 

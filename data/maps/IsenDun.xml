@@ -233,6 +233,18 @@
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
+				<Row>6</Row>
+				<Col>37</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>16</Row>
 				<Col>8</Col>
 			</Coord>

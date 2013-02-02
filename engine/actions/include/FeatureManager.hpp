@@ -28,6 +28,7 @@ class FeatureManager : public IActionManager
     // to be applied.
     void inform_no_features(CreaturePtr creature);
     void add_application_message(const std::string& app_message_sid);
+    void send_application_messages();
 
     // Try to apply a terrain feature in a certain direction, when multiple
     // options are available.
