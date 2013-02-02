@@ -4058,13 +4058,13 @@
 			</Currency>
 		</Currencies>
 		<Tools>
-			<Tool id="_iron_key">
-				<DescriptionSID>IRON_KEY_SID</DescriptionSID>
-				<UsageDescriptionSID>IRON_KEY_USAGE_SID</UsageDescriptionSID>
-				<Value>100</Value>
+			<Tool id="kew_key">
+				<DescriptionSID>KEW_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>KEW_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
 				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
 				<Material>3</Material>
-				<LockID>isen_dun</LockID>
+				<LockID>isen_dun_kew</LockID>
 			</Tool>
 		</Tools>
 		<MiscItems>
