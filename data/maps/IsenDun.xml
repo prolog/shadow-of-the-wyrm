@@ -115,10 +115,10 @@
 		</Creatures>
 		<Items>
 			<Placement>
-				<ID>_iron_key</ID>
+				<ID>kew_key</ID>
 				<Coord>
-					<Row>5</Row>
-					<Col>65</Col>
+					<Row>6</Row>
+					<Col>75</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -224,7 +224,7 @@
 				<Col>65</Col>
 			</Coord>
 			<Door>
-				<LockID>isen_dun</LockID>
+				<LockID>isen_dun_kew</LockID>
 				<Material>3</Material>
 				<Entrance>
 					<EntranceState>2</EntranceState>
