@@ -12,6 +12,7 @@
 #include "ISerializable.hpp"
 #include "MapRegistry.hpp"
 #include "Race.hpp"
+#include "ScriptEngine.hpp"
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
 
@@ -144,6 +145,9 @@ class Game : public ISerializable
     
     // The time keeper, used to handle notifications for HP regeneration, status effects wearing off, etc.
     WorldTimeKeeper time_keeper;
+
+    // Used to execute quests and other scripts
+    ScriptEngine script_engine;
     
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;
