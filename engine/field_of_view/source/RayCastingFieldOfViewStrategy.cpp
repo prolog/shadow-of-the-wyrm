@@ -93,7 +93,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
   TilesContainer fov_tile_cont = fov_map->get_tiles();
   TilesContainer::iterator t_it;
   
-  Log::instance()->log("Centre coord: " + Integer::to_string(centre_coord.first) + "," + Integer::to_string(centre_coord.second));
+  Log::instance().log("Centre coord: " + Integer::to_string(centre_coord.first) + "," + Integer::to_string(centre_coord.second));
 
   for (t_it = tile_cont.begin(); t_it != tile_cont.end(); t_it++)
   {
@@ -113,7 +113,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       {
         if (is_artifact_nw(fov_map, c, type))
         {
-          Log::instance()->log(tile_coords + " not in list, NW, adjacent to a lit tile.");
+          Log::instance().log(tile_coords + " not in list, NW, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
         }
       }
@@ -122,7 +122,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       {
         if (is_artifact_ne(fov_map, c, type))
         {
-          Log::instance()->log(tile_coords + " not in list, NE, adjacent to a lit tile.");
+          Log::instance().log(tile_coords + " not in list, NE, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
         }
       }
@@ -131,7 +131,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       {
         if (is_artifact_sw(fov_map, c, type))
         {
-          Log::instance()->log(tile_coords + " not in list, SW, adjacent to a lit tile.");
+          Log::instance().log(tile_coords + " not in list, SW, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
         }
       }
@@ -140,7 +140,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       {
         if (is_artifact_se(fov_map, c, type))
         {
-          Log::instance()->log(tile_coords + " not in list, SE, adjacent to a lit tile.");
+          Log::instance().log(tile_coords + " not in list, SE, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
         }
       }
@@ -157,7 +157,7 @@ bool RayCastingFieldOfViewStrategy::does_adjacent_non_blocking_tile_exist_in_fov
   {
     std::ostringstream ss;
     ss << "(" << c_dir.first << "," << c_dir.second << ")";
-    Log::instance()->log(ss.str());
+    Log::instance().log(ss.str());
   }
   
   return (tile && (tile->get_is_blocking() == false));

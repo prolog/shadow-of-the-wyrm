@@ -96,24 +96,21 @@ bool FoodManager::eat_food(CreaturePtr creature, ItemPtr food)
 // Add a message about whether the creature could eat the item, or not.
 void FoodManager::add_food_message(CreaturePtr creature, ItemPtr food, const bool eat_success)
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
 
-  if (manager)
+  string message;
+
+  if (eat_success)
   {
-    string message;
-
-    if (eat_success)
-    {
-      message = ActionTextKeys::get_eat_message(creature->get_description_sid(), food->get_usage_description_sid(), creature->get_is_player());
-    }
-    else
-    {
-      message = ActionTextKeys::get_full_message(creature->get_description_sid(), food->get_usage_description_sid(), creature->get_is_player());
-    }
-
-    manager->add_new_message(message);
-    manager->send();
+    message = ActionTextKeys::get_eat_message(creature->get_description_sid(), food->get_usage_description_sid(), creature->get_is_player());
   }
+  else
+  {
+    message = ActionTextKeys::get_full_message(creature->get_description_sid(), food->get_usage_description_sid(), creature->get_is_player());
+  }
+
+  manager.add_new_message(message);
+  manager.send();
 }
 
 // Add a message about a change in hunger status, if appropriate.
@@ -124,20 +121,17 @@ void FoodManager::add_hunger_level_message_if_necessary(CreaturePtr creature, co
 
   if (old_level != new_level)
   {
-    MessageManager* manager = MessageManager::instance();
+    MessageManager& manager = MessageManager::instance();
 
-    if (manager)
+    if (hunger_message_sid_map.empty())
     {
-      if (hunger_message_sid_map.empty())
-      {
-        initialize_hunger_message_sid_map();
-      }
-
-      string message_sid = hunger_message_sid_map[new_level];
-
-      manager->add_new_message(StringTable::get(message_sid));
-      manager->send();
+      initialize_hunger_message_sid_map();
     }
+
+    string message_sid = hunger_message_sid_map[new_level];
+
+    manager.add_new_message(StringTable::get(message_sid));
+    manager.send();
   }
 }
 

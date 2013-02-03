@@ -11,11 +11,11 @@ ActionCostValue SearchActionManager::search(CreaturePtr creature)
 {
   if (creature && creature->get_is_player())
   {
-    MessageManager* manager = MessageManager::instance();
+    MessageManager& manager = MessageManager::instance();
     string search_message = StringTable::get(ActionTextKeys::ACTION_SEARCH);
 
-    manager->add_new_message(search_message);
-    manager->send();
+    manager.add_new_message(search_message);
+    manager.send();
 
     // JCD FIXME: Add actual search to see if anything hidden was spotted.
   }

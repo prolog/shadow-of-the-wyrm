@@ -96,21 +96,21 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const st
 {  
   pair<bool, ActionCostValue> command_result(false, 0);
   
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
+  Game& game = Game::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && game)
+  if (creature)
   {
     bool continue_select_tiles = true;
        
-    if (manager && creature->get_is_player())
+    if (creature->get_is_player())
     {
       string look_msg = StringTable::get(initial_message_sid);
       
-      manager->add_new_message(look_msg);
-      manager->send();
+      manager.add_new_message(look_msg);
+      manager.send();
       
-      game->update_display(creature, game->get_current_map(), creature->get_decision_strategy()->get_fov_map());
+      game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map());
     }
     
     while (continue_select_tiles)
@@ -132,7 +132,7 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const st
       // Update the screen after the creature's choice
       if (creature->get_is_player())
       {
-        game->update_display(creature, game->get_current_map(), creature->get_decision_strategy()->get_fov_map());        
+        game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map());        
       }
 
       if (!continue_select_tiles)
@@ -148,13 +148,13 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const st
 
 ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const Direction direction)
 {
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
+  Game& game = Game::instance();
+  MessageManager& manager = MessageManager::instance();
 
-  if (game && creature && manager && command_factory && kb_command_map)
+  if (creature && command_factory && kb_command_map)
   {
     MapCursor mc;
-    MapPtr current_map = game->get_current_map();
+    MapPtr current_map = game.get_current_map();
     
     mc.update_cursor_location(current_map, direction);
     Coordinate c = mc.get_cursor_location(current_map);
@@ -179,9 +179,9 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const Di
     
     if (creature->get_is_player())
     {
-      manager->clear_if_necessary();
-      manager->add_new_message(tile_desc);
-      manager->send();
+      manager.clear_if_necessary();
+      manager.add_new_message(tile_desc);
+      manager.send();
     }
   }
   
@@ -190,17 +190,17 @@ ActionCostValue TileSelectionManager::select_tile(CreaturePtr creature, const Di
 
 ActionCostValue TileSelectionManager::select_tile_cancel(CreaturePtr creature)
 {
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
+  Game& game = Game::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && game && manager)
+  if (creature)
   {
     MapCursor mc;
-    mc.reset_cursor(game->get_current_map());
+    mc.reset_cursor(game.get_current_map());
     
     if (creature->get_is_player())
     {
-      manager->clear_if_necessary();
+      manager.clear_if_necessary();
     }
   }
   
@@ -224,15 +224,12 @@ bool TileSelectionManager::is_tile_in_range_and_add_message_if_not(CreaturePtr c
   {
     tile_in_range = false;
     
-    MessageManager* manager = MessageManager::instance();
+    MessageManager& manager = MessageManager::instance();
     
-    if (manager)
-    {
-      string target_too_far = StringTable::get(CombatTextKeys::COMBAT_TARGET_TOO_FAR_AWAY);
-      manager->clear_if_necessary();
-      manager->add_new_message(target_too_far);
-      manager->send();
-    }
+    string target_too_far = StringTable::get(CombatTextKeys::COMBAT_TARGET_TOO_FAR_AWAY);
+    manager.clear_if_necessary();
+    manager.add_new_message(target_too_far);
+    manager.send();
   }
   
   return tile_in_range;

@@ -49,32 +49,29 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
 {
   update_minutes_elapsed(minutes_this_tick);
 
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game)
-  {
-    // Get the list of creatures.
-    MapPtr current_map = game->get_current_map();
-    map<string, CreaturePtr> creatures = current_map->get_creatures();
+  // Get the list of creatures.
+  MapPtr current_map = game.get_current_map();
+  map<string, CreaturePtr> creatures = current_map->get_creatures();
     
-    // Apply each creature regeneration helper to each creature on the map
-    for (map<string, CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
-    {
-      CreaturePtr creature = c_it->second;
+  // Apply each creature regeneration helper to each creature on the map
+  for (map<string, CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+  {
+    CreaturePtr creature = c_it->second;
       
-      BOOST_FOREACH(ICreatureRegenerationPtr regen_helper, regen)
+    BOOST_FOREACH(ICreatureRegenerationPtr regen_helper, regen)
+    {
+      if (game.should_keep_playing())
       {
-        if (game->should_keep_playing())
+        if (regen_helper)
         {
-          if (regen_helper)
-          {
-            regen_helper->tick(creature, minutes_this_tick, minutes_elapsed); 
-          }
+          regen_helper->tick(creature, minutes_this_tick, minutes_elapsed); 
         }
-        else
-        {
-          return;
-        }
+      }
+      else
+      {
+        return;
       }
     }
   }

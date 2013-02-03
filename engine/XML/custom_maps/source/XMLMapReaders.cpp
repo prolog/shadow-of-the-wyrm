@@ -110,20 +110,17 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
       Coordinate coord = coord_reader.parse_coordinate(coord_node);
 
       // Place the specified creature on the map.
-      Game* game = Game::instance();
+      Game& game = Game::instance();
 
-      if (game)
+      CreaturePtr creature = CreatureFactory::create_by_creature_id(game.get_action_manager_ref(), id);
+
+      TilePtr placement_tile = map->at(coord);
+
+      if (creature && placement_tile)
       {
-        CreaturePtr creature = CreatureFactory::create_by_creature_id(game->get_action_manager_ref(), id);
-
-        TilePtr placement_tile = map->at(coord);
-
-        if (creature && placement_tile)
+        if (MapUtils::is_tile_available_for_creature(creature, placement_tile))
         {
-          if (MapUtils::is_tile_available_for_creature(creature, placement_tile))
-          {
-            MapUtils::add_or_update_location(map, creature, coord);
-          }
+          MapUtils::add_or_update_location(map, creature, coord);
         }
       }
     }
@@ -135,28 +132,25 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
 {
   if (!items_node.is_null())
   {
-    Game* game = Game::instance();
+    Game& game = Game::instance();
 
-    if (game)
+    vector<XMLNode> placement_nodes = XMLUtils::get_elements_by_local_name(items_node, "Placement");
+
+    BOOST_FOREACH(const XMLNode& item_node, placement_nodes)
     {
-      vector<XMLNode> placement_nodes = XMLUtils::get_elements_by_local_name(items_node, "Placement");
-
-      BOOST_FOREACH(const XMLNode& item_node, placement_nodes)
-      {
-        string id = XMLUtils::get_child_node_value(item_node, "ID");
-        XMLNode coord_node = XMLUtils::get_next_element_by_local_name(item_node, "Coord");
+      string id = XMLUtils::get_child_node_value(item_node, "ID");
+      XMLNode coord_node = XMLUtils::get_next_element_by_local_name(item_node, "Coord");
         
-        XMLMapCoordinateReader coord_reader;
-        Coordinate c = coord_reader.parse_coordinate(coord_node);
+      XMLMapCoordinateReader coord_reader;
+      Coordinate c = coord_reader.parse_coordinate(coord_node);
 
-        // Create the item, and set it on the specified coordinate.
-        ItemPtr item = ItemManager::create_item(id);
-        TilePtr tile = map->at(c);
+      // Create the item, and set it on the specified coordinate.
+      ItemPtr item = ItemManager::create_item(id);
+      TilePtr tile = map->at(c);
 
-        if (item && tile)
-        {
-          tile->get_items().add(item);
-        }
+      if (item && tile)
+      {
+        tile->get_items().add(item);
       }
     }
   }

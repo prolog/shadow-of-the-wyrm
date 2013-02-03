@@ -12,13 +12,13 @@ DateTimeManager::DateTimeManager()
 
 ActionCostValue DateTimeManager::date_and_time()
 {
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
+  Game& game = Game::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (game && manager && !game->worlds.empty())
+  if (!game.worlds.empty())
   {
     // Get the date from the game's current world's calendar
-    WorldPtr world = game->worlds.at(game->current_world_ix);
+    WorldPtr world = game.worlds.at(game.current_world_ix);
     
     if (world)
     {
@@ -27,8 +27,8 @@ ActionCostValue DateTimeManager::date_and_time()
       ISeasonPtr season = calendar.get_season();
       string date_time_message = DateTextKeys::get_date_time_message(date, season->get_description_sid());
       
-      manager->add_new_message(date_time_message);
-      manager->send();
+      manager.add_new_message(date_time_message);
+      manager.send();
     }
   }
 

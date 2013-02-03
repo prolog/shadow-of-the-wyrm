@@ -21,9 +21,9 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
 {
   bool process_result = true;
 
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game && creature && command)
+  if (creature && command)
   {
     string command_name = command->get_name();
     
@@ -56,7 +56,7 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
         if (selection_command)
         {
           int key = selection_command->get_key();
-          Log::instance()->log("Item selected using key " + Integer::to_string(key));
+          Log::instance().log("Item selected using key " + Integer::to_string(key));
           
           selected_item = inv_manager->select_item(inv, inventory_display, convert_keypress_to_item_index(key));
           

@@ -87,27 +87,24 @@ ActionCost ActionManager::attack(CreaturePtr creature, const Direction direction
 // Move up a level
 ActionCost ActionManager::ascend(CreaturePtr creature)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
+  // If we're on the world map, send a message about not being able to ascend further.
+  MapPtr current_map = game.get_current_map();
+  MapType map_type = current_map->get_map_type();
+    
+  if (map_type == MAP_TYPE_WORLD && creature && creature->get_is_player())
   {
-    // If we're on the world map, send a message about not being able to ascend further.
-    MapPtr current_map = game->get_current_map();
-    MapType map_type = current_map->get_map_type();
-    
-    if (map_type == MAP_TYPE_WORLD && creature && creature->get_is_player())
-    {
-      MessageManager* manager = MessageManager::instance();
-      string search_message = StringTable::get(MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
+    MessageManager& manager = MessageManager::instance();
+    string search_message = StringTable::get(MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
 
-      manager->add_new_message(search_message);
-      manager->send();
+    manager.add_new_message(search_message);
+    manager.send();
       
-      return get_action_cost(creature, 0);
-    } 
+    return get_action_cost(creature, 0);
+  } 
     
-    movement_manager.ascend(creature);
-  }
+  movement_manager.ascend(creature);
   
   return get_action_cost(creature, 1); // JCD FIXME
 }
@@ -197,7 +194,7 @@ ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemActio
       item_manager.drop(creature, item);
       break;
     default:
-      Log::instance()->log("Error: Unhandled item action!");
+      Log::instance().log("Error: Unhandled item action!");
       action_cost_value = 0;
       break;
   }
@@ -265,11 +262,11 @@ ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const lis
 {
   ItemPtr selected_item;
   
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game && creature)
+  if (creature)
   {
-    DisplayPtr game_display = game->get_display();
+    DisplayPtr game_display = game.get_display();
     InventoryManager inv_manager(game_display, creature);
 
     selected_item = inv_manager.manage_inventory(inv, display_filter_list, inventory_is_read_only);
@@ -283,11 +280,11 @@ ActionCost ActionManager::equipment(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = 0;
   
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game && creature)
+  if (creature)
   {
-    DisplayPtr game_display = game->get_display();
+    DisplayPtr game_display = game.get_display();
     
     EquipmentManager equipment_manager(game_display, creature);
     action_cost_value = equipment_manager.manage_equipment();
@@ -300,9 +297,7 @@ ActionCost ActionManager::pray(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = 0;
   
-  Game* game = Game::instance();
-  
-  if (game && creature)
+  if (creature)
   {
     PrayerManager prayer_manager;
     action_cost_value = prayer_manager.pray(creature);
@@ -360,25 +355,17 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature)
 
 ActionCost ActionManager::save(CreaturePtr creature)
 {
-  Game* game = Game::instance();
-  
-  if (game)
-  {
-    Serialization::save(creature);
-    quit(creature);
-  }
+  Serialization::save(creature);
+  quit(creature);
   
   return get_action_cost(creature, 1);
 }
 
 ActionCost ActionManager::quit(CreaturePtr creature)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    game->stop_playing();
-  }
+  game.stop_playing();
   
   return get_action_cost(creature, 1);
 }

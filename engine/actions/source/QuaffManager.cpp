@@ -88,13 +88,10 @@ void QuaffManager::add_quaff_message(CreaturePtr creature, PotionPtr potion, con
   string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description_sid(base_id), creature->get_is_player());
   
   // Display an appropriate message
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (manager)
-  {
-    manager->add_new_message(quaff_message);
-    manager->send();
-  }
+  manager.add_new_message(quaff_message);
+  manager.send();
 }
 
 ActionCostValue QuaffManager::get_action_cost_value() const

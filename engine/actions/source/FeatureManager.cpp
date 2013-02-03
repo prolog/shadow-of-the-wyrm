@@ -27,12 +27,12 @@ FeatureManager::~FeatureManager()
 ActionCostValue FeatureManager::apply(CreaturePtr creature)
 {
   ActionCostValue apply_cost = 0;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game && creature)
+  if (creature)
   {
     bool handled = false;
-    MapPtr map = game->get_current_map();
+    MapPtr map = game.get_current_map();
 
     TileDirectionMap features = MapUtils::get_tiles_with_features(map, creature);
     uint num_features = features.size();
@@ -77,20 +77,16 @@ bool FeatureManager::handle_lock(LockPtr lock, CreaturePtr creature)
     lock_message_sid = ActionTextKeys::ACTION_HANDLE_LOCK;
   }
 
-  MessageManager* manager = MessageManager::instance();
-  manager->add_new_message(StringTable::get(lock_message_sid));
+  MessageManager& manager = MessageManager::instance();
+  manager.add_new_message(StringTable::get(lock_message_sid));
 
   return lock_handled;
 }
 
 void FeatureManager::send_application_messages()
 {
-  MessageManager* manager = MessageManager::instance();
-  
-  if (manager)
-  {
-    manager->send();
-  }
+  MessageManager& manager = MessageManager::instance();  
+  manager.send();
 }
 
 // Handle a particular terrain feature
@@ -149,12 +145,9 @@ bool FeatureManager::handle(FeaturePtr feature, CreaturePtr creature, const bool
 
 void FeatureManager::add_application_message(const string& app_msg_sid)
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
 
-  if (manager)
-  {
-    manager->add_new_message(StringTable::get(app_msg_sid));
-  }
+  manager.add_new_message(StringTable::get(app_msg_sid));
 }
 
 // When there are features present in multiple directions, force the creature

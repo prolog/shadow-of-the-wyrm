@@ -74,47 +74,20 @@ void SavageLandsEngine::initialize_game_flow_map()
   game_flow_functions.insert(make_pair(ENGINE_STATE_STOP, &SavageLandsEngine::process_exit_game));
 }
 
-// The SavageLandsEngine is responsible for the deletion of the Game object.  The Game should
-// not be deleted anywhere else!
-SavageLandsEngine::~SavageLandsEngine()
-{
-  Game* game_instance = Game::instance();
-  MessageManager* manager_instance = MessageManager::instance();
-
-  if (game_instance)
-  {
-    delete game_instance;
-    game_instance = NULL;
-  }
-
-  if (manager_instance)
-  {
-    delete manager_instance;
-    manager_instance = NULL;
-  }
-}
-
 void SavageLandsEngine::start()
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game)
+  if (state_manager.start_new_game())
   {
-    if (state_manager.start_new_game())
-    {
-      setup_game();
-    }
-
-    setup_player_and_world();
-    
-    if (!state_manager.exit())
-    {
-      game->go();
-    }
+    setup_game();
   }
-  else
+
+  setup_player_and_world();
+    
+  if (!state_manager.exit())
   {
-    Log::instance()->log("Could not set up game and world.");
+    game.go();
   }
 }
 
@@ -131,66 +104,54 @@ void SavageLandsEngine::set_display(DisplayPtr new_display)
 // Set up everything needed by the Game
 void SavageLandsEngine::setup_game()
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    XMLConfigurationReader reader(FileConstants::XML_CONFIGURATION_FILE);
+  XMLConfigurationReader reader(FileConstants::XML_CONFIGURATION_FILE);
 
-    // Read the races, classes, and items from the configuration file.
-    // Items need to be read first so that each class's default items can be loaded.
-    // Custom maps are read last because they rely on creatures (which rely on races
-    // and classes), and items.
-    game->set_display(display);
+  // Read the races, classes, and items from the configuration file.
+  // Items need to be read first so that each class's default items can be loaded.
+  // Custom maps are read last because they rely on creatures (which rely on races
+  // and classes), and items.
+  game.set_display(display);
 
-    ItemMap items = reader.get_items();
-    game->set_items(items);
+  ItemMap items = reader.get_items();
+  game.set_items(items);
 
-    DeityMap deities = reader.get_deities();      
-    game->set_deities(deities);
+  DeityMap deities = reader.get_deities();      
+  game.set_deities(deities);
 
-    RaceMap races = reader.get_races();
-    game->set_races(races);
+  RaceMap races = reader.get_races();
+  game.set_races(races);
 
-    ClassMap classes = reader.get_classes();
-    game->set_classes(classes);
+  ClassMap classes = reader.get_classes();
+  game.set_classes(classes);
 
-    pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures();    
-    game->set_creatures(creatures.first);
-    game->set_creature_generation_values(creatures.second);
+  pair<CreatureMap, CreatureGenerationValuesMap> creatures = reader.get_creatures();    
+  game.set_creatures(creatures.first);
+  game.set_creature_generation_values(creatures.second);
 
-    vector<DisplayTile> tile_info = reader.get_tile_info();
-    game->set_tile_display_info(tile_info);
+  vector<DisplayTile> tile_info = reader.get_tile_info();
+  game.set_tile_display_info(tile_info);
 
-    vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
-    game->set_custom_maps(custom_maps);
+  vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
+  game.set_custom_maps(custom_maps);
     
-    // Set up the message manager also.
-    MessageManager* manager = MessageManager::instance();
-
-    if (manager)
-    {
-      manager->set_display(display);
-    }
-  }
+  // Set up the message manager also.
+  MessageManager& manager = MessageManager::instance();
+  manager.set_display(display);
 }
 
 // Create the player
 void SavageLandsEngine::setup_player_and_world()
 {
-  Game* game = Game::instance();
-  
-  if (game)
+  bool done = false;
+
+  while (!done)
   {
-    bool done = false;
+    WelcomeScreen welcome(display);
+    string game_option = welcome.display();
 
-    while (!done)
-    {
-      WelcomeScreen welcome(display);
-      string game_option = welcome.display();
-
-      done = process_game_option(game_option);
-    }
+    done = process_game_option(game_option);
   }
 }
 
@@ -207,71 +168,68 @@ bool SavageLandsEngine::process_game_option(const string& game_option)
 // Process a new game command
 bool SavageLandsEngine::process_new_game()
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game)
-  {
-    string name;
-    CreatureSex sex;
+  string name;
+  CreatureSex sex;
     
-    DeityMap deities = game->get_deities_ref();
-    RaceMap  races   = game->get_races_ref();
-    ClassMap classes = game->get_classes_ref();
+  DeityMap deities = game.get_deities_ref();
+  RaceMap  races   = game.get_races_ref();
+  ClassMap classes = game.get_classes_ref();
 
-    bool user_and_character_exist = true;
-    string warning_message;
+  bool user_and_character_exist = true;
+  string warning_message;
 
-    while (user_and_character_exist)
+  while (user_and_character_exist)
+  {
+    NamingScreen naming(display, warning_message);
+    name = naming.display();
+    name = Naming::clean_name(name);
+
+    if (Serialization::does_savefile_exist_for_user_and_character(Environment::get_user_name(), name))
     {
-      NamingScreen naming(display, warning_message);
-      name = naming.display();
-      name = Naming::clean_name(name);
+      warning_message = StringTable::get(TextKeys::CHARACTER_ALREADY_EXISTS);
+    }
+    else
+    {
+      user_and_character_exist = false;
+    }
+  }
 
-      if (Serialization::does_savefile_exist_for_user_and_character(Environment::get_user_name(), name))
+  SexSelectionScreen sex_selection(display);
+  sex = static_cast<CreatureSex>(String::to_int(sex_selection.display()));
+
+  RaceSelectionScreen race_selection(display);
+  string race_index = race_selection.display();
+  int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
+  string selected_race_id = Integer::to_string_key_at_given_position_in_map(races, race_idx);
+
+  ClassSelectionScreen class_selection(display);
+  string class_index = class_selection.display();
+  int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
+  string selected_class_id = Integer::to_string_key_at_given_position_in_map(classes, class_idx);
+
+  RacePtr selected_race = races[selected_race_id];
+  DeitySelectionScreen deity_selection(display, selected_race);
+  string deity_index = deity_selection.display();
+  int deity_idx = Char::keyboard_selection_char_to_int(deity_index.at(0));
+  string selected_deity_id;
+
+  if (selected_race)
+  {
+    vector<string> deity_ids = selected_race->get_initial_deity_ids();
+    for (uint i = 0; i < deity_ids.size(); i++)
+    {
+      if (static_cast<int>(i) == deity_idx)
       {
-        warning_message = StringTable::get(TextKeys::CHARACTER_ALREADY_EXISTS);
-      }
-      else
-      {
-        user_and_character_exist = false;
+        selected_deity_id = deity_ids.at(i);
       }
     }
 
-    SexSelectionScreen sex_selection(display);
-    sex = static_cast<CreatureSex>(String::to_int(sex_selection.display()));
+    CreaturePtr player = CreatureFactory::create_by_race_and_class(game.get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
+    player->set_is_player(true, controller);  
 
-    RaceSelectionScreen race_selection(display);
-    string race_index = race_selection.display();
-    int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
-    string selected_race_id = Integer::to_string_key_at_given_position_in_map(races, race_idx);
-
-    ClassSelectionScreen class_selection(display);
-    string class_index = class_selection.display();
-    int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
-    string selected_class_id = Integer::to_string_key_at_given_position_in_map(classes, class_idx);
-
-    RacePtr selected_race = races[selected_race_id];
-    DeitySelectionScreen deity_selection(display, selected_race);
-    string deity_index = deity_selection.display();
-    int deity_idx = Char::keyboard_selection_char_to_int(deity_index.at(0));
-    string selected_deity_id;
-
-    if (selected_race)
-    {
-      vector<string> deity_ids = selected_race->get_initial_deity_ids();
-      for (uint i = 0; i < deity_ids.size(); i++)
-      {
-        if (static_cast<int>(i) == deity_idx)
-        {
-          selected_deity_id = deity_ids.at(i);
-        }
-      }
-
-      CreaturePtr player = CreatureFactory::create_by_race_and_class(game->get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
-      player->set_is_player(true, controller);  
-
-      game->create_new_world(player); 
-    }
+    game.create_new_world(player); 
   }
 
   return true;
@@ -289,8 +247,6 @@ bool SavageLandsEngine::process_load_game()
 
   if (!filename.empty())
   {
-    Game* game = Game::instance();
-
     SerializationReturnCode src = Serialization::load(filename);
 
     if (src == SERIALIZATION_OK)

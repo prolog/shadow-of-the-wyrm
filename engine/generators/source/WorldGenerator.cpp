@@ -500,21 +500,18 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
 // of initial race IDs.
 void WorldGenerator::populate_race_information()
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    RaceMap races = game->get_races_ref();
+  RaceMap races = game.get_races_ref();
     
-    for (RaceMap::const_iterator r_it = races.begin(); r_it != races.end(); r_it++)
-    {
-      string current_race_id = r_it->first;
-      RacePtr race = r_it->second;
+  for (RaceMap::const_iterator r_it = races.begin(); r_it != races.end(); r_it++)
+  {
+    string current_race_id = r_it->first;
+    RacePtr race = r_it->second;
       
-      if (race && race->get_user_playable())
-      {
-        unused_initial_race_ids.insert(current_race_id);
-      }
+    if (race && race->get_user_playable())
+    {
+      unused_initial_race_ids.insert(current_race_id);
     }
   }
 }
@@ -525,61 +522,58 @@ void WorldGenerator::set_village_races(MapPtr map)
 // Sometimes useful to know:
 //  int total_villages = village_coordinates.size();
 
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
+  RaceMap races = game.get_races_ref();
+
+  BOOST_FOREACH(Coordinate c, village_coordinates)
   {
-    RaceMap races = game->get_races_ref();
-
-    BOOST_FOREACH(Coordinate c, village_coordinates)
-    {
-      TilePtr tile = map->at(c.first, c.second);
-      VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
+    TilePtr tile = map->at(c.first, c.second);
+    VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
       
-      if (village_tile)
+    if (village_tile)
+    {
+      if (!unused_initial_race_ids.empty())
       {
-        if (!unused_initial_race_ids.empty())
-        {
-          int rand_race_id_idx = RNG::range(0, unused_initial_race_ids.size()-1);
-          set<string>::iterator race_id_it;
+        int rand_race_id_idx = RNG::range(0, unused_initial_race_ids.size()-1);
+        set<string>::iterator race_id_it;
           
-          int count = 0;
-          for (race_id_it = unused_initial_race_ids.begin(); race_id_it != unused_initial_race_ids.end(); race_id_it++)
+        int count = 0;
+        for (race_id_it = unused_initial_race_ids.begin(); race_id_it != unused_initial_race_ids.end(); race_id_it++)
+        {
+          if (count == rand_race_id_idx)
           {
-            if (count == rand_race_id_idx)
-            {
-              string race_id = *race_id_it;
-              RacePtr race = races[race_id];
+            string race_id = *race_id_it;
+            RacePtr race = races[race_id];
               
-              if (race)
-              {
-                village_tile->set_village_race_id(race_id);
-                village_tile->set_settlement_type(race->get_settlement_type());
-                village_tile->set_tile_subtype(race->get_settlement_tile_subtype());                
-              }
-
-              unused_initial_race_ids.erase(race_id_it);
-              break;
-            }
-            
-            count++;
-          }
-        }
-        else
-        {
-          int rand_race_idx = RNG::range(0, races.size()-1);
-          
-          int count = 0;
-          for (RaceMap::const_iterator r_it = races.begin(); r_it != races.end(); r_it++)
-          {
-            if (count == rand_race_idx)
+            if (race)
             {
-              string race_id = r_it->first;
               village_tile->set_village_race_id(race_id);
-              village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
-            } 
-            count++;
+              village_tile->set_settlement_type(race->get_settlement_type());
+              village_tile->set_tile_subtype(race->get_settlement_tile_subtype());                
+            }
+
+            unused_initial_race_ids.erase(race_id_it);
+            break;
           }
+            
+          count++;
+        }
+      }
+      else
+      {
+        int rand_race_idx = RNG::range(0, races.size()-1);
+          
+        int count = 0;
+        for (RaceMap::const_iterator r_it = races.begin(); r_it != races.end(); r_it++)
+        {
+          if (count == rand_race_idx)
+          {
+            string race_id = r_it->first;
+            village_tile->set_village_race_id(race_id);
+            village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
+          } 
+          count++;
         }
       }
     }
@@ -590,59 +584,56 @@ void WorldGenerator::set_village_races(MapPtr map)
 void WorldGenerator::generate_village_surroundings(MapPtr map)
 {
   Dimensions dim = map->size();
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    RaceMap races = game->get_races_ref();
-    DeityMap deities = game->get_deities_ref();
+  RaceMap races = game.get_races_ref();
+  DeityMap deities = game.get_deities_ref();
     
-    BOOST_FOREACH(Coordinate c, village_coordinates)
+  BOOST_FOREACH(Coordinate c, village_coordinates)
+  {
+    bool worship_site_generated = false;
+      
+    int village_row = c.first;
+    int village_col = c.second;
+      
+    // For each village in the initial set, ensure that its village_race_id is 
+    // set to one of the unused_initial_race_ids, and then remove that ID from the set.
+    TilePtr tile = map->at(village_row, village_col);
+    VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
+      
+    if (village_tile)
     {
-      bool worship_site_generated = false;
-      
-      int village_row = c.first;
-      int village_col = c.second;
-      
-      // For each village in the initial set, ensure that its village_race_id is 
-      // set to one of the unused_initial_race_ids, and then remove that ID from the set.
-      TilePtr tile = map->at(village_row, village_col);
-      VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
-      
-      if (village_tile)
+      string race_id = village_tile->get_village_race_id();
+        
+      // Get the adjacent tiles
+      vector<Coordinate> adjacent_to_village = CoordUtils::get_adjacent_map_coordinates(dim, village_row, village_col);
+        
+      BOOST_FOREACH(Coordinate c2, adjacent_to_village)
       {
-        string race_id = village_tile->get_village_race_id();
-        
-        // Get the adjacent tiles
-        vector<Coordinate> adjacent_to_village = CoordUtils::get_adjacent_map_coordinates(dim, village_row, village_col);
-        
-        BOOST_FOREACH(Coordinate c2, adjacent_to_village)
+        int adjacent_row = c2.first;
+        int adjacent_col = c2.second;
+          
+        TilePtr adjacent_village_tile = map->at(adjacent_row, adjacent_col);
+        TileType adjacent_type = adjacent_village_tile->get_tile_type();
+          
+        if (adjacent_type != TILE_TYPE_SEA && adjacent_type != TILE_TYPE_VILLAGE)
         {
-          int adjacent_row = c2.first;
-          int adjacent_col = c2.second;
-          
-          TilePtr adjacent_village_tile = map->at(adjacent_row, adjacent_col);
-          TileType adjacent_type = adjacent_village_tile->get_tile_type();
-          
-          if (adjacent_type != TILE_TYPE_SEA && adjacent_type != TILE_TYPE_VILLAGE)
+          // 20% chance of a worship site.  Generate a site based on a randomly
+          // selected deity allowable for the village's race.
+          if (!worship_site_generated && RNG::percent_chance(20))
           {
-            // 20% chance of a worship site.  Generate a site based on a randomly
-            // selected deity allowable for the village's race.
-            if (!worship_site_generated && RNG::percent_chance(20))
-            {
-              vector<string> initial_deity_ids = races[race_id]->get_initial_deity_ids();
-              int deity_id_idx = RNG::range(0, initial_deity_ids.size()-1);
-              string deity_id = initial_deity_ids[deity_id_idx];
-              DeityPtr deity = deities[deity_id];
-              WorshipSiteTilePtr site_tile = TileGenerator::generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
-              map->insert(adjacent_row, adjacent_col, site_tile);
-              worship_site_generated = true;
-            }
+            vector<string> initial_deity_ids = races[race_id]->get_initial_deity_ids();
+            int deity_id_idx = RNG::range(0, initial_deity_ids.size()-1);
+            string deity_id = initial_deity_ids[deity_id_idx];
+            DeityPtr deity = deities[deity_id];
+            WorshipSiteTilePtr site_tile = TileGenerator::generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
+            map->insert(adjacent_row, adjacent_col, site_tile);
+            worship_site_generated = true;
           }
-        }    
+        }
       }    
-    }
-  }  
+    }    
+  }
 }
 
 void WorldGenerator::remove_village_coordinates_if_present(const Coordinate& c)

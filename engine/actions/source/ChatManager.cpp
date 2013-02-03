@@ -14,11 +14,11 @@ ChatManager::ChatManager()
 ActionCostValue ChatManager::chat(CreaturePtr creature) const
 {
   ActionCostValue action_cost = get_nochat_action_cost_value();
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game && creature)
+  if (creature)
   {
-    MapPtr current_map = game->get_current_map();
+    MapPtr current_map = game.get_current_map();
     bool spoke = false;
 
     if (MapUtils::adjacent_creature_exists(creature, current_map))
@@ -119,13 +119,10 @@ bool ChatManager::chat_multiple_options(CreaturePtr querying_creature, const Cre
 // Add a chat message to the message area.
 void ChatManager::add_chat_message(const string& chat_text_sid) const
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
 
-  if (manager)
-  {
-    manager->add_new_message(StringTable::get(chat_text_sid));
-    manager->send();
-  }
+  manager.add_new_message(StringTable::get(chat_text_sid));
+  manager.send();
 }
 
 // Chatting with a creature successfully incurs the cost of a turn.

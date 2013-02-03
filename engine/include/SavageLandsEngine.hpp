@@ -32,8 +32,7 @@ class SavageLandsEngine
 {
   public:    
     SavageLandsEngine();
-    ~SavageLandsEngine();
-
+ 
     void start();
 
     void set_controller(ControllerPtr new_controller);

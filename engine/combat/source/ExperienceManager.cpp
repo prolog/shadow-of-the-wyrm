@@ -89,32 +89,29 @@ uint ExperienceManager::get_experience_needed_for_level(CreaturePtr creature, co
   {
     int base_exp_needed = base_experience_table[level];
     
-    Game* game = Game::instance();
+    Game& game = Game::instance();
     
-    if (game)
-    {
-      string race_id = creature->get_race_id();
-      string class_id = creature->get_class_id();
+    string race_id = creature->get_race_id();
+    string class_id = creature->get_class_id();
       
-      float race_multiplier = 1.0f;
-      float class_multiplier = 1.0f;
+    float race_multiplier = 1.0f;
+    float class_multiplier = 1.0f;
 
-      if (!race_id.empty())
-      {
-        RaceMap races = game->get_races_ref();
-        RacePtr race = races[race_id];
-        race_multiplier = race->get_experience_multiplier();
-      }
-      
-      if (!class_id.empty())
-      {
-        ClassMap classes = game->get_classes_ref();
-        ClassPtr cur_class = classes[class_id];
-        class_multiplier = cur_class->get_experience_multiplier();
-      }
-      
-      exp_needed = static_cast<int>(base_exp_needed * race_multiplier * class_multiplier);      
+    if (!race_id.empty())
+    {
+      RaceMap races = game.get_races_ref();
+      RacePtr race = races[race_id];
+      race_multiplier = race->get_experience_multiplier();
     }
+      
+    if (!class_id.empty())
+    {
+      ClassMap classes = game.get_classes_ref();
+      ClassPtr cur_class = classes[class_id];
+      class_multiplier = cur_class->get_experience_multiplier();
+    }
+      
+    exp_needed = static_cast<int>(base_exp_needed * race_multiplier * class_multiplier);      
   }
   
   return exp_needed;
@@ -147,9 +144,9 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
 // Gain a level, increase HP/AP, and do anything else that needs to be done.
 void ExperienceManager::level_up(CreaturePtr creature)
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && manager)
+  if (creature)
   {
     gain_level(creature);
     gain_hp_and_ap(creature);
@@ -158,8 +155,8 @@ void ExperienceManager::level_up(CreaturePtr creature)
     if (creature->get_is_player())
     {
       string level_up_message = StringTable::get(TextKeys::GAIN_LEVEL);
-      manager->add_new_message(level_up_message, COLOUR_BOLD_YELLOW);
-      manager->send();
+      manager.add_new_message(level_up_message, COLOUR_BOLD_YELLOW);
+      manager.send();
       
       // Should monsters' level-ups be broadcast?
     }    
@@ -198,11 +195,11 @@ void ExperienceManager::gain_hp_and_ap(CreaturePtr creature)
     uint ap_dice  = LevelConstants::DEFAULT_AP_DICE;
 
     string class_id = creature->get_class_id();
-    Game* game = Game::instance();
+    Game& game = Game::instance();
     
-    if (game && !class_id.empty())
+    if (!class_id.empty())
     {
-      ClassMap class_map = game->get_classes_ref();
+      ClassMap class_map = game.get_classes_ref();
       ClassPtr current_class = class_map[class_id];
       
       hit_dice = current_class->get_hit_dice();

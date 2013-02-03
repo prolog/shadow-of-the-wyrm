@@ -31,24 +31,21 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 {
   ActionCostValue action_cost_value = 0;
   
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game)
+  MapPtr map = game.get_current_map();
+    
+  Coordinate creature_location = map->get_location(creature->get_id());
+  Coordinate new_coords = CoordUtils::get_new_coordinate(creature_location, d);
+  TilePtr adjacent_tile = map->at(new_coords.first, new_coords.second);
+
+  // Do the necessary checks here to determine whether to attack...
+  CreaturePtr adjacent_creature = adjacent_tile->get_creature();
+    
+  // Sanity check
+  if (adjacent_creature)
   {
-    MapPtr map = game->get_current_map();
-    
-    Coordinate creature_location = map->get_location(creature->get_id());
-    Coordinate new_coords = CoordUtils::get_new_coordinate(creature_location, d);
-    TilePtr adjacent_tile = map->at(new_coords.first, new_coords.second);
-
-    // Do the necessary checks here to determine whether to attack...
-    CreaturePtr adjacent_creature = adjacent_tile->get_creature();
-    
-    // Sanity check
-    if (adjacent_creature)
-    {
-      action_cost_value = attack(creature, adjacent_creature);
-    }
+    action_cost_value = attack(creature, adjacent_creature);
   }
   
   return action_cost_value;
@@ -180,8 +177,8 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 // creature.
 void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const string message_sid)
 {
-  Game* game = Game::instance();
-  MapPtr map = game->get_current_map();
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
   
   if (map && attacked_creature)
   {
@@ -189,11 +186,8 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
     
     if (!message_sid.empty())
     {
-      MessageManager* manager = MessageManager::instance();
-      if (manager)
-      {
-        manager->add_new_message(StringTable::get(message_sid));
-      }        
+      MessageManager& manager = MessageManager::instance();
+      manager.add_new_message(StringTable::get(message_sid));
     }
     
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
@@ -261,20 +255,14 @@ void CombatManager::add_combat_message(const string& combat_message)
 {
   // Display combat information.
   // Right now, everything is displayed.  Will need to do LOS checking later.
-  MessageManager* manager = MessageManager::instance();
-  if (manager)
-  {
-    manager->add_new_message(combat_message);
-  }  
+  MessageManager& manager = MessageManager::instance();
+  manager.add_new_message(combat_message);
 }
 
 void CombatManager::send_combat_messages()
 {
-  MessageManager* manager = MessageManager::instance();
-  if (manager)
-  {
-    manager->send();
-  }
+  MessageManager& manager = MessageManager::instance();
+  manager.send();
 }
 
 // Functions to check hit/miss/critical/etc statuses.

@@ -8,32 +8,23 @@ using namespace std;
 using namespace boost;
 using namespace boost::posix_time;
 
-Log* Log::log_instance = NULL;
 LoggingLevel Log::level = LOG_NONE; // Logging is off by default.
 int Log::counter = 0;
 
-Log::Log(const LoggingLevel log_level)
+Log::Log()
 {
-  set_log_level(log_level);
-
   string filename = create_filename();
   while (filesystem::exists(filename) && (counter != numeric_limits<int>::max()))
   {
     filename = create_filename();
   }
 
-  if (level > LOG_NONE)
-  {
-    sl_log.open(filename.c_str(), ios::out);
-  }
+  sl_log.open(filename.c_str(), ios::out);
 }
 
 Log::~Log()
 {
-  if (level > LOG_NONE)
-  {
-    sl_log.close();
-  }
+  sl_log.close();
 }
 
 void Log::error(const string& to_error)
@@ -66,26 +57,6 @@ void Log::debug(const string& to_debug)
   {
     sl_log << create_datetimestamp() << "\t" << to_debug << endl;
   }
-}
-
-Log* Log::instance(const LoggingLevel log_level)
-{
-  if (log_instance == NULL)
-  {
-    log_instance = new Log(log_level);
-  }
-
-  return log_instance;
-}
-
-Log* Log::instance()
-{
-  if (log_instance == NULL)
-  {
-    log_instance = new Log(LOG_NONE);
-  }
-
-  return log_instance;
 }
 
 string Log::create_filename()

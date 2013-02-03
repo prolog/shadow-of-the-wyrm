@@ -20,8 +20,8 @@ RaceSelectionScreen::RaceSelectionScreen(DisplayPtr new_display)
 // RacePtr.
 void RaceSelectionScreen::initialize()
 {
-  Game* game_instance = Game::instance();
-  RaceMap races = game_instance->get_races_ref();
+  Game& game_instance = Game::instance();
+  RaceMap races = game_instance.get_races_ref();
 
   TextComponentPtr race_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_RACE));
 

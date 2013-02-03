@@ -22,8 +22,8 @@ ClassSelectionScreen::ClassSelectionScreen(DisplayPtr new_display)
 // ClassPtr
 void ClassSelectionScreen::initialize()
 {
-  Game* game_instance = Game::instance();
-  ClassMap classes = game_instance->get_classes_ref();
+  Game& game_instance = Game::instance();
+  ClassMap classes = game_instance.get_classes_ref();
 
   TextComponentPtr class_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_CLASS));
 

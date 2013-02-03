@@ -94,8 +94,9 @@ int main(int argc, char* argv[])
   {
     initialize_settings();
     XML::initialize();
-    Log* log = Log::instance(LOG_DEBUG);
-    log->trace("main - testing");
+    Log& log = Log::instance();
+    log.set_log_level(LOG_DEBUG);
+    log.trace("main - testing");
 
     print_title();
 
@@ -126,13 +127,10 @@ int main(int argc, char* argv[])
   }
   catch(...)
   {
-    Log::instance()->log("Unable to run Savage Lands!");
+    Log::instance().log("Unable to run Savage Lands!");
   }
 
   XML::tear_down();
-  Log* log_instance = Log::instance();
-  delete log_instance;
-  log_instance = NULL;
 
   return 0;
 }

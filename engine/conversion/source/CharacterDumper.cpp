@@ -25,29 +25,24 @@ string CharacterDumper::str() const
 {
   ostringstream ss;
   
-  Game* game = Game::instance();
-  
-  if (game)
-  {
-    Metadata meta;
-    string version = meta.get_game_version_synopsis();
-    ss << String::centre(version, num_cols) << endl << endl;
-    ss << String::centre(creature->get_name(), num_cols) << endl;
-    ss << get_synopsis() << endl << endl;
-    ss << get_vital_statistics() << endl << endl;
+  Metadata meta;
+  string version = meta.get_game_version_synopsis();
+  ss << String::centre(version, num_cols) << endl << endl;
+  ss << String::centre(creature->get_name(), num_cols) << endl;
+  ss << get_synopsis() << endl << endl;
+  ss << get_vital_statistics() << endl << endl;
     
-    StatsDumper stats_dumper(creature, num_cols);
-    ss << stats_dumper.str() << endl << endl;
+  StatsDumper stats_dumper(creature, num_cols);
+  ss << stats_dumper.str() << endl << endl;
     
-    SkillsDumper skills_dumper(creature, num_cols);
-    ss << skills_dumper.str() << endl << endl;
+  SkillsDumper skills_dumper(creature, num_cols);
+  ss << skills_dumper.str() << endl << endl;
     
-    EquipmentDumper equipment_dumper(creature, num_cols);
-    ss << equipment_dumper.str() << endl << endl;
+  EquipmentDumper equipment_dumper(creature, num_cols);
+  ss << equipment_dumper.str() << endl << endl;
     
-    InventoryDumper inventory_dumper(creature, num_cols);
-    ss << inventory_dumper.str() << endl << endl;
-  }
+  InventoryDumper inventory_dumper(creature, num_cols);
+  ss << inventory_dumper.str() << endl << endl;
     
   return ss.str();
 }
@@ -56,26 +51,23 @@ string CharacterDumper::str() const
 string CharacterDumper::get_synopsis() const
 {
   ostringstream ss;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
+  RaceMap races = game.get_races_ref();
+  ClassMap classes = game.get_classes_ref();
+  string race_id = creature->get_race_id();
+  string class_id = creature->get_class_id();
+    
+  RacePtr race = races[race_id];
+  ClassPtr char_class = classes[class_id];
+    
+  if (race && char_class)
   {
-    RaceMap races = game->get_races_ref();
-    ClassMap classes = game->get_classes_ref();
-    string race_id = creature->get_race_id();
-    string class_id = creature->get_class_id();
-    
-    RacePtr race = races[race_id];
-    ClassPtr char_class = classes[class_id];
-    
-    if (race && char_class)
-    {
-      string race_name = StringTable::get(race->get_race_name_sid());
-      string class_name = StringTable::get(char_class->get_class_name_sid());
+    string race_name = StringTable::get(race->get_race_name_sid());
+    string class_name = StringTable::get(char_class->get_class_name_sid());
       
-      string character_synopsis = "L" + Integer::to_string(creature->get_level().get_current()) + " " + race_name + " " + class_name;
-      ss << String::centre(character_synopsis, num_cols);
-    }
+    string character_synopsis = "L" + Integer::to_string(creature->get_level().get_current()) + " " + race_name + " " + class_name;
+    ss << String::centre(character_synopsis, num_cols);
   }
   
   return ss.str();

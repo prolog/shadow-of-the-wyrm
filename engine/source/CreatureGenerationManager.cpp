@@ -18,24 +18,21 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
   CreatureGenerationMap generation_map;
 
   CreaturePtr generated_creature;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    CreatureMap creatures = game->get_creatures_ref();
-    CreatureGenerationValuesMap cgv_map = game->get_creature_generation_values_ref();
+  CreatureMap creatures = game.get_creatures_ref();
+  CreatureGenerationValuesMap cgv_map = game.get_creature_generation_values_ref();
     
-    // Build the map of creatures available for generation given the danger level and rarity
-    for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
-    {
-      string creature_id   = c_it->first;
-      CreaturePtr creature = c_it->second;
-      CreatureGenerationValues cgvals = cgv_map[creature_id];
+  // Build the map of creatures available for generation given the danger level and rarity
+  for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+  {
+    string creature_id   = c_it->first;
+    CreaturePtr creature = c_it->second;
+    CreatureGenerationValues cgvals = cgv_map[creature_id];
       
-      if (does_creature_match_generation_criteria(cgvals, map_terrain_type, danger_level, rarity))
-      {
-        generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
-      }
+    if (does_creature_match_generation_criteria(cgvals, map_terrain_type, danger_level, rarity))
+    {
+      generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
     }
   }
   
@@ -45,40 +42,37 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
 CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, CreatureGenerationMap& generation_map)
 {
   CreaturePtr generated_creature;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
+  // Iterate through the generation map, and attempt to generate a creature with probability P,
+  // where P = (danger level / danger_level + num_creatures_in_map)
+  uint p_denominator = 0;
+    
+  // Get the denominator for the probabilistic generation by summing the danger level over all creatures
+  // in the map.
+  for(CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
   {
-    // Iterate through the generation map, and attempt to generate a creature with probability P,
-    // where P = (danger level / danger_level + num_creatures_in_map)
-    uint p_denominator = 0;
+    CreatureGenerationValues cgv = c_it->second.second;
+    p_denominator += cgv.get_danger_level();
+  }
     
-    // Get the denominator for the probabilistic generation by summing the danger level over all creatures
-    // in the map.
-    for(CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
-    {
-      CreatureGenerationValues cgv = c_it->second.second;
-      p_denominator += cgv.get_danger_level();
-    }
-    
-    float p_denominator_f = static_cast<float>(p_denominator);
+  float p_denominator_f = static_cast<float>(p_denominator);
 
-    // Determine the creature to generate
-    for(CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
-    {
-      CreatureGenerationValues cgv = c_it->second.second;
+  // Determine the creature to generate
+  for(CreatureGenerationMap::iterator c_it = generation_map.begin(); c_it != generation_map.end(); c_it++)
+  {
+    CreatureGenerationValues cgv = c_it->second.second;
 
-      int p_numerator = cgv.get_danger_level();
-      int P = static_cast<int>((static_cast<float>(p_numerator) / p_denominator_f) * 100);
+    int p_numerator = cgv.get_danger_level();
+    int P = static_cast<int>((static_cast<float>(p_numerator) / p_denominator_f) * 100);
       
-      // Generate the creature if we hit the percentage, or if we're on the last item in the map
-      // and a creature has not yet been generated.
-      if (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1) && !generated_creature))
-      {
-        string creature_id = c_it->first;
-        generated_creature = CreatureFactory::create_by_creature_id(am, creature_id);
-        break;
-      }
+    // Generate the creature if we hit the percentage, or if we're on the last item in the map
+    // and a creature has not yet been generated.
+    if (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1) && !generated_creature))
+    {
+      string creature_id = c_it->first;
+      generated_creature = CreatureFactory::create_by_creature_id(am, creature_id);
+      break;
     }
   }
    

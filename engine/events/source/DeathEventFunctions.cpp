@@ -26,12 +26,8 @@ DeathEventFunctions::~DeathEventFunctions()
 // Win the game!  Great riches and hot elf babes/Legolas-lookalike strippers await!
 void DeathEventFunctions::win(CreaturePtr attacking, CreaturePtr dead, MapPtr map)
 {
-  Game* game = Game::instance();
-
-  if (game)
-  {
-    game->stop_playing();
-  }
+  Game& game = Game::instance();
+  game.stop_playing();
 }
 
 // This function should stay empty!  This is the default function that's called after each creature death.

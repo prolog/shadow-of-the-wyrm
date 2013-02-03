@@ -79,7 +79,7 @@ WINDOW* CursesDisplay::create_menu(int height, int width, int start_row, int sta
 // Delete the given window.
 void CursesDisplay::destroy_menu(WINDOW *menu)
 {
-  Log::instance()->debug("Destroying current menu");
+  Log::instance().debug("Destroying current menu");
 	delwin(menu);
 	menu = NULL;
 }
