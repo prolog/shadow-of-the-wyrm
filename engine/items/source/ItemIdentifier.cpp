@@ -186,13 +186,10 @@ string ItemIdentifier::get_appropriate_usage_description_sid(const string& base_
 ItemPtr ItemIdentifier::get_base_item(const string& base_item_id) const
 {
   ItemPtr item;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    ItemMap item_map = game->get_items_ref();
-    item = item_map[base_item_id];
-  }
+  ItemMap item_map = game.get_items_ref();
+  item = item_map[base_item_id];
   
   return item;
 }

@@ -94,14 +94,11 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
 ItemPtr ItemManager::create_item(const std::string& item_id, const uint quantity)
 {
   ItemPtr item;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    const ItemMap& items = game->get_items_ref();
-    ItemManager manager;
-    item = manager.create_item(items, item_id, quantity);
-  }
+  const ItemMap& items = game.get_items_ref();
+  ItemManager manager;
+  item = manager.create_item(items, item_id, quantity);
   
   return item;
 }

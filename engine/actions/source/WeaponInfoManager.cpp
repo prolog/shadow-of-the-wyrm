@@ -40,9 +40,9 @@ ActionCostValue WeaponInfoManager::weapon_info(CreaturePtr creature, const Weapo
 // creature is the player.
 ActionCostValue WeaponInfoManager::melee_weapon_info(CreaturePtr creature) const
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && manager)
+  if (creature)
   {
     Equipment& eq = creature->get_equipment();
     Damage base_damage = creature->get_base_damage();
@@ -58,9 +58,9 @@ ActionCostValue WeaponInfoManager::melee_weapon_info(CreaturePtr creature) const
     
     // JCD FIXME: Do something here to get them on separate lines, if necessary.
     // Test...
-    manager->add_new_message(wielded_weapon_text);
-    manager->add_new_message(off_hand_weapon_text);
-    manager->send();
+    manager.add_new_message(wielded_weapon_text);
+    manager.add_new_message(off_hand_weapon_text);
+    manager.send();
   }
 
   return get_action_cost_value();
@@ -68,9 +68,9 @@ ActionCostValue WeaponInfoManager::melee_weapon_info(CreaturePtr creature) const
 
 ActionCostValue WeaponInfoManager::ranged_weapon_info(CreaturePtr creature) const
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && manager)
+  if (creature)
   {
     Equipment& eq = creature->get_equipment();
     ItemPtr ranged_item = eq.get_item(EQUIPMENT_WORN_RANGED_WEAPON);
@@ -81,8 +81,8 @@ ActionCostValue WeaponInfoManager::ranged_weapon_info(CreaturePtr creature) cons
     
     string ranged_weapon_text = get_ranged_weapon_info(creature, ranged_weapon, ammunition);
     
-    manager->add_new_message(ranged_weapon_text);
-    manager->send();
+    manager.add_new_message(ranged_weapon_text);
+    manager.send();
   }
   
   return get_action_cost_value();

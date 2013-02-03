@@ -20,7 +20,7 @@ using namespace boost::filesystem;
 // Save the entire game state to disk
 void Serialization::save(CreaturePtr creature)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
   try
   {
@@ -41,16 +41,13 @@ void Serialization::save(CreaturePtr creature)
     // Name the file and do the appropriate setup
     ofstream stream(filename, ios::binary);
         
-    // Save the state and game data
-    if (game)
-    {
-      // Save the metadata
-      meta.serialize(stream);
+    // Save the state and game data:
+    // Save the metadata
+    meta.serialize(stream);
 
-      // Save the game and RNG data
-      game->serialize(stream);
-      Serialize::write_uint(stream, RNG::get_seed());
-    }
+    // Save the game and RNG data
+    game.serialize(stream);
+    Serialize::write_uint(stream, RNG::get_seed());
   }
   catch(...)
   {
@@ -61,27 +58,20 @@ void Serialization::save(CreaturePtr creature)
 // Restore the game state from a particular file
 SerializationReturnCode Serialization::load(const string& filename)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   ifstream stream;
 
-  if (game)
-  {
-    stream.open(filename, ios::in | ios::binary);
+  stream.open(filename, ios::in | ios::binary);
 
-    Metadata meta;
-    uint rng_seed = 0;
+  Metadata meta;
+  uint rng_seed = 0;
 
-    meta.deserialize(stream);
-    game->deserialize(stream);
-    Serialize::read_uint(stream, rng_seed);
+  meta.deserialize(stream);
+  game.deserialize(stream);
+  Serialize::read_uint(stream, rng_seed);
 
-    RNG::set_seed(rng_seed);
-    RNG::reinitialize();
-  }
-  else
-  {
-    return SERIALIZATION_ERROR;
-  }
+  RNG::set_seed(rng_seed);
+  RNG::reinitialize();
 
   if (stream.is_open())
   {

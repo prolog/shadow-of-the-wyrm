@@ -102,46 +102,43 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
 
   Rarity rarity = CreationUtils::generate_rarity();
 
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
+  ActionManager am = game.get_action_manager_ref();
+  uint num_creatures_to_place = RNG::range(1, CreationUtils::random_maximum_creatures(dim.get_y(), dim.get_x()));
+  uint current_creatures_placed = 0;
+  uint unsuccessful_attempts = 0;
+
+  // Generate the list of possible creatures for this map.
+  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, danger_level, rarity);
+
+  while ((current_creatures_placed < num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
   {
-    ActionManager am = game->get_action_manager_ref();
-    uint num_creatures_to_place = RNG::range(1, CreationUtils::random_maximum_creatures(dim.get_y(), dim.get_x()));
-    uint current_creatures_placed = 0;
-    uint unsuccessful_attempts = 0;
-
-    // Generate the list of possible creatures for this map.
-    CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(map_terrain_type, danger_level, rarity);
-
-    while ((current_creatures_placed < num_creatures_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_CREATURE_ATTEMPTS))
-    {
-      CreaturePtr generated_creature = cgm.generate_creature(am, generation_map);
+    CreaturePtr generated_creature = cgm.generate_creature(am, generation_map);
     
-      if (generated_creature)
-      {
-        int creature_row = RNG::range(0, rows-1);
-        int creature_col = RNG::range(0, cols-1);
+    if (generated_creature)
+    {
+      int creature_row = RNG::range(0, rows-1);
+      int creature_col = RNG::range(0, cols-1);
       
-        // Check to see if the spot is empty, and if a creature can be added there.
-        TilePtr tile = map->at(creature_row, creature_col);
+      // Check to see if the spot is empty, and if a creature can be added there.
+      TilePtr tile = map->at(creature_row, creature_col);
 
-        if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
-        {
-          Coordinate coords(creature_row, creature_col);
-          MapUtils::add_or_update_location(map, generated_creature, coords);
-          if (!creatures_generated) creatures_generated = true;
-          current_creatures_placed++;
-        }
-        else
-        {
-          unsuccessful_attempts++;
-        }
+      if (MapUtils::is_tile_available_for_creature(generated_creature, tile))
+      {
+        Coordinate coords(creature_row, creature_col);
+        MapUtils::add_or_update_location(map, generated_creature, coords);
+        if (!creatures_generated) creatures_generated = true;
+        current_creatures_placed++;
       }
       else
       {
         unsuccessful_attempts++;
       }
+    }
+    else
+    {
+      unsuccessful_attempts++;
     }
   }
 

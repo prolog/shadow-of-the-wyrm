@@ -30,9 +30,9 @@ bool RangedCombatActionManager::operator==(const RangedCombatActionManager& rcam
 ActionCostValue RangedCombatActionManager::fire_missile(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = 0;
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && manager)
+  if (creature)
   {
     RangedCombatApplicabilityChecker rcec;
     
@@ -54,8 +54,8 @@ ActionCostValue RangedCombatActionManager::fire_missile(CreaturePtr creature)
       // that was generated regarding this.
       if (creature->get_is_player())
       {
-        manager->add_new_message(ranged_combat_info.second);
-        manager->send();
+        manager.add_new_message(ranged_combat_info.second);
+        manager.send();
       }
     }
   }
@@ -68,21 +68,21 @@ ActionCostValue RangedCombatActionManager::fire_missile(CreaturePtr creature)
 ActionCostValue RangedCombatActionManager::get_selected_tile(CreaturePtr creature)
 {
   ActionCostValue action_cost_value;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
   // We can do ranged combat.  
   //
   // First, check to see if the creature is the player.  If the creature is the player, then check to 
   // see if a ranged target has been defined.  If not, select the closest hostile creature.
-  if (creature && game && creature->get_is_player())
+  if (creature && creature->get_is_player())
   {
     if (!has_ranged_combat_target(creature))
     {
-      select_nearest_hostile_target(creature, game->get_current_map());
+      select_nearest_hostile_target(creature, game.get_current_map());
     }
     else
     {
-      select_existing_target(creature, game->get_current_map());
+      select_existing_target(creature, game.get_current_map());
     }
   }
   
@@ -110,9 +110,9 @@ ActionCostValue RangedCombatActionManager::get_selected_tile(CreaturePtr creatur
 // JCD TODO: Checks on range of weapon.
 void RangedCombatActionManager::fire_weapon_at_tile(CreaturePtr creature)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (creature && game)
+  if (creature)
   {
     TargetMap& tile_map = creature->get_target_map_ref();
     
@@ -120,7 +120,7 @@ void RangedCombatActionManager::fire_weapon_at_tile(CreaturePtr creature)
     
     if (t_it != tile_map.end())
     {
-      MapPtr current_map = game->get_current_map();
+      MapPtr current_map = game.get_current_map();
       pair<string, Coordinate> target_info = t_it->second;
       Coordinate creature_coords = current_map->get_location(creature->get_id());
       Coordinate target_coords = target_info.second;
@@ -221,9 +221,9 @@ void RangedCombatActionManager::add_ranged_combat_message(CreaturePtr creature, 
 
       if (!ranged_attack_message.empty())
       {
-        MessageManager* manager = MessageManager::instance();
-        manager->add_new_message(ranged_attack_message);
-        manager->send();
+        MessageManager& manager = MessageManager::instance();
+        manager.add_new_message(ranged_attack_message);
+        manager.send();
       }
     }
   }

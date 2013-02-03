@@ -11,18 +11,15 @@ RacePtr RaceManager::get_race(const std::string& race_id)
 {
   RacePtr race;
 
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game)
-  {
-    RaceMap races = game->get_races_ref();
+  RaceMap races = game.get_races_ref();
 
-    RaceMap::iterator r_it = races.find(race_id);
+  RaceMap::iterator r_it = races.find(race_id);
     
-    if (r_it != races.end())
-    {
-      race = r_it->second;
-    }
+  if (r_it != races.end())
+  {
+    race = r_it->second;
   }
 
   return race;

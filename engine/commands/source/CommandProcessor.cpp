@@ -50,96 +50,96 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
     
     if (confirm)
     {
-      Game* game = Game::instance();
+      Game& game = Game::instance();
       string command_name = command->get_name();
       
       if (command_name == CommandKeys::QUIT)
       {
-        ac = game->actions.quit(creature);
+        ac = game.actions.quit(creature);
       }
       else if (command_name == CommandKeys::VERSION)
       {
-        ac = game->actions.version(creature);
+        ac = game.actions.version(creature);
       }
       else if (command_name == CommandKeys::GAME_DATE_TIME)
       {
-        ac = game->actions.date_and_time(creature);
+        ac = game.actions.date_and_time(creature);
       }
       else if (command_name == CommandKeys::SEARCH)
       {
-        ac = game->actions.search(creature);
+        ac = game.actions.search(creature);
       }
       else if (command_name == CommandKeys::MOVE_UP)
       {
-        ac = game->actions.ascend(creature);
+        ac = game.actions.ascend(creature);
       }
       else if (command_name == CommandKeys::MOVE_DOWN)
       {
-        ac = game->actions.descend(creature);
+        ac = game.actions.descend(creature);
       }
       else if (command_name == CommandKeys::PICK_UP_ITEM)
       {
-        ac = game->actions.pick_up(creature);
+        ac = game.actions.pick_up(creature);
       }
       else if (command_name == CommandKeys::DROP_ITEM)
       {
-        ac = game->actions.drop(creature);
+        ac = game.actions.drop(creature);
       }
       else if (command_name == CommandKeys::CHAR_DUMP)
       {
-        ac = game->actions.dump_character(creature);
+        ac = game.actions.dump_character(creature);
       }
       else if (command_name == CommandKeys::INVENTORY)
       {
-        ac = game->actions.equipment(creature);
+        ac = game.actions.equipment(creature);
       }
       else if (command_name == CommandKeys::PRAY)
       {
-        ac = game->actions.pray(creature);
+        ac = game.actions.pray(creature);
       }
       else if (command_name == CommandKeys::MELEE_WEAPON_INFO)
       {
-        ac = game->actions.weapon_info(creature, WEAPON_STYLE_MELEE);
+        ac = game.actions.weapon_info(creature, WEAPON_STYLE_MELEE);
       }
       else if (command_name == CommandKeys::RANGED_WEAPON_INFO)
       {
-        ac = game->actions.weapon_info(creature, WEAPON_STYLE_RANGED);
+        ac = game.actions.weapon_info(creature, WEAPON_STYLE_RANGED);
       }
       else if (command_name == CommandKeys::SELECT_TILE)
       {
-        ac = game->actions.select_tile(creature);
+        ac = game.actions.select_tile(creature);
       }
       else if (command_name == CommandKeys::FIRE_MISSILE)
       {
-        ac = game->actions.fire_missile(creature);
+        ac = game.actions.fire_missile(creature);
       }
       else if (command_name == CommandKeys::QUAFF)
       {
-        ac = game->actions.quaff(creature);
+        ac = game.actions.quaff(creature);
       }
       else if (command_name == CommandKeys::READ)
       {
-        ac = game->actions.read(creature);
+        ac = game.actions.read(creature);
       }
       else if (command_name == CommandKeys::CHECK_CURRENCY)
       {
-        ac = game->actions.check_currency(creature);
+        ac = game.actions.check_currency(creature);
       }
       else if (command_name == CommandKeys::SAVE_GAME)
       {
-        ac = game->actions.save(creature);
+        ac = game.actions.save(creature);
       }
       else if (command_name == CommandKeys::EAT)
       {
-        ac = game->actions.eat(creature);
+        ac = game.actions.eat(creature);
       }
       else if (command_name == CommandKeys::CHAT)
       {
-        ac = game->actions.chat(creature);
+        ac = game.actions.chat(creature);
       }
       else if (command_name == CommandKeys::APPLY_FEATURE)
       {
-        ac = game->actions.apply(creature);
+        ac = game.actions.apply(creature);
       }
     }
   }
@@ -154,17 +154,17 @@ ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, D
   
   if (command)
   {
-    Game* game = Game::instance();
+    Game& game = Game::instance();
     string command_name = command->get_name();
     Direction direction = command->get_direction();
 
     if (CommandKeys::is_movement_type_key(command_name))
     {
-      return game->actions.move(creature, direction);
+      return game.actions.move(creature, direction);
     }
     else if (CommandKeys::is_attack_type_key(command_name))
     {
-      return game->actions.attack(creature, direction);
+      return game.actions.attack(creature, direction);
     }
   }
   

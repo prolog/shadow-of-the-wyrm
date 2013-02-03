@@ -28,67 +28,64 @@ CreaturePtr CreatureFactory::create_by_creature_id
 {
   CreaturePtr creature;
   
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
+  CreatureGenerationValuesMap cgv_map = game.get_creature_generation_values_ref();
+  CreatureMap creature_map = game.get_creatures_ref();
+    
+  CreatureMap::iterator c_it = creature_map.find(creature_id);
+  CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
+    
+  if (c_it != creature_map.end() && cgv_it != cgv_map.end())
   {
-    CreatureGenerationValuesMap cgv_map = game->get_creature_generation_values_ref();
-    CreatureMap creature_map = game->get_creatures_ref();
-    
-    CreatureMap::iterator c_it = creature_map.find(creature_id);
-    CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
-    
-    if (c_it != creature_map.end() && cgv_it != cgv_map.end())
+    // If the current generation amount is equal to the maximum, then
+    // we can't generate any more instances of that creature - return
+    // the null shared ptr.
+    //
+    // The default values for current and maximum are 0 and -1,
+    // respectively, so by default, there should be no limit to the
+    // number of creatures generated for a particular type, so long
+    // as a limit has not been specified by the configuration.
+    CreatureGenerationValues& cgv  = cgv_it->second;
+    if (cgv.is_maximum_reached())
     {
-      // If the current generation amount is equal to the maximum, then
-      // we can't generate any more instances of that creature - return
-      // the null shared ptr.
-      //
-      // The default values for current and maximum are 0 and -1,
-      // respectively, so by default, there should be no limit to the
-      // number of creatures generated for a particular type, so long
-      // as a limit has not been specified by the configuration.
-      CreatureGenerationValues& cgv  = cgv_it->second;
-      if (cgv.is_maximum_reached())
-      {
-        return creature;
-      }
-
-      CreaturePtr creature_template = c_it->second;
-      
-      Creature creature_instance = *creature_template;
-      creature = boost::make_shared<Creature>(creature_instance);
-      set_default_resistances(creature);
-      
-      // Set HP to a randomly generated value in the initial range.
-      Dice initial_hp_range = cgv.get_initial_hit_points();
-      Statistic hit_points(RNG::dice(initial_hp_range));
-      creature->set_hit_points(hit_points);
-      
-      // Set the exp value to a randomly generated value around the base.
-      uint base_experience_value = cgv.get_base_experience_value();
-      uint actual_experience_value = RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER));
-      creature->set_experience_value(actual_experience_value);
-      
-      // If the creature is guaranteed to be generated as friendly, then be sure
-      // that hostility isn't set.
-      if (!cgv.get_friendly())
-      {
-        // Set the creature hostile to the player, if the player fails a charisma check.
-        set_hostility_to_player(creature);
-      }
-      
-      initialize(creature);
-
-      // Now that the creature has been generated, increment the number of such
-      // creatures.
-      cgv.incr_current();
+      return creature;
     }
-    
-    InitialItemEquipper iie;
-    iie.equip(creature, action_manager);
-    iie.add_inventory_items(creature, action_manager);
+
+    CreaturePtr creature_template = c_it->second;
+      
+    Creature creature_instance = *creature_template;
+    creature = boost::make_shared<Creature>(creature_instance);
+    set_default_resistances(creature);
+      
+    // Set HP to a randomly generated value in the initial range.
+    Dice initial_hp_range = cgv.get_initial_hit_points();
+    Statistic hit_points(RNG::dice(initial_hp_range));
+    creature->set_hit_points(hit_points);
+      
+    // Set the exp value to a randomly generated value around the base.
+    uint base_experience_value = cgv.get_base_experience_value();
+    uint actual_experience_value = RNG::range(ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_LOWER_MULTIPLIER), ceil(base_experience_value * CreatureGenerationConstants::BASE_EXPERIENCE_UPPER_MULTIPLIER));
+    creature->set_experience_value(actual_experience_value);
+      
+    // If the creature is guaranteed to be generated as friendly, then be sure
+    // that hostility isn't set.
+    if (!cgv.get_friendly())
+    {
+      // Set the creature hostile to the player, if the player fails a charisma check.
+      set_hostility_to_player(creature);
+    }
+      
+    initialize(creature);
+
+    // Now that the creature has been generated, increment the number of such
+    // creatures.
+    cgv.incr_current();
   }
+    
+  InitialItemEquipper iie;
+  iie.equip(creature, action_manager);
+  iie.add_inventory_items(creature, action_manager);
   
   return creature;
 }
@@ -116,34 +113,31 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   creature.set_level(1);
   creature.set_sex(creature_sex);
 
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (game)
+  DeityMap deities = game.get_deities_ref();
+  RaceMap races = game.get_races_ref();
+  ClassMap classes = game.get_classes_ref();
+
+  RacePtr race = races[race_id];
+  ClassPtr char_class = classes[class_id];
+  DeityPtr deity = deities[deity_id];
+
+  if (race && char_class && deity)
   {
-    DeityMap deities = game->get_deities_ref();
-    RaceMap races = game->get_races_ref();
-    ClassMap classes = game->get_classes_ref();
+    // Statistics, HP, and AP
+    creature = set_initial_statistics(creature, race, char_class, deity);
 
-    RacePtr race = races[race_id];
-    ClassPtr char_class = classes[class_id];
-    DeityPtr deity = deities[deity_id];
+    // Resistances
+    creature = set_initial_resistances(creature, race, char_class);
 
-    if (race && char_class && deity)
-    {
-      // Statistics, HP, and AP
-      creature = set_initial_statistics(creature, race, char_class, deity);
-
-      // Resistances
-      creature = set_initial_resistances(creature, race, char_class);
-
-      // Skills
-      creature = set_initial_skills(creature, race, char_class);
+    // Skills
+    creature = set_initial_skills(creature, race, char_class);
       
-      // Religion
-      Religion religion = ReligionFactory::create_religion(deities);
-      religion.set_active_deity_id(deity_id);
-      creature.set_religion(religion);
-    }
+    // Religion
+    Religion religion = ReligionFactory::create_religion(deities);
+    religion.set_active_deity_id(deity_id);
+    creature.set_religion(religion);
   }
 
   CreaturePtr creaturep = boost::make_shared<Creature>(creature);
@@ -329,27 +323,24 @@ void CreatureFactory::initialize(CreaturePtr creature)
 void CreatureFactory::set_hostility_to_player(CreaturePtr npc)
 {
   HostilityManager hostility_manager;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    MapPtr map = game->get_current_map();
+  MapPtr map = game.get_current_map();
 
-    // This may be called during the initial game set up, at which point
-    // the game will not have a map.
-    if (map)
-    {
-      CreaturePtr player = map->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
+  // This may be called during the initial game set up, at which point
+  // the game will not have a map.
+  if (map)
+  {
+    CreaturePtr player = map->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
     
-      if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
-      {
-        hostility_manager.set_hostility_to_player(npc);
-      }
-    }
-    else
+    if (player && (RNG::percent_chance(100 - player->get_charisma().get_current())))
     {
       hostility_manager.set_hostility_to_player(npc);
     }
+  }
+  else
+  {
+    hostility_manager.set_hostility_to_player(npc);
   }
 }
 

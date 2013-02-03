@@ -48,10 +48,10 @@ pair<bool, string> RangedCombatApplicabilityChecker::can_creature_do_ranged_comb
 // applicable on the overworld map.
 bool RangedCombatApplicabilityChecker::is_current_map_type_not_world()
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   bool current_map_is_not_world = false;
 
-  current_map_is_not_world = (game && !(game->get_current_map()->get_map_type() == MAP_TYPE_WORLD));
+  current_map_is_not_world = !(game.get_current_map()->get_map_type() == MAP_TYPE_WORLD);
   
   return current_map_is_not_world;
 }

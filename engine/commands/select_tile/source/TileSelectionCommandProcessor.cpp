@@ -15,12 +15,10 @@ TileSelectionCommandProcessor::~TileSelectionCommandProcessor()
 
 pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr creature, CommandPtr command, TileSelectionManager* const tsm)
 {
-  pair<bool, ActionCostValue> result(false, 0);
-  
+  pair<bool, ActionCostValue> result(false, 0);  
   ActionCostValue action_cost = 1;
-  Game* game = Game::instance();
 
-  if (creature && game && command)
+  if (creature && command)
   {
     string command_name = command->get_name();
     CursorDirectionalCommandPtr cdc = dynamic_pointer_cast<CursorDirectionalCommand>(command);
@@ -62,11 +60,11 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_direct
   pair<bool, ActionCostValue> result(false, 0);
   
   ActionCostValue action_cost = 0;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
 
-  if (creature && cursor_command && game)
+  if (creature && cursor_command)
   {
-    action_cost = game->actions.select_tile(creature, cursor_command->get_direction(), tsm);
+    action_cost = game.actions.select_tile(creature, cursor_command->get_direction(), tsm);
     
     result.first = true;
     result.second = action_cost;

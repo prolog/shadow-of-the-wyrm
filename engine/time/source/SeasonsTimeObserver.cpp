@@ -13,28 +13,22 @@ SeasonsTimeObserver::SeasonsTimeObserver()
 // transition message.
 void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    WorldPtr world = game->worlds.at(game->current_world_ix);
+  WorldPtr world = game.worlds.at(game.current_world_ix);
     
-    if (world)
-    {
-      Calendar& calendar = world->get_calendar();
-      bool season_updated = calendar.update_season_if_necessary();
+  if (world)
+  {
+    Calendar& calendar = world->get_calendar();
+    bool season_updated = calendar.update_season_if_necessary();
       
-      if (season_updated)
-      {
-        string message = calendar.get_season()->get_new_season_message_sid();
-        MessageManager* manager = MessageManager::instance();
+    if (season_updated)
+    {
+      string message = calendar.get_season()->get_new_season_message_sid();
+      MessageManager& manager = MessageManager::instance();
         
-        if (manager)
-        {
-          manager->add_new_message(StringTable::get(message));
-          manager->send();
-        }
-      }
+      manager.add_new_message(StringTable::get(message));
+      manager.send();
     }
   }
 }

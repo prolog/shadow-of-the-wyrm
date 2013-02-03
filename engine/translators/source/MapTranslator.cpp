@@ -80,50 +80,45 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile, const
 {
   DisplayTile display_tile;
 
-  Game* game_info = Game::instance();
-
-  if (game_info)
+  if (fov_tile)
   {
-    if (fov_tile)
-    {
-      CreaturePtr creature = actual_tile->get_creature();
-      Inventory& inv = actual_tile->get_items();
-      FeaturePtr feature = actual_tile->get_feature();
+    CreaturePtr creature = actual_tile->get_creature();
+    Inventory& inv = actual_tile->get_items();
+    FeaturePtr feature = actual_tile->get_feature();
 
-      if (creature) // If a creature exists on this tile - will be null if the ptr is not init'd
-      {
-        display_tile = create_display_tile_from_creature(creature);
-      }
-      else if (!inv.empty()) // If at least one item exists in the tile's inventory of items
-      {
-        ItemPtr item = inv.at(0); // Get the first item
-        display_tile = create_display_tile_from_item(item);
-      }
-      else if (feature) // There's no creature, and no items.  Is there a feature?
-      {
-        display_tile = create_display_tile_from_feature(feature);
-      }
-      else // Nothing else - display the tile.
-      {
-        display_tile = create_display_tile_from_tile(actual_tile);
-      }      
+    if (creature) // If a creature exists on this tile - will be null if the ptr is not init'd
+    {
+      display_tile = create_display_tile_from_creature(creature);
+    }
+    else if (!inv.empty()) // If at least one item exists in the tile's inventory of items
+    {
+      ItemPtr item = inv.at(0); // Get the first item
+      display_tile = create_display_tile_from_item(item);
+    }
+    else if (feature) // There's no creature, and no items.  Is there a feature?
+    {
+      display_tile = create_display_tile_from_feature(feature);
+    }
+    else // Nothing else - display the tile.
+    {
+      display_tile = create_display_tile_from_tile(actual_tile);
+    }      
+  }
+  else
+  {
+    if (actual_tile->get_explored())
+    {
+      display_tile = create_unseen_and_explored_display_tile(actual_tile);
     }
     else
     {
-      if (actual_tile->get_explored())
+      if (actual_tile->get_viewed())
       {
-        display_tile = create_unseen_and_explored_display_tile(actual_tile);
+        display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile);          
       }
       else
       {
-        if (actual_tile->get_viewed())
-        {
-          display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile);          
-        }
-        else
-        {
-          display_tile = create_unseen_and_unexplored_display_tile();
-        }
+        display_tile = create_unseen_and_unexplored_display_tile();
       }
     }
   }
@@ -155,14 +150,11 @@ DisplayTile MapTranslator::create_display_tile_from_item(const ItemPtr& item)
 DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile)
 {
   DisplayTile display_tile;
-  Game* game_info = Game::instance();
+  Game& game = Game::instance();
 
-  if (game_info)
-  {
-    vector<DisplayTile> tiles_info = game_info->get_tile_display_info_ref();
-    DisplayTile tile_info = tiles_info.at(tile->get_tile_type());
-    display_tile = tile_info;    
-  }
+  vector<DisplayTile> tiles_info = game.get_tile_display_info_ref();
+  DisplayTile tile_info = tiles_info.at(tile->get_tile_type());
+  display_tile = tile_info;    
   
   return display_tile;
 }

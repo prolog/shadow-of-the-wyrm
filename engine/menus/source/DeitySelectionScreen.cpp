@@ -22,8 +22,8 @@ void DeitySelectionScreen::initialize()
 {
   if (race)
   {
-    Game* game_instance = Game::instance();
-    DeityMap deities = game_instance->get_deities_ref();
+    Game& game_instance = Game::instance();
+    DeityMap deities = game_instance.get_deities_ref();
     vector<string> deity_ids = race->get_initial_deity_ids();
 
     TextComponentPtr deity_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_DEITY));
@@ -55,13 +55,13 @@ void DeitySelectionScreen::initialize()
         else
         {
           string error_msg = "Deity ID (" + deity_id + ") found, but DeityPtr is null.";
-          Log::instance()->log(error_msg);
+          Log::instance().log(error_msg);
         }
       }
       else
       {
         string error_msg = "Could not find deity_id: " + deity_id;
-        Log::instance()->log(error_msg);
+        Log::instance().log(error_msg);
       }
     }
     

@@ -32,8 +32,6 @@
 
 using namespace std;
 
-Game* Game::game_instance = NULL;
-
 Game::Game()
 : keep_playing(true), reload_game_loop(false), current_world_ix(0)
 {
@@ -46,16 +44,6 @@ Game::Game()
 
 Game::~Game()
 {
-}
-
-Game* Game::instance()
-{
-  if (!game_instance)
-  {
-    game_instance = new Game();
-  }
-
-  return game_instance;
 }
 
 void Game::set_display(DisplayPtr game_display)
@@ -189,7 +177,7 @@ void Game::create_new_world(CreaturePtr creature)
   }
   else
   {
-    Log::instance()->log("Couldn't get player's initial starting location!");
+    Log::instance().log("Couldn't get player's initial starting location!");
   }
 }
 
@@ -226,9 +214,9 @@ void Game::go()
 
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), new_game);
 
-  MessageManager* manager = MessageManager::instance();
-  manager->add_new_message(welcome_message);
-  manager->send();
+  MessageManager& manager = MessageManager::instance();
+  manager.add_new_message(welcome_message);
+  manager.send();
 
   CreatureCalculator::update_calculated_values(current_player);
  
@@ -386,7 +374,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         // The player will already have had a chance to read the messages.
         if (current_creature->get_is_player())
         {
-          MessageManager::instance()->clear_if_necessary();
+          MessageManager::instance().clear_if_necessary();
         }
 
         action_cost = CommandProcessor::process(current_creature, command, display);
@@ -468,7 +456,7 @@ ActionManager& Game::get_action_manager_ref()
 
 bool Game::serialize(ostream& stream)
 {
-  Log::instance()->trace("Game::serialize - start");
+  Log::instance().trace("Game::serialize - start");
 
   // Write a synopsis about the player's character, to be used when viewing
   // the list of saved games.
@@ -525,14 +513,14 @@ bool Game::serialize(ostream& stream)
 
   // Game command factory and keyboard map get built up every time - don't save these.
     
-  Log::instance()->trace("Game::serialize - end");
+  Log::instance().trace("Game::serialize - end");
 
   return true;
 }
 
 bool Game::deserialize(istream& stream)
 {
-  Log::instance()->trace("Game::deserialize - start");
+  Log::instance().trace("Game::deserialize - start");
 
   Serialize::consume_string(stream); // character synopsis
 
@@ -601,7 +589,7 @@ bool Game::deserialize(istream& stream)
     
   // Game command factory and keyboard map get built up every time - don't load these.
 
-  Log::instance()->trace("Game::deserialize - end");
+  Log::instance().trace("Game::deserialize - end");
   return true;
 }
 

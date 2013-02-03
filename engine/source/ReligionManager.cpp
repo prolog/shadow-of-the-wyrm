@@ -10,14 +10,11 @@ ReligionManager::ReligionManager()
 // Get a shared pointer to the deity.
 DeityPtr ReligionManager::get_deity(const string& deity_id) const
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   DeityPtr deity;
   
-  if (game)
-  {
-    DeityMap deities = game->get_deities_ref();
-    deity            = deities[deity_id];
-  }
+  DeityMap deities = game.get_deities_ref();
+  deity            = deities[deity_id];
   
   return deity;
 }

@@ -4,8 +4,6 @@
 
 using namespace std;
 
-MessageManager* MessageManager::manager_instance = NULL;
-
 MessageManager::MessageManager()
 : buffer_has_messages(false)
 {
@@ -13,17 +11,6 @@ MessageManager::MessageManager()
 
 MessageManager::~MessageManager()
 {
-}
-
-// Get the singleton instance.
-MessageManager* MessageManager::instance()
-{
-  if (manager_instance == NULL)
-  {
-    manager_instance = new MessageManager();
-  }
-
-  return manager_instance;
 }
 
 // Clear the display of any text.

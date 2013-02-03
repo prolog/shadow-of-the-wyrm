@@ -14,25 +14,30 @@ enum LoggingLevel
 class Log
 {
   public:
-    static Log* instance();
+    static Log& instance()
+    {
+      static Log inst;
+      return inst;
+    }
 
-           void error(const std::string& to_error);
-           void log(const std::string& to_log);
-           void trace(const std::string& to_trace);
-           void debug(const std::string& to_debug);
+    void error(const std::string& to_error);
+    void log(const std::string& to_log);
+    void trace(const std::string& to_trace);
+    void debug(const std::string& to_debug);
 
-  protected:
+  private:
     friend int main(int argc, char* argv[]);
     static Log* instance(const LoggingLevel level_to_set);
-    Log(const LoggingLevel log_level);
-    ~Log();
+    Log(); // Open file
+    ~Log(); // Close generated file
+    Log(const Log& log); // Do not implement.
+    bool operator=(const Log& log); // Do not implement.
 
     static void set_log_level(const LoggingLevel);
 
     std::string create_filename();
     std::string create_datetimestamp();
 
-    static Log* log_instance;
     static LoggingLevel level;
     static int counter;
     std::ofstream sl_log;

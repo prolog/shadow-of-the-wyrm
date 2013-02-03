@@ -13,7 +13,7 @@ ActionCostValue CharacterDumpManager::dump_character(CreaturePtr creature)
 {
   if (creature)
   {
-    MessageManager* manager = MessageManager::instance();
+    MessageManager& manager = MessageManager::instance();
     string name = creature->get_name();
     string dump_message = TextMessages::get_dumping_character_message(name);
     
@@ -22,8 +22,8 @@ ActionCostValue CharacterDumpManager::dump_character(CreaturePtr creature)
     
     file.write(dumper.str());
     
-    manager->add_new_message(dump_message);
-    manager->send();
+    manager.add_new_message(dump_message);
+    manager.send();
   }
   
   return get_action_cost_value();

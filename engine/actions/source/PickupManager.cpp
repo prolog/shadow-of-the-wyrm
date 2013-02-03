@@ -14,11 +14,11 @@ using namespace std;
 ActionCostValue PickupManager::pick_up(CreaturePtr creature, ActionManager * const am)
 {  
   ActionCostValue action_cost_value = 0;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (creature && game)
+  if (creature)
   {
-    MapPtr map = game->get_current_map();
+    MapPtr map = game.get_current_map();
     
     if (map->get_map_type() == MAP_TYPE_WORLD)
     {
@@ -92,28 +92,28 @@ ActionCostValue PickupManager::handle_pickup(CreaturePtr creature, MapPtr map, A
 // Handle the case where we're trying to pick up on the world map, which is an invalid case.
 void PickupManager::handle_world_map_pickup(CreaturePtr creature)
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && creature->get_is_player() && manager)
+  if (creature && creature->get_is_player())
   {
     string pick_up_not_allowed = StringTable::get(ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED);
     
-    manager->add_new_message(pick_up_not_allowed);
-    manager->send();
+    manager.add_new_message(pick_up_not_allowed);
+    manager.send();
   }
 }
 
 // Handle the case where we're trying to pick up from a tile that contains no items.
 void PickupManager::handle_empty_tile_pickup(CreaturePtr creature)
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && creature->get_is_player() && manager)
+  if (creature && creature->get_is_player())
   {
     string no_item_on_ground = StringTable::get(ActionTextKeys::ACTION_PICK_UP_NOTHING_ON_GROUND);
     
-    manager->add_new_message(no_item_on_ground);
-    manager->send();
+    manager.add_new_message(no_item_on_ground);
+    manager.send();
   }  
 }
 
@@ -121,17 +121,17 @@ void PickupManager::handle_empty_tile_pickup(CreaturePtr creature)
 // If the item can't be merged into the equipment, return false.
 bool PickupManager::merge_into_equipment(CreaturePtr creature, ItemPtr item)
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (creature && manager)
+  if (creature)
   {
     Equipment& equipment = creature->get_equipment();
     
     if (equipment.merge(item))
     {
       string item_merged_into_equipment = TextMessages::get_item_pick_up_and_merge_message(item);
-      manager->add_new_message(item_merged_into_equipment);
-      manager->send();
+      manager.add_new_message(item_merged_into_equipment);
+      manager.send();
       
       return true;
     }
@@ -144,9 +144,9 @@ bool PickupManager::merge_into_equipment(CreaturePtr creature, ItemPtr item)
 // add the item to the inventory.
 bool PickupManager::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr item)
 {
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
 
-  if (creature && manager)
+  if (creature)
   {
     Inventory& creature_inv = creature->get_inventory();
     if (!creature_inv.merge(item))
@@ -160,8 +160,8 @@ bool PickupManager::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr it
     {
       string pick_up_message = TextMessages::get_item_pick_up_message(item);
       
-      manager->add_new_message(pick_up_message);
-      manager->send();        
+      manager.add_new_message(pick_up_message);
+      manager.send();        
     }
     
     return true;

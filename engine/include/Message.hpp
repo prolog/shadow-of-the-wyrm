@@ -7,10 +7,10 @@
 
 enum MessageImportance
 {
-	MessageImportance_UNDEFINED = -1,
-    MessageImportance_Normal = 0,
-	MessageImportance_High = 1,
-	MessageImportance_Critical = 2
+  MessageImportance_UNDEFINED = -1,
+  MessageImportance_Normal = 0,
+  MessageImportance_High = 1,
+  MessageImportance_Critical = 2
 };
 
 class Message

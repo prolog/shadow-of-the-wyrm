@@ -20,7 +20,11 @@
 class Game : public ISerializable
 {
   public:
-    static Game* instance();
+    static Game& instance()
+    {
+      static Game game;
+      return game;
+    }
 
     void set_display(DisplayPtr display);
     DisplayPtr get_display() const;
@@ -74,7 +78,7 @@ class Game : public ISerializable
     virtual bool deserialize(std::istream& stream);
 
 
-  protected:
+  private:
     friend class SavageLandsEngine;
     friend class CreatureDeathManager;
     friend class PlayerDeathManager;
@@ -89,7 +93,9 @@ class Game : public ISerializable
     friend class SL_Engine_Game; // unit testing
 
     Game();
-    virtual ~Game();
+    Game(const Game& game);
+    bool operator=(const Game& game);
+   ~Game();
 
     // Game commands - protected, so they should only be called by SavageLandsEngine
     // or CommandProcessor.
@@ -108,7 +114,6 @@ class Game : public ISerializable
     
     bool keep_playing;
     bool reload_game_loop;
-    static Game* game_instance;
 
     // The races, classes, and items are not the actual in-game items;
     // they're the template upon which the in-game items are built.

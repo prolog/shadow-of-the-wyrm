@@ -17,9 +17,9 @@ EquipmentCommandProcessor::~EquipmentCommandProcessor()
 ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, CommandPtr command)
 {
   ActionCostValue process_result = 1;
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game && creature && command)
+  if (creature && command)
   {
     Command* raw_command = command.get();
     EquipmentCommand* raw_eq_command = dynamic_cast<EquipmentCommand*>(raw_command);
@@ -37,14 +37,14 @@ ActionCostValue EquipmentCommandProcessor::process(CreaturePtr creature, Command
           EquipmentWornLocation worn_slot = wear_raw_command->get_equipment_worn_location();
           
           // Only advance the turn if something was actually either worn or removed.
-          process_result = game->actions.wear_or_remove_item(creature, worn_slot);
+          process_result = game.actions.wear_or_remove_item(creature, worn_slot);
         }
       }
       else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
       {
         list<IItemFilterPtr> display_filter = ItemFilterFactory::create_empty_filter();
         
-        game->actions.inventory(creature, creature->get_inventory(), display_filter, true);
+        game.actions.inventory(creature, creature->get_inventory(), display_filter, true);
         // Because the player is just looking at the items, this shouldn't
         // advance any turn information.
         process_result = 0;

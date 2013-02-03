@@ -144,27 +144,24 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
 {   
   CommandPtr movement_command;
 
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game)
-  {
-    MapPtr current_map = game->get_current_map();
-    Dimensions current_dimensions = current_map->size();
-    Coordinate this_creature_coords = current_map->get_location(this_creature_id);
+  MapPtr current_map = game.get_current_map();
+  Dimensions current_dimensions = current_map->size();
+  Coordinate this_creature_coords = current_map->get_location(this_creature_id);
    
-    int this_row = this_creature_coords.first;
-    int this_col = this_creature_coords.second;
+  int this_row = this_creature_coords.first;
+  int this_col = this_creature_coords.second;
    
-    vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
-    vector<Coordinate> choice_coordinates = get_adjacent_coordinates_without_creatures(current_map, adjacent_coordinates);
+  vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
+  vector<Coordinate> choice_coordinates = get_adjacent_coordinates_without_creatures(current_map, adjacent_coordinates);
     
-    // Pick a tile if not empty
-    if (!choice_coordinates.empty())
-    {
-      Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size()-1));
-      Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
-      movement_command = boost::make_shared<MovementCommand>(direction);
-    }
+  // Pick a tile if not empty
+  if (!choice_coordinates.empty())
+  {
+    Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size()-1));
+    Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
+    movement_command = boost::make_shared<MovementCommand>(direction);
   }
 
   return movement_command;

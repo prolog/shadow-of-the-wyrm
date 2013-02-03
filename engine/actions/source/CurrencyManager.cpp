@@ -28,15 +28,12 @@ void CurrencyManager::add_currency_message_if_necessary(CreaturePtr creature, co
 {
   if (creature->get_is_player())
   {
-    MessageManager* manager = MessageManager::instance();
+    MessageManager& manager = MessageManager::instance();
     
-    if (manager)
-    {
-      string currency_message = TextMessages::get_currency_amount_message(currency_quantity);
+    string currency_message = TextMessages::get_currency_amount_message(currency_quantity);
       
-      manager->add_new_message(currency_message);
-      manager->send();
-    }
+    manager.add_new_message(currency_message);
+    manager.send();
   }
 }
 

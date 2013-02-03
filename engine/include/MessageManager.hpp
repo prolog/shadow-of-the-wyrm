@@ -5,7 +5,11 @@
 class MessageManager
 {
 	public:
-    static MessageManager* instance();
+    static MessageManager& instance()
+    {
+      static MessageManager mm;
+      return mm;
+    }
 
     void clear_if_necessary();
     void send(const bool halt_afterwards = false, const bool reset_afterwards = false);
@@ -17,11 +21,13 @@ class MessageManager
 		Messages get_unread_messages() const;
 		Messages get_unread_messages_and_mark_as_read();
 
-	protected:
+	private:
     std::string get_count_indicator(const Message& m);
     
     friend class SavageLandsEngine;
     MessageManager();
+    MessageManager(const MessageManager&); // Do not implement!
+    bool operator=(const MessageManager&); // Do not implement!
     ~MessageManager();
 
     void set_display(DisplayPtr new_display);
@@ -30,6 +36,4 @@ class MessageManager
 		Messages unread;
 		DisplayPtr user_display;
 		bool buffer_has_messages;
-
-		static MessageManager* manager_instance;
 };

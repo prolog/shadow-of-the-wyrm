@@ -53,10 +53,10 @@ void WorldTimeKeeper::reset()
 
 void WorldTimeKeeper::tick(const double seconds)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   seconds_counter += seconds;
   
-  while (game && game->should_keep_playing() && seconds_counter > 60)
+  while (game.should_keep_playing() && seconds_counter > 60)
   {
     seconds_counter -= 60;
     total_seconds_counter += 60;

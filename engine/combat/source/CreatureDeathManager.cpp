@@ -16,9 +16,9 @@ CreatureDeathManager::~CreatureDeathManager()
 
 void CreatureDeathManager::die()
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game && map && creature)
+  if (map && creature)
   {
     // Remove the creature from the tile.
     TilePtr attacked_tile = MapUtils::get_tile_for_creature(map, creature);
@@ -27,7 +27,7 @@ void CreatureDeathManager::die()
     // Remove all equipment.
     for (int worn_slot = EQUIPMENT_WORN_HEAD; worn_slot < EQUIPMENT_WORN_LAST; worn_slot++)
     {
-      game->actions.remove_item(creature, static_cast<EquipmentWornLocation>(worn_slot));
+      game.actions.remove_item(creature, static_cast<EquipmentWornLocation>(worn_slot));
     }
 
     // Drop inventory on to the creature's tile.
@@ -41,11 +41,8 @@ void CreatureDeathManager::die()
       ground.add_front(current_item);
     }
 
-    MessageManager* manager = MessageManager::instance();
-    if (manager)
-    {
-      string death_message = CombatTextKeys::get_monster_death_message(StringTable::get(creature->get_description_sid()));
-      manager->add_new_message(death_message);      
-    }
+    MessageManager& manager = MessageManager::instance();
+    string death_message = CombatTextKeys::get_monster_death_message(StringTable::get(creature->get_description_sid()));
+    manager.add_new_message(death_message);      
   }
 }

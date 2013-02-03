@@ -37,12 +37,12 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
 {
   ActionCostValue movement_success = 0;
 
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();  
+  Game& game = Game::instance();
+  MessageManager& manager = MessageManager::instance();  
 
-  if (game && creature && manager)
+  if (creature)
   {
-    MapPtr map = game->get_current_map();
+    MapPtr map = game.get_current_map();
     
     // Get the creature's location from the map
     Coordinate creature_location = map->get_location(creature->get_id());
@@ -66,8 +66,8 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
       {
         movement_success = true;
         string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
-        manager->add_new_message(cannot_escape);
-        manager->send();
+        manager.add_new_message(cannot_escape);
+        manager.send();
       }
     }
     // Otherwise, it's a regular move within the current map.
@@ -87,52 +87,49 @@ ActionCostValue MovementManager::move_off_map(CreaturePtr creature, MapPtr map, 
 {
   ActionCostValue movement_success = 0;
 
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();  
+  Game& game = Game::instance();
+  MessageManager& manager = MessageManager::instance();  
   MapExitPtr map_exit = map->get_map_exit();
 
-  if (game && manager)
+  if (!MapUtils::can_exit_map(map_exit))
   {
-    if (!MapUtils::can_exit_map(map_exit))
-    {
-      if (creature->get_is_player())
-      { 
-        string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
+    if (creature->get_is_player())
+    { 
+      string movement_message = StringTable::get(MovementTextKeys::ACTION_MOVE_OFF_WORLD_MAP);
 
-        manager->add_new_message(movement_message);
-        manager->send();
-      }
+      manager.add_new_message(movement_message);
+      manager.send();
     }
+  }
+  else
+  {
+    if (creature->get_is_player())
+    {
+      string leave_area = TextMessages::get_confirmation_message(TextKeys::DECISION_LEAVE_AREA);
+      game.display->confirm(leave_area);
+      
+      if (creature->get_decision_strategy()->get_confirmation())
+      {
+        move_to_new_map(creatures_old_tile, map, map_exit);
+        movement_success = get_action_cost_value();
+      }
+      
+      // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
+      game.display->clear_messages();
+    }
+    // It's an NPC leaving the map - display the exit message.
     else
     {
-      if (creature->get_is_player())
-      {
-        string leave_area = TextMessages::get_confirmation_message(TextKeys::DECISION_LEAVE_AREA);
-        game->display->confirm(leave_area);
-      
-        if (creature->get_decision_strategy()->get_confirmation())
-        {
-          move_to_new_map(creatures_old_tile, map, map_exit);
-          movement_success = get_action_cost_value();
-        }
-      
-        // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
-        game->display->clear_messages();
-      }
-      // It's an NPC leaving the map - display the exit message.
-      else
-      {
-        // Remove from tile and from map's creatures.
-        creatures_old_tile->remove_creature();
-        map->remove_creature(creature->get_id());
+      // Remove from tile and from map's creatures.
+      creatures_old_tile->remove_creature();
+      map->remove_creature(creature->get_id());
         
-        string npc_exit_message = TextMessages::get_npc_escapes_message(StringTable::get(creature->get_description_sid()));
-        manager->add_new_message(npc_exit_message);
-        manager->send();
+      string npc_exit_message = TextMessages::get_npc_escapes_message(StringTable::get(creature->get_description_sid()));
+      manager.add_new_message(npc_exit_message);
+      manager.send();
         
-        movement_success = get_action_cost_value();
-      } 
-    }
+      movement_success = get_action_cost_value();
+    } 
   }
   
   return movement_success;
@@ -141,11 +138,9 @@ ActionCostValue MovementManager::move_off_map(CreaturePtr creature, MapPtr map, 
 ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords)
 {
   ActionCostValue movement_success = 0;
-
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
+  MessageManager& manager = MessageManager::instance();
   
-  if (game && manager && creatures_new_tile)
+  if (creatures_new_tile)
   {
     if (MapUtils::is_blocking_feature_present(creatures_new_tile))
     {
@@ -158,8 +153,8 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
       if (!handled)
       {
         string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
-        manager->add_new_message(blocked);
-        manager->send();
+        manager.add_new_message(blocked);
+        manager.send();
       }
       
       movement_success = 0;
@@ -227,10 +222,10 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
   map->get_map_type() == MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())
     : generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, tile->get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
-  Game* game = Game::instance();
-  MessageManager* manager = MessageManager::instance();
+  Game& game = Game::instance();
+  MessageManager& manager = MessageManager::instance();
 
-  if (game && manager && generator)
+  if (generator)
   {
     MapPtr new_map;
 
@@ -239,7 +234,7 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
 
     if (!custom_map_id.empty())
     {
-      new_map = game->get_map_registry_ref().get_map(custom_map_id);
+      new_map = game.get_map_registry_ref().get_map(custom_map_id);
     }
     else
     {
@@ -294,7 +289,7 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
 
     move_to_new_map(tile, map, new_map);
                 
-    manager->add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
+    manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
     add_tile_related_messages(creature, manager, new_creature_tile);
                 
     action_cost_value = get_action_cost_value();
@@ -311,19 +306,16 @@ bool MovementManager::confirm_move_to_tile_if_necessary(CreaturePtr creature, Ti
   
   if (details.first == true)
   {
-    MessageManager* manager = MessageManager::instance();
+    MessageManager& manager = MessageManager::instance();
     
-    if (manager)
-    {
-      if (creature->get_is_player())
-      { 
-        manager->add_new_confirmation_message(details.second);
-      }
-      
-      bool confirmation = (creature->get_decision_strategy()->get_confirmation());
-      manager->clear_if_necessary();
-      return confirmation;      
+    if (creature->get_is_player())
+    { 
+      manager.add_new_confirmation_message(details.second);
     }
+      
+    bool confirmation = (creature->get_decision_strategy()->get_confirmation());
+    manager.clear_if_necessary();
+    return confirmation;      
   }
   
   return true;  
@@ -331,9 +323,9 @@ bool MovementManager::confirm_move_to_tile_if_necessary(CreaturePtr creature, Ti
 
 void MovementManager::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game && new_map)
+  if (new_map)
   {
     // Remove the creature from its present tile, and from the temporary
     // vector of creatures as well.
@@ -343,21 +335,21 @@ void MovementManager::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapP
     MapUtils::place_creature_on_previous_or_first_available_location(new_map, current_creature, current_creature->get_id());
 
     // Set the new map to be loaded in the next iteration of the game loop.
-    game->set_current_map(new_map);
-    game->reload_map();    
+    game.set_current_map(new_map);
+    game.reload_map();    
   }
 }
 
 void MovementManager::move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit)
 {
-  Game* game = Game::instance();
+  Game& game = Game::instance();
   
-  if (game && map_exit)
+  if (map_exit)
   {
     if (map_exit->is_using_map_id())
     {
       string new_map_id = map_exit->get_map_id();
-      MapPtr new_map = game->map_registry.get_map(new_map_id);
+      MapPtr new_map = game.map_registry.get_map(new_map_id);
       
       move_to_new_map(old_tile, old_map, new_map);
     }
@@ -386,30 +378,30 @@ ActionCostValue MovementManager::descend(CreaturePtr creature)
 //       If so, add it.
 // - Are there any items on the tile?
 //       If so, add the appropriate message.
-void MovementManager::add_tile_related_messages(const CreaturePtr& creature, MessageManager* manager, TilePtr tile)
+void MovementManager::add_tile_related_messages(const CreaturePtr& creature, MessageManager& manager, TilePtr tile)
 {
   add_message_about_tile_if_necessary(creature, manager, tile);
   add_message_about_items_on_tile_if_necessary(creature, manager, tile);
 
-  manager->send();
+  manager.send();
 }
 
 // Add a message about the tile if necessary.
-void MovementManager::add_message_about_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile)
+void MovementManager::add_message_about_tile_if_necessary(const CreaturePtr& creature, MessageManager& manager, TilePtr tile)
 {
   if (creature && tile && creature->get_is_player())
   {
     if (tile->display_description_on_arrival() || tile->has_extra_description())
     {
       TileDescriber td(tile);
-      manager->add_new_message(td.describe());
+      manager.add_new_message(td.describe());
     }
   }
 }
 
 // Add a message if the creature is the player, and if there are items on
 // the tile.
-void MovementManager::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, MessageManager* manager, TilePtr tile)
+void MovementManager::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, MessageManager& manager, TilePtr tile)
 {
   if (creature && creature->get_is_player())
   {
@@ -438,7 +430,7 @@ void MovementManager::add_message_about_items_on_tile_if_necessary(const Creatur
       // Send the message
       if (!item_message.empty())
       {
-        manager->add_new_message(item_message);
+        manager.add_new_message(item_message);
       }
     }
   }
