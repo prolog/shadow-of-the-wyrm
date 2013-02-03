@@ -526,6 +526,18 @@
     <Filter Include="Source Files\engine\maps\source\unit_tests">
       <UniqueIdentifier>{21270ff3-3f50-4c1f-8fbc-bb6f29af6d87}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\scripting">
+      <UniqueIdentifier>{6c7e96a2-d829-4376-93e8-0e5f6317010b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\scripting\include">
+      <UniqueIdentifier>{8936e6a7-4a65-42ad-9856-6ab421c4d900}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\scripting">
+      <UniqueIdentifier>{1b1485ec-e31b-4e5c-924b-9c3f25529aeb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\scripting\source">
+      <UniqueIdentifier>{17f0c5d7-f708-449e-bd1a-ab5a3d9ba6dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2114,6 +2126,9 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\KeyManager.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\scripting\include\ScriptEngine.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4015,6 +4030,9 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\KeyManager.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\ScriptEngine.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
