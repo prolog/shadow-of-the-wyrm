@@ -6,7 +6,8 @@ extern "C" {
 #include "lauxlib.h"
 }
 
-// Savage Lands' Lua script engine.
+// Savage Lands' Lua script engine, currently only used for quests.
+//
 // Each instance creates its own script environment, and tears it down in
 // its destructor.
 class ScriptEngine

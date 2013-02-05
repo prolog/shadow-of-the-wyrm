@@ -2846,6 +2846,7 @@
 			</Damage>
 			<Evade>22</Evade>
 			<Soak>15</Soak>
+			<QuestScript>hrimgar.lua</QuestScript>
 		</Creature>
 	</Creatures>
 	<Tiles>

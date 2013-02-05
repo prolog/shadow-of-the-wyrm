@@ -1,6 +1,7 @@
 #include <boost/make_shared.hpp>
 #include "ChatManager.hpp"
 #include "Commands.hpp"
+#include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "MessageManager.hpp"
 #include "StringConstants.hpp"
@@ -28,7 +29,7 @@ ActionCostValue ChatManager::chat(CreaturePtr creature) const
       if (creature_map.size() == 1)
       {
         CreaturePtr speaking_creature = creature_map.begin()->second;
-        spoke = chat_single_creature(speaking_creature);
+        spoke = chat_single_creature(creature, speaking_creature);
       }
       else
       {
@@ -51,23 +52,35 @@ ActionCostValue ChatManager::chat(CreaturePtr creature) const
 
 // Chat with a single creature.  The "single_creature" parameter is the creature
 // that should speak back to the acting creature.
-bool ChatManager::chat_single_creature(CreaturePtr speaking_creature) const
+bool ChatManager::chat_single_creature(CreaturePtr querying_creature, CreaturePtr speaking_creature) const
 {
   bool spoke = false;
 
   if (speaking_creature)
   {
-    string speech_text_sid = speaking_creature->get_speech_text_sid();
+    // Check to see if the creature is quest-granting:
+    string quest_script = speaking_creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_QUEST_SCRIPT);
 
-    // If a creature doesn't have speech text defined, throw up a generic
-    // response.
-    if (speech_text_sid.empty())
+    if (!quest_script.empty())
     {
-      speech_text_sid = ActionTextKeys::ACTION_CHAT_NO_RESPONSE;
+      // JCD FIXME fill this in later...
+      spoke = true;
     }
+    else
+    {
+      // If not, go ahead and use the default speech option:
+      string speech_text_sid = speaking_creature->get_speech_text_sid();
 
-    add_chat_message(speech_text_sid);
-    spoke = true;
+      // If a creature doesn't have speech text defined, throw up a generic
+      // response.
+      if (speech_text_sid.empty())
+      {
+        speech_text_sid = ActionTextKeys::ACTION_CHAT_NO_RESPONSE;
+      }
+
+      add_chat_message(speech_text_sid);
+      spoke = true;
+    }
   }
 
   return spoke;
@@ -108,7 +121,7 @@ bool ChatManager::chat_multiple_options(CreaturePtr querying_creature, const Cre
       if (c_it != creature_map.end())
       {
         CreaturePtr speaking_creature = c_it->second;
-        spoke = chat_single_creature(speaking_creature);
+        spoke = chat_single_creature(querying_creature, speaking_creature);
       }
     }
   }

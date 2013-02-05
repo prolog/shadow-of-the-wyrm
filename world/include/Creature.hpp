@@ -221,6 +221,7 @@ class Creature : public ISerializable
     // by using a map.
     bool has_additional_property(const std::string& property_name) const;
     void set_additional_property(const std::string& property_name, const std::string& property_value);
+    std::string get_additional_property(const std::string& property_name) const;
     void set_additional_properties_map(const std::map<std::string, std::string>& additional_properties_map);
     std::map<std::string, std::string> get_additional_properties_map() const;
 
