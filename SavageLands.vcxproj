@@ -459,6 +459,7 @@
     <ClInclude Include="world\include\Creature.hpp" />
     <ClInclude Include="world\include\CreatureFeatures.hpp" />
     <ClInclude Include="world\include\CreatureGenerationValues.hpp" />
+    <ClInclude Include="world\include\CreatureProperties.hpp" />
     <ClInclude Include="world\include\Currency.hpp" />
     <ClInclude Include="world\include\Damage.hpp" />
     <ClInclude Include="world\include\DamageTypes.hpp" />
@@ -1168,6 +1169,7 @@
     <ClCompile Include="world\source\Creature.cpp" />
     <ClCompile Include="world\source\CreatureFeatures.cpp" />
     <ClCompile Include="world\source\CreatureGenerationValues.cpp" />
+    <ClCompile Include="world\source\CreatureProperties.cpp" />
     <ClCompile Include="world\source\Currency.cpp" />
     <ClCompile Include="world\source\Damage.cpp" />
     <ClCompile Include="world\source\Date.cpp" />

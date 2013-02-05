@@ -2130,6 +2130,9 @@
     <ClInclude Include="engine\scripting\include\ScriptEngine.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\CreatureProperties.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -4033,6 +4036,9 @@
     </ClCompile>
     <ClCompile Include="engine\scripting\source\ScriptEngine.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\CreatureProperties.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -784,6 +784,20 @@ void Creature::set_additional_property(const string& property_name, const string
   additional_properties[property_name] = property_value;
 }
 
+string Creature::get_additional_property(const string& property_name) const
+{
+  string property_value;
+
+  map<string, string>::const_iterator p_it = additional_properties.find(property_name);
+
+  if (p_it != additional_properties.end())
+  {
+    property_value = p_it->second;
+  }
+
+  return property_value;
+}
+
 void Creature::set_additional_properties_map(const map<string, string>& properties_map)
 {
   additional_properties = properties_map;
