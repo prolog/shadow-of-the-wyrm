@@ -63,7 +63,12 @@ bool ChatManager::chat_single_creature(CreaturePtr querying_creature, CreaturePt
 
     if (!quest_script.empty())
     {
-      // JCD FIXME fill this in later...
+      Game& game = Game::instance();
+      ScriptEngine& se = game.get_script_engine_ref();
+      se.execute(quest_script);
+
+      // JCD FIXME: Should have checks here to see if the quest
+      // script executed correctly.
       spoke = true;
     }
     else
