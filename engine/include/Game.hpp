@@ -75,6 +75,8 @@ class Game : public ISerializable
     
     ActionManager& get_action_manager_ref();
 
+    ScriptEngine& get_script_engine_ref();
+
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
 

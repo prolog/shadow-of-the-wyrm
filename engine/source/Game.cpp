@@ -454,6 +454,11 @@ ActionManager& Game::get_action_manager_ref()
   return actions;
 }
 
+ScriptEngine& Game::get_script_engine_ref()
+{
+  return script_engine;
+}
+
 bool Game::serialize(ostream& stream)
 {
   Log::instance().trace("Game::serialize - start");
