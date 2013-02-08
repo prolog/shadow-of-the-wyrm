@@ -130,6 +130,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TILE_TYPE_SHOALS:
     case TILE_TYPE_DUNGEON:
     case TILE_TYPE_ROCK:
+    case TILE_TYPE_BARROW:
     case TILE_TYPE_GRAVE:
     case TILE_TYPE_REEDS:
     case TILE_TYPE_BEACH:

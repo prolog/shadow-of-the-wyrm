@@ -84,6 +84,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = TileGenerator::generate(TILE_TYPE_RIVER);
   }
+  else if (xml_tile == '0')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_BARROW);
+  }
 
   return tile;
 }

@@ -542,6 +542,7 @@ class MovementTextKeys
 class TileTextKeys
 {
   public:
+    static const std::string TILE_DESC_BARROW;
     static const std::string TILE_DESC_BEACH;
     static const std::string TILE_DESC_BUSH;
     static const std::string TILE_DESC_CAIRN;
