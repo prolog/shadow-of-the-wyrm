@@ -71,6 +71,9 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
     case TILE_TYPE_ROCK:
       result_tile = boost::make_shared<RockTile>();
       break;
+    case TILE_TYPE_BARROW:
+      result_tile = boost::make_shared<BarrowTile>();
+      break;
     case TILE_TYPE_GRAVE:
       result_tile = boost::make_shared<GraveTile>();
       break;

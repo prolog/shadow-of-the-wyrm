@@ -2848,6 +2848,36 @@
 			<Soak>15</Soak>
 			<QuestScript>hrimgar.lua</QuestScript>
 		</Creature>
+		<Creature id="garros">
+			<ShortDescriptionSID>GARROS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GARROS_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>GARROS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+				</HP>
+				<Exp>100</Exp>
+			</CreatureGeneration>
+			<Level>6</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>12</Evade>
+			<Soak>3</Soak>
+		</Creature>
 	</Creatures>
 	<Tiles>
 		<FieldTile>
@@ -3072,6 +3102,12 @@
 				<Colour>3</Colour>
 			</Text>
 		</PierTile>
+		<BarrowTile>
+			<Text>
+				<Symbol>0</Symbol>
+				<Colour>3</Colour>
+			</Text>
+		</BarrowTile>
 	</Tiles>
 	<Items>
 		<Armours>
