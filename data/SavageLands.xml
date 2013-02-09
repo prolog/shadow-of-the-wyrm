@@ -2854,29 +2854,190 @@
 			<SpeechTextSID>GARROS_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
-				<Symbol>t</Symbol>
-				<Colour>6</Colour>
+				<Symbol>@</Symbol>
+				<Colour>9</Colour>
 			</Text>
 			<CreatureGeneration>
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
-				<DangerLevel>6</DangerLevel>
+				<DangerLevel>7</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>6</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>6</Modifier>
+					<NumDice>7</NumDice>
+					<NumSides>3</NumSides>
+					<Modifier>21</Modifier>
 				</HP>
-				<Exp>100</Exp>
+				<Exp>120</Exp>
 			</CreatureGeneration>
-			<Level>6</Level>
+			<Level>7</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>8</NumSides>
+				<NumSides>12</NumSides>
+				<Modifier>3</Modifier>
 				<Type>2</Type>
 			</Damage>
 			<Evade>12</Evade>
 			<Soak>3</Soak>
+		</Creature>
+		<Creature id="hound">
+			<ShortDescriptionSID>HOUND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HOUND_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>HOUND_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>d</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Modifier>1</Modifier>
+				<Type>1</Type>
+			</Damage>
+			<Evade>10</Evade>
+			<Soak>1</Soak>
+		</Creature>
+		<Creature id="thief">
+			<ShortDescriptionSID>THIEF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THIEF_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>THIEF_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>8</Modifier>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Modifier>2</Modifier>
+				<Type>1</Type>
+			</Damage>
+			<Evade>10</Evade>
+			<Soak>1</Soak>
+		</Creature>
+		<Creature id="graverobber">
+			<ShortDescriptionSID>GRAVEROBBER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GRAVEROBBER_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>GRAVEROBBER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Modifier>1</Modifier>
+				<Type>1</Type>
+			</Damage>
+			<Evade>5</Evade>
+			<Soak>1</Soak>
+		</Creature>
+		<Creature id="blackguard">
+			<ShortDescriptionSID>BLACKGUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLACKGUARD_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>BLACKGUARD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>b</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+				</HP>
+				<Exp>20</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Modifier>2</Modifier>
+				<Type>0</Type>
+			</Damage>
+			<Evade>8</Evade>
+			<Soak>2</Soak>
 		</Creature>
 	</Creatures>
 	<Tiles>
@@ -4102,6 +4263,17 @@
 				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
 				<Material>3</Material>
 				<LockID>isen_dun_kew</LockID>
+			</Tool>
+			<Tool id="sun_gem">
+				<DescriptionSID>SUN_GEM_SID</DescriptionSID>
+				<UsageDescriptionSID>SUN_GEM_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
 			</Tool>
 		</Tools>
 		<MiscItems>

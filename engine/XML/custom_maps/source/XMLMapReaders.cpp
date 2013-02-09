@@ -140,12 +140,14 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
     {
       string id = XMLUtils::get_child_node_value(item_node, "ID");
       XMLNode coord_node = XMLUtils::get_next_element_by_local_name(item_node, "Coord");
-        
+      int quantity = XMLUtils::get_child_node_int_value(item_node, "Quantity", 1);  
+
       XMLMapCoordinateReader coord_reader;
       Coordinate c = coord_reader.parse_coordinate(coord_node);
 
       // Create the item, and set it on the specified coordinate.
       ItemPtr item = ItemManager::create_item(id);
+      item->set_quantity(quantity);
       TilePtr tile = map->at(c);
 
       if (item && tile)

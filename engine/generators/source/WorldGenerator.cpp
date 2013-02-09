@@ -107,9 +107,10 @@ void WorldGenerator::generate_little_island(MapPtr map)
   c.second = width - 4;
   map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
 
-  // Village Graveyard
+  // The Barrows
   TilePtr isen_dun_graveyard = TileGenerator::generate(TILE_TYPE_GRAVEYARD, TILE_TYPE_UNDEFINED, false);
   isen_dun_graveyard->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD);
+  isen_dun_graveyard->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_THE_BARROWS);
   map->insert(height-3, width-3, isen_dun_graveyard);
 
   field_tile = TileGenerator::generate(TILE_TYPE_FOREST);
