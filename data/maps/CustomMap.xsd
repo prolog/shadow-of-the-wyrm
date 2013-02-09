@@ -54,6 +54,8 @@
 	<xs:sequence>
 		<xs:element name="ID" type="xs:string"/>
 		<xs:element name="Coord" type="tns:Coord"/>
+		<!-- Quantity is only used for items. -->
+		<xs:element name="Quantity" type="xs:unsignedInt" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Exits">
