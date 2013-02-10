@@ -460,6 +460,11 @@ ScriptEngine& Game::get_script_engine_ref()
   return script_engine;
 }
 
+Mortuary& Game::get_mortuary_ref()
+{
+  return mortuary;
+}
+
 bool Game::serialize(ostream& stream)
 {
   Log::instance().trace("Game::serialize - start");
@@ -516,6 +521,10 @@ bool Game::serialize(ostream& stream)
   ac.serialize(stream);
     
   time_keeper.serialize(stream);
+
+  // script engine is stateless, and doesn't need to be saved.
+
+  mortuary.serialize(stream);
 
   // Game command factory and keyboard map get built up every time - don't save these.
     
@@ -592,7 +601,11 @@ bool Game::deserialize(istream& stream)
   ac.deserialize(stream);
 
   time_keeper.deserialize(stream);
-    
+
+  // script engine is stateless and doesn't need to be saved.
+
+  mortuary.deserialize(stream);
+
   // Game command factory and keyboard map get built up every time - don't load these.
 
   Log::instance().trace("Game::deserialize - end");

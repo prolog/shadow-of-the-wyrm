@@ -14,6 +14,7 @@
 #include "Race.hpp"
 #include "Class.hpp"
 #include "ISerializable.hpp"
+#include "Mortuary.hpp"
 #include "MovementAccumulation.hpp"
 #include "Religion.hpp"
 #include "Resistances.hpp"
@@ -34,8 +35,14 @@ class Creature : public ISerializable
     Creature& operator=(const Creature& cr);
     bool operator==(const Creature& cr);
 
+    // A unique identifier for every creature.
     void set_id(const std::string& new_id);
     std::string get_id() const;
+
+    // A categorical identifier - all creatures of a certain "type" will
+    // have the same value, and this aids in tracking kills, etc.
+    void set_original_id(const std::string& new_original_id);
+    std::string get_original_id() const;
 
     // Quick hack.  Later on, this'll be some sort of Strategy, where the Player strategy sends commands
     // via keyboard/mouse/etc input.
@@ -225,6 +232,8 @@ class Creature : public ISerializable
     void set_additional_properties_map(const std::map<std::string, std::string>& additional_properties_map);
     std::map<std::string, std::string> get_additional_properties_map() const;
 
+    Mortuary& get_mortuary_ref();
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
@@ -237,6 +246,7 @@ class Creature : public ISerializable
   protected:
 
     std::string id;
+    std::string original_id;
 
     bool is_player;
 
@@ -337,6 +347,9 @@ class Creature : public ISerializable
     // Additional properties - properties a creature can have that are
     // not common to all creatures (speech, etc).
     std::map<std::string, std::string> additional_properties;
+
+    // The creature's kills.
+    Mortuary mortuary;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

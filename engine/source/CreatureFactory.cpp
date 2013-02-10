@@ -77,6 +77,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     }
       
     initialize(creature);
+    creature->set_original_id(creature_id);
 
     // Now that the creature has been generated, increment the number of such
     // creatures.

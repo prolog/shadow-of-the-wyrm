@@ -11,6 +11,7 @@
 #include "Item.hpp"
 #include "ISerializable.hpp"
 #include "MapRegistry.hpp"
+#include "Mortuary.hpp"
 #include "Race.hpp"
 #include "ScriptEngine.hpp"
 #include "World.hpp"
@@ -76,6 +77,8 @@ class Game : public ISerializable
     ActionManager& get_action_manager_ref();
 
     ScriptEngine& get_script_engine_ref();
+
+    Mortuary& get_mortuary_ref();
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
@@ -150,6 +153,10 @@ class Game : public ISerializable
 
     // Used to execute quests and other scripts
     ScriptEngine script_engine;
+
+    // Keep track of the total number of kills over all creatures ever generated
+    // in this game.
+    Mortuary mortuary;
     
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;

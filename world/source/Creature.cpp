@@ -43,6 +43,7 @@ Creature::Creature()
 Creature::Creature(const Creature& cr)
 {
   id = cr.id;
+  original_id = cr.original_id;
   is_player = cr.is_player;
   name = cr.name;
   sex = cr.sex;
@@ -96,6 +97,7 @@ Creature::Creature(const Creature& cr)
   hunger = cr.hunger;
   event_functions = cr.event_functions;
   additional_properties = cr.additional_properties;
+  mortuary = cr.mortuary;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -114,6 +116,7 @@ bool Creature::operator==(const Creature& cr)
   bool result = true;
 
   result = result && (id == cr.id);
+  result = result && (original_id == cr.original_id);
   result = result && (is_player == cr.is_player);
   result = result && (name == cr.name);
   result = result && (sex == cr.sex);
@@ -166,6 +169,7 @@ bool Creature::operator==(const Creature& cr)
   result = result && (hunger == cr.hunger);
   result = result && (event_functions == cr.event_functions);
   result = result && (additional_properties == cr.additional_properties);
+  result = result && (mortuary == cr.mortuary);
 
   return result;
 }
@@ -178,6 +182,16 @@ void Creature::set_id(const string& new_id)
 string Creature::get_id() const
 {
   return id;
+}
+
+void Creature::set_original_id(const string& new_original_id)
+{
+  original_id = new_original_id;
+}
+
+string Creature::get_original_id() const
+{
+  return original_id;
 }
 
 void Creature::set_is_player(const bool player, ControllerPtr controller)
@@ -808,6 +822,11 @@ map<string, string> Creature::get_additional_properties_map() const
   return additional_properties;
 }
 
+Mortuary& Creature::get_mortuary_ref()
+{
+  return mortuary;
+}
+
 // Set, get, and query additional (string) properties
   // Uncomment the code below to find out the size of Creature. :)
   // template<int s> struct creature_size;
@@ -818,7 +837,7 @@ void Creature::assert_size() const
 {
   // VS 2010
   #ifdef _MSC_VER
-  BOOST_STATIC_ASSERT(sizeof(*this) == 760);
+  BOOST_STATIC_ASSERT(sizeof(*this) == 816);
   #else // gcc
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
   #endif
@@ -828,6 +847,7 @@ void Creature::assert_size() const
 void Creature::swap(Creature &cr) throw ()
 {
   std::swap(this->id, cr.id);
+  std::swap(this->original_id, cr.original_id);
   std::swap(this->is_player, cr.is_player);
   std::swap(this->name, cr.name);
   std::swap(this->sex, cr.sex);
@@ -874,11 +894,13 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->hunger, cr.hunger);
   std::swap(this->event_functions, cr.event_functions);
   std::swap(this->additional_properties, cr.additional_properties);
+  std::swap(this->mortuary, cr.mortuary);
 }
 
 bool Creature::serialize(ostream& stream)
 {
   Serialize::write_string(stream, id);
+  Serialize::write_string(stream, original_id);
   Serialize::write_bool(stream, is_player);
 
   Serialize::write_string(stream, name);
@@ -986,12 +1008,15 @@ bool Creature::serialize(ostream& stream)
     }
   }
 
+  mortuary.serialize(stream);
+
   return true;
 }
 
 bool Creature::deserialize(istream& stream)
 {
   Serialize::read_string(stream, id);
+  Serialize::read_string(stream, original_id);
   Serialize::read_bool(stream, is_player);
 
   Serialize::read_string(stream, name);
@@ -1116,6 +1141,8 @@ bool Creature::deserialize(istream& stream)
       additional_properties.insert(make_pair(prop_name, prop_value));
     }
   }
+
+  mortuary.deserialize(stream);
 
   return true;
 }
