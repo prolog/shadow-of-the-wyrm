@@ -12,3 +12,5 @@ Savage Lands is, specifically:
   3. Inspired by ADOM's combination of static and dynamic elements, and
   DCSS's deep gameplay.
 
+Savage Lands is released under the terms of the MIT License.  A copy of this license can be found in LICENSE.
+
