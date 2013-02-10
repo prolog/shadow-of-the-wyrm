@@ -196,6 +196,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
 
       // Kill the creature, and run the death event function, if necessary.
       death_manager->die();
+      update_mortuaries(attacking_creature, attacked_creature->get_original_id());
       run_death_event(attacking_creature, attacked_creature, map);
 
       // Sometimes there will be no attacking creature, eg., when drowning, falling off mountains, etc.
@@ -328,6 +329,19 @@ void CombatManager::mark_weapon_and_combat_skills(CreaturePtr attacking_creature
   
   sm.mark_skill(attacking_creature, combat_type_skill_to_mark, attack_success);
   sm.mark_skill(attacking_creature, wm.get_skill_type(attacking_creature, attack_type), attack_success);
+}
+
+// Update the Game's and the attacking creature's mortuary with the kill.
+void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const string& killed_creature_id)
+{
+  Mortuary& game_mortuary = Game::instance().get_mortuary_ref();
+  game_mortuary.add_creature_kill(killed_creature_id);
+
+  if (attacking_creature)
+  {
+    Mortuary& creature_mortuary = attacking_creature->get_mortuary_ref();
+    creature_mortuary.add_creature_kill(killed_creature_id);
+  }
 }
 
 // Run the death event.  By default, this will be the null death function,
