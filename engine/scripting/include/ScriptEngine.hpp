@@ -21,6 +21,9 @@ class ScriptEngine
     void execute(const std::string& script_file);
 
   protected:
+    // Preload all the appropriate modules
+    void load_modules();
+
     // Register the list of functions available to the Lua scripting engine.
     void register_api_functions();
 

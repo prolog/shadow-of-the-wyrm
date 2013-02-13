@@ -2139,6 +2139,9 @@
     <ClInclude Include="world\include\Mortuary.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\Quests.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -4056,6 +4059,12 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Mortuary_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Quests.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Quests_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>

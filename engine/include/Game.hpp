@@ -12,6 +12,7 @@
 #include "ISerializable.hpp"
 #include "MapRegistry.hpp"
 #include "Mortuary.hpp"
+#include "Quests.hpp"
 #include "Race.hpp"
 #include "ScriptEngine.hpp"
 #include "World.hpp"
@@ -79,6 +80,8 @@ class Game : public ISerializable
     ScriptEngine& get_script_engine_ref();
 
     Mortuary& get_mortuary_ref();
+
+    Quests& get_quests_ref();
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
@@ -157,6 +160,11 @@ class Game : public ISerializable
     // Keep track of the total number of kills over all creatures ever generated
     // in this game.
     Mortuary mortuary;
+
+    // Keep track of all the active and completed quests.  There is only one
+    // instance of this data structure, so it is assumed that it is always
+    // being applied to the player.
+    Quests quests;
     
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;
