@@ -12,6 +12,7 @@ ScriptEngine::ScriptEngine()
 {
    L = lua_open();
    luaL_openlibs( L );
+   load_modules();
    register_api_functions();
 }
 
@@ -19,6 +20,12 @@ ScriptEngine::ScriptEngine()
 ScriptEngine::~ScriptEngine()
 {
    lua_close( L );
+}
+
+void ScriptEngine::load_modules()
+{
+  // Update the environment so that the "/script" directory is assumed.
+  luaL_dofile(L, "scripts/env.lua");
 }
 
 // Run a particular script in the scripts folder.

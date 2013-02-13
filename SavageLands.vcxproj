@@ -488,6 +488,7 @@
     <ClInclude Include="world\include\MovementTypes.hpp" />
     <ClInclude Include="world\include\Plant.hpp" />
     <ClInclude Include="world\include\Potion.hpp" />
+    <ClInclude Include="world\include\Quests.hpp" />
     <ClInclude Include="world\include\Race.hpp" />
     <ClInclude Include="world\include\RarityTypes.hpp" />
     <ClInclude Include="world\include\Readable.hpp" />
@@ -1195,6 +1196,7 @@
     <ClCompile Include="world\source\MovementAccumulation.cpp" />
     <ClCompile Include="world\source\Plant.cpp" />
     <ClCompile Include="world\source\Potion.cpp" />
+    <ClCompile Include="world\source\Quests.cpp" />
     <ClCompile Include="world\source\Race.cpp" />
     <ClCompile Include="world\source\Readable.cpp" />
     <ClCompile Include="world\source\ResistanceFactory.cpp" />
@@ -1278,6 +1280,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Potion_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Quests_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Race_test.cpp">
