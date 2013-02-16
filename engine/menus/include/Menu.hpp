@@ -14,6 +14,8 @@ class Menu
     virtual std::string display();
     virtual std::string prompt();
 
+    uint get_line_increment() const;
+
     PromptPtr get_prompt() const;
 
     std::vector<MenuComponentPtr> get_components() const;
@@ -25,4 +27,5 @@ class Menu
     PromptPtr user_prompt;
 
     DisplayPtr game_display;
+    uint line_increment;
 };

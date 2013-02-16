@@ -2142,6 +2142,18 @@
     <ClInclude Include="world\include\Quests.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\description\include\QuestDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\TextDisplayScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\QuestListManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\TextDisplayFormatter.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -4066,6 +4078,18 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Quests_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\QuestDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\TextDisplayScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\QuestListManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\TextDisplayFormatter.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

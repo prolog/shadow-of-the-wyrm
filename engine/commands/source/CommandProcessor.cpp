@@ -141,6 +141,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.apply(creature);
       }
+      else if (command_name == CommandKeys::QUEST_LIST)
+      {
+        ac = game.actions.quest_list(creature);
+      }
     }
   }
   

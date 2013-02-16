@@ -18,6 +18,7 @@
 #include "MessageManager.hpp"
 #include "PickupManager.hpp"
 #include "PrayerManager.hpp"
+#include "QuestListManager.hpp"
 #include "ReadManager.hpp"
 #include "SearchActionManager.hpp"
 #include "Serialization.hpp"
@@ -241,6 +242,13 @@ ActionCost ActionManager::apply(CreaturePtr creature)
 {
   FeatureManager fm;
   return get_action_cost(creature, fm.apply(creature));
+}
+
+// Show the list of quests.
+ActionCost ActionManager::quest_list(CreaturePtr creature)
+{
+  QuestListManager qlm;
+  return get_action_cost(creature, qlm.quest_list());
 }
 
 // Pick up an item, doing any necessary checks first.

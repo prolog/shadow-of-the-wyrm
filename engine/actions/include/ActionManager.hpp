@@ -79,6 +79,9 @@ class ActionManager : public ISerializable
     // 'a'pply/h'a'ndle a terrain feature
     ActionCost apply(CreaturePtr creature);
 
+    // List the current in-game quests.
+    ActionCost quest_list(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

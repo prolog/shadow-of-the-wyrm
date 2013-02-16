@@ -137,6 +137,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<ApplyFeatureCommand>();
   }
+  else if (command_name == CommandKeys::QUEST_LIST)
+  {
+    command = boost::make_shared<QuestListCommand>();
+  }
 
   return command;
 }

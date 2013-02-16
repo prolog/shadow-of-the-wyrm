@@ -43,6 +43,7 @@ class CommandKeys
     static const std::string EAT;
     static const std::string CHAT;
     static const std::string APPLY_FEATURE;
+    static const std::string QUEST_LIST;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

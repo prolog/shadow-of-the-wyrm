@@ -21,6 +21,8 @@ class CursesDisplay : public Display
 	  bool create();
 	  void tear_down();
 
+    unsigned int get_width() const;
+
     void clear_messages();
     void clear_display();
 
@@ -72,7 +74,7 @@ class CursesDisplay : public Display
     std::pair<char, std::string> get_formatted_option(const int option_num, const std::string& option_name, const std::string& option_desc) const;
 
     void refresh_terminal_size();
-    void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component);
+    void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
     CursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
 

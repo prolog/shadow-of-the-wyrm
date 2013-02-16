@@ -20,6 +20,9 @@ class ScriptEngine
 
     void execute(const std::string& script_file);
 
+    // Get a given table value
+    std::string get_table_str(lua_State* ls, const std::string& key);
+
   protected:
     // Preload all the appropriate modules
     void load_modules();

@@ -113,13 +113,14 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('R'), CommandKeys::RANGED_WEAPON_INFO));
   command_mapping.insert(make_pair(Integer::to_string('L'), CommandKeys::SELECT_TILE));
   command_mapping.insert(make_pair(Integer::to_string('f'), CommandKeys::FIRE_MISSILE));
-  command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUAFF));
+  command_mapping.insert(make_pair(Integer::to_string('D'), CommandKeys::QUAFF)); // need 'q' for quests.
   command_mapping.insert(make_pair(Integer::to_string('r'), CommandKeys::READ));
   command_mapping.insert(make_pair(Integer::to_string('$'), CommandKeys::CHECK_CURRENCY));
   command_mapping.insert(make_pair(Integer::to_string('S'), CommandKeys::SAVE_GAME));
   command_mapping.insert(make_pair(Integer::to_string('e'), CommandKeys::EAT));
   command_mapping.insert(make_pair(Integer::to_string('C'), CommandKeys::CHAT));
   command_mapping.insert(make_pair(Integer::to_string('a'), CommandKeys::APPLY_FEATURE));
+  command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUEST_LIST));
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses

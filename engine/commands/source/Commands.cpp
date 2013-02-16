@@ -268,3 +268,13 @@ ApplyFeatureCommand::ApplyFeatureCommand()
 ApplyFeatureCommand::~ApplyFeatureCommand()
 {
 }
+
+// See the list of quests
+QuestListCommand::QuestListCommand()
+: Command(CommandKeys::QUEST_LIST)
+{
+}
+
+QuestListCommand::~QuestListCommand()
+{
+}

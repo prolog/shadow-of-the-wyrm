@@ -41,6 +41,7 @@ const string CommandKeys::SAVE_GAME      = "SAVE_GAME";
 const string CommandKeys::EAT            = "EAT";
 const string CommandKeys::CHAT           = "CHAT";
 const string CommandKeys::APPLY_FEATURE  = "APPLY_FEATURE";
+const string CommandKeys::QUEST_LIST     = "QUEST_LIST";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";
