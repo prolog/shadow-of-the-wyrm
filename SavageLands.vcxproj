@@ -112,6 +112,7 @@
     <ClInclude Include="engine\actions\include\PickupManager.hpp" />
     <ClInclude Include="engine\actions\include\PrayerManager.hpp" />
     <ClInclude Include="engine\actions\include\QuaffManager.hpp" />
+    <ClInclude Include="engine\actions\include\QuestListManager.hpp" />
     <ClInclude Include="engine\actions\include\RangedCombatActionManager.hpp" />
     <ClInclude Include="engine\actions\include\RangedCombatApplicabilityChecker.hpp" />
     <ClInclude Include="engine\actions\include\ReadManager.hpp" />
@@ -236,6 +237,7 @@
     <ClInclude Include="engine\description\include\IDescriber.hpp" />
     <ClInclude Include="engine\description\include\InventoryDescriber.hpp" />
     <ClInclude Include="engine\description\include\ItemDescriber.hpp" />
+    <ClInclude Include="engine\description\include\QuestDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescription.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
@@ -363,6 +365,8 @@
     <ClInclude Include="engine\menus\include\RaceSelectionScreen.hpp" />
     <ClInclude Include="engine\menus\include\SexSelectionScreen.hpp" />
     <ClInclude Include="engine\menus\include\TextComponent.hpp" />
+    <ClInclude Include="engine\menus\include\TextDisplayFormatter.hpp" />
+    <ClInclude Include="engine\menus\include\TextDisplayScreen.hpp" />
     <ClInclude Include="engine\menus\include\WelcomeScreen.hpp" />
     <ClInclude Include="engine\scripting\include\ScriptEngine.hpp" />
     <ClInclude Include="engine\serialization\include\Serialization.hpp" />
@@ -653,6 +657,7 @@
     <ClCompile Include="engine\actions\source\PickupManager.cpp" />
     <ClCompile Include="engine\actions\source\PrayerManager.cpp" />
     <ClCompile Include="engine\actions\source\QuaffManager.cpp" />
+    <ClCompile Include="engine\actions\source\QuestListManager.cpp" />
     <ClCompile Include="engine\actions\source\RangedCombatActionManager.cpp" />
     <ClCompile Include="engine\actions\source\RangedCombatApplicabilityChecker.cpp" />
     <ClCompile Include="engine\actions\source\ReadManager.cpp" />
@@ -853,6 +858,7 @@
     <ClCompile Include="engine\description\source\IDescriber.cpp" />
     <ClCompile Include="engine\description\source\InventoryDescriber.cpp" />
     <ClCompile Include="engine\description\source\ItemDescriber.cpp" />
+    <ClCompile Include="engine\description\source\QuestDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescription.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />
@@ -972,6 +978,8 @@
     <ClCompile Include="engine\menus\source\RaceSelectionScreen.cpp" />
     <ClCompile Include="engine\menus\source\SexSelectionScreen.cpp" />
     <ClCompile Include="engine\menus\source\TextComponent.cpp" />
+    <ClCompile Include="engine\menus\source\TextDisplayFormatter.cpp" />
+    <ClCompile Include="engine\menus\source\TextDisplayScreen.cpp" />
     <ClCompile Include="engine\menus\source\WelcomeScreen.cpp" />
     <ClCompile Include="engine\scripting\source\ScriptEngine.cpp" />
     <ClCompile Include="engine\serialization\source\Serialization.cpp" />

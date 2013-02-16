@@ -7,6 +7,7 @@ using namespace std;
 
 // Any base initialization for the Menu
 Menu::Menu(DisplayPtr new_display)
+: line_increment(2)
 {
   game_display = new_display;
   user_prompt = boost::make_shared<NullPrompt>();
@@ -45,4 +46,10 @@ PromptPtr Menu::get_prompt() const
 vector<MenuComponentPtr> Menu::get_components() const
 {
   return components;
+}
+
+// Get the line spacing.
+uint Menu::get_line_increment() const
+{
+  return line_increment;
 }

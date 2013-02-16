@@ -185,3 +185,10 @@ class ApplyFeatureCommand : public Command
     ApplyFeatureCommand();
     ~ApplyFeatureCommand();
 };
+
+class QuestListCommand : public Command
+{
+  public:
+    QuestListCommand();
+    ~QuestListCommand();
+};

@@ -60,6 +60,12 @@ bool CursesDisplay::operator==(const CursesDisplay& cd)
   return result;
 }
 
+// Get the current display width
+unsigned int CursesDisplay::get_width() const
+{
+  return TERMINAL_MAX_COLS;
+}
+
 // Create a menu and return it.
 WINDOW* CursesDisplay::create_menu(int height, int width, int start_row, int start_col)
 {
@@ -428,13 +434,14 @@ string CursesDisplay::display_menu(const Menu& current_menu)
   int current_col = 0;
 
   vector<MenuComponentPtr> components = current_menu.get_components();
+  uint line_incr = current_menu.get_line_increment();
   BOOST_FOREACH( MenuComponentPtr component, components)
   {
     TextComponentPtr tc = dynamic_pointer_cast<TextComponent>(component);
 
     if (tc != NULL)
     {
-      display_text_component(menu_window, &current_row, &current_col, tc);
+      display_text_component(menu_window, &current_row, &current_col, tc, line_incr);
     }
     else
     {
@@ -466,11 +473,11 @@ void CursesDisplay::confirm(const string& confirmation_message)
   add_message(confirmation_message, COLOUR_WHITE, false);
 }
 
-void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr tc)
+void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)
 {
   string current_text = tc->get_text();
   mvwprintw(window, *row, *col, current_text.c_str());
-  *row += 2;
+  *row += line_incr;
 }
 
 // Get a somewhat nice (it's ASCII...) option.

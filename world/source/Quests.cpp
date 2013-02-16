@@ -145,6 +145,18 @@ bool Quests::is_quest_completed(const string& quest_id)
   return (completed_quest_map.find(quest_id) != completed_quest_map.end());
 }
 
+// Get all of the in-progress quests.
+QuestMap Quests::get_in_progress_quests() const
+{
+  return in_progress_quest_map;
+}
+
+// Get all of the completed quests.
+QuestMap Quests::get_completed_quests() const
+{
+  return completed_quest_map;
+}
+
 // Write out all of the in progress and completed quests.
 bool Quests::serialize(ostream& stream)
 {

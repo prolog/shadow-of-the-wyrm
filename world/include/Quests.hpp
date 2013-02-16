@@ -57,6 +57,9 @@ class Quests : public ISerializable
     void set_quest_completed(const std::string& quest_id);
     bool is_quest_completed(const std::string& quest_id);
 
+    QuestMap get_in_progress_quests() const;
+    QuestMap get_completed_quests() const;
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
