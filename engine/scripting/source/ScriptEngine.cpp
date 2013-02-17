@@ -7,6 +7,7 @@
 using namespace std;
 
 // API prototypes
+int add_message_with_pause(lua_State* ls);
 int add_message(lua_State* ls);
 int add_new_quest(lua_State* ls);
 
@@ -59,8 +60,11 @@ void ScriptEngine::execute(const string& script)
 // Register all the functions available to the scripting engine.
 void ScriptEngine::register_api_functions()
 {
+  lua_register(L, "add_message_with_pause", add_message_with_pause);
   lua_register(L, "add_message", add_message);
   lua_register(L, "add_new_quest", add_new_quest);
+
+  // TODO: Add is_quest_in_progress, is_quest_completed
 }
 
 // Lua API functions:
@@ -68,18 +72,41 @@ void ScriptEngine::register_api_functions()
 // Functions callable by Lua that wrap the actual C++ functions for adding
 // messages, getting/updating data, etc.
 
-// Add a message to the message manager.
+// Clear the message manager, add a new message, and force the user to 
+// continue via a "..." type prompt.
+static int add_message_with_pause(lua_State* ls)
+{
+  if(lua_gettop(ls) > 0 && lua_isstring(ls, -1))
+	{
+    string message_sid = lua_tostring(ls, 1);
+    
+    MessageManager& manager = MessageManager::instance();
+    manager.clear_if_necessary();
+    manager.add_new_message_with_pause(StringTable::get(message_sid));
+    manager.send();
+
+    // Because this function can only be called in a quest context,
+    // where the speaking player is always assumed to be the player,
+    // directly getting the player and getting its decision is safe
+    // for now.
+    Game& game = Game::instance();
+    game.get_current_player()->get_decision_strategy()->get_confirmation();
+	}
+
+  return 0;
+}
+
+// Clear the message manager, and add a new message.
 // Arguments expected: 1.
 // Argument type: string (resource SID)
 static int add_message(lua_State* ls)
 {
-  string message_sid;
-
   if(lua_gettop(ls) > 0 && lua_isstring(ls, -1))
 	{
-		message_sid = lua_tostring(ls, 1);
+		string message_sid = lua_tostring(ls, 1);
 
     MessageManager& manager = MessageManager::instance();
+    manager.clear_if_necessary();
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();
 	}

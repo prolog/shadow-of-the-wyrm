@@ -66,12 +66,7 @@ void MessageManager::send_and_halt()
 }
 
 // Add a new message to the set of unread messages.
-bool MessageManager::add_new_message
-(
-	const std::string& message_text
-, const Colour colour
-, const MessageImportance& importance
-)
+bool MessageManager::add_new_message(const std::string& message_text, const Colour colour, const MessageImportance& importance)
 {
 	Message message(message_text, colour, importance);
   boost::uuids::uuid id = boost::uuids::random_generator()();
@@ -101,12 +96,7 @@ bool MessageManager::add_new_message
 
 // This is a simpler method than add_new_message - it doesn't queue the message, and instead
 // displays it directly.
-bool MessageManager::add_new_confirmation_message
-(
-  const std::string& message_text
-, const Colour colour
-, const MessageImportance& importance
-)
+bool MessageManager::add_new_confirmation_message(const std::string& message_text, const Colour colour, const MessageImportance& importance)
 {
   buffer_has_messages = true;
   
@@ -114,6 +104,18 @@ bool MessageManager::add_new_confirmation_message
 	{
 	  user_display->confirm(message_text);
 	}
+
+  return true;
+}
+
+bool MessageManager::add_new_message_with_pause(const std::string& message_text, const Colour colour, const MessageImportance& importance)
+{
+  buffer_has_messages = true;
+
+  if (user_display)
+  {
+    user_display->confirm(message_text + " ...");
+  }
 
   return true;
 }
