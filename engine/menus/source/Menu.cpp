@@ -24,6 +24,16 @@ void Menu::initialize()
   // Subclasses should always override this method.
 }
 
+void Menu::set_title_text_sid(const string& new_title_text_sid)
+{
+  title_text_sid = new_title_text_sid;
+}
+
+std::string Menu::get_title_text_sid() const
+{
+  return title_text_sid;
+}
+
 // Display the contents of the Menu to the user via the DisplayPtr.
 string Menu::display()
 {
@@ -36,6 +46,11 @@ string Menu::prompt()
 {
   string empty_str;
   return empty_str;
+}
+
+void Menu::set_prompt(PromptPtr new_prompt)
+{
+  user_prompt = new_prompt;
 }
 
 PromptPtr Menu::get_prompt() const

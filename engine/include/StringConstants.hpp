@@ -501,6 +501,16 @@ class ResistanceTextKeys
     ~ResistanceTextKeys();
 };
 
+class MenuTitleKeys
+{
+  public:
+    static const std::string MENU_TITLE_QUEST_LIST;
+
+  protected:
+    MenuTitleKeys();
+    ~MenuTitleKeys();
+};
+
 class PromptTextKeys
 {
   public:

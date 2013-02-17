@@ -739,6 +739,17 @@ const string ResistanceTextKeys::RESISTANCE_SONIC = "RESISTANCE_SONIC";
 const string ResistanceTextKeys::RESISTANCE_RADIANT = "RESISTANCE_RADIANT";
 const string ResistanceTextKeys::RESISTANCE_LIGHTNING = "RESISTANCE_LIGHTNING";
 
+// Menu titles
+MenuTitleKeys::MenuTitleKeys()
+{
+}
+
+MenuTitleKeys::~MenuTitleKeys()
+{
+}
+
+const string MenuTitleKeys::MENU_TITLE_QUEST_LIST = "MENU_TITLE_QUEST_LIST";
+
 // Prompts
 PromptTextKeys::PromptTextKeys()
 {

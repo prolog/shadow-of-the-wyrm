@@ -5,10 +5,10 @@
 class TextDisplayScreen : public Menu
 {
   public:
-   TextDisplayScreen(DisplayPtr display, const std::vector<std::string>& display_text);
+   TextDisplayScreen(DisplayPtr display, const std::string& new_title_text_sid, const std::vector<std::string>& display_text);
 
   protected:
-    void initialize();
+    void initialize(const std::string& new_title_text_sid);
 
     // Each string in the vector represents a line to be displayed on
     // screen.

@@ -433,6 +433,19 @@ string CursesDisplay::display_menu(const Menu& current_menu)
   int current_row = 0;
   int current_col = 0;
 
+  // Display the header if the text is defined.  Some menus (like the quest list,
+  // etc) will have this defined, while others (such as the new character-type
+  // menus) will not.
+  string header_text = StringTable::get(current_menu.get_title_text_sid());
+  if (!header_text.empty())
+  {
+    display_header(header_text, menu_window, current_row);
+
+    // Always allow for some space between the title and the components of the
+    // menu, regardless of what the menu has set for line spacing.
+    current_row += 2;
+  }
+
   vector<MenuComponentPtr> components = current_menu.get_components();
   uint line_incr = current_menu.get_line_increment();
   BOOST_FOREACH( MenuComponentPtr component, components)
@@ -680,6 +693,26 @@ bool CursesDisplay::update_synopsis_row_and_column(const unsigned int initial_ro
   return can_update;
 }
 
+void CursesDisplay::display_header(const string& header_text, WINDOW* window, const int display_line)
+{
+  size_t header_text_size = header_text.size();
+
+  unsigned int header_start = (TERMINAL_MAX_COLS/2) - (header_text_size/2);
+  unsigned int header_end = (TERMINAL_MAX_COLS/2) - (header_text_size/2) + header_text_size;
+
+  for (unsigned int i = 0; i < header_start-1; i++)
+  {
+    mvwprintw(window, display_line, i, "-");
+  }
+  
+  mvwprintw(window, display_line, header_start, header_text.c_str());
+  
+  for (unsigned int i = header_end+1; i < TERMINAL_MAX_COLS; i++)
+  {
+    mvwprintw(window, display_line, i, "-");
+  }
+}
+
 // Display the Equipment
 // JCD FIXME: break this off into its own class later.
 void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
@@ -692,12 +725,7 @@ void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
   
   // Centre the header on the first line
   int current_row = 0;
-  
-  unsigned int header_start = (TERMINAL_MAX_COLS/2) - (equipment_header.size()/2);
-  unsigned int header_end = (TERMINAL_MAX_COLS/2) - (equipment_header.size()/2) + equipment_header.size();
-  for (unsigned int i = 0; i < header_start-1; i++) mvwprintw(eq_window, current_row, i, "-");
-  mvwprintw(eq_window, current_row, header_start, equipment_header.c_str());
-  for (unsigned int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(eq_window, current_row, i, "-");
+  display_header(equipment_header, eq_window, current_row);
 
   uint longest = 0;
   for (DisplayEquipmentMap::const_iterator e_it = equipment.begin(); e_it != equipment.end(); e_it++)
@@ -754,12 +782,8 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
   int current_row = 0;
   const int current_row_start_value = 2;
   char slot_char = 'A';
-  
-  unsigned int header_start = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2);
-  unsigned int header_end = (TERMINAL_MAX_COLS/2) - (inventory_header.size()/2) + inventory_header.size();
-  for (unsigned int i = 0; i < header_start-1; i++) mvwprintw(inv_window, current_row, i, "-");
-  mvwprintw(inv_window, current_row, header_start, inventory_header.c_str());
-  for (unsigned int i = header_end+1; i < TERMINAL_MAX_COLS; i++) mvwprintw(inv_window, current_row, i, "-");
+
+  display_header(inventory_header, inv_window, current_row);
   
   current_row = current_row_start_value;
 

@@ -17,6 +17,7 @@ ActionCostValue QuestListManager::quest_list() const
   Quests& quests = game.get_quests_ref();
   QuestMap in_progress_quests = quests.get_in_progress_quests();
 
+  string quest_title_sid = MenuTitleKeys::MENU_TITLE_QUEST_LIST;
   vector<string> quests_text;
 
   BOOST_FOREACH(QuestMap::value_type& pair, in_progress_quests)
@@ -32,7 +33,7 @@ ActionCostValue QuestListManager::quest_list() const
     quests_text.insert(quests_text.end(), current_quest_formatted.begin(), current_quest_formatted.end());
   }
 
-  TextDisplayScreen tds(game.get_display(), quests_text);
+  TextDisplayScreen tds(game.get_display(), quest_title_sid, quests_text);
   tds.display();
 
   return get_action_cost_value();
