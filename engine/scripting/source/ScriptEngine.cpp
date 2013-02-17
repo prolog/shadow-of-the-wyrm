@@ -10,6 +10,7 @@ using namespace std;
 int add_message_with_pause(lua_State* ls);
 int add_message(lua_State* ls);
 int add_new_quest(lua_State* ls);
+int is_on_quest(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -63,6 +64,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message_with_pause", add_message_with_pause);
   lua_register(L, "add_message", add_message);
   lua_register(L, "add_new_quest", add_new_quest);
+  lua_register(L, "is_on_quest", is_on_quest);
 
   // TODO: Add is_quest_in_progress, is_quest_completed
 }
@@ -143,4 +145,23 @@ static int add_new_quest(lua_State* ls)
 
   // Return nothing.
   return 0;
+}
+
+// Check to see if a current quest is in progress.
+int is_on_quest(lua_State* ls)
+{
+  bool quest_in_progress = false;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    string quest_id = lua_tostring(ls, 1);
+
+    // Check to see if the given quest ID is in progress.
+    Game& game = Game::instance();
+    Quests& quests = game.get_quests_ref();
+    quest_in_progress = quests.is_quest_in_progress(quest_id);
+  }
+  
+  lua_pushboolean(ls, quest_in_progress);
+  return 1;
 }
