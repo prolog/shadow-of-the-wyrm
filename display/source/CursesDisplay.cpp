@@ -466,10 +466,27 @@ string CursesDisplay::display_menu(const Menu& current_menu)
         wrapper = display_and_return_options_component(menu_window, &current_row, &current_col, oc);
       }
     }
+
+    // After each line, check to see if we need to throw up a prompt because
+    // of hitting the end of the screen.
+    if (current_row == (TERMINAL_MAX_ROWS - 1))
+    {
+      PromptPtr prompt = current_menu.get_prompt();
+      prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
+
+      result = prompt_processor.get_prompt(menu_window, wrapper, prompt);
+
+      wrefresh(menu_window);
+
+      // We've shown the prompt, the user has intervened, and so
+      // now we need to clear the window, reset the current row
+      // back to 0 and keep displaying stuff from the menu.
+      wclear(menu_window);
+      current_row = 0;
+    }
   }
 
-  // Menu driver for any options window goes here...
-
+  // Done!  Add an appropriate prompt.
   PromptPtr prompt = current_menu.get_prompt();
   prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
