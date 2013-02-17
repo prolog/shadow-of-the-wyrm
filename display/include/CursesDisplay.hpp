@@ -41,6 +41,7 @@ class CursesDisplay : public Display
     MapDisplayArea get_map_display_area();
 
 	  std::string display_menu(const Menu& current_menu);
+    void display_header(const std::string& header_text, WINDOW* cur_window, const int display_line = 0);
 
 	  void confirm(const std::string& confirmation_message);
 
