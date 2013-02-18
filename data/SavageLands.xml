@@ -3602,7 +3602,7 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>8</NumSides>
-					<Type>1</Type>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="spear">
