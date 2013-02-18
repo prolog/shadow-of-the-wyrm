@@ -82,6 +82,11 @@ class ActionManager : public ISerializable
     // List the current in-game quests.
     ActionCost quest_list(CreaturePtr creature);
 
+    // Clear the Lua state so that any script changes will be applied on
+    // the next load.
+    void reload_scripts_and_sids(); // generic version.
+    ActionCost reload_scripts_and_sids(CreaturePtr creature); // creature's-command-version
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

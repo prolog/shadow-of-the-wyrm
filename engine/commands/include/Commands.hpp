@@ -192,3 +192,10 @@ class QuestListCommand : public Command
     QuestListCommand();
     ~QuestListCommand();
 };
+
+class ReloadScriptsCommand : public Command
+{
+  public:
+    ReloadScriptsCommand();
+    ~ReloadScriptsCommand();
+};

@@ -78,6 +78,10 @@ void SavageLandsEngine::start()
 {
   Game& game = Game::instance();
 
+  // JCD FIXME: Eventually make this value read from its own ini/configuration file.
+  game.set_sid_ini_filename("savagelandstext_en.ini");
+  game.actions.reload_scripts_and_sids();
+
   if (state_manager.start_new_game())
   {
     setup_game();

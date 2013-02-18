@@ -19,11 +19,15 @@ class ScriptEngine
     ~ScriptEngine();
 
     void execute(const std::string& script_file);
+    bool clear_state();
 
     // Get a given table value
     std::string get_table_str(lua_State* ls, const std::string& key);
 
   protected:
+    // Set up the Lua state
+    void initialize_state();
+
     // Preload all the appropriate modules
     void load_modules();
 

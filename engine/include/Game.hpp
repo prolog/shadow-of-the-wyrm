@@ -83,6 +83,9 @@ class Game : public ISerializable
 
     Quests& get_quests_ref();
 
+    void set_sid_ini_filename(const std::string& new_sid_ini_filename);
+    std::string get_sid_ini_filename() const;
+
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
 
@@ -99,6 +102,7 @@ class Game : public ISerializable
     friend class TileSelectionCommandProcessor;
     friend class SeasonsTimeObserver;
     friend class TileSelectionManager;
+    friend class SavageLandsEngine;
     friend class SL_Engine_Game; // unit testing
 
     Game();
@@ -165,6 +169,11 @@ class Game : public ISerializable
     // instance of this data structure, so it is assumed that it is always
     // being applied to the player.
     Quests quests;
+
+    // The name of the sid ini file (e.g., "savagelandstext_en.ini").  This
+    // doesn't need to be persisted - it will be loaded each time the
+    // program runs.
+    std::string sid_ini_filename;
     
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;

@@ -15,16 +15,29 @@ int is_on_quest(lua_State* ls);
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
 {
-   L = lua_open();
-   luaL_openlibs( L );
-   load_modules();
-   register_api_functions();
+  initialize_state();
 }
 
 // Tear down the Lua state.
 ScriptEngine::~ScriptEngine()
 {
    lua_close( L );
+}
+
+bool ScriptEngine::clear_state()
+{
+  lua_close(L);
+  initialize_state();
+
+  return true;
+}
+
+void ScriptEngine::initialize_state()
+{
+   L = lua_open();
+   luaL_openlibs( L );
+   load_modules();
+   register_api_functions();
 }
 
 void ScriptEngine::load_modules()

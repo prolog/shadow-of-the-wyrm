@@ -891,3 +891,14 @@ class StatusAilmentTextKeys
     ~StatusAilmentTextKeys();
 };
 
+// Used for messages about the game that are not actually related to the game
+// content - scripts reloaded, mail for the user, etc.
+class GameEnvTextKeys
+{
+  public:
+    static const std::string GAME_ENV_LUA_STATE_CLEARED;
+
+  protected:
+    GameEnvTextKeys();
+    ~GameEnvTextKeys();
+};
