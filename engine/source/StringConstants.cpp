@@ -1664,3 +1664,14 @@ const string StatusAilmentTextKeys::STATUS_HUNGER_STARVING         = "STATUS_HUN
 const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STARVING = "STATUS_MESSAGE_HUNGER_STARVING";
 const string StatusAilmentTextKeys::STATUS_HUNGER_DYING            = "STATUS_HUNGER_DYING";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING    = "STATUS_MESSAGE_HUNGER_DYING";
+
+// Game Environment text keys:
+GameEnvTextKeys::GameEnvTextKeys()
+{
+}
+
+GameEnvTextKeys::~GameEnvTextKeys()
+{
+}
+
+const string GameEnvTextKeys::GAME_ENV_LUA_STATE_CLEARED = "GAME_ENV_LUA_STATE_CLEARED";

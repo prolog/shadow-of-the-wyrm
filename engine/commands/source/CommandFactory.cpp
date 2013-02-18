@@ -141,6 +141,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<QuestListCommand>();
   }
+  else if (command_name == CommandKeys::RELOAD_SCRIPTS_AND_SIDS)
+  {
+    command = boost::make_shared<ReloadScriptsCommand>();
+  }
 
   return command;
 }

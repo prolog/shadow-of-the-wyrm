@@ -121,6 +121,9 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('C'), CommandKeys::CHAT));
   command_mapping.insert(make_pair(Integer::to_string('a'), CommandKeys::APPLY_FEATURE));
   command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUEST_LIST));
+
+  // Function Keys
+  command_mapping.insert(make_pair(Integer::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses

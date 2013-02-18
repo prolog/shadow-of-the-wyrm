@@ -13,7 +13,7 @@
 
 #include "CursesDisplay.hpp"
 #include "Display.hpp"
-
+#include "Game.hpp"
 #include "Log.hpp"
 #include "Metadata.hpp"
 #include "SavageLandsEngine.hpp"
@@ -53,11 +53,6 @@ void print_title()
 
 }
 
-void initialize_settings()
-{
-  StringTable::load("savagelandstext_en.ini");
-}
-
 int parse_command_line_arguments(int argc, char* argv[])
 {
   for (int x = 0; x < argc; x++)
@@ -92,7 +87,6 @@ int main(int argc, char* argv[])
 {
   try
   {
-    initialize_settings();
     XML::initialize();
     Log& log = Log::instance();
     log.set_log_level(LOG_DEBUG);

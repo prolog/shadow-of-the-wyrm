@@ -251,6 +251,29 @@ ActionCost ActionManager::quest_list(CreaturePtr creature)
   return get_action_cost(creature, qlm.quest_list());
 }
 
+void ActionManager::reload_scripts_and_sids()
+{
+  CreaturePtr nullcr;
+  reload_scripts_and_sids(nullcr);
+}
+
+// Clear the Lua state so scripts can be reloaded.
+// Reload the strings.
+ActionCost ActionManager::reload_scripts_and_sids(CreaturePtr creature)
+{
+  Game& game = Game::instance();
+  ScriptEngine& se = game.get_script_engine_ref();
+  se.clear_state();
+
+  StringTable::load(game.get_sid_ini_filename());
+
+  MessageManager& manager = MessageManager::instance();
+  manager.add_new_message(StringTable::get(GameEnvTextKeys::GAME_ENV_LUA_STATE_CLEARED));
+  manager.send();
+
+  return get_action_cost(creature, 0);
+}
+
 // Pick up an item, doing any necessary checks first.
 ActionCost ActionManager::pick_up(CreaturePtr creature)
 {

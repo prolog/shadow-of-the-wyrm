@@ -42,6 +42,7 @@ const string CommandKeys::EAT            = "EAT";
 const string CommandKeys::CHAT           = "CHAT";
 const string CommandKeys::APPLY_FEATURE  = "APPLY_FEATURE";
 const string CommandKeys::QUEST_LIST     = "QUEST_LIST";
+const string CommandKeys::RELOAD_SCRIPTS_AND_SIDS = "RELOAD_SCRIPTS_AND_SIDS";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

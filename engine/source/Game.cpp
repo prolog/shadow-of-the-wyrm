@@ -470,6 +470,16 @@ Quests& Game::get_quests_ref()
   return quests;
 }
 
+void Game::set_sid_ini_filename(const string& new_sid_ini_filename)
+{
+  sid_ini_filename = new_sid_ini_filename;
+}
+
+string Game::get_sid_ini_filename() const
+{
+  return sid_ini_filename;
+}
+
 bool Game::serialize(ostream& stream)
 {
   Log::instance().trace("Game::serialize - start");
@@ -532,6 +542,8 @@ bool Game::serialize(ostream& stream)
   mortuary.serialize(stream);
 
   quests.serialize(stream);
+
+  // Ignore sid ini filename.
 
   // Game command factory and keyboard map get built up every time - don't save these.
     
@@ -614,6 +626,8 @@ bool Game::deserialize(istream& stream)
   mortuary.deserialize(stream);
 
   quests.deserialize(stream);
+
+  // Ignore sid ini filename
 
   // Game command factory and keyboard map get built up every time - don't load these.
 

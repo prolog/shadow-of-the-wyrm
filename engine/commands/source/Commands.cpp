@@ -278,3 +278,13 @@ QuestListCommand::QuestListCommand()
 QuestListCommand::~QuestListCommand()
 {
 }
+
+// Clear the Lua state (scripts will reload)
+ReloadScriptsCommand::ReloadScriptsCommand()
+: Command(CommandKeys::RELOAD_SCRIPTS_AND_SIDS)
+{
+}
+
+ReloadScriptsCommand::~ReloadScriptsCommand()
+{
+}
