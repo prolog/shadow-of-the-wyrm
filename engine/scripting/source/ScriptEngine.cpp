@@ -1,4 +1,6 @@
 #include "Game.hpp"
+#include "ItemManager.hpp"
+#include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "Quests.hpp"
 #include "ScriptEngine.hpp"
@@ -11,6 +13,10 @@ int add_message_with_pause(lua_State* ls);
 int add_message(lua_State* ls);
 int add_new_quest(lua_State* ls);
 int is_on_quest(lua_State* ls);
+int get_num_creature_killed_global(lua_State* ls);
+int add_object_to_player_tile(lua_State* ls);
+int mark_quest_completed(lua_State* ls);
+int is_quest_completed(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -78,8 +84,10 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_message", add_message);
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
-
-  // TODO: Add is_quest_in_progress, is_quest_completed
+  lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
+  lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
+  lua_register(L, "mark_quest_completed", mark_quest_completed);
+  lua_register(L, "is_quest_completed", is_quest_completed);
 }
 
 // Lua API functions:
@@ -161,6 +169,7 @@ static int add_new_quest(lua_State* ls)
 }
 
 // Check to see if a current quest is in progress.
+// Argument is a string representing the quest ID.
 int is_on_quest(lua_State* ls)
 {
   bool quest_in_progress = false;
@@ -176,5 +185,78 @@ int is_on_quest(lua_State* ls)
   }
   
   lua_pushboolean(ls, quest_in_progress);
+  return 1;
+}
+
+// Check the global mortuary on the game object to determine the death count
+// for a particular creature.
+//
+// Argument is the creature ID.
+int get_num_creature_killed_global(lua_State* ls)
+{
+  int num_killed = 0;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    Mortuary& mort = game.get_mortuary_ref();
+    num_killed = mort.get_num_creature_killed(creature_id);
+  }
+
+  lua_pushinteger(ls, num_killed);
+  return 1;
+}
+
+// Add an object to the player's tile.
+// Argument is the base item ID.
+int add_object_to_player_tile(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+    CreaturePtr player = game.get_current_player();
+    TilePtr player_tile = MapUtils::get_tile_for_creature(map, player); 
+    string base_item_id = lua_tostring(ls, 1);
+
+    ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id);
+  }
+
+  return 0;
+}
+
+// Mark a quest as completed.
+// Argument is the quest ID.
+int mark_quest_completed(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    string quest_id = lua_tostring(ls, 1);
+    Game& game = Game::instance();
+    Quests& quests = game.get_quests_ref();
+
+    quests.set_quest_completed(quest_id);
+  }
+ 
+  return 0;
+}
+
+// Check to see if a quest has been completed.
+int is_quest_completed(lua_State* ls)
+{
+  bool quest_completed = false;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    string quest_id = lua_tostring(ls, 1);
+    Game& game = Game::instance();
+    Quests& quests = game.get_quests_ref();
+
+    quest_completed = quests.is_quest_completed(quest_id);
+  }
+
+  lua_pushboolean(ls, quest_completed);
   return 1;
 }

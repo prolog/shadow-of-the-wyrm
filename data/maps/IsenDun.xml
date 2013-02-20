@@ -205,6 +205,14 @@
 					<Col>7</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>salted_fish</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>9</Col>
+				</Coord>
+				<Quantity>4</Quantity>
+			</Placement>
 		</Items>
 	</InitialPlacements>
 	<Features>
@@ -249,7 +257,7 @@
 				<Col>8</Col>
 			</Coord>
 			<Door>
-				<LockID>isen_dun</LockID>
+				<LockID>isen_dun_boathouse</LockID>
 				<Material>3</Material>
 				<Entrance>
 					<EntranceState>2</EntranceState>

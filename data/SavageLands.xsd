@@ -87,6 +87,7 @@
 			<xs:element name="TempleTile" type="tns:Tile"/>
 			<xs:element name="DaisTile" type="tns:Tile"/>
 			<xs:element name="PierTile" type="tns:Tile"/>
+			<xs:element name="BarrowTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

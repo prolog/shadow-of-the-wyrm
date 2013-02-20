@@ -4043,6 +4043,19 @@
 				</TextDetails>				
 				<Nutrition>1440</Nutrition>	
 			</Food>
+			<Food id="salted_fish">
+				<DescriptionSID>SALTED_FISH_SID</DescriptionSID>
+				<UsageDescriptionSID>SALTED_FISH_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>9</Ounces></Weight>
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>				
+				<Nutrition>1440</Nutrition>	
+			</Food>
 		</Foodstuffs>
 		<Plants>
 			<Plant id="_kingflower">
@@ -4263,6 +4276,14 @@
 				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
 				<Material>3</Material>
 				<LockID>isen_dun_kew</LockID>
+			</Tool>
+			<Tool id="boathouse_key">
+				<DescriptionSID>BOATHOUSE_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>BOATHOUSE_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
+				<Material>3</Material>
+				<LockID>isen_dun_boathouse</LockID>
 			</Tool>
 			<Tool id="sun_gem">
 				<DescriptionSID>SUN_GEM_SID</DescriptionSID>
