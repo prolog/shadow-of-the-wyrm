@@ -89,7 +89,7 @@ int main(int argc, char* argv[])
   {
     XML::initialize();
     Log& log = Log::instance();
-    log.set_log_level(LOG_DEBUG);
+    log.set_log_level(LOG_ERROR);
     log.trace("main - testing");
 
     print_title();
