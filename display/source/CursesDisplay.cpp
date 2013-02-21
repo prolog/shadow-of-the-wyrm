@@ -849,6 +849,18 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
   return items_displayed;
 }
 
+WINDOW* CursesDisplay::get_current_menu()
+{
+  WINDOW* menu = NULL;
+
+  if (!menus.empty())
+  {
+    menu = menus.back();
+  }
+
+  return menu;
+}
+
 bool CursesDisplay::serialize(ostream& stream)
 {
   Serialize::write_uint(stream, TERMINAL_MAX_ROWS);
