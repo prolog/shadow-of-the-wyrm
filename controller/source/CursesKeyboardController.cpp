@@ -1,5 +1,6 @@
 #include "CursesKeyboardController.hpp"
 #include "CursesPromptProcessor.hpp"
+#include "Game.hpp"
 
 using namespace std;
 
@@ -13,7 +14,26 @@ string CursesKeyboardController::get_line()
 
 int CursesKeyboardController::get_char_as_int()
 {
-  int character = getch();
+  Game& game = Game::instance();
+  DisplayPtr display = game.get_display();
+
+  // Hackery :(
+  // But a curses display must always be paired with a curses
+  // kb controller...
+  boost::shared_ptr<CursesDisplay> cdisplay = boost::dynamic_pointer_cast<CursesDisplay>(display);
+
+  int character;
+  WINDOW* cur_win;
+
+  if (cdisplay && ((cur_win = cdisplay->get_current_menu()) != NULL))
+  {
+    character = wgetch(cur_win);
+  }
+  else
+  {
+    character = getch();
+  }
+
   return character;
 }
 
