@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "ItemManager.hpp"
+#include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "Quests.hpp"
@@ -74,7 +75,14 @@ string ScriptEngine::get_table_str(lua_State* ls, const string& key)
 void ScriptEngine::execute(const string& script)
 {
   string script_file = "scripts/" + script;
-  luaL_dofile(L, script_file.c_str());
+  if (luaL_dofile(L, script_file.c_str()))
+  {
+    // An error occurred: pop the error off the stack, and log the message.
+    Log& log = Log::instance();
+    string error(lua_tostring(L, -1));
+
+    log.error("ScriptEngine::execute - Error in luaL_dofile: " + error);
+  }
 }
 
 // Register all the functions available to the scripting engine.

@@ -29,7 +29,7 @@ Log::~Log()
 
 void Log::error(const string& to_error)
 {
-  if (level >= LOG_ERROR)
+  if (level <= LOG_ERROR)
   {
     sl_log << create_datetimestamp() << "\t" << to_error << endl;
   }
@@ -37,7 +37,7 @@ void Log::error(const string& to_error)
 
 void Log::log(const string& to_log)
 {
-  if (level >= LOG_INFO)
+  if (level <= LOG_INFO)
   {
     sl_log << create_datetimestamp() << "\t" << to_log << endl;
   }
@@ -45,7 +45,7 @@ void Log::log(const string& to_log)
 
 void Log::trace(const string& to_trace)
 {
-  if (level >= LOG_TRACE)
+  if (level <= LOG_TRACE)
   {
     sl_log << create_datetimestamp() << "\t" << to_trace << endl;
   }
@@ -53,7 +53,7 @@ void Log::trace(const string& to_trace)
 
 void Log::debug(const string& to_debug)
 {
-  if (level >= LOG_DEBUG)
+  if (level <= LOG_DEBUG)
   {
     sl_log << create_datetimestamp() << "\t" << to_debug << endl;
   }

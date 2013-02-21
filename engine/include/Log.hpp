@@ -4,11 +4,11 @@
 
 enum LoggingLevel
 {
-  LOG_NONE  = 0,
-  LOG_ERROR = 1,
+  LOG_TRACE = 0,
+  LOG_DEBUG = 1,
   LOG_INFO  = 2,
-  LOG_TRACE = 3,
-  LOG_DEBUG = 4
+  LOG_ERROR = 3,
+  LOG_NONE  = 4
 };
 
 class Log
