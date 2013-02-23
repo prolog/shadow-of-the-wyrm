@@ -38,7 +38,7 @@ end
 
 wyrm_quest = Quest:new("wyrm_quest",
                        "HRIMGAR_WYRM_QUEST_TITLE_SID",
-                       "HRIMGAR_SHORT_DESCRIPTION_SID",
+                       "HRIMGAR_DESCRIPTION_SID",
                        "HRIMGAR_WYRM_DESCRIPTION_SID",
                        "", -- Can't actually return after slaying the wyrm
                        "HRIMGAR_WYRM_QUEST_REMINDER_SID",

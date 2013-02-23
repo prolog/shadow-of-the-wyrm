@@ -18,6 +18,8 @@ int get_num_creature_killed_global(lua_State* ls);
 int add_object_to_player_tile(lua_State* ls);
 int mark_quest_completed(lua_State* ls);
 int is_quest_completed(lua_State* ls);
+int player_has_item(lua_State* ls);
+int remove_object_from_player(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -102,6 +104,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "is_quest_completed", is_quest_completed);
+  lua_register(L, "player_has_item", player_has_item);
+  lua_register(L, "remove_object_from_player", remove_object_from_player);
 }
 
 // Lua API functions:
@@ -288,6 +292,7 @@ int mark_quest_completed(lua_State* ls)
 }
 
 // Check to see if a quest has been completed.
+// Argument is the quest ID
 int is_quest_completed(lua_State* ls)
 {
   bool quest_completed = false;
@@ -308,4 +313,41 @@ int is_quest_completed(lua_State* ls)
 
   lua_pushboolean(ls, quest_completed);
   return 1;
+}
+
+// Check to see if the player has an item.
+// Argument is the object's base ID.
+int player_has_item(lua_State* ls)
+{
+  bool has_item = false;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    string base_item_id = lua_tostring(ls, 1);
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+
+    has_item = ItemManager::has_item(player, base_item_id);
+  }
+
+  lua_pushboolean(ls, has_item);
+  return 1;
+}
+
+// Remove an object from the player's equipment or inventory
+// Argument is the object's base ID.
+int remove_object_from_player(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    string object_base_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+
+    ItemManager im;
+    im.remove_item_from_eq_or_inv(player, object_base_id);
+  }
+
+  return 0;
 }

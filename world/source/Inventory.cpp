@@ -132,6 +132,25 @@ bool Inventory::remove(const string& id)
   return false;
 }
 
+bool Inventory::remove_by_base_id(const string& base_id)
+{
+  if (items.size() > 0)
+  {
+    for (list<ItemPtr>::iterator item_it = items.begin(); item_it != items.end(); item_it++)
+    {
+      ItemPtr current_item = *item_it;
+      
+      if (current_item && (current_item->get_base_id() == base_id))
+      {
+        items.erase(item_it);
+        return true;
+      }
+    }    
+  }
+
+  return false;
+}
+
 bool Inventory::clear()
 {
   items.clear();

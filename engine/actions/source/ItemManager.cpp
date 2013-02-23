@@ -1,19 +1,12 @@
 #include <algorithm>
 #include <boost/foreach.hpp>
 #include "Game.hpp"
+#include "EquipmentManager.hpp"
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
 
 using namespace std;
-
-ItemManager::ItemManager()
-{
-}
-
-ItemManager::~ItemManager()
-{
-}
 
 bool ItemManager::operator==(const ItemManager& im)
 {
@@ -72,6 +65,34 @@ list<ItemPtr> ItemManager::get_items_by_type(const Inventory& inv, const ItemTyp
   return result_items;
 }
 
+// Check to see if a creature has an item with the given base ID.
+bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
+{
+  EquipmentMap eq_map = creature->get_equipment().get_equipment();
+
+  BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq_map)
+  {
+    ItemPtr item = eq_pair.second;
+
+    if (item && item->get_base_id() == base_item_id)
+    {
+      return true;
+    }
+  }
+
+  list<ItemPtr> raw_items = creature->get_inventory().get_items_const();
+
+  BOOST_FOREACH(ItemPtr item, raw_items)
+  {
+    if (item && item->get_base_id() == base_item_id)
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 // Create a new shared pointer to an Item, given the items in the game,
 // and the ID of the item to create.
 ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_id, const uint quantity)
@@ -101,6 +122,41 @@ ItemPtr ItemManager::create_item(const std::string& item_id, const uint quantity
   item = manager.create_item(items, item_id, quantity);
   
   return item;
+}
+
+// Remove an item or reduce the quantity by 1.  First check the equipment, and
+// then the inventory.
+bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id)
+{
+  Equipment& eq  = creature->get_equipment();
+  Inventory& inv = creature->get_inventory();
+
+  EquipmentMap eq_map = eq.get_equipment();
+
+  BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq_map)
+  {
+    ItemPtr item = eq_pair.second;
+
+    if (item && item->get_base_id() == base_item_id)
+    {
+      uint quantity = item->get_quantity();
+      if (quantity > 1)
+      {
+        item->set_quantity(quantity-1);
+      }
+      else
+      {
+        // Don't transfer to inventory, and swallow the returned ItemPtr
+        remove(creature, eq_pair.first, false);
+      }
+
+      return true;
+    }
+  }
+
+  return inv.remove_by_base_id(base_item_id);
+
+  return false;
 }
 
 // Create an item with a certain probability, and add it to the given
