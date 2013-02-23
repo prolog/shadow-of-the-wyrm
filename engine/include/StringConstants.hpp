@@ -897,8 +897,11 @@ class GameEnvTextKeys
 {
   public:
     static const std::string GAME_ENV_LUA_STATE_CLEARED;
+    static std::string get_lua_error(const std::string& lua_error_msg);
 
   protected:
+    static const std::string GAME_ENV_LUA_ERROR;
+
     GameEnvTextKeys();
     ~GameEnvTextKeys();
 };

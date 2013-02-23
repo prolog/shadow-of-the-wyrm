@@ -82,6 +82,12 @@ void ScriptEngine::execute(const string& script)
     string error(lua_tostring(L, -1));
 
     log.error("ScriptEngine::execute - Error in luaL_dofile: " + error);
+
+    // Add a message to the message manager.
+    string ui_error = GameEnvTextKeys::get_lua_error(error);
+    MessageManager& manager = MessageManager::instance();
+    manager.add_new_message(ui_error);
+    manager.send();
   }
 }
 
@@ -123,6 +129,11 @@ static int add_message_with_pause(lua_State* ls)
     Game& game = Game::instance();
     game.get_current_player()->get_decision_strategy()->get_confirmation();
 	}
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_message_with_pause");
+    lua_error(ls);
+  }
 
   return 0;
 }
@@ -141,6 +152,11 @@ static int add_message(lua_State* ls)
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();
 	}
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_message");
+    lua_error(ls);
+  }
 
   return 0;
 }
@@ -191,6 +207,11 @@ int is_on_quest(lua_State* ls)
     Quests& quests = game.get_quests_ref();
     quest_in_progress = quests.is_quest_in_progress(quest_id);
   }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_on_quest");
+    lua_error(ls);
+  }
   
   lua_pushboolean(ls, quest_in_progress);
   return 1;
@@ -212,6 +233,11 @@ int get_num_creature_killed_global(lua_State* ls)
     Mortuary& mort = game.get_mortuary_ref();
     num_killed = mort.get_num_creature_killed(creature_id);
   }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_num_creature_killed_global");
+    lua_error(ls);
+  }
 
   lua_pushinteger(ls, num_killed);
   return 1;
@@ -231,6 +257,11 @@ int add_object_to_player_tile(lua_State* ls)
 
     ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id);
   }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_object_to_player_tile");
+    lua_error(ls);
+  }
 
   return 0;
 }
@@ -246,6 +277,11 @@ int mark_quest_completed(lua_State* ls)
     Quests& quests = game.get_quests_ref();
 
     quests.set_quest_completed(quest_id);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to mark_quest_completed");
+    lua_error(ls);
   }
  
   return 0;
@@ -263,6 +299,11 @@ int is_quest_completed(lua_State* ls)
     Quests& quests = game.get_quests_ref();
 
     quest_completed = quests.is_quest_completed(quest_id);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_quest_completed");
+    lua_error(ls);
   }
 
   lua_pushboolean(ls, quest_completed);
