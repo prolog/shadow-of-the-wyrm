@@ -72,13 +72,13 @@ function Quest:execute()
     -- May not be on the quest.  Silently add the quest if not.
     if is_on_quest(self.quest_id) == false then
       add_new_quest(self.quest_id, self)
-      -- Guaranteed to have a quest at this point.  Mark it as complete.
-      mark_quest_completed(self.quest_id)
     end
 
+    -- Guaranteed to have a quest at this point.  Mark it as complete.
+    mark_quest_completed(self.quest_id)
   -- Quest is in progress, condition is not met.
   elseif is_on_quest(self.quest_id) then
-    add_message(quest_reminder_text_sid)
+    add_message(self.quest_reminder_text_sid)
 
   -- Quest is not in progress, condition is not met.
   else

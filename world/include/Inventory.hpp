@@ -29,6 +29,7 @@ class Inventory : public ISerializable
     bool merge(ItemPtr new_item);
     
     bool remove(const std::string& id);
+    bool remove_by_base_id(const std::string& base_id);
     
     bool clear();
     

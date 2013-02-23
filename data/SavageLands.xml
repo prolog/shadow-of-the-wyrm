@@ -2698,6 +2698,7 @@
 			</Damage>
 			<Evade>0</Evade>
 			<Soak>3</Soak>
+			<QuestScript>the_blacksmith.lua</QuestScript>
 		</Creature>
 		<Creature id="small_child">
 			<ShortDescriptionSID>SMALL_CHILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -3482,6 +3483,25 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="fang">
+				<DescriptionSID>FANG_SID</DescriptionSID>
+				<UsageDescriptionSID>FANG_USAGE_SID</UsageDescriptionSID>
+				<Value>500</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>4</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>4</Modifier>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
