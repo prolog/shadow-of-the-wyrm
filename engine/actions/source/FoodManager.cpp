@@ -60,7 +60,7 @@ bool FoodManager::eat_food(CreaturePtr creature, ItemPtr food)
 {
   bool turn_advanced = false;
 
-  FoodPtr item_as_food = boost::dynamic_pointer_cast<Food>(food);
+  ConsumablePtr item_as_consumable = boost::dynamic_pointer_cast<Consumable>(food);
 
   if (food)
   {
@@ -77,7 +77,7 @@ bool FoodManager::eat_food(CreaturePtr creature, ItemPtr food)
       food->set_quantity(food->get_quantity() - 1);
       if (food->get_quantity() == 0) creature->get_inventory().remove(food->get_id());
 
-      cm.consume(creature, item_as_food);
+      cm.consume(creature, item_as_consumable);
 
       eat_success = true;
     }

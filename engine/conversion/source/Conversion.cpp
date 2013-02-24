@@ -357,7 +357,7 @@ HungerLevel HungerLevelConverter::to_hunger_level(const int hunger)
 {
   HungerLevel hunger_level = HUNGER_LEVEL_NORMAL;
 
-  if (hunger <= INT_HUNGER_LEVEL_STUFFED && hunger > INT_HUNGER_LEVEL_FULL)
+  if (hunger > INT_HUNGER_LEVEL_FULL)
   {
     hunger_level = HUNGER_LEVEL_STUFFED;
   }

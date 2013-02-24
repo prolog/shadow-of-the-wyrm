@@ -2669,6 +2669,7 @@
 			</Damage>
 			<Evade>4</Evade>
 			<Soak>1</Soak>
+			<QuestScript>the_ploughman.lua</QuestScript>
 		</Creature>
 		<Creature id="the_blacksmith">
 			<ShortDescriptionSID>THE_BLACKSMITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -4196,6 +4197,21 @@
 					<Colour>2</Colour>
 				</TextDetails>	
 				<Nutrition>1</Nutrition>
+			</Plant>
+			<Plant id="silverweed">
+				<DescriptionSID>SILVERWEED_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SILVERWEED_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SILVERWEED_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SILVERWEED_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>				
+				<Nutrition>12000</Nutrition>
 			</Plant>
 		</Plants>
 		<Boats>
