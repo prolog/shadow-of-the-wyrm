@@ -17,6 +17,7 @@ int is_on_quest(lua_State* ls);
 int get_num_creature_killed_global(lua_State* ls);
 int add_object_to_player_tile(lua_State* ls);
 int mark_quest_completed(lua_State* ls);
+int remove_active_quest(lua_State* ls);
 int is_quest_completed(lua_State* ls);
 int player_has_item(lua_State* ls);
 int remove_object_from_player(lua_State* ls);
@@ -103,6 +104,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
+  lua_register(L, "remove_active_quest", remove_active_quest);
   lua_register(L, "is_quest_completed", is_quest_completed);
   lua_register(L, "player_has_item", player_has_item);
   lua_register(L, "remove_object_from_player", remove_object_from_player);
@@ -251,15 +253,21 @@ int get_num_creature_killed_global(lua_State* ls)
 // Argument is the base item ID.
 int add_object_to_player_tile(lua_State* ls)
 {
-  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  string object_base_id;
+  uint quantity = 1;
+  bool args_ok = false;
+
+  if (lua_gettop(ls) >= 1)
   {
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
     CreaturePtr player = game.get_current_player();
     TilePtr player_tile = MapUtils::get_tile_for_creature(map, player); 
     string base_item_id = lua_tostring(ls, 1);
+    uint quantity = static_cast<uint>(lua_tonumber(ls, 2));
+    if (quantity == 0) ++quantity;
 
-    ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id);
+    ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity);
   }
   else
   {
@@ -288,6 +296,31 @@ int mark_quest_completed(lua_State* ls)
     lua_error(ls);
   }
  
+  return 0;
+}
+
+// Remove an active quest (typically used for mutually exclusive quests)
+// Argument is the quest ID.
+int remove_active_quest(lua_State* ls)
+{
+  bool args_ok = ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)));
+  bool quest_removed = false;
+
+  if (args_ok)
+  {
+    string quest_id = lua_tostring(ls, 1);
+    Game& game = Game::instance();
+    Quests& quests = game.get_quests_ref();
+    
+    quests.remove_active_quest(quest_id);
+  }
+
+  if (!args_ok)
+  {
+    lua_pushstring(ls, "Incorrect arguments to remove_active_quest");
+    lua_error(ls);
+  }
+
   return 0;
 }
 

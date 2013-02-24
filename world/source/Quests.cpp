@@ -117,6 +117,21 @@ void Quests::add_new_quest(const string& quest_id, const Quest& new_quest)
   in_progress_quest_map[quest_id] = new_quest;
 }
 
+// Remove an active quest
+bool Quests::remove_active_quest(const string& quest_id)
+{
+  bool quest_removed = false;
+
+  map<string, Quest>::iterator q_it = in_progress_quest_map.find(quest_id);
+  if (q_it != in_progress_quest_map.end())
+  {
+    in_progress_quest_map.erase(q_it);
+    quest_removed = true;
+  }
+
+  return quest_removed;
+}
+
 // Check to see if the player is doing a particular quest.
 bool Quests::is_quest_in_progress(const string& quest_id)
 {

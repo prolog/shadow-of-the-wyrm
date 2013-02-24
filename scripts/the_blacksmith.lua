@@ -15,8 +15,7 @@ local function sun_gem_completion_fn()
   add_message("BLACKSMITH_SUNGEM_QUEST_COMPLETE_SID")
   add_object_to_player_tile("fang")
   remove_object_from_player("sun_gem")
-
-  -- JCD TODO: Remove ploughman's quest, if present.
+  remove_active_quest("ploughman_sungem")
 end
 
 sungem_quest = Quest:new("blacksmith_sungem",

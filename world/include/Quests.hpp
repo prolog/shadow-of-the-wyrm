@@ -51,6 +51,7 @@ class Quests : public ISerializable
 
     // Add a particular quest to the list of in-progress quests.
     void add_new_quest(const std::string& quest_id, const Quest& new_quest);
+    bool remove_active_quest(const std::string& quest_id);
     bool is_quest_in_progress(const std::string& quest_id);
 
     // Move a quest from the in-progress quests to the completed.
