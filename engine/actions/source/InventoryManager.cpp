@@ -24,41 +24,49 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
 {
   ItemPtr selected_item;
   bool manage_inv = true;
+  ulonglong menus_created = 0;
 
-  if (creature)
+  try
   {
-    CommandFactoryPtr command_factory    = boost::make_shared<InventoryCommandFactory>();
-    KeyboardCommandMapPtr kb_command_map = boost::make_shared<InventoryKeyboardCommandMap>();
-    
-    while (manage_inv)
+    if (creature)
     {
-      DisplayInventoryMap display_inventory;
-      
-      if (display && creature->get_is_player())
+      CommandFactoryPtr command_factory    = boost::make_shared<InventoryCommandFactory>();
+      KeyboardCommandMapPtr kb_command_map = boost::make_shared<InventoryKeyboardCommandMap>();
+    
+      while (manage_inv)
       {
-        display_inventory = InventoryTranslator::create_display_inventory(inv, display_filter_list);
-        current_page_size = display->display_inventory(display_inventory);
-      }
+        DisplayInventoryMap display_inventory;
+      
+        if (display && creature->get_is_player())
+        {
+          display_inventory = InventoryTranslator::create_display_inventory(inv, display_filter_list);
+          current_page_size = display->display_inventory(display_inventory);
+          menus_created++;
+        }
 
-      DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+        DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
       
-      if (decision_strategy)
-      {
-        CommandPtr inventory_command = decision_strategy->get_decision(creature->get_id(), command_factory, kb_command_map);
-        manage_inv = InventoryCommandProcessor::process(this, display_inventory, creature, inv, inventory_command, inventory_is_read_only, selected_item);        
-      }
-      else
-      {
-        manage_inv = false;
+        if (decision_strategy)
+        {
+          CommandPtr inventory_command = decision_strategy->get_decision(creature->get_id(), command_factory, kb_command_map);
+          manage_inv = InventoryCommandProcessor::process(this, display_inventory, creature, inv, inventory_command, inventory_is_read_only, selected_item);        
+        }
+        else
+        {
+          manage_inv = false;
+        }
       }
     }
-    
-    if (creature->get_is_player())
-    {
-      display->clear_menu();
-    } 
+  }
+  catch(...)
+  {
   }
   
+  for (ulonglong i = 0; i < menus_created; i++)
+  {
+    display->clear_menu();
+  } 
+
   return selected_item;
 }
 
