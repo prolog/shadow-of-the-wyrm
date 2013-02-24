@@ -70,9 +70,12 @@ ActionCostValue EquipmentManager::manage_equipment()
   {
   }
 
-  for (ulonglong i = 0; i < menus_created; i++)
+  if (creature->get_is_player())
   {
-    display->clear_menu();
+    for (ulonglong i = 0; i < menus_created; i++)
+    {
+      display->clear_menu();
+    }
   }
 
   return total_action_cost;
