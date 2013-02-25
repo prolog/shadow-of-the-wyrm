@@ -88,9 +88,11 @@ void WorldGenerator::generate_little_island(MapPtr map)
     }
   }
 
-  // JCD FIXME: Add a keep ruins here.
-  TilePtr field_tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
-  map->insert(height-4, width-5, field_tile);
+  // Wintersea Keep
+  TilePtr wintersea_keep = TileGenerator::generate(TILE_TYPE_KEEP, TILE_TYPE_UNDEFINED, false);
+  wintersea_keep->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_WINTERSEA_KEEP);
+  wintersea_keep->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_WINTERSEA_KEEP);
+  map->insert(height-4, width-5, wintersea_keep);
 
   TilePtr forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
   map->insert(height-4, width-4, forest_tile);
@@ -113,8 +115,8 @@ void WorldGenerator::generate_little_island(MapPtr map)
   isen_dun_graveyard->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_THE_BARROWS);
   map->insert(height-3, width-3, isen_dun_graveyard);
 
-  field_tile = TileGenerator::generate(TILE_TYPE_FOREST);
-  map->insert(height-3, width-2, field_tile);
+  forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
+  map->insert(height-3, width-2, forest_tile);
 
   // Siriath's Dungeons
   TilePtr village_dungeon = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED, false);

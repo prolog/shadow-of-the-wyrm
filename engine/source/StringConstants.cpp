@@ -852,6 +852,7 @@ const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN          
 const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD = "TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD";
 const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON   = "TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON";
 const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR   = "TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR";
+const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_WINTERSEA_KEEP     = "TILE_EXTRA_DESCRIPTION_WINTERSEA_KEEP";
 
 // Text keys for player/creature actions
 ActionTextKeys::ActionTextKeys()
