@@ -60,6 +60,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = TileGenerator::generate_staircase(STAIRCASE_UP);
   }
+  else if (xml_tile == '>')
+  {
+    tile = TileGenerator::generate_staircase(STAIRCASE_DOWN);
+  }
   else if (xml_tile == '#')
   {
     tile = TileGenerator::generate(TILE_TYPE_ROCK);

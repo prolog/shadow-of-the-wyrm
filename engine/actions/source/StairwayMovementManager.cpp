@@ -107,7 +107,31 @@ ActionCostValue StairwayMovementManager::descend(CreaturePtr creature, MovementM
         // If there is an exit in the down direction, do the appropriate action.
         if (t_it != exit_map.end())
         {
-          descend_success = mm->generate_and_move_to_new_map(creature, map, tile, 1);
+          MapExitPtr map_exit = t_it->second;
+
+          if (map_exit)
+          {
+            if (map_exit->is_using_map_id())
+            {
+              mm->move_to_new_map(tile, map, map_exit);
+        
+              // If the tile we've moved to has any items, notify the player, if the creature's a player.
+              MapPtr new_map = game.get_current_map();
+
+              TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
+              mm->add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);
+        
+              descend_success = get_action_cost_value();
+            }
+            else
+            {
+              descend_success = mm->generate_and_move_to_new_map(creature, map, tile, 1);
+            }
+          }
+          else
+          {
+            descend_success = mm->generate_and_move_to_new_map(creature, map, tile, 1);
+          }
         }
         // If it's null, check to see if we're on the world map.
         else
