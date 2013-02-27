@@ -4321,6 +4321,14 @@
 				<Material>3</Material>
 				<LockID>isen_dun_boathouse</LockID>
 			</Tool>
+			<Tool id="wintersea_keep_tombs_key">
+				<DescriptionSID>WINTERSEA_TOMBS_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>WINTERSEA_TOMBS_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
+				<Material>3</Material>
+				<LockID>wintersea_tombs</LockID>
+			</Tool>
 			<Tool id="sun_gem">
 				<DescriptionSID>SUN_GEM_SID</DescriptionSID>
 				<UsageDescriptionSID>SUN_GEM_USAGE_SID</UsageDescriptionSID>
