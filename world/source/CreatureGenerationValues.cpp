@@ -5,11 +5,8 @@
 using namespace std;
 
 CreatureGenerationValues::CreatureGenerationValues()
-: current(0),
-maximum(-1),
+: GenerationValues(),
 friendly(false),
-danger_level(0), 
-rarity(RARITY_COMMON), 
 base_experience_value(0)
 {
 }
@@ -22,47 +19,12 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv)
 {
   bool result = true;
 
-  result = result && (current == cgv.current);
-  result = result && (maximum == cgv.maximum);
   result = result && (allowable_terrain_types == cgv.allowable_terrain_types);
   result = result && (friendly == cgv.friendly);
-  result = result && (rarity == cgv.rarity);
   result = result && (initial_hit_points == cgv.initial_hit_points);
   result = result && (base_experience_value == cgv.base_experience_value);
 
   return result;
-}
-
-void CreatureGenerationValues::set_current(const int new_current)
-{
-  current = new_current;
-}
-
-int CreatureGenerationValues::incr_current()
-{
-  return ++current;
-}
-
-int CreatureGenerationValues::get_current() const
-{
-  return current;
-}
-
-void CreatureGenerationValues::set_maximum(const int new_maximum)
-{
-  maximum = new_maximum;
-}
-
-int CreatureGenerationValues::get_maximum() const
-{
-  return maximum;
-}
-
-// Check to see if the maximum number of generatable creatures has been
-// reached.
-bool CreatureGenerationValues::is_maximum_reached() const
-{
-  return (current == maximum);
 }
 
 void CreatureGenerationValues::add_allowable_terrain_type(const TileType additional_terrain_type)
@@ -100,26 +62,6 @@ bool CreatureGenerationValues::get_friendly() const
   return friendly;
 }
 
-void CreatureGenerationValues::set_danger_level(const uint new_danger_level)
-{
-  danger_level = new_danger_level;
-}
-
-uint CreatureGenerationValues::get_danger_level() const
-{
-  return danger_level;
-}
-
-void CreatureGenerationValues::set_rarity(const Rarity new_rarity)
-{
-  rarity = new_rarity;
-}
-
-Rarity CreatureGenerationValues::get_rarity() const
-{
-  return rarity;
-}
-
 void CreatureGenerationValues::set_initial_hit_points(const Dice& new_initial_hit_points)
 {
   initial_hit_points = new_initial_hit_points;
@@ -142,8 +84,7 @@ uint CreatureGenerationValues::get_base_experience_value() const
 
 bool CreatureGenerationValues::serialize(ostream& stream)
 {
-  Serialize::write_int(stream, current);
-  Serialize::write_int(stream, maximum);
+  GenerationValues::serialize(stream);
 
   size_t terrain_types_size = allowable_terrain_types.size();
   Serialize::write_size_t(stream, terrain_types_size);
@@ -157,7 +98,6 @@ bool CreatureGenerationValues::serialize(ostream& stream)
   }
 
   Serialize::write_bool(stream, friendly);
-  Serialize::write_enum(stream, rarity);
   initial_hit_points.serialize(stream);
   Serialize::write_uint(stream, base_experience_value);
 
@@ -166,8 +106,7 @@ bool CreatureGenerationValues::serialize(ostream& stream)
 
 bool CreatureGenerationValues::deserialize(istream& stream)
 {
-  Serialize::read_int(stream, current);
-  Serialize::read_int(stream, maximum);
+  GenerationValues::deserialize(stream);
 
   size_t terrain_types_size = 0;
   Serialize::read_size_t(stream, terrain_types_size);
@@ -186,7 +125,6 @@ bool CreatureGenerationValues::deserialize(istream& stream)
   }
 
   Serialize::read_bool(stream, friendly);
-  Serialize::read_enum(stream, rarity);
   initial_hit_points.deserialize(stream);
   Serialize::read_uint(stream, base_experience_value);
 
