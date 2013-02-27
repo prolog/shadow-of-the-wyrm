@@ -2154,6 +2154,9 @@
     <ClInclude Include="engine\menus\include\TextDisplayFormatter.hpp">
       <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\GenerationValues.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -4090,6 +4093,9 @@
     </ClCompile>
     <ClCompile Include="engine\menus\source\TextDisplayFormatter.cpp">
       <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\GenerationValues.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

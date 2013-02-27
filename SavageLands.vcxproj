@@ -475,6 +475,7 @@
     <ClInclude Include="world\include\Equipment.hpp" />
     <ClInclude Include="world\include\EquipmentTypes.hpp" />
     <ClInclude Include="world\include\Food.hpp" />
+    <ClInclude Include="world\include\GenerationValues.hpp" />
     <ClInclude Include="world\include\HungerClock.hpp" />
     <ClInclude Include="world\include\InitialItem.hpp" />
     <ClInclude Include="world\include\Inventory.hpp" />
@@ -1189,6 +1190,7 @@
     <ClCompile Include="world\source\Dimensions.cpp" />
     <ClCompile Include="world\source\Equipment.cpp" />
     <ClCompile Include="world\source\Food.cpp" />
+    <ClCompile Include="world\source\GenerationValues.cpp" />
     <ClCompile Include="world\source\HungerClock.cpp" />
     <ClCompile Include="world\source\InitialItem.cpp" />
     <ClCompile Include="world\source\Inventory.cpp" />
