@@ -19,6 +19,8 @@ bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv)
 {
   bool result = true;
 
+  result = result && GenerationValues::operator==(cgv);
+
   result = result && (allowable_terrain_types == cgv.allowable_terrain_types);
   result = result && (friendly == cgv.friendly);
   result = result && (initial_hit_points == cgv.initial_hit_points);
