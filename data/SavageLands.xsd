@@ -295,7 +295,7 @@
 			<xs:element name="Evade" type="xs:int" minOccurs="0"/>
 			<xs:element name="Soak" type="xs:int" minOccurs="0"/>
 			<xs:element ref="tns:EventFunctions" minOccurs="0"/>
-			<xs:element name="QuestScript" type="xs:string" minOccurs="0"/>
+			<xs:element name="ChatScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>

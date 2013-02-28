@@ -15,6 +15,7 @@ TEST(SL_World_CreatureGenerationValues, saveload)
   cgv.incr_current();
   cgv.set_maximum(4);
   cgv.set_friendly(true);
+  cgv.set_danger_level(22);
   cgv.set_rarity(Rarity(10));
 
   cgv.add_allowable_terrain_type(TILE_TYPE_BARRACKS);

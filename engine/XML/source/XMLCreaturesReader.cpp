@@ -127,10 +127,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     parse_event_functions(event_functions_node, creature);
 
     // Optional - quest script, used when chatting with the creature.
-    string quest_script = XMLUtils::get_child_node_value(creature_node, "QuestScript");
-    if (!quest_script.empty())
+    string chat_script = XMLUtils::get_child_node_value(creature_node, "ChatScript");
+    if (!chat_script.empty())
     {
-      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_QUEST_SCRIPT, quest_script);
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_CHAT_SCRIPT, chat_script);
     }
   }
   

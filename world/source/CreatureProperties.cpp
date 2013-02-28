@@ -10,5 +10,5 @@ CreatureProperties::~CreatureProperties()
 {
 }
 
-const string CreatureProperties::CREATURE_PROPERTIES_QUEST_SCRIPT = "CREATURE_PROPERTIES_QUEST_SCRIPT";
+const string CreatureProperties::CREATURE_PROPERTIES_CHAT_SCRIPT = "CREATURE_PROPERTIES_CHAT_SCRIPT";
 
