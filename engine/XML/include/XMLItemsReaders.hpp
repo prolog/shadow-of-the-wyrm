@@ -4,6 +4,7 @@
 #include "Armour.hpp"
 #include "Currency.hpp"
 #include "Food.hpp"
+#include "GenerationValues.hpp"
 #include "Plant.hpp"
 #include "Weapon.hpp"
 #include "Wearable.hpp"
@@ -27,21 +28,21 @@ class XMLItemsReader
     XMLItemsReader();
     ~XMLItemsReader();
     
-    ItemMap get_items(const XMLNode& items_node);
+    std::pair<ItemMap, GenerationValuesMap> get_items(const XMLNode& items_node);
 
   protected:
-    ItemMap get_misc_items(const XMLNode& misc_items_node);
-    ItemMap get_armour(const XMLNode& armour_node);
-    ItemMap get_weapons(const XMLNode& weapons_node);
-    ItemMap get_ranged_weapons(const XMLNode& ranged_weapons_node);
-    ItemMap get_ammunition(const XMLNode& ammunition_node);
-    ItemMap get_food(const XMLNode& foodstuffs_node);
-    ItemMap get_plants(const XMLNode& plants_node);
-    ItemMap get_boats(const XMLNode& boats_node);
-    ItemMap get_potions(const XMLNode& potions_node);
-    ItemMap get_scrolls(const XMLNode& scrolls_node);
-    ItemMap get_currencies(const XMLNode& currencies_node);
-    ItemMap get_tools(const XMLNode& tools_node);
+    std::pair<ItemMap, GenerationValuesMap> get_misc_items(const XMLNode& misc_items_node);
+    std::pair<ItemMap, GenerationValuesMap> get_armour(const XMLNode& armour_node);
+    std::pair<ItemMap, GenerationValuesMap> get_weapons(const XMLNode& weapons_node);
+    std::pair<ItemMap, GenerationValuesMap> get_ranged_weapons(const XMLNode& ranged_weapons_node);
+    std::pair<ItemMap, GenerationValuesMap> get_ammunition(const XMLNode& ammunition_node);
+    std::pair<ItemMap, GenerationValuesMap> get_food(const XMLNode& foodstuffs_node);
+    std::pair<ItemMap, GenerationValuesMap> get_plants(const XMLNode& plants_node);
+    std::pair<ItemMap, GenerationValuesMap> get_boats(const XMLNode& boats_node);
+    std::pair<ItemMap, GenerationValuesMap> get_potions(const XMLNode& potions_node);
+    std::pair<ItemMap, GenerationValuesMap> get_scrolls(const XMLNode& scrolls_node);
+    std::pair<ItemMap, GenerationValuesMap> get_currencies(const XMLNode& currencies_node);
+    std::pair<ItemMap, GenerationValuesMap> get_tools(const XMLNode& tools_node);
     
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;

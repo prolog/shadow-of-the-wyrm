@@ -11,7 +11,7 @@ XMLItemReader::~XMLItemReader()
 {
 }
 
-void XMLItemReader::parse(ItemPtr item, const XMLNode& item_node)
+void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& item_node)
 {
   if (item && !item_node.is_null())
   {    
@@ -69,6 +69,13 @@ void XMLItemReader::parse(ItemPtr item, const XMLNode& item_node)
     
     bool is_artifact = XMLUtils::get_child_node_bool_value(item_node, "Artifact");
     item->set_artifact(is_artifact);
+
+    // If the item is an artifact, set the maximum to 1.
+    if (is_artifact) gv.set_maximum(1);
+
+    // JCD TODO
+    // set danger level
+    // set rarity
     
     MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", MATERIAL_TYPE_WOOD));
     item->set_material_type(material_type);

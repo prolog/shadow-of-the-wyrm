@@ -8,10 +8,10 @@ XMLBoatReader::~XMLBoatReader()
 {
 }
 
-void XMLBoatReader::parse(BoatPtr boat, const XMLNode& boat_node)
+void XMLBoatReader::parse(BoatPtr boat, GenerationValues& gv, const XMLNode& boat_node)
 {
   if (!boat_node.is_null())
   {
-    XMLItemReader::parse(boat, boat_node);
+    XMLItemReader::parse(boat, gv, boat_node);
   }
 }

@@ -1,4 +1,5 @@
 #pragma once
+#include "GenerationValues.hpp"
 #include "Item.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLReader.hpp"
@@ -10,7 +11,7 @@ class XMLItemReader : public XMLReader
     XMLItemReader();
     virtual ~XMLItemReader();
     
-    virtual void parse(ItemPtr item, const XMLNode& item_node);
+    virtual void parse(ItemPtr item, GenerationValues& gv, const XMLNode& item_node);
     
   protected:
             void parse_text_details(ItemPtr item, const XMLNode& text_details_node);

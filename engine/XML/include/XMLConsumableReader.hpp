@@ -8,5 +8,5 @@ class XMLConsumableReader : public XMLItemReader
     XMLConsumableReader();
     ~XMLConsumableReader();
 
-    void parse(ConsumablePtr consumable, const XMLNode& consumable_node);
+    void parse(ConsumablePtr consumable, GenerationValues& gv, const XMLNode& consumable_node);
 };

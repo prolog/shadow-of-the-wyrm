@@ -30,7 +30,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
   
   Game& game = Game::instance();
   
-  CreatureGenerationValuesMap cgv_map = game.get_creature_generation_values_ref();
+  CreatureGenerationValuesMap& cgv_map = game.get_creature_generation_values_ref();
   CreatureMap creature_map = game.get_creatures_ref();
     
   CreatureMap::iterator c_it = creature_map.find(creature_id);

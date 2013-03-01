@@ -16,9 +16,10 @@ XMLItemsReader::~XMLItemsReader()
 
 // Gets all the items of the various types and returns them in a map,
 // keyed by their ID (specified in the XML).
-ItemMap XMLItemsReader::get_items(const XMLNode& items_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& items_node)
 {
   ItemMap items;
+  GenerationValuesMap igv_map;
   
   if (!items_node.is_null())
   {
@@ -26,105 +27,123 @@ ItemMap XMLItemsReader::get_items(const XMLNode& items_node)
     
     if (!armours_node.is_null())
     {
-      ItemMap armours_map = get_armour(armours_node);
-      items.insert(armours_map.begin(), armours_map.end());
+      pair<ItemMap, GenerationValuesMap> armours = get_armour(armours_node);
+      items.insert(armours.first.begin(), armours.first.end());
+      igv_map.insert(armours.second.begin(), armours.second.end());
     }
     
     XMLNode weapons_node = XMLUtils::get_next_element_by_local_name(items_node, "Weapons");
     
     if (!weapons_node.is_null())
     {
-      ItemMap weapons_map = get_weapons(weapons_node);
-      items.insert(weapons_map.begin(), weapons_map.end());
+      pair<ItemMap, GenerationValuesMap> weapons = get_weapons(weapons_node);
+      items.insert(weapons.first.begin(), weapons.first.end());
+      igv_map.insert(weapons.second.begin(), weapons.second.end());
     }
     
     XMLNode ranged_weapons_node = XMLUtils::get_next_element_by_local_name(items_node, "RangedWeapons");
     
     if (!ranged_weapons_node.is_null())
     {
-      ItemMap ranged_weapons_map = get_ranged_weapons(ranged_weapons_node);
-      items.insert(ranged_weapons_map.begin(), ranged_weapons_map.end());
+      pair<ItemMap, GenerationValuesMap> ranged_weapons = get_ranged_weapons(ranged_weapons_node);
+      items.insert(ranged_weapons.first.begin(), ranged_weapons.first.end());
+      igv_map.insert(ranged_weapons.second.begin(), ranged_weapons.second.end());
     }
     
     XMLNode ammunition_node = XMLUtils::get_next_element_by_local_name(items_node, "Ammunition");
     
     if (!ammunition_node.is_null())
     {
-      ItemMap ammunition_map = get_ammunition(ammunition_node);
-      items.insert(ammunition_map.begin(), ammunition_map.end());
+      pair<ItemMap, GenerationValuesMap> ammunition = get_ammunition(ammunition_node);
+      items.insert(ammunition.first.begin(), ammunition.first.end());
+      igv_map.insert(ammunition.second.begin(), ammunition.second.end());
     }
     
     XMLNode food_node = XMLUtils::get_next_element_by_local_name(items_node, "Foodstuffs");
     
     if (!food_node.is_null())
     {
-      ItemMap food_map = get_food(food_node);
-      items.insert(food_map.begin(), food_map.end());
+      pair<ItemMap, GenerationValuesMap> food = get_food(food_node);
+      items.insert(food.first.begin(), food.first.end());
+      igv_map.insert(food.second.begin(), food.second.end());
     }
     
     XMLNode plants_node = XMLUtils::get_next_element_by_local_name(items_node, "Plants");
     
     if (!plants_node.is_null())
     {
-      ItemMap plants_map = get_plants(plants_node);
-      items.insert(plants_map.begin(), plants_map.end());
+      pair<ItemMap, GenerationValuesMap> plants = get_plants(plants_node);
+      items.insert(plants.first.begin(), plants.first.end());
+      igv_map.insert(plants.second.begin(), plants.second.end());
     }
     
     XMLNode boats_node = XMLUtils::get_next_element_by_local_name(items_node, "Boats");
     
     if (!boats_node.is_null())
     {
-      ItemMap boats_map = get_boats(boats_node);
-      items.insert(boats_map.begin(), boats_map.end());
+      pair<ItemMap, GenerationValuesMap> boats = get_boats(boats_node);
+      items.insert(boats.first.begin(), boats.first.end());
+      igv_map.insert(boats.second.begin(), boats.second.end());
     }
     
     XMLNode potions_node = XMLUtils::get_next_element_by_local_name(items_node, "Potions");
     
     if (!potions_node.is_null())
     {
-      ItemMap potions_map = get_potions(potions_node);
-      items.insert(potions_map.begin(), potions_map.end());
+      pair<ItemMap, GenerationValuesMap> potions = get_potions(potions_node);
+      items.insert(potions.first.begin(), potions.first.end());
+      igv_map.insert(potions.second.begin(), potions.second.end());
     }
     
     XMLNode scrolls_node = XMLUtils::get_next_element_by_local_name(items_node, "Scrolls");
     
     if (!scrolls_node.is_null())
     {
-      ItemMap scrolls_map = get_scrolls(scrolls_node);
-      items.insert(scrolls_map.begin(), scrolls_map.end());
+      pair<ItemMap, GenerationValuesMap> scrolls = get_scrolls(scrolls_node);
+      items.insert(scrolls.first.begin(), scrolls.first.end());
+      igv_map.insert(scrolls.second.begin(), scrolls.second.end());
     }
     
     XMLNode currencies_node = XMLUtils::get_next_element_by_local_name(items_node, "Currencies");
     
     if (!currencies_node.is_null())
     {
-      ItemMap currencies_map = get_currencies(currencies_node);
-      items.insert(currencies_map.begin(), currencies_map.end());
+      pair<ItemMap, GenerationValuesMap> currencies = get_currencies(currencies_node);
+      items.insert(currencies.first.begin(), currencies.first.end());
+      igv_map.insert(currencies.second.begin(), currencies.second.end());
     }
     
     XMLNode tools_node = XMLUtils::get_next_element_by_local_name(items_node, "Tools");
 
     if (!tools_node.is_null())
     {
-      ItemMap tools_map = get_tools(tools_node);
-      items.insert(tools_map.begin(), tools_map.end());
+      pair<ItemMap, GenerationValuesMap> tools = get_tools(tools_node);
+      items.insert(tools.first.begin(), tools.first.end());
+      igv_map.insert(tools.second.begin(), tools.second.end());
     }
 
     XMLNode misc_items_node = XMLUtils::get_next_element_by_local_name(items_node, "MiscItems");
     
     if (!misc_items_node.is_null())
     {
-      ItemMap misc_items_map = get_misc_items(misc_items_node);
-      items.insert(misc_items_map.begin(), misc_items_map.end());
+      std::pair<ItemMap, GenerationValuesMap> misc_items = get_misc_items(misc_items_node);
+      items.insert(misc_items.first.begin(), misc_items.first.end());
+      igv_map.insert(misc_items.second.begin(), misc_items.second.end());
     }
   }
+
+  pair<ItemMap, GenerationValuesMap> item_pair;
+  item_pair.first = items;
+  item_pair.second = igv_map;
   
-  return items;
+  return item_pair;
 }
 
-ItemMap XMLItemsReader::get_misc_items(const XMLNode& misc_items_node)
+std::pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_misc_items(const XMLNode& misc_items_node)
 {
-  ItemMap misc_items;
+  ItemMap misc_items_map;
+  GenerationValuesMap igv_map;
+  pair<ItemMap, GenerationValuesMap> misc_items;
   
   if (!misc_items_node.is_null())
   {
@@ -135,18 +154,25 @@ ItemMap XMLItemsReader::get_misc_items(const XMLNode& misc_items_node)
       if (!node.is_null())
       {
         ItemPtr item = boost::make_shared<MiscItem>();
-        item_reader.parse(item, node);
-        misc_items.insert(make_pair(item->get_id(), item));  
+        GenerationValues igv;
+        item_reader.parse(item, igv, node);
+        misc_items_map.insert(make_pair(item->get_id(), item));  
+        igv_map.insert(make_pair(item->get_id(), igv));
       }
     }
   }
   
+  misc_items.first = misc_items_map;
+  misc_items.second = igv_map;
+
   return misc_items;
 }
 
-ItemMap XMLItemsReader::get_armour(const XMLNode& armours_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& armours_node)
 {
+  pair<ItemMap, GenerationValuesMap> armour;
   ItemMap armour_map;
+  GenerationValuesMap igv_map;
   
   if (!armours_node.is_null())
   {
@@ -157,18 +183,24 @@ ItemMap XMLItemsReader::get_armour(const XMLNode& armours_node)
       if (!node.is_null())
       {
         ArmourPtr armour = boost::make_shared<Armour>();
-        armour_reader.parse(armour, node);
+        GenerationValues igv;
+        armour_reader.parse(armour, igv, node);
         armour_map.insert(make_pair(armour->get_id(), armour));
+        igv_map.insert(make_pair(armour->get_id(), igv));
       }
     }
   }
   
-  return armour_map;
+  armour.first = armour_map;
+  armour.second = igv_map;
+  return armour;
 }
 
-ItemMap XMLItemsReader::get_weapons(const XMLNode& weapons_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_weapons(const XMLNode& weapons_node)
 {
+  pair<ItemMap, GenerationValuesMap> weapons;
   ItemMap weapons_map;
+  GenerationValuesMap igv_map;
   
   if (!weapons_node.is_null())
   {
@@ -177,17 +209,23 @@ ItemMap XMLItemsReader::get_weapons(const XMLNode& weapons_node)
     BOOST_FOREACH(XMLNode node, weapons_nodes)
     {
       MeleeWeaponPtr weapon = boost::make_shared<MeleeWeapon>();
-      weapons_reader.parse(weapon, node);
+      GenerationValues igv;
+      weapons_reader.parse(weapon, igv, node);
       weapons_map.insert(make_pair(weapon->get_id(), weapon));
+      igv_map.insert(make_pair(weapon->get_id(), igv));
     }
   }
 
-  return weapons_map;
+  weapons.first = weapons_map;
+  weapons.second = igv_map;
+  return weapons;
 }
 
-ItemMap XMLItemsReader::get_ranged_weapons(const XMLNode& ranged_weapons_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ranged_weapons(const XMLNode& ranged_weapons_node)
 {
+  pair<ItemMap, GenerationValuesMap> ranged_weapons;
   ItemMap weapons_map;
+  GenerationValuesMap igv_map;
   
   if (!ranged_weapons_node.is_null())
   {
@@ -196,17 +234,23 @@ ItemMap XMLItemsReader::get_ranged_weapons(const XMLNode& ranged_weapons_node)
     BOOST_FOREACH(XMLNode node, ranged_weapons_nodes)
     {
       RangedWeaponPtr ranged_weapon = boost::make_shared<RangedWeapon>();
-      weapons_reader.parse(ranged_weapon, node);
+      GenerationValues igv;
+      weapons_reader.parse(ranged_weapon, igv, node);
       weapons_map.insert(make_pair(ranged_weapon->get_id(), ranged_weapon));
+      igv_map.insert(make_pair(ranged_weapon->get_id(), igv));
     }
   }
   
-  return weapons_map;
+  ranged_weapons.first = weapons_map;
+  ranged_weapons.second = igv_map;
+  return ranged_weapons;
 }
 
-ItemMap XMLItemsReader::get_ammunition(const XMLNode& ammunition_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode& ammunition_node)
 {
+  pair<ItemMap, GenerationValuesMap> ammunition;
   ItemMap ammunition_map;
+  GenerationValuesMap igv_map;
   
   if (!ammunition_node.is_null())
   {
@@ -215,17 +259,23 @@ ItemMap XMLItemsReader::get_ammunition(const XMLNode& ammunition_node)
     BOOST_FOREACH(XMLNode node, missiles_nodes)
     {
       WeaponPtr ammunition = boost::make_shared<MeleeWeapon>();
-      ammunition_reader.parse(ammunition, node);
+      GenerationValues igv;
+      ammunition_reader.parse(ammunition, igv, node);
       ammunition_map.insert(make_pair(ammunition->get_id(), ammunition));
+      igv_map.insert(make_pair(ammunition->get_id(), igv));
     }
   }
   
-  return ammunition_map;
+  ammunition.first = ammunition_map;
+  ammunition.second = igv_map;
+  return ammunition;
 }
 
-ItemMap XMLItemsReader::get_food(const XMLNode& food_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_node)
 {
+  pair<ItemMap, GenerationValuesMap> food;
   ItemMap food_map;
+  GenerationValuesMap igv_map;
   
   if (!food_node.is_null())
   {
@@ -234,17 +284,23 @@ ItemMap XMLItemsReader::get_food(const XMLNode& food_node)
     BOOST_FOREACH(XMLNode node, food_nodes)
     {
       FoodPtr food = boost::make_shared<Food>();
-      food_reader.parse(food, node);
+      GenerationValues igv;
+      food_reader.parse(food, igv, node);
       food_map.insert(make_pair(food->get_id(), food));
+      igv_map.insert(make_pair(food->get_id(), igv));
     }
   }
   
-  return food_map;
+  food.first = food_map;
+  food.second = igv_map;
+  return food;
 }
 
-ItemMap XMLItemsReader::get_plants(const XMLNode& plants_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_plants(const XMLNode& plants_node)
 {
+  pair<ItemMap, GenerationValuesMap> plants;
   ItemMap plants_map;
+  GenerationValuesMap igv_map;
   
   if (!plants_node.is_null())
   {
@@ -253,17 +309,23 @@ ItemMap XMLItemsReader::get_plants(const XMLNode& plants_node)
     BOOST_FOREACH(XMLNode node, plants_nodes)
     {
       PlantPtr plant = boost::make_shared<Plant>();
-      plant_reader.parse(plant, node);
+      GenerationValues gv;
+      plant_reader.parse(plant, gv, node);
       plants_map.insert(make_pair(plant->get_id(), plant));
+      igv_map.insert(make_pair(plant->get_id(), gv));
     }
   }
   
-  return plants_map;
+  plants.first = plants_map;
+  plants.second = igv_map;
+  return plants;
 }
 
-ItemMap XMLItemsReader::get_boats(const XMLNode& boats_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_boats(const XMLNode& boats_node)
 {
+  pair<ItemMap, GenerationValuesMap> boats;
   ItemMap boats_map;
+  GenerationValuesMap igv_map;
   
   if (!boats_node.is_null())
   {
@@ -272,17 +334,23 @@ ItemMap XMLItemsReader::get_boats(const XMLNode& boats_node)
     BOOST_FOREACH(XMLNode node, boats_nodes)
     {
       BoatPtr boat = boost::make_shared<Boat>();
-      boat_reader.parse(boat, node);
+      GenerationValues igv;
+      boat_reader.parse(boat, igv, node);
       boats_map.insert(make_pair(boat->get_id(), boat));
+      igv_map.insert(make_pair(boat->get_id(), igv));
     }
   }
   
-  return boats_map;
+  boats.first = boats_map;
+  boats.second = igv_map;
+  return boats;
 }
 
-ItemMap XMLItemsReader::get_potions(const XMLNode& potions_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_potions(const XMLNode& potions_node)
 {
+  pair<ItemMap, GenerationValuesMap> potions;
   ItemMap potions_map;
+  GenerationValuesMap igv_map;
   
   if (!potions_node.is_null())
   {
@@ -291,17 +359,23 @@ ItemMap XMLItemsReader::get_potions(const XMLNode& potions_node)
     BOOST_FOREACH(XMLNode node, potions_nodes)
     {
       PotionPtr potion = boost::make_shared<Potion>();
-      potion_reader.parse(potion, node);
+      GenerationValues igv;
+      potion_reader.parse(potion, igv, node);
       potions_map.insert(make_pair(potion->get_id(), potion));
+      igv_map.insert(make_pair(potion->get_id(), igv));
     }
   }
   
-  return potions_map;
+  potions.first = potions_map;
+  potions.second = igv_map;
+  return potions;
 }
 
-ItemMap XMLItemsReader::get_scrolls(const XMLNode& scrolls_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_scrolls(const XMLNode& scrolls_node)
 {
+  pair<ItemMap, GenerationValuesMap> scrolls;
   ItemMap scrolls_map;
+  GenerationValuesMap igv_map;
   
   if (!scrolls_node.is_null())
   {
@@ -310,17 +384,23 @@ ItemMap XMLItemsReader::get_scrolls(const XMLNode& scrolls_node)
     BOOST_FOREACH(XMLNode node, scrolls_nodes)
     {
       ScrollPtr scroll = boost::make_shared<Scroll>();
-      scroll_reader.parse(scroll, node);
+      GenerationValues igv;
+      scroll_reader.parse(scroll, igv, node);
       scrolls_map.insert(make_pair(scroll->get_id(), scroll));
+      igv_map.insert(make_pair(scroll->get_id(), igv));
     }
   }
   
-  return scrolls_map;
+  scrolls.first = scrolls_map;
+  scrolls.second = igv_map;
+  return scrolls;
 }
 
-ItemMap XMLItemsReader::get_currencies(const XMLNode& currencies_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_currencies(const XMLNode& currencies_node)
 {
+  pair<ItemMap, GenerationValuesMap> currencies;
   ItemMap currencies_map;
+  GenerationValuesMap igv_map;
   
   if (!currencies_node.is_null())
   {
@@ -329,17 +409,23 @@ ItemMap XMLItemsReader::get_currencies(const XMLNode& currencies_node)
     BOOST_FOREACH(XMLNode node, currencies_nodes)
     {
       CurrencyPtr currency = boost::make_shared<Currency>();
-      item_reader.parse(currency, node);
+      GenerationValues igv;
+      item_reader.parse(currency, igv, node);
       currencies_map.insert(make_pair(currency->get_id(), currency));
+      igv_map.insert(make_pair(currency->get_id(), igv));
     }
   }
-  
-  return currencies_map;
+
+  currencies.first = currencies_map;
+  currencies.second = igv_map;
+  return currencies;;
 }
 
-ItemMap XMLItemsReader::get_tools(const XMLNode& tools_node)
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_tools(const XMLNode& tools_node)
 {
+  pair<ItemMap, GenerationValuesMap> tools;
   ItemMap tools_map;
+  GenerationValuesMap igv_map;
 
   if (!tools_node.is_null())
   {
@@ -348,10 +434,14 @@ ItemMap XMLItemsReader::get_tools(const XMLNode& tools_node)
     BOOST_FOREACH(XMLNode node, tools_nodes)
     {
       ToolPtr tool = boost::make_shared<Tool>();
-      tool_reader.parse(tool, node);
+      GenerationValues igv;
+      tool_reader.parse(tool, igv, node);
       tools_map.insert(make_pair(tool->get_id(), tool));
+      igv_map.insert(make_pair(tool->get_id(), igv));
     }
   }
 
-  return tools_map;
+  tools.first = tools_map;
+  tools.second = igv_map;
+  return tools;
 }

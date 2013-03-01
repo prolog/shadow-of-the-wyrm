@@ -12,6 +12,6 @@ class XMLArmourReader : public XMLWearableReader
     
   protected:
     friend class XMLItemsReader;
-    void parse(ArmourPtr armour, const XMLNode& armour_node);
+    void parse(ArmourPtr armour, GenerationValues& gv, const XMLNode& armour_node);
 };
 

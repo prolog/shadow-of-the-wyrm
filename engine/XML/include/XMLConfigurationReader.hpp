@@ -24,7 +24,7 @@ class XMLConfigurationReader
     RaceMap get_races();
     ClassMap get_classes();
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
-    ItemMap get_items();    
+    std::pair<ItemMap, GenerationValuesMap> get_items();    
     std::vector<DisplayTile> get_tile_info();
     std::vector<MapPtr> get_custom_maps(const std::string& directory, const std::string& filename_pattern);
 

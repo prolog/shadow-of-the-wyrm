@@ -48,7 +48,10 @@ class Game : public ISerializable
     const CreatureMap& get_creatures_ref() const;
     
     void set_creature_generation_values(const CreatureGenerationValuesMap& game_cgv);
-    const CreatureGenerationValuesMap& get_creature_generation_values_ref() const;
+    CreatureGenerationValuesMap& get_creature_generation_values_ref();
+
+    void set_item_generation_values(const GenerationValuesMap& game_igv);
+    GenerationValuesMap& get_item_generation_values_ref();
     
     void set_items(const ItemMap& game_items);
     const ItemMap& get_items_ref() const;
@@ -137,6 +140,7 @@ class Game : public ISerializable
     ClassMap classes;
     CreatureMap creatures;
     CreatureGenerationValuesMap creature_generation_values;
+    GenerationValuesMap item_generation_values;
     ItemMap items;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
 

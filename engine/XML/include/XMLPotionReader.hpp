@@ -9,6 +9,6 @@ class XMLPotionReader : public XMLItemReader
     XMLPotionReader();
     ~XMLPotionReader();
 
-    void parse(PotionPtr potion, const XMLNode& potion_node);
+    void parse(PotionPtr potion, GenerationValues& igv, const XMLNode& potion_node);
 };
 

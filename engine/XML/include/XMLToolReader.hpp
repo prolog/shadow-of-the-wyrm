@@ -9,6 +9,6 @@ class XMLToolReader : public XMLItemReader
     XMLToolReader();
     ~XMLToolReader();
 
-    void parse(ToolPtr tool, const XMLNode& tool_node);
+    void parse(ToolPtr tool, GenerationValues& gv, const XMLNode& tool_node);
 };
 

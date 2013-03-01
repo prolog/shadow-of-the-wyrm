@@ -15,7 +15,7 @@ class XMLWeaponsReader : public XMLWearableReader
     
   protected:
     friend class XMLItemsReader;
-    void parse(WeaponPtr weapon, const XMLNode& ranged_weapon_node);
+    void parse(WeaponPtr weapon, GenerationValues& gv, const XMLNode& ranged_weapon_node);
 };
 
 class XMLAmmunitionReader : public XMLWeaponsReader
@@ -26,6 +26,6 @@ class XMLAmmunitionReader : public XMLWeaponsReader
     
   protected:
     friend class XMLItemsReader;
-    void parse(WeaponPtr ammunition, const XMLNode& ammunition_node);
+    void parse(WeaponPtr ammunition, GenerationValues& gv, const XMLNode& ammunition_node);
 };
 

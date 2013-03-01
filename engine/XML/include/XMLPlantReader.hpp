@@ -12,6 +12,6 @@ class XMLPlantReader : public XMLConsumableReader
     
   protected:
     friend class XMLItemsReader;
-    void parse(PlantPtr plant, const XMLNode& plant_node);
+    void parse(PlantPtr plant, GenerationValues& gv, const XMLNode& plant_node);
 };
 

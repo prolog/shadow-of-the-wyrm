@@ -118,8 +118,9 @@ void SavageLandsEngine::setup_game()
   // and classes), and items.
   game.set_display(display);
 
-  ItemMap items = reader.get_items();
-  game.set_items(items);
+  pair<ItemMap, GenerationValuesMap> items = reader.get_items();
+  game.set_items(items.first);
+  game.set_item_generation_values(items.second);
 
   DeityMap deities = reader.get_deities();      
   game.set_deities(deities);
