@@ -37,10 +37,10 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creat
   return creatures;
 }
 
-ItemMap XMLConfigurationReader::get_items()
+pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
 {
   XMLNode items_node = XMLUtils::get_next_element_by_local_name(root, "Items");
-  ItemMap items = items_reader.get_items(items_node);
+  pair<ItemMap, GenerationValuesMap> items = items_reader.get_items(items_node);
   return items;
 }
 

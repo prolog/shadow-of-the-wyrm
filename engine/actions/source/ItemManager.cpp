@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <boost/foreach.hpp>
 #include "Game.hpp"
+#include "Log.hpp"
 #include "EquipmentManager.hpp"
 #include "ItemFactory.hpp"
 #include "ItemManager.hpp"
@@ -103,10 +104,34 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
   if (i_it != items.end())
   {
     ItemPtr found_item = i_it->second;
-    
-    // JCD FIXME: Change this to an ItemFactory based on its type.
-    new_item = ItemFactory::create(found_item);
-    new_item->set_quantity(quantity);
+
+    // Check the item generation values to see if we can create the
+    // item, based on the current max.
+    Game& game = Game::instance();
+    GenerationValuesMap& igv_map = game.get_item_generation_values_ref();
+    GenerationValuesMap::iterator i_it = igv_map.find(item_id);
+
+    if (i_it != igv_map.end())
+    {
+      GenerationValues& igv = i_it->second;
+      if (!igv.is_maximum_reached())
+      {
+        // JCD FIXME: Move the code below to create an itemptr into here.
+        igv.incr_current();
+
+        // JCD FIXME: Change this to an ItemFactory based on its type.
+        new_item = ItemFactory::create(found_item);
+        new_item->set_quantity(quantity);
+      }
+      else
+      {
+        Log::instance().debug("Tried to add item with ID " + item_id + ", but the maximum was reached.  Returning null ItemPtr.");
+      }
+    }  
+    else
+    {
+      Log::instance().error("Couldn't find item generation values for item with ID " + item_id);
+    }
   }
   
   return new_item;

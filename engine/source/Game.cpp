@@ -111,9 +111,19 @@ void Game::set_creature_generation_values(const CreatureGenerationValuesMap& gam
   creature_generation_values = game_cgv;
 }
 
-const CreatureGenerationValuesMap& Game::get_creature_generation_values_ref() const
+CreatureGenerationValuesMap& Game::get_creature_generation_values_ref()
 {
   return creature_generation_values;
+}
+
+void Game::set_item_generation_values(const GenerationValuesMap& game_igv)
+{
+  item_generation_values = game_igv;
+}
+
+GenerationValuesMap& Game::get_item_generation_values_ref()
+{
+  return item_generation_values;
 }
 
 void Game::set_items(const ItemMap& game_items)
@@ -517,6 +527,19 @@ bool Game::serialize(ostream& stream)
     }
   }
 
+  // Item generation values
+  size_t igv_size = item_generation_values.size();
+  Serialize::write_size_t(stream, igv_size);
+
+  if (igv_size > 0)
+  {
+    BOOST_FOREACH(GenerationValuesMap::value_type& igv_val, item_generation_values)
+    {
+      Serialize::write_string(stream, igv_val.first);
+      igv_val.second.serialize(stream);
+    }
+  }
+
   // Ignore items map - this will be built up on startup.
   // Ignore tile_info map - this will be built up on startup.
 
@@ -593,6 +616,27 @@ bool Game::deserialize(istream& stream)
       cgv.deserialize(stream);
 
       creature_generation_values.insert(make_pair(creature_id, cgv));
+    }
+  }
+
+  // Keep track of item generation values for current/maximum allowed,
+  // same as for creatures.
+  size_t igv_size = 0;
+  Serialize::read_size_t(stream, igv_size);
+
+  if (igv_size > 0)
+  {
+    item_generation_values.clear();
+
+    for (uint i = 0; i < igv_size; i++)
+    {
+      string item_id;
+      Serialize::read_string(stream, item_id);
+
+      GenerationValues gv;
+      gv.deserialize(stream);
+
+      item_generation_values.insert(make_pair(item_id, gv));
     }
   }
 

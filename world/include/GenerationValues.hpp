@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include "common.hpp"
 #include "ISerializable.hpp"
 #include "RarityTypes.hpp"
@@ -47,3 +48,5 @@ class GenerationValues : public ISerializable
   private:
     ClassIdentifier internal_class_identifier() const;
 };
+
+typedef std::map<std::string, GenerationValues> GenerationValuesMap;
