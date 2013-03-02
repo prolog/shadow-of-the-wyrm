@@ -3292,7 +3292,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
-				<Evade>2</Evade>
+				<Evade>3</Evade>
 				<Soak>0</Soak>
 			</Armour>
 			<Armour id="metal_cap">
