@@ -185,10 +185,17 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>metal_cap</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>65</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>buckler</ID>
 				<Coord>
 					<Row>2</Row>
-					<Col>64</Col>
+					<Col>66</Col>
 				</Coord>
 			</Placement>
 			<Placement>
