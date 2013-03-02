@@ -1,1 +1,1 @@
-dir/s *.cpp *.hpp *.ini *.xsd *.xml
+dir/s *.cpp *.hpp *.ini *.xsd *.xml *.lua
