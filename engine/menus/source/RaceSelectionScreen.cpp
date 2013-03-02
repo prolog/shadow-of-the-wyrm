@@ -34,7 +34,7 @@ void RaceSelectionScreen::initialize()
     string race_id = races_it->first;
     RacePtr current_race = races_it->second;
 
-    if (current_race && options)
+    if (current_race && current_race->get_user_playable() && options)
     {
       Option current_option;
       current_option.set_id(current_id);
