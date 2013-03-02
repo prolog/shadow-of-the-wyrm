@@ -3292,7 +3292,17 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>0</WornLocation>
 				<Material>4</Material>
-				<Evade>1</Evade>
+				<Evade>2</Evade>
+				<Soak>0</Soak>
+			</Armour>
+			<Armour id="metal_cap">
+				<DescriptionSID>METAL_CAP_SID</DescriptionSID>
+				<UsageDescriptionSID>METAL_CAP_USAGE_SID</UsageDescriptionSID>
+				<Value>30</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>3</Material>
+				<Evade>0</Evade>
 				<Soak>1</Soak>
 			</Armour>
 			<Armour id="iron_helm">
