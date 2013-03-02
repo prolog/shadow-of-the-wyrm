@@ -36,7 +36,7 @@ void ClassSelectionScreen::initialize()
     string class_id = classes_it->first;
     ClassPtr current_class = classes_it->second;
 
-    if (current_class && options)
+    if (current_class && current_class->get_user_playable() && options)
     {
       Option current_option;
       current_option.set_id(current_id);
