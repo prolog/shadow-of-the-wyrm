@@ -115,13 +115,6 @@
 		</Creatures>
 		<Items>
 			<Placement>
-				<ID>kew_key</ID>
-				<Coord>
-					<Row>6</Row>
-					<Col>75</Col>
-				</Coord>
-			</Placement>
-			<Placement>
 				<ID>_vegetable_3</ID>
 				<Coord>
 					<Row>9</Row>
