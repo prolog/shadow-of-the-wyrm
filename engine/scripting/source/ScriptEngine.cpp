@@ -21,6 +21,8 @@ int remove_active_quest(lua_State* ls);
 int is_quest_completed(lua_State* ls);
 int player_has_item(lua_State* ls);
 int remove_object_from_player(lua_State* ls);
+int is_item_generated(lua_State* ls);
+int get_num_item_generated(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -108,6 +110,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_quest_completed", is_quest_completed);
   lua_register(L, "player_has_item", player_has_item);
   lua_register(L, "remove_object_from_player", remove_object_from_player);
+  lua_register(L, "is_item_generated", is_item_generated);
+  lua_register(L, "get_num_item_generated", get_num_item_generated);
 }
 
 // Lua API functions:
@@ -362,6 +366,11 @@ int player_has_item(lua_State* ls)
 
     has_item = ItemManager::has_item(player, base_item_id);
   }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to player_has_item");
+    lua_error(ls);
+  }
 
   lua_pushboolean(ls, has_item);
   return 1;
@@ -381,6 +390,57 @@ int remove_object_from_player(lua_State* ls)
     ItemManager im;
     im.remove_item_from_eq_or_inv(player, object_base_id);
   }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to remove_object_from_player");
+    lua_error(ls);
+  }
 
   return 0;
+}
+
+// Check to see if an item is generated.
+// Argument is the base item ID.
+int is_item_generated(lua_State* ls)
+{
+  bool item_generated = false;
+
+  get_num_item_generated(ls);
+  item_generated = (lua_tonumber(ls, -1) > 0);
+
+  // We don't need this value anymore - calling function should get the 
+  // boolean return value.
+  lua_pop(ls, -1); 
+
+  lua_pushboolean(ls, item_generated);
+  return 1;
+}
+
+// Check to see how many of a particular item have been generated.
+// Argument is the base item ID.
+int get_num_item_generated(lua_State* ls)
+{
+  int num_gen = 0;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    string object_base_id = lua_tostring(ls, 1);
+
+    Game& game = Game::instance();
+    GenerationValuesMap& item_generation_values = game.get_item_generation_values_ref();
+    GenerationValuesMap::iterator i_it = item_generation_values.find(object_base_id);
+
+    if (i_it != item_generation_values.end())
+    {
+      num_gen = i_it->second.get_current();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_num_item_generated");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, num_gen);
+  return 1;
 }

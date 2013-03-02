@@ -2789,6 +2789,7 @@
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>5</Soak>
+			<ChatScript>kew.lua</ChatScript>
 		</Creature>
 		<Creature id="farmer">
 			<ShortDescriptionSID>FARMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
