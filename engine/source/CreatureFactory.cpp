@@ -56,7 +56,17 @@ CreaturePtr CreatureFactory::create_by_creature_id
       
     Creature creature_instance = *creature_template;
     creature = boost::make_shared<Creature>(creature_instance);
-    set_default_resistances(creature);
+    DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy();
+
+    creature = create_by_race_and_class(action_manager,
+                                        creature->get_race_id(),
+                                        creature->get_class_id(),
+                                        creature->get_name(),
+                                        creature->get_sex(),
+                                        creature->get_religion().get_active_deity_id());
+    
+    creature->set_decision_strategy(template_decision_strategy);
+//x     set_default_resistances(creature);
       
     // Set HP to a randomly generated value in the initial range.
     Dice initial_hp_range = cgv.get_initial_hit_points();

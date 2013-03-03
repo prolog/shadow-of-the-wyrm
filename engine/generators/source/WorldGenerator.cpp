@@ -549,7 +549,9 @@ void WorldGenerator::set_village_races(MapPtr map)
             string race_id = *race_id_it;
             RacePtr race = races[race_id];
               
-            if (race)
+            // Only populate user-playable races, for now.
+            // Bat villages, while awesome, should not happen.
+            if (race && race->get_user_playable())
             {
               village_tile->set_village_race_id(race_id);
               village_tile->set_settlement_type(race->get_settlement_type());

@@ -3,7 +3,7 @@
 using std::string;
 
 Deity::Deity()
-: alignment_range(ALIGNMENT_RANGE_NEUTRAL), worship_site_type(WORSHIP_SITE_CATHEDRAL)
+: alignment_range(ALIGNMENT_RANGE_NEUTRAL), worship_site_type(WORSHIP_SITE_CATHEDRAL), user_playable(false)
 {
 }
 
@@ -92,4 +92,14 @@ void Deity::set_initial_statistics_modifier(const StatisticsModifier& new_initia
 StatisticsModifier Deity::get_initial_statistics_modifier() const
 {
   return initial_statistics_modifier;
+}
+
+void Deity::set_user_playable(const bool new_user_playable)
+{
+  user_playable = new_user_playable;
+}
+
+bool Deity::get_user_playable() const
+{
+  return user_playable;
 }

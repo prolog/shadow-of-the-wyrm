@@ -1,6 +1,7 @@
 <SavageLands xmlns="urn:savage_lands:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:1.0.0 ./SavageLands.xsd">
 	<Deities>
 		<Deity id="01_celeste">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_1_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_1_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_1_DESC</DescriptionSID>
@@ -12,6 +13,7 @@
 			<WorshipSiteType>0</WorshipSiteType>
 		</Deity>
 		<Deity id="02_aurelion">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_2_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_2_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_2_DESC</DescriptionSID>
@@ -23,6 +25,7 @@
 			<WorshipSiteType>1</WorshipSiteType>
 		</Deity>
 		<Deity id="03_thelady">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_3_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_3_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_3_DESC</DescriptionSID>
@@ -34,6 +37,7 @@
 			<WorshipSiteType>2</WorshipSiteType>
 		</Deity>
 		<Deity id="04_vedere">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_4_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_4_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_4_DESC</DescriptionSID>
@@ -45,6 +49,7 @@
 			<WorshipSiteType>3</WorshipSiteType>
 		</Deity>
 		<Deity id="05_voros">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_5_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_5_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_5_DESC</DescriptionSID>
@@ -56,6 +61,7 @@
 			<WorshipSiteType>4</WorshipSiteType>
 		</Deity>
 		<Deity id="06_thetrickster">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_6_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_6_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_6_DESC</DescriptionSID>
@@ -67,6 +73,7 @@
 			<WorshipSiteType>5</WorshipSiteType>
 		</Deity>
 		<Deity id="07_shiver">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_7_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_7_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_7_DESC</DescriptionSID>
@@ -78,6 +85,7 @@
 			<WorshipSiteType>6</WorshipSiteType>
 		</Deity>
 		<Deity id="08_urgoth">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_8_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_8_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_8_DESC</DescriptionSID>
@@ -89,6 +97,7 @@
 			<WorshipSiteType>7</WorshipSiteType>
 		</Deity>
 		<Deity id="09_sceadugenga">
+			<UserPlayable>1</UserPlayable>
 			<NameSID>DEITY_9_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_9_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_9_DESC</DescriptionSID>

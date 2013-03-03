@@ -117,6 +117,7 @@
 	<xs:annotation><xs:documentation>One of the Gods or Goddesses of Savage Lands.</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
+			<xs:element name="UserPlayable" type="xs:boolean"/>
 			<xs:element name="NameSID" type="xs:string"/>
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
