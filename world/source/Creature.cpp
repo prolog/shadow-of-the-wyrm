@@ -837,8 +837,14 @@ void Creature::assert_size() const
 {
   // VS 2010
   #ifdef _MSC_VER
-  BOOST_STATIC_ASSERT(sizeof(*this) == 816);
-  #else // gcc
+    #ifdef _DEBUG
+    // Debug
+    BOOST_STATIC_ASSERT(sizeof(*this) == 816);
+    #else
+    // Release
+    BOOST_STATIC_ASSERT(sizeof(*this) == 752);
+    #endif
+  #else // gcc toolchain
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);
   #endif
 }
