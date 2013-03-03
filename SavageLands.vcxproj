@@ -38,6 +38,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>true</LinkIncremental>
+    <TargetName>savage</TargetName>
+    <OutDir>$(SolutionDir)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -70,10 +72,11 @@
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <SubSystem>Windows</SubSystem>
+      <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Lua\5.1\lib;C:\cygwin\home\Julian\gtest-1.6.0\msvc\gtest\Debug;C:\boost\boost_1_48_0\stage\lib;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Debug;C:\cygwin\home\Julian\gtest-1.6.0\msvc\gtest\Debug\gtest;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Lua\5.1\lib;C:\boost\boost_1_48_0\stage\lib;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Release;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

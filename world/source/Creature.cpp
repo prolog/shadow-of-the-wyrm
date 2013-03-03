@@ -728,6 +728,16 @@ void Creature::clear_event_functions()
   event_functions.clear();
 }
 
+void Creature::set_event_functions(const EventFunctionMap& evm)
+{
+  event_functions = evm;
+}
+
+EventFunctionMap Creature::get_event_functions() const
+{
+  return event_functions;
+}
+
 void Creature::add_event_function(const string& event_name, const string& function_name)
 {
   event_functions[event_name] = function_name;

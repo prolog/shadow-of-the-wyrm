@@ -215,6 +215,8 @@ class Creature : public ISerializable
     HungerClock& get_hunger_clock_ref();
 
     void clear_event_functions();
+    void set_event_functions(const EventFunctionMap& evm);
+    EventFunctionMap get_event_functions() const;
     void add_event_function(const std::string& event_name, const std::string& function_name);
     bool has_event_function(const std::string& event_name);
     std::string get_event_function(const std::string& event_name) const;
