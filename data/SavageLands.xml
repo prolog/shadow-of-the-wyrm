@@ -2622,6 +2622,7 @@
 			</EventFunctions>
 		</Creature>
 		<Creature id="fisherman">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>FISHERMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FISHERMAN_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>FISHERMAN_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2651,6 +2652,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="the_ploughman">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THE_PLOUGHMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_PLOUGHMAN_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>THE_PLOUGHMAN_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2681,6 +2683,7 @@
 			<ChatScript>the_ploughman.lua</ChatScript>
 		</Creature>
 		<Creature id="the_blacksmith">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THE_BLACKSMITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_BLACKSMITH_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>THE_BLACKSMITH_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2711,6 +2714,7 @@
 			<ChatScript>the_blacksmith.lua</ChatScript>
 		</Creature>
 		<Creature id="small_child">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>SMALL_CHILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SMALL_CHILD_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>SMALL_CHILD_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2740,6 +2744,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="village_priest">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>VILLAGE_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VILLAGE_PRIEST_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>VILLAGE_PRIEST_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2770,6 +2775,7 @@
 			<Soak>15</Soak>
 		</Creature>
 		<Creature id="kew">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>KEW_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KEW_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>KEW_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2801,6 +2807,7 @@
 			<ChatScript>kew.lua</ChatScript>
 		</Creature>
 		<Creature id="farmer">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>FARMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FARMER_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>FARMER_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2830,6 +2837,7 @@
 			<Soak>0</Soak>
 		</Creature>
 		<Creature id="hrimgar">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>HRIMGAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HRIMGAR_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>HRIMGAR_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2861,6 +2869,7 @@
 			<ChatScript>hrimgar.lua</ChatScript>
 		</Creature>
 		<Creature id="garros">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>GARROS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GARROS_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>GARROS_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2932,6 +2941,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="thief">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THIEF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THIEF_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>THIEF_SPEECH_TEXT_SID</SpeechTextSID>
@@ -2972,6 +2982,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="graverobber">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>GRAVEROBBER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GRAVEROBBER_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>GRAVEROBBER_SPEECH_TEXT_SID</SpeechTextSID>
@@ -3012,6 +3023,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="blackguard">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>BLACKGUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACKGUARD_DESCRIPTION_SID</DescriptionSID>
 			<SpeechTextSID>BLACKGUARD_SPEECH_TEXT_SID</SpeechTextSID>

@@ -567,19 +567,23 @@ void WorldGenerator::set_village_races(MapPtr map)
       }
       else
       {
-        int rand_race_idx = RNG::range(0, races.size()-1);
-          
-        int count = 0;
-        for (RaceMap::const_iterator r_it = races.begin(); r_it != races.end(); r_it++)
+        // All the races are selected (one of each), so now take one at random
+        // from the game's current races, ensuring that it is user-playable.
+        vector<string> playable_race_ids;
+
+        BOOST_FOREACH(RaceMap::value_type& pr, races)
         {
-          if (count == rand_race_idx)
+          if (pr.second->get_user_playable())
           {
-            string race_id = r_it->first;
-            village_tile->set_village_race_id(race_id);
-            village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
-          } 
-          count++;
+            playable_race_ids.push_back(pr.first);
+          }
         }
+
+        int rand_race_idx = RNG::range(0, playable_race_ids.size()-1);
+        string race_id = playable_race_ids.at(rand_race_idx);
+
+        village_tile->set_village_race_id(race_id);
+        village_tile->set_tile_subtype(races[race_id]->get_settlement_tile_subtype());
       }
     }
   }

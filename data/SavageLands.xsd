@@ -278,6 +278,8 @@
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
+			<xs:element name="RaceID" type="xs:string" minOccurs="0"/>
+			<xs:element name="ClassID" type="xs:string" minOccurs="0"/>
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="SpeechTextSID" type="xs:string" minOccurs="0"/>
