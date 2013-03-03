@@ -157,9 +157,6 @@
     <Filter Include="Source Files\world\religion\source">
       <UniqueIdentifier>{c8e32205-0623-4ca5-bfe2-b7e9974e0fe3}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\world\materials\unit_tests">
-      <UniqueIdentifier>{e86da33b-c1a2-48de-861d-f1d356b0e806}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\world\source\unit_tests">
       <UniqueIdentifier>{4153f3fb-7032-48a0-9d91-a1b31db6bd59}</UniqueIdentifier>
     </Filter>
@@ -537,6 +534,9 @@
     </Filter>
     <Filter Include="Source Files\engine\scripting\source">
       <UniqueIdentifier>{17f0c5d7-f708-449e-bd1a-ab5a3d9ba6dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\materials\source\unit_tests">
+      <UniqueIdentifier>{e86da33b-c1a2-48de-861d-f1d356b0e806}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2238,7 +2238,7 @@
       <Filter>Source Files\world\materials\source</Filter>
     </ClCompile>
     <ClCompile Include="world\materials\source\unit_tests\MaterialFactory_test.cpp">
-      <Filter>Source Files\world\materials\unit_tests</Filter>
+      <Filter>Source Files\world\materials\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\source\AgeInfo.cpp">
       <Filter>Source Files\world\source</Filter>
