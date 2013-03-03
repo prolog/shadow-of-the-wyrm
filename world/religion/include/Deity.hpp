@@ -38,6 +38,9 @@ class Deity
     void set_initial_statistics_modifier(const StatisticsModifier& new_initial_statistics_modifier);
     StatisticsModifier get_initial_statistics_modifier() const;
 
+    void set_user_playable(const bool new_user_playable);
+    bool get_user_playable() const;
+
   protected:
     std::string id;
     std::string name_sid;
@@ -47,6 +50,7 @@ class Deity
     AlignmentRange alignment_range;
     WorshipSiteType worship_site_type;
     StatisticsModifier initial_statistics_modifier; // only used for creature creation
+    bool user_playable;
 };
 
 typedef boost::shared_ptr<Deity> DeityPtr;

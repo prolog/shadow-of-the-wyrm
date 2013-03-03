@@ -12,6 +12,10 @@ DeityMap XMLDeitiesReader::get_deities(const XMLNode& deities_node)
 {
   DeityMap deities;
   
+  // Need a default deity, always.
+  DeityPtr default_deity = boost::make_shared<Deity>();
+  deities.insert(make_pair(default_deity->get_id(), default_deity));
+
   if (!deities_node.is_null())
   {
     vector<XMLNode> deities_nodes = XMLUtils::get_elements_by_local_name(deities_node, "Deity");
@@ -38,7 +42,8 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
   if (!deity_node.is_null())
   {
     deity = boost::make_shared<Deity>();
-    
+
+    bool playable    = XMLUtils::get_child_node_bool_value(deity_node, "UserPlayable"); 
     string deity_id  = XMLUtils::get_attribute_value (deity_node, "id");
     string name_sid  = XMLUtils::get_child_node_value(deity_node, "NameSID");
     string sdesc_id  = XMLUtils::get_child_node_value(deity_node, "ShortDescriptionSID");
@@ -51,6 +56,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     XMLNode statistics_modifier_node = XMLUtils::get_next_element_by_local_name(deity_node, "DeityInitialModifiers");
     StatisticsModifier sm = smr.get_statistics_modifier(statistics_modifier_node);
     
+    deity->set_user_playable(playable);
     deity->set_id(deity_id);
     deity->set_name_sid(name_sid);
     deity->set_short_description_sid(sdesc_id);
