@@ -14,6 +14,11 @@ RaceMap XMLRacesReader::get_races(const XMLNode& races_node)
 {
   RaceMap races;
 
+  // We always need the default race in the mapm regardless of whether there's
+  // any XML!
+  RacePtr default_race = boost::make_shared<Race>();
+  races.insert(make_pair(default_race->get_race_id(), default_race));
+
   if (!races_node.is_null())
   {
     vector<XMLNode> races_nodes = XMLUtils::get_elements_by_local_name(races_node, "Race");

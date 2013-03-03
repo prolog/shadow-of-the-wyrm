@@ -14,6 +14,11 @@ ClassMap XMLClassesReader::get_classes(const XMLNode& classes_node)
 {
   ClassMap classes;
 
+  // We always need the default class for every creature, regardless
+  // of whether there's any XML.
+  ClassPtr default_class = boost::make_shared<Class>();
+  classes.insert(make_pair(default_class->get_class_id(), default_class));
+
   if (!classes_node.is_null())
   {
     vector<XMLNode> classes_nodes = XMLUtils::get_elements_by_local_name(classes_node, "Class");

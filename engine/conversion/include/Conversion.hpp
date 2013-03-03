@@ -87,9 +87,9 @@ class Integer
   public:
     static std::string to_string(const uint integer);
     static std::string to_string(const int integer);
-    template <class T> inline static std::string to_string_key_at_given_position_in_map(const std::map<std::string, T>& map, const int pos)
+    template <class T> inline static std::string to_string_key_at_given_position_in_rc_map(const std::map<std::string, T>& map, const int pos)
     {
-      int cur = 0;
+      int cur = -1;
       std::string key;
 
       if (!map.empty())
@@ -98,6 +98,13 @@ class Integer
 
         while (map_it != map.end() && cur <= pos)
         {
+          typename T second_val = map_it->second;
+
+          if (second_val->get_user_playable())
+          {
+            cur++;
+          }
+
           if (cur == pos)
           {
             key = map_it->first;
@@ -105,7 +112,6 @@ class Integer
           }
 
           map_it++;
-          cur++;
         }
 
       }

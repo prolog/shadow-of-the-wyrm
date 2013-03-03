@@ -207,12 +207,12 @@ bool SavageLandsEngine::process_new_game()
   RaceSelectionScreen race_selection(display);
   string race_index = race_selection.display();
   int race_idx = Char::keyboard_selection_char_to_int(race_index.at(0));
-  string selected_race_id = Integer::to_string_key_at_given_position_in_map(races, race_idx);
+  string selected_race_id = Integer::to_string_key_at_given_position_in_rc_map(races, race_idx);
 
   ClassSelectionScreen class_selection(display);
   string class_index = class_selection.display();
   int class_idx = Char::keyboard_selection_char_to_int(class_index.at(0));
-  string selected_class_id = Integer::to_string_key_at_given_position_in_map(classes, class_idx);
+  string selected_class_id = Integer::to_string_key_at_given_position_in_rc_map(classes, class_idx);
 
   RacePtr selected_race = races[selected_race_id];
   DeitySelectionScreen deity_selection(display, selected_race);
