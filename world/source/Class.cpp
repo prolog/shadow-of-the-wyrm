@@ -10,6 +10,8 @@ Class::Class()
 , hit_dice(1)
 , ap_dice(0)
 {
+  set_starting_valour(50);
+  set_starting_spirit(50);
 }
 
 Class::~Class()

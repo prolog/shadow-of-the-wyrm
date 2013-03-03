@@ -4,9 +4,24 @@
 
 using namespace std;
 
+// Set the bare defaults for each race.
 Race::Race()
 : user_playable(false), settlement_type(SETTLEMENT_TYPE_ORDERLY_VILLAGE), settlement_tile_subtype(TILE_TYPE_FIELD), size(CREATURE_SIZE_MEDIUM), experience_multiplier(1.0)
 {
+  Range<uint> start_age(10, 10);
+  Range<uint> maximum_age(50, 60);
+  age_info.set_starting_age(start_age);
+  age_info.set_maximum_age(maximum_age);
+
+  set_starting_strength(8);
+  set_starting_dexterity(8);
+  set_starting_agility(8);
+  set_starting_health(8);
+  set_starting_intelligence(8);
+  set_starting_willpower(8);
+  set_starting_charisma(8);
+
+  set_starting_speed(50);
 }
 
 Race::~Race()
