@@ -64,9 +64,17 @@ CreaturePtr CreatureFactory::create_by_creature_id
                                         creature->get_name(),
                                         creature->get_sex(),
                                         creature->get_religion().get_active_deity_id());
-    
+
+    // Set the template values that would be overridden by creating by race/class.
+    creature->set_colour(creature_instance.get_colour());
+    creature->set_symbol(creature_instance.get_symbol());
+    creature->set_short_description_sid(creature_instance.get_short_description_sid());
+    creature->set_description_sid(creature_instance.get_description_sid());
     creature->set_decision_strategy(template_decision_strategy);
-//x     set_default_resistances(creature);
+    creature->set_level(creature_instance.get_level());
+    creature->set_base_damage(creature_instance.get_base_damage());
+    creature->set_base_evade(creature_instance.get_base_evade());
+    creature->set_base_soak(creature_instance.get_base_soak());
       
     // Set HP to a randomly generated value in the initial range.
     Dice initial_hp_range = cgv.get_initial_hit_points();

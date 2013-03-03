@@ -57,6 +57,14 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // creature, a GUID will be genreated during creation of that creature.
     string id = XMLUtils::get_attribute_value(creature_node, "id");
     creature->set_id(id);
+
+    // Creature's race.
+    string race_id = XMLUtils::get_child_node_value(creature_node, "RaceID");
+    creature->set_race_id(race_id);
+
+    // Creature's class.
+    string class_id = XMLUtils::get_child_node_value(creature_node, "ClassID");
+    creature->set_class_id(class_id);
     
     // Typically a single word or phrase: bat, orc child, troll pedestrian, etc.
     string short_description_sid = XMLUtils::get_child_node_value(creature_node, "ShortDescriptionSID");
