@@ -11,6 +11,8 @@ class CreatureFactory
     static CreaturePtr create_by_race_and_class(ActionManager& am, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const std::string& deity_id = "");
 
   protected:
+    static void revert_to_original_configuration_values(CreaturePtr newly_created_creature, const Creature& configuration_instance, DecisionStrategyPtr template_decision_strategy);
+
     static Creature set_age(const Creature& creature, const AgeInfo& age_info);
     static Creature set_initial_statistics(const Creature& creature, RacePtr race, ClassPtr char_class, DeityPtr deity);
     static void     set_default_resistances(CreaturePtr creature);
