@@ -110,6 +110,65 @@
 		</Deity>
 	</Deities>
 	<Races>
+		<Race id="_corporeal_undead">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>10</Min>
+					<Max>80</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100000</Min>
+					<Max>1000000</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>8</Strength>
+				<Dexterity>6</Dexterity>
+				<Agility>7</Agility>
+				<Health>5</Health>
+				<Intelligence>6</Intelligence>
+				<Willpower>7</Willpower>
+				<Charisma>2</Charisma>
+				<Speed>53</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialModifiers>
+				<ValourModifier>-5</ValourModifier>
+				<SpiritModifier>5</SpiritModifier>
+			</RaceInitialModifiers>
+			<RaceInitialDeities>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>-0.10</Slash>
+				<Pierce>-0.10</Pierce>
+				<Pound>0.0</Pound>
+				<Heat>0.15</Heat>
+				<Cold>-0.50</Cold>
+				<Acid>-0.25</Acid>
+				<Poison>-0.25</Poison>
+				<Holy>0.50</Holy>
+				<Shadow>-0.80</Shadow>
+				<Arcane>0.0</Arcane>
+				<Mental>1.0</Mental>
+				<Sonic>1.0</Sonic>
+				<Radiant>0.50</Radiant>
+				<Lightning>0.10</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills>
+					<!-- Useful for ripping open adventurers' skulls for the tasty brains inside. -->
+					<Unarmed>5</Unarmed>
+				</WeaponSkills>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>
 		<Race id="01_human">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>0</SettlementType>
@@ -2460,6 +2519,38 @@
 		</Class>
 	</Classes>
 	<Creatures>
+		<Creature id="thrall">
+			<RaceID>_corporeal_undead</RaceID>
+			<ShortDescriptionSID>THRALL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THRALL_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>THRALL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>u</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
 		<Creature id="green_slime">
 			<ShortDescriptionSID>GREEN_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GREEN_SLIME_DESCRIPTION_SID</DescriptionSID>
