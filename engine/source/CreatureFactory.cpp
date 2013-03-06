@@ -58,32 +58,16 @@ CreaturePtr CreatureFactory::create_by_creature_id
     creature = boost::make_shared<Creature>(creature_instance);
     DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy();
 
-    creature = create_by_race_and_class(action_manager,
-                                        creature->get_race_id(),
-                                        creature->get_class_id(),
-                                        creature->get_name(),
-                                        creature->get_sex(),
-                                        creature->get_religion().get_active_deity_id());
+    CreaturePtr creature2 = create_by_race_and_class(action_manager,
+                                                     creature->get_race_id(),
+                                                     creature->get_class_id(),
+                                                     creature->get_name(),
+                                                     creature->get_sex(),
+                                                     creature->get_religion().get_active_deity_id());
 
-    // JCD FIXME
-    //
-    // copy to creature2
     // copy skills and resists from creature2 over to creature
-    // remove the hackish code below
-
-    // Set the template values that would be overridden by creating by race/class.
-    creature->set_colour(creature_instance.get_colour());
-    creature->set_symbol(creature_instance.get_symbol());
-    creature->set_short_description_sid(creature_instance.get_short_description_sid());
-    creature->set_description_sid(creature_instance.get_description_sid());
-    creature->set_speech_text_sid(creature_instance.get_speech_text_sid());
-    creature->set_decision_strategy(template_decision_strategy);
-    creature->set_level(creature_instance.get_level());
-    creature->set_base_damage(creature_instance.get_base_damage());
-    creature->set_base_evade(creature_instance.get_base_evade());
-    creature->set_base_soak(creature_instance.get_base_soak());
-    creature->set_additional_properties_map(creature_instance.get_additional_properties_map());
-    creature->set_event_functions(creature_instance.get_event_functions());
+    creature->set_resistances(creature2->get_resistances());
+    creature->set_skills(creature2->get_skills());
       
     // Set HP to a randomly generated value in the initial range.
     Dice initial_hp_range = cgv.get_initial_hit_points();
