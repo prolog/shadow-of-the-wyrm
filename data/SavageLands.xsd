@@ -134,12 +134,15 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="UserPlayable" type="xs:boolean"/>
-			<xs:element name="SettlementType" type="tns:SettlementType"/>
-			<xs:element name="SettlementTileSubtype" type="tns:SettlementTileSubtype"/>
+			<xs:element name="SettlementType" type="tns:SettlementType" minOccurs="0"/>
+			<xs:element name="SettlementTileSubtype" type="tns:SettlementTileSubtype" minOccurs="0"/>
 			<xs:element name="NameSID" type="xs:string"/>
-   			<xs:element name="ShortDescriptionSID" type="xs:string"/>
-			<xs:element name="DescriptionSID" type="xs:string"/>
-			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
+			<!-- ShortDescriptionSID, DescriptionSID, and DisplayAbbreviationSID should always
+			     be defined for UserPlayable races, but are optional because they are never needed
+				 for NPC-only races. -->
+   			<xs:element name="ShortDescriptionSID" type="xs:string" minOccurs="0"/>
+			<xs:element name="DescriptionSID" type="xs:string" minOccurs="0"/>
+			<xs:element name="DisplayAbbreviationSID" type="xs:string" minOccurs="0"/>
 			<xs:element name="Size" type="tns:CreatureSizeType"/>
 			<xs:element ref="tns:AgeInfo"/>
 			<xs:element ref="tns:RaceInitialStatistics"/>
