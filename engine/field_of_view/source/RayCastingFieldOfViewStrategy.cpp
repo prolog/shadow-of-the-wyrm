@@ -106,14 +106,12 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       
       std::ostringstream ss;
       
-      // JCD FIXME: Add "room corner" cases here for each of NW, NE, SW, SE.
-      
       // If we're in the north-west region, and the current tile is north or west of a ground cell in the FOV map, add it to the FOV map.
       if ((c.first < centre_coord.first) && (c.second < centre_coord.second))
       {
         if (is_artifact_nw(fov_map, c, type))
         {
-          Log::instance().log(tile_coords + " not in list, NW, adjacent to a lit tile.");
+          Log::instance().debug(tile_coords + " not in list, NW, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
         }
       }
@@ -122,7 +120,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       {
         if (is_artifact_ne(fov_map, c, type))
         {
-          Log::instance().log(tile_coords + " not in list, NE, adjacent to a lit tile.");
+          Log::instance().debug(tile_coords + " not in list, NE, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
         }
       }
@@ -131,7 +129,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       {
         if (is_artifact_sw(fov_map, c, type))
         {
-          Log::instance().log(tile_coords + " not in list, SW, adjacent to a lit tile.");
+          Log::instance().debug(tile_coords + " not in list, SW, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
         }
       }
@@ -140,7 +138,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
       {
         if (is_artifact_se(fov_map, c, type))
         {
-          Log::instance().log(tile_coords + " not in list, SE, adjacent to a lit tile.");
+          Log::instance().debug(tile_coords + " not in list, SE, adjacent to a lit tile.");
           add_point_to_map(c, view_map, fov_map);
         }
       }
