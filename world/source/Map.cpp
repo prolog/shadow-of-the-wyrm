@@ -85,7 +85,7 @@ void Map::create_creatures()
 {
   creatures.clear();
 
-  std::map<string, TilePtr >::iterator map_it;
+  TilesContainer::iterator map_it;
 
   for (map_it = tiles.begin(); map_it != tiles.end(); map_it++)
   {
@@ -167,7 +167,7 @@ void Map::reset_creatures_and_locations()
   creatures.clear();
   locations.clear();
   
-  for (map<string, TilePtr >::iterator t_it = tiles.begin(); t_it != tiles.end(); t_it++)
+  for (TilesContainer::iterator t_it = tiles.begin(); t_it != tiles.end(); t_it++)
   {
     string tile_key = t_it->first;
     TilePtr tile    = t_it->second;
@@ -214,7 +214,7 @@ TilePtr Map::at(int row, int col)
   string key = make_map_key(row, col);
   TilePtr tile;
 
-  std::map<std::string, boost::shared_ptr<Tile> >::iterator t_it = tiles.find(key);
+  TilesContainer::iterator t_it = tiles.find(key);
   
   if (t_it != tiles.end())
   {
