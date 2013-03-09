@@ -6,14 +6,17 @@ uint UnderworldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) c
 {
   uint danger_level = 0;
 
-  if (map && new_map)
+  if (map)
   {
     danger_level = map->get_danger();
 
-    Depth map_depth = map->size().depth();
-    Depth new_map_depth = new_map->size().depth();
+    if (new_map)
+    {
+      Depth map_depth = map->size().depth();
+      Depth new_map_depth = new_map->size().depth();
 
-    danger_level += (new_map_depth.get_current() - map_depth.get_current());
+      danger_level += (new_map_depth.get_current() - map_depth.get_current());
+    }
   }
 
   return danger_level;
