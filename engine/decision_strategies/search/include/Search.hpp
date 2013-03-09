@@ -11,7 +11,8 @@ class Search
 {
   public:
     Coordinate search(MapPtr view_map, const Coordinate& start, const Coordinate& end);
-    
+    void set_creature(CreaturePtr new_perspective_creature);
+
   protected:
     // Have we reached the end?
     bool goal_test(const SearchNode& sn, const Coordinate& end_coord);
@@ -28,6 +29,8 @@ class Search
     
     // Variations on this give different search types (BFS, DFS, etc).
     virtual std::list<SearchNode> queueing_fn(const std::list<SearchNode>& explored_search_nodes, const std::list<SearchNode>& new_search_nodes) = 0;
+
+    CreaturePtr perspective_creature;
 };
 
 typedef boost::shared_ptr<Search> SearchStrategyPtr;

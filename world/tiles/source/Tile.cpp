@@ -156,11 +156,35 @@ bool Tile::get_illuminated() const
   return illuminated;
 }
 
+// The conditions are broken up for easier debugging.
 bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
 {
-  return (get_movement_multiplier() == 0)
-      || (creature && perspective_creature && (creature->get_id() != perspective_creature->get_id()))
-      || (feature && feature->get_is_blocking());
+  bool tile_blocking = false;
+
+  if (get_movement_multiplier() == 0)
+  {
+    tile_blocking = true;
+  }
+
+  if (feature && feature->get_is_blocking())
+  {
+    tile_blocking = true;
+  }
+  
+  if (creature && perspective_creature 
+               && (creature->get_id() != perspective_creature->get_id()))
+  {
+    // Check to see if the searching creature is hostile to this creature.
+    // If the creature's not hostile, consider the tile blocking; otherwise,
+    // ues whatever the current value of tile_blocking is (based on movement,
+    // features, etc).
+    if (!perspective_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()))
+    {
+      tile_blocking = true;
+    }
+  }
+
+  return tile_blocking;
 }
 
 int Tile::get_movement_multiplier() const

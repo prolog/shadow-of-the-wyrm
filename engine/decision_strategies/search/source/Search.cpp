@@ -4,6 +4,13 @@
 
 using namespace std;
 
+// The creature that requires the pathfinding.  The actual creature is kept so that
+// it can be used for some blocking checks at the tile level.
+void Search::set_creature(CreaturePtr creature)
+{
+  perspective_creature = creature;
+}
+
 // Try to find a path from start to end, given what can be seen in view_map.  This allows
 // for imperfect knowledge, and prevents search using information that has not already
 // been learned.
@@ -79,7 +86,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
       
       if (tile)
       {
-        if (!tile->get_is_blocking())
+        if (!tile->get_is_blocking(perspective_creature))
         {
           SearchNode sn(coord);
         
