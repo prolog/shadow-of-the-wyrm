@@ -324,7 +324,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
       while (!advance)
       {
         // Comment/un-comment this as necessary to figure out if creatures are taking too long to process turns.
-        boost::timer::auto_cpu_timer timer;
+        //boost::timer::auto_cpu_timer timer;
         MapPtr view_map;
         MapPtr fov_map;
 
