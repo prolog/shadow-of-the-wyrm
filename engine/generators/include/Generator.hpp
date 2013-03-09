@@ -22,6 +22,7 @@ class Generator
    
     virtual MapPtr generate();
     virtual MapPtr generate(const Dimensions& dim) = 0;
+    virtual void   create_entities(MapPtr map, const uint danger_level, const bool generate_creatures = true, const bool generate_items = true);
    
     virtual void set_terrain_type(const TileType new_map_terrain_type);
     virtual TileType get_terrain_type() const;

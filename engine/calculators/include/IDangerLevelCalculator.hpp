@@ -1,5 +1,6 @@
 #pragma once
 #include <boost/shared_ptr.hpp>
+#include <boost/make_shared.hpp>
 #include "common.hpp"
 #include "Map.hpp"
 
@@ -9,7 +10,8 @@
 class IDangerLevelCalculator
 {
   public:
-    virtual uint calculate(MapPtr old_map, MapPtr new_map) const = 0;
+    // Calculate the new danger level, given the old.
+    virtual uint calculate(MapPtr old_map, MapPtr new_map = boost::shared_ptr<Map>()) const = 0;
     virtual ~IDangerLevelCalculator() {};
 };
 

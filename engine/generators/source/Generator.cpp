@@ -43,15 +43,29 @@ MapPtr Generator::generate_and_initialize(const uint danger_level, const Dimensi
   return map;
 }
 
+// Initializes essential map properties like terrain type, ID, and permanence.
 void Generator::initialize(MapPtr map, const uint danger_level)
 {
   map->set_terrain_type(map_terrain_type);
-  generate_creatures(map, danger_level);
-  generate_initial_items(map, danger_level);
 
   boost::uuids::uuid id = boost::uuids::random_generator()();
   map->set_map_id(Uuid::to_string(id));
   set_map_permanence(map);
+}
+
+// Creates the initial set of entities (creatures and items) present
+// on the map.
+void Generator::create_entities(MapPtr map, const uint danger_level, const bool create_creatures, const bool create_items)
+{
+  if (create_creatures)
+  {
+    generate_creatures(map, danger_level);
+  }
+
+  if (create_items)
+  {
+    generate_initial_items(map, danger_level);
+  }
 }
 
 MapPtr Generator::generate()

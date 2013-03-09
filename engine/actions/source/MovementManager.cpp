@@ -239,7 +239,9 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
     else
     {
       // Otherwise, if there's no custom map ID, generate the map:
-      uint danger_level = creature->get_level().get_current();
+      IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
+      uint danger_level = calc->calculate(map);
+
       Dimensions dim = map->size();
       Depth& depth = dim.depth_ref();
       IMapTypeQueryPtr mtq = MapTypeQueryFactory::create_map_type_query(generator->get_map_type());
@@ -268,8 +270,12 @@ ActionCostValue MovementManager::generate_and_move_to_new_map(CreaturePtr creatu
       if (new_map->get_map_type() != MAP_TYPE_WORLD)
       {
         // Set the danger level appropriately, using the OLD MAP's map type.
-        IDangerLevelCalculatorPtr calc = DangerLevelCalculatorFactory::create_danger_level_calculator(map->get_map_type());
-        new_map->set_danger(calc->calculate(map, new_map));
+        uint new_danger = calc->calculate(map, new_map);
+        new_map->set_danger(new_danger);
+
+        // Now that the danger level's been calculated, generate the creatures
+        // and items on the new map.
+        generator->create_entities(new_map, new_danger);
       }
     }
                 
