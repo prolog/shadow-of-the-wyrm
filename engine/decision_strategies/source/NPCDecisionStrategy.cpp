@@ -93,6 +93,8 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
   ThreatMap::const_reverse_iterator t_it = threat_map.rbegin();
   
   Coordinate c_this   = view_map->get_location(this_creature_id);
+  TilePtr this_tile   = view_map->at(c_this);
+  CreaturePtr this_cr = this_tile->get_creature();
 
   while (t_it != threat_map.rend())
   {
@@ -118,7 +120,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
         {
           if (can_move())
           {
-            SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST);
+            SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST, this_cr);
             Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
 
             if (direction != DIRECTION_NULL)

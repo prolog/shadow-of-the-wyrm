@@ -12,8 +12,10 @@ SearchStrategyFactory::~SearchStrategyFactory()
 {
 }
 
-SearchStrategyPtr SearchStrategyFactory::create_search_strategy(const SearchType st)
+SearchStrategyPtr SearchStrategyFactory::create_search_strategy(const SearchType st, CreaturePtr creature)
 {
   SearchStrategyPtr ss = boost::make_shared<AStarSearchStrategy>();
+  ss->set_creature(creature);
+
   return ss;
 }
