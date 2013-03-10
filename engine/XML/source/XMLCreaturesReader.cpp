@@ -176,7 +176,7 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
     cgv.set_friendly(friendly);
 
     // Danger level
-    uint danger_level = XMLUtils::get_child_node_int_value(creature_generation_values_node, "DangerLevel");
+    int danger_level = XMLUtils::get_child_node_int_value(creature_generation_values_node, "DangerLevel");
     cgv.set_danger_level(danger_level);
     
     // Creature rarity

@@ -13,7 +13,7 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const uint danger_level, const Rarity rarity)
+CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const int danger_level, const Rarity rarity)
 {
   CreatureGenerationMap generation_map;
 
@@ -46,7 +46,7 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
   
   // Iterate through the generation map, and attempt to generate a creature with probability P,
   // where P = (danger level / danger_level + num_creatures_in_map)
-  uint p_denominator = 0;
+  int p_denominator = 0;
     
   // Get the denominator for the probabilistic generation by summing the danger level over all creatures
   // in the map.
@@ -84,9 +84,10 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
   return generated_creature;
 }
 
-bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const uint danger_level, const Rarity rarity)
+bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const int danger_level, const Rarity rarity)
 {
   if ( cgv.is_terrain_type_allowed(terrain_type)
+    && cgv.get_danger_level() >= 0 /* Exclude danger level of -1, which means "don't generate" */
     && cgv.get_danger_level() <= danger_level
     && cgv.get_rarity() <= rarity )
   {

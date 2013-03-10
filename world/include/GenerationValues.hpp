@@ -22,8 +22,8 @@ class GenerationValues : public ISerializable
     int get_maximum() const;
     bool is_maximum_reached() const;
 
-    void set_danger_level(const uint new_danger_level);
-    uint get_danger_level() const;
+    void set_danger_level(const int new_danger_level);
+    int get_danger_level() const;
     
     void set_rarity(const Rarity new_rarity);
     Rarity get_rarity() const;
@@ -40,7 +40,7 @@ class GenerationValues : public ISerializable
 
     // The "danger level" at which the entity may start appearing,
     // if it is not out of depth/danger-depth.
-    uint danger_level;
+    int danger_level;
 
     // The more rare something is, the less chance of it getting generated in a given spawn.
     Rarity rarity;

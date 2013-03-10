@@ -8,9 +8,9 @@
 // previous dungeon or cavern level).
 //
 // The new map doesn't get used at all for the overworld calculations.
-uint OverworldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
+int OverworldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
 {
-  uint danger_level = 0;
+  int danger_level = 0;
 
   if (map)
   {

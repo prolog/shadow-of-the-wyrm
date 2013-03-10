@@ -73,10 +73,6 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     // If the item is an artifact, set the maximum to 1.
     if (is_artifact) gv.set_maximum(1);
 
-    // JCD TODO
-    // set danger level
-    // set rarity
-    
     MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", MATERIAL_TYPE_WOOD));
     item->set_material_type(material_type);
     
@@ -84,6 +80,14 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     // symbol or colour is desired.
     XMLNode text_details_node = XMLUtils::get_next_element_by_local_name(item_node, "TextDetails");
     parse_text_details(item, text_details_node);
+
+    // Danger Level
+    int danger_level = XMLUtils::get_child_node_int_value(item_node, "DangerLevel");
+    gv.set_danger_level(danger_level);
+
+    // Rarity
+    Rarity rarity = static_cast<Rarity>(XMLUtils::get_child_node_int_value(item_node, "Rarity"));
+    gv.set_rarity(rarity);
   }
 }
 

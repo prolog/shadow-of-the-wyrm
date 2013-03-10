@@ -173,12 +173,12 @@
 			     Otherwise, max functions as a generation limit.  max = 0 doesn't make sense, but isn't
 				 disallowed (it could be included to temporarily exclude a creature from the game).
 				 max = 1 is a unique. -->
-			<xs:element name="Max" type="xs:int" minOccurs="0"/>
+			<xs:element name="Max" type="xs:integer" minOccurs="0"/>
 			<xs:element ref="tns:AllowableTerrainTypes"/>
 			<!-- If Friendly is true, the creature is guaranteed to be generated
 			     without hostility towards the player. -->
 			<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
-			<xs:element name="DangerLevel" type="xs:unsignedInt"/>
+			<xs:element name="DangerLevel" type="xs:integer"/>
 			<xs:element name="Rarity" type="tns:Rarity"/>
 			<!-- HP and AP are random, and get generated for each monster created. -->
 			<xs:element name="HP" type="tns:Dice"/>
@@ -298,8 +298,8 @@
 			<xs:element ref="tns:CreatureGeneration"/>
 			<xs:element name="Level" type="tns:PrimaryStatistic"/>
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
-			<xs:element name="Evade" type="xs:int" minOccurs="0"/>
-			<xs:element name="Soak" type="xs:int" minOccurs="0"/>
+			<xs:element name="Evade" type="xs:integer" minOccurs="0"/>
+			<xs:element name="Soak" type="xs:integer" minOccurs="0"/>
 			<xs:element ref="tns:EventFunctions" minOccurs="0"/>
 			<xs:element name="ChatScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
@@ -333,7 +333,7 @@
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element name="PietyCostMultiplier" type="tns:NonNegativeDecimal" minOccurs="0"/>
-			<xs:element name="PietyRegenBonus" type="xs:int" minOccurs="0"/>
+			<xs:element name="PietyRegenBonus" type="xs:integer" minOccurs="0"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 		</xs:sequence>
@@ -623,9 +623,9 @@
 </xs:complexType>
 <xs:complexType name="Dice">
 	<xs:sequence>
-		<xs:element name="NumDice" type="xs:int"/>
-		<xs:element name="NumSides" type="xs:int"/>
-		<xs:element name="Modifier" type="xs:int" minOccurs="0"/>
+		<xs:element name="NumDice" type="xs:integer"/>
+		<xs:element name="NumSides" type="xs:integer"/>
+		<xs:element name="Modifier" type="xs:integer" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Damage">
@@ -662,6 +662,8 @@
 		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
 		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
+		<xs:element name="DangerLevel" type="xs:integer"/>
+		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="xs:string"/>
 </xs:complexType>
@@ -706,8 +708,8 @@
 	<xs:complexContent>
 		<xs:extension base="tns:Item">
 			<xs:sequence>
-				<xs:element name="Evade" type="xs:int" minOccurs="0"/>
-				<xs:element name="Soak" type="xs:int" minOccurs="0"/>
+				<xs:element name="Evade" type="xs:integer" minOccurs="0"/>
+				<xs:element name="Soak" type="xs:integer" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -730,8 +732,8 @@
 				<xs:element name="Skill" type="tns:TrainedWeaponSkill"/>
 				<xs:element name="RangedSkill" type="tns:TrainedWeaponSkill"/>
 				<xs:element name="RequiresRangedWeapon" type="xs:boolean" minOccurs="0"/>
-				<xs:element name="Difficulty" type="xs:int"/>
-				<xs:element name="Speed" type="xs:int"/>
+				<xs:element name="Difficulty" type="xs:integer"/>
+				<xs:element name="Speed" type="xs:integer"/>
 				<xs:element name="Damage" type="tns:Damage"/>
 			</xs:sequence>
 		</xs:extension>
@@ -739,8 +741,8 @@
 </xs:complexType>
 <xs:complexType name="Weight">
 	<xs:sequence>
-		<xs:element name="Pounds" type="xs:int"/>
-		<xs:element name="Ounces" type="xs:int" minOccurs="0"/>
+		<xs:element name="Pounds" type="xs:integer"/>
+		<xs:element name="Ounces" type="xs:integer" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Quantity">
@@ -954,7 +956,7 @@
 			15 = Bold White
 		</xs:documentation>
 	</xs:annotation>
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="15"/>
 	</xs:restriction>
@@ -977,7 +979,7 @@
 			10 = Ammunition
 		</xs:documentation>
 	</xs:annotation>
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="-1"/>
 		<xs:maxInclusive value="10"/>
 	</xs:restriction>
@@ -993,7 +995,7 @@
 				Fruit Juice (sweet) = 4
 		</xs:documentation>
 	</xs:annotation>
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="4"/>
 	</xs:restriction>
@@ -1018,7 +1020,7 @@
 				Lightning = 13
 		</xs:documentation>
 	</xs:annotation>
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="13"/>
 	</xs:restriction>
@@ -1031,26 +1033,26 @@
 			2 = Cursed
 		</xs:documentation>
 	</xs:annotation>
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="2"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="NonNegativeInt">
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="GeneralSkillType">
 	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="49"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="MagicSkillType">
 	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:enumeration value="3000"/>
 		<xs:enumeration value="3001"/>
 		<xs:enumeration value="3002"/>
@@ -1059,7 +1061,7 @@
 </xs:simpleType>
 <xs:simpleType name="TrainedWeaponSkill">
 	<xs:annotation><xs:documentation>Range is defined in SkillTypes.hpp</xs:documentation></xs:annotation>
-	<xs:restriction base="xs:int">
+	<xs:restriction base="xs:integer">
 		<xs:enumeration value="1000"/>
 		<xs:enumeration value="1001"/>
 		<xs:enumeration value="1002"/>

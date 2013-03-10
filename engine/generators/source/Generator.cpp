@@ -21,13 +21,13 @@ Generator::Generator(const string& new_map_exit_id, const TileType new_map_terra
 
 // Always calls the version with both a danger_level and dimensions, so that
 // everything is set up properly.
-MapPtr Generator::generate_and_initialize(const uint danger_level)
+MapPtr Generator::generate_and_initialize(const int danger_level)
 {
   Dimensions dim;
   return generate_and_initialize(danger_level, dim);
 }
 
-MapPtr Generator::generate_and_initialize(const uint danger_level, const Depth& depth)
+MapPtr Generator::generate_and_initialize(const int danger_level, const Depth& depth)
 {
   Dimensions dim;
   dim.set_depth(depth);
@@ -35,7 +35,7 @@ MapPtr Generator::generate_and_initialize(const uint danger_level, const Depth& 
   return generate_and_initialize(danger_level, dim);
 }
 
-MapPtr Generator::generate_and_initialize(const uint danger_level, const Dimensions& dim)
+MapPtr Generator::generate_and_initialize(const int danger_level, const Dimensions& dim)
 {
   MapPtr map = generate(dim);
   initialize(map, danger_level);
@@ -44,7 +44,7 @@ MapPtr Generator::generate_and_initialize(const uint danger_level, const Dimensi
 }
 
 // Initializes essential map properties like terrain type, ID, and permanence.
-void Generator::initialize(MapPtr map, const uint danger_level)
+void Generator::initialize(MapPtr map, const int danger_level)
 {
   map->set_terrain_type(map_terrain_type);
 
@@ -55,7 +55,7 @@ void Generator::initialize(MapPtr map, const uint danger_level)
 
 // Creates the initial set of entities (creatures and items) present
 // on the map.
-void Generator::create_entities(MapPtr map, const uint danger_level, const bool create_creatures, const bool create_items)
+void Generator::create_entities(MapPtr map, const int danger_level, const bool create_creatures, const bool create_items)
 {
   if (create_creatures)
   {
@@ -104,7 +104,7 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
 }
 
 // Generate the creatures.  Returns true if creatures were created, false otherwise.
-bool Generator::generate_creatures(MapPtr map, const uint danger_level)
+bool Generator::generate_creatures(MapPtr map, const int danger_level)
 {
   bool creatures_generated = false;
 
@@ -159,7 +159,7 @@ bool Generator::generate_creatures(MapPtr map, const uint danger_level)
   return creatures_generated;
 }
 
-bool Generator::update_creatures(MapPtr map, const uint danger_level)
+bool Generator::update_creatures(MapPtr map, const int danger_level)
 {
   return false;
 }
@@ -167,12 +167,12 @@ bool Generator::update_creatures(MapPtr map, const uint danger_level)
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).
-bool Generator::generate_initial_items(MapPtr map, const uint danger_level)
+bool Generator::generate_initial_items(MapPtr map, const int danger_level)
 {
   return false;
 }
 
-bool Generator::update_items(MapPtr map, const uint danger_level)
+bool Generator::update_items(MapPtr map, const int danger_level)
 {
   return false;
 }

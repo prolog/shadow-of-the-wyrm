@@ -14,9 +14,9 @@ using namespace std;
 // min(1, danger_(world)) gives the final value.
 //
 // The new map does not play into the calculations at all.
-uint WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
+int WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
 {
-  uint danger_level = 0;
+  int danger_level = 0;
 
   if (map)
   {
@@ -36,7 +36,7 @@ uint WorldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
       danger_level = (uint) danger_calc * CreatureConstants::MAX_CREATURE_LEVEL;
     }
 
-    danger_level = max<uint>(1, danger_level);
+    danger_level = max<int>(1, danger_level);
   }
 
   return danger_level;

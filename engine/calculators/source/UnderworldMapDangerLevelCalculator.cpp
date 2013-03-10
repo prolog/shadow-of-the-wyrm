@@ -2,9 +2,9 @@
 
 // Calculate the danger level for an underworld map.  This is the base
 // danger level, +/- the delta in depth.
-uint UnderworldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
+int UnderworldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
 {
-  uint danger_level = 0;
+  int danger_level = 0;
 
   if (map)
   {
