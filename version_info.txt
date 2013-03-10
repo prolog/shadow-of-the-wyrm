@@ -1,0 +1,23 @@
+Savage Lands v0.1.1, "Cissa"
+- Version declared March 10, 2013.
+
+Savage Lands v0.1.0, "Aelle"
+- Initial version, unreleased.  Project started July 2, 2011.
+
+- Version finalized March 10, 2013.
+
+- Races, classes, deities, maps, world generation via cellular automata,
+  pathfinding, creatures, items, fixed and random maps, quests (via 
+  embedded Lua), game configuration via XML, hunger, seasons, unit test 
+  support, display via (pd,n)curses, serialization, terrain features,
+  chatting, praying, skills and resistances, movement via feet or boat,
+  locks with unique keys, random and persistent dungeon complexes, end
+  boss with victory condition, and many more.
+
+- Initially started the project in Cygwin.  Migrated to MinGW in Dec 2011,
+  and during a failed attempt at using Boost's serialization library,
+  switched from MinGW to Visual Studio 2010 Express in October 2012.
+
+- No version control at first.  Started using Subversion in November 2011,
+  and then migrated to Mercurial around May 2012. 
+

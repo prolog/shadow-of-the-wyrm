@@ -30,8 +30,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // First king of Sussex
-  return "\"Aelle\"";
+  // "Son" of Aelle, disputedly.  Second king of Sussex, also disputedly.
+  return "\"Cissa\"";
 }
 
 string Metadata::get_game_version_synopsis() const
