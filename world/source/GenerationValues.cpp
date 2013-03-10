@@ -59,12 +59,12 @@ bool GenerationValues::is_maximum_reached() const
   return (current == maximum);
 }
 
-void GenerationValues::set_danger_level(const uint new_danger_level)
+void GenerationValues::set_danger_level(const int new_danger_level)
 {
   danger_level = new_danger_level;
 }
 
-uint GenerationValues::get_danger_level() const
+int GenerationValues::get_danger_level() const
 {
   return danger_level;
 }
