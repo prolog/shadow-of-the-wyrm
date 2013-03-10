@@ -34,6 +34,7 @@ class MapUtils
     static bool is_creature_present(TilePtr tile);
     
     static bool is_tile_available_for_creature(CreaturePtr creature, TilePtr tile);
+    static bool is_tile_available_for_item(TilePtr tile);
     
     static Dimensions get_dimensions(MapPtr map, const Coordinate& coords, const int size);
     

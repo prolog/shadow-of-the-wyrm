@@ -576,3 +576,8 @@ MapType DungeonGenerator::get_map_type() const
   return MAP_TYPE_UNDERWORLD;
 }
 
+
+bool DungeonGenerator::can_create_initial_items() const
+{
+  return true;
+}

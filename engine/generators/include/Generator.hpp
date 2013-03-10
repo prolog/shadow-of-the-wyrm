@@ -26,6 +26,10 @@ class Generator
    
     virtual void set_terrain_type(const TileType new_map_terrain_type);
     virtual TileType get_terrain_type() const;
+
+    // Whether or not to create initial items - this will be true for a select
+    // few generators (dungeons and caverns), and false for all others.
+    virtual bool can_create_initial_items() const;
    
     // Additional properties, which can be keyed in on by the actual subclasses of Generator.
     virtual void clear_additional_properties();

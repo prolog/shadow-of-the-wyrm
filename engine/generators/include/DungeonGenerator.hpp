@@ -20,6 +20,8 @@ class DungeonGenerator : public Generator
     
     virtual MapPtr generate(const Dimensions& dim);
 
+    virtual bool can_create_initial_items() const;
+
   protected:
 
     virtual bool get_permanence_default() const;

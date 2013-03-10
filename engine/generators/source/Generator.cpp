@@ -62,7 +62,7 @@ void Generator::create_entities(MapPtr map, const int danger_level, const bool c
     generate_creatures(map, danger_level);
   }
 
-  if (create_items)
+  if (create_items && can_create_initial_items())
   {
     generate_initial_items(map, danger_level);
   }
@@ -161,6 +161,7 @@ bool Generator::generate_creatures(MapPtr map, const int danger_level)
 
 bool Generator::update_creatures(MapPtr map, const int danger_level)
 {
+  // JCD FIXME
   return false;
 }
 
@@ -169,11 +170,64 @@ bool Generator::update_creatures(MapPtr map, const int danger_level)
 // for generators where this is expected (dungeons, maybe villages, etc).
 bool Generator::generate_initial_items(MapPtr map, const int danger_level)
 {
-  return false;
+  bool items_generated = false;
+
+  Dimensions dim = map->size();
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+  
+  ItemGenerationManager igm;
+
+  Rarity rarity = CreationUtils::generate_rarity();
+
+  Game& game = Game::instance();
+  
+  ActionManager am = game.get_action_manager_ref();
+  uint num_items_to_place = RNG::range(1, CreationUtils::random_maximum_items(dim.get_y(), dim.get_x()));
+  uint current_items_placed = 0;
+  uint unsuccessful_attempts = 0;
+
+  // Generate the list of possible creatures for this map.
+  ItemGenerationMap generation_map = igm.generate_item_generation_map(danger_level, rarity);
+
+  // JCD FIXME
+  while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
+  {
+    ItemPtr generated_item = igm.generate_item(am, generation_map);
+    
+    if (generated_item)
+    {
+      int item_row = RNG::range(0, rows-1);
+      int item_col = RNG::range(0, cols-1);
+      
+      // Check to see if the tile isn't blocking
+      TilePtr tile = map->at(item_row, item_col);
+
+      if (MapUtils::is_tile_available_for_item(tile))
+      {
+        tile->get_items().add(generated_item);
+
+        if (!items_generated) items_generated = true;
+        current_items_placed++;
+      }
+      else
+      {
+        unsuccessful_attempts++;
+      }
+    }
+    else
+    {
+      unsuccessful_attempts++;
+    }
+  }
+
+  return items_generated;
 }
 
 bool Generator::update_items(MapPtr map, const int danger_level)
 {
+  // Do nothing.  Items should never be generated after the initial seeding -
+  // they should only be dropped by creatures after that.
   return false;
 }
 
@@ -262,4 +316,9 @@ bool Generator::get_permanence() const
   }
 
   return result;
+}
+
+bool Generator::can_create_initial_items() const
+{
+  return false;
 }

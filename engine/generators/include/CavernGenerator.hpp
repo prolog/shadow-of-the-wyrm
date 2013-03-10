@@ -10,6 +10,8 @@ class CavernGenerator : public Generator
     
     virtual MapPtr generate(const Dimensions& dimensions);
 
+    virtual bool can_create_initial_items() const;
+
   protected:
     virtual bool get_permanence_default() const;
     virtual MapType get_map_type() const;

@@ -17,6 +17,14 @@ bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile
   return (!is_creature_present(tile) && !tile->get_is_blocking(creature));
 }
 
+// Check to see if a tile is available for an item by checking:
+// - if a blocking feature is present
+// - if the tile type permits movement
+bool MapUtils::is_tile_available_for_item(TilePtr tile)
+{
+  return (!tile->get_is_blocking());
+}
+
 // Get the dimensions for a new map based on the current map, the coords, and the size.
 // If it's a large map and the coordinates are in the centre, the dimensions will likely
 // be size x size.  In other cases, the dimensions will be smaller, particularly if the
