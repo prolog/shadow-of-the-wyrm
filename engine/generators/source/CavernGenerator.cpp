@@ -236,3 +236,8 @@ bool CavernGenerator::get_permanence_default() const
 {
   return true;
 }
+
+bool CavernGenerator::can_create_initial_items() const
+{
+  return true;
+}
