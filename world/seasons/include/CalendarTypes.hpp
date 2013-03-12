@@ -5,7 +5,8 @@ enum Season
   SEASON_SPRING = 0,
   SEASON_SUMMER = 1,
   SEASON_AUTUMN = 2,
-  SEASON_WINTER = 3
+  SEASON_WINTER = 3,
+  SEASON_LAST = 4
 };
 
 enum Months

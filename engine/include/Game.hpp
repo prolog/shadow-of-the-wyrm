@@ -89,6 +89,8 @@ class Game : public ISerializable
     void set_sid_ini_filename(const std::string& new_sid_ini_filename);
     std::string get_sid_ini_filename() const;
 
+    WorldPtr get_current_world();
+
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
 

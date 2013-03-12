@@ -112,9 +112,40 @@ void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, con
         symbol = symbol_s.at(0);
       }
 
-      int colour = XMLUtils::get_child_node_int_value(text_node, "Colour", 0);
+      SeasonTileColourMap tile_colours;
 
-      DisplayTile current_tile_info(symbol, colour);
+      // May be null, if seasonal colours are provided for the tile type.
+      XMLNode colour_node = XMLUtils::get_next_element_by_local_name(text_node, "Colour");
+
+      if (!colour_node.is_null())
+      {
+        int colour = XMLUtils::get_node_int_value(colour_node, 0);
+
+        for (int i = SEASON_SPRING; i < SEASON_LAST; i++)
+        {
+          Season season = static_cast<Season>(i);
+          tile_colours[season] = colour;
+        }
+      }
+
+      XMLNode colours_node = XMLUtils::get_next_element_by_local_name(text_node, "Colours");
+
+      if (!colours_node.is_null())
+      {
+        tile_colours.clear();
+
+        int spring_colour = XMLUtils::get_child_node_int_value(colours_node, "Spring");
+        int summer_colour = XMLUtils::get_child_node_int_value(colours_node, "Summer");
+        int autumn_colour = XMLUtils::get_child_node_int_value(colours_node, "Autumn");
+        int winter_colour = XMLUtils::get_child_node_int_value(colours_node, "Winter");
+
+        tile_colours[SEASON_SPRING] = spring_colour;
+        tile_colours[SEASON_SUMMER] = summer_colour;
+        tile_colours[SEASON_AUTUMN] = autumn_colour;
+        tile_colours[SEASON_WINTER] = winter_colour;
+      }
+
+      DisplayTile current_tile_info(symbol, tile_colours);
       tile_info.push_back(current_tile_info);
     }
   }
