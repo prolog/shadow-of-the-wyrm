@@ -490,6 +490,11 @@ string Game::get_sid_ini_filename() const
   return sid_ini_filename;
 }
 
+WorldPtr Game::get_current_world()
+{
+  return worlds[current_world_ix];
+}
+
 bool Game::serialize(ostream& stream)
 {
   Log::instance().trace("Game::serialize - start");

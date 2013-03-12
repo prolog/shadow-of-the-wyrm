@@ -3160,6 +3160,14 @@
 			<Text>
 				<Symbol>.</Symbol>
 				<Colour>2</Colour>
+				<!--
+				<Colours>
+					<Spring>10</Spring>
+					<Summer>2</Summer>
+					<Autumn>11</Autumn>
+					<Winter>15</Winter>
+				</Colours>
+				-->
 			</Text>
 		</FieldTile>
 		<ScrubTile>

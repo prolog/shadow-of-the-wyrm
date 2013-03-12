@@ -32,6 +32,10 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
   
   int actual_row, actual_col;
 
+  // Get the current season and set it into the copy.
+  // I believe this is what people call "a train wreck":
+  Season season = Game::instance().get_current_world()->get_calendar().get_season()->get_season();
+
   DisplayMap display_map(display_height, display_width);
 
   for (uint d_row = 0; d_row < display_height; d_row++)
@@ -67,6 +71,8 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
       {
         display_map.set_cursor_coordinate(display_coords);
       }
+
+      display_tile.set_season(season);
 
       // Set the display tile
       display_map.set(display_coords, display_tile);
@@ -152,19 +158,19 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile)
   DisplayTile display_tile;
   Game& game = Game::instance();
 
+  // Make a copy of the prototype tile off the game.
   vector<DisplayTile> tiles_info = game.get_tile_display_info_ref();
   DisplayTile tile_info = tiles_info.at(tile->get_tile_type());
-  display_tile = tile_info;    
-  
+  display_tile = tile_info;
+
+  size_t foo = display_tile.get_colours().size();
+
   return display_tile;
 }
 
 DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const uchar symbol, const Colour colour)
 {
-  DisplayTile display_tile;
-  
-  display_tile.set_symbol(symbol);
-  display_tile.set_colour(colour);
+  DisplayTile display_tile(symbol, colour);
   
   return display_tile;  
 }

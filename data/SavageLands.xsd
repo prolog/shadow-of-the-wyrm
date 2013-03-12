@@ -763,7 +763,23 @@
 	</xs:annotation>
 	<xs:sequence>
 		<xs:element name="Symbol" type="xs:string" minOccurs="1"/>
-		<xs:element name="Colour" type="tns:ColourType" minOccurs="1"/>
+		<xs:choice>
+			<!-- Indicates that the colour will be used regardless of the season. -->
+			<xs:element name="Colour" type="tns:ColourType"/>
+			<!-- Indicates that colours will be provided for each season. -->
+			<xs:element name="Colours" type="tns:SeasonColoursType"/>
+		</xs:choice>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="SeasonColoursType">
+	<xs:annotation>
+		<xs:documentation>Information about a tile type's colour for each in-game season.</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Spring" type="tns:ColourType"/>
+		<xs:element name="Summer" type="tns:ColourType"/>
+		<xs:element name="Autumn" type="tns:ColourType"/>
+		<xs:element name="Winter" type="tns:ColourType"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="AgeRange">
