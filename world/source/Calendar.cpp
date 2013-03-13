@@ -6,9 +6,13 @@
 using namespace std;
 
 Calendar::Calendar()
-: seconds(0), STARTING_YEAR(832)
+: seconds(12960000), STARTING_YEAR(832)
 {
+  // Set a default season.
   season = SeasonFactory::create_season(SEASON_WINTER);
+
+  // Overwrite the default season, if the current date is out of synch.
+  update_season_if_necessary();
 }
 
 bool Calendar::operator==(const Calendar& c)
@@ -61,14 +65,22 @@ bool Calendar::update_season_if_necessary()
   Date date = get_date();
   uint month = date.get_month();
   
-  set<Months> months = season->get_months_in_season();
-  
   // If the current month is now outside of the current season's
   // months, increment the season.
-  if (months.find(static_cast<Months>(month)) == months.end())
+  //
+  // The while-loop is so that I can set an arbitrary number of
+  // seconds to start the clock at a particular point, and have the
+  // season adjust.  In theory, this should not be dangerous.
+  //
+  // In theory.
+  set<Months> months = season->get_months_in_season();
+
+  while (months.find(static_cast<Months>(month)) == months.end())
   {
     season = SeasonFactory::create_season(season->get_next_season());
     season_updated = true;
+
+    months = season->get_months_in_season();
   }
   
   return season_updated;

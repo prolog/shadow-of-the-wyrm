@@ -3159,27 +3159,34 @@
 		<FieldTile>
 			<Text>
 				<Symbol>.</Symbol>
-				<Colour>2</Colour>
-				<!--
 				<Colours>
 					<Spring>10</Spring>
 					<Summer>2</Summer>
-					<Autumn>11</Autumn>
+					<Autumn>3</Autumn>
 					<Winter>15</Winter>
 				</Colours>
-				-->
 			</Text>
 		</FieldTile>
 		<ScrubTile>
 			<Text>
 				<Symbol>.</Symbol>
-				<Colour>3</Colour>
+				<Colours>
+					<Spring>3</Spring>
+					<Summer>3</Summer>
+					<Autumn>3</Autumn>
+					<Winter>7</Winter>
+				</Colours>
 			</Text>
 		</ScrubTile>
 		<WheatTile>
 			<Text>
 				<Symbol>|</Symbol>
-				<Colour>3</Colour>
+				<Colours>
+					<Spring>3</Spring>
+					<Summer>3</Summer>
+					<Autumn>3</Autumn>
+					<Winter>7</Winter>
+				</Colours>
 			</Text>
 		</WheatTile>
 		<CairnTile>
@@ -3191,13 +3198,23 @@
 		<TreeTile>
 			<Text>
 				<Symbol>T</Symbol>
-				<Colour>10</Colour>
+				<Colours>
+					<Spring>13</Spring>
+					<Summer>10</Summer>
+					<Autumn>9</Autumn>
+					<Winter>3</Winter>
+				</Colours>
 			</Text>
 		</TreeTile>
 		<DesertTile>
 			<Text>
 				<Symbol>.</Symbol>
-				<Colour>11</Colour>
+				<Colours>
+					<Spring>11</Spring>
+					<Summer>11</Summer>
+					<Autumn>11</Autumn>
+					<Winter>7</Winter>
+				</Colours>
 			</Text>
 		</DesertTile>
 		<RoadTile>
@@ -3251,13 +3268,23 @@
 		<ReedsTile>
 			<Text>
 				<Symbol>|</Symbol>
-				<Colour>1</Colour>
+				<Colours>
+					<Spring>3</Spring>
+					<Summer>1</Summer>
+					<Autumn>3</Autumn>
+					<Winter>3</Winter>
+				</Colours>
 			</Text>
 		</ReedsTile>
 		<HillsTile>
 			<Text>
 				<Symbol>^</Symbol>
-				<Colour>2</Colour>
+				<Colours>
+					<Spring>3</Spring>
+					<Summer>2</Summer>
+					<Autumn>3</Autumn>
+					<Winter>15</Winter>
+				</Colours>
 			</Text>
 		</HillsTile>
 		<MountainsTile>
@@ -3275,13 +3302,23 @@
 		<BushTile>
 			<Text>
 				<Symbol>*</Symbol>
-				<Colour>2</Colour>
+				<Colours>
+					<Spring>3</Spring>
+					<Summer>2</Summer>
+					<Autumn>3</Autumn>
+					<Winter>3</Winter>
+				</Colours>
 			</Text>
 		</BushTile>
 		<WeedsTile>
 			<Text>
 				<Symbol>*</Symbol>
-				<Colour>3</Colour>
+				<Colours>
+					<Spring>3</Spring>
+					<Summer>2</Summer>
+					<Autumn>3</Autumn>
+					<Winter>3</Winter>
+				</Colours>
 			</Text>
 		</WeedsTile>
 		<SpringsTile>
@@ -3293,7 +3330,12 @@
 		<ForestTile>
 			<Text>
 				<Symbol>%</Symbol>
-				<Colour>2</Colour>
+				<Colours>
+					<Spring>13</Spring>
+					<Summer>10</Summer>
+					<Autumn>9</Autumn>
+					<Winter>3</Winter>
+				</Colours>
 			</Text>
 		</ForestTile>
 		<UpStaircaseTile>
