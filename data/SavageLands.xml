@@ -2750,7 +2750,7 @@
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
-				<Colour>3</Colour>
+				<Colour>2</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
