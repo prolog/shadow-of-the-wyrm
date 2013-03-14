@@ -13,7 +13,7 @@ end
 
 local function sun_gem_completion_fn()
   add_message("BLACKSMITH_SUNGEM_QUEST_COMPLETE_SID")
-  add_object_to_player_tile("fang")
+  add_object_to_player_tile("forger")
   remove_object_from_player("sun_gem")
   remove_active_quest("ploughman_sungem")
 end
