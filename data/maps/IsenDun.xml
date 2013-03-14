@@ -106,6 +106,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>cynwise</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>70</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>kew</ID>
 				<Coord>
 					<Row>2</Row>
