@@ -2865,6 +2865,37 @@
 			<Evade>20</Evade>
 			<Soak>15</Soak>
 		</Creature>
+		<Creature id="cynwise">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>CYNWISE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CYNWISE_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>CYNWISE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>12</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>200</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>8</NumDice>
+				<NumSides>3</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Evade>12</Evade>
+			<Soak>4</Soak>
+		</Creature>
 		<Creature id="kew">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>KEW_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
