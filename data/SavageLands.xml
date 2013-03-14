@@ -3681,24 +3681,24 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
-			<Weapon id="fang">
-				<DescriptionSID>FANG_SID</DescriptionSID>
-				<UsageDescriptionSID>FANG_USAGE_SID</UsageDescriptionSID>
+			<Weapon id="forger">
+				<DescriptionSID>FORGER_SID</DescriptionSID>
+				<UsageDescriptionSID>FORGER_USAGE_SID</UsageDescriptionSID>
 				<Value>500</Value>
-				<Weight><Pounds>6</Pounds></Weight>
+				<Weight><Pounds>12</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
-				<Skill>1001</Skill>
-				<RangedSkill>2001</RangedSkill>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
 				<Difficulty>44</Difficulty>
 				<Speed>4</Speed>
 				<Damage>
 					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>4</Modifier>
-					<Type>0</Type>
+					<NumSides>10</NumSides>
+					<Modifier>2</Modifier>
+					<Type>2</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="elven_short_sword">
