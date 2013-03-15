@@ -146,6 +146,7 @@ class TextKeys
     static const std::string DECISION_JUMP_INTO_WATER;
     static const std::string DECISION_QUIT_GAME;
     static const std::string DECISION_SAVE_GAME;
+    static const std::string DECISION_ATTACK_FRIENDLY_CREATURE;
     
     static const std::string GAIN_LEVEL;
     static const std::string UNARMED;
