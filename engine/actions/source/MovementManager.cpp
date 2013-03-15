@@ -162,9 +162,24 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
     else if (MapUtils::is_creature_present(creatures_new_tile))
     {
       movement_success = 0;
-      
+
       // Do the necessary checks here to determine whether to attack...
       CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
+      
+      // If the creature in the new tile isn't hostile to the creature in the
+      // current tile, prompt to see whether the moving creature wants to
+      // attack.
+      if (!adjacent_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()))
+      {
+        if (creature->get_is_player())
+        {
+          MessageManager& manager = MessageManager::instance();
+          manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
+          bool attack = creature->get_decision_strategy()->get_confirmation();
+
+          if (!attack) return movement_success;
+        }
+      }
       
       // Sanity check
       if (adjacent_creature)
