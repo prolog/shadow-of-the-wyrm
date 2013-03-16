@@ -10,6 +10,9 @@
 			<DeityInitialModifiers>
 				<IntelligenceModifier>1</IntelligenceModifier>
 			</DeityInitialModifiers>
+			<Dislikes>
+				<AttackFriendlyCreature>1</AttackFriendlyCreature>
+			</Dislikes>
 			<WorshipSiteType>0</WorshipSiteType>
 		</Deity>
 		<Deity id="02_aurelion">
@@ -22,6 +25,9 @@
 			<DeityInitialModifiers>
 				<StrengthModifier>1</StrengthModifier>
 			</DeityInitialModifiers>
+			<Dislikes>
+				<AttackFriendlyCreature>1</AttackFriendlyCreature>
+			</Dislikes>
 			<WorshipSiteType>1</WorshipSiteType>
 		</Deity>
 		<Deity id="03_thelady">
@@ -34,6 +40,9 @@
 			<DeityInitialModifiers>
 				<CharismaModifier>1</CharismaModifier>
 			</DeityInitialModifiers>
+			<Dislikes>
+				<AttackFriendlyCreature>1</AttackFriendlyCreature>
+			</Dislikes>
 			<WorshipSiteType>2</WorshipSiteType>
 		</Deity>
 		<Deity id="04_vedere">
@@ -46,6 +55,9 @@
 			<DeityInitialModifiers>
 				<HealthModifier>1</HealthModifier>
 			</DeityInitialModifiers>
+			<Dislikes>
+				<AttackFriendlyCreature>1</AttackFriendlyCreature>
+			</Dislikes>
 			<WorshipSiteType>3</WorshipSiteType>
 		</Deity>
 		<Deity id="05_voros">
@@ -58,6 +70,7 @@
 			<DeityInitialModifiers>
 				<StrengthModifier>1</StrengthModifier>
 			</DeityInitialModifiers>
+			<Dislikes/>
 			<WorshipSiteType>4</WorshipSiteType>
 		</Deity>
 		<Deity id="06_thetrickster">
@@ -70,6 +83,7 @@
 			<DeityInitialModifiers>
 				<AgilityModifier>1</AgilityModifier>
 			</DeityInitialModifiers>
+			<Dislikes/>
 			<WorshipSiteType>5</WorshipSiteType>
 		</Deity>
 		<Deity id="07_shiver">
@@ -82,6 +96,7 @@
 			<DeityInitialModifiers>
 				<WillpowerModifier>1</WillpowerModifier>
 			</DeityInitialModifiers>
+			<Dislikes/>
 			<WorshipSiteType>6</WorshipSiteType>
 		</Deity>
 		<Deity id="08_urgoth">
@@ -94,6 +109,7 @@
 			<DeityInitialModifiers>
 				<StrengthModifier>1</StrengthModifier>
 			</DeityInitialModifiers>
+			<Dislikes/>
 			<WorshipSiteType>7</WorshipSiteType>
 		</Deity>
 		<Deity id="09_sceadugenga">
@@ -106,6 +122,7 @@
 			<DeityInitialModifiers>
 				<IntelligenceModifier>1</IntelligenceModifier>
 			</DeityInitialModifiers>
+			<Dislikes/>
 			<WorshipSiteType>8</WorshipSiteType>
 		</Deity>
 	</Deities>

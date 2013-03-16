@@ -537,6 +537,7 @@
     <ClInclude Include="world\materials\include\Steel.hpp" />
     <ClInclude Include="world\materials\include\Stone.hpp" />
     <ClInclude Include="world\materials\include\Wood.hpp" />
+    <ClInclude Include="world\religion\include\CreatureActions.hpp" />
     <ClInclude Include="world\religion\include\Deity.hpp" />
     <ClInclude Include="world\religion\include\DeityStatus.hpp" />
     <ClInclude Include="world\religion\include\Religion.hpp" />
@@ -1197,6 +1198,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\materials\source\Wood.cpp" />
+    <ClCompile Include="world\religion\source\CreatureActions.cpp" />
     <ClCompile Include="world\religion\source\Deity.cpp" />
     <ClCompile Include="world\religion\source\DeityStatus.cpp" />
     <ClCompile Include="world\religion\source\Religion.cpp" />

@@ -73,6 +73,17 @@ AlignmentRange Deity::get_alignment_range() const
   return alignment_range;
 }
 
+// Set/get a particular dislike
+void Deity::set_dislike(const string& dislike, const bool value)
+{
+  dislikes.set_action_value(dislike, value);
+}
+
+bool Deity::get_dislike(const string& dislike) const
+{
+  return dislikes.get_action_value(dislike);
+}
+
 // Set/get the worship site type.
 void Deity::set_worship_site_type(const WorshipSiteType new_worship_site_type)
 {

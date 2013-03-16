@@ -3,6 +3,7 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "AlignmentEnums.hpp"
+#include "CreatureActions.hpp"
 #include "WorshipSiteTypes.hpp"
 #include "StatisticsModifier.hpp"
 
@@ -31,6 +32,9 @@ class Deity
     
     void set_alignment_range(const AlignmentRange new_alignment_range);
     AlignmentRange get_alignment_range() const;
+
+    void set_dislike(const std::string& dislike_key, const bool val);
+    bool get_dislike(const std::string& dislike_key) const;
     
     void set_worship_site_type(const WorshipSiteType new_worship_site_type);
     WorshipSiteType get_worship_site_type() const;
@@ -50,6 +54,7 @@ class Deity
     AlignmentRange alignment_range;
     WorshipSiteType worship_site_type;
     StatisticsModifier initial_statistics_modifier; // only used for creature creation
+    CreatureActions dislikes;
     bool user_playable;
 };
 
