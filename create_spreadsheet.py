@@ -47,7 +47,7 @@ def write_creatures_to_csv(creatures, csv_file):
   csv.write('Symbol' + ',' + 'Colour' + ',' + 'Creature' + '\n')
 
   # Write the values
-  for sc_pair in creatures:
+  for sc_pair in sorted(creatures):
     line = sc_pair[0] + ',' + sc_pair[1] + ',' + creatures[sc_pair] + '\n'
     csv.write(line)
 
