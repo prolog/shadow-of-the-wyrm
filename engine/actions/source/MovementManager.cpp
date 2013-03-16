@@ -161,32 +161,7 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
     }
     else if (MapUtils::is_creature_present(creatures_new_tile))
     {
-      movement_success = 0;
-
-      // Do the necessary checks here to determine whether to attack...
-      CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
-      
-      // If the creature in the new tile isn't hostile to the creature in the
-      // current tile, prompt to see whether the moving creature wants to
-      // attack.
-      if (!adjacent_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()))
-      {
-        if (creature->get_is_player())
-        {
-          MessageManager& manager = MessageManager::instance();
-          manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
-          bool attack = creature->get_decision_strategy()->get_confirmation();
-
-          if (!attack) return movement_success;
-        }
-      }
-      
-      // Sanity check
-      if (adjacent_creature)
-      {
-        CombatManager cm;
-        movement_success = cm.attack(creature, adjacent_creature);
-      }
+      movement_success = handle_movement_into_occupied_tile(creature, creatures_new_tile);
     }
     else if (creatures_new_tile->get_is_blocking(creature))
     {
@@ -214,6 +189,40 @@ ActionCostValue MovementManager::move_within_map(CreaturePtr creature, MapPtr ma
     }
   }
   
+  return movement_success;
+}
+
+// Handle movement into an occupied tile.  First, check to see whether the
+// creature will attack the occupying creature.  If so, attack the creature.
+ActionCostValue MovementManager::handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile)
+{
+  ActionCostValue movement_success = 0;
+
+  // Do the necessary checks here to determine whether to attack...
+  CreaturePtr adjacent_creature = creatures_new_tile->get_creature();
+      
+  // If the creature in the new tile isn't hostile to the creature in the
+  // current tile, prompt to see whether the moving creature wants to
+  // attack.
+  if (!adjacent_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()))
+  {
+    if (creature->get_is_player())
+    {
+      MessageManager& manager = MessageManager::instance();
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
+      bool attack = creature->get_decision_strategy()->get_confirmation();
+
+      if (!attack) return movement_success;
+    }
+  }
+      
+  // Sanity check
+  if (adjacent_creature)
+  {
+    CombatManager cm;
+    movement_success = cm.attack(creature, adjacent_creature);
+  }
+
   return movement_success;
 }
 
