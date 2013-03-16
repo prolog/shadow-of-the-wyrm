@@ -124,6 +124,7 @@
 			<xs:element name="DeathMessageSID" type="xs:string"/>
 			<xs:element name="Alignment" type="tns:AlignmentRange"/>
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
+			<xs:element name="Dislikes" type="tns:DeityDislikes"/>
 			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
@@ -223,6 +224,11 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:complexType name="DeityDislikes">
+	<xs:sequence>
+		<xs:element name="AttackFriendlyCreature" type="xs:boolean" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="InitialStatisticsModifiers">
 	<xs:sequence>
 		<xs:element name="StrengthModifier" type="tns:StatisticModifier" minOccurs="0"/>

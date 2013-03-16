@@ -2157,6 +2157,9 @@
     <ClInclude Include="world\include\GenerationValues.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\religion\include\CreatureActions.hpp">
+      <Filter>Header Files\world\religion\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -4096,6 +4099,9 @@
     </ClCompile>
     <ClCompile Include="world\source\GenerationValues.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\CreatureActions.cpp">
+      <Filter>Source Files\world\religion\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
