@@ -30,5 +30,5 @@ int FullHPDeityDecisionStrategyHandler::get_piety_loss() const
 
 string FullHPDeityDecisionStrategyHandler::get_message_sid() const
 {
-  return PrayerTextKeys::PRAYER_FULL_HP;
+  return DeityTextKeys::PRAYER_FULL_HP;
 }

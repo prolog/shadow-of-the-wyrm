@@ -212,7 +212,15 @@ ActionCostValue MovementManager::handle_movement_into_occupied_tile(CreaturePtr 
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
       bool attack = creature->get_decision_strategy()->get_confirmation();
 
-      if (!attack) return movement_success;
+      if (!attack)
+      {
+        return movement_success;
+      }
+      else
+      {
+        // Not all deities approve of attacking friendlies...
+        Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+      }
     }
   }
       

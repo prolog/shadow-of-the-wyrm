@@ -465,6 +465,11 @@ ActionManager& Game::get_action_manager_ref()
   return actions;
 }
 
+DeityActionManager& Game::get_deity_action_manager_ref()
+{
+  return deity_actions;
+}
+
 ScriptEngine& Game::get_script_engine_ref()
 {
   return script_engine;
@@ -560,6 +565,8 @@ bool Game::serialize(ostream& stream)
   Serialize::write_string(stream, current_map_id);
 
   actions.serialize(stream);
+
+  // deity_actions is stateless, and doesn't need to be saved.
 
   ac.serialize(stream);
     
@@ -665,6 +672,8 @@ bool Game::deserialize(istream& stream)
   Serialize::read_string(stream, current_map_id);
 
   actions.deserialize(stream);
+
+  // deity_actions is stateless, and doesn't need to be saved.
     
   ac.deserialize(stream);
 

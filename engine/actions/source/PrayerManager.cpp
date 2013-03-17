@@ -45,7 +45,7 @@ void PrayerManager::say_prayer(CreaturePtr creature)
   if (creature && creature->get_is_player())
   {
     string deity_name_sid = rm.get_deity_name_sid(creature->get_religion().get_active_deity_id());
-    string prayer_message = PrayerTextKeys::get_prayer_message(deity_name_sid);
+    string prayer_message = DeityTextKeys::get_prayer_message(deity_name_sid);
     
     manager.add_new_message(prayer_message);
     manager.send();

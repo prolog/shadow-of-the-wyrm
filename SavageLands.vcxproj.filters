@@ -2160,6 +2160,12 @@
     <ClInclude Include="world\religion\include\CreatureActions.hpp">
       <Filter>Header Files\world\religion\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\DeityActionManager.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DislikeDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="display\source\unit_tests\Display_test.cpp">
@@ -4102,6 +4108,12 @@
     </ClCompile>
     <ClCompile Include="world\religion\source\CreatureActions.cpp">
       <Filter>Source Files\world\religion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\DeityActionManager.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\DislikeDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

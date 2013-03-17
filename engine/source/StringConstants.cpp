@@ -1337,26 +1337,29 @@ const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE 
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SORCEROR_STATUE    = "FEATURE_DESCRIPTION_SORCEROR_STATUE";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BENCH              = "FEATURE_DESCRIPTION_BENCH";
 
+// Strings for deity actions, such as being pleased, displeased, a
+
 // Strings for Prayer
-PrayerTextKeys::PrayerTextKeys()
+DeityTextKeys::DeityTextKeys()
 {
 }
 
-PrayerTextKeys::~PrayerTextKeys()
+DeityTextKeys::~DeityTextKeys()
 {
 }
 
-string PrayerTextKeys::get_prayer_message(const string& deity_sid)
+string DeityTextKeys::get_prayer_message(const string& deity_sid)
 {
-  string prayer_message = StringTable::get(PrayerTextKeys::PRAYER_INITIAL_MESSAGE);
+  string prayer_message = StringTable::get(DeityTextKeys::PRAYER_INITIAL_MESSAGE);
   boost::replace_first(prayer_message, "%s", StringTable::get(deity_sid));
   
   return prayer_message;
 }
 
-const string PrayerTextKeys::PRAYER_INITIAL_MESSAGE = "PRAYER_INITIAL_MESSAGE";
-const string PrayerTextKeys::PRAYER_DO_NOTHING      = "PRAYER_DO_NOTHING";
-const string PrayerTextKeys::PRAYER_FULL_HP         = "PRAYER_FULL_HP";
+const string DeityTextKeys::PRAYER_INITIAL_MESSAGE  = "PRAYER_INITIAL_MESSAGE";
+const string DeityTextKeys::PRAYER_DO_NOTHING       = "PRAYER_DO_NOTHING";
+const string DeityTextKeys::PRAYER_FULL_HP          = "PRAYER_FULL_HP";
+const string DeityTextKeys::DEITY_ACTION_DISPLEASED = "DEITY_ACTION_DISPLEASED"; 
 
 // Strings for Combat
 CombatTextKeys::CombatTextKeys()

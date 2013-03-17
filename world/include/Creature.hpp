@@ -193,6 +193,7 @@ class Creature : public ISerializable
     void set_religion(const Religion& new_religion);
     Religion get_religion() const;
     Religion& get_religion_ref();
+    DeityStatus& get_active_deity_status_ref();
     
     // Experience value when killed
     void set_experience_value(const uint new_experience_value);
