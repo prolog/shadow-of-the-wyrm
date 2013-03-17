@@ -2912,6 +2912,7 @@
 			</Damage>
 			<Evade>12</Evade>
 			<Soak>4</Soak>
+			<ChatScript>cynwise.lua</ChatScript>
 		</Creature>
 		<Creature id="kew">
 			<RaceID>01_human</RaceID>
@@ -4029,6 +4030,28 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>50</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="silver_branch">
+				<DescriptionSID>SILVER_BRANCH_SID</DescriptionSID>
+				<UsageDescriptionSID>SILVER_BRANCH_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
