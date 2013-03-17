@@ -17,6 +17,6 @@ int DoNothingDeityDecisionStrategyHandler::get_piety_loss() const
 
 string DoNothingDeityDecisionStrategyHandler::get_message_sid() const
 {
-  string message_sid = PrayerTextKeys::PRAYER_DO_NOTHING;
+  string message_sid = DeityTextKeys::PRAYER_DO_NOTHING;
   return message_sid;
 }

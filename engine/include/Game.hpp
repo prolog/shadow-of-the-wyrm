@@ -5,6 +5,7 @@
 #include "Class.hpp"
 #include "CreatureGenerationValues.hpp"
 #include "Deity.hpp"
+#include "DeityActionManager.hpp"
 #include "Directions.hpp"
 #include "DisplayTile.hpp"
 #include "Display.hpp"
@@ -79,6 +80,8 @@ class Game : public ISerializable
     // worlds and rebirth.
     
     ActionManager& get_action_manager_ref();
+
+    DeityActionManager& get_deity_action_manager_ref();
 
     ScriptEngine& get_script_engine_ref();
 
@@ -157,6 +160,10 @@ class Game : public ISerializable
 
     // The action manager
     ActionManager actions;
+
+    // The deity action manager - monitors certain key actions, and updates
+    // piety based on whether a creature's deity likes that action or not.
+    DeityActionManager deity_actions;
     
     // The action coordinator, used to keep track of action order and timing costs.
     ActionCoordinator ac;

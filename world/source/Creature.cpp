@@ -666,6 +666,13 @@ Religion& Creature::get_religion_ref()
   return religion;
 }
 
+DeityStatus& Creature::get_active_deity_status_ref()
+{
+  DeityRelations& relations = religion.get_deity_relations_ref();
+  DeityStatus& status = relations[religion.get_active_deity_id()];
+  return status;
+}
+
 void Creature::set_experience_value(const uint new_experience_value)
 {
   experience_value = new_experience_value;
