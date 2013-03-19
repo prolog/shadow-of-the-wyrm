@@ -130,6 +130,15 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     int base_soak = XMLUtils::get_child_node_int_value(creature_node, "Soak", 0);
     creature->set_base_soak(base_soak);
 
+    // Speed - optionally override the race/class speed.
+    XMLNode speed_node = XMLUtils::get_next_element_by_local_name(creature_node, "Speed");
+    
+    if (!speed_node.is_null())
+    {
+      int base_speed = XMLUtils::get_node_int_value(speed_node, 0);
+      creature->set_speed(base_speed);
+    }
+
     // Event functions
     XMLNode event_functions_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventFunctions");
     parse_event_functions(event_functions_node, creature);
