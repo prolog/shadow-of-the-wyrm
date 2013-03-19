@@ -38,8 +38,22 @@
 			<Placement>
 				<ID>rook</ID>
 				<Coord>
+					<Row>4</Row>
+					<Col>11</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>rook</ID>
+				<Coord>
 					<Row>17</Row>
 					<Col>10</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>rook</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>9</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
