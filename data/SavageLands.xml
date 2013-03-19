@@ -2556,7 +2556,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>1</NumDice>
-					<NumSides>6</NumSides>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>1</Exp>
 			</CreatureGeneration>
@@ -2587,7 +2587,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>3</NumDice>
-					<NumSides>6</NumSides>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>3</Exp>
 			</CreatureGeneration>
@@ -2619,7 +2619,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>5</Exp>
 			</CreatureGeneration>
@@ -2648,8 +2648,8 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>2</NumDice>
-					<NumSides>3</NumSides>
+					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>2</Exp>
 			</CreatureGeneration>
@@ -2684,8 +2684,8 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>3</NumDice>
-					<NumSides>2</NumSides>
+					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>3</Exp>
 			</CreatureGeneration>
@@ -2721,7 +2721,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>2</NumDice>
-					<NumSides>5</NumSides>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>2</Exp>
 			</CreatureGeneration>
@@ -2758,7 +2758,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>5</NumDice>
-					<NumSides>4</NumSides>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>4</Exp>
 			</CreatureGeneration>
@@ -2786,8 +2786,8 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>3</NumDice>
-					<NumSides>2</NumSides>
+					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>5</Exp>
 			</CreatureGeneration>
@@ -2820,8 +2820,8 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>2</NumDice>
-					<NumSides>4</NumSides>
+					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>2</Exp>
 			</CreatureGeneration>
@@ -2848,8 +2848,8 @@
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>1</NumDice> <!-- should be 750d1 -->
-					<NumSides>2</NumSides>
+					<NumDice>750</NumDice>
+					<NumSides>1</NumSides>
 				</HP>
 				<Exp>2000000</Exp>
 			</CreatureGeneration>
@@ -2881,12 +2881,12 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>4</NumDice>
-					<NumSides>5</NumSides>
+					<NumDice>2</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>5</Exp>
 			</CreatureGeneration>
-			<Level>1</Level>
+			<Level>2</Level>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
@@ -2912,7 +2912,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>6</NumDice>
-					<NumSides>5</NumSides>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>20</Exp>
 			</CreatureGeneration>
@@ -2943,7 +2943,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>10</NumDice>
-					<NumSides>6</NumSides>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>40</Exp>
 			</CreatureGeneration>
@@ -2973,8 +2973,8 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>2</NumDice>
-					<NumSides>3</NumSides>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
 				</HP>
 				<Exp>1</Exp>
 			</CreatureGeneration>
@@ -3004,8 +3004,8 @@
 				<DangerLevel>20</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>25</NumDice>
-					<NumSides>6</NumSides>
+					<NumDice>20</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>6000</Exp>
 			</CreatureGeneration>
@@ -3035,8 +3035,8 @@
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>12</NumDice>
-					<NumSides>6</NumSides>
+					<NumDice>10</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>200</Exp>
 			</CreatureGeneration>
@@ -3067,8 +3067,8 @@
 				<DangerLevel>10</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>12</NumDice>
-					<NumSides>6</NumSides>
+					<NumDice>10</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>500</Exp>
 			</CreatureGeneration>
@@ -3098,8 +3098,8 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>5</NumDice>
-					<NumSides>3</NumSides>
+					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>3</Exp>
 			</CreatureGeneration>
@@ -3129,8 +3129,8 @@
 				<DangerLevel>30</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>100</NumDice>
-					<NumSides>3</NumSides>
+					<NumDice>30</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>10000</Exp>
 			</CreatureGeneration>
@@ -3161,8 +3161,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>7</NumDice>
-					<NumSides>3</NumSides>
-					<Modifier>21</Modifier>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>120</Exp>
 			</CreatureGeneration>
@@ -3200,9 +3199,8 @@
 				<DangerLevel>2</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>1</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>6</Modifier>
+					<NumDice>2</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>6</Exp>
 			</CreatureGeneration>
@@ -3242,8 +3240,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>1</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>8</Modifier>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>6</Exp>
 			</CreatureGeneration>
@@ -3283,8 +3280,7 @@
 				<Rarity>0</Rarity>
 				<HP>
 					<NumDice>2</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>6</Modifier>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>6</Exp>
 			</CreatureGeneration>
@@ -3323,9 +3319,8 @@
 				<DangerLevel>5</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>4</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>6</Modifier>
+					<NumDice>5</NumDice>
+					<NumSides>8</NumSides>
 				</HP>
 				<Exp>20</Exp>
 			</CreatureGeneration>
