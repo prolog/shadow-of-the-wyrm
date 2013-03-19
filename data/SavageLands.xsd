@@ -306,6 +306,10 @@
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 			<xs:element name="Evade" type="xs:integer" minOccurs="0"/>
 			<xs:element name="Soak" type="xs:integer" minOccurs="0"/>
+			<!-- Optionally override race/class speed.  This allows some
+			     creatures of a certain race to be faster or slower than
+				 others. -->
+			<xs:element name="Speed" type="xs:integer" minOccurs="0"/>
 			<xs:element ref="tns:EventFunctions" minOccurs="0"/>
 			<xs:element name="ChatScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
