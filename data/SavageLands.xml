@@ -2536,6 +2536,68 @@
 		</Class>
 	</Classes>
 	<Creatures>
+		<Creature id="rat">
+			<ShortDescriptionSID>RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>RAT_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>RAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>r</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="corpse_rat">
+			<ShortDescriptionSID>CORPSE_RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CORPSE_RAT_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>CORPSE_RAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>r</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="thrall">
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>THRALL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
