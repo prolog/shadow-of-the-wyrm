@@ -29,6 +29,20 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>corpse_rat</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>rat</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>77</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>rook</ID>
 				<Coord>
 					<Row>4</Row>
@@ -53,6 +67,13 @@
 				<ID>rook</ID>
 				<Coord>
 					<Row>17</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>shrike</ID>
+				<Coord>
+					<Row>10</Row>
 					<Col>9</Col>
 				</Coord>
 			</Placement>
