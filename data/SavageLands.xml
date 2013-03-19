@@ -2733,6 +2733,43 @@
 			</Damage>
 			<Speed>40</Speed>
 		</Creature>
+		<Creature id="shrike">
+			<ShortDescriptionSID>SHRIKE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SHRIKE_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>SHRIKE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>b</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>4</NumSides>
+				</HP>
+				<Exp>4</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Speed>40</Speed>
+		</Creature>
 		<Creature id="armoured_beetle">
 			<ShortDescriptionSID>ARMOURED_BEETLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ARMOURED_BEETLE_DESCRIPTION_SID</DescriptionSID>
