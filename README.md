@@ -2,7 +2,7 @@ Savage Lands is a roguelike game in the spirit of Omega and ADOM.  It provides a
 
 Savage Lands is, specifically:
 
-  1. Written in C++.
+  1. Written in C++, with some functionality implemented in Lua.
   
   2. Intended that the game should be playable via old terminals and
   over telnet.
