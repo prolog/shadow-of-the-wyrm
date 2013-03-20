@@ -2632,6 +2632,39 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="skeleton">
+			<RaceID>_corporeal_undead</RaceID>
+			<ShortDescriptionSID>SKELETON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SKELETON_DESCRIPTION_SID</DescriptionSID>
+			<SpeechTextSID>SKELETON_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>u</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>8</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Modifier>2</Modifier>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
 		<Creature id="green_slime">
 			<ShortDescriptionSID>GREEN_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GREEN_SLIME_DESCRIPTION_SID</DescriptionSID>
