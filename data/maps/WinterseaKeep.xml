@@ -91,6 +91,48 @@
 					<Col>9</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>falcon</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>falcon</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>20</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>blood_hawk</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>41</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>blood_hawk</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>blood_hawk</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>45</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>roc</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
