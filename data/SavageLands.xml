@@ -2563,7 +2563,7 @@
 			<Level>1</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>4</NumSides>
+				<NumSides>2</NumSides>
 				<Type>1</Type>
 			</Damage>
 		</Creature>
@@ -2595,6 +2595,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
+				<Modifier>1</Modifier>
 				<Type>1</Type>
 			</Damage>
 		</Creature>
@@ -2626,7 +2627,8 @@
 			<Level>2</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>6</NumSides>
+				<NumSides>4</NumSides>
+				<Modifier>1</Modifier>
 				<Type>2</Type>
 			</Damage>
 		</Creature>
@@ -2692,7 +2694,7 @@
 			<Level>1</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>5</NumSides>
+				<NumSides>4</NumSides>
 				<Type>1</Type>
 			</Damage>
 		</Creature>
@@ -2728,7 +2730,8 @@
 			<Level>2</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>5</NumSides>
+				<NumSides>4</NumSides>
+				<Modifier>1</Modifier>
 				<Type>1</Type>
 			</Damage>
 			<Speed>40</Speed>
@@ -2765,7 +2768,8 @@
 			<Level>5</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>8</NumSides>
+				<NumSides>10</NumSides>
+				<Modifier>2</Modifier>
 				<Type>1</Type>
 			</Damage>
 			<Speed>40</Speed>
@@ -2855,12 +2859,13 @@
 			</CreatureGeneration>
 			<Level>50</Level>
 			<Damage>
-				<NumDice>1</NumDice> <!-- was 30d4 -->
-				<NumSides>1</NumSides>
+				<NumDice>1</NumDice>
+				<NumSides>200</NumSides>
+				<Modifier>25</Modifier>
 				<Type>0</Type>
 			</Damage>
-			<Evade>1</Evade>
-			<Soak>1</Soak>
+			<Evade>30</Evade>
+			<Soak>20</Soak>
 			<EventFunctions>
 				<Death>win</Death>
 			</EventFunctions>
@@ -2889,7 +2894,8 @@
 			<Level>2</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>6</NumSides>
+				<NumSides>4</NumSides>
+				<Modifier>1</Modifier>
 				<Type>2</Type>
 			</Damage>
 			<Evade>3</Evade>
@@ -2918,8 +2924,9 @@
 			</CreatureGeneration>
 			<Level>6</Level>
 			<Damage>
-				<NumDice>2</NumDice>
-				<NumSides>6</NumSides>
+				<NumDice>1</NumDice>
+				<NumSides>12</NumSides>
+				<Modifier>3</Modifier>
 				<Type>2</Type>
 			</Damage>
 			<Evade>4</Evade>
@@ -2949,8 +2956,9 @@
 			</CreatureGeneration>
 			<Level>10</Level>
 			<Damage>
-				<NumDice>5</NumDice>
-				<NumSides>3</NumSides>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Modifier>5</Modifier>
 				<Type>2</Type>
 			</Damage>
 			<Evade>0</Evade>
@@ -3011,8 +3019,9 @@
 			</CreatureGeneration>
 			<Level>20</Level>
 			<Damage>
-				<NumDice>20</NumDice>
-				<NumSides>3</NumSides>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Modifier>10</Modifier>
 				<Type>1</Type>
 			</Damage>
 			<Evade>20</Evade>
@@ -3042,8 +3051,9 @@
 			</CreatureGeneration>
 			<Level>10</Level>
 			<Damage>
-				<NumDice>8</NumDice>
-				<NumSides>3</NumSides>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Modifier>5</Modifier>
 				<Type>9</Type>
 			</Damage>
 			<Evade>12</Evade>
@@ -3074,8 +3084,9 @@
 			</CreatureGeneration>
 			<Level>10</Level>
 			<Damage>
-				<NumDice>3</NumDice>
-				<NumSides>6</NumSides>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Modifier>5</Modifier>
 				<Type>1</Type>
 			</Damage>
 			<Evade>10</Evade>
@@ -3106,7 +3117,7 @@
 			<Level>1</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>6</NumSides>
+				<NumSides>4</NumSides>
 				<Type>1</Type>
 			</Damage>
 			<Evade>3</Evade>
@@ -3136,8 +3147,9 @@
 			</CreatureGeneration>
 			<Level>30</Level>
 			<Damage>
-				<NumDice>10</NumDice>
-				<NumSides>6</NumSides>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Modifier>15</Modifier>
 				<Type>2</Type>
 			</Damage>
 			<Evade>22</Evade>
@@ -3168,8 +3180,8 @@
 			<Level>7</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>12</NumSides>
-				<Modifier>3</Modifier>
+				<NumSides>14</NumSides>
+				<Modifier>2</Modifier>
 				<Type>2</Type>
 			</Damage>
 			<Evade>12</Evade>
@@ -3207,7 +3219,7 @@
 			<Level>2</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>6</NumSides>
+				<NumSides>4</NumSides>
 				<Modifier>1</Modifier>
 				<Type>1</Type>
 			</Damage>
@@ -3248,7 +3260,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>4</NumSides>
-				<Modifier>2</Modifier>
+				<Modifier>1</Modifier>
 				<Type>1</Type>
 			</Damage>
 			<Evade>10</Evade>
@@ -3327,7 +3339,7 @@
 			<Level>5</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>8</NumSides>
+				<NumSides>10</NumSides>
 				<Modifier>2</Modifier>
 				<Type>0</Type>
 			</Damage>
