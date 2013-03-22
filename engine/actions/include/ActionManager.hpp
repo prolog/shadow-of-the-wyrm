@@ -86,6 +86,7 @@ class ActionManager : public ISerializable
     // the next load.
     void reload_scripts_and_sids(); // generic version.
     ActionCost reload_scripts_and_sids(CreaturePtr creature); // creature's-command-version
+    ActionCost run_script_command(CreaturePtr creature); // should only be available in debug mode!
 
     // Saves the game.
     ActionCost save(CreaturePtr creature);

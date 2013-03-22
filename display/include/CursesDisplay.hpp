@@ -28,7 +28,8 @@ class CursesDisplay : public Display
 
     void add_message(const std::string& message, const bool reset_prompt);
     void add_message(const std::string& message, const Colour colour, const bool reset_prompt);
-    
+    std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt);
+
     void halt_messages();
 
 	  void draw(const DisplayMap& current_map);

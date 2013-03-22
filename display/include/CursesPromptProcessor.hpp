@@ -17,5 +17,5 @@ class CursesPromptProcessor
     int get_prompt(WINDOW* window/*, MENU* menu*/);
     std::string get_prompt(WINDOW* window, const CursesMenuWrapper& menu_wrapper, PromptPtr prompt);
     void show_prompt(WINDOW* window, PromptPtr prompt, int row, int col, int TERMINAL_MAX_ROWS, int TERMINAL_MAX_COLS);
-    std::string get_user_string(WINDOW* window);
+    std::string get_user_string(WINDOW* window, bool allow_nonalphanumeric = false);
 };

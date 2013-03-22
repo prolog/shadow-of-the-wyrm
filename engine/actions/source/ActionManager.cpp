@@ -274,6 +274,18 @@ ActionCost ActionManager::reload_scripts_and_sids(CreaturePtr creature)
   return get_action_cost(creature, 0);
 }
 
+ActionCost ActionManager::run_script_command(CreaturePtr creature)
+{
+  Game& game = Game::instance();
+  MessageManager& manager = MessageManager::instance();
+  ScriptEngine& se = game.get_script_engine_ref();
+  string command = manager.add_new_message_with_prompt(StringTable::get(PromptTextKeys::PROMPT_RUN_SCRIPT));
+
+  se.run_command(command);
+
+  return get_action_cost(creature, 0);
+}
+
 // Pick up an item, doing any necessary checks first.
 ActionCost ActionManager::pick_up(CreaturePtr creature)
 {

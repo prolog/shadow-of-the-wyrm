@@ -350,6 +350,20 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
   //refresh();
 }
 
+string CursesDisplay::add_message_with_prompt(const string& message, const Colour colour, const bool reset_prompt)
+{
+  string prompt_result;
+
+  // Add the message and then get the prompt value.
+  // The assumption is that this should only ever (ever!  EVAR!) get called
+  // from stdscr, since that's where the message manager is actually
+  // displayed!
+  add_message(message, colour, reset_prompt);
+  prompt_result = prompt_processor.get_user_string(stdscr, true /* allow arbitrary non-alphanumeric characters */);
+
+  return prompt_result;
+}
+
 /*
  *****************************************************************
 

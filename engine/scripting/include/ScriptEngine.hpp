@@ -19,6 +19,7 @@ class ScriptEngine
     ~ScriptEngine();
 
     void execute(const std::string& script_file);
+    void run_command(const std::string& script_command);
     bool clear_state();
 
     // Get a given table value
@@ -33,6 +34,9 @@ class ScriptEngine
 
     // Register the list of functions available to the Lua scripting engine.
     void register_api_functions();
+
+    // Log an error that occurred during execution.
+    void log_error();
 
     // The current interpreter state.
     lua_State *L;

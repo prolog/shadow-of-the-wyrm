@@ -120,6 +120,18 @@ bool MessageManager::add_new_message_with_pause(const std::string& message_text,
   return true;
 }
 
+string MessageManager::add_new_message_with_prompt(const std::string& message_text, const Colour colour, const MessageImportance& importance)
+{
+  string prompt_text;
+
+  if (user_display)
+  {
+    prompt_text = user_display->add_message_with_prompt(message_text, colour, false);
+  }
+
+  return prompt_text;
+}
+
 // Get the current unread messages.
 Messages MessageManager::get_unread_messages() const
 {

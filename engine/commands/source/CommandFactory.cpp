@@ -145,6 +145,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<ReloadScriptsCommand>();
   }
+  else if (command_name == CommandKeys::RUN_SCRIPT)
+  {
+    command = boost::make_shared<RunScriptCommand>();
+  }
 
   return command;
 }
