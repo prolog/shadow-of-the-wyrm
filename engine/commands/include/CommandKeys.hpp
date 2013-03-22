@@ -45,6 +45,7 @@ class CommandKeys
     static const std::string APPLY_FEATURE;
     static const std::string QUEST_LIST;
     static const std::string RELOAD_SCRIPTS_AND_SIDS;
+    static const std::string RUN_SCRIPT;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

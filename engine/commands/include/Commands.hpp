@@ -199,3 +199,10 @@ class ReloadScriptsCommand : public Command
     ReloadScriptsCommand();
     ~ReloadScriptsCommand();
 };
+
+class RunScriptCommand : public Command
+{
+  public:
+    RunScriptCommand();
+    ~RunScriptCommand();
+};

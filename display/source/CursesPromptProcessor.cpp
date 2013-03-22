@@ -41,13 +41,13 @@ string CursesPromptProcessor::get_prompt(WINDOW* window, const CursesMenuWrapper
 }
 
 // Get a prompt from the user
-string CursesPromptProcessor::get_user_string(WINDOW* window)
+string CursesPromptProcessor::get_user_string(WINDOW* window, bool allow_nonalphanumeric)
 {
   string prompt_text;
   char c;
   int y, x;
         
-  for (c = getch(); (c != '\n') && (c != '\r'); c = getch())
+  for (c = wgetch(window); (c != '\n') && (c != '\r'); c = wgetch(window))
   {
     getyx(window, y, x);
     
@@ -63,7 +63,7 @@ string CursesPromptProcessor::get_user_string(WINDOW* window)
     }
     else
     {
-      if (isalpha(c) || isdigit(c) || (c == ' '))
+      if ((isalpha(c) || isdigit(c) || (c == ' ')) || allow_nonalphanumeric)
       {
         prompt_text.push_back(c);
         mvwaddch(window, y, x++, c);

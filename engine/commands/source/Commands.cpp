@@ -288,3 +288,13 @@ ReloadScriptsCommand::ReloadScriptsCommand()
 ReloadScriptsCommand::~ReloadScriptsCommand()
 {
 }
+
+// Run a Lua statement (debug mode only)
+RunScriptCommand::RunScriptCommand()
+: Command(CommandKeys::RUN_SCRIPT)
+{
+}
+
+RunScriptCommand::~RunScriptCommand()
+{
+}

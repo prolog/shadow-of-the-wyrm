@@ -149,6 +149,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.reload_scripts_and_sids(creature);
       }
+      else if (command_name == CommandKeys::RUN_SCRIPT)
+      {
+        ac = game.actions.run_script_command(creature);
+      }
     }
   }
   

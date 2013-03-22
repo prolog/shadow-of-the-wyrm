@@ -121,6 +121,12 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('C'), CommandKeys::CHAT));
   command_mapping.insert(make_pair(Integer::to_string('a'), CommandKeys::APPLY_FEATURE));
   command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUEST_LIST));
+  
+  // JCD FIXME: When adding Unix support, update this to include whatever
+  // debug flag is needed.
+  #ifdef _DEBUG
+  command_mapping.insert(make_pair(Integer::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
+  #endif
 
   // Function Keys
   command_mapping.insert(make_pair(Integer::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));

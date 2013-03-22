@@ -82,18 +82,34 @@ void ScriptEngine::execute(const string& script)
   string script_file = "scripts/" + script;
   if (luaL_dofile(L, script_file.c_str()))
   {
-    // An error occurred: pop the error off the stack, and log the message.
-    Log& log = Log::instance();
-    string error(lua_tostring(L, -1));
-
-    log.error("ScriptEngine::execute - Error in luaL_dofile: " + error);
-
-    // Add a message to the message manager.
-    string ui_error = GameEnvTextKeys::get_lua_error(error);
-    MessageManager& manager = MessageManager::instance();
-    manager.add_new_message(ui_error);
-    manager.send();
+    log_error();
   }
+}
+
+// Run a user-supplied command within the current Lua state.
+void ScriptEngine::run_command(const string& command)
+{
+  if (luaL_dostring(L, command.c_str()))
+  {
+    // Error occurred! :(
+    log_error();
+  }
+}
+
+// Log the most recently-occurred error.
+void ScriptEngine::log_error()
+{
+  // An error occurred: pop the error off the stack, and log the message.
+  Log& log = Log::instance();
+  string error(lua_tostring(L, -1));
+
+  log.error("ScriptEngine::log_error - Error in execution: " + error);
+
+  // Add a message to the message manager.
+  string ui_error = GameEnvTextKeys::get_lua_error(error);
+  MessageManager& manager = MessageManager::instance();
+  manager.add_new_message(ui_error);
+  manager.send();
 }
 
 // Register all the functions available to the scripting engine.
