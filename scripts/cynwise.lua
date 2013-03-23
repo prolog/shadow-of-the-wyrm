@@ -12,8 +12,27 @@ local function cynwise_wintersea_completion_condition_fn()
 end
 
 local function cynwise_wintersea_completion_fn()
-  add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_SID")
-  -- Add new item here!
+  -- Does the player have Herbalism?
+  if get_skill_value("player", 22) == 0 then
+    set_skill_value("player", 22, 15)
+    -- Give the player some skill in Herbalism.
+    add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_HERBALISM_SID")
+  else
+    magic_skill_value = get_skill_value("player", 31)
+    -- If the player has Herbalism, and has Magic, and has not maxed out
+    -- Magic, Cynwise will teach the player.
+    if (magic_skill_value > 0 and magic_skill_value < 100) then
+      new_magic_value = magic_skill_value + 20
+      set_skill_value("player", 31, new_magic_value)
+      add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_MAGIC_SID")
+    else
+      -- Has Herbalism, but doesn't have Magic: Cynwise has nothing
+      -- to teach, and provides some money.
+      add_object_to_player_tile("_currency", 150);
+      add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_CURRENCY_SID")
+    end
+  end
+
   remove_object_from_player("silver_branch")
 end
 

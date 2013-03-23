@@ -68,7 +68,7 @@ void Skill::initialize()
 // Set the value, and then also update the threshold for the new value.
 void Skill::set_value(const int new_value)
 {
-  value = new_value;
+  value = (new_value < 100) ? new_value : 100;
   
   set_threshold_for_value(value);
 }
