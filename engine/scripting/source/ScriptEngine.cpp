@@ -23,6 +23,8 @@ int player_has_item(lua_State* ls);
 int remove_object_from_player(lua_State* ls);
 int is_item_generated(lua_State* ls);
 int get_num_item_generated(lua_State* ls);
+int set_skill_value(lua_State* ls);
+int get_skill_value(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -33,7 +35,7 @@ ScriptEngine::ScriptEngine()
 // Tear down the Lua state.
 ScriptEngine::~ScriptEngine()
 {
-   lua_close( L );
+   lua_close(L);
 }
 
 bool ScriptEngine::clear_state()
@@ -47,7 +49,7 @@ bool ScriptEngine::clear_state()
 void ScriptEngine::initialize_state()
 {
    L = lua_open();
-   luaL_openlibs( L );
+   luaL_openlibs(L);
    load_modules();
    register_api_functions();
 }
@@ -128,6 +130,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "remove_object_from_player", remove_object_from_player);
   lua_register(L, "is_item_generated", is_item_generated);
   lua_register(L, "get_num_item_generated", get_num_item_generated);
+  lua_register(L, "set_skill_value", set_skill_value);
+  lua_register(L, "get_skill_value", get_skill_value);
 }
 
 // Lua API functions:
@@ -284,7 +288,7 @@ int add_object_to_player_tile(lua_State* ls)
     CreaturePtr player = game.get_current_player();
     TilePtr player_tile = MapUtils::get_tile_for_creature(map, player); 
     string base_item_id = lua_tostring(ls, 1);
-    uint quantity = static_cast<uint>(lua_tonumber(ls, 2));
+    uint quantity = static_cast<uint>(lua_tointeger(ls, 2));
     if (quantity == 0) ++quantity;
 
     ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity);
@@ -422,7 +426,7 @@ int is_item_generated(lua_State* ls)
   bool item_generated = false;
 
   get_num_item_generated(ls);
-  item_generated = (lua_tonumber(ls, -1) > 0);
+  item_generated = (lua_tointeger(ls, -1) > 0);
 
   // We don't need this value anymore - calling function should get the 
   // boolean return value.
@@ -460,3 +464,67 @@ int get_num_item_generated(lua_State* ls)
   lua_pushnumber(ls, num_gen);
   return 1;
 }
+
+// Set a skill value for a particular creature.
+// Three arguments are expected:
+// - creature_id
+// - skill enumeration vaue
+// - new value (int) for that skill
+int set_skill_value(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int skill_i = lua_tointeger(ls, 2);
+    SkillType skill_name = static_cast<SkillType>(skill_i);
+    int skill_value = lua_tointeger(ls, 3);
+
+    CreatureMap& cmap = Game::instance().get_current_map()->get_creatures_ref();
+    CreatureMap::iterator c_it = cmap.find(creature_id);
+
+    if (c_it != cmap.end())
+    {
+      CreaturePtr creature = c_it->second;
+
+      if (creature)
+      {
+        creature->get_skills().set_value(skill_name, skill_value);
+      }
+    }
+  }
+  return 0;
+}
+
+// Get a skill value for a particular creature.
+// Three arguments are expected:
+// - creature_id of a creature on the current map
+// - skill enumeration value
+// Return value is hte current value (int) for that skill.
+int get_skill_value(lua_State* ls)
+{
+  int skill_value = 0;
+  
+  if ((lua_gettop(ls) == 2) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int skill_i = lua_tointeger(ls, 2);
+    SkillType skill_name = static_cast<SkillType>(skill_i);
+
+    CreatureMap& cmap = Game::instance().get_current_map()->get_creatures_ref();
+    CreatureMap::iterator c_it = cmap.find(creature_id);
+
+    if (c_it != cmap.end())
+    {
+      CreaturePtr creature = c_it->second;
+
+      if (creature)
+      {
+        skill_value = creature->get_skills().get_value(skill_name);
+      }
+    }
+  }
+
+  lua_pushnumber(ls, skill_value);
+  return 1;
+}
+
