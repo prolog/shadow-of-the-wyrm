@@ -4,6 +4,7 @@
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "Quests.hpp"
+#include "RNG.hpp"
 #include "ScriptEngine.hpp"
 #include "StringTable.hpp"
 
@@ -25,6 +26,7 @@ int is_item_generated(lua_State* ls);
 int get_num_item_generated(lua_State* ls);
 int set_skill_value(lua_State* ls);
 int get_skill_value(lua_State* ls);
+int RNG_range(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -132,6 +134,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_num_item_generated", get_num_item_generated);
   lua_register(L, "set_skill_value", set_skill_value);
   lua_register(L, "get_skill_value", get_skill_value);
+  lua_register(L, "RNG_range", RNG_range);
 }
 
 // Lua API functions:
@@ -492,6 +495,13 @@ int set_skill_value(lua_State* ls)
       }
     }
   }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_skill_value");
+    lua_error(ls);
+  }
+
+
   return 0;
 }
 
@@ -523,8 +533,33 @@ int get_skill_value(lua_State* ls)
       }
     }
   }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_skill_value");
+    lua_error(ls);
+  }
 
   lua_pushnumber(ls, skill_value);
   return 1;
 }
 
+int RNG_range(lua_State* ls)
+{
+  int rng_val = 0;
+
+  if ((lua_gettop(ls) == 2) && (lua_isnumber(ls, 1) && lua_isnumber(ls, 2)))
+  {
+    int min = lua_tointeger(ls, 1);
+    int max = lua_tointeger(ls, 2);
+
+    rng_val = RNG::range(min, max);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to RNG_range");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, rng_val);
+  return 1;
+}
