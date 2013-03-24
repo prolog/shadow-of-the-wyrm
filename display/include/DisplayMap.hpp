@@ -1,11 +1,10 @@
 #pragma once
-#include <vector>
+#include <boost/unordered_map.hpp>
 #include "Dimensions.hpp"
 #include "common.hpp"
 #include "DisplayTile.hpp"
 
 class DisplayTile;
-
 
 // A DisplayMap is the only map the Display cares about.  It contains
 // DisplayTile info, which in turn contains boiled-down Tile information.
@@ -24,7 +23,9 @@ class DisplayMap
     Dimensions size() const;
 
   protected:
+    std::string get_key(const Coordinate& c) const;
+
     int rows, cols;
-    std::vector<DisplayTile> display_map;
+    boost::unordered_map<std::string, DisplayTile> display_map;
     Coordinate cursor_coordinate;
 };

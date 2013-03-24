@@ -14,7 +14,7 @@ end
 local function cynwise_wintersea_completion_fn()
   -- Does the player have Herbalism?
   if get_skill_value("player", 22) == 0 then
-    set_skill_value("player", 22, 15)
+    set_skill_value("player", 22, RNG_range(15, 20))
     -- Give the player some skill in Herbalism.
     add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_HERBALISM_SID")
   else
@@ -22,7 +22,7 @@ local function cynwise_wintersea_completion_fn()
     -- If the player has Herbalism, and has Magic, and has not maxed out
     -- Magic, Cynwise will teach the player.
     if (magic_skill_value > 0 and magic_skill_value < 100) then
-      new_magic_value = magic_skill_value + 20
+      new_magic_value = magic_skill_value + RNG_range(15, 20)
       set_skill_value("player", 31, new_magic_value)
       add_message("CYNWISE_WINTERSEA_QUEST_COMPLETE_MAGIC_SID")
     else

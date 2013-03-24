@@ -196,6 +196,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 {
   if (current_player && current_map)
   {
+    // boost::timer::auto_cpu_timer timer;
     MapDisplayArea display_area = display->get_map_display_area();
 
     DisplayStatistics display_stats = CreatureTranslator::create_display_statistics(current_player, current_map);
