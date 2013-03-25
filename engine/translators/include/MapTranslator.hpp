@@ -12,12 +12,17 @@ class DisplayMap;
 class MapTranslator
 {
   public:
-    static DisplayMap create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords);
+    // Create a full display map (used when doing a full redraw)
+    static DisplayMap create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required);
+
     static DisplayTile create_display_tile(const TilePtr& engine_tile, const TilePtr& fov_tile);
 
   protected:
     MapTranslator();
     ~MapTranslator();
+
+    // Translation function used when creating both a display map, and an update map.
+    static DisplayTile translate_coordinate_into_display_tile(const MapPtr& map, const MapPtr& fov_map, const int actual_row, const int actual_col);
 
     static DisplayTile create_display_tile_from_creature(const CreaturePtr& creature);
     static DisplayTile create_display_tile_from_feature(const FeaturePtr& feature);

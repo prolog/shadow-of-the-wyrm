@@ -1,4 +1,4 @@
-#include "Display.hpp"
+#include "MapDisplayArea.hpp"
 
 MapDisplayArea::MapDisplayArea()
 : height(0), width(0)
@@ -31,5 +31,5 @@ uint MapDisplayArea::get_width() const
 }
 
 #ifdef UNIT_TESTS
-#include "unit_tests/Display_test.cpp"
+#include "unit_tests/MapDisplayArea_test.cpp"
 #endif

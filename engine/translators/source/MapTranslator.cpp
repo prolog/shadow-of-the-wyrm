@@ -1,7 +1,9 @@
 #include <algorithm>
 #include "common.hpp"
+#include "CreatureCoordinateCalculator.hpp"
 #include "Display.hpp"
 #include "Game.hpp"
+#include "MapDisplayArea.hpp"
 #include "MapTranslator.hpp"
 
 using namespace std;
@@ -14,21 +16,9 @@ MapTranslator::~MapTranslator()
 {
 }
 
-DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords)
+DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required)
 {
-  uint display_width = display_area.get_width();
-  uint display_height = display_area.get_height();
-
-  Dimensions d = map->size();
-  int map_height = d.get_y();
-  int map_width  = d.get_x();
-
-  int cursor_row = reference_coords.first;
-  int cursor_col = reference_coords.second;
-
-  // Ignore the decimal part - we only care about the int part.
-  int engine_map_start_row = std::min(map_height - display_height, ((int)(cursor_row / display_height)) * display_height);
-  int engine_map_start_col = std::min(map_width - display_width, ((int)(cursor_col / display_width)) * display_width);
+  Coordinate display_coords = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, map, reference_coords);
   
   int actual_row, actual_col;
 
@@ -36,11 +26,40 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
   // I believe this is what people call "a train wreck":
   Season season = Game::instance().get_current_world()->get_calendar().get_season()->get_season();
 
-  DisplayMap display_map(display_height, display_width);
+  DisplayMap display_map(display_area.get_height(), display_area.get_width());
 
-  for (uint d_row = 0; d_row < display_height; d_row++)
+  int cursor_row = reference_coords.first;
+  int cursor_col = reference_coords.second;
+  Coordinate engine_coord = CreatureCoordinateCalculator::calculate_engine_coordinate(display_area, map, reference_coords);
+
+  uint start_y, start_x;
+  uint stop_y, stop_x;
+  int display_height = display_area.get_height();
+  int display_width = display_area.get_width();
+
+  // Set the loop's start/stop points based on whether a full redraw is
+  // required.
+  if (full_redraw_required)
   {
-    for (uint d_col = 0; d_col < display_width; d_col++)
+    // We can use the full display, so go from 0 to display_height/display_width.
+    start_y = 0;
+    stop_y = display_height;
+    start_x = 0;
+    stop_x = display_width;
+  }
+  else
+  {
+    Coordinate display_coords = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, map, reference_coords);
+
+    start_y = std::max<int>(0, display_coords.first - CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH - 1);
+    stop_y = std::min<int>(display_height, display_coords.first + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 1);
+    start_x = std::max<int>(0, display_coords.second - CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH - 1);
+    stop_x = std::min<int>(display_width, display_coords.second + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 1);
+  }
+
+  for (uint d_row = start_y; d_row < stop_y; d_row++)
+  {
+    for (uint d_col = start_x; d_col < stop_x; d_col++)
     {
       // Create the display coordinate.  Note that this can be different
       // from the actual engine coordinate!
@@ -50,21 +69,12 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
       //
       // The display's (col 0, row 0) will start at 80, 20 on the real
       // map, and the player will be at 10, 10 relative to this.
-      Coordinate display_coords;
-      display_coords.first = d_row;
-      display_coords.second = d_col;
+      Coordinate display_coords(d_row, d_col);
 
-      actual_row = engine_map_start_row+d_row;
-      actual_col = engine_map_start_col+d_col;
+      actual_row = engine_coord.first + d_row;
+      actual_col = engine_coord.second + d_col;
 
-      // Get the map tile
-      TilePtr map_tile = map->at(actual_row, actual_col);
-      
-      // Check to see if a corresponding FOV tile exists
-      TilePtr fov_map_tile = fov_map->at(actual_row, actual_col);
-
-      // Translate the map tile
-      DisplayTile display_tile = create_display_tile(map_tile, fov_map_tile);
+      DisplayTile display_tile = translate_coordinate_into_display_tile(map, fov_map, actual_row, actual_col);
 
       // Set the cursor coordinates
       if ((actual_row == cursor_row) && (actual_col == cursor_col))
@@ -80,6 +90,20 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
   }
 
   return display_map;
+}
+
+// Create a display tile from a given coordinate, given the current map
+// and the current FOV map.
+DisplayTile MapTranslator::translate_coordinate_into_display_tile(const MapPtr& map, const MapPtr& fov_map, const int actual_row, const int actual_col)
+{
+  // Get the map tile
+  TilePtr map_tile = map->at(actual_row, actual_col);
+      
+  // Check to see if a corresponding FOV tile exists
+  TilePtr fov_map_tile = fov_map->at(actual_row, actual_col);
+
+  // Translate the map tile
+  return create_display_tile(map_tile, fov_map_tile);
 }
 
 DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile, const TilePtr& fov_tile)

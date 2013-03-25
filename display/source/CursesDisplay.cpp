@@ -9,6 +9,7 @@
 #include "Menu.hpp"
 #include "CursesConstants.hpp"
 #include "CursesDisplay.hpp"
+#include "MapDisplayArea.hpp"
 #include "OptionsComponent.hpp"
 #include "Serialize.hpp"
 #include "StringTable.hpp"
@@ -390,16 +391,7 @@ void CursesDisplay::draw(const DisplayMap& current_map)
       map_coords.first = terminal_row - CursesConstants::MAP_START_ROW;
       map_coords.second = terminal_col - CursesConstants::MAP_START_COL;
 
-      display_tile = current_map.at(map_coords);
-
-      int colour = display_tile.get_colour();
-
-      enable_colour(colour);
-
-      // Maps are always drawn on ncurses' stdscr.
-      mvprintw(terminal_row, terminal_col, "%c", display_tile.get_symbol());
-
-      disable_colour(colour);
+      draw_coordinate(current_map, map_coords, terminal_row, terminal_col);
     }
   }
 
@@ -410,6 +402,50 @@ void CursesDisplay::draw(const DisplayMap& current_map)
   curs_set(1);
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
+}
+
+// JCD FIXME: Remove offset param.
+void CursesDisplay::draw(const DisplayMap& update_map, const uint start_y, const uint start_x, const uint yx_offset)
+{
+  DisplayTile display_tile;
+  Coordinate map_coords;
+
+  DisplayMapType tiles = update_map.get_tiles();
+
+  uint terminal_row, terminal_col;
+
+  BOOST_FOREACH(DisplayMapType::value_type& tile, tiles)
+  {
+    Coordinate map_coords = tile.first;
+    DisplayTile dtile = tile.second;
+
+    terminal_row = CursesConstants::MAP_START_ROW + map_coords.first;
+    terminal_col = CursesConstants::MAP_START_COL + map_coords.second;
+
+    draw_coordinate(update_map, map_coords, terminal_row, terminal_col);
+  }
+
+  Coordinate cursor_coord = update_map.get_cursor_coordinate();
+
+  // Since we're drawing the map (with, presumably, the player) we need the cursor present to show the
+  // position of the player's character.
+  curs_set(1);
+  move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
+  wredrawln(stdscr, CursesConstants::MAP_START_ROW, update_map.size().get_y());
+}
+
+void CursesDisplay::draw_coordinate(const DisplayMap& display_map, const Coordinate& map_coords, const unsigned int terminal_row, const unsigned int terminal_col)
+{
+  DisplayTile display_tile = display_map.at(map_coords);
+
+  int colour = display_tile.get_colour();
+
+  enable_colour(colour);
+
+  // Maps are always drawn on ncurses' stdscr.
+  mvprintw(terminal_row, terminal_col, "%c", display_tile.get_symbol());
+
+  disable_colour(colour);
 }
 
 /*!

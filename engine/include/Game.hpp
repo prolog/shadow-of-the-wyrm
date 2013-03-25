@@ -94,6 +94,11 @@ class Game : public ISerializable
 
     WorldPtr get_current_world();
 
+    // Set whether a full map redraw is needed.  Certain actions (like changing
+    // maps, updating seasons, etc) require a full redraw rather than just a
+    // redraw around the player's location.
+    void set_map_redraw_needed(const bool redraw_value);
+
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
 
@@ -191,6 +196,11 @@ class Game : public ISerializable
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;
     KeyboardCommandMapPtr game_kb_command_map;
+
+    // Keep track of whether a full map redraw is needed.  The map is typically
+    // only partially drawn to squeeze out some more performance, and allow more
+    // processing after the player's turn.
+    bool full_map_redraw_needed;
 
   private:
     ClassIdentifier internal_class_identifier() const;

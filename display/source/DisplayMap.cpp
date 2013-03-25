@@ -11,6 +11,11 @@ DisplayMap::DisplayMap(const int r, const int c)
  // display_map.resize(rows * cols);
 }
 
+DisplayMap::DisplayMap()
+: rows(0), cols(0)
+{
+}
+
 void DisplayMap::set_cursor_coordinate(const Coordinate& new_cursor_coordinate)
 {
   cursor_coordinate = new_cursor_coordinate;
@@ -23,7 +28,7 @@ Coordinate DisplayMap::get_cursor_coordinate() const
 
 void DisplayMap::set(const Coordinate& c, const DisplayTile& value)
 {
-  display_map[get_key(c)] = value;
+  display_map[c] = value;
 }
 
 // A poem:
@@ -34,7 +39,7 @@ void DisplayMap::set(const Coordinate& c, const DisplayTile& value)
 // but then it broke my ::at.
 DisplayTile DisplayMap::at(const Coordinate& c) const
 {
-  return display_map.find(get_key(c))->second;
+  return display_map.find(c)->second;
 }
 
 Dimensions DisplayMap::size() const
@@ -43,9 +48,7 @@ Dimensions DisplayMap::size() const
   return d;
 }
 
-string DisplayMap::get_key(const Coordinate& c) const
+DisplayMapType DisplayMap::get_tiles() const
 {
-  ostringstream ss;
-  ss << c.first << "-" << c.second;
-  return ss.str();
+  return display_map;
 }
