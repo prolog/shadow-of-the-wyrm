@@ -52,9 +52,9 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
     Coordinate display_coords = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, map, reference_coords);
 
     start_y = std::max<int>(0, display_coords.first - CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH - 1);
-    stop_y = std::min<int>(display_height, display_coords.first + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 1);
+    stop_y = std::min<int>(display_height, display_coords.first + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 2);
     start_x = std::max<int>(0, display_coords.second - CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH - 1);
-    stop_x = std::min<int>(display_width, display_coords.second + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 1);
+    stop_x = std::min<int>(display_width, display_coords.second + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 2);
   }
 
   for (uint d_row = start_y; d_row < stop_y; d_row++)
@@ -75,6 +75,11 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
       actual_col = engine_coord.second + d_col;
 
       DisplayTile display_tile = translate_coordinate_into_display_tile(map, fov_map, actual_row, actual_col);
+
+      if (actual_row == 17 && actual_col == 4)
+      {
+        int x = 1;
+      }
 
       // Set the cursor coordinates
       if ((actual_row == cursor_row) && (actual_col == cursor_col))
