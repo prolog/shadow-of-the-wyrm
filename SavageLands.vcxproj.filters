@@ -40,9 +40,6 @@
     <Filter Include="Source Files\world">
       <UniqueIdentifier>{4d9a8019-8cc8-4085-85be-3418579ea68e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\display\unit_tests">
-      <UniqueIdentifier>{6ce24f13-6ee4-4f56-b437-89a443fed296}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\world\include">
       <UniqueIdentifier>{adbc23de-5673-4eb9-9e44-0c3fed3d98ae}</UniqueIdentifier>
     </Filter>
@@ -537,6 +534,9 @@
     </Filter>
     <Filter Include="Source Files\world\materials\source\unit_tests">
       <UniqueIdentifier>{e86da33b-c1a2-48de-861d-f1d356b0e806}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\display\source\unit_tests">
+      <UniqueIdentifier>{d54ccb5e-49e6-493f-abf4-bb23085c3ace}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -2166,11 +2166,14 @@
     <ClInclude Include="engine\decision_strategies\deity\include\DislikeDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
+    <ClInclude Include="display\include\MapDisplayArea.hpp">
+      <Filter>Header Files\display</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\CreatureCoordinateCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="display\source\unit_tests\Display_test.cpp">
-      <Filter>Source Files\display\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="world\religion\source\Deity.cpp">
       <Filter>Source Files\world\religion\source</Filter>
     </ClCompile>
@@ -3713,9 +3716,6 @@
     <ClCompile Include="world\tiles\source\unit_tests\TempleTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\unit_tests\CursesDisplay_test.cpp">
-      <Filter>Source Files\display\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\commands\source\unit_tests\CommandFactory_test.cpp">
       <Filter>Source Files\engine\commands\source\unit_tests</Filter>
     </ClCompile>
@@ -3986,9 +3986,6 @@
     <ClCompile Include="display\source\CursesUtils.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
-    <ClCompile Include="display\source\Display.cpp">
-      <Filter>Source Files\display\source</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\DisplayFactory.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
@@ -4114,6 +4111,18 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\DislikeDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\MapDisplayArea.cpp">
+      <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\CursesDisplay_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\unit_tests\MapDisplayArea_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CreatureCoordinateCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,6 +1,20 @@
 Savage Lands v0.1.1, "Cissa"
 - Version declared March 10, 2013.
 
+- Added different tile colours based on season.
+
+- Updated the display routines to be much quicker - these update a subset
+  of the screen, rather than the whole screen, which saves a lot of time.
+  
+- Added a warning message prior to attacking a friendly creature, and 
+  added support so that certain deities Do Not Like This.
+
+- Added Cynwise, the village witch, and her associated quest in Winterfell
+  Keep.
+
+- More creatures added and populated within Winterfell Keep.
+
+
 Savage Lands v0.1.0, "Aelle"
 - Initial version, unreleased.  Project started July 2, 2011.
 

@@ -6,6 +6,7 @@
 #include "CoordUtils.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureDescriber.hpp"
+#include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
 #include "Detection.hpp"
 #include "FieldOfViewStrategy.hpp"
@@ -33,7 +34,7 @@
 using namespace std;
 
 Game::Game()
-: keep_playing(true), reload_game_loop(false), current_world_ix(0)
+: keep_playing(true), reload_game_loop(false), current_world_ix(0), full_map_redraw_needed(true)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -205,8 +206,25 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     MapCursor mc;
     Coordinate reference_coords = mc.get_cursor_location(current_map);
 
-    DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords);
-    display->draw(display_map);    
+    if (full_map_redraw_needed)
+    {
+      DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords, true);
+      display->draw(display_map);
+    }
+    else
+    {
+      Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords);
+
+      // 2 * ... + 2 reflects that LOS is a constant amount in each direction.
+      // The constant ... + 2 accounts for potentially moving to a different
+      // tile via regular movement.
+      //
+      // JCD FIXME: Teleportation will totally break this.
+      uint yx_offset = CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 1;
+      
+      DisplayMap update_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords, false);
+      display->draw(update_map, display_coord.first, display_coord.second, yx_offset);
+    }
   }
 }
 
@@ -239,6 +257,9 @@ void Game::go()
     detect_creatures_if_necessary(current_player, map_id);
         
     current_map = get_current_map();
+
+    // After loading the (new) map, a full redraw is needed.
+    full_map_redraw_needed = true;
     map_id = current_map_id;
 
     map<string, CreaturePtr> map_creatures = current_map->get_creatures();
@@ -296,6 +317,13 @@ void Game::go()
           reload_game_loop = false;
           break;
         }
+      }
+
+      // As long as there are still player actions within the current map, and we've
+      // not loaded a new map, a full redraw is not needed:
+      if (current_creature->get_is_player())
+      {
+        full_map_redraw_needed = false;
       }
     }
   }
@@ -453,6 +481,7 @@ void Game::set_current_map(MapPtr map)
   // Make the new map the current
   current_map_id = map->get_map_id();
   map_registry.set_map(current_map_id, map);
+  full_map_redraw_needed = true;
 }
 
 // Get the current map from the map registry.
@@ -499,6 +528,11 @@ string Game::get_sid_ini_filename() const
 WorldPtr Game::get_current_world()
 {
   return worlds[current_world_ix];
+}
+
+void Game::set_map_redraw_needed(const bool redraw_value)
+{
+  full_map_redraw_needed = redraw_value;
 }
 
 bool Game::serialize(ostream& stream)
@@ -582,6 +616,10 @@ bool Game::serialize(ostream& stream)
   // Ignore sid ini filename.
 
   // Game command factory and keyboard map get built up every time - don't save these.
+
+  // Persist the map-redraw value so that the same logic can be applied after
+  // a game is reloaded.
+  Serialize::write_bool(stream, full_map_redraw_needed);
     
   Log::instance().trace("Game::serialize - end");
 
@@ -689,6 +727,8 @@ bool Game::deserialize(istream& stream)
   // Ignore sid ini filename
 
   // Game command factory and keyboard map get built up every time - don't load these.
+
+  Serialize::read_bool(stream, full_map_redraw_needed);
 
   Log::instance().trace("Game::deserialize - end");
   return true;

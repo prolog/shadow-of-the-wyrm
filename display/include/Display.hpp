@@ -14,23 +14,7 @@
 #include "Prompt.hpp"
 
 class Menu;
-
-class MapDisplayArea
-{
-  public:
-    MapDisplayArea();
-    MapDisplayArea(const uint height, const uint width);
-
-    void set_height(const uint height);
-    uint get_height() const;
-
-    void set_width(const uint width);
-    uint get_width() const;
-
-  protected:
-    uint height;
-    uint width;
-};
+class MapDisplayArea;
 
 class Display : public ISerializable
 {
@@ -57,6 +41,9 @@ class Display : public ISerializable
 
     // Draws the map
 	  virtual void draw(const DisplayMap& current_map) = 0;
+
+    // Draws on a portion of the map area.
+    virtual void draw(const DisplayMap& update_map, const uint start_y, const uint start_x, const uint yx_offset) = 0;
 	  
 	  // Displays a window with the player's equipment
 	  virtual void display_equipment(const DisplayEquipmentMap& equipment) = 0;

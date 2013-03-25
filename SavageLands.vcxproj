@@ -96,6 +96,7 @@
     <ClInclude Include="display\include\CursesMenuWrapper.hpp" />
     <ClInclude Include="display\include\CursesPromptProcessor.hpp" />
     <ClInclude Include="display\include\CursesUtils.hpp" />
+    <ClInclude Include="display\include\MapDisplayArea.hpp" />
     <ClInclude Include="engine\actions\include\ActionCoordinator.hpp" />
     <ClInclude Include="engine\actions\include\ActionCost.hpp" />
     <ClInclude Include="engine\actions\include\ActionManager.hpp" />
@@ -133,6 +134,7 @@
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\CreatureCoordinateCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DamageCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp" />
@@ -628,7 +630,6 @@
     <ClCompile Include="controller\source\ControllerFactory.cpp" />
     <ClCompile Include="controller\source\CursesKeyboardController.cpp" />
     <ClCompile Include="controller\source\NullKeyboardController.cpp" />
-    <ClCompile Include="display\source\Display.cpp" />
     <ClCompile Include="display\source\DisplayFactory.cpp" />
     <ClCompile Include="display\source\DisplayItem.cpp" />
     <ClCompile Include="display\source\DisplayItemType.cpp" />
@@ -640,11 +641,12 @@
     <ClCompile Include="display\source\CursesMenuWrapper.cpp" />
     <ClCompile Include="display\source\CursesPromptProcessor.cpp" />
     <ClCompile Include="display\source\CursesUtils.cpp" />
+    <ClCompile Include="display\source\MapDisplayArea.cpp" />
     <ClCompile Include="display\source\unit_tests\CursesDisplay_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="display\source\unit_tests\Display_test.cpp">
+    <ClCompile Include="display\source\unit_tests\MapDisplayArea_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -699,6 +701,7 @@
     <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CombatTargetNumberCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\CreatureCoordinateCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DamageCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\DangerLevelCalculatorFactory.cpp" />
