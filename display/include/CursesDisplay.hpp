@@ -33,7 +33,7 @@ class CursesDisplay : public Display
     void halt_messages();
 
 	  void draw(const DisplayMap& current_map);
-    virtual void draw(const DisplayMap& update_map, const uint start_y, const uint start_x, const uint yx_offset);
+    virtual void draw(const DisplayMap& update_map, const uint start_y, const uint start_x);
 	  virtual void draw_coordinate(const DisplayMap& current_map, const Coordinate& map_coord, const uint terminal_row, const uint terminal_col);
 
 	  void display(const DisplayStatistics& player_stats);

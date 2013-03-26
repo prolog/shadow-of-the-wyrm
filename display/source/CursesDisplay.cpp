@@ -404,8 +404,7 @@ void CursesDisplay::draw(const DisplayMap& current_map)
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
 }
 
-// JCD FIXME: Remove offset param.
-void CursesDisplay::draw(const DisplayMap& update_map, const uint start_y, const uint start_x, const uint yx_offset)
+void CursesDisplay::draw(const DisplayMap& update_map, const uint start_y, const uint start_x)
 {
   DisplayTile display_tile;
   Coordinate map_coords;

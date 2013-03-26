@@ -215,15 +215,8 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     {
       Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords);
 
-      // 2 * ... + 2 reflects that LOS is a constant amount in each direction.
-      // The constant ... + 2 accounts for potentially moving to a different
-      // tile via regular movement.
-      //
-      // JCD FIXME: Teleportation will totally break this.
-      uint yx_offset = CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 1;
-      
       DisplayMap update_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords, false);
-      display->draw(update_map, display_coord.first, display_coord.second, yx_offset);
+      display->draw(update_map, display_coord.first, display_coord.second);
     }
   }
 }
