@@ -43,7 +43,7 @@ class Display : public ISerializable
 	  virtual void draw(const DisplayMap& current_map) = 0;
 
     // Draws on a portion of the map area.
-    virtual void draw(const DisplayMap& update_map, const uint start_y, const uint start_x, const uint yx_offset) = 0;
+    virtual void draw(const DisplayMap& update_map, const uint start_y, const uint start_x) = 0;
 	  
 	  // Displays a window with the player's equipment
 	  virtual void display_equipment(const DisplayEquipmentMap& equipment) = 0;
