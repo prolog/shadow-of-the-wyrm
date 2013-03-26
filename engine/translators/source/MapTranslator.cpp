@@ -76,11 +76,6 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
 
       DisplayTile display_tile = translate_coordinate_into_display_tile(map, fov_map, actual_row, actual_col);
 
-      if (actual_row == 17 && actual_col == 4)
-      {
-        int x = 1;
-      }
-
       // Set the cursor coordinates
       if ((actual_row == cursor_row) && (actual_col == cursor_col))
       {
