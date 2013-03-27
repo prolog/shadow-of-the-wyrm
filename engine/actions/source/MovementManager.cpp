@@ -78,6 +78,14 @@ ActionCostValue MovementManager::move(CreaturePtr creature, const Direction dire
       
       movement_success = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords);
     }
+
+    // Update the loaded map details with the player's new coordinate,
+    // assuming this is the player.
+    if (creature->get_is_player())
+    {
+      Coordinate creature_location = map->get_location(creature->get_id());
+      Game::instance().get_loaded_map_details_ref().update_engine_coord(creature_location);
+    }
   }
   
   return movement_success;

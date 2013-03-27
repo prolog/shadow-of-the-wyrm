@@ -11,6 +11,7 @@
 #include "Display.hpp"
 #include "Item.hpp"
 #include "ISerializable.hpp"
+#include "LoadedMapDetails.hpp"
 #include "MapRegistry.hpp"
 #include "Mortuary.hpp"
 #include "Quests.hpp"
@@ -94,14 +95,10 @@ class Game : public ISerializable
 
     WorldPtr get_current_world();
 
-    // Set whether a full map redraw is needed.  Certain actions (like changing
-    // maps, updating seasons, etc) require a full redraw rather than just a
-    // redraw around the player's location.
-    void set_map_redraw_needed(const bool redraw_value);
+    LoadedMapDetails& get_loaded_map_details_ref();
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
-
 
   private:
     friend class SavageLandsEngine;
@@ -200,7 +197,7 @@ class Game : public ISerializable
     // Keep track of whether a full map redraw is needed.  The map is typically
     // only partially drawn to squeeze out some more performance, and allow more
     // processing after the player's turn.
-    bool full_map_redraw_needed;
+    LoadedMapDetails loaded_map_details;
 
   private:
     ClassIdentifier internal_class_identifier() const;
