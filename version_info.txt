@@ -9,10 +9,10 @@ Savage Lands v0.1.1, "Cissa"
 - Added a warning message prior to attacking a friendly creature, and 
   added support so that certain deities Do Not Like This.
 
-- Added Cynwise, the village witch, and her associated quest in Winterfell
+- Added Cynwise, the village witch, and her associated quest in Wintersea
   Keep.
 
-- More creatures added and populated within Winterfell Keep.
+- More creatures added and populated within Wintersea Keep.
 
 
 Savage Lands v0.1.0, "Aelle"
