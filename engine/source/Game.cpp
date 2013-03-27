@@ -34,7 +34,7 @@
 using namespace std;
 
 Game::Game()
-: keep_playing(true), reload_game_loop(false), current_world_ix(0), full_map_redraw_needed(true)
+: keep_playing(true), reload_game_loop(false), current_world_ix(0)
 {
   // Setup the time keeper.  On a new game, this will initialize everything as
   // expected - when loading an existing game, this will be overwritten later,
@@ -206,18 +206,24 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     MapCursor mc;
     Coordinate reference_coords = mc.get_cursor_location(current_map);
 
-    if (full_map_redraw_needed)
+    Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords);
+    loaded_map_details.update_display_coord(display_coord);
+    bool redraw_needed = loaded_map_details.requires_full_map_redraw();
+
+    DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords, redraw_needed);
+    
+    if (redraw_needed)
     {
-      DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords, true);
       display->draw(display_map);
     }
     else
     {
-      Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords);
-
-      DisplayMap update_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords, false);
-      display->draw(update_map, display_coord.first, display_coord.second);
+      display->draw(display_map, display_coord.first, display_coord.second);
     }
+
+    // As long as there are still player actions within the current map, and we've
+    // not loaded a new map, a full redraw is not needed:
+    loaded_map_details.synch();
   }
 }
 
@@ -252,8 +258,8 @@ void Game::go()
     current_map = get_current_map();
 
     // After loading the (new) map, a full redraw is needed.
-    full_map_redraw_needed = true;
     map_id = current_map_id;
+    loaded_map_details.update_map_id(map_id);
 
     map<string, CreaturePtr> map_creatures = current_map->get_creatures();
 
@@ -310,13 +316,6 @@ void Game::go()
           reload_game_loop = false;
           break;
         }
-      }
-
-      // As long as there are still player actions within the current map, and we've
-      // not loaded a new map, a full redraw is not needed:
-      if (current_creature->get_is_player())
-      {
-        full_map_redraw_needed = false;
       }
     }
   }
@@ -474,7 +473,6 @@ void Game::set_current_map(MapPtr map)
   // Make the new map the current
   current_map_id = map->get_map_id();
   map_registry.set_map(current_map_id, map);
-  full_map_redraw_needed = true;
 }
 
 // Get the current map from the map registry.
@@ -523,9 +521,9 @@ WorldPtr Game::get_current_world()
   return worlds[current_world_ix];
 }
 
-void Game::set_map_redraw_needed(const bool redraw_value)
+LoadedMapDetails& Game::get_loaded_map_details_ref()
 {
-  full_map_redraw_needed = redraw_value;
+  return loaded_map_details;
 }
 
 bool Game::serialize(ostream& stream)
@@ -610,9 +608,9 @@ bool Game::serialize(ostream& stream)
 
   // Game command factory and keyboard map get built up every time - don't save these.
 
-  // Persist the map-redraw value so that the same logic can be applied after
+  // Persist the map-redraw values so that the same logic can be applied after
   // a game is reloaded.
-  Serialize::write_bool(stream, full_map_redraw_needed);
+  loaded_map_details.serialize(stream);
     
   Log::instance().trace("Game::serialize - end");
 
@@ -721,7 +719,7 @@ bool Game::deserialize(istream& stream)
 
   // Game command factory and keyboard map get built up every time - don't load these.
 
-  Serialize::read_bool(stream, full_map_redraw_needed);
+  loaded_map_details.deserialize(stream);
 
   Log::instance().trace("Game::deserialize - end");
   return true;

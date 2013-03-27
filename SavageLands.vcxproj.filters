@@ -2172,6 +2172,9 @@
     <ClInclude Include="engine\calculators\include\CreatureCoordinateCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\include\LoadedMapDetails.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4123,6 +4126,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\CreatureCoordinateCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\LoadedMapDetails.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\LoadedMapDetails_test.cpp">
+      <Filter>Source Files\display\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

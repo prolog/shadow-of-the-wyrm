@@ -38,7 +38,8 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
   int display_width = display_area.get_width();
 
   // Set the loop's start/stop points based on whether a full redraw is
-  // required.
+  // required.  It may have been required as part of the display coordinate
+  // calculations done as part of this function!
   if (full_redraw_required)
   {
     // We can use the full display, so go from 0 to display_height/display_width.
@@ -49,8 +50,6 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
   }
   else
   {
-    Coordinate display_coords = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, map, reference_coords);
-
     start_y = std::max<int>(0, display_coords.first - CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH - 1);
     stop_y = std::min<int>(display_height, display_coords.first + CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH + 2);
     start_x = std::max<int>(0, display_coords.second - CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH - 1);
@@ -76,7 +75,8 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
 
       DisplayTile display_tile = translate_coordinate_into_display_tile(map, fov_map, actual_row, actual_col);
 
-      // Set the cursor coordinates
+      // Set the cursor coordinates.  Update the game's tracked display
+      // coordinates, so that a full redraw can be performed.
       if ((actual_row == cursor_row) && (actual_col == cursor_col))
       {
         display_map.set_cursor_coordinate(display_coords);

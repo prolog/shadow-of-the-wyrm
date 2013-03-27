@@ -357,6 +357,7 @@
     <ClInclude Include="engine\items\include\ReadableItemFilter.hpp" />
     <ClInclude Include="engine\items\include\SquishyEquipWornLocationFilter.hpp" />
     <ClInclude Include="engine\maps\include\IMapTypeQuery.hpp" />
+    <ClInclude Include="engine\maps\include\LoadedMapDetails.hpp" />
     <ClInclude Include="engine\maps\include\MapCursor.hpp" />
     <ClInclude Include="engine\maps\include\MapExitUtils.hpp" />
     <ClInclude Include="engine\maps\include\MapRegistry.hpp" />
@@ -1000,12 +1001,16 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\maps\source\LoadedMapDetails.cpp" />
     <ClCompile Include="engine\maps\source\MapCursor.cpp" />
     <ClCompile Include="engine\maps\source\MapExitUtils.cpp" />
     <ClCompile Include="engine\maps\source\MapRegistry.cpp" />
     <ClCompile Include="engine\maps\source\MapTypeQueries.cpp" />
     <ClCompile Include="engine\maps\source\MapTypeQueryFactory.cpp" />
     <ClCompile Include="engine\maps\source\MapUtils.cpp" />
+    <ClCompile Include="engine\maps\source\unit_tests\LoadedMapDetails_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\maps\source\unit_tests\MapRegistry_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
