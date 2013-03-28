@@ -2,9 +2,12 @@
 #include <sstream>
 #include <vector>
 #include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include <boost/tokenizer.hpp>
+#include "Animation.hpp"
 #include "Colours.hpp"
 #include "Conversion.hpp"
+#include "CursesAnimationFactory.hpp"
 #include "Log.hpp"
 #include "Menu.hpp"
 #include "CursesConstants.hpp"
@@ -404,7 +407,7 @@ void CursesDisplay::draw(const DisplayMap& current_map)
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
 }
 
-void CursesDisplay::draw(const DisplayMap& update_map, const uint start_y, const uint start_x)
+void CursesDisplay::draw_update_map(const DisplayMap& update_map)
 {
   DisplayTile display_tile;
   Coordinate map_coords;
@@ -431,6 +434,50 @@ void CursesDisplay::draw(const DisplayMap& update_map, const uint start_y, const
   curs_set(1);
   move(cursor_coord.first+CursesConstants::MAP_START_ROW, cursor_coord.second+CursesConstants::MAP_START_COL);
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, update_map.size().get_y());
+}
+
+// JCD FIXME: Refactor this/draw_coordinate to remove code duplication.
+// This function is only meant to update a map tile, ie, on stdscr.
+void CursesDisplay::draw_tile(const uint y, const uint x, const DisplayTile& tile)
+{
+  int orig_curs_y, orig_curs_x;
+  getyx(stdscr, orig_curs_y, orig_curs_x);
+
+  uint terminal_row = CursesConstants::MAP_START_ROW + y;
+  uint terminal_col = CursesConstants::MAP_START_COL + x;
+
+  int colour = tile.get_colour();
+
+  enable_colour(colour);
+
+  // Maps are always drawn on ncurses' stdscr.
+  mvprintw(terminal_row, terminal_col, "%c", tile.get_symbol());
+
+  // Reset the cursor
+  move(orig_curs_y, orig_curs_x);
+
+  disable_colour(colour);
+
+  refresh();
+}
+
+AnimationFactoryPtr CursesDisplay::create_animation_factory() const
+{
+  AnimationFactoryPtr curses_animation_factory = boost::make_shared<CursesAnimationFactory>();
+  return curses_animation_factory;
+}
+
+void CursesDisplay::draw_animation(const Animation& animation)
+{
+  vector<AnimationInstructionPtr> animation_instructions = animation.get_animation_instructions();
+
+  BOOST_FOREACH(AnimationInstructionPtr instruct, animation_instructions)
+  {
+    if (instruct)
+    {
+      instruct->execute(this);
+    }
+  }
 }
 
 void CursesDisplay::draw_coordinate(const DisplayMap& display_map, const Coordinate& map_coords, const unsigned int terminal_row, const unsigned int terminal_col)

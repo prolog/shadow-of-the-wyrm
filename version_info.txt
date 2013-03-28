@@ -1,5 +1,10 @@
+Savage Lands v0.1.2, "Aethelwalh"
+- Version declared March 28, 2013
+
+- Added support for ranged combat animation.
+
 Savage Lands v0.1.1, "Cissa"
-- Version declared March 10, 2013.
+- Version declared March 10, 2013.  Version finalized March 28, 2013.
 
 - Added different tile colours based on season.
 

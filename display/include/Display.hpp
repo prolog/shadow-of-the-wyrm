@@ -7,6 +7,7 @@
  *********************************************************************/
 #pragma once
 #include <string>
+#include "AnimationFactory.hpp"
 #include "DisplayItem.hpp"
 #include "DisplayMap.hpp"
 #include "DisplayStatistics.hpp"
@@ -15,6 +16,7 @@
 
 class Menu;
 class MapDisplayArea;
+class Animation;
 
 class Display : public ISerializable
 {
@@ -43,7 +45,18 @@ class Display : public ISerializable
 	  virtual void draw(const DisplayMap& current_map) = 0;
 
     // Draws on a portion of the map area.
-    virtual void draw(const DisplayMap& update_map, const uint start_y, const uint start_x) = 0;
+    virtual void draw_update_map(const DisplayMap& update_map) = 0;
+
+    // Update a single tile.
+    // Engine coordinates are used - the display will calculate the correct coordinates for the display
+    // to ignore the message display area.
+    virtual void draw_tile(const uint y, const uint x, const DisplayTile& display_tile) = 0;
+
+    // Create an animation factory for the display type.
+    virtual AnimationFactoryPtr create_animation_factory() const = 0;
+
+    // Draws an animation.
+    virtual void draw_animation(const Animation& animation) = 0;
 	  
 	  // Displays a window with the player's equipment
 	  virtual void display_equipment(const DisplayEquipmentMap& equipment) = 0;

@@ -538,6 +538,12 @@
     <Filter Include="Source Files\display\source\unit_tests">
       <UniqueIdentifier>{d54ccb5e-49e6-493f-abf4-bb23085c3ace}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\display\animation">
+      <UniqueIdentifier>{0528fd81-f88b-48d4-a184-e3636198b7bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\display\animation">
+      <UniqueIdentifier>{b8dc4984-7be8-4e50-8ebb-3e00666667ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2174,6 +2180,30 @@
     </ClInclude>
     <ClInclude Include="engine\maps\include\LoadedMapDetails.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\Animation.hpp">
+      <Filter>Header Files\display\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\AnimationInstruction.hpp">
+      <Filter>Header Files\display\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp">
+      <Filter>Header Files\display\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp">
+      <Filter>Header Files\display\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp">
+      <Filter>Header Files\display\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\AnimationFactory.hpp">
+      <Filter>Header Files\display\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\CursesAnimationFactory.hpp">
+      <Filter>Header Files\display\animation</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\translators\include\AnimationTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4132,6 +4162,27 @@
     </ClCompile>
     <ClCompile Include="engine\maps\source\unit_tests\LoadedMapDetails_test.cpp">
       <Filter>Source Files\display\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\Animation.cpp">
+      <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\PauseAnimationInstruction.cpp">
+      <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\CursesDrawAnimationInstruction.cpp">
+      <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\AnimationFactory.cpp">
+      <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\CursesAnimationFactory.cpp">
+      <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\AnimationTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="display\animation\source\DrawAnimationInstruction.cpp">
+      <Filter>Source Files\display\animation</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

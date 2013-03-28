@@ -33,8 +33,14 @@ class CursesDisplay : public Display
     void halt_messages();
 
 	  void draw(const DisplayMap& current_map);
-    virtual void draw(const DisplayMap& update_map, const uint start_y, const uint start_x);
-	  virtual void draw_coordinate(const DisplayMap& current_map, const Coordinate& map_coord, const uint terminal_row, const uint terminal_col);
+    virtual void draw_update_map(const DisplayMap& update_map);
+    virtual void draw_tile(const uint y, const uint x, const DisplayTile& tile);
+
+    // Create an animation factory for the display type.
+    AnimationFactoryPtr create_animation_factory() const;
+    virtual void draw_animation(const Animation& animation);
+
+    virtual void draw_coordinate(const DisplayMap& current_map, const Coordinate& map_coord, const uint terminal_row, const uint terminal_col);
 
 	  void display(const DisplayStatistics& player_stats);
 	  
