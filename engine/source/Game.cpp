@@ -218,7 +218,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     }
     else
     {
-      display->draw(display_map, display_coord.first, display_coord.second);
+      display->draw_update_map(display_map);
     }
 
     // As long as there are still player actions within the current map, and we've

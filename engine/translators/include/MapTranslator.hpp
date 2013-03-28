@@ -16,6 +16,11 @@ class MapTranslator
     static DisplayMap create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required);
 
     static DisplayTile create_display_tile(const TilePtr& engine_tile, const TilePtr& fov_tile);
+    static DisplayTile create_display_tile_from_creature(const CreaturePtr& creature);
+    static DisplayTile create_display_tile_from_feature(const FeaturePtr& feature);
+    static DisplayTile create_display_tile_from_item(const ItemPtr& item);
+    static DisplayTile create_display_tile_from_tile(const TilePtr& tile);
+    static DisplayTile create_display_tile_from_symbol_and_colour(const uchar symbol, const Colour colour);
 
   protected:
     MapTranslator();
@@ -23,12 +28,6 @@ class MapTranslator
 
     // Translation function used when creating both a display map, and an update map.
     static DisplayTile translate_coordinate_into_display_tile(const MapPtr& map, const MapPtr& fov_map, const int actual_row, const int actual_col);
-
-    static DisplayTile create_display_tile_from_creature(const CreaturePtr& creature);
-    static DisplayTile create_display_tile_from_feature(const FeaturePtr& feature);
-    static DisplayTile create_display_tile_from_item(const ItemPtr& item);
-    static DisplayTile create_display_tile_from_tile(const TilePtr& tile);
-    static DisplayTile create_display_tile_from_symbol_and_colour(const uchar symbol, const Colour colour);
 
     // For fields outside of the FOV
     static DisplayTile create_unseen_and_previously_viewed_display_tile(const TilePtr& tile);

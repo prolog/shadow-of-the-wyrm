@@ -1,6 +1,7 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "AmmunitionSurvivalCalculator.hpp"
+#include "AnimationTranslator.hpp"
 #include "BresenhamLine.hpp"
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
@@ -10,6 +11,7 @@
 #include "ItemIdentifier.hpp"
 #include "ItemManager.hpp"
 #include "MapCursor.hpp"
+#include "MapTranslator.hpp"
 #include "MessageManager.hpp"
 #include "RangedCombatActionManager.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
@@ -125,16 +127,39 @@ void RangedCombatActionManager::fire_weapon_at_tile(CreaturePtr creature)
       Coordinate creature_coords = current_map->get_location(creature->get_id());
       Coordinate target_coords = target_info.second;
       
-      target_coords = get_actual_coordinates_given_missile_path(creature_coords, target_coords, current_map);
+      // Get the attack path so that we can determine the actual target coords,
+      // and create an animation if necessary.
+      vector<Coordinate> attack_path = get_actual_coordinates_given_missile_path(creature_coords, target_coords, current_map);
+      
+      if (!attack_path.empty())
+      {
+        target_coords = attack_path.back();
+
+        DisplayPtr display = game.get_display();
+
+        // Create the animation showing the flight of the projectile.
+        AnimationTranslator anim_tr(display);
+        MapPtr current_map = game.get_current_map();
+        MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+        DisplayTile projectile_disp = MapTranslator::create_display_tile_from_item(creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION));
+        Animation anim = anim_tr.create_movement_animation(projectile_disp, game.get_current_world()->get_calendar().get_season()->get_season(), attack_path, current_map, fov_map);
+
+        // JCD FIXME: This should probably be moved elsewhere?
+
+        display->draw_animation(anim);
+      }
+
+      // Determine whether it's a hit or miss.
       fire_at_given_coordinates(creature, current_map, target_coords);
     }
   }
 }
 
 // Get the actual coordinates to fire at, given the missile's flight path.
-Coordinate RangedCombatActionManager::get_actual_coordinates_given_missile_path(const Coordinate& creature_coords, const Coordinate& target_coords, MapPtr current_map)
+// JCD FIXME: Refactor into a separate function once spellcasting is added.
+vector<Coordinate> RangedCombatActionManager::get_actual_coordinates_given_missile_path(const Coordinate& creature_coords, const Coordinate& target_coords, MapPtr current_map)
 {
-  Coordinate target_c = target_coords;
+  vector<Coordinate> actual_coordinates;
 
   BresenhamLine bl;
   vector<Coordinate> line_points = bl.get_points_in_line(creature_coords.first, creature_coords.second, target_coords.first, target_coords.second);
@@ -154,10 +179,12 @@ Coordinate RangedCombatActionManager::get_actual_coordinates_given_missile_path(
     if (tile && tile->has_creature())
     {
       // There's a creature here - use this tile for targetting/dropping ammo.
-      target_c = c;
+      actual_coordinates.push_back(c);
       break;
     }
-    else if (tile && (tile->has_blocking_feature()))
+    // Check to see if there's a blocking feature, or if the tile itself blocks things
+    // (walls, etc).
+    else if (tile && (tile->get_movement_multiplier() == 0) || (tile->has_blocking_feature()))
     {
       // Done - don't consider any other tiles.  Use the previous for dropping ammo.
       break;
@@ -165,11 +192,11 @@ Coordinate RangedCombatActionManager::get_actual_coordinates_given_missile_path(
     else
     {
       // Update the target coordinates to the current tile's.
-      target_c = c;
+      actual_coordinates.push_back(c);
     }
   }
   
-  return target_c;
+  return actual_coordinates;
 }
 
 // Fire at the given coordinates: attack the creature, if it is there,

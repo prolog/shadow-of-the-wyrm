@@ -48,7 +48,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Lua\5.1\include;C:\cygwin\home\Julian\jrcpp\engine\scripting\include;C:\cygwin\home\Julian\jrcpp\engine\maps\include;C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\include;C:\cygwin\home\Julian\jrcpp\engine\events\include;C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_48_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Lua\5.1\include;C:\cygwin\home\Julian\jrcpp\engine\scripting\include;C:\cygwin\home\Julian\jrcpp\engine\maps\include;C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\include;C:\cygwin\home\Julian\jrcpp\engine\events\include;C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;c:\cygwin\home\Julian\jrcpp\display\animation\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_48_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <TreatWarningAsError>false</TreatWarningAsError>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <MinimalRebuild>false</MinimalRebuild>
@@ -84,6 +84,13 @@
     <ClInclude Include="controller\include\ControllerFactory.hpp" />
     <ClInclude Include="controller\include\CursesKeyboardController.hpp" />
     <ClInclude Include="controller\include\NullKeyboardController.hpp" />
+    <ClInclude Include="display\animation\include\Animation.hpp" />
+    <ClInclude Include="display\animation\include\AnimationFactory.hpp" />
+    <ClInclude Include="display\animation\include\AnimationInstruction.hpp" />
+    <ClInclude Include="display\animation\include\CursesAnimationFactory.hpp" />
+    <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp" />
+    <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp" />
+    <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
     <ClInclude Include="display\include\DisplayFactory.hpp" />
     <ClInclude Include="display\include\DisplayItem.hpp" />
@@ -407,6 +414,7 @@
     <ClInclude Include="engine\time\include\TimeObserverFactory.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeKeeper.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
+    <ClInclude Include="engine\translators\include\AnimationTranslator.hpp" />
     <ClInclude Include="engine\translators\include\CreatureTranslator.hpp" />
     <ClInclude Include="engine\translators\include\DisplayItemTypeFactory.hpp" />
     <ClInclude Include="engine\translators\include\EquipmentTranslator.hpp" />
@@ -631,6 +639,12 @@
     <ClCompile Include="controller\source\ControllerFactory.cpp" />
     <ClCompile Include="controller\source\CursesKeyboardController.cpp" />
     <ClCompile Include="controller\source\NullKeyboardController.cpp" />
+    <ClCompile Include="display\animation\source\Animation.cpp" />
+    <ClCompile Include="display\animation\source\AnimationFactory.cpp" />
+    <ClCompile Include="display\animation\source\CursesAnimationFactory.cpp" />
+    <ClCompile Include="display\animation\source\CursesDrawAnimationInstruction.cpp" />
+    <ClCompile Include="display\animation\source\DrawAnimationInstruction.cpp" />
+    <ClCompile Include="display\animation\source\PauseAnimationInstruction.cpp" />
     <ClCompile Include="display\source\DisplayFactory.cpp" />
     <ClCompile Include="display\source\DisplayItem.cpp" />
     <ClCompile Include="display\source\DisplayItemType.cpp" />
@@ -1136,6 +1150,7 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\WorldTimeKeeper.cpp" />
     <ClCompile Include="engine\time\source\WorldTimeKeeperCoordinator.cpp" />
+    <ClCompile Include="engine\translators\source\AnimationTranslator.cpp" />
     <ClCompile Include="engine\translators\source\CreatureTranslator.cpp" />
     <ClCompile Include="engine\translators\source\DisplayItemTypeFactory.cpp" />
     <ClCompile Include="engine\translators\source\EquipmentTranslator.cpp" />

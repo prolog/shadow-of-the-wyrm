@@ -19,7 +19,7 @@ class RangedCombatActionManager : public IActionManager
     // Get the actual coordinates to fire at.  This takes into account
     // the flight of the missile along a particular line, and whether there
     // are any creatures or blocking tiles along the way.
-    Coordinate get_actual_coordinates_given_missile_path(const Coordinate& creature_coords, const Coordinate& target_coords, MapPtr map);
+    std::vector<Coordinate> get_actual_coordinates_given_missile_path(const Coordinate& creature_coords, const Coordinate& target_coords, MapPtr map);
     
     // Fire at the given coordinates: attack the creature on the tile,
     // if present, and then either destroy or drop the ammunition.

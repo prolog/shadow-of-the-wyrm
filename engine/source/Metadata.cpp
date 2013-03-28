@@ -30,8 +30,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // "Son" of Aelle, disputedly.  Second king of Sussex, also disputedly.
-  return "\"Cissa\"";
+  // King of the South Saxons, slain by Caedwalla
+  return "\"Aethelwalh\"";
 }
 
 string Metadata::get_game_version_synopsis() const
