@@ -394,7 +394,8 @@ void CursesDisplay::draw(const DisplayMap& current_map)
       map_coords.first = terminal_row - CursesConstants::MAP_START_ROW;
       map_coords.second = terminal_col - CursesConstants::MAP_START_COL;
 
-      draw_coordinate(current_map, map_coords, terminal_row, terminal_col);
+      DisplayTile tile = current_map.at(map_coords);
+      draw_coordinate(tile, terminal_row, terminal_col);
     }
   }
 
@@ -424,7 +425,7 @@ void CursesDisplay::draw_update_map(const DisplayMap& update_map)
     terminal_row = CursesConstants::MAP_START_ROW + map_coords.first;
     terminal_col = CursesConstants::MAP_START_COL + map_coords.second;
 
-    draw_coordinate(update_map, map_coords, terminal_row, terminal_col);
+    draw_coordinate(dtile, terminal_row, terminal_col);
   }
 
   Coordinate cursor_coord = update_map.get_cursor_coordinate();
@@ -436,8 +437,10 @@ void CursesDisplay::draw_update_map(const DisplayMap& update_map)
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, update_map.size().get_y());
 }
 
-// JCD FIXME: Refactor this/draw_coordinate to remove code duplication.
-// This function is only meant to update a map tile, ie, on stdscr.
+// draw_tile is called externally from a Display to draw a particular engine
+// coordinate.  The display takes the given y and x, adds the appropriate offsets,
+// and then calls its own internal function to draw the given DisplayTile at the
+// correct location on-screen.
 void CursesDisplay::draw_tile(const uint y, const uint x, const DisplayTile& tile)
 {
   // Turn off the cursor temporarily - higher level redraw functions will enable it
@@ -447,14 +450,8 @@ void CursesDisplay::draw_tile(const uint y, const uint x, const DisplayTile& til
   uint terminal_row = CursesConstants::MAP_START_ROW + y;
   uint terminal_col = CursesConstants::MAP_START_COL + x;
 
-  int colour = tile.get_colour();
+  draw_coordinate(tile, terminal_row, terminal_col);
 
-  enable_colour(colour);
-
-  // Maps are always drawn on ncurses' stdscr.
-  mvprintw(terminal_row, terminal_col, "%c", tile.get_symbol());
-
-  disable_colour(colour);
   refresh();
 }
 
@@ -477,10 +474,8 @@ void CursesDisplay::draw_animation(const Animation& animation)
   }
 }
 
-void CursesDisplay::draw_coordinate(const DisplayMap& display_map, const Coordinate& map_coords, const unsigned int terminal_row, const unsigned int terminal_col)
+void CursesDisplay::draw_coordinate(const DisplayTile& display_tile, const unsigned int terminal_row, const unsigned int terminal_col)
 {
-  DisplayTile display_tile = display_map.at(map_coords);
-
   int colour = display_tile.get_colour();
 
   enable_colour(colour);

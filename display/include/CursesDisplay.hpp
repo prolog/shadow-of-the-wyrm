@@ -40,7 +40,7 @@ class CursesDisplay : public Display
     AnimationFactoryPtr create_animation_factory() const;
     virtual void draw_animation(const Animation& animation);
 
-    virtual void draw_coordinate(const DisplayMap& current_map, const Coordinate& map_coord, const uint terminal_row, const uint terminal_col);
+    virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col);
 
 	  void display(const DisplayStatistics& player_stats);
 	  
