@@ -258,7 +258,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode&
     
     BOOST_FOREACH(XMLNode node, missiles_nodes)
     {
-      WeaponPtr ammunition = boost::make_shared<MeleeWeapon>();
+      WeaponPtr ammunition = boost::make_shared<Ammunition>();
       GenerationValues igv;
       ammunition_reader.parse(ammunition, igv, node);
       ammunition_map.insert(make_pair(ammunition->get_id(), ammunition));

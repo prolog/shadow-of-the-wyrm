@@ -28,11 +28,6 @@ bool Weapon::operator==(const Weapon& weapon)
   return result;
 }
 
-ItemType Weapon::get_type() const
-{
-  return ITEM_TYPE_WEAPON;
-}
-
 void Weapon::set_difficulty(const int new_difficulty)
 {
   difficulty = new_difficulty;

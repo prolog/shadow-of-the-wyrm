@@ -10,7 +10,6 @@ class Weapon : public Wearable
     Weapon();
     bool operator==(const Weapon& weapon);
     
-    virtual ItemType get_type() const;
     virtual WeaponStyle get_style() const = 0;
     
     virtual void set_difficulty(const int new_difficulty);

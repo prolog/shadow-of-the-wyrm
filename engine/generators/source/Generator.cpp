@@ -187,32 +187,37 @@ bool Generator::generate_initial_items(MapPtr map, const int danger_level)
   uint current_items_placed = 0;
   uint unsuccessful_attempts = 0;
 
-  // Generate the list of possible creatures for this map.
+  // Generate the list of possible items for this map.
   ItemGenerationMap generation_map = igm.generate_item_generation_map(danger_level, rarity);
 
-  // JCD FIXME
   while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
   {
     ItemPtr generated_item = igm.generate_item(am, generation_map);
-    
+
+    bool placed_item = false;
+
     if (generated_item)
     {
-      int item_row = RNG::range(0, rows-1);
-      int item_col = RNG::range(0, cols-1);
+      while (!placed_item)
+      {
+        int item_row = RNG::range(0, rows-1);
+        int item_col = RNG::range(0, cols-1);
       
-      // Check to see if the tile isn't blocking
-      TilePtr tile = map->at(item_row, item_col);
+        // Check to see if the tile isn't blocking
+        TilePtr tile = map->at(item_row, item_col);
 
-      if (MapUtils::is_tile_available_for_item(tile))
-      {
-        tile->get_items().add(generated_item);
+        if (MapUtils::is_tile_available_for_item(tile))
+        {
+          tile->get_items().add(generated_item);
 
-        if (!items_generated) items_generated = true;
-        current_items_placed++;
-      }
-      else
-      {
-        unsuccessful_attempts++;
+          if (!items_generated) items_generated = true;
+          current_items_placed++;
+          placed_item = true;
+        }
+        else
+        {
+          unsuccessful_attempts++;
+        }
       }
     }
     else
