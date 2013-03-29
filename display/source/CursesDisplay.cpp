@@ -440,8 +440,9 @@ void CursesDisplay::draw_update_map(const DisplayMap& update_map)
 // This function is only meant to update a map tile, ie, on stdscr.
 void CursesDisplay::draw_tile(const uint y, const uint x, const DisplayTile& tile)
 {
-  int orig_curs_y, orig_curs_x;
-  getyx(stdscr, orig_curs_y, orig_curs_x);
+  // Turn off the cursor temporarily - higher level redraw functions will enable it
+  // and place it correctly.
+  curs_set(0);
 
   uint terminal_row = CursesConstants::MAP_START_ROW + y;
   uint terminal_col = CursesConstants::MAP_START_COL + x;
@@ -453,11 +454,7 @@ void CursesDisplay::draw_tile(const uint y, const uint x, const DisplayTile& til
   // Maps are always drawn on ncurses' stdscr.
   mvprintw(terminal_row, terminal_col, "%c", tile.get_symbol());
 
-  // Reset the cursor
-  move(orig_curs_y, orig_curs_x);
-
   disable_colour(colour);
-
   refresh();
 }
 

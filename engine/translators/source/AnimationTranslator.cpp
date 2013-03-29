@@ -15,8 +15,11 @@ Animation AnimationTranslator::create_movement_animation(const DisplayTile& proj
 {
   Animation animation;
 
-  BOOST_FOREACH(const Coordinate& c, movement_path)
+  uint num_steps = movement_path.size();
+
+  for (uint i = 0; i < num_steps; i++)
   {
+    Coordinate c = movement_path.at(i);
     TilePtr game_tile = current_map->at(c);
     TilePtr fov_tile = fov_map->at(c);
 
@@ -27,13 +30,18 @@ Animation AnimationTranslator::create_movement_animation(const DisplayTile& proj
     AnimationInstructionPtr instr = animation_factory->create_draw_instruction(c, projectile);
     animation.add_animation_instruction(instr);
 
-    // Pause briefly.
-    instr = animation_factory->create_pause_instruction();
-    animation.add_animation_instruction(instr);
+    // Only pause and then redraw what was previously there if we're not at the end
+    // of the path.  This prevents the last tile from "blinking".
+    if (i != num_steps-1)
+    {
+      // Pause briefly.
+      instr = animation_factory->create_pause_instruction();
+      animation.add_animation_instruction(instr);
 
-    // Re-draw what was there before the projectile was drawn.
-    instr = animation_factory->create_draw_instruction(c, previously_displayed);
-    animation.add_animation_instruction(instr);
+      // Re-draw what was there before the projectile was drawn.
+      instr = animation_factory->create_draw_instruction(c, previously_displayed);
+      animation.add_animation_instruction(instr);
+    }
   }
 
   return animation;
