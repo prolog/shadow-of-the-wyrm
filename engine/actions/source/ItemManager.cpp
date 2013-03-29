@@ -103,7 +103,8 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
   ItemMap::const_iterator i_it = items.find(item_id);
   if (i_it != items.end())
   {
-    ItemPtr found_item = i_it->second;
+    // Create a new item based on the template.
+    ItemPtr found_item = ItemPtr(i_it->second->clone_with_new_id());
 
     // Check the item generation values to see if we can create the
     // item, based on the current max.

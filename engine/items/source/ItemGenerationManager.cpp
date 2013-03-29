@@ -71,8 +71,28 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationMa
       string item_id = i_it->first;
       generated_item = ItemManager::create_item(item_id);
 
-      // JCD FIXME: Do something with quantity later so that stacks of ammunition,
-      // currency, etc., can be generated.
+      // If this is currency, generate a random amount based on the d12.
+      // The d12 is the greatest of all dice, and, sadly, the least used.
+      //
+      // An ode to the d12:
+      //
+      // When all the lands were dead and dark,
+      // the great Vedere did say:
+      // "I'll make the whole world bright and new,
+      // I'll do it all my way.
+      // I'll make the gnomes, I'll make the dwarves,
+      // the humans, and the elves.
+      // I'll do it with a little help:
+      // my trusty old d12."
+      if (generated_item->get_type() == ITEM_TYPE_CURRENCY)
+      {
+        generated_item->set_quantity(RNG::dice(3, 12));
+      }
+      else if (generated_item->get_type() == ITEM_TYPE_AMMUNITION)
+      {
+        generated_item->set_quantity(RNG::dice(1, 12));
+      }
+
       break;
     }
   }

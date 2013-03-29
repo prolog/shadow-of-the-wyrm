@@ -4898,7 +4898,7 @@
 					<Symbol>$</Symbol>
 					<Colour>15</Colour>
 				</TextDetails>
-				<DangerLevel>-1</DangerLevel>
+				<DangerLevel>1</DangerLevel>
 			</Currency>
 		</Currencies>
 		<Tools>
