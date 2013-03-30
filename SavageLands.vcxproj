@@ -385,6 +385,7 @@
     <ClInclude Include="engine\menus\include\TextDisplayFormatter.hpp" />
     <ClInclude Include="engine\menus\include\TextDisplayScreen.hpp" />
     <ClInclude Include="engine\menus\include\WelcomeScreen.hpp" />
+    <ClInclude Include="engine\scripting\include\LevelScript.hpp" />
     <ClInclude Include="engine\scripting\include\ScriptEngine.hpp" />
     <ClInclude Include="engine\serialization\include\Serialization.hpp" />
     <ClInclude Include="engine\serialization\include\SerializationExceptions.hpp" />
@@ -1051,6 +1052,7 @@
     <ClCompile Include="engine\menus\source\TextDisplayFormatter.cpp" />
     <ClCompile Include="engine\menus\source\TextDisplayScreen.cpp" />
     <ClCompile Include="engine\menus\source\WelcomeScreen.cpp" />
+    <ClCompile Include="engine\scripting\source\LevelScript.cpp" />
     <ClCompile Include="engine\scripting\source\ScriptEngine.cpp" />
     <ClCompile Include="engine\serialization\source\Serialization.cpp" />
     <ClCompile Include="engine\serialization\source\SerializationExceptions.cpp" />

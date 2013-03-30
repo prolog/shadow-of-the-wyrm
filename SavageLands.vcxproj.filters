@@ -2205,6 +2205,9 @@
     <ClInclude Include="engine\translators\include\AnimationTranslator.hpp">
       <Filter>Header Files\engine\translators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripting\include\LevelScript.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4183,6 +4186,9 @@
     </ClCompile>
     <ClCompile Include="display\animation\source\DrawAnimationInstruction.cpp">
       <Filter>Source Files\display\animation</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\LevelScript.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

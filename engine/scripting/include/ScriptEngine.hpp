@@ -25,6 +25,10 @@ class ScriptEngine
     // Get a given table value
     std::string get_table_str(lua_State* ls, const std::string& key);
 
+    // Get the current state.  Used by level scripts (and in future, maybe
+    // others) to set particular values on the stack prior to making a call.
+    lua_State* get_current_state();
+
   protected:
     // Set up the Lua state
     void initialize_state();
@@ -39,7 +43,7 @@ class ScriptEngine
     void log_error();
 
     // The current interpreter state.
-    lua_State *L;
+    lua_State* L;
   
   private:
     ScriptEngine(const ScriptEngine& se); // Do not implement!

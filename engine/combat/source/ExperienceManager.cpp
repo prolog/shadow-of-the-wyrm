@@ -1,6 +1,8 @@
+#include "ClassManager.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "LevelConstants.hpp"
+#include "LevelScript.hpp"
 #include "MessageManager.hpp"
 #include "RNG.hpp"
 
@@ -151,7 +153,8 @@ void ExperienceManager::level_up(CreaturePtr creature)
     gain_level(creature);
     gain_hp_and_ap(creature);
     gain_statistics_if_necessary(creature);
-    
+    run_level_script(creature);
+
     if (creature->get_is_player())
     {
       string level_up_message = StringTable::get(TextKeys::GAIN_LEVEL);
@@ -226,5 +229,25 @@ void ExperienceManager::gain_statistics_if_necessary(CreaturePtr creature)
   if (creature)
   {
     // JCD FIXME
+  }
+}
+
+void ExperienceManager::run_level_script(CreaturePtr creature)
+{
+  if (creature)
+  {
+    string class_id = creature->get_class_id();
+    ClassManager cm;
+    ClassPtr classp = cm.get_class(class_id);
+
+    if (classp)
+    {
+      LevelScript level_script;
+
+      level_script.execute(Game::instance().get_script_engine_ref(),
+                           classp->get_level_script(), 
+                           class_id, 
+                           creature->get_level().get_current());
+    }
   }
 }
