@@ -100,6 +100,11 @@ void ScriptEngine::run_command(const string& command)
   }
 }
 
+lua_State* ScriptEngine::get_current_state()
+{
+  return L;
+}
+
 // Log the most recently-occurred error.
 void ScriptEngine::log_error()
 {

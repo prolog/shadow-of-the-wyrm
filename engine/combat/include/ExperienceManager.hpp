@@ -19,6 +19,7 @@ class ExperienceManager
     void gain_level(CreaturePtr creature);
     void gain_hp_and_ap(CreaturePtr creature);
     void gain_statistics_if_necessary(CreaturePtr creature);
+    void run_level_script(CreaturePtr creature);
     
     // The actual experience table
     static const uint base_experience_table[];
