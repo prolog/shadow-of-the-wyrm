@@ -69,6 +69,9 @@ class Class
     void set_initial_inventory(const std::vector<InitialItem>& new_initial_inventory);
     std::vector<InitialItem> get_initial_inventory() const;
 
+    void set_level_script(const std::string& new_level_script);
+    std::string get_level_script() const;
+
     std::string str() const;
 
   protected:
@@ -99,6 +102,11 @@ class Class
     // The initial equipment/inventory, used in character generation.
     std::map<EquipmentWornLocation, InitialItem> initial_equipment;
     std::vector<InitialItem> initial_inventory;
+
+    // The script to run when levelling.  Allows user-defined classes
+    // to be somewhat interesting, rather than just a collection of
+    // stats.
+    std::string level_script;
 };
 
 typedef boost::shared_ptr<Class> ClassPtr;

@@ -2462,6 +2462,8 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<!-- Witchlings get new/more spells with each level. -->
+			<LevelScript>class_level/witchling.lua</LevelScript>
 		</Class>
 		<Class id="wizard">
 			<UserPlayable>1</UserPlayable>
@@ -3068,7 +3070,7 @@
 			</Damage>
 			<Evade>4</Evade>
 			<Soak>1</Soak>
-			<ChatScript>the_ploughman.lua</ChatScript>
+			<ChatScript>quests/the_ploughman.lua</ChatScript>
 		</Creature>
 		<Creature id="the_blacksmith">
 			<RaceID>01_human</RaceID>
@@ -3099,7 +3101,7 @@
 			</Damage>
 			<Evade>0</Evade>
 			<Soak>3</Soak>
-			<ChatScript>the_blacksmith.lua</ChatScript>
+			<ChatScript>quests/the_blacksmith.lua</ChatScript>
 		</Creature>
 		<Creature id="small_child">
 			<RaceID>01_human</RaceID>
@@ -3192,7 +3194,7 @@
 			</Damage>
 			<Evade>12</Evade>
 			<Soak>4</Soak>
-			<ChatScript>cynwise.lua</ChatScript>
+			<ChatScript>quests/cynwise.lua</ChatScript>
 		</Creature>
 		<Creature id="kew">
 			<RaceID>01_human</RaceID>
@@ -3224,7 +3226,7 @@
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>5</Soak>
-			<ChatScript>kew.lua</ChatScript>
+			<ChatScript>quests/kew.lua</ChatScript>
 		</Creature>
 		<Creature id="farmer">
 			<RaceID>01_human</RaceID>
@@ -3286,7 +3288,7 @@
 			</Damage>
 			<Evade>22</Evade>
 			<Soak>15</Soak>
-			<ChatScript>hrimgar.lua</ChatScript>
+			<ChatScript>quests/hrimgar.lua</ChatScript>
 		</Creature>
 		<Creature id="garros">
 			<RaceID>01_human</RaceID>

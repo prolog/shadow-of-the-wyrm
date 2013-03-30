@@ -346,6 +346,7 @@
 			<xs:element name="PietyRegenBonus" type="xs:integer" minOccurs="0"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
+			<xs:element ref="LevelScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
