@@ -11,9 +11,9 @@ ItemGenerationManager::ItemGenerationManager()
 }
 
 // Generate an item generation map for the given danger level and rarity.
-ItemGenerationMap ItemGenerationManager::generate_item_generation_map(const int danger_level, const Rarity rarity)
+ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int danger_level, const Rarity rarity)
 {
-  ItemGenerationMap generation_map;
+  ItemGenerationVec generation_vec;
 
   ItemPtr generated_creature;
   Game& game = Game::instance();
@@ -30,73 +30,43 @@ ItemGenerationMap ItemGenerationManager::generate_item_generation_map(const int 
       
     if (does_item_match_generation_criteria(igvals, danger_level, rarity))
     {
-      generation_map.insert(make_pair(item_id, make_pair(item, igvals)));
+      generation_vec.push_back(make_pair(item_id, make_pair(item, igvals)));
     }
   }
   
-  return generation_map;
+  return generation_vec;
 }
 
-ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationMap& generation_map)
+ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVec& generation_vec)
 {
   ItemPtr generated_item;
   Game& game = Game::instance();
-  
-  // Iterate through the generation map, and attempt to generate an item with probability P,
-  // where P = (danger level / danger_level + num_items_in_map)
-  int p_denominator = 0;
-    
-  // Get the denominator for the probabilistic generation by summing the danger level over all creatures
-  // in the map.
-  for (ItemGenerationMap::iterator i_it = generation_map.begin(); i_it != generation_map.end(); i_it++)
-  {
-    GenerationValues gv = i_it->second.second;
-    p_denominator += gv.get_danger_level();
-  }
-    
-  float p_denominator_f = static_cast<float>(p_denominator);
 
-  // Determine the item to generate
-  for (ItemGenerationMap::iterator i_it = generation_map.begin(); i_it != generation_map.end(); i_it++)
+  // The map already contains appropriate items filtered by danger level,
+  // so pick one at random.
+  if (!generation_vec.empty())
   {
-    GenerationValues igv = i_it->second.second;
+    uint idx = RNG::range(0, generation_vec.size());
 
-    int p_numerator = igv.get_danger_level();
-    int P = static_cast<int>((static_cast<float>(p_numerator) / p_denominator_f) * 100);
-      
-    // Generate the creature if we hit the percentage, or if we're on the last item in the map
-    // and a creature has not yet been generated.
-    if (RNG::percent_chance(P) || ((distance(i_it, generation_map.end()) == 1) && !generated_item))
+    ItemGenerationPair rand_item = generation_vec[idx];
+    string item_id = rand_item.first;
+
+    generated_item = ItemManager::create_item(item_id);
+
+    // If this is currency, generate a random amount based on the d12.
+    // If this is ammunition, generate a little less.
+    ItemType type = generated_item->get_type();
+
+    if (type == ITEM_TYPE_CURRENCY)
     {
-      string item_id = i_it->first;
-      generated_item = ItemManager::create_item(item_id);
-
-      // If this is currency, generate a random amount based on the d12.
-      // The d12 is the greatest of all dice, and, sadly, the least used.
-      //
-      // An ode to the d12:
-      //
-      // When all the lands were dead and dark,
-      // the great Vedere did say:
-      // "I'll make the whole world bright and new,
-      // I'll do it all my way.
-      // I'll make the gnomes, I'll make the dwarves,
-      // the humans, and the elves.
-      // I'll do it with a little help:
-      // my trusty old d12."
-      if (generated_item->get_type() == ITEM_TYPE_CURRENCY)
-      {
-        generated_item->set_quantity(RNG::dice(3, 12));
-      }
-      else if (generated_item->get_type() == ITEM_TYPE_AMMUNITION)
-      {
-        generated_item->set_quantity(RNG::dice(1, 12));
-      }
-
-      break;
+      generated_item->set_quantity(RNG::dice(3, 12));
+    }
+    else if (type == ITEM_TYPE_AMMUNITION)
+    {
+      generated_item->set_quantity(RNG::dice(2, 12));
     }
   }
-   
+
   return generated_item;
 }
 

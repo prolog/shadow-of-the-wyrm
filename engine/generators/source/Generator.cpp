@@ -187,12 +187,12 @@ bool Generator::generate_initial_items(MapPtr map, const int danger_level)
   uint current_items_placed = 0;
   uint unsuccessful_attempts = 0;
 
-  // Generate the list of possible items for this map.
-  ItemGenerationMap generation_map = igm.generate_item_generation_map(danger_level, rarity);
+  // Generate the vector of possible items for this map.
+  ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level, rarity);
 
   while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
   {
-    ItemPtr generated_item = igm.generate_item(am, generation_map);
+    ItemPtr generated_item = igm.generate_item(am, generation_vec);
 
     bool placed_item = false;
 
