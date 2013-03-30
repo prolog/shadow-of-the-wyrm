@@ -46,7 +46,7 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
   // so pick one at random.
   if (!generation_vec.empty())
   {
-    uint idx = RNG::range(0, generation_vec.size());
+    uint idx = RNG::range(0, generation_vec.size()-1);
 
     ItemGenerationPair rand_item = generation_vec[idx];
     string item_id = rand_item.first;
