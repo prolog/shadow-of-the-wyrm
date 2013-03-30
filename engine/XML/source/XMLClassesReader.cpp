@@ -89,6 +89,9 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     
     XMLNode initial_equipment_and_inventory_node = XMLUtils::get_next_element_by_local_name(class_node, "InitialEquipmentAndInventory");
     parse_initial_equipment_and_inventory(current_class, initial_equipment_and_inventory_node);
+
+    string level_script = XMLUtils::get_child_node_value(class_node, "LevelScript");
+    current_class->set_level_script(level_script);
   }
 
   return current_class;

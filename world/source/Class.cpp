@@ -188,6 +188,16 @@ vector<InitialItem> Class::get_initial_inventory() const
   return initial_inventory;
 }
 
+void Class::set_level_script(const string& new_level_script)
+{
+  level_script = new_level_script;
+}
+
+string Class::get_level_script() const
+{
+  return level_script;
+}
+
 string Class::str() const
 {
   ostringstream class_details;
@@ -214,6 +224,7 @@ string Class::str() const
   class_details << skills.str() << endl;
   class_details << experience_multiplier << endl;
   class_details << piety_cost_multiplier << " " << piety_regen_bonus << endl;
+  class_details << level_script << endl;
 
   return class_details.str();
 }
