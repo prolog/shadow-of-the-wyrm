@@ -10,6 +10,11 @@
 
 using namespace std;
 
+// Helper functions that can be used by the Lua API.
+CreaturePtr local_creature;
+void set_local_creature(CreaturePtr creature);
+CreaturePtr get_creature(const string& creature_id);
+
 // API prototypes
 int add_message_with_pause(lua_State* ls);
 int add_message(lua_State* ls);
@@ -40,6 +45,11 @@ ScriptEngine::~ScriptEngine()
    lua_close(L);
 }
 
+void ScriptEngine::set_creature(CreaturePtr creature)
+{
+  set_local_creature(creature);
+}
+
 bool ScriptEngine::clear_state()
 {
   lua_close(L);
@@ -58,7 +68,8 @@ void ScriptEngine::initialize_state()
 
 void ScriptEngine::load_modules()
 {
-  // Update the environment so that the "/script" directory is assumed.
+  // Update the environment so that the "/script" directory 
+  // and certain subdirectories are assumed.
   luaL_dofile(L, "scripts/env.lua");
 }
 
@@ -119,6 +130,41 @@ void ScriptEngine::log_error()
   MessageManager& manager = MessageManager::instance();
   manager.add_new_message(ui_error);
   manager.send();
+}
+
+void set_local_creature(CreaturePtr creature)
+{
+  local_creature = creature;
+}
+
+// Get the local creature, if it matches, or from the current map
+// otherwise.  This allows lookup of a local creature before the
+// game has been set up (so that level-up scripts can be run on
+// creatures on startup, etc).
+CreaturePtr get_creature(const string& creature_id)
+{
+  // Check to see if there is a local creature defined, and if
+  // it has the ID we're looking for.
+  //
+  // Otherwise, check the Game's current map, as usual.
+  if (local_creature && (creature_id == local_creature->get_id()))
+  {
+    return local_creature;
+  }
+  else
+  {
+    CreatureMap& cmap = Game::instance().get_current_map()->get_creatures_ref();
+    CreatureMap::iterator c_it = cmap.find(creature_id);
+
+    if (c_it != cmap.end())
+    {
+      CreaturePtr creature = c_it->second;
+      return creature;
+    }
+  }
+
+  CreaturePtr null_creature;
+  return null_creature;
 }
 
 // Register all the functions available to the scripting engine.
@@ -476,7 +522,7 @@ int get_num_item_generated(lua_State* ls)
 // Set a skill value for a particular creature.
 // Three arguments are expected:
 // - creature_id
-// - skill enumeration vaue
+// - skill enumeration value
 // - new value (int) for that skill
 int set_skill_value(lua_State* ls)
 {
@@ -487,17 +533,11 @@ int set_skill_value(lua_State* ls)
     SkillType skill_name = static_cast<SkillType>(skill_i);
     int skill_value = lua_tointeger(ls, 3);
 
-    CreatureMap& cmap = Game::instance().get_current_map()->get_creatures_ref();
-    CreatureMap::iterator c_it = cmap.find(creature_id);
+    CreaturePtr creature = get_creature(creature_id);
 
-    if (c_it != cmap.end())
+    if (creature)
     {
-      CreaturePtr creature = c_it->second;
-
-      if (creature)
-      {
-        creature->get_skills().set_value(skill_name, skill_value);
-      }
+      creature->get_skills().set_value(skill_name, skill_value);
     }
   }
   else
@@ -525,17 +565,11 @@ int get_skill_value(lua_State* ls)
     int skill_i = lua_tointeger(ls, 2);
     SkillType skill_name = static_cast<SkillType>(skill_i);
 
-    CreatureMap& cmap = Game::instance().get_current_map()->get_creatures_ref();
-    CreatureMap::iterator c_it = cmap.find(creature_id);
+    CreaturePtr creature = get_creature(creature_id);
 
-    if (c_it != cmap.end())
+    if (creature)
     {
-      CreaturePtr creature = c_it->second;
-
-      if (creature)
-      {
-        skill_value = creature->get_skills().get_value(skill_name);
-      }
+      skill_value = creature->get_skills().get_value(skill_name);
     }
   }
   else

@@ -3,6 +3,9 @@ Savage Lands v0.1.2, "Aethelwalh"
 
 - Added support for ranged combat animation.
 
+- Extended the scripting engine to allow for "level scripts" that can be
+  executed per-class on creature creation (L1) and after levelling.
+
 Savage Lands v0.1.1, "Cissa"
 - Version declared March 10, 2013.  Version finalized March 28, 2013.
 

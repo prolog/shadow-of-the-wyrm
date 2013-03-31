@@ -6,6 +6,7 @@
 #include "CreatureCalculator.hpp"
 #include "CreatureFactory.hpp"
 #include "CreatureGenerationConstants.hpp"
+#include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "InitialItemEquipper.hpp"
@@ -189,6 +190,10 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
     // Set calculated statistics
     CreatureCalculator::update_calculated_values(creaturep);
+
+    // Set any abilities, etc., that should be part of level 1.
+    ExperienceManager em;
+    em.run_level_script(creaturep);
   }
 
   return creaturep;
