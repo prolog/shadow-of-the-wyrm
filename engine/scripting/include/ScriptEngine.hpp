@@ -7,6 +7,7 @@ extern "C" {
 }
 
 #include <string>
+#include "Creature.hpp"
 
 // Savage Lands' Lua script engine, currently only used for quests.
 //
@@ -28,6 +29,10 @@ class ScriptEngine
     // Get the current state.  Used by level scripts (and in future, maybe
     // others) to set particular values on the stack prior to making a call.
     lua_State* get_current_state();
+
+    // Set the current creature.  Typically only used by functions before certain
+    // maps exist - the Lua functions need a way to operate on the creature.
+    void set_creature(CreaturePtr creature);
 
   protected:
     // Set up the Lua state

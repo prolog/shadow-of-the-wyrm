@@ -243,11 +243,21 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
     if (classp)
     {
       LevelScript level_script;
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      se.set_creature(creature);
 
-      level_script.execute(Game::instance().get_script_engine_ref(),
-                           classp->get_level_script(), 
-                           class_id, 
-                           creature->get_level().get_current());
+      try
+      {
+        level_script.execute(se, classp->get_level_script(), creature);
+      }
+      catch(...)
+      {
+      }
+
+      // Ensure that the "local creature" that the scripts can get at is reset
+      // appropriately.
+      CreaturePtr nullcr;
+      se.set_creature(nullcr);
     }
   }
 }
