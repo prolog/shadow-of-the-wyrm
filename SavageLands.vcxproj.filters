@@ -544,6 +544,21 @@
     <Filter Include="Source Files\display\animation">
       <UniqueIdentifier>{b8dc4984-7be8-4e50-8ebb-3e00666667ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\world\magic">
+      <UniqueIdentifier>{c579bea8-33ef-4b6f-823d-9dd04ba6dcd7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\world\magic\include">
+      <UniqueIdentifier>{243e5663-3814-4bb1-9442-876ee128bf3b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\magic">
+      <UniqueIdentifier>{78ae5c43-b88f-440b-821c-c9df318b2fc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\magic\source">
+      <UniqueIdentifier>{6a06b70b-b70e-49f9-98de-ff49354fa28b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\world\magic\source\unit_tests">
+      <UniqueIdentifier>{c73d4e1d-ba13-4af2-84ad-1d1a2fcfb5bd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2207,6 +2222,12 @@
     </ClInclude>
     <ClInclude Include="engine\scripting\include\LevelScript.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\magic\include\Spell.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\magic\include\SpellKnowledge.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4189,6 +4210,18 @@
     </ClCompile>
     <ClCompile Include="engine\scripting\source\LevelScript.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\Spell.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\unit_tests\Spell_test.cpp">
+      <Filter>Source Files\world\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\SpellKnowledge.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\unit_tests\SpellKnowledge_test.cpp">
+      <Filter>Source Files\world\magic\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

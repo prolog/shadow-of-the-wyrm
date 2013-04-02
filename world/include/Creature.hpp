@@ -19,6 +19,7 @@
 #include "Religion.hpp"
 #include "Resistances.hpp"
 #include "Skills.hpp"
+#include "SpellKnowledge.hpp"
 #include "Statistic.hpp"
 
 // Forward declarations.
@@ -237,6 +238,9 @@ class Creature : public ISerializable
 
     Mortuary& get_mortuary_ref();
 
+    void set_spell_knowledge(const SpellKnowledge& new_spell_knowledge);
+    SpellKnowledge& get_spell_knowledge_ref();
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
@@ -353,6 +357,9 @@ class Creature : public ISerializable
 
     // The creature's kills.
     Mortuary mortuary;
+
+    // The creature's magical knowledge.
+    SpellKnowledge spell_knowledge;
 };
 
 typedef boost::shared_ptr<Creature> CreaturePtr;

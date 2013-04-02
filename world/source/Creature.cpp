@@ -98,6 +98,7 @@ Creature::Creature(const Creature& cr)
   event_functions = cr.event_functions;
   additional_properties = cr.additional_properties;
   mortuary = cr.mortuary;
+  spell_knowledge = cr.spell_knowledge;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -170,6 +171,7 @@ bool Creature::operator==(const Creature& cr)
   result = result && (event_functions == cr.event_functions);
   result = result && (additional_properties == cr.additional_properties);
   result = result && (mortuary == cr.mortuary);
+  result = result && (spell_knowledge == cr.spell_knowledge);
 
   return result;
 }
@@ -850,6 +852,16 @@ Mortuary& Creature::get_mortuary_ref()
   return mortuary;
 }
 
+void Creature::set_spell_knowledge(const SpellKnowledge& new_spell_knowledge)
+{
+  spell_knowledge = new_spell_knowledge;
+}
+
+SpellKnowledge& Creature::get_spell_knowledge_ref()
+{
+  return spell_knowledge;
+}
+
 // Set, get, and query additional (string) properties
   // Uncomment the code below to find out the size of Creature. :)
   // template<int s> struct creature_size;
@@ -862,7 +874,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 816);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 840);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 752);
@@ -924,6 +936,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->event_functions, cr.event_functions);
   std::swap(this->additional_properties, cr.additional_properties);
   std::swap(this->mortuary, cr.mortuary);
+  std::swap(this->spell_knowledge, cr.spell_knowledge);
 }
 
 bool Creature::serialize(ostream& stream)
@@ -1038,6 +1051,7 @@ bool Creature::serialize(ostream& stream)
   }
 
   mortuary.serialize(stream);
+  spell_knowledge.serialize(stream);
 
   return true;
 }
@@ -1172,6 +1186,7 @@ bool Creature::deserialize(istream& stream)
   }
 
   mortuary.deserialize(stream);
+  spell_knowledge.deserialize(stream);
 
   return true;
 }
