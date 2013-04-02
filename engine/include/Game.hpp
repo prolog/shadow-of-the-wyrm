@@ -17,6 +17,7 @@
 #include "Quests.hpp"
 #include "Race.hpp"
 #include "ScriptEngine.hpp"
+#include "Spell.hpp"
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
 
@@ -48,6 +49,9 @@ class Game : public ISerializable
     
     void set_creatures(const CreatureMap& game_creatures);
     const CreatureMap& get_creatures_ref() const;
+
+    void set_spells(const SpellMap& game_spells);
+    const SpellMap& get_spells_ref();
     
     void set_creature_generation_values(const CreatureGenerationValuesMap& game_cgv);
     CreatureGenerationValuesMap& get_creature_generation_values_ref();
@@ -146,6 +150,7 @@ class Game : public ISerializable
     RaceMap races;
     ClassMap classes;
     CreatureMap creatures;
+    SpellMap spells;
     CreatureGenerationValuesMap creature_generation_values;
     GenerationValuesMap item_generation_values;
     ItemMap items;

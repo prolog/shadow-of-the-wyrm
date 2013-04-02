@@ -102,6 +102,16 @@ void Game::set_creatures(const CreatureMap& game_creatures)
   creatures = game_creatures;
 }
 
+void Game::set_spells(const SpellMap& game_spells)
+{
+  spells = game_spells;
+}
+
+const SpellMap& Game::get_spells_ref()
+{
+  return spells;
+}
+
 const CreatureMap& Game::get_creatures_ref() const
 {
   return creatures;
@@ -547,6 +557,7 @@ bool Game::serialize(ostream& stream)
   // Ignore race map - this will be built up on startup.
   // Ignore class map - this will be built up on startup.
   // Ignore creature map - this will be built up on startup.
+  // Ignore spell map - this will be built up on startup.
 
   // The creature generation values map needs to be serialized because it
   // contains information on the current and maximum allowable values for
@@ -639,6 +650,7 @@ bool Game::deserialize(istream& stream)
   // Ignore race map - this will be built up on startup.
   // Ignore class map - this will be built up on startup.
   // Ignore creature map - this will be built up on startup.
+  // Ignore spell map - this will be built up on startup.
 
   // Keep track of creature generation values for the current/maximum allowable
   // generation amounts.
