@@ -2229,6 +2229,9 @@
     <ClInclude Include="world\magic\include\SpellKnowledge.hpp">
       <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLSpellsReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4222,6 +4225,9 @@
     </ClCompile>
     <ClCompile Include="world\magic\source\unit_tests\SpellKnowledge_test.cpp">
       <Filter>Source Files\world\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLSpellsReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

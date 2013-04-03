@@ -37,6 +37,13 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLConfigurationReader::get_creat
   return creatures;
 }
 
+SpellMap XMLConfigurationReader::get_spells()
+{
+  XMLNode spells_node = XMLUtils::get_next_element_by_local_name(root, "Spells");
+  SpellMap spells = spells_reader.get_spells(spells_node);
+  return spells;
+}
+
 pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
 {
   XMLNode items_node = XMLUtils::get_next_element_by_local_name(root, "Items");

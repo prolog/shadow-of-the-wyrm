@@ -455,6 +455,7 @@
     <ClInclude Include="engine\XML\include\XMLRingReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLScrollReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSkillsReaders.hpp" />
+    <ClInclude Include="engine\XML\include\XMLSpellsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLStaffReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLStatisticsModifierReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp" />
@@ -1198,6 +1199,7 @@
     <ClCompile Include="engine\XML\source\XMLRingReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLScrollReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSkillsReaders.cpp" />
+    <ClCompile Include="engine\XML\source\XMLSpellsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStaffReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStatisticsModifierReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLTilesReader.cpp" />

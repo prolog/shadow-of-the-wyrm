@@ -3476,6 +3476,12 @@
 			<Soak>2</Soak>
 		</Creature>
 	</Creatures>
+	<Spells>
+		<Spell id="shadow_flame">
+			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
+			<MagicCategory>3003</MagicCategory>
+		</Spell>
+	</Spells>
 	<Tiles>
 		<FieldTile>
 			<Text>

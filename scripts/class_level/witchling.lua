@@ -1,10 +1,8 @@
 require('class_level')
 
 local function witchling_level_fn(creature_id, level)
-  if level == 1 then
-    -- For testing only - change this once magic is implemented!
-    -- set_skill_value(creature_id, 31, 50)
-  end
+  -- Always add castings of Shadow Flame
+  add_spell_castings(creature_id, "shadow_flame", 4 * level)
 end
 
 -- Set up the class level function for Witchlings.
