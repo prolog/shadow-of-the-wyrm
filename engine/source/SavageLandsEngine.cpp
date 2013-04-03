@@ -135,6 +135,9 @@ void SavageLandsEngine::setup_game()
   game.set_creatures(creatures.first);
   game.set_creature_generation_values(creatures.second);
 
+  SpellMap spells = reader.get_spells();
+  game.set_spells(spells);
+
   vector<DisplayTile> tile_info = reader.get_tile_info();
   game.set_tile_display_info(tile_info);
 

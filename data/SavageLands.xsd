@@ -9,6 +9,7 @@
 			<xs:element ref="tns:Races"/>
 			<xs:element ref="tns:Classes"/>
 			<xs:element ref="tns:Creatures"/>
+			<xs:element ref="tns:Spells"/>
 			<xs:element ref="tns:Tiles"/>
 			<xs:element ref="tns:Items"/>
 		</xs:sequence>
@@ -44,6 +45,24 @@
 		<xs:sequence>
 			<xs:element ref="tns:Creature" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Spells">
+	<xs:annotation><xs:documentation>A list of spells available in-game.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element ref="tns:Spell" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Spell">
+	<xs:annotation><xs:documentation>A spell available to one of the classes.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="NameSID" type="xs:string"/>
+			<xs:element name="MagicCategory" type="tns:MagicSkillType"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="Tiles">
@@ -346,7 +365,7 @@
 			<xs:element name="PietyRegenBonus" type="xs:integer" minOccurs="0"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
-			<xs:element ref="LevelScript" type="xs:string" minOccurs="0"/>
+			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>

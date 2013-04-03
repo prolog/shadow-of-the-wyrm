@@ -32,6 +32,7 @@ int get_num_item_generated(lua_State* ls);
 int set_skill_value(lua_State* ls);
 int get_skill_value(lua_State* ls);
 int RNG_range(lua_State* ls);
+int add_spell_castings(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -186,6 +187,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_skill_value", set_skill_value);
   lua_register(L, "get_skill_value", get_skill_value);
   lua_register(L, "RNG_range", RNG_range);
+  lua_register(L, "add_spell_castings", add_spell_castings);
 }
 
 // Lua API functions:
@@ -601,4 +603,29 @@ int RNG_range(lua_State* ls)
 
   lua_pushnumber(ls, rng_val);
   return 1;
+}
+
+// Add a given number of spell castings to the spell knowledge of a
+// particular creature.
+int add_spell_castings(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 3) && (lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string spell_id = lua_tostring(ls, 2);
+    int addl_castings = lua_tointeger(ls, 3);
+
+    CreaturePtr creature = get_creature(creature_id);
+    SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+
+    int cur_castings = sk.get_spell_knowledge(spell_id);
+    sk.set_spell_knowledge(spell_id, cur_castings + addl_castings);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_spell_castings");
+    lua_error(ls);
+  }
+
+  return 0;
 }
