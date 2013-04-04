@@ -298,3 +298,13 @@ RunScriptCommand::RunScriptCommand()
 RunScriptCommand::~RunScriptCommand()
 {
 }
+
+// 'z'ap (cast) a spell
+CastSpellCommand::CastSpellCommand()
+: Command(CommandKeys::CAST_SPELL)
+{
+}
+
+CastSpellCommand::~CastSpellCommand()
+{
+}

@@ -149,6 +149,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<RunScriptCommand>();
   }
+  else if (command_name == CommandKeys::CAST_SPELL)
+  {
+    command = boost::make_shared<CastSpellCommand>();
+  }
 
   return command;
 }
