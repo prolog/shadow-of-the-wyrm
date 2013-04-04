@@ -40,10 +40,14 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
     string spell_id = XMLUtils::get_attribute_value(spell_node, "id");
     string spell_name_sid = XMLUtils::get_child_node_value(spell_node, "NameSID");
     SkillType magic_category = static_cast<SkillType>(XMLUtils::get_child_node_int_value(spell_node, "MagicCategory", SKILL_MAGIC_ARCANE));
+    uint ap_cost = XMLUtils::get_child_node_int_value(spell_node, "APCost");
+    int speed = XMLUtils::get_child_node_int_value(spell_node, "Speed");
 
     spell.set_spell_id(spell_id);
     spell.set_spell_name_sid(spell_name_sid);
     spell.set_magic_category(magic_category);
+    spell.set_ap_cost(ap_cost);
+    spell.set_speed(speed);
   }
 
   return spell;

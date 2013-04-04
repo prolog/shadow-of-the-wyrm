@@ -61,6 +61,8 @@
 		<xs:sequence>
 			<xs:element name="NameSID" type="xs:string"/>
 			<xs:element name="MagicCategory" type="tns:MagicSkillType"/>
+			<xs:element name="APCost" type="xs:unsignedInt"/>
+			<xs:element name="Speed" type="xs:integer"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string"/>
 	</xs:complexType>

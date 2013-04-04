@@ -2,13 +2,13 @@
 #include <map>
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "common.hpp"
 #include "SkillTypes.hpp"
 
 class Spell
 {
   public:
     Spell();
-    Spell(const std::string& spell_id, const std::string& spell_name, const SkillType skill_type);
     bool operator==(const Spell& sp);
 
     void set_spell_id(const std::string& new_spell_id);
@@ -20,10 +20,18 @@ class Spell
     void set_magic_category(const SkillType new_skill_type);
     SkillType get_magic_category() const;
 
+    void set_ap_cost(const uint new_ap_cost);
+    uint get_ap_cost() const;
+
+    void set_speed(const int new_speed);
+    int get_speed() const;
+
   protected:
     std::string spell_id;
     std::string spell_name_sid;
     SkillType magic_category;
+    uint ap_cost;
+    int speed;
 };
 
 typedef std::map<std::string, Spell> SpellMap;
