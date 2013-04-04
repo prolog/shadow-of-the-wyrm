@@ -206,3 +206,10 @@ class RunScriptCommand : public Command
     RunScriptCommand();
     ~RunScriptCommand();
 };
+
+class CastSpellCommand : public Command
+{
+  public:
+    CastSpellCommand();
+    ~CastSpellCommand();
+};

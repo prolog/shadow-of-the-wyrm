@@ -153,6 +153,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.run_script_command(creature);
       }
+      else if (command_name == CommandKeys::CAST_SPELL)
+      {
+        int x = 1;
+      }
     }
   }
   
