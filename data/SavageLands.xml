@@ -3480,6 +3480,8 @@
 		<Spell id="shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<MagicCategory>3003</MagicCategory>
+			<APCost>2</APCost>
+			<Speed>1</Speed>
 		</Spell>
 	</Spells>
 	<Tiles>

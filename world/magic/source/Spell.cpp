@@ -3,12 +3,7 @@
 using namespace std;
 
 Spell::Spell()
-: magic_category(SKILL_MAGIC_ARCANE)
-{
-}
-
-Spell::Spell(const string& new_spell_id, const string& new_spell_name_sid, const SkillType new_magic_category)
-: spell_id(new_spell_id), spell_name_sid(new_spell_name_sid), magic_category(new_magic_category)
+: magic_category(SKILL_MAGIC_ARCANE), ap_cost(0), speed(1)
 {
 }
 
@@ -19,6 +14,8 @@ bool Spell::operator==(const Spell& spell)
   result = result && (spell_id == spell.spell_id);
   result = result && (spell_name_sid == spell.spell_name_sid);
   result = result && (magic_category == spell.magic_category);
+  result = result && (ap_cost == spell.ap_cost);
+  result = result && (speed == spell.speed);
 
   return result;
 }
@@ -51,6 +48,26 @@ void Spell::set_magic_category(const SkillType new_magic_category)
 SkillType Spell::get_magic_category() const
 {
   return magic_category;
+}
+
+void Spell::set_ap_cost(const uint new_ap_cost)
+{
+  ap_cost = new_ap_cost;
+}
+
+uint Spell::get_ap_cost() const
+{
+  return ap_cost;
+}
+
+void Spell::set_speed(const int new_speed)
+{
+  speed = new_speed;
+}
+
+int Spell::get_speed() const
+{
+  return speed;
 }
 
 #ifdef UNIT_TESTS
