@@ -13,7 +13,7 @@ TileSelectionCommandProcessor::~TileSelectionCommandProcessor()
 {
 }
 
-pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr creature, CommandPtr command, TileSelectionManager* const tsm)
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr creature, CommandPtr command, TileSelectionAction* const tsa)
 {
   pair<bool, ActionCostValue> result(false, 0);  
   ActionCostValue action_cost = 1;
@@ -25,18 +25,18 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
     
     if (cdc)
     {
-      result = process_cursor_directional_command(creature, cdc, tsm);
+      result = process_cursor_directional_command(creature, cdc, tsa);
     }
     else
     {
       if (command_name == TileSelectionCommandKeys::CANCEL_TILE_SELECTION)
       {
-        tsm->remove_target(creature, ATTACK_TYPE_RANGED);
+        tsa->remove_target(creature, ATTACK_TYPE_RANGED);
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
       {
         AttackType JCD_FIXME_ATTACK_TYPE = ATTACK_TYPE_RANGED;
-        if (tsm->is_tile_in_range_and_add_message_if_not(creature, JCD_FIXME_ATTACK_TYPE))
+        if (tsa->is_tile_in_range_and_add_message_if_not(creature, JCD_FIXME_ATTACK_TYPE))
         {
           // Stop selecting, advance turn.
           result.second = action_cost;
@@ -55,7 +55,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
   return result;
 }
 
-pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_directional_command(CreaturePtr creature, CursorDirectionalCommandPtr cursor_command, TileSelectionManager* const tsm)
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_directional_command(CreaturePtr creature, CursorDirectionalCommandPtr cursor_command, TileSelectionAction* const tsa)
 {
   pair<bool, ActionCostValue> result(false, 0);
   
@@ -64,7 +64,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_direct
 
   if (creature && cursor_command)
   {
-    action_cost = game.actions.select_tile(creature, cursor_command->get_direction(), tsm);
+    action_cost = game.actions.select_tile(creature, cursor_command->get_direction(), tsa);
     
     result.first = true;
     result.second = action_cost;

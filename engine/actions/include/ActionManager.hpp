@@ -6,10 +6,10 @@
 #include "IItemFilter.hpp"
 #include "ISerializable.hpp"
 #include "ItemManager.hpp"
-#include "MovementManager.hpp"
-#include "QuaffManager.hpp"
-#include "RangedCombatActionManager.hpp"
-#include "TileSelectionManager.hpp"
+#include "MovementAction.hpp"
+#include "QuaffAction.hpp"
+#include "RangedCombatAction.hpp"
+#include "TileSelectionAction.hpp"
 #include "WeaponTypes.hpp"
 
 enum ItemAction
@@ -51,7 +51,7 @@ class ActionManager : public ISerializable
     // Tile selection actions.  The function with just the CreaturePtr is the main entry point - the others are used
     // for processing directional commands, cancellation, etc.
     ActionCost select_tile(CreaturePtr creature); // Examines the tiles on the current map
-    ActionCostValue select_tile(CreaturePtr creature, const Direction d, TileSelectionManager* const tsm);
+    ActionCostValue select_tile(CreaturePtr creature, const Direction d, TileSelectionAction* const tsa);
     
     // Actions utilizing tile selection actions:
     ActionCost fire_missile(CreaturePtr creature);
@@ -102,11 +102,11 @@ class ActionManager : public ISerializable
     ActionCost get_action_cost(CreaturePtr creature, const ActionCostValue action_cost_value);
     
     CombatManager combat_manager;
-    MovementManager movement_manager;
+    MovementAction movement_action;
     ItemManager item_manager;
-    TileSelectionManager tile_selection_manager;
-    RangedCombatActionManager ranged_combat_manager;
-    QuaffManager quaff_manager;
+    TileSelectionAction tile_selection_action;
+    RangedCombatAction ranged_combat_action;
+    QuaffAction quaff_action;
 
   private:
     ClassIdentifier internal_class_identifier() const;
