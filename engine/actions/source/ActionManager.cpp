@@ -1,29 +1,29 @@
 #include <string>
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
-#include "CharacterDumpManager.hpp"
-#include "ChatManager.hpp"
+#include "CharacterDumpAction.hpp"
+#include "ChatAction.hpp"
 #include "Conversion.hpp"
-#include "CurrencyManager.hpp"
-#include "DateTimeManager.hpp"
-#include "DropManager.hpp"
+#include "CurrencyAction.hpp"
+#include "DateTimeAction.hpp"
+#include "DropAction.hpp"
 #include "EquipmentManager.hpp"
-#include "FeatureManager.hpp"
+#include "FeatureAction.hpp"
 #include "FileWriter.hpp"
-#include "FoodManager.hpp"
+#include "FoodAction.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "InventoryManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
-#include "PickupManager.hpp"
-#include "PrayerManager.hpp"
-#include "QuestListManager.hpp"
-#include "ReadManager.hpp"
-#include "SearchActionManager.hpp"
+#include "PickupAction.hpp"
+#include "PrayerAction.hpp"
+#include "QuestListAction.hpp"
+#include "ReadAction.hpp"
+#include "SearchAction.hpp"
 #include "Serialization.hpp"
-#include "VersionActionManager.hpp"
-#include "WeaponInfoManager.hpp"
+#include "VersionAction.hpp"
+#include "WeaponInfoAction.hpp"
 #include "Log.hpp"
 
 using namespace std;
@@ -41,42 +41,42 @@ bool ActionManager::operator==(const ActionManager& am)
   bool result = true;
 
   result = result && (combat_manager == am.combat_manager);
-  result = result && (movement_manager == am.movement_manager);
+  result = result && (movement_action == am.movement_action);
   result = result && (item_manager == am.item_manager);
-  result = result && (tile_selection_manager == am.tile_selection_manager);
-  result = result && (ranged_combat_manager == am.ranged_combat_manager);
-  result = result && (quaff_manager == am.quaff_manager);
+  result = result && (tile_selection_action == am.tile_selection_action);
+  result = result && (ranged_combat_action == am.ranged_combat_action);
+  result = result && (quaff_action == am.quaff_action);
 
   return result;
 }
 
 ActionCost ActionManager::version(CreaturePtr creature)
 {
-  VersionActionManager vam;
-  return get_action_cost(creature, vam.version());
+  VersionAction va;
+  return get_action_cost(creature, va.version());
 }
 
 ActionCost ActionManager::date_and_time(CreaturePtr creature)
 {
-  DateTimeManager dtm;
-  return get_action_cost(creature, dtm.date_and_time());
+  DateTimeAction dt;
+  return get_action_cost(creature, dt.date_and_time());
 }
 
 ActionCost ActionManager::dump_character(CreaturePtr creature)
 {
-  CharacterDumpManager cdm;
-  return get_action_cost(creature, cdm.dump_character(creature));
+  CharacterDumpAction cd;
+  return get_action_cost(creature, cd.dump_character(creature));
 }
 
 ActionCost ActionManager::search(CreaturePtr creature)
 {
-  SearchActionManager sam;
-  return get_action_cost(creature, sam.search(creature));
+  SearchAction sa;
+  return get_action_cost(creature, sa.search(creature));
 }
 
 ActionCost ActionManager::move(CreaturePtr creature, const Direction direction)
 {
-  return get_action_cost(creature, movement_manager.move(creature, direction));
+  return get_action_cost(creature, movement_action.move(creature, direction));
 }
 
 ActionCost ActionManager::attack(CreaturePtr creature, const Direction direction)
@@ -105,7 +105,7 @@ ActionCost ActionManager::ascend(CreaturePtr creature)
     return get_action_cost(creature, 0);
   } 
     
-  movement_manager.ascend(creature);
+  movement_action.ascend(creature);
   
   return get_action_cost(creature, 1); // JCD FIXME
 }
@@ -113,7 +113,7 @@ ActionCost ActionManager::ascend(CreaturePtr creature)
 // Move down a level
 ActionCost ActionManager::descend(CreaturePtr creature)
 {
-  return get_action_cost(creature, movement_manager.descend(creature));
+  return get_action_cost(creature, movement_action.descend(creature));
 }
 
 // Remove an item from a particular slot.
@@ -206,49 +206,49 @@ ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemActio
 // "q"uaff a potion
 ActionCost ActionManager::quaff(CreaturePtr creature)
 {
-  return get_action_cost(creature, quaff_manager.quaff(creature, this));
+  return get_action_cost(creature, quaff_action.quaff(creature, this));
 }
 
 // 'r'ead a scroll or spellbook
 ActionCost ActionManager::read(CreaturePtr creature)
 {
-  ReadManager rm;
-  return get_action_cost(creature, rm.read(creature, this));
+  ReadAction ra;
+  return get_action_cost(creature, ra.read(creature, this));
 }
 
 // '$': check how much currency is held (free action)
 ActionCost ActionManager::check_currency(CreaturePtr creature)
 {
-  CurrencyManager cm;
-  return get_action_cost(creature, cm.count_currency(creature));
+  CurrencyAction ca;
+  return get_action_cost(creature, ca.count_currency(creature));
 }
 
 // 'e'at something
 ActionCost ActionManager::eat(CreaturePtr creature)
 {
-  FoodManager fm;
-  return get_action_cost(creature, fm.eat(creature, this));
+  FoodAction fa;
+  return get_action_cost(creature, fa.eat(creature, this));
 }
 
 // Chat with some (hopefully) friendly critter
 ActionCost ActionManager::chat(CreaturePtr creature)
 {
-  ChatManager cm;
-  return get_action_cost(creature, cm.chat(creature));
+  ChatAction ca;
+  return get_action_cost(creature, ca.chat(creature));
 }
 
 // Apply/handle a terrain feature
 ActionCost ActionManager::apply(CreaturePtr creature)
 {
-  FeatureManager fm;
-  return get_action_cost(creature, fm.apply(creature));
+  FeatureAction fa;
+  return get_action_cost(creature, fa.apply(creature));
 }
 
 // Show the list of quests.
 ActionCost ActionManager::quest_list(CreaturePtr creature)
 {
-  QuestListManager qlm;
-  return get_action_cost(creature, qlm.quest_list());
+  QuestListAction qla;
+  return get_action_cost(creature, qla.quest_list());
 }
 
 void ActionManager::reload_scripts_and_sids()
@@ -289,15 +289,15 @@ ActionCost ActionManager::run_script_command(CreaturePtr creature)
 // Pick up an item, doing any necessary checks first.
 ActionCost ActionManager::pick_up(CreaturePtr creature)
 {
-  PickupManager pm;
-  return get_action_cost(creature, pm.pick_up(creature, this));
+  PickupAction pa;
+  return get_action_cost(creature, pa.pick_up(creature, this));
 }
 
 // Drop an item, doing any necessary checks first.
 ActionCost ActionManager::drop(CreaturePtr creature)
 {
-  DropManager dm;
-  return get_action_cost(creature, dm.drop(creature, this));
+  DropAction da;
+  return get_action_cost(creature, da.drop(creature, this));
 }
 
 // Display the inventory; potentially select something.
@@ -342,8 +342,8 @@ ActionCost ActionManager::pray(CreaturePtr creature)
   
   if (creature)
   {
-    PrayerManager prayer_manager;
-    action_cost_value = prayer_manager.pray(creature);
+    PrayerAction prayer_action;
+    action_cost_value = prayer_action.pray(creature);
   }
 
   return get_action_cost(creature, action_cost_value);
@@ -351,8 +351,8 @@ ActionCost ActionManager::pray(CreaturePtr creature)
 
 ActionCost ActionManager::weapon_info(CreaturePtr creature, const WeaponStyle weapon_style)
 {
-  WeaponInfoManager wm;
-  return get_action_cost(creature, wm.weapon_info(creature, weapon_style));
+  WeaponInfoAction wa;
+  return get_action_cost(creature, wa.weapon_info(creature, weapon_style));
 }
 
 ActionCost ActionManager::select_tile(CreaturePtr creature)
@@ -361,13 +361,13 @@ ActionCost ActionManager::select_tile(CreaturePtr creature)
   
   if (creature)
   {
-    action_cost_value = tile_selection_manager.select_tile(creature, ActionTextKeys::ACTION_LOOK);
+    action_cost_value = tile_selection_action.select_tile(creature, ActionTextKeys::ACTION_LOOK);
   }
   
   return get_action_cost(creature, action_cost_value);
 }
 
-ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction d, TileSelectionManager* const tsm)
+ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction d, TileSelectionAction* const tsa)
 {
   ActionCostValue action_cost_value = 0;
   
@@ -375,9 +375,9 @@ ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction
   {
     // Ensure that we use the passed-in tile selection manager, as it may have certain properties
     // set (to exclude parts of the overall tile description, etc).
-    if (tsm)
+    if (tsa)
     {
-      action_cost_value = tsm->select_tile(creature, d);
+      action_cost_value = tsa->select_tile(creature, d);
     }
   }
   
@@ -390,7 +390,7 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature)
   
   if (creature)
   {
-    action_cost_value = ranged_combat_manager.fire_missile(creature);
+    action_cost_value = ranged_combat_action.fire_missile(creature);
   }
   
   return get_action_cost(creature, action_cost_value);
@@ -429,14 +429,14 @@ ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCost
 
 bool ActionManager::serialize(std::ostream& stream)
 {
-  tile_selection_manager.serialize(stream);
+  tile_selection_action.serialize(stream);
 
   return true;
 }
 
 bool ActionManager::deserialize(std::istream& stream)
 {
-  tile_selection_manager.deserialize(stream);
+  tile_selection_action.deserialize(stream);
 
   return true;
 }

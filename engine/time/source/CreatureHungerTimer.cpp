@@ -1,7 +1,7 @@
 #include "Conversion.hpp"
 #include "CreatureHungerTimer.hpp"
 #include "CombatManager.hpp"
-#include "FoodManager.hpp"
+#include "FoodAction.hpp"
 #include "MessageManager.hpp"
 #include "StringConstants.hpp"
 
@@ -21,8 +21,8 @@ void CreatureHungerTimer::tick(CreaturePtr creature, const ulonglong minutes_thi
       int new_hunger = old_hunger - 1;
       hunger_clock.set_hunger(new_hunger);
 
-      FoodManager fm;
-      fm.add_hunger_level_message_if_necessary(creature, old_hunger, new_hunger);
+      FoodAction fa;
+      fa.add_hunger_level_message_if_necessary(creature, old_hunger, new_hunger);
       apply_hunger_damage_if_appropriate(creature, minutes_this_tick);
     }
   }

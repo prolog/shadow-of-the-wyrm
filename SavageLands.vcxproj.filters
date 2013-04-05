@@ -1044,21 +1044,6 @@
     <ClInclude Include="engine\actions\include\ActionManager.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\CharacterDumpManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\ConsumableManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\CurrencyManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\DateTimeManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\DropManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\actions\include\EquipmentManager.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
@@ -1074,40 +1059,10 @@
     <ClInclude Include="engine\actions\include\MovementAccumulationUpdater.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\MovementManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\PickupManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\PrayerManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\QuaffManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\RangedCombatActionManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\actions\include\RangedCombatApplicabilityChecker.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\ReadManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\SearchActionManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\actions\include\TileMovementConfirmation.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\TileSelectionManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\VersionActionManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\WeaponInfoManager.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp">
@@ -2031,9 +1986,6 @@
     <ClInclude Include="engine\include\Metadata.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\FoodManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\items\include\EdibleItemFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
@@ -2088,9 +2040,6 @@
     <ClInclude Include="world\tiles\include\PierTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\actions\include\ChatManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapReaders.hpp">
       <Filter>Header Files\engine\XML\custom_maps\include</Filter>
     </ClInclude>
@@ -2108,9 +2057,6 @@
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapFeatureFactory.hpp">
       <Filter>Header Files\engine\XML\custom_maps\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\FeatureManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
     <ClInclude Include="world\include\MapProperties.hpp">
       <Filter>Header Files\world\include</Filter>
@@ -2135,9 +2081,6 @@
     </ClInclude>
     <ClInclude Include="engine\maps\include\MapTypeQueryFactory.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\StairwayMovementManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
     <ClInclude Include="world\include\Tool.hpp">
       <Filter>Header Files\world\include</Filter>
@@ -2168,9 +2111,6 @@
     </ClInclude>
     <ClInclude Include="engine\menus\include\TextDisplayScreen.hpp">
       <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\actions\include\QuestListManager.hpp">
-      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\menus\include\TextDisplayFormatter.hpp">
       <Filter>Header Files\engine\menus\include</Filter>
@@ -2231,6 +2171,66 @@
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLSpellsReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\CharacterDumpAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ChatAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ConsumableAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\CurrencyAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\DateTimeAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\DropAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\FoodAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\MovementAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\PickupAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\PrayerAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\QuaffAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\QuestListAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\RangedCombatAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\ReadAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\SearchAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\StairwayMovementAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\TileSelectionAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\VersionAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\WeaponInfoAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\FeatureAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -2651,21 +2651,6 @@
     <ClCompile Include="engine\actions\source\ActionManager.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\CharacterDumpManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\ConsumableManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\CurrencyManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\DateTimeManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\DropManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\actions\source\EquipmentManager.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
@@ -2678,40 +2663,10 @@
     <ClCompile Include="engine\actions\source\MovementAccumulationUpdater.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\MovementManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\PickupManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\PrayerManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\QuaffManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\RangedCombatActionManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\actions\source\RangedCombatApplicabilityChecker.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\ReadManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\SearchActionManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\actions\source\TileMovementConfirmation.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\TileSelectionManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\VersionActionManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\WeaponInfoManager.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp">
@@ -3719,9 +3674,6 @@
     <ClCompile Include="engine\effects\source\FruitJuiceEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\FoodManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\items\source\EdibleItemFilter.cpp">
       <Filter>Source Files\engine\items\source</Filter>
     </ClCompile>
@@ -3950,9 +3902,6 @@
     <ClCompile Include="engine\actions\source\unit_tests\ActionManager_test.cpp">
       <Filter>Source Files\engine\actions\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\unit_tests\TileSelectionManager_test.cpp">
-      <Filter>Source Files\engine\actions\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\commands\source\unit_tests\KeyboardCommandMap_test.cpp">
       <Filter>Source Files\engine\commands\source\unit_tests</Filter>
     </ClCompile>
@@ -4006,9 +3955,6 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\PierTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\ChatManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\source\TileProperties.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
@@ -4076,9 +4022,6 @@
     <ClCompile Include="controller\source\NullKeyboardController.cpp">
       <Filter>Source Files\controller\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\actions\source\FeatureManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\MapProperties.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
@@ -4105,9 +4048,6 @@
     </ClCompile>
     <ClCompile Include="engine\maps\source\MapTypeQueries.cpp">
       <Filter>Source Files\engine\maps\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\StairwayMovementManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\maps\source\MapTypeQueryFactory.cpp">
       <Filter>Source Files\engine\maps\source</Filter>
@@ -4153,9 +4093,6 @@
     </ClCompile>
     <ClCompile Include="engine\menus\source\TextDisplayScreen.cpp">
       <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\actions\source\QuestListManager.cpp">
-      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\menus\source\TextDisplayFormatter.cpp">
       <Filter>Source Files\engine\menus\source</Filter>
@@ -4228,6 +4165,69 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLSpellsReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\CharacterDumpAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ChatAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ConsumableAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\CurrencyAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\DateTimeAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\DropAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\FeatureAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\FoodAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\MovementAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\PickupAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\PrayerAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\QuaffAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\QuestListAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\RangedCombatAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\ReadAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\SearchAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\StairwayMovementAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\TileSelectionAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\unit_tests\TileSelectionAction_test.cpp">
+      <Filter>Source Files\engine\actions\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\VersionAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\WeaponInfoAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

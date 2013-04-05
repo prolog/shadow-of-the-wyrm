@@ -108,14 +108,14 @@ class Game : public ISerializable
     friend class SavageLandsEngine;
     friend class CreatureDeathManager;
     friend class PlayerDeathManager;
-    friend class MovementManager;
-    friend class DateTimeManager;
+    friend class MovementAction;
+    friend class DateTimeAction;
     friend class ItemManager;
     friend class CommandProcessor;
     friend class EquipmentCommandProcessor;
     friend class TileSelectionCommandProcessor;
     friend class SeasonsTimeObserver;
-    friend class TileSelectionManager;
+    friend class TileSelectionAction;
     friend class SavageLandsEngine;
     friend class SL_Engine_Game; // unit testing
 

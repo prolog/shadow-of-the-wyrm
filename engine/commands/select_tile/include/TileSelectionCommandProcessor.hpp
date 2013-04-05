@@ -3,7 +3,7 @@
 #include "ActionCost.hpp"
 #include "Creature.hpp"
 #include "TileSelectionCommands.hpp"
-#include "TileSelectionManager.hpp"
+#include "TileSelectionAction.hpp"
 
 // A command processor used for tile selection
 //
@@ -15,11 +15,11 @@
 class TileSelectionCommandProcessor
 {
   public:
-    static std::pair<bool, ActionCostValue> process(CreaturePtr creature, CommandPtr command, TileSelectionManager* const tsm);
+    static std::pair<bool, ActionCostValue> process(CreaturePtr creature, CommandPtr command, TileSelectionAction* const tsa);
 
   protected:
     TileSelectionCommandProcessor();
     ~TileSelectionCommandProcessor();
     
-    static std::pair<bool, ActionCostValue> process_cursor_directional_command(CreaturePtr creature, CursorDirectionalCommandPtr cursor_command, TileSelectionManager* const tsm);
+    static std::pair<bool, ActionCostValue> process_cursor_directional_command(CreaturePtr creature, CursorDirectionalCommandPtr cursor_command, TileSelectionAction* const tsa);
 };
