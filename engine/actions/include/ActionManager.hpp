@@ -88,6 +88,8 @@ class ActionManager : public ISerializable
     ActionCost reload_scripts_and_sids(CreaturePtr creature); // creature's-command-version
     ActionCost run_script_command(CreaturePtr creature); // should only be available in debug mode!
 
+    ActionCost cast_spell(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 
