@@ -1,4 +1,4 @@
-#include "StringConstants.hpp"
+#include "MaterialTextKeys.hpp"
 #include "Wood.hpp"
 
 using namespace std;

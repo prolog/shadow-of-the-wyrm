@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "HostilityManager.hpp"
+#include "PlayerConstants.hpp"
 
 using std::string;
 

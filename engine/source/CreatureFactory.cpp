@@ -18,6 +18,7 @@
 #include "ReligionFactory.hpp"
 #include "RNG.hpp"
 #include "NullKeyboardController.hpp"
+#include "PlayerConstants.hpp"
 
 using namespace std;
 

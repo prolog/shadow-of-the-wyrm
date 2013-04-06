@@ -7,6 +7,7 @@
 #include "CreatureFactory.hpp"
 #include "DeitySelectionScreen.hpp"
 #include "DisplayTile.hpp"
+#include "FileConstants.hpp"
 #include "Game.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"

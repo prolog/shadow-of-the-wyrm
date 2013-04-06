@@ -11,32 +11,6 @@
 #include "Weapon.hpp"
 #include "Ammunition.hpp"
 
-// Constant filenames, patterns, etc.
-class FileConstants
-{
-  public:
-    static const std::string XML_CONFIGURATION_FILE;
-    static const std::string SAVEFILE_PATTERN;
-    static const std::string CUSTOM_MAPS_DIRECTORY;
-    static const std::string CUSTOM_MAPS_PATTERN;
-
-  protected:
-    FileConstants();
-    ~FileConstants();
-};
-
-// String constants related to the player.
-// Note that these are actual string constants that are not meant to be text keys.
-class PlayerConstants
-{
-  public:
-    static const std::string PLAYER_CREATURE_ID;
-    
-  protected:
-    PlayerConstants();
-    ~PlayerConstants();
-};
-
 // These define all the string keys.
 // Key/value pairs are defined in savagelandstext_lang.ini, where lang=en,fr,ru,kl,etc.
 class TextKeys
@@ -154,27 +128,6 @@ class TextKeys
   protected:
     TextKeys();
     ~TextKeys();
-};
-
-class MaterialTextKeys
-{
-  public:
-    static const std::string MATERIAL_CLOTH;
-    static const std::string MATERIAL_DRAGON_SCALE;
-    static const std::string MATERIAL_GLASS;
-    static const std::string MATERIAL_IRON;
-    static const std::string MATERIAL_LEATHER;
-    static const std::string MATERIAL_PAPER;
-    static const std::string MATERIAL_STEEL;
-    static const std::string MATERIAL_STONE;
-    static const std::string MATERIAL_WOOD;
-    static const std::string MATERIAL_MARBLE;
-    static const std::string MATERIAL_ONYX;
-    static const std::string MATERIAL_IVORY;
-    
-  protected:
-    MaterialTextKeys();
-    ~MaterialTextKeys();
 };
 
 class DateTextKeys

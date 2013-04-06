@@ -1,5 +1,5 @@
 #include "Leather.hpp"
-#include "StringConstants.hpp"
+#include "MaterialTextKeys.hpp"
 
 using namespace std;
 
