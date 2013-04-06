@@ -1,6 +1,6 @@
 #include "CurrencyAction.hpp"
 #include "MessageManager.hpp"
-#include "StringConstants.hpp"
+#include "TextMessages.hpp"
 
 using std::string;
 

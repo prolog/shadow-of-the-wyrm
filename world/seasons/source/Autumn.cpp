@@ -1,5 +1,5 @@
 #include "Autumn.hpp"
-#include "StringConstants.hpp"
+#include "SeasonTextKeys.hpp"
 
 using namespace std;
 

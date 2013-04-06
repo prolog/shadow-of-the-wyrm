@@ -2,6 +2,7 @@
 #include "MessageManager.hpp"
 #include "PlayerDeathManager.hpp"
 #include "ReligionManager.hpp"
+#include "TextMessages.hpp"
 
 using std::string;
 

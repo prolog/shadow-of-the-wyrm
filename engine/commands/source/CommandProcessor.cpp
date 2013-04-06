@@ -3,6 +3,7 @@
 #include "CommandProcessor.hpp"
 #include "Commands.hpp"
 #include "Game.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 

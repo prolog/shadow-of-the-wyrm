@@ -393,11 +393,23 @@
     <ClInclude Include="engine\skills\include\Mountaineering.hpp" />
     <ClInclude Include="engine\skills\include\SkillManager.hpp" />
     <ClInclude Include="engine\skills\include\Swimming.hpp" />
+    <ClInclude Include="engine\strings\include\ActionTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\CombatTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\EntranceTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\EquipmentTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\FeatureDescriptionTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\FileConstants.hpp" />
+    <ClInclude Include="engine\strings\include\GameEnvTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PlayerConstants.hpp" />
+    <ClInclude Include="engine\strings\include\RangedCombatTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\SeasonTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\SkillTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\StatusAilmentTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StringConstants.hpp" />
     <ClInclude Include="engine\strings\include\StringTable.hpp" />
+    <ClInclude Include="engine\strings\include\TextMessages.hpp" />
+    <ClInclude Include="engine\strings\include\TileTextKeys.hpp" />
     <ClInclude Include="engine\time\include\BoatingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\CreatureHPRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureHungerTimer.hpp" />
@@ -1126,11 +1138,23 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\strings\source\ActionTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\CombatTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\EntranceTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\EquipmentTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\FeatureDescriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\FileConstants.cpp" />
+    <ClCompile Include="engine\strings\source\GameEnvTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MaterialTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerConstants.cpp" />
+    <ClCompile Include="engine\strings\source\RangedCombatTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\SeasonTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\SkillTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\StatusAilmentTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\StringConstants.cpp" />
     <ClCompile Include="engine\strings\source\StringTable.cpp" />
+    <ClCompile Include="engine\strings\source\TextMessages.cpp" />
+    <ClCompile Include="engine\strings\source\TileTextKeys.cpp" />
     <ClCompile Include="engine\time\source\BoatingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\CreatureHPRegeneration.cpp" />
     <ClCompile Include="engine\time\source\CreatureHungerTimer.cpp" />

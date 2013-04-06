@@ -11,6 +11,7 @@
 #include "MessageManager.hpp"
 #include "Serialize.hpp"
 #include "StringConstants.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 

@@ -1,6 +1,7 @@
 #include <string>
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
+#include "ActionTextKeys.hpp"
 #include "CharacterDumpAction.hpp"
 #include "ChatAction.hpp"
 #include "Conversion.hpp"
@@ -12,6 +13,7 @@
 #include "FileWriter.hpp"
 #include "FoodAction.hpp"
 #include "Game.hpp"
+#include "GameEnvTextKeys.hpp"
 #include "ItemFilterFactory.hpp"
 #include "InventoryManager.hpp"
 #include "MapUtils.hpp"

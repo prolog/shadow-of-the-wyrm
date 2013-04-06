@@ -1,4 +1,5 @@
 #include "ActionManager.hpp"
+#include "ActionTextKeys.hpp"
 #include "EffectFactory.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"

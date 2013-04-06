@@ -1,3 +1,4 @@
+#include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "Mountaineering.hpp"
 #include "MountainClimbingCalculator.hpp"

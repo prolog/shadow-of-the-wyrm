@@ -2253,6 +2253,42 @@
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\strings\include\EntranceTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\TextMessages.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\FeatureDescriptionTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\ActionTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\TileTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\SeasonTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\CombatTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\RangedCombatTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\GameEnvTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\StatusAilmentTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\SkillTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\EquipmentTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4257,6 +4293,42 @@
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\MaterialTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\EntranceTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\TextMessages.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\FeatureDescriptionTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\ActionTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\TileTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\SeasonTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\CombatTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\RangedCombatTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\GameEnvTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\StatusAilmentTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\SkillTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\EquipmentTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>

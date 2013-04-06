@@ -1,5 +1,6 @@
 #include "Game.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
+#include "RangedCombatTextKeys.hpp"
 #include "StringTable.hpp"
 #include "WeaponManager.hpp"
 

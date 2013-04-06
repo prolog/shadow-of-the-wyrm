@@ -1,8 +1,8 @@
 #include <boost/foreach.hpp>
+#include "ActionTextKeys.hpp"
 #include "Creature.hpp"
 #include "Effect.hpp"
 #include "Serialize.hpp"
-#include "StringConstants.hpp"
 #include "MessageManager.hpp"
 
 using namespace std;

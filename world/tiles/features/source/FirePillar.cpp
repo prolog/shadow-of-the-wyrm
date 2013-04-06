@@ -1,5 +1,5 @@
 #include "FirePillar.hpp"
-#include "StringConstants.hpp"
+#include "FeatureDescriptionTextKeys.hpp"
 
 using std::string;
 

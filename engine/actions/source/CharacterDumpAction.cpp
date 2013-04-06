@@ -2,6 +2,7 @@
 #include "CharacterDumper.hpp"
 #include "FileWriter.hpp"
 #include "MessageManager.hpp"
+#include "TextMessages.hpp"
 
 using std::string;
 

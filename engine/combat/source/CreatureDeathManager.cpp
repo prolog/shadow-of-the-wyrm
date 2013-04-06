@@ -1,3 +1,4 @@
+#include "CombatTextKeys.hpp"
 #include "CreatureDeathManager.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"

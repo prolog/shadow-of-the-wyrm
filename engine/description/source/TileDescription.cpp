@@ -1,5 +1,6 @@
 #include <sstream>
 #include <boost/foreach.hpp>
+#include "ActionTextKeys.hpp"
 #include "DescriberFactory.hpp"
 #include "TileDescription.hpp"
 

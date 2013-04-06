@@ -1,7 +1,7 @@
 #include <sstream>
 #include "Conversion.hpp"
 #include "SkillsDumper.hpp"
-
+#include "SkillTextKeys.hpp"
 using namespace std;
 
 SkillsDumper::SkillsDumper(CreaturePtr new_creature, const uint new_num_cols)

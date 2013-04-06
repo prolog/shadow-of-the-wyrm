@@ -1,4 +1,5 @@
 #include "Game.hpp"
+#include "GameEnvTextKeys.hpp"
 #include "ItemManager.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"

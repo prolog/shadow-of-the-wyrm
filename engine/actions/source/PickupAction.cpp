@@ -1,12 +1,13 @@
 #include <list>
 #include <boost/foreach.hpp>
+#include "ActionTextKeys.hpp"
 #include "Game.hpp"
 #include "Inventory.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "PickupAction.hpp"
-#include "StringConstants.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 

@@ -1,12 +1,13 @@
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
+#include "ActionTextKeys.hpp"
 #include "DropAction.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
-#include "StringConstants.hpp"
+#include "TextMessages.hpp"
 #include "Tile.hpp"
 
 using namespace std;

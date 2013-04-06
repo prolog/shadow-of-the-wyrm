@@ -1,10 +1,12 @@
 #include "ActionManager.hpp"
+#include "ActionTextKeys.hpp"
 #include "ConsumableAction.hpp"
 #include "Conversion.hpp"
 #include "Food.hpp"
 #include "FoodAction.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MessageManager.hpp"
+#include "StatusAilmentTextKeys.hpp"
 
 using namespace std;
 

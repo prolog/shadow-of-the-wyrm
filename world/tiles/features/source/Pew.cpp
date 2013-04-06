@@ -1,6 +1,6 @@
 #include "MaterialFactory.hpp"
 #include "Pew.hpp"
-#include "StringConstants.hpp"
+#include "FeatureDescriptionTextKeys.hpp"
 
 using std::string;
 

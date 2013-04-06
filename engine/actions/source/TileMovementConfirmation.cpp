@@ -1,4 +1,5 @@
 #include "MapUtils.hpp"
+#include "TextMessages.hpp"
 #include "TileMovementConfirmation.hpp"
 
 using namespace std;

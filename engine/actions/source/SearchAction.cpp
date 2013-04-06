@@ -1,3 +1,4 @@
+#include "ActionTextKeys.hpp"
 #include "MessageManager.hpp"
 #include "SearchAction.hpp"
 

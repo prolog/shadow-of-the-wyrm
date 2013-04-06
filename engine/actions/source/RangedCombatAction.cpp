@@ -1,9 +1,11 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "ActionTextKeys.hpp"
 #include "AmmunitionSurvivalCalculator.hpp"
 #include "AnimationTranslator.hpp"
 #include "BresenhamLine.hpp"
 #include "CombatManager.hpp"
+#include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"

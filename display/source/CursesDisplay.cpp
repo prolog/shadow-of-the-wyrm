@@ -8,6 +8,7 @@
 #include "Colours.hpp"
 #include "Conversion.hpp"
 #include "CursesAnimationFactory.hpp"
+#include "EquipmentTextKeys.hpp"
 #include "Log.hpp"
 #include "Menu.hpp"
 #include "CursesConstants.hpp"

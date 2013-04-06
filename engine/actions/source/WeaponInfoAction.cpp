@@ -1,7 +1,7 @@
 #include "DamageCalculatorFactory.hpp"
+#include "EquipmentTextKeys.hpp"
 #include "MessageManager.hpp"
 #include "RangedAttackSpeedCalculator.hpp"
-#include "StringConstants.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponInfoAction.hpp"
 #include "WeaponManager.hpp"

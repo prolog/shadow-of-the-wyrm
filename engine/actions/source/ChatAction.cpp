@@ -1,10 +1,10 @@
 #include <boost/make_shared.hpp>
+#include "ActionTextKeys.hpp"
 #include "ChatAction.hpp"
 #include "Commands.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "MessageManager.hpp"
-#include "StringConstants.hpp"
 
 using namespace std;
 

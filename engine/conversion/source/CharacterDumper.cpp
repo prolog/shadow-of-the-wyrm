@@ -9,6 +9,7 @@
 #include "ReligionManager.hpp"
 #include "SkillsDumper.hpp"
 #include "StatsDumper.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
