@@ -156,7 +156,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::CAST_SPELL)
       {
-        int x = 1;
+        ac = game.actions.cast_spell(creature);
       }
     }
   }

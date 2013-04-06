@@ -25,6 +25,7 @@
 #include "QuestListAction.hpp"
 #include "ReadAction.hpp"
 #include "SearchAction.hpp"
+#include "SpellcastingAction.hpp"
 #include "Serialization.hpp"
 #include "VersionAction.hpp"
 #include "WeaponInfoAction.hpp"
@@ -288,6 +289,13 @@ ActionCost ActionManager::run_script_command(CreaturePtr creature)
   se.run_command(command);
 
   return get_action_cost(creature, 0);
+}
+
+ActionCost ActionManager::cast_spell(CreaturePtr creature)
+{
+  SpellcastingAction sa;
+
+  return get_action_cost(creature, sa.cast_spell(creature));
 }
 
 // Pick up an item, doing any necessary checks first.
