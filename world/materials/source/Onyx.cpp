@@ -1,5 +1,5 @@
 #include "Onyx.hpp"
-#include "StringConstants.hpp"
+#include "MaterialTextKeys.hpp"
 
 using namespace std;
 

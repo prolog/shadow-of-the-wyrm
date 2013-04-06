@@ -17,6 +17,7 @@
 #include "Log.hpp"
 #include "MapCursor.hpp"
 #include "MapUtils.hpp"
+#include "PlayerConstants.hpp"
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"

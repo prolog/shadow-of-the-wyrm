@@ -3,6 +3,7 @@
 #include <boost/make_shared.hpp>
 #include "Creature.hpp"
 #include "DecisionStrategyFactory.hpp"
+#include "PlayerConstants.hpp"
 #include "PlayerDecisionStrategy.hpp"
 #include "Serialize.hpp"
 

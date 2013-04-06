@@ -6,6 +6,7 @@
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
 #include "Environment.hpp"
+#include "FileConstants.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
 #include "Metadata.hpp"
