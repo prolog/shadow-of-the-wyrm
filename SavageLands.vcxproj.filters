@@ -559,6 +559,18 @@
     <Filter Include="Source Files\world\magic\source\unit_tests">
       <UniqueIdentifier>{c73d4e1d-ba13-4af2-84ad-1d1a2fcfb5bd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\strings">
+      <UniqueIdentifier>{43cc4954-5c38-4eda-a28f-e751dab9c8db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\strings\include">
+      <UniqueIdentifier>{d1f78a10-8013-4ca6-8da2-87f17cae4885}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\strings">
+      <UniqueIdentifier>{018c9531-9ace-40ad-a69a-dcbbf19589a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\strings\source">
+      <UniqueIdentifier>{8e155f1e-4fd6-40b7-9884-31db872a783a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -1659,12 +1671,6 @@
     <ClInclude Include="engine\include\SavageLandsEngine.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\StringConstants.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\include\StringTable.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\items\include\IItemFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
@@ -2231,6 +2237,12 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\FeatureAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\StringConstants.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\StringTable.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3395,12 +3407,6 @@
     <ClCompile Include="engine\source\SavageLandsEngine.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\StringConstants.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\StringTable.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\source\unit_tests\CreatureFactory_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
@@ -4228,6 +4234,12 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\WeaponInfoAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\StringConstants.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\StringTable.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
