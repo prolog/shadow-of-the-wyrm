@@ -11,6 +11,7 @@
 #include "ISerializable.hpp"
 #include "MapExit.hpp"
 #include "TileProperties.hpp"
+#include "TileTextKeys.hpp"
 
 typedef std::map<Direction, MapExitPtr> TileExitMap;
 

@@ -4,8 +4,8 @@
 #include "Serialize.hpp"
 #include "SkillFactory.hpp"
 #include "Skills.hpp"
+#include "SkillTextKeys.hpp"
 #include "SkillTypes.hpp"
-#include "StringConstants.hpp"
 #include "StringTable.hpp"
 
 using namespace std;

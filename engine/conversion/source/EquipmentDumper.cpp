@@ -2,6 +2,7 @@
 #include "Conversion.hpp"
 #include "EquipmentDumper.hpp"
 #include "ItemDumper.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 

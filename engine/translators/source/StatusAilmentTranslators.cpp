@@ -1,4 +1,5 @@
 #include "Conversion.hpp"
+#include "StatusAilmentTextKeys.hpp"
 #include "StatusAilmentTranslators.hpp"
 #include "StringTable.hpp"
 

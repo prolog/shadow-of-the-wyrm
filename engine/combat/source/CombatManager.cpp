@@ -1,5 +1,6 @@
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
+#include "CombatTextKeys.hpp"
 #include "CoordUtils.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"

@@ -23,6 +23,7 @@
 #include "DisplayStatistics.hpp"
 #include "MessageManager.hpp"
 #include "Serialize.hpp"
+#include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WorldTimeKeeperCoordinator.hpp"
 

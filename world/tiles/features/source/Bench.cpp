@@ -1,5 +1,5 @@
 #include "Bench.hpp"
-#include "StringConstants.hpp"
+#include "FeatureDescriptionTextKeys.hpp"
 
 Bench::Bench()
 : Feature(MATERIAL_TYPE_IRON)

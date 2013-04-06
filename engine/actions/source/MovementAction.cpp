@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
@@ -15,6 +16,7 @@
 #include "MapUtils.hpp"
 #include "SkillManager.hpp"
 #include "TerrainGeneratorFactory.hpp"
+#include "TextMessages.hpp"
 #include "TileDescriber.hpp"
 #include "TileMovementConfirmation.hpp"
 

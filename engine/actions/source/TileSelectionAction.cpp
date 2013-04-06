@@ -1,5 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "CommandFactoryFactory.hpp"
+#include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "Game.hpp"
 #include "KeyboardCommandMapFactory.hpp"

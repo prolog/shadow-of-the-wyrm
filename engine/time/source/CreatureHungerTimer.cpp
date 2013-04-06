@@ -1,9 +1,9 @@
+#include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CreatureHungerTimer.hpp"
 #include "CombatManager.hpp"
 #include "FoodAction.hpp"
 #include "MessageManager.hpp"
-#include "StringConstants.hpp"
 
 using namespace std;
 

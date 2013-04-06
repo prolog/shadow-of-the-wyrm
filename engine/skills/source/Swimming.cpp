@@ -1,3 +1,4 @@
+#include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "MessageManager.hpp"
 #include "StringConstants.hpp"
