@@ -1,4 +1,5 @@
 #include "Creature.hpp"
+#include "EffectTextKeys.hpp"
 #include "HealingEffect.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"

@@ -26,6 +26,7 @@
 #include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
 #include "WorldTimeKeeperCoordinator.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 
 // Used by serialization code:
 #include "CommandFactoryFactory.hpp"

@@ -14,11 +14,14 @@
 #include "StairwayMovementAction.hpp"
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
+#include "MovementTextKeys.hpp"
 #include "SkillManager.hpp"
 #include "TerrainGeneratorFactory.hpp"
+#include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "TileDescriber.hpp"
 #include "TileMovementConfirmation.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
 

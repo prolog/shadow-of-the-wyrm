@@ -7,6 +7,7 @@
 #include "Conversion.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "Map.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 using std::tolower;

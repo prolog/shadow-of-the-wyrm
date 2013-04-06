@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include "Game.hpp"
+#include "MenuTitleTextKeys.hpp"
 #include "QuestListAction.hpp"
 #include "QuestDescriber.hpp"
 #include "TextDisplayFormatter.hpp"

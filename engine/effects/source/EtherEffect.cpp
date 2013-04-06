@@ -2,7 +2,7 @@
 #include "AdditionalEffectMessages.hpp"
 #include "Creature.hpp"
 #include "EtherEffect.hpp"
-
+#include "EffectTextKeys.hpp"
 using std::string;
 
 EtherEffect::EtherEffect()

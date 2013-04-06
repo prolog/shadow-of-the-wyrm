@@ -5,6 +5,7 @@
 #include "Metadata.hpp"
 #include "Serialize.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

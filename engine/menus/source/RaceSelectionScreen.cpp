@@ -2,8 +2,8 @@
 #include "RaceSelectionScreen.hpp"
 #include "Game.hpp"
 #include "OptionsComponent.hpp"
-#include "StringConstants.hpp"
 #include "TextComponent.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

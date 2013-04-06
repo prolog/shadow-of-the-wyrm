@@ -17,8 +17,8 @@
 #include "Log.hpp"
 #include "Metadata.hpp"
 #include "SavageLandsEngine.hpp"
-#include "StringConstants.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLFileReader.hpp"
 

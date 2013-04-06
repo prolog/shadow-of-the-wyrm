@@ -1,4 +1,5 @@
 #include "MapUtils.hpp"
+#include "TextKeys.hpp"
 #include "TextMessages.hpp"
 #include "TileMovementConfirmation.hpp"
 

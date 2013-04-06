@@ -3,6 +3,7 @@
 #include "Game.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 #include "XMLMapCoordinateReader.hpp"
 #include "XMLMapExitReader.hpp"
 #include "XMLMapFeatureReaders.hpp"

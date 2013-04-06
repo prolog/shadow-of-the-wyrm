@@ -2,7 +2,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "MapUtils.hpp"
-#include <boost/foreach.hpp>
+#include "WorldMapLocationTextKeys.hpp"
 #include <boost/tokenizer.hpp>
 
 using namespace std;

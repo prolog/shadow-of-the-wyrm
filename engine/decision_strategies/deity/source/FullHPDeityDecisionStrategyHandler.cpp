@@ -1,5 +1,5 @@
+#include "DeityTextKeys.hpp"
 #include "FullHPDeityDecisionStrategyHandler.hpp"
-#include "StringConstants.hpp"
 
 using std::string;
 

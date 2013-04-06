@@ -1,5 +1,4 @@
 #include "CombatManager.hpp"
-#include "StringConstants.hpp"
 #include "SwimmingCalculator.hpp"
 #include "SwimmingMovementAccumulationChecker.hpp"
 #include "RNG.hpp"

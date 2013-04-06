@@ -1,6 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "DisplayItemTypeFactory.hpp"
-#include "StringConstants.hpp"
+#include "ItemTypeTextKeys.hpp"
 #include "StringTable.hpp"
 
 DefaultDisplayItemType::DefaultDisplayItemType()

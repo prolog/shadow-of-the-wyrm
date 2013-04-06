@@ -1,10 +1,10 @@
 #include "ClassManager.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
 #include "DeityDecisionStrategyHandlerFactory.hpp"
+#include "DeityTextKeys.hpp"
 #include "MessageManager.hpp"
 #include "PrayerAction.hpp"
 #include "ReligionManager.hpp"
-#include "StringConstants.hpp"
 
 using std::string;
 

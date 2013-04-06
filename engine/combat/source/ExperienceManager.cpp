@@ -5,6 +5,7 @@
 #include "LevelScript.hpp"
 #include "MessageManager.hpp"
 #include "RNG.hpp"
+#include "TextKeys.hpp"
 
 using std::string;
 

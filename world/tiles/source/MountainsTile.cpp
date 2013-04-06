@@ -1,5 +1,5 @@
 #include "MountainsTile.hpp"
-#include "StringConstants.hpp"
+#include "TileDangerConfirmationKeys.hpp"
 
 using std::string;
 

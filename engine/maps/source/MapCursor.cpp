@@ -1,5 +1,6 @@
 #include "CoordUtils.hpp"
 #include "MapCursor.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 
 using std::string;
 

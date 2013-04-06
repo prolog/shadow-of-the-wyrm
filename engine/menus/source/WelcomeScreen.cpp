@@ -2,8 +2,8 @@
 #include "global_prototypes.hpp"
 #include "Metadata.hpp"
 #include "OptionsComponent.hpp"
-#include "StringConstants.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;

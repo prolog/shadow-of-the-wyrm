@@ -1,14 +1,17 @@
 #include <sstream>
 #include "global_prototypes.hpp"
 #include "CharacterDumper.hpp"
+#include "ColourTextKeys.hpp"
 #include "Conversion.hpp"
 #include "EquipmentDumper.hpp"
 #include "Game.hpp"
 #include "InventoryDumper.hpp"
 #include "Metadata.hpp"
 #include "ReligionManager.hpp"
+#include "SizeTextKeys.hpp"
 #include "SkillsDumper.hpp"
 #include "StatsDumper.hpp"
+#include "TextKeys.hpp"
 #include "TextMessages.hpp"
 
 using namespace std;

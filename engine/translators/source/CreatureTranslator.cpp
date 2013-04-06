@@ -9,7 +9,7 @@
 #include "Naming.hpp"
 #include "StatusAilmentTranslators.hpp"
 #include "StringTable.hpp"
-#include "StringConstants.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

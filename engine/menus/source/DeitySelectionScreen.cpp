@@ -4,7 +4,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "OptionsComponent.hpp"
-#include "StringConstants.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

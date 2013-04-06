@@ -12,7 +12,9 @@
 #include "RNG.hpp"
 #include "CellularAutomataGenerator.hpp"
 #include "MapProperties.hpp"
+#include "TileExtraDescriptionKeys.hpp"
 #include "VillageTile.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
 using boost::dynamic_pointer_cast;
