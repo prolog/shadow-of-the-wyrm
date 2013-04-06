@@ -10,6 +10,7 @@
 #include "Resistances.hpp"
 #include "SettlementTypes.hpp"
 #include "StatisticsModifier.hpp"
+#include "tiles.hpp"
 
 class Race
 {

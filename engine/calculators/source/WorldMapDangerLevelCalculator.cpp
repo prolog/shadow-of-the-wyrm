@@ -1,8 +1,8 @@
 #include <algorithm>
 #include "CoordUtils.hpp"
 #include "CreatureFeatures.hpp"
-#include "StringConstants.hpp"
 #include "WorldMapDangerLevelCalculator.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
 

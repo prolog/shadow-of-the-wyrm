@@ -1,5 +1,5 @@
 #include "DislikeDeityDecisionStrategyHandler.hpp"
-#include "StringConstants.hpp"
+#include "DeityTextKeys.hpp"
 
 using std::string;
 

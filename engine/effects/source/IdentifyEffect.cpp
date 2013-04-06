@@ -1,11 +1,11 @@
 #include <boost/foreach.hpp>
 #include "ActionManager.hpp"
 #include "Creature.hpp"
+#include "EffectTextKeys.hpp"
 #include "IdentifyEffect.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "Serialize.hpp"
-#include "StringConstants.hpp"
 
 using namespace std;
 

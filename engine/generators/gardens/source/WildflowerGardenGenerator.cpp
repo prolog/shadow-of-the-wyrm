@@ -1,7 +1,6 @@
 #include "WildflowerGardenGenerator.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
-#include "StringConstants.hpp"
 #include "TileGenerator.hpp"
 
 using std::string;

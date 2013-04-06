@@ -1,6 +1,6 @@
 #include "Creature.hpp"
+#include "EffectTextKeys.hpp"
 #include "NullEffect.hpp"
-#include "StringConstants.hpp"
 
 using std::string;
 

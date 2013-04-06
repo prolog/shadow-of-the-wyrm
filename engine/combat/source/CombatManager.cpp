@@ -14,6 +14,7 @@
 #include "MessageManager.hpp"
 #include "SkillManager.hpp"
 #include "SpeedCalculatorFactory.hpp"
+#include "TextKeys.hpp"
 #include "RNG.hpp"
 #include "WeaponManager.hpp"
 

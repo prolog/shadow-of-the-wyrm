@@ -11,6 +11,7 @@
 #include "MapProperties.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
 

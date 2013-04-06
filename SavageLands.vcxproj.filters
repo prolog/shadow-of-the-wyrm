@@ -2238,9 +2238,6 @@
     <ClInclude Include="engine\actions\include\FeatureAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\strings\include\StringConstants.hpp">
-      <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\strings\include\StringTable.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
@@ -2287,6 +2284,48 @@
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\strings\include\EquipmentTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\TileDangerConfirmationKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\TileExtraDescriptionKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\EffectTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\DeityTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\MovementTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\WorldMapLocationTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\MenuTitleTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\PromptTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\ItemTypeTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\ResistanceTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\SizeTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\ColourTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\DateTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\TextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -4280,9 +4319,6 @@
     <ClCompile Include="engine\actions\source\WeaponInfoAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\strings\source\StringConstants.cpp">
-      <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\strings\source\StringTable.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
@@ -4329,6 +4365,48 @@
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\EquipmentTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\TileDangerConfirmationKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\TileExtraDescriptionKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\EffectTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\DeityTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\MovementTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\WorldMapLocationTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\MenuTitleTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\PromptTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\ItemTypeTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\ResistanceTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\SizeTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\ColourTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\DateTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\TextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>

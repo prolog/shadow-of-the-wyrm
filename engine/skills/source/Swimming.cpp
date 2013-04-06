@@ -1,7 +1,6 @@
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "MessageManager.hpp"
-#include "StringConstants.hpp"
 #include "Swimming.hpp"
 #include "SwimmingCalculator.hpp"
 

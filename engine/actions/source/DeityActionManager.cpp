@@ -3,7 +3,6 @@
 #include "DeityDecisionStrategyHandlerFactory.hpp"
 #include "Game.hpp"
 #include "MessageManager.hpp"
-#include "StringConstants.hpp"
 
 using namespace std;
 

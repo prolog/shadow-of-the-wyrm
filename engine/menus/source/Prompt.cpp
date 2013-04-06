@@ -1,5 +1,5 @@
 #include "Prompt.hpp"
-#include "StringConstants.hpp"
+#include "PromptTextKeys.hpp"
 #include "StringTable.hpp"
 
 using namespace std;

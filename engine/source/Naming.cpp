@@ -1,6 +1,7 @@
 #include <algorithm>
 #include "Naming.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

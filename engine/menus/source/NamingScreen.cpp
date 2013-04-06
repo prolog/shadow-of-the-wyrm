@@ -1,6 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "NamingScreen.hpp"
-#include "StringConstants.hpp"
+#include "PromptTextKeys.hpp"
 
 using namespace std;
 

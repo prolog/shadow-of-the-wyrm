@@ -1,7 +1,7 @@
 #include "Commands.hpp"
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
-#include "StringConstants.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

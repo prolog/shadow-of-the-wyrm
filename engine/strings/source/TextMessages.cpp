@@ -4,9 +4,9 @@
 #include "EquipmentTextKeys.hpp"
 #include "ItemDescriber.hpp"
 #include "TextMessages.hpp"
-#include "StringConstants.hpp"
 #include "EntranceTextKeys.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

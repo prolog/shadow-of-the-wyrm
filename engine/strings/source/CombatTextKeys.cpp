@@ -2,6 +2,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "CombatTextKeys.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

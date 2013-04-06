@@ -17,7 +17,7 @@
 #include "RaceSelectionScreen.hpp"
 #include "Serialization.hpp"
 #include "SexSelectionScreen.hpp"
-#include "StringConstants.hpp"
+#include "TextKeys.hpp"
 #include "WelcomeScreen.hpp"
 
 using namespace std;

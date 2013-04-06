@@ -2,6 +2,7 @@
 #include <boost/make_shared.hpp>
 #include "Skills.hpp"
 #include "StringTable.hpp"
+#include "tiles.hpp"
 #include "XMLRacesReader.hpp"
 #include "XMLDataStructures.hpp"
 #include "XMLResistancesReader.hpp"

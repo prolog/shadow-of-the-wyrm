@@ -1,6 +1,7 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
+#include "PromptTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextDisplayScreen.hpp"
 

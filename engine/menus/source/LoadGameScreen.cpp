@@ -7,6 +7,7 @@
 #include "Serialization.hpp"
 #include "StringTable.hpp"
 #include "TextComponent.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

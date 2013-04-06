@@ -2,6 +2,7 @@
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
+#include "MovementTextKeys.hpp"
 #include "StairwayMovementAction.hpp"
 
 using namespace std;

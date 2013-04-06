@@ -3,8 +3,8 @@
 #include "TextComponent.hpp"
 #include "OptionsComponent.hpp"
 #include "SexSelectionScreen.hpp"
-#include "StringConstants.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 

@@ -4,8 +4,8 @@
 #include "global_prototypes.hpp"
 #include "Resistances.hpp"
 #include "ResistanceFactory.hpp"
+#include "ResistanceTextKeys.hpp"
 #include "Serialize.hpp"
-#include "StringConstants.hpp"
 #include "StringTable.hpp"
 
 using namespace std;

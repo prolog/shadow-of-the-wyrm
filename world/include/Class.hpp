@@ -3,6 +3,7 @@
 #include <map>
 #include <string>
 #include "common.hpp"
+#include "EquipmentTypes.hpp"
 #include "InitialItem.hpp"
 #include "Resistances.hpp"
 #include "Skills.hpp"

@@ -7,7 +7,6 @@
 #include "MapCursor.hpp"
 #include "MessageManager.hpp"
 #include "Serialize.hpp"
-#include "StringConstants.hpp"
 #include "TileDescription.hpp"
 #include "TileSelectionAction.hpp"
 #include "TileSelectionCommandProcessor.hpp"

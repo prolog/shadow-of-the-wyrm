@@ -1,4 +1,5 @@
 #pragma once
+#include "AttackTypes.hpp"
 #include "Creature.hpp"
 
 // This class checks to see if the targetted tile is in range for the

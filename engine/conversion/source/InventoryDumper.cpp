@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "InventoryDumper.hpp"
 #include "ItemDumper.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
