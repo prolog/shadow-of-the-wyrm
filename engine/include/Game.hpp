@@ -79,7 +79,7 @@ class Game : public ISerializable
     bool should_keep_playing() const; // Check to see if the "game over" flag's been set.
 
     // Update the physical display
-    void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map);
+    void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map, const bool reloaded_game);
 
     // Additional operations will eventually be needed to do many
     // worlds and rebirth.
@@ -126,7 +126,7 @@ class Game : public ISerializable
 
     // Game commands - protected, so they should only be called by SavageLandsEngine
     // or CommandProcessor.
-    ActionCost process_action_for_creature(CreaturePtr current_creature, MapPtr current_map);
+    ActionCost process_action_for_creature(CreaturePtr current_creature, MapPtr current_map, const bool reloaded_game);
 
     // Re-gets the map, and restarts the game loop
     void reload_map();

@@ -110,7 +110,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
       manager.add_new_message(look_msg);
       manager.send();
       
-      game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map());
+      game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
     }
     
     while (continue_select_tiles)
@@ -132,7 +132,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
       // Update the screen after the creature's choice
       if (creature->get_is_player())
       {
-        game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map());        
+        game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);        
       }
 
       if (!continue_select_tiles)
