@@ -172,7 +172,7 @@ uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity
   if (creature && creature->get_is_player())
   {
     Game& game = Game::instance();
-    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map());
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
               
     // Prompt the user in the message buffer
     string quantity_prompt = StringTable::get(ActionTextKeys::ACTION_DROP_QUANTITY_PROMPT);

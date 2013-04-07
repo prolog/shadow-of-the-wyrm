@@ -206,7 +206,7 @@ void Game::create_new_world(CreaturePtr creature)
 }
 
 // Update the display: the statistics area, and the current map.
-void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr fov_map)
+void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr fov_map, const bool reloaded_game)
 {
   if (current_player && current_map)
   {
@@ -221,7 +221,7 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
     Coordinate display_coord = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, current_map, reference_coords);
     loaded_map_details.update_display_coord(display_coord);
-    bool redraw_needed = loaded_map_details.requires_full_map_redraw();
+    bool redraw_needed = loaded_map_details.requires_full_map_redraw() || reloaded_game;
 
     DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords, redraw_needed);
     
@@ -276,17 +276,11 @@ void Game::go()
 
     map<string, CreaturePtr> map_creatures = current_map->get_creatures();
 
-    // JCD FIXME FIXME FIXME!
     if (!reloaded_game)
     {
       ac.reset_if_necessary(current_map->get_permanent(), current_map->get_map_id(), map_creatures);
     }
-    else
-    {
-      // Reset the flag, now that everything has been loaded correctly.
-      reloaded_game = false;
-    }
-
+ 
     Calendar& calendar = worlds[current_world_ix]->get_calendar();
     
     while (ac.has_actions())
@@ -322,7 +316,7 @@ void Game::go()
         // Player may have been killed by some time-related effect.
         if (!keep_playing) break;
                 
-        ActionCost action_cost = process_action_for_creature(current_creature, current_map);
+        ActionCost action_cost = process_action_for_creature(current_creature, current_map, reloaded_game);
 
         // Remove the creature's current action.  This is done after the "keep_playing"
         // check so that saving, etc., does not advance the turn.
@@ -338,6 +332,14 @@ void Game::go()
           reload_game_loop = false;
           break;
         }
+
+        if (current_creature->get_is_player())
+        {
+          // Now that we've ensured that the ActionCoordinator isn't reset,
+          // and that a full window redraw has been done, we can reset the
+          // reloaded_game variable so that it won't override any game logic.
+          reloaded_game = false;
+        }
       }
     }
   }
@@ -352,7 +354,7 @@ void Game::process_elapsed_time(Calendar& calendar, const ActionCost& next_actio
 }
 
 // Get and process the action for the current creature
-ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map)
+ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPtr current_map, const bool reloaded_game)
 {
   ActionCost action_cost;
   
@@ -418,7 +420,8 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         
         if (current_creature->get_is_player())
         {
-          update_display(current_creature, current_map, fov_map);
+          // Do a full redraw if we've changed map, or if we've just reloaded the game.
+          update_display(current_creature, current_map, fov_map, reloaded_game);
         }
 
         CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
