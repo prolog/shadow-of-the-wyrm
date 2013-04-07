@@ -413,6 +413,8 @@ ActionCost ActionManager::save(CreaturePtr creature)
   Serialization::save(creature);
   quit(creature);
   
+  // Setting the action cost to 1 after everything has been saved ensures
+  // that the user doesn't have to press another key to actually quit.
   return get_action_cost(creature, 1);
 }
 

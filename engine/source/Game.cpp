@@ -251,9 +251,9 @@ void Game::go()
   // To see if this is a new game, check the ActionCoordinator to see if there is
   // a map, yet.  If there isn't, the game hasn't been restored, so it must be a
   // new game.
-  bool new_game = ac.get_current_map_id().empty();
+  bool reloaded_game = !ac.get_current_map_id().empty();
 
-  string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), new_game);
+  string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
 
   MessageManager& manager = MessageManager::instance();
   manager.add_new_message(welcome_message);
@@ -276,7 +276,16 @@ void Game::go()
 
     map<string, CreaturePtr> map_creatures = current_map->get_creatures();
 
-    ac.reset_if_necessary(current_map->get_permanent(), current_map->get_map_id(), map_creatures);
+    // JCD FIXME FIXME FIXME!
+    if (!reloaded_game)
+    {
+      ac.reset_if_necessary(current_map->get_permanent(), current_map->get_map_id(), map_creatures);
+    }
+    else
+    {
+      // Reset the flag, now that everything has been loaded correctly.
+      reloaded_game = false;
+    }
 
     Calendar& calendar = worlds[current_world_ix]->get_calendar();
     
