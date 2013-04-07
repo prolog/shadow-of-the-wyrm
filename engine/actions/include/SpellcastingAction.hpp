@@ -10,6 +10,9 @@ class SpellcastingAction : public IActionManager
   protected:
     friend class ActionManager;
     SpellcastingAction();
+
+    void add_no_magical_knowledge_message() const;
+    void add_invalid_spellcasting_location_message() const;
     
     ActionCostValue get_action_cost_value() const;
 };
