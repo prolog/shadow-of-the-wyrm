@@ -1,6 +1,7 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "Conversion.hpp"
 #include "EquipmentTextKeys.hpp"
+#include "TextKeys.hpp"
 #include "StringTable.hpp"
 
 using namespace std;

@@ -1,6 +1,8 @@
 #include <sstream>
 #include "Conversion.hpp"
 #include "StatsDumper.hpp"
+#include "TextKeys.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 

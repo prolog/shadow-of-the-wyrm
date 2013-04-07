@@ -1,5 +1,6 @@
 #include "NullSpeedCalculator.hpp"
 #include "SecondaryPhysicalAttackSpeedCalculator.hpp"
+#include "Weapon.hpp"
 
 using boost::dynamic_pointer_cast;
 

@@ -14,6 +14,7 @@ class SpellKnowledge : public ISerializable
 
     void set_spell_knowledge(const std::string& spell_id, const uint cast_count);
     uint get_spell_knowledge(const std::string& spell_id) const;
+    uint count_spells_known() const;
 
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);

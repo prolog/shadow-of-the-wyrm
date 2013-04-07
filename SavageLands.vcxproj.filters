@@ -571,6 +571,21 @@
     <Filter Include="Source Files\engine\strings\source">
       <UniqueIdentifier>{8e155f1e-4fd6-40b7-9884-31db872a783a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\magic">
+      <UniqueIdentifier>{1fa534be-bb46-4237-b794-07b8d705e70d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\magic\include">
+      <UniqueIdentifier>{13888eb0-5f7f-4a1a-96e6-be9be07896b8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\magic">
+      <UniqueIdentifier>{1f6fce60-3228-48f7-ac62-83823355e2e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\magic\source">
+      <UniqueIdentifier>{7af69cc6-a272-452f-9927-0ea42ab37ac0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\magic\source\unit_tests">
+      <UniqueIdentifier>{56730480-2653-4234-b0bf-3d5ab5a357ac}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2330,6 +2345,9 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\SpellcastingAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\MagicalAbilityChecker.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4414,6 +4432,12 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\SpellcastingAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\MagicalAbilityChecker.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\unit_tests\MagicalAbilityChecker_test.cpp">
+      <Filter>Source Files\engine\magic\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

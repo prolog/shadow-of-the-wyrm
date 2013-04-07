@@ -35,3 +35,18 @@ TEST(SL_World_Magic_SpellKnowledge, saveload)
   EXPECT_TRUE(sk == sk2);
 }
 
+TEST(SL_World_Magic_SpellKnowledge, count_spells_known)
+{
+  SpellKnowledge sk;
+
+  EXPECT_EQ(0, sk.count_spells_known());
+
+  sk.set_spell_knowledge("frobozz", 12);
+
+  EXPECT_EQ(1, sk.count_spells_known());
+
+  sk.set_spell_knowledge("blaze", 3);
+  sk.set_spell_knowledge("pontificate", 4);
+
+  EXPECT_EQ(3, sk.count_spells_known());
+}
