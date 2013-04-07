@@ -1,6 +1,7 @@
 #include <boost/make_shared.hpp>
 #include "AdditionalEffectMessages.hpp"
 #include "Creature.hpp"
+#include "EffectTextKeys.hpp"
 #include "MessageManager.hpp"
 #include "FruitJuiceEffect.hpp"
 

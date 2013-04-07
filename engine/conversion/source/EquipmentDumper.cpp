@@ -2,7 +2,9 @@
 #include "Conversion.hpp"
 #include "EquipmentDumper.hpp"
 #include "ItemDumper.hpp"
+#include "TextKeys.hpp"
 #include "TextMessages.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
