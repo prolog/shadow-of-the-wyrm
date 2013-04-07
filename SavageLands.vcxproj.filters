@@ -2349,6 +2349,9 @@
     <ClInclude Include="engine\magic\include\MagicalAbilityChecker.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\strings\include\SpellcastingTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4438,6 +4441,9 @@
     </ClCompile>
     <ClCompile Include="engine\magic\source\unit_tests\MagicalAbilityChecker_test.cpp">
       <Filter>Source Files\engine\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\SpellcastingTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
