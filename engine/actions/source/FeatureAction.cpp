@@ -41,6 +41,7 @@ ActionCostValue FeatureAction::apply(CreaturePtr creature)
     if (num_features == 0)
     {
       inform_no_features(creature);
+      send_application_messages();
     }
     else if (num_features == 1)
     {
