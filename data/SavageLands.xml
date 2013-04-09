@@ -3482,6 +3482,7 @@
 			<MagicCategory>3003</MagicCategory>
 			<APCost>2</APCost>
 			<Speed>1</Speed>
+			<Range>0</Range>
 		</Spell>
 	</Spells>
 	<Tiles>

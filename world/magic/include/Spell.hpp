@@ -26,12 +26,16 @@ class Spell
     void set_speed(const int new_speed);
     int get_speed() const;
 
+    void set_range(const uint new_range);
+    uint get_range() const;
+
   protected:
     std::string spell_id;
     std::string spell_name_sid;
     SkillType magic_category;
     uint ap_cost;
     int speed;
+    uint range;
 };
 
 typedef std::map<std::string, Spell> SpellMap;
