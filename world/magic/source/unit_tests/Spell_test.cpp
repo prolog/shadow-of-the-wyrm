@@ -9,6 +9,7 @@ TEST(SL_World_Magic_Spell, equality_operator)
   sp.set_magic_category(SKILL_MAGIC_PRIMORDIAL);
   sp.set_ap_cost(5);
   sp.set_speed(4);
+  sp.set_range(1);
 
   EXPECT_FALSE(sp == sp2);
 

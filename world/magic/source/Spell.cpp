@@ -3,7 +3,7 @@
 using namespace std;
 
 Spell::Spell()
-: magic_category(SKILL_MAGIC_ARCANE), ap_cost(0), speed(1)
+: magic_category(SKILL_MAGIC_ARCANE), ap_cost(0), speed(1), range(0)
 {
 }
 
@@ -16,6 +16,7 @@ bool Spell::operator==(const Spell& spell)
   result = result && (magic_category == spell.magic_category);
   result = result && (ap_cost == spell.ap_cost);
   result = result && (speed == spell.speed);
+  result = result && (range == spell.range);
 
   return result;
 }
@@ -68,6 +69,16 @@ void Spell::set_speed(const int new_speed)
 int Spell::get_speed() const
 {
   return speed;
+}
+
+void Spell::set_range(const uint new_range)
+{
+  range = new_range;
+}
+
+uint Spell::get_range() const
+{
+  return range;
 }
 
 #ifdef UNIT_TESTS
