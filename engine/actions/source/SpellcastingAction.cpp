@@ -1,9 +1,17 @@
+#include <boost/make_shared.hpp>
+#include "Conversion.hpp"
 #include "SpellcastingAction.hpp"
 #include "Game.hpp"
 #include "MagicalAbilityChecker.hpp"
+#include "MagicCommandFactory.hpp"
+#include "MagicCommandProcessor.hpp"
+#include "MagicKeyboardCommandMap.hpp"
 #include "MessageManager.hpp"
 #include "SpellcastingTextKeys.hpp"
+#include "SpellSelectionScreen.hpp"
 #include "StringTable.hpp"
+
+using namespace std;
 
 SpellcastingAction::SpellcastingAction()
 {
@@ -35,7 +43,34 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
       }
       else
       {
-        // JCD FIXME
+        if (creature->get_is_player())
+        {
+          CommandFactoryPtr command_factory    = boost::make_shared<MagicCommandFactory>();
+          KeyboardCommandMapPtr kb_command_map = boost::make_shared<MagicKeyboardCommandMap>();
+
+          Game& game = Game::instance();
+          SpellSelectionScreen sss(game.get_display(), creature);
+
+          int input = sss.display().at(0);
+
+          DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+      
+          if (decision_strategy)
+          {
+            // Get the actual command, signalling to the decision function that
+            // input has been provided (don't try to get the input twice).
+            CommandPtr magic_command = decision_strategy->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, &input);
+
+            action_cost_value = MagicCommandProcessor::process(creature, magic_command);
+          }
+
+          // ...
+        }
+        else
+        {
+          // JCD FIXME - Change this once creatures with magic are added to AI
+          // considerations...
+        }
       }
     }
   }

@@ -24,7 +24,13 @@ DecisionStrategy* PlayerDecisionStrategy::copy()
 
 // The player's decision is easy: just read a command from the keyboard, and then get a CommandPtr
 // based on that keyboard input, the provided KeyboardCommandMapPtr, and the CommandFactoryPtr.
-CommandPtr PlayerDecisionStrategy::get_decision(const string& creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map)
+CommandPtr PlayerDecisionStrategy::get_nonmap_decision(const string& creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p)
+{
+  MapPtr nullmap;
+  return get_decision(creature_id, command_factory, keyboard_commands, nullmap, key_p);
+}
+
+CommandPtr PlayerDecisionStrategy::get_decision(const string& creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map, int* key_p)
 {
   // view_map is ignored - keyboard input is used, instead.
   CommandPtr player_command;
@@ -33,7 +39,17 @@ CommandPtr PlayerDecisionStrategy::get_decision(const string& creature_id, Comma
   {
     while (!player_command)
     {
-      int key = controller->get_char_as_int();
+      int key = -1;
+
+      if (!key_p)
+      {
+        key = controller->get_char_as_int();
+      }
+      else
+      {
+        key = *key_p;
+      }
+
       string command_key_s = keyboard_commands->get_command_type(Integer::to_string(key));
       player_command = command_factory->create(key, command_key_s);
     }
