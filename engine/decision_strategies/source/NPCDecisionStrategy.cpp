@@ -29,7 +29,13 @@ bool NPCDecisionStrategy::get_confirmation()
 
 // The basic decision structure for NPCs.  The individual get_decision_for functions are pure virtual within this class,
 // and implemented by concrete decision strategies.
-CommandPtr NPCDecisionStrategy::get_decision(const string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map)
+CommandPtr NPCDecisionStrategy::get_nonmap_decision(const string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p)
+{
+  MapPtr nullmap;
+  return get_decision(this_creature_id, command_factory, keyboard_commands, nullmap, key_p);
+}
+
+CommandPtr NPCDecisionStrategy::get_decision(const string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map, int* key_p)
 {
   CommandPtr command;
   

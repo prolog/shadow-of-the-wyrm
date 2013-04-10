@@ -586,6 +586,21 @@
     <Filter Include="Source Files\engine\magic\source\unit_tests">
       <UniqueIdentifier>{56730480-2653-4234-b0bf-3d5ab5a357ac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\commands\magic">
+      <UniqueIdentifier>{7e39cf34-aa8b-4cf7-864a-112cf7bb8857}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\magic\include">
+      <UniqueIdentifier>{aaa50417-a677-40a4-93e3-766e4ade784b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\magic">
+      <UniqueIdentifier>{64cbff2b-1824-4159-a2af-d0e65842248a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\magic\source">
+      <UniqueIdentifier>{c59dbe34-2aff-47bd-ab45-617bff264929}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\magic\source\unit_tests">
+      <UniqueIdentifier>{6ec8bfbf-2811-4fd5-80ae-e06f7ebf7ede}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2351,6 +2366,24 @@
     </ClInclude>
     <ClInclude Include="engine\strings\include\SpellcastingTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\menus\include\SpellSelectionScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\magic\include\MagicCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\magic\include\MagicCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\magic\include\MagicCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\magic\include\MagicCommands.hpp">
+      <Filter>Header Files\engine\commands\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\magic\include\MagicKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\magic\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4444,6 +4477,30 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\SpellcastingTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\SpellSelectionScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\magic\source\MagicCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\magic\source\MagicCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\magic\source\MagicCommandProcessor.cpp">
+      <Filter>Source Files\engine\commands\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\magic\source\MagicCommands.cpp">
+      <Filter>Source Files\engine\commands\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\magic\source\MagicKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\magic\source\unit_tests\MagicCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\magic\source\unit_tests\MagicKeyboardCommandMap_test.cpp">
+      <Filter>Source Files\engine\commands\magic\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
