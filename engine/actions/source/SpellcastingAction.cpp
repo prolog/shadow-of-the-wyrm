@@ -21,6 +21,10 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 {
   ActionCostValue action_cost_value = 0;
 
+  // variable used to control whether to keep looping for input on the 
+  // spellcasting screen.
+  bool cast_spells = true;
+
   if (creature)
   {
     MagicalAbilityChecker mac;
@@ -49,22 +53,29 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
           KeyboardCommandMapPtr kb_command_map = boost::make_shared<MagicKeyboardCommandMap>();
 
           Game& game = Game::instance();
-          SpellSelectionScreen sss(game.get_display(), creature);
 
-          int input = sss.display().at(0);
-
-          DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
-      
-          if (decision_strategy)
+          while (cast_spells)
           {
-            // Get the actual command, signalling to the decision function that
-            // input has been provided (don't try to get the input twice).
-            CommandPtr magic_command = decision_strategy->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, &input);
+            SpellSelectionScreen sss(game.get_display(), creature);
 
-            action_cost_value = MagicCommandProcessor::process(creature, magic_command);
+            int input = sss.display().at(0);
+
+            DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+      
+            if (decision_strategy)
+            {
+              // Get the actual command, signalling to the decision function that
+              // input has been provided (don't try to get the input twice).
+              CommandPtr magic_command = decision_strategy->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, &input);
+
+              action_cost_value = MagicCommandProcessor::process(creature, magic_command);
+            }
+
+            if (!decision_strategy || action_cost_value == -1)
+            {
+              cast_spells = false;
+            }
           }
-
-          // ...
         }
         else
         {
