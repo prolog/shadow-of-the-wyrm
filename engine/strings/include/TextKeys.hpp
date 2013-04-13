@@ -88,6 +88,8 @@ class TextKeys
     static const std::string ARCANA_POINTS;
     static const std::string ARCANA_POINTS_ABRV;
 
+    static const std::string RANGE_ABRV;
+
     static const std::string EVADE;
     static const std::string EVADE_ABRV;
     static const std::string SOAK;

@@ -92,6 +92,7 @@ const string TextKeys::HIT_POINTS        = "HIT_POINTS";
 const string TextKeys::HIT_POINTS_ABRV   = "HIT_POINTS_ABRV";
 const string TextKeys::ARCANA_POINTS     = "ARCANA_POINTS";
 const string TextKeys::ARCANA_POINTS_ABRV = "ARCANA_POINTS_ABRV";
+const string TextKeys::RANGE_ABRV        = "RANGE_ABRV";
 
 const string TextKeys::EVADE             = "EVADE";
 const string TextKeys::EVADE_ABRV        = "EVADE_ABRV";
