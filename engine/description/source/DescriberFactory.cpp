@@ -3,6 +3,7 @@
 #include "DescriberFactory.hpp"
 #include "FeatureDescriber.hpp"
 #include "InventoryDescriber.hpp"
+#include "SpellDescriber.hpp"
 #include "TileDescriber.hpp"
 
 DescriberFactory::DescriberFactory()
@@ -34,5 +35,11 @@ IDescriberPtr DescriberFactory::create_describer(FeaturePtr feature)
 IDescriberPtr DescriberFactory::create_describer(const Inventory& inv)
 {
   IDescriberPtr describer = boost::make_shared<InventoryDescriber>(inv);
+  return describer;
+}
+
+IDescriberPtr DescriberFactory::create_describer(const Spell& spell)
+{
+  IDescriberPtr describer = boost::make_shared<SpellDescriber>(spell);
   return describer;
 }

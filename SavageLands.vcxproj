@@ -260,6 +260,7 @@
     <ClInclude Include="engine\description\include\InventoryDescriber.hpp" />
     <ClInclude Include="engine\description\include\ItemDescriber.hpp" />
     <ClInclude Include="engine\description\include\QuestDescriber.hpp" />
+    <ClInclude Include="engine\description\include\SpellDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescription.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
@@ -971,6 +972,7 @@
     <ClCompile Include="engine\description\source\InventoryDescriber.cpp" />
     <ClCompile Include="engine\description\source\ItemDescriber.cpp" />
     <ClCompile Include="engine\description\source\QuestDescriber.cpp" />
+    <ClCompile Include="engine\description\source\SpellDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescription.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />

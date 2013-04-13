@@ -2385,6 +2385,9 @@
     <ClInclude Include="engine\commands\magic\include\MagicKeyboardCommandMap.hpp">
       <Filter>Header Files\engine\commands\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\description\include\SpellDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4501,6 +4504,9 @@
     </ClCompile>
     <ClCompile Include="engine\commands\magic\source\unit_tests\MagicKeyboardCommandMap_test.cpp">
       <Filter>Source Files\engine\commands\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\SpellDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

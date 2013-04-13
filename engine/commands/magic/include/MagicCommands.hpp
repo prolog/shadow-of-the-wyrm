@@ -1,10 +1,20 @@
 #pragma once
 #include "Command.hpp"
 
-class SelectSpellCommand : public Command
+class SpellCommand : public Command
 {
   public:
-    SelectSpellCommand();
+    int get_spell_index() const;
+
+  protected:
+    SpellCommand(const int spell_idx);
+    int spell_index;
+};
+
+class SelectSpellCommand : public SpellCommand
+{
+  public:
+    SelectSpellCommand(const int spell_idx);
     
 //    virtual EquipmentWornLocation get_equipment_worn_location() const = 0;
 };

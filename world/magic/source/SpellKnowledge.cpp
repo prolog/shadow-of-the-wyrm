@@ -37,6 +37,11 @@ uint SpellKnowledge::count_spells_known() const
   return spell_knowledge.size();
 }
 
+SpellKnowledgeMap SpellKnowledge::get_known_spells() const
+{
+  return spell_knowledge;
+}
+
 bool SpellKnowledge::serialize(ostream& stream)
 {
   size_t num_spells = spell_knowledge.size();

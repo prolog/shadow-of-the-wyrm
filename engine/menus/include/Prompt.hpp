@@ -30,11 +30,22 @@ class Prompt
     void set_type(const PromptType new_type);
     PromptType get_type() const;
 
+    // Whether or not the input must be part of the range specified by the
+    // menu.  Normally, this strict checking is what is desired.  For things
+    // like the race/class selection screen, it doesn't make sense to pick
+    // anything other than the options given.  But for in-game menus like
+    // the spellcasting screen, where there are legitimate options that are
+    // not in the menu ([z] to Exit, etc), the game should be more permissive,
+    // and then delegate to the command processing mechanisms.
+    void set_accept_any_input(const bool new_accept_any_input);
+    bool get_accept_any_input() const;
+
   protected:
     virtual void initialize();
     std::string text_sid;
     PromptLocation location;
     PromptType type;
+    bool accept_any_input;
 };
 
 class AnyKeyPrompt : public Prompt
