@@ -15,6 +15,24 @@ bool MagicalAbilityChecker::has_magical_knowledge(CreaturePtr creature) const
   return has_knowledge;
 }
 
+bool MagicalAbilityChecker::has_sufficient_power(CreaturePtr creature, const Spell& spell) const
+{
+  if (creature)
+  {
+    uint ap_cost = spell.get_ap_cost();
+    int creature_ap = creature->get_arcana_points().get_current();
+
+    if (creature_ap > 0)
+    {
+      uint creature_uap = static_cast<uint>(creature_ap);
+
+      if (creature_uap >= ap_cost) return true;
+    }
+  }
+
+  return false;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/MagicalAbilityChecker_test.cpp"
 #endif

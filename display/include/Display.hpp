@@ -43,6 +43,7 @@ class Display : public ISerializable
 
     // Draws the map
 	  virtual void draw(const DisplayMap& current_map) = 0;
+    virtual void redraw() = 0;
 
     // Draws on a portion of the map area.
     virtual void draw_update_map(const DisplayMap& update_map) = 0;

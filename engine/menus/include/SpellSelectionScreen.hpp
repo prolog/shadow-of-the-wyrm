@@ -10,6 +10,8 @@ class SpellSelectionScreen : public Menu
   public:
     SpellSelectionScreen(DisplayPtr new_display, CreaturePtr new_creature);
 
+    std::string get_selected_spell(const char selection) const;
+
   protected:
     void initialize();
 
