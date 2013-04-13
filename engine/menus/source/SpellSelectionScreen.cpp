@@ -20,6 +20,21 @@ SpellSelectionScreen::SpellSelectionScreen(DisplayPtr new_display, CreaturePtr p
   initialize();
 }
 
+string SpellSelectionScreen::get_selected_spell(const char selection) const
+{
+  string spell_id;
+
+  map<char, string>::const_iterator selection_map_it = menu_selection_to_spell_id_map.find(selection);
+
+  if (selection_map_it != menu_selection_to_spell_id_map.end())
+  {
+    spell_id = selection_map_it->second;
+  }
+
+
+  return spell_id;
+}
+
 // Show the spell selection screen.
 void SpellSelectionScreen::initialize()
 {
@@ -43,7 +58,7 @@ void SpellSelectionScreen::initialize()
     BOOST_FOREACH(SpellKnowledgeMap::value_type& spell_pair, known_spells)
     {
       string spell_id = spell_pair.first;
-      menu_selection_to_spell_id_map.insert(make_pair(i, spell_id));
+      menu_selection_to_spell_id_map.insert(make_pair('a' + i, spell_id));
 
       // Using the spell ID and a SpellDescriber, create text for the 
       // option shown in the UI.

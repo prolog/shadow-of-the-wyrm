@@ -33,6 +33,8 @@ class CursesDisplay : public Display
     void halt_messages();
 
 	  void draw(const DisplayMap& current_map);
+    void redraw();
+
     virtual void draw_update_map(const DisplayMap& update_map);
     virtual void draw_tile(const uint y, const uint x, const DisplayTile& tile);
 

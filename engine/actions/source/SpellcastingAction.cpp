@@ -25,6 +25,10 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
   // spellcasting screen.
   bool cast_spells = true;
 
+  // used to determine whether a spell was selected in the spellcasting screen.
+  // if so, the spell will be cast at the end of the process.
+  string spell_id;
+
   if (creature)
   {
     MagicalAbilityChecker mac;
@@ -58,7 +62,11 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
           {
             SpellSelectionScreen sss(game.get_display(), creature);
 
-            int input = sss.display().at(0);
+            string display_s = sss.display();
+            int input = display_s.at(0);
+            char menu_selection = display_s.at(0);
+
+            spell_id = sss.get_selected_spell(menu_selection);
 
             DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
       
@@ -69,6 +77,14 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
               CommandPtr magic_command = decision_strategy->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, &input);
 
               action_cost_value = MagicCommandProcessor::process(creature, magic_command);
+
+              if (action_cost_value > 0 && !spell_id.empty())
+              {
+                // A spell was selected, and the command processor will have
+                // taken care of casting it.  Leave the menu and go back to
+                // the map.
+                cast_spells = false;
+              }
             }
 
             if (!decision_strategy || action_cost_value == -1)
@@ -83,6 +99,46 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
           // considerations...
         }
       }
+    }
+  }
+
+  if ((action_cost_value > 0) && !spell_id.empty())
+  {
+    // First, re-display the contents of the map screen, since we would
+    // have selected from a menu (in a different window):
+    DisplayPtr display = Game::instance().get_display();
+    display->redraw();
+
+    action_cost_value = cast_spell(creature, spell_id);
+  }
+
+  return action_cost_value;
+}
+
+// Cast a particular spell by a particular creature.
+ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id) const
+{
+  ActionCostValue action_cost_value = 0;
+
+  if (creature)
+  {
+    Game& game = Game::instance();
+    Spell spell = game.get_spells_ref().find(spell_id)->second;
+    MagicalAbilityChecker mac;
+
+    // Check to see if the creature has the AP for the spell.
+    if (mac.has_sufficient_power(creature, spell))
+    {
+      action_cost_value = spell.get_speed();
+
+      // Reduce the creature's AP by the spell cost.
+      Statistic new_ap = creature->get_arcana_points();
+      new_ap.set_current(new_ap.get_current() - spell.get_ap_cost());
+      creature->set_arcana_points(new_ap);
+    }
+    else
+    {
+      add_insufficient_power_message();
     }
   }
 
@@ -104,6 +160,15 @@ void SpellcastingAction::add_invalid_spellcasting_location_message() const
   MessageManager& manager = MessageManager::instance();
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_UNAVAILABLE_ON_WORLD_MAP));
+  manager.send();
+}
+
+// Add a message about not having enough AP.
+void SpellcastingAction::add_insufficient_power_message() const
+{
+  MessageManager& manager = MessageManager::instance();
+
+  manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_INSUFFICIENT_POWER));
   manager.send();
 }
 

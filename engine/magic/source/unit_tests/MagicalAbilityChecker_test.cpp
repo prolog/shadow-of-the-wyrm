@@ -13,3 +13,25 @@ TEST(SL_Engine_Magic_MagicalAbilityChecker, has_magical_knowledge)
 
   EXPECT_TRUE(mac.has_magical_knowledge(creature));
 }
+
+TEST(SL_Engine_Magic_MagicalAbilityChecker, has_power)
+{
+  CreaturePtr creature = boost::make_shared<Creature>();
+  MagicalAbilityChecker mac;
+
+  Spell spell;
+  spell.set_ap_cost(4);
+
+  EXPECT_FALSE(mac.has_sufficient_power(creature, spell));
+
+  Statistic ap(4);
+  creature->set_arcana_points(ap);
+  
+  EXPECT_TRUE(mac.has_sufficient_power(creature, spell));
+
+  ap.set_base(12);
+  ap.set_current(12);
+  creature->set_arcana_points(ap);
+
+  EXPECT_TRUE(mac.has_sufficient_power(creature, spell));
+}

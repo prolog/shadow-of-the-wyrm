@@ -410,6 +410,19 @@ void CursesDisplay::draw(const DisplayMap& current_map)
   wredrawln(stdscr, CursesConstants::MAP_START_ROW, map_rows);
 }
 
+// Refreshes the contents of the current window.
+void CursesDisplay::redraw()
+{
+  if (menus.empty())
+  {
+    refresh();
+  }
+  else
+  {
+    wrefresh(menus.back());
+  }
+}
+
 void CursesDisplay::draw_update_map(const DisplayMap& update_map)
 {
   DisplayTile display_tile;
