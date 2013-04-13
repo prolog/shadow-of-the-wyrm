@@ -38,8 +38,8 @@ IDescriberPtr DescriberFactory::create_describer(const Inventory& inv)
   return describer;
 }
 
-IDescriberPtr DescriberFactory::create_describer(const Spell& spell)
+IDescriberPtr DescriberFactory::create_describer(CreaturePtr creature, const Spell& spell)
 {
-  IDescriberPtr describer = boost::make_shared<SpellDescriber>(spell);
+  IDescriberPtr describer = boost::make_shared<SpellDescriber>(creature, spell);
   return describer;
 }

@@ -1,21 +1,36 @@
+#include <sstream>
 #include "SpellDescriber.hpp"
 #include "Conversion.hpp"
+#include "Skills.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
-SpellDescriber::SpellDescriber(const Spell& new_spell)
-: spell(new_spell)
+SpellDescriber::SpellDescriber(CreaturePtr new_creature, const Spell& new_spell)
+: creature(new_creature), spell(new_spell)
 {
 }
 
 // The description of the spell for the spellcasting UI screen.
 string SpellDescriber::describe() const
 {
-  string spell_description;
+  stringstream ss;
 
-  spell_description = "JCD FIXME SPELLDESCRIBER";
+  SpellKnowledge& sk = creature->get_spell_knowledge_ref();
 
-  return spell_description;
+  Skills skills;
+  string spell_name = StringTable::get(spell.get_spell_name_sid());
+  string spell_category = StringTable::get(skills.get_skill(spell.get_magic_category())->get_skill_name_sid());
+
+  ss << spell_name 
+     << " (" << spell_category << ")" 
+     << " [" 
+             << "#:" << sk.get_spell_knowledge(spell.get_spell_id())
+             << ", " << StringTable::get(TextKeys::RANGE_ABRV) << ":" << spell.get_range()
+             << ", " << StringTable::get(TextKeys::ARCANA_POINTS_ABRV) << ":" << spell.get_ap_cost()
+     <<  "]";
+
+  return ss.str();
 }
 

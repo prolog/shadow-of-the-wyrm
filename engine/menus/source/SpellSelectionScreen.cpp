@@ -48,16 +48,14 @@ void SpellSelectionScreen::initialize()
       // Using the spell ID and a SpellDescriber, create text for the 
       // option shown in the UI.
       Spell spell = spells.find(spell_id)->second;
-      string spell_name = StringTable::get(spell.get_spell_name_sid());
-      IDescriberPtr describer = DescriberFactory::create_describer(spell);
+      IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
       string spell_desc = describer->describe();
 
       Option current_option;
       current_option.set_id(i);
-      current_option.set_description(spell_name);
+      current_option.set_description(spell_desc);
           
       options->add_option(current_option);
-      options->add_option_description(spell_desc);
 
       i++;
 

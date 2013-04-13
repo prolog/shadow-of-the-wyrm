@@ -11,7 +11,7 @@ class DescriberFactory
     static IDescriberPtr create_describer(CreaturePtr creature);
     static IDescriberPtr create_describer(FeaturePtr feature);
     static IDescriberPtr create_describer(const Inventory& inv);
-    static IDescriberPtr create_describer(const Spell& spell);
+    static IDescriberPtr create_describer(CreaturePtr creature, const Spell& spell);
 
   protected:
     DescriberFactory();
