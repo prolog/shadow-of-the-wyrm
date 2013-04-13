@@ -5,9 +5,8 @@
 using namespace std;
 
 Prompt::Prompt(const PromptLocation prompt_location)
+: type(PROMPT_TYPE_CHARACTER), location(prompt_location), accept_any_input(false)
 {
-  type = PROMPT_TYPE_CHARACTER;
-  location = prompt_location;
   initialize();
 }
 
@@ -50,6 +49,16 @@ PromptType Prompt::get_type() const
 void Prompt::initialize()
 {
   // Should be re-defined by all subclasses of prompt.
+}
+
+void Prompt::set_accept_any_input(const bool new_accept_any_input)
+{
+  accept_any_input = new_accept_any_input;
+}
+
+bool Prompt::get_accept_any_input() const
+{
+  return accept_any_input;
 }
 
 // AnyKeyPrompt

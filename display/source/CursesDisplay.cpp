@@ -601,7 +601,7 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
 }
 
 // Get a somewhat nice (it's ASCII...) option.
-pair<char, string> CursesDisplay::get_formatted_option(const int incr, const string& option_name, const string& option_desc) const
+pair<char, string> CursesDisplay::get_formatted_option(const int incr, const string& option_name, const string& option_desc, const bool show_desc) const
 {
   pair<char, string> result;
 
@@ -612,7 +612,7 @@ pair<char, string> CursesDisplay::get_formatted_option(const int incr, const str
 
   string formatted_option = "[" + Char::to_string(ascii_letter) + "] " + option_name;
 
-  if (!option_desc.empty())
+  if (show_desc && !option_desc.empty())
   {
     formatted_option += " - " + option_desc;
   }
@@ -628,20 +628,28 @@ CursesMenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* wi
 
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
- 
-  int num_options = options.size();
+  bool show_desc = oc->get_show_option_descriptions();
+
+  size_t num_options = options.size();
+  size_t num_option_desc = option_descriptions.size();
 
   if (!options.empty())
   {
     int temp_row = *row;
 
-    for (int i = 0; i < num_options; i++)
+    for (unsigned int i = 0; i < num_options; i++)
     {
       Option current_option = options.at(i);
       string option_name = current_option.get_description();
-      string option_desc = option_descriptions.at(i);
+      string option_desc;
+      
+      // Only get the description if we should show one and if one has been set.
+      if (show_desc && (i < num_option_desc))
+      {
+        option_desc = option_descriptions.at(i);
+      }
 
-      pair<char, string> option_details = get_formatted_option(current_option.get_id(), option_name, option_desc);
+      pair<char, string> option_details = get_formatted_option(current_option.get_id(), option_name, option_desc, show_desc);
       wrapper.add_option(option_details.first);
 
       mvwprintw(window, temp_row, (*col)+2, option_details.second.c_str());

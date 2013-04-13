@@ -17,7 +17,10 @@ CommandPtr MagicCommandFactory::create(const int key, const std::string& command
 
   if (command_name == MagicCommandKeys::SELECT_SPELL)
   {
-    command = boost::make_shared<SelectSpellCommand>();
+    // Store the pressed key.  This will always be a letter for spells,
+    // so subtracting 'a' gets us the numeric index that the map uses
+    // to look up the spell ID.
+    command = boost::make_shared<SelectSpellCommand>(key - 'a');
   }
   else if (command_name == MagicCommandKeys::NEXT_PAGE)
   {

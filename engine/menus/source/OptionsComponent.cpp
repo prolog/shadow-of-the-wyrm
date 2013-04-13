@@ -36,6 +36,7 @@ string Option::get_description() const
 // Options - a container for Option menu objects.
 
 OptionsComponent::OptionsComponent()
+: show_option_descriptions(true)
 {
   clear_options();
 }
@@ -68,4 +69,14 @@ void OptionsComponent::add_option_description(const string& desc)
 vector<string> OptionsComponent::get_option_descriptions() const
 {
   return option_descriptions;
+}
+
+void OptionsComponent::set_show_option_descriptions(const bool new_show_option_descriptions)
+{
+  show_option_descriptions = new_show_option_descriptions;
+}
+
+bool OptionsComponent::get_show_option_descriptions() const
+{
+  return show_option_descriptions;
 }

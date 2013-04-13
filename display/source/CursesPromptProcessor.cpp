@@ -30,7 +30,11 @@ string CursesPromptProcessor::get_prompt(WINDOW* window, const CursesMenuWrapper
     {
       prompt_entry = wgetch(window);
 
-      while (menu_wrapper.has_options() && !menu_wrapper.is_option_in_set(prompt_entry.at(0)))
+      // Reprompt for new input if the input must be in the menu's option range,
+      // and if the given input does not meet that criterion.
+      while (!prompt->get_accept_any_input() 
+           && menu_wrapper.has_options() 
+           && !menu_wrapper.is_option_in_set(prompt_entry.at(0)))
       {
         prompt_entry = wgetch(window);
       }

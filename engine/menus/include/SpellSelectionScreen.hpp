@@ -13,6 +13,7 @@ class SpellSelectionScreen : public Menu
   protected:
     void initialize();
 
-    std::map<int, std::string> menu_selection_to_spell_id_map;
+    static const int SPELLS_PER_PAGE;
+    std::map<char, std::string> menu_selection_to_spell_id_map;
     CreaturePtr creature;
 };
