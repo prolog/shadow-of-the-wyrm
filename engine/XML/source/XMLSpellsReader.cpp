@@ -43,13 +43,25 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
     uint ap_cost = XMLUtils::get_child_node_int_value(spell_node, "APCost");
     int speed = XMLUtils::get_child_node_int_value(spell_node, "Speed");
     uint range = XMLUtils::get_child_node_int_value(spell_node, "Range");
+    SpellShape shape = static_cast<SpellShape>(XMLUtils::get_child_node_int_value(spell_node, "Shape"));
+    XMLNode damage_node = XMLUtils::get_next_element_by_local_name(spell_node, "Damage");
 
     spell.set_spell_id(spell_id);
     spell.set_spell_name_sid(spell_name_sid);
     spell.set_magic_category(magic_category);
     spell.set_ap_cost(ap_cost);
     spell.set_speed(speed);
-    spell.set_range(speed);
+    spell.set_range(range);
+    spell.set_shape(shape);
+
+    if (!damage_node.is_null())
+    {
+      Damage dmg;
+      parse_damage(dmg, damage_node);
+
+      spell.set_has_damage(true);
+      spell.set_damage(dmg);
+    }
   }
 
   return spell;

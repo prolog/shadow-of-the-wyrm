@@ -10,6 +10,12 @@ TEST(SL_World_Magic_Spell, equality_operator)
   sp.set_ap_cost(5);
   sp.set_speed(4);
   sp.set_range(1);
+  sp.set_shape(SPELL_SHAPE_BALL);
+  sp.set_has_damage(true);
+
+  Damage damage(1,5,3,DAMAGE_TYPE_ARCANE);
+
+  sp.set_damage(damage);
 
   EXPECT_FALSE(sp == sp2);
 

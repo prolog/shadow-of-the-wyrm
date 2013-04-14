@@ -2388,6 +2388,21 @@
     <ClInclude Include="engine\description\include\SpellDescriber.hpp">
       <Filter>Header Files\engine\description\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\magic\include\SpellTypes.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\ISpellShapeProcessor.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\SpellShapeProcessorFactory.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\TargetSelfShapeProcessor.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4507,6 +4522,15 @@
     </ClCompile>
     <ClCompile Include="engine\description\source\SpellDescriber.cpp">
       <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\SpellShapeProcessorFactory.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\TargetSelfShapeProcessor.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\BeamShapeProcessor.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

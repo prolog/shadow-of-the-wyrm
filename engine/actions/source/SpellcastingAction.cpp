@@ -9,6 +9,7 @@
 #include "MessageManager.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "SpellSelectionScreen.hpp"
+#include "SpellShapeProcessorFactory.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -131,10 +132,22 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
     {
       action_cost_value = spell.get_speed();
 
+      MapPtr current_map = game.get_current_map();
+      Coordinate caster_coord = current_map->get_location(creature->get_id());
+
       // Reduce the creature's AP by the spell cost.
       Statistic new_ap = creature->get_arcana_points();
       new_ap.set_current(new_ap.get_current() - spell.get_ap_cost());
       creature->set_arcana_points(new_ap);
+
+      // Process the spell shape.
+      ISpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape());
+      
+      if (spell_processor)
+      {
+        // JCD FIXME: Create animation and display it here.
+        spell_processor->process(current_map, caster_coord, DIRECTION_NORTH /* JCD FIXME */, spell);
+      }
     }
     else
     {

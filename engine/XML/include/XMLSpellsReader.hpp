@@ -1,9 +1,10 @@
 #pragma once
 #include "Spell.hpp"
+#include "XMLReader.hpp"
 
 class XMLNode;
 
-class XMLSpellsReader
+class XMLSpellsReader : public XMLReader
 {
   public:
     XMLSpellsReader();

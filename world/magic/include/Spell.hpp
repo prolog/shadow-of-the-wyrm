@@ -3,7 +3,9 @@
 #include <string>
 #include <boost/shared_ptr.hpp>
 #include "common.hpp"
+#include "Damage.hpp"
 #include "SkillTypes.hpp"
+#include "SpellTypes.hpp"
 
 class Spell
 {
@@ -29,6 +31,15 @@ class Spell
     void set_range(const uint new_range);
     uint get_range() const;
 
+    void set_shape(const SpellShape new_shape);
+    SpellShape get_shape() const;
+
+    void set_has_damage(const bool new_has_damage);
+    bool get_has_damage() const;
+
+    void set_damage(const Damage& new_damage);
+    Damage get_damage() const;
+
   protected:
     std::string spell_id;
     std::string spell_name_sid;
@@ -36,6 +47,11 @@ class Spell
     uint ap_cost;
     int speed;
     uint range;
+    SpellShape shape;
+
+    // If the spell has damage associated with it, and what that damage is.
+    bool has_damage;
+    Damage damage;
 };
 
 typedef std::map<std::string, Spell> SpellMap;
