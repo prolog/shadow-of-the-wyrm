@@ -64,6 +64,8 @@
 			<xs:element name="APCost" type="xs:unsignedInt"/>
 			<xs:element name="Speed" type="xs:integer"/>
 			<xs:element name="Range" type="xs:unsignedInt"/>
+			<xs:element name="Shape" type="tns:SpellShape"/>
+			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string"/>
 	</xs:complexType>
@@ -1106,6 +1108,23 @@
 		<xs:enumeration value="3001"/>
 		<xs:enumeration value="3002"/>
 		<xs:enumeration value="3003"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="SpellShape">
+	<xs:annotation>
+		<xs:documentation>
+			See SpellTypes.hpp:
+			
+			0 = Target Self
+			1 = Beam
+			2 = Reflective Beam
+			3 = Cone
+			4 = Ball
+		</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="4"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TrainedWeaponSkill">

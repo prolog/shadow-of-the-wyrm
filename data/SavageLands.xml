@@ -3482,7 +3482,13 @@
 			<MagicCategory>3003</MagicCategory>
 			<APCost>2</APCost>
 			<Speed>1</Speed>
-			<Range>0</Range>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>2</NumDice>
+				<NumSides>6</NumSides>
+				<Type>8</Type>
+			</Damage>
 		</Spell>
 	</Spells>
 	<Tiles>
