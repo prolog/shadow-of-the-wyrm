@@ -2391,9 +2391,6 @@
     <ClInclude Include="world\magic\include\SpellTypes.hpp">
       <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\magic\include\ISpellShapeProcessor.hpp">
-      <Filter>Header Files\engine\magic\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\magic\include\SpellShapeProcessorFactory.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
@@ -2401,6 +2398,9 @@
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\SpellShapeProcessor.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -4530,6 +4530,9 @@
       <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\magic\source\BeamShapeProcessor.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\SpellShapeProcessor.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
   </ItemGroup>

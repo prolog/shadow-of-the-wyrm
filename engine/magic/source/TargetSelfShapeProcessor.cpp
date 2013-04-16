@@ -1,11 +1,14 @@
 #include "TargetSelfShapeProcessor.hpp"
 
+using namespace std;
+
 // Ignore the direction provided, and just target the starting coordinates.
-void TargetSelfShapeProcessor::process(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+vector<TilePtr> TargetSelfShapeProcessor::get_affected_tiles_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
-  if (map)
-  {
-    int x = 1;
-  }
+  vector<TilePtr> affected_tiles;
+
+  // JCD FIXME
+
+  return affected_tiles;
 }
 
