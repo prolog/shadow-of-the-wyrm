@@ -369,7 +369,7 @@
     <ClInclude Include="engine\items\include\ReadableItemFilter.hpp" />
     <ClInclude Include="engine\items\include\SquishyEquipWornLocationFilter.hpp" />
     <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp" />
-    <ClInclude Include="engine\magic\include\ISpellShapeProcessor.hpp" />
+    <ClInclude Include="engine\magic\include\SpellShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\MagicalAbilityChecker.hpp" />
     <ClInclude Include="engine\magic\include\SpellShapeProcessorFactory.hpp" />
     <ClInclude Include="engine\magic\include\TargetSelfShapeProcessor.hpp" />
@@ -1077,6 +1077,7 @@
     </ClCompile>
     <ClCompile Include="engine\magic\source\BeamShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\MagicalAbilityChecker.cpp" />
+    <ClCompile Include="engine\magic\source\SpellShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\SpellShapeProcessorFactory.cpp" />
     <ClCompile Include="engine\magic\source\TargetSelfShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\unit_tests\MagicalAbilityChecker_test.cpp">

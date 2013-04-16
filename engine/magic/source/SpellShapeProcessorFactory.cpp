@@ -11,9 +11,9 @@ SpellShapeProcessorFactory::~SpellShapeProcessorFactory()
 {
 }
 
-ISpellShapeProcessorPtr SpellShapeProcessorFactory::create_processor(const SpellShape spell_shape)
+SpellShapeProcessorPtr SpellShapeProcessorFactory::create_processor(const SpellShape spell_shape)
 {
-  ISpellShapeProcessorPtr spell_processor;
+  SpellShapeProcessorPtr spell_processor;
 
   switch(spell_shape)
   {

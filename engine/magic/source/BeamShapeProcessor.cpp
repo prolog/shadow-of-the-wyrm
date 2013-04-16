@@ -1,10 +1,13 @@
 #include "BeamShapeProcessor.hpp"
 
-void BeamShapeProcessor::process(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+using namespace std;
+
+vector<TilePtr> BeamShapeProcessor::get_affected_tiles_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
-  if (map)
-  {
-    int x = 1;
-  }
+  vector<TilePtr> affected_tiles;
+
+  // JCD FIXME
+
+  return affected_tiles;
 }
 

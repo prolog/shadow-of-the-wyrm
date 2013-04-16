@@ -1,10 +1,10 @@
 #pragma once
-#include "ISpellShapeProcessor.hpp"
+#include "SpellShapeProcessor.hpp"
 
 // A class used to process the "target self" spell shape.
-class TargetSelfShapeProcessor : public ISpellShapeProcessor
+class TargetSelfShapeProcessor : public SpellShapeProcessor
 {
-  public:
-    void process(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell);
+  protected:
+    virtual std::vector<TilePtr> get_affected_tiles_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell);
 };
 

@@ -1,5 +1,5 @@
 #pragma once
-#include "ISpellShapeProcessor.hpp"
+#include "SpellShapeProcessor.hpp"
 #include "SpellTypes.hpp"
 
 // A class responsible for creating the appropriate ISpellShapeProcessor
@@ -7,7 +7,7 @@
 class SpellShapeProcessorFactory
 {
   public:
-    static ISpellShapeProcessorPtr create_processor(const SpellShape spell_shape);
+    static SpellShapeProcessorPtr create_processor(const SpellShape spell_shape);
 
   protected:
     SpellShapeProcessorFactory();
