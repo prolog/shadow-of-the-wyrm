@@ -7,7 +7,8 @@ vector<TilePtr> TargetSelfShapeProcessor::get_affected_tiles_for_spell(MapPtr ma
 {
   vector<TilePtr> affected_tiles;
 
-  // JCD FIXME
+  TilePtr caster_tile = map->at(caster_coord);
+  affected_tiles.push_back(caster_tile);
 
   return affected_tiles;
 }

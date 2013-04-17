@@ -4,6 +4,7 @@
 #include <boost/shared_ptr.hpp>
 #include "common.hpp"
 #include "Damage.hpp"
+#include "EffectTypes.hpp"
 #include "SkillTypes.hpp"
 #include "SpellTypes.hpp"
 
@@ -40,6 +41,9 @@ class Spell
     void set_damage(const Damage& new_damage);
     Damage get_damage() const;
 
+    void set_effect(const EffectType new_effect);
+    EffectType get_effect() const;
+
   protected:
     std::string spell_id;
     std::string spell_name_sid;
@@ -48,6 +52,7 @@ class Spell
     int speed;
     uint range;
     SpellShape shape;
+    EffectType effect;
 
     // If the spell has damage associated with it, and what that damage is.
     bool has_damage;

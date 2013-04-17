@@ -1446,9 +1446,6 @@
     <ClInclude Include="engine\effects\include\EffectFactory.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\effects\include\EffectTypes.hpp">
-      <Filter>Header Files\engine\effects\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\effects\include\EtherEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
@@ -2402,6 +2399,9 @@
     </ClInclude>
     <ClInclude Include="engine\magic\include\SpellShapeProcessor.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\magic\include\EffectTypes.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

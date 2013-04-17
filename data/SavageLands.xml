@@ -3477,7 +3477,16 @@
 		</Creature>
 	</Creatures>
 	<Spells>
-		<Spell id="shadow_flame">
+		<Spell id="d_01_healing_word">
+			<NameSID>HEALING_WORD_NAME_SID</NameSID>
+			<MagicCategory>3001</MagicCategory>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>1</Effect>
+		</Spell>
+		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<MagicCategory>3003</MagicCategory>
 			<APCost>2</APCost>
@@ -3489,6 +3498,7 @@
 				<NumSides>6</NumSides>
 				<Type>8</Type>
 			</Damage>
+			<Effect>0</Effect>
 		</Spell>
 	</Spells>
 	<Tiles>

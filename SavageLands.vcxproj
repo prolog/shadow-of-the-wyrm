@@ -267,7 +267,6 @@
     <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\Effect.hpp" />
     <ClInclude Include="engine\effects\include\EffectFactory.hpp" />
-    <ClInclude Include="engine\effects\include\EffectTypes.hpp" />
     <ClInclude Include="engine\effects\include\EtherEffect.hpp" />
     <ClInclude Include="engine\effects\include\FruitJuiceEffect.hpp" />
     <ClInclude Include="engine\effects\include\HealingEffect.hpp" />
@@ -579,6 +578,7 @@
     <ClInclude Include="world\include\Weight.hpp" />
     <ClInclude Include="world\include\World.hpp" />
     <ClInclude Include="world\include\WorldFactory.hpp" />
+    <ClInclude Include="world\magic\include\EffectTypes.hpp" />
     <ClInclude Include="world\magic\include\Spell.hpp" />
     <ClInclude Include="world\magic\include\SpellKnowledge.hpp" />
     <ClInclude Include="world\magic\include\SpellTypes.hpp" />

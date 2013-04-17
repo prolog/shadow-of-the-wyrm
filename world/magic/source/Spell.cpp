@@ -3,7 +3,13 @@
 using namespace std;
 
 Spell::Spell()
-: magic_category(SKILL_MAGIC_ARCANE), ap_cost(0), speed(1), range(0), shape(SPELL_SHAPE_TARGET_SELF), has_damage(false)
+: magic_category(SKILL_MAGIC_ARCANE), 
+  ap_cost(0), 
+  speed(1), 
+  range(0), 
+  shape(SPELL_SHAPE_TARGET_SELF), 
+  has_damage(false), 
+  effect(EFFECT_TYPE_NULL)
 {
 }
 
@@ -20,6 +26,7 @@ bool Spell::operator==(const Spell& spell)
   result = result && (shape == spell.shape);
   result = result && (has_damage == spell.has_damage);
   result = result && (damage == spell.damage);
+  result = result && (effect == spell.effect);
 
   return result;
 }
@@ -112,6 +119,16 @@ void Spell::set_damage(const Damage& new_damage)
 Damage Spell::get_damage() const
 {
   return damage;
+}
+
+void Spell::set_effect(const EffectType new_effect)
+{
+  effect = new_effect;
+}
+
+EffectType Spell::get_effect() const
+{
+  return effect;
 }
 
 #ifdef UNIT_TESTS
