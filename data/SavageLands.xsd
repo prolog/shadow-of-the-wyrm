@@ -66,6 +66,7 @@
 			<xs:element name="Range" type="xs:unsignedInt"/>
 			<xs:element name="Shape" type="tns:SpellShape"/>
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
+			<xs:element name="Effect" type="tns:EffectType"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string"/>
 	</xs:complexType>

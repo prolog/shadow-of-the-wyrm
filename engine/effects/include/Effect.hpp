@@ -16,6 +16,8 @@ class Creature;
 class Effect
 {
   public:
+    virtual ~Effect() {};
+
     virtual bool effect(boost::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status);
 
     virtual std::string get_effect_identification_message(boost::shared_ptr<Creature> creature) const = 0;

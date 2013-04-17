@@ -45,6 +45,7 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
     uint range = XMLUtils::get_child_node_int_value(spell_node, "Range");
     SpellShape shape = static_cast<SpellShape>(XMLUtils::get_child_node_int_value(spell_node, "Shape"));
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(spell_node, "Damage");
+    EffectType effect = static_cast<EffectType>(XMLUtils::get_child_node_int_value(spell_node, "Effect"));
 
     spell.set_spell_id(spell_id);
     spell.set_spell_name_sid(spell_name_sid);
@@ -62,6 +63,8 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
       spell.set_has_damage(true);
       spell.set_damage(dmg);
     }
+
+    spell.set_effect(effect);
   }
 
   return spell;
