@@ -1,5 +1,6 @@
 #include <vector>
 #include <boost/foreach.hpp>
+#include "SpellShapeFactory.hpp"
 #include "XMLSpellsReader.hpp"
 #include "XMLDataStructures.hpp"
 
@@ -43,7 +44,8 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
     uint ap_cost = XMLUtils::get_child_node_int_value(spell_node, "APCost");
     int speed = XMLUtils::get_child_node_int_value(spell_node, "Speed");
     uint range = XMLUtils::get_child_node_int_value(spell_node, "Range");
-    SpellShape shape = static_cast<SpellShape>(XMLUtils::get_child_node_int_value(spell_node, "Shape"));
+    SpellShapeType shape_type = static_cast<SpellShapeType>(XMLUtils::get_child_node_int_value(spell_node, "Shape"));
+    SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type);
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(spell_node, "Damage");
     EffectType effect = static_cast<EffectType>(XMLUtils::get_child_node_int_value(spell_node, "Effect"));
 
@@ -53,7 +55,7 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
     spell.set_ap_cost(ap_cost);
     spell.set_speed(speed);
     spell.set_range(range);
-    spell.set_shape(shape);
+    spell.set_shape(spell_shape);
 
     if (!damage_node.is_null())
     {

@@ -7,7 +7,7 @@
 class SpellShapeProcessorFactory
 {
   public:
-    static SpellShapeProcessorPtr create_processor(const SpellShape spell_shape);
+    static SpellShapeProcessorPtr create_processor(const SpellShapeType spell_shape);
 
   protected:
     SpellShapeProcessorFactory();

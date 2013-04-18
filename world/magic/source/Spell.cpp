@@ -7,7 +7,6 @@ Spell::Spell()
   ap_cost(0), 
   speed(1), 
   range(0), 
-  shape(SPELL_SHAPE_TARGET_SELF), 
   has_damage(false), 
   effect(EFFECT_TYPE_NULL)
 {
@@ -91,7 +90,7 @@ uint Spell::get_range() const
   return range;
 }
 
-void Spell::set_shape(const SpellShape new_shape)
+void Spell::set_shape(const SpellShape& new_shape)
 {
   shape = new_shape;
 }

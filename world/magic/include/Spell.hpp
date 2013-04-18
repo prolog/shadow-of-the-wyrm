@@ -7,6 +7,7 @@
 #include "EffectTypes.hpp"
 #include "SkillTypes.hpp"
 #include "SpellTypes.hpp"
+#include "SpellShape.hpp"
 
 class Spell
 {
@@ -32,7 +33,7 @@ class Spell
     void set_range(const uint new_range);
     uint get_range() const;
 
-    void set_shape(const SpellShape new_shape);
+    void set_shape(const SpellShape& new_shape);
     SpellShape get_shape() const;
 
     void set_has_damage(const bool new_has_damage);

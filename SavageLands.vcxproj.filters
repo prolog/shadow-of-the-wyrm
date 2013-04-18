@@ -2403,6 +2403,12 @@
     <ClInclude Include="world\magic\include\EffectTypes.hpp">
       <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\magic\include\SpellShape.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\magic\include\SpellShapeFactory.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4534,6 +4540,15 @@
     </ClCompile>
     <ClCompile Include="engine\magic\source\SpellShapeProcessor.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\SpellShape.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\SpellShapeFactory.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\unit_tests\SpellShapeFactory_test.cpp">
+      <Filter>Source Files\engine\magic\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
