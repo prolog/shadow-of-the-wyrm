@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "SpellShapeFactory.hpp"
 
 TEST(SL_World_Magic_Spell, equality_operator)
 {
@@ -10,7 +11,8 @@ TEST(SL_World_Magic_Spell, equality_operator)
   sp.set_ap_cost(5);
   sp.set_speed(4);
   sp.set_range(1);
-  sp.set_shape(SPELL_SHAPE_BALL);
+  SpellShape shape = SpellShapeFactory::create_spell_shape(SPELL_SHAPE_BALL);
+  sp.set_shape(shape);
   sp.set_has_damage(true);
   sp.set_effect(EFFECT_TYPE_HEALING);
 

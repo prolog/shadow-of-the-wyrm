@@ -141,7 +141,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       creature->set_arcana_points(new_ap);
 
       // Process the spell shape.
-      SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape());
+      SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
       
       if (spell_processor)
       {

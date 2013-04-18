@@ -581,6 +581,8 @@
     <ClInclude Include="world\magic\include\EffectTypes.hpp" />
     <ClInclude Include="world\magic\include\Spell.hpp" />
     <ClInclude Include="world\magic\include\SpellKnowledge.hpp" />
+    <ClInclude Include="world\magic\include\SpellShape.hpp" />
+    <ClInclude Include="world\magic\include\SpellShapeFactory.hpp" />
     <ClInclude Include="world\magic\include\SpellTypes.hpp" />
     <ClInclude Include="world\materials\include\Cloth.hpp" />
     <ClInclude Include="world\materials\include\DragonScale.hpp" />
@@ -1309,7 +1311,12 @@
     <ClCompile Include="SavageLands.cpp" />
     <ClCompile Include="world\magic\source\Spell.cpp" />
     <ClCompile Include="world\magic\source\SpellKnowledge.cpp" />
+    <ClCompile Include="world\magic\source\SpellShape.cpp" />
+    <ClCompile Include="world\magic\source\SpellShapeFactory.cpp" />
     <ClCompile Include="world\magic\source\unit_tests\SpellKnowledge_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\unit_tests\SpellShapeFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\magic\source\unit_tests\Spell_test.cpp">
