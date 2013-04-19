@@ -21,6 +21,12 @@ class Spell
     void set_spell_name_sid(const std::string& new_spell_name_sid);
     std::string get_spell_name_sid() const;
 
+    void set_player_cast_message_sid(const std::string& new_player_cast_message_sid);
+    std::string get_player_cast_message_sid() const;
+
+    void set_monster_cast_message_sid(const std::string& new_monster_cast_message_sid);
+    std::string get_monster_cast_message_sid() const;
+
     void set_magic_category(const SkillType new_skill_type);
     SkillType get_magic_category() const;
 
@@ -48,6 +54,8 @@ class Spell
   protected:
     std::string spell_id;
     std::string spell_name_sid;
+    std::string player_cast_message_sid;
+    std::string monster_cast_message_sid;
     SkillType magic_category;
     uint ap_cost;
     int speed;
