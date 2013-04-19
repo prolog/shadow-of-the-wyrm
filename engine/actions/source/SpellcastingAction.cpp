@@ -11,6 +11,7 @@
 #include "SpellSelectionScreen.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "StringTable.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -120,6 +121,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id) const
 {
   ActionCostValue action_cost_value = 0;
+  MessageManager& manager = MessageManager::instance();
 
   if (creature)
   {
@@ -140,6 +142,10 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       new_ap.set_current(new_ap.get_current() - spell.get_ap_cost());
       creature->set_arcana_points(new_ap);
 
+      // Add an appropriate casting message.
+      string cast_message = TextMessages::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
+      manager.add_new_message(cast_message);
+
       // Process the spell shape.
       SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
       
@@ -148,6 +154,10 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         // JCD FIXME: Create animation and display it here.
         spell_processor->process(current_map, caster_coord, DIRECTION_NORTH /* JCD FIXME */, spell, &game.get_action_manager_ref());
       }
+
+      // Send the cast message and any messages generating by hitting other
+      // creatures, etc.
+      manager.send();
     }
     else
     {

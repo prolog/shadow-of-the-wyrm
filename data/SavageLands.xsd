@@ -60,6 +60,8 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element name="NameSID" type="xs:string"/>
+			<xs:element name="PlayerCastMessageSID" type="xs:string"/>
+			<xs:element name="MonsterCastMessageSID" type="xs:string"/>
 			<xs:element name="MagicCategory" type="tns:MagicSkillType"/>
 			<xs:element name="APCost" type="xs:unsignedInt"/>
 			<xs:element name="Speed" type="xs:integer"/>

@@ -4,6 +4,7 @@
 #include "EquipmentTypes.hpp"
 #include "Item.hpp"
 #include "tiles.hpp"
+#include "Spell.hpp"
 
 class TextMessages
 {
@@ -22,6 +23,7 @@ class TextMessages
     static std::string get_item_pick_up_and_merge_message(ItemPtr item);
     static std::string get_item_on_ground_description_message(ItemPtr item);
     static std::string get_currency_amount_message(const uint currency_amount);
+    static std::string get_spellcasting_message(const Spell& spell, const std::string& creature_desc_sid, const bool is_player);
 
   protected:
     TextMessages();

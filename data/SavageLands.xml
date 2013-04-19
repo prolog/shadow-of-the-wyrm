@@ -3479,6 +3479,8 @@
 	<Spells>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
+			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>HEALING_WORD_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
 			<APCost>10</APCost>
 			<Speed>1</Speed>
@@ -3488,6 +3490,8 @@
 		</Spell>
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
+			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>SHADOW_FLAME_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
 			<APCost>2</APCost>
 			<Speed>1</Speed>
