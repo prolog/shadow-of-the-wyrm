@@ -138,6 +138,7 @@
     <ClInclude Include="engine\actions\include\VersionAction.hpp" />
     <ClInclude Include="engine\actions\include\WeaponInfoAction.hpp" />
     <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\APRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
@@ -437,6 +438,7 @@
     <ClInclude Include="engine\strings\include\TileTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\WorldMapLocationTextKeys.hpp" />
     <ClInclude Include="engine\time\include\BoatingMovementAccumulationChecker.hpp" />
+    <ClInclude Include="engine\time\include\CreatureAPRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureHPRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureHungerTimer.hpp" />
     <ClInclude Include="engine\time\include\CreaturePietyRegeneration.hpp" />
@@ -763,6 +765,7 @@
     <ClCompile Include="engine\actions\source\VersionAction.cpp" />
     <ClCompile Include="engine\actions\source\WeaponInfoAction.cpp" />
     <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\APRegenerationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CombatTargetNumberCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCalculator.cpp" />
@@ -1222,6 +1225,7 @@
     <ClCompile Include="engine\strings\source\TileTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\WorldMapLocationTextKeys.cpp" />
     <ClCompile Include="engine\time\source\BoatingMovementAccumulationChecker.cpp" />
+    <ClCompile Include="engine\time\source\CreatureAPRegeneration.cpp" />
     <ClCompile Include="engine\time\source\CreatureHPRegeneration.cpp" />
     <ClCompile Include="engine\time\source\CreatureHungerTimer.cpp" />
     <ClCompile Include="engine\time\source\CreaturePietyRegeneration.cpp" />
