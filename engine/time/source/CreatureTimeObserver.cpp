@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
+#include "CreatureAPRegeneration.hpp"
 #include "CreatureHPRegeneration.hpp"
 #include "CreatureHungerTimer.hpp"
 #include "CreaturePietyRegeneration.hpp"
@@ -26,6 +27,8 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
 
   // Regenerate the creature's HP
   ICreatureRegenerationPtr hp_regen     = boost::make_shared<CreatureHPRegeneration>();
+  // Regenerate the creature's AP
+  ICreatureRegenerationPtr ap_regen     = boost::make_shared<CreatureAPRegeneration>();
   // Regenerate or degenerate the creature's piety, depending on the value.
   ICreatureRegenerationPtr piety_regen  = boost::make_shared<CreaturePietyRegeneration>();
   // Update the minute values for the current movement accumulations.
@@ -38,6 +41,7 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   ICreatureRegenerationPtr hungr_checkr = boost::make_shared<CreatureHungerTimer>();
   
   regen.push_back(hp_regen    );
+  regen.push_back(ap_regen    );
   regen.push_back(piety_regen );
   regen.push_back(move_accum  );
   regen.push_back(move_checkr );

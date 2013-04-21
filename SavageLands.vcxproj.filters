@@ -2409,6 +2409,12 @@
     <ClInclude Include="world\magic\include\SpellShapeFactory.hpp">
       <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureAPRegeneration.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\APRegenerationCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4549,6 +4555,12 @@
     </ClCompile>
     <ClCompile Include="world\magic\source\unit_tests\SpellShapeFactory_test.cpp">
       <Filter>Source Files\engine\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureAPRegeneration.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\APRegenerationCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
