@@ -301,20 +301,3 @@ string TextMessages::get_currency_amount_message(const uint currency_amount)
   
   return currency_message;
 }
-
-string TextMessages::get_spellcasting_message(const Spell& spell, const string& creature_desc_sid, const bool is_player)
-{
-  string spellcasting_message;
-
-  if (is_player)
-  {
-    spellcasting_message = StringTable::get(spell.get_player_cast_message_sid());
-  }
-  else
-  {
-    spellcasting_message = StringTable::get(spell.get_monster_cast_message_sid());
-    boost::replace_first(spellcasting_message, "%s", StringTable::get(creature_desc_sid));
-  }
-
-  return spellcasting_message;
-}

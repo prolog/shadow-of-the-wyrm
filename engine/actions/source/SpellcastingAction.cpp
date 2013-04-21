@@ -1,4 +1,6 @@
 #include <boost/make_shared.hpp>
+#include "ActionTextKeys.hpp"
+#include "Commands.hpp"
 #include "Conversion.hpp"
 #include "SpellcastingAction.hpp"
 #include "Game.hpp"
@@ -11,7 +13,6 @@
 #include "SpellSelectionScreen.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "StringTable.hpp"
-#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -108,8 +109,12 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
   {
     // First, re-display the contents of the map screen, since we would
     // have selected from a menu (in a different window):
-    DisplayPtr display = Game::instance().get_display();
-    display->redraw();
+
+    // JCD FIXME is the full redraw really needed?  Is there a better way
+    // to do this with just curses' functionality?
+    Game& game = Game::instance();
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+    game.get_display()->redraw();
 
     action_cost_value = cast_spell(creature, spell_id);
   }
@@ -142,17 +147,66 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       new_ap.set_current(new_ap.get_current() - spell.get_ap_cost());
       creature->set_arcana_points(new_ap);
 
-      // Add an appropriate casting message.
-      string cast_message = TextMessages::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
-      manager.add_new_message(cast_message);
+      // A check to see if spellcasting succeeded.  If the spell is directional
+      // and a proper direction isn't selected, this will cause the magic 
+      // to fail.
+      bool spellcasting_succeeded = true;
+      Direction spell_direction = DIRECTION_NORTH;
 
-      // Process the spell shape.
-      SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
-      
-      if (spell_processor)
+      // Is a direction needed?
+      if (spell.get_shape().get_requires_direction())
       {
-        // JCD FIXME: Create animation and display it here.
-        spell_processor->process(current_map, caster_coord, DIRECTION_NORTH /* JCD FIXME */, spell, &game.get_action_manager_ref());
+        // Make the creature select a direction.
+        CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();
+        KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
+
+        // If the creature is the player, inform the player that a direction is needed.
+        if (creature->get_is_player())
+        {
+          MessageManager& manager = MessageManager::instance();
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
+          manager.send();
+        }
+
+        // Try to get a direction.  This might fail.
+        CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, 0);
+
+        if (base_command)
+        {
+          // Check to see if it's an actual directional command
+          boost::shared_ptr<DirectionalCommand> dcommand;
+          dcommand = boost::dynamic_pointer_cast<DirectionalCommand>(base_command);
+
+          if (dcommand)
+          {
+            spell_direction = dcommand->get_direction();
+          }
+          else
+          {
+            spellcasting_succeeded = false;
+          }
+        }
+      }
+
+      if (spellcasting_succeeded == false)
+      {
+        MessageManager& manager = MessageManager::instance();
+        manager.add_new_message(ActionTextKeys::get_spellcasting_cancelled_message(creature->get_description_sid(), creature->get_is_player()));
+      }
+      else
+      {
+        // Add an appropriate casting message.
+        string cast_message = ActionTextKeys::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
+        manager.add_new_message(cast_message);
+
+        // Process the spell shape.
+        SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
+      
+        if (spell_processor)
+        {
+          // JCD FIXME: Create animation and display it here.
+          spell_processor->process(current_map, caster_coord, DIRECTION_NORTH /* JCD FIXME */, spell, &game.get_action_manager_ref());
+        }
       }
 
       // Send the cast message and any messages generating by hitting other

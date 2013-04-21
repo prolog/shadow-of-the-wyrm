@@ -50,6 +50,40 @@ string ActionTextKeys::get_full_message(const string& desc_sid, const string& co
   return get_general_action_message(desc_sid, consumable_desc_sid, ACTION_FULL_PLAYER, ACTION_FULL_MONSTER, is_player);
 }
 
+string ActionTextKeys::get_spellcasting_message(const Spell& spell, const string& creature_desc_sid, const bool is_player)
+{
+  string spellcasting_message;
+
+  if (is_player)
+  {
+    spellcasting_message = StringTable::get(spell.get_player_cast_message_sid());
+  }
+  else
+  {
+    spellcasting_message = StringTable::get(spell.get_monster_cast_message_sid());
+    boost::replace_first(spellcasting_message, "%s", StringTable::get(creature_desc_sid));
+  }
+
+  return spellcasting_message;
+}
+
+string ActionTextKeys::get_spellcasting_cancelled_message(const string& creature_desc_sid, const bool is_player)
+{
+  string cancelled_msg;
+  
+  if (is_player)
+  {
+    cancelled_msg = StringTable::get(ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_PLAYER);
+  }
+  else
+  {
+    cancelled_msg = StringTable::get(ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_MONSTER);
+    boost::replace_first(cancelled_msg, "%s", StringTable::get(creature_desc_sid));
+  }
+
+  return cancelled_msg;
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
@@ -86,3 +120,5 @@ const string ActionTextKeys::ACTION_EAT_PLAYER                 = "ACTION_EAT_PLA
 const string ActionTextKeys::ACTION_EAT_MONSTER                = "ACTION_EAT_MONSTER";
 const string ActionTextKeys::ACTION_FULL_PLAYER                = "ACTION_FULL_PLAYER";
 const string ActionTextKeys::ACTION_FULL_MONSTER               = "ACTION_FULL_MONSTER";
+const string ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_PLAYER = "ACTION_SPELLCASTING_CANCELLED_PLAYER";
+const string ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_MONSTER = "ACTION_SPELLCASTING_CANCELLED_MONSTER";
