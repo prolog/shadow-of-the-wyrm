@@ -205,7 +205,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         if (spell_processor)
         {
           // JCD FIXME: Create animation and display it here.
-          spell_processor->process(current_map, caster_coord, DIRECTION_NORTH /* JCD FIXME */, spell, &game.get_action_manager_ref());
+          spell_processor->process(current_map, caster_coord, spell_direction, spell, &game.get_action_manager_ref());
         }
       }
 
