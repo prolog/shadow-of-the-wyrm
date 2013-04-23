@@ -2415,6 +2415,9 @@
     <ClInclude Include="engine\calculators\include\APRegenerationCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\magic\include\TileMagicChecker.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4561,6 +4564,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\APRegenerationCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\TileMagicChecker.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
