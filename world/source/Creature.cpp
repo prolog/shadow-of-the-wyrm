@@ -875,7 +875,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 840);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 872);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 752);

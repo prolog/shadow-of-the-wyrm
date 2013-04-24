@@ -18,12 +18,12 @@ class SpellShapeProcessor
   public:
     virtual ~SpellShapeProcessor();
 
-    virtual void process(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell, ActionManager * const am);
+    virtual void process(CreaturePtr caster, MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell, ActionManager * const am);
 
   protected:
-    virtual void apply_damage_and_effect(const std::vector<TilePtr>& affected_tiles, const Spell& spell, ActionManager * const am);
-    virtual void apply_damage(TilePtr tile, const Spell& spell, ActionManager * const am);
-    virtual void apply_effect(TilePtr tile, const Spell& spell, ActionManager * const am);
+    virtual void apply_damage_and_effect(CreaturePtr caster, const std::vector<TilePtr>& affected_tiles, const Spell& spell, ActionManager * const am);
+    virtual void apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am);
+    virtual void apply_effect(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am);
 
     // Pure virtual function to get the affected tiles for a particular spell.
     // This will be dependant on the shape: beams generate a line, balls are

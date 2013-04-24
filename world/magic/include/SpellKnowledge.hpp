@@ -16,6 +16,9 @@ class SpellKnowledge : public ISerializable
     uint get_spell_knowledge(const std::string& spell_id) const;
     uint count_spells_known() const;
 
+    void set_most_recently_cast_spell_id(const std::string& spell_id);
+    std::string get_most_recently_cast_spell_id() const;
+
     SpellKnowledgeMap get_known_spells() const;
 
     bool serialize(std::ostream& stream);
@@ -23,6 +26,7 @@ class SpellKnowledge : public ISerializable
 
   protected:
     SpellKnowledgeMap spell_knowledge;
+    std::string most_recently_cast_spell_id;
 
   private:
     ClassIdentifier internal_class_identifier() const;

@@ -1,4 +1,5 @@
 #pragma once
+#include <boost/make_shared.hpp>
 #include "ActionCost.hpp"
 #include "AttackTypes.hpp"
 #include "Creature.hpp"
@@ -14,7 +15,7 @@ class CombatManager
     bool operator==(const CombatManager& cm);
     
     ActionCostValue attack(CreaturePtr creature, const Direction d);
-    ActionCostValue attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY);
+    ActionCostValue attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY, DamagePtr damage = boost::shared_ptr<Damage>());
 
     void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const std::string combat_message = "");
 
@@ -37,7 +38,7 @@ class CombatManager
     bool is_close_miss(const int total_roll, const int target_number_value);
     bool is_automatic_miss(const int d100_roll);
     
-    void mark_weapon_and_combat_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success);
+    void mark_appropriate_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success);
     
     // Update the mortuary on the game and on the attacking creature.
     void update_mortuaries(CreaturePtr attacking_creature, const std::string& killed_creature_id);
