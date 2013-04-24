@@ -21,10 +21,18 @@ int ToHitCalculator::get_weapon_bonus(CreaturePtr creature)
   WeaponManager wm;
   WeaponPtr weapon = wm.get_weapon(creature, attack_type);
   
+  SkillManager sm;
+
   if (weapon)
   {
-    SkillManager sm;
-    weapon_bonus += (sm.get_skill_value(creature, weapon->get_trained_skill()) / 2);
+    SkillType st = weapon->get_trained_skill();
+
+    if (attack_type == ATTACK_TYPE_RANGED)
+    {
+      st = weapon->get_trained_ranged_skill();
+    }
+
+    weapon_bonus += (sm.get_skill_value(creature, st) / 2);
   }
   
   return weapon_bonus;

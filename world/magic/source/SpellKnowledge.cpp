@@ -9,6 +9,7 @@ bool SpellKnowledge::operator==(const SpellKnowledge& sp)
   bool result = true;
 
   result = result && (spell_knowledge == sp.spell_knowledge);
+  result = result && (most_recently_cast_spell_id == sp.most_recently_cast_spell_id);
 
   return result;
 }
@@ -42,6 +43,16 @@ SpellKnowledgeMap SpellKnowledge::get_known_spells() const
   return spell_knowledge;
 }
 
+void SpellKnowledge::set_most_recently_cast_spell_id(const string& spell_id)
+{
+  most_recently_cast_spell_id = spell_id;
+}
+
+string SpellKnowledge::get_most_recently_cast_spell_id() const
+{
+  return most_recently_cast_spell_id;
+}
+
 bool SpellKnowledge::serialize(ostream& stream)
 {
   size_t num_spells = spell_knowledge.size();
@@ -59,6 +70,8 @@ bool SpellKnowledge::serialize(ostream& stream)
       Serialize::write_uint(stream, spell_count);
     }
   }
+
+  Serialize::write_string(stream, most_recently_cast_spell_id);
 
   return true;
 }
@@ -83,6 +96,8 @@ bool SpellKnowledge::deserialize(istream& stream)
       spell_knowledge[spell_id] = spell_count;
     }
   }
+
+  Serialize::read_string(stream, most_recently_cast_spell_id);
 
   return true;
 }

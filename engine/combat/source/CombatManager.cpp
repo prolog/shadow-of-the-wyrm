@@ -1,3 +1,4 @@
+#include <boost/foreach.hpp>
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
@@ -13,12 +14,13 @@
 #include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "SkillManager.hpp"
+#include "SkillMarkerFactory.hpp"
 #include "SpeedCalculatorFactory.hpp"
 #include "TextKeys.hpp"
 #include "RNG.hpp"
 #include "WeaponManager.hpp"
 
-using std::string;
+using namespace std;
 
 CombatManager::CombatManager()
 {
@@ -60,7 +62,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 // The generated to-hit value is 100 (ignore Soak, 2x max damage, any resistance is min 100%)
 // The generated to-hit value is >= 96 (ignore Soak, max damage, any resistance is min 100%)
 // The generated to-hit value is >= the target number (regular damage)
-ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type)
+ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, DamagePtr precalc_damage)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -79,7 +81,17 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     int to_hit_value = th_calculator->calculate(attacking_creature);
     int total_roll = d100_roll + to_hit_value;
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
-    Damage damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
+
+    Damage damage;
+
+    if (precalc_damage)
+    {
+      damage = *precalc_damage;
+    }
+    else
+    {
+      damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
+    }
         
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
@@ -104,11 +116,12 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     }    
   }
 
-  // If the attack was a PvM type attack, mark the weapon and combat skills of the attacking creature,
-  // and add the attacking creature as a threat to the attacked creature.
+  // If the attack was a PvM type attack, mark the weapon/spell-category and 
+  // combat/magic skills of the attacking creature, and add the attacking 
+  // creature as a threat to the attacked creature.
   if (attacking_creature)
   {
-    mark_weapon_and_combat_skills(attacking_creature, attack_type, mark_for_weapon_and_combat_skills);
+    mark_appropriate_skills(attacking_creature, attack_type, mark_for_weapon_and_combat_skills);
     
     HostilityManager hm;
     hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id());
@@ -315,22 +328,23 @@ string CombatManager::get_appropriate_creature_description(CreaturePtr creature)
   return desc;
 }
 
-void CombatManager::mark_weapon_and_combat_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success)
+// Create an appropriate ISkillMarker for the attack type, and get the list of
+// skills that should be marked, based on the successful attack.  Then, mark
+// each of them.
+void CombatManager::mark_appropriate_skills(CreaturePtr attacking_creature, const AttackType attack_type, const bool attack_success)
 {
-  WeaponManager wm;
-  SkillManager sm;
-  
-  WeaponStyle ws = wm.get_style(attack_type);
-  
-  SkillType combat_type_skill_to_mark = SKILL_GENERAL_COMBAT;
-  
-  if (ws == WEAPON_STYLE_RANGED)
+  SkillManager sm;  
+  ISkillMarkerPtr skill_marker = SkillMarkerFactory::create_skill_marker(attack_type);
+
+  if (skill_marker)
   {
-    combat_type_skill_to_mark = SKILL_GENERAL_ARCHERY;
+    vector<SkillType> skills_to_mark = skill_marker->get_marked_skills(attacking_creature);
+
+    BOOST_FOREACH(SkillType skill_type, skills_to_mark)
+    {
+      sm.mark_skill(attacking_creature, skill_type, attack_success);
+    }
   }
-  
-  sm.mark_skill(attacking_creature, combat_type_skill_to_mark, attack_success);
-  sm.mark_skill(attacking_creature, wm.get_skill_type(attacking_creature, attack_type), attack_success);
 }
 
 // Update the Game's and the attacking creature's mortuary with the kill.

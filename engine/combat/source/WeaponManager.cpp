@@ -17,6 +17,14 @@ WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attac
     switch(attack_type)
     {
       case ATTACK_TYPE_RANGED:
+        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_RANGED_WEAPON));
+
+        // Check to see if it's ranged combat with ammo only (thrown daggers, etc)
+        if (!weapon)
+        {
+          weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION));
+        }
+        break;
       case ATTACK_TYPE_MELEE_PRIMARY:
         weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_handedness())));
         break;

@@ -199,13 +199,16 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         string cast_message = ActionTextKeys::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
         manager.add_new_message(cast_message);
 
+        // Mark the spell as the most recently cast.
+        creature->get_spell_knowledge_ref().set_most_recently_cast_spell_id(spell.get_spell_id());
+
         // Process the spell shape.
         SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(spell.get_shape().get_spell_shape_type());
       
         if (spell_processor)
         {
           // JCD FIXME: Create animation and display it here.
-          spell_processor->process(current_map, caster_coord, spell_direction, spell, &game.get_action_manager_ref());
+          spell_processor->process(creature, current_map, caster_coord, spell_direction, spell, &game.get_action_manager_ref());
         }
       }
 

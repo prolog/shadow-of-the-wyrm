@@ -24,6 +24,7 @@ TEST(SL_World_Magic_SpellKnowledge, saveload)
 
   sk.set_spell_knowledge("foo", 2);
   sk.set_spell_knowledge("bar", 14);
+  sk.set_most_recently_cast_spell_id("blasty");
 
   ostringstream ss;
 
