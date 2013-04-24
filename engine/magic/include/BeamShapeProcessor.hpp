@@ -5,6 +5,6 @@
 class BeamShapeProcessor : public SpellShapeProcessor
 {
   protected:
-    virtual std::vector<TilePtr> get_affected_tiles_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell);
+    virtual std::vector<std::pair<Coordinate, TilePtr> > get_affected_tiles_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell);
 };
 

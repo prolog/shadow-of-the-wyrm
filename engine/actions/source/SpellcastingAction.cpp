@@ -207,8 +207,13 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       
         if (spell_processor)
         {
-          // JCD FIXME: Create animation and display it here.
-          spell_processor->process(creature, current_map, caster_coord, spell_direction, spell, &game.get_action_manager_ref());
+          // Get the affected tiles.
+          vector<pair<Coordinate, TilePtr> > affected_tiles = spell_processor->get_affected_tiles_for_spell(current_map, caster_coord, spell_direction, spell);
+
+          // Create the animation.
+
+          // Apply the damage, effects, etc.
+          spell_processor->process(creature, affected_tiles, spell, &game.get_action_manager_ref());
         }
       }
 
