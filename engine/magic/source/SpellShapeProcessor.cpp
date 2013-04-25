@@ -12,20 +12,19 @@ SpellShapeProcessor::~SpellShapeProcessor()
 
 // Process the shape.  This is done by generating all the affected tiles,
 // and then applying damage and spell effects to each.
-void SpellShapeProcessor::process(CreaturePtr caster, const vector<pair<Coordinate, TilePtr> >& affected_tiles, const Spell& spell, ActionManager * const am)
+void SpellShapeProcessor::process_damage_and_effect(CreaturePtr caster, const vector<TilePtr>& affected_tiles, const Spell& spell, ActionManager * const am)
 {
   // Apply the spell's damage/effect to the tiles in order.
   apply_damage_and_effect(caster, affected_tiles, spell, am);
 }
 
 // Apply a spell to a particular tile by applying its damage and spell effect.
-void SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vector<pair<Coordinate, TilePtr> >& affected_tiles, const Spell& spell, ActionManager * const am)
+void SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vector<TilePtr>& affected_tiles, const Spell& spell, ActionManager * const am)
 {
-  for (vector<pair<Coordinate, TilePtr>>::const_iterator v_it = affected_tiles.begin(); v_it != affected_tiles.end(); v_it++)
+  BOOST_FOREACH(TilePtr tile, affected_tiles)
   {
-    pair<Coordinate, TilePtr> tile_pair = *v_it;
-    apply_damage(caster, tile_pair.second, spell, am);
-    apply_effect(caster, tile_pair.second, spell, am);
+    apply_damage(caster, tile, spell, am);
+    apply_effect(caster, tile, spell, am);
   }
 }
 

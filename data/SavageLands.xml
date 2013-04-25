@@ -3482,6 +3482,7 @@
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>HEALING_WORD_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3001</MagicCategory>
+			<Colour>15</Colour>
 			<APCost>10</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
@@ -3493,9 +3494,10 @@
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SHADOW_FLAME_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3003</MagicCategory>
+			<Colour>4</Colour>
 			<APCost>2</APCost>
 			<Speed>1</Speed>
-			<Range>1</Range>
+			<Range>2</Range>
 			<Shape>1</Shape>
 			<Damage>
 				<NumDice>2</NumDice>

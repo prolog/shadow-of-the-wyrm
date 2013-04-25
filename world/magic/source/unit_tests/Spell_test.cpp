@@ -9,6 +9,7 @@ TEST(SL_World_Magic_Spell, equality_operator)
   sp.set_spell_name_sid("spell_name_sid");
   sp.set_player_cast_message_sid("player_cast");
   sp.set_monster_cast_message_sid("monster_cast");
+  sp.set_colour(COLOUR_GREEN);
   sp.set_magic_category(SKILL_MAGIC_PRIMORDIAL);
   sp.set_ap_cost(5);
   sp.set_speed(4);

@@ -3,13 +3,15 @@
 using namespace std;
 
 // Ignore the direction provided, and just target the starting coordinates.
-vector<pair<Coordinate, TilePtr> > TargetSelfShapeProcessor::get_affected_tiles_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
+pair<vector<TilePtr>, Animation> TargetSelfShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
 {
-  vector<pair<Coordinate, TilePtr> > affected_tiles;
+  vector<TilePtr> affected_tiles;
+  Animation animation; // No animation for self-targetted spells.
 
   TilePtr caster_tile = map->at(caster_coord);
-  affected_tiles.push_back(make_pair(caster_coord, caster_tile));
+  affected_tiles.push_back(caster_tile);
 
-  return affected_tiles;
+  std::pair<std::vector<TilePtr>, Animation> tiles_and_animation(affected_tiles, animation);
+  return tiles_and_animation;
 }
 

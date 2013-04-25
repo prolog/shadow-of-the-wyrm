@@ -465,6 +465,7 @@
     <ClInclude Include="engine\time\include\WorldTimeKeeper.hpp" />
     <ClInclude Include="engine\time\include\WorldTimeKeeperCoordinator.hpp" />
     <ClInclude Include="engine\translators\include\AnimationTranslator.hpp" />
+    <ClInclude Include="engine\translators\include\BeamSpellTranslator.hpp" />
     <ClInclude Include="engine\translators\include\CreatureTranslator.hpp" />
     <ClInclude Include="engine\translators\include\DisplayItemTypeFactory.hpp" />
     <ClInclude Include="engine\translators\include\EquipmentTranslator.hpp" />
@@ -1267,6 +1268,7 @@
     <ClCompile Include="engine\time\source\WorldTimeKeeper.cpp" />
     <ClCompile Include="engine\time\source\WorldTimeKeeperCoordinator.cpp" />
     <ClCompile Include="engine\translators\source\AnimationTranslator.cpp" />
+    <ClCompile Include="engine\translators\source\BeamSpellTranslator.cpp" />
     <ClCompile Include="engine\translators\source\CreatureTranslator.cpp" />
     <ClCompile Include="engine\translators\source\DisplayItemTypeFactory.cpp" />
     <ClCompile Include="engine\translators\source\EquipmentTranslator.cpp" />
