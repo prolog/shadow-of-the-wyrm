@@ -207,13 +207,16 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       
         if (spell_processor)
         {
-          // Get the affected tiles.
-          vector<pair<Coordinate, TilePtr> > affected_tiles = spell_processor->get_affected_tiles_for_spell(current_map, caster_coord, spell_direction, spell);
+          // Get the affected tiles and the animation.
+          pair<vector<TilePtr>, Animation> affected_tiles_and_animation = spell_processor->get_affected_tiles_and_animation_for_spell(current_map, caster_coord, spell_direction, spell);
+          vector<TilePtr> affected_tiles = affected_tiles_and_animation.first;
+          Animation spell_animation = affected_tiles_and_animation.second;
+          
+          // Draw the animation.
+          game.get_display()->draw_animation(spell_animation);
 
-          // Create the animation.
-
-          // Apply the damage, effects, etc.
-          spell_processor->process(creature, affected_tiles, spell, &game.get_action_manager_ref());
+          // Apply the damage, effects, etc, to the affected tiles.
+          spell_processor->process_damage_and_effect(creature, affected_tiles, spell, &game.get_action_manager_ref());
         }
       }
 

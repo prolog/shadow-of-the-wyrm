@@ -146,8 +146,6 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
         DisplayTile projectile_disp = MapTranslator::create_display_tile_from_item(creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION));
         Animation anim = anim_tr.create_movement_animation(projectile_disp, game.get_current_world()->get_calendar().get_season()->get_season(), attack_path, current_map, fov_map);
 
-        // JCD FIXME: This should probably be moved elsewhere?
-
         display->draw_animation(anim);
       }
 

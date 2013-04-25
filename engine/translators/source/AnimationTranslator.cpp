@@ -23,6 +23,9 @@ Animation AnimationTranslator::create_movement_animation(const DisplayTile& proj
     TilePtr game_tile = current_map->at(c);
     TilePtr fov_tile = fov_map->at(c);
 
+    // Guard against a range outside the FOV/map.
+    if (!game_tile || !fov_tile) continue;
+
     DisplayTile previously_displayed = MapTranslator::create_display_tile(game_tile, fov_tile);
     previously_displayed.set_season(current_season);
     

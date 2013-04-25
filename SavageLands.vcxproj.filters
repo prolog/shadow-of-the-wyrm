@@ -2433,6 +2433,9 @@
     <ClInclude Include="engine\calculators\include\MagicalCombatSkillMarker.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\translators\include\BeamSpellTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4594,6 +4597,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\RangedCombatSkillMarker.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\BeamSpellTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -6,6 +6,13 @@ Savage Lands v0.1.2, "Aethelwalh"
 - Extended the scripting engine to allow for "level scripts" that can be
   executed per-class on creature creation (L1) and after levelling.
 
+- Spellcasting: an initial L1 spell for Witchlings, spells screen, 
+  spellcasting mechanics and animation, various bugfixes for magical 
+  calculators due to stubs being created in the Early Days.
+
+- Miscellaneous small changes: AP regeneration, some class renaming/general
+  cleanup of strings and actions.
+
 Savage Lands v0.1.1, "Cissa"
 - Version declared March 10, 2013.  Version finalized March 28, 2013.
 

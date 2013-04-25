@@ -4,6 +4,7 @@ using namespace std;
 
 Spell::Spell()
 : magic_category(SKILL_MAGIC_ARCANE), 
+  colour(COLOUR_WHITE),
   ap_cost(0), 
   speed(1), 
   range(0), 
@@ -21,6 +22,7 @@ bool Spell::operator==(const Spell& spell)
   result = result && (player_cast_message_sid == spell.player_cast_message_sid);
   result = result && (monster_cast_message_sid == spell.monster_cast_message_sid);
   result = result && (magic_category == spell.magic_category);
+  result = result && (colour == spell.colour);
   result = result && (ap_cost == spell.ap_cost);
   result = result && (speed == spell.speed);
   result = result && (range == spell.range);
@@ -80,6 +82,16 @@ void Spell::set_magic_category(const SkillType new_magic_category)
 SkillType Spell::get_magic_category() const
 {
   return magic_category;
+}
+
+void Spell::set_colour(const Colour new_colour)
+{
+  colour = new_colour;
+}
+
+Colour Spell::get_colour() const
+{
+  return colour;
 }
 
 void Spell::set_ap_cost(const uint new_ap_cost)

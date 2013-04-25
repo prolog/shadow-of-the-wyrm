@@ -63,6 +63,7 @@
 			<xs:element name="PlayerCastMessageSID" type="xs:string"/>
 			<xs:element name="MonsterCastMessageSID" type="xs:string"/>
 			<xs:element name="MagicCategory" type="tns:MagicSkillType"/>
+			<xs:element name="Colour" type="tns:ColourType"/>
 			<xs:element name="APCost" type="xs:unsignedInt"/>
 			<xs:element name="Speed" type="xs:integer"/>
 			<xs:element name="Range" type="xs:unsignedInt"/>

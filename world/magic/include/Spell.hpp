@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "Colours.hpp"
 #include "common.hpp"
 #include "Damage.hpp"
 #include "EffectTypes.hpp"
@@ -26,6 +27,9 @@ class Spell
 
     void set_monster_cast_message_sid(const std::string& new_monster_cast_message_sid);
     std::string get_monster_cast_message_sid() const;
+
+    void set_colour(const Colour new_colour);
+    Colour get_colour() const;
 
     void set_magic_category(const SkillType new_skill_type);
     SkillType get_magic_category() const;
@@ -57,6 +61,7 @@ class Spell
     std::string player_cast_message_sid;
     std::string monster_cast_message_sid;
     SkillType magic_category;
+    Colour colour;
     uint ap_cost;
     int speed;
     uint range;
