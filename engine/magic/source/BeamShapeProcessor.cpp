@@ -15,7 +15,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   uint range = spell.get_range();
   Coordinate current_coord = caster_coord;
   TileMagicChecker tmc;
-  vector<Coordinate> movement_path;
+  vector<vector<Coordinate> > movement_path;
 
   for (uint i = 0; i < range; i++)
   {
@@ -32,7 +32,9 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
     // list of affected tiles.
     current_coord = c;
     affected_tiles.push_back(tile);
-    movement_path.push_back(current_coord);
+    vector<Coordinate> beam_vec;
+    beam_vec.push_back(current_coord);
+    movement_path.push_back(beam_vec);
   }
 
   BeamSpellTranslator bst;
@@ -43,7 +45,10 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   MapPtr fov_map = caster->get_decision_strategy()->get_fov_map();
   Game& game = Game::instance();
   AnimationTranslator at(game.get_display());
-  animation = at.create_movement_animation(dt, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, map, fov_map);
+
+  // Create the animation, not redrawing the previous frame at each
+  // step, as that will give the desired "beam" shape.
+  animation = at.create_movement_animation(dt, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
 
   pair<vector<TilePtr>, Animation> affected_tiles_and_animation(affected_tiles, animation);
   return affected_tiles_and_animation;
