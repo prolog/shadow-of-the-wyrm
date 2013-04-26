@@ -132,6 +132,14 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
       // Get the attack path so that we can determine the actual target coords,
       // and create an animation if necessary.
       vector<Coordinate> attack_path = get_actual_coordinates_given_missile_path(creature_coords, target_coords, current_map);
+      vector<vector<Coordinate>> animation_frames;
+
+      BOOST_FOREACH(Coordinate c, attack_path)
+      {
+        vector<Coordinate> frame;
+        frame.push_back(c);
+        animation_frames.push_back(frame);
+      }
       
       if (!attack_path.empty())
       {
@@ -144,7 +152,7 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
         MapPtr current_map = game.get_current_map();
         MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
         DisplayTile projectile_disp = MapTranslator::create_display_tile_from_item(creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION));
-        Animation anim = anim_tr.create_movement_animation(projectile_disp, game.get_current_world()->get_calendar().get_season()->get_season(), attack_path, current_map, fov_map);
+        Animation anim = anim_tr.create_movement_animation(projectile_disp, game.get_current_world()->get_calendar().get_season()->get_season(), animation_frames, true, current_map, fov_map);
 
         display->draw_animation(anim);
       }
