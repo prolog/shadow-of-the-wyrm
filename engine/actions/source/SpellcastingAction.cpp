@@ -54,53 +54,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
       }
       else
       {
-        if (creature->get_is_player())
-        {
-          CommandFactoryPtr command_factory    = boost::make_shared<MagicCommandFactory>();
-          KeyboardCommandMapPtr kb_command_map = boost::make_shared<MagicKeyboardCommandMap>();
-
-          Game& game = Game::instance();
-
-          while (cast_spells)
-          {
-            SpellSelectionScreen sss(game.get_display(), creature);
-
-            string display_s = sss.display();
-            int input = display_s.at(0);
-            char menu_selection = display_s.at(0);
-
-            spell_id = sss.get_selected_spell(menu_selection);
-
-            DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
-      
-            if (decision_strategy)
-            {
-              // Get the actual command, signalling to the decision function that
-              // input has been provided (don't try to get the input twice).
-              CommandPtr magic_command = decision_strategy->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, &input);
-
-              action_cost_value = MagicCommandProcessor::process(creature, magic_command);
-
-              if (action_cost_value > 0 && !spell_id.empty())
-              {
-                // A spell was selected, and the command processor will have
-                // taken care of casting it.  Leave the menu and go back to
-                // the map.
-                cast_spells = false;
-              }
-            }
-
-            if (!decision_strategy || action_cost_value == -1)
-            {
-              cast_spells = false;
-            }
-          }
-        }
-        else
-        {
-          // JCD FIXME - Change this once creatures with magic are added to AI
-          // considerations...
-        }
+        pair<string, ActionCostValue> spell_details = cast_spell_on_valid_map_type(creature);
+        spell_id = spell_details.first;
+        action_cost_value = spell_details.second;
       }
     }
   }
@@ -120,6 +76,29 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
   }
 
   return action_cost_value;
+}
+
+pair<string, ActionCostValue> SpellcastingAction::cast_spell_on_valid_map_type(CreaturePtr creature) const
+{
+  bool cast_spells = true;
+  pair<string, ActionCostValue> selection_details("", 0);
+
+  if (creature->get_is_player())
+  {
+    while (cast_spells)
+    {
+      pair<bool, pair<string, ActionCostValue>> cur_selection_details = process_spellcasting_selection(creature);
+      cast_spells = cur_selection_details.first;
+      selection_details = cur_selection_details.second;
+    }
+  }
+  else
+  {
+    // JCD FIXME - Change this once creatures with magic are added to AI
+    // considerations...
+  }
+
+  return selection_details;
 }
 
 // Cast a particular spell by a particular creature.
@@ -143,9 +122,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       Coordinate caster_coord = current_map->get_location(creature->get_id());
 
       // Reduce the creature's AP by the spell cost.
-      Statistic new_ap = creature->get_arcana_points();
-      new_ap.set_current(new_ap.get_current() - spell.get_ap_cost());
-      creature->set_arcana_points(new_ap);
+      reduce_caster_ap_by_spell_cost(creature, spell);
 
       // A check to see if spellcasting succeeded.  If the spell is directional
       // and a proper direction isn't selected, this will cause the magic 
@@ -156,36 +133,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       // Is a direction needed?
       if (spell.get_shape().get_requires_direction())
       {
-        // Make the creature select a direction.
-        CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();
-        KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
-
-        // If the creature is the player, inform the player that a direction is needed.
-        if (creature->get_is_player())
-        {
-          MessageManager& manager = MessageManager::instance();
-          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
-          manager.send();
-        }
-
-        // Try to get a direction.  This might fail.
-        CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, 0);
-
-        if (base_command)
-        {
-          // Check to see if it's an actual directional command
-          boost::shared_ptr<DirectionalCommand> dcommand;
-          dcommand = boost::dynamic_pointer_cast<DirectionalCommand>(base_command);
-
-          if (dcommand)
-          {
-            spell_direction = dcommand->get_direction();
-          }
-          else
-          {
-            spellcasting_succeeded = false;
-          }
-        }
+        pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell_direction);
+        spellcasting_succeeded = direction_pair.first; // Can the input be converted to a dir?
+        spell_direction = direction_pair.second; // The actual direction, or the initial value if action conversion didn't work.
       }
 
       if (spellcasting_succeeded == false)
@@ -199,17 +149,8 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         string cast_message = ActionTextKeys::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
         manager.add_new_message(cast_message);
 
-        // Reduce the number of castings by one.
-        //
-        // If there are now zero castings, remove the spell knowledge from
-        // the caster.
-        SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-        sk.set_spell_knowledge(spell.get_spell_id(), sk.get_spell_knowledge(spell.get_spell_id())-1);
-
-        if (sk.get_spell_knowledge(spell.get_spell_id()) == 0)
-        {
-          sk.remove_spell_knowledge(spell.get_spell_id());
-        }
+        // Reduce castings by one, removing the spell if there are none left.
+        reduce_castings_or_remove_spell(creature, spell);
 
         // Mark the spell as the most recently cast.
         creature->get_spell_knowledge_ref().set_most_recently_cast_spell_id(spell.get_spell_id());
@@ -219,16 +160,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       
         if (spell_processor)
         {
-          // Get the affected tiles and the animation.
-          pair<vector<TilePtr>, Animation> affected_tiles_and_animation = spell_processor->get_affected_tiles_and_animation_for_spell(current_map, caster_coord, spell_direction, spell);
-          vector<TilePtr> affected_tiles = affected_tiles_and_animation.first;
-          Animation spell_animation = affected_tiles_and_animation.second;
-          
-          // Draw the animation.
-          game.get_display()->draw_animation(spell_animation);
-
-          // Apply the damage, effects, etc, to the affected tiles.
-          spell_processor->process_damage_and_effect(creature, affected_tiles, spell, &game.get_action_manager_ref());
+          process_animation_and_spell(spell_processor, creature, current_map, caster_coord, spell_direction, spell);
         }
       }
 
@@ -275,4 +207,139 @@ void SpellcastingAction::add_insufficient_power_message() const
 ActionCostValue SpellcastingAction::get_action_cost_value() const
 {
   return 1;
+}
+
+// Reduce the spellcaster's AP by the amount specified by the spell
+void SpellcastingAction::reduce_caster_ap_by_spell_cost(CreaturePtr caster, const Spell& spell) const
+{
+  Statistic new_ap = caster->get_arcana_points();
+  new_ap.set_current(new_ap.get_current() - spell.get_ap_cost());
+  caster->set_arcana_points(new_ap);
+}
+
+// Reduce the number of castings by 1.  If there are 0 castings left, remove
+// the spell from the caster's spell knowledge.
+void SpellcastingAction::reduce_castings_or_remove_spell(CreaturePtr caster, const Spell& spell) const
+{
+  string spell_id = spell.get_spell_id();
+
+  SpellKnowledge& sk = caster->get_spell_knowledge_ref();
+  int new_castings = sk.get_spell_knowledge(spell_id) - 1;
+  sk.set_spell_knowledge(spell_id, new_castings);
+
+  if (new_castings == 0)
+  {
+    sk.remove_spell_knowledge(spell_id);
+  }
+}
+
+// Get a direction for the spell from the creature.
+// Also get whether the direction was "converted" properly from the base command
+// (ie, was it a direction command?)
+pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(CreaturePtr creature, const Direction spell_direction) const
+{
+  bool direction_conversion_ok = true;
+  Direction direction = spell_direction;
+
+  // Make the creature select a direction.
+  CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
+
+  // If the creature is the player, inform the player that a direction is needed.
+  if (creature->get_is_player())
+  {
+    MessageManager& manager = MessageManager::instance();
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
+    manager.send();
+  }
+
+  // Try to get a direction.  This might fail.
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, 0);
+
+  if (base_command)
+  {
+    // Check to see if it's an actual directional command
+    boost::shared_ptr<DirectionalCommand> dcommand;
+    dcommand = boost::dynamic_pointer_cast<DirectionalCommand>(base_command);
+
+    if (dcommand)
+    {
+      direction = dcommand->get_direction();
+    }
+    else
+    {
+      direction_conversion_ok = false;
+    }
+  }
+  else
+  {
+    direction_conversion_ok = false;
+  }
+
+  pair<bool, Direction> direction_status(direction_conversion_ok, direction);
+  return direction_status;
+}
+
+void SpellcastingAction::process_animation_and_spell(SpellShapeProcessorPtr spell_processor, CreaturePtr caster, MapPtr current_map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& spell) const
+{
+  Game& game = Game::instance();
+
+  // Get the affected tiles and the animation.
+  pair<vector<TilePtr>, Animation> affected_tiles_and_animation = spell_processor->get_affected_tiles_and_animation_for_spell(current_map, caster_coord, spell_direction, spell);
+  vector<TilePtr> affected_tiles = affected_tiles_and_animation.first;
+  Animation spell_animation = affected_tiles_and_animation.second;
+          
+  // Draw the animation.
+  game.get_display()->draw_animation(spell_animation);
+
+  // Apply the damage, effects, etc, to the affected tiles.
+  spell_processor->process_damage_and_effect(caster, affected_tiles, spell, &game.get_action_manager_ref());
+}
+
+// Process spellcasting selections on the Cast Spells screen. Return false
+// if processing should repeat (that is, return false if a spell has been
+// selected - return true if the input does not allow exiting the Cast
+// Spell screen).
+pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasting_selection(CreaturePtr creature) const
+{
+  ActionCostValue action_cost_value = 0;
+  bool cast_spells = true;
+
+  Game& game = Game::instance();
+  SpellSelectionScreen sss(game.get_display(), creature);
+
+  string display_s = sss.display();
+  int input = display_s.at(0);
+  char menu_selection = display_s.at(0);
+
+  string spell_id = sss.get_selected_spell(menu_selection);
+
+  DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
+  CommandFactoryPtr command_factory    = boost::make_shared<MagicCommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = boost::make_shared<MagicKeyboardCommandMap>();
+
+  if (decision_strategy)
+  {
+    // Get the actual command, signalling to the decision function that
+    // input has been provided (don't try to get the input twice).
+    CommandPtr magic_command = decision_strategy->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, &input);
+
+    action_cost_value = MagicCommandProcessor::process(creature, magic_command);
+
+    if (action_cost_value > 0 && !spell_id.empty())
+    {
+      // A spell was selected, and the command processor will have
+      // taken care of casting it.  Leave the menu and go back to
+      // the map.
+      cast_spells = false;
+    }
+  }
+
+  if (!decision_strategy || action_cost_value == -1)
+  {
+    cast_spells = false;
+  }
+
+  pair<bool, pair<string, ActionCostValue>> selection_and_cost(cast_spells, make_pair(spell_id, action_cost_value));
+  return selection_and_cost;
 }
