@@ -3477,6 +3477,23 @@
 		</Creature>
 	</Creatures>
 	<Spells>
+		<Spell id="a_01_wreath_of_fire">
+			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>WREATH_OF_FIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<Colour>9</Colour>
+			<APCost>5</APCost>
+			<Speed>1</Speed>
+			<Range>2</Range>
+			<Shape>4</Shape>
+			<Damage>
+				<NumDice>3</NumDice>
+				<NumSides>4</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>

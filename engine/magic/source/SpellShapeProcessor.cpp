@@ -1,6 +1,7 @@
 #include <boost/foreach.hpp>
 #include "ActionManager.hpp"
 #include "CombatManager.hpp"
+#include "CoordUtils.hpp"
 #include "EffectFactory.hpp"
 #include "SpellShapeProcessor.hpp"
 
@@ -55,4 +56,17 @@ void SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const S
       effect->effect(creature, am, ITEM_STATUS_UNCURSED);
     }
   }
+}
+
+bool SpellShapeProcessor::is_coordinate_adjacent_to_coordinate_in_previous_frame(const Coordinate& c, const vector<Coordinate>& prev_frame)
+{
+  BOOST_FOREACH(Coordinate prev_frame_coord, prev_frame)
+  {
+    if (CoordUtils::are_coordinates_adjacent(c, prev_frame_coord))
+    {
+      return true;
+    }
+  }
+
+  return false;
 }
