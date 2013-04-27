@@ -2,6 +2,7 @@
 #include "BallShapeProcessor.hpp"
 #include "BeamShapeProcessor.hpp"
 #include "ConeShapeProcessor.hpp"
+#include "ReflectiveBeamShapeProcessor.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "TargetSelfShapeProcessor.hpp"
 
@@ -26,6 +27,8 @@ SpellShapeProcessorPtr SpellShapeProcessorFactory::create_processor(const SpellS
       spell_processor = boost::make_shared<BeamShapeProcessor>();
       break;
     case SPELL_SHAPE_REFLECTIVE_BEAM:
+      spell_processor = boost::make_shared<ReflectiveBeamShapeProcessor>();
+      break;
     case SPELL_SHAPE_CONE:
       spell_processor = boost::make_shared<ConeShapeProcessor>();
       break;

@@ -2445,6 +2445,9 @@
     <ClInclude Include="engine\maps\include\DirectionUtils.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\magic\include\ReflectiveBeamShapeProcessor.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4618,6 +4621,9 @@
     </ClCompile>
     <ClCompile Include="engine\maps\source\DirectionUtils.cpp">
       <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\ReflectiveBeamShapeProcessor.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
