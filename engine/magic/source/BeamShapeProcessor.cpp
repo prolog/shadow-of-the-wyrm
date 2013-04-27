@@ -17,9 +17,15 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   TileMagicChecker tmc;
   vector<vector<Coordinate> > movement_path;
 
+  // For regular beams, the current direction will always be the passed-in
+  // direction (the beam will "fizzle out" if it hits a blocking tile).  For
+  // reflective beams (a subclass), the current direction will change as the
+  // beam bounces.
+  Direction current_direction = d;
+
   for (uint i = 0; i < range; i++)
   {
-    Coordinate c = CoordUtils::get_new_coordinate(current_coord, d);
+    Coordinate c = CoordUtils::get_new_coordinate(current_coord, current_direction);
     TilePtr tile = map->at(c);
 
     // Check to see if the tile blocks the spell.

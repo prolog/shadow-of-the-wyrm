@@ -8,7 +8,10 @@ Savage Lands v0.1.2, "Aethelwalh"
 
 - Spellcasting: an initial L1 spell for Witchlings, spells screen, 
   spellcasting mechanics and animation, various bugfixes for magical 
-  calculators due to stubs being created in the Early Days.
+  calculators due to stubs being created in the Early Days, shape
+  processing for beams (regular and reflective), cones, balls, and self-
+  targetting.  Various spells (Dragon Breath, Wreath of Fire, Lightning
+  Bolt, Healing Word) to test the various shapes.
 
 - Miscellaneous small changes: AP regeneration, some class renaming/general
   cleanup of strings and actions.

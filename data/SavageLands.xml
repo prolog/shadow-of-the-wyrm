@@ -3511,6 +3511,23 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>		
+		<Spell id="a_03_lightning_bolt">
+			<NameSID>LIGHTNING_BOLT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>LIGHTNING_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>LIGHTNING_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<Colour>11</Colour>
+			<APCost>6</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>2</Shape>
+			<Damage>
+				<NumDice>4</NumDice>
+				<NumSides>6</NumSides>
+				<Type>13</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
