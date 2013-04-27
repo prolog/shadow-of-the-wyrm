@@ -38,6 +38,11 @@ uint SpellKnowledge::count_spells_known() const
   return spell_knowledge.size();
 }
 
+void SpellKnowledge::remove_spell_knowledge(const string& spell_id)
+{
+  spell_knowledge.erase(spell_id);
+}
+
 SpellKnowledgeMap SpellKnowledge::get_known_spells() const
 {
   return spell_knowledge;
