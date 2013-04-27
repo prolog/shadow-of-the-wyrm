@@ -199,6 +199,18 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         string cast_message = ActionTextKeys::get_spellcasting_message(spell, creature->get_description_sid(), creature->get_is_player());
         manager.add_new_message(cast_message);
 
+        // Reduce the number of castings by one.
+        //
+        // If there are now zero castings, remove the spell knowledge from
+        // the caster.
+        SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+        sk.set_spell_knowledge(spell.get_spell_id(), sk.get_spell_knowledge(spell.get_spell_id())-1);
+
+        if (sk.get_spell_knowledge(spell.get_spell_id()) == 0)
+        {
+          sk.remove_spell_knowledge(spell.get_spell_id());
+        }
+
         // Mark the spell as the most recently cast.
         creature->get_spell_knowledge_ref().set_most_recently_cast_spell_id(spell.get_spell_id());
 
