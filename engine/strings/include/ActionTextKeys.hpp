@@ -33,6 +33,7 @@ class ActionTextKeys
     static const std::string ACTION_CHAT_NOBODY_NEARBY;
     static const std::string ACTION_CHAT_NO_RESPONSE;
     static const std::string ACTION_GET_DIRECTION;
+    static const std::string ACTION_GET_CARDINAL_DIRECTION;
     static const std::string ACTION_OPEN_DOOR;
     static const std::string ACTION_CLOSE_DOOR;
     static const std::string ACTION_DOOR_DESTROYED;

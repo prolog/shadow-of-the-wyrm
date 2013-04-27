@@ -31,7 +31,7 @@ class SpellcastingAction : public IActionManager
     void reduce_castings_or_remove_spell(CreaturePtr caster, const Spell& spell) const;
     // When a spell requires a direction (beams, etc), get the direction from
     // the creature.
-    std::pair<bool, Direction> get_spell_direction_from_creature(CreaturePtr caster, const Direction spell_direction) const;
+    std::pair<bool, Direction> get_spell_direction_from_creature(CreaturePtr caster, const Spell& spell, const Direction spell_direction) const;
     // Get and process the spell's animation, followed by the spell damage and
     // effect.
     void process_animation_and_spell(SpellShapeProcessorPtr spell_processor, CreaturePtr caster, MapPtr map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& spell) const;

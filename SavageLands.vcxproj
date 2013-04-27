@@ -375,11 +375,13 @@
     <ClInclude Include="engine\items\include\SquishyEquipWornLocationFilter.hpp" />
     <ClInclude Include="engine\magic\include\BallShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp" />
+    <ClInclude Include="engine\magic\include\ConeShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\SpellShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\MagicalAbilityChecker.hpp" />
     <ClInclude Include="engine\magic\include\SpellShapeProcessorFactory.hpp" />
     <ClInclude Include="engine\magic\include\TargetSelfShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\TileMagicChecker.hpp" />
+    <ClInclude Include="engine\maps\include\DirectionUtils.hpp" />
     <ClInclude Include="engine\maps\include\IMapTypeQuery.hpp" />
     <ClInclude Include="engine\maps\include\LoadedMapDetails.hpp" />
     <ClInclude Include="engine\maps\include\MapCursor.hpp" />
@@ -1094,6 +1096,7 @@
     </ClCompile>
     <ClCompile Include="engine\magic\source\BallShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\BeamShapeProcessor.cpp" />
+    <ClCompile Include="engine\magic\source\ConeShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\MagicalAbilityChecker.cpp" />
     <ClCompile Include="engine\magic\source\SpellShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\SpellShapeProcessorFactory.cpp" />
@@ -1102,6 +1105,7 @@
     <ClCompile Include="engine\magic\source\unit_tests\MagicalAbilityChecker_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\maps\source\DirectionUtils.cpp" />
     <ClCompile Include="engine\maps\source\LoadedMapDetails.cpp" />
     <ClCompile Include="engine\maps\source\MapCursor.cpp" />
     <ClCompile Include="engine\maps\source\MapExitUtils.cpp" />
