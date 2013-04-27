@@ -373,6 +373,7 @@
     <ClInclude Include="engine\items\include\NullItemFilter.hpp" />
     <ClInclude Include="engine\items\include\ReadableItemFilter.hpp" />
     <ClInclude Include="engine\items\include\SquishyEquipWornLocationFilter.hpp" />
+    <ClInclude Include="engine\magic\include\BallShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\SpellShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\MagicalAbilityChecker.hpp" />
@@ -1091,6 +1092,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\magic\source\BallShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\BeamShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\MagicalAbilityChecker.cpp" />
     <ClCompile Include="engine\magic\source\SpellShapeProcessor.cpp" />
