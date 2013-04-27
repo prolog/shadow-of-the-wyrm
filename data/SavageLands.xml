@@ -3494,6 +3494,23 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="a_02_dragon_breath">
+			<NameSID>DRAGON_BREATH_NAME_SID</NameSID>
+			<PlayerCastMessageSID>DRAGON_BREATH_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>DRAGON_BREATH_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<Colour>2</Colour>
+			<APCost>7</APCost>
+			<Speed>1</Speed>
+			<Range>3</Range>
+			<Shape>3</Shape>
+			<Damage>
+				<NumDice>6</NumDice>
+				<NumSides>4</NumSides>
+				<Type>5</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>

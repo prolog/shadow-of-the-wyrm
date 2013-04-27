@@ -14,18 +14,17 @@ TEST(SL_World_Magic_SpellShapeFactory, shapes_return_correct_shape_type)
 TEST(SL_World_Magic_SpellShapeFactory, shapes_return_correct_directional_value)
 {
   SpellShape ss_ts = SpellShapeFactory::create_spell_shape(SPELL_SHAPE_TARGET_SELF);
-  EXPECT_FALSE(ss_ts.get_requires_direction());
+  EXPECT_EQ(DIRECTION_CATEGORY_NONE, ss_ts.get_direction_category());
 
   SpellShape ss_beam = SpellShapeFactory::create_spell_shape(SPELL_SHAPE_BEAM);
-  EXPECT_TRUE(ss_beam.get_requires_direction());
+  EXPECT_EQ(DIRECTION_CATEGORY_CARDINALORDINAL, ss_beam.get_direction_category());
 
   SpellShape ss_rbeam = SpellShapeFactory::create_spell_shape(SPELL_SHAPE_REFLECTIVE_BEAM);
-  EXPECT_TRUE(ss_rbeam.get_requires_direction());
+  EXPECT_EQ(DIRECTION_CATEGORY_CARDINALORDINAL, ss_rbeam.get_direction_category());
 
   SpellShape ss_cone = SpellShapeFactory::create_spell_shape(SPELL_SHAPE_CONE);
-  EXPECT_TRUE(ss_cone.get_requires_direction());
+  EXPECT_EQ(DIRECTION_CATEGORY_CARDINAL, ss_cone.get_direction_category());
 
   SpellShape ss_ball = SpellShapeFactory::create_spell_shape(SPELL_SHAPE_BALL);
-  EXPECT_FALSE(ss_ball.get_requires_direction());
-
+  EXPECT_EQ(DIRECTION_CATEGORY_NONE, ss_ball.get_direction_category());
 }

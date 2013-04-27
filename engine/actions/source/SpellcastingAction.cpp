@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
 #include "Conversion.hpp"
+#include "DirectionUtils.hpp"
 #include "SpellcastingAction.hpp"
 #include "Game.hpp"
 #include "MagicalAbilityChecker.hpp"
@@ -131,9 +132,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       Direction spell_direction = DIRECTION_NORTH;
 
       // Is a direction needed?
-      if (spell.get_shape().get_requires_direction())
+      if (spell.get_shape().get_direction_category() != DIRECTION_CATEGORY_NONE)
       {
-        pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell_direction);
+        pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell, spell_direction);
         spellcasting_succeeded = direction_pair.first; // Can the input be converted to a dir?
         spell_direction = direction_pair.second; // The actual direction, or the initial value if action conversion didn't work.
       }
@@ -236,7 +237,7 @@ void SpellcastingAction::reduce_castings_or_remove_spell(CreaturePtr caster, con
 // Get a direction for the spell from the creature.
 // Also get whether the direction was "converted" properly from the base command
 // (ie, was it a direction command?)
-pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(CreaturePtr creature, const Direction spell_direction) const
+pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(CreaturePtr creature, const Spell& spell, const Direction spell_direction) const
 {
   bool direction_conversion_ok = true;
   Direction direction = spell_direction;
@@ -248,8 +249,14 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
   {
+    string direction_prompt_sid = ActionTextKeys::ACTION_GET_DIRECTION;
+    if (spell.get_shape().get_direction_category() == DIRECTION_CATEGORY_CARDINAL)
+    {
+      direction_prompt_sid = ActionTextKeys::ACTION_GET_CARDINAL_DIRECTION;
+    }
+
     MessageManager& manager = MessageManager::instance();
-    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
+    manager.add_new_message(StringTable::get(direction_prompt_sid));
     manager.send();
   }
 
@@ -264,7 +271,27 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
 
     if (dcommand)
     {
+      
       direction = dcommand->get_direction();
+      DirectionCategory dc = spell.get_shape().get_direction_category();
+
+      // Any directional spell must be at least cardinal.
+      if (!DirectionUtils::is_cardinal(direction))
+      {
+        bool is_ordinal = DirectionUtils::is_ordinal(direction);
+
+        // However, some spells (beams, etc) can also be
+        // ordinal.
+        if (dc == DIRECTION_CATEGORY_CARDINALORDINAL && !is_ordinal)
+        {
+          direction_conversion_ok = false;
+        }
+
+        if (is_ordinal && dc != DIRECTION_CATEGORY_CARDINALORDINAL)
+        {
+          direction_conversion_ok = false;
+        }
+      }
     }
     else
     {

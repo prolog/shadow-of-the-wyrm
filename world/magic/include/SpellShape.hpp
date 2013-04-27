@@ -1,4 +1,5 @@
 #pragma once
+#include "Directions.hpp"
 #include "SpellTypes.hpp"
 
 // A class used to get properties about a spell's shape - the raw type,
@@ -7,14 +8,14 @@ class SpellShape
 {
   public:
     SpellShape();
-    SpellShape(const SpellShapeType st, const bool req_direction);
+    SpellShape(const SpellShapeType st, const DirectionCategory dir_cat);
     bool operator==(const SpellShape& ss);
 
     SpellShapeType get_spell_shape_type() const;
-    bool get_requires_direction() const;
+    DirectionCategory get_direction_category() const;
 
   protected:
     SpellShapeType spell_shape_type;
-    bool requires_direction;
+    DirectionCategory direction_category;
 };
 
