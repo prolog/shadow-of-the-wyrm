@@ -516,6 +516,66 @@ void MapUtils::place_creature_on_previous_or_first_available_location(MapPtr map
   }
 }
 
+bool MapUtils::is_corner(const Coordinate& c, const Direction d, MapPtr map)
+{
+  bool corner = false;
+
+  vector<TilePtr> corner_tiles;
+
+  TilePtr c_tile = map->at(c);
+  TilePtr c1_tile;
+  TilePtr c2_tile;
+
+  corner_tiles.push_back(c_tile);
+
+  if (d == DIRECTION_NORTH_WEST)
+  {
+    // Check the coordinates east and south
+    c1_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_EAST));
+    c2_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH));
+  }
+  else if (d == DIRECTION_NORTH_EAST)
+  {
+    // Check the coordinates west and south
+    c1_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_WEST));
+    c2_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH));
+  }
+  else if (d == DIRECTION_SOUTH_WEST)
+  {
+    // Check the coordinates east and north
+    c1_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_EAST));
+    c2_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_NORTH));
+  }
+  else if (d == DIRECTION_SOUTH_EAST)
+  {
+    // Check the coordinates west and north
+    c1_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_WEST));
+    c2_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_NORTH));
+  }
+
+  if (c_tile && c1_tile && c2_tile)
+  {
+    corner_tiles.push_back(c1_tile);
+    corner_tiles.push_back(c2_tile);
+
+    corner = true;
+
+    BOOST_FOREACH(TilePtr tile, corner_tiles)
+    {
+      // If it is not the case that the tile is solid (movement multiplier is
+      // 0) or that there is a blocking feature, then there is "space" on this
+      // tile, and it is not a corner.
+      if (!((tile->get_movement_multiplier() == 0) || (tile->has_blocking_feature())))
+      {
+        corner = false;
+        break;
+      }
+    }
+  }
+
+  return corner;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
