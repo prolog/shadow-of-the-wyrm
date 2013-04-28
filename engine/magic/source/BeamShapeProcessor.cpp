@@ -52,7 +52,8 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   // beam bounces.
   Direction current_direction = d;
 
-  for (uint i = 0; i < range; i++)
+  uint count = 0;
+  while (count < range)
   {
     Coordinate c = CoordUtils::get_new_coordinate(current_coord, current_direction);
     
@@ -91,6 +92,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
     vector<Coordinate> beam_vec;
     beam_vec.push_back(current_coord);
     movement_path.push_back(beam_vec);
+    count++; // Didn't bounce - update the spell range counter.
   }
 
   BeamSpellTranslator bst;
