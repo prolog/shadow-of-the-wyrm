@@ -48,6 +48,9 @@ class MapUtils
 
     static void place_creature_on_previous_or_first_available_location(MapPtr map, CreaturePtr creature, const std::string& player_loc);
     
+    // Check to see if the given tile is a "corner tile", given a corner direction.
+    static bool is_corner(const Coordinate& c, const Direction d, MapPtr map);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

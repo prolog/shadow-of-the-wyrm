@@ -342,7 +342,6 @@
     <ClInclude Include="engine\generators\worship_sites\include\SnakingTempleGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\WorshipSiteGenerator.hpp" />
     <ClInclude Include="engine\include\ClassManager.hpp" />
-    <ClInclude Include="engine\include\CoordUtils.hpp" />
     <ClInclude Include="engine\include\CreationUtils.hpp" />
     <ClInclude Include="engine\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\include\CreatureGenerationConstants.hpp" />
@@ -382,6 +381,7 @@
     <ClInclude Include="engine\magic\include\SpellShapeProcessorFactory.hpp" />
     <ClInclude Include="engine\magic\include\TargetSelfShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\TileMagicChecker.hpp" />
+    <ClInclude Include="engine\maps\include\CoordUtils.hpp" />
     <ClInclude Include="engine\maps\include\DirectionUtils.hpp" />
     <ClInclude Include="engine\maps\include\IMapTypeQuery.hpp" />
     <ClInclude Include="engine\maps\include\LoadedMapDetails.hpp" />
@@ -1107,6 +1107,7 @@
     <ClCompile Include="engine\magic\source\unit_tests\MagicalAbilityChecker_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\maps\source\CoordUtils.cpp" />
     <ClCompile Include="engine\maps\source\DirectionUtils.cpp" />
     <ClCompile Include="engine\maps\source\LoadedMapDetails.cpp" />
     <ClCompile Include="engine\maps\source\MapCursor.cpp" />
@@ -1115,6 +1116,9 @@
     <ClCompile Include="engine\maps\source\MapTypeQueries.cpp" />
     <ClCompile Include="engine\maps\source\MapTypeQueryFactory.cpp" />
     <ClCompile Include="engine\maps\source\MapUtils.cpp" />
+    <ClCompile Include="engine\maps\source\unit_tests\CoordUtils_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\maps\source\unit_tests\LoadedMapDetails_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
@@ -1155,7 +1159,6 @@
     <ClCompile Include="engine\skills\source\SkillManager.cpp" />
     <ClCompile Include="engine\skills\source\Swimming.cpp" />
     <ClCompile Include="engine\source\ClassManager.cpp" />
-    <ClCompile Include="engine\source\CoordUtils.cpp" />
     <ClCompile Include="engine\source\CreationUtils.cpp" />
     <ClCompile Include="engine\source\CreatureFactory.cpp" />
     <ClCompile Include="engine\source\CreatureGenerationConstants.cpp" />
@@ -1173,10 +1176,6 @@
     <ClCompile Include="engine\source\ReligionManager.cpp" />
     <ClCompile Include="engine\source\RNG.cpp" />
     <ClCompile Include="engine\source\SavageLandsEngine.cpp" />
-    <ClCompile Include="engine\source\unit_tests\CoordUtils_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="engine\source\unit_tests\CreatureFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

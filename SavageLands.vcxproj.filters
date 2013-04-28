@@ -2061,9 +2061,6 @@
     <ClInclude Include="world\tiles\include\TileIDs.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\CoordUtils.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\events\include\EventFunctions.hpp">
       <Filter>Header Files\engine\events\include</Filter>
     </ClInclude>
@@ -2447,6 +2444,9 @@
     </ClInclude>
     <ClInclude Include="engine\magic\include\ReflectiveBeamShapeProcessor.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\maps\include\CoordUtils.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4145,12 +4145,6 @@
     <ClCompile Include="world\tiles\source\TileIDs.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\CoordUtils.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\unit_tests\CoordUtils_test.cpp">
-      <Filter>Source Files\engine\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\unit_tests\CreatureGenerationValues_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
@@ -4624,6 +4618,12 @@
     </ClCompile>
     <ClCompile Include="engine\magic\source\ReflectiveBeamShapeProcessor.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\CoordUtils.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\CoordUtils_test.cpp">
+      <Filter>Source Files\engine\maps\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -35,13 +35,16 @@ CommandPtr PlayerDecisionStrategy::get_decision(const string& creature_id, Comma
   // view_map is ignored - keyboard input is used, instead.
   CommandPtr player_command;
 
+  // Don't prompt for input if input has been provided.
+  bool prompt_for_input = !key_p;
+
   if (command_factory && keyboard_commands)
   {
     while (!player_command)
     {
       int key = -1;
 
-      if (!key_p)
+      if (prompt_for_input)
       {
         key = controller->get_char_as_int();
       }
@@ -52,6 +55,13 @@ CommandPtr PlayerDecisionStrategy::get_decision(const string& creature_id, Comma
 
       string command_key_s = keyboard_commands->get_command_type(Integer::to_string(key));
       player_command = command_factory->create(key, command_key_s);
+
+      // If after processing the input the resultant command is
+      // null, ensure that we prompt the next time.
+      if (!player_command)
+      {
+        prompt_for_input = true;
+      }
     }
   }
 
