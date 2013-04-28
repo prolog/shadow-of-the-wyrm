@@ -11,9 +11,11 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
   vector<TilePtr> affected_tiles;
   uint spell_range = spell.get_range();
 
+  DisplayTile dt('*', spell.get_colour());
+
   vector<Coordinate> prev_coords;
   vector<Coordinate> current_coords;
-  vector<vector<Coordinate>> movement_path;
+  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
   prev_coords.push_back(caster_coord);
 
   // Set the row/column offset, to be used to calculate the increasing
@@ -68,7 +70,7 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
       }
     }
 
-    movement_path.push_back(current_coords);
+    movement_path.push_back(make_pair(dt, current_coords));
     prev_coords = current_coords;
     current_coords.clear();
 
@@ -79,11 +81,10 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
   // Create the animation.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
   MapPtr fov_map = caster->get_decision_strategy()->get_fov_map();
-  DisplayTile dt('*', spell.get_colour());
   Game& game = Game::instance();
   AnimationTranslator at(game.get_display());
 
-  Animation ball_animation = at.create_movement_animation(dt, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
+  Animation ball_animation = at.create_movement_animation(game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
   pair<vector<TilePtr>, Animation> affected_tiles_and_animation(affected_tiles, ball_animation);
   return affected_tiles_and_animation;
 }

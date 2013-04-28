@@ -44,13 +44,18 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   uint range = spell.get_range();
   Coordinate current_coord = caster_coord;
   TileMagicChecker tmc;
-  vector<vector<Coordinate> > movement_path;
+  
+
+  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
 
   // For regular beams, the current direction will always be the passed-in
   // direction (the beam will "fizzle out" if it hits a blocking tile).  For
   // reflective beams (a subclass), the current direction will change as the
   // beam bounces.
   Direction current_direction = d;
+
+  BeamSpellTranslator bst;
+  DisplayTile dt = bst.create_display_tile(current_direction, spell.get_colour());
 
   uint count = 0;
   while (count < range)
@@ -74,6 +79,9 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
           current_coord = c;
         }
 
+        // Update the symbol for the display
+        dt = bst.create_display_tile(current_direction, spell.get_colour());
+
         // The beam bounces off this tile, but it does not affect it - exclude it from
         // the animation and from processing.
         continue;
@@ -91,12 +99,9 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
     affected_tiles.push_back(tile);
     vector<Coordinate> beam_vec;
     beam_vec.push_back(current_coord);
-    movement_path.push_back(beam_vec);
+    movement_path.push_back(make_pair(dt, beam_vec));
     count++; // Didn't bounce - update the spell range counter.
   }
-
-  BeamSpellTranslator bst;
-  DisplayTile dt = bst.create_display_tile(d, spell.get_colour());
 
   // Create the animation using the default movement animation mechanism.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
@@ -106,7 +111,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
 
   // Create the animation, not redrawing the previous frame at each
   // step, as that will give the desired "beam" shape.
-  animation = at.create_movement_animation(dt, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
+  animation = at.create_movement_animation(game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
 
   pair<vector<TilePtr>, Animation> affected_tiles_and_animation(affected_tiles, animation);
   return affected_tiles_and_animation;

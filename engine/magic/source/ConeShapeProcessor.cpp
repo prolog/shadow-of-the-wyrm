@@ -20,13 +20,15 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
   int frontier_size = 0;
   uint spell_range = spell.get_range();
 
+  DisplayTile dt('*', spell.get_colour());
+
   Coordinate prev_coord = caster_coord;
   vector<Coordinate> previous_frame;
   previous_frame.push_back(caster_coord);
 
   vector<Coordinate> current_frame;
 
-  vector<vector<Coordinate>> movement_path;
+  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
 
   TileMagicChecker tmc;
 
@@ -68,7 +70,7 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
     }
 
     // Update the frames required for the animation.
-    movement_path.push_back(current_frame);
+    movement_path.push_back(make_pair(dt, current_frame));
     previous_frame = current_frame;
     current_frame.clear();
 
@@ -82,11 +84,10 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
   // Create the animation.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
   MapPtr fov_map = caster->get_decision_strategy()->get_fov_map();
-  DisplayTile dt('*', spell.get_colour());
   Game& game = Game::instance();
   AnimationTranslator at(game.get_display());
 
-  Animation cone_animation = at.create_movement_animation(dt, game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
+  Animation cone_animation = at.create_movement_animation(game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
   pair<vector<TilePtr>, Animation> affected_tiles_and_animation(affected_tiles, cone_animation);
   return affected_tiles_and_animation;
 }

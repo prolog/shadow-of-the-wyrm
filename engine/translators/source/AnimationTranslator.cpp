@@ -11,7 +11,7 @@ AnimationTranslator::AnimationTranslator(DisplayPtr display)
   animation_factory = display->create_animation_factory();
 }
 
-Animation AnimationTranslator::create_movement_animation(const DisplayTile& projectile, const Season current_season, const vector<vector<Coordinate> >& movement_path, const bool redraw_previous_frame, MapPtr current_map, MapPtr fov_map)
+Animation AnimationTranslator::create_movement_animation(const Season current_season, const vector<pair<DisplayTile, vector<Coordinate>> >& movement_path, const bool redraw_previous_frame, MapPtr current_map, MapPtr fov_map)
 {
   Animation animation;
 
@@ -19,11 +19,12 @@ Animation AnimationTranslator::create_movement_animation(const DisplayTile& proj
 
   for (uint i = 0; i < num_steps; i++)
   {
-    vector<Coordinate> current_frame = movement_path.at(i);
+    pair<DisplayTile, vector<Coordinate>> current_frame = movement_path.at(i);
+    DisplayTile projectile = current_frame.first;
     vector<AnimationInstructionPtr> coords_in_frame;
     vector<AnimationInstructionPtr> frame_cleanup;
 
-    BOOST_FOREACH(Coordinate c, current_frame)
+    BOOST_FOREACH(Coordinate c, current_frame.second)
     {
       TilePtr game_tile = current_map->at(c);
       TilePtr fov_tile = fov_map->at(c);
