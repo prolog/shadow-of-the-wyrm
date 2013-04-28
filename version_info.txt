@@ -1,5 +1,8 @@
+Savage Lands v0.1.3 "Ealdwulf"
+- Version declared April 28, 2013.
+
 Savage Lands v0.1.2, "Aethelwalh"
-- Version declared March 28, 2013
+- Version declared March 28, 2013.  Version finalized April 28, 2013.
 
 - Added support for ranged combat animation.
 
@@ -11,7 +14,8 @@ Savage Lands v0.1.2, "Aethelwalh"
   calculators due to stubs being created in the Early Days, shape
   processing for beams (regular and reflective), cones, balls, and self-
   targetting.  Various spells (Dragon Breath, Wreath of Fire, Lightning
-  Bolt, Healing Word) to test the various shapes.
+  Bolt, Healing Word) to test the various shapes.  Changes to animation
+  to support changing symbols (so that reflecting beams look good).
 
 - Miscellaneous small changes: AP regeneration, some class renaming/general
   cleanup of strings and actions.

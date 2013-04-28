@@ -31,8 +31,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // King of the South Saxons, slain by Caedwalla
-  return "\"Aethelwalh\"";
+  // South Saxon King known only by an undated charter
+  return "\"Ealdwulf\"";
 }
 
 string Metadata::get_game_version_synopsis() const
