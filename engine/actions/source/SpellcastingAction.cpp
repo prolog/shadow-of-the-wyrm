@@ -242,6 +242,8 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   bool direction_conversion_ok = true;
   Direction direction = spell_direction;
 
+  MessageManager& manager = MessageManager::instance();
+
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
@@ -255,7 +257,6 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
       direction_prompt_sid = ActionTextKeys::ACTION_GET_CARDINAL_DIRECTION;
     }
 
-    MessageManager& manager = MessageManager::instance();
     manager.add_new_message(StringTable::get(direction_prompt_sid));
     manager.send();
   }
@@ -271,6 +272,8 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
 
     if (dcommand)
     {
+      // Clear the message manager.
+      manager.clear_if_necessary();
       
       direction = dcommand->get_direction();
       DirectionCategory dc = spell.get_shape().get_direction_category();

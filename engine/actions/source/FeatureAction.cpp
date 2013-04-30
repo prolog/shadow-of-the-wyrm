@@ -162,10 +162,13 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   CommandFactoryPtr command_factory    = boost::make_shared<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
 
+  MessageManager& manager = MessageManager::instance();
+
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
   {
     add_application_message(ActionTextKeys::ACTION_GET_DIRECTION);
+    manager.send();
   }
 
   // Try to get a direction.  This might fail.
@@ -179,6 +182,8 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
 
     if (dcommand)
     {
+      manager.clear_if_necessary();
+
       // It was an actual directional command.  Check to see if there's
       // a terrain feature in that direction.
       Direction requested_direction = dcommand->get_direction();
