@@ -5,11 +5,17 @@ TEST(SL_Engine_Magic_MagicalAbilityChecker, has_magical_knowledge)
 {
   CreaturePtr creature = boost::make_shared<Creature>();
   MagicalAbilityChecker mac;
+  IndividualSpellKnowledge isk;
 
   EXPECT_FALSE(mac.has_magical_knowledge(creature));
 
   SpellKnowledge& sk = creature->get_spell_knowledge_ref();
-  sk.set_spell_knowledge("blasty", 12);
+  sk.set_spell_knowledge("blasty", isk);
+
+  EXPECT_FALSE(mac.has_magical_knowledge(creature));
+
+  isk.set_castings(4);
+  sk.set_spell_knowledge("blasty", isk);
 
   EXPECT_TRUE(mac.has_magical_knowledge(creature));
 }

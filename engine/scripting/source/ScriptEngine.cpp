@@ -619,8 +619,10 @@ int add_spell_castings(lua_State* ls)
     CreaturePtr creature = get_creature(creature_id);
     SpellKnowledge& sk = creature->get_spell_knowledge_ref();
 
-    int cur_castings = sk.get_spell_knowledge(spell_id);
-    sk.set_spell_knowledge(spell_id, cur_castings + addl_castings);
+    IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
+    uint new_castings = isk.get_castings() + addl_castings;
+    isk.set_castings(new_castings);
+    sk.set_spell_knowledge(spell_id, isk);
   }
   else
   {

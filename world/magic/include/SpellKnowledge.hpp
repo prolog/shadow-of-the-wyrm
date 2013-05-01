@@ -2,18 +2,19 @@
 #include <map>
 #include "common.hpp"
 #include "ISerializable.hpp"
+#include "IndividualSpellKnowledge.hpp"
 
-typedef std::map<std::string, uint> SpellKnowledgeMap;
+typedef std::map<std::string, IndividualSpellKnowledge> SpellKnowledgeMap;
 
 // A class that represents a particular creature's knowledge of the various
 // spells defined in the configuration XML.
 class SpellKnowledge : public ISerializable
 {
   public:
-    bool operator==(const SpellKnowledge& spell_k);
+    bool operator==(const SpellKnowledge& spell_k) const;
 
-    void set_spell_knowledge(const std::string& spell_id, const uint cast_count);
-    uint get_spell_knowledge(const std::string& spell_id) const;
+    void set_spell_knowledge(const std::string& spell_id, const IndividualSpellKnowledge& isk);
+    IndividualSpellKnowledge get_spell_knowledge(const std::string& spell_id) const;
     uint count_spells_known() const;
 
     void set_most_recently_cast_spell_id(const std::string& spell_id);

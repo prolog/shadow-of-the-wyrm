@@ -26,7 +26,7 @@ string SpellDescriber::describe() const
   ss << spell_name 
      << " (" << spell_category << ")" 
      << " [" 
-             << "#:" << sk.get_spell_knowledge(spell.get_spell_id())
+             << "#:" << sk.get_spell_knowledge(spell.get_spell_id()).get_castings()
              << ", " << StringTable::get(TextKeys::RANGE_ABRV) << ":" << spell.get_range()
              << ", " << StringTable::get(TextKeys::ARCANA_POINTS_ABRV) << ":" << spell.get_ap_cost()
      <<  "]";
