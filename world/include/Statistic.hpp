@@ -7,7 +7,7 @@ class Statistic : public ISerializable
     Statistic();
     Statistic(const int new_base_and_current);
     Statistic& operator=(const int& rhs);
-    virtual bool operator==(const Statistic& stat);
+    virtual bool operator==(const Statistic& stat) const;
 
     void set_base(int new_base);
     int  get_base() const;

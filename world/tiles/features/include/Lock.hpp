@@ -8,7 +8,7 @@ class Lock : public ISerializable
     Lock();
     Lock(const std::string& new_lock_id, const bool new_locked_val);
 
-    virtual bool operator==(const Lock& lock);
+    virtual bool operator==(const Lock& lock) const;
 
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);

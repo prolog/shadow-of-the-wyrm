@@ -17,7 +17,7 @@ Dimensions::Dimensions(const int new_x, const int new_y)
   y = new_y;
 }
 
-bool Dimensions::operator==(const Dimensions& d)
+bool Dimensions::operator==(const Dimensions& d) const
 {
   bool result = true;
 

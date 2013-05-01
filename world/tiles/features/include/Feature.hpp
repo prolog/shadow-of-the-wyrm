@@ -20,7 +20,7 @@ class Feature : public ISerializable
 
     virtual ~Feature() {};
     virtual Feature* clone() = 0;
-    virtual bool operator==(const Feature& feature);
+    virtual bool operator==(const Feature& feature) const;
 
     // If a feature is blocking, the square it occupies cannot be
     // occupied by another creature, and any items thrown, kicked, etc.,

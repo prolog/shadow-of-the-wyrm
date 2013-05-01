@@ -11,7 +11,7 @@ class KeyboardCommandMap : public ISerializable
   public:
     KeyboardCommandMap();
     virtual ~KeyboardCommandMap();
-    bool operator==(const KeyboardCommandMap& kcm);
+    bool operator==(const KeyboardCommandMap& kcm) const;
 
     virtual std::string get_command_type(const std::string& keyboard_input);
 

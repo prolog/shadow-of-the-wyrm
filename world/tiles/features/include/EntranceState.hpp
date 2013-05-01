@@ -8,7 +8,7 @@ class EntranceState : public ISerializable
   public:
     EntranceState();
     EntranceState(const EntranceStateType new_state);
-    virtual bool operator==(const EntranceState& st);
+    virtual bool operator==(const EntranceState& st) const;
 
     void set_state(const EntranceStateType new_state);
     EntranceStateType get_state() const;

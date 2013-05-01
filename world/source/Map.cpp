@@ -38,7 +38,7 @@ Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
   map_id = Uuid::to_string(id);
 }
 
-bool Map::operator==(const Map& map)
+bool Map::operator==(const Map& map) const
 {
   bool result = true;
 
@@ -47,8 +47,8 @@ bool Map::operator==(const Map& map)
   if (result)
   {
     TilesContainer tiles_cont = map.tiles;
-    TilesContainer::iterator t_it = tiles.begin();
-    TilesContainer::iterator t_it2 = tiles_cont.begin();
+    TilesContainer::const_iterator t_it = tiles.begin();
+    TilesContainer::const_iterator t_it2 = tiles_cont.begin();
 
     while (t_it != tiles.end())
     {

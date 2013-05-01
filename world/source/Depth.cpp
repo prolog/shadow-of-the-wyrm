@@ -18,7 +18,7 @@ Depth::Depth(const int cur, const int max)
 {
 }
 
-bool Depth::operator==(const Depth& d)
+bool Depth::operator==(const Depth& d) const
 {
   bool result = true;
 

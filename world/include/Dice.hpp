@@ -9,7 +9,7 @@ class Dice : public ISerializable
     Dice();
     Dice(const uint new_num_dice, const uint new_dice_sides, const int modifier);
     virtual ~Dice();
-    virtual bool operator==(const Dice& dice);
+    virtual bool operator==(const Dice& dice) const;
 
     int max() const;
     

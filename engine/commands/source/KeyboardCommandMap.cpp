@@ -22,7 +22,7 @@ KeyboardCommandMap::~KeyboardCommandMap()
 {
 }
 
-bool KeyboardCommandMap::operator==(const KeyboardCommandMap& kcm)
+bool KeyboardCommandMap::operator==(const KeyboardCommandMap& kcm) const
 {
   bool result = true;
 

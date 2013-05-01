@@ -18,7 +18,7 @@ Dice::~Dice()
 {
 }
 
-bool Dice::operator==(const Dice& dice)
+bool Dice::operator==(const Dice& dice) const
 {
   bool result = true;
 

@@ -12,7 +12,7 @@ SpellShape::SpellShape(const SpellShapeType st, const DirectionCategory dir_cat)
 {
 }
 
-bool SpellShape::operator==(const SpellShape& ss)
+bool SpellShape::operator==(const SpellShape& ss) const
 {
   bool result = true;
 

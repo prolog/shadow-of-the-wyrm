@@ -17,7 +17,7 @@ Consumable::~Consumable()
 {
 }
 
-bool Consumable::operator==(const Consumable& consumable)
+bool Consumable::operator==(const Consumable& consumable) const
 {
   bool result = true;
 

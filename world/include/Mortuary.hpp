@@ -11,7 +11,7 @@ typedef std::map<std::string, uint> MortuaryCountMap;
 class Mortuary : public ISerializable
 {
   public:
-    bool operator==(const Mortuary& m);
+    bool operator==(const Mortuary& m) const;
 
     void add_creature_kill(const std::string& creature_id);
     

@@ -22,7 +22,7 @@ class Resistance : public ISerializable
     Resistance();
     virtual ~Resistance() {};
     Resistance(const DamageType type, const std::string& name_sid, const double value);
-    virtual bool operator==(const Resistance& res);
+    virtual bool operator==(const Resistance& res) const;
 
     void set_type(const DamageType new_type);
     DamageType get_type() const;
@@ -211,7 +211,7 @@ class Resistances : public ISerializable
 {
   public:
     Resistances();
-    virtual bool operator==(const Resistances& resistances);
+    virtual bool operator==(const Resistances& resistances) const;
 
     void set_resistance_value(const DamageType type, double value);
     double get_resistance_value(const DamageType type) const;

@@ -9,7 +9,7 @@ Religion::Religion(const string& new_deity_id)
 {
 }
 
-bool Religion::operator==(const Religion& r)
+bool Religion::operator==(const Religion& r) const
 {
   bool result = true;
 
@@ -21,8 +21,8 @@ bool Religion::operator==(const Religion& r)
 
   if (result)
   {
-    DeityRelations::iterator d_it = deity_relations.begin();
-    DeityRelations::iterator d_it2 = r2.begin();
+    DeityRelations::const_iterator d_it = deity_relations.begin();
+    DeityRelations::const_iterator d_it2 = r2.begin();
 
     while (d_it != deity_relations.end())
     {

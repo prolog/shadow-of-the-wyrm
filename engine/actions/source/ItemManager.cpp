@@ -9,7 +9,7 @@
 
 using namespace std;
 
-bool ItemManager::operator==(const ItemManager& im)
+bool ItemManager::operator==(const ItemManager& im) const
 {
   return true;
 }

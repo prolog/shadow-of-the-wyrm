@@ -8,7 +8,7 @@ MovementAccumulation::MovementAccumulation()
   reset();
 }
 
-bool MovementAccumulation::operator==(const MovementAccumulation& movement)
+bool MovementAccumulation::operator==(const MovementAccumulation& movement) const
 {
   bool result = true;
 

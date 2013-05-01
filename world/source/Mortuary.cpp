@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool Mortuary::operator==(const Mortuary& m)
+bool Mortuary::operator==(const Mortuary& m) const
 {
   bool result = true;
 

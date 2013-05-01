@@ -13,7 +13,7 @@ Spell::Spell()
 {
 }
 
-bool Spell::operator==(const Spell& spell)
+bool Spell::operator==(const Spell& spell) const
 {
   bool result = true;
 

@@ -14,7 +14,7 @@ class DecisionStrategy : public ISerializable
 {
   public:
     DecisionStrategy(ControllerPtr new_controller);
-    virtual bool operator==(const DecisionStrategy& ds);
+    virtual bool operator==(const DecisionStrategy& ds) const;
 
     virtual ~DecisionStrategy() {};
     virtual CommandPtr get_decision(const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, boost::shared_ptr<Map> view_map = boost::shared_ptr<Map>() /* optional - only used when getting a decision on the main map, and only for non-player characters. */, int* key_p = 0) = 0;

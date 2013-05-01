@@ -38,7 +38,7 @@ can_use_colour(false)
 {
 }
 
-bool CursesDisplay::operator==(const CursesDisplay& cd)
+bool CursesDisplay::operator==(const CursesDisplay& cd) const
 {
   bool result = true;
 

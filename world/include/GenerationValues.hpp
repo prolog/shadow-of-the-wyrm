@@ -12,7 +12,7 @@ class GenerationValues : public ISerializable
   public:
     GenerationValues();
     virtual ~GenerationValues();
-    bool operator==(const GenerationValues& cgv);
+    bool operator==(const GenerationValues& cgv) const;
 
     void set_current(const int new_current);
     int incr_current();

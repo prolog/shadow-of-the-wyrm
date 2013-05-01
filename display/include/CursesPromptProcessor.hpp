@@ -12,7 +12,7 @@
 class CursesPromptProcessor
 {
   public:
-    bool operator==(const CursesPromptProcessor& cpp);
+    bool operator==(const CursesPromptProcessor& cpp) const;
 
     int get_prompt(WINDOW* window/*, MENU* menu*/);
     std::string get_prompt(WINDOW* window, const CursesMenuWrapper& menu_wrapper, PromptPtr prompt);

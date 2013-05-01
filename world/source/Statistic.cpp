@@ -23,7 +23,7 @@ Statistic& Statistic::operator=(const int& rhs)
   return *this;
 }
 
-bool Statistic::operator==(const Statistic& stat)
+bool Statistic::operator==(const Statistic& stat) const
 {
   bool result = true;
 

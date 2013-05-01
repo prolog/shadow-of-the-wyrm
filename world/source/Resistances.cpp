@@ -19,7 +19,7 @@ Resistance::Resistance()
   value = 1.0;
 }
 
-bool Resistance::operator==(const Resistance& r)
+bool Resistance::operator==(const Resistance& r) const
 {
   bool result = true;
 
@@ -101,7 +101,7 @@ Resistances::Resistances()
   default_resistances();
 }
 
-bool Resistances::operator==(const Resistances& res)
+bool Resistances::operator==(const Resistances& res) const
 {
   bool result = true;
 
@@ -110,8 +110,8 @@ bool Resistances::operator==(const Resistances& res)
   if (result)
   {
     ResistancesMap r2_map = res.resistances;
-    ResistancesMap::iterator r_it;
-    ResistancesMap::iterator r_it2;
+    ResistancesMap::const_iterator r_it;
+    ResistancesMap::const_iterator r_it2;
 
     r_it = resistances.begin();
     r_it2 = r2_map.begin();

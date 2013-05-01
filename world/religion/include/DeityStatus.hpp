@@ -6,7 +6,7 @@ class DeityStatus : public ISerializable
   public:
     DeityStatus();
     ~DeityStatus();
-    virtual bool operator==(const DeityStatus& status);
+    virtual bool operator==(const DeityStatus& status) const;
     
     void set_piety(const int new_piety);
     int get_piety() const;

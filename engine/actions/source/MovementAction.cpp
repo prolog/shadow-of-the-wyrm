@@ -33,7 +33,7 @@ MovementAction::~MovementAction()
 {
 }
 
-bool MovementAction::operator==(const MovementAction& mm)
+bool MovementAction::operator==(const MovementAction& mm) const
 {
   return true;
 }

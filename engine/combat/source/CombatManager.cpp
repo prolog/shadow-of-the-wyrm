@@ -26,7 +26,7 @@ CombatManager::CombatManager()
 {
 }
 
-bool CombatManager::operator==(const CombatManager& cm)
+bool CombatManager::operator==(const CombatManager& cm) const
 {
   return true;
 }

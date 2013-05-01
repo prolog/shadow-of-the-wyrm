@@ -15,7 +15,7 @@ CreatureGenerationValues::~CreatureGenerationValues()
 {
 }
 
-bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv)
+bool CreatureGenerationValues::operator==(const CreatureGenerationValues& cgv) const
 {
   bool result = true;
 

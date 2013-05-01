@@ -26,7 +26,7 @@ Tile::~Tile()
 {
 }
 
-bool Tile::operator==(const Tile& tile)
+bool Tile::operator==(const Tile& tile) const
 {
   bool result = true;
 
@@ -58,8 +58,8 @@ bool Tile::operator==(const Tile& tile)
   if (result)
   {
     TileExitMap map2 = tile.map_exits;
-    TileExitMap::iterator t_it = map_exits.begin();
-    TileExitMap::iterator t_it2 = map2.begin();
+    TileExitMap::const_iterator t_it = map_exits.begin();
+    TileExitMap::const_iterator t_it2 = map2.begin();
 
     while (t_it != map_exits.end())
     {

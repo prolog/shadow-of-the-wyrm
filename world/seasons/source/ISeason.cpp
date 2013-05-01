@@ -2,7 +2,7 @@
 #include "ISeason.hpp"
 #include "Serialize.hpp"
 
-bool ISeason::operator==(ISeason& season)
+bool ISeason::operator==(ISeason& season) const
 {
   return (internal_class_identifier() == season.internal_class_identifier());
 }

@@ -10,7 +10,7 @@ typedef std::multimap<ActionCost, std::string> CreatureActionMultimap;
 class ActionCoordinator : public ISerializable
 {
   public:
-    bool operator==(const ActionCoordinator& ac);
+    bool operator==(const ActionCoordinator& ac) const;
 
     void set(const std::map<std::string, CreaturePtr>& creatures);
     void add(const ActionCost& action_cost, const std::string& creature_id);

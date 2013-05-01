@@ -21,7 +21,7 @@ class Map : public ISerializable
 	public:
     Map(const Map& new_map);
 		Map(const Dimensions& new_dimensions, const Dimensions& original_dimensions = Dimensions());
-    bool operator==(const Map& map);
+    bool operator==(const Map& map) const;
 		
 		// Functions used when creating a view map - reset the
 		// creatures and locations after copying the map.

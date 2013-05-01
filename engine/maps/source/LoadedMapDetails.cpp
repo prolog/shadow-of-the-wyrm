@@ -11,7 +11,7 @@ LoadedMapDetails::LoadedMapDetails()
 {
 }
 
-bool LoadedMapDetails::operator==(const LoadedMapDetails& lmd)
+bool LoadedMapDetails::operator==(const LoadedMapDetails& lmd) const
 {
   bool result = true;
 

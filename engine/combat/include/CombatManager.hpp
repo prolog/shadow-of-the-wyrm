@@ -12,7 +12,7 @@ class CombatManager
     friend class SL_Engine_Combat_CombatManager;
 
     CombatManager();
-    bool operator==(const CombatManager& cm);
+    bool operator==(const CombatManager& cm) const;
     
     ActionCostValue attack(CreaturePtr creature, const Direction d);
     ActionCostValue attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY, DamagePtr damage = boost::shared_ptr<Damage>());

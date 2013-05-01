@@ -41,7 +41,7 @@ ActionManager::~ActionManager()
 {
 }
 
-bool ActionManager::operator==(const ActionManager& am)
+bool ActionManager::operator==(const ActionManager& am) const
 {
   bool result = true;
 
