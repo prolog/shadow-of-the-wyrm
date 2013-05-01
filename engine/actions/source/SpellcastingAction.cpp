@@ -218,8 +218,9 @@ void SpellcastingAction::reduce_caster_ap_by_spell_cost(CreaturePtr caster, cons
   caster->set_arcana_points(new_ap);
 }
 
-// Reduce the number of castings by 1.  If there are 0 castings left, remove
-// the spell from the caster's spell knowledge.
+// Reduce the number of castings by 1.  If there are 0 castings left, "remove" the
+// spell by setting its castings to 0.  Keeping the spell around ensures that any
+// bonuses, etc., remain after "re-learning" the spell.
 void SpellcastingAction::reduce_castings_or_remove_spell(CreaturePtr caster, const Spell& spell) const
 {
   string spell_id = spell.get_spell_id();
@@ -227,11 +228,6 @@ void SpellcastingAction::reduce_castings_or_remove_spell(CreaturePtr caster, con
   SpellKnowledge& sk = caster->get_spell_knowledge_ref();
   int new_castings = sk.get_spell_knowledge(spell_id) - 1;
   sk.set_spell_knowledge(spell_id, new_castings);
-
-  if (new_castings == 0)
-  {
-    sk.remove_spell_knowledge(spell_id);
-  }
 }
 
 // Get a direction for the spell from the creature.
