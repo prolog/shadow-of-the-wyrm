@@ -4,33 +4,33 @@
 
 using namespace std;
 
-bool SpellKnowledge::operator==(const SpellKnowledge& sp)
+bool SpellKnowledge::operator==(const SpellKnowledge& sp) const
 {
   bool result = true;
 
-  result = result && (spell_knowledge == sp.spell_knowledge);
+  //  result = result && (spell_knowledge == sp.spell_knowledge);
   result = result && (most_recently_cast_spell_id == sp.most_recently_cast_spell_id);
 
   return result;
 }
 
-void SpellKnowledge::set_spell_knowledge(const string& spell_id, const uint cast_count)
+void SpellKnowledge::set_spell_knowledge(const string& spell_id, const IndividualSpellKnowledge& isk)
 {
-  spell_knowledge[spell_id] = cast_count;
+  spell_knowledge[spell_id] = isk;
 }
 
-uint SpellKnowledge::get_spell_knowledge(const string& spell_id) const
+IndividualSpellKnowledge SpellKnowledge::get_spell_knowledge(const string& spell_id) const
 {
-  uint cast_count = 0;
+  IndividualSpellKnowledge isk;
 
-  map<string, uint>::const_iterator s_it = spell_knowledge.find(spell_id);
+  map<string, IndividualSpellKnowledge>::const_iterator s_it = spell_knowledge.find(spell_id);
 
   if (s_it != spell_knowledge.end())
   {
-    cast_count = s_it->second;
+    isk = s_it->second;
   }
 
-  return cast_count;
+  return isk;
 }
 
 // Because we keep track of all spells ever learned (if they can't be cast, they're at 0),
@@ -42,7 +42,7 @@ uint SpellKnowledge::count_spells_known() const
 
   BOOST_FOREACH(const SpellKnowledgeMap::value_type& pair, spell_knowledge)
   {
-    if (pair.second > 0) spells_known++;
+    if (pair.second.get_castings() > 0) spells_known++;
   }
 
   return spells_known;
@@ -74,10 +74,10 @@ bool SpellKnowledge::serialize(ostream& stream)
     BOOST_FOREACH(SpellKnowledgeMap::value_type& sp_pair, spell_knowledge)
     {
       string spell_id = sp_pair.first;
-      uint spell_count = sp_pair.second;
+      IndividualSpellKnowledge isk = sp_pair.second;
 
       Serialize::write_string(stream, spell_id);
-      Serialize::write_uint(stream, spell_count);
+      isk.serialize(stream);
     }
   }
 
@@ -98,12 +98,12 @@ bool SpellKnowledge::deserialize(istream& stream)
     for (uint i = 0; i < num_spells; i++)
     {
       string spell_id;
-      uint spell_count = 0;
+      IndividualSpellKnowledge isk;
 
       Serialize::read_string(stream, spell_id);
-      Serialize::read_uint(stream, spell_count);
+      isk.deserialize(stream);
 
-      spell_knowledge[spell_id] = spell_count;
+      spell_knowledge[spell_id] = isk;
     }
   }
 

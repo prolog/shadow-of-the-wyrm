@@ -2448,6 +2448,9 @@
     <ClInclude Include="engine\maps\include\CoordUtils.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\magic\include\IndividualSpellKnowledge.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4624,6 +4627,12 @@
     </ClCompile>
     <ClCompile Include="engine\maps\source\unit_tests\CoordUtils_test.cpp">
       <Filter>Source Files\engine\maps\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\IndividualSpellKnowledge.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\unit_tests\IndividualSpellKnowledge_test.cpp">
+      <Filter>Source Files\world\magic\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

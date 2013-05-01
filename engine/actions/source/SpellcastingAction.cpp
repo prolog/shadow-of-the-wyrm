@@ -226,8 +226,10 @@ void SpellcastingAction::reduce_castings_or_remove_spell(CreaturePtr caster, con
   string spell_id = spell.get_spell_id();
 
   SpellKnowledge& sk = caster->get_spell_knowledge_ref();
-  int new_castings = sk.get_spell_knowledge(spell_id) - 1;
-  sk.set_spell_knowledge(spell_id, new_castings);
+  IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
+  int new_castings = isk.get_castings() - 1;
+  isk.set_castings(new_castings);
+  sk.set_spell_knowledge(spell_id, isk);
 }
 
 // Get a direction for the spell from the creature.

@@ -60,7 +60,7 @@ void SpellSelectionScreen::initialize()
       string spell_id = spell_pair.first;
       menu_selection_to_spell_id_map.insert(make_pair('a' + i, spell_id));
 
-      if (sk.get_spell_knowledge(spell_id) > 0)
+      if (sk.get_spell_knowledge(spell_id).get_castings() > 0)
       {
         // Using the spell ID and a SpellDescriber, create text for the 
         // option shown in the UI.
