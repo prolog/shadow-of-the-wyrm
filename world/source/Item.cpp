@@ -24,7 +24,7 @@ Item::~Item()
 {
 }
 
-bool Item::operator==(const Item& i)
+bool Item::operator==(const Item& i) const
 {
   bool result = true;
 

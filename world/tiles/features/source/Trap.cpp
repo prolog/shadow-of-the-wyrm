@@ -6,7 +6,7 @@ Trap::Trap()
 {
 }
 
-bool Trap::operator==(const Trap& trap)
+bool Trap::operator==(const Trap& trap) const
 {
   return true;
 }

@@ -7,7 +7,7 @@
 class Metadata : public ISerializable
 {
   public:
-    bool operator==(const Metadata& meta);
+    bool operator==(const Metadata& meta) const;
 
     std::string get_user_name() const;
     std::string get_version() const;

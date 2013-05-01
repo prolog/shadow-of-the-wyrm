@@ -12,7 +12,7 @@ ThreatRatings::~ThreatRatings()
 {
 }
 
-bool ThreatRatings::operator==(const ThreatRatings& threat)
+bool ThreatRatings::operator==(const ThreatRatings& threat) const
 {
   bool result = true;
 

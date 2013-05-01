@@ -15,7 +15,7 @@ VillageTile::VillageTile(const TileType new_tile_subtype)
   tile_subtype = new_tile_subtype;
 }
 
-bool VillageTile::operator==(const VillageTile& vt)
+bool VillageTile::operator==(const VillageTile& vt) const
 {
   bool result = true;
 

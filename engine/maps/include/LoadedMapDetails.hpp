@@ -8,7 +8,7 @@ class LoadedMapDetails : public ISerializable
 {
   public:
     LoadedMapDetails();
-    bool operator==(const LoadedMapDetails& lmd);
+    bool operator==(const LoadedMapDetails& lmd) const;
 
     void update_map_id(const std::string& new_map_id);
     

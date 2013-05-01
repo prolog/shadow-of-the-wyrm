@@ -113,7 +113,7 @@ Creature& Creature::operator=(const Creature& cr)
   return *this;
 }
 
-bool Creature::operator==(const Creature& cr)
+bool Creature::operator==(const Creature& cr) const
 {
   bool result = true;
 

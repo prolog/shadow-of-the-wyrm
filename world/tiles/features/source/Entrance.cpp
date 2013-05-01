@@ -16,7 +16,7 @@ Entrance::Entrance(LockPtr new_lock, const EntranceState& new_state)
   set_lock(new_lock);
 }
 
-bool Entrance::operator==(const Entrance& entr)
+bool Entrance::operator==(const Entrance& entr) const
 {
   bool result = Feature::operator==(entr);
 

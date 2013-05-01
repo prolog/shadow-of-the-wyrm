@@ -40,7 +40,7 @@ Feature& Feature::operator=(const Feature& feature)
   return *this;
 }
 
-bool Feature::operator==(const Feature& feature)
+bool Feature::operator==(const Feature& feature) const
 {
   bool result = true;
 

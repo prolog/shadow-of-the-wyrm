@@ -14,7 +14,7 @@ Weight::~Weight()
 {
 }
 
-bool Weight::operator==(const Weight& weight)
+bool Weight::operator==(const Weight& weight) const
 {
   return (ounces == weight.ounces);
 }

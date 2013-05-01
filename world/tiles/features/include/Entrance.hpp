@@ -8,7 +8,7 @@ class Entrance : public Feature
   public:
     Entrance();
     Entrance(LockPtr new_lock, const EntranceState& new_state);
-    virtual bool operator==(const Entrance& door);
+    virtual bool operator==(const Entrance& door) const;
 
     virtual void set_state(const EntranceState& new_state);
     virtual EntranceState get_state() const;

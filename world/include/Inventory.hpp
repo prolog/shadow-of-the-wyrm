@@ -14,7 +14,7 @@ class Inventory : public ISerializable
   public:
     Inventory();
     ~Inventory();
-    bool operator==(const Inventory& inv);
+    bool operator==(const Inventory& inv) const;
     
     bool add_front(ItemPtr new_item);
     bool add(ItemPtr new_item);

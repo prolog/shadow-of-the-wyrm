@@ -13,7 +13,7 @@ Ammunition::~Ammunition()
 {
 }
 
-bool Ammunition::operator==(const Ammunition& ammo)
+bool Ammunition::operator==(const Ammunition& ammo) const
 {
   bool result = true;
 

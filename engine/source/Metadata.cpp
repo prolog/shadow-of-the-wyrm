@@ -9,7 +9,7 @@
 
 using namespace std;
 
-bool Metadata::operator==(const Metadata& meta)
+bool Metadata::operator==(const Metadata& meta) const
 {
   bool result = true;
 

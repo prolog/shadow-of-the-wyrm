@@ -14,7 +14,7 @@ Equipment::~Equipment()
 {
 }
 
-bool Equipment::operator==(const Equipment& e)
+bool Equipment::operator==(const Equipment& e) const
 {
   bool result = true;
 

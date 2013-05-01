@@ -10,7 +10,7 @@ Room::Room()
 {
 }
 
-bool Room::operator==(const Room& that)
+bool Room::operator==(const Room& that) const
 {
   // Ignored shared ptr.
   return ((x1 == that.x1) && (x2 == that.x2) && (y1 == that.y1) && (y2 == that.y2));

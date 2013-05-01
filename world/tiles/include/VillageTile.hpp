@@ -10,7 +10,7 @@ class VillageTile : public WorldMapLandmarkTile
     // If no subtype is provided, Field is assumed.
     VillageTile();
     VillageTile(const TileType new_tile_subtype);
-    bool operator==(const VillageTile& vt);
+    bool operator==(const VillageTile& vt) const;
 
     virtual bool display_description_on_arrival() const;
     

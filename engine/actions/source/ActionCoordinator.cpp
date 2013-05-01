@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool ActionCoordinator::operator==(const ActionCoordinator& ac)
+bool ActionCoordinator::operator==(const ActionCoordinator& ac) const
 {
   bool result = true;
 

@@ -6,7 +6,7 @@
 class ItemManager : public IActionManager
 {
   public:
-    bool operator==(const ItemManager& im);
+    bool operator==(const ItemManager& im) const;
 
     // Get all items by a particular type
     static std::list<ItemPtr> get_items_by_type(CreaturePtr creature, const ItemType item_type); // both eq and inv are checked in this case.

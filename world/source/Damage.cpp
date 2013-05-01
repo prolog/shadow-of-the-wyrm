@@ -48,7 +48,7 @@ Damage& Damage::operator=(const Damage& d)
   return *this;
 }
 
-bool Damage::operator==(const Damage& d)
+bool Damage::operator==(const Damage& d) const
 {
   if (this != &d)
   {

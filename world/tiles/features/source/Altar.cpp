@@ -8,7 +8,7 @@ Altar::Altar(const std::string& new_deity_id, const MaterialType new_material)
 {
 }
 
-bool Altar::operator==(const Altar& altar)
+bool Altar::operator==(const Altar& altar) const
 {
   bool result = Feature::operator==(altar);
 

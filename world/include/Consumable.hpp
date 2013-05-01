@@ -7,7 +7,7 @@ class Consumable : public Item
     Consumable();
     Consumable(const int nutr);
     ~Consumable();
-    bool operator==(const Consumable& consumable);
+    bool operator==(const Consumable& consumable) const;
     
     virtual ItemType get_type() const = 0;
     

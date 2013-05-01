@@ -4,7 +4,7 @@
 class TileSelectionAction : public IActionManager, ISerializable
 {
   public:
-    bool operator==(const TileSelectionAction& tsa);
+    bool operator==(const TileSelectionAction& tsa) const;
 
     void set_selection_key(const std::string& new_selection_key);
     

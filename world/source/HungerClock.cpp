@@ -4,7 +4,7 @@
 
 using namespace std;
 
-bool HungerClock::operator==(const HungerClock& hc)
+bool HungerClock::operator==(const HungerClock& hc) const
 {
   bool result = true;
 

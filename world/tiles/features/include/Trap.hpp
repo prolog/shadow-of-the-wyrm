@@ -7,7 +7,7 @@ class Trap : public ISerializable
   public:
     Trap();
     virtual ~Trap() {};
-    bool operator==(const Trap& trap);
+    bool operator==(const Trap& trap) const;
 
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);

@@ -9,7 +9,7 @@ DecisionStrategy::DecisionStrategy(ControllerPtr new_controller)
 {
 }
 
-bool DecisionStrategy::operator==(const DecisionStrategy& ds)
+bool DecisionStrategy::operator==(const DecisionStrategy& ds) const
 {
   bool result = true;
 

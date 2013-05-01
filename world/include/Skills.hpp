@@ -14,7 +14,7 @@ class Skill : public ISerializable
     Skill(const SkillCategory skill_category);
     Skill(const Skill& skill);
     Skill& operator=(const Skill& skill);
-    bool operator==(const Skill& skill);
+    bool operator==(const Skill& skill) const;
 
     void initialize();
 
@@ -933,7 +933,7 @@ class Skills : public ISerializable
     Skills();
     Skills(const Skills& skills);
     Skills& operator=(const Skills& skills);
-    virtual bool operator==(const Skills& skills);
+    virtual bool operator==(const Skills& skills) const;
 
     void set_value(const SkillType skill_name, const unsigned int new_value);
     void mark(const SkillType skill_name);

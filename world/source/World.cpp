@@ -16,7 +16,7 @@ World::~World()
 {
 }
 
-bool World::operator==(const World& world)
+bool World::operator==(const World& world) const
 {
   bool result = true;
 

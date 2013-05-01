@@ -37,7 +37,7 @@ Skill& Skill::operator=(const Skill& skill)
   return *this;
 }
 
-bool Skill::operator==(const Skill& skill)
+bool Skill::operator==(const Skill& skill) const
 {
   bool result = true;
 
@@ -1607,7 +1607,7 @@ Skills& Skills::operator=(const Skills& copy_skills)
   return *this;
 }
 
-bool Skills::operator==(const Skills& sk)
+bool Skills::operator==(const Skills& sk) const
 {
   bool result = true;
 
@@ -1616,8 +1616,8 @@ bool Skills::operator==(const Skills& sk)
   if (result)
   {
     SkillMap sk2 = sk.skills;
-    SkillMap::iterator s_it = skills.begin();
-    SkillMap::iterator s_it2 = sk2.begin();
+    SkillMap::const_iterator s_it = skills.begin();
+    SkillMap::const_iterator s_it2 = sk2.begin();
 
     while (s_it != skills.end())
     {

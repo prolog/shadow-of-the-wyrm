@@ -7,7 +7,7 @@ struct Room
 {
   Room();
   Room(int nid, int nx1, int nx2, int ny1, int ny2);
-  bool operator==(const Room& that);
+  bool operator==(const Room& that) const;
 
   boost::shared_ptr<Room> centre_room;
   bool contains(Coordinate c) const;

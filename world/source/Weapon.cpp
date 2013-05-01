@@ -12,7 +12,7 @@ Weapon::Weapon()
   symbol = ')';
 }
 
-bool Weapon::operator==(const Weapon& weapon)
+bool Weapon::operator==(const Weapon& weapon) const
 {
   bool result = true;
 

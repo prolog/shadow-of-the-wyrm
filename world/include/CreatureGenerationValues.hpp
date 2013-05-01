@@ -14,7 +14,7 @@ class CreatureGenerationValues : public GenerationValues
   public:
     CreatureGenerationValues();
     ~CreatureGenerationValues();
-    bool operator==(const CreatureGenerationValues& cgv);
+    bool operator==(const CreatureGenerationValues& cgv) const;
 
     void add_allowable_terrain_type(const TileType additional_terrain_type);
     void clear_allowable_terrain_types();

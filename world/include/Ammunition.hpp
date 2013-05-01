@@ -6,7 +6,7 @@ class Ammunition : public RangedWeapon
   public:
     Ammunition();
     ~Ammunition();
-    bool operator==(const Ammunition& ammo);
+    bool operator==(const Ammunition& ammo) const;
 
     virtual EquipmentWornLocation get_worn_location() const;
     

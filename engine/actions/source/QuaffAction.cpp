@@ -10,7 +10,7 @@
 using namespace std;
 using boost::dynamic_pointer_cast;
 
-bool QuaffAction::operator==(const QuaffAction& qm)
+bool QuaffAction::operator==(const QuaffAction& qm) const
 {
   return true;
 }

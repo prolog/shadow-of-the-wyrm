@@ -14,7 +14,7 @@ class Spell
 {
   public:
     Spell();
-    bool operator==(const Spell& sp);
+    bool operator==(const Spell& sp) const;
 
     void set_spell_id(const std::string& new_spell_id);
     std::string get_spell_id() const;

@@ -12,7 +12,7 @@ class Damage : public Dice
     Damage(const uint dice, const uint sides, const int mod, const DamageType dtype);
     Damage(const Damage& d);
     Damage&  operator= (const Damage& d);
-    bool     operator==(const Damage& d);
+    bool     operator==(const Damage& d) const;
     
     ~Damage();
 

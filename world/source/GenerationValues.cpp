@@ -15,7 +15,7 @@ GenerationValues::~GenerationValues()
 {
 }
 
-bool GenerationValues::operator==(const GenerationValues& gv)
+bool GenerationValues::operator==(const GenerationValues& gv) const
 {
   bool result = true;
 

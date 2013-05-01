@@ -12,7 +12,7 @@ MapExit::~MapExit()
 {
 }
 
-bool MapExit::operator==(const MapExit& me)
+bool MapExit::operator==(const MapExit& me) const
 {
   bool result = true;
 

@@ -13,7 +13,7 @@ DeityStatus::~DeityStatus()
 {
 }
 
-bool DeityStatus::operator==(const DeityStatus& status)
+bool DeityStatus::operator==(const DeityStatus& status) const
 {
   bool result = true;
 

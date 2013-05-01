@@ -15,7 +15,7 @@ Calendar::Calendar()
   update_season_if_necessary();
 }
 
-bool Calendar::operator==(const Calendar& c)
+bool Calendar::operator==(const Calendar& c) const
 {
   bool result = true;
 

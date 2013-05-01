@@ -13,7 +13,7 @@ EntranceState::EntranceState(const EntranceStateType new_state)
 {
 }
 
-bool EntranceState::operator==(const EntranceState& st)
+bool EntranceState::operator==(const EntranceState& st) const
 {
   bool result = true;
 

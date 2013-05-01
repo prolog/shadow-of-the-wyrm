@@ -13,7 +13,7 @@ Lock::Lock(const string& new_lock_id, const bool new_locked_val)
 {
 }
 
-bool Lock::operator==(const Lock& lock)
+bool Lock::operator==(const Lock& lock) const
 {
   return true;
 }

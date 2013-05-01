@@ -23,7 +23,7 @@ TileSelectionAction::TileSelectionAction()
   kb_command_map  = boost::make_shared<TileSelectionKeyboardCommandMap>();
 }
 
-bool TileSelectionAction::operator==(const TileSelectionAction& tsa)
+bool TileSelectionAction::operator==(const TileSelectionAction& tsa) const
 {
   bool result = true;
 

@@ -16,7 +16,7 @@ class CursesDisplay : public Display
 {
   public:
     CursesDisplay();
-    bool operator==(const CursesDisplay& cd);
+    bool operator==(const CursesDisplay& cd) const;
 
 	  bool create();
 	  void tear_down();
