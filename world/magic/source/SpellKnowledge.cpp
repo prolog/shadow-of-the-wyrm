@@ -33,14 +33,19 @@ uint SpellKnowledge::get_spell_knowledge(const string& spell_id) const
   return cast_count;
 }
 
+// Because we keep track of all spells ever learned (if they can't be cast, they're at 0),
+// the "count_spells_known" function checks to see how many spells have non-zero castings
+// available.
 uint SpellKnowledge::count_spells_known() const
 {
-  return spell_knowledge.size();
-}
+  uint spells_known = 0;
 
-void SpellKnowledge::remove_spell_knowledge(const string& spell_id)
-{
-  spell_knowledge.erase(spell_id);
+  BOOST_FOREACH(const SpellKnowledgeMap::value_type& pair, spell_knowledge)
+  {
+    if (pair.second > 0) spells_known++;
+  }
+
+  return spells_known;
 }
 
 SpellKnowledgeMap SpellKnowledge::get_known_spells() const

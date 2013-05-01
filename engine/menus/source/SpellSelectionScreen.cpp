@@ -60,23 +60,26 @@ void SpellSelectionScreen::initialize()
       string spell_id = spell_pair.first;
       menu_selection_to_spell_id_map.insert(make_pair('a' + i, spell_id));
 
-      // Using the spell ID and a SpellDescriber, create text for the 
-      // option shown in the UI.
-      Spell spell = spells.find(spell_id)->second;
-      IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
-      string spell_desc = describer->describe();
-
-      Option current_option;
-      current_option.set_id(i);
-      current_option.set_description(spell_desc);
-          
-      options->add_option(current_option);
-
-      i++;
-
-      if (i == SPELLS_PER_PAGE)
+      if (sk.get_spell_knowledge(spell_id) > 0)
       {
-        break;
+        // Using the spell ID and a SpellDescriber, create text for the 
+        // option shown in the UI.
+        Spell spell = spells.find(spell_id)->second;
+        IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
+        string spell_desc = describer->describe();
+
+        Option current_option;
+        current_option.set_id(i);
+        current_option.set_description(spell_desc);
+          
+        options->add_option(current_option);
+
+        i++;
+
+        if (i == SPELLS_PER_PAGE)
+        {
+          break;
+        }
       }
     }
 
