@@ -1,7 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 
-class ScrubGenerator : public Generator
+class ScrubGenerator : public SL::Generator
 {
   public:
     ScrubGenerator(const std::string& map_exit_id);

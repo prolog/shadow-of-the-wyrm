@@ -1,7 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 
-class GraveyardGenerator : public Generator
+class GraveyardGenerator : public SL::Generator
 {
   public:
     GraveyardGenerator(const std::string& new_map_exit_id);

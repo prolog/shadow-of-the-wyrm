@@ -2541,6 +2541,7 @@
 		<Creature id="rat">
 			<ShortDescriptionSID>RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>RAT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>RAT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>RAT_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2572,6 +2573,7 @@
 		<Creature id="corpse_rat">
 			<ShortDescriptionSID>CORPSE_RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CORPSE_RAT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CORPSE_RAT_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CORPSE_RAT_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2604,6 +2606,7 @@
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>THRALL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THRALL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THRALL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THRALL_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2636,6 +2639,7 @@
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>SKELETON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SKELETON_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SKELETON_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SKELETON_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2667,6 +2671,7 @@
 		<Creature id="green_slime">
 			<ShortDescriptionSID>GREEN_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GREEN_SLIME_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GREEN_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>j</Symbol>
@@ -2697,6 +2702,7 @@
 		<Creature id="kestrel">
 			<ShortDescriptionSID>KESTREL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KESTREL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>KESTREL_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>KESTREL_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2733,6 +2739,7 @@
 		<Creature id="rook">
 			<ShortDescriptionSID>ROOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ROOK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ROOK_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ROOK_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2770,6 +2777,7 @@
 		<Creature id="shrike">
 			<ShortDescriptionSID>SHRIKE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHRIKE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SHRIKE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHRIKE_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2807,6 +2815,7 @@
 		<Creature id="falcon">
 			<ShortDescriptionSID>FALCON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FALCON_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FALCON_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FALCON_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2844,6 +2853,7 @@
 		<Creature id="blood_hawk">
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLOOD_HAWK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLOOD_HAWK_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BLOOD_HAWK_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2881,6 +2891,7 @@
 		<Creature id="roc">
 			<ShortDescriptionSID>ROC_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ROC_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ROC_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>ROC_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2918,6 +2929,7 @@
 		<Creature id="armoured_beetle">
 			<ShortDescriptionSID>ARMOURED_BEETLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ARMOURED_BEETLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ARMOURED_BEETLE_TEXT_DETAILS_SID</TextDetailsSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>i</Symbol>
@@ -2947,6 +2959,7 @@
 		<Creature id="fox">
 			<ShortDescriptionSID>FOX_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FOX_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FOX_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FOX_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -2981,6 +2994,7 @@
 		<Creature id="amaurosis">
 			<ShortDescriptionSID>AMAUROSIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AMAUROSIS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>AMAUROSIS_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>AMAUROSIS_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -3015,6 +3029,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>FISHERMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FISHERMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FISHERMAN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FISHERMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
@@ -3045,6 +3060,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THE_PLOUGHMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_PLOUGHMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_PLOUGHMAN_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_PLOUGHMAN_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
@@ -3076,6 +3092,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THE_BLACKSMITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THE_BLACKSMITH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THE_BLACKSMITH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THE_BLACKSMITH_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
@@ -3107,6 +3124,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>SMALL_CHILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SMALL_CHILD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SMALL_CHILD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SMALL_CHILD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -3137,6 +3155,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>VILLAGE_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VILLAGE_PRIEST_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VILLAGE_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>VILLAGE_PRIEST_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
@@ -3168,6 +3187,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>CYNWISE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CYNWISE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CYNWISE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CYNWISE_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -3200,6 +3220,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>KEW_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KEW_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>KEW_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>KEW_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
@@ -3232,6 +3253,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>FARMER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FARMER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FARMER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>FARMER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -3262,6 +3284,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>HRIMGAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HRIMGAR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HRIMGAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HRIMGAR_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
@@ -3294,6 +3317,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>GARROS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GARROS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GARROS_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GARROS_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -3323,6 +3347,7 @@
 		<Creature id="hound">
 			<ShortDescriptionSID>HOUND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HOUND_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HOUND_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>HOUND_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -3362,6 +3387,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THIEF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>THIEF_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THIEF_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>THIEF_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -3401,6 +3427,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>GRAVEROBBER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GRAVEROBBER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GRAVEROBBER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GRAVEROBBER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
@@ -3440,6 +3467,7 @@
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>BLACKGUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACKGUARD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLACKGUARD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>BLACKGUARD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>

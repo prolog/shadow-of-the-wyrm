@@ -90,6 +90,9 @@ class ActionManager : public ISerializable
 
     ActionCost cast_spell(CreaturePtr creature);
 
+    ActionCost bestiary(CreaturePtr creature);
+    ActionCost bestiary(CreaturePtr creature, const std::string& creature_search_text);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

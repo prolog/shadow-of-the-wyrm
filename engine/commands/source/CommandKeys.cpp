@@ -45,6 +45,7 @@ const string CommandKeys::QUEST_LIST     = "QUEST_LIST";
 const string CommandKeys::RELOAD_SCRIPTS_AND_SIDS = "RELOAD_SCRIPTS_AND_SIDS";
 const string CommandKeys::RUN_SCRIPT     = "RUN_SCRIPT";
 const string CommandKeys::CAST_SPELL     = "CAST_SPELL";
+const string CommandKeys::BESTIARY       = "BESTIARY";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

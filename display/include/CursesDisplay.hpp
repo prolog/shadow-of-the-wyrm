@@ -78,8 +78,8 @@ class CursesDisplay : public Display
 
     // These two methods are used to turn on/off colours for use
     // with mvprintw, etc.
-    void enable_colour(const int colour);
-    void disable_colour(const int colour);
+    void enable_colour(const int colour, WINDOW* window);
+    void disable_colour(const int colour, WINDOW* window);
 
     // Clear the message buffer.
     int clear_message_buffer();

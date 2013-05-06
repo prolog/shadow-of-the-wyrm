@@ -1,7 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 
-class MountainsGenerator : public Generator
+class MountainsGenerator : public SL::Generator
 {
   public:
     MountainsGenerator(const std::string& map_exit_id);

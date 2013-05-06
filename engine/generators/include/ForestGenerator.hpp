@@ -2,7 +2,7 @@
 
 #include "Generator.hpp"
 
-class ForestGenerator : public Generator
+class ForestGenerator : public SL::Generator
 {
   public:
     ForestGenerator(const std::string& map_exit_id);

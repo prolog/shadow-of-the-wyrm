@@ -153,6 +153,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<CastSpellCommand>();
   }
+  else if (command_name == CommandKeys::BESTIARY)
+  {
+    command = boost::make_shared<BestiaryCommand>();
+  }
 
   return command;
 }

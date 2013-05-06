@@ -55,6 +55,7 @@ Creature::Creature(const Creature& cr)
   handedness = cr.handedness;
   short_description_sid = cr.short_description_sid;
   description_sid = cr.description_sid;
+  text_details_sid = cr.text_details_sid;
   race_id = cr.race_id;
   class_id = cr.class_id;
   strength = cr.strength;
@@ -129,6 +130,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (handedness == cr.handedness);
   result = result && (short_description_sid == cr.short_description_sid);
   result = result && (description_sid == cr.description_sid);
+  result = result && (text_details_sid == cr.text_details_sid);
   result = result && (race_id == cr.race_id);
   result = result && (class_id == cr.class_id);
   result = result && (strength == cr.strength);
@@ -261,6 +263,16 @@ void Creature::set_description_sid(const string& new_description_sid)
 string Creature::get_description_sid() const
 {
   return description_sid;
+}
+
+void Creature::set_text_details_sid(const string& new_text_details_sid)
+{
+  text_details_sid = new_text_details_sid;
+}
+
+string Creature::get_text_details_sid() const
+{
+  return text_details_sid;
 }
 
 void Creature::set_sex(const CreatureSex new_sex)
@@ -875,7 +887,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 872);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 904);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 752);
@@ -900,6 +912,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->handedness, cr.handedness);
   std::swap(this->short_description_sid, cr.short_description_sid);
   std::swap(this->description_sid, cr.description_sid);
+  std::swap(this->text_details_sid, cr.text_details_sid);
   std::swap(this->race_id, cr.race_id);
   std::swap(this->class_id, cr.class_id);
   std::swap(this->strength, cr.strength);
@@ -956,6 +969,7 @@ bool Creature::serialize(ostream& stream)
 
   Serialize::write_string(stream, short_description_sid);
   Serialize::write_string(stream, description_sid);
+  Serialize::write_string(stream, text_details_sid);
 
   Serialize::write_string(stream, race_id);
   Serialize::write_string(stream, class_id);
@@ -1073,6 +1087,7 @@ bool Creature::deserialize(istream& stream)
 
   Serialize::read_string(stream, short_description_sid);
   Serialize::read_string(stream, description_sid);
+  Serialize::read_string(stream, text_details_sid);
   
   Serialize::read_string(stream, race_id);
   Serialize::read_string(stream, class_id);

@@ -64,6 +64,9 @@ class Creature : public ISerializable
     void set_description_sid(const std::string& new_description_sid);
     std::string get_description_sid() const;
 
+    void set_text_details_sid(const std::string& new_text_details_sid);
+    std::string get_text_details_sid() const;
+
     void set_sex(const CreatureSex new_sex);
     CreatureSex get_sex() const;
 
@@ -268,6 +271,7 @@ class Creature : public ISerializable
     
     std::string short_description_sid;
     std::string description_sid;
+    std::string text_details_sid;
 
     // Race and class.  Maybe make this an ID instead?
     std::string race_id;

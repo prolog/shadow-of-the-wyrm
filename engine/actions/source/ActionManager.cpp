@@ -2,6 +2,7 @@
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "BestiaryAction.hpp"
 #include "CharacterDumpAction.hpp"
 #include "ChatAction.hpp"
 #include "Conversion.hpp"
@@ -296,6 +297,19 @@ ActionCost ActionManager::cast_spell(CreaturePtr creature)
   SpellcastingAction sa;
 
   return get_action_cost(creature, sa.cast_spell(creature));
+}
+
+ActionCost ActionManager::bestiary(CreaturePtr creature)
+{
+  string no_search_text;
+  return bestiary(creature, no_search_text);
+}
+
+ActionCost ActionManager::bestiary(CreaturePtr creature, const string& creature_search_text)
+{
+  BestiaryAction bestiary;
+
+  return get_action_cost(creature, bestiary.display_creature_information(creature_search_text));
 }
 
 // Pick up an item, doing any necessary checks first.
