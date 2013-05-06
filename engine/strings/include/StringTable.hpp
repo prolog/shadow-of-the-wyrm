@@ -1,6 +1,9 @@
 #pragma once
 #include <string>
-#include <map>
+#include <boost/algorithm/string.hpp>
+#include <boost/unordered_map.hpp>
+
+typedef boost::unordered_map<std::string, std::string> StringTableMap;
 
 class StringTable
 {
@@ -11,5 +14,7 @@ class StringTable
   protected:
     friend class SL_Engine_StringConstants;
     
-    static std::map<std::string, std::string> string_table;
+    static StringTableMap string_table;
 };
+
+typedef const boost::iterator_range<std::string::const_iterator> StringRange;

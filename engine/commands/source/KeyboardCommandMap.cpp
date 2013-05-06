@@ -120,6 +120,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('a'), CommandKeys::APPLY_FEATURE));
   command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUEST_LIST));
   command_mapping.insert(make_pair(Integer::to_string('z'), CommandKeys::CAST_SPELL));
+  command_mapping.insert(make_pair(Integer::to_string('B'), CommandKeys::BESTIARY));
   
   // JCD FIXME: When adding Unix support, update this to include whatever
   // debug flag is needed.

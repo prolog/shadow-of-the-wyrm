@@ -75,6 +75,10 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     string description_sid = XMLUtils::get_child_node_value(creature_node, "DescriptionSID");
     creature->set_description_sid(description_sid);
 
+    // The text used to describe the creature in the bestiary.
+    string text_details_sid = XMLUtils::get_child_node_value(creature_node, "TextDetailsSID");
+    creature->set_text_details_sid(text_details_sid);
+
     // What the creature says when chatted with, if anything at all.
     string speech_text_sid = XMLUtils::get_child_node_value(creature_node, "SpeechTextSID");
     creature->set_speech_text_sid(speech_text_sid);

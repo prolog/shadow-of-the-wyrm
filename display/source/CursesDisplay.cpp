@@ -121,36 +121,36 @@ void CursesDisplay::initialize_colours()
 // Turn on colour using attron.
 //
 // Note that the enable/disable colour need to match!  Don't pass different colours!
-void CursesDisplay::enable_colour(const int selected_colour)
+void CursesDisplay::enable_colour(const int selected_colour, WINDOW* window)
 {
   if (uses_colour())
   {
     if (selected_colour > COLOUR_WHITE)
     {
       int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
-      attron(COLOR_PAIR(actual_colour+1));
-      attron(A_BOLD);
+      wattron(window, COLOR_PAIR(actual_colour+1));
+      wattron(window, A_BOLD);
       return;
     }
 
-    attron(COLOR_PAIR(selected_colour+1));
+    wattron(window, COLOR_PAIR(selected_colour+1));
   }
 }
 
 // Turn off colour using attroff.
-void CursesDisplay::disable_colour(const int selected_colour)
+void CursesDisplay::disable_colour(const int selected_colour, WINDOW* window)
 {
   if (uses_colour())
   {
     if (selected_colour > COLOUR_WHITE)
     {
       int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
-      attroff(COLOR_PAIR(actual_colour+1));
-      attroff(A_BOLD);
+      wattroff(window, COLOR_PAIR(actual_colour+1));
+      wattroff(window, A_BOLD);
       return;
     }
 
-    attroff(COLOR_PAIR(selected_colour+1));
+    wattroff(window, COLOR_PAIR(selected_colour+1));
   }
 }
 
@@ -300,7 +300,7 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
   char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
   tokenizer<char_separator<char> > tokens(message, separator);
 
-  enable_colour(colour);
+  enable_colour(colour, stdscr);
 
   for (tokenizer<char_separator<char> >::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
@@ -324,10 +324,10 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
         move(1, TERMINAL_MAX_COLS-4);
 
         // Add "..."
-        disable_colour(colour);
+        disable_colour(colour, stdscr);
         printw("...");
         getch();
-        enable_colour(colour);
+        enable_colour(colour, stdscr);
 
         clear_message_buffer();
       }
@@ -351,7 +351,7 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
     move(orig_curs_y, orig_curs_x);
   }
   
-  disable_colour(colour);
+  disable_colour(colour, stdscr);
   
   //refresh();
 }
@@ -493,12 +493,10 @@ void CursesDisplay::draw_coordinate(const DisplayTile& display_tile, const unsig
 {
   int colour = display_tile.get_colour();
 
-  enable_colour(colour);
-
   // Maps are always drawn on ncurses' stdscr.
+  enable_colour(colour, stdscr);
   mvprintw(terminal_row, terminal_col, "%c", display_tile.get_symbol());
-
-  disable_colour(colour);
+  disable_colour(colour, stdscr);
 }
 
 /*!
@@ -553,39 +551,47 @@ string CursesDisplay::display_menu(const Menu& current_menu)
   uint line_incr = current_menu.get_line_increment();
   BOOST_FOREACH( MenuComponentPtr component, components)
   {
-    TextComponentPtr tc = dynamic_pointer_cast<TextComponent>(component);
-
-    if (tc != NULL)
+    if (component)
     {
-      display_text_component(menu_window, &current_row, &current_col, tc, line_incr);
-    }
-    else
-    {
-      OptionsComponentPtr oc = dynamic_pointer_cast<OptionsComponent>(component);
+      Colour component_colour = component->get_colour();
+      TextComponentPtr tc = dynamic_pointer_cast<TextComponent>(component);
 
-      if (oc != NULL)
+      enable_colour(component_colour, menu_window);
+
+      if (tc != NULL)
       {
-        // Process the options...
-        wrapper = display_and_return_options_component(menu_window, &current_row, &current_col, oc);
+        display_text_component(menu_window, &current_row, &current_col, tc, line_incr);
       }
-    }
+      else
+      {
+        OptionsComponentPtr oc = dynamic_pointer_cast<OptionsComponent>(component);
 
-    // After each line, check to see if we need to throw up a prompt because
-    // of hitting the end of the screen.
-    if (current_row == (TERMINAL_MAX_ROWS - 1))
-    {
-      PromptPtr prompt = current_menu.get_prompt();
-      prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
+        if (oc != NULL)
+        {
+          // Process the options...
+          wrapper = display_and_return_options_component(menu_window, &current_row, &current_col, oc);
+        }
+      }
 
-      result = prompt_processor.get_prompt(menu_window, wrapper, prompt);
+      disable_colour(component_colour, menu_window);
 
-      wrefresh(menu_window);
+      // After each line, check to see if we need to throw up a prompt because
+      // of hitting the end of the screen.
+      if (current_row == (TERMINAL_MAX_ROWS - 1))
+      {
+        PromptPtr prompt = current_menu.get_prompt();
+        prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
-      // We've shown the prompt, the user has intervened, and so
-      // now we need to clear the window, reset the current row
-      // back to 0 and keep displaying stuff from the menu.
-      wclear(menu_window);
-      current_row = 0;
+        result = prompt_processor.get_prompt(menu_window, wrapper, prompt);
+
+        wrefresh(menu_window);
+
+        // We've shown the prompt, the user has intervened, and so
+        // now we need to clear the window, reset the current row
+        // back to 0 and keep displaying stuff from the menu.
+        wclear(menu_window);
+        current_row = 0;
+      }
     }
   }
 
@@ -765,9 +771,9 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
       {
         Colour colour = status_ailment.second;
 
-        enable_colour(colour);
+        enable_colour(colour, stdscr);
         print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, status_ailment.first, next_ailment.first); 
-        disable_colour(colour);
+        disable_colour(colour, stdscr);
       }
     }
     else
@@ -776,9 +782,9 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
       {
         Colour colour = status_ailment.second;
 
-        enable_colour(colour);
+        enable_colour(colour, stdscr);
         mvprintw(current_row, current_col, status_ailment.first.c_str());
-        disable_colour(colour);
+        disable_colour(colour, stdscr);
       }
     }
   }
@@ -928,9 +934,9 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
 
     if (!display_items.empty())
     {
-      enable_colour (category_colour);
+      enable_colour (category_colour, inv_window);
       mvwprintw(inv_window, current_row, 0, category_synopsis.c_str());
-      disable_colour(category_colour);
+      disable_colour(category_colour, inv_window);
       
       BOOST_FOREACH(DisplayItem item, display_items)
       {

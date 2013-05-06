@@ -13,6 +13,7 @@
 #include "RNG.hpp"
 
 using namespace std;
+using namespace SL;
 
 Generator::Generator(const string& new_map_exit_id, const TileType new_map_terrain_type)
 : map_exit_id(new_map_exit_id), map_terrain_type(new_map_terrain_type)

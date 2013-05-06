@@ -7,7 +7,7 @@
 
 using namespace std;
 
-TextDisplayScreen::TextDisplayScreen(DisplayPtr new_display, const std::string& new_title_text_sid, const vector<string>& new_text) : Menu(new_display), text(new_text)
+TextDisplayScreen::TextDisplayScreen(DisplayPtr new_display, const std::string& new_title_text_sid, const vector<TextDisplayPair>& new_text) : Menu(new_display), text(new_text)
 {
   // Set the line increment to 1, so that single-spacing between lines is
   // enforced.  Otherwise, things will look goofy.
@@ -22,9 +22,9 @@ void TextDisplayScreen::initialize(const string& title_sid)
   title_text_sid = title_sid;
 
   // Set the text components.
-  BOOST_FOREACH(string line, text)
+  BOOST_FOREACH(TextDisplayPair line_pair, text)
   {
-    TextComponentPtr current_line = boost::make_shared<TextComponent>(line);
+    TextComponentPtr current_line = boost::make_shared<TextComponent>(line_pair.second, line_pair.first);
     components.push_back(current_line);
   }
 

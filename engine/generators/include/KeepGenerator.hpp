@@ -1,7 +1,7 @@
 #pragma once
 #include "Generator.hpp"
 
-class KeepGenerator : public Generator
+class KeepGenerator : public SL::Generator
 {
   public:
     KeepGenerator(MapPtr new_base_map, const int chance_decay = 0);

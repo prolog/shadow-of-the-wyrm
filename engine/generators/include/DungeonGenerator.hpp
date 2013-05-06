@@ -13,7 +13,7 @@ class DungeonGeneratorProperties
     ~DungeonGeneratorProperties();
 };
 
-class DungeonGenerator : public Generator
+class DungeonGenerator : public SL::Generator
 {
   public:
     DungeonGenerator(const std::string& map_exit_id);

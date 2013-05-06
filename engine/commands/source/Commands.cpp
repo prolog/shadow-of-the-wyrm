@@ -308,3 +308,13 @@ CastSpellCommand::CastSpellCommand()
 CastSpellCommand::~CastSpellCommand()
 {
 }
+
+// Beastiary (creature info)
+BestiaryCommand::BestiaryCommand()
+: Command(CommandKeys::BESTIARY)
+{
+}
+
+BestiaryCommand::~BestiaryCommand()
+{
+}

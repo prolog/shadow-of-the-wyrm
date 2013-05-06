@@ -213,3 +213,10 @@ class CastSpellCommand : public Command
     CastSpellCommand();
     ~CastSpellCommand();
 };
+
+class BestiaryCommand : public Command
+{
+  public:
+    BestiaryCommand();
+    ~BestiaryCommand();
+};

@@ -107,6 +107,7 @@
     <ClInclude Include="engine\actions\include\ActionCoordinator.hpp" />
     <ClInclude Include="engine\actions\include\ActionCost.hpp" />
     <ClInclude Include="engine\actions\include\ActionManager.hpp" />
+    <ClInclude Include="engine\actions\include\BestiaryAction.hpp" />
     <ClInclude Include="engine\actions\include\CharacterDumpAction.hpp" />
     <ClInclude Include="engine\actions\include\ChatAction.hpp" />
     <ClInclude Include="engine\actions\include\ConsumableAction.hpp" />
@@ -731,6 +732,7 @@
     <ClCompile Include="engine\actions\source\ActionCoordinator.cpp" />
     <ClCompile Include="engine\actions\source\ActionCost.cpp" />
     <ClCompile Include="engine\actions\source\ActionManager.cpp" />
+    <ClCompile Include="engine\actions\source\BestiaryAction.cpp" />
     <ClCompile Include="engine\actions\source\CharacterDumpAction.cpp" />
     <ClCompile Include="engine\actions\source\ChatAction.cpp" />
     <ClCompile Include="engine\actions\source\ConsumableAction.cpp" />

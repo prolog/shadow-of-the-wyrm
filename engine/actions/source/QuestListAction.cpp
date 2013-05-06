@@ -19,7 +19,7 @@ ActionCostValue QuestListAction::quest_list() const
   QuestMap in_progress_quests = quests.get_in_progress_quests();
 
   string quest_title_sid = MenuTitleKeys::MENU_TITLE_QUEST_LIST;
-  vector<string> quests_text;
+  vector<pair<Colour, string>> quests_text;
   string separator; // an empty line of text used to separate quests in the list.
 
   BOOST_FOREACH(QuestMap::value_type& pair, in_progress_quests)
@@ -33,7 +33,11 @@ ActionCostValue QuestListAction::quest_list() const
     vector<string> current_quest_formatted = tdf.format_text(long_quest_description);
     current_quest_formatted.push_back(separator);
 
-    quests_text.insert(quests_text.end(), current_quest_formatted.begin(), current_quest_formatted.end());
+    BOOST_FOREACH(string quest_line, current_quest_formatted)
+    {
+      TextDisplayPair quest_line_for_ui = make_pair(COLOUR_WHITE, quest_line);
+      quests_text.push_back(quest_line_for_ui);
+    }
   }
 
   TextDisplayScreen tds(game.get_display(), quest_title_sid, quests_text);

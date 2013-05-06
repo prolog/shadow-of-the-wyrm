@@ -7,6 +7,7 @@ class TextComponent : public MenuComponent
 {
   public:
     TextComponent(const std::string& str);
+    TextComponent(const std::string& str, const Colour c);
 
   protected:
 };

@@ -2,7 +2,7 @@
 
 #include "Generator.hpp"
 
-class FieldGenerator : public Generator
+class FieldGenerator : public SL::Generator
 {
   public:
     FieldGenerator(const std::string& map_exit_id);
