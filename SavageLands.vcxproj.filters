@@ -2454,6 +2454,9 @@
     <ClInclude Include="engine\actions\include\BestiaryAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\magic\include\SpellBonusUpdater.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4586,9 +4589,6 @@
     <ClCompile Include="world\magic\source\SpellShapeFactory.cpp">
       <Filter>Source Files\world\magic\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\magic\source\unit_tests\SpellShapeFactory_test.cpp">
-      <Filter>Source Files\engine\magic\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\time\source\CreatureAPRegeneration.cpp">
       <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
@@ -4639,6 +4639,15 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\BestiaryAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\SpellBonusUpdater.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\unit_tests\SpellBonusUpdater_test.cpp">
+      <Filter>Source Files\engine\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\unit_tests\SpellShapeFactory_test.cpp">
+      <Filter>Source Files\world\magic\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

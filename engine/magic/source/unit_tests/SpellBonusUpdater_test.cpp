@@ -1,0 +1,27 @@
+#include "gtest/gtest.h"
+
+TEST(SL_Engine_Magic_SpellBonusUpdater, add_successful_casting)
+{
+  SpellBonusUpdater sbu;
+  IndividualSpellKnowledge isk;
+
+  // First time incrementing (from 0): successful
+  EXPECT_TRUE(sbu.add_successful_casting(isk));
+
+  // Base is incremented to 1.
+  // Current is reset to 0.
+  // Adding another casting brings current to 1, which means that the
+  // base is increased to 2, cur to 0.
+  EXPECT_TRUE(sbu.add_successful_casting(isk));
+
+  // Cur is increased to 1, which is less than the base of 2, so the
+  // base is not incremented.
+  EXPECT_FALSE(sbu.add_successful_casting(isk));
+
+  // Cur is increase to 2, which equals the base of 2, so the base is
+  // incremented to 3.
+  EXPECT_TRUE(sbu.add_successful_casting(isk));
+
+  // Base should be 3, now.
+  EXPECT_EQ(3, isk.get_bonus().get_base());
+}
