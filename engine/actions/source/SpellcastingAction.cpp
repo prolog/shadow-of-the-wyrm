@@ -10,6 +10,7 @@
 #include "MagicCommandProcessor.hpp"
 #include "MagicKeyboardCommandMap.hpp"
 #include "MessageManager.hpp"
+#include "SpellBonusUpdater.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "SpellSelectionScreen.hpp"
 #include "SpellShapeProcessorFactory.hpp"
@@ -153,6 +154,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         // Reduce castings by one, removing the spell if there are none left.
         reduce_castings_or_remove_spell(creature, spell);
 
+        // Update the spell bonus information
+        update_spell_bonus(creature, spell);
+
         // Mark the spell as the most recently cast.
         creature->get_spell_knowledge_ref().set_most_recently_cast_spell_id(spell.get_spell_id());
 
@@ -176,6 +180,32 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
   }
 
   return action_cost_value;
+}
+
+void SpellcastingAction::update_spell_bonus(CreaturePtr caster, const Spell& spell) const
+{
+  string spell_id = spell.get_spell_id();
+
+  SpellKnowledge& sk = caster->get_spell_knowledge_ref();
+  IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell_id);
+
+  SpellBonusUpdater sbu;
+  bool bonus_updated = sbu.add_successful_casting(isk);
+  sk.set_spell_knowledge(spell_id, isk);
+  
+  if (bonus_updated && caster->get_is_player())
+  {
+    add_spell_bonus_increased_message();
+  }
+}
+
+// Add a message about the spell bonus increasing.
+void SpellcastingAction::add_spell_bonus_increased_message() const
+{
+  MessageManager& manager = MessageManager::instance();
+
+  manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_BONUS_INCREASED));
+  manager.send();
 }
 
 // Add a message that the player has no magical knowledge

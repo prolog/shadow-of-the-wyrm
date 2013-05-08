@@ -377,6 +377,7 @@
     <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\ConeShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\ReflectiveBeamShapeProcessor.hpp" />
+    <ClInclude Include="engine\magic\include\SpellBonusUpdater.hpp" />
     <ClInclude Include="engine\magic\include\SpellShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\MagicalAbilityChecker.hpp" />
     <ClInclude Include="engine\magic\include\SpellShapeProcessorFactory.hpp" />
@@ -1103,11 +1104,15 @@
     <ClCompile Include="engine\magic\source\ConeShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\MagicalAbilityChecker.cpp" />
     <ClCompile Include="engine\magic\source\ReflectiveBeamShapeProcessor.cpp" />
+    <ClCompile Include="engine\magic\source\SpellBonusUpdater.cpp" />
     <ClCompile Include="engine\magic\source\SpellShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\SpellShapeProcessorFactory.cpp" />
     <ClCompile Include="engine\magic\source\TargetSelfShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\TileMagicChecker.cpp" />
     <ClCompile Include="engine\magic\source\unit_tests\MagicalAbilityChecker_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\unit_tests\SpellBonusUpdater_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\source\CoordUtils.cpp" />
