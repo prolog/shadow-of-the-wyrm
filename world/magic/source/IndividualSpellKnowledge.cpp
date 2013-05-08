@@ -28,12 +28,12 @@ uint IndividualSpellKnowledge::get_castings() const
   return castings;
 }
 
-void IndividualSpellKnowledge::set_bonus(const uint new_bonus)
+void IndividualSpellKnowledge::set_bonus(const Statistic& new_bonus)
 {
   bonus = new_bonus;
 }
 
-uint IndividualSpellKnowledge::get_bonus() const
+Statistic IndividualSpellKnowledge::get_bonus() const
 {
   return bonus;
 }
@@ -41,7 +41,7 @@ uint IndividualSpellKnowledge::get_bonus() const
 bool IndividualSpellKnowledge::serialize(std::ostream& stream)
 {
   Serialize::write_uint(stream, castings);
-  Serialize::write_uint(stream, bonus);
+  bonus.serialize(stream);
 
   return true;
 }
@@ -49,7 +49,7 @@ bool IndividualSpellKnowledge::serialize(std::ostream& stream)
 bool IndividualSpellKnowledge::deserialize(std::istream& stream)
 {
   Serialize::read_uint(stream, castings);
-  Serialize::read_uint(stream, bonus);
+  bonus.deserialize(stream);
 
   return true;
 }

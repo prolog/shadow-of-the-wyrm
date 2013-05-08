@@ -10,9 +10,10 @@ TEST(SL_World_Magic_IndividualSpellKnowledge, serialization_id)
 TEST(SL_World_Magic_IndividualSpellKnowledge, saveload)
 {
   IndividualSpellKnowledge isk, isk2;
+  Statistic bonus(4);
 
   isk.set_castings(3);
-  isk.set_bonus(4);
+  isk.set_bonus(bonus);
 
   ostringstream ss;
   
