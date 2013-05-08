@@ -22,13 +22,15 @@ string SpellDescriber::describe() const
   Skills skills;
   string spell_name = StringTable::get(spell.get_spell_name_sid());
   string spell_category = StringTable::get(skills.get_skill(spell.get_magic_category())->get_skill_name_sid());
+  IndividualSpellKnowledge isk = sk.get_spell_knowledge(spell.get_spell_id());
 
   ss << spell_name 
      << " (" << spell_category << ")" 
      << " [" 
-             << "#:" << sk.get_spell_knowledge(spell.get_spell_id()).get_castings()
+             << "#:" << isk.get_castings()
              << ", " << StringTable::get(TextKeys::RANGE_ABRV) << ":" << spell.get_range()
              << ", " << StringTable::get(TextKeys::ARCANA_POINTS_ABRV) << ":" << spell.get_ap_cost()
+             << ", +"<< isk.get_bonus().get_base()
      <<  "]";
 
   return ss.str();

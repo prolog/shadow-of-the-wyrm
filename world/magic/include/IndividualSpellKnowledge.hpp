@@ -1,6 +1,7 @@
 #pragma once
 #include "common.hpp"
 #include "ISerializable.hpp"
+#include "Statistic.hpp"
 
 class IndividualSpellKnowledge : public ISerializable
 {
@@ -11,8 +12,8 @@ class IndividualSpellKnowledge : public ISerializable
     void set_castings(const uint new_castings);
     uint get_castings() const;
 
-    void set_bonus(const uint new_bonus);
-    uint get_bonus() const;
+    void set_bonus(const Statistic& new_bonus);
+    Statistic get_bonus() const;
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
@@ -22,5 +23,5 @@ class IndividualSpellKnowledge : public ISerializable
 
   protected:
     uint castings;
-    uint bonus;
+    Statistic bonus;
 };
