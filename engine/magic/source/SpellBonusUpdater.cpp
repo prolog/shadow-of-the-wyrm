@@ -1,4 +1,5 @@
 #include "SpellBonusUpdater.hpp"
+#include "SpellConstants.hpp"
 
 // Increment the current counter.  If this equals the base afterwards,
 // reset the current, increment the base, and return true.
@@ -10,23 +11,28 @@ bool SpellBonusUpdater::add_successful_casting(IndividualSpellKnowledge& isk) co
   bool incremented_base = false;
 
   Statistic spell_bonus = isk.get_bonus();
-
-  int cur  = spell_bonus.get_current() + 1;
   int base = spell_bonus.get_base(); 
 
-  if (cur >= base)
+  // Only update the spell bonus information if the bonus's base value is
+  // less than the maximum base.
+  if (base < SpellConstants::max_spell_bonus)
   {
-    spell_bonus.set_current(0);
-    spell_bonus.set_base(base + 1);
+    int cur  = spell_bonus.get_current() + 1;
 
-    incremented_base = true;
-  }
-  else
-  {
-    spell_bonus.set_current(cur);
-  }
+    if (cur >= base)
+    {
+      spell_bonus.set_current(0);
+      spell_bonus.set_base(base + 1);
 
-  isk.set_bonus(spell_bonus);
+      incremented_base = true;
+    }
+    else
+    {
+      spell_bonus.set_current(cur);
+    }
+
+    isk.set_bonus(spell_bonus);
+  }
 
   return incremented_base;
 }
