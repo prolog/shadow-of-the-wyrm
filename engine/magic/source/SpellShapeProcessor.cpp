@@ -36,8 +36,7 @@ void SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
   if (tile && spell.get_has_damage() && tile_creature)
   {
     CombatManager cm;
-    DamagePtr damage = boost::make_shared<Damage>(spell.get_damage());
-    cm.attack(caster, tile_creature, ATTACK_TYPE_MAGICAL, damage);
+    cm.attack(caster, tile_creature, ATTACK_TYPE_MAGICAL);
   }
 }
 

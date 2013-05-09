@@ -1,3 +1,4 @@
+#include "Game.hpp"
 #include "MagicalDamageCalculator.hpp"
 
 MagicalDamageCalculator::MagicalDamageCalculator()
@@ -25,13 +26,27 @@ int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const Dam
 
 Damage MagicalDamageCalculator::calculate_base_damage_object(CreaturePtr creature)
 {
-  // JCD FIXME
+  SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+  Spell spell = Game::instance().get_spells_ref().find(sk.get_most_recently_cast_spell_id())->second;
+
   Damage d;
+
+  if (spell.get_has_damage())
+  {
+    d = spell.get_damage();
+  }
+
   return d;
 }
 
 Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(CreaturePtr creature)
 {
-  // JCD FIXME
-  return calculate_base_damage_object(creature);
+  Damage base_and_bonus = calculate_base_damage_object(creature);
+
+  SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+  IndividualSpellKnowledge isk = sk.get_spell_knowledge(sk.get_most_recently_cast_spell_id());
+
+  base_and_bonus.set_modifier(isk.get_bonus().get_base());
+
+  return base_and_bonus;
 }

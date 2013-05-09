@@ -154,9 +154,6 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         // Reduce castings by one, removing the spell if there are none left.
         reduce_castings_or_remove_spell(creature, spell);
 
-        // Update the spell bonus information
-        update_spell_bonus(creature, spell);
-
         // Mark the spell as the most recently cast.
         creature->get_spell_knowledge_ref().set_most_recently_cast_spell_id(spell.get_spell_id());
 
@@ -167,6 +164,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         {
           process_animation_and_spell(spell_processor, creature, current_map, caster_coord, spell_direction, spell);
         }
+
+        // Now that the spell has been cast, update the spell bonus information
+        update_spell_bonus(creature, spell);
       }
 
       // Send the cast message and any messages generating by hitting other
