@@ -25,3 +25,24 @@ TEST(SL_Engine_Magic_SpellBonusUpdater, add_successful_casting)
   // Base should be 3, now.
   EXPECT_EQ(3, isk.get_bonus().get_base());
 }
+
+TEST(SL_Engine_Magic_SpellBonusUpdater, spell_bonus_respects_maximum)
+{
+  SpellBonusUpdater sbu;
+  IndividualSpellKnowledge isk;
+
+  int max_bonus = SpellConstants::max_spell_bonus;
+
+  Statistic bonus = isk.get_bonus();
+  bonus.set_current(max_bonus - 2);
+  bonus.set_base(max_bonus - 1);
+
+  isk.set_bonus(bonus);
+
+  EXPECT_TRUE(sbu.add_successful_casting(isk));
+
+  bonus.set_current(max_bonus-1);
+  bonus.set_base(max_bonus);
+
+  EXPECT_FALSE(sbu.add_successful_casting(isk));
+}

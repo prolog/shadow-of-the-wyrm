@@ -2457,6 +2457,9 @@
     <ClInclude Include="engine\magic\include\SpellBonusUpdater.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\magic\include\SpellConstants.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4648,6 +4651,9 @@
     </ClCompile>
     <ClCompile Include="world\magic\source\unit_tests\SpellShapeFactory_test.cpp">
       <Filter>Source Files\world\magic\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\SpellConstants.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

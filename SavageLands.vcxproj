@@ -596,6 +596,7 @@
     <ClInclude Include="world\magic\include\EffectTypes.hpp" />
     <ClInclude Include="world\magic\include\IndividualSpellKnowledge.hpp" />
     <ClInclude Include="world\magic\include\Spell.hpp" />
+    <ClInclude Include="world\magic\include\SpellConstants.hpp" />
     <ClInclude Include="world\magic\include\SpellKnowledge.hpp" />
     <ClInclude Include="world\magic\include\SpellShape.hpp" />
     <ClInclude Include="world\magic\include\SpellShapeFactory.hpp" />
@@ -1343,6 +1344,7 @@
     <ClCompile Include="SavageLands.cpp" />
     <ClCompile Include="world\magic\source\IndividualSpellKnowledge.cpp" />
     <ClCompile Include="world\magic\source\Spell.cpp" />
+    <ClCompile Include="world\magic\source\SpellConstants.cpp" />
     <ClCompile Include="world\magic\source\SpellKnowledge.cpp" />
     <ClCompile Include="world\magic\source\SpellShape.cpp" />
     <ClCompile Include="world\magic\source\SpellShapeFactory.cpp" />
