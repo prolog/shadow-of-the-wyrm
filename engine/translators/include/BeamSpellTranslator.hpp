@@ -11,7 +11,7 @@ class BeamSpellTranslator
 {
   public:
     BeamSpellTranslator();
-    DisplayTile create_display_tile(const Direction beam_direction, const Colour colour);
+    DisplayTile create_display_tile(const uint spell_burst_range, const Direction beam_direction, const Colour colour);
 
   protected:
     void initialize_beam_symbols();

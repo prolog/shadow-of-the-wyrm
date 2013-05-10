@@ -1,4 +1,5 @@
 #include "BeamSpellTranslator.hpp"
+#include "SpellConstants.hpp"
 
 using namespace std;
 
@@ -32,9 +33,19 @@ void BeamSpellTranslator::initialize_beam_symbols()
   beam_symbols.insert(make_pair(DIRECTION_DOWN, '>'));
 }
 
-DisplayTile BeamSpellTranslator::create_display_tile(const Direction beam_direction, const Colour colour)
+DisplayTile BeamSpellTranslator::create_display_tile(const uint spell_burst_range, const Direction beam_direction, const Colour colour)
 {
-  DisplayTile dt(beam_symbols[beam_direction], colour);
+  uchar beam_symbol = beam_symbols[beam_direction];
+
+  if (spell_burst_range <= SpellConstants::BEAM_BURST_RANGE)
+  {
+    beam_symbol = SpellConstants::BEAM_BURST_SYMBOL;
+  }
+
+  DisplayTile dt(beam_symbol, colour);
   return dt;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/BeamSpellTranslator_test.cpp"
+#endif

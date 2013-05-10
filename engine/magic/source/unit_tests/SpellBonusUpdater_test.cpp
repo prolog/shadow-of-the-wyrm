@@ -31,7 +31,7 @@ TEST(SL_Engine_Magic_SpellBonusUpdater, spell_bonus_respects_maximum)
   SpellBonusUpdater sbu;
   IndividualSpellKnowledge isk;
 
-  int max_bonus = SpellConstants::max_spell_bonus;
+  int max_bonus = SpellConstants::MAX_SPELL_BONUS;
 
   Statistic bonus = isk.get_bonus();
   bonus.set_current(max_bonus - 2);

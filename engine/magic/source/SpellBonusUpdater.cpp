@@ -15,7 +15,7 @@ bool SpellBonusUpdater::add_successful_casting(IndividualSpellKnowledge& isk) co
 
   // Only update the spell bonus information if the bonus's base value is
   // less than the maximum base.
-  if (base < SpellConstants::max_spell_bonus)
+  if (base < SpellConstants::MAX_SPELL_BONUS)
   {
     int cur  = spell_bonus.get_current() + 1;
 
