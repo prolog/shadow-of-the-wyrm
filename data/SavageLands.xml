@@ -3576,7 +3576,7 @@
 			<Colour>4</Colour>
 			<APCost>2</APCost>
 			<Speed>1</Speed>
-			<Range>2</Range>
+			<Range>1</Range>
 			<Shape>1</Shape>
 			<Damage>
 				<NumDice>2</NumDice>

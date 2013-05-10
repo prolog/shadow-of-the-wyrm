@@ -4655,5 +4655,8 @@
     <ClCompile Include="world\magic\source\SpellConstants.cpp">
       <Filter>Source Files\world\magic\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\translators\source\unit_tests\BeamSpellTranslator_test.cpp">
+      <Filter>Source Files\engine\translators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

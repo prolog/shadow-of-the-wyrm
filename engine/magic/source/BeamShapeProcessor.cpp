@@ -55,7 +55,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
   Direction current_direction = d;
 
   BeamSpellTranslator bst;
-  DisplayTile dt = bst.create_display_tile(current_direction, spell.get_colour());
+  DisplayTile dt = bst.create_display_tile(spell.get_range(), current_direction, spell.get_colour());
 
   uint count = 0;
   while (count < range)
@@ -80,7 +80,7 @@ pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_anim
         }
 
         // Update the symbol for the display
-        dt = bst.create_display_tile(current_direction, spell.get_colour());
+        dt = bst.create_display_tile(spell.get_range(), current_direction, spell.get_colour());
 
         // The beam bounces off this tile, but it does not affect it - exclude it from
         // the animation and from processing.

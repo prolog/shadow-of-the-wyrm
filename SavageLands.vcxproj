@@ -1293,6 +1293,9 @@
     <ClCompile Include="engine\translators\source\ItemTranslator.cpp" />
     <ClCompile Include="engine\translators\source\MapTranslator.cpp" />
     <ClCompile Include="engine\translators\source\StatusAilmentTranslators.cpp" />
+    <ClCompile Include="engine\translators\source\unit_tests\BeamSpellTranslator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
