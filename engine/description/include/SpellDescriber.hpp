@@ -13,6 +13,12 @@ class SpellDescriber : public IDescriber
     std::string describe() const;
 
   protected:
+    void initialize_shape_abbreviation_sids();
+
+    std::string describe_range() const;
+
     CreaturePtr creature;
     Spell spell;
+
+    static std::map<SpellShapeType, std::string> shape_abbreviation_sids;
 };

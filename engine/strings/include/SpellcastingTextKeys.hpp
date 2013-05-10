@@ -9,6 +9,13 @@ class SpellcastingTextKeys
     static const std::string SPELLCASTING_SCREEN_PROMPT;
     static const std::string SPELLCASTING_INSUFFICIENT_POWER;
     static const std::string SPELLCASTING_BONUS_INCREASED;
+    
+    // Range abbreviation SIDs
+    static const std::string SPELLCASTING_TARGET_SELF_ABRV;
+    static const std::string SPELLCASTING_BEAM_ABRV;
+    static const std::string SPELLCASTING_REFLECTIVE_BEAM_ABRV;
+    static const std::string SPELLCASTING_CONE_ABRV;
+    static const std::string SPELLCASTING_BALL_ABRV;
 
   protected:
     SpellcastingTextKeys();

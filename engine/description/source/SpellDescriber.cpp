@@ -2,14 +2,31 @@
 #include "SpellDescriber.hpp"
 #include "Conversion.hpp"
 #include "Skills.hpp"
+#include "SpellcastingTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
 
+map<SpellShapeType, string> SpellDescriber::shape_abbreviation_sids;
+
 SpellDescriber::SpellDescriber(CreaturePtr new_creature, const Spell& new_spell)
 : creature(new_creature), spell(new_spell)
 {
+  initialize_shape_abbreviation_sids();
+}
+
+void SpellDescriber::initialize_shape_abbreviation_sids()
+{
+  BOOST_STATIC_ASSERT(SPELL_SHAPE_LAST == 5);
+
+  shape_abbreviation_sids.clear();
+
+  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_TARGET_SELF, SpellcastingTextKeys::SPELLCASTING_TARGET_SELF_ABRV));
+  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_BEAM, SpellcastingTextKeys::SPELLCASTING_BEAM_ABRV));
+  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_REFLECTIVE_BEAM, SpellcastingTextKeys::SPELLCASTING_REFLECTIVE_BEAM_ABRV));
+  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_CONE, SpellcastingTextKeys::SPELLCASTING_CONE_ABRV));
+  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_BALL, SpellcastingTextKeys::SPELLCASTING_BALL_ABRV));
 }
 
 // The description of the spell for the spellcasting UI screen.
@@ -28,7 +45,7 @@ string SpellDescriber::describe() const
      << " (" << spell_category << ")" 
      << " [" 
              << "#:" << isk.get_castings()
-             << ", " << StringTable::get(TextKeys::RANGE_ABRV) << ":" << spell.get_range()
+             << ", " << StringTable::get(TextKeys::RANGE_ABRV) << ":" << describe_range()
              << ", " << StringTable::get(TextKeys::ARCANA_POINTS_ABRV) << ":" << spell.get_ap_cost()
              << ", +"<< isk.get_bonus().get_base()
      <<  "]";
@@ -36,3 +53,13 @@ string SpellDescriber::describe() const
   return ss.str();
 }
 
+// Describe the range by using the appropriate abbreviation, based on the range
+// and the spell type.
+string SpellDescriber::describe_range() const
+{
+  stringstream ss;
+
+  ss << spell.get_range() << StringTable::get(shape_abbreviation_sids.find(spell.get_shape().get_spell_shape_type())->second);
+
+  return ss.str();
+}
