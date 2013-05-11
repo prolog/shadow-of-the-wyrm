@@ -3,6 +3,7 @@
 #include "ActionTextKeys.hpp"
 #include "BestiaryAction.hpp"
 #include "Conversion.hpp"
+#include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "MessageManager.hpp"
 #include "MenuTitleTextKeys.hpp"
@@ -16,7 +17,7 @@ BestiaryAction::BestiaryAction()
 {
 }
 
-ActionCostValue BestiaryAction::display_creature_information(const string& creature_search_text) const
+ActionCostValue BestiaryAction::display_creature_information(CreaturePtr creature, const string& creature_search_text) const
 {
   string search_text;
   MessageManager& manager = MessageManager::instance();
@@ -25,11 +26,24 @@ ActionCostValue BestiaryAction::display_creature_information(const string& creat
   // details.
   if (creature_search_text.empty())
   {
-    string prompt_message = StringTable::get(ActionTextKeys::ACTION_BESTIARY_WHICH_CREATURE);
+    // If the creature previously searched the bestiary, show that search text
+    // in the message - hitting enter should use that!
+    string last_search_text = creature->get_additional_property(CreatureProperties::CREATURE_PROPERTIES_LAST_BESTIARY_SEARCH);
+
+    string prompt_message = ActionTextKeys::get_bestiary_search_message(last_search_text);
+
     search_text = manager.add_new_message_with_prompt(prompt_message);
     manager.send();
 
     manager.clear_if_necessary();
+
+    if (search_text.empty())
+    {
+      search_text = last_search_text;
+    }
+
+    // Update the "monster memory"
+    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_LAST_BESTIARY_SEARCH, search_text);
   }
 
   CreaturePtr beast = get_bestiary_creature(search_text);

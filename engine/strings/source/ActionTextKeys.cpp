@@ -84,6 +84,19 @@ string ActionTextKeys::get_spellcasting_cancelled_message(const string& creature
   return cancelled_msg;
 }
 
+string ActionTextKeys::get_bestiary_search_message(const string& previous_search_text)
+{
+  string search_msg = StringTable::get(ActionTextKeys::ACTION_BESTIARY_WHICH_CREATURE);
+
+  if (!previous_search_text.empty())
+  {
+    search_msg = StringTable::get(ActionTextKeys::ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE);
+    boost::replace_first(search_msg, "%s", previous_search_text);
+  }
+
+  return search_msg;
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_PICK_UP_NOT_ALLOWED        = "ACTION_PICK_UP_NOT_ALLOWED";
@@ -125,3 +138,4 @@ const string ActionTextKeys::ACTION_FULL_PLAYER                = "ACTION_FULL_PL
 const string ActionTextKeys::ACTION_FULL_MONSTER               = "ACTION_FULL_MONSTER";
 const string ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_PLAYER = "ACTION_SPELLCASTING_CANCELLED_PLAYER";
 const string ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_MONSTER = "ACTION_SPELLCASTING_CANCELLED_MONSTER";
+const string ActionTextKeys::ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE = "ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE";

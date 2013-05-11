@@ -309,7 +309,7 @@ ActionCost ActionManager::bestiary(CreaturePtr creature, const string& creature_
 {
   BestiaryAction bestiary;
 
-  return get_action_cost(creature, bestiary.display_creature_information(creature_search_text));
+  return get_action_cost(creature, bestiary.display_creature_information(creature, creature_search_text));
 }
 
 // Pick up an item, doing any necessary checks first.
