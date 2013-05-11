@@ -3585,6 +3585,74 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="p_02_nether_bolt">
+			<NameSID>NETHER_BOLT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>NETHER_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>NETHER_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<Colour>6</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>4</NumDice>
+				<NumSides>6</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="p_03_chaos_aura">
+			<NameSID>CHAOS_AURA_NAME_SID</NameSID>
+			<PlayerCastMessageSID>CHAOS_AURA_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>CHAOS_AURA_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<Colour>5</Colour>
+			<APCost>12</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>4</Shape>
+			<Damage>
+				<NumDice>3</NumDice>
+				<NumSides>12</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="p_04_nightfire">
+			<NameSID>NIGHTFIRE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>NIGHTFIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>NIGHTFIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<Colour>4</Colour>
+			<APCost>18</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>3</Shape>
+			<Damage>
+				<NumDice>12</NumDice>
+				<NumSides>4</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
+		<Spell id="p_05_veil_of_shadows">
+			<NameSID>VEIL_OF_SHADOWS_NAME_SID</NameSID>
+			<PlayerCastMessageSID>VEIL_OF_SHADOWS_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>VEIL_OF_SHADOWS_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<Colour>4</Colour>
+			<APCost>30</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>4</Shape>
+			<Damage>
+				<NumDice>12</NumDice>
+				<NumSides>10</NumSides>
+				<Type>8</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 	</Spells>
 	<Tiles>
 		<FieldTile>
