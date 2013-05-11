@@ -1,3 +1,4 @@
+#include "CommandKeys.hpp"
 #include "Game.hpp"
 #include "TileSelectionCommandProcessor.hpp"
 
@@ -32,6 +33,10 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
       if (command_name == TileSelectionCommandKeys::CANCEL_TILE_SELECTION)
       {
         tsa->remove_target(creature, ATTACK_TYPE_RANGED);
+      }
+      else if (command_name == CommandKeys::BESTIARY)
+      {
+        result = process_tile_selection_bestiary(creature, tsa);
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
       {
@@ -68,6 +73,34 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_cursor_direct
     
     result.first = true;
     result.second = action_cost;
+  }
+
+  return result;
+}
+
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selection_bestiary(CreaturePtr creature, TileSelectionAction* const tsa)
+{
+  pair<bool, ActionCostValue> result(false, 0);
+
+  string search_text;
+  TilePtr tile = tsa->get_cursor_tile();
+  bool ok_to_consult_bestiary = false;
+
+  if (tile)
+  {
+    CreaturePtr tile_creature = tile->get_creature();
+          
+    if (tile_creature)
+    {
+      search_text = StringTable::get(tile_creature->get_short_description_sid());
+      ok_to_consult_bestiary = true;
+    }
+  }
+
+  if (ok_to_consult_bestiary)
+  {
+    Game& game = Game::instance();
+    game.get_action_manager_ref().bestiary(creature, search_text);
   }
 
   return result;

@@ -5,6 +5,7 @@
 #endif
 
 #include "Conversion.hpp"
+#include "CommandKeys.hpp"
 #include "TileSelectionCommandKeys.hpp"
 #include "TileSelectionKeyboardCommandMap.hpp"
 
@@ -59,6 +60,9 @@ void TileSelectionKeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('l'), TileSelectionCommandKeys::CURSOR_MOVE_EAST));
   command_mapping.insert(make_pair(Integer::to_string('b'), TileSelectionCommandKeys::CURSOR_MOVE_SOUTHWEST));
   command_mapping.insert(make_pair(Integer::to_string('n'), TileSelectionCommandKeys::CURSOR_MOVE_SOUTHEAST));
+
+  // Bestiary can be accessed here as well as on the main map.
+  command_mapping.insert(make_pair(Integer::to_string('B'), CommandKeys::BESTIARY));
 }
 
 KeyboardCommandMap* TileSelectionKeyboardCommandMap::clone()

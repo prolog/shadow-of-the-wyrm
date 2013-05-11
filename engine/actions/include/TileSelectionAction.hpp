@@ -31,6 +31,7 @@ class TileSelectionAction : public IActionManager, ISerializable
     ActionCostValue select_tile(CreaturePtr creature, const std::string& initial_message_sid);
     ActionCostValue select_tile(CreaturePtr creature, const Direction d);
     ActionCostValue select_tile_cancel(CreaturePtr creature);
+    TilePtr get_cursor_tile();
     
     bool is_tile_in_range_and_add_message_if_not(CreaturePtr creature, AttackType attack_type) const;
     
