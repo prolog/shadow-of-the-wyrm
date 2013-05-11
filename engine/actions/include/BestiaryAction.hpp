@@ -5,7 +5,7 @@
 class BestiaryAction : public IActionManager
 {
   public:
-    ActionCostValue display_creature_information(const std::string& creature_search_text) const;
+    ActionCostValue display_creature_information(CreaturePtr creature, const std::string& creature_search_text) const;
     
   protected:
     friend class ActionManager;
