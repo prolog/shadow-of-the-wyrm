@@ -1,4 +1,6 @@
 #include <boost/make_shared.hpp>
+#include "CommandKeys.hpp"
+#include "Commands.hpp"
 #include "Directions.hpp"
 #include "TileSelectionCommands.hpp"
 #include "TileSelectionCommandFactory.hpp"
@@ -55,6 +57,10 @@ CommandPtr TileSelectionCommandFactory::create(const int key, const std::string&
   else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
   {
     command = boost::make_shared<TargetTileCommand>();
+  }
+  else if (command_name == CommandKeys::BESTIARY)
+  {
+    command = boost::make_shared<BestiaryCommand>();
   }
   
   return command;

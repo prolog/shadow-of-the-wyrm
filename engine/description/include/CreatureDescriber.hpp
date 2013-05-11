@@ -8,7 +8,7 @@ class CreatureDescriber : public IDescriber
     CreatureDescriber(CreaturePtr new_creature);
 
     std::string describe() const;
-
+    std::string describe_for_tile_selection() const;
     std::string describe_for_save_file() const;
 
   protected:

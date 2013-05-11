@@ -1,4 +1,5 @@
 #include <sstream>
+#include "ActionTextKeys.hpp"
 #include "CreatureDescriber.hpp"
 #include "Conversion.hpp"
 #include "RaceManager.hpp"
@@ -19,6 +20,18 @@ string CreatureDescriber::describe() const
   if (creature)
   {
     creature_description = StringTable::get(creature->get_description_sid());
+  }
+
+  return creature_description;
+}
+
+string CreatureDescriber::describe_for_tile_selection() const
+{
+  string creature_description = describe();
+
+  if (!creature_description.empty())
+  {
+    creature_description = creature_description + " (" + StringTable::get(ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION) + ")";
   }
 
   return creature_description;

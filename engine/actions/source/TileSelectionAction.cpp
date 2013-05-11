@@ -146,6 +146,22 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
   return command_result.second;
 }
 
+TilePtr TileSelectionAction::get_cursor_tile()
+{
+  TilePtr tile;
+
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+
+  if (map)
+  {
+    MapCursor mc;
+    tile = map->at(mc.get_cursor_location(map));
+  }
+
+  return tile;
+}
+
 ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Direction direction)
 {
   Game& game = Game::instance();
