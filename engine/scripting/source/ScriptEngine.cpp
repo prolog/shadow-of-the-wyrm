@@ -1,3 +1,4 @@
+#include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "GameEnvTextKeys.hpp"
 #include "ItemManager.hpp"
@@ -34,6 +35,7 @@ int set_skill_value(lua_State* ls);
 int get_skill_value(lua_State* ls);
 int RNG_range(lua_State* ls);
 int add_spell_castings(lua_State* ls);
+int gain_experience(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -189,6 +191,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_skill_value", get_skill_value);
   lua_register(L, "RNG_range", RNG_range);
   lua_register(L, "add_spell_castings", add_spell_castings);
+  lua_register(L, "gain_experience", gain_experience);
 }
 
 // Lua API functions:
@@ -627,6 +630,27 @@ int add_spell_castings(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to add_spell_castings");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Add a certain number of experience points to a particular creature.
+int gain_experience(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 2) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+    int experience = lua_tointeger(ls, 2);
+
+    ExperienceManager em;
+    em.gain_experience(creature, experience);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to gain_experience");
     lua_error(ls);
   }
 
