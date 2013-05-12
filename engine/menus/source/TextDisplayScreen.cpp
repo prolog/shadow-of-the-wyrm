@@ -1,3 +1,4 @@
+#include <boost/algorithm/string.hpp>
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
@@ -6,6 +7,7 @@
 #include "TextDisplayScreen.hpp"
 
 using namespace std;
+using namespace boost::algorithm;
 
 TextDisplayScreen::TextDisplayScreen(DisplayPtr new_display, const std::string& new_title_text_sid, const vector<TextDisplayPair>& new_text) : Menu(new_display), text(new_text)
 {
@@ -24,7 +26,14 @@ void TextDisplayScreen::initialize(const string& title_sid)
   // Set the text components.
   BOOST_FOREACH(TextDisplayPair line_pair, text)
   {
-    TextComponentPtr current_line = boost::make_shared<TextComponent>(line_pair.second, line_pair.first);
+    Colour colour = line_pair.first;
+    string text = line_pair.second;
+
+    trim_left(text);
+    trim_right(text);
+
+    TextComponentPtr current_line = boost::make_shared<TextComponent>(text, colour);
+
     components.push_back(current_line);
   }
 
