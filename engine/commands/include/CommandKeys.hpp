@@ -48,6 +48,7 @@ class CommandKeys
     static const std::string RUN_SCRIPT;
     static const std::string CAST_SPELL;
     static const std::string BESTIARY;
+    static const std::string EVOKE;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

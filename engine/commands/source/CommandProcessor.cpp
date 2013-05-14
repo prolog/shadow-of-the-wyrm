@@ -163,6 +163,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
         string prompt_for_creature;
         ac = game.actions.bestiary(creature, prompt_for_creature);
       }
+      else if (command_name == CommandKeys::EVOKE)
+      {
+        ac = game.actions.evoke(creature);
+      }
     }
   }
   

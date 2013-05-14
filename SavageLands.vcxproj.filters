@@ -601,6 +601,9 @@
     <Filter Include="Source Files\engine\commands\magic\source\unit_tests">
       <UniqueIdentifier>{6ec8bfbf-2811-4fd5-80ae-e06f7ebf7ede}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\effects\source\unit_tests">
+      <UniqueIdentifier>{2da0ae58-169d-4726-9457-2c3d9056e3cd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2459,6 +2462,12 @@
     </ClInclude>
     <ClInclude Include="world\magic\include\SpellConstants.hpp">
       <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\effects\include\TeleportEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\include\EvokeAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4657,6 +4666,15 @@
     </ClCompile>
     <ClCompile Include="engine\translators\source\unit_tests\BeamSpellTranslator_test.cpp">
       <Filter>Source Files\engine\translators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\TeleportEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\EvokeAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\unit_tests\EffectFactory_test.cpp">
+      <Filter>Source Files\engine\effects\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -116,6 +116,7 @@
     <ClInclude Include="engine\actions\include\DeityActionManager.hpp" />
     <ClInclude Include="engine\actions\include\DropAction.hpp" />
     <ClInclude Include="engine\actions\include\EquipmentManager.hpp" />
+    <ClInclude Include="engine\actions\include\EvokeAction.hpp" />
     <ClInclude Include="engine\actions\include\FeatureAction.hpp" />
     <ClInclude Include="engine\actions\include\FoodAction.hpp" />
     <ClInclude Include="engine\actions\include\IActionManager.hpp" />
@@ -279,6 +280,7 @@
     <ClInclude Include="engine\effects\include\HealingEffect.hpp" />
     <ClInclude Include="engine\effects\include\IdentifyEffect.hpp" />
     <ClInclude Include="engine\effects\include\NullEffect.hpp" />
+    <ClInclude Include="engine\effects\include\TeleportEffect.hpp" />
     <ClInclude Include="engine\events\include\DeathEventFunctions.hpp" />
     <ClInclude Include="engine\events\include\EventFunctions.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
@@ -743,6 +745,7 @@
     <ClCompile Include="engine\actions\source\DeityActionManager.cpp" />
     <ClCompile Include="engine\actions\source\DropAction.cpp" />
     <ClCompile Include="engine\actions\source\EquipmentManager.cpp" />
+    <ClCompile Include="engine\actions\source\EvokeAction.cpp" />
     <ClCompile Include="engine\actions\source\FeatureAction.cpp" />
     <ClCompile Include="engine\actions\source\FoodAction.cpp" />
     <ClCompile Include="engine\actions\source\InventoryManager.cpp" />
@@ -1014,6 +1017,10 @@
     <ClCompile Include="engine\effects\source\HealingEffect.cpp" />
     <ClCompile Include="engine\effects\source\IdentifyEffect.cpp" />
     <ClCompile Include="engine\effects\source\NullEffect.cpp" />
+    <ClCompile Include="engine\effects\source\TeleportEffect.cpp" />
+    <ClCompile Include="engine\effects\source\unit_tests\EffectFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\events\source\DeathEventFunctions.cpp" />
     <ClCompile Include="engine\events\source\EventFunctions.cpp" />
     <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp" />

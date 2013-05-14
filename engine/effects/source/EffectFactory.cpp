@@ -5,6 +5,7 @@
 #include "IdentifyEffect.hpp"
 #include "NullEffect.hpp"
 #include "FruitJuiceEffect.hpp"
+#include "TeleportEffect.hpp"
 
 using namespace std;
 
@@ -18,11 +19,10 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
+  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 6);
+
   EffectPtr effect;
 
-  // JCD TODO: Create a unit test for this function that iterates
-  // over the range of effect types, and ensures that a null 
-  // shared_ptr isn't produced.
   switch(effect_type)
   {
     case EFFECT_TYPE_HEALING:
@@ -37,6 +37,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
     case EFFECT_TYPE_FRUIT_JUICE:
       effect = boost::make_shared<FruitJuiceEffect>();
       break;
+    case EFFECT_TYPE_TELEPORT:
+      effect = boost::make_shared<TeleportEffect>();
+      break;
     case EFFECT_TYPE_NULL:
     default:
       effect = boost::make_shared<NullEffect>();
@@ -46,3 +49,6 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
   return effect;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/EffectFactory_test.cpp"
+#endif

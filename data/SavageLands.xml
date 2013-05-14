@@ -5122,6 +5122,24 @@
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
 		</Tools>
+		<Wands>
+			<Wand id="teleport_wand">
+				<DescriptionSID>TELEPORT_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_TELEPORT_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>TELEPORT_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_TELEPORT_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>400</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>5</Effect>
+			</Wand>
+		</Wands>
 		<MiscItems>
 			<Item id="dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>

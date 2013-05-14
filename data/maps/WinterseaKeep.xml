@@ -136,6 +136,13 @@
 		</Creatures>
 		<Items>
 			<Placement>
+				<ID>teleport_wand</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>8</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>silver_branch</ID>
 				<Coord>
 					<Row>16</Row>

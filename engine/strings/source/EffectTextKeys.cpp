@@ -23,6 +23,11 @@ string EffectTextKeys::get_ether_effect_message(const string& monster_desc_sid, 
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_ETHER_PLAYER, EFFECT_ETHER_MONSTER);
 }
 
+string EffectTextKeys::get_teleport_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_TELEPORT_PLAYER, EFFECT_TELEPORT_MONSTER);
+}
+
 string EffectTextKeys::get_general_effect_message(const string& monster_desc_sid, const bool is_player, const string& player_msg_sid, const string& monster_msg_sid)
 {
   string message = StringTable::get(player_msg_sid);
@@ -57,3 +62,5 @@ const string EffectTextKeys::EFFECT_IDENTIFY_TYPE = "EFFECT_IDENTIFY_TYPE";
 const string EffectTextKeys::EFFECT_IDENTIFY_ITEM = "EFFECT_IDENTIFY_ITEM";
 const string EffectTextKeys::EFFECT_ETHER_PLAYER = "EFFECT_ETHER_PLAYER";
 const string EffectTextKeys::EFFECT_ETHER_MONSTER = "EFFECT_ETHER_MONSTER";
+const string EffectTextKeys::EFFECT_TELEPORT_PLAYER = "EFFECT_TELEPORT_PLAYER";
+const string EffectTextKeys::EFFECT_TELEPORT_MONSTER = "EFFECT_TELEPORT_MONSTER";

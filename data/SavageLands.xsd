@@ -134,6 +134,7 @@
 			<xs:element ref="tns:Scrolls" minOccurs="0"/>
 			<xs:element ref="tns:Currencies" minOccurs="0"/>
 			<xs:element ref="tns:Tools" minOccurs="0"/>
+			<xs:element ref="tns:Wands" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -610,6 +611,13 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Wands">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Wand" type="tns:Wand" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="MiscItems">
 	<xs:complexType>
 		<xs:sequence>
@@ -729,6 +737,15 @@
 <xs:complexType name="Potion">
 	<xs:complexContent>
 		<xs:extension base="tns:Consumable">
+			<xs:sequence>
+				<xs:element name="Effect" type="tns:EffectType"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Wand">
+	<xs:complexContent>
+		<xs:extension base="tns:Item">
 			<xs:sequence>
 				<xs:element name="Effect" type="tns:EffectType"/>
 			</xs:sequence>
@@ -1049,11 +1066,12 @@
 				Identify = 2
 				Ether (sweet; restore AP) = 3
 				Fruit Juice (sweet) = 4
+				Teleport = 5
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="4"/>
+		<xs:maxInclusive value="5"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

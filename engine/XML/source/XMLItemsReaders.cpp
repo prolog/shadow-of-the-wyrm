@@ -122,6 +122,15 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
       igv_map.insert(tools.second.begin(), tools.second.end());
     }
 
+    XMLNode wands_node = XMLUtils::get_next_element_by_local_name(items_node, "Wands");
+
+    if (!wands_node.is_null())
+    {
+      pair<ItemMap, GenerationValuesMap> wands = get_wands(wands_node);
+      items.insert(wands.first.begin(), wands.first.end());
+      igv_map.insert(wands.second.begin(), wands.second.end());
+    }
+
     XMLNode misc_items_node = XMLUtils::get_next_element_by_local_name(items_node, "MiscItems");
     
     if (!misc_items_node.is_null())
@@ -444,4 +453,29 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_tools(const XMLNode& tool
   tools.first = tools_map;
   tools.second = igv_map;
   return tools;
+}
+
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_wands(const XMLNode& wands_node)
+{
+  pair<ItemMap, GenerationValuesMap> wands;
+  ItemMap wands_map;
+  GenerationValuesMap igv_map;
+
+  if (!wands_node.is_null())
+  {
+    vector<XMLNode> wands_nodes = XMLUtils::get_elements_by_local_name(wands_node, "Wand");
+
+    BOOST_FOREACH(XMLNode node, wands_nodes)
+    {
+      WandPtr wand = boost::make_shared<Wand>();
+      GenerationValues igv;
+      wand_reader.parse(wand, igv, node);
+      wands_map.insert(make_pair(wand->get_id(), wand));
+      igv_map.insert(make_pair(wand->get_id(), igv));
+    }
+  }
+
+  wands.first = wands_map;
+  wands.second = igv_map;
+  return wands;
 }

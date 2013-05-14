@@ -72,7 +72,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.clear();
 
   command_mapping.insert(make_pair(Integer::to_string('Q'), CommandKeys::QUIT));
-  command_mapping.insert(make_pair(Integer::to_string('v'), CommandKeys::VERSION));
+  command_mapping.insert(make_pair(Integer::to_string('V'), CommandKeys::VERSION));
   command_mapping.insert(make_pair(Integer::to_string('T'), CommandKeys::GAME_DATE_TIME));
   command_mapping.insert(make_pair(Integer::to_string('s'), CommandKeys::SEARCH));
   command_mapping.insert(make_pair(Integer::to_string('5'), CommandKeys::SEARCH));
@@ -121,6 +121,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUEST_LIST));
   command_mapping.insert(make_pair(Integer::to_string('z'), CommandKeys::CAST_SPELL));
   command_mapping.insert(make_pair(Integer::to_string('B'), CommandKeys::BESTIARY));
+  command_mapping.insert(make_pair(Integer::to_string('v'), CommandKeys::EVOKE));
   
   // JCD FIXME: When adding Unix support, update this to include whatever
   // debug flag is needed.
