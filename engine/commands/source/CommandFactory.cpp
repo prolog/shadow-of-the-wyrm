@@ -157,6 +157,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<BestiaryCommand>();
   }
+  else if (command_name == CommandKeys::EVOKE)
+  {
+    command = boost::make_shared<EvokeCommand>();
+  }
 
   return command;
 }

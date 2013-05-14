@@ -10,6 +10,7 @@
 #include "DateTimeAction.hpp"
 #include "DropAction.hpp"
 #include "EquipmentManager.hpp"
+#include "EvokeAction.hpp"
 #include "FeatureAction.hpp"
 #include "FileWriter.hpp"
 #include "FoodAction.hpp"
@@ -310,6 +311,13 @@ ActionCost ActionManager::bestiary(CreaturePtr creature, const string& creature_
   BestiaryAction bestiary;
 
   return get_action_cost(creature, bestiary.display_creature_information(creature, creature_search_text));
+}
+
+ActionCost ActionManager::evoke(CreaturePtr creature)
+{
+  EvokeAction ea;
+
+  return get_action_cost(creature, ea.evoke(creature, this));
 }
 
 // Pick up an item, doing any necessary checks first.

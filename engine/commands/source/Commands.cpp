@@ -318,3 +318,13 @@ BestiaryCommand::BestiaryCommand()
 BestiaryCommand::~BestiaryCommand()
 {
 }
+
+// E'v'oke (zap) a wand
+EvokeCommand::EvokeCommand()
+: Command(CommandKeys::EVOKE)
+{
+}
+
+EvokeCommand::~EvokeCommand()
+{
+}

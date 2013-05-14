@@ -4,10 +4,11 @@
 class EffectTextKeys
 {
   public:
-    static std::string get_healing_effect_message(const std::string& monster_desc_sid, bool is_player);
-    static std::string get_ether_effect_message(const std::string& monster_desc_sid, bool is_player);
+    static std::string get_healing_effect_message(const std::string& monster_desc_sid, const bool is_player);
+    static std::string get_ether_effect_message(const std::string& monster_desc_sid, const bool is_player);
     static std::string get_identify_individual_item_message(const std::string& unid_usage_desc_sid, const std::string& id_usage_desc_sid);
-  
+    static std::string get_teleport_effect_message(const std::string& monster_desc_sid, const bool is_player);
+
     static const std::string EFFECT_NULL;
     static const std::string EFFECT_SWEET_TASTE;
     static const std::string EFFECT_FRUIT_JUICE;
@@ -25,5 +26,7 @@ class EffectTextKeys
     static const std::string EFFECT_ETHER_PLAYER;
     static const std::string EFFECT_ETHER_MONSTER;
     static const std::string EFFECT_IDENTIFY_ITEM;
+    static const std::string EFFECT_TELEPORT_PLAYER;
+    static const std::string EFFECT_TELEPORT_MONSTER;
 };
 

@@ -220,3 +220,10 @@ class BestiaryCommand : public Command
     BestiaryCommand();
     ~BestiaryCommand();
 };
+
+class EvokeCommand : public Command
+{
+  public:
+    EvokeCommand();
+    ~EvokeCommand();
+};

@@ -93,6 +93,9 @@ class ActionManager : public ISerializable
     ActionCost bestiary(CreaturePtr creature);
     ActionCost bestiary(CreaturePtr creature, const std::string& creature_search_text);
 
+    // Evoke/zap a wand.
+    ActionCost evoke(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

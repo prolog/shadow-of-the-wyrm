@@ -43,6 +43,7 @@ class XMLItemsReader
     std::pair<ItemMap, GenerationValuesMap> get_scrolls(const XMLNode& scrolls_node);
     std::pair<ItemMap, GenerationValuesMap> get_currencies(const XMLNode& currencies_node);
     std::pair<ItemMap, GenerationValuesMap> get_tools(const XMLNode& tools_node);
+    std::pair<ItemMap, GenerationValuesMap> get_wands(const XMLNode& wands_node);
     
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;
