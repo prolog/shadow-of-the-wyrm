@@ -13,6 +13,15 @@ Tool::~Tool()
 {
 }
 
+bool Tool::operator==(const Tool& rhs) const
+{
+  bool result = Item::operator==(rhs);
+
+  result = result && (lock_id == rhs.lock_id);
+
+  return result;
+}
+
 void Tool::set_lock_id(const string& new_lock_id)
 {
   lock_id = new_lock_id;

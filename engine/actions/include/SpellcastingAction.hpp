@@ -39,9 +39,5 @@ class SpellcastingAction : public IActionManager
     // Update the spell's bonus information.
     void update_spell_bonus(CreaturePtr caster, const Spell& spell) const;
 
-    // Get and process the spell's animation, followed by the spell damage and
-    // effect.
-    void process_animation_and_spell(SpellShapeProcessorPtr spell_processor, CreaturePtr caster, MapPtr map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& spell) const;
-    
     ActionCostValue get_action_cost_value() const;
 };

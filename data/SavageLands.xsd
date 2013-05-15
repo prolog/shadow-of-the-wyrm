@@ -748,6 +748,8 @@
 		<xs:extension base="tns:Item">
 			<xs:sequence>
 				<xs:element name="Effect" type="tns:EffectType"/>
+				<xs:element name="BeamType" type="tns:WandSpellShape"/>
+				<xs:element name="Range" type="xs:unsignedInt"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -1148,6 +1150,13 @@
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
 		<xs:maxInclusive value="4"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="WandSpellShape">
+	<xs:annotation><xs:documentation>Wands can only be beam-type shapes.</xs:documentation></xs:annotation>
+	<xs:restriction base="tns:SpellShape">
+		<xs:enumeration value="1"/>
+		<xs:enumeration value="2"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TrainedWeaponSkill">

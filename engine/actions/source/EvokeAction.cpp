@@ -6,6 +6,9 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManager.hpp"
+#include "SpellcastingProcessor.hpp"
+#include "SpellShapeFactory.hpp"
+#include "SpellShapeProcessorFactory.hpp"
 #include "EvokeAction.hpp"
 
 using namespace std;
@@ -65,16 +68,35 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
 
       if (evoke_successful)
       {
+        Game& game = Game::instance();
+        MapPtr map = game.get_current_map();
+        Coordinate caster_coord = map->get_location(creature->get_id());
+
+        // Create a temporary spell based on the wand's characteristics.
+        Spell wand_spell;
+        wand_spell.set_effect(wand->get_effect_type());
+        wand_spell.set_range(wand->get_range());
+        wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type()));
+
         // Add a message about evoking.
         add_evocation_message(creature, wand, item_id);
       
         // Reduce the charges on the wand.
         // ...
 
-        // Process the effect.  This will do any necessary updates to the creature, and will also
+        // Process the effect.  This will do any necessary updates/damage to the creature, and will also
         // add a status message based on whether the item was identified.
-        bool effect_identified = wand_effect->effect(creature, am, wand->get_status());
-      
+        SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(wand_spell.get_shape().get_spell_shape_type());
+        bool effect_identified = false;
+
+        if (spell_processor)
+        {
+          // Use the generic spell processor, which is also used for "regular"
+          // spellcasting.
+          SpellcastingProcessor sp;
+          effect_identified = sp.process(spell_processor, creature, map, caster_coord, evoke_result.second, wand_spell);
+        }
+
         // Was the item identified?
         if (effect_identified)
         {        

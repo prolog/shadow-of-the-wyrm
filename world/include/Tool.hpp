@@ -6,6 +6,8 @@ class Tool : public Item
   public:
     Tool();
     ~Tool();
+
+    bool operator==(const Tool& rhs) const;
     
     void set_lock_id(const std::string& new_lock_id);
     std::string get_lock_id() const;

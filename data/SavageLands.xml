@@ -5130,7 +5130,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_TELEPORT_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>400</Value>
 				<Weight><Pounds>1</Pounds></Weight>
-				<Material>2</Material>
+				<Material>8</Material>
 				<TextDetails>
 					<Symbol>\</Symbol>
 					<Colour>3</Colour>
@@ -5138,6 +5138,8 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Effect>5</Effect>
+				<BeamType>1</BeamType>
+				<Range>1</Range>
 			</Wand>
 		</Wands>
 		<MiscItems>
