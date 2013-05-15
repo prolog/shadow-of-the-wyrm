@@ -92,8 +92,7 @@ MoveDownLevelCommand::~MoveDownLevelCommand()
 AttackCommand::AttackCommand(const Direction d)
 : DirectionalCommand(d)
 {
-  string name  = DirectionEnum::to_attack_string(d);
-  command_name = name;
+  command_name = DirectionEnum::to_attack_string(d);
 }
 
 AttackCommand::~AttackCommand()
@@ -102,7 +101,7 @@ AttackCommand::~AttackCommand()
 
 // Search
 SearchCommand::SearchCommand()
-: Command(CommandKeys::SEARCH)
+: MovementCommand(DIRECTION_NULL)
 {
 }
 

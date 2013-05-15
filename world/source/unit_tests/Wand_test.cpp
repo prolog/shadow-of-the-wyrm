@@ -13,6 +13,8 @@ TEST(SL_World_Wand, saveload)
 
   wand.set_quantity(2);
   wand.set_effect_type(EFFECT_TYPE_IDENTIFY);
+  wand.set_range(12);
+  wand.set_spell_shape_type(SPELL_SHAPE_REFLECTIVE_BEAM);
 
   ostringstream ss;
 

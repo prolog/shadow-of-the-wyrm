@@ -26,7 +26,7 @@ ActionCost CommandProcessor::process(CreaturePtr creature, CommandPtr command, D
 
     DirectionalCommand* d_command = dynamic_cast<DirectionalCommand*>(raw_command);
 
-    if (d_command)
+    if (d_command && !(d_command->get_direction() == DIRECTION_NULL) /* search is a special case */)
     {
       return process_directional_command(creature, d_command, display);
     } 

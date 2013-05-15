@@ -17,6 +17,12 @@ void XMLWandReader::parse(WandPtr wand, GenerationValues& gv, const XMLNode& wan
     
     EffectType effect_type  = static_cast<EffectType>(XMLUtils::get_child_node_int_value(wand_node, "Effect", EFFECT_TYPE_NULL));
     wand->set_effect_type(effect_type); 
+
+    uint range = XMLUtils::get_child_node_int_value(wand_node, "Range");
+    wand->set_range(range);
+
+    SpellShapeType spell_shape = static_cast<SpellShapeType>(XMLUtils::get_child_node_int_value(wand_node, "BeamType", SPELL_SHAPE_BEAM));
+    wand->set_spell_shape_type(spell_shape);
   }
 }
 

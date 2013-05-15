@@ -60,7 +60,7 @@ class MoveDownLevelCommand : public Command
     ~MoveDownLevelCommand();
 };
 
-class SearchCommand : public Command
+class SearchCommand : public MovementCommand
 {
   public:
     SearchCommand();

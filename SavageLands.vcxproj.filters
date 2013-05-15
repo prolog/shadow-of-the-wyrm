@@ -2469,6 +2469,9 @@
     <ClInclude Include="engine\actions\include\EvokeAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\magic\include\SpellcastingProcessor.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4675,6 +4678,9 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\unit_tests\EffectFactory_test.cpp">
       <Filter>Source Files\engine\effects\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\SpellcastingProcessor.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

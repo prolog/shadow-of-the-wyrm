@@ -13,6 +13,7 @@
 #include "SpellBonusUpdater.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "SpellSelectionScreen.hpp"
+#include "SpellcastingProcessor.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "StringTable.hpp"
 
@@ -162,7 +163,8 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       
         if (spell_processor)
         {
-          process_animation_and_spell(spell_processor, creature, current_map, caster_coord, spell_direction, spell);
+          SpellcastingProcessor sp;
+          sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell);
         }
 
         // Now that the spell has been cast, update the spell bonus information
@@ -336,22 +338,6 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
 
   pair<bool, Direction> direction_status(direction_conversion_ok, direction);
   return direction_status;
-}
-
-void SpellcastingAction::process_animation_and_spell(SpellShapeProcessorPtr spell_processor, CreaturePtr caster, MapPtr current_map, const Coordinate& caster_coord, const Direction spell_direction, const Spell& spell) const
-{
-  Game& game = Game::instance();
-
-  // Get the affected tiles and the animation.
-  pair<vector<TilePtr>, Animation> affected_tiles_and_animation = spell_processor->get_affected_tiles_and_animation_for_spell(current_map, caster_coord, spell_direction, spell);
-  vector<TilePtr> affected_tiles = affected_tiles_and_animation.first;
-  Animation spell_animation = affected_tiles_and_animation.second;
-          
-  // Draw the animation.
-  game.get_display()->draw_animation(spell_animation);
-
-  // Apply the damage, effects, etc, to the affected tiles.
-  spell_processor->process_damage_and_effect(caster, affected_tiles, spell, &game.get_action_manager_ref());
 }
 
 // Process spellcasting selections on the Cast Spells screen. Return false
