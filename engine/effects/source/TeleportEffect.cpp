@@ -3,6 +3,7 @@
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "MessageManager.hpp"
 #include "RNG.hpp"
 #include "TeleportEffect.hpp"
@@ -53,6 +54,9 @@ bool TeleportEffect::teleport(CreaturePtr creature)
   int rows = dim.get_y();
   int cols = dim.get_x();
 
+  // The creature's original tile.
+  TilePtr old_tile = map->at(map->get_location(creature->get_id()));
+
   bool teleported = false;
 
   // Make a number of attempts to teleport.
@@ -66,8 +70,13 @@ bool TeleportEffect::teleport(CreaturePtr creature)
 
     if (tile && !tile->get_creature() && !tile->get_is_blocking(creature))
     {
-      map->add_or_update_location(creature->get_id(), c);
+      MapUtils::add_or_update_location(map, creature, c, old_tile);
       teleported = true;
+
+      // Originally, I didn't have the break statement below.
+      // End result?  Lots of player shared_ptrs all over the map!
+      // Hilarity ensues!
+      break;
     }
   }
 
