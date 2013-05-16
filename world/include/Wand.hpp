@@ -15,6 +15,10 @@ class Wand : public Item
 
     void set_spell_shape_type(const SpellShapeType new_shape_type);
     SpellShapeType get_spell_shape_type() const;
+
+    void reset_charges();
+    void set_charges(const uint new_charges);
+    uint get_charges() const;
     
     Item* clone();
 
@@ -24,6 +28,7 @@ class Wand : public Item
   protected:
     uint range;
     SpellShapeType shape;
+    uint charges;
 
   private:
     ClassIdentifier internal_class_identifier() const;
