@@ -1,7 +1,19 @@
 #include "Wand.hpp"
+#include "RNG.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
+
+// Only ever referenced by Wand's internals, so kept in the CPP file for now.
+class WandConstants
+{
+  public:
+    static const int MIN_CHARGES;
+    static const int MAX_CHARGES;
+};
+
+const int WandConstants::MIN_CHARGES = 2;
+const int WandConstants::MAX_CHARGES = 6;
 
 Wand::Wand()
 {
@@ -9,6 +21,7 @@ Wand::Wand()
   symbol ='\\';
   range = 0;
   shape = SPELL_SHAPE_BEAM;
+  charges = 0;
 }
 
 Wand::~Wand()
@@ -21,6 +34,7 @@ bool Wand::operator==(const Wand& rhs) const
 
   result = result && (range == rhs.range);
   result = result && (shape == rhs.shape);
+  result = result && (charges == rhs.charges);
 
   return result;
 }
@@ -45,9 +59,28 @@ SpellShapeType Wand::get_spell_shape_type() const
   return shape;
 }
 
+void Wand::reset_charges()
+{
+  charges = RNG::range(WandConstants::MIN_CHARGES, WandConstants::MAX_CHARGES);
+}
+
+void Wand::set_charges(const uint new_charges)
+{
+  charges = new_charges;
+}
+
+uint Wand::get_charges() const
+{
+  return charges;
+}
+
 Item* Wand::clone()
 {
-  return new Wand(*this);
+  Wand* new_wand = new Wand(*this);
+
+  reset_charges();
+
+  return new_wand;
 }
 
 bool Wand::serialize(ostream& stream)
@@ -56,6 +89,7 @@ bool Wand::serialize(ostream& stream)
 
   Serialize::write_uint(stream, range);
   Serialize::write_enum(stream, shape);
+  Serialize::write_uint(stream, charges);
 
   return true;
 }
@@ -66,6 +100,7 @@ bool Wand::deserialize(istream& stream)
 
   Serialize::read_uint(stream, range);
   Serialize::read_enum(stream, shape);
+  Serialize::read_uint(stream, charges);
 
   return true;
 }
