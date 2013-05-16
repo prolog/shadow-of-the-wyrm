@@ -115,21 +115,19 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
   return action_cost_value;
 }
 
-void EvokeAction::add_evocation_message(CreaturePtr creature, WandPtr potion, const ItemIdentifier& item_id)
+void EvokeAction::add_evocation_message(CreaturePtr creature, WandPtr wand, const ItemIdentifier& item_id)
 {
-  /*
   EffectPtr effect = EffectFactory::create_effect(wand->get_effect_type());
   string base_id = wand->get_base_id();
   
   // Get "You/monster evoke a wand" message
-//  string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description_sid(base_id), creature->get_is_player());
+  string evoke_message = ActionTextKeys::get_evoke_message(creature->get_description_sid(), item_id.get_appropriate_usage_description_sid(base_id), creature->get_is_player());
   
   // Display an appropriate message
   MessageManager& manager = MessageManager::instance();
   
-  manager.add_new_message(quaff_message);
+  manager.add_new_message(evoke_message);
   manager.send();
-  */
 }
 
 // Get the basic cost of evoking a wand.
