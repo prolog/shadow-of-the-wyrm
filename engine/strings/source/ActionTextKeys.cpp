@@ -30,6 +30,11 @@ string ActionTextKeys::get_general_action_message(const string& desc_sid, const 
   return message;
 }
 
+string ActionTextKeys::get_evoke_message(const string& desc_sid, const string& wand_desc_sid, const bool is_player)
+{
+  return get_general_action_message(desc_sid, wand_desc_sid, ACTION_EVOKE_PLAYER, ACTION_EVOKE_MONSTER, is_player);
+}
+
 string ActionTextKeys::get_quaff_message(const string& desc_sid, const string& potion_desc_sid, const bool is_player)
 {
   return get_general_action_message(desc_sid, potion_desc_sid, ACTION_QUAFF_PLAYER, ACTION_QUAFF_MONSTER, is_player);
@@ -128,6 +133,8 @@ const string ActionTextKeys::ACTION_HANDLE_LOCK_NO_KEY         = "ACTION_HANDLE_
 const string ActionTextKeys::ACTION_BESTIARY_WHICH_CREATURE    = "ACTION_BESTIARY_WHICH_CREATURE";
 const string ActionTextKeys::ACTION_BESTIARY_NO_SUCH_CREATURE_EXISTS = "ACTION_BESTIARY_NO_SUCH_CREATURE_EXISTS";
 
+const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
+const string ActionTextKeys::ACTION_EVOKE_MONSTER              = "ACTION_EVOKE_MONSTER";
 const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_PLAYER";
 const string ActionTextKeys::ACTION_QUAFF_MONSTER              = "ACTION_QUAFF_MONSTER";
 const string ActionTextKeys::ACTION_READ_PLAYER                = "ACTION_READ_PLAYER";
