@@ -27,3 +27,16 @@ TEST(SL_World_Wand, saveload)
 
   EXPECT_TRUE(wand == wand2);
 }
+
+TEST(SL_World_Wand, no_effect_when_zero_charges)
+{
+  Wand wand;
+  wand.set_effect_type(EFFECT_TYPE_TELEPORT);
+  wand.set_charges(14);
+
+  EXPECT_EQ(EFFECT_TYPE_TELEPORT, wand.get_effect_type());
+
+  wand.set_charges(0);
+
+  EXPECT_EQ(EFFECT_TYPE_NULL, wand.get_effect_type());
+}

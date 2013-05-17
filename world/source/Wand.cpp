@@ -74,6 +74,18 @@ uint Wand::get_charges() const
   return charges;
 }
 
+EffectType Wand::get_effect_type() const
+{
+  if (charges > 0)
+  {
+    return effect;
+  }
+  else
+  {
+    return EFFECT_TYPE_NULL;
+  }
+}
+
 Item* Wand::clone()
 {
   Wand* new_wand = new Wand(*this);

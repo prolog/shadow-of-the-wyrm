@@ -19,6 +19,9 @@ class Wand : public Item
     void reset_charges();
     void set_charges(const uint new_charges);
     uint get_charges() const;
+
+    // Wands return a null effect type when they have no charges.
+    virtual EffectType get_effect_type() const;
     
     Item* clone();
 
