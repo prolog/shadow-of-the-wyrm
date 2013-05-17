@@ -82,7 +82,11 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
         add_evocation_message(creature, wand, item_id);
       
         // Reduce the charges on the wand.
-        // ...
+        uint charges = wand->get_charges();
+        if (charges > 0)
+        {
+          wand->set_charges(charges-1);
+        }
 
         // Process the effect.  This will do any necessary updates/damage to the creature, and will also
         // add a status message based on whether the item was identified.
