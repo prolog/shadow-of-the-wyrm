@@ -21,7 +21,8 @@ Wand::Wand()
   symbol ='\\';
   range = 0;
   shape = SPELL_SHAPE_BEAM;
-  charges = 0;
+  
+  reset_charges();
 }
 
 Wand::~Wand()
