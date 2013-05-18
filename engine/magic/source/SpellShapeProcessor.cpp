@@ -26,10 +26,10 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
 
   BOOST_FOREACH(TilePtr tile, affected_tiles)
   {
-    apply_damage(caster, tile, spell, am);
+    bool damage_identified = apply_damage(caster, tile, spell, am);
     bool effect_identified = apply_effect(caster, tile, spell, am);
 
-    if (effect_identified && !spell_identified)
+    if ((damage_identified || effect_identified) && !spell_identified)
     {
       spell_identified = true;
     }
@@ -39,14 +39,33 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
 }
 
 // Apply a spell's damage to a particular tile.
-void SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am)
+bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am)
 {
+  bool spell_identified = false;
+
   CreaturePtr tile_creature = tile->get_creature();
   if (tile && spell.get_has_damage() && tile_creature)
   {
     CombatManager cm;
-    cm.attack(caster, tile_creature, ATTACK_TYPE_MAGICAL);
+
+    if (spell.get_allows_bonus())
+    {
+      cm.attack(caster, tile_creature, ATTACK_TYPE_MAGICAL, true);
+    }
+    else
+    {
+      // If the spell doesn't allow a bonus, it's an adhoc spell not present
+      // in the game's list, and so the magical damage calculator isn't
+      // appropriate.  Pass the damage directly to the combat manager.
+      DamagePtr dmg = boost::make_shared<Damage>(spell.get_damage());
+      cm.attack(caster, tile_creature, ATTACK_TYPE_MAGICAL, false, dmg);
+    }
+
+
+    spell_identified = true;
   }
+
+  return spell_identified;
 }
 
 // Apply a spell effect to a particular tile.

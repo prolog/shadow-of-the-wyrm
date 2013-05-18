@@ -5135,11 +5135,33 @@
 					<Symbol>\</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Effect>5</Effect>
 				<BeamType>1</BeamType>
 				<Range>1</Range>
+			</Wand>
+			<Wand id="frost_wand">
+				<DescriptionSID>FROST_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FROST_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FROST_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FROST_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>250</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>12</NumSides>
+					<Type>4</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
 			</Wand>
 		</Wands>
 		<MiscItems>

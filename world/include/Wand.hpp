@@ -1,4 +1,5 @@
 #pragma once
+#include "Damage.hpp"
 #include "Item.hpp"
 #include "SpellTypes.hpp"
 
@@ -16,6 +17,12 @@ class Wand : public Item
     void set_spell_shape_type(const SpellShapeType new_shape_type);
     SpellShapeType get_spell_shape_type() const;
 
+    void set_has_damage(const bool new_has_damage);
+    bool get_has_damage() const;
+
+    void set_damage(const Damage& new_damage);
+    Damage get_damage() const;
+
     void reset_charges();
     void set_charges(const uint new_charges);
     uint get_charges() const;
@@ -31,6 +38,8 @@ class Wand : public Item
   protected:
     uint range;
     SpellShapeType shape;
+    bool has_damage;
+    Damage damage;
     uint charges;
 
   private:

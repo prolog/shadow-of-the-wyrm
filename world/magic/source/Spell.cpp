@@ -8,7 +8,8 @@ Spell::Spell()
   ap_cost(0), 
   speed(1), 
   range(0), 
-  has_damage(false), 
+  has_damage(false),
+  allows_bonus(true),
   effect(EFFECT_TYPE_NULL)
 {
 }
@@ -29,6 +30,7 @@ bool Spell::operator==(const Spell& spell) const
   result = result && (shape == spell.shape);
   result = result && (has_damage == spell.has_damage);
   result = result && (damage == spell.damage);
+  result = result && (allows_bonus == spell.allows_bonus);
   result = result && (effect == spell.effect);
 
   return result;
@@ -152,6 +154,16 @@ void Spell::set_damage(const Damage& new_damage)
 Damage Spell::get_damage() const
 {
   return damage;
+}
+
+void Spell::set_allows_bonus(const bool new_allows_bonus)
+{
+  allows_bonus = new_allows_bonus;
+}
+
+bool Spell::get_allows_bonus() const
+{
+  return allows_bonus;
 }
 
 void Spell::set_effect(const EffectType new_effect)

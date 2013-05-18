@@ -52,6 +52,12 @@ class Spell
     void set_damage(const Damage& new_damage);
     Damage get_damage() const;
 
+    // Does the spell use a creature's bonus (a proper, learned spell that
+    // will be present in the game's spell list), or not (an ad-hoc spell,
+    // one created for use by wands, etc., where the player gets no bonus).
+    void set_allows_bonus(const bool new_allows_bonus);
+    bool get_allows_bonus() const;
+
     void set_effect(const EffectType new_effect);
     EffectType get_effect() const;
 
@@ -66,6 +72,7 @@ class Spell
     int speed;
     uint range;
     SpellShape shape;
+    bool allows_bonus;
     EffectType effect;
 
     // If the spell has damage associated with it, and what that damage is.
