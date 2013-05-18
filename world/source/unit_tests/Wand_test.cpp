@@ -40,3 +40,16 @@ TEST(SL_World_Wand, no_effect_when_zero_charges)
 
   EXPECT_EQ(EFFECT_TYPE_NULL, wand.get_effect_type());
 }
+
+TEST(SL_World_Wand, no_damage_when_zero_charges)
+{
+  Wand wand;
+  wand.set_has_damage(true);
+  wand.set_charges(7);
+
+  EXPECT_TRUE(wand.get_has_damage());
+
+  wand.set_charges(0);
+
+  EXPECT_FALSE(wand.get_has_damage());
+}

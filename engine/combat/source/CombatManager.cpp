@@ -62,7 +62,7 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
 // The generated to-hit value is 100 (ignore Soak, 2x max damage, any resistance is min 100%)
 // The generated to-hit value is >= 96 (ignore Soak, max damage, any resistance is min 100%)
 // The generated to-hit value is >= the target number (regular damage)
-ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type)
+ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type, const bool mark_skills, DamagePtr predefined_damage)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -82,7 +82,16 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     int total_roll = d100_roll + to_hit_value;
     int target_number_value = ctn_calculator->calculate(attacking_creature, attacked_creature);
 
-    Damage damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
+    Damage damage;
+
+    if (predefined_damage)
+    {
+      damage = *predefined_damage;
+    }
+    else
+    {
+      damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(attacking_creature);
+    }
         
     // Automatic miss is checked first
     if (is_automatic_miss(d100_roll))
@@ -112,8 +121,11 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
   // creature as a threat to the attacked creature.
   if (attacking_creature)
   {
-    mark_appropriate_skills(attacking_creature, attack_type, mark_for_weapon_and_combat_skills);
-    
+    if (mark_skills)
+    {
+      mark_appropriate_skills(attacking_creature, attack_type, mark_for_weapon_and_combat_skills);
+    }
+
     HostilityManager hm;
     hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id());
   }

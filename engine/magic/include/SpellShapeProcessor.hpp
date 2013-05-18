@@ -27,7 +27,7 @@ class SpellShapeProcessor
 
   protected:
     virtual bool apply_damage_and_effect(CreaturePtr caster, const std::vector<TilePtr>& affected_tiles, const Spell& spell, ActionManager * const am);
-    virtual void apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am);
+    virtual bool apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am);
     virtual bool apply_effect(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am);
 
     bool is_coordinate_adjacent_to_coordinate_in_previous_frame(const Coordinate& coord, const std::vector<Coordinate>& prev_frame);

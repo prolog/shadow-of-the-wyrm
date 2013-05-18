@@ -21,6 +21,7 @@ Wand::Wand()
   symbol ='\\';
   range = 0;
   shape = SPELL_SHAPE_BEAM;
+  has_damage = false;
   
   reset_charges();
 }
@@ -35,6 +36,8 @@ bool Wand::operator==(const Wand& rhs) const
 
   result = result && (range == rhs.range);
   result = result && (shape == rhs.shape);
+  result = result && (has_damage == rhs.has_damage);
+  result = result && (damage == rhs.damage);
   result = result && (charges == rhs.charges);
 
   return result;
@@ -58,6 +61,33 @@ void Wand::set_spell_shape_type(const SpellShapeType new_shape)
 SpellShapeType Wand::get_spell_shape_type() const
 {
   return shape;
+}
+
+void Wand::set_has_damage(const bool new_has_damage)
+{
+  has_damage = new_has_damage;
+}
+
+bool Wand::get_has_damage() const
+{
+  if (charges > 0)
+  {
+    return has_damage;
+  }
+  else
+  {
+    return false;
+  }
+}
+
+void Wand::set_damage(const Damage& new_damage)
+{
+  damage = new_damage;
+}
+
+Damage Wand::get_damage() const
+{
+  return damage;
 }
 
 void Wand::reset_charges()
@@ -102,6 +132,10 @@ bool Wand::serialize(ostream& stream)
 
   Serialize::write_uint(stream, range);
   Serialize::write_enum(stream, shape);
+  Serialize::write_bool(stream, has_damage);
+  
+  damage.serialize(stream);
+  
   Serialize::write_uint(stream, charges);
 
   return true;
@@ -113,6 +147,10 @@ bool Wand::deserialize(istream& stream)
 
   Serialize::read_uint(stream, range);
   Serialize::read_enum(stream, shape);
+  Serialize::read_bool(stream, has_damage);
+
+  damage.deserialize(stream);
+
   Serialize::read_uint(stream, charges);
 
   return true;

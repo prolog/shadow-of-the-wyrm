@@ -44,9 +44,13 @@ Damage MagicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(
   Damage base_and_bonus = calculate_base_damage_object(creature);
 
   SpellKnowledge& sk = creature->get_spell_knowledge_ref();
+  Spell spell = Game::instance().get_spells_ref().find(sk.get_most_recently_cast_spell_id())->second;
   IndividualSpellKnowledge isk = sk.get_spell_knowledge(sk.get_most_recently_cast_spell_id());
 
-  base_and_bonus.set_modifier(isk.get_bonus().get_base());
+  if (spell.get_allows_bonus())
+  {
+    base_and_bonus.set_modifier(isk.get_bonus().get_base());
+  }
 
   return base_and_bonus;
 }

@@ -747,7 +747,8 @@
 	<xs:complexContent>
 		<xs:extension base="tns:Item">
 			<xs:sequence>
-				<xs:element name="Effect" type="tns:EffectType"/>
+				<xs:element name="Effect" type="tns:EffectType" minOccurs="0"/>
+				<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 				<xs:element name="BeamType" type="tns:WandSpellShape"/>
 				<xs:element name="Range" type="xs:unsignedInt"/>
 			</xs:sequence>

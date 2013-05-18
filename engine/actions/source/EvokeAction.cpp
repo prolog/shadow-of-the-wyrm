@@ -44,10 +44,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
   return action_cost_value;
 }
 
-// A wand was selected.  Evoke it: get the potion's nutrition, and then do the magical effect.
-//
-// JCD FIXME: This, scrolls, potions, etc., all similar.  Look at
-// refactoring this.
+// A wand was selected.  Evoke it: apply any damage, and then do the magical effect.
 ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * const am, WandPtr wand)
 {
   ActionCostValue action_cost_value = 0;
@@ -73,43 +70,20 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
         Coordinate caster_coord = map->get_location(creature->get_id());
 
         // Create a temporary spell based on the wand's characteristics.
-        Spell wand_spell;
-        wand_spell.set_effect(wand->get_effect_type());
-        wand_spell.set_range(wand->get_range());
-        wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type()));
+        Spell wand_spell = create_wand_spell(wand);
 
         // Add a message about evoking.
         add_evocation_message(creature, wand, item_id);
       
         // Reduce the charges on the wand.
-        uint charges = wand->get_charges();
-        if (charges > 0)
-        {
-          wand->set_charges(charges-1);
-        }
+        reduce_wand_charges_if_necessary(wand);
 
-        // Process the effect.  This will do any necessary updates/damage to the creature, and will also
-        // add a status message based on whether the item was identified.
-        SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(wand_spell.get_shape().get_spell_shape_type());
-        bool effect_identified = false;
+        // Process the damage and spell on the wand.  If there are no charges,
+        // the effect returned will be null, and has_damage will return false.
+        bool wand_identified = process_wand_damage_and_effect(creature, map, caster_coord, evoke_result.second, wand_spell);
 
-        if (spell_processor)
-        {
-          // Use the generic spell processor, which is also used for "regular"
-          // spellcasting.
-          SpellcastingProcessor sp;
-          effect_identified = sp.process(spell_processor, creature, map, caster_coord, evoke_result.second, wand_spell);
-        }
-
-        // Was the item identified?
-        if (effect_identified)
-        {        
-          // If the item was not identified prior to quaffing, identify it now.
-          if (!wand_originally_identified)
-          {
-            item_id.set_item_identified(wand, wand_base_id, true);
-          }
-        }
+        // If the wand was identified during use, name it.
+        name_wand_if_identified(wand, wand_identified, wand_originally_identified, item_id);
 
         action_cost_value = get_action_cost_value();
       }
@@ -174,4 +148,64 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
   }
 
   return evoke_direction_result;
+}
+
+// Create a temporary spell for use by the spell processor, based on the
+// wand's characteristics.
+Spell EvokeAction::create_wand_spell(WandPtr wand) const
+{
+  Spell wand_spell;
+
+  wand_spell.set_has_damage(wand->get_has_damage());
+  wand_spell.set_damage(wand->get_damage());
+  wand_spell.set_effect(wand->get_effect_type());
+  wand_spell.set_range(wand->get_range());
+  wand_spell.set_allows_bonus(false);
+  wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type()));
+
+  return wand_spell;
+}
+
+// If the wand has any charges left, reduce the total number of charges by 1.
+void EvokeAction::reduce_wand_charges_if_necessary(WandPtr wand) const
+{
+  uint charges = wand->get_charges();
+  if (charges > 0)
+  {
+    wand->set_charges(charges-1);
+  }
+}
+
+// Process the actual damage and effect on the wand.  Return true if the wand
+// was identified while doing this, false otherwise.
+bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction direction, const Spell& wand_spell)
+{
+  bool wand_identified = false;
+
+  // Process the effect.  This will do any necessary updates/damage to the creature, and will also
+  // add a status message based on whether the item was identified.
+  SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(wand_spell.get_shape().get_spell_shape_type());
+
+  if (spell_processor)
+  {
+    // Use the generic spell processor, which is also used for "regular"
+    // spellcasting.
+    SpellcastingProcessor sp;
+    wand_identified = sp.process(spell_processor, creature, map, caster_coord, direction, wand_spell);
+  }
+
+  return wand_identified;
+}
+
+void EvokeAction::name_wand_if_identified(WandPtr wand, const bool wand_identified, const bool wand_originally_identified, const ItemIdentifier& item_id) const
+{
+  // Was the item identified?
+  if (wand && wand_identified)
+  {        
+    // If the item was not identified prior to quaffing, identify it now.
+    if (!wand_originally_identified)
+    {
+      item_id.set_item_identified(wand, wand->get_base_id(), true);
+    }
+  }
 }
