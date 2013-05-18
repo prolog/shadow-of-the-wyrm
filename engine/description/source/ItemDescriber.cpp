@@ -17,7 +17,7 @@ string ItemDescriber::describe() const
   if (item)
   {
     ItemIdentifier item_id;
-    item_description = StringTable::get(item_id.get_appropriate_usage_description_sid(item->get_base_id()));
+    item_description = item_id.get_appropriate_usage_description(item);
     
     uint quantity = item->get_quantity();
     

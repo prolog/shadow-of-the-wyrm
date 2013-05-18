@@ -84,7 +84,7 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
     uint quantity = item->get_quantity();
     
     ItemIdentifier item_id;
-    string drop_message = TextMessages::get_item_drop_message(StringTable::get(item_id.get_appropriate_usage_description_sid(item->get_base_id())), quantity);
+    string drop_message = TextMessages::get_item_drop_message(item_id.get_appropriate_usage_description(item), quantity);
     
     manager.add_new_message(drop_message);
     manager.send();
@@ -134,7 +134,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
     }
     else
     {
-      ItemPtr new_item = ItemPtr(item_to_drop->clone_with_new_id());
+      ItemPtr new_item = ItemPtr(item_to_drop->create_with_new_id());
       new_item->set_quantity(selected_quantity);
       
       uint old_item_quantity = item_to_drop->get_quantity() - selected_quantity;

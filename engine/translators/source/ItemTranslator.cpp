@@ -4,7 +4,7 @@
 #include "ItemTranslator.hpp"
 #include "StringTable.hpp"
 
-using std::string;
+using namespace std;
 
 ItemTranslator::ItemTranslator()
 {
@@ -17,23 +17,23 @@ ItemTranslator::~ItemTranslator()
 DisplayItem ItemTranslator::create_display_item(const ItemPtr& item)
 {
   DisplayItem display_item;
+  ostringstream desc_ss;
 
   if (item)
   {
     ItemIdentifier item_id;
-    string item_description_sid = item_id.get_appropriate_description_sid(item->get_base_id());
-    string display_item_description = StringTable::get(item_description_sid);
+    desc_ss << item_id.get_appropriate_description(item);
     
     uint quantity = item->get_quantity();
     
     if (quantity > 1)
     {
-      display_item_description += " (" + Integer::to_string(quantity) + ")";
+      desc_ss << " (" << Integer::to_string(quantity) << ")";
     }
     
     string id = item->get_id();
 
-    display_item.set_description(display_item_description);
+    display_item.set_description(desc_ss.str());
     display_item.set_id(id);
   }
 

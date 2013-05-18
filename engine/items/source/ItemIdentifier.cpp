@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFilterFactory.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
@@ -107,8 +108,8 @@ void ItemIdentifier::set_item_identified(ItemPtr item, const string& base_item_i
     // "Base identify" all items of that type.
     base_item->set_item_identified(is_identified);
     
-    // "Fully identify" this particular item.  It's already going to be marked as identified by the
-    // line of code above; setting the status identified means that its B/U/C status is known.
+    // Fully identify this particular item.
+    item->set_item_identified(true);
     item->set_status_identified(true);
   }
 }
@@ -129,58 +130,57 @@ bool ItemIdentifier::get_item_identified(const string& base_item_id) const
 
 // Get the appropriate description SID.  If the item is unidentified, use the unidentified_description_sid;
 // otherwise, use the regular (identified) one.
-string ItemIdentifier::get_appropriate_description_sid(const string& base_item_id) const
+string ItemIdentifier::get_appropriate_description(ItemPtr item) const
 {
-  string desc_sid;
-  ItemPtr item = get_base_item(base_item_id);
+  ostringstream desc;
   
   if (item)
   {
-    if (item->get_item_identified())
+    if (item->get_item_identified() || item->get_unidentified_description_sid().empty())
     {
-      desc_sid = item->get_description_sid();
+      desc << StringTable::get(item->get_description_sid());
+
+      string synopsis = item->get_synopsis();
+
+      if (!synopsis.empty())
+      {
+        desc << " " << synopsis;
+      }
     }
     else
     {
-      desc_sid = item->get_unidentified_description_sid();
-      
-      if (desc_sid.empty())
-      {
-        // Some items are always identified (food, some weapons, etc).
-        desc_sid = item->get_description_sid();
-      }
+      desc << StringTable::get(item->get_unidentified_description_sid());
     }
   }
   
-  return desc_sid;
+  return desc.str();
 }
 
 // Get the appropriate usage description SID.  If the item is unidentified, use the unidentified SID.  Otherwise, use
 // the regular SID.
-string ItemIdentifier::get_appropriate_usage_description_sid(const string& base_item_id) const
+string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
 {
   string udesc_sid;
-  ItemPtr item = get_base_item(base_item_id);
   
   if (item)
   {
-    if (item->get_item_identified())
+    // If the item is identified, or if its identity is not hidden (food,
+    // etc)
+    if (item->get_item_identified() || item->get_unidentified_usage_description_sid().empty())
     {
       udesc_sid = item->get_usage_description_sid();
     }
     else
     {
-      udesc_sid = item->get_unidentified_usage_description_sid();
-      
-      if (udesc_sid.empty())
-      {
-        // Some items are always identified (food, some weapons, etc).
-        udesc_sid = item->get_usage_description_sid();
-      }
+      udesc_sid = item->get_unidentified_usage_description_sid();      
     }
   }
-  
-  return udesc_sid;
+
+  // The "regular" description is the one displayed in the inventory/equipment
+  // screens, etc., and will contain the item synopsis.  The usage description
+  // is used when picking up/dropping an item, and so this shouldn't include
+  // the synopsis (otherwise the sentences will be full of unnecessary clutter).
+  return StringTable::get(udesc_sid);
 }
 
 ItemPtr ItemIdentifier::get_base_item(const string& base_item_id) const

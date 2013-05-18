@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
 #include "EffectFactory.hpp"
+#include "EffectTextKeys.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
@@ -76,11 +77,12 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
         add_evocation_message(creature, wand, item_id);
       
         // Reduce the charges on the wand.
+        uint original_charges = wand->get_charges();
         reduce_wand_charges_if_necessary(wand);
 
         // Process the damage and spell on the wand.  If there are no charges,
         // the effect returned will be null, and has_damage will return false.
-        bool wand_identified = process_wand_damage_and_effect(creature, map, caster_coord, evoke_result.second, wand_spell);
+        bool wand_identified = process_wand_damage_and_effect(creature, map, caster_coord, evoke_result.second, wand_spell, original_charges);
 
         // If the wand was identified during use, name it.
         name_wand_if_identified(wand, wand_identified, wand_originally_identified, item_id);
@@ -96,10 +98,9 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
 void EvokeAction::add_evocation_message(CreaturePtr creature, WandPtr wand, const ItemIdentifier& item_id)
 {
   EffectPtr effect = EffectFactory::create_effect(wand->get_effect_type());
-  string base_id = wand->get_base_id();
   
   // Get "You/monster evoke a wand" message
-  string evoke_message = ActionTextKeys::get_evoke_message(creature->get_description_sid(), item_id.get_appropriate_usage_description_sid(base_id), creature->get_is_player());
+  string evoke_message = ActionTextKeys::get_evoke_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(wand), creature->get_is_player());
   
   // Display an appropriate message
   MessageManager& manager = MessageManager::instance();
@@ -178,20 +179,32 @@ void EvokeAction::reduce_wand_charges_if_necessary(WandPtr wand) const
 
 // Process the actual damage and effect on the wand.  Return true if the wand
 // was identified while doing this, false otherwise.
-bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction direction, const Spell& wand_spell)
+bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction direction, const Spell& wand_spell, const uint original_charges)
 {
   bool wand_identified = false;
 
-  // Process the effect.  This will do any necessary updates/damage to the creature, and will also
-  // add a status message based on whether the item was identified.
-  SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(wand_spell.get_shape().get_spell_shape_type());
-
-  if (spell_processor)
+  if (original_charges > 0)
   {
-    // Use the generic spell processor, which is also used for "regular"
-    // spellcasting.
-    SpellcastingProcessor sp;
-    wand_identified = sp.process(spell_processor, creature, map, caster_coord, direction, wand_spell);
+    // Process the effect.  This will do any necessary updates/damage to the creature, and will also
+    // add a status message based on whether the item was identified.
+    SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(wand_spell.get_shape().get_spell_shape_type());
+
+    if (spell_processor)
+    {
+      // Use the generic spell processor, which is also used for "regular"
+      // spellcasting.
+      SpellcastingProcessor sp;
+      wand_identified = sp.process(spell_processor, creature, map, caster_coord, direction, wand_spell);
+    }
+  }
+  else
+  {
+    if (creature && creature->get_is_player())
+    {
+      MessageManager& manager = MessageManager::instance();
+      manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_NULL));
+      manager.send();
+    }
   }
 
   return wand_identified;

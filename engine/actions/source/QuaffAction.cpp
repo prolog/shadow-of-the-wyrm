@@ -86,7 +86,7 @@ void QuaffAction::add_quaff_message(CreaturePtr creature, PotionPtr potion, cons
   string base_id = potion->get_base_id();
   
   // Get "You/monster quaffs a foo-ey potion" message
-  string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description_sid(base_id), creature->get_is_player());
+  string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(potion), creature->get_is_player());
   
   // Display an appropriate message
   MessageManager& manager = MessageManager::instance();

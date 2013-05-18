@@ -41,7 +41,10 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
 // Apply a spell's damage to a particular tile.
 bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am)
 {
-  bool spell_identified = false;
+  // A spell can be identified if the creature can see its damage type.
+  // So, evoking a wand of frost, for example, identifies it.  Evoking
+  // a wand with no damage and a null effect would not.
+  bool spell_identified = spell.get_has_damage();
 
   CreaturePtr tile_creature = tile->get_creature();
   if (tile && spell.get_has_damage() && tile_creature)

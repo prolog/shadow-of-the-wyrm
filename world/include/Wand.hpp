@@ -11,6 +11,8 @@ class Wand : public Item
 
     bool operator==(const Wand& rhs) const;
 
+    virtual std::string get_synopsis() const;
+
     void set_range(const uint new_range);
     uint get_range() const;
 
@@ -29,7 +31,8 @@ class Wand : public Item
 
     // Wands return a null effect type when they have no charges.
     virtual EffectType get_effect_type() const;
-    
+
+    Item* create();
     Item* clone();
 
     bool serialize(std::ostream& stream);
