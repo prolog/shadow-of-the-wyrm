@@ -3056,6 +3056,37 @@
 			<Evade>3</Evade>
 			<Soak>1</Soak>
 		</Creature>
+		<Creature id="seawife">
+			<RaceID>01_human</RaceID>
+			<ShortDescriptionSID>SEAWIFE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SEAWIFE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SEAWIFE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SEAWIFE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>3</Evade>
+			<Soak>0</Soak>
+		</Creature>
 		<Creature id="the_ploughman">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>THE_PLOUGHMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
