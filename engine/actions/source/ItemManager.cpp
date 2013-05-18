@@ -104,7 +104,7 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
   if (i_it != items.end())
   {
     // Create a new item based on the template.
-    ItemPtr found_item = ItemPtr(i_it->second->clone_with_new_id());
+    ItemPtr found_item = ItemPtr(i_it->second->create_with_new_id());
 
     // Check the item generation values to see if we can create the
     // item, based on the current max.
@@ -302,7 +302,7 @@ ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr cre
   {
     Equipment& eq = creature->get_equipment();
     
-    ItemPtr new_item = ItemPtr(item->clone_with_new_id());
+    ItemPtr new_item = ItemPtr(item->create_with_new_id());
     
     if (eq.set_item(new_item, eq_worn_slot))
     {

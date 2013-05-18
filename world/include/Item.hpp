@@ -49,6 +49,13 @@ class Item : public ISerializable
     
     virtual void set_unidentified_description_sid(const std::string& new_unident_description_sid);
     virtual std::string get_unidentified_description_sid() const;
+
+    // The synopsis is displayed after the item's description in the inventory
+    // and equipment screens, if the item is identified.  It is expected that
+    // certain types of items may override this function: wands will display
+    // charges, armour will display ev/soak, weapons will display to-hit and
+    // damage modifiers, etc.
+    virtual std::string get_synopsis() const;
     
     // Whether the item can be used as part of a read command - scrolls and spellbooks will, and all
     // other items should not set this.
@@ -97,8 +104,9 @@ class Item : public ISerializable
     virtual void set_effect_type(const EffectType new_effect_type);
     virtual EffectType get_effect_type() const;
     
+    virtual Item* create_with_new_id();
+    virtual Item* create();
     virtual Item* clone() = 0;
-    virtual Item* clone_with_new_id();
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);

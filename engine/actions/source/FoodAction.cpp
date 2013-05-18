@@ -104,11 +104,11 @@ void FoodAction::add_food_message(CreaturePtr creature, ItemPtr food, const bool
 
   if (eat_success)
   {
-    message = ActionTextKeys::get_eat_message(creature->get_description_sid(), food->get_usage_description_sid(), creature->get_is_player());
+    message = ActionTextKeys::get_eat_message(creature->get_description_sid(), StringTable::get(food->get_usage_description_sid()), creature->get_is_player());
   }
   else
   {
-    message = ActionTextKeys::get_full_message(creature->get_description_sid(), food->get_usage_description_sid(), creature->get_is_player());
+    message = ActionTextKeys::get_full_message(creature->get_description_sid(), StringTable::get(food->get_usage_description_sid()), creature->get_is_player());
   }
 
   manager.add_new_message(message);

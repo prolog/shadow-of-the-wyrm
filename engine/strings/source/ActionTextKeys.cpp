@@ -12,7 +12,7 @@ ActionTextKeys::~ActionTextKeys()
 {
 }
 
-string ActionTextKeys::get_general_action_message(const string& desc_sid, const string& item_desc_sid, const string& player_sid, const string& monster_sid, const bool is_player)
+string ActionTextKeys::get_general_action_message(const string& desc_sid, const string& item_desc, const string& player_sid, const string& monster_sid, const bool is_player)
 {
   string message = StringTable::get(player_sid);
   
@@ -25,34 +25,34 @@ string ActionTextKeys::get_general_action_message(const string& desc_sid, const 
   }
   
   // Replace the item part.
-  boost::replace_first(message, "%s", StringTable::get(item_desc_sid));
+  boost::replace_first(message, "%s", item_desc);
   
   return message;
 }
 
-string ActionTextKeys::get_evoke_message(const string& desc_sid, const string& wand_desc_sid, const bool is_player)
+string ActionTextKeys::get_evoke_message(const string& desc_sid, const string& wand_desc, const bool is_player)
 {
-  return get_general_action_message(desc_sid, wand_desc_sid, ACTION_EVOKE_PLAYER, ACTION_EVOKE_MONSTER, is_player);
+  return get_general_action_message(desc_sid, wand_desc, ACTION_EVOKE_PLAYER, ACTION_EVOKE_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_quaff_message(const string& desc_sid, const string& potion_desc_sid, const bool is_player)
+string ActionTextKeys::get_quaff_message(const string& desc_sid, const string& potion_desc, const bool is_player)
 {
-  return get_general_action_message(desc_sid, potion_desc_sid, ACTION_QUAFF_PLAYER, ACTION_QUAFF_MONSTER, is_player);
+  return get_general_action_message(desc_sid, potion_desc, ACTION_QUAFF_PLAYER, ACTION_QUAFF_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_read_message(const string& desc_sid, const string& readable_desc_sid, const bool is_player)
+string ActionTextKeys::get_read_message(const string& desc_sid, const string& readable_desc, const bool is_player)
 {
-  return get_general_action_message(desc_sid, readable_desc_sid, ACTION_READ_PLAYER, ACTION_READ_MONSTER, is_player);
+  return get_general_action_message(desc_sid, readable_desc, ACTION_READ_PLAYER, ACTION_READ_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_eat_message(const string& desc_sid, const string& consumable_desc_sid, const bool is_player)
+string ActionTextKeys::get_eat_message(const string& desc_sid, const string& consumable_desc, const bool is_player)
 {
-  return get_general_action_message(desc_sid, consumable_desc_sid, ACTION_EAT_PLAYER, ACTION_EAT_MONSTER, is_player);
+  return get_general_action_message(desc_sid, consumable_desc, ACTION_EAT_PLAYER, ACTION_EAT_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_full_message(const string& desc_sid, const string& consumable_desc_sid, const bool is_player)
+string ActionTextKeys::get_full_message(const string& desc_sid, const string& consumable_desc, const bool is_player)
 {
-  return get_general_action_message(desc_sid, consumable_desc_sid, ACTION_FULL_PLAYER, ACTION_FULL_MONSTER, is_player);
+  return get_general_action_message(desc_sid, consumable_desc, ACTION_FULL_PLAYER, ACTION_FULL_MONSTER, is_player);
 }
 
 string ActionTextKeys::get_spellcasting_message(const Spell& spell, const string& creature_desc_sid, const bool is_player)

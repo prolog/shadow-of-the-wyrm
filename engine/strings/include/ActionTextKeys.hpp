@@ -5,12 +5,12 @@
 class ActionTextKeys
 {
   public:
-    static std::string get_evoke_message(const std::string& desc_sid, const std::string& wand_desc_sid, const bool is_player);
-    static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc_sid, const bool is_player);
-    static std::string get_read_message(const std::string& desc_sid, const std::string& readable_desc_sid, const bool is_player);
-    static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc_sid, const bool is_player);
-    static std::string get_full_message(const std::string& desc_sid, const std::string& consumable_desc_sid, const bool is_player);
-    static std::string get_spellcasting_message(const Spell& spell, const std::string& creature_desc_sid, const bool is_player);
+    static std::string get_evoke_message(const std::string& desc_sid, const std::string& wand_desc, const bool is_player);
+    static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc, const bool is_player);
+    static std::string get_read_message(const std::string& desc_sid, const std::string& readable_desc, const bool is_player);
+    static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
+    static std::string get_full_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
+    static std::string get_spellcasting_message(const Spell& spell, const std::string& creature_desc_s, const bool is_player);
     static std::string get_spellcasting_cancelled_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_bestiary_search_message(const std::string& prev_search_text);
 
@@ -49,7 +49,7 @@ class ActionTextKeys
     ActionTextKeys();
     ~ActionTextKeys();
 
-    static std::string get_general_action_message(const std::string& desc_sid, const std::string& consumable_desc_sid, const std::string& player_message_sid, const std::string& monster_message_sid, const bool is_player);
+    static std::string get_general_action_message(const std::string& desc_sid, const std::string& item_desc /* not a sid! */, const std::string& player_message_sid, const std::string& monster_message_sid, const bool is_player);
     
     static const std::string ACTION_EVOKE_PLAYER;
     static const std::string ACTION_EVOKE_MONSTER;

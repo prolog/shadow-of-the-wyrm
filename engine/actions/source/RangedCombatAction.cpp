@@ -243,16 +243,16 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
   if (item)
   {
     ItemIdentifier item_id;
-    string usage_description_sid = item_id.get_appropriate_usage_description_sid(item->get_base_id());
+    string usage_description = item_id.get_appropriate_usage_description(item);
     
     // Another sanity check - every item should have a usage description string ID.
-    if (!usage_description_sid.empty())
+    if (!usage_description.empty())
     {
       // Add a message based on whether:
       // - the attacking creature is the player
       // - a launcher/ranged weapon (bow, crossbow, etc) is used
       // - target creature (may be empty - it's perfectly legitimate to target a random tile!)
-      string ranged_attack_message = CombatTextKeys::get_ranged_attack_message(creature->get_is_player(), ranged, StringTable::get(creature->get_description_sid()), StringTable::get(usage_description_sid), StringTable::get(target_creature_desc_sid));
+      string ranged_attack_message = CombatTextKeys::get_ranged_attack_message(creature->get_is_player(), ranged, StringTable::get(creature->get_description_sid()), usage_description, StringTable::get(target_creature_desc_sid));
 
       if (!ranged_attack_message.empty())
       {
@@ -284,7 +284,7 @@ void RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
       
       // Clone the item so that a "new" item can be added to the ground,
       // assuming the ammunition survives.
-      ammunition = ItemPtr(ammunition->clone_with_new_id());
+      ammunition = ItemPtr(ammunition->create_with_new_id());
       ammunition->set_quantity(1);
     }
     else

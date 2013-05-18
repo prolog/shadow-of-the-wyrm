@@ -127,6 +127,12 @@ string Item::get_unidentified_description_sid() const
   return unidentified_description_sid;
 }
 
+string Item::get_synopsis() const
+{
+  string empty_synopsis;
+  return empty_synopsis;
+}
+
 void Item::set_readable(const bool new_readable)
 {
   readable = new_readable;
@@ -298,9 +304,9 @@ EffectType Item::get_effect_type() const
   return effect;
 }
 
-Item* Item::clone_with_new_id()
+Item* Item::create_with_new_id()
 {
-  Item* item = clone();
+  Item* item = create();
   
   // Create and set a new item ID.  deep_copy just makes a true copy.
   boost::uuids::uuid new_id = boost::uuids::random_generator()();
@@ -308,6 +314,14 @@ Item* Item::clone_with_new_id()
   item->set_id(id_s);
   
   return item;
+}
+
+// By default, create and clone are the same.  For items that have properties
+// that need to be reset on clone (wands' charges, for example), these functions
+// will be different to allow for that behaviour.
+Item* Item::create()
+{
+  return clone();
 }
 
 void Item::set_item_identified(const bool new_item_identified)

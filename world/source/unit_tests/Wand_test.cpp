@@ -53,3 +53,16 @@ TEST(SL_World_Wand, no_damage_when_zero_charges)
 
   EXPECT_FALSE(wand.get_has_damage());
 }
+
+TEST(SL_World_Wand, no_range_when_zero_charges)
+{
+  Wand wand;
+  wand.set_range(5);
+  wand.set_charges(4);
+
+  EXPECT_EQ(5, wand.get_range());
+
+  wand.set_charges(0);
+
+  EXPECT_EQ(0, wand.get_range());
+}

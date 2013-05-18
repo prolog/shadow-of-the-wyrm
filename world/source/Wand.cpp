@@ -43,6 +43,15 @@ bool Wand::operator==(const Wand& rhs) const
   return result;
 }
 
+string Wand::get_synopsis() const
+{
+  ostringstream oss;
+
+  oss << "(" << charges << ")";
+
+  return oss.str();
+}
+
 void Wand::set_range(const uint new_range)
 {
   range = new_range;
@@ -50,7 +59,14 @@ void Wand::set_range(const uint new_range)
 
 uint Wand::get_range() const
 {
-  return range;
+  if (charges > 0)
+  {
+    return range;
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 void Wand::set_spell_shape_type(const SpellShapeType new_shape)
@@ -117,11 +133,21 @@ EffectType Wand::get_effect_type() const
   }
 }
 
+// In most cases, create and clone do the same thing.  But for wands, creating
+// a new wand off the template also randomizes the charges.
+Item* Wand::create()
+{
+  Item* new_wand = clone();
+
+  reset_charges();
+
+  return new_wand;
+}
+
+// Create an exact clone of this wand.
 Item* Wand::clone()
 {
   Wand* new_wand = new Wand(*this);
-
-  reset_charges();
 
   return new_wand;
 }

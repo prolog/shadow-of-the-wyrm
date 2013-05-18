@@ -28,8 +28,8 @@ class ItemIdentifier
 
     // Get the appropriate description (identified or unidentified) for
     // the items whose base item identified is base_item_id.
-    std::string get_appropriate_description_sid(const std::string& base_item_id) const;
-    std::string get_appropriate_usage_description_sid(const std::string& base_item_id) const;
+    std::string get_appropriate_description(ItemPtr item_instance) const;
+    std::string get_appropriate_usage_description(ItemPtr item_instance) const;
     
   protected:
     ItemPtr get_base_item(const std::string& base_item_id) const;
