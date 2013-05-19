@@ -37,7 +37,35 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
         game.get_display()->redraw();
 
-        action_cost_value = evoke_wand(creature, am, wand);
+        WandPtr new_wand;
+        bool need_to_remove_before_adding_or_merging = false;
+
+        if (wand->get_quantity() > 1)
+        {
+          wand->set_quantity(wand->get_quantity() - 1);
+          ItemPtr new_wand_as_item = ItemPtr(wand->clone());
+          new_wand = dynamic_pointer_cast<Wand>(new_wand_as_item);
+        }
+        else
+        {
+          need_to_remove_before_adding_or_merging = true;
+          new_wand = wand;
+        }
+
+        // Try to evoke the item
+        action_cost_value = evoke_wand(creature, am, new_wand);
+
+        // Remove the item before re-adding it: used when there is only
+        // a single wand.
+        if (need_to_remove_before_adding_or_merging)
+        {
+          creature->get_inventory().remove(wand->get_id());
+        }
+
+        // Insert the item back into the inventory.
+        // This will take care of de-stacking/re-stacking and ensuring that
+        // like-items are grouped together.
+        creature->get_inventory().merge_or_add(new_wand, INVENTORY_ADDITION_BACK);
       }
     }
   }
