@@ -14,6 +14,7 @@
 #include "Game.hpp"
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
+#include "ItemSerializationFactory.hpp"
 #include "Log.hpp"
 #include "MapCursor.hpp"
 #include "MapUtils.hpp"
@@ -602,7 +603,31 @@ bool Game::serialize(ostream& stream)
     }
   }
 
-  // Ignore items map - this will be built up on startup.
+  // Item map needs to be serialized - the msater item template contain
+  // identification details that are otherwise lost when the game is saved
+  // and subsequently loaded.
+  Serialize::write_size_t(stream, items.size());
+  
+  string item_id;
+  ItemPtr item;
+  BOOST_FOREACH(ItemMap::value_type& item_pair, items)
+  {
+    item_id = item_pair.first;
+    Serialize::write_string(stream, item_id);
+
+    item = item_pair.second;
+    
+    if (item)
+    {
+      Serialize::write_class_id(stream, item->get_class_identifier());
+      item->serialize(stream);
+    }
+    else
+    {
+      Serialize::write_class_id(stream, CLASS_ID_NULL);
+    }
+  }
+
   // Ignore tile_info map - this will be built up on startup.
 
   size_t num_worlds = worlds.size();
@@ -709,7 +734,34 @@ bool Game::deserialize(istream& stream)
     }
   }
 
-  // Ignore items map - this will be built up on startup.
+  // Item map needs to be serialized - the msater item template contain
+  // identification details that are otherwise lost when the game is saved
+  // and subsequently loaded.
+  size_t num_itemmap_items = 0;
+  Serialize::read_size_t(stream, num_itemmap_items);
+  ClassIdentifier curitem_clid;
+  string item_id;
+
+  if (num_itemmap_items > 0)
+  {
+    items.clear();
+
+    for (uint i = 0; i < num_itemmap_items; i++)
+    {
+      Serialize::read_string(stream, item_id);
+      Serialize::read_class_id(stream, curitem_clid);
+
+      if (curitem_clid != CLASS_ID_NULL)
+      {
+        ItemPtr item = ItemSerializationFactory::create_item(curitem_clid);
+        if (!item) return false;
+        if (!item->deserialize(stream)) return false;
+
+        items.insert(make_pair(item_id, item));
+      }
+    }
+  }
+
   // Ignore tile_info map - this will be built up on startup.
 
   size_t num_worlds;
