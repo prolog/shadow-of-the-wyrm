@@ -3,6 +3,7 @@
 #include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "Item.hpp"
+//include "ItemIdentifier.hpp"
 #include "NullEffect.hpp"
 #include "MaterialFactory.hpp"
 #include "Wood.hpp"
@@ -266,22 +267,23 @@ ItemIdentificationType Item::get_identification_type() const
 bool Item::matches(boost::shared_ptr<Item> i)
 {
   bool match = (i);
-  
+//  ItemIdentifier item_id;
+
   if (i)
   {
-    match &= (usage_description_sid == i->get_usage_description_sid());
-    match &= (description_sid       == i->get_description_sid()      );
-    match &= (status_identified     == i->get_status_identified()    );
-    match &= (weight.get_weight()   == i->get_weight().get_weight()  );
-    match &= (worn_location         == i->get_worn_location()        );
-    match &= (status                == i->get_status()               );
-    match &= (artifact              == i->get_artifact()             );
-    match &= (type                  == i->get_type()                 );
-    match &= (material              == i->get_material_type()        );
-    match &= (effect                == i->get_effect_type()          );
+    match = match && (usage_description_sid == i->get_usage_description_sid());
+    match = match && (description_sid       == i->get_description_sid()      );
+    match = match && (status_identified     == i->get_status_identified()    );
+    match = match && (weight.get_weight()   == i->get_weight().get_weight()  );
+    match = match && (worn_location         == i->get_worn_location()        );
+    match = match && (status                == i->get_status()               );
+    match = match && (artifact              == i->get_artifact()             );
+    match = match && (type                  == i->get_type()                 );
+    match = match && (material              == i->get_material_type()        );
+    match = match && (effect                == i->get_effect_type()          );
 
     // Check the concrete implementation class's attributes:
-    match &= additional_item_attributes_match(i);
+    match = match && additional_item_attributes_match(i);
   }
   
   return match;

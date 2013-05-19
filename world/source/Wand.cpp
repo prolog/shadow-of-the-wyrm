@@ -34,6 +34,32 @@ bool Wand::operator==(const Wand& rhs) const
 {
   bool result = Item::operator==(rhs);
 
+  result = result && wand_properties_match(rhs);
+
+  return result;
+}
+
+bool Wand::additional_item_attributes_match(ItemPtr item)
+{
+  bool attributes_match = true;
+
+  WandPtr item_as_wand = dynamic_pointer_cast<Wand>(item);
+  if (item_as_wand)
+  {
+    attributes_match = wand_properties_match(*item_as_wand);
+  }
+  else
+  {
+    attributes_match = false;
+  }
+
+  return attributes_match;
+}
+
+bool Wand::wand_properties_match(const Wand& rhs) const
+{
+  bool result = true;
+
   result = result && (range == rhs.range);
   result = result && (shape == rhs.shape);
   result = result && (has_damage == rhs.has_damage);

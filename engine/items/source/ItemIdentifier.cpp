@@ -136,7 +136,7 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
   
   if (item)
   {
-    if (item->get_item_identified() || item->get_unidentified_description_sid().empty())
+    if (get_item_identified(item->get_base_id()) || item->get_unidentified_description_sid().empty())
     {
       desc << StringTable::get(item->get_description_sid());
 
@@ -166,7 +166,7 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
   {
     // If the item is identified, or if its identity is not hidden (food,
     // etc)
-    if (item->get_item_identified() || item->get_unidentified_usage_description_sid().empty())
+    if (get_item_identified(item->get_base_id()) || item->get_unidentified_usage_description_sid().empty())
     {
       udesc_sid = item->get_usage_description_sid();
     }
