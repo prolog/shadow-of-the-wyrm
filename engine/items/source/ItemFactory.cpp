@@ -41,4 +41,6 @@ void ItemFactory::randomize_item_status(ItemPtr item)
   {
     status = ITEM_STATUS_BLESSED;
   }
+
+  item->set_status(status);
 }

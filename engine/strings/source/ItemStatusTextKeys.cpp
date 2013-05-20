@@ -6,7 +6,7 @@ using namespace std;
 
 ItemStatusTextKeys::ItemStatusTextKeys()
 {
-  initialize_item_status_string_map();
+  if (item_status_string_map.empty()) initialize_item_status_string_map();
 }
 
 void ItemStatusTextKeys::initialize_item_status_string_map()

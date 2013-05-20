@@ -31,7 +31,7 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
       
       ItemPtr item = eq_pair.second;
 
-      if (filter_v)
+      if (filter_v && item)
       {
         const list<IItemFilterPtr> filters = *filter_v;
         BOOST_FOREACH(IItemFilterPtr filter, filters)
@@ -46,7 +46,7 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
       }
       
       // This is an item to be identified (it passes all the filters), so identify it.
-      if (passes_filter) 
+      if (passes_filter && item) 
       {
         set_item_identified(item, item->get_base_id(), true);
       }
@@ -81,7 +81,7 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
       }
       
       // This is an item to be identified (it passes all the filters), so identify it.
-      if (passes_filter) 
+      if (passes_filter && item) 
       {
         set_item_identified(item, item->get_base_id(), true);
       }
