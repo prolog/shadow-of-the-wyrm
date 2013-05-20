@@ -4177,7 +4177,7 @@
 			</Weapon>
 			<Weapon id="dagger">
 				<DescriptionSID>DAGGER_SID</DescriptionSID>
-				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
+				<UsageDescriptionSID>DAGGER_USAGE_SID</UsageDescriptionSID>
 				<Value>8</Value>
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>4</WornLocation>
