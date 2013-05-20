@@ -5171,6 +5171,7 @@
 				<Effect>5</Effect>
 				<BeamType>1</BeamType>
 				<Range>1</Range>
+				<Colour>7</Colour>
 			</Wand>
 			<Wand id="frost_wand">
 				<DescriptionSID>FROST_WAND_SID</DescriptionSID>
@@ -5193,6 +5194,30 @@
 				</Damage>
 				<BeamType>1</BeamType>
 				<Range>4</Range>
+				<Colour>15</Colour>
+			</Wand>
+			<Wand id="flame_wand">
+				<DescriptionSID>FLAME_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FLAME_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FLAME_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FLAME_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>350</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>5</NumDice>
+					<NumSides>10</NumSides>
+					<Type>3</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>1</Colour>
 			</Wand>
 		</Wands>
 		<MiscItems>
