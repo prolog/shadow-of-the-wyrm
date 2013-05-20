@@ -16,6 +16,9 @@ class DisplayItem
 
     void set_description(const std::string& new_description);
     std::string get_description() const;
+
+    void set_colour(const Colour new_colour);
+    Colour get_colour() const;
     
     void set_id(const std::string& new_id);
     std::string get_id() const;
@@ -23,6 +26,7 @@ class DisplayItem
     // Additional status-related items go here.
   protected:
     std::string description;
+    Colour colour;
     std::string id;
 };
 

@@ -2472,6 +2472,12 @@
     <ClInclude Include="engine\magic\include\SpellcastingProcessor.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\translators\include\DisplayItemColourTranslator.hpp">
+      <Filter>Header Files\engine\translators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\ItemStatusTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4681,6 +4687,15 @@
     </ClCompile>
     <ClCompile Include="engine\magic\source\SpellcastingProcessor.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\DisplayItemColourTranslator.cpp">
+      <Filter>Source Files\engine\translators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\unit_tests\DisplayItemColourTranslator_test.cpp">
+      <Filter>Source Files\engine\translators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\ItemStatusTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
