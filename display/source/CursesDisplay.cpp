@@ -887,10 +887,11 @@ void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
     
     string worn_location_name = EquipmentTextKeys::get_equipment_text_from_given_worn_location(worn_location);
     string item_description   = display_item.get_description();
-    ss << slot_char << " - " <<  String::add_trailing_spaces(worn_location_name, longest) << ": " << item_description;
+    ss << slot_char << " - " <<  String::add_trailing_spaces(worn_location_name, longest) << ": ";
 
-    enable_colour(item_colour, eq_window);
     mvwprintw(eq_window, current_row, 0, ss.str().c_str());
+    enable_colour(item_colour, eq_window);
+    wprintw(eq_window, item_description.c_str());
     disable_colour(item_colour, eq_window);
 
     slot_char++;
@@ -945,11 +946,14 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
       {
         current_row++;
         
-        string item_description = Char::to_string(slot_char) + " - " + item.get_description();
+        string item_description = Char::to_string(slot_char) + " - ";
+        mvwprintw(inv_window, current_row, 3, item_description.c_str());        
+        
+        item_description   = item.get_description();
         Colour item_colour = item.get_colour();
 
         enable_colour(item_colour, inv_window);
-        mvwprintw(inv_window, current_row, 3, item_description.c_str());        
+        wprintw(inv_window, item_description.c_str());        
         disable_colour(item_colour, inv_window);
 
         items_displayed++;
