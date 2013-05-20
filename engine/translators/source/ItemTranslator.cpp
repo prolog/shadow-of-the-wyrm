@@ -1,5 +1,6 @@
 #include "Conversion.hpp"
 #include "DisplayItem.hpp"
+#include "DisplayItemColourTranslator.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemTranslator.hpp"
 #include "StringTable.hpp"
@@ -35,6 +36,9 @@ DisplayItem ItemTranslator::create_display_item(const ItemPtr& item)
 
     display_item.set_description(desc_ss.str());
     display_item.set_id(id);
+
+    DisplayItemColourTranslator dict;
+    display_item.set_colour(dict.create_colour_for_display_item(item));
   }
 
   return display_item;

@@ -432,6 +432,7 @@
     <ClInclude Include="engine\strings\include\FeatureDescriptionTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\FileConstants.hpp" />
     <ClInclude Include="engine\strings\include\GameEnvTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\ItemStatusTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ItemTypeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MenuTitleTextKeys.hpp" />
@@ -476,6 +477,7 @@
     <ClInclude Include="engine\translators\include\AnimationTranslator.hpp" />
     <ClInclude Include="engine\translators\include\BeamSpellTranslator.hpp" />
     <ClInclude Include="engine\translators\include\CreatureTranslator.hpp" />
+    <ClInclude Include="engine\translators\include\DisplayItemColourTranslator.hpp" />
     <ClInclude Include="engine\translators\include\DisplayItemTypeFactory.hpp" />
     <ClInclude Include="engine\translators\include\EquipmentTranslator.hpp" />
     <ClInclude Include="engine\translators\include\InventoryTranslator.hpp" />
@@ -1241,6 +1243,7 @@
     <ClCompile Include="engine\strings\source\FeatureDescriptionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\FileConstants.cpp" />
     <ClCompile Include="engine\strings\source\GameEnvTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\ItemStatusTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ItemTypeTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MaterialTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MenuTitleTextKeys.cpp" />
@@ -1295,6 +1298,7 @@
     <ClCompile Include="engine\translators\source\AnimationTranslator.cpp" />
     <ClCompile Include="engine\translators\source\BeamSpellTranslator.cpp" />
     <ClCompile Include="engine\translators\source\CreatureTranslator.cpp" />
+    <ClCompile Include="engine\translators\source\DisplayItemColourTranslator.cpp" />
     <ClCompile Include="engine\translators\source\DisplayItemTypeFactory.cpp" />
     <ClCompile Include="engine\translators\source\EquipmentTranslator.cpp" />
     <ClCompile Include="engine\translators\source\InventoryTranslator.cpp" />
@@ -1303,6 +1307,9 @@
     <ClCompile Include="engine\translators\source\MapTranslator.cpp" />
     <ClCompile Include="engine\translators\source\StatusAilmentTranslators.cpp" />
     <ClCompile Include="engine\translators\source\unit_tests\BeamSpellTranslator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\translators\source\unit_tests\DisplayItemColourTranslator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">

@@ -3,6 +3,7 @@
 using namespace std;
 
 DisplayItem::DisplayItem()
+: colour(COLOUR_WHITE)
 {
 }
 
@@ -18,6 +19,16 @@ void DisplayItem::set_description(const string& new_description)
 string DisplayItem::get_description() const
 {
   return description;
+}
+
+void DisplayItem::set_colour(const Colour new_colour)
+{
+  colour = new_colour;
+}
+
+Colour DisplayItem::get_colour() const
+{
+  return colour;
 }
 
 void DisplayItem::set_id(const string& new_id)

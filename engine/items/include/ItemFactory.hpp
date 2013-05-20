@@ -9,4 +9,6 @@ class ItemFactory
   protected:
     ItemFactory();
     ~ItemFactory();
+
+    static void randomize_item_status(ItemPtr item);
 };

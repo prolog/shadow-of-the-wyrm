@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemStatusTextKeys.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -128,15 +129,17 @@ bool ItemIdentifier::get_item_identified(const string& base_item_id) const
   return item_identified;
 }
 
-// Get the appropriate description SID.  If the item is unidentified, use the unidentified_description_sid;
-// otherwise, use the regular (identified) one.
+// Get the appropriate description.  If the item is unidentified, use the unidentified_description_sid;
+// otherwise, use the regular (identified) one.  Add status, etc.
 string ItemIdentifier::get_appropriate_description(ItemPtr item) const
 {
+  string appropriate_desc;
   ostringstream desc;
+  bool item_identified = get_item_identified(item->get_base_id());
   
   if (item)
   {
-    if (get_item_identified(item->get_base_id()) || item->get_unidentified_description_sid().empty())
+    if (item_identified || item->get_unidentified_description_sid().empty())
     {
       desc << StringTable::get(item->get_description_sid());
 
@@ -153,13 +156,23 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
     }
   }
   
-  return desc.str();
+  string item_desc = desc.str();
+  appropriate_desc = item_desc;
+
+  if (item->get_status_identified())
+  {
+    ItemStatusTextKeys istk;
+    appropriate_desc =  istk.get_item_status_and_description(item->get_status(), appropriate_desc);
+  }
+
+  return appropriate_desc;
 }
 
-// Get the appropriate usage description SID.  If the item is unidentified, use the unidentified SID.  Otherwise, use
-// the regular SID.
+// Get the appropriate usage description.  If the item is unidentified, use the unidentified SID.  Otherwise, use
+// the regular SID.  Use status, etc.
 string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
 {
+  string appropriate_usage_desc;
   string udesc_sid;
   
   if (item)
@@ -180,7 +193,8 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
   // screens, etc., and will contain the item synopsis.  The usage description
   // is used when picking up/dropping an item, and so this shouldn't include
   // the synopsis (otherwise the sentences will be full of unnecessary clutter).
-  return StringTable::get(udesc_sid);
+  appropriate_usage_desc = StringTable::get(udesc_sid);
+  return appropriate_usage_desc;
 }
 
 ItemPtr ItemIdentifier::get_base_item(const string& base_item_id) const
