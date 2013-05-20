@@ -1,3 +1,4 @@
+#include <boost/foreach.hpp>
 #include "SavageLandsEngine.hpp"
 #include "XMLConfigurationReader.hpp"
 #include "Class.hpp"
@@ -9,6 +10,7 @@
 #include "DisplayTile.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
+#include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
 #include "MessageManager.hpp"
@@ -237,6 +239,18 @@ bool SavageLandsEngine::process_new_game()
 
     CreaturePtr player = CreatureFactory::create_by_race_and_class(game.get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
     player->set_is_player(true, controller);  
+
+    // Identify the player's equipment and inventory.  If any equipment is
+    // cursed, make it uncursed.
+    ItemIdentifier item_id;
+    item_id.set_possessions_identified(player);
+    EquipmentMap eq_map = player->get_equipment().get_equipment();
+
+    BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq_map)
+    {
+      ItemPtr item = eq_pair.second;
+      if (item && item->get_status() == ITEM_STATUS_CURSED) item->set_status(ITEM_STATUS_UNCURSED);
+    }
 
     game.create_new_world(player); 
   }
