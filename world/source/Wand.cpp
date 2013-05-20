@@ -22,6 +22,7 @@ Wand::Wand()
   range = 0;
   shape = SPELL_SHAPE_BEAM;
   has_damage = false;
+  colour = COLOUR_WHITE;
   
   reset_charges();
 }
@@ -65,6 +66,7 @@ bool Wand::wand_properties_match(const Wand& rhs) const
   result = result && (has_damage == rhs.has_damage);
   result = result && (damage == rhs.damage);
   result = result && (charges == rhs.charges);
+  result = result && (colour == rhs.colour);
 
   return result;
 }
@@ -159,6 +161,16 @@ EffectType Wand::get_effect_type() const
   }
 }
 
+void Wand::set_colour(const Colour new_colour)
+{
+  colour = new_colour;
+}
+
+Colour Wand::get_colour() const
+{
+  return colour;
+}
+
 // In most cases, create and clone do the same thing.  But for wands, creating
 // a new wand off the template also randomizes the charges.
 Item* Wand::create()
@@ -189,6 +201,7 @@ bool Wand::serialize(ostream& stream)
   damage.serialize(stream);
   
   Serialize::write_uint(stream, charges);
+  Serialize::write_enum(stream, colour);
 
   return true;
 }
@@ -204,6 +217,7 @@ bool Wand::deserialize(istream& stream)
   damage.deserialize(stream);
 
   Serialize::read_uint(stream, charges);
+  Serialize::read_enum(stream, colour);
 
   return true;
 }

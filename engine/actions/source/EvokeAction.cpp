@@ -191,6 +191,7 @@ Spell EvokeAction::create_wand_spell(WandPtr wand) const
   wand_spell.set_range(wand->get_range());
   wand_spell.set_allows_bonus(false);
   wand_spell.set_shape(SpellShapeFactory::create_spell_shape(wand->get_spell_shape_type()));
+  wand_spell.set_colour(wand->get_colour());
 
   return wand_spell;
 }

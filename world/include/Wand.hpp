@@ -31,6 +31,9 @@ class Wand : public Item
     void set_charges(const uint new_charges);
     uint get_charges() const;
 
+    void set_colour(const Colour new_colour);
+    Colour get_colour() const;
+
     // Wands return a null effect type when they have no charges.
     virtual EffectType get_effect_type() const;
 
@@ -46,6 +49,7 @@ class Wand : public Item
     bool has_damage;
     Damage damage;
     uint charges;
+    Colour colour;
 
   private:
     ClassIdentifier internal_class_identifier() const;
