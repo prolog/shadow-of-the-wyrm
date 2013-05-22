@@ -2478,6 +2478,9 @@
     <ClInclude Include="engine\strings\include\ItemStatusTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\items\include\ItemDescriptionRandomizer.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4696,6 +4699,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\ItemStatusTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemDescriptionRandomizer.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

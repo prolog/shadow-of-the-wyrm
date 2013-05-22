@@ -126,6 +126,11 @@ bool RNG::percent_chance(const int percent_chance)
   return (val <= percent_chance);
 }
 
+boost::variate_generator<RNGType, boost::uniform_int<> > RNG::get_generator()
+{
+  return generator;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/RNG_test.cpp"
 #endif

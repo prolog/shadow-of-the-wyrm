@@ -10,6 +10,7 @@
 #include "DisplayTile.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
+#include "ItemDescriptionRandomizer.hpp"
 #include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
@@ -251,6 +252,18 @@ bool SavageLandsEngine::process_new_game()
       ItemPtr item = eq_pair.second;
       if (item && item->get_status() == ITEM_STATUS_CURSED) item->set_status(ITEM_STATUS_UNCURSED);
     }
+
+    vector<ItemType> item_types;
+    item_types.push_back(ITEM_TYPE_SCROLL);
+    item_types.push_back(ITEM_TYPE_WAND);
+    item_types.push_back(ITEM_TYPE_STAFF);
+    item_types.push_back(ITEM_TYPE_BOOK);
+    item_types.push_back(ITEM_TYPE_RING);
+    item_types.push_back(ITEM_TYPE_POTION);
+    item_types.push_back(ITEM_TYPE_AMULET);
+
+    ItemDescriptionRandomizer item_randomizer(item_types);
+    item_randomizer.randomize(game.items);
 
     game.create_new_world(player); 
   }
