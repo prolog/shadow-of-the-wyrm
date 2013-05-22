@@ -12,6 +12,10 @@ Savage Lands v0.1.3 "Ealdwulf"
   the usage descriptions), and show an appropriate colour in the UI based
   on the object status.
 
+- Randomization of the unidentified descriptions and usage descriptions
+  for scrolls, wands, staves, spellbooks, rings, potions, and amulets 
+  after starting a new game.
+
 Savage Lands v0.1.2, "Aethelwalh"
 - Version declared March 28, 2013.  Version finalized April 28, 2013.
 

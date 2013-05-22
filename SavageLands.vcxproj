@@ -367,6 +367,7 @@
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
     <ClInclude Include="engine\items\include\InitialItemEquipper.hpp" />
     <ClInclude Include="engine\items\include\InitialItemSelector.hpp" />
+    <ClInclude Include="engine\items\include\ItemDescriptionRandomizer.hpp" />
     <ClInclude Include="engine\items\include\ItemFactory.hpp" />
     <ClInclude Include="engine\items\include\ItemFilterFactory.hpp" />
     <ClInclude Include="engine\items\include\ItemGenerationManager.hpp" />
@@ -1098,6 +1099,7 @@
     <ClCompile Include="engine\items\source\EdibleItemFilter.cpp" />
     <ClCompile Include="engine\items\source\InitialItemEquipper.cpp" />
     <ClCompile Include="engine\items\source\InitialItemSelector.cpp" />
+    <ClCompile Include="engine\items\source\ItemDescriptionRandomizer.cpp" />
     <ClCompile Include="engine\items\source\ItemFactory.cpp" />
     <ClCompile Include="engine\items\source\ItemFilterFactory.cpp" />
     <ClCompile Include="engine\items\source\ItemGenerationManager.cpp" />
