@@ -12,6 +12,7 @@ TEST(SL_World_Book, saveload)
   Book book, book2;
 
   book.set_unidentified_description_sid("serialize_break_test!");
+  book.set_spell_id("big_spell");
 
   ostringstream ss;
 

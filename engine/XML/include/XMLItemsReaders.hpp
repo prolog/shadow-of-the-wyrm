@@ -44,11 +44,12 @@ class XMLItemsReader
     std::pair<ItemMap, GenerationValuesMap> get_currencies(const XMLNode& currencies_node);
     std::pair<ItemMap, GenerationValuesMap> get_tools(const XMLNode& tools_node);
     std::pair<ItemMap, GenerationValuesMap> get_wands(const XMLNode& wands_node);
+    std::pair<ItemMap, GenerationValuesMap> get_spellbooks(const XMLNode& spellbooks_node);
     
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;
     XMLArmourReader armour_reader;
-    XMLBookReader book_reader;
+    XMLBookReader spellbook_reader;
     XMLBoatReader boat_reader;
     XMLWeaponsReader weapons_reader;
     XMLAmmunitionReader ammunition_reader;
