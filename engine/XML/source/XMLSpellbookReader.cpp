@@ -1,18 +1,18 @@
-#include "XMLBookReader.hpp"
+#include "XMLSpellbookReader.hpp"
 
 using namespace std;
 
-XMLBookReader::XMLBookReader()
+XMLSpellbookReader::XMLSpellbookReader()
 {
 }
 
-XMLBookReader::~XMLBookReader()
+XMLSpellbookReader::~XMLSpellbookReader()
 {
 }
 
 // Methods for reading details about a book/spellbook from an XML node
 // conformant to the Book type.
-void XMLBookReader::parse(BookPtr book, GenerationValues& igv, const XMLNode& book_node)
+void XMLSpellbookReader::parse(SpellbookPtr book, GenerationValues& igv, const XMLNode& book_node)
 {
   if (!book_node.is_null())
   {

@@ -501,7 +501,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_spellbooks(const XMLNode&
 
     BOOST_FOREACH(XMLNode node, spellbooks_nodes)
     {
-      BookPtr book = boost::make_shared<Book>();
+      SpellbookPtr book = boost::make_shared<Spellbook>();
       GenerationValues igv;
       spellbook_reader.parse(book, igv, node);
       spellbook_map.insert(make_pair(book->get_id(), book));

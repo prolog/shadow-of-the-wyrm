@@ -1,5 +1,5 @@
 #include "gtest/gtest.h"
-#include "Book.hpp"
+#include "Spellbook.hpp"
 
 TEST(SL_World_Inventory, serialization_id)
 {
@@ -12,7 +12,7 @@ TEST(SL_World_Inventory, saveload)
 {
   Inventory inv, inv2;
 
-  BookPtr book = BookPtr(new Book());
+  SpellbookPtr book = SpellbookPtr(new Spellbook());
   book->set_quantity(12);
 
   inv.add_front(book);

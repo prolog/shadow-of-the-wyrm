@@ -257,7 +257,7 @@ bool SavageLandsEngine::process_new_game()
     item_types.push_back(ITEM_TYPE_SCROLL);
     item_types.push_back(ITEM_TYPE_WAND);
     item_types.push_back(ITEM_TYPE_STAFF);
-    item_types.push_back(ITEM_TYPE_BOOK);
+    item_types.push_back(ITEM_TYPE_SPELLBOOK);
     item_types.push_back(ITEM_TYPE_RING);
     item_types.push_back(ITEM_TYPE_POTION);
     item_types.push_back(ITEM_TYPE_AMULET);
