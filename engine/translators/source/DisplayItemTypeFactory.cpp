@@ -116,7 +116,7 @@ DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
     case ITEM_TYPE_POTION:
       display_item_type = boost::make_shared<PotionDisplayItemType>();
       break;
-    case ITEM_TYPE_BOOK:
+    case ITEM_TYPE_SPELLBOOK:
       display_item_type = boost::make_shared<BookDisplayItemType>();
       break;
     case ITEM_TYPE_SCROLL:

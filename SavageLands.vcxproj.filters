@@ -663,9 +663,6 @@
     <ClInclude Include="world\include\Boat.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\include\Book.hpp">
-      <Filter>Header Files\world\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\Calendar.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -1776,9 +1773,6 @@
     <ClInclude Include="engine\XML\include\XMLBoatReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\XML\include\XMLBookReader.hpp">
-      <Filter>Header Files\engine\XML\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\include\XMLClassesReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
@@ -2481,6 +2475,12 @@
     <ClInclude Include="engine\items\include\ItemDescriptionRandomizer.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\Spellbook.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLSpellbookReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -2577,9 +2577,6 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\Boat.cpp">
-      <Filter>Source Files\world\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\Book.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\Calendar.cpp">
@@ -3686,9 +3683,6 @@
     <ClCompile Include="engine\XML\source\XMLBoatReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\XML\source\XMLBookReader.cpp">
-      <Filter>Source Files\engine\XML\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\XML\source\XMLClassesReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
@@ -4092,9 +4086,6 @@
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Boat_test.cpp">
-      <Filter>Source Files\world\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\unit_tests\Book_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Currency_test.cpp">
@@ -4702,6 +4693,15 @@
     </ClCompile>
     <ClCompile Include="engine\items\source\ItemDescriptionRandomizer.cpp">
       <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Spellbook_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Spellbook.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLSpellbookReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -10,13 +10,13 @@
 #include "Wearable.hpp"
 #include "XMLAmuletReader.hpp"
 #include "XMLArmourReader.hpp"
-#include "XMLBookReader.hpp"
 #include "XMLBoatReader.hpp"
 #include "XMLFoodReader.hpp"
 #include "XMLPlantReader.hpp"
 #include "XMLPotionReader.hpp"
 #include "XMLRingReader.hpp"
 #include "XMLScrollReader.hpp"
+#include "XMLSpellbookReader.hpp"
 #include "XMLStaffReader.hpp"
 #include "XMLToolReader.hpp"
 #include "XMLWandReader.hpp"
@@ -49,7 +49,6 @@ class XMLItemsReader
     XMLItemReader item_reader;
     XMLAmuletReader amulet_reader;
     XMLArmourReader armour_reader;
-    XMLBookReader spellbook_reader;
     XMLBoatReader boat_reader;
     XMLWeaponsReader weapons_reader;
     XMLAmmunitionReader ammunition_reader;
@@ -58,6 +57,7 @@ class XMLItemsReader
     XMLPotionReader potion_reader;
     XMLRingReader ring_reader;
     XMLScrollReader scroll_reader;
+    XMLSpellbookReader spellbook_reader;
     XMLStaffReader staff_reader;
     XMLToolReader tool_reader;
     XMLWandReader wand_reader;

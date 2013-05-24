@@ -4,7 +4,7 @@
 #include "Amulet.hpp"
 #include "Armour.hpp"
 #include "Boat.hpp"
-#include "Book.hpp"
+#include "Spellbook.hpp"
 #include "Currency.hpp"
 #include "Food.hpp"
 #include "MiscItem.hpp"
@@ -63,7 +63,7 @@ void ItemSerializationFactory::initialize_item_map()
   ItemPtr amulet = boost::make_shared<Amulet>();
   ItemPtr armour = boost::make_shared<Armour>();
   ItemPtr boat   = boost::make_shared<Boat>();
-  ItemPtr book   = boost::make_shared<Book>();
+  ItemPtr book   = boost::make_shared<Spellbook>();
   ItemPtr cash   = boost::make_shared<Currency>();
   ItemPtr food   = boost::make_shared<Food>();
   ItemPtr misc   = boost::make_shared<MiscItem>();
@@ -81,7 +81,7 @@ void ItemSerializationFactory::initialize_item_map()
   item_map.insert(make_pair(CLASS_ID_AMULET, amulet));
   item_map.insert(make_pair(CLASS_ID_ARMOUR, armour));
   item_map.insert(make_pair(CLASS_ID_BOAT, boat));
-  item_map.insert(make_pair(CLASS_ID_BOOK, book));
+  item_map.insert(make_pair(CLASS_ID_SPELLBOOK, book));
   item_map.insert(make_pair(CLASS_ID_CURRENCY, cash));
   item_map.insert(make_pair(CLASS_ID_FOOD, food));
   item_map.insert(make_pair(CLASS_ID_MISC_ITEM, misc));

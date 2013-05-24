@@ -1,13 +1,13 @@
 #pragma once
 #include "Readable.hpp"
 
-class Book : public Readable
+class Spellbook : public Readable
 {
   public:
-    Book();
-    ~Book();
+    Spellbook();
+    ~Spellbook();
 
-    bool operator==(const Book& book) const;
+    bool operator==(const Spellbook& book) const;
     
     bool destroy_on_read() const;
 
@@ -26,4 +26,4 @@ class Book : public Readable
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Book> BookPtr;
+typedef boost::shared_ptr<Spellbook> SpellbookPtr;

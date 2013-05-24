@@ -1,15 +1,15 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Book, serialization_id)
+TEST(SL_World_Spellbook, serialization_id)
 {
-  Book book;
+  Spellbook book;
 
-  EXPECT_EQ(CLASS_ID_BOOK, book.get_class_identifier());
+  EXPECT_EQ(CLASS_ID_SPELLBOOK, book.get_class_identifier());
 }
 
-TEST(SL_World_Book, saveload)
+TEST(SL_World_Spellbook, saveload)
 {
-  Book book, book2;
+  Spellbook book, book2;
 
   book.set_unidentified_description_sid("serialize_break_test!");
   book.set_spell_id("big_spell");

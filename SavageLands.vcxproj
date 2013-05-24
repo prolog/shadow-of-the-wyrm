@@ -496,7 +496,7 @@
     <ClInclude Include="engine\XML\include\XMLAmuletReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLArmourReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLBoatReader.hpp" />
-    <ClInclude Include="engine\XML\include\XMLBookReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLSpellbookReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLClassesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLConfigurationReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLConsumableReader.hpp" />
@@ -538,7 +538,7 @@
     <ClInclude Include="world\include\Amulet.hpp" />
     <ClInclude Include="world\include\Armour.hpp" />
     <ClInclude Include="world\include\Boat.hpp" />
-    <ClInclude Include="world\include\Book.hpp" />
+    <ClInclude Include="world\include\Spellbook.hpp" />
     <ClInclude Include="world\include\Calendar.hpp" />
     <ClInclude Include="world\include\Class.hpp" />
     <ClInclude Include="world\include\Consumable.hpp" />
@@ -1328,7 +1328,7 @@
     <ClCompile Include="engine\XML\source\XMLAmuletReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLArmourReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLBoatReader.cpp" />
-    <ClCompile Include="engine\XML\source\XMLBookReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLSpellbookReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLClassesReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLConfigurationReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLConsumableReader.cpp" />
@@ -1441,7 +1441,7 @@
     <ClCompile Include="world\source\Amulet.cpp" />
     <ClCompile Include="world\source\Armour.cpp" />
     <ClCompile Include="world\source\Boat.cpp" />
-    <ClCompile Include="world\source\Book.cpp" />
+    <ClCompile Include="world\source\Spellbook.cpp" />
     <ClCompile Include="world\source\Calendar.cpp" />
     <ClCompile Include="world\source\Class.cpp" />
     <ClCompile Include="world\source\Consumable.cpp" />
@@ -1503,7 +1503,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="world\source\unit_tests\Book_test.cpp">
+    <ClCompile Include="world\source\unit_tests\Spellbook_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
