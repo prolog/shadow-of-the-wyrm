@@ -135,6 +135,7 @@
 			<xs:element ref="tns:Currencies" minOccurs="0"/>
 			<xs:element ref="tns:Tools" minOccurs="0"/>
 			<xs:element ref="tns:Wands" minOccurs="0"/>
+			<xs:element ref="tns:Spellbooks" minOccurs="0"/>
 			<xs:element ref="tns:MiscItems" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -618,6 +619,13 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Spellbooks">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Spellbook" type="tns:Spellbook" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <xs:element name="MiscItems">
 	<xs:complexType>
 		<xs:sequence>
@@ -752,6 +760,15 @@
 				<xs:element name="BeamType" type="tns:WandSpellShape"/>
 				<xs:element name="Range" type="xs:unsignedInt"/>
 				<xs:element name="Colour" type="tns:ColourType"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Spellbook">
+	<xs:complexContent>
+		<xs:extension base="tns:Item">
+			<xs:sequence>
+				<xs:element name="SpellID" type="xs:string"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>

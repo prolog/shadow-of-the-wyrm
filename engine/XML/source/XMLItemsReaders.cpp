@@ -131,6 +131,15 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
       igv_map.insert(wands.second.begin(), wands.second.end());
     }
 
+    XMLNode spellbooks_node = XMLUtils::get_next_element_by_local_name(items_node, "Spellbooks");
+
+    if (!spellbooks_node.is_null())
+    {
+      pair<ItemMap, GenerationValuesMap> spellbooks = get_spellbooks(spellbooks_node);
+      items.insert(spellbooks.first.begin(), spellbooks.first.end());
+      igv_map.insert(spellbooks.second.begin(), spellbooks.second.end());
+    }
+
     XMLNode misc_items_node = XMLUtils::get_next_element_by_local_name(items_node, "MiscItems");
     
     if (!misc_items_node.is_null())
@@ -478,4 +487,30 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_wands(const XMLNode& wand
   wands.first = wands_map;
   wands.second = igv_map;
   return wands;
+}
+
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_spellbooks(const XMLNode& spellbooks_node)
+{
+  pair<ItemMap, GenerationValuesMap> spellbooks;
+  ItemMap spellbook_map;
+  GenerationValuesMap igv_map;
+
+  if (!spellbooks_node.is_null())
+  {
+    vector<XMLNode> spellbooks_nodes = XMLUtils::get_elements_by_local_name(spellbooks_node, "Spellbook");
+
+    BOOST_FOREACH(XMLNode node, spellbooks_nodes)
+    {
+      BookPtr book = boost::make_shared<Book>();
+      GenerationValues igv;
+      spellbook_reader.parse(book, igv, node);
+      spellbook_map.insert(make_pair(book->get_id(), book));
+      igv_map.insert(make_pair(book->get_id(), igv));
+    }
+  }
+
+  spellbooks.first = spellbook_map;
+  spellbooks.second = igv_map;
+
+  return spellbooks;
 }

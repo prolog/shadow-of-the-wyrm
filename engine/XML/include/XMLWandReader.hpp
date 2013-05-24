@@ -9,6 +9,6 @@ class XMLWandReader : public XMLItemReader
     XMLWandReader();
     ~XMLWandReader();
     
-    void parse(WandPtr wand, GenerationValues& igv, const XMLNode& potion_node);
+    void parse(WandPtr wand, GenerationValues& igv, const XMLNode& wand_node);
 };
 

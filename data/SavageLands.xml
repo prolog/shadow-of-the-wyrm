@@ -5220,6 +5220,24 @@
 				<Colour>1</Colour>
 			</Wand>
 		</Wands>
+		<Spellbooks>
+			<Spellbook id="dragon_breath_spellbook">
+				<DescriptionSID>DRAGON_BREATH_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DRAGON_BREATH_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DRAGON_BREATH_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DRAGON_BREATH_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>750</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_02_dragon_breath</SpellID>
+			</Spellbook>
+		</Spellbooks>
 		<MiscItems>
 			<Item id="dirt">
 				<DescriptionSID>DIRT_SID</DescriptionSID>
