@@ -604,6 +604,18 @@
     <Filter Include="Source Files\engine\effects\source\unit_tests">
       <UniqueIdentifier>{2da0ae58-169d-4726-9457-2c3d9056e3cd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\actions\read">
+      <UniqueIdentifier>{df644593-078b-4167-b65c-beccd97dae69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\actions\read\include">
+      <UniqueIdentifier>{374dcd6f-f075-4029-bbf0-685b545056ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\actions\read">
+      <UniqueIdentifier>{fd909e60-44a0-4c48-80a5-95b640635927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\actions\read\source">
+      <UniqueIdentifier>{f4f531c6-c079-42c2-af76-2db524a896ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2480,6 +2492,21 @@
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLSpellbookReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\read\include\NullReadStrategy.hpp">
+      <Filter>Header Files\engine\actions\read\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\read\include\ScrollReadStrategy.hpp">
+      <Filter>Header Files\engine\actions\read\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\read\include\ReadStrategy.hpp">
+      <Filter>Header Files\engine\actions\read\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\read\include\ReadStrategyFactory.hpp">
+      <Filter>Header Files\engine\actions\read\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\actions\read\include\SpellbookReadStrategy.hpp">
+      <Filter>Header Files\engine\actions\read\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4702,6 +4729,21 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLSpellbookReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\read\source\NullReadStrategy.cpp">
+      <Filter>Source Files\engine\actions\read\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\read\source\ScrollReadStrategy.cpp">
+      <Filter>Source Files\engine\actions\read\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\read\source\ReadStrategyFactory.cpp">
+      <Filter>Source Files\engine\actions\read\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\read\source\ReadStrategy.cpp">
+      <Filter>Source Files\engine\actions\read\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\read\source\SpellbookReadStrategy.cpp">
+      <Filter>Source Files\engine\actions\read\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
