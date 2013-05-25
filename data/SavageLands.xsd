@@ -769,6 +769,7 @@
 		<xs:extension base="tns:Item">
 			<xs:sequence>
 				<xs:element name="SpellID" type="xs:string"/>
+				<xs:element name="Difficulty" type="xs:integer"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
