@@ -13,6 +13,9 @@ class Spellbook : public Readable
 
     void set_spell_id(const std::string& new_spell_id);
     std::string get_spell_id() const;
+
+    void set_difficulty(const int new_difficulty);
+    int get_difficulty() const;
     
     Item* clone();
 
@@ -21,6 +24,7 @@ class Spellbook : public Readable
 
   protected:
     std::string spell_id;
+    int difficulty;
 
   private:
     ClassIdentifier internal_class_identifier() const;

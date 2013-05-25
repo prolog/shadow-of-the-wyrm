@@ -13,6 +13,7 @@ TEST(SL_World_Spellbook, saveload)
 
   book.set_unidentified_description_sid("serialize_break_test!");
   book.set_spell_id("big_spell");
+  book.set_difficulty(105);
 
   ostringstream ss;
 

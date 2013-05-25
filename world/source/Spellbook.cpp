@@ -4,6 +4,7 @@
 using namespace std;
 
 Spellbook::Spellbook()
+: difficulty(0)
 {
   type = ITEM_TYPE_SPELLBOOK;
   symbol = '\"';
@@ -18,6 +19,7 @@ bool Spellbook::operator==(const Spellbook& rhs) const
   bool result = Readable::operator==(rhs);
 
   result = result && (spell_id == rhs.spell_id);
+  result = result && (difficulty == rhs.difficulty);
 
   return result;
 }
@@ -37,6 +39,16 @@ string Spellbook::get_spell_id() const
   return spell_id;
 }
 
+void Spellbook::set_difficulty(const int new_difficulty)
+{
+  difficulty = new_difficulty;
+}
+
+int Spellbook::get_difficulty() const
+{
+  return difficulty;
+}
+
 Item* Spellbook::clone()
 {
   return new Spellbook(*this);
@@ -47,6 +59,7 @@ bool Spellbook::serialize(ostream& stream)
   Readable::serialize(stream);
 
   Serialize::write_string(stream, spell_id);
+  Serialize::write_int(stream, difficulty);
 
   return true;
 }
@@ -56,6 +69,7 @@ bool Spellbook::deserialize(istream& stream)
   Readable::deserialize(stream);
 
   Serialize::read_string(stream, spell_id);
+  Serialize::read_int(stream, difficulty);
 
   return true;
 }
