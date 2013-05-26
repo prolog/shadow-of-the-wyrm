@@ -2508,6 +2508,9 @@
     <ClInclude Include="engine\actions\read\include\SpellbookReadStrategy.hpp">
       <Filter>Header Files\engine\actions\read\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\SpellbookCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4744,6 +4747,9 @@
     </ClCompile>
     <ClCompile Include="engine\actions\read\source\SpellbookReadStrategy.cpp">
       <Filter>Source Files\engine\actions\read\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\SpellbookCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

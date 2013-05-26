@@ -185,6 +185,7 @@
     <ClInclude Include="engine\calculators\include\SkillsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SoakCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SpeedCalculatorFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\SpellbookCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
@@ -834,6 +835,7 @@
     <ClCompile Include="engine\calculators\source\SkillsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SoakCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SpeedCalculatorFactory.cpp" />
+    <ClCompile Include="engine\calculators\source\SpellbookCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp" />
