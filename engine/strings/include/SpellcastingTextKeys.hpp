@@ -10,6 +10,7 @@ class SpellcastingTextKeys
     static const std::string SPELLCASTING_INSUFFICIENT_POWER;
     static const std::string SPELLCASTING_BONUS_INCREASED;
     static const std::string SPELLCASTING_NO_MAGIC_SKILL;
+    static const std::string SPELLCASTING_SPELL_NOT_LEARNED;
     
     // Range abbreviation SIDs
     static const std::string SPELLCASTING_TARGET_SELF_ABRV;

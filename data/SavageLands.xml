@@ -5236,7 +5236,7 @@
 				<DangerLevel>12</DangerLevel>
 				<Rarity>1</Rarity>
 				<SpellID>a_02_dragon_breath</SpellID>
-				<Difficulty>75</Difficulty>
+				<Difficulty>100</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
