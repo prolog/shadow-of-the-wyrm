@@ -6,6 +6,7 @@
 #include "SpellcastingTextKeys.hpp"
 #include "SpellbookCalculator.hpp"
 #include "StringTable.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -21,15 +22,9 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
     {
       if (check_magic_skill(creature))
       {
-        ItemIdentifier item_id;
         string spell_id = spellbook->get_spell_id();
-        ItemStatus spellbook_status = spellbook->get_status();
-        bool spellbook_destroyed = false;
-
         const SpellMap spell_map = Game::instance().get_spells_ref();
-
         SkillType magic_category = SKILL_MAGIC_ARCANE;
-        
         SpellMap::const_iterator s_it = spell_map.find(spell_id);
 
         if (s_it != spell_map.end())
@@ -37,41 +32,48 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
           magic_category = s_it->second.get_magic_category();
         }
 
-        SpellbookCalculator sc;
-
-        pair<bool, int> learning_result = sc.learn_spell(creature, magic_category, spellbook->get_difficulty());
-        bool spell_learned = learning_result.first;
-        int difference = learning_result.second;
-
-        if (spell_learned)
+        if (confirm_reading_if_necessary(creature, magic_category))
         {
-          learn_spell_from_spellbook(creature, spellbook, item_id, spell_id, magic_category);
+          ItemIdentifier item_id;
+          ItemStatus spellbook_status = spellbook->get_status();
+          bool spellbook_destroyed = false;
 
-          // Determine whether the spellbook is destroyed afterwards.
-          spellbook_destroyed = sc.get_is_spellbook_destroyed(spellbook_status);
-        }
-        else
-        {
-          // The creature did not successfully learn the spell.
-          // Add a message about reading the (unid'd) spellbook.
-          add_read_message(creature, spellbook, item_id);
+          SpellbookCalculator sc;
 
-          // Add a message about this being unsuccessful.
-          if (creature->get_is_player())
+          pair<bool, int> learning_result = sc.learn_spell(creature, magic_category, spellbook->get_difficulty());
+          bool spell_learned = learning_result.first;
+          int difference = learning_result.second;
+
+          if (spell_learned)
           {
-            add_spell_not_learned_message();
+            learn_spell_from_spellbook(creature, spellbook, item_id, spell_id, magic_category);
+
+            // Determine whether the spellbook is destroyed afterwards.
+            spellbook_destroyed = sc.get_is_spellbook_destroyed(spellbook_status);
+          }
+          else
+          {
+            // The creature did not successfully learn the spell.
+            // Add a message about reading the (unid'd) spellbook.
+            add_read_message(creature, spellbook, item_id);
+
+            // Add a message about this being unsuccessful.
+            if (creature->get_is_player())
+            {
+              add_spell_not_learned_message();
+            }
+
+            // Check the difference to see if it falls within the "something
+            // bad happens" realm. (spellbook explodes, big unfriendly creatures
+            // summoned, etc.)
+            handle_fallout_if_necessary(creature, difference);
           }
 
-          // Check the difference to see if it falls within the "something
-          // bad happens" realm. (spellbook explodes, big unfriendly creatures
-          // summoned, etc.)
-          handle_fallout_if_necessary(creature, difference);
-        }
-
-        if (spellbook_destroyed)
-        {
-          spellbook->set_quantity(spellbook->get_quantity() - 1);
-          if (spellbook->get_quantity() == 0) creature->get_inventory().remove(spellbook->get_id());
+          if (spellbook_destroyed)
+          {
+            spellbook->set_quantity(spellbook->get_quantity() - 1);
+            if (spellbook->get_quantity() == 0) creature->get_inventory().remove(spellbook->get_id());
+          }
         }
       }
     }
@@ -124,6 +126,44 @@ bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature)
   }
 
   return has_magic_skill;
+}
+
+// If the creature is skilled in the spell's category, automatically return
+// true.  Otherwise, prompt the creature to continue reading.
+bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, const SkillType spell_category)
+{
+  bool confirmation = false;
+
+  if (creature)
+  {
+    int skill_value = creature->get_skills().get_skill(spell_category)->get_value();
+
+    if (skill_value > 0)
+    {
+      confirmation = true;
+    }
+    else
+    {
+      MessageManager& manager = MessageManager::instance();
+
+      if (creature && creature->get_is_player())
+      {
+        // Redraw the screen, since we will have moved from the inventory
+        // back to the main map, and need to redraw before the confirmation.
+        Game& game = Game::instance();
+        game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+        game.get_display()->redraw();
+
+        manager.add_new_confirmation_message(TextMessages::get_confirmation_message(SpellcastingTextKeys::SPELLCASTING_UNFAMILIAR_CATEGORY));
+      }
+
+      confirmation = creature->get_decision_strategy()->get_confirmation();
+      
+      manager.clear_if_necessary();
+    }
+  }
+
+  return confirmation;
 }
 
 // Check to see if anything bad happens as the result of badly failing a

@@ -20,6 +20,11 @@ class SpellbookReadStrategy : public ReadStrategy
     // able to learn spells from spellbooks.
     bool check_magic_skill(CreaturePtr creature);
 
+    // Confirm whether to continue reading, if necessary - this is automatic
+    // when the creature has skill in the category, but requires prompting
+    // when the creature does not (e.g., a priest reading an arcane spellbook).
+    bool confirm_reading_if_necessary(CreaturePtr creature, const SkillType magic_category);
+
     // Add a message about the creature not having any knowledge of the Old
     // Runic language.
     void add_no_magic_skill_message();
