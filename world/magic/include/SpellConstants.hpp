@@ -14,6 +14,7 @@ class SpellConstants
     static const int MIN_CASTINGS;
     static const int BASE_MIN_CASTINGS;
     static const int BASE_MAX_CASTINGS;
+    static const int NO_CATEGORY_SKILL_SPELL_LEARNING_PENALTY;
 
   protected:
     SpellConstants();

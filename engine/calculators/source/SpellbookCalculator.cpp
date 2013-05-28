@@ -38,7 +38,7 @@ void SpellbookCalculator::initialize_status_casting_multipliers()
 //
 // - Roll 1d100
 // - Add (Magic General Skill / 2)
-// - Add appropriate magic skill
+// - Add appropriate magic skill, if > 0; otherwise, Subtract 100.
 // - Add (Int / 5)
 // - Add (Will / 5)
 //
@@ -53,7 +53,9 @@ pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const Ski
 
     int rand = RNG::dice(1, 100);
     int magic_general_skill = skills.get_skill(SKILL_GENERAL_MAGIC)->get_value();
-    int magic_category_skill = skills.get_skill(magic_category)->get_value();
+    int magic_category_skill_raw = skills.get_skill(magic_category)->get_value();
+    int magic_category_skill = (magic_category_skill_raw > 0) ? magic_category_skill_raw 
+                                                              : SpellConstants::NO_CATEGORY_SKILL_SPELL_LEARNING_PENALTY;
     int int_stat = creature->get_intelligence().get_current();
     int will_stat = creature->get_willpower().get_current();
 
