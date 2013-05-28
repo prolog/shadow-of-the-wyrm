@@ -24,7 +24,6 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
         ItemIdentifier item_id;
         string spell_id = spellbook->get_spell_id();
         ItemStatus spellbook_status = spellbook->get_status();
-        int difficulty = spellbook->get_difficulty();
         bool spellbook_destroyed = false;
 
         const SpellMap spell_map = Game::instance().get_spells_ref();
@@ -40,7 +39,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
 
         SpellbookCalculator sc;
 
-        pair<bool, int> learning_result = sc.learn_spell(creature, magic_category, difficulty);
+        pair<bool, int> learning_result = sc.learn_spell(creature, magic_category, spellbook->get_difficulty());
         bool spell_learned = learning_result.first;
         int difference = learning_result.second;
 
