@@ -55,7 +55,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
           {
             // The creature did not successfully learn the spell.
             // Add a message about reading the (unid'd) spellbook.
-            add_read_message(creature, spellbook, item_id);
+            add_read_message(get_player_and_monster_unsuccessful_read_sids(), creature, spellbook, item_id);
 
             // Add a message about this being unsuccessful.
             if (creature->get_is_player())
@@ -98,7 +98,7 @@ void SpellbookReadStrategy::learn_spell_from_spellbook(CreaturePtr creature, Spe
   item_id.set_item_identified(spellbook, spellbook->get_base_id(), true);
 
   // Add a message about this.
-  add_read_message(creature, spellbook, item_id);
+  add_read_message(get_player_and_monster_read_sids(), creature, spellbook, item_id);
 
   // Update the number of successful castings.
   SpellKnowledge& sk = creature->get_spell_knowledge_ref();
@@ -211,4 +211,16 @@ void SpellbookReadStrategy::add_spell_not_learned_message()
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_SPELL_NOT_LEARNED));
   manager.send();
+}
+
+pair<string, string> SpellbookReadStrategy::get_player_and_monster_read_sids() const
+{
+  pair<string, string> sids(SpellcastingTextKeys::SPELLCASTING_READ_SPELLBOOK_PLAYER, SpellcastingTextKeys::SPELLCASTING_READ_SPELLBOOK_MONSTER);
+  return sids;
+}
+
+pair<string, string> SpellbookReadStrategy::get_player_and_monster_unsuccessful_read_sids() const
+{
+  pair<string, string> sids(SpellcastingTextKeys::SPELLCASTING_READ_BOOK_PLAYER, SpellcastingTextKeys::SPELLCASTING_READ_BOOK_MONSTER);
+  return sids;
 }

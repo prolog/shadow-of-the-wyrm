@@ -2,6 +2,7 @@
 #include "ItemIdentifier.hpp"
 #include "MessageManager.hpp"
 #include "ScrollReadStrategy.hpp"
+#include "SpellcastingTextKeys.hpp"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
       bool readable_originally_identified = item_id.get_item_identified(base_id);
       
       // Add a message about what's being read
-      add_read_message(creature, readable, item_id);
+      add_read_message(get_player_and_monster_read_sids(), creature, readable, item_id);
       
       // Destroy the item if applicable.
       if (readable->destroy_on_read())
@@ -42,6 +43,12 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
   }
 
   return acv;
+}
+
+pair<string, string> ScrollReadStrategy::get_player_and_monster_read_sids() const
+{
+  pair<string, string> sids(SpellcastingTextKeys::SPELLCASTING_READ_SCROLL_PLAYER, SpellcastingTextKeys::SPELLCASTING_READ_SCROLL_MONSTER);
+  return sids;
 }
 
 ActionCostValue ScrollReadStrategy::get_action_cost_value() const
