@@ -12,6 +12,12 @@ class SpellcastingTextKeys
     static const std::string SPELLCASTING_NO_MAGIC_SKILL;
     static const std::string SPELLCASTING_SPELL_NOT_LEARNED;
     static const std::string SPELLCASTING_UNFAMILIAR_CATEGORY;
+    static const std::string SPELLCASTING_READ_BOOK_PLAYER;
+    static const std::string SPELLCASTING_READ_BOOK_MONSTER;
+    static const std::string SPELLCASTING_READ_SCROLL_PLAYER;
+    static const std::string SPELLCASTING_READ_SCROLL_MONSTER;
+    static const std::string SPELLCASTING_READ_SPELLBOOK_PLAYER;
+    static const std::string SPELLCASTING_READ_SPELLBOOK_MONSTER;
     
     // Range abbreviation SIDs
     static const std::string SPELLCASTING_TARGET_SELF_ABRV;

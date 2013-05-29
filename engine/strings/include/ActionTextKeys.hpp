@@ -7,7 +7,7 @@ class ActionTextKeys
   public:
     static std::string get_evoke_message(const std::string& desc_sid, const std::string& wand_desc, const bool is_player);
     static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc, const bool is_player);
-    static std::string get_read_message(const std::string& desc_sid, const std::string& readable_desc, const bool is_player);
+    static std::string get_read_message(const std::string& player_read_sid, const std::string& monster_read_sid, const std::string& desc_sid, const std::string& readable_desc, const bool is_player);
     static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
     static std::string get_full_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
     static std::string get_spellcasting_message(const Spell& spell, const std::string& creature_desc_s, const bool is_player);
@@ -55,8 +55,6 @@ class ActionTextKeys
     static const std::string ACTION_EVOKE_MONSTER;
     static const std::string ACTION_QUAFF_PLAYER;
     static const std::string ACTION_QUAFF_MONSTER;
-    static const std::string ACTION_READ_PLAYER;
-    static const std::string ACTION_READ_MONSTER;
     static const std::string ACTION_EAT_PLAYER;
     static const std::string ACTION_EAT_MONSTER;
     static const std::string ACTION_FULL_PLAYER;

@@ -40,9 +40,9 @@ string ActionTextKeys::get_quaff_message(const string& desc_sid, const string& p
   return get_general_action_message(desc_sid, potion_desc, ACTION_QUAFF_PLAYER, ACTION_QUAFF_MONSTER, is_player);
 }
 
-string ActionTextKeys::get_read_message(const string& desc_sid, const string& readable_desc, const bool is_player)
+string ActionTextKeys::get_read_message(const string& player_read_message, const string& monster_read_message, const string& desc_sid, const string& readable_desc, const bool is_player)
 {
-  return get_general_action_message(desc_sid, readable_desc, ACTION_READ_PLAYER, ACTION_READ_MONSTER, is_player);
+  return get_general_action_message(desc_sid, readable_desc, player_read_message, monster_read_message, is_player);
 }
 
 string ActionTextKeys::get_eat_message(const string& desc_sid, const string& consumable_desc, const bool is_player)
@@ -137,8 +137,6 @@ const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_P
 const string ActionTextKeys::ACTION_EVOKE_MONSTER              = "ACTION_EVOKE_MONSTER";
 const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_PLAYER";
 const string ActionTextKeys::ACTION_QUAFF_MONSTER              = "ACTION_QUAFF_MONSTER";
-const string ActionTextKeys::ACTION_READ_PLAYER                = "ACTION_READ_PLAYER";
-const string ActionTextKeys::ACTION_READ_MONSTER               = "ACTION_READ_MONSTER";
 const string ActionTextKeys::ACTION_EAT_PLAYER                 = "ACTION_EAT_PLAYER";
 const string ActionTextKeys::ACTION_EAT_MONSTER                = "ACTION_EAT_MONSTER";
 const string ActionTextKeys::ACTION_FULL_PLAYER                = "ACTION_FULL_PLAYER";

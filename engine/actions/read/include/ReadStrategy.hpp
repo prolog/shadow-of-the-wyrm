@@ -19,9 +19,11 @@ class ReadStrategy : public IActionManager
     // Add a message indicating that reading the scroll, spellbook, etc.,
     // was successful.
     void add_successful_read_message(CreaturePtr creature, ReadablePtr readable, const ItemIdentifier& item_id);
-    void add_read_message(CreaturePtr creature, ReadablePtr readable, const ItemIdentifier& item_id);
+    void add_read_message(const std::pair<std::string, std::string>& player_and_monster_message_sids, CreaturePtr creature, ReadablePtr readable, const ItemIdentifier& item_id);
 
   protected:
+    virtual std::pair<std::string, std::string> get_player_and_monster_read_sids() const = 0;
+
     virtual ActionCostValue get_action_cost_value() const = 0;
 };
 
