@@ -73,6 +73,8 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
           {
             spellbook->set_quantity(spellbook->get_quantity() - 1);
             if (spellbook->get_quantity() == 0) creature->get_inventory().remove(spellbook->get_id());
+
+            add_spellbook_destruction_message(spellbook);
           }
         }
       }
@@ -210,6 +212,15 @@ void SpellbookReadStrategy::add_spell_not_learned_message()
   MessageManager& manager = MessageManager::instance();
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_SPELL_NOT_LEARNED));
+  manager.send();
+}
+
+void SpellbookReadStrategy::add_spellbook_destruction_message(SpellbookPtr spellbook)
+{
+  ItemIdentifier item_id;
+  MessageManager& manager = MessageManager::instance();
+
+  manager.add_new_message(SpellcastingTextKeys::get_spellbook_destruction_message(item_id.get_appropriate_usage_description(spellbook)));
   manager.send();
 }
 
