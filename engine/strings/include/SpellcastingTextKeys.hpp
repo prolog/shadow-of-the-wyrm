@@ -26,6 +26,10 @@ class SpellcastingTextKeys
     static const std::string SPELLCASTING_CONE_ABRV;
     static const std::string SPELLCASTING_BALL_ABRV;
 
+    static const std::string get_spellbook_destruction_message(const std::string& spellbook_desc_sid);
+
   protected:
+    static const std::string SPELLCASTING_SPELLBOOK_DESTRUCTION_MESSAGE;
+
     SpellcastingTextKeys();
 };

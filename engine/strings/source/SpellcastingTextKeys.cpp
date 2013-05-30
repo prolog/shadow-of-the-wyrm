@@ -1,4 +1,5 @@
 #include "SpellcastingTextKeys.hpp"
+#include "StringTable.hpp"
 
 using namespace std;
 
@@ -26,3 +27,14 @@ const string SpellcastingTextKeys::SPELLCASTING_BEAM_ABRV = "SPELLCASTING_BEAM_A
 const string SpellcastingTextKeys::SPELLCASTING_REFLECTIVE_BEAM_ABRV = "SPELLCASTING_REFLECTIVE_BEAM_ABRV";
 const string SpellcastingTextKeys::SPELLCASTING_CONE_ABRV = "SPELLCASTING_CONE_ABRV";
 const string SpellcastingTextKeys::SPELLCASTING_BALL_ABRV = "SPELLCASTING_BALL_ABRV";
+const string SpellcastingTextKeys::SPELLCASTING_SPELLBOOK_DESTRUCTION_MESSAGE = "SPELLCASTING_SPELLBOOK_DESTRUCTION_MESSAGE";
+
+const string SpellcastingTextKeys::get_spellbook_destruction_message(const string& spellbook_desc)
+{
+  string destruction_message = StringTable::get(SpellcastingTextKeys::SPELLCASTING_SPELLBOOK_DESTRUCTION_MESSAGE);
+
+  boost::replace_first(destruction_message, "%s", spellbook_desc);
+  destruction_message[0] = toupper(destruction_message[0]);
+
+  return destruction_message;
+}

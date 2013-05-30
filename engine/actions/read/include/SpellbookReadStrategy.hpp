@@ -32,6 +32,8 @@ class SpellbookReadStrategy : public ReadStrategy
     // Add a message about not being able to learn the spell.
     void add_spell_not_learned_message();
 
+    void add_spellbook_destruction_message(SpellbookPtr spellbook);
+
     // Spellbooks have separate messages for successfully and unsuccessfully
     // reading - success indicates memorization, failure is just a read.
     virtual std::pair<std::string, std::string> get_player_and_monster_read_sids() const;
