@@ -2511,6 +2511,9 @@
     <ClInclude Include="engine\calculators\include\SpellbookCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\magic\include\SpellFactory.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4750,6 +4753,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\SpellbookCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\SpellFactory.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
