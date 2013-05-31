@@ -1,8 +1,12 @@
 #include "EffectFactory.hpp"
+#include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "MessageManager.hpp"
 #include "ScrollReadStrategy.hpp"
 #include "SpellcastingTextKeys.hpp"
+#include "SpellFactory.hpp"
+#include "SpellShapeProcessorFactory.hpp"
+#include "SpellcastingProcessor.hpp"
 
 using namespace std;
 
@@ -16,6 +20,10 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
     
     if (spell_effect)
     {
+      Game& game = Game::instance();
+      MapPtr map = game.get_current_map();
+      Coordinate caster_coord = map->get_location(creature->get_id());
+
       ItemIdentifier item_id;
       string base_id = readable->get_base_id();
       bool readable_originally_identified = item_id.get_item_identified(base_id);
@@ -29,10 +37,21 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
         readable->set_quantity(readable->get_quantity() - 1);
         if (readable->get_quantity() == 0) creature->get_inventory().remove(readable->get_id());
       }
-      
-      // Was the effect identified?  If it was, and if the item wasn't previously identified,
-      // identify the item in the item templates.
-      bool effect_identified = spell_effect->effect(creature, am, readable->get_status());      
+
+      Spell scroll_spell = SpellFactory::create_self_targetted_item_spell();
+      scroll_spell.set_effect(readable->get_effect_type());
+
+      SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(scroll_spell.get_shape().get_spell_shape_type());
+      bool effect_identified = false;
+
+      if (spell_processor)
+      {
+        // Use the generic spell processor, which is also used for "regular"
+        // spellcasting.
+        SpellcastingProcessor sp;
+        effect_identified = sp.process(spell_processor, creature, map, caster_coord, DIRECTION_NULL, scroll_spell);
+      }
+
       if (effect_identified && !readable_originally_identified)
       {
         item_id.set_item_identified(readable, base_id, true);
