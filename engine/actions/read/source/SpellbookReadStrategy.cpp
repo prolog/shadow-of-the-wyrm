@@ -2,6 +2,7 @@
 #include "ItemIdentifier.hpp"
 #include "MessageManager.hpp"
 #include "SpellConstants.hpp"
+#include "SpellFailureConsequencesCoordinator.hpp"
 #include "SpellbookReadStrategy.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "SpellbookCalculator.hpp"
@@ -170,33 +171,11 @@ bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, c
 
 // Check to see if anything bad happens as the result of badly failing a
 // spell learning check.
-bool SpellbookReadStrategy::handle_fallout_if_necessary(CreaturePtr creature, const int difference)
+void SpellbookReadStrategy::handle_fallout_if_necessary(CreaturePtr creature, const int difference)
 {
-  bool fallout = true;
+  SpellFailureConsequencesCoordinator sfcc;
 
-  // Many very dangerous creatures are summoned.
-  if (difference < SpellConstants::SPELL_FAILURE_SUPER_BAD)
-  {
-    // JCD FIXME
-    return fallout;
-  }
-
-  // Spellbook vanishes in a puff of flame, dangerous creatures are summoned,
-  // etc.
-  if (difference < SpellConstants::SPELL_FAILURE_BAD)
-  {
-    // JCD FIXME
-    return fallout;
-  }
-
-  // Spellbook ist kaputt (well, vanishes in a puff of smoke).
-  if (difference < SpellConstants::SPELL_FAILURE_MILDLY_BAD)
-  {
-    // JCD FIXME
-    return fallout;
-  }
-
-  return false;
+  sfcc.coordinate_failure_consequences(creature, difference);
 }
 
 void SpellbookReadStrategy::add_no_magic_skill_message()
