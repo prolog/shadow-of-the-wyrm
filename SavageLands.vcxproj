@@ -385,13 +385,13 @@
     <ClInclude Include="engine\magic\include\BallShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\ConeShapeProcessor.hpp" />
-    <ClInclude Include="engine\magic\include\ISpellFailureConsequences.hpp" />
+    <ClInclude Include="engine\magic\include\SpellFailureConsequences.hpp" />
     <ClInclude Include="engine\magic\include\MarginalSpellFailureConsequences.hpp" />
     <ClInclude Include="engine\magic\include\ReflectiveBeamShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\SevereSpellFailureConsequences.hpp" />
     <ClInclude Include="engine\magic\include\SpellBonusUpdater.hpp" />
     <ClInclude Include="engine\magic\include\SpellcastingProcessor.hpp" />
-    <ClInclude Include="engine\magic\include\SpellFailureConsequences.hpp" />
+    <ClInclude Include="engine\magic\include\LesserSpellFailureConsequences.hpp" />
     <ClInclude Include="engine\magic\include\SpellFailureConsequencesCoordinator.hpp" />
     <ClInclude Include="engine\magic\include\SpellShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\MagicalAbilityChecker.hpp" />
@@ -457,6 +457,7 @@
     <ClInclude Include="engine\strings\include\SizeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SkillTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SpellcastingTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\SpellFailureTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StatusAilmentTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StringTable.hpp" />
     <ClInclude Include="engine\strings\include\TextKeys.hpp" />
@@ -1139,6 +1140,7 @@
     <ClCompile Include="engine\magic\source\SevereSpellFailureConsequences.cpp" />
     <ClCompile Include="engine\magic\source\SpellBonusUpdater.cpp" />
     <ClCompile Include="engine\magic\source\SpellcastingProcessor.cpp" />
+    <ClCompile Include="engine\magic\source\LesserSpellFailureConsequences.cpp" />
     <ClCompile Include="engine\magic\source\SpellFailureConsequences.cpp" />
     <ClCompile Include="engine\magic\source\SpellFailureConsequencesCoordinator.cpp" />
     <ClCompile Include="engine\magic\source\SpellShapeProcessor.cpp" />
@@ -1280,6 +1282,7 @@
     <ClCompile Include="engine\strings\source\SizeTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SkillTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SpellcastingTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\SpellFailureTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\StatusAilmentTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\StringTable.cpp" />
     <ClCompile Include="engine\strings\source\TextKeys.cpp" />

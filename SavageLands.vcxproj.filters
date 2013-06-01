@@ -2514,13 +2514,7 @@
     <ClInclude Include="world\magic\include\SpellFactory.hpp">
       <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\magic\include\ISpellFailureConsequences.hpp">
-      <Filter>Header Files\engine\magic\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\magic\include\SevereSpellFailureConsequences.hpp">
-      <Filter>Header Files\engine\magic\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\magic\include\SpellFailureConsequences.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\magic\include\SpellFailureConsequencesCoordinator.hpp">
@@ -2528,6 +2522,15 @@
     </ClInclude>
     <ClInclude Include="engine\magic\include\MarginalSpellFailureConsequences.hpp">
       <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\LesserSpellFailureConsequences.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\magic\include\SpellFailureConsequences.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\SpellFailureTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4775,14 +4778,20 @@
     <ClCompile Include="engine\magic\source\SevereSpellFailureConsequences.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\magic\source\SpellFailureConsequences.cpp">
-      <Filter>Source Files\engine\magic\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\magic\source\SpellFailureConsequencesCoordinator.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\magic\source\MarginalSpellFailureConsequences.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\LesserSpellFailureConsequences.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\SpellFailureConsequences.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\SpellFailureTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

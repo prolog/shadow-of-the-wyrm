@@ -1,6 +1,6 @@
 #pragma once
 #include "Creature.hpp"
-#include "ISpellFailureConsequences.hpp"
+#include "SpellFailureConsequences.hpp"
 
 // The SpellFailureConsequencesCoordinator creates an
 // ISpellFailureConsequencesPtr based on the severity of the failure, as
@@ -11,9 +11,11 @@
 class SpellFailureConsequencesCoordinator
 {
   public:
-    void coordinate_failure_consequences(CreaturePtr caster, const int spell_learning_difference);
+    // If this returns true, the spellbook is destroyed as a result of the
+    // consequences.
+    bool coordinate_failure_consequences(CreaturePtr caster, const int spell_learning_difference);
 
   protected:
-    ISpellFailureConsequencesPtr create_spell_failure_consequences(const int spell_failure_difference);
+    SpellFailureConsequencesPtr create_spell_failure_consequences(const int spell_failure_difference);
 };
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "SpellFailureConsequences.hpp"
 
-class SevereSpellFailureConsequences : public SpellFailureConsequences
+class LesserSpellFailureConsequences : public SpellFailureConsequences
 {
   protected:
     virtual float get_damage_pct() const;
