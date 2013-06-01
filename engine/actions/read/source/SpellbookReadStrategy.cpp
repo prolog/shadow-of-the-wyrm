@@ -67,7 +67,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
             // Check the difference to see if it falls within the "something
             // bad happens" realm. (spellbook explodes, big unfriendly creatures
             // summoned, etc.)
-            handle_fallout_if_necessary(creature, difference);
+            spellbook_destroyed = handle_fallout_if_necessary(creature, difference);
           }
 
           if (spellbook_destroyed)
@@ -171,11 +171,13 @@ bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, c
 
 // Check to see if anything bad happens as the result of badly failing a
 // spell learning check.
-void SpellbookReadStrategy::handle_fallout_if_necessary(CreaturePtr creature, const int difference)
+//
+// Return true if the spellbook is destroyed as a result of the consequences.
+bool SpellbookReadStrategy::handle_fallout_if_necessary(CreaturePtr creature, const int difference)
 {
   SpellFailureConsequencesCoordinator sfcc;
 
-  sfcc.coordinate_failure_consequences(creature, difference);
+  return sfcc.coordinate_failure_consequences(creature, difference);
 }
 
 void SpellbookReadStrategy::add_no_magic_skill_message()

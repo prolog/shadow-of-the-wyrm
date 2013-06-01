@@ -1,12 +1,10 @@
 #pragma once
-#include "ISpellFailureConsequences.hpp"
+#include "SpellFailureConsequences.hpp"
 
-class MarginalSpellFailureConsequences : public ISpellFailureConsequences
+class MarginalSpellFailureConsequences : public SpellFailureConsequences
 {
-  public:
-    // Each of these functions does nothing.
-    void damage_caster(CreaturePtr caster);
-    void inflict_status_ailments(CreaturePtr caster);
-    void summon_creatures(CreaturePtr caster);
+  protected:
+    virtual float get_damage_pct() const;
+    virtual std::string get_damage_message_sid() const;
 };
 

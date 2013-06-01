@@ -1,14 +1,15 @@
 #include "SevereSpellFailureConsequences.hpp"
+#include "SpellFailureTextKeys.hpp"
 
-void SevereSpellFailureConsequences::damage_caster(CreaturePtr caster)
+using namespace std;
+
+float SevereSpellFailureConsequences::get_damage_pct() const
 {
+  return 0.8f;
 }
 
-void SevereSpellFailureConsequences::inflict_status_ailments(CreaturePtr caster)
+string SevereSpellFailureConsequences::get_damage_message_sid() const
 {
-}
-
-void SevereSpellFailureConsequences::summon_creatures(CreaturePtr caster)
-{
+  return SpellFailureTextKeys::SPELL_FAILURE_DAMAGE_SEVERE;
 }
 

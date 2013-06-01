@@ -2,30 +2,33 @@
 #include "MarginalSpellFailureConsequences.hpp"
 #include "RNG.hpp"
 #include "SevereSpellFailureConsequences.hpp"
-#include "SpellFailureConsequences.hpp"
+#include "LesserSpellFailureConsequences.hpp"
 #include "SpellFailureConsequencesCoordinator.hpp"
 #include "SpellConstants.hpp"
 
 // Coordinate the spell failure consequences to the caster.  Damage the caster,
 // inflict status ailments, or summon creatures with equal probability.
-void SpellFailureConsequencesCoordinator::coordinate_failure_consequences(CreaturePtr caster, const int spell_failure_difference)
+bool SpellFailureConsequencesCoordinator::coordinate_failure_consequences(CreaturePtr caster, const int spell_failure_difference)
 {
-  ISpellFailureConsequencesPtr consequences = create_spell_failure_consequences(spell_failure_difference);
+  bool spellbook_destroyed = false;
+  SpellFailureConsequencesPtr consequences = create_spell_failure_consequences(spell_failure_difference);
   int rand = RNG::range(1, 3);
 
   switch(rand)
   {
     case 1:
-      consequences->damage_caster(caster);
+      spellbook_destroyed = consequences->damage_caster(caster);
       break;
     case 2:
-      consequences->inflict_status_ailments(caster);
+      spellbook_destroyed = consequences->inflict_status_ailments(caster);
       break;
     case 3:
     default:
-      consequences->summon_creatures(caster);
+      spellbook_destroyed = consequences->summon_creatures(caster);
       break;
   }
+
+  return spellbook_destroyed;
 }
 
 // Create an ISpellFailureConsequences shared_ptr based on the difficulty -
@@ -33,9 +36,9 @@ void SpellFailureConsequencesCoordinator::coordinate_failure_consequences(Creatu
 // good margin, create a "regular" failure consequences ptr; and if it was
 // failed by a huge margin (difficult spell, plus big failure), create a
 // much more severe set of consequences.
-ISpellFailureConsequencesPtr SpellFailureConsequencesCoordinator::create_spell_failure_consequences(const int spell_failure_difference)
+SpellFailureConsequencesPtr SpellFailureConsequencesCoordinator::create_spell_failure_consequences(const int spell_failure_difference)
 {
-  ISpellFailureConsequencesPtr consequences = boost::make_shared<MarginalSpellFailureConsequences>();
+  SpellFailureConsequencesPtr consequences = boost::make_shared<MarginalSpellFailureConsequences>();
 
   if (spell_failure_difference < SpellConstants::SPELL_FAILURE_VERY_BAD)
   {
@@ -43,7 +46,7 @@ ISpellFailureConsequencesPtr SpellFailureConsequencesCoordinator::create_spell_f
   }
   else if (spell_failure_difference < SpellConstants::SPELL_FAILURE_BAD)
   {
-    consequences = boost::make_shared<SpellFailureConsequences>();
+    consequences = boost::make_shared<LesserSpellFailureConsequences>();
   }
 
   return consequences;

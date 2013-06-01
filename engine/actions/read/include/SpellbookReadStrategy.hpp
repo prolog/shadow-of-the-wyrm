@@ -14,7 +14,7 @@ class SpellbookReadStrategy : public ReadStrategy
 
     // Check to see if anything bad happens to the creature due to badly
     // bothing the spell learning checks.
-    void handle_fallout_if_necessary(CreaturePtr creature, const int difference);
+    bool handle_fallout_if_necessary(CreaturePtr creature, const int difference);
 
     // Check to see if the creature has any skill in magic - required to be
     // able to learn spells from spellbooks.

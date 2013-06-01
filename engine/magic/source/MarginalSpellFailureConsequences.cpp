@@ -1,14 +1,14 @@
 #include "MarginalSpellFailureConsequences.hpp"
+#include "SpellFailureTextKeys.hpp"
 
-void MarginalSpellFailureConsequences::damage_caster(CreaturePtr caster)
+using namespace std;
+
+float MarginalSpellFailureConsequences::get_damage_pct() const
 {
+  return 0;
 }
 
-void MarginalSpellFailureConsequences::inflict_status_ailments(CreaturePtr caster)
+string MarginalSpellFailureConsequences::get_damage_message_sid() const
 {
+  return SpellFailureTextKeys::SPELL_FAILURE_DAMAGE_MARGINAL;
 }
-
-void MarginalSpellFailureConsequences::summon_creatures(CreaturePtr caster)
-{
-}
-
