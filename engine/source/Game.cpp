@@ -512,6 +512,11 @@ ActionManager& Game::get_action_manager_ref()
   return actions;
 }
 
+ActionCoordinator& Game::get_action_coordinator_ref()
+{
+  return ac;
+}
+
 DeityActionManager& Game::get_deity_action_manager_ref()
 {
   return deity_actions;

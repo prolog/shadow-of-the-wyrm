@@ -358,6 +358,7 @@
     <ClInclude Include="engine\include\Environment.hpp" />
     <ClInclude Include="engine\include\FileWriter.hpp" />
     <ClInclude Include="engine\include\Game.hpp" />
+    <ClInclude Include="engine\include\GameUtils.hpp" />
     <ClInclude Include="engine\include\Log.hpp" />
     <ClInclude Include="engine\include\Message.hpp" />
     <ClInclude Include="engine\include\MessageManager.hpp" />
@@ -1212,6 +1213,7 @@
     <ClCompile Include="engine\source\Environment.cpp" />
     <ClCompile Include="engine\source\FileWriter.cpp" />
     <ClCompile Include="engine\source\Game.cpp" />
+    <ClCompile Include="engine\source\GameUtils.cpp" />
     <ClCompile Include="engine\source\Log.cpp" />
     <ClCompile Include="engine\source\Message.cpp" />
     <ClCompile Include="engine\source\MessageManager.cpp" />

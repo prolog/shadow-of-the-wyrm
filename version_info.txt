@@ -16,6 +16,10 @@ Savage Lands v0.1.3 "Ealdwulf"
   for scrolls, wands, staves, spellbooks, rings, potions, and amulets 
   after starting a new game.
 
+- Learning of spells via spellbooks for non-Primordial spells.
+  Consequences for particularly bad spell learning checks (e.g., a
+  pilgrim that badly fails after trying to learn a wizard spell).
+
 Savage Lands v0.1.2, "Aethelwalh"
 - Version declared March 28, 2013.  Version finalized April 28, 2013.
 
