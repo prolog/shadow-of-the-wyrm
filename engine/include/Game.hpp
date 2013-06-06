@@ -86,6 +86,8 @@ class Game : public ISerializable
     
     ActionManager& get_action_manager_ref();
 
+    ActionCoordinator& get_action_coordinator_ref();
+
     DeityActionManager& get_deity_action_manager_ref();
 
     ScriptEngine& get_script_engine_ref();
