@@ -1,5 +1,8 @@
+Savage Lands v0.1.4 "Andhun"
+- Version declared June 6, 2013.
+
 Savage Lands v0.1.3 "Ealdwulf"
-- Version declared April 28, 2013.
+- Version declared April 28, 2013.  Version finalized June 6, 2013.
 
 - Bestiary (a la ADOM's monster memory and DCSS's examine command), and a
   few new minor (flavour) creatures.
