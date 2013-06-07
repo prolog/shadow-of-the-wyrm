@@ -29,6 +29,7 @@ class SpellFailureConsequences
     // Dice object), and the vector of creature IDs that represent the 
     // possible creatures.
     virtual std::pair<Dice, std::vector<std::string>> get_summoned_creature_details() const = 0;
+    virtual std::string get_summoned_creatures_message_sid() const = 0;
 };
 
 typedef boost::shared_ptr<SpellFailureConsequences> SpellFailureConsequencesPtr;

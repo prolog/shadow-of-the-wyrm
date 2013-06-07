@@ -21,3 +21,8 @@ pair<Dice, vector<string>> MarginalSpellFailureConsequences::get_summoned_creatu
 
   return no_summoned_creatures;
 }
+
+string MarginalSpellFailureConsequences::get_summoned_creatures_message_sid() const
+{
+  return SpellFailureTextKeys::SPELL_FAILURE_SUMMONED_CREATURES_MARGINAL;
+}

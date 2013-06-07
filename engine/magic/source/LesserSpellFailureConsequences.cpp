@@ -29,3 +29,8 @@ pair<Dice, vector<string>> LesserSpellFailureConsequences::get_summoned_creature
   pair<Dice, vector<string>> summoned_creature_details(num_creatures, creature_ids);
   return summoned_creature_details;
 }
+
+string LesserSpellFailureConsequences::get_summoned_creatures_message_sid() const
+{
+  return SpellFailureTextKeys::SPELL_FAILURE_SUMMONED_CREATURES_LESSER;
+}

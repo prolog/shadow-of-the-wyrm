@@ -5,6 +5,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MapUtils.hpp"
+#include "MessageManager.hpp"
 #include "RNG.hpp"
 #include "SpellFailureConsequences.hpp"
 
@@ -73,6 +74,8 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
   // caster.  Stop if there are no more free tiles available.
   size_t pcreatures_size = possible_creatures.size();
 
+  bool creatures_summoned = false;
+
   if (pcreatures_size > 0)
   {
     while ((cur_creatures_placed < n_creatures) && (!free_tiles.empty()))
@@ -97,7 +100,16 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
       // of summoned creatures.
       free_tiles.erase(free_tiles.begin()+tile_idx);
       cur_creatures_placed++;
+      if (creatures_summoned == false)
+      {
+        creatures_summoned = true;
+      }
     }
+
+    // Add an appropriate message.
+    MessageManager& manager = MessageManager::instance();
+    manager.add_new_message(StringTable::get(get_summoned_creatures_message_sid()));
+    manager.send();
   }
 
   return false;
