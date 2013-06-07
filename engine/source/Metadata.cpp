@@ -31,8 +31,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // South Saxon King known only by an undated charter
-  return "\"Ealdwulf\"";
+  // Alderman of the slain king Aethelwealh.  With Berhthun, Andhun drove 
+  // Caedwalla, prince of Wessex, out of Sussex.
+  return "\"Andhun\"";
 }
 
 string Metadata::get_game_version_synopsis() const
