@@ -414,7 +414,7 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
   
   if (forest_val == CELL_OFF && world_val == CELL_OFF)
   {
-    // 1% chance of forest village
+    // 1% chance of forest village, and 1% chance of a wild orchard.
     rand = RNG::range(1, 100);
     Coordinate c(row, col);
 
@@ -422,6 +422,11 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
     {
       tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FOREST);      
       village_coordinates.insert(c);
+    }
+    else if (rand <= 2)
+    {
+      remove_village_coordinates_if_present(c);
+      tile = TileGenerator::generate(TILE_TYPE_WILD_ORCHARD);
     }
     else
     {
