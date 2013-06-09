@@ -40,3 +40,4 @@
 #include "VillageTile.hpp"
 #include "WheatTile.hpp"
 #include "WorshipSiteTile.hpp"
+#include "WildOrchardTile.hpp"

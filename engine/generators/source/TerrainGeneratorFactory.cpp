@@ -14,6 +14,7 @@
 #include "SeaGenerator.hpp"
 #include "SettlementGeneratorFactory.hpp"
 #include "TerrainGeneratorFactory.hpp"
+#include "WildOrchardGenerator.hpp"
 #include "WorshipSiteGenerator.hpp"
 #include "WorshipSiteTile.hpp"
 #include "VillageTile.hpp"
@@ -52,6 +53,9 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       break;
     case TILE_TYPE_HILLS:
       generator = boost::make_shared<HillsGenerator>(map_exit_id);
+      break;
+    case TILE_TYPE_WILD_ORCHARD:
+      generator = boost::make_shared<WildOrchardGenerator>(map_exit_id);
       break;
     case TILE_TYPE_FOREST:
       generator = boost::make_shared<ForestGenerator>(map_exit_id);

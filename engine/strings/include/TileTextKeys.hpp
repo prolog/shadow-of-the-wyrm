@@ -42,6 +42,7 @@ class TileTextKeys
     static const std::string TILE_DESC_SITE_OF_DEATH;
     static const std::string TILE_DESC_TEMPLE;
     static const std::string TILE_DESC_DAIS;
+    static const std::string TILE_DESC_WILD_ORCHARD;
     
   protected:
     TileTextKeys();

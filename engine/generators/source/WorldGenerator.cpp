@@ -117,8 +117,8 @@ void WorldGenerator::generate_little_island(MapPtr map)
   isen_dun_graveyard->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_THE_BARROWS);
   map->insert(height-3, width-3, isen_dun_graveyard);
 
-  forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
-  map->insert(height-3, width-2, forest_tile);
+  TilePtr wild_orchard_tile = TileGenerator::generate(TILE_TYPE_WILD_ORCHARD);
+  map->insert(height-3, width-2, wild_orchard_tile);
 
   // Siriath's Dungeons
   TilePtr village_dungeon = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED, false);
