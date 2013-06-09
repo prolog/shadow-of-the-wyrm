@@ -2541,6 +2541,9 @@
     <ClInclude Include="engine\generators\include\WildOrchardGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\FruitTreeTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4813,6 +4816,12 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\WildOrchardGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\FruitTreeTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\FruitTreeTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

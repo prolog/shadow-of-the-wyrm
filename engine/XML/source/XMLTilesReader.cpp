@@ -1,11 +1,13 @@
 #include "XMLTilesReader.hpp"
 #include "DisplayTile.hpp"
+#include "tiles.hpp"
 
 using namespace std;
 
 vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_tiles_node)
 {
   vector<DisplayTile> tiles;
+  tiles.reserve(TILE_TYPE_LAST);
 
   if (!xml_configuration_tiles_node.is_null())
   {
@@ -48,6 +50,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     XMLNode pier_node                = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "PierTile");
     XMLNode barrow_node              = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "BarrowTile");
     XMLNode wild_orchard_node        = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "WildOrchardTile");
+    XMLNode fruit_tree_node          = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "FruitTreeTile");
 
     // These push back items into the tile details in order, so if you're defining
     // a new tile type, add at appropriate place!
@@ -90,6 +93,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     parse_tile_text_details(tiles, pier_node);
     parse_tile_text_details(tiles, barrow_node);
     parse_tile_text_details(tiles, wild_orchard_node);
+    parse_tile_text_details(tiles, fruit_tree_node);
   }
 
   return tiles;

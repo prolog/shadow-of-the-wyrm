@@ -14,6 +14,7 @@
 #include "DungeonComplexTile.hpp"
 #include "FieldTile.hpp"
 #include "ForestTile.hpp"
+#include "FruitTreeTile.hpp"
 #include "GraveTile.hpp"
 #include "GraveyardTile.hpp"
 #include "KeepTile.hpp"

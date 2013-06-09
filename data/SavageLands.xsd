@@ -116,6 +116,8 @@
 			<xs:element name="DaisTile" type="tns:Tile"/>
 			<xs:element name="PierTile" type="tns:Tile"/>
 			<xs:element name="BarrowTile" type="tns:Tile"/>
+			<xs:element name="WildOrchardTile" type="tns:Tile"/>
+			<xs:element name="FruitTreeTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -875,7 +877,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="35"/>
+		<xs:maxInclusive value="39"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Rarity">
