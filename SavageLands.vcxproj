@@ -329,6 +329,7 @@
     <ClInclude Include="engine\generators\include\StreamGenerator.hpp" />
     <ClInclude Include="engine\generators\include\TerrainGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\TileGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\WildOrchardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\WorldGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\HamletGenerator.hpp" />
@@ -716,6 +717,7 @@
     <ClInclude Include="world\tiles\include\VillageTile.hpp" />
     <ClInclude Include="world\tiles\include\WeedsTile.hpp" />
     <ClInclude Include="world\tiles\include\WheatTile.hpp" />
+    <ClInclude Include="world\tiles\include\WildOrchardTile.hpp" />
     <ClInclude Include="world\tiles\include\WorldMapTile.hpp" />
     <ClInclude Include="world\tiles\include\WorshipSiteTile.hpp" />
     <ClInclude Include="world\tiles\include\WorshipSiteTypes.hpp" />
@@ -1103,6 +1105,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\generators\source\WildOrchardGenerator.cpp" />
     <ClCompile Include="engine\generators\source\WorldGenerator.cpp" />
     <ClCompile Include="engine\generators\worship_sites\source\CathedralGenerator.cpp" />
     <ClCompile Include="engine\generators\worship_sites\source\ChurchGenerator.cpp" />
@@ -1936,10 +1939,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\WildOrchardTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\UpStaircaseTile.cpp" />
     <ClCompile Include="world\tiles\source\VillageTile.cpp" />
     <ClCompile Include="world\tiles\source\WeedsTile.cpp" />
     <ClCompile Include="world\tiles\source\WheatTile.cpp" />
+    <ClCompile Include="world\tiles\source\WildOrchardTile.cpp" />
     <ClCompile Include="world\tiles\source\WorldMapTile.cpp" />
     <ClCompile Include="world\tiles\source\WorshipSiteTile.cpp" />
   </ItemGroup>

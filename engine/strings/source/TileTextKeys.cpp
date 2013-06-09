@@ -48,3 +48,4 @@ const string TileTextKeys::TILE_DESC_LIBRARY        = "TILE_DESC_LIBRARY";
 const string TileTextKeys::TILE_DESC_SITE_OF_DEATH  = "TILE_DESC_SITE_OF_DEATH";
 const string TileTextKeys::TILE_DESC_TEMPLE         = "TILE_DESC_TEMPLE";
 const string TileTextKeys::TILE_DESC_DAIS           = "TILE_DESC_DAIS";
+const string TileTextKeys::TILE_DESC_WILD_ORCHARD   = "TILE_DESC_WILD_ORCHARD";
