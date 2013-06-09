@@ -688,6 +688,7 @@
     <ClInclude Include="world\tiles\include\DungeonTile.hpp" />
     <ClInclude Include="world\tiles\include\FieldTile.hpp" />
     <ClInclude Include="world\tiles\include\ForestTile.hpp" />
+    <ClInclude Include="world\tiles\include\FruitTreeTile.hpp" />
     <ClInclude Include="world\tiles\include\GraveTile.hpp" />
     <ClInclude Include="world\tiles\include\GraveyardTile.hpp" />
     <ClInclude Include="world\tiles\include\HillsTile.hpp" />
@@ -1755,6 +1756,7 @@
     <ClCompile Include="world\tiles\source\DungeonTile.cpp" />
     <ClCompile Include="world\tiles\source\FieldTile.cpp" />
     <ClCompile Include="world\tiles\source\ForestTile.cpp" />
+    <ClCompile Include="world\tiles\source\FruitTreeTile.cpp" />
     <ClCompile Include="world\tiles\source\GraveTile.cpp" />
     <ClCompile Include="world\tiles\source\GraveyardTile.cpp" />
     <ClCompile Include="world\tiles\source\HillsTile.cpp" />
@@ -1838,6 +1840,9 @@
     <ClCompile Include="world\tiles\source\unit_tests\ForestTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\FruitTreeTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\GraveTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

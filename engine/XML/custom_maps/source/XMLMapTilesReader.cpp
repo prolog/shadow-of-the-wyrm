@@ -76,6 +76,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = TileGenerator::generate(TILE_TYPE_TREE);
   }
+  else if (xml_tile == 'F')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_FRUIT_TREE);
+  }
   else if (xml_tile == ',')
   {
     tile = TileGenerator::generate(TILE_TYPE_FIELD);

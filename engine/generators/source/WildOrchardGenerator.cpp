@@ -52,9 +52,13 @@ void WildOrchardGenerator::add_map_features(MapPtr map)
       {
         current_tile = TileGenerator::generate(TILE_TYPE_WEEDS);
       }
-      else if (shrub < 15)
+      else if (shrub < 12)
       {
         current_tile = TileGenerator::generate(TILE_TYPE_TREE);        
+      }
+      else if (shrub < 15)
+      {
+        current_tile = TileGenerator::generate(TILE_TYPE_FRUIT_TREE);
       }
       // Wild Orchards are much sparser than regular forests, and require
       // a lot of sunlight - therefore, they are mostly fields.
