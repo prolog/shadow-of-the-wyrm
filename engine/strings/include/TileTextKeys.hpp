@@ -44,6 +44,7 @@ class TileTextKeys
     static const std::string TILE_DESC_DAIS;
     static const std::string TILE_DESC_WILD_ORCHARD;
     static const std::string TILE_DESC_FRUIT_TREE;
+    static const std::string TILE_DESC_EVERGREEN_TREE;
     
   protected:
     TileTextKeys();

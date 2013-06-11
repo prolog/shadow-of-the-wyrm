@@ -686,6 +686,7 @@
     <ClInclude Include="world\tiles\include\DownStaircaseTile.hpp" />
     <ClInclude Include="world\tiles\include\DungeonComplexTile.hpp" />
     <ClInclude Include="world\tiles\include\DungeonTile.hpp" />
+    <ClInclude Include="world\tiles\include\EvergreenTreeTile.hpp" />
     <ClInclude Include="world\tiles\include\FieldTile.hpp" />
     <ClInclude Include="world\tiles\include\ForestTile.hpp" />
     <ClInclude Include="world\tiles\include\FruitTreeTile.hpp" />
@@ -1754,6 +1755,7 @@
     <ClCompile Include="world\tiles\source\DownStaircaseTile.cpp" />
     <ClCompile Include="world\tiles\source\DungeonComplexTile.cpp" />
     <ClCompile Include="world\tiles\source\DungeonTile.cpp" />
+    <ClCompile Include="world\tiles\source\EvergreenTreeTile.cpp" />
     <ClCompile Include="world\tiles\source\FieldTile.cpp" />
     <ClCompile Include="world\tiles\source\ForestTile.cpp" />
     <ClCompile Include="world\tiles\source\FruitTreeTile.cpp" />
@@ -1832,6 +1834,9 @@
     <ClCompile Include="world\tiles\source\unit_tests\DungeonTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\EvergreenTreeTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\FieldTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

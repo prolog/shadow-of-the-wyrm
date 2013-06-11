@@ -154,6 +154,9 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       break;
     case TILE_TYPE_FRUIT_TREE:
       result_tile = boost::make_shared<FruitTreeTile>();
+      break;
+    case TILE_TYPE_EVERGREEN_TREE:
+      result_tile = boost::make_shared<EvergreenTreeTile>();
     default:
       break;
   }

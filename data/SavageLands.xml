@@ -4134,6 +4134,12 @@
 				</Colours>
 			</Text>
 		</FruitTreeTile>
+		<EvergreenTreeTile>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>6</Colour>
+			</Text>
+		</EvergreenTreeTile>
 	</Tiles>
 	<Items>
 		<Armours>

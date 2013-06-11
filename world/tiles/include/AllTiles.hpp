@@ -12,6 +12,7 @@
 #include "DesertTile.hpp"
 #include "DungeonTile.hpp"
 #include "DungeonComplexTile.hpp"
+#include "EvergreenTreeTile.hpp"
 #include "FieldTile.hpp"
 #include "ForestTile.hpp"
 #include "FruitTreeTile.hpp"
