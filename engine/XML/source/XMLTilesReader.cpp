@@ -51,6 +51,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     XMLNode barrow_node              = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "BarrowTile");
     XMLNode wild_orchard_node        = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "WildOrchardTile");
     XMLNode fruit_tree_node          = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "FruitTreeTile");
+    XMLNode evergreen_tree_node      = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "EvergreenTreeTile");
 
     // These push back items into the tile details in order, so if you're defining
     // a new tile type, add at appropriate place!
@@ -94,6 +95,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     parse_tile_text_details(tiles, barrow_node);
     parse_tile_text_details(tiles, wild_orchard_node);
     parse_tile_text_details(tiles, fruit_tree_node);
+    parse_tile_text_details(tiles, evergreen_tree_node);
   }
 
   return tiles;

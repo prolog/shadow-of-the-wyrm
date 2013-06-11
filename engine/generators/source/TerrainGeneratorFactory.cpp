@@ -130,6 +130,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TILE_TYPE_CAIRN:
     case TILE_TYPE_TREE:
     case TILE_TYPE_FRUIT_TREE:
+    case TILE_TYPE_EVERGREEN_TREE:
     case TILE_TYPE_ROAD:
     case TILE_TYPE_RIVER:
     case TILE_TYPE_SHOALS:

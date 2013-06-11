@@ -51,7 +51,8 @@ enum TileType
   TILE_TYPE_BARROW    = 37,
   TILE_TYPE_WILD_ORCHARD = 38,
   TILE_TYPE_FRUIT_TREE = 39,
-  TILE_TYPE_LAST      = 39
+  TILE_TYPE_EVERGREEN_TREE = 40,
+  TILE_TYPE_LAST      = 40
 };
 
 inline TileType operator--(TileType &tt, int)

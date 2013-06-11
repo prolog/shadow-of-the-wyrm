@@ -50,3 +50,4 @@ const string TileTextKeys::TILE_DESC_TEMPLE         = "TILE_DESC_TEMPLE";
 const string TileTextKeys::TILE_DESC_DAIS           = "TILE_DESC_DAIS";
 const string TileTextKeys::TILE_DESC_WILD_ORCHARD   = "TILE_DESC_WILD_ORCHARD";
 const string TileTextKeys::TILE_DESC_FRUIT_TREE     = "TILE_DESC_FRUIT_TREE";
+const string TileTextKeys::TILE_DESC_EVERGREEN_TREE = "TILE_DESC_EVERGREEN_TREE";
