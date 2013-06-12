@@ -7,6 +7,7 @@
 #include "Game.hpp"
 #include "GraveyardGeneratorFactory.hpp"
 #include "HillsGenerator.hpp"
+#include "MapProperties.hpp"
 #include "MarshGenerator.hpp"
 #include "MountainsGenerator.hpp"
 #include "RaceManager.hpp"
@@ -17,6 +18,7 @@
 #include "WildOrchardGenerator.hpp"
 #include "WorshipSiteGenerator.hpp"
 #include "WorshipSiteTile.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 #include "VillageTile.hpp"
 
 using namespace std;
@@ -156,6 +158,15 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
   }
 
   copy_properties(tile, generator);
+
+  // Set world map location into the generator, in case it is needed to
+  // generate map details.
+  Game& game = Game::instance();
+  WorldPtr world = game.get_current_world();
+  MapPtr world_map = world->get_world(game.get_map_registry_ref());
+  Coordinate c = world_map->get_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION);
+
+  generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION, Map::make_map_key(c.first, c.second));
   
   return generator;
 }
