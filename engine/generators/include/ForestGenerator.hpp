@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Generator.hpp"
+#include "ForestCalculator.hpp"
 
 class ForestGenerator : public SL::Generator
 {
@@ -17,7 +18,10 @@ class ForestGenerator : public SL::Generator
     virtual MapPtr add_random_stream_or_springs(MapPtr map);
     virtual MapPtr add_random_stream(MapPtr map);
     virtual MapPtr add_random_springs(MapPtr map);
+    virtual TilePtr generate_tree_based_on_world_location(const int world_map_height, const Coordinate& world_location, const int pct_chance_evergreen);
 
     const int PCT_CHANCE_FOREST_STREAM;
     const int PCT_CHANCE_FOREST_SPRINGS;
+
+    ForestCalculator fc;
 };

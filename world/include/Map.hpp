@@ -90,7 +90,6 @@ class Map : public ISerializable
     bool deserialize(std::istream& stream);
 
     static TileKey make_map_key(const int row, const int col);
-    static Coordinate convert_map_key_to_coordinate(const TileKey& map_key);
 
 		void create_creatures();		
 

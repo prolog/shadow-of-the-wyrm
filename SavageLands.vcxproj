@@ -155,6 +155,7 @@
     <ClInclude Include="engine\calculators\include\DamageCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ForestCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HitPointsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HPRegenerationCalculator.hpp" />
@@ -820,6 +821,7 @@
     <ClCompile Include="engine\calculators\source\DamageCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\DangerLevelCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\EvadeCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ForestCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HitPointsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HPRegenerationCalculator.cpp" />
@@ -859,6 +861,9 @@
     <ClCompile Include="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ForestCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\HeavyWeaponToHitCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

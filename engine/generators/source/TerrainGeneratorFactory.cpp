@@ -1,5 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "CavernGenerator.hpp"
+#include "Conversion.hpp"
 #include "DesertGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
@@ -167,7 +168,8 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
   Coordinate c = world_map->get_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION);
 
   generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION, Map::make_map_key(c.first, c.second));
-  
+  generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT, Integer::to_string(world_map->size().get_y()));
+
   return generator;
 }
 

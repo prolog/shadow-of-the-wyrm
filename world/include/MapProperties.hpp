@@ -10,6 +10,7 @@ class MapProperties
     // Can be used to determine how to generate certain map features (such as
     // proportion of evergreen vs. broadleaf trees).
     static const std::string MAP_PROPERTIES_WORLD_MAP_LOCATION;
+    static const std::string MAP_PROPERTIES_WORLD_MAP_HEIGHT;
 
   protected:
     MapProperties();
