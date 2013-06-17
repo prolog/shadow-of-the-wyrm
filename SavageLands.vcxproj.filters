@@ -616,6 +616,18 @@
     <Filter Include="Source Files\engine\actions\read\source">
       <UniqueIdentifier>{f4f531c6-c079-42c2-af76-2db524a896ca}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\generators\tile_config">
+      <UniqueIdentifier>{5e27b2dc-0922-460a-9170-9d1468ff8445}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\tile_config\include">
+      <UniqueIdentifier>{5c623268-36b1-41a3-b6d7-daf7b9e3c59c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\tile_config">
+      <UniqueIdentifier>{9ccf4fda-9bff-442d-b385-80534433b5ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\tile_config\source">
+      <UniqueIdentifier>{08c44e32-1cc4-441c-8066-7f4ce5b8853b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -2549,6 +2561,24 @@
     </ClInclude>
     <ClInclude Include="engine\calculators\include\ForestCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\DefaultTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\ITileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\TileConfigurationFactory.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\CairnTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\FieldTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\TreeTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4840,6 +4870,21 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ForestCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\DefaultTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\TileConfigurationFactory.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\CairnTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\FieldTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\TreeTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

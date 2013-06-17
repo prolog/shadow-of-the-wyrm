@@ -1,12 +1,10 @@
 #include <boost/make_shared.hpp>
 #include "Log.hpp"
+#include "TileConfigurationFactory.hpp"
 #include "TileGenerator.hpp"
 #include "ItemManager.hpp"
 #include "tiles.hpp"
 #include "AllTiles.hpp"
-
-// Trees have a small chance of having a branch generated on the tile.
-#include "RNG.hpp"
 
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const bool generate_random_items)
 {
@@ -18,14 +16,8 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       Log::instance().log("Attempting to generate an undefined tile type");
       break;
     case TILE_TYPE_FIELD:
-    {
       result_tile = boost::make_shared<FieldTile>();
-      if (generate_random_items)
-      {
-        ItemManager::create_item_with_probability(1, 200, result_tile->get_items(), ItemIdKeys::ITEM_ID_ROCK);
-      } 
       break;
-    }
     case TILE_TYPE_SCRUB:
       result_tile = boost::make_shared<ScrubTile>();
       break;
@@ -33,23 +25,11 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       result_tile = boost::make_shared<WheatTile>();
       break;
     case TILE_TYPE_CAIRN:
-    {
       result_tile = boost::make_shared<CairnTile>();
-      if (generate_random_items)
-      {
-        ItemManager::create_item_with_probability(1, 5, result_tile->get_items(), ItemIdKeys::ITEM_ID_ROCK);
-      }
       break;
-    }
     case TILE_TYPE_TREE:
-    {
       result_tile = boost::make_shared<TreeTile>();
-      if (generate_random_items)
-      {
-        ItemManager::create_item_with_probability(1, 100, result_tile->get_items(), ItemIdKeys::ITEM_ID_BRANCH);
-      } 
       break;      
-    }
     case TILE_TYPE_DESERT:
       result_tile = boost::make_shared<DesertTile>();
       break;
@@ -159,6 +139,17 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       result_tile = boost::make_shared<EvergreenTreeTile>();
     default:
       break;
+  }
+
+  if (generate_random_items)
+  {
+    TileConfigurationFactory tile_config_factory;
+    ITileConfigurationPtr tile_config = tile_config_factory.create_tile_configuration(tile_type);
+
+    if (tile_config)
+    {
+      tile_config->configure(result_tile);
+    }
   }
 
   return result_tile;
