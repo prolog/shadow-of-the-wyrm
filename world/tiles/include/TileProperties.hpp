@@ -24,6 +24,9 @@ class TileProperties
     // increment = "1", the player's going down the stairs.
     static const std::string TILE_PROPERTY_DEPTH_INCREMENT;
 
+    // Used to identify the species of the tree/bush/etc tile.
+    static const std::string TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID;
+
   protected:
     TileProperties();
     ~TileProperties();

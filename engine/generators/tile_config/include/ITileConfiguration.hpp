@@ -13,7 +13,6 @@ class ITileConfiguration
     virtual ~ITileConfiguration() {};
     
     virtual void configure(TilePtr tile) const = 0;
-    virtual void update_for_season(TilePtr tile, ISeasonPtr season) const = 0;
 };
 
 typedef boost::shared_ptr<ITileConfiguration> ITileConfigurationPtr;
