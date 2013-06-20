@@ -1,5 +1,7 @@
 #pragma once
+#include <boost/unordered_map.hpp>
 #include "DefaultTileConfiguration.hpp"
+#include "TileIDs.hpp"
 
 class TreeTileConfiguration : public DefaultTileConfiguration
 {
@@ -9,9 +11,11 @@ class TreeTileConfiguration : public DefaultTileConfiguration
     virtual void configure(TilePtr tile) const;
 
   protected:
-    virtual std::string get_random_species() const;
+    virtual TreeSpeciesID get_random_species() const;
+    virtual void configure_additional_features(TilePtr tile, const TreeSpeciesID tree_species_id) const;
 
-    virtual void initialize_tree_species();
-    std::vector<std::string> tree_species_description_sids;
+    virtual void initialize_tree_species_details();
+
+    std::vector<TreeSpeciesID> tree_species_ids;
+    boost::unordered_map<TreeSpeciesID, std::string> tree_species_description_sids;
 };
-
