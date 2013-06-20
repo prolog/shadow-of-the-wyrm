@@ -46,17 +46,20 @@ bool Map::operator==(const Map& map) const
 
   if (result)
   {
+    // The search needs to be done this way because the TilesContainer is
+    // a boost::unordered_map, and therefore can't guarantee ordering of
+    // keys.
     TilesContainer tiles_cont = map.tiles;
     TilesContainer::const_iterator t_it = tiles.begin();
     TilesContainer::const_iterator t_it2 = tiles_cont.begin();
 
     while (t_it != tiles.end())
     {
-      string foo = t_it->first;
-      result = result && (*(t_it->second) == *(t_it2->second));
+      string tile_key = t_it->first;
+      TilesContainer::const_iterator t_it2 = tiles_cont.find(tile_key);
+      result = result && (t_it2 != tiles_cont.end()) && (*(t_it->second) == *(t_it2->second));
 
       t_it++;
-      t_it2++;
     }
   }
 
