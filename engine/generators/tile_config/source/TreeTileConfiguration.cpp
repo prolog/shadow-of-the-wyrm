@@ -1,39 +1,61 @@
 #include "TreeTileConfiguration.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
+#include "TileDescriptionKeys.hpp"
 
 using namespace std;
 
 TreeTileConfiguration::TreeTileConfiguration()
 {
-  if (tree_species_description_sids.empty())
+  if (tree_species_ids.empty())
   {
-    initialize_tree_species();
+    initialize_tree_species_details();
   }
 }
 
-void TreeTileConfiguration::initialize_tree_species()
+void TreeTileConfiguration::initialize_tree_species_details()
 {
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_ASPEN");
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_MAPLE");
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_YEW");
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_OAK");
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_MOUNTAIN_ASH");
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_ASH");
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_BIRCH");
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_CYPRESS");
-  tree_species_description_sids.push_back("FLORA_TILE_DESC_WALNUT");
+  tree_species_ids.clear();
+  tree_species_description_sids.clear();
+
+  tree_species_ids.push_back(TREE_SPECIES_ASPEN);
+  tree_species_ids.push_back(TREE_SPECIES_MAPLE);
+  tree_species_ids.push_back(TREE_SPECIES_YEW);
+  tree_species_ids.push_back(TREE_SPECIES_OAK);
+  tree_species_ids.push_back(TREE_SPECIES_MOUNTAIN_ASH);
+  tree_species_ids.push_back(TREE_SPECIES_ASH);
+  tree_species_ids.push_back(TREE_SPECIES_BIRCH);
+  tree_species_ids.push_back(TREE_SPECIES_CYPRESS);
+  tree_species_ids.push_back(TREE_SPECIES_WALNUT);
+
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_ASPEN, TileDescriptionKeys::FLORA_TILE_DESC_ASPEN));
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_MAPLE, TileDescriptionKeys::FLORA_TILE_DESC_MAPLE));
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_YEW, TileDescriptionKeys::FLORA_TILE_DESC_YEW));
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_OAK, TileDescriptionKeys::FLORA_TILE_DESC_OAK));
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_MOUNTAIN_ASH, TileDescriptionKeys::FLORA_TILE_DESC_MOUNTAIN_ASH));
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_ASH, TileDescriptionKeys::FLORA_TILE_DESC_ASH));
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_BIRCH, TileDescriptionKeys::FLORA_TILE_DESC_BIRCH));
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_CYPRESS, TileDescriptionKeys::FLORA_TILE_DESC_CYPRESS));
+  tree_species_description_sids.insert(make_pair(TREE_SPECIES_WALNUT, TileDescriptionKeys::FLORA_TILE_DESC_WALNUT));
 }
 
-string TreeTileConfiguration::get_random_species() const
+TreeSpeciesID TreeTileConfiguration::get_random_species() const
 {
-  return tree_species_description_sids.at(RNG::range(0, tree_species_description_sids.size() - 1));
+  return tree_species_ids.at(RNG::range(0, tree_species_ids.size() - 1));
 }
 
 void TreeTileConfiguration::configure(TilePtr tile) const
 {
   ItemManager::create_item_with_probability(1, 100, tile->get_items(), ItemIdKeys::ITEM_ID_BRANCH);
 
-  tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, get_random_species());
+  TreeSpeciesID species_id = get_random_species();
+  tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, tree_species_description_sids.find(species_id)->second);
+
+  configure_additional_features(tile, species_id);
 }
 
+// Configure any additional features of the tree - this will typically be
+// overridden by any subclasses.
+void TreeTileConfiguration::configure_additional_features(TilePtr tile, const TreeSpeciesID tree_species_id) const
+{
+}

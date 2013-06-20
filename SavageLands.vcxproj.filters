@@ -2580,6 +2580,9 @@
     <ClInclude Include="engine\generators\tile_config\include\TreeTileConfiguration.hpp">
       <Filter>Header Files\engine\generators\tile_config\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\strings\include\TileDescriptionKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4885,6 +4888,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\tile_config\source\TreeTileConfiguration.cpp">
       <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\TileDescriptionKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

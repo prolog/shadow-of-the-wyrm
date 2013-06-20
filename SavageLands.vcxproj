@@ -472,6 +472,7 @@
     <ClInclude Include="engine\strings\include\TextKeys.hpp" />
     <ClInclude Include="engine\strings\include\TextMessages.hpp" />
     <ClInclude Include="engine\strings\include\TileDangerConfirmationKeys.hpp" />
+    <ClInclude Include="engine\strings\include\TileDescriptionKeys.hpp" />
     <ClInclude Include="engine\strings\include\TileExtraDescriptionKeys.hpp" />
     <ClInclude Include="engine\strings\include\TileTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\WorldMapLocationTextKeys.hpp" />
@@ -1311,6 +1312,7 @@
     <ClCompile Include="engine\strings\source\TextKeys.cpp" />
     <ClCompile Include="engine\strings\source\TextMessages.cpp" />
     <ClCompile Include="engine\strings\source\TileDangerConfirmationKeys.cpp" />
+    <ClCompile Include="engine\strings\source\TileDescriptionKeys.cpp" />
     <ClCompile Include="engine\strings\source\TileExtraDescriptionKeys.cpp" />
     <ClCompile Include="engine\strings\source\TileTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\WorldMapLocationTextKeys.cpp" />
