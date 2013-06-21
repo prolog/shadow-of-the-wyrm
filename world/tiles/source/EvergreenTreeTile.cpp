@@ -1,11 +1,13 @@
 #include "EvergreenTreeTile.hpp"
 
+using namespace std;
+
 TileType EvergreenTreeTile::get_tile_type() const
 {
   return TILE_TYPE_EVERGREEN_TREE;
 }
 
-std::string EvergreenTreeTile::get_tile_description_sid() const
+string EvergreenTreeTile::get_default_tree_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_EVERGREEN_TREE;
 }

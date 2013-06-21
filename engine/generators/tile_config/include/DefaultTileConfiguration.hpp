@@ -5,5 +5,6 @@ class DefaultTileConfiguration : public ITileConfiguration
 {
   public:
     virtual void configure(TilePtr tile) const;
+    virtual void initialize();
 };
 

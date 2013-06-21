@@ -342,7 +342,9 @@
     <ClInclude Include="engine\generators\settlements\include\WalledSettlementGenerator.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\CairnTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\DefaultTileConfiguration.hpp" />
+    <ClInclude Include="engine\generators\tile_config\include\EvergreenTreeTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\FieldTileConfiguration.hpp" />
+    <ClInclude Include="engine\generators\tile_config\include\FruitTreeTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\ITileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TileConfigurationFactory.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TreeTileConfiguration.hpp" />
@@ -1123,7 +1125,9 @@
     <ClCompile Include="engine\generators\source\WorldGenerator.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\CairnTileConfiguration.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\DefaultTileConfiguration.cpp" />
+    <ClCompile Include="engine\generators\tile_config\source\EvergreenTreeTileConfiguration.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\FieldTileConfiguration.cpp" />
+    <ClCompile Include="engine\generators\tile_config\source\FruitTreeTileConfiguration.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\TileConfigurationFactory.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\TreeTileConfiguration.cpp" />
     <ClCompile Include="engine\generators\worship_sites\source\CathedralGenerator.cpp" />

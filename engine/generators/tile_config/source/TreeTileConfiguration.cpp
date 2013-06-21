@@ -5,19 +5,23 @@
 
 using namespace std;
 
-TreeTileConfiguration::TreeTileConfiguration()
+void TreeTileConfiguration::initialize()
 {
   if (tree_species_ids.empty())
   {
+    clear_tree_species_details();
     initialize_tree_species_details();
   }
 }
 
-void TreeTileConfiguration::initialize_tree_species_details()
+void TreeTileConfiguration::clear_tree_species_details()
 {
   tree_species_ids.clear();
   tree_species_description_sids.clear();
+}
 
+void TreeTileConfiguration::initialize_tree_species_details()
+{
   tree_species_ids.push_back(TREE_SPECIES_ASPEN);
   tree_species_ids.push_back(TREE_SPECIES_MAPLE);
   tree_species_ids.push_back(TREE_SPECIES_YEW);

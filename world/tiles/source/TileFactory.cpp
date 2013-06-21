@@ -36,7 +36,7 @@ TilePtr TileFactory::create_tile(const ClassIdentifier cl_id)
 
 void TileFactory::initialize_tile_map()
 {
-  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 40);
+  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 41);
 
   TilePtr barracks = boost::make_shared<BarracksTile>();
   TilePtr barrow   = boost::make_shared<BarrowTile>();

@@ -13,6 +13,9 @@ class ITileConfiguration
     virtual ~ITileConfiguration() {};
     
     virtual void configure(TilePtr tile) const = 0;
+
+    // Initializes any members of the TileConfiguration.
+    virtual void initialize() = 0;
 };
 
 typedef boost::shared_ptr<ITileConfiguration> ITileConfigurationPtr;

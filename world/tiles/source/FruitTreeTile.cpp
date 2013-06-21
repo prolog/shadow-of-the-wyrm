@@ -1,11 +1,13 @@
 #include "FruitTreeTile.hpp"
 
+using namespace std;
+
 TileType FruitTreeTile::get_tile_type() const
 {
   return TILE_TYPE_FRUIT_TREE;
 }
 
-std::string FruitTreeTile::get_tile_description_sid() const
+string FruitTreeTile::get_default_tree_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_FRUIT_TREE;
 }

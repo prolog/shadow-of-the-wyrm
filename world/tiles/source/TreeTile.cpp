@@ -16,6 +16,11 @@ std::string TreeTile::get_tile_description_sid() const
     return tile_desc_sid;
   }
 
+  return get_default_tree_tile_description_sid();
+}
+
+std::string TreeTile::get_default_tree_tile_description_sid() const
+{
   return TileTextKeys::TILE_DESC_TREE;
 }
 
