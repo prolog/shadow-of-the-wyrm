@@ -1,6 +1,8 @@
 #include <boost/make_shared.hpp>
 #include "CairnTileConfiguration.hpp"
+#include "EvergreenTreeTileConfiguration.hpp"
 #include "FieldTileConfiguration.hpp"
+#include "FruitTreeTileConfiguration.hpp"
 #include "TreeTileConfiguration.hpp"
 #include "TileConfigurationFactory.hpp"
 
@@ -20,7 +22,7 @@ TileConfigurationFactory::TileConfigurationFactory()
 // types.
 void TileConfigurationFactory::initialize_tile_configuration_map()
 {
-  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 40);
+  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 41);
 
   ITileConfigurationPtr field_config = boost::make_shared<FieldTileConfiguration>(); 
   tile_configurations[TILE_TYPE_FIELD] = field_config;
@@ -30,7 +32,24 @@ void TileConfigurationFactory::initialize_tile_configuration_map()
 
   ITileConfigurationPtr tree_config = boost::make_shared<TreeTileConfiguration>();
   tile_configurations[TILE_TYPE_TREE] = tree_config;
-  tile_configurations[TILE_TYPE_EVERGREEN_TREE] = tree_config;
+
+  ITileConfigurationPtr evergreen_tree_config = boost::make_shared<EvergreenTreeTileConfiguration>();
+  tile_configurations[TILE_TYPE_EVERGREEN_TREE] = evergreen_tree_config;
+
+  ITileConfigurationPtr fruit_tree_config = boost::make_shared<FruitTreeTileConfiguration>();
+  tile_configurations[TILE_TYPE_FRUIT_TREE] = fruit_tree_config;
+
+  // Now that the configurations have been created, loop over them
+  // and initialize them.
+  for (TileType t = TILE_TYPE_FIRST; t < TILE_TYPE_LAST; t++)
+  {
+    ITileConfigurationPtr tile_config = tile_configurations[t];
+    
+    if (tile_config)
+    {
+      tile_config->initialize();
+    }
+  }
 }
 
 // Create the tile configuration shared pointer for the given tile type.
@@ -46,6 +65,7 @@ ITileConfigurationPtr TileConfigurationFactory::create_tile_configuration(const 
   if (!tile_config)
   {
     tile_config = boost::make_shared<DefaultTileConfiguration>();
+    tile_config->initialize();
     tile_configurations[tile_type] = tile_config;
   }
 

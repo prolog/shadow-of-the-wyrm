@@ -16,6 +16,19 @@ class TileDescriptionKeys
     static const std::string FLORA_TILE_DESC_BIRCH;
     static const std::string FLORA_TILE_DESC_CYPRESS;
     static const std::string FLORA_TILE_DESC_WALNUT;
+
+    // Used by TILE_TYPE_EVERGREEN_TREE:
+    static const std::string FLORA_TILE_DESC_FIR;
+    static const std::string FLORA_TILE_DESC_CEDAR;
+    static const std::string FLORA_TILE_DESC_PINE;
+    static const std::string FLORA_TILE_DESC_SPRUCE;
+
+    // Used by TILE_TYPE_FRUIT_TREE:
+    static const std::string FLORA_TILE_DESC_APPLE;
+    static const std::string FLORA_TILE_DESC_CHERRY;
+    static const std::string FLORA_TILE_DESC_PEACH;
+    static const std::string FLORA_TILE_DESC_PLUM;
+    static const std::string FLORA_TILE_DESC_PEAR;
         
   protected:
     TileDescriptionKeys();
