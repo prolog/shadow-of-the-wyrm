@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "Game.hpp"
 #include "Log.hpp"
 #include "TileConfigurationFactory.hpp"
 #include "TileGenerator.hpp"
@@ -143,16 +144,35 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
 
   if (generate_random_items)
   {
-    TileConfigurationFactory tile_config_factory;
-    ITileConfigurationPtr tile_config = tile_config_factory.create_tile_configuration(tile_type);
-
-    if (tile_config)
-    {
-      tile_config->configure(result_tile);
-    }
+    configure_tile(result_tile);
   }
 
   return result_tile;
+}
+
+void TileGenerator::configure_tile(TilePtr result_tile)
+{
+  Season season = SEASON_SUMMER;
+  Game& game = Game::instance();
+  WorldPtr world = game.get_current_world();
+
+  if (world)
+  {
+    ISeasonPtr seasonp = world->get_calendar().get_season();
+      
+    if (seasonp)
+    {
+      season = seasonp->get_season();
+    }
+  }
+
+  TileConfigurationFactory tile_config_factory;
+  ITileConfigurationPtr tile_config = tile_config_factory.create_tile_configuration(result_tile->get_tile_type());
+
+  if (tile_config)
+  {
+    tile_config->configure(result_tile, season);
+  }
 }
 
 // Generate an appropriate worship site, based on the given
@@ -160,6 +180,9 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
 // - Good: Churches
 // - Neutral: Temples
 // - Evil: Sacrifice Sites
+//
+// These are only ever generated on the world map, so ITileConfigurationPtrs
+// are not needed.
 WorshipSiteTilePtr TileGenerator::generate_worship_site_tile(const AlignmentRange alignment, const std::string& deity_id, const WorshipSiteType worship_site_type)
 {
   std::string s_did = deity_id;

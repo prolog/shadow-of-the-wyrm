@@ -4925,6 +4925,76 @@
 			</Missile>
 		</Ammunition>
 		<Foodstuffs>
+			<Food id="_apple">
+				<DescriptionSID>APPLE_SID</DescriptionSID>
+				<UsageDescriptionSID>APPLE_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>6</Ounces></Weight>
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>10</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>150</Nutrition>
+			</Food>
+			<Food id="_cherries">
+				<DescriptionSID>CHERRIES_SID</DescriptionSID>
+				<UsageDescriptionSID>CHERRIES_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>6</Ounces></Weight>
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>1</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>150</Nutrition>
+			</Food>
+			<Food id="_peach">
+				<DescriptionSID>PEACH_SID</DescriptionSID>
+				<UsageDescriptionSID>PEACH_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>6</Ounces></Weight>
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>150</Nutrition>
+			</Food>
+			<Food id="_plum">
+				<DescriptionSID>PLUM_SID</DescriptionSID>
+				<UsageDescriptionSID>PLUM_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>6</Ounces></Weight>
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>5</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>150</Nutrition>
+			</Food>
+			<Food id="_pear">
+				<DescriptionSID>PEAR_SID</DescriptionSID>
+				<UsageDescriptionSID>PEAR_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>6</Ounces></Weight>
+				<WornLocation>-1</WornLocation> <!-- FIXME CHANGE THIS LATER! -->
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Nutrition>150</Nutrition>
+			</Food>
 			<Food id="_vegetable_1">
 				<DescriptionSID>VEGETABLE1_SID</DescriptionSID>
 				<UsageDescriptionSID>VEGETABLE1_USAGE_SID</UsageDescriptionSID>

@@ -1,5 +1,6 @@
 #pragma once
 #include <boost/shared_ptr.hpp>
+#include "CalendarTypes.hpp"
 #include "Tile.hpp"
 #include "ISeason.hpp"
 
@@ -12,7 +13,7 @@ class ITileConfiguration
   public:
     virtual ~ITileConfiguration() {};
     
-    virtual void configure(TilePtr tile) const = 0;
+    virtual void configure(TilePtr tile, const Season season) const = 0;
 
     // Initializes any members of the TileConfiguration.
     virtual void initialize() = 0;

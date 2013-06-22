@@ -549,7 +549,16 @@ string Game::get_sid_ini_filename() const
 
 WorldPtr Game::get_current_world()
 {
-  return worlds[current_world_ix];
+  WorldPtr world;
+
+  // This function may be called before the game is properly set up.  If so,
+  // just return a null shared ptr, and be prepared to check for it.
+  if (!worlds.empty())
+  {
+    world = worlds[current_world_ix];
+  }
+
+  return world;
 }
 
 LoadedMapDetails& Game::get_loaded_map_details_ref()
