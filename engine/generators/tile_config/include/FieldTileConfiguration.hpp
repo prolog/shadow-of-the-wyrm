@@ -4,6 +4,6 @@
 class FieldTileConfiguration : public DefaultTileConfiguration
 {
   public:
-    virtual void configure(TilePtr tile) const;
+    virtual void configure(TilePtr tile, const Season season) const;
 };
 

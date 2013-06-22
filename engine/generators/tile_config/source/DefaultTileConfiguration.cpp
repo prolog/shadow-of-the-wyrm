@@ -1,6 +1,6 @@
 #include "DefaultTileConfiguration.hpp"
 
-void DefaultTileConfiguration::configure(TilePtr tile) const
+void DefaultTileConfiguration::configure(TilePtr tile, const Season season) const
 {
 }
 

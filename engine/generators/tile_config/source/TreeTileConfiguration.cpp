@@ -48,18 +48,18 @@ TreeSpeciesID TreeTileConfiguration::get_random_species() const
   return tree_species_ids.at(RNG::range(0, tree_species_ids.size() - 1));
 }
 
-void TreeTileConfiguration::configure(TilePtr tile) const
+void TreeTileConfiguration::configure(TilePtr tile, const Season season) const
 {
   ItemManager::create_item_with_probability(1, 100, tile->get_items(), ItemIdKeys::ITEM_ID_BRANCH);
 
   TreeSpeciesID species_id = get_random_species();
   tile->set_additional_property(TileProperties::TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID, tree_species_description_sids.find(species_id)->second);
 
-  configure_additional_features(tile, species_id);
+  configure_additional_features(tile, season, species_id);
 }
 
 // Configure any additional features of the tree - this will typically be
 // overridden by any subclasses.
-void TreeTileConfiguration::configure_additional_features(TilePtr tile, const TreeSpeciesID tree_species_id) const
+void TreeTileConfiguration::configure_additional_features(TilePtr tile, const Season season, const TreeSpeciesID tree_species_id) const
 {
 }
