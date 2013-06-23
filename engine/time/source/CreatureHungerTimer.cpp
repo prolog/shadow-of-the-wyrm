@@ -17,7 +17,10 @@ void CreatureHungerTimer::tick(CreaturePtr creature, const ulonglong minutes_thi
 
     // Hungerless creatures can always eat, but their hunger only "counts down"
     // to normal hunger.
-    if (hunger_clock.get_requires_food() || hunger_clock.is_normal_or_worse() == false)
+    //
+    // Only do hunger checks for the player.  Other creatures currently do not
+    // have to eat...
+    if (creature->get_is_player() && hunger_clock.get_requires_food() || hunger_clock.is_normal_or_worse() == false)
     {
       int old_hunger = hunger_clock.get_hunger();
       int new_hunger = old_hunger - 1;
