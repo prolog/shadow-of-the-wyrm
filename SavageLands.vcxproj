@@ -348,6 +348,7 @@
     <ClInclude Include="engine\generators\tile_config\include\ITileConfiguration.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TileConfigurationFactory.hpp" />
     <ClInclude Include="engine\generators\tile_config\include\TreeTileConfiguration.hpp" />
+    <ClInclude Include="engine\generators\tile_config\include\WeedsTileConfiguration.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\CathedralGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\ChurchGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\ChurchGeneratorFactory.hpp" />
@@ -1130,6 +1131,7 @@
     <ClCompile Include="engine\generators\tile_config\source\FruitTreeTileConfiguration.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\TileConfigurationFactory.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\TreeTileConfiguration.cpp" />
+    <ClCompile Include="engine\generators\tile_config\source\WeedsTileConfiguration.cpp" />
     <ClCompile Include="engine\generators\worship_sites\source\CathedralGenerator.cpp" />
     <ClCompile Include="engine\generators\worship_sites\source\ChurchGenerator.cpp" />
     <ClCompile Include="engine\generators\worship_sites\source\ChurchGeneratorFactory.cpp" />
