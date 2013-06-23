@@ -79,6 +79,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
 
     CreatureSize size = static_cast<CreatureSize>(XMLUtils::get_child_node_int_value(race_node, "Size"));
     race->set_size(size);
+
+    bool hungerless = XMLUtils::get_child_node_bool_value(race_node, "Hungerless", race->get_hungerless());
+    race->set_hungerless(hungerless);
     
     parse_race_age_info(race, age_info_node);
     parse_race_initial_statistics(race, initial_statistics_node);

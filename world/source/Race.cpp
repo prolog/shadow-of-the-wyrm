@@ -6,7 +6,7 @@ using namespace std;
 
 // Set the bare defaults for each race.
 Race::Race()
-: user_playable(false), settlement_type(SETTLEMENT_TYPE_ORDERLY_VILLAGE), settlement_tile_subtype(TILE_TYPE_FIELD), size(CREATURE_SIZE_MEDIUM), experience_multiplier(1.0)
+: user_playable(false), settlement_type(SETTLEMENT_TYPE_ORDERLY_VILLAGE), settlement_tile_subtype(TILE_TYPE_FIELD), size(CREATURE_SIZE_MEDIUM), hungerless(false), experience_multiplier(1.0)
 {
   Range<uint> start_age(10, 10);
   Range<uint> maximum_age(50, 60);
@@ -121,6 +121,16 @@ void Race::set_size(const CreatureSize new_size)
 CreatureSize Race::get_size() const
 {
   return size;
+}
+
+void Race::set_hungerless(const bool new_hungerless)
+{
+  hungerless = new_hungerless;
+}
+
+bool Race::get_hungerless() const
+{
+  return hungerless;
 }
 
 void Race::set_age_info(const AgeInfo& new_age_info)

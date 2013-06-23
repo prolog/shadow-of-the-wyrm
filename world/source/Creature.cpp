@@ -203,12 +203,6 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
 {
   is_player = player;
 
-  // Only the player requires food.
-  if (is_player)
-  {
-    hunger.set_requires_food(true);
-  }
-
   decision_strategy.reset();
 
   if (player)

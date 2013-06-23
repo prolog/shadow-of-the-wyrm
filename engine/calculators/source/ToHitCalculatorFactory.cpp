@@ -56,7 +56,7 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator(CreaturePtr 
 //
 // The lone exception is if the creature is Huge or bigger.
 //
-// So if a pixie punches you, it's a light attack.
+// So if a fae punches you, it's a light attack.
 //
 // If a goblin kicks you, it's a light attack.
 //

@@ -1,6 +1,10 @@
 Savage Lands v0.1.5 "Beorhthun"
 - Version declared June 23, 2013.
 
+- Changed Pixie to Fae.  Created a "hungerless" race option that allows
+  creatures to eat and have their hunger level tick down to normal, but
+  stop there, so that they never get hungry.  Set this option for Fae.
+
 Savage Lands v0.1.4 "Andhun"
 - Version declared June 6, 2013.  Version finalized June 23, 2013.
 

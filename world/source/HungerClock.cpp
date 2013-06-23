@@ -81,6 +81,17 @@ bool HungerClock::is_dying() const
   return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_DYING);
 }
 
+// Is the character normal, hungry, starving, etc?
+bool HungerClock::is_normal_or_worse() const
+{
+  HungerLevel hunger_l = HungerLevelConverter::to_hunger_level(hunger);
+
+  return (hunger_l == HUNGER_LEVEL_NORMAL 
+       || hunger_l == HUNGER_LEVEL_HUNGRY
+       || hunger_l == HUNGER_LEVEL_STARVING
+       || hunger_l == HUNGER_LEVEL_DYING);
+}
+
 // Serialization details
 bool HungerClock::serialize(ostream& stream)
 {
