@@ -26,3 +26,16 @@ const string TileDescriptionKeys::FLORA_TILE_DESC_CHERRY = "FLORA_TILE_DESC_CHER
 const string TileDescriptionKeys::FLORA_TILE_DESC_PEACH = "FLORA_TILE_DESC_PEACH";
 const string TileDescriptionKeys::FLORA_TILE_DESC_PLUM = "FLORA_TILE_DESC_PLUM";
 const string TileDescriptionKeys::FLORA_TILE_DESC_PEAR = "FLORA_TILE_DESC_PEAR";
+
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED1 = "FLORA_TILE_DESC_WEED1";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED2 = "FLORA_TILE_DESC_WEED2";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED3 = "FLORA_TILE_DESC_WEED3";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED4 = "FLORA_TILE_DESC_WEED4";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED5 = "FLORA_TILE_DESC_WEED5";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED6 = "FLORA_TILE_DESC_WEED6";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED7 = "FLORA_TILE_DESC_WEED7";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED8 = "FLORA_TILE_DESC_WEED8";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED9 = "FLORA_TILE_DESC_WEED9";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED10 = "FLORA_TILE_DESC_WEED10";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED11 = "FLORA_TILE_DESC_WEED11";
+const string TileDescriptionKeys::FLORA_TILE_DESC_WEED12 = "FLORA_TILE_DESC_WeED12";

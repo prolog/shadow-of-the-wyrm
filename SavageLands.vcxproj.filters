@@ -2589,6 +2589,9 @@
     <ClInclude Include="engine\generators\tile_config\include\FruitTreeTileConfiguration.hpp">
       <Filter>Header Files\engine\generators\tile_config\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\tile_config\include\WeedsTileConfiguration.hpp">
+      <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4902,6 +4905,9 @@
       <Filter>Source Files\engine\generators\tile_config\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\tile_config\source\FruitTreeTileConfiguration.cpp">
+      <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\tile_config\source\WeedsTileConfiguration.cpp">
       <Filter>Source Files\engine\generators\tile_config\source</Filter>
     </ClCompile>
   </ItemGroup>

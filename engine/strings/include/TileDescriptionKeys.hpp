@@ -29,6 +29,20 @@ class TileDescriptionKeys
     static const std::string FLORA_TILE_DESC_PEACH;
     static const std::string FLORA_TILE_DESC_PLUM;
     static const std::string FLORA_TILE_DESC_PEAR;
+
+    // Used by TILE_TYPE_WEED:
+    static const std::string FLORA_TILE_DESC_WEED1;
+    static const std::string FLORA_TILE_DESC_WEED2;
+    static const std::string FLORA_TILE_DESC_WEED3;
+    static const std::string FLORA_TILE_DESC_WEED4;
+    static const std::string FLORA_TILE_DESC_WEED5;
+    static const std::string FLORA_TILE_DESC_WEED6;
+    static const std::string FLORA_TILE_DESC_WEED7;
+    static const std::string FLORA_TILE_DESC_WEED8;
+    static const std::string FLORA_TILE_DESC_WEED9;
+    static const std::string FLORA_TILE_DESC_WEED10;
+    static const std::string FLORA_TILE_DESC_WEED11;
+    static const std::string FLORA_TILE_DESC_WEED12;
         
   protected:
     TileDescriptionKeys();

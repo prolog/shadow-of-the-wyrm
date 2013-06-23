@@ -5,6 +5,7 @@
 #include "FruitTreeTileConfiguration.hpp"
 #include "TreeTileConfiguration.hpp"
 #include "TileConfigurationFactory.hpp"
+#include "WeedsTileConfiguration.hpp"
 
 ITileConfigurationPtr TileConfigurationFactory::tile_configurations[TILE_TYPE_LAST];
 bool TileConfigurationFactory::tile_configurations_initialized = false;
@@ -29,6 +30,9 @@ void TileConfigurationFactory::initialize_tile_configuration_map()
 
   ITileConfigurationPtr cairn_config = boost::make_shared<CairnTileConfiguration>();
   tile_configurations[TILE_TYPE_CAIRN] = cairn_config;
+
+  ITileConfigurationPtr weeds_config = boost::make_shared<WeedsTileConfiguration>();
+  tile_configurations[TILE_TYPE_WEEDS] = weeds_config;
 
   ITileConfigurationPtr tree_config = boost::make_shared<TreeTileConfiguration>();
   tile_configurations[TILE_TYPE_TREE] = tree_config;

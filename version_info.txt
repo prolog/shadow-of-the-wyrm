@@ -1,5 +1,19 @@
 Savage Lands v0.1.4 "Andhun"
-- Version declared June 6, 2013.
+- Version declared June 6, 2013.  Version finalized June 23, 2013.
+
+- The botanical release!  Added evergreen trees (pine, fir, spruce, cedar),
+  and updated the forest generation algorithm so that forests generated 
+  further away from the equator have a higher proportion of evergreen 
+  trees.
+
+- Added wild orchards as a tile type to the world map, and added a
+  guaranteed wild orchard on the starting island.  Random wild orchards
+  can be considered for generation when generating forest tiles for the
+  world map.  Wild orchards are sparser than regular forests, and contain 
+  a proportion of fruit trees (apple, cherry, peach, plum, and pear).  
+  These have a chance of bearing fruit in the summer months.
+
+- Added a dozen types of weeds.
 
 Savage Lands v0.1.3 "Ealdwulf"
 - Version declared April 28, 2013.  Version finalized June 6, 2013.
