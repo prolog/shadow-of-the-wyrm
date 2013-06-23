@@ -178,6 +178,7 @@
 			<xs:element name="DescriptionSID" type="xs:string" minOccurs="0"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string" minOccurs="0"/>
 			<xs:element name="Size" type="tns:CreatureSizeType"/>
+			<xs:element name="Hungerless" type="xs:boolean" minOccurs="0"/>
 			<xs:element ref="tns:AgeInfo"/>
 			<xs:element ref="tns:RaceInitialStatistics"/>
 			<xs:element ref="tns:RaceInitialModifiers"/>

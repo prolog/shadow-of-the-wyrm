@@ -45,6 +45,9 @@ class Race
 
     void set_size(const CreatureSize new_size);
     CreatureSize get_size() const;
+
+    void set_hungerless(const bool new_hungerless);
+    bool get_hungerless() const;
     
     void set_age_info(const AgeInfo& age);
     AgeInfo get_age_info() const;
@@ -102,6 +105,7 @@ class Race
     std::string race_description_sid;
     std::string race_abbreviation_sid;
     CreatureSize size;
+    bool hungerless;
     AgeInfo age_info;
 
     // Initial primary statistics

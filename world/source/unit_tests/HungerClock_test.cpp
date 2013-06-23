@@ -32,6 +32,7 @@ TEST(SL_World_HungerClock, hunger_levels)
   EXPECT_FALSE(hc.is_hungry());
   EXPECT_FALSE(hc.is_starving());
   EXPECT_FALSE(hc.is_dying());
+  EXPECT_FALSE(hc.is_normal_or_worse());
 
   hc.set_hunger(HungerLevelConverter::INT_HUNGER_LEVEL_FULL);
   EXPECT_FALSE(hc.is_stuffed());
@@ -40,6 +41,7 @@ TEST(SL_World_HungerClock, hunger_levels)
   EXPECT_FALSE(hc.is_hungry());
   EXPECT_FALSE(hc.is_starving());
   EXPECT_FALSE(hc.is_dying());
+  EXPECT_FALSE(hc.is_normal_or_worse());
 
   hc.set_hunger(HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL);
   EXPECT_FALSE(hc.is_stuffed());
@@ -48,6 +50,7 @@ TEST(SL_World_HungerClock, hunger_levels)
   EXPECT_FALSE(hc.is_hungry());
   EXPECT_FALSE(hc.is_starving());
   EXPECT_FALSE(hc.is_dying());
+  EXPECT_TRUE(hc.is_normal_or_worse());
 
   hc.set_hunger(HungerLevelConverter::INT_HUNGER_LEVEL_HUNGRY);
   EXPECT_FALSE(hc.is_stuffed());
@@ -56,6 +59,7 @@ TEST(SL_World_HungerClock, hunger_levels)
   EXPECT_TRUE(hc.is_hungry());
   EXPECT_FALSE(hc.is_starving());
   EXPECT_FALSE(hc.is_dying());
+  EXPECT_TRUE(hc.is_normal_or_worse());
 
   hc.set_hunger(HungerLevelConverter::INT_HUNGER_LEVEL_STARVING);
   EXPECT_FALSE(hc.is_stuffed());
@@ -64,6 +68,7 @@ TEST(SL_World_HungerClock, hunger_levels)
   EXPECT_FALSE(hc.is_hungry());
   EXPECT_TRUE(hc.is_starving());
   EXPECT_FALSE(hc.is_dying());
+  EXPECT_TRUE(hc.is_normal_or_worse());
 
   hc.set_hunger(HungerLevelConverter::INT_HUNGER_LEVEL_DYING);
   EXPECT_FALSE(hc.is_stuffed());
@@ -72,6 +77,7 @@ TEST(SL_World_HungerClock, hunger_levels)
   EXPECT_FALSE(hc.is_hungry());
   EXPECT_FALSE(hc.is_starving());
   EXPECT_TRUE(hc.is_dying());
+  EXPECT_TRUE(hc.is_normal_or_worse());
 }
 
 TEST(SL_World_HungerClock, serialization_id)

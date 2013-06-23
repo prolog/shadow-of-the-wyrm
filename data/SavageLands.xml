@@ -492,7 +492,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 		</Race>
-		<Race id="05_pixie">
+		<Race id="05_fae">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -500,15 +500,16 @@
 			<ShortDescriptionSID>RACE_5_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>RACE_5_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>RACE_5_ABRV</DisplayAbbreviationSID>
-			<Size>0</Size>
+			<Size>2</Size>
+			<Hungerless>1</Hungerless>
 			<AgeInfo>
 				<StartingAge>
 					<Min>500</Min>
-					<Max>1000</Max>
+					<Max>10000</Max>
 				</StartingAge>
 				<MaximumAge>
-					<Min>2500</Min>
-					<Max>4000</Max>
+					<Min>500000</Min>
+					<Max>1000000</Max>
 				</MaximumAge>
 			</AgeInfo>
 			<RaceInitialStatistics>
@@ -562,7 +563,7 @@
 					<Daggers>5</Daggers>
 				</WeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.13</ExperienceMultiplier>
+			<ExperienceMultiplier>1.9</ExperienceMultiplier>
 		</Race>
 		<Race id="06_dwarf">
 			<UserPlayable>1</UserPlayable>
@@ -1175,7 +1176,7 @@
 							<ID></ID>
 						</Race>
 						<Race>
-							<RaceID>05_pixie</RaceID>
+							<RaceID>05_fae</RaceID>
 							<ID>sling</ID>
 						</Race>
 						<Race>
@@ -1220,7 +1221,7 @@
 							</Quantity>
 						</Race>
 						<Race>
-							<RaceID>05_pixie</RaceID>
+							<RaceID>05_fae</RaceID>
 							<ID>_rock</ID>
 							<Quantity>
 								<Random>
@@ -2300,7 +2301,7 @@
 							<ID>long_spear</ID>
 						</Race>
 						<Race>
-							<RaceID>05_pixie</RaceID>
+							<RaceID>05_fae</RaceID>
 							<ID>dagger</ID>
 						</Race>
 						<Race>
@@ -2337,7 +2338,7 @@
 							<ID>buckler</ID>
 						</Race>
 						<Race>
-							<RaceID>05_pixie</RaceID>
+							<RaceID>05_fae</RaceID>
 							<ID>buckler</ID>
 						</Race>
 						<Race>
@@ -2362,7 +2363,7 @@
 							<ID>leather_armour</ID>
 						</Race>
 						<Race>
-							<RaceID>05_pixie</RaceID>
+							<RaceID>05_fae</RaceID>
 							<ID>leather_armour</ID>
 						</Race>
 						<Race>
