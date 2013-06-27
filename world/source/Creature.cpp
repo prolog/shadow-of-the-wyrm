@@ -97,6 +97,7 @@ Creature::Creature(const Creature& cr)
   turns = cr.turns;
   targets = cr.targets;  
   hunger = cr.hunger;
+  status_ailments = cr.status_ailments;
   event_functions = cr.event_functions;
   additional_properties = cr.additional_properties;
   mortuary = cr.mortuary;
@@ -171,6 +172,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (turns == cr.turns);
   result = result && (targets == cr.targets);
   result = result && (hunger == cr.hunger);
+  result = result && (status_ailments == cr.status_ailments);
   result = result && (event_functions == cr.event_functions);
   result = result && (additional_properties == cr.additional_properties);
   result = result && (mortuary == cr.mortuary);
@@ -745,6 +747,25 @@ HungerClock& Creature::get_hunger_clock_ref()
   return hunger;
 }
 
+void Creature::set_status_ailment(const StatusAilment ailment, const bool affected)
+{
+  status_ailments[ailment] = affected;
+}
+
+bool Creature::has_status_ailment(const StatusAilment ailment) const
+{
+  bool has_ailment = false;
+
+  map<StatusAilment, bool>::const_iterator s_it = status_ailments.find(ailment);
+
+  if (s_it != status_ailments.end())
+  {
+    has_ailment = s_it->second;
+  }
+
+  return has_ailment;
+}
+
 void Creature::clear_event_functions()
 {
   event_functions.clear();
@@ -881,7 +902,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 904);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 928);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 752);
@@ -941,6 +962,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->turns, cr.turns);
   std::swap(this->targets, cr.targets);
   std::swap(this->hunger, cr.hunger);
+  std::swap(this->status_ailments, cr.status_ailments);
   std::swap(this->event_functions, cr.event_functions);
   std::swap(this->additional_properties, cr.additional_properties);
   std::swap(this->mortuary, cr.mortuary);
@@ -1034,6 +1056,17 @@ bool Creature::serialize(ostream& stream)
   }
 
   hunger.serialize(stream);
+
+  Serialize::write_size_t(stream, status_ailments.size());
+
+  if (!status_ailments.empty())
+  {
+    BOOST_FOREACH(StatusAilmentMap::value_type& status_ailment, status_ailments)
+    {
+      Serialize::write_enum(stream, status_ailment.first);
+      Serialize::write_bool(stream, status_ailment.second);
+    }
+  }
 
   Serialize::write_size_t(stream, event_functions.size());
 
@@ -1158,6 +1191,25 @@ bool Creature::deserialize(istream& stream)
   }
 
   hunger.deserialize(stream);
+
+  size_t status_ailments_size = 0;
+  Serialize::read_size_t(stream, status_ailments_size);
+
+  if (status_ailments_size > 0)
+  {
+    status_ailments.clear();
+
+    for (unsigned int i = 0; i < status_ailments_size; i++)
+    {
+      StatusAilment ailment = STATUS_AILMENT_POISON;
+      bool creature_affected = false;
+
+      Serialize::read_enum(stream, ailment);
+      Serialize::read_bool(stream, creature_affected);
+
+      status_ailments.insert(make_pair(ailment, creature_affected));
+    }
+  }
 
   size_t event_functions_size = 0;
   Serialize::read_size_t(stream, event_functions_size);

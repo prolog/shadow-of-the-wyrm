@@ -21,12 +21,14 @@
 #include "Skills.hpp"
 #include "SpellKnowledge.hpp"
 #include "Statistic.hpp"
+#include "StatusTypes.hpp"
 
 // Forward declarations.
 class DecisionStrategy;
 
 typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
 typedef std::map<std::string, std::string> EventFunctionMap;
+typedef std::map<StatusAilment, bool> StatusAilmentMap;
 
 class Creature : public ISerializable
 {
@@ -219,6 +221,10 @@ class Creature : public ISerializable
     HungerClock get_hunger_clock() const;
     HungerClock& get_hunger_clock_ref();
 
+    // Set/check if the creature poisoned, etc
+    void set_status_ailment(const StatusAilment ailment, const bool affected);
+    bool has_status_ailment(const StatusAilment ailment) const;
+
     void clear_event_functions();
     void set_event_functions(const EventFunctionMap& evm);
     EventFunctionMap get_event_functions() const;
@@ -350,6 +356,9 @@ class Creature : public ISerializable
 
     // The creature's hunger details
     HungerClock hunger;
+
+    // Whether the creature is poisoned, silenced, etc.
+    StatusAilmentMap status_ailments;
 
     // Event functions - used to look up engine or user-defined functions
     // when the event occurs.
