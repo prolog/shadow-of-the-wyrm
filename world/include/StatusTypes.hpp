@@ -10,3 +10,7 @@ enum HungerLevel
   HUNGER_LEVEL_DYING
 };
 
+enum StatusAilment
+{
+  STATUS_AILMENT_POISON
+};
