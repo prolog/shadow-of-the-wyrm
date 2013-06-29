@@ -628,6 +628,21 @@
     <Filter Include="Source Files\engine\generators\tile_config\source">
       <UniqueIdentifier>{08c44e32-1cc4-441c-8066-7f4ce5b8853b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\creatures">
+      <UniqueIdentifier>{b3462572-dcdf-4e06-afec-fbe0fb55a53e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\creatures\include">
+      <UniqueIdentifier>{e9c19ec6-235c-4b0e-8750-d626ddfbbbb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\creatures">
+      <UniqueIdentifier>{93456471-4ec3-40c5-949e-2f72454a9026}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\creatures\source">
+      <UniqueIdentifier>{4d5a5bd4-b2bf-46b4-a73d-62ca826543c9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\creatures\source\unit_tests">
+      <UniqueIdentifier>{672d3c24-2734-4a83-b97e-d7cc54864217}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -1674,15 +1689,6 @@
     <ClInclude Include="engine\include\CreationUtils.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\CreatureFactory.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\include\CreatureGenerationConstants.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\include\CreatureGenerationManager.hpp">
-      <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\include\Environment.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
@@ -2591,6 +2597,15 @@
     </ClInclude>
     <ClInclude Include="engine\generators\tile_config\include\WeedsTileConfiguration.hpp">
       <Filter>Header Files\engine\generators\tile_config\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureFactory.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3707,15 +3722,6 @@
     <ClCompile Include="engine\source\CreationUtils.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\CreatureFactory.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\CreatureGenerationConstants.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\CreatureGenerationManager.cpp">
-      <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\source\Environment.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
@@ -3751,9 +3757,6 @@
     </ClCompile>
     <ClCompile Include="engine\source\SavageLandsEngine.cpp">
       <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\unit_tests\CreatureFactory_test.cpp">
-      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Map_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
@@ -4909,6 +4912,18 @@
     </ClCompile>
     <ClCompile Include="engine\generators\tile_config\source\WeedsTileConfiguration.cpp">
       <Filter>Source Files\engine\generators\tile_config\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureFactory.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureGenerationConstants.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
