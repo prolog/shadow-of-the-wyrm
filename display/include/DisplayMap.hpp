@@ -13,9 +13,6 @@ typedef boost::unordered_map<Coordinate, DisplayTile> DisplayMapType;
 class DisplayMap
 {
   public:
-    // JCD FIXME: If I keep the unordered map approach, the two-int
-    // constructor can be deleted (was used only to reserve vector size).
-    // Also delete rows, cols.
     DisplayMap(const int rows, const int cols);
     DisplayMap();
 
