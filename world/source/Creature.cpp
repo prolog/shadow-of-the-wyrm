@@ -97,7 +97,7 @@ Creature::Creature(const Creature& cr)
   turns = cr.turns;
   targets = cr.targets;  
   hunger = cr.hunger;
-  status_ailments = cr.status_ailments;
+  statuses = cr.statuses;
   status_durations = cr.status_durations;
   event_functions = cr.event_functions;
   additional_properties = cr.additional_properties;
@@ -173,7 +173,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (turns == cr.turns);
   result = result && (targets == cr.targets);
   result = result && (hunger == cr.hunger);
-  result = result && (status_ailments == cr.status_ailments);
+  result = result && (statuses == cr.statuses);
   result = result && (status_durations == cr.status_durations);
   result = result && (event_functions == cr.event_functions);
   result = result && (additional_properties == cr.additional_properties);
@@ -749,28 +749,28 @@ HungerClock& Creature::get_hunger_clock_ref()
   return hunger;
 }
 
-void Creature::set_status_ailment(const string& ailment, const bool affected)
+void Creature::set_status(const string& status_id, const bool affected)
 {
-  status_ailments[ailment] = affected;
+  statuses[status_id] = affected;
 }
 
-void Creature::remove_status_ailment(const string& ailment)
+void Creature::remove_status(const string& status_id)
 {
-  status_ailments.erase(ailment);
+  statuses.erase(status_id);
 }
 
-bool Creature::has_status_ailment(const string& ailment) const
+bool Creature::has_status(const string& status_id) const
 {
-  bool has_ailment = false;
+  bool has_status = false;
 
-  StatusAilmentMap::const_iterator s_it = status_ailments.find(ailment);
+  CreatureStatusMap::const_iterator s_it = statuses.find(status_id);
 
-  if (s_it != status_ailments.end())
+  if (s_it != statuses.end())
   {
-    has_ailment = s_it->second;
+    has_status = s_it->second;
   }
 
-  return has_ailment;
+  return has_status;
 }
 
 void Creature::clear_event_functions()
@@ -969,7 +969,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->turns, cr.turns);
   std::swap(this->targets, cr.targets);
   std::swap(this->hunger, cr.hunger);
-  std::swap(this->status_ailments, cr.status_ailments);
+  std::swap(this->statuses, cr.statuses);
   std::swap(this->event_functions, cr.event_functions);
   std::swap(this->additional_properties, cr.additional_properties);
   std::swap(this->mortuary, cr.mortuary);
@@ -1064,14 +1064,14 @@ bool Creature::serialize(ostream& stream)
 
   hunger.serialize(stream);
 
-  Serialize::write_size_t(stream, status_ailments.size());
+  Serialize::write_size_t(stream, statuses.size());
 
-  if (!status_ailments.empty())
+  if (!statuses.empty())
   {
-    BOOST_FOREACH(StatusAilmentMap::value_type& status_ailment, status_ailments)
+    BOOST_FOREACH(CreatureStatusMap::value_type& c_status, statuses)
     {
-      Serialize::write_string(stream, status_ailment.first);
-      Serialize::write_bool(stream, status_ailment.second);
+      Serialize::write_string(stream, c_status.first);
+      Serialize::write_bool(stream, c_status.second);
     }
   }
 
@@ -1210,22 +1210,22 @@ bool Creature::deserialize(istream& stream)
 
   hunger.deserialize(stream);
 
-  size_t status_ailments_size = 0;
-  Serialize::read_size_t(stream, status_ailments_size);
+  size_t statuses_size = 0;
+  Serialize::read_size_t(stream, statuses_size);
 
-  if (status_ailments_size > 0)
+  if (statuses_size > 0)
   {
-    status_ailments.clear();
+    statuses.clear();
 
-    for (unsigned int i = 0; i < status_ailments_size; i++)
+    for (unsigned int i = 0; i < statuses_size; i++)
     {
-      string ailment;
+      string c_status_id;
       bool creature_affected = false;
 
-      Serialize::read_string(stream, ailment);
+      Serialize::read_string(stream, c_status_id);
       Serialize::read_bool(stream, creature_affected);
 
-      status_ailments.insert(make_pair(ailment, creature_affected));
+      statuses.insert(make_pair(c_status_id, creature_affected));
     }
   }
 
