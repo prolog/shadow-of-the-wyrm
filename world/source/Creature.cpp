@@ -98,6 +98,7 @@ Creature::Creature(const Creature& cr)
   targets = cr.targets;  
   hunger = cr.hunger;
   status_ailments = cr.status_ailments;
+  status_durations = cr.status_durations;
   event_functions = cr.event_functions;
   additional_properties = cr.additional_properties;
   mortuary = cr.mortuary;
@@ -173,6 +174,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (targets == cr.targets);
   result = result && (hunger == cr.hunger);
   result = result && (status_ailments == cr.status_ailments);
+  result = result && (status_durations == cr.status_durations);
   result = result && (event_functions == cr.event_functions);
   result = result && (additional_properties == cr.additional_properties);
   result = result && (mortuary == cr.mortuary);
@@ -747,16 +749,21 @@ HungerClock& Creature::get_hunger_clock_ref()
   return hunger;
 }
 
-void Creature::set_status_ailment(const StatusAilment ailment, const bool affected)
+void Creature::set_status_ailment(const string& ailment, const bool affected)
 {
   status_ailments[ailment] = affected;
 }
 
-bool Creature::has_status_ailment(const StatusAilment ailment) const
+void Creature::remove_status_ailment(const string& ailment)
+{
+  status_ailments.erase(ailment);
+}
+
+bool Creature::has_status_ailment(const string& ailment) const
 {
   bool has_ailment = false;
 
-  map<StatusAilment, bool>::const_iterator s_it = status_ailments.find(ailment);
+  StatusAilmentMap::const_iterator s_it = status_ailments.find(ailment);
 
   if (s_it != status_ailments.end())
   {
@@ -902,7 +909,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 928);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 944);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 752);
@@ -1063,8 +1070,19 @@ bool Creature::serialize(ostream& stream)
   {
     BOOST_FOREACH(StatusAilmentMap::value_type& status_ailment, status_ailments)
     {
-      Serialize::write_enum(stream, status_ailment.first);
+      Serialize::write_string(stream, status_ailment.first);
       Serialize::write_bool(stream, status_ailment.second);
+    }
+  }
+
+  Serialize::write_size_t(stream, status_durations.size());
+
+  if (!status_durations.empty())
+  {
+    BOOST_FOREACH(StatusDurationMap::value_type& status_duration, status_durations)
+    {
+      Serialize::write_string(stream, status_duration.first);
+      status_duration.second.serialize(stream);
     }
   }
 
@@ -1201,13 +1219,32 @@ bool Creature::deserialize(istream& stream)
 
     for (unsigned int i = 0; i < status_ailments_size; i++)
     {
-      StatusAilment ailment = STATUS_AILMENT_POISON;
+      string ailment;
       bool creature_affected = false;
 
-      Serialize::read_enum(stream, ailment);
+      Serialize::read_string(stream, ailment);
       Serialize::read_bool(stream, creature_affected);
 
       status_ailments.insert(make_pair(ailment, creature_affected));
+    }
+  }
+
+  size_t status_durations_size = 0;
+  Serialize::read_size_t(stream, status_durations_size);
+
+  if (status_durations_size > 0)
+  {
+    status_durations.clear();
+
+    for (uint i = 0; i < status_durations.size(); i++)
+    {
+      string status_id;
+      Serialize::read_string(stream, status_id);
+
+      StatusDuration sd;
+      sd.deserialize(stream);
+
+      status_durations.insert(make_pair(status_id, sd));
     }
   }
 
