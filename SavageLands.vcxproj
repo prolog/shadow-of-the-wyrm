@@ -246,6 +246,7 @@
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\creatures\include\StatusChange.hpp" />
+    <ClInclude Include="engine\creatures\include\StatusChangeFactory.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategy.hpp" />
@@ -615,6 +616,7 @@
     <ClInclude Include="world\include\Staff.hpp" />
     <ClInclude Include="world\include\Statistic.hpp" />
     <ClInclude Include="world\include\StatisticsModifier.hpp" />
+    <ClInclude Include="world\include\StatusDuration.hpp" />
     <ClInclude Include="world\include\StatusTypes.hpp" />
     <ClInclude Include="world\include\ThreatRatings.hpp" />
     <ClInclude Include="world\include\Tool.hpp" />
@@ -1011,7 +1013,11 @@
     <ClCompile Include="engine\creatures\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp" />
     <ClCompile Include="engine\creatures\source\StatusChange.cpp" />
+    <ClCompile Include="engine\creatures\source\StatusChangeFactory.cpp" />
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\StatusChange_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionConstants.cpp" />
@@ -1543,6 +1549,8 @@
     <ClCompile Include="world\source\Staff.cpp" />
     <ClCompile Include="world\source\Statistic.cpp" />
     <ClCompile Include="world\source\StatisticsModifier.cpp" />
+    <ClCompile Include="world\source\StatusDuration.cpp" />
+    <ClCompile Include="world\source\StatusTypes.cpp" />
     <ClCompile Include="world\source\ThreatRatings.cpp" />
     <ClCompile Include="world\source\Tool.cpp" />
     <ClCompile Include="world\source\unit_tests\Ammunition_test.cpp">
@@ -1672,6 +1680,9 @@
     <ClCompile Include="world\source\unit_tests\Statistic_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\StatusDuration_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\ThreatRatings_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 
 enum HungerLevel
 {
@@ -10,7 +11,12 @@ enum HungerLevel
   HUNGER_LEVEL_DYING
 };
 
-enum StatusAilment
+class StatusIdentifiers
 {
-  STATUS_AILMENT_POISON
+  public:
+    static const std::string STATUS_ID_POISON;
+
+  protected:
+    StatusIdentifiers();
+    ~StatusIdentifiers();
 };

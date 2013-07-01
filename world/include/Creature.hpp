@@ -21,6 +21,7 @@
 #include "Skills.hpp"
 #include "SpellKnowledge.hpp"
 #include "Statistic.hpp"
+#include "StatusDuration.hpp"
 #include "StatusTypes.hpp"
 
 // Forward declarations.
@@ -28,7 +29,8 @@ class DecisionStrategy;
 
 typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
 typedef std::map<std::string, std::string> EventFunctionMap;
-typedef std::map<StatusAilment, bool> StatusAilmentMap;
+typedef std::map<std::string, bool> StatusAilmentMap;
+typedef std::map<std::string, StatusDuration> StatusDurationMap;
 
 class Creature : public ISerializable
 {
@@ -222,8 +224,13 @@ class Creature : public ISerializable
     HungerClock& get_hunger_clock_ref();
 
     // Set/check if the creature poisoned, etc
-    void set_status_ailment(const StatusAilment ailment, const bool affected);
-    bool has_status_ailment(const StatusAilment ailment) const;
+    void set_status_ailment(const std::string& ailment, const bool affected);
+    void remove_status_ailment(const std::string& ailment);
+    bool has_status_ailment(const std::string& ailment) const;
+
+    // Set the duration lengths for various status buffs/ailments.
+    // void set_status_duration(...);
+    // StatusDuration get_status_duration(...);
 
     void clear_event_functions();
     void set_event_functions(const EventFunctionMap& evm);
@@ -359,6 +366,9 @@ class Creature : public ISerializable
 
     // Whether the creature is poisoned, silenced, etc.
     StatusAilmentMap status_ailments;
+
+    // The length of time for which a creature is poisoned, silenced, etc.
+    StatusDurationMap status_durations;
 
     // Event functions - used to look up engine or user-defined functions
     // when the event occurs.
