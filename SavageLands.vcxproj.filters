@@ -2616,6 +2616,9 @@
     <ClInclude Include="engine\creatures\include\StatusChangeFactory.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\PoisonStatusChange.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4950,6 +4953,9 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\creatures\source\StatusChangeFactory.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\PoisonStatusChange.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>

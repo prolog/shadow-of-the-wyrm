@@ -29,7 +29,7 @@ class DecisionStrategy;
 
 typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
 typedef std::map<std::string, std::string> EventFunctionMap;
-typedef std::map<std::string, bool> StatusAilmentMap;
+typedef std::map<std::string, bool> CreatureStatusMap;
 typedef std::map<std::string, StatusDuration> StatusDurationMap;
 
 class Creature : public ISerializable
@@ -224,9 +224,9 @@ class Creature : public ISerializable
     HungerClock& get_hunger_clock_ref();
 
     // Set/check if the creature poisoned, etc
-    void set_status_ailment(const std::string& ailment, const bool affected);
-    void remove_status_ailment(const std::string& ailment);
-    bool has_status_ailment(const std::string& ailment) const;
+    void set_status(const std::string& status_id, const bool affected);
+    void remove_status(const std::string& status_id);
+    bool has_status(const std::string& status_id) const;
 
     // Set the duration lengths for various status buffs/ailments.
     // void set_status_duration(...);
@@ -365,7 +365,7 @@ class Creature : public ISerializable
     HungerClock hunger;
 
     // Whether the creature is poisoned, silenced, etc.
-    StatusAilmentMap status_ailments;
+    CreatureStatusMap statuses;
 
     // The length of time for which a creature is poisoned, silenced, etc.
     StatusDurationMap status_durations;

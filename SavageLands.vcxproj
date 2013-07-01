@@ -245,6 +245,7 @@
     <ClInclude Include="engine\creatures\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
+    <ClInclude Include="engine\creatures\include\PoisonStatusChange.hpp" />
     <ClInclude Include="engine\creatures\include\StatusChange.hpp" />
     <ClInclude Include="engine\creatures\include\StatusChangeFactory.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
@@ -1012,6 +1013,7 @@
     <ClCompile Include="engine\creatures\source\CreatureFactory.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp" />
+    <ClCompile Include="engine\creatures\source\PoisonStatusChange.cpp" />
     <ClCompile Include="engine\creatures\source\StatusChange.cpp" />
     <ClCompile Include="engine\creatures\source\StatusChangeFactory.cpp" />
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">

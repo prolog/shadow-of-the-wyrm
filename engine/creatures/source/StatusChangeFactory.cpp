@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "PoisonStatusChange.hpp"
 #include "StatusChangeFactory.hpp"
 #include "StatusTypes.hpp"
 
@@ -18,7 +19,7 @@ StatusChangePtr StatusChangeFactory::create_status_change(const string& status_i
 
   if (status_id == StatusIdentifiers::STATUS_ID_POISON)
   {
-    // JCD FIXME...
+    status_change = boost::make_shared<PoisonStatusChange>();
   }
   else
   {
