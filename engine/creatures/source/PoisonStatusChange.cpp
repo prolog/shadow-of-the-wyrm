@@ -1,5 +1,9 @@
+#include "Creature.hpp"
 #include "PoisonStatusChange.hpp"
+#include "StatusAilmentTextKeys.hpp"
 #include "StatusTypes.hpp"
+
+using namespace std;
 
 void PoisonStatusChange::apply_change(CreaturePtr creature) const
 {
@@ -24,7 +28,25 @@ void PoisonStatusChange::undo_change(CreaturePtr creature) const
   }
 }
 
-void PoisonStatusChange::tick() const
+void PoisonStatusChange::tick(CreaturePtr creature) const
 {
 }
+
+bool PoisonStatusChange::has_status_message() const
+{
+  return true;
+}
+
+string PoisonStatusChange::get_status_message_sid() const
+{
+  string status_message = StatusAilmentTextKeys::STATUS_POISON;
+  return status_message;
+}
+
+Colour PoisonStatusChange::get_status_message_colour() const
+{
+  return COLOUR_GREEN;
+}
+
+
 
