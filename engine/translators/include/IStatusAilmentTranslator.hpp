@@ -8,6 +8,8 @@
 class IStatusAilmentTranslator
 {
   public:
+    virtual ~IStatusAilmentTranslator() {};
+
     virtual bool has_ailment(const CreaturePtr& creature) const = 0;
     virtual std::pair<std::string, Colour> get_status_ailment(const CreaturePtr& creature) const;
 

@@ -2,8 +2,11 @@
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusAilmentTranslators.hpp"
 #include "StringTable.hpp"
+#include "StatusTypes.hpp"
 
 using namespace std;
+
+// Hunger
 
 map<HungerLevel, string> HungerStatusAilmentTranslator::text_sid_map;
 map<HungerLevel, Colour> HungerStatusAilmentTranslator::colour_map;
@@ -76,4 +79,22 @@ Colour HungerStatusAilmentTranslator::get_status_ailment_colour(const CreaturePt
   }
 
   return colour_map[HungerLevelConverter::to_hunger_level(creature->get_hunger_clock().get_hunger())];
+}
+
+// Poison
+bool PoisonStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
+{
+  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_POISON);
+
+  return ailment;
+}
+
+string PoisonStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
+{
+  return StatusAilmentTextKeys::STATUS_POISON;
+}
+
+Colour PoisonStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
+{
+  return COLOUR_GREEN;
 }

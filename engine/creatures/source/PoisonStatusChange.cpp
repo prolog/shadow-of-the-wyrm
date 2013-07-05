@@ -32,21 +32,3 @@ void PoisonStatusChange::tick(CreaturePtr creature) const
 {
 }
 
-bool PoisonStatusChange::has_status_message() const
-{
-  return true;
-}
-
-string PoisonStatusChange::get_status_message_sid() const
-{
-  string status_message = StatusAilmentTextKeys::STATUS_POISON;
-  return status_message;
-}
-
-Colour PoisonStatusChange::get_status_message_colour() const
-{
-  return COLOUR_GREEN;
-}
-
-
-

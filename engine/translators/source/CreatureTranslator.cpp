@@ -227,6 +227,7 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.clear();
 
   IStatusAilmentTranslatorPtr hunger_checker = boost::make_shared<HungerStatusAilmentTranslator>();
+  IStatusAilmentTranslatorPtr poison_checker = boost::make_shared<PoisonStatusAilmentTranslator>();
 
   status_ailment_checkers.push_back(hunger_checker);
 }
