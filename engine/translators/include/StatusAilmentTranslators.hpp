@@ -25,3 +25,13 @@ class HungerStatusAilmentTranslator : public IStatusAilmentTranslator
     static std::map<HungerLevel, Colour> colour_map;
 };
 
+class PoisonStatusAilmentTranslator : public IStatusAilmentTranslator
+{
+  public:
+    bool has_ailment(const CreaturePtr& creature) const;
+
+  protected:
+    std::string get_status_ailment_text(const CreaturePtr& creature) const;
+    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
+};
+

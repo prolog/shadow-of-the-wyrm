@@ -22,13 +22,6 @@ class StatusChange
     // By default, nothing happens each tick.  Subclasses should override
     // this behaviour as necessary.
     virtual void tick(boost::shared_ptr<Creature> creature) const;
-
-    // Methods for updating the display - should a status message be shown?
-    // What is the status text SID?  What is its colour?  By default, a
-    // status description is not needed.
-    virtual bool has_status_message() const;
-    virtual std::string get_status_message_sid() const;
-    virtual Colour get_status_message_colour() const;
 };
 
 typedef boost::shared_ptr<StatusChange> StatusChangePtr;
