@@ -17,6 +17,9 @@ class StatusAilmentTextKeys
     static const std::string STATUS_MESSAGE_HUNGER_STARVING;
     static const std::string STATUS_HUNGER_DYING;
     static const std::string STATUS_MESSAGE_HUNGER_DYING;
+    
+    // Other status ailments:
+    static const std::string STATUS_POISON;
 
   protected:
     StatusAilmentTextKeys();
