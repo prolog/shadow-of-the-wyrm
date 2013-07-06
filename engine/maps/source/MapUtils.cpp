@@ -581,7 +581,7 @@ bool MapUtils::is_corner(const Coordinate& c, const Direction d, MapPtr map)
 // scripting engine, etc.
 bool MapUtils::are_coordinates_within_dimensions(const Coordinate& c, const Dimensions& d)
 {
-  return (c.first >= 0 && c.first < d.get_y() && c.second >= 0 && c.second <= d.get_x());
+  return (c.first >= 0 && c.first < d.get_y() && c.second >= 0 && c.second < d.get_x());
 }
 
 
