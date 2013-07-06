@@ -3100,6 +3100,38 @@
 			</Damage>
 			<Soak>2</Soak>
 		</Creature>
+		<Creature id="rock_adder">
+			<ShortDescriptionSID>ROCK_ADDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ROCK_ADDER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ROCK_ADDER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ROCK_ADDER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>s</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<!-- Fix this later -->
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>6</Type>
+			</Damage>
+			<Evade>10</Evade>
+		</Creature>
 		<Creature id="fox">
 			<ShortDescriptionSID>FOX_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FOX_DESCRIPTION_SID</DescriptionSID>

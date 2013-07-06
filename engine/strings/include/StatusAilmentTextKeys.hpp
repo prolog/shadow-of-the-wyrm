@@ -20,6 +20,7 @@ class StatusAilmentTextKeys
     
     // Other status ailments:
     static const std::string STATUS_POISON;
+    static const std::string STATUS_MESSAGE_PLAYER_POISONED;
 
   protected:
     StatusAilmentTextKeys();

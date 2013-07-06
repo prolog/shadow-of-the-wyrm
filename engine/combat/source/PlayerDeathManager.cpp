@@ -22,6 +22,11 @@ void PlayerDeathManager::die()
   {
     ReligionManager rm;
     MessageManager& manager = MessageManager::instance();
+
+    // Update the screen so that the player can see their final statistics 
+    // (otherwise, it will just show the start-of-turn values).
+    game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
+    game.get_display()->redraw();    
     
     // Display death message with -- more --
     string deity_message_sid = rm.get_death_message_sid(creature->get_religion().get_active_deity_id());

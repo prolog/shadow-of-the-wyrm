@@ -91,7 +91,7 @@ bool PoisonStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) con
 
 string PoisonStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
 {
-  return StatusAilmentTextKeys::STATUS_POISON;
+  return StringTable::get(StatusAilmentTextKeys::STATUS_POISON);
 }
 
 Colour PoisonStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const

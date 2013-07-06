@@ -576,6 +576,14 @@ bool MapUtils::is_corner(const Coordinate& c, const Direction d, MapPtr map)
   return corner;
 }
 
+// Check to see if the given coordinates fall within the given dimensions.
+// This function is provided to ensure "clean" inputs for cases like the
+// scripting engine, etc.
+bool MapUtils::are_coordinates_within_dimensions(const Coordinate& c, const Dimensions& d)
+{
+  return (c.first >= 0 && c.first < d.get_y() && c.second >= 0 && c.second <= d.get_x());
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
