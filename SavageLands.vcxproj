@@ -197,12 +197,16 @@
     <ClInclude Include="engine\combat\include\CombatConstants.hpp" />
     <ClInclude Include="engine\combat\include\CombatManager.hpp" />
     <ClInclude Include="engine\combat\include\CreatureDeathManager.hpp" />
+    <ClInclude Include="engine\combat\include\DamageEffectFactory.hpp" />
     <ClInclude Include="engine\combat\include\DeathManager.hpp" />
     <ClInclude Include="engine\combat\include\DeathManagerFactory.hpp" />
+    <ClInclude Include="engine\combat\include\DefaultDamageEffect.hpp" />
     <ClInclude Include="engine\combat\include\ExperienceManager.hpp" />
     <ClInclude Include="engine\combat\include\HostilityManager.hpp" />
+    <ClInclude Include="engine\combat\include\IDamageEffect.hpp" />
     <ClInclude Include="engine\combat\include\LevelConstants.hpp" />
     <ClInclude Include="engine\combat\include\PlayerDeathManager.hpp" />
+    <ClInclude Include="engine\combat\include\PoisonDamageEffect.hpp" />
     <ClInclude Include="engine\combat\include\WeaponManager.hpp" />
     <ClInclude Include="engine\commands\equipment\include\EquipmentCommandFactory.hpp" />
     <ClInclude Include="engine\commands\equipment\include\EquipmentCommandKeys.hpp" />
@@ -924,15 +928,21 @@
     <ClCompile Include="engine\combat\source\CombatConstants.cpp" />
     <ClCompile Include="engine\combat\source\CombatManager.cpp" />
     <ClCompile Include="engine\combat\source\CreatureDeathManager.cpp" />
+    <ClCompile Include="engine\combat\source\DamageEffectFactory.cpp" />
     <ClCompile Include="engine\combat\source\DeathManager.cpp" />
     <ClCompile Include="engine\combat\source\DeathManagerFactory.cpp" />
+    <ClCompile Include="engine\combat\source\DefaultDamageEffect.cpp" />
     <ClCompile Include="engine\combat\source\ExperienceManager.cpp" />
     <ClCompile Include="engine\combat\source\HostilityManager.cpp" />
     <ClCompile Include="engine\combat\source\LevelConstants.cpp" />
     <ClCompile Include="engine\combat\source\PlayerDeathManager.cpp" />
+    <ClCompile Include="engine\combat\source\PoisonDamageEffect.cpp" />
     <ClCompile Include="engine\combat\source\unit_tests\CombatManager_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\unit_tests\DamageEffectFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\combat\source\WeaponManager.cpp" />
     <ClCompile Include="engine\commands\equipment\source\EquipmentCommandFactory.cpp" />

@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include <boost/make_shared.hpp>
 
-TEST(SL_Engine_MapUtils, get_dimensions)
+TEST(SL_Engine_Maps_MapUtils, get_dimensions)
 {
   // Size = 0 - dimensions should be 0, regardless.
   uint size = 0;
@@ -62,4 +62,34 @@ TEST(SL_Engine_MapUtils, get_dimensions)
 
   EXPECT_EQ(expected_size, MapUtils::get_dimensions(original_map, c, size).get_y());
   EXPECT_EQ(expected_size, MapUtils::get_dimensions(original_map, c, size).get_x());
+}
+
+TEST(SL_Engine_Maps_MapUtils, coordinate_within_dimensions)
+{
+  Dimensions d;
+  Coordinate c(-1, -1);
+
+  EXPECT_FALSE(MapUtils::are_coordinates_within_dimensions(c, d));
+
+  c.first = 0;
+  
+  EXPECT_FALSE(MapUtils::are_coordinates_within_dimensions(c, d));
+
+  c.second = 0;
+
+  EXPECT_TRUE(MapUtils::are_coordinates_within_dimensions(c, d));
+
+  c.first = d.get_y() - 1;
+  c.second = d.get_x() - 1;
+
+  EXPECT_TRUE(MapUtils::are_coordinates_within_dimensions(c, d));
+
+  c.first++;
+
+  EXPECT_FALSE(MapUtils::are_coordinates_within_dimensions(c, d));
+
+  c.first--;
+  c.second++;
+
+  EXPECT_FALSE(MapUtils::are_coordinates_within_dimensions(c, d));
 }

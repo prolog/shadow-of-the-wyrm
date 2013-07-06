@@ -2619,6 +2619,18 @@
     <ClInclude Include="engine\creatures\include\PoisonStatusChange.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\combat\include\DefaultDamageEffect.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\IDamageEffect.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\PoisonDamageEffect.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\DamageEffectFactory.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4957,6 +4969,18 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\PoisonStatusChange.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\DefaultDamageEffect.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\PoisonDamageEffect.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\DamageEffectFactory.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\unit_tests\DamageEffectFactory_test.cpp">
+      <Filter>Source Files\engine\combat\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

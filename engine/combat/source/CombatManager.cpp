@@ -5,6 +5,7 @@
 #include "CoordUtils.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "DamageEffectFactory.hpp"
 #include "EventFunctions.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
@@ -173,6 +174,9 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 
   if (damage_dealt > 0)
   {
+    // Apply any effects (e.g., poison) that occur as the result of the damage)
+    handle_damage_effects(attacked_creature, damage_dealt, damage_type);
+
     // Deal the damage, handling death if necessary.
     deal_damage(attacking_creature, attacked_creature, damage_dealt);
   }
@@ -183,6 +187,21 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   }
 
   return true;
+}
+
+// Apply any effects as the result of damage.  This can include incurring blindness,
+// poison, etc.
+void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type)
+{
+  IDamageEffectPtr damage_effect = DamageEffectFactory::create_damage_effect(damage_type);
+  string message = damage_effect->get_player_application_message();
+
+  damage_effect->apply(creature, damage_dealt);
+
+  if (!message.empty())
+  {
+    add_combat_message(message);
+  }
 }
 
 // Deal damage to the creature, or heal it, depending on whether the damage dealt is
