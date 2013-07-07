@@ -757,6 +757,7 @@ void Creature::set_status(const string& status_id, const bool affected)
 void Creature::remove_status(const string& status_id)
 {
   statuses.erase(status_id);
+  status_durations.erase(status_id);
 }
 
 bool Creature::has_status(const string& status_id) const
@@ -771,6 +772,34 @@ bool Creature::has_status(const string& status_id) const
   }
 
   return has_status;
+}
+
+CreatureStatusMap Creature::get_statuses() const
+{
+  return statuses;
+}
+
+void Creature::set_status_duration(const string& status_id, const StatusDuration duration)
+{
+  status_durations[status_id] = duration;
+}
+
+StatusDuration Creature::get_status_duration(const string& status_id) const
+{
+  StatusDuration duration;
+
+  StatusDurationMap::const_iterator s_it = status_durations.find(status_id);
+  if (s_it != status_durations.end())
+  {
+    duration = s_it->second;
+  }
+
+  return duration;
+}
+
+StatusDurationMap Creature::get_status_durations() const
+{
+  return status_durations;
 }
 
 void Creature::clear_event_functions()

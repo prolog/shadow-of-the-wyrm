@@ -2631,6 +2631,12 @@
     <ClInclude Include="engine\combat\include\DamageEffectFactory.hpp">
       <Filter>Header Files\engine\combat\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\Random.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureStatuses.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4981,6 +4987,12 @@
     </ClCompile>
     <ClCompile Include="engine\combat\source\unit_tests\DamageEffectFactory_test.cpp">
       <Filter>Source Files\engine\combat\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Random.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureStatuses.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

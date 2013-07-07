@@ -384,6 +384,7 @@
     <ClInclude Include="engine\include\Metadata.hpp" />
     <ClInclude Include="engine\include\Naming.hpp" />
     <ClInclude Include="engine\include\RaceManager.hpp" />
+    <ClInclude Include="engine\include\Random.hpp" />
     <ClInclude Include="engine\include\Range.hpp" />
     <ClInclude Include="engine\include\ReligionManager.hpp" />
     <ClInclude Include="engine\include\RNG.hpp" />
@@ -492,6 +493,7 @@
     <ClInclude Include="engine\time\include\CreatureHungerTimer.hpp" />
     <ClInclude Include="engine\time\include\CreaturePietyRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureSkillIncrementer.hpp" />
+    <ClInclude Include="engine\time\include\CreatureStatuses.hpp" />
     <ClInclude Include="engine\time\include\CreatureTimeObserver.hpp" />
     <ClInclude Include="engine\time\include\ICreatureRegeneration.hpp" />
     <ClInclude Include="engine\time\include\ITerrainMovementAccumulationChecker.hpp" />
@@ -1272,6 +1274,7 @@
     <ClCompile Include="engine\source\Metadata.cpp" />
     <ClCompile Include="engine\source\Naming.cpp" />
     <ClCompile Include="engine\source\RaceManager.cpp" />
+    <ClCompile Include="engine\source\Random.cpp" />
     <ClCompile Include="engine\source\ReligionManager.cpp" />
     <ClCompile Include="engine\source\RNG.cpp" />
     <ClCompile Include="engine\source\SavageLandsEngine.cpp" />
@@ -1347,6 +1350,7 @@
     <ClCompile Include="engine\time\source\CreatureHungerTimer.cpp" />
     <ClCompile Include="engine\time\source\CreaturePietyRegeneration.cpp" />
     <ClCompile Include="engine\time\source\CreatureSkillIncrementer.cpp" />
+    <ClCompile Include="engine\time\source\CreatureStatuses.cpp" />
     <ClCompile Include="engine\time\source\CreatureTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\ITimeObserver.cpp" />
     <ClCompile Include="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" />

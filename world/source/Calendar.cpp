@@ -37,6 +37,11 @@ void Calendar::add_seconds(const double additional_seconds)
   seconds += additional_seconds;
 }
 
+double Calendar::get_seconds() const
+{
+  return seconds;
+}
+
 // Calculate and return the date, based on the total seconds that have elapsed so far.
 Date Calendar::get_date() const
 {

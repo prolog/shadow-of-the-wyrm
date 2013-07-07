@@ -227,10 +227,12 @@ class Creature : public ISerializable
     void set_status(const std::string& status_id, const bool affected);
     void remove_status(const std::string& status_id);
     bool has_status(const std::string& status_id) const;
+    CreatureStatusMap get_statuses() const;
 
     // Set the duration lengths for various status buffs/ailments.
-    // void set_status_duration(...);
-    // StatusDuration get_status_duration(...);
+    void set_status_duration(const std::string& status_id, const StatusDuration duration);
+    StatusDuration get_status_duration(const std::string& status_id) const;
+    StatusDurationMap get_status_durations() const;
 
     void clear_event_functions();
     void set_event_functions(const EventFunctionMap& evm);
