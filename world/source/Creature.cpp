@@ -1265,7 +1265,7 @@ bool Creature::deserialize(istream& stream)
   {
     status_durations.clear();
 
-    for (uint i = 0; i < status_durations.size(); i++)
+    for (uint i = 0; i < status_durations_size; i++)
     {
       string status_id;
       Serialize::read_string(stream, status_id);
