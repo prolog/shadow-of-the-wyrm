@@ -9,22 +9,18 @@ class StatusDuration : public ISerializable
 {
   public:
     StatusDuration();
-    StatusDuration(const ulonglong start, const ulonglong duration);
+    StatusDuration(const double end);
     bool operator==(const StatusDuration& sd) const;
 
-    void set_start_time(const ulonglong new_start_time);
-    ulonglong get_start_time() const;
-
-    void set_duration_length(const ulonglong new_duration_length);
-    ulonglong get_duration_length() const;
+    void set_end(const double new_end_val);
+    double get_end() const;
 
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 
 
   protected:
-    ulonglong start_time;
-    ulonglong duration_length;
+    double end;
 
   private:
     ClassIdentifier internal_class_identifier() const;

@@ -8,6 +8,5 @@ class PoisonDamageEffect : public IDamageEffect
 
   protected:
     static const int BASE_PCT_CHANCE_POISON;
-    static const int BASE_POISON_DURATION;
-    static const int MAX_POISON_DURATION;
+    static const int POISON_DURATION_MEAN;
 };

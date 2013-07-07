@@ -1,3 +1,4 @@
+#include "CombatManager.hpp"
 #include "Creature.hpp"
 #include "PoisonStatusChange.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -30,5 +31,10 @@ void PoisonStatusChange::undo_change(CreaturePtr creature) const
 
 void PoisonStatusChange::tick(CreaturePtr creature) const
 {
+  CreaturePtr no_creature;
+  CombatManager cm;
+
+  // Poison always deals a single point of damage per minute.
+  cm.deal_damage(no_creature, creature, 1);
 }
 

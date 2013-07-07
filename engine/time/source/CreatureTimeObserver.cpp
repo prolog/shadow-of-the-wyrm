@@ -5,6 +5,7 @@
 #include "CreatureHungerTimer.hpp"
 #include "CreaturePietyRegeneration.hpp"
 #include "CreatureSkillIncrementer.hpp"
+#include "CreatureStatuses.hpp"
 #include "CreatureTimeObserver.hpp"
 #include "Game.hpp"
 #include "MovementAccumulationChecker.hpp"
@@ -39,6 +40,8 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   ICreatureRegenerationPtr skill_checkr = boost::make_shared<CreatureSkillIncrementer>(1440);
   // Every minute, reduce the player's hunger clock...
   ICreatureRegenerationPtr hungr_checkr = boost::make_shared<CreatureHungerTimer>();
+  // Every minute, call the tick() function for each status the creature has.
+  ICreatureRegenerationPtr status_chekr = boost::make_shared<CreatureStatuses>();
   
   regen.push_back(hp_regen    );
   regen.push_back(ap_regen    );
@@ -47,6 +50,7 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   regen.push_back(move_checkr );
   regen.push_back(skill_checkr);
   regen.push_back(hungr_checkr);
+  regen.push_back(status_chekr);
 }
 
 void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
