@@ -17,3 +17,5 @@ const string StatusAilmentTextKeys::STATUS_HUNGER_DYING            = "STATUS_HUN
 const string StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING    = "STATUS_MESSAGE_HUNGER_DYING";
 const string StatusAilmentTextKeys::STATUS_POISON = "STATUS_POISON";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_POISONED = "STATUS_MESSAGE_PLAYER_POISONED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_POISON_CURED = "STATUS_MESSAGE_PLAYER_POISON_CURED";
+

@@ -5,7 +5,6 @@
 #include "CoordUtils.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
-#include "DamageEffectFactory.hpp"
 #include "EventFunctions.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
@@ -16,6 +15,7 @@
 #include "MessageManager.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
+#include "StatusEffectFactory.hpp"
 #include "SpeedCalculatorFactory.hpp"
 #include "TextKeys.hpp"
 #include "RNG.hpp"
@@ -193,14 +193,11 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 // poison, etc.
 void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type)
 {
-  IDamageEffectPtr damage_effect = DamageEffectFactory::create_damage_effect(damage_type);
-  string message = damage_effect->get_player_application_message();
+  StatusEffectPtr status_change = StatusEffectFactory::create_effect_for_damage_type(damage_type);
 
-  damage_effect->apply(creature, damage_dealt);
-
-  if (!message.empty())
+  if (status_change && status_change->should_apply_change(creature))
   {
-    add_combat_message(message);
+    status_change->apply_change(creature);
   }
 }
 

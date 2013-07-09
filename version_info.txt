@@ -5,6 +5,13 @@ Savage Lands v0.1.5 "Beorhthun"
   creatures to eat and have their hunger level tick down to normal, but
   stop there, so that they never get hungry.  Set this option for Fae.
 
+- Added status ailments (poison), and the application of status ailments
+  via damage (e.g., checks for poisoning after being hit with poison
+  damage).  Created a new creature observer for handling per-minute
+  status checks, and created the mechanics for poison - 1 point of damage
+  per tick.  Added a green "Po" as a status indicator on the player
+  synopsis so that the player is aware of the status.
+
 - Miscellaneous fixes: updated the player-death code so that the display
   will be updated before death (to show final HP, etc).
 
