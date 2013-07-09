@@ -2607,35 +2607,23 @@
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\creatures\include\StatusChange.hpp">
-      <Filter>Header Files\engine\creatures\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\StatusDuration.hpp">
       <Filter>Header Files\world\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\creatures\include\StatusChangeFactory.hpp">
-      <Filter>Header Files\engine\creatures\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\creatures\include\PoisonStatusChange.hpp">
-      <Filter>Header Files\engine\creatures\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\combat\include\DefaultDamageEffect.hpp">
-      <Filter>Header Files\engine\combat\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\combat\include\IDamageEffect.hpp">
-      <Filter>Header Files\engine\combat\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\combat\include\PoisonDamageEffect.hpp">
-      <Filter>Header Files\engine\combat\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\combat\include\DamageEffectFactory.hpp">
-      <Filter>Header Files\engine\combat\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\include\Random.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\time\include\CreatureStatuses.hpp">
       <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\StatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\StatusEffectFactory.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\PoisonStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4955,12 +4943,6 @@
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">
       <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\creatures\source\StatusChange.cpp">
-      <Filter>Source Files\engine\creatures\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\creatures\source\unit_tests\StatusChange_test.cpp">
-      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\StatusDuration.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
@@ -4970,29 +4952,23 @@
     <ClCompile Include="world\source\StatusTypes.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\creatures\source\StatusChangeFactory.cpp">
-      <Filter>Source Files\engine\creatures\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\creatures\source\PoisonStatusChange.cpp">
-      <Filter>Source Files\engine\creatures\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\combat\source\DefaultDamageEffect.cpp">
-      <Filter>Source Files\engine\combat\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\combat\source\PoisonDamageEffect.cpp">
-      <Filter>Source Files\engine\combat\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\combat\source\DamageEffectFactory.cpp">
-      <Filter>Source Files\engine\combat\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\combat\source\unit_tests\DamageEffectFactory_test.cpp">
-      <Filter>Source Files\engine\combat\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\source\Random.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\time\source\CreatureStatuses.cpp">
       <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\PoisonStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\StatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\StatusEffectFactory.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\StatusEffect_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

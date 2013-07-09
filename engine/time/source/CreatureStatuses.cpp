@@ -1,7 +1,7 @@
 #include <boost/foreach.hpp>
 #include "CreatureStatuses.hpp"
 #include "Game.hpp"
-#include "StatusChangeFactory.hpp"
+#include "StatusEffectFactory.hpp"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ void CreatureStatuses::tick(CreaturePtr creature, const ulonglong minutes_this_t
     BOOST_FOREACH(CreatureStatusMap::value_type& status, statuses)
     {
       string status_id = status.first;
-      StatusChangePtr status_change = StatusChangeFactory::create_status_change(status_id);
+      StatusEffectPtr status_change = StatusEffectFactory::create_status_change(status_id);
       StatusDuration cur_duration = durations[status_id];
       double end = cur_duration.get_end();
 
