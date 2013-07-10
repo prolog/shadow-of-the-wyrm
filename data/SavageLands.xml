@@ -5326,6 +5326,23 @@
 				<Nutrition>100</Nutrition>
 				<Effect>1</Effect>
 			</Potion>
+			<Potion id="antidote_potion">
+				<DescriptionSID>ANTIDOTE_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_ANTIDOTE_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>ANTIDOTE_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_ANTIDOTE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>80</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>1</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>100</Nutrition>
+				<Effect>6</Effect>
+			</Potion>
 			<Potion id="ether_potion">
 				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>
