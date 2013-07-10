@@ -5,7 +5,7 @@
 
 using namespace std;
 
-typedef map<ItemType, vector<pair<string, string>>> RandomizedDescriptionMap;
+typedef map<ItemType, vector<pair<string, pair<string, Colour>>>> RandomizedDescriptionMap;
 
 ItemDescriptionRandomizer::ItemDescriptionRandomizer(const vector<ItemType>& randomize_types)
 : types_to_randomize(randomize_types)
@@ -23,7 +23,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
   {
     type_inclusion[random_type] = true;
 
-    vector<pair<string, string>> randomized_item_descriptions;
+    vector<pair<string, pair<string, Colour>>> randomized_item_descriptions;
     randomized_entries.insert(make_pair(random_type, randomized_item_descriptions));
   }
 
@@ -41,9 +41,9 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
       
       if (type_inclusion[item_type] == true)
       {
-        pair<string,string> unidentified_desc_sids(item->get_unidentified_description_sid(), item->get_unidentified_usage_description_sid());
-        vector<pair<string,string>>& item_type_descs = randomized_entries[item_type];
-        item_type_descs.push_back(unidentified_desc_sids);
+        pair<string,pair<string,Colour>> unidentified_desc_sids_and_colour(item->get_unidentified_description_sid(), make_pair(item->get_unidentified_usage_description_sid(), item->get_colour()));
+        vector<pair<string,pair<string, Colour>>>& item_type_descs = randomized_entries[item_type];
+        item_type_descs.push_back(unidentified_desc_sids_and_colour);
       }
     }
   }
@@ -52,7 +52,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
   // IDs, shuffle them to get a random order.
   BOOST_FOREACH(RandomizedDescriptionMap::value_type& rmap_pair, randomized_entries)
   {
-    vector<pair<string,string>>& randomized_descs = rmap_pair.second;
+    vector<pair<string,pair<string, Colour>>>& randomized_descs = rmap_pair.second;
     
     random_shuffle(randomized_descs.begin(), randomized_descs.end(), RNG::get_generator());
   }
@@ -71,12 +71,13 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
 
       if (type_inclusion[item_type] == true)
       {
-        vector<pair<string,string>>& item_type_descs = randomized_entries[item_type];
-        pair<string,string> item_descs = item_type_descs.back();
-        item->set_unidentified_description_sid(item_descs.first);
-        item->set_unidentified_usage_description_sid(item_descs.second);
+        vector<pair<string,pair<string, Colour>>>& item_type_descs_and_colour = randomized_entries[item_type];
+        pair<string,pair<string, Colour>> item_descs_and_colour = item_type_descs_and_colour.back();
+        item->set_unidentified_description_sid(item_descs_and_colour.first);
+        item->set_unidentified_usage_description_sid(item_descs_and_colour.second.first);
+        item->set_colour(item_descs_and_colour.second.second);
 
-        item_type_descs.pop_back();
+        item_type_descs_and_colour.pop_back();
       }
     }
   }
