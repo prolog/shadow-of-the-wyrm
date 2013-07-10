@@ -1093,11 +1093,12 @@
 				Ether (sweet; restore AP) = 3
 				Fruit Juice (sweet) = 4
 				Teleport = 5
+				Antidote = 6
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="5"/>
+		<xs:maxInclusive value="6"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

@@ -23,23 +23,23 @@ StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageT
     status_id = StatusIdentifiers::STATUS_ID_POISON;
   }
 
-  return create_status_change(status_id);
+  return create_status_effect(status_id);
 }
 
-StatusEffectPtr StatusEffectFactory::create_status_change(const string& status_id)
+StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_id)
 {
-  StatusEffectPtr status_change;
+  StatusEffectPtr status_effect;
 
   if (status_id == StatusIdentifiers::STATUS_ID_POISON)
   {
-    status_change = boost::make_shared<PoisonStatusEffect>();
+    status_effect = boost::make_shared<PoisonStatusEffect>();
   }
   else
   {
     // Default case - this basically does nothing for each callable
     // method.
-    status_change = boost::make_shared<StatusEffect>();
+    status_effect = boost::make_shared<StatusEffect>();
   }
 
-  return status_change;
+  return status_effect;
 }

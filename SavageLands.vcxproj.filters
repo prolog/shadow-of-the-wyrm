@@ -2625,6 +2625,9 @@
     <ClInclude Include="engine\creatures\include\PoisonStatusEffect.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\RemoveStatusEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4969,6 +4972,9 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\StatusEffect_test.cpp">
       <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\RemoveStatusEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

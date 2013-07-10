@@ -18,17 +18,17 @@ void CreatureStatuses::tick(CreaturePtr creature, const ulonglong minutes_this_t
     BOOST_FOREACH(CreatureStatusMap::value_type& status, statuses)
     {
       string status_id = status.first;
-      StatusEffectPtr status_change = StatusEffectFactory::create_status_change(status_id);
+      StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id);
       StatusDuration cur_duration = durations[status_id];
       double end = cur_duration.get_end();
 
       if (current_seconds > end)
       {
-        status_change->finalize_change(creature);
+        status_effect->finalize_change(creature);
       }
       else
       {
-        status_change->tick(creature);
+        status_effect->tick(creature);
       }
     }
   }

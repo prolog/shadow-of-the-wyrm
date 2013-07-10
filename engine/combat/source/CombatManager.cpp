@@ -193,11 +193,11 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 // poison, etc.
 void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type)
 {
-  StatusEffectPtr status_change = StatusEffectFactory::create_effect_for_damage_type(damage_type);
+  StatusEffectPtr status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type);
 
-  if (status_change && status_change->should_apply_change(creature))
+  if (status_effect && status_effect->should_apply_change(creature))
   {
-    status_change->apply_change(creature);
+    status_effect->apply_change(creature);
   }
 }
 
