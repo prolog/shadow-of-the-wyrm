@@ -176,6 +176,7 @@
     <ClInclude Include="engine\calculators\include\NullSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\OverworldMapDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhysicalDamageCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\PoisonCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PrimaryPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\RangedAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\RangedCombatSkillMarker.hpp" />
@@ -856,6 +857,7 @@
     <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\OverworldMapDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhysicalDamageCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\PoisonCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PrimaryPhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\RangedAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\RangedCombatSkillMarker.cpp" />

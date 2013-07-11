@@ -1,4 +1,5 @@
 #pragma once
+#include "PoisonCalculator.hpp"
 #include "StatusEffect.hpp"
 
 class PoisonStatusEffect : public StatusEffect
@@ -15,7 +16,6 @@ class PoisonStatusEffect : public StatusEffect
     virtual std::string get_player_application_message() const;
     virtual std::string get_player_undo_message() const;
 
-    static const int BASE_PCT_CHANCE_POISON;
-    static const int POISON_DURATION_MEAN;
+    PoisonCalculator poison_calc;
 };
 

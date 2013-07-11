@@ -2,24 +2,20 @@
 #include "Creature.hpp"
 #include "Game.hpp"
 #include "MessageManager.hpp"
+#include "PoisonCalculator.hpp"
 #include "PoisonStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusTypes.hpp"
-#include "Random.hpp"
 #include "RNG.hpp"
 
 using namespace std;
-
-const int PoisonStatusEffect::POISON_DURATION_MEAN = 30;
-const int PoisonStatusEffect::BASE_PCT_CHANCE_POISON = 25;
-
-// JCD FIXME make a PoisonStatusCalculator.
 
 bool PoisonStatusEffect::should_apply_change(CreaturePtr creature) const
 {
   bool creature_poisoned = false;
 
-  if (RNG::percent_chance(BASE_PCT_CHANCE_POISON) && creature && !creature->has_status(StatusIdentifiers::STATUS_ID_POISON))
+  if (creature && !creature->has_status(StatusIdentifiers::STATUS_ID_POISON) 
+   && RNG::percent_chance(poison_calc.calculate_pct_chance_poison(creature)))
   {
     creature_poisoned = true;
   }
@@ -33,11 +29,8 @@ void PoisonStatusEffect::apply(CreaturePtr creature) const
   {
     Game& game = Game::instance();
     double current_seconds_since_game_start = game.get_current_world()->get_calendar().get_seconds();
+    int duration = poison_calc.calculate_poison_duration_in_minutes(creature);
 
-    // Poison duration is described by a Poisson distribution, with the
-    // average poisoning lasting about half an hour.
-    PoissonDistribution p(POISON_DURATION_MEAN);
-    int duration = p.next();
     StatusDuration poison_duration(current_seconds_since_game_start + (duration * 60.0));
 
     creature->set_status(StatusIdentifiers::STATUS_ID_POISON, true);
@@ -82,7 +75,7 @@ void PoisonStatusEffect::tick(CreaturePtr creature) const
   CombatManager cm;
 
   // Poison always deals a single point of damage per minute.
-  cm.deal_damage(no_creature, creature, 1);
+  cm.deal_damage(no_creature, creature, poison_calc.calculate_damage_per_tick(creature));
 }
 
 string PoisonStatusEffect::get_player_application_message() const
