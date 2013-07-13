@@ -98,3 +98,21 @@ Colour PoisonStatusAilmentTranslator::get_status_ailment_colour(const CreaturePt
 {
   return COLOUR_GREEN;
 }
+
+// Muteness
+bool MutenessStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
+{
+  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_MUTE);
+
+  return ailment;
+}
+
+string MutenessStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
+{
+  return StringTable::get(StatusAilmentTextKeys::STATUS_MUTE);
+}
+
+Colour MutenessStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
+{
+  return COLOUR_BLUE;
+}

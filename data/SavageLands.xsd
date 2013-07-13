@@ -1094,11 +1094,12 @@
 				Fruit Juice (sweet) = 4
 				Teleport = 5
 				Antidote = 6
+				AMUT (anti-mute; not as useless as in Final Fantasy, honest!) = 7
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="6"/>
+		<xs:maxInclusive value="7"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

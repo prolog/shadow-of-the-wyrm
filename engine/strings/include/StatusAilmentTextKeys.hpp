@@ -23,6 +23,10 @@ class StatusAilmentTextKeys
     static const std::string STATUS_MESSAGE_PLAYER_POISONED;
     static const std::string STATUS_MESSAGE_PLAYER_POISON_CURED;
 
+    static const std::string STATUS_MUTE;
+    static const std::string STATUS_MESSAGE_PLAYER_MUTED;
+    static const std::string STATUS_MESSAGE_PLAYER_MUTENESS_CURED;
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();

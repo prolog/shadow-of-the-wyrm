@@ -14,5 +14,9 @@ class StatusEffectFactory
   protected:
     StatusEffectFactory();
     ~StatusEffectFactory();
+
+    static void initialize_damage_status_ailments();
+
+    static std::map<DamageType, std::string> damage_status_ailments;
 };
 

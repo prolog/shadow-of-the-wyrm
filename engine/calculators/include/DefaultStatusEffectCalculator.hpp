@@ -1,0 +1,11 @@
+#pragma once
+#include "IStatusEffectCalculator.hpp"
+#include "Creature.hpp"
+
+class DefaultStatusEffectCalculator : public IStatusEffectCalculator
+{
+  public:
+    int calculate_pct_chance_effect(CreaturePtr creature) const;
+    int calculate_duration_in_minutes(CreaturePtr creature) const;
+};
+

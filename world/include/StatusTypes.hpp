@@ -15,6 +15,7 @@ class StatusIdentifiers
 {
   public:
     static const std::string STATUS_ID_POISON;
+    static const std::string STATUS_ID_MUTE;
 
   protected:
     StatusIdentifiers();

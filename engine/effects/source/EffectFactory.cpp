@@ -21,7 +21,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 7);
+  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 8);
 
   EffectPtr effect;
 
@@ -44,6 +44,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_ANTIDOTE:
       effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_POISON);
+      break;
+    case EFFECT_TYPE_AMUT:
+      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_MUTE);
       break;
     case EFFECT_TYPE_NULL:
     default:

@@ -7,11 +7,11 @@ TEST(SL_World_Calculator_PoisonCalculator, calc_pct_chance_poison)
 
   PoisonCalculator pc;
 
-  EXPECT_EQ(23, pc.calculate_pct_chance_poison(creature));
+  EXPECT_EQ(23, pc.calculate_pct_chance_effect(creature));
 
   creature->set_health(28);
 
-  EXPECT_EQ(20, pc.calculate_pct_chance_poison(creature));
+  EXPECT_EQ(20, pc.calculate_pct_chance_effect(creature));
 }
 
 TEST(SL_World_Calculator_PoisonCalculator, calc_damage_per_tick)
