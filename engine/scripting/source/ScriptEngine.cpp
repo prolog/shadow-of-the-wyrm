@@ -670,7 +670,9 @@ int add_creature_to_map(lua_State* ls)
     MapPtr map = game.get_current_map();
 
     string creature_id = lua_tostring(ls, 1);
-    CreaturePtr creature = CreatureFactory::create_by_creature_id(game.get_action_manager_ref(), creature_id);
+
+    CreatureFactory cf;
+    CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id);
     Coordinate coords(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
 
     if (creature && MapUtils::are_coordinates_within_dimensions(coords, map->size()))

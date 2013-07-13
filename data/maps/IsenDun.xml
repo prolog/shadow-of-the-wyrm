@@ -118,6 +118,7 @@
 					<Row>11</Row>
 					<Col>62</Col>
 				</Coord>
+				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
 				<ID>cynwise</ID>

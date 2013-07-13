@@ -12,8 +12,13 @@ Savage Lands v0.1.5 "Beorhthun"
   per tick.  Added a green "Po" as a status indicator on the player
   synopsis so that the player is aware of the status.
 
-- Miscellaneous fixes: updated the player-death code so that the display
-  will be updated before death (to show final HP, etc).
+- Added muteness for holy damage (dumbstruck by divine power).
+
+- Miscellaneous fixes and changes: updated the player-death code so that 
+  the display will be updated before death (to show final HP, etc),
+  allowed normally hostile creatures to be generated as friendly on
+  custom maps, added items to remedy each status ailment created, added
+  rock adders and acolytes.
 
 Savage Lands v0.1.4 "Andhun"
 - Version declared June 6, 2013.  Version finalized June 23, 2013.

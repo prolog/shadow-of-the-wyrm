@@ -54,6 +54,8 @@
 	<xs:sequence>
 		<xs:element name="ID" type="xs:string"/>
 		<xs:element name="Coord" type="tns:Coord"/>
+		<!-- Used only for creatures - has no meaning for items. -->
+		<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
 		<!-- Quantity is only used for items. -->
 		<xs:element name="Quantity" type="xs:unsignedInt" minOccurs="0"/>
 	</xs:sequence>

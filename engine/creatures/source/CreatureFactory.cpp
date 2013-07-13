@@ -22,6 +22,17 @@
 
 using namespace std;
 
+CreatureFactory::CreatureFactory()
+: override_hostility_setting(false), create_hostile(false)
+{
+}
+
+void CreatureFactory::set_hostility_for_creatures(const bool override_host, const bool create_host)
+{
+  override_hostility_setting = override_host;
+  create_hostile = create_host;
+}
+
 CreaturePtr CreatureFactory::create_by_creature_id
 (
   ActionManager& action_manager
@@ -84,12 +95,12 @@ CreaturePtr CreatureFactory::create_by_creature_id
       
     // If the creature is guaranteed to be generated as friendly, then be sure
     // that hostility isn't set.
-    if (!cgv.get_friendly())
+    if (!cgv.get_friendly() && ((override_hostility_setting && create_hostile) || (!override_hostility_setting)))
     {
       // Set the creature hostile to the player, if the player fails a charisma check.
       set_hostility_to_player(creature);
     }
-      
+
     initialize(creature);
     creature->set_original_id(creature_id);
 
