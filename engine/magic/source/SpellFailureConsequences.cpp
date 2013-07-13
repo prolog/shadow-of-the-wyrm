@@ -85,7 +85,8 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
       string creature_id = possible_creatures.at(RNG::range(0, pcreatures_size-1));
 
       // Create a creature to place.
-      CreaturePtr summoned_creature = CreatureFactory::create_by_creature_id(game.get_action_manager_ref(), creature_id);
+      CreatureFactory cf;
+      CreaturePtr summoned_creature = cf.create_by_creature_id(game.get_action_manager_ref(), creature_id);
 
       // Place the creature on the tile
       pair<string, TilePtr> fov_tile = free_tiles.at(tile_idx);

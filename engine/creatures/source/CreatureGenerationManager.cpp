@@ -71,7 +71,9 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
     if (RNG::percent_chance(P) || ((distance(c_it, generation_map.end()) == 1) && !generated_creature))
     {
       string creature_id = c_it->first;
-      generated_creature = CreatureFactory::create_by_creature_id(am, creature_id);
+      CreatureFactory cf;
+      generated_creature = cf.create_by_creature_id(am, creature_id);
+
       break;
     }
   }

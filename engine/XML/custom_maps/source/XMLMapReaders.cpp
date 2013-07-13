@@ -107,13 +107,26 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
 
       string id = XMLUtils::get_child_node_value(placement_node, "ID");
 
+      XMLNode friendly_node = XMLUtils::get_next_element_by_local_name(placement_node, "Friendly");
+
+      bool override_host = false;
+      bool hostility = false;
+
+      if (!friendly_node.is_null())
+      {
+        override_host = true;
+        hostility = (XMLUtils::get_child_node_bool_value(placement_node, "Friendly", false) == false);
+      }
+
       XMLMapCoordinateReader coord_reader;
       Coordinate coord = coord_reader.parse_coordinate(coord_node);
 
       // Place the specified creature on the map.
       Game& game = Game::instance();
 
-      CreaturePtr creature = CreatureFactory::create_by_creature_id(game.get_action_manager_ref(), id);
+      CreatureFactory cfactory;
+      cfactory.set_hostility_for_creatures(override_host, hostility);
+      CreaturePtr creature = cfactory.create_by_creature_id(game.get_action_manager_ref(), id);
 
       TilePtr placement_tile = map->at(coord);
 

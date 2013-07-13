@@ -238,7 +238,8 @@ bool SavageLandsEngine::process_new_game()
       }
     }
 
-    CreaturePtr player = CreatureFactory::create_by_race_and_class(game.get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
+    CreatureFactory cf;
+    CreaturePtr player = cf.create_by_race_and_class(game.get_action_manager_ref(), selected_race_id, selected_class_id, name, sex, selected_deity_id);
     player->set_is_player(true, controller);  
 
     // Identify the player's equipment and inventory.  If any equipment is

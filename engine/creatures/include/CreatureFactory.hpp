@@ -7,24 +7,31 @@
 class CreatureFactory
 {
   public:
-    static CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id);
-    static CreaturePtr create_by_race_and_class(ActionManager& am, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const std::string& deity_id = "");
+    CreatureFactory();
+
+    void set_hostility_for_creatures(const bool override_host, const bool host);
+
+    CreaturePtr create_by_creature_id(ActionManager& am, const std::string& creature_id);
+    CreaturePtr create_by_race_and_class(ActionManager& am, const std::string& race_id, const std::string& class_id, const std::string& creature_name, const CreatureSex creature_sex, const std::string& deity_id = "");
 
   protected:
-    static void revert_to_original_configuration_values(CreaturePtr newly_created_creature, const Creature& configuration_instance, DecisionStrategyPtr template_decision_strategy);
+    void revert_to_original_configuration_values(CreaturePtr newly_created_creature, const Creature& configuration_instance, DecisionStrategyPtr template_decision_strategy);
 
-    static Creature set_age(const Creature& creature, const AgeInfo& age_info);
-    static Creature set_initial_statistics(const Creature& creature, RacePtr race, ClassPtr char_class, DeityPtr deity);
-    static void     set_default_resistances(CreaturePtr creature);
-    static Creature set_initial_resistances(const Creature& creature, RacePtr race, ClassPtr char_class);
-    static Creature set_initial_skills(const Creature& creature, RacePtr race, ClassPtr char_class);
-    static HairColour get_random_hair_colour();
-    static EyeColour get_random_eye_colour();
+    Creature set_age(const Creature& creature, const AgeInfo& age_info);
+    Creature set_initial_statistics(const Creature& creature, RacePtr race, ClassPtr char_class, DeityPtr deity);
+    void     set_default_resistances(CreaturePtr creature);
+    Creature set_initial_resistances(const Creature& creature, RacePtr race, ClassPtr char_class);
+    Creature set_initial_skills(const Creature& creature, RacePtr race, ClassPtr char_class);
+    HairColour get_random_hair_colour();
+    EyeColour get_random_eye_colour();
     
     // Additional NPC functions
-    static void set_hostility_to_player(CreaturePtr npc);
+    void set_hostility_to_player(CreaturePtr npc);
 
     // Called to initialize a new ID and set any other ID-like values that are more for
     // book-keeping than game-playing.
-    static void initialize(CreaturePtr creature);
+    void initialize(CreaturePtr creature);
+
+    bool override_hostility_setting;
+    bool create_hostile;
 };
