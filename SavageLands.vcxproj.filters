@@ -2631,6 +2631,18 @@
     <ClInclude Include="engine\calculators\include\PoisonCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\MutenessStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\IStatusEffectCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\MutenessCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\DefaultStatusEffectCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -4980,6 +4992,15 @@
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\PoisonCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\MutenessStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MutenessCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\DefaultStatusEffectCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>

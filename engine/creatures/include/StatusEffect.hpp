@@ -1,6 +1,7 @@
 #pragma once
 #include <boost/shared_ptr.hpp>
 #include "Colours.hpp"
+#include "IStatusEffectCalculator.hpp"
 
 class Creature;
 
@@ -43,6 +44,11 @@ class StatusEffect
     virtual void undo(boost::shared_ptr<Creature> creature) const;
     virtual void after_undo(boost::shared_ptr<Creature> creature) const;
     virtual std::string get_player_undo_message() const;
+
+    // The status identifier this class encompasses
+    virtual std::string get_status_identifier() const;
+
+    IStatusEffectCalculatorPtr status_calc;
 };
 
 typedef boost::shared_ptr<StatusEffect> StatusEffectPtr;

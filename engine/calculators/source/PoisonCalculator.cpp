@@ -16,7 +16,7 @@ const int PoisonCalculator::HEALTH_DIVISOR = 5;
 const int PoisonCalculator::HEALTH_THRESHOLD_EXTRA_DAMAGE = 7;
 
 // Calculate the chance that this creature gets poisoned.
-int PoisonCalculator::calculate_pct_chance_poison(CreaturePtr creature) const
+int PoisonCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
 {
   int pct_chance = BASE_POISON_PCT_CHANCE;
 
@@ -31,7 +31,7 @@ int PoisonCalculator::calculate_pct_chance_poison(CreaturePtr creature) const
 }
 
 // Calculate the duration of the successful poisoning.
-int PoisonCalculator::calculate_poison_duration_in_minutes(CreaturePtr creature) const
+int PoisonCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
 {
   // Poison duration is described by a Poisson distribution, with the
   // average poisoning lasting about half an hour.

@@ -35,3 +35,13 @@ class PoisonStatusAilmentTranslator : public IStatusAilmentTranslator
     Colour get_status_ailment_colour(const CreaturePtr& creature) const;
 };
 
+class MutenessStatusAilmentTranslator : public IStatusAilmentTranslator
+{
+  public:
+    bool has_ailment(const CreaturePtr& creature) const;
+
+  protected:
+    std::string get_status_ailment_text(const CreaturePtr& creature) const;
+    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
+};
+

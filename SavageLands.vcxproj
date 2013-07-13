@@ -154,6 +154,7 @@
     <ClInclude Include="engine\calculators\include\DamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\DamageCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\DefaultStatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ForestCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
@@ -164,6 +165,7 @@
     <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ISkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\IStatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MagicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MagicalCombatSkillMarker.hpp" />
@@ -173,6 +175,7 @@
     <ClInclude Include="engine\calculators\include\MeleeAndRangedCombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MeleeCombatSkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\MountainClimbingCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\MutenessCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\NullSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\OverworldMapDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhysicalDamageCalculator.hpp" />
@@ -246,6 +249,7 @@
     <ClInclude Include="engine\creatures\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
+    <ClInclude Include="engine\creatures\include\MutenessStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\PoisonStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffectFactory.hpp" />
@@ -838,6 +842,7 @@
     <ClCompile Include="engine\calculators\source\DamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\DamageCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\DangerLevelCalculatorFactory.cpp" />
+    <ClCompile Include="engine\calculators\source\DefaultStatusEffectCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\EvadeCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ForestCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
@@ -854,6 +859,7 @@
     <ClCompile Include="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MeleeCombatSkillMarker.cpp" />
     <ClCompile Include="engine\calculators\source\MountainClimbingCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\MutenessCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\OverworldMapDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhysicalDamageCalculator.cpp" />
@@ -1018,6 +1024,7 @@
     <ClCompile Include="engine\creatures\source\CreatureFactory.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp" />
+    <ClCompile Include="engine\creatures\source\MutenessStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\PoisonStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusEffectFactory.cpp" />

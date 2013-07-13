@@ -444,7 +444,8 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         if (!advance && !current_creature->get_is_player())
         {
           int x = 1;
-          advance = true; // REMOVE THIS WHEN I GET ENTHUSIASTIC AND WANT TO DEBUG THE WOES...
+          action_cost.set_cost(50);
+          advance = true; // REMOVE THESE WHEN I GET ENTHUSIASTIC AND WANT TO DEBUG THE WOES...
         }
       }
       

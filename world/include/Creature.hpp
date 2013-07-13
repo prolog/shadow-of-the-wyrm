@@ -259,6 +259,10 @@ class Creature : public ISerializable
     void set_spell_knowledge(const SpellKnowledge& new_spell_knowledge);
     SpellKnowledge& get_spell_knowledge_ref();
 
+    // Checks to see if the creature can do certain things, typically based on
+    // the status effects.
+    bool can_speak() const;
+
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
 

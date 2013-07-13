@@ -3132,6 +3132,46 @@
 			</Damage>
 			<Evade>10</Evade>
 		</Creature>
+		<Creature id="acolyte">
+			<ShortDescriptionSID>ACOLYTE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ACOLYTE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ACOLYTE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ACOLYTE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>6</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Evade>2</Evade>
+			<Soak>2</Soak>
+		</Creature>
 		<Creature id="fox">
 			<ShortDescriptionSID>FOX_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FOX_DESCRIPTION_SID</DescriptionSID>
@@ -5342,6 +5382,23 @@
 				<Rarity>1</Rarity>
 				<Nutrition>100</Nutrition>
 				<Effect>6</Effect>
+			</Potion>
+			<Potion id="amut_potion">
+				<DescriptionSID>AMUT_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_AMUT_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>AMUT_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_AMUT_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>50</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>100</Nutrition>
+				<Effect>7</Effect>
 			</Potion>
 			<Potion id="ether_potion">
 				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>

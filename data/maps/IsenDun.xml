@@ -113,6 +113,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>acolyte</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>62</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>cynwise</ID>
 				<Coord>
 					<Row>10</Row>
