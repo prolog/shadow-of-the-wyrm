@@ -1005,12 +1005,6 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->spell_knowledge, cr.spell_knowledge);
 }
 
-// A creature can always speak if it has not been muted.
-bool Creature::can_speak() const
-{
-  return (has_status(StatusIdentifiers::STATUS_ID_MUTE) == false);
-}
-
 bool Creature::serialize(ostream& stream)
 {
   Serialize::write_string(stream, id);

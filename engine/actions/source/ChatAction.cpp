@@ -3,6 +3,7 @@
 #include "ChatAction.hpp"
 #include "Commands.hpp"
 #include "CreatureProperties.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "MessageManager.hpp"
 
@@ -15,9 +16,10 @@ ChatAction::ChatAction()
 ActionCostValue ChatAction::chat(CreaturePtr creature) const
 {
   ActionCostValue action_cost = get_nochat_action_cost_value();
+  CurrentCreatureAbilities cca;
   Game& game = Game::instance();
 
-  if (creature)
+  if (cca.can_speak(creature, true))
   {
     MapPtr current_map = game.get_current_map();
     bool spoke = false;

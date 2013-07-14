@@ -2643,6 +2643,9 @@
     <ClInclude Include="engine\calculators\include\DefaultStatusEffectCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\CurrentCreatureAbilities.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5002,6 +5005,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\DefaultStatusEffectCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CurrentCreatureAbilities.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

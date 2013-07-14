@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
 #include "Conversion.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DirectionUtils.hpp"
 #include "SpellcastingAction.hpp"
 #include "Game.hpp"
@@ -26,6 +27,7 @@ SpellcastingAction::SpellcastingAction()
 ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 {
   ActionCostValue action_cost_value = 0;
+  CurrentCreatureAbilities cca;
 
   // variable used to control whether to keep looping for input on the 
   // spellcasting screen.
@@ -35,7 +37,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
   // if so, the spell will be cast at the end of the process.
   string spell_id;
 
-  if (creature)
+  if (cca.can_speak(creature, true))
   {
     MagicalAbilityChecker mac;
 
