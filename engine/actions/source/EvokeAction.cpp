@@ -1,6 +1,7 @@
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "EffectFactory.hpp"
 #include "EffectTextKeys.hpp"
 #include "Game.hpp"
@@ -19,8 +20,9 @@ using boost::dynamic_pointer_cast;
 ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const am)
 {
   ActionCostValue action_cost_value = 0;
-  
-  if (creature)
+  CurrentCreatureAbilities cca;
+
+  if (cca.can_speak(creature, true))
   {
     list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ITEM_TYPE_WAND);
     ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, false);

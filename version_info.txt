@@ -12,7 +12,9 @@ Savage Lands v0.1.5 "Beorhthun"
   per tick.  Added a green "Po" as a status indicator on the player
   synopsis so that the player is aware of the status.
 
-- Added muteness for holy damage (dumbstruck by divine power).
+- Added muteness for holy damage (dumbstruck by divine power).  Added
+  checks to chatting, evoking wands, and spellcasting so that muteness
+  prevents these from occurring.
 
 - Miscellaneous fixes and changes: updated the player-death code so that 
   the display will be updated before death (to show final HP, etc),
