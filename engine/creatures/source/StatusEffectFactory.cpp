@@ -1,5 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "MutenessStatusEffect.hpp"
+#include "ParalysisStatusEffect.hpp"
 #include "PoisonStatusEffect.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StatusTypes.hpp"
@@ -22,6 +23,7 @@ void StatusEffectFactory::initialize_damage_status_ailments()
 
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_POISON, StatusIdentifiers::STATUS_ID_POISON));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_HOLY, StatusIdentifiers::STATUS_ID_MUTE));
+  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_LIGHTNING, StatusIdentifiers::STATUS_ID_PARALYSIS));
 }
 
 StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageType dt)
@@ -54,6 +56,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_MUTE)
   {
     status_effect = boost::make_shared<MutenessStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_PARALYSIS)
+  {
+    status_effect = boost::make_shared<ParalysisStatusEffect>();
   }
   else
   {

@@ -178,6 +178,7 @@
     <ClInclude Include="engine\calculators\include\MutenessCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\NullSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\OverworldMapDangerLevelCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ParalysisCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PhysicalDamageCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PoisonCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\PrimaryPhysicalAttackSpeedCalculator.hpp" />
@@ -251,6 +252,7 @@
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\creatures\include\CurrentCreatureAbilities.hpp" />
     <ClInclude Include="engine\creatures\include\MutenessStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\ParalysisStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\PoisonStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffectFactory.hpp" />
@@ -863,6 +865,7 @@
     <ClCompile Include="engine\calculators\source\MutenessCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\OverworldMapDangerLevelCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ParalysisCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PhysicalDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PoisonCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\PrimaryPhysicalAttackSpeedCalculator.cpp" />
@@ -914,6 +917,9 @@
     <ClCompile Include="engine\calculators\source\unit_tests\OverworldMapDangerLevelCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ParalysisCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1027,6 +1033,7 @@
     <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp" />
     <ClCompile Include="engine\creatures\source\CurrentCreatureAbilities.cpp" />
     <ClCompile Include="engine\creatures\source\MutenessStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\ParalysisStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\PoisonStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusEffectFactory.cpp" />
