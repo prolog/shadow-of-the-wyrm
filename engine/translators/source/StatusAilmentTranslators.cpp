@@ -116,3 +116,21 @@ Colour MutenessStatusAilmentTranslator::get_status_ailment_colour(const Creature
 {
   return COLOUR_BLUE;
 }
+
+// Paralysis
+bool ParalysisStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
+{
+  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_PARALYSIS);
+
+  return ailment;
+}
+
+string ParalysisStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
+{
+  return StringTable::get(StatusAilmentTextKeys::STATUS_PARALYSIS);
+}
+
+Colour ParalysisStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
+{
+  return COLOUR_BOLD_YELLOW;
+}

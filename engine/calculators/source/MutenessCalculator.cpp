@@ -8,7 +8,7 @@ const int MutenessCalculator::BASE_MUTENESS_PCT_CHANCE = 30;
 // decreases by 1.
 const int MutenessCalculator::BASE_MUTENESS_CHANCE_CHARISMA_MODIFIER = 4;
 
-// Calculate the chance that this creature gets poisoned.
+// Calculate the chance that this creature gets muted.
 int MutenessCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
 {
   int pct_chance = BASE_MUTENESS_PCT_CHANCE;
@@ -28,7 +28,7 @@ int MutenessCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
 int MutenessCalculator::calculate_duration_in_minutes(CreaturePtr creature) const
 {
   // Muteness duration is described by a Poisson distribution, with the
-  // average poisoning lasting several hours.
+  // average muteness lasting several hours.
   PoissonDistribution p(calculate_muteness_duration_mean(creature));
   int duration = p.next();
 
