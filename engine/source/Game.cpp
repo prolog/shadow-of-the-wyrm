@@ -8,6 +8,7 @@
 #include "CreatureDescriber.hpp"
 #include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Detection.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
@@ -361,6 +362,17 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
   
   if (current_creature)
   {
+    // Don't try to get an action for the creature if it cannot act.  Instead,
+    // increment the creature's turn by its current speed.
+    CurrentCreatureAbilities cca;
+    if (cca.can_act(current_creature) == false)
+    {
+      ActionCost ac;
+      ac.set_cost(current_creature->get_speed().get_current());
+
+      return ac;
+    }
+
     DecisionStrategyPtr strategy = current_creature->get_decision_strategy();
 
     if (strategy)
