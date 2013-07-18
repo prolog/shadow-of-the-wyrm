@@ -5024,5 +5024,11 @@
     <ClCompile Include="engine\calculators\source\unit_tests\ParalysisCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\MutenessCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PoisonCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -13,13 +13,15 @@ int ParalysisCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
 {
   int pct_chance = BASE_PARALYSIS_PCT_CHANCE;
 
-  // More charismatic creatures are resistant to being dumbstruck by
-  // divine beings.
+  // More charismatic and shock-resistance creatures are resistant to being 
+  // paralyzed via electricity.
   if (creature)
   {
-    int hea_bonus = std::min<int>((creature->get_health().get_current() / BASE_PARALYSIS_CHANCE_HEALTH_MODIFIER), BASE_PARALYSIS_PCT_CHANCE);
+    int health_bonus = (creature->get_health().get_current() / BASE_PARALYSIS_CHANCE_HEALTH_MODIFIER);
+    double lightning_multiplier = std::max<double>(0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_LIGHTNING));
 
-    pct_chance -= hea_bonus;
+    pct_chance -= health_bonus;
+    pct_chance = static_cast<int>(pct_chance * lightning_multiplier);
   }
 
   return pct_chance;

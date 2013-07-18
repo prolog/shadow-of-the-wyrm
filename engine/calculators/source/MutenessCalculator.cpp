@@ -13,13 +13,15 @@ int MutenessCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
 {
   int pct_chance = BASE_MUTENESS_PCT_CHANCE;
 
-  // More charismatic creatures are resistant to being dumbstruck by
+  // More charismatic and holy creature are resistant to being dumbstruck by
   // divine beings.
   if (creature)
   {
-    int cha_bonus = std::min<int>((creature->get_charisma().get_current() / BASE_MUTENESS_CHANCE_CHARISMA_MODIFIER), BASE_MUTENESS_PCT_CHANCE);
+    int charisma_bonus = creature->get_charisma().get_current() / BASE_MUTENESS_CHANCE_CHARISMA_MODIFIER;
+    double holiness_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_HOLY));
 
-    pct_chance -= cha_bonus;
+    pct_chance -= charisma_bonus;
+    pct_chance = static_cast<int>(pct_chance * holiness_multiplier);
   }
 
   return pct_chance;
