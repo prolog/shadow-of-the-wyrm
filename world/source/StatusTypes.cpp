@@ -15,3 +15,4 @@ StatusIdentifiers::~StatusIdentifiers()
 const string StatusIdentifiers::STATUS_ID_POISON = "_poison";
 const string StatusIdentifiers::STATUS_ID_MUTE = "_mute";
 const string StatusIdentifiers::STATUS_ID_PARALYSIS = "_para";
+const string StatusIdentifiers::STATUS_ID_SLOWNESS = "_slow";

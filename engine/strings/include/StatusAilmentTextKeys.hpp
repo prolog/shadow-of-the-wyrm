@@ -31,6 +31,10 @@ class StatusAilmentTextKeys
     static const std::string STATUS_MESSAGE_PLAYER_PARALYZED;
     static const std::string STATUS_MESSAGE_PLAYER_PARALYSIS_CURED;
 
+    static const std::string STATUS_SLOWNESS;
+    static const std::string STATUS_MESSAGE_PLAYER_SLOWED;
+    static const std::string STATUS_MESSAGE_PLAYER_SLOWNESS_CURED;
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();

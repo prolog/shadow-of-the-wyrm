@@ -54,3 +54,13 @@ class ParalysisStatusAilmentTranslator : public IStatusAilmentTranslator
     std::string get_status_ailment_text(const CreaturePtr& creature) const;
     Colour get_status_ailment_colour(const CreaturePtr& creature) const;
 };
+
+class SlownessStatusAilmentTranslator : public IStatusAilmentTranslator
+{
+  public:
+    bool has_ailment(const CreaturePtr& creature) const;
+
+  protected:
+    std::string get_status_ailment_text(const CreaturePtr& creature) const;
+    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
+};

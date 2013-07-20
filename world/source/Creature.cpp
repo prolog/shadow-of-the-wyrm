@@ -887,6 +887,11 @@ void Creature::set_additional_property(const string& property_name, const string
   additional_properties[property_name] = property_value;
 }
 
+void Creature::remove_additional_property(const string& property_name)
+{
+  additional_properties.erase(property_name);
+}
+
 string Creature::get_additional_property(const string& property_name) const
 {
   string property_value;

@@ -16,11 +16,20 @@ Savage Lands v0.1.5 "Beorhthun"
   checks to chatting, evoking wands, and spellcasting so that muteness
   prevents these from occurring.
 
+- Added paralysis for lightning damage, updating the game loop so that
+  the player doesn't get an action when paralyzed, instead burning a turn
+  with an action cost equal to his or her current speed.
+
+- Added slowness for cold damage.
+
+- Added new creatures with various damage types for testing the status
+  effects on the player: rock adder, acolyte, lightning bug, frost devil.
+
 - Miscellaneous fixes and changes: updated the player-death code so that 
   the display will be updated before death (to show final HP, etc),
   allowed normally hostile creatures to be generated as friendly on
-  custom maps, added items to remedy each status ailment created, added
-  rock adders and acolytes.
+  custom maps, added items to remedy each status ailment created (except
+  paralysis).
 
 Savage Lands v0.1.4 "Andhun"
 - Version declared June 6, 2013.  Version finalized June 23, 2013.
