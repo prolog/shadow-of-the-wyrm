@@ -134,3 +134,21 @@ Colour ParalysisStatusAilmentTranslator::get_status_ailment_colour(const Creatur
 {
   return COLOUR_BOLD_YELLOW;
 }
+
+// Slowness
+bool SlownessStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
+{
+  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_SLOWNESS);
+
+  return ailment;
+}
+
+string SlownessStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
+{
+  return StringTable::get(StatusAilmentTextKeys::STATUS_SLOWNESS);
+}
+
+Colour SlownessStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
+{
+  return COLOUR_WHITE;
+}
