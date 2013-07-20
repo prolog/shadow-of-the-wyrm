@@ -217,15 +217,6 @@ void CombatTextKeys::populate_combat_messages()
   combat_damage_hit_messages.insert(make_pair(create_key(0, DAMAGE_TYPE_ARCANE), CombatTextKeys::COMBAT_HIT_ARCANE_NP));
   combat_damage_hit_messages.insert(make_pair(create_key(1, DAMAGE_TYPE_ARCANE), CombatTextKeys::COMBAT_HIT_ARCANE));
 
-  combat_damage_hit_messages.insert(make_pair(create_key(0, DAMAGE_TYPE_MENTAL), CombatTextKeys::COMBAT_HIT_MENTAL_NP));
-  combat_damage_hit_messages.insert(make_pair(create_key(1, DAMAGE_TYPE_MENTAL), CombatTextKeys::COMBAT_HIT_MENTAL));
-  
-  combat_damage_hit_messages.insert(make_pair(create_key(0, DAMAGE_TYPE_SONIC), CombatTextKeys::COMBAT_HIT_SONIC_NP));
-  combat_damage_hit_messages.insert(make_pair(create_key(1, DAMAGE_TYPE_SONIC), CombatTextKeys::COMBAT_HIT_SONIC));
-
-  combat_damage_hit_messages.insert(make_pair(create_key(0, DAMAGE_TYPE_RADIANT), CombatTextKeys::COMBAT_HIT_RADIANT_NP));
-  combat_damage_hit_messages.insert(make_pair(create_key(1, DAMAGE_TYPE_RADIANT), CombatTextKeys::COMBAT_HIT_RADIANT));
-
   combat_damage_hit_messages.insert(make_pair(create_key(0, DAMAGE_TYPE_LIGHTNING), CombatTextKeys::COMBAT_HIT_LIGHTNING_NP));
   combat_damage_hit_messages.insert(make_pair(create_key(1, DAMAGE_TYPE_LIGHTNING), CombatTextKeys::COMBAT_HIT_LIGHTNING));
 }
@@ -275,12 +266,6 @@ const string CombatTextKeys::COMBAT_HIT_SHADOW             = "COMBAT_HIT_SHADOW"
 const string CombatTextKeys::COMBAT_HIT_SHADOW_NP          = "COMBAT_HIT_SHADOW_NP";
 const string CombatTextKeys::COMBAT_HIT_ARCANE             = "COMBAT_HIT_ARCANE";
 const string CombatTextKeys::COMBAT_HIT_ARCANE_NP          = "COMBAT_HIT_ARCANE_NP";
-const string CombatTextKeys::COMBAT_HIT_MENTAL             = "COMBAT_HIT_MENTAL";
-const string CombatTextKeys::COMBAT_HIT_MENTAL_NP          = "COMBAT_HIT_MENTAL_NP";
-const string CombatTextKeys::COMBAT_HIT_SONIC              = "COMBAT_HIT_SONIC";
-const string CombatTextKeys::COMBAT_HIT_SONIC_NP           = "COMBAT_HIT_SONIC_NP";
-const string CombatTextKeys::COMBAT_HIT_RADIANT            = "COMBAT_HIT_RADIANT";
-const string CombatTextKeys::COMBAT_HIT_RADIANT_NP         = "COMBAT_HIT_RADIANT_NP";
 const string CombatTextKeys::COMBAT_HIT_LIGHTNING          = "COMBAT_HIT_LIGHTNING";
 const string CombatTextKeys::COMBAT_HIT_LIGHTNING_NP       = "COMBAT_HIT_LIGHTNING_NP";
 

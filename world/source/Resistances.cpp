@@ -340,51 +340,6 @@ ClassIdentifier ArcaneResistance::internal_class_identifier() const
   return CLASS_ID_ARCANE_RESISTANCE;
 }
 
-MentalResistance::MentalResistance()
-: Resistance(DAMAGE_TYPE_MENTAL, ResistanceTextKeys::RESISTANCE_MENTAL, 0.0)
-{
-}
-
-Resistance* MentalResistance::clone()
-{
-  return new MentalResistance(*this);
-}
-
-ClassIdentifier MentalResistance::internal_class_identifier() const
-{
-  return CLASS_ID_MENTAL_RESISTANCE;
-}
-
-SonicResistance::SonicResistance()
-: Resistance(DAMAGE_TYPE_SONIC, ResistanceTextKeys::RESISTANCE_SONIC, 0.0)
-{
-}
-
-Resistance* SonicResistance::clone()
-{
-  return new SonicResistance(*this);
-}
-
-ClassIdentifier SonicResistance::internal_class_identifier() const
-{
-  return CLASS_ID_SONIC_RESISTANCE;
-}
-
-RadiantResistance::RadiantResistance()
-: Resistance(DAMAGE_TYPE_RADIANT, ResistanceTextKeys::RESISTANCE_RADIANT, 0.0)
-{
-}
-
-Resistance* RadiantResistance::clone()
-{
-  return new RadiantResistance(*this);
-}
-
-ClassIdentifier RadiantResistance::internal_class_identifier() const
-{
-  return CLASS_ID_RADIANT_RESISTANCE;
-}
-
 LightningResistance::LightningResistance()
 : Resistance(DAMAGE_TYPE_LIGHTNING, ResistanceTextKeys::RESISTANCE_LIGHTNING, 0.0)
 {
@@ -439,9 +394,6 @@ void Resistances::default_resistances()
   boost::shared_ptr<Resistance> holy = boost::make_shared<HolyResistance>();
   boost::shared_ptr<Resistance> shadow = boost::make_shared<ShadowResistance>();
   boost::shared_ptr<Resistance> arcane = boost::make_shared<ArcaneResistance>();
-  boost::shared_ptr<Resistance> mental = boost::make_shared<MentalResistance>();
-  boost::shared_ptr<Resistance> sonic = boost::make_shared<SonicResistance>();
-  boost::shared_ptr<Resistance> radiant = boost::make_shared<RadiantResistance>();
   boost::shared_ptr<Resistance> lightning = boost::make_shared<LightningResistance>();
 
   resistances.clear();
@@ -456,9 +408,6 @@ void Resistances::default_resistances()
   resistances.insert(make_pair(DAMAGE_TYPE_HOLY, holy));
   resistances.insert(make_pair(DAMAGE_TYPE_SHADOW, shadow));
   resistances.insert(make_pair(DAMAGE_TYPE_ARCANE, arcane));
-  resistances.insert(make_pair(DAMAGE_TYPE_MENTAL, mental));
-  resistances.insert(make_pair(DAMAGE_TYPE_SONIC, sonic));
-  resistances.insert(make_pair(DAMAGE_TYPE_RADIANT, radiant));
   resistances.insert(make_pair(DAMAGE_TYPE_LIGHTNING, lightning));
 }
 

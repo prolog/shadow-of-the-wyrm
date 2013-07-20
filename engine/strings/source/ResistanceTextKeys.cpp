@@ -21,7 +21,4 @@ const string ResistanceTextKeys::RESISTANCE_POISON = "RESISTANCE_POISON";
 const string ResistanceTextKeys::RESISTANCE_HOLY = "RESISTANCE_HOLY";
 const string ResistanceTextKeys::RESISTANCE_SHADOW = "RESISTANCE_SHADOW";
 const string ResistanceTextKeys::RESISTANCE_ARCANE = "RESISTANCE_ARCANE";
-const string ResistanceTextKeys::RESISTANCE_MENTAL = "RESISTANCE_MENTAL";
-const string ResistanceTextKeys::RESISTANCE_SONIC = "RESISTANCE_SONIC";
-const string ResistanceTextKeys::RESISTANCE_RADIANT = "RESISTANCE_RADIANT";
 const string ResistanceTextKeys::RESISTANCE_LIGHTNING = "RESISTANCE_LIGHTNING";

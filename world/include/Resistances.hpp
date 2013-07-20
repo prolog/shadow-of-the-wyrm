@@ -160,39 +160,6 @@ class ArcaneResistance : public Resistance
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-class MentalResistance : public Resistance
-{
-  public:
-    MentalResistance();
-
-    virtual Resistance* clone();
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const;
-};
-
-class SonicResistance : public Resistance
-{
-  public:
-    SonicResistance();
-
-    virtual Resistance* clone();
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const;
-};
-
-class RadiantResistance : public Resistance
-{
-  public:
-    RadiantResistance();
-
-    virtual Resistance* clone();
-
-  private:
-    virtual ClassIdentifier internal_class_identifier() const;
-};
-
 class LightningResistance : public Resistance
 {
   public:

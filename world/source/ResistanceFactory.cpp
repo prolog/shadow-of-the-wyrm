@@ -46,9 +46,6 @@ void ResistanceFactory::initialize_resistances_map()
   boost::shared_ptr<Resistance> holy      = boost::make_shared<HolyResistance>();
   boost::shared_ptr<Resistance> shadow    = boost::make_shared<ShadowResistance>();
   boost::shared_ptr<Resistance> arcane    = boost::make_shared<ArcaneResistance>();
-  boost::shared_ptr<Resistance> mental    = boost::make_shared<MentalResistance>();
-  boost::shared_ptr<Resistance> sonic     = boost::make_shared<SonicResistance>();
-  boost::shared_ptr<Resistance> radiant   = boost::make_shared<RadiantResistance>();
   boost::shared_ptr<Resistance> lightning = boost::make_shared<LightningResistance>();
 
   resistances_map.insert(make_pair(CLASS_ID_SLASH_RESISTANCE, slash));
@@ -61,8 +58,5 @@ void ResistanceFactory::initialize_resistances_map()
   resistances_map.insert(make_pair(CLASS_ID_HOLY_RESISTANCE, holy));
   resistances_map.insert(make_pair(CLASS_ID_SHADOW_RESISTANCE, shadow));
   resistances_map.insert(make_pair(CLASS_ID_ARCANE_RESISTANCE, arcane));
-  resistances_map.insert(make_pair(CLASS_ID_MENTAL_RESISTANCE, mental));
-  resistances_map.insert(make_pair(CLASS_ID_SONIC_RESISTANCE, sonic));
-  resistances_map.insert(make_pair(CLASS_ID_RADIANT_RESISTANCE, radiant));
   resistances_map.insert(make_pair(CLASS_ID_LIGHTNING_RESISTANCE, lightning));
 }

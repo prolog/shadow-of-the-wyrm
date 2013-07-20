@@ -400,9 +400,6 @@
 			<xs:element name="Holy" type="xs:float"/>
 			<xs:element name="Shadow" type="xs:float"/>
 			<xs:element name="Arcane" type="xs:float"/>
-			<xs:element name="Mental" type="xs:float"/>
-			<xs:element name="Sonic" type="xs:float"/>
-			<xs:element name="Radiant" type="xs:float"/>
 			<xs:element name="Lightning" type="xs:float"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -1116,15 +1113,12 @@
 				Holy = 7
 				Shadow = 8
 				Arcane = 9
-				Mental = 10
-				Sonic = 11
-				Radiant = 12
-				Lightning = 13
+				Lightning = 10
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="13"/>
+		<xs:maxInclusive value="10"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="ItemStatus">
