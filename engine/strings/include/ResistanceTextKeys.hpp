@@ -14,9 +14,6 @@ class ResistanceTextKeys
     static const std::string RESISTANCE_HOLY;
     static const std::string RESISTANCE_SHADOW;
     static const std::string RESISTANCE_ARCANE;
-    static const std::string RESISTANCE_MENTAL;
-    static const std::string RESISTANCE_SONIC;
-    static const std::string RESISTANCE_RADIANT;
     static const std::string RESISTANCE_LIGHTNING;
 
   protected:

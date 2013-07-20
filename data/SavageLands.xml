@@ -171,9 +171,6 @@
 				<Holy>0.50</Holy>
 				<Shadow>-0.80</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>1.0</Mental>
-				<Sonic>1.0</Sonic>
-				<Radiant>0.50</Radiant>
 				<Lightning>0.10</Lightning>
 			</Resistances>
 			<Skills>
@@ -241,9 +238,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -318,9 +312,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.10</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -392,9 +383,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -468,9 +456,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.20</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.15</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -542,9 +527,6 @@
 				<Holy>0.10</Holy>
 				<Shadow>0.10</Shadow>
 				<Arcane>0.25</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.20</Radiant>
 				<Lightning>0.10</Lightning>
 			</Resistances>
 			<Skills>
@@ -614,9 +596,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>-0.10</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -688,9 +667,6 @@
 				<Holy>-0.1</Holy>
 				<Shadow>0.15</Shadow>
 				<Arcane>-0.10</Arcane>
-				<Mental>-0.10</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>-0.10</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -763,9 +739,6 @@
 				<Holy>-0.2</Holy>
 				<Shadow>0.15</Shadow>
 				<Arcane>-0.1</Arcane>
-				<Mental>-0.2</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>-0.15</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -834,9 +807,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>-0.1</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -906,9 +876,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.1</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -964,9 +931,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1052,9 +1016,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1122,9 +1083,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1321,9 +1279,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1388,9 +1343,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1459,9 +1411,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1525,9 +1474,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1599,9 +1545,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1669,9 +1612,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1743,9 +1683,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1809,9 +1746,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1891,9 +1825,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -1962,9 +1893,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -2035,9 +1963,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -2104,9 +2029,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -2172,9 +2094,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -2246,9 +2165,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -2421,9 +2337,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -2497,9 +2410,6 @@
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
 				<Arcane>0.0</Arcane>
-				<Mental>0.0</Mental>
-				<Sonic>0.0</Sonic>
-				<Radiant>0.0</Radiant>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -3243,7 +3153,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
-				<Type>13</Type>
+				<Type>10</Type>
 			</Damage>
 			<Evade>5</Evade>
 			<Soak>1</Soak>
@@ -3876,7 +3786,7 @@
 			<Damage>
 				<NumDice>4</NumDice>
 				<NumSides>6</NumSides>
-				<Type>13</Type>
+				<Type>10</Type>
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>		

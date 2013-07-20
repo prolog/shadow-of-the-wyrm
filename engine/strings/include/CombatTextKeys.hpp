@@ -59,12 +59,6 @@ class CombatTextKeys
     static const std::string COMBAT_HIT_SHADOW_NP;
     static const std::string COMBAT_HIT_ARCANE;
     static const std::string COMBAT_HIT_ARCANE_NP;
-    static const std::string COMBAT_HIT_MENTAL;
-    static const std::string COMBAT_HIT_MENTAL_NP;
-    static const std::string COMBAT_HIT_SONIC;
-    static const std::string COMBAT_HIT_SONIC_NP;
-    static const std::string COMBAT_HIT_RADIANT;
-    static const std::string COMBAT_HIT_RADIANT_NP;
     static const std::string COMBAT_HIT_LIGHTNING;
     static const std::string COMBAT_HIT_LIGHTNING_NP;
     

@@ -25,6 +25,11 @@ Savage Lands v0.1.5 "Beorhthun"
 - Added new creatures with various damage types for testing the status
   effects on the player: rock adder, acolyte, lightning bug, frost devil.
 
+- Eliminated three damage types (mental, sonic, radiant).  As I was adding
+  more and more creatures and spells, I noticed that I wasn't using these
+  damage types at all.  To have a more meaningful and oft-used set of
+  resistances, I decided to eliminate these damage types.
+
 - Miscellaneous fixes and changes: updated the player-death code so that 
   the display will be updated before death (to show final HP, etc),
   allowed normally hostile creatures to be generated as friendly on
