@@ -112,7 +112,7 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
 
         // Process the damage and spell on the wand.  If there are no charges,
         // the effect returned will be null, and has_damage will return false.
-        bool wand_identified = process_wand_damage_and_effect(creature, map, caster_coord, evoke_result.second, wand_spell, original_charges);
+        bool wand_identified = process_wand_damage_and_effect(creature, map, caster_coord, evoke_result.second, wand_spell, wand->get_status(), original_charges);
 
         // If the wand was identified during use, name it.
         name_wand_if_identified(wand, wand_identified, wand_originally_identified, item_id);
@@ -210,7 +210,7 @@ void EvokeAction::reduce_wand_charges_if_necessary(WandPtr wand) const
 
 // Process the actual damage and effect on the wand.  Return true if the wand
 // was identified while doing this, false otherwise.
-bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction direction, const Spell& wand_spell, const uint original_charges)
+bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction direction, const Spell& wand_spell, const ItemStatus wand_status, const uint original_charges)
 {
   bool wand_identified = false;
 
@@ -225,7 +225,7 @@ bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr ma
       // Use the generic spell processor, which is also used for "regular"
       // spellcasting.
       SpellcastingProcessor sp;
-      wand_identified = sp.process(spell_processor, creature, map, caster_coord, direction, wand_spell);
+      wand_identified = sp.process(spell_processor, creature, map, caster_coord, direction, wand_spell, wand_status);
     }
   }
   else

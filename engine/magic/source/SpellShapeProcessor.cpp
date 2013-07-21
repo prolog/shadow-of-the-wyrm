@@ -13,21 +13,21 @@ SpellShapeProcessor::~SpellShapeProcessor()
 
 // Process the shape.  This is done by generating all the affected tiles,
 // and then applying damage and spell effects to each.
-bool SpellShapeProcessor::process_damage_and_effect(CreaturePtr caster, const vector<TilePtr>& affected_tiles, const Spell& spell, ActionManager * const am)
+bool SpellShapeProcessor::process_damage_and_effect(CreaturePtr caster, const vector<TilePtr>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
 {
   // Apply the spell's damage/effect to the tiles in order.
-  return apply_damage_and_effect(caster, affected_tiles, spell, am);
+  return apply_damage_and_effect(caster, affected_tiles, spell, effect_status, am);
 }
 
 // Apply a spell to a particular tile by applying its damage and spell effect.
-bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vector<TilePtr>& affected_tiles, const Spell& spell, ActionManager * const am)
+bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vector<TilePtr>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
 {
   bool spell_identified = false;
 
   BOOST_FOREACH(TilePtr tile, affected_tiles)
   {
     bool damage_identified = apply_damage(caster, tile, spell, am);
-    bool effect_identified = apply_effect(caster, tile, spell, am);
+    bool effect_identified = apply_effect(caster, tile, spell, effect_status, am);
 
     if ((damage_identified || effect_identified) && !spell_identified)
     {
@@ -72,7 +72,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
 }
 
 // Apply a spell effect to a particular tile.
-bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am)
+bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am)
 {
   if (tile)
   {
@@ -83,7 +83,7 @@ bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const S
 
     if (effect && creature)
     {
-      return effect->effect(creature, am, ITEM_STATUS_UNCURSED);
+      return effect->effect(creature, am, effect_status);
     }
   }
 

@@ -85,7 +85,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, ActionManager * const am, P
         // Use the generic spell processor, which is also used for "regular"
         // spellcasting.
         SpellcastingProcessor sp;
-        effect_identified = sp.process(spell_processor, creature, map, caster_coord, DIRECTION_NULL, potion_spell);
+        effect_identified = sp.process(spell_processor, creature, map, caster_coord, DIRECTION_NULL, potion_spell, potion->get_status());
       }
 
       // Was the item identified?

@@ -166,7 +166,9 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
         if (spell_processor)
         {
           SpellcastingProcessor sp;
-          sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell);
+
+          // Spells always use the "uncursed" effect status.
+          sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ITEM_STATUS_UNCURSED);
         }
 
         // Now that the spell has been cast, update the spell bonus information
