@@ -32,16 +32,31 @@ bool StatusEffect::should_apply_change(CreaturePtr creature) const
 
 void StatusEffect::apply_change(CreaturePtr creature) const
 {
-  before_apply(creature);
-  apply(creature);
-  after_apply(creature);
+  bool status_applied = true;
+
+  status_applied = before_apply(creature);
+  status_applied = status_applied && apply(creature);
+  status_applied = status_applied && after_apply(creature);
+
+  if (status_applied)
+  {
+    string message = get_player_application_message();
+
+    if (!message.empty() && creature->get_is_player())
+    {
+      MessageManager& manager = MessageManager::instance();
+      manager.add_new_message(message);
+      manager.send();
+    }
+  }
 }
 
-void StatusEffect::before_apply(CreaturePtr creature) const
+bool StatusEffect::before_apply(CreaturePtr creature) const
 {
+  return true;
 }
 
-void StatusEffect::apply(CreaturePtr creature) const
+bool StatusEffect::apply(CreaturePtr creature) const
 {
   if (creature)
   {
@@ -55,20 +70,14 @@ void StatusEffect::apply(CreaturePtr creature) const
 
     creature->set_status(status_identifier, true);
     creature->set_status_duration(status_identifier, effect_duration);
-
-    string message = get_player_application_message();
-
-    if (!message.empty() && creature->get_is_player())
-    {
-      MessageManager& manager = MessageManager::instance();
-      manager.add_new_message(message);
-      manager.send();
-    }
   }
+
+  return true;
 }
 
-void StatusEffect::after_apply(CreaturePtr creature) const
+bool StatusEffect::after_apply(CreaturePtr creature) const
 {
+  return true;
 }
 
 string StatusEffect::get_player_application_message() const

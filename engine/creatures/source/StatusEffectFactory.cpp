@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "HasteStatusEffect.hpp"
 #include "MutenessStatusEffect.hpp"
 #include "ParalysisStatusEffect.hpp"
 #include "PoisonStatusEffect.hpp"
@@ -66,6 +67,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_SLOWNESS)
   {
     status_effect = boost::make_shared<SlownessStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_HASTE)
+  {
+    status_effect = boost::make_shared<HasteStatusEffect>();
   }
   else
   {

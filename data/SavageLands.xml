@@ -5382,6 +5382,23 @@
 				<Nutrition>100</Nutrition>
 				<Effect>7</Effect>
 			</Potion>
+			<Potion id="speed_potion">
+				<DescriptionSID>SPEED_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SPEED_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SPEED_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SPEED_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>125</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>13</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>100</Nutrition>
+				<Effect>8</Effect>
+			</Potion>
 			<Potion id="ether_potion">
 				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>

@@ -1,10 +1,10 @@
 #pragma once
 #include "StatusEffect.hpp"
 
-class SlownessStatusEffect : public StatusEffect
+class HasteStatusEffect : public StatusEffect
 {
   public:
-    SlownessStatusEffect();
+    HasteStatusEffect();
   
   protected:
     virtual bool after_apply(boost::shared_ptr<Creature> creature) const;

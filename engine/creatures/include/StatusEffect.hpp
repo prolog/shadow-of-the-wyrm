@@ -30,9 +30,13 @@ class StatusEffect
     virtual void tick(boost::shared_ptr<Creature> creature) const;
 
   protected:
-    virtual void before_apply(boost::shared_ptr<Creature> creature) const;
-    virtual void apply(boost::shared_ptr<Creature> creature) const;
-    virtual void after_apply(boost::shared_ptr<Creature> creature) const;
+    // These functions are boolean to indicate whether or not the status was
+    // actually applied.  The status will be applied in almost all cases, but
+    // there are times when it may not be (e.g., trying to apply haste when
+    // the creature is slowed cancels out the statuses).
+    virtual bool before_apply(boost::shared_ptr<Creature> creature) const;
+    virtual bool apply(boost::shared_ptr<Creature> creature) const;
+    virtual bool after_apply(boost::shared_ptr<Creature> creature) const;
     virtual std::string get_player_application_message() const;
 
     virtual void before_finalize(boost::shared_ptr<Creature> creature) const;

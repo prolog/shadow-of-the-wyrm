@@ -2,6 +2,7 @@
 #include "RemoveStatusEffect.hpp"
 #include "EffectFactory.hpp"
 #include "EtherEffect.hpp"
+#include "HasteEffect.hpp"
 #include "HealingEffect.hpp"
 #include "IdentifyEffect.hpp"
 #include "NullEffect.hpp"
@@ -21,7 +22,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 8);
+  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 9);
 
   EffectPtr effect;
 
@@ -47,6 +48,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_AMUT:
       effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_MUTE);
+      break;
+    case EFFECT_TYPE_SPEED:
+      effect = boost::make_shared<HasteEffect>();
       break;
     case EFFECT_TYPE_NULL:
     default:
