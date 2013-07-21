@@ -49,7 +49,7 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
         // Use the generic spell processor, which is also used for "regular"
         // spellcasting.
         SpellcastingProcessor sp;
-        effect_identified = sp.process(spell_processor, creature, map, caster_coord, DIRECTION_NULL, scroll_spell);
+        effect_identified = sp.process(spell_processor, creature, map, caster_coord, DIRECTION_NULL, scroll_spell, readable->get_status());
       }
 
       if (effect_identified && !readable_originally_identified)
