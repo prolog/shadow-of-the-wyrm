@@ -152,3 +152,21 @@ Colour SlownessStatusAilmentTranslator::get_status_ailment_colour(const Creature
 {
   return COLOUR_WHITE;
 }
+
+// Haste
+bool HasteStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
+{
+  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_HASTE);
+
+  return ailment;
+}
+
+string HasteStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
+{
+  return StringTable::get(StatusAilmentTextKeys::STATUS_HASTE);
+}
+
+Colour HasteStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
+{
+  return COLOUR_BOLD_WHITE;
+}

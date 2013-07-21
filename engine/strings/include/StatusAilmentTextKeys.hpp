@@ -35,6 +35,10 @@ class StatusAilmentTextKeys
     static const std::string STATUS_MESSAGE_PLAYER_SLOWED;
     static const std::string STATUS_MESSAGE_PLAYER_SLOWNESS_CURED;
 
+    static const std::string STATUS_HASTE;
+    static const std::string STATUS_MESSAGE_PLAYER_HASTED;
+    static const std::string STATUS_MESSAGE_PLAYER_HASTE_DONE;
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();

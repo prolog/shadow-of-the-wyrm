@@ -231,10 +231,12 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr muteness_chekr = boost::make_shared<MutenessStatusAilmentTranslator>();
   IStatusAilmentTranslatorPtr paralysis_chkr = boost::make_shared<ParalysisStatusAilmentTranslator>();
   IStatusAilmentTranslatorPtr slowness_chekr = boost::make_shared<SlownessStatusAilmentTranslator>();
+  IStatusAilmentTranslatorPtr haste_checker  = boost::make_shared<HasteStatusAilmentTranslator>();
 
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(poison_checker);
   status_ailment_checkers.push_back(muteness_chekr);
   status_ailment_checkers.push_back(paralysis_chkr);
   status_ailment_checkers.push_back(slowness_chekr);
+  status_ailment_checkers.push_back(haste_checker );
 }

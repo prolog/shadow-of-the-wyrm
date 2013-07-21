@@ -4,6 +4,7 @@
 #include "SlownessCalculator.hpp"
 #include "SlownessStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
+#include "StatusEffectFactory.hpp"
 #include "StatusTypes.hpp"
 
 using namespace std;
@@ -13,23 +14,44 @@ SlownessStatusEffect::SlownessStatusEffect()
   status_calc = boost::make_shared<SlownessCalculator>();
 }
 
-void SlownessStatusEffect::after_apply(CreaturePtr creature) const
+bool SlownessStatusEffect::after_apply(CreaturePtr creature) const
 {
+  bool effect_applied = true;
+
   if (creature)
   {
-    // Figure out the haste penalty, and add it to the creature's
-    // additional properties so it can be correctly unapplied later.
-    //
-    // Slowness halves action speed.
-    Statistic creature_speed = creature->get_speed();
-    int cur_speed = creature_speed.get_current();
-    int slowness_modifier = cur_speed;
-    
-    creature_speed.set_current(cur_speed + slowness_modifier);
-    creature->set_speed(creature_speed);
+    // If the creature is hasted, then remove the slow property we've
+    // just added, and remove the creature's haste.
+    if (creature->has_status(StatusIdentifiers::STATUS_ID_HASTE))
+    {
+      creature->remove_status(StatusIdentifiers::STATUS_ID_SLOWNESS);
 
-    creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HASTE_MODIFIER, Integer::to_string(slowness_modifier));
+      // Undo the haste status, adding a message if necessary:
+      StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE);
+      haste->undo_change(creature);
+
+      effect_applied = false;
+    }
+    else
+    {
+      // Otherwise:
+      //
+      // Figure out the haste penalty, and add it to the creature's
+      // additional properties so it can be correctly unapplied later.
+      //
+      // Slowness halves action speed.
+      Statistic creature_speed = creature->get_speed();
+      int cur_speed = creature_speed.get_current();
+      int slowness_modifier = cur_speed;
+    
+      creature_speed.set_current(cur_speed + slowness_modifier);
+      creature->set_speed(creature_speed);
+
+      creature->set_additional_property(CreatureProperties::CREATURE_PROPERTIES_HASTE_MODIFIER, Integer::to_string(slowness_modifier));
+    }
   }
+
+  return effect_applied;
 }
 
 void SlownessStatusEffect::after_undo(CreaturePtr creature) const
