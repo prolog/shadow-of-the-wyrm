@@ -194,6 +194,7 @@
     <ClInclude Include="engine\calculators\include\SoakCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SpeedCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\SpellbookCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\StoneCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
@@ -260,6 +261,7 @@
     <ClInclude Include="engine\creatures\include\SlownessStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffectFactory.hpp" />
+    <ClInclude Include="engine\creatures\include\StoneStatusEffect.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategy.hpp" />
@@ -886,6 +888,7 @@
     <ClCompile Include="engine\calculators\source\SoakCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SpeedCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\SpellbookCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\StoneCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp" />
@@ -948,6 +951,9 @@
     <ClCompile Include="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\StoneCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\UnderworldMapDangerLevelCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1055,6 +1061,7 @@
     <ClCompile Include="engine\creatures\source\SlownessStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusEffectFactory.cpp" />
+    <ClCompile Include="engine\creatures\source\StoneStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>

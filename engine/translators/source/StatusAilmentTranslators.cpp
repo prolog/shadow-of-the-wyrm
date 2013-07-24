@@ -81,92 +81,25 @@ Colour HungerStatusAilmentTranslator::get_status_ailment_colour(const CreaturePt
   return colour_map[HungerLevelConverter::to_hunger_level(creature->get_hunger_clock().get_hunger())];
 }
 
-// Poison
-bool PoisonStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
+StatusAilmentTranslator::StatusAilmentTranslator(const string& id, const string& t_sid, const Colour c)
+: identifier(id), text_sid(t_sid), colour(c)
 {
-  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_POISON);
+}
+
+bool StatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
+{
+  bool ailment = creature && creature->has_status(identifier);
 
   return ailment;
 }
 
-string PoisonStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
+string StatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
 {
-  return StringTable::get(StatusAilmentTextKeys::STATUS_POISON);
+  return StringTable::get(text_sid);
 }
 
-Colour PoisonStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
+Colour StatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
 {
-  return COLOUR_GREEN;
+  return colour;
 }
 
-// Muteness
-bool MutenessStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
-{
-  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_MUTE);
-
-  return ailment;
-}
-
-string MutenessStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
-{
-  return StringTable::get(StatusAilmentTextKeys::STATUS_MUTE);
-}
-
-Colour MutenessStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
-{
-  return COLOUR_BLUE;
-}
-
-// Paralysis
-bool ParalysisStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
-{
-  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_PARALYSIS);
-
-  return ailment;
-}
-
-string ParalysisStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
-{
-  return StringTable::get(StatusAilmentTextKeys::STATUS_PARALYSIS);
-}
-
-Colour ParalysisStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
-{
-  return COLOUR_BOLD_YELLOW;
-}
-
-// Slowness
-bool SlownessStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
-{
-  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_SLOWNESS);
-
-  return ailment;
-}
-
-string SlownessStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
-{
-  return StringTable::get(StatusAilmentTextKeys::STATUS_SLOWNESS);
-}
-
-Colour SlownessStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
-{
-  return COLOUR_WHITE;
-}
-
-// Haste
-bool HasteStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) const
-{
-  bool ailment = creature && creature->has_status(StatusIdentifiers::STATUS_ID_HASTE);
-
-  return ailment;
-}
-
-string HasteStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr& creature) const
-{
-  return StringTable::get(StatusAilmentTextKeys::STATUS_HASTE);
-}
-
-Colour HasteStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
-{
-  return COLOUR_BOLD_WHITE;
-}

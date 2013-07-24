@@ -7,7 +7,9 @@
 #include "CreatureTranslator.hpp"
 #include "Game.hpp"
 #include "Naming.hpp"
+#include "StatusAilmentTextKeys.hpp"
 #include "StatusAilmentTranslators.hpp"
+#include "StatusTypes.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
@@ -227,11 +229,12 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.clear();
 
   IStatusAilmentTranslatorPtr hunger_checker = boost::make_shared<HungerStatusAilmentTranslator>();
-  IStatusAilmentTranslatorPtr poison_checker = boost::make_shared<PoisonStatusAilmentTranslator>();
-  IStatusAilmentTranslatorPtr muteness_chekr = boost::make_shared<MutenessStatusAilmentTranslator>();
-  IStatusAilmentTranslatorPtr paralysis_chkr = boost::make_shared<ParalysisStatusAilmentTranslator>();
-  IStatusAilmentTranslatorPtr slowness_chekr = boost::make_shared<SlownessStatusAilmentTranslator>();
-  IStatusAilmentTranslatorPtr haste_checker  = boost::make_shared<HasteStatusAilmentTranslator>();
+  IStatusAilmentTranslatorPtr poison_checker = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_POISON, StatusAilmentTextKeys::STATUS_POISON, COLOUR_GREEN);
+  IStatusAilmentTranslatorPtr muteness_chekr = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_MUTE, StatusAilmentTextKeys::STATUS_MUTE, COLOUR_BLUE);
+  IStatusAilmentTranslatorPtr paralysis_chkr = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_PARALYSIS, StatusAilmentTextKeys::STATUS_PARALYSIS, COLOUR_BOLD_YELLOW);
+  IStatusAilmentTranslatorPtr slowness_chekr = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SLOWNESS, StatusAilmentTextKeys::STATUS_SLOWNESS, COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr haste_checker  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HASTE, StatusAilmentTextKeys::STATUS_HASTE, COLOUR_BOLD_WHITE);
+  IStatusAilmentTranslatorPtr stone_checker  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STONE, StatusAilmentTextKeys::STATUS_STONE, COLOUR_BOLD_BLACK);
 
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(poison_checker);
@@ -239,4 +242,5 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.push_back(paralysis_chkr);
   status_ailment_checkers.push_back(slowness_chekr);
   status_ailment_checkers.push_back(haste_checker );
+  status_ailment_checkers.push_back(stone_checker );
 }

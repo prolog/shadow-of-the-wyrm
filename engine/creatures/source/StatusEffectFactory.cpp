@@ -5,6 +5,7 @@
 #include "PoisonStatusEffect.hpp"
 #include "SlownessStatusEffect.hpp"
 #include "StatusEffectFactory.hpp"
+#include "StoneStatusEffect.hpp"
 #include "StatusTypes.hpp"
 
 using namespace std;
@@ -27,6 +28,7 @@ void StatusEffectFactory::initialize_damage_status_ailments()
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_HOLY, StatusIdentifiers::STATUS_ID_MUTE));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_LIGHTNING, StatusIdentifiers::STATUS_ID_PARALYSIS));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_COLD, StatusIdentifiers::STATUS_ID_SLOWNESS));
+  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_SHADOW, StatusIdentifiers::STATUS_ID_STONE));
 }
 
 StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageType dt)
@@ -71,6 +73,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_HASTE)
   {
     status_effect = boost::make_shared<HasteStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_STONE)
+  {
+    status_effect = boost::make_shared<StoneStatusEffect>();
   }
   else
   {
