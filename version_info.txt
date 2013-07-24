@@ -22,6 +22,9 @@ Savage Lands v0.1.5 "Beorhthun"
 
 - Added slowness for cold damage.
 
+- Added haste status effect, and speed potion.  Made haste cancel out
+  slowness, and vice versa.
+
 - Added new creatures with various damage types for testing the status
   effects on the player: rock adder, acolyte, lightning bug, frost devil.
 
@@ -34,7 +37,8 @@ Savage Lands v0.1.5 "Beorhthun"
   the display will be updated before death (to show final HP, etc),
   allowed normally hostile creatures to be generated as friendly on
   custom maps, added items to remedy each status ailment created (except
-  paralysis).
+  paralysis), fixed an issue with item statuses not being respected when
+  handling spell effects.
 
 Savage Lands v0.1.4 "Andhun"
 - Version declared June 6, 2013.  Version finalized June 23, 2013.

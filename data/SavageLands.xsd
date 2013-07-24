@@ -1093,11 +1093,12 @@
 				Antidote = 6
 				AMUT (anti-mute; not as useless as in Final Fantasy, honest!) = 7
 				Haste (either anti-slow, or haste, depending on the creature's statuses) = 8
+				Unstoning = 9
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="8"/>
+		<xs:maxInclusive value="9"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

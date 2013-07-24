@@ -22,7 +22,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 9);
+  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 10);
 
   EffectPtr effect;
 
@@ -51,6 +51,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_SPEED:
       effect = boost::make_shared<HasteEffect>();
+      break;
+    case EFFECT_TYPE_UNSTONING:
+      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_STONE);
       break;
     case EFFECT_TYPE_NULL:
     default:

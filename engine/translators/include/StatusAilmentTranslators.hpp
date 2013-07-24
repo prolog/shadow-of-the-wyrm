@@ -25,52 +25,19 @@ class HungerStatusAilmentTranslator : public IStatusAilmentTranslator
     static std::map<HungerLevel, Colour> colour_map;
 };
 
-class PoisonStatusAilmentTranslator : public IStatusAilmentTranslator
+class StatusAilmentTranslator : public IStatusAilmentTranslator
 {
   public:
+    StatusAilmentTranslator(const std::string& status_ailment_identifier, const std::string& status_ailment_text, const Colour status_ailment_colour);
+
     bool has_ailment(const CreaturePtr& creature) const;
 
   protected:
     std::string get_status_ailment_text(const CreaturePtr& creature) const;
     Colour get_status_ailment_colour(const CreaturePtr& creature) const;
+
+    std::string identifier;
+    std::string text_sid;
+    Colour colour;
 };
 
-class MutenessStatusAilmentTranslator : public IStatusAilmentTranslator
-{
-  public:
-    bool has_ailment(const CreaturePtr& creature) const;
-
-  protected:
-    std::string get_status_ailment_text(const CreaturePtr& creature) const;
-    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
-};
-
-class ParalysisStatusAilmentTranslator : public IStatusAilmentTranslator
-{
-  public:
-    bool has_ailment(const CreaturePtr& creature) const;
-
-  protected:
-    std::string get_status_ailment_text(const CreaturePtr& creature) const;
-    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
-};
-
-class SlownessStatusAilmentTranslator : public IStatusAilmentTranslator
-{
-  public:
-    bool has_ailment(const CreaturePtr& creature) const;
-
-  protected:
-    std::string get_status_ailment_text(const CreaturePtr& creature) const;
-    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
-};
-
-class HasteStatusAilmentTranslator : public IStatusAilmentTranslator
-{
-  public:
-    bool has_ailment(const CreaturePtr& creature) const;
-
-  protected:
-    std::string get_status_ailment_text(const CreaturePtr& creature) const;
-    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
-};

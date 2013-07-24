@@ -19,6 +19,7 @@ class StatusIdentifiers
     static const std::string STATUS_ID_PARALYSIS;
     static const std::string STATUS_ID_SLOWNESS;
     static const std::string STATUS_ID_HASTE;
+    static const std::string STATUS_ID_STONE;
 
   protected:
     StatusIdentifiers();

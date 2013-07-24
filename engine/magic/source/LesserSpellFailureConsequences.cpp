@@ -25,6 +25,7 @@ pair<Dice, vector<string>> LesserSpellFailureConsequences::get_summoned_creature
   creature_ids.push_back("skeleton");
   creature_ids.push_back("skeleton");
   creature_ids.push_back("mummy");
+  creature_ids.push_back("shade");
 
   pair<Dice, vector<string>> summoned_creature_details(num_creatures, creature_ids);
   return summoned_creature_details;

@@ -17,3 +17,4 @@ const string StatusIdentifiers::STATUS_ID_MUTE = "_mute";
 const string StatusIdentifiers::STATUS_ID_PARALYSIS = "_para";
 const string StatusIdentifiers::STATUS_ID_SLOWNESS = "_slow";
 const string StatusIdentifiers::STATUS_ID_HASTE = "_haste";
+const string StatusIdentifiers::STATUS_ID_STONE = "_stone";
