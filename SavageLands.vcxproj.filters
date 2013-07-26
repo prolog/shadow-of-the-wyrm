@@ -2673,6 +2673,9 @@
     <ClInclude Include="engine\calculators\include\StoneCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\features\include\RegularStatues.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5077,6 +5080,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StoneCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\RegularStatues.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\RegularStatues_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

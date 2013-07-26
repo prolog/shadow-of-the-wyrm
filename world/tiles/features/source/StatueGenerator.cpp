@@ -1,5 +1,6 @@
 #include <boost/make_shared.hpp>
 #include "DecorativeStatues.hpp"
+#include "RegularStatues.hpp"
 #include "StatueGenerator.hpp"
 
 StatueGenerator::StatueGenerator()
@@ -10,6 +11,8 @@ StatueGenerator::StatueGenerator()
 FeaturePtr StatueGenerator::generate_decorative_statue(const DecorativeStatueType type)
 {
   FeaturePtr statue;
+
+  BOOST_STATIC_ASSERT(DECORATIVE_STATUE_TYPE_LAST == 5);
 
   switch(type)
   {
@@ -35,5 +38,21 @@ FeaturePtr StatueGenerator::generate_decorative_statue(const DecorativeStatueTyp
       break;
   }
 
+  return statue;
+}
+
+FeaturePtr StatueGenerator::generate_regular_statue(const RegularStatueType type)
+{
+  FeaturePtr statue;
+
+  BOOST_STATIC_ASSERT(REGULAR_STATUE_TYPE_LAST == 1);
+
+  switch(type)
+  {
+    case REGULAR_STATUE_TYPE_PETRIFIED_CORPSE:
+      statue = boost::make_shared<PetrifiedCorpseStatue>();
+      break;
+  }
+  
   return statue;
 }

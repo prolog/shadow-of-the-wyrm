@@ -25,8 +25,13 @@ Savage Lands v0.1.5 "Beorhthun"
 - Added haste status effect, and speed potion.  Made haste cancel out
   slowness, and vice versa.
 
+- Added stoning (petrification) for shadow damage, and updated the code so
+  that petrified creatures leave their petrified corpses behind.  These are
+  treated as blocking terrain features.
+
 - Added new creatures with various damage types for testing the status
-  effects on the player: rock adder, acolyte, lightning bug, frost devil.
+  effects on the player: rock adder, acolyte, lightning bug, frost devil,
+  shade.
 
 - Eliminated three damage types (mental, sonic, radiant).  As I was adding
   more and more creatures and spells, I noticed that I wasn't using these
@@ -37,8 +42,9 @@ Savage Lands v0.1.5 "Beorhthun"
   the display will be updated before death (to show final HP, etc),
   allowed normally hostile creatures to be generated as friendly on
   custom maps, added items to remedy each status ailment created (except
-  paralysis), fixed an issue with item statuses not being respected when
-  handling spell effects.
+  paralysis), added weapons with non-slash/pierce/pound damage types to
+  test the status ailment (e.g., blade of shadows), fixed an issue with 
+  item statuses not being respected when handling spell effects.
 
 Savage Lands v0.1.4 "Andhun"
 - Version declared June 6, 2013.  Version finalized June 23, 2013.

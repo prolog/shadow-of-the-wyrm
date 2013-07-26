@@ -1,8 +1,12 @@
 #include <boost/make_shared.hpp>
 #include "CombatManager.hpp"
+#include "Game.hpp"
+#include "MapUtils.hpp"
+#include "MessageManager.hpp"
 #include "StoneCalculator.hpp"
 #include "StoneStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
+#include "StatueGenerator.hpp"
 #include "StatusTypes.hpp"
 
 using namespace std;
@@ -14,11 +18,36 @@ StoneStatusEffect::StoneStatusEffect()
 
 void StoneStatusEffect::finalize(CreaturePtr creature) const
 {
+  Game& game = Game::instance();
+  MapPtr current_map = game.get_current_map();
+  MessageManager& manager = MessageManager::instance();
+
   CombatManager cm;
   CreaturePtr no_creature;
-  string message_sid = StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STONE_FINALIZE;
+  string message_sid = StatusAilmentTextKeys::STATUS_MESSAGE_STONE_FINALIZE;
 
-  cm.deal_damage(no_creature, creature, creature->get_hit_points().get_base(), message_sid);
+  cm.deal_damage(no_creature, creature, creature->get_hit_points().get_base());
+
+  TilePtr creature_tile = MapUtils::get_tile_for_creature(current_map, creature);
+
+  // Ensure that the tile doesn't already have a feature.
+  if (creature_tile && !creature_tile->has_feature())
+  {
+    // Generate the statue
+    FeaturePtr corpse_statue = StatueGenerator::generate_regular_statue(REGULAR_STATUE_TYPE_PETRIFIED_CORPSE);
+
+    // Add it to the tile
+    creature_tile->set_feature(corpse_statue);
+  }
+  else
+  {
+    // Because each tile can only have one feature, add a message about the statue
+    // immediately crumbling into dust.
+    message_sid = StatusAilmentTextKeys::STATUS_MESSAGE_STONE_CRUMBLE;
+  }
+
+  manager.add_new_message(StringTable::get(message_sid));
+  manager.send();
 }
 
 string StoneStatusEffect::get_player_application_message() const
