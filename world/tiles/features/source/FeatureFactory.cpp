@@ -11,6 +11,7 @@
 #include "Fountain.hpp"
 #include "Gate.hpp"
 #include "Pew.hpp"
+#include "RegularStatues.hpp"
 
 using namespace std;
 
@@ -75,6 +76,7 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr fountain           = boost::make_shared<Fountain>();
   FeaturePtr gate               = boost::make_shared<Gate>();
   FeaturePtr pew                = boost::make_shared<Pew>();
+  FeaturePtr petrified_corpse   = boost::make_shared<PetrifiedCorpseStatue>();
 
   feature_map.insert(make_pair(CLASS_ID_GOOD_ALTAR, good_altar));
   feature_map.insert(make_pair(CLASS_ID_NEUTRAL_ALTAR, neutral_altar));
@@ -92,6 +94,7 @@ void FeatureFactory::initialize_feature_map()
   feature_map.insert(make_pair(CLASS_ID_FOUNTAIN, fountain));
   feature_map.insert(make_pair(CLASS_ID_GATE, gate));
   feature_map.insert(make_pair(CLASS_ID_PEW, pew));
+  feature_map.insert(make_pair(CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse));
   // JCD FIXME
 }
 

@@ -4476,6 +4476,29 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="shadow_blade">
+				<DescriptionSID>SHADOW_BLADE_SID</DescriptionSID>
+				<UsageDescriptionSID>SHADOW_BLADE_USAGE_SID</UsageDescriptionSID>
+				<Value>200</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>4</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>4</Modifier>
+					<Type>8</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="forger">
 				<DescriptionSID>FORGER_SID</DescriptionSID>
 				<UsageDescriptionSID>FORGER_USAGE_SID</UsageDescriptionSID>

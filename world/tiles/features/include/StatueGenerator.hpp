@@ -10,6 +10,7 @@ class StatueGenerator
 {
   public:
     static FeaturePtr generate_decorative_statue(const DecorativeStatueType statue_type);
+    static FeaturePtr generate_regular_statue(const RegularStatueType statue_type);
 
   protected:
     StatueGenerator();

@@ -47,7 +47,8 @@ class StatusAilmentTextKeys
     static const std::string STATUS_STONE;
     static const std::string STATUS_MESSAGE_PLAYER_STONE;
     static const std::string STATUS_MESSAGE_PLAYER_STONE_CURED;
-    static const std::string STATUS_MESSAGE_PLAYER_STONE_FINALIZE;
+    static const std::string STATUS_MESSAGE_STONE_FINALIZE;
+    static const std::string STATUS_MESSAGE_STONE_CRUMBLE;
     // JCD TODO MONSTER VERSIONS
 
   protected:

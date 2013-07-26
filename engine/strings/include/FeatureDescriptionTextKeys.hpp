@@ -19,7 +19,8 @@ class FeatureDescriptionTextKeys
     static const std::string FEATURE_DESCRIPTION_HIGH_PRIEST_STATUE;
     static const std::string FEATURE_DESCRIPTION_SORCEROR_STATUE;
     static const std::string FEATURE_DESCRIPTION_BENCH;
-    
+    static const std::string FEATURE_DESCRIPTION_PETRIFIED_CORPSE_STATUE;
+
   protected:
     FeatureDescriptionTextKeys();
 };
