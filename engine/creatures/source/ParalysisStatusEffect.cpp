@@ -18,10 +18,24 @@ string ParalysisStatusEffect::get_player_application_message() const
   return message;
 }
 
+string ParalysisStatusEffect::get_npc_application_message(CreaturePtr creature) const
+{
+  string message = StatusAilmentTextKeys::get_npc_paralyzed_message(creature);
+
+  return message;
+}
+
 string ParalysisStatusEffect::get_player_undo_message() const
 {
   string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_PARALYSIS_CURED);
   
+  return message;
+}
+
+string ParalysisStatusEffect::get_npc_undo_message(CreaturePtr creature) const
+{
+  string message = StatusAilmentTextKeys::get_npc_undo_paralysis_message(creature);
+
   return message;
 }
 

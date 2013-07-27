@@ -40,9 +40,9 @@ void StatusEffect::apply_change(CreaturePtr creature) const
 
   if (status_applied)
   {
-    string message = get_player_application_message();
+    string message = get_application_message(creature);
 
-    if (!message.empty() && creature->get_is_player())
+    if (!message.empty())
     {
       IMessageManager& manager = MessageManagerFactory::instance(creature);
       manager.add_new_message(message);
@@ -80,7 +80,32 @@ bool StatusEffect::after_apply(CreaturePtr creature) const
   return true;
 }
 
+string StatusEffect::get_application_message(CreaturePtr creature) const
+{
+  string application_message;
+
+  if (creature)
+  {
+    if (creature->get_is_player())
+    {
+      return get_player_application_message();
+    }
+    else
+    {
+      return get_npc_application_message(creature);
+    }
+  }
+
+  return application_message;
+}
+
 string StatusEffect::get_player_application_message() const
+{
+  string no_message;
+  return no_message;
+}
+
+string StatusEffect::get_npc_application_message(CreaturePtr creature) const
 {
   string no_message;
   return no_message;
@@ -102,7 +127,32 @@ void StatusEffect::finalize(CreaturePtr creature) const
   undo_change(creature);
 }
 
+string StatusEffect::get_finalize_message(CreaturePtr creature) const
+{
+  string finalize_message;
+
+  if (creature)
+  {
+    if (creature->get_is_player())
+    {
+      return get_player_finalize_message();
+    }
+    else
+    {
+      return get_npc_finalize_message(creature);
+    }
+  }
+
+  return finalize_message;
+}
+
 string StatusEffect::get_player_finalize_message() const
+{
+  string no_message;
+  return no_message;
+}
+
+string StatusEffect::get_npc_finalize_message(CreaturePtr creature) const
 {
   string no_message;
   return no_message;
@@ -129,17 +179,14 @@ void StatusEffect::undo(CreaturePtr creature) const
   {
     creature->remove_status(get_status_identifier());
 
-    if (creature->get_is_player())
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
+
+    string undo_message = get_undo_message(creature);
+
+    if (!undo_message.empty())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
-
-      string player_undo_message = get_player_undo_message();
-
-      if (!player_undo_message.empty())
-      {
-        manager.add_new_message(player_undo_message);
-        manager.send();
-      }
+      manager.add_new_message(undo_message);
+      manager.send();
     }
   }
 }
@@ -148,7 +195,32 @@ void StatusEffect::after_undo(CreaturePtr creature) const
 {
 }
 
+string StatusEffect::get_undo_message(CreaturePtr creature) const
+{
+  string undo_message;
+
+  if (creature)
+  {
+    if (creature->get_is_player())
+    {
+      return get_player_undo_message();
+    }
+    else
+    {
+      return get_npc_undo_message(creature);
+    }
+  }
+
+  return undo_message;
+}
+
 string StatusEffect::get_player_undo_message() const
+{
+  string no_message;
+  return no_message;
+}
+
+string StatusEffect::get_npc_undo_message(CreaturePtr creature) const
 {
   string no_message;
   return no_message;

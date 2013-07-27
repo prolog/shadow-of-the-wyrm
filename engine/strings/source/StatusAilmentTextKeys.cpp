@@ -1,3 +1,4 @@
+#include "Creature.hpp"
 #include "StatusAilmentTextKeys.hpp"
 
 using namespace std;
@@ -41,3 +42,93 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STONE = "STATUS_MESSAG
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STONE_CURED = "STATUS_MESSAGE_PLAYER_STONE_CURED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_STONE_FINALIZE = "STATUS_MESSAGE_STONE_FINALIZE";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_STONE_CRUMBLE = "STATUS_MESSAGE_CORPSE_CRUMBLE";
+
+// public functions
+const string StatusAilmentTextKeys::get_npc_poisoned_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_POISONED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_poison_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_POISON);
+}
+
+const string StatusAilmentTextKeys::get_npc_muted_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_MUTED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_muteness_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_MUTENESS);
+}
+
+const string StatusAilmentTextKeys::get_npc_paralyzed_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_PARALYZED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_paralysis_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_PARALYSIS);
+}
+
+const string StatusAilmentTextKeys::get_npc_slowed_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SLOWED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_slowness_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SLOWNESS);
+}
+
+const string StatusAilmentTextKeys::get_npc_hasted_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_HASTED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_haste_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_HASTE);
+}
+
+const string StatusAilmentTextKeys::get_npc_stone_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_STONE);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_stone_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_STONE);
+}
+
+// Protected
+const string StatusAilmentTextKeys::get_general_npc_message(const string& npc_sid, const string& message_sid)
+{
+  string npc = StringTable::get(npc_sid);
+  string message = StringTable::get(message_sid);
+
+  boost::replace_first(message, "%s", npc);
+
+  return message;
+}
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_POISONED = "STATUS_MESSAGE_NPC_POISONED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_POISON = "STATUS_MESSAGE_NPC_UNDO_POISON";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_MUTED = "STATUS_MESSAGE_NPC_MUTED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_MUTENESS = "STATUS_MESSAGE_NPC_UNDO_MUTENESS";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_PARALYZED = "STATUS_MESSAGE_NPC_PARALYZED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_PARALYSIS = "STATUS_MESSAGE_NPC_UNDO_PARALYSIS";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SLOWED = "STATUS_MESSAGE_NPC_SLOWED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SLOWNESS = "STATUS_MESSAGE_NPC_UNDO_SLOWNESS";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_HASTED = "STATUS_MESSAGE_NPC_HASTED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_HASTE = "STATUS_MESSAGE_NPC_UNDO_HASTE";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_STONE = "STATUS_MESSAGE_NPC_STONE";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_STONE = "STATUS_MESSAGE_NPC_UNDO_STONE";

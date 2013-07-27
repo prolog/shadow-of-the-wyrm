@@ -25,7 +25,7 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
   CombatManager cm;
   CreaturePtr no_creature;
   string message_sid = StatusAilmentTextKeys::STATUS_MESSAGE_STONE_FINALIZE;
-
+ 
   cm.deal_damage(no_creature, creature, creature->get_hit_points().get_base());
 
   TilePtr creature_tile = MapUtils::get_tile_for_creature(current_map, creature);
@@ -57,10 +57,22 @@ string StoneStatusEffect::get_player_application_message() const
   return message;
 }
 
+string StoneStatusEffect::get_npc_application_message(CreaturePtr creature) const
+{
+  string message = StatusAilmentTextKeys::get_npc_stone_message(creature);
+  return message;
+}
+
 string StoneStatusEffect::get_player_undo_message() const
 {
   string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STONE_CURED);
   
+  return message;
+}
+
+string StoneStatusEffect::get_npc_undo_message(CreaturePtr creature) const
+{
+  string message = StatusAilmentTextKeys::get_npc_undo_stone_message(creature);
   return message;
 }
 
