@@ -37,17 +37,26 @@ class StatusEffect
     virtual bool before_apply(boost::shared_ptr<Creature> creature) const;
     virtual bool apply(boost::shared_ptr<Creature> creature) const;
     virtual bool after_apply(boost::shared_ptr<Creature> creature) const;
+    
+    virtual std::string get_application_message(boost::shared_ptr<Creature> creature) const;
     virtual std::string get_player_application_message() const;
+    virtual std::string get_npc_application_message(boost::shared_ptr<Creature> creature) const;
 
     virtual void before_finalize(boost::shared_ptr<Creature> creature) const;
     virtual void finalize(boost::shared_ptr<Creature> creature) const;
     virtual void after_finalize(boost::shared_ptr<Creature> creature) const;
+
+    virtual std::string get_finalize_message(boost::shared_ptr<Creature> creature) const;
     virtual std::string get_player_finalize_message() const;
+    virtual std::string get_npc_finalize_message(boost::shared_ptr<Creature> creature) const;
 
     virtual void before_undo(boost::shared_ptr<Creature> creature) const;
     virtual void undo(boost::shared_ptr<Creature> creature) const;
     virtual void after_undo(boost::shared_ptr<Creature> creature) const;
+
+    virtual std::string get_undo_message(boost::shared_ptr<Creature> creature) const;
     virtual std::string get_player_undo_message() const;
+    virtual std::string get_npc_undo_message(boost::shared_ptr<Creature> creature) const;
 
     // The status identifier this class encompasses
     virtual std::string get_status_identifier() const;

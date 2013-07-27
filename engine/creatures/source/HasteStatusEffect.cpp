@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "Creature.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "HasteCalculator.hpp"
@@ -79,10 +80,24 @@ string HasteStatusEffect::get_player_application_message() const
   return message;
 }
 
+string HasteStatusEffect::get_npc_application_message(CreaturePtr creature) const
+{
+  string message = StatusAilmentTextKeys::get_npc_hasted_message(creature);
+
+  return message;
+}
+
 string HasteStatusEffect::get_player_undo_message() const
 {
   string message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_HASTE_DONE);
   
+  return message;
+}
+
+string HasteStatusEffect::get_npc_undo_message(CreaturePtr creature) const
+{
+  string message = StatusAilmentTextKeys::get_npc_undo_haste_message(creature);
+
   return message;
 }
 
