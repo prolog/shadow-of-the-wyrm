@@ -5087,5 +5087,8 @@
     <ClCompile Include="world\tiles\features\source\unit_tests\RegularStatues_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\PhysicalDamageCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
