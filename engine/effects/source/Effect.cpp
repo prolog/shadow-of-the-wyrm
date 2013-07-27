@@ -3,7 +3,7 @@
 #include "Creature.hpp"
 #include "Effect.hpp"
 #include "Serialize.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 
 using namespace std;
 
@@ -31,7 +31,7 @@ bool Effect::effect(boost::shared_ptr<Creature> creature, ActionManager * const 
   // effect should see.
   if (creature && creature->get_is_player())
   {
-    add_additional_effect_messages();
+    add_additional_effect_messages(creature);
   }
 
   identify_effect_as_necessary(creature, effect_identified);
@@ -61,7 +61,7 @@ void Effect::identify_effect_as_necessary(boost::shared_ptr<Creature> creature, 
 
 void Effect::identify_effect_if_player(boost::shared_ptr<Creature> creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature && creature->get_is_player())
   {
@@ -75,7 +75,7 @@ void Effect::identify_effect_if_player(boost::shared_ptr<Creature> creature) con
 // Inform the quaffer (if they're the player) that the potion had no discernable effect.
 void Effect::inform_unidentified_if_player(boost::shared_ptr<Creature> creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature && creature->get_is_player())
   {
@@ -86,13 +86,13 @@ void Effect::inform_unidentified_if_player(boost::shared_ptr<Creature> creature)
   }
 }
 
-void Effect::add_additional_effect_messages() const
+void Effect::add_additional_effect_messages(CreaturePtr creature) const
 {
   BOOST_FOREACH(AdditionalEffectMessagePtr msg, additional_effect_messages)
   {
     if (msg)
     {
-      msg->add_effect_message();
+      msg->add_effect_message(creature);
     }
   }
 }

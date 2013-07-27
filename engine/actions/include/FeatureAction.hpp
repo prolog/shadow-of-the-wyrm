@@ -27,8 +27,8 @@ class FeatureAction : public IActionManager
     // If the creature is the player, inform them that there are no features
     // to be applied.
     void inform_no_features(CreaturePtr creature);
-    void add_application_message(const std::string& app_message_sid);
-    void send_application_messages();
+    void add_application_message(CreaturePtr creature, const std::string& app_message_sid);
+    void send_application_messages(CreaturePtr creature);
 
     // Try to apply a terrain feature in a certain direction, when multiple
     // options are available.

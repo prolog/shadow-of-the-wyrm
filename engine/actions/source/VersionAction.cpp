@@ -1,5 +1,5 @@
 #include "global_prototypes.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "Metadata.hpp"
 #include "VersionAction.hpp"
 
@@ -12,7 +12,7 @@ VersionAction::VersionAction()
 ActionCostValue VersionAction::version() const
 {
   Metadata meta;
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance();
   string game_version = meta.get_game_version_synopsis();
 
   manager.add_new_message(game_version);

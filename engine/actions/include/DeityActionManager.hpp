@@ -10,6 +10,6 @@ class DeityActionManager
 
   protected:
     void handle_displeasing_action(CreaturePtr creature);
-    void add_displeasure_message(const std::string& displeasure_message_sid);
+    void add_displeasure_message(CreaturePtr creature, const std::string& displeasure_message_sid);
 };
 

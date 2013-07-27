@@ -1,5 +1,5 @@
 #include "CurrentCreatureAbilities.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StringTable.hpp"
 
@@ -12,7 +12,7 @@ bool CurrentCreatureAbilities::can_speak(CreaturePtr creature, const bool add_me
 
   if (add_message_if_player_and_cannot_speak && !creature_can_speak && creature && creature->get_is_player())
   {
-    add_ability_message_for_sid(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_MUTED);
+    add_ability_message_for_sid(creature, StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_MUTED);
   }
 
   return creature_can_speak;
@@ -25,15 +25,15 @@ bool CurrentCreatureAbilities::can_act(CreaturePtr creature, const bool add_mess
 
   if (add_message_if_player_and_cannot_speak && !creature_can_act && creature && creature->get_is_player())
   {
-    add_ability_message_for_sid(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_PARALYZED);
+    add_ability_message_for_sid(creature, StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_PARALYZED);
   }
 
   return creature_can_act;
 }
 
-void CurrentCreatureAbilities::add_ability_message_for_sid(const string& status_ability_message_sid) const
+void CurrentCreatureAbilities::add_ability_message_for_sid(CreaturePtr creature, const string& status_ability_message_sid) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(status_ability_message_sid));
   manager.send();

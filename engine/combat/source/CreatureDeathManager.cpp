@@ -2,7 +2,7 @@
 #include "CreatureDeathManager.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 
 using std::string;
 
@@ -42,7 +42,7 @@ void CreatureDeathManager::die()
       ground.add_front(current_item);
     }
 
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
     string death_message = CombatTextKeys::get_monster_death_message(StringTable::get(creature->get_description_sid()));
     manager.add_new_message(death_message);      
   }

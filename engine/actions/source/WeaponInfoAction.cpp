@@ -1,6 +1,6 @@
 #include "DamageCalculatorFactory.hpp"
 #include "EquipmentTextKeys.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "RangedAttackSpeedCalculator.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponInfoAction.hpp"
@@ -40,7 +40,7 @@ ActionCostValue WeaponInfoAction::weapon_info(CreaturePtr creature, const Weapon
 // creature is the player.
 ActionCostValue WeaponInfoAction::melee_weapon_info(CreaturePtr creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature)
   {
@@ -68,7 +68,7 @@ ActionCostValue WeaponInfoAction::melee_weapon_info(CreaturePtr creature) const
 
 ActionCostValue WeaponInfoAction::ranged_weapon_info(CreaturePtr creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature)
   {

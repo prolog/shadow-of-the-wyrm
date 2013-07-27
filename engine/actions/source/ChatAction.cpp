@@ -5,7 +5,7 @@
 #include "CreatureProperties.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 
 using namespace std;
 
@@ -45,7 +45,7 @@ ActionCostValue ChatAction::chat(CreaturePtr creature) const
     }
     else
     {
-      add_chat_message(ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
+      add_chat_message(creature, ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
     }
   }
 
@@ -85,7 +85,7 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
         speech_text_sid = ActionTextKeys::ACTION_CHAT_NO_RESPONSE;
       }
 
-      add_chat_message(speech_text_sid);
+      add_chat_message(querying_creature, speech_text_sid);
       spoke = true;
     }
   }
@@ -106,7 +106,7 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
   // If the creature is the player, inform the player that a direction is needed.
   if (querying_creature->get_is_player())
   {
-    add_chat_message(ActionTextKeys::ACTION_GET_DIRECTION);
+    add_chat_message(querying_creature, ActionTextKeys::ACTION_GET_DIRECTION);
   }
 
   // Try to get a direction.  This might fail.
@@ -137,9 +137,9 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
 }
 
 // Add a chat message to the message area.
-void ChatAction::add_chat_message(const string& chat_text_sid) const
+void ChatAction::add_chat_message(CreaturePtr creature, const string& chat_text_sid) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(chat_text_sid));
   manager.send();

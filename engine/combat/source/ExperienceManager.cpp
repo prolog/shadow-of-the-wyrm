@@ -3,7 +3,7 @@
 #include "Game.hpp"
 #include "LevelConstants.hpp"
 #include "LevelScript.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "TextKeys.hpp"
 
@@ -147,7 +147,7 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
 // Gain a level, increase HP/AP, and do anything else that needs to be done.
 void ExperienceManager::level_up(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature)
   {

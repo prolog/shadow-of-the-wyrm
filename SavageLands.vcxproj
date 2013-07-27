@@ -389,12 +389,15 @@
     <ClInclude Include="engine\include\FileWriter.hpp" />
     <ClInclude Include="engine\include\Game.hpp" />
     <ClInclude Include="engine\include\GameUtils.hpp" />
+    <ClInclude Include="engine\include\IMessageManager.hpp" />
     <ClInclude Include="engine\include\Log.hpp" />
     <ClInclude Include="engine\include\Message.hpp" />
     <ClInclude Include="engine\include\MessageManager.hpp" />
+    <ClInclude Include="engine\include\MessageManagerFactory.hpp" />
     <ClInclude Include="engine\include\Messages.hpp" />
     <ClInclude Include="engine\include\Metadata.hpp" />
     <ClInclude Include="engine\include\Naming.hpp" />
+    <ClInclude Include="engine\include\NullMessageManager.hpp" />
     <ClInclude Include="engine\include\RaceManager.hpp" />
     <ClInclude Include="engine\include\Random.hpp" />
     <ClInclude Include="engine\include\Range.hpp" />
@@ -1310,9 +1313,11 @@
     <ClCompile Include="engine\source\Log.cpp" />
     <ClCompile Include="engine\source\Message.cpp" />
     <ClCompile Include="engine\source\MessageManager.cpp" />
+    <ClCompile Include="engine\source\MessageManagerFactory.cpp" />
     <ClCompile Include="engine\source\Messages.cpp" />
     <ClCompile Include="engine\source\Metadata.cpp" />
     <ClCompile Include="engine\source\Naming.cpp" />
+    <ClCompile Include="engine\source\NullMessageManager.cpp" />
     <ClCompile Include="engine\source\RaceManager.cpp" />
     <ClCompile Include="engine\source\Random.cpp" />
     <ClCompile Include="engine\source\ReligionManager.cpp" />

@@ -5,7 +5,7 @@
 #include "Game.hpp"
 #include "KeyManager.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -41,7 +41,7 @@ ActionCostValue FeatureAction::apply(CreaturePtr creature)
     if (num_features == 0)
     {
       inform_no_features(creature);
-      send_application_messages();
+      send_application_messages(creature);
     }
     else if (num_features == 1)
     {
@@ -79,15 +79,15 @@ bool FeatureAction::handle_lock(LockPtr lock, CreaturePtr creature)
     lock_message_sid = ActionTextKeys::ACTION_HANDLE_LOCK;
   }
 
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   manager.add_new_message(StringTable::get(lock_message_sid));
 
   return lock_handled;
 }
 
-void FeatureAction::send_application_messages()
+void FeatureAction::send_application_messages(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();  
+  IMessageManager& manager = MessageManagerFactory::instance(creature);  
   manager.send();
 }
 
@@ -119,7 +119,7 @@ bool FeatureAction::handle(FeaturePtr feature, CreaturePtr creature, const bool 
 
         if (!handle_message_sid.empty())
         {
-          add_application_message(handle_message_sid);
+          add_application_message(creature, handle_message_sid);
         }
       }
 
@@ -140,14 +140,14 @@ bool FeatureAction::handle(FeaturePtr feature, CreaturePtr creature, const bool 
     }
   }
 
-  send_application_messages();
+  send_application_messages(creature);
 
   return result;
 }
 
-void FeatureAction::add_application_message(const string& app_msg_sid)
+void FeatureAction::add_application_message(CreaturePtr creature, const string& app_msg_sid)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(app_msg_sid));
 }
@@ -162,12 +162,12 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   CommandFactoryPtr command_factory    = boost::make_shared<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
 
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
   {
-    add_application_message(ActionTextKeys::ACTION_GET_DIRECTION);
+    add_application_message(creature, ActionTextKeys::ACTION_GET_DIRECTION);
     manager.send();
   }
 
@@ -206,7 +206,7 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
 void FeatureAction::inform_no_features(CreaturePtr creature)
 {
   string no_features = ActionTextKeys::ACTION_APPLY_NO_FEATURES_PRESENT;
-  add_application_message(no_features);
+  add_application_message(creature, no_features);
 }
 
 // Default cost of applying/handling a terrain feature.

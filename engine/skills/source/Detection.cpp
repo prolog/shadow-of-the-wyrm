@@ -1,14 +1,14 @@
 #include "ActionTextKeys.hpp"
 #include "Detection.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "SkillManager.hpp"
 
 using std::string;
 
 void Detection::detect_creatures_if_necessary(CreaturePtr creature, MapPtr map, const string& original_map_id, const string& current_map_id)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (original_map_id != current_map_id) // We've just loaded a new map
   {

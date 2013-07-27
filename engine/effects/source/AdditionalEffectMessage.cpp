@@ -1,5 +1,5 @@
 #include "AdditionalEffectMessage.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "Serialize.hpp"
 #include "StringTable.hpp"
 
@@ -11,9 +11,9 @@ AdditionalEffectMessage::AdditionalEffectMessage(const string& effect_msg_sid)
 }
 
 // Add the additional effect message
-void AdditionalEffectMessage::add_effect_message() const
+void AdditionalEffectMessage::add_effect_message(CreaturePtr creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   string message = StringTable::get(effect_message_sid);
 
   manager.add_new_message(message);

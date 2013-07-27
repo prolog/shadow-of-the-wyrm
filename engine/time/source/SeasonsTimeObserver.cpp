@@ -1,5 +1,5 @@
 #include "Game.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "SeasonsTimeObserver.hpp"
 
 using std::string;
@@ -25,7 +25,7 @@ void SeasonsTimeObserver::notify(const ulonglong minutes_passed)
     if (season_updated)
     {
       string message = calendar.get_season()->get_new_season_message_sid();
-      MessageManager& manager = MessageManager::instance();
+      IMessageManager& manager = MessageManagerFactory::instance();
         
       manager.add_new_message(StringTable::get(message));
       manager.send();

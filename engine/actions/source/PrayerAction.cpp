@@ -2,7 +2,7 @@
 #include "DeityDecisionStrategyFactory.hpp"
 #include "DeityDecisionStrategyHandlerFactory.hpp"
 #include "DeityTextKeys.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "PrayerAction.hpp"
 #include "ReligionManager.hpp"
 
@@ -39,7 +39,7 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
 // If the creature is the player, say a prayer (add a message).
 void PrayerAction::say_prayer(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   ReligionManager rm;
   
   if (creature && creature->get_is_player())
@@ -75,7 +75,7 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   
   if (creature->get_is_player())
   {
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
     
     string prayer_message = StringTable::get(decision_implications.get_message_sid());
       

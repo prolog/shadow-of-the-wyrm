@@ -5,7 +5,7 @@
 #include "Food.hpp"
 #include "FoodAction.hpp"
 #include "ItemFilterFactory.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
 
 using namespace std;
@@ -98,7 +98,7 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
 // Add a message about whether the creature could eat the item, or not.
 void FoodAction::add_food_message(CreaturePtr creature, ItemPtr food, const bool eat_success)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   string message;
 
@@ -123,7 +123,7 @@ void FoodAction::add_hunger_level_message_if_necessary(CreaturePtr creature, con
 
   if (old_level != new_level)
   {
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
 
     if (hunger_message_sid_map.empty())
     {

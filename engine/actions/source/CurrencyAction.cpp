@@ -1,5 +1,5 @@
 #include "CurrencyAction.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "TextMessages.hpp"
 
 using std::string;
@@ -26,15 +26,12 @@ ActionCostValue CurrencyAction::count_currency(CreaturePtr creature)
 
 void CurrencyAction::add_currency_message_if_necessary(CreaturePtr creature, const uint currency_quantity)
 {
-  if (creature->get_is_player())
-  {
-    MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
     
-    string currency_message = TextMessages::get_currency_amount_message(currency_quantity);
+  string currency_message = TextMessages::get_currency_amount_message(currency_quantity);
       
-    manager.add_new_message(currency_message);
-    manager.send();
-  }
+  manager.add_new_message(currency_message);
+  manager.send();
 }
 
 ActionCostValue CurrencyAction::get_action_cost_value() const

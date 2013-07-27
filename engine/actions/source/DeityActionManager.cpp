@@ -2,7 +2,7 @@
 #include "DeityDecisionImplications.hpp"
 #include "DeityDecisionStrategyHandlerFactory.hpp"
 #include "Game.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 
 using namespace std;
 
@@ -50,16 +50,16 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature)
     // below zero, show the deity's anger.
     if ((original_piety >= 0) && (new_piety < 0) && creature->get_is_player())
     {
-      add_displeasure_message(deity_decision_handler->get_message_sid());
+      add_displeasure_message(creature, deity_decision_handler->get_message_sid());
     }
   }
 }
 
 // Add a message about the deity being angry.  This is typically only done when
 // piety has dropped from being positive to negative.
-void DeityActionManager::add_displeasure_message(const string& displeasure_message_sid)
+void DeityActionManager::add_displeasure_message(CreaturePtr creature, const string& displeasure_message_sid)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   string displeasure = StringTable::get(displeasure_message_sid);
   
   manager.add_new_message(displeasure);

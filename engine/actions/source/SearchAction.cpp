@@ -1,5 +1,5 @@
 #include "ActionTextKeys.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "SearchAction.hpp"
 
 using std::string;
@@ -12,7 +12,7 @@ ActionCostValue SearchAction::search(CreaturePtr creature)
 {
   if (creature && creature->get_is_player())
   {
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
     string search_message = StringTable::get(ActionTextKeys::ACTION_SEARCH);
 
     manager.add_new_message(search_message);

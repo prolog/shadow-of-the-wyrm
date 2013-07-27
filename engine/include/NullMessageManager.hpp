@@ -1,9 +1,12 @@
-#pragma once
 #include "IMessageManager.hpp"
 
-class MessageManager : public IMessageManager
+// This class does absolutely nothing.  Its purpose is to provide an
+// implementation class for messages for creatures that are outside the
+// player's view map, and whose messages should not be displayed to the
+// screen.
+class NullMessageManager : public IMessageManager
 {
-	public:
+  public:
     void clear_if_necessary();
     void send(const bool halt_afterwards = false, const bool reset_afterwards = false);
     void send_and_halt();
@@ -17,18 +20,5 @@ class MessageManager : public IMessageManager
 		Messages get_unread_messages_and_mark_as_read();
 
     void set_display(DisplayPtr new_display);
-
-private:
-    std::string get_count_indicator(const Message& m);
-    
-    friend class MessageManagerFactory;
-    MessageManager();
-    MessageManager(const MessageManager&); // Do not implement!
-    bool operator=(const MessageManager&); // Do not implement!
-    ~MessageManager();
-
-		Messages read;
-		Messages unread;
-		DisplayPtr user_display;
-		bool buffer_has_messages;
 };
+

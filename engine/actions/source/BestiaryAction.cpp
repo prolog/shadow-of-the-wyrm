@@ -5,7 +5,7 @@
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "MenuTitleTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextDisplayFormatter.hpp"
@@ -20,7 +20,7 @@ BestiaryAction::BestiaryAction()
 ActionCostValue BestiaryAction::display_creature_information(CreaturePtr creature, const string& creature_search_text) const
 {
   string search_text = creature_search_text;
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   // If we need to display creature information, prompt for some creature
   // details.

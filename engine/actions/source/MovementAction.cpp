@@ -8,7 +8,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapTypeQueryFactory.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "MovementAccumulationUpdater.hpp"
 #include "MovementAction.hpp"
 #include "StairwayMovementAction.hpp"
@@ -43,7 +43,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
   ActionCostValue movement_success = 0;
 
   Game& game = Game::instance();
-  MessageManager& manager = MessageManager::instance();  
+  IMessageManager& manager = MessageManagerFactory::instance(creature);  
 
   if (creature)
   {
@@ -101,7 +101,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
   ActionCostValue movement_success = 0;
 
   Game& game = Game::instance();
-  MessageManager& manager = MessageManager::instance();  
+  IMessageManager& manager = MessageManagerFactory::instance(creature);  
   MapExitPtr map_exit = map->get_map_exit();
 
   if (!MapUtils::can_exit_map(map_exit))
@@ -151,7 +151,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords)
 {
   ActionCostValue movement_success = 0;
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creatures_new_tile)
   {
@@ -221,7 +221,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
   {
     if (creature->get_is_player())
     {
-      MessageManager& manager = MessageManager::instance();
+      IMessageManager& manager = MessageManagerFactory::instance(creature);
       manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
       bool attack = creature->get_decision_strategy()->get_confirmation();
 
@@ -268,7 +268,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     : generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, tile->get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
   Game& game = Game::instance();
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   if (generator)
   {
@@ -357,7 +357,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Til
   
   if (details.first == true)
   {
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
     
     if (creature->get_is_player())
     { 
@@ -429,7 +429,7 @@ ActionCostValue MovementAction::descend(CreaturePtr creature)
 //       If so, add it.
 // - Are there any items on the tile?
 //       If so, add the appropriate message.
-void MovementAction::add_tile_related_messages(const CreaturePtr& creature, MessageManager& manager, TilePtr tile)
+void MovementAction::add_tile_related_messages(const CreaturePtr& creature, IMessageManager& manager, TilePtr tile)
 {
   add_message_about_tile_if_necessary(creature, manager, tile);
   add_message_about_items_on_tile_if_necessary(creature, manager, tile);
@@ -438,7 +438,7 @@ void MovementAction::add_tile_related_messages(const CreaturePtr& creature, Mess
 }
 
 // Add a message about the tile if necessary.
-void MovementAction::add_message_about_tile_if_necessary(const CreaturePtr& creature, MessageManager& manager, TilePtr tile)
+void MovementAction::add_message_about_tile_if_necessary(const CreaturePtr& creature, IMessageManager& manager, TilePtr tile)
 {
   if (creature && tile && creature->get_is_player())
   {
@@ -452,7 +452,7 @@ void MovementAction::add_message_about_tile_if_necessary(const CreaturePtr& crea
 
 // Add a message if the creature is the player, and if there are items on
 // the tile.
-void MovementAction::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, MessageManager& manager, TilePtr tile)
+void MovementAction::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, IMessageManager& manager, TilePtr tile)
 {
   if (creature && creature->get_is_player())
   {

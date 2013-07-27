@@ -37,7 +37,7 @@ class Effect
 
     // Add all the additional effect messages, if the creature is the
     // player.
-    virtual void add_additional_effect_messages() const;
+    virtual void add_additional_effect_messages(boost::shared_ptr<Creature> creature) const;
 
     // Additional messages that are displayed regardless of identification
     // success or failure.

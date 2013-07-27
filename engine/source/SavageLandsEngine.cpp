@@ -14,7 +14,7 @@
 #include "ItemIdentifier.hpp"
 #include "LoadGameScreen.hpp"
 #include "Log.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
 #include "RaceSelectionScreen.hpp"
@@ -149,7 +149,7 @@ void SavageLandsEngine::setup_game()
   game.set_custom_maps(custom_maps);
     
   // Set up the message manager also.
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance();
   manager.set_display(display);
 }
 

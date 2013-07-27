@@ -2,7 +2,7 @@
 #include "CombatManager.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "StoneCalculator.hpp"
 #include "StoneStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -20,7 +20,7 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
 {
   Game& game = Game::instance();
   MapPtr current_map = game.get_current_map();
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   CombatManager cm;
   CreaturePtr no_creature;

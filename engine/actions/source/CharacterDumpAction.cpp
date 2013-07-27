@@ -1,7 +1,7 @@
 #include "CharacterDumpAction.hpp"
 #include "CharacterDumper.hpp"
 #include "FileWriter.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "TextMessages.hpp"
 
 using std::string;
@@ -14,7 +14,7 @@ ActionCostValue CharacterDumpAction::dump_character(CreaturePtr creature)
 {
   if (creature)
   {
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
     string name = creature->get_name();
     string dump_message = TextMessages::get_dumping_character_message(name);
     

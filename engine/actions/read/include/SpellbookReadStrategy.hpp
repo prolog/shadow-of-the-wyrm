@@ -27,12 +27,12 @@ class SpellbookReadStrategy : public ReadStrategy
 
     // Add a message about the creature not having any knowledge of the Old
     // Runic language.
-    void add_no_magic_skill_message();
+    void add_no_magic_skill_message(CreaturePtr creature);
     
     // Add a message about not being able to learn the spell.
-    void add_spell_not_learned_message();
+    void add_spell_not_learned_message(CreaturePtr creature);
 
-    void add_spellbook_destruction_message(SpellbookPtr spellbook);
+    void add_spellbook_destruction_message(CreaturePtr creature, SpellbookPtr spellbook);
 
     // Spellbooks have separate messages for successfully and unsuccessfully
     // reading - success indicates memorization, failure is just a read.
