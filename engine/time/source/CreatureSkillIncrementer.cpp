@@ -1,5 +1,5 @@
 #include "CreatureSkillIncrementer.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -18,7 +18,7 @@ CreatureSkillIncrementer::CreatureSkillIncrementer(const uint new_minutes_interv
 
 void CreatureSkillIncrementer::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature)
   {

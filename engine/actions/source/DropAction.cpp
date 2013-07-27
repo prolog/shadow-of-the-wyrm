@@ -6,7 +6,7 @@
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "TextMessages.hpp"
 #include "Tile.hpp"
 
@@ -47,7 +47,7 @@ ActionCostValue DropAction::drop(CreaturePtr creature, ActionManager * const am)
 // Handle trying to drop stuff on the world map, which is not a valid case.
 void DropAction::handle_world_drop(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature && creature->get_is_player())
   {
@@ -61,7 +61,7 @@ void DropAction::handle_world_drop(CreaturePtr creature)
 // Handle trying to drop an invalid quantity (0, "a bajillion", etc)
 void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature && creature->get_is_player())
   {
@@ -75,7 +75,7 @@ void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 // Show the description of the item being dropped, if applicable
 void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (item && creature && creature->get_is_player())
   {
@@ -100,7 +100,7 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
 // Handle the case where the intent was to drop, but then nothing was selected.
 void DropAction::handle_no_item_dropped(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature && creature->get_is_player())
   {
@@ -167,7 +167,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 // Get the quantity to drop
 uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature && creature->get_is_player())
   {

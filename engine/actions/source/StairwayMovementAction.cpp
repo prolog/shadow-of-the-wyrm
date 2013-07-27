@@ -1,7 +1,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "MovementTextKeys.hpp"
 #include "StairwayMovementAction.hpp"
 
@@ -22,7 +22,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
   if (creature->get_is_player())
   {
     Game& game = Game::instance();
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
     
     MapPtr current_map = game.get_current_map();
 
@@ -83,7 +83,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 {
   ActionCostValue descend_success = 0;
  
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature->get_is_player())
   {

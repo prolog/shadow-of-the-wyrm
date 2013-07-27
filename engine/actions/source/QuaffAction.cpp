@@ -5,7 +5,7 @@
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "QuaffAction.hpp"
 #include "SpellFactory.hpp"
 #include "SpellShapeProcessorFactory.hpp"
@@ -110,7 +110,7 @@ void QuaffAction::add_quaff_message(CreaturePtr creature, PotionPtr potion, cons
   string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(potion), creature->get_is_player());
   
   // Display an appropriate message
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   manager.add_new_message(quaff_message);
   manager.send();

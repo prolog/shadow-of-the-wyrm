@@ -1,7 +1,7 @@
 #include "Creature.hpp"
 #include "DefaultStatusEffectCalculator.hpp"
 #include "Game.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
 #include "StatusEffect.hpp"
@@ -44,7 +44,7 @@ void StatusEffect::apply_change(CreaturePtr creature) const
 
     if (!message.empty() && creature->get_is_player())
     {
-      MessageManager& manager = MessageManager::instance();
+      IMessageManager& manager = MessageManagerFactory::instance(creature);
       manager.add_new_message(message);
       manager.send();
     }
@@ -131,7 +131,7 @@ void StatusEffect::undo(CreaturePtr creature) const
 
     if (creature->get_is_player())
     {
-      MessageManager& manager = MessageManager::instance();
+      IMessageManager& manager = MessageManagerFactory::instance();
 
       string player_undo_message = get_player_undo_message();
 

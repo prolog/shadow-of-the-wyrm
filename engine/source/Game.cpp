@@ -23,7 +23,7 @@
 #include "WorldGenerator.hpp"
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "Serialize.hpp"
 #include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
@@ -257,7 +257,7 @@ void Game::go()
 
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
 
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(current_player);
   manager.add_new_message(welcome_message);
   manager.send();
 
@@ -443,7 +443,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         // The player will already have had a chance to read the messages.
         if (current_creature->get_is_player())
         {
-          MessageManager::instance().clear_if_necessary();
+          MessageManagerFactory::instance(current_creature).clear_if_necessary();
         }
 
         action_cost = CommandProcessor::process(current_creature, command, display);

@@ -1,6 +1,6 @@
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "SpellConstants.hpp"
 #include "SpellFailureConsequencesCoordinator.hpp"
 #include "SpellbookReadStrategy.hpp"
@@ -61,7 +61,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
             // Add a message about this being unsuccessful.
             if (creature->get_is_player())
             {
-              add_spell_not_learned_message();
+              add_spell_not_learned_message(creature);
             }
 
             // Check the difference to see if it falls within the "something
@@ -75,7 +75,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
             spellbook->set_quantity(spellbook->get_quantity() - 1);
             if (spellbook->get_quantity() == 0) creature->get_inventory().remove(spellbook->get_id());
 
-            add_spellbook_destruction_message(spellbook);
+            add_spellbook_destruction_message(creature, spellbook);
           }
         }
       }
@@ -122,7 +122,7 @@ bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature)
   {
     if (creature->get_is_player())
     {
-      add_no_magic_skill_message();
+      add_no_magic_skill_message(creature);
     }
 
     has_magic_skill = false;
@@ -147,7 +147,7 @@ bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, c
     }
     else
     {
-      MessageManager& manager = MessageManager::instance();
+      IMessageManager& manager = MessageManagerFactory::instance(creature);
 
       if (creature && creature->get_is_player())
       {
@@ -156,10 +156,9 @@ bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, c
         Game& game = Game::instance();
         game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
         game.get_display()->redraw();
-
-        manager.add_new_confirmation_message(TextMessages::get_confirmation_message(SpellcastingTextKeys::SPELLCASTING_UNFAMILIAR_CATEGORY));
       }
 
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(SpellcastingTextKeys::SPELLCASTING_UNFAMILIAR_CATEGORY));
       confirmation = creature->get_decision_strategy()->get_confirmation();
       
       manager.clear_if_necessary();
@@ -180,26 +179,26 @@ bool SpellbookReadStrategy::handle_fallout_if_necessary(CreaturePtr creature, co
   return sfcc.coordinate_failure_consequences(creature, difference);
 }
 
-void SpellbookReadStrategy::add_no_magic_skill_message()
+void SpellbookReadStrategy::add_no_magic_skill_message(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_NO_MAGIC_SKILL));
   manager.send();
 }
 
-void SpellbookReadStrategy::add_spell_not_learned_message()
+void SpellbookReadStrategy::add_spell_not_learned_message(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_SPELL_NOT_LEARNED));
   manager.send();
 }
 
-void SpellbookReadStrategy::add_spellbook_destruction_message(SpellbookPtr spellbook)
+void SpellbookReadStrategy::add_spellbook_destruction_message(CreaturePtr creature, SpellbookPtr spellbook)
 {
   ItemIdentifier item_id;
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(SpellcastingTextKeys::get_spellbook_destruction_message(item_id.get_appropriate_usage_description(spellbook)));
   manager.send();

@@ -6,7 +6,7 @@
 #include "ItemManager.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "Quests.hpp"
 #include "RNG.hpp"
 #include "ScriptEngine.hpp"
@@ -134,7 +134,7 @@ void ScriptEngine::log_error()
 
   // Add a message to the message manager.
   string ui_error = GameEnvTextKeys::get_lua_error(error);
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance();
   manager.add_new_message(ui_error);
   manager.send();
 }
@@ -211,7 +211,7 @@ static int add_message_with_pause(lua_State* ls)
 	{
     string message_sid = lua_tostring(ls, 1);
     
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance();
     manager.clear_if_necessary();
     manager.add_new_message_with_pause(StringTable::get(message_sid));
     manager.send();
@@ -241,7 +241,7 @@ static int add_message(lua_State* ls)
 	{
 		string message_sid = lua_tostring(ls, 1);
 
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance();
     manager.clear_if_necessary();
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();

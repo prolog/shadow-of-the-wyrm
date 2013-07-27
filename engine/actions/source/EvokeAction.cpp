@@ -7,7 +7,7 @@
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "SpellcastingProcessor.hpp"
 #include "SpellShapeFactory.hpp"
 #include "SpellShapeProcessorFactory.hpp"
@@ -133,7 +133,7 @@ void EvokeAction::add_evocation_message(CreaturePtr creature, WandPtr wand, cons
   string evoke_message = ActionTextKeys::get_evoke_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(wand), creature->get_is_player());
   
   // Display an appropriate message
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   manager.add_new_message(evoke_message);
   manager.send();
@@ -150,7 +150,7 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
   pair<bool, Direction> evoke_direction_result(false, DIRECTION_UP);
   Direction direction = DIRECTION_UP;
 
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();
@@ -232,7 +232,7 @@ bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr ma
   {
     if (creature && creature->get_is_player())
     {
-      MessageManager& manager = MessageManager::instance();
+      IMessageManager& manager = MessageManagerFactory::instance(creature);
       manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_NULL));
       manager.send();
     }

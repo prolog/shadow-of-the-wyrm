@@ -2,7 +2,7 @@
 #include "DateTextKeys.hpp"
 #include "DateTimeAction.hpp"
 #include "Game.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 
 using std::string;
 
@@ -13,7 +13,7 @@ DateTimeAction::DateTimeAction()
 ActionCostValue DateTimeAction::date_and_time()
 {
   Game& game = Game::instance();
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance();
   
   if (!game.worlds.empty())
   {

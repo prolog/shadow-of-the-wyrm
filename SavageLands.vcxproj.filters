@@ -2676,6 +2676,15 @@
     <ClInclude Include="world\tiles\features\include\RegularStatues.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\IMessageManager.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\MessageManagerFactory.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\NullMessageManager.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5089,6 +5098,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PhysicalDamageCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\MessageManagerFactory.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\NullMessageManager.cpp">
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

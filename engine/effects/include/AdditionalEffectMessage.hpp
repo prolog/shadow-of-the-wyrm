@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "Creature.hpp"
 
 // This class defines an abstract base class for messages that should be 
 // displayed to the target of a particular effect.  E.g., drinking a potion
@@ -11,7 +12,7 @@
 class AdditionalEffectMessage
 {
   public:
-    virtual void add_effect_message() const;
+    virtual void add_effect_message(CreaturePtr creature) const;
 
     virtual AdditionalEffectMessage* clone() = 0;
 

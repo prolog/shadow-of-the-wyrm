@@ -5,7 +5,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "SpellFailureConsequences.hpp"
 
@@ -108,7 +108,7 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
     }
 
     // Add an appropriate message.
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance();
     manager.add_new_message(StringTable::get(get_summoned_creatures_message_sid()));
     manager.send();
   }

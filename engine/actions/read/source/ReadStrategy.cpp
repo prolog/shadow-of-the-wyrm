@@ -1,7 +1,7 @@
 #include "ActionTextKeys.hpp"
 #include "EffectFactory.hpp"
 #include "ItemIdentifier.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "ReadStrategy.hpp"
 
 using namespace std;
@@ -18,7 +18,7 @@ void ReadStrategy::add_read_message(const pair<string, string>& player_and_monst
     string read_message = ActionTextKeys::get_read_message(player_message_sid, monster_message_sid, creature->get_description_sid(), item_id.get_appropriate_usage_description(readable), creature->get_is_player());
     
     // Display an appropriate message
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
     
     manager.add_new_message(read_message);
     manager.send();

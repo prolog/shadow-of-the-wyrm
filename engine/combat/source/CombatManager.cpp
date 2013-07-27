@@ -12,7 +12,7 @@
 #include "ToHitCalculatorFactory.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
@@ -131,7 +131,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
     hm.set_hostility_to_creature(attacked_creature, attacking_creature->get_id());
   }
 
-  send_combat_messages();
+  send_combat_messages(attacking_creature);
   
   return action_cost_value;
 }
@@ -169,8 +169,8 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   int damage_dealt = damage_calc->calculate(attacked_creature, damage_info, base_damage, soak_multiplier);
 
   // Add the text so far.
-  add_combat_message(combat_message);
-  add_any_necessary_damage_messages(damage_dealt);
+  add_combat_message(attacking_creature, combat_message);
+  add_any_necessary_damage_messages(attacking_creature, damage_dealt);
 
   if (damage_dealt > 0)
   {
@@ -183,7 +183,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   else
   {
     string no_damage_message = CombatTextKeys::get_no_damage_message(attacked_creature->get_is_player(), StringTable::get(attacked_creature->get_description_sid()));
-    add_combat_message(no_damage_message);
+    add_combat_message(attacking_creature, no_damage_message);
   }
 
   return true;
@@ -220,7 +220,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
     
     if (!message_sid.empty())
     {
-      MessageManager& manager = MessageManager::instance();
+      IMessageManager& manager = MessageManagerFactory::instance();
       manager.add_new_message(StringTable::get(message_sid));
     }
     
@@ -248,7 +248,7 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 {
   string attacked_creature_desc = get_appropriate_creature_description(attacked_creature);
   string combat_message = CombatTextKeys::get_miss_message(attacking_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
-  add_combat_message(combat_message);
+  add_combat_message(attacking_creature, combat_message);
 
   return true;
 }
@@ -257,7 +257,7 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
 {
   string attacked_creature_desc = get_appropriate_creature_description(attacked_creature);
   string combat_message = CombatTextKeys::get_close_miss_message(attacking_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
-  add_combat_message(combat_message);
+  add_combat_message(attacking_creature, combat_message);
 
   return true;
 }
@@ -267,7 +267,7 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
 // 
 // JCD FIXME Need to have the usual player vs. monster checks here
 // so that these are only added when the target is not the player.
-void CombatManager::add_any_necessary_damage_messages(const int damage)
+void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, const int damage)
 {
   string additional_message;
   
@@ -282,21 +282,20 @@ void CombatManager::add_any_necessary_damage_messages(const int damage)
   
   if (!additional_message.empty())
   {
-    add_combat_message(additional_message);
+    add_combat_message(creature, additional_message);
   }
 }
 
-void CombatManager::add_combat_message(const string& combat_message)
+void CombatManager::add_combat_message(CreaturePtr creature, const string& combat_message)
 {
   // Display combat information.
-  // Right now, everything is displayed.  Will need to do LOS checking later.
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   manager.add_new_message(combat_message);
 }
 
-void CombatManager::send_combat_messages()
+void CombatManager::send_combat_messages(CreaturePtr creature)
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   manager.send();
 }
 

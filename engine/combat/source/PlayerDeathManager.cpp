@@ -1,5 +1,5 @@
 #include "Game.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "PlayerDeathManager.hpp"
 #include "ReligionManager.hpp"
 #include "TextMessages.hpp"
@@ -21,7 +21,7 @@ void PlayerDeathManager::die()
   if (map && creature)
   {
     ReligionManager rm;
-    MessageManager& manager = MessageManager::instance();
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
 
     // Update the screen so that the player can see their final statistics 
     // (otherwise, it will just show the start-of-turn values).

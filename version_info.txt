@@ -5,6 +5,11 @@ Savage Lands v0.1.5 "Beorhthun"
   creatures to eat and have their hunger level tick down to normal, but
   stop there, so that they never get hungry.  Set this option for Fae.
 
+- Updated the message manager code to properly account for the creature
+  generating the message - the player should always generate messages,
+  and other creatures should only generate messages if within the player's
+  view map.
+
 - Added status ailments (poison), and the application of status ailments
   via damage (e.g., checks for poisoning after being hit with poison
   damage).  Created a new creature observer for handling per-minute

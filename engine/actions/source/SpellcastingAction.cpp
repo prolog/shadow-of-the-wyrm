@@ -10,7 +10,7 @@
 #include "MagicCommandFactory.hpp"
 #include "MagicCommandProcessor.hpp"
 #include "MagicKeyboardCommandMap.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "SpellBonusUpdater.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "SpellSelectionScreen.hpp"
@@ -45,7 +45,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
     {
       if (creature->get_is_player())
       {
-        add_no_magical_knowledge_message();
+        add_no_magical_knowledge_message(creature);
       }
     }
     else
@@ -55,7 +55,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 
       if (current_map && current_map->get_map_type() == MAP_TYPE_WORLD)
       {
-        add_invalid_spellcasting_location_message();
+        add_invalid_spellcasting_location_message(creature);
       }
       else
       {
@@ -110,7 +110,7 @@ pair<string, ActionCostValue> SpellcastingAction::cast_spell_on_valid_map_type(C
 ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id) const
 {
   ActionCostValue action_cost_value = 0;
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   if (creature)
   {
@@ -145,7 +145,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
 
       if (spellcasting_succeeded == false)
       {
-        MessageManager& manager = MessageManager::instance();
+        IMessageManager& manager = MessageManagerFactory::instance(creature);
         manager.add_new_message(ActionTextKeys::get_spellcasting_cancelled_message(creature->get_description_sid(), creature->get_is_player()));
       }
       else
@@ -181,7 +181,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
     }
     else
     {
-      add_insufficient_power_message();
+      add_insufficient_power_message(creature);
     }
   }
 
@@ -201,41 +201,41 @@ void SpellcastingAction::update_spell_bonus(CreaturePtr caster, const Spell& spe
   
   if (bonus_updated && caster->get_is_player())
   {
-    add_spell_bonus_increased_message();
+    add_spell_bonus_increased_message(caster);
   }
 }
 
 // Add a message about the spell bonus increasing.
-void SpellcastingAction::add_spell_bonus_increased_message() const
+void SpellcastingAction::add_spell_bonus_increased_message(CreaturePtr creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_BONUS_INCREASED));
   manager.send();
 }
 
 // Add a message that the player has no magical knowledge
-void SpellcastingAction::add_no_magical_knowledge_message() const
+void SpellcastingAction::add_no_magical_knowledge_message(CreaturePtr creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_NO_MAGICAL_KNOWLEDGE));
   manager.send();
 }
 
 // Add a message that spells can't be cast here (basically, world map)
-void SpellcastingAction::add_invalid_spellcasting_location_message() const
+void SpellcastingAction::add_invalid_spellcasting_location_message(CreaturePtr creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_UNAVAILABLE_ON_WORLD_MAP));
   manager.send();
 }
 
 // Add a message about not having enough AP.
-void SpellcastingAction::add_insufficient_power_message() const
+void SpellcastingAction::add_insufficient_power_message(CreaturePtr creature) const
 {
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_INSUFFICIENT_POWER));
   manager.send();
@@ -276,7 +276,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   bool direction_conversion_ok = true;
   Direction direction = spell_direction;
 
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();

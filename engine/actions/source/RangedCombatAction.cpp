@@ -14,7 +14,7 @@
 #include "ItemManager.hpp"
 #include "MapCursor.hpp"
 #include "MapTranslator.hpp"
-#include "MessageManager.hpp"
+#include "MessageManagerFactory.hpp"
 #include "RangedCombatAction.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RNG.hpp"
@@ -34,7 +34,7 @@ bool RangedCombatAction::operator==(const RangedCombatAction& rca) const
 ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = 0;
-  MessageManager& manager = MessageManager::instance();
+  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creature)
   {
@@ -256,7 +256,7 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
 
       if (!ranged_attack_message.empty())
       {
-        MessageManager& manager = MessageManager::instance();
+        IMessageManager& manager = MessageManagerFactory::instance(creature);
         manager.add_new_message(ranged_attack_message);
         manager.send();
       }
