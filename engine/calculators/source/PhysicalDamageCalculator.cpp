@@ -59,7 +59,8 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
   
   if (attacking_creature)
   {
-    int current_modifier = get_statistic_based_damage_modifier(attacking_creature);
+    int current_modifier = base_damage.get_modifier();
+    current_modifier    += get_statistic_based_damage_modifier(attacking_creature);
     base_damage.set_modifier(current_modifier);
   }
   
@@ -85,3 +86,8 @@ int PhysicalDamageCalculator::get_statistic_based_damage_modifier(CreaturePtr at
   
   return modifier;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/PhysicalDamageCalculator_test.cpp"
+#endif
+
