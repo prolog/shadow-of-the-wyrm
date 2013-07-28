@@ -48,7 +48,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
         MapPtr new_map = game.get_current_map();
 
         TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
-        ma->add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);
+        ma->add_message_about_items_on_tile_if_necessary(creature, creatures_current_tile);
         
         ascend_success = get_action_cost_value();
       }
@@ -120,7 +120,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
               MapPtr new_map = game.get_current_map();
 
               TilePtr creatures_current_tile = MapUtils::get_tile_for_creature(new_map, creature);
-              ma->add_message_about_items_on_tile_if_necessary(creature, manager, creatures_current_tile);
+              ma->add_message_about_items_on_tile_if_necessary(creature, creatures_current_tile);
         
               descend_success = get_action_cost_value();
             }

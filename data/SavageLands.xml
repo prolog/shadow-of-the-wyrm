@@ -4458,6 +4458,25 @@
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="poisoned_dagger">
+				<DescriptionSID>POISONED_DAGGER_SID</DescriptionSID>
+				<UsageDescriptionSID>POISONED_DAGGER_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>4</Modifier>
+					<Type>6</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="short_sword">
 				<DescriptionSID>SHORT_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
