@@ -11,17 +11,17 @@ DeathManagerFactory::~DeathManagerFactory()
 {
 }
 
-DeathManagerPtr DeathManagerFactory::create_death_manager(CreaturePtr creature, MapPtr map)
+DeathManagerPtr DeathManagerFactory::create_death_manager(CreaturePtr attacking, CreaturePtr dead, MapPtr map)
 {
   DeathManagerPtr manager;
 
-  if (creature->get_is_player())
+  if (dead->get_is_player())
   {
-    manager = boost::make_shared<PlayerDeathManager>(creature, map);
+    manager = boost::make_shared<PlayerDeathManager>(attacking, dead, map);
   }
   else
   {
-    manager = boost::make_shared<CreatureDeathManager>(creature, map);
+    manager = boost::make_shared<CreatureDeathManager>(attacking, dead, map);
   }
 
   return manager;

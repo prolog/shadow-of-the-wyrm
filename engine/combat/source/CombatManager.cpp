@@ -226,7 +226,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
     
     if (current_hp <= CombatConstants::DEATH_THRESHOLD)
     {      
-      DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacked_creature, map);
+      DeathManagerPtr death_manager = DeathManagerFactory::create_death_manager(attacking_creature, attacked_creature, map);
 
       // Kill the creature, and run the death event function, if necessary.
       death_manager->die();

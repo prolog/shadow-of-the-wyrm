@@ -111,6 +111,7 @@ const string StatusAilmentTextKeys::get_general_npc_message(const string& npc_si
   string message = StringTable::get(message_sid);
 
   boost::replace_first(message, "%s", npc);
+  message[0] = toupper(message[0]);
 
   return message;
 }
