@@ -4465,6 +4465,10 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>
 				<DangerLevel>5</DangerLevel>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
@@ -4595,6 +4599,29 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="lightning_sword">
+				<DescriptionSID>LIGHTNING_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>LIGHTNING_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>130</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>7</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>2</Modifier>
+					<Type>10</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="mace">
 				<DescriptionSID>MACE_SID</DescriptionSID>
 				<UsageDescriptionSID>MACE_USAGE_SID</UsageDescriptionSID>
@@ -4611,6 +4638,29 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="holy_mace">
+				<DescriptionSID>HOLY_MACE_SID</DescriptionSID>
+				<UsageDescriptionSID>HOLY_MACE_USAGE_SID</UsageDescriptionSID>
+				<Value>140</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>7</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="stone_hammer">
@@ -4683,6 +4733,29 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="frost_spear">
+				<DescriptionSID>FROST_SPEAR_SID</DescriptionSID>
+				<UsageDescriptionSID>FROST_SPEAR_USAGE_SID</UsageDescriptionSID>
+				<Value>130</Value>
+				<Weight><Pounds>7</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>6</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>4</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="long_spear">
