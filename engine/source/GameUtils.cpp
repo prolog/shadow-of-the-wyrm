@@ -2,6 +2,8 @@
 #include "Game.hpp"
 #include "MapUtils.hpp"
 
+using namespace std;
+
 GameUtils::GameUtils()
 {
 }
@@ -24,5 +26,27 @@ void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, Ma
     cost.set_cost(1);
     game.get_action_coordinator_ref().add(cost, new_creature->get_id());
   }
+}
+
+// Check to see if a particular creature exists within the player's view map.
+bool GameUtils::is_creature_in_player_view_map(Game& game, const string& creature_id)
+{
+  bool creature_in_view_map = false;
+
+  MapPtr map = game.get_current_map();
+  CreaturePtr player = game.get_current_player();
+
+  if (player)
+  {
+    MapPtr view_map = player->get_decision_strategy()->get_fov_map();
+
+    // Rebuild the view map's creatures in case it is out of date - the player 
+    // might not have acted in some time...
+    std::map<string, CreaturePtr>& creatures = view_map->get_creatures_ref();
+
+    creature_in_view_map = (creatures.find(creature_id) != creatures.end());
+  }
+
+  return creature_in_view_map;
 }
 

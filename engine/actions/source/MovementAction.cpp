@@ -41,9 +41,7 @@ bool MovementAction::operator==(const MovementAction& mm) const
 ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direction)
 {
   ActionCostValue movement_success = 0;
-
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature);  
 
   if (creature)
   {
@@ -69,6 +67,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
       }
       else
       {
+        IMessageManager& manager = MessageManagerFactory::instance(creature);  
         movement_success = true;
         string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
         manager.add_new_message(cannot_escape);
@@ -151,7 +150,6 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords)
 {
   ActionCostValue movement_success = 0;
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
   
   if (creatures_new_tile)
   {
@@ -165,6 +163,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       // Did the handling do anything?
       if (!handled)
       {
+        IMessageManager& manager = MessageManagerFactory::instance(creature);
         string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
         manager.add_new_message(blocked);
         manager.send();
@@ -196,7 +195,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         MovementAccumulationUpdater mau;
         mau.update(creature, new_tile);
         
-        add_tile_related_messages(creature, manager, new_tile);
+        add_tile_related_messages(creature, new_tile);
         movement_success = get_action_cost_value();
       }
     }
@@ -341,7 +340,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     move_to_new_map(tile, map, new_map);
                 
     manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
-    add_tile_related_messages(creature, manager, new_creature_tile);
+    add_tile_related_messages(creature, new_creature_tile);
                 
     action_cost_value = get_action_cost_value();
   }
@@ -429,31 +428,43 @@ ActionCostValue MovementAction::descend(CreaturePtr creature)
 //       If so, add it.
 // - Are there any items on the tile?
 //       If so, add the appropriate message.
-void MovementAction::add_tile_related_messages(const CreaturePtr& creature, IMessageManager& manager, TilePtr tile)
+void MovementAction::add_tile_related_messages(const CreaturePtr& creature, TilePtr tile)
 {
-  add_message_about_tile_if_necessary(creature, manager, tile);
-  add_message_about_items_on_tile_if_necessary(creature, manager, tile);
+  bool tile_message_added = add_message_about_tile_if_necessary(creature, tile);
+  bool item_message_added = add_message_about_items_on_tile_if_necessary(creature, tile);
 
-  manager.send();
+  if (tile_message_added || item_message_added)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    manager.send();
+  }
 }
 
 // Add a message about the tile if necessary.
-void MovementAction::add_message_about_tile_if_necessary(const CreaturePtr& creature, IMessageManager& manager, TilePtr tile)
+bool MovementAction::add_message_about_tile_if_necessary(const CreaturePtr& creature, TilePtr tile)
 {
+  bool msg_added = false;
+
   if (creature && tile && creature->get_is_player())
   {
     if (tile->display_description_on_arrival() || tile->has_extra_description())
     {
+      IMessageManager& manager = MessageManagerFactory::instance(creature);
       TileDescriber td(tile);
       manager.add_new_message(td.describe());
+      msg_added = true;
     }
   }
+
+  return msg_added;
 }
 
 // Add a message if the creature is the player, and if there are items on
 // the tile.
-void MovementAction::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, IMessageManager& manager, TilePtr tile)
+bool MovementAction::add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, TilePtr tile)
 {
+  bool msg_added = false;
+
   if (creature && creature->get_is_player())
   {
     Inventory& tile_items = tile->get_items();
@@ -481,10 +492,14 @@ void MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
       // Send the message
       if (!item_message.empty())
       {
+        IMessageManager& manager = MessageManagerFactory::instance(creature);
         manager.add_new_message(item_message);
+        msg_added = true;
       }
     }
   }
+
+  return msg_added;
 }
 
 ActionCostValue MovementAction::get_action_cost_value() const

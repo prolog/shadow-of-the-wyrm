@@ -10,6 +10,7 @@ class GameUtils
 {
   public:
     static void add_new_creature_to_map(Game& game, CreaturePtr new_creature, MapPtr map, const Coordinate& coords);
+    static bool is_creature_in_player_view_map(Game& game, const std::string& creature_id);
 
   protected:
     GameUtils();

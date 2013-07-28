@@ -21,6 +21,16 @@ void CreatureDeathManager::die()
   
   if (map && creature)
   {
+    // Add the message about the creature's death.
+    //
+    // Ensure that this is the first thing done, e.g., prior to actually
+    // removing it from the map, so that view map checks work as expected.
+    // Otherwise, the creature will already be gone from the other creatures'
+    // view maps.
+    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    string death_message = CombatTextKeys::get_monster_death_message(StringTable::get(creature->get_description_sid()));
+    manager.add_new_message(death_message);
+
     // Remove the creature from the tile.
     TilePtr attacked_tile = MapUtils::get_tile_for_creature(map, creature);
     MapUtils::remove_creature(map, creature);
@@ -41,9 +51,5 @@ void CreatureDeathManager::die()
       inv.remove(current_item->get_id());
       ground.add_front(current_item);
     }
-
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
-    string death_message = CombatTextKeys::get_monster_death_message(StringTable::get(creature->get_description_sid()));
-    manager.add_new_message(death_message);      
   }
 }
