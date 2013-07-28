@@ -12,7 +12,8 @@ class CombatTextKeys
     static std::string get_critical_hit_message();
     static std::string get_mighty_blow_message();
     static std::string get_hit_message(const bool is_player, const DamageType damage_type, const std::string& attacker, const std::string& hit_target);
-    static std::string get_monster_death_message(const std::string& monster_name);
+    static std::string get_monster_killed_message(const std::string& monster_name);
+    static std::string get_monster_dies_message(const std::string& monster_name);
     static std::string get_no_damage_message(const bool is_player, const std::string& target);
     static std::string get_ranged_attack_message(const bool is_player, const bool uses_launcher, const std::string& attacker, const std::string& ammunition, const std::string& target);
 
@@ -34,7 +35,8 @@ class CombatTextKeys
     static const std::string COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE;
     static const std::string COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE;
     static const std::string COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE;
-    static const std::string COMBAT_MONSTER_DEATH_MESSAGE;
+    static const std::string COMBAT_MONSTER_KILLED_MESSAGE;
+    static const std::string COMBAT_MONSTER_DIES_MESSAGE;
     static const std::string COMBAT_CLOSE_MISS_MESSAGE;
     static const std::string COMBAT_CLOSE_MISS_MESSAGE_NP;
     static const std::string COMBAT_MISS_MESSAGE;

@@ -89,9 +89,17 @@ string CombatTextKeys::get_hit_message(const bool is_player, const DamageType da
   return hit_msg;
 }
 
-string CombatTextKeys::get_monster_death_message(const std::string& monster_name)
+string CombatTextKeys::get_monster_killed_message(const std::string& monster_name)
 {
-  string death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_DEATH_MESSAGE);
+  string death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_KILLED_MESSAGE);
+  boost::replace_first(death_message, "%s", monster_name);
+  death_message[0] = toupper(death_message[0]);
+  return death_message;
+}
+
+string CombatTextKeys::get_monster_dies_message(const std::string& monster_name)
+{
+  string death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_DIES_MESSAGE);
   boost::replace_first(death_message, "%s", monster_name);
   death_message[0] = toupper(death_message[0]);
   return death_message;
@@ -239,7 +247,8 @@ const string CombatTextKeys::COMBAT_PLAYER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESS
 const string CombatTextKeys::COMBAT_MONSTER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE = "COMBAT_MONSTER_RANGED_ATTACK_LAUNCHER_NO_TARGET_MESSAGE";
 const string CombatTextKeys::COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE  = "COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE";
 const string CombatTextKeys::COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE = "COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE";
-const string CombatTextKeys::COMBAT_MONSTER_DEATH_MESSAGE  = "COMBAT_MONSTER_DEATH_MESSAGE";
+const string CombatTextKeys::COMBAT_MONSTER_KILLED_MESSAGE = "COMBAT_MONSTER_KILLED_MESSAGE";
+const string CombatTextKeys::COMBAT_MONSTER_DIES_MESSAGE   = "COMBAT_MONSTER_DIES_MESSAGE";
 const string CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE     = "COMBAT_CLOSE_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE_NP  = "COMBAT_CLOSE_MISS_MESSAGE_NP"; 
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";

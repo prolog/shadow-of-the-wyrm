@@ -6,13 +6,14 @@
 class DeathManager
 {
   public:
-    DeathManager(CreaturePtr attacked_creature, MapPtr current_map);
+    DeathManager(CreaturePtr attack_creature, CreaturePtr dead_creature, MapPtr current_map);
     ~DeathManager();
 
     virtual void die() = 0;
     
   protected:
-    CreaturePtr creature;
+    CreaturePtr attacking_creature;
+    CreaturePtr dead_creature;
     MapPtr map;
 };
 
