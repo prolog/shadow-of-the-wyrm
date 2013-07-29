@@ -4812,6 +4812,29 @@
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="holy_rod">
+				<DescriptionSID>HOLY_ROD_SID</DescriptionSID>
+				<UsageDescriptionSID>HOLY_ROD_USAGE_SID</UsageDescriptionSID>
+				<Value>130</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>7</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="leather_whip">
 				<DescriptionSID>LEATHER_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_WHIP_USAGE_SID</UsageDescriptionSID>
