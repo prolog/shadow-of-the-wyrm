@@ -4481,6 +4481,29 @@
 					<Type>6</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="arcane_dagger">
+				<DescriptionSID>ARCANE_DAGGER_SID</DescriptionSID>
+				<UsageDescriptionSID>ARCANE_DAGGER_USAGE_SID</UsageDescriptionSID>
+				<Value>120</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>13</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>2</Modifier>
+					<Type>9</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="short_sword">
 				<DescriptionSID>SHORT_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
@@ -4497,6 +4520,29 @@
 					<NumDice>1</NumDice>
 					<NumSides>6</NumSides>
 					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="arcane_short_sword">
+				<DescriptionSID>ARCANE_SHORT_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>ARCANE_SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>150</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>13</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>9</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="shadow_blade">
@@ -4679,6 +4725,29 @@
 					<NumDice>2</NumDice>
 					<NumSides>3</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="lightning_hammer">
+				<DescriptionSID>LIGHTNING_HAMMER_SID</DescriptionSID>
+				<UsageDescriptionSID>LIGHTNING_HAMMER_USAGE_SID</UsageDescriptionSID>
+				<Value>160</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>3</NumSides>
+					<Modifier>2</Modifier>
+					<Type>10</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="woodsman_axe">
@@ -4871,6 +4940,28 @@
 					<Type>1</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="frost_whip">
+				<DescriptionSID>FROST_WHIP_SID</DescriptionSID>
+				<UsageDescriptionSID>FROST_WHIP_USAGE_SID</UsageDescriptionSID>
+				<Value>160</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>6</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>4</Speed>
+				<Damage>
+					<NumDice>3</NumDice>
+					<NumSides>4</NumSides>
+					<Type>4</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="shepherd_crook">
 				<DescriptionSID>SHEPHERD_CROOK_SID</DescriptionSID>
 				<UsageDescriptionSID>SHEPHERD_CROOK_USAGE_SID</UsageDescriptionSID>
@@ -4905,6 +4996,29 @@
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="shadow_staff">
+				<DescriptionSID>SHADOW_STAFF_SID</DescriptionSID>
+				<UsageDescriptionSID>SHADOW_STAFF_USAGE_SID</UsageDescriptionSID>
+				<Value>145</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>4</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>2</Modifier>
+					<Type>8</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="_branch">
