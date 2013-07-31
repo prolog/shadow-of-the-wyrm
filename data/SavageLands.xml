@@ -4461,7 +4461,7 @@
 			<Weapon id="poisoned_dagger">
 				<DescriptionSID>POISONED_DAGGER_SID</DescriptionSID>
 				<UsageDescriptionSID>POISONED_DAGGER_USAGE_SID</UsageDescriptionSID>
-				<Value>20</Value>
+				<Value>120</Value>
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
@@ -4786,6 +4786,29 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="frost_axe">
+				<DescriptionSID>FROST_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>FROST_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>160</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>6</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>3</Modifier>
+					<Type>4</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="spear">
 				<DescriptionSID>SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>SPEAR_USAGE_SID</UsageDescriptionSID>
@@ -4825,6 +4848,29 @@
 					<NumSides>6</NumSides>
 					<Modifier>2</Modifier>
 					<Type>4</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="poisoned_spear">
+				<DescriptionSID>POISONED_SPEAR_SID</DescriptionSID>
+				<UsageDescriptionSID>POISONED_SPEAR_USAGE_SID</UsageDescriptionSID>
+				<Value>130</Value>
+				<Weight><Pounds>7</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>6</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="long_spear">
