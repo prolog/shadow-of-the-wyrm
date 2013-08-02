@@ -147,6 +147,7 @@
     <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\APRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\BloodiedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\CombatTargetNumberCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\CreatureCalculator.hpp" />
@@ -250,6 +251,7 @@
     <ClInclude Include="engine\conversion\include\SkillsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\StatsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\StringConverter.hpp" />
+    <ClInclude Include="engine\creatures\include\BloodiedStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
@@ -850,6 +852,7 @@
     <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\APRegenerationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\BloodiedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CombatTargetNumberCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\CreatureCoordinateCalculator.cpp" />
@@ -900,6 +903,9 @@
     <ClCompile Include="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\BloodiedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1057,6 +1063,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\creatures\source\BloodiedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureFactory.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp" />

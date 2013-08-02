@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "BloodiedStatusEffect.hpp"
 #include "HasteStatusEffect.hpp"
 #include "MutenessStatusEffect.hpp"
 #include "ParalysisStatusEffect.hpp"
@@ -29,6 +30,7 @@ void StatusEffectFactory::initialize_damage_status_ailments()
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_LIGHTNING, StatusIdentifiers::STATUS_ID_PARALYSIS));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_COLD, StatusIdentifiers::STATUS_ID_SLOWNESS));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_SHADOW, StatusIdentifiers::STATUS_ID_STONE));
+  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_SLASH, StatusIdentifiers::STATUS_ID_BLOODIED));
 }
 
 StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageType dt)
@@ -77,6 +79,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_STONE)
   {
     status_effect = boost::make_shared<StoneStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_BLOODIED)
+  {
+    status_effect = boost::make_shared<BloodiedStatusEffect>();
   }
   else
   {

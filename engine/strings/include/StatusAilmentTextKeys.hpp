@@ -60,6 +60,12 @@ class StatusAilmentTextKeys
     static const std::string get_npc_stone_message(boost::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_stone_message(boost::shared_ptr<Creature> creature);
 
+    static const std::string STATUS_BLOODIED;
+    static const std::string STATUS_MESSAGE_PLAYER_BLOODIED;
+    static const std::string STATUS_MESSAGE_PLAYER_BLOODIED_CURED;
+    static const std::string get_npc_bloodied_message(boost::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_bloodied_message(boost::shared_ptr<Creature> creature);
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();
@@ -83,4 +89,7 @@ class StatusAilmentTextKeys
 
     static const std::string STATUS_MESSAGE_NPC_STONE;
     static const std::string STATUS_MESSAGE_NPC_UNDO_STONE;
+
+    static const std::string STATUS_MESSAGE_NPC_BLOODIED;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_BLOODIED;
 };
