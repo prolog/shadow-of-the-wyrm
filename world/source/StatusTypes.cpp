@@ -18,3 +18,4 @@ const string StatusIdentifiers::STATUS_ID_PARALYSIS = "_para";
 const string StatusIdentifiers::STATUS_ID_SLOWNESS = "_slow";
 const string StatusIdentifiers::STATUS_ID_HASTE = "_haste";
 const string StatusIdentifiers::STATUS_ID_STONE = "_stone";
+const string StatusIdentifiers::STATUS_ID_BLOODIED = "_blood";

@@ -235,6 +235,12 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr slowness_chekr = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SLOWNESS, StatusAilmentTextKeys::STATUS_SLOWNESS, COLOUR_WHITE);
   IStatusAilmentTranslatorPtr haste_checker  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HASTE, StatusAilmentTextKeys::STATUS_HASTE, COLOUR_BOLD_WHITE);
   IStatusAilmentTranslatorPtr stone_checker  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STONE, StatusAilmentTextKeys::STATUS_STONE, COLOUR_BOLD_BLACK);
+  IStatusAilmentTranslatorPtr bloodied_chkr  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLOODIED, StatusAilmentTextKeys::STATUS_BLOODIED, COLOUR_RED);
+  // bloodied
+  // stunned
+  // exposed
+  // disfigured
+  // spellbound
 
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(poison_checker);
@@ -243,4 +249,5 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.push_back(slowness_chekr);
   status_ailment_checkers.push_back(haste_checker );
   status_ailment_checkers.push_back(stone_checker );
+  status_ailment_checkers.push_back(bloodied_chkr );
 }

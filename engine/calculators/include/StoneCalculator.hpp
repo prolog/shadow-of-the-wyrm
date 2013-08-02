@@ -11,8 +11,6 @@ class StoneCalculator : public IStatusEffectCalculator
     int calculate_duration_in_minutes(CreaturePtr creature) const;
 
   protected:
-    int calculate_muteness_duration_mean(CreaturePtr creature) const;
-
     static const int BASE_STONE_DURATION_MEAN;
     static const int BASE_STONE_PCT_CHANCE;
     static const int BASE_STONE_CHANCE_HEALTH_MODIFIER;

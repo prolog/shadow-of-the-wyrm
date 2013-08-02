@@ -43,6 +43,10 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STONE_CURED = "STATUS_
 const string StatusAilmentTextKeys::STATUS_MESSAGE_STONE_FINALIZE = "STATUS_MESSAGE_STONE_FINALIZE";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_STONE_CRUMBLE = "STATUS_MESSAGE_CORPSE_CRUMBLE";
 
+const string StatusAilmentTextKeys::STATUS_BLOODIED = "STATUS_BLOODIED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLOODIED = "STATUS_MESSAGE_PLAYER_BLOODIED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLOODIED_CURED = "STATUS_MESSAGE_PLAYER_BLOODIED_CURED";
+
 // public functions
 const string StatusAilmentTextKeys::get_npc_poisoned_message(CreaturePtr creature)
 {
@@ -104,6 +108,16 @@ const string StatusAilmentTextKeys::get_npc_undo_stone_message(CreaturePtr creat
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_STONE);
 }
 
+const string StatusAilmentTextKeys::get_npc_bloodied_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_BLOODIED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_bloodied_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLOODIED);
+}
+
 // Protected
 const string StatusAilmentTextKeys::get_general_npc_message(const string& npc_sid, const string& message_sid)
 {
@@ -133,3 +147,6 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_HASTE = "STATUS_MESS
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_STONE = "STATUS_MESSAGE_NPC_STONE";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_STONE = "STATUS_MESSAGE_NPC_UNDO_STONE";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_BLOODIED = "STATUS_MESSAGE_NPC_BLOODIED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLOODIED = "STATUS_MESSAGE_NPC_UNDO_BLOODIED";
