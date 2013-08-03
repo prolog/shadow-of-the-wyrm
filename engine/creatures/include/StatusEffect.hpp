@@ -29,6 +29,11 @@ class StatusEffect
     // this behaviour as necessary.
     virtual void tick(boost::shared_ptr<Creature> creature) const;
 
+    // Status Effects can change a character's to-hit, etc.  Exposing these
+    // allows a variety of status effects to affect various calculations
+    // without hard-coding the status effect lookups into the calculators.
+    virtual int get_to_hit_bonus(boost::shared_ptr<Creature> creature) const;
+
   protected:
     // These functions are boolean to indicate whether or not the status was
     // actually applied.  The status will be applied in almost all cases, but

@@ -1,6 +1,10 @@
+#include <boost/foreach.hpp>
 #include "SkillManager.hpp"
+#include "StatusEffectFactory.hpp"
 #include "ToHitCalculator.hpp"
 #include "WeaponManager.hpp"
+
+using namespace std;
 
 const int ToHitCalculator::NWP_SKILL_BONUS_DIVISOR = 5;
 
@@ -23,6 +27,7 @@ int ToHitCalculator::get_weapon_bonus(CreaturePtr creature)
   
   SkillManager sm;
 
+  // Apply the weapon modifier.
   if (weapon)
   {
     SkillType st = weapon->get_trained_skill();
@@ -36,4 +41,25 @@ int ToHitCalculator::get_weapon_bonus(CreaturePtr creature)
   }
   
   return weapon_bonus;
+}
+
+int ToHitCalculator::get_status_bonus(CreaturePtr creature)
+{
+  int status_bonus = 0;
+
+  // Apply any status modifiers.
+  CreatureStatusMap statuses = creature->get_statuses();
+  BOOST_FOREACH(CreatureStatusMap::value_type& status_pair, statuses)
+  {
+    string status_id = status_pair.first;
+    bool status_applied = status_pair.second;
+
+    if (status_applied)
+    {
+      StatusEffectPtr status = StatusEffectFactory::create_status_effect(status_id);
+      status_bonus += status->get_to_hit_bonus(creature);
+    }
+  }
+
+  return status_bonus;
 }

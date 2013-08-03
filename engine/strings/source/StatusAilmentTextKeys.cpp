@@ -47,6 +47,22 @@ const string StatusAilmentTextKeys::STATUS_BLOODIED = "STATUS_BLOODIED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLOODIED = "STATUS_MESSAGE_PLAYER_BLOODIED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLOODIED_CURED = "STATUS_MESSAGE_PLAYER_BLOODIED_CURED";
 
+const string StatusAilmentTextKeys::STATUS_STUNNED = "STATUS_STUNNED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STUNNED = "STATUS_MESSAGE_PLAYER_STUNNED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STUNNED_CURED = "STATUS_MESSAGE_PLAYER_STUNNED_CURED";
+
+const string StatusAilmentTextKeys::STATUS_EXPOSED = "STATUS_EXPOSED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_EXPOSED = "STATUS_MESSAGE_PLAYER_EXPOSED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_EXPOSED_CURED = "STATUS_MESSAGE_PLAYER_EXPOSED_CURED";
+
+const string StatusAilmentTextKeys::STATUS_DISFIGURED = "STATUS_DISFIGURED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DISFIGURED = "STATUS_MESSAGE_PLAYER_DISFIGURED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DISFIGURED_CURED = "STATUS_MESSAGE_PLAYER_DISFIGURED_CURED";
+
+const string StatusAilmentTextKeys::STATUS_SPELLBOUND = "STATUS_SPELLBOUND";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND = "STATUS_MESSAGE_PLAYER_SPELLBOUND";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED = "STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED";
+
 // public functions
 const string StatusAilmentTextKeys::get_npc_poisoned_message(CreaturePtr creature)
 {
@@ -118,6 +134,45 @@ const string StatusAilmentTextKeys::get_npc_undo_bloodied_message(CreaturePtr cr
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLOODIED);
 }
 
+const string StatusAilmentTextKeys::get_npc_stunned_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_STUNNED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_stunned_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_STUNNED);
+}
+
+const string StatusAilmentTextKeys::get_npc_exposed_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_EXPOSED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_exposed_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_EXPOSED);
+}
+
+const string StatusAilmentTextKeys::get_npc_disfigured_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DISFIGURED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_disfigured_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_DISFIGURED);
+}
+
+const string StatusAilmentTextKeys::get_npc_spellbound_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SPELLBOUND);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_spellbound_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SPELLBOUND);
+}
 // Protected
 const string StatusAilmentTextKeys::get_general_npc_message(const string& npc_sid, const string& message_sid)
 {
@@ -150,3 +205,15 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_STONE = "STATUS_MESS
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_BLOODIED = "STATUS_MESSAGE_NPC_BLOODIED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLOODIED = "STATUS_MESSAGE_NPC_UNDO_BLOODIED";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_STUNNED = "STATUS_MESSAGE_NPC_STUNNED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_STUNNED = "STATUS_MESSAGE_NPC_UNDO_STUNNED";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_EXPOSED = "STATUS_MESSAGE_NPC_EXPOSED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_EXPOSED = "STATUS_MESSAGE_NPC_UNDO_EXPOSED";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DISFIGURED = "STATUS_MESSAGE_NPC_DISFIGURED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_DISFIGURED = "STATUS_MESSAGE_NPC_UNDO_DISFIGURED";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SPELLBOUND = "STATUS_MESSAGE_NPC_SPELLBOUND";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SPELLBOUND = "STATUS_MESSAGE_NPC_UNDO_SPELLBOUND";
