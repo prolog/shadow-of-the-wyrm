@@ -21,6 +21,10 @@ class StatusIdentifiers
     static const std::string STATUS_ID_HASTE;
     static const std::string STATUS_ID_STONE;
     static const std::string STATUS_ID_BLOODIED;
+    static const std::string STATUS_ID_STUNNED;
+    static const std::string STATUS_ID_EXPOSED;
+    static const std::string STATUS_ID_DISFIGURED;
+    static const std::string STATUS_ID_SPELLBOUND;
 
   protected:
     StatusIdentifiers();

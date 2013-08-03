@@ -34,6 +34,9 @@ Savage Lands v0.1.5 "Beorhthun"
   that petrified creatures leave their petrified corpses behind.  These are
   treated as blocking terrain features.
 
+- Added bloodied for slash damage.  Updated the code so that this status
+  would cause a significant to-hit penalty for melee and ranged combat.
+
 - Added new creatures with various damage types for testing the status
   effects on the player: rock adder, acolyte, lightning bug, frost devil,
   shade.

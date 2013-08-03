@@ -66,6 +66,30 @@ class StatusAilmentTextKeys
     static const std::string get_npc_bloodied_message(boost::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_bloodied_message(boost::shared_ptr<Creature> creature);
 
+    static const std::string STATUS_STUNNED;
+    static const std::string STATUS_MESSAGE_PLAYER_STUNNED;
+    static const std::string STATUS_MESSAGE_PLAYER_STUNNED_CURED;
+    static const std::string get_npc_stunned_message(boost::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_stunned_message(boost::shared_ptr<Creature> creature);
+
+    static const std::string STATUS_EXPOSED;
+    static const std::string STATUS_MESSAGE_PLAYER_EXPOSED;
+    static const std::string STATUS_MESSAGE_PLAYER_EXPOSED_CURED;
+    static const std::string get_npc_exposed_message(boost::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_exposed_message(boost::shared_ptr<Creature> creature);
+
+    static const std::string STATUS_DISFIGURED;
+    static const std::string STATUS_MESSAGE_PLAYER_DISFIGURED;
+    static const std::string STATUS_MESSAGE_PLAYER_DISFIGURED_CURED;
+    static const std::string get_npc_disfigured_message(boost::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_disfigured_message(boost::shared_ptr<Creature> creature);
+
+    static const std::string STATUS_SPELLBOUND;
+    static const std::string STATUS_MESSAGE_PLAYER_SPELLBOUND;
+    static const std::string STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED;
+    static const std::string get_npc_spellbound_message(boost::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_spellbound_message(boost::shared_ptr<Creature> creature);
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();
@@ -92,4 +116,16 @@ class StatusAilmentTextKeys
 
     static const std::string STATUS_MESSAGE_NPC_BLOODIED;
     static const std::string STATUS_MESSAGE_NPC_UNDO_BLOODIED;
+
+    static const std::string STATUS_MESSAGE_NPC_STUNNED;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_STUNNED;
+
+    static const std::string STATUS_MESSAGE_NPC_EXPOSED;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_EXPOSED;
+
+    static const std::string STATUS_MESSAGE_NPC_DISFIGURED;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_DISFIGURED;
+
+    static const std::string STATUS_MESSAGE_NPC_SPELLBOUND;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_SPELLBOUND;
 };
