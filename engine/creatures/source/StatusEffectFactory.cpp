@@ -1,12 +1,16 @@
 #include <boost/make_shared.hpp>
 #include "BloodiedStatusEffect.hpp"
+#include "DisfiguredStatusEffect.hpp"
+#include "ExposedStatusEffect.hpp"
 #include "HasteStatusEffect.hpp"
 #include "MutenessStatusEffect.hpp"
 #include "ParalysisStatusEffect.hpp"
 #include "PoisonStatusEffect.hpp"
 #include "SlownessStatusEffect.hpp"
+#include "SpellboundStatusEffect.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StoneStatusEffect.hpp"
+#include "StunnedStatusEffect.hpp"
 #include "StatusTypes.hpp"
 
 using namespace std;
@@ -31,6 +35,10 @@ void StatusEffectFactory::initialize_damage_status_ailments()
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_COLD, StatusIdentifiers::STATUS_ID_SLOWNESS));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_SHADOW, StatusIdentifiers::STATUS_ID_STONE));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_SLASH, StatusIdentifiers::STATUS_ID_BLOODIED));
+  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_POUND, StatusIdentifiers::STATUS_ID_STUNNED));
+  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_PIERCE, StatusIdentifiers::STATUS_ID_EXPOSED));
+  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_ACID, StatusIdentifiers::STATUS_ID_DISFIGURED));
+  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_ARCANE, StatusIdentifiers::STATUS_ID_SPELLBOUND));
 }
 
 StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageType dt)
@@ -83,6 +91,22 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_BLOODIED)
   {
     status_effect = boost::make_shared<BloodiedStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_STUNNED)
+  {
+    status_effect = boost::make_shared<StunnedStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_EXPOSED)
+  {
+    status_effect = boost::make_shared<ExposedStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_DISFIGURED)
+  {
+    status_effect = boost::make_shared<DisfiguredStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_SPELLBOUND)
+  {
+    status_effect = boost::make_shared<SpellboundStatusEffect>();
   }
   else
   {
