@@ -1,7 +1,9 @@
 #include <boost/foreach.hpp>
 #include "EvadeCalculator.hpp"
+#include "StatusEffectFactory.hpp"
 #include "Wearable.hpp"
 
+using std::string;
 using boost::dynamic_pointer_cast;
 
 EvadeCalculator::EvadeCalculator()
@@ -17,6 +19,7 @@ EvadeCalculator::~EvadeCalculator()
 //       - 1 point for every two points of Agility under 10
 //       + 1 point for every 5 points of Valour under 50
 //       - 1 point for every 5 points of Valour over 50
+//       + any bonuses or penalties from status ailments
 int EvadeCalculator::calculate_evade(const CreaturePtr& c)
 {
   int evade = 0;
@@ -30,9 +33,11 @@ int EvadeCalculator::calculate_evade(const CreaturePtr& c)
 
     int agility_bonus = (agility - 10) / 2;
     int valour_bonus = (valour - 50) / 5;
+    int status_bonus = get_status_bonus(c);
     
     evade += get_equipment_bonus(c);
     evade += agility_bonus;
+    evade += status_bonus;
     evade -= valour_bonus;
   }
   
@@ -57,6 +62,27 @@ int EvadeCalculator::get_equipment_bonus(const CreaturePtr& c)
   }
   
   return equipment_evade_bonus;
+}
+
+int EvadeCalculator::get_status_bonus(const CreaturePtr& c)
+{
+  int status_bonus = 0;
+
+  CreatureStatusMap status = c->get_statuses();
+
+  BOOST_FOREACH(CreatureStatusMap::value_type& status_pair, status)
+  {
+    string status_id = status_pair.first;
+    bool status_applied = status_pair.second;
+
+    if (status_applied)
+    {
+      StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id);
+      status_bonus += status_effect->get_evade_bonus(c);
+    }
+  }
+
+  return status_bonus;
 }
 
 #ifdef UNIT_TESTS
