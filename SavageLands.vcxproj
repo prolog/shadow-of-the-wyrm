@@ -156,7 +156,9 @@
     <ClInclude Include="engine\calculators\include\DamageCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\DangerLevelCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\DefaultStatusEffectCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\DisfiguredCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ExposedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ForestCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HasteCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
@@ -195,7 +197,9 @@
     <ClInclude Include="engine\calculators\include\SoakCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SpeedCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\SpellbookCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\SpellboundCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\StoneCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\StunnedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
@@ -256,14 +260,18 @@
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
     <ClInclude Include="engine\creatures\include\CurrentCreatureAbilities.hpp" />
+    <ClInclude Include="engine\creatures\include\DisfiguredStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\ExposedStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\HasteStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\MutenessStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\ParalysisStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\PoisonStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\SlownessStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\SpellboundStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StatusEffectFactory.hpp" />
     <ClInclude Include="engine\creatures\include\StoneStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\StunnedStatusEffect.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategy.hpp" />
@@ -860,7 +868,9 @@
     <ClCompile Include="engine\calculators\source\DamageCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\DangerLevelCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\DefaultStatusEffectCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\DisfiguredCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\EvadeCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ExposedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ForestCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HasteCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
@@ -895,7 +905,9 @@
     <ClCompile Include="engine\calculators\source\SoakCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SpeedCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\SpellbookCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\SpellboundCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StoneCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\StunnedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp" />
@@ -907,9 +919,15 @@
     <ClCompile Include="engine\calculators\source\unit_tests\BloodiedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\DisfiguredCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ExposedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ForestCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -965,7 +983,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\SpellboundCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StoneCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\StunnedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\UnderworldMapDangerLevelCalculator_test.cpp">
@@ -1068,14 +1092,18 @@
     <ClCompile Include="engine\creatures\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp" />
     <ClCompile Include="engine\creatures\source\CurrentCreatureAbilities.cpp" />
+    <ClCompile Include="engine\creatures\source\DisfiguredStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\ExposedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\HasteStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\MutenessStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\ParalysisStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\PoisonStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\SlownessStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\SpellboundStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StatusEffectFactory.cpp" />
     <ClCompile Include="engine\creatures\source\StoneStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\StunnedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
