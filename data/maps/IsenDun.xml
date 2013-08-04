@@ -121,6 +121,14 @@
 				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
+				<ID>apprentice</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>3</Col>
+				</Coord>
+				<!--<Friendly>1</Friendly> -->
+			</Placement>
+			<Placement>
 				<ID>cynwise</ID>
 				<Coord>
 					<Row>10</Row>
