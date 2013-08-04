@@ -33,6 +33,7 @@ class StatusEffect
     // allows a variety of status effects to affect various calculations
     // without hard-coding the status effect lookups into the calculators.
     virtual int get_to_hit_bonus(boost::shared_ptr<Creature> creature) const;
+    virtual int get_evade_bonus(boost::shared_ptr<Creature> creature) const;
 
   protected:
     // These functions are boolean to indicate whether or not the status was

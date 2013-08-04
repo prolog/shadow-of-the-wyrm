@@ -8,6 +8,7 @@ class EvadeCalculator
 
   protected:
     static int get_equipment_bonus(const CreaturePtr& c);
+    static int get_status_bonus(const CreaturePtr& c);
     
     EvadeCalculator();
     ~EvadeCalculator();

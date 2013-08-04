@@ -235,6 +235,11 @@ int StatusEffect::get_to_hit_bonus(CreaturePtr creature) const
   return 0;
 }
 
+int StatusEffect::get_evade_bonus(CreaturePtr creature) const
+{
+  return 0;
+}
+
 string StatusEffect::get_status_identifier() const
 {
   string no_status_identifier;

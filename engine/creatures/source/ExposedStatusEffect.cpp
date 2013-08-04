@@ -6,6 +6,8 @@
 
 using namespace std;
 
+const int ExposedStatusEffect::EXPOSED_EVADE_PENALTY = -15;
+
 ExposedStatusEffect::ExposedStatusEffect()
 {
   status_calc = boost::make_shared<ExposedCalculator>();
@@ -32,6 +34,11 @@ string ExposedStatusEffect::get_npc_undo_message(CreaturePtr creature) const
   string message = StatusAilmentTextKeys::get_npc_undo_exposed_message(creature);
 
   return message;
+}
+
+int ExposedStatusEffect::get_evade_bonus(CreaturePtr creature) const
+{
+  return EXPOSED_EVADE_PENALTY;
 }
 
 string ExposedStatusEffect::get_status_identifier() const
