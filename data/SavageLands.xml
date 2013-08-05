@@ -5806,6 +5806,23 @@
 				<Nutrition>100</Nutrition>
 				<Effect>10</Effect>
 			</Potion>			
+			<Potion id="restorative_potion">
+				<DescriptionSID>RESTORATIVE_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RESTORATIVE_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RESTORATIVE_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RESTORATIVE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>80</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>8</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>100</Nutrition>
+				<Effect>11</Effect>
+			</Potion>			
 			<Potion id="ether_potion">
 				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>
