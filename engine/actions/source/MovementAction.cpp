@@ -169,7 +169,9 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         manager.send();
       }
       
-      movement_success = 0;
+      // Regardless of whether the handling did anything, it still costs
+      // an action.
+      movement_success = 1;
     }
     else if (MapUtils::is_creature_present(creatures_new_tile))
     {
