@@ -37,9 +37,20 @@ Savage Lands v0.1.5 "Beorhthun"
 - Added bloodied for slash damage.  Updated the code so that this status
   would cause a significant to-hit penalty for melee and ranged combat.
 
+- Added stunned for pounding damage.  This can cause randomization of
+  the creature's chosen movement direction, auto-attacking friendly
+  creatures if they occupy the new tile.
+
+- Added exposed for piercing damage.  This causes the player to have a
+  temporarily lower Evade score.
+
+- Added spellbound for arcane damage.  Updated the code so that this
+  prohibits all movement to and from a map, but not other types of actions
+  (so it can be waited out with searching, etc).
+
 - Added new creatures with various damage types for testing the status
   effects on the player: rock adder, acolyte, lightning bug, frost devil,
-  shade.
+  shade, apprentice.
 
 - Eliminated three damage types (mental, sonic, radiant).  As I was adding
   more and more creatures and spells, I noticed that I wasn't using these
@@ -52,7 +63,9 @@ Savage Lands v0.1.5 "Beorhthun"
   custom maps, added items to remedy each status ailment created (except
   paralysis), added weapons with non-slash/pierce/pound damage types to
   test the status ailment (e.g., blade of shadows), fixed an issue with 
-  item statuses not being respected when handling spell effects.
+  item statuses not being respected when handling spell effects, fixed
+  a bug where a creature's action cost was 0 when auto-handling a terrain
+  feature via movement (bumping a door, etc).
 
 Savage Lands v0.1.4 "Andhun"
 - Version declared June 6, 2013.  Version finalized June 23, 2013.

@@ -3,6 +3,7 @@
 #include "CombatManager.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DangerLevelCalculatorFactory.hpp"
 #include "FeatureAction.hpp"
 #include "Game.hpp"
@@ -57,21 +58,28 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
     // If it is not, and there is no map exit, and the creature is the player, display a message.
     if (!CoordUtils::is_valid_move(map->size(), creature_location, direction))
     {
-      SkillManager sm;
-      // Otherwise, move the creature, if:
-      // - there are no hostile adjacent creatures
-      // - there is at least one hostile adjacent creature, and a successful Escape check is made.
-      if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SKILL_GENERAL_ESCAPE))
+      CurrentCreatureAbilities cca;
+
+      // Leaving the map only actually works if the creature can move - isn't
+      // spellbound, etc.
+      if (cca.can_move(creature, true))
       {
-        movement_success = move_off_map(creature, map, creatures_old_tile);
-      }
-      else
-      {
-        IMessageManager& manager = MessageManagerFactory::instance(creature);  
-        movement_success = true;
-        string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
-        manager.add_new_message(cannot_escape);
-        manager.send();
+        SkillManager sm;
+        // Otherwise, move the creature, if:
+        // - there are no hostile adjacent creatures
+        // - there is at least one hostile adjacent creature, and a successful Escape check is made.
+        if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SKILL_GENERAL_ESCAPE))
+        {
+          movement_success = move_off_map(creature, map, creatures_old_tile);
+        }
+        else
+        {
+          IMessageManager& manager = MessageManagerFactory::instance(creature);  
+          movement_success = true;
+          string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
+          manager.add_new_message(cannot_escape);
+          manager.send();
+        }
       }
     }
     // Otherwise, it's a regular move within the current map.
@@ -188,17 +196,22 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     }
     else
     {
-      if (confirm_move_to_tile_if_necessary(creature, creatures_old_tile, creatures_new_tile))
+      CurrentCreatureAbilities cca;
+
+      if (cca.can_move(creature, true))
       {
-        // Update the map info
-        MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
-        TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
+        if (confirm_move_to_tile_if_necessary(creature, creatures_old_tile, creatures_new_tile))
+        {
+          // Update the map info
+          MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
+          TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
         
-        MovementAccumulationUpdater mau;
-        mau.update(creature, new_tile);
+          MovementAccumulationUpdater mau;
+          mau.update(creature, new_tile);
         
-        add_tile_related_messages(creature, new_tile);
-        movement_success = get_action_cost_value();
+          add_tile_related_messages(creature, new_tile);
+          movement_success = get_action_cost_value();
+        }
       }
     }
   }
@@ -217,14 +230,24 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
       
   // If the creature in the new tile isn't hostile to the creature in the
   // current tile, prompt to see whether the moving creature wants to
-  // attack.
+  // attack, assuming the moving creature isn't stunned.
   if (!adjacent_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()))
   {
     if (creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature);
-      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
-      bool attack = creature->get_decision_strategy()->get_confirmation();
+      bool attack = true;
+      
+      CurrentCreatureAbilities cca;
+
+      // Only allow the creature to select whether to attack if the creature
+      // is not stunned - if the creature is stunned, then they should stagger
+      // into the other creature and attack indiscriminately.
+      if (cca.can_select_movement_direction(creature))
+      {
+        IMessageManager& manager = MessageManagerFactory::instance(creature);
+        manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
+        attack = creature->get_decision_strategy()->get_confirmation();
+      }
 
       if (!attack)
       {
@@ -413,16 +436,36 @@ void MovementAction::move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPt
   }
 }
 
+// Ascend, if the creature can move.
 ActionCostValue MovementAction::ascend(CreaturePtr creature)
 {
-  StairwayMovementAction smm;
-  return smm.ascend(creature, this);
+  CurrentCreatureAbilities cca;
+
+  if (cca.can_move(creature, true))
+  {
+    StairwayMovementAction smm;
+    return smm.ascend(creature, this);
+  }
+  else
+  {
+    return 0;
+  }
 }
 
+// Descend, if the creature can move.
 ActionCostValue MovementAction::descend(CreaturePtr creature)
 {
-  StairwayMovementAction smm;
-  return smm.descend(creature, this);
+  CurrentCreatureAbilities cca;
+
+  if (cca.can_move(creature, true))
+  {
+    StairwayMovementAction smm;
+    return smm.descend(creature, this);
+  }
+  else
+  {
+    return 0;
+  }
 }
 
 // Add any messages after moving to a particular tile:

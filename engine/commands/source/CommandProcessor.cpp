@@ -2,7 +2,9 @@
 #include "CommandKeys.hpp"
 #include "CommandProcessor.hpp"
 #include "Commands.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "RNG.hpp"
 #include "TextMessages.hpp"
 
 using namespace std;
@@ -183,6 +185,19 @@ ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, D
     Game& game = Game::instance();
     string command_name = command->get_name();
     Direction direction = command->get_direction();
+    CurrentCreatureAbilities cca;
+
+    if (!cca.can_select_movement_direction(creature, true))
+    {
+      // If the creature is stunned, intercept the direction before the game
+      // even decides whether to move or attack, and change the direction to
+      // something random.  There is a 25% chance the creature gets to keep
+      // its decided direction.
+      if (RNG::percent_chance(75))
+      {
+        direction = static_cast<Direction>(RNG::range(DIRECTION_SOUTH_WEST, DIRECTION_NORTH_EAST));
+      }
+    }
 
     if (CommandKeys::is_movement_type_key(command_name))
     {
