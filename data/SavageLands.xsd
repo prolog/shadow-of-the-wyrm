@@ -1095,11 +1095,12 @@
 				Haste (either anti-slow, or haste, depending on the creature's statuses) = 8
 				Unstoning = 9
 				Unbinding = 10
+				Restore Statistics = 11
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="9"/>
+		<xs:maxInclusive value="11"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
