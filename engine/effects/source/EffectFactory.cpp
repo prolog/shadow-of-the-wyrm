@@ -22,7 +22,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 10);
+  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 11);
 
   EffectPtr effect;
 
@@ -54,6 +54,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_UNSTONING:
       effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_STONE);
+      break;
+    case EFFECT_TYPE_UNBINDING:
+      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_SPELLBOUND);
       break;
     case EFFECT_TYPE_NULL:
     default:

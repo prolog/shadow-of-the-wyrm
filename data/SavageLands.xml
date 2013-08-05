@@ -5789,6 +5789,23 @@
 				<Nutrition>100</Nutrition>
 				<Effect>9</Effect>
 			</Potion>
+			<Potion id="unbinding_potion">
+				<DescriptionSID>UNBINDING_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_UNBINDING_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>UNBINDING_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_UNBINDING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>110</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>10</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>100</Nutrition>
+				<Effect>10</Effect>
+			</Potion>			
 			<Potion id="ether_potion">
 				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>

@@ -112,9 +112,9 @@ ActionCost ActionManager::ascend(CreaturePtr creature)
     return get_action_cost(creature, 0);
   } 
     
-  movement_action.ascend(creature);
+  ActionCostValue acv = movement_action.ascend(creature);
   
-  return get_action_cost(creature, 1); // JCD FIXME
+  return get_action_cost(creature, acv);
 }
 
 // Move down a level

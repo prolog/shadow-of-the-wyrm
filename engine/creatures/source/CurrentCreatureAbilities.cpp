@@ -44,6 +44,20 @@ bool CurrentCreatureAbilities::can_act(CreaturePtr creature, const bool add_mess
   return creature_can_act;
 }
 
+// Check to see if the creature can select their movement direction -
+// false if the creature is stunned.
+bool CurrentCreatureAbilities::can_select_movement_direction(CreaturePtr creature, const bool add_message_if_player_and_stunned) const
+{
+  bool creature_can_select = creature && (creature->has_status(StatusIdentifiers::STATUS_ID_STUNNED) == false);
+
+  if (add_message_if_player_and_stunned && !creature_can_select && creature && creature->get_is_player())
+  {
+    add_ability_message_for_sid(creature, StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_STUNNED);
+  }
+
+  return creature_can_select;
+}
+
 void CurrentCreatureAbilities::add_ability_message_for_sid(CreaturePtr creature, const string& status_ability_message_sid) const
 {
   IMessageManager& manager = MessageManagerFactory::instance(creature);
