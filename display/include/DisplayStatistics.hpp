@@ -9,13 +9,13 @@ class DisplayStatistics
   public:
     static DisplayStatistics create(const std::string& name,
                                     const std::string& synopsis,
-                                    const std::string& strength,
-                                    const std::string& dexterity,
-                                    const std::string& agility,
-                                    const std::string& health,
-                                    const std::string& intelligence,
-                                    const std::string& willpower,
-                                    const std::string& charisma,
+                                    const std::pair<std::string, Colour>& strength,
+                                    const std::pair<std::string, Colour>& dexterity,
+                                    const std::pair<std::string, Colour>& agility,
+                                    const std::pair<std::string, Colour>& health,
+                                    const std::pair<std::string, Colour>& intelligence,
+                                    const std::pair<std::string, Colour>& willpower,
+                                    const std::pair<std::string, Colour>& charisma,
                                     const std::string& valour,
                                     const std::string& spirit,
                                     const std::string& speed,
@@ -30,13 +30,13 @@ class DisplayStatistics
     std::string get_name() const;
     std::string get_synopsis() const;
 
-    std::string get_strength() const;
-    std::string get_dexterity() const;
-    std::string get_agility() const;
-    std::string get_health() const;
-    std::string get_intelligence() const;
-    std::string get_willpower() const;
-    std::string get_charisma() const;
+    std::pair<std::string, Colour> get_strength() const;
+    std::pair<std::string, Colour> get_dexterity() const;
+    std::pair<std::string, Colour> get_agility() const;
+    std::pair<std::string, Colour> get_health() const;
+    std::pair<std::string, Colour> get_intelligence() const;
+    std::pair<std::string, Colour> get_willpower() const;
+    std::pair<std::string, Colour> get_charisma() const;
 
     std::string get_valour() const;
     std::string get_spirit() const;
@@ -59,13 +59,13 @@ class DisplayStatistics
     void set_name(const std::string& new_name);
     void set_synopsis(const std::string& new_synopsis);
 
-    void set_strength(const std::string& new_strength);
-    void set_dexterity(const std::string& new_dexterity);
-    void set_agility(const std::string& new_agility);
-    void set_health(const std::string& new_health);
-    void set_intelligence(const std::string& new_intelligence);
-    void set_willpower(const std::string& new_willpower);
-    void set_charisma(const std::string& new_charisma);
+    void set_strength(const std::pair<std::string, Colour>& new_strength);
+    void set_dexterity(const std::pair<std::string, Colour>& new_dexterity);
+    void set_agility(const std::pair<std::string, Colour>& new_agility);
+    void set_health(const std::pair<std::string, Colour>& new_health);
+    void set_intelligence(const std::pair<std::string, Colour>& new_intelligence);
+    void set_willpower(const std::pair<std::string, Colour>& new_willpower);
+    void set_charisma(const std::pair<std::string, Colour>& new_charisma);
 
     void set_valour(const std::string& new_valour);
     void set_spirit(const std::string& new_spirit);
@@ -84,13 +84,13 @@ class DisplayStatistics
     std::string name;
     std::string synopsis;
 
-    std::string strength;
-    std::string dexterity;
-    std::string agility;
-    std::string health;
-    std::string intelligence;
-    std::string willpower;
-    std::string charisma;
+    std::pair<std::string, Colour> strength;
+    std::pair<std::string, Colour> dexterity;
+    std::pair<std::string, Colour> agility;
+    std::pair<std::string, Colour> health;
+    std::pair<std::string, Colour> intelligence;
+    std::pair<std::string, Colour> willpower;
+    std::pair<std::string, Colour> charisma;
 
     std::string valour;
     std::string spirit;
