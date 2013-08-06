@@ -703,13 +703,13 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   string name         = player_stats.get_name();
   string synopsis     = player_stats.get_synopsis();
 
-  string strength     = player_stats.get_strength();
-  string dexterity    = player_stats.get_dexterity();
-  string agility      = player_stats.get_agility();
-  string health       = player_stats.get_health();
-  string intelligence = player_stats.get_intelligence();
-  string willpower    = player_stats.get_willpower();
-  string charisma     = player_stats.get_charisma();
+  pair<string, Colour> strength     = player_stats.get_strength();
+  pair<string, Colour> dexterity    = player_stats.get_dexterity();
+  pair<string, Colour> agility      = player_stats.get_agility();
+  pair<string, Colour> health       = player_stats.get_health();
+  pair<string, Colour> intelligence = player_stats.get_intelligence();
+  pair<string, Colour> willpower    = player_stats.get_willpower();
+  pair<string, Colour> charisma     = player_stats.get_charisma();
 
   string valour       = player_stats.get_valour();
   string spirit       = player_stats.get_spirit();
@@ -737,14 +737,14 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   
   // Next, set the synopsis values
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, name, synopsis);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength, dexterity);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, dexterity, agility);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, agility, health);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, health, intelligence);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, intelligence, willpower);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower, charisma);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma, level);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, synopsis, strength.first);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, strength.first, dexterity.first, strength.second);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, dexterity.first, agility.first, dexterity.second);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, agility.first, health.first, agility.second);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, health.first, intelligence.first, health.second);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, intelligence.first, willpower.first, intelligence.second);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower.first, charisma.first, willpower.second);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma.first, level, charisma.second);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, level, defence);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, valour);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, valour, spirit);
@@ -790,13 +790,14 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   }
 }
 
-bool CursesDisplay::print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat)
+bool CursesDisplay::print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const string& current_stat, const string& next_stat, Colour print_colour)
 {
   bool can_print = true;
 
+  enable_colour(print_colour, stdscr);
   mvprintw(*current_row, *current_col, current_stat.c_str());
-
   can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
+  disable_colour(print_colour, stdscr);
 
   return can_print;
 }

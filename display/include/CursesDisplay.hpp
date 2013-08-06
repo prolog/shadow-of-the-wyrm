@@ -98,7 +98,7 @@ class CursesDisplay : public Display
 
     // Print the current display statistic at the specified row/column, unless we're in a different row than the initial one, and therefore
     // should line up the column with the next-available, previously-used column from the previous row.
-    bool print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const std::string& stat, const std::string& next_stat);
+    bool print_display_statistic_and_update_row_and_column(const unsigned int initial_row, unsigned int* current_row, unsigned int* current_col, const std::string& stat, const std::string& next_stat, Colour print_colour = COLOUR_WHITE);
 
     // Update the row/column position for the synopsis details.  Return false if we can't do any more updates (have run off the screen).
     // Though, ideally that will never happen.

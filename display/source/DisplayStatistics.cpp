@@ -10,13 +10,13 @@ DisplayStatistics DisplayStatistics::create
 (
   const string& new_name,
   const string& new_synopsis,
-  const string& new_strength,
-  const string& new_dexterity,
-  const string& new_agility,
-  const string& new_health,
-  const string& new_intelligence,
-  const string& new_willpower,
-  const string& new_charisma,
+  const pair<string, Colour>& new_strength,
+  const pair<string, Colour>& new_dexterity,
+  const pair<string, Colour>& new_agility,
+  const pair<string, Colour>& new_health,
+  const pair<string, Colour>& new_intelligence,
+  const pair<string, Colour>& new_willpower,
+  const pair<string, Colour>& new_charisma,
   const string& new_valour,
   const string& new_spirit,
   const string& new_speed,
@@ -72,72 +72,72 @@ string DisplayStatistics::get_synopsis() const
   return synopsis;
 }
 
-void DisplayStatistics::set_strength(const string& new_strength)
+void DisplayStatistics::set_strength(const pair<string, Colour>& new_strength)
 {
   strength = new_strength;
 }
 
-string DisplayStatistics::get_strength() const
+pair<string, Colour> DisplayStatistics::get_strength() const
 {
   return strength;
 }
 
-void DisplayStatistics::set_dexterity(const string& new_dexterity)
+void DisplayStatistics::set_dexterity(const pair<string, Colour>& new_dexterity)
 {
   dexterity = new_dexterity;
 }
 
-string DisplayStatistics::get_dexterity() const
+pair<string, Colour> DisplayStatistics::get_dexterity() const
 {
   return dexterity;
 }
 
-void DisplayStatistics::set_agility(const string& new_agility)
+void DisplayStatistics::set_agility(const pair<string, Colour>& new_agility)
 {
   agility = new_agility;
 }
 
-string DisplayStatistics::get_agility() const
+pair<string, Colour> DisplayStatistics::get_agility() const
 {
   return agility;
 }
 
-void DisplayStatistics::set_health(const string& new_health)
+void DisplayStatistics::set_health(const pair<string, Colour>& new_health)
 {
   health = new_health;
 }
 
-string DisplayStatistics::get_health() const
+pair<string, Colour> DisplayStatistics::get_health() const
 {
   return health;
 }
 
-void DisplayStatistics::set_intelligence(const string& new_intelligence)
+void DisplayStatistics::set_intelligence(const pair<string, Colour>& new_intelligence)
 {
   intelligence = new_intelligence;
 }
 
-string DisplayStatistics::get_intelligence() const
+pair<string, Colour> DisplayStatistics::get_intelligence() const
 {
   return intelligence;
 }
 
-void DisplayStatistics::set_willpower(const string& new_willpower)
+void DisplayStatistics::set_willpower(const pair<string, Colour>& new_willpower)
 {
   willpower = new_willpower;
 }
 
-string DisplayStatistics::get_willpower() const
+pair<string, Colour> DisplayStatistics::get_willpower() const
 {
   return willpower;
 }
 
-void DisplayStatistics::set_charisma(const string& new_charisma)
+void DisplayStatistics::set_charisma(const pair<string, Colour>& new_charisma)
 {
   charisma = new_charisma;
 }
 
-string DisplayStatistics::get_charisma() const
+pair<string, Colour> DisplayStatistics::get_charisma() const
 {
   return charisma;
 }
