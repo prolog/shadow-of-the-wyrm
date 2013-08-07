@@ -3215,11 +3215,43 @@
 				</HP>
 				<Exp>2</Exp>
 			</CreatureGeneration>
-			<Level>1</Level>
+			<Level>5</Level>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>10</NumSides>
 				<Type>4</Type>
+			</Damage>
+			<Evade>20</Evade>
+			<Soak>0</Soak>
+		</Creature>
+		<Creature id="fire_devil">
+			<ShortDescriptionSID>FIRE_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FIRE_DEVIL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FIRE_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>FIRE_DEVIL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>&amp;</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>3</Type>
 			</Damage>
 			<Evade>20</Evade>
 			<Soak>0</Soak>
@@ -4545,6 +4577,29 @@
 					<Type>9</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="acid_dagger">
+				<DescriptionSID>ACID_DAGGER_SID</DescriptionSID>
+				<UsageDescriptionSID>ACID_DAGGER_USAGE_SID</UsageDescriptionSID>
+				<Value>120</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>3</Modifier>
+					<Type>5</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="short_sword">
 				<DescriptionSID>SHORT_SWORD_SID</DescriptionSID>
 				<UsageDescriptionSID>SHORT_SWORD_USAGE_SID</UsageDescriptionSID>
@@ -4709,6 +4764,52 @@
 					<Type>10</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="holy_sword">
+				<DescriptionSID>HOLY_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>HOLY_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>130</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>7</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>2</Modifier>
+					<Type>7</Type>
+				</Damage>
+			</Weapon>			
+			<Weapon id="flame_sword">
+				<DescriptionSID>FLAME_SWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>FLAME_SWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>130</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
+				<DangerLevel>5</DangerLevel>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>7</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>2</Modifier>
+					<Type>3</Type>
+				</Damage>
+			</Weapon>			
 			<Weapon id="mace">
 				<DescriptionSID>MACE_SID</DescriptionSID>
 				<UsageDescriptionSID>MACE_USAGE_SID</UsageDescriptionSID>
@@ -4850,6 +4951,29 @@
 					<Type>4</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="acid_axe">
+				<DescriptionSID>ACID_AXE_SID</DescriptionSID>
+				<UsageDescriptionSID>ACID_AXE_USAGE_SID</UsageDescriptionSID>
+				<Value>140</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>3</Modifier>
+					<Type>5</Type>
+				</Damage>
+			</Weapon>			
 			<Weapon id="spear">
 				<DescriptionSID>SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>SPEAR_USAGE_SID</UsageDescriptionSID>
@@ -4991,6 +5115,29 @@
 					<Type>7</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="flame_rod">
+				<DescriptionSID>FLAME_ROD_SID</DescriptionSID>
+				<UsageDescriptionSID>FLAME_ROD_USAGE_SID</UsageDescriptionSID>
+				<Value>150</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>3</Type>
+				</Damage>
+			</Weapon>			
 			<Weapon id="leather_whip">
 				<DescriptionSID>LEATHER_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_WHIP_USAGE_SID</UsageDescriptionSID>
@@ -5046,7 +5193,31 @@
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>4</NumSides>
+					<Modifier>1</Modifier>
 					<Type>4</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="flame_whip">
+				<DescriptionSID>FLAME_WHIP_SID</DescriptionSID>
+				<UsageDescriptionSID>FLAME_WHIP_USAGE_SID</UsageDescriptionSID>
+				<Value>160</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>)</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>4</Speed>
+				<Damage>
+					<NumDice>3</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>1</Modifier>
+					<Type>3</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="shepherd_crook">

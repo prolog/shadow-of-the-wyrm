@@ -63,6 +63,10 @@ const string StatusAilmentTextKeys::STATUS_SPELLBOUND = "STATUS_SPELLBOUND";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND = "STATUS_MESSAGE_PLAYER_SPELLBOUND";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED = "STATUS_MESSAGE_PLAYER_SPELLBOUND_CURED";
 
+const string StatusAilmentTextKeys::STATUS_BLINDED = "STATUS_BLINDED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLINDED = "STATUS_MESSAGE_PLAYER_BLINDED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLINDNESS_CURED = "STATUS_MESSAGE_PLAYER_BLINDNESS_CURED";
+
 // public functions
 const string StatusAilmentTextKeys::get_npc_poisoned_message(CreaturePtr creature)
 {
@@ -173,6 +177,17 @@ const string StatusAilmentTextKeys::get_npc_undo_spellbound_message(CreaturePtr 
 {
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SPELLBOUND);
 }
+
+const string StatusAilmentTextKeys::get_npc_blinded_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_BLINDED);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_blindness_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLINDNESS);
+}
+
 // Protected
 const string StatusAilmentTextKeys::get_general_npc_message(const string& npc_sid, const string& message_sid)
 {
@@ -217,3 +232,6 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_DISFIGURED = "STATUS
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SPELLBOUND = "STATUS_MESSAGE_NPC_SPELLBOUND";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SPELLBOUND = "STATUS_MESSAGE_NPC_UNDO_SPELLBOUND";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_BLINDED = "STATUS_MESSAGE_NPC_BLINDED";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLINDNESS = "STATUS_MESSAGE_NPC_UNDO_BLINDNESS";

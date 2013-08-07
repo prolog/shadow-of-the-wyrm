@@ -90,6 +90,12 @@ class StatusAilmentTextKeys
     static const std::string get_npc_spellbound_message(boost::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_spellbound_message(boost::shared_ptr<Creature> creature);
 
+    static const std::string STATUS_BLINDED;
+    static const std::string STATUS_MESSAGE_PLAYER_BLINDED;
+    static const std::string STATUS_MESSAGE_PLAYER_BLINDNESS_CURED;
+    static const std::string get_npc_blinded_message(boost::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_blindness_message(boost::shared_ptr<Creature> creature);
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();
@@ -128,4 +134,7 @@ class StatusAilmentTextKeys
 
     static const std::string STATUS_MESSAGE_NPC_SPELLBOUND;
     static const std::string STATUS_MESSAGE_NPC_UNDO_SPELLBOUND;
+
+    static const std::string STATUS_MESSAGE_NPC_BLINDED;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_BLINDNESS;
 };

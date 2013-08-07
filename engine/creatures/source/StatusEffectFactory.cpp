@@ -1,4 +1,5 @@
 #include <boost/make_shared.hpp>
+#include "BlindedStatusEffect.hpp"
 #include "BloodiedStatusEffect.hpp"
 #include "DisfiguredStatusEffect.hpp"
 #include "ExposedStatusEffect.hpp"
@@ -39,6 +40,7 @@ void StatusEffectFactory::initialize_damage_status_ailments()
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_PIERCE, StatusIdentifiers::STATUS_ID_EXPOSED));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_ACID, StatusIdentifiers::STATUS_ID_DISFIGURED));
   damage_status_ailments.insert(make_pair(DAMAGE_TYPE_ARCANE, StatusIdentifiers::STATUS_ID_SPELLBOUND));
+  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_HEAT, StatusIdentifiers::STATUS_ID_BLINDED));
 }
 
 StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageType dt)
@@ -107,6 +109,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_SPELLBOUND)
   {
     status_effect = boost::make_shared<SpellboundStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_BLINDED)
+  {
+    status_effect = boost::make_shared<BlindedStatusEffect>();
   }
   else
   {
