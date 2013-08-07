@@ -8,6 +8,7 @@
 #include "CombatTextKeys.hpp"
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "FireWeaponTileSelectionKeyboardCommandMap.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
@@ -152,7 +153,10 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
         AnimationTranslator anim_tr(display);
         MapPtr current_map = game.get_current_map();
         MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-        Animation anim = anim_tr.create_movement_animation(game.get_current_world()->get_calendar().get_season()->get_season(), animation_frames, true, current_map, fov_map);
+        CurrentCreatureAbilities cca;
+        CreaturePtr player = game.get_current_player();
+
+        Animation anim = anim_tr.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), animation_frames, true, current_map, fov_map);
 
         display->draw_animation(anim);
       }

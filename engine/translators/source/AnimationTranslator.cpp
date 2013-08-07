@@ -11,9 +11,14 @@ AnimationTranslator::AnimationTranslator(DisplayPtr display)
   animation_factory = display->create_animation_factory();
 }
 
-Animation AnimationTranslator::create_movement_animation(const Season current_season, const vector<pair<DisplayTile, vector<Coordinate>> >& movement_path, const bool redraw_previous_frame, MapPtr current_map, MapPtr fov_map)
+Animation AnimationTranslator::create_movement_animation(const bool player_blinded, const Season current_season, const vector<pair<DisplayTile, vector<Coordinate>> >& movement_path, const bool redraw_previous_frame, MapPtr current_map, MapPtr fov_map)
 {
   Animation animation;
+
+  if (player_blinded)
+  {
+    return animation;
+  }
 
   uint num_steps = movement_path.size();
 
@@ -32,7 +37,7 @@ Animation AnimationTranslator::create_movement_animation(const Season current_se
       // Guard against a range outside the FOV/map.
       if (!game_tile || !fov_tile) continue;
 
-      DisplayTile previously_displayed = MapTranslator::create_display_tile(game_tile, fov_tile);
+      DisplayTile previously_displayed = MapTranslator::create_display_tile(player_blinded, game_tile, fov_tile);
       previously_displayed.set_season(current_season);
     
       // Add the updated coordinate value to the in-frame list.

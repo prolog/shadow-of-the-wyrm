@@ -210,6 +210,8 @@ void Game::create_new_world(CreaturePtr creature)
 // Update the display: the statistics area, and the current map.
 void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr fov_map, const bool reloaded_game)
 {
+  Game& game = Game::instance();
+
   if (current_player && current_map)
   {
     // boost::timer::auto_cpu_timer timer;
@@ -225,7 +227,10 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
     loaded_map_details.update_display_coord(display_coord);
     bool redraw_needed = loaded_map_details.requires_full_map_redraw() || reloaded_game;
 
-    DisplayMap display_map = MapTranslator::create_display_map(current_map, fov_map, display_area, reference_coords, redraw_needed);
+    CurrentCreatureAbilities cca;
+    CreaturePtr player = game.get_current_player();
+
+    DisplayMap display_map = MapTranslator::create_display_map(!cca.can_see(player), current_map, fov_map, display_area, reference_coords, redraw_needed);
     
     if (redraw_needed)
     {

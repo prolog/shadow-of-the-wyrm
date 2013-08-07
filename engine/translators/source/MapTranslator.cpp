@@ -16,7 +16,7 @@ MapTranslator::~MapTranslator()
 {
 }
 
-DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required)
+DisplayMap MapTranslator::create_display_map(const bool player_blinded, const MapPtr& map, const MapPtr& fov_map, const MapDisplayArea& display_area, const Coordinate& reference_coords, const bool full_redraw_required)
 {
   Coordinate display_coords = CreatureCoordinateCalculator::calculate_display_coordinate(display_area, map, reference_coords);
   
@@ -73,7 +73,7 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
       actual_row = engine_coord.first + d_row;
       actual_col = engine_coord.second + d_col;
 
-      DisplayTile display_tile = translate_coordinate_into_display_tile(map, fov_map, actual_row, actual_col);
+      DisplayTile display_tile = translate_coordinate_into_display_tile(player_blinded, map, fov_map, actual_row, actual_col);
 
       // Set the cursor coordinates.  Update the game's tracked display
       // coordinates, so that a full redraw can be performed.
@@ -94,7 +94,7 @@ DisplayMap MapTranslator::create_display_map(const MapPtr& map, const MapPtr& fo
 
 // Create a display tile from a given coordinate, given the current map
 // and the current FOV map.
-DisplayTile MapTranslator::translate_coordinate_into_display_tile(const MapPtr& map, const MapPtr& fov_map, const int actual_row, const int actual_col)
+DisplayTile MapTranslator::translate_coordinate_into_display_tile(const bool player_blinded, const MapPtr& map, const MapPtr& fov_map, const int actual_row, const int actual_col)
 {
   // Get the map tile
   TilePtr map_tile = map->at(actual_row, actual_col);
@@ -103,10 +103,10 @@ DisplayTile MapTranslator::translate_coordinate_into_display_tile(const MapPtr& 
   TilePtr fov_map_tile = fov_map->at(actual_row, actual_col);
 
   // Translate the map tile
-  return create_display_tile(map_tile, fov_map_tile);
+  return create_display_tile(player_blinded, map_tile, fov_map_tile);
 }
 
-DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile, const TilePtr& fov_tile)
+DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const TilePtr& actual_tile, const TilePtr& fov_tile)
 {
   DisplayTile display_tile;
 
@@ -116,20 +116,23 @@ DisplayTile MapTranslator::create_display_tile(const TilePtr& actual_tile, const
     Inventory& inv = actual_tile->get_items();
     FeaturePtr feature = actual_tile->get_feature();
 
-    if (creature) // If a creature exists on this tile - will be null if the ptr is not init'd
+    // If a creature exists on this tile - will be null if the ptr is not init'd.
+    // Display the creature if the player is not blind, or if the player is the
+    // creature (presumably, the player always has a sense of where they are!).
+    if (creature && (creature->get_is_player() || !player_blinded)) 
     {
       display_tile = create_display_tile_from_creature(creature);
     }
-    else if (!inv.empty()) // If at least one item exists in the tile's inventory of items
+    else if (!inv.empty() && !player_blinded) // If at least one item exists in the tile's inventory of items
     {
       ItemPtr item = inv.at(0); // Get the first item
       display_tile = create_display_tile_from_item(item);
     }
-    else if (feature) // There's no creature, and no items.  Is there a feature?
+    else if (feature && !player_blinded) // There's no creature, and no items.  Is there a feature?
     {
       display_tile = create_display_tile_from_feature(feature);
     }
-    else // Nothing else - display the tile.
+    else // Nothing else, or the player is blind - display the tile only.
     {
       display_tile = create_display_tile_from_tile(actual_tile);
     }      

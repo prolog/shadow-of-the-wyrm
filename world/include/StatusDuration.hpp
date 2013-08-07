@@ -8,8 +8,9 @@
 class StatusDuration : public ISerializable
 {
   public:
-    StatusDuration();
-    StatusDuration(const double end);
+    explicit StatusDuration();
+    explicit StatusDuration(const double end);
+
     bool operator==(const StatusDuration& sd) const;
 
     void set_end(const double new_end_val);
