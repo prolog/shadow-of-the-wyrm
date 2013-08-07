@@ -53,9 +53,11 @@ Savage Lands v0.1.5 "Beorhthun"
   the display code so that any statistic less than its maximum value is
   displayed in red.
 
+- Added blindness for fire damage.
+
 - Added new creatures with various damage types for testing the status
   effects on the player: rock adder, acolyte, lightning bug, frost devil,
-  shade, apprentice.
+  fire devil, shade, apprentice.
 
 - Eliminated three damage types (mental, sonic, radiant).  As I was adding
   more and more creatures and spells, I noticed that I wasn't using these
