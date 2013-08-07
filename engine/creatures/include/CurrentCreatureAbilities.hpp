@@ -8,6 +8,7 @@ class CurrentCreatureAbilities
   public:
     bool can_speak(CreaturePtr creature, const bool add_message_if_player_and_cannot_speak = false) const;
     bool can_move(CreaturePtr creature, const bool add_message_if_player_and_cannot_move = false) const;
+    bool can_see(CreaturePtr creature, const bool add_message_if_player_and_cannot_move = false) const;
 
     // can_select_movement_direction is used to determine if the creature can
     // select a movement direction - stunned creatures can try to move, but

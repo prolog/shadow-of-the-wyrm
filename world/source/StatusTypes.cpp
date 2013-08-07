@@ -23,3 +23,4 @@ const string StatusIdentifiers::STATUS_ID_STUNNED = "_stun";
 const string StatusIdentifiers::STATUS_ID_EXPOSED = "_expose";
 const string StatusIdentifiers::STATUS_ID_DISFIGURED = "_disf";
 const string StatusIdentifiers::STATUS_ID_SPELLBOUND = "_spellb";
+const string StatusIdentifiers::STATUS_ID_BLINDED = "_blind";

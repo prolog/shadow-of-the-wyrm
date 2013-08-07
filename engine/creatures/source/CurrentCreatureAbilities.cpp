@@ -18,6 +18,19 @@ bool CurrentCreatureAbilities::can_speak(CreaturePtr creature, const bool add_me
   return creature_can_speak;
 }
 
+// Check to see if the creature can see (has not been blinded).
+bool CurrentCreatureAbilities::can_see(CreaturePtr creature, const bool add_message_if_player_and_cannot_see) const
+{
+  bool creature_can_see = creature && (creature->has_status(StatusIdentifiers::STATUS_ID_BLINDED) == false);
+
+  if (add_message_if_player_and_cannot_see && !creature_can_see && creature && creature->get_is_player())
+  {
+    add_ability_message_for_sid(creature, StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLINDED);
+  }
+
+  return creature_can_see;
+}
+
 // Check to see if the creature can move (is not spellbound)
 bool CurrentCreatureAbilities::can_move(CreaturePtr creature, const bool add_message_if_player_and_cannot_move) const
 {

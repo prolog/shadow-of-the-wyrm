@@ -247,6 +247,7 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr exposed_chekr  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_EXPOSED, StatusAilmentTextKeys::STATUS_EXPOSED, COLOUR_CYAN);
   IStatusAilmentTranslatorPtr disfigured_ck  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DISFIGURED, StatusAilmentTextKeys::STATUS_DISFIGURED, COLOUR_BOLD_GREEN);
   IStatusAilmentTranslatorPtr spellbound_ck  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SPELLBOUND, StatusAilmentTextKeys::STATUS_SPELLBOUND, COLOUR_BOLD_MAGENTA);
+  IStatusAilmentTranslatorPtr blinded_check  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLINDED, StatusAilmentTextKeys::STATUS_BLINDED, COLOUR_BOLD_BLUE);
 
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(poison_checker);
@@ -260,4 +261,5 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.push_back(exposed_chekr );
   status_ailment_checkers.push_back(disfigured_ck );
   status_ailment_checkers.push_back(spellbound_ck );
+  status_ailment_checkers.push_back(blinded_check );
 }
