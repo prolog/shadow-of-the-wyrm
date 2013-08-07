@@ -48,6 +48,11 @@ Savage Lands v0.1.5 "Beorhthun"
   prohibits all movement to and from a map, but not other types of actions
   (so it can be waited out with searching, etc).
 
+- Added disfiguration for acid damage.  Updated the code so that this
+  status effect reduces a number of stats (25% chance for each).  Changed
+  the display code so that any statistic less than its maximum value is
+  displayed in red.
+
 - Added new creatures with various damage types for testing the status
   effects on the player: rock adder, acolyte, lightning bug, frost devil,
   shade, apprentice.
