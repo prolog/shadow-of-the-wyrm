@@ -10,6 +10,7 @@
 #include "Quests.hpp"
 #include "RNG.hpp"
 #include "ScriptEngine.hpp"
+#include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
@@ -39,6 +40,7 @@ int RNG_range(lua_State* ls);
 int add_spell_castings(lua_State* ls);
 int gain_experience(lua_State* ls);
 int add_creature_to_map(lua_State* ls);
+int add_status_to_creature(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -196,6 +198,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_spell_castings", add_spell_castings);
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
+  lua_register(L, "add_status_to_creature", add_status_to_creature);
 }
 
 // Lua API functions:
@@ -687,4 +690,37 @@ int add_creature_to_map(lua_State* ls)
   }
 
   return 0;
+}
+
+// Add a particular status to a particular creature for a particular duration
+// in minutes.
+//
+// Returns true if the status was added, false in all other cases.
+int add_status_to_creature(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 2) && (lua_isstring(ls, 1) && (lua_isstring(ls, 2))))
+  {
+    Game& game = Game::instance();
+
+    string creature_id = lua_tostring(ls, 1);
+    string status_id = lua_tostring(ls, 2);
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature && !creature->has_status(status_id))
+    {
+      StatusEffectPtr se = StatusEffectFactory::create_status_effect(status_id);
+      se->apply_change(creature);
+
+      lua_pushboolean(ls, true);
+      return 1;
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_status_to_creature");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, false);
+  return 1;
 }

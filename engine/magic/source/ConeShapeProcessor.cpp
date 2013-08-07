@@ -1,6 +1,7 @@
 #include "AnimationTranslator.hpp"
 #include "ConeShapeProcessor.hpp"
 #include "CoordUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "TileMagicChecker.hpp"
 
@@ -86,8 +87,10 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
   MapPtr fov_map = caster->get_decision_strategy()->get_fov_map();
   Game& game = Game::instance();
   AnimationTranslator at(game.get_display());
+  CurrentCreatureAbilities cca;
+  CreaturePtr player = game.get_current_player();
 
-  Animation cone_animation = at.create_movement_animation(game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
+  Animation cone_animation = at.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
   pair<vector<TilePtr>, Animation> affected_tiles_and_animation(affected_tiles, cone_animation);
   return affected_tiles_and_animation;
 }
