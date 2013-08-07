@@ -366,6 +366,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
                 
     manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
     add_tile_related_messages(creature, new_creature_tile);
+    manager.send();
                 
     action_cost_value = get_action_cost_value();
   }
