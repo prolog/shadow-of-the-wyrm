@@ -110,7 +110,10 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
 {
   DisplayTile display_tile;
 
-  if (fov_tile)
+  // Is it a FOV tile, and is the player not blinded?
+  // Special case for blindness - does the tile contain the player?  Because
+  // we always want to show the player.
+  if ((fov_tile && !player_blinded) || (player_blinded && fov_tile && fov_tile->get_creature() && fov_tile->get_creature()->get_is_player()))
   {
     CreaturePtr creature = actual_tile->get_creature();
     Inventory& inv = actual_tile->get_items();
@@ -119,7 +122,7 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
     // If a creature exists on this tile - will be null if the ptr is not init'd.
     // Display the creature if the player is not blind, or if the player is the
     // creature (presumably, the player always has a sense of where they are!).
-    if (creature && (creature->get_is_player() || !player_blinded)) 
+    if (creature)
     {
       display_tile = create_display_tile_from_creature(creature);
     }
@@ -145,7 +148,7 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
     }
     else
     {
-      if (actual_tile->get_viewed())
+      if (actual_tile->get_viewed() && !player_blinded)
       {
         display_tile = create_unseen_and_previously_viewed_display_tile(actual_tile);          
       }

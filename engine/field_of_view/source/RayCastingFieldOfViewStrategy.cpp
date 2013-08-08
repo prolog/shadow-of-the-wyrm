@@ -2,6 +2,7 @@
 #include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "CoordUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "RayCastingFieldOfViewStrategy.hpp"
 #include "BresenhamLine.hpp"
 #include "MapUtils.hpp"
@@ -17,7 +18,7 @@ RayCastingFieldOfViewStrategy::RayCastingFieldOfViewStrategy(const bool set_view
 {
 }
 
-MapPtr RayCastingFieldOfViewStrategy::calculate(MapPtr view_map, const Coordinate& centre_coord, const int los_length)
+MapPtr RayCastingFieldOfViewStrategy::calculate(CreaturePtr fov_creature, MapPtr view_map, const Coordinate& centre_coord, const int los_length)
 {
   MapPtr fov_map = boost::make_shared<Map>(view_map->size());
   BresenhamLine bl;
@@ -26,7 +27,7 @@ MapPtr RayCastingFieldOfViewStrategy::calculate(MapPtr view_map, const Coordinat
   int col = centre_coord.second;
   
   // Always add the centre position to the view map - the creature always knows its own location.
-  add_point_to_map(centre_coord, view_map, fov_map);
+  add_point_to_map(fov_creature, centre_coord, view_map, fov_map);
 
   Coordinate cur_coord;
   vector<Coordinate> line_points;
@@ -36,11 +37,11 @@ MapPtr RayCastingFieldOfViewStrategy::calculate(MapPtr view_map, const Coordinat
   {
     // Top
     line_points = bl.get_points_in_line(centre_coord.first, centre_coord.second, row - los_length, row_cur_x);
-    add_points_to_map_as_appropriate(line_points, view_map, fov_map);
+    add_points_to_map_as_appropriate(fov_creature, line_points, view_map, fov_map);
     
     // Bottom
     line_points = bl.get_points_in_line(centre_coord.first, centre_coord.second, row + los_length, row_cur_x);
-    add_points_to_map_as_appropriate(line_points, view_map, fov_map);
+    add_points_to_map_as_appropriate(fov_creature, line_points, view_map, fov_map);
   }
   
   // Left and right columns
@@ -48,24 +49,27 @@ MapPtr RayCastingFieldOfViewStrategy::calculate(MapPtr view_map, const Coordinat
   {
     // Top
     line_points = bl.get_points_in_line(centre_coord.first, centre_coord.second, col_cur_y, col - los_length);
-    add_points_to_map_as_appropriate(line_points, view_map, fov_map);
+    add_points_to_map_as_appropriate(fov_creature, line_points, view_map, fov_map);
 
     // Bottom
     line_points = bl.get_points_in_line(centre_coord.first, centre_coord.second, col_cur_y, col + los_length);
-    add_points_to_map_as_appropriate(line_points, view_map, fov_map);
+    add_points_to_map_as_appropriate(fov_creature, line_points, view_map, fov_map);
   }
   
   // Pass 1: regular walls/blocking tiles
-  post_process_to_remove_artifacts(centre_coord, view_map, fov_map, PASS_NON_CORNER_BLOCKING_TILES);
+  post_process_to_remove_artifacts(fov_creature, centre_coord, view_map, fov_map, PASS_NON_CORNER_BLOCKING_TILES);
   
   // Pass 2: corner walls/blocking tiles
-  post_process_to_remove_artifacts(centre_coord, view_map, fov_map, PASS_CORNER_BLOCKING_TILES);
+  post_process_to_remove_artifacts(fov_creature, centre_coord, view_map, fov_map, PASS_CORNER_BLOCKING_TILES);
   
   return fov_map;
 }
 
-void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(const std::vector<Coordinate>& coords, MapPtr view_map, MapPtr fov_map)
+void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(CreaturePtr fov_creature, const std::vector<Coordinate>& coords, MapPtr view_map, MapPtr fov_map)
 {
+  CurrentCreatureAbilities cca;
+  bool creature_blinded = (cca.can_see(fov_creature) == false);
+
   BOOST_FOREACH(Coordinate c, coords)
   {
     TilePtr tile = view_map->at(c);
@@ -76,7 +80,10 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(const std::
     }
     else
     {
-      add_point_to_map(c, view_map, fov_map);
+      if (!creature_blinded)
+      {
+        add_point_to_map(fov_creature, c, view_map, fov_map);
+      }
 
       if (tile->get_is_blocking())
       {
@@ -87,7 +94,7 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(const std::
 }
 
 // Credit where credit is due: this is based on jice's "piece of cake visibility determination" page.
-void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coordinate& centre_coord, MapPtr view_map, MapPtr fov_map, const PassType type)
+void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr fov_creature, const Coordinate& centre_coord, MapPtr view_map, MapPtr fov_map, const PassType type)
 {
   TilesContainer tile_cont = view_map->get_tiles();
   TilesContainer fov_tile_cont = fov_map->get_tiles();
@@ -112,7 +119,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         if (is_artifact_nw(fov_map, c, type))
         {
           Log::instance().debug(tile_coords + " not in list, NW, adjacent to a lit tile.");
-          add_point_to_map(c, view_map, fov_map);
+          add_point_to_map(fov_creature, c, view_map, fov_map);
         }
       }
       // If we're in the north-east region, and the current tile is north or east of a ground cell in the FOV map, add it to the FOV map.
@@ -121,7 +128,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         if (is_artifact_ne(fov_map, c, type))
         {
           Log::instance().debug(tile_coords + " not in list, NE, adjacent to a lit tile.");
-          add_point_to_map(c, view_map, fov_map);
+          add_point_to_map(fov_creature, c, view_map, fov_map);
         }
       }
       // If we're in the south-west region, and the current tile is south or west of a ground cell in the FOV map, add it to the FOV map.
@@ -130,7 +137,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         if (is_artifact_sw(fov_map, c, type))
         {
           Log::instance().debug(tile_coords + " not in list, SW, adjacent to a lit tile.");
-          add_point_to_map(c, view_map, fov_map);
+          add_point_to_map(fov_creature, c, view_map, fov_map);
         }
       }
       // If we're in the south-east region, and the current tile is south or east of a ground cell in the FOV map, add it to the FOV map.
@@ -139,7 +146,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(const Coord
         if (is_artifact_se(fov_map, c, type))
         {
           Log::instance().debug(tile_coords + " not in list, SE, adjacent to a lit tile.");
-          add_point_to_map(c, view_map, fov_map);
+          add_point_to_map(fov_creature, c, view_map, fov_map);
         }
       }
     }
