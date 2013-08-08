@@ -288,6 +288,17 @@ ActionCost ActionManager::run_script_command(CreaturePtr creature)
   ScriptEngine& se = game.get_script_engine_ref();
   string command = manager.add_new_message_with_prompt(StringTable::get(PromptTextKeys::PROMPT_RUN_SCRIPT));
 
+  // If the player didn't enter anything, use the last command.
+  // Otherwise, save the current command for next time.
+  if (command.empty())
+  {
+    command = se.get_last_executed();
+  }
+  else
+  {
+    se.set_last_executed(command);
+  }
+
   se.run_command(command);
 
   return get_action_cost(creature, 0);

@@ -1339,6 +1339,9 @@
     <ClCompile Include="engine\menus\source\WelcomeScreen.cpp" />
     <ClCompile Include="engine\scripting\source\LevelScript.cpp" />
     <ClCompile Include="engine\scripting\source\ScriptEngine.cpp" />
+    <ClCompile Include="engine\scripting\source\unit_tests\ScriptEngine_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\serialization\source\Serialization.cpp" />
     <ClCompile Include="engine\serialization\source\SerializationExceptions.cpp" />
     <ClCompile Include="engine\serialization\source\Serialize.cpp" />
