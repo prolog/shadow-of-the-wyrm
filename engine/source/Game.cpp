@@ -681,7 +681,7 @@ bool Game::serialize(ostream& stream)
     
   time_keeper.serialize(stream);
 
-  // script engine is stateless, and doesn't need to be saved.
+  script_engine.serialize(stream);
 
   mortuary.serialize(stream);
 
@@ -820,7 +820,7 @@ bool Game::deserialize(istream& stream)
 
   time_keeper.deserialize(stream);
 
-  // script engine is stateless and doesn't need to be saved.
+  script_engine.deserialize(stream);
 
   mortuary.deserialize(stream);
 
