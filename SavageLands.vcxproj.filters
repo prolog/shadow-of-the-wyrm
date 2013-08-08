@@ -643,6 +643,9 @@
     <Filter Include="Source Files\engine\creatures\source\unit_tests">
       <UniqueIdentifier>{672d3c24-2734-4a83-b97e-d7cc54864217}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\scripting\source\unit_tests">
+      <UniqueIdentifier>{85c9c7fd-4293-4391-8f48-a2b1cbe157b8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="controller\include\Controller.hpp">
@@ -5194,6 +5197,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\BlindedCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\unit_tests\ScriptEngine_test.cpp">
+      <Filter>Source Files\engine\scripting\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

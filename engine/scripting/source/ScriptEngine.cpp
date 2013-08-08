@@ -10,6 +10,7 @@
 #include "Quests.hpp"
 #include "RNG.hpp"
 #include "ScriptEngine.hpp"
+#include "Serialize.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
 
@@ -52,6 +53,15 @@ ScriptEngine::ScriptEngine()
 ScriptEngine::~ScriptEngine()
 {
    lua_close(L);
+}
+
+bool ScriptEngine::operator==(const ScriptEngine& se) const
+{
+  bool result = true;
+
+  result = result && (last_executed == se.last_executed);
+
+  return result;
 }
 
 void ScriptEngine::set_creature(CreaturePtr creature)
@@ -724,3 +734,37 @@ int add_status_to_creature(lua_State* ls)
   lua_pushboolean(ls, false);
   return 1;
 }
+
+// Set the last executed command
+void ScriptEngine::set_last_executed(const string& new_last_executed)
+{
+  last_executed = new_last_executed;
+}
+
+string ScriptEngine::get_last_executed() const
+{
+  return last_executed;
+}
+
+bool ScriptEngine::serialize(ostream& stream)
+{
+  Serialize::write_string(stream, last_executed);
+
+  return true;
+}
+
+bool ScriptEngine::deserialize(istream& stream)
+{
+  Serialize::read_string(stream, last_executed);
+
+  return true;
+}
+
+ClassIdentifier ScriptEngine::internal_class_identifier() const
+{
+  return CLASS_ID_SCRIPT_ENGINE;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ScriptEngine_test.cpp"
+#endif
