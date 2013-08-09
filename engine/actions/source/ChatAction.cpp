@@ -19,33 +19,40 @@ ActionCostValue ChatAction::chat(CreaturePtr creature) const
   CurrentCreatureAbilities cca;
   Game& game = Game::instance();
 
-  if (cca.can_speak(creature, true))
+  if (!cca.can_see(creature))
   {
-    MapPtr current_map = game.get_current_map();
-    bool spoke = false;
-
-    if (MapUtils::adjacent_creature_exists(creature, current_map))
+    add_chat_message(creature, ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
+  }
+  else
+  {
+    if (cca.can_speak(creature, true))
     {
-      CreatureDirectionMap creature_map = MapUtils::get_adjacent_creatures(current_map, creature);
+      MapPtr current_map = game.get_current_map();
+      bool spoke = false;
 
-      if (creature_map.size() == 1)
+      if (MapUtils::adjacent_creature_exists(creature, current_map))
       {
-        CreaturePtr speaking_creature = creature_map.begin()->second;
-        spoke = chat_single_creature(creature, speaking_creature);
+        CreatureDirectionMap creature_map = MapUtils::get_adjacent_creatures(current_map, creature);
+
+        if (creature_map.size() == 1)
+        {
+          CreaturePtr speaking_creature = creature_map.begin()->second;
+          spoke = chat_single_creature(creature, speaking_creature);
+        }
+        else
+        {
+          spoke = chat_multiple_options(creature, creature_map);
+        }
+
+        if (spoke)
+        {
+          action_cost = get_action_cost_value();
+        }
       }
       else
       {
-        spoke = chat_multiple_options(creature, creature_map);
+        add_chat_message(creature, ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
       }
-
-      if (spoke)
-      {
-        action_cost = get_action_cost_value();
-      }
-    }
-    else
-    {
-      add_chat_message(creature, ActionTextKeys::ACTION_CHAT_NOBODY_NEARBY);
     }
   }
 
