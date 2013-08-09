@@ -7,6 +7,7 @@ using namespace std;
 LoadedMapDetails::LoadedMapDetails()
 : prev_engine_coord(0,0), cur_engine_coord(0,0),
   prev_display_coord(0,0), cur_display_coord(0,0),
+  prev_blind_status(false), cur_blind_status(false),
   prev_season(SEASON_WINTER), cur_season(SEASON_WINTER)
 {
 }
@@ -23,6 +24,9 @@ bool LoadedMapDetails::operator==(const LoadedMapDetails& lmd) const
 
   result = result && (prev_display_coord == lmd.prev_display_coord);
   result = result && (cur_display_coord == lmd.cur_display_coord);
+
+  result = result && (prev_blind_status == lmd.prev_blind_status);
+  result = result && (cur_blind_status == lmd.cur_blind_status);
 
   result = result && (prev_season == lmd.prev_season);
   result = result && (cur_season == lmd.cur_season);
@@ -48,6 +52,12 @@ void LoadedMapDetails::update_display_coord(const Coordinate& new_display_coord)
   cur_display_coord = new_display_coord;
 }
 
+void LoadedMapDetails::update_blind_status(const bool new_blind_status)
+{
+  prev_blind_status = cur_blind_status;
+  cur_blind_status = new_blind_status;
+}
+
 void LoadedMapDetails::update_season(const Season& new_season)
 {
   prev_season = cur_season;
@@ -62,6 +72,7 @@ void LoadedMapDetails::synch()
   prev_map_id = cur_map_id;
   prev_engine_coord = cur_engine_coord;
   prev_display_coord = cur_display_coord;
+  prev_blind_status = cur_blind_status;
   prev_season = cur_season;
 }
 
@@ -74,12 +85,15 @@ bool LoadedMapDetails::requires_full_map_redraw() const
           // Display moved > 1 coordinate (as above, or moving to a different
           // sector on the world map.
           (CoordUtils::chebyshev_distance(prev_display_coord, cur_display_coord) > 1) ||
+          // A change in blind status always requires a full redraw.  If the
+          // player is blinded, the entire map needs to be blacked out.  If the
+          // player is no longer blind, the map needs to be restored.
+          (prev_blind_status != cur_blind_status) ||
           // A change in season requires full redraw so that there isn't a
           // combination of tiles all over the place.
           (prev_season != cur_season));
 }
 
-// JCD FIXME: Need unit tests for these fns!
 bool LoadedMapDetails::serialize(ostream& stream)
 {
   Serialize::write_string(stream, prev_map_id);
@@ -94,6 +108,9 @@ bool LoadedMapDetails::serialize(ostream& stream)
   Serialize::write_int(stream, prev_display_coord.second);
   Serialize::write_int(stream, cur_display_coord.first);
   Serialize::write_int(stream, cur_display_coord.second);
+
+  Serialize::write_bool(stream, prev_blind_status);
+  Serialize::write_bool(stream, cur_blind_status);
 
   Serialize::write_enum(stream, prev_season);
   Serialize::write_enum(stream, cur_season);
@@ -115,6 +132,9 @@ bool LoadedMapDetails::deserialize(istream& stream)
   Serialize::read_int(stream, prev_display_coord.second);
   Serialize::read_int(stream, cur_display_coord.first);
   Serialize::read_int(stream, cur_display_coord.second);
+
+  Serialize::read_bool(stream, prev_blind_status);
+  Serialize::read_bool(stream, cur_blind_status);
 
   Serialize::read_enum(stream, prev_season);
   Serialize::read_enum(stream, cur_season);

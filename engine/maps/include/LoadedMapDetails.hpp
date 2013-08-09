@@ -16,6 +16,8 @@ class LoadedMapDetails : public ISerializable
     
     void update_display_coord(const Coordinate& new_display_coord);
     
+    void update_blind_status(const bool new_blind_status);
+
     void update_season(const Season& new_season);
 
     // Synchronize the previous and current values
@@ -39,6 +41,9 @@ class LoadedMapDetails : public ISerializable
 
     Coordinate prev_display_coord;
     Coordinate cur_display_coord;
+
+    bool prev_blind_status;
+    bool cur_blind_status;
 
     Season prev_season;
     Season cur_season;

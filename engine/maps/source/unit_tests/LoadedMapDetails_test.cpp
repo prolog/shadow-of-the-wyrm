@@ -6,6 +6,7 @@ class LoadedMapDetailsTester : public ::testing::Test
     void test_update_map_id();
     void test_update_engine_coord();
     void test_update_display_coord();
+    void test_update_blind_status();
     void test_update_season();
     void test_requires_full_redraw();
 
@@ -29,6 +30,9 @@ void test_set_various_values(LoadedMapDetails& lmd)
   Coordinate dc2(3,4);
   lmd.update_display_coord(dc1);
   lmd.update_display_coord(dc2);
+
+  lmd.update_blind_status(false);
+  lmd.update_blind_status(true);
 
   lmd.update_season(SEASON_WINTER);
   lmd.update_season(SEASON_SPRING);
@@ -81,6 +85,21 @@ void LoadedMapDetailsTester::test_update_display_coord()
   EXPECT_TRUE(lmd.prev_display_coord == display_c);
 }
 
+void LoadedMapDetailsTester::test_update_blind_status()
+{
+  EXPECT_TRUE(lmd == lmd_def);
+
+  lmd.update_blind_status(true);
+
+  EXPECT_FALSE(lmd == lmd_def);
+  EXPECT_TRUE(lmd.cur_blind_status == true);
+
+  lmd.update_blind_status(false);
+
+  EXPECT_TRUE(lmd.prev_blind_status == true);
+  EXPECT_TRUE(lmd.cur_blind_status == false);
+}
+
 void LoadedMapDetailsTester::test_update_season()
 {
   EXPECT_TRUE(lmd == lmd_def);
@@ -122,6 +141,11 @@ TEST_F(LoadedMapDetailsTester, update_engine_coord)
 TEST_F(LoadedMapDetailsTester, update_display_coord)
 {
   test_update_display_coord();
+}
+
+TEST_F(LoadedMapDetailsTester, update_blind_status)
+{
+  test_update_blind_status();
 }
 
 TEST_F(LoadedMapDetailsTester, update_season)
