@@ -1,6 +1,7 @@
 #include <boost/make_shared.hpp>
 #include "BlindedCalculator.hpp"
 #include "BlindedStatusEffect.hpp"
+#include "Game.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusTypes.hpp"
 
@@ -9,6 +10,17 @@ using namespace std;
 BlindedStatusEffect::BlindedStatusEffect()
 {
   status_calc = boost::make_shared<BlindedCalculator>();
+}
+
+bool BlindedStatusEffect::after_apply(CreaturePtr creature) const
+{
+  Game::instance().get_loaded_map_details_ref().update_blind_status(true);
+  return true;
+}
+
+void BlindedStatusEffect::after_undo(CreaturePtr creature) const
+{
+  Game::instance().get_loaded_map_details_ref().update_blind_status(false);
 }
 
 string BlindedStatusEffect::get_player_application_message() const

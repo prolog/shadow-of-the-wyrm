@@ -108,6 +108,7 @@ class Game : public ISerializable
 
   private:
     friend class SavageLandsEngine;
+    friend class BlindedStatusEffect;
     friend class CreatureDeathManager;
     friend class PlayerDeathManager;
     friend class MovementAction;

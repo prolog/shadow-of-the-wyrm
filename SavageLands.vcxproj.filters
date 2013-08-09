@@ -4583,9 +4583,6 @@
     <ClCompile Include="engine\maps\source\LoadedMapDetails.cpp">
       <Filter>Source Files\engine\maps\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\maps\source\unit_tests\LoadedMapDetails_test.cpp">
-      <Filter>Source Files\display\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="display\animation\source\Animation.cpp">
       <Filter>Source Files\display\animation</Filter>
     </ClCompile>
@@ -5200,6 +5197,9 @@
     </ClCompile>
     <ClCompile Include="engine\scripting\source\unit_tests\ScriptEngine_test.cpp">
       <Filter>Source Files\engine\scripting\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\LoadedMapDetails_test.cpp">
+      <Filter>Source Files\engine\maps\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
