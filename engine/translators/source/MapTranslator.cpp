@@ -106,6 +106,10 @@ DisplayTile MapTranslator::translate_coordinate_into_display_tile(const bool pla
   return create_display_tile(player_blinded, map_tile, fov_map_tile);
 }
 
+// Create the tile to display, based on the tile's properties, and whether or
+// not the player's been blinded.  If the player's been blinded, the tile will
+// be black, unless it is the player's tile, in which case the player will be
+// displayed.
 DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const TilePtr& actual_tile, const TilePtr& fov_tile)
 {
   DisplayTile display_tile;
@@ -142,7 +146,7 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
   }
   else
   {
-    if (actual_tile->get_explored())
+    if (actual_tile->get_explored() && !player_blinded)
     {
       display_tile = create_unseen_and_explored_display_tile(actual_tile);
     }
