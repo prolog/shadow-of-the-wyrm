@@ -6,6 +6,7 @@
 #include "CharacterDumpAction.hpp"
 #include "ChatAction.hpp"
 #include "Conversion.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "CurrencyAction.hpp"
 #include "DateTimeAction.hpp"
 #include "DropAction.hpp"
@@ -403,8 +404,9 @@ ActionCost ActionManager::weapon_info(CreaturePtr creature, const WeaponStyle we
 ActionCost ActionManager::select_tile(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = 0;
-  
-  if (creature)
+  CurrentCreatureAbilities cca;
+
+  if (creature && cca.can_see(creature, true))
   {
     action_cost_value = tile_selection_action.select_tile(creature, ActionTextKeys::ACTION_LOOK);
   }
