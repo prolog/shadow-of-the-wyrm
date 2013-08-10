@@ -1,4 +1,5 @@
 #include "Creature.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DefaultStatusEffectCalculator.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
@@ -92,7 +93,16 @@ string StatusEffect::get_application_message(CreaturePtr creature) const
     }
     else
     {
-      return get_npc_application_message(creature);
+      CurrentCreatureAbilities cca;
+
+      if (cca.can_see(Game::instance().get_current_player()))
+      {
+        return get_npc_application_message(creature);
+      }
+      else
+      {
+        return "";
+      }
     }
   }
 
@@ -139,7 +149,16 @@ string StatusEffect::get_finalize_message(CreaturePtr creature) const
     }
     else
     {
-      return get_npc_finalize_message(creature);
+      CurrentCreatureAbilities cca;
+
+      if (cca.can_see(Game::instance().get_current_player()))
+      {
+        return get_npc_finalize_message(creature);
+      }
+      else
+      {
+        return "";
+      }
     }
   }
 
@@ -207,7 +226,16 @@ string StatusEffect::get_undo_message(CreaturePtr creature) const
     }
     else
     {
-      return get_npc_undo_message(creature);
+      CurrentCreatureAbilities cca;
+
+      if (cca.can_see(Game::instance().get_current_player()))
+      {
+        return get_npc_undo_message(creature);
+      }
+      else
+      {
+        return "";
+      }
     }
   }
 
