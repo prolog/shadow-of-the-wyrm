@@ -17,7 +17,7 @@ IMessageManager& MessageManagerFactory::instance(CreaturePtr creature)
 
   if (creature)
   {
-    if (creature->get_is_player() || GameUtils::is_creature_in_player_view_map(game, creature->get_id()))
+    if (creature->get_is_player() || GameUtils::is_creature_in_player_view_map(game, creature->get_id()) || GameUtils::is_creature_adjacent(game, creature, game.get_current_player()))
     {
       return mm_instance();
     }

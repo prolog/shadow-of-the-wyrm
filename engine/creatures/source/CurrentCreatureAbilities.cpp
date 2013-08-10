@@ -31,6 +31,13 @@ bool CurrentCreatureAbilities::can_see(CreaturePtr creature, const bool add_mess
   return creature_can_see;
 }
 
+bool CurrentCreatureAbilities::can_hear(CreaturePtr creature, const bool add_message_if_player_and_cannot_hear) const
+{
+  bool creature_can_hear = creature;
+
+  return creature_can_hear;
+}
+
 // Check to see if the creature can move (is not spellbound)
 bool CurrentCreatureAbilities::can_move(CreaturePtr creature, const bool add_message_if_player_and_cannot_move) const
 {
