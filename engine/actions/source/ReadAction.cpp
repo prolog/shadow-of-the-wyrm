@@ -1,5 +1,6 @@
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "EffectFactory.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ReadStrategyFactory.hpp"
@@ -16,6 +17,13 @@ using boost::dynamic_pointer_cast;
 ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
 {
   ActionCostValue action_cost_value = 0;
+  CurrentCreatureAbilities cca;
+
+  // Make sure that the creature can actually see before trying to read.
+  if (!cca.can_see(creature, true))
+  {
+    return action_cost_value;
+  }
 
   if (creature && am)
   {
