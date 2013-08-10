@@ -117,6 +117,8 @@ class TextKeys
     static const std::string GAIN_LEVEL;
     static const std::string UNARMED;
 
+    static const std::string SOMETHING;
+
   protected:
     TextKeys();
     ~TextKeys();

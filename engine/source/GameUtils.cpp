@@ -1,3 +1,4 @@
+#include "CoordUtils.hpp"
 #include "GameUtils.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
@@ -50,3 +51,19 @@ bool GameUtils::is_creature_in_player_view_map(Game& game, const string& creatur
   return creature_in_view_map;
 }
 
+// Check to see if two creature are adjacent on the current map.
+bool GameUtils::is_creature_adjacent(Game& game, CreaturePtr creature1, CreaturePtr creature2)
+{
+  bool creatures_adjacent = false;
+  MapPtr map = game.get_current_map();
+
+  if (creature1 && creature2)
+  {
+    Coordinate c1 = map->get_location(creature1->get_id());
+    Coordinate c2 = map->get_location(creature2->get_id());
+
+    creatures_adjacent = CoordUtils::are_coordinates_adjacent(c1, c2);
+  }
+
+  return creatures_adjacent;
+}

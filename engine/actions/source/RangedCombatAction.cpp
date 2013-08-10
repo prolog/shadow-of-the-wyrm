@@ -252,11 +252,13 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
     // Another sanity check - every item should have a usage description string ID.
     if (!usage_description.empty())
     {
+      bool target_is_player = target_creature && target_creature->get_is_player();
+
       // Add a message based on whether:
       // - the attacking creature is the player
       // - a launcher/ranged weapon (bow, crossbow, etc) is used
       // - target creature (may be empty - it's perfectly legitimate to target a random tile!)
-      string ranged_attack_message = CombatTextKeys::get_ranged_attack_message(creature->get_is_player(), ranged, StringTable::get(creature->get_description_sid()), usage_description, StringTable::get(target_creature_desc_sid));
+      string ranged_attack_message = CombatTextKeys::get_ranged_attack_message(creature->get_is_player(), target_is_player, ranged, StringTable::get(creature->get_description_sid()), usage_description, StringTable::get(target_creature_desc_sid));
 
       if (!ranged_attack_message.empty())
       {

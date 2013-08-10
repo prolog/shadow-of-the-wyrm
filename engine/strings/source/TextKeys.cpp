@@ -121,3 +121,4 @@ const string TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE = "DECISION_ATTACK_FRIE
 const string TextKeys::GAIN_LEVEL = "GAIN_LEVEL";
 
 const string TextKeys::UNARMED = "UNARMED";
+const string TextKeys::SOMETHING = "SOMETHING";

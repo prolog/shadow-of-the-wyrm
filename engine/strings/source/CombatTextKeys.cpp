@@ -1,6 +1,8 @@
 #include <sstream>
 #include <boost/algorithm/string/replace.hpp>
 #include "CombatTextKeys.hpp"
+#include "CurrentCreatureAbilities.hpp"
+#include "Game.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 
@@ -11,40 +13,72 @@ CombatTextKeys::CombatTextKeys()
 {
 }
 
-string CombatTextKeys::get_close_miss_message(const bool is_player, const string& attacker, const string& miss_target)
+pair<string, string> CombatTextKeys::get_appropriate_attacker_and_target(const bool attacker_is_player, const bool attacked_is_player, const string& non_blind_attacker, const string& non_blind_target)
 {
+  pair<string, string> attacker_and_target(non_blind_attacker, non_blind_target);
+
+  CurrentCreatureAbilities cca;
+
+  if (!cca.can_see(Game::instance().get_current_player()))
+  {
+    // Attacker should be "something".  Target should be "something".
+    // But only if the appropriate creature is not the player!
+    if (!attacker_is_player)
+    {
+      attacker_and_target.first = StringTable::get(TextKeys::SOMETHING);
+    }
+
+    if (!attacked_is_player)
+    {
+      attacker_and_target.second = StringTable::get(TextKeys::SOMETHING);
+    }
+  }
+
+  return attacker_and_target;
+}
+
+string CombatTextKeys::get_close_miss_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& miss_target)
+{
+  pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, miss_target);
+  string attack = attacker_and_target.first;
+  string target = attacker_and_target.second;
+
   string close_miss_msg;
   
-  if (is_player)
+  if (attacker_is_player)
   {
     close_miss_msg = StringTable::get(CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE);
-    boost::replace_first(close_miss_msg, "%s", miss_target);
+    boost::replace_first(close_miss_msg, "%s", target);
   }
   else
   {
     close_miss_msg = StringTable::get(CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE_NP);
-    boost::replace_first(close_miss_msg, "%s", attacker);
-    boost::replace_first(close_miss_msg, "%s", miss_target);
+    boost::replace_first(close_miss_msg, "%s", attack);
+    boost::replace_first(close_miss_msg, "%s", target);
     close_miss_msg[0] = toupper(close_miss_msg[0]);
   }
   
   return close_miss_msg;
 }
 
-string CombatTextKeys::get_miss_message(const bool is_player, const string& attacker, const string& miss_target)
+string CombatTextKeys::get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& miss_target)
 {
+  pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, miss_target);
+  string attack = attacker_and_target.first;
+  string target = attacker_and_target.second;
+
   string miss_msg;
 
-  if (is_player)
+  if (attacker_is_player)
   {
     miss_msg = StringTable::get(CombatTextKeys::COMBAT_MISS_MESSAGE);
-    boost::replace_first(miss_msg, "%s", miss_target);
+    boost::replace_first(miss_msg, "%s", target);
   }
   else
   {
     miss_msg = StringTable::get(CombatTextKeys::COMBAT_MISS_MESSAGE_NP);
-    boost::replace_first(miss_msg, "%s", attacker);
-    boost::replace_first(miss_msg, "%s", miss_target);
+    boost::replace_first(miss_msg, "%s", attack);
+    boost::replace_first(miss_msg, "%s", target);
     miss_msg[0] = toupper(miss_msg[0]);
   }
   
@@ -63,26 +97,30 @@ string CombatTextKeys::get_mighty_blow_message()
   return mighty_blow_msg;
 }
 
-string CombatTextKeys::get_hit_message(const bool is_player, const DamageType damage_type, const string& attacker, const string& hit_target)
+string CombatTextKeys::get_hit_message(const bool attacker_is_player, const bool attacked_is_player, const DamageType damage_type, const string& attacker, const string& hit_target)
 {
+  pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, hit_target);
+  string attack = attacker_and_target.first;
+  string target = attacker_and_target.second;
+
   if (combat_damage_hit_messages.empty())
   {
     populate_combat_messages();
   }
   
-  string key = create_key(is_player, damage_type);
+  string key = create_key(attacker_is_player, damage_type);
   string hit_msg_sid = combat_damage_hit_messages[key];
   string hit_msg = StringTable::get(hit_msg_sid);
   
   // Now that we have the string, do the replacement(s) as necessary.
-  if (is_player)
+  if (attacker_is_player)
   {
-    boost::replace_first(hit_msg, "%s", hit_target);
+    boost::replace_first(hit_msg, "%s", target);
   }
   else
   {
-    boost::replace_first(hit_msg, "%s", attacker);
-    boost::replace_first(hit_msg, "%s", hit_target);
+    boost::replace_first(hit_msg, "%s", attack);
+    boost::replace_first(hit_msg, "%s", target);
     hit_msg[0] = toupper(hit_msg[0]);
   }
   
@@ -91,25 +129,45 @@ string CombatTextKeys::get_hit_message(const bool is_player, const DamageType da
 
 string CombatTextKeys::get_monster_killed_message(const std::string& monster_name)
 {
+  CurrentCreatureAbilities cca;
+
   string death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_KILLED_MESSAGE);
   boost::replace_first(death_message, "%s", monster_name);
+
+  if (!cca.can_see(Game::instance().get_current_player()))
+  {
+    death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_KILLED_OR_DIES_MESSAGE_PLAYER_BLIND);
+  }
+
   death_message[0] = toupper(death_message[0]);
   return death_message;
 }
 
 string CombatTextKeys::get_monster_dies_message(const std::string& monster_name)
 {
+  CurrentCreatureAbilities cca;
+
   string death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_DIES_MESSAGE);
   boost::replace_first(death_message, "%s", monster_name);
+
+  if (!cca.can_see(Game::instance().get_current_player()))
+  {
+    death_message = StringTable::get(CombatTextKeys::COMBAT_MONSTER_KILLED_OR_DIES_MESSAGE_PLAYER_BLIND);
+  }
+
   death_message[0] = toupper(death_message[0]);
   return death_message;
 }
 
-string CombatTextKeys::get_no_damage_message(const bool is_player, const string& target)
+string CombatTextKeys::get_no_damage_message(const bool target_is_player, const string& non_blind_target)
 {
+  string no_attacker;
+  pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(false, target_is_player, no_attacker, non_blind_target);
+  string target = attacker_and_target.second;
+
   string no_damage_message;
   
-  if (is_player)
+  if (target_is_player)
   {
     no_damage_message = StringTable::get(CombatTextKeys::COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE);
     boost::replace_first(no_damage_message, "%s", StringTable::get(TextKeys::YOU));
@@ -125,12 +183,16 @@ string CombatTextKeys::get_no_damage_message(const bool is_player, const string&
   return no_damage_message;
 }
 
-string CombatTextKeys::get_ranged_attack_message(const bool is_player, const bool uses_launcher, const string& attacker, const string& ammunition, const string& target)
+string CombatTextKeys::get_ranged_attack_message(const bool attacker_is_player, const bool attacked_is_player, const bool uses_launcher, const string& non_blind_attacker, const string& ammunition, const string& non_blind_target)
 {
+  pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, non_blind_attacker, non_blind_target);
+  string attacker = attacker_and_target.first;
+  string target = attacker_and_target.second;
+
   string ranged_attack_message;
   bool has_target = !target.empty();
   
-  if (is_player)
+  if (attacker_is_player)
   {
     if (uses_launcher)
     {
@@ -249,6 +311,7 @@ const string CombatTextKeys::COMBAT_PLAYER_NO_DAMAGE_RECEIVED_MESSAGE  = "COMBAT
 const string CombatTextKeys::COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE = "COMBAT_MONSTER_NO_DAMAGE_RECEIVED_MESSAGE";
 const string CombatTextKeys::COMBAT_MONSTER_KILLED_MESSAGE = "COMBAT_MONSTER_KILLED_MESSAGE";
 const string CombatTextKeys::COMBAT_MONSTER_DIES_MESSAGE   = "COMBAT_MONSTER_DIES_MESSAGE";
+const string CombatTextKeys::COMBAT_MONSTER_KILLED_OR_DIES_MESSAGE_PLAYER_BLIND = "COMBAT_MONSTER_KILLED_OR_DIES_MESSAGE_PLAYER_BLIND";
 const string CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE     = "COMBAT_CLOSE_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE_NP  = "COMBAT_CLOSE_MISS_MESSAGE_NP"; 
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";
