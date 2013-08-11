@@ -2,6 +2,7 @@
 #include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
 #include "CreatureDescriber.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DescriberFactory.hpp"
 #include "TileDescription.hpp"
 
@@ -17,7 +18,7 @@ TileDescription::TileDescription(const bool tile, const bool feature, const bool
 // - Whether it contains a creature (with the corresponding option for the bestiary)
 // - Whether it contains a feature
 // - Whether it contains items
-string TileDescription::describe(TilePtr tile, bool tile_is_in_fov)
+string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, bool tile_is_in_fov)
 {
   vector<string> tile_info_strings;
 
@@ -62,8 +63,9 @@ string TileDescription::describe(TilePtr tile, bool tile_is_in_fov)
         
         if (show_items)
         {
+          CurrentCreatureAbilities cca;
           Inventory& inventory = tile->get_items();
-          describer = DescriberFactory::create_describer(inventory);
+          describer = DescriberFactory::create_describer(!cca.can_see(viewing_creature), inventory);
           tile_info_strings.push_back(describer->describe());
         }
       }

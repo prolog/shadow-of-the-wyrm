@@ -1,6 +1,7 @@
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DropAction.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
@@ -83,8 +84,8 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
     
     uint quantity = item->get_quantity();
     
-    ItemIdentifier item_id;
-    string drop_message = TextMessages::get_item_drop_message(item_id.get_appropriate_usage_description(item), quantity);
+    CurrentCreatureAbilities cca;
+    string drop_message = TextMessages::get_item_drop_message(!cca.can_see(creature), item);
     
     manager.add_new_message(drop_message);
     manager.send();

@@ -1,12 +1,13 @@
 #include <boost/foreach.hpp>
+#include "ItemDescriberFactory.hpp"
 #include "InventoryDescriber.hpp"
 #include "ItemDescriber.hpp"
 
 using std::list;
 using std::string;
 
-InventoryDescriber::InventoryDescriber(const Inventory& inv)
-: inventory(inv)
+InventoryDescriber::InventoryDescriber(const bool player_blind, const Inventory& inv)
+: inventory(inv), blind(player_blind)
 {
 }
 
@@ -18,9 +19,8 @@ string InventoryDescriber::describe() const
 
   BOOST_FOREACH(ItemPtr item, items)
   {
-    ItemDescriber id(item);
-
-    inventory_description += id.describe();
+    IDescriberPtr item_id = ItemDescriberFactory::create_item_describer(blind, item);
+    inventory_description += item_id->describe();
   }
 
   return inventory_description;

@@ -39,7 +39,7 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
       
         if (display && creature->get_is_player())
         {
-          display_inventory = InventoryTranslator::create_display_inventory(inv, display_filter_list);
+          display_inventory = InventoryTranslator::create_display_inventory(creature, inv, display_filter_list);
           current_page_size = display->display_inventory(display_inventory);
           menus_created++;
         }

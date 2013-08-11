@@ -7,8 +7,12 @@ class ItemDescriber : public IDescriber
   public:
     ItemDescriber(ItemPtr new_item);
 
-    std::string describe() const;
+    virtual ~ItemDescriber() {};
+
+    virtual std::string describe() const;
 
   protected:
     ItemPtr item;
 };
+
+typedef boost::shared_ptr<ItemDescriber> ItemDescriberPtr;

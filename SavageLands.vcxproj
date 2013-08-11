@@ -300,12 +300,14 @@
     <ClInclude Include="engine\decision_strategies\search\include\SearchStrategyFactory.hpp" />
     <ClInclude Include="engine\decision_strategies\search\include\SearchTypes.hpp" />
     <ClInclude Include="engine\decision_strategies\search\include\UniformCostSearchStrategy.hpp" />
+    <ClInclude Include="engine\description\include\BlindItemDescriber.hpp" />
     <ClInclude Include="engine\description\include\CreatureDescriber.hpp" />
     <ClInclude Include="engine\description\include\DescriberFactory.hpp" />
     <ClInclude Include="engine\description\include\FeatureDescriber.hpp" />
     <ClInclude Include="engine\description\include\IDescriber.hpp" />
     <ClInclude Include="engine\description\include\InventoryDescriber.hpp" />
     <ClInclude Include="engine\description\include\ItemDescriber.hpp" />
+    <ClInclude Include="engine\description\include\ItemDescriberFactory.hpp" />
     <ClInclude Include="engine\description\include\QuestDescriber.hpp" />
     <ClInclude Include="engine\description\include\SpellDescriber.hpp" />
     <ClInclude Include="engine\description\include\TileDescriber.hpp" />
@@ -1152,12 +1154,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\description\source\BlindItemDescriber.cpp" />
     <ClCompile Include="engine\description\source\CreatureDescriber.cpp" />
     <ClCompile Include="engine\description\source\DescriberFactory.cpp" />
     <ClCompile Include="engine\description\source\FeatureDescriber.cpp" />
     <ClCompile Include="engine\description\source\IDescriber.cpp" />
     <ClCompile Include="engine\description\source\InventoryDescriber.cpp" />
     <ClCompile Include="engine\description\source\ItemDescriber.cpp" />
+    <ClCompile Include="engine\description\source\ItemDescriberFactory.cpp" />
     <ClCompile Include="engine\description\source\QuestDescriber.cpp" />
     <ClCompile Include="engine\description\source\SpellDescriber.cpp" />
     <ClCompile Include="engine\description\source\TileDescriber.cpp" />
