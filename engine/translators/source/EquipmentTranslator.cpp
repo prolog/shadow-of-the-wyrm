@@ -1,4 +1,5 @@
 #include <boost/foreach.hpp>
+#include "CurrentCreatureAbilities.hpp"
 #include "EquipmentTranslator.hpp"
 #include "ItemTranslator.hpp"
 
@@ -14,6 +15,7 @@ EquipmentTranslator::~EquipmentTranslator()
 DisplayEquipmentMap EquipmentTranslator::create_display_equipment(const CreaturePtr& c)
 {
   DisplayEquipmentMap display_equipment;
+  CurrentCreatureAbilities cca;
 
   if (c)
   {
@@ -25,7 +27,7 @@ DisplayEquipmentMap EquipmentTranslator::create_display_equipment(const Creature
       EquipmentWornLocation worn_location = e_it->first;
       ItemPtr equipped_item = e_it->second;
       
-      DisplayItem display_item = ItemTranslator::create_display_item(equipped_item);
+      DisplayItem display_item = ItemTranslator::create_display_item(!cca.can_see(c), equipped_item);
       
       display_equipment[worn_location] = display_item;
     }

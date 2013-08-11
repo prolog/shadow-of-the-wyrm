@@ -59,7 +59,7 @@ class Display : public ISerializable
     // Draws an animation.
     virtual void draw_animation(const Animation& animation) = 0;
 	  
-	  // Displays a window with the player's equipment
+	  // Displays a window with the player's equipment.
 	  virtual void display_equipment(const DisplayEquipmentMap& equipment) = 0;
 	  
 	  // Displays a window with the player's inventory (non-worn items).

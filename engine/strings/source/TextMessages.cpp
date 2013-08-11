@@ -2,7 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "Conversion.hpp"
 #include "EquipmentTextKeys.hpp"
-#include "ItemDescriber.hpp"
+#include "ItemDescriberFactory.hpp"
 #include "TextMessages.hpp"
 #include "EntranceTextKeys.hpp"
 #include "StringTable.hpp"
@@ -246,46 +246,40 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
   return entrance_message;
 }
 
-string TextMessages::get_item_drop_message(const string& item_description, const uint quantity)
+string TextMessages::get_item_drop_message(const bool blind, ItemPtr item)
 {
-  // JCD FIXME: Once working, refactor to use ItemTranslator
-  string desc = item_description;
-  
-  if (quantity > 1)
-  {
-    desc = item_description + " (" + Integer::to_string(quantity) + ")";
-  }
-  
+  IDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
+
   string item_message = StringTable::get(TextMessages::ITEM_DROP_MESSAGE);
-  boost::replace_first(item_message, "%s", desc);
-  return item_message;
+  boost::replace_first(item_message, "%s", id->describe());
   
+  return item_message;
 }
 
-string TextMessages::get_item_pick_up_message(ItemPtr item)
+string TextMessages::get_item_pick_up_message(const bool blind, ItemPtr item)
 {
-  ItemDescriber id(item);
+  IDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
   
   string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE);
-  boost::replace_first(item_message, "%s", id.describe());
+  boost::replace_first(item_message, "%s", id->describe());
   return item_message;
 }
 
-string TextMessages::get_item_pick_up_and_merge_message(ItemPtr item)
+string TextMessages::get_item_pick_up_and_merge_message(const bool blind, ItemPtr item)
 {
-  ItemDescriber id(item);
+  IDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
 
   string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE);
-  boost::replace_first(item_message, "%s", id.describe());
+  boost::replace_first(item_message, "%s", id->describe());
   return item_message;
 }
 
-string TextMessages::get_item_on_ground_description_message(ItemPtr item)
+string TextMessages::get_item_on_ground_description_message(const bool blind, ItemPtr item)
 {
-  ItemDescriber id(item);
+  IDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
 
   string item_message = StringTable::get(TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE);
-  boost::replace_first(item_message, "%s", id.describe());
+  boost::replace_first(item_message, "%s", id->describe());
   return item_message;
 }
 

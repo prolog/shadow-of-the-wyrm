@@ -5,10 +5,11 @@
 class InventoryDescriber : public IDescriber
 {
   public:
-    InventoryDescriber(const Inventory& inv);
+    InventoryDescriber(const bool blind, const Inventory& inv);
 
     std::string describe() const;
 
   protected:
+    const bool blind;
     const Inventory& inventory;
 };

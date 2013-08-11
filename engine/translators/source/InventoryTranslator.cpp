@@ -1,4 +1,5 @@
 #include <boost/foreach.hpp>
+#include "CurrentCreatureAbilities.hpp"
 #include "DisplayItemTypeFactory.hpp"
 #include "InventoryTranslator.hpp"
 #include "ItemTranslator.hpp"
@@ -14,8 +15,9 @@ InventoryTranslator::~InventoryTranslator()
 {
 }
 
-DisplayInventoryMap InventoryTranslator::create_display_inventory(Inventory& inv, const list<IItemFilterPtr>& display_filter_list)
+DisplayInventoryMap InventoryTranslator::create_display_inventory(CreaturePtr creature, Inventory& inv, const list<IItemFilterPtr>& display_filter_list)
 {
+  CurrentCreatureAbilities cca;
   DisplayInventoryMap display_inventory;
 
   list<ItemPtr> raw_inv = inv.get_items();
@@ -31,7 +33,7 @@ DisplayInventoryMap InventoryTranslator::create_display_inventory(Inventory& inv
         DisplayItemTypePtr type = DisplayItemTypeFactory::create(item_type);
         
         vector<DisplayItem>* current_category = &display_inventory[*type];
-        DisplayItem display_item = ItemTranslator::create_display_item(item);
+        DisplayItem display_item = ItemTranslator::create_display_item(!cca.can_see(creature), item);
         
         current_category->push_back(display_item);
       }      

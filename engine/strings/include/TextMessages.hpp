@@ -18,10 +18,10 @@ class TextMessages
     static std::string get_equipment_location(const EquipmentWornLocation location);
     static std::string get_confirmation_message(const std::string& query_sid);
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);
-    static std::string get_item_drop_message(const std::string& item_description, const uint quantity_dropped);
-    static std::string get_item_pick_up_message(ItemPtr item);
-    static std::string get_item_pick_up_and_merge_message(ItemPtr item);
-    static std::string get_item_on_ground_description_message(ItemPtr item);
+    static std::string get_item_drop_message(const bool blind, ItemPtr item);
+    static std::string get_item_pick_up_message(const bool blind, ItemPtr item);
+    static std::string get_item_pick_up_and_merge_message(const bool blind, ItemPtr item);
+    static std::string get_item_on_ground_description_message(const bool blind, ItemPtr item);
     static std::string get_currency_amount_message(const uint currency_amount);
 
   protected:

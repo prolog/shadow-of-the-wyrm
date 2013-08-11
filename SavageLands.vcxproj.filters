@@ -2724,6 +2724,12 @@
     <ClInclude Include="engine\calculators\include\BlindedCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\description\include\ItemDescriberFactory.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\description\include\BlindItemDescriber.hpp">
+      <Filter>Header Files\engine\description\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5200,6 +5206,12 @@
     </ClCompile>
     <ClCompile Include="engine\maps\source\unit_tests\LoadedMapDetails_test.cpp">
       <Filter>Source Files\engine\maps\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\BlindItemDescriber.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\description\source\ItemDescriberFactory.cpp">
+      <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

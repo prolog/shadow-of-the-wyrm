@@ -1,6 +1,7 @@
 #include <list>
 #include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "Inventory.hpp"
 #include "ItemFilterFactory.hpp"
@@ -130,7 +131,8 @@ bool PickupAction::merge_into_equipment(CreaturePtr creature, ItemPtr item)
     
     if (equipment.merge(item))
     {
-      string item_merged_into_equipment = TextMessages::get_item_pick_up_and_merge_message(item);
+      CurrentCreatureAbilities cca;
+      string item_merged_into_equipment = TextMessages::get_item_pick_up_and_merge_message(!cca.can_see(creature), item);
       manager.add_new_message(item_merged_into_equipment);
       manager.send();
       
@@ -159,7 +161,8 @@ bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr ite
     // Display a message if necessary
     if (creature->get_is_player())
     {
-      string pick_up_message = TextMessages::get_item_pick_up_message(item);
+      CurrentCreatureAbilities cca;
+      string pick_up_message = TextMessages::get_item_pick_up_message(!cca.can_see(creature), item);
       
       manager.add_new_message(pick_up_message);
       manager.send();        

@@ -183,7 +183,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
     bool tile_exists_in_fov_map = (creature->get_decision_strategy()->get_fov_map()->at(c));
     
     TileDescription td(show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
-    string tile_desc = td.describe(selected_tile, tile_exists_in_fov_map);
+    string tile_desc = td.describe(creature, selected_tile, tile_exists_in_fov_map);
 
     if (!selection_key.empty())
     {

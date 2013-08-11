@@ -526,7 +526,8 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
         
         if (item_on_tile)
         {
-          item_message = TextMessages::get_item_on_ground_description_message(item_on_tile);
+          CurrentCreatureAbilities cca;
+          item_message = TextMessages::get_item_on_ground_description_message(!cca.can_see(creature), item_on_tile);
         }
       }
       // Multiple items
