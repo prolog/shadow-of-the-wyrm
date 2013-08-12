@@ -7,9 +7,22 @@
 
 using namespace std;
 
+const int BlindedStatusEffect::BLINDED_TO_HIT_PENALTY = -10;
+const int BlindedStatusEffect::BLINDED_EVADE_PENALTY = -10;
+
 BlindedStatusEffect::BlindedStatusEffect()
 {
   status_calc = boost::make_shared<BlindedCalculator>();
+}
+
+int BlindedStatusEffect::get_to_hit_bonus(CreaturePtr creature) const
+{
+  return BLINDED_TO_HIT_PENALTY;
+}
+
+int BlindedStatusEffect::get_evade_bonus(CreaturePtr creature) const
+{
+  return BLINDED_EVADE_PENALTY;
 }
 
 bool BlindedStatusEffect::after_apply(CreaturePtr creature) const
