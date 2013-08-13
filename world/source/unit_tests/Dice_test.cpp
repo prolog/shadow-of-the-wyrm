@@ -1,5 +1,20 @@
 #include "gtest/gtest.h"
 
+TEST(SL_World_Dice, max_dice_rolls)
+{
+  Dice dice1(3, 4, 0);
+
+  EXPECT_EQ(12, dice1.max());
+
+  Dice dice2(2, 12, 7);
+
+  EXPECT_EQ(31, dice2.max());
+
+  Dice dice3(0, 20, 0);
+
+  EXPECT_EQ(0, dice3.max());
+}
+
 TEST(SL_World_Dice, serialization_id)
 {
   Dice dice;
