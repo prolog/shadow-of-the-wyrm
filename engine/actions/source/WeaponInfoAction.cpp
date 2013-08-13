@@ -99,8 +99,10 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr w
   {
     DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
     WeaponDifficultyCalculator wdc;
-    
-    int difficulty = wdc.calculate(creature, attack_type);
+
+    int base_difficulty = wdc.calculate_base_difficulty(creature, attack_type);
+    int total_difficulty = wdc.calculate_total_difficulty_for_display(creature, attack_type);
+
     Damage weapon_damage = damage_calc->calculate_base_damage_with_bonuses_or_penalties(creature);
     
     int speed = 0;
@@ -109,7 +111,7 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr w
       speed = weapon->get_speed();
     }
 
-    melee_info = EquipmentTextKeys::get_melee_weapon_synopsis(attack_type, weapon, difficulty, speed, weapon_damage);
+    melee_info = EquipmentTextKeys::get_melee_weapon_synopsis(attack_type, weapon, base_difficulty, total_difficulty, speed, weapon_damage);
   }
   
   return melee_info;
@@ -125,13 +127,14 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, WeaponPtr 
     DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(ATTACK_TYPE_RANGED);
     WeaponDifficultyCalculator wdc;
 
-    int difficulty = wdc.calculate(creature, ATTACK_TYPE_RANGED);
+    int base_difficulty = wdc.calculate_base_difficulty(creature, ATTACK_TYPE_RANGED);
+    int total_difficulty = wdc.calculate_total_difficulty_for_display(creature, ATTACK_TYPE_RANGED);
     Damage ranged_damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(creature);
     
     RangedAttackSpeedCalculator rasc;
     int speed = rasc.calculate(creature);
     
-    ranged_attack_info = EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(difficulty, speed, ranged_damage);
+    ranged_attack_info = EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(base_difficulty, total_difficulty, speed, ranged_damage);
   }
   
   return EquipmentTextKeys::get_ranged_weapon_synopsis(ranged_weapon, ammunition, ranged_attack_info);
