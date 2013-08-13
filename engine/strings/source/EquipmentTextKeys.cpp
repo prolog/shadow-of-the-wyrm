@@ -99,18 +99,19 @@ string EquipmentTextKeys::get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, We
   return ranged_synopsis;
 }
 
-string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const int difficulty, const int speed, const Damage& damage)
+string EquipmentTextKeys::get_weapon_difficulty_speed_and_damage_synopsis(const int base_difficulty, const int total_difficulty, const int speed, const Damage& damage)
 {
   string synopsis = StringTable::get(EQUIPMENT_WEAPON_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
 
-  boost::replace_first(synopsis, "%s", Integer::to_string(difficulty));
+  boost::replace_first(synopsis, "%s", Integer::to_string(base_difficulty));
+  boost::replace_first(synopsis, "%s", Integer::to_string(total_difficulty));
   boost::replace_first(synopsis, "%s", Integer::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
   
   return synopsis;
 }
 
-string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int difficulty, const int speed, const Damage& damage)
+string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int base_difficulty, const int total_difficulty, const int speed, const Damage& damage)
 {
   string synopsis;
   
@@ -131,7 +132,8 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
   }
   
   boost::replace_first(synopsis, "%s", StringTable::get(weapon_description_sid));
-  boost::replace_first(synopsis, "%s", Integer::to_string(difficulty));
+  boost::replace_first(synopsis, "%s", Integer::to_string(base_difficulty));
+  boost::replace_first(synopsis, "%s", Integer::to_string(total_difficulty));
   boost::replace_first(synopsis, "%s", Integer::to_string(speed));
   boost::replace_first(synopsis, "%s", damage.str());
   

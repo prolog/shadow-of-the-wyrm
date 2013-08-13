@@ -21,8 +21,8 @@ class EquipmentTextKeys
     
     static std::string get_equipment_text_from_given_worn_location(const EquipmentWornLocation& worn_location);
     static std::string get_ranged_weapon_synopsis(WeaponPtr ranged_weapon, WeaponPtr ammunition, const std::string& difficulty_speed_and_damage_synopsis);
-    static std::string get_weapon_difficulty_speed_and_damage_synopsis(const int difficulty, const int speed, const Damage& damage);
-    static std::string get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int difficulty, const int speed, const Damage& damage);
+    static std::string get_weapon_difficulty_speed_and_damage_synopsis(const int base_difficulty, const int total_difficulty, const int speed, const Damage& damage);
+    static std::string get_melee_weapon_synopsis(const AttackType attack_type, WeaponPtr weapon, const int base_difficulty, const int total_difficulty, const int speed, const Damage& damage);
     
   protected:
     EquipmentTextKeys();

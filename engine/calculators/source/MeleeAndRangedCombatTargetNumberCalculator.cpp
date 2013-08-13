@@ -18,7 +18,7 @@ int MeleeAndRangedCombatTargetNumberCalculator::calculate(CreaturePtr attacking_
   if (attacking_creature && attacked_creature)
   {
     WeaponDifficultyCalculator wdc;
-    int weapon_difficulty = wdc.calculate(attacking_creature, attack_type);
+    int weapon_difficulty = wdc.calculate_base_difficulty(attacking_creature, attack_type);
     int target_evade = attacked_creature->get_evade().get_current();
     
     target_number = weapon_difficulty + target_evade;
