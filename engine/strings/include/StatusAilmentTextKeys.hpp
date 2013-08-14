@@ -93,6 +93,7 @@ class StatusAilmentTextKeys
     static const std::string STATUS_BLINDED;
     static const std::string STATUS_MESSAGE_PLAYER_BLINDED;
     static const std::string STATUS_MESSAGE_PLAYER_BLINDNESS_CURED;
+    static const std::string STATUS_MESSAGE_BLIND_RANGED_COMBAT;
     static const std::string get_npc_blinded_message(boost::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_blindness_message(boost::shared_ptr<Creature> creature);
 

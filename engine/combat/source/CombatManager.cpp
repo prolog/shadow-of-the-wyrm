@@ -220,7 +220,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
     
     if (!message_sid.empty())
     {
-      IMessageManager& manager = MessageManagerFactory::instance();
+      IMessageManager& manager = MessageManagerFactory::instance(attacked_creature);
       manager.add_new_message(StringTable::get(message_sid));
     }
     

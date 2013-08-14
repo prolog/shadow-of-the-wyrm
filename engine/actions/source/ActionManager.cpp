@@ -30,6 +30,7 @@
 #include "SearchAction.hpp"
 #include "SpellcastingAction.hpp"
 #include "Serialization.hpp"
+#include "StatusAilmentTextKeys.hpp"
 #include "VersionAction.hpp"
 #include "WeaponInfoAction.hpp"
 #include "Log.hpp"
@@ -436,9 +437,21 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature)
   ActionCostValue action_cost_value = 0;
   CurrentCreatureAbilities cca;
   
-  if (creature && cca.can_see(creature, true))
+  if (creature && cca.can_see(creature))
   {
     action_cost_value = ranged_combat_action.fire_missile(creature);
+  }
+  else
+  {
+    if (creature && creature->get_is_player())
+    {
+      IMessageManager& manager = MessageManagerFactory::instance(creature);
+      string combat_message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_BLIND_RANGED_COMBAT);
+
+      manager.add_new_message(combat_message);
+      manager.send();
+
+    }
   }
   
   return get_action_cost(creature, action_cost_value);
