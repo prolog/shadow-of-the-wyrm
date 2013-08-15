@@ -11,9 +11,14 @@ IMessageManager& MessageManagerFactory::instance()
 
 // Select the correct message manager based on whether the creature is
 // the player, or at least present within the player's view map.
-IMessageManager& MessageManagerFactory::instance(CreaturePtr creature)
+IMessageManager& MessageManagerFactory::instance(CreaturePtr creature, bool player_is_affected)
 {
   Game& game = Game::instance();
+
+  if (player_is_affected)
+  {
+    return mm_instance();
+  }
 
   if (creature)
   {

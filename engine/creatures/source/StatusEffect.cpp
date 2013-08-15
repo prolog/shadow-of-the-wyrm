@@ -45,7 +45,7 @@ void StatusEffect::apply_change(CreaturePtr creature) const
 
     if (!message.empty())
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature);
+      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
       manager.add_new_message(message);
       manager.send();
     }
@@ -198,7 +198,7 @@ void StatusEffect::undo(CreaturePtr creature) const
   {
     creature->remove_status(get_status_identifier());
 
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
 
     string undo_message = get_undo_message(creature);
 

@@ -22,7 +22,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
   if (creature->get_is_player())
   {
     Game& game = Game::instance();
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
     
     MapPtr current_map = game.get_current_map();
 
@@ -83,7 +83,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
 {
   ActionCostValue descend_success = 0;
  
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (creature->get_is_player())
   {

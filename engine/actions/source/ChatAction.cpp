@@ -146,7 +146,7 @@ bool ChatAction::chat_multiple_options(CreaturePtr querying_creature, const Crea
 // Add a chat message to the message area.
 void ChatAction::add_chat_message(CreaturePtr creature, const string& chat_text_sid) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(chat_text_sid));
   manager.send();

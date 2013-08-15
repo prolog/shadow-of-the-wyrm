@@ -1,6 +1,7 @@
 #include "CombatTextKeys.hpp"
 #include "CreatureDeathManager.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 
@@ -27,7 +28,7 @@ void CreatureDeathManager::die()
     // removing it from the map, so that view map checks work as expected.
     // Otherwise, the creature will already be gone from the other creatures'
     // view maps.
-    IMessageManager& manager = MessageManagerFactory::instance(dead_creature);
+    IMessageManager& manager = MessageManagerFactory::instance(dead_creature, GameUtils::is_player_among_creatures(attacking_creature, dead_creature));
 
     // If the creature was killed by another creature, get a message of the form
     // "the foo is killed!".  Otherwise, if the creature was killed by something

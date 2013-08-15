@@ -8,6 +8,7 @@
 #include "EventFunctions.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "HostilityManager.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
@@ -220,7 +221,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
     
     if (!message_sid.empty())
     {
-      IMessageManager& manager = MessageManagerFactory::instance(attacked_creature);
+      IMessageManager& manager = MessageManagerFactory::instance(attacked_creature, GameUtils::is_player_among_creatures(attacking_creature, attacked_creature));
       manager.add_new_message(StringTable::get(message_sid));
     }
     
@@ -289,13 +290,13 @@ void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, cons
 void CombatManager::add_combat_message(CreaturePtr creature, const string& combat_message)
 {
   // Display combat information.
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   manager.add_new_message(combat_message);
 }
 
 void CombatManager::send_combat_messages(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   manager.send();
 }
 

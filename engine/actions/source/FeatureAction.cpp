@@ -79,7 +79,7 @@ bool FeatureAction::handle_lock(LockPtr lock, CreaturePtr creature)
     lock_message_sid = ActionTextKeys::ACTION_HANDLE_LOCK;
   }
 
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   manager.add_new_message(StringTable::get(lock_message_sid));
 
   return lock_handled;
@@ -87,7 +87,7 @@ bool FeatureAction::handle_lock(LockPtr lock, CreaturePtr creature)
 
 void FeatureAction::send_application_messages(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);  
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());  
   manager.send();
 }
 
@@ -147,7 +147,7 @@ bool FeatureAction::handle(FeaturePtr feature, CreaturePtr creature, const bool 
 
 void FeatureAction::add_application_message(CreaturePtr creature, const string& app_msg_sid)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(app_msg_sid));
 }
@@ -162,7 +162,7 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   CommandFactoryPtr command_factory    = boost::make_shared<CommandFactory>();
   KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
 
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())

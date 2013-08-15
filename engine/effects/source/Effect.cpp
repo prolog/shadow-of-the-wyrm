@@ -60,11 +60,10 @@ void Effect::identify_effect_as_necessary(boost::shared_ptr<Creature> creature, 
 }
 
 void Effect::identify_effect_if_player(boost::shared_ptr<Creature> creature) const
-{
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
-  
+{  
   if (creature && creature->get_is_player())
   {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
     string effect_message = get_effect_identification_message(creature);
     
     manager.add_new_message(effect_message);
@@ -74,11 +73,10 @@ void Effect::identify_effect_if_player(boost::shared_ptr<Creature> creature) con
 
 // Inform the quaffer (if they're the player) that the potion had no discernable effect.
 void Effect::inform_unidentified_if_player(boost::shared_ptr<Creature> creature) const
-{
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
-  
+{  
   if (creature && creature->get_is_player())
   {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
     string nothing_happens = StringTable::get(ActionTextKeys::ACTION_NOTHING_HAPPENS);
 
     manager.add_new_message(nothing_happens);
