@@ -74,7 +74,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
         }
         else
         {
-          IMessageManager& manager = MessageManagerFactory::instance(creature);  
+          IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());  
           movement_success = true;
           string cannot_escape = StringTable::get(MovementTextKeys::ACTION_MOVE_ADJACENT_HOSTILE_CREATURE);
           manager.add_new_message(cannot_escape);
@@ -108,7 +108,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
   ActionCostValue movement_success = 0;
 
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature);  
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());  
   MapExitPtr map_exit = map->get_map_exit();
 
   if (!MapUtils::can_exit_map(map_exit))
@@ -171,7 +171,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
       // Did the handling do anything?
       if (!handled)
       {
-        IMessageManager& manager = MessageManagerFactory::instance(creature);
+        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
         string blocked = StringTable::get(ActionTextKeys::ACTION_MOVEMENT_BLOCKED);
         manager.add_new_message(blocked);
         manager.send();
@@ -244,7 +244,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
       // into the other creature and attack indiscriminately.
       if (cca.can_select_movement_direction(creature))
       {
-        IMessageManager& manager = MessageManagerFactory::instance(creature);
+        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
         manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
         attack = creature->get_decision_strategy()->get_confirmation();
       }
@@ -292,7 +292,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     : generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, tile->get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   if (generator)
   {
@@ -382,7 +382,7 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Til
   
   if (details.first == true)
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
     
     if (creature->get_is_player())
     { 
@@ -481,7 +481,7 @@ void MovementAction::add_tile_related_messages(const CreaturePtr& creature, Tile
 
   if (tile_message_added || item_message_added)
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
     manager.send();
   }
 }
@@ -495,7 +495,7 @@ bool MovementAction::add_message_about_tile_if_necessary(const CreaturePtr& crea
   {
     if (tile->display_description_on_arrival() || tile->has_extra_description())
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature);
+      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
       TileDescriber td(tile);
       manager.add_new_message(td.describe());
       msg_added = true;
@@ -539,7 +539,7 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
       // Send the message
       if (!item_message.empty())
       {
-        IMessageManager& manager = MessageManagerFactory::instance(creature);
+        IMessageManager& manager = MessageManagerFactory::instance(creature, true);
         manager.add_new_message(item_message);
         msg_added = true;
       }

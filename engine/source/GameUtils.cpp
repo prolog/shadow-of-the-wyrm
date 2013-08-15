@@ -67,3 +67,9 @@ bool GameUtils::is_creature_adjacent(Game& game, CreaturePtr creature1, Creature
 
   return creatures_adjacent;
 }
+
+// Is the player among the creatures provided?
+bool GameUtils::is_player_among_creatures(CreaturePtr creature1, CreaturePtr creature2)
+{
+  return ((creature1 && creature1->get_is_player()) || (creature2 && creature2->get_is_player()));
+}

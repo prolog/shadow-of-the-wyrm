@@ -105,7 +105,7 @@ ActionCost ActionManager::ascend(CreaturePtr creature)
     
   if (map_type == MAP_TYPE_WORLD && creature && creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
     string search_message = StringTable::get(MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
 
     manager.add_new_message(search_message);
@@ -276,7 +276,7 @@ ActionCost ActionManager::reload_scripts_and_sids(CreaturePtr creature)
 
   StringTable::load(game.get_sid_ini_filename());
 
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   manager.add_new_message(StringTable::get(GameEnvTextKeys::GAME_ENV_LUA_STATE_CLEARED));
   manager.send();
 
@@ -286,7 +286,7 @@ ActionCost ActionManager::reload_scripts_and_sids(CreaturePtr creature)
 ActionCost ActionManager::run_script_command(CreaturePtr creature)
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   ScriptEngine& se = game.get_script_engine_ref();
   string command = manager.add_new_message_with_prompt(StringTable::get(PromptTextKeys::PROMPT_RUN_SCRIPT));
 
@@ -445,7 +445,7 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature)
   {
     if (creature && creature->get_is_player())
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature);
+      IMessageManager& manager = MessageManagerFactory::instance(creature, true);
       string combat_message = StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_BLIND_RANGED_COMBAT);
 
       manager.add_new_message(combat_message);

@@ -98,7 +98,7 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
 // Add a message about whether the creature could eat the item, or not.
 void FoodAction::add_food_message(CreaturePtr creature, ItemPtr food, const bool eat_success)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   string message;
 
@@ -123,7 +123,7 @@ void FoodAction::add_hunger_level_message_if_necessary(CreaturePtr creature, con
 
   if (old_level != new_level)
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
     if (hunger_message_sid_map.empty())
     {

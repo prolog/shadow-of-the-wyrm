@@ -47,11 +47,10 @@ ActionCostValue DropAction::drop(CreaturePtr creature, ActionManager * const am)
 
 // Handle trying to drop stuff on the world map, which is not a valid case.
 void DropAction::handle_world_drop(CreaturePtr creature)
-{
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
-  
+{  
   if (creature && creature->get_is_player())
   {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
     string drop_not_allowed = StringTable::get(ActionTextKeys::ACTION_DROP_NOT_ALLOWED);
     
     manager.add_new_message(drop_not_allowed);
@@ -61,11 +60,10 @@ void DropAction::handle_world_drop(CreaturePtr creature)
 
 // Handle trying to drop an invalid quantity (0, "a bajillion", etc)
 void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
-{
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
-  
+{  
   if (creature && creature->get_is_player())
   {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
     manager.clear_if_necessary();
     string invalid_drop_quantity = StringTable::get(ActionTextKeys::ACTION_DROP_INVALID_QUANTITY);
     manager.add_new_message(invalid_drop_quantity);
@@ -75,11 +73,11 @@ void DropAction::handle_invalid_drop_quantity(CreaturePtr creature)
 
 // Show the description of the item being dropped, if applicable
 void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
-{
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
-  
+{  
   if (item && creature && creature->get_is_player())
   {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
+
     manager.clear_if_necessary();
     
     uint quantity = item->get_quantity();
@@ -100,11 +98,10 @@ void DropAction::handle_item_dropped_message(CreaturePtr creature, ItemPtr item)
 
 // Handle the case where the intent was to drop, but then nothing was selected.
 void DropAction::handle_no_item_dropped(CreaturePtr creature)
-{
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
-  
+{  
   if (creature && creature->get_is_player())
   {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
     string no_item_to_drop = StringTable::get(ActionTextKeys::ACTION_DROP_NO_ITEM_SELECTED);
     
     manager.add_new_message(no_item_to_drop);
@@ -167,11 +164,10 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 
 // Get the quantity to drop
 uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity) const
-{
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
-  
+{  
   if (creature && creature->get_is_player())
   {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, true);
     Game& game = Game::instance();
     game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
               

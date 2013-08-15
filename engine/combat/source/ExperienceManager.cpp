@@ -147,7 +147,7 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
 // Gain a level, increase HP/AP, and do anything else that needs to be done.
 void ExperienceManager::level_up(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (creature)
   {

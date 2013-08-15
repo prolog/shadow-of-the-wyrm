@@ -147,7 +147,7 @@ bool SpellbookReadStrategy::confirm_reading_if_necessary(CreaturePtr creature, c
     }
     else
     {
-      IMessageManager& manager = MessageManagerFactory::instance(creature);
+      IMessageManager& manager = MessageManagerFactory::instance(creature, creature->get_is_player());
 
       if (creature && creature->get_is_player())
       {
@@ -181,7 +181,7 @@ bool SpellbookReadStrategy::handle_fallout_if_necessary(CreaturePtr creature, co
 
 void SpellbookReadStrategy::add_no_magic_skill_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_NO_MAGIC_SKILL));
   manager.send();
@@ -189,7 +189,7 @@ void SpellbookReadStrategy::add_no_magic_skill_message(CreaturePtr creature)
 
 void SpellbookReadStrategy::add_spell_not_learned_message(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_SPELL_NOT_LEARNED));
   manager.send();
@@ -198,7 +198,7 @@ void SpellbookReadStrategy::add_spell_not_learned_message(CreaturePtr creature)
 void SpellbookReadStrategy::add_spellbook_destruction_message(CreaturePtr creature, SpellbookPtr spellbook)
 {
   ItemIdentifier item_id;
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(SpellcastingTextKeys::get_spellbook_destruction_message(item_id.get_appropriate_usage_description(spellbook)));
   manager.send();

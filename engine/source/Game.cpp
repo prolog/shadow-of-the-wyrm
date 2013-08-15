@@ -262,7 +262,7 @@ void Game::go()
 
   string welcome_message = TextMessages::get_welcome_message(current_player->get_name(), !reloaded_game);
 
-  IMessageManager& manager = MessageManagerFactory::instance(current_player);
+  IMessageManager& manager = MessageManagerFactory::instance(current_player, true);
   manager.add_new_message(welcome_message);
   manager.send();
 
@@ -448,7 +448,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         // The player will already have had a chance to read the messages.
         if (current_creature->get_is_player())
         {
-          MessageManagerFactory::instance(current_creature).clear_if_necessary();
+          MessageManagerFactory::instance(current_creature, true).clear_if_necessary();
         }
 
         action_cost = CommandProcessor::process(current_creature, command, display);

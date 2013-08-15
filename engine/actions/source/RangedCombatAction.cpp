@@ -35,7 +35,7 @@ bool RangedCombatAction::operator==(const RangedCombatAction& rca) const
 ActionCostValue RangedCombatAction::fire_missile(CreaturePtr creature)
 {
   ActionCostValue action_cost_value = 0;
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (creature)
   {
@@ -262,7 +262,7 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
 
       if (!ranged_attack_message.empty())
       {
-        IMessageManager& manager = MessageManagerFactory::instance(creature);
+        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
         manager.add_new_message(ranged_attack_message);
         manager.send();
       }

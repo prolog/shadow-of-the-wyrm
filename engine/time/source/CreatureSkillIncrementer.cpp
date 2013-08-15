@@ -45,7 +45,7 @@ void CreatureSkillIncrementer::tick(CreaturePtr creature, const ulonglong minute
             
             if (creature->get_is_player())
             {
-              IMessageManager& manager = MessageManagerFactory::instance(creature);
+              IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
               string skill_increase_message = StringTable::get(skill->get_skill_increment_message_sid());
               manager.add_new_message(skill_increase_message);

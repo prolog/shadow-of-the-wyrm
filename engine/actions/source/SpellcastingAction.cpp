@@ -110,7 +110,7 @@ pair<string, ActionCostValue> SpellcastingAction::cast_spell_on_valid_map_type(C
 ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const string& spell_id) const
 {
   ActionCostValue action_cost_value = 0;
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   if (creature)
   {
@@ -145,7 +145,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
 
       if (spellcasting_succeeded == false)
       {
-        IMessageManager& manager = MessageManagerFactory::instance(creature);
+        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
         manager.add_new_message(ActionTextKeys::get_spellcasting_cancelled_message(creature->get_description_sid(), creature->get_is_player()));
       }
       else
@@ -208,7 +208,7 @@ void SpellcastingAction::update_spell_bonus(CreaturePtr caster, const Spell& spe
 // Add a message about the spell bonus increasing.
 void SpellcastingAction::add_spell_bonus_increased_message(CreaturePtr creature) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_BONUS_INCREASED));
   manager.send();
@@ -217,7 +217,7 @@ void SpellcastingAction::add_spell_bonus_increased_message(CreaturePtr creature)
 // Add a message that the player has no magical knowledge
 void SpellcastingAction::add_no_magical_knowledge_message(CreaturePtr creature) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_NO_MAGICAL_KNOWLEDGE));
   manager.send();
@@ -226,7 +226,7 @@ void SpellcastingAction::add_no_magical_knowledge_message(CreaturePtr creature) 
 // Add a message that spells can't be cast here (basically, world map)
 void SpellcastingAction::add_invalid_spellcasting_location_message(CreaturePtr creature) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_UNAVAILABLE_ON_WORLD_MAP));
   manager.send();
@@ -235,7 +235,7 @@ void SpellcastingAction::add_invalid_spellcasting_location_message(CreaturePtr c
 // Add a message about not having enough AP.
 void SpellcastingAction::add_insufficient_power_message(CreaturePtr creature) const
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(SpellcastingTextKeys::SPELLCASTING_INSUFFICIENT_POWER));
   manager.send();
@@ -276,7 +276,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   bool direction_conversion_ok = true;
   Direction direction = spell_direction;
 
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   // Make the creature select a direction.
   CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();

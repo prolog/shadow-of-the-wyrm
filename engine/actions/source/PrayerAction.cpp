@@ -39,7 +39,7 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
 // If the creature is the player, say a prayer (add a message).
 void PrayerAction::say_prayer(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   ReligionManager rm;
   
   if (creature && creature->get_is_player())
@@ -75,7 +75,7 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   
   if (creature->get_is_player())
   {
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
     
     string prayer_message = StringTable::get(decision_implications.get_message_sid());
       

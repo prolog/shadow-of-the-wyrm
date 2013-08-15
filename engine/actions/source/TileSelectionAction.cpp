@@ -97,7 +97,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const str
   pair<bool, ActionCostValue> command_result(false, 0);
   
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (creature)
   {
@@ -165,7 +165,7 @@ TilePtr TileSelectionAction::get_cursor_tile()
 ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Direction direction)
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   if (creature && command_factory && kb_command_map)
   {
@@ -207,7 +207,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
 ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
 {
   Game& game = Game::instance();
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (creature)
   {
@@ -240,7 +240,7 @@ bool TileSelectionAction::is_tile_in_range_and_add_message_if_not(CreaturePtr cr
   {
     tile_in_range = false;
     
-    IMessageManager& manager = MessageManagerFactory::instance(creature);
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
     
     string target_too_far = StringTable::get(CombatTextKeys::COMBAT_TARGET_TOO_FAR_AWAY);
     manager.clear_if_necessary();

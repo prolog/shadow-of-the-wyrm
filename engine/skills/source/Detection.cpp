@@ -8,7 +8,7 @@ using std::string;
 
 void Detection::detect_creatures_if_necessary(CreaturePtr creature, MapPtr map, const string& original_map_id, const string& current_map_id)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (original_map_id != current_map_id) // We've just loaded a new map
   {

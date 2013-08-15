@@ -94,7 +94,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
 // Handle the case where we're trying to pick up on the world map, which is an invalid case.
 void PickupAction::handle_world_map_pickup(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (creature && creature->get_is_player())
   {
@@ -108,7 +108,7 @@ void PickupAction::handle_world_map_pickup(CreaturePtr creature)
 // Handle the case where we're trying to pick up from a tile that contains no items.
 void PickupAction::handle_empty_tile_pickup(CreaturePtr creature)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (creature && creature->get_is_player())
   {
@@ -123,7 +123,7 @@ void PickupAction::handle_empty_tile_pickup(CreaturePtr creature)
 // If the item can't be merged into the equipment, return false.
 bool PickupAction::merge_into_equipment(CreaturePtr creature, ItemPtr item)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   
   if (creature)
   {
@@ -147,7 +147,7 @@ bool PickupAction::merge_into_equipment(CreaturePtr creature, ItemPtr item)
 // add the item to the inventory.
 bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr item)
 {
-  IMessageManager& manager = MessageManagerFactory::instance(creature);
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   if (creature)
   {
