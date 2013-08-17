@@ -5994,6 +5994,45 @@
 				<Nutrition>100</Nutrition>
 				<Effect>11</Effect>
 			</Potion>			
+			<Potion id="unblinding_potion">
+				<DescriptionSID>UNBLINDING_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_UNBLINDING_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>UNBLINDING_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_UNBLINDING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>80</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>14</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>100</Nutrition>
+				<Effect>12</Effect>
+			</Potion>			
+			<Potion id="fire_potion">
+				<DescriptionSID>FIRE_POTION_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FIRE_POTION_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FIRE_POTION_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FIRE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>10</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>9</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>100</Nutrition>
+				<Effect>0</Effect>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>4</NumSides>
+					<Type>3</Type>
+				</Damage>
+			</Potion>			
 			<Potion id="ether_potion">
 				<DescriptionSID>ETHER_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_ETHER_POTION_SID</UnidentifiedDescriptionSID>

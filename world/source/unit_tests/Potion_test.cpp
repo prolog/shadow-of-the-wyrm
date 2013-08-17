@@ -12,6 +12,10 @@ TEST(SL_World_Potion, saveload)
   Potion potion, potion2;
 
   potion.set_quantity(10);
+  potion.set_has_damage(true);
+
+  Damage d(1, 4, 1, DAMAGE_TYPE_HEAT);
+  potion.set_damage(d);
 
   ostringstream ss;
 

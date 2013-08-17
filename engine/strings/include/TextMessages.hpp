@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include "Creature.hpp"
 #include "CreatureFeatures.hpp"
 #include "EquipmentTypes.hpp"
 #include "Item.hpp"
@@ -23,6 +24,7 @@ class TextMessages
     static std::string get_item_pick_up_and_merge_message(const bool blind, ItemPtr item);
     static std::string get_item_on_ground_description_message(const bool blind, ItemPtr item);
     static std::string get_currency_amount_message(const uint currency_amount);
+    static std::string get_reflexive_pronoun(CreaturePtr creature);
 
   protected:
     TextMessages();

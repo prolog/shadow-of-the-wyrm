@@ -22,7 +22,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 12);
+  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 13);
 
   EffectPtr effect;
 
@@ -60,6 +60,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_RESTORE_STATISTICS:
       effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_DISFIGURED);
+      break;
+    case EFFECT_TYPE_UNBLINDING:
+      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_BLINDED);
       break;
     case EFFECT_TYPE_NULL:
     default:

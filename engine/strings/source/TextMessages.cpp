@@ -295,3 +295,29 @@ string TextMessages::get_currency_amount_message(const uint currency_amount)
   
   return currency_message;
 }
+
+string TextMessages::get_reflexive_pronoun(CreaturePtr creature)
+{
+  string reflexive_pronoun = StringTable::get(TextKeys::ITSELF);
+
+  if (creature)
+  {
+    if (creature->get_is_player())
+    {
+      reflexive_pronoun = StringTable::get(TextKeys::YOURSELF);
+    }
+    else
+    {
+      if (creature->get_sex() == CREATURE_SEX_MALE)
+      {
+        reflexive_pronoun = StringTable::get(TextKeys::HIMSELF);
+      }
+      else
+      {
+        reflexive_pronoun = StringTable::get(TextKeys::HERSELF);
+      }
+    }
+  }
+
+  return reflexive_pronoun;
+}
