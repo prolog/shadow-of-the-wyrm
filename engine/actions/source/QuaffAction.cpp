@@ -35,7 +35,14 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
       
       if (potion)
       {
-        quaff_potion(creature, am, potion);
+        ItemIdentifier item_id;
+        EffectPtr effect = EffectFactory::create_effect(potion->get_effect_type());
+        string base_id = potion->get_base_id();
+  
+        // Get "You/monster quaffs a foo-ey potion" message
+        string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(potion), creature->get_is_player());
+
+        quaff_potion(creature, potion, creature, quaff_message);
         action_cost_value = get_action_cost_value();
       }
     }
@@ -44,8 +51,17 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
   return action_cost_value;
 }
 
+void QuaffAction::explode_potion(CreaturePtr original_attacker, CreaturePtr creature_by_exploding_potion, PotionPtr potion)
+{
+  if (creature_by_exploding_potion && potion)
+  {
+    string message = StringTable::get(ActionTextKeys::ACTION_POTION_EXPLODES);
+    quaff_potion(creature_by_exploding_potion, potion, original_attacker, message);
+  }
+}
+
 // A valid potion's been selected.  Quaff it: get the potion's nutrition, and then do the magical effect.
-void QuaffAction::quaff_potion(CreaturePtr creature, ActionManager * const am, PotionPtr potion)
+void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreaturePtr caster, const string& message)
 {
   if (creature && potion)
   {
@@ -65,7 +81,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, ActionManager * const am, P
       bool potion_originally_identified = item_id.get_item_identified(potion_base_id);
 
       // Add a message about quaffing.
-      add_quaff_message(creature, potion, item_id);
+      add_quaff_message(creature, message);
       
       // Reduce the quantity, removing it from the inventory if necessary
       potion->set_quantity(potion->get_quantity() - 1);
@@ -84,7 +100,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, ActionManager * const am, P
         // Use the generic spell processor, which is also used for "regular"
         // spellcasting.
         SpellcastingProcessor sp;
-        effect_identified = sp.process(spell_processor, creature, map, caster_coord, DIRECTION_NULL, potion_spell, potion->get_status());
+        effect_identified = sp.process(spell_processor, caster, map, caster_coord, DIRECTION_NULL, potion_spell, potion->get_status());
       }
 
       // Was the item identified?
@@ -117,13 +133,8 @@ Spell QuaffAction::create_potion_spell(PotionPtr potion)
   return potion_spell;
 }
 
-void QuaffAction::add_quaff_message(CreaturePtr creature, PotionPtr potion, const ItemIdentifier& item_id)
+void QuaffAction::add_quaff_message(CreaturePtr creature, const string& quaff_message)
 {
-  EffectPtr effect = EffectFactory::create_effect(potion->get_effect_type());
-  string base_id = potion->get_base_id();
-  
-  // Get "You/monster quaffs a foo-ey potion" message
-  string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(potion), creature->get_is_player());
   
   // Display an appropriate message
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());

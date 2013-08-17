@@ -16,6 +16,7 @@
 #include "MapCursor.hpp"
 #include "MapTranslator.hpp"
 #include "MessageManagerFactory.hpp"
+#include "QuaffAction.hpp"
 #include "RangedCombatAction.hpp"
 #include "RangedCombatApplicabilityChecker.hpp"
 #include "RNG.hpp"
@@ -215,6 +216,8 @@ vector<Coordinate> RangedCombatAction::get_actual_coordinates_given_missile_path
 // and check to see if the ammunition survives.
 void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr current_map, const Coordinate& target_coords)
 {
+  bool ammo_auto_destroy = false;
+
   TilePtr tile = current_map->at(target_coords);
   CreaturePtr target_creature = tile->get_creature();
 
@@ -223,10 +226,27 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
   if (target_creature)
   {
     CombatManager cm;
-    cm.attack(creature, target_creature, ATTACK_TYPE_RANGED);
+
+    PotionPtr potion = dynamic_pointer_cast<Potion>(creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION));
+
+    if (potion)
+    {
+      QuaffAction qa;
+      qa.explode_potion(creature, target_creature, potion);
+
+      // Potion shatters, creature is covered in it.
+      ammo_auto_destroy = true;
+    }
+    else
+    {
+      cm.attack(creature, target_creature, ATTACK_TYPE_RANGED);
+    }
   }
 
-  destroy_ammunition_or_drop_on_tile(creature, tile);
+  if (!ammo_auto_destroy)
+  {
+    destroy_ammunition_or_drop_on_tile(creature, tile);
+  }
 }
 
 // Add an appropriate ranged combat message based on creature details, weapon details, etc.
