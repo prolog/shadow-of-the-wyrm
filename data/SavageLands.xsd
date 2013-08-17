@@ -748,6 +748,7 @@
 		<xs:extension base="tns:Consumable">
 			<xs:sequence>
 				<xs:element name="Effect" type="tns:EffectType"/>
+				<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -1096,11 +1097,12 @@
 				Unstoning = 9
 				Unbinding = 10
 				Restore Statistics = 11
+				Unblinding = 12
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="11"/>
+		<xs:maxInclusive value="12"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

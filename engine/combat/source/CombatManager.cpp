@@ -19,6 +19,7 @@
 #include "StatusEffectFactory.hpp"
 #include "SpeedCalculatorFactory.hpp"
 #include "TextKeys.hpp"
+#include "TextMessages.hpp"
 #include "RNG.hpp"
 #include "WeaponManager.hpp"
 
@@ -139,7 +140,7 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 
 bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)
 {
-  string attacked_creature_desc = get_appropriate_creature_description(attacked_creature);
+  string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   DamageType damage_type = damage_info.get_damage_type();
   int base_damage = 0;
   float soak_multiplier = 1.0;
@@ -247,7 +248,7 @@ void CombatManager::deal_damage(CreaturePtr attacking_creature, CreaturePtr atta
 
 bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
-  string attacked_creature_desc = get_appropriate_creature_description(attacked_creature);
+  string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(attacking_creature, combat_message);
 
@@ -256,7 +257,7 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 
 bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attacked_creature)
 {
-  string attacked_creature_desc = get_appropriate_creature_description(attacked_creature);
+  string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_close_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
   add_combat_message(attacking_creature, combat_message);
 
@@ -331,17 +332,30 @@ bool CombatManager::is_automatic_miss(const int d100_roll)
   return (d100_roll <= CombatConstants::AUTOMATIC_MISS_THRESHOLD);
 }
 
-string CombatManager::get_appropriate_creature_description(CreaturePtr creature)
+// Get the appropriate description for the attacked creature.
+//
+// If it is the player, it will be "you", unless the attackING creature is
+// also the player, in which case it will be "yourself".
+//
+// If it is not the player, it will just be the creature's description.
+string CombatManager::get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature)
 {
   string desc;
-  
-  if (creature->get_is_player())
+
+  if (attacking_creature && creature && (attacking_creature->get_id() == creature->get_id()))
   {
-    desc = StringTable::get(TextKeys::YOU);
+    desc = TextMessages::get_reflexive_pronoun(creature);
   }
   else
   {
-    desc = StringTable::get(creature->get_description_sid());
+    if (creature->get_is_player())
+    {
+      desc = StringTable::get(TextKeys::YOU);
+    }
+    else
+    {
+      desc = StringTable::get(creature->get_description_sid());
+    }
   }
   
   return desc;

@@ -46,5 +46,6 @@ class CombatManager
 
     void run_death_event(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map);
 
-    std::string get_appropriate_creature_description(CreaturePtr creature);
+    // Get the appropriate description for the defending creature.
+    std::string get_appropriate_creature_description(CreaturePtr attacking_creature, CreaturePtr creature);
 };

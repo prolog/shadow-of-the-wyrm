@@ -74,8 +74,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, ActionManager * const am, P
       // Process the effect using a temporary spell.  This will do any necessary 
       // updates to the creature, and will also add a status message based on
       // whether the item was identified.
-      Spell potion_spell = SpellFactory::create_self_targetted_item_spell();
-      potion_spell.set_effect(potion->get_effect_type());
+      Spell potion_spell = create_potion_spell(potion); 
 
       SpellShapeProcessorPtr spell_processor = SpellShapeProcessorFactory::create_processor(potion_spell.get_shape().get_spell_shape_type());
       bool effect_identified = false;
@@ -99,6 +98,23 @@ void QuaffAction::quaff_potion(CreaturePtr creature, ActionManager * const am, P
       }
     }
   }
+}
+
+Spell QuaffAction::create_potion_spell(PotionPtr potion)
+{
+  Spell potion_spell = SpellFactory::create_self_targetted_item_spell();
+
+  // If the potion can damage the drinker (potion of fire, etc), ensure that
+  // the damage is added to the potion spell.
+  if (potion->get_has_damage())
+  {
+    potion_spell.set_has_damage(true);
+    potion_spell.set_damage(potion->get_damage());
+  }
+
+  potion_spell.set_effect(potion->get_effect_type());
+
+  return potion_spell;
 }
 
 void QuaffAction::add_quaff_message(CreaturePtr creature, PotionPtr potion, const ItemIdentifier& item_id)

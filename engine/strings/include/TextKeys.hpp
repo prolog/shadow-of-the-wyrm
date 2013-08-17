@@ -17,6 +17,10 @@ class TextKeys
     static const std::string DEATH_MESSAGE;
     static const std::string DEFAULT_PLAYER_NAME;
     static const std::string YOU;
+    static const std::string YOURSELF;
+    static const std::string HIMSELF;
+    static const std::string HERSELF;
+    static const std::string ITSELF;
     static const std::string NPC_ESCAPES_MESSAGE;
     static const std::string SEX;
     static const std::string SELECT_SEX;
