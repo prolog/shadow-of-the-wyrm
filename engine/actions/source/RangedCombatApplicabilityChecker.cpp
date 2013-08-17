@@ -124,10 +124,12 @@ bool RangedCombatApplicabilityChecker::does_ranged_weapon_match_ammunition(Creat
     Equipment& equipment = creature->get_equipment();
     
     WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
-    WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_AMMUNITION));
-    
+    ItemPtr ammo_slot_item = equipment.get_item(EQUIPMENT_WORN_AMMUNITION);
+    WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(ammo_slot_item);
+    PotionPtr potion_ammo = dynamic_pointer_cast<Potion>(ammo_slot_item);
+
     WeaponManager wm;
-    weapon_match = wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged_weapon, ammunition);    
+    weapon_match = ((potion_ammo && !ranged_weapon) || wm.is_ranged_weapon_skill_type_compatible_with_ammunition(ranged_weapon, ammunition));
   }
 
   return weapon_match;
@@ -151,8 +153,13 @@ bool RangedCombatApplicabilityChecker::is_ranged_weapon_required_and_equipped(Cr
     Equipment& equipment = creature->get_equipment();
     WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_AMMUNITION));
     ItemPtr ranged_weapon = equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON);
-    
-    bool ammunition_requires_ranged_weapon = ammunition->get_requires_ranged_weapon();
+
+    bool ammunition_requires_ranged_weapon = false;
+
+    if (ammunition) // may be a potion instead of just ammunition...
+    {
+      ammunition_requires_ranged_weapon = ammunition->get_requires_ranged_weapon();
+    }
     
     if (ammunition_requires_ranged_weapon && !ranged_weapon)
     {

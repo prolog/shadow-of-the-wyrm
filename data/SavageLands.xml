@@ -5882,6 +5882,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_HEALING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>100</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -5899,6 +5900,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_ANTIDOTE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>80</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -5916,6 +5918,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_AMUT_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>50</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -5933,6 +5936,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_SPEED_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>125</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -5950,6 +5954,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_UNSTONING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>150</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -5967,6 +5972,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_UNBINDING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>110</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -5984,6 +5990,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_RESTORATIVE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>80</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -6001,6 +6008,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_UNBLINDING_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>80</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -6018,6 +6026,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_FIRE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>10</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -6040,6 +6049,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_ETHER_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>500</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>
@@ -6057,6 +6067,7 @@
 				<UnidentifiedUsageDescriptionSID>UNID_FRUIT_JUICE_POTION_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>30</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
 				<Material>2</Material>
 				<TextDetails>
 					<Symbol>!</Symbol>

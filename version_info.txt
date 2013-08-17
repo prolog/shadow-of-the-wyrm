@@ -1,6 +1,9 @@
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.
 
+- Added the ability to throw potions.  When thrown, potions explode
+  on impact (can't be salvaged).
+
 Savage Lands v0.1.5 "Beorhthun"
 - Version declared June 23, 2013.  Version finalized August 17, 2013.
 
