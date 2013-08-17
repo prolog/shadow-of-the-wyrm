@@ -31,9 +31,9 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Alderman of the slain king Aethelwealh.  With Andhun, Beorhthun drove 
-  // Caedwalla, prince of Wessex, out of Sussex.
-  return "\"Beorhthun\"";
+  // Witness of a charter of Nothhelm, undated, listed before Bishop
+  // Eadbert.
+  return "\"Osric\"";
 }
 
 string Metadata::get_game_version_synopsis() const
