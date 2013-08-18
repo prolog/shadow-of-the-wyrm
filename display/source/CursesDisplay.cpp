@@ -549,7 +549,7 @@ string CursesDisplay::display_menu(const Menu& current_menu)
 
   vector<MenuComponentPtr> components = current_menu.get_components();
   uint line_incr = current_menu.get_line_increment();
-  BOOST_FOREACH( MenuComponentPtr component, components)
+  BOOST_FOREACH(MenuComponentPtr component, components)
   {
     if (component)
     {
@@ -895,6 +895,17 @@ void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
     wprintw(eq_window, item_description.c_str());
     disable_colour(item_colour, eq_window);
 
+    vector<pair<string, Colour>> flags = display_item.get_flags();
+
+    BOOST_FOREACH(const TextColour& flag_pair, flags)
+    {
+      wprintw(eq_window, " ");
+      
+      enable_colour(flag_pair.second, eq_window);
+      wprintw(eq_window, flag_pair.first.c_str());
+      disable_colour(flag_pair.second, eq_window);
+    }
+
     slot_char++;
   }
   
@@ -956,6 +967,16 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
         enable_colour(item_colour, inv_window);
         wprintw(inv_window, item_description.c_str());        
         disable_colour(item_colour, inv_window);
+
+        DisplayItemFlagsVec flags = item.get_flags();
+        BOOST_FOREACH(const TextColour& tc, flags)
+        {
+          wprintw(inv_window, " ");
+
+          enable_colour(tc.second, inv_window);
+          wprintw(inv_window, tc.first.c_str());
+          disable_colour(tc.second, inv_window);
+        }
 
         items_displayed++;
         slot_char++;

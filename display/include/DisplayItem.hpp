@@ -6,6 +6,8 @@
 #include "EquipmentTypes.hpp"
 #include "ItemTypes.hpp"
 
+typedef std::vector<TextColour> DisplayItemFlagsVec;
+
 // A DisplayItem contains the relevant details of an item for the Display
 // to use in its inventory and equipment management routines.
 class DisplayItem
@@ -17,6 +19,9 @@ class DisplayItem
     void set_description(const std::string& new_description);
     std::string get_description() const;
 
+    void set_flags(const DisplayItemFlagsVec& new_flags);
+    DisplayItemFlagsVec get_flags() const;
+
     void set_colour(const Colour new_colour);
     Colour get_colour() const;
     
@@ -26,6 +31,7 @@ class DisplayItem
     // Additional status-related items go here.
   protected:
     std::string description;
+    std::vector<std::pair<std::string, Colour>> flags;
     Colour colour;
     std::string id;
 };

@@ -494,6 +494,7 @@
     <ClInclude Include="engine\strings\include\FileConstants.hpp" />
     <ClInclude Include="engine\strings\include\GameEnvTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ItemStatusTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\ItemTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ItemTypeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MenuTitleTextKeys.hpp" />
@@ -1416,6 +1417,7 @@
     <ClCompile Include="engine\strings\source\FileConstants.cpp" />
     <ClCompile Include="engine\strings\source\GameEnvTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ItemStatusTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\ItemTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ItemTypeTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MaterialTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MenuTitleTextKeys.cpp" />

@@ -104,6 +104,9 @@ class Item : public ISerializable
     virtual void set_effect_type(const EffectType new_effect_type);
     virtual EffectType get_effect_type() const;
     
+    virtual void set_glowing(const bool new_glowing);
+    virtual bool get_glowing() const;
+
     virtual Item* create_with_new_id();
     virtual Item* create();
     virtual Item* clone() = 0;
@@ -141,6 +144,7 @@ class Item : public ISerializable
     ItemIdentificationType identification_type;
     EffectType effect;
     MaterialType material;
+    bool glowing;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

@@ -25,3 +25,4 @@ enum Colours
 };
 
 typedef Colours Colour;
+typedef std::pair<std::string, Colour> TextColour;

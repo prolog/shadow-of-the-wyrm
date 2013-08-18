@@ -75,6 +75,16 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
 
     MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", MATERIAL_TYPE_WOOD));
     item->set_material_type(material_type);
+
+    // Get whether the item is glowing (visible when blind).
+    bool glow = XMLUtils::get_child_node_bool_value(item_node, "Glow", item->get_glowing());
+
+    if (is_artifact)
+    {
+      glow = true;
+    }
+
+    item->set_glowing(glow);
     
     // Overridden text details - most items will not have this, unless a very specific
     // symbol or colour is desired.

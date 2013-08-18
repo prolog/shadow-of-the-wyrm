@@ -3,7 +3,6 @@
 #include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "Item.hpp"
-//include "ItemIdentifier.hpp"
 #include "NullEffect.hpp"
 #include "MaterialFactory.hpp"
 #include "Wood.hpp"
@@ -17,7 +16,8 @@ using namespace std;
 Item::Item()
 : quantity(1), readable(false), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false), 
 item_identified(false), artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), 
-identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EFFECT_TYPE_NULL), material(MATERIAL_TYPE_WOOD)
+identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EFFECT_TYPE_NULL), material(MATERIAL_TYPE_WOOD),
+glowing(false)
 {
 }
 
@@ -49,6 +49,7 @@ bool Item::operator==(const Item& i) const
   result = result && (identification_type == i.identification_type);
   result = result && (effect == i.effect);
   result = result && (material == i.material);
+  result = result && (glowing == i.glowing);
 
   return result;
 }
@@ -267,7 +268,6 @@ ItemIdentificationType Item::get_identification_type() const
 bool Item::matches(boost::shared_ptr<Item> i)
 {
   bool match = (i);
-//  ItemIdentifier item_id;
 
   if (i)
   {
@@ -281,6 +281,7 @@ bool Item::matches(boost::shared_ptr<Item> i)
     match = match && (type                  == i->get_type()                 );
     match = match && (material              == i->get_material_type()        );
     match = match && (effect                == i->get_effect_type()          );
+    match = match && (glowing               == i->get_glowing()              );
 
     // Check the concrete implementation class's attributes:
     match = match && additional_item_attributes_match(i);
@@ -304,6 +305,16 @@ void Item::set_effect_type(const EffectType new_effect)
 EffectType Item::get_effect_type() const
 {
   return effect;
+}
+
+void Item::set_glowing(const bool new_glowing)
+{
+  glowing = new_glowing;
+}
+
+bool Item::get_glowing() const
+{
+  return glowing;
 }
 
 Item* Item::create_with_new_id()
@@ -358,6 +369,7 @@ bool Item::serialize(ostream& stream)
   Serialize::write_enum(stream, identification_type);
   Serialize::write_enum(stream, effect);
   Serialize::write_enum(stream, material);
+  Serialize::write_bool(stream, glowing);
 
   return true;
 }
@@ -384,6 +396,7 @@ bool Item::deserialize(istream& stream)
   Serialize::read_enum(stream, identification_type);
   Serialize::read_enum(stream, effect);
   Serialize::read_enum(stream, material);
+  Serialize::read_bool(stream, glowing);
 
   return true;
 }

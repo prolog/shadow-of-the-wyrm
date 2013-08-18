@@ -6010,6 +6010,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
+				<Glow>1</Glow>
 				<TextDetails>
 					<Symbol>!</Symbol>
 					<Colour>14</Colour>
@@ -6028,6 +6029,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>10</WornLocation>
 				<Material>2</Material>
+				<Glow>1</Glow>
 				<TextDetails>
 					<Symbol>!</Symbol>
 					<Colour>9</Colour>
