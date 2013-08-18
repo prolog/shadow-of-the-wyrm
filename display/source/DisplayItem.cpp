@@ -21,6 +21,16 @@ string DisplayItem::get_description() const
   return description;
 }
 
+void DisplayItem::set_flags(const DisplayItemFlagsVec& new_flags)
+{
+  flags = new_flags;
+}
+
+DisplayItemFlagsVec DisplayItem::get_flags() const
+{
+  return flags;
+}
+
 void DisplayItem::set_colour(const Colour new_colour)
 {
   colour = new_colour;

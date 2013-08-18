@@ -4,6 +4,10 @@ Savage Lands v0.1.6 "Osric"
 - Added the ability to throw potions.  When thrown, potions explode
   on impact (can't be salvaged).
 
+- Added a "glow" flag to items.  When set, this flag will make the items
+  "visible" when the creature is blind (the item won't appear as
+  "something", it can be "seen" on the ground, etc).
+
 Savage Lands v0.1.5 "Beorhthun"
 - Version declared June 23, 2013.  Version finalized August 17, 2013.
 

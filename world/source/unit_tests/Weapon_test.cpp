@@ -18,6 +18,7 @@ TEST(SL_World_Weapon, saveload)
 
   m.set_quantity(3);
   r.set_quantity(1333);
+  r.set_glowing(true);
 
   m.serialize(ss);
   r.serialize(ss2);

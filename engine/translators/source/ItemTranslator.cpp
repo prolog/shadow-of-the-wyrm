@@ -2,6 +2,7 @@
 #include "DisplayItem.hpp"
 #include "DisplayItemColourTranslator.hpp"
 #include "ItemDescriberFactory.hpp"
+#include "ItemTextKeys.hpp"
 #include "ItemTranslator.hpp"
 #include "StringTable.hpp"
 
@@ -32,6 +33,16 @@ DisplayItem ItemTranslator::create_display_item(const bool blind, const ItemPtr&
 
     DisplayItemColourTranslator dict;
     display_item.set_colour(dict.create_colour_for_display_item(item));
+
+    vector<TextColour> flags;
+    bool glow = item->get_glowing();
+
+    if (glow)
+    {
+      flags.push_back(make_pair(StringTable::get(ItemTextKeys::ITEM_GLOW), COLOUR_BOLD_YELLOW));
+    }
+
+    display_item.set_flags(flags);
   }
 
   return display_item;

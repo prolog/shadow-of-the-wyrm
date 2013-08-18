@@ -718,6 +718,7 @@
 <!--		<xs:element name="ItemType" type="tns:ItemType"/> -->
 		<xs:element name="Artifact" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="Material" type="tns:MaterialType" minOccurs="0"/>
+		<xs:element name="Glow" type="xs:boolean" minOccurs="0"/>
 		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
 		<xs:element name="DangerLevel" type="xs:integer"/>
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>

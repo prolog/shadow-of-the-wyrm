@@ -13,9 +13,13 @@ IDescriberPtr ItemDescriberFactory::create_item_describer(const bool player_blin
 
   if (player_blind)
   {
-    describer = boost::make_shared<BlindItemDescriber>();
+    if (!(item && item->get_glowing()))
+    {
+      describer = boost::make_shared<BlindItemDescriber>();
+    }
   }
-  else
+  
+  if (!describer)
   {
     describer = boost::make_shared<ItemDescriber>(item);
   }
