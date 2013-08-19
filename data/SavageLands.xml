@@ -2580,6 +2580,41 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="skeletal_warrior">
+			<RaceID>_corporeal_undead</RaceID>
+			<ShortDescriptionSID>SKELETAL_WARRIOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SKELETAL_WARRIOR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SKELETAL_WARRIOR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SKELETAL_WARRIOR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>u</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>70</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Type>0</Type>
+			</Damage>
+			<Soak>2</Soak>
+			<Speed>47</Speed>
+		</Creature>
 		<Creature id="mummy">
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>MUMMY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
