@@ -31,6 +31,22 @@
 		<Col>2</Col>
 	</PlayerStart>
 	<InitialPlacements>
+		<Creatures>
+			<Placement>
+				<ID>skeletal_warrior</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>2</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>mummy</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>2</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items>
 			<Placement>
 				<ID>wintersea_keep_tombs_key</ID>
