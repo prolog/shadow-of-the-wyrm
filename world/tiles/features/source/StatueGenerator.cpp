@@ -3,6 +3,8 @@
 #include "RegularStatues.hpp"
 #include "StatueGenerator.hpp"
 
+using namespace std;
+
 StatueGenerator::StatueGenerator()
 {
 }
@@ -41,18 +43,10 @@ FeaturePtr StatueGenerator::generate_decorative_statue(const DecorativeStatueTyp
   return statue;
 }
 
-FeaturePtr StatueGenerator::generate_regular_statue(const RegularStatueType type)
+PetrifiedCorpseStatuePtr StatueGenerator::generate_petrified_corpse_statue(const string& corpse_description_sid)
 {
-  FeaturePtr statue;
-
-  BOOST_STATIC_ASSERT(REGULAR_STATUE_TYPE_LAST == 1);
-
-  switch(type)
-  {
-    case REGULAR_STATUE_TYPE_PETRIFIED_CORPSE:
-      statue = boost::make_shared<PetrifiedCorpseStatue>();
-      break;
-  }
+  PetrifiedCorpseStatuePtr statue;
+  statue = boost::make_shared<PetrifiedCorpseStatue>(corpse_description_sid);
   
   return statue;
 }

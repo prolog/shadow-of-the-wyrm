@@ -33,8 +33,11 @@ void StoneStatusEffect::finalize(CreaturePtr creature) const
   // Ensure that the tile doesn't already have a feature.
   if (creature_tile && !creature_tile->has_feature())
   {
+    // Get the description so the statue can be "a statue of a goblin", etc.
+    string description_sid = creature->get_description_sid();
+
     // Generate the statue
-    FeaturePtr corpse_statue = StatueGenerator::generate_regular_statue(REGULAR_STATUE_TYPE_PETRIFIED_CORPSE);
+    PetrifiedCorpseStatuePtr corpse_statue = StatueGenerator::generate_petrified_corpse_statue(description_sid);
 
     // Add it to the tile
     creature_tile->set_feature(corpse_statue);

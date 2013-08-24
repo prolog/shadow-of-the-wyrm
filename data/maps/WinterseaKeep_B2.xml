@@ -46,8 +46,29 @@
 					<Col>47</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>Ardu</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>28</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
+			<Placement>
+				<ID>holy_sword</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>22</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>plate_armour</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>26</Col>
+				</Coord>
+			</Placement>
 			<Placement>
 				<ID>wintersea_keep_tombs_key</ID>
 				<Coord>
@@ -70,6 +91,16 @@
 	<Features>
 		<FeaturePlacement>
 			<Coord>
+				<Row>1</Row>
+				<Col>24</Col>
+			</Coord>
+			<Sarcophagus>
+				<Material>7</Material>
+				<Inscription>WINTERSEA_SARCOPHAGUS_INSCRIPTION_ARDU</Inscription>
+			</Sarcophagus>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
 				<Row>4</Row>
 				<Col>48</Col>
 			</Coord>
@@ -80,12 +111,52 @@
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
-				<Row>17</Row>
+				<Row>4</Row>
+				<Col>41</Col>
+			</Coord>
+			<Sarcophagus>
+				<Material>7</Material>
+				<Inscription>WINTERSEA_SARCOPHAGUS_INSCRIPTION_KAAT</Inscription>
+			</Sarcophagus>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>15</Row>
+				<Col>1</Col>
+			</Coord>
+			<Sarcophagus>
+				<Material>7</Material>
+				<Inscription>WINTERSEA_SARCOPHAGUS_INSCRIPTION_WULFSTAN</Inscription>
+			</Sarcophagus>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>16</Row>
 				<Col>2</Col>
 			</Coord>
 			<Sarcophagus>
 				<Material>7</Material>
 				<Inscription>WINTERSEA_SARCOPHAGUS_INSCRIPTION_WULF</Inscription>
+			</Sarcophagus>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>17</Row>
+				<Col>2</Col>
+			</Coord>
+			<Sarcophagus>
+				<Material>7</Material>
+				<Inscription>WINTERSEA_SARCOPHAGUS_INSCRIPTION_GODWIF</Inscription>
+			</Sarcophagus>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>18</Row>
+				<Col>1</Col>
+			</Coord>
+			<Sarcophagus>
+				<Material>7</Material>
+				<Inscription>WINTERSEA_SARCOPHAGUS_INSCRIPTION_HILLA</Inscription>
 			</Sarcophagus>
 		</FeaturePlacement>
 		<FeaturePlacement>

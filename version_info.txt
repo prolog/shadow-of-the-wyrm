@@ -8,6 +8,13 @@ Savage Lands v0.1.6 "Osric"
   "visible" when the creature is blind (the item won't appear as
   "something", it can be "seen" on the ground, etc).
 
+- Redesigned the Wintersea Keep tombs.  Added sarcophagi (available with
+  or without inscriptions).  Updated stoning/statues so that these could
+  be created with the description of the creature that was petrified.
+
+- Added Ardu to guard the Wintersea tombs.  One of the crypts is now his,
+  and houses a few of his wordly possessions.
+
 Savage Lands v0.1.5 "Beorhthun"
 - Version declared June 23, 2013.  Version finalized August 17, 2013.
 
