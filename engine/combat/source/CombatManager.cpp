@@ -46,13 +46,23 @@ ActionCostValue CombatManager::attack(CreaturePtr creature, const Direction d)
   Coordinate new_coords = CoordUtils::get_new_coordinate(creature_location, d);
   TilePtr adjacent_tile = map->at(new_coords.first, new_coords.second);
 
-  // Do the necessary checks here to determine whether to attack...
-  CreaturePtr adjacent_creature = adjacent_tile->get_creature();
-    
-  // Sanity check
-  if (adjacent_creature)
+  if (adjacent_tile)
   {
-    action_cost_value = attack(creature, adjacent_creature);
+    // Do the necessary checks here to determine whether to attack...
+    CreaturePtr adjacent_creature = adjacent_tile->get_creature();
+    
+    // Sanity check
+    if (adjacent_creature)
+    {
+      action_cost_value = attack(creature, adjacent_creature);
+    }
+  }
+  else
+  {
+    // Couldn't get the tile.  This could be because the creature is
+    // stunned and picked a direction without a tile (e.g., north at
+    // row 0)
+    action_cost_value = 1;
   }
   
   return action_cost_value;
