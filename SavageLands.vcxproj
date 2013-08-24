@@ -721,6 +721,7 @@
     <ClInclude Include="world\tiles\features\include\NeutralAltar.hpp" />
     <ClInclude Include="world\tiles\features\include\Pew.hpp" />
     <ClInclude Include="world\tiles\features\include\RegularStatues.hpp" />
+    <ClInclude Include="world\tiles\features\include\Sarcophagus.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp" />
     <ClInclude Include="world\tiles\features\include\Trap.hpp" />
@@ -1845,6 +1846,7 @@
     <ClCompile Include="world\tiles\features\source\NeutralAltar.cpp" />
     <ClCompile Include="world\tiles\features\source\Pew.cpp" />
     <ClCompile Include="world\tiles\features\source\RegularStatues.cpp" />
+    <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp" />
     <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp" />
     <ClCompile Include="world\tiles\features\source\Trap.cpp" />
     <ClCompile Include="world\tiles\features\source\unit_tests\AllAltars_test.cpp">
@@ -1888,6 +1890,9 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\RegularStatues_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Sarcophagus_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Trap_test.cpp">

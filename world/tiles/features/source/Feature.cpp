@@ -53,6 +53,14 @@ bool Feature::operator==(const Feature& feature) const
   return result;
 }
 
+pair<string, vector<string>> Feature::get_description_and_replacement_sids() const
+{
+  string base_description_sid = get_description_sid();
+  vector<string> no_replacements;
+
+  return make_pair(base_description_sid, no_replacements);
+}
+
 bool Feature::has_trap() const
 {
   return (trap);

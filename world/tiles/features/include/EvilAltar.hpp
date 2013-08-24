@@ -9,7 +9,7 @@ class EvilAltar : public Altar
     EvilAltar(const std::string& new_deity_id);
     virtual Feature* clone();
 
-    
+  protected:
     std::string get_description_sid() const;
 
   private:

@@ -29,6 +29,7 @@ class PetrifiedCorpseStatue : public RegularStatue
 
     virtual Feature* clone();
     
+  protected:
     std::string get_description_sid() const;
 
   private:

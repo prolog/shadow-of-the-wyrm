@@ -12,6 +12,7 @@
 #include "Gate.hpp"
 #include "Pew.hpp"
 #include "RegularStatues.hpp"
+#include "Sarcophagus.hpp"
 
 using namespace std;
 
@@ -77,6 +78,7 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr gate               = boost::make_shared<Gate>();
   FeaturePtr pew                = boost::make_shared<Pew>();
   FeaturePtr petrified_corpse   = boost::make_shared<PetrifiedCorpseStatue>();
+  FeaturePtr sarcophagus        = boost::make_shared<Sarcophagus>();
 
   feature_map.insert(make_pair(CLASS_ID_GOOD_ALTAR, good_altar));
   feature_map.insert(make_pair(CLASS_ID_NEUTRAL_ALTAR, neutral_altar));
@@ -95,6 +97,7 @@ void FeatureFactory::initialize_feature_map()
   feature_map.insert(make_pair(CLASS_ID_GATE, gate));
   feature_map.insert(make_pair(CLASS_ID_PEW, pew));
   feature_map.insert(make_pair(CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse));
+  feature_map.insert(make_pair(CLASS_ID_SARCOPHAGUS, sarcophagus));
   // JCD FIXME
 }
 

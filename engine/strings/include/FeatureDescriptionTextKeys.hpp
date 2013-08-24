@@ -20,6 +20,8 @@ class FeatureDescriptionTextKeys
     static const std::string FEATURE_DESCRIPTION_SORCEROR_STATUE;
     static const std::string FEATURE_DESCRIPTION_BENCH;
     static const std::string FEATURE_DESCRIPTION_PETRIFIED_CORPSE_STATUE;
+    static const std::string FEATURE_DESCRIPTION_SARCOPHAGUS;
+    static const std::string FEATURE_DESCRIPTION_SARCOPHAGUS_NO_INSCR;
 
   protected:
     FeatureDescriptionTextKeys();

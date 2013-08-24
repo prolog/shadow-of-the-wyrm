@@ -2,6 +2,7 @@
 #include "AlignmentEnums.hpp"
 #include "Door.hpp"
 #include "Feature.hpp"
+#include "Sarcophagus.hpp"
 
 enum PewDirection
 {
@@ -19,6 +20,7 @@ class FeatureGenerator
     static FeaturePtr generate_fountain();
     static FeaturePtr generate_pew(const PewDirection pew_direction = PEW_DIRECTION_NORTH_SOUTH);
     static FeaturePtr generate_bench();
+    static SarcophagusPtr generate_sarcophagus(const MaterialType material_type = MATERIAL_TYPE_STONE);
 
   protected:
     FeatureGenerator();

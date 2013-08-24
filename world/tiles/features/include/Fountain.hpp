@@ -10,6 +10,8 @@ class Fountain : public Feature
     virtual bool kick();
 
     virtual uchar get_symbol() const;
+
+  protected:
     virtual std::string get_description_sid() const;
 
   private:

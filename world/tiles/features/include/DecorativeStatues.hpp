@@ -30,6 +30,7 @@ class KingDecorativeStatue : public DecorativeStatue
     KingDecorativeStatue();
     virtual Feature* clone();
     
+  protected:
     std::string get_description_sid() const;
 
   private:
@@ -42,6 +43,7 @@ class QueenDecorativeStatue : public DecorativeStatue
     QueenDecorativeStatue();
     virtual Feature* clone();
     
+  protected:
     std::string get_description_sid() const;
 
   private:
@@ -54,6 +56,7 @@ class WarlordDecorativeStatue : public DecorativeStatue
     WarlordDecorativeStatue();
     virtual Feature* clone();
     
+  protected:
     std::string get_description_sid() const;
 
   private:
@@ -66,6 +69,7 @@ class KnightDecorativeStatue : public DecorativeStatue
     KnightDecorativeStatue();
     virtual Feature* clone();
     
+  protected:
     std::string get_description_sid() const;
 
   private:
@@ -78,6 +82,7 @@ class HighPriestDecorativeStatue : public DecorativeStatue
     HighPriestDecorativeStatue();
     virtual Feature* clone();
     
+  protected:
     std::string get_description_sid() const;
 
   private:
@@ -90,6 +95,7 @@ class SorcerorDecorativeStatue : public DecorativeStatue
     SorcerorDecorativeStatue();
     virtual Feature* clone();
     
+  protected:
     std::string get_description_sid() const;
 
   private:
