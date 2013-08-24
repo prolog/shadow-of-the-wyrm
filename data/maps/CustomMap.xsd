@@ -88,6 +88,7 @@
 			<xs:element name="Altar" type="tns:Altar"/>
 			<xs:element name="Door" type="tns:Door"/>
 			<xs:element name="Pew" type="tns:Pew"/>
+			<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
 		</xs:choice>
 	</xs:sequence>
 </xs:complexType>
@@ -110,6 +111,13 @@
 	<xs:annotation><xs:documentation>Defines a Pew feature.</xs:documentation></xs:annotation>
 	<xs:sequence>
 		<xs:element name="Orientation" type="tns:OrientationType"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Sarcophagus">
+	<xs:annotation><xs:documentation>Defines a Sarcophagus.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Material" type="sl:MaterialType"/>
+		<xs:element name="Inscription" type="xs:string" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Entrance">

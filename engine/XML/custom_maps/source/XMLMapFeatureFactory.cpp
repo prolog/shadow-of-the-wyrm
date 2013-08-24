@@ -35,6 +35,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     {
       feature = create_pew(feature_node);
     }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Sarcophagus")).is_null())
+    {
+      feature = create_sarcophagus(feature_node);
+    }
   }
 
   return feature;
@@ -83,4 +87,23 @@ FeaturePtr XMLMapFeatureFactory::create_pew(const XMLNode& pew_node)
   PewDirection pew_direction = static_cast<PewDirection>(XMLUtils::get_child_node_int_value(pew_node, "Orientation", PEW_DIRECTION_NORTH_SOUTH));
   FeaturePtr pew = FeatureGenerator::generate_pew(pew_direction);
   return pew;
+}
+
+// Create a sarcophagus, reading its material, inscription, any items stored
+// within, etc.
+FeaturePtr XMLMapFeatureFactory::create_sarcophagus(const XMLNode& sarcophagus_node)
+{
+  MaterialType material_type = MATERIAL_TYPE_STONE;
+  XMLNode material_node = XMLUtils::get_next_element_by_local_name(sarcophagus_node, "Material");
+  if (!material_node.is_null())
+  {
+    material_type = static_cast<MaterialType>(XMLUtils::get_node_int_value(sarcophagus_node));
+  }
+
+  SarcophagusPtr sarcophagus = FeatureGenerator::generate_sarcophagus(material_type);
+
+  string inscription_sid = XMLUtils::get_child_node_value(sarcophagus_node, "Inscription");
+  sarcophagus->set_inscription_sid(inscription_sid);
+
+  return sarcophagus;
 }

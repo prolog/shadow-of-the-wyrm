@@ -2733,6 +2733,9 @@
     <ClInclude Include="engine\strings\include\ItemTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Sarcophagus.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5218,6 +5221,12 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\ItemTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Sarcophagus_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

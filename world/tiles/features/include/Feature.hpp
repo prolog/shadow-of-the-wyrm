@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <boost/shared_ptr.hpp>
 #include "common.hpp"
 #include "Lock.hpp"
@@ -40,8 +41,8 @@ class Feature : public ISerializable
 
     virtual void set_material_type(const MaterialType new_material);
     virtual MaterialType get_material_type() const;
-    
-    virtual std::string get_description_sid() const = 0;
+
+    virtual std::pair<std::string, std::vector<std::string>> get_description_and_replacement_sids() const;
     
     virtual bool can_kick() const;
     virtual bool can_offer() const;
@@ -64,6 +65,8 @@ class Feature : public ISerializable
     virtual bool deserialize(std::istream& stream);
 
   protected:
+    virtual std::string get_description_sid() const = 0;
+
     TrapPtr trap;
     LockPtr lock;
     MaterialType material;

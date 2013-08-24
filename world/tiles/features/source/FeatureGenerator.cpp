@@ -98,3 +98,11 @@ FeaturePtr FeatureGenerator::generate_bench()
   FeaturePtr bench = boost::make_shared<Bench>();
   return bench;
 }
+
+// Generate a sarcophagus
+SarcophagusPtr FeatureGenerator::generate_sarcophagus(const MaterialType material_type)
+{
+  SarcophagusPtr sarcophagus = boost::make_shared<Sarcophagus>(material_type);
+
+  return sarcophagus;
+}
