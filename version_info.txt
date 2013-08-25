@@ -15,6 +15,14 @@ Savage Lands v0.1.6 "Osric"
 - Added Ardu to guard the Wintersea tombs.  One of the crypts is now his,
   and houses a few of his wordly possessions.
 
+- Updated the threat code so that repeated attacks repeatedly increase the
+  threat level of a particular creature.
+
+- Miscellaneous bug fixes: fixed an issue with adding a creature to its own
+  threat map (via self_attack when stunned, etc), which hilariously caused 
+  it to wander from tile to tile, looking for itself.  Fixed some FIXMEs,
+  and removed some others I'm basically never going to bother to fix.
+
 Savage Lands v0.1.5 "Beorhthun"
 - Version declared June 23, 2013.  Version finalized August 17, 2013.
 

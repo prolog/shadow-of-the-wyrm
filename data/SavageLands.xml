@@ -2649,7 +2649,7 @@
 			</Damage>
 			<Speed>56</Speed>
 		</Creature>
-		<Creature id="Ardu">
+		<Creature id="ardu">
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>ARDU_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ARDU_DESCRIPTION_SID</DescriptionSID>
@@ -3520,7 +3520,7 @@
 			<SpeechTextSID>VILLAGE_PRIEST_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
-				<Symbol>@</Symbol>
+				<Symbol>t</Symbol>
 				<Colour>15</Colour>
 			</Text>
 			<CreatureGeneration>
@@ -3649,7 +3649,7 @@
 			<SpeechTextSID>HRIMGAR_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
-				<Symbol>@</Symbol>
+				<Symbol>t</Symbol>
 				<Colour>5</Colour>
 			</Text>
 			<CreatureGeneration>

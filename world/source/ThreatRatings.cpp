@@ -21,20 +21,28 @@ bool ThreatRatings::operator==(const ThreatRatings& threat) const
   return result;
 }
 
-// Check to see if a particular creature ID exists at any threat level
-bool ThreatRatings::has_threat(const string& creature_id) const
+// Check to see if a particular creature ID exists at any threat level.
+// If the threat exists, return true and the threat level.
+// Else, return false/-1.
+pair<bool, int> ThreatRatings::has_threat(const string& creature_id) const
 {
+  pair<bool,int> threat_exists(false, -1);
+
   for (ThreatMap::const_iterator c_it = threat_ratings.begin(); c_it != threat_ratings.end(); c_it++)
   {
-    set<string> threats_at_current_level = c_it->second;
-    
-    if (threats_at_current_level.find(creature_id) != threats_at_current_level.end())
+    const set<string>& threats_at_current_level = c_it->second;
+    set<string>::const_iterator t_it = threats_at_current_level.find(creature_id);
+
+    if (t_it != threats_at_current_level.end())
     {
-      return true;
+      threat_exists.first = true;
+      threat_exists.second = c_it->first;
+
+      break;
     }
   }
   
-  return false;
+  return threat_exists;
 }
 
 // Add a threat at a given threat rating.

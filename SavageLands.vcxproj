@@ -92,6 +92,7 @@
     <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp" />
     <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp" />
     <ClInclude Include="display\include\Display.hpp" />
+    <ClInclude Include="display\include\DisplayConstants.hpp" />
     <ClInclude Include="display\include\DisplayFactory.hpp" />
     <ClInclude Include="display\include\DisplayItem.hpp" />
     <ClInclude Include="display\include\DisplayItemType.hpp" />
@@ -788,6 +789,7 @@
     <ClCompile Include="display\animation\source\CursesDrawAnimationInstruction.cpp" />
     <ClCompile Include="display\animation\source\DrawAnimationInstruction.cpp" />
     <ClCompile Include="display\animation\source\PauseAnimationInstruction.cpp" />
+    <ClCompile Include="display\source\DisplayConstants.cpp" />
     <ClCompile Include="display\source\DisplayFactory.cpp" />
     <ClCompile Include="display\source\DisplayItem.cpp" />
     <ClCompile Include="display\source\DisplayItemType.cpp" />

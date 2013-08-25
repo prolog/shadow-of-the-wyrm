@@ -1,8 +1,9 @@
+#include "CombatConstants.hpp"
 #include "Game.hpp"
 #include "HostilityManager.hpp"
 #include "PlayerConstants.hpp"
 
-using std::string;
+using namespace std;
 
 // Set the creature hostile to another creature with the given creature_id.
 void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const string& hostile_to_creature_id)
@@ -10,12 +11,20 @@ void HostilityManager::set_hostility_to_creature(CreaturePtr creature, const str
   DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
   ThreatRatings& threat_ratings = decision_strategy->get_threats_ref();
 
-  // JCD FIXME: It would be good to increase this every time at
-  // some point, so that continually attacking a creature makes
-  // it more and more hostile to you over any other...
   if (creature->get_id() != hostile_to_creature_id)
   {
-    threat_ratings.add_threat(hostile_to_creature_id, 100); // JCD FIXME magic number
+    pair<bool, int> threat_exists = threat_ratings.has_threat(hostile_to_creature_id);
+    int old_threat_rating = threat_exists.second;
+
+    if (threat_exists.first)
+    {
+      int new_threat_rating = std::max<int>(old_threat_rating, old_threat_rating + CombatConstants::THREAT_RATING_INCREMENT);
+      threat_ratings.update_threat(hostile_to_creature_id, threat_exists.second, new_threat_rating);
+    }
+    else
+    {
+      threat_ratings.add_threat(hostile_to_creature_id, CombatConstants::INITIAL_THREAT_RATING);
+    }
   }
 }
 

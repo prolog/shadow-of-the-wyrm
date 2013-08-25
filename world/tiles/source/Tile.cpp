@@ -178,7 +178,7 @@ bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
     // If the creature's not hostile, consider the tile blocking; otherwise,
     // ues whatever the current value of tile_blocking is (based on movement,
     // features, etc).
-    if (!perspective_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()))
+    if (!perspective_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
     {
       tile_blocking = true;
     }

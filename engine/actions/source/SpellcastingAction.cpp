@@ -70,9 +70,6 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
   {
     // First, re-display the contents of the map screen, since we would
     // have selected from a menu (in a different window):
-
-    // JCD FIXME is the full redraw really needed?  Is there a better way
-    // to do this with just curses' functionality?
     Game& game = Game::instance();
     game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
     game.get_display()->redraw();

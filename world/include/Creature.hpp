@@ -49,9 +49,6 @@ class Creature : public ISerializable
     void set_original_id(const std::string& new_original_id);
     std::string get_original_id() const;
 
-    // Quick hack.  Later on, this'll be some sort of Strategy, where the Player strategy sends commands
-    // via keyboard/mouse/etc input.
-    // JCD FIXME: Rename this later.
     void set_is_player(const bool player, ControllerPtr decision_strategy_controller);
     bool get_is_player() const;
 
@@ -98,9 +95,6 @@ class Creature : public ISerializable
     std::string get_class_id() const;
 
     // Set/Get physical stats.
-    // JCD FIXME: THESE WILL NEED TO BE UPDATED TO RETURN REFERENCES SO WE CAN UPDATE
-    // EITHER THE BASE OR THE CURRENT VALUE.
-
     void set_strength(const Statistic& new_strength);
     Statistic get_strength() const;
 
