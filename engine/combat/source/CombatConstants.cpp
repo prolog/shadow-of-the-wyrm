@@ -8,6 +8,8 @@ const int CombatConstants::CRITICAL_DIFFICULTY = 100;
 const int CombatConstants::MIGHTY_BLOW_DIFFICULTY = 96;
 const int CombatConstants::CLOSE_MISS_THRESHOLD = -5;
 const int CombatConstants::AUTOMATIC_MISS_THRESHOLD = 5;
+const int CombatConstants::INITIAL_THREAT_RATING = 100;
+const int CombatConstants::THREAT_RATING_INCREMENT = 25;
 
 CombatConstants::CombatConstants()
 {

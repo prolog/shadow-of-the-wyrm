@@ -656,7 +656,7 @@ bool Creature::hostile_to(const string& creature_id)
 {
   DecisionStrategyPtr strategy = get_decision_strategy();
   
-  if (strategy && strategy->get_threats().has_threat(creature_id))
+  if (strategy && strategy->get_threats().has_threat(creature_id).first)
   {
     return true;
   }

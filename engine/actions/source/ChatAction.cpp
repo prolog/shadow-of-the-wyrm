@@ -76,8 +76,6 @@ bool ChatAction::chat_single_creature(CreaturePtr querying_creature, CreaturePtr
       ScriptEngine& se = game.get_script_engine_ref();
       se.execute(chat_script);
 
-      // JCD FIXME: Should have checks here to see if the quest
-      // script executed correctly.
       spoke = true;
     }
     else

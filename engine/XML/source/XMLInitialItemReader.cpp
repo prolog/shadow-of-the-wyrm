@@ -22,7 +22,6 @@ InitialItem XMLInitialItemReader::get_initial_item(const XMLNode& initial_item_n
     string item_id = XMLUtils::get_child_node_value(initial_item_node, "ID");
     item.set_item_id(item_id);
 
-    // JCD FIXME Quantity parsing here.
     XMLNode base_item_quantity = XMLUtils::get_next_element_by_local_name(initial_item_node, "Quantity");
     Dice base_quantity = parse_quantity(base_item_quantity);
     item.set_item_quantity(base_quantity);

@@ -83,6 +83,5 @@ ActionCostValue EquipmentManager::manage_equipment()
 
 ActionCostValue EquipmentManager::get_action_cost_value() const
 {
-  // JCD FIXME
   return 1;
 }

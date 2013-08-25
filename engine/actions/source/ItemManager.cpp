@@ -117,10 +117,8 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
       GenerationValues& igv = i_it->second;
       if (!igv.is_maximum_reached())
       {
-        // JCD FIXME: Move the code below to create an itemptr into here.
         igv.incr_current();
 
-        // JCD FIXME: Change this to an ItemFactory based on its type.
         new_item = ItemFactory::create(found_item);
         new_item->set_quantity(quantity);
       }
@@ -353,6 +351,5 @@ ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation lo
 
 ActionCostValue ItemManager::get_action_cost_value() const
 {
-  // JCD FIXME
   return 1;
 }

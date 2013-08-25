@@ -12,6 +12,8 @@ class CombatConstants
     static const int MIGHTY_BLOW_DIFFICULTY;
     static const int CLOSE_MISS_THRESHOLD;
     static const int AUTOMATIC_MISS_THRESHOLD;
+    static const int INITIAL_THREAT_RATING;
+    static const int THREAT_RATING_INCREMENT;
 
   protected:
     CombatConstants();

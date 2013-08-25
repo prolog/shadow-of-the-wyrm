@@ -646,32 +646,17 @@
     <Filter Include="Source Files\engine\scripting\source\unit_tests">
       <UniqueIdentifier>{85c9c7fd-4293-4391-8f48-a2b1cbe157b8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\controller\include">
+      <UniqueIdentifier>{a1b760b6-b76d-47bd-9115-3b04dbe626df}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\display\include">
+      <UniqueIdentifier>{bd07ea26-734d-4fd8-8f0b-af206e166711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\display\animation\include">
+      <UniqueIdentifier>{7593d041-0620-459b-8c9a-2e107e109371}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="controller\include\Controller.hpp">
-      <Filter>Header Files\controller</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\include\NullKeyboardController.hpp">
-      <Filter>Header Files\controller</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\Display.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\DisplayItem.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\DisplayItemType.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\DisplayMap.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\DisplayStatistics.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\DisplayTile.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
     <ClInclude Include="include\buildinfo.hpp">
       <Filter>Header Files\include</Filter>
     </ClInclude>
@@ -1974,24 +1959,6 @@
     <ClInclude Include="engine\serialization\include\Serialization.hpp">
       <Filter>Header Files\engine\serialization\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\include\CursesConstants.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\CursesDisplay.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\CursesMenuWrapper.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\CursesPromptProcessor.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\CursesUtils.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\include\CursesKeyboardController.hpp">
-      <Filter>Header Files\controller</Filter>
-    </ClInclude>
     <ClInclude Include="include\ISerializable.hpp">
       <Filter>Header Files\include</Filter>
     </ClInclude>
@@ -2003,9 +1970,6 @@
     </ClInclude>
     <ClInclude Include="engine\serialization\include\SerializationExceptions.hpp">
       <Filter>Header Files\engine\serialization\include</Filter>
-    </ClInclude>
-    <ClInclude Include="display\include\DisplayFactory.hpp">
-      <Filter>Header Files\display</Filter>
     </ClInclude>
     <ClInclude Include="engine\commands\include\CommandFactoryFactory.hpp">
       <Filter>Header Files\engine\commands\include</Filter>
@@ -2027,9 +1991,6 @@
     </ClInclude>
     <ClInclude Include="world\tiles\features\include\FeatureFactory.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
-    </ClInclude>
-    <ClInclude Include="controller\include\ControllerFactory.hpp">
-      <Filter>Header Files\controller</Filter>
     </ClInclude>
     <ClInclude Include="world\include\ResistanceFactory.hpp">
       <Filter>Header Files\world\include</Filter>
@@ -2187,35 +2148,11 @@
     <ClInclude Include="engine\decision_strategies\deity\include\DislikeDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
-    <ClInclude Include="display\include\MapDisplayArea.hpp">
-      <Filter>Header Files\display</Filter>
-    </ClInclude>
     <ClInclude Include="engine\calculators\include\CreatureCoordinateCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\maps\include\LoadedMapDetails.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\Animation.hpp">
-      <Filter>Header Files\display\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\AnimationInstruction.hpp">
-      <Filter>Header Files\display\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp">
-      <Filter>Header Files\display\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp">
-      <Filter>Header Files\display\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp">
-      <Filter>Header Files\display\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\AnimationFactory.hpp">
-      <Filter>Header Files\display\animation</Filter>
-    </ClInclude>
-    <ClInclude Include="display\animation\include\CursesAnimationFactory.hpp">
-      <Filter>Header Files\display\animation</Filter>
     </ClInclude>
     <ClInclude Include="engine\translators\include\AnimationTranslator.hpp">
       <Filter>Header Files\engine\translators\include</Filter>
@@ -2735,6 +2672,81 @@
     </ClInclude>
     <ClInclude Include="world\tiles\features\include\Sarcophagus.hpp">
       <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\include\Controller.hpp">
+      <Filter>Header Files\controller\include</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\include\ControllerFactory.hpp">
+      <Filter>Header Files\controller\include</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\include\CursesKeyboardController.hpp">
+      <Filter>Header Files\controller\include</Filter>
+    </ClInclude>
+    <ClInclude Include="controller\include\NullKeyboardController.hpp">
+      <Filter>Header Files\controller\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesConstants.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesDisplay.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesMenuWrapper.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesPromptProcessor.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\CursesUtils.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\Display.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayFactory.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayItem.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayItemType.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayMap.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayStatistics.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayTile.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\MapDisplayArea.hpp">
+      <Filter>Header Files\display\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\Animation.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\AnimationFactory.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\AnimationInstruction.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\CursesAnimationFactory.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\CursesDrawAnimationInstruction.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\DrawAnimationInstruction.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\animation\include\PauseAnimationInstruction.hpp">
+      <Filter>Header Files\display\animation\include</Filter>
+    </ClInclude>
+    <ClInclude Include="display\include\DisplayConstants.hpp">
+      <Filter>Header Files\display\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5227,6 +5239,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Sarcophagus_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="display\source\DisplayConstants.cpp">
+      <Filter>Source Files\display\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

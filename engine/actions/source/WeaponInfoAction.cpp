@@ -56,8 +56,6 @@ ActionCostValue WeaponInfoAction::melee_weapon_info(CreaturePtr creature) const
     string wielded_weapon_text = get_melee_weapon_info(creature, wielded_weapon, ATTACK_TYPE_MELEE_PRIMARY, base_damage);
     string off_hand_weapon_text = get_melee_weapon_info(creature, off_hand_weapon, ATTACK_TYPE_MELEE_SECONDARY, base_damage);
     
-    // JCD FIXME: Do something here to get them on separate lines, if necessary.
-    // Test...
     manager.add_new_message(wielded_weapon_text);
     manager.add_new_message(off_hand_weapon_text);
     manager.send();

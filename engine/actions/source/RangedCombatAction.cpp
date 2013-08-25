@@ -169,7 +169,6 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
 }
 
 // Get the actual coordinates to fire at, given the missile's flight path.
-// JCD FIXME: Refactor into a separate function once spellcasting is added.
 vector<Coordinate> RangedCombatAction::get_actual_coordinates_given_missile_path(const Coordinate& creature_coords, const Coordinate& target_coords, MapPtr current_map)
 {
   vector<Coordinate> actual_coordinates;
@@ -376,7 +375,7 @@ void RangedCombatAction::select_nearest_hostile_target(CreaturePtr creature, Map
           // Is the creature hostile towards the ranged combat creature?
           ThreatRatings& threat_ratings = potential_target_creature->get_decision_strategy()->get_threats_ref();
           
-          if (threat_ratings.has_threat(creature_id))
+          if (threat_ratings.has_threat(creature_id).first)
           {
             int distance = CoordUtils::chebyshev_distance(creature_location, c);
             hostile_creature_distance_map.insert(make_pair(distance, make_pair(potential_creature_id, c)));

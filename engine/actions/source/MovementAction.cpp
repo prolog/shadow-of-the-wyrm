@@ -231,7 +231,7 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
   // If the creature in the new tile isn't hostile to the creature in the
   // current tile, prompt to see whether the moving creature wants to
   // attack, assuming the moving creature isn't stunned.
-  if (!adjacent_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()))
+  if (!adjacent_creature->get_decision_strategy()->get_threats_ref().has_threat(creature->get_id()).first)
   {
     if (creature->get_is_player())
     {
@@ -551,6 +551,5 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
 
 ActionCostValue MovementAction::get_action_cost_value() const
 {
-  // JCD FIXME
   return 1;
 }

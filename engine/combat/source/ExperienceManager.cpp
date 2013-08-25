@@ -229,7 +229,7 @@ void ExperienceManager::gain_statistics_if_necessary(CreaturePtr creature)
 {
   if (creature)
   {
-    // JCD FIXME
+    // JCD TODO
   }
 }
 
