@@ -60,7 +60,7 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
 {
   if (creature)
   {
-    list<ItemPtr> items = creature->get_inventory().get_items();
+    const list<ItemPtr>& items = creature->get_inventory().get_items_cref();
 
     BOOST_FOREACH(ItemPtr item, items)
     {

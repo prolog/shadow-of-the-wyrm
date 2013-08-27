@@ -6160,7 +6160,9 @@
 		<Scrolls>
 			<Scroll id="identify_scroll">
 				<DescriptionSID>IDENTIFY_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_IDENTIFY_SCROLL_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>IDENTIFY_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_IDENTIFY_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
 				<Value>133</Value>
 				<Weight><Pounds>1</Pounds></Weight>
 				<Material>5</Material>
@@ -6171,6 +6173,22 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Effect>2</Effect>				
+			</Scroll>
+			<Scroll id="recharging_scroll">
+				<DescriptionSID>RECHARGING_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RECHARGING_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RECHARGING_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RECHARGING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>150</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>13</Effect>				
 			</Scroll>
 		</Scrolls>
 		<Currencies>

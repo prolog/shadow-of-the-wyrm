@@ -1099,11 +1099,12 @@
 				Unbinding = 10
 				Restore Statistics = 11
 				Unblinding = 12
+				Recharging = 13
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="12"/>
+		<xs:maxInclusive value="13"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

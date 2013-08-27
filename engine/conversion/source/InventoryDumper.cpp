@@ -30,7 +30,7 @@ string InventoryDumper::get_inventory() const
   if (creature)
   {
     Inventory inv = creature->get_inventory();
-    list<ItemPtr> raw_items = inv.get_items();
+    const list<ItemPtr>& raw_items = inv.get_items_cref();
     
     BOOST_FOREACH(ItemPtr item, raw_items)
     {

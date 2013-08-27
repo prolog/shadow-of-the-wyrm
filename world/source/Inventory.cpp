@@ -24,7 +24,7 @@ bool Inventory::operator==(const Inventory& inv) const
 
   if (result)
   {
-    list<ItemPtr> items_b = inv.get_items_const();
+    const list<ItemPtr>& items_b = inv.get_items_cref();
     list<ItemPtr>::const_iterator lista_it = items.begin();
     list<ItemPtr>::const_iterator listb_it = items_b.begin();
 
@@ -222,13 +222,14 @@ uint Inventory::size() const
 }
 
 // Get the actual Items
-list<ItemPtr> Inventory::get_items()
+list<ItemPtr>& Inventory::get_items_ref()
 {
   return items;
 }
 
-// Get a list useful for iteration, etc., but not updating.
-const list<ItemPtr> Inventory::get_items_const() const
+// Get a list useful for iteration, etc., but not updating
+// with new items.
+const list<ItemPtr>& Inventory::get_items_cref() const
 {
   return items;
 }

@@ -15,7 +15,7 @@ string InventoryDescriber::describe() const
 {
   string inventory_description;
 
-  list<ItemPtr> items = inventory.get_items_const();
+  const list<ItemPtr>& items = inventory.get_items_cref();
 
   BOOST_FOREACH(ItemPtr item, items)
   {
