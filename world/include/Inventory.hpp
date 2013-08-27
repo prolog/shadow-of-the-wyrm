@@ -43,8 +43,8 @@ class Inventory : public ISerializable
     
     bool has_item_type(const ItemType type) const;
     
-    std::list<ItemPtr> get_items();
-    const std::list<ItemPtr> get_items_const() const;
+    std::list<ItemPtr>& get_items_ref();
+    const std::list<ItemPtr>& get_items_cref() const;
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);

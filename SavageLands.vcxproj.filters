@@ -2748,6 +2748,9 @@
     <ClInclude Include="display\include\DisplayConstants.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\RechargingEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5242,6 +5245,9 @@
     </ClCompile>
     <ClCompile Include="display\source\DisplayConstants.cpp">
       <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\RechargingEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

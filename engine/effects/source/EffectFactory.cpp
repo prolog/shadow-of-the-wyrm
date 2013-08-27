@@ -7,6 +7,7 @@
 #include "IdentifyEffect.hpp"
 #include "NullEffect.hpp"
 #include "FruitJuiceEffect.hpp"
+#include "RechargingEffect.hpp"
 #include "StatusTypes.hpp"
 #include "TeleportEffect.hpp"
 
@@ -22,7 +23,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 13);
+  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 14);
 
   EffectPtr effect;
 
@@ -63,6 +64,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_UNBLINDING:
       effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_BLINDED);
+      break;
+    case EFFECT_TYPE_RECHARGING:
+      effect = boost::make_shared<RechargingEffect>();
       break;
     case EFFECT_TYPE_NULL:
     default:

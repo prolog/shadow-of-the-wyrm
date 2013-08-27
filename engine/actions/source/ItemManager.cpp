@@ -53,7 +53,7 @@ list<ItemPtr> ItemManager::get_items_by_type(const Inventory& inv, const ItemTyp
 {
   list<ItemPtr> result_items;
 
-  list<ItemPtr> raw_items = inv.get_items_const();
+  const list<ItemPtr>& raw_items = inv.get_items_cref();
 
   BOOST_FOREACH(ItemPtr item, raw_items)
   {
@@ -81,7 +81,7 @@ bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
     }
   }
 
-  list<ItemPtr> raw_items = creature->get_inventory().get_items_const();
+  const list<ItemPtr>& raw_items = creature->get_inventory().get_items_cref();
 
   BOOST_FOREACH(ItemPtr item, raw_items)
   {

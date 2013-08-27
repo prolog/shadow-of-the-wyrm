@@ -20,7 +20,7 @@ DisplayInventoryMap InventoryTranslator::create_display_inventory(CreaturePtr cr
   CurrentCreatureAbilities cca;
   DisplayInventoryMap display_inventory;
 
-  list<ItemPtr> raw_inv = inv.get_items();
+  const list<ItemPtr>& raw_inv = inv.get_items_cref();
   
   BOOST_FOREACH(ItemPtr item, raw_inv)
   {
