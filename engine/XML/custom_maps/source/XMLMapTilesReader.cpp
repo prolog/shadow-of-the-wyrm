@@ -1,4 +1,5 @@
 #include "TileGenerator.hpp"
+#include "SpringsTile.hpp"
 #include "XMLMapTilesReader.hpp"
 
 using namespace std;
@@ -96,6 +97,23 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = TileGenerator::generate(TILE_TYPE_BARROW);
   }
+  else if ((xml_tile == '\'') || (xml_tile == '`'))
+  {
+    // Single quote indicates a regular freshwater spring.
+    tile = TileGenerator::generate(TILE_TYPE_SPRINGS);
+
+    // Backtick indicates hot springs.
+    if (xml_tile == '`')
+    {
+      boost::shared_ptr<SpringsTile> springs_tile = boost::dynamic_pointer_cast<SpringsTile>(tile);
+
+      if (springs_tile)
+      {
+        springs_tile->set_temperature(SPRINGS_TEMPERATURE_HOT);
+      }
+    }
+  }
+
 
   return tile;
 }

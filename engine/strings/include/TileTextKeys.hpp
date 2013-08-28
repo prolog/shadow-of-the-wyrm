@@ -28,6 +28,7 @@ class TileTextKeys
     static const std::string TILE_DESC_SCRUB;
     static const std::string TILE_DESC_SEA;
     static const std::string TILE_DESC_SHOALS;
+    static const std::string TILE_DESC_HOT_SPRINGS;
     static const std::string TILE_DESC_SPRINGS;
     static const std::string TILE_DESC_TREE;
     static const std::string TILE_DESC_VILLAGE;

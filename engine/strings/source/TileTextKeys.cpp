@@ -34,6 +34,7 @@ const string TileTextKeys::TILE_DESC_DOWN_STAIRCASE = "TILE_DESC_DOWN_STAIRCASE"
 const string TileTextKeys::TILE_DESC_SCRUB          = "TILE_DESC_SCRUB";
 const string TileTextKeys::TILE_DESC_SEA            = "TILE_DESC_SEA";
 const string TileTextKeys::TILE_DESC_SHOALS         = "TILE_DESC_SHOALS";
+const string TileTextKeys::TILE_DESC_HOT_SPRINGS    = "TILE_DESC_HOT_SPRINGS";
 const string TileTextKeys::TILE_DESC_SPRINGS        = "TILE_DESC_SPRINGS";
 const string TileTextKeys::TILE_DESC_TREE           = "TILE_DESC_TREE";
 const string TileTextKeys::TILE_DESC_VILLAGE        = "TILE_DESC_VILLAGE";
