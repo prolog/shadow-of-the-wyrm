@@ -757,6 +757,7 @@
     <ClInclude Include="world\tiles\include\RiverTile.hpp" />
     <ClInclude Include="world\tiles\include\RoadTile.hpp" />
     <ClInclude Include="world\tiles\include\RockTile.hpp" />
+    <ClInclude Include="world\tiles\include\RockyEarthTile.hpp" />
     <ClInclude Include="world\tiles\include\ScrubTile.hpp" />
     <ClInclude Include="world\tiles\include\SeaTile.hpp" />
     <ClInclude Include="world\tiles\include\ShoalsTile.hpp" />
@@ -1932,6 +1933,7 @@
     <ClCompile Include="world\tiles\source\RiverTile.cpp" />
     <ClCompile Include="world\tiles\source\RoadTile.cpp" />
     <ClCompile Include="world\tiles\source\RockTile.cpp" />
+    <ClCompile Include="world\tiles\source\RockyEarthTile.cpp" />
     <ClCompile Include="world\tiles\source\ScrubTile.cpp" />
     <ClCompile Include="world\tiles\source\SeaTile.cpp" />
     <ClCompile Include="world\tiles\source\ShoalsTile.cpp" />
@@ -2057,6 +2059,9 @@
     <ClCompile Include="world\tiles\source\unit_tests\RockTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\RockyEarthTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\ScrubTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

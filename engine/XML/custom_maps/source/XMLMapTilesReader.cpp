@@ -1,6 +1,10 @@
+#include <cctype>
 #include "TileGenerator.hpp"
 #include "SpringsTile.hpp"
 #include "XMLMapTilesReader.hpp"
+
+// JCD FIXME REMOVE
+#include "ShoalsTile.hpp"
 
 using namespace std;
 
@@ -24,17 +28,24 @@ TilesContainer XMLMapTilesReader::parse_tiles(const XMLNode& tiles_node, const i
     {
       for (string::const_iterator s_it = tile_str.begin(); s_it != tile_str.end(); s_it++)
       {
-        TilePtr tile = tile_mapper.create_tile(*s_it);
-
-        if (tile)
+        if (!isspace(*s_it))
         {
-          TileKey tile_key = Map::make_map_key(cur_row, cur_col);
-          tiles.insert(make_pair(tile_key, tile));
+          TilePtr tile = tile_mapper.create_tile(*s_it);
 
-          if (++cur_col >= cols)
+          if (tile)
           {
-            cur_col = 0;
-            cur_row++;
+            TileKey tile_key = Map::make_map_key(cur_row, cur_col);
+            tiles.insert(make_pair(tile_key, tile));
+
+            if (++cur_col >= cols)
+            {
+              cur_col = 0;
+              cur_row++;
+            }
+          }
+          else
+          {
+            int x = 1;
           }
         }
       }
@@ -93,6 +104,22 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = TileGenerator::generate(TILE_TYPE_RIVER);
   }
+  else if (xml_tile == 'R')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_ROCKY_EARTH);
+  }
+  else if (xml_tile == 'S')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_SEA);
+  }
+  else if (xml_tile == 's')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_SHOALS);
+  }
+  else if (xml_tile == 'C')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_CAIRN);
+  }
   else if (xml_tile == '0')
   {
     tile = TileGenerator::generate(TILE_TYPE_BARROW);
@@ -113,7 +140,6 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
       }
     }
   }
-
 
   return tile;
 }

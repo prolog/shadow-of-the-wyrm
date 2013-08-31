@@ -36,6 +36,14 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLMapTilesReader tiles_reader;
     TilesContainer tiles = tiles_reader.parse_tiles(tiles_node, dim.get_y(), dim.get_x());
 
+    // Sanity check: tiles container should have as many tiles
+    // as is specified by the dimensions.
+    ostringstream oss;
+    uint actual = tiles.size();
+    uint expected = dim.get_y() * dim.get_x();
+    oss << "Incorrect number of tiles for map \"" << map_id << "\": expected " << expected << ", found " << actual << ".";
+    BOOST_ASSERT_MSG(tiles.size() == (dim.get_y() * dim.get_x()), oss.str().c_str());
+
     XMLMapCoordinateReader coord_reader;
     Coordinate player_start_location = coord_reader.parse_coordinate(player_start_node);
 

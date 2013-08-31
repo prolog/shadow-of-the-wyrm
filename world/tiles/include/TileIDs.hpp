@@ -8,6 +8,7 @@ class TileCustomMapIDs
     static const std::string CUSTOM_MAP_ID_LAST_ISLAND_LAIR;
     static const std::string CUSTOM_MAP_ID_THE_BARROWS;
     static const std::string CUSTOM_MAP_ID_WINTERSEA_KEEP;
+    static const std::string CUSTOM_MAP_ID_LAST_ROCK;
 
   protected:
     TileCustomMapIDs();

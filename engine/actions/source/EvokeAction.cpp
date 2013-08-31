@@ -107,7 +107,7 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
         add_evocation_message(creature, wand, item_id);
       
         // Reduce the charges on the wand.
-        uint original_charges = wand->get_charges();
+        Statistic original_charges = wand->get_charges();
         reduce_wand_charges_if_necessary(wand);
 
         // Process the damage and spell on the wand.  If there are no charges,
@@ -201,20 +201,22 @@ Spell EvokeAction::create_wand_spell(WandPtr wand) const
 // If the wand has any charges left, reduce the total number of charges by 1.
 void EvokeAction::reduce_wand_charges_if_necessary(WandPtr wand) const
 {
-  uint charges = wand->get_charges();
-  if (charges > 0)
+  Statistic charges = wand->get_charges();
+
+  if (charges.get_current() > 0)
   {
-    wand->set_charges(charges-1);
+    charges.set_current(charges.get_current() - 1);
+    wand->set_charges(charges);
   }
 }
 
 // Process the actual damage and effect on the wand.  Return true if the wand
 // was identified while doing this, false otherwise.
-bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction direction, const Spell& wand_spell, const ItemStatus wand_status, const uint original_charges)
+bool EvokeAction::process_wand_damage_and_effect(CreaturePtr creature, MapPtr map, const Coordinate& caster_coord, const Direction direction, const Spell& wand_spell, const ItemStatus wand_status, const Statistic& original_charges)
 {
   bool wand_identified = false;
 
-  if (original_charges > 0)
+  if (original_charges.get_current() > 0)
   {
     // Process the effect.  This will do any necessary updates/damage to the creature, and will also
     // add a status message based on whether the item was identified.

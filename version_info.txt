@@ -18,6 +18,14 @@ Savage Lands v0.1.6 "Osric"
 - Updated the threat code so that repeated attacks repeatedly increase the
   threat level of a particular creature.
 
+- Created scroll of recharging.
+
+- Updated Springs tile with a temperature, returning a different
+  description SID for springs vs. hot springs.  Added rocky earth tiles.
+
+- Added new custom maps (Last Rock, and its associated subterranean
+  level) to the eastern edge of the map, north of the infinite dungeon.
+
 - Miscellaneous bug fixes: fixed an issue with adding a creature to its own
   threat map (via self_attack when stunned, etc), which hilariously caused 
   it to wander from tile to tile, looking for itself.  Fixed some FIXMEs,

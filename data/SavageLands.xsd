@@ -119,6 +119,7 @@
 			<xs:element name="WildOrchardTile" type="tns:Tile"/>
 			<xs:element name="FruitTreeTile" type="tns:Tile"/>
 			<xs:element name="EvergreenTreeTile" type="tns:Tile"/>
+			<xs:element name="RockyEarthTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -878,7 +879,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="40"/>
+		<xs:maxInclusive value="41"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Rarity">

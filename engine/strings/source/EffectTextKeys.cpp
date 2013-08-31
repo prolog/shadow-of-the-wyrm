@@ -52,6 +52,24 @@ string EffectTextKeys::get_identify_individual_item_message(const string& unid_u
   return id_message;
 }
 
+string EffectTextKeys::get_wand_recharge_already_full_message(const string& wand_desc_sid)
+{
+  string recharge_msg = StringTable::get(EFFECT_RECHARGING_ALREADY_FULL);
+
+  boost::replace_first(recharge_msg, "%s", StringTable::get(wand_desc_sid));
+
+  return recharge_msg;
+}
+
+string EffectTextKeys::get_wand_recharge_message(const string& wand_desc_sid)
+{
+  string recharge_msg = StringTable::get(EFFECT_RECHARGING);
+
+  boost::replace_first(recharge_msg, "%s", StringTable::get(wand_desc_sid));
+
+  return recharge_msg;
+}
+
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
 const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
@@ -65,3 +83,5 @@ const string EffectTextKeys::EFFECT_ETHER_MONSTER = "EFFECT_ETHER_MONSTER";
 const string EffectTextKeys::EFFECT_TELEPORT_PLAYER = "EFFECT_TELEPORT_PLAYER";
 const string EffectTextKeys::EFFECT_TELEPORT_MONSTER = "EFFECT_TELEPORT_MONSTER";
 const string EffectTextKeys::EFFECT_RECHARGING_PLAYER_NO_WANDS = "EFFECT_RECHARGING_PLAYER_NO_WANDS";
+const string EffectTextKeys::EFFECT_RECHARGING = "EFFECT_RECHARGING";
+const string EffectTextKeys::EFFECT_RECHARGING_ALREADY_FULL = "EFFECT_RECHARGING_ALREADY_FULL";
