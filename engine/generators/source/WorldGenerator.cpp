@@ -128,6 +128,29 @@ void WorldGenerator::generate_little_island(MapPtr map)
   map->insert(height-2, width-2, village_dungeon);
 }
 
+// A tiny island where an old exile lives.
+void WorldGenerator::generate_last_rock(MapPtr map)
+{
+  Dimensions dim = map->size();
+  int height = dim.get_y();
+  int width = dim.get_x();
+
+  // Refill with sea, in case there are land features here already.
+  for (int current_height = height - 16; current_height < height-14; current_height++)
+  {
+    for (int current_width = width - 5; current_width < width; current_width++)
+    {
+      TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
+      map->insert(current_height, current_width, sea_tile);
+    }
+  }
+
+  TilePtr last_rock = TileGenerator::generate(TILE_TYPE_ROCKY_EARTH);
+  last_rock->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ROCK);
+  last_rock->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ROCK);
+  map->insert(height-15, width-1, last_rock);
+}
+
 // The island containing the only infinite, Angband-style dungeon in the game.
 void WorldGenerator::generate_infinite_dungeon_island(MapPtr map)
 {
@@ -227,6 +250,8 @@ MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
   generate_little_island(map);
   generate_infinite_dungeon_island(map);
   generate_far_reaches(map);
+  generate_last_rock(map);
+
   return map;
 }
 

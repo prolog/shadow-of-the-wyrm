@@ -9,6 +9,7 @@ class TileExtraDescriptionKeys
     static const std::string TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON;
     static const std::string TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR;
     static const std::string TILE_EXTRA_DESCRIPTION_WINTERSEA_KEEP;
+    static const std::string TILE_EXTRA_DESCRIPTION_LAST_ROCK;
 
   protected:
     TileExtraDescriptionKeys();

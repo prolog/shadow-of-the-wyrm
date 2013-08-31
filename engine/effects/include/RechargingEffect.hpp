@@ -1,5 +1,6 @@
 #pragma once
 #include "Effect.hpp"
+#include "Wand.hpp"
 
 class RechargingEffect : public Effect
 {
@@ -18,6 +19,10 @@ class RechargingEffect : public Effect
     virtual bool effect_uncursed(boost::shared_ptr<Creature> creature, ActionManager * const am);
     virtual bool effect_cursed(boost::shared_ptr<Creature> creature, ActionManager * const am);
 
+    virtual std::pair<int, int> get_charges_range(const ItemStatus item_status);
+
     void add_player_no_wands_message();
+    void add_recharge_message(boost::shared_ptr<Creature> creature, WandPtr wand);
+    void add_recharge_already_full_message(boost::shared_ptr<Creature> creature, WandPtr wand);
 };
 

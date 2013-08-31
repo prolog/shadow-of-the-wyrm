@@ -4367,6 +4367,12 @@
 				<Colour>2</Colour>
 			</Text>
 		</EvergreenTreeTile>
+		<RockyEarthTile>
+			<Text>
+				<Symbol>,</Symbol>
+				<Colour>8</Colour>
+			</Text>
+		</RockyEarthTile>
 	</Tiles>
 	<Items>
 		<Armours>

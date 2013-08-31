@@ -12,8 +12,8 @@ class WandConstants
     static const int MAX_CHARGES;
 };
 
-const int WandConstants::MIN_CHARGES = 2;
-const int WandConstants::MAX_CHARGES = 6;
+const int WandConstants::MIN_CHARGES = 3;
+const int WandConstants::MAX_CHARGES = 7;
 
 Wand::Wand()
 {
@@ -24,7 +24,7 @@ Wand::Wand()
   has_damage = false;
   colour = COLOUR_WHITE;
   
-  reset_charges();
+  set_initial_charges();
 }
 
 Wand::~Wand()
@@ -75,7 +75,7 @@ string Wand::get_synopsis() const
 {
   ostringstream oss;
 
-  oss << "(" << charges << ")";
+  oss << "(" << charges.get_current() << ")";
 
   return oss.str();
 }
@@ -87,7 +87,7 @@ void Wand::set_range(const uint new_range)
 
 uint Wand::get_range() const
 {
-  if (charges > 0)
+  if (charges.get_current() > 0)
   {
     return range;
   }
@@ -114,7 +114,7 @@ void Wand::set_has_damage(const bool new_has_damage)
 
 bool Wand::get_has_damage() const
 {
-  if (charges > 0)
+  if (charges.get_current() > 0)
   {
     return has_damage;
   }
@@ -134,24 +134,24 @@ Damage Wand::get_damage() const
   return damage;
 }
 
-void Wand::reset_charges()
+void Wand::set_initial_charges()
 {
   charges = RNG::range(WandConstants::MIN_CHARGES, WandConstants::MAX_CHARGES);
 }
 
-void Wand::set_charges(const uint new_charges)
+void Wand::set_charges(const Statistic& new_charges)
 {
   charges = new_charges;
 }
 
-uint Wand::get_charges() const
+Statistic Wand::get_charges() const
 {
   return charges;
 }
 
 EffectType Wand::get_effect_type() const
 {
-  if (charges > 0)
+  if (charges.get_current() > 0)
   {
     return effect;
   }
@@ -177,7 +177,7 @@ Item* Wand::create()
 {
   Item* new_wand = clone();
 
-  reset_charges();
+  set_initial_charges();
 
   return new_wand;
 }
@@ -198,9 +198,9 @@ bool Wand::serialize(ostream& stream)
   Serialize::write_enum(stream, shape);
   Serialize::write_bool(stream, has_damage);
   
-  damage.serialize(stream);
-  
-  Serialize::write_uint(stream, charges);
+  damage.serialize(stream);  
+  charges.serialize(stream);
+
   Serialize::write_enum(stream, colour);
 
   return true;
@@ -215,8 +215,8 @@ bool Wand::deserialize(istream& stream)
   Serialize::read_bool(stream, has_damage);
 
   damage.deserialize(stream);
+  charges.deserialize(stream);
 
-  Serialize::read_uint(stream, charges);
   Serialize::read_enum(stream, colour);
 
   return true;

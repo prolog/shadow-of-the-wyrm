@@ -15,7 +15,9 @@ TEST(SL_World_Wand, saveload)
   wand.set_effect_type(EFFECT_TYPE_IDENTIFY);
   wand.set_range(12);
   wand.set_spell_shape_type(SPELL_SHAPE_REFLECTIVE_BEAM);
-  wand.set_charges(8);
+  Statistic charges(8);
+  charges.set_current(4);
+  wand.set_charges(charges);
   wand.set_colour(COLOUR_RED);
 
   ostringstream ss;

@@ -2751,6 +2751,9 @@
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\RockyEarthTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5248,6 +5251,12 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\RechargingEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\RockyEarthTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\RockyEarthTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

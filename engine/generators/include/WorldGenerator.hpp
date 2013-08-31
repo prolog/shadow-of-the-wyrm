@@ -34,6 +34,7 @@ class WorldGenerator : public SL::Generator
     void generate_little_island(MapPtr map);
     void generate_infinite_dungeon_island(MapPtr map);
     void generate_far_reaches(MapPtr map);
+    void generate_last_rock(MapPtr map);
     
     void populate_race_information();
     void set_village_races(MapPtr map);

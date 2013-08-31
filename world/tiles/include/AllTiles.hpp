@@ -37,6 +37,7 @@
 #include "TempleTile.hpp"
 #include "UpStaircaseTile.hpp"
 #include "DownStaircaseTile.hpp"
+#include "RockyEarthTile.hpp"
 #include "TreeTile.hpp"
 #include "WeedsTile.hpp"
 #include "VillageTile.hpp"

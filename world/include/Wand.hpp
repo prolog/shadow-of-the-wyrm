@@ -2,6 +2,7 @@
 #include "Damage.hpp"
 #include "Item.hpp"
 #include "SpellTypes.hpp"
+#include "Statistic.hpp"
 
 class Wand : public Item
 {
@@ -27,9 +28,9 @@ class Wand : public Item
     void set_damage(const Damage& new_damage);
     Damage get_damage() const;
 
-    void reset_charges();
-    void set_charges(const uint new_charges);
-    uint get_charges() const;
+    void set_initial_charges();
+    void set_charges(const Statistic& new_charges);
+    Statistic get_charges() const;
 
     void set_colour(const Colour new_colour);
     Colour get_colour() const;
@@ -48,7 +49,10 @@ class Wand : public Item
     SpellShapeType shape;
     bool has_damage;
     Damage damage;
-    uint charges;
+
+    // Base = max charges
+    // Current = current number of charges
+    Statistic charges;
     Colour colour;
 
   private:
