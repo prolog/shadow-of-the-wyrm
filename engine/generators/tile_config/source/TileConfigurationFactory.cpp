@@ -28,6 +28,9 @@ void TileConfigurationFactory::initialize_tile_configuration_map()
   ITileConfigurationPtr field_config = boost::make_shared<FieldTileConfiguration>(); 
   tile_configurations[TILE_TYPE_FIELD] = field_config;
 
+  ITileConfigurationPtr rocky_earth_config = boost::make_shared<CairnTileConfiguration>();
+  tile_configurations[TILE_TYPE_ROCKY_EARTH] = rocky_earth_config;
+
   ITileConfigurationPtr cairn_config = boost::make_shared<CairnTileConfiguration>();
   tile_configurations[TILE_TYPE_CAIRN] = cairn_config;
 
