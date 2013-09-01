@@ -125,20 +125,20 @@ void RechargingEffect::add_player_no_wands_message()
 void RechargingEffect::add_recharge_already_full_message(CreaturePtr creature, WandPtr wand)
 {
   ItemIdentifier item_id;
-  string wand_desc_sid = item_id.get_appropriate_usage_description(wand);
+  string wand_desc = item_id.get_appropriate_usage_description(wand);
 
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-  manager.add_new_message(EffectTextKeys::get_wand_recharge_already_full_message(wand_desc_sid));
+  manager.add_new_message(EffectTextKeys::get_wand_recharge_already_full_message(wand_desc));
   manager.send();
 }
 
 void RechargingEffect::add_recharge_message(CreaturePtr creature, WandPtr wand)
 {
   ItemIdentifier item_id;
-  string wand_desc_sid = item_id.get_appropriate_usage_description(wand);
+  string wand_desc = item_id.get_appropriate_usage_description(wand);
 
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-  manager.add_new_message(EffectTextKeys::get_wand_recharge_message(wand_desc_sid));
+  manager.add_new_message(EffectTextKeys::get_wand_recharge_message(wand_desc));
   manager.send();
 }
 
