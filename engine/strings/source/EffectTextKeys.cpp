@@ -52,20 +52,22 @@ string EffectTextKeys::get_identify_individual_item_message(const string& unid_u
   return id_message;
 }
 
-string EffectTextKeys::get_wand_recharge_already_full_message(const string& wand_desc_sid)
+string EffectTextKeys::get_wand_recharge_already_full_message(const string& wand_desc)
 {
   string recharge_msg = StringTable::get(EFFECT_RECHARGING_ALREADY_FULL);
 
-  boost::replace_first(recharge_msg, "%s", StringTable::get(wand_desc_sid));
+  boost::replace_first(recharge_msg, "%s", wand_desc);
+  recharge_msg[0] = toupper(recharge_msg[0]);
 
   return recharge_msg;
 }
 
-string EffectTextKeys::get_wand_recharge_message(const string& wand_desc_sid)
+string EffectTextKeys::get_wand_recharge_message(const string& wand_desc)
 {
   string recharge_msg = StringTable::get(EFFECT_RECHARGING);
 
-  boost::replace_first(recharge_msg, "%s", StringTable::get(wand_desc_sid));
+  boost::replace_first(recharge_msg, "%s", wand_desc);
+  recharge_msg[0] = toupper(recharge_msg[0]);
 
   return recharge_msg;
 }

@@ -8,8 +8,8 @@ class EffectTextKeys
     static std::string get_ether_effect_message(const std::string& monster_desc_sid, const bool is_player);
     static std::string get_identify_individual_item_message(const std::string& unid_usage_desc_sid, const std::string& id_usage_desc_sid);
     static std::string get_teleport_effect_message(const std::string& monster_desc_sid, const bool is_player);
-    static std::string get_wand_recharge_message(const std::string& wand_desc_sid);
-    static std::string get_wand_recharge_already_full_message(const std::string& wand_desc_sid);
+    static std::string get_wand_recharge_message(const std::string& wand_desc);
+    static std::string get_wand_recharge_already_full_message(const std::string& wand_desc);
 
     static const std::string EFFECT_NULL;
     static const std::string EFFECT_SWEET_TASTE;
