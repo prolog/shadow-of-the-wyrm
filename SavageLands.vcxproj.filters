@@ -2754,6 +2754,9 @@
     <ClInclude Include="world\tiles\include\RockyEarthTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\AutomaticMovement.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5257,6 +5260,12 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\RockyEarthTile.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\AutomaticMovement.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\AutomaticMovement_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

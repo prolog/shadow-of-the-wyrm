@@ -65,6 +65,10 @@ TEST(SL_World_Creature, saveload)
   c.set_willpower(will);
   c.set_charisma(cha);
 
+  AutomaticMovement& am = c.get_automatic_movement_ref();
+  am.set_direction(DIRECTION_SOUTH);
+  am.set_engaged(true);
+
   ostringstream ss;
 
   c.serialize(ss);

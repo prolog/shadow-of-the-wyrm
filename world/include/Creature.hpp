@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <boost/shared_ptr.hpp>
+#include "AutomaticMovement.hpp"
 #include "common.hpp"
 #include "Colours.hpp"
 #include "Controller.hpp"
@@ -240,6 +241,10 @@ class Creature : public ISerializable
     void set_speech_text_sid(const std::string& speech_text_sid);
     std::string get_speech_text_sid() const;
 
+    // A creature's auto-move details.
+    void set_automatic_movement(const AutomaticMovement& new_auto);
+    AutomaticMovement& get_automatic_movement_ref();
+
     // Additional traits not all creatures will have, so a bit of space is saved
     // by using a map.
     bool has_additional_property(const std::string& property_name) const;
@@ -370,6 +375,9 @@ class Creature : public ISerializable
     // Event functions - used to look up engine or user-defined functions
     // when the event occurs.
     EventFunctionMap event_functions;
+
+    // Automatic movement details.
+    AutomaticMovement auto_move;
 
     // Additional properties - properties a creature can have that are
     // not common to all creatures (speech, etc).
