@@ -100,6 +100,7 @@ Creature::Creature(const Creature& cr)
   statuses = cr.statuses;
   status_durations = cr.status_durations;
   event_functions = cr.event_functions;
+  auto_move = cr.auto_move;
   additional_properties = cr.additional_properties;
   mortuary = cr.mortuary;
   spell_knowledge = cr.spell_knowledge;
@@ -176,6 +177,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (statuses == cr.statuses);
   result = result && (status_durations == cr.status_durations);
   result = result && (event_functions == cr.event_functions);
+  result = result && (auto_move == cr.auto_move);
   result = result && (additional_properties == cr.additional_properties);
   result = result && (mortuary == cr.mortuary);
   result = result && (spell_knowledge == cr.spell_knowledge);
@@ -870,6 +872,16 @@ string Creature::get_speech_text_sid() const
   return speech_text_sid;
 }
 
+void Creature::set_automatic_movement(const AutomaticMovement& new_auto_move)
+{
+  auto_move = new_auto_move;
+}
+
+AutomaticMovement& Creature::get_automatic_movement_ref()
+{
+  return auto_move;
+}
+
 bool Creature::has_additional_property(const string& property_name) const
 {
   bool has_property = false;
@@ -943,7 +955,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 944);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 960);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 752);
@@ -1005,6 +1017,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->hunger, cr.hunger);
   std::swap(this->statuses, cr.statuses);
   std::swap(this->event_functions, cr.event_functions);
+  std::swap(this->auto_move, cr.auto_move);
   std::swap(this->additional_properties, cr.additional_properties);
   std::swap(this->mortuary, cr.mortuary);
   std::swap(this->spell_knowledge, cr.spell_knowledge);
@@ -1130,6 +1143,8 @@ bool Creature::serialize(ostream& stream)
       Serialize::write_string(stream, event_function.second);
     }
   }
+
+  auto_move.serialize(stream);
 
   Serialize::write_size_t(stream, additional_properties.size());
 
@@ -1299,6 +1314,8 @@ bool Creature::deserialize(istream& stream)
       event_functions.insert(make_pair(event_name, function_name));
     }
   }
+
+  auto_move.deserialize(stream);
 
   size_t additional_properties_size = 0;
   Serialize::read_size_t(stream, additional_properties_size);
