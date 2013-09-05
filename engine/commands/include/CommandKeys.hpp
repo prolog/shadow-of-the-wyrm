@@ -19,6 +19,7 @@ class CommandKeys
     static const std::string MOVE_SOUTHEAST;
     static const std::string MOVE_UP;
     static const std::string MOVE_DOWN;
+    static const std::string AUTOMATIC_MOVEMENT;
     static const std::string ATTACK_NORTHWEST;
     static const std::string ATTACK_NORTH;
     static const std::string ATTACK_NORTHEAST;

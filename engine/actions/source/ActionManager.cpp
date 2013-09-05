@@ -88,6 +88,11 @@ ActionCost ActionManager::move(CreaturePtr creature, const Direction direction)
   return get_action_cost(creature, movement_action.move(creature, direction));
 }
 
+ActionCost ActionManager::automatic_movement(CreaturePtr creature)
+{
+  return get_action_cost(creature, 0);
+}
+
 ActionCost ActionManager::attack(CreaturePtr creature, const Direction direction)
 {
   ActionCostValue action_cost_value = combat_manager.attack(creature, direction);

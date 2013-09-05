@@ -60,6 +60,13 @@ class MoveDownLevelCommand : public Command
     ~MoveDownLevelCommand();
 };
 
+class AutomaticMovementCommand : public Command
+{
+  public:
+    AutomaticMovementCommand();
+    ~AutomaticMovementCommand();
+};
+
 class SearchCommand : public MovementCommand
 {
   public:

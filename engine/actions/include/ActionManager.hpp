@@ -31,6 +31,7 @@ class ActionManager : public ISerializable
     ActionCost dump_character(CreaturePtr creature);
     ActionCost search(CreaturePtr creature);
     ActionCost move(CreaturePtr creature, const Direction d);
+    ActionCost automatic_movement(CreaturePtr creature);
     ActionCost attack(CreaturePtr creature, const Direction d);
     ActionCost ascend(CreaturePtr creature);
     ActionCost descend(CreaturePtr creature);

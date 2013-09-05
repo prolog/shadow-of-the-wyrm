@@ -108,6 +108,7 @@
     <ClInclude Include="engine\actions\include\ActionCoordinator.hpp" />
     <ClInclude Include="engine\actions\include\ActionCost.hpp" />
     <ClInclude Include="engine\actions\include\ActionManager.hpp" />
+    <ClInclude Include="engine\actions\include\AutomaticMovementAction.hpp" />
     <ClInclude Include="engine\actions\include\BestiaryAction.hpp" />
     <ClInclude Include="engine\actions\include\CharacterDumpAction.hpp" />
     <ClInclude Include="engine\actions\include\ChatAction.hpp" />
@@ -286,6 +287,7 @@
     <ClInclude Include="engine\decision_strategies\deity\include\FullHPDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategyHandler.hpp" />
+    <ClInclude Include="engine\decision_strategies\include\AutomaticMovementDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategyFactory.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategyTypes.hpp" />
@@ -821,6 +823,7 @@
     <ClCompile Include="engine\actions\source\ActionCoordinator.cpp" />
     <ClCompile Include="engine\actions\source\ActionCost.cpp" />
     <ClCompile Include="engine\actions\source\ActionManager.cpp" />
+    <ClCompile Include="engine\actions\source\AutomaticMovementAction.cpp" />
     <ClCompile Include="engine\actions\source\BestiaryAction.cpp" />
     <ClCompile Include="engine\actions\source\CharacterDumpAction.cpp" />
     <ClCompile Include="engine\actions\source\ChatAction.cpp" />
@@ -1142,6 +1145,7 @@
     <ClCompile Include="engine\decision_strategies\search\source\SearchNode.cpp" />
     <ClCompile Include="engine\decision_strategies\search\source\SearchStrategyFactory.cpp" />
     <ClCompile Include="engine\decision_strategies\search\source\UniformCostSearchStrategy.cpp" />
+    <ClCompile Include="engine\decision_strategies\source\AutomaticMovementDecisionStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategyFactory.cpp" />
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategyTypes.cpp" />
@@ -1149,6 +1153,9 @@
     <ClCompile Include="engine\decision_strategies\source\MobileDecisionStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\source\NPCDecisionStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
+    <ClCompile Include="engine\decision_strategies\source\unit_tests\AutomaticMovementDecisionStrategy_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\decision_strategies\source\unit_tests\ImmobileDecisionStrategy_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
