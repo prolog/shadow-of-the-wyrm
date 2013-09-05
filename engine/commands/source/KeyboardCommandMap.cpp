@@ -99,7 +99,9 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('y'), CommandKeys::MOVE_NORTHWEST));
   command_mapping.insert(make_pair(Integer::to_string('k'), CommandKeys::MOVE_NORTH));
   command_mapping.insert(make_pair(Integer::to_string('u'), CommandKeys::MOVE_NORTHEAST));
-  
+  // other movement-type commands
+  command_mapping.insert(make_pair(Integer::to_string('w'), CommandKeys::AUTOMATIC_MOVEMENT));
+
   command_mapping.insert(make_pair(Integer::to_string('<'), CommandKeys::MOVE_UP));
   command_mapping.insert(make_pair(Integer::to_string('>'), CommandKeys::MOVE_DOWN));
   command_mapping.insert(make_pair(Integer::to_string(','), CommandKeys::PICK_UP_ITEM));

@@ -25,6 +25,7 @@ const string CommandKeys::MOVE_SOUTH     = "MOVE_SOUTH";
 const string CommandKeys::MOVE_SOUTHEAST = "MOVE_SOUTHEAST";
 const string CommandKeys::MOVE_UP        = "MOVE_UP";
 const string CommandKeys::MOVE_DOWN      = "MOVE_DOWN";
+const string CommandKeys::AUTOMATIC_MOVEMENT = "AUTOMATIC_MOVEMENT";
 const string CommandKeys::PICK_UP_ITEM   = "PICK_UP_ITEM";
 const string CommandKeys::DROP_ITEM      = "DROP_ITEM";
 const string CommandKeys::CHAR_DUMP      = "CHAR_DUMP";

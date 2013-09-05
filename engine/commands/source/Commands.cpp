@@ -88,6 +88,16 @@ MoveDownLevelCommand::~MoveDownLevelCommand()
 {
 }
 
+// Automatic movement (a.k.a. "run")
+AutomaticMovementCommand::AutomaticMovementCommand()
+: Command(CommandKeys::AUTOMATIC_MOVEMENT)
+{
+}
+
+AutomaticMovementCommand::~AutomaticMovementCommand()
+{
+}
+
 // Attack
 AttackCommand::AttackCommand(const Direction d)
 : DirectionalCommand(d)

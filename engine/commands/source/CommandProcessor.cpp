@@ -80,6 +80,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.descend(creature);
       }
+      else if (command_name == CommandKeys::AUTOMATIC_MOVEMENT)
+      {
+        ac = game.actions.automatic_movement(creature);
+      }
       else if (command_name == CommandKeys::PICK_UP_ITEM)
       {
         ac = game.actions.pick_up(creature);

@@ -73,6 +73,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = boost::make_shared<MoveDownLevelCommand>();
   }
+  else if (command_name == CommandKeys::AUTOMATIC_MOVEMENT)
+  {
+    command = boost::make_shared<AutomaticMovementCommand>();
+  }
   else if (command_name == CommandKeys::PICK_UP_ITEM)
   {
     command = boost::make_shared<PickUpCommand>();
