@@ -15,4 +15,5 @@ const string TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR = "last_island_lai
 const string TileCustomMapIDs::CUSTOM_MAP_ID_THE_BARROWS = "the_barrows";
 const string TileCustomMapIDs::CUSTOM_MAP_ID_WINTERSEA_KEEP = "wintersea_keep";
 const string TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ROCK = "last_rock";
+const string TileCustomMapIDs::CUSTOM_MAP_ID_FAR_SHORE = "far_shore";
 

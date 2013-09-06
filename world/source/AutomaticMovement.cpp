@@ -8,6 +8,11 @@ AutomaticMovement::AutomaticMovement()
 {
 }
 
+AutomaticMovement::AutomaticMovement(const Direction d, const bool engage)
+: direction(d), engaged(engage)
+{
+}
+
 bool AutomaticMovement::operator==(const AutomaticMovement& auto_m) const
 {
   bool result = true;

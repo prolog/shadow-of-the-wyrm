@@ -4452,6 +4452,18 @@
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
+			<Armour id="two_moon_amulet">
+				<DescriptionSID>TWO_MOON_AMULET_SID</DescriptionSID>
+				<UsageDescriptionSID>TWO_MOON_AMULET_USAGE_SID</UsageDescriptionSID>
+				<Value>940</Value>
+				<Weight><Pounds>0</Pounds><Ounces>4</Ounces></Weight>
+				<WornLocation>1</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>6</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Evade>10</Evade>
+				<Soak>4</Soak>
+			</Armour>
 			<Armour id="chain_scraps">
 				<DescriptionSID>CHAIN_SCRAPS_SID</DescriptionSID>
 				<UsageDescriptionSID>CHAIN_SCRAPS_USAGE_SID</UsageDescriptionSID>

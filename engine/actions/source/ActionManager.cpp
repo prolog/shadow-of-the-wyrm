@@ -2,6 +2,7 @@
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "AutomaticMovementAction.hpp"
 #include "BestiaryAction.hpp"
 #include "CharacterDumpAction.hpp"
 #include "ChatAction.hpp"
@@ -90,7 +91,8 @@ ActionCost ActionManager::move(CreaturePtr creature, const Direction direction)
 
 ActionCost ActionManager::automatic_movement(CreaturePtr creature)
 {
-  return get_action_cost(creature, 0);
+  AutomaticMovementAction ama;
+  return get_action_cost(creature, ama.automatic_movement(creature));
 }
 
 ActionCost ActionManager::attack(CreaturePtr creature, const Direction direction)
