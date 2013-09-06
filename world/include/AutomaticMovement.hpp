@@ -8,6 +8,8 @@ class AutomaticMovement : public ISerializable
 {
   public:
     AutomaticMovement();
+    AutomaticMovement(const Direction d, const bool engage);
+
     bool operator==(const AutomaticMovement& auto_m) const;
 
     void set_direction(const Direction new_direction);

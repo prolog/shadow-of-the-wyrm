@@ -29,11 +29,11 @@
 	<InitialPlacements>
 		<Items>
 			<Placement>
+				<ID>_rock</ID>
 				<Coord>
 					<Row>4</Row>
 					<Col>52</Col>
 				</Coord>
-				<ID>_rock</ID>
 			</Placement>
 		</Items>
 	</InitialPlacements>
