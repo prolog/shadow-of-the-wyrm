@@ -24,6 +24,7 @@ CreaturePtr get_creature(const string& creature_id);
 // API prototypes
 int add_message_with_pause(lua_State* ls);
 int add_message(lua_State* ls);
+int add_confirmation_message(lua_State* ls);
 int add_new_quest(lua_State* ls);
 int is_on_quest(lua_State* ls);
 int get_num_creature_killed_global(lua_State* ls);
@@ -191,6 +192,7 @@ void ScriptEngine::register_api_functions()
 {
   lua_register(L, "add_message_with_pause", add_message_with_pause);
   lua_register(L, "add_message", add_message);
+  lua_register(L, "add_confirmation_message", add_confirmation_message);
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
@@ -266,6 +268,36 @@ static int add_message(lua_State* ls)
   }
 
   return 0;
+}
+
+// Add a message with a confirmation prompt at the end.
+// Arguments: message SID.
+// Return value: boolean
+static int add_confirmation_message(lua_State* ls)
+{
+  bool confirm = false;
+
+  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  {
+    Game& game = Game::instance();
+    CreaturePtr player = game.get_current_player();
+		string message_sid = lua_tostring(ls, 1);
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    manager.add_new_confirmation_message(StringTable::get(message_sid));
+    confirm = player->get_decision_strategy()->get_confirmation();
+
+    manager.send();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_confirmation_message");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, confirm);
+  return 1;
 }
 
 // Add a quest to the in-progress list.  Arguments are:
