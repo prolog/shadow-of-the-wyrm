@@ -13,6 +13,7 @@
 #include "Serialize.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -285,7 +286,7 @@ static int add_confirmation_message(lua_State* ls)
 
     IMessageManager& manager = MessageManagerFactory::instance();
     manager.clear_if_necessary();
-    manager.add_new_confirmation_message(StringTable::get(message_sid));
+    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(message_sid));
     confirm = player->get_decision_strategy()->get_confirmation();
 
     manager.send();

@@ -3641,6 +3641,7 @@
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>5</Soak>
+			<ChatScript>quests/exile.lua</ChatScript>
 		</Creature>
 		<Creature id="farmer">
 			<RaceID>01_human</RaceID>
@@ -4808,6 +4809,26 @@
 					<NumSides>10</NumSides>
 					<Modifier>2</Modifier>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="brightblade">
+				<DescriptionSID>BRIGHTBLADE_SID</DescriptionSID>
+				<UsageDescriptionSID>BRIGHTBLADE_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>9</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>12</NumSides>
+					<Modifier>0</Modifier>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="elven_short_sword">

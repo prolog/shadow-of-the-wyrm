@@ -16,6 +16,7 @@ local function sun_gem_completion_fn()
   add_object_to_player_tile("forger")
   remove_object_from_player("sun_gem")
   remove_active_quest("ploughman_sungem")
+  return true
 end
 
 sungem_quest = Quest:new("blacksmith_sungem",

@@ -67,15 +67,19 @@ function Quest:execute()
   
   -- Quest is not complete, but condition is met.
   elseif self.quest_completion_condition_fn() == true then
-    self.quest_completion_fn()
+    local should_mark_complete = self.quest_completion_fn()
 
     -- May not be on the quest.  Silently add the quest if not.
     if is_on_quest(self.quest_id) == false then
       add_new_quest(self.quest_id, self)
     end
 
-    -- Guaranteed to have a quest at this point.  Mark it as complete.
-    mark_quest_completed(self.quest_id)
+    -- Guaranteed to have a quest at this point.  Mark it as complete
+    -- if the completion function has indicated this.
+    if should_mark_complete == true then
+      mark_quest_completed(self.quest_id)
+    end
+
   -- Quest is in progress, condition is not met.
   elseif is_on_quest(self.quest_id) then
     add_message(self.quest_reminder_text_sid)

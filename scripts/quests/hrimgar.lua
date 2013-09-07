@@ -15,6 +15,7 @@ end
 local function bandit_completion_fn()
   add_message("HRIMGAR_BANDIT_QUEST_COMPLETE_SID")
   add_object_to_player_tile("boathouse_key")
+  return true
 end
 
 -- Create the first quest: Bandits in the Barrow
@@ -38,7 +39,7 @@ end
 
 wyrm_quest = Quest:new("wyrm_quest",
                        "HRIMGAR_WYRM_QUEST_TITLE_SID",
-                       "HRIMGAR_DESCRIPTION_SID",
+                       "HRIMGAR_SHORT_DESCRIPTION_SID",
                        "HRIMGAR_WYRM_DESCRIPTION_SID",
                        "", -- Can't actually return after slaying the wyrm
                        "HRIMGAR_WYRM_QUEST_REMINDER_SID",

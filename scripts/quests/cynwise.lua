@@ -34,6 +34,7 @@ local function cynwise_wintersea_completion_fn()
   end
 
   remove_object_from_player("silver_branch")
+  return true
 end
 
 cynwise_quest = Quest:new("cynwise_wintersea",
