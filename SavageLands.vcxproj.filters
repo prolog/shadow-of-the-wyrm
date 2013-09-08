@@ -1419,9 +1419,6 @@
     <ClInclude Include="engine\decision_strategies\search\include\BreadthFirstSearchStrategy.hpp">
       <Filter>Header Files\engine\decision_strategies\search\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\search\include\GreedySearchStrategy.hpp">
-      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\decision_strategies\search\include\Search.hpp">
       <Filter>Header Files\engine\decision_strategies\search\include</Filter>
     </ClInclude>
@@ -2762,6 +2759,18 @@
     </ClInclude>
     <ClInclude Include="engine\actions\include\AutomaticMovementAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\decision_strategies\search\include\GreedySearchStrategy.hpp">
+      <Filter>Header Files\engine\decision_strategies\search\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureTileSafetyChecker.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\ITileSafetyCondition.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\WaterSafetyCondition.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5281,6 +5290,12 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\AutomaticMovementAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\WaterSafetyCondition.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureTileSafetyChecker.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
