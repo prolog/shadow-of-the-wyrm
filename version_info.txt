@@ -25,6 +25,19 @@ Savage Lands v0.1.6 "Osric"
 
 - Added new custom maps (Last Rock, and its associated subterranean
   level) to the eastern edge of the map, north of the infinite dungeon.
+  Added a quest to the exile for the player to find out information about
+  the exile's lost sister.  As a part of this, a couple of artifacts
+  (the Amulet of the Two Moons, Brightblade) were added.
+
+- Added a custom map (Far Shore) as part of the exile's quest.  Populated
+  it with big, ferocious ogres.  Unfortunately, the first time I visited
+  the island, the ogres were a little too ferocious - they would dive into
+  the water to get at the player, so if the player kept his distance,
+  the ogres would eventually drown.  While awesome, this ultimately needed
+  to be fixed.  Ogres aren't bright, but they're not stupid, either.  
+  Added a tile/tile-super-type safety check mechanism, and added safety 
+  checks for water tiles so that creatures would only cross water if they
+  had a boat.
 
 - Miscellaneous bug fixes: fixed an issue with adding a creature to its own
   threat map (via self_attack when stunned, etc), which hilariously caused 
