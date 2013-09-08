@@ -27,6 +27,50 @@
 	SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS
 	</Tiles>
 	<InitialPlacements>
+		<Creatures>
+			<Placement>
+				<ID>ogre</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ogre</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ogre</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>urgrim</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ogre</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>38</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ogre</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>37</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items>
 			<Placement>
 				<ID>two_moon_amulet</ID>
