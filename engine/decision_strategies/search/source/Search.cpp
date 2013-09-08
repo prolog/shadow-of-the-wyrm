@@ -1,5 +1,6 @@
 #include <boost/foreach.hpp>
 #include "CoordUtils.hpp"
+#include "CreatureTileSafetyChecker.hpp"
 #include "Search.hpp"
 
 using namespace std;
@@ -69,6 +70,7 @@ SearchNode Search::remove_front(list<SearchNode>& search_queue)
 
 list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& visited, const Coordinate& c, const Coordinate& goal_coordinate, SearchNode * const parent)
 {
+  CreatureTileSafetyChecker safety_check;
   list<SearchNode> search_nodes;
 
   Dimensions orig_map_dimensions = view_map->original_size();
@@ -86,7 +88,11 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
       
       if (tile)
       {
-        if (!tile->get_is_blocking(perspective_creature))
+        // Only consider a tile for inclusion in the final path if:
+        // - it isn't blocking
+        // - it's safe to move there for the creature
+        if (!tile->get_is_blocking(perspective_creature) &&
+             safety_check.is_tile_safe_for_creature(perspective_creature, tile))
         {
           SearchNode sn(coord);
         
