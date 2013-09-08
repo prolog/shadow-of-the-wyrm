@@ -2,6 +2,7 @@
 #include <boost/make_shared.hpp>
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
+#include "CreatureTileSafetyChecker.hpp"
 #include "Game.hpp"
 #include "NPCDecisionStrategy.hpp"
 #include "RNG.hpp"
@@ -157,12 +158,14 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
   MapPtr current_map = game.get_current_map();
   Dimensions current_dimensions = current_map->size();
   Coordinate this_creature_coords = current_map->get_location(this_creature_id);
-   
+  TilePtr this_creature_tile = current_map->at(this_creature_coords);
+  CreaturePtr this_creature = this_creature_tile->get_creature();
+
   int this_row = this_creature_coords.first;
   int this_col = this_creature_coords.second;
    
   vector<Coordinate> adjacent_coordinates = CoordUtils::get_adjacent_map_coordinates(current_dimensions, this_row, this_col);
-  vector<Coordinate> choice_coordinates = get_adjacent_coordinates_without_creatures(current_map, adjacent_coordinates);
+  vector<Coordinate> choice_coordinates = get_adjacent_safe_coordinates_without_creatures(current_map, adjacent_coordinates, this_creature);
     
   // Pick a tile if not empty
   if (!choice_coordinates.empty())
@@ -176,8 +179,9 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
 }
 
 // Get a list of the adjacent coordinates that do not contain creatures
-vector<Coordinate> NPCDecisionStrategy::get_adjacent_coordinates_without_creatures(MapPtr current_map, const vector<Coordinate>& all_adjacent_coordinates)
+vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_creatures(MapPtr current_map, const vector<Coordinate>& all_adjacent_coordinates, CreaturePtr this_creature)
 {
+  CreatureTileSafetyChecker safety_checker;
   vector<Coordinate> coords_without_creatures;
   
   BOOST_FOREACH(Coordinate c, all_adjacent_coordinates)
@@ -185,7 +189,7 @@ vector<Coordinate> NPCDecisionStrategy::get_adjacent_coordinates_without_creatur
     // Don't move if there's a creature on that coordinate.
     TilePtr adjacent_tile = current_map->at(c.first, c.second);
     
-    if (adjacent_tile->has_creature())
+    if (adjacent_tile->has_creature() || (!safety_checker.is_tile_safe_for_creature(this_creature, adjacent_tile)))
     {
       continue;
     }
