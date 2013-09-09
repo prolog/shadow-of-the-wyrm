@@ -2,6 +2,7 @@
 #include "AutomaticMovementAction.hpp"
 #include "Commands.hpp"
 #include "MessageManagerFactory.hpp"
+#include "MovementAction.hpp"
 
 using std::string;
 
@@ -39,10 +40,18 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
       action_cost_value = get_action_cost_value();
       Direction d = dcommand->get_direction();
 
+      // Start moving in the requested direction.
       AutomaticMovement am(d, true);
       creature->set_automatic_movement(am);
 
-      // TODO try the movement here...
+      MovementAction maction;
+      action_cost_value = maction.move(creature, d);
+
+      // If the creature wasn't able to move, disengage automovement.
+      if (action_cost_value == 0)
+      {
+        am.set_engaged(false);
+      }
     }
   }
 
