@@ -20,7 +20,7 @@ class MovementAction : public IActionManager
   protected:
     friend class ActionManager;
     friend class StairwayMovementAction;
-    friend class AutomaticMovementAction;
+    friend class AutomaticMovementCoordinator;
 
     MovementAction();
     ~MovementAction();
