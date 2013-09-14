@@ -29,6 +29,8 @@ class DecisionStrategy : public ISerializable
     void set_fov_map(boost::shared_ptr<Map> new_fov_map);
     boost::shared_ptr<Map> get_fov_map();
 
+    virtual ControllerPtr get_controller();
+
     virtual DecisionStrategy* copy() = 0;
 
     virtual bool serialize(std::ostream& stream);

@@ -2775,6 +2775,9 @@
     <ClInclude Include="engine\actions\include\AutomaticMovementCoordinator.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\include\DecisionStrategySelector.hpp">
+      <Filter>Header Files\engine\decision_strategies\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5302,6 +5305,12 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\AutomaticMovementCoordinator.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\DecisionStrategySelector.cpp">
+      <Filter>Source Files\engine\decision_strategies\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\source\unit_tests\DecisionStrategySelector_test.cpp">
+      <Filter>Source Files\engine\decision_strategies\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
