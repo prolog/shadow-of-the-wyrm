@@ -47,6 +47,7 @@ class ActionTextKeys
     static const std::string ACTION_BESTIARY_NO_SUCH_CREATURE_EXISTS;
     static const std::string ACTION_POTION_EXPLODES;
     static const std::string ACTION_AUTOMOVE_WORLD_MAP;
+    static const std::string ACTION_AUTOMOVE_TOO_HUNGRY;
 
   protected:
     ActionTextKeys();
