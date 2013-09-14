@@ -1,3 +1,4 @@
+#include <sstream>
 #include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"

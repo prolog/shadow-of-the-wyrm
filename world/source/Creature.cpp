@@ -958,7 +958,7 @@ void Creature::assert_size() const
     BOOST_STATIC_ASSERT(sizeof(*this) == 960);
     #else
     // Release
-    BOOST_STATIC_ASSERT(sizeof(*this) == 752);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 872);
     #endif
   #else // gcc toolchain
   BOOST_STATIC_ASSERT(sizeof(*this) == 424);

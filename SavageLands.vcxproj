@@ -67,7 +67,7 @@
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
-      <AdditionalIncludeDirectories>C:\Program Files %28x86%29\Lua\5.1\include;C:\cygwin\home\Julian\jrcpp\engine\scripting\include;C:\cygwin\home\Julian\jrcpp\engine\maps\include;C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\include;C:\cygwin\home\Julian\jrcpp\engine\events\include;C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_48_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\cygwin\home\Julian\jrcpp\engine\creatures\include;C:\cygwin\home\Julian\jrcpp\engine\generators\tile_config\include;C:\cygwin\home\Julian\jrcpp\engine\actions\read\include;C:\cygwin\home\Julian\jrcpp\engine\commands\magic\include;C:\cygwin\home\Julian\jrcpp\engine\magic\include;C:\cygwin\home\Julian\jrcpp\engine\strings\include;C:\cygwin\home\Julian\jrcpp\world\magic\include;C:\Program Files %28x86%29\Lua\5.1\include;C:\cygwin\home\Julian\jrcpp\engine\scripting\include;C:\cygwin\home\Julian\jrcpp\engine\maps\include;C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\include;C:\cygwin\home\Julian\jrcpp\engine\events\include;C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;c:\cygwin\home\Julian\jrcpp\display\animation\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_48_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest-1.6.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -939,12 +939,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\BlindedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\BloodiedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\DisfiguredCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\EvadeCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -952,9 +955,11 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ExposedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ForestCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\HeavyWeaponToHitCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -978,6 +983,7 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\MutenessCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\OverworldMapDangerLevelCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -985,12 +991,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ParalysisCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PhysicalDamageCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\PoisonCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ResistancesCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1002,6 +1011,7 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\SlownessCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\SoakCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1009,12 +1019,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\SpellboundCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StoneCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StunnedCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\UnderworldMapDangerLevelCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1065,9 +1078,11 @@
     <ClCompile Include="engine\commands\magic\source\MagicKeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\magic\source\unit_tests\MagicCommandFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\commands\magic\source\unit_tests\MagicKeyboardCommandMap_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\commands\select_tile\source\FireWeaponTileSelectionKeyboardCommandMap.cpp" />
     <ClCompile Include="engine\commands\select_tile\source\TileSelectionCommandFactory.cpp" />
@@ -1132,9 +1147,11 @@
     <ClCompile Include="engine\creatures\source\StunnedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\StatusEffect_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\creatures\source\WaterSafetyCondition.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionConstants.cpp" />
@@ -1166,9 +1183,11 @@
     <ClCompile Include="engine\decision_strategies\source\PlayerDecisionStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\source\unit_tests\AutomaticMovementDecisionStrategy_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\source\unit_tests\DecisionStrategySelector_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\source\unit_tests\ImmobileDecisionStrategy_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1209,6 +1228,7 @@
     <ClCompile Include="engine\effects\source\TeleportEffect.cpp" />
     <ClCompile Include="engine\effects\source\unit_tests\EffectFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\events\source\DeathEventFunctions.cpp" />
     <ClCompile Include="engine\events\source\EventFunctions.cpp" />
@@ -1324,9 +1344,11 @@
     <ClCompile Include="engine\magic\source\TileMagicChecker.cpp" />
     <ClCompile Include="engine\magic\source\unit_tests\MagicalAbilityChecker_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\magic\source\unit_tests\SpellBonusUpdater_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\source\CoordUtils.cpp" />
     <ClCompile Include="engine\maps\source\DirectionUtils.cpp" />
@@ -1339,9 +1361,11 @@
     <ClCompile Include="engine\maps\source\MapUtils.cpp" />
     <ClCompile Include="engine\maps\source\unit_tests\CoordUtils_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\source\unit_tests\LoadedMapDetails_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\maps\source\unit_tests\MapRegistry_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1374,6 +1398,7 @@
     <ClCompile Include="engine\scripting\source\ScriptEngine.cpp" />
     <ClCompile Include="engine\scripting\source\unit_tests\ScriptEngine_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\serialization\source\Serialization.cpp" />
     <ClCompile Include="engine\serialization\source\SerializationExceptions.cpp" />
@@ -1513,9 +1538,11 @@
     <ClCompile Include="engine\translators\source\StatusAilmentTranslators.cpp" />
     <ClCompile Include="engine\translators\source\unit_tests\BeamSpellTranslator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\translators\source\unit_tests\DisplayItemColourTranslator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\translators\source\unit_tests\DisplayItemTypeFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1575,15 +1602,19 @@
     <ClCompile Include="world\magic\source\SpellShapeFactory.cpp" />
     <ClCompile Include="world\magic\source\unit_tests\IndividualSpellKnowledge_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\magic\source\unit_tests\SpellKnowledge_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\magic\source\unit_tests\SpellShapeFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\magic\source\unit_tests\Spell_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\materials\source\Cloth.cpp" />
     <ClCompile Include="world\materials\source\DragonScale.cpp" />
@@ -1708,6 +1739,7 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\AutomaticMovement_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Boat_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1827,6 +1859,7 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\StatusDuration_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\ThreatRatings_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1922,9 +1955,11 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\RegularStatues_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Sarcophagus_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Trap_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2026,6 +2061,7 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\EvergreenTreeTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\FieldTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2037,6 +2073,7 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\FruitTreeTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\GraveTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2088,6 +2125,7 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\RockyEarthTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\ScrubTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2143,6 +2181,7 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\WildOrchardTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\UpStaircaseTile.cpp" />
     <ClCompile Include="world\tiles\source\VillageTile.cpp" />
