@@ -39,6 +39,8 @@ Savage Lands v0.1.6 "Osric"
   checks for water tiles so that creatures would only cross water if they
   had a boat.
 
+- Initial implementation of automatic movement via 'w'.
+
 - Miscellaneous bug fixes: fixed an issue with adding a creature to its own
   threat map (via self_attack when stunned, etc), which hilariously caused 
   it to wander from tile to tile, looking for itself.  Fixed some FIXMEs,

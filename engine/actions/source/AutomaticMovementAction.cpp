@@ -32,18 +32,22 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
   }
   else
   {
-    // If the creature is the player, inform the player that a direction is needed.
-    if (creature->get_is_player())
+    AutomaticMovement& am = creature->get_automatic_movement_ref();
+    bool added_initial_message = false;
+
+    // If the creature is the player, inform the player that a direction is needed,
+    // but only if automatic movement is not already engaged.
+    if (creature->get_is_player() && !am.get_engaged())
     {
       manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_GET_DIRECTION));
       manager.send();
+      added_initial_message = true;
     }
 
     // Try to get a direction.
     //
     // If automatic movement is engaged, use the direction that has already been
     // selected.  Otherwise, prompt the creature.
-    AutomaticMovement& am = creature->get_automatic_movement_ref();
     CommandPtr base_command;
 
     if (am.get_engaged())
@@ -53,6 +57,11 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
     else
     {
       base_command = creature->get_decision_strategy()->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, 0);
+    }
+
+    if (added_initial_message && creature->get_is_player())
+    {
+      manager.clear_if_necessary();
     }
 
     if (base_command)

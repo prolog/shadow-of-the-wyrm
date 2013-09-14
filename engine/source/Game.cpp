@@ -9,6 +9,7 @@
 #include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "DecisionStrategySelector.hpp"
 #include "Detection.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
@@ -429,11 +430,9 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         FieldOfViewStrategyPtr fov_strategy = FieldOfViewStrategyFactory::create_field_of_view_strategy(current_creature->get_is_player());
         fov_map = fov_strategy->calculate(current_creature, view_map, creature_coords, CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH /* FIXME */);
 
-        DecisionStrategyPtr decision_strategy = current_creature->get_decision_strategy();
-        
-        if (decision_strategy)
+        if (strategy)
         {
-          decision_strategy->set_fov_map(fov_map);
+          strategy->set_fov_map(fov_map);
         }
         
         if (current_creature->get_is_player())
@@ -442,7 +441,12 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
           update_display(current_creature, current_map, fov_map, reloaded_game);
         }
 
-        CommandPtr command = strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
+        // strategy is used for the creature's decision strategy, so use another
+        // variable as the strategy for explicitly getting a command.  This might
+        // not actually be the creature's strategy, but rather another one,
+        // such as automatic movement, etc.
+        DecisionStrategyPtr command_strategy = DecisionStrategySelector::select_decision_strategy(current_creature);
+        CommandPtr command = command_strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
         
         // Clear the stored messages if we're about to receive the player's action.
         // The player will already have had a chance to read the messages.

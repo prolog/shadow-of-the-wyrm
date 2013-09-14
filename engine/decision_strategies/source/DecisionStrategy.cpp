@@ -57,6 +57,11 @@ boost::shared_ptr<Map> DecisionStrategy::get_fov_map()
   return current_fov_map;
 }
 
+ControllerPtr DecisionStrategy::get_controller()
+{
+  return controller;
+}
+
 bool DecisionStrategy::serialize(ostream& stream)
 {
   threat_ratings.serialize(stream);
