@@ -1,3 +1,4 @@
+#include <sstream>
 #include <boost/foreach.hpp>
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
