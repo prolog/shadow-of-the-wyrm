@@ -1923,7 +1923,7 @@
 				<InitialInventory>
 					<InitialItem>
 						<ID>food_ration</ID>
-						<Quantity><Amount>20</Amount></Quantity>
+						<Quantity><Amount>4</Amount></Quantity>
 					</InitialItem>
 					<InitialItem>
 						<ID>coracle</ID>
