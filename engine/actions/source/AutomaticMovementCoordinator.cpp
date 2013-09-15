@@ -15,13 +15,13 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   bool auto_movement_engaged = false;
   TilePtr direction_tile = map->at(CoordUtils::get_new_coordinate(map->get_location(creature->get_id()), d));
 
-  pair<bool, string> creature_results = creature_can_auto_move(creature);
+  pair<bool, vector<string>> creature_results = creature_can_auto_move(creature);
   bool creature_move = creature_results.first;
-  if (!creature_move) message_sids.push_back(creature_results.second);
+  copy(creature_results.second.begin(), creature_results.second.end(), back_inserter(message_sids));
 
-  pair<bool, string> tile_results = tile_allows_auto_move(direction_tile);
-  bool tile_move = creature_results.first;
-  if (!tile_move) message_sids.push_back(tile_results.second);
+  pair<bool, vector<string>> tile_results = tile_allows_auto_move(creature, direction_tile);
+  bool tile_move = tile_results.first;
+  copy(tile_results.second.begin(), tile_results.second.end(), back_inserter(message_sids));
 
   if (creature_move && tile_move)
   {
@@ -57,52 +57,47 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
 
 // Check hunger and other attributes on the creature to determine if auto-move
 // is allowed.
-pair<bool, string> AutomaticMovementCoordinator::creature_can_auto_move(CreaturePtr creature)
+pair<bool, vector<string>> AutomaticMovementCoordinator::creature_can_auto_move(CreaturePtr creature)
 {
-  pair<bool, string> move_details;
-
+  pair<bool, vector<string>> move_details;
   bool can_move = true;
-
   vector<string> message_sids;
 
-  pair<bool, string> hunger_details = hunger_allows_auto_move(creature);
-  if (!hunger_details.first) message_sids.push_back(hunger_details.second);
+  pair<bool, vector<string>> hunger_details = hunger_allows_auto_move(creature);
+  copy(hunger_details.second.begin(), hunger_details.second.end(), back_inserter(message_sids));
 
   can_move = can_move && hunger_details.first;
 
   move_details.first = can_move;
-
-  if (!message_sids.empty())
-  {
-    move_details.second = message_sids.at(0);
-  }
+  move_details.second = message_sids;
 
   return move_details;
 }
 
 // Check to see if the creature can automatically move, or if they are
 // too hungry.
-pair<bool, string> AutomaticMovementCoordinator::hunger_allows_auto_move(CreaturePtr creature)
+pair<bool, vector<string>> AutomaticMovementCoordinator::hunger_allows_auto_move(CreaturePtr creature)
 {
-  pair<bool, string> move_details;
+  pair<bool, vector<string>> move_details;
 
   HungerClock& hunger = creature->get_hunger_clock_ref();
 
   // The creature can move if it is not the case that the creature's hunger
   // level is at hungry or worse.
   move_details.first = !((hunger.is_normal_or_worse() && (!hunger.is_normal())));
-
-  if (!move_details.first)
+  if (move_details.first == false)
   {
-    move_details.second = ActionTextKeys::ACTION_AUTOMOVE_TOO_HUNGRY;
+    move_details.second.push_back(ActionTextKeys::ACTION_AUTOMOVE_TOO_HUNGRY);
   }
 
   return move_details;
 }  
 
-pair<bool, string> AutomaticMovementCoordinator::tile_allows_auto_move(TilePtr tile)
+pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(CreaturePtr creature, TilePtr tile)
 {
-  pair<bool, string> tile_details;
+  pair<bool, vector<string>> tile_details;
+
+  tile_details.first = (MapUtils::is_tile_available_for_creature(creature, tile));
 
   return tile_details;
 }
