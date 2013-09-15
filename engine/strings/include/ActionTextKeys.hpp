@@ -48,6 +48,7 @@ class ActionTextKeys
     static const std::string ACTION_POTION_EXPLODES;
     static const std::string ACTION_AUTOMOVE_WORLD_MAP;
     static const std::string ACTION_AUTOMOVE_TOO_HUNGRY;
+    static const std::string ACTION_AUTOMOVE_HOSTILE_CREATURES;
 
   protected:
     ActionTextKeys();

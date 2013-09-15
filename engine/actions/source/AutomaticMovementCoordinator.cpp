@@ -1,3 +1,4 @@
+#include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
 #include "AutomaticMovementCoordinator.hpp"
 #include "CoordUtils.hpp"
@@ -7,6 +8,13 @@
 
 using namespace std;
 
+// Attempt to move automatically.
+//
+// To move automatically, the creature must be allowed to move automatically
+// (no bad statuses like hunger, etc), the tile must allow automatic movement
+// (not blocking, no creatures, etc), and the FOV must allow automatic
+// movement as well (there can't be any hostile creatures that the creature
+// can see).
 ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, MapPtr map, const Direction d)
 {
   vector<string> message_sids;
@@ -23,7 +31,11 @@ ActionCostValue AutomaticMovementCoordinator::auto_move(CreaturePtr creature, Ma
   bool tile_move = tile_results.first;
   copy(tile_results.second.begin(), tile_results.second.end(), back_inserter(message_sids));
 
-  if (creature_move && tile_move)
+  pair<bool, vector<string>> map_results = fov_allows_auto_move(creature, creature->get_decision_strategy()->get_fov_map());
+  bool map_move = map_results.first;
+  copy(map_results.second.begin(), map_results.second.end(), back_inserter(message_sids));
+
+  if (creature_move && tile_move && map_move)
   {
     MovementAction maction;
     auto_move_cost = maction.move(creature, d);
@@ -93,6 +105,40 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::hunger_allows_auto_move
   return move_details;
 }  
 
+// Check to see if the field of view allows automatic movement by checking
+// to see if there are any creatures present that are hostile to the creature
+// doing the movement.
+pair<bool, vector<string>> AutomaticMovementCoordinator::fov_allows_auto_move(CreaturePtr creature, MapPtr fov_map)
+{
+  pair<bool, vector<string>> fov_details;
+  string automove_creature_id = creature->get_id();
+
+  bool can_move = true;
+
+  // Check the creatures in the FOV to see if any of them are hostile to the
+  // creature currently moving.
+  map<string, CreaturePtr> fov_creatures = fov_map->get_creatures();
+  BOOST_FOREACH(CreatureMap::value_type& cpair, fov_creatures)
+  {
+    CreaturePtr fov_creature = cpair.second;
+    if (fov_creature->hostile_to(automove_creature_id))
+    {
+      can_move = false;
+      break;
+    }
+  }
+
+  if (can_move == false)
+  {
+    fov_details.second.push_back(ActionTextKeys::ACTION_AUTOMOVE_HOSTILE_CREATURES);
+  }
+
+  fov_details.first = can_move;
+  return fov_details;
+}
+
+// Check to see if the tile allows automatic movement by checking to see if
+// the tile is available (not empty, no blocking features, etc).
 pair<bool, vector<string>> AutomaticMovementCoordinator::tile_allows_auto_move(CreaturePtr creature, TilePtr tile)
 {
   pair<bool, vector<string>> tile_details;

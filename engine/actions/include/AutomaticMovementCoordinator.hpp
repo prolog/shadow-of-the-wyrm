@@ -22,7 +22,9 @@ class AutomaticMovementCoordinator
     std::pair<bool, std::vector<std::string>> hunger_allows_auto_move(CreaturePtr creature);
 
     // Check to see if the map allows auto-movement - adjacent tile must be
-    // safe, non-blocking, etc.
+    // safe, non-blocking, etc.  As well, there can't be anything in the view
+    // map that disallows movement (hostile creatures).
+    std::pair<bool, std::vector<std::string>> fov_allows_auto_move(CreaturePtr creature, MapPtr map);
     std::pair<bool, std::vector<std::string>> tile_allows_auto_move(CreaturePtr creature, TilePtr tile);
 };
 

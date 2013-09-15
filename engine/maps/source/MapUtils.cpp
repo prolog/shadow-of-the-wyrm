@@ -14,7 +14,7 @@ using namespace boost;
 // - if the tile type permits movement
 bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile)
 {
-  return (!is_creature_present(tile) && !tile->get_is_blocking(creature));
+  return tile && (!is_creature_present(tile) && !tile->get_is_blocking(creature));
 }
 
 // Check to see if a tile is available for an item by checking:
