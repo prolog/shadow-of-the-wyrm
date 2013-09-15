@@ -79,7 +79,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
         // Start moving in the requested direction.
         AutomaticMovementCoordinator amc;
-        amc.auto_move(creature, map, d);
+        action_cost_value = amc.auto_move(creature, map, d);
       }
     }
   }
