@@ -172,7 +172,7 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   }
 
   // Try to get a direction.  This might fail.
-  CommandPtr base_command = creature->get_decision_strategy()->get_decision(creature->get_id(), command_factory, kb_command_map);
+  CommandPtr base_command = creature->get_decision_strategy()->get_decision(true, creature->get_id(), command_factory, kb_command_map);
 
   if (base_command)
   {

@@ -24,24 +24,26 @@ DecisionStrategy* PlayerDecisionStrategy::copy()
 
 // The player's decision is easy: just read a command from the keyboard, and then get a CommandPtr
 // based on that keyboard input, the provided KeyboardCommandMapPtr, and the CommandFactoryPtr.
-CommandPtr PlayerDecisionStrategy::get_nonmap_decision(const string& creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p)
+CommandPtr PlayerDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p)
 {
   MapPtr nullmap;
-  return get_decision(creature_id, command_factory, keyboard_commands, nullmap, key_p);
+  return get_decision(reprompt_on_cmd_not_found, creature_id, command_factory, keyboard_commands, nullmap, key_p);
 }
 
-CommandPtr PlayerDecisionStrategy::get_decision(const string& creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map, int* key_p)
+CommandPtr PlayerDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const string& creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map, int* key_p)
 {
   // view_map is ignored - keyboard input is used, instead.
   CommandPtr player_command;
+  long retry_count = 0;
 
   // Don't prompt for input if input has been provided.
   bool prompt_for_input = !key_p;
 
   if (command_factory && keyboard_commands)
   {
-    while (!player_command)
+    while (!player_command && (reprompt_on_cmd_not_found || retry_count == 0))
     {
+      retry_count++;
       int key = -1;
 
       if (prompt_for_input)

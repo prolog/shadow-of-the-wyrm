@@ -43,7 +43,7 @@ ActionCostValue EquipmentManager::manage_equipment()
       
         if (decision_strategy)
         {
-          CommandPtr equipment_command = decision_strategy->get_decision(creature->get_id(), command_factory, kb_command_map);
+          CommandPtr equipment_command = decision_strategy->get_decision(true, creature->get_id(), command_factory, kb_command_map);
           action_cost = EquipmentCommandProcessor::process(creature, equipment_command);
         
           if ((action_cost > 0) && (total_action_cost == 0))

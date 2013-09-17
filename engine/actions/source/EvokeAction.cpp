@@ -163,7 +163,7 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
     manager.send();
   }
 
-  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, 0);
+  CommandPtr base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, 0);
 
   if (base_command)
   {
