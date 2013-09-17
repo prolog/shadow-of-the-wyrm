@@ -56,7 +56,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
     }
     else
     {
-      base_command = creature->get_decision_strategy()->get_nonmap_decision(creature->get_id(), command_factory, kb_command_map, 0);
+      base_command = creature->get_decision_strategy()->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, 0);
     }
 
     if (added_initial_message && creature->get_is_player())

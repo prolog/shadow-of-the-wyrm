@@ -17,8 +17,8 @@ class DecisionStrategy : public ISerializable
     virtual bool operator==(const DecisionStrategy& ds) const;
 
     virtual ~DecisionStrategy() {};
-    virtual CommandPtr get_decision(const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, boost::shared_ptr<Map> view_map = boost::shared_ptr<Map>() /* optional - only used when getting a decision on the main map, and only for non-player characters. */, int* key_p = 0) = 0;
-    virtual CommandPtr get_nonmap_decision(const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p = 0) = 0;
+    virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, boost::shared_ptr<Map> view_map = boost::shared_ptr<Map>() /* optional - only used when getting a decision on the main map, and only for non-player characters. */, int* key_p = 0) = 0;
+    virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p = 0) = 0;
 
     virtual uint get_count(const uint max_count) = 0; // For turns to wait, pick up, drop, etc.
     virtual bool get_confirmation() = 0;

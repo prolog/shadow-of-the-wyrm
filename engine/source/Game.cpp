@@ -446,7 +446,7 @@ ActionCost Game::process_action_for_creature(CreaturePtr current_creature, MapPt
         // not actually be the creature's strategy, but rather another one,
         // such as automatic movement, etc.
         DecisionStrategyPtr command_strategy = DecisionStrategySelector::select_decision_strategy(current_creature);
-        CommandPtr command = command_strategy->get_decision(current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
+        CommandPtr command = command_strategy->get_decision(true, current_creature->get_id(), game_command_factory, game_kb_command_map, view_map /* fov_map */);
         
         // Clear the stored messages if we're about to receive the player's action.
         // The player will already have had a chance to read the messages.

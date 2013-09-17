@@ -8,8 +8,8 @@ class NPCDecisionStrategy : public DecisionStrategy
   public:
     NPCDecisionStrategy(ControllerPtr new_controller);
 
-    virtual CommandPtr get_decision(const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map = MapPtr(), int* key_p = 0);
-    virtual CommandPtr get_nonmap_decision(const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p);
+    virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map = MapPtr(), int* key_p = 0);
+    virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p);
 
     virtual uint get_count(const uint max_count);
     virtual bool get_confirmation();
