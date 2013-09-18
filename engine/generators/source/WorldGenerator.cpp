@@ -263,12 +263,49 @@ void WorldGenerator::generate_far_reaches(MapPtr map)
   map->insert(3, 3, tile);
 }
 
+void WorldGenerator::generate_fixed_settlements(MapPtr map)
+{
+  generate_Gnordvar(map);
+}
+
+void WorldGenerator::generate_Gnordvar(MapPtr map)
+{
+  //  .
+  // ..
+  // ..
+  // .
+  Dimensions dim = map->size();
+  int height = dim.get_y();
+  int width = dim.get_x();
+
+  TilePtr tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  map->insert(3, width-6, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  map->insert(4, width-7, tile);
+
+  TilePtr gnordvar = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD, false);
+  gnordvar->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR);
+  gnordvar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_GNORDVAR);
+  map->insert(4, width-6, gnordvar);
+
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  map->insert(5, width-7, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  map->insert(5, width-6, tile);
+
+  tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  map->insert(6, width-7, tile);
+}
+
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
 {
   generate_little_island(map);
   generate_infinite_dungeon_island(map);
   generate_far_reaches(map);
   generate_last_rock_and_far_shore(map);
+  generate_fixed_settlements(map);
 
   return map;
 }
