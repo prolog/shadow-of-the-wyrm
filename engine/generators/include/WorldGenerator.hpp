@@ -35,7 +35,10 @@ class WorldGenerator : public SL::Generator
     void generate_infinite_dungeon_island(MapPtr map);
     void generate_far_reaches(MapPtr map);
     void generate_last_rock_and_far_shore(MapPtr map);
-    
+
+    void generate_fixed_settlements(MapPtr map);
+    void generate_Gnordvar(MapPtr map); // Gnomish home base
+
     void populate_race_information();
     void set_village_races(MapPtr map);
     void remove_village_coordinates_if_present(const Coordinate& c);

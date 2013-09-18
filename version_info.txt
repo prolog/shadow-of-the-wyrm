@@ -39,12 +39,13 @@ Savage Lands v0.1.6 "Osric"
   checks for water tiles so that creatures would only cross water if they
   had a boat.
 
-- Initial implementation of automatic movement via 'w'.
+- Initial implementation of automatic movement via 'w' + direction.
 
 - Miscellaneous bug fixes: fixed an issue with adding a creature to its own
   threat map (via self_attack when stunned, etc), which hilariously caused 
   it to wander from tile to tile, looking for itself.  Fixed some FIXMEs,
   and removed some others I'm basically never going to bother to fix.
+  Added a description for Cynwise's Wintersea quest.
 
 Savage Lands v0.1.5 "Beorhthun"
 - Version declared June 23, 2013.  Version finalized August 17, 2013.

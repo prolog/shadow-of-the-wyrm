@@ -3,9 +3,6 @@
 #include "SpringsTile.hpp"
 #include "XMLMapTilesReader.hpp"
 
-// JCD FIXME REMOVE
-#include "ShoalsTile.hpp"
-
 using namespace std;
 
 // Parse the tiles into a proper tile map that would be used in-game,
@@ -80,6 +77,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = TileGenerator::generate(TILE_TYPE_ROCK);
   }
+  else if (xml_tile == '^')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  }
   else if (xml_tile == 'P')
   {
     tile = TileGenerator::generate(TILE_TYPE_PIER);
@@ -107,6 +108,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   else if (xml_tile == 'R')
   {
     tile = TileGenerator::generate(TILE_TYPE_ROCKY_EARTH);
+  }
+  else if (xml_tile == 'r')
+  {
+    tile = TileGenerator::generate(TILE_TYPE_ROAD);
   }
   else if (xml_tile == 'S')
   {
