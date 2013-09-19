@@ -279,24 +279,24 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
   int width = dim.get_x();
 
   TilePtr tile = TileGenerator::generate(TILE_TYPE_FIELD);
-  map->insert(3, width-6, tile);
+  map->insert(height-58, width-6, tile);
 
   tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
-  map->insert(4, width-7, tile);
+  map->insert(height-57, width-7, tile);
 
   TilePtr gnordvar = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD, false);
   gnordvar->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR);
   gnordvar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_GNORDVAR);
-  map->insert(4, width-6, gnordvar);
+  map->insert(height-57, width-6, gnordvar);
 
   tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
-  map->insert(5, width-7, tile);
+  map->insert(height-56, width-7, tile);
 
   tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
-  map->insert(5, width-6, tile);
+  map->insert(height-56, width-6, tile);
 
   tile = TileGenerator::generate(TILE_TYPE_FIELD);
-  map->insert(6, width-7, tile);
+  map->insert(height-55, width-7, tile);
 }
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
