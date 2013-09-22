@@ -93,7 +93,44 @@
 					<Col>19</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>gnomish_miner</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>18</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>gnomish_miner</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>13</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>gnomish_barkeeper</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>11</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 	</InitialPlacements>
 	<Exits/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>7</Row>
+				<Col>15</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>
