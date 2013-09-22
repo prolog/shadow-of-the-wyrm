@@ -38,6 +38,7 @@
 					<Row>3</Row>
 					<Col>28</Col>
 				</Coord>
+				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
 				<ID>gnome</ID>
@@ -45,6 +46,7 @@
 					<Row>11</Row>
 					<Col>9</Col>
 				</Coord>
+				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
 				<ID>gnome</ID>
@@ -52,6 +54,7 @@
 					<Row>9</Row>
 					<Col>45</Col>
 				</Coord>
+				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
 				<ID>gnome</ID>
@@ -59,12 +62,35 @@
 					<Row>16</Row>
 					<Col>57</Col>
 				</Coord>
+				<Friendly>1</Friendly>
 			</Placement>
 			<Placement>
 				<ID>gnome</ID>
 				<Coord>
 					<Row>3</Row>
 					<Col>69</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>christof</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>9</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>elfric</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>71</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>alfredo</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>19</Col>
 				</Coord>
 			</Placement>
 		</Creatures>
