@@ -3458,6 +3458,38 @@
 			<Evade>5</Evade>
 			<Soak>2</Soak>
 		</Creature>
+		<Creature id="gnordvar_priest">
+			<RaceID>10_gnome</RaceID>
+			<ShortDescriptionSID>GNORDVAR_PRIEST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GNORDVAR_PRIEST_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GNORDVAR_PRIEST_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GNORDVAR_PRIEST_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>t</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>400</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>20</Evade>
+			<Soak>10</Soak>
+		</Creature>
 		<Creature id="lightning_bug">
 			<ShortDescriptionSID>LIGHTNING_BUG_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>LIGHTNING_BUG_DESCRIPTION_SID</DescriptionSID>
@@ -3774,7 +3806,7 @@
 					<NumDice>20</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>6000</Exp>
+				<Exp>400</Exp>
 			</CreatureGeneration>
 			<Level>20</Level>
 			<Damage>
