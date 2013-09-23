@@ -22,6 +22,7 @@
 #include "LibraryTile.hpp"
 #include "HillsTile.hpp"
 #include "MarshTile.hpp"
+#include "MineTile.hpp"
 #include "MountainsTile.hpp"
 #include "PierTile.hpp"
 #include "ReedsTile.hpp"

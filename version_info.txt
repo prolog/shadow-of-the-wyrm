@@ -39,6 +39,12 @@ Savage Lands v0.1.6 "Osric"
   checks for water tiles so that creatures would only cross water if they
   had a boat.
 
+- Created the gnomish village of Gnordvar in the mountains of a small
+  island, north of Isen Dun.
+
+- Created a new tile/generator type (Mine), and added a rather dangerous
+  mine adjacent to the village of Gnordvar.
+
 - Initial implementation of automatic movement via 'w' + direction.
 
 - Miscellaneous bug fixes: fixed an issue with adding a creature to its own

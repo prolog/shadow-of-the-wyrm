@@ -398,6 +398,7 @@
     <ClInclude Include="engine\generators\include\KeepGenerator.hpp" />
     <ClInclude Include="engine\generators\include\KeepRuinsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MarshGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\MineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MountainsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\OrderedGraveyardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\RoadGenerator.hpp" />
@@ -795,6 +796,7 @@
     <ClInclude Include="world\tiles\include\KeepTile.hpp" />
     <ClInclude Include="world\tiles\include\LibraryTile.hpp" />
     <ClInclude Include="world\tiles\include\MarshTile.hpp" />
+    <ClInclude Include="world\tiles\include\MineTile.hpp" />
     <ClInclude Include="world\tiles\include\MountainsTile.hpp" />
     <ClInclude Include="world\tiles\include\PierTile.hpp" />
     <ClInclude Include="world\tiles\include\ReedsTile.hpp" />
@@ -1354,6 +1356,7 @@
     <ClCompile Include="engine\generators\source\KeepGenerator.cpp" />
     <ClCompile Include="engine\generators\source\KeepRuinsGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MarshGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\MineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MountainsGenerator.cpp" />
     <ClCompile Include="engine\generators\source\OrderedGraveyardGenerator.cpp" />
     <ClCompile Include="engine\generators\source\RoadGenerator.cpp" />
@@ -2166,6 +2169,7 @@
     <ClCompile Include="world\tiles\source\KeepTile.cpp" />
     <ClCompile Include="world\tiles\source\LibraryTile.cpp" />
     <ClCompile Include="world\tiles\source\MarshTile.cpp" />
+    <ClCompile Include="world\tiles\source\MineTile.cpp" />
     <ClCompile Include="world\tiles\source\MountainsTile.cpp" />
     <ClCompile Include="world\tiles\source\PierTile.cpp" />
     <ClCompile Include="world\tiles\source\ReedsTile.cpp" />
@@ -2299,6 +2303,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\MineTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\MountainsTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

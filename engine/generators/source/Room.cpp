@@ -1,3 +1,4 @@
+#include "CoordUtils.hpp"
 #include "Room.hpp"
 
 Room::Room(int nid, int nx1, int nx2, int ny1, int ny2)
@@ -22,4 +23,28 @@ bool Room::contains(Coordinate c) const
   int cx = c.second;
 
   return ((cy < y2) && (cy >= y1) && (cx < x2) && (cx >= x1));
+}
+
+Coordinate Room::get_centre() const
+{
+  Coordinate c;
+  
+  c.first  = (y1 + y2) / 2;
+  c.second = (x1 + x2) / 2;
+  
+  return c;
+}
+
+bool Room::compare_rooms(const Room& r1, const Room& r2)
+{
+  Coordinate room1_c = r1.get_centre();
+  Coordinate room1_centre_c = r1.centre_room->get_centre();
+
+  Coordinate room2_c = r2.get_centre();
+  Coordinate room2_centre_c = r2.centre_room->get_centre();
+  
+  int r1_td = CoordUtils::chebyshev_distance(room1_c, room1_centre_c);
+  int r2_td = CoordUtils::chebyshev_distance(room2_c, room2_centre_c);
+  
+  return (r1_td < r2_td);
 }

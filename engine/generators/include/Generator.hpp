@@ -52,7 +52,8 @@ namespace SL
 
       virtual void initialize(MapPtr map, const int danger_level);
       virtual void fill(const MapPtr map, const TileType& tile_type);
-    
+      virtual bool place_staircase(MapPtr current_map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, bool link_to_map_exit_id, bool set_as_player_default_location);
+
       // Generate the creatures.  Returns true if creatures were created, false otherwise.
       virtual bool generate_creatures(MapPtr map, const int danger_level);
       virtual bool update_creatures(MapPtr map, const int danger_level);

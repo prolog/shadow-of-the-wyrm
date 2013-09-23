@@ -26,6 +26,7 @@
 #include "RoadGenerator.hpp"
 #include "RuinsGenerator.hpp"
 #include "MarshGenerator.hpp"
+#include "MineGenerator.hpp"
 #include "SeaGenerator.hpp"
 #include "SettlementGenerator.hpp"
 #include "HamletGenerator.hpp"
@@ -94,6 +95,7 @@ string generate_grand_temple();
 string generate_island_sacrifice_site();
 string generate_rocky_sacrifice_site();
 string generate_overgrown_sacrifice_site();
+string generate_mine();
 
 void   settlement_maps();
 void   city_maps();
@@ -541,6 +543,14 @@ string generate_sea()
   return map_to_string(sea_map);
 }
 
+string generate_mine()
+{
+  GeneratorPtr mine_gen = boost::make_shared<MineGenerator>("");
+  MapPtr mine_map = mine_gen->generate();
+  cout << map_to_string(mine_map, false);
+  return map_to_string(mine_map);
+}
+
 string generate_world()
 {
   // Add inputs for parameters later!
@@ -825,7 +835,8 @@ void city_maps()
     cout << "2. Scattered Graveyard" << endl;
     cout << "3. Keep" << endl;
     cout << "4. Churches, Temples, Sites of Death" << endl;
-    
+    cout << "5. Mine" << endl;
+
     cin >> city_adjacent_map;
     
     switch(city_adjacent_map)
@@ -844,6 +855,10 @@ void city_maps()
         break;
       case 4: 
         church_maps();
+        break;
+      case 5:
+        map = generate_mine();
+        output_map(map, "mine_test.html");
         break;
       default:
         break;

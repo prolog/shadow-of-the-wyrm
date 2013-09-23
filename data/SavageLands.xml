@@ -4751,6 +4751,12 @@
 				<Colour>8</Colour>
 			</Text>
 		</RockyEarthTile>
+		<MineTile>
+			<Text>
+				<Symbol>o</Symbol>
+				<Colour>7</Colour>
+			</Text>
+		</MineTile>
 	</Tiles>
 	<Items>
 		<Armours>

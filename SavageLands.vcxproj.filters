@@ -2778,6 +2778,12 @@
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategySelector.hpp">
       <Filter>Header Files\engine\decision_strategies\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\MineGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\MineTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5311,6 +5317,15 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\source\unit_tests\DecisionStrategySelector_test.cpp">
       <Filter>Source Files\engine\decision_strategies\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\MineGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\MineTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\MineTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

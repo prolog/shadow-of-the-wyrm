@@ -11,7 +11,6 @@
 #include "MapProperties.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
-#include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
 
@@ -29,31 +28,6 @@ DungeonGeneratorProperties::~DungeonGeneratorProperties()
 const string DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH = "DUNGEON_PROPERTY_MAX_DEPTH";
 
 // Dungeon Generator
-bool compare_rooms(const Room& r1, const Room& r2);
-bool compare_rooms(const Room& r1, const Room& r2)
-{
-  Coordinate room1_c = r1.get_centre();
-  Coordinate room1_centre_c = r1.centre_room->get_centre();
-
-  Coordinate room2_c = r2.get_centre();
-  Coordinate room2_centre_c = r2.centre_room->get_centre();
-  
-  int r1_td = CoordUtils::chebyshev_distance(room1_c, room1_centre_c);
-  int r2_td = CoordUtils::chebyshev_distance(room2_c, room2_centre_c);
-  
-  return (r1_td < r2_td);
-}
-
-Coordinate Room::get_centre() const
-{
-  Coordinate c;
-  
-  c.first  = (y1 + y2) / 2;
-  c.second = (x1 + x2) / 2;
-  
-  return c;
-}
-
 DungeonGenerator::DungeonGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TILE_TYPE_DUNGEON)
 , DEFAULT_MIN_HEIGHT(4)
@@ -137,7 +111,7 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
           croom.centre_room = roomp;
         }
 
-        std::sort(connected_rooms.begin(), connected_rooms.end(), compare_rooms);
+        std::sort(connected_rooms.begin(), connected_rooms.end(), Room::compare_rooms);
         
         Room next_room = connected_rooms.at(0);
         connect_rooms(map, new_room, next_room);
@@ -482,7 +456,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
       y = RNG::range(r.y1+1, r.y2-2);
       x = RNG::range(r.x1+1, r.x2-2);
     
-      place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN, false, place_player_on_down_staircase);
+      place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_DOWN, false, place_player_on_down_staircase);
 
       // Ensure that the original map ID is set on the down staircase.  This will
       // allow it to be set on future maps.  In a fully randomized dungeon, this
@@ -506,7 +480,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     y = RNG::range(r.y1+1, r.y2-2);
     x = RNG::range(r.x1+1, r.x2-2);
     
-    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
+    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
 
     TilePtr up_stairs = map->at(y, x);
 
@@ -524,45 +498,6 @@ bool DungeonGenerator::place_staircases(MapPtr map)
 
     location_found = true;
   }
-  
-  return true;
-}
-
-bool DungeonGenerator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const Direction direction, bool link_to_map_exit_id, bool set_as_player_default_location)
-{
-  TilePtr tile = map->at(row, col);
-  
-  if (tile)
-  {
-    Coordinate c(row, col);
-    
-    TilePtr new_staircase_tile = TileGenerator::generate(tile_type);
-    new_staircase_tile->set_tile_subtype(TILE_TYPE_DUNGEON_COMPLEX);
-
-    if (link_to_map_exit_id)
-    {
-      if (!map_exit_id.empty())
-      {
-        MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, map_exit_id);
-      }      
-    }
-    // Otherwise, if we're not linking to a map exit ID, we should map to a tile exit.
-    else
-    {
-      MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, TILE_TYPE_DUNGEON_COMPLEX);
-    }
-
-    // Allow for "infinite dungeons" by setting the permanence flag on the staircases, which will then get copied 
-    // to the next generator, which will then set it on the down staircase...
-    new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, get_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE));
-
-    map->insert(row, col, new_staircase_tile); 
-    
-    if (set_as_player_default_location)
-    {
-      map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
-    }
-  }  
   
   return true;
 }

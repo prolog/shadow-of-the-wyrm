@@ -289,8 +289,10 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
   gnordvar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_GNORDVAR);
   map->insert(height-57, width-6, gnordvar);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height-56, width-7, tile);
+  TilePtr gnordvar_mines = TileGenerator::generate(TILE_TYPE_MINE);
+  gnordvar_mines->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR_MINES);
+  gnordvar_mines->set_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH, Integer::to_string(8));
+  map->insert(height-56, width-7, gnordvar_mines);
 
   tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
   map->insert(height-56, width-6, tile);
