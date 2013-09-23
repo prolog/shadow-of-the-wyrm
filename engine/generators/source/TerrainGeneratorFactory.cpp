@@ -10,6 +10,7 @@
 #include "HillsGenerator.hpp"
 #include "MapProperties.hpp"
 #include "MarshGenerator.hpp"
+#include "MineGenerator.hpp"
 #include "MountainsGenerator.hpp"
 #include "RaceManager.hpp"
 #include "ScrubGenerator.hpp"
@@ -116,6 +117,11 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       }
 
       break;      
+    }
+    case TILE_TYPE_MINE:
+    {
+      generator = boost::make_shared<MineGenerator>(map_exit_id);
+      break;
     }
     case TILE_TYPE_UP_STAIRCASE:
     case TILE_TYPE_DOWN_STAIRCASE:

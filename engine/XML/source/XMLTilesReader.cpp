@@ -6,6 +6,8 @@ using namespace std;
 
 vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_tiles_node)
 {
+  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 43);
+
   vector<DisplayTile> tiles;
   tiles.reserve(TILE_TYPE_LAST);
 
@@ -53,6 +55,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     XMLNode fruit_tree_node          = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "FruitTreeTile");
     XMLNode evergreen_tree_node      = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "EvergreenTreeTile");
     XMLNode rocky_earth_node         = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "RockyEarthTile");
+    XMLNode mine_node                = XMLUtils::get_next_element_by_local_name(xml_configuration_tiles_node, "MineTile");
 
     // These push back items into the tile details in order, so if you're defining
     // a new tile type, add at appropriate place!
@@ -98,6 +101,7 @@ vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_t
     parse_tile_text_details(tiles, fruit_tree_node);
     parse_tile_text_details(tiles, evergreen_tree_node);
     parse_tile_text_details(tiles, rocky_earth_node);
+    parse_tile_text_details(tiles, mine_node);
   }
 
   return tiles;

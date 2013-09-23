@@ -36,7 +36,7 @@ TilePtr TileFactory::create_tile(const ClassIdentifier cl_id)
 
 void TileFactory::initialize_tile_map()
 {
-  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 42);
+  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 43);
 
   TilePtr barracks = boost::make_shared<BarracksTile>();
   TilePtr barrow   = boost::make_shared<BarrowTile>();
@@ -80,6 +80,7 @@ void TileFactory::initialize_tile_map()
   TilePtr fruit_tree = boost::make_shared<FruitTreeTile>();
   TilePtr evergreen = boost::make_shared<EvergreenTreeTile>();
   TilePtr rocky_earth = boost::make_shared<RockyEarthTile>();
+  TilePtr mine     = boost::make_shared<MineTile>();
 
   tiles_map.insert(make_pair(CLASS_ID_BARRACKS_TILE, barracks));
   tiles_map.insert(make_pair(CLASS_ID_BARROW_TILE, barrow));
@@ -123,4 +124,5 @@ void TileFactory::initialize_tile_map()
   tiles_map.insert(make_pair(CLASS_ID_FRUIT_TREE_TILE, fruit_tree));
   tiles_map.insert(make_pair(CLASS_ID_EVERGREEN_TREE_TILE, evergreen));
   tiles_map.insert(make_pair(CLASS_ID_ROCKY_EARTH_TILE, rocky_earth));
+  tiles_map.insert(make_pair(CLASS_ID_MINE_TILE, mine));
 }

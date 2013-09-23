@@ -3,6 +3,7 @@
 #include "Conversion.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreationUtils.hpp"
+#include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
 #include "ItemGenerationManager.hpp"
 #include "TileGenerator.hpp"
@@ -11,6 +12,7 @@
 #include "Map.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
 using namespace SL;
@@ -327,4 +329,43 @@ bool Generator::get_permanence() const
 bool Generator::can_create_initial_items() const
 {
   return false;
+}
+
+bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, bool link_to_map_exit_id, bool set_as_player_default_location)
+{
+  TilePtr tile = map->at(row, col);
+  
+  if (tile)
+  {
+    Coordinate c(row, col);
+    
+    TilePtr new_staircase_tile = TileGenerator::generate(tile_type);
+    new_staircase_tile->set_tile_subtype(tile_subtype);
+
+    if (link_to_map_exit_id)
+    {
+      if (!map_exit_id.empty())
+      {
+        MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, map_exit_id);
+      }      
+    }
+    // Otherwise, if we're not linking to a map exit ID, we should map to a tile exit.
+    else
+    {
+      MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, tile_subtype);
+    }
+
+    // Allow for "infinite dungeons" by setting the permanence flag on the staircases, which will then get copied 
+    // to the next generator, which will then set it on the down staircase...
+    new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, get_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE));
+
+    map->insert(row, col, new_staircase_tile); 
+    
+    if (set_as_player_default_location)
+    {
+      map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
+    }
+  }  
+  
+  return true;
 }
