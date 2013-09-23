@@ -210,6 +210,7 @@ void WorldGenerator::generate_infinite_dungeon_island(MapPtr map)
   TilePtr inf_dungeon_tile = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX);
   inf_dungeon_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, Bool::to_string(false));
   inf_dungeon_tile->set_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH, Integer::to_string(numeric_limits<int>::max()));
+  inf_dungeon_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_INFINITE_DUNGEON);
   map->insert(height-10, width-2, inf_dungeon_tile);
 }
 
