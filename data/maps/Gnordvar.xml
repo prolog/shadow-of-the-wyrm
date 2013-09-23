@@ -116,6 +116,20 @@
 					<Col>11</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>gnomish_child</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>63</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gnomish_child</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 	</InitialPlacements>
 	<Exits/>
