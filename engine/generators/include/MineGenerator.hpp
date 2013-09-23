@@ -20,6 +20,7 @@ class MineGenerator : public SL::Generator
     bool generate_room(MapPtr map, const int start_y, const int start_x, const int height, const int width);
 
     void place_staircases(MapPtr map);
+    bool get_permanence_default() const;
 
     static const int MINE_MIN_ROOM_WIDTH;
     static const int MINE_MAX_ROOM_WIDTH;
