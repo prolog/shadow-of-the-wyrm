@@ -124,7 +124,7 @@ void WorldGenerator::generate_little_island(MapPtr map)
   TilePtr village_dungeon = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED, false);
   village_dungeon->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON);
   // Sirith's dungeon is eight levels deep.
-  village_dungeon->set_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH, Integer::to_string(8));
+  village_dungeon->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, Integer::to_string(8));
   map->insert(height-2, width-2, village_dungeon);
 }
 
@@ -209,7 +209,7 @@ void WorldGenerator::generate_infinite_dungeon_island(MapPtr map)
   // Next, the actual dungeon, setting the "impermanance" flag:
   TilePtr inf_dungeon_tile = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX);
   inf_dungeon_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, Bool::to_string(false));
-  inf_dungeon_tile->set_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH, Integer::to_string(numeric_limits<int>::max()));
+  inf_dungeon_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, Integer::to_string(numeric_limits<int>::max()));
   inf_dungeon_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_INFINITE_DUNGEON);
   map->insert(height-10, width-2, inf_dungeon_tile);
 }
@@ -290,9 +290,11 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
   gnordvar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_GNORDVAR);
   map->insert(height-57, width-6, gnordvar);
 
+  string l20 = Integer::to_string(20);
   TilePtr gnordvar_mines = TileGenerator::generate(TILE_TYPE_MINE);
   gnordvar_mines->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR_MINES);
-  gnordvar_mines->set_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH, Integer::to_string(8));
+  gnordvar_mines->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH, l20);
+  gnordvar_mines->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, l20);
   map->insert(height-56, width-7, gnordvar_mines);
 
   tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);

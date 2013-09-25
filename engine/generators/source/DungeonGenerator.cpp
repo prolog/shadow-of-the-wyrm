@@ -14,19 +14,6 @@
 
 using namespace std;
 
-// Dungeon generation properties: max depth, etc.
-DungeonGeneratorProperties::DungeonGeneratorProperties()
-{
-}
-
-DungeonGeneratorProperties::~DungeonGeneratorProperties()
-{
-}
-
-// If present, used (along with the current depth to determine whether down
-// staircases should be generated.
-const string DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH = "DUNGEON_PROPERTY_MAX_DEPTH";
-
 // Dungeon Generator
 DungeonGenerator::DungeonGenerator(const std::string& new_map_exit_id)
 : Generator(new_map_exit_id, TILE_TYPE_DUNGEON)
@@ -429,8 +416,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   bool place_player_on_down_staircase = (depth_increment.empty());
 
   // Update the map's depth information.
-  // JCD FIXME refactor
-  string max_depth_property = get_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH);
+  string max_depth_property = get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH);
   if (!max_depth_property.empty())
   {
     Dimensions dim = map->size();
@@ -464,7 +450,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
       // on the first dungeon level.
       TilePtr down_tile = map->at(y, x);
       down_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
-      down_tile->set_additional_property(DungeonGeneratorProperties::DUNGEON_PROPERTY_MAX_DEPTH, max_depth_property);
+      down_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, max_depth_property);
 
       location_found = true;
     }
