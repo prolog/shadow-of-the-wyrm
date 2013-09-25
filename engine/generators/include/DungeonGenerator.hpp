@@ -3,16 +3,6 @@
 #include "Map.hpp"
 #include "Room.hpp"
 
-class DungeonGeneratorProperties
-{
-  public:
-    static const std::string DUNGEON_PROPERTY_MAX_DEPTH;
-
-  protected:
-    DungeonGeneratorProperties();
-    ~DungeonGeneratorProperties();
-};
-
 class DungeonGenerator : public SL::Generator
 {
   public:

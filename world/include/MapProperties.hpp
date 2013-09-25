@@ -17,3 +17,15 @@ class MapProperties
     ~MapProperties();
 };
 
+// Underworld properties: depth-related, etc.
+class UnderworldProperties
+{
+  public:
+    static const std::string UNDERWORLD_STRUCTURE_DEPTH;
+    static const std::string UNDERWORLD_STRUCTURE_MAX_DEPTH;
+
+  protected:
+    UnderworldProperties();
+    ~UnderworldProperties();
+};
+

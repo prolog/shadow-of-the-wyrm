@@ -8,6 +8,7 @@
 #include "FeatureAction.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
+#include "MapProperties.hpp"
 #include "MapTypeQueryFactory.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementAccumulationUpdater.hpp"
@@ -319,8 +320,19 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
       // and forests, it shouldn't, but for dungeons/caverns/etc., it should.
       if (mtq && mtq->should_update_depth())
       {
-        depth.set_current(depth.get_current() + depth_increment);
-        
+        // If the tile has a set depth associated with it, then use that.
+        // Otherwise, use the specified depth increment.
+        string initial_depth = tile->get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH);
+        if (!initial_depth.empty())
+        {
+          int tile_initial_depth = String::to_int(initial_depth);
+          depth.set_current(tile_initial_depth);
+        }
+        else
+        {
+          depth.set_current(depth.get_current() + depth_increment);
+        }
+
         if (depth_increment > 0) 
         {
           generator->set_additional_property(TileProperties::TILE_PROPERTY_DEPTH_INCREMENT, Integer::to_string(depth_increment));
