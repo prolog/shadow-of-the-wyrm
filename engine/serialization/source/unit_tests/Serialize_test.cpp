@@ -1,5 +1,26 @@
 #include "gtest/gtest.h"
 
+TEST(SL_Engine_Serialization_Serialize, string_map)
+{
+  map<string, string> orig;
+  orig["s1"] = "foo";
+  orig["s2"] = "fdsa";
+  orig["fdsafdsa"] = "asdf";
+  orig["jcd"] = "clf";
+
+  ostringstream oss;
+
+  Serialize::write_string_map(oss, orig);
+
+  istringstream iss(oss.str());
+
+  map<string, string> after;
+
+  Serialize::read_string_map(iss, after);
+
+  EXPECT_TRUE(orig == after);
+}
+
 TEST(SL_Engine_Serialization_Serialize, string_vector)
 {
   vector<string> original;
