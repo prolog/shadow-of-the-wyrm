@@ -1133,31 +1133,11 @@ bool Creature::serialize(ostream& stream)
     }
   }
 
-  Serialize::write_size_t(stream, event_functions.size());
-
-  if (!event_functions.empty())
-  {
-    BOOST_FOREACH(EventFunctionMap::value_type& event_function, event_functions)
-    {
-      Serialize::write_string(stream, event_function.first);
-      Serialize::write_string(stream, event_function.second);
-    }
-  }
+  Serialize::write_string_map(stream, event_functions);
 
   auto_move.serialize(stream);
 
-  Serialize::write_size_t(stream, additional_properties.size());
-
-  if (!additional_properties.empty())
-  {
-    // Not "really" the type of the map from a conceptual standpoint...
-    // But, it compiles!
-    BOOST_FOREACH(EventFunctionMap::value_type& additional_property, additional_properties)
-    {
-      Serialize::write_string(stream, additional_property.first);
-      Serialize::write_string(stream, additional_property.second);
-    }
-  }
+  Serialize::write_string_map(stream, additional_properties);
 
   mortuary.serialize(stream);
   spell_knowledge.serialize(stream);
@@ -1297,43 +1277,11 @@ bool Creature::deserialize(istream& stream)
     }
   }
 
-  size_t event_functions_size = 0;
-  Serialize::read_size_t(stream, event_functions_size);
-
-  if (event_functions_size > 0)
-  {
-    event_functions.clear();
-
-    for (unsigned int i = 0; i < event_functions_size; i++)
-    {
-      string event_name, function_name;
-
-      Serialize::read_string(stream, event_name);
-      Serialize::read_string(stream, function_name);
-
-      event_functions.insert(make_pair(event_name, function_name));
-    }
-  }
+  Serialize::read_string_map(stream, event_functions);
 
   auto_move.deserialize(stream);
 
-  size_t additional_properties_size = 0;
-  Serialize::read_size_t(stream, additional_properties_size);
-
-  if (additional_properties_size > 0)
-  {
-    additional_properties.clear();
-
-    for (unsigned int i = 0; i < additional_properties_size; i++)
-    {
-      string prop_name, prop_value;
-
-      Serialize::read_string(stream, prop_name);
-      Serialize::read_string(stream, prop_value);
-
-      additional_properties.insert(make_pair(prop_name, prop_value));
-    }
-  }
+  Serialize::read_string_map(stream, additional_properties);
 
   mortuary.deserialize(stream);
   spell_knowledge.deserialize(stream);

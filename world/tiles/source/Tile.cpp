@@ -308,17 +308,7 @@ bool Tile::serialize(ostream& stream)
   Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
 
-  size_t addl_prop_size = additional_properties.size();
-  Serialize::write_size_t(stream, addl_prop_size);
-
-  if (addl_prop_size > 0)
-  {
-    for (map<string, string>::iterator p_it = additional_properties.begin(); p_it != additional_properties.end(); p_it++)
-    {
-      Serialize::write_string(stream, p_it->first);
-      Serialize::write_string(stream, p_it->second);
-    }
-  }
+  Serialize::write_string_map(stream, additional_properties);
 
   if (creature)
   {
@@ -373,24 +363,7 @@ bool Tile::deserialize(istream& stream)
   Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
 
-  size_t properties_size;
-  Serialize::read_size_t(stream, properties_size);
-
-  if (properties_size > 0)
-  {
-    additional_properties.clear();
-
-    for (unsigned int i = 0; i < properties_size; i++)
-    {
-      string tile_name;
-      Serialize::read_string(stream, tile_name);
-
-      string property_value;
-      Serialize::read_string(stream, property_value);
-
-      additional_properties[tile_name] = property_value;
-    }
-  }
+  Serialize::read_string_map(stream, additional_properties);
 
   ClassIdentifier creature_clid;
   Serialize::read_class_id(stream, creature_clid);
