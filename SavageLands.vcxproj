@@ -1504,6 +1504,9 @@
     <ClCompile Include="engine\serialization\source\Serialization.cpp" />
     <ClCompile Include="engine\serialization\source\SerializationExceptions.cpp" />
     <ClCompile Include="engine\serialization\source\Serialize.cpp" />
+    <ClCompile Include="engine\serialization\source\unit_tests\Serialize_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\skills\source\Detection.cpp" />
     <ClCompile Include="engine\skills\source\Mountaineering.cpp" />
     <ClCompile Include="engine\skills\source\SkillManager.cpp" />

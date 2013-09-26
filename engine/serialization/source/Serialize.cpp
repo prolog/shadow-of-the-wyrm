@@ -1,3 +1,4 @@
+#include <boost/foreach.hpp>
 #include <boost/scoped_array.hpp>
 #include "Serialize.hpp"
 
@@ -333,3 +334,36 @@ void Serialize::consume_string(istream& stream)
   string ignore;
   Serialize::read_string(stream, ignore);
 }
+
+void Serialize::write_string_vector(ostream& stream, const vector<string>& val)
+{
+  size_t size = val.size();
+  Serialize::write_size_t(stream, size);
+
+  if (size > 0)
+  {
+    BOOST_FOREACH(const string& str_val, val)
+    {
+      Serialize::write_string(stream, str_val);
+    }
+  }
+}
+
+void Serialize::read_string_vector(istream& stream, vector<string>& val)
+{
+  size_t size = 0;
+  Serialize::read_size_t(stream, size);
+  val.clear();
+  val.reserve(size);
+
+  for(size_t v_size = 0; v_size < size; v_size++)
+  {
+    string str_val;
+    Serialize::read_string(stream, str_val);
+    val.push_back(str_val);
+  }
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Serialize_test.cpp"
+#endif

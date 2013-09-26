@@ -655,6 +655,9 @@
     <Filter Include="Header Files\display\animation\include">
       <UniqueIdentifier>{7593d041-0620-459b-8c9a-2e107e109371}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\serialization\source\unit_tests">
+      <UniqueIdentifier>{3a3548da-15e7-48e3-a0d7-c7dd246a4b7c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -5326,6 +5329,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\MineTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\serialization\source\unit_tests\Serialize_test.cpp">
+      <Filter>Source Files\engine\serialization\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
