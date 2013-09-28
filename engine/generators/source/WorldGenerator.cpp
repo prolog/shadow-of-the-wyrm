@@ -12,6 +12,7 @@
 #include "RNG.hpp"
 #include "CellularAutomataGenerator.hpp"
 #include "MapProperties.hpp"
+#include "Serialize.hpp"
 #include "TileExtraDescriptionKeys.hpp"
 #include "VillageTile.hpp"
 #include "WorldMapLocationTextKeys.hpp"
@@ -295,6 +296,21 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
   gnordvar_mines->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR_MINES);
   gnordvar_mines->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH, l20);
   gnordvar_mines->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, l20);
+
+  // Set up creatures for mines.
+  vector<string> creatures_to_generate;
+  creatures_to_generate.push_back("black_manticore");
+
+  int num_satyrs = RNG::range(5, 10);
+  for (int i = 0; i < num_satyrs; i++)
+  {
+    creatures_to_generate.push_back("satyr");
+  }
+
+  ostringstream oss;
+  Serialize::write_string_vector(oss, creatures_to_generate);
+  gnordvar_mines->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, oss.str());
+
   map->insert(height-56, width-7, gnordvar_mines);
 
   tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);

@@ -1,8 +1,11 @@
+#include <boost/foreach.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreationUtils.hpp"
+#include "CreatureFactory.hpp"
+#include "Log.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
 #include "ItemGenerationManager.hpp"
@@ -12,6 +15,7 @@
 #include "Map.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
+#include "Serialize.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
@@ -111,10 +115,79 @@ bool Generator::generate_creatures(MapPtr map, const int danger_level)
 {
   bool creatures_generated = false;
 
+  if (has_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES))
+  {
+    return generate_initial_set_creatures(map);
+  }
+  else
+  {
+    return generate_random_creatures(map, danger_level);
+  }
+}
+
+bool Generator::generate_initial_set_creatures(MapPtr map)
+{
+  bool creatures_generated = false;
+
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
-  
+
+  string vector_s = get_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
+  vector<string> creature_ids;
+  istringstream iss(vector_s);
+
+  try
+  {
+    Serialize::read_string_vector(iss, creature_ids);
+    Game& game = Game::instance();
+    ActionManager& am = game.get_action_manager_ref();
+    CreatureFactory cf;
+
+    BOOST_FOREACH(const string& creature_id, creature_ids)
+    {
+      // Generate the creature
+      CreaturePtr creature = cf.create_by_creature_id(am, creature_id);
+
+      if (creature)
+      {
+        // Place the creature
+        for (int attempts = 0; attempts < 200; attempts++)
+        {
+          int creature_row = RNG::range(0, rows-1);
+          int creature_col = RNG::range(0, cols-1);
+      
+          // Check to see if the spot is empty, and if a creature can be added there.
+          TilePtr tile = map->at(creature_row, creature_col);
+
+          if (MapUtils::is_tile_available_for_creature(creature, tile))
+          {
+            Coordinate coords(creature_row, creature_col);
+            MapUtils::add_or_update_location(map, creature, coords);
+            creatures_generated = true;
+
+            break;
+          }
+        }
+      }
+    }
+  }
+  catch(...)
+  {
+    Log::instance().error("Attempted to generate initial set creatures, but vector could not be deserialized (this is really bad).");
+  }
+
+  return creatures_generated;
+}
+
+bool Generator::generate_random_creatures(MapPtr map, const int danger_level)
+{
+  bool creatures_generated = false;
+
+  Dimensions dim = map->size();
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+
   CreatureGenerationManager cgm;
 
   Rarity rarity = CreationUtils::generate_rarity();
@@ -302,6 +375,11 @@ string Generator::get_additional_property(const string& property_name) const
   }
   
   return property_value;
+}
+
+bool Generator::has_additional_property(const string& property_name) const
+{
+  return (additional_properties.find(property_name) != additional_properties.end());
 }
 
 // Maps are not permanent by default.  For certain map types (fields, forests, etc),
