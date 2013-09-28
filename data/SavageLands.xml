@@ -3340,6 +3340,7 @@
 			</Damage>
 			<Evade>20</Evade>
 			<Soak>10</Soak>
+			<ChatScript>quests/christof.lua</ChatScript>
 		</Creature>
 		<Creature id="elfric">
 			<RaceID>10_gnome</RaceID>
@@ -4443,6 +4444,23 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>		
+		<Spell id="a_04_shockwave">
+			<NameSID>SHOCKWAVE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>SHOCKWAVE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>SHOCKWAVE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<Colour>3</Colour>
+			<APCost>18</APCost>
+			<Speed>1</Speed>
+			<Range>3</Range>
+			<Shape>4</Shape>
+			<Damage>
+				<NumDice>12</NumDice>
+				<NumSides>3</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -5283,6 +5301,26 @@
 					<NumSides>12</NumSides>
 					<Modifier>0</Modifier>
 					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="stonespear">
+				<DescriptionSID>STONESPEAR_SID</DescriptionSID>
+				<UsageDescriptionSID>STONESPEAR_USAGE_SID</UsageDescriptionSID>
+				<Value>1500</Value>
+				<Weight><Pounds>15</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>7</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>10</NumSides>
+					<Modifier>5</Modifier>
+					<Type>1</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="elven_short_sword">
@@ -6855,6 +6893,23 @@
 				<Rarity>1</Rarity>
 				<SpellID>a_02_dragon_breath</SpellID>
 				<Difficulty>100</Difficulty>
+			</Spellbook>
+			<Spellbook id="shockwave_spellbook">
+				<DescriptionSID>SHOCKWAVE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SHOCKWAVE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SHOCKWAVE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SHOCKWAVE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>18</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_04_shockwave</SpellID>
+				<Difficulty>115</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
