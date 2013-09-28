@@ -39,6 +39,7 @@ namespace SL
       virtual void clear_additional_properties();
       virtual void set_additional_property(const std::string& property_name, const std::string& property_value);
       virtual void set_additional_properties(const std::map<std::string, std::string>& additional_properties);
+      virtual bool has_additional_property(const std::string& property_name) const;
       virtual std::string get_additional_property(const std::string& property_name) const;
     
       virtual MapType get_map_type() const;
@@ -56,6 +57,9 @@ namespace SL
 
       // Generate the creatures.  Returns true if creatures were created, false otherwise.
       virtual bool generate_creatures(MapPtr map, const int danger_level);
+      virtual bool generate_initial_set_creatures(MapPtr map);
+      virtual bool generate_random_creatures(MapPtr map, const int danger_level);
+
       virtual bool update_creatures(MapPtr map, const int danger_level);
     
       // Seed the initial items.  Returns true if the items were created, false otherwise.
