@@ -109,6 +109,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TILE_TYPE_ROCKY_EARTH);
   }
+  else if (xml_tile == 'w')
+  {
+    tile = tg.generate(TILE_TYPE_WELL);
+  }
   else if (xml_tile == 'r')
   {
     tile = tg.generate(TILE_TYPE_ROAD);

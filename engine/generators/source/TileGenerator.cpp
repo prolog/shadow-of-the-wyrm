@@ -30,7 +30,7 @@ bool TileGenerator::get_generate_items() const
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
 {
   // To make it easier to remember what needs to be updated:
-  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 43);
+  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 44);
 
   TilePtr result_tile;
 
@@ -167,6 +167,9 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       break;
     case TILE_TYPE_MINE:
       result_tile = boost::make_shared<MineTile>();
+      break;
+    case TILE_TYPE_WELL:
+      result_tile = boost::make_shared<WellTile>();
       break;
     default:
       break;

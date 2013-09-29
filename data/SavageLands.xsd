@@ -121,6 +121,7 @@
 			<xs:element name="EvergreenTreeTile" type="tns:Tile"/>
 			<xs:element name="RockyEarthTile" type="tns:Tile"/>
 			<xs:element name="MineTile" type="tns:Tile"/>
+			<xs:element name="WellTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
