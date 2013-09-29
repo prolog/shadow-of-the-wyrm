@@ -47,11 +47,12 @@ MapPtr HamletGenerator::generate()
 // Generate a road leading into the hamlet.
 void HamletGenerator::generate_road(MapPtr map, const int start_col, const int end_col, const int row, const int increment)
 {
+  TileGenerator tg;
   int cur_col = start_col;
 
   while (cur_col != end_col)
   {
-    TilePtr road_tile = TileGenerator::generate(TILE_TYPE_ROAD);
+    TilePtr road_tile = tg.generate(TILE_TYPE_ROAD);
     map->insert(row, cur_col, road_tile);
     
     cur_col += increment;

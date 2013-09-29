@@ -1,6 +1,6 @@
 #pragma once
-
 #include "Generator.hpp"
+#include "TileGenerator.hpp"
 
 class FieldGenerator : public SL::Generator
 {
@@ -11,4 +11,6 @@ class FieldGenerator : public SL::Generator
 
   protected:
     virtual TilePtr generate_tile(MapPtr current_map, int row, int col);
+
+    TileGenerator tg;
 };

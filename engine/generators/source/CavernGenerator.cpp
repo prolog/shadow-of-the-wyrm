@@ -35,6 +35,7 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
 
 void CavernGenerator::generate_cavern(MapPtr map)
 {
+  TileGenerator tg;
   TilePtr tile;
   Dimensions dimensions = map->size();
 
@@ -56,7 +57,7 @@ void CavernGenerator::generate_cavern(MapPtr map)
 
       if (cavern_val == CELL_OFF)
       {
-        tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+        tile = tg.generate(TILE_TYPE_DUNGEON);
         map->insert(row, col, tile);
       }
     }
@@ -77,6 +78,8 @@ MapComponents CavernGenerator::get_cavern_components(MapPtr map)
 // Dig a line between two points
 void CavernGenerator::connect_caverns(MapPtr map, const Coordinate& start, const Coordinate& end)
 {
+  TileGenerator tg;
+
   int current_y = start.first;
   int current_x = start.second;
   int end_y     = end.first;
@@ -96,7 +99,7 @@ void CavernGenerator::connect_caverns(MapPtr map, const Coordinate& start, const
 
   while (current_y != end_y || current_x != end_x)
   {
-    TilePtr tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+    TilePtr tile = tg.generate(TILE_TYPE_DUNGEON);
     map->insert(current_y, current_x, tile);
 
     if (current_y != end_y)
@@ -153,25 +156,27 @@ void CavernGenerator::connect_cavern_components(MapPtr map, const MapComponents&
 
 void CavernGenerator::reset_cavern_edges(MapPtr map)
 {
+  TileGenerator tg;
+
   Dimensions dimensions = map->size();
   int max_rows = dimensions.get_y();
   int max_cols = dimensions.get_x();
 
   for (int row = 0; row < max_rows; row++)
   {
-    TilePtr rock = TileGenerator::generate(TILE_TYPE_ROCK);
+    TilePtr rock = tg.generate(TILE_TYPE_ROCK);
     map->insert(row, 0, rock);
     
-    rock = TileGenerator::generate(TILE_TYPE_ROCK);
+    rock = tg.generate(TILE_TYPE_ROCK);
     map->insert(row, max_cols-1, rock);
   }
 
   for (int col = 0; col < max_cols; col++)
   {
-    TilePtr rock = TileGenerator::generate(TILE_TYPE_ROCK);
+    TilePtr rock = tg.generate(TILE_TYPE_ROCK);
     map->insert(0, col, rock);
     
-    rock = TileGenerator::generate(TILE_TYPE_ROCK);
+    rock = tg.generate(TILE_TYPE_ROCK);
     map->insert(max_rows-1, col, rock);
   }
 }
@@ -190,6 +195,7 @@ void CavernGenerator::generate_staircases(MapPtr map)
 // Generate a particular staircase
 void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, const Direction direction)
 {
+  TileGenerator tg;
   Dimensions dimensions = map->size();
 
   bool found = false;
@@ -208,7 +214,7 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
     if (!tile) break;
     if (tile && tile->get_tile_type() == TILE_TYPE_DUNGEON)
     {
-      TilePtr new_tile = TileGenerator::generate(tile_type);
+      TilePtr new_tile = tg.generate(tile_type);
       map->insert(c.first, c.second, new_tile);
       
       // Add the map exit info if necessary

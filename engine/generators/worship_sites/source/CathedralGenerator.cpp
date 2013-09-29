@@ -66,13 +66,14 @@ void CathedralGenerator::generate_cathedral(MapPtr map)
 // Generate a 5x5 dais, placing an altar in the centre.
 void CathedralGenerator::generate_dais_and_altar(MapPtr map, const int dais_start_row, const int dais_start_col, const int dais_height, const int dais_width)
 {
+  TileGenerator tg;
   TilePtr dais_tile;
   
   for (int row = dais_start_row; row < dais_start_row + dais_height; row++)
   {
     for (int col = dais_start_col; col < dais_start_col + dais_width; col++)
     {
-      dais_tile = TileGenerator::generate(TILE_TYPE_DAIS);
+      dais_tile = tg.generate(TILE_TYPE_DAIS);
       map->insert(row, col, dais_tile);
     }
   }
@@ -122,8 +123,9 @@ void CathedralGenerator::generate_pews(MapPtr map, const int pew_end_row, const 
 // Generate a pair of doors that lead into the cathedral
 void CathedralGenerator::generate_doors(MapPtr map)
 {
-  TilePtr first_door_tile  = TileGenerator::generate(TILE_TYPE_DUNGEON);
-  TilePtr second_door_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+  TileGenerator tg;
+  TilePtr first_door_tile  = tg.generate(TILE_TYPE_DUNGEON);
+  TilePtr second_door_tile = tg.generate(TILE_TYPE_DUNGEON);
   FeaturePtr first_door    = FeatureGenerator::generate_door();
   FeaturePtr second_door   = FeatureGenerator::generate_door();
   first_door_tile->set_feature(first_door);
@@ -146,12 +148,14 @@ void CathedralGenerator::generate_back_rooms(MapPtr map, const int room_start_co
 // Generate the priest's quarters in the back of the Cathedral
 void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_start_col)
 {
+  TileGenerator tg;
   TilePtr current_tile;
+
   for (int row = start_row + 1; row < start_row + church_height; row++)
   {
     if (row != start_row+2)
     {
-      current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+      current_tile = tg.generate(TILE_TYPE_ROCK);
       map->insert(row, room_start_col, current_tile);
     }
     else
@@ -165,7 +169,9 @@ void CathedralGenerator::generate_priest_quarters(MapPtr map, const int room_sta
 
 void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room_start_col)
 {
+  TileGenerator tg;
   TilePtr current_tile;
+
   int wall_row = start_row + church_height - static_cast<int>((church_height/2.5));
   for (int col = room_start_col; col < start_col + church_width; col++)
   {
@@ -177,7 +183,7 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
     }
     else
     {
-      current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+      current_tile = tg.generate(TILE_TYPE_ROCK);
       map->insert(wall_row, col, current_tile);
     }
   }  
@@ -191,7 +197,7 @@ void CathedralGenerator::generate_secondary_back_room(MapPtr map, const int room
     // FIXME: Generate items, and place them in the chest
     
     // Generate the stairs down to the crypt
-    TilePtr down_staircase_tile = TileGenerator::generate(TILE_TYPE_DOWN_STAIRCASE);
+    TilePtr down_staircase_tile = tg.generate(TILE_TYPE_DOWN_STAIRCASE);
     map->insert((wall_row + start_row + church_height) / 2, (room_start_col + start_col + church_width) / 2, down_staircase_tile);
   }
   else

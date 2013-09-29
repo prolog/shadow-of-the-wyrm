@@ -23,6 +23,8 @@ MapPtr StreamGenerator::generate(MapPtr map)
 
 MapPtr StreamGenerator::generate_stream(MapPtr map, const int start_col)
 {
+  TileGenerator tg;
+
   MapPtr result_map = boost::make_shared<Map>(*map);
   Dimensions d = result_map->size();
 
@@ -44,7 +46,7 @@ MapPtr StreamGenerator::generate_stream(MapPtr map, const int start_col)
       current_row--;
     }
 
-    result_map->insert(current_row, current_col, TileGenerator::generate(TILE_TYPE_RIVER));
+    result_map->insert(current_row, current_col, tg.generate(TILE_TYPE_RIVER));
 
     current_col += modifier;
   }

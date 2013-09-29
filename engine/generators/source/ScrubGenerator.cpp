@@ -36,11 +36,11 @@ TilePtr ScrubGenerator::generate_tile(MapPtr result_map, const int row, const in
 
   if (rand < 98)
   {
-    generated_tile = TileGenerator::generate(TILE_TYPE_SCRUB);
+    generated_tile = tg.generate(TILE_TYPE_SCRUB);
   }
   else
   {
-    generated_tile = TileGenerator::generate(TILE_TYPE_BUSH);
+    generated_tile = tg.generate(TILE_TYPE_BUSH);
   }
 
   return generated_tile;

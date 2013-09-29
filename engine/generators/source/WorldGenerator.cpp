@@ -22,8 +22,11 @@ using boost::dynamic_pointer_cast;
 
 // Even though the map_terrain_type parameter is used to generate creatures, and UNDEFINED would normally be bad, it
 // shouldn't matter for the world, since there will never be creatures generated on it.
+//
+// The tile generator should not generate any random items on the world map!
+// Those items cannot be picked up.
 WorldGenerator::WorldGenerator()
-: Generator("", TILE_TYPE_UNDEFINED)
+: Generator("", TILE_TYPE_UNDEFINED), tg(false)
 {
 }
 
@@ -86,22 +89,22 @@ void WorldGenerator::generate_little_island(MapPtr map)
   {
     for (int current_width = width - 6; current_width < width; current_width++)
     {
-      TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
+      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
       map->insert(current_height, current_width, sea_tile);
     }
   }
 
   // Wintersea Keep
-  TilePtr wintersea_keep = TileGenerator::generate(TILE_TYPE_KEEP, TILE_TYPE_UNDEFINED, false);
+  TilePtr wintersea_keep = tg.generate(TILE_TYPE_KEEP, TILE_TYPE_UNDEFINED);
   wintersea_keep->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_WINTERSEA_KEEP);
   wintersea_keep->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_WINTERSEA_KEEP);
   map->insert(height-4, width-5, wintersea_keep);
 
-  TilePtr forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
+  TilePtr forest_tile = tg.generate(TILE_TYPE_FOREST);
   map->insert(height-4, width-4, forest_tile);
 
   // Village of Isen Dun.
-  TilePtr isen_dun = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD, false);
+  TilePtr isen_dun = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
   isen_dun->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN);
   isen_dun->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_ISEN_DUN);
   map->insert(height-3, width-4, isen_dun);
@@ -113,16 +116,16 @@ void WorldGenerator::generate_little_island(MapPtr map)
   map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
 
   // The Barrows
-  TilePtr isen_dun_graveyard = TileGenerator::generate(TILE_TYPE_GRAVEYARD, TILE_TYPE_UNDEFINED, false);
+  TilePtr isen_dun_graveyard = tg.generate(TILE_TYPE_GRAVEYARD, TILE_TYPE_UNDEFINED);
   isen_dun_graveyard->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD);
   isen_dun_graveyard->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_THE_BARROWS);
   map->insert(height-3, width-3, isen_dun_graveyard);
 
-  TilePtr wild_orchard_tile = TileGenerator::generate(TILE_TYPE_WILD_ORCHARD);
+  TilePtr wild_orchard_tile = tg.generate(TILE_TYPE_WILD_ORCHARD);
   map->insert(height-3, width-2, wild_orchard_tile);
 
   // Siriath's Dungeons
-  TilePtr village_dungeon = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED, false);
+  TilePtr village_dungeon = tg.generate(TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED);
   village_dungeon->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON);
   // Sirith's dungeon is eight levels deep.
   village_dungeon->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, Integer::to_string(8));
@@ -143,12 +146,12 @@ void WorldGenerator::generate_last_rock_and_far_shore(MapPtr map)
   {
     for (int current_width = width - 5; current_width < width; current_width++)
     {
-      TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
+      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
       map->insert(current_height, current_width, sea_tile);
     }
   }
 
-  TilePtr last_rock = TileGenerator::generate(TILE_TYPE_ROCKY_EARTH);
+  TilePtr last_rock = tg.generate(TILE_TYPE_ROCKY_EARTH);
   last_rock->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ROCK);
   last_rock->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ROCK);
   map->insert(height-15, width-1, last_rock);
@@ -159,12 +162,12 @@ void WorldGenerator::generate_last_rock_and_far_shore(MapPtr map)
   {
     for (int current_width = 0; current_width < 4; current_width++)
     {
-      TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
+      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
       map->insert(current_height, current_width, sea_tile);
     }
   }
 
-  TilePtr far_shore = TileGenerator::generate(TILE_TYPE_FOREST);
+  TilePtr far_shore = tg.generate(TILE_TYPE_FOREST);
   far_shore->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_FAR_SHORE);
   far_shore->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_FAR_SHORE);
   map->insert(height-10, 0, far_shore);
@@ -183,7 +186,7 @@ void WorldGenerator::generate_infinite_dungeon_island(MapPtr map)
   {
     for (int current_width = width - 7; current_width < width; current_width++)
     {
-      TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
+      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
       map->insert(current_height, current_width, sea_tile);
     }
   }
@@ -203,12 +206,12 @@ void WorldGenerator::generate_infinite_dungeon_island(MapPtr map)
 
   BOOST_FOREACH(Coordinate coord, v_trees)
   {
-    TilePtr forest_tile = TileGenerator::generate(TILE_TYPE_FOREST);
+    TilePtr forest_tile = tg.generate(TILE_TYPE_FOREST);
     map->insert(coord.first, coord.second, forest_tile);
   }
 
   // Next, the actual dungeon, setting the "impermanance" flag:
-  TilePtr inf_dungeon_tile = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX);
+  TilePtr inf_dungeon_tile = tg.generate(TILE_TYPE_DUNGEON_COMPLEX);
   inf_dungeon_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, Bool::to_string(false));
   inf_dungeon_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, Integer::to_string(numeric_limits<int>::max()));
   inf_dungeon_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_INFINITE_DUNGEON);
@@ -222,7 +225,7 @@ void WorldGenerator::generate_far_reaches(MapPtr map)
   {
     for (int current_width = 0; current_width < 5; current_width++)
     {
-      TilePtr sea_tile = TileGenerator::generate(TILE_TYPE_SEA);
+      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
       map->insert(current_height, current_width, sea_tile);
     }
   }
@@ -231,37 +234,37 @@ void WorldGenerator::generate_far_reaches(MapPtr map)
   //   .....
   //   ...
 
-  TilePtr tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  TilePtr tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(1, 2, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(1, 3, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(1, 4, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(2, 1, tile);
 
   // Amaurosis' lair.
-  TilePtr lair_tile = TileGenerator::generate(TILE_TYPE_CAVERN);
+  TilePtr lair_tile = tg.generate(TILE_TYPE_CAVERN);
   lair_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR);
   lair_tile->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR);
   map->insert(2, 2, lair_tile);
   
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(2, 3, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(2, 4, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(3, 1, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(3, 2, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(3, 3, tile);
 }
 
@@ -280,19 +283,19 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
   int height = dim.get_y();
   int width = dim.get_x();
 
-  TilePtr tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  TilePtr tile = tg.generate(TILE_TYPE_FIELD);
   map->insert(height-58, width-6, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(height-57, width-7, tile);
 
-  TilePtr gnordvar = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD, false);
+  TilePtr gnordvar = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
   gnordvar->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR);
   gnordvar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_GNORDVAR);
   map->insert(height-57, width-6, gnordvar);
 
   string l20 = Integer::to_string(20);
-  TilePtr gnordvar_mines = TileGenerator::generate(TILE_TYPE_MINE);
+  TilePtr gnordvar_mines = tg.generate(TILE_TYPE_MINE);
   gnordvar_mines->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR_MINES);
   gnordvar_mines->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH, l20);
   gnordvar_mines->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, l20);
@@ -313,10 +316,10 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
 
   map->insert(height-56, width-7, gnordvar_mines);
 
-  tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+  tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(height-56, width-6, tile);
 
-  tile = TileGenerator::generate(TILE_TYPE_FIELD);
+  tile = tg.generate(TILE_TYPE_FIELD);
   map->insert(height-55, width-7, tile);
 }
 
@@ -432,7 +435,7 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
     rand = RNG::range(1, 200);
     if (rand <= 1)
     {
-      tile = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX);
+      tile = tg.generate(TILE_TYPE_DUNGEON_COMPLEX);
     }
     else
     {
@@ -442,13 +445,13 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
 
       if (rand <= 1)
       {
-        tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD, false);
+        tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
         village_coordinates.insert(c);
       }
       else
       {
         remove_village_coordinates_if_present(c);
-        tile = TileGenerator::generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED, false);
+        tile = tg.generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED);
       }            
     }
     
@@ -469,13 +472,13 @@ void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const i
     
     if (rand <= 1)
     {
-      tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_HILLS);
+      tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_HILLS);
       village_coordinates.insert(c);
     }
     else
     {
       remove_village_coordinates_if_present(c);
-      tile = TileGenerator::generate(TILE_TYPE_HILLS);      
+      tile = tg.generate(TILE_TYPE_HILLS);      
     }
     
     result_map->insert(row, col, tile);
@@ -495,13 +498,13 @@ void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const 
     
     if (rand <= 1)
     {
-      tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_MARSH);
+      tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_MARSH);
       village_coordinates.insert(c);
     }
     else
     {
       remove_village_coordinates_if_present(c);
-      tile = TileGenerator::generate(TILE_TYPE_MARSH);
+      tile = tg.generate(TILE_TYPE_MARSH);
     }
 
     result_map->insert(row, col, tile);
@@ -521,18 +524,18 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
 
     if (rand <= 1)
     {
-      tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_FOREST);      
+      tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FOREST);      
       village_coordinates.insert(c);
     }
     else if (rand <= 2)
     {
       remove_village_coordinates_if_present(c);
-      tile = TileGenerator::generate(TILE_TYPE_WILD_ORCHARD);
+      tile = tg.generate(TILE_TYPE_WILD_ORCHARD);
     }
     else
     {
       remove_village_coordinates_if_present(c);
-      tile = TileGenerator::generate(TILE_TYPE_FOREST);
+      tile = tg.generate(TILE_TYPE_FOREST);
     }
     
     result_map->insert(row, col, tile);
@@ -552,13 +555,13 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
     
     if (rand <= 1)
     {
-      tile = TileGenerator::generate(TILE_TYPE_VILLAGE, TILE_TYPE_SCRUB);
+      tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_SCRUB);
       village_coordinates.insert(c);
     }
     else
     {
       remove_village_coordinates_if_present(c);
-      tile = TileGenerator::generate(TILE_TYPE_SCRUB);          
+      tile = tg.generate(TILE_TYPE_SCRUB);          
     }
 
     result_map->insert(row, col, tile);
@@ -572,7 +575,7 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   // Deserts should only appear in naturally dry areas.
   if (desert_val == CELL_OFF && world_val == CELL_OFF && scrub_val == CELL_OFF)
   {
-    tile = TileGenerator::generate(TILE_TYPE_DESERT);
+    tile = tg.generate(TILE_TYPE_DESERT);
     result_map->insert(row, col, tile);
   }
 }
@@ -591,15 +594,15 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
     
     if (rand <= 2)
     {
-      tile = TileGenerator::generate(TILE_TYPE_DUNGEON_COMPLEX);
+      tile = tg.generate(TILE_TYPE_DUNGEON_COMPLEX);
     }
     else if (rand <= 5)
     {
-      tile = TileGenerator::generate(TILE_TYPE_CAVERN);
+      tile = tg.generate(TILE_TYPE_CAVERN);
     }
     else
     {
-      tile = TileGenerator::generate(TILE_TYPE_MOUNTAINS);
+      tile = tg.generate(TILE_TYPE_MOUNTAINS);
     }
     
     remove_village_coordinates_if_present(c);
@@ -743,7 +746,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
             int deity_id_idx = RNG::range(0, initial_deity_ids.size()-1);
             string deity_id = initial_deity_ids[deity_id_idx];
             DeityPtr deity = deities[deity_id];
-            WorshipSiteTilePtr site_tile = TileGenerator::generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
+            WorshipSiteTilePtr site_tile = tg.generate_worship_site_tile(deity->get_alignment_range(), deity_id, deity->get_worship_site_type());
             map->insert(adjacent_row, adjacent_col, site_tile);
             worship_site_generated = true;
           }

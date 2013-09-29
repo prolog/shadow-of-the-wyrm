@@ -1,5 +1,6 @@
 #pragma once
 #include "Map.hpp"
+#include "TileGenerator.hpp"
 #include "XMLDataStructures.hpp"
 
 class XMLMapTilesReader
@@ -14,5 +15,8 @@ class XMLTileMapper
 {
   public:
     TilePtr create_tile(const char xml_tile);
+
+  protected:
+    TileGenerator tg;
 };
 

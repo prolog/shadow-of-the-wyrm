@@ -95,6 +95,7 @@ TileType Generator::get_terrain_type() const
 
 void Generator::fill(const MapPtr map, const TileType& tile_type)
 {
+  TileGenerator tg;
   Dimensions dim = map->size();
 
   int rows = dim.get_y();
@@ -104,7 +105,7 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
   {
     for (int col = 0; col < cols; col++)
     {
-      TilePtr current_tile = TileGenerator::generate(tile_type);
+      TilePtr current_tile = tg.generate(tile_type);
       map->insert(row, col, current_tile);
     }
   }
@@ -411,13 +412,14 @@ bool Generator::can_create_initial_items() const
 
 bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, bool link_to_map_exit_id, bool set_as_player_default_location)
 {
+  TileGenerator tg;
   TilePtr tile = map->at(row, col);
   
   if (tile)
   {
     Coordinate c(row, col);
     
-    TilePtr new_staircase_tile = TileGenerator::generate(tile_type);
+    TilePtr new_staircase_tile = tg.generate(tile_type);
     new_staircase_tile->set_tile_subtype(tile_subtype);
 
     if (link_to_map_exit_id)

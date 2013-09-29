@@ -110,6 +110,8 @@ void MineGenerator::connect_rooms(MapPtr map)
 
 void MineGenerator::dig_floor(MapPtr map, const vector<Coordinate>& tiles_to_dig)
 {
+  TileGenerator tg;
+
   BOOST_FOREACH(Coordinate c, tiles_to_dig)
   {
     // Dig, unless we hit the staircase.
@@ -120,13 +122,15 @@ void MineGenerator::dig_floor(MapPtr map, const vector<Coordinate>& tiles_to_dig
       if (tt == TILE_TYPE_UP_STAIRCASE || tt == TILE_TYPE_DOWN_STAIRCASE) break;
     }
 
-    TilePtr floor_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+    TilePtr floor_tile = tg.generate(TILE_TYPE_DUNGEON);
     map->insert(c.first, c.second, floor_tile);
   }
 }
 
 void MineGenerator::generate_main_mining_corridor(MapPtr map)
 {
+  TileGenerator tg;
+
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -150,7 +154,7 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
   {
     for (int x = xpos-1; x <= xpos+1; x++)
     {
-      TilePtr tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+      TilePtr tile = tg.generate(TILE_TYPE_DUNGEON);
       map->insert(y, x, tile);
     }
 
@@ -207,6 +211,8 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
 
 bool MineGenerator::generate_room(MapPtr map, const int start_y, const int start_x, const int height, const int width)
 {
+  TileGenerator tg;
+
   bool room_generated = false;
   Dimensions dim = map->size();
   int max_rows = dim.get_y();
@@ -244,7 +250,7 @@ bool MineGenerator::generate_room(MapPtr map, const int start_y, const int start
     {
       for (int x = start_x; x < endpos_x; x++)
       {
-        TilePtr tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+        TilePtr tile = tg.generate(TILE_TYPE_DUNGEON);
         map->insert(y, x, tile);
       }
     }

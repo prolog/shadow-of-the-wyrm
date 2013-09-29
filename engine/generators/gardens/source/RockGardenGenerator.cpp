@@ -9,12 +9,14 @@ RockGardenGenerator::RockGardenGenerator(MapPtr new_base_map, const int map_wind
 
 void RockGardenGenerator::generate()
 {
+  TileGenerator tg;
+
   for (int row = window_start_row; row <= window_start_row + window_height; row++)
   {
     for (int col = window_start_col; col <= window_start_col + window_width; col++)
     {
       // 80% chance of Cairn, 20% chance of field
-      TilePtr tile = TileGenerator::generate(RNG::percent_chance(80) ? TILE_TYPE_CAIRN : TILE_TYPE_FIELD);
+      TilePtr tile = tg.generate(RNG::percent_chance(80) ? TILE_TYPE_CAIRN : TILE_TYPE_FIELD);
 
       map->insert(row, col, tile);
     }

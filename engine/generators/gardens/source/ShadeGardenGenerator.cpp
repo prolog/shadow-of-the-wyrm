@@ -20,23 +20,24 @@ void ShadeGardenGenerator::generate()
 // Generate the trees surrounding the garden
 void ShadeGardenGenerator::generate_tree_cover()
 {
+  TileGenerator tg;
   TilePtr tree_tile;
 
   for (int row = window_start_row; row <= window_end_row_inc; row++)
   {
-    tree_tile = TileGenerator::generate(TILE_TYPE_TREE);
+    tree_tile = tg.generate(TILE_TYPE_TREE);
     map->insert(row, window_start_col, tree_tile);
 
-    tree_tile = TileGenerator::generate(TILE_TYPE_TREE);
+    tree_tile = tg.generate(TILE_TYPE_TREE);
     map->insert(row, window_end_col_inc, tree_tile);
   }
 
   for (int col = window_start_col; col <= window_end_col_inc; col++)
   {
-    tree_tile = TileGenerator::generate(TILE_TYPE_TREE);
+    tree_tile = tg.generate(TILE_TYPE_TREE);
     map->insert(window_start_row, col, tree_tile);
 
-    tree_tile = TileGenerator::generate(TILE_TYPE_TREE);
+    tree_tile = tg.generate(TILE_TYPE_TREE);
     map->insert(window_end_row_inc, col, tree_tile);
   }
 }
@@ -45,6 +46,7 @@ void ShadeGardenGenerator::generate_tree_cover()
 void ShadeGardenGenerator::generate_plants()
 {
   TilePtr garden_tile;
+  TileGenerator tg;
 
   int rand;    
   // Turn the underlying tiles into grass.
@@ -52,7 +54,7 @@ void ShadeGardenGenerator::generate_plants()
   {
     for (int col = window_start_col+1; col < window_end_col_inc; col++)
     {
-      garden_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+      garden_tile = tg.generate(TILE_TYPE_FIELD);
       map->insert(row, col, garden_tile);
       
       rand = RNG::range(1, 6);

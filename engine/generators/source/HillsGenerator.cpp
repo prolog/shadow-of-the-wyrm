@@ -12,6 +12,7 @@ HillsGenerator::HillsGenerator(const string& new_map_exit_id)
 
 MapPtr HillsGenerator::generate(const Dimensions& dim)
 {
+  TileGenerator tg;
   MapPtr result_map = boost::make_shared<Map>(dim);
 
   int rows = dim.get_y();
@@ -48,7 +49,7 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
         tile_type = TILE_TYPE_FIELD;
       }
 
-      tile = TileGenerator::generate(tile_type);
+      tile = tg.generate(tile_type);
       result_map->insert(row, col, tile);
     }
   }

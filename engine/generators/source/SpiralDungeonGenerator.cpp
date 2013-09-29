@@ -43,17 +43,18 @@ MapPtr SpiralDungeonGenerator::place_random_staircase(MapPtr map, StaircaseTileP
 // Place the staircases at random on the generated map.
 MapPtr SpiralDungeonGenerator::place_staircases(MapPtr map, const bool place_up_stairs, const bool place_down_stairs)
 {
+  TileGenerator tg;
   MapPtr result_map = map;
 
   if (place_up_stairs)
   {
-    StaircaseTilePtr up_staircase = TileGenerator::generate_staircase(STAIRCASE_UP);
+    StaircaseTilePtr up_staircase = tg.generate_staircase(STAIRCASE_UP);
     result_map = place_random_staircase(map, up_staircase);
   }
 
   if (place_down_stairs)
   {
-    StaircaseTilePtr down_staircase = TileGenerator::generate_staircase(STAIRCASE_DOWN);
+    StaircaseTilePtr down_staircase = tg.generate_staircase(STAIRCASE_DOWN);
     result_map = place_random_staircase(result_map, down_staircase);
   }
 
@@ -63,6 +64,8 @@ MapPtr SpiralDungeonGenerator::place_staircases(MapPtr map, const bool place_up_
 // Recursively generate a spiral dungeon
 void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, const int current_col, const CardinalDirection direction, const int row_length, const int col_length)
 {
+  TileGenerator tg;
+
   if (row_length < 0 || col_length < 0)
   {
     cout << "Ended here." << endl;
@@ -94,7 +97,7 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
         cout << "Row length: " << row_length << ", Col length: " << col_length;
         while (current <= row_length)
         {
-          tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+          tile = tg.generate(TILE_TYPE_DUNGEON);
           map->insert(row_or_col_current, current_col, tile);
           row_or_col_current--;
           current++;
@@ -110,7 +113,7 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
         new_row_length = row_length - SPACE_BETWEEN_SPIRALS;
         while (current <= row_length)
         {
-          tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+          tile = tg.generate(TILE_TYPE_DUNGEON);
           map->insert(row_or_col_current, current_col, tile);
           row_or_col_current++;
           current++;
@@ -126,7 +129,7 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
         new_col_length = col_length - SPACE_BETWEEN_SPIRALS;
         while (current <= col_length)
         {
-          tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+          tile = tg.generate(TILE_TYPE_DUNGEON);
           map->insert(current_row, row_or_col_current, tile);
           row_or_col_current++;
           current++;
@@ -142,7 +145,7 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
         new_col_length = col_length - SPACE_BETWEEN_SPIRALS;
         while (current <= col_length)
         {
-          tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+          tile = tg.generate(TILE_TYPE_DUNGEON);
           map->insert(current_row, row_or_col_current, tile);
           row_or_col_current--;
           current++;
