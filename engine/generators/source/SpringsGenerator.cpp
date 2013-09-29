@@ -21,6 +21,7 @@ MapPtr SpringsGenerator::generate(MapPtr map, const int start_row, const int sta
 
 MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const int start_col, const int springs_size)
 {
+  TileGenerator tg;
   MapPtr result_map = boost::make_shared<Map>(*map);
 
   int first_row;
@@ -41,7 +42,7 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
   {
     for (int col = col_start; col < (start_col + spring_size); col++)
     {
-      TilePtr springs_tile = TileGenerator::generate(TILE_TYPE_SPRINGS);
+      TilePtr springs_tile = tg.generate(TILE_TYPE_SPRINGS);
       result_map->insert(first_row, col, springs_tile);
     }
 
@@ -49,7 +50,7 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
     {
       for (int col = col_start; col < (start_col + spring_size); col++)
       {
-        TilePtr second_springs_tile = TileGenerator::generate(TILE_TYPE_SPRINGS);
+        TilePtr second_springs_tile = tg.generate(TILE_TYPE_SPRINGS);
         result_map->insert(second_row, col, second_springs_tile);
       }
     }
@@ -65,6 +66,7 @@ MapPtr SpringsGenerator::generate_wide(MapPtr map, const int start_row, const in
 
 MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const int start_col, const int springs_size)
 {
+  TileGenerator tg;
   MapPtr result_map = boost::make_shared<Map>(*map);
 
   int first_col;
@@ -85,7 +87,7 @@ MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const in
   {
     for (int row = row_start; row < (start_row + spring_size); row++)
     {
-      TilePtr springs_tile = TileGenerator::generate(TILE_TYPE_SPRINGS);
+      TilePtr springs_tile = tg.generate(TILE_TYPE_SPRINGS);
       result_map->insert(row, first_col, springs_tile);
     }
 
@@ -93,7 +95,7 @@ MapPtr SpringsGenerator::generate_tall(MapPtr map, const int start_row, const in
     {
       for (int row = row_start; row < (start_row + spring_size); row++)
       {
-        TilePtr second_springs_tile = TileGenerator::generate(TILE_TYPE_SPRINGS);
+        TilePtr second_springs_tile = tg.generate(TILE_TYPE_SPRINGS);
         result_map->insert(row, second_col, second_springs_tile);
       }
     }

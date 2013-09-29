@@ -2,6 +2,7 @@
 #include "Generator.hpp"
 #include "Map.hpp"
 #include "Room.hpp"
+#include "TileGenerator.hpp"
 
 class DungeonGenerator : public SL::Generator
 {
@@ -40,6 +41,8 @@ class DungeonGenerator : public SL::Generator
     const int DEFAULT_MAX_WIDTH;
     const int MIN_NUM_ROOMS;
     const int MAX_NUM_ROOMS;
+
+    TileGenerator tg;
 
     std::vector<Room> unconnected_rooms;
     std::vector<Room> connected_rooms;

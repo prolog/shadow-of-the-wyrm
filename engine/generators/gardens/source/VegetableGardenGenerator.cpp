@@ -34,6 +34,8 @@ void VegetableGardenGenerator::generate()
 
 void VegetableGardenGenerator::plant_vegetables()
 {
+  TileGenerator tg;
+
   for (int col = window_start_col; col <= window_start_col + window_width; col++)
   {
     int vegetable_idx = RNG::range(vegetable_min, vegetable_max);
@@ -43,7 +45,7 @@ void VegetableGardenGenerator::plant_vegetables()
     // Spaces needed between vegetables to ensure that things grow.
     for (int row = window_start_row; row <= window_start_row + window_height; row++)
     {
-      TilePtr field_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+      TilePtr field_tile = tg.generate(TILE_TYPE_FIELD);
       
       // Every other column should be empty.
       if ((col % 3 == 0) && (row % 2 == 0))

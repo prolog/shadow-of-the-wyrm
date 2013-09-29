@@ -17,7 +17,9 @@ RoadGenerator::RoadGenerator(const CardinalDirection direction, const int width)
 
 void RoadGenerator::generate_road(MapPtr map)
 {
+  TileGenerator tg;
   TilePtr tile;
+
   Dimensions d = map->size();
   int max_rows = d.get_y();
   int max_cols = d.get_x();
@@ -33,7 +35,7 @@ void RoadGenerator::generate_road(MapPtr map)
       {
         for (int current_row = 0; current_row < max_rows; current_row++)
         {
-          tile = TileGenerator::generate(TILE_TYPE_ROAD);
+          tile = tg.generate(TILE_TYPE_ROAD);
           map->insert(current_row, current_col, tile);
         }
       }
@@ -46,7 +48,7 @@ void RoadGenerator::generate_road(MapPtr map)
       {
         for (int current_col = 0; current_col < max_cols; current_col++)
         {
-          tile = TileGenerator::generate(TILE_TYPE_ROAD);
+          tile = tg.generate(TILE_TYPE_ROAD);
           map->insert(current_row, current_col, tile);
         }
       }

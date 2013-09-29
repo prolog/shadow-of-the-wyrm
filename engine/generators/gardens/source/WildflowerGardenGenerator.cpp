@@ -36,6 +36,7 @@ void WildflowerGardenGenerator::populate_wildflower_ids()
 void WildflowerGardenGenerator::seed_flowers()
 {
   TilePtr flower_tile;
+  TileGenerator tg;
   int rand_flower;
   
   for (int row = window_start_row; row <= window_start_row + window_height; row++)
@@ -43,7 +44,7 @@ void WildflowerGardenGenerator::seed_flowers()
     for (int col = window_start_col; col <= window_start_col + window_width; col++)
     {
       // Generate the field tile, and then "plant" the flower on top.
-      flower_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+      flower_tile = tg.generate(TILE_TYPE_FIELD);
 
       if (RNG::percent_chance(75))
       {

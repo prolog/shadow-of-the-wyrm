@@ -3,6 +3,7 @@
 #include <set>
 #include "CellularAutomataTypes.hpp"
 #include "Generator.hpp"
+#include "TileGenerator.hpp"
 
 // JCD FIXME: Eventually, set about changing all the "MapPtr" arguments to "const MapPtr&" arguments.
 
@@ -45,4 +46,6 @@ class WorldGenerator : public SL::Generator
     
     std::set<Coordinate> village_coordinates;
     std::set<std::string> unused_initial_race_ids;
+
+    TileGenerator tg;
 };

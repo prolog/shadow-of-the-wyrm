@@ -55,6 +55,8 @@ TilePtr ForestGenerator::generate_tile(MapPtr current_map, int row, int col)
 
 MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
 {
+  TileGenerator tg;
+
   MapPtr result_map = boost::make_shared<Map>(*map);
   string world_location_map_key = get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION);
   int world_map_height = String::to_int(get_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT));
@@ -75,12 +77,12 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
 
       if (shrub < 3)
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_BUSH);
+        current_tile = tg.generate(TILE_TYPE_BUSH);
         result_map->insert(row, col, current_tile);
       }
       else if (shrub < 5)
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_WEEDS);
+        current_tile = tg.generate(TILE_TYPE_WEEDS);
         result_map->insert(row, col, current_tile);
       }
       else if (shrub < 50)
@@ -96,6 +98,7 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
 
 TilePtr ForestGenerator::generate_tree_based_on_world_location(const int world_map_height, const Coordinate& world_coords, const int pct_chance_evergreen)
 {
+  TileGenerator tg;
   TileType tree_type = TILE_TYPE_TREE;
 
   // Check to see what type of tile (well, tree tile) should be generated,
@@ -106,7 +109,7 @@ TilePtr ForestGenerator::generate_tree_based_on_world_location(const int world_m
     tree_type = TILE_TYPE_EVERGREEN_TREE;
   }  
 
-  TilePtr tile = TileGenerator::generate(tree_type);
+  TilePtr tile = tg.generate(tree_type);
   return tile;
 }
 

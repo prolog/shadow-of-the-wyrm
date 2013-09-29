@@ -9,6 +9,8 @@ ScatteredGraveyardGenerator::ScatteredGraveyardGenerator(const std::string& new_
 
 void ScatteredGraveyardGenerator::add_graves(MapPtr map)
 {
+  TileGenerator tg;
+
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -22,7 +24,7 @@ void ScatteredGraveyardGenerator::add_graves(MapPtr map)
 
       if (rand < 10)
       {
-        TilePtr grave = TileGenerator::generate(TILE_TYPE_GRAVE);
+        TilePtr grave = tg.generate(TILE_TYPE_GRAVE);
         map->insert(row, col, grave);
       }
     }

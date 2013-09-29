@@ -29,6 +29,8 @@ MapPtr SimpleTempleGenerator::generate()
 // Generate the temple
 void SimpleTempleGenerator::generate_temple(MapPtr map)
 {
+  TileGenerator tg;
+
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -47,7 +49,7 @@ void SimpleTempleGenerator::generate_temple(MapPtr map)
   {
     for (int col = dais_start_col; col < (dais_start_col + dais_size); col++)
     {
-      dais_tile = TileGenerator::generate(TILE_TYPE_DAIS);
+      dais_tile = tg.generate(TILE_TYPE_DAIS);
       map->insert(row, col, dais_tile);
     }
   }

@@ -10,6 +10,8 @@ MountainsGenerator::MountainsGenerator(const std::string& new_map_exit_id)
 
 MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
 {
+  TileGenerator tg;
+
   MapPtr result_map = boost::make_shared<Map>(dimensions);
   Dimensions dim = result_map->size();
   int rows = dim.get_y();
@@ -49,7 +51,7 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
         tile_type = TILE_TYPE_FIELD;
       }
       
-      tile = TileGenerator::generate(tile_type);
+      tile = tg.generate(tile_type);
       result_map->insert(row, col, tile);
     }
   }

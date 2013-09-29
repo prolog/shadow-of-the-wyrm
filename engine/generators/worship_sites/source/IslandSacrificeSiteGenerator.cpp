@@ -37,6 +37,8 @@ void IslandSacrificeSiteGenerator::generate_site(MapPtr map)
 
 void IslandSacrificeSiteGenerator::generate_island(MapPtr map)
 {
+  TileGenerator tg;
+
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -64,7 +66,7 @@ void IslandSacrificeSiteGenerator::generate_island(MapPtr map)
     
     if (current_tile->get_tile_type() == TILE_TYPE_RIVER)
     {
-      TilePtr new_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+      TilePtr new_tile = tg.generate(TILE_TYPE_FIELD);
       map->insert(i, centre_col, new_tile);
     }
   }

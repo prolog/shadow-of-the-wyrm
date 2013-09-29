@@ -29,19 +29,19 @@ TilePtr MarshGenerator::generate_tile(MapPtr current_map, const int row, const i
 
   if (rand <= 3)
   {
-    result_tile = TileGenerator::generate(TILE_TYPE_WEEDS);
+    result_tile = tg.generate(TILE_TYPE_WEEDS);
   }
   else if (rand <= 4)
   {
-    result_tile = TileGenerator::generate(TILE_TYPE_BUSH);
+    result_tile = tg.generate(TILE_TYPE_BUSH);
   }
   else if (rand <= 10)
   {
-    result_tile = TileGenerator::generate(TILE_TYPE_TREE);
+    result_tile = tg.generate(TILE_TYPE_TREE);
   }
   else if (rand <= 28)
   {
-    result_tile = TileGenerator::generate(TILE_TYPE_REEDS);
+    result_tile = tg.generate(TILE_TYPE_REEDS);
   }
 
   return result_tile;

@@ -65,6 +65,8 @@ void FortifiedChurchGenerator::generate_parapets(MapPtr map)
 // Create the parapet.
 void FortifiedChurchGenerator::create_parapet(MapPtr map, const int parapet_start_row, const int parapet_start_col, const int parapet_size)
 {
+  TileGenerator tg;
+
   for (int row = parapet_start_row; row < parapet_start_row + parapet_size; row++)
   {
     for (int col = parapet_start_col; col < parapet_start_col + parapet_size; col++)
@@ -85,7 +87,7 @@ void FortifiedChurchGenerator::create_parapet(MapPtr map, const int parapet_star
           if (tile_type != TILE_TYPE_DUNGEON)
           {
             TilePtr new_tile;
-            new_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+            new_tile = tg.generate(TILE_TYPE_ROCK);
             map->insert(row, col, new_tile);
           }
         }
@@ -96,7 +98,7 @@ void FortifiedChurchGenerator::create_parapet(MapPtr map, const int parapet_star
         TilePtr current_tile = map->at(row, col);
         if (current_tile && current_tile->get_tile_type() != TILE_TYPE_DUNGEON)
         {
-          TilePtr new_floor_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+          TilePtr new_floor_tile = tg.generate(TILE_TYPE_DUNGEON);
           map->insert(row, col, new_floor_tile);
         }
       }
@@ -158,8 +160,10 @@ void FortifiedChurchGenerator::generate_statues(MapPtr map)
 // Generate a pair of front doors, side by side, on the south wall
 void FortifiedChurchGenerator::generate_doors(MapPtr map)
 {
-  TilePtr first_door_tile  = TileGenerator::generate(TILE_TYPE_DUNGEON);
-  TilePtr second_door_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+  TileGenerator tg;
+
+  TilePtr first_door_tile  = tg.generate(TILE_TYPE_DUNGEON);
+  TilePtr second_door_tile = tg.generate(TILE_TYPE_DUNGEON);
   FeaturePtr first_door    = FeatureGenerator::generate_door();
   FeaturePtr second_door   = FeatureGenerator::generate_door();
   first_door_tile->set_feature(first_door);

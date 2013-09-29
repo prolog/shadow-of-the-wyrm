@@ -7,7 +7,27 @@
 #include "tiles.hpp"
 #include "AllTiles.hpp"
 
-TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type, const bool generate_random_items)
+TileGenerator::TileGenerator()
+: generate_items(true)
+{
+}
+
+TileGenerator::TileGenerator(const bool generate)
+: generate_items(generate)
+{
+}
+
+void TileGenerator::set_generate_items(const bool new_generate_items)
+{
+  generate_items = new_generate_items;
+}
+
+bool TileGenerator::get_generate_items() const
+{
+  return generate_items;
+}
+
+TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
 {
   // To make it easier to remember what needs to be updated:
   BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 43);
@@ -152,7 +172,7 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       break;
   }
 
-  if (generate_random_items)
+  if (generate_items)
   {
     configure_tile(result_tile);
   }

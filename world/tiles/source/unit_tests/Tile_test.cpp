@@ -42,15 +42,17 @@ TEST(SL_World_Tiles_Tile, explored)
 
 TEST(SL_World_Tiles_Tile, saveload)
 {
+  TileGenerator tg;
+
   for (int i = TILE_TYPE_FIRST; i < TILE_TYPE_LAST; i++)
   {
-    TilePtr tp = TileGenerator::generate(static_cast<TileType>(i));
+    TilePtr tp = tg.generate(static_cast<TileType>(i));
     MapExitPtr me = MapFactory::create_map_exit();
     me->set_map_id("foobar");
     TileExitMap& tem = tp->get_tile_exit_map_ref();
     tem[DIRECTION_UP] = me;
 
-    TilePtr tp2 = TileGenerator::generate(static_cast<TileType>(i));
+    TilePtr tp2 = tg.generate(static_cast<TileType>(i));
 
     ostringstream ss;
 

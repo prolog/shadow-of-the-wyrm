@@ -31,6 +31,8 @@ MapPtr WildOrchardGenerator::generate(const Dimensions& dimensions)
 
 void WildOrchardGenerator::add_map_features(MapPtr map)
 {
+  TileGenerator tg;
+
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -46,25 +48,25 @@ void WildOrchardGenerator::add_map_features(MapPtr map)
       // Must have an else clause here, otherwise the map will be incomplete.
       if (shrub < 2)
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_BUSH);
+        current_tile = tg.generate(TILE_TYPE_BUSH);
       }
       else if (shrub < 4)
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_WEEDS);
+        current_tile = tg.generate(TILE_TYPE_WEEDS);
       }
       else if (shrub < 12)
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_TREE);        
+        current_tile = tg.generate(TILE_TYPE_TREE);        
       }
       else if (shrub < 15)
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_FRUIT_TREE);
+        current_tile = tg.generate(TILE_TYPE_FRUIT_TREE);
       }
       // Wild Orchards are much sparser than regular forests, and require
       // a lot of sunlight - therefore, they are mostly fields.
       else
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_FIELD);
+        current_tile = tg.generate(TILE_TYPE_FIELD);
       }
 
       map->insert(row, col, current_tile);

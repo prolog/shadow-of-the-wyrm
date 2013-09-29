@@ -92,8 +92,10 @@ void SimpleChurchGenerator::generate_pews(MapPtr map)
 
 void SimpleChurchGenerator::generate_door(MapPtr map)
 {
+  TileGenerator tg;
+
   FeaturePtr doorway = FeatureGenerator::generate_door();
-  TilePtr door_entryway = TileGenerator::generate(TILE_TYPE_DUNGEON); // Ensure that the doorway is situated on a floor.
+  TilePtr door_entryway = tg.generate(TILE_TYPE_DUNGEON); // Ensure that the doorway is situated on a floor.
   door_entryway->set_feature(doorway);
   map->insert(start_row + church_height - 1, start_col + (church_width / 2), door_entryway);
 }

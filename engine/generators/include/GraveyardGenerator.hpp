@@ -1,5 +1,6 @@
 #pragma once
 #include "Generator.hpp"
+#include "TileGenerator.hpp"
 
 class GraveyardGenerator : public SL::Generator
 {
@@ -24,4 +25,6 @@ class GraveyardGenerator : public SL::Generator
     
     const int TOMB_MIN_SIZE;
     const int TOMB_MAX_SIZE;
+
+    TileGenerator tg;
 };

@@ -1,5 +1,6 @@
 #pragma once
 #include "Generator.hpp"
+#include "TileGenerator.hpp"
 
 class ScrubGenerator : public SL::Generator
 {
@@ -9,4 +10,6 @@ class ScrubGenerator : public SL::Generator
 
   protected:
     virtual TilePtr generate_tile(MapPtr result_map, const int row, const int col);
+
+    TileGenerator tg;
 };

@@ -84,6 +84,8 @@ bool GeneratorUtils::position_in_range(const int min, const int max, const int a
 // I was using this sort of thing a lot, so I'm moving it here...
 void GeneratorUtils::generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width)
 {
+  TileGenerator tg;
+
   int end_row = start_row + height;
   int end_col = start_col + width;
 
@@ -97,11 +99,11 @@ void GeneratorUtils::generate_building(const MapPtr map, const int start_row, co
       if ((row == start_row) || (row == (end_row - 1))
         ||(col == start_col) || (col == (end_col - 1)))
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+        current_tile = tg.generate(TILE_TYPE_ROCK);
       }
       else
       {
-        current_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+        current_tile = tg.generate(TILE_TYPE_DUNGEON);
       }
 
       map->insert(row, col, current_tile);
@@ -111,7 +113,9 @@ void GeneratorUtils::generate_building(const MapPtr map, const int start_row, co
 
 void GeneratorUtils::generate_door(const MapPtr map, const int row, const int col)
 {
-  TilePtr floor   = TileGenerator::generate(TILE_TYPE_DUNGEON);
+  TileGenerator tg;
+
+  TilePtr floor   = tg.generate(TILE_TYPE_DUNGEON);
   FeaturePtr door = FeatureGenerator::generate_door();
 
   if (floor && map)
@@ -124,7 +128,8 @@ void GeneratorUtils::generate_door(const MapPtr map, const int row, const int co
 // Generate a tile of a given type at a given location on a given map (that's a given).
 void GeneratorUtils::generate_tile(const MapPtr map, const int row, const int col, const TileType tile_type)
 {
-  TilePtr tile = TileGenerator::generate(tile_type);
+  TileGenerator tg;
+  TilePtr tile = tg.generate(tile_type);
   if (tile && map)
   {
     map->insert(row, col, tile);

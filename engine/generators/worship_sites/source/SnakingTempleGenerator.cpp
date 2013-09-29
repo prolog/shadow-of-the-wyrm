@@ -99,6 +99,8 @@ void SnakingTempleGenerator::connect_buildings(MapPtr map)
 
 void SnakingTempleGenerator::generate_L_hallway(MapPtr map, const int start_row, const int start_col, const int end_row, const int end_col)
 {
+  TileGenerator tg;
+
   int x_offset = 1;
   if (start_col > end_col)
   {
@@ -109,21 +111,21 @@ void SnakingTempleGenerator::generate_L_hallway(MapPtr map, const int start_row,
   // Generate a hallway to (start_row, end_col)
   for (int col = start_col; col != end_col; col += x_offset)
   {
-    TilePtr current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+    TilePtr current_tile = tg.generate(TILE_TYPE_ROCK);
     map->insert(start_row-1, col, current_tile);
     
-    current_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+    current_tile = tg.generate(TILE_TYPE_DUNGEON);
     map->insert(start_row, col, current_tile);
     
-    current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+    current_tile = tg.generate(TILE_TYPE_ROCK);
     map->insert(start_row+1, col, current_tile);
   }
   
   // Generate the L-joint
-  TilePtr current_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+  TilePtr current_tile = tg.generate(TILE_TYPE_DUNGEON);
   map->insert(start_row, end_col, current_tile);
   
-  current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+  current_tile = tg.generate(TILE_TYPE_ROCK);
   map->insert(start_row, end_col+x_offset, current_tile);    
 
   // Adjust the offset to determine whether to put the walls above/below the joint.
@@ -135,7 +137,7 @@ void SnakingTempleGenerator::generate_L_hallway(MapPtr map, const int start_row,
 
   for (int col = end_col; col != end_col+(x_offset*2); col += x_offset)
   {
-    current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+    current_tile = tg.generate(TILE_TYPE_ROCK);
     
     if (start_row > end_row)
     {
@@ -150,13 +152,13 @@ void SnakingTempleGenerator::generate_L_hallway(MapPtr map, const int start_row,
   // Generate a hallway to (end_row, end_col)
   for (int row = start_row + y_offset; row != end_row; row += y_offset)
   {
-    current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+    current_tile = tg.generate(TILE_TYPE_ROCK);
     map->insert(row, end_col-1, current_tile);
     
-    current_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+    current_tile = tg.generate(TILE_TYPE_DUNGEON);
     map->insert(row, end_col, current_tile);
     
-    current_tile = TileGenerator::generate(TILE_TYPE_ROCK);
+    current_tile = tg.generate(TILE_TYPE_ROCK);
     map->insert(row, end_col+1, current_tile);
   }
 }
@@ -164,8 +166,10 @@ void SnakingTempleGenerator::generate_L_hallway(MapPtr map, const int start_row,
 // Generate the doors of the temple.  These should look vaguely teeth-like:
 void SnakingTempleGenerator::generate_temple_doors(MapPtr map)
 {
-  TilePtr door_tile_1 = TileGenerator::generate(TILE_TYPE_DUNGEON);
-  TilePtr door_tile_2 = TileGenerator::generate(TILE_TYPE_DUNGEON);
+  TileGenerator tg;
+
+  TilePtr door_tile_1 = tg.generate(TILE_TYPE_DUNGEON);
+  TilePtr door_tile_2 = tg.generate(TILE_TYPE_DUNGEON);
   FeaturePtr door_1   = FeatureGenerator::generate_door();
   FeaturePtr door_2   = FeatureGenerator::generate_door();
   door_tile_1->set_feature(door_1);
@@ -210,17 +214,19 @@ void SnakingTempleGenerator::generate_pews(MapPtr map)
 
 void SnakingTempleGenerator::generate_dais(MapPtr map, const int dais_row, const int dais_col)
 {
+  TileGenerator tg;
+
   int dais_start_col = temple_col_end - 6;
   int dais_end_col   = temple_col_end - 3;
   for (int cur_dais_col = dais_start_col; cur_dais_col < dais_end_col; cur_dais_col++)
   {
-    TilePtr dais_tile = TileGenerator::generate(TILE_TYPE_DAIS);
+    TilePtr dais_tile = tg.generate(TILE_TYPE_DAIS);
     map->insert(dais_row, cur_dais_col, dais_tile); 
   }
   
   for (int cur_dais_row = temple_row_end - head_height + 1; cur_dais_row < temple_row_end-1; cur_dais_row++)
   {
-    TilePtr dais_tile = TileGenerator::generate(TILE_TYPE_DAIS);
+    TilePtr dais_tile = tg.generate(TILE_TYPE_DAIS);
     map->insert(cur_dais_row, dais_col, dais_tile);
   }  
 }

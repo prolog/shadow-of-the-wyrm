@@ -63,7 +63,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
 
 TilePtr DungeonGenerator::generate_tile(MapPtr current_map, const int row, const int col)
 {
-  TilePtr result_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+  TilePtr result_tile = tg.generate(TILE_TYPE_DUNGEON);
   return result_tile;
 }
 
@@ -203,7 +203,7 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   int start_row = 0;
   for (start_row = r1_c_first; start_row != r2_c_first; start_row += row_inc)
   {
-    TilePtr floor_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+    TilePtr floor_tile = tg.generate(TILE_TYPE_DUNGEON);
 
     map->insert(start_row, r1_c_second, floor_tile);
     
@@ -225,7 +225,7 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
     }
   }
 
-  TilePtr extra_floor_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);  
+  TilePtr extra_floor_tile = tg.generate(TILE_TYPE_DUNGEON);  
   if (start_row == (room1.y1-1))
   {
     map->insert(start_row, r1_c_second, extra_floor_tile);
@@ -241,7 +241,7 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   int start_col = 0;
   for (start_col = r1_c_second; start_col != r2_c_second; start_col+=col_inc)
   {
-    TilePtr floor_tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+    TilePtr floor_tile = tg.generate(TILE_TYPE_DUNGEON);
 
     map->insert(start_row, start_col, floor_tile);
 
@@ -363,7 +363,7 @@ bool DungeonGenerator::place_room(MapPtr map, int start_row, int start_col, int 
   {
     for (int x = start_col; x < size_x; x++)
     {
-      TilePtr tile = TileGenerator::generate(TILE_TYPE_DUNGEON);
+      TilePtr tile = tg.generate(TILE_TYPE_DUNGEON);
       map->insert(y, x, tile);
     }
   }
