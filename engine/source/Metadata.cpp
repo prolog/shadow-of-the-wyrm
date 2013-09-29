@@ -31,9 +31,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Witness of a charter of Nothhelm, undated, listed before Bishop
-  // Eadbert.
-  return "\"Osric\"";
+  // Minor king or sub-king of Sussex.
+  return "\"Aethelstan\"";
 }
 
 string Metadata::get_game_version_synopsis() const
