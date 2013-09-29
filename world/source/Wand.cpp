@@ -22,7 +22,7 @@ Wand::Wand()
   range = 0;
   shape = SPELL_SHAPE_BEAM;
   has_damage = false;
-  colour = COLOUR_WHITE;
+  spell_colour = COLOUR_WHITE;
   
   set_initial_charges();
 }
@@ -66,7 +66,7 @@ bool Wand::wand_properties_match(const Wand& rhs) const
   result = result && (has_damage == rhs.has_damage);
   result = result && (damage == rhs.damage);
   result = result && (charges == rhs.charges);
-  result = result && (colour == rhs.colour);
+  result = result && (spell_colour == rhs.spell_colour);
 
   return result;
 }
@@ -161,14 +161,14 @@ EffectType Wand::get_effect_type() const
   }
 }
 
-void Wand::set_colour(const Colour new_colour)
+void Wand::set_spell_colour(const Colour new_colour)
 {
-  colour = new_colour;
+  spell_colour = new_colour;
 }
 
-Colour Wand::get_colour() const
+Colour Wand::get_spell_colour() const
 {
-  return colour;
+  return spell_colour;
 }
 
 // In most cases, create and clone do the same thing.  But for wands, creating
@@ -201,7 +201,7 @@ bool Wand::serialize(ostream& stream)
   damage.serialize(stream);  
   charges.serialize(stream);
 
-  Serialize::write_enum(stream, colour);
+  Serialize::write_enum(stream, spell_colour);
 
   return true;
 }
@@ -217,7 +217,7 @@ bool Wand::deserialize(istream& stream)
   damage.deserialize(stream);
   charges.deserialize(stream);
 
-  Serialize::read_enum(stream, colour);
+  Serialize::read_enum(stream, spell_colour);
 
   return true;
 }

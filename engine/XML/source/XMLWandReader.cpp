@@ -35,7 +35,7 @@ void XMLWandReader::parse(WandPtr wand, GenerationValues& gv, const XMLNode& wan
     wand->set_spell_shape_type(spell_shape);
 
     Colour spell_colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(wand_node, "Colour", COLOUR_WHITE));
-    wand->set_colour(spell_colour);
+    wand->set_spell_colour(spell_colour);
   }
 }
 

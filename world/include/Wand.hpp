@@ -32,8 +32,8 @@ class Wand : public Item
     void set_charges(const Statistic& new_charges);
     Statistic get_charges() const;
 
-    void set_colour(const Colour new_colour);
-    Colour get_colour() const;
+    void set_spell_colour(const Colour new_spell_colour);
+    Colour get_spell_colour() const;
 
     // Wands return a null effect type when they have no charges.
     virtual EffectType get_effect_type() const;
@@ -53,7 +53,7 @@ class Wand : public Item
     // Base = max charges
     // Current = current number of charges
     Statistic charges;
-    Colour colour;
+    Colour spell_colour;
 
   private:
     ClassIdentifier internal_class_identifier() const;
