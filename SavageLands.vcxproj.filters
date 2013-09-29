@@ -2787,6 +2787,9 @@
     <ClInclude Include="world\tiles\include\MineTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\include\WellTile.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5332,6 +5335,12 @@
     </ClCompile>
     <ClCompile Include="engine\serialization\source\unit_tests\Serialize_test.cpp">
       <Filter>Source Files\engine\serialization\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\WellTile.cpp">
+      <Filter>Source Files\world\tiles\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\WellTile_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

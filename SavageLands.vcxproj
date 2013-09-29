@@ -820,6 +820,7 @@
     <ClInclude Include="world\tiles\include\UpStaircaseTile.hpp" />
     <ClInclude Include="world\tiles\include\VillageTile.hpp" />
     <ClInclude Include="world\tiles\include\WeedsTile.hpp" />
+    <ClInclude Include="world\tiles\include\WellTile.hpp" />
     <ClInclude Include="world\tiles\include\WheatTile.hpp" />
     <ClInclude Include="world\tiles\include\WildOrchardTile.hpp" />
     <ClInclude Include="world\tiles\include\WorldMapTile.hpp" />
@@ -2407,6 +2408,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\WellTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\WheatTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -2420,6 +2426,7 @@
     <ClCompile Include="world\tiles\source\UpStaircaseTile.cpp" />
     <ClCompile Include="world\tiles\source\VillageTile.cpp" />
     <ClCompile Include="world\tiles\source\WeedsTile.cpp" />
+    <ClCompile Include="world\tiles\source\WellTile.cpp" />
     <ClCompile Include="world\tiles\source\WheatTile.cpp" />
     <ClCompile Include="world\tiles\source\WildOrchardTile.cpp" />
     <ClCompile Include="world\tiles\source\WorldMapTile.cpp" />

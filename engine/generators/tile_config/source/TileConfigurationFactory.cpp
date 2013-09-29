@@ -23,7 +23,7 @@ TileConfigurationFactory::TileConfigurationFactory()
 // types.
 void TileConfigurationFactory::initialize_tile_configuration_map()
 {
-  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 43);
+  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 44);
 
   ITileConfigurationPtr field_config = boost::make_shared<FieldTileConfiguration>(); 
   tile_configurations[TILE_TYPE_FIELD] = field_config;

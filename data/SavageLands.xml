@@ -4878,6 +4878,12 @@
 				<Colour>7</Colour>
 			</Text>
 		</MineTile>
+		<WellTile>
+			<Text>
+				<Symbol>o</Symbol>
+				<Colour>6</Colour>
+			</Text>
+		</WellTile>
 	</Tiles>
 	<Items>
 		<Armours>
