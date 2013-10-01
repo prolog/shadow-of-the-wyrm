@@ -407,7 +407,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 		</Race>
-		<Race id="04_marshelf">
+		<Race id="04_snakeling">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
@@ -418,22 +418,22 @@
 			<Size>2</Size>
 			<AgeInfo>
 				<StartingAge>
-					<Min>50</Min>
-					<Max>75</Max>
+					<Min>18</Min>
+					<Max>30</Max>
 				</StartingAge>
 				<MaximumAge>
-					<Min>200</Min>
-					<Max>300</Max>
+					<Min>70</Min>
+					<Max>100</Max>
 				</MaximumAge>
 			</AgeInfo>
 			<RaceInitialStatistics>
-				<Strength>7</Strength>
-				<Dexterity>11</Dexterity>
-				<Agility>12</Agility>
-				<Health>8</Health>
-				<Intelligence>15</Intelligence>
+				<Strength>8</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>11</Agility>
+				<Health>9</Health>
+				<Intelligence>14</Intelligence>
 				<Willpower>14</Willpower>
-				<Charisma>7</Charisma>
+				<Charisma>6</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<RaceInitialModifiers>
@@ -446,16 +446,16 @@
 				<DeityID>09_sceadugenga</DeityID>
 			</RaceInitialDeities>
 			<Resistances>
-				<Slash>-0.05</Slash>
-				<Pierce>-0.05</Pierce>
-				<Pound>0.0</Pound>
+				<Slash>0.05</Slash>
+				<Pierce>0.05</Pierce>
+				<Pound>0.05</Pound>
 				<Heat>0.0</Heat>
-				<Cold>-0.15</Cold>
+				<Cold>-0.20</Cold>
 				<Acid>0.0</Acid>
 				<Poison>0.20</Poison>
 				<Holy>0.0</Holy>
 				<Shadow>0.0</Shadow>
-				<Arcane>0.20</Arcane>
+				<Arcane>0.0</Arcane>
 				<Lightning>0.0</Lightning>
 			</Resistances>
 			<Skills>
@@ -475,7 +475,7 @@
 					<Spears>7</Spears>
 				</RangedWeaponSkills>
 			</Skills>
-			<ExperienceMultiplier>1.15</ExperienceMultiplier>
+			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 		</Race>
 		<Race id="05_fae">
 			<UserPlayable>1</UserPlayable>
@@ -1130,7 +1130,7 @@
 							<ID>ash_bow</ID>
 						</Race>
 						<Race>
-							<RaceID>04_marshelf</RaceID>
+							<RaceID>04_snakeling</RaceID>
 							<ID></ID>
 						</Race>
 						<Race>
@@ -1169,7 +1169,7 @@
 					</Quantity>
 					<Races>
 						<Race>
-							<RaceID>04_marshelf</RaceID>
+							<RaceID>04_snakeling</RaceID>
 							<ID>javelin</ID>
 							<Quantity>
 								<Random>
@@ -2213,7 +2213,7 @@
 							<ID>stone_hammer</ID>
 						</Race>
 						<Race>
-							<RaceID>04_marshelf</RaceID>
+							<RaceID>04_snakeling</RaceID>
 							<ID>long_spear</ID>
 						</Race>
 						<Race>
@@ -2250,7 +2250,7 @@
 							<ID>buckler</ID>
 						</Race>
 						<Race>
-							<RaceID>04_marshelf</RaceID>
+							<RaceID>04_snakeling</RaceID>
 							<ID>buckler</ID>
 						</Race>
 						<Race>
@@ -2275,7 +2275,7 @@
 							<ID>leather_armour</ID>
 						</Race>
 						<Race>
-							<RaceID>04_marshelf</RaceID>
+							<RaceID>04_snakeling</RaceID>
 							<ID>leather_armour</ID>
 						</Race>
 						<Race>
