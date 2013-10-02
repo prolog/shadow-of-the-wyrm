@@ -1,5 +1,6 @@
 #include <sstream>
 #include "buildinfo.hpp"
+#include "CompilationDetails.hpp"
 #include "Environment.hpp"
 #include "global_prototypes.hpp"
 #include "Metadata.hpp"
@@ -37,45 +38,36 @@ string Metadata::get_code_name() const
 
 string Metadata::get_game_version_synopsis() const
 {
+  ostringstream oss;
+
   string game_name = StringTable::get(TextKeys::SL_TITLE);
   string version = get_version();
   string code_name = get_code_name();
 
-  return game_name + " " + version + " " + code_name;
+  oss << game_name << " " << version << " " << code_name;
+
+  return oss.str();
 }
 
-string Metadata::get_compiler_details() const
+// Get the game version information with additional platform, compiler,
+// and compile-time details.
+string Metadata::get_full_game_version_details() const
 {
-  ostringstream compiler_details;
+  ostringstream oss;
+  CompilationDetails cd;
 
-  #ifdef _MSC_VER
-  compiler_details << "MSVC " << _MSC_VER;
+  oss << get_game_version_synopsis() << " (" << cd.get_compilation_details_string() << ")";
 
-    #ifdef _M_IX86
-    compiler_details << " x86 ";
-    #endif
-
-    #ifdef _M_IA64
-    compiler_details << " IA64 ";
-    #endif
-
-    #ifdef _M_X64
-    compiler_details << " x64 ";
-    #endif
-  #else
-  // This needs to be filled in when porting to use gcc/etc
-  BOOST_STATIC_ASSERT( false );
-  #endif
-
-  return compiler_details.str();
+  return oss.str();
 }
-
 
 bool Metadata::serialize(ostream& stream)
 {
+  CompilationDetails cd;
+
   Serialize::write_string(stream, get_user_name());
   Serialize::write_string(stream, get_version());
-  Serialize::write_string(stream, get_compiler_details());
+  Serialize::write_string(stream, cd.get_compilation_details_string());
 
   return true;
 }

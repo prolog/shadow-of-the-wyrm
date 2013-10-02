@@ -13,7 +13,7 @@ class Metadata : public ISerializable
     std::string get_version() const;
     std::string get_code_name() const;
     std::string get_game_version_synopsis() const;
-    std::string get_compiler_details() const;
+    std::string get_full_game_version_details() const; // includes compilation details
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
