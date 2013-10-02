@@ -4,6 +4,7 @@
 #include <boost/functional/hash/hash.hpp>
 #include <boost/regex.hpp>
 #include "global_prototypes.hpp"
+#include "CompilationDetails.hpp"
 #include "Conversion.hpp"
 #include "Environment.hpp"
 #include "FileConstants.hpp"
@@ -174,9 +175,11 @@ pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const 
       Serialize::read_string(save_file, version_from_file);
       string current_version = meta.get_version();
 
-      string compiler_details_from_file;
-      Serialize::read_string(save_file, compiler_details_from_file);
-      string current_compiler = meta.get_compiler_details();
+      string compilation_details_from_file;
+      Serialize::read_string(save_file, compilation_details_from_file);
+
+      CompilationDetails cd;
+      string current_compilation_details = cd.get_compilation_details_string();
 
       string character_synopsis_from_file;
       Serialize::read_string(save_file, character_synopsis_from_file);
@@ -185,7 +188,7 @@ pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const 
 
       save_file_available &= (user_name_from_file == current_user);
       save_file_available &= (version_from_file == current_version);
-      save_file_available &= (compiler_details_from_file == current_compiler);
+      save_file_available &= (compilation_details_from_file == current_compilation_details);
 
       save_file_availability.first = save_file_available;
 

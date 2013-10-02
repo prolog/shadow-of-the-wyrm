@@ -1,6 +1,10 @@
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.
 
+- There were too many elf-type races (Wood Elf, Mountain Elf, Marsh Elf,
+  Fae), so Marsh Elves became Snakelings, which are loosely modelled on the
+  Serpent Queen from Advanced Fighting Fantasy.
+
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
 

@@ -13,7 +13,7 @@ ActionCostValue VersionAction::version() const
 {
   Metadata meta;
   IMessageManager& manager = MessageManagerFactory::instance();
-  string game_version = meta.get_game_version_synopsis();
+  string game_version = meta.get_full_game_version_details();
 
   manager.add_new_message(game_version);
   manager.send();
