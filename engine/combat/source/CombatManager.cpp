@@ -10,6 +10,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "HostilityManager.hpp"
+#include "IHitTypeFactory.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
@@ -157,25 +158,17 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   
   string combat_message = CombatTextKeys::get_hit_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), damage_type, StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
 
-  // Critical hit: 2x damage, no soak.
-  if (is_critical_hit(d100_roll))
+  HitTypeEnum hit_type_enum = HitTypeEnumConverter::from_successful_to_hit_roll(d100_roll);
+  IHitTypeCalculatorPtr hit_calculator = IHitTypeFactory::create_hit_type(hit_type_enum);
+  string hit_specific_msg = hit_calculator->get_combat_message();
+  soak_multiplier = hit_calculator->get_soak_multiplier();
+  base_damage = hit_calculator->get_base_damage(damage_info);
+
+  if (!hit_specific_msg.empty())
   {
-    combat_message += " " + StringTable::get(CombatTextKeys::COMBAT_CRITICAL_HIT_MESSAGE);
-    base_damage = 2 * (damage_info.max());
-    soak_multiplier = 0.0;
+    combat_message = combat_message + " " + hit_specific_msg;
   }
-  // Mighty blow: full damage, half soak.
-  else if (is_mighty_blow(d100_roll))
-  {
-    combat_message += " " + StringTable::get(CombatTextKeys::COMBAT_MIGHTY_BLOW_MESSAGE);
-    base_damage = damage_info.max();
-    soak_multiplier = 0.5;
-  }
-  else // Regular, vanilla hit.  Roll damage, full soak.
-  {
-    base_damage = RNG::dice(damage_info);
-  }
-  
+
   // Deal damage.
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
   int damage_dealt = damage_calc->calculate(attacked_creature, damage_info, base_damage, soak_multiplier);
@@ -309,17 +302,6 @@ void CombatManager::send_combat_messages(CreaturePtr creature)
 {
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
   manager.send();
-}
-
-// Functions to check hit/miss/critical/etc statuses.
-bool CombatManager::is_critical_hit(const int d100_roll)
-{
-  return (d100_roll == CombatConstants::CRITICAL_DIFFICULTY);
-}
-
-bool CombatManager::is_mighty_blow(const int d100_roll)
-{
-  return (d100_roll >= CombatConstants::MIGHTY_BLOW_DIFFICULTY);
 }
 
 bool CombatManager::is_hit(const int total_roll, const int target_number_value)
