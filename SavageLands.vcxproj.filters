@@ -2793,6 +2793,24 @@
     <ClInclude Include="include\CompilationDetails.hpp">
       <Filter>Header Files\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\IHitTypeCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\MightyHitTypeCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\CriticalHitTypeCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\RegularHitTypeCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\combat\include\HitTypes.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\IHitTypeFactory.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5347,6 +5365,24 @@
     </ClCompile>
     <ClCompile Include="CompilationDetails.cpp">
       <Filter>Source Files\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CriticalHitTypeCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\MightyHitTypeCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\RegularHitTypeCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\IHitTypeFactory.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\HitTypes.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\unit_tests\HitTypes_test.cpp">
+      <Filter>Source Files\engine\combat\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

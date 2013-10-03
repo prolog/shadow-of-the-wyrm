@@ -32,8 +32,6 @@ class CombatManager
     void send_combat_messages(CreaturePtr creature);
     
     // Functions to determine whether a particular attack hits, misses, etc.
-    bool is_critical_hit(const int d100_roll);
-    bool is_mighty_blow(const int d100_roll);
     bool is_hit(const int total_roll, const int target_number_value);
     bool is_miss(const int total_roll, const int target_number_value);
     bool is_close_miss(const int total_roll, const int target_number_value);

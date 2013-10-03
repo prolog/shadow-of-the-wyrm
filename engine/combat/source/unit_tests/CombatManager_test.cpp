@@ -7,8 +7,6 @@ class SL_Engine_Combat_CombatManager : public ::testing::Test
     static void TearDownTestcase() {}
     
     bool is_hit(const int total_roll, const int target_number_value) { return cm.is_hit(total_roll, target_number_value); }
-    bool is_mighty_blow(const int d100_roll) { return cm.is_mighty_blow(d100_roll); }
-    bool is_critical_hit(const int d100_roll) { return cm.is_critical_hit(d100_roll); }
     bool is_miss(const int total_roll, const int target_value) { return cm.is_miss(total_roll, target_value); }
     bool is_close_miss(const int total_roll, const int target_number_value) { return cm.is_close_miss(total_roll, target_number_value); }
     bool is_automatic_miss(const int d100_roll) { return cm.is_automatic_miss(d100_roll); }
@@ -31,29 +29,6 @@ TEST_F(SL_Engine_Combat_CombatManager, is_hit)
   target_number_value = 10;
   
   EXPECT_TRUE(is_hit(total_roll, target_number_value));
-}
-
-TEST_F(SL_Engine_Combat_CombatManager, is_critical_hit)
-{
-  int i = CombatConstants::CRITICAL_DIFFICULTY;
-  
-  EXPECT_TRUE(is_critical_hit(i));
-  
-  i--;
-  
-  EXPECT_FALSE(is_critical_hit(i));
-  
-  i -= 15;
-  
-  EXPECT_FALSE(is_critical_hit(i));
-}
-
-TEST_F(SL_Engine_Combat_CombatManager, is_mighty_blow)
-{
-  for (int i = CombatConstants::MIGHTY_BLOW_DIFFICULTY; i < CombatConstants::CRITICAL_DIFFICULTY; i++)
-  {
-    EXPECT_TRUE(is_mighty_blow(i));
-  }
 }
 
 TEST_F(SL_Engine_Combat_CombatManager, is_miss)

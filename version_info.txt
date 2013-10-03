@@ -5,6 +5,11 @@ Savage Lands v0.1.7 "Aethelstan"
   Fae), so Marsh Elves became Snakelings, which are loosely modelled on the
   Serpent Queen from Advanced Fighting Fantasy.
 
+- Added additional compilation details to the "V"ersion command.
+
+- Toned down the damage on criticals/mighty blows, as these had the
+  potential to one-shot weaker characters of an appropriate level.
+
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
 
