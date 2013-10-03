@@ -24,10 +24,7 @@ class CreatureTranslator
     static std::pair<std::string, Colour> get_display_willpower(const CreaturePtr& c);
     static std::pair<std::string, Colour> get_display_charisma(const CreaturePtr& c);
 
-    static std::string get_display_valour(const CreaturePtr& c);
-    static std::string get_display_spirit(const CreaturePtr& c);
     static std::string get_display_speed(const CreaturePtr& c);
-
     static std::string get_display_level(const CreaturePtr& c);
     static std::string get_display_defence(const CreaturePtr& c);
 

@@ -10,6 +10,9 @@ Savage Lands v0.1.7 "Aethelstan"
 - Toned down the damage on criticals/mighty blows, as these had the
   potential to one-shot weaker characters of an appropriate level.
 
+- Valour and spirit really weren't adding anything to the game, so they
+  have been removed.
+
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
 

@@ -284,7 +284,6 @@ string Race::str() const
 
   race_details << race_id << endl;
   race_details << starting_strength.get_base() << " " << starting_dexterity.get_base() << " " << starting_agility.get_base() << " " << starting_health.get_base() << " " << starting_intelligence.get_base() << " " << starting_willpower.get_base() << " " << starting_charisma.get_base() << " " << starting_speed.get_base() << endl;
-  race_details << statistics_modifier.get_valour_modifier() << " " << statistics_modifier.get_spirit_modifier() << endl;
   race_details << race_name_value << endl;
   race_details << race_abrv_value << endl;
   race_details << race_desc_value << endl;

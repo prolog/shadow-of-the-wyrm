@@ -20,13 +20,11 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     
     int combat   = sm.get_skill_value(creature, SKILL_GENERAL_COMBAT);
     int strength = creature->get_strength().get_current();
-    int valour   = creature->get_strength().get_current();
     int weapon   = get_weapon_bonus(creature);
     int status   = get_status_bonus(creature);
     
     to_hit += combat / NWP_SKILL_BONUS_DIVISOR;
     to_hit += (strength - 10) / 4;
-    to_hit += (valour - 50) / 5;
     to_hit += weapon;
     to_hit += status;
   }

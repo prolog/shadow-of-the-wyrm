@@ -80,10 +80,6 @@ class TextKeys
     static const std::string CHARISMA;
     static const std::string CHARISMA_ABRV;
 
-    static const std::string VALOUR;
-    static const std::string VALOUR_ABRV;
-    static const std::string SPIRIT;
-    static const std::string SPIRIT_ABRV;
     static const std::string SPEED;
     static const std::string SPEED_ABRV;
 

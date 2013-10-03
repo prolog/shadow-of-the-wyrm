@@ -151,10 +151,6 @@
 				<Charisma>2</Charisma>
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>-5</ValourModifier>
-				<SpiritModifier>5</SpiritModifier>
-			</RaceInitialModifiers>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -212,10 +208,6 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>5</ValourModifier>
-				<SpiritModifier>5</SpiritModifier>
-			</RaceInitialModifiers>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -292,10 +284,6 @@
 				<Charisma>10</Charisma>
 				<Speed>47</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>4</ValourModifier>
-				<SpiritModifier>6</SpiritModifier>
-			</RaceInitialModifiers>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -363,10 +351,6 @@
 				<Charisma>9</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>6</ValourModifier>
-				<SpiritModifier>4</SpiritModifier>
-			</RaceInitialModifiers>	
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
@@ -436,10 +420,6 @@
 				<Charisma>6</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>2</ValourModifier>
-				<SpiritModifier>8</SpiritModifier>
-			</RaceInitialModifiers>	
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -507,10 +487,6 @@
 				<Charisma>10</Charisma>
 				<Speed>45</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>0</ValourModifier>
-				<SpiritModifier>10</SpiritModifier>
-			</RaceInitialModifiers>	
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
@@ -576,10 +552,6 @@
 				<Charisma>8</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>8</ValourModifier>
-				<SpiritModifier>2</SpiritModifier>
-			</RaceInitialModifiers>	
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -647,10 +619,6 @@
 				<Charisma>8</Charisma>
 				<Speed>48</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>6</ValourModifier>
-				<SpiritModifier>4</SpiritModifier>
-			</RaceInitialModifiers>	
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -719,10 +687,6 @@
 				<Charisma>6</Charisma>
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>10</ValourModifier>
-				<SpiritModifier>0</SpiritModifier>
-			</RaceInitialModifiers>	
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -787,10 +751,6 @@
 				<Charisma>8</Charisma>
 				<Speed>55</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>7</ValourModifier>
-				<SpiritModifier>3</SpiritModifier>
-			</RaceInitialModifiers>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -856,10 +816,6 @@
 				<Charisma>9</Charisma>
 				<Speed>48</Speed>
 			</RaceInitialStatistics>
-			<RaceInitialModifiers>
-				<ValourModifier>5</ValourModifier>
-				<SpiritModifier>5</SpiritModifier>
-			</RaceInitialModifiers>			
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
@@ -905,10 +861,6 @@
 			<NameSID>CLASS_1_NAME</NameSID>
 			<DescriptionSID>CLASS_1_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_1_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-			 	<Valour>50</Valour>
-			 	<Spirit>50</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>0</StrengthModifier>
 				<DexterityModifier>0</DexterityModifier>
@@ -990,10 +942,6 @@
 			<NameSID>CLASS_2_NAME</NameSID>
 			<DescriptionSID>CLASS_2_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_2_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>45</Valour>
-				<Spirit>55</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>1</DexterityModifier>
@@ -1057,10 +1005,6 @@
 			<NameSID>CLASS_3_NAME</NameSID>
 			<DescriptionSID>CLASS_3_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_3_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>55</Valour>
-				<Spirit>45</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>4</DexterityModifier>
@@ -1254,10 +1198,7 @@
 			<NameSID>CLASS_4_NAME</NameSID>
 			<DescriptionSID>CLASS_4_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_4_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>50</Valour>
-				<Spirit>50</Spirit>
-			</ClassInitialStatistics>			<ClassInitialModifiers>
+			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>2</DexterityModifier>
 				<AgilityModifier>0</AgilityModifier>
@@ -1317,10 +1258,6 @@
 			<NameSID>CLASS_5_NAME</NameSID>
 			<DescriptionSID>CLASS_5_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_5_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>53</Valour>
-				<Spirit>47</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>0</DexterityModifier>
@@ -1385,10 +1322,6 @@
 			<NameSID>CLASS_6_NAME</NameSID>
 			<DescriptionSID>CLASS_6_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_6_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>50</Valour>
-				<Spirit>50</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>0</StrengthModifier>
 				<DexterityModifier>0</DexterityModifier>
@@ -1448,10 +1381,6 @@
 			<NameSID>CLASS_7_NAME</NameSID>
 			<DescriptionSID>CLASS_7_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_7_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>54</Valour>
-				<Spirit>46</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>1</DexterityModifier>
@@ -1519,10 +1448,6 @@
 			<NameSID>CLASS_8_NAME</NameSID>
 			<DescriptionSID>CLASS_8_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_8_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>40</Valour>
-				<Spirit>60</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>2</DexterityModifier>
@@ -1586,10 +1511,6 @@
 			<NameSID>CLASS_9_NAME</NameSID>
 			<DescriptionSID>CLASS_9_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_9_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>40</Valour>
-				<Spirit>60</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>0</DexterityModifier>
@@ -1657,10 +1578,6 @@
 			<NameSID>CLASS_10_NAME</NameSID>
 			<DescriptionSID>CLASS_10_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_10_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>60</Valour>
-				<Spirit>40</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>1</StrengthModifier>
 				<DexterityModifier>1</DexterityModifier>
@@ -1720,10 +1637,6 @@
 			<NameSID>CLASS_11_NAME</NameSID>
 			<DescriptionSID>CLASS_11_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_11_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>57</Valour>
-				<Spirit>43</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>0</StrengthModifier>
 				<DexterityModifier>1</DexterityModifier>
@@ -1799,10 +1712,6 @@
 			<NameSID>CLASS_12_NAME</NameSID>
 			<DescriptionSID>CLASS_12_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_12_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>35</Valour>
-				<Spirit>65</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-2</StrengthModifier>
 				<DexterityModifier>-1</DexterityModifier>
@@ -1867,10 +1776,6 @@
 			<NameSID>CLASS_13_NAME</NameSID>
 			<DescriptionSID>CLASS_13_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_13_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>58</Valour>
-				<Spirit>42</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>1</StrengthModifier>
 				<DexterityModifier>0</DexterityModifier>
@@ -1937,10 +1842,6 @@
 			<NameSID>CLASS_14_NAME</NameSID>
 			<DescriptionSID>CLASS_14_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_14_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>40</Valour>
-				<Spirit>40</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>-2</DexterityModifier>
@@ -2003,10 +1904,6 @@
 			<NameSID>CLASS_15_NAME</NameSID>
 			<DescriptionSID>CLASS_15_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_15_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>59</Valour>
-				<Spirit>41</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>4</StrengthModifier>
 				<DexterityModifier>0</DexterityModifier>
@@ -2068,10 +1965,6 @@
 			<NameSID>CLASS_16_NAME</NameSID>
 			<DescriptionSID>CLASS_16_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_16_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>52</Valour>
-				<Spirit>48</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-1</StrengthModifier>
 				<DexterityModifier>0</DexterityModifier>
@@ -2139,10 +2032,6 @@
 			<NameSID>CLASS_17_NAME</NameSID>
 			<DescriptionSID>CLASS_17_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_17_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>65</Valour>
-				<Spirit>35</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>3</StrengthModifier>
 				<DexterityModifier>1</DexterityModifier>
@@ -2311,10 +2200,6 @@
 			<NameSID>CLASS_18_NAME</NameSID>
 			<DescriptionSID>CLASS_18_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_18_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>38</Valour>
-				<Spirit>62</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-2</StrengthModifier>
 				<DexterityModifier>1</DexterityModifier>
@@ -2384,10 +2269,6 @@
 			<NameSID>CLASS_19_NAME</NameSID>
 			<DescriptionSID>CLASS_19_DESC</DescriptionSID>
 			<DisplayAbbreviationSID>CLASS_19_ABRV</DisplayAbbreviationSID>
-			<ClassInitialStatistics>
-				<Valour>40</Valour>
-				<Spirit>60</Spirit>
-			</ClassInitialStatistics>
 			<ClassInitialModifiers>
 				<StrengthModifier>-2</StrengthModifier>
 				<DexterityModifier>0</DexterityModifier>

@@ -119,13 +119,6 @@ class Creature : public ISerializable
 
 
     // Set/get secondary statistics
-
-    void set_valour(const Statistic& new_valour);
-    Statistic get_valour() const;
-
-    void set_spirit(const Statistic& new_spirit);
-    Statistic get_spirit() const;
-
     void set_speed(const Statistic& new_speed);
     Statistic get_speed() const;
 
@@ -302,8 +295,6 @@ class Creature : public ISerializable
     Statistic charisma;
 
     // Secondary statistics
-    Statistic valour;
-    Statistic spirit;
     Statistic speed;
 
     // The creature's base damage.  Defaults to 1d2 of DAMAGE_TYPE_POUND.

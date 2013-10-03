@@ -10,8 +10,6 @@ Class::Class()
 , hit_dice(1)
 , ap_dice(0)
 {
-  set_starting_valour(50);
-  set_starting_spirit(50);
 }
 
 Class::~Class()
@@ -56,26 +54,6 @@ void Class::set_class_abbreviation_sid(const string& new_class_abbreviation_sid)
 string Class::get_class_abbreviation_sid() const
 {
   return class_abbreviation_sid;
-}
-
-void Class::set_starting_valour(const Statistic& new_valour)
-{
-  starting_valour = new_valour;
-}
-
-Statistic Class::get_starting_valour() const
-{
-  return starting_valour;
-}
-
-void Class::set_starting_spirit(const Statistic& new_spirit)
-{
-  starting_spirit = new_spirit;
-}
-
-Statistic Class::get_starting_spirit() const
-{
-  return starting_spirit;
 }
 
 void Class::set_statistics_modifier(const StatisticsModifier& new_statistics_modifier)
@@ -208,7 +186,6 @@ string Class::str() const
 
   class_details << class_id << endl;
   class_details << hit_dice << " " << ap_dice << endl;
-  class_details << starting_valour.get_base() << " " << starting_spirit.get_base() << endl;
   class_details << statistics_modifier.get_strength_modifier() << " " 
                 << statistics_modifier.get_dexterity_modifier() << " " 
                 << statistics_modifier.get_agility_modifier() << " " 

@@ -17,8 +17,6 @@ EvadeCalculator::~EvadeCalculator()
 // Evade = equipment bonuses/penalties
 //       + 1 point for every two points of Agility over 10
 //       - 1 point for every two points of Agility under 10
-//       + 1 point for every 5 points of Valour under 50
-//       - 1 point for every 5 points of Valour over 50
 //       + any bonuses or penalties from status ailments
 int EvadeCalculator::calculate_evade(const CreaturePtr& c)
 {
@@ -29,16 +27,12 @@ int EvadeCalculator::calculate_evade(const CreaturePtr& c)
     evade = c->get_base_evade().get_current();
     
     int agility = c->get_agility().get_current();
-    int valour  = c->get_valour().get_current();
-
     int agility_bonus = (agility - 10) / 2;
-    int valour_bonus = (valour - 50) / 5;
     int status_bonus = get_status_bonus(c);
     
     evade += get_equipment_bonus(c);
     evade += agility_bonus;
     evade += status_bonus;
-    evade -= valour_bonus;
   }
   
   return evade;

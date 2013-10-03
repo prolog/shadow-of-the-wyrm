@@ -711,8 +711,6 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   pair<string, Colour> willpower    = player_stats.get_willpower();
   pair<string, Colour> charisma     = player_stats.get_charisma();
 
-  string valour       = player_stats.get_valour();
-  string spirit       = player_stats.get_spirit();
   string speed        = player_stats.get_speed();
 
   string level        = player_stats.get_level();
@@ -746,9 +744,7 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, willpower.first, charisma.first, willpower.second);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, charisma.first, level, charisma.second);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, level, defence);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, valour);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, valour, spirit);
-  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, spirit, speed);
+  if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, defence, speed);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, speed, hit_points);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, hit_points, arc_points);
   if (can_print) can_print = print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, arc_points, map_depth);

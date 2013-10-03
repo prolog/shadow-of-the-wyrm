@@ -16,11 +16,9 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
 
     int magic_bonus  = sm.get_skill_value(creature, SKILL_GENERAL_MAGIC) / NWP_SKILL_BONUS_DIVISOR;
     int intelligence = creature->get_intelligence().get_current();
-    int spirit       = creature->get_spirit().get_current();
     
     to_hit += magic_bonus;
     to_hit += (intelligence - 10) / 3;
-    to_hit += (spirit - 50) / 5;
   }
 
   return to_hit;

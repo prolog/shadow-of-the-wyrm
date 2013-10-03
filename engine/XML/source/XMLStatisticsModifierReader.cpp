@@ -23,8 +23,6 @@ StatisticsModifier XMLStatisticsModifierReader::get_statistics_modifier(const XM
     int intelligence_modifier = XMLUtils::get_child_node_int_value(statistics_modifier_node, "IntelligenceModifier");
     int willpower_modifier    = XMLUtils::get_child_node_int_value(statistics_modifier_node, "WillpowerModifier");
     int charisma_modifier     = XMLUtils::get_child_node_int_value(statistics_modifier_node, "CharismaModifier");
-    int valour_modifier       = XMLUtils::get_child_node_int_value(statistics_modifier_node, "ValourModifier");
-    int spirit_modifier       = XMLUtils::get_child_node_int_value(statistics_modifier_node, "SpiritModifier");
 
     sm.set_strength_modifier(strength_modifier);
     sm.set_dexterity_modifier(dexterity_modifier);
@@ -33,9 +31,6 @@ StatisticsModifier XMLStatisticsModifierReader::get_statistics_modifier(const XM
     sm.set_intelligence_modifier(intelligence_modifier);
     sm.set_willpower_modifier(willpower_modifier);
     sm.set_charisma_modifier(charisma_modifier);
-
-    sm.set_valour_modifier(valour_modifier);
-    sm.set_spirit_modifier(spirit_modifier);
   }
 
   return sm;
