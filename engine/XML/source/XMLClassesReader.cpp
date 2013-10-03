@@ -60,7 +60,6 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
     XMLNode initial_statistics_node = XMLUtils::get_next_element_by_local_name(class_node, "ClassInitialStatistics");
     XMLNode initial_modifiers_node = XMLUtils::get_next_element_by_local_name(class_node, "ClassInitialModifiers");
 
-    parse_class_initial_statistics(current_class, initial_statistics_node);
     parse_class_initial_modifiers(current_class, initial_modifiers_node);
 
     uint hit_dice = XMLUtils::get_child_node_int_value(class_node, "HitDice");
@@ -95,18 +94,6 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
   }
 
   return current_class;
-}
-
-void XMLClassesReader::parse_class_initial_statistics(ClassPtr current_class, const XMLNode& initial_statistics_node)
-{
-  if (current_class && !initial_statistics_node.is_null())
-  {
-    int valour = XMLUtils::get_child_node_int_value(initial_statistics_node, "Valour");
-    int spirit = XMLUtils::get_child_node_int_value(initial_statistics_node, "Spirit");
-
-    current_class->set_starting_valour(valour);
-    current_class->set_starting_spirit(spirit);
-  }
 }
 
 void XMLClassesReader::parse_class_initial_modifiers(ClassPtr current_class, const XMLNode& initial_modifiers_node)

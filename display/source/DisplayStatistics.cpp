@@ -17,8 +17,6 @@ DisplayStatistics DisplayStatistics::create
   const pair<string, Colour>& new_intelligence,
   const pair<string, Colour>& new_willpower,
   const pair<string, Colour>& new_charisma,
-  const string& new_valour,
-  const string& new_spirit,
   const string& new_speed,
   const string& new_level,
   const string& new_defence,
@@ -39,8 +37,6 @@ DisplayStatistics DisplayStatistics::create
   ds.set_intelligence(new_intelligence);
   ds.set_willpower(new_willpower);
   ds.set_charisma(new_charisma);
-  ds.set_valour(new_valour);
-  ds.set_spirit(new_spirit);
   ds.set_speed(new_speed);
   ds.set_level(new_level);
   ds.set_defence(new_defence);
@@ -140,26 +136,6 @@ void DisplayStatistics::set_charisma(const pair<string, Colour>& new_charisma)
 pair<string, Colour> DisplayStatistics::get_charisma() const
 {
   return charisma;
-}
-
-void DisplayStatistics::set_valour(const string& new_valour)
-{
-  valour = new_valour;
-}
-
-string DisplayStatistics::get_valour() const
-{
-  return valour;
-}
-
-void DisplayStatistics::set_spirit(const string& new_spirit)
-{
-  spirit = new_spirit;
-}
-
-string DisplayStatistics::get_spirit() const
-{
-  return spirit;
 }
 
 void DisplayStatistics::set_speed(const string& new_speed)

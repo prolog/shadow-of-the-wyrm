@@ -85,10 +85,6 @@ const string TextKeys::WILLPOWER_ABRV    = "WILLPOWER_ABRV";
 const string TextKeys::CHARISMA          = "CHARISMA";
 const string TextKeys::CHARISMA_ABRV     = "CHARISMA_ABRV";
 
-const string TextKeys::VALOUR            = "VALOUR";
-const string TextKeys::VALOUR_ABRV       = "VALOUR_ABRV";
-const string TextKeys::SPIRIT            = "SPIRIT";
-const string TextKeys::SPIRIT_ABRV       = "SPIRIT_ABRV";
 const string TextKeys::SPEED             = "SPEED";
 const string TextKeys::SPEED_ABRV        = "SPEED_ABRV";
 

@@ -118,7 +118,7 @@ class Race
     Statistic starting_charisma;
 
     // Initial secondary statistics or their modifiers
-    StatisticsModifier statistics_modifier; // valour/spirit are modified, not set, by race.    
+    StatisticsModifier statistics_modifier; 
     Statistic starting_speed; // starting speed is set by race.
     
     // Available deities on creation

@@ -16,8 +16,6 @@ class DisplayStatistics
                                     const std::pair<std::string, Colour>& intelligence,
                                     const std::pair<std::string, Colour>& willpower,
                                     const std::pair<std::string, Colour>& charisma,
-                                    const std::string& valour,
-                                    const std::string& spirit,
                                     const std::string& speed,
                                     const std::string& level,
                                     const std::string& defence,
@@ -38,13 +36,9 @@ class DisplayStatistics
     std::pair<std::string, Colour> get_willpower() const;
     std::pair<std::string, Colour> get_charisma() const;
 
-    std::string get_valour() const;
-    std::string get_spirit() const;
     std::string get_speed() const;
-
     std::string get_level() const;
     std::string get_defence() const;
-
     std::string get_hit_points() const;
     std::string get_arcana_points() const;
 
@@ -67,10 +61,7 @@ class DisplayStatistics
     void set_willpower(const std::pair<std::string, Colour>& new_willpower);
     void set_charisma(const std::pair<std::string, Colour>& new_charisma);
 
-    void set_valour(const std::string& new_valour);
-    void set_spirit(const std::string& new_spirit);
     void set_speed(const std::string& new_speed);
-
     void set_level(const std::string& new_level);
     void set_defence(const std::string& new_defense);
 
@@ -92,10 +83,7 @@ class DisplayStatistics
     std::pair<std::string, Colour> willpower;
     std::pair<std::string, Colour> charisma;
 
-    std::string valour;
-    std::string spirit;
     std::string speed;
-
     std::string level;
     std::string defence; // Combination of evade and soak statistics
 

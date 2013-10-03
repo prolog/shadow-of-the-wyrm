@@ -38,8 +38,6 @@ string StatsDumper::get_stats() const
   Statistic ap         = creature->get_arcana_points(); 
   string hit_points    = StringTable::get(TextKeys::HIT_POINTS)    + ": " + Integer::to_string(hp.get_current()) + "/" + Integer::to_string(hp.get_base());
   string arcana_points = StringTable::get(TextKeys::ARCANA_POINTS) + ": " + Integer::to_string(ap.get_current()) + "/" + Integer::to_string(ap.get_base());
-  string valour        = StringTable::get(TextKeys::VALOUR)        + ": " + Integer::to_string(creature->get_valour().get_current());
-  string spirit        = StringTable::get(TextKeys::SPIRIT)        + ": " + Integer::to_string(creature->get_spirit().get_current());
   string speed         = StringTable::get(TextKeys::SPEED)         + ": " + Integer::to_string(creature->get_speed().get_current());
   string evade         = StringTable::get(TextKeys::EVADE)         + ": " + Integer::to_string(creature->get_evade().get_current());
   string soak          = StringTable::get(TextKeys::SOAK)          + ": " + Integer::to_string(creature->get_soak().get_current());
@@ -57,27 +55,25 @@ string StatsDumper::get_stats() const
   String::reset_and_pad(current_line, num_cols);
   
   current_line.replace(0, agility.size(), agility);
-  current_line.replace(30, valour.size(), valour);
-  ss << current_line << endl;
-  String::reset_and_pad(current_line, num_cols);
-  
-  current_line.replace(0, health.size(), health);
-  current_line.replace(30, spirit.size(), spirit);
-  ss << current_line << endl;
-  String::reset_and_pad(current_line, num_cols);
-  
-  current_line.replace(0, intelligence.size(), intelligence);
   current_line.replace(30, speed.size(), speed);
   ss << current_line << endl;
   String::reset_and_pad(current_line, num_cols);
   
-  current_line.replace(0, willpower.size(), willpower);
+  current_line.replace(0, health.size(), health);
   current_line.replace(30, evade.size(), evade);
   ss << current_line << endl;
   String::reset_and_pad(current_line, num_cols);
   
-  current_line.replace(0, charisma.size(), charisma);
+  current_line.replace(0, intelligence.size(), intelligence);
   current_line.replace(30, soak.size(), soak);
+  ss << current_line << endl;
+  String::reset_and_pad(current_line, num_cols);
+  
+  current_line.replace(0, willpower.size(), willpower);
+  ss << current_line << endl;
+  String::reset_and_pad(current_line, num_cols);
+  
+  current_line.replace(0, charisma.size(), charisma);
   ss << current_line << endl;
   
   return ss.str();

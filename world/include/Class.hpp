@@ -28,12 +28,6 @@ class Class
     void set_class_abbreviation_sid(const std::string& new_class_abbreviation_sid);
     std::string get_class_abbreviation_sid() const;
 
-    void set_starting_valour(const Statistic& new_valour);
-    Statistic get_starting_valour() const;
-
-    void set_starting_spirit(const Statistic& new_spirit);
-    Statistic get_starting_spirit() const;
-    
     void set_statistics_modifier(const StatisticsModifier& new_modifier);
     StatisticsModifier get_statistics_modifier() const;
 
@@ -81,9 +75,6 @@ class Class
     std::string class_name_sid;
     std::string class_description_sid;
     std::string class_abbreviation_sid;
-
-    Statistic starting_valour;
-    Statistic starting_spirit;
 
     StatisticsModifier statistics_modifier;
 

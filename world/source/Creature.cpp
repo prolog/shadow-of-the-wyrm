@@ -65,8 +65,6 @@ Creature::Creature(const Creature& cr)
   intelligence = cr.intelligence;
   willpower = cr.willpower;
   charisma = cr.charisma;
-  valour = cr.valour;
-  spirit = cr.spirit;
   speed = cr.speed;
   damage = cr.damage;
   equipment = cr.equipment;
@@ -143,8 +141,6 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (intelligence == cr.intelligence);
   result = result && (willpower == cr.willpower);
   result = result && (charisma == cr.charisma);
-  result = result && (valour == cr.valour);
-  result = result && (spirit == cr.spirit);
   result = result && (speed == cr.speed);
   result = result && (damage == cr.damage);
   result = result && (equipment == cr.equipment);
@@ -435,26 +431,6 @@ void Creature::set_charisma(const Statistic& new_charisma)
 Statistic Creature::get_charisma() const
 {
   return charisma;
-}
-
-void Creature::set_valour(const Statistic& new_valour)
-{
-  valour = new_valour;
-}
-
-Statistic Creature::get_valour() const
-{
-  return valour;
-}
-
-void Creature::set_spirit(const Statistic& new_spirit)
-{
-  spirit = new_spirit;
-}
-
-Statistic Creature::get_spirit() const
-{
-  return spirit;
 }
 
 void Creature::set_speed(const Statistic& new_speed)
@@ -946,7 +922,7 @@ SpellKnowledge& Creature::get_spell_knowledge_ref()
 // Set, get, and query additional (string) properties
   // Uncomment the code below to find out the size of Creature. :)
   // template<int s> struct creature_size;
-  // creature_size<sizeof(Creature)> creature_size;
+  // creature_size<sizeof(Creature)> creatur_size;
 
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
@@ -955,7 +931,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 960);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 936);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 872);
@@ -990,8 +966,6 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->intelligence, cr.intelligence);
   std::swap(this->willpower, cr.willpower);
   std::swap(this->charisma, cr.charisma);
-  std::swap(this->valour, cr.valour);
-  std::swap(this->spirit, cr.spirit);
   std::swap(this->speed, cr.speed);
   std::swap(this->damage, cr.damage);
   std::swap(this->equipment, cr.equipment);
@@ -1052,8 +1026,6 @@ bool Creature::serialize(ostream& stream)
   willpower.serialize(stream);
   charisma.serialize(stream);
 
-  valour.serialize(stream);
-  spirit.serialize(stream);
   speed.serialize(stream);
 
   damage.serialize(stream);
@@ -1174,8 +1146,6 @@ bool Creature::deserialize(istream& stream)
   willpower.deserialize(stream);
   charisma.deserialize(stream);
 
-  valour.deserialize(stream);
-  spirit.deserialize(stream);
   speed.deserialize(stream);
 
   damage.deserialize(stream);

@@ -12,8 +12,6 @@ TEST(SL_Engine_Calculators_HitPointsCalculator, calculate_hit_points_bonus)
   c.set_intelligence(14);
   c.set_willpower(19);
   c.set_charisma(12);
-  c.set_valour(55);
-  c.set_spirit(55);
 
   CreaturePtr cp = boost::make_shared<Creature>(c);
 

@@ -12,18 +12,16 @@ TEST(SL_Engine_Calculators_ArcanaPointsCalculator, calculate_arcana_point_bonus)
   c.set_intelligence(12);
   c.set_willpower(14);
   c.set_charisma(16);
-  c.set_valour(55);
-  c.set_spirit(60);
 
   CreaturePtr cp = boost::make_shared<Creature>(c);
 
-  EXPECT_EQ(7, ArcanaPointsCalculator::calculate_arcana_points_bonus(cp));
+  EXPECT_EQ(2, ArcanaPointsCalculator::calculate_arcana_points_bonus(cp));
 
   cp->set_intelligence(20);
 
-  EXPECT_EQ(11, ArcanaPointsCalculator::calculate_arcana_points_bonus(cp));
+  EXPECT_EQ(6, ArcanaPointsCalculator::calculate_arcana_points_bonus(cp));
 
   cp->set_willpower(22);
 
-  EXPECT_EQ(13, ArcanaPointsCalculator::calculate_arcana_points_bonus(cp));
+  EXPECT_EQ(8, ArcanaPointsCalculator::calculate_arcana_points_bonus(cp));
 }

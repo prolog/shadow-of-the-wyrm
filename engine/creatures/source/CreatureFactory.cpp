@@ -254,14 +254,6 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
                          + deity_sm.get_charisma_modifier()
                          + (RNG::range(0,3));
 
-  Statistic valour       = char_class->get_starting_valour().get_base()
-                         + race_sm.get_valour_modifier()
-                         + deity_sm.get_valour_modifier(); // no class or random modifiers
-                         
-  Statistic spirit       = char_class->get_starting_spirit().get_base()
-                         + race_sm.get_spirit_modifier()
-                         + deity_sm.get_spirit_modifier(); // no class or random modifiers
-
   Statistic speed = race->get_starting_speed(); // Purely based on race
 
   creature.set_strength(strength);
@@ -272,8 +264,6 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
   creature.set_willpower(willpower);
   creature.set_charisma(charisma);
 
-  creature.set_valour(valour);
-  creature.set_spirit(spirit);
   creature.set_speed(speed);
   creature.set_size(race->get_size());
   creature.get_hunger_clock_ref().set_requires_food(race->get_hungerless() == false);
