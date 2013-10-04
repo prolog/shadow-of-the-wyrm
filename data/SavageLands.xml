@@ -6764,6 +6764,40 @@
 			</Wand>
 		</Wands>
 		<Spellbooks>
+			<Spellbook id="wreath_of_fire_spellbook">
+				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>WREATH_OF_FIRE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>800</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_01_wreath_of_fire</SpellID>
+				<Difficulty>110</Difficulty>
+			</Spellbook>
+			<Spellbook id="lightning_bolt_spellbook">
+				<DescriptionSID>LIGHTNING_BOLT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_LIGHTNING_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>LIGHTNING_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_LIGHTNING_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>450</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_03_lightning_bolt</SpellID>
+				<Difficulty>75</Difficulty>
+			</Spellbook>
 			<Spellbook id="dragon_breath_spellbook">
 				<DescriptionSID>DRAGON_BREATH_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_DRAGON_BREATH_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -6797,6 +6831,23 @@
 				<Rarity>1</Rarity>
 				<SpellID>a_04_shockwave</SpellID>
 				<Difficulty>115</Difficulty>
+			</Spellbook>
+			<Spellbook id="healing_word_spellbook">
+				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_HEALING_WORD_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>HEALING_WORD_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_HEALING_WORD_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>375</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>d_01_healing_word</SpellID>
+				<Difficulty>70</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
