@@ -29,7 +29,7 @@
 class DecisionStrategy;
 
 typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
-typedef std::map<std::string, std::string> EventFunctionMap;
+typedef std::map<std::string, std::string> EventScriptsMap;
 typedef std::map<std::string, bool> CreatureStatusMap;
 typedef std::map<std::string, StatusDuration> StatusDurationMap;
 
@@ -222,12 +222,12 @@ class Creature : public ISerializable
     StatusDuration get_status_duration(const std::string& status_id) const;
     StatusDurationMap get_status_durations() const;
 
-    void clear_event_functions();
-    void set_event_functions(const EventFunctionMap& evm);
-    EventFunctionMap get_event_functions() const;
-    void add_event_function(const std::string& event_name, const std::string& function_name);
-    bool has_event_function(const std::string& event_name);
-    std::string get_event_function(const std::string& event_name) const;
+    void clear_event_scripts();
+    void set_event_scripts(const EventScriptsMap& esm);
+    EventScriptsMap get_event_scripts() const;
+    void add_event_script(const std::string& event_name, const std::string& script_name);
+    bool has_event_script(const std::string& event_name);
+    std::string get_event_script(const std::string& event_name) const;
 
     // The generic "chat" text a creature uses.  Not all creatures will have chat
     // text.
@@ -363,9 +363,9 @@ class Creature : public ISerializable
     // The length of time for which a creature is poisoned, silenced, etc.
     StatusDurationMap status_durations;
 
-    // Event functions - used to look up engine or user-defined functions
-    // when the event occurs.
-    EventFunctionMap event_functions;
+    // Event scripts - used to look up engine or user-defined Lua scripts
+    // that should run when the event occurs.
+    EventScriptsMap event_scripts;
 
     // Automatic movement details.
     AutomaticMovement auto_move;

@@ -5,7 +5,6 @@
 #include "CoordUtils.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
-#include "EventFunctions.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -389,9 +388,13 @@ void CombatManager::update_mortuaries(CreaturePtr attacking_creature, const stri
 // which does nothing and is always safe to call.
 void CombatManager::run_death_event(CreaturePtr attacking_creature, CreaturePtr attacked_creature, MapPtr map)
 {
-  string event_function_name = attacked_creature->get_event_function(CreatureEvents::CREATURE_EVENT_DEATH);
-  DeathEventFunction death_fn = EventFunctions::get_death_event_function(event_function_name);
-  death_fn(attacking_creature, attacked_creature, map);
+  string event_script_name = attacked_creature->get_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH);
+
+  if (!event_script_name.empty())
+  {
+    ScriptEngine& se = Game::instance().get_script_engine_ref();
+    se.execute(event_script_name);
+  }
 }
 
 #ifdef UNIT_TESTS

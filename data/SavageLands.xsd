@@ -323,19 +323,19 @@
 			     creatures of a certain race to be faster or slower than
 				 others. -->
 			<xs:element name="Speed" type="xs:integer" minOccurs="0"/>
-			<xs:element ref="tns:EventFunctions" minOccurs="0"/>
+			<xs:element ref="tns:EventScripts" minOccurs="0"/>
 			<xs:element name="ChatScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
 	</xs:complexType>
 </xs:element>
-<xs:element name="EventFunctions">
+<xs:element name="EventScripts">
 	<xs:annotation>
-		<xs:documentation>Names functions that can be used when a particular event (death, etc) occurs.</xs:documentation>
+		<xs:documentation>Names scripts that can be used when a particular event (death, etc) occurs.</xs:documentation>
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="Death" type="xs:string" minOccurs="0"/>
+			<xs:element name="DeathScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

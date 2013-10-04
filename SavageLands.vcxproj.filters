@@ -475,18 +475,6 @@
     <Filter Include="Source Files\engine\actions\source\unit_tests">
       <UniqueIdentifier>{7a06959b-480a-4d30-83e5-c1bc0481620e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\events">
-      <UniqueIdentifier>{59e0bfde-ef0d-441b-9ffa-e4a2f9e73090}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\engine\events\include">
-      <UniqueIdentifier>{31e3f4a8-40a5-4623-a5b5-11b68a3ce567}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\events">
-      <UniqueIdentifier>{a3b4abc6-3f2b-4b76-ade5-9be2bf2ff440}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\events\source">
-      <UniqueIdentifier>{d4c8d7d9-b444-49d8-a7dc-60916febd6a3}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\engine\XML\custom_maps">
       <UniqueIdentifier>{f713401e-b781-48f6-84fd-5b0245b2085c}</UniqueIdentifier>
     </Filter>
@@ -2051,12 +2039,6 @@
     </ClInclude>
     <ClInclude Include="world\tiles\include\TileIDs.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\events\include\EventFunctions.hpp">
-      <Filter>Header Files\engine\events\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\events\include\DeathEventFunctions.hpp">
-      <Filter>Header Files\engine\events\include</Filter>
     </ClInclude>
     <ClInclude Include="world\tiles\include\PierTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
@@ -4489,12 +4471,6 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\CreatureGenerationValues_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\events\source\EventFunctions.cpp">
-      <Filter>Source Files\engine\events\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\events\source\DeathEventFunctions.cpp">
-      <Filter>Source Files\engine\events\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\source\PierTile.cpp">
       <Filter>Source Files\world\tiles\source</Filter>
