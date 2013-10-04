@@ -97,7 +97,7 @@ Creature::Creature(const Creature& cr)
   hunger = cr.hunger;
   statuses = cr.statuses;
   status_durations = cr.status_durations;
-  event_functions = cr.event_functions;
+  event_scripts = cr.event_scripts;
   auto_move = cr.auto_move;
   additional_properties = cr.additional_properties;
   mortuary = cr.mortuary;
@@ -172,7 +172,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (hunger == cr.hunger);
   result = result && (statuses == cr.statuses);
   result = result && (status_durations == cr.status_durations);
-  result = result && (event_functions == cr.event_functions);
+  result = result && (event_scripts == cr.event_scripts);
   result = result && (auto_move == cr.auto_move);
   result = result && (additional_properties == cr.additional_properties);
   result = result && (mortuary == cr.mortuary);
@@ -780,33 +780,33 @@ StatusDurationMap Creature::get_status_durations() const
   return status_durations;
 }
 
-void Creature::clear_event_functions()
+void Creature::clear_event_scripts()
 {
-  event_functions.clear();
+  event_scripts.clear();
 }
 
-void Creature::set_event_functions(const EventFunctionMap& evm)
+void Creature::set_event_scripts(const EventScriptsMap& esm)
 {
-  event_functions = evm;
+  event_scripts = esm;
 }
 
-EventFunctionMap Creature::get_event_functions() const
+EventScriptsMap Creature::get_event_scripts() const
 {
-  return event_functions;
+  return event_scripts;
 }
 
-void Creature::add_event_function(const string& event_name, const string& function_name)
+void Creature::add_event_script(const string& event_name, const string& script_name)
 {
-  event_functions[event_name] = function_name;
+  event_scripts[event_name] = script_name;
 }
 
-bool Creature::has_event_function(const string& event_name)
+bool Creature::has_event_script(const string& event_name)
 {
   bool has_event = false;
 
-  EventFunctionMap::iterator e_it = event_functions.find(event_name);
+  EventScriptsMap::iterator e_it = event_scripts.find(event_name);
 
-  if (e_it != event_functions.end())
+  if (e_it != event_scripts.end())
   {
     has_event = true;
   }
@@ -814,18 +814,18 @@ bool Creature::has_event_function(const string& event_name)
   return has_event;
 }
 
-string Creature::get_event_function(const string& event_name) const
+string Creature::get_event_script(const string& event_name) const
 {
-  string function_name;
+  string script_name;
 
-  EventFunctionMap::const_iterator e_it = event_functions.find(event_name);
+  EventScriptsMap::const_iterator e_it = event_scripts.find(event_name);
 
-  if (e_it != event_functions.end())
+  if (e_it != event_scripts.end())
   {
-    function_name = e_it->second;
+    script_name = e_it->second;
   }
 
-  return function_name;
+  return script_name;
 }
 
 // Set and get the generic speech text sid.
@@ -990,7 +990,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->targets, cr.targets);
   std::swap(this->hunger, cr.hunger);
   std::swap(this->statuses, cr.statuses);
-  std::swap(this->event_functions, cr.event_functions);
+  std::swap(this->event_scripts, cr.event_scripts);
   std::swap(this->auto_move, cr.auto_move);
   std::swap(this->additional_properties, cr.additional_properties);
   std::swap(this->mortuary, cr.mortuary);
@@ -1105,7 +1105,7 @@ bool Creature::serialize(ostream& stream)
     }
   }
 
-  Serialize::write_string_map(stream, event_functions);
+  Serialize::write_string_map(stream, event_scripts);
 
   auto_move.serialize(stream);
 
@@ -1247,7 +1247,7 @@ bool Creature::deserialize(istream& stream)
     }
   }
 
-  Serialize::read_string_map(stream, event_functions);
+  Serialize::read_string_map(stream, event_scripts);
 
   auto_move.deserialize(stream);
 

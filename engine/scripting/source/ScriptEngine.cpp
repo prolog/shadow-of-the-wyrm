@@ -44,6 +44,7 @@ int add_spell_castings(lua_State* ls);
 int gain_experience(lua_State* ls);
 int add_creature_to_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
+int stop_playing_game(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -212,6 +213,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
+  lua_register(L, "stop_playing_game", stop_playing_game);
 }
 
 // Lua API functions:
@@ -766,6 +768,14 @@ int add_status_to_creature(lua_State* ls)
 
   lua_pushboolean(ls, false);
   return 1;
+}
+
+int stop_playing_game(lua_State* ls)
+{
+  Game& game = Game::instance();
+  game.stop_playing();
+
+  return 0;
 }
 
 // Set the last executed command

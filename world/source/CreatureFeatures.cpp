@@ -13,15 +13,15 @@ CreatureConstants::~CreatureConstants()
 const int CreatureConstants::DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH = 6;
 const int CreatureConstants::MAX_CREATURE_LEVEL = 50;
 
-CreatureEvents::CreatureEvents()
+CreatureEventScripts::CreatureEventScripts()
 {
 }
 
-CreatureEvents::~CreatureEvents()
+CreatureEventScripts::~CreatureEventScripts()
 {
 }
 
-const string CreatureEvents::CREATURE_EVENT_DEATH = "CREATURE_EVENT_DEATH";
+const string CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH = "CREATURE_EVENT_SCRIPT_DEATH";
 
 CreatureAdditionalProperties::CreatureAdditionalProperties()
 {

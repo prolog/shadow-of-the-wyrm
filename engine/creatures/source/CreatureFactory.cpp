@@ -134,7 +134,7 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
     creature->set_base_soak(creature_instance.get_base_soak());
     creature->set_speed(creature_instance.get_speed());
     creature->set_additional_properties_map(creature_instance.get_additional_properties_map());
-    creature->set_event_functions(creature_instance.get_event_functions());
+    creature->set_event_scripts(creature_instance.get_event_scripts());
 }
 
 CreaturePtr CreatureFactory::create_by_race_and_class

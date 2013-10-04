@@ -54,14 +54,14 @@ class CreatureConstants
     ~CreatureConstants();
 };
 
-class CreatureEvents
+class CreatureEventScripts
 {
   public:
-    static const std::string CREATURE_EVENT_DEATH;
+    static const std::string CREATURE_EVENT_SCRIPT_DEATH;
 
   protected:
-    CreatureEvents();
-    ~CreatureEvents();
+    CreatureEventScripts();
+    ~CreatureEventScripts();
 };
 
 class CreatureAdditionalProperties

@@ -13,6 +13,12 @@ Savage Lands v0.1.7 "Aethelstan"
 - Valour and spirit really weren't adding anything to the game, so they
   have been removed.
 
+- Prior to adding Lua scripting support, there was a system of "event 
+  functions" in place, basically a map from strings to a common function 
+  signature.  This felt awkward once scripting support was enabled, so I 
+  removed this feature, and changed all the event functions to use 
+  Lua scripts instead.
+
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
 

@@ -3589,7 +3589,7 @@
 				<DangerLevel>50</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>750</NumDice>
+					<NumDice>7</NumDice>
 					<NumSides>1</NumSides>
 				</HP>
 				<Exp>2000000</Exp>
@@ -3603,9 +3603,9 @@
 			</Damage>
 			<Evade>30</Evade>
 			<Soak>20</Soak>
-			<EventFunctions>
-				<Death>win</Death>
-			</EventFunctions>
+			<EventScripts>
+				<DeathScript>events/win_game.lua</DeathScript>
+			</EventScripts>
 		</Creature>
 		<Creature id="fisherman">
 			<RaceID>01_human</RaceID>

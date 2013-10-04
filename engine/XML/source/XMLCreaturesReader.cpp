@@ -143,9 +143,9 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
       creature->set_speed(base_speed);
     }
 
-    // Event functions
-    XMLNode event_functions_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventFunctions");
-    parse_event_functions(event_functions_node, creature);
+    // Event scripts
+    XMLNode event_scripts_node = XMLUtils::get_next_element_by_local_name(creature_node, "EventScripts");
+    parse_event_scripts(event_scripts_node, creature);
 
     // Optional - quest script, used when chatting with the creature.
     string chat_script = XMLUtils::get_child_node_value(creature_node, "ChatScript");
@@ -212,17 +212,17 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
   return cgv;
 }
 
-// Parse in the list of event functions for the creature
-void XMLCreaturesReader::parse_event_functions(const XMLNode& event_functions_node, CreaturePtr creature)
+// Parse in the list of event scripts for the creature
+void XMLCreaturesReader::parse_event_scripts(const XMLNode& event_scripts_node, CreaturePtr creature)
 {
-  if (!event_functions_node.is_null())
+  if (!event_scripts_node.is_null())
   {
-    XMLNode death_function_node = XMLUtils::get_next_element_by_local_name(event_functions_node, "Death");
+    XMLNode death_script_node = XMLUtils::get_next_element_by_local_name(event_scripts_node, "DeathScript");
 
-    if (!death_function_node.is_null())
+    if (!death_script_node.is_null())
     {
-      string function_name = XMLUtils::get_node_value(death_function_node);
-      creature->add_event_function(CreatureEvents::CREATURE_EVENT_DEATH, function_name);
+      string script_name = XMLUtils::get_node_value(death_script_node);
+      creature->add_event_script(CreatureEventScripts::CREATURE_EVENT_SCRIPT_DEATH, script_name);
     }
   }
 }
