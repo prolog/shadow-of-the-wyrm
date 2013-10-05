@@ -2968,7 +2968,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>b</Symbol>
-				<Colour>3</Colour>
+				<Colour>11</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
