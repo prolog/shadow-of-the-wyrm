@@ -6,7 +6,6 @@
 # checking whether a given symbol/colour combination has already been
 # assigned to a particular creature.
 
-
 from xml.dom import minidom
 
 # Get the creature data from the XML file.  A dictionary is returned,
@@ -35,6 +34,14 @@ def get_creatures_from_xml(xml_file):
       creature_colour = colour_node.childNodes[0].nodeValue
 
       creature_tuple = (creature_symbol, creature_colour)
+
+      # If there's already a creature tuple of the given symbol/colour,
+      # add the current creature ID to the existing one.
+      if creature_tuple in ss_creatures:
+        existing_id = ss_creatures[creature_tuple]
+        print("Duplicate creature symbol/colour detected - new ID: " + creature_id + ", existing: " + existing_id)
+        creature_id = creature_id + "," + existing_id
+      
       ss_creatures[creature_tuple] = creature_id
 
   return ss_creatures
