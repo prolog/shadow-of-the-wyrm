@@ -20,7 +20,9 @@ Savage Lands v0.1.7 "Aethelstan"
   Lua scripts instead.
 
 - Added a number of new creatures: imp, white wolf, cyclops, hydra, wyrm,
-  goblin, goblin champion, minotaur, hydra, nightmare.
+  goblin, goblin champion, minotaur, hydra, nightmare, red ooze, sellsword,
+  griffin, angel, unicorn, black unicorn, goblin raider, golem, mammoth,
+  skeleton king, archangel.
 
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
