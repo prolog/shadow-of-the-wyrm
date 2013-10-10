@@ -23,7 +23,7 @@ Savage Lands v0.1.7 "Aethelstan"
   goblin, goblin champion, minotaur, hydra, nightmare, red ooze, sellsword,
   griffin, angel, unicorn, black unicorn, goblin raider, golem, mammoth,
   skeleton king, archangel, troglodyte, troll, beholder, tentacled horror,
-  dragon.
+  dragon, sylph, naiad, harpy, colossus.
 
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
