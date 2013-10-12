@@ -24,7 +24,12 @@ Savage Lands v0.1.7 "Aethelstan"
   griffin, angel, unicorn, black unicorn, goblin raider, golem, mammoth,
   skeleton king, archangel, troglodyte, troll, beholder, tentacled horror,
   dragon, sylph, naiad, harpy, colossus, titan, skraeling, black creeper,
-  great serpent, deep wizard, astral horror, barrow spider.
+  great serpent, deep wizard, astral horror, shadow wolf, shadow snake,
+  shadow beast, barrow spider.
+
+- Added a damage flag, "chaotic", that has a chance of returning a
+  random damage type each time the underlying type is requested via the
+  getter.
 
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
