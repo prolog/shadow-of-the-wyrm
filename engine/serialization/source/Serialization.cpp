@@ -186,9 +186,9 @@ pair<bool, string> Serialization::get_save_file_availability_and_synopsis(const 
 
       bool save_file_available = true;
 
-      save_file_available &= (user_name_from_file == current_user);
-      save_file_available &= (version_from_file == current_version);
-      save_file_available &= (compilation_details_from_file == current_compilation_details);
+      save_file_available = save_file_available && (user_name_from_file == current_user);
+      save_file_available = save_file_available && (version_from_file == current_version);
+      save_file_available = save_file_available && (compilation_details_from_file == current_compilation_details);
 
       save_file_availability.first = save_file_available;
 

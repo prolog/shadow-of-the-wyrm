@@ -28,5 +28,14 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
     DamageType damage_type = CombatConstants::DEFAULT_UNARMED_DAMAGE_TYPE;
     damage_type = static_cast<DamageType>(XMLUtils::get_child_node_int_value(damage_node, "Type"));
     damage.set_damage_type(damage_type);
+
+    bool chaotic = XMLUtils::get_attribute_bool_value(damage_node, "chaotic");
+
+    if (chaotic)
+    {
+      int x = 1;
+    }
+
+    damage.set_chaotic(chaotic);
   }
 }

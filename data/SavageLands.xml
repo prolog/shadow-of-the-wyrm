@@ -4888,11 +4888,11 @@
 				<Exp>2000000</Exp>
 			</CreatureGeneration>
 			<Level>50</Level>
-			<Damage>
+			<Damage chaotic="1">
 				<NumDice>1</NumDice>
 				<NumSides>200</NumSides>
 				<Modifier>25</Modifier>
-				<Type>0</Type>
+				<Type>3</Type>
 			</Damage>
 			<Evade>30</Evade>
 			<Soak>20</Soak>

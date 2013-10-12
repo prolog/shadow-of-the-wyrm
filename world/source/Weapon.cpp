@@ -97,10 +97,10 @@ bool Weapon::additional_item_attributes_match(boost::shared_ptr<Item> i)
   
   if (i_weap)
   {
-    match &= (difficulty           == i_weap->get_difficulty());
-    match &= (damage               == i_weap->get_damage()    );
-    match &= (trained_skill        == i_weap->get_trained_skill());
-    match &= (trained_ranged_skill == i_weap->get_trained_ranged_skill());
+    match = match && (difficulty           == i_weap->get_difficulty());
+    match = match && (damage               == i_weap->get_damage()    );
+    match = match && (trained_skill        == i_weap->get_trained_skill());
+    match = match && (trained_ranged_skill == i_weap->get_trained_ranged_skill());
   }
   
   return match;
