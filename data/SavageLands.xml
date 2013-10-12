@@ -3876,6 +3876,84 @@
 				<Type>6</Type>
 			</Damage>
 		</Creature>
+		<Creature id="great_serpent">
+			<ShortDescriptionSID>GREAT_SERPENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GREAT_SERPENT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GREAT_SERPENT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GREAT_SERPENT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>S</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>26</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>27</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2100</Exp>
+			</CreatureGeneration>
+			<Level>27</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>52</NumSides>
+				<Type>6</Type>
+			</Damage>
+		</Creature>
+		<Creature id="deep_wizard">
+			<ShortDescriptionSID>DEEP_WIZARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DEEP_WIZARD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DEEP_WIZARD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DEEP_WIZARD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>W</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>37</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>37</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>30000</Exp>
+			</CreatureGeneration>
+			<Level>36</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>74</NumSides>
+				<Type>9</Type>
+			</Damage>
+		</Creature>
 		<Creature id="barrow_spider">
 			<ShortDescriptionSID>BARROW_SPIDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BARROW_SPIDER_DESCRIPTION_SID</DescriptionSID>
