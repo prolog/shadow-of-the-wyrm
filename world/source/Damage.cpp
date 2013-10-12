@@ -3,22 +3,23 @@
 #include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "Damage.hpp"
+#include "RNG.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
 
 Damage::Damage()
-: Dice(0, 0, 0), damage_type(DAMAGE_TYPE_SLASH)
+: Dice(0, 0, 0), damage_type(DAMAGE_TYPE_SLASH), chaotic(false)
 {
 }
 
-Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype)
-: Dice(dice, sides, mod), damage_type(dtype)
+Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos)
+: Dice(dice, sides, mod), damage_type(dtype), chaotic(chaos)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type)
+: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), chaotic(d.chaotic)
 {
   DamagePtr addl_damage = d.get_additional_damage();
   
@@ -36,6 +37,7 @@ Damage& Damage::operator=(const Damage& d)
     dice_sides  = d.dice_sides;
     modifier    = d.modifier;
     damage_type = d.damage_type;
+    chaotic     = d.chaotic;
     
     DamagePtr addl_damage = d.get_additional_damage();
     
@@ -54,17 +56,24 @@ bool Damage::operator==(const Damage& d) const
   {
     bool match = true;
     
-    match &= (num_dice    == d.get_num_dice()   );
-    match &= (dice_sides  == d.get_dice_sides() );
-    match &= (modifier    == d.get_modifier()   );
-    match &= (damage_type == d.get_damage_type());
+    match = match && (num_dice    == d.get_num_dice()   );
+    match = match && (dice_sides  == d.get_dice_sides() );
+    match = match && (modifier    == d.get_modifier()   );
+
+    // bypass the "chaotic" flag.  otherwise, unit tests fail
+    // roughly 50% of the time when chaotic is on. :)
+    match = match && (damage_type == d.damage_type      );
+
+    match = match && (chaotic     == d.get_chaotic()    );
     
     DamagePtr d_add_damage = d.get_additional_damage();
     bool add_damage_matches = true;
     
-    add_damage_matches = (additional_damage && d_add_damage && (*additional_damage == *d_add_damage)) || (!additional_damage && !d_add_damage);
-
-    match &= add_damage_matches;
+    if (additional_damage && d_add_damage)
+    {
+      add_damage_matches = (*additional_damage == *d_add_damage);
+      match = match && add_damage_matches;
+    }
     
     return match;
   }
@@ -83,7 +92,14 @@ void Damage::set_damage_type(const DamageType new_damage_type)
 
 DamageType Damage::get_damage_type() const
 {
-  return damage_type;
+  if (!chaotic || RNG::percent_chance(50))
+  {
+    return damage_type;
+  }
+  else
+  {
+    return static_cast<DamageType>(RNG::range(DAMAGE_TYPE_SLASH, DAMAGE_TYPE_MAX-1));
+  }
 }
 
 void Damage::set_additional_damage(DamagePtr new_additional_damage)
@@ -99,6 +115,16 @@ bool Damage::has_additional_damage() const
 DamagePtr Damage::get_additional_damage() const
 {
   return additional_damage;
+}
+
+void Damage::set_chaotic(const bool new_chaotic)
+{
+  chaotic = new_chaotic;
+}
+
+bool Damage::get_chaotic() const
+{
+  return chaotic;
 }
 
 string Damage::str() const
@@ -134,6 +160,7 @@ bool Damage::serialize(ostream& stream)
 {
   Dice::serialize(stream);
   Serialize::write_enum(stream, damage_type);
+  Serialize::write_bool(stream, chaotic);
 
   if (additional_damage)
   {
@@ -152,6 +179,7 @@ bool Damage::deserialize(istream& stream)
 {
   Dice::deserialize(stream);
   Serialize::read_enum(stream, damage_type);
+  Serialize::read_bool(stream, chaotic);
 
   ClassIdentifier ci = CLASS_ID_NULL;
   Serialize::read_class_id(stream, ci);

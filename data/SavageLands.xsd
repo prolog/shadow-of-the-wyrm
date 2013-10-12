@@ -668,6 +668,7 @@
 			<xs:sequence>
 				<xs:element name="Type" type="tns:DamageType"/>
 			</xs:sequence>
+			<xs:attribute name="chaotic" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>

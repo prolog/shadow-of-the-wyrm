@@ -42,8 +42,8 @@ bool Wearable::additional_item_attributes_match(boost::shared_ptr<Item> i)
   
   if (i_wear)
   {
-    match &= (evade == i_wear->get_evade());
-    match &= (soak  == i_wear->get_soak() );
+    match = match && (evade == i_wear->get_evade());
+    match = match && (soak  == i_wear->get_soak() );
   }
   
   return match;

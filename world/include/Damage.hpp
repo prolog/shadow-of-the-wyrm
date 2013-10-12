@@ -8,8 +8,8 @@ class Damage;
 class Damage : public Dice
 {
   public:
-    Damage();
-    Damage(const uint dice, const uint sides, const int mod, const DamageType dtype);
+    explicit Damage();
+    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos);
     Damage(const Damage& d);
     Damage&  operator= (const Damage& d);
     bool     operator==(const Damage& d) const;
@@ -18,6 +18,9 @@ class Damage : public Dice
 
     void set_damage_type(const DamageType new_damage_type);
     DamageType get_damage_type() const;
+
+    void set_chaotic(const bool new_chaotic);
+    bool get_chaotic() const;
     
     // Additional damage is used for things like "1d6+2d4".  This is relatively rare,
     // and likely will only be used for ranged combat, where the damage is a fuction
@@ -32,6 +35,7 @@ class Damage : public Dice
     bool deserialize(std::istream& stream);
 
   protected:
+    bool chaotic;
     DamageType damage_type;
     boost::shared_ptr<Damage> additional_damage;
 
