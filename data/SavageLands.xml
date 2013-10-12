@@ -3954,6 +3954,45 @@
 				<Type>9</Type>
 			</Damage>
 		</Creature>
+		<Creature id="astral_horror">
+			<ShortDescriptionSID>ASTRAL_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ASTRAL_HORROR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ASTRAL_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ASTRAL_HORROR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>&amp;</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>47</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>47</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>47</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>94</NumSides>
+				<Type>8</Type>
+			</Damage>
+		</Creature>
 		<Creature id="barrow_spider">
 			<ShortDescriptionSID>BARROW_SPIDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BARROW_SPIDER_DESCRIPTION_SID</DescriptionSID>
