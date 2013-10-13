@@ -25,7 +25,8 @@ Savage Lands v0.1.7 "Aethelstan"
   skeleton king, archangel, troglodyte, troll, beholder, tentacled horror,
   dragon, sylph, naiad, harpy, colossus, titan, skraeling, black creeper,
   great serpent, deep wizard, astral horror, shadow wolf, shadow snake,
-  shadow beast, barrow spider.
+  shadow beast, shadow demon, shadow wyrm, snakeling, redcap, drakeling, 
+  arachnos, behemoth, barrow spider.
 
 - Added a damage flag, "chaotic", that has a chance of returning a
   random damage type each time the underlying type is requested via the
