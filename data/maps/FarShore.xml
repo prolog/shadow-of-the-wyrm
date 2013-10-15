@@ -70,6 +70,20 @@
 					<Col>37</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>ogre_savage</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>30</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>ogre_savage</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>33</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
