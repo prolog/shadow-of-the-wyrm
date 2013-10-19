@@ -41,6 +41,11 @@ Savage Lands v0.1.7 "Aethelstan"
   the creature's race (either directly, or indirectly through a parent
   race - e.g., a humanoid-slaying sword would slay an elf).
 
+- Created a number of race-slaying artifact weapons.
+
+- Added a new custom map, the Forest of Yew, which will be the set
+  Wood Elf settlement.
+
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
 

@@ -1,0 +1,34 @@
+<CustomMap id="forest_of_yew" xmlns="urn:savage_lands:maps:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:maps:1.0.0 ./CustomMap.xsd">
+	<Dimensions>
+		<Rows>20</Rows>
+		<Columns>80</Columns>
+	</Dimensions>
+	<MapType>1</MapType>
+	<Tiles>
+	TT,TT,,T,TT,,TTT,,T,T,,TTT,TT,TTTTT,T,TT,TT,TT,TT,TT,T,T,TTT,T,TT,T,TTTTT,TT,TTT
+	T,,T,T,TT,,T,TT,TTT,TT,T,T,,,,,,,,,,,,,,,,####,T,TTT,T,TT,,,T,TT,,TTTT,,TTTT,T,T
+	,,T,TT,,,T,TT,T,T,,T,,TT,T,,##########T,,,#..#,,T,,,TTT,TTTT,TTT,T,TTT,,TT,,,T,T
+	,T,,,,T,,T,,T,TTT,TTT,TTTT,,#........#,,T,#.##,T,,TT,,,TT,,TTTT,T,T,,,TT,,TT,,,,
+	,,,T,T,T,TTT,TT,T,,,TTT,,T,,#........#T,,,,,,,,,TTT,TTTT,T,TT,,,,,TT,TT,TT,T,T,T
+	T,,T,T,TT,,T,,TTTT,T,,TTTT,,#........#,,,,,,,T,,,,TTT,T,T,,,,T,TT,,,T,,T,,TTT,,,
+	T,T,,T,T,T,,T,T,T,,,T,T,,T,,#........#,,T,######,,T,T,T,,,,TT,TT,,TTTT,,TT,T,,,T
+	T,,,T,,TT,,,,T,TTT,TT,,TT,,,#........#,,,,.....#,,,,,,T,T,TT,,,,TTT,,,TT,,,,TT,,
+	,,T,,T,,,,T,T,TT,T,TTT,,,,,,##......##,,,,#....#,,T,T,,,T,,TT,TT,,T,TT,,,TT,,T,,
+	T,T,TT,,T,T,T,TT,T,,,,,,,,,,,###..###,T,,,#....#,,,,,,T,TTT,,,,T,T,,,,T,,,,TT,,T
+	,T,TT,T,T,T,,,T,TT,,,#####,,,,,,,T,,,,,,,,######,,T,T,T,T,,,TT,TT,T,T,,,TTT,,T,T
+	T,T,,,T,T,,,,,T,T,,,,#....,,,T,,,,,,,,,,T,,,,,,,,,TT,,,,,,TT,TT,,T,T,T,,TT,,,T,,
+	,TT,,,T,,,T,T,TTTT,,,#...#,,##.##,,,,#####,T,,,,,,TTT,T,T,,T,,,TT,,TT,TTTT,T,T,T
+	T,,,T,,,T,T,,,T,,T,,,#####,,#...#,,,,....#,,,,T,,,T,,,,,,,TT,,T,,TT,,T,,,TT,,,,T
+	T,T,,,TTTT,,,,TTTTT,,,,,,T,,#...#,,T,#...#,,,,,,,,,,,,T,T,,TT,,,,,T,,,,,TTT,,T,,
+	,,T,T,T,,TT,,,T,,T,TT,,,,T,,#####,TT,#####,T,T,,,,w,T,T,TT,T,T,,T,T,,TT,,T,,,T,T
+	T,,,,,T,T,,TTTT,,TTT,TTT,,,,,,,,,,,,,,,,,,,,,,,,,,,,T,T,,,,TT,,,,,,T,,T,,,,TTT,,
+	T,T,T,,,T,T,TTT,TT,,TT,TTTT,T,T,TTT,T,T,TTTTT,TT,TT,,,T,TTT,,,T,T,TT,T,,TT,,,T,T
+	,,T,,,T,T,,TT,,,T,TT,T,T,T,,TTT,,TT,T,TT,TTT,TT,T,T,T,,,T,,,TTT,,T,,T,,,T,T,,T,T
+	TT,T,TTTT,T,TT,TTT,T,T,TTTT,TT,TTTTT,T,T,,,T,,,TT,T,TTTT,TTT,T,TT,TTT,TTT,T,TTT,
+	</Tiles>
+	<InitialPlacements>
+		<Creatures/>
+		<Items/>
+	</InitialPlacements>
+	<Exits/>
+</CustomMap>
