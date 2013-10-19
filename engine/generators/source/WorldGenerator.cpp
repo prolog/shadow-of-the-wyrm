@@ -271,6 +271,7 @@ void WorldGenerator::generate_far_reaches(MapPtr map)
 void WorldGenerator::generate_fixed_settlements(MapPtr map)
 {
   generate_Gnordvar(map);
+  generate_Forest_of_Yew(map);
 }
 
 void WorldGenerator::generate_Gnordvar(MapPtr map)
@@ -321,6 +322,45 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
 
   tile = tg.generate(TILE_TYPE_FIELD);
   map->insert(height-55, width-7, tile);
+}
+
+void WorldGenerator::generate_Forest_of_Yew(MapPtr map)
+{
+  //   %
+  // %%%
+  //  %
+  TileGenerator tg;
+
+  Dimensions dim = map->size();
+  int height = dim.get_y();
+  int width = dim.get_x();
+
+  TilePtr sea_tile;
+
+  // Make the elfy little island by ensuring there's enough sea.
+  for (int row = height - 40; row < height - 36; row++)
+  {
+    for (int col = width - 21; col < width - 16; col++)
+    {
+      sea_tile = tg.generate(TILE_TYPE_SEA);
+      map->insert(row, col, sea_tile);
+    }
+  }
+
+  TilePtr forest_tile = tg.generate(TILE_TYPE_FOREST);
+  map->insert(height-39, width-18, forest_tile);
+
+  forest_tile = tg.generate(TILE_TYPE_FOREST);
+  map->insert(height-38, width-20, forest_tile);
+  TilePtr forest_of_yew = tg.generate(TILE_TYPE_FOREST);
+  forest_of_yew->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_FOREST_OF_YEW);
+  forest_of_yew->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_FOREST_OF_YEW);
+  map->insert(height-38, width-19, forest_of_yew);
+  forest_tile = tg.generate(TILE_TYPE_FOREST);
+  map->insert(height-38, width-18, forest_tile);
+
+  forest_tile = tg.generate(TILE_TYPE_FOREST);
+  map->insert(height-37, width-19, forest_tile);
 }
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
