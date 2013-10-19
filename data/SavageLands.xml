@@ -127,9 +127,394 @@
 		</Deity>
 	</Deities>
 	<Races>
+		<Race id="_animal">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>ANIMAL_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>		
+		<Race id="_construct">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>CONSTRUCT_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>		
+		<Race id="_demon">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>DEMON_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>		
+		<Race id="_divine">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>DIVINE_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>		
 		<Race id="_humanoid">
 			<UserPlayable>0</UserPlayable>
 			<NameSID>HUMANOID_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>
+		<Race id="_insect">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>INSECT_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>		
+		<Race id="_jelly">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>JELLY_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>
+		<Race id="_monster">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>MONSTER_RACE_NAME</NameSID>
 			<Size>2</Size>
 			<AgeInfo>
 				<StartingAge>
@@ -230,6 +615,55 @@
 					<!-- Useful for ripping open adventurers' skulls for the tasty brains inside. -->
 					<Unarmed>5</Unarmed>
 				</WeaponSkills>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>
+		<Race id="_dragon">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>DRAGON_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>100</Min>
+					<Max>800</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100000</Min>
+					<Max>1000000</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>40</Strength>
+				<Dexterity>20</Dexterity>
+				<Agility>15</Agility>
+				<Health>45</Health>
+				<Intelligence>30</Intelligence>
+				<Willpower>60</Willpower>
+				<Charisma>20</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0.0</Slash>
+				<Pierce>0.20</Pierce>
+				<Pound>0.0</Pound>
+				<Heat>-0.50</Heat>
+				<Cold>-0.50</Cold>
+				<Acid>-0.25</Acid>
+				<Poison>-0.25</Poison>
+				<Holy>-0.50</Holy>
+				<Shadow>-0.50</Shadow>
+				<Arcane>-0.10</Arcane>
+				<Lightning>-0.10</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
 				<RangedWeaponSkills/>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
@@ -2386,6 +2820,7 @@
 	</Classes>
 	<Creatures>
 		<Creature id="rat">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>RAT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RAT_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2420,6 +2855,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="corpse_rat">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>CORPSE_RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CORPSE_RAT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CORPSE_RAT_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2762,6 +3198,7 @@
 			<Speed>35</Speed>
 		</Creature>
 		<Creature id="green_slime">
+			<RaceID>_jelly</RaceID>
 			<ShortDescriptionSID>GREEN_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GREEN_SLIME_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GREEN_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2794,6 +3231,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="imp">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>IMP_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>IMP_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>IMP_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2834,6 +3272,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="goblin">
+			<RaceID>07_goblin</RaceID>
 			<ShortDescriptionSID>GOBLIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GOBLIN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOBLIN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2873,6 +3312,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="goblin_champion">
+			<RaceID>07_goblin</RaceID>
 			<ShortDescriptionSID>GOBLIN_CHAMPION_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GOBLIN_CHAMPION_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOBLIN_CHAMPION_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2913,6 +3353,7 @@
 			<Soak>3</Soak>
 		</Creature>
 		<Creature id="minotaur">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>MINOTAUR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>MINOTAUR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MINOTAUR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2944,6 +3385,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="hydra">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>HYDRA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HYDRA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HYDRA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -2977,6 +3419,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="nightmare">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>NIGHTMARE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NIGHTMARE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NIGHTMARE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3016,6 +3459,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="red_ooze">
+			<RaceID>_jelly</RaceID>
 			<ShortDescriptionSID>RED_OOZE_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>RED_OOZE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RED_OOZE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3048,6 +3492,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="sellsword">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>SELLSWORD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SELLSWORD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SELLSWORD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3089,6 +3534,7 @@
 			<Soak>2</Soak>
 		</Creature>
 		<Creature id="griffin">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>GRIFFIN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GRIFFIN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GRIFFIN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3128,6 +3574,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="ram_demon">
+			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>RAM_DEMON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>RAM_DEMON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RAM_DEMON_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3167,6 +3614,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="angel">
+			<RaceID>_divine</RaceID>
 			<ShortDescriptionSID>ANGEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ANGEL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ANGEL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3206,6 +3654,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="unicorn">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>UNICORN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>UNICORN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>UNICORN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3239,6 +3688,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="black_unicorn">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>BLACK_UNICORN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_UNICORN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_UNICORN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3278,6 +3728,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="goblin_raider">
+			<RaceID>07_goblin</RaceID>
 			<ShortDescriptionSID>GOBLIN_RAIDER_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GOBLIN_RAIDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOBLIN_RAIDER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3318,6 +3769,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="golem">
+			<RaceID>_construct</RaceID>
 			<ShortDescriptionSID>GOLEM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GOLEM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOLEM_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3356,6 +3808,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="mammoth">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>MAMMOTH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>MAMMOTH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>MAMMOTH_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3430,6 +3883,7 @@
 			<Speed>40</Speed>
 		</Creature>
 		<Creature id="demon_lord">
+			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>DEMON_LORD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DEMON_LORD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DEMON_LORD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3470,6 +3924,7 @@
 			<Speed>40</Speed>
 		</Creature>
 		<Creature id="archangel">
+			<RaceID>_divine</RaceID>
 			<ShortDescriptionSID>ARCHANGEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ARCHANGEL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ARCHANGEL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3509,6 +3964,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="troglodyte">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>TROGLODYTE_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TROGLODYTE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TROGLODYTE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3541,6 +3997,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="troll">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>TROLL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TROLL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TROLL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3581,6 +4038,7 @@
 			<Soak>3</Soak>
 		</Creature>
 		<Creature id="beholder">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>BEHOLDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BEHOLDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BEHOLDER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3620,6 +4078,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="tentacled_horror">
+			<RaceID>_divine</RaceID>
 			<ShortDescriptionSID>TENTACLED_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TENTACLED_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TENTACLED_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3659,6 +4118,7 @@
 			<Speed>45</Speed>
 		</Creature>
 		<Creature id="dragon">
+			<RaceID>_dragon</RaceID>
 			<ShortDescriptionSID>DRAGON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DRAGON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRAGON_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3698,6 +4158,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="sylph">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>SYLPH_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SYLPH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SYLPH_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3738,6 +4199,7 @@
 			<Speed>42</Speed>
 		</Creature>
 		<Creature id="naiad">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>NAIAD_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NAIAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAIAD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3777,6 +4239,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="harpy">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>HARPY_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HARPY_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HARPY_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3816,6 +4279,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="vampire">
+			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>VAMPIRE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>VAMPIRE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>VAMPIRE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3855,6 +4319,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="colossus">
+			<RaceID>_construct</RaceID>
 			<ShortDescriptionSID>COLOSSUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>COLOSSUS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>COLOSSUS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3894,6 +4359,7 @@
 			<Soak>5</Soak>
 		</Creature>
 		<Creature id="wyvern">
+			<RaceID>_dragon</RaceID>
 			<ShortDescriptionSID>WYVERN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WYVERN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WYVERN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3934,6 +4400,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="titan">
+			<RaceID>_divine</RaceID>
 			<ShortDescriptionSID>TITAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TITAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TITAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -3973,6 +4440,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="skraeling">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>SKRAELING_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SKRAELING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SKRAELING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4013,6 +4481,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="black_creeper">
+			<RaceID>_insect</RaceID>
 			<ShortDescriptionSID>BLACK_CREEPER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_CREEPER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_CREEPER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4051,6 +4520,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="great_serpent">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>GREAT_SERPENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GREAT_SERPENT_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GREAT_SERPENT_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4090,6 +4560,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="deep_wizard">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>DEEP_WIZARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DEEP_WIZARD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DEEP_WIZARD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4129,6 +4600,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="astral_horror">
+			<RaceID>_divine</RaceID>
 			<ShortDescriptionSID>ASTRAL_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ASTRAL_HORROR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ASTRAL_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4168,6 +4640,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="shadow_wolf">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>SHADOW_WOLF_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHADOW_WOLF_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_WOLF_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4207,6 +4680,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="shadow_snake">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>SHADOW_SNAKE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHADOW_SNAKE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_SNAKE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4246,6 +4720,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="shadow_beast">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>SHADOW_BEAST_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHADOW_BEAST_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_BEAST_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4285,6 +4760,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="shadow_demon">
+			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>SHADOW_DEMON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHADOW_DEMON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_DEMON_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4324,6 +4800,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="shadow_wyrm">
+			<RaceID>_dragon</RaceID>
 			<ShortDescriptionSID>SHADOW_WYRM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHADOW_WYRM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_WYRM_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4364,6 +4841,7 @@
 			<Soak>6</Soak>
 		</Creature>
 		<Creature id="snakeling">
+			<RaceID>04_snakeling</RaceID>
 			<ShortDescriptionSID>SNAKELING_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SNAKELING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SNAKELING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4403,6 +4881,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="redcap">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>REDCAP_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>REDCAP_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>REDCAP_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4442,6 +4921,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="drakeling">
+			<RaceID>_dragon</RaceID>
 			<ShortDescriptionSID>DRAKELING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DRAKELING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DRAKELING_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4484,6 +4964,7 @@
 			<Speed>35</Speed>
 		</Creature>
 		<Creature id="arachnos">
+			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>ARACHNOS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ARACHNOS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ARACHNOS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4523,6 +5004,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="behemoth">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>BEHEMOTH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BEHEMOTH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BEHEMOTH_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4644,6 +5126,7 @@
 			<Soak>3</Soak>
 		</Creature>
 		<Creature id="dwarven_hero">
+			<RaceID>06_dwarf</RaceID>
 			<ShortDescriptionSID>DWARVEN_HERO_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DWARVEN_HERO_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DWARVEN_HERO_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4683,6 +5166,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="pegasus">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>PEGASUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PEGASUS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PEGASUS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4722,6 +5206,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="bog_devil">
+			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>BOG_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BOG_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BOG_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4761,6 +5246,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="leviathan">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>LEVIATHAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>LEVIATHAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LEVIATHAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4801,6 +5287,7 @@
 			<Soak>10</Soak>
 		</Creature>
 		<Creature id="demon_prince">
+			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>DEMON_PRINCE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DEMON_PRINCE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DEMON_PRINCE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4841,6 +5328,7 @@
 			<Soak>8</Soak>
 		</Creature>
 		<Creature id="barrow_spider">
+			<RaceID>_insect</RaceID>
 			<ShortDescriptionSID>BARROW_SPIDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BARROW_SPIDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BARROW_SPIDER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4879,6 +5367,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="floating_eye">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>FLOATING_EYE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FLOATING_EYE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FLOATING_EYE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4917,6 +5406,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="kestrel">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>KESTREL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KESTREL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>KESTREL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4956,6 +5446,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="rook">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>ROOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ROOK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ROOK_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4996,6 +5487,7 @@
 			<Speed>40</Speed>
 		</Creature>
 		<Creature id="shrike">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>SHRIKE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHRIKE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHRIKE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5036,6 +5528,7 @@
 			<Speed>40</Speed>
 		</Creature>
 		<Creature id="falcon">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>FALCON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FALCON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FALCON_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5235,6 +5728,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="blood_hawk">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLOOD_HAWK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLOOD_HAWK_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5275,6 +5769,7 @@
 			<Speed>40</Speed>
 		</Creature>
 		<Creature id="roc">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>ROC_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ROC_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ROC_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5315,7 +5810,7 @@
 			<Speed>40</Speed>
 		</Creature>
 		<Creature id="satyr">
-			<RaceID>01_human</RaceID> <!-- eh, close enough -->
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>SATYR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SATYR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SATYR_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5356,6 +5851,7 @@
 			<Evade>8</Evade>
 		</Creature>
 		<Creature id="black_manticore">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>BLACK_MANTICORE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLACK_MANTICORE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLACK_MANTICORE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5386,6 +5882,7 @@
 			<Speed>43</Speed>
 		</Creature>
 		<Creature id="armoured_beetle">
+			<RaceID>_insect</RaceID>
 			<ShortDescriptionSID>ARMOURED_BEETLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ARMOURED_BEETLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ARMOURED_BEETLE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5417,6 +5914,7 @@
 			<Soak>2</Soak>
 		</Creature>
 		<Creature id="rock_adder">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>ROCK_ADDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ROCK_ADDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ROCK_ADDER_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5450,6 +5948,7 @@
 			<Evade>10</Evade>
 		</Creature>
 		<Creature id="acolyte">
+			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>ACOLYTE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ACOLYTE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ACOLYTE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5491,6 +5990,7 @@
 			<Soak>2</Soak>
 		</Creature>
 		<Creature id="fox">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>FOX_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FOX_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FOX_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5804,6 +6304,7 @@
 			<Soak>10</Soak>
 		</Creature>
 		<Creature id="lightning_bug">
+			<RaceID>_insect</RaceID>
 			<ShortDescriptionSID>LIGHTNING_BUG_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>LIGHTNING_BUG_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LIGHTNING_BUG_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5845,6 +6346,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="frost_devil">
+			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>FROST_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FROST_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FROST_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5878,6 +6380,7 @@
 			<Soak>0</Soak>
 		</Creature>
 		<Creature id="fire_devil">
+			<RaceID>_demon</RaceID>
 			<ShortDescriptionSID>FIRE_DEVIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FIRE_DEVIL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FIRE_DEVIL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -5911,6 +6414,7 @@
 			<Soak>0</Soak>
 		</Creature>
 		<Creature id="amaurosis">
+			<RaceID>_dragon</RaceID>
 			<ShortDescriptionSID>AMAUROSIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AMAUROSIS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>AMAUROSIS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6328,6 +6832,7 @@
 			<Soak>3</Soak>
 		</Creature>
 		<Creature id="hound">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>HOUND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>HOUND_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>HOUND_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6369,6 +6874,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="white_wolf">
+			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>WHITE_WOLF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WHITE_WOLF_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WHITE_WOLF_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6410,6 +6916,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="cyclops">
+			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>CYCLOPS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CYCLOPS_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CYCLOPS_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6450,6 +6957,7 @@
 			<Soak>1</Soak>
 		</Creature>
 		<Creature id="chimera">
+			<RaceID>_monster</RaceID>
 			<ShortDescriptionSID>CHIMERA_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CHIMERA_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CHIMERA_TEXT_DETAILS_SID</TextDetailsSID>
@@ -6483,6 +6991,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="wyrm">
+			<RaceID>_dragon</RaceID>
 			<ShortDescriptionSID>WYRM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WYRM_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WYRM_TEXT_DETAILS_SID</TextDetailsSID>
