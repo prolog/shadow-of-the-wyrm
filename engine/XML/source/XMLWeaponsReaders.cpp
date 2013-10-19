@@ -1,4 +1,7 @@
+#include <boost/foreach.hpp>
 #include "XMLWeaponsReaders.hpp"
+
+using namespace std;
 
 // Methods for reading in weapons from the XML configuration.
 XMLWeaponsReader::XMLWeaponsReader()
@@ -35,6 +38,22 @@ void XMLWeaponsReader::parse(WeaponPtr weapon, GenerationValues& gv, const XMLNo
     Damage weapon_damage;
     parse_damage(weapon_damage, damage_node);
     weapon->set_damage(weapon_damage);
+
+    XMLNode slays_node = XMLUtils::get_next_element_by_local_name(weapon_node, "Slays");
+
+    if (!slays_node.is_null())
+    {
+      vector<string> slay_races;
+      vector<XMLNode> slay_nodes = XMLUtils::get_elements_by_local_name(slays_node, "Slay");
+
+      BOOST_FOREACH(XMLNode slay_node, slay_nodes)
+      {
+        string slay_race = XMLUtils::get_node_value(slay_node);
+        slay_races.push_back(slay_race);
+      }
+
+      weapon->set_slays_races(slay_races);
+    }
   }
 }
 

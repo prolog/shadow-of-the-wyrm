@@ -43,6 +43,16 @@ string Race::get_race_id() const
   return race_id;
 }
 
+void Race::set_parent_race_id(const string& new_parent_race_id)
+{
+  parent_race_id = new_parent_race_id;
+}
+
+string Race::get_parent_race_id() const
+{
+  return parent_race_id;
+}
+
 void Race::set_user_playable(const bool playable)
 {
   user_playable = playable;

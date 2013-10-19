@@ -14,6 +14,7 @@
 #include "CombatTargetNumberCalculatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RaceManager.hpp"
 #include "SkillManager.hpp"
 #include "SkillMarkerFactory.hpp"
 #include "StatusEffectFactory.hpp"
@@ -169,8 +170,9 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   }
 
   // Deal damage.
+  bool slays_race = does_attack_slay_creature_race(attacking_creature, attacked_creature, attack_type);
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
-  int damage_dealt = damage_calc->calculate(attacked_creature, damage_info, base_damage, soak_multiplier);
+  int damage_dealt = damage_calc->calculate(attacked_creature, slays_race, damage_info, base_damage, soak_multiplier);
 
   // Add the text so far.
   add_combat_message(attacking_creature, combat_message);
@@ -191,6 +193,24 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   }
 
   return true;
+}
+
+bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType attack_type)
+{
+  WeaponManager wm;
+  RaceManager rm;
+  string creature_race = attacked_creature->get_race_id();
+  vector<string> slay_races = wm.get_slays_races(attacking_creature, attack_type);
+
+  BOOST_FOREACH(string slay_race, slay_races)
+  {
+    if (rm.is_race_or_descendent(creature_race, slay_race))
+    {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 // Apply any effects as the result of damage.  This can include incurring blindness,

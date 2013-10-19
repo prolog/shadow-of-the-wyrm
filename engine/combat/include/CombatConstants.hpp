@@ -14,6 +14,7 @@ class CombatConstants
     static const int AUTOMATIC_MISS_THRESHOLD;
     static const int INITIAL_THREAT_RATING;
     static const int THREAT_RATING_INCREMENT;
+    static const double RACE_SLAY_MULTIPLIER;
 
   protected:
     CombatConstants();

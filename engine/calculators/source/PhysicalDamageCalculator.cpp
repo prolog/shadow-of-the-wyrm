@@ -1,4 +1,5 @@
 #include <cmath>
+#include "CombatConstants.hpp"
 #include "PhysicalDamageCalculator.hpp"
 #include "WeaponManager.hpp"
 
@@ -16,8 +17,9 @@ PhysicalDamageCalculator::PhysicalDamageCalculator(const AttackType new_attack_t
 
 // Physical Damage =
 // (Rolled damage * Resistance to that damage type)
+// * 2, if the weapon slays the creature's race.
 // - Soak
-int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const Damage& physical_damage, const int base_damage, const float soak_multiplier)
+int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool slays_creatures_race, const Damage& physical_damage, const int base_damage, const float soak_multiplier)
 {
   int damage = 0;
 
@@ -32,6 +34,11 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const Da
       // Negative damage is permitted in extreme cases - it allows things like gaining HP from
       // fire damage, etc.
       double total_soak = defending_creature->get_soak().get_current() * soak_multiplier;
+
+      if (slays_creatures_race)
+      {
+        resisted_damage *= CombatConstants::RACE_SLAY_MULTIPLIER;
+      }
       
       damage = static_cast<int>(ceil(std::max<double>(0, resisted_damage - total_soak)));
     }

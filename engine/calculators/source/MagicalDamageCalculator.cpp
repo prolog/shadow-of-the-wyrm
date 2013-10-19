@@ -8,9 +8,10 @@ MagicalDamageCalculator::MagicalDamageCalculator()
 
 // Magical damage =
 // Rolled damage * Resistance to that damage
+// * 1 (magical damage doesn't slay a particular race)
 //
 // (Soak is not considered for magical damage - resistances become far more powerful.)
-int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const Damage& magical_damage, const int base_damage, const float soak_multiplier)
+int MagicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool slays_creatures_race, const Damage& magical_damage, const int base_damage, const float soak_multiplier)
 {
   int damage = base_damage;
 

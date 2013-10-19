@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include "Damage.hpp"
 #include "SkillTypes.hpp"
 #include "WeaponTypes.hpp"
@@ -30,6 +31,9 @@ class Weapon : public Wearable
     virtual void set_requires_ranged_weapon(const bool new_requires_ranged_weapon);
     virtual bool get_requires_ranged_weapon() const;
     
+    virtual void set_slays_races(const std::vector<std::string>& new_slay_races);
+    std::vector<std::string> get_slays_races() const;
+
     virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
 
     virtual bool serialize(std::ostream& stream);
@@ -43,6 +47,7 @@ class Weapon : public Wearable
     SkillType trained_skill;
     SkillType trained_ranged_skill;
     bool requires_ranged_weapon;
+    std::vector<std::string> slays_races;
 };
 
 class MeleeWeapon : public Weapon
