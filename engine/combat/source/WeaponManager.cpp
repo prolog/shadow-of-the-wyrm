@@ -4,6 +4,7 @@
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponManager.hpp"
 
+using namespace std;
 using boost::dynamic_pointer_cast;
 
 // Get the weapon for the given attack type.  The returned pointer
@@ -38,6 +39,53 @@ WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attac
   }
   
   return weapon;
+}
+
+// Get the slay races for the given attack type
+vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const AttackType attack_type)
+{
+  vector<string> slay_races;
+
+  switch(attack_type)
+  {
+    case ATTACK_TYPE_MELEE_PRIMARY:
+    case ATTACK_TYPE_MELEE_SECONDARY:
+    {
+      WeaponPtr attack_weapon = get_weapon(creature, attack_type);
+
+      if (attack_weapon)
+      {
+        slay_races = attack_weapon->get_slays_races();
+      }
+
+      break;
+    }
+    case ATTACK_TYPE_RANGED:
+    {
+      Equipment& eq = creature->get_equipment();
+      WeaponPtr ranged_weapon = boost::dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
+      WeaponPtr ammunition = boost::dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_AMMUNITION));
+
+      if (ranged_weapon)
+      {
+        vector<string> slay_ranged = ranged_weapon->get_slays_races();
+        slay_races.insert(slay_races.end(), slay_ranged.begin(), slay_ranged.end());
+      }
+
+      if (ammunition)
+      {
+        vector<string> slay_ammo = ammunition->get_slays_races();
+        slay_races.insert(slay_races.end(), slay_ammo.begin(), slay_ammo.end());
+      }
+
+      break;
+    }
+    case ATTACK_TYPE_MAGICAL:
+    default:
+      break;
+  }
+
+  return slay_races;
 }
 
 // Get the damage for the given attack type

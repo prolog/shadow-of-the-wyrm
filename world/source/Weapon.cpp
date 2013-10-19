@@ -22,6 +22,7 @@ bool Weapon::operator==(const Weapon& weapon) const
   result = result && (trained_skill == weapon.trained_skill);
   result = result && (trained_ranged_skill == weapon.trained_ranged_skill);
   result = result && (requires_ranged_weapon == weapon.requires_ranged_weapon);
+  result = result && (slays_races == weapon.slays_races);
 
   result = result && (get_style() == weapon.get_style());
 
@@ -88,6 +89,16 @@ bool Weapon::get_requires_ranged_weapon() const
   return requires_ranged_weapon;
 }
 
+void Weapon::set_slays_races(const vector<string>& new_slays_races)
+{
+  slays_races = new_slays_races;
+}
+
+vector<string> Weapon::get_slays_races() const
+{
+  return slays_races;
+}
+
 bool Weapon::additional_item_attributes_match(boost::shared_ptr<Item> i)
 {
   bool match = (i);
@@ -115,6 +126,7 @@ bool Weapon::serialize(ostream& stream)
   Serialize::write_enum(stream, trained_skill);
   Serialize::write_enum(stream, trained_ranged_skill);
   Serialize::write_bool(stream, requires_ranged_weapon);
+  Serialize::write_string_vector(stream, slays_races);
 
   return true;
 }
@@ -128,6 +140,7 @@ bool Weapon::deserialize(istream& stream)
   Serialize::read_enum(stream, trained_skill);
   Serialize::read_enum(stream, trained_ranged_skill);
   Serialize::read_bool(stream, requires_ranged_weapon);
+  Serialize::read_string_vector(stream, slays_races);
 
   return true;
 }

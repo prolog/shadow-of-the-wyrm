@@ -10,6 +10,7 @@ const int CombatConstants::CLOSE_MISS_THRESHOLD = -5;
 const int CombatConstants::AUTOMATIC_MISS_THRESHOLD = 5;
 const int CombatConstants::INITIAL_THREAT_RATING = 100;
 const int CombatConstants::THREAT_RATING_INCREMENT = 25;
+const double CombatConstants::RACE_SLAY_MULTIPLIER = 2.0;
 
 CombatConstants::CombatConstants()
 {

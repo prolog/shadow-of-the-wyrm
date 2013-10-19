@@ -6,7 +6,7 @@ class PhysicalDamageCalculator : public DamageCalculator
   public:
     PhysicalDamageCalculator(const AttackType new_attack_type);
     
-    virtual int calculate(CreaturePtr defending_creature, const Damage& damage, const int base_damage, const float soak_multiplier);
+    virtual int calculate(CreaturePtr defending_creature, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier);
     virtual Damage calculate_base_damage_object(CreaturePtr attacking_creature);
     virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature);
     virtual int get_statistic_based_damage_modifier(CreaturePtr attacking_creature);

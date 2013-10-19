@@ -56,6 +56,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     string id = XMLUtils::get_attribute_value(race_node, "id");
     race->set_race_id(id);
 
+    string parent_id = XMLUtils::get_attribute_value(race_node, "parent_id");
+    race->set_parent_race_id(parent_id);
+
     bool user_playable = XMLUtils::get_child_node_bool_value(race_node, "UserPlayable");
     race->set_user_playable(user_playable);
     

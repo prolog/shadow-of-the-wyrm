@@ -127,6 +127,61 @@
 		</Deity>
 	</Deities>
 	<Races>
+		<Race id="_humanoid">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>HUMANOID_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>		
 		<Race id="_corporeal_undead">
 			<UserPlayable>0</UserPlayable>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
@@ -179,7 +234,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 		</Race>
-		<Race id="01_human">
+		<Race id="01_human" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
@@ -255,7 +310,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 		</Race>
-		<Race id="02_woodelf">
+		<Race id="02_woodelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>0</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -322,7 +377,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
 		</Race>
-		<Race id="03_mountainelf">
+		<Race id="03_mountainelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
@@ -391,7 +446,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 		</Race>
-		<Race id="04_snakeling">
+		<Race id="04_snakeling" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
@@ -457,7 +512,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 		</Race>
-		<Race id="05_fae">
+		<Race id="05_fae" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>21</SettlementTileSubtype>
@@ -523,7 +578,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.9</ExperienceMultiplier>
 		</Race>
-		<Race id="06_dwarf">
+		<Race id="06_dwarf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>0</SettlementTileSubtype>
@@ -590,7 +645,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
 		</Race>
-		<Race id="07_goblin">
+		<Race id="07_goblin" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
@@ -658,7 +713,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 		</Race>
-		<Race id="08_ogre">
+		<Race id="08_ogre" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>2</SettlementType>
 			<SettlementTileSubtype>1</SettlementTileSubtype>
@@ -722,7 +777,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
 		</Race>
-		<Race id="09_giant">
+		<Race id="09_giant" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>1</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
@@ -787,7 +842,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 		</Race>
-		<Race id="10_gnome">
+		<Race id="10_gnome" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
 			<SettlementType>3</SettlementType>
 			<SettlementTileSubtype>13</SettlementTileSubtype>
@@ -7659,6 +7714,29 @@
 					<Modifier>0</Modifier>
 					<Type>0</Type>
 				</Damage>
+			</Weapon>
+			<Weapon id="kithslayer">
+				<DescriptionSID>KITHSLAYER_SID</DescriptionSID>
+				<UsageDescriptionSID>KITHSLAYER_USAGE_SID</UsageDescriptionSID>
+				<Value>1600</Value>
+				<Weight><Pounds>7</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>4</Modifier>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+				</Slays>
 			</Weapon>
 			<Weapon id="stonespear">
 				<DescriptionSID>STONESPEAR_SID</DescriptionSID>

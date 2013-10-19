@@ -190,6 +190,7 @@
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="parent_id" type="xs:string" use="optional"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="AllowableTerrainTypes">
@@ -783,7 +784,7 @@
 <xs:complexType name="Weapon">
 	<xs:annotation>
 		<xs:documentation>If Skill is not provided, Savage Lands will attempt to deduce it based on the other.
-						  If neither is provided, the skill trained will default to Exoti
+						  If neither is provided, the skill trained will default to Exotic.
 		</xs:documentation>
 	</xs:annotation>
 	<xs:complexContent>
@@ -795,9 +796,20 @@
 				<xs:element name="Difficulty" type="xs:integer"/>
 				<xs:element name="Speed" type="xs:integer"/>
 				<xs:element name="Damage" type="tns:Damage"/>
+				<xs:element name="Slays" type="tns:SlayRaces" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="SlayRaces">
+	<xs:annotation>
+		<xs:documentation>
+			Allows something (presumably, a weapon) to slay the specified races.
+		</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Slay" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Weight">
 	<xs:sequence>
