@@ -567,7 +567,56 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 		</Race>		
-		<Race id="_corporeal_undead">
+		<Race id="_corporeal_undead" parent_id="_undead">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>UNDEAD_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>10</Min>
+					<Max>80</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100000</Min>
+					<Max>1000000</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>8</Strength>
+				<Dexterity>6</Dexterity>
+				<Agility>7</Agility>
+				<Health>5</Health>
+				<Intelligence>6</Intelligence>
+				<Willpower>7</Willpower>
+				<Charisma>2</Charisma>
+				<Speed>53</Speed>
+			</RaceInitialStatistics>
+			<RaceInitialDeities>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>-0.10</Slash>
+				<Pierce>-0.10</Pierce>
+				<Pound>0.0</Pound>
+				<Heat>0.15</Heat>
+				<Cold>-0.50</Cold>
+				<Acid>-0.25</Acid>
+				<Poison>-0.25</Poison>
+				<Holy>0.50</Holy>
+				<Shadow>-0.80</Shadow>
+				<Arcane>0.0</Arcane>
+				<Lightning>0.10</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>
+		<Race id="_corporeal_undead" parent_id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<NameSID>CORPOREAL_UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
@@ -8224,6 +8273,97 @@
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="staff_artificer">
+				<DescriptionSID>STAFF_ARTIFICER_SID</DescriptionSID>
+				<UsageDescriptionSID>STAFF_ARTIFICER_USAGE_SID</UsageDescriptionSID>
+				<Value>1200</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>3</NumDice>
+					<NumSides>12</NumSides>
+					<Type>2</Type>
+				</Damage>
+				<Slays>
+					<Slay>_construct</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="bugcrusher">
+				<DescriptionSID>BUGCRUSHER_SID</DescriptionSID>
+				<UsageDescriptionSID>BUGCRUSHER_USAGE_SID</UsageDescriptionSID>
+				<Value>1500</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>4</Modifier>
+					<Type>2</Type>
+				</Damage>
+				<Slays>
+					<Slay>_insect</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="jellysmasher">
+				<DescriptionSID>JELLYSMASHER_SID</DescriptionSID>
+				<UsageDescriptionSID>JELLYSMASHER_USAGE_SID</UsageDescriptionSID>
+				<Value>1500</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>5</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>2</Modifier>
+					<Type>2</Type>
+				</Damage>
+				<Slays>
+					<Slay>_jelly</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="long_hunt_knife">
+				<DescriptionSID>LONG_HUNT_KNIFE_SID</DescriptionSID>
+				<UsageDescriptionSID>LONG_HUNT_KNIFE_USAGE_SID</UsageDescriptionSID>
+				<Value>1400</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>3</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>3</Modifier>
+					<Type>1</Type>
+				</Damage>
+				<Slays>
+					<Slay>_animal</Slay>
+				</Slays>
+			</Weapon>
 			<Weapon id="kithslayer">
 				<DescriptionSID>KITHSLAYER_SID</DescriptionSID>
 				<UsageDescriptionSID>KITHSLAYER_USAGE_SID</UsageDescriptionSID>
@@ -8238,13 +8378,102 @@
 				<Difficulty>46</Difficulty>
 				<Speed>6</Speed>
 				<Damage>
-					<NumDice>4</NumDice>
-					<NumSides>6</NumSides>
-					<Modifier>4</Modifier>
+					<NumDice>3</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>3</Modifier>
 					<Type>0</Type>
 				</Damage>
 				<Slays>
 					<Slay>_humanoid</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="beastbinder">
+				<DescriptionSID>BEASTBINDER_SID</DescriptionSID>
+				<UsageDescriptionSID>BEASTBINDER_USAGE_SID</UsageDescriptionSID>
+				<Value>1450</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1008</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>7</NumDice>
+					<NumSides>4</NumSides>
+					<Type>3</Type>
+				</Damage>
+				<Slays>
+					<Slay>_monster</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="skyslayer">
+				<DescriptionSID>SKYSLAYER_SID</DescriptionSID>
+				<UsageDescriptionSID>SKYSLAYER_USAGE_SID</UsageDescriptionSID>
+				<Value>1450</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_divine</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="sunsword">
+				<DescriptionSID>SUNSWORD_SID</DescriptionSID>
+				<UsageDescriptionSID>SUNSWORD_USAGE_SID</UsageDescriptionSID>
+				<Value>2000</Value>
+				<Weight><Pounds>9</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_undead</Slay>
+					<Slay>_demon</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="dragonbane">
+				<DescriptionSID>DRAGONBANE_SID</DescriptionSID>
+				<UsageDescriptionSID>DRAGONBANE_USAGE_SID</UsageDescriptionSID>
+				<Value>1800</Value>
+				<Weight><Pounds>15</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>52</Difficulty>
+				<Speed>8</Speed>
+				<Damage>
+					<NumDice>5</NumDice>
+					<NumSides>10</NumSides>
+					<Type>1</Type>
+				</Damage>
+				<Slays>
+					<Slay>_dragon</Slay>
 				</Slays>
 			</Weapon>
 			<Weapon id="stonespear">

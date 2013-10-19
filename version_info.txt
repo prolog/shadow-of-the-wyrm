@@ -34,6 +34,13 @@ Savage Lands v0.1.7 "Aethelstan"
   random damage type each time the underlying type is requested via the
   getter.
 
+- Defined new base races (animal, construct, demon, divine, dragon, 
+  humanoid, insect, jelly, monster), and set races for every creature.
+
+- Defined slaying flags, and implemented double damage when an attack slays
+  the creature's race (either directly, or indirectly through a parent
+  race - e.g., a humanoid-slaying sword would slay an elf).
+
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
 
