@@ -271,6 +271,24 @@ string String::right(const std::string& justify_str, const uint num_cols)
   return ss.str();
 }
 
+// Check to see if the string consists entirely of whitespace characters.
+bool String::is_whitespace(const std::string& str)
+{
+  bool is_space = true;
+
+  size_t str_size = str.size();
+  for (uint i = 0; i < str_size; i++)
+  {
+    if (!isspace(str.at(i)))
+    {
+      is_space = false;
+      break;
+    }
+  }
+
+  return is_space;
+}
+
 
 Integer::Integer()
 {

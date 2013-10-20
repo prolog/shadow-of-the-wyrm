@@ -1,3 +1,4 @@
+#include <cctype>
 #include <iostream>
 #include <sstream>
 #include <vector>
@@ -315,6 +316,7 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
       {
         // Move to the second line of the buffer
         move(1, 0);
+        getyx(stdscr, cur_y, cur_x);
       }
     }
     else
@@ -330,6 +332,7 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
         enable_colour(colour, stdscr);
 
         clear_message_buffer();
+        getyx(stdscr, cur_y, cur_x);
       }
     }
     
@@ -337,6 +340,16 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
     if (cur_y > CursesConstants::MESSAGE_BUFFER_END_ROW)
     {
       cur_y--;
+    }
+
+    if (cur_x == 0)
+    {
+      if (String::is_whitespace(current_token))
+      {
+        // If we're at the start of a new line in the buffer, and the string 
+        // is entirely whitespace, skip it.
+        continue;
+      }
     }
 
     printw(current_token.c_str());        

@@ -7,16 +7,16 @@
 	<Tiles>
 	TT,TT,,T,TT,,TTT,,T,T,,TTT,TT,TTTTT,T,TT,TT,TT,TT,TT,T,T,TTT,T,TT,T,TTTTT,TT,TTT
 	T,,T,T,TT,,T,TT,TTT,TT,T,T,,,,,,,,,,,,,,,,####,T,TTT,T,TT,,,T,TT,,TTTT,,TTTT,T,T
-	,,T,TT,,,T,TT,T,T,,T,,TT,T,,##########T,,,#..#,,T,,,TTT,TTTT,TTT,T,TTT,,TT,,,T,T
-	,T,,,,T,,T,,T,TTT,TTT,TTTT,,#........#,,T,#.##,T,,TT,,,TT,,TTTT,T,T,,,TT,,TT,,,,
-	,,,T,T,T,TTT,TT,T,,,TTT,,T,,#........#T,,,,,,,,,TTT,TTTT,T,TT,,,,,TT,TT,TT,T,T,T
-	T,,T,T,TT,,T,,TTTT,T,,TTTT,,#........#,,,,,,,T,,,,TTT,T,T,,,,T,TT,,,T,,T,,TTT,,,
-	T,T,,T,T,T,,T,T,T,,,T,T,,T,,#........#,,T,######,,T,T,T,,,,TT,TT,,TTTT,,TT,T,,,T
-	T,,,T,,TT,,,,T,TTT,TT,,TT,,,#........#,,,,.....#,,,,,,T,T,TT,,,,TTT,,,TT,,,,TT,,
-	,,T,,T,,,,T,T,TT,T,TTT,,,,,,##......##,,,,#....#,,T,T,,,T,,TT,TT,,T,TT,,,TT,,T,,
-	T,T,TT,,T,T,T,TT,T,,,,,,,,,,,###..###,T,,,#....#,,,,,,T,TTT,,,,T,T,,,,T,,,,TT,,T
-	,T,TT,T,T,T,,,T,TT,,,#####,,,,,,,T,,,,,,,,######,,T,T,T,T,,,TT,TT,T,T,,,TTT,,T,T
-	T,T,,,T,T,,,,,T,T,,,,#....,,,T,,,,,,,,,,T,,,,,,,,,TT,,,,,,TT,TT,,T,T,T,,TT,,,T,,
+	,,T,TT,,,T,TT,T,T,,T,,TT,T,,###########,,,#..#,,T,,,TTT,TTTT,TTT,T,TTT,,TT,,,T,T
+	,T,,,,T,,T,,T,TTT,TTT,TTTT,,#.........#,T,#.##,T,,TT,,,TT,,TTTT,T,T,,,TT,,TT,,,,
+	,,,T,T,T,TTT,TT,T,,,TTT,,T,,#.........#,,,,,,,,,TTT,TTTT,T,TT,,,,,TT,TT,TT,T,T,T
+	T,,T,T,TT,,T,,TTTT,T,,TTTT,,#.........#,,,,,,T,,,,TTT,T,T,,,,T,TT,,,T,,T,,TTT,,,
+	T,T,,T,T,T,,T,T,T,,,T,T,,T,,#.........#,T,######,,T,T,T,,,,TT,TT,,TTTT,,TT,T,,,T
+	T,,,T,,TT,,,,T,TTT,TT,,TT,,,#.........#,,,.....#,,,,,,T,T,TT,,,,TTT,,,TT,,,,TT,,
+	,,T,,T,,,,T,T,TT,T,TTT,,,T,,##.......##,,,#....#,,T,T,,,T,,TT,TT,,T,TT,,,TT,,T,,
+	T,T,TT,,T,T,T,TT,T,,,,,,,,,,,####.####,,,,#....#,,,,,,T,TTT,,,,T,T,,,,T,,,,TT,,T
+	,T,TT,T,T,T,,,T,TT,,,#####,,,,,,,,,,T,T,,,######,,T,T,T,T,,,TT,TT,T,T,,,TTT,,T,T
+	T,T,,,T,T,,,,,T,T,,,,#....,,,T,,,,T,,,,,T,,,,,,,,,TT,,,,,,TT,TT,,T,T,T,,TT,,,T,,
 	,TT,,,T,,,T,T,TTTT,,,#...#,,##.##,,,,#####,T,,,,,,TTT,T,T,,T,,,TT,,TT,TTTT,T,T,T
 	T,,,T,,,T,T,,,T,,T,,,#####,,#...#,,,,....#,,,,T,,,T,,,,,,,TT,,T,,TT,,T,,,TT,,,,T
 	T,T,,,TTTT,,,,TTTTT,,,,,,T,,#...#,,T,#...#,,,,,,,,,,,,T,T,,TT,,,,,T,,,,,TTT,,T,,
@@ -27,8 +27,84 @@
 	TT,T,TTTT,T,TT,TTT,T,T,TTTT,TT,TTTTT,T,T,,,T,,,TT,T,TTTT,TTT,T,TT,TTT,TTT,T,TTT,
 	</Tiles>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>ilru</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>33</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>wood_elf</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>44</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>wood_elf</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>22</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>wood_elf_swordsman</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>8</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>wood_elf_swordsman</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>76</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>wood_elf_sage</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>46</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
+				<ID>thrall</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>18</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>skeleton</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>76</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items/>
 	</InitialPlacements>
 	<Exits/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>7</Row>
+				<Col>42</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>
