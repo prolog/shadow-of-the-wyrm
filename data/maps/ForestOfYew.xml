@@ -36,6 +36,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>falir</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>22</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>wood_elf</ID>
 				<Coord>
 					<Row>2</Row>
@@ -98,6 +105,18 @@
 			<Coord>
 				<Row>7</Row>
 				<Col>42</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>11</Row>
+				<Col>25</Col>
 			</Coord>
 			<Door>
 				<Material>8</Material>
