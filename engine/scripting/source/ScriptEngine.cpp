@@ -45,6 +45,7 @@ int gain_experience(lua_State* ls);
 int add_creature_to_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
 int stop_playing_game(lua_State* ls);
+int set_creature_base_damage(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -214,6 +215,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_creature_to_map", add_creature_to_map);
   lua_register(L, "add_status_to_creature", add_status_to_creature);
   lua_register(L, "stop_playing_game", stop_playing_game);
+  lua_register(L, "set_creature_base_damage", set_creature_base_damage);
 }
 
 // Lua API functions:
@@ -768,6 +770,32 @@ int add_status_to_creature(lua_State* ls)
 
   lua_pushboolean(ls, false);
   return 1;
+}
+
+// Set a creature's base (bare-handed) damage.
+int set_creature_base_damage(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 3) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int num_dice  = lua_tointeger(ls, 2);
+    int num_sides = lua_tointeger(ls, 3);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    Damage damage = creature->get_base_damage();
+    damage.set_num_dice(num_dice);
+    damage.set_dice_sides(num_sides);
+
+    creature->set_base_damage(damage);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_base_damage");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)

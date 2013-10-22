@@ -28,7 +28,7 @@ Savage Lands v0.1.7 "Aethelstan"
   shadow beast, shadow demon, shadow wyrm, snakeling, redcap, drakeling, 
   arachnos, behemoth, barrow spider, dwarf, dwarven warrior, dwarven hero,
   pegasus, bog devil, leviathan, floating eye, mountain elf, moutain elf
-  explorer, wood elf, wood elf swordsman, wood elf sage, Ilru.
+  explorer, wood elf, wood elf swordsman, wood elf sage, Ilru, Falir.
 
 - Added a damage flag, "chaotic", that has a chance of returning a
   random damage type each time the underlying type is requested via the
@@ -45,6 +45,9 @@ Savage Lands v0.1.7 "Aethelstan"
 
 - Added a new custom map, the Forest of Yew, which will be the set
   Wood Elf settlement.
+
+- Added a levelling script for Pugilists so that they do 1d(2 * level)
+  base damage.
 
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
