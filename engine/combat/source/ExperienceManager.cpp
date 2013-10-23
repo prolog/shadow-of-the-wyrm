@@ -66,8 +66,8 @@ uint ExperienceManager::get_pct_to_next_level(CreaturePtr creature)
     if ((current_level > 0) && (current_level < base_experience_table_size))
     {
       uint current_experience = creature->get_experience_points();
-      uint needed_for_current = get_experience_needed_for_level(creature, current_level-1);
-      uint needed_for_next    = get_experience_needed_for_level(creature, current_level);
+      uint needed_for_current = get_experience_needed_for_lvl_idx(creature, current_level-1);
+      uint needed_for_next    = get_experience_needed_for_lvl_idx(creature, current_level);
       uint normalized_current = current_experience - needed_for_current;
       uint normalized_next    = needed_for_next - needed_for_current;
       float normalized_pct    = (float) normalized_current / (float) normalized_next;
@@ -83,14 +83,20 @@ uint ExperienceManager::get_pct_to_next_level(CreaturePtr creature)
   return tnl_pct;
 }
 
-// Get the experience required for a particular level, taking into account any race/class modifiers.
 uint ExperienceManager::get_experience_needed_for_level(CreaturePtr creature, const uint level)
+{
+  return get_experience_needed_for_lvl_idx(creature, level-1);
+}
+
+// Get the experience required for a particular level, taking into account any race/class modifiers.
+uint ExperienceManager::get_experience_needed_for_lvl_idx(CreaturePtr creature, const uint level_idx)
 {
   uint exp_needed = 0;
   
-  if (creature)
+  // Check the array bounds to be extra safe!
+  if (creature && level_idx >= 0 && level_idx < CreatureConstants::MAX_CREATURE_LEVEL)
   {
-    int base_exp_needed = base_experience_table[level];
+    int base_exp_needed = base_experience_table[level_idx];
     
     Game& game = Game::instance();
     
@@ -128,11 +134,11 @@ bool ExperienceManager::can_gain_level(CreaturePtr creature)
   
   if (creature)
   {
-    int creature_level = creature->get_level().get_current();
+    int next_lvl_idx = creature->get_level().get_current();
     
-    if (creature_level < base_experience_table_size)
+    if (next_lvl_idx < base_experience_table_size)
     {
-      uint exp_needed = get_experience_needed_for_level(creature, creature_level);
+      uint exp_needed = get_experience_needed_for_lvl_idx(creature, next_lvl_idx);
 
       if ( creature->get_experience_points() >= exp_needed )
       {

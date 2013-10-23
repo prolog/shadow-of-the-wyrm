@@ -7,6 +7,7 @@ class ExperienceManager
     ExperienceManager();
     ~ExperienceManager();
 
+    uint get_experience_needed_for_level(CreaturePtr creature, const uint level);
     bool gain_experience(CreaturePtr creature, const uint experience_value);
     uint get_pct_to_next_level(CreaturePtr creature);
     
@@ -15,7 +16,7 @@ class ExperienceManager
 protected:
     bool can_gain_level(CreaturePtr creature);
 
-    uint get_experience_needed_for_level(CreaturePtr creature, const uint level);
+    uint get_experience_needed_for_lvl_idx(CreaturePtr creature, const uint level_idx);
 
     void level_up(CreaturePtr creature);
     void gain_level(CreaturePtr creature);

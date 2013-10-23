@@ -46,6 +46,8 @@ int add_creature_to_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
 int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);
+int gain_level(lua_State* ls);
+int goto_level(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -216,6 +218,8 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_status_to_creature", add_status_to_creature);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
+  lua_register(L, "gain_level", gain_level);
+  lua_register(L, "goto_level", goto_level);
 }
 
 // Lua API functions:
@@ -792,6 +796,56 @@ int set_creature_base_damage(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to set_creature_base_damage");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int gain_level(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+    ExperienceManager em;
+    
+    if (creature)
+    {
+      em.gain_experience(creature, em.get_experience_needed_for_level(creature, creature->get_level().get_current() + 1));
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to gain_level");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int goto_level(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    uint glevel = lua_tointeger(ls, 2);
+    CreaturePtr creature = get_creature(creature_id);
+    uint level = creature->get_level().get_current();
+
+    ExperienceManager em;
+
+    if (creature)
+    {
+      for (uint cur_level = level; cur_level <= glevel && cur_level <= CreatureConstants::MAX_CREATURE_LEVEL; cur_level++)
+      {
+        em.gain_experience(creature, em.get_experience_needed_for_level(creature, cur_level + 1));
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to goto_level");
     lua_error(ls);
   }
 
