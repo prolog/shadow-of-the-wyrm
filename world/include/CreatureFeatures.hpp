@@ -47,7 +47,7 @@ class CreatureConstants
 {
   public:
     static const int DEFAULT_CREATURE_LINE_OF_SIGHT_LENGTH;
-    static const int MAX_CREATURE_LEVEL;
+    static const unsigned int MAX_CREATURE_LEVEL;
   
   protected:
     CreatureConstants();
