@@ -5826,18 +5826,18 @@
 				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
-				<DangerLevel>21</DangerLevel>
+				<DangerLevel>14</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>21</NumDice>
+					<NumDice>14</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>800</Exp>
+				<Exp>43</Exp>
 			</CreatureGeneration>
-			<Level>21</Level>
+			<Level>14</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>42</NumSides>
+				<NumSides>28</NumSides>
 				<Type>9</Type>
 			</Damage>
 		</Creature>
@@ -5963,6 +5963,38 @@
 				<Type>1</Type>
 			</Damage>
 			<Evade>5</Evade>
+		</Creature>
+		<Creature id="lalo">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>LALO_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LALO_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LALO_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LALO_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<DangerLevel>16</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>16</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>110</Exp>
+			</CreatureGeneration>
+			<Level>16</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>32</NumSides>
+				<Type>4</Type>
+			</Damage>
+			<Evade>7</Evade>
+			<Soak>4</Soak>
+			<Speed>45</Speed>
 		</Creature>
 		<Creature id="blood_hawk">
 			<RaceID>_animal</RaceID>
