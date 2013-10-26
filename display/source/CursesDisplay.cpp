@@ -285,7 +285,7 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
 {
   int orig_curs_y, orig_curs_x;
   getyx(stdscr, orig_curs_y, orig_curs_x);
-  
+
   uint cur_y, cur_x;
 
   if (reset_cursor)
@@ -325,7 +325,6 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
       {
         move(1, TERMINAL_MAX_COLS-4);
 
-        // Add "..."
         disable_colour(colour, stdscr);
         printw("...");
         getch();

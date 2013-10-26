@@ -812,7 +812,7 @@ int gain_level(lua_State* ls)
     
     if (creature)
     {
-      em.gain_experience(creature, em.get_experience_needed_for_level(creature, creature->get_level().get_current() + 1));
+      em.gain_experience(creature, em.get_current_experience_needed_for_level(creature, creature->get_level().get_current() + 1));
     }
   }
   else
@@ -837,9 +837,9 @@ int goto_level(lua_State* ls)
 
     if (creature)
     {
-      for (uint cur_level = level; cur_level <= glevel && cur_level <= CreatureConstants::MAX_CREATURE_LEVEL; cur_level++)
+      for (uint cur_level = level; cur_level < glevel && cur_level < CreatureConstants::MAX_CREATURE_LEVEL; cur_level++)
       {
-        em.gain_experience(creature, em.get_experience_needed_for_level(creature, cur_level + 1));
+        em.gain_experience(creature, em.get_current_experience_needed_for_level(creature, cur_level + 1));
       }
     }
   }
