@@ -5994,7 +5994,7 @@
 			</Damage>
 			<Evade>7</Evade>
 			<Soak>4</Soak>
-			<Speed>45</Speed>
+			<Speed>42</Speed>
 		</Creature>
 		<Creature id="ghoul">
 			<RaceID>_corporeal_undead</RaceID>
