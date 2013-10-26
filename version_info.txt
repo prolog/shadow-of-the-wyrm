@@ -29,7 +29,7 @@ Savage Lands v0.1.7 "Aethelstan"
   arachnos, behemoth, barrow spider, dwarf, dwarven warrior, dwarven hero,
   pegasus, bog devil, leviathan, floating eye, mountain elf, moutain elf
   explorer, wood elf, wood elf swordsman, wood elf sage, Ilru, Falir,
-  lichling, grey glider, Lalo.
+  lichling, grey glider, Lalo, ghoul, corpse bird, quisling.
 
 - Added a damage flag, "chaotic", that has a chance of returning a
   random damage type each time the underlying type is requested via the
