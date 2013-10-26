@@ -324,9 +324,53 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
   map->insert(height-55, width-7, tile);
 }
 
+void WorldGenerator::generate_Lalos_Grotto(MapPtr map)
+{
+  Dimensions dim = map->size();
+  int height = dim.get_y();
+  int width = dim.get_x();
+
+  TileGenerator tg;
+
+  TilePtr lalos_grotto_tile = tg.generate(TILE_TYPE_CAVERN);
+  string l14 = Integer::to_string(14);
+  lalos_grotto_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LALOS_GROTTO);
+  lalos_grotto_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH, l14);
+  lalos_grotto_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, l14);
+
+  vector<string> creature_types;
+  creature_types.push_back("skeleton");
+  creature_types.push_back("thrall");
+  creature_types.push_back("ghoul");
+  creature_types.push_back("grey_glider");
+  creature_types.push_back("lichling");
+  creature_types.push_back("corpse_bird");
+  creature_types.push_back("quisling");
+
+  vector<string> creatures_to_generate;
+
+  BOOST_FOREACH(string creature, creature_types)
+  {
+    int num_creature = RNG::range(9, 13);
+
+    for (int i = 0; i < num_creature; i++)
+    {
+      creatures_to_generate.push_back(creature);
+    }
+  }
+
+  creatures_to_generate.push_back("lalo");
+
+  ostringstream oss;
+  Serialize::write_string_vector(oss, creatures_to_generate);
+  lalos_grotto_tile->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, oss.str());
+
+  map->insert(height-39, width-20, lalos_grotto_tile);
+}
+
 void WorldGenerator::generate_Forest_of_Yew(MapPtr map)
 {
-  //   %
+  // o %
   // %%%
   //  %
   TileGenerator tg;
@@ -346,6 +390,8 @@ void WorldGenerator::generate_Forest_of_Yew(MapPtr map)
       map->insert(row, col, sea_tile);
     }
   }
+
+  generate_Lalos_Grotto(map);
 
   TilePtr forest_tile = tg.generate(TILE_TYPE_FOREST);
   map->insert(height-39, width-18, forest_tile);
