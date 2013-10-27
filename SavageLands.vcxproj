@@ -183,6 +183,7 @@
     <ClInclude Include="engine\actions\read\include\NullReadStrategy.hpp" />
     <ClInclude Include="engine\actions\read\include\ScrollReadStrategy.hpp" />
     <ClInclude Include="engine\actions\read\include\SpellbookReadStrategy.hpp" />
+    <ClInclude Include="engine\actions\read\include\TextReadStrategy.hpp" />
     <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\APRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp" />
@@ -521,6 +522,7 @@
     <ClInclude Include="engine\menus\include\TextComponent.hpp" />
     <ClInclude Include="engine\menus\include\TextDisplayFormatter.hpp" />
     <ClInclude Include="engine\menus\include\TextDisplayScreen.hpp" />
+    <ClInclude Include="engine\menus\include\TextFormatSpecifiers.hpp" />
     <ClInclude Include="engine\menus\include\WelcomeScreen.hpp" />
     <ClInclude Include="engine\scripting\include\LevelScript.hpp" />
     <ClInclude Include="engine\scripting\include\ScriptEngine.hpp" />
@@ -872,6 +874,7 @@
     <ClCompile Include="engine\actions\read\source\NullReadStrategy.cpp" />
     <ClCompile Include="engine\actions\read\source\ScrollReadStrategy.cpp" />
     <ClCompile Include="engine\actions\read\source\SpellbookReadStrategy.cpp" />
+    <ClCompile Include="engine\actions\read\source\TextReadStrategy.cpp" />
     <ClCompile Include="engine\actions\source\ActionCoordinator.cpp" />
     <ClCompile Include="engine\actions\source\ActionCost.cpp" />
     <ClCompile Include="engine\actions\source\ActionManager.cpp" />
@@ -1508,6 +1511,7 @@
     <ClCompile Include="engine\menus\source\TextComponent.cpp" />
     <ClCompile Include="engine\menus\source\TextDisplayFormatter.cpp" />
     <ClCompile Include="engine\menus\source\TextDisplayScreen.cpp" />
+    <ClCompile Include="engine\menus\source\TextFormatSpecifiers.cpp" />
     <ClCompile Include="engine\menus\source\WelcomeScreen.cpp" />
     <ClCompile Include="engine\scripting\source\LevelScript.cpp" />
     <ClCompile Include="engine\scripting\source\ScriptEngine.cpp" />

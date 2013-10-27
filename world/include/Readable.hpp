@@ -6,9 +6,18 @@
 class Readable : public Item
 {
   public:
+    bool operator==(const Readable& r) const;
+
     // Scrolls are consumed when used.  Spellbooks are not, though they may be destroyed as part
-    // of the overall read logic.
+    // of the overall read logic.  Tomes should not be destroyed 
+    // (they're just regular books).
     virtual bool destroy_on_read() const = 0;
+
+    virtual void set_text_sid(const std::string& new_text_sid);
+    virtual std::string get_text_sid() const;
+
+    virtual bool serialize(std::ostream& stream);
+    virtual bool deserialize(std::istream& stream);
     
   protected:
     // protected so that the class can't actually be instantiated
@@ -16,6 +25,8 @@ class Readable : public Item
     // subclasses.
     Readable();
     ~Readable();
+
+    std::string text_sid;
 };
 
 typedef boost::shared_ptr<Readable> ReadablePtr;

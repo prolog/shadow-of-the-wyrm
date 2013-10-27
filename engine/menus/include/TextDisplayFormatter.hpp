@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <vector>
+#include "Display.hpp"
 
 // A class for breaking up text into lines of a particular length.  Its
 // implementation gets the display information off the game object, queries
@@ -9,5 +10,8 @@ class TextDisplayFormatter
 {
   public:
     std::vector<std::string> format_text(const std::string& text) const;
+
+  protected:
+    void process_token(const std::string& token, std::vector<std::string>& result, std::string& current_str, uint& cur_pos, const uint width) const;
 };
 

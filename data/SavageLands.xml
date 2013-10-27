@@ -10390,6 +10390,22 @@
 			</Wand>
 		</Wands>
 		<Spellbooks>
+			<Spellbook id="isen_dun_chronicle">
+				<DescriptionSID>ISEN_DUN_CHRONICLE_SID</DescriptionSID>
+				<UsageDescriptionSID>ISEN_DUN_CHRONICLE_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+				<Rarity>1</Rarity>
+				<TextSID>ISEN_DUN_CHRONICLE_TEXT_SID</TextSID>
+				<SpellID/>
+				<Difficulty>0</Difficulty>
+			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>

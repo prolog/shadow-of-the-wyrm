@@ -36,7 +36,8 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
 
       if (readable)
       {
-        ReadStrategyPtr read_strategy = ReadStrategyFactory::create_read_strategy(readable->get_type());
+        string text_sid = readable->get_text_sid();
+        ReadStrategyPtr read_strategy = ReadStrategyFactory::create_read_strategy(readable->get_type(), text_sid);
 
         if (read_strategy)
         {

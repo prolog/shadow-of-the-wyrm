@@ -14,6 +14,7 @@ TEST(SL_World_Spellbook, saveload)
   book.set_unidentified_description_sid("serialize_break_test!");
   book.set_spell_id("big_spell");
   book.set_difficulty(105);
+  book.set_text_sid("fdsafdsa");
 
   ostringstream ss;
 
@@ -24,4 +25,8 @@ TEST(SL_World_Spellbook, saveload)
   book2.deserialize(iss);
 
   EXPECT_TRUE(book == book2);
+
+  book.set_text_sid("not a match");
+
+  EXPECT_FALSE(book == book2);
 }

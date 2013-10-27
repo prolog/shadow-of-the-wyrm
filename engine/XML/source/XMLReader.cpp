@@ -31,11 +31,6 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
 
     bool chaotic = XMLUtils::get_attribute_bool_value(damage_node, "chaotic");
 
-    if (chaotic)
-    {
-      int x = 1;
-    }
-
     damage.set_chaotic(chaotic);
   }
 }
