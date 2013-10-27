@@ -746,9 +746,18 @@
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>
-<xs:complexType name="Spellbook">
+<xs:complexType name="Readable">
 	<xs:complexContent>
 		<xs:extension base="tns:Item">
+			<xs:sequence>
+				<xs:element name="TextSID" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Spellbook">
+	<xs:complexContent>
+		<xs:extension base="tns:Readable">
 			<xs:sequence>
 				<xs:element name="SpellID" type="xs:string"/>
 				<xs:element name="Difficulty" type="xs:integer"/>
@@ -758,7 +767,7 @@
 </xs:complexType>
 <xs:complexType name="Scroll">
 	<xs:complexContent>
-		<xs:extension base="tns:Item">
+		<xs:extension base="tns:Readable">
 			<xs:sequence>
 				<xs:element name="Effect" type="tns:EffectType"/>
 			</xs:sequence>

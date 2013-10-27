@@ -16,7 +16,7 @@ void XMLSpellbookReader::parse(SpellbookPtr book, GenerationValues& igv, const X
 {
   if (!book_node.is_null())
   {
-    XMLItemReader::parse(book, igv, book_node);
+    XMLReadableReader::parse(book, igv, book_node);
 
     // The spell which is contained within the book.
     string spell_id = XMLUtils::get_child_node_value(book_node, "SpellID");

@@ -8,7 +8,7 @@
 class ReadStrategyFactory
 {
   public:
-    static ReadStrategyPtr create_read_strategy(const ItemType item_type);
+    static ReadStrategyPtr create_read_strategy(const ItemType item_type, const std::string& text_sid);
 
   protected:
     ReadStrategyFactory();
