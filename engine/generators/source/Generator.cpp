@@ -1,3 +1,4 @@
+#include <boost/algorithm/string.hpp>
 #include <boost/foreach.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -134,13 +135,12 @@ bool Generator::generate_initial_set_creatures(MapPtr map)
   int rows = dim.get_y();
   int cols = dim.get_x();
 
-  string vector_s = get_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
+  string initial_creatures = get_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
   vector<string> creature_ids;
-  istringstream iss(vector_s);
+  boost::split(creature_ids, initial_creatures, boost::is_any_of(","));
 
   try
   {
-    Serialize::read_string_vector(iss, creature_ids);
     Game& game = Game::instance();
     ActionManager& am = game.get_action_manager_ref();
     CreatureFactory cf;
