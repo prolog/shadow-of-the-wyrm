@@ -58,6 +58,9 @@ Savage Lands v0.1.7 "Aethelstan"
   entries to let the player know about the locations of various race
   settlements (Yew, Gnordvar, etc).
 
+- Misc: added some support for CSV strings to handle "monster lists"/"item
+  lists".
+
 Savage Lands v0.1.6 "Osric"
 - Version declared August 17, 2013.  Version finalized September 29, 2013.
 
