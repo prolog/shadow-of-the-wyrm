@@ -45,12 +45,13 @@ Savage Lands v0.1.7 "Aethelstan"
 - Created a number of race-slaying artifact weapons.
 
 - Added a new custom map, the Forest of Yew, which will be the set
-  Wood Elf settlement.  Nearby, created Lalo's Grotto.
+  Wood Elf settlement.  Nearby, created Lalo's Grotto, and created a quest
+  for Ilru in Yew.
 
 - Added a levelling script for Pugilists so that they do 1d(2 * level)
   base damage.
 
-- There is now a little parsonage adjacent to the church in Isen Dun.
+- There is now a little rectory adjacent to the church in Isen Dun.
 
 - Added support for reading "books" - scrolls or spellbooks with text
   instead of spells.  Created the Isen Dun Chronicle and started adding

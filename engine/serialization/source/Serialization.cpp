@@ -41,7 +41,7 @@ void Serialization::save(CreaturePtr creature)
     string filename = generate_savefile_name(user_name, name);
 
     // Name the file and do the appropriate setup
-    ofstream stream(filename, ios::binary);
+    ofstream stream(filename, ios::binary | ios::out);
         
     // Save the state and game data:
     // Save the metadata

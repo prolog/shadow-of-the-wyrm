@@ -5810,6 +5810,7 @@
 			</Damage>
 			<Evade>10</Evade>
 			<Soak>1</Soak>
+			<ChatScript>quests/ilru.lua</ChatScript>
 		</Creature>
 		<Creature id="falir">
 			<RaceID>02_woodelf</RaceID>
@@ -8346,6 +8347,18 @@
 				<DangerLevel>3</DangerLevel>
 				<Evade>2</Evade>
 				<Soak>1</Soak>
+			</Armour>
+			<Armour id="faerie_shield">
+				<DescriptionSID>FAERIE_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>FAERIE_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>1250</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Evade>12</Evade>
+				<Soak>3</Soak>
 			</Armour>
 			<Armour id="iron_shield">
 				<DescriptionSID>IRON_SHIELD_SID</DescriptionSID>
