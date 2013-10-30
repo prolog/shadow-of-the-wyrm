@@ -48,6 +48,20 @@ TEST(SL_Engine_ConversionRoutines, char_to_string)
   EXPECT_EQ("3", Char::to_string(three));
 }
 
+TEST(SL_Engine_ConversionRoutines, vector_to_csv)
+{
+  vector<string> foo;
+
+  EXPECT_EQ("", String::create_csv_from_string_vector(foo));
+
+  foo.push_back("foo");
+  foo.push_back("bar");
+  foo.push_back("baz");
+  foo.push_back("quux");
+
+  EXPECT_EQ("foo,bar,baz,quux", String::create_csv_from_string_vector(foo));
+}
+
 TEST(SL_Engine_ConversionRoutines, direction_to_string)
 {
   EXPECT_EQ(CommandKeys::MOVE_SOUTHEAST, DirectionEnum::to_string(DIRECTION_SOUTH_EAST));

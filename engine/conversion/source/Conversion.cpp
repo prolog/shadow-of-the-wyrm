@@ -45,6 +45,23 @@ string String::clean(const string& to_clean)
   return cleaned_string;
 }
 
+string String::create_csv_from_string_vector(const vector<string>& str_vec)
+{
+  ostringstream ss;
+  size_t str_vec_size = str_vec.size();
+  for (uint i = 0; i < str_vec_size; i++)
+  {
+    ss << str_vec.at(i);
+
+    if (i != (str_vec_size - 1))
+    {
+      ss << ",";
+    }
+  }
+
+  return ss.str();
+}
+
 bool String::to_bool(const string& convert)
 {
   if (convert == "1" || convert == "true")

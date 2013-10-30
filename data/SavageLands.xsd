@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- Important: don't use commas in identifiers! They are used in-game for tokenization. -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:1.0.0" targetNamespace="urn:savage_lands:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
 <!-- ELEMENTS -->
 <xs:element name="SavageLands">

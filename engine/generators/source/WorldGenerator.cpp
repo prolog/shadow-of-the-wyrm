@@ -311,9 +311,8 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
     creatures_to_generate.push_back("satyr");
   }
 
-  ostringstream oss;
-  Serialize::write_string_vector(oss, creatures_to_generate);
-  gnordvar_mines->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, oss.str());
+  string creature_str = String::create_csv_from_string_vector(creatures_to_generate);
+  gnordvar_mines->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, creature_str);
 
   map->insert(height-56, width-7, gnordvar_mines);
 
@@ -361,9 +360,8 @@ void WorldGenerator::generate_Lalos_Grotto(MapPtr map)
 
   creatures_to_generate.push_back("lalo");
 
-  ostringstream oss;
-  Serialize::write_string_vector(oss, creatures_to_generate);
-  lalos_grotto_tile->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, oss.str());
+  string creature_str = String::create_csv_from_string_vector(creatures_to_generate);
+  lalos_grotto_tile->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, creature_str);
 
   map->insert(height-39, width-20, lalos_grotto_tile);
 }

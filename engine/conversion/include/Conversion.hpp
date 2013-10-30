@@ -2,6 +2,7 @@
 #include <map>
 #include <sstream>
 #include <string>
+#include <vector>
 #include "ActionCost.hpp"
 #include "common.hpp"
 #include "Directions.hpp"
@@ -68,6 +69,7 @@ class String
 {
   public:
     static std::string clean(const std::string& str);
+    static std::string create_csv_from_string_vector(const std::vector<std::string>& str_vec);
     static void reset_and_pad(std::string& string_to_reset_and_pad, const uint num_cols);
     static std::string centre(const std::string& string_to_centre, const uint num_cols);
     static std::string right (const std::string& string_to_right_justify, const uint num_cols);
