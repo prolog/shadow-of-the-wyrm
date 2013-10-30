@@ -1,4 +1,5 @@
 #include <ctype.h>
+#include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "CommandKeys.hpp"
@@ -43,6 +44,15 @@ string String::clean(const string& to_clean)
   }
   
   return cleaned_string;
+}
+
+vector<string> String::create_string_vector_from_csv_string(const string& csv_str)
+{
+  vector<string> str_vec;
+
+  boost::split(str_vec, csv_str, boost::is_any_of(","));
+
+  return str_vec;
 }
 
 string String::create_csv_from_string_vector(const vector<string>& str_vec)
