@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Important: don't use commas in identifiers! They are used in-game for tokenization. -->
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:1.0.0" targetNamespace="urn:savage_lands:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
 <!-- ELEMENTS -->
 <xs:element name="SavageLands">
@@ -72,7 +71,7 @@
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 			<xs:element name="Effect" type="tns:EffectType"/>
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:string"/>
+		<xs:attribute name="id" type="tns:Identifier"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="Tiles">
@@ -164,7 +163,7 @@
 			<xs:element name="Dislikes" type="tns:DeityDislikes"/>
 			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="Race">
@@ -190,8 +189,8 @@
 			<xs:element ref="tns:Skills"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:string" use="required"/>
-		<xs:attribute name="parent_id" type="xs:string" use="optional"/>
+		<xs:attribute name="id" type="tns:Identifier" use="required"/>
+		<xs:attribute name="parent_id" type="tns:Identifier" use="optional"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="AllowableTerrainTypes">
@@ -291,7 +290,7 @@
 <xs:annotation><xs:documentation>The deities that can be selected when creating a creature of a particular race</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="DeityID" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="DeityID" type="tns:Identifier" minOccurs="1" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -301,8 +300,8 @@
 	</xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="RaceID" type="xs:string" minOccurs="0"/>
-			<xs:element name="ClassID" type="xs:string" minOccurs="0"/>
+			<xs:element name="RaceID" type="tns:Identifier" minOccurs="0"/>
+			<xs:element name="ClassID" type="tns:Identifier" minOccurs="0"/>
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="TextDetailsSID" type="xs:string"/>
@@ -328,7 +327,7 @@
 			<xs:element ref="tns:EventScripts" minOccurs="0"/>
 			<xs:element name="ChatScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="EventScripts">
@@ -362,7 +361,7 @@
 			<xs:element ref="tns:InitialEquipmentAndInventory" minOccurs="0"/>
 			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
-		<xs:attribute name="id" type="xs:string" use="required"/>
+		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 	</xs:complexType>
 </xs:element>
 <xs:element name="Resistances">
@@ -630,12 +629,12 @@
   -->
 <xs:complexType name="InitialItem">
 	<xs:sequence>
-		<xs:element name="ID" type="xs:string" minOccurs="0"/>
+		<xs:element name="ID" type="tns:Identifier" minOccurs="0"/>
 		<xs:element name="Quantity" type="tns:Quantity" minOccurs="0"/>
 		<xs:element name="Random" minOccurs="0">
 			<xs:complexType>
 				<xs:sequence>
-					<xs:element name="ID" maxOccurs="unbounded"/>
+					<xs:element name="ID" type="tns:Identifier" maxOccurs="unbounded"/>
 					<xs:element name="Quantity" type="tns:Quantity" minOccurs="0"/>
 				</xs:sequence>
 			</xs:complexType>
@@ -646,8 +645,8 @@
 					<xs:element name="Race" minOccurs="0" maxOccurs="unbounded">
 						<xs:complexType>
 							<xs:sequence>
-								<xs:element name="RaceID" type="xs:string"/>
-								<xs:element name="ID" type="xs:string"/>
+								<xs:element name="RaceID" type="tns:Identifier"/>
+								<xs:element name="ID" type="tns:Identifier"/>
 								<xs:element name="Quantity" type="tns:Quantity" minOccurs="0"/>
 							</xs:sequence>
 						</xs:complexType>
@@ -703,14 +702,14 @@
 		<xs:element name="DangerLevel" type="xs:integer"/>
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
 	</xs:sequence>
-	<xs:attribute name="id" type="xs:string"/>
+	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>
 <xs:complexType name="Tool">
 	<xs:complexContent>
 		<xs:extension base="tns:Item">
 			<xs:sequence>
 				<!-- Keys can set this to be able to open all locks with a particular ID -->
-				<xs:element name="LockID" type="xs:string" minOccurs="0"/>
+				<xs:element name="LockID" type="tns:Identifier" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -760,7 +759,7 @@
 	<xs:complexContent>
 		<xs:extension base="tns:Readable">
 			<xs:sequence>
-				<xs:element name="SpellID" type="xs:string"/>
+				<xs:element name="SpellID" type="tns:Identifier"/>
 				<xs:element name="Difficulty" type="xs:integer"/>
 			</xs:sequence>
 		</xs:extension>
@@ -1218,4 +1217,9 @@
       <xs:fractionDigits value="2"/>
     </xs:restriction>
   </xs:simpleType>
+<xs:simpleType name="Identifier">
+	<xs:restriction base="xs:string">
+		<xs:pattern value="[a-zA-Z0-9_]*"/>
+	</xs:restriction>
+</xs:simpleType>
 </xs:schema>
