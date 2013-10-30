@@ -69,6 +69,7 @@ class String
 {
   public:
     static std::string clean(const std::string& str);
+    static std::vector<std::string> create_string_vector_from_csv_string(const std::string& csv_str);
     static std::string create_csv_from_string_vector(const std::vector<std::string>& str_vec);
     static void reset_and_pad(std::string& string_to_reset_and_pad, const uint num_cols);
     static std::string centre(const std::string& string_to_centre, const uint num_cols);

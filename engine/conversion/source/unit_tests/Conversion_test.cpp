@@ -48,6 +48,22 @@ TEST(SL_Engine_ConversionRoutines, char_to_string)
   EXPECT_EQ("3", Char::to_string(three));
 }
 
+TEST(SL_Engine_ConversionRoutines, csv_to_vector)
+{
+  string csv = "first,second,third";
+  vector<string> str_vec = String::create_string_vector_from_csv_string(csv);
+
+  EXPECT_EQ("third", str_vec.back());
+
+  str_vec.pop_back();
+
+  EXPECT_EQ("second", str_vec.back());
+
+  str_vec.pop_back();
+
+  EXPECT_EQ("first", str_vec.back());
+}
+
 TEST(SL_Engine_ConversionRoutines, vector_to_csv)
 {
   vector<string> foo;
