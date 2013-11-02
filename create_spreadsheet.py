@@ -29,11 +29,13 @@ def get_creatures_from_xml(xml_file):
       text_node = creature.getElementsByTagName('Text')[0]
       symbol_node = text_node.getElementsByTagName('Symbol')[0]
       colour_node = text_node.getElementsByTagName('Colour')[0]
+      danger_level_node = creature.getElementsByTagName('DangerLevel')[0]
 
       creature_symbol = symbol_node.childNodes[0].nodeValue
       creature_colour = colour_node.childNodes[0].nodeValue
+      creature_level  = danger_level_node.childNodes[0].nodeValue
 
-      creature_tuple = (creature_symbol, creature_colour)
+      creature_tuple = (creature_symbol, creature_colour, creature_level)
 
       # If there's already a creature tuple of the given symbol/colour,
       # add the current creature ID to the existing one.
@@ -51,11 +53,11 @@ def write_creatures_to_csv(creatures, csv_file):
   csv = open(csv_file, 'w')
 
   # Write the header
-  csv.write('Symbol' + ',' + 'Colour' + ',' + 'Creature' + '\n')
+  csv.write('Symbol, Colour, Creature, Level \n')
 
   # Write the values
   for sc_pair in sorted(creatures):
-    line = sc_pair[0] + ',' + sc_pair[1] + ',' + creatures[sc_pair] + '\n'
+    line = sc_pair[0] + ',' + sc_pair[1] + ',' + creatures[sc_pair] + ',' + sc_pair[2] + '\n'
     csv.write(line)
 
   csv.close()
