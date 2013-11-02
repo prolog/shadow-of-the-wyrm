@@ -13,7 +13,13 @@ using namespace boost::filesystem;
 XMLConfigurationReader::XMLConfigurationReader(const std::string& xml_filename)
 : filename(xml_filename)
 {
+  XML::initialize();
   initialize_parser(xml_filename);
+}
+
+XMLConfigurationReader::~XMLConfigurationReader()
+{
+  XML::tear_down();
 }
 
 DeityMap XMLConfigurationReader::get_deities()

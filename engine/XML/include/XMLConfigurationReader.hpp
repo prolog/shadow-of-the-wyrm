@@ -19,6 +19,8 @@ class XMLConfigurationReader
 {
   public:
     XMLConfigurationReader(const std::string& xml_filename);
+    ~XMLConfigurationReader();
+
     void set_new_file(const std::string& xml_filename);
 
     DeityMap get_deities();

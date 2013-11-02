@@ -87,7 +87,6 @@ int main(int argc, char* argv[])
 {
   try
   {
-    XML::initialize();
     Log& log = Log::instance();
     log.set_log_level(LOG_ERROR);
     log.trace("main - testing");
@@ -127,8 +126,6 @@ int main(int argc, char* argv[])
   {
     Log::instance().log("Unable to run Savage Lands!");
   }
-
-  XML::tear_down();
 
   return 0;
 }
