@@ -32,8 +32,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Minor king or sub-king of Sussex.
-  return "\"Aethelstan\"";
+  // Minor king or sub-king of Sussex, succeeded Aethelstan
+  return "\"Aethelbert\"";
 }
 
 string Metadata::get_game_version_synopsis() const
