@@ -560,6 +560,7 @@
     <ClInclude Include="engine\strings\include\SkillTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SpellcastingTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SpellFailureTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\StatisticTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StatusAilmentTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\StringTable.hpp" />
     <ClInclude Include="engine\strings\include\TextKeys.hpp" />
@@ -1615,6 +1616,7 @@
     <ClCompile Include="engine\strings\source\SkillTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SpellcastingTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SpellFailureTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\StatisticTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\StatusAilmentTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\StringTable.cpp" />
     <ClCompile Include="engine\strings\source\TextKeys.cpp" />

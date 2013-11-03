@@ -2799,6 +2799,9 @@
     <ClInclude Include="engine\menus\include\TextFormatSpecifiers.hpp">
       <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\strings\include\StatisticTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5371,6 +5374,9 @@
     </ClCompile>
     <ClCompile Include="engine\menus\source\TextFormatSpecifiers.cpp">
       <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\StatisticTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

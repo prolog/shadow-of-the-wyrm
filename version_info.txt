@@ -1,6 +1,9 @@
 Savage Lands v0.1.8 "Aethelbert"
 - Version declared November 2, 2013.
 
+- Added a level script for thieves.  Thieves now get a speed bonus whenever
+  they reach a level that is a multiple of 5.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 
