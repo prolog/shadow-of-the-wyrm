@@ -2170,7 +2170,7 @@
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
 			<!-- Pugilists' bare-handed damage increases every level. -->
-			<LevelScript>class_level/pugilist.lua</LevelScript>
+			<LevelScript>level/pugilist.lua</LevelScript>
 		</Class>
 		<Class id="rover">
 			<UserPlayable>1</UserPlayable>
@@ -2566,7 +2566,8 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
-			<LevelScript>class_level/thief.lua</LevelScript>
+			<!-- Thieves become faster, periodically. -->
+			<LevelScript>level/thief.lua</LevelScript>
 		</Class>
 		<Class id="warrior">
 			<UserPlayable>1</UserPlayable>
@@ -2803,7 +2804,7 @@
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
 			<!-- Witchlings get new/more spells with each level. -->
-			<LevelScript>class_level/witchling.lua</LevelScript>
+			<LevelScript>level/witchling.lua</LevelScript>
 		</Class>
 		<Class id="wizard">
 			<UserPlayable>1</UserPlayable>
