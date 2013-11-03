@@ -12,6 +12,7 @@
 #include "RNG.hpp"
 #include "ScriptEngine.hpp"
 #include "Serialize.hpp"
+#include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
 #include "TextMessages.hpp"
@@ -50,6 +51,13 @@ int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);
 int set_creature_speed(lua_State* ls);
 int get_creature_speed(lua_State* ls);
+int incr_str(lua_State* ls);
+int incr_dex(lua_State* ls);
+int incr_agi(lua_State* ls);
+int incr_hea(lua_State* ls);
+int incr_int(lua_State* ls);
+int incr_wil(lua_State* ls);
+int incr_cha(lua_State* ls);
 int gain_level(lua_State* ls);
 int goto_level(lua_State* ls);
 int is_player(lua_State* ls);
@@ -229,6 +237,13 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "gain_level", gain_level);
   lua_register(L, "goto_level", goto_level);
   lua_register(L, "is_player", is_player);
+  lua_register(L, "incr_str", incr_str);
+  lua_register(L, "incr_dex", incr_dex);
+  lua_register(L, "incr_agi", incr_agi);
+  lua_register(L, "incr_hea", incr_hea);
+  lua_register(L, "incr_int", incr_int);
+  lua_register(L, "incr_wil", incr_wil);
+  lua_register(L, "incr_cha", incr_cha);
 }
 
 // Lua API functions:
@@ -950,6 +965,167 @@ int is_player(lua_State* ls)
 
   lua_pushboolean(ls, is_creature_player);
   return 1;
+}
+
+int incr_str(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int add_msg = lua_toboolean(ls, 2);
+
+    if (add_msg)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_STRENGTH));
+      manager.send();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to incr_str");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int incr_dex(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int add_msg = lua_toboolean(ls, 2);
+
+    if (add_msg)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_DEXTERITY));
+      manager.send();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to incr_dex");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int incr_agi(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int add_msg = lua_toboolean(ls, 2);
+
+    if (add_msg)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_AGILITY));
+      manager.send();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to incr_agi");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int incr_hea(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int add_msg = lua_toboolean(ls, 2);
+
+    if (add_msg)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_HEALTH));
+      manager.send();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to incr_hea");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int incr_int(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int add_msg = lua_toboolean(ls, 2);
+
+    if (add_msg)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_INTELLIGENCE));
+      manager.send();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to incr_int");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int incr_wil(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int add_msg = lua_toboolean(ls, 2);
+
+    if (add_msg)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_WILLPOWER));
+      manager.send();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to incr_wil");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int incr_cha(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isboolean(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int add_msg = lua_toboolean(ls, 2);
+
+    if (add_msg)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_CHARISMA));
+      manager.send();
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to incr_cha");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)
