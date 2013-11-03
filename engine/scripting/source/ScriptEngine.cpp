@@ -7,6 +7,7 @@
 #include "Log.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PlayerConstants.hpp"
 #include "Quests.hpp"
 #include "RNG.hpp"
 #include "ScriptEngine.hpp"
@@ -25,6 +26,7 @@ CreaturePtr get_creature(const string& creature_id);
 // API prototypes
 int add_message_with_pause(lua_State* ls);
 int add_message(lua_State* ls);
+int add_debug_message(lua_State* ls);
 int add_confirmation_message(lua_State* ls);
 int add_new_quest(lua_State* ls);
 int is_on_quest(lua_State* ls);
@@ -46,8 +48,11 @@ int add_creature_to_map(lua_State* ls);
 int add_status_to_creature(lua_State* ls);
 int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);
+int set_creature_speed(lua_State* ls);
+int get_creature_speed(lua_State* ls);
 int gain_level(lua_State* ls);
 int goto_level(lua_State* ls);
+int is_player(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -197,6 +202,7 @@ void ScriptEngine::register_api_functions()
 {
   lua_register(L, "add_message_with_pause", add_message_with_pause);
   lua_register(L, "add_message", add_message);
+  lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
   lua_register(L, "add_new_quest", add_new_quest);
   lua_register(L, "is_on_quest", is_on_quest);
@@ -218,8 +224,11 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "add_status_to_creature", add_status_to_creature);
   lua_register(L, "stop_playing_game", stop_playing_game);
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
+  lua_register(L, "set_creature_speed", set_creature_speed);
+  lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "gain_level", gain_level);
   lua_register(L, "goto_level", goto_level);
+  lua_register(L, "is_player", is_player);
 }
 
 // Lua API functions:
@@ -236,7 +245,6 @@ static int add_message_with_pause(lua_State* ls)
     string message_sid = lua_tostring(ls, 1);
     
     IMessageManager& manager = MessageManagerFactory::instance();
-    manager.clear_if_necessary();
     manager.add_new_message_with_pause(StringTable::get(message_sid));
     manager.send();
 
@@ -266,13 +274,39 @@ static int add_message(lua_State* ls)
 		string message_sid = lua_tostring(ls, 1);
 
     IMessageManager& manager = MessageManagerFactory::instance();
-    manager.clear_if_necessary();
     manager.add_new_message(StringTable::get(message_sid));
     manager.send();
 	}
   else
   {
     lua_pushstring(ls, "Incorrect arguments to add_message");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Clear the message manager, and add a new message.
+// Arguments expected: 1.
+// Argument type: string (not a resource string)
+//
+// The expectation is that this function should be used only for
+// debugging purposes, where strings won't be in the .ini files - use the regular 
+// "add_message" function otherwise!
+static int add_debug_message(lua_State* ls)
+{
+  if(lua_gettop(ls) > 0 && lua_isstring(ls, -1))
+	{
+		string debug = lua_tostring(ls, 1);
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    manager.add_new_message(debug);
+    manager.send();
+	}
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_debug_message");
     lua_error(ls);
   }
 
@@ -802,6 +836,53 @@ int set_creature_base_damage(lua_State* ls)
   return 0;
 }
 
+// Set a creature's speed.
+int set_creature_speed(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 2) && (lua_isstring(ls, 1) && lua_isnumber(ls, 2)))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int new_base_speed = lua_tointeger(ls, 2);
+    CreaturePtr creature = get_creature(creature_id);
+    Statistic cr_speed = creature->get_speed();
+    
+    int cur_speed = cr_speed.get_current();
+
+    cr_speed.set_base(new_base_speed);
+    cr_speed.set_current(cur_speed - (cur_speed - new_base_speed));
+
+    creature->set_speed(cr_speed);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_speed");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Get a creature's speed.
+int get_creature_speed(lua_State* ls)
+{
+  int speed = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    CreaturePtr creature = get_creature(creature_id);
+    speed = creature->get_speed().get_base();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_speed");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, speed);
+  return 1;
+}
+
 int gain_level(lua_State* ls)
 {
   if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
@@ -850,6 +931,25 @@ int goto_level(lua_State* ls)
   }
 
   return 0;
+}
+
+int is_player(lua_State* ls)
+{
+  bool is_creature_player = false;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    is_creature_player = (creature_id == PlayerConstants::PLAYER_CREATURE_ID);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments supplied to is_player");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, is_creature_player);
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)
