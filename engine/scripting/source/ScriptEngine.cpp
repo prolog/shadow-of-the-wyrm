@@ -43,6 +43,7 @@ int get_num_item_generated(lua_State* ls);
 int set_skill_value(lua_State* ls);
 int get_skill_value(lua_State* ls);
 int RNG_range(lua_State* ls);
+int RNG_percent_chance(lua_State* ls);
 int add_spell_castings(lua_State* ls);
 int gain_experience(lua_State* ls);
 int add_creature_to_map(lua_State* ls);
@@ -226,6 +227,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_skill_value", set_skill_value);
   lua_register(L, "get_skill_value", get_skill_value);
   lua_register(L, "RNG_range", RNG_range);
+  lua_register(L, "RNG_percent_chance", RNG_percent_chance);
   lua_register(L, "add_spell_castings", add_spell_castings);
   lua_register(L, "gain_experience", gain_experience);
   lua_register(L, "add_creature_to_map", add_creature_to_map);
@@ -713,6 +715,26 @@ int RNG_range(lua_State* ls)
   }
 
   lua_pushnumber(ls, rng_val);
+  return 1;
+}
+
+int RNG_percent_chance(lua_State* ls)
+{
+  int rng_val = 0;
+
+  if ((lua_gettop(ls) == 1) && (lua_isnumber(ls, 1)))
+  {
+    int percent = lua_tointeger(ls, 1);
+
+    rng_val = RNG::percent_chance(percent);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to RNG_range");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, rng_val);
   return 1;
 }
 

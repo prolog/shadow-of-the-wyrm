@@ -4,6 +4,18 @@ Savage Lands v0.1.8 "Aethelbert"
 - Added a level script for thieves.  Thieves now get a speed bonus whenever
   they reach a level that is a multiple of 5.
 
+- Created support for calling a stat-gain function on level based on both
+  race (every 7 levels) and class (every 5).  These are defined as:
+
+  Class:
+    - Adventurers: +1 Dex, with a 50% chance to gain each of +1 Str
+                   and +1 Hea.
+    - Pugilists: +1 Str
+    - Thieves: +1 Agi
+    - Witchlings: +1 Int
+
+  Race:
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 
