@@ -1474,6 +1474,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/adventurer.lua</LevelScript>
 		</Class>
 		<Class id="apothecary">
  			<UserPlayable>1</UserPlayable>
