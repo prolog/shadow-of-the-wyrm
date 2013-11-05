@@ -9,7 +9,11 @@ Savage Lands v0.1.8 "Aethelbert"
 
   Class:
     - Adventurers: +1 Dex, with a 50% chance to gain each of +1 Str
-                   and +1 Hea.
+                   and +1 Hea
+    - Apothecaries: +1 Int
+    - Archers: +1 Dex
+    - Minstrels: +1 Cha
+    - Pilgrims: +1 Wil
     - Pugilists: +1 Str
     - Thieves: +1 Agi
     - Witchlings: +1 Int
