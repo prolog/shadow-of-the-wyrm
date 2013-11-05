@@ -1538,6 +1538,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/apothecary.lua</LevelScript>
 		</Class>
 		<Class id="archer">
 			<UserPlayable>1</UserPlayable>
@@ -1731,6 +1732,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/archer.lua</LevelScript>
 		</Class>
 		<Class id="artisan">
 			<UserPlayable>1</UserPlayable>
@@ -1914,6 +1916,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/minstrel.lua</LevelScript>
 		</Class>
 		<Class id="noble">
 			<UserPlayable>1</UserPlayable>
@@ -2111,6 +2114,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/pilgrim.lua</LevelScript>
 		</Class>
 		<Class id="pugilist">
 			<UserPlayable>1</UserPlayable>

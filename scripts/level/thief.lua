@@ -2,7 +2,7 @@ require('level')
 
 local function thief_class_stat_gain_fn(creature_id, lvl)
   if lvl % 5 == 0 then
-    incr_agi(creature_id, is_player(creature))
+    incr_agi(creature_id, is_player(creature_id))
   end
 end
 
