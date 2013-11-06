@@ -283,6 +283,16 @@ Skills Race::get_skills() const
   return skills;
 }
 
+void Race::set_level_script(const string& new_level_script)
+{
+  level_script = new_level_script;
+}
+
+string Race::get_level_script() const
+{
+  return level_script;
+}
+
 // Shouldn't be used in game - just used by the stub tester to ensure everything looks okay.
 string Race::str() const
 {

@@ -95,6 +95,9 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
 
     float experience_multiplier = XMLUtils::get_child_node_float_value(race_node, "ExperienceMultiplier");
     race->set_experience_multiplier(experience_multiplier);
+
+    string race_level_script = XMLUtils::get_child_node_value(race_node, "LevelScript");
+    race->set_level_script(race_level_script);
   }
 
   return race;

@@ -94,6 +94,9 @@ class Race
     void set_skills(const Skills& skills);
     Skills get_skills() const;
 
+    void set_level_script(const std::string& new_level_script);
+    std::string get_level_script() const;
+
     std::string str() const;
 
   protected:
@@ -136,6 +139,10 @@ class Race
 
     // Level info
     float experience_multiplier;
+
+    // Level script, used to populate Lua functions that run every time the
+    // creature gains a level.
+    std::string level_script;
 };
 
 typedef boost::shared_ptr<Race> RacePtr;

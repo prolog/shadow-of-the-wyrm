@@ -188,6 +188,7 @@
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
+			<xs:element name="LevelScript" type="xs:string" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 		<xs:attribute name="parent_id" type="tns:Identifier" use="optional"/>

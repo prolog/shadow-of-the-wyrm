@@ -567,7 +567,7 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 		</Race>		
-		<Race id="_corporeal_undead" parent_id="_undead">
+		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
 			<Size>2</Size>
@@ -792,6 +792,7 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<LevelScript>level/human.lua</LevelScript>
 		</Race>
 		<Race id="02_woodelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -859,6 +860,7 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
+			<LevelScript>level/wood_elf.lua</LevelScript>
 		</Race>
 		<Race id="03_mountainelf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -928,6 +930,7 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<LevelScript>level/mountain_elf.lua</LevelScript>
 		</Race>
 		<Race id="04_snakeling" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -994,6 +997,7 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<LevelScript>level/snakeling.lua</LevelScript>
 		</Race>
 		<Race id="05_fae" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1060,6 +1064,7 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.9</ExperienceMultiplier>
+			<LevelScript>level/fae.lua</LevelScript>
 		</Race>
 		<Race id="06_dwarf" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1127,6 +1132,7 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.10</ExperienceMultiplier>
+			<LevelScript>level/dwarf.lua</LevelScript>
 		</Race>
 		<Race id="07_goblin" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1195,6 +1201,7 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+			<LevelScript>level/goblin.lua</LevelScript>
 		</Race>
 		<Race id="08_ogre" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1259,6 +1266,7 @@
 				</WeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>		
+			<LevelScript>level/ogre.lua</LevelScript>
 		</Race>
 		<Race id="09_giant" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1324,6 +1332,7 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
+			<LevelScript>level/giant.lua</LevelScript>
 		</Race>
 		<Race id="10_gnome" parent_id="_humanoid">
 			<UserPlayable>1</UserPlayable>
@@ -1391,6 +1400,7 @@
 				</RangedWeaponSkills>
 			</Skills>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
+			<LevelScript>level/gnome.lua</LevelScript>
 		</Race>
 	</Races>
 	<Classes>
