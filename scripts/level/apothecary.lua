@@ -12,5 +12,5 @@ end
 -- Set up the apothecary functions.
 local apothecary_class_stat_fn = apothecary_stat_gain_fn
 
-level.set_class_stat_gain_level_fn("apothecary", apothecary_stat_gain_fn)
+level.set_class_stat_gain_level_fn("apothecary", apothecary_class_stat_fn)
 

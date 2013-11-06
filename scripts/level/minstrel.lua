@@ -13,5 +13,5 @@ end
 -- Set up the minstrel functions.
 local minstrel_class_stat_fn = minstrel_stat_gain_fn
 
-level.set_class_stat_gain_level_fn("minstrel", minstrel_stat_gain_fn)
+level.set_class_stat_gain_level_fn("minstrel", minstrel_class_stat_fn)
 
