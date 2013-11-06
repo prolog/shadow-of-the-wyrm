@@ -23,5 +23,5 @@ end
 -- Set up the adventurer class functions.
 local adventurer_class_stat_fn = adventurer_stat_gain_fn
 
-level.set_class_stat_gain_level_fn("adventurer", adventurer_stat_gain_fn)
+level.set_class_stat_gain_level_fn("adventurer", adventurer_class_stat_fn)
 

@@ -1793,6 +1793,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/artisan.lua</LevelScript>
 		</Class>
 		<Class id="merchant">
 			<UserPlayable>1</UserPlayable>
@@ -1857,6 +1858,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>20</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/merchant.lua</LevelScript>
 		</Class>
 		<Class id="minstrel">
 			<UserPlayable>1</UserPlayable>
@@ -1984,6 +1986,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>30</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/noble.lua</LevelScript>
 		</Class>
 		<Class id="oracle">
 			<UserPlayable>1</UserPlayable>
@@ -2047,6 +2050,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/oracle.lua</LevelScript>
 		</Class>
 		<Class id="pilgrim">
 			<UserPlayable>1</UserPlayable>
@@ -2251,6 +2255,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>5</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/rover.lua</LevelScript>
 		</Class>
 		<Class id="sage">
 			<UserPlayable>1</UserPlayable>
@@ -2315,6 +2320,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/sage.lua</LevelScript>
 		</Class>
 		<Class id="seafarer">
 			<UserPlayable>1</UserPlayable>
@@ -2381,6 +2387,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/seafarer.lua</LevelScript>
 		</Class>
 		<Class id="shepherd">
 			<UserPlayable>1</UserPlayable>
@@ -2443,6 +2450,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>2</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/shepherd.lua</LevelScript>
 		</Class>
 		<Class id="smith">
 			<UserPlayable>1</UserPlayable>
@@ -2504,6 +2512,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/smith.lua</LevelScript>
 		</Class>
 		<Class id="thief">
 			<UserPlayable>1</UserPlayable>
@@ -2741,6 +2750,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/warrior.lua</LevelScript>
 		</Class>
 		<Class id="witchling">
 			<UserPlayable>1</UserPlayable>
@@ -2874,6 +2884,7 @@
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
+			<LevelScript>level/wizard.lua</LevelScript>
 		</Class>
 	</Classes>
 	<Creatures>

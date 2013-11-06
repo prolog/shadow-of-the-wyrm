@@ -12,11 +12,22 @@ Savage Lands v0.1.8 "Aethelbert"
                    and +1 Hea
     - Apothecaries: +1 Int
     - Archers: +1 Dex
+    - Artisans: +1 Dex
+    - Merchants: +1 Cha
     - Minstrels: +1 Cha
+    - Nobles: +1 Cha
+    - Oracles: +1 Wil
     - Pilgrims: +1 Wil
     - Pugilists: +1 Str
+    - Rovers: +1 Agi
+    - Sages: +1 Int and +1 Wil
+    - Seafarers: +1 Hea
+    - Shepherds: +1 Wil
+    - Smiths: +1 Str
     - Thieves: +1 Agi
+    - Warriors: +1 Str
     - Witchlings: +1 Int
+    - Wizards: +1 Int
 
   Race:
 

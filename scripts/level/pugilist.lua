@@ -14,6 +14,6 @@ end
 local pugilist_fn = pugilist_level_fn
 local pugilist_class_stat_fn = pugilist_stat_gain_fn
 
-level.set_class_stat_gain_level_fn("pugilist", pugilist_stat_gain_fn)
+level.set_class_stat_gain_level_fn("pugilist", pugilist_class_stat_fn)
 level.set_class_level_fn("pugilist", pugilist_fn)
 

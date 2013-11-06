@@ -11,5 +11,5 @@ end
 -- Set up the archer functions.
 local archer_class_stat_fn = archer_stat_gain_fn
 
-level.set_class_stat_gain_level_fn("archer", archer_stat_gain_fn)
+level.set_class_stat_gain_level_fn("archer", archer_class_stat_fn)
 
