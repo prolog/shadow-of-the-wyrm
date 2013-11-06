@@ -4,10 +4,11 @@
 #include "LevelConstants.hpp"
 #include "LevelScript.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RaceManager.hpp"
 #include "RNG.hpp"
 #include "TextKeys.hpp"
 
-using std::string;
+using namespace std;
 
 // The experience table, owned as a static member by the manager.
 // Ideally, the only C-style array in the entire game.
@@ -244,19 +245,26 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
 {
   if (creature)
   {
+    string race_id  = creature->get_race_id();
     string class_id = creature->get_class_id();
     ClassManager cm;
+    RaceManager rm;
+    RacePtr racep = rm.get_race(race_id);
     ClassPtr classp = cm.get_class(class_id);
 
-    if (classp)
+    if (racep && classp)
     {
       LevelScript level_script;
       ScriptEngine& se = Game::instance().get_script_engine_ref();
       se.set_creature(creature);
 
+      vector<string> setup_scripts;
+      setup_scripts.push_back(racep->get_level_script());
+      setup_scripts.push_back(classp->get_level_script());
+
       try
       {
-        level_script.execute(se, classp->get_level_script(), creature);
+        level_script.execute(se, setup_scripts, creature);
       }
       catch(...)
       {

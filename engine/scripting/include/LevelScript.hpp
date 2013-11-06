@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <vector>
 #include "common.hpp"
 #include "Creature.hpp"
 
@@ -12,7 +13,7 @@ class ScriptEngine;
 class LevelScript
 {
   public:
-    void execute(ScriptEngine& se, const std::string& level_script, CreaturePtr creature);
+    void execute(ScriptEngine& se, const std::vector<std::string>& setup_scripts, CreaturePtr creature);
 
   protected:
     static const std::string LEVEL_MODULE_NAME;

@@ -5,6 +5,7 @@ extern "C"
 #include "lauxlib.h"
 }
 
+#include <boost/foreach.hpp>
 #include "LevelScript.hpp"
 #include "Log.hpp"
 #include "ScriptEngine.hpp"
@@ -16,17 +17,20 @@ const string LevelScript::LEVEL_FUNCTION_NAME = "level";
 
 // Execute the level script, after setting up the scripting environment
 // appropriately with the creature information.
-void LevelScript::execute(ScriptEngine& se, const string& script, CreaturePtr creature)
+void LevelScript::execute(ScriptEngine& se, const vector<string>& setup_scripts, CreaturePtr creature)
 {
-  if (!script.empty())
+  if (!setup_scripts.empty())
   {
     string race_id  = creature->get_race_id();
     string class_id = creature->get_class_id();
     string creature_id = creature->get_id();
     uint creature_level = creature->get_level().get_current();
 
-    // Run the script to load its functions, etc.
-    se.execute(script);
+    // Run each script to load its functions, etc.
+    BOOST_FOREACH(const string& script, setup_scripts)
+    {
+      se.execute(script);
+    }
 
     // Set up the function call parameters.
     lua_State* L = se.get_current_state();

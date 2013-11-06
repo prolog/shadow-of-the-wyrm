@@ -30,6 +30,16 @@ Savage Lands v0.1.8 "Aethelbert"
     - Wizards: +1 Int
 
   Race:
+    - Humans: +1 Str, Dex, or Agi; +1 Int, Wil, or Cha
+    - Wood Elves: +1 Int or Dex
+    - Mountain Elves: +1 Int or Hea
+    - Snakelings: +1 Int or Agi
+    - Fae: +1 Int, +1 Wil
+    - Dwarves: +1 Str or +1 Hea
+    - Goblins: +1 Agi
+    - Ogres: +1 Str
+    - Giants: +1 Str
+    - Gnomes: +1 Int, Wil, or Agi
 
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
