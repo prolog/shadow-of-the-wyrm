@@ -2933,6 +2933,42 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
+		<Creature id="mole">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>MOLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MOLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MOLE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MOLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>m</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>2</NumSides>
+				<Modifier>1</Modifier>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="corpse_rat">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>CORPSE_RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
