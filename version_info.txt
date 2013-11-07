@@ -41,7 +41,10 @@ Savage Lands v0.1.8 "Aethelbert"
     - Giants: +1 Str
     - Gnomes: +1 Int, Wil, or Agi
 
-  - Added new creatures: mole.
+  - Added new creatures: mole, ghost.
+
+  - Added a new NPC race, spirit, which will be used for ghosts, spooks,
+    and other ghost-y undead.
 
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
