@@ -2802,6 +2802,9 @@
     <ClInclude Include="engine\strings\include\StatisticTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\combat\include\DamageText.hpp">
+      <Filter>Header Files\engine\combat\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5377,6 +5380,12 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\StatisticTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\DamageText.cpp">
+      <Filter>Source Files\engine\combat\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\combat\source\unit_tests\DamageText_test.cpp">
+      <Filter>Source Files\engine\combat\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
