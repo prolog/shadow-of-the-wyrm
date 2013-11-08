@@ -1,4 +1,6 @@
 #pragma once
+#include <string>
+#include <utility>
 
 // The first eight are the same as the COLOR_ (American spelling) values
 // in curses.h.  Consistency is nice.  The rest are just attributes on

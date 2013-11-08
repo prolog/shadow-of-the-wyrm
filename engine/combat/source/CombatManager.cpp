@@ -3,6 +3,7 @@
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
 #include "CoordUtils.hpp"
+#include "DamageText.hpp"
 #include "DeathManagerFactory.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "ExperienceManager.hpp"
@@ -175,8 +176,8 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   int damage_dealt = damage_calc->calculate(attacked_creature, slays_race, damage_info, base_damage, soak_multiplier);
 
   // Add the text so far.
-  add_combat_message(attacking_creature, combat_message);
-  add_any_necessary_damage_messages(attacking_creature, damage_dealt);
+  add_combat_message(attacking_creature, attacked_creature, combat_message);
+  add_any_necessary_damage_messages(attacking_creature, attacked_creature, damage_dealt);
 
   if (damage_dealt > 0)
   {
@@ -189,7 +190,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   else
   {
     string no_damage_message = CombatTextKeys::get_no_damage_message(attacked_creature->get_is_player(), StringTable::get(attacked_creature->get_description_sid()));
-    add_combat_message(attacking_creature, no_damage_message);
+    add_combat_message(attacking_creature, attacked_creature, no_damage_message);
   }
 
   return true;
@@ -272,7 +273,7 @@ bool CombatManager::miss(CreaturePtr attacking_creature, CreaturePtr attacked_cr
 {
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
-  add_combat_message(attacking_creature, combat_message);
+  add_combat_message(attacking_creature, attacked_creature, combat_message);
 
   return true;
 }
@@ -281,7 +282,7 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
 {
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   string combat_message = CombatTextKeys::get_close_miss_message(attacking_creature->get_is_player(), attacked_creature->get_is_player(), StringTable::get(attacking_creature->get_description_sid()), attacked_creature_desc);
-  add_combat_message(attacking_creature, combat_message);
+  add_combat_message(attacking_creature, attacked_creature, combat_message);
 
   return true;
 }
@@ -291,7 +292,7 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
 // 
 // JCD FIXME Need to have the usual player vs. monster checks here
 // so that these are only added when the target is not the player.
-void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, const int damage)
+void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage)
 {
   string additional_message;
   
@@ -306,15 +307,17 @@ void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, cons
   
   if (!additional_message.empty())
   {
-    add_combat_message(creature, additional_message);
+    add_combat_message(creature, attacked_creature, additional_message);
   }
 }
 
-void CombatManager::add_combat_message(CreaturePtr creature, const string& combat_message)
+void CombatManager::add_combat_message(CreaturePtr creature, CreaturePtr attacked_creature, const string& combat_message)
 {
+  DamageText dt;
+
   // Display combat information.
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-  manager.add_new_message(combat_message);
+  manager.add_new_message(combat_message, dt.get_colour(attacked_creature));
 }
 
 void CombatManager::send_combat_messages(CreaturePtr creature)
