@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "AgeInfo.hpp"
+#include "BoolStatistic.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
 #include "CreatureFeatures.hpp"
@@ -82,6 +83,9 @@ class Race
     void set_starting_speed(const Statistic& new_starting_speed);
     Statistic get_starting_speed() const;
 
+    void set_corporeal(const BoolStatistic& new_corporeal);
+    BoolStatistic get_corporeal() const;
+
     void set_experience_multiplier(const float new_experience_multiplier);
     float get_experience_multiplier() const;
     
@@ -127,6 +131,8 @@ class Race
     // Initial secondary statistics or their modifiers
     StatisticsModifier statistics_modifier; 
     Statistic starting_speed; // starting speed is set by race.
+
+    BoolStatistic corporeal; // Most races are corporeal; spirits aren't.
     
     // Available deities on creation
     std::vector<std::string> initial_deity_ids;

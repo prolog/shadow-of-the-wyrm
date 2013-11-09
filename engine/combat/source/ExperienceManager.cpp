@@ -258,8 +258,18 @@ void ExperienceManager::run_level_script(CreaturePtr creature)
       se.set_creature(creature);
 
       vector<string> setup_scripts;
-      setup_scripts.push_back(racep->get_level_script());
-      setup_scripts.push_back(classp->get_level_script());
+      string race_script = racep->get_level_script();
+      string class_script = classp->get_level_script();
+
+      if (!race_script.empty())
+      {
+        setup_scripts.push_back(racep->get_level_script());
+      }
+
+      if (!class_script.empty())
+      {
+        setup_scripts.push_back(classp->get_level_script());
+      }
 
       try
       {

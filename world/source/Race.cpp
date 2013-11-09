@@ -243,6 +243,16 @@ Statistic Race::get_starting_speed() const
   return starting_speed;
 }
 
+void Race::set_corporeal(const BoolStatistic& new_corporeal)
+{
+  corporeal = new_corporeal;
+}
+
+BoolStatistic Race::get_corporeal() const
+{
+  return corporeal;
+}
+
 void Race::set_experience_multiplier(const float new_experience_multiplier)
 {
   experience_multiplier = new_experience_multiplier;
