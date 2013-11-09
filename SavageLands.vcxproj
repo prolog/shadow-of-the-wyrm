@@ -658,6 +658,7 @@
     <ClInclude Include="world\include\Armour.hpp" />
     <ClInclude Include="world\include\AutomaticMovement.hpp" />
     <ClInclude Include="world\include\Boat.hpp" />
+    <ClInclude Include="world\include\BoolStatistic.hpp" />
     <ClInclude Include="world\include\Spellbook.hpp" />
     <ClInclude Include="world\include\Calendar.hpp" />
     <ClInclude Include="world\include\Class.hpp" />
@@ -1836,6 +1837,7 @@
     <ClCompile Include="world\source\Armour.cpp" />
     <ClCompile Include="world\source\AutomaticMovement.cpp" />
     <ClCompile Include="world\source\Boat.cpp" />
+    <ClCompile Include="world\source\BoolStatistic.cpp" />
     <ClCompile Include="world\source\Spellbook.cpp" />
     <ClCompile Include="world\source\Calendar.cpp" />
     <ClCompile Include="world\source\Class.cpp" />
@@ -1905,6 +1907,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\Boat_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\BoolStatistic_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

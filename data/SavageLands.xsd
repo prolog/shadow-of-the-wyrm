@@ -184,6 +184,7 @@
 			<xs:element name="Hungerless" type="xs:boolean" minOccurs="0"/>
 			<xs:element ref="tns:AgeInfo"/>
 			<xs:element ref="tns:RaceInitialStatistics"/>
+			<xs:element name="Corporeal" type="xs:boolean"/>
 			<xs:element ref="tns:RaceInitialDeities"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>

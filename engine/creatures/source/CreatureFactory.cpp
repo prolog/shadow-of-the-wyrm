@@ -175,6 +175,9 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Statistics, HP, and AP
     creature = set_initial_statistics(creature, race, char_class, deity);
 
+    // Various race-based flags (boolean statistics)
+    creature.set_corporeal(race->get_corporeal());
+
     // Resistances
     creature = set_initial_resistances(creature, race, char_class);
 

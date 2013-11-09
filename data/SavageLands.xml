@@ -151,6 +151,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -206,6 +207,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -261,6 +263,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -316,6 +319,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -371,6 +375,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -426,6 +431,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -481,6 +487,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -536,6 +543,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -591,6 +599,7 @@
 				<Charisma>2</Charisma>
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -640,6 +649,7 @@
 				<Charisma>2</Charisma>
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -692,6 +702,7 @@
 				<Charisma>2</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>0</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -743,6 +754,7 @@
 				<Charisma>20</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -797,6 +809,7 @@
 				<Charisma>10</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -874,6 +887,7 @@
 				<Charisma>10</Charisma>
 				<Speed>47</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -942,6 +956,7 @@
 				<Charisma>9</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
@@ -1012,6 +1027,7 @@
 				<Charisma>6</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -1080,6 +1096,7 @@
 				<Charisma>10</Charisma>
 				<Speed>45</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
@@ -1146,6 +1163,7 @@
 				<Charisma>8</Charisma>
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -1214,6 +1232,7 @@
 				<Charisma>8</Charisma>
 				<Speed>48</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -1283,6 +1302,7 @@
 				<Charisma>6</Charisma>
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -1348,6 +1368,7 @@
 				<Charisma>8</Charisma>
 				<Speed>55</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -1414,6 +1435,7 @@
 				<Charisma>9</Charisma>
 				<Speed>48</Speed>
 			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>

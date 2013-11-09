@@ -88,6 +88,11 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     
     parse_race_age_info(race, age_info_node);
     parse_race_initial_statistics(race, initial_statistics_node);
+
+    bool corporeal = XMLUtils::get_child_node_bool_value(race_node, "Corporeal", race->get_corporeal().get_base());
+    BoolStatistic corporeal_stat(corporeal);
+    race->set_corporeal(corporeal_stat);
+
     parse_race_initial_modifiers(race, initial_modifiers_node);
     parse_initial_deity_ids(race, initial_deity_ids_node);
     parse_race_resistances(race, resistances_node);
