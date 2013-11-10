@@ -1,7 +1,11 @@
 #include <boost/make_shared.hpp>
+#include "ActionTextKeys.hpp"
+#include "CombatManager.hpp"
 #include "Creature.hpp"
+#include "Game.hpp"
 #include "IncorporealCalculator.hpp"
 #include "IncorporealStatusEffect.hpp"
+#include "MapUtils.hpp"
 #include "StatusAilmentTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
 #include "StatusTypes.hpp"
@@ -11,6 +15,29 @@ using namespace std;
 IncorporealStatusEffect::IncorporealStatusEffect()
 {
   status_calc = boost::make_shared<IncorporealCalculator>();
+}
+
+void IncorporealStatusEffect::after_undo(CreaturePtr creature) const
+{
+  Game& game = Game::instance();
+  MapPtr map = game.get_current_map();
+  TilePtr tile = MapUtils::get_tile_for_creature(map, creature);
+
+  if (tile)
+  {
+    // Check to see if the tile is inaccessible, and double-check that
+    // the creature no longer is incorporeal.  If both of these are
+    // true, the creature has entered into a "blocked" tile and then
+    // come out of wraith form/etc, and is instantly killed.
+    if (tile->get_is_blocking(creature) && !creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+    {
+      CombatManager cm;
+      CreaturePtr no_attacker;
+      string torn_apart_message_sid = ActionTextKeys::ACTION_PLAYER_OBLITERATED;
+
+      cm.deal_damage(no_attacker, creature, creature->get_hit_points().get_current() + 1, torn_apart_message_sid);
+    }
+  }
 }
 
 string IncorporealStatusEffect::get_player_application_message() const

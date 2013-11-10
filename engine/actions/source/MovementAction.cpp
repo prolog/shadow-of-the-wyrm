@@ -159,10 +159,13 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
 ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords)
 {
   ActionCostValue movement_success = 0;
-  
+  bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+
   if (creatures_new_tile)
   {
-    if (MapUtils::is_blocking_feature_present(creatures_new_tile))
+    // Only try to handle a blocking terrain feature if the creature is corporeal.
+    // Spirits don't care about closed doors, etc!
+    if (MapUtils::is_blocking_feature_present(creatures_new_tile) && !creature_incorporeal)
     {
       // If there is a feature, handle it, prompting the creature for confirmation
       // if necessary.
@@ -186,7 +189,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     {
       movement_success = handle_movement_into_occupied_tile(creature, creatures_new_tile);
     }
-    else if (creatures_new_tile->get_is_blocking(creature))
+    else if (creatures_new_tile->get_is_blocking(creature) && !creature_incorporeal)
     {
       // Can't move into the tile.  It's not a blocking feature (handled above),
       // nor is it a creature (ditto), so most likely, it's impassable terrain -
