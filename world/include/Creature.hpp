@@ -168,9 +168,6 @@ class Creature : public ISerializable
     void set_soak(const Statistic& new_soak);
     Statistic get_soak() const;
 
-    void set_corporeal(const BoolStatistic& new_corporeal);
-    BoolStatistic get_corporeal() const;
-
     // Basic display info
     void set_symbol(const uchar new_symbol);
     uchar get_symbol() const;
@@ -331,10 +328,6 @@ class Creature : public ISerializable
     Statistic soak;
 
     // Various flags
-
-    // Is the creature corporeal?  Those that are not can pass through walls
-    // and terrain features.
-    BoolStatistic corporeal;
 
     // Basic creature info used for the display
     uchar symbol;

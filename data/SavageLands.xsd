@@ -1101,11 +1101,12 @@
 				Restore Statistics = 11
 				Unblinding = 12
 				Recharging = 13
+				Incorporeal (Wraith Form) = 14
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="13"/>
+		<xs:maxInclusive value="14"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

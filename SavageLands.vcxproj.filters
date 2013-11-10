@@ -2808,6 +2808,15 @@
     <ClInclude Include="world\include\BoolStatistic.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\IncorporealEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\creatures\include\IncorporealStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\IncorporealCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5395,6 +5404,15 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\BoolStatistic_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\IncorporealEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\IncorporealStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\IncorporealCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

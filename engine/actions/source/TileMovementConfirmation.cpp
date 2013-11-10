@@ -11,8 +11,9 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
 {
   pair<bool, string> confirmation_details;
   confirmation_details.first = false;
+  bool is_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   
-  if (new_tile->get_dangerous())
+  if (new_tile->get_dangerous() && !is_incorporeal)
   {
     confirmation_details.first = true;
     confirmation_details.second = TextMessages::get_confirmation_message(new_tile->get_danger_confirmation_sid());
@@ -34,17 +35,21 @@ pair<bool, string> TileMovementConfirmation::check_for_jumping_into_water(Creatu
 {
   pair<bool, string> details;
   details.first = false;
+  bool is_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
   
   // If there get to be enough of these, break these out into a map or a class or something.
   // Probably should break out of MapUtils...
   if (MapUtils::is_moving_from_land_type_tile_to_water_type_tile(old_tile, new_tile))
   {
     Inventory& inv = creature->get_inventory();
-    
-    if (!inv.has_item_type(ITEM_TYPE_BOAT))
+
+    if (!is_incorporeal)
     {
-      details.first  = true;
-      details.second = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);
+      if (!inv.has_item_type(ITEM_TYPE_BOAT))
+      {
+        details.first  = true;
+        details.second = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);
+      }
     }
   }
   

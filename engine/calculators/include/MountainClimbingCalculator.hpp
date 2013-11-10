@@ -2,8 +2,8 @@
 class MountainClimbingCalculator
 {
   public:
-    int calculate_max_mountain_climbing_time(const int mountaineering_skill_value) const;
-    bool generate_does_fall_from_exhaustion(const int mountaineering_skill_value) const;
+    int calculate_max_mountain_climbing_time(const int mountaineering_skill_value, const bool is_incorporeal) const;
+    bool generate_does_fall_from_exhaustion(const int mountaineering_skill_value, const bool is_incorporeal) const;
     int generate_falling_damage() const;
 
   protected:

@@ -22,7 +22,8 @@ void CreatureStatuses::tick(CreaturePtr creature, const ulonglong minutes_this_t
       StatusDuration cur_duration = durations[status_id];
       double end = cur_duration.get_end();
 
-      if (current_seconds > end)
+      // A value of -1 indicates permanence.
+      if ((current_seconds > end) && (end >= 0))
       {
         status_effect->finalize_change(creature);
       }

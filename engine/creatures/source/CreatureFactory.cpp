@@ -176,7 +176,12 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     creature = set_initial_statistics(creature, race, char_class, deity);
 
     // Various race-based flags (boolean statistics)
-    creature.set_corporeal(race->get_corporeal());
+    if (race->get_corporeal().get_base() == false)
+    {
+      StatusDuration duration(-1);
+      creature.set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
+      creature.set_status_duration(StatusIdentifiers::STATUS_ID_INCORPOREAL, duration);
+    }
 
     // Resistances
     creature = set_initial_resistances(creature, race, char_class);

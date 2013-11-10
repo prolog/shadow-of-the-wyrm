@@ -210,6 +210,7 @@
     <ClInclude Include="engine\calculators\include\IDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IHitTypeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IHitTypeFactory.hpp" />
+    <ClInclude Include="engine\calculators\include\IncorporealCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ISkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
@@ -313,6 +314,7 @@
     <ClInclude Include="engine\creatures\include\DisfiguredStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\ExposedStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\HasteStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\IncorporealStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\ITileSafetyCondition.hpp" />
     <ClInclude Include="engine\creatures\include\MutenessStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\ParalysisStatusEffect.hpp" />
@@ -367,6 +369,7 @@
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\HasteEffect.hpp" />
+    <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp" />
     <ClInclude Include="engine\effects\include\RemoveStatusEffect.hpp" />
     <ClInclude Include="engine\effects\include\Effect.hpp" />
@@ -957,6 +960,7 @@
     <ClCompile Include="engine\calculators\source\HPRegenerationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HungerDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\IHitTypeFactory.cpp" />
+    <ClCompile Include="engine\calculators\source\IncorporealCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\IPhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MagicalAttackSpeedCalculator.cpp" />
@@ -1245,6 +1249,7 @@
     <ClCompile Include="engine\creatures\source\DisfiguredStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\ExposedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\HasteStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\IncorporealStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\MutenessStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\ParalysisStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\PoisonStatusEffect.cpp" />
@@ -1332,6 +1337,7 @@
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp" />
     <ClCompile Include="engine\effects\source\HasteEffect.cpp" />
+    <ClCompile Include="engine\effects\source\IncorporealEffect.cpp" />
     <ClCompile Include="engine\effects\source\RechargingEffect.cpp" />
     <ClCompile Include="engine\effects\source\RemoveStatusEffect.cpp" />
     <ClCompile Include="engine\effects\source\Effect.cpp" />

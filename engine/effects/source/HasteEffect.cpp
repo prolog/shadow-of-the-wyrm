@@ -29,6 +29,9 @@ bool HasteEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
     slowness->undo_change(creature);
   }
 
+  StatusEffectPtr haste = StatusEffectFactory::create_status_effect(StatusIdentifiers::STATUS_ID_HASTE);
+  haste->apply_change(creature);
+
   return true;
 }
 

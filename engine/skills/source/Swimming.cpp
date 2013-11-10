@@ -23,6 +23,6 @@ void Swimming::drown(CreaturePtr creature)
     SwimmingCalculator sc;
     CreaturePtr no_attacker;
 
-    cm.deal_damage(no_attacker, creature, sc.calculate_swimming_damage(creature), drowning_message_sid);    
+    cm.deal_damage(no_attacker, creature, sc.calculate_swimming_damage(creature, creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL)), drowning_message_sid);    
   }
 }

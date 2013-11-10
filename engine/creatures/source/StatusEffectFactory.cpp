@@ -4,6 +4,7 @@
 #include "DisfiguredStatusEffect.hpp"
 #include "ExposedStatusEffect.hpp"
 #include "HasteStatusEffect.hpp"
+#include "IncorporealStatusEffect.hpp"
 #include "MutenessStatusEffect.hpp"
 #include "ParalysisStatusEffect.hpp"
 #include "PoisonStatusEffect.hpp"
@@ -113,6 +114,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_BLINDED)
   {
     status_effect = boost::make_shared<BlindedStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_INCORPOREAL)
+  {
+    status_effect = boost::make_shared<IncorporealStatusEffect>();
   }
   else
   {

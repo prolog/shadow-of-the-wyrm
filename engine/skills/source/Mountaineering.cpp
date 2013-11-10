@@ -15,7 +15,7 @@ void Mountaineering::check_for_fall(CreaturePtr creature)
 
     int mountaineering_skill_value = sm.get_skill_value(creature, SKILL_GENERAL_MOUNTAINEERING);
     
-    if (mcc.generate_does_fall_from_exhaustion(mountaineering_skill_value))
+    if (mcc.generate_does_fall_from_exhaustion(mountaineering_skill_value, creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL)))
     {
       string fall_message_sid;
       
