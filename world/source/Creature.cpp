@@ -78,7 +78,6 @@ Creature::Creature(const Creature& cr)
   base_soak = cr.base_soak;
   evade = cr.evade;
   soak = cr.soak;
-  corporeal = cr.corporeal;
   symbol = cr.symbol;
   colour = cr.colour;
   level = cr.level;
@@ -155,7 +154,6 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (evade == cr.evade);
   result = result && (base_soak == cr.base_soak);
   result = result && (soak == cr.soak);
-  result = result && (corporeal == cr.corporeal);
   result = result && (symbol == cr.symbol);
   result = result && (colour == cr.colour);
   result = result && (level == cr.level);
@@ -592,16 +590,6 @@ Statistic Creature::get_soak() const
   return soak;
 }
 
-void Creature::set_corporeal(const BoolStatistic& new_corporeal)
-{
-  corporeal = new_corporeal;
-}
-
-BoolStatistic Creature::get_corporeal() const
-{
-  return corporeal;
-}
-
 void Creature::set_symbol(const uchar new_symbol)
 {
   symbol = new_symbol;
@@ -943,7 +931,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 952);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 944);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 872);
@@ -991,7 +979,6 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->base_soak, cr.base_soak);
   std::swap(this->evade, cr.evade);
   std::swap(this->soak, cr.soak);
-  std::swap(this->corporeal, cr.corporeal);
   std::swap(this->symbol, cr.symbol);
   std::swap(this->colour, cr.colour);
   std::swap(this->level, cr.level);
@@ -1059,8 +1046,6 @@ bool Creature::serialize(ostream& stream)
   base_soak.serialize(stream);
   evade.serialize(stream);
   soak.serialize(stream);
-
-  corporeal.serialize(stream);
 
   Serialize::write_uchar(stream, symbol);
   Serialize::write_enum(stream, colour);
@@ -1181,8 +1166,6 @@ bool Creature::deserialize(istream& stream)
   base_soak.deserialize(stream);
   evade.deserialize(stream);
   soak.deserialize(stream);
-
-  corporeal.deserialize(stream);
 
   Serialize::read_uchar(stream, symbol);
   Serialize::read_enum(stream, colour);

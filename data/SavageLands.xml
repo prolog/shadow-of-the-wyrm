@@ -8185,7 +8185,7 @@
 				<Type>2</Type>
 			</Damage>
 			<Effect>0</Effect>
-		</Spell>		
+		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -8198,6 +8198,18 @@
 			<Shape>0</Shape>
 			<Effect>1</Effect>
 		</Spell>
+		<Spell id="m_01_wraith_form">
+			<NameSID>WRAITH_FORM_NAME_SID</NameSID>
+			<PlayerCastMessageSID>WRAITH_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>WRAITH_FORM_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<Colour>15</Colour>
+			<APCost>30</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>14</Effect>
+		</Spell>		
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -10923,6 +10935,23 @@
 				<Rarity>1</Rarity>
 				<SpellID>d_01_healing_word</SpellID>
 				<Difficulty>70</Difficulty>
+			</Spellbook>
+			<Spellbook id="wraith_form_spellbook">
+				<DescriptionSID>WRAITH_FORM_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_WRAITH_FORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>WRAITH_FORM_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_WRAITH_FORM_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_01_wraith_form</SpellID>
+				<Difficulty>130</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>

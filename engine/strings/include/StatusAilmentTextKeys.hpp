@@ -97,6 +97,12 @@ class StatusAilmentTextKeys
     static const std::string get_npc_blinded_message(boost::shared_ptr<Creature> creature);
     static const std::string get_npc_undo_blindness_message(boost::shared_ptr<Creature> creature);
 
+    static const std::string STATUS_INCORPOREAL;
+    static const std::string STATUS_MESSAGE_PLAYER_INCORPOREAL;
+    static const std::string STATUS_MESSAGE_PLAYER_INCORPOREAL_CURED;
+    static const std::string get_npc_incorporeal_message(boost::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_incorporeal_message(boost::shared_ptr<Creature> creature);
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();
@@ -138,4 +144,7 @@ class StatusAilmentTextKeys
 
     static const std::string STATUS_MESSAGE_NPC_BLINDED;
     static const std::string STATUS_MESSAGE_NPC_UNDO_BLINDNESS;
+
+    static const std::string STATUS_MESSAGE_NPC_INCORPOREAL;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_INCORPOREAL;
 };

@@ -5,6 +5,7 @@
 #include "HasteEffect.hpp"
 #include "HealingEffect.hpp"
 #include "IdentifyEffect.hpp"
+#include "IncorporealEffect.hpp"
 #include "NullEffect.hpp"
 #include "FruitJuiceEffect.hpp"
 #include "RechargingEffect.hpp"
@@ -23,7 +24,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 14);
+  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 15);
 
   EffectPtr effect;
 
@@ -67,6 +68,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_RECHARGING:
       effect = boost::make_shared<RechargingEffect>();
+      break;
+    case EFFECT_TYPE_INCORPOREAL:
+      effect = boost::make_shared<IncorporealEffect>();
       break;
     case EFFECT_TYPE_NULL:
     default:

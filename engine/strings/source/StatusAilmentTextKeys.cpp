@@ -67,6 +67,10 @@ const string StatusAilmentTextKeys::STATUS_BLINDED = "STATUS_BLINDED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLINDED = "STATUS_MESSAGE_PLAYER_BLINDED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_BLINDNESS_CURED = "STATUS_MESSAGE_PLAYER_BLINDNESS_CURED";
 
+const string StatusAilmentTextKeys::STATUS_INCORPOREAL = "STATUS_INCORPOREAL";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_INCORPOREAL = "STATUS_MESSAGE_PLAYER_INCORPOREAL";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_INCORPOREAL_CURED = "STATUS_MESSAGE_PLAYER_INCORPOREAL_CURED";
+
 // public functions
 const string StatusAilmentTextKeys::get_npc_poisoned_message(CreaturePtr creature)
 {
@@ -188,6 +192,16 @@ const string StatusAilmentTextKeys::get_npc_undo_blindness_message(CreaturePtr c
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLINDNESS);
 }
 
+const string StatusAilmentTextKeys::get_npc_incorporeal_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_INCORPOREAL);
+}
+
+const string StatusAilmentTextKeys::get_npc_undo_incorporeal_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_INCORPOREAL);
+}
+
 // Protected
 const string StatusAilmentTextKeys::get_general_npc_message(const string& npc_sid, const string& message_sid)
 {
@@ -236,3 +250,6 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_SPELLBOUND = "STATUS
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_BLINDED = "STATUS_MESSAGE_NPC_BLINDED";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_BLINDNESS = "STATUS_MESSAGE_NPC_UNDO_BLINDNESS";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_BLIND_RANGED_COMBAT = "STATUS_MESSAGE_BLIND_RANGED_COMBAT";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_INCORPOREAL = "STATUS_MESSAGE_NPC_INCORPOREAL";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_INCORPOREAL = "STATUS_MESSAGE_NPC_UNDO_INCORPOREAL";
