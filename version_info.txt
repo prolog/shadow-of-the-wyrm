@@ -46,6 +46,15 @@ Savage Lands v0.1.8 "Aethelbert"
   - Added a new NPC race, spirit, which will be used for ghosts, spooks,
     and other ghost-y undead.
 
+  - Added an "incorporeal" status flag.  This is on permanently for races
+    that support it (spirits), and has a corresponding powerful mystic
+    spell, Wraith Form.  While creatures are incorporeal, they are able
+    to move through any tile, so long as it is not occupied by another
+    creature.  They are also not troubled by water (swimming) or great
+    heights (mountain checks).  However, casters must take great care: any
+    creature that is in an otherwise-inaccessible square when Wraith Form
+    wears off will be instantly killed.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 

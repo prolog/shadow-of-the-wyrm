@@ -10,11 +10,14 @@ using namespace boost;
 
 // Check to see if a tile is available for a creature by checking:
 // - if a creature is present
-// - if a blocking feature is present
-// - if the tile type permits movement
+// - (if a blocking feature is present and if the tile type permits movement), 
+//   or the creature is incorporeal (and can ignore tile movement/blocking
+//   feature details)
 bool MapUtils::is_tile_available_for_creature(CreaturePtr creature, TilePtr tile)
 {
-  return tile && (!is_creature_present(tile) && !tile->get_is_blocking(creature));
+  bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+
+  return tile && !is_creature_present(tile) && (!tile->get_is_blocking(creature) || creature_incorporeal);
 }
 
 // Check to see if a tile is available for an item by checking:
