@@ -157,16 +157,21 @@ bool Tile::get_illuminated() const
 }
 
 // The conditions are broken up for easier debugging.
+//
+// A tile should only be blocking from the perspective of a particular
+// incorporeal creature (ghost, spirit, etc) if the tile has another
+// creature present.
 bool Tile::get_is_blocking(CreaturePtr perspective_creature) const
 {
   bool tile_blocking = false;
+  bool perspective_creature_incorporeal = perspective_creature && perspective_creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
 
-  if (get_movement_multiplier() == 0)
+  if (get_movement_multiplier() == 0 && !perspective_creature_incorporeal)
   {
     tile_blocking = true;
   }
 
-  if (feature && feature->get_is_blocking())
+  if (feature && feature->get_is_blocking() && !perspective_creature_incorporeal)
   {
     tile_blocking = true;
   }

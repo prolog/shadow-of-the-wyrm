@@ -10,13 +10,6 @@ std::string RockTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_ROCK;
 }
 
-// JCD FIXME: This can probably be deleted later on, since Tile's version
-// should cover it (but ensure that the movement multiplier is 0 for RockTile).
-bool RockTile::get_is_blocking(CreaturePtr perspective_creature) const
-{
-  return true;
-}
-
 int RockTile::get_movement_multiplier() const
 {
   return 0;

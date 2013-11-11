@@ -8,7 +8,6 @@ class RockTile : public Tile
     
     std::string get_tile_description_sid() const;
 
-    bool get_is_blocking(CreaturePtr perspective_creature) const;
     int get_movement_multiplier() const;
 
     virtual Tile* clone();
