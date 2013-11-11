@@ -112,6 +112,11 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
         
           search_nodes.push_back(sn);
         }
+        else
+        {
+          // JCD FIXME: Why aren't ghosts walking through walls?!
+          int x = 1;
+        }
       }
  
       // Always set it visited, regardless.
