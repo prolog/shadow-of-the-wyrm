@@ -41,10 +41,12 @@ Savage Lands v0.1.8 "Aethelbert"
     - Giants: +1 Str
     - Gnomes: +1 Int, Wil, or Agi
 
-  - Added new creatures: mole, ghost.
+  - Added new creatures: mole, ghost, spook.
 
   - Added a new NPC race, spirit, which will be used for ghosts, spooks,
     and other ghost-y undead.
+
+  = Added a couple of spooks to Wintersea Keep.
 
   - Added an "incorporeal" status flag.  This is on permanently for races
     that support it (spirits), and has a corresponding powerful mystic
