@@ -57,6 +57,20 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>spook</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>76</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>spook</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>76</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>rook</ID>
 				<Coord>
 					<Row>4</Row>

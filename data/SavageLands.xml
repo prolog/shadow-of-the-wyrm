@@ -3117,6 +3117,47 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
+		<Creature id="spook">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>SPOOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SPOOK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SPOOK_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SPOOK_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>s</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>2</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Speed>40</Speed>
+		</Creature>
 		<Creature id="thrall">
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>THRALL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -8790,7 +8831,7 @@
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Evade>12</Evade>
-				<Soak>3</Soak>
+				<Soak>5</Soak>
 			</Armour>
 			<Armour id="iron_shield">
 				<DescriptionSID>IRON_SHIELD_SID</DescriptionSID>
