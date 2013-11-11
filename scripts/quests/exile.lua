@@ -5,7 +5,7 @@ local function exile_sister_start_fn()
   add_message_with_pause("EXILE_SISTER_QUEST_START_SID")
   add_message_with_pause("EXILE_SISTER_QUEST_START2_SID")
   add_message_with_pause("EXILE_SISTER_QUEST_START3_SID")
-  add_message("EXILE_SISTER_QUEST_START4_SID")
+  clear_and_add_message("EXILE_SISTER_QUEST_START4_SID")
 end
 
 local function exile_sister_completion_condition_fn()
@@ -18,7 +18,7 @@ local function exile_sister_completion_fn()
     remove_object_from_player("two_moon_amulet")
     add_object_to_player_tile("brightblade")
     add_message_with_pause("EXILE_SISTER_QUEST_REWARD_SID")
-    add_message("EXILE_SISTER_QUEST_REWARD2_SID")
+    clear_and_add_message("EXILE_SISTER_QUEST_REWARD2_SID")
   else
     add_message("EXILE_SISTER_QUEST_RECONSIDER_SID")
     return false

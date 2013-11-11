@@ -4,7 +4,7 @@ require('quest')
 local function christof_mine_start_fn()
   add_message_with_pause("CHRISTOF_MINE_QUEST_START_SID")
   add_message_with_pause("CHRISTOF_MINE_QUEST_START2_SID")
-  add_message("CHRISTOF_MINE_QUEST_START3_SID")
+  clear_and_add_message("CHRISTOF_MINE_QUEST_START3_SID")
 end
 
 local function christof_mine_completion_condition_fn()
@@ -13,7 +13,7 @@ end
 
 local function christof_mine_completion_fn()
   add_message_with_pause("CHRISTOF_MINE_QUEST_COMPLETE_SID")
-  add_message("CHRISTOF_MINE_QUEST_COMPLETE2_SID")
+  clear_and_add_message("CHRISTOF_MINE_QUEST_COMPLETE2_SID")
   add_object_to_player_tile("stonespear")
   add_object_to_player_tile("shockwave_spellbook")
   return true

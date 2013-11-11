@@ -46,7 +46,12 @@ Savage Lands v0.1.8 "Aethelbert"
   - Added a new NPC race, spirit, which will be used for ghosts, spooks,
     and other ghost-y undead.
 
-  = Added a couple of spooks to Wintersea Keep.
+  - Added a couple of spooks to Wintersea Keep.
+
+  - New armour: elven robes, magic armour, ethereal armour, spirit mail,
+    chimera hide armour, behemoth hide armour, heavy cloak, hunter's
+    cloak, shell armour, steel plate armour, dragonscale armour, leviathan
+    armour, colossus armour.
 
   - Added an "incorporeal" status flag.  This is on permanently for races
     that support it (spirits), and has a corresponding powerful mystic

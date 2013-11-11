@@ -8741,7 +8741,7 @@
 				<Material>3</Material>
 				<DangerLevel>7</DangerLevel>
 				<Evade>0</Evade>
-				<Soak>4</Soak>
+				<Soak>5</Soak>
 			</Armour>
 			<Armour id="elven_chain">
 				<DescriptionSID>ELVEN_CHAIN_SID</DescriptionSID>
@@ -8750,11 +8750,22 @@
 				<Weight><Pounds>4</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>20</DangerLevel>
+				<DangerLevel>9</DangerLevel>
 				<Rarity>1</Rarity>
-				<Evade>4</Evade>
+				<Evade>6</Evade>
 				<Soak>5</Soak>
 			</Armour>
+			<Armour id="shell_armour">
+				<DescriptionSID>SHELL_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>SHELL_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>180</Value>
+				<Weight><Pounds>45</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>12</DangerLevel>
+				<Evade>-2</Evade>
+				<Soak>7</Soak>
+			</Armour>			
 			<Armour id="plate_armour">
 				<DescriptionSID>PLATE_ARMOUR_SID</DescriptionSID>
 				<UsageDescriptionSID>PLATE_ARMOUR_USAGE_SID</UsageDescriptionSID>
@@ -8763,19 +8774,140 @@
 				<WornLocation>6</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>12</DangerLevel>
-				<Evade>-2</Evade>
-				<Soak>8</Soak>
+				<Evade>-4</Evade>
+				<Soak>10</Soak>
+			</Armour>
+			<Armour id="steel_plate_armour">
+				<DescriptionSID>STEEL_PLATE_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>STEEL_PLATE_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>400</Value>
+				<Weight><Pounds>85</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>6</Material>
+				<DangerLevel>16</DangerLevel>
+				<Evade>-8</Evade>
+				<Soak>18</Soak>
+			</Armour>
+			<Armour id="dragonscale_armour">
+				<DescriptionSID>DRAGONSCALE_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>DRAGONSCALE_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>500</Value>
+				<Weight><Pounds>30</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>1</Material>
+				<DangerLevel>16</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>15</Soak>
+			</Armour>
+			<Armour id="leviathan_armour">
+				<DescriptionSID>LEVIATHAN_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>LEVIATHAN_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>50</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>1</Material>
+				<DangerLevel>16</DangerLevel>
+				<Evade>-9</Evade>
+				<Soak>22</Soak>
+			</Armour>
+			<Armour id="colossus_armour">
+				<DescriptionSID>COLOSSUS_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>COLOSSUS_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>120</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>7</Material>
+				<DangerLevel>16</DangerLevel>
+				<Evade>-30</Evade>
+				<Soak>30</Soak>
 			</Armour>
 			<Armour id="robes">
 				<DescriptionSID>ROBES_SID</DescriptionSID>
 				<UsageDescriptionSID>ROBES_USAGE_SID</UsageDescriptionSID>
 				<Value>40</Value>
-				<Weight><Pounds>4</Pounds></Weight>
+				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
-				<Evade>2</Evade>
+				<Evade>3</Evade>
 				<Soak>0</Soak>
+			</Armour>
+			<Armour id="elven_robes">
+				<DescriptionSID>ELVEN_ROBES_SID</DescriptionSID>
+				<UsageDescriptionSID>ELVEN_ROBES_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>4</DangerLevel>
+				<Evade>7</Evade>
+				<Soak>0</Soak>
+			</Armour>
+			<Armour id="wizard_robes">
+				<DescriptionSID>WIZARD_ROBES_SID</DescriptionSID>
+				<UsageDescriptionSID>WIZARD_ROBES_USAGE_SID</UsageDescriptionSID>
+				<Value>120</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>6</DangerLevel>
+				<Evade>11</Evade>
+				<Soak>1</Soak>
+			</Armour>
+			<Armour id="magic_armour">
+				<DescriptionSID>MAGIC_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>MAGIC_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>150</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Evade>9</Evade>
+				<Soak>2</Soak>
+			</Armour>
+			<Armour id="ethereal_armour">
+				<DescriptionSID>ETHEREAL_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>ETHEREAL_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>250</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>11</DangerLevel>
+				<Evade>14</Evade>
+				<Soak>2</Soak>
+			</Armour>
+			<Armour id="spirit_mail">
+				<DescriptionSID>SPIRIT_MAIL_SID</DescriptionSID>
+				<UsageDescriptionSID>SPIRIT_MAIL_USAGE_SID</UsageDescriptionSID>
+				<Value>300</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>14</DangerLevel>
+				<Evade>17</Evade>
+				<Soak>3</Soak>
+			</Armour>
+			<Armour id="chimera_hide">
+				<DescriptionSID>CHIMERA_HIDE_SID</DescriptionSID>
+				<UsageDescriptionSID>CHIMERA_HIDE_USAGE_SID</UsageDescriptionSID>
+				<Value>400</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>16</DangerLevel>
+				<Evade>24</Evade>
+				<Soak>2</Soak>
+			</Armour>
+			<Armour id="behemoth_hide">
+				<DescriptionSID>BEHEMOTH_HIDE_SID</DescriptionSID>
+				<UsageDescriptionSID>BEHEMOTH_HIDE_USAGE_SID</UsageDescriptionSID>
+				<Value>500</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>20</DangerLevel>
+				<Evade>33</Evade>
+				<Soak>3</Soak>
 			</Armour>
 			<Armour id="clothes">
 				<DescriptionSID>CLOTHES_SID</DescriptionSID>
@@ -8818,7 +8950,7 @@
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
-				<Evade>2</Evade>
+				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
 			<Armour id="faerie_shield">
@@ -8853,7 +8985,29 @@
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
 				<Evade>1</Evade>
+				<Soak>1</Soak>
+			</Armour>
+			<Armour id="hunters_cloak">
+				<DescriptionSID>HUNTERS_CLOAK_SID</DescriptionSID>
+				<UsageDescriptionSID>HUNTERS_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<Value>6</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>7</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>1</DangerLevel>
+				<Evade>5</Evade>
 				<Soak>0</Soak>
+			</Armour>
+			<Armour id="heavy_cloak">
+				<DescriptionSID>HEAVY_CLOAK_SID</DescriptionSID>
+				<UsageDescriptionSID>HEAVY_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<Value>12</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>7</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>1</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>2</Soak>
 			</Armour>
 			<Armour id="leather_boots">
 				<DescriptionSID>LEATHER_BOOTS_SID</DescriptionSID>

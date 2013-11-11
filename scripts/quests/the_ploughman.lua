@@ -4,7 +4,7 @@ require('quest')
 local function sun_gem_start_fn()
   add_message_with_pause("PLOUGHMAN_SUNGEM_QUEST_START_SID")
   add_message_with_pause("PLOUGHMAN_SUNGEM_QUEST_START2_SID")
-  add_message("PLOUGHMAN_SUNGEM_QUEST_START3_SID")
+  clear_and_add_message("PLOUGHMAN_SUNGEM_QUEST_START3_SID")
 end
 
 local function sun_gem_completion_condition_fn()

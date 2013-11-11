@@ -5,7 +5,7 @@ local function lalos_grotto_start_fn()
   add_message_with_pause("ILRU_SPEECH_TEXT_SID")
   add_message_with_pause("LALOS_GROTTO_QUEST_START_SID")
   add_message_with_pause("LALOS_GROTTO_QUEST_START2_SID")
-  add_message("LALOS_GROTTO_QUEST_START3_SID")
+  clear_and_add_message("LALOS_GROTTO_QUEST_START3_SID")
 end
 
 local function lalos_grotto_completion_condition_fn()
