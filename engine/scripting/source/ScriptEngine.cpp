@@ -26,6 +26,7 @@ CreaturePtr get_creature(const string& creature_id);
 
 // API prototypes
 int add_message_with_pause(lua_State* ls);
+int clear_and_add_message(lua_State* ls);
 int add_message(lua_State* ls);
 int add_debug_message(lua_State* ls);
 int add_confirmation_message(lua_State* ls);
@@ -210,6 +211,7 @@ CreaturePtr get_creature(const string& creature_id)
 void ScriptEngine::register_api_functions()
 {
   lua_register(L, "add_message_with_pause", add_message_with_pause);
+  lua_register(L, "clear_and_add_message", clear_and_add_message);
   lua_register(L, "add_message", add_message);
   lua_register(L, "add_debug_message", add_debug_message);
   lua_register(L, "add_confirmation_message", add_confirmation_message);
@@ -262,6 +264,7 @@ static int add_message_with_pause(lua_State* ls)
     string message_sid = lua_tostring(ls, 1);
     
     IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
     manager.add_new_message_with_pause(StringTable::get(message_sid));
     manager.send();
 
@@ -281,7 +284,30 @@ static int add_message_with_pause(lua_State* ls)
   return 0;
 }
 
-// Clear the message manager, and add a new message.
+// Clear the message manager and add a new message.
+// Arguments expected: 1.
+// Argument type: string (resource SID)
+static int clear_and_add_message(lua_State* ls)
+{
+  if(lua_gettop(ls) > 0 && lua_isstring(ls, -1))
+	{
+		string message_sid = lua_tostring(ls, 1);
+
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.clear_if_necessary();
+    manager.add_new_message(StringTable::get(message_sid));
+    manager.send();
+	}
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to clear_and_add_message");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Add a new message.
 // Arguments expected: 1.
 // Argument type: string (resource SID)
 static int add_message(lua_State* ls)
