@@ -8953,6 +8953,28 @@
 				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
+			<Armour id="magic_shield">
+				<DescriptionSID>MAGIC_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>MAGIC_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>150</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>6</DangerLevel>
+				<Evade>7</Evade>
+				<Soak>1</Soak>
+			</Armour>
+			<Armour id="spirit_shield">
+				<DescriptionSID>SPIRIT_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>SPIRIT_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>350</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>10</DangerLevel>
+				<Evade>12</Evade>
+				<Soak>1</Soak>
+			</Armour>
 			<Armour id="faerie_shield">
 				<DescriptionSID>FAERIE_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>FAERIE_SHIELD_USAGE_SID</UsageDescriptionSID>
