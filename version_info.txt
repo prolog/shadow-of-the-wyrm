@@ -51,7 +51,7 @@ Savage Lands v0.1.8 "Aethelbert"
   - New armour: elven robes, magic armour, ethereal armour, spirit mail,
     chimera hide armour, behemoth hide armour, heavy cloak, hunter's
     cloak, shell armour, steel plate armour, dragonscale armour, leviathan
-    armour, colossus armour.
+    armour, colossus armour, magic shield, spirit shield.
 
   - Added an "incorporeal" status flag.  This is on permanently for races
     that support it (spirits), and has a corresponding powerful mystic
