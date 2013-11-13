@@ -8673,7 +8673,29 @@
 				<WornLocation>0</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
-				<Evade>1</Evade>
+				<Evade>4</Evade>
+				<Soak>0</Soak>
+			</Armour>
+			<Armour id="thiefs_cap">
+				<DescriptionSID>THIEFS_CAP_SID</DescriptionSID>
+				<UsageDescriptionSID>THIEFS_CAP_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>0</Pounds><Ounces>7</Ounces></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>4</DangerLevel>
+				<Evade>9</Evade>
+				<Soak>0</Soak>
+			</Armour>
+			<Armour id="guildmasters_cap">
+				<DescriptionSID>GUILDMASTERS_CAP_SID</DescriptionSID>
+				<UsageDescriptionSID>GUILDMASTERS_CAP_USAGE_SID</UsageDescriptionSID>
+				<Value>130</Value>
+				<Weight><Pounds>0</Pounds><Ounces>7</Ounces></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>4</DangerLevel>
+				<Evade>15</Evade>
 				<Soak>0</Soak>
 			</Armour>
 			<Armour id="leather_helm">
@@ -8685,7 +8707,7 @@
 				<Material>4</Material>
 				<DangerLevel>3</DangerLevel>
 				<Evade>3</Evade>
-				<Soak>0</Soak>
+				<Soak>1</Soak>
 			</Armour>
 			<Armour id="metal_cap">
 				<DescriptionSID>METAL_CAP_SID</DescriptionSID>
@@ -8696,7 +8718,7 @@
 				<Material>3</Material>
 				<DangerLevel>3</DangerLevel>
 				<Evade>0</Evade>
-				<Soak>1</Soak>
+				<Soak>2</Soak>
 			</Armour>
 			<Armour id="iron_helm">
 				<DescriptionSID>IRON_HELM_SID</DescriptionSID>
@@ -8707,7 +8729,40 @@
 				<Material>3</Material>
 				<DangerLevel>5</DangerLevel>
 				<Evade>0</Evade>
-				<Soak>2</Soak>
+				<Soak>4</Soak>
+			</Armour>
+			<Armour id="steel_helm">
+				<DescriptionSID>STEEL_HELM_SID</DescriptionSID>
+				<UsageDescriptionSID>STEEL_HELM_USAGE_SID</UsageDescriptionSID>
+				<Value>80</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>6</Material>
+				<DangerLevel>9</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>6</Soak>
+			</Armour>
+			<Armour id="knights_helm">
+				<DescriptionSID>KNIGHTS_HELM_SID</DescriptionSID>
+				<UsageDescriptionSID>KNIGHTS_HELM_USAGE_SID</UsageDescriptionSID>
+				<Value>140</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>6</Material>
+				<DangerLevel>14</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>8</Soak>
+			</Armour>
+			<Armour id="dragon_helm">
+				<DescriptionSID>DRAGON_HELM_SID</DescriptionSID>
+				<UsageDescriptionSID>DRAGON_HELM_USAGE_SID</UsageDescriptionSID>
+				<Value>180</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>1</Material>
+				<DangerLevel>14</DangerLevel>
+				<Evade>8</Evade>
+				<Soak>5</Soak>
 			</Armour>
 			<Armour id="two_moon_amulet">
 				<DescriptionSID>TWO_MOON_AMULET_SID</DescriptionSID>
@@ -8949,7 +9004,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>1</DangerLevel>
 				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -8960,7 +9015,7 @@
 				<Weight><Pounds>3</Pounds></Weight>
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>6</DangerLevel>
+				<DangerLevel>3</DangerLevel>
 				<Evade>7</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -8971,7 +9026,7 @@
 				<Weight><Pounds>2</Pounds></Weight>
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>10</DangerLevel>
+				<DangerLevel>7</DangerLevel>
 				<Evade>12</Evade>
 				<Soak>1</Soak>
 			</Armour>
@@ -8984,20 +9039,53 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
-				<Evade>12</Evade>
+				<Evade>15</Evade>
 				<Soak>5</Soak>
 			</Armour>
 			<Armour id="iron_shield">
 				<DescriptionSID>IRON_SHIELD_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_SHIELD_USAGE_SID</UsageDescriptionSID>
 				<Value>75</Value>
+				<Weight><Pounds>7</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>3</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>3</Soak>
+			</Armour>
+			<Armour id="kite_shield">
+				<DescriptionSID>KITE_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>KITE_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>6</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>6</Soak>
+			</Armour>
+			<Armour id="dragon_shield">
+				<DescriptionSID>DRAGON_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>DRAGON_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>180</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Material>1</Material>
+				<DangerLevel>12</DangerLevel>
+				<Evade>8</Evade>
+				<Soak>5</Soak>
+			</Armour>
+			<Armour id="tower_shield">
+				<DescriptionSID>TOWER_SHIELD_SID</DescriptionSID>
+				<UsageDescriptionSID>TOWER_SHIELD_USAGE_SID</UsageDescriptionSID>
+				<Value>135</Value>
 				<Weight><Pounds>10</Pounds></Weight>
 				<WornLocation>5</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>7</DangerLevel>
-				<Evade>0</Evade>
-				<Soak>2</Soak>
-			</Armour>
+				<DangerLevel>11</DangerLevel>
+				<Evade>-5</Evade>
+				<Soak>9</Soak>
+			</Armour>			
 			<Armour id="cloak">
 				<DescriptionSID>CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>CLOAK_USAGE_SID</UsageDescriptionSID>
@@ -9038,10 +9126,32 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>3</DangerLevel>
-				<Evade>2</Evade>
-				<Soak>0</Soak>
+				<DangerLevel>1</DangerLevel>
+				<Evade>3</Evade>
+				<Soak>1</Soak>
 			</Armour>
+			<Armour id="thiefs_boots">
+				<DescriptionSID>THIEFS_BOOTS_SID</DescriptionSID>
+				<UsageDescriptionSID>THIEFS_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<Value>80</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>5</DangerLevel>
+				<Evade>7</Evade>
+				<Soak>1</Soak>
+			</Armour>			
+			<Armour id="magic_boots">
+				<DescriptionSID>MAGIC_BOOTS_SID</DescriptionSID>
+				<UsageDescriptionSID>MAGIC_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<Value>160</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>10</DangerLevel>
+				<Evade>15</Evade>
+				<Soak>0</Soak>
+			</Armour>			
 			<Armour id="iron_boots">
 				<DescriptionSID>IRON_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_BOOTS_USAGE_SID</UsageDescriptionSID>
@@ -9049,10 +9159,43 @@
 				<Weight><Pounds>6</Pounds></Weight>
 				<WornLocation>8</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>5</DangerLevel>
+				<DangerLevel>3</DangerLevel>
 				<Evade>0</Evade>
-				<Soak>1</Soak>
+				<Soak>2</Soak>
 			</Armour>
+			<Armour id="steel_boots">
+				<DescriptionSID>STEEL_BOOTS_SID</DescriptionSID>
+				<UsageDescriptionSID>STEEL_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<Value>200</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>6</Material>
+				<DangerLevel>8</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>4</Soak>
+			</Armour>
+			<Armour id="dragon_boots">
+				<DescriptionSID>DRAGON_BOOTS_SID</DescriptionSID>
+				<UsageDescriptionSID>DRAGON_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<Value>250</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>1</Material>
+				<DangerLevel>8</DangerLevel>
+				<Evade>5</Evade>
+				<Soak>6</Soak>
+			</Armour>
+			<Armour id="knights_boots">
+				<DescriptionSID>KNIGHTS_BOOTS_SID</DescriptionSID>
+				<UsageDescriptionSID>KNIGHTS_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<Value>200</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>6</Material>
+				<DangerLevel>14</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>8</Soak>
+			</Armour>			
 			<Armour id="shoes">
 				<DescriptionSID>SHOES_SID</DescriptionSID>
 				<UsageDescriptionSID>SHOES_USAGE_SID</UsageDescriptionSID>
@@ -9061,7 +9204,7 @@
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
 				<DangerLevel>1</DangerLevel>
-				<Evade>1</Evade>
+				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
 		</Armours>
