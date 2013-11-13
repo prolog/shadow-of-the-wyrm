@@ -1,6 +1,15 @@
 require('quest')
 
 -- Sun Gem quest details
+--
+-- The blacksmith's sun gem quest is inaccessible once the ploughman's
+-- quest has been completed.  The player can actually get both quests
+-- if both are requested prior to completion, but only one can actually
+-- be completed.
+local function blacksmith_sun_gem_precond_fn()
+  return not is_quest_completed("ploughman_sungem")
+end
+
 local function sun_gem_start_fn()
   add_message_with_pause("BLACKSMITH_SUNGEM_QUEST_START_SID")
   add_message_with_pause("BLACKSMITH_SUNGEM_QUEST_START2_SID")
@@ -25,7 +34,7 @@ sungem_quest = Quest:new("blacksmith_sungem",
                          "BLACKSMITH_SUNGEM_DESCRIPTION_SID",
                          "BLACKSMITH_SUNGEM_QUEST_COMPLETE_SID",
                          "BLACKSMITH_SUNGEM_QUEST_REMINDER_SID",
-                         truefn,
+                         blacksmith_sun_gem_precond_fn,
                          sun_gem_start_fn,
                          sun_gem_completion_condition_fn,
                          sun_gem_completion_fn)

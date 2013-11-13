@@ -7,6 +7,12 @@ local function sun_gem_start_fn()
   clear_and_add_message("PLOUGHMAN_SUNGEM_QUEST_START3_SID")
 end
 
+-- Don't allow the ploughman's quest to be requested if the corresponding
+-- quest from the blacksmith has already been completed.
+local function plough_sun_gem_precond_fn()
+  return not is_quest_completed("blacksmith_sungem")
+end
+
 local function sun_gem_completion_condition_fn()
   return player_has_item("sun_gem") == true
 end
@@ -25,7 +31,7 @@ sungem_quest = Quest:new("ploughman_sungem",
                          "PLOUGHMAN_SUNGEM_DESCRIPTION_SID",
                          "PLOUGHMAN_SUNGEM_QUEST_COMPLETE_SID",
                          "PLOUGHMAN_SUNGEM_QUEST_REMINDER_SID",
-                         truefn,
+                         plough_sun_gem_precond_fn,
                          sun_gem_start_fn,
                          sun_gem_completion_condition_fn,
                          sun_gem_completion_fn)

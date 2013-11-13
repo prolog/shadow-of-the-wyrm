@@ -64,6 +64,10 @@ function Quest:execute()
   -- Quest is complete
   if is_quest_completed(self.quest_id) then
     return false
+ 
+  -- Preconditions met?
+  elseif self.quest_precond_fn() == false then
+    return false
   
   -- Quest is not complete, but condition is met.
   elseif self.quest_completion_condition_fn() == true then
