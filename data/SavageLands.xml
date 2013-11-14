@@ -3083,6 +3083,48 @@
 			</Damage>
 			<Evade>15</Evade>
 		</Creature>
+		<Creature id="spectral_knight">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>SPECTRAL_KNIGHT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SPECTRAL_KNIGHT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SPECTRAL_KNIGHT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SPECTRAL_KNIGHT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>21</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>21</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>800</Exp>
+			</CreatureGeneration>
+			<Level>21</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>42</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Soak>8</Soak>
+			<Speed>56</Speed>
+		</Creature>
 		<Creature id="corpse_rat">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>CORPSE_RAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
