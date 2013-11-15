@@ -3079,7 +3079,7 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>22</NumSides>
-				<Type>8</Type>
+				<Type>9</Type>
 			</Damage>
 			<Evade>15</Evade>
 		</Creature>
@@ -3120,10 +3120,91 @@
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>42</NumSides>
-				<Type>2</Type>
+				<Type>9</Type>
 			</Damage>
 			<Soak>8</Soak>
 			<Speed>56</Speed>
+		</Creature>
+		<Creature id="spectral_wizard">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>SPECTRAL_WIZARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SPECTRAL_WIZARD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SPECTRAL_WIZARD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SPECTRAL_WIZARD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>31</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>31</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1000</Exp>
+			</CreatureGeneration>
+			<Level>31</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>62</NumSides>
+				<Type>9</Type>
+			</Damage>
+		</Creature>
+		<Creature id="spectral_lord">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>SPECTRAL_LORD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SPECTRAL_LORD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SPECTRAL_LORD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SPECTRAL_LORD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>41</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>41</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>120000</Exp>
+			</CreatureGeneration>
+			<Level>31</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>82</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Soak>9</Soak>
 		</Creature>
 		<Creature id="corpse_rat">
 			<RaceID>_animal</RaceID>

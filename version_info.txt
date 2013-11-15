@@ -41,29 +41,34 @@ Savage Lands v0.1.8 "Aethelbert"
     - Giants: +1 Str
     - Gnomes: +1 Int, Wil, or Agi
 
-  - Added new creatures: mole, ghost, spook.
+  - Added new creatures: mole, ghost, spook, spectral knight, spectral
+    wizard, spectral lord.
 
-  - Added a new NPC race, spirit, which will be used for ghosts, spooks,
-    and other ghost-y undead.
+- Added a new NPC race, spirit, which will be used for ghosts, spooks,
+  and other ghost-y undead.
 
-  - Added a couple of spooks to Wintersea Keep.
+- Added a couple of spooks to Wintersea Keep.
 
-  - New armour: elven robes, magic armour, ethereal armour, spirit mail,
-    chimera hide armour, behemoth hide armour, heavy cloak, hunter's
-    cloak, shell armour, steel plate armour, dragonscale armour, leviathan
-    armour, colossus armour, magic shield, spirit shield, steel helm,
-    knight's helm, dragon helm, thief's cap, guildmaster's cap, kite
-    shield, dragon shield, tower shield, thief's boots, magic boots, 
-    steel boots, dragon boots.
+- New armour: elven robes, magic armour, ethereal armour, spirit mail,
+  chimera hide armour, behemoth hide armour, heavy cloak, hunter's
+  cloak, shell armour, steel plate armour, dragonscale armour, leviathan
+  armour, colossus armour, magic shield, spirit shield, steel helm,
+  knight's helm, dragon helm, thief's cap, guildmaster's cap, kite
+  shield, dragon shield, tower shield, thief's boots, magic boots, 
+  steel boots, dragon boots.
 
-  - Added an "incorporeal" status flag.  This is on permanently for races
-    that support it (spirits), and has a corresponding powerful mystic
-    spell, Wraith Form.  While creatures are incorporeal, they are able
-    to move through any tile, so long as it is not occupied by another
-    creature.  They are also not troubled by water (swimming) or great
-    heights (mountain checks).  However, casters must take great care: any
-    creature that is in an otherwise-inaccessible square when Wraith Form
-    wears off will be instantly killed.
+- Added an "incorporeal" status flag.  This is on permanently for races
+  that support it (spirits), and has a corresponding powerful mystic
+  spell, Wraith Form.  While creatures are incorporeal, they are able
+  to move through any tile, so long as it is not occupied by another
+  creature.  They are also not troubled by water (swimming) or great
+  heights (mountain checks).  However, casters must take great care: any
+  creature that is in an otherwise-inaccessible square when Wraith Form
+  wears off will be instantly killed.
+
+- Updated the Lua quest code so that it properly considered the quest's
+  precondition function return value prior to actually executing the
+  quest function and assigning the quest to the player.
 
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
