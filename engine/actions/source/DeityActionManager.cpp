@@ -1,6 +1,7 @@
+#include <boost/make_shared.hpp>
 #include "DeityActionManager.hpp"
 #include "DeityDecisionImplications.hpp"
-#include "DeityDecisionStrategyHandlerFactory.hpp"
+#include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 
@@ -40,7 +41,7 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature)
     int original_piety = status.get_piety();
 
     // Create a default (for now) dislike decision.
-    IDeityDecisionStrategyHandlerPtr deity_decision_handler = DeityDecisionStrategyHandlerFactory::create_dislike_decision_strategy_handler();
+    IDeityDecisionStrategyHandlerPtr deity_decision_handler = boost::make_shared<DislikeDeityDecisionStrategyHandler>();
     DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature);
 
     // This may have been updated as a result of the decision.

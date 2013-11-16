@@ -1,6 +1,5 @@
 #include "ClassManager.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
-#include "DeityDecisionStrategyHandlerFactory.hpp"
 #include "DeityTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PrayerAction.hpp"
@@ -23,10 +22,9 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
     
     // Decide on a course of action.
     IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy();
-    DeityDecisionType ddt = deity_decision_strategy->get_decision(creature);
+    IDeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision(creature);
     
     // Act on that decision.
-    IDeityDecisionStrategyHandlerPtr deity_decision_handler = DeityDecisionStrategyHandlerFactory::create_decision_strategy_handler(ddt);
     DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature);
     
     // Reduce the piety and update the player on the result.

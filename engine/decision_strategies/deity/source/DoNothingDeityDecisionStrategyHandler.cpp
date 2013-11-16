@@ -5,6 +5,11 @@ using std::string;
 
 const int DoNothingDeityDecisionStrategyHandler::DO_NOTHING_PIETY_LOSS = 100;
 
+bool DoNothingDeityDecisionStrategyHandler::decide(CreaturePtr creature)
+{
+  return true;
+}
+
 DeityDecisionImplications DoNothingDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature)
 {
   return get_deity_decision_implications();

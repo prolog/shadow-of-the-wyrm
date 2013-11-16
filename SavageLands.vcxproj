@@ -330,7 +330,6 @@
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyFactory.hpp" />
-    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyHandlerFactory.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionTypes.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DislikeDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DoNothingDeityDecisionStrategyHandler.hpp" />
@@ -1274,7 +1273,6 @@
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionImplications.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyFactory.cpp" />
-    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyHandlerFactory.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DislikeDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DoNothingDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\FullHPDeityDecisionStrategyHandler.cpp" />

@@ -1,9 +1,27 @@
+#include "DeityDecisionConstants.hpp"
 #include "DeityTextKeys.hpp"
 #include "FullHPDeityDecisionStrategyHandler.hpp"
 
 using std::string;
 
 const int FullHPDeityDecisionStrategyHandler::PIETY_LOSS = 300;
+
+bool FullHPDeityDecisionStrategyHandler::decide(CreaturePtr creature)
+{
+  bool decision = false;
+
+  if (creature)
+  {
+    Statistic hp = creature->get_hit_points();
+
+    if (hp.get_current() < (hp.get_base() * DeityDecisionConstants::HEAL_HP_MAX_PCT))
+    {
+      decision = true;
+    }
+  }
+
+  return decision;
+}
 
 DeityDecisionImplications FullHPDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature)
 {
