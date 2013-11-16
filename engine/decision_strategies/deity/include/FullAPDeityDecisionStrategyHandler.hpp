@@ -1,7 +1,7 @@
 #pragma once
 #include "IDeityDecisionStrategyHandler.hpp"
 
-class FullHPDeityDecisionStrategyHandler : public IDeityDecisionStrategyHandler
+class FullAPDeityDecisionStrategyHandler : public IDeityDecisionStrategyHandler
 {
   public:
     bool decide(CreaturePtr creature);

@@ -4,8 +4,6 @@
 
 using std::string;
 
-const int FullHPDeityDecisionStrategyHandler::PIETY_LOSS = 300;
-
 bool FullHPDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   bool decision = false;
@@ -43,7 +41,7 @@ DeityDecisionImplications FullHPDeityDecisionStrategyHandler::handle_decision(Cr
 
 int FullHPDeityDecisionStrategyHandler::get_piety_loss() const
 {
-  return PIETY_LOSS;
+  return 500;
 }
 
 string FullHPDeityDecisionStrategyHandler::get_message_sid() const

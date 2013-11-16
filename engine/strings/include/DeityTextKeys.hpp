@@ -9,6 +9,7 @@ class DeityTextKeys
     static const std::string PRAYER_INITIAL_MESSAGE;
     static const std::string PRAYER_DO_NOTHING;
     static const std::string PRAYER_FULL_HP;
+    static const std::string PRAYER_FULL_AP;
     static const std::string DEITY_ACTION_DISPLEASED;
     
   protected:

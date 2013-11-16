@@ -3,8 +3,6 @@
 
 using std::string;
 
-const int DoNothingDeityDecisionStrategyHandler::DO_NOTHING_PIETY_LOSS = 100;
-
 bool DoNothingDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   return true;
@@ -15,9 +13,10 @@ DeityDecisionImplications DoNothingDeityDecisionStrategyHandler::handle_decision
   return get_deity_decision_implications();
 }
 
+// You can't nag 'em forever.
 int DoNothingDeityDecisionStrategyHandler::get_piety_loss() const
 {
-  return DO_NOTHING_PIETY_LOSS;
+  return 100;
 }
 
 string DoNothingDeityDecisionStrategyHandler::get_message_sid() const

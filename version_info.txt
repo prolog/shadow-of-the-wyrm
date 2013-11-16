@@ -70,6 +70,9 @@ Savage Lands v0.1.8 "Aethelbert"
   precondition function return value prior to actually executing the
   quest function and assigning the quest to the player.
 
+- Refactored the deity decision handling code slightly.  Added a deity
+  strategy handler for restoring AP.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 
