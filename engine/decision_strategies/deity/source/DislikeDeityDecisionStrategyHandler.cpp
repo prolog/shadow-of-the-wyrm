@@ -5,6 +5,25 @@ using std::string;
 
 const int DislikeDeityDecisionStrategyHandler::PIETY_LOSS = 750;
 
+// The Nine only dislike those with negative piety.
+//
+// They're very scientific, and it makes it easy to model.
+bool DislikeDeityDecisionStrategyHandler::decide(CreaturePtr creature)
+{
+  bool decision = false;
+
+  if (creature)
+  {
+    Religion& religion = creature->get_religion_ref();
+    DeityRelations& relations = religion.get_deity_relations_ref();
+    DeityStatus& status = relations[religion.get_active_deity_id()];
+    
+    decision = (status.get_piety() < 0);
+  }
+
+  return decision;
+}
+
 DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature)
 {
   if (creature)

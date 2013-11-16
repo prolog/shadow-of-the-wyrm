@@ -4,6 +4,7 @@
 class DislikeDeityDecisionStrategyHandler : public IDeityDecisionStrategyHandler
 {
   public:
+    bool decide(CreaturePtr creature);
     DeityDecisionImplications handle_decision(CreaturePtr creature);
 
   protected:

@@ -1365,9 +1365,6 @@
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyFactory.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyHandlerFactory.hpp">
-      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionTypes.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
@@ -3510,9 +3507,6 @@
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyFactory.cpp">
-      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyHandlerFactory.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\DoNothingDeityDecisionStrategyHandler.cpp">

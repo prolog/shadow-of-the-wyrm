@@ -8,5 +8,12 @@
 class DeityDecisionStrategy : public IDeityDecisionStrategy
 {
   public:
-    DeityDecisionType get_decision(CreaturePtr creature);
+    DeityDecisionStrategy();
+    IDeityDecisionStrategyHandlerPtr get_decision(CreaturePtr creature);
+
+  protected:
+    // Should be initialized differently by deity.
+    virtual void initialize_decisions();
+
+    std::vector<IDeityDecisionStrategyHandlerPtr> decisions;
 };

@@ -1,26 +1,43 @@
+#include <boost/foreach.hpp>
+#include <boost/make_shared.hpp>
 #include "DeityDecisionConstants.hpp"
 #include "DeityDecisionStrategy.hpp"
 
-// Right now, always do nothing (test).
-DeityDecisionType DeityDecisionStrategy::get_decision(CreaturePtr creature)
-{
-  DeityDecisionType decision_type = DEITY_DECISION_NOTHING;
+#include "FullHPDeityDecisionStrategyHandler.hpp"
+#include "DislikeDeityDecisionStrategyHandler.hpp"
+#include "DoNothingDeityDecisionStrategyHandler.hpp"
 
-  if (creature)
+DeityDecisionStrategy::DeityDecisionStrategy()
+{
+  initialize_decisions();
+}
+
+void DeityDecisionStrategy::initialize_decisions()
+{
+  decisions.clear();
+
+  IDeityDecisionStrategyHandlerPtr cur_decision = boost::make_shared<FullHPDeityDecisionStrategyHandler>();
+  decisions.push_back(cur_decision);
+
+  cur_decision = boost::make_shared<DislikeDeityDecisionStrategyHandler>();
+  decisions.push_back(cur_decision);
+}
+
+// Loop through the set of possible decisions.
+// The first one that meets the necessary criteria is selected.
+// If none meet their criteria, the deity does nothing.
+IDeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr creature)
+{
+  // The default decision if nothing else is selected.
+  IDeityDecisionStrategyHandlerPtr do_nothing = boost::make_shared<DoNothingDeityDecisionStrategyHandler>();
+
+  BOOST_FOREACH(IDeityDecisionStrategyHandlerPtr decision, decisions)
   {
-    Religion& religion = creature->get_religion_ref();
-    int piety          = religion.get_deity_status(religion.get_active_deity_id()).get_piety();
-    Statistic hp       = creature->get_hit_points();
-    
-    // Only heal the creature if the creature is hurting a little bit.
-    if (piety >= 0)
+    if (decision->decide(creature))
     {
-      if (hp.get_current() < (hp.get_base() * DeityDecisionConstants::HEAL_HP_MAX_PCT))
-      {
-        decision_type = DEITY_DECISION_FULL_HP;
-      }
+      return decision;
     }
   }
 
-  return decision_type;
+  return do_nothing;
 }
