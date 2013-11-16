@@ -10,6 +10,4 @@ class DoNothingDeityDecisionStrategyHandler : public IDeityDecisionStrategyHandl
   protected:
     int get_piety_loss() const;
     std::string get_message_sid() const;
-    
-    static const int DO_NOTHING_PIETY_LOSS;
 };

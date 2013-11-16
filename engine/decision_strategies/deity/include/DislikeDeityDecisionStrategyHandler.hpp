@@ -10,6 +10,4 @@ class DislikeDeityDecisionStrategyHandler : public IDeityDecisionStrategyHandler
   protected:
     int get_piety_loss() const;
     std::string get_message_sid() const;
-
-    static const int PIETY_LOSS;
 };

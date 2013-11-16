@@ -9,3 +9,4 @@ DeityDecisionConstants::~DeityDecisionConstants()
 }
 
 const float DeityDecisionConstants::HEAL_HP_MAX_PCT = 0.8f;
+const float DeityDecisionConstants::HEAL_AP_MAX_PCT = 0.8f;

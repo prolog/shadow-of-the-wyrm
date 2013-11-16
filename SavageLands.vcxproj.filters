@@ -2814,6 +2814,9 @@
     <ClInclude Include="engine\calculators\include\IncorporealCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\FullAPDeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5407,6 +5410,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\IncorporealCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\FullAPDeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -3,6 +3,7 @@
 #include "DeityDecisionConstants.hpp"
 #include "DeityDecisionStrategy.hpp"
 
+#include "FullAPDeityDecisionStrategyHandler.hpp"
 #include "FullHPDeityDecisionStrategyHandler.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "DoNothingDeityDecisionStrategyHandler.hpp"
@@ -17,6 +18,9 @@ void DeityDecisionStrategy::initialize_decisions()
   decisions.clear();
 
   IDeityDecisionStrategyHandlerPtr cur_decision = boost::make_shared<FullHPDeityDecisionStrategyHandler>();
+  decisions.push_back(cur_decision);
+
+  cur_decision = boost::make_shared<FullAPDeityDecisionStrategyHandler>();
   decisions.push_back(cur_decision);
 
   cur_decision = boost::make_shared<DislikeDeityDecisionStrategyHandler>();
