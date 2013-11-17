@@ -42,7 +42,8 @@ Savage Lands v0.1.8 "Aethelbert"
     - Gnomes: +1 Int, Wil, or Agi
 
   - Added new creatures: mole, ghost, spook, spectral knight, spectral
-    wizard, spectral lord, spectral emperor.
+    wizard, spectral lord, spectral emperor, charcoal burner, wrecker,
+    woodsman.
 
 - Added a new NPC race, spirit, which will be used for ghosts, spooks,
   and other ghost-y undead.
