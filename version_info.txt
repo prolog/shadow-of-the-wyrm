@@ -71,7 +71,8 @@ Savage Lands v0.1.8 "Aethelbert"
   quest function and assigning the quest to the player.
 
 - Refactored the deity decision handling code slightly.  Added a deity
-  strategy handler for restoring AP.
+  strategy handler for restoring AP, as well as one for removing harmful
+  statuses from the player.
 
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
