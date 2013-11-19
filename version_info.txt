@@ -43,7 +43,7 @@ Savage Lands v0.1.8 "Aethelbert"
 
   - Added new creatures: mole, ghost, spook, spectral knight, spectral
     wizard, spectral lord, spectral emperor, charcoal burner, wrecker,
-    woodsman, bog spirit.
+    woodsman, bog spirit, divine spirit.
 
 - Added a new NPC race, spirit, which will be used for ghosts, spooks,
   and other ghost-y undead.
