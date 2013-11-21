@@ -348,7 +348,7 @@ bool MapUtils::is_creature_present(TilePtr tile)
   {
     CreaturePtr creature = tile->get_creature();
     
-    return (creature);
+    return (creature != nullptr);
   }
   
   return false;

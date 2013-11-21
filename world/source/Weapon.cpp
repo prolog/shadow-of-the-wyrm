@@ -101,10 +101,10 @@ vector<string> Weapon::get_slays_races() const
 
 bool Weapon::additional_item_attributes_match(boost::shared_ptr<Item> i)
 {
-  bool match = (i);
+  bool match = (i != nullptr);
   WeaponPtr i_weap = dynamic_pointer_cast<Weapon>(i);
   
-  match = (i_weap);
+  match = (i_weap != nullptr);
   
   if (i_weap)
   {

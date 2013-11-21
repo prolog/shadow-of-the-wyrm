@@ -3968,12 +3968,6 @@
     <ClCompile Include="engine\source\SavageLandsEngine.cpp">
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\unit_tests\Map_test.cpp">
-      <Filter>Source Files\engine\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\source\unit_tests\MapUtils_test.cpp">
-      <Filter>Source Files\engine\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Message_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
@@ -4328,9 +4322,6 @@
     <ClCompile Include="engine\time\source\unit_tests\SeasonsTimeObserver_test.cpp">
       <Filter>Source Files\engine\time\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\unit_tests\MapRegistry_test.cpp">
-      <Filter>Source Files\engine\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\unit_tests\Depth_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
@@ -4468,9 +4459,6 @@
     </ClCompile>
     <ClCompile Include="engine\commands\inventory\source\unit_tests\InventoryKeyboardCommandMap_test.cpp">
       <Filter>Source Files\engine\commands\inventory\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\unit_tests\Map_test.cpp">
-      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\OverworldMapDangerLevelCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
@@ -5419,6 +5407,9 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\RestoreStatusDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\WorldMap_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

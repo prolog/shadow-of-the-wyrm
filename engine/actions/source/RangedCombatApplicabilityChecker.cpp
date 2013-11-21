@@ -99,7 +99,7 @@ bool RangedCombatApplicabilityChecker::is_ranged_weapon_and_ammunition_equipped(
     Equipment& equipment = creature->get_equipment();    
     ItemPtr ammunition = equipment.get_item(EQUIPMENT_WORN_AMMUNITION);
     
-    return (ammunition);
+    return (ammunition != nullptr);
   }
 
   return false;

@@ -28,7 +28,7 @@ bool SecondaryPhysicalAttackSpeedCalculator::has_weapon_equipped(CreaturePtr cre
   {
     WeaponPtr weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_OFF_HAND));
 
-    return (weapon);
+    return (weapon != nullptr);
   }
 
   return false;

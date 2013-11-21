@@ -106,49 +106,49 @@ pair<string, Colour> CreatureTranslator::get_display_strength(const CreaturePtr&
 {
   Statistic str = c->get_strength();
   string strength = StringTable::get(TextKeys::STRENGTH_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_strength().get_current()), 2);
-  return make_pair<string, Colour>(strength, (str.get_current() == str.get_base()) ? COLOUR_WHITE : COLOUR_RED);
+  return make_pair(strength, (str.get_current() == str.get_base()) ? COLOUR_WHITE : COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_dexterity(const CreaturePtr& c)
 {
   Statistic dex = c->get_dexterity();
   string dexterity = StringTable::get(TextKeys::DEXTERITY_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_dexterity().get_current()), 2);
-  return make_pair<string, Colour>(dexterity, (dex.get_current() == dex.get_base()) ? COLOUR_WHITE : COLOUR_RED);
+  return make_pair(dexterity, (dex.get_current() == dex.get_base()) ? COLOUR_WHITE : COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_agility(const CreaturePtr& c)
 {
   Statistic agi = c->get_agility();
   string agility = StringTable::get(TextKeys::AGILITY_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_agility().get_current()), 2);
-  return make_pair<string, Colour>(agility, (agi.get_current() == agi.get_base()) ? COLOUR_WHITE : COLOUR_RED);
+  return make_pair(agility, (agi.get_current() == agi.get_base()) ? COLOUR_WHITE : COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_health(const CreaturePtr& c)
 {
   Statistic hea = c->get_health();
   string health = StringTable::get(TextKeys::HEALTH_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_health().get_current()), 2);
-  return make_pair<string, Colour>(health, (hea.get_current() == hea.get_base()) ? COLOUR_WHITE : COLOUR_RED);
+  return make_pair(health, (hea.get_current() == hea.get_base()) ? COLOUR_WHITE : COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_intelligence(const CreaturePtr& c)
 {
   Statistic intl = c->get_intelligence();
   string intelligence = StringTable::get(TextKeys::INTELLIGENCE_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_intelligence().get_current()), 2);
-  return make_pair<string, Colour>(intelligence, (intl.get_current() == intl.get_base()) ? COLOUR_WHITE : COLOUR_RED);
+  return make_pair(intelligence, (intl.get_current() == intl.get_base()) ? COLOUR_WHITE : COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_willpower(const CreaturePtr& c)
 {
   Statistic wil = c->get_willpower();
   string willpower = StringTable::get(TextKeys::WILLPOWER_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_willpower().get_current()), 2);
-  return make_pair<string, Colour>(willpower, (wil.get_current() == wil.get_base()) ? COLOUR_WHITE : COLOUR_RED);
+  return make_pair(willpower, (wil.get_current() == wil.get_base()) ? COLOUR_WHITE : COLOUR_RED);
 }
 
 pair<string, Colour> CreatureTranslator::get_display_charisma(const CreaturePtr& c)
 {
   Statistic cha = c->get_charisma();
   string charisma = StringTable::get(TextKeys::CHARISMA_ABRV) + ":" + String::add_trailing_spaces(Integer::to_string(c->get_charisma().get_current()), 2);
-  return make_pair<string, Colour>(charisma, (cha.get_current() == cha.get_base()) ? COLOUR_WHITE : COLOUR_RED);
+  return make_pair(charisma, (cha.get_current() == cha.get_base()) ? COLOUR_WHITE : COLOUR_RED);
 }
 
 string CreatureTranslator::get_display_speed(const CreaturePtr& c)
