@@ -35,10 +35,10 @@ int Wearable::get_soak() const
 
 bool Wearable::additional_item_attributes_match(boost::shared_ptr<Item> i)
 {
-  bool match = (i);
+  bool match = (i != nullptr);
   WearablePtr i_wear = dynamic_pointer_cast<Wearable>(i);
   
-  match = i_wear;
+  match = i_wear != nullptr;
   
   if (i_wear)
   {

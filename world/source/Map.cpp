@@ -523,5 +523,5 @@ ClassIdentifier Map::internal_class_identifier() const
 }
 
 #ifdef UNIT_TESTS
-#include "unit_tests/Map_test.cpp"
+#include "unit_tests/WorldMap_test.cpp"
 #endif

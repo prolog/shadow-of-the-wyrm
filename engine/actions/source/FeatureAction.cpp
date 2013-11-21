@@ -47,7 +47,7 @@ ActionCostValue FeatureAction::apply(CreaturePtr creature)
     {
       TilePtr tile = features.begin()->second;
       FeaturePtr feature = tile->get_feature();
-      handled = handle(feature, creature, tile->get_creature());
+      handled = handle(feature, creature, tile->get_creature() != nullptr);
     }
     else
     {
@@ -194,7 +194,7 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
       {
         TilePtr tile = t_it->second;
         FeaturePtr feature = tile->get_feature();
-        applied = handle(feature, creature, tile->get_creature());
+        applied = handle(feature, creature, tile->get_creature() != nullptr);
       }
     }
   }

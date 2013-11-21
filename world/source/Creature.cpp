@@ -927,11 +927,11 @@ SpellKnowledge& Creature::get_spell_knowledge_ref()
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
 {
-  // VS 2010
+  // VS 2012
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 944);
+    BOOST_STATIC_ASSERT(sizeof(*this) == 800);
     #else
     // Release
     BOOST_STATIC_ASSERT(sizeof(*this) == 872);

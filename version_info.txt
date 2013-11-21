@@ -75,6 +75,11 @@ Savage Lands v0.1.8 "Aethelbert"
   strategy handler for restoring AP, as well as one for removing harmful
   statuses from the player.
 
+- In what appears to be my annual development environment update: upgraded 
+  from Visual Studio 2010 Express to Visual Studio 2013 Express, Google 
+  Test from 1.6 to 1.7, Boost from 1.48 to 1.55.  No updates to pdcurses
+  or xerces. 
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 

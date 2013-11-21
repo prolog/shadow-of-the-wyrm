@@ -180,7 +180,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
     // If the tile exists in the FOV map, note that, so that the
     // describer can return full details.  If the at(..) function
     // returns a null shared pointer, the boolean will be false.
-    bool tile_exists_in_fov_map = (creature->get_decision_strategy()->get_fov_map()->at(c));
+    bool tile_exists_in_fov_map = (creature->get_decision_strategy()->get_fov_map()->at(c)) != nullptr;
     
     TileDescription td(show_tile_description, show_feature_description, show_creature_description, show_item_descriptions);
     string tile_desc = td.describe(creature, selected_tile, tile_exists_in_fov_map);

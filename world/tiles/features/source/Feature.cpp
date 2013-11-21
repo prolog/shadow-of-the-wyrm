@@ -63,7 +63,7 @@ pair<string, vector<string>> Feature::get_description_and_replacement_sids() con
 
 bool Feature::has_trap() const
 {
-  return (trap);
+  return (trap != nullptr);
 }
 
 void Feature::set_trap(TrapPtr new_trap)

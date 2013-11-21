@@ -267,9 +267,9 @@ ItemIdentificationType Item::get_identification_type() const
 
 bool Item::matches(boost::shared_ptr<Item> i)
 {
-  bool match = (i);
+  bool match = (i != nullptr);
 
-  if (i)
+  if (match)
   {
     match = match && (usage_description_sid == i->get_usage_description_sid());
     match = match && (description_sid       == i->get_description_sid()      );

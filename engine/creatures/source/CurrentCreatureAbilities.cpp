@@ -33,7 +33,7 @@ bool CurrentCreatureAbilities::can_see(CreaturePtr creature, const bool add_mess
 
 bool CurrentCreatureAbilities::can_hear(CreaturePtr creature, const bool add_message_if_player_and_cannot_hear) const
 {
-  bool creature_can_hear = creature;
+  bool creature_can_hear = creature != nullptr;
 
   return creature_can_hear;
 }

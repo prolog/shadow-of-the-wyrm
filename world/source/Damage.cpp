@@ -109,7 +109,7 @@ void Damage::set_additional_damage(DamagePtr new_additional_damage)
 
 bool Damage::has_additional_damage() const
 {
-  return (additional_damage);
+  return (additional_damage != nullptr);
 }
 
 DamagePtr Damage::get_additional_damage() const

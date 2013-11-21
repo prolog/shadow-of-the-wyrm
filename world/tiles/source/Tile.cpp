@@ -219,7 +219,7 @@ bool Tile::get_viewed() const
 
 bool Tile::has_feature() const
 {
-  return (feature);
+  return (feature != nullptr);
 }
 
 bool Tile::has_blocking_feature() const
