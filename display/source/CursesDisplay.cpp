@@ -2,7 +2,6 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/tokenizer.hpp>
 #include "Animation.hpp"
@@ -444,7 +443,7 @@ void CursesDisplay::draw_update_map(const DisplayMap& update_map)
 
   uint terminal_row, terminal_col;
 
-  BOOST_FOREACH(DisplayMapType::value_type& tile, tiles)
+  for (DisplayMapType::value_type& tile : tiles)
   {
     Coordinate map_coords = tile.first;
     DisplayTile dtile = tile.second;
@@ -492,7 +491,7 @@ void CursesDisplay::draw_animation(const Animation& animation)
 {
   vector<AnimationInstructionPtr> animation_instructions = animation.get_animation_instructions();
 
-  BOOST_FOREACH(AnimationInstructionPtr instruct, animation_instructions)
+  for(AnimationInstructionPtr& instruct : animation_instructions)
   {
     if (instruct)
     {
@@ -561,7 +560,7 @@ string CursesDisplay::display_menu(const Menu& current_menu)
 
   vector<MenuComponentPtr> components = current_menu.get_components();
   uint line_incr = current_menu.get_line_increment();
-  BOOST_FOREACH(MenuComponentPtr component, components)
+  for(MenuComponentPtr component : components)
   {
     if (component)
     {
@@ -905,7 +904,7 @@ void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
 
     vector<pair<string, Colour>> flags = display_item.get_flags();
 
-    BOOST_FOREACH(const TextColour& flag_pair, flags)
+    for(const TextColour& flag_pair : flags)
     {
       wprintw(eq_window, " ");
       
@@ -962,7 +961,7 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
       mvwprintw(inv_window, current_row, 0, category_synopsis.c_str());
       disable_colour(category_colour, inv_window);
       
-      BOOST_FOREACH(DisplayItem item, display_items)
+      for(DisplayItem item : display_items)
       {
         current_row++;
         
@@ -977,7 +976,7 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
         disable_colour(item_colour, inv_window);
 
         DisplayItemFlagsVec flags = item.get_flags();
-        BOOST_FOREACH(const TextColour& tc, flags)
+        for(const TextColour& tc : flags)
         {
           wprintw(inv_window, " ");
 

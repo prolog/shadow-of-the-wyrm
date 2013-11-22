@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "EvadeCalculator.hpp"
 #include "StatusEffectFactory.hpp"
 #include "Wearable.hpp"
@@ -45,7 +44,7 @@ int EvadeCalculator::get_equipment_bonus(const CreaturePtr& c)
   Equipment& eq = c->get_equipment();
   EquipmentMap equipment = eq.get_equipment();
   
-  BOOST_FOREACH(EquipmentMap::value_type& item, equipment)
+  for(EquipmentMap::value_type& item : equipment)
   {
     WearablePtr equipped = dynamic_pointer_cast<Wearable>(item.second);
     
@@ -64,7 +63,7 @@ int EvadeCalculator::get_status_bonus(const CreaturePtr& c)
 
   CreatureStatusMap status = c->get_statuses();
 
-  BOOST_FOREACH(CreatureStatusMap::value_type& status_pair, status)
+  for(const CreatureStatusMap::value_type& status_pair : status)
   {
     string status_id = status_pair.first;
     bool status_applied = status_pair.second;

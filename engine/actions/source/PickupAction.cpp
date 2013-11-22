@@ -1,5 +1,4 @@
 #include <list>
-#include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"

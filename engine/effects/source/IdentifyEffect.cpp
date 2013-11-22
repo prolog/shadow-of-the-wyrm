@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ActionManager.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"

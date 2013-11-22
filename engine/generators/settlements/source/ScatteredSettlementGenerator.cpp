@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "CoordUtils.hpp"
 #include "ScatteredSettlementGenerator.hpp"
@@ -46,7 +45,7 @@ bool ScatteredSettlementGenerator::can_building_be_placed(const int row, const i
 
   Room cur(-1, col, col+width, row, row+height);
   
-  BOOST_FOREACH(Room r, current_buildings)
+  for (const Room& r : current_buildings)
   {
     Coordinate c1(r.get_centre());
     Coordinate c2(cur.get_centre());

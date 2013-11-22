@@ -3,7 +3,6 @@
 #else
 #include <ncurses.h>
 #endif
-#include <boost/foreach.hpp>
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
 #include "KeyboardCommandMap.hpp"
@@ -141,7 +140,7 @@ bool KeyboardCommandMap::serialize(std::ostream& stream)
 {
   Serialize::write_size_t(stream, command_mapping.size());
 
-  BOOST_FOREACH(KeyboardCommandMappingMap::value_type& kb_pair, command_mapping)
+  for (const KeyboardCommandMappingMap::value_type& kb_pair : command_mapping)
   {
     string keyboard_keypress = kb_pair.first;
     string command_key = kb_pair.second;

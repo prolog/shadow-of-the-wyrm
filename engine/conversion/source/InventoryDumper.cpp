@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <sstream>
 #include "Conversion.hpp"
 #include "InventoryDumper.hpp"
@@ -32,7 +31,7 @@ string InventoryDumper::get_inventory() const
     Inventory inv = creature->get_inventory();
     const list<ItemPtr>& raw_items = inv.get_items_cref();
     
-    BOOST_FOREACH(ItemPtr item, raw_items)
+    for (ItemPtr item : raw_items)
     {
       ItemDumper item_dumper(item);
       ss << item_dumper.str() << endl;

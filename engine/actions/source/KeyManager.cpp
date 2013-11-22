@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "KeyManager.hpp"
 #include "ItemManager.hpp"
 #include "Tool.hpp"
@@ -17,7 +16,7 @@ bool KeyManager::has_key(CreaturePtr creature, LockPtr lock)
     {
       list<ItemPtr> tools = ItemManager::get_items_by_type(creature, ITEM_TYPE_TOOL);
 
-      BOOST_FOREACH(ItemPtr item, tools)
+      for(ItemPtr item : tools)
       {
         if (item)
         {

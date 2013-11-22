@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <sstream>
-#include <boost/foreach.hpp>
 #include "SearchNode.hpp"
 
 using namespace std;
@@ -90,7 +89,7 @@ string SearchNode::str() const
 {
   ostringstream ss;
   
-  BOOST_FOREACH(const Coordinate& c, ancestors)
+  for (const Coordinate& c : ancestors)
   {
     ss << "(" << c.first << "," << c.second << ") ";
   }

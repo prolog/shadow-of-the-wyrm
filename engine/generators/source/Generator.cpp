@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
@@ -143,7 +142,7 @@ bool Generator::generate_initial_set_creatures(MapPtr map)
     ActionManager& am = game.get_action_manager_ref();
     CreatureFactory cf;
 
-    BOOST_FOREACH(const string& creature_id, creature_ids)
+    for (const string& creature_id : creature_ids)
     {
       // Generate the creature
       CreaturePtr creature = cf.create_by_creature_id(am, creature_id);

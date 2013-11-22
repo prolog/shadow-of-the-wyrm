@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "DeityDecisionConstants.hpp"
 #include "DeityDecisionStrategy.hpp"
@@ -39,7 +38,7 @@ IDeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr
   // The default decision if nothing else is selected.
   IDeityDecisionStrategyHandlerPtr do_nothing = boost::make_shared<DoNothingDeityDecisionStrategyHandler>();
 
-  BOOST_FOREACH(IDeityDecisionStrategyHandlerPtr decision, decisions)
+  for (IDeityDecisionStrategyHandlerPtr decision : decisions)
   {
     if (decision->decide(creature))
     {

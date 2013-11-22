@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "IItemFilter.hpp"
 #include "InventoryCommandFactory.hpp"
@@ -88,7 +87,7 @@ ItemPtr InventoryManager::select_item(Inventory& inv, const DisplayInventoryMap&
     {
       vector<DisplayItem> items = d_it->second;
       
-      BOOST_FOREACH(DisplayItem display_item, items)
+      for(const DisplayItem& display_item : items)
       {
         if (search_ix == internal_index)
         {

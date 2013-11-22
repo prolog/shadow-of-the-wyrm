@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
@@ -107,7 +106,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
   {
     set<string> creature_ids = t_it->second;
     
-    BOOST_FOREACH(string threatening_creature_id, creature_ids)
+    for (const string& threatening_creature_id : creature_ids)
     {
       // Check the view map to see if the creature exists
       if (view_map->has_creature(threatening_creature_id))
@@ -184,7 +183,7 @@ vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_cr
   CreatureTileSafetyChecker safety_checker;
   vector<Coordinate> coords_without_creatures;
   
-  BOOST_FOREACH(Coordinate c, all_adjacent_coordinates)
+  for (const Coordinate& c : all_adjacent_coordinates)
   {
     // Don't move if there's a creature on that coordinate.
     TilePtr adjacent_tile = current_map->at(c.first, c.second);

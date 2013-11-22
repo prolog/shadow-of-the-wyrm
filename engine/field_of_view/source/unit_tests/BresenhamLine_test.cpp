@@ -1,6 +1,5 @@
 #include "gtest/gtest.h"
 
-#include <boost/foreach.hpp>
 #include <iostream>
 
 TEST(SL_Engine_FieldOfView, BresenhamLine)

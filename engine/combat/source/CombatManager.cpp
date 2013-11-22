@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "CombatConstants.hpp"
 #include "CombatManager.hpp"
 #include "CombatTextKeys.hpp"
@@ -203,7 +202,7 @@ bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creatur
   string creature_race = attacked_creature->get_race_id();
   vector<string> slay_races = wm.get_slays_races(attacking_creature, attack_type);
 
-  BOOST_FOREACH(string slay_race, slay_races)
+  for(const string& slay_race : slay_races)
   {
     if (rm.is_race_or_descendent(creature_race, slay_race))
     {
@@ -387,7 +386,7 @@ void CombatManager::mark_appropriate_skills(CreaturePtr attacking_creature, cons
   {
     vector<SkillType> skills_to_mark = skill_marker->get_marked_skills(attacking_creature);
 
-    BOOST_FOREACH(SkillType skill_type, skills_to_mark)
+    for (const SkillType& skill_type : skills_to_mark)
     {
       sm.mark_skill(attacking_creature, skill_type, attack_success);
     }

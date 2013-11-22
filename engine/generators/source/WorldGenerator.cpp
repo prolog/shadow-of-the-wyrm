@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "AlignmentEnums.hpp"
 #include "CoordUtils.hpp"
@@ -204,7 +203,7 @@ void WorldGenerator::generate_infinite_dungeon_island(MapPtr map)
   v_trees.push_back(make_pair(height-10, width-3));
   v_trees.push_back(make_pair(height-9, width-2));
 
-  BOOST_FOREACH(Coordinate coord, v_trees)
+  for (const Coordinate& coord : v_trees)
   {
     TilePtr forest_tile = tg.generate(TILE_TYPE_FOREST);
     map->insert(coord.first, coord.second, forest_tile);
@@ -348,7 +347,7 @@ void WorldGenerator::generate_Lalos_Grotto(MapPtr map)
 
   vector<string> creatures_to_generate;
 
-  BOOST_FOREACH(string creature, creature_types)
+  for (const string& creature : creature_types)
   {
     int num_creature = RNG::range(9, 13);
 
@@ -724,7 +723,7 @@ void WorldGenerator::set_village_races(MapPtr map)
   
   RaceMap races = game.get_races_ref();
 
-  BOOST_FOREACH(Coordinate c, village_coordinates)
+  for (const Coordinate& c : village_coordinates)
   {
     TilePtr tile = map->at(c.first, c.second);
     VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
@@ -766,7 +765,7 @@ void WorldGenerator::set_village_races(MapPtr map)
         // from the game's current races, ensuring that it is user-playable.
         vector<string> playable_race_ids;
 
-        BOOST_FOREACH(RaceMap::value_type& pr, races)
+        for (const RaceMap::value_type& pr : races)
         {
           if (pr.second->get_user_playable())
           {
@@ -793,7 +792,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
   RaceMap races = game.get_races_ref();
   DeityMap deities = game.get_deities_ref();
     
-  BOOST_FOREACH(Coordinate c, village_coordinates)
+  for (const Coordinate& c : village_coordinates)
   {
     bool worship_site_generated = false;
       
@@ -812,7 +811,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
       // Get the adjacent tiles
       vector<Coordinate> adjacent_to_village = CoordUtils::get_adjacent_map_coordinates(dim, village_row, village_col);
         
-      BOOST_FOREACH(Coordinate c2, adjacent_to_village)
+      for (const Coordinate& c2 : adjacent_to_village)
       {
         int adjacent_row = c2.first;
         int adjacent_col = c2.second;

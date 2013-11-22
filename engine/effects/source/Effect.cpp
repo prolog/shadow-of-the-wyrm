@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
 #include "Creature.hpp"
 #include "Effect.hpp"
@@ -86,7 +85,7 @@ void Effect::inform_unidentified_if_player(boost::shared_ptr<Creature> creature)
 
 void Effect::add_additional_effect_messages(CreaturePtr creature) const
 {
-  BOOST_FOREACH(AdditionalEffectMessagePtr msg, additional_effect_messages)
+  for (AdditionalEffectMessagePtr msg : additional_effect_messages)
   {
     if (msg)
     {

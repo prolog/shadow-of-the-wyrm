@@ -1,5 +1,4 @@
 #include <sstream>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -70,7 +69,7 @@ void RayCastingFieldOfViewStrategy::add_points_to_map_as_appropriate(CreaturePtr
   CurrentCreatureAbilities cca;
   bool creature_blinded = (cca.can_see(fov_creature) == false);
 
-  BOOST_FOREACH(Coordinate c, coords)
+  for (const Coordinate& c : coords)
   {
     TilePtr tile = view_map->at(c);
     

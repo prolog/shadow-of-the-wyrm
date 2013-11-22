@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <boost/foreach.hpp>
 #include "AStarSearchStrategy.hpp"
 
 using namespace std;
@@ -8,7 +7,7 @@ list<SearchNode> AStarSearchStrategy::queueing_fn(const list<SearchNode>& search
 {
   list<SearchNode> queue = search_nodes;
 
-  BOOST_FOREACH(SearchNode s, new_nodes)
+  for (const SearchNode& s : new_nodes)
   {
     queue.push_back(s);
   }

@@ -1,5 +1,4 @@
 #include <boost/algorithm/string/replace.hpp>
-#include <boost/foreach.hpp>
 #include "FeatureDescriber.hpp"
 #include "StringTable.hpp"
 
@@ -20,7 +19,7 @@ string FeatureDescriber::describe() const
     vector<string> replacements = full_desc.second;
     description = StringTable::get(full_desc.first);
 
-    BOOST_FOREACH(const string& replacement_str_sid, replacements)
+    for (const string& replacement_str_sid : replacements)
     {
       boost::replace_first(description, "%s", StringTable::get(replacement_str_sid));
     }

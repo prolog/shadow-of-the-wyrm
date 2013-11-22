@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
 #include "AutomaticMovementCoordinator.hpp"
 #include "CoordUtils.hpp"
@@ -118,7 +117,7 @@ pair<bool, vector<string>> AutomaticMovementCoordinator::fov_allows_auto_move(Cr
   // Check the creatures in the FOV to see if any of them are hostile to the
   // creature currently moving.
   map<string, CreaturePtr> fov_creatures = fov_map->get_creatures();
-  BOOST_FOREACH(CreatureMap::value_type& cpair, fov_creatures)
+  for(const CreatureMap::value_type& cpair : fov_creatures)
   {
     CreaturePtr fov_creature = cpair.second;
     if (fov_creature->hostile_to(automove_creature_id))

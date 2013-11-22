@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ActionCoordinator.hpp"
 #include "Serialize.hpp"
 
@@ -131,7 +130,7 @@ bool ActionCoordinator::serialize(std::ostream& stream)
 {
   Serialize::write_size_t(stream, creature_action_order.size());
 
-  BOOST_FOREACH(CreatureActionMultimap::value_type& action_pair, creature_action_order)
+  for(const CreatureActionMultimap::value_type& action_pair : creature_action_order)
   {
     ActionCost cost = action_pair.first;
     cost.serialize(stream);

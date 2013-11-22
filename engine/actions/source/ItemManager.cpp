@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "Log.hpp"
 #include "EquipmentManager.hpp"
@@ -35,7 +34,7 @@ list<ItemPtr> ItemManager::get_items_by_type(const Equipment& eq, const ItemType
  
   EquipmentMap eq_map = eq.get_equipment();
 
-  BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq_map)
+  for(const EquipmentMap::value_type& eq_pair : eq_map)
   {
     ItemPtr item = eq_pair.second;
 
@@ -55,7 +54,7 @@ list<ItemPtr> ItemManager::get_items_by_type(const Inventory& inv, const ItemTyp
 
   const list<ItemPtr>& raw_items = inv.get_items_cref();
 
-  BOOST_FOREACH(ItemPtr item, raw_items)
+  for(ItemPtr item : raw_items)
   {
     if (item && item->get_type() == item_type)
     {
@@ -71,7 +70,7 @@ bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
 {
   EquipmentMap eq_map = creature->get_equipment().get_equipment();
 
-  BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq_map)
+  for(const EquipmentMap::value_type& eq_pair : eq_map)
   {
     ItemPtr item = eq_pair.second;
 
@@ -83,7 +82,7 @@ bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
 
   const list<ItemPtr>& raw_items = creature->get_inventory().get_items_cref();
 
-  BOOST_FOREACH(ItemPtr item, raw_items)
+  for(ItemPtr item : raw_items)
   {
     if (item && item->get_base_id() == base_item_id)
     {
@@ -157,7 +156,7 @@ bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string&
 
   EquipmentMap eq_map = eq.get_equipment();
 
-  BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq_map)
+  for(const EquipmentMap::value_type& eq_pair : eq_map)
   {
     ItemPtr item = eq_pair.second;
 

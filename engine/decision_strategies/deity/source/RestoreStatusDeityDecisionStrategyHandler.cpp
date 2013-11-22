@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "DeityDecisionConstants.hpp"
 #include "DeityTextKeys.hpp"
 #include "Game.hpp"
@@ -42,7 +41,7 @@ bool RestoreStatusDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   if (creature)
   {
-    BOOST_FOREACH(const string& status, watched_statuses)
+    for (const string& status : watched_statuses)
     {
       if (creature->has_status(status))
       {
@@ -68,7 +67,7 @@ DeityDecisionImplications RestoreStatusDeityDecisionStrategyHandler::handle_deci
     // status is half of the previous.
     int current_piety_loss = 200;
 
-    BOOST_FOREACH(const string& status, watched_statuses)
+    for (const string& status : watched_statuses)
     {
       if (creature->has_status(status))
       {

@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "CreatureTileSafetyChecker.hpp"
 #include "WaterSafetyCondition.hpp"
@@ -33,7 +32,7 @@ bool CreatureTileSafetyChecker::are_safety_conditions_satisfied(CreaturePtr crea
 {
   bool safety_conditions_satisfied = true;
 
-  BOOST_FOREACH(ITileSafetyConditionPtr safety_condition, safety_conditions)
+  for (ITileSafetyConditionPtr safety_condition : safety_conditions)
   {
     safety_conditions_satisfied = safety_condition && safety_condition->is_safe(creature, tile);
 

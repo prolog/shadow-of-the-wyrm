@@ -1,5 +1,4 @@
 #include <boost/algorithm/string.hpp>
-#include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
 #include "BestiaryAction.hpp"
 #include "Conversion.hpp"
@@ -81,7 +80,7 @@ CreaturePtr BestiaryAction::get_bestiary_creature(const string& search_text) con
   CreatureMap creature_map = game.get_creatures_ref();
   vector<CreaturePtr> partial_matches;
 
-  BOOST_FOREACH(CreatureMap::value_type& creature_pair, creature_map)
+  for(const CreatureMap::value_type& creature_pair : creature_map)
   {
     // If it's an exact match, use this creature.
     short_description = StringTable::get(creature_pair.second->get_short_description_sid());
@@ -136,7 +135,7 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     bestiary_text.push_back(make_pair(COLOUR_WHITE, separator));
     vector<string> text_details = tdf.format_text(StringTable::get(creature->get_text_details_sid()));
     
-    BOOST_FOREACH(const string& line_of_text, text_details)
+    for(const string& line_of_text : text_details)
     {
       bestiary_text.push_back(make_pair(COLOUR_WHITE, line_of_text));
     }
