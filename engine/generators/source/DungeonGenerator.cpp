@@ -1,7 +1,6 @@
 #include <algorithm>
 #include <cmath>
 #include <boost/make_shared.hpp>
-#include <boost/foreach.hpp>
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DungeonGenerator.hpp"
@@ -92,7 +91,7 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
 
       if (cur_num_rooms > 1)
       {
-        BOOST_FOREACH(Room& croom, connected_rooms)
+        for (Room& croom : connected_rooms)
         {
           boost::shared_ptr<Room> roomp = boost::shared_ptr<Room>(new Room(new_room));
           croom.centre_room = roomp;
@@ -283,7 +282,7 @@ bool DungeonGenerator::is_tile_adjacent_to_room_tile(const Dimensions& dim, cons
 {
   vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(dim, row, col);
   
-  BOOST_FOREACH(Coordinate c, adjacent_coords)
+  for (const Coordinate& c : adjacent_coords)
   {
     if (!tile_exists_outside_of_room(c.first, c.second, true, true))
     {

@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "SkillManager.hpp"
 #include "StatusEffectFactory.hpp"
 #include "ToHitCalculator.hpp"
@@ -49,7 +48,7 @@ int ToHitCalculator::get_status_bonus(CreaturePtr creature)
 
   // Apply any status modifiers.
   CreatureStatusMap statuses = creature->get_statuses();
-  BOOST_FOREACH(CreatureStatusMap::value_type& status_pair, statuses)
+  for(const CreatureStatusMap::value_type& status_pair : statuses)
   {
     string status_id = status_pair.first;
     bool status_applied = status_pair.second;

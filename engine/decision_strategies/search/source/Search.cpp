@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "CoordUtils.hpp"
 #include "CreatureTileSafetyChecker.hpp"
 #include "Search.hpp"
@@ -76,7 +75,7 @@ list<SearchNode> Search::make_search_nodes(MapPtr view_map, set<Coordinate>& vis
   Dimensions orig_map_dimensions = view_map->original_size();
   vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(orig_map_dimensions, c.first, c.second);
   
-  BOOST_FOREACH(Coordinate coord, coords)
+  for (const Coordinate& coord : coords)
   {
     if (visited.find(coord) != visited.end())
     {

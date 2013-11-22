@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
 #include "FeatureAction.hpp"

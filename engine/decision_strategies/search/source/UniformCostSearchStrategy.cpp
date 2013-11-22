@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <boost/foreach.hpp>
 #include "UniformCostSearchStrategy.hpp"
 
 using std::sort;
@@ -8,7 +7,7 @@ std::list<SearchNode> UniformCostSearchStrategy::queueing_fn(const std::list<Sea
 {
   std::list<SearchNode> queue = search_nodes;
 
-  BOOST_FOREACH(SearchNode s, new_nodes)
+  for (const SearchNode& s : new_nodes)
   {
     queue.push_back(s);
   }

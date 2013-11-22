@@ -1,5 +1,4 @@
 #include <sstream>
-#include <boost/foreach.hpp>
 #include "ActionTextKeys.hpp"
 #include "CreatureDescriber.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -90,7 +89,7 @@ string TileDescription::format(const vector<string>& tile_info_strings)
 {
   ostringstream ss;
   
-  BOOST_FOREACH(const string& tile_info_string, tile_info_strings)
+  for (const string& tile_info_string : tile_info_strings)
   {
     string str = tile_info_string;
     

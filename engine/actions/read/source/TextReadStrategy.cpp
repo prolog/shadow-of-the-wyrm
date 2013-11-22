@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "SpellcastingTextKeys.hpp"
 #include "TextDisplayFormatter.hpp"
@@ -21,7 +20,7 @@ ActionCostValue TextReadStrategy::read(CreaturePtr creature, ActionManager * con
     string text_sid = readable->get_text_sid();
     vector<string> formatted_text = tdf.format_text(StringTable::get(text_sid));
 
-    BOOST_FOREACH(string text_line, formatted_text)
+    for(const string& text_line : formatted_text)
     {
       TextDisplayPair text_line_for_ui = make_pair(COLOUR_WHITE, text_line);
       book_text.push_back(text_line_for_ui);

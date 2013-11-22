@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "ActionTextKeys.hpp"
 #include "AmmunitionSurvivalCalculator.hpp"
@@ -137,7 +136,7 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
       vector<Coordinate> attack_path = get_actual_coordinates_given_missile_path(creature_coords, target_coords, current_map);
       vector<pair<DisplayTile, vector<Coordinate>>> animation_frames;
 
-      BOOST_FOREACH(Coordinate c, attack_path)
+      for(const Coordinate& c : attack_path)
       {
         vector<Coordinate> frame;
         frame.push_back(c);
@@ -177,7 +176,7 @@ vector<Coordinate> RangedCombatAction::get_actual_coordinates_given_missile_path
   vector<Coordinate> line_points = bl.get_points_in_line(creature_coords.first, creature_coords.second, target_coords.first, target_coords.second);
     
   TilePtr tile;
-  BOOST_FOREACH(const Coordinate& c, line_points)
+  for(const Coordinate& c : line_points)
   {
     // Ignore the first element of the line, since it will contain the creature that's
     // actually firing the missile.

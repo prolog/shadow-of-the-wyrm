@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "MenuTitleTextKeys.hpp"
 #include "QuestListAction.hpp"
@@ -22,7 +21,7 @@ ActionCostValue QuestListAction::quest_list() const
   vector<pair<Colour, string>> quests_text;
   string separator; // an empty line of text used to separate quests in the list.
 
-  BOOST_FOREACH(QuestMap::value_type& pair, in_progress_quests)
+  for(const QuestMap::value_type& pair : in_progress_quests)
   {
     Quest quest = pair.second;
     QuestDescriber qd(quest);
@@ -33,7 +32,7 @@ ActionCostValue QuestListAction::quest_list() const
     vector<string> current_quest_formatted = tdf.format_text(long_quest_description);
     current_quest_formatted.push_back(separator);
 
-    BOOST_FOREACH(string quest_line, current_quest_formatted)
+    for(const string& quest_line : current_quest_formatted)
     {
       TextDisplayPair quest_line_for_ui = make_pair(COLOUR_WHITE, quest_line);
       quests_text.push_back(quest_line_for_ui);

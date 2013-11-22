@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
 #include "Creature.hpp"
@@ -41,7 +40,7 @@ bool RechargingEffect::has_rechargables(CreaturePtr creature)
     Inventory& inv = creature->get_inventory();
     const list<ItemPtr>& items = inv.get_items_cref();
 
-    BOOST_FOREACH(ItemPtr item, items)
+    for (ItemPtr item : items)
     {
       if (item && item->get_type() == ITEM_TYPE_WAND)
       {

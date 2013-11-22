@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "WaterSafetyCondition.hpp"
 
 using namespace std;
@@ -18,7 +17,7 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
     Inventory& inv = creature->get_inventory();
     const list<ItemPtr> items = inv.get_items_cref();
 
-    BOOST_FOREACH(ItemPtr item, items)
+    for (ItemPtr item : items)
     {
       if (item && item->get_type() == ITEM_TYPE_BOAT)
       {

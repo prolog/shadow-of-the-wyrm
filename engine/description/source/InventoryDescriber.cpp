@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ItemDescriberFactory.hpp"
 #include "InventoryDescriber.hpp"
 #include "ItemDescriber.hpp"
@@ -17,7 +16,7 @@ string InventoryDescriber::describe() const
 
   const list<ItemPtr>& items = inventory.get_items_cref();
 
-  BOOST_FOREACH(ItemPtr item, items)
+  for (ItemPtr item : items)
   {
     IDescriberPtr item_id = ItemDescriberFactory::create_item_describer(blind, item);
     inventory_description += item_id->describe();

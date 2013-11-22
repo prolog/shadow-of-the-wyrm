@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"

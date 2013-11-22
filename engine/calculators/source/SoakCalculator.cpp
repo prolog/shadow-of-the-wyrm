@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "SoakCalculator.hpp"
 #include "Wearable.hpp"
 
@@ -44,7 +43,7 @@ int SoakCalculator::get_equipment_bonus(const CreaturePtr& c)
   Equipment& eq = c->get_equipment();
   EquipmentMap equipment = eq.get_equipment();
   
-  BOOST_FOREACH(EquipmentMap::value_type& item, equipment)
+  for(const EquipmentMap::value_type& item : equipment)
   {
     WearablePtr equipped = dynamic_pointer_cast<Wearable>(item.second);
     

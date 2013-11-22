@@ -1,6 +1,5 @@
 #include <iterator>
 #include <map>
-#include <boost/foreach.hpp>
 #include "CreatureCalculator.hpp"
 #include "CreatureGenerationManager.hpp"
 #include "CreatureFactory.hpp"

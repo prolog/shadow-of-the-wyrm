@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "BresenhamLine.hpp"
 #include "CoordUtils.hpp"
 #include "MineGenerator.hpp"
@@ -112,7 +111,7 @@ void MineGenerator::dig_floor(MapPtr map, const vector<Coordinate>& tiles_to_dig
 {
   TileGenerator tg;
 
-  BOOST_FOREACH(Coordinate c, tiles_to_dig)
+  for (const Coordinate& c : tiles_to_dig)
   {
     // Dig, unless we hit the staircase.
     TilePtr existing_tile = map->at(c);
