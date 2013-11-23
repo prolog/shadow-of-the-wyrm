@@ -26,11 +26,11 @@ InitialItem XMLInitialItemReader::get_initial_item(const XMLNode& initial_item_n
     item.set_item_quantity(base_quantity);
     
     XMLNode random_node = XMLUtils::get_next_element_by_local_name(initial_item_node, "Random");
-    vector<pair<string, Dice> > random_item_ids = get_random_item_ids(random_node);
+    vector<pair<string, Dice>> random_item_ids = get_random_item_ids(random_node);
     item.set_random_item_ids(random_item_ids);
 
     XMLNode racial_node = XMLUtils::get_next_element_by_local_name(initial_item_node, "Races");
-    map<string, pair<string, Dice> > racial_item_ids = get_racial_item_ids(racial_node);
+    map<string, pair<string, Dice>> racial_item_ids = get_racial_item_ids(racial_node);
     item.set_racial_item_ids(racial_item_ids);
   }
   
@@ -64,9 +64,9 @@ Dice XMLInitialItemReader::parse_quantity(const XMLNode& quantity_node) const
 }
 
 // Get all the random ids
-vector<pair<string, Dice> > XMLInitialItemReader::get_random_item_ids(const XMLNode& initial_random_node) const
+vector<pair<string, Dice>> XMLInitialItemReader::get_random_item_ids(const XMLNode& initial_random_node) const
 {
-  vector<pair<string, Dice> > random_ids;
+  vector<pair<string, Dice>> random_ids;
   
   if (!initial_random_node.is_null())
   {
@@ -86,9 +86,9 @@ vector<pair<string, Dice> > XMLInitialItemReader::get_random_item_ids(const XMLN
 }
 
 // Get all the racial ids
-map<string, pair<string, Dice> > XMLInitialItemReader::get_racial_item_ids(const XMLNode& initial_racial_node) const
+map<string, pair<string, Dice>> XMLInitialItemReader::get_racial_item_ids(const XMLNode& initial_racial_node) const
 {
-  map<string, pair<string, Dice> > racial_ids;
+  map<string, pair<string, Dice>> racial_ids;
   
   if (!initial_racial_node.is_null())
   {

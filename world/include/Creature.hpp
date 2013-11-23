@@ -29,7 +29,7 @@
 // Forward declarations.
 class DecisionStrategy;
 
-typedef std::map<std::string, std::pair<std::string, Coordinate> > TargetMap;
+typedef std::map<std::string, std::pair<std::string, Coordinate>> TargetMap;
 typedef std::map<std::string, std::string> EventScriptsMap;
 typedef std::map<std::string, bool> CreatureStatusMap;
 typedef std::map<std::string, StatusDuration> StatusDurationMap;

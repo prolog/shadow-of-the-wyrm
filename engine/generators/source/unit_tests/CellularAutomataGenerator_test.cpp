@@ -4,7 +4,7 @@
 class CellularAutomataGeneratorTest
 {
   public:
-    vector<pair<int, int> > get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col) { return CoordUtils::get_adjacent_map_coordinates(dim, row, col); }
+    vector<pair<int, int>> get_adjacent_map_coordinates(const Dimensions& dim, const int row, const int col) { return CoordUtils::get_adjacent_map_coordinates(dim, row, col); }
 };
 
 TEST(SL_Engine_Generators_CellularAutomataGenerator, adjacent_map_coordinates_size)
@@ -14,7 +14,7 @@ TEST(SL_Engine_Generators_CellularAutomataGenerator, adjacent_map_coordinates_si
   // North west
   int row  = 0;
   int col  = 0;
-  vector<pair<int, int> > adjacent_coords = CoordUtils::get_adjacent_map_coordinates(d, row, col);
+  vector<pair<int, int>> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(d, row, col);
   unsigned int expected_size = 3; // (0,1), (1,1), (1,0)
   unsigned int size = adjacent_coords.size();
   EXPECT_EQ(expected_size, size);
@@ -50,7 +50,7 @@ TEST(SL_Engine_Generators_Generator, adjacent_map_coordinates_content)
   // North west
   int row  = 0;
   int col  = 0;
-  vector<pair<int, int> > adjacent_coords = CoordUtils::get_adjacent_map_coordinates(d, row, col);
+  vector<pair<int, int>> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(d, row, col);
 
   pair<int,int> coords = make_pair(0,1);
   EXPECT_TRUE(find(adjacent_coords.begin(), adjacent_coords.end(), coords) != adjacent_coords.end());

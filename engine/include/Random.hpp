@@ -15,6 +15,6 @@ class PoissonDistribution
   private:
     boost::mt19937 mt;
     boost::poisson_distribution<int> pdist;
-    boost::variate_generator<boost::mt19937, boost::poisson_distribution<int> > poisson_generator;
+    boost::variate_generator<boost::mt19937, boost::poisson_distribution<int>> poisson_generator;
 };
 

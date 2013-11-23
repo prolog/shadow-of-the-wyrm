@@ -1,6 +1,5 @@
 #pragma once
 #include <utility>
-#include <boost/static_assert.hpp>
 
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
 

@@ -16,7 +16,7 @@ void WorldTimeKeeper::register_observer(const uint minutes_key, ITimeObserverPtr
 {
   if (new_observer)
   {
-    map<uint, map<string, ITimeObserverPtr> >::iterator m_it = observers.find(minutes_key);
+    map<uint, map<string, ITimeObserverPtr>>::iterator m_it = observers.find(minutes_key);
 
     if (m_it == observers.end())
     {
@@ -36,7 +36,7 @@ void WorldTimeKeeper::deregister_observer(const uint minutes_key, ITimeObserverP
 {
   if (old_observer)
   {
-    map<uint, map<string, ITimeObserverPtr> >::iterator m_it = observers.find(minutes_key);
+    map<uint, map<string, ITimeObserverPtr>>::iterator m_it = observers.find(minutes_key);
     
     if (m_it != observers.end())
     {
@@ -62,7 +62,7 @@ void WorldTimeKeeper::tick(const double seconds)
     
     ulonglong total_minutes = static_cast<ulonglong>(total_seconds_counter) / 60;
 
-    for (map<uint, map<string, ITimeObserverPtr> >::iterator m_it = observers.begin(); m_it != observers.end(); m_it++)
+    for (map<uint, map<string, ITimeObserverPtr>>::iterator m_it = observers.begin(); m_it != observers.end(); m_it++)
     {
       uint minutes_value = m_it->first;
       

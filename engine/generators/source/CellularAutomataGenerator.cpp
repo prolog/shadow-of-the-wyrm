@@ -189,10 +189,10 @@ CellMap CellularAutomataGenerator::get_initialized_cells(const int y, const int 
 
 int CellularAutomataGenerator::get_number_closed_neighbours(const CellMap& cell_map, const Dimensions& d, const int row, const int col)
 {
-  vector<pair<int, int> > neighbours = CoordUtils::get_adjacent_map_coordinates(d, row, col);
+  vector<pair<int, int>> neighbours = CoordUtils::get_adjacent_map_coordinates(d, row, col);
   int num_closed = 0;
 
-  for (vector<pair<int, int> >::iterator n_it = neighbours.begin(); n_it != neighbours.end(); n_it++)
+  for (vector<pair<int, int>>::iterator n_it = neighbours.begin(); n_it != neighbours.end(); n_it++)
   {
     CellValue cell_val = cell_map[n_it->first][n_it->second];
     

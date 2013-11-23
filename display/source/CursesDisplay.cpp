@@ -297,11 +297,11 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
   }
 
   char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
-  tokenizer<char_separator<char> > tokens(message, separator);
+  tokenizer<char_separator<char>> tokens(message, separator);
 
   enable_colour(colour, stdscr);
 
-  for (tokenizer<char_separator<char> >::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
+  for (tokenizer<char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
     getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
     

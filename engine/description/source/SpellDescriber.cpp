@@ -18,7 +18,7 @@ SpellDescriber::SpellDescriber(CreaturePtr new_creature, const Spell& new_spell)
 
 void SpellDescriber::initialize_shape_abbreviation_sids()
 {
-  BOOST_STATIC_ASSERT(SPELL_SHAPE_LAST == 5);
+  static_assert(SPELL_SHAPE_LAST == 5, "Unexpected SPELL_SHAPE_LAST value.");
 
   shape_abbreviation_sids.clear();
 

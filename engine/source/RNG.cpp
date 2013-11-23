@@ -10,7 +10,7 @@ RNGType RNG::rng;
 
 uint32_t RNG::seed = static_cast<uint32_t>(std::time(0));
 boost::uniform_int<> RNG::udist = boost::uniform_int<>(0, std::numeric_limits<int>::max());
-boost::variate_generator<RNGType, boost::uniform_int<> > RNG::generator(rng, udist);
+boost::variate_generator<RNGType, boost::uniform_int<>> RNG::generator(rng, udist);
 bool RNG::initialized = false;
 
 RNG::RNG()
@@ -126,7 +126,7 @@ bool RNG::percent_chance(const int percent_chance)
   return (val <= percent_chance);
 }
 
-boost::variate_generator<RNGType, boost::uniform_int<> > RNG::get_generator()
+boost::variate_generator<RNGType, boost::uniform_int<>> RNG::get_generator()
 {
   return generator;
 }

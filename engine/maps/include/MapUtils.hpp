@@ -6,8 +6,8 @@
 #include <utility>
 
 //class MapComponents;
-typedef std::vector<std::set<Coordinate> > MapComponents;
-typedef std::vector<std::set<Coordinate> >::const_iterator MapComponentsItc;
+typedef std::vector<std::set<Coordinate>> MapComponents;
+typedef std::vector<std::set<Coordinate>>::const_iterator MapComponentsItc;
 typedef std::set<Coordinate> Component;
 typedef std::set<Coordinate>::const_iterator ComponentItc;
 typedef std::map<Direction, TilePtr> TileDirectionMap;

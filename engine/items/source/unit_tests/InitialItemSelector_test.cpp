@@ -13,13 +13,13 @@ InitialItem make_populated_initial_item(const bool populate_random)
 
   if (populate_random)
   {
-    vector<pair<string, Dice> > random_ids;
+    vector<pair<string, Dice>> random_ids;
     random_ids.push_back(make_pair("ddd", d));
 
     ii.set_random_item_ids(random_ids);
   }
 
-  map<string, pair<string, Dice> > racial_ids;
+  map<string, pair<string, Dice>> racial_ids;
   racial_ids.insert(make_pair("elf", make_pair("elfpants", d)));
   racial_ids.insert(make_pair("dwarf", make_pair("dwarfpants", d)));
   racial_ids.insert(make_pair("cheri", make_pair("monkeypants", d)));

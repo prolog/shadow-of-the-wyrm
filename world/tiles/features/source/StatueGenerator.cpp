@@ -13,7 +13,7 @@ FeaturePtr StatueGenerator::generate_decorative_statue(const DecorativeStatueTyp
 {
   FeaturePtr statue;
 
-  BOOST_STATIC_ASSERT(DECORATIVE_STATUE_TYPE_LAST == 5);
+  static_assert(DECORATIVE_STATUE_TYPE_LAST == 5, "Unexpected DECORATIVE_STATUE_TYPE_LAST value.");
 
   switch(type)
   {
