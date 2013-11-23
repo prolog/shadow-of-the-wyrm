@@ -87,6 +87,10 @@ Savage Lands v0.1.8 "Aethelbert"
   - Replaced boost::shared_ptr, boost::make_shared, and
     boost::dynamic_pointer_cast with their std:: equivalents.
 
+  - Refactored the code in ItemDescriptionRandomizer.  This was using
+    a couple of pairs to simulate a tuple, which was ugly.  Now it uses
+    a real std::tuple.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 
