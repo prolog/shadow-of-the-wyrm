@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Conversion.hpp"
 #include "MessageManager.hpp"
 
@@ -39,7 +38,7 @@ void MessageManager::send(const bool halt_after, const bool reset_cursor_after)
   {
     vector<Message> messages = unread_messages.get_messages();
 
-    BOOST_FOREACH(Message m, messages)
+    for (const Message& m : messages)
     {
       message_text = m.get_content() + get_count_indicator(m) + " ";
 

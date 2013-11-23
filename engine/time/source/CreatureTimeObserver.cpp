@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "CreatureAPRegeneration.hpp"
 #include "CreatureHPRegeneration.hpp"
@@ -68,7 +67,7 @@ void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
   {
     CreaturePtr creature = c_it->second;
       
-    BOOST_FOREACH(ICreatureRegenerationPtr regen_helper, regen)
+    for (ICreatureRegenerationPtr regen_helper : regen)
     {
       if (game.should_keep_playing())
       {

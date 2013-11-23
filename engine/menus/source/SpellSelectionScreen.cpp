@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "DescriberFactory.hpp"
 #include "SpellSelectionScreen.hpp"
@@ -55,7 +54,7 @@ void SpellSelectionScreen::initialize()
     SpellKnowledgeMap known_spells = sk.get_known_spells();
     const SpellMap& spells = game.get_spells_ref();
 
-    BOOST_FOREACH(SpellKnowledgeMap::value_type& spell_pair, known_spells)
+    for (const SpellKnowledgeMap::value_type& spell_pair : known_spells)
     {
       string spell_id = spell_pair.first;
       menu_selection_to_spell_id_map.insert(make_pair('a' + i, spell_id));

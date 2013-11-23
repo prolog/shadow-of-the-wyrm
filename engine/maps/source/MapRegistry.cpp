@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "MapRegistry.hpp"
 #include "Serialize.hpp"
 
@@ -58,7 +57,7 @@ bool MapRegistry::serialize(ostream& stream)
 {
   Serialize::write_size_t(stream, map_registry.size());
 
-  BOOST_FOREACH(MapRegistryMap::value_type& map_pair, map_registry)
+  for (MapRegistryMap::value_type& map_pair : map_registry)
   {
     string map_guid = map_pair.first;
     MapPtr map = map_pair.second;

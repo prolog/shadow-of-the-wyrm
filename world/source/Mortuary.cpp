@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Mortuary.hpp"
 #include "Serialize.hpp"
 
@@ -53,7 +52,7 @@ uint Mortuary::get_num_creatures_killed() const
 {
   uint num_killed = 0;
 
-  BOOST_FOREACH(const MortuaryCountMap::value_type& pair, creatures_killed)
+  for (const MortuaryCountMap::value_type& pair : creatures_killed)
   {
     num_killed += pair.second;
   }
@@ -68,7 +67,7 @@ bool Mortuary::serialize(ostream& stream)
 
   if (ck_size > 0)
   {
-    BOOST_FOREACH(MortuaryCountMap::value_type& pair, creatures_killed)
+    for (const MortuaryCountMap::value_type& pair : creatures_killed)
     {
       Serialize::write_string(stream, pair.first);
       Serialize::write_uint(stream, pair.second);

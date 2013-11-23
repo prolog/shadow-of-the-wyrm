@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/scoped_array.hpp>
 #include "Serialize.hpp"
 
@@ -342,7 +341,7 @@ void Serialize::write_string_vector(ostream& stream, const vector<string>& val)
 
   if (size > 0)
   {
-    BOOST_FOREACH(const string& str_val, val)
+    for (const string& str_val : val)
     {
       Serialize::write_string(stream, str_val);
     }

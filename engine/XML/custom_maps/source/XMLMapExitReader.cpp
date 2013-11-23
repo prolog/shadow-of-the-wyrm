@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/foreach.hpp>
 #include "XMLMapCoordinateReader.hpp"
 #include "XMLMapExitReader.hpp"
 
@@ -12,7 +11,7 @@ void XMLMapExitReader::parse_exits(const XMLNode& exits_node, MapPtr map)
   {
     vector<XMLNode> exit_nodes = XMLUtils::get_elements_by_local_name(exits_node, "Exit");
 
-    BOOST_FOREACH(const XMLNode& node, exit_nodes)
+    for (const XMLNode& node : exit_nodes)
     {
       parse_exit(node, map);
     }

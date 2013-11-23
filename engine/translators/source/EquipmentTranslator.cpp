@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "CurrentCreatureAbilities.hpp"
 #include "EquipmentTranslator.hpp"
 #include "ItemTranslator.hpp"

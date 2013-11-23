@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Equipment.hpp"
 #include "ItemSerializationFactory.hpp"
 #include "Serialize.hpp"
@@ -122,7 +121,7 @@ bool Equipment::serialize(ostream& stream)
 {
   Serialize::write_size_t(stream, equipment.size());
 
-  BOOST_FOREACH(EquipmentMap::value_type& eq_pair, equipment)
+  for (const EquipmentMap::value_type& eq_pair : equipment)
   {
     Serialize::write_enum(stream, eq_pair.first);
 

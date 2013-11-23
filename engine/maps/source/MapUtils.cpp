@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "MapUtils.hpp"
@@ -195,7 +194,7 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
 
     vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
 
-    BOOST_FOREACH(const Coordinate& c, adjacent_coords)
+    for (const Coordinate& c : adjacent_coords)
     {
       Direction d = CoordUtils::get_direction(creature_coord, c);
       TilePtr tile = map->at(c);
@@ -224,7 +223,7 @@ TileDirectionMap MapUtils::get_tiles_with_features(MapPtr& map, CreaturePtr& cre
   TileDirectionMap tiles_to_consider = MapUtils::get_adjacent_and_creature_tiles(map, creature);
   TileDirectionMap result_map;
 
-  BOOST_FOREACH(const TileDirectionMap::value_type& tile_pair, tiles_to_consider)
+  for (const TileDirectionMap::value_type& tile_pair : tiles_to_consider)
   {
     TilePtr tile = tile_pair.second;
 
@@ -242,7 +241,7 @@ uint MapUtils::get_num_adjacent_creatures(const TileDirectionMap& adjacency_map)
 {
   uint num_adjacent = 0;
 
-  BOOST_FOREACH(const TileDirectionMap::value_type& adjacent, adjacency_map)
+  for (const TileDirectionMap::value_type& adjacent : adjacency_map)
   {
     TilePtr adjacent_tile = adjacent.second;
 
@@ -267,7 +266,7 @@ CreatureDirectionMap MapUtils::get_adjacent_creatures(const MapPtr& map, const C
 
     vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_coord.first, creature_coord.second);
 
-    BOOST_FOREACH(const Coordinate& c, adjacent_coords)
+    for (const Coordinate& c : adjacent_coords)
     {
       Direction d = CoordUtils::get_direction(creature_coord, c);
       TilePtr tile = map->at(c);
@@ -464,7 +463,7 @@ bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPt
     
     vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(map->size(), creature_location.first, creature_location.second);
     
-    BOOST_FOREACH(Coordinate& c, adjacent_coords)
+    for (const Coordinate& c : adjacent_coords)
     {
       TilePtr tile = map->at(c);
       
@@ -563,7 +562,7 @@ bool MapUtils::is_corner(const Coordinate& c, const Direction d, MapPtr map)
 
     corner = true;
 
-    BOOST_FOREACH(TilePtr tile, corner_tiles)
+    for (TilePtr tile : corner_tiles)
     {
       // If it is not the case that the tile is solid (movement multiplier is
       // 0) or that there is a blocking feature, then there is "space" on this

@@ -1,5 +1,4 @@
 #include <boost/algorithm/string.hpp>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
 #include "PromptTextKeys.hpp"
@@ -24,7 +23,7 @@ void TextDisplayScreen::initialize(const string& title_sid)
   title_text_sid = title_sid;
 
   // Set the text components.
-  BOOST_FOREACH(TextDisplayPair line_pair, text)
+  for (const TextDisplayPair& line_pair : text)
   {
     Colour colour = line_pair.first;
     string text = line_pair.second;

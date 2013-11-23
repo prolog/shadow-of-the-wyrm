@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "SpellKnowledge.hpp"
 #include "Serialize.hpp"
 
@@ -40,7 +39,7 @@ uint SpellKnowledge::count_spells_known() const
 {
   uint spells_known = 0;
 
-  BOOST_FOREACH(const SpellKnowledgeMap::value_type& pair, spell_knowledge)
+  for (const SpellKnowledgeMap::value_type& pair : spell_knowledge)
   {
     if (pair.second.get_castings() > 0) spells_known++;
   }
@@ -71,7 +70,7 @@ bool SpellKnowledge::serialize(ostream& stream)
 
   if (num_spells > 0)
   {
-    BOOST_FOREACH(SpellKnowledgeMap::value_type& sp_pair, spell_knowledge)
+    for (const SpellKnowledgeMap::value_type& sp_pair : spell_knowledge)
     {
       string spell_id = sp_pair.first;
       IndividualSpellKnowledge isk = sp_pair.second;

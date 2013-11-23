@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Inventory.hpp"
 #include "ItemSerializationFactory.hpp"
 #include "Serialize.hpp"
@@ -96,7 +95,7 @@ void Inventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_l
 
 bool Inventory::merge(ItemPtr item)
 {
-  BOOST_FOREACH(ItemPtr inv_item, items)
+  for (ItemPtr inv_item : items)
   {
     if (inv_item && inv_item->matches(item))
     {
@@ -164,7 +163,7 @@ ItemPtr Inventory::at(const uint index)
   
   if (index < items.size())
   {
-    BOOST_FOREACH(ItemPtr item, items)
+    for (ItemPtr item : items)
     {
       if (cur_index == index)
       {
@@ -182,7 +181,7 @@ ItemPtr Inventory::get_from_id(const std::string& id)
 {
   ItemPtr selected_item;
   
-  BOOST_FOREACH(ItemPtr item, items)
+  for (ItemPtr item : items)
   {
     if (item->get_id() == id)
     {
@@ -198,7 +197,7 @@ ItemPtr Inventory::get_from_base_id(const std::string& base_id)
 {
   ItemPtr selected_item;
   
-  BOOST_FOREACH(ItemPtr item, items)
+  for (ItemPtr item : items)
   {
     if (item->get_base_id() == base_id)
     {
@@ -237,7 +236,7 @@ const list<ItemPtr>& Inventory::get_items_cref() const
 // Check to see if a particular item type exists within the Inventory
 bool Inventory::has_item_type(const ItemType type) const
 {
-  BOOST_FOREACH(ItemPtr item, items)
+  for (ItemPtr item : items)
   {
     if (item && item->get_type() == type)
     {
@@ -252,7 +251,7 @@ bool Inventory::serialize(ostream& stream)
 {
   Serialize::write_size_t(stream, items.size());
 
-  BOOST_FOREACH(ItemPtr item, items)
+  for (ItemPtr item : items)
   {
     if (item)
     {

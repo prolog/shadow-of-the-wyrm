@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/foreach.hpp>
 #include "XMLMapCoordinateReader.hpp"
 #include "XMLMapFeatureReaders.hpp"
 #include "XMLMapFeatureFactory.hpp"
@@ -13,7 +12,7 @@ void XMLMapFeaturesReader::parse_features(const XMLNode& features_node, MapPtr m
   {
     vector<XMLNode> feature_placement_nodes = XMLUtils::get_elements_by_local_name(features_node, "FeaturePlacement");
 
-    BOOST_FOREACH(const XMLNode& node, feature_placement_nodes)
+    for (const XMLNode& node : feature_placement_nodes)
     {
       parse_feature_placement(node, map);
     }

@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ActionManager.hpp"
 #include "CombatManager.hpp"
 #include "CoordUtils.hpp"
@@ -24,7 +23,7 @@ bool SpellShapeProcessor::apply_damage_and_effect(CreaturePtr caster, const vect
 {
   bool spell_identified = false;
 
-  BOOST_FOREACH(TilePtr tile, affected_tiles)
+  for (TilePtr tile : affected_tiles)
   {
     bool damage_identified = apply_damage(caster, tile, spell, am);
     bool effect_identified = apply_effect(caster, tile, spell, effect_status, am);
@@ -93,7 +92,7 @@ bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const S
 
 bool SpellShapeProcessor::is_coordinate_adjacent_to_coordinate_in_previous_frame(const Coordinate& c, const vector<Coordinate>& prev_frame)
 {
-  BOOST_FOREACH(Coordinate prev_frame_coord, prev_frame)
+  for (const Coordinate& prev_frame_coord : prev_frame)
   {
     if (CoordUtils::are_coordinates_adjacent(c, prev_frame_coord))
     {

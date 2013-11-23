@@ -80,6 +80,10 @@ Savage Lands v0.1.8 "Aethelbert"
   Test from 1.6 to 1.7, Boost from 1.48 to 1.55.  No updates to pdcurses
   or xerces. 
 
+- C++11 updates:
+  
+  - Updated all occurrences of BOOST_FOREACH to range-based for.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 

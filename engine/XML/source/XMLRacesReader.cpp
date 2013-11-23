@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Skills.hpp"
 #include "StringTable.hpp"
@@ -24,7 +23,7 @@ RaceMap XMLRacesReader::get_races(const XMLNode& races_node)
   {
     vector<XMLNode> races_nodes = XMLUtils::get_elements_by_local_name(races_node, "Race");
 
-    BOOST_FOREACH(XMLNode race_node, races_nodes)
+    for (const XMLNode& race_node : races_nodes)
     {
       RacePtr race = parse_race(race_node);
 
@@ -168,7 +167,7 @@ void XMLRacesReader::parse_initial_deity_ids(RacePtr race, const XMLNode& initia
     vector<string> race_deity_ids;
     vector<XMLNode> initial_deity_ids = XMLUtils::get_elements_by_local_name(initial_deities_node, "DeityID");
     
-    BOOST_FOREACH(XMLNode deity_id_node, initial_deity_ids)
+    for (const XMLNode& deity_id_node : initial_deity_ids)
     {
       string deity_id = XMLUtils::get_node_value(deity_id_node);
       race_deity_ids.push_back(deity_id);

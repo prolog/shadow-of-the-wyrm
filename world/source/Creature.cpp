@@ -1,5 +1,4 @@
 #include <limits>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Creature.hpp"
 #include "DecisionStrategyFactory.hpp"
@@ -1070,7 +1069,7 @@ bool Creature::serialize(ostream& stream)
 
   Serialize::write_size_t(stream, targets.size());
 
-  BOOST_FOREACH(TargetMap::value_type& target_map_pair, targets)
+  for (const TargetMap::value_type& target_map_pair : targets)
   {
     Serialize::write_string(stream, target_map_pair.first);
 
@@ -1087,7 +1086,7 @@ bool Creature::serialize(ostream& stream)
 
   if (!statuses.empty())
   {
-    BOOST_FOREACH(CreatureStatusMap::value_type& c_status, statuses)
+    for (const CreatureStatusMap::value_type& c_status : statuses)
     {
       Serialize::write_string(stream, c_status.first);
       Serialize::write_bool(stream, c_status.second);
@@ -1098,7 +1097,7 @@ bool Creature::serialize(ostream& stream)
 
   if (!status_durations.empty())
   {
-    BOOST_FOREACH(StatusDurationMap::value_type& status_duration, status_durations)
+    for (StatusDurationMap::value_type& status_duration : status_durations)
     {
       Serialize::write_string(stream, status_duration.first);
       status_duration.second.serialize(stream);

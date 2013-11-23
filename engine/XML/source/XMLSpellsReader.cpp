@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/foreach.hpp>
 #include "SpellShapeFactory.hpp"
 #include "XMLSpellsReader.hpp"
 #include "XMLDataStructures.hpp"
@@ -22,7 +21,7 @@ SpellMap XMLSpellsReader::get_spells(const XMLNode& spells_node)
   {
     vector<XMLNode> spell_nodes = XMLUtils::get_elements_by_local_name(spells_node, "Spell");
 
-    BOOST_FOREACH(const XMLNode& spell_node, spell_nodes)
+    for (const XMLNode& spell_node : spell_nodes)
     {
       Spell spell = parse(spell_node);
       spells.insert(make_pair(spell.get_spell_id(), spell));

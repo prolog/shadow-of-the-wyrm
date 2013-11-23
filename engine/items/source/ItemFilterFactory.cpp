@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "EdibleItemFilter.hpp"
 #include "ItemFilterFactory.hpp"
@@ -26,7 +25,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_equipment_filter(const std::list<
 {
   list<IItemFilterPtr> ewl_list;
   
-  BOOST_FOREACH(const EquipmentWornLocation& ewl, eq_loc_list)
+  for (const EquipmentWornLocation& ewl : eq_loc_list)
   {
     IItemFilterPtr eq_filter = create_equipment_worn_location_filter(ewl);
     ewl_list.push_back(eq_filter);
@@ -56,7 +55,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const std::list<
 {
   list<IItemFilterPtr> it_filter;
 
-  BOOST_FOREACH(ItemType it, item_type_list)
+  for (const ItemType it : item_type_list)
   {
     IItemFilterPtr display_filter = boost::make_shared<ItemTypeFilter>(it);
     it_filter.push_back(display_filter);

@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "common.hpp"
 #include "Quests.hpp"
 #include "Serialize.hpp"
@@ -177,7 +176,7 @@ bool Quests::serialize(ostream& stream)
 {
   Serialize::write_size_t(stream, in_progress_quest_map.size());
 
-  BOOST_FOREACH(QuestMap::value_type& pair, in_progress_quest_map)
+  for (QuestMap::value_type& pair : in_progress_quest_map)
   {
     Serialize::write_string(stream, pair.first);
     pair.second.serialize(stream);
@@ -185,7 +184,7 @@ bool Quests::serialize(ostream& stream)
 
   Serialize::write_size_t(stream, completed_quest_map.size());
 
-  BOOST_FOREACH(QuestMap::value_type& pair, completed_quest_map)
+  for (QuestMap::value_type& pair : completed_quest_map)
   {
     Serialize::write_string(stream, pair.first);
     pair.second.serialize(stream);

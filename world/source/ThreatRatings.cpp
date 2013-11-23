@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Serialize.hpp"
 #include "ThreatRatings.hpp"
 
@@ -93,15 +92,15 @@ bool ThreatRatings::serialize(ostream& stream)
 {
   Serialize::write_size_t(stream, threat_ratings.size());
 
-  BOOST_FOREACH(ThreatMap::value_type& t_val, threat_ratings)
+  for (const ThreatMap::value_type& t_val : threat_ratings)
   {
     Serialize::write_int(stream, t_val.first);
     
-    set<string> threats = t_val.second;
+    const set<string>& threats = t_val.second;
 
     Serialize::write_size_t(stream, threats.size());
 
-    BOOST_FOREACH(const string& threat, threats)
+    for (const string& threat : threats)
     {
       Serialize::write_string(stream, threat);
     }

@@ -1,5 +1,4 @@
 #include <sstream>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
 #include "Resistances.hpp"
@@ -139,7 +138,7 @@ bool Resistances::serialize(ostream& stream)
 {
   Serialize::write_size_t(stream, resistances.size());
 
-  BOOST_FOREACH(ResistancesMap::value_type& r_pair, resistances)
+  for (ResistancesMap::value_type& r_pair : resistances)
   {
     Serialize::write_enum(stream, r_pair.first);
 

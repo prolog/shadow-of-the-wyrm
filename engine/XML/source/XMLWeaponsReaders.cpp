@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "XMLWeaponsReaders.hpp"
 
 using namespace std;
@@ -46,7 +45,7 @@ void XMLWeaponsReader::parse(WeaponPtr weapon, GenerationValues& gv, const XMLNo
       vector<string> slay_races;
       vector<XMLNode> slay_nodes = XMLUtils::get_elements_by_local_name(slays_node, "Slay");
 
-      BOOST_FOREACH(XMLNode slay_node, slay_nodes)
+      for (const XMLNode& slay_node : slay_nodes)
       {
         string slay_race = XMLUtils::get_node_value(slay_node);
         slay_races.push_back(slay_race);

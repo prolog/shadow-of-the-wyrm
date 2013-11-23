@@ -1,5 +1,4 @@
 #include <sstream>
-#include <boost/foreach.hpp>
 #include "CreatureFactory.hpp"
 #include "Game.hpp"
 #include "ItemManager.hpp"
@@ -110,7 +109,7 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
   {
     vector<XMLNode> placement_nodes = XMLUtils::get_elements_by_local_name(creatures_node, "Placement");
 
-    BOOST_FOREACH(const XMLNode& placement_node, placement_nodes)
+    for (const XMLNode& placement_node : placement_nodes)
     {
       XMLNode coord_node = XMLUtils::get_next_element_by_local_name(placement_node, "Coord");
 
@@ -159,7 +158,7 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
 
     vector<XMLNode> placement_nodes = XMLUtils::get_elements_by_local_name(items_node, "Placement");
 
-    BOOST_FOREACH(const XMLNode& item_node, placement_nodes)
+    for (const XMLNode& item_node : placement_nodes)
     {
       string id = XMLUtils::get_child_node_value(item_node, "ID");
       XMLNode coord_node = XMLUtils::get_next_element_by_local_name(item_node, "Coord");

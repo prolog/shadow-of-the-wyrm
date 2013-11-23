@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "AnimationTranslator.hpp"
 #include "MapTranslator.hpp"
 
@@ -29,7 +28,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
     vector<AnimationInstructionPtr> coords_in_frame;
     vector<AnimationInstructionPtr> frame_cleanup;
 
-    BOOST_FOREACH(Coordinate c, current_frame.second)
+    for (const Coordinate& c : current_frame.second)
     {
       TilePtr game_tile = current_map->at(c);
       TilePtr fov_tile = fov_map->at(c);
@@ -50,7 +49,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
     }
 
     // Add the updated coordinates to the animation.
-    BOOST_FOREACH(AnimationInstructionPtr instr, coords_in_frame)
+    for (AnimationInstructionPtr instr : coords_in_frame)
     {
       animation.add_animation_instruction(instr);
     }
@@ -65,7 +64,7 @@ Animation AnimationTranslator::create_movement_animation(const bool player_blind
 
       if (redraw_previous_frame)
       {
-        BOOST_FOREACH(AnimationInstructionPtr instr, frame_cleanup)
+        for (AnimationInstructionPtr instr : frame_cleanup)
         {
           animation.add_animation_instruction(instr);
         }

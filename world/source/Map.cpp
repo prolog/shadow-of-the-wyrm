@@ -1,5 +1,4 @@
 #include <sstream>
-#include <boost/foreach.hpp>
 #include <boost/tokenizer.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
@@ -408,7 +407,7 @@ bool Map::serialize(ostream& stream)
   // tiles
   Serialize::write_size_t(stream, tiles.size());
 
-  BOOST_FOREACH(TilesContainer::value_type& map_pair, tiles)
+  for (const TilesContainer::value_type& map_pair : tiles)
   {
     Serialize::write_string(stream, map_pair.first);
 
@@ -422,7 +421,7 @@ bool Map::serialize(ostream& stream)
 
   Serialize::write_size_t(stream, locations.size());
 
-  BOOST_FOREACH(NamedMapLocations::value_type& map_pair, locations)
+  for (const NamedMapLocations::value_type& map_pair : locations)
   {
     Serialize::write_string(stream, map_pair.first);
     Serialize::write_int(stream, map_pair.second.first); // coords

@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "CombatManager.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
@@ -56,7 +55,7 @@ bool SpellFailureConsequences::summon_creatures(CreaturePtr caster)
   // Make a list of the free tiles surrounding the caster.  These will
   // be available for randomly placing the summoned creatures, as long
   // as the tiles can support the creature.
-  BOOST_FOREACH(TilesContainer::value_type& fov_map_tile, tiles)
+  for (TilesContainer::value_type& fov_map_tile : tiles)
   {
     TilePtr tile = fov_map_tile.second;
     if (tile && !tile->get_is_blocking())

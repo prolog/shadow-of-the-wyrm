@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "CurrentCreatureAbilities.hpp"
 #include "DisplayItemTypeFactory.hpp"
 #include "InventoryTranslator.hpp"
@@ -22,7 +21,7 @@ DisplayInventoryMap InventoryTranslator::create_display_inventory(CreaturePtr cr
 
   const list<ItemPtr>& raw_inv = inv.get_items_cref();
   
-  BOOST_FOREACH(ItemPtr item, raw_inv)
+  for (ItemPtr item : raw_inv)
   {
     if (item)
     {
@@ -49,7 +48,7 @@ DisplayInventoryMap InventoryTranslator::create_display_inventory(CreaturePtr cr
 // finger/left finger).
 bool InventoryTranslator::is_applicable_for_display(ItemPtr item, const list<IItemFilterPtr>& display_filter_list)
 {
-  BOOST_FOREACH(IItemFilterPtr display_filter, display_filter_list)
+  for (IItemFilterPtr display_filter : display_filter_list)
   {
     if (!display_filter->passes_filter(item))
     {
