@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "DamageTypes.hpp"
 #include "ISerializable.hpp"
 
@@ -171,7 +171,7 @@ class LightningResistance : public Resistance
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef std::map<DamageType, boost::shared_ptr<Resistance> > ResistancesMap;
+typedef std::map<DamageType, std::shared_ptr<Resistance> > ResistancesMap;
 
 // Resistance container class
 class Resistances : public ISerializable

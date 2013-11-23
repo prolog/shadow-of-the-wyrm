@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Command.hpp"
 #include "Directions.hpp"
 #include "TileSelectionCommandKeys.hpp"
@@ -30,5 +30,5 @@ class TargetTileCommand : public Command
     ~TargetTileCommand();
 };
 
-typedef boost::shared_ptr<CursorDirectionalCommand> CursorDirectionalCommandPtr;
+typedef std::shared_ptr<CursorDirectionalCommand> CursorDirectionalCommandPtr;
 

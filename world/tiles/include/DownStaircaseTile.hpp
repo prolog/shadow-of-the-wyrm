@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "StaircaseTile.hpp"
 
 class DownStaircaseTile : public StaircaseTile
@@ -16,4 +16,4 @@ class DownStaircaseTile : public StaircaseTile
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<DownStaircaseTile> DownStaircaseTilePtr;
+typedef std::shared_ptr<DownStaircaseTile> DownStaircaseTilePtr;

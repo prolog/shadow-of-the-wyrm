@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "MaterialFactory.hpp"
 #include "XMLItemsReaders.hpp"
 #include "MiscItem.hpp"
@@ -170,7 +169,7 @@ std::pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_misc_items(const XML
     {
       if (!node.is_null())
       {
-        ItemPtr item = boost::make_shared<MiscItem>();
+        ItemPtr item = std::make_shared<MiscItem>();
         GenerationValues igv;
         item_reader.parse(item, igv, node);
         misc_items_map.insert(make_pair(item->get_id(), item));  
@@ -199,7 +198,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& arm
     {
       if (!node.is_null())
       {
-        ArmourPtr armour = boost::make_shared<Armour>();
+        ArmourPtr armour = std::make_shared<Armour>();
         GenerationValues igv;
         armour_reader.parse(armour, igv, node);
         armour_map.insert(make_pair(armour->get_id(), armour));
@@ -225,7 +224,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_weapons(const XMLNode& we
     
     for (const XMLNode& node : weapons_nodes)
     {
-      MeleeWeaponPtr weapon = boost::make_shared<MeleeWeapon>();
+      MeleeWeaponPtr weapon = std::make_shared<MeleeWeapon>();
       GenerationValues igv;
       weapons_reader.parse(weapon, igv, node);
       weapons_map.insert(make_pair(weapon->get_id(), weapon));
@@ -250,7 +249,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ranged_weapons(const XMLN
     
     for (const XMLNode& node : ranged_weapons_nodes)
     {
-      RangedWeaponPtr ranged_weapon = boost::make_shared<RangedWeapon>();
+      RangedWeaponPtr ranged_weapon = std::make_shared<RangedWeapon>();
       GenerationValues igv;
       weapons_reader.parse(ranged_weapon, igv, node);
       weapons_map.insert(make_pair(ranged_weapon->get_id(), ranged_weapon));
@@ -275,7 +274,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode&
     
     for (const XMLNode& node : missiles_nodes)
     {
-      WeaponPtr ammunition = boost::make_shared<Ammunition>();
+      WeaponPtr ammunition = std::make_shared<Ammunition>();
       GenerationValues igv;
       ammunition_reader.parse(ammunition, igv, node);
       ammunition_map.insert(make_pair(ammunition->get_id(), ammunition));
@@ -300,7 +299,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_
     
     for (const XMLNode& node : food_nodes)
     {
-      FoodPtr food = boost::make_shared<Food>();
+      FoodPtr food = std::make_shared<Food>();
       GenerationValues igv;
       food_reader.parse(food, igv, node);
       food_map.insert(make_pair(food->get_id(), food));
@@ -325,7 +324,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_plants(const XMLNode& pla
     
     for (const XMLNode& node : plants_nodes)
     {
-      PlantPtr plant = boost::make_shared<Plant>();
+      PlantPtr plant = std::make_shared<Plant>();
       GenerationValues gv;
       plant_reader.parse(plant, gv, node);
       plants_map.insert(make_pair(plant->get_id(), plant));
@@ -350,7 +349,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_boats(const XMLNode& boat
     
     for (const XMLNode& node : boats_nodes)
     {
-      BoatPtr boat = boost::make_shared<Boat>();
+      BoatPtr boat = std::make_shared<Boat>();
       GenerationValues igv;
       boat_reader.parse(boat, igv, node);
       boats_map.insert(make_pair(boat->get_id(), boat));
@@ -375,7 +374,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_potions(const XMLNode& po
     
     for (const XMLNode& node : potions_nodes)
     {
-      PotionPtr potion = boost::make_shared<Potion>();
+      PotionPtr potion = std::make_shared<Potion>();
       GenerationValues igv;
       potion_reader.parse(potion, igv, node);
       potions_map.insert(make_pair(potion->get_id(), potion));
@@ -400,7 +399,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_scrolls(const XMLNode& sc
 
     for (const XMLNode& node : scrolls_nodes)
     {
-      ScrollPtr scroll = boost::make_shared<Scroll>();
+      ScrollPtr scroll = std::make_shared<Scroll>();
       GenerationValues igv;
       scroll_reader.parse(scroll, igv, node);
       scrolls_map.insert(make_pair(scroll->get_id(), scroll));
@@ -425,7 +424,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_currencies(const XMLNode&
     
     for (const XMLNode& node : currencies_nodes)
     {
-      CurrencyPtr currency = boost::make_shared<Currency>();
+      CurrencyPtr currency = std::make_shared<Currency>();
       GenerationValues igv;
       item_reader.parse(currency, igv, node);
       currencies_map.insert(make_pair(currency->get_id(), currency));
@@ -450,7 +449,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_tools(const XMLNode& tool
 
     for (const XMLNode& node : tools_nodes)
     {
-      ToolPtr tool = boost::make_shared<Tool>();
+      ToolPtr tool = std::make_shared<Tool>();
       GenerationValues igv;
       tool_reader.parse(tool, igv, node);
       tools_map.insert(make_pair(tool->get_id(), tool));
@@ -475,7 +474,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_wands(const XMLNode& wand
 
     for (const XMLNode& node : wands_nodes)
     {
-      WandPtr wand = boost::make_shared<Wand>();
+      WandPtr wand = std::make_shared<Wand>();
       GenerationValues igv;
       wand_reader.parse(wand, igv, node);
       wands_map.insert(make_pair(wand->get_id(), wand));
@@ -500,7 +499,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_spellbooks(const XMLNode&
 
     for (const XMLNode& node : spellbooks_nodes)
     {
-      SpellbookPtr book = boost::make_shared<Spellbook>();
+      SpellbookPtr book = std::make_shared<Spellbook>();
       GenerationValues igv;
       spellbook_reader.parse(book, igv, node);
       spellbook_map.insert(make_pair(book->get_id(), book));

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CreatureTileSafetyChecker.hpp"
 #include "WaterSafetyCondition.hpp"
 
@@ -90,7 +89,7 @@ void CreatureTileSafetyChecker::initialize_tile_type_safety_conditions()
 void CreatureTileSafetyChecker::initialize_tile_super_type_safety_conditions()
 {
   vector<ITileSafetyConditionPtr> water_conditions;
-  ITileSafetyConditionPtr water_condition = boost::make_shared<WaterSafetyCondition>();
+  ITileSafetyConditionPtr water_condition = std::make_shared<WaterSafetyCondition>();
   water_conditions.push_back(water_condition);
 
   tile_super_type_safety_conditions.insert(make_pair(TILE_SUPER_TYPE_WATER, water_conditions));

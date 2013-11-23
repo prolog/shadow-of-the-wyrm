@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CombatManager.hpp"
 #include "Creature.hpp"
 #include "PoisonCalculator.hpp"
@@ -9,7 +8,7 @@ using namespace std;
 
 PoisonStatusEffect::PoisonStatusEffect()
 {
-  status_calc = boost::make_shared<PoisonCalculator>();
+  status_calc = std::make_shared<PoisonCalculator>();
 }
 
 void PoisonStatusEffect::tick(CreaturePtr creature) const

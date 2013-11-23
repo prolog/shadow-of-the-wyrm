@@ -18,4 +18,4 @@ class ToHitCalculator
     static const int NWP_SKILL_BONUS_DIVISOR;
 };
 
-typedef boost::shared_ptr<ToHitCalculator> ToHitCalculatorPtr;
+typedef std::shared_ptr<ToHitCalculator> ToHitCalculatorPtr;

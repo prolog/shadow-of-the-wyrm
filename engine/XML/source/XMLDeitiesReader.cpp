@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/make_shared.hpp>
 #include "XMLDataStructures.hpp"
 #include "XMLDeitiesReader.hpp"
 #include "XMLStatisticsModifierReader.hpp"
@@ -12,7 +11,7 @@ DeityMap XMLDeitiesReader::get_deities(const XMLNode& deities_node)
   DeityMap deities;
   
   // Need a default deity, always.
-  DeityPtr default_deity = boost::make_shared<Deity>();
+  DeityPtr default_deity = std::make_shared<Deity>();
   deities.insert(make_pair(default_deity->get_id(), default_deity));
 
   if (!deities_node.is_null())
@@ -40,7 +39,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
   
   if (!deity_node.is_null())
   {
-    deity = boost::make_shared<Deity>();
+    deity = std::make_shared<Deity>();
 
     bool playable    = XMLUtils::get_child_node_bool_value(deity_node, "UserPlayable"); 
     string deity_id  = XMLUtils::get_attribute_value (deity_node, "id");

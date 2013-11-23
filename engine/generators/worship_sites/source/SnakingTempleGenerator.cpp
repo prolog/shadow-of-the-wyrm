@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "RNG.hpp"
@@ -23,7 +22,7 @@ MapPtr SnakingTempleGenerator::generate(const Dimensions& dim)
 
 MapPtr SnakingTempleGenerator::generate()
 {
-  MapPtr map = boost::make_shared<Map>(*base_map);
+  MapPtr map = std::make_shared<Map>(*base_map);
 
   generate_temple(map);
 

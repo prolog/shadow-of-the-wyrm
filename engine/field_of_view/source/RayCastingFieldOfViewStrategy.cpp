@@ -1,5 +1,4 @@
 #include <sstream>
-#include <boost/make_shared.hpp>
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "RayCastingFieldOfViewStrategy.hpp"
@@ -19,7 +18,7 @@ RayCastingFieldOfViewStrategy::RayCastingFieldOfViewStrategy(const bool set_view
 
 MapPtr RayCastingFieldOfViewStrategy::calculate(CreaturePtr fov_creature, MapPtr view_map, const Coordinate& centre_coord, const int los_length)
 {
-  MapPtr fov_map = boost::make_shared<Map>(view_map->size());
+  MapPtr fov_map = std::make_shared<Map>(view_map->size());
   BresenhamLine bl;
   
   int row = centre_coord.first;

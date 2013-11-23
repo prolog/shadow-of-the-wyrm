@@ -59,7 +59,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
       // If the spell doesn't allow a bonus, it's an adhoc spell not present
       // in the game's list, and so the magical damage calculator isn't
       // appropriate.  Pass the damage directly to the combat manager.
-      DamagePtr dmg = boost::make_shared<Damage>(spell.get_damage());
+      DamagePtr dmg = std::make_shared<Damage>(spell.get_damage());
       cm.attack(caster, tile_creature, ATTACK_TYPE_MAGICAL, false, dmg);
     }
 

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "AdditionalEffectMessages.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
@@ -10,7 +9,7 @@ using std::string;
 // Add an additional message about sweet taste
 FruitJuiceEffect::FruitJuiceEffect()
 {
-  AdditionalEffectMessagePtr sweet_taste = boost::make_shared<SweetTasteEffectMessage>();
+  AdditionalEffectMessagePtr sweet_taste = std::make_shared<SweetTasteEffectMessage>();
   additional_effect_messages.push_back(sweet_taste);
 }
 

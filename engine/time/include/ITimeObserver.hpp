@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "common.hpp"
 #include "ISerializable.hpp"
 
@@ -29,4 +29,4 @@ class ITimeObserver : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<ITimeObserver> ITimeObserverPtr;
+typedef std::shared_ptr<ITimeObserver> ITimeObserverPtr;

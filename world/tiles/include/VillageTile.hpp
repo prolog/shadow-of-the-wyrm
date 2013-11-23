@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "WorldMapTile.hpp"
 
 class VillageTile : public WorldMapLandmarkTile
@@ -37,4 +37,4 @@ class VillageTile : public WorldMapLandmarkTile
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<VillageTile> VillageTilePtr;
+typedef std::shared_ptr<VillageTile> VillageTilePtr;

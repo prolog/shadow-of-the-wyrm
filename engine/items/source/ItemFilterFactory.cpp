@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "EdibleItemFilter.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemTypeFilter.hpp"
@@ -14,7 +13,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_empty_filter()
 {
   list<IItemFilterPtr> null_filter_list;
 
-  IItemFilterPtr null_filter = boost::make_shared<NullFilter>();
+  IItemFilterPtr null_filter = std::make_shared<NullFilter>();
   null_filter_list.push_back(null_filter);
 
   return null_filter_list;
@@ -37,7 +36,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_equipment_filter(const std::list<
 // Create a filter by equipment worn location
 IItemFilterPtr ItemFilterFactory::create_equipment_worn_location_filter(const EquipmentWornLocation& ewl)
 {
-  IItemFilterPtr eq_filter = boost::make_shared<SquishyEquipWornLocationFilter>(ewl);
+  IItemFilterPtr eq_filter = std::make_shared<SquishyEquipWornLocationFilter>(ewl);
   return eq_filter;
 }
 
@@ -57,7 +56,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const std::list<
 
   for (const ItemType it : item_type_list)
   {
-    IItemFilterPtr display_filter = boost::make_shared<ItemTypeFilter>(it);
+    IItemFilterPtr display_filter = std::make_shared<ItemTypeFilter>(it);
     it_filter.push_back(display_filter);
   }
   
@@ -69,7 +68,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_readable_filter()
 {
   list<IItemFilterPtr> it_filter;
   
-  IItemFilterPtr readable_filter = boost::make_shared<ReadableItemFilter>();
+  IItemFilterPtr readable_filter = std::make_shared<ReadableItemFilter>();
   it_filter.push_back(readable_filter);
   
   return it_filter;
@@ -81,7 +80,7 @@ list<IItemFilterPtr> ItemFilterFactory::create_edible_filter()
 {
   list<IItemFilterPtr> it_filter;
   
-  IItemFilterPtr readable_filter = boost::make_shared<EdibleItemFilter>();
+  IItemFilterPtr readable_filter = std::make_shared<EdibleItemFilter>();
   it_filter.push_back(readable_filter);
   
   return it_filter;

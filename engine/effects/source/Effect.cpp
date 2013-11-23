@@ -8,7 +8,7 @@ using namespace std;
 
 // Call the correct item effect function based on the item status.  Blessed effects can often be
 // much better than uncursed, and cursed are often more hurtful than helpful.
-bool Effect::effect(boost::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status) 
+bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status) 
 {
   bool effect_identified = false;
 
@@ -38,7 +38,7 @@ bool Effect::effect(boost::shared_ptr<Creature> creature, ActionManager * const 
   return effect_identified;
 }
 
-void Effect::identify_effect_as_necessary(boost::shared_ptr<Creature> creature, const bool effect_identified) const
+void Effect::identify_effect_as_necessary(std::shared_ptr<Creature> creature, const bool effect_identified) const
 {
   if (creature)
   {
@@ -58,7 +58,7 @@ void Effect::identify_effect_as_necessary(boost::shared_ptr<Creature> creature, 
   }
 }
 
-void Effect::identify_effect_if_player(boost::shared_ptr<Creature> creature) const
+void Effect::identify_effect_if_player(std::shared_ptr<Creature> creature) const
 {  
   if (creature && creature->get_is_player())
   {
@@ -71,7 +71,7 @@ void Effect::identify_effect_if_player(boost::shared_ptr<Creature> creature) con
 }
 
 // Inform the quaffer (if they're the player) that the potion had no discernable effect.
-void Effect::inform_unidentified_if_player(boost::shared_ptr<Creature> creature) const
+void Effect::inform_unidentified_if_player(std::shared_ptr<Creature> creature) const
 {  
   if (creature && creature->get_is_player())
   {

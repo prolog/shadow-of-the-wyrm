@@ -29,5 +29,5 @@ class Readable : public Item
     std::string text_sid;
 };
 
-typedef boost::shared_ptr<Readable> ReadablePtr;
+typedef std::shared_ptr<Readable> ReadablePtr;
 

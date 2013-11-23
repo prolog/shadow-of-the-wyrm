@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "RemoveStatusEffect.hpp"
 #include "EffectFactory.hpp"
 #include "EtherEffect.hpp"
@@ -31,50 +30,50 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
   switch(effect_type)
   {
     case EFFECT_TYPE_HEALING:
-      effect = boost::make_shared<HealingEffect>();
+      effect = std::make_shared<HealingEffect>();
       break;
     case EFFECT_TYPE_IDENTIFY:
-      effect = boost::make_shared<IdentifyEffect>();
+      effect = std::make_shared<IdentifyEffect>();
       break;
     case EFFECT_TYPE_ETHER:
-      effect = boost::make_shared<EtherEffect>();
+      effect = std::make_shared<EtherEffect>();
       break;
     case EFFECT_TYPE_FRUIT_JUICE:
-      effect = boost::make_shared<FruitJuiceEffect>();
+      effect = std::make_shared<FruitJuiceEffect>();
       break;
     case EFFECT_TYPE_TELEPORT:
-      effect = boost::make_shared<TeleportEffect>();
+      effect = std::make_shared<TeleportEffect>();
       break;
     case EFFECT_TYPE_ANTIDOTE:
-      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_POISON);
+      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_POISON);
       break;
     case EFFECT_TYPE_AMUT:
-      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_MUTE);
+      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_MUTE);
       break;
     case EFFECT_TYPE_SPEED:
-      effect = boost::make_shared<HasteEffect>();
+      effect = std::make_shared<HasteEffect>();
       break;
     case EFFECT_TYPE_UNSTONING:
-      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_STONE);
+      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_STONE);
       break;
     case EFFECT_TYPE_UNBINDING:
-      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_SPELLBOUND);
+      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_SPELLBOUND);
       break;
     case EFFECT_TYPE_RESTORE_STATISTICS:
-      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_DISFIGURED);
+      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_DISFIGURED);
       break;
     case EFFECT_TYPE_UNBLINDING:
-      effect = boost::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_BLINDED);
+      effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_BLINDED);
       break;
     case EFFECT_TYPE_RECHARGING:
-      effect = boost::make_shared<RechargingEffect>();
+      effect = std::make_shared<RechargingEffect>();
       break;
     case EFFECT_TYPE_INCORPOREAL:
-      effect = boost::make_shared<IncorporealEffect>();
+      effect = std::make_shared<IncorporealEffect>();
       break;
     case EFFECT_TYPE_NULL:
     default:
-      effect = boost::make_shared<NullEffect>();
+      effect = std::make_shared<NullEffect>();
       break;
   }
 

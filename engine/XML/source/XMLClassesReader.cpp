@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/make_shared.hpp>
 #include "Resistances.hpp"
 #include "XMLClassesReader.hpp"
 #include "XMLDataStructures.hpp"
@@ -15,7 +14,7 @@ ClassMap XMLClassesReader::get_classes(const XMLNode& classes_node)
 
   // We always need the default class for every creature, regardless
   // of whether there's any XML.
-  ClassPtr default_class = boost::make_shared<Class>();
+  ClassPtr default_class = std::make_shared<Class>();
   classes.insert(make_pair(default_class->get_class_id(), default_class));
 
   if (!classes_node.is_null())
@@ -42,7 +41,7 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
   if (!class_node.is_null())
   {
-    current_class = boost::make_shared<Class>();
+    current_class = std::make_shared<Class>();
 
     string internal_class_id = XMLUtils::get_attribute_value(class_node, "id");
 

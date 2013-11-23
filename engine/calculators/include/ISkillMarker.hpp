@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Creature.hpp"
 #include "SkillTypes.hpp"
 
@@ -12,4 +12,4 @@ class ISkillMarker
     virtual std::vector<SkillType> get_marked_skills(CreaturePtr creature) const = 0;
 };
 
-typedef boost::shared_ptr<ISkillMarker> ISkillMarkerPtr;
+typedef std::shared_ptr<ISkillMarker> ISkillMarkerPtr;

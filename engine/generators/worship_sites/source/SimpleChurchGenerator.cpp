@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "RNG.hpp"
@@ -23,7 +22,7 @@ MapPtr SimpleChurchGenerator::generate(const Dimensions& dim)
 // Generate a simple stone church on the base map.
 MapPtr SimpleChurchGenerator::generate()
 {
-  MapPtr church_map = boost::make_shared<Map>(*base_map);
+  MapPtr church_map = std::make_shared<Map>(*base_map);
 
   generate_church(church_map);
 

@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include <boost/make_shared.hpp>
 
 TEST(SL_Engine_Maps_MapUtils, get_dimensions)
 {
@@ -10,7 +9,7 @@ TEST(SL_Engine_Maps_MapUtils, get_dimensions)
   int max_cols = d.get_x();
   
   Coordinate c(0, 0);
-  MapPtr original_map = boost::make_shared<Map>(d);
+  MapPtr original_map = std::make_shared<Map>(d);
 
   // "1" is the row/col on which the creature currently stands.  This is always visible.
   EXPECT_EQ(1, MapUtils::get_dimensions(original_map, c, size).get_y());

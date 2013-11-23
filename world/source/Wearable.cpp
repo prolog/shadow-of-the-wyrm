@@ -2,7 +2,7 @@
 #include "Wearable.hpp"
 
 using namespace std;
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 Wearable::Wearable()
 : evade(0), soak(0)
@@ -33,7 +33,7 @@ int Wearable::get_soak() const
   return soak;
 }
 
-bool Wearable::additional_item_attributes_match(boost::shared_ptr<Item> i)
+bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i)
 {
   bool match = (i != nullptr);
   WearablePtr i_wear = dynamic_pointer_cast<Wearable>(i);

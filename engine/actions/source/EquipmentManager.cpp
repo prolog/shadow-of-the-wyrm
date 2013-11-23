@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "EquipmentCommandFactory.hpp"
 #include "EquipmentCommandProcessor.hpp"
 #include "EquipmentKeyboardCommandMap.hpp"
@@ -27,8 +26,8 @@ ActionCostValue EquipmentManager::manage_equipment()
   {
     if (creature)
     {
-      CommandFactoryPtr command_factory    = boost::make_shared<EquipmentCommandFactory>();
-      KeyboardCommandMapPtr kb_command_map = boost::make_shared<EquipmentKeyboardCommandMap>();
+      CommandFactoryPtr command_factory    = std::make_shared<EquipmentCommandFactory>();
+      KeyboardCommandMapPtr kb_command_map = std::make_shared<EquipmentKeyboardCommandMap>();
     
       while (manage_eq)
       {

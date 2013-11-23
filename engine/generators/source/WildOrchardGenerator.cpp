@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/make_shared.hpp>
 #include "WildOrchardGenerator.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
@@ -22,7 +21,7 @@ MapPtr WildOrchardGenerator::generate()
 
 MapPtr WildOrchardGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = boost::make_shared<Map>(dimensions);
+  MapPtr result_map = std::make_shared<Map>(dimensions);
 
   add_map_features(result_map);
 

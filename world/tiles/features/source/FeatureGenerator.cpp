@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "Bench.hpp"
 #include "Door.hpp"
@@ -27,14 +26,14 @@ FeaturePtr FeatureGenerator::generate_altar(const std::string& deity_id, const A
   switch(alignment)
   {
     case ALIGNMENT_RANGE_EVIL:
-      altar = boost::make_shared<EvilAltar>(deity_id);
+      altar = std::make_shared<EvilAltar>(deity_id);
       break;
     case ALIGNMENT_RANGE_NEUTRAL:
-      altar = boost::make_shared<NeutralAltar>(deity_id);
+      altar = std::make_shared<NeutralAltar>(deity_id);
       break;
     case ALIGNMENT_RANGE_GOOD:
     default:
-      altar = boost::make_shared<GoodAltar>(deity_id);
+      altar = std::make_shared<GoodAltar>(deity_id);
       break;    
   }
   
@@ -46,7 +45,7 @@ DoorPtr FeatureGenerator::generate_door()
 {
   LockPtr lock_info;
   EntranceState door_state;
-  DoorPtr door = boost::make_shared<Door>(lock_info, door_state);
+  DoorPtr door = std::make_shared<Door>(lock_info, door_state);
   return door;
 }
 
@@ -55,21 +54,21 @@ FeaturePtr FeatureGenerator::generate_gate()
 {
   LockPtr lock_info;
   EntranceState gate_state;
-  FeaturePtr gate = boost::make_shared<Gate>(lock_info, gate_state);
+  FeaturePtr gate = std::make_shared<Gate>(lock_info, gate_state);
   return gate;
 }
 
 // Generate a fire pillar
 FeaturePtr FeatureGenerator::generate_fire_pillar()
 {
-  FeaturePtr fire_pillar = boost::make_shared<FirePillar>();
+  FeaturePtr fire_pillar = std::make_shared<FirePillar>();
   return fire_pillar;
 }
 
 // Generate a happy, bubbly fountain
 FeaturePtr FeatureGenerator::generate_fountain()
 {
-  FeaturePtr fountain = boost::make_shared<Fountain>();
+  FeaturePtr fountain = std::make_shared<Fountain>();
   return fountain;
 }
 
@@ -81,11 +80,11 @@ FeaturePtr FeatureGenerator::generate_pew(const PewDirection pew_direction)
   switch(pew_direction)
   {
     case PEW_DIRECTION_NORTH_SOUTH:
-      pew = boost::make_shared<Pew>();
+      pew = std::make_shared<Pew>();
       break;
     case PEW_DIRECTION_EAST_WEST:
     default:
-      pew = boost::make_shared<EastWestPew>();
+      pew = std::make_shared<EastWestPew>();
       break;
   }
 
@@ -95,14 +94,14 @@ FeaturePtr FeatureGenerator::generate_pew(const PewDirection pew_direction)
 // Generate a wrought-iron bench
 FeaturePtr FeatureGenerator::generate_bench()
 {
-  FeaturePtr bench = boost::make_shared<Bench>();
+  FeaturePtr bench = std::make_shared<Bench>();
   return bench;
 }
 
 // Generate a sarcophagus
 SarcophagusPtr FeatureGenerator::generate_sarcophagus(const MaterialType material_type)
 {
-  SarcophagusPtr sarcophagus = boost::make_shared<Sarcophagus>(material_type);
+  SarcophagusPtr sarcophagus = std::make_shared<Sarcophagus>(material_type);
 
   return sarcophagus;
 }

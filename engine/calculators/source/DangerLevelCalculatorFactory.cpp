@@ -1,10 +1,9 @@
-#include <boost/make_shared.hpp>
 #include "DangerLevelCalculatorFactory.hpp"
 #include "OverworldMapDangerLevelCalculator.hpp"
 #include "UnderworldMapDangerLevelCalculator.hpp"
 #include "WorldMapDangerLevelCalculator.hpp"
 
-using boost::make_shared;
+using std::make_shared;
 
 DangerLevelCalculatorFactory::DangerLevelCalculatorFactory()
 {

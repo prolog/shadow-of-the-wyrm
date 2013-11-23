@@ -1,5 +1,4 @@
 #include <string>
-#include <boost/make_shared.hpp>
 #include "AlignmentEnums.hpp"
 #include "EntranceTypes.hpp"
 #include "FeatureGenerator.hpp"
@@ -62,7 +61,7 @@ FeaturePtr XMLMapFeatureFactory::create_door(const XMLNode& door_node)
   string lock_id = XMLUtils::get_child_node_value(door_node, "LockID");
   if (!lock_id.empty())
   {
-    LockPtr lock = boost::make_shared<Lock>(lock_id, true);
+    LockPtr lock = std::make_shared<Lock>(lock_id, true);
     door->set_lock(lock);
   }
 

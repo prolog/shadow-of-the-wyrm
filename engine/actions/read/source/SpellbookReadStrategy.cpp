@@ -17,7 +17,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
 
   if (creature && readable)
   {
-    SpellbookPtr spellbook = boost::dynamic_pointer_cast<Spellbook>(readable);
+    SpellbookPtr spellbook = std::dynamic_pointer_cast<Spellbook>(readable);
 
     if (spellbook)
     {

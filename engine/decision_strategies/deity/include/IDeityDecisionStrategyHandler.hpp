@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Creature.hpp"
 #include "DeityDecisionImplications.hpp"
 
@@ -20,4 +20,4 @@ class IDeityDecisionStrategyHandler
     virtual int get_piety_loss() const = 0;
 };
 
-typedef boost::shared_ptr<IDeityDecisionStrategyHandler> IDeityDecisionStrategyHandlerPtr;
+typedef std::shared_ptr<IDeityDecisionStrategyHandler> IDeityDecisionStrategyHandlerPtr;

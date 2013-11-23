@@ -2,7 +2,7 @@
 #include "RangedAttackSpeedCalculator.hpp"
 #include "Weapon.hpp"
 
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 ActionCostValue RangedAttackSpeedCalculator::calculate(CreaturePtr creature)
 {

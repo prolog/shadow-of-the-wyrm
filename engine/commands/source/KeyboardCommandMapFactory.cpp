@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "KeyboardCommandMapFactory.hpp"
 #include "EquipmentKeyboardCommandMap.hpp"
 #include "InventoryKeyboardCommandMap.hpp"
@@ -32,10 +31,10 @@ void KeyboardCommandMapFactory::initialize_command_map_map()
 {
   kb_map.clear();
 
-  KeyboardCommandMapPtr kb_com_map  = boost::make_shared<KeyboardCommandMap>();
-  KeyboardCommandMapPtr eq_com_map  = boost::make_shared<EquipmentKeyboardCommandMap>();
-  KeyboardCommandMapPtr inv_com_map = boost::make_shared<InventoryKeyboardCommandMap>();
-  KeyboardCommandMapPtr ts_com_map  = boost::make_shared<TileSelectionKeyboardCommandMap>();
+  KeyboardCommandMapPtr kb_com_map  = std::make_shared<KeyboardCommandMap>();
+  KeyboardCommandMapPtr eq_com_map  = std::make_shared<EquipmentKeyboardCommandMap>();
+  KeyboardCommandMapPtr inv_com_map = std::make_shared<InventoryKeyboardCommandMap>();
+  KeyboardCommandMapPtr ts_com_map  = std::make_shared<TileSelectionKeyboardCommandMap>();
 
   kb_map.insert(make_pair(CLASS_ID_KEYBOARD_COMMAND_MAP, kb_com_map));
   kb_map.insert(make_pair(CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP, eq_com_map));

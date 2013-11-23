@@ -20,7 +20,7 @@ bool KeyManager::has_key(CreaturePtr creature, LockPtr lock)
       {
         if (item)
         {
-          ToolPtr tool = boost::dynamic_pointer_cast<Tool>(item);
+          ToolPtr tool = std::dynamic_pointer_cast<Tool>(item);
 
           if (tool && (tool->get_lock_id() == lock_id))
           {

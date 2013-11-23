@@ -1,6 +1,6 @@
 #pragma once
 #include "Tile.hpp"
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 enum StaircaseType
 {
@@ -20,4 +20,4 @@ class StaircaseTile : public Tile
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<StaircaseTile> StaircaseTilePtr;
+typedef std::shared_ptr<StaircaseTile> StaircaseTilePtr;

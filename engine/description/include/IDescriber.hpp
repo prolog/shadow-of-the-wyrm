@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 class IDescriber
 {
@@ -9,4 +9,4 @@ class IDescriber
     virtual std::string describe() const = 0;
 };
 
-typedef boost::shared_ptr<IDescriber> IDescriberPtr;
+typedef std::shared_ptr<IDescriber> IDescriberPtr;

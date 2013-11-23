@@ -1,5 +1,4 @@
 #include <string>
-#include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
 #include "AutomaticMovementAction.hpp"

@@ -92,4 +92,4 @@ class Display : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
-typedef boost::shared_ptr<Display> DisplayPtr;
+typedef std::shared_ptr<Display> DisplayPtr;

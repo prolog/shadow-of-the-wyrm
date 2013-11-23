@@ -62,7 +62,7 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
 {
   bool turn_advanced = false;
 
-  ConsumablePtr item_as_consumable = boost::dynamic_pointer_cast<Consumable>(food);
+  ConsumablePtr item_as_consumable = std::dynamic_pointer_cast<Consumable>(food);
 
   if (food)
   {

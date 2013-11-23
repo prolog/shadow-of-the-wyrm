@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CommandFactoryFactory.hpp"
 #include "EquipmentCommandFactory.hpp"
 #include "InventoryCommandFactory.hpp"
@@ -29,7 +28,7 @@ CommandFactoryPtr CommandFactoryFactory::create_command_factory(const ClassIdent
 
   if (c_it != command_factory_map.end())
   {
-    factory = boost::shared_ptr<CommandFactory>(c_it->second->clone());
+    factory = std::shared_ptr<CommandFactory>(c_it->second->clone());
   }
 
   return factory;
@@ -39,10 +38,10 @@ void CommandFactoryFactory::initialize_command_factory_map()
 {
   command_factory_map.clear();
 
-  CommandFactoryPtr cf     = boost::make_shared<CommandFactory>();
-  CommandFactoryPtr eq_cf  = boost::make_shared<EquipmentCommandFactory>();
-  CommandFactoryPtr inv_cf = boost::make_shared<InventoryCommandFactory>();
-  CommandFactoryPtr ts_cf  = boost::make_shared<TileSelectionCommandFactory>();
+  CommandFactoryPtr cf     = std::make_shared<CommandFactory>();
+  CommandFactoryPtr eq_cf  = std::make_shared<EquipmentCommandFactory>();
+  CommandFactoryPtr inv_cf = std::make_shared<InventoryCommandFactory>();
+  CommandFactoryPtr ts_cf  = std::make_shared<TileSelectionCommandFactory>();
 
   command_factory_map.insert(make_pair(CLASS_ID_COMMAND_FACTORY, cf));
   command_factory_map.insert(make_pair(CLASS_ID_EQUIPMENT_COMMAND_FACTORY, eq_cf));

@@ -12,5 +12,5 @@ class ITileSafetyCondition
     virtual bool is_safe(CreaturePtr creature, TilePtr tile) = 0;
 };
 
-typedef boost::shared_ptr<ITileSafetyCondition> ITileSafetyConditionPtr;
+typedef std::shared_ptr<ITileSafetyCondition> ITileSafetyConditionPtr;
 

@@ -2,7 +2,7 @@
 #include <list>
 #include <vector>
 #include <set>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "common.hpp"
 #include "Map.hpp"
 #include "SearchNode.hpp"
@@ -33,4 +33,4 @@ class Search
     CreaturePtr perspective_creature;
 };
 
-typedef boost::shared_ptr<Search> SearchStrategyPtr;
+typedef std::shared_ptr<Search> SearchStrategyPtr;

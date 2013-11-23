@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "KeepGenerator.hpp"
 #include "RNG.hpp"
@@ -22,7 +21,7 @@ MapPtr KeepGenerator::generate(const Dimensions& dim)
 // Generate a square keep, centre it on the map.
 MapPtr KeepGenerator::generate()
 {
-  MapPtr result_map = boost::make_shared<Map>(*base_map);
+  MapPtr result_map = std::make_shared<Map>(*base_map);
   Dimensions dimensions = result_map->size();
 
   int max_height = dimensions.get_y();

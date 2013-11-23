@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Creature.hpp"
 #include "Conversion.hpp"
 #include "DisplayStatistics.hpp"
@@ -218,20 +217,20 @@ void CreatureTranslator::initialize_status_ailment_checkers()
 {
   status_ailment_checkers.clear();
 
-  IStatusAilmentTranslatorPtr hunger_checker = boost::make_shared<HungerStatusAilmentTranslator>();
-  IStatusAilmentTranslatorPtr poison_checker = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_POISON, StatusAilmentTextKeys::STATUS_POISON, COLOUR_GREEN);
-  IStatusAilmentTranslatorPtr muteness_chekr = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_MUTE, StatusAilmentTextKeys::STATUS_MUTE, COLOUR_BLUE);
-  IStatusAilmentTranslatorPtr paralysis_chkr = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_PARALYSIS, StatusAilmentTextKeys::STATUS_PARALYSIS, COLOUR_BOLD_YELLOW);
-  IStatusAilmentTranslatorPtr slowness_chekr = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SLOWNESS, StatusAilmentTextKeys::STATUS_SLOWNESS, COLOUR_WHITE);
-  IStatusAilmentTranslatorPtr haste_checker  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HASTE, StatusAilmentTextKeys::STATUS_HASTE, COLOUR_BOLD_WHITE);
-  IStatusAilmentTranslatorPtr stone_checker  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STONE, StatusAilmentTextKeys::STATUS_STONE, COLOUR_BOLD_BLACK);
-  IStatusAilmentTranslatorPtr bloodied_chkr  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLOODIED, StatusAilmentTextKeys::STATUS_BLOODIED, COLOUR_RED);
-  IStatusAilmentTranslatorPtr stunned_chekr  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STUNNED, StatusAilmentTextKeys::STATUS_STUNNED, COLOUR_BOLD_CYAN);
-  IStatusAilmentTranslatorPtr exposed_chekr  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_EXPOSED, StatusAilmentTextKeys::STATUS_EXPOSED, COLOUR_CYAN);
-  IStatusAilmentTranslatorPtr disfigured_ck  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DISFIGURED, StatusAilmentTextKeys::STATUS_DISFIGURED, COLOUR_BOLD_GREEN);
-  IStatusAilmentTranslatorPtr spellbound_ck  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SPELLBOUND, StatusAilmentTextKeys::STATUS_SPELLBOUND, COLOUR_BOLD_MAGENTA);
-  IStatusAilmentTranslatorPtr blinded_check  = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLINDED, StatusAilmentTextKeys::STATUS_BLINDED, COLOUR_BOLD_BLUE);
-  IStatusAilmentTranslatorPtr incorporeal_ck = boost::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_INCORPOREAL, StatusAilmentTextKeys::STATUS_INCORPOREAL, COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr hunger_checker = std::make_shared<HungerStatusAilmentTranslator>();
+  IStatusAilmentTranslatorPtr poison_checker = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_POISON, StatusAilmentTextKeys::STATUS_POISON, COLOUR_GREEN);
+  IStatusAilmentTranslatorPtr muteness_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_MUTE, StatusAilmentTextKeys::STATUS_MUTE, COLOUR_BLUE);
+  IStatusAilmentTranslatorPtr paralysis_chkr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_PARALYSIS, StatusAilmentTextKeys::STATUS_PARALYSIS, COLOUR_BOLD_YELLOW);
+  IStatusAilmentTranslatorPtr slowness_chekr = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SLOWNESS, StatusAilmentTextKeys::STATUS_SLOWNESS, COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr haste_checker  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_HASTE, StatusAilmentTextKeys::STATUS_HASTE, COLOUR_BOLD_WHITE);
+  IStatusAilmentTranslatorPtr stone_checker  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STONE, StatusAilmentTextKeys::STATUS_STONE, COLOUR_BOLD_BLACK);
+  IStatusAilmentTranslatorPtr bloodied_chkr  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLOODIED, StatusAilmentTextKeys::STATUS_BLOODIED, COLOUR_RED);
+  IStatusAilmentTranslatorPtr stunned_chekr  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_STUNNED, StatusAilmentTextKeys::STATUS_STUNNED, COLOUR_BOLD_CYAN);
+  IStatusAilmentTranslatorPtr exposed_chekr  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_EXPOSED, StatusAilmentTextKeys::STATUS_EXPOSED, COLOUR_CYAN);
+  IStatusAilmentTranslatorPtr disfigured_ck  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DISFIGURED, StatusAilmentTextKeys::STATUS_DISFIGURED, COLOUR_BOLD_GREEN);
+  IStatusAilmentTranslatorPtr spellbound_ck  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SPELLBOUND, StatusAilmentTextKeys::STATUS_SPELLBOUND, COLOUR_BOLD_MAGENTA);
+  IStatusAilmentTranslatorPtr blinded_check  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLINDED, StatusAilmentTextKeys::STATUS_BLINDED, COLOUR_BOLD_BLUE);
+  IStatusAilmentTranslatorPtr incorporeal_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_INCORPOREAL, StatusAilmentTextKeys::STATUS_INCORPOREAL, COLOUR_WHITE);
 
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(poison_checker);

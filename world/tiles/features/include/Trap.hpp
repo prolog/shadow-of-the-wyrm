@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "ISerializable.hpp"
 
 class Trap : public ISerializable
@@ -16,4 +16,4 @@ class Trap : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Trap> TrapPtr;
+typedef std::shared_ptr<Trap> TrapPtr;

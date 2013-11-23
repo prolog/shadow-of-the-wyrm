@@ -12,7 +12,7 @@ class EquipmentCommand : public Command
     virtual bool is_wear_or_remove_command() const;
 };
 
-typedef boost::shared_ptr<EquipmentCommand> EquipmentCommandPtr;
+typedef std::shared_ptr<EquipmentCommand> EquipmentCommandPtr;
 
 // Abstract intermediary class inherited by the various wear/remove class commands
 class WearOrRemoveCommand : public EquipmentCommand

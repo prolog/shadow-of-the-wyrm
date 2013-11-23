@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "DeitySelectionScreen.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
@@ -25,8 +24,8 @@ void DeitySelectionScreen::initialize()
     DeityMap deities = game_instance.get_deities_ref();
     vector<string> deity_ids = race->get_initial_deity_ids();
 
-    TextComponentPtr deity_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_DEITY));
-    OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
+    TextComponentPtr deity_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_DEITY));
+    OptionsComponentPtr options = std::make_shared<OptionsComponent>();
     int current_id = 0;
     
     for (const string& deity_id : deity_ids)

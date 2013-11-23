@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "IDeityDecisionStrategyHandler.hpp"
 #include "Creature.hpp"
 
@@ -9,5 +9,5 @@ class IDeityDecisionStrategy
     virtual IDeityDecisionStrategyHandlerPtr get_decision(CreaturePtr creature) = 0;
 };
 
-typedef boost::shared_ptr<IDeityDecisionStrategy> IDeityDecisionStrategyPtr;
+typedef std::shared_ptr<IDeityDecisionStrategy> IDeityDecisionStrategyPtr;
 

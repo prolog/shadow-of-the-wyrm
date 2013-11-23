@@ -15,4 +15,4 @@ class ItemDescriber : public IDescriber
     ItemPtr item;
 };
 
-typedef boost::shared_ptr<ItemDescriber> ItemDescriberPtr;
+typedef std::shared_ptr<ItemDescriber> ItemDescriberPtr;

@@ -1,5 +1,4 @@
 #include <boost/algorithm/string.hpp>
-#include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
 #include "PromptTextKeys.hpp"
 #include "StringTable.hpp"
@@ -31,13 +30,13 @@ void TextDisplayScreen::initialize(const string& title_sid)
     trim_left(text);
     trim_right(text);
 
-    TextComponentPtr current_line = boost::make_shared<TextComponent>(text, colour);
+    TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
 
     components.push_back(current_line);
   }
 
   // Set the prompt
-  PromptPtr any_key_prompt = boost::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
   any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_ANY_KEY);
   user_prompt = any_key_prompt;
 }

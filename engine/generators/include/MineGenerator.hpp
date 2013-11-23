@@ -28,6 +28,6 @@ class MineGenerator : public SL::Generator
     static const int MINE_MAX_ROOM_HEIGHT;
 
     std::vector<Room> rooms;
-    boost::shared_ptr<Room> main_hallway_centre;
+    std::shared_ptr<Room> main_hallway_centre;
 };
 

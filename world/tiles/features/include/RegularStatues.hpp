@@ -48,4 +48,4 @@ class PetrifiedCorpseStatue : public RegularStatue
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<PetrifiedCorpseStatue> PetrifiedCorpseStatuePtr;
+typedef std::shared_ptr<PetrifiedCorpseStatue> PetrifiedCorpseStatuePtr;

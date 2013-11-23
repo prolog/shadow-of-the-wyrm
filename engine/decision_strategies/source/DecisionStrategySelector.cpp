@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "AutomaticMovementDecisionStrategy.hpp"
 #include "DecisionStrategySelector.hpp"
 
@@ -13,7 +12,7 @@ DecisionStrategyPtr DecisionStrategySelector::select_decision_strategy(CreatureP
   {
     if (creature->get_automatic_movement_ref().get_engaged())
     {
-      decision = boost::make_shared<AutomaticMovementDecisionStrategy>(creature->get_automatic_movement_ref(), creature->get_decision_strategy()->get_controller());
+      decision = std::make_shared<AutomaticMovementDecisionStrategy>(creature->get_automatic_movement_ref(), creature->get_decision_strategy()->get_controller());
     }
     else
     {

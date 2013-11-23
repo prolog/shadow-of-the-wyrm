@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ItemSerializationFactory.hpp"
 #include "Ammunition.hpp"
 #include "Amulet.hpp"
@@ -59,23 +58,23 @@ void ItemSerializationFactory::initialize_item_map()
 {
   item_map.clear();
 
-  ItemPtr ammo   = boost::make_shared<Ammunition>();
-  ItemPtr amulet = boost::make_shared<Amulet>();
-  ItemPtr armour = boost::make_shared<Armour>();
-  ItemPtr boat   = boost::make_shared<Boat>();
-  ItemPtr book   = boost::make_shared<Spellbook>();
-  ItemPtr cash   = boost::make_shared<Currency>();
-  ItemPtr food   = boost::make_shared<Food>();
-  ItemPtr misc   = boost::make_shared<MiscItem>();
-  ItemPtr plant  = boost::make_shared<Plant>();
-  ItemPtr potion = boost::make_shared<Potion>();
-  ItemPtr ring   = boost::make_shared<Ring>();
-  ItemPtr scroll = boost::make_shared<Scroll>();
-  ItemPtr staff  = boost::make_shared<Staff>();
-  ItemPtr wand   = boost::make_shared<Wand>();
-  ItemPtr melee  = boost::make_shared<MeleeWeapon>();
-  ItemPtr ranged = boost::make_shared<RangedWeapon>();
-  ItemPtr tool   = boost::make_shared<Tool>();
+  ItemPtr ammo   = std::make_shared<Ammunition>();
+  ItemPtr amulet = std::make_shared<Amulet>();
+  ItemPtr armour = std::make_shared<Armour>();
+  ItemPtr boat   = std::make_shared<Boat>();
+  ItemPtr book   = std::make_shared<Spellbook>();
+  ItemPtr cash   = std::make_shared<Currency>();
+  ItemPtr food   = std::make_shared<Food>();
+  ItemPtr misc   = std::make_shared<MiscItem>();
+  ItemPtr plant  = std::make_shared<Plant>();
+  ItemPtr potion = std::make_shared<Potion>();
+  ItemPtr ring   = std::make_shared<Ring>();
+  ItemPtr scroll = std::make_shared<Scroll>();
+  ItemPtr staff  = std::make_shared<Staff>();
+  ItemPtr wand   = std::make_shared<Wand>();
+  ItemPtr melee  = std::make_shared<MeleeWeapon>();
+  ItemPtr ranged = std::make_shared<RangedWeapon>();
+  ItemPtr tool   = std::make_shared<Tool>();
 
   item_map.insert(make_pair(CLASS_ID_AMMUNITION, ammo));
   item_map.insert(make_pair(CLASS_ID_AMULET, amulet));

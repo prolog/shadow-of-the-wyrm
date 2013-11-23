@@ -3,7 +3,7 @@
 // This function is unsafe for anything using the creature's controller!
 TEST(SL_Engine_DecisionStrategies_DecisionStrategySelector, select_decision_strategy)
 {
-  CreaturePtr c = boost::make_shared<Creature>();
+  CreaturePtr c = std::make_shared<Creature>();
 
   ControllerPtr nullc;
 
@@ -11,7 +11,7 @@ TEST(SL_Engine_DecisionStrategies_DecisionStrategySelector, select_decision_stra
   am.set_engaged(false);
   am.set_direction(DIRECTION_NORTH);
 
-  DecisionStrategyPtr dec = boost::make_shared<AutomaticMovementDecisionStrategy>(am, nullc);
+  DecisionStrategyPtr dec = std::make_shared<AutomaticMovementDecisionStrategy>(am, nullc);
   c->set_decision_strategy(dec);
 
   c->set_is_player(true, nullc);

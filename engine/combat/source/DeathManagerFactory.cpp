@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CreatureDeathManager.hpp"
 #include "PlayerDeathManager.hpp"
 #include "DeathManagerFactory.hpp"
@@ -17,11 +16,11 @@ DeathManagerPtr DeathManagerFactory::create_death_manager(CreaturePtr attacking,
 
   if (dead->get_is_player())
   {
-    manager = boost::make_shared<PlayerDeathManager>(attacking, dead, map);
+    manager = std::make_shared<PlayerDeathManager>(attacking, dead, map);
   }
   else
   {
-    manager = boost::make_shared<CreatureDeathManager>(attacking, dead, map);
+    manager = std::make_shared<CreatureDeathManager>(attacking, dead, map);
   }
 
   return manager;

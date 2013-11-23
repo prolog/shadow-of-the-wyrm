@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Creature.hpp"
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
@@ -12,7 +11,7 @@ using namespace std;
 
 HasteStatusEffect::HasteStatusEffect()
 {
-  status_calc = boost::make_shared<HasteCalculator>();
+  status_calc = std::make_shared<HasteCalculator>();
 }
 
 bool HasteStatusEffect::after_apply(CreaturePtr creature) const

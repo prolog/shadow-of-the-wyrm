@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CombatManager.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
@@ -13,7 +12,7 @@ using namespace std;
 
 StoneStatusEffect::StoneStatusEffect()
 {
-  status_calc = boost::make_shared<StoneCalculator>();
+  status_calc = std::make_shared<StoneCalculator>();
 }
 
 void StoneStatusEffect::finalize(CreaturePtr creature) const

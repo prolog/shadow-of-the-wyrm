@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "DeityDecisionConstants.hpp"
 #include "DeityDecisionStrategy.hpp"
 
@@ -17,16 +16,16 @@ void DeityDecisionStrategy::initialize_decisions()
 {
   decisions.clear();
 
-  IDeityDecisionStrategyHandlerPtr cur_decision = boost::make_shared<FullHPDeityDecisionStrategyHandler>();
+  IDeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>();
   decisions.push_back(cur_decision);
 
-  cur_decision = boost::make_shared<RestoreStatusDeityDecisionStrategyHandler>();
+  cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>();
   decisions.push_back(cur_decision);
 
-  cur_decision = boost::make_shared<FullAPDeityDecisionStrategyHandler>();
+  cur_decision = std::make_shared<FullAPDeityDecisionStrategyHandler>();
   decisions.push_back(cur_decision);
 
-  cur_decision = boost::make_shared<DislikeDeityDecisionStrategyHandler>();
+  cur_decision = std::make_shared<DislikeDeityDecisionStrategyHandler>();
   decisions.push_back(cur_decision);
 }
 
@@ -36,7 +35,7 @@ void DeityDecisionStrategy::initialize_decisions()
 IDeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr creature)
 {
   // The default decision if nothing else is selected.
-  IDeityDecisionStrategyHandlerPtr do_nothing = boost::make_shared<DoNothingDeityDecisionStrategyHandler>();
+  IDeityDecisionStrategyHandlerPtr do_nothing = std::make_shared<DoNothingDeityDecisionStrategyHandler>();
 
   for (IDeityDecisionStrategyHandlerPtr decision : decisions)
   {

@@ -4,7 +4,7 @@
 
 using std::string;
 
-string NullEffect::get_effect_identification_message(boost::shared_ptr<Creature> creature) const
+string NullEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
 {
   string null_message = StringTable::get(EffectTextKeys::EFFECT_NULL);
   return null_message;

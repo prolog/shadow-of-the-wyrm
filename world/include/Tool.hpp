@@ -24,5 +24,5 @@ class Tool : public Item
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Tool> ToolPtr;
+typedef std::shared_ptr<Tool> ToolPtr;
 

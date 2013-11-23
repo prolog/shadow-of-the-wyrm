@@ -1,5 +1,4 @@
 #include <boost/static_assert.hpp>
-#include <boost/make_shared.hpp>
 #include "AllTiles.hpp"
 #include "TileFactory.hpp"
 
@@ -38,50 +37,50 @@ void TileFactory::initialize_tile_map()
 {
   BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 44);
 
-  TilePtr barracks = boost::make_shared<BarracksTile>();
-  TilePtr barrow   = boost::make_shared<BarrowTile>();
-  TilePtr beach    = boost::make_shared<BeachTile>();
-  TilePtr bush     = boost::make_shared<BushTile>();
-  TilePtr cairn    = boost::make_shared<CairnTile>();
-  TilePtr castle   = boost::make_shared<CastleTile>();
-  TilePtr cavern   = boost::make_shared<CavernTile>();
-  TilePtr church   = boost::make_shared<ChurchTile>();
-  TilePtr dais     = boost::make_shared<DaisTile>();
-  TilePtr desert   = boost::make_shared<DesertTile>();
-  TilePtr downst   = boost::make_shared<DownStaircaseTile>();
-  TilePtr dcomp    = boost::make_shared<DungeonComplexTile>();
-  TilePtr dungeon  = boost::make_shared<DungeonTile>();
-  TilePtr field    = boost::make_shared<FieldTile>();
-  TilePtr forest   = boost::make_shared<ForestTile>();
-  TilePtr grave    = boost::make_shared<GraveTile>();
-  TilePtr grvyard  = boost::make_shared<GraveyardTile>();
-  TilePtr hills    = boost::make_shared<HillsTile>();
-  TilePtr keep     = boost::make_shared<KeepTile>();
-  TilePtr library  = boost::make_shared<LibraryTile>();
-  TilePtr marsh    = boost::make_shared<MarshTile>();
-  TilePtr mtns     = boost::make_shared<MountainsTile>();
-  TilePtr pier     = boost::make_shared<PierTile>();
-  TilePtr reeds    = boost::make_shared<ReedsTile>();
-  TilePtr river    = boost::make_shared<RiverTile>();
-  TilePtr road     = boost::make_shared<RoadTile>();
-  TilePtr rock     = boost::make_shared<RockTile>();
-  TilePtr scrub    = boost::make_shared<ScrubTile>();
-  TilePtr sea      = boost::make_shared<SeaTile>();
-  TilePtr shoals   = boost::make_shared<ShoalsTile>();
-  TilePtr sodeath  = boost::make_shared<SiteOfDeathTile>();
-  TilePtr springs  = boost::make_shared<SpringsTile>();
-  TilePtr temple   = boost::make_shared<TempleTile>();
-  TilePtr tree     = boost::make_shared<TreeTile>();
-  TilePtr upst     = boost::make_shared<UpStaircaseTile>();
-  TilePtr village  = boost::make_shared<VillageTile>();
-  TilePtr weeds    = boost::make_shared<WeedsTile>();
-  TilePtr wheat    = boost::make_shared<WheatTile>();
-  TilePtr wild_orchard = boost::make_shared<WildOrchardTile>();
-  TilePtr fruit_tree = boost::make_shared<FruitTreeTile>();
-  TilePtr evergreen = boost::make_shared<EvergreenTreeTile>();
-  TilePtr rocky_earth = boost::make_shared<RockyEarthTile>();
-  TilePtr mine     = boost::make_shared<MineTile>();
-  TilePtr well     = boost::make_shared<WellTile>();
+  TilePtr barracks = std::make_shared<BarracksTile>();
+  TilePtr barrow   = std::make_shared<BarrowTile>();
+  TilePtr beach    = std::make_shared<BeachTile>();
+  TilePtr bush     = std::make_shared<BushTile>();
+  TilePtr cairn    = std::make_shared<CairnTile>();
+  TilePtr castle   = std::make_shared<CastleTile>();
+  TilePtr cavern   = std::make_shared<CavernTile>();
+  TilePtr church   = std::make_shared<ChurchTile>();
+  TilePtr dais     = std::make_shared<DaisTile>();
+  TilePtr desert   = std::make_shared<DesertTile>();
+  TilePtr downst   = std::make_shared<DownStaircaseTile>();
+  TilePtr dcomp    = std::make_shared<DungeonComplexTile>();
+  TilePtr dungeon  = std::make_shared<DungeonTile>();
+  TilePtr field    = std::make_shared<FieldTile>();
+  TilePtr forest   = std::make_shared<ForestTile>();
+  TilePtr grave    = std::make_shared<GraveTile>();
+  TilePtr grvyard  = std::make_shared<GraveyardTile>();
+  TilePtr hills    = std::make_shared<HillsTile>();
+  TilePtr keep     = std::make_shared<KeepTile>();
+  TilePtr library  = std::make_shared<LibraryTile>();
+  TilePtr marsh    = std::make_shared<MarshTile>();
+  TilePtr mtns     = std::make_shared<MountainsTile>();
+  TilePtr pier     = std::make_shared<PierTile>();
+  TilePtr reeds    = std::make_shared<ReedsTile>();
+  TilePtr river    = std::make_shared<RiverTile>();
+  TilePtr road     = std::make_shared<RoadTile>();
+  TilePtr rock     = std::make_shared<RockTile>();
+  TilePtr scrub    = std::make_shared<ScrubTile>();
+  TilePtr sea      = std::make_shared<SeaTile>();
+  TilePtr shoals   = std::make_shared<ShoalsTile>();
+  TilePtr sodeath  = std::make_shared<SiteOfDeathTile>();
+  TilePtr springs  = std::make_shared<SpringsTile>();
+  TilePtr temple   = std::make_shared<TempleTile>();
+  TilePtr tree     = std::make_shared<TreeTile>();
+  TilePtr upst     = std::make_shared<UpStaircaseTile>();
+  TilePtr village  = std::make_shared<VillageTile>();
+  TilePtr weeds    = std::make_shared<WeedsTile>();
+  TilePtr wheat    = std::make_shared<WheatTile>();
+  TilePtr wild_orchard = std::make_shared<WildOrchardTile>();
+  TilePtr fruit_tree = std::make_shared<FruitTreeTile>();
+  TilePtr evergreen = std::make_shared<EvergreenTreeTile>();
+  TilePtr rocky_earth = std::make_shared<RockyEarthTile>();
+  TilePtr mine     = std::make_shared<MineTile>();
+  TilePtr well     = std::make_shared<WellTile>();
 
   tiles_map.insert(make_pair(CLASS_ID_BARRACKS_TILE, barracks));
   tiles_map.insert(make_pair(CLASS_ID_BARROW_TILE, barrow));

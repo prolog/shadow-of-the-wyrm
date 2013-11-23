@@ -1,7 +1,7 @@
 #include "SoakCalculator.hpp"
 #include "Wearable.hpp"
 
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 SoakCalculator::SoakCalculator()
 {

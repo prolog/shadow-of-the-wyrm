@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Commands.hpp"
 #include "AutomaticMovementDecisionStrategy.hpp"
 #include "Serialize.hpp"
@@ -20,15 +19,15 @@ bool AutomaticMovementDecisionStrategy::operator==(const AutomaticMovementDecisi
 }
 
 // Translate the automatic movement details into an actual command ptr.
-CommandPtr AutomaticMovementDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, boost::shared_ptr<Map> view_map, int* key_p)
+CommandPtr AutomaticMovementDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, std::shared_ptr<Map> view_map, int* key_p)
 {
-  CommandPtr movement_decision = boost::make_shared<AutomaticMovementCommand>();
+  CommandPtr movement_decision = std::make_shared<AutomaticMovementCommand>();
   return movement_decision;
 }
 
 CommandPtr AutomaticMovementDecisionStrategy::get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p)
 {
-  CommandPtr movement_decision = boost::make_shared<AutomaticMovementCommand>();
+  CommandPtr movement_decision = std::make_shared<AutomaticMovementCommand>();
   return movement_decision;
 }
 

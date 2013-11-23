@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Game.hpp"
 #include "Log.hpp"
 #include "TileConfigurationFactory.hpp"
@@ -40,136 +39,136 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
       Log::instance().log("Attempting to generate an undefined tile type");
       break;
     case TILE_TYPE_FIELD:
-      result_tile = boost::make_shared<FieldTile>();
+      result_tile = std::make_shared<FieldTile>();
       break;
     case TILE_TYPE_SCRUB:
-      result_tile = boost::make_shared<ScrubTile>();
+      result_tile = std::make_shared<ScrubTile>();
       break;
     case TILE_TYPE_WHEAT:
-      result_tile = boost::make_shared<WheatTile>();
+      result_tile = std::make_shared<WheatTile>();
       break;
     case TILE_TYPE_CAIRN:
-      result_tile = boost::make_shared<CairnTile>();
+      result_tile = std::make_shared<CairnTile>();
       break;
     case TILE_TYPE_TREE:
-      result_tile = boost::make_shared<TreeTile>();
+      result_tile = std::make_shared<TreeTile>();
       break;      
     case TILE_TYPE_DESERT:
-      result_tile = boost::make_shared<DesertTile>();
+      result_tile = std::make_shared<DesertTile>();
       break;
     case TILE_TYPE_ROAD:
-      result_tile = boost::make_shared<RoadTile>();
+      result_tile = std::make_shared<RoadTile>();
       break;
     case TILE_TYPE_RIVER:
-      result_tile = boost::make_shared<RiverTile>();
+      result_tile = std::make_shared<RiverTile>();
       break;
     case TILE_TYPE_SEA:
-      result_tile = boost::make_shared<SeaTile>();
+      result_tile = std::make_shared<SeaTile>();
       break;
     case TILE_TYPE_SHOALS:
-      result_tile = boost::make_shared<ShoalsTile>();
+      result_tile = std::make_shared<ShoalsTile>();
       break;
     case TILE_TYPE_DUNGEON:
-      result_tile = boost::make_shared<DungeonTile>();
+      result_tile = std::make_shared<DungeonTile>();
       break;
     case TILE_TYPE_ROCK:
-      result_tile = boost::make_shared<RockTile>();
+      result_tile = std::make_shared<RockTile>();
       break;
     case TILE_TYPE_BARROW:
-      result_tile = boost::make_shared<BarrowTile>();
+      result_tile = std::make_shared<BarrowTile>();
       break;
     case TILE_TYPE_GRAVE:
-      result_tile = boost::make_shared<GraveTile>();
+      result_tile = std::make_shared<GraveTile>();
       break;
     case TILE_TYPE_MARSH:
-      result_tile = boost::make_shared<MarshTile>();
+      result_tile = std::make_shared<MarshTile>();
       break;
     case TILE_TYPE_REEDS:
-      result_tile = boost::make_shared<ReedsTile>();
+      result_tile = std::make_shared<ReedsTile>();
       break;
     case TILE_TYPE_HILLS:
-      result_tile = boost::make_shared<HillsTile>();
+      result_tile = std::make_shared<HillsTile>();
       break;
     case TILE_TYPE_MOUNTAINS:
-      result_tile = boost::make_shared<MountainsTile>();
+      result_tile = std::make_shared<MountainsTile>();
       break;
     case TILE_TYPE_BEACH:
-      result_tile = boost::make_shared<BeachTile>();
+      result_tile = std::make_shared<BeachTile>();
       break;
     case TILE_TYPE_BUSH:
-      result_tile = boost::make_shared<BushTile>();
+      result_tile = std::make_shared<BushTile>();
       break;
     case TILE_TYPE_WEEDS:
-      result_tile = boost::make_shared<WeedsTile>();
+      result_tile = std::make_shared<WeedsTile>();
       break;
     case TILE_TYPE_SPRINGS:
-      result_tile = boost::make_shared<SpringsTile>();
+      result_tile = std::make_shared<SpringsTile>();
       break;
     case TILE_TYPE_FOREST:
-      result_tile = boost::make_shared<ForestTile>();
+      result_tile = std::make_shared<ForestTile>();
       break;
     case TILE_TYPE_UP_STAIRCASE:
-      result_tile = boost::make_shared<UpStaircaseTile>();
+      result_tile = std::make_shared<UpStaircaseTile>();
       break;
     case TILE_TYPE_DOWN_STAIRCASE:
-      result_tile = boost::make_shared<DownStaircaseTile>();
+      result_tile = std::make_shared<DownStaircaseTile>();
       break;
     case TILE_TYPE_CAVERN:
-      result_tile = boost::make_shared<CavernTile>();
+      result_tile = std::make_shared<CavernTile>();
       break;
     case TILE_TYPE_VILLAGE:
-      result_tile = boost::make_shared<VillageTile>(subtile_type);
+      result_tile = std::make_shared<VillageTile>(subtile_type);
       break;
     case TILE_TYPE_DUNGEON_COMPLEX:
-      result_tile = boost::make_shared<DungeonComplexTile>();
+      result_tile = std::make_shared<DungeonComplexTile>();
       break;
     case TILE_TYPE_BARRACKS:
-      result_tile = boost::make_shared<BarracksTile>();
+      result_tile = std::make_shared<BarracksTile>();
       break;
     case TILE_TYPE_CASTLE:
-      result_tile = boost::make_shared<CastleTile>();
+      result_tile = std::make_shared<CastleTile>();
       break;
     case TILE_TYPE_CHURCH:
-      result_tile = boost::make_shared<ChurchTile>(subtile_type);
+      result_tile = std::make_shared<ChurchTile>(subtile_type);
       break;
     case TILE_TYPE_GRAVEYARD:
-      result_tile = boost::make_shared<GraveyardTile>();
+      result_tile = std::make_shared<GraveyardTile>();
       break;
     case TILE_TYPE_KEEP:
-      result_tile = boost::make_shared<KeepTile>();
+      result_tile = std::make_shared<KeepTile>();
       break;
     case TILE_TYPE_LIBRARY:
-      result_tile = boost::make_shared<LibraryTile>();
+      result_tile = std::make_shared<LibraryTile>();
       break;
     case TILE_TYPE_SITE_OF_DEATH:
-      result_tile = boost::make_shared<SiteOfDeathTile>(subtile_type);
+      result_tile = std::make_shared<SiteOfDeathTile>(subtile_type);
       break;
     case TILE_TYPE_TEMPLE:
-      result_tile = boost::make_shared<TempleTile>(subtile_type);
+      result_tile = std::make_shared<TempleTile>(subtile_type);
       break;
     case TILE_TYPE_DAIS:
-      result_tile = boost::make_shared<DaisTile>();
+      result_tile = std::make_shared<DaisTile>();
       break;
     case TILE_TYPE_PIER:
-      result_tile = boost::make_shared<PierTile>();
+      result_tile = std::make_shared<PierTile>();
       break;
     case TILE_TYPE_WILD_ORCHARD:
-      result_tile = boost::make_shared<WildOrchardTile>();
+      result_tile = std::make_shared<WildOrchardTile>();
       break;
     case TILE_TYPE_FRUIT_TREE:
-      result_tile = boost::make_shared<FruitTreeTile>();
+      result_tile = std::make_shared<FruitTreeTile>();
       break;
     case TILE_TYPE_EVERGREEN_TREE:
-      result_tile = boost::make_shared<EvergreenTreeTile>();
+      result_tile = std::make_shared<EvergreenTreeTile>();
       break;
     case TILE_TYPE_ROCKY_EARTH:
-      result_tile = boost::make_shared<RockyEarthTile>();
+      result_tile = std::make_shared<RockyEarthTile>();
       break;
     case TILE_TYPE_MINE:
-      result_tile = boost::make_shared<MineTile>();
+      result_tile = std::make_shared<MineTile>();
       break;
     case TILE_TYPE_WELL:
-      result_tile = boost::make_shared<WellTile>();
+      result_tile = std::make_shared<WellTile>();
       break;
     default:
       break;
@@ -229,14 +228,14 @@ WorshipSiteTilePtr TileGenerator::generate_worship_site_tile(const AlignmentRang
     // JCD FIXME: At some point, it'll be worth making the tile subtype
     // a variable.  But for now, I just want a pretty world.
     case ALIGNMENT_RANGE_EVIL:
-      worship_site = boost::make_shared<SiteOfDeathTile>(TILE_TYPE_FIELD);
+      worship_site = std::make_shared<SiteOfDeathTile>(TILE_TYPE_FIELD);
       break;
     case ALIGNMENT_RANGE_GOOD:
-      worship_site = boost::make_shared<ChurchTile>(TILE_TYPE_FIELD);
+      worship_site = std::make_shared<ChurchTile>(TILE_TYPE_FIELD);
       break;
     case ALIGNMENT_RANGE_NEUTRAL:
     default:
-      worship_site = boost::make_shared<TempleTile>(TILE_TYPE_FIELD);
+      worship_site = std::make_shared<TempleTile>(TILE_TYPE_FIELD);
       break;
   }
   
@@ -256,10 +255,10 @@ StaircaseTilePtr TileGenerator::generate_staircase(const StaircaseType& staircas
   switch(staircase_type)
   {
     case STAIRCASE_UP:
-      result_tile = boost::make_shared<UpStaircaseTile>();
+      result_tile = std::make_shared<UpStaircaseTile>();
       break;
     case STAIRCASE_DOWN:
-      result_tile = boost::make_shared<DownStaircaseTile>();
+      result_tile = std::make_shared<DownStaircaseTile>();
       break;
     default:
       break;

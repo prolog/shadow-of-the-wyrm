@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Calendar.hpp"
 #include "ISerializable.hpp"
 #include "Map.hpp"
@@ -30,4 +30,4 @@ class World : public ISerializable
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<World> WorldPtr;
+typedef std::shared_ptr<World> WorldPtr;

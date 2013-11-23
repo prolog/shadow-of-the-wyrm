@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CommandKeys.hpp"
 #include "CommandProcessor.hpp"
 #include "Commands.hpp"

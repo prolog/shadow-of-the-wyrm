@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CoordUtils.hpp"
 #include "Commands.hpp"
 #include "CreatureTileSafetyChecker.hpp"
@@ -83,7 +82,7 @@ CommandPtr NPCDecisionStrategy::get_decision_for_map(const std::string& this_cre
   // advance to the next turn.
   if (!command)
   {
-    command = boost::make_shared<SearchCommand>();
+    command = std::make_shared<SearchCommand>();
   }
   
   return command;
@@ -119,7 +118,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
           Direction direction = CoordUtils::get_direction(c_this, c_threat);
           
           // create movement command, return.
-          CommandPtr command = boost::make_shared<AttackCommand>(direction);
+          CommandPtr command = std::make_shared<AttackCommand>(direction);
           return command;
         }
         else
@@ -131,7 +130,7 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
 
             if (direction != DIRECTION_NULL)
             {
-              CommandPtr command = boost::make_shared<MovementCommand>(direction);
+              CommandPtr command = std::make_shared<MovementCommand>(direction);
               return command;
             }
           }
@@ -171,7 +170,7 @@ CommandPtr NPCDecisionStrategy::get_movement_decision(const string& this_creatur
   {
     Coordinate movement_coord = choice_coordinates.at(RNG::range(0, choice_coordinates.size()-1));
     Direction direction = CoordUtils::get_direction(this_creature_coords, movement_coord);
-    movement_command = boost::make_shared<MovementCommand>(direction);
+    movement_command = std::make_shared<MovementCommand>(direction);
   }
 
   return movement_command;

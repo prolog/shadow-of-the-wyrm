@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -19,7 +18,7 @@ MapPtr SimpleTempleGenerator::generate(const Dimensions& dim)
 // Generate the simple, open-air temple and its features
 MapPtr SimpleTempleGenerator::generate()
 {
-  MapPtr map = boost::make_shared<Map>(*base_map);
+  MapPtr map = std::make_shared<Map>(*base_map);
   
   generate_temple(map);
 

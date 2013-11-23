@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "AdditionalEffectMessage.hpp"
 #include "ItemTypes.hpp"
 
@@ -18,31 +18,31 @@ class Effect
   public:
     virtual ~Effect() {};
 
-    virtual bool effect(boost::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status);
+    virtual bool effect(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status);
 
-    virtual std::string get_effect_identification_message(boost::shared_ptr<Creature> creature) const = 0;
+    virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const = 0;
 
     // Create an exact copy
     virtual Effect* clone() = 0;
 
   protected:
-    virtual bool effect_blessed(boost::shared_ptr<Creature> creature, ActionManager * const am) = 0;
-    virtual bool effect_uncursed(boost::shared_ptr<Creature> creature, ActionManager * const am) = 0;
-    virtual bool effect_cursed(boost::shared_ptr<Creature> creature, ActionManager * const am) = 0;
+    virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) = 0;
+    virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) = 0;
+    virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) = 0;
     
     // Effect identification functions
-    virtual void identify_effect_as_necessary(boost::shared_ptr<Creature> creature, const bool is_identified) const;
-    virtual void identify_effect_if_player(boost::shared_ptr<Creature> creature) const;
-    virtual void inform_unidentified_if_player(boost::shared_ptr<Creature> creature) const;
+    virtual void identify_effect_as_necessary(std::shared_ptr<Creature> creature, const bool is_identified) const;
+    virtual void identify_effect_if_player(std::shared_ptr<Creature> creature) const;
+    virtual void inform_unidentified_if_player(std::shared_ptr<Creature> creature) const;
 
     // Add all the additional effect messages, if the creature is the
     // player.
-    virtual void add_additional_effect_messages(boost::shared_ptr<Creature> creature) const;
+    virtual void add_additional_effect_messages(std::shared_ptr<Creature> creature) const;
 
     // Additional messages that are displayed regardless of identification
     // success or failure.
     std::vector<AdditionalEffectMessagePtr> additional_effect_messages;
 };
 
-typedef boost::shared_ptr<Effect> EffectPtr;
+typedef std::shared_ptr<Effect> EffectPtr;
 

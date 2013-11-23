@@ -3,12 +3,12 @@
 #include "ClassIdentifiers.hpp"
 #include "Resistances.hpp"
 
-typedef std::map<ClassIdentifier, boost::shared_ptr<Resistance> > ResistancesSerializationMap;
+typedef std::map<ClassIdentifier, std::shared_ptr<Resistance> > ResistancesSerializationMap;
 
 class ResistanceFactory
 {
   public:
-    static boost::shared_ptr<Resistance> create_resistance(const ClassIdentifier clid);
+    static std::shared_ptr<Resistance> create_resistance(const ClassIdentifier clid);
 
   protected:
     ResistanceFactory();

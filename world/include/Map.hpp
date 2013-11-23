@@ -14,7 +14,7 @@
 class Creature;
 class Tile;
 
-typedef boost::unordered_map<std::string, boost::shared_ptr<Tile> > TilesContainer;
+typedef boost::unordered_map<std::string, std::shared_ptr<Tile> > TilesContainer;
 
 class Map : public ISerializable
 {
@@ -30,10 +30,10 @@ class Map : public ISerializable
 		// These functions work on a list built up from the map itself.
 		// This allows for quicker lookup.
 		bool has_creature(const std::string& creature_id);
-		boost::shared_ptr<Creature> get_creature(const std::string& creature_id);
-		std::map<std::string, boost::shared_ptr<Creature> > get_creatures();
-		std::map<std::string, boost::shared_ptr<Creature> >& get_creatures_ref();
-    void add_creature(boost::shared_ptr<Creature> creature);
+		std::shared_ptr<Creature> get_creature(const std::string& creature_id);
+		std::map<std::string, std::shared_ptr<Creature> > get_creatures();
+		std::map<std::string, std::shared_ptr<Creature> >& get_creatures_ref();
+    void add_creature(std::shared_ptr<Creature> creature);
 		void remove_creature(const std::string& creature_id);
 		// Other get_creature... fns here.
 		// Other remove_creature... fns here.
@@ -42,9 +42,9 @@ class Map : public ISerializable
     // the tiles.
     void set_tiles(const TilesContainer& new_tiles);
 
-		bool insert(int row, int col, boost::shared_ptr<Tile> tile);
-		boost::shared_ptr<Tile> at(int row, int col);
-		boost::shared_ptr<Tile> at(const Coordinate& c);
+		bool insert(int row, int col, std::shared_ptr<Tile> tile);
+		std::shared_ptr<Tile> at(int row, int col);
+		std::shared_ptr<Tile> at(const Coordinate& c);
 
 		void set_size(const Dimensions& new_dimensions);
 		Dimensions size() const;
@@ -68,7 +68,7 @@ class Map : public ISerializable
     void remove_location(const std::string& location);
     bool has_location(const std::string& location);
     Coordinate get_location(const std::string& location) const;
-    boost::shared_ptr<Tile> get_tile_at_location(const std::string& location);
+    std::shared_ptr<Tile> get_tile_at_location(const std::string& location);
     
     void set_map_exit(MapExitPtr new_map_exit);
     MapExitPtr get_map_exit() const;
@@ -98,7 +98,7 @@ class Map : public ISerializable
     
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
-    std::map<std::string, boost::shared_ptr<Creature> > creatures;
+    std::map<std::string, std::shared_ptr<Creature> > creatures;
 
 		TilesContainer tiles;
 		Dimensions dimensions;
@@ -115,4 +115,4 @@ class Map : public ISerializable
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Map> MapPtr;
+typedef std::shared_ptr<Map> MapPtr;

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "Conversion.hpp"

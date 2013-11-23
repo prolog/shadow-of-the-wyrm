@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ActionTextKeys.hpp"
 #include "CombatManager.hpp"
 #include "Creature.hpp"
@@ -14,7 +13,7 @@ using namespace std;
 
 IncorporealStatusEffect::IncorporealStatusEffect()
 {
-  status_calc = boost::make_shared<IncorporealCalculator>();
+  status_calc = std::make_shared<IncorporealCalculator>();
 }
 
 void IncorporealStatusEffect::after_undo(CreaturePtr creature) const

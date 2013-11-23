@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <utility>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Colours.hpp"
 #include "Creature.hpp"
 
@@ -18,5 +18,5 @@ class IStatusAilmentTranslator
     virtual Colour get_status_ailment_colour(const CreaturePtr& creature) const = 0;
 };
 
-typedef boost::shared_ptr<IStatusAilmentTranslator> IStatusAilmentTranslatorPtr;
+typedef std::shared_ptr<IStatusAilmentTranslator> IStatusAilmentTranslatorPtr;
 

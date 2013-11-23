@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CreatureTimeObserver.hpp"
 #include "SeasonsTimeObserver.hpp"
 #include "TimeObserverFactory.hpp"
@@ -39,8 +38,8 @@ void TimeObserverFactory::initialize_time_observer_map()
 {
   time_observer_map.clear();
 
-  ITimeObserverPtr creature = boost::make_shared<CreatureTimeObserver>();
-  ITimeObserverPtr seasons  = boost::make_shared<SeasonsTimeObserver>();
+  ITimeObserverPtr creature = std::make_shared<CreatureTimeObserver>();
+  ITimeObserverPtr seasons  = std::make_shared<SeasonsTimeObserver>();
 
   time_observer_map.insert(make_pair(CLASS_ID_CREATURE_TIME_OBSERVER, creature));
   time_observer_map.insert(make_pair(CLASS_ID_SEASONS_TIME_OBSERVER, seasons));

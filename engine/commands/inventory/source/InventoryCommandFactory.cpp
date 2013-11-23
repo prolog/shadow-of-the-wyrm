@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "InventoryCommands.hpp"
 #include "InventoryCommandFactory.hpp"
 #include "InventoryCommandKeys.hpp"
@@ -17,30 +16,30 @@ CommandPtr InventoryCommandFactory::create(const int key, const std::string& com
 
   if (command_name == InventoryCommandKeys::EXIT_INVENTORY)
   {
-    inventory_command = boost::make_shared<ExitInventoryCommand>();
+    inventory_command = std::make_shared<ExitInventoryCommand>();
   }
   else if (command_name == InventoryCommandKeys::CLEAR_FILTER)
   {
-    inventory_command = boost::make_shared<InventoryClearFilterCommand>();
+    inventory_command = std::make_shared<InventoryClearFilterCommand>();
   }
   else if (command_name == InventoryCommandKeys::FILTER_VIEW)
   {
-    inventory_command = boost::make_shared<InventoryFilterViewCommand>();
+    inventory_command = std::make_shared<InventoryFilterViewCommand>();
   }
   else if (command_name == InventoryCommandKeys::NEXT_PAGE)
   {
-    inventory_command = boost::make_shared<InventoryNextPageCommand>();
+    inventory_command = std::make_shared<InventoryNextPageCommand>();
   }
   else if (command_name == InventoryCommandKeys::PREVIOUS_PAGE)
   {
-    inventory_command = boost::make_shared<InventoryPreviousPageCommand>();
+    inventory_command = std::make_shared<InventoryPreviousPageCommand>();
   }
   else
   {
     // If the key is in the [a-y][A-Y] range, create a selection command
     if ((key >= 'a' && key <= 'z') || (key >= 'A' && key <= 'Z'))
     {
-      inventory_command = boost::make_shared<ItemSelectionCommand>(key);      
+      inventory_command = std::make_shared<ItemSelectionCommand>(key);      
     }
   }
   

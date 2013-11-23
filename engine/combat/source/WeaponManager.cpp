@@ -1,11 +1,10 @@
-#include <boost/make_shared.hpp>
 #include "Ammunition.hpp"
 #include "CombatConstants.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 #include "WeaponManager.hpp"
 
 using namespace std;
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 // Get the weapon for the given attack type.  The returned pointer
 // WILL BE NULL if there is nothing equipped in the appropriate slot.
@@ -63,8 +62,8 @@ vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const Attack
     case ATTACK_TYPE_RANGED:
     {
       Equipment& eq = creature->get_equipment();
-      WeaponPtr ranged_weapon = boost::dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
-      WeaponPtr ammunition = boost::dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_AMMUNITION));
+      WeaponPtr ranged_weapon = std::dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
+      WeaponPtr ammunition = std::dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_AMMUNITION));
 
       if (ranged_weapon)
       {
@@ -148,7 +147,7 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
     else
     {
       // Set the additional damage based on the ammunition
-      DamagePtr additional_damage = boost::make_shared<Damage>(ammunition_damage);
+      DamagePtr additional_damage = std::make_shared<Damage>(ammunition_damage);
       d.set_additional_damage(additional_damage);
     }
   }

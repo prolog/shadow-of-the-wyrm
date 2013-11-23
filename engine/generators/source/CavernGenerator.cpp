@@ -1,5 +1,4 @@
 #include <set>
-#include <boost/make_shared.hpp>
 #include "CavernGenerator.hpp"
 #include "CellularAutomataGenerator.hpp"
 #include "MapExitUtils.hpp"
@@ -18,7 +17,7 @@ CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 // JCD FIXME refactor as necessary
 MapPtr CavernGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = boost::make_shared<Map>(dimensions);
+  MapPtr result_map = std::make_shared<Map>(dimensions);
 
   fill(result_map, TILE_TYPE_ROCK);
 

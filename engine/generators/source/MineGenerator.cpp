@@ -20,7 +20,7 @@ MineGenerator::MineGenerator(const std::string& map_exit_id)
 // Earth Cave in Final Fantasy.
 MapPtr MineGenerator::generate(const Dimensions& dim)
 {
-  MapPtr result_map = boost::make_shared<Map>(dim);
+  MapPtr result_map = std::make_shared<Map>(dim);
 
   fill(result_map, TILE_TYPE_ROCK);
 
@@ -141,7 +141,7 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
   int xpos = orig_xpos;
   int end_y = rows - RNG::range(1,2);
   int up_staircase_y = RNG::range(start_y+2, end_y-2);
-  main_hallway_centre = boost::make_shared<Room>(-1 /* id doesn't matter */, start_y, end_y, orig_xpos, orig_xpos);
+  main_hallway_centre = std::make_shared<Room>(-1 /* id doesn't matter */, start_y, end_y, orig_xpos, orig_xpos);
 
   bool stairway_placed = false;
   int incr_value = 1;

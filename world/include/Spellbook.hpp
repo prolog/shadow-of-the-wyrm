@@ -30,4 +30,4 @@ class Spellbook : public Readable
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Spellbook> SpellbookPtr;
+typedef std::shared_ptr<Spellbook> SpellbookPtr;

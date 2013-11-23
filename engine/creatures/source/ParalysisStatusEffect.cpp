@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ParalysisCalculator.hpp"
 #include "ParalysisStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -8,7 +7,7 @@ using namespace std;
 
 ParalysisStatusEffect::ParalysisStatusEffect()
 {
-  status_calc = boost::make_shared<ParalysisCalculator>();
+  status_calc = std::make_shared<ParalysisCalculator>();
 }
 
 string ParalysisStatusEffect::get_player_application_message() const

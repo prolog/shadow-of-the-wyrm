@@ -13,5 +13,5 @@ class Currency : public Item
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Currency> CurrencyPtr;
+typedef std::shared_ptr<Currency> CurrencyPtr;
 

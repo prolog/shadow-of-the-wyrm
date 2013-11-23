@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <map>
 #include <string>
 #include <vector>
@@ -151,5 +151,5 @@ class Race
     std::string level_script;
 };
 
-typedef boost::shared_ptr<Race> RacePtr;
+typedef std::shared_ptr<Race> RacePtr;
 typedef std::map<std::string, RacePtr> RaceMap;

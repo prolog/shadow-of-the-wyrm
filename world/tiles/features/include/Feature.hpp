@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "common.hpp"
 #include "Lock.hpp"
 #include "Trap.hpp"
@@ -75,4 +75,4 @@ class Feature : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Feature> FeaturePtr;
+typedef std::shared_ptr<Feature> FeaturePtr;

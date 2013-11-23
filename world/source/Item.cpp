@@ -1,6 +1,5 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
-#include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "Item.hpp"
 #include "NullEffect.hpp"
@@ -265,7 +264,7 @@ ItemIdentificationType Item::get_identification_type() const
   return identification_type;
 }
 
-bool Item::matches(boost::shared_ptr<Item> i)
+bool Item::matches(std::shared_ptr<Item> i)
 {
   bool match = (i != nullptr);
 
@@ -292,7 +291,7 @@ bool Item::matches(boost::shared_ptr<Item> i)
 
 // This function always returns true.  Any type-specific behaviour must
 // be implemented in the various Item subclasses.
-bool Item::additional_item_attributes_match(boost::shared_ptr<Item> i)
+bool Item::additional_item_attributes_match(std::shared_ptr<Item> i)
 {
   return true;
 }

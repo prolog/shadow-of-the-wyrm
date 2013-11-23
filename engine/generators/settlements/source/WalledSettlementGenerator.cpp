@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "WalledSettlementGenerator.hpp"
 #include "FeatureGenerator.hpp"
 #include "RNG.hpp"
@@ -33,7 +32,7 @@ MapPtr WalledSettlementGenerator::generate(const Dimensions& dim)
 
 MapPtr WalledSettlementGenerator::generate()
 {
-  MapPtr map = boost::make_shared<Map>(*base_map);
+  MapPtr map = std::make_shared<Map>(*base_map);
 
   generate_walled_settlement(map);
 

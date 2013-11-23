@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "AllTiles.hpp"
 #include "MarshGenerator.hpp"
 #include "TileGenerator.hpp"
@@ -13,7 +12,7 @@ MarshGenerator::MarshGenerator(const std::string& new_map_exit_id)
 
 MapPtr MarshGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = boost::make_shared<Map>(dimensions);
+  MapPtr result_map = std::make_shared<Map>(dimensions);
 
   fill(result_map, TILE_TYPE_MARSH);
   result_map = add_random_trees_bushes_weeds_and_reeds(result_map);
@@ -49,7 +48,7 @@ TilePtr MarshGenerator::generate_tile(MapPtr current_map, const int row, const i
 
 MapPtr MarshGenerator::add_random_trees_bushes_weeds_and_reeds(MapPtr map)
 {
-  MapPtr result_map = boost::make_shared<Map>(*map);
+  MapPtr result_map = std::make_shared<Map>(*map);
   Dimensions d = result_map->size();
   int rows = d.get_y();
   int cols = d.get_x();

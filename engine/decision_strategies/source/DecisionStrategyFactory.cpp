@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CursesKeyboardController.hpp"
 #include "DecisionStrategyFactory.hpp"
 #include "DecisionStrategyTypes.hpp"
@@ -44,25 +43,25 @@ DecisionStrategyPtr DecisionStrategyFactory::create_decision_strategy(const stri
 {
   DecisionStrategyPtr strategy;
   ControllerPtr controller, curses_controller;
-  controller = boost::make_shared<NullKeyboardController>();
-  curses_controller = boost::make_shared<CursesKeyboardController>();
+  controller = std::make_shared<NullKeyboardController>();
+  curses_controller = std::make_shared<CursesKeyboardController>();
   
   if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_IMMOBILE)
   {
-    strategy = boost::make_shared<ImmobileDecisionStrategy>(controller);
+    strategy = std::make_shared<ImmobileDecisionStrategy>(controller);
   }
   else if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_MOBILE)
   {
-    strategy = boost::make_shared<MobileDecisionStrategy>(controller);
+    strategy = std::make_shared<MobileDecisionStrategy>(controller);
   }
   else if (decision_strategy_id == DecisionStrategyID::DECISION_STRATEGY_PLAYER)
   {
-    strategy = boost::make_shared<PlayerDecisionStrategy>(curses_controller);
+    strategy = std::make_shared<PlayerDecisionStrategy>(curses_controller);
   }
   // ??? == PLAYER?  Could be interesting...
   else // Assume == DecisionStrategyID::DECISION_STRATEGY_DEFAULT
   {
-    strategy = boost::make_shared<ImmobileDecisionStrategy>(controller);
+    strategy = std::make_shared<ImmobileDecisionStrategy>(controller);
   }
   
   return strategy;

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "AdditionalEffectMessages.hpp"
 #include "Creature.hpp"
 #include "EtherEffect.hpp"
@@ -7,11 +6,11 @@ using std::string;
 
 EtherEffect::EtherEffect()
 {
-  AdditionalEffectMessagePtr sweet_taste = boost::make_shared<SweetTasteEffectMessage>();
+  AdditionalEffectMessagePtr sweet_taste = std::make_shared<SweetTasteEffectMessage>();
   additional_effect_messages.push_back(sweet_taste);
 }
 
-string EtherEffect::get_effect_identification_message(boost::shared_ptr<Creature> creature) const
+string EtherEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
 {
   bool is_player = (creature && creature->get_is_player());
   string creature_desc_sid = (creature ? creature->get_description_sid() : "");

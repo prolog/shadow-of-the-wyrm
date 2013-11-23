@@ -39,7 +39,7 @@ TEST(SL_World_Resistances, saveload)
 {
   for (int i = CLASS_ID_SLASH_RESISTANCE; i <= CLASS_ID_LIGHTNING_RESISTANCE; i++)
   {
-    boost::shared_ptr<Resistance> res1, res2;
+    std::shared_ptr<Resistance> res1, res2;
     res1 = ResistanceFactory::create_resistance(static_cast<ClassIdentifier>(i));
     res2 = ResistanceFactory::create_resistance(static_cast<ClassIdentifier>(i));
 

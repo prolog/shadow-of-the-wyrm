@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "SpellboundCalculator.hpp"
 #include "SpellboundStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -8,7 +7,7 @@ using namespace std;
 
 SpellboundStatusEffect::SpellboundStatusEffect()
 {
-  status_calc = boost::make_shared<SpellboundCalculator>();
+  status_calc = std::make_shared<SpellboundCalculator>();
 }
 
 string SpellboundStatusEffect::get_player_application_message() const

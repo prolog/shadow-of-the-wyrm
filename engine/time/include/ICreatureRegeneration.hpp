@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "common.hpp"
 #include "Creature.hpp"
 
@@ -11,4 +11,4 @@ class ICreatureRegeneration
     virtual void tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed) = 0;
 };
 
-typedef boost::shared_ptr<ICreatureRegeneration> ICreatureRegenerationPtr;
+typedef std::shared_ptr<ICreatureRegeneration> ICreatureRegenerationPtr;

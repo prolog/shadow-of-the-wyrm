@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Skills.hpp"
 #include "StringTable.hpp"
 #include "tiles.hpp"
@@ -16,7 +15,7 @@ RaceMap XMLRacesReader::get_races(const XMLNode& races_node)
 
   // We always need the default race in the mapm regardless of whether there's
   // any XML!
-  RacePtr default_race = boost::make_shared<Race>();
+  RacePtr default_race = std::make_shared<Race>();
   races.insert(make_pair(default_race->get_race_id(), default_race));
 
   if (!races_node.is_null())
@@ -50,7 +49,7 @@ RacePtr XMLRacesReader::parse_race(const XMLNode& race_node)
     XMLNode resistances_node        = XMLUtils::get_next_element_by_local_name(race_node, "Resistances");
     XMLNode skills_node             = XMLUtils::get_next_element_by_local_name(race_node, "Skills");
 
-    race = boost::make_shared<Race>();
+    race = std::make_shared<Race>();
 
     string id = XMLUtils::get_attribute_value(race_node, "id");
     race->set_race_id(id);

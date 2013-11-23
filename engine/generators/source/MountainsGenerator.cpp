@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "MountainsGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -12,7 +11,7 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
 {
   TileGenerator tg;
 
-  MapPtr result_map = boost::make_shared<Map>(dimensions);
+  MapPtr result_map = std::make_shared<Map>(dimensions);
   Dimensions dim = result_map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();

@@ -4,14 +4,14 @@ CreaturePtr create_creature_with_weapon_and_15_str();
 
 CreaturePtr create_creature_with_weapon_and_15_str()
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_strength(15);
 
   ItemPtr weapon_item = ItemPtr(new MeleeWeapon());
 
   Damage damage(3,4,2,DAMAGE_TYPE_SLASH, false);
 
-  WeaponPtr weapon = boost::dynamic_pointer_cast<Weapon>(weapon_item);
+  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(weapon_item);
   weapon->set_damage(damage);
 
   creature->get_equipment().set_item(weapon_item, EQUIPMENT_WORN_WIELDED);
@@ -26,7 +26,7 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_object
 
   // The base damage object should just be the weapon's damage.
   Damage base_damage = pdc.calculate_base_damage_object(creature);
-  WeaponPtr weapon = boost::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_WIELDED));
+  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_WIELDED));
   Damage expected_damage = weapon->get_damage();
 
   EXPECT_EQ(expected_damage, base_damage);
@@ -49,7 +49,7 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, get_statistic_based_damage_m
 {
   PhysicalDamageCalculator pdc(ATTACK_TYPE_MELEE_PRIMARY);
 
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_strength(3);
 
   EXPECT_EQ(0, pdc.get_statistic_based_damage_modifier(creature));

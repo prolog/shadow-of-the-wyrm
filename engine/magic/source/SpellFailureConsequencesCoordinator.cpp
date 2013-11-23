@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "MarginalSpellFailureConsequences.hpp"
 #include "RNG.hpp"
 #include "SevereSpellFailureConsequences.hpp"
@@ -38,15 +37,15 @@ bool SpellFailureConsequencesCoordinator::coordinate_failure_consequences(Creatu
 // much more severe set of consequences.
 SpellFailureConsequencesPtr SpellFailureConsequencesCoordinator::create_spell_failure_consequences(const int spell_failure_difference)
 {
-  SpellFailureConsequencesPtr consequences = boost::make_shared<MarginalSpellFailureConsequences>();
+  SpellFailureConsequencesPtr consequences = std::make_shared<MarginalSpellFailureConsequences>();
 
   if (spell_failure_difference < SpellConstants::SPELL_FAILURE_VERY_BAD)
   {
-    consequences = boost::make_shared<SevereSpellFailureConsequences>();
+    consequences = std::make_shared<SevereSpellFailureConsequences>();
   }
   else if (spell_failure_difference < SpellConstants::SPELL_FAILURE_BAD)
   {
-    consequences = boost::make_shared<LesserSpellFailureConsequences>();
+    consequences = std::make_shared<LesserSpellFailureConsequences>();
   }
 
   return consequences;

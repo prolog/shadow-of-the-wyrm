@@ -7,7 +7,7 @@
 #include "WeaponManager.hpp"
 
 using std::string;
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 WeaponInfoAction::WeaponInfoAction()
 {

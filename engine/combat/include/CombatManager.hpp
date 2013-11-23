@@ -1,5 +1,4 @@
 #pragma once
-#include <boost/make_shared.hpp>
 #include "ActionCost.hpp"
 #include "AttackTypes.hpp"
 #include "Creature.hpp"

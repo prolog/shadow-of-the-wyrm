@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ReadStrategyFactory.hpp"
 #include "NullReadStrategy.hpp"
 #include "ScrollReadStrategy.hpp"
@@ -18,17 +17,17 @@ ReadStrategyPtr ReadStrategyFactory::create_read_strategy(const ItemType it, con
 
   if (!text_sid.empty())
   {
-    read_strategy = boost::make_shared<TextReadStrategy>();
+    read_strategy = std::make_shared<TextReadStrategy>();
   }
   else
   {
     switch(it)
     {
       case ITEM_TYPE_SCROLL:
-        read_strategy = boost::make_shared<ScrollReadStrategy>();
+        read_strategy = std::make_shared<ScrollReadStrategy>();
         break;
       case ITEM_TYPE_SPELLBOOK:
-        read_strategy = boost::make_shared<SpellbookReadStrategy>();
+        read_strategy = std::make_shared<SpellbookReadStrategy>();
         break;
       case ITEM_TYPE_NULL:
       case ITEM_TYPE_MISC:
@@ -46,7 +45,7 @@ ReadStrategyPtr ReadStrategyFactory::create_read_strategy(const ItemType it, con
       case ITEM_TYPE_CURRENCY:
       case ITEM_TYPE_TOOL:
       case ITEM_TYPE_LAST:
-        read_strategy = boost::make_shared<NullReadStrategy>();
+        read_strategy = std::make_shared<NullReadStrategy>();
         break;
     }
   }

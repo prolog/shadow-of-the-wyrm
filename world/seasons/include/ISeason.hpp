@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <set>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "CalendarTypes.hpp"
 #include "ISerializable.hpp"
 
@@ -32,4 +32,4 @@ class ISeason : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
-typedef boost::shared_ptr<ISeason> ISeasonPtr;
+typedef std::shared_ptr<ISeason> ISeasonPtr;

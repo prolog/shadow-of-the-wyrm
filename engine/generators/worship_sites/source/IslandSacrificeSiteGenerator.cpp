@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "IslandSacrificeSiteGenerator.hpp"
@@ -20,7 +19,7 @@ MapPtr IslandSacrificeSiteGenerator::generate(const Dimensions& dim)
 
 MapPtr IslandSacrificeSiteGenerator::generate()
 {
-  MapPtr map = boost::make_shared<Map>(*base_map);
+  MapPtr map = std::make_shared<Map>(*base_map);
 
   generate_site(map);
 

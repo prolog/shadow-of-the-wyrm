@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/make_shared.hpp>
 #include "CombatConstants.hpp"
 #include "CreatureGenerationValues.hpp"
 #include "CreatureProperties.hpp"
@@ -49,7 +48,7 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
 
   if (!creature_node.is_null())
   {
-    creature = boost::make_shared<Creature>();
+    creature = std::make_shared<Creature>();
     creature_data.first = creature;
       
     // The creature ID for the templates gives a unique value - for each individual

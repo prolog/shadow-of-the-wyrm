@@ -13,4 +13,4 @@ class Armour : public Wearable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Armour> ArmourPtr;
+typedef std::shared_ptr<Armour> ArmourPtr;

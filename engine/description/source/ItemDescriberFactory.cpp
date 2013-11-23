@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ItemDescriberFactory.hpp"
 #include "ItemDescriber.hpp"
 #include "BlindItemDescriber.hpp"
@@ -15,13 +14,13 @@ IDescriberPtr ItemDescriberFactory::create_item_describer(const bool player_blin
   {
     if (!(item && item->get_glowing()))
     {
-      describer = boost::make_shared<BlindItemDescriber>();
+      describer = std::make_shared<BlindItemDescriber>();
     }
   }
   
   if (!describer)
   {
-    describer = boost::make_shared<ItemDescriber>(item);
+    describer = std::make_shared<ItemDescriber>(item);
   }
 
   return describer;

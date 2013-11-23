@@ -12,7 +12,7 @@
 #include "SpellcastingProcessor.hpp"
 
 using namespace std;
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 bool QuaffAction::operator==(const QuaffAction& qm) const
 {

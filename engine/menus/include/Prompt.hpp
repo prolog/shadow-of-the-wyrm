@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 enum PromptLocation
 {
@@ -75,4 +75,4 @@ class TextPrompt : public Prompt
     void initialize();
 };
 
-typedef boost::shared_ptr<Prompt> PromptPtr;
+typedef std::shared_ptr<Prompt> PromptPtr;

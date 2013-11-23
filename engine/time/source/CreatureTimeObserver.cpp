@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CreatureAPRegeneration.hpp"
 #include "CreatureHPRegeneration.hpp"
 #include "CreatureHungerTimer.hpp"
@@ -26,21 +25,21 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   regen.clear();
 
   // Regenerate the creature's HP
-  ICreatureRegenerationPtr hp_regen     = boost::make_shared<CreatureHPRegeneration>();
+  ICreatureRegenerationPtr hp_regen     = std::make_shared<CreatureHPRegeneration>();
   // Regenerate the creature's AP
-  ICreatureRegenerationPtr ap_regen     = boost::make_shared<CreatureAPRegeneration>();
+  ICreatureRegenerationPtr ap_regen     = std::make_shared<CreatureAPRegeneration>();
   // Regenerate or degenerate the creature's piety, depending on the value.
-  ICreatureRegenerationPtr piety_regen  = boost::make_shared<CreaturePietyRegeneration>();
+  ICreatureRegenerationPtr piety_regen  = std::make_shared<CreaturePietyRegeneration>();
   // Update the minute values for the current movement accumulations.
-  ICreatureRegenerationPtr move_accum   = boost::make_shared<MovementAccumulator>();
+  ICreatureRegenerationPtr move_accum   = std::make_shared<MovementAccumulator>();
   // Do things based on current movement accumulations - drown, fall from mountains, etc.
-  ICreatureRegenerationPtr move_checkr  = boost::make_shared<MovementAccumulationChecker>();
+  ICreatureRegenerationPtr move_checkr  = std::make_shared<MovementAccumulationChecker>();
   // Every day, increment the creature's skills if they have been used enough.
-  ICreatureRegenerationPtr skill_checkr = boost::make_shared<CreatureSkillIncrementer>(1440);
+  ICreatureRegenerationPtr skill_checkr = std::make_shared<CreatureSkillIncrementer>(1440);
   // Every minute, reduce the player's hunger clock...
-  ICreatureRegenerationPtr hungr_checkr = boost::make_shared<CreatureHungerTimer>();
+  ICreatureRegenerationPtr hungr_checkr = std::make_shared<CreatureHungerTimer>();
   // Every minute, call the tick() function for each status the creature has.
-  ICreatureRegenerationPtr status_chekr = boost::make_shared<CreatureStatuses>();
+  ICreatureRegenerationPtr status_chekr = std::make_shared<CreatureStatuses>();
   
   regen.push_back(hp_regen    );
   regen.push_back(ap_regen    );
