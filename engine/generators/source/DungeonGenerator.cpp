@@ -1,6 +1,5 @@
 #include <algorithm>
 #include <cmath>
-#include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "DungeonGenerator.hpp"
@@ -46,7 +45,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
   // Try until we get a reasonable map
   while (!success)
   {
-    MapPtr result_map = boost::make_shared<Map>(dimensions);
+    MapPtr result_map = std::make_shared<Map>(dimensions);
 
     fill(result_map, TILE_TYPE_ROCK);
     success = generate_dungeon(result_map);
@@ -93,7 +92,7 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
       {
         for (Room& croom : connected_rooms)
         {
-          boost::shared_ptr<Room> roomp = boost::shared_ptr<Room>(new Room(new_room));
+          std::shared_ptr<Room> roomp = std::shared_ptr<Room>(new Room(new_room));
           croom.centre_room = roomp;
         }
 

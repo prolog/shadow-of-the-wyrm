@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "ISerializable.hpp"
 #include "SkillTypes.hpp"
 #include "StringTable.hpp"
@@ -922,7 +922,7 @@ class PrimordialMagicSkill : public MagicSkill
 
 // Classes aggregating skills
 
-typedef boost::shared_ptr<Skill> SkillPtr;
+typedef std::shared_ptr<Skill> SkillPtr;
 typedef std::map<SkillType, SkillPtr> SkillMap;
 typedef std::map<SkillType, SkillPtr>* SkillMapPtr;
 

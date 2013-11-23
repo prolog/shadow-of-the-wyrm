@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 #include <map>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "ISerializable.hpp"
 
 typedef std::map<std::string, std::string> KeyboardCommandMappingMap;
@@ -46,4 +46,4 @@ class SL_Engine_Commands_KeyboardCommandMapFixture : public ::testing::Test
 };
 #endif
 
-typedef boost::shared_ptr<KeyboardCommandMap> KeyboardCommandMapPtr;
+typedef std::shared_ptr<KeyboardCommandMap> KeyboardCommandMapPtr;

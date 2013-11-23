@@ -1,6 +1,5 @@
 #include <string>
 #include <sstream>
-#include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "Damage.hpp"
 #include "RNG.hpp"
@@ -25,7 +24,7 @@ Damage::Damage(const Damage& d)
   
   if (addl_damage)
   {
-    additional_damage = boost::shared_ptr<Damage>(new Damage(*addl_damage));
+    additional_damage = std::shared_ptr<Damage>(new Damage(*addl_damage));
   }
 }
 
@@ -43,7 +42,7 @@ Damage& Damage::operator=(const Damage& d)
     
     if (addl_damage)
     {
-      additional_damage = boost::shared_ptr<Damage>(new Damage(*d.get_additional_damage()));
+      additional_damage = std::shared_ptr<Damage>(new Damage(*d.get_additional_damage()));
     }
   }
   
@@ -186,7 +185,7 @@ bool Damage::deserialize(istream& stream)
 
   if (ci != CLASS_ID_NULL)
   {
-    additional_damage = boost::make_shared<Damage>();
+    additional_damage = std::make_shared<Damage>();
     additional_damage->deserialize(stream);
   }
 

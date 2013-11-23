@@ -11,7 +11,7 @@ using namespace std;
 
 StatusEffect::StatusEffect()
 {
-  status_calc = boost::make_shared<DefaultStatusEffectCalculator>();
+  status_calc = std::make_shared<DefaultStatusEffectCalculator>();
 }
 
 StatusEffect::~StatusEffect()

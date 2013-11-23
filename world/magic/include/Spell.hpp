@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Colours.hpp"
 #include "common.hpp"
 #include "Damage.hpp"

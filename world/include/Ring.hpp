@@ -13,4 +13,4 @@ class Ring : public Wearable
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Ring> RingPtr;
+typedef std::shared_ptr<Ring> RingPtr;

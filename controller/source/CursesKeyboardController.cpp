@@ -20,7 +20,7 @@ int CursesKeyboardController::get_char_as_int()
   // Hackery :(
   // But a curses display must always be paired with a curses
   // kb controller...
-  boost::shared_ptr<CursesDisplay> cdisplay = boost::dynamic_pointer_cast<CursesDisplay>(display);
+  std::shared_ptr<CursesDisplay> cdisplay = std::dynamic_pointer_cast<CursesDisplay>(display);
 
   int character;
   WINDOW* cur_win;

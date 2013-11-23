@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "AnimationInstruction.hpp"
 #include "common.hpp"
 #include "Colours.hpp"
@@ -14,5 +14,5 @@ class AnimationFactory
     virtual AnimationInstructionPtr create_pause_instruction() const;
 };
 
-typedef boost::shared_ptr<AnimationFactory> AnimationFactoryPtr;
+typedef std::shared_ptr<AnimationFactory> AnimationFactoryPtr;
 

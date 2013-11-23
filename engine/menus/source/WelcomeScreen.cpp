@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "global_prototypes.hpp"
 #include "Metadata.hpp"
 #include "OptionsComponent.hpp"
@@ -19,11 +18,11 @@ void WelcomeScreen::initialize()
 {
   Metadata meta;
 
-  TextComponentPtr game_version_synopsis = boost::make_shared<TextComponent>(meta.get_game_version_synopsis());
-  TextComponentPtr copyright_info = boost::make_shared<TextComponent>(StringTable::get(TextKeys::COPYRIGHT_NOTICE));
-  TextComponentPtr wanderer_excerpt = boost::make_shared<TextComponent>(get_title_poem());
+  TextComponentPtr game_version_synopsis = std::make_shared<TextComponent>(meta.get_game_version_synopsis());
+  TextComponentPtr copyright_info = std::make_shared<TextComponent>(StringTable::get(TextKeys::COPYRIGHT_NOTICE));
+  TextComponentPtr wanderer_excerpt = std::make_shared<TextComponent>(get_title_poem());
 
-  OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
+  OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   int option_id = 0;
 

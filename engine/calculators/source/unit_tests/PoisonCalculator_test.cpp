@@ -2,7 +2,7 @@
 
 TEST(SL_World_Calculator_PoisonCalculator, calc_pct_chance_poison)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(10);
   creature->get_resistances().set_resistance_value(DAMAGE_TYPE_POISON, 1.0);
 
@@ -21,7 +21,7 @@ TEST(SL_World_Calculator_PoisonCalculator, calc_pct_chance_poison)
 
 TEST(SL_World_Calculator_PoisonCalculator, calc_damage_per_tick)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(4);
 
   PoisonCalculator pc;

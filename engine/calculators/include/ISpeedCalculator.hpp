@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "ActionCost.hpp"
 #include "Creature.hpp"
 
@@ -9,5 +9,5 @@ class ISpeedCalculator
     virtual ActionCostValue calculate(CreaturePtr creature) = 0;
 };
 
-typedef boost::shared_ptr<ISpeedCalculator> ISpeedCalculatorPtr;
+typedef std::shared_ptr<ISpeedCalculator> ISpeedCalculatorPtr;
 

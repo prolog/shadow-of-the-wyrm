@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Command.hpp"
 #include "ISerializable.hpp"
 
@@ -35,4 +35,4 @@ class CommandFactory : public ISerializable
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<CommandFactory> CommandFactoryPtr;
+typedef std::shared_ptr<CommandFactory> CommandFactoryPtr;

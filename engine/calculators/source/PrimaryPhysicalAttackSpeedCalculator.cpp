@@ -2,7 +2,7 @@
 #include "PrimaryPhysicalAttackSpeedCalculator.hpp"
 #include "Weapon.hpp"
 
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 ActionCostValue PrimaryPhysicalAttackSpeedCalculator::calculate_weapon_speed(CreaturePtr creature)
 {

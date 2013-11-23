@@ -15,4 +15,4 @@ class Scroll : public Readable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Scroll> ScrollPtr;
+typedef std::shared_ptr<Scroll> ScrollPtr;

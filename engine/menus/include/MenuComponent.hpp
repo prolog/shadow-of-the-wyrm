@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <string>
 #include "Colours.hpp"
 
@@ -21,4 +21,4 @@ class MenuComponent
     Colour colour;
 };
 
-typedef boost::shared_ptr<MenuComponent> MenuComponentPtr;
+typedef std::shared_ptr<MenuComponent> MenuComponentPtr;

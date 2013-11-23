@@ -2,7 +2,7 @@
 
 TEST(SL_World_Calculator_BlindedCalculator, calc_pct_chance_blinded)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(3);
   
   creature->get_resistances().set_resistance_value(DAMAGE_TYPE_HEAT, 1.0);

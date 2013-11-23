@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CathedralGenerator.hpp"
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
@@ -20,7 +19,7 @@ MapPtr CathedralGenerator::generate(const Dimensions& dim)
 // Generate the cathedral
 MapPtr CathedralGenerator::generate()
 {
-  MapPtr map = boost::make_shared<Map>(*base_map);
+  MapPtr map = std::make_shared<Map>(*base_map);
 
   generate_cathedral(map);
 

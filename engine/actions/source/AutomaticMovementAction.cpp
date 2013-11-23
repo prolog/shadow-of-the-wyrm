@@ -18,8 +18,8 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
   IMessageManager& manager = MessageManagerFactory::instance();
 
   // Make the creature select a direction.
-  CommandFactoryPtr command_factory    = boost::make_shared<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
+  CommandFactoryPtr command_factory    = std::make_shared<CommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   // Initial check: are we on the world map?
   Game& game = Game::instance();
@@ -52,7 +52,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
     if (am.get_engaged())
     {
-      base_command = boost::make_shared<MovementCommand>(am.get_direction());
+      base_command = std::make_shared<MovementCommand>(am.get_direction());
     }
     else
     {
@@ -66,8 +66,8 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
     if (base_command)
     {
-      boost::shared_ptr<DirectionalCommand> dcommand;
-      dcommand = boost::dynamic_pointer_cast<DirectionalCommand>(base_command);
+      std::shared_ptr<DirectionalCommand> dcommand;
+      dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
 
       if (dcommand)
       {

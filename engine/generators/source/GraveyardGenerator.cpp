@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "GraveyardGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -12,7 +11,7 @@ GraveyardGenerator::GraveyardGenerator(const std::string& new_map_exit_id)
 
 MapPtr GraveyardGenerator::generate(const Dimensions& dim)
 {
-  MapPtr map = boost::make_shared<Map>(dim);
+  MapPtr map = std::make_shared<Map>(dim);
   fill(map, TILE_TYPE_FIELD);
   
   add_graves(map);

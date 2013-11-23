@@ -84,6 +84,9 @@ Savage Lands v0.1.8 "Aethelbert"
   
   - Updated all occurrences of BOOST_FOREACH to range-based for.
 
+  - Replaced boost::shared_ptr, boost::make_shared, and
+    boost::dynamic_pointer_cast with their std:: equivalents.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 

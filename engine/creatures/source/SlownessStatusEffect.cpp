@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "SlownessCalculator.hpp"
@@ -11,7 +10,7 @@ using namespace std;
 
 SlownessStatusEffect::SlownessStatusEffect()
 {
-  status_calc = boost::make_shared<SlownessCalculator>();
+  status_calc = std::make_shared<SlownessCalculator>();
 }
 
 bool SlownessStatusEffect::after_apply(CreaturePtr creature) const

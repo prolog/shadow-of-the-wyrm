@@ -158,8 +158,8 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   bool applied = false;
 
   // Make the creature select a direction.
-  CommandFactoryPtr command_factory    = boost::make_shared<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
+  CommandFactoryPtr command_factory    = std::make_shared<CommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
@@ -176,8 +176,8 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    boost::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = boost::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    std::shared_ptr<DirectionalCommand> dcommand;
+    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
 
     if (dcommand)
     {

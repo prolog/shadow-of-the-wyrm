@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Generator.hpp"
 
 // Though this class is called "ChurchGenerator", it's actually an
@@ -21,4 +21,4 @@ class ChurchGenerator : public SL::Generator
     MapPtr base_map;
 };
 
-typedef boost::shared_ptr<ChurchGenerator> ChurchGeneratorPtr;
+typedef std::shared_ptr<ChurchGenerator> ChurchGeneratorPtr;

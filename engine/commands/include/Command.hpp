@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 class Command
 {
@@ -22,4 +22,4 @@ class Command
     std::string command_confirmation;
 };
 
-typedef boost::shared_ptr<Command> CommandPtr;
+typedef std::shared_ptr<Command> CommandPtr;

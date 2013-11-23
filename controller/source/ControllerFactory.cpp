@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ControllerFactory.hpp"
 #include "CursesKeyboardController.hpp"
 #include "NullKeyboardController.hpp"
@@ -38,8 +37,8 @@ void ControllerFactory::initialize_controller_map()
 {
   controller_map.clear();
 
-  ControllerPtr keyboard = boost::make_shared<CursesKeyboardController>();
-  ControllerPtr nullcont = boost::make_shared<NullKeyboardController>();
+  ControllerPtr keyboard = std::make_shared<CursesKeyboardController>();
+  ControllerPtr nullcont = std::make_shared<NullKeyboardController>();
 
   controller_map.insert(make_pair(CLASS_ID_CURSES_KEYBOARD_CONTROLLER, keyboard));
   controller_map.insert(make_pair(CLASS_ID_NULL_KEYBOARD_CONTROLLER, nullcont));

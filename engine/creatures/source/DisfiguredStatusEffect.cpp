@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "CreatureProperties.hpp"
 #include "DisfiguredCalculator.hpp"
@@ -11,7 +10,7 @@ using namespace std;
 
 DisfiguredStatusEffect::DisfiguredStatusEffect()
 {
-  status_calc = boost::make_shared<DisfiguredCalculator>();
+  status_calc = std::make_shared<DisfiguredCalculator>();
 }
 
 // After determining that the creature has been disfigured, try each

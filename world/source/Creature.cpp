@@ -1,5 +1,4 @@
 #include <limits>
-#include <boost/make_shared.hpp>
 #include "Creature.hpp"
 #include "DecisionStrategyFactory.hpp"
 #include "PlayerConstants.hpp"
@@ -85,7 +84,7 @@ Creature::Creature(const Creature& cr)
   {
     // Without the copy constuctor, the raw pointer was being shared between creature instances,
     // and the threat map for supposedly peaceful creatures contained the player, making the creature hostile!
-    decision_strategy = boost::shared_ptr<DecisionStrategy>(cr.decision_strategy->copy());
+    decision_strategy = std::shared_ptr<DecisionStrategy>(cr.decision_strategy->copy());
   }
   
   religion = cr.religion;
@@ -210,7 +209,7 @@ void Creature::set_is_player(const bool player, ControllerPtr controller)
   {
     // Players always use the PlayerDecisionStrategy class so that keyboard input
     // can be used.
-    decision_strategy = boost::make_shared<PlayerDecisionStrategy>(controller);
+    decision_strategy = std::make_shared<PlayerDecisionStrategy>(controller);
 
     // Players are always @s.
     set_symbol('@');

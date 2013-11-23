@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 class Display;
 
@@ -11,5 +11,5 @@ class AnimationInstruction
     virtual void execute(Display* const display) = 0; 
 };
 
-typedef boost::shared_ptr<AnimationInstruction> AnimationInstructionPtr;
+typedef std::shared_ptr<AnimationInstruction> AnimationInstructionPtr;
 

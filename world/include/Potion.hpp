@@ -29,4 +29,4 @@ class Potion : public Consumable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Potion> PotionPtr;
+typedef std::shared_ptr<Potion> PotionPtr;

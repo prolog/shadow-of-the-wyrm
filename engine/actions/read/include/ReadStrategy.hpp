@@ -27,5 +27,5 @@ class ReadStrategy : public IActionManager
     virtual ActionCostValue get_action_cost_value() const = 0;
 };
 
-typedef boost::shared_ptr<ReadStrategy> ReadStrategyPtr;
+typedef std::shared_ptr<ReadStrategy> ReadStrategyPtr;
 

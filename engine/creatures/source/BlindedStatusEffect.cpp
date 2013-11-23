@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "BlindedCalculator.hpp"
 #include "BlindedStatusEffect.hpp"
 #include "Game.hpp"
@@ -12,7 +11,7 @@ const int BlindedStatusEffect::BLINDED_EVADE_PENALTY = -10;
 
 BlindedStatusEffect::BlindedStatusEffect()
 {
-  status_calc = boost::make_shared<BlindedCalculator>();
+  status_calc = std::make_shared<BlindedCalculator>();
 }
 
 int BlindedStatusEffect::get_to_hit_bonus(CreaturePtr creature) const

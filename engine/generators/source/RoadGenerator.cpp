@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Log.hpp"
 #include "RoadGenerator.hpp"
 #include "TileGenerator.hpp"
@@ -61,7 +60,7 @@ void RoadGenerator::generate_road(MapPtr map)
 
 MapPtr RoadGenerator::generate(MapPtr map)
 {
-  MapPtr result_map = boost::make_shared<Map>(*map);
+  MapPtr result_map = std::make_shared<Map>(*map);
 
   generate_road(result_map);
 

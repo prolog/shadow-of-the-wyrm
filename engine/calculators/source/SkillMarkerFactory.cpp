@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "SkillMarkerFactory.hpp"
 #include "MeleeCombatSkillMarker.hpp"
 #include "RangedCombatSkillMarker.hpp"
@@ -20,14 +19,14 @@ ISkillMarkerPtr SkillMarkerFactory::create_skill_marker(const AttackType attack_
   {
     case ATTACK_TYPE_MELEE_PRIMARY:
     case ATTACK_TYPE_MELEE_SECONDARY:
-      skill_marker = boost::make_shared<MeleeCombatSkillMarker>(attack_type);
+      skill_marker = std::make_shared<MeleeCombatSkillMarker>(attack_type);
       break;
     case ATTACK_TYPE_RANGED:
-      skill_marker = boost::make_shared<RangedCombatSkillMarker>();
+      skill_marker = std::make_shared<RangedCombatSkillMarker>();
       break;
     case ATTACK_TYPE_MAGICAL:
     default:
-      skill_marker = boost::make_shared<MagicalCombatSkillMarker>();
+      skill_marker = std::make_shared<MagicalCombatSkillMarker>();
       break;
   }
 

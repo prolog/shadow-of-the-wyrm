@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "BlindedStatusEffect.hpp"
 #include "BloodiedStatusEffect.hpp"
 #include "DisfiguredStatusEffect.hpp"
@@ -69,61 +68,61 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
 
   if (status_id == StatusIdentifiers::STATUS_ID_POISON)
   {
-    status_effect = boost::make_shared<PoisonStatusEffect>();
+    status_effect = std::make_shared<PoisonStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_MUTE)
   {
-    status_effect = boost::make_shared<MutenessStatusEffect>();
+    status_effect = std::make_shared<MutenessStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_PARALYSIS)
   {
-    status_effect = boost::make_shared<ParalysisStatusEffect>();
+    status_effect = std::make_shared<ParalysisStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_SLOWNESS)
   {
-    status_effect = boost::make_shared<SlownessStatusEffect>();
+    status_effect = std::make_shared<SlownessStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_HASTE)
   {
-    status_effect = boost::make_shared<HasteStatusEffect>();
+    status_effect = std::make_shared<HasteStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_STONE)
   {
-    status_effect = boost::make_shared<StoneStatusEffect>();
+    status_effect = std::make_shared<StoneStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_BLOODIED)
   {
-    status_effect = boost::make_shared<BloodiedStatusEffect>();
+    status_effect = std::make_shared<BloodiedStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_STUNNED)
   {
-    status_effect = boost::make_shared<StunnedStatusEffect>();
+    status_effect = std::make_shared<StunnedStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_EXPOSED)
   {
-    status_effect = boost::make_shared<ExposedStatusEffect>();
+    status_effect = std::make_shared<ExposedStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_DISFIGURED)
   {
-    status_effect = boost::make_shared<DisfiguredStatusEffect>();
+    status_effect = std::make_shared<DisfiguredStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_SPELLBOUND)
   {
-    status_effect = boost::make_shared<SpellboundStatusEffect>();
+    status_effect = std::make_shared<SpellboundStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_BLINDED)
   {
-    status_effect = boost::make_shared<BlindedStatusEffect>();
+    status_effect = std::make_shared<BlindedStatusEffect>();
   }
   else if (status_id == StatusIdentifiers::STATUS_ID_INCORPOREAL)
   {
-    status_effect = boost::make_shared<IncorporealStatusEffect>();
+    status_effect = std::make_shared<IncorporealStatusEffect>();
   }
   else
   {
     // Default case - this basically does nothing for each callable
     // method.
-    status_effect = boost::make_shared<StatusEffect>();
+    status_effect = std::make_shared<StatusEffect>();
   }
 
   return status_effect;

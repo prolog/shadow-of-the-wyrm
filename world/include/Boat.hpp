@@ -13,4 +13,4 @@ class Boat : public Item
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Boat> BoatPtr;
+typedef std::shared_ptr<Boat> BoatPtr;

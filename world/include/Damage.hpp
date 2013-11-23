@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "DamageTypes.hpp"
 #include "Dice.hpp"
 
@@ -25,9 +25,9 @@ class Damage : public Dice
     // Additional damage is used for things like "1d6+2d4".  This is relatively rare,
     // and likely will only be used for ranged combat, where the damage is a fuction
     // of both the ranged weapon and the missile.
-    void set_additional_damage(boost::shared_ptr<Damage> new_additional_damage);
+    void set_additional_damage(std::shared_ptr<Damage> new_additional_damage);
     bool has_additional_damage() const;
-    boost::shared_ptr<Damage> get_additional_damage() const;
+    std::shared_ptr<Damage> get_additional_damage() const;
     
     std::string str() const;
     
@@ -37,10 +37,10 @@ class Damage : public Dice
   protected:
     bool chaotic;
     DamageType damage_type;
-    boost::shared_ptr<Damage> additional_damage;
+    std::shared_ptr<Damage> additional_damage;
 
   private:
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Damage> DamagePtr;
+typedef std::shared_ptr<Damage> DamagePtr;

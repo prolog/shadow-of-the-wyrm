@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "MapTypeQueryFactory.hpp"
 #include "MapTypeQueries.hpp"
 
@@ -17,12 +16,12 @@ IMapTypeQueryPtr MapTypeQueryFactory::create_map_type_query(const MapType map_ty
   switch(map_type)
   {
     case MAP_TYPE_UNDERWORLD:
-      mtq = boost::make_shared<UnderworldMapTypeQuery>();
+      mtq = std::make_shared<UnderworldMapTypeQuery>();
       break;
     case MAP_TYPE_WORLD:
     case MAP_TYPE_OVERWORLD:
     default:
-      mtq = boost::make_shared<OverworldMapTypeQuery>();
+      mtq = std::make_shared<OverworldMapTypeQuery>();
       break;
   }
 

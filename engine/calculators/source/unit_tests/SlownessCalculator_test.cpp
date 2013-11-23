@@ -2,7 +2,7 @@
 
 TEST(SL_World_Calculator_SlownessCalculator, calc_pct_chance_slowness)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_agility(2);
   creature->get_resistances().set_resistance_value(DAMAGE_TYPE_COLD, 1.0);
 

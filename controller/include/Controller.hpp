@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "ISerializable.hpp"
 
 // Abstract base class capable of getting a character or a line
@@ -21,4 +21,4 @@ class Controller : public ISerializable
     ClassIdentifier internal_class_identifier() const = 0;
 };
 
-typedef boost::shared_ptr<Controller> ControllerPtr;
+typedef std::shared_ptr<Controller> ControllerPtr;

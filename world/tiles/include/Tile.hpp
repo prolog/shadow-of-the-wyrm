@@ -1,7 +1,6 @@
 #pragma once
 #include <map>
-#include <boost/make_shared.hpp>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "tiles.hpp"
 #include "Inventory.hpp"
 #include "Creature.hpp"
@@ -57,7 +56,7 @@ class Tile : public ISerializable
     virtual void set_illuminated(bool new_illuminated);
     virtual bool get_illuminated() const;
     
-    virtual bool get_is_blocking(boost::shared_ptr<Creature> perspective_creature = boost::shared_ptr<Creature>()) const;
+    virtual bool get_is_blocking(std::shared_ptr<Creature> perspective_creature = std::shared_ptr<Creature>()) const;
     virtual int get_movement_multiplier() const;
 
     // This is player-centric.  Probably OK for now, but may need to be
@@ -75,9 +74,9 @@ class Tile : public ISerializable
     virtual FeaturePtr get_feature();
 
     virtual bool has_creature() const;
-    virtual void set_creature(const boost::shared_ptr<Creature>& new_creature);
+    virtual void set_creature(const std::shared_ptr<Creature>& new_creature);
     virtual void remove_creature();
-    virtual boost::shared_ptr<Creature> get_creature() const;
+    virtual std::shared_ptr<Creature> get_creature() const;
     
     virtual Inventory& get_items();
 
@@ -114,7 +113,7 @@ class Tile : public ISerializable
     TileType tile_subtype;
 
     // Each tile can have at most one creature on it.
-    boost::shared_ptr<Creature> creature;
+    std::shared_ptr<Creature> creature;
     
     // Each tile can have at most one feature on it.
     FeaturePtr feature;
@@ -130,4 +129,4 @@ class Tile : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Tile> TilePtr;
+typedef std::shared_ptr<Tile> TilePtr;

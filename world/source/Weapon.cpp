@@ -2,7 +2,7 @@
 #include "Weapon.hpp"
 
 using namespace std;
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 // WEAPON
 Weapon::Weapon()
@@ -99,7 +99,7 @@ vector<string> Weapon::get_slays_races() const
   return slays_races;
 }
 
-bool Weapon::additional_item_attributes_match(boost::shared_ptr<Item> i)
+bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i)
 {
   bool match = (i != nullptr);
   WeaponPtr i_weap = dynamic_pointer_cast<Weapon>(i);

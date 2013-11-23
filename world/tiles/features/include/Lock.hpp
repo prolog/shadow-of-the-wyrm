@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "ISerializable.hpp"
 
 class Lock : public ISerializable
@@ -30,4 +30,4 @@ class Lock : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Lock> LockPtr;
+typedef std::shared_ptr<Lock> LockPtr;

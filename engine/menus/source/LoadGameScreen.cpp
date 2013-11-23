@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/make_shared.hpp>
 #include "Conversion.hpp"
 #include "Game.hpp"
 #include "LoadGameScreen.hpp"
@@ -23,9 +22,9 @@ void LoadGameScreen::initialize()
 
   menu_selection_to_filename_map.clear();
 
-  TextComponentPtr game_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SAVED_GAME));
+  TextComponentPtr game_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SAVED_GAME));
 
-  OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
+  OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   vector<pair<string, string>> filenames = Serialization::get_save_file_names();
 

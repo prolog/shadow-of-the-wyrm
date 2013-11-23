@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CombatConstants.hpp"
 #include "ToHitCalculatorFactory.hpp"
 #include "LightMeleeAndRangedWeaponToHitCalculator.hpp"
@@ -38,11 +37,11 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator(CreaturePtr 
       break;
     }
     case ATTACK_TYPE_RANGED:
-      calculator = boost::make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
+      calculator = std::make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
       break;
     case ATTACK_TYPE_MAGICAL: // Fall through intentionally
     default:
-      calculator = boost::make_shared<MagicToHitCalculator>();
+      calculator = std::make_shared<MagicToHitCalculator>();
       break;
   }
   
@@ -72,22 +71,22 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator_given_weapon
     // JCD FIXME magic number
     if (weight > CombatConstants::HEAVY_WEAPON_THRESHOLD_IN_LBS)
     {
-      calculator = boost::make_shared<HeavyWeaponToHitCalculator>(attack_type);
+      calculator = std::make_shared<HeavyWeaponToHitCalculator>(attack_type);
     }
     else
     {
-      calculator = boost::make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
+      calculator = std::make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
     }
   }
   else
   {
     if (creature_size >= CREATURE_SIZE_HUGE)
     {
-      calculator = boost::make_shared<HeavyWeaponToHitCalculator>();
+      calculator = std::make_shared<HeavyWeaponToHitCalculator>();
     }
     else
     {
-      calculator = boost::make_shared<LightMeleeAndRangedWeaponToHitCalculator>();
+      calculator = std::make_shared<LightMeleeAndRangedWeaponToHitCalculator>();
     }
   }
   

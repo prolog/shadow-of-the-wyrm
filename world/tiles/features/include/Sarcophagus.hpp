@@ -31,4 +31,4 @@ class Sarcophagus : public Feature
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Sarcophagus> SarcophagusPtr;
+typedef std::shared_ptr<Sarcophagus> SarcophagusPtr;

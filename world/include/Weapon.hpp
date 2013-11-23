@@ -34,7 +34,7 @@ class Weapon : public Wearable
     virtual void set_slays_races(const std::vector<std::string>& new_slay_races);
     std::vector<std::string> get_slays_races() const;
 
-    virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
 
     virtual bool serialize(std::ostream& stream);
     virtual bool deserialize(std::istream& stream);
@@ -76,6 +76,6 @@ class RangedWeapon : public Weapon
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Weapon> WeaponPtr;
-typedef boost::shared_ptr<MeleeWeapon> MeleeWeaponPtr;
-typedef boost::shared_ptr<RangedWeapon> RangedWeaponPtr;
+typedef std::shared_ptr<Weapon> WeaponPtr;
+typedef std::shared_ptr<MeleeWeapon> MeleeWeaponPtr;
+typedef std::shared_ptr<RangedWeapon> RangedWeaponPtr;

@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Damage.hpp"
 
 // Interface describing different hit types - regular, mighty, 
@@ -12,5 +12,5 @@ class IHitTypeCalculator
     virtual int get_base_damage(const Damage& damage) const = 0;
 };
 
-typedef boost::shared_ptr<IHitTypeCalculator> IHitTypeCalculatorPtr;
+typedef std::shared_ptr<IHitTypeCalculator> IHitTypeCalculatorPtr;
 

@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Creature.hpp"
 
 // This class defines an abstract base class for messages that should be 
@@ -22,5 +22,5 @@ class AdditionalEffectMessage
     std::string effect_message_sid;
 };
 
-typedef boost::shared_ptr<AdditionalEffectMessage> AdditionalEffectMessagePtr;
+typedef std::shared_ptr<AdditionalEffectMessage> AdditionalEffectMessagePtr;
 

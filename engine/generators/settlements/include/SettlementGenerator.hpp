@@ -20,4 +20,4 @@ class SettlementGenerator : public BaseSettlementGenerator
      MapPtr generate_square(MapPtr map, const int start_row, const int start_col, const int square_size);
 };
 
-typedef boost::shared_ptr<SettlementGenerator> SettlementGeneratorPtr;
+typedef std::shared_ptr<SettlementGenerator> SettlementGeneratorPtr;

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
 #include "RockySacrificeSiteGenerator.hpp"
@@ -19,7 +18,7 @@ MapPtr RockySacrificeSiteGenerator::generate(const Dimensions& dim)
 
 MapPtr RockySacrificeSiteGenerator::generate()
 {
-  MapPtr map = boost::make_shared<Map>(*base_map);
+  MapPtr map = std::make_shared<Map>(*base_map);
 
   generate_site(map);
 

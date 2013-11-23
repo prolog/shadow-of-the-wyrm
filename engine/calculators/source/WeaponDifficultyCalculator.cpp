@@ -2,7 +2,7 @@
 #include "ToHitCalculatorFactory.hpp"
 #include "WeaponDifficultyCalculator.hpp"
 
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 int WeaponDifficultyCalculator::calculate_base_difficulty(CreaturePtr creature, const AttackType attack_type)
 {

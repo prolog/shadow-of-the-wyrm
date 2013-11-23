@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ActionManager.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
@@ -82,7 +81,7 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
     list<IItemFilterPtr> wand_filter = ItemFilterFactory::create_item_type_filter(ITEM_TYPE_WAND);
 
     ItemPtr item = am->inventory(creature, creature->get_inventory(), wand_filter, false);
-    WandPtr wand = boost::dynamic_pointer_cast<Wand>(item);
+    WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
 
     if (wand)
     {

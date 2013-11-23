@@ -13,4 +13,4 @@ class Staff : public Item
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Staff> StaffPtr;
+typedef std::shared_ptr<Staff> StaffPtr;

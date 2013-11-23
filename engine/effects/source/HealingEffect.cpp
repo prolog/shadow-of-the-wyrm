@@ -12,7 +12,7 @@ const double HealingEffect::CURSED_MULTIPLIER = 0.5;
 const int HealingEffect::BASE_MIN_HP = 5;
 const int HealingEffect::BASE_MAX_HP = 30;
 
-string HealingEffect::get_effect_identification_message(boost::shared_ptr<Creature> creature) const
+string HealingEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
 {
   string creature_desc_sid;
   bool is_player = false;
@@ -57,7 +57,7 @@ bool HealingEffect::heal(CreaturePtr creature, const double healing_multiplier) 
   return effect_identified;
 }
 
-bool HealingEffect::effect_blessed(boost::shared_ptr<Creature> creature, ActionManager * const am)
+bool HealingEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am)
 {
   return heal(creature, BLESSED_MULTIPLIER);
 }

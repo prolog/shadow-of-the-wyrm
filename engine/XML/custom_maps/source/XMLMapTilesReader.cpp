@@ -141,7 +141,7 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
     // Backtick indicates hot springs.
     if (xml_tile == '`')
     {
-      boost::shared_ptr<SpringsTile> springs_tile = boost::dynamic_pointer_cast<SpringsTile>(tile);
+      std::shared_ptr<SpringsTile> springs_tile = std::dynamic_pointer_cast<SpringsTile>(tile);
 
       if (springs_tile)
       {

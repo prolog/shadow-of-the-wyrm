@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CreatureDescriber.hpp"
 #include "DescriberFactory.hpp"
 #include "FeatureDescriber.hpp"
@@ -16,30 +15,30 @@ DescriberFactory::~DescriberFactory()
 
 IDescriberPtr DescriberFactory::create_describer(TilePtr tile)
 {
-  IDescriberPtr describer = boost::make_shared<TileDescriber>(tile);
+  IDescriberPtr describer = std::make_shared<TileDescriber>(tile);
   return describer;
 }
 
 IDescriberPtr DescriberFactory::create_describer(CreaturePtr creature)
 {
-  IDescriberPtr describer = boost::make_shared<CreatureDescriber>(creature);
+  IDescriberPtr describer = std::make_shared<CreatureDescriber>(creature);
   return describer;
 }
 
 IDescriberPtr DescriberFactory::create_describer(FeaturePtr feature)
 {
-  IDescriberPtr describer = boost::make_shared<FeatureDescriber>(feature);
+  IDescriberPtr describer = std::make_shared<FeatureDescriber>(feature);
   return describer;
 }
 
 IDescriberPtr DescriberFactory::create_describer(const bool blind, const Inventory& inv)
 {
-  IDescriberPtr describer = boost::make_shared<InventoryDescriber>(blind, inv);
+  IDescriberPtr describer = std::make_shared<InventoryDescriber>(blind, inv);
   return describer;
 }
 
 IDescriberPtr DescriberFactory::create_describer(CreaturePtr creature, const Spell& spell)
 {
-  IDescriberPtr describer = boost::make_shared<SpellDescriber>(creature, spell);
+  IDescriberPtr describer = std::make_shared<SpellDescriber>(creature, spell);
   return describer;
 }

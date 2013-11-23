@@ -2,7 +2,7 @@
 
 TEST(SL_World_Calculator_ExposedCalculator, calc_pct_chance_exposed)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_agility(3);
   
   creature->get_resistances().set_resistance_value(DAMAGE_TYPE_PIERCE, 1.0);

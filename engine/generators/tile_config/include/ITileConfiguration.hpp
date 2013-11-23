@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "CalendarTypes.hpp"
 #include "Tile.hpp"
 #include "ISeason.hpp"
@@ -19,4 +19,4 @@ class ITileConfiguration
     virtual void initialize() = 0;
 };
 
-typedef boost::shared_ptr<ITileConfiguration> ITileConfigurationPtr;
+typedef std::shared_ptr<ITileConfiguration> ITileConfigurationPtr;

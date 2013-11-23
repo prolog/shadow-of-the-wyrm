@@ -4,7 +4,7 @@
 
 #include <iostream>
 #include <fstream>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "global_prototypes.hpp"
 #include "BresenhamLine.hpp"
 #include "Display.hpp"
@@ -281,7 +281,7 @@ string map_to_string(MapPtr map, bool use_html)
 
 string generate_cavern()
 {
-  GeneratorPtr cavern_gen = boost::make_shared<CavernGenerator>("");
+  GeneratorPtr cavern_gen = std::make_shared<CavernGenerator>("");
   MapPtr map = cavern_gen->generate();
   cout << map_to_string(map, false);
   return map_to_string(map);
@@ -313,9 +313,9 @@ string generate_scattered_graveyard()
 
 string generate_keep()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr base_map = field_gen->generate();
-  GeneratorPtr keep_gen = boost::make_shared<KeepGenerator>(base_map);
+  GeneratorPtr keep_gen = std::make_shared<KeepGenerator>(base_map);
   MapPtr keep_map = keep_gen->generate();
   cout << map_to_string(keep_map, false);
   return map_to_string(keep_map);
@@ -323,9 +323,9 @@ string generate_keep()
 
 string generate_simple_church()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr map = field_gen->generate();
-  GeneratorPtr church_gen = boost::make_shared<SimpleChurchGenerator>("", map);
+  GeneratorPtr church_gen = std::make_shared<SimpleChurchGenerator>("", map);
   MapPtr church_map = church_gen->generate();
   cout << map_to_string(church_map, false);
   return map_to_string(church_map);
@@ -333,9 +333,9 @@ string generate_simple_church()
 
 string generate_fortified_church()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr church_gen = boost::make_shared<FortifiedChurchGenerator>("", field_map);
+  GeneratorPtr church_gen = std::make_shared<FortifiedChurchGenerator>("", field_map);
   MapPtr church_map = church_gen->generate();
   cout << map_to_string(church_map, false);
   return map_to_string(church_map);
@@ -343,9 +343,9 @@ string generate_fortified_church()
 
 string generate_cathedral()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr cathedral_gen = boost::make_shared<CathedralGenerator>("", field_map);
+  GeneratorPtr cathedral_gen = std::make_shared<CathedralGenerator>("", field_map);
   MapPtr cathedral_map = cathedral_gen->generate();
   cout << map_to_string(cathedral_map, false);
   return map_to_string(cathedral_map);
@@ -353,9 +353,9 @@ string generate_cathedral()
 
 string generate_snaking_temple()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr temple_gen = boost::make_shared<SnakingTempleGenerator>("", field_map);
+  GeneratorPtr temple_gen = std::make_shared<SnakingTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
   cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
@@ -363,9 +363,9 @@ string generate_snaking_temple()
 
 string generate_simple_temple()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr temple_gen = boost::make_shared<SimpleTempleGenerator>("", field_map);
+  GeneratorPtr temple_gen = std::make_shared<SimpleTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
   cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
@@ -373,9 +373,9 @@ string generate_simple_temple()
 
 string generate_grand_temple()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr temple_gen = boost::make_shared<GrandTempleGenerator>("", field_map);
+  GeneratorPtr temple_gen = std::make_shared<GrandTempleGenerator>("", field_map);
   MapPtr temple_map = temple_gen->generate();
   cout << map_to_string(temple_map, false);
   return map_to_string(temple_map);
@@ -383,9 +383,9 @@ string generate_grand_temple()
 
 string generate_island_sacrifice_site()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr site_gen = boost::make_shared<IslandSacrificeSiteGenerator>("", field_map);
+  GeneratorPtr site_gen = std::make_shared<IslandSacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
   cout << map_to_string(site_map, false);
   return map_to_string(site_map);
@@ -393,9 +393,9 @@ string generate_island_sacrifice_site()
 
 string generate_rocky_sacrifice_site()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr site_gen = boost::make_shared<RockySacrificeSiteGenerator>("", field_map);
+  GeneratorPtr site_gen = std::make_shared<RockySacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
   cout << map_to_string(site_map, false);
   return map_to_string(site_map);
@@ -403,9 +403,9 @@ string generate_rocky_sacrifice_site()
 
 string generate_overgrown_sacrifice_site()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
-  GeneratorPtr site_gen = boost::make_shared<OvergrownSacrificeSiteGenerator>("", field_map);
+  GeneratorPtr site_gen = std::make_shared<OvergrownSacrificeSiteGenerator>("", field_map);
   MapPtr site_map = site_gen->generate();
   cout << map_to_string(site_map, false);
   return map_to_string(site_map);
@@ -413,7 +413,7 @@ string generate_overgrown_sacrifice_site()
 
 string generate_field()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr map = field_gen->generate();
   cout << map_to_string(map, false);
   return map_to_string(map);
@@ -421,7 +421,7 @@ string generate_field()
 
 string generate_forest()
 {
-  GeneratorPtr forest_gen = boost::make_shared<ForestGenerator>("");
+  GeneratorPtr forest_gen = std::make_shared<ForestGenerator>("");
   MapPtr map = forest_gen->generate();
   cout << map_to_string(map, false);
   return map_to_string(map);
@@ -431,7 +431,7 @@ string generate_field_road()
 {
   CardinalDirection direction = static_cast<CardinalDirection>(RNG::range(0, 3));
   int width = RNG::range(3, 6);
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr map = field_gen->generate();
   RoadGenerator road_gen(direction, width);
   MapPtr final_map = road_gen.generate(map);
@@ -443,7 +443,7 @@ string generate_forest_road()
 {
   CardinalDirection direction = static_cast<CardinalDirection>(RNG::range(0, 3));
   int width = RNG::range(3, 6);
-  GeneratorPtr forest_gen = boost::make_shared<ForestGenerator>("");
+  GeneratorPtr forest_gen = std::make_shared<ForestGenerator>("");
   MapPtr map = forest_gen->generate();
   RoadGenerator road_gen(direction, width);
   MapPtr final_map = road_gen.generate(map);
@@ -453,7 +453,7 @@ string generate_forest_road()
 
 string generate_field_settlement_ruins()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   SettlementRuinsGenerator sr_gen(field_map);
   MapPtr ruins_map = sr_gen.generate();
@@ -463,7 +463,7 @@ string generate_field_settlement_ruins()
 
 string generate_field_ruins()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   MapPtr ruins_map = RuinsGenerator::generate(field_map, RUINS_TYPE_KEEP);
   cout << map_to_string(ruins_map, false);
@@ -472,7 +472,7 @@ string generate_field_ruins()
 
 string generate_marsh()
 {
-  GeneratorPtr marsh_gen = boost::make_shared<MarshGenerator>("");
+  GeneratorPtr marsh_gen = std::make_shared<MarshGenerator>("");
   MapPtr marsh_map = marsh_gen->generate();
   cout << map_to_string(marsh_map, false);
   return map_to_string(marsh_map);
@@ -480,7 +480,7 @@ string generate_marsh()
 
 string generate_settlement()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   SettlementGenerator settle_gen(field_map);
   MapPtr settlement_map = settle_gen.generate();
@@ -490,7 +490,7 @@ string generate_settlement()
 
 string generate_hamlet()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   HamletGenerator hamlet_gen(field_map);
   MapPtr hamlet_map = hamlet_gen.generate();
@@ -500,7 +500,7 @@ string generate_hamlet()
 
 string generate_walled_settlement()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   WalledSettlementGenerator ws_gen(field_map);
   MapPtr ws_map = ws_gen.generate();
@@ -510,7 +510,7 @@ string generate_walled_settlement()
 
 string generate_scattered_settlement()
 {
-  GeneratorPtr field_gen = boost::make_shared<FieldGenerator>("");
+  GeneratorPtr field_gen = std::make_shared<FieldGenerator>("");
   MapPtr field_map = field_gen->generate();
   ScatteredSettlementGenerator sc_gen(field_map);
   MapPtr sc_map = sc_gen.generate();
@@ -520,7 +520,7 @@ string generate_scattered_settlement()
 
 string generate_dungeon()
 {
-  GeneratorPtr dun_gen = boost::make_shared<DungeonGenerator>(""); // ha ha
+  GeneratorPtr dun_gen = std::make_shared<DungeonGenerator>(""); // ha ha
   MapPtr dun_gen_map = dun_gen->generate();
   cout << map_to_string(dun_gen_map, false);
   return map_to_string(dun_gen_map);
@@ -528,7 +528,7 @@ string generate_dungeon()
 
 string generate_spiral_dungeon()
 {
-  GeneratorPtr sd_gen = boost::make_shared<SpiralDungeonGenerator>("");
+  GeneratorPtr sd_gen = std::make_shared<SpiralDungeonGenerator>("");
   MapPtr sd_map = sd_gen->generate();
   cout << map_to_string(sd_map, false);
   return map_to_string(sd_map);
@@ -536,7 +536,7 @@ string generate_spiral_dungeon()
 
 string generate_sea()
 {
-  GeneratorPtr sea_gen = boost::make_shared<SeaGenerator>("");
+  GeneratorPtr sea_gen = std::make_shared<SeaGenerator>("");
   MapPtr sea_map = sea_gen->generate();
   cout << map_to_string(sea_map, false);
   return map_to_string(sea_map);
@@ -544,7 +544,7 @@ string generate_sea()
 
 string generate_mine()
 {
-  GeneratorPtr mine_gen = boost::make_shared<MineGenerator>("");
+  GeneratorPtr mine_gen = std::make_shared<MineGenerator>("");
   MapPtr mine_map = mine_gen->generate();
   cout << map_to_string(mine_map, false);
   return map_to_string(mine_map);

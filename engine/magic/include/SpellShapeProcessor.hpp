@@ -1,6 +1,6 @@
 #pragma once
 #include <vector>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Animation.hpp"
 #include "common.hpp"
 #include "Directions.hpp"
@@ -33,4 +33,4 @@ class SpellShapeProcessor
     bool is_coordinate_adjacent_to_coordinate_in_previous_frame(const Coordinate& coord, const std::vector<Coordinate>& prev_frame);
 };
 
-typedef boost::shared_ptr<SpellShapeProcessor> SpellShapeProcessorPtr;
+typedef std::shared_ptr<SpellShapeProcessor> SpellShapeProcessorPtr;

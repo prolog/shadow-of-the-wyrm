@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "FeatureFactory.hpp"
 #include "DecorativeStatues.hpp"
 #include "GoodAltar.hpp"
@@ -47,13 +46,13 @@ FeaturePtr FeatureFactory::create_feature(const ClassIdentifier ci)
 
 LockPtr FeatureFactory::create_lock()
 {
-  LockPtr lock = boost::make_shared<Lock>();
+  LockPtr lock = std::make_shared<Lock>();
   return lock;
 }
 
 TrapPtr FeatureFactory::create_trap()
 {
-  TrapPtr trap = boost::make_shared<Trap>();
+  TrapPtr trap = std::make_shared<Trap>();
   return trap;
 }
 
@@ -61,24 +60,24 @@ void FeatureFactory::initialize_feature_map()
 {
   feature_map.clear();
 
-  FeaturePtr good_altar         = boost::make_shared<GoodAltar>();
-  FeaturePtr neutral_altar      = boost::make_shared<NeutralAltar>();
-  FeaturePtr evil_altar         = boost::make_shared<EvilAltar>();
-  FeaturePtr king_statue        = boost::make_shared<KingDecorativeStatue>();
-  FeaturePtr queen_statue       = boost::make_shared<QueenDecorativeStatue>();
-  FeaturePtr warlord_statue     = boost::make_shared<WarlordDecorativeStatue>();
-  FeaturePtr knight_statue      = boost::make_shared<KnightDecorativeStatue>();
-  FeaturePtr high_priest_statue = boost::make_shared<HighPriestDecorativeStatue>();
-  FeaturePtr sorceror_statue    = boost::make_shared<SorcerorDecorativeStatue>();
-  FeaturePtr bench              = boost::make_shared<Bench>();
-  FeaturePtr door               = boost::make_shared<Door>();
-  FeaturePtr ew_pew             = boost::make_shared<EastWestPew>();
-  FeaturePtr fire_pillar        = boost::make_shared<FirePillar>();
-  FeaturePtr fountain           = boost::make_shared<Fountain>();
-  FeaturePtr gate               = boost::make_shared<Gate>();
-  FeaturePtr pew                = boost::make_shared<Pew>();
-  FeaturePtr petrified_corpse   = boost::make_shared<PetrifiedCorpseStatue>();
-  FeaturePtr sarcophagus        = boost::make_shared<Sarcophagus>();
+  FeaturePtr good_altar         = std::make_shared<GoodAltar>();
+  FeaturePtr neutral_altar      = std::make_shared<NeutralAltar>();
+  FeaturePtr evil_altar         = std::make_shared<EvilAltar>();
+  FeaturePtr king_statue        = std::make_shared<KingDecorativeStatue>();
+  FeaturePtr queen_statue       = std::make_shared<QueenDecorativeStatue>();
+  FeaturePtr warlord_statue     = std::make_shared<WarlordDecorativeStatue>();
+  FeaturePtr knight_statue      = std::make_shared<KnightDecorativeStatue>();
+  FeaturePtr high_priest_statue = std::make_shared<HighPriestDecorativeStatue>();
+  FeaturePtr sorceror_statue    = std::make_shared<SorcerorDecorativeStatue>();
+  FeaturePtr bench              = std::make_shared<Bench>();
+  FeaturePtr door               = std::make_shared<Door>();
+  FeaturePtr ew_pew             = std::make_shared<EastWestPew>();
+  FeaturePtr fire_pillar        = std::make_shared<FirePillar>();
+  FeaturePtr fountain           = std::make_shared<Fountain>();
+  FeaturePtr gate               = std::make_shared<Gate>();
+  FeaturePtr pew                = std::make_shared<Pew>();
+  FeaturePtr petrified_corpse   = std::make_shared<PetrifiedCorpseStatue>();
+  FeaturePtr sarcophagus        = std::make_shared<Sarcophagus>();
 
   feature_map.insert(make_pair(CLASS_ID_GOOD_ALTAR, good_altar));
   feature_map.insert(make_pair(CLASS_ID_NEUTRAL_ALTAR, neutral_altar));

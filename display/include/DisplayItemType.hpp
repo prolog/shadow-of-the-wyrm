@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Colours.hpp"
 
 // Information about an ItemType for the display
@@ -27,4 +27,4 @@ class DisplayItemType
     std::string description;
 };
 
-typedef boost::shared_ptr<DisplayItemType> DisplayItemTypePtr;
+typedef std::shared_ptr<DisplayItemType> DisplayItemTypePtr;

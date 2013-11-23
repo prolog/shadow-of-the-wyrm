@@ -2,7 +2,7 @@
 
 TEST(SL_World_Calculator_SpellboundCalculator, calc_pct_chance_spellbound)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_willpower(3);
   
   creature->get_resistances().set_resistance_value(DAMAGE_TYPE_ARCANE, 1.0);

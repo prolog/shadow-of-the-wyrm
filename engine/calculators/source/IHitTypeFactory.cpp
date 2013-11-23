@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CriticalHitTypeCalculator.hpp"
 #include "MightyHitTypeCalculator.hpp"
 #include "RegularHitTypeCalculator.hpp"
@@ -15,13 +14,13 @@ IHitTypeCalculatorPtr IHitTypeFactory::create_hit_type(const HitTypeEnum hit_typ
   switch(hit_type)
   {
     case HIT_TYPE_REGULAR:
-      hit_calc = boost::make_shared<RegularHitTypeCalculator>();
+      hit_calc = std::make_shared<RegularHitTypeCalculator>();
       break;
     case HIT_TYPE_MIGHTY:
-      hit_calc = boost::make_shared<MightyHitTypeCalculator>();
+      hit_calc = std::make_shared<MightyHitTypeCalculator>();
       break;
     case HIT_TYPE_CRITICAL:
-      hit_calc = boost::make_shared<CriticalHitTypeCalculator>();
+      hit_calc = std::make_shared<CriticalHitTypeCalculator>();
       break;
   }
 

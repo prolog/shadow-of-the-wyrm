@@ -19,7 +19,7 @@ class MessageManagerFactory
 
     // The player is affected if the calling function says so, or if a valid
     // CreaturePtr is provided and that creature is in the player's LOS.
-    static IMessageManager& instance(boost::shared_ptr<Creature> creature, bool player_is_affected);
+    static IMessageManager& instance(std::shared_ptr<Creature> creature, bool player_is_affected);
 
   protected:
     static MessageManager& mm_instance();

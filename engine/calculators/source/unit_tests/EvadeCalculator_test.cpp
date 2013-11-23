@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include <boost/make_shared.hpp>
 
 TEST(SL_Engine_Calculators_EvadeCalculator, calculate_evade_bonus)
 {
@@ -13,7 +12,7 @@ TEST(SL_Engine_Calculators_EvadeCalculator, calculate_evade_bonus)
   c.set_willpower(15);
   c.set_charisma(10);
   
-  CreaturePtr cp = boost::make_shared<Creature>(c);
+  CreaturePtr cp = std::make_shared<Creature>(c);
   
   // Agility > 10
   EXPECT_EQ(5, EvadeCalculator::calculate_evade(cp));

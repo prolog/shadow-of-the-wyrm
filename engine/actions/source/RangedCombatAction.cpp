@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ActionTextKeys.hpp"
 #include "AmmunitionSurvivalCalculator.hpp"
 #include "AnimationTranslator.hpp"
@@ -93,7 +92,7 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
   
   //Select the tile, and then fire.
   TileSelectionAction tsm;
-  KeyboardCommandMapPtr fire_weapon_keyboard_bindings = boost::make_shared<FireWeaponTileSelectionKeyboardCommandMap>();
+  KeyboardCommandMapPtr fire_weapon_keyboard_bindings = std::make_shared<FireWeaponTileSelectionKeyboardCommandMap>();
   tsm.set_keyboard_command_map(fire_weapon_keyboard_bindings);
   tsm.set_show_tile_description(false);
   tsm.set_show_feature_description(false);

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "DecorativeStatues.hpp"
 #include "RegularStatues.hpp"
 #include "StatueGenerator.hpp"
@@ -19,22 +18,22 @@ FeaturePtr StatueGenerator::generate_decorative_statue(const DecorativeStatueTyp
   switch(type)
   {
     case DECORATIVE_STATUE_TYPE_KING:
-      statue = boost::make_shared<KingDecorativeStatue>();
+      statue = std::make_shared<KingDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_QUEEN:
-      statue = boost::make_shared<QueenDecorativeStatue>();
+      statue = std::make_shared<QueenDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_WARLORD:
-      statue = boost::make_shared<WarlordDecorativeStatue>();
+      statue = std::make_shared<WarlordDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_KNIGHT:
-      statue = boost::make_shared<KnightDecorativeStatue>();
+      statue = std::make_shared<KnightDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_HIGH_PRIEST:
-      statue = boost::make_shared<HighPriestDecorativeStatue>();
+      statue = std::make_shared<HighPriestDecorativeStatue>();
       break;
     case DECORATIVE_STATUE_TYPE_SORCEROR:
-      statue = boost::make_shared<SorcerorDecorativeStatue>();
+      statue = std::make_shared<SorcerorDecorativeStatue>();
       break;
     default:
       break;
@@ -46,7 +45,7 @@ FeaturePtr StatueGenerator::generate_decorative_statue(const DecorativeStatueTyp
 PetrifiedCorpseStatuePtr StatueGenerator::generate_petrified_corpse_statue(const string& corpse_description_sid)
 {
   PetrifiedCorpseStatuePtr statue;
-  statue = boost::make_shared<PetrifiedCorpseStatue>(corpse_description_sid);
+  statue = std::make_shared<PetrifiedCorpseStatue>(corpse_description_sid);
   
   return statue;
 }

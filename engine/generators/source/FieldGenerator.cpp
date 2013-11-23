@@ -1,6 +1,4 @@
 #include <iostream>
-
-#include <boost/make_shared.hpp>
 #include "TileGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "Dimensions.hpp"
@@ -22,7 +20,7 @@ FieldGenerator::FieldGenerator(const std::string& new_map_exit_id)
  **********************************************************************/
 MapPtr FieldGenerator::generate(const Dimensions& dimensions)
 {
-  MapPtr result_map = boost::make_shared<Map>(dimensions);
+  MapPtr result_map = std::make_shared<Map>(dimensions);
 
   int rows = dimensions.get_y();
   int columns = dimensions.get_x();

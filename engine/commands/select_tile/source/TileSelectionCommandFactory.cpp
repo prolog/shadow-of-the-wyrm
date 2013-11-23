@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CommandKeys.hpp"
 #include "Commands.hpp"
 #include "Directions.hpp"
@@ -20,47 +19,47 @@ CommandPtr TileSelectionCommandFactory::create(const int key, const std::string&
   
   if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_NORTHWEST)
   {
-    command = boost::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH_WEST);
+    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH_WEST);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_NORTH)
   {
-    command = boost::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH);
+    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_NORTHEAST)
   {
-    command = boost::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH_EAST);
+    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH_EAST);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_WEST)
   {
-    command = boost::make_shared<CursorDirectionalCommand>(DIRECTION_WEST);
+    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_WEST);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_EAST)
   {
-    command = boost::make_shared<CursorDirectionalCommand>(DIRECTION_EAST);
+    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_EAST);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_SOUTHWEST)
   {
-    command = boost::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH_WEST);
+    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH_WEST);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_SOUTH)
   {
-    command = boost::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH);
+    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_SOUTHEAST)
   {
-    command = boost::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH_EAST);
+    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH_EAST);
   }
   else if (command_name == TileSelectionCommandKeys::CANCEL_TILE_SELECTION)
   {
-    command = boost::make_shared<CancelTileSelectionCommand>();
+    command = std::make_shared<CancelTileSelectionCommand>();
   }
   else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
   {
-    command = boost::make_shared<TargetTileCommand>();
+    command = std::make_shared<TargetTileCommand>();
   }
   else if (command_name == CommandKeys::BESTIARY)
   {
-    command = boost::make_shared<BestiaryCommand>();
+    command = std::make_shared<BestiaryCommand>();
   }
   
   return command;

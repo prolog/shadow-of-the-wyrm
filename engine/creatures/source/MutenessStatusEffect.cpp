@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "MutenessCalculator.hpp"
 #include "MutenessStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -8,7 +7,7 @@ using namespace std;
 
 MutenessStatusEffect::MutenessStatusEffect()
 {
-  status_calc = boost::make_shared<MutenessCalculator>();
+  status_calc = std::make_shared<MutenessCalculator>();
 }
 
 string MutenessStatusEffect::get_player_application_message() const

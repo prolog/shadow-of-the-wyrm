@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "StunnedCalculator.hpp"
 #include "StunnedStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -8,7 +7,7 @@ using namespace std;
 
 StunnedStatusEffect::StunnedStatusEffect()
 {
-  status_calc = boost::make_shared<StunnedCalculator>();
+  status_calc = std::make_shared<StunnedCalculator>();
 }
 
 string StunnedStatusEffect::get_player_application_message() const

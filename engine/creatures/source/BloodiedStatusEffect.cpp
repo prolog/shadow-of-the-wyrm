@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "BloodiedCalculator.hpp"
 #include "BloodiedStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -10,7 +9,7 @@ const int BloodiedStatusEffect::BLOODIED_TO_HIT_PENALTY = -15;
 
 BloodiedStatusEffect::BloodiedStatusEffect()
 {
-  status_calc = boost::make_shared<BloodiedCalculator>();
+  status_calc = std::make_shared<BloodiedCalculator>();
 }
 
 string BloodiedStatusEffect::get_player_application_message() const

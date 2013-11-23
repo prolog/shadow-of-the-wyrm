@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "AlignmentEnums.hpp"
 #include "CreatureActions.hpp"
 #include "WorshipSiteTypes.hpp"
@@ -58,5 +58,5 @@ class Deity
     bool user_playable;
 };
 
-typedef boost::shared_ptr<Deity> DeityPtr;
+typedef std::shared_ptr<Deity> DeityPtr;
 typedef std::map<std::string, DeityPtr> DeityMap;

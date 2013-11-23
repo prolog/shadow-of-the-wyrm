@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "IItemFilter.hpp"
 #include "InventoryCommandFactory.hpp"
 #include "InventoryCommandProcessor.hpp"
@@ -29,8 +28,8 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
   {
     if (creature)
     {
-      CommandFactoryPtr command_factory    = boost::make_shared<InventoryCommandFactory>();
-      KeyboardCommandMapPtr kb_command_map = boost::make_shared<InventoryKeyboardCommandMap>();
+      CommandFactoryPtr command_factory    = std::make_shared<InventoryCommandFactory>();
+      KeyboardCommandMapPtr kb_command_map = std::make_shared<InventoryKeyboardCommandMap>();
     
       while (manage_inv)
       {

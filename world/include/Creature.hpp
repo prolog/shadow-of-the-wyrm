@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "AutomaticMovement.hpp"
 #include "BoolStatistic.hpp"
 #include "common.hpp"
@@ -180,8 +180,8 @@ class Creature : public ISerializable
     Statistic get_level() const;
 
     // Strategy info
-    void set_decision_strategy(const boost::shared_ptr<DecisionStrategy> strategy);
-    boost::shared_ptr<DecisionStrategy> get_decision_strategy() const;
+    void set_decision_strategy(const std::shared_ptr<DecisionStrategy> strategy);
+    std::shared_ptr<DecisionStrategy> get_decision_strategy() const;
     
     // Is the creature hostile towards a given creature's ID?
     bool hostile_to(const std::string& creature_id);
@@ -337,7 +337,7 @@ class Creature : public ISerializable
     Statistic level;
 
     // Decision making strategy
-    boost::shared_ptr<DecisionStrategy> decision_strategy;
+    std::shared_ptr<DecisionStrategy> decision_strategy;
     
     // Religious data
     Religion religion;
@@ -384,5 +384,5 @@ class Creature : public ISerializable
     SpellKnowledge spell_knowledge;
 };
 
-typedef boost::shared_ptr<Creature> CreaturePtr;
+typedef std::shared_ptr<Creature> CreaturePtr;
 typedef std::map<std::string, CreaturePtr> CreatureMap;

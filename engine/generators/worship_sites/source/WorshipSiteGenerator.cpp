@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "RNG.hpp"
 #include "CathedralGenerator.hpp"
 #include "FortifiedChurchGenerator.hpp"
@@ -29,32 +28,32 @@ ChurchGeneratorPtr WorshipSiteGenerator::generate_worship_site(const WorshipSite
   switch(site_type)
   {
     case WORSHIP_SITE_CATHEDRAL:
-      site_gen = boost::make_shared<CathedralGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<CathedralGenerator>(deity_id, base_map);
       break;
     case WORSHIP_SITE_FORTIFIED_CHURCH:
-      site_gen = boost::make_shared<FortifiedChurchGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<FortifiedChurchGenerator>(deity_id, base_map);
       break;
     case WORSHIP_SITE_SIMPLE_CHURCH:
-      site_gen = boost::make_shared<SimpleChurchGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<SimpleChurchGenerator>(deity_id, base_map);
       break;
     case WORSHIP_SITE_GRAND_TEMPLE:
-      site_gen = boost::make_shared<GrandTempleGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<GrandTempleGenerator>(deity_id, base_map);
       break;
     case WORSHIP_SITE_SNAKING_TEMPLE:
-      site_gen = boost::make_shared<SnakingTempleGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<SnakingTempleGenerator>(deity_id, base_map);
       break;
     case WORSHIP_SITE_SIMPLE_TEMPLE:
-      site_gen = boost::make_shared<SimpleTempleGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<SimpleTempleGenerator>(deity_id, base_map);
       break;
     case WORSHIP_SITE_ISLAND_SACRIFICE_SITE:
-      site_gen = boost::make_shared<IslandSacrificeSiteGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<IslandSacrificeSiteGenerator>(deity_id, base_map);
       break;
     case WORSHIP_SITE_ROCKY_SACRIFICE_SITE:
-      site_gen = boost::make_shared<RockySacrificeSiteGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<RockySacrificeSiteGenerator>(deity_id, base_map);
       break;
     case WORSHIP_SITE_OVERGROWN_SACRIFICE_SITE:      
     default:
-      site_gen = boost::make_shared<OvergrownSacrificeSiteGenerator>(deity_id, base_map);
+      site_gen = std::make_shared<OvergrownSacrificeSiteGenerator>(deity_id, base_map);
       break;
   }
 

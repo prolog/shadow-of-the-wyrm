@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include <boost/make_shared.hpp>
 
 class SL_Engine_Map : public ::testing::Test
 {
@@ -33,7 +32,7 @@ ClassIdentifier SL_Engine_Map::get_class_identifier()
 MapPtr SL_Engine_Map::make_map() const
 {
   Dimensions d;
-  MapPtr map = boost::make_shared<Map>(d);
+  MapPtr map = std::make_shared<Map>(d);
 
   return map;
 }

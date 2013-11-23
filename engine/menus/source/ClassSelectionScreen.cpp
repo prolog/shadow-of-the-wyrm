@@ -1,5 +1,4 @@
 #include <string>
-#include <boost/make_shared.hpp>
 #include "ClassSelectionScreen.hpp"
 #include "RaceSelectionScreen.hpp"
 #include "Game.hpp"
@@ -25,10 +24,10 @@ void ClassSelectionScreen::initialize()
   Game& game_instance = Game::instance();
   ClassMap classes = game_instance.get_classes_ref();
 
-  TextComponentPtr class_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_CLASS));
+  TextComponentPtr class_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_CLASS));
 
   // Each option represents a player-selectable class.
-  OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
+  OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
   int current_id = 0;
   for (ClassMap::iterator classes_it = classes.begin(); classes_it != classes.end(); classes_it++)

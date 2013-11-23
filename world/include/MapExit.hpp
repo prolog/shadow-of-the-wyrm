@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <string>
 #include "ISerializable.hpp"
 #include "tiles.hpp"
@@ -31,4 +31,4 @@ class MapExit : public ISerializable
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<MapExit> MapExitPtr;
+typedef std::shared_ptr<MapExit> MapExitPtr;

@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include <map>
 #include <string>
 #include "common.hpp"
@@ -101,6 +101,6 @@ class Class
     std::string level_script;
 };
 
-typedef boost::shared_ptr<Class> ClassPtr;
+typedef std::shared_ptr<Class> ClassPtr;
 typedef std::map<std::string, ClassPtr> ClassMap;
 typedef std::map<EquipmentWornLocation, InitialItem> InitialEquipmentMap;

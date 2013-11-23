@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "MaterialFactory.hpp"
 #include "Cloth.hpp"
 #include "DragonScale.hpp"
@@ -30,43 +29,43 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
   switch(type)
   {
     case MATERIAL_TYPE_CLOTH:
-      material = boost::make_shared<Cloth>();
+      material = std::make_shared<Cloth>();
       break;
     case MATERIAL_TYPE_DRAGON_SCALE:
-      material = boost::make_shared<DragonScale>();
+      material = std::make_shared<DragonScale>();
       break;
     case MATERIAL_TYPE_GLASS:
-      material = boost::make_shared<Glass>();
+      material = std::make_shared<Glass>();
       break;
     case MATERIAL_TYPE_IRON:
-      material = boost::make_shared<Iron>();
+      material = std::make_shared<Iron>();
       break;
     case MATERIAL_TYPE_LEATHER:
-      material = boost::make_shared<Leather>();
+      material = std::make_shared<Leather>();
       break;
     case MATERIAL_TYPE_PAPER:
-      material = boost::make_shared<Paper>();
+      material = std::make_shared<Paper>();
       break;
     case MATERIAL_TYPE_STEEL:
-      material = boost::make_shared<Steel>();
+      material = std::make_shared<Steel>();
       break;
     case MATERIAL_TYPE_STONE:
-      material = boost::make_shared<Stone>();
+      material = std::make_shared<Stone>();
       break;
     case MATERIAL_TYPE_WOOD:
-      material = boost::make_shared<Wood>();
+      material = std::make_shared<Wood>();
       break;
     case MATERIAL_TYPE_MARBLE:
-      material = boost::make_shared<Marble>();
+      material = std::make_shared<Marble>();
       break;
     case MATERIAL_TYPE_ONYX:
-      material = boost::make_shared<Onyx>();
+      material = std::make_shared<Onyx>();
       break;
     case MATERIAL_TYPE_IVORY:
-      material = boost::make_shared<Ivory>();
+      material = std::make_shared<Ivory>();
       break;
     default:
-      material = boost::make_shared<Wood>();
+      material = std::make_shared<Wood>();
       break;
   }
 

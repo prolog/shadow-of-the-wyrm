@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "common.hpp"
 #include "Colours.hpp"
 #include "EquipmentTypes.hpp"
@@ -93,13 +93,13 @@ class Item : public ISerializable
     ItemIdentificationType get_identification_type() const;
     
     // Functions for stack management
-    virtual bool matches(boost::shared_ptr<Item> item);
+    virtual bool matches(std::shared_ptr<Item> item);
     
     // additional_item_attributes_match needs to be implemented by the subclasses of item.
     // It is included in the checks in matches, and is used to determine item type-specific
     // match behaviour. (e.g., potions need to match on spells, weapons need to match on
     // to-hit and damage, etc.).  The base class version just returns true.
-    virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
 
     virtual void set_effect_type(const EffectType new_effect_type);
     virtual EffectType get_effect_type() const;
@@ -150,5 +150,5 @@ class Item : public ISerializable
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };
 
-typedef boost::shared_ptr<Item> ItemPtr;
+typedef std::shared_ptr<Item> ItemPtr;
 typedef std::map<std::string, ItemPtr> ItemMap;

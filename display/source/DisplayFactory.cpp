@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CursesDisplay.hpp"
 #include "CursesKeyboardController.hpp"
 #include "DisplayConstants.hpp"
@@ -53,8 +52,8 @@ void DisplayFactory::initialize_display_map()
 {
   display_map.clear();
 
-  DisplayPtr curses_display = boost::make_shared<CursesDisplay>();
-  ControllerPtr curses_keyboard_controller = boost::make_shared<CursesKeyboardController>();
+  DisplayPtr curses_display = std::make_shared<CursesDisplay>();
+  ControllerPtr curses_keyboard_controller = std::make_shared<CursesKeyboardController>();
 
   display_map.insert(make_pair(CLASS_ID_CURSES_DISPLAY, make_pair(curses_display, curses_keyboard_controller)));
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "AttackTypes.hpp"
 #include "Creature.hpp"
 
@@ -14,4 +14,4 @@ class CombatTargetNumberCalculator
     AttackType attack_type;
 };
 
-typedef boost::shared_ptr<CombatTargetNumberCalculator> CombatTargetNumberCalculatorPtr;
+typedef std::shared_ptr<CombatTargetNumberCalculator> CombatTargetNumberCalculatorPtr;

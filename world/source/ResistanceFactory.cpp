@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ResistanceFactory.hpp"
 
 using namespace std;
@@ -13,9 +12,9 @@ ResistanceFactory::~ResistanceFactory()
 {
 }
 
-boost::shared_ptr<Resistance> ResistanceFactory::create_resistance(const ClassIdentifier ci)
+std::shared_ptr<Resistance> ResistanceFactory::create_resistance(const ClassIdentifier ci)
 {
-  boost::shared_ptr<Resistance> resistance;
+  std::shared_ptr<Resistance> resistance;
 
   if (resistances_map.empty())
   {
@@ -26,7 +25,7 @@ boost::shared_ptr<Resistance> ResistanceFactory::create_resistance(const ClassId
 
   if (r_it != resistances_map.end())
   {
-    resistance = boost::shared_ptr<Resistance>(r_it->second->clone());
+    resistance = std::shared_ptr<Resistance>(r_it->second->clone());
   }
 
   return resistance;
@@ -36,17 +35,17 @@ void ResistanceFactory::initialize_resistances_map()
 {
   resistances_map.clear();
 
-  boost::shared_ptr<Resistance> slash     = boost::make_shared<SlashResistance>();
-  boost::shared_ptr<Resistance> pierce    = boost::make_shared<PierceResistance>();
-  boost::shared_ptr<Resistance> pound     = boost::make_shared<PoundResistance>();
-  boost::shared_ptr<Resistance> heat      = boost::make_shared<HeatResistance>();
-  boost::shared_ptr<Resistance> cold      = boost::make_shared<ColdResistance>();
-  boost::shared_ptr<Resistance> acid      = boost::make_shared<AcidResistance>();
-  boost::shared_ptr<Resistance> poison    = boost::make_shared<PoisonResistance>();
-  boost::shared_ptr<Resistance> holy      = boost::make_shared<HolyResistance>();
-  boost::shared_ptr<Resistance> shadow    = boost::make_shared<ShadowResistance>();
-  boost::shared_ptr<Resistance> arcane    = boost::make_shared<ArcaneResistance>();
-  boost::shared_ptr<Resistance> lightning = boost::make_shared<LightningResistance>();
+  std::shared_ptr<Resistance> slash     = std::make_shared<SlashResistance>();
+  std::shared_ptr<Resistance> pierce    = std::make_shared<PierceResistance>();
+  std::shared_ptr<Resistance> pound     = std::make_shared<PoundResistance>();
+  std::shared_ptr<Resistance> heat      = std::make_shared<HeatResistance>();
+  std::shared_ptr<Resistance> cold      = std::make_shared<ColdResistance>();
+  std::shared_ptr<Resistance> acid      = std::make_shared<AcidResistance>();
+  std::shared_ptr<Resistance> poison    = std::make_shared<PoisonResistance>();
+  std::shared_ptr<Resistance> holy      = std::make_shared<HolyResistance>();
+  std::shared_ptr<Resistance> shadow    = std::make_shared<ShadowResistance>();
+  std::shared_ptr<Resistance> arcane    = std::make_shared<ArcaneResistance>();
+  std::shared_ptr<Resistance> lightning = std::make_shared<LightningResistance>();
 
   resistances_map.insert(make_pair(CLASS_ID_SLASH_RESISTANCE, slash));
   resistances_map.insert(make_pair(CLASS_ID_PIERCE_RESISTANCE, pierce));

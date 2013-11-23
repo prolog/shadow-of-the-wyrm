@@ -2,7 +2,7 @@
 
 TEST(SL_World_Calculator_StoneCalculator, calc_pct_chance_stone)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(3);
   
   creature->get_resistances().set_resistance_value(DAMAGE_TYPE_SHADOW, 1.0);

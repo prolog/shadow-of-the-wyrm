@@ -9,7 +9,7 @@
 #include "ReadAction.hpp"
 
 using namespace std;
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 // Read a scroll or spellbook.  Scrolls cast a single spell, while
 // spellbooks contain spells, and can be used to learn an individual
@@ -32,7 +32,7 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
     
     if (selected_readable_item)
     {
-      ReadablePtr readable = boost::dynamic_pointer_cast<Readable>(selected_readable_item);
+      ReadablePtr readable = std::dynamic_pointer_cast<Readable>(selected_readable_item);
 
       if (readable)
       {

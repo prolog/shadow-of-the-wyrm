@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ActionTextKeys.hpp"
 #include "Commands.hpp"
 #include "Conversion.hpp"
@@ -276,8 +275,8 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   // Make the creature select a direction.
-  CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
+  CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
@@ -298,8 +297,8 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    boost::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = boost::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    std::shared_ptr<DirectionalCommand> dcommand;
+    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
 
     if (dcommand)
     {
@@ -360,8 +359,8 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
   string spell_id = sss.get_selected_spell(menu_selection);
 
   DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
-  CommandFactoryPtr command_factory    = boost::make_shared<MagicCommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = boost::make_shared<MagicKeyboardCommandMap>();
+  CommandFactoryPtr command_factory    = std::make_shared<MagicCommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = std::make_shared<MagicKeyboardCommandMap>();
 
   if (decision_strategy)
   {

@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Command.hpp"
 #include "Directions.hpp"
 
@@ -37,7 +37,7 @@ class DirectionalCommand : public Command
     Direction direction;
 };
 
-typedef boost::shared_ptr<DirectionalCommand> DirectionalCommandPtr;
+typedef std::shared_ptr<DirectionalCommand> DirectionalCommandPtr;
 
 class MovementCommand : public DirectionalCommand
 {

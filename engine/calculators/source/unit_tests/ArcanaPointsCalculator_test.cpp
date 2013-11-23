@@ -1,5 +1,4 @@
 #include "gtest/gtest.h"
-#include <boost/make_shared.hpp>
 
 TEST(SL_Engine_Calculators_ArcanaPointsCalculator, calculate_arcana_point_bonus)
 {
@@ -13,7 +12,7 @@ TEST(SL_Engine_Calculators_ArcanaPointsCalculator, calculate_arcana_point_bonus)
   c.set_willpower(14);
   c.set_charisma(16);
 
-  CreaturePtr cp = boost::make_shared<Creature>(c);
+  CreaturePtr cp = std::make_shared<Creature>(c);
 
   EXPECT_EQ(2, ArcanaPointsCalculator::calculate_arcana_points_bonus(cp));
 

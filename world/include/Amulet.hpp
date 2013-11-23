@@ -13,4 +13,4 @@ class Amulet : public Wearable
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Amulet> AmuletPtr;
+typedef std::shared_ptr<Amulet> AmuletPtr;

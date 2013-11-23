@@ -1,6 +1,5 @@
 #include <iostream>
 #include <boost/math/common_factor.hpp>
-#include <boost/make_shared.hpp>
 #include "TileGenerator.hpp"
 #include "StreamGenerator.hpp"
 #include "Dimensions.hpp"
@@ -13,7 +12,7 @@ using namespace std;
 
 MapPtr StreamGenerator::generate(MapPtr map)
 {
-  MapPtr result_map = boost::make_shared<Map>(*map);
+  MapPtr result_map = std::make_shared<Map>(*map);
   Dimensions dimensions = map->size();
 
   result_map = generate_stream(map, RNG::range(0, dimensions.get_x()));
@@ -25,7 +24,7 @@ MapPtr StreamGenerator::generate_stream(MapPtr map, const int start_col)
 {
   TileGenerator tg;
 
-  MapPtr result_map = boost::make_shared<Map>(*map);
+  MapPtr result_map = std::make_shared<Map>(*map);
   Dimensions d = result_map->size();
 
   int max_rows = d.get_y();

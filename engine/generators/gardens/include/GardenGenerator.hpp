@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Map.hpp"
 
 // Generates a garden on top of a given map, over the given row/col.
@@ -24,5 +24,5 @@ class GardenGenerator
     int window_end_col_inc; // end col inclusive - use <=
 };
 
-typedef boost::shared_ptr<GardenGenerator> GardenGeneratorPtr;
+typedef std::shared_ptr<GardenGenerator> GardenGeneratorPtr;
 

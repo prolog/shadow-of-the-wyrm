@@ -21,4 +21,4 @@ class Consumable : public Item
     int nutrition;
 };
 
-typedef boost::shared_ptr<Consumable> ConsumablePtr;
+typedef std::shared_ptr<Consumable> ConsumablePtr;

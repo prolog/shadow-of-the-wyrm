@@ -1,6 +1,6 @@
 #pragma once
 #include <string>
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Colours.hpp"
 #include "MaterialTypes.hpp"
 
@@ -28,4 +28,4 @@ class Material
     virtual Material* clone() = 0;
 };
 
-typedef boost::shared_ptr<Material> MaterialPtr;
+typedef std::shared_ptr<Material> MaterialPtr;

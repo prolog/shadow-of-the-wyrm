@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CreatureFeatures.hpp"
 #include "TextComponent.hpp"
 #include "OptionsComponent.hpp"
@@ -16,9 +15,9 @@ SexSelectionScreen::SexSelectionScreen(DisplayPtr new_display)
 
 void SexSelectionScreen::initialize()
 {
-  TextComponentPtr sex_selection_text = boost::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SEX));
+  TextComponentPtr sex_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SEX));
 
-  OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
+  OptionsComponentPtr options = std::make_shared<OptionsComponent>();
   string male = StringTable::get(TextKeys::SEX_MALE);
   string female = StringTable::get(TextKeys::SEX_FEMALE);
 

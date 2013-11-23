@@ -1,9 +1,8 @@
 #include "gtest/gtest.h"
-#include <boost/make_shared.hpp>
 
 TEST(SL_Engine_Magic_MagicalAbilityChecker, has_magical_knowledge)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   MagicalAbilityChecker mac;
   IndividualSpellKnowledge isk;
 
@@ -22,7 +21,7 @@ TEST(SL_Engine_Magic_MagicalAbilityChecker, has_magical_knowledge)
 
 TEST(SL_Engine_Magic_MagicalAbilityChecker, has_power)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   MagicalAbilityChecker mac;
 
   Spell spell;

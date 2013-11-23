@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 
 // A class for querying whether certain things should be done, given the
 // type of map.
@@ -10,5 +10,5 @@ class IMapTypeQuery
     virtual ~IMapTypeQuery() {};
 };
 
-typedef boost::shared_ptr<IMapTypeQuery> IMapTypeQueryPtr;
+typedef std::shared_ptr<IMapTypeQuery> IMapTypeQueryPtr;
 

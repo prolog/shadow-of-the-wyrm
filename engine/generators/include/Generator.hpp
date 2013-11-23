@@ -72,4 +72,4 @@ namespace SL
   };
 }
 
-typedef boost::shared_ptr<SL::Generator> GeneratorPtr;
+typedef std::shared_ptr<SL::Generator> GeneratorPtr;

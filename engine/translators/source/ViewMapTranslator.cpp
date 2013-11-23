@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "MapUtils.hpp"
 #include "ViewMapTranslator.hpp"
 
@@ -19,7 +18,7 @@ MapPtr ViewMapTranslator::create_view_map_around_tile(MapPtr original_map, const
   Dimensions original_dimensions = original_map->size();
   Dimensions dimensions = MapUtils::get_dimensions(original_map, centre, size);
 
-  MapPtr view_map = boost::make_shared<Map>(dimensions);
+  MapPtr view_map = std::make_shared<Map>(dimensions);
   view_map->set_original_size(original_dimensions);
   
   // Use the same shared pointer.  This is only a temporary view map, so that's fine.

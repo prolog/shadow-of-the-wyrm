@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Creature.hpp"
 
 // Interface representing a set of possible consequences for a particular
@@ -32,4 +32,4 @@ class SpellFailureConsequences
     virtual std::string get_summoned_creatures_message_sid() const = 0;
 };
 
-typedef boost::shared_ptr<SpellFailureConsequences> SpellFailureConsequencesPtr;
+typedef std::shared_ptr<SpellFailureConsequences> SpellFailureConsequencesPtr;

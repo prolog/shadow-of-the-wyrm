@@ -27,4 +27,4 @@ class Ammunition : public RangedWeapon
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Ammunition> AmmunitionPtr;
+typedef std::shared_ptr<Ammunition> AmmunitionPtr;

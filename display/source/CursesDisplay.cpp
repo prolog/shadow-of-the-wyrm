@@ -2,7 +2,6 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
-#include <boost/make_shared.hpp>
 #include <boost/tokenizer.hpp>
 #include "Animation.hpp"
 #include "Colours.hpp"
@@ -483,7 +482,7 @@ void CursesDisplay::draw_tile(const uint y, const uint x, const DisplayTile& til
 
 AnimationFactoryPtr CursesDisplay::create_animation_factory() const
 {
-  AnimationFactoryPtr curses_animation_factory = boost::make_shared<CursesAnimationFactory>();
+  AnimationFactoryPtr curses_animation_factory = std::make_shared<CursesAnimationFactory>();
   return curses_animation_factory;
 }
 

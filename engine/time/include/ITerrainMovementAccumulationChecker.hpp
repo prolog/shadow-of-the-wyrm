@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Creature.hpp"
 #include "SkillManager.hpp"
 
@@ -14,4 +14,4 @@ class ITerrainMovementAccumulationChecker
     SkillManager sm;
 };
 
-typedef boost::shared_ptr<ITerrainMovementAccumulationChecker> ITerrainMovementAccumulationCheckerPtr;
+typedef std::shared_ptr<ITerrainMovementAccumulationChecker> ITerrainMovementAccumulationCheckerPtr;

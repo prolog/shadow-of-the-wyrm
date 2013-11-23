@@ -5,7 +5,7 @@
 #include "WeaponManager.hpp"
 
 using namespace std;
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 // Check to see if the creature is capable of doing ranged combat by
 // performing a number of checks on their equipment, and the configuration

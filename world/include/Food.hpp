@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Consumable.hpp"
 
 class Food : public Consumable
@@ -17,4 +17,4 @@ class Food : public Consumable
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Food> FoodPtr;
+typedef std::shared_ptr<Food> FoodPtr;

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "ExposedCalculator.hpp"
 #include "ExposedStatusEffect.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -10,7 +9,7 @@ const int ExposedStatusEffect::EXPOSED_EVADE_PENALTY = -15;
 
 ExposedStatusEffect::ExposedStatusEffect()
 {
-  status_calc = boost::make_shared<ExposedCalculator>();
+  status_calc = std::make_shared<ExposedCalculator>();
 }
 
 string ExposedStatusEffect::get_player_application_message() const

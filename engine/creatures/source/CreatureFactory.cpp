@@ -1,5 +1,4 @@
 #include <cmath>
-#include <boost/make_shared.hpp>
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
@@ -68,7 +67,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
     CreaturePtr creature_template = c_it->second;
       
     Creature creature_instance = *creature_template;
-    creature = boost::make_shared<Creature>(creature_instance);
+    creature = std::make_shared<Creature>(creature_instance);
     DecisionStrategyPtr template_decision_strategy = creature->get_decision_strategy();
 
     creature = create_by_race_and_class(action_manager,
@@ -151,7 +150,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
   // Set a null controller - this will be overridden later if the creature is a player, or has some
   // special circumstances.
-  ControllerPtr null_controller = boost::make_shared<NullKeyboardController>();
+  ControllerPtr null_controller = std::make_shared<NullKeyboardController>();
   creature.set_is_player(false, null_controller);
 
   creature.set_name(creature_name);
@@ -195,7 +194,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     creature.set_religion(religion);
   }
 
-  CreaturePtr creaturep = boost::make_shared<Creature>(creature);
+  CreaturePtr creaturep = std::make_shared<Creature>(creature);
 
   // Now that everything has been set, set any calculated values.
   if (creaturep)
@@ -282,7 +281,7 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
   AgeInfo age_info = race->get_age_info();
   creature = set_age(creature, age_info);
 
-  CreaturePtr cp = boost::make_shared<Creature>(creature);
+  CreaturePtr cp = std::make_shared<Creature>(creature);
   int initial_hp = RNG::dice(3, 3);
   int hp_bonus = HitPointsCalculator::calculate_hit_points_bonus(cp);
 

@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Map.hpp"
 
 class FieldOfViewStrategy
@@ -18,4 +18,4 @@ class FieldOfViewStrategy
     bool set_fov_tile_view_flag;
 };
 
-typedef boost::shared_ptr<FieldOfViewStrategy> FieldOfViewStrategyPtr;
+typedef std::shared_ptr<FieldOfViewStrategy> FieldOfViewStrategyPtr;

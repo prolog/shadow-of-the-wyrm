@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Menu.hpp"
 
 using namespace boost;
@@ -9,7 +8,7 @@ Menu::Menu(DisplayPtr new_display)
 : line_increment(2)
 {
   game_display = new_display;
-  user_prompt = boost::make_shared<NullPrompt>();
+  user_prompt = std::make_shared<NullPrompt>();
 }
 
 Menu::~Menu()

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "CoordUtils.hpp"
 #include "ScatteredSettlementGenerator.hpp"
 #include "RNG.hpp"
@@ -29,7 +28,7 @@ MapPtr ScatteredSettlementGenerator::generate(const Dimensions& dim)
 
 MapPtr ScatteredSettlementGenerator::generate()
 {
-  MapPtr map = boost::make_shared<Map>(*base_map);
+  MapPtr map = std::make_shared<Map>(*base_map);
   current_buildings.clear();
   
   generate_scattered_settlement(map);

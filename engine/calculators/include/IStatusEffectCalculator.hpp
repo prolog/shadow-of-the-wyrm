@@ -11,4 +11,4 @@ class IStatusEffectCalculator
     virtual int calculate_duration_in_minutes(CreaturePtr creature) const = 0;
 };
 
-typedef boost::shared_ptr<IStatusEffectCalculator> IStatusEffectCalculatorPtr;
+typedef std::shared_ptr<IStatusEffectCalculator> IStatusEffectCalculatorPtr;

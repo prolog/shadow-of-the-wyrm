@@ -14,7 +14,7 @@
 #include "EvokeAction.hpp"
 
 using namespace std;
-using boost::dynamic_pointer_cast;
+using std::dynamic_pointer_cast;
 
 // Select a wand to evoke
 ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const am)
@@ -153,8 +153,8 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   // Make the creature select a direction.
-  CommandFactoryPtr command_factory = boost::make_shared<CommandFactory>();
-  KeyboardCommandMapPtr kb_command_map = boost::make_shared<KeyboardCommandMap>();
+  CommandFactoryPtr command_factory = std::make_shared<CommandFactory>();
+  KeyboardCommandMapPtr kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   // If the creature is the player, inform the player that a direction is needed.
   if (creature->get_is_player())
@@ -168,8 +168,8 @@ pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
   if (base_command)
   {
     // Check to see if it's an actual directional command
-    boost::shared_ptr<DirectionalCommand> dcommand;
-    dcommand = boost::dynamic_pointer_cast<DirectionalCommand>(base_command);
+    std::shared_ptr<DirectionalCommand> dcommand;
+    dcommand = std::dynamic_pointer_cast<DirectionalCommand>(base_command);
 
     if (dcommand)
     {

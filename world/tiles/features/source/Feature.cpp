@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Feature.hpp"
 #include "FeatureFactory.hpp"
 #include "MaterialFactory.hpp"
@@ -26,12 +25,12 @@ Feature& Feature::operator=(const Feature& feature)
   {
     if (feature.trap)
     {
-      trap = boost::make_shared<Trap>(*feature.trap);
+      trap = std::make_shared<Trap>(*feature.trap);
     }
 
     if (feature.lock)
     {
-      lock = boost::make_shared<Lock>(*feature.lock);
+      lock = std::make_shared<Lock>(*feature.lock);
     }
 
     material = feature.material;

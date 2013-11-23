@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "Inventory.hpp"
 #include "FeatureFactory.hpp"
 #include "MapFactory.hpp"
@@ -374,7 +373,7 @@ bool Tile::deserialize(istream& stream)
 
   if (creature_clid != CLASS_ID_NULL)
   {
-    creature = boost::make_shared<Creature>();
+    creature = std::make_shared<Creature>();
     creature->deserialize(stream);
   }
 

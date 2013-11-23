@@ -2,7 +2,7 @@
 
 TEST(SL_World_Calculator_StunnedCalculator, calc_pct_chance_stunned)
 {
-  CreaturePtr creature = boost::make_shared<Creature>();
+  CreaturePtr creature = std::make_shared<Creature>();
   creature->set_dexterity(3);
   
   creature->get_resistances().set_resistance_value(DAMAGE_TYPE_POUND, 1.0);

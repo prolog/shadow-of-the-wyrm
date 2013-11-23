@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "DescriberFactory.hpp"
 #include "SpellSelectionScreen.hpp"
 #include "Game.hpp"
@@ -44,7 +43,7 @@ void SpellSelectionScreen::initialize()
   int i = 0;
   if (creature)
   {
-    OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
+    OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
     // Only show the value created by the SpellDescriber.
     options->set_show_option_descriptions(false);
@@ -87,7 +86,7 @@ void SpellSelectionScreen::initialize()
 
   // Add the info prompt at the bottom of the screen.
   // Set the prompt
-  PromptPtr spellcasting_prompt = boost::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr spellcasting_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
   spellcasting_prompt->set_text_sid(SpellcastingTextKeys::SPELLCASTING_SCREEN_PROMPT);
   spellcasting_prompt->set_accept_any_input(true);
   user_prompt = spellcasting_prompt;

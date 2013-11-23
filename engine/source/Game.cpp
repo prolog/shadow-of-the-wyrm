@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
 #include "Conversion.hpp"
@@ -249,8 +248,8 @@ void Game::update_display(CreaturePtr current_player, MapPtr current_map, MapPtr
 
 void Game::go()
 {
-  game_command_factory = boost::make_shared<CommandFactory>();
-  game_kb_command_map = boost::make_shared<KeyboardCommandMap>();
+  game_command_factory = std::make_shared<CommandFactory>();
+  game_kb_command_map = std::make_shared<KeyboardCommandMap>();
 
   MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();

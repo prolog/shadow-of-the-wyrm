@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "WorldMapTile.hpp"
 #include "WorshipSiteTypes.hpp"
 
@@ -28,4 +28,4 @@ class WorshipSiteTile : public WorldMapLandmarkTile
     virtual ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<WorshipSiteTile> WorshipSiteTilePtr;
+typedef std::shared_ptr<WorshipSiteTile> WorshipSiteTilePtr;

@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/shared_ptr.hpp>
+#include <memory>
 #include "Creature.hpp"
 #include "Map.hpp"
 
@@ -17,4 +17,4 @@ class DeathManager
     MapPtr map;
 };
 
-typedef boost::shared_ptr<DeathManager> DeathManagerPtr;
+typedef std::shared_ptr<DeathManager> DeathManagerPtr;

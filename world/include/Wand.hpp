@@ -11,7 +11,7 @@ class Wand : public Item
     ~Wand();
 
     bool operator==(const Wand& rhs) const;
-    virtual bool additional_item_attributes_match(boost::shared_ptr<Item> i);
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
     bool wand_properties_match(const Wand& rhs) const;
 
     virtual std::string get_synopsis() const;
@@ -59,4 +59,4 @@ class Wand : public Item
     ClassIdentifier internal_class_identifier() const;
 };
 
-typedef boost::shared_ptr<Wand> WandPtr;
+typedef std::shared_ptr<Wand> WandPtr;

@@ -1,4 +1,3 @@
-#include <boost/make_shared.hpp>
 #include "RuinsGenerator.hpp"
 #include "SettlementRuinsGenerator.hpp"
 #include "KeepRuinsGenerator.hpp"
@@ -29,7 +28,7 @@ MapPtr RuinsGenerator::generate(MapPtr map, const RuinsType& ruins_type)
 // top left corner of the map.
 MapPtr RuinsGenerator::generate_ruined_settlement(MapPtr map)
 {
-  MapPtr result_map = boost::make_shared<Map>(*map);
+  MapPtr result_map = std::make_shared<Map>(*map);
 
   return result_map;
 }
