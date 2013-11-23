@@ -1,5 +1,4 @@
 #include <sstream>
-#include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFilterFactory.hpp"
@@ -26,7 +25,7 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
   {
     EquipmentMap eq = creature->get_equipment().get_equipment();
         
-    BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq)
+    for (const EquipmentMap::value_type& eq_pair : eq)
     {
       bool passes_filter = (!filter_v);
       
@@ -35,7 +34,7 @@ void ItemIdentifier::set_equipment_identified(CreaturePtr creature, const list<I
       if (filter_v && item)
       {
         const list<IItemFilterPtr> filters = *filter_v;
-        BOOST_FOREACH(IItemFilterPtr filter, filters)
+        for (IItemFilterPtr filter : filters)
         {
           passes_filter = filter->passes_filter(item);
           
@@ -63,14 +62,14 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
   {
     const list<ItemPtr>& items = creature->get_inventory().get_items_cref();
 
-    BOOST_FOREACH(ItemPtr item, items)
+    for (ItemPtr item : items)
     {
       bool passes_filter = (!filter_v);
       
       if (filter_v)
       {
         list<IItemFilterPtr> filters = *filter_v;
-        BOOST_FOREACH(IItemFilterPtr filter, filters)
+        for (IItemFilterPtr filter : filters)
         {
           passes_filter = filter->passes_filter(item);
           

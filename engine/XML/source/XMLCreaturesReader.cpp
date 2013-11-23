@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "CombatConstants.hpp"
 #include "CreatureGenerationValues.hpp"
@@ -19,7 +18,7 @@ pair<CreatureMap, CreatureGenerationValuesMap> XMLCreaturesReader::get_creatures
   {
     vector<XMLNode> creature_nodes = XMLUtils::get_elements_by_local_name(xml_configuration_creatures_node, "Creature");
 
-    BOOST_FOREACH(XMLNode creature_node, creature_nodes)
+    for (const XMLNode& creature_node : creature_nodes)
     {
       pair<CreaturePtr, CreatureGenerationValues> creature_details = parse_creature(creature_node);
       CreaturePtr creature = creature_details.first;
@@ -177,7 +176,7 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
     {
       vector<XMLNode> allowable_terrain_nodes = XMLUtils::get_elements_by_local_name(allowable_terrain_types_node, "TileType");
 
-      BOOST_FOREACH(XMLNode terrain_node, allowable_terrain_nodes)
+      for (const XMLNode& terrain_node : allowable_terrain_nodes)
       {
         TileType att = static_cast<TileType>(XMLUtils::get_node_int_value(terrain_node, TILE_TYPE_UNDEFINED));
         cgv.add_allowable_terrain_type(att);

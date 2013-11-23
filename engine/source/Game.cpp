@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include <boost/timer/timer.hpp>
 #include "global_prototypes.hpp"
@@ -155,7 +154,7 @@ const ItemMap& Game::get_items_ref() const
 
 void Game::set_custom_maps(const vector<MapPtr>& custom_maps)
 {
-  BOOST_FOREACH(MapPtr custom_map, custom_maps)
+  for (MapPtr custom_map : custom_maps)
   {
     string id = custom_map->get_map_id();
     map_registry.set_map(id, custom_map);
@@ -619,7 +618,7 @@ bool Game::serialize(ostream& stream)
 
   if (cgv_size > 0)
   {
-    BOOST_FOREACH(CreatureGenerationValuesMap::value_type& cgv_val, creature_generation_values)
+    for (CreatureGenerationValuesMap::value_type& cgv_val : creature_generation_values)
     {
       Serialize::write_string(stream, cgv_val.first);
       cgv_val.second.serialize(stream);
@@ -632,7 +631,7 @@ bool Game::serialize(ostream& stream)
 
   if (igv_size > 0)
   {
-    BOOST_FOREACH(GenerationValuesMap::value_type& igv_val, item_generation_values)
+    for (GenerationValuesMap::value_type& igv_val : item_generation_values)
     {
       Serialize::write_string(stream, igv_val.first);
       igv_val.second.serialize(stream);
@@ -646,7 +645,7 @@ bool Game::serialize(ostream& stream)
   
   string item_id;
   ItemPtr item;
-  BOOST_FOREACH(ItemMap::value_type& item_pair, items)
+  for (const ItemMap::value_type& item_pair : items)
   {
     item_id = item_pair.first;
     Serialize::write_string(stream, item_id);
@@ -669,7 +668,7 @@ bool Game::serialize(ostream& stream)
   size_t num_worlds = worlds.size();
   Serialize::write_size_t(stream, num_worlds);
 
-  BOOST_FOREACH(WorldPtr world, worlds)
+  for (WorldPtr world : worlds)
   {
     world->serialize(stream);
   }

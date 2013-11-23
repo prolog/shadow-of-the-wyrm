@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Inventory.hpp"
 #include "FeatureFactory.hpp"
@@ -339,7 +338,7 @@ bool Tile::serialize(ostream& stream)
 
   Serialize::write_size_t(stream, map_exits.size());
 
-  BOOST_FOREACH(TileExitMap::value_type& tile_exit_map_pair, map_exits)
+  for (TileExitMap::value_type& tile_exit_map_pair : map_exits)
   {
     Direction d = tile_exit_map_pair.first;
     MapExitPtr map_exit = tile_exit_map_pair.second;

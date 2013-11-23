@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "CreatureGenerationValues.hpp"
 #include "Serialize.hpp"
 
@@ -93,7 +92,7 @@ bool CreatureGenerationValues::serialize(ostream& stream)
 
   if (terrain_types_size > 0)
   {
-    BOOST_FOREACH(TileType allowable_type, allowable_terrain_types)
+    for (const TileType allowable_type : allowable_terrain_types)
     {
       Serialize::write_enum(stream, allowable_type);
     }

@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "MaterialFactory.hpp"
 #include "XMLItemsReaders.hpp"
@@ -167,7 +166,7 @@ std::pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_misc_items(const XML
   {
     vector<XMLNode> misc_items_nodes = XMLUtils::get_elements_by_local_name(misc_items_node, "Item");
     
-    BOOST_FOREACH(XMLNode node, misc_items_nodes)
+    for (const XMLNode& node : misc_items_nodes)
     {
       if (!node.is_null())
       {
@@ -196,7 +195,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& arm
   {
     vector<XMLNode> armour_nodes = XMLUtils::get_elements_by_local_name(armours_node, "Armour");
     
-    BOOST_FOREACH(XMLNode node, armour_nodes)
+    for (const XMLNode& node : armour_nodes)
     {
       if (!node.is_null())
       {
@@ -224,7 +223,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_weapons(const XMLNode& we
   {
     vector<XMLNode> weapons_nodes = XMLUtils::get_elements_by_local_name(weapons_node, "Weapon");
     
-    BOOST_FOREACH(XMLNode node, weapons_nodes)
+    for (const XMLNode& node : weapons_nodes)
     {
       MeleeWeaponPtr weapon = boost::make_shared<MeleeWeapon>();
       GenerationValues igv;
@@ -249,7 +248,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ranged_weapons(const XMLN
   {
     vector<XMLNode> ranged_weapons_nodes = XMLUtils::get_elements_by_local_name(ranged_weapons_node, "Weapon");
     
-    BOOST_FOREACH(XMLNode node, ranged_weapons_nodes)
+    for (const XMLNode& node : ranged_weapons_nodes)
     {
       RangedWeaponPtr ranged_weapon = boost::make_shared<RangedWeapon>();
       GenerationValues igv;
@@ -274,7 +273,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_ammunition(const XMLNode&
   {
     vector<XMLNode> missiles_nodes = XMLUtils::get_elements_by_local_name(ammunition_node, "Missile");
     
-    BOOST_FOREACH(XMLNode node, missiles_nodes)
+    for (const XMLNode& node : missiles_nodes)
     {
       WeaponPtr ammunition = boost::make_shared<Ammunition>();
       GenerationValues igv;
@@ -299,7 +298,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_food(const XMLNode& food_
   {
     vector<XMLNode> food_nodes = XMLUtils::get_elements_by_local_name(food_node, "Food");
     
-    BOOST_FOREACH(XMLNode node, food_nodes)
+    for (const XMLNode& node : food_nodes)
     {
       FoodPtr food = boost::make_shared<Food>();
       GenerationValues igv;
@@ -324,7 +323,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_plants(const XMLNode& pla
   {
     vector<XMLNode> plants_nodes = XMLUtils::get_elements_by_local_name(plants_node, "Plant");
     
-    BOOST_FOREACH(XMLNode node, plants_nodes)
+    for (const XMLNode& node : plants_nodes)
     {
       PlantPtr plant = boost::make_shared<Plant>();
       GenerationValues gv;
@@ -349,7 +348,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_boats(const XMLNode& boat
   {
     vector<XMLNode> boats_nodes = XMLUtils::get_elements_by_local_name(boats_node, "Boat");
     
-    BOOST_FOREACH(XMLNode node, boats_nodes)
+    for (const XMLNode& node : boats_nodes)
     {
       BoatPtr boat = boost::make_shared<Boat>();
       GenerationValues igv;
@@ -374,7 +373,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_potions(const XMLNode& po
   {
     vector <XMLNode> potions_nodes = XMLUtils::get_elements_by_local_name(potions_node, "Potion");
     
-    BOOST_FOREACH(XMLNode node, potions_nodes)
+    for (const XMLNode& node : potions_nodes)
     {
       PotionPtr potion = boost::make_shared<Potion>();
       GenerationValues igv;
@@ -399,7 +398,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_scrolls(const XMLNode& sc
   {
     vector <XMLNode> scrolls_nodes = XMLUtils::get_elements_by_local_name(scrolls_node, "Scroll");
 
-    BOOST_FOREACH(XMLNode node, scrolls_nodes)
+    for (const XMLNode& node : scrolls_nodes)
     {
       ScrollPtr scroll = boost::make_shared<Scroll>();
       GenerationValues igv;
@@ -424,7 +423,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_currencies(const XMLNode&
   {
     vector<XMLNode> currencies_nodes = XMLUtils::get_elements_by_local_name(currencies_node, "Currency");
     
-    BOOST_FOREACH(XMLNode node, currencies_nodes)
+    for (const XMLNode& node : currencies_nodes)
     {
       CurrencyPtr currency = boost::make_shared<Currency>();
       GenerationValues igv;
@@ -449,7 +448,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_tools(const XMLNode& tool
   {
     vector<XMLNode> tools_nodes = XMLUtils::get_elements_by_local_name(tools_node, "Tool");
 
-    BOOST_FOREACH(XMLNode node, tools_nodes)
+    for (const XMLNode& node : tools_nodes)
     {
       ToolPtr tool = boost::make_shared<Tool>();
       GenerationValues igv;
@@ -474,7 +473,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_wands(const XMLNode& wand
   {
     vector<XMLNode> wands_nodes = XMLUtils::get_elements_by_local_name(wands_node, "Wand");
 
-    BOOST_FOREACH(XMLNode node, wands_nodes)
+    for (const XMLNode& node : wands_nodes)
     {
       WandPtr wand = boost::make_shared<Wand>();
       GenerationValues igv;
@@ -499,7 +498,7 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_spellbooks(const XMLNode&
   {
     vector<XMLNode> spellbooks_nodes = XMLUtils::get_elements_by_local_name(spellbooks_node, "Spellbook");
 
-    BOOST_FOREACH(XMLNode node, spellbooks_nodes)
+    for (const XMLNode& node : spellbooks_nodes)
     {
       SpellbookPtr book = boost::make_shared<Spellbook>();
       GenerationValues igv;

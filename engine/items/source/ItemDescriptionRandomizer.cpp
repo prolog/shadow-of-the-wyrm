@@ -1,5 +1,4 @@
 #include <algorithm>
-#include <boost/foreach.hpp>
 #include "ItemDescriptionRandomizer.hpp"
 #include "RNG.hpp"
 
@@ -19,7 +18,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
 
   // For each type to randomize, mark the appropriate location in the lookup
   // array as true, and add an entry to the map of randomized entries.
-  BOOST_FOREACH(ItemType random_type, types_to_randomize)
+  for(const ItemType random_type : types_to_randomize)
   {
     type_inclusion[random_type] = true;
 
@@ -31,7 +30,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
   // For each item in the item map, check its item type.  If the item type
   // is in the inclusion list for randomization, add the appropriate details
   // to the randomized entries.
-  BOOST_FOREACH(ItemMap::value_type& item_pair, items)
+  for (const ItemMap::value_type& item_pair : items)
   {
     ItemPtr item = item_pair.second;
 
@@ -50,7 +49,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
 
   // Now that each type to be randomized has a vector of unidentified string
   // IDs, shuffle them to get a random order.
-  BOOST_FOREACH(RandomizedDescriptionMap::value_type& rmap_pair, randomized_entries)
+  for (RandomizedDescriptionMap::value_type& rmap_pair : randomized_entries)
   {
     vector<pair<string,pair<string, Colour>>>& randomized_descs = rmap_pair.second;
     
@@ -61,7 +60,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
   // If the item's type is in the inclusion set, grab the appropriate
   // randomized vector, select and remove the last element, and apply it to
   // the current item.
-  BOOST_FOREACH(ItemMap::value_type& item_pair, items)
+  for (const ItemMap::value_type& item_pair : items)
   {
     ItemPtr item = item_pair.second;
 

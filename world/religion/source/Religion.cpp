@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Religion.hpp"
 #include "Serialize.hpp"
 
@@ -95,7 +94,7 @@ bool Religion::serialize(ostream& stream)
   Serialize::write_string(stream, deity_id);
   Serialize::write_size_t(stream, deity_relations.size());
 
-  BOOST_FOREACH(DeityRelations::value_type& relation, deity_relations)
+  for (DeityRelations::value_type& relation : deity_relations)
   {
     Serialize::write_string(stream, relation.first);
     relation.second.serialize(stream);

@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "SavageLandsEngine.hpp"
 #include "XMLConfigurationReader.hpp"
 #include "Class.hpp"
@@ -248,7 +247,7 @@ bool SavageLandsEngine::process_new_game()
     item_id.set_possessions_identified(player);
     EquipmentMap eq_map = player->get_equipment().get_equipment();
 
-    BOOST_FOREACH(EquipmentMap::value_type& eq_pair, eq_map)
+    for (const EquipmentMap::value_type& eq_pair : eq_map)
     {
       ItemPtr item = eq_pair.second;
       if (item && item->get_status() == ITEM_STATUS_CURSED) item->set_status(ITEM_STATUS_UNCURSED);

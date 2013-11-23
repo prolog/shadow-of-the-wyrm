@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "DeitySelectionScreen.hpp"
 #include "Game.hpp"
@@ -30,7 +29,7 @@ void DeitySelectionScreen::initialize()
     OptionsComponentPtr options = boost::make_shared<OptionsComponent>();
     int current_id = 0;
     
-    BOOST_FOREACH(string deity_id, deity_ids)
+    for (const string& deity_id : deity_ids)
     {
       DeityMap::iterator d_it = deities.find(deity_id);
       

@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "Game.hpp"
 #include "Serialize.hpp"
 #include "WorldTimeKeeper.hpp"
@@ -96,7 +95,7 @@ bool WorldTimeKeeper::serialize_observers(ostream& stream)
 {
   Serialize::write_size_t(stream, observers.size());
 
-  BOOST_FOREACH(WorldTimeKeeperObserverMap::value_type& observer_pair, observers)
+  for (const WorldTimeKeeperObserverMap::value_type& observer_pair : observers)
   {
     uint pair_first = observer_pair.first;
 
@@ -106,7 +105,7 @@ bool WorldTimeKeeper::serialize_observers(ostream& stream)
 
     Serialize::write_size_t(stream, pair_second.size());
 
-    BOOST_FOREACH(TimeObserverMap::value_type& time_observer_pair, pair_second)
+    for (const TimeObserverMap::value_type& time_observer_pair : pair_second)
     {
       string time_observer_first = time_observer_pair.first;
       ITimeObserverPtr time_observer_ptr = time_observer_pair.second;

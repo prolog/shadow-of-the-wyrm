@@ -4,7 +4,6 @@
 
 #include <iostream>
 #include <fstream>
-#include <boost/foreach.hpp>
 #include <boost/shared_ptr.hpp>
 #include "global_prototypes.hpp"
 #include "BresenhamLine.hpp"
@@ -744,7 +743,7 @@ void test_bresenham_line()
     {
       vector<Coordinate> coords = bl.get_points_in_line(start_y, start_x, end_y, end_x);
       
-      BOOST_FOREACH(Coordinate c, coords)
+      for (const Coordinate& c : coords)
       {
         cout << "(" << c.first << "," << c.second << ")" << endl;
       }

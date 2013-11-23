@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ISeason.hpp"
 #include "Serialize.hpp"
 
@@ -16,9 +15,9 @@ bool ISeason::serialize(std::ostream& stream)
 {
   Serialize::write_size_t(stream, months_in_season.size());
 
-  BOOST_FOREACH(Months month, months_in_season)
+  for (const Months month : months_in_season)
   {
-    Serialize::write_int(stream, month);
+    Serialize::write_enum(stream, month);
   }
 
   return true;

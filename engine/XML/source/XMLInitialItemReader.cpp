@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "XMLInitialItemReader.hpp"
 
 using namespace std;
@@ -76,7 +75,7 @@ vector<pair<string, Dice> > XMLInitialItemReader::get_random_item_ids(const XMLN
     XMLNode quantity_node = XMLUtils::get_next_element_by_local_name(initial_random_node, "Quantity");
     Dice quantity = parse_quantity(quantity_node);
     
-    BOOST_FOREACH(XMLNode node, nodes)
+    for (const XMLNode& node : nodes)
     {      
       string item_id = XMLUtils::get_node_value(node);
       random_ids.push_back(make_pair(item_id, quantity));
@@ -95,7 +94,7 @@ map<string, pair<string, Dice> > XMLInitialItemReader::get_racial_item_ids(const
   {
     vector<XMLNode> race_nodes = XMLUtils::get_elements_by_local_name(initial_racial_node, "Race");
     
-    BOOST_FOREACH(XMLNode node, race_nodes)
+    for (const XMLNode& node : race_nodes)
     {
       string race_id = XMLUtils::get_child_node_value(node, "RaceID");
       string item_id = XMLUtils::get_child_node_value(node, "ID");

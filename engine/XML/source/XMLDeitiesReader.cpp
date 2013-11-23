@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "XMLDataStructures.hpp"
 #include "XMLDeitiesReader.hpp"
@@ -20,7 +19,7 @@ DeityMap XMLDeitiesReader::get_deities(const XMLNode& deities_node)
   {
     vector<XMLNode> deities_nodes = XMLUtils::get_elements_by_local_name(deities_node, "Deity");
     
-    BOOST_FOREACH(XMLNode deity_node, deities_nodes)
+    for (const XMLNode& deity_node : deities_nodes)
     {
       DeityPtr deity = parse_deity(deity_node);
       

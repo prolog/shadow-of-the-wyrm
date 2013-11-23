@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Creature.hpp"
 #include "Conversion.hpp"
@@ -203,7 +202,7 @@ vector<pair<string, Colour>> CreatureTranslator::get_display_status_ailments(con
     initialize_status_ailment_checkers();
   }
 
-  BOOST_FOREACH(IStatusAilmentTranslatorPtr status_ailment_checker, status_ailment_checkers)
+  for (IStatusAilmentTranslatorPtr status_ailment_checker : status_ailment_checkers)
   {
     if (status_ailment_checker && status_ailment_checker->has_ailment(c))
     {

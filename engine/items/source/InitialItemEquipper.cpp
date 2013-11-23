@@ -1,4 +1,3 @@
-#include <boost/foreach.hpp>
 #include "ActionManager.hpp"
 #include "ClassManager.hpp"
 #include "InitialItemEquipper.hpp"
@@ -20,7 +19,7 @@ void InitialItemEquipper::equip(CreaturePtr creature, ActionManager& am)
     {
       map<EquipmentWornLocation, InitialItem> initial_item_map = current_class->get_initial_equipment();
       
-      BOOST_FOREACH(InitialEquipmentMap::value_type& ii_i, initial_item_map)
+      for (const InitialEquipmentMap::value_type& ii_i : initial_item_map)
       {
         InitialItem ii = ii_i.second;
         pair<string, uint> item_details = iis.get_item_details(creature_race, ii);
@@ -60,7 +59,7 @@ void InitialItemEquipper::add_inventory_items(CreaturePtr creature, ActionManage
     {
       vector<InitialItem> vii = current_class->get_initial_inventory();
 
-      BOOST_FOREACH(InitialItem& ii, vii)
+      for (const InitialItem& ii : vii)
       {
         pair<string, uint> item_details = iis.get_item_details(creature_race, ii);
         string item_id = item_details.first;

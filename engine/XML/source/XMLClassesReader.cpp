@@ -1,5 +1,4 @@
 #include <vector>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Resistances.hpp"
 #include "XMLClassesReader.hpp"
@@ -23,7 +22,7 @@ ClassMap XMLClassesReader::get_classes(const XMLNode& classes_node)
   {
     vector<XMLNode> classes_nodes = XMLUtils::get_elements_by_local_name(classes_node, "Class");
 
-    BOOST_FOREACH(XMLNode class_node, classes_nodes)
+    for (const XMLNode& class_node : classes_nodes)
     {
       ClassPtr current_class = parse_class(class_node);
 
@@ -215,7 +214,7 @@ void XMLClassesReader::parse_initial_inventory(ClassPtr current_class, const XML
     vector<InitialItem> initial_inventory;
     vector<XMLNode> initial_item_nodes = XMLUtils::get_elements_by_local_name(initial_inv_node, "InitialItem");
     
-    BOOST_FOREACH(XMLNode node, initial_item_nodes)
+    for (const XMLNode& node : initial_item_nodes)
     {
       InitialItem initial_item = initial_item_reader.get_initial_item(node);
       initial_inventory.push_back(initial_item);

@@ -1,5 +1,4 @@
 #include <sstream>
-#include <boost/foreach.hpp>
 #include <boost/make_shared.hpp>
 #include "Serialize.hpp"
 #include "SkillFactory.hpp"
@@ -1695,7 +1694,7 @@ bool Skills::serialize(ostream& stream)
 {
   Serialize::write_size_t(stream, skills.size());
 
-  BOOST_FOREACH(RawSkillMap::value_type& skill_pair, skills)
+  for (RawSkillMap::value_type& skill_pair : skills)
   {
     Serialize::write_enum(stream, skill_pair.first);
 
