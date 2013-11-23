@@ -10,7 +10,7 @@ AnimationTranslator::AnimationTranslator(DisplayPtr display)
   animation_factory = display->create_animation_factory();
 }
 
-Animation AnimationTranslator::create_movement_animation(const bool player_blinded, const Season current_season, const vector<pair<DisplayTile, vector<Coordinate>> >& movement_path, const bool redraw_previous_frame, MapPtr current_map, MapPtr fov_map)
+Animation AnimationTranslator::create_movement_animation(const bool player_blinded, const Season current_season, const vector<pair<DisplayTile, vector<Coordinate>>>& movement_path, const bool redraw_previous_frame, MapPtr current_map, MapPtr fov_map)
 {
   Animation animation;
 

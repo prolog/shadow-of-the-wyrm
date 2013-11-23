@@ -25,9 +25,9 @@ void StringTable::load(const string& filename)
     while (string_file.good())
     {
       getline(string_file, current_line);
-      tokenizer<char_separator<char> > tokens(current_line, separator);
+      tokenizer<char_separator<char>> tokens(current_line, separator);
 
-      tokenizer<char_separator<char> >::iterator tok_iter = tokens.begin();
+      tokenizer<char_separator<char>>::iterator tok_iter = tokens.begin();
 
       if (tok_iter != tokens.end())
       {

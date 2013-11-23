@@ -23,7 +23,7 @@ vector<string> TextDisplayFormatter::format_text(const string& text) const
     // Otherwise, split it up appropriately.
     uint cur_pos = 0;
     char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
-    tokenizer<char_separator<char> > tokens(text, separator);
+    tokenizer<char_separator<char>> tokens(text, separator);
     string current_str;
 
     // Iterate through all the tokens.  As we consider each token, if its
@@ -31,7 +31,7 @@ vector<string> TextDisplayFormatter::format_text(const string& text) const
     // string.  If it would take us over, then we've got the largest string
     // possible: add that string to the list, and start creating a new one
     // with the next token.
-    for (tokenizer<char_separator<char> >::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
+    for (tokenizer<char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
     {
       string current_token = *t_iter;
       process_token(current_token, result, current_str, cur_pos, width);

@@ -352,7 +352,7 @@ void RangedCombatAction::select_nearest_hostile_target(CreaturePtr creature, Map
     
     // Sort hostile creatures by location.  Since this is a regular map, there is only one creature allowed per
     // distance - so if there are several distance-1 creatures, only one will be chosen for the map.
-    std::map<int, pair<string, Coordinate> > hostile_creature_distance_map;
+    std::map<int, pair<string, Coordinate>> hostile_creature_distance_map;
     
     if (fov_map)
     {

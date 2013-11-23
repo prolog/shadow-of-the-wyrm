@@ -29,7 +29,7 @@ bool TileGenerator::get_generate_items() const
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
 {
   // To make it easier to remember what needs to be updated:
-  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 44);
+  static_assert(TILE_TYPE_LAST == 44, "Unexpected TILE_TYPE_LAST value.");
 
   TilePtr result_tile;
 

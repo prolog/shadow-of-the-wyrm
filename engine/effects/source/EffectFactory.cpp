@@ -23,7 +23,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  BOOST_STATIC_ASSERT(EFFECT_TYPE_LAST == 15);
+  static_assert(EFFECT_TYPE_LAST == 15, "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 

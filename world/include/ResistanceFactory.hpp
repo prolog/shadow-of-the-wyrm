@@ -3,7 +3,7 @@
 #include "ClassIdentifiers.hpp"
 #include "Resistances.hpp"
 
-typedef std::map<ClassIdentifier, std::shared_ptr<Resistance> > ResistancesSerializationMap;
+typedef std::map<ClassIdentifier, std::shared_ptr<Resistance>> ResistancesSerializationMap;
 
 class ResistanceFactory
 {

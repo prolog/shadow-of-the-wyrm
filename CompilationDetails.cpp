@@ -53,7 +53,7 @@ string CompilationDetails::get_platform() const
   oss << "Win32";
   #else
   // This needs to be filled in when porting to Linux/FreeBSD/MacOS/etc.
-  BOOST_STATIC_ASSERT( false );
+  static_assert(false, "Platform not recognized");
   #endif
 
   return oss.str();
@@ -68,7 +68,7 @@ string CompilationDetails::get_compiler() const
   compiler_details << "MSVC " << _MSC_VER;
   #else
   // This needs to be filled in when porting to use gcc/etc
-  BOOST_STATIC_ASSERT( false );
+  static_assert(false, "Unrecognized compiler.");
   #endif
 
   return compiler_details.str();

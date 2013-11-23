@@ -1,4 +1,3 @@
-#include <boost/static_assert.hpp>
 #include "AllTiles.hpp"
 #include "TileFactory.hpp"
 
@@ -35,7 +34,7 @@ TilePtr TileFactory::create_tile(const ClassIdentifier cl_id)
 
 void TileFactory::initialize_tile_map()
 {
-  BOOST_STATIC_ASSERT(TILE_TYPE_LAST == 44);
+  static_assert(TILE_TYPE_LAST == 44, "Unexpected TILE_TYPE_LAST value.");
 
   TilePtr barracks = std::make_shared<BarracksTile>();
   TilePtr barrow   = std::make_shared<BarrowTile>();

@@ -17,7 +17,7 @@ class RNG
     static bool reinitialize();
     static void set_seed(const uint32_t new_seed);
     static uint32_t get_seed();
-    static boost::variate_generator<RNGType, boost::uniform_int<> > get_generator();
+    static boost::variate_generator<RNGType, boost::uniform_int<>> get_generator();
 
 	protected:
     RNG();
@@ -25,6 +25,6 @@ class RNG
     static uint32_t seed;
     static RNGType rng;
 		static boost::uniform_int<> udist;
-		static boost::variate_generator<RNGType, boost::uniform_int<> > generator;
+		static boost::variate_generator<RNGType, boost::uniform_int<>> generator;
 		static bool initialized;
 };

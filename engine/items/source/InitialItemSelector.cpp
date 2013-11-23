@@ -34,7 +34,7 @@ pair<string, uint> InitialItemSelector::get_random_item_details(const InitialIte
 {
   pair<string, uint> random_details;
 
-  vector<pair<string, Dice> > random_iis = initial_item.get_random_item_ids();
+  vector<pair<string, Dice>> random_iis = initial_item.get_random_item_ids();
 
   if (!random_iis.empty())
   {
@@ -53,8 +53,8 @@ pair<string, uint> InitialItemSelector::get_racial_item_details(const string& ra
 {
   pair<string, uint> race_item_details;
 
-  map<string, pair<string, Dice> > racial_ids = initial_item.get_racial_item_ids();
-  map<string, pair<string, Dice> >::const_iterator i_it = racial_ids.find(race_id);
+  map<string, pair<string, Dice>> racial_ids = initial_item.get_racial_item_ids();
+  map<string, pair<string, Dice>>::const_iterator i_it = racial_ids.find(race_id);
 
   if (i_it != racial_ids.end())
   {

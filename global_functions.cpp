@@ -1,7 +1,6 @@
 #include <cmath>
 #include <limits>
 #include <sstream>
-#include <boost/static_assert.hpp>
 #include <boost/algorithm/string/replace.hpp>
 #include "buildinfo.hpp"
 #include "global_prototypes.hpp"

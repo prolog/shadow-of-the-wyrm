@@ -929,13 +929,13 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    BOOST_STATIC_ASSERT(sizeof(*this) == 800);
+    static_assert(sizeof(*this) == 800, "Unexpected sizeof Creature.");
     #else
     // Release
-    BOOST_STATIC_ASSERT(sizeof(*this) == 872);
+	static_assert(sizeof(*this) == 872, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
-  BOOST_STATIC_ASSERT(sizeof(*this) == 424);
+	static_assert(sizeof(*this) == 424, "Unexpected sizeof Creature.");
   #endif
 }
 

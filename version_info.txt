@@ -91,6 +91,11 @@ Savage Lands v0.1.8 "Aethelbert"
     a couple of pairs to simulate a tuple, which was ugly.  Now it uses
     a real std::tuple.
 
+  - Changed BOOST_STATIC_ASSERT to C++11's static_assert.
+
+  - Changed "> >" safeguards from old-style C++ to ">>", due to the new
+    C++11 parse rules.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 

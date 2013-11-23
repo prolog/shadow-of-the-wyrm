@@ -38,4 +38,4 @@ class DisplayItem
 
 // Data types used by the Display
 typedef std::map<EquipmentWornLocation, DisplayItem> DisplayEquipmentMap;
-typedef std::map<DisplayItemType, std::vector<DisplayItem> > DisplayInventoryMap;
+typedef std::map<DisplayItemType, std::vector<DisplayItem>> DisplayInventoryMap;
