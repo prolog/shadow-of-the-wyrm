@@ -1,6 +1,5 @@
 #include "Menu.hpp"
 
-using namespace boost;
 using namespace std;
 
 // Any base initialization for the Menu

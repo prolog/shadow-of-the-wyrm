@@ -1,9 +1,9 @@
 #pragma once
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 #include "common.hpp"
 #include "CalendarTypes.hpp"
 
-typedef boost::unordered_map<Season, int> SeasonTileColourMap;
+typedef std::unordered_map<Season, int> SeasonTileColourMap;
 
 // A DisplayTile is what the engine says we can see.  This provides a
 // separation between the "real" map and the "display" map.  A real map

@@ -22,12 +22,13 @@ void FoodAction::initialize_hunger_message_sid_map()
 {
   hunger_message_sid_map.clear();
 
-  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_STUFFED, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STUFFED));
-  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_FULL, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_FULL));
-  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_NORMAL, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_NORMAL));
-  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_HUNGRY, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_HUNGRY));
-  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_STARVING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STARVING));
-  hunger_message_sid_map.insert(make_pair(HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING));
+  hunger_message_sid_map = std::map<HungerLevel, std::string>{
+                             { HUNGER_LEVEL_STUFFED, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STUFFED },
+                             {HUNGER_LEVEL_FULL, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_FULL}, 
+                             {HUNGER_LEVEL_NORMAL, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_NORMAL},
+                             {HUNGER_LEVEL_HUNGRY, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_HUNGRY},
+                             {HUNGER_LEVEL_STARVING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_STARVING},
+                             {HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING} };
 }
 
 // Try to eat something.  First check the inventory, and warn the player

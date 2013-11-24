@@ -47,15 +47,15 @@ void ResistanceFactory::initialize_resistances_map()
   std::shared_ptr<Resistance> arcane    = std::make_shared<ArcaneResistance>();
   std::shared_ptr<Resistance> lightning = std::make_shared<LightningResistance>();
 
-  resistances_map.insert(make_pair(CLASS_ID_SLASH_RESISTANCE, slash));
-  resistances_map.insert(make_pair(CLASS_ID_PIERCE_RESISTANCE, pierce));
-  resistances_map.insert(make_pair(CLASS_ID_POUND_RESISTANCE, pound));
-  resistances_map.insert(make_pair(CLASS_ID_HEAT_RESISTANCE, heat));
-  resistances_map.insert(make_pair(CLASS_ID_COLD_RESISTANCE, cold));
-  resistances_map.insert(make_pair(CLASS_ID_ACID_RESISTANCE, acid));
-  resistances_map.insert(make_pair(CLASS_ID_POISON_RESISTANCE, poison));
-  resistances_map.insert(make_pair(CLASS_ID_HOLY_RESISTANCE, holy));
-  resistances_map.insert(make_pair(CLASS_ID_SHADOW_RESISTANCE, shadow));
-  resistances_map.insert(make_pair(CLASS_ID_ARCANE_RESISTANCE, arcane));
-  resistances_map.insert(make_pair(CLASS_ID_LIGHTNING_RESISTANCE, lightning));
+  resistances_map = ResistancesSerializationMap{{CLASS_ID_SLASH_RESISTANCE, slash},
+                                                {CLASS_ID_PIERCE_RESISTANCE, pierce},
+                                                {CLASS_ID_POUND_RESISTANCE, pound},
+                                                {CLASS_ID_HEAT_RESISTANCE, heat},
+                                                {CLASS_ID_COLD_RESISTANCE, cold},
+                                                {CLASS_ID_ACID_RESISTANCE, acid},
+                                                {CLASS_ID_POISON_RESISTANCE, poison},
+                                                {CLASS_ID_HOLY_RESISTANCE, holy},
+                                                {CLASS_ID_SHADOW_RESISTANCE, shadow},
+                                                {CLASS_ID_ARCANE_RESISTANCE, arcane},
+                                                {CLASS_ID_LIGHTNING_RESISTANCE, lightning}};
 }

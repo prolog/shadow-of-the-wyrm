@@ -68,8 +68,8 @@ void SeasonFactory::initialize_season_map()
   ISeasonPtr autumn = std::make_shared<Autumn>();
   ISeasonPtr winter = std::make_shared<Winter>();
 
-  season_map.insert(make_pair(CLASS_ID_SPRING, spring));
-  season_map.insert(make_pair(CLASS_ID_SUMMER, summer));
-  season_map.insert(make_pair(CLASS_ID_AUTUMN, autumn));
-  season_map.insert(make_pair(CLASS_ID_WINTER, winter));
+  season_map = SeasonSerializationMap{{CLASS_ID_SPRING, spring},
+                                      {CLASS_ID_SUMMER, summer},
+                                      {CLASS_ID_AUTUMN, autumn},
+                                      {CLASS_ID_WINTER, winter}};
 }

@@ -77,26 +77,26 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr gate               = std::make_shared<Gate>();
   FeaturePtr pew                = std::make_shared<Pew>();
   FeaturePtr petrified_corpse   = std::make_shared<PetrifiedCorpseStatue>();
-  FeaturePtr sarcophagus        = std::make_shared<Sarcophagus>();
+  FeaturePtr sarcophagus = std::make_shared<Sarcophagus>();
 
-  feature_map.insert(make_pair(CLASS_ID_GOOD_ALTAR, good_altar));
-  feature_map.insert(make_pair(CLASS_ID_NEUTRAL_ALTAR, neutral_altar));
-  feature_map.insert(make_pair(CLASS_ID_EVIL_ALTAR, evil_altar));
-  feature_map.insert(make_pair(CLASS_ID_KING_DECORATIVE_STATUE, king_statue));
-  feature_map.insert(make_pair(CLASS_ID_QUEEN_DECORATIVE_STATUE, queen_statue));
-  feature_map.insert(make_pair(CLASS_ID_WARLORD_DECORATIVE_STATUE, warlord_statue));
-  feature_map.insert(make_pair(CLASS_ID_KNIGHT_DECORATIVE_STATUE, knight_statue));
-  feature_map.insert(make_pair(CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE, high_priest_statue));
-  feature_map.insert(make_pair(CLASS_ID_SORCEROR_DECORATIVE_STATUE, sorceror_statue));
-  feature_map.insert(make_pair(CLASS_ID_BENCH, bench));
-  feature_map.insert(make_pair(CLASS_ID_DOOR, door));
-  feature_map.insert(make_pair(CLASS_ID_EAST_WEST_PEW, ew_pew));
-  feature_map.insert(make_pair(CLASS_ID_FIRE_PILLAR, fire_pillar));
-  feature_map.insert(make_pair(CLASS_ID_FOUNTAIN, fountain));
-  feature_map.insert(make_pair(CLASS_ID_GATE, gate));
-  feature_map.insert(make_pair(CLASS_ID_PEW, pew));
-  feature_map.insert(make_pair(CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse));
-  feature_map.insert(make_pair(CLASS_ID_SARCOPHAGUS, sarcophagus));
+  feature_map = FeatureSerializationMap{{CLASS_ID_GOOD_ALTAR, good_altar},
+                                        {CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
+                                        {CLASS_ID_EVIL_ALTAR, evil_altar},
+                                        {CLASS_ID_KING_DECORATIVE_STATUE, king_statue},
+                                        {CLASS_ID_QUEEN_DECORATIVE_STATUE, queen_statue},
+                                        {CLASS_ID_WARLORD_DECORATIVE_STATUE, warlord_statue},
+                                        {CLASS_ID_KNIGHT_DECORATIVE_STATUE, knight_statue},
+                                        {CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE, high_priest_statue},
+                                        {CLASS_ID_SORCEROR_DECORATIVE_STATUE, sorceror_statue},
+                                        {CLASS_ID_BENCH, bench},
+                                        {CLASS_ID_DOOR, door},
+                                        {CLASS_ID_EAST_WEST_PEW, ew_pew},
+                                        {CLASS_ID_FIRE_PILLAR, fire_pillar},
+                                        {CLASS_ID_FOUNTAIN, fountain},
+                                        {CLASS_ID_GATE, gate},
+                                        {CLASS_ID_PEW, pew},
+                                        {CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse},
+                                        {CLASS_ID_SARCOPHAGUS, sarcophagus}};
   // JCD FIXME
 }
 

@@ -25,12 +25,12 @@ void WildflowerGardenGenerator::initialize_generator()
 void WildflowerGardenGenerator::populate_wildflower_ids()
 {
   wildflower_item_ids.clear();
-  wildflower_item_ids.insert(make_pair(1, ItemIdKeys::ITEM_ID_WILDFLOWER_1));
-  wildflower_item_ids.insert(make_pair(2, ItemIdKeys::ITEM_ID_WILDFLOWER_2));
-  wildflower_item_ids.insert(make_pair(3, ItemIdKeys::ITEM_ID_WILDFLOWER_3));
-  wildflower_item_ids.insert(make_pair(4, ItemIdKeys::ITEM_ID_WILDFLOWER_4));
-  wildflower_item_ids.insert(make_pair(5, ItemIdKeys::ITEM_ID_WILDFLOWER_5));
-  wildflower_item_ids.insert(make_pair(6, ItemIdKeys::ITEM_ID_WILDFLOWER_6));
+  wildflower_item_ids = std::map<int, std::string>{{1, ItemIdKeys::ITEM_ID_WILDFLOWER_1},
+                                                   {2, ItemIdKeys::ITEM_ID_WILDFLOWER_2},
+                                                   {3, ItemIdKeys::ITEM_ID_WILDFLOWER_3},
+                                                   {4, ItemIdKeys::ITEM_ID_WILDFLOWER_4},
+                                                   {5, ItemIdKeys::ITEM_ID_WILDFLOWER_5},
+                                                   {6, ItemIdKeys::ITEM_ID_WILDFLOWER_6}};
 }
 
 void WildflowerGardenGenerator::seed_flowers()

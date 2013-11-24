@@ -1,9 +1,9 @@
 #pragma once
 #include <string>
 #include <boost/algorithm/string.hpp>
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 
-typedef boost::unordered_map<std::string, std::string> StringTableMap;
+typedef std::unordered_map<std::string, std::string> StringTableMap;
 
 class StringTable
 {

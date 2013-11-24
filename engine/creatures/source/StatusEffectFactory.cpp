@@ -29,18 +29,17 @@ StatusEffectFactory::~StatusEffectFactory()
 void StatusEffectFactory::initialize_damage_status_ailments()
 {
   damage_status_ailments.clear();
-
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_POISON, StatusIdentifiers::STATUS_ID_POISON));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_HOLY, StatusIdentifiers::STATUS_ID_MUTE));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_LIGHTNING, StatusIdentifiers::STATUS_ID_PARALYSIS));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_COLD, StatusIdentifiers::STATUS_ID_SLOWNESS));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_SHADOW, StatusIdentifiers::STATUS_ID_STONE));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_SLASH, StatusIdentifiers::STATUS_ID_BLOODIED));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_POUND, StatusIdentifiers::STATUS_ID_STUNNED));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_PIERCE, StatusIdentifiers::STATUS_ID_EXPOSED));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_ACID, StatusIdentifiers::STATUS_ID_DISFIGURED));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_ARCANE, StatusIdentifiers::STATUS_ID_SPELLBOUND));
-  damage_status_ailments.insert(make_pair(DAMAGE_TYPE_HEAT, StatusIdentifiers::STATUS_ID_BLINDED));
+  damage_status_ailments = std::map<DamageType, std::string>{{DAMAGE_TYPE_POISON, StatusIdentifiers::STATUS_ID_POISON},
+                                                             {DAMAGE_TYPE_HOLY, StatusIdentifiers::STATUS_ID_MUTE},
+                                                             {DAMAGE_TYPE_LIGHTNING, StatusIdentifiers::STATUS_ID_PARALYSIS},
+                                                             {DAMAGE_TYPE_COLD, StatusIdentifiers::STATUS_ID_SLOWNESS},
+                                                             {DAMAGE_TYPE_SHADOW, StatusIdentifiers::STATUS_ID_STONE},
+                                                             {DAMAGE_TYPE_SLASH, StatusIdentifiers::STATUS_ID_BLOODIED},
+                                                             {DAMAGE_TYPE_POUND, StatusIdentifiers::STATUS_ID_STUNNED},
+                                                             {DAMAGE_TYPE_PIERCE, StatusIdentifiers::STATUS_ID_EXPOSED},
+                                                             {DAMAGE_TYPE_ACID, StatusIdentifiers::STATUS_ID_DISFIGURED},
+                                                             {DAMAGE_TYPE_ARCANE, StatusIdentifiers::STATUS_ID_SPELLBOUND},
+                                                             {DAMAGE_TYPE_HEAT, StatusIdentifiers::STATUS_ID_BLINDED}};
 }
 
 StatusEffectPtr StatusEffectFactory::create_effect_for_damage_type(const DamageType dt)

@@ -46,7 +46,7 @@ bool Map::operator==(const Map& map) const
   if (result)
   {
     // The search needs to be done this way because the TilesContainer is
-    // a boost::unordered_map, and therefore can't guarantee ordering of
+    // a std::unordered_map, and therefore can't guarantee ordering of
     // keys.
     TilesContainer tiles_cont = map.tiles;
     TilesContainer::const_iterator t_it = tiles.begin();
@@ -205,7 +205,7 @@ void Map::set_tiles(const TilesContainer& new_tiles)
 
 bool Map::insert(int row, int col, TilePtr tile)
 {
-  string key = make_map_key(row, col);
+  string key = MapUtils::convert_coordinate_to_map_key(row, col);
 
   tiles[key] = tile;
   return true;
@@ -213,7 +213,7 @@ bool Map::insert(int row, int col, TilePtr tile)
 
 TilePtr Map::at(int row, int col)
 {
-  string key = make_map_key(row, col);
+  string key = MapUtils::convert_coordinate_to_map_key(row, col);
   TilePtr tile;
 
   TilesContainer::iterator t_it = tiles.find(key);
@@ -389,15 +389,6 @@ void Map::set_danger(const uint new_danger)
 uint Map::get_danger() const
 {
   return danger;
-}
-
-// The format of the key used by the Map class to store its keys.  Some other classes (eg, ray casting) need to make these keys
-// to check existence.
-string Map::make_map_key(const int row, const int col)
-{
-  std::ostringstream ss;
-  ss << row << "-" << col;
-  return ss.str();
 }
 
 bool Map::serialize(ostream& stream)

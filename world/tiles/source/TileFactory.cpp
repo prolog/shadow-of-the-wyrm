@@ -79,50 +79,50 @@ void TileFactory::initialize_tile_map()
   TilePtr evergreen = std::make_shared<EvergreenTreeTile>();
   TilePtr rocky_earth = std::make_shared<RockyEarthTile>();
   TilePtr mine     = std::make_shared<MineTile>();
-  TilePtr well     = std::make_shared<WellTile>();
+  TilePtr well = std::make_shared<WellTile>();
 
-  tiles_map.insert(make_pair(CLASS_ID_BARRACKS_TILE, barracks));
-  tiles_map.insert(make_pair(CLASS_ID_BARROW_TILE, barrow));
-  tiles_map.insert(make_pair(CLASS_ID_BEACH_TILE, beach));
-  tiles_map.insert(make_pair(CLASS_ID_BUSH_TILE, bush));
-  tiles_map.insert(make_pair(CLASS_ID_CAIRN_TILE, cairn));
-  tiles_map.insert(make_pair(CLASS_ID_CASTLE_TILE, castle));
-  tiles_map.insert(make_pair(CLASS_ID_CAVERN_TILE, cavern));
-  tiles_map.insert(make_pair(CLASS_ID_CHURCH_TILE, church));
-  tiles_map.insert(make_pair(CLASS_ID_DAIS_TILE, dais));
-  tiles_map.insert(make_pair(CLASS_ID_DESERT_TILE, desert));
-  tiles_map.insert(make_pair(CLASS_ID_DOWN_STAIRCASE_TILE, downst));
-  tiles_map.insert(make_pair(CLASS_ID_DUNGEON_COMPLEX_TILE, dcomp));
-  tiles_map.insert(make_pair(CLASS_ID_DUNGEON_TILE, dungeon));
-  tiles_map.insert(make_pair(CLASS_ID_FIELD_TILE, field));
-  tiles_map.insert(make_pair(CLASS_ID_FOREST_TILE, forest));
-  tiles_map.insert(make_pair(CLASS_ID_GRAVE_TILE, grave));
-  tiles_map.insert(make_pair(CLASS_ID_GRAVEYARD_TILE, grvyard));
-  tiles_map.insert(make_pair(CLASS_ID_HILLS_TILE, hills));
-  tiles_map.insert(make_pair(CLASS_ID_KEEP_TILE, keep));
-  tiles_map.insert(make_pair(CLASS_ID_LIBRARY_TILE, library));
-  tiles_map.insert(make_pair(CLASS_ID_MARSH_TILE, marsh));
-  tiles_map.insert(make_pair(CLASS_ID_MOUNTAINS_TILE, mtns));
-  tiles_map.insert(make_pair(CLASS_ID_PIER_TILE, pier));
-  tiles_map.insert(make_pair(CLASS_ID_REEDS_TILE, reeds));
-  tiles_map.insert(make_pair(CLASS_ID_RIVER_TILE, river));
-  tiles_map.insert(make_pair(CLASS_ID_ROAD_TILE, road));
-  tiles_map.insert(make_pair(CLASS_ID_ROCK_TILE, rock));
-  tiles_map.insert(make_pair(CLASS_ID_SCRUB_TILE, scrub));
-  tiles_map.insert(make_pair(CLASS_ID_SEA_TILE, sea));
-  tiles_map.insert(make_pair(CLASS_ID_SHOALS_TILE, shoals));
-  tiles_map.insert(make_pair(CLASS_ID_SITE_OF_DEATH_TILE, sodeath));
-  tiles_map.insert(make_pair(CLASS_ID_SPRINGS_TILE, springs));
-  tiles_map.insert(make_pair(CLASS_ID_TEMPLE_TILE, temple));
-  tiles_map.insert(make_pair(CLASS_ID_TREE_TILE, tree));
-  tiles_map.insert(make_pair(CLASS_ID_UP_STAIRCASE_TILE, upst));
-  tiles_map.insert(make_pair(CLASS_ID_VILLAGE_TILE, village));
-  tiles_map.insert(make_pair(CLASS_ID_WEEDS_TILE, weeds));
-  tiles_map.insert(make_pair(CLASS_ID_WHEAT_TILE, wheat));
-  tiles_map.insert(make_pair(CLASS_ID_WILD_ORCHARD_TILE, wild_orchard));
-  tiles_map.insert(make_pair(CLASS_ID_FRUIT_TREE_TILE, fruit_tree));
-  tiles_map.insert(make_pair(CLASS_ID_EVERGREEN_TREE_TILE, evergreen));
-  tiles_map.insert(make_pair(CLASS_ID_ROCKY_EARTH_TILE, rocky_earth));
-  tiles_map.insert(make_pair(CLASS_ID_MINE_TILE, mine));
-  tiles_map.insert(make_pair(CLASS_ID_WELL_TILE, well));
+  tiles_map = TileSerializationMap{{CLASS_ID_BARRACKS_TILE, barracks},
+                                   {CLASS_ID_BARROW_TILE, barrow},
+                                   {CLASS_ID_BEACH_TILE, beach},
+                                   {CLASS_ID_BUSH_TILE, bush},
+                                   {CLASS_ID_CAIRN_TILE, cairn},
+                                   {CLASS_ID_CASTLE_TILE, castle},
+                                   {CLASS_ID_CAVERN_TILE, cavern},
+                                   {CLASS_ID_CHURCH_TILE, church},
+                                   {CLASS_ID_DAIS_TILE, dais},
+                                   {CLASS_ID_DESERT_TILE, desert},
+                                   {CLASS_ID_DOWN_STAIRCASE_TILE, downst},
+                                   {CLASS_ID_DUNGEON_COMPLEX_TILE, dcomp},
+                                   {CLASS_ID_DUNGEON_TILE, dungeon},
+                                   {CLASS_ID_FIELD_TILE, field},
+                                   {CLASS_ID_FOREST_TILE, forest},
+                                   {CLASS_ID_GRAVE_TILE, grave},
+                                   {CLASS_ID_GRAVEYARD_TILE, grvyard},
+                                   {CLASS_ID_HILLS_TILE, hills},
+                                   {CLASS_ID_KEEP_TILE, keep},
+                                   {CLASS_ID_LIBRARY_TILE, library},
+                                   {CLASS_ID_MARSH_TILE, marsh},
+                                   {CLASS_ID_MOUNTAINS_TILE, mtns},
+                                   {CLASS_ID_PIER_TILE, pier},
+                                   {CLASS_ID_REEDS_TILE, reeds},
+                                   {CLASS_ID_RIVER_TILE, river},
+                                   {CLASS_ID_ROAD_TILE, road},
+                                   {CLASS_ID_ROCK_TILE, rock},
+                                   {CLASS_ID_SCRUB_TILE, scrub},
+                                   {CLASS_ID_SEA_TILE, sea},
+                                   {CLASS_ID_SHOALS_TILE, shoals},
+                                   {CLASS_ID_SITE_OF_DEATH_TILE, sodeath},
+                                   {CLASS_ID_SPRINGS_TILE, springs},
+                                   {CLASS_ID_TEMPLE_TILE, temple},
+                                   {CLASS_ID_TREE_TILE, tree},
+                                   {CLASS_ID_UP_STAIRCASE_TILE, upst},
+                                   {CLASS_ID_VILLAGE_TILE, village},
+                                   {CLASS_ID_WEEDS_TILE, weeds},
+                                   {CLASS_ID_WHEAT_TILE, wheat},
+                                   {CLASS_ID_WILD_ORCHARD_TILE, wild_orchard},
+                                   {CLASS_ID_FRUIT_TREE_TILE, fruit_tree},
+                                   {CLASS_ID_EVERGREEN_TREE_TILE, evergreen},
+                                   {CLASS_ID_ROCKY_EARTH_TILE, rocky_earth},
+                                   {CLASS_ID_MINE_TILE, mine},
+                                   {CLASS_ID_WELL_TILE, well}};
 }

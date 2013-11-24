@@ -12,10 +12,9 @@ ItemStatusTextKeys::ItemStatusTextKeys()
 void ItemStatusTextKeys::initialize_item_status_string_map()
 {
   item_status_string_map.clear();
-
-  item_status_string_map.insert(make_pair(ITEM_STATUS_BLESSED, ItemStatusTextKeys::STATUS_BLESSED));
-  item_status_string_map.insert(make_pair(ITEM_STATUS_UNCURSED, ItemStatusTextKeys::STATUS_UNCURSED));
-  item_status_string_map.insert(make_pair(ITEM_STATUS_CURSED, ItemStatusTextKeys::STATUS_CURSED));
+  item_status_string_map = std::map<ItemStatus, std::string>{{ITEM_STATUS_BLESSED, ItemStatusTextKeys::STATUS_BLESSED},
+                                                             {ITEM_STATUS_UNCURSED, ItemStatusTextKeys::STATUS_UNCURSED},
+                                                             {ITEM_STATUS_CURSED, ItemStatusTextKeys::STATUS_CURSED}};
 }
 
 const string ItemStatusTextKeys::STATUS_BLESSED = "ITEM_STATUS_BLESSED";

@@ -65,9 +65,9 @@ SavageLandsEngine::SavageLandsEngine()
 
 void SavageLandsEngine::initialize_game_option_map()
 {
-  game_option_map.insert(make_pair("a", ENGINE_STATE_START_NEW_GAME));
-  game_option_map.insert(make_pair("b", ENGINE_STATE_LOAD_GAME));
-  game_option_map.insert(make_pair("z", ENGINE_STATE_STOP));
+  game_option_map = GameOptionMap{{"a", ENGINE_STATE_START_NEW_GAME},
+                                  {"b", ENGINE_STATE_LOAD_GAME},
+                                  {"z", ENGINE_STATE_STOP}};
 }
 
 void SavageLandsEngine::initialize_game_flow_map()
@@ -253,15 +253,7 @@ bool SavageLandsEngine::process_new_game()
       if (item && item->get_status() == ITEM_STATUS_CURSED) item->set_status(ITEM_STATUS_UNCURSED);
     }
 
-    vector<ItemType> item_types;
-    item_types.push_back(ITEM_TYPE_SCROLL);
-    item_types.push_back(ITEM_TYPE_WAND);
-    item_types.push_back(ITEM_TYPE_STAFF);
-    item_types.push_back(ITEM_TYPE_SPELLBOOK);
-    item_types.push_back(ITEM_TYPE_RING);
-    item_types.push_back(ITEM_TYPE_POTION);
-    item_types.push_back(ITEM_TYPE_AMULET);
-
+    vector<ItemType> item_types{ITEM_TYPE_SCROLL, ITEM_TYPE_WAND, ITEM_TYPE_STAFF, ITEM_TYPE_SPELLBOOK, ITEM_TYPE_RING, ITEM_TYPE_POTION, ITEM_TYPE_AMULET};
     ItemDescriptionRandomizer item_randomizer(item_types);
     item_randomizer.randomize(game.items);
 

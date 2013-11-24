@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 #include "ITileConfiguration.hpp"
 
 // A class for creating ITileConfigurationPtrs based on the provided

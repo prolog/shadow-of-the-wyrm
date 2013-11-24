@@ -55,7 +55,7 @@ void DisplayFactory::initialize_display_map()
   DisplayPtr curses_display = std::make_shared<CursesDisplay>();
   ControllerPtr curses_keyboard_controller = std::make_shared<CursesKeyboardController>();
 
-  display_map.insert(make_pair(CLASS_ID_CURSES_DISPLAY, make_pair(curses_display, curses_keyboard_controller)));
+  display_map = DisplaySerializationMap{ { CLASS_ID_CURSES_DISPLAY, { curses_display, curses_keyboard_controller } } };
 }
 
 void DisplayFactory::initialize_display_identifier_map()

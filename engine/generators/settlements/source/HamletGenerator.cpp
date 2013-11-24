@@ -205,12 +205,7 @@ bool HamletGenerator::potentially_generate_vegetable_garden(MapPtr map, const in
   
   if (RNG::percent_chance(probability))
   {
-    std::vector<CardinalDirection> vcd;
-    
-    vcd.push_back(CARDINAL_DIRECTION_EAST);
-    vcd.push_back(CARDINAL_DIRECTION_NORTH);
-    vcd.push_back(CARDINAL_DIRECTION_SOUTH);
-    vcd.push_back(CARDINAL_DIRECTION_WEST);
+    std::vector<CardinalDirection> vcd{ CARDINAL_DIRECTION_EAST, CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_SOUTH, CARDINAL_DIRECTION_WEST };
     
     std::random_shuffle(vcd.begin(), vcd.end());
     

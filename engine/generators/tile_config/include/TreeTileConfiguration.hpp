@@ -1,5 +1,5 @@
 #pragma once
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 #include "DefaultTileConfiguration.hpp"
 #include "TileIDs.hpp"
 
@@ -17,5 +17,5 @@ class TreeTileConfiguration : public DefaultTileConfiguration
     virtual void initialize_tree_species_details();
 
     std::vector<TreeSpeciesID> tree_species_ids;
-    boost::unordered_map<TreeSpeciesID, std::string> tree_species_description_sids;
+    std::unordered_map<TreeSpeciesID, std::string> tree_species_description_sids;
 };

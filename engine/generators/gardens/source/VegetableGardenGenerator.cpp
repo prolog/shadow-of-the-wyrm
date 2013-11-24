@@ -3,7 +3,7 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
-using std::string;
+using namespace std;
 
 VegetableGardenGenerator::VegetableGardenGenerator(MapPtr base_map, const int map_window_start_row, const int map_window_start_col, const int map_window_height, const int map_window_width)
 : GardenGenerator(base_map, map_window_start_row, map_window_start_col, map_window_height, map_window_width),
@@ -15,13 +15,12 @@ vegetable_min(1), vegetable_max(1)
 void VegetableGardenGenerator::populate_vegetable_map()
 {
   vegetable_map.clear();
-  
-  vegetable_map.insert(make_pair(1, ItemIdKeys::ITEM_ID_VEGETABLE_1));
-  vegetable_map.insert(make_pair(2, ItemIdKeys::ITEM_ID_VEGETABLE_2));
-  vegetable_map.insert(make_pair(3, ItemIdKeys::ITEM_ID_VEGETABLE_3));
-  vegetable_map.insert(make_pair(4, ItemIdKeys::ITEM_ID_VEGETABLE_4));
-  vegetable_map.insert(make_pair(5, ItemIdKeys::ITEM_ID_VEGETABLE_5));
-  vegetable_map.insert(make_pair(6, ItemIdKeys::ITEM_ID_VEGETABLE_6));  
+  vegetable_map = std::map<int, std::string>{{1, ItemIdKeys::ITEM_ID_VEGETABLE_1},
+                                             {2, ItemIdKeys::ITEM_ID_VEGETABLE_2},
+                                             {3, ItemIdKeys::ITEM_ID_VEGETABLE_3},
+                                             {4, ItemIdKeys::ITEM_ID_VEGETABLE_4},
+                                             {5, ItemIdKeys::ITEM_ID_VEGETABLE_5},
+                                             {6, ItemIdKeys::ITEM_ID_VEGETABLE_6}};
   
   vegetable_min = 1;
   vegetable_max = 6;

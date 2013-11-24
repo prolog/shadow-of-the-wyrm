@@ -70,6 +70,7 @@ void KeyboardCommandMap::initialize_command_mapping()
 {
   command_mapping.clear();
 
+  // MSVC bombs when I try to convert this to an initializer list. :(
   command_mapping.insert(make_pair(Integer::to_string('Q'), CommandKeys::QUIT));
   command_mapping.insert(make_pair(Integer::to_string('V'), CommandKeys::VERSION));
   command_mapping.insert(make_pair(Integer::to_string('T'), CommandKeys::GAME_DATE_TIME));
