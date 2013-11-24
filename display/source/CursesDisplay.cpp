@@ -93,7 +93,7 @@ void CursesDisplay::destroy_menu(WINDOW *menu)
 {
   Log::instance().debug("Destroying current menu");
 	delwin(menu);
-	menu = NULL;
+	menu = nullptr;
 }
 
 // Get whether the terminal can support colour.  False by
@@ -1008,7 +1008,7 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
 
 WINDOW* CursesDisplay::get_current_menu()
 {
-  WINDOW* menu = NULL;
+  WINDOW* menu = nullptr;
 
   if (!menus.empty())
   {

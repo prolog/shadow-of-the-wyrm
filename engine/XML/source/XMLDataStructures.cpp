@@ -268,7 +268,7 @@ bool XMLUtils::get_attribute_bool_value(const XMLNode& node, const string& attri
 }
 
 // XML Parser methods/declarations
-XMLParser* XMLParser::parser_instance = NULL;
+XMLParser* XMLParser::parser_instance = nullptr;
 
 XMLParser* XMLParser::instance()
 {
@@ -352,7 +352,7 @@ XMLElementImplPtr XMLNode::get_node() const
 // XMLDocument methods
 XMLDocument::XMLDocument()
 {
-  doc = NULL;
+  doc = nullptr;
 }
 
 XMLDocument::XMLDocument(XMLDocumentImplPtr new_doc)
