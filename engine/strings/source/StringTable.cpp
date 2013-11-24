@@ -6,7 +6,7 @@
 using namespace std;
 using namespace boost;
 
-boost::unordered_map<string, string> StringTable::string_table;
+std::unordered_map<string, string> StringTable::string_table;
 
 void StringTable::load(const string& filename)
 {
@@ -51,7 +51,7 @@ void StringTable::load(const string& filename)
 string StringTable::get(const string& key)
 {
   string result = "";
-  boost::unordered_map<string, string>::iterator table_it = string_table.find(key);
+  std::unordered_map<string, string>::iterator table_it = string_table.find(key);
 
   if (table_it != string_table.end())
   {

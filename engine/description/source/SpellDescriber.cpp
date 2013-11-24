@@ -21,12 +21,11 @@ void SpellDescriber::initialize_shape_abbreviation_sids()
   static_assert(SPELL_SHAPE_LAST == 5, "Unexpected SPELL_SHAPE_LAST value.");
 
   shape_abbreviation_sids.clear();
-
-  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_TARGET_SELF, SpellcastingTextKeys::SPELLCASTING_TARGET_SELF_ABRV));
-  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_BEAM, SpellcastingTextKeys::SPELLCASTING_BEAM_ABRV));
-  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_REFLECTIVE_BEAM, SpellcastingTextKeys::SPELLCASTING_REFLECTIVE_BEAM_ABRV));
-  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_CONE, SpellcastingTextKeys::SPELLCASTING_CONE_ABRV));
-  shape_abbreviation_sids.insert(make_pair(SPELL_SHAPE_BALL, SpellcastingTextKeys::SPELLCASTING_BALL_ABRV));
+  shape_abbreviation_sids = map<SpellShapeType, string>{{SPELL_SHAPE_TARGET_SELF, SpellcastingTextKeys::SPELLCASTING_TARGET_SELF_ABRV},
+                                                        {SPELL_SHAPE_BEAM, SpellcastingTextKeys::SPELLCASTING_BEAM_ABRV},
+                                                        {SPELL_SHAPE_REFLECTIVE_BEAM, SpellcastingTextKeys::SPELLCASTING_REFLECTIVE_BEAM_ABRV},
+                                                        {SPELL_SHAPE_CONE, SpellcastingTextKeys::SPELLCASTING_CONE_ABRV},
+                                                        {SPELL_SHAPE_BALL, SpellcastingTextKeys::SPELLCASTING_BALL_ABRV}};
 }
 
 // The description of the spell for the spellcasting UI screen.

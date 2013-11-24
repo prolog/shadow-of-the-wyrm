@@ -24,11 +24,7 @@ void FruitTreeTileConfiguration::initialize_fruit_ids()
 
 void FruitTreeTileConfiguration::initialize_tree_species_details()
 {
-  tree_species_ids.push_back(TREE_SPECIES_APPLE);
-  tree_species_ids.push_back(TREE_SPECIES_CHERRY);
-  tree_species_ids.push_back(TREE_SPECIES_PEACH);
-  tree_species_ids.push_back(TREE_SPECIES_PLUM);
-  tree_species_ids.push_back(TREE_SPECIES_PEAR);
+  tree_species_ids = { TREE_SPECIES_APPLE, TREE_SPECIES_CHERRY, TREE_SPECIES_PEACH, TREE_SPECIES_PLUM, TREE_SPECIES_PEAR };
 
   tree_species_description_sids.insert(make_pair(TREE_SPECIES_APPLE, TileDescriptionKeys::FLORA_TILE_DESC_APPLE));
   tree_species_description_sids.insert(make_pair(TREE_SPECIES_CHERRY, TileDescriptionKeys::FLORA_TILE_DESC_CHERRY));

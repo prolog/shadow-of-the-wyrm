@@ -2,7 +2,7 @@
 #include <string>
 #include <map>
 #include <vector>
-#include <boost/unordered_map.hpp>
+#include <unordered_map>
 #include "common.hpp"
 #include "Dimensions.hpp"
 #include "ISerializable.hpp"
@@ -14,7 +14,7 @@
 class Creature;
 class Tile;
 
-typedef boost::unordered_map<std::string, std::shared_ptr<Tile>> TilesContainer;
+typedef std::unordered_map<std::string, std::shared_ptr<Tile>> TilesContainer;
 
 class Map : public ISerializable
 {
@@ -88,8 +88,6 @@ class Map : public ISerializable
 
     bool serialize(std::ostream& stream);
     bool deserialize(std::istream& stream);
-
-    static TileKey make_map_key(const int row, const int col);
 
 		void create_creatures();		
 

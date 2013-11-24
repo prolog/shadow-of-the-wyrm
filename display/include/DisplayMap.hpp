@@ -1,12 +1,13 @@
 #pragma once
-#include <boost/unordered_map.hpp>
+#include <string>
+#include <unordered_map>
 #include "Dimensions.hpp"
 #include "common.hpp"
 #include "DisplayTile.hpp"
 
 class DisplayTile;
 
-typedef boost::unordered_map<Coordinate, DisplayTile> DisplayMapType;
+typedef std::unordered_map<std::string, DisplayTile> DisplayMapType;
 
 // A DisplayMap is the only map the Display cares about.  It contains
 // DisplayTile info, which in turn contains boiled-down Tile information.

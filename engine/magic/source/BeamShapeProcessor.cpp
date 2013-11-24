@@ -31,10 +31,10 @@ void BeamShapeProcessor::initialize_reflection_maps()
 // Set up the reflection directions when striking a corner tile.
 void BeamShapeProcessor::initialize_cardinal_reflection_map()
 {
-  cardinal_reflection_map.insert(make_pair(DIRECTION_NORTH, DIRECTION_SOUTH));
-  cardinal_reflection_map.insert(make_pair(DIRECTION_EAST, DIRECTION_WEST));
-  cardinal_reflection_map.insert(make_pair(DIRECTION_WEST, DIRECTION_EAST));
-  cardinal_reflection_map.insert(make_pair(DIRECTION_SOUTH, DIRECTION_NORTH));
+  cardinal_reflection_map = std::map<Direction, Direction>{{DIRECTION_NORTH, DIRECTION_SOUTH},
+                                                           {DIRECTION_EAST, DIRECTION_WEST},
+                                                           {DIRECTION_WEST, DIRECTION_EAST},
+                                                           {DIRECTION_SOUTH, DIRECTION_NORTH}};
 }
 
 pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)

@@ -10,6 +10,5 @@ enum MapType
 , MAP_TYPE_UNDERWORLD = 2
 };
 
-typedef std::string TileKey;
 typedef std::map<std::string, Coordinate> NamedMapLocations;
 

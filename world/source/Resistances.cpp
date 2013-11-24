@@ -395,18 +395,17 @@ void Resistances::default_resistances()
   std::shared_ptr<Resistance> lightning = std::make_shared<LightningResistance>();
 
   resistances.clear();
-
-  resistances.insert(make_pair(DAMAGE_TYPE_SLASH, slash));
-  resistances.insert(make_pair(DAMAGE_TYPE_POUND, pound));
-  resistances.insert(make_pair(DAMAGE_TYPE_PIERCE, pierce));
-  resistances.insert(make_pair(DAMAGE_TYPE_HEAT, heat));
-  resistances.insert(make_pair(DAMAGE_TYPE_COLD, cold));
-  resistances.insert(make_pair(DAMAGE_TYPE_ACID, acid));
-  resistances.insert(make_pair(DAMAGE_TYPE_POISON, poison));
-  resistances.insert(make_pair(DAMAGE_TYPE_HOLY, holy));
-  resistances.insert(make_pair(DAMAGE_TYPE_SHADOW, shadow));
-  resistances.insert(make_pair(DAMAGE_TYPE_ARCANE, arcane));
-  resistances.insert(make_pair(DAMAGE_TYPE_LIGHTNING, lightning));
+  resistances = ResistancesMap{{DAMAGE_TYPE_SLASH, slash},
+                               {DAMAGE_TYPE_POUND, pound},
+                               {DAMAGE_TYPE_PIERCE, pierce},
+                               {DAMAGE_TYPE_HEAT, heat},
+                               {DAMAGE_TYPE_COLD, cold},
+                               {DAMAGE_TYPE_ACID, acid},
+                               {DAMAGE_TYPE_POISON, poison},
+                               {DAMAGE_TYPE_HOLY, holy},
+                               {DAMAGE_TYPE_SHADOW, shadow},
+                               {DAMAGE_TYPE_ARCANE, arcane},
+                               {DAMAGE_TYPE_LIGHTNING, lightning}};
 }
 
 #ifdef UNIT_TESTS

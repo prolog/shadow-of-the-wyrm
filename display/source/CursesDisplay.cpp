@@ -9,6 +9,7 @@
 #include "CursesAnimationFactory.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "Log.hpp"
+#include "MapUtils.hpp"
 #include "Menu.hpp"
 #include "CursesConstants.hpp"
 #include "CursesDisplay.hpp"
@@ -444,7 +445,7 @@ void CursesDisplay::draw_update_map(const DisplayMap& update_map)
 
   for (DisplayMapType::value_type& tile : tiles)
   {
-    Coordinate map_coords = tile.first;
+    Coordinate map_coords = MapUtils::convert_map_key_to_coordinate(tile.first);
     DisplayTile dtile = tile.second;
 
     terminal_row = CursesConstants::MAP_START_ROW + map_coords.first;

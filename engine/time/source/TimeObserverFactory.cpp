@@ -39,9 +39,9 @@ void TimeObserverFactory::initialize_time_observer_map()
   time_observer_map.clear();
 
   ITimeObserverPtr creature = std::make_shared<CreatureTimeObserver>();
-  ITimeObserverPtr seasons  = std::make_shared<SeasonsTimeObserver>();
+  ITimeObserverPtr seasons = std::make_shared<SeasonsTimeObserver>();
 
-  time_observer_map.insert(make_pair(CLASS_ID_CREATURE_TIME_OBSERVER, creature));
-  time_observer_map.insert(make_pair(CLASS_ID_SEASONS_TIME_OBSERVER, seasons));
+  time_observer_map = TimeObserverSerializationMap{{CLASS_ID_CREATURE_TIME_OBSERVER, creature},
+                                                   {CLASS_ID_SEASONS_TIME_OBSERVER, seasons}};
 }
 

@@ -14,7 +14,7 @@ string SL_Engine_Map::make_key(const Coordinate& c)
 {
   MapPtr map = make_map();
 
-  return map->make_map_key(c.first, c.second);
+  return MapUtils::convert_coordinate_to_map_key(c);
 }
 
 Coordinate SL_Engine_Map::convert_map_key_to_coordinate(const string& key)

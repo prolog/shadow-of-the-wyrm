@@ -1,6 +1,6 @@
 #include <sstream>
 #include "DisplayMap.hpp"
-
+#include "MapUtils.hpp"
 using namespace std;
 
 DisplayMap::DisplayMap(const int r, const int c)
@@ -28,7 +28,7 @@ Coordinate DisplayMap::get_cursor_coordinate() const
 
 void DisplayMap::set(const Coordinate& c, const DisplayTile& value)
 {
-  display_map[c] = value;
+  display_map[MapUtils::convert_coordinate_to_map_key(c)] = value;
 }
 
 // A poem:
@@ -39,7 +39,7 @@ void DisplayMap::set(const Coordinate& c, const DisplayTile& value)
 // but then it broke my ::at.
 DisplayTile DisplayMap::at(const Coordinate& c) const
 {
-  return display_map.find(c)->second;
+  return display_map.find(MapUtils::convert_coordinate_to_map_key(c))->second;
 }
 
 Dimensions DisplayMap::size() const

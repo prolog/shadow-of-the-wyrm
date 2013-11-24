@@ -74,24 +74,24 @@ void ItemSerializationFactory::initialize_item_map()
   ItemPtr wand   = std::make_shared<Wand>();
   ItemPtr melee  = std::make_shared<MeleeWeapon>();
   ItemPtr ranged = std::make_shared<RangedWeapon>();
-  ItemPtr tool   = std::make_shared<Tool>();
+  ItemPtr tool = std::make_shared<Tool>();
 
-  item_map.insert(make_pair(CLASS_ID_AMMUNITION, ammo));
-  item_map.insert(make_pair(CLASS_ID_AMULET, amulet));
-  item_map.insert(make_pair(CLASS_ID_ARMOUR, armour));
-  item_map.insert(make_pair(CLASS_ID_BOAT, boat));
-  item_map.insert(make_pair(CLASS_ID_SPELLBOOK, book));
-  item_map.insert(make_pair(CLASS_ID_CURRENCY, cash));
-  item_map.insert(make_pair(CLASS_ID_FOOD, food));
-  item_map.insert(make_pair(CLASS_ID_MISC_ITEM, misc));
-  item_map.insert(make_pair(CLASS_ID_PLANT, plant));
-  item_map.insert(make_pair(CLASS_ID_POTION, potion));
-  item_map.insert(make_pair(CLASS_ID_RING, ring));
-  item_map.insert(make_pair(CLASS_ID_SCROLL, scroll));
-  item_map.insert(make_pair(CLASS_ID_STAFF, staff));
-  item_map.insert(make_pair(CLASS_ID_WAND, wand));
-  item_map.insert(make_pair(CLASS_ID_MELEE_WEAPON, melee));
-  item_map.insert(make_pair(CLASS_ID_RANGED_WEAPON, ranged));
-  item_map.insert(make_pair(CLASS_ID_TOOL, tool));
+  item_map = ItemSerializationMap{{CLASS_ID_AMMUNITION, ammo},
+                                  {CLASS_ID_AMULET, amulet},
+                                  {CLASS_ID_ARMOUR, armour},
+                                  {CLASS_ID_BOAT, boat},
+                                  {CLASS_ID_SPELLBOOK, book},
+                                  {CLASS_ID_CURRENCY, cash},
+                                  {CLASS_ID_FOOD, food},
+                                  {CLASS_ID_MISC_ITEM, misc},
+                                  {CLASS_ID_PLANT, plant},
+                                  {CLASS_ID_POTION, potion},
+                                  {CLASS_ID_RING, ring},
+                                  {CLASS_ID_SCROLL, scroll},
+                                  {CLASS_ID_STAFF, staff},
+                                  {CLASS_ID_WAND, wand},
+                                  {CLASS_ID_MELEE_WEAPON, melee},
+                                  {CLASS_ID_RANGED_WEAPON, ranged},
+                                  {CLASS_ID_TOOL, tool}};
 }
 

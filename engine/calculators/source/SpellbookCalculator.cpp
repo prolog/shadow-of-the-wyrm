@@ -15,23 +15,15 @@ void SpellbookCalculator::initialize_status_failure_levels()
   status_failure_levels.clear();
 
   // The pct chance of being destroyed after a successful reading.
-  status_failure_levels.insert(make_pair(ITEM_STATUS_CURSED, 100));
-  status_failure_levels.insert(make_pair(ITEM_STATUS_UNCURSED, 65));
-  status_failure_levels.insert(make_pair(ITEM_STATUS_BLESSED, 45));
+  status_failure_levels = std::map<ItemStatus, int>{{ITEM_STATUS_CURSED, 100}, {ITEM_STATUS_UNCURSED, 65}, {ITEM_STATUS_BLESSED, 45}};
 }
 
 void SpellbookCalculator::initialize_status_casting_multipliers()
 {
   status_casting_multipliers.clear();
 
-  // 75% as many from a cursed book.
-  status_casting_multipliers.insert(make_pair(ITEM_STATUS_CURSED, 0.75f));
-
-  // 100% as many from an uncursed book.
-  status_casting_multipliers.insert(make_pair(ITEM_STATUS_UNCURSED, 1.0f));
-
-  // 120% as many from a blessed book.
-  status_casting_multipliers.insert(make_pair(ITEM_STATUS_BLESSED, 1.2f));
+  // 75% as many from a cursed book, 100% as many from an uncursed book, 120% as many from a blessed book.
+  status_casting_multipliers = std::map<ItemStatus, float>{ { ITEM_STATUS_CURSED, 0.75f }, { ITEM_STATUS_UNCURSED, 1.0f }, { ITEM_STATUS_BLESSED, 1.2f } };
 }
 
 // Learning a spell uses the following mechanic:

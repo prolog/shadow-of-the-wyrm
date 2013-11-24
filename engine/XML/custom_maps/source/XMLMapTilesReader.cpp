@@ -1,4 +1,5 @@
 #include <cctype>
+#include "MapUtils.hpp"
 #include "TileGenerator.hpp"
 #include "SpringsTile.hpp"
 #include "XMLMapTilesReader.hpp"
@@ -31,7 +32,7 @@ TilesContainer XMLMapTilesReader::parse_tiles(const XMLNode& tiles_node, const i
 
           if (tile)
           {
-            TileKey tile_key = Map::make_map_key(cur_row, cur_col);
+            std::string tile_key = MapUtils::convert_coordinate_to_map_key(make_pair(cur_row, cur_col));
             tiles.insert(make_pair(tile_key, tile));
 
             if (++cur_col >= cols)

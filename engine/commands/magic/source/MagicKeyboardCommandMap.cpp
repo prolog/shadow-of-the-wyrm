@@ -23,6 +23,10 @@ void MagicKeyboardCommandMap::command_not_found(const string& keyboard_input)
 void MagicKeyboardCommandMap::initialize_command_mapping()
 {
   command_mapping.clear();
+  command_mapping = KeyboardCommandMappingMap{{Integer::to_string('+'), MagicCommandKeys::NEXT_PAGE},
+                                              {Integer::to_string('-'), MagicCommandKeys::PREVIOUS_PAGE},
+                                              {Integer::to_string('z'), MagicCommandKeys::EXIT_MAGIC},
+                                              {Integer::to_string('Z'), MagicCommandKeys::EXIT_MAGIC}};
 
   // Select a spell
   for (char c = 'a'; c < 'z'; c++)
@@ -30,16 +34,6 @@ void MagicKeyboardCommandMap::initialize_command_mapping()
     // a - y should select a spell (or do nothing, if there are not that many spells in the list).
     command_mapping.insert(make_pair(Integer::to_string(c), MagicCommandKeys::SELECT_SPELL));
   }
-
-  // Next page
-  command_mapping.insert(make_pair(Integer::to_string('+'), MagicCommandKeys::NEXT_PAGE));
-
-  // Previous page
-  command_mapping.insert(make_pair(Integer::to_string('-'), MagicCommandKeys::PREVIOUS_PAGE));
-
-  // Exit
-  command_mapping.insert(make_pair(Integer::to_string('z'), MagicCommandKeys::EXIT_MAGIC));
-  command_mapping.insert(make_pair(Integer::to_string('Z'), MagicCommandKeys::EXIT_MAGIC));
 }
 
 KeyboardCommandMap* MagicKeyboardCommandMap::clone()

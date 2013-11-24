@@ -172,7 +172,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
   MapPtr world_map = world->get_world(game.get_map_registry_ref());
   Coordinate c = world_map->get_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION);
 
-  generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION, Map::make_map_key(c.first, c.second));
+  generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_LOCATION, MapUtils::convert_coordinate_to_map_key(c));
   generator->set_additional_property(MapProperties::MAP_PROPERTIES_WORLD_MAP_HEIGHT, Integer::to_string(world_map->size().get_y()));
 
   return generator;

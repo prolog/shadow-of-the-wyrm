@@ -22,15 +22,7 @@ void TreeTileConfiguration::clear_tree_species_details()
 
 void TreeTileConfiguration::initialize_tree_species_details()
 {
-  tree_species_ids.push_back(TREE_SPECIES_ASPEN);
-  tree_species_ids.push_back(TREE_SPECIES_MAPLE);
-  tree_species_ids.push_back(TREE_SPECIES_YEW);
-  tree_species_ids.push_back(TREE_SPECIES_OAK);
-  tree_species_ids.push_back(TREE_SPECIES_MOUNTAIN_ASH);
-  tree_species_ids.push_back(TREE_SPECIES_ASH);
-  tree_species_ids.push_back(TREE_SPECIES_BIRCH);
-  tree_species_ids.push_back(TREE_SPECIES_CYPRESS);
-  tree_species_ids.push_back(TREE_SPECIES_WALNUT);
+  tree_species_ids = { TREE_SPECIES_ASPEN, TREE_SPECIES_MAPLE, TREE_SPECIES_YEW, TREE_SPECIES_OAK, TREE_SPECIES_MOUNTAIN_ASH, TREE_SPECIES_ASH, TREE_SPECIES_BIRCH, TREE_SPECIES_CYPRESS, TREE_SPECIES_WALNUT };
 
   tree_species_description_sids.insert(make_pair(TREE_SPECIES_ASPEN, TileDescriptionKeys::FLORA_TILE_DESC_ASPEN));
   tree_species_description_sids.insert(make_pair(TREE_SPECIES_MAPLE, TileDescriptionKeys::FLORA_TILE_DESC_MAPLE));

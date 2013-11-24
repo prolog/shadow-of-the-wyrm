@@ -39,6 +39,8 @@ class MapUtils
     static Dimensions get_dimensions(MapPtr map, const Coordinate& coords, const int size);
     
     static Coordinate convert_map_key_to_coordinate(const std::string& map_key);
+    static std::string convert_coordinate_to_map_key(const Coordinate& c);
+    static std::string convert_coordinate_to_map_key(const int row, const int col);
     
     static bool is_moving_from_land_type_tile_to_water_type_tile(TilePtr creatures_old_tile, TilePtr creatures_new_tile);
     

@@ -96,6 +96,11 @@ Savage Lands v0.1.8 "Aethelbert"
   - Changed "> >" safeguards from old-style C++ to ">>", due to the new
     C++11 parse rules.
 
+  - Where applicable, created or assigned vectors and maps using
+    initialization lists rather than multiple push_back/insert statements.
+
+  - Converted boost::unordered_map to std::unordered_map.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 

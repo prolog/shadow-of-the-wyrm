@@ -4,10 +4,7 @@
 
 void EvergreenTreeTileConfiguration::initialize_tree_species_details()
 {
-  tree_species_ids.push_back(TREE_SPECIES_FIR);
-  tree_species_ids.push_back(TREE_SPECIES_CEDAR);
-  tree_species_ids.push_back(TREE_SPECIES_SPRUCE);
-  tree_species_ids.push_back(TREE_SPECIES_PINE);
+  tree_species_ids = {TREE_SPECIES_FIR, TREE_SPECIES_CEDAR, TREE_SPECIES_SPRUCE, TREE_SPECIES_PINE};
 
   tree_species_description_sids.insert(make_pair(TREE_SPECIES_FIR, TileDescriptionKeys::FLORA_TILE_DESC_FIR));
   tree_species_description_sids.insert(make_pair(TREE_SPECIES_CEDAR, TileDescriptionKeys::FLORA_TILE_DESC_CEDAR));

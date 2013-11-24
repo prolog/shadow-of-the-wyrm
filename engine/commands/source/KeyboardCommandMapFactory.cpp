@@ -34,10 +34,10 @@ void KeyboardCommandMapFactory::initialize_command_map_map()
   KeyboardCommandMapPtr kb_com_map  = std::make_shared<KeyboardCommandMap>();
   KeyboardCommandMapPtr eq_com_map  = std::make_shared<EquipmentKeyboardCommandMap>();
   KeyboardCommandMapPtr inv_com_map = std::make_shared<InventoryKeyboardCommandMap>();
-  KeyboardCommandMapPtr ts_com_map  = std::make_shared<TileSelectionKeyboardCommandMap>();
+  KeyboardCommandMapPtr ts_com_map = std::make_shared<TileSelectionKeyboardCommandMap>();
 
-  kb_map.insert(make_pair(CLASS_ID_KEYBOARD_COMMAND_MAP, kb_com_map));
-  kb_map.insert(make_pair(CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP, eq_com_map));
-  kb_map.insert(make_pair(CLASS_ID_INVENTORY_KEYBOARD_COMMAND_MAP, inv_com_map));
-  kb_map.insert(make_pair(CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP, ts_com_map));
+  kb_map = KeyboardCommandMapSerializationMap{{CLASS_ID_KEYBOARD_COMMAND_MAP, kb_com_map},
+                                              {CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP, eq_com_map},
+                                              {CLASS_ID_INVENTORY_KEYBOARD_COMMAND_MAP, inv_com_map},
+                                              {CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP, ts_com_map}};
 }

@@ -17,11 +17,7 @@ string SevereSpellFailureConsequences::get_damage_message_sid() const
 pair<Dice, vector<string>> SevereSpellFailureConsequences::get_summoned_creature_details() const
 {
   Dice num_creatures(2, 1, 0);
-  vector<string> creature_ids;
-
-  creature_ids.push_back("lich");
-  creature_ids.push_back("skeletal_dragon");
-  creature_ids.push_back("reaper");
+  vector<string> creature_ids{"lich", "reaper", "skeletal_dragon"};
 
   pair<Dice, vector<string>> summoned_creature_details(num_creatures, creature_ids);
   return summoned_creature_details;

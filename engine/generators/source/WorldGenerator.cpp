@@ -335,15 +335,7 @@ void WorldGenerator::generate_Lalos_Grotto(MapPtr map)
   lalos_grotto_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH, l14);
   lalos_grotto_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, l14);
 
-  vector<string> creature_types;
-  creature_types.push_back("skeleton");
-  creature_types.push_back("thrall");
-  creature_types.push_back("ghoul");
-  creature_types.push_back("grey_glider");
-  creature_types.push_back("lichling");
-  creature_types.push_back("corpse_bird");
-  creature_types.push_back("quisling");
-
+  vector<string> creature_types{"skeleton", "thrall", "ghoul", "grey_glider", "lichling", "corpse_bird", "quisling"};
   vector<string> creatures_to_generate;
 
   for (const string& creature : creature_types)
