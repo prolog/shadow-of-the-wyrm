@@ -22,8 +22,8 @@ class Quest : public ISerializable
     void set_quest_description_sid(const std::string& new_quest_id);
     std::string get_quest_description_sid() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     std::string quest_id;
@@ -32,7 +32,7 @@ class Quest : public ISerializable
     std::string quest_description_sid;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::map<std::string, Quest> QuestMap;
@@ -61,8 +61,8 @@ class Quests : public ISerializable
     QuestMap get_in_progress_quests() const;
     QuestMap get_completed_quests() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     bool deserialize_quest_map(std::istream& stream, const size_t num_quests, QuestMap& quest_map);
@@ -71,6 +71,6 @@ class Quests : public ISerializable
     QuestMap completed_quest_map;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

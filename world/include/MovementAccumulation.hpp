@@ -35,8 +35,8 @@ class MovementAccumulation : public ISerializable
     void set_movement_type(const MovementType new_method);
     MovementType get_movement_type() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     // Later add a map to track movement across various
@@ -48,5 +48,5 @@ class MovementAccumulation : public ISerializable
     MovementType movement_type;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

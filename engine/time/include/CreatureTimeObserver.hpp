@@ -12,8 +12,8 @@ class CreatureTimeObserver : public ITimeObserver
 
     ITimeObserver* clone();
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
     
   protected:
     void initialize_regeneration_helpers();
@@ -21,5 +21,5 @@ class CreatureTimeObserver : public ITimeObserver
     std::vector<ICreatureRegenerationPtr> regen;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

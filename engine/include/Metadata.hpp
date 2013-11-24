@@ -15,10 +15,10 @@ class Metadata : public ISerializable
     std::string get_game_version_synopsis() const;
     std::string get_full_game_version_details() const; // includes compilation details
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

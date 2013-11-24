@@ -83,7 +83,7 @@ uint CreatureGenerationValues::get_base_experience_value() const
   return base_experience_value;
 }
 
-bool CreatureGenerationValues::serialize(ostream& stream)
+bool CreatureGenerationValues::serialize(ostream& stream) const
 {
   GenerationValues::serialize(stream);
 

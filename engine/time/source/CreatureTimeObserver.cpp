@@ -96,7 +96,7 @@ ITimeObserver* CreatureTimeObserver::clone()
 
 // No need to serialize the vector - a new list gets built up each time the object is created,
 // and it's never actually updated (yet, anyway).
-bool CreatureTimeObserver::serialize(ostream& stream)
+bool CreatureTimeObserver::serialize(ostream& stream) const
 {
   ITimeObserver::serialize(stream);
 

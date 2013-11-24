@@ -586,7 +586,7 @@ LoadedMapDetails& Game::get_loaded_map_details_ref()
   return loaded_map_details;
 }
 
-bool Game::serialize(ostream& stream)
+bool Game::serialize(ostream& stream) const
 {
   Log::instance().trace("Game::serialize - start");
 
@@ -617,7 +617,7 @@ bool Game::serialize(ostream& stream)
 
   if (cgv_size > 0)
   {
-    for (CreatureGenerationValuesMap::value_type& cgv_val : creature_generation_values)
+    for (const CreatureGenerationValuesMap::value_type& cgv_val : creature_generation_values)
     {
       Serialize::write_string(stream, cgv_val.first);
       cgv_val.second.serialize(stream);
@@ -630,7 +630,7 @@ bool Game::serialize(ostream& stream)
 
   if (igv_size > 0)
   {
-    for (GenerationValuesMap::value_type& igv_val : item_generation_values)
+    for (const GenerationValuesMap::value_type& igv_val : item_generation_values)
     {
       Serialize::write_string(stream, igv_val.first);
       igv_val.second.serialize(stream);

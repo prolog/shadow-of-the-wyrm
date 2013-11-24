@@ -19,15 +19,15 @@ class World : public ISerializable
     
     Calendar& get_calendar();
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     std::string world_map_id;
     Calendar calendar;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<World> WorldPtr;

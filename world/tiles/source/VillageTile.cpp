@@ -61,7 +61,7 @@ SettlementType VillageTile::get_settlement_type() const
   return settlement_type;
 }
 
-bool VillageTile::serialize(ostream& stream)
+bool VillageTile::serialize(ostream& stream) const
 {
   WorldMapLandmarkTile::serialize(stream);
 

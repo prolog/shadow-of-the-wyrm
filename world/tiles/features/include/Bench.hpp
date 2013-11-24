@@ -18,5 +18,5 @@ class Bench : public Feature
     virtual std::string get_description_sid() const;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

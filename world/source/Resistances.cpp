@@ -75,7 +75,7 @@ string Resistance::str() const
   return ss.str();
 }
 
-bool Resistance::serialize(ostream& stream)
+bool Resistance::serialize(ostream& stream) const
 {
   Serialize::write_enum(stream, type);
   Serialize::write_string(stream, name_sid);
@@ -133,11 +133,11 @@ void Resistances::set_resistance_value(const DamageType type, double value)
   resistances[type]->set_value(value);
 }
 
-bool Resistances::serialize(ostream& stream)
+bool Resistances::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, resistances.size());
 
-  for (ResistancesMap::value_type& r_pair : resistances)
+  for (const ResistancesMap::value_type& r_pair : resistances)
   {
     Serialize::write_enum(stream, r_pair.first);
 

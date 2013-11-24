@@ -22,8 +22,8 @@ class Calendar : public ISerializable
     
     bool update_season_if_necessary();
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
     
   protected:
     // Number of seconds since day 1 of month 1 of year 832.
@@ -34,5 +34,5 @@ class Calendar : public ISerializable
     ISeasonPtr season;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

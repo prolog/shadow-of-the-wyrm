@@ -101,6 +101,9 @@ Savage Lands v0.1.8 "Aethelbert"
 
   - Converted boost::unordered_map to std::unordered_map.
 
+  - Began the process of adding override/final keywords where appropriate.
+    This will be a long road.
+
 Savage Lands v0.1.7 "Aethelstan"
 - Version declared September 29, 2013.  Version finalized November 2, 2013.
 

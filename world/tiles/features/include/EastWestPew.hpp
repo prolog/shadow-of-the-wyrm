@@ -11,5 +11,5 @@ class EastWestPew : public Pew
     uchar get_symbol() const;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };

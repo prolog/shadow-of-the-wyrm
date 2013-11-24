@@ -18,8 +18,8 @@ class Wearable : public Item
     
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
     
   protected:
     int evade, soak;

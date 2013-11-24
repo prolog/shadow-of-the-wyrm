@@ -137,7 +137,7 @@ void KeyboardCommandMap::initialize_command_mapping()
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses
 // will be handled automatically by this function.
-bool KeyboardCommandMap::serialize(std::ostream& stream)
+bool KeyboardCommandMap::serialize(std::ostream& stream) const
 {
   Serialize::write_size_t(stream, command_mapping.size());
 

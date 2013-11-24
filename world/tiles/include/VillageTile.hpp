@@ -24,8 +24,8 @@ class VillageTile : public WorldMapLandmarkTile
     void set_settlement_type(const SettlementType settlement_type);
     SettlementType get_settlement_type() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
     virtual Tile* clone();
 
@@ -34,7 +34,7 @@ class VillageTile : public WorldMapLandmarkTile
     SettlementType settlement_type;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<VillageTile> VillageTilePtr;

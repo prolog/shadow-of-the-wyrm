@@ -63,7 +63,7 @@ Depth& Dimensions::depth_ref()
   return dim_depth;
 }
 
-bool Dimensions::serialize(ostream& stream)
+bool Dimensions::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, y);
   Serialize::write_int(stream, x);

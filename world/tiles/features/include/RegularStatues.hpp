@@ -18,7 +18,7 @@ class RegularStatue : public Feature
     // parent class.
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 
@@ -36,8 +36,8 @@ class PetrifiedCorpseStatue : public RegularStatue
     
     std::pair<std::string, std::vector<std::string>> get_description_and_replacement_sids() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     std::string get_description_sid() const;
@@ -45,7 +45,7 @@ class PetrifiedCorpseStatue : public RegularStatue
     std::string corpse_description_sid;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<PetrifiedCorpseStatue> PetrifiedCorpseStatuePtr;

@@ -29,7 +29,7 @@ WorshipSiteType WorshipSiteTile::get_worship_site_type() const
   return site_type;
 }
 
-bool WorshipSiteTile::serialize(ostream& stream)
+bool WorshipSiteTile::serialize(ostream& stream) const
 {
   WorldMapLandmarkTile::serialize(stream);
 

@@ -45,8 +45,8 @@ class Skill : public ISerializable
 
     std::string str() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
     virtual Skill* clone() = 0;
 
@@ -100,7 +100,7 @@ class ArcherySkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class AwarenessSkill : public GeneralSkill
@@ -111,7 +111,7 @@ class AwarenessSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class BargainingSkill : public GeneralSkill
@@ -122,7 +122,7 @@ class BargainingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class BeastmasterySkill : public GeneralSkill
@@ -133,7 +133,7 @@ class BeastmasterySkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class BlindFightingSkill : public GeneralSkill
@@ -144,7 +144,7 @@ class BlindFightingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class BoatingSkill : public GeneralSkill
@@ -155,7 +155,7 @@ class BoatingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class BowyerSkill : public GeneralSkill
@@ -166,7 +166,7 @@ class BowyerSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class BrewingSkill : public GeneralSkill
@@ -177,7 +177,7 @@ class BrewingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class CantripsSkill : public GeneralSkill
@@ -188,7 +188,7 @@ class CantripsSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class CarryingSkill : public GeneralSkill
@@ -199,7 +199,7 @@ class CarryingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class CombatSkill : public GeneralSkill
@@ -212,7 +212,7 @@ class CombatSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class CraftingSkill : public GeneralSkill
@@ -223,7 +223,7 @@ class CraftingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class DesertLoreSkill : public GeneralSkill
@@ -234,7 +234,7 @@ class DesertLoreSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class DetectionSkill : public GeneralSkill
@@ -245,7 +245,7 @@ class DetectionSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class DisarmTrapsSkill : public GeneralSkill
@@ -256,7 +256,7 @@ class DisarmTrapsSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class DualWieldSkill : public GeneralSkill
@@ -267,7 +267,7 @@ class DualWieldSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class DungeoneeringSkill : public GeneralSkill
@@ -278,7 +278,7 @@ class DungeoneeringSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class EscapeSkill : public GeneralSkill
@@ -289,7 +289,7 @@ class EscapeSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class FishingSkill : public GeneralSkill
@@ -300,7 +300,7 @@ class FishingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class FletcherySkill : public GeneralSkill
@@ -311,7 +311,7 @@ class FletcherySkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ForagingSkill : public GeneralSkill
@@ -322,7 +322,7 @@ class ForagingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ForestLoreSkill : public GeneralSkill
@@ -333,7 +333,7 @@ class ForestLoreSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class HerbalismSkill : public GeneralSkill
@@ -344,7 +344,7 @@ class HerbalismSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class HidingSkill : public GeneralSkill
@@ -355,7 +355,7 @@ class HidingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class HuntingSkill : public GeneralSkill
@@ -366,7 +366,7 @@ class HuntingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class IntimidationSkill : public GeneralSkill
@@ -377,7 +377,7 @@ class IntimidationSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class JewelerSkill : public GeneralSkill
@@ -388,7 +388,7 @@ class JewelerSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class JumpingSkill : public GeneralSkill
@@ -399,7 +399,7 @@ class JumpingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class LeadershipSkill : public GeneralSkill
@@ -410,7 +410,7 @@ class LeadershipSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class LiteracySkill : public GeneralSkill
@@ -421,7 +421,7 @@ class LiteracySkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class LoreSkill : public GeneralSkill
@@ -432,7 +432,7 @@ class LoreSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class MagicGeneralSkill : public GeneralSkill
@@ -445,7 +445,7 @@ class MagicGeneralSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class MarshLoreSkill : public GeneralSkill
@@ -456,7 +456,7 @@ class MarshLoreSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class MedicineSkill : public GeneralSkill
@@ -467,7 +467,7 @@ class MedicineSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class MountainLoreSkill : public GeneralSkill
@@ -478,7 +478,7 @@ class MountainLoreSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class MountaineeringSkill : public GeneralSkill
@@ -489,7 +489,7 @@ class MountaineeringSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class MusicSkill : public GeneralSkill
@@ -500,7 +500,7 @@ class MusicSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class NightSightSkill : public GeneralSkill
@@ -511,7 +511,7 @@ class NightSightSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class OceanographySkill : public GeneralSkill
@@ -522,7 +522,7 @@ class OceanographySkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class PapercraftSkill : public GeneralSkill
@@ -533,7 +533,7 @@ class PapercraftSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ReligionSkill : public GeneralSkill
@@ -544,7 +544,7 @@ class ReligionSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ScribingSkill : public GeneralSkill
@@ -555,7 +555,7 @@ class ScribingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class SkinningSkill : public GeneralSkill
@@ -566,7 +566,7 @@ class SkinningSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class SmithingSkill : public GeneralSkill
@@ -577,7 +577,7 @@ class SmithingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class SpelunkingSkill : public GeneralSkill
@@ -588,7 +588,7 @@ class SpelunkingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class StealthSkill : public GeneralSkill
@@ -599,7 +599,7 @@ class StealthSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class SwimmingSkill : public GeneralSkill
@@ -610,7 +610,7 @@ class SwimmingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class TanningSkill : public GeneralSkill
@@ -621,7 +621,7 @@ class TanningSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ThieverySkill : public GeneralSkill
@@ -632,7 +632,7 @@ class ThieverySkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class WeavingSkill : public GeneralSkill
@@ -643,7 +643,7 @@ class WeavingSkill : public GeneralSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 // WEAPON SKILLS (MELEE)
@@ -656,7 +656,7 @@ class AxesSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ShortBladesSkill : public WeaponSkill
@@ -667,7 +667,7 @@ class ShortBladesSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class LongBladesSkill : public WeaponSkill
@@ -678,7 +678,7 @@ class LongBladesSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class BludgeonsSkill : public WeaponSkill
@@ -689,7 +689,7 @@ class BludgeonsSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class DaggersSkill : public WeaponSkill
@@ -700,7 +700,7 @@ class DaggersSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class RodsAndStavesSkill : public WeaponSkill
@@ -711,7 +711,7 @@ class RodsAndStavesSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class SpearsSkill : public WeaponSkill
@@ -722,7 +722,7 @@ class SpearsSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class UnarmedSkill : public WeaponSkill
@@ -733,7 +733,7 @@ class UnarmedSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class WhipsSkill : public WeaponSkill
@@ -744,7 +744,7 @@ class WhipsSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ExoticMeleeSkill : public WeaponSkill
@@ -757,7 +757,7 @@ class ExoticMeleeSkill : public WeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 // WEAPON SKILLS (RANGED)
@@ -770,7 +770,7 @@ class ThrownAxesSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ThrownBladesSkill : public RangedWeaponSkill
@@ -781,7 +781,7 @@ class ThrownBladesSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ThrownBludgeonsSkill : public RangedWeaponSkill
@@ -792,7 +792,7 @@ class ThrownBludgeonsSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class BowsSkill : public RangedWeaponSkill
@@ -803,7 +803,7 @@ class BowsSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class CrossbowsSkill : public RangedWeaponSkill
@@ -814,7 +814,7 @@ class CrossbowsSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ThrownDaggersSkill : public RangedWeaponSkill
@@ -825,7 +825,7 @@ class ThrownDaggersSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class RocksSkill : public RangedWeaponSkill
@@ -836,7 +836,7 @@ class RocksSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class SlingsSkill : public RangedWeaponSkill
@@ -847,7 +847,7 @@ class SlingsSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ThrownSpearsSkill : public RangedWeaponSkill
@@ -858,7 +858,7 @@ class ThrownSpearsSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ExoticRangedSkill : public RangedWeaponSkill
@@ -871,7 +871,7 @@ class ExoticRangedSkill : public RangedWeaponSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 // MAGICAL SKILLS
@@ -884,7 +884,7 @@ class ArcaneMagicSkill : public MagicSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class DivineMagicSkill : public MagicSkill
@@ -895,7 +895,7 @@ class DivineMagicSkill : public MagicSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class MysticMagicSkill : public MagicSkill
@@ -906,7 +906,7 @@ class MysticMagicSkill : public MagicSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class PrimordialMagicSkill : public MagicSkill
@@ -917,7 +917,7 @@ class PrimordialMagicSkill : public MagicSkill
     virtual Skill* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 // Classes aggregating skills
@@ -948,8 +948,8 @@ class Skills : public ISerializable
     
     RawSkillMap& get_raw_skills();
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     void initialize_skills();
@@ -962,6 +962,6 @@ class Skills : public ISerializable
     RawSkillMap skills;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 

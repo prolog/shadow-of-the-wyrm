@@ -117,7 +117,7 @@ bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i)
   return match;
 }
 
-bool Weapon::serialize(ostream& stream)
+bool Weapon::serialize(ostream& stream) const
 {
   Wearable::serialize(stream);
   Serialize::write_int(stream, difficulty);

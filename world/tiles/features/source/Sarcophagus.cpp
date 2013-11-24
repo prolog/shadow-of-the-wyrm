@@ -81,7 +81,7 @@ string Sarcophagus::get_inscription_sid() const
   return inscription_sid;
 }
 
-bool Sarcophagus::serialize(ostream& stream)
+bool Sarcophagus::serialize(ostream& stream) const
 {
   Feature::serialize(stream);
   Serialize::write_string(stream, inscription_sid);

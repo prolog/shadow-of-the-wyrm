@@ -13,5 +13,5 @@ class SeasonsTimeObserver : public ITimeObserver
     // No data members, so just use ITimeObserver's serializer.
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

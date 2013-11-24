@@ -995,7 +995,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->spell_knowledge, cr.spell_knowledge);
 }
 
-bool Creature::serialize(ostream& stream)
+bool Creature::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);
   Serialize::write_string(stream, original_id);
@@ -1096,7 +1096,7 @@ bool Creature::serialize(ostream& stream)
 
   if (!status_durations.empty())
   {
-    for (StatusDurationMap::value_type& status_duration : status_durations)
+    for (const StatusDurationMap::value_type& status_duration : status_durations)
     {
       Serialize::write_string(stream, status_duration.first);
       status_duration.second.serialize(stream);

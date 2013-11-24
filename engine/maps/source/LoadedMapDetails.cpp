@@ -94,7 +94,7 @@ bool LoadedMapDetails::requires_full_map_redraw() const
           (prev_season != cur_season));
 }
 
-bool LoadedMapDetails::serialize(ostream& stream)
+bool LoadedMapDetails::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, prev_map_id);
   Serialize::write_string(stream, cur_map_id);

@@ -81,7 +81,7 @@ MovementType MovementAccumulation::get_movement_type() const
   return movement_type;
 }
 
-bool MovementAccumulation::serialize(ostream& stream)
+bool MovementAccumulation::serialize(ostream& stream) const
 {
   Serialize::write_ulonglong(stream, minutes_on_super_type_given_movement);
   Serialize::write_enum(stream, tile_super_type);

@@ -61,7 +61,7 @@ string Metadata::get_full_game_version_details() const
   return oss.str();
 }
 
-bool Metadata::serialize(ostream& stream)
+bool Metadata::serialize(ostream& stream) const
 {
   CompilationDetails cd;
 

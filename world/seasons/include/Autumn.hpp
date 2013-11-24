@@ -19,6 +19,6 @@ class Autumn : public ISeason
     void initialize_months();
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

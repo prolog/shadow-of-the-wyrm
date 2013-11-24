@@ -69,7 +69,7 @@ int Statistic::get_current() const
 	return current;
 }
 
-bool Statistic::serialize(ostream& stream)
+bool Statistic::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, base);
   Serialize::write_int(stream, current);

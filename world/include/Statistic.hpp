@@ -15,13 +15,13 @@ class Statistic : public ISerializable
     void set_current(int new_current);
     int  get_current() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
 	protected:
 		int base;
 		int current;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

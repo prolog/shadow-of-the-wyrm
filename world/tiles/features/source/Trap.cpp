@@ -11,7 +11,7 @@ bool Trap::operator==(const Trap& trap) const
   return true;
 }
 
-bool Trap::serialize(std::ostream& stream)
+bool Trap::serialize(std::ostream& stream) const
 {
   return true;
 }

@@ -496,7 +496,7 @@ ActionCost ActionManager::get_action_cost(CreaturePtr creature, const ActionCost
   return ac;
 }
 
-bool ActionManager::serialize(std::ostream& stream)
+bool ActionManager::serialize(std::ostream& stream) const
 {
   tile_selection_action.serialize(stream);
 

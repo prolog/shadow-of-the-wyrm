@@ -74,7 +74,7 @@ bool DeityStatus::get_crowned() const
   return crowned;
 }
 
-bool DeityStatus::serialize(ostream& stream)
+bool DeityStatus::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, piety);
   Serialize::write_bool(stream, crowned);

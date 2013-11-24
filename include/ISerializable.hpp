@@ -27,10 +27,10 @@ class ISerializable
   public:
     virtual ~ISerializable() {};
 
-    virtual bool serialize(std::ostream& stream) = 0;
+    virtual bool serialize(std::ostream& stream) const = 0;
     virtual bool deserialize(std::istream& stream) = 0;
 
-    virtual ClassIdentifier get_class_identifier() const { return internal_class_identifier(); }
+    virtual ClassIdentifier get_class_identifier() const final { return internal_class_identifier(); }
 
   private:
     // This function is private and pure virtual so that it has to be implemented, and so that each class has a

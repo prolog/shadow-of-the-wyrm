@@ -27,8 +27,8 @@ class ActionCoordinator : public ISerializable
 
     bool has_actions() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     friend class SL_Engine_Actions_ActionCoordinatorFixture; // test fixture
@@ -37,7 +37,7 @@ class ActionCoordinator : public ISerializable
     std::string current_map_id;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::multimap<ActionCost, std::string>::iterator ActionOrderIterator;

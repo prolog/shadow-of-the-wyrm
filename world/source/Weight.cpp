@@ -58,7 +58,7 @@ std::string Weight::str() const
   return weight.str();
 }
 
-bool Weight::serialize(ostream& stream)
+bool Weight::serialize(ostream& stream) const
 {
   Serialize::write_uint(stream, ounces);
 

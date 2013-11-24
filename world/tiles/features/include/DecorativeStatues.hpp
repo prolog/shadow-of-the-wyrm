@@ -19,7 +19,7 @@ class DecorativeStatue : public Feature
     // descendents is used.
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 
@@ -34,7 +34,7 @@ class KingDecorativeStatue : public DecorativeStatue
     std::string get_description_sid() const;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class QueenDecorativeStatue : public DecorativeStatue
@@ -47,7 +47,7 @@ class QueenDecorativeStatue : public DecorativeStatue
     std::string get_description_sid() const;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class WarlordDecorativeStatue : public DecorativeStatue
@@ -60,7 +60,7 @@ class WarlordDecorativeStatue : public DecorativeStatue
     std::string get_description_sid() const;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class KnightDecorativeStatue : public DecorativeStatue
@@ -73,7 +73,7 @@ class KnightDecorativeStatue : public DecorativeStatue
     std::string get_description_sid() const;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class HighPriestDecorativeStatue : public DecorativeStatue
@@ -86,7 +86,7 @@ class HighPriestDecorativeStatue : public DecorativeStatue
     std::string get_description_sid() const;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class SorcerorDecorativeStatue : public DecorativeStatue
@@ -99,6 +99,6 @@ class SorcerorDecorativeStatue : public DecorativeStatue
     std::string get_description_sid() const;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 

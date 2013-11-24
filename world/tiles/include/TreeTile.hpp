@@ -12,6 +12,6 @@ class TreeTile : public Tile
 
   private:
     virtual std::string get_default_tree_tile_description_sid() const;
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

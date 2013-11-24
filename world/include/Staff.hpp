@@ -10,7 +10,7 @@ class Staff : public Item
     Item* clone();
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Staff> StaffPtr;

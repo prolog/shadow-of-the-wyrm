@@ -46,7 +46,7 @@ bool AutomaticMovement::get_engaged() const
           direction != DIRECTION_DOWN);
 }
 
-bool AutomaticMovement::serialize(ostream& stream)
+bool AutomaticMovement::serialize(ostream& stream) const
 {
   Serialize::write_enum(stream, direction);
   Serialize::write_bool(stream, engaged);

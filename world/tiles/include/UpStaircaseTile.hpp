@@ -13,7 +13,7 @@ class UpStaircaseTile : public StaircaseTile
     virtual Tile* clone();
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<UpStaircaseTile> UpStaircaseTilePtr;

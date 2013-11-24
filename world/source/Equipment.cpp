@@ -117,7 +117,7 @@ EquipmentMap Equipment::get_equipment() const
   return equipment;
 }
 
-bool Equipment::serialize(ostream& stream)
+bool Equipment::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, equipment.size());
 

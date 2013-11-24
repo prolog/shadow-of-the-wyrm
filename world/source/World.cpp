@@ -45,7 +45,7 @@ Calendar& World::get_calendar()
   return calendar;
 }
 
-bool World::serialize(std::ostream& stream)
+bool World::serialize(std::ostream& stream) const
 {
   Serialize::write_string(stream, world_map_id);
   calendar.serialize(stream);

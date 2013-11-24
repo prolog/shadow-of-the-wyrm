@@ -28,13 +28,13 @@ class Entrance : public Feature
     // the entrance is closed, a message about closing the door (etc).
     virtual std::string get_handle_message_sid() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     EntranceState state;
     CreatureSize maximum_size; // The maximum creature size for the entrance.  Dragons can't go in Hobbit holes.
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };

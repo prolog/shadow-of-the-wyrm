@@ -18,14 +18,14 @@ class AutomaticMovement : public ISerializable
     void set_engaged(const bool new_engaged);
     bool get_engaged() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     Direction direction;
     bool engaged;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

@@ -91,7 +91,7 @@ bool Calendar::update_season_if_necessary()
   return season_updated;
 }
 
-bool Calendar::serialize(ostream& stream)
+bool Calendar::serialize(ostream& stream) const
 {
   Serialize::write_double(stream, seconds);
   Serialize::write_uint(stream, STARTING_YEAR);

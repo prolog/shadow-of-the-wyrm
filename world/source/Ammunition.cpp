@@ -33,7 +33,7 @@ Item* Ammunition::clone()
   return new Ammunition(*this);
 }
 
-bool Ammunition::serialize(ostream& stream)
+bool Ammunition::serialize(ostream& stream) const
 {
   RangedWeapon::serialize(stream);
   Serialize::write_bool(stream, requires_ranged_weapon);

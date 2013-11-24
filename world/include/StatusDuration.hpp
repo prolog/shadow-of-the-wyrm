@@ -16,14 +16,14 @@ class StatusDuration : public ISerializable
     void set_end(const double new_end_val);
     double get_end() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
 
   protected:
     double end;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

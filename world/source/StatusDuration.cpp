@@ -33,7 +33,7 @@ double StatusDuration::get_end() const
   return end;
 }
 
-bool StatusDuration::serialize(ostream& stream)
+bool StatusDuration::serialize(ostream& stream) const
 {
   Serialize::write_double(stream, end);
 

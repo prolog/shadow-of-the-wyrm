@@ -1018,7 +1018,7 @@ WINDOW* CursesDisplay::get_current_menu()
   return menu;
 }
 
-bool CursesDisplay::serialize(ostream& stream)
+bool CursesDisplay::serialize(ostream& stream) const
 {
   Serialize::write_uint(stream, TERMINAL_MAX_ROWS);
   Serialize::write_uint(stream, TERMINAL_MAX_COLS);

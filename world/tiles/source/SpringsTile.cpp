@@ -54,7 +54,7 @@ Tile* SpringsTile::clone()
   return new SpringsTile(*this);
 }
 
-bool SpringsTile::serialize(ostream& stream)
+bool SpringsTile::serialize(ostream& stream) const
 {
   Tile::serialize(stream);
   Serialize::write_int(stream, temperature);

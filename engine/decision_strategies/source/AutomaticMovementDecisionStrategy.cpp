@@ -46,7 +46,7 @@ DecisionStrategy* AutomaticMovementDecisionStrategy::copy()
   return new AutomaticMovementDecisionStrategy(*this);
 }
 
-bool AutomaticMovementDecisionStrategy::serialize(ostream& stream)
+bool AutomaticMovementDecisionStrategy::serialize(ostream& stream) const
 {
   DecisionStrategy::serialize(stream);
   move.serialize(stream);

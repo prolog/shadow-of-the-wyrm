@@ -79,7 +79,7 @@ Rarity GenerationValues::get_rarity() const
   return rarity;
 }
 
-bool GenerationValues::serialize(ostream& stream)
+bool GenerationValues::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, current);
   Serialize::write_int(stream, maximum);

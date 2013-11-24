@@ -391,7 +391,7 @@ uint Map::get_danger() const
   return danger;
 }
 
-bool Map::serialize(ostream& stream)
+bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
 

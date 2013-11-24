@@ -55,7 +55,7 @@ Damage Potion::get_damage() const
   return damage;
 }
 
-bool Potion::serialize(std::ostream& stream)
+bool Potion::serialize(std::ostream& stream) const
 {
   Consumable::serialize(stream);
   Serialize::write_bool(stream, has_damage);

@@ -22,8 +22,8 @@ class Dimensions : public ISerializable
     Depth depth() const;
     Depth& depth_ref();
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     int y;
@@ -31,6 +31,6 @@ class Dimensions : public ISerializable
     Depth dim_depth;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

@@ -38,7 +38,7 @@ Statistic IndividualSpellKnowledge::get_bonus() const
   return bonus;
 }
 
-bool IndividualSpellKnowledge::serialize(std::ostream& stream)
+bool IndividualSpellKnowledge::serialize(std::ostream& stream) const
 {
   Serialize::write_uint(stream, castings);
   bonus.serialize(stream);

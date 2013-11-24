@@ -14,5 +14,5 @@ class SiteOfDeathTile : public WorshipSiteTile
     virtual Tile* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };

@@ -15,8 +15,8 @@ class KeyboardCommandMap : public ISerializable
 
     virtual std::string get_command_type(const std::string& keyboard_input);
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
     virtual KeyboardCommandMap* clone();
 
@@ -28,7 +28,7 @@ class KeyboardCommandMap : public ISerializable
     KeyboardCommandMappingMap command_mapping;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 #ifdef UNIT_TESTS

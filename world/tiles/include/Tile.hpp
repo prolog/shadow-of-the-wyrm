@@ -91,8 +91,8 @@ class Tile : public ISerializable
     virtual bool get_dangerous() const;
     virtual std::string get_danger_confirmation_sid() const;
     
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
     virtual Tile* clone() = 0;
 
@@ -126,7 +126,7 @@ class Tile : public ISerializable
     TileExitMap map_exits;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Tile> TilePtr;

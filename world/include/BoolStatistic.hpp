@@ -15,14 +15,14 @@ class BoolStatistic : public ISerializable
     void set_current(bool new_current);
     bool get_current() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
 	protected:
 		bool base;
 		bool current;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

@@ -22,13 +22,13 @@ class SpellKnowledge : public ISerializable
 
     SpellKnowledgeMap get_known_spells() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     SpellKnowledgeMap spell_knowledge;
     std::string most_recently_cast_spell_id;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

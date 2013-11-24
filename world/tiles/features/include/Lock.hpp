@@ -10,8 +10,8 @@ class Lock : public ISerializable
 
     virtual bool operator==(const Lock& lock) const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
     void set_lock_id(const std::string& new_lock_id);
     std::string get_lock_id() const;
@@ -27,7 +27,7 @@ class Lock : public ISerializable
     bool locked;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Lock> LockPtr;

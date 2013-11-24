@@ -84,7 +84,7 @@ string Dice::str() const
   return damage;
 }
 
-bool Dice::serialize(ostream& stream)
+bool Dice::serialize(ostream& stream) const
 {
   Serialize::write_uint(stream, num_dice);
   Serialize::write_uint(stream, dice_sides);

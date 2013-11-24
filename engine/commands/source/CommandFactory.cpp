@@ -179,7 +179,7 @@ CommandFactory* CommandFactory::clone()
 }
 
 // Save/load.
-bool CommandFactory::serialize(std::ostream& stream)
+bool CommandFactory::serialize(std::ostream& stream) const
 {
   return true;
 }

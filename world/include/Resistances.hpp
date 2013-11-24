@@ -35,8 +35,8 @@ class Resistance : public ISerializable
 
     std::string str() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
     virtual Resistance* clone() = 0;
 
@@ -58,7 +58,7 @@ class SlashResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class PierceResistance : public Resistance
@@ -69,7 +69,7 @@ class PierceResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class PoundResistance : public Resistance
@@ -80,7 +80,7 @@ class PoundResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class HeatResistance : public Resistance
@@ -91,7 +91,7 @@ class HeatResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ColdResistance : public Resistance
@@ -102,7 +102,7 @@ class ColdResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class AcidResistance : public Resistance
@@ -113,7 +113,7 @@ class AcidResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class PoisonResistance : public Resistance
@@ -124,7 +124,7 @@ class PoisonResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class HolyResistance : public Resistance
@@ -135,7 +135,7 @@ class HolyResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ShadowResistance : public Resistance
@@ -146,7 +146,7 @@ class ShadowResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class ArcaneResistance : public Resistance
@@ -157,7 +157,7 @@ class ArcaneResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 class LightningResistance : public Resistance
@@ -168,7 +168,7 @@ class LightningResistance : public Resistance
     virtual Resistance* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::map<DamageType, std::shared_ptr<Resistance>> ResistancesMap;
@@ -185,8 +185,8 @@ class Resistances : public ISerializable
 
     std::string str() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
     
   protected:
     void default_resistances();
@@ -194,5 +194,5 @@ class Resistances : public ISerializable
     ResistancesMap resistances;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

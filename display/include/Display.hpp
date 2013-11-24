@@ -83,7 +83,7 @@ class Display : public ISerializable
 	  virtual void clear_menu() = 0;
 
     // ISerializable methods
-    virtual bool serialize(std::ostream& stream) = 0;
+    virtual bool serialize(std::ostream& stream) const = 0;
     virtual bool deserialize(std::istream& stream) = 0;
 
     virtual Display* clone() = 0;

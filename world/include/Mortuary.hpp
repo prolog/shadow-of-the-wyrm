@@ -20,13 +20,13 @@ class Mortuary : public ISerializable
     uint get_num_creature_killed(const std::string& creature_id) const;
     uint get_num_creatures_killed() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     MortuaryCountMap creatures_killed;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

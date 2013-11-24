@@ -190,7 +190,7 @@ Item* Wand::clone()
   return new_wand;
 }
 
-bool Wand::serialize(ostream& stream)
+bool Wand::serialize(ostream& stream) const
 {
   Item::serialize(stream);
 

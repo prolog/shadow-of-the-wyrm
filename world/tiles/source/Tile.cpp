@@ -303,7 +303,7 @@ string Tile::get_danger_confirmation_sid() const
   return empty_sid;
 }
 
-bool Tile::serialize(ostream& stream)
+bool Tile::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, illuminated);
   Serialize::write_bool(stream, explored);
@@ -337,7 +337,7 @@ bool Tile::serialize(ostream& stream)
 
   Serialize::write_size_t(stream, map_exits.size());
 
-  for (TileExitMap::value_type& tile_exit_map_pair : map_exits)
+  for (const TileExitMap::value_type& tile_exit_map_pair : map_exits)
   {
     Direction d = tile_exit_map_pair.first;
     MapExitPtr map_exit = tile_exit_map_pair.second;

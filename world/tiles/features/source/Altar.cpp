@@ -49,7 +49,7 @@ uchar Altar::get_symbol() const
   return '_';
 }
 
-bool Altar::serialize(ostream& stream)
+bool Altar::serialize(ostream& stream) const
 {
   Feature::serialize(stream);
   Serialize::write_string(stream, deity_id);

@@ -20,8 +20,8 @@ class ISeason : public ISerializable
 
     virtual ISeason* clone() = 0;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
     
   protected:
     virtual void initialize_months() = 0;

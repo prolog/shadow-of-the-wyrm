@@ -126,7 +126,7 @@ string ActionCoordinator::get_current_map_id() const
   return current_map_id;
 }
 
-bool ActionCoordinator::serialize(std::ostream& stream)
+bool ActionCoordinator::serialize(std::ostream& stream) const
 {
   Serialize::write_size_t(stream, creature_action_order.size());
 

@@ -88,7 +88,7 @@ ThreatMap ThreatRatings::get_all_threats() const
 }
 
 // Write out the threat map.
-bool ThreatRatings::serialize(ostream& stream)
+bool ThreatRatings::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, threat_ratings.size());
 

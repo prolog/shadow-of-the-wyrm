@@ -14,7 +14,7 @@ class Food : public Consumable
     Item* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Food> FoodPtr;
