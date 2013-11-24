@@ -28,7 +28,7 @@ void ITimeObserver::update_minutes_elapsed(const ulonglong new_minutes_elapsed)
   minutes_elapsed += new_minutes_elapsed;
 }
 
-bool ITimeObserver::serialize(ostream& stream)
+bool ITimeObserver::serialize(ostream& stream) const
 {
   Serialize::write_ulonglong(stream, minutes_elapsed);
   Serialize::write_string(stream, id);

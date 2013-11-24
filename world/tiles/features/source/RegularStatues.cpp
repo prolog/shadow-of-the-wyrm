@@ -82,7 +82,7 @@ Feature* PetrifiedCorpseStatue::clone()
   return new PetrifiedCorpseStatue(*this);
 }
 
-bool PetrifiedCorpseStatue::serialize(ostream& stream)
+bool PetrifiedCorpseStatue::serialize(ostream& stream) const
 {
   RegularStatue::serialize(stream);
   Serialize::write_string(stream, corpse_description_sid);

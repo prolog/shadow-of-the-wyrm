@@ -60,7 +60,7 @@ uint Mortuary::get_num_creatures_killed() const
   return num_killed;
 }
 
-bool Mortuary::serialize(ostream& stream)
+bool Mortuary::serialize(ostream& stream) const
 {
   size_t ck_size = creatures_killed.size();
   Serialize::write_size_t(stream, ck_size);

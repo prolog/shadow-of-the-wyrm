@@ -52,7 +52,7 @@ bool MapExit::is_using_terrain_type() const
   return (!is_using_map_id() && terrain_type != TILE_TYPE_UNDEFINED);
 }
 
-bool MapExit::serialize(ostream& stream)
+bool MapExit::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, map_id);
   Serialize::write_enum(stream, terrain_type);

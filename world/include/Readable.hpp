@@ -16,8 +16,8 @@ class Readable : public Item
     virtual void set_text_sid(const std::string& new_text_sid);
     virtual std::string get_text_sid() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
     
   protected:
     // protected so that the class can't actually be instantiated

@@ -54,7 +54,7 @@ Item* Spellbook::clone()
   return new Spellbook(*this);
 }
 
-bool Spellbook::serialize(ostream& stream)
+bool Spellbook::serialize(ostream& stream) const
 {
   Readable::serialize(stream);
 

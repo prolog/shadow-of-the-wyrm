@@ -33,7 +33,7 @@ string Readable::get_text_sid() const
   return text_sid;
 }
 
-bool Readable::serialize(ostream& stream)
+bool Readable::serialize(ostream& stream) const
 {
   Item::serialize(stream);
   Serialize::write_string(stream, text_sid);

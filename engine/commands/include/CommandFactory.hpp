@@ -28,11 +28,11 @@ class CommandFactory : public ISerializable
 
     virtual CommandFactory* clone();
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<CommandFactory> CommandFactoryPtr;

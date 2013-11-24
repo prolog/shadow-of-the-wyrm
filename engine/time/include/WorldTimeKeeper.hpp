@@ -18,9 +18,9 @@ class WorldTimeKeeper : public ISerializable
 
     void tick(const double seconds);
 
-    bool serialize(std::ostream& stream);
-    bool serialize_observers(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool serialize_observers(std::ostream& stream) const;
+    bool deserialize(std::istream& stream) override;
     bool deserialize_observers(std::istream& stream);
     
   protected:
@@ -30,5 +30,5 @@ class WorldTimeKeeper : public ISerializable
     WorldTimeKeeperObserverMap observers;
 
    private:
-     ClassIdentifier internal_class_identifier() const;
+     ClassIdentifier internal_class_identifier() const override;
 };

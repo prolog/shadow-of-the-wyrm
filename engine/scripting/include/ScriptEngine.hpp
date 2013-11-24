@@ -39,8 +39,8 @@ class ScriptEngine : public ISerializable
     void set_last_executed(const std::string& new_last_executed);
     std::string get_last_executed() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     // Set up the Lua state
@@ -65,6 +65,6 @@ class ScriptEngine : public ISerializable
     ScriptEngine(const ScriptEngine& se); // Do not implement!
     bool operator=(const ScriptEngine& se); // Do not implement!
 
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

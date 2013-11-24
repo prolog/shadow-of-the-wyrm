@@ -31,8 +31,8 @@ class CreatureGenerationValues : public GenerationValues
     void set_base_experience_value(const uint new_base_experience_value);
     uint get_base_experience_value() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     // The terrain types in which the creature can be generated
@@ -52,7 +52,7 @@ class CreatureGenerationValues : public GenerationValues
     uint base_experience_value;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::map<std::string, CreatureGenerationValues> CreatureGenerationValuesMap;

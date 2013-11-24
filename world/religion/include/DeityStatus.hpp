@@ -16,13 +16,13 @@ class DeityStatus : public ISerializable
     void set_crowned(const bool new_crowned_status);
     bool get_crowned() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
     
   protected:
     int piety;
     bool crowned;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

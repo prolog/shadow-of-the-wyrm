@@ -27,8 +27,8 @@ class LoadedMapDetails : public ISerializable
     // differences between now and the last player turn.
     bool requires_full_map_redraw() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     friend class LoadedMapDetailsTester;
@@ -49,6 +49,6 @@ class LoadedMapDetails : public ISerializable
     Season cur_season;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

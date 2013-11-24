@@ -18,15 +18,15 @@ class Potion : public Consumable
     void set_damage(const Damage& new_damage);
     Damage get_damage() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     bool has_damage;
     Damage damage;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Potion> PotionPtr;

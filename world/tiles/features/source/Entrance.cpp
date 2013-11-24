@@ -119,7 +119,7 @@ string Entrance::get_handle_message_sid() const
   return handle_message_sid;
 }
 
-bool Entrance::serialize(ostream& stream)
+bool Entrance::serialize(ostream& stream) const
 {
   Feature::serialize(stream);
 

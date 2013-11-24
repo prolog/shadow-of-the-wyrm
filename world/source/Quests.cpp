@@ -66,7 +66,7 @@ string Quest::get_quest_description_sid() const
   return quest_description_sid;
 }
 
-bool Quest::serialize(ostream& stream)
+bool Quest::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, quest_id);
   Serialize::write_string(stream, quest_title_sid);
@@ -172,11 +172,11 @@ QuestMap Quests::get_completed_quests() const
 }
 
 // Write out all of the in progress and completed quests.
-bool Quests::serialize(ostream& stream)
+bool Quests::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, in_progress_quest_map.size());
 
-  for (QuestMap::value_type& pair : in_progress_quest_map)
+  for (const QuestMap::value_type& pair : in_progress_quest_map)
   {
     Serialize::write_string(stream, pair.first);
     pair.second.serialize(stream);
@@ -184,7 +184,7 @@ bool Quests::serialize(ostream& stream)
 
   Serialize::write_size_t(stream, completed_quest_map.size());
 
-  for (QuestMap::value_type& pair : completed_quest_map)
+  for (const QuestMap::value_type& pair : completed_quest_map)
   {
     Serialize::write_string(stream, pair.first);
     pair.second.serialize(stream);

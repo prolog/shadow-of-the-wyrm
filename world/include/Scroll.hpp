@@ -12,7 +12,7 @@ class Scroll : public Readable
     Item* clone();
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Scroll> ScrollPtr;

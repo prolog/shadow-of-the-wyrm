@@ -17,7 +17,7 @@ class StaircaseTile : public Tile
     virtual bool display_description_on_arrival() const { return true; }
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<StaircaseTile> StaircaseTilePtr;

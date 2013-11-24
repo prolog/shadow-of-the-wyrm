@@ -11,6 +11,6 @@ class WellTile : public Tile
     virtual Tile* clone();
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

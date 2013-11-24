@@ -111,8 +111,8 @@ class Item : public ISerializable
     virtual Item* create();
     virtual Item* clone() = 0;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
     
   protected:
     friend class ItemIdentifier;

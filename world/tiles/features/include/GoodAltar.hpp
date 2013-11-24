@@ -14,5 +14,5 @@ class GoodAltar : public Altar
     virtual std::string get_description_sid() const;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };

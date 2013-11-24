@@ -46,12 +46,12 @@ class Inventory : public ISerializable
     std::list<ItemPtr>& get_items_ref();
     const std::list<ItemPtr>& get_items_cref() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
     
   protected:
     std::list<ItemPtr> items;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };

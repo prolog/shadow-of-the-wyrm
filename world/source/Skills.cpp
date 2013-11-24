@@ -165,7 +165,7 @@ string Skill::str() const
   return ss.str();
 }
 
-bool Skill::serialize(ostream& stream)
+bool Skill::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, value);
   Serialize::write_int(stream, marks);
@@ -1689,11 +1689,11 @@ string Skills::str() const
   return skills_str;
 }
 
-bool Skills::serialize(ostream& stream)
+bool Skills::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, skills.size());
 
-  for (RawSkillMap::value_type& skill_pair : skills)
+  for (const RawSkillMap::value_type& skill_pair : skills)
   {
     Serialize::write_enum(stream, skill_pair.first);
 

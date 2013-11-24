@@ -19,8 +19,8 @@ class Sarcophagus : public Feature
     virtual void set_inscription_sid(const std::string& new_inscription_sid);
     virtual std::string get_inscription_sid() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     virtual std::string get_description_sid() const;
@@ -28,7 +28,7 @@ class Sarcophagus : public Feature
     std::string inscription_sid;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Sarcophagus> SarcophagusPtr;

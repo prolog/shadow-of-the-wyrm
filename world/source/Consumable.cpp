@@ -37,7 +37,7 @@ int Consumable::get_nutrition() const
   return nutrition;
 }
 
-bool Consumable::serialize(ostream& stream)
+bool Consumable::serialize(ostream& stream) const
 {
   Item::serialize(stream);
   Serialize::write_int(stream, nutrition);

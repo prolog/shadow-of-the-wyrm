@@ -269,7 +269,7 @@ bool TileSelectionAction::remove_target(CreaturePtr creature, const AttackType a
   return target_removed;
 }
 
-bool TileSelectionAction::serialize(std::ostream& stream)
+bool TileSelectionAction::serialize(std::ostream& stream) const
 {
   Serialize::write_class_id(stream, command_factory->get_class_identifier());
   command_factory->serialize(stream);

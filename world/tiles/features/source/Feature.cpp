@@ -159,7 +159,7 @@ Colour Feature::get_colour() const
   return colour;
 }
 
-bool Feature::serialize(ostream& stream)
+bool Feature::serialize(ostream& stream) const
 {
   if (trap)
   {

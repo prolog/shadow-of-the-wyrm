@@ -53,7 +53,7 @@ bool BoolStatistic::get_current() const
 	return current;
 }
 
-bool BoolStatistic::serialize(ostream& stream)
+bool BoolStatistic::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, base);
   Serialize::write_bool(stream, current);

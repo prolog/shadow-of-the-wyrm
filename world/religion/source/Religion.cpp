@@ -89,12 +89,12 @@ DeityStatus Religion::get_deity_status(const std::string& find_deity_id) const
   return status;
 }
 
-bool Religion::serialize(ostream& stream)
+bool Religion::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, deity_id);
   Serialize::write_size_t(stream, deity_relations.size());
 
-  for (DeityRelations::value_type& relation : deity_relations)
+  for (const DeityRelations::value_type& relation : deity_relations)
   {
     Serialize::write_string(stream, relation.first);
     relation.second.serialize(stream);

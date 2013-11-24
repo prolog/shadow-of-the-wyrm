@@ -93,7 +93,7 @@ bool HungerClock::is_normal_or_worse() const
 }
 
 // Serialization details
-bool HungerClock::serialize(ostream& stream)
+bool HungerClock::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, requires_food);
   Serialize::write_int(stream, hunger);

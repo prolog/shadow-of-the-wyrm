@@ -36,8 +36,8 @@ class Weapon : public Wearable
 
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
   
@@ -60,7 +60,7 @@ class MeleeWeapon : public Weapon
     virtual Item* clone();
     
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 class RangedWeapon : public Weapon
@@ -73,7 +73,7 @@ class RangedWeapon : public Weapon
     virtual Item* clone();
     
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Weapon> WeaponPtr;

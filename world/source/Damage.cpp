@@ -155,7 +155,7 @@ string Damage::str() const
   return ss.str();
 }
 
-bool Damage::serialize(ostream& stream)
+bool Damage::serialize(ostream& stream) const
 {
   Dice::serialize(stream);
   Serialize::write_enum(stream, damage_type);

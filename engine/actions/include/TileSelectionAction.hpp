@@ -37,8 +37,8 @@ class TileSelectionAction : public IActionManager, ISerializable
     
     bool remove_target(CreaturePtr creature, const AttackType attack_type);
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     friend class ActionManager;
@@ -62,5 +62,5 @@ class TileSelectionAction : public IActionManager, ISerializable
     bool show_item_descriptions;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

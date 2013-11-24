@@ -9,7 +9,7 @@ bool Controller::operator==(const Controller& c) const
 }
 
 // Controllers are stateless.
-bool Controller::serialize(ostream& stream)
+bool Controller::serialize(ostream& stream) const
 {
   return true;
 }

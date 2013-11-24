@@ -28,8 +28,8 @@ class GenerationValues : public ISerializable
     void set_rarity(const Rarity new_rarity);
     Rarity get_rarity() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     // The current number that has been generated.
@@ -46,7 +46,7 @@ class GenerationValues : public ISerializable
     Rarity rarity;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::map<std::string, GenerationValues> GenerationValuesMap;

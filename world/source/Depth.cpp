@@ -63,7 +63,7 @@ string Depth::str() const
   return depth_s;
 }
 
-bool Depth::serialize(ostream& stream)
+bool Depth::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, current);
   Serialize::write_int(stream, maximum);

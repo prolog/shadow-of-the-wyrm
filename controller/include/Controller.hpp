@@ -12,8 +12,8 @@ class Controller : public ISerializable
     virtual std::string get_line() = 0;
     virtual int get_char_as_int() = 0;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
     virtual Controller* clone() = 0;
 

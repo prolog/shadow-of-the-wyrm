@@ -31,8 +31,8 @@ class Damage : public Dice
     
     std::string str() const;
     
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     bool chaotic;
@@ -40,7 +40,7 @@ class Damage : public Dice
     std::shared_ptr<Damage> additional_damage;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Damage> DamagePtr;

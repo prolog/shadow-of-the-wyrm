@@ -15,8 +15,8 @@ class Ammunition : public RangedWeapon
     
     Item* clone();
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
     
   protected:
     // Whether the ammunition requires a ranged weapon.  Some (arrows, bolts) do.
@@ -24,7 +24,7 @@ class Ammunition : public RangedWeapon
     bool requires_ranged_weapon;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Ammunition> AmmunitionPtr;

@@ -53,11 +53,11 @@ bool MapRegistry::remove_map(const string& map_id)
   return map_removed;
 }
 
-bool MapRegistry::serialize(ostream& stream)
+bool MapRegistry::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, map_registry.size());
 
-  for (MapRegistryMap::value_type& map_pair : map_registry)
+  for (const MapRegistryMap::value_type& map_pair : map_registry)
   {
     string map_guid = map_pair.first;
     MapPtr map = map_pair.second;

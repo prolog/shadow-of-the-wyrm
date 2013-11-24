@@ -19,15 +19,15 @@ class Spellbook : public Readable
     
     Item* clone();
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     std::string spell_id;
     int difficulty;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Spellbook> SpellbookPtr;

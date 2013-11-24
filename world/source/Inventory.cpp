@@ -247,7 +247,7 @@ bool Inventory::has_item_type(const ItemType type) const
   return false;
 }
 
-bool Inventory::serialize(ostream& stream)
+bool Inventory::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, items.size());
 

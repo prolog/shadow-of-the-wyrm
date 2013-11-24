@@ -25,8 +25,8 @@ class Dice : public ISerializable
     // Convert to a string (for UI use, etc)
     std::string str() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     uint num_dice;
@@ -34,5 +34,5 @@ class Dice : public ISerializable
     int modifier;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };

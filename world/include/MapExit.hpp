@@ -20,15 +20,15 @@ class MapExit : public ISerializable
     bool is_using_map_id() const;
     bool is_using_terrain_type() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     std::string map_id;
     TileType terrain_type;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<MapExit> MapExitPtr;

@@ -1272,7 +1272,7 @@ string ScriptEngine::get_last_executed() const
   return last_executed;
 }
 
-bool ScriptEngine::serialize(ostream& stream)
+bool ScriptEngine::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, last_executed);
 

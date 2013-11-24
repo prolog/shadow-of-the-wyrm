@@ -253,14 +253,14 @@ class Creature : public ISerializable
     void set_spell_knowledge(const SpellKnowledge& new_spell_knowledge);
     SpellKnowledge& get_spell_knowledge_ref();
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   private:
     void assert_size() const;
     void swap(Creature& c) throw ();
 
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 
   protected:
 

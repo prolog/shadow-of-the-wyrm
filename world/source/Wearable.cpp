@@ -49,7 +49,7 @@ bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i)
   return match;
 }
 
-bool Wearable::serialize(ostream& stream)
+bool Wearable::serialize(ostream& stream) const
 {
   Item::serialize(stream);
   Serialize::write_int(stream, evade);

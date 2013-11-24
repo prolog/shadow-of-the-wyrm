@@ -61,8 +61,8 @@ class Feature : public ISerializable
     // By default, returns the empty SID.
     virtual std::string get_handle_message_sid() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     virtual std::string get_description_sid() const = 0;
@@ -72,7 +72,7 @@ class Feature : public ISerializable
     MaterialType material;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Feature> FeaturePtr;

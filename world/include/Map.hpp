@@ -86,8 +86,8 @@ class Map : public ISerializable
     void set_danger(const uint new_danger);
     uint get_danger() const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
 		void create_creatures();		
 
@@ -110,7 +110,7 @@ class Map : public ISerializable
     uint danger;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Map> MapPtr;

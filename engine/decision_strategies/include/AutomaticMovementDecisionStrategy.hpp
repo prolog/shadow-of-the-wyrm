@@ -24,13 +24,13 @@ class AutomaticMovementDecisionStrategy : public DecisionStrategy
 
     virtual DecisionStrategy* copy() ;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     AutomaticMovement move;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

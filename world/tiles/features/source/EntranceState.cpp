@@ -53,7 +53,7 @@ uchar EntranceState::get_symbol() const
   return symbol;
 }
 
-bool EntranceState::serialize(ostream& stream)
+bool EntranceState::serialize(ostream& stream) const
 {
   Serialize::write_enum(stream, state);
   

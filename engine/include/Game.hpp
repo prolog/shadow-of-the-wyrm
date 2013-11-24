@@ -103,8 +103,8 @@ class Game : public ISerializable
 
     LoadedMapDetails& get_loaded_map_details_ref();
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   private:
     friend class SavageLandsEngine;
@@ -208,7 +208,7 @@ class Game : public ISerializable
     LoadedMapDetails loaded_map_details;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 

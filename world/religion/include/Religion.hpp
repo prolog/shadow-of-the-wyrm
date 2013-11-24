@@ -30,13 +30,13 @@ class Religion : public ISerializable
     void set_deity_status(const std::string& deity_id, const DeityStatus& new_deity_status);
     DeityStatus get_deity_status(const std::string& deity_id) const;
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
     std::string deity_id;
     DeityRelations deity_relations;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

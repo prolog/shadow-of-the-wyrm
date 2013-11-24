@@ -11,7 +11,7 @@ std::set<Months> ISeason::get_months_in_season() const
   return months_in_season;
 }
 
-bool ISeason::serialize(std::ostream& stream)
+bool ISeason::serialize(std::ostream& stream) const
 {
   Serialize::write_size_t(stream, months_in_season.size());
 

@@ -22,5 +22,5 @@ class EquipmentKeyboardCommandMap : public KeyboardCommandMap
     virtual void initialize_command_mapping();
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

@@ -45,7 +45,7 @@ bool Lock::handle()
   return true;
 }
 
-bool Lock::serialize(ostream& stream)
+bool Lock::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, lock_id);
   Serialize::write_bool(stream, locked);

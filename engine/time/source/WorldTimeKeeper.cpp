@@ -80,7 +80,7 @@ void WorldTimeKeeper::tick(const double seconds)
 }
 
 // Serialize the time observers and time keeping details.
-bool WorldTimeKeeper::serialize(ostream& stream)
+bool WorldTimeKeeper::serialize(ostream& stream) const
 {
   Serialize::write_double(stream, seconds_counter);
   Serialize::write_double(stream, total_seconds_counter);
@@ -91,7 +91,7 @@ bool WorldTimeKeeper::serialize(ostream& stream)
 }
 
 // Do the actual serialization of the observers map
-bool WorldTimeKeeper::serialize_observers(ostream& stream)
+bool WorldTimeKeeper::serialize_observers(ostream& stream) const
 {
   Serialize::write_size_t(stream, observers.size());
 

@@ -68,7 +68,7 @@ string ActionCost::str() const
   return ss.str();
 }
 
-bool ActionCost::serialize(ostream& stream)
+bool ActionCost::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, cost);
   Serialize::write_bool(stream, turn_advanced);

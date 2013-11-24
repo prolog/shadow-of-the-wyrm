@@ -346,7 +346,7 @@ bool Item::get_item_identified() const
   return item_identified;
 }
 
-bool Item::serialize(ostream& stream)
+bool Item::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);
   Serialize::write_string(stream, base_id);

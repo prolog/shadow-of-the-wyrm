@@ -13,8 +13,8 @@ class ITimeObserver : public ISerializable
     virtual void notify(const ulonglong minutes_elapsed) = 0;
     virtual std::string get_id() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
     virtual ITimeObserver* clone() = 0;
 
@@ -26,7 +26,7 @@ class ITimeObserver : public ISerializable
     std::string id;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const;
+    virtual ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<ITimeObserver> ITimeObserverPtr;

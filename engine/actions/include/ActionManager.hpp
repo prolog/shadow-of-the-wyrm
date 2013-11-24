@@ -104,7 +104,7 @@ class ActionManager : public ISerializable
     // additional work done later to compensate for pending actions, etc.
     ActionCost quit(CreaturePtr creature);
 
-    bool serialize(std::ostream& ostream);
+    bool serialize(std::ostream& ostream) const override;
     bool deserialize(std::istream& istream);
     
   protected:
@@ -118,5 +118,5 @@ class ActionManager : public ISerializable
     QuaffAction quaff_action;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };

@@ -27,14 +27,14 @@ class HungerClock : public ISerializable
     void set_hunger(const int new_hunger_level);
     int get_hunger() const;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     bool requires_food;
     int hunger;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 };
 

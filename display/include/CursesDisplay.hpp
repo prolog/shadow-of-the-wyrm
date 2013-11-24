@@ -62,11 +62,11 @@ class CursesDisplay : public Display
 
     WINDOW* get_current_menu();
 
-    bool serialize(std::ostream& stream);
-    bool deserialize(std::istream& stream);
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   private:
-    ClassIdentifier internal_class_identifier() const;
+    ClassIdentifier internal_class_identifier() const override;
 
   protected:
     friend class SL_Display_CursesDisplayFixture; // test fixture

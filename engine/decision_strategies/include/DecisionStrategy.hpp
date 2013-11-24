@@ -33,8 +33,8 @@ class DecisionStrategy : public ISerializable
 
     virtual DecisionStrategy* copy() = 0;
 
-    virtual bool serialize(std::ostream& stream);
-    virtual bool deserialize(std::istream& stream);
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
   protected:
     // The FOV map is not serialized - it is recalculated before each creature acts.  Since it is the
