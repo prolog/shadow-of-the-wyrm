@@ -5,12 +5,12 @@
 class DownStaircaseTile : public StaircaseTile
 {
   public:
-    TileType get_tile_type() const;
-    StaircaseType get_staircase_type() const;
+    TileType get_tile_type() const override;
+    StaircaseType get_staircase_type() const override;
     
-    std::string get_tile_description_sid() const;
+    std::string get_tile_description_sid() const override;
 
-    virtual Tile* clone();
+    virtual Tile* clone() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

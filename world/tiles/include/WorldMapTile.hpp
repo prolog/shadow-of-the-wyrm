@@ -4,7 +4,7 @@
 class WorldMapTile : public Tile
 {
   public:
-    virtual bool display_description_on_arrival() const;
+    virtual bool display_description_on_arrival() const override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -13,7 +13,7 @@ class WorldMapTile : public Tile
 class WorldMapLandmarkTile : public WorldMapTile
 {
   public:
-    virtual bool display_description_on_arrival() const;
+    virtual bool display_description_on_arrival() const override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
