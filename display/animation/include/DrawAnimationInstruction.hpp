@@ -9,7 +9,7 @@ class DrawAnimationInstruction : public AnimationInstruction
   public:
     DrawAnimationInstruction(const Coordinate& new_coords, const DisplayTile& disp);
 
-    virtual void execute(Display* const display) = 0;
+    virtual void execute(Display* const display) override = 0;
 
   protected:
     Coordinate coords;

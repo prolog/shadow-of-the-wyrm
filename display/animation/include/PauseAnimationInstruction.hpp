@@ -5,6 +5,6 @@
 class PauseAnimationInstruction : public AnimationInstruction
 {
   public:
-    void execute(Display* const display);
+    void execute(Display* const display) override;
 };
 
