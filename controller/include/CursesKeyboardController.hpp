@@ -10,10 +10,10 @@
 class CursesKeyboardController : public Controller
 {
   public:
-    std::string get_line();
-    int get_char_as_int();
+    std::string get_line() override;
+    int get_char_as_int() override;
 
-    virtual Controller* clone();
+    virtual Controller* clone() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
