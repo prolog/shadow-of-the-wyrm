@@ -17,16 +17,16 @@ class Entrance : public Feature
     virtual void set_maximum_size(const CreatureSize new_maximum_size);
     virtual CreatureSize get_maximum_size() const;
 
-    virtual bool can_handle(const bool feature_tile_occupied) const;
-    virtual bool can_open() const;
-    virtual bool can_lock() const;
+    virtual bool can_handle(const bool feature_tile_occupied) const override;
+    virtual bool can_open() const override;
+    virtual bool can_lock() const override;
     virtual bool open();
     virtual bool close();
     
     // Returns a value based on the current state of the entrance -
     // if the entrance is open, a message about opening the door; if
     // the entrance is closed, a message about closing the door (etc).
-    virtual std::string get_handle_message_sid() const;
+    virtual std::string get_handle_message_sid() const override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

@@ -4,15 +4,15 @@
 class Paper : public Material
 {
   public:
-    MaterialType get_type() const;
-    std::string get_name_sid() const;
+    MaterialType get_type() const override;
+    std::string get_name_sid() const override;
 
-    bool get_is_flammable() const;
-    bool get_is_explosive() const;
-    bool get_is_corrodible() const;
-    bool get_can_rust() const;
+    bool get_is_flammable() const override;
+    bool get_is_explosive() const override;
+    bool get_is_corrodible() const override;
+    bool get_can_rust() const override;
     
-    virtual Colour get_colour() const;
+    virtual Colour get_colour() const override;
     
-    Material* clone();
+    Material* clone() override;
 };

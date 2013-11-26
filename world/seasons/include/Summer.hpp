@@ -6,17 +6,17 @@ class Summer : public ISeason
   public:
     Summer();
     
-    Season get_season() const;
-    std::string get_description_sid() const;
-    std::string get_new_season_message_sid() const;
+    Season get_season() const override;
+    std::string get_description_sid() const override;
+    std::string get_new_season_message_sid() const override;
 
-    Season get_previous_season() const;
-    Season get_next_season() const;
+    Season get_previous_season() const override;
+    Season get_next_season() const override;
 
-    ISeason* clone();
+    ISeason* clone() override;
     
   protected:
-    void initialize_months();
+    void initialize_months() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
