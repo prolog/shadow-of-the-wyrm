@@ -8,15 +8,15 @@ class Altar : public Feature
     virtual ~Altar() {};
     virtual bool operator==(const Altar& altar) const;
 
-    virtual bool can_offer() const;
+    virtual bool can_offer() const override;
 
-    virtual bool handle();
-    virtual bool kick();
-    virtual bool offer();
+    virtual bool handle() override;
+    virtual bool kick() override;
+    virtual bool offer() override;
 
     virtual std::string get_deity_id() const;
     
-    virtual uchar get_symbol() const;
+    virtual uchar get_symbol() const override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

@@ -8,17 +8,17 @@ class Door : public Entrance
   public:
     Door();
     Door(LockPtr new_lock, const EntranceState& new_state);
-    virtual Feature* clone();
+    virtual Feature* clone() override;
 
     virtual ~Door() {};
 
-    virtual bool handle();
-    virtual bool kick();
-    virtual bool get_is_blocking() const;
-    virtual uchar get_symbol()  const;
+    virtual bool handle() override;
+    virtual bool kick() override;
+    virtual bool get_is_blocking() const override;
+    virtual uchar get_symbol()  const override;
 
   protected:
-    virtual std::string get_description_sid() const;
+    virtual std::string get_description_sid() const override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

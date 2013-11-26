@@ -5,16 +5,16 @@ class FirePillar : public Feature
 {
   public:
     FirePillar();
-    virtual Feature* clone();
+    virtual Feature* clone() override;
 
-    virtual bool handle();
-    virtual bool kick();
-    virtual bool get_is_blocking() const;
+    virtual bool handle() override;
+    virtual bool kick() override;
+    virtual bool get_is_blocking() const override;
 
-    virtual uchar get_symbol() const;
+    virtual uchar get_symbol() const override;
 
   protected:
-    virtual std::string get_description_sid() const;
+    virtual std::string get_description_sid() const override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

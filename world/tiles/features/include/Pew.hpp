@@ -7,15 +7,15 @@ class Pew : public Feature
 {
   public:
     Pew();
-    virtual Feature* clone();
+    virtual Feature* clone() override;
 
-    virtual bool handle();
-    virtual bool kick();
+    virtual bool handle() override;
+    virtual bool kick() override;
 
-    virtual uchar get_symbol() const;
+    virtual uchar get_symbol() const override;
 
   protected:
-    virtual std::string get_description_sid() const;
+    virtual std::string get_description_sid() const override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
