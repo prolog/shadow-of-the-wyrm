@@ -13,12 +13,12 @@ class SpringsTile : public Tile
     SpringsTile();
     bool operator==(const SpringsTile& sp) const;
 
-    TileType get_tile_type() const;
+    TileType get_tile_type() const override;
     TileSuperType get_tile_super_type() const;
     
-    std::string get_tile_description_sid() const;
+    std::string get_tile_description_sid() const override;
 
-    virtual Tile* clone();
+    virtual Tile* clone() override;
 
     virtual void set_temperature(const int new_temperature);
     virtual int get_temperature() const;

@@ -4,13 +4,13 @@
 class RockTile : public Tile
 {
   public:
-    TileType get_tile_type() const;
+    TileType get_tile_type() const override;
     
-    std::string get_tile_description_sid() const;
+    std::string get_tile_description_sid() const override;
 
-    int get_movement_multiplier() const;
+    int get_movement_multiplier() const override;
 
-    virtual Tile* clone();
+    virtual Tile* clone() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
