@@ -18,47 +18,47 @@ class CursesDisplay : public Display
     CursesDisplay();
     bool operator==(const CursesDisplay& cd) const;
 
-	  bool create();
-	  void tear_down();
+	  bool create() override;
+	  void tear_down() override;
 
-    unsigned int get_width() const;
+    unsigned int get_width() const override;
 
-    void clear_messages();
-    void clear_display();
+    void clear_messages() override;
+    void clear_display() override;
 
-    void add_message(const std::string& message, const bool reset_prompt);
-    void add_message(const std::string& message, const Colour colour, const bool reset_prompt);
-    std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt);
+    void add_message(const std::string& message, const bool reset_prompt) override;
+    void add_message(const std::string& message, const Colour colour, const bool reset_prompt) override;
+    std::string add_message_with_prompt(const std::string& message, const Colour colour, const bool reset_prompt) override;
 
-    void halt_messages();
+    void halt_messages() override;
 
-	  void draw(const DisplayMap& current_map);
-    void redraw();
+	  void draw(const DisplayMap& current_map) override;
+    void redraw() override;
 
-    virtual void draw_update_map(const DisplayMap& update_map);
-    virtual void draw_tile(const uint y, const uint x, const DisplayTile& tile);
+    virtual void draw_update_map(const DisplayMap& update_map) override;
+    virtual void draw_tile(const uint y, const uint x, const DisplayTile& tile) override;
 
     // Create an animation factory for the display type.
-    AnimationFactoryPtr create_animation_factory() const;
-    virtual void draw_animation(const Animation& animation);
+    AnimationFactoryPtr create_animation_factory() const override;
+    virtual void draw_animation(const Animation& animation) override;
 
     virtual void draw_coordinate(const DisplayTile& current_tile, const uint terminal_row, const uint terminal_col);
 
-	  void display(const DisplayStatistics& player_stats);
+	  void display(const DisplayStatistics& player_stats) override;
 	  
-	  virtual void display_equipment(const DisplayEquipmentMap& equipment);	  
-	  virtual int display_inventory(const DisplayInventoryMap& inventory);
+	  virtual void display_equipment(const DisplayEquipmentMap& equipment) override;	  
+	  virtual int display_inventory(const DisplayInventoryMap& inventory) override;
 	  
-    MapDisplayArea get_map_display_area();
+    MapDisplayArea get_map_display_area() override;
 
-	  std::string display_menu(const Menu& current_menu);
+	  std::string display_menu(const Menu& current_menu) override;
     void display_header(const std::string& header_text, WINDOW* cur_window, const int display_line = 0);
 
-	  void confirm(const std::string& confirmation_message);
+	  void confirm(const std::string& confirmation_message) override;
 
-	  void clear_menu();
+	  void clear_menu() override;
 
-    virtual Display* clone();
+    virtual Display* clone() override;
 
     WINDOW* get_current_menu();
 

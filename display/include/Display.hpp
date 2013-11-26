@@ -83,13 +83,13 @@ class Display : public ISerializable
 	  virtual void clear_menu() = 0;
 
     // ISerializable methods
-    virtual bool serialize(std::ostream& stream) const = 0;
-    virtual bool deserialize(std::istream& stream) = 0;
+    virtual bool serialize(std::ostream& stream) const override = 0;
+    virtual bool deserialize(std::istream& stream) override = 0;
 
     virtual Display* clone() = 0;
 
   private:
-    virtual ClassIdentifier internal_class_identifier() const = 0;
+    virtual ClassIdentifier internal_class_identifier() const override = 0;
 };
 
 typedef std::shared_ptr<Display> DisplayPtr;
