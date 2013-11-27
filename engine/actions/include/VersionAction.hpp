@@ -10,5 +10,5 @@ class VersionAction : public IActionManager
     friend class ActionManager;
     VersionAction();
     
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };

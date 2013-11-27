@@ -7,7 +7,7 @@ class ItemIdentifier;
 class SpellbookReadStrategy : public ReadStrategy
 {
   public:
-    ActionCostValue read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable);
+    ActionCostValue read(CreaturePtr creature, ActionManager * const am, ReadablePtr readable) override;
 
   protected:
     void learn_spell_from_spellbook(CreaturePtr creature, SpellbookPtr spellbook, const ItemIdentifier& item_id, const std::string& spell_id, const SkillType magic_category);
@@ -36,7 +36,7 @@ class SpellbookReadStrategy : public ReadStrategy
 
     // Spellbooks have separate messages for successfully and unsuccessfully
     // reading - success indicates memorization, failure is just a read.
-    virtual std::pair<std::string, std::string> get_player_and_monster_read_sids() const;
+    virtual std::pair<std::string, std::string> get_player_and_monster_read_sids() const override;
     virtual std::pair<std::string, std::string> get_player_and_monster_unsuccessful_read_sids() const;
 
     ActionCostValue get_action_cost_value() const;

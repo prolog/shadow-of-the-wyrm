@@ -19,7 +19,7 @@ class InventoryManager : public IActionManager
     ItemPtr select_item(Inventory& inv, const DisplayInventoryMap& inventory_display, const uint item_index);
 
   protected:
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 
     DisplayPtr display;
     CreaturePtr creature;

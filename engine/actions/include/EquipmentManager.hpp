@@ -15,7 +15,7 @@ class EquipmentManager : public IActionManager
     EquipmentManager(DisplayPtr new_display, CreaturePtr new_creature);
     ~EquipmentManager();
 
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 
     DisplayPtr display;
     CreaturePtr creature;

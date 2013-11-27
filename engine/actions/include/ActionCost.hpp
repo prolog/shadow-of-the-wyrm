@@ -3,14 +3,6 @@
 #include "common.hpp"
 #include "ISerializable.hpp"
 
-namespace boost
-{
-  namespace serialization
-  {
-    class access;
-  }
-}
-
 typedef int ActionCostValue;
 
 class ActionCost : public ISerializable

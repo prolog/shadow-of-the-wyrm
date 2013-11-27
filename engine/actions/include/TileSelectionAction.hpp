@@ -46,7 +46,7 @@ class TileSelectionAction : public IActionManager, ISerializable
     friend class SL_Engine_Actions_TileSelectionAction; // test fixture
     TileSelectionAction();
 
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
     
     // The command factory/map
     CommandFactoryPtr command_factory;

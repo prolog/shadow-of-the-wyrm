@@ -17,5 +17,5 @@ class DropAction : public IActionManager
     ActionCostValue do_drop(CreaturePtr creature, MapPtr current_map, ItemPtr item);
     uint get_drop_quantity(CreaturePtr creature, const uint max_quantity) const;
 
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };

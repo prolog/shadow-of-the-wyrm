@@ -10,5 +10,5 @@ class AutomaticMovementAction : public IActionManager
     friend class ActionManager;
     AutomaticMovementAction();
     
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };

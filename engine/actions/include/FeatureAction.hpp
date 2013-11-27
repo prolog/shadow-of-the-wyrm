@@ -34,6 +34,6 @@ class FeatureAction : public IActionManager
     // options are available.
     bool apply_multiple_options(CreaturePtr creature, const std::map<Direction, TilePtr>& direction_map);
 
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };
 
