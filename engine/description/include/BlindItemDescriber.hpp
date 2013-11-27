@@ -7,6 +7,6 @@ class BlindItemDescriber : public IDescriber
   public:
     BlindItemDescriber();
 
-    virtual std::string describe() const;
+    virtual std::string describe() const override;
 };
 

@@ -8,11 +8,11 @@ class NPCDecisionStrategy : public DecisionStrategy
   public:
     NPCDecisionStrategy(ControllerPtr new_controller);
 
-    virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map = MapPtr(), int* key_p = 0);
-    virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p);
+    virtual CommandPtr get_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, MapPtr view_map = MapPtr(), int* key_p = 0) override;
+    virtual CommandPtr get_nonmap_decision(const bool reprompt_on_cmd_not_found, const std::string& this_creature_id, CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands, int* key_p) override;
 
-    virtual uint get_count(const uint max_count);
-    virtual bool get_confirmation();
+    virtual uint get_count(const uint max_count) override;
+    virtual bool get_confirmation() override;
     
   protected:
     // Functions that are called based on the factory type

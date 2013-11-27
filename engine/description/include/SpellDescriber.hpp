@@ -10,7 +10,7 @@ class SpellDescriber : public IDescriber
   public:
     SpellDescriber(CreaturePtr creature, const Spell& new_spell);
 
-    std::string describe() const;
+    std::string describe() const override;
 
   protected:
     void initialize_shape_abbreviation_sids();
