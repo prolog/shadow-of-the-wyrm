@@ -7,7 +7,7 @@ class Boat : public Item
     Boat();
     ~Boat();
     
-    Item* clone();
+    Item* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

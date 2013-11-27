@@ -16,7 +16,7 @@ class Wearable : public Item
     void set_soak(const int new_soak);
     int get_soak() const;
     
-    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

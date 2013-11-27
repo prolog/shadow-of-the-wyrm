@@ -7,7 +7,7 @@ class Amulet : public Wearable
     Amulet();
     ~Amulet();
     
-    Item* clone();
+    Item* clone() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

@@ -7,7 +7,7 @@ class MiscItem : public Item
     MiscItem();
     ~MiscItem();
 
-    Item* clone();
+    Item* clone() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

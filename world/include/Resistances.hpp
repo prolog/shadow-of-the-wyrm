@@ -55,7 +55,7 @@ class SlashResistance : public Resistance
   public:
     SlashResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -66,7 +66,7 @@ class PierceResistance : public Resistance
   public:
     PierceResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -77,7 +77,7 @@ class PoundResistance : public Resistance
   public:
     PoundResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -88,7 +88,7 @@ class HeatResistance : public Resistance
   public:
     HeatResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -99,7 +99,7 @@ class ColdResistance : public Resistance
   public:
     ColdResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -110,7 +110,7 @@ class AcidResistance : public Resistance
   public:
     AcidResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -121,7 +121,7 @@ class PoisonResistance : public Resistance
   public:
     PoisonResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -132,7 +132,7 @@ class HolyResistance : public Resistance
   public:
     HolyResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -143,7 +143,7 @@ class ShadowResistance : public Resistance
   public:
     ShadowResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -154,7 +154,7 @@ class ArcaneResistance : public Resistance
   public:
     ArcaneResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -165,7 +165,7 @@ class LightningResistance : public Resistance
   public:
     LightningResistance();
 
-    virtual Resistance* clone();
+    virtual Resistance* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

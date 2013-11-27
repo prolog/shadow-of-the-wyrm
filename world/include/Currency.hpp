@@ -7,7 +7,7 @@ class Currency : public Item
     Currency();
     ~Currency();
     
-    Item* clone();
+    Item* clone() override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

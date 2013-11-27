@@ -12,7 +12,7 @@ class Tool : public Item
     void set_lock_id(const std::string& new_lock_id);
     std::string get_lock_id() const;
 
-    Item* clone();
+    Item* clone() override;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

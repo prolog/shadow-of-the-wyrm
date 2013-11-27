@@ -9,9 +9,9 @@ class Plant : public Consumable
     Plant(const int new_nutrition);
     ~Plant();
 
-    ItemType get_type() const;
+    ItemType get_type() const override;
 
-    Item* clone();
+    Item* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

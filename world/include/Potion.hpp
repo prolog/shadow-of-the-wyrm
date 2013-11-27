@@ -9,8 +9,8 @@ class Potion : public Consumable
     ~Potion();
     bool operator==(const Potion& p) const;
     
-    ItemType get_type() const;
-    Item* clone();
+    ItemType get_type() const override;
+    Item* clone() override;
 
     void set_has_damage(const bool new_has_damage);
     bool get_has_damage() const;

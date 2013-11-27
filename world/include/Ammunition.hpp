@@ -8,12 +8,12 @@ class Ammunition : public RangedWeapon
     ~Ammunition();
     bool operator==(const Ammunition& ammo) const;
 
-    virtual EquipmentWornLocation get_worn_location() const;
+    virtual EquipmentWornLocation get_worn_location() const override;
     
     // TODO: Add a function to let me figure out if the ammunition works with the ranged weapon...probbaly put this in
     // MeleeWeapon, and delete the Ammunition class.
     
-    Item* clone();
+    Item* clone() override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

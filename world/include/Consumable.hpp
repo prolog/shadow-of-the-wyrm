@@ -9,7 +9,7 @@ class Consumable : public Item
     ~Consumable();
     bool operator==(const Consumable& consumable) const;
     
-    virtual ItemType get_type() const = 0;
+    virtual ItemType get_type() const override = 0;
     
     void set_nutrition(const int new_nutrition);
     int get_nutrition() const;
