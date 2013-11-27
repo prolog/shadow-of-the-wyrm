@@ -6,5 +6,5 @@ class MeleeAndRangedCombatTargetNumberCalculator : public CombatTargetNumberCalc
   public:
     MeleeAndRangedCombatTargetNumberCalculator(AttackType attack_type);
 
-    virtual int calculate(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
+    virtual int calculate(CreaturePtr attacking_creature, CreaturePtr attacked_creature) override;
 };
