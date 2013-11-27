@@ -7,7 +7,7 @@ class StatsDumper : public StringConverter
   public:
     StatsDumper(CreaturePtr new_creature, const uint new_max_cols);
   
-    std::string str() const;
+    std::string str() const override;
 
   protected:
     std::string get_stats() const;
