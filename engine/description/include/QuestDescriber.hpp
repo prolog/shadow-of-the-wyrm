@@ -7,7 +7,7 @@ class QuestDescriber : public IDescriber
   public:
     QuestDescriber(const Quest& new_quest);
 
-    std::string describe() const;
+    std::string describe() const override;
 
   protected:
     Quest quest;

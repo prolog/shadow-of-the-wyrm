@@ -7,7 +7,7 @@ class InventoryDescriber : public IDescriber
   public:
     InventoryDescriber(const bool blind, const Inventory& inv);
 
-    std::string describe() const;
+    std::string describe() const override;
 
   protected:
     const bool blind;

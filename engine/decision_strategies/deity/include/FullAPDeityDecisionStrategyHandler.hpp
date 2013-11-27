@@ -4,10 +4,10 @@
 class FullAPDeityDecisionStrategyHandler : public IDeityDecisionStrategyHandler
 {
   public:
-    bool decide(CreaturePtr creature);
-    DeityDecisionImplications handle_decision(CreaturePtr creature);
+    bool decide(CreaturePtr creature) override;
+    DeityDecisionImplications handle_decision(CreaturePtr creature) override;
+    std::string get_message_sid() const override;
 
   protected:
-    int get_piety_loss() const;
-    std::string get_message_sid() const;
+    int get_piety_loss() const override;
 };

@@ -8,9 +8,9 @@ class EtherEffect : public HealingEffect
   public:
     EtherEffect();
     
-    virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const;
-    virtual Effect* clone();
+    virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const override;
+    virtual Effect* clone() override;
 
   protected:
-    virtual bool heal(std::shared_ptr<Creature> creature, const float healing_multiplier) const;
+    virtual bool heal(std::shared_ptr<Creature> creature, const double healing_multiplier) const override;
 };

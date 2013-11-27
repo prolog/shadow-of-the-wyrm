@@ -24,7 +24,7 @@ Effect* EtherEffect::clone()
 }
 
 // Restore AP in a similar way to HP
-bool EtherEffect::heal(CreaturePtr creature, const float healing_multiplier) const
+bool EtherEffect::heal(CreaturePtr creature, const double healing_multiplier) const
 {
   bool effect_identified = false;
 

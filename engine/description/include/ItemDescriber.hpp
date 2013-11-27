@@ -9,7 +9,7 @@ class ItemDescriber : public IDescriber
 
     virtual ~ItemDescriber() {};
 
-    virtual std::string describe() const;
+    virtual std::string describe() const override;
 
   protected:
     ItemPtr item;

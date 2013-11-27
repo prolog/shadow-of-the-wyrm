@@ -5,6 +5,6 @@ class SweetTasteEffectMessage : public AdditionalEffectMessage
   public:
     SweetTasteEffectMessage();
 
-    AdditionalEffectMessage* clone();
+    AdditionalEffectMessage* clone() override;
 };
 

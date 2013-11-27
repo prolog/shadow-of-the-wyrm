@@ -7,7 +7,7 @@ class TileDescriber : public IDescriber
   public:
     TileDescriber(TilePtr new_tile);
 
-    std::string describe() const;
+    std::string describe() const override;
 
   protected:
     TilePtr tile;
