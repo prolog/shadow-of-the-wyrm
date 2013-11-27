@@ -7,7 +7,7 @@ class Armour : public Wearable
     Armour();
     ~Armour();
 
-    Item* clone();
+    Item* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

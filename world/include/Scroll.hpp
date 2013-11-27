@@ -7,9 +7,9 @@ class Scroll : public Readable
     Scroll();
     ~Scroll();
     
-    bool destroy_on_read() const;
+    bool destroy_on_read() const override;
     
-    Item* clone();
+    Item* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

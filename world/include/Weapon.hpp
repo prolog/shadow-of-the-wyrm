@@ -34,7 +34,7 @@ class Weapon : public Wearable
     virtual void set_slays_races(const std::vector<std::string>& new_slay_races);
     std::vector<std::string> get_slays_races() const;
 
-    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i);
+    virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
@@ -56,8 +56,8 @@ class MeleeWeapon : public Weapon
     MeleeWeapon();
     ~MeleeWeapon();
     
-    virtual WeaponStyle get_style() const;    
-    virtual Item* clone();
+    virtual WeaponStyle get_style() const override;    
+    virtual Item* clone() override;
     
   private:
     ClassIdentifier internal_class_identifier() const override;
@@ -69,8 +69,8 @@ class RangedWeapon : public Weapon
     RangedWeapon();
     ~RangedWeapon();
     
-    virtual WeaponStyle get_style() const;
-    virtual Item* clone();
+    virtual WeaponStyle get_style() const override;
+    virtual Item* clone() override;
     
   private:
     ClassIdentifier internal_class_identifier() const override;

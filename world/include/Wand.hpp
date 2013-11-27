@@ -38,8 +38,8 @@ class Wand : public Item
     // Wands return a null effect type when they have no charges.
     virtual EffectType get_effect_type() const;
 
-    Item* create();
-    Item* clone();
+    Item* create() override;
+    Item* clone() override;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

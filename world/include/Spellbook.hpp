@@ -9,7 +9,7 @@ class Spellbook : public Readable
 
     bool operator==(const Spellbook& book) const;
     
-    bool destroy_on_read() const;
+    bool destroy_on_read() const override;
 
     void set_spell_id(const std::string& new_spell_id);
     std::string get_spell_id() const;
@@ -17,7 +17,7 @@ class Spellbook : public Readable
     void set_difficulty(const int new_difficulty);
     int get_difficulty() const;
     
-    Item* clone();
+    Item* clone() override;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

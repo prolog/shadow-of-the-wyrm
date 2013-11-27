@@ -73,8 +73,8 @@ class WeaponSkill : public Skill
   public:
     WeaponSkill();
 
-    float get_threshold_multiplier() const;
-    bool can_train_from_unlearned() const;
+    float get_threshold_multiplier() const override;
+    bool can_train_from_unlearned() const override;
 };
 
 class RangedWeaponSkill : public Skill
@@ -82,7 +82,7 @@ class RangedWeaponSkill : public Skill
   public:
     RangedWeaponSkill();
 
-    bool can_train_from_unlearned() const;
+    bool can_train_from_unlearned() const override;
 };
 
 class MagicSkill : public Skill
@@ -97,7 +97,7 @@ class ArcherySkill : public GeneralSkill
   public:
     ArcherySkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -108,7 +108,7 @@ class AwarenessSkill : public GeneralSkill
   public:
     AwarenessSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -119,7 +119,7 @@ class BargainingSkill : public GeneralSkill
   public:
     BargainingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -130,7 +130,7 @@ class BeastmasterySkill : public GeneralSkill
   public:
     BeastmasterySkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -141,7 +141,7 @@ class BlindFightingSkill : public GeneralSkill
   public:
     BlindFightingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -152,7 +152,7 @@ class BoatingSkill : public GeneralSkill
   public:
     BoatingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -163,7 +163,7 @@ class BowyerSkill : public GeneralSkill
   public:
     BowyerSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -174,7 +174,7 @@ class BrewingSkill : public GeneralSkill
   public:
     BrewingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -185,7 +185,7 @@ class CantripsSkill : public GeneralSkill
   public:
     CantripsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -196,7 +196,7 @@ class CarryingSkill : public GeneralSkill
   public:
     CarryingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -207,9 +207,9 @@ class CombatSkill : public GeneralSkill
   public:
     CombatSkill();
     
-    float get_threshold_multiplier() const;
+    float get_threshold_multiplier() const override;
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -220,7 +220,7 @@ class CraftingSkill : public GeneralSkill
   public:
     CraftingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -231,7 +231,7 @@ class DesertLoreSkill : public GeneralSkill
   public:
     DesertLoreSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -242,7 +242,7 @@ class DetectionSkill : public GeneralSkill
   public:
     DetectionSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -253,7 +253,7 @@ class DisarmTrapsSkill : public GeneralSkill
   public:
     DisarmTrapsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -264,7 +264,7 @@ class DualWieldSkill : public GeneralSkill
   public:
     DualWieldSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -275,7 +275,7 @@ class DungeoneeringSkill : public GeneralSkill
   public:
     DungeoneeringSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -286,7 +286,7 @@ class EscapeSkill : public GeneralSkill
   public:
     EscapeSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -297,7 +297,7 @@ class FishingSkill : public GeneralSkill
   public:
     FishingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -308,7 +308,7 @@ class FletcherySkill : public GeneralSkill
   public:
     FletcherySkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -319,7 +319,7 @@ class ForagingSkill : public GeneralSkill
   public:
     ForagingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -330,7 +330,7 @@ class ForestLoreSkill : public GeneralSkill
   public:
     ForestLoreSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -341,7 +341,7 @@ class HerbalismSkill : public GeneralSkill
   public:
     HerbalismSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -352,7 +352,7 @@ class HidingSkill : public GeneralSkill
   public:
     HidingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -363,7 +363,7 @@ class HuntingSkill : public GeneralSkill
   public:
     HuntingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -374,7 +374,7 @@ class IntimidationSkill : public GeneralSkill
   public:
     IntimidationSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -385,7 +385,7 @@ class JewelerSkill : public GeneralSkill
   public:
     JewelerSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -396,7 +396,7 @@ class JumpingSkill : public GeneralSkill
   public:
     JumpingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -407,7 +407,7 @@ class LeadershipSkill : public GeneralSkill
   public:
     LeadershipSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -418,7 +418,7 @@ class LiteracySkill : public GeneralSkill
   public:
     LiteracySkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -429,7 +429,7 @@ class LoreSkill : public GeneralSkill
   public:
     LoreSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -440,9 +440,9 @@ class MagicGeneralSkill : public GeneralSkill
   public:
     MagicGeneralSkill();
     
-    float get_threshold_multiplier() const;
+    float get_threshold_multiplier() const override;
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -453,7 +453,7 @@ class MarshLoreSkill : public GeneralSkill
   public:
     MarshLoreSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -464,7 +464,7 @@ class MedicineSkill : public GeneralSkill
   public:
     MedicineSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -475,7 +475,7 @@ class MountainLoreSkill : public GeneralSkill
   public:
     MountainLoreSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -486,7 +486,7 @@ class MountaineeringSkill : public GeneralSkill
   public:
     MountaineeringSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -497,7 +497,7 @@ class MusicSkill : public GeneralSkill
   public:
     MusicSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -508,7 +508,7 @@ class NightSightSkill : public GeneralSkill
   public:
     NightSightSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -519,7 +519,7 @@ class OceanographySkill : public GeneralSkill
   public:
     OceanographySkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -530,7 +530,7 @@ class PapercraftSkill : public GeneralSkill
   public:
     PapercraftSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -541,7 +541,7 @@ class ReligionSkill : public GeneralSkill
   public:
     ReligionSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -552,7 +552,7 @@ class ScribingSkill : public GeneralSkill
   public:
     ScribingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -563,7 +563,7 @@ class SkinningSkill : public GeneralSkill
   public:
     SkinningSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -574,7 +574,7 @@ class SmithingSkill : public GeneralSkill
   public:
     SmithingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -585,7 +585,7 @@ class SpelunkingSkill : public GeneralSkill
   public:
     SpelunkingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -596,7 +596,7 @@ class StealthSkill : public GeneralSkill
   public:
     StealthSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -607,7 +607,7 @@ class SwimmingSkill : public GeneralSkill
   public:
     SwimmingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -618,7 +618,7 @@ class TanningSkill : public GeneralSkill
   public:
     TanningSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -629,7 +629,7 @@ class ThieverySkill : public GeneralSkill
   public:
     ThieverySkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -640,7 +640,7 @@ class WeavingSkill : public GeneralSkill
   public:
     WeavingSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -653,7 +653,7 @@ class AxesSkill : public WeaponSkill
   public:
     AxesSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -664,7 +664,7 @@ class ShortBladesSkill : public WeaponSkill
   public:
     ShortBladesSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -675,7 +675,7 @@ class LongBladesSkill : public WeaponSkill
   public:
     LongBladesSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -686,7 +686,7 @@ class BludgeonsSkill : public WeaponSkill
   public:
     BludgeonsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -697,7 +697,7 @@ class DaggersSkill : public WeaponSkill
   public:
     DaggersSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -708,7 +708,7 @@ class RodsAndStavesSkill : public WeaponSkill
   public:
     RodsAndStavesSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -719,7 +719,7 @@ class SpearsSkill : public WeaponSkill
   public:
     SpearsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -730,7 +730,7 @@ class UnarmedSkill : public WeaponSkill
   public:
     UnarmedSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -741,7 +741,7 @@ class WhipsSkill : public WeaponSkill
   public:
     WhipsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -752,9 +752,9 @@ class ExoticMeleeSkill : public WeaponSkill
   public:
     ExoticMeleeSkill();
 
-    float get_threshold_multiplier() const;
+    float get_threshold_multiplier() const override;
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -767,7 +767,7 @@ class ThrownAxesSkill : public RangedWeaponSkill
   public:
     ThrownAxesSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -778,7 +778,7 @@ class ThrownBladesSkill : public RangedWeaponSkill
   public:
     ThrownBladesSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -789,7 +789,7 @@ class ThrownBludgeonsSkill : public RangedWeaponSkill
   public:
     ThrownBludgeonsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -800,7 +800,7 @@ class BowsSkill : public RangedWeaponSkill
   public:
     BowsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -811,7 +811,7 @@ class CrossbowsSkill : public RangedWeaponSkill
   public:
     CrossbowsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -822,7 +822,7 @@ class ThrownDaggersSkill : public RangedWeaponSkill
   public:
     ThrownDaggersSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -833,7 +833,7 @@ class RocksSkill : public RangedWeaponSkill
   public:
     RocksSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -844,7 +844,7 @@ class SlingsSkill : public RangedWeaponSkill
   public:
     SlingsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -855,7 +855,7 @@ class ThrownSpearsSkill : public RangedWeaponSkill
   public:
     ThrownSpearsSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -866,9 +866,9 @@ class ExoticRangedSkill : public RangedWeaponSkill
   public:
     ExoticRangedSkill();
 
-    float get_threshold_multiplier() const;
+    float get_threshold_multiplier() const override;
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -881,7 +881,7 @@ class ArcaneMagicSkill : public MagicSkill
   public:
     ArcaneMagicSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -892,7 +892,7 @@ class DivineMagicSkill : public MagicSkill
   public:
     DivineMagicSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -903,7 +903,7 @@ class MysticMagicSkill : public MagicSkill
   public:
     MysticMagicSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
@@ -914,7 +914,7 @@ class PrimordialMagicSkill : public MagicSkill
   public:
     PrimordialMagicSkill();
 
-    virtual Skill* clone();
+    virtual Skill* clone() override;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

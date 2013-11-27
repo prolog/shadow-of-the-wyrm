@@ -98,9 +98,9 @@ class Map : public ISerializable
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
     std::map<std::string, std::shared_ptr<Creature>> creatures;
 
-	TilesContainer tiles;
-	Dimensions dimensions;
-	Dimensions original_dimensions;
+    TilesContainer tiles;
+    Dimensions dimensions;
+    Dimensions original_dimensions;
     NamedMapLocations locations;
     TileType terrain_type; // field, forest, village, etc.
     MapType map_type;

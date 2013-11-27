@@ -2,8 +2,11 @@
 #include "common.hpp"
 #include <string>
 
-#define NUMBER_OF_MONTHS 12
-#define NUMBER_OF_DAYS 7
+namespace DateValues
+{
+  static const int NUMBER_OF_MONTHS = 12;
+  static const int NUMBER_OF_DAYS = 7;
+};
 
 class Date
 {
@@ -29,6 +32,6 @@ class Date
     uint month;
     uint year;
     
-    static std::string month_sids[NUMBER_OF_MONTHS];
-    static std::string day_of_week_sids[NUMBER_OF_DAYS];
+    static std::string month_sids[DateValues::NUMBER_OF_MONTHS];
+    static std::string day_of_week_sids[DateValues::NUMBER_OF_DAYS];
 };
