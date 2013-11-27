@@ -2,13 +2,13 @@
 #include "Creature.hpp"
 #include "StringConverter.hpp"
 
-class SkillsDumper
+class SkillsDumper : public StringConverter
 {
   public:
     SkillsDumper(CreaturePtr new_creature, const uint new_num_cols);
     ~SkillsDumper();
     
-    std::string str() const;
+    std::string str() const override;
 
   protected:
     std::string get_skills() const;

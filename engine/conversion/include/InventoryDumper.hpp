@@ -7,7 +7,7 @@ class InventoryDumper : public StringConverter
   public:
     InventoryDumper(CreaturePtr new_creature, const uint new_num_cols);
 
-    std::string str() const;
+    std::string str() const override;
 
   protected:
     std::string get_inventory() const;

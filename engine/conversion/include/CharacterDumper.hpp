@@ -8,7 +8,7 @@ class CharacterDumper : public StringConverter
     CharacterDumper(CreaturePtr new_creature, const uint new_num_cols = 80);
     ~CharacterDumper();
     
-    std::string str() const;
+    std::string str() const override;
     
   protected:
     // Functions to get smaller parts of the character's details, as strings.
