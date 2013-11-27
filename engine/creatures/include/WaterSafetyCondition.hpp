@@ -5,6 +5,6 @@
 class WaterSafetyCondition : public ITileSafetyCondition
 {
   public:
-    bool is_safe(CreaturePtr creature, TilePtr tile);
+    bool is_safe(CreaturePtr creature, TilePtr tile) override;
 };
 
