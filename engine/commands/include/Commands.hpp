@@ -29,7 +29,7 @@ class DirectionalCommand : public Command
   public:
     DirectionalCommand(const Direction d);
     virtual ~DirectionalCommand() = 0;
-    virtual bool requires_confirmation() const;
+    virtual bool requires_confirmation() const override;
 
     Direction get_direction() const;
 

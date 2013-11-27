@@ -21,7 +21,7 @@ class WearOrRemoveCommand : public EquipmentCommand
     WearOrRemoveCommand(const std::string& command_name);
     
     virtual EquipmentWornLocation get_equipment_worn_location() const = 0;
-    virtual bool is_wear_or_remove_command() const;
+    virtual bool is_wear_or_remove_command() const override;
 };
 
 class WearOrRemoveHeadCommand : public WearOrRemoveCommand
@@ -29,7 +29,7 @@ class WearOrRemoveHeadCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveHeadCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveNeckCommand : public WearOrRemoveCommand
@@ -37,7 +37,7 @@ class WearOrRemoveNeckCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveNeckCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveRightFingerCommand : public WearOrRemoveCommand
@@ -45,7 +45,7 @@ class WearOrRemoveRightFingerCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveRightFingerCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveLeftFingerCommand : public WearOrRemoveCommand
@@ -53,7 +53,7 @@ class WearOrRemoveLeftFingerCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveLeftFingerCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveWieldedCommand : public WearOrRemoveCommand
@@ -61,7 +61,7 @@ class WearOrRemoveWieldedCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveWieldedCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveOffHandCommand : public WearOrRemoveCommand
@@ -69,7 +69,7 @@ class WearOrRemoveOffHandCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveOffHandCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveBodyCommand : public WearOrRemoveCommand
@@ -77,7 +77,7 @@ class WearOrRemoveBodyCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveBodyCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveAboutBodyCommand : public WearOrRemoveCommand
@@ -85,7 +85,7 @@ class WearOrRemoveAboutBodyCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveAboutBodyCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveFeetCommand : public WearOrRemoveCommand
@@ -93,7 +93,7 @@ class WearOrRemoveFeetCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveFeetCommand();
 
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveRangedCommand : public WearOrRemoveCommand
@@ -101,7 +101,7 @@ class WearOrRemoveRangedCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveRangedCommand();
     
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class WearOrRemoveAmmunitionCommand : public WearOrRemoveCommand
@@ -109,7 +109,7 @@ class WearOrRemoveAmmunitionCommand : public WearOrRemoveCommand
   public:
     WearOrRemoveAmmunitionCommand();
     
-    virtual EquipmentWornLocation get_equipment_worn_location() const;
+    virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
 class YourItemsCommand : public EquipmentCommand
