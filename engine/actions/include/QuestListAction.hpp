@@ -11,5 +11,5 @@ class QuestListAction : public IActionManager
     friend class ActionManager;
     QuestListAction();
     
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };

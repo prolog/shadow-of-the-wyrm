@@ -16,7 +16,7 @@ class ChatAction : public IActionManager
     bool chat_multiple_options(CreaturePtr querying_creature, const CreatureDirectionMap& creature_map) const;
     void add_chat_message(CreaturePtr creature, const std::string& chat_text_sid) const;
 
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
     ActionCostValue get_nochat_action_cost_value() const;
 };
 

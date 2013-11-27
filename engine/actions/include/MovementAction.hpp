@@ -2,11 +2,8 @@
 #include "Directions.hpp"
 #include "Creature.hpp"
 #include "IActionManager.hpp"
-#include "IMessageManager.hpp"
 #include "MapExit.hpp"
 #include "Map.hpp"
-
-class MessageManager;
 
 class MovementAction : public IActionManager
 {
@@ -25,7 +22,7 @@ class MovementAction : public IActionManager
     MovementAction();
     ~MovementAction();
     
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 
     // Move off the edge of a map - fields, forests, etc.
     ActionCostValue move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);

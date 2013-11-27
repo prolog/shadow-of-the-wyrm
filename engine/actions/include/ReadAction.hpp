@@ -14,6 +14,6 @@ class ReadAction : public IActionManager
     void read_item(CreaturePtr creature, ActionManager * const am, ReadablePtr readable);
     void add_read_message(CreaturePtr creature, ReadablePtr readable, const ItemIdentifier& item_id);
     
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };
 

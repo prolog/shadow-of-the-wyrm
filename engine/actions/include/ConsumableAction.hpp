@@ -11,5 +11,5 @@ class ConsumableAction : public IActionManager
     ActionCostValue consume(CreaturePtr creature, ConsumablePtr consumable);
 
   protected:
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };

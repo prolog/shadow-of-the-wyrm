@@ -20,6 +20,6 @@ class StairwayMovementAction : public IActionManager
     StairwayMovementAction();
     ~StairwayMovementAction();
 
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };
 

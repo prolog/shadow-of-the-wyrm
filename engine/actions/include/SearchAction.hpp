@@ -11,5 +11,5 @@ class SearchAction : public IActionManager
     friend class ActionManager;
     SearchAction();
     
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };

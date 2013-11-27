@@ -39,5 +39,5 @@ class SpellcastingAction : public IActionManager
     // Update the spell's bonus information.
     void update_spell_bonus(CreaturePtr caster, const Spell& spell) const;
 
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };

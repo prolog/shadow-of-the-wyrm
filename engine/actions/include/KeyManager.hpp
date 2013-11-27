@@ -3,12 +3,12 @@
 #include "Creature.hpp"
 #include "Feature.hpp"
 
-class KeyManager
+class KeyManager : public IActionManager
 {
   public:
     bool has_key(CreaturePtr creature, LockPtr lock);
 
   protected:
-    ActionCostValue get_action_cost_value() const;
+    ActionCostValue get_action_cost_value() const override;
 };
 
