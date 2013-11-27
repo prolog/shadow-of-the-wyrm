@@ -8,9 +8,9 @@
 class PoisonCalculator : public IStatusEffectCalculator
 {
   public:
-    int calculate_pct_chance_effect(CreaturePtr creature) const;
+    int calculate_pct_chance_effect(CreaturePtr creature) const override;
     int calculate_damage_per_tick(CreaturePtr creature) const;
-    int calculate_duration_in_minutes(CreaturePtr creature) const;
+    int calculate_duration_in_minutes(CreaturePtr creature) const override;
 
   protected:
     int calculate_poison_duration_mean(CreaturePtr creature) const;

@@ -6,7 +6,7 @@ class MagicalDamageCalculator : public DamageCalculator
   public:
     MagicalDamageCalculator();
     
-    virtual int calculate(CreaturePtr defending_creature, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier);
-    virtual Damage calculate_base_damage_object(CreaturePtr creature);
-    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr creature);
+    virtual int calculate(CreaturePtr defending_creature, const bool slays_creatures_race, const Damage& damage, const int base_damage, const float soak_multiplier) override;
+    virtual Damage calculate_base_damage_object(CreaturePtr creature) override;
+    virtual Damage calculate_base_damage_with_bonuses_or_penalties(CreaturePtr creature) override;
 };

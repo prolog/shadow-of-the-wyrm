@@ -6,5 +6,5 @@ class MagicalCombatTargetNumberCalculator : public CombatTargetNumberCalculator
   public:
     MagicalCombatTargetNumberCalculator();
 
-    virtual int calculate(CreaturePtr attacking_creature, CreaturePtr attacked_creature);
+    virtual int calculate(CreaturePtr attacking_creature, CreaturePtr attacked_creature) override;
 };

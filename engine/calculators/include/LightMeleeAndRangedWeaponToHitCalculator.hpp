@@ -7,7 +7,7 @@ class LightMeleeAndRangedWeaponToHitCalculator : public ToHitCalculator
     LightMeleeAndRangedWeaponToHitCalculator();
     LightMeleeAndRangedWeaponToHitCalculator(const AttackType attack_type);
     
-    int calculate(CreaturePtr creature);
+    int calculate(CreaturePtr creature) override;
     
   protected:
     int get_combat_or_archery_bonus(CreaturePtr creature) const;

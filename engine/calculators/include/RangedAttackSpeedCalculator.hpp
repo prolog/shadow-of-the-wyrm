@@ -4,5 +4,5 @@
 class RangedAttackSpeedCalculator : public ISpeedCalculator
 {
   public:
-    ActionCostValue calculate(CreaturePtr creature);
+    ActionCostValue calculate(CreaturePtr creature) override;
 };

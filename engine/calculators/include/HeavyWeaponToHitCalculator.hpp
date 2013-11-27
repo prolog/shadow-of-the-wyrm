@@ -7,5 +7,5 @@ class HeavyWeaponToHitCalculator : public ToHitCalculator
     HeavyWeaponToHitCalculator();
     HeavyWeaponToHitCalculator(const AttackType attack_type);
     
-    int calculate(CreaturePtr creature);
+    int calculate(CreaturePtr creature) override;
 };
