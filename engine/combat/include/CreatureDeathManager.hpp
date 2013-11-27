@@ -7,6 +7,6 @@ class CreatureDeathManager : public DeathManager
     CreatureDeathManager(CreaturePtr attacking_creature, CreaturePtr dead_creature, MapPtr current_map);
     ~CreatureDeathManager();
     
-    void die();
+    void die() const override;
 };
 

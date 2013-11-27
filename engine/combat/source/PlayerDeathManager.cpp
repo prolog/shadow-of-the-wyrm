@@ -15,7 +15,7 @@ PlayerDeathManager::~PlayerDeathManager()
 {
 }
 
-void PlayerDeathManager::die()
+void PlayerDeathManager::die() const
 {
   Game& game = Game::instance();
   if (map && dead_creature)
