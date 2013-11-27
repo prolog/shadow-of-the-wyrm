@@ -16,7 +16,7 @@ CreatureDeathManager::~CreatureDeathManager()
 {
 }
 
-void CreatureDeathManager::die()
+void CreatureDeathManager::die() const
 {
   Game& game = Game::instance();
   
