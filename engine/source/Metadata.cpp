@@ -32,8 +32,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Minor king or sub-king of Sussex, succeeded Aethelstan
-  return "\"Aethelbert\"";
+  // King of Sussex, served with Oswald, Aelfwald, and Oslac.
+  return "\"Osmund\"";
 }
 
 string Metadata::get_game_version_synopsis() const
