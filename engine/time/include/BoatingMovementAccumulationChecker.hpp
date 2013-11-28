@@ -4,5 +4,5 @@
 class BoatingMovementAccumulationChecker : public ITerrainMovementAccumulationChecker
 {
   public:
-    void check(CreaturePtr creature);
+    void check(CreaturePtr creature) override;
 };

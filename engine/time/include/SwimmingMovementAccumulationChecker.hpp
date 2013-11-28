@@ -5,7 +5,7 @@
 class SwimmingMovementAccumulationChecker : public ITerrainMovementAccumulationChecker
 {
   public:
-    void check(CreaturePtr creature);
+    void check(CreaturePtr creature) override;
     
   protected:
     Swimming swim;

@@ -8,7 +8,7 @@ class SerializationException : public std::exception
     SerializationException();
     SerializationException(const std::string& additional_description);
 
-    virtual const char* what() const throw();
+    virtual const char* what() const throw() override;
   
   private:
     std::string additional_desc;

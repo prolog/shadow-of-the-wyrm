@@ -7,5 +7,5 @@ class WelcomeScreen : public Menu
     WelcomeScreen(DisplayPtr display);
 
   protected:
-    void initialize();
+    void initialize() override;
 };

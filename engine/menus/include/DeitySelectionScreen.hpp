@@ -11,7 +11,7 @@ class DeitySelectionScreen : public Menu
     DeitySelectionScreen(DisplayPtr new_display, RacePtr selected_race);
 
   protected:
-    void initialize();
+    void initialize() override;
 
     RacePtr race;
     std::map<int, std::string> menu_selection_to_deity_id;

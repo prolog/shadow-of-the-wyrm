@@ -7,8 +7,8 @@ class HamletGenerator : public BaseSettlementGenerator
     HamletGenerator(MapPtr new_base_map);
     HamletGenerator(MapPtr new_base_map, const int growth_rate);
 
-    virtual MapPtr generate(const Dimensions& dim);
-    virtual MapPtr generate();
+    virtual MapPtr generate(const Dimensions& dim) override;
+    virtual MapPtr generate() override;
     
   protected:
     // Generates an E-W road.

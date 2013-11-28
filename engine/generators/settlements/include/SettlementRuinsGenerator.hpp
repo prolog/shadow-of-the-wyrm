@@ -7,6 +7,6 @@ class SettlementRuinsGenerator : public SettlementGenerator
   public:
     SettlementRuinsGenerator(MapPtr new_base_map);
 
-    virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate() override;
+    virtual MapPtr generate(const Dimensions& dim) override;
 };

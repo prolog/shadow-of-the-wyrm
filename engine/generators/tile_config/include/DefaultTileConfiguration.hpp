@@ -4,7 +4,7 @@
 class DefaultTileConfiguration : public ITileConfiguration
 {
   public:
-    virtual void configure(TilePtr tile, const Season season) const;
-    virtual void initialize();
+    virtual void configure(TilePtr tile, const Season season) const override;
+    virtual void initialize() override;
 };
 

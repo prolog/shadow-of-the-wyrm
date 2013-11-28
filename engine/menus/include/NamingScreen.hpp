@@ -9,7 +9,7 @@ class NamingScreen : public Menu
     NamingScreen(DisplayPtr current_display, const std::string& new_warning_message);
 
   protected:
-    void initialize();
+    void initialize() override;
 
     std::string warning_message;
 };

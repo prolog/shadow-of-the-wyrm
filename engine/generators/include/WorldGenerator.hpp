@@ -13,11 +13,11 @@ class WorldGenerator : public SL::Generator
     WorldGenerator();
     WorldGenerator(const std::string& map_exit_id);
     
-    virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate() override;
+    virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
-    virtual MapType get_map_type() const;
+    virtual MapType get_map_type() const override;
     virtual MapPtr generate_set_islands_and_continents(MapPtr map);
     virtual MapPtr generate_random_islands(MapPtr map);
     virtual void   generate_village_surroundings(MapPtr map);

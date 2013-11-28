@@ -8,8 +8,8 @@ class SimpleTempleGenerator : public ChurchGenerator
   public:
     SimpleTempleGenerator(const std::string& new_deity_id, MapPtr base_map);
 
-    virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate() override;
+    virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
     virtual void generate_temple(MapPtr map);

@@ -7,7 +7,7 @@ class SpiralDungeonGenerator : public DungeonGenerator
 {
   public:
     SpiralDungeonGenerator(const std::string& map_exit_id);
-    virtual MapPtr generate(const Dimensions& dimensions);
+    virtual MapPtr generate(const Dimensions& dimensions) override;
 
   protected:
     MapPtr generate_spiral_dungeon(MapPtr map);

@@ -7,10 +7,10 @@ class MineGenerator : public SL::Generator
   public:
     MineGenerator(const std::string& map_exit_id);
 
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
-    virtual MapType get_map_type() const;
+    virtual MapType get_map_type() const override;
 
     void generate_main_mining_corridor(MapPtr result_map);
     void dig_floor(MapPtr map, const std::vector<Coordinate>& tiles_to_dig);
@@ -20,7 +20,7 @@ class MineGenerator : public SL::Generator
     bool generate_room(MapPtr map, const int start_y, const int start_x, const int height, const int width);
 
     void place_staircases(MapPtr map);
-    bool get_permanence_default() const;
+    bool get_permanence_default() const override;
 
     static const int MINE_MIN_ROOM_WIDTH;
     static const int MINE_MAX_ROOM_WIDTH;

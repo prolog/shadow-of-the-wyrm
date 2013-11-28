@@ -7,7 +7,7 @@ class MarshGenerator : public SL::Generator
   public:
     MarshGenerator(const std::string& map_exit_id);
     
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
     virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col);

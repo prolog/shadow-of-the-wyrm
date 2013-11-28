@@ -9,7 +9,7 @@ class ClassSelectionScreen : public Menu
     ClassSelectionScreen(DisplayPtr display);
 
   protected:
-    void initialize();
+    void initialize() override;
 
     std::map<int, std::string> menu_selection_to_class_id_map;
 };

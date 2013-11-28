@@ -7,5 +7,5 @@
 class NullFilter : public IItemFilter
 {
   public:
-    bool passes_filter(ItemPtr item) const;
+    bool passes_filter(ItemPtr item) const override;
 };

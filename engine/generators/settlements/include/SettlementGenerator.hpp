@@ -8,8 +8,8 @@ class SettlementGenerator : public BaseSettlementGenerator
     SettlementGenerator(MapPtr new_base_map);
     SettlementGenerator(MapPtr new_base_map, const int growth_rate);
 
-    virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate() override;
+    virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
      MapPtr generate_roads_and_buildings(MapPtr map);

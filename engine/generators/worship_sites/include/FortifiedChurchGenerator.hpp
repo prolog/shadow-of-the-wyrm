@@ -7,8 +7,8 @@ class FortifiedChurchGenerator : public ChurchGenerator
   public:
     FortifiedChurchGenerator(const std::string& deity_name, MapPtr base_map);
 
-    virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate() override;
+    virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
     virtual void initialize_dimensions(MapPtr map);

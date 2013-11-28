@@ -8,5 +8,5 @@ class SexSelectionScreen : public Menu
     SexSelectionScreen(DisplayPtr display);
 
   protected:
-    void initialize();
+    void initialize() override;
 };

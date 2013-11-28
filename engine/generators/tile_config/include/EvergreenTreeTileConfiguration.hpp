@@ -4,6 +4,6 @@
 class EvergreenTreeTileConfiguration : public TreeTileConfiguration
 {
   protected:
-    virtual void initialize_tree_species_details();
+    virtual void initialize_tree_species_details() override;
 };
 

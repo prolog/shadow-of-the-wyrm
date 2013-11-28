@@ -8,8 +8,8 @@ class SnakingTempleGenerator : public ChurchGenerator
   public:
     SnakingTempleGenerator(const std::string& new_deity_id, MapPtr new_base_map);
 
-    virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate() override;
+    virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
     virtual void initialize_temple_values(const int rows, const int cols);

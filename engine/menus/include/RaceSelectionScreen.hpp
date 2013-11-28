@@ -10,7 +10,7 @@ class RaceSelectionScreen : public Menu
     RaceSelectionScreen(DisplayPtr new_display);
 
   protected:
-    void initialize();
+    void initialize() override;
 
     std::map<int, std::string> menu_selection_to_race_id_map;
 };

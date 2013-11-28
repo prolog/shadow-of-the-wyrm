@@ -4,12 +4,12 @@
 class OverworldMapTypeQuery : public IMapTypeQuery
 {
   public:
-    virtual bool should_update_depth() const;
+    virtual bool should_update_depth() const override;
 };
 
 class UnderworldMapTypeQuery : public IMapTypeQuery
 {
   public:
-    virtual bool should_update_depth() const;
+    virtual bool should_update_depth() const override;
 };
 

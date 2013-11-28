@@ -8,8 +8,6 @@ class TextComponent : public MenuComponent
   public:
     TextComponent(const std::string& str);
     TextComponent(const std::string& str, const Colour c);
-
-  protected:
 };
 
 typedef std::shared_ptr<TextComponent> TextComponentPtr;
