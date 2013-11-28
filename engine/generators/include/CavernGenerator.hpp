@@ -8,13 +8,14 @@ class CavernGenerator : public SL::Generator
   public:
     CavernGenerator(const std::string& map_exit_id);
     
-    virtual MapPtr generate(const Dimensions& dimensions);
+    virtual MapPtr generate(const Dimensions& dimensions) override;
 
-    virtual bool can_create_initial_items() const;
+    virtual bool can_create_initial_items() const override;
 
   protected:
-    virtual bool get_permanence_default() const;
-    virtual MapType get_map_type() const;
+    virtual bool get_permanence_default() const override;
+    virtual MapType get_map_type() const override;
+
     void generate_cavern(MapPtr map);
     MapComponents get_cavern_components(MapPtr map);
     void connect_cavern_components(MapPtr map, const MapComponents& cc);

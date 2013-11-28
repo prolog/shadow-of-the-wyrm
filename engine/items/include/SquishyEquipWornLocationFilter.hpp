@@ -10,7 +10,7 @@ class SquishyEquipWornLocationFilter : public IItemFilter
   public:
     SquishyEquipWornLocationFilter(const EquipmentWornLocation ewl);
 
-    bool passes_filter(ItemPtr item) const;
+    bool passes_filter(ItemPtr item) const override;
 
   protected:
     bool passes_slot_equality(const EquipmentWornLocation ewl) const;

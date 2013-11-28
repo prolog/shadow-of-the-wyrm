@@ -6,9 +6,9 @@ class SeasonsTimeObserver : public ITimeObserver
   public:
     SeasonsTimeObserver();
     
-    void notify(const ulonglong minutes_elapsed);
+    void notify(const ulonglong minutes_elapsed) override;
 
-    ITimeObserver* clone();
+    ITimeObserver* clone() override;
 
     // No data members, so just use ITimeObserver's serializer.
 

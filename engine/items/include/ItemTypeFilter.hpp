@@ -7,7 +7,7 @@ class ItemTypeFilter : public IItemFilter
 {
   public:
     ItemTypeFilter(const ItemType it);
-    bool passes_filter(ItemPtr item) const;
+    bool passes_filter(ItemPtr item) const override;
 
   protected:
     ItemType item_type;

@@ -6,8 +6,8 @@ class RockySacrificeSiteGenerator : public ChurchGenerator
   public:
     RockySacrificeSiteGenerator(const std::string& deity_name, MapPtr base_map);
 
-    virtual MapPtr generate();
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate() override;
+    virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
     virtual void generate_site(MapPtr map);

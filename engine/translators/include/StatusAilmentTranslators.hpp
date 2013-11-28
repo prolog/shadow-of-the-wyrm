@@ -12,11 +12,11 @@
 class HungerStatusAilmentTranslator : public IStatusAilmentTranslator
 {
   public:
-    bool has_ailment(const CreaturePtr& creature) const;
+    bool has_ailment(const CreaturePtr& creature) const override;
 
   protected:
-    std::string get_status_ailment_text(const CreaturePtr& creature) const;
-    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
+    std::string get_status_ailment_text(const CreaturePtr& creature) const override;
+    Colour get_status_ailment_colour(const CreaturePtr& creature) const override;
 
     static void initialize_text_sid_map();
     static void initialize_colour_map();
@@ -30,11 +30,11 @@ class StatusAilmentTranslator : public IStatusAilmentTranslator
   public:
     StatusAilmentTranslator(const std::string& status_ailment_identifier, const std::string& status_ailment_text, const Colour status_ailment_colour);
 
-    bool has_ailment(const CreaturePtr& creature) const;
+    bool has_ailment(const CreaturePtr& creature) const override;
 
   protected:
-    std::string get_status_ailment_text(const CreaturePtr& creature) const;
-    Colour get_status_ailment_colour(const CreaturePtr& creature) const;
+    std::string get_status_ailment_text(const CreaturePtr& creature) const override;
+    Colour get_status_ailment_colour(const CreaturePtr& creature) const override;
 
     std::string identifier;
     std::string text_sid;

@@ -13,7 +13,7 @@ class SpellSelectionScreen : public Menu
     std::string get_selected_spell(const char selection) const;
 
   protected:
-    void initialize();
+    void initialize() override;
 
     static const int SPELLS_PER_PAGE;
     std::map<char, std::string> menu_selection_to_spell_id_map;

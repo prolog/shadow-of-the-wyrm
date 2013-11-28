@@ -9,15 +9,15 @@ class DungeonGenerator : public SL::Generator
   public:
     DungeonGenerator(const std::string& map_exit_id);
     
-    virtual MapPtr generate(const Dimensions& dim);
+    virtual MapPtr generate(const Dimensions& dim) override;
 
-    virtual bool can_create_initial_items() const;
+    virtual bool can_create_initial_items() const override;
 
   protected:
 
-    virtual bool get_permanence_default() const;
+    virtual bool get_permanence_default() const override;
     
-    virtual MapType get_map_type() const;
+    virtual MapType get_map_type() const override;
     virtual bool    generate_dungeon(MapPtr map);
     virtual TilePtr generate_tile(MapPtr current_map, int row, int col);
 

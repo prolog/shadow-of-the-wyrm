@@ -6,11 +6,11 @@ class KeepGenerator : public SL::Generator
   public:
     KeepGenerator(MapPtr new_base_map, const int chance_decay = 0);
 
-    virtual MapPtr generate(const Dimensions& dim);
-    virtual MapPtr generate();
+    virtual MapPtr generate(const Dimensions& dim) override;
+    virtual MapPtr generate() override;
 
   protected:
-    virtual bool get_permanence_default() const;
+    virtual bool get_permanence_default() const override;
 
     virtual void create_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);
     virtual void populate_keep(MapPtr map, const int start_row, const int start_col, const int height, const int width);

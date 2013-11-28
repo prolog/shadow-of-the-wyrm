@@ -11,11 +11,11 @@ class ChurchGenerator : public SL::Generator
   public:
     ChurchGenerator(const std::string& new_deity_id, MapPtr new_base_map, const TileType church_type);
 
-    virtual MapPtr generate() = 0;
-    virtual MapPtr generate(const Dimensions& dim) = 0;
+    virtual MapPtr generate() override = 0;
+    virtual MapPtr generate(const Dimensions& dim) override = 0;
 
   protected:
-    virtual bool get_permanence_default() const;
+    virtual bool get_permanence_default() const override;
 
     std::string deity_id;
     MapPtr base_map;

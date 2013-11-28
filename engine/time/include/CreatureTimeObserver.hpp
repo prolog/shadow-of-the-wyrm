@@ -8,9 +8,9 @@ class CreatureTimeObserver : public ITimeObserver
   public:
     CreatureTimeObserver();
     
-    void notify(const ulonglong minutes_elapsed);
+    void notify(const ulonglong minutes_elapsed) override;
 
-    ITimeObserver* clone();
+    ITimeObserver* clone() override;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

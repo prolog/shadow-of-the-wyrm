@@ -10,8 +10,8 @@ class ScatteredSettlementGenerator : public BaseSettlementGenerator
     ScatteredSettlementGenerator(MapPtr new_base_map);
     ScatteredSettlementGenerator(MapPtr new_base_map, const int growth_rate);
 
-    MapPtr generate(const Dimensions& dim);
-    MapPtr generate();
+    MapPtr generate(const Dimensions& dim) override;
+    MapPtr generate() override;
 
   protected:
     void initialize();

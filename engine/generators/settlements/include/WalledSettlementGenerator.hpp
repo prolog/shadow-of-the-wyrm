@@ -7,8 +7,8 @@ class WalledSettlementGenerator : public BaseSettlementGenerator
     WalledSettlementGenerator(MapPtr new_base_map);
     WalledSettlementGenerator(MapPtr new_base_map, const int new_growth_rate);
 
-    virtual MapPtr generate(const Dimensions& dim);
-    virtual MapPtr generate();
+    virtual MapPtr generate(const Dimensions& dim) override;
+    virtual MapPtr generate() override;
 
   protected:
     virtual void initialize();

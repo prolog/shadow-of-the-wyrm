@@ -4,6 +4,6 @@
 class ReflectiveBeamShapeProcessor : public BeamShapeProcessor
 {
   protected:
-    virtual bool should_beam_reflect() const;
+    virtual bool should_beam_reflect() const override;
 };
 

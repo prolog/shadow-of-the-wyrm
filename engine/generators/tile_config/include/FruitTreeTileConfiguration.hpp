@@ -9,10 +9,10 @@ class FruitTreeTileConfiguration : public TreeTileConfiguration
     FruitTreeTileConfiguration();
 
   protected:
-    virtual void initialize_tree_species_details();
+    virtual void initialize_tree_species_details() override;
     virtual void initialize_fruit_ids();
 
-    void configure_additional_features(TilePtr tile, const Season season, const TreeSpeciesID tree_species_id) const;
+    void configure_additional_features(TilePtr tile, const Season season, const TreeSpeciesID tree_species_id) const override;
 
     FruitProductionMap fruit_ids;
 };

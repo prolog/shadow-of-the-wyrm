@@ -14,7 +14,7 @@ class XMLItemReader : public XMLReader
     virtual void parse(ItemPtr item, GenerationValues& gv, const XMLNode& item_node);
     
   protected:
-            void parse_text_details(ItemPtr item, const XMLNode& text_details_node);
+    void parse_text_details(ItemPtr item, const XMLNode& text_details_node);
 
 };
 
