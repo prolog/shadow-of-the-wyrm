@@ -4211,7 +4211,7 @@
 		</Creature>
 		<Creature id="red_ooze">
 			<RaceID>_jelly</RaceID>
-			<ShortDescriptionSID>RED_OOZE_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>RED_OOZE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>RED_OOZE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>RED_OOZE_TEXT_DETAILS_SID</TextDetailsSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
@@ -4480,7 +4480,7 @@
 		</Creature>
 		<Creature id="goblin_raider">
 			<RaceID>07_goblin</RaceID>
-			<ShortDescriptionSID>GOBLIN_RAIDER_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>GOBLIN_RAIDER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GOBLIN_RAIDER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOBLIN_RAIDER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>GOBLIN_RAIDER_SPEECH_TEXT_SID</SpeechTextSID>
@@ -4716,7 +4716,7 @@
 		</Creature>
 		<Creature id="troglodyte">
 			<RaceID>_humanoid</RaceID>
-			<ShortDescriptionSID>TROGLODYTE_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>TROGLODYTE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>TROGLODYTE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>TROGLODYTE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>TROGLODYTE_SPEECH_TEXT_SID</SpeechTextSID>
@@ -4910,7 +4910,7 @@
 		</Creature>
 		<Creature id="sylph">
 			<RaceID>_humanoid</RaceID>
-			<ShortDescriptionSID>SYLPH_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>SYLPH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SYLPH_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SYLPH_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SYLPH_SPEECH_TEXT_SID</SpeechTextSID>
@@ -4951,7 +4951,7 @@
 		</Creature>
 		<Creature id="naiad">
 			<RaceID>_humanoid</RaceID>
-			<ShortDescriptionSID>NAIAD_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>NAIAD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>NAIAD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>NAIAD_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>NAIAD_SPEECH_TEXT_SID</SpeechTextSID>
@@ -5192,7 +5192,7 @@
 		</Creature>
 		<Creature id="skraeling">
 			<RaceID>01_human</RaceID>
-			<ShortDescriptionSID>SKRAELING_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>SKRAELING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SKRAELING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SKRAELING_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SKRAELING_SPEECH_TEXT_SID</SpeechTextSID>
@@ -5392,7 +5392,7 @@
 		</Creature>
 		<Creature id="shadow_wolf">
 			<RaceID>_animal</RaceID>
-			<ShortDescriptionSID>SHADOW_WOLF_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>SHADOW_WOLF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHADOW_WOLF_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHADOW_WOLF_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SHADOW_WOLF_SPEECH_TEXT_SID</SpeechTextSID>
@@ -5593,7 +5593,7 @@
 		</Creature>
 		<Creature id="snakeling">
 			<RaceID>04_snakeling</RaceID>
-			<ShortDescriptionSID>SNAKELING_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>SNAKELING_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SNAKELING_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SNAKELING_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>SNAKELING_SPEECH_TEXT_SID</SpeechTextSID>
@@ -5837,7 +5837,7 @@
 		</Creature>
 		<Creature id="dwarven_warrior">
 			<RaceID>06_dwarf</RaceID>
-			<ShortDescriptionSID>DWARVEN_WARRIOR_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>DWARVEN_WARRIOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>DWARVEN_WARRIOR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>DWARVEN_WARRIOR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>DWARVEN_WARRIOR_SPEECH_TEXT_SID</SpeechTextSID>
@@ -6401,7 +6401,7 @@
 		</Creature>
 		<Creature id="wood_elf">
 			<RaceID>02_woodelf</RaceID>
-			<ShortDescriptionSID>WOOD_ELF_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>WOOD_ELF_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WOOD_ELF_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WOOD_ELF_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>WOOD_ELF_SPEECH_TEXT_SID</SpeechTextSID>
@@ -6544,7 +6544,7 @@
 		</Creature>
 		<Creature id="wood_elf_sage">
 			<RaceID>02_woodelf</RaceID>
-			<ShortDescriptionSID>WOOD_ELF_SAGE_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>WOOD_ELF_SAGE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WOOD_ELF_SAGE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WOOD_ELF_SAGE_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>WOOD_ELF_SAGE_SPEECH_TEXT_SID</SpeechTextSID>
@@ -6820,7 +6820,7 @@
 		</Creature>
 		<Creature id="cougar">
 			<RaceID>_animal</RaceID>
-			<ShortDescriptionSID>COUGAR_DESCRIPTION_SID</ShortDescriptionSID>
+			<ShortDescriptionSID>COUGAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>COUGAR_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>COUGAR_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>COUGAR_SPEECH_TEXT_SID</SpeechTextSID>
