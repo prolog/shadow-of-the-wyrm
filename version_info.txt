@@ -3,6 +3,10 @@ Savage Lands v0.1.9 "Osmund"
 
 - Added new creatures: quivering blob.
 
+- Bug fixes: fixed a number of places in the configuration XML where the
+  description SID was being referenced instead of the short description
+  SID.
+
 Savage Lands v0.1.8 "Aethelbert"
 - Version declared November 2, 2013.  Finalized November 27, 2013.
 
