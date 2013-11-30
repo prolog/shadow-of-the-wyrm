@@ -12,5 +12,7 @@ class CreatureDescriber : public IDescriber
     std::string describe_for_save_file() const;
 
   protected:
+    std::string describe_statuses() const;
+
     CreaturePtr creature;
 };

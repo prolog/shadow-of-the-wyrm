@@ -19,6 +19,7 @@ const string TextKeys::SL_TITLE_LOAD_GAME = "SL_TITLE_LOAD_GAME";
 const string TextKeys::SL_TITLE_QUIT_GAME = "SL_TITLE_QUIT_GAME";
 const string TextKeys::EXIT = "EXIT";
 const string TextKeys::DEATH_MESSAGE = "DEATH_MESSAGE";
+const string TextKeys::PLAYER_DESC = "PLAYER_DESC";
 const string TextKeys::DEFAULT_PLAYER_NAME = "DEFAULT_PLAYER_NAME";
 const string TextKeys::YOU = "YOU";
 const string TextKeys::YOURSELF = "YOURSELF";
