@@ -6,6 +6,8 @@ Savage Lands v0.1.9 "Osmund"
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
 
+- Updated Oracles so that they start with a spellbook of Poison.
+
 - Bug fixes:
  
   - Fixed a number of places in the configuration XML where the
