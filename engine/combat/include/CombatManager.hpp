@@ -17,7 +17,7 @@ class CombatManager
     ActionCostValue attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY, const bool mark_skills = true, DamagePtr damage = DamagePtr());
 
     void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const std::string combat_message = "");
-    void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type);
+    void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus);
 
   protected:
     

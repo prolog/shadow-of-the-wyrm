@@ -1,10 +1,10 @@
 #pragma once
-#include "IStatusEffectCalculator.hpp"
+#include "StatusEffectCalculator.hpp"
 #include "Creature.hpp"
 
 // Class used to determine whether a creature is spellbound (can move,
 // but cannot act) as the result of an arcane attack, and for how long.
-class SpellboundCalculator : public IStatusEffectCalculator
+class SpellboundCalculator : public StatusEffectCalculator
 {
   public:
     int calculate_pct_chance_effect(CreaturePtr creature) const override;

@@ -2553,9 +2553,6 @@
     <ClInclude Include="engine\creatures\include\MutenessStatusEffect.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\IStatusEffectCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\calculators\include\MutenessCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
@@ -2819,6 +2816,9 @@
     </ClInclude>
     <ClInclude Include="engine\decision_strategies\deity\include\RestoreStatusDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\StatusEffectCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5410,6 +5410,9 @@
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\WorldMap_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\StatusEffectCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

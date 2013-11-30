@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include "Colours.hpp"
-#include "IStatusEffectCalculator.hpp"
+#include "StatusEffectCalculator.hpp"
 
 class Creature;
 
@@ -16,7 +16,7 @@ class StatusEffect
     virtual ~StatusEffect();
 
     // Method to check whether the status should be applied.
-    virtual bool should_apply_change(std::shared_ptr<Creature> creature) const;
+    bool should_apply_change(std::shared_ptr<Creature> creature, const int effect_bonus) const;
 
     // Methods to handle creating, updating, removing, etc., the status change.
     // Each of these simply calls the before, do, and after methods - these three
@@ -67,7 +67,7 @@ class StatusEffect
     // The status identifier this class encompasses
     virtual std::string get_status_identifier() const;
 
-    IStatusEffectCalculatorPtr status_calc;
+    StatusEffectCalculatorPtr status_calc;
 };
 
 typedef std::shared_ptr<StatusEffect> StatusEffectPtr;

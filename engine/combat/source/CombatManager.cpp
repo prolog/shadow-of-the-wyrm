@@ -153,6 +153,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 {
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   DamageType damage_type = damage_info.get_damage_type();
+  int effect_bonus = damage_info.get_effect_bonus();
   int base_damage = 0;
   float soak_multiplier = 1.0;
   
@@ -181,7 +182,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   if (damage_dealt > 0)
   {
     // Apply any effects (e.g., poison) that occur as the result of the damage)
-    handle_damage_effects(attacked_creature, damage_dealt, damage_type);
+    handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus);
 
     // Deal the damage, handling death if necessary.
     deal_damage(attacking_creature, attacked_creature, damage_dealt);
@@ -215,11 +216,11 @@ bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creatur
 
 // Apply any effects as the result of damage.  This can include incurring blindness,
 // poison, etc.
-void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type)
+void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus)
 {
   StatusEffectPtr status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type);
 
-  if (status_effect && status_effect->should_apply_change(creature))
+  if (status_effect && status_effect->should_apply_change(creature, effect_bonus))
   {
     status_effect->apply_change(creature);
   }

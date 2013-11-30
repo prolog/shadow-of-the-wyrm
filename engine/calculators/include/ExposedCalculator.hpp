@@ -1,10 +1,10 @@
 #pragma once
-#include "IStatusEffectCalculator.hpp"
+#include "StatusEffectCalculator.hpp"
 #include "Creature.hpp"
 
 // Class used to determine whether a creature is more exposed to incoming
 // attacks as the result of being stabbed, and for how long.
-class ExposedCalculator : public IStatusEffectCalculator
+class ExposedCalculator : public StatusEffectCalculator
 {
   public:
     int calculate_pct_chance_effect(CreaturePtr creature) const override;

@@ -1,10 +1,10 @@
 #pragma once
-#include "IStatusEffectCalculator.hpp"
+#include "StatusEffectCalculator.hpp"
 #include "Creature.hpp"
 
 // Class used to determine whether a creature is paralyzed (can't take
 // any actions - turn skipped) and if so, for how long.
-class ParalysisCalculator : public IStatusEffectCalculator
+class ParalysisCalculator : public StatusEffectCalculator
 {
   public:
     int calculate_pct_chance_effect(CreaturePtr creature) const override;

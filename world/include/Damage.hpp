@@ -9,7 +9,7 @@ class Damage : public Dice
 {
   public:
     explicit Damage();
-    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos);
+    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const int ebonus);
     Damage(const Damage& d);
     Damage&  operator= (const Damage& d);
     bool     operator==(const Damage& d) const;
@@ -21,6 +21,9 @@ class Damage : public Dice
 
     void set_chaotic(const bool new_chaotic);
     bool get_chaotic() const;
+
+    void set_effect_bonus(const int new_bonus);
+    int get_effect_bonus() const;
     
     // Additional damage is used for things like "1d6+2d4".  This is relatively rare,
     // and likely will only be used for ranged combat, where the damage is a fuction
@@ -37,6 +40,7 @@ class Damage : public Dice
   protected:
     bool chaotic;
     DamageType damage_type;
+    int effect_bonus;
     std::shared_ptr<Damage> additional_damage;
 
   private:

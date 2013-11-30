@@ -8814,6 +8814,24 @@
 			<Shape>0</Shape>
 			<Effect>14</Effect>
 		</Spell>		
+		<Spell id="m_02_poison">
+			<NameSID>POISON_NAME_SID</NameSID>
+			<PlayerCastMessageSID>POISON_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>POISON_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<Colour>2</Colour>
+			<APCost>5</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>2</NumDice>
+				<NumSides>4</NumSides>
+				<Type>6</Type>
+				<EffectBonus>60</EffectBonus>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -11875,6 +11893,23 @@
 				<Rarity>1</Rarity>
 				<SpellID>m_01_wraith_form</SpellID>
 				<Difficulty>130</Difficulty>
+			</Spellbook>
+			<Spellbook id="poison_spellbook">
+				<DescriptionSID>POISON_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_POISON_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>POISON_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_POISON_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>300</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_02_poison</SpellID>
+				<Difficulty>60</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
