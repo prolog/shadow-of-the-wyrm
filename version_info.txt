@@ -1,7 +1,10 @@
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.
 
-- Added new creatures: quivering blob.
+- Added new creatures: quivering blob, giant frog, giant toad.
+
+- Updated the creature describer, used by the look command, to return a
+  status synopsis when looking at the creature.
 
 - Bug fixes: fixed a number of places in the configuration XML where the
   description SID was being referenced instead of the short description

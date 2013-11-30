@@ -28,6 +28,16 @@ const string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_
 const string TextMessages::CURRENCY_MESSAGE_SINGLE            = "CURRENCY_MESSAGE_SINGLE";
 const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAGE_MULTIPLE";
 
+string TextMessages::get_player_description(const string& player_name)
+{
+  string player_desc;
+
+  player_desc = StringTable::get(TextKeys::PLAYER_DESC);
+  boost::replace_first(player_desc, "%s", player_name);
+
+  return player_desc;
+}
+
 // Public functions used to access protected members.  These are used to wrap any const strings
 // that contain replaceable symbols.
 string TextMessages::get_welcome_message(const string& player_name, const bool new_player)

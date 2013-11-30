@@ -8,7 +8,11 @@ class DisplayStatistics;
 class CreatureTranslator
 {
   public:
+    // Used by the translators
     static DisplayStatistics create_display_statistics(const CreaturePtr& creature, const MapPtr& map);
+
+    // Used by things like the CreatureDescriber
+    static std::vector<std::pair<std::string, Colour>> get_display_status_ailments(const CreaturePtr& c);
 
   protected:
     CreatureTranslator();
@@ -30,8 +34,6 @@ class CreatureTranslator
 
     static std::string get_display_hit_points(const CreaturePtr& c);
     static std::string get_display_arcana_points(const CreaturePtr& c);
-
-    static std::vector<std::pair<std::string, Colour>> get_display_status_ailments(const CreaturePtr& c);
 
     // Used to initialize/check all the various status ailments:
     static void initialize_status_ailment_checkers();

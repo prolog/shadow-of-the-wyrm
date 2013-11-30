@@ -16,6 +16,7 @@ class TextKeys
     static const std::string EXIT;
     static const std::string DEATH_MESSAGE;
     static const std::string DEFAULT_PLAYER_NAME;
+    static const std::string PLAYER_DESC;
     static const std::string YOU;
     static const std::string YOURSELF;
     static const std::string HIMSELF;
