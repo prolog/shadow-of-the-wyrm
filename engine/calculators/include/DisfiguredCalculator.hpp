@@ -1,10 +1,10 @@
 #pragma once
-#include "IStatusEffectCalculator.hpp"
+#include "StatusEffectCalculator.hpp"
 #include "Creature.hpp"
 
 // Class used to determine whether a creature is disfigured (reduced
 // statistics) as the result of an acid attack, and for how long.
-class DisfiguredCalculator : public IStatusEffectCalculator
+class DisfiguredCalculator : public StatusEffectCalculator
 {
   public:
     int calculate_pct_chance_effect(CreaturePtr creature) const override;

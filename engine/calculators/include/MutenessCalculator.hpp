@@ -1,9 +1,9 @@
 #pragma once
-#include "IStatusEffectCalculator.hpp"
+#include "StatusEffectCalculator.hpp"
 #include "Creature.hpp"
 
 // Class used to determine whether a creature is muted, and for how long.
-class MutenessCalculator : public IStatusEffectCalculator
+class MutenessCalculator : public StatusEffectCalculator
 {
   public:
     int calculate_pct_chance_effect(CreaturePtr creature) const override;

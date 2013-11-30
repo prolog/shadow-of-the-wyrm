@@ -18,12 +18,12 @@ StatusEffect::~StatusEffect()
 {
 }
 
-bool StatusEffect::should_apply_change(CreaturePtr creature) const
+bool StatusEffect::should_apply_change(CreaturePtr creature, const int effect_bonus) const
 {
   bool status_should_apply = false;
 
   if (creature && !creature->has_status(get_status_identifier()) 
-   && RNG::percent_chance(status_calc->calculate_pct_chance_effect(creature)))
+   && RNG::percent_chance(status_calc->chance_of_effect(creature, effect_bonus)))
   {
     status_should_apply = true;
   }

@@ -218,7 +218,7 @@
     <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ISkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
-    <ClInclude Include="engine\calculators\include\IStatusEffectCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\StatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MagicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MagicalCombatSkillMarker.hpp" />
@@ -997,6 +997,7 @@
     <ClCompile Include="engine\calculators\source\SpeedCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\SpellbookCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SpellboundCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\StatusEffectCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StoneCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StunnedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp" />

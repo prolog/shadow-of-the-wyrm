@@ -1,11 +1,11 @@
 #pragma once
-#include "IStatusEffectCalculator.hpp"
+#include "StatusEffectCalculator.hpp"
 #include "Creature.hpp"
 
 // A class used to calculate whether a creature gets poisoned, the duration
 // of the poisoning, the damage, and other aspects of poison status
 // effects.
-class PoisonCalculator : public IStatusEffectCalculator
+class PoisonCalculator : public StatusEffectCalculator
 {
   public:
     int calculate_pct_chance_effect(CreaturePtr creature) const override;

@@ -670,6 +670,7 @@
 		<xs:extension base="tns:Dice">
 			<xs:sequence>
 				<xs:element name="Type" type="tns:DamageType"/>
+				<xs:element name="EffectBonus" type="xs:integer" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="chaotic" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>

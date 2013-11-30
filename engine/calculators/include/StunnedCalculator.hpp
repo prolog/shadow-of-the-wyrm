@@ -1,10 +1,10 @@
 #pragma once
-#include "IStatusEffectCalculator.hpp"
+#include "StatusEffectCalculator.hpp"
 #include "Creature.hpp"
 
 // Class used to determine whether a creature is stunned by a bludgeoning
 // attack, and if so, for how long.
-class StunnedCalculator : public IStatusEffectCalculator
+class StunnedCalculator : public StatusEffectCalculator
 {
   public:
     int calculate_pct_chance_effect(CreaturePtr creature) const override;
