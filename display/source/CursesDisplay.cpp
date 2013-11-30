@@ -778,9 +778,7 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
       {
         Colour colour = status_ailment.second;
 
-        enable_colour(colour, stdscr);
-        print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, status_ailment.first, next_ailment.first); 
-        disable_colour(colour, stdscr);
+        print_display_statistic_and_update_row_and_column(initial_row, &current_row, &current_col, status_ailment.first, next_ailment.first, colour); 
       }
     }
     else

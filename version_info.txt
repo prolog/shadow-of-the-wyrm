@@ -6,9 +6,14 @@ Savage Lands v0.1.9 "Osmund"
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
 
-- Bug fixes: fixed a number of places in the configuration XML where the
-  description SID was being referenced instead of the short description
-  SID.
+- Bug fixes:
+ 
+  - Fixed a number of places in the configuration XML where the
+    description SID was being referenced instead of the short description
+    SID.
+
+  - Fixed a bug where the colours for the status ailments weren't being
+    set properly when there were multiple ailments.
 
 Savage Lands v0.1.8 "Aethelbert"
 - Version declared November 2, 2013.  Finalized November 27, 2013.
