@@ -195,7 +195,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   if (damage_dealt > 0 || effect_bonus > 0)
   {
     // Apply any effects (e.g., poison) that occur as the result of the damage)
-    handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus);
+    handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus, damage_info.get_status_ailments());
   }
 
   if (damage_dealt > 0)
@@ -234,11 +234,32 @@ bool CombatManager::does_attack_slay_creature_race(CreaturePtr attacking_creatur
 }
 
 // Apply any effects as the result of damage.  This can include incurring blindness,
-// poison, etc.
-void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus)
+// poison, etc.  Take into account whether or not the damage has overridden the status
+// effects.  If so, get the set of ailments off the status ailments, and use those
+// instead.
+void CombatManager::handle_damage_effects(CreaturePtr creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments)
 {
-  StatusEffectPtr status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type);
+  StatusEffectPtr status_effect;
 
+  if (status_ailments.get_override_defaults())
+  {
+    set<string> ailments = status_ailments.get_ailments();
+
+    for (const string& ailment : ailments)
+    {
+      status_effect = StatusEffectFactory::create_status_effect(ailment);
+      apply_damage_effect(creature, status_effect, effect_bonus);
+    }
+  }
+  else
+  {
+    status_effect = StatusEffectFactory::create_effect_for_damage_type(damage_type);
+    apply_damage_effect(creature, status_effect, effect_bonus);
+  }
+}
+
+void CombatManager::apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus)
+{
   if (status_effect && status_effect->should_apply_change(creature, effect_bonus))
   {
     status_effect->apply_change(creature);

@@ -9,4 +9,5 @@ class XMLReader
   public:
     void parse_dice(Dice& dice, const XMLNode& dice_node) const;
     void parse_damage(Damage& damage, const XMLNode& damage_node) const;
+    void parse_status_ailments(StatusAilments& ailments, const XMLNode& status_ailments_node) const;
 };

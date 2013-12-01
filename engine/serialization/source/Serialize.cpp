@@ -367,7 +367,7 @@ void Serialize::read_string_vector(istream& stream, vector<string>& val)
  }
 }
 
-void Serialize::write_string_map(std::ostream& stream, const std::map<std::string, std::string>& val)
+void Serialize::write_string_map(ostream& stream, const map<string, string>& val)
 {
   size_t size = val.size();
   Serialize::write_size_t(stream, size);
@@ -385,7 +385,7 @@ void Serialize::write_string_map(std::ostream& stream, const std::map<std::strin
   }
 }
 
-void Serialize::read_string_map(std::istream& stream, std::map<std::string, std::string>& val)
+void Serialize::read_string_map(std::istream& stream, map<string, string>& val)
 {
   size_t size = 0;
   Serialize::read_size_t(stream, size);
@@ -401,6 +401,32 @@ void Serialize::read_string_map(std::istream& stream, std::map<std::string, std:
     Serialize::read_string(stream, value);
 
     val.insert(make_pair(key, value));
+  }
+}
+
+void Serialize::write_string_set(ostream& stream, const set<string>& val)
+{
+  Serialize::write_size_t(stream, val.size());
+
+  for (const string& str : val)
+  {
+    Serialize::write_string(stream, str);
+  }
+}
+
+void Serialize::read_string_set(istream& stream, set<string>& val)
+{
+  size_t set_size = 0;
+  Serialize::read_size_t(stream, set_size);
+
+  val.clear();
+
+  for (size_t i = 0; i < set_size; i++)
+  {
+    string str;
+    Serialize::read_string(stream, str);
+
+    val.insert(str);
   }
 }
 

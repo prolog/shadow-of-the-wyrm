@@ -12,13 +12,13 @@ Damage::Damage()
 {
 }
 
-Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool pierce, const int eb)
-: Dice(dice, sides, mod), damage_type(dtype), chaotic(chaos), piercing(pierce), effect_bonus(eb)
+Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool pierce, const int eb, const StatusAilments& ailments)
+: Dice(dice, sides, mod), damage_type(dtype), chaotic(chaos), piercing(pierce), effect_bonus(eb), status_ailments(ailments)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), chaotic(d.chaotic), piercing(d.piercing), effect_bonus(d.effect_bonus)
+: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), chaotic(d.chaotic), piercing(d.piercing), effect_bonus(d.effect_bonus), status_ailments(d.status_ailments)
 {
   DamagePtr addl_damage = d.get_additional_damage();
   
@@ -39,6 +39,7 @@ Damage& Damage::operator=(const Damage& d)
     chaotic     = d.chaotic;
     piercing    = d.piercing;
     effect_bonus= d.effect_bonus;
+    status_ailments = d.status_ailments;
     
     DamagePtr addl_damage = d.get_additional_damage();
     
@@ -60,6 +61,7 @@ bool Damage::operator==(const Damage& d) const
     match = match && (num_dice    == d.get_num_dice()   );
     match = match && (dice_sides  == d.get_dice_sides() );
     match = match && (modifier    == d.get_modifier()   );
+    match = match && (status_ailments == d.status_ailments );
 
     // bypass the "chaotic" flag.  otherwise, unit tests fail
     // roughly 50% of the time when chaotic is on. :)
@@ -150,6 +152,16 @@ int Damage::get_effect_bonus() const
   return effect_bonus;
 }
 
+void Damage::set_status_ailments(const StatusAilments& new_status_ailments)
+{
+  status_ailments = new_status_ailments;
+}
+
+StatusAilments Damage::get_status_ailments() const
+{
+  return status_ailments;
+}
+
 bool Damage::is_always_zero() const
 {
   return (num_dice == 0) || (dice_sides == 0);
@@ -207,6 +219,8 @@ bool Damage::serialize(ostream& stream) const
   Serialize::write_bool(stream, piercing);
   Serialize::write_int(stream, effect_bonus);
 
+  status_ailments.serialize(stream);
+
   if (additional_damage)
   {
     Serialize::write_class_id(stream, additional_damage->get_class_identifier());
@@ -227,6 +241,8 @@ bool Damage::deserialize(istream& stream)
   Serialize::read_bool(stream, chaotic);
   Serialize::read_bool(stream, piercing);
   Serialize::read_int(stream, effect_bonus);
+
+  status_ailments.deserialize(stream);
 
   ClassIdentifier ci = CLASS_ID_NULL;
   Serialize::read_class_id(stream, ci);

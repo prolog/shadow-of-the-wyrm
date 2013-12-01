@@ -32,7 +32,7 @@ Creature::Creature()
   // Base speed is 50.  This needs to be set or slimes get 25 actions to your 1 (23 or 24 if you're quick!).
   set_speed(50);
   
-  Damage dam(1, 2, 0, DAMAGE_TYPE_POUND, false, false, 0);
+  Damage dam(1, 2, 0, DAMAGE_TYPE_POUND, false, false, 0, {});
   set_base_damage(dam);
 }
 
@@ -929,7 +929,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 808, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 824, "Unexpected sizeof Creature.");
     #else
     // Release
 	static_assert(sizeof(*this) == 872, "Unexpected sizeof Creature.");
