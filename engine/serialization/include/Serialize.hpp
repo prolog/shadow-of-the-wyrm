@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <map>
+#include <set>
 #include <vector>
 #include "ClassIdentifiers.hpp"
 #include "SerializationExceptions.hpp"
@@ -41,6 +42,9 @@ class Serialize
 
     static void write_string_map(std::ostream& stream, const std::map<std::string, std::string>& val);
     static void read_string_map(std::istream& stream, std::map<std::string, std::string>& val);
+
+    static void write_string_set(std::ostream& stream, const std::set<std::string>& val);
+    static void read_string_set(std::istream& stream, std::set<std::string>& val);
 
     template<typename T> 
     static void write_enum(std::ostream& stream, const T enum_type)

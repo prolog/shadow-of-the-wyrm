@@ -671,11 +671,23 @@
 			<xs:sequence>
 				<xs:element name="Type" type="tns:DamageType"/>
 				<xs:element name="EffectBonus" type="xs:integer" minOccurs="0"/>
+				<!-- If this is not present, the default status ailment will be used.
+				     If this is present but empty, the attack will inflict no status ailments.
+					 Otherwise, the attack will inflict the status ailments present in the StatusAilments sequence. -->
+				<xs:element name="StatusAilments" type="tns:StatusAilments" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="chaotic" type="xs:boolean" use="optional" default="0"/>
 			<xs:attribute name="piercing" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>
 	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="StatusAilments">
+	<xs:annotation>
+		<xs:documentation>A list of status ailments, whose values mirror those found in StatusTypes.cpp</xs:documentation>
+	</xs:annotation>
+	<xs:sequence>
+		<xs:element name="Status" type="tns:StatusAilmentType" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Weapons">
 	<xs:sequence>
@@ -1225,6 +1237,23 @@
 <xs:simpleType name="Identifier">
 	<xs:restriction base="xs:string">
 		<xs:pattern value="[a-zA-Z0-9_]*"/>
+	</xs:restriction>
+</xs:simpleType>
+<xs:simpleType name="StatusAilmentType">
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="_poison"/>
+		<xs:enumeration value="_mute"/>
+		<xs:enumeration value="_para"/>
+		<xs:enumeration value="_slow"/>
+		<xs:enumeration value="_haste"/>
+		<xs:enumeration value="_stone"/>
+		<xs:enumeration value="_blood"/>
+		<xs:enumeration value="_stun"/>
+		<xs:enumeration value="_expose"/>
+		<xs:enumeration value="_disf"/>
+		<xs:enumeration value="_spellb"/>
+		<xs:enumeration value="_blind"/>
+		<xs:enumeration value="_incorp"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>

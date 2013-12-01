@@ -1,6 +1,8 @@
 #include "XMLReader.hpp"
 #include "CombatConstants.hpp"
 
+using namespace std;
+
 // Parse the dice from a node according to the Dice format.
 void XMLReader::parse_dice(Dice& dice, const XMLNode& dice_node) const
 {
@@ -37,5 +39,29 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
 
     int effect_bonus = XMLUtils::get_child_node_int_value(damage_node, "EffectBonus");
     damage.set_effect_bonus(effect_bonus);
+
+    XMLNode status_ailments_node = XMLUtils::get_next_element_by_local_name(damage_node, "StatusAilments");
+    if (!status_ailments_node.is_null())
+    {
+      StatusAilments ailments;
+      parse_status_ailments(ailments, status_ailments_node);
+
+      damage.set_status_ailments(ailments);
+    }
   }
+}
+
+void XMLReader::parse_status_ailments(StatusAilments& status_ailment, const XMLNode& status_ailments_node) const
+{
+  set<string> ailments;
+  vector<XMLNode> status_ailments = XMLUtils::get_elements_by_local_name(status_ailments_node, "Status");
+
+  for (const XMLNode& status : status_ailments)
+  {
+    string ailment = XMLUtils::get_node_value(status);
+    ailments.insert(ailment);
+  }
+
+  status_ailment.set_ailments(ailments);
+  status_ailment.set_override_defaults(true);
 }

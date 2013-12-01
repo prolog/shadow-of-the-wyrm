@@ -1,7 +1,7 @@
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.
 
-- Added new creatures: quivering blob, giant frog, giant toad.
+- Added new creatures: quivering blob, giant frog, giant toad, crone.
 
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
@@ -10,6 +10,11 @@ Savage Lands v0.1.9 "Osmund"
 
 - Added a new "piercing" flag for damage.  Piercing damage ignores soak
   completely.
+
+- Updated the code surrounding damage status ailments.  A set of status
+  ailments can now be specified, which override the default for a
+  particular damage type.  Crones now can potentially inflict all negative
+  status ailments with each (piercing!) hit.
 
 - Bug fixes:
  

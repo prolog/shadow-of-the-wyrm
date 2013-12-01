@@ -718,6 +718,7 @@
     <ClInclude Include="world\include\Staff.hpp" />
     <ClInclude Include="world\include\Statistic.hpp" />
     <ClInclude Include="world\include\StatisticsModifier.hpp" />
+    <ClInclude Include="world\include\StatusAilments.hpp" />
     <ClInclude Include="world\include\StatusDuration.hpp" />
     <ClInclude Include="world\include\StatusTypes.hpp" />
     <ClInclude Include="world\include\ThreatRatings.hpp" />
@@ -1880,6 +1881,7 @@
     <ClCompile Include="world\source\Staff.cpp" />
     <ClCompile Include="world\source\Statistic.cpp" />
     <ClCompile Include="world\source\StatisticsModifier.cpp" />
+    <ClCompile Include="world\source\StatusAilments.cpp" />
     <ClCompile Include="world\source\StatusDuration.cpp" />
     <ClCompile Include="world\source\StatusTypes.cpp" />
     <ClCompile Include="world\source\ThreatRatings.cpp" />
@@ -1983,6 +1985,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\StatusAilments_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\WorldMap_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

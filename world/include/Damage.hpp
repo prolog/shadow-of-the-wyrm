@@ -2,6 +2,7 @@
 #include <memory>
 #include "DamageTypes.hpp"
 #include "Dice.hpp"
+#include "StatusAilments.hpp"
 
 class Damage;
 
@@ -9,7 +10,7 @@ class Damage : public Dice
 {
   public:
     explicit Damage();
-    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool piercing, const int ebonus);
+    explicit Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool piercing, const int ebonus, const StatusAilments& sa);
     Damage(const Damage& d);
     Damage&  operator= (const Damage& d);
     bool     operator==(const Damage& d) const;
@@ -27,6 +28,9 @@ class Damage : public Dice
 
     void set_effect_bonus(const int new_bonus);
     int get_effect_bonus() const;
+
+    void set_status_ailments(const StatusAilments& new_ailments);
+    StatusAilments get_status_ailments() const;
 
     // Check to see if the damage is always zero - this is used for
     // effect spells with no damage component (blindness, etc).
@@ -49,6 +53,8 @@ class Damage : public Dice
     bool piercing;
     DamageType damage_type;
     int effect_bonus;
+    StatusAilments status_ailments;
+
     std::shared_ptr<Damage> additional_damage;
 
   private:

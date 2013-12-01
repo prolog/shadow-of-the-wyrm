@@ -4,6 +4,7 @@
 #include "Creature.hpp"
 #include "Damage.hpp"
 #include "DamageTypes.hpp"
+#include "StatusEffect.hpp"
 
 class CombatManager
 {
@@ -17,9 +18,11 @@ class CombatManager
     ActionCostValue attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY, const bool mark_skills = true, DamagePtr damage = DamagePtr());
 
     void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const std::string combat_message = "");
-    void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus);
+    void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments);
 
   protected:
+    // Apply a particular status effect.
+    void apply_damage_effect(CreaturePtr creature, StatusEffectPtr status_effect, const int effect_bonus);
     
     // Functions to handle the attacking mechanics and add messages as necessary.
     bool hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage, const AttackType attack_type);

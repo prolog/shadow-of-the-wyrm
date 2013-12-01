@@ -9,8 +9,9 @@ TEST(SL_World_Damage, serialization_id)
 
 TEST(SL_World_Damage, saveload)
 {
-  Damage damage(5,6,7,DAMAGE_TYPE_SHADOW, false, false, 0);
-  std::shared_ptr<Damage> addl_damage(new Damage(6,7,8,DAMAGE_TYPE_PIERCE, false, false, 0));
+  StatusAilments sa;
+  Damage damage(5,6,7,DAMAGE_TYPE_SHADOW, false, false, 0, sa);
+  std::shared_ptr<Damage> addl_damage(new Damage(6,7,8,DAMAGE_TYPE_PIERCE, false, false, 0, sa));
   damage.set_additional_damage(addl_damage);
   damage.set_chaotic(true);
   damage.set_effect_bonus(42);
