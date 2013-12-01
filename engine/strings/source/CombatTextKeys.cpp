@@ -61,6 +61,25 @@ string CombatTextKeys::get_close_miss_message(const bool attacker_is_player, con
   return close_miss_msg;
 }
 
+string CombatTextKeys::get_pierce_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& target)
+{
+  pair<string, string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, target);
+  string app_attack = attacker_and_target.first;
+  string app_target = attacker_and_target.second;
+
+  string pierce_msg = StringTable::get(CombatTextKeys::COMBAT_PIERCE_MESSAGE_NP);
+
+  if (attacked_is_player)
+  {
+    pierce_msg = StringTable::get(CombatTextKeys::COMBAT_PIERCE_MESSAGE);
+  }
+
+  boost::replace_first(pierce_msg, "%s", app_target);
+  pierce_msg[0] = toupper(pierce_msg[0]);
+
+  return pierce_msg;
+}
+
 string CombatTextKeys::get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const string& attacker, const string& miss_target)
 {
   pair<string,string> attacker_and_target = get_appropriate_attacker_and_target(attacker_is_player, attacked_is_player, attacker, miss_target);
@@ -314,6 +333,8 @@ const string CombatTextKeys::COMBAT_MONSTER_DIES_MESSAGE   = "COMBAT_MONSTER_DIE
 const string CombatTextKeys::COMBAT_MONSTER_KILLED_OR_DIES_MESSAGE_PLAYER_BLIND = "COMBAT_MONSTER_KILLED_OR_DIES_MESSAGE_PLAYER_BLIND";
 const string CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE     = "COMBAT_CLOSE_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_CLOSE_MISS_MESSAGE_NP  = "COMBAT_CLOSE_MISS_MESSAGE_NP"; 
+const string CombatTextKeys::COMBAT_PIERCE_MESSAGE         = "COMBAT_PIERCE_MESSAGE";
+const string CombatTextKeys::COMBAT_PIERCE_MESSAGE_NP      = "COMBAT_PIERCE_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE           = "COMBAT_MISS_MESSAGE";
 const string CombatTextKeys::COMBAT_MISS_MESSAGE_NP        = "COMBAT_MISS_MESSAGE_NP";
 const string CombatTextKeys::COMBAT_CRITICAL_HIT_MESSAGE   = "COMBAT_CRITICAL_HIT_MESSAGE";

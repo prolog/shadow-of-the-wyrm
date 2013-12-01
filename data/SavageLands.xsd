@@ -673,6 +673,7 @@
 				<xs:element name="EffectBonus" type="xs:integer" minOccurs="0"/>
 			</xs:sequence>
 			<xs:attribute name="chaotic" type="xs:boolean" use="optional" default="0"/>
+			<xs:attribute name="piercing" type="xs:boolean" use="optional" default="0"/>
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>

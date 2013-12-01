@@ -162,7 +162,18 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   HitTypeEnum hit_type_enum = HitTypeEnumConverter::from_successful_to_hit_roll(d100_roll);
   IHitTypeCalculatorPtr hit_calculator = IHitTypeFactory::create_hit_type(hit_type_enum);
   string hit_specific_msg = hit_calculator->get_combat_message();
-  soak_multiplier = hit_calculator->get_soak_multiplier();
+  bool piercing = damage_info.get_piercing();
+
+  if (piercing == true)
+  {
+    // Ignore soak when the damage is piercing.
+    soak_multiplier = 0;
+  }
+  else
+  {
+    soak_multiplier = hit_calculator->get_soak_multiplier();
+  }
+
   base_damage = hit_calculator->get_base_damage(damage_info);
 
   if (!hit_specific_msg.empty())
@@ -177,20 +188,28 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
 
   // Add the text so far.
   add_combat_message(attacking_creature, attacked_creature, combat_message);
-  add_any_necessary_damage_messages(attacking_creature, attacked_creature, damage_dealt);
+  add_any_necessary_damage_messages(attacking_creature, attacked_creature, damage_dealt, piercing);
 
-  if (damage_dealt > 0)
+  // Do damage effects if damage was dealt, or if there is a bonus to the
+  // effect.
+  if (damage_dealt > 0 || effect_bonus > 0)
   {
     // Apply any effects (e.g., poison) that occur as the result of the damage)
     handle_damage_effects(attacked_creature, damage_dealt, damage_type, effect_bonus);
+  }
 
+  if (damage_dealt > 0)
+  {
     // Deal the damage, handling death if necessary.
     deal_damage(attacking_creature, attacked_creature, damage_dealt);
   }
   else
   {
-    string no_damage_message = CombatTextKeys::get_no_damage_message(attacked_creature->get_is_player(), StringTable::get(attacked_creature->get_description_sid()));
-    add_combat_message(attacking_creature, attacked_creature, no_damage_message);
+    if (!damage_info.is_always_zero())
+    {
+      string no_damage_message = CombatTextKeys::get_no_damage_message(attacked_creature->get_is_player(), StringTable::get(attacked_creature->get_description_sid()));
+      add_combat_message(attacking_creature, attacked_creature, no_damage_message);
+    }
   }
 
   return true;
@@ -288,13 +307,13 @@ bool CombatManager::close_miss(CreaturePtr attacking_creature, CreaturePtr attac
 }
 
 // Add messages if the damage dealt is 0 (unharmed), or negative
-// (heals).
+// (heals), or piercing, etc.
 // 
 // JCD FIXME Need to have the usual player vs. monster checks here
 // so that these are only added when the target is not the player.
-void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage)
+void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, CreaturePtr attacked_creature, const int damage, const bool piercing)
 {
-  string additional_message;
+  vector<string> additional_messages;
   
   if (damage == 0)
   {
@@ -304,10 +323,19 @@ void CombatManager::add_any_necessary_damage_messages(CreaturePtr creature, Crea
   {
     // ...
   }
-  
-  if (!additional_message.empty())
+
+  if (piercing)
   {
-    add_combat_message(creature, attacked_creature, additional_message);
+    string attacked_creature_desc = get_appropriate_creature_description(creature, attacked_creature);
+    additional_messages.push_back(CombatTextKeys::get_pierce_message(creature && creature->get_is_player(), attacked_creature && attacked_creature->get_is_player(), StringTable::get(creature->get_description_sid()), attacked_creature_desc));
+  }
+  
+  if (!additional_messages.empty())
+  {
+    for (const string& msg : additional_messages)
+    {
+      add_combat_message(creature, attacked_creature, msg);
+    }
   }
 }
 
