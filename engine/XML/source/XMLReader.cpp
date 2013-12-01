@@ -32,6 +32,9 @@ void XMLReader::parse_damage(Damage& damage, const XMLNode& damage_node) const
     bool chaotic = XMLUtils::get_attribute_bool_value(damage_node, "chaotic");
     damage.set_chaotic(chaotic);
 
+    bool piercing = XMLUtils::get_attribute_bool_value(damage_node, "piercing");
+    damage.set_piercing(piercing);
+
     int effect_bonus = XMLUtils::get_child_node_int_value(damage_node, "EffectBonus");
     damage.set_effect_bonus(effect_bonus);
   }

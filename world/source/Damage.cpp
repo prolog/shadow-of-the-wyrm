@@ -8,17 +8,17 @@
 using namespace std;
 
 Damage::Damage()
-: Dice(0, 0, 0), damage_type(DAMAGE_TYPE_SLASH), chaotic(false), effect_bonus(0)
+: Dice(0, 0, 0), damage_type(DAMAGE_TYPE_SLASH), chaotic(false), piercing(false), effect_bonus(0)
 {
 }
 
-Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const int eb)
-: Dice(dice, sides, mod), damage_type(dtype), chaotic(chaos), effect_bonus(eb)
+Damage::Damage(const uint dice, const uint sides, const int mod, const DamageType dtype, const bool chaos, const bool pierce, const int eb)
+: Dice(dice, sides, mod), damage_type(dtype), chaotic(chaos), piercing(pierce), effect_bonus(eb)
 {
 }
 
 Damage::Damage(const Damage& d)
-: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), chaotic(d.chaotic), effect_bonus(d.effect_bonus)
+: Dice(d.num_dice, d.dice_sides, d.modifier), damage_type(d.damage_type), chaotic(d.chaotic), piercing(d.piercing), effect_bonus(d.effect_bonus)
 {
   DamagePtr addl_damage = d.get_additional_damage();
   
@@ -37,6 +37,7 @@ Damage& Damage::operator=(const Damage& d)
     modifier    = d.modifier;
     damage_type = d.damage_type;
     chaotic     = d.chaotic;
+    piercing    = d.piercing;
     effect_bonus= d.effect_bonus;
     
     DamagePtr addl_damage = d.get_additional_damage();
@@ -65,6 +66,7 @@ bool Damage::operator==(const Damage& d) const
     match = match && (damage_type == d.damage_type      );
 
     match = match && (chaotic     == d.get_chaotic()    );
+    match = match && (piercing    == d.get_piercing()   );
     match = match && (effect_bonus == d.get_effect_bonus());
     
     DamagePtr d_add_damage = d.get_additional_damage();
@@ -128,6 +130,16 @@ bool Damage::get_chaotic() const
   return chaotic;
 }
 
+void Damage::set_piercing(const bool new_piercing)
+{
+  piercing = new_piercing;
+}
+
+bool Damage::get_piercing() const
+{
+  return piercing;
+}
+
 void Damage::set_effect_bonus(const int new_effect_bonus)
 {
   effect_bonus = new_effect_bonus;
@@ -136,6 +148,11 @@ void Damage::set_effect_bonus(const int new_effect_bonus)
 int Damage::get_effect_bonus() const
 {
   return effect_bonus;
+}
+
+bool Damage::is_always_zero() const
+{
+  return (num_dice == 0) || (dice_sides == 0);
 }
 
 string Damage::str() const
@@ -164,6 +181,11 @@ string Damage::str() const
     ss << " (cha) ";
   }
 
+  if (piercing)
+  {
+    ss << " (prc) ";
+  }
+
   if (effect_bonus != 0)
   {
     ss << " +" << Integer::to_string(effect_bonus) + "/eff. ";
@@ -182,6 +204,7 @@ bool Damage::serialize(ostream& stream) const
   Dice::serialize(stream);
   Serialize::write_enum(stream, damage_type);
   Serialize::write_bool(stream, chaotic);
+  Serialize::write_bool(stream, piercing);
   Serialize::write_int(stream, effect_bonus);
 
   if (additional_damage)
@@ -202,6 +225,7 @@ bool Damage::deserialize(istream& stream)
   Dice::deserialize(stream);
   Serialize::read_enum(stream, damage_type);
   Serialize::read_bool(stream, chaotic);
+  Serialize::read_bool(stream, piercing);
   Serialize::read_int(stream, effect_bonus);
 
   ClassIdentifier ci = CLASS_ID_NULL;

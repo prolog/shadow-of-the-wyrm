@@ -7,6 +7,7 @@
 class CombatTextKeys
 {
   public:
+    static std::string get_pierce_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& target);
     static std::string get_close_miss_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& missed_target);
     static std::string get_miss_message(const bool attacker_is_player, const bool attacked_is_player, const std::string& attacker, const std::string& missed_target);
     static std::string get_critical_hit_message();
@@ -44,6 +45,8 @@ class CombatTextKeys
     static const std::string COMBAT_CLOSE_MISS_MESSAGE_NP;
     static const std::string COMBAT_MISS_MESSAGE;
     static const std::string COMBAT_MISS_MESSAGE_NP;
+    static const std::string COMBAT_PIERCE_MESSAGE;
+    static const std::string COMBAT_PIERCE_MESSAGE_NP;
     static const std::string COMBAT_HIT_SLASH;
     static const std::string COMBAT_HIT_SLASH_NP;
     static const std::string COMBAT_HIT_POUND;
