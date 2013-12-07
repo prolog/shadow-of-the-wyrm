@@ -39,10 +39,11 @@ def get_creatures_from_xml(xml_file):
 
       # If there's already a creature tuple of the given symbol/colour,
       # add the current creature ID to the existing one.
-      if creature_tuple in ss_creatures:
-        existing_id = ss_creatures[creature_tuple]
-        print("Duplicate creature symbol/colour detected - new ID: " + creature_id + ", existing: " + existing_id)
-        creature_id = creature_id + "," + existing_id
+      for t in ss_creatures:
+        if t[0] == creature_symbol and t[1] == creature_colour:
+          existing_id = ss_creatures[t]
+          print("Duplicate creature symbol/colour detected - new ID: " + creature_id + ", existing: " + existing_id)
+          creature_id = creature_id + "," + existing_id
       
       ss_creatures[creature_tuple] = creature_id
 
