@@ -7,10 +7,15 @@ Savage Lands v0.1.9 "Osmund"
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
 
-- Added new mystic spells: Poison, Blind.
+- Added new mystic spells: Poison, Blind, Mute.
+
+- Added new divine spells: Smite, Holy.
 
 - Updated Oracles so that they start with a spellbook of Poison or Blind,
   at random.
+
+- Updated Pilgrims so that they start with a spellbook of Healing Word or
+  Smite.
 
 - Added a new "piercing" flag for damage.  Piercing damage ignores soak
   completely.
