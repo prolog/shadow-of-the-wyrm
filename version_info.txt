@@ -2,7 +2,7 @@ Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.
 
 - Added new creatures: quivering blob, giant frog, giant toad, crone,
-  shapeshifter.
+  shapeshifter, knight, crusader.
 
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
