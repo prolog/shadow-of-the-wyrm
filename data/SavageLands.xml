@@ -2205,6 +2205,13 @@
 						<ID>food_ration</ID>
 						<Quantity><Amount>3</Amount></Quantity>
 					</InitialItem>
+					<InitialItem>
+						<Quantity><Amount>1</Amount></Quantity>
+						<Random>
+							<ID>smite_spellbook</ID>
+							<ID>healing_word_spellbook</ID>
+						</Random>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -9151,6 +9158,25 @@
 			<Shape>0</Shape>
 			<Effect>1</Effect>
 		</Spell>
+		<Spell id="d_02_smite">
+			<NameSID>SMITE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>SMITE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>SMITE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<Colour>15</Colour>
+			<APCost>4</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>2</NumDice>
+				<NumSides>4</NumSides>
+				<Modifier>4</Modifier>
+				<Type>7</Type>
+				<EffectBonus>20</EffectBonus>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="m_01_wraith_form">
 			<NameSID>WRAITH_FORM_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WRAITH_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -12242,10 +12268,27 @@
 					<Symbol>"</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<SpellID>d_01_healing_word</SpellID>
 				<Difficulty>70</Difficulty>
+			</Spellbook>
+			<Spellbook id="smite_spellbook">
+				<DescriptionSID>SMITE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SMITE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SMITE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SMITE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>275</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>d_02_smite</SpellID>
+				<Difficulty>50</Difficulty>
 			</Spellbook>
 			<Spellbook id="wraith_form_spellbook">
 				<DescriptionSID>WRAITH_FORM_SPELLBOOK_SID</DescriptionSID>
