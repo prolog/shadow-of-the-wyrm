@@ -2,7 +2,7 @@ Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.
 
 - Added new creatures: quivering blob, giant frog, giant toad, crone,
-  shapeshifter, knight, crusader.
+  shapeshifter, knight, crusader, naga, cave bear, sword-eater, squire.
 
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
@@ -28,6 +28,12 @@ Savage Lands v0.1.9 "Osmund"
 
   - Fixed a bug where the colours for the status ailments weren't being
     set properly when there were multiple ailments.
+
+  - Fixed a bug in create_spreadsheet.py where duplicates were only being
+    detected if the creature tuple matched exactly, which meant that
+    a match would only be found if there were two creatures of the same
+    symbol, colour, and level.  Loosened those restrictions to match
+    any level (so, just match on symbol and colour).
 
 Savage Lands v0.1.8 "Aethelbert"
 - Version declared November 2, 2013.  Finalized November 27, 2013.
