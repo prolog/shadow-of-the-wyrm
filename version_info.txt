@@ -40,6 +40,11 @@ Savage Lands v0.1.9 "Osmund"
     symbol, colour, and level.  Loosened those restrictions to match
     any level (so, just match on symbol and colour).
 
+  - The item description randomization code (for wands, spellbooks, etc.)
+    was not checking to see if an item was unidentified before including it
+    for randomization.  The end result was that I ran into a spellbook
+    called "the Isen Dun Chronicle".
+
 Savage Lands v0.1.8 "Aethelbert"
 - Version declared November 2, 2013.  Finalized November 27, 2013.
 
