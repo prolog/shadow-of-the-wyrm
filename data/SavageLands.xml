@@ -9268,6 +9268,27 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>		
+		<Spell id="m_05_spellbind">
+			<NameSID>SPELLBIND_NAME_SID</NameSID>
+			<PlayerCastMessageSID>SPELLBIND_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>SPELLBIND_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<Colour>4</Colour>
+			<APCost>6</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+				<EffectBonus>75</EffectBonus>
+				<StatusAilments>
+					<Status>_spellb</Status>
+				</StatusAilments>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -12414,6 +12435,23 @@
 				<Rarity>1</Rarity>
 				<SpellID>m_04_mute</SpellID>
 				<Difficulty>40</Difficulty>
+			</Spellbook>
+			<Spellbook id="spellbind_spellbook">
+				<DescriptionSID>SPELLBIND_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SPELLBIND_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SPELLBIND_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SPELLBIND_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>450</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_05_spellbind</SpellID>
+				<Difficulty>65</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
