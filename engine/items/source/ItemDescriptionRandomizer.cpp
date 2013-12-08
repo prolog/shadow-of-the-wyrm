@@ -1,6 +1,7 @@
 #include <algorithm>
 #include <tuple>
 #include "ItemDescriptionRandomizer.hpp"
+#include "ItemIdentifier.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -28,6 +29,8 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
     randomized_entries.insert(make_pair(random_type, randomized_item_descriptions));
   }
 
+  ItemIdentifier ii;
+
   // First pass through ItemMap:
   // For each item in the item map, check its item type.  If the item type
   // is in the inclusion list for randomization, add the appropriate details
@@ -40,7 +43,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
     {
       ItemType item_type = item->get_type();
       
-      if (type_inclusion[item_type] == true)
+      if ((type_inclusion[item_type] == true) && (!ii.get_item_identified(item->get_base_id())))
       {
         details_tuple unidentified_desc_sids_and_colour = make_tuple(item->get_unidentified_description_sid(), item->get_unidentified_usage_description_sid(), item->get_colour());
         vector<details_tuple>& item_type_descs = randomized_entries[item_type];
@@ -70,7 +73,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
     {
       ItemType item_type = item->get_type();
 
-      if (type_inclusion[item_type] == true)
+      if ((type_inclusion[item_type] == true) && (!ii.get_item_identified(item->get_base_id())))
       {
         vector<details_tuple>& item_type_descs_and_colour = randomized_entries[item_type];
         details_tuple item_descs_and_colour = item_type_descs_and_colour.back();

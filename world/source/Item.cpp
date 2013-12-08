@@ -343,7 +343,14 @@ void Item::set_item_identified(const bool new_item_identified)
 
 bool Item::get_item_identified() const
 {
-  return item_identified;
+  bool identified = item_identified;
+
+  if (!identified)
+  {
+    identified = unidentified_description_sid.empty();
+  }
+
+  return identified;
 }
 
 bool Item::serialize(ostream& stream) const
