@@ -9289,6 +9289,60 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>		
+		<Spell id="m_06_haste">
+			<NameSID>HASTE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>HASTE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>HASTE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<Colour>4</Colour>
+			<APCost>5</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>8</Effect>
+		</Spell>		
+		<Spell id="m_07_slow">
+			<NameSID>SLOW_NAME_SID</NameSID>
+			<PlayerCastMessageSID>SLOW_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>SLOW_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<Colour>4</Colour>
+			<APCost>5</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+				<EffectBonus>75</EffectBonus>
+				<StatusAilments>
+					<Status>_slow</Status>
+				</StatusAilments>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
+		<Spell id="m_08_stone">
+			<NameSID>STONE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>STONE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>STONE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<Colour>4</Colour>
+			<APCost>20</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>2</NumDice>
+				<NumSides>6</NumSides>
+				<Type>9</Type>
+				<EffectBonus>15</EffectBonus>
+				<StatusAilments>
+					<Status>_stone</Status>
+				</StatusAilments>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>		
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -12452,6 +12506,57 @@
 				<Rarity>1</Rarity>
 				<SpellID>m_05_spellbind</SpellID>
 				<Difficulty>65</Difficulty>
+			</Spellbook>
+			<Spellbook id="haste_spellbook">
+				<DescriptionSID>HASTE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_HASTE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>HASTE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_HASTE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>350</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_06_haste</SpellID>
+				<Difficulty>60</Difficulty>
+			</Spellbook>
+			<Spellbook id="slow_spellbook">
+				<DescriptionSID>SLOW_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_SLOW_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>SLOW_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_SLOW_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>350</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_07_slow</SpellID>
+				<Difficulty>60</Difficulty>
+			</Spellbook>
+			<Spellbook id="stone_spellbook">
+				<DescriptionSID>STONE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_STONE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>STONE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_STONE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>550</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_08_stone</SpellID>
+				<Difficulty>115</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
