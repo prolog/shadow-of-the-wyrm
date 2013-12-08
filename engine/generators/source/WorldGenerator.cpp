@@ -270,6 +270,7 @@ void WorldGenerator::generate_fixed_settlements(MapPtr map)
 {
   generate_Gnordvar(map);
   generate_Forest_of_Yew(map);
+  generate_Atua_Elar(map);
 }
 
 void WorldGenerator::generate_Gnordvar(MapPtr map)
@@ -395,6 +396,50 @@ void WorldGenerator::generate_Forest_of_Yew(MapPtr map)
 
   forest_tile = tg.generate(TILE_TYPE_FOREST);
   map->insert(height-37, width-19, forest_tile);
+}
+
+// Generate the home of the moutain elves.
+void WorldGenerator::generate_Atua_Elar(MapPtr map)
+{
+  // ^ ^
+  // ^o^
+  // ^^^
+  TileGenerator tg;
+  Dimensions dim = map->size();
+  int height = dim.get_y();
+
+  for (int current_height = height - 10; current_height < height - 5; current_height++)
+  {
+    for (int current_width = 16; current_width < 21; current_width++)
+    {
+      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
+      map->insert(current_height, current_width, sea_tile);
+    }
+  }
+
+  TilePtr mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(17, height - 9, mountain_tile);
+
+  // Open sea between the two mountains - that's the way into the settlement.
+
+  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(19, height - 9, mountain_tile);
+
+  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(17, height - 8, mountain_tile);
+  TilePtr atua_elar = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_MOUNTAINS);
+  atua_elar->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ATUA_ELAR);
+  atua_elar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_ATUA_ELAR);
+  map->insert(18, height - 8, atua_elar);
+  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(19, height - 8, mountain_tile);
+
+  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(17, height - 7, mountain_tile);
+  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(18, height - 7, mountain_tile);
+  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(19, height - 7, mountain_tile);
 }
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
