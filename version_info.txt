@@ -46,6 +46,9 @@ Savage Lands v0.1.9 "Osmund"
     for randomization.  The end result was that I ran into a spellbook
     called "the Isen Dun Chronicle".
 
+  - Haste could be stacked as many times as desired, halving the player's
+    speed each time.  This made the game kind of ridiculously easy.
+
 Savage Lands v0.1.8 "Aethelbert"
 - Version declared November 2, 2013.  Finalized November 27, 2013.
 
