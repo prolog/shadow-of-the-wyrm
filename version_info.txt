@@ -26,6 +26,8 @@ Savage Lands v0.1.9 "Osmund"
   particular damage type.  Crones now can potentially inflict all negative
   status ailments with each (piercing!) hit.
 
+- Started adding Atua-Elar, the ancient home of the mountain elves.
+
 - Bug fixes:
  
   - Fixed a number of places in the configuration XML where the
