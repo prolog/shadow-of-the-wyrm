@@ -575,6 +575,62 @@
 			</Skills>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
 		</Race>		
+		<Race id="_plant">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>PLANT_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>1</Agility>
+				<Health>10</Health>
+				<Intelligence>1</Intelligence>
+				<Willpower>1</Willpower>
+				<Charisma>1</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>		
 		<Race id="_undead">
 			<UserPlayable>0</UserPlayable>
 			<NameSID>UNDEAD_RACE_NAME</NameSID>
@@ -4034,6 +4090,77 @@
 				<Type>5</Type>
 			</Damage>
 			<Speed>65</Speed>
+		</Creature>
+		<Creature id="rock_crawler">
+			<RaceID>_insect</RaceID>
+			<ShortDescriptionSID>ROCK_CRAWLER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ROCK_CRAWLER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ROCK_CRAWLER_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>i</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>18</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>18</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>185</Exp>
+			</CreatureGeneration>
+			<Level>18</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>36</NumSides>
+				<Type>5</Type>
+			</Damage>
+			<Speed>57</Speed>
+		</Creature>
+		<Creature id="living_vines">
+			<RaceID>_plant</RaceID>
+			<ShortDescriptionSID>LIVING_VINES_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LIVING_VINES_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LIVING_VINES_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>v</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>19</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>19</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>210</Exp>
+			</CreatureGeneration>
+			<Level>19</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>38</NumSides>
+				<Type>2</Type>
+			</Damage>
 		</Creature>
 		<Creature id="thrall">
 			<RaceID>_corporeal_undead</RaceID>
