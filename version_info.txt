@@ -2,7 +2,8 @@ Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.
 
 - Added new creatures: quivering blob, giant frog, giant toad, crone,
-  shapeshifter, knight, crusader, naga, cave bear, sword-eater, squire.
+  shapeshifter, knight, crusader, naga, cave bear, sword-eater, squire,
+  rock crawler, living vines.
 
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
@@ -27,6 +28,8 @@ Savage Lands v0.1.9 "Osmund"
   status ailments with each (piercing!) hit.
 
 - Started adding Atua-Elar, the ancient home of the mountain elves.
+
+- Added new race, plant.
 
 - Bug fixes:
  
