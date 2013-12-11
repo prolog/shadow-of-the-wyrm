@@ -4162,6 +4162,45 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="witchthorn">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>WITCHTHORN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WITCHTHORN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WITCHTHORN_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>v</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>1</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="thrall">
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>THRALL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
