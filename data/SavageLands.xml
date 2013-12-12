@@ -4163,7 +4163,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="witchthorn">
-			<RaceID>_animal</RaceID>
+			<RaceID>_plant</RaceID>
 			<ShortDescriptionSID>WITCHTHORN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>WITCHTHORN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>WITCHTHORN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -4199,6 +4199,45 @@
 				<NumDice>1</NumDice>
 				<NumSides>4</NumSides>
 				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="treow">
+			<RaceID>_plant</RaceID>
+			<ShortDescriptionSID>TREOW_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TREOW_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TREOW_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>30</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>4000</Exp>
+			</CreatureGeneration>
+			<Level>30</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>60</NumSides>
+				<Type>2</Type>
 			</Damage>
 		</Creature>
 		<Creature id="thrall">
