@@ -3,7 +3,7 @@ Savage Lands v0.1.9 "Osmund"
 
 - Added new creatures: quivering blob, giant frog, giant toad, crone,
   shapeshifter, knight, crusader, naga, cave bear, sword-eater, squire,
-  rock crawler, living vines, witchthorn.
+  rock crawler, living vines, witchthorn, treow.
 
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
