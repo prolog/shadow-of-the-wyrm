@@ -31,7 +31,15 @@
 		<Col>75</Col>
 	</PlayerStart>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>kirin</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>48</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 	</InitialPlacements>
 	<Exits/>
 	<Features/>
