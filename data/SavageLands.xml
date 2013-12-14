@@ -4319,6 +4319,46 @@
 				<Type>3</Type>
 			</Damage>
 		</Creature>
+		<Creature id="wraith">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>WRAITH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WRAITH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WRAITH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WRAITH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>X</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>21</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>21</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>800</Exp>
+			</CreatureGeneration>
+			<Level>21</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>42</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
 		<Creature id="thrall">
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>THRALL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
