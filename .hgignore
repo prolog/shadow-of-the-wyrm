@@ -4,7 +4,10 @@ SavageLands.exp
 SavageLands.ilk
 SavageLands.lib
 SavageLands.pdb
-SavageLands*.suo
+SavageLands.suo
+SavageLands.v12.suo
+SavageLands.opensdf
+SavageLands.csv
 MapTester.exe
 MapTester.ilk
 MapTester.pdb
