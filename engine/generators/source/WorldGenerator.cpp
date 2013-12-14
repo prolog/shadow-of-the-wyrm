@@ -418,28 +418,28 @@ void WorldGenerator::generate_Atua_Elar(MapPtr map)
   }
 
   TilePtr mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(17, height - 9, mountain_tile);
+  map->insert(height - 9, 17, mountain_tile);
 
   // Open sea between the two mountains - that's the way into the settlement.
 
   mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(19, height - 9, mountain_tile);
+  map->insert(height - 9, 19, mountain_tile);
 
   mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(17, height - 8, mountain_tile);
+  map->insert(height - 8, 17, mountain_tile);
   TilePtr atua_elar = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_MOUNTAINS);
   atua_elar->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ATUA_ELAR);
   atua_elar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_ATUA_ELAR);
-  map->insert(18, height - 8, atua_elar);
+  map->insert(height - 8, 18, atua_elar);
   mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(19, height - 8, mountain_tile);
+  map->insert(height - 8, 19, mountain_tile);
 
   mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(17, height - 7, mountain_tile);
+  map->insert(height - 7, 17, mountain_tile);
   mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(18, height - 7, mountain_tile);
+  map->insert(height - 7, 18, mountain_tile);
   mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(19, height - 7, mountain_tile);
+  map->insert(height - 7, 19, mountain_tile);
 }
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
