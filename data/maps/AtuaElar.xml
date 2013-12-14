@@ -39,6 +39,13 @@
 					<Col>48</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>akkara</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>30</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 	</InitialPlacements>
 	<Exits/>
