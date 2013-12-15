@@ -935,7 +935,7 @@
 			</AgeInfo>
 			<RaceInitialStatistics>
 				<Strength>8</Strength>
-				<Dexterity>14</Dexterity>
+				<Dexterity>15</Dexterity>
 				<Agility>15</Agility>
 				<Health>7</Health>
 				<Intelligence>13</Intelligence>
@@ -1007,7 +1007,7 @@
 				<Dexterity>13</Dexterity>
 				<Agility>12</Agility>
 				<Health>10</Health>
-				<Intelligence>12</Intelligence>
+				<Intelligence>13</Intelligence>
 				<Willpower>12</Willpower>
 				<Charisma>9</Charisma>
 				<Speed>50</Speed>
@@ -4447,7 +4447,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>G</Symbol>
-				<Colour>4</Colour>
+				<Colour>8</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -7715,6 +7715,94 @@
 				<NumDice>1</NumDice>
 				<NumSides>40</NumSides>
 				<Type>9</Type>
+			</Damage>
+		</Creature>
+		<Creature id="mountain_elf_scholar">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>MOUNTAIN_ELF_SCHOLAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MOUNTAIN_ELF_SCHOLAR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MOUNTAIN_ELF_SCHOLAR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MOUNTAIN_ELF_SCHOLAR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>12</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>55</Exp>
+			</CreatureGeneration>
+			<Level>12</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>24</NumSides>
+				<Type>9</Type>
+			</Damage>
+		</Creature>
+		<Creature id="mountain_elf_youth">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>MOUNTAIN_ELF_YOUTH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MOUNTAIN_ELF_YOUTH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MOUNTAIN_ELF_YOUTH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MOUNTAIN_ELF_YOUTH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+				</HP>
+				<Exp>1</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>1</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="mountain_elf_brewer">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>MOUNTAIN_ELF_BREWER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MOUNTAIN_ELF_BREWER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MOUNTAIN_ELF_BREWER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MOUNTAIN_ELF_BREWER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>12</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>12</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>55</Exp>
+			</CreatureGeneration>
+			<Level>12</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>24</NumSides>
+				<Type>2</Type>
 			</Damage>
 		</Creature>
 		<Creature id="cougar">

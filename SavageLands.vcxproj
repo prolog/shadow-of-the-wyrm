@@ -768,6 +768,7 @@
     <ClInclude Include="world\seasons\include\Summer.hpp" />
     <ClInclude Include="world\seasons\include\Winter.hpp" />
     <ClInclude Include="world\tiles\features\include\Altar.hpp" />
+    <ClInclude Include="world\tiles\features\include\Barrel.hpp" />
     <ClInclude Include="world\tiles\features\include\Bench.hpp" />
     <ClInclude Include="world\tiles\features\include\DecorativeStatues.hpp" />
     <ClInclude Include="world\tiles\features\include\Door.hpp" />
@@ -2103,6 +2104,7 @@
     <ClCompile Include="world\source\World.cpp" />
     <ClCompile Include="world\source\WorldFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\Altar.cpp" />
+    <ClCompile Include="world\tiles\features\source\Barrel.cpp" />
     <ClCompile Include="world\tiles\features\source\Bench.cpp" />
     <ClCompile Include="world\tiles\features\source\DecorativeStatues.cpp" />
     <ClCompile Include="world\tiles\features\source\Door.cpp" />
@@ -2133,6 +2135,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Barrel_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Bench_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

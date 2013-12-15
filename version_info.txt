@@ -4,7 +4,8 @@ Savage Lands v0.1.9 "Osmund"
 - Added new creatures: quivering blob, giant frog, giant toad, crone,
   shapeshifter, knight, crusader, naga, cave bear, sword-eater, squire,
   rock crawler, living vines, witchthorn, treow, tangleweed, drakheen,
-  wraith, sorceror, wight, steel golem.
+  wraith, sorceror, wight, steel golem, Kirin, Akkara, mountain elf
+  scholar, mountain elf youth, mountain elf brewer.
 
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
@@ -32,6 +33,9 @@ Savage Lands v0.1.9 "Osmund"
 
 - Added new race, plant.
 
+- Created a new feature type, Barrel, and added a couple to the brewery
+  in Atua-Elar.
+  
 - Bug fixes:
  
   - Fixed a number of places in the configuration XML where the
