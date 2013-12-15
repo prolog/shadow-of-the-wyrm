@@ -1,5 +1,6 @@
 #include <string>
 #include "AlignmentEnums.hpp"
+#include "Barrel.hpp"
 #include "EntranceTypes.hpp"
 #include "FeatureGenerator.hpp"
 #include "XMLMapFeatureFactory.hpp"
@@ -26,6 +27,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     {
       feature = create_altar(feature_node);
     }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Barrel")).is_null())
+    {
+      feature = create_barrel(feature_node);
+    }
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Door")).is_null())
     {
       feature = create_door(feature_node);
@@ -51,6 +56,17 @@ FeaturePtr XMLMapFeatureFactory::create_altar(const XMLNode& altar_node)
 
   FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, alignment);
   return altar;
+}
+
+// Create a barrel, reading in the information about the liquid stored within,
+// if applicable.
+FeaturePtr XMLMapFeatureFactory::create_barrel(const XMLNode& barrel_node)
+{
+  FeaturePtr barrel = std::make_shared<Barrel>();
+
+  // ...
+
+  return barrel;
 }
 
 // Create a door, reading in its material, entrance state, key info, etc., from the XML.
