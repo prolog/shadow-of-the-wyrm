@@ -33,6 +33,14 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>gnomish_sailor</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>29</Col>
+				</Coord>
+				<Friendly>1</Friendly>
+			</Placement>
+			<Placement>
 				<ID>gnome</ID>
 				<Coord>
 					<Row>3</Row>
