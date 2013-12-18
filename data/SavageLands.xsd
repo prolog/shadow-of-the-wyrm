@@ -304,6 +304,7 @@
 		<xs:sequence>
 			<xs:element name="RaceID" type="tns:Identifier" minOccurs="0"/>
 			<xs:element name="ClassID" type="tns:Identifier" minOccurs="0"/>
+			<xs:element name="BreatheType" type="tns:BreatheType" minOccurs="0"/>
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="TextDetailsSID" type="xs:string"/>
@@ -1254,6 +1255,13 @@
 		<xs:enumeration value="_spellb"/>
 		<xs:enumeration value="_blind"/>
 		<xs:enumeration value="_incorp"/>
+	</xs:restriction>
+</xs:simpleType>
+<!-- See CreatureFeatures.hpp -->
+<xs:simpleType name="BreatheType">
+	<xs:restriction base="xs:integer">
+		<xs:enumeration value="0"/>
+		<xs:enumeration value="1"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>

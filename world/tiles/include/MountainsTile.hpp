@@ -6,7 +6,7 @@ class MountainsTile : public WorldMapTile
   public:
     TileType get_tile_type() const override;
     std::string get_tile_description_sid() const override;
-    bool get_dangerous() const override;
+    bool get_dangerous(CreaturePtr creature) const override;
     std::string get_danger_confirmation_sid() const override;
 
     virtual Tile* clone() override;

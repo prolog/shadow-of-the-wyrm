@@ -292,7 +292,7 @@ TileExitMap& Tile::get_tile_exit_map_ref()
   return map_exits;
 }
 
-bool Tile::get_dangerous() const
+bool Tile::get_dangerous(CreaturePtr creature) const
 {
   return false;
 }

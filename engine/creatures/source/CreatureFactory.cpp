@@ -126,6 +126,7 @@ void CreatureFactory::revert_to_original_configuration_values(CreaturePtr creatu
     creature->set_short_description_sid(creature_instance.get_short_description_sid());
     creature->set_description_sid(creature_instance.get_description_sid());
     creature->set_speech_text_sid(creature_instance.get_speech_text_sid());
+    creature->set_breathes(creature_instance.get_breathes());
     creature->set_decision_strategy(template_decision_strategy);
     creature->set_level(creature_instance.get_level());
     creature->set_base_damage(creature_instance.get_base_damage());
