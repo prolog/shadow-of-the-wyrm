@@ -89,6 +89,9 @@ class Creature : public ISerializable
     Handedness get_handedness() const;
     Handedness get_off_handedness() const;
     
+    void set_breathes(const BreatheType new_breathes);
+    BreatheType get_breathes() const;
+
     // Set/Get race and class identifiers
     void set_race_id(const std::string& new_race_id);
     std::string get_race_id() const;
@@ -277,7 +280,8 @@ class Creature : public ISerializable
     EyeColour eye_colour;
     HairColour hair_colour;
     Handedness handedness;
-    
+    BreatheType breathes;
+
     std::string short_description_sid;
     std::string description_sid;
     std::string text_details_sid;

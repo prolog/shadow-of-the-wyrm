@@ -13,7 +13,7 @@ std::string MountainsTile::get_tile_description_sid() const
   return TileTextKeys::TILE_DESC_MOUNTAINS;
 }
 
-bool MountainsTile::get_dangerous() const
+bool MountainsTile::get_dangerous(CreaturePtr creature) const
 {
   return true;
 }

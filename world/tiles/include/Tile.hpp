@@ -88,7 +88,7 @@ class Tile : public ISerializable
     
     virtual TileExitMap& get_tile_exit_map_ref();
     
-    virtual bool get_dangerous() const;
+    virtual bool get_dangerous(std::shared_ptr<Creature> creature) const;
     virtual std::string get_danger_confirmation_sid() const;
     
     virtual bool serialize(std::ostream& stream) const override;

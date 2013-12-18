@@ -43,6 +43,12 @@ enum Handedness
   LEFT_HANDED = 5
 };
 
+enum BreatheType
+{
+  BREATHE_TYPE_AIR = 0,
+  BREATHE_TYPE_WATER = 1
+};
+
 class CreatureConstants
 {
   public:

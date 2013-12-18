@@ -63,6 +63,11 @@ pair<CreaturePtr, CreatureGenerationValues> XMLCreaturesReader::parse_creature(c
     // Creature's class.
     string class_id = XMLUtils::get_child_node_value(creature_node, "ClassID");
     creature->set_class_id(class_id);
+
+    // Whether the creature breathes air, or water.
+    BreatheType breathes = static_cast<BreatheType>(XMLUtils::get_child_node_int_value(creature_node, "BreatheType"));
+
+    creature->set_breathes(breathes);
     
     // Typically a single word or phrase: bat, orc child, troll pedestrian, etc.
     string short_description_sid = XMLUtils::get_child_node_value(creature_node, "ShortDescriptionSID");

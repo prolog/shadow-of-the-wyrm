@@ -4,11 +4,12 @@
 const int SwimmingCalculator::MAXIMUM_SWIMMING_TIME_MULTIPLIER = 6;
 const float SwimmingCalculator::SWIMMING_DAMAGE_MAX_HP_MULTIPLIER = 0.10f;
 
-int SwimmingCalculator::calculate_maximum_swimming_time(const int swimming_skill_value, const bool is_incorporeal) const
+int SwimmingCalculator::calculate_maximum_swimming_time(const int swimming_skill_value, const bool is_incorporeal, const BreatheType breathes) const
 {
   int max_swimming_time = swimming_skill_value * MAXIMUM_SWIMMING_TIME_MULTIPLIER;
 
-  if (is_incorporeal)
+  // Spirits and water-breathers clearly can do this for a while.
+  if (is_incorporeal || (breathes == BREATHE_TYPE_WATER))
   {
     max_swimming_time = std::numeric_limits<int>::max();
   }
