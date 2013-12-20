@@ -6,7 +6,7 @@ Savage Lands v0.1.9 "Osmund"
   rock crawler, living vines, witchthorn, treow, tangleweed, drakheen,
   wraith, sorceror, wight, steel golem, Kirin, Akkara, mountain elf
   scholar, mountain elf youth, mountain elf brewer, Tir, gnomish sailor,
-  silver fish, jellyfish.
+  silver fish, jellyfish, swordfish, merman.
 
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.

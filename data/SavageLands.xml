@@ -6665,7 +6665,7 @@
 					<NumDice>5</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>2</Exp>
+				<Exp>5</Exp>
 			</CreatureGeneration>
 			<Level>5</Level>
 			<Damage>
@@ -7099,6 +7099,70 @@
 				<Type>6</Type>
 			</Damage>
 			<Speed>60</Speed>
+		</Creature>
+		<Creature id="swordfish">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>SWORDFISH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SWORDFISH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SWORDFISH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SWORDFISH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>f</Symbol>
+				<Colour>4</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>5</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>5</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>5</Exp>
+			</CreatureGeneration>
+			<Level>5</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>10</NumSides>
+				<Type>0</Type>
+			</Damage>
+		</Creature>
+		<Creature id="merman">
+			<RaceID>_humanoid</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>MERMAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MERMAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MERMAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MERMAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>m</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>7</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>7</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>20</Exp>
+			</CreatureGeneration>
+			<Level>7</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>14</NumSides>
+				<Type>1</Type>
+			</Damage>
 		</Creature>
 		<Creature id="rook">
 			<RaceID>_animal</RaceID>
@@ -8811,7 +8875,7 @@
 					<NumDice>5</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>2</Exp>
+				<Exp>4</Exp>
 			</CreatureGeneration>
 			<Level>5</Level>
 			<Damage>
@@ -8845,7 +8909,7 @@
 					<NumDice>5</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>2</Exp>
+				<Exp>5</Exp>
 			</CreatureGeneration>
 			<Level>5</Level>
 			<Damage>
@@ -9263,7 +9327,7 @@
 					<NumDice>7</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>120</Exp>
+				<Exp>80</Exp>
 			</CreatureGeneration>
 			<Level>7</Level>
 			<Damage>
@@ -9667,7 +9731,7 @@
 					<NumDice>5</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>20</Exp>
+				<Exp>5</Exp>
 			</CreatureGeneration>
 			<Level>5</Level>
 			<Damage>
