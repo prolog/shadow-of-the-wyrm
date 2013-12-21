@@ -347,7 +347,7 @@ bool Item::get_item_identified() const
 
   if (!identified)
   {
-    identified = unidentified_description_sid.empty();
+    identified = (unidentified_description_sid == description_sid);
   }
 
   return identified;
