@@ -14,7 +14,7 @@ Feature* Fountain::clone()
   return new Fountain(*this);
 }
 
-bool Fountain::handle()
+bool Fountain::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
 {
   return true;
 }

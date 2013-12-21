@@ -29,7 +29,7 @@ Feature* Sarcophagus::clone()
   return new Sarcophagus(*this);
 }
 
-bool Sarcophagus::handle()
+bool Sarcophagus::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
 {
   return true;
 }

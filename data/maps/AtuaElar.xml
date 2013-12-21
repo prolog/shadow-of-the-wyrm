@@ -103,14 +103,20 @@
 				<Row>12</Row>
 				<Col>73</Col>
 			</Coord>
-			<Barrel/>
+			<Barrel>
+				<Tap>1</Tap>
+				<Pour>dram_gin</Pour>
+			</Barrel>
 		</FeaturePlacement>
 		<FeaturePlacement>
 			<Coord>
 				<Row>12</Row>
 				<Col>77</Col>
 			</Coord>
-			<Barrel/>
+			<Barrel>
+				<Tap>1</Tap>
+				<Pour>dram_mead</Pour>
+			</Barrel>
 		</FeaturePlacement>
 	</Features>
 </CustomMap>

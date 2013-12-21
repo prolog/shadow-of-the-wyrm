@@ -11,7 +11,7 @@ Feature* Bench::clone()
   return new Bench(*this);
 }
 
-bool Bench::handle()
+bool Bench::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
 {
   return true;
 }

@@ -6,7 +6,7 @@ Savage Lands v0.1.9 "Osmund"
   rock crawler, living vines, witchthorn, treow, tangleweed, drakheen,
   wraith, sorceror, wight, steel golem, Kirin, Akkara, mountain elf
   scholar, mountain elf youth, mountain elf brewer, Tir, gnomish sailor,
-  silver fish, jellyfish, swordfish, merman.
+  silver fish, jellyfish, swordfish, merman, electric eel.
 
 - Updated the creature describer, used by the look command, to return a
   status synopsis when looking at the creature.
@@ -35,7 +35,8 @@ Savage Lands v0.1.9 "Osmund"
 - Added new race, plant.
 
 - Created a new feature type, Barrel, and added a couple to the brewery
-  in Atua-Elar.
+  in Atua-Elar.  Added the ability for a barrel to have a tap and
+  an item associated with them (i.e., work the tap, get a beer).
 
 - Added a "breathes" flag to differentiate air- and water-breathers.  Set
   the water-breather flag for the appropriate creatures.

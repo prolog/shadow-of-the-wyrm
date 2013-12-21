@@ -19,7 +19,7 @@ Feature* Door::clone()
   return new Door(*this);
 }
 
-bool Door::handle()
+bool Door::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
 {
   bool result = false;
 

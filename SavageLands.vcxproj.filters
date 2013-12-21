@@ -5427,10 +5427,10 @@
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\Barrel.cpp">
-      <Filter>Source Files\world\tiles\source</Filter>
+      <Filter>Source Files\world\tiles\features\source</Filter>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Barrel_test.cpp">
-      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -7,6 +7,9 @@
 #include "Material.hpp"
 #include "ISerializable.hpp"
 
+class Tile;
+class Creature;
+
 // An abstract base class representing a dungeon feature.  A feature is
 // like an item, but cannot move.  Examples include fireplaces, thrones,
 // bookshelves, levers, etc.
@@ -56,7 +59,14 @@ class Feature : public ISerializable
     // Can the feature be handled, given whether the tile it is on is
     // currently occupied?
     virtual bool can_handle(const bool feature_tile_occupied) const;
-    virtual bool handle() = 0;
+
+    // Handling a feature can affect the tile on which the feature is present,
+    // so include that as a parameter.  Include the creature so that if a message
+    // is added (e.g., "You pour yourself a drink!" or "The goblin pours himself
+    // a drink!"), the correct message can be added based on the creature, and
+    // whether the creature is the player or not.
+    virtual bool handle(std::shared_ptr<Tile> tile, std::shared_ptr<Creature> creature) = 0;
+
     // Potential handle message for the current feature.
     // By default, returns the empty SID.
     virtual std::string get_handle_message_sid() const;

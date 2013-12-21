@@ -15,7 +15,7 @@ Feature* Pew::clone()
 }
 
 // Sit or stand, depending on the creature's current state.
-bool Pew::handle()
+bool Pew::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
 {
   return true;
 }
