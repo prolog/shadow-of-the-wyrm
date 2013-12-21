@@ -42,7 +42,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
     if (item)
     {
       ItemType item_type = item->get_type();
-      
+
       if ((type_inclusion[item_type] == true) && (!ii.get_item_identified(item->get_base_id())))
       {
         details_tuple unidentified_desc_sids_and_colour = make_tuple(item->get_unidentified_description_sid(), item->get_unidentified_usage_description_sid(), item->get_colour());
