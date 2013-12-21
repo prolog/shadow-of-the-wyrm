@@ -27,7 +27,7 @@ bool Altar::can_offer() const
   return true;
 }
 
-bool Altar::handle()
+bool Altar::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
 {
   return offer();
 }

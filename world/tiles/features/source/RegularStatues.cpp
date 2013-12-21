@@ -14,7 +14,7 @@ bool RegularStatue::kick()
   return true;
 }
 
-bool RegularStatue::handle()
+bool RegularStatue::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
 {
   return true;
 }

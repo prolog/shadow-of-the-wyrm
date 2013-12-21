@@ -13,7 +13,7 @@ Feature* FirePillar::clone()
   return new FirePillar(*this);
 }
 
-bool FirePillar::handle()
+bool FirePillar::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
 {
   return true;
 }

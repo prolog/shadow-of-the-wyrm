@@ -46,7 +46,7 @@ ActionCostValue FeatureAction::apply(CreaturePtr creature)
     {
       TilePtr tile = features.begin()->second;
       FeaturePtr feature = tile->get_feature();
-      handled = handle(feature, creature, tile->get_creature() != nullptr);
+      handled = handle(tile, feature, creature, tile->get_creature() != nullptr);
     }
     else
     {
@@ -91,7 +91,7 @@ void FeatureAction::send_application_messages(CreaturePtr creature)
 }
 
 // Handle a particular terrain feature
-bool FeatureAction::handle(FeaturePtr feature, CreaturePtr creature, const bool tile_has_creature)
+bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creature, const bool tile_has_creature)
 {
   bool result = false;
 
@@ -110,7 +110,7 @@ bool FeatureAction::handle(FeaturePtr feature, CreaturePtr creature, const bool 
 
     if (feature_locked == false || creature_unlocked_lock)
     {
-      result = feature->handle();
+      result = feature->handle(tile, creature);
 
       if (result)
       {
@@ -193,7 +193,7 @@ bool FeatureAction::apply_multiple_options(CreaturePtr creature, const TileDirec
       {
         TilePtr tile = t_it->second;
         FeaturePtr feature = tile->get_feature();
-        applied = handle(feature, creature, tile->get_creature() != nullptr);
+        applied = handle(tile, feature, creature, tile->get_creature() != nullptr);
       }
     }
   }

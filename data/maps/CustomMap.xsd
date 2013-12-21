@@ -86,6 +86,7 @@
 		<xs:element name="Coord" type="tns:Coord"/>
 		<xs:choice>
 			<xs:element name="Altar" type="tns:Altar"/>
+			<xs:element name="Barrel" type="tns:Barrel"/>
 			<xs:element name="Door" type="tns:Door"/>
 			<xs:element name="Pew" type="tns:Pew"/>
 			<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
@@ -97,6 +98,13 @@
 	<xs:sequence>
 		<xs:element name="DeityID" type="xs:string"/>
 		<xs:element name="Alignment" type="tns:AlignmentRange"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Barrel">
+	<xs:annotation><xs:documentation>Defines a Barrel feature.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Tap" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="Pour" type="xs:string" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Door">
