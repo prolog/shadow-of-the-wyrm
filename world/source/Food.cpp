@@ -3,14 +3,14 @@
 using namespace std;
 
 Food::Food()
-: Consumable(100)
+: Consumable(100,0)
 {
   type = ITEM_TYPE_FOOD;
   symbol = '%';
 }
 
 Food::Food(const int nutr)
-: Consumable(nutr)
+: Consumable(nutr,0)
 {
   type = ITEM_TYPE_FOOD;
   symbol = '%';

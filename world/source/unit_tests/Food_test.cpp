@@ -12,6 +12,7 @@ TEST(SL_World_Food, saveload)
   Food food, food2;
 
   food.set_material_type(MATERIAL_TYPE_PAPER); // Well...whatever.
+  food.set_standard_drinks(3.1415f);
 
   ostringstream ss;
 

@@ -12784,6 +12784,7 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Nutrition>0</Nutrition>
+				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
 			<Potion id="dram_mead">
@@ -12800,6 +12801,7 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Nutrition>0</Nutrition>
+				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
 			<Potion id="healing_potion">

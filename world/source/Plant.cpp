@@ -3,14 +3,14 @@
 using namespace std;
 
 Plant::Plant()
-: Consumable(20)
+: Consumable(20,0)
 {
   type = ITEM_TYPE_PLANT;
   symbol = 'w';
 }
 
 Plant::Plant(const int new_nutrition)
-: Consumable(new_nutrition)
+: Consumable(new_nutrition,0)
 {
   type = ITEM_TYPE_PLANT;
   symbol = 'w';
