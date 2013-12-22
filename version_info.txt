@@ -43,7 +43,11 @@ Savage Lands v0.1.9 "Osmund"
 
 - Added a "breathes" flag to differentiate air- and water-breathers.  Set
   the water-breather flag for the appropriate creatures.
-    
+
+- Added a blood structure to each creature, and the amount of alcohol
+  consumed/absorbed/released is tracked over time, with blood alcohol
+  content measured.
+   
 - Bug fixes:
  
   - Fixed a number of places in the configuration XML where the

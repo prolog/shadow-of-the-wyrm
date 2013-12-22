@@ -47,6 +47,8 @@ bool Blood::operator==(const Blood& b) const
 
 void Blood::initialize_litres_by_size_map()
 {
+  static_assert(CREATURE_SIZE_LAST == 6, "Creature size needs to be added to map containing litres of blood by size.");
+
   litres_by_size_map.empty();
 
   litres_by_size_map = std::unordered_map<CreatureSize, float>{ 
