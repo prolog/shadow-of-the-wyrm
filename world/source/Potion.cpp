@@ -4,8 +4,9 @@
 using namespace std;
 
 // Potions will provide a bit of nutrition.
+// By default, they're not alcoholic.
 Potion::Potion()
-: Consumable(50), has_damage(false)
+: Consumable(50,0), has_damage(false)
 {
   type = ITEM_TYPE_POTION;
   symbol = '!';

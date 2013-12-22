@@ -736,6 +736,12 @@
 		<xs:extension base="tns:Item">
 			<xs:sequence>
 				<xs:element name="Nutrition" type="xs:unsignedInt"/>
+				<!-- StandardDrink is used generally for potions.  But then
+					 I thought, what if Bork the Mighty made his porridge
+					 with beer instead of water?  So I allowed food to be
+					 alcoholic as well. 1 std drink = 0.6 fl oz of pure
+					 alcohol (Canada/US definition) -->
+				<xs:element name="StandardDrinks" type="xs:float" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>

@@ -242,6 +242,40 @@ void Serialize::read_ulonglong(istream& stream, unsigned long long& val)
   }
 }
 
+// Write/read floating point values.
+void Serialize::write_float(ostream& stream, const float val)
+{
+  if (stream.good())
+  {
+    stream.write((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not write double");
+    throw stream_error;
+  }
+}
+
+void Serialize::read_float(istream& stream, float& val)
+{
+  if (stream.good())
+  {
+    stream.read((char*)&val, sizeof(val));
+  }
+  else
+  {
+    SerializationException stream_error("Could not read float");
+    throw stream_error;
+  }
+
+  if (stream.fail())
+  {
+    SerializationException stream_error("Could not read float");
+    throw stream_error;
+  }
+}
+
+
 // Write a double value.
 void Serialize::write_double(ostream& stream, const double val)
 {

@@ -30,6 +30,9 @@ class Serialize
     static void write_ulonglong(std::ostream& stream, const unsigned long long val);
     static void read_ulonglong(std::istream& stream, unsigned long long& val);
 
+    static void write_float(std::ostream& stream, const float val);
+    static void read_float(std::istream& stream, float& val);
+
     static void write_double(std::ostream& stream, const double val);
     static void read_double(std::istream& stream, double& val);
 
