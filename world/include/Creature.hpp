@@ -2,6 +2,7 @@
 #include <string>
 #include <memory>
 #include "AutomaticMovement.hpp"
+#include "Blood.hpp"
 #include "BoolStatistic.hpp"
 #include "common.hpp"
 #include "Colours.hpp"
@@ -91,6 +92,14 @@ class Creature : public ISerializable
     
     void set_breathes(const BreatheType new_breathes);
     BreatheType get_breathes() const;
+
+    void set_blood(const Blood& new_blood);
+    Blood get_blood() const;
+    Blood& get_blood_ref();
+
+    void increment_grams_unabsorbed_alcohol(const float additional_grams_unabsorbed_alcohol);
+    void set_grams_unabsorbed_alcohol(const float new_grams_unabsorbed_alcohol);
+    float get_grams_unabsorbed_alcohol() const;
 
     // Set/Get race and class identifiers
     void set_race_id(const std::string& new_race_id);
@@ -281,6 +290,8 @@ class Creature : public ISerializable
     HairColour hair_colour;
     Handedness handedness;
     BreatheType breathes;
+    Blood blood;
+    float grams_unabsorbed_alcohol;
 
     std::string short_description_sid;
     std::string description_sid;

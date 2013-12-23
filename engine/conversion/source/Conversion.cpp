@@ -426,6 +426,25 @@ HungerLevel HungerLevelConverter::to_hunger_level(const int hunger)
   return hunger_level;
 }
 
+// Alcohol conversion routines!  The sign that my roguelike has gone off
+// the rails.
+//
+// Using the Canadian/US standard drink of 13.6g/std_drink
+const float AlcoholConverter::GRAMS_PER_STANDARD_DRINK = 13.6;
+
+AlcoholConverter::AlcoholConverter()
+{
+}
+
+AlcoholConverter::~AlcoholConverter()
+{
+}
+
+float AlcoholConverter::standard_drinks_to_grams(const float std_drinks)
+{
+  return std_drinks * GRAMS_PER_STANDARD_DRINK;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Conversion_test.cpp"
 #endif

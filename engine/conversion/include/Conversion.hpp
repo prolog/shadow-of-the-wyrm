@@ -165,3 +165,15 @@ class HungerLevelConverter
     HungerLevelConverter();
     ~HungerLevelConverter();
 };
+
+class AlcoholConverter
+{
+  public:
+    static const float GRAMS_PER_STANDARD_DRINK;
+
+    static float standard_drinks_to_grams(const float std_drinks);
+
+  protected:
+    AlcoholConverter();
+    ~AlcoholConverter();
+};
