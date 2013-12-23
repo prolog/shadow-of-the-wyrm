@@ -17,6 +17,7 @@ Creature::Creature()
 , hair_colour(HAIR_COLOUR_BLACK)
 , handedness(RIGHT_HANDED)
 , breathes(BREATHE_TYPE_AIR)
+, grams_unabsorbed_alcohol(0)
 , symbol('?')
 , colour(COLOUR_WHITE)
 , experience_value(0)
@@ -53,6 +54,8 @@ Creature::Creature(const Creature& cr)
   hair_colour = cr.hair_colour;
   handedness = cr.handedness;
   breathes = cr.breathes;
+  blood = cr.blood;
+  grams_unabsorbed_alcohol = cr.grams_unabsorbed_alcohol;
   short_description_sid = cr.short_description_sid;
   description_sid = cr.description_sid;
   text_details_sid = cr.text_details_sid;
@@ -130,6 +133,8 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (hair_colour == cr.hair_colour);
   result = result && (handedness == cr.handedness);
   result = result && (breathes == cr.breathes);
+  result = result && (blood == cr.blood);
+  result = result && (grams_unabsorbed_alcohol == cr.grams_unabsorbed_alcohol);
   result = result && (short_description_sid == cr.short_description_sid);
   result = result && (description_sid == cr.description_sid);
   result = result && (text_details_sid == cr.text_details_sid);
@@ -352,6 +357,36 @@ void Creature::set_breathes(const BreatheType new_breathes)
 BreatheType Creature::get_breathes() const
 {
   return breathes;
+}
+
+void Creature::set_blood(const Blood& new_blood)
+{
+  blood = new_blood;
+}
+
+Blood Creature::get_blood() const
+{
+  return blood;
+}
+
+Blood& Creature::get_blood_ref()
+{
+  return blood;
+}
+
+void Creature::increment_grams_unabsorbed_alcohol(const float addl_grams)
+{
+  grams_unabsorbed_alcohol += addl_grams;
+}
+
+void Creature::set_grams_unabsorbed_alcohol(const float new_grams_unabsorbed_alcohol)
+{
+  grams_unabsorbed_alcohol = new_grams_unabsorbed_alcohol;
+}
+
+float Creature::get_grams_unabsorbed_alcohol() const
+{
+  return grams_unabsorbed_alcohol;
 }
 
 void Creature::set_race_id(const string& new_race_id)
@@ -942,7 +977,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 832, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 848, "Unexpected sizeof Creature.");
     #else
     // Release
 	static_assert(sizeof(*this) == 872, "Unexpected sizeof Creature.");
@@ -966,6 +1001,8 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->hair_colour, cr.hair_colour);
   std::swap(this->handedness, cr.handedness);
   std::swap(this->breathes, cr.breathes);
+  std::swap(this->blood, cr.blood);
+  std::swap(this->grams_unabsorbed_alcohol, cr.grams_unabsorbed_alcohol);
   std::swap(this->short_description_sid, cr.short_description_sid);
   std::swap(this->description_sid, cr.description_sid);
   std::swap(this->text_details_sid, cr.text_details_sid);
@@ -1023,6 +1060,8 @@ bool Creature::serialize(ostream& stream) const
   Serialize::write_enum(stream, hair_colour);
   Serialize::write_enum(stream, handedness);
   Serialize::write_enum(stream, breathes);
+  blood.serialize(stream);
+  Serialize::write_float(stream, grams_unabsorbed_alcohol);
 
   Serialize::write_string(stream, short_description_sid);
   Serialize::write_string(stream, description_sid);
@@ -1144,6 +1183,8 @@ bool Creature::deserialize(istream& stream)
   Serialize::read_enum(stream, hair_colour);
   Serialize::read_enum(stream, handedness);
   Serialize::read_enum(stream, breathes);
+  blood.deserialize(stream);
+  Serialize::read_float(stream, grams_unabsorbed_alcohol);
 
   Serialize::read_string(stream, short_description_sid);
   Serialize::read_string(stream, description_sid);

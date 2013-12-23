@@ -120,3 +120,10 @@ TEST(SL_Engine_ConversionRoutines, raw_hunger_to_hunger_level)
   EXPECT_EQ(HUNGER_LEVEL_STARVING, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_STARVING));
   EXPECT_EQ(HUNGER_LEVEL_DYING, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_DYING));
 }
+
+TEST(SL_Engine_ConversionRoutines, grams_per_standard_drink)
+{
+  EXPECT_FLOAT_EQ(13.6f, AlcoholConverter::standard_drinks_to_grams(1.0f));
+  EXPECT_FLOAT_EQ(27.2f, AlcoholConverter::standard_drinks_to_grams(2.0f));
+  EXPECT_FLOAT_EQ(34.0f, AlcoholConverter::standard_drinks_to_grams(2.5f));
+}

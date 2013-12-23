@@ -1,9 +1,9 @@
 #pragma once
 #include "XMLDataStructures.hpp"
-#include "XMLItemReader.hpp"
+#include "XMLConsumableReader.hpp"
 #include "Potion.hpp"
 
-class XMLPotionReader : public XMLItemReader
+class XMLPotionReader : public XMLConsumableReader
 {
   public:
     XMLPotionReader();
