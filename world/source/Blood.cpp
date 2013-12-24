@@ -71,6 +71,25 @@ float Blood::get_litres() const
   return litres;
 }
 
+void Blood::increment_grams_alcohol(const float incr_amount)
+{
+  grams_alcohol += incr_amount;
+}
+
+void Blood::decrement_grams_alcohol(const float decr_amount)
+{
+  float grams_decr = grams_alcohol - decr_amount;
+
+  if (grams_decr > 0)
+  {
+    grams_alcohol = grams_decr;
+  }
+  else
+  {
+    grams_alcohol = 0;
+  }
+}
+
 void Blood::set_grams_alcohol(const float new_grams_alcohol)
 {
   grams_alcohol = new_grams_alcohol;
@@ -85,8 +104,11 @@ float Blood::get_grams_alcohol() const
 // BAC is defined to be the number of grams of alcohol present in 100mL of blood.
 void Blood::calculate_blood_alcohol_content()
 {
-  float grams_per_millilitre = (grams_alcohol / litres) / 1000;
-  blood_alcohol_content = grams_per_millilitre * 100;
+  if (litres > 0)
+  {
+    float grams_per_millilitre = (grams_alcohol / litres) / 1000;
+    blood_alcohol_content = grams_per_millilitre * 100;
+  }
 }
 
 float Blood::get_blood_alcohol_content() const
