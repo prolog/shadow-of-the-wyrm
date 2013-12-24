@@ -21,6 +21,8 @@ class Blood : public ISerializable
     void set_litres(const float new_litres);
     float get_litres() const;
 
+    void increment_grams_alcohol(const float incr_amount);
+    void decrement_grams_alcohol(const float decr_amount);
     void set_grams_alcohol(const float new_grams_alcohol);
     float get_grams_alcohol() const;
 
