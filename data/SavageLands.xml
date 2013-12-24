@@ -7263,6 +7263,38 @@
 				<Type>4</Type>
 			</Damage>
 		</Creature>
+		<Creature id="giant_crab">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>GIANT_CRAB_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GIANT_CRAB_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GIANT_CRAB_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GIANT_CRAB_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>C</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>15</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>15</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>43</Exp>
+			</CreatureGeneration>
+			<Level>15</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>30</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="rook">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>ROOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
