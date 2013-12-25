@@ -94,7 +94,7 @@ string ActionCoordinator::get_next_creature_id() const
 
 // Get the cost of the next action - used to determine how much
 // to increment the world's calendar by, among other things.
-ActionCost ActionCoordinator::get_next_action_cost() const
+ActionCost ActionCoordinator::get_current_action_cost() const
 {
   ActionCost next_action_cost;
   

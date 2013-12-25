@@ -7,7 +7,7 @@ Savage Lands v0.1.9 "Osmund"
   wraith, sorceror, wight, steel golem, Kirin, Akkara, mountain elf
   scholar, mountain elf youth, mountain elf brewer, Tir, gnomish sailor,
   silver fish, jellyfish, swordfish, merman, electric eel, squid, mermaid,
-  giant crab.
+  giant crab, grey octopus.
 
 - Added new items: drams of gin and mead, which are contained in the
   barrels of the brewery of Atua-Elar.
@@ -79,6 +79,13 @@ Savage Lands v0.1.9 "Osmund"
   - The XMLPotionReader (XML integration) was deriving from XMLItemReader, 
     not XMLConsumableReader, so the number of standard drinks wasn't being
     read correctly for potions, among other things.
+
+  - The code responsible for adding a creature's action to the action
+    coordinator was adding it before the current turn's value, which
+    ultimately prevented a summoned creature from being able to act
+    (since when the "lowest value" was removed from the map and the
+    others updated, it was the summoned creature's turn that was removed,
+    not the current creature's turn).
 
 Savage Lands v0.1.8 "Aethelbert"
 - Version declared November 2, 2013.  Finalized November 27, 2013.

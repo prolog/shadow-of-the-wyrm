@@ -296,7 +296,7 @@ void Game::go()
       map_creatures = current_map->get_creatures();
 
       CreaturePtr current_creature;
-      ActionCost next_action_cost = ac.get_next_action_cost();
+      ActionCost next_action_cost = ac.get_current_action_cost();
       string creature_id = ac.get_next_creature_id();      
       map<string, CreaturePtr>::iterator c_it = map_creatures.find(creature_id);
 

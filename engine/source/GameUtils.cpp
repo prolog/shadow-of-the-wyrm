@@ -23,8 +23,11 @@ void GameUtils::add_new_creature_to_map(Game& game, CreaturePtr new_creature, Ma
 
   if (map->get_map_id() == game_current_map->get_map_id())
   {
-    ActionCost cost;
-    cost.set_cost(1);
+    ActionCoordinator& ac = game.get_action_coordinator_ref();
+    ActionCost cost = ac.get_current_action_cost();
+    cost.set_cost(cost.get_cost() + 1);
+
+    // Set the action cost to one more than the current.
     game.get_action_coordinator_ref().add(cost, new_creature->get_id());
   }
 }
