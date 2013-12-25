@@ -7330,6 +7330,39 @@
 				</StatusAilments>
 			</Damage>
 		</Creature>
+		<Creature id="blackfin_shark">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>BLACKFIN_SHARK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLACKFIN_SHARK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLACKFIN_SHARK_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BLACKFIN_SHARK_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>S</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>19</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>19</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>210</Exp>
+			</CreatureGeneration>
+			<Level>19</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>38</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Soak>4</Soak>
+		</Creature>
 		<Creature id="rook">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>ROOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
