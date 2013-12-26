@@ -7363,6 +7363,39 @@
 			</Damage>
 			<Soak>4</Soak>
 		</Creature>
+		<Creature id="wraith_jellyfish">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>WRAITH_JELLYFISH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WRAITH_JELLYFISH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WRAITH_JELLYFISH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WRAITH_JELLYFISH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>j</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>21</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>21</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>800</Exp>
+			</CreatureGeneration>
+			<Level>21</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>42</NumSides>
+				<Type>10</Type>
+			</Damage>
+			<Speed>62</Speed>
+		</Creature>
 		<Creature id="rook">
 			<RaceID>_animal</RaceID>
 			<ShortDescriptionSID>ROOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
