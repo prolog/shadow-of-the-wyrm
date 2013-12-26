@@ -1,1 +1,1 @@
-dir/s *.cpp *.hpp *.ini *.xsd *.xml *.lua *.py
+dir/s *.cpp *.hpp *.ini *.xsd *.xml *.lua *.py *.txt
