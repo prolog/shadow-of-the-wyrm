@@ -3226,7 +3226,7 @@
 					<NumDice>31</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>1000</Exp>
+				<Exp>7500</Exp>
 			</CreatureGeneration>
 			<Level>31</Level>
 			<Damage>
@@ -5667,6 +5667,46 @@
 				<Type>10</Type>
 			</Damage>
 		</Creature>
+		<Creature id="fire_elemental">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>FIRE_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FIRE_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FIRE_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>FIRE_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>9</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>25</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>25</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>1000</Exp>
+			</CreatureGeneration>
+			<Level>25</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>50</NumSides>
+				<Type>3</Type>
+			</Damage>
+		</Creature>
 		<Creature id="tentacled_horror">
 			<RaceID>_divine</RaceID>
 			<ShortDescriptionSID>TENTACLED_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -6027,6 +6067,46 @@
 				<NumDice>1</NumDice>
 				<NumSides>92</NumSides>
 				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="air_elemental">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>AIR_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>AIR_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>AIR_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>AIR_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>46</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>46</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>46</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>92</NumSides>
+				<Type>10</Type>
 			</Damage>
 		</Creature>
 		<Creature id="skraeling">
@@ -6592,6 +6672,48 @@
 				<NumSides>78</NumSides>
 				<Type>5</Type>
 			</Damage>
+		</Creature>
+		<Creature id="earth_elemental">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>EARTH_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>EARTH_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>EARTH_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>EARTH_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>39</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>39</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>75000</Exp>
+			</CreatureGeneration>
+			<Level>39</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>78</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Soak>8</Soak>
+			<Speed>56</Speed>
 		</Creature>
 		<Creature id="behemoth">
 			<RaceID>_monster</RaceID>
@@ -7522,6 +7644,70 @@
 				<NumDice>1</NumDice>
 				<NumSides>58</NumSides>
 				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="mammoth_turtle">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>MAMMOTH_TURTLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>MAMMOTH_TURTLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>MAMMOTH_TURTLE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>MAMMOTH_TURTLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>31</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>31</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>7500</Exp>
+			</CreatureGeneration>
+			<Level>31</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>62</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
+		<Creature id="water_elemental">
+			<RaceID>_divine</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>WATER_ELEMENTAL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WATER_ELEMENTAL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WATER_ELEMENTAL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WATER_ELEMENTAL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>33</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>33</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9500</Exp>
+			</CreatureGeneration>
+			<Level>33</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>66</NumSides>
+				<Type>4</Type>
 			</Damage>
 		</Creature>
 		<Creature id="rook">
@@ -9848,7 +10034,7 @@
 					<NumDice>31</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>1000</Exp>
+				<Exp>7500</Exp>
 			</CreatureGeneration>
 			<Level>31</Level>
 			<Damage>
