@@ -9,7 +9,7 @@ Savage Lands v0.1.9 "Osmund"
   silver fish, jellyfish, swordfish, merman, electric eel, squid, mermaid,
   giant crab, grey octopus, blackfin shark, wraith jellyfish, lanternfish,
   siren, stone whale, seadragon, mammoth turtle, water elemental, fire
-  elemental, earth elemental, air elemental.
+  elemental, earth elemental, air elemental, bunyip, sea serpent, kraken.
 
 - Added new items: drams of gin and mead, which are contained in the
   barrels of the brewery of Atua-Elar.

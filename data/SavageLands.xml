@@ -6959,6 +6959,7 @@
 		</Creature>
 		<Creature id="leviathan">
 			<RaceID>_monster</RaceID>
+			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>LEVIATHAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>LEVIATHAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>LEVIATHAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -8708,6 +8709,105 @@
 				<NumDice>1</NumDice>
 				<NumSides>98</NumSides>
 				<Type>10</Type>
+			</Damage>
+		</Creature>
+		<Creature id="bunyip">
+			<RaceID>_monster</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>BUNYIP_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BUNYIP_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BUNYIP_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BUNYIP_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>B</Symbol>
+				<Colour>3</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>45</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>45</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>160000</Exp>
+			</CreatureGeneration>
+			<Level>45</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>90</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="sea_serpent">
+			<RaceID>_sea_serpent</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>SEA_SERPENT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>SEA_SERPENT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>SEA_SERPENT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>SEA_SERPENT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>S</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>47</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>47</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>47</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>94</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
+		<Creature id="kraken">
+			<RaceID>_monster</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>KRAKEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>KRAKEN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>KRAKEN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>KRAKEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>K</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>49</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>49</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>49</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>98</NumSides>
+				<Type>2</Type>
+				<StatusAilments>
+					<Status>_blind</Status>
+				</StatusAilments>
 			</Damage>
 		</Creature>
 		<Creature id="demogorgon">
