@@ -7679,6 +7679,38 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="great_eel">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>GREAT_EEL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GREAT_EEL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GREAT_EEL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GREAT_EEL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>2</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>35</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10000</Exp>
+			</CreatureGeneration>
+			<Level>35</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>70</NumSides>
+				<Type>6</Type>
+			</Damage>
+		</Creature>
 		<Creature id="water_elemental">
 			<RaceID>_divine</RaceID>
 			<BreatheType>1</BreatheType>
@@ -8711,6 +8743,38 @@
 				<Type>10</Type>
 			</Damage>
 		</Creature>
+		<Creature id="white_whale">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>WHITE_WHALE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WHITE_WHALE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WHITE_WHALE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WHITE_WHALE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>W</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>43</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>43</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>120000</Exp>
+			</CreatureGeneration>
+			<Level>43</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>86</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="bunyip">
 			<RaceID>_monster</RaceID>
 			<BreatheType>1</BreatheType>
@@ -8721,7 +8785,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>B</Symbol>
-				<Colour>3</Colour>
+				<Colour>11</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
