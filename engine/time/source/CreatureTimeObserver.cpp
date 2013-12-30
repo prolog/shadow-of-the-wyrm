@@ -1,3 +1,4 @@
+#include "CreatureAlcoholTimer.hpp"
 #include "CreatureAPRegeneration.hpp"
 #include "CreatureHPRegeneration.hpp"
 #include "CreatureHungerTimer.hpp"
@@ -40,7 +41,9 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   ICreatureRegenerationPtr hungr_checkr = std::make_shared<CreatureHungerTimer>();
   // Every minute, call the tick() function for each status the creature has.
   ICreatureRegenerationPtr status_chekr = std::make_shared<CreatureStatuses>();
-  
+  // Every half an hour to an hour, do alcohol absorption and metabolism.
+  ICreatureRegenerationPtr alcohol_chkr = std::make_shared<CreatureAlcoholTimer>();
+
   regen.push_back(hp_regen    );
   regen.push_back(ap_regen    );
   regen.push_back(piety_regen );
@@ -49,6 +52,7 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   regen.push_back(skill_checkr);
   regen.push_back(hungr_checkr);
   regen.push_back(status_chekr);
+  regen.push_back(alcohol_chkr);
 }
 
 void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)
