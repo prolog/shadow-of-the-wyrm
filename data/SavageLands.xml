@@ -7711,6 +7711,70 @@
 				<Type>6</Type>
 			</Damage>
 		</Creature>
+		<Creature id="water_demon">
+			<RaceID>_demon</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>WATER_DEMON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WATER_DEMON_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WATER_DEMON_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WATER_DEMON_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>&amp;</Symbol>
+				<Colour>12</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>37</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>37</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>30000</Exp>
+			</CreatureGeneration>
+			<Level>37</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>74</NumSides>
+				<Type>4</Type>
+			</Damage>
+		</Creature>
+		<Creature id="lion_shark">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>LION_SHARK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>LION_SHARK_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>LION_SHARK_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>LION_SHARK_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>S</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>39</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>39</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>75000</Exp>
+			</CreatureGeneration>
+			<Level>39</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>78</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="water_elemental">
 			<RaceID>_divine</RaceID>
 			<BreatheType>1</BreatheType>
@@ -8741,6 +8805,38 @@
 				<NumDice>1</NumDice>
 				<NumSides>98</NumSides>
 				<Type>10</Type>
+			</Damage>
+		</Creature>
+		<Creature id="nicor">
+			<RaceID>_monster</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>NICOR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>NICOR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>NICOR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>NICOR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>N</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>41</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>41</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>120000</Exp>
+			</CreatureGeneration>
+			<Level>41</Level>
+			<Damage chaotic="1">
+				<NumDice>1</NumDice>
+				<NumSides>82</NumSides>
+				<Type>9</Type>
 			</Damage>
 		</Creature>
 		<Creature id="white_whale">
