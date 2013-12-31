@@ -182,7 +182,7 @@ bool SavageLandsEngine::process_new_game()
   Game& game = Game::instance();
 
   string name;
-  CreatureSex sex;
+  CreatureSex sex = CREATURE_SEX_MALE;
     
   DeityMap deities = game.get_deities_ref();
   RaceMap  races   = game.get_races_ref();
@@ -208,7 +208,7 @@ bool SavageLandsEngine::process_new_game()
   }
 
   SexSelectionScreen sex_selection(display);
-  sex = static_cast<CreatureSex>(String::to_int(sex_selection.display()));
+  sex = static_cast<CreatureSex>(Char::keyboard_selection_char_to_int(sex_selection.display().at(0)));
 
   RaceSelectionScreen race_selection(display);
   string race_index = race_selection.display();

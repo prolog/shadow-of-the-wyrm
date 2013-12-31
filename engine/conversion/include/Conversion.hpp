@@ -171,6 +171,7 @@ class AlcoholConverter
   public:
     static const float GRAMS_PER_STANDARD_DRINK;
 
+    static float standard_drinks_to_absorbable_grams(const float std_drinks);
     static float standard_drinks_to_grams(const float std_drinks);
 
   protected:

@@ -74,6 +74,8 @@ float Blood::get_litres() const
 void Blood::increment_grams_alcohol(const float incr_amount)
 {
   grams_alcohol += incr_amount;
+
+  calculate_blood_alcohol_content();
 }
 
 void Blood::decrement_grams_alcohol(const float decr_amount)
@@ -88,6 +90,8 @@ void Blood::decrement_grams_alcohol(const float decr_amount)
   {
     grams_alcohol = 0;
   }
+
+  calculate_blood_alcohol_content();
 }
 
 void Blood::set_grams_alcohol(const float new_grams_alcohol)

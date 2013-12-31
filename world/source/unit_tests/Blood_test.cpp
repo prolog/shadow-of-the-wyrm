@@ -67,6 +67,14 @@ TEST(SL_World_Blood, BAC)
   b.set_litres(5);
   EXPECT_FLOAT_EQ(0.7f, b.get_blood_alcohol_content());
 
+  // Decrement should recalc BAC
+  b.decrement_grams_alcohol(33);
+  EXPECT_FLOAT_EQ(0.04f, b.get_blood_alcohol_content());
+
+  // Increment should recalc BAC
+  b.increment_grams_alcohol(33);
+  EXPECT_FLOAT_EQ(0.7f, b.get_blood_alcohol_content());
+
   // Test: one standard drink.
   b.set_grams_alcohol(13.6f);
   EXPECT_FLOAT_EQ(0.272f, b.get_blood_alcohol_content());

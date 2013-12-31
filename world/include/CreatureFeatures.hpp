@@ -15,7 +15,8 @@ enum CreatureSize
 enum CreatureSex
 {
   CREATURE_SEX_MALE = 0,
-  CREATURE_SEX_FEMALE = 1
+  CREATURE_SEX_FEMALE = 1,
+  CREATURE_SEX_LAST = 2
 };
 
 enum HairColour

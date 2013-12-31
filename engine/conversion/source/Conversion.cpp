@@ -430,7 +430,7 @@ HungerLevel HungerLevelConverter::to_hunger_level(const int hunger)
 // the rails.
 //
 // Using the Canadian/US standard drink of 13.6g/std_drink
-const float AlcoholConverter::GRAMS_PER_STANDARD_DRINK = 13.6;
+const float AlcoholConverter::GRAMS_PER_STANDARD_DRINK = 13.6f;
 
 AlcoholConverter::AlcoholConverter()
 {
@@ -438,6 +438,15 @@ AlcoholConverter::AlcoholConverter()
 
 AlcoholConverter::~AlcoholConverter()
 {
+}
+
+float AlcoholConverter::standard_drinks_to_absorbable_grams(const float std_drinks)
+{
+  float grams = standard_drinks_to_grams(std_drinks);
+
+  // A standard drink should produce about 2g of absorbable alcohol.
+  float absorbable_grams = grams * 0.14706f;
+  return absorbable_grams;
 }
 
 float AlcoholConverter::standard_drinks_to_grams(const float std_drinks)
