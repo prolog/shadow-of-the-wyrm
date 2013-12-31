@@ -90,6 +90,10 @@ Savage Lands v0.1.9 "Osmund"
     others updated, it was the summoned creature's turn that was removed,
     not the current creature's turn).
 
+  - The player character's sex wasn't being converted properly from the 
+    player's input (apparently, a very old bug!), and as a result,
+    alcohol absorption rate lookup was failing.
+
 Savage Lands v0.1.8 "Aethelbert"
 - Version declared November 2, 2013.  Finalized November 27, 2013.
 

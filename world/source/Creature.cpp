@@ -374,6 +374,11 @@ Blood& Creature::get_blood_ref()
   return blood;
 }
 
+void Creature::decrement_grams_unabsorbed_alcohol(const float delta_grams)
+{
+  grams_unabsorbed_alcohol -= delta_grams;
+}
+
 void Creature::increment_grams_unabsorbed_alcohol(const float addl_grams)
 {
   grams_unabsorbed_alcohol += addl_grams;

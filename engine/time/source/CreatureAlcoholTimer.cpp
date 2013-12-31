@@ -25,7 +25,12 @@ void CreatureAlcoholTimer::tick(CreaturePtr creature, const ulonglong minutes_th
 // creature accordingly.
 void CreatureAlcoholTimer::absorb_alcohol(CreaturePtr creature)
 {
-  // ...
+  Blood& blood = creature->get_blood_ref();
+  float unabsorbed = creature->get_grams_unabsorbed_alcohol();
+  float to_absorb = alco_calc.calculate_grams_to_absorb(creature);
+
+  blood.increment_grams_alcohol(to_absorb);
+  creature->decrement_grams_unabsorbed_alcohol(to_absorb);
 }
 
 // If it's time to metabolize alcohol, determine how much alcohol should
@@ -33,5 +38,8 @@ void CreatureAlcoholTimer::absorb_alcohol(CreaturePtr creature)
 // accordingly.
 void CreatureAlcoholTimer::metabolize_alcohol(CreaturePtr creature)
 {
-  // ...
+  Blood& blood = creature->get_blood_ref();
+  float absorbed = blood.get_grams_alcohol();
+  float to_metabolize = alco_calc.calculate_grams_to_metabolize(creature);
+  blood.decrement_grams_alcohol(to_metabolize);
 }

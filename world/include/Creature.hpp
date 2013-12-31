@@ -97,6 +97,7 @@ class Creature : public ISerializable
     Blood get_blood() const;
     Blood& get_blood_ref();
 
+    void decrement_grams_unabsorbed_alcohol(const float delta_grams_unabsorbed_alcohol);
     void increment_grams_unabsorbed_alcohol(const float additional_grams_unabsorbed_alcohol);
     void set_grams_unabsorbed_alcohol(const float new_grams_unabsorbed_alcohol);
     float get_grams_unabsorbed_alcohol() const;
