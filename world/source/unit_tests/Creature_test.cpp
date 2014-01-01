@@ -69,6 +69,12 @@ TEST(SL_World_Creature, saveload)
   am.set_direction(DIRECTION_SOUTH);
   am.set_engaged(true);
 
+  Blood b;
+  b.set_litres(5.3f);
+  b.set_grams_alcohol(1.2f);
+
+  c.set_blood(b);
+
   ostringstream ss;
 
   c.serialize(ss);
@@ -78,5 +84,6 @@ TEST(SL_World_Creature, saveload)
   c2.deserialize(iss);
 
   EXPECT_TRUE(c == c2);
+  EXPECT_FLOAT_EQ(1.2f, c2.get_blood().get_grams_alcohol());
 }
 
