@@ -456,10 +456,13 @@ bool Map::deserialize(istream& stream)
 
     ClassIdentifier tile_clid;
     Serialize::read_class_id(stream, tile_clid);
-    TilePtr tile = TileFactory::create_tile(tile_clid);
-    tile->deserialize(stream);
 
-    tiles.insert(make_pair(map_key, tile));
+    if (tile_clid != CLASS_ID_NULL)
+    {
+      TilePtr tile = TileFactory::create_tile(tile_clid);
+      tile->deserialize(stream);
+      tiles.insert(make_pair(map_key, tile));
+    }
   }
 
   // creatures - build up after deserialization

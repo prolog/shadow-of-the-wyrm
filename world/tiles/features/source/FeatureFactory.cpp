@@ -1,4 +1,7 @@
+#include <boost/assert.hpp>
 #include "FeatureFactory.hpp"
+#include "Barrel.hpp"
+#include "Conversion.hpp"
 #include "DecorativeStatues.hpp"
 #include "GoodAltar.hpp"
 #include "NeutralAltar.hpp"
@@ -9,6 +12,7 @@
 #include "FirePillar.hpp"
 #include "Fountain.hpp"
 #include "Gate.hpp"
+#include "Log.hpp"
 #include "Pew.hpp"
 #include "RegularStatues.hpp"
 #include "Sarcophagus.hpp"
@@ -39,6 +43,15 @@ FeaturePtr FeatureFactory::create_feature(const ClassIdentifier ci)
   if (f_it != feature_map.end())
   {
     feature = FeaturePtr(f_it->second->clone());
+  }
+  else
+  {
+    // This is a problem, and likely means I've forgotten to update
+    // the class ID map!
+    string s_cl_id = Integer::to_string(ci);
+    string msg = "Could not instantiate feature with class_id " + s_cl_id;
+    Log::instance().error(msg);
+    BOOST_ASSERT_MSG(false, msg.c_str());
   }
 
   return feature;
@@ -77,7 +90,8 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr gate               = std::make_shared<Gate>();
   FeaturePtr pew                = std::make_shared<Pew>();
   FeaturePtr petrified_corpse   = std::make_shared<PetrifiedCorpseStatue>();
-  FeaturePtr sarcophagus = std::make_shared<Sarcophagus>();
+  FeaturePtr sarcophagus        = std::make_shared<Sarcophagus>();
+  FeaturePtr barrel             = std::make_shared<Barrel>();
 
   feature_map = FeatureSerializationMap{{CLASS_ID_GOOD_ALTAR, good_altar},
                                         {CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -96,7 +110,8 @@ void FeatureFactory::initialize_feature_map()
                                         {CLASS_ID_GATE, gate},
                                         {CLASS_ID_PEW, pew},
                                         {CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse},
-                                        {CLASS_ID_SARCOPHAGUS, sarcophagus}};
+                                        {CLASS_ID_SARCOPHAGUS, sarcophagus},
+                                        {CLASS_ID_BARREL, barrel}};
   // JCD FIXME
 }
 

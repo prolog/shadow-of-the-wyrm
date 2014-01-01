@@ -23,4 +23,6 @@ TEST(SL_World_Tiles_Features_Barrel, saveload)
   barrel2.deserialize(iss);
 
   EXPECT_TRUE(barrel == barrel2);
+
+  EXPECT_TRUE(barrel2.get_pour_item_id() == "talisker");
 }
