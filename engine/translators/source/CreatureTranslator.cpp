@@ -231,6 +231,7 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   IStatusAilmentTranslatorPtr spellbound_ck  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_SPELLBOUND, StatusAilmentTextKeys::STATUS_SPELLBOUND, COLOUR_BOLD_MAGENTA);
   IStatusAilmentTranslatorPtr blinded_check  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_BLINDED, StatusAilmentTextKeys::STATUS_BLINDED, COLOUR_BOLD_BLUE);
   IStatusAilmentTranslatorPtr incorporeal_ck = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_INCORPOREAL, StatusAilmentTextKeys::STATUS_INCORPOREAL, COLOUR_WHITE);
+  IStatusAilmentTranslatorPtr drunk_checker  = std::make_shared<StatusAilmentTranslator>(StatusIdentifiers::STATUS_ID_DRUNK, StatusAilmentTextKeys::STATUS_DRUNK, COLOUR_WHITE);
 
   status_ailment_checkers.push_back(hunger_checker);
   status_ailment_checkers.push_back(poison_checker);
@@ -246,4 +247,5 @@ void CreatureTranslator::initialize_status_ailment_checkers()
   status_ailment_checkers.push_back(spellbound_ck );
   status_ailment_checkers.push_back(blinded_check );
   status_ailment_checkers.push_back(incorporeal_ck);
+  status_ailment_checkers.push_back(drunk_checker );
 }

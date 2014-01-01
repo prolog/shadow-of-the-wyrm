@@ -25,3 +25,4 @@ const string StatusIdentifiers::STATUS_ID_DISFIGURED = "_disf";
 const string StatusIdentifiers::STATUS_ID_SPELLBOUND = "_spellb";
 const string StatusIdentifiers::STATUS_ID_BLINDED = "_blind";
 const string StatusIdentifiers::STATUS_ID_INCORPOREAL = "_incorp";
+const string StatusIdentifiers::STATUS_ID_DRUNK = "_drunk";

@@ -5,6 +5,7 @@ using namespace std;
 const uint AlcoholCalculator::BASE_MINUTES_FOR_ABSORPTION = 30;
 const uint AlcoholCalculator::BASE_MINUTES_FOR_METABOLIZATION = 60;
 const float AlcoholCalculator::BASE_METABOLISM_RATE = 0.5f;
+const float AlcoholCalculator::DRUNK_BAC_THRESHOLD = 0.08f;
 map<CreatureSex, float> AlcoholCalculator::absorption_by_sex;
 
 AlcoholCalculator::AlcoholCalculator()
@@ -67,3 +68,20 @@ float AlcoholCalculator::calculate_grams_to_metabolize(CreaturePtr creature)
   return BASE_METABOLISM_RATE;
 }
 
+// A creature is drunk if its BAC is greater than 0.08...
+bool AlcoholCalculator::is_drunk(CreaturePtr creature)
+{
+  bool drunk = false;
+
+  if (creature)
+  {
+    float bac = creature->get_blood().get_blood_alcohol_content();
+
+    if (bac > DRUNK_BAC_THRESHOLD)
+    { 
+      drunk = true;
+    }
+  }
+
+  return drunk;
+}
