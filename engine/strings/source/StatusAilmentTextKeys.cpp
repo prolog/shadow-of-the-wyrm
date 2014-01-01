@@ -71,6 +71,10 @@ const string StatusAilmentTextKeys::STATUS_INCORPOREAL = "STATUS_INCORPOREAL";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_INCORPOREAL = "STATUS_MESSAGE_PLAYER_INCORPOREAL";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_INCORPOREAL_CURED = "STATUS_MESSAGE_PLAYER_INCORPOREAL_CURED";
 
+const string StatusAilmentTextKeys::STATUS_DRUNK = "STATUS_DRUNK";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DRUNK = "STATUS_MESSAGE_PLAYER_DRUNK";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SOBER = "STATUS_MESSAGE_PLAYER_SOBER";
+
 // public functions
 const string StatusAilmentTextKeys::get_npc_poisoned_message(CreaturePtr creature)
 {
@@ -202,6 +206,16 @@ const string StatusAilmentTextKeys::get_npc_undo_incorporeal_message(CreaturePtr
   return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_INCORPOREAL);
 }
 
+const string StatusAilmentTextKeys::get_npc_drunk_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DRUNK);
+}
+
+const string StatusAilmentTextKeys::get_npc_sober_message(CreaturePtr creature)
+{
+  return get_general_npc_message(creature->get_description_sid(), StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SOBER);
+}
+
 // Protected
 const string StatusAilmentTextKeys::get_general_npc_message(const string& npc_sid, const string& message_sid)
 {
@@ -253,3 +267,6 @@ const string StatusAilmentTextKeys::STATUS_MESSAGE_BLIND_RANGED_COMBAT = "STATUS
 
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_INCORPOREAL = "STATUS_MESSAGE_NPC_INCORPOREAL";
 const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_UNDO_INCORPOREAL = "STATUS_MESSAGE_NPC_UNDO_INCORPOREAL";
+
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_DRUNK = "STATUS_MESSAGE_NPC_DRUNK";
+const string StatusAilmentTextKeys::STATUS_MESSAGE_NPC_SOBER = "STATUS_MESSAGE_NPC_SOBER";

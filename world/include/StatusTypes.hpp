@@ -27,6 +27,7 @@ class StatusIdentifiers
     static const std::string STATUS_ID_SPELLBOUND;
     static const std::string STATUS_ID_BLINDED;
     static const std::string STATUS_ID_INCORPOREAL;
+    static const std::string STATUS_ID_DRUNK;
 
   protected:
     StatusIdentifiers();

@@ -1,4 +1,6 @@
 #include "CreatureAlcoholTimer.hpp"
+#include "MessageManagerFactory.hpp"
+#include "StatusAilmentTextKeys.hpp"
 
 // Check the timer to see if it's time to absorb or metabolize booze.
 void CreatureAlcoholTimer::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
@@ -8,6 +10,8 @@ void CreatureAlcoholTimer::tick(CreaturePtr creature, const ulonglong minutes_th
     uint minutes_for_absorption = alco_calc.calculate_minutes_for_absorption(creature);
     uint minutes_for_metabolization = alco_calc.calculate_minutes_for_metabolization(creature);
     
+    bool drunk_before = creature->has_status(StatusIdentifiers::STATUS_ID_DRUNK);
+
     if (total_minutes_elapsed % minutes_for_absorption == 0)
     {
       absorb_alcohol(creature);
@@ -17,6 +21,10 @@ void CreatureAlcoholTimer::tick(CreaturePtr creature, const ulonglong minutes_th
     {
       metabolize_alcohol(creature);
     }
+
+    bool drunk_after = creature->has_status(StatusIdentifiers::STATUS_ID_DRUNK);
+
+    add_inebriation_message_if_necessary(creature, drunk_before, drunk_after);
   }
 }
 
@@ -31,6 +39,14 @@ void CreatureAlcoholTimer::absorb_alcohol(CreaturePtr creature)
 
   blood.increment_grams_alcohol(to_absorb);
   creature->decrement_grams_unabsorbed_alcohol(to_absorb);
+
+  if (alco_calc.is_drunk(creature))
+  {
+    if (!creature->has_status(StatusIdentifiers::STATUS_ID_DRUNK))
+    {
+      creature->set_status(StatusIdentifiers::STATUS_ID_DRUNK, true);
+    }
+  }
 }
 
 // If it's time to metabolize alcohol, determine how much alcohol should
@@ -42,4 +58,43 @@ void CreatureAlcoholTimer::metabolize_alcohol(CreaturePtr creature)
   float absorbed = blood.get_grams_alcohol();
   float to_metabolize = alco_calc.calculate_grams_to_metabolize(creature);
   blood.decrement_grams_alcohol(to_metabolize);
+
+  if (!alco_calc.is_drunk(creature))
+  {
+    if (creature->has_status(StatusIdentifiers::STATUS_ID_DRUNK))
+    {
+      creature->remove_status(StatusIdentifiers::STATUS_ID_DRUNK);
+    }
+  }
+}
+
+// Add a message if the creature has become either drunk or sober.
+void CreatureAlcoholTimer::add_inebriation_message_if_necessary(CreaturePtr creature, bool drunk_before, bool drunk_after)
+{
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
+  if (drunk_before && !drunk_after)
+  {
+    if (creature->get_is_player())
+    {
+      manager.add_new_message(StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_SOBER));
+    }
+    else
+    {
+      manager.add_new_message(StatusAilmentTextKeys::get_npc_sober_message(creature));
+    }
+  }
+  else if (!drunk_before && drunk_after)
+  {
+    if (creature->get_is_player())
+    {
+      manager.add_new_message(StringTable::get(StatusAilmentTextKeys::STATUS_MESSAGE_PLAYER_DRUNK));
+    }
+    else
+    {
+      manager.add_new_message(StatusAilmentTextKeys::get_npc_drunk_message(creature));
+    }
+  }
+
+  manager.send();
 }
