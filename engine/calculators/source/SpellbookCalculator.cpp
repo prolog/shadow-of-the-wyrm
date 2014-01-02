@@ -33,6 +33,7 @@ void SpellbookCalculator::initialize_status_casting_multipliers()
 // - Add appropriate magic skill, if > 0; otherwise, Subtract 100.
 // - Add (Int / 5)
 // - Add (Will / 5)
+// - Subtract 10 for every 0.01 BAC
 //
 // If the resultant number is > Difficulty, the spell is learned.
 pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const SkillType magic_category, const int difficulty)
@@ -50,12 +51,14 @@ pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const Ski
                                                               : SpellConstants::NO_CATEGORY_SKILL_SPELL_LEARNING_PENALTY;
     int int_stat = creature->get_intelligence().get_current();
     int will_stat = creature->get_willpower().get_current();
+    int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100) * 10;
 
     int i = (rand
           + (magic_general_skill / 2)
           + magic_category_skill
           + (int_stat / 5)
-          + (will_stat / 5));
+          + (will_stat / 5))
+          - bac_modifier;
 
     if (i > difficulty)
     {

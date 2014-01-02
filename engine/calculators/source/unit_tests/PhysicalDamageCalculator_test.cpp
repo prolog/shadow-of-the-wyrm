@@ -62,3 +62,31 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, get_statistic_based_damage_m
 
   EXPECT_EQ(7, pdc.get_statistic_based_damage_modifier(creature));
 }
+
+// For every 0.02 BAC, +1 dam.
+TEST(SL_World_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
+{
+  PhysicalDamageCalculator pdc(ATTACK_TYPE_MELEE_PRIMARY);
+  CreaturePtr creature = create_creature_with_weapon_and_15_str();
+
+  Blood b;
+  b.set_litres(5);
+  b.set_grams_alcohol(1);
+
+  creature->set_blood(b);
+
+  Damage exp_base_damage = pdc.calculate_base_damage_object(creature);
+  int bonus = pdc.get_statistic_based_damage_modifier(creature);
+  int dr_bonus = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100) / 2;
+  exp_base_damage.set_modifier(exp_base_damage.get_modifier() + bonus + dr_bonus);
+
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+
+  // Go from 0.02 to 0.06, or +2 additional damage.
+  b.set_grams_alcohol(3);
+  creature->set_blood(b);
+
+  exp_base_damage.set_modifier(exp_base_damage.get_modifier() + 2);
+
+  EXPECT_EQ(exp_base_damage, pdc.calculate_base_damage_with_bonuses_or_penalties(creature));
+}

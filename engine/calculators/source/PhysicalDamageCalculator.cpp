@@ -67,7 +67,11 @@ Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties
   if (attacking_creature)
   {
     int current_modifier = base_damage.get_modifier();
-    current_modifier    += get_statistic_based_damage_modifier(attacking_creature);
+    int bac_modifier = static_cast<int>(attacking_creature->get_blood().get_blood_alcohol_content() * 100) / 2;
+
+    current_modifier += get_statistic_based_damage_modifier(attacking_creature);
+    current_modifier += bac_modifier;
+    
     base_damage.set_modifier(current_modifier);
   }
   
