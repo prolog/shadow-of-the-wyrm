@@ -14,11 +14,15 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
   {
     SkillManager sm;
 
+    // Have you ever tried directing a fireball while drunk?
+    // It's not easy!
+    int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
     int magic_bonus  = sm.get_skill_value(creature, SKILL_GENERAL_MAGIC) / NWP_SKILL_BONUS_DIVISOR;
     int intelligence = creature->get_intelligence().get_current();
     
     to_hit += magic_bonus;
     to_hit += (intelligence - 10) / 3;
+    to_hit -= bac_modifier;
   }
 
   return to_hit;

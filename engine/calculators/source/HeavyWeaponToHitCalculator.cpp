@@ -22,7 +22,12 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     int strength = creature->get_strength().get_current();
     int weapon   = get_weapon_bonus(creature);
     int status   = get_status_bonus(creature);
-    
+
+    // There is no BAC penalty for heavy weapons - unlike light and ranged
+    // weapons, which rely on finesse, heavy weapons rely more on strength,
+    // and so are unaffected by the loss of fine motor control due to 
+    // drunkenness.
+
     to_hit += combat / NWP_SKILL_BONUS_DIVISOR;
     to_hit += (strength - 10) / 4;
     to_hit += weapon;

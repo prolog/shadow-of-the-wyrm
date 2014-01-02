@@ -51,6 +51,18 @@ Savage Lands v0.1.9 "Osmund"
 - Added a blood structure to each creature, and the amount of alcohol
   consumed/absorbed/released is tracked over time, with blood alcohol
   content measured.
+
+- Added the following consequences of inebriation:
+
+  - Hitting with light weapons/ranged weapons (dex-based) becomes more
+    difficult (heavy weapons are not affected)
+
+  - Hitting with magic is more difficult
+
+  - Physical damage is increased
+
+  - Spells become much more difficult to learn (each 0.01 BAC results in
+    a penalty of -10)
    
 - Bug fixes:
  
