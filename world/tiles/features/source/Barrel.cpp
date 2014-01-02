@@ -1,6 +1,8 @@
+#include "ActionTextKeys.hpp"
 #include "Barrel.hpp"
 #include "ItemManager.hpp"
 #include "MaterialFactory.hpp"
+#include "MessageManagerFactory.hpp"
 #include "FeatureDescriptionTextKeys.hpp"
 #include "Serialize.hpp"
 
@@ -33,16 +35,20 @@ bool Barrel::operator==(const Barrel& b) const
 // on the barrel's tile.
 bool Barrel::handle(std::shared_ptr<Tile> tile, std::shared_ptr<Creature> creature)
 {
-  // JCD FIXME: Need proper messages here.
-  if (tap)
+  if (creature && tap)
   {
     if (!pour_item_id.empty())
     {
       ItemPtr item = ItemManager::create_item(pour_item_id);
       if (item != nullptr)
       {
+        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
         Inventory& inv = tile->get_items();
         inv.add(item);
+
+        manager.add_new_message(ActionTextKeys::get_pour_message(creature->get_description_sid(), item->get_usage_description_sid(), creature->get_is_player()));
+        manager.send();
       }
     }
   }
