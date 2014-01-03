@@ -81,13 +81,13 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
       }
     }
 
-    acv = get_action_cost_value();
+    acv = get_action_cost_value(creature);
   }
 
   return acv;
 }
 
-ActionCostValue SpellbookReadStrategy::get_action_cost_value() const
+ActionCostValue SpellbookReadStrategy::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

@@ -15,5 +15,5 @@ class PickupAction : public IActionManager
     bool merge_into_equipment(CreaturePtr creature, ItemPtr item);
     bool merge_or_add_into_inventory(CreaturePtr creature, ItemPtr item);
 
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

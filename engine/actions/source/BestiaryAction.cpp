@@ -58,11 +58,11 @@ ActionCostValue BestiaryAction::display_creature_information(CreaturePtr creatur
     manager.send();
   }
 
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
 // Showing creature info is always free.
-ActionCostValue BestiaryAction::get_action_cost_value() const
+ActionCostValue BestiaryAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

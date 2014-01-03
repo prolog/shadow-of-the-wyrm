@@ -16,6 +16,7 @@
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "MovementTextKeys.hpp"
+#include "RNG.hpp"
 #include "SkillManager.hpp"
 #include "TerrainGeneratorFactory.hpp"
 #include "TextKeys.hpp"
@@ -131,7 +132,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
       if (creature->get_decision_strategy()->get_confirmation())
       {
         move_to_new_map(creatures_old_tile, map, map_exit);
-        movement_success = get_action_cost_value();
+        movement_success = get_action_cost_value(creature);
       }
       
       // Regardless of whether we leave the map or not, clear the messages, so the text doesn't hang around.
@@ -148,7 +149,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
       manager.add_new_message(npc_exit_message);
       manager.send();
         
-      movement_success = get_action_cost_value();
+      movement_success = get_action_cost_value(creature);
     } 
   }
   
@@ -213,7 +214,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           mau.update(creature, new_tile);
         
           add_tile_related_messages(creature, new_tile);
-          movement_success = get_action_cost_value();
+          movement_success = get_action_cost_value(creature);
         }
       }
     }
@@ -382,7 +383,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     add_tile_related_messages(creature, new_creature_tile);
     manager.send();
                 
-    action_cost_value = get_action_cost_value();
+    action_cost_value = get_action_cost_value(creature);
   }
 
   return action_cost_value;
@@ -563,7 +564,28 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
   return msg_added;
 }
 
-ActionCostValue MovementAction::get_action_cost_value() const
+ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) const
 {
-  return 1;
+  int stumble_chance = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
+
+  if (RNG::percent_chance(stumble_chance))
+  {
+    // Add a message about stumbling.
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(ActionTextKeys::get_stumble_message(creature->get_description_sid(), creature->get_is_player()));
+    manager.send();
+    return 15;
+  }
+  else
+  {
+    // Either not drunk or didn't stumble - standard movement costs apply.
+    return 1;
+  }
+}
+
+// If the creature is drunk, it may stumble, causing it to move slower 
+// than normal.
+ActionCostValue MovementAction::get_stumble_action_cost_value() const
+{
+  return 15;
 }

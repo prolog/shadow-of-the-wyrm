@@ -121,6 +121,23 @@ string ActionTextKeys::get_pour_message(const string& creature_desc_sid, const s
   return pour_msg;
 }
 
+string ActionTextKeys::get_stumble_message(const string& creature_desc_sid, const bool is_player)
+{
+  string stumble_msg;
+
+  if (is_player)
+  {
+    stumble_msg = StringTable::get(ActionTextKeys::ACTION_STUMBLE_PLAYER);
+  }
+  else
+  {
+    stumble_msg = StringTable::get(ActionTextKeys::ACTION_STUMBLE_MONSTER);
+    boost::replace_first(stumble_msg, "%s", StringTable::get(creature_desc_sid));
+  }
+
+  return stumble_msg;
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_SEARCH_BLIND               = "ACTION_SEARCH_BLIND";
@@ -170,5 +187,7 @@ const string ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_PLAYER = "ACTION_SPEL
 const string ActionTextKeys::ACTION_SPELLCASTING_CANCELLED_MONSTER = "ACTION_SPELLCASTING_CANCELLED_MONSTER";
 const string ActionTextKeys::ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE = "ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE";
 const string ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION = "ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION";
-const string ActionTextKeys::ACTION_POUR_PLAYER                = "ACTION_POUR_PLAYER";
-const string ActionTextKeys::ACTION_POUR_MONSTER               = "ACTION_POUR_MONSTER";
+const string ActionTextKeys::ACTION_POUR_PLAYER                   = "ACTION_POUR_PLAYER";
+const string ActionTextKeys::ACTION_POUR_MONSTER                  = "ACTION_POUR_MONSTER";
+const string ActionTextKeys::ACTION_STUMBLE_PLAYER                = "ACTION_STUMBLE_PLAYER";
+const string ActionTextKeys::ACTION_STUMBLE_MONSTER               = "ACTION_STUMBLE_MONSTER";

@@ -55,7 +55,7 @@ ActionCostValue FeatureAction::apply(CreaturePtr creature)
 
     if (handled)
     {
-      apply_cost = get_action_cost_value();
+      apply_cost = get_action_cost_value(creature);
     }
   }
 
@@ -209,7 +209,7 @@ void FeatureAction::inform_no_features(CreaturePtr creature)
 }
 
 // Default cost of applying/handling a terrain feature.
-ActionCostValue FeatureAction::get_action_cost_value() const
+ActionCostValue FeatureAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

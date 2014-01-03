@@ -47,5 +47,5 @@ class RangedCombatAction : public IActionManager
     // Select the existing ranged combat target for the given creature, on the given map.
     void select_existing_target(CreaturePtr creature, MapPtr map);
     
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

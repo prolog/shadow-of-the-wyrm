@@ -74,7 +74,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
         Game& game = Game::instance();
         MapPtr map = game.get_current_map();
 
-        action_cost_value = get_action_cost_value();
+        action_cost_value = get_action_cost_value(creature);
         Direction d = dcommand->get_direction();
 
         // Start moving in the requested direction.
@@ -87,7 +87,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
   return action_cost_value;
 }
 
-ActionCostValue AutomaticMovementAction::get_action_cost_value() const
+ActionCostValue AutomaticMovementAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

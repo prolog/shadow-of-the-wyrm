@@ -27,11 +27,11 @@ ActionCostValue CharacterDumpAction::dump_character(CreaturePtr creature)
     manager.send();
   }
   
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
 
-ActionCostValue CharacterDumpAction::get_action_cost_value() const
+ActionCostValue CharacterDumpAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

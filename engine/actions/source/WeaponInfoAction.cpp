@@ -61,7 +61,7 @@ ActionCostValue WeaponInfoAction::melee_weapon_info(CreaturePtr creature) const
     manager.send();
   }
 
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
 ActionCostValue WeaponInfoAction::ranged_weapon_info(CreaturePtr creature) const
@@ -83,7 +83,7 @@ ActionCostValue WeaponInfoAction::ranged_weapon_info(CreaturePtr creature) const
     manager.send();
   }
   
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
 // Get the UI string for either the primary or off-hand weapon.
@@ -139,7 +139,7 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, WeaponPtr 
 }
 
 // Getting weapon info is always no-cost
-ActionCostValue WeaponInfoAction::get_action_cost_value() const
+ActionCostValue WeaponInfoAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

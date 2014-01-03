@@ -80,7 +80,7 @@ ActionCostValue EquipmentManager::manage_equipment()
   return total_action_cost;
 }
 
-ActionCostValue EquipmentManager::get_action_cost_value() const
+ActionCostValue EquipmentManager::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

@@ -117,7 +117,7 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
         // If the wand was identified during use, name it.
         name_wand_if_identified(wand, wand_identified, wand_originally_identified, item_id);
 
-        action_cost_value = get_action_cost_value();
+        action_cost_value = get_action_cost_value(creature);
       }
     }
   }
@@ -140,7 +140,7 @@ void EvokeAction::add_evocation_message(CreaturePtr creature, WandPtr wand, cons
 }
 
 // Get the basic cost of evoking a wand.
-ActionCostValue EvokeAction::get_action_cost_value() const
+ActionCostValue EvokeAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

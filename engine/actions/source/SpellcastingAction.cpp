@@ -237,7 +237,7 @@ void SpellcastingAction::add_insufficient_power_message(CreaturePtr creature) co
   manager.send();
 }
 
-ActionCostValue SpellcastingAction::get_action_cost_value() const
+ActionCostValue SpellcastingAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

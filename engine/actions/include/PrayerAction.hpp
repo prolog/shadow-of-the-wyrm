@@ -16,5 +16,5 @@ class PrayerAction : public IActionManager
     void say_prayer(CreaturePtr creature);
     void finish_prayer(CreaturePtr creature, const DeityDecisionImplications& implications);
 
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

@@ -14,6 +14,7 @@ class ActionTextKeys
     static std::string get_spellcasting_cancelled_message(const std::string& creature_desc_sid, const bool is_player);
     static std::string get_bestiary_search_message(const std::string& prev_search_text);
     static std::string get_pour_message(const std::string& desc_sid, const std::string& item_desc_sid, const bool is_player);
+    static std::string get_stumble_message(const std::string& desc_sid, const bool is_player);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -72,4 +73,6 @@ class ActionTextKeys
     static const std::string ACTION_BESTIARY_PREVIOUS_SEARCH_MESSAGE;
     static const std::string ACTION_POUR_PLAYER;
     static const std::string ACTION_POUR_MONSTER;
+    static const std::string ACTION_STUMBLE_PLAYER;
+    static const std::string ACTION_STUMBLE_MONSTER;
 };

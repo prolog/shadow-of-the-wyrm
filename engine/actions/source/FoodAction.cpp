@@ -50,7 +50,7 @@ ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
       if (eat_food(creature, selected_edible_item))
       {
         // The item has been eaten.  Advance the turn:
-        action_cost_value = get_action_cost_value();
+        action_cost_value = get_action_cost_value(creature);
       }
     }    
   }
@@ -138,7 +138,7 @@ void FoodAction::add_hunger_level_message_if_necessary(CreaturePtr creature, con
   }
 }
 
-ActionCostValue FoodAction::get_action_cost_value() const
+ActionCostValue FoodAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

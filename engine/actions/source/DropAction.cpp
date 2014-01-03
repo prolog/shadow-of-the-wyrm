@@ -154,7 +154,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       }
 
       // Advance the turn
-      action_cost_value = get_action_cost_value();
+      action_cost_value = get_action_cost_value(creature);
     }
   }
   
@@ -182,7 +182,7 @@ uint DropAction::get_drop_quantity(CreaturePtr creature, const uint max_quantity
 }
 
 // Dropping always has a base action cost of 1.
-ActionCostValue DropAction::get_action_cost_value() const
+ActionCostValue DropAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

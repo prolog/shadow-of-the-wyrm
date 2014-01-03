@@ -429,7 +429,7 @@ void RangedCombatAction::select_existing_target(CreaturePtr creature, MapPtr map
   }
 }
 
-ActionCostValue RangedCombatAction::get_action_cost_value() const
+ActionCostValue RangedCombatAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

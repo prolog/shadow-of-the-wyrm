@@ -20,5 +20,5 @@ class EvokeAction : public IActionManager
 
     std::pair<bool, Direction> get_evocation_direction(CreaturePtr creature);
 
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

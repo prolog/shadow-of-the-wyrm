@@ -18,7 +18,7 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
   return action_cost_value;
 }
 
-ActionCostValue ConsumableAction::get_action_cost_value() const
+ActionCostValue ConsumableAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

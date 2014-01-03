@@ -9,6 +9,6 @@ class KeyManager : public IActionManager
     bool has_key(CreaturePtr creature, LockPtr lock);
 
   protected:
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };
 

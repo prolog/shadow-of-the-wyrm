@@ -63,7 +63,10 @@ Savage Lands v0.1.9 "Osmund"
 
   - Spells become much more difficult to learn (each 0.01 BAC results in
     a penalty of -10)
-   
+  
+  - There is a chance to stumble, based on BAC level.  If a creature
+    stumbles, a penalty is added to the cost of movement.
+     
 - Bug fixes:
  
   - Fixed a number of places in the configuration XML where the

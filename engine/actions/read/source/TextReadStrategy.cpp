@@ -15,7 +15,7 @@ ActionCostValue TextReadStrategy::read(CreaturePtr creature, ActionManager * con
     Game& game = Game::instance();
     TextDisplayFormatter tdf;
     vector<pair<Colour, string>> book_text;
-    acv = get_action_cost_value();
+    acv = get_action_cost_value(creature);
 
     string text_sid = readable->get_text_sid();
     vector<string> formatted_text = tdf.format_text(StringTable::get(text_sid));
@@ -39,7 +39,7 @@ pair<string, string> TextReadStrategy::get_player_and_monster_read_sids() const
   return sids;
 }
 
-ActionCostValue TextReadStrategy::get_action_cost_value() const
+ActionCostValue TextReadStrategy::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }
