@@ -1,16 +1,20 @@
+Savage Lands v0.2.0 "Oswald"
+- Version declared January 3, 2014.
+
 Savage Lands v0.1.9 "Osmund"
-- Version declared November 27, 2013.
+- Version declared November 27, 2013.  Version finalized January 3, 2014.
 
 - Added new creatures: quivering blob, giant frog, giant toad, crone,
   shapeshifter, knight, crusader, naga, cave bear, sword-eater, squire,
   rock crawler, living vines, witchthorn, treow, tangleweed, drakheen,
-  wraith, sorceror, wight, steel golem, Kirin, Akkara, mountain elf
-  scholar, mountain elf youth, mountain elf brewer, Tir, gnomish sailor,
-  silver fish, jellyfish, swordfish, merman, electric eel, squid, mermaid,
-  giant crab, grey octopus, blackfin shark, wraith jellyfish, lanternfish,
-  siren, stone whale, seadragon, mammoth turtle, water elemental, fire
-  elemental, earth elemental, air elemental, great eel, water demon, lion 
-  shark, nicor, white whale, bunyip, sea serpent, kraken.
+  wraith, sorceror, wight, steel golem, black priest, Kirin, Akkara, 
+  mountain elf scholar, mountain elf youth, mountain elf brewer, Tir, 
+  gnomish sailor, silver fish, jellyfish, swordfish, merman, electric eel, 
+  squid, mermaid, giant crab, grey octopus, blackfin shark, wraith 
+  jellyfish, lanternfish, siren, stone whale, seadragon, mammoth turtle, 
+  water elemental, fire elemental, earth elemental, air elemental, great 
+  eel, water demon, lion shark, nicor, white whale, bunyip, sea serpent, 
+  kraken.
 
 - Added new items: drams of gin and mead, which are contained in the
   barrels of the brewery of Atua-Elar.
