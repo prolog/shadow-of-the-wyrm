@@ -43,7 +43,7 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
         string quaff_message = ActionTextKeys::get_quaff_message(creature->get_description_sid(), item_id.get_appropriate_usage_description(potion), creature->get_is_player());
 
         quaff_potion(creature, potion, creature, quaff_message);
-        action_cost_value = get_action_cost_value();
+        action_cost_value = get_action_cost_value(creature);
       }
     }
   }
@@ -143,7 +143,7 @@ void QuaffAction::add_quaff_message(CreaturePtr creature, const string& quaff_me
   manager.send();
 }
 
-ActionCostValue QuaffAction::get_action_cost_value() const
+ActionCostValue QuaffAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

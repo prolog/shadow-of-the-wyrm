@@ -34,7 +34,7 @@ bool KeyManager::has_key(CreaturePtr creature, LockPtr lock)
   return false;
 }
 
-ActionCostValue KeyManager::get_action_cost_value() const
+ActionCostValue KeyManager::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

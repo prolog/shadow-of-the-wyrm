@@ -18,10 +18,11 @@ ActionCostValue VersionAction::version() const
   manager.add_new_message(game_version);
   manager.send();
   
-  return get_action_cost_value();
+  CreaturePtr nullc;
+  return get_action_cost_value(nullc);
 }
 
-ActionCostValue VersionAction::get_action_cost_value() const
+ActionCostValue VersionAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

@@ -82,7 +82,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
         }
         
         // Advance the turn
-        action_cost_value = get_action_cost_value();
+        action_cost_value = get_action_cost_value(creature);
       }   
     }      
   }
@@ -174,7 +174,7 @@ bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr ite
 }
 
 // Base action cost value is 1.
-ActionCostValue PickupAction::get_action_cost_value() const
+ActionCostValue PickupAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

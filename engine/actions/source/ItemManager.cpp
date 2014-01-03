@@ -208,7 +208,7 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
     Inventory& inv = creature->get_inventory();
     inv.merge_or_add(item, INVENTORY_ADDITION_BACK);
 
-    picked_up_item = get_action_cost_value();
+    picked_up_item = get_action_cost_value(creature);
   }
   
   return picked_up_item;
@@ -224,7 +224,7 @@ ActionCostValue ItemManager::drop(CreaturePtr creature, ItemPtr item)
     
     if (inv.remove(item->get_id()))
     {
-      dropped_item = get_action_cost_value();
+      dropped_item = get_action_cost_value(creature);
     }
   }
   
@@ -280,7 +280,7 @@ ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creatur
     
     if (eq.set_item(item, eq_worn_slot))
     {
-      action_cost_value = get_action_cost_value();
+      action_cost_value = get_action_cost_value(creature);
 
       string item_id = item->get_id();
       creature->get_inventory().remove(item_id);
@@ -348,7 +348,7 @@ ItemPtr ItemManager::remove(CreaturePtr creature, const EquipmentWornLocation lo
   return item;
 }
 
-ActionCostValue ItemManager::get_action_cost_value() const
+ActionCostValue ItemManager::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

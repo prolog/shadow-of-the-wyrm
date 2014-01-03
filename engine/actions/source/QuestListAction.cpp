@@ -42,12 +42,13 @@ ActionCostValue QuestListAction::quest_list() const
   TextDisplayScreen tds(game.get_display(), quest_title_sid, quests_text);
   tds.display();
 
-  return get_action_cost_value();
+  CreaturePtr nullc;
+  return get_action_cost_value(nullc);
 }
 
 // Showing the quest list should always be a free action, since the
 // player isn't actually acting in-game.
-ActionCostValue QuestListAction::get_action_cost_value() const
+ActionCostValue QuestListAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

@@ -32,11 +32,12 @@ ActionCostValue DateTimeAction::date_and_time()
     }
   }
 
-  return get_action_cost_value();
+  CreaturePtr nullc;
+  return get_action_cost_value(nullc);
 }
 
 // Displaying the date and time is a non-advancing action.
-ActionCostValue DateTimeAction::get_action_cost_value() const
+ActionCostValue DateTimeAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

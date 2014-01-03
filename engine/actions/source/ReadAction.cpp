@@ -51,7 +51,7 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
   return action_cost_value;
 }
 
-ActionCostValue ReadAction::get_action_cost_value() const
+ActionCostValue ReadAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

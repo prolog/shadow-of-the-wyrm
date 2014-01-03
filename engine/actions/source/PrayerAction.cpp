@@ -31,7 +31,7 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
     finish_prayer(creature, decision_implications);
   }
 
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
 // If the creature is the player, say a prayer (add a message).
@@ -82,7 +82,7 @@ void PrayerAction::finish_prayer(CreaturePtr creature, const DeityDecisionImplic
   }
 }
 
-ActionCostValue PrayerAction::get_action_cost_value() const
+ActionCostValue PrayerAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

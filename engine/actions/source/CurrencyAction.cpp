@@ -21,7 +21,7 @@ ActionCostValue CurrencyAction::count_currency(CreaturePtr creature)
     add_currency_message_if_necessary(creature, currency_quantity);    
   }
 
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
 void CurrencyAction::add_currency_message_if_necessary(CreaturePtr creature, const uint currency_quantity)
@@ -34,7 +34,7 @@ void CurrencyAction::add_currency_message_if_necessary(CreaturePtr creature, con
   manager.send();
 }
 
-ActionCostValue CurrencyAction::get_action_cost_value() const
+ActionCostValue CurrencyAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0; // Always costs nothing to double-check currency.
 }

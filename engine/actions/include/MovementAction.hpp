@@ -22,7 +22,8 @@ class MovementAction : public IActionManager
     MovementAction();
     ~MovementAction();
     
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
+    ActionCostValue get_stumble_action_cost_value() const;
 
     // Move off the edge of a map - fields, forests, etc.
     ActionCostValue move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);

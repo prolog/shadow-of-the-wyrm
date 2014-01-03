@@ -10,5 +10,5 @@ class VersionAction : public IActionManager
     friend class ActionManager;
     VersionAction();
     
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

@@ -8,5 +8,5 @@ class ScrollReadStrategy : public ReadStrategy
 
   protected:
     virtual std::pair<std::string, std::string> get_player_and_monster_read_sids() const override;
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

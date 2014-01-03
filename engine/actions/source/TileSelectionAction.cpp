@@ -200,7 +200,7 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
     }
   }
   
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
 ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
@@ -219,11 +219,11 @@ ActionCostValue TileSelectionAction::select_tile_cancel(CreaturePtr creature)
     }
   }
   
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
 // Looking is always free.
-ActionCostValue TileSelectionAction::get_action_cost_value() const
+ActionCostValue TileSelectionAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 0;
 }

@@ -18,7 +18,7 @@ protected:
 
     void add_food_message(CreaturePtr creature, ItemPtr food, const bool successfully_ate);
 
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
     static void initialize_hunger_message_sid_map();
     static std::map<HungerLevel, std::string> hunger_message_sid_map;

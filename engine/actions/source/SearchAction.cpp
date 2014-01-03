@@ -34,10 +34,10 @@ ActionCostValue SearchAction::search(CreaturePtr creature)
     // JCD FIXME: Add actual search to see if anything hidden was spotted.
   }
   
-  return get_action_cost_value();
+  return get_action_cost_value(creature);
 }
 
-ActionCostValue SearchAction::get_action_cost_value() const
+ActionCostValue SearchAction::get_action_cost_value(CreaturePtr creature) const
 {
   return 1;
 }

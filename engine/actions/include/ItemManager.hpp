@@ -38,6 +38,6 @@ class ItemManager : public IActionManager
     ActionCostValue equip_and_remove_from_inventory(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot);
     ActionCostValue equip_and_reduce_inventory_quantity(CreaturePtr creature, ItemPtr item, const EquipmentWornLocation eq_worn_slot, const uint quantity);
 
-    ActionCostValue get_action_cost_value() const override;
+    ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 
 };

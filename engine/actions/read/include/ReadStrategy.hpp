@@ -24,7 +24,7 @@ class ReadStrategy : public IActionManager
   protected:
     virtual std::pair<std::string, std::string> get_player_and_monster_read_sids() const = 0;
 
-    virtual ActionCostValue get_action_cost_value() const override = 0;
+    virtual ActionCostValue get_action_cost_value(CreaturePtr creature) const override = 0;
 };
 
 typedef std::shared_ptr<ReadStrategy> ReadStrategyPtr;
