@@ -4519,6 +4519,86 @@
 			</Damage>
 			<Speed>60</Speed>
 		</Creature>
+		<Creature id="antlion">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>ANTLION_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ANTLION_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ANTLION_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ANTLION_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>A</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>26</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>26</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2000</Exp>
+			</CreatureGeneration>
+			<Level>26</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>52</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
+		<Creature id="cave_troll">
+			<RaceID>_humanoid</RaceID>
+			<ShortDescriptionSID>CAVE_TROLL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>CAVE_TROLL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>CAVE_TROLL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>CAVE_TROLL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>27</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>27</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>2100</Exp>
+			</CreatureGeneration>
+			<Level>27</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>54</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
 		<Creature id="thrall">
 			<RaceID>_corporeal_undead</RaceID>
 			<ShortDescriptionSID>THRALL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
