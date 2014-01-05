@@ -6,7 +6,9 @@
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MenuTitleTextKeys.hpp"
+#include "RaceManager.hpp"
 #include "StringTable.hpp"
+#include "TextKeys.hpp"
 #include "TextDisplayFormatter.hpp"
 #include "TextDisplayScreen.hpp"
 
@@ -130,6 +132,17 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     // Display the creature short description
     bestiary_text.push_back(make_pair(COLOUR_WHITE, separator));
     bestiary_text.push_back(make_pair(COLOUR_WHITE, StringTable::get(creature->get_short_description_sid())));
+
+    // Display race details
+    string race_id = creature->get_race_id();
+    if (!race_id.empty())
+    {
+      RaceManager rm;
+      RacePtr race = rm.get_race(race_id);
+
+      bestiary_text.push_back(make_pair(COLOUR_WHITE, separator));
+      bestiary_text.push_back(make_pair(COLOUR_WHITE, StringTable::get(TextKeys::RACE) + ": " + StringTable::get(race->get_race_name_sid())));
+    }
 
     // Display the creature's details.
     bestiary_text.push_back(make_pair(COLOUR_WHITE, separator));

@@ -30,6 +30,7 @@ class TextKeys
     static const std::string AGE;
     static const std::string HAIR_COLOUR;
     static const std::string EYE_COLOUR;
+    static const std::string RACE;
     static const std::string SELECT_RACE;
     static const std::string SELECT_CLASS;
     static const std::string SELECT_DEITY;

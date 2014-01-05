@@ -36,6 +36,7 @@ const string TextKeys::AGE = "AGE";
 const string TextKeys::SEX = "SEX";
 const string TextKeys::HAIR_COLOUR = "HAIR_COLOUR";
 const string TextKeys::EYE_COLOUR = "EYE_COLOUR";
+const string TextKeys::RACE = "RACE";
 const string TextKeys::SELECT_SEX = "SELECT_SEX";
 const string TextKeys::SEX_MALE = "SEX_MALE";
 const string TextKeys::SEX_FEMALE = "SEX_FEMALE";
