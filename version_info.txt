@@ -4,6 +4,8 @@ Savage Lands v0.2.0 "Oswald"
 - Added new creatures: antlion, cave troll, stone jelly, fox maiden, king
   slime, steel slime.
 
+- Updated the bestiary to also include race information.
+
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.  Version finalized January 3, 2014.
 
