@@ -4799,6 +4799,46 @@
 				<Type>0</Type>
 			</Damage>
 		</Creature>
+		<Creature id="fell_lord">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>FELL_LORD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>FELL_LORD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>FELL_LORD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>FELL_LORD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>L</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>33</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>33</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9500</Exp>
+			</CreatureGeneration>
+			<Level>33</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>64</NumSides>
+				<Type>3</Type>
+			</Damage>
+		</Creature>
 		<Creature id="king_slime">
 			<RaceID>_jelly</RaceID>
 			<ShortDescriptionSID>KING_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
