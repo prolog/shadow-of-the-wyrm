@@ -14,5 +14,8 @@ class CreatureAlcoholTimer : public ICreatureRegeneration
     // Add a message if the creature has become drunk or sober.
     void add_inebriation_message_if_necessary(CreaturePtr creature, bool drunk_before, bool drunk_after);
 
+    // Check to see if the creature has died through alcohol poisoning.
+    void check_for_alcohol_poisoning_death(CreaturePtr creature);
+
     AlcoholCalculator alco_calc;
 };

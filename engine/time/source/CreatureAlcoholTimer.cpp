@@ -1,3 +1,5 @@
+#include "ActionTextKeys.hpp"
+#include "CombatManager.hpp"
 #include "CreatureAlcoholTimer.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -25,6 +27,7 @@ void CreatureAlcoholTimer::tick(CreaturePtr creature, const ulonglong minutes_th
     bool drunk_after = creature->has_status(StatusIdentifiers::STATUS_ID_DRUNK);
 
     add_inebriation_message_if_necessary(creature, drunk_before, drunk_after);
+    check_for_alcohol_poisoning_death(creature);
   }
 }
 
@@ -97,4 +100,20 @@ void CreatureAlcoholTimer::add_inebriation_message_if_necessary(CreaturePtr crea
   }
 
   manager.send();
+}
+
+// Check to see if a creature has died due to alcohol poisoning
+void CreatureAlcoholTimer::check_for_alcohol_poisoning_death(CreaturePtr creature)
+{
+  if (alco_calc.is_dead_of_alcohol_poisoning(creature))
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(ActionTextKeys::get_alcohol_poisoning_death_message(creature->get_description_sid(), creature->get_is_player()));
+    manager.send();
+
+    CombatManager cm;
+
+    CreaturePtr no_attacker;
+    cm.deal_damage(no_attacker, creature, creature->get_hit_points().get_current() + 1);
+  }
 }

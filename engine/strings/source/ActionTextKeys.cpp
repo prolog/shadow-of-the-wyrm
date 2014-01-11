@@ -12,17 +12,25 @@ ActionTextKeys::~ActionTextKeys()
 {
 }
 
-string ActionTextKeys::get_general_action_message(const string& desc_sid, const string& item_desc, const string& player_sid, const string& monster_sid, const bool is_player)
+string ActionTextKeys::get_general_message(const string& desc_sid, const string& player_message_sid, const string& monster_message_sid, const bool is_player)
 {
-  string message = StringTable::get(player_sid);
-  
+  string message = StringTable::get(player_message_sid);
+
   if (!is_player)
   {
-    message = StringTable::get(monster_sid);
+    message = StringTable::get(monster_message_sid);
+
     // Replace the creature part
     boost::replace_first(message, "%s", StringTable::get(desc_sid));
     message[0] = toupper(message[0]);
   }
+
+  return message;
+}
+
+string ActionTextKeys::get_general_action_message(const string& desc_sid, const string& item_desc, const string& player_sid, const string& monster_sid, const bool is_player)
+{
+  string message = get_general_message(desc_sid, player_sid, monster_sid, is_player);
   
   // Replace the item part.
   boost::replace_first(message, "%s", item_desc);
@@ -138,6 +146,11 @@ string ActionTextKeys::get_stumble_message(const string& creature_desc_sid, cons
   return stumble_msg;
 }
 
+string ActionTextKeys::get_alcohol_poisoning_death_message(const string& creature_desc_sid, const bool is_player)
+{
+  return get_general_message(creature_desc_sid, ActionTextKeys::ACTION_ALCOHOL_POISONING_PLAYER, ActionTextKeys::ACTION_ALCOHOL_POISONING_MONSTER, is_player);
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_SEARCH_BLIND               = "ACTION_SEARCH_BLIND";
@@ -191,3 +204,5 @@ const string ActionTextKeys::ACTION_POUR_PLAYER                   = "ACTION_POUR
 const string ActionTextKeys::ACTION_POUR_MONSTER                  = "ACTION_POUR_MONSTER";
 const string ActionTextKeys::ACTION_STUMBLE_PLAYER                = "ACTION_STUMBLE_PLAYER";
 const string ActionTextKeys::ACTION_STUMBLE_MONSTER               = "ACTION_STUMBLE_MONSTER";
+const string ActionTextKeys::ACTION_ALCOHOL_POISONING_PLAYER      = "ACTION_ALCOHOL_POISONING_PLAYER";
+const string ActionTextKeys::ACTION_ALCOHOL_POISONING_MONSTER     = "ACTION_ALCOHOL_POISONING_MONSTER";

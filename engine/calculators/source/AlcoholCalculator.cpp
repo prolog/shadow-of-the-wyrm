@@ -6,6 +6,8 @@ const uint AlcoholCalculator::BASE_MINUTES_FOR_ABSORPTION = 30;
 const uint AlcoholCalculator::BASE_MINUTES_FOR_METABOLIZATION = 60;
 const float AlcoholCalculator::BASE_METABOLISM_RATE = 0.5f;
 const float AlcoholCalculator::DRUNK_BAC_THRESHOLD = 0.08f;
+const float AlcoholCalculator::DEAD_BAC_THRESHOLD = 0.37f;
+
 map<CreatureSex, float> AlcoholCalculator::absorption_by_sex;
 
 AlcoholCalculator::AlcoholCalculator()
@@ -85,3 +87,24 @@ bool AlcoholCalculator::is_drunk(CreaturePtr creature)
 
   return drunk;
 }
+
+bool AlcoholCalculator::is_dead_of_alcohol_poisoning(CreaturePtr creature)
+{
+  bool dead = false;
+
+  if (creature)
+  {
+    float bac = creature->get_blood().get_blood_alcohol_content();
+
+    if (bac > DEAD_BAC_THRESHOLD)
+    {
+      dead = true;
+    }
+  }
+
+  return dead;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/AlcoholCalculator_test.cpp"
+#endif
