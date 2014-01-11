@@ -5453,5 +5453,8 @@
     <ClCompile Include="engine\calculators\source\AlcoholCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\AlcoholCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

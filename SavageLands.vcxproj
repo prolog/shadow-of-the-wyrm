@@ -1010,6 +1010,11 @@
     <ClCompile Include="engine\calculators\source\ToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\UnderworldMapDangerLevelCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\unit_tests\AlcoholCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\ArcanaPointsCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
