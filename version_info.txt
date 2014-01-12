@@ -3,7 +3,7 @@ Savage Lands v0.2.0 "Oswald"
 
 - Added new creatures: antlion, cave troll, stone jelly, fox maiden, 
   firebird, dire wolf, chaos beast, fell lord, voidling, witch king,
-  king slime, steel slime.
+  black monk, king slime, steel slime.
 
 - Creatures can now die if their blood alcohol content climbs too high
   (greater than 0.37).
