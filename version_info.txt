@@ -8,6 +8,8 @@ Savage Lands v0.2.0 "Oswald"
 - Creatures can now die if their blood alcohol content climbs too high
   (greater than 0.37).
 
+- Added Stonewall to the north-west of Atua-Elar.
+
 - Updated the bestiary to also include race information.
 
 Savage Lands v0.1.9 "Osmund"

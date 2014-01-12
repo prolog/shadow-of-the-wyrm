@@ -17,6 +17,7 @@ class TileExtraDescriptionKeys
     static const std::string TILE_EXTRA_DESCRIPTION_FOREST_OF_YEW;
     static const std::string TILE_EXTRA_DESCRIPTION_LALOS_GROTTO;
     static const std::string TILE_EXTRA_DESCRIPTION_ATUA_ELAR;
+    static const std::string TILE_EXTRA_DESCRIPTION_STONEWALL;
 
   protected:
     TileExtraDescriptionKeys();
