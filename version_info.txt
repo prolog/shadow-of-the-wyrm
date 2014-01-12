@@ -3,12 +3,16 @@ Savage Lands v0.2.0 "Oswald"
 
 - Added new creatures: antlion, cave troll, stone jelly, fox maiden, 
   firebird, dire wolf, chaos beast, fell lord, voidling, witch king,
-  black monk, king slime, steel slime.
+  black monk, king slime, steel slime, Akojo.
+
+- Added new artifacts: Goblincrusher.
 
 - Creatures can now die if their blood alcohol content climbs too high
   (greater than 0.37).
 
-- Added Stonewall to the north-west of Atua-Elar.
+- Added Stonewall to the north-west of Atua-Elar.  Populated it with
+  Akojo, the goblin captain, and an assortment of goblins of lesser
+  level.
 
 - Updated the bestiary to also include race information.
 
