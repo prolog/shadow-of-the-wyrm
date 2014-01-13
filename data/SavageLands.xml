@@ -5505,6 +5505,48 @@
 			</Damage>
 			<Soak>3</Soak>
 		</Creature>
+		<Creature id="goblin_elite_guard">
+			<RaceID>07_goblin</RaceID>
+			<ShortDescriptionSID>GOBLIN_ELITE_GUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GOBLIN_ELITE_GUARD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GOBLIN_ELITE_GUARD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GOBLIN_ELITE_GUARD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>13</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>15</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>15</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>60</Exp>
+			</CreatureGeneration>
+			<Level>15</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>30</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Evade>-7</Evade>
+			<Soak>4</Soak>
+		</Creature>
 		<Creature id="minotaur">
 			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>MINOTAUR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
