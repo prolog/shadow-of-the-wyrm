@@ -3,7 +3,7 @@ Savage Lands v0.2.0 "Oswald"
 
 - Added new creatures: antlion, cave troll, stone jelly, fox maiden, 
   firebird, dire wolf, chaos beast, fell lord, voidling, witch king,
-  black monk, king slime, steel slime, Akojo.
+  black monk, king slime, steel slime, Akojo, goblin elite guard.
 
 - Added new artifacts: Goblincrusher.
 

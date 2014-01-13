@@ -40,6 +40,20 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>goblin_elite_guard</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>43</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_elite_guard</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>46</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>goblin</ID>
 				<Coord>
 					<Row>5</Row>
