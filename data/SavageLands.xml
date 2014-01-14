@@ -4959,6 +4959,46 @@
 				<Type>7</Type>
 			</Damage>
 		</Creature>
+		<Creature id="virequus">
+			<RaceID>_humanoid</RaceID>
+			<ShortDescriptionSID>VIREQUUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>VIREQUUS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>VIREQUUS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>VIREQUUS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>V</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>37</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>37</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>30000</Exp>
+			</CreatureGeneration>
+			<Level>37</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>74</NumSides>
+				<Type>2</Type>
+			</Damage>
+		</Creature>
 		<Creature id="king_slime">
 			<RaceID>_jelly</RaceID>
 			<ShortDescriptionSID>KING_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
