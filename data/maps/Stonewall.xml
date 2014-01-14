@@ -49,8 +49,22 @@
 			<Placement>
 				<ID>goblin_elite_guard</ID>
 				<Coord>
-					<Row>9</Row>
+					<Row>8</Row>
 					<Col>46</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_impaler</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>24</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>goblin_impaler</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>48</Col>
 				</Coord>
 			</Placement>
 			<Placement>

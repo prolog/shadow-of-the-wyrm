@@ -5547,6 +5547,46 @@
 			<Evade>-7</Evade>
 			<Soak>4</Soak>
 		</Creature>
+		<Creature id="goblin_impaler">
+			<RaceID>07_goblin</RaceID>
+			<ShortDescriptionSID>GOBLIN_IMPALER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GOBLIN_IMPALER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GOBLIN_IMPALER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GOBLIN_IMPALER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>g</Symbol>
+				<Colour>6</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>17</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>125</Exp>
+			</CreatureGeneration>
+			<Level>17</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>44</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="minotaur">
 			<RaceID>_humanoid</RaceID>
 			<ShortDescriptionSID>MINOTAUR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
