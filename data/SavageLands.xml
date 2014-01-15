@@ -6207,7 +6207,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>&amp;</Symbol>
-				<Colour>15</Colour>
+				<Colour>123</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -7693,7 +7693,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>&amp;</Symbol>
-				<Colour>11</Colour>
+				<Colour>24</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>

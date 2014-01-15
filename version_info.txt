@@ -21,6 +21,9 @@ Savage Lands v0.2.0 "Oswald"
   (base) colour as a background (e.g., COLOUR_BLACK, COLOUR_RED, ...,
   COLOUR_WHITE - but not the bold colours).
 
+- Updated a couple of the more powerful creatures (archangel, demon
+  prince) to have white/red backgrounds, to indicate auras.
+
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.  Version finalized January 3, 2014.
 
