@@ -17,6 +17,10 @@ Savage Lands v0.2.0 "Oswald"
 
 - Updated the bestiary to also include race information.
 
+- Updated the curses colour initialization code to be able to set any
+  (base) colour as a background (e.g., COLOUR_BLACK, COLOUR_RED, ...,
+  COLOUR_WHITE - but not the bold colours).
+
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.  Version finalized January 3, 2014.
 
