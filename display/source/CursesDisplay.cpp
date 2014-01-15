@@ -22,6 +22,9 @@
 using namespace std;
 using namespace boost;
 
+const int CURSES_NUM_BASE_COLOURS = 8;
+const int CURSES_NUM_TOTAL_COLOURS = 16;
+
 // Assumption: menus is empty (prototype object), and so this is safe.
 Display* CursesDisplay::clone()
 {
@@ -108,14 +111,19 @@ bool CursesDisplay::uses_colour() const
 // Initialize the base ncurses colours.
 void CursesDisplay::initialize_colours()
 {
-  init_pair(1, COLOR_BLACK,   COLOR_BLACK);
-  init_pair(2, COLOR_RED,     COLOR_BLACK);
-  init_pair(3, COLOR_GREEN,   COLOR_BLACK);
-  init_pair(4, COLOR_YELLOW,  COLOR_BLACK);
-  init_pair(5, COLOR_BLUE,    COLOR_BLACK);
-  init_pair(6, COLOR_MAGENTA, COLOR_BLACK);
-  init_pair(7, COLOR_CYAN,    COLOR_BLACK);
-  init_pair(8, COLOR_WHITE,   COLOR_BLACK);
+  vector<short int> colours{COLOR_BLACK, COLOR_RED, COLOR_GREEN, COLOR_YELLOW, COLOR_BLUE, COLOR_MAGENTA, COLOR_CYAN, COLOR_WHITE};
+
+  short int pair_counter = 1;
+  for (auto bg_colour : colours)
+  {
+    for (auto fg_colour : colours)
+    {
+      init_pair(pair_counter, fg_colour, bg_colour);
+      pair_counter++;
+    }
+
+    pair_counter += CURSES_NUM_BASE_COLOURS;
+  }
 }
 
 // Turn on colour using attron.
@@ -125,7 +133,7 @@ void CursesDisplay::enable_colour(const int selected_colour, WINDOW* window)
 {
   if (uses_colour())
   {
-    if (selected_colour > COLOUR_WHITE)
+    if ((selected_colour % CURSES_NUM_TOTAL_COLOURS) > COLOUR_WHITE)
     {
       int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
       wattron(window, COLOR_PAIR(actual_colour+1));
@@ -142,7 +150,7 @@ void CursesDisplay::disable_colour(const int selected_colour, WINDOW* window)
 {
   if (uses_colour())
   {
-    if (selected_colour > COLOUR_WHITE)
+    if ((selected_colour % CURSES_NUM_TOTAL_COLOURS) > COLOUR_WHITE)
     {
       int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
       wattroff(window, COLOR_PAIR(actual_colour+1));
