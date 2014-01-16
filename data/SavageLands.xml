@@ -4999,6 +4999,46 @@
 				<Type>2</Type>
 			</Damage>
 		</Creature>
+		<Creature id="golden_eagle">
+			<RaceID>_animal</RaceID>
+			<ShortDescriptionSID>GOLDEN_EAGLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GOLDEN_EAGLE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GOLDEN_EAGLE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>GOLDEN_EAGLE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>E</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>38</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>38</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>45000</Exp>
+			</CreatureGeneration>
+			<Level>38</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>76</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="king_slime">
 			<RaceID>_jelly</RaceID>
 			<ShortDescriptionSID>KING_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
