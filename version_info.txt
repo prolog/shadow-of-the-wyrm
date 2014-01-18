@@ -17,6 +17,10 @@ Savage Lands v0.2.0 "Oswald"
 
 - Updated the bestiary to also include race information.
 
+- Changed the "L"ook command to also include the approximate difficulty of
+  a creature - this is based on the difference between the current level
+  of the "L"ooking creature and the target creature.
+
 - Updated the curses colour initialization code to be able to set any
   (base) colour as a background (e.g., COLOUR_BLACK, COLOUR_RED, ...,
   COLOUR_WHITE - but not the bold colours).
