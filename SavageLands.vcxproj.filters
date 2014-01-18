@@ -2835,6 +2835,12 @@
     <ClInclude Include="engine\calculators\include\AlcoholCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureDifficulty.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\DifficultyTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5455,6 +5461,15 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\AlcoholCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureDifficulty.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\DifficultyTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureDifficulty_test.cpp">
+      <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

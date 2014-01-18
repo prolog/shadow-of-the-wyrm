@@ -311,6 +311,7 @@
     <ClInclude Include="engine\conversion\include\StringConverter.hpp" />
     <ClInclude Include="engine\creatures\include\BlindedStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\BloodiedStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\CreatureDifficulty.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureFactory.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationConstants.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp" />
@@ -549,6 +550,7 @@
     <ClInclude Include="engine\strings\include\CombatTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DateTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DeityTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\DifficultyTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EffectTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EntranceTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\EquipmentTextKeys.hpp" />
@@ -1258,6 +1260,7 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\BlindedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\BloodiedStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\CreatureDifficulty.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureFactory.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationConstants.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureGenerationManager.cpp" />
@@ -1276,6 +1279,9 @@
     <ClCompile Include="engine\creatures\source\StatusEffectFactory.cpp" />
     <ClCompile Include="engine\creatures\source\StoneStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\StunnedStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\unit_tests\CreatureDifficulty_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1612,6 +1618,7 @@
     <ClCompile Include="engine\strings\source\CombatTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DateTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DeityTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\DifficultyTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\EffectTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\EntranceTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\EquipmentTextKeys.cpp" />
