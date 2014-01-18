@@ -9223,6 +9223,7 @@
 				<NumSides>50</NumSides>
 				<Type>2</Type>
 			</Damage>
+			<ChatScript>quests/kirin.lua</ChatScript>
 		</Creature>
 		<Creature id="akkara">
 			<RaceID>03_mountainelf</RaceID>
@@ -12280,6 +12281,17 @@
 				<Rarity>1</Rarity>
 				<Evade>6</Evade>
 				<Soak>5</Soak>
+			</Armour>
+			<Armour id="silari">
+				<DescriptionSID>SILARI_SID</DescriptionSID>
+				<UsageDescriptionSID>SILARI_USAGE_SID</UsageDescriptionSID>
+				<Value>2100</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>6</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Evade>9</Evade>
+				<Soak>9</Soak>
 			</Armour>
 			<Armour id="shell_armour">
 				<DescriptionSID>SHELL_ARMOUR_SID</DescriptionSID>
