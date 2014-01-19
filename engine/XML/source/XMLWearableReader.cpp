@@ -20,5 +20,11 @@ void XMLWearableReader::parse(WearablePtr wearable, GenerationValues& gv, const 
     
     int soak = XMLUtils::get_child_node_int_value(wearable_node, "Soak");
     wearable->set_soak(soak);
+
+    int to_hit = XMLUtils::get_child_node_int_value(wearable_node, "ToHit");
+    wearable->set_to_hit(to_hit);
+
+    int addl_damage = XMLUtils::get_child_node_int_value(wearable_node, "AddlDamage");
+    wearable->set_addl_damage(addl_damage);
   }
 }

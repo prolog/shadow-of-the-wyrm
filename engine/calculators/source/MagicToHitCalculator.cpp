@@ -12,6 +12,8 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
 
   if (creature)
   {
+    to_hit = creature->get_to_hit().get_current();
+
     SkillManager sm;
 
     // Have you ever tried directing a fireball while drunk?

@@ -3,8 +3,8 @@ Savage Lands v0.2.0 "Oswald"
 
 - Added new creatures: antlion, cave troll, stone jelly, fox maiden, 
   firebird, dire wolf, chaos beast, fell lord, voidling, witch king,
-  black monk, virequus, golden eagle, star beast, king slime, steel slime, 
-  Akojo, goblin elite guard, goblin impaler.
+  black monk, virequus, golden eagle, star beast, king slime, war
+  mammoth, steel slime, Akojo, goblin elite guard, goblin impaler.
 
 - Added new artifacts: Goblincrusher.
 
@@ -27,6 +27,9 @@ Savage Lands v0.2.0 "Oswald"
 
 - Updated a couple of the more powerful creatures (archangel, demon
   prince) to have white/red backgrounds, to indicate auras.
+
+- All wearable items can now contribute a to-hit and additional-damage
+  bonus or penalty.
 
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.  Version finalized January 3, 2014.

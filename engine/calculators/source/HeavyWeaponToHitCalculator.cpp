@@ -16,6 +16,8 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
 
   if (creature)
   {
+    to_hit = creature->get_to_hit().get_current();
+
     SkillManager sm;
     
     int combat   = sm.get_skill_value(creature, SKILL_GENERAL_COMBAT);

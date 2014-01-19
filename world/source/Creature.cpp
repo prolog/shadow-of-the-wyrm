@@ -30,6 +30,8 @@ Creature::Creature()
   set_base_soak(0);
   set_evade(0);
   set_soak (0);
+  set_to_hit(0);
+  set_addl_damage(0);
   
   // Base speed is 50.  This needs to be set or slimes get 25 actions to your 1 (23 or 24 if you're quick!).
   set_speed(50);
@@ -81,6 +83,8 @@ Creature::Creature(const Creature& cr)
   base_soak = cr.base_soak;
   evade = cr.evade;
   soak = cr.soak;
+  to_hit = cr.to_hit;
+  addl_damage = cr.addl_damage;
   symbol = cr.symbol;
   colour = cr.colour;
   level = cr.level;
@@ -160,6 +164,8 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (evade == cr.evade);
   result = result && (base_soak == cr.base_soak);
   result = result && (soak == cr.soak);
+  result = result && (to_hit == cr.to_hit);
+  result = result && (addl_damage == cr.addl_damage);
   result = result && (symbol == cr.symbol);
   result = result && (colour == cr.colour);
   result = result && (level == cr.level);
@@ -641,6 +647,26 @@ Statistic Creature::get_soak() const
   return soak;
 }
 
+void Creature::set_to_hit(const Statistic& new_to_hit)
+{
+  to_hit = new_to_hit;
+}
+
+Statistic Creature::get_to_hit() const
+{
+  return to_hit;
+}
+
+void Creature::set_addl_damage(const Statistic& new_addl_damage)
+{
+  addl_damage = new_addl_damage;
+}
+
+Statistic Creature::get_addl_damage() const
+{
+  return addl_damage;
+}
+
 void Creature::set_symbol(const uchar new_symbol)
 {
   symbol = new_symbol;
@@ -982,7 +1008,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 848, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 872, "Unexpected sizeof Creature.");
     #else
     // Release
 	static_assert(sizeof(*this) == 872, "Unexpected sizeof Creature.");
@@ -1033,6 +1059,8 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->base_soak, cr.base_soak);
   std::swap(this->evade, cr.evade);
   std::swap(this->soak, cr.soak);
+  std::swap(this->to_hit, cr.to_hit);
+  std::swap(this->addl_damage, cr.addl_damage);
   std::swap(this->symbol, cr.symbol);
   std::swap(this->colour, cr.colour);
   std::swap(this->level, cr.level);
@@ -1103,6 +1131,9 @@ bool Creature::serialize(ostream& stream) const
   base_soak.serialize(stream);
   evade.serialize(stream);
   soak.serialize(stream);
+
+  to_hit.serialize(stream);
+  addl_damage.serialize(stream);
 
   Serialize::write_uchar(stream, symbol);
   Serialize::write_enum(stream, colour);
@@ -1226,6 +1257,9 @@ bool Creature::deserialize(istream& stream)
   base_soak.deserialize(stream);
   evade.deserialize(stream);
   soak.deserialize(stream);
+
+  to_hit.deserialize(stream);
+  addl_damage.deserialize(stream);
 
   Serialize::read_uchar(stream, symbol);
   Serialize::read_enum(stream, colour);

@@ -181,6 +181,13 @@ class Creature : public ISerializable
     void set_soak(const Statistic& new_soak);
     Statistic get_soak() const;
 
+    // Set/get attacking statistics.
+    void set_to_hit(const Statistic& new_to_hit);
+    Statistic get_to_hit() const;
+
+    void set_addl_damage(const Statistic& new_addl_damage);
+    Statistic get_addl_damage() const;
+
     // Basic display info
     void set_symbol(const uchar new_symbol);
     uchar get_symbol() const;
@@ -342,6 +349,11 @@ class Creature : public ISerializable
     Statistic base_soak;
     Statistic evade;
     Statistic soak;
+
+    // Used for hitting and damaging (base should be 0, with bonuses provided
+    // by eqiupment).
+    Statistic to_hit;
+    Statistic addl_damage;
 
     // Various flags
 
