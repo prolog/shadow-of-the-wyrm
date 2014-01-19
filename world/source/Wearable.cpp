@@ -5,12 +5,32 @@ using namespace std;
 using std::dynamic_pointer_cast;
 
 Wearable::Wearable()
-: evade(0), soak(0)
+: evade(0), soak(0), to_hit(0), addl_damage(0)
 {
 }
 
 Wearable::~Wearable()
 {
+}
+
+void Wearable::set_to_hit(const int new_to_hit)
+{
+  to_hit = new_to_hit;
+}
+
+int Wearable::get_to_hit() const
+{
+  return to_hit;
+}
+
+void Wearable::set_addl_damage(const int new_addl_damage)
+{
+  addl_damage = new_addl_damage;
+}
+
+int Wearable::get_addl_damage() const
+{
+  return addl_damage;
 }
 
 void Wearable::set_evade(const int new_evade)
@@ -44,6 +64,8 @@ bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i)
   {
     match = match && (evade == i_wear->get_evade());
     match = match && (soak  == i_wear->get_soak() );
+    match = match && (to_hit == i_wear->get_to_hit());
+    match = match && (addl_damage == i_wear->get_addl_damage());
   }
   
   return match;
@@ -54,6 +76,8 @@ bool Wearable::serialize(ostream& stream) const
   Item::serialize(stream);
   Serialize::write_int(stream, evade);
   Serialize::write_int(stream, soak);
+  Serialize::write_int(stream, to_hit);
+  Serialize::write_int(stream, addl_damage);
 
   return true;
 }
@@ -63,6 +87,8 @@ bool Wearable::deserialize(istream& stream)
   Item::deserialize(stream);
   Serialize::read_int(stream, evade);
   Serialize::read_int(stream, soak);
+  Serialize::read_int(stream, to_hit);
+  Serialize::read_int(stream, addl_damage);
 
   return true;
 }

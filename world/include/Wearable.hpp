@@ -10,6 +10,12 @@ class Wearable : public Item
     Wearable();
     virtual ~Wearable();
     
+    void set_to_hit(const int new_to_hit);
+    int get_to_hit() const;
+
+    void set_addl_damage(const int new_addl_damage);
+    int get_addl_damage() const;
+
     void set_evade(const int new_evade);
     int get_evade() const;
     
@@ -22,7 +28,7 @@ class Wearable : public Item
     virtual bool deserialize(std::istream& stream) override;
     
   protected:
-    int evade, soak;
+    int evade, soak, to_hit, addl_damage;
 };
 
 typedef std::shared_ptr<Wearable> WearablePtr;

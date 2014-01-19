@@ -59,14 +59,15 @@ Damage PhysicalDamageCalculator::calculate_base_damage_object(CreaturePtr attack
   return wm.get_damage(attacking_creature, attack_type);
 }
 
-// Physical damage gets +1 for every 5 points of Strength over 10.
+// Physical damage gets +1 for every 5 points of Strength over 10, plus
+// the creature's base additional damage.
 Damage PhysicalDamageCalculator::calculate_base_damage_with_bonuses_or_penalties(CreaturePtr attacking_creature)
 {
   Damage base_damage = calculate_base_damage_object(attacking_creature);
   
   if (attacking_creature)
   {
-    int current_modifier = base_damage.get_modifier();
+    int current_modifier = base_damage.get_modifier() + attacking_creature->get_addl_damage().get_current();
     int bac_modifier = static_cast<int>(attacking_creature->get_blood().get_blood_alcohol_content() * 100) / 2;
 
     current_modifier += get_statistic_based_damage_modifier(attacking_creature);

@@ -803,6 +803,8 @@
 			<xs:sequence>
 				<xs:element name="Evade" type="xs:integer" minOccurs="0"/>
 				<xs:element name="Soak" type="xs:integer" minOccurs="0"/>
+				<xs:element name="ToHit" type="xs:integer" minOccurs="0"/>
+				<xs:element name="AddlDamage" type="xs:integer" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -1197,7 +1199,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="15"/>
+		<xs:maxInclusive value="127"/>
 	</xs:restriction>
 
 </xs:simpleType>
