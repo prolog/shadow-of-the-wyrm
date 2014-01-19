@@ -11,7 +11,7 @@ const int CreatureDifficulty::HARMLESS_THRESHOLD = 8;
 const int CreatureDifficulty::EASY_THRESHOLD = 3;
 const int CreatureDifficulty::CAPABLE_THRESHOLD = -3;
 const int CreatureDifficulty::DANGEROUS_THRESHOLD = -8;
-const int CreatureDifficulty::DEADLY_THRESHOLD = -50;
+const int CreatureDifficulty::DEADLY_THRESHOLD = std::numeric_limits<int>::min();
 
 CreatureDifficulty::CreatureDifficulty()
 {

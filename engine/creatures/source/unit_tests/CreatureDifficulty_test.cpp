@@ -40,5 +40,10 @@ TEST(SL_Engine_Creatures_CreatureDifficulty, difficulty_text_sids)
   c2->set_level(c2_level);
   
   EXPECT_EQ(DifficultyTextKeys::DIFFICULTY_DEADLY, cd.get_difficulty_text_sid(c1, c2));
+
+  c2_level = 10000;
+  c2->set_level(c2_level);
+
+  EXPECT_EQ(DifficultyTextKeys::DIFFICULTY_DEADLY, cd.get_difficulty_text_sid(c1, c2));
 }
 
