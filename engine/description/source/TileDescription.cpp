@@ -54,7 +54,7 @@ string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, boo
 
           if (creature)
           {
-            CreatureDescriber cd(creature);
+            CreatureDescriber cd(viewing_creature, creature);
             string creature_desc = cd.describe_for_tile_selection();
             tile_info_strings.push_back(creature_desc);
           }

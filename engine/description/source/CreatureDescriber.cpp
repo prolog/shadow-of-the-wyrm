@@ -1,5 +1,6 @@
 #include <sstream>
 #include "ActionTextKeys.hpp"
+#include "CreatureDifficulty.hpp"
 #include "CreatureDescriber.hpp"
 #include "CreatureTranslator.hpp"
 #include "Conversion.hpp"
@@ -11,8 +12,8 @@
 
 using namespace std;
 
-CreatureDescriber::CreatureDescriber(CreaturePtr new_creature)
-: creature(new_creature)
+CreatureDescriber::CreatureDescriber(CreaturePtr pov_creature, CreaturePtr new_creature)
+: viewing_creature(pov_creature), creature(new_creature)
 {
 }
 
@@ -48,14 +49,18 @@ string CreatureDescriber::describe() const
 
 string CreatureDescriber::describe_for_tile_selection() const
 {
+  ostringstream ss;
   string creature_description = describe();
-
+  
   if (!creature_description.empty())
   {
-    creature_description = creature_description + " (" + StringTable::get(ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION) + ")";
+    CreatureDifficulty cd;
+
+    string difficulty = cd.get_difficulty_text_sid(viewing_creature, creature);
+    ss << creature_description << " (" << StringTable::get(difficulty) << "; " << StringTable::get(ActionTextKeys::ACTION_BESTIARY_DISPLAY_COMMAND_FOR_TILE_SELECTION) << ")";
   }
 
-  return creature_description;
+  return ss.str();
 }
 
 // Get a short synopsis of the form "Foo, L12 Wood Elf Wizard" for the save file.

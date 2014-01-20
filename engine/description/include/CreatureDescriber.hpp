@@ -5,7 +5,7 @@
 class CreatureDescriber : public IDescriber
 {
   public:
-    CreatureDescriber(CreaturePtr new_creature);
+    CreatureDescriber(CreaturePtr viewing_creature, CreaturePtr new_creature);
 
     std::string describe() const override;
     std::string describe_for_tile_selection() const;
@@ -14,5 +14,6 @@ class CreatureDescriber : public IDescriber
   protected:
     std::string describe_statuses() const;
 
+    CreaturePtr viewing_creature;
     CreaturePtr creature;
 };

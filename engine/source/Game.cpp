@@ -592,7 +592,7 @@ bool Game::serialize(ostream& stream) const
 
   // Write a synopsis about the player's character, to be used when viewing
   // the list of saved games.
-  CreatureDescriber cd(get_current_player());
+  CreatureDescriber cd(get_current_player(), get_current_player());
   Serialize::write_string(stream, cd.describe_for_save_file());
 
   // Ignore keep_playing
