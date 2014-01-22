@@ -34,6 +34,11 @@ Savage Lands v0.2.0 "Oswald"
 - All wearable items can now contribute a to-hit and additional-damage
   bonus or penalty.
 
+- The equipment and inventory screens now show the attack and defense
+  bonuses of wearable items, when those values exist.  Fixed up some
+  issues where the description and usage description weren't being
+  properly differentiated.
+
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.  Version finalized January 3, 2014.
 

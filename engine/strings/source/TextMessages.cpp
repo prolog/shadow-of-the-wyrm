@@ -258,38 +258,38 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
 
 string TextMessages::get_item_drop_message(const bool blind, ItemPtr item)
 {
-  IDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
+  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
 
   string item_message = StringTable::get(TextMessages::ITEM_DROP_MESSAGE);
-  boost::replace_first(item_message, "%s", id->describe());
+  boost::replace_first(item_message, "%s", id->describe_usage());
   
   return item_message;
 }
 
 string TextMessages::get_item_pick_up_message(const bool blind, ItemPtr item)
 {
-  IDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
+  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
   
   string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_MESSAGE);
-  boost::replace_first(item_message, "%s", id->describe());
+  boost::replace_first(item_message, "%s", id->describe_usage());
   return item_message;
 }
 
 string TextMessages::get_item_pick_up_and_merge_message(const bool blind, ItemPtr item)
 {
-  IDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
+  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
 
   string item_message = StringTable::get(TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE);
-  boost::replace_first(item_message, "%s", id->describe());
+  boost::replace_first(item_message, "%s", id->describe_usage());
   return item_message;
 }
 
 string TextMessages::get_item_on_ground_description_message(const bool blind, ItemPtr item)
 {
-  IDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
+  ItemDescriberPtr id = ItemDescriberFactory::create_item_describer(blind, item);
 
   string item_message = StringTable::get(TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE);
-  boost::replace_first(item_message, "%s", id->describe());
+  boost::replace_first(item_message, "%s", id->describe_usage());
   return item_message;
 }
 

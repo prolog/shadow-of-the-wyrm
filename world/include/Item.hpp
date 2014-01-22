@@ -53,10 +53,9 @@ class Item : public ISerializable
     // The synopsis is displayed after the item's description in the inventory
     // and equipment screens, if the item is identified.  It is expected that
     // certain types of items may override this function: wands will display
-    // charges, armour will display ev/soak, weapons will display to-hit and
-    // damage modifiers, etc.
+    // charges, etc.
     virtual std::string get_synopsis() const;
-    
+
     // Whether the item can be used as part of a read command - scrolls and spellbooks will, and all
     // other items should not set this.
     virtual void set_readable(const bool new_readable);

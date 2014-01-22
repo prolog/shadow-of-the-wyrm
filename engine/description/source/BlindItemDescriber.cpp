@@ -5,8 +5,8 @@
 using std::string;
 
 BlindItemDescriber::BlindItemDescriber()
+: ItemDescriber(ItemPtr())
 {
-  int x = 1;
 }
 
 string BlindItemDescriber::describe() const
@@ -15,3 +15,7 @@ string BlindItemDescriber::describe() const
   return item_description;
 }
 
+string BlindItemDescriber::describe_usage() const
+{
+  return describe();
+}

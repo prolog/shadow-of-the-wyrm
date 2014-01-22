@@ -56,9 +56,8 @@ int WeaponDifficultyCalculator::calculate_total_difficulty_for_display(CreatureP
   ToHitCalculatorPtr th_calculator = ToHitCalculatorFactory::create_to_hit_calculator(creature, attack_type);
 
   int base_difficulty = calculate_base_difficulty(creature, attack_type);
-  // JCD FIXME: Move this into a function on the WeaponDifficultyCalculator.
-  // Since "total difficulty" as a concept is only used here, it should go into 
-  // WDC.  The CombatManager uses base_roll + to_hit, instead of "weapon_difficulty - to_hit".
+  // "Total difficulty" as a concept is only used here.
+  // The CombatManager uses base_roll + to_hit, instead of "weapon_difficulty - to_hit".
   int total_difficulty = base_difficulty - th_calculator->calculate(creature);
 
   return total_difficulty;

@@ -1,3 +1,4 @@
+#include <sstream>
 #include "Serialize.hpp"
 #include "Wearable.hpp"
 
@@ -51,6 +52,23 @@ void Wearable::set_soak(const int new_soak)
 int Wearable::get_soak() const
 {
   return soak;
+}
+
+string Wearable::get_synopsis() const
+{
+  stringstream ss;
+
+  if (to_hit > 0 || addl_damage > 0)
+  {
+    ss << "(" << to_hit << ", " << addl_damage << ") ";
+  }
+  
+  if (evade > 0 || soak > 0)
+  {
+    ss << "[" << evade << ", " << soak << "]";
+  }
+
+  return ss.str();
 }
 
 bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i)
