@@ -6,9 +6,9 @@ ItemDescriberFactory::ItemDescriberFactory()
 {
 }
 
-IDescriberPtr ItemDescriberFactory::create_item_describer(const bool player_blind, ItemPtr item)
+ItemDescriberPtr ItemDescriberFactory::create_item_describer(const bool player_blind, ItemPtr item)
 {
-  IDescriberPtr describer;
+  ItemDescriberPtr describer;
 
   if (player_blind)
   {

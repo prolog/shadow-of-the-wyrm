@@ -21,6 +21,8 @@ class Wearable : public Item
     
     void set_soak(const int new_soak);
     int get_soak() const;
+
+    std::string get_synopsis() const override;
     
     virtual bool additional_item_attributes_match(std::shared_ptr<Item> i) override;
 

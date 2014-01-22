@@ -8,7 +8,7 @@
 class ItemDescriberFactory
 {
   public:
-    static IDescriberPtr create_item_describer(const bool player_blind, const ItemPtr item);
+    static ItemDescriberPtr create_item_describer(const bool player_blind, const ItemPtr item);
 
   protected:
     ItemDescriberFactory();
