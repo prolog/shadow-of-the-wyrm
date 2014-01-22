@@ -5201,6 +5201,46 @@
 				<Type>3</Type>
 			</Damage>
 		</Creature>
+		<Creature id="hellhound">
+			<RaceID>_demon</RaceID>
+			<ShortDescriptionSID>HELLHOUND_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HELLHOUND_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HELLHOUND_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HELLHOUND_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>h</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>43</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>43</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>120000</Exp>
+			</CreatureGeneration>
+			<Level>43</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>86</NumSides>
+				<Type>3</Type>
+			</Damage>
+		</Creature>
 		<Creature id="steel_slime">
 			<RaceID>_jelly</RaceID>
 			<BreatheType>1</BreatheType>
