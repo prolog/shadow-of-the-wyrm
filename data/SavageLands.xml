@@ -12971,17 +12971,7 @@
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
-					<Slash>0.05</Slash>
-					<Pierce>0.05</Pierce>
-					<Pound>0.05</Pound>
 					<Heat>0.25</Heat>
-					<Cold>-0.20</Cold>
-					<Acid>0.10</Acid>
-					<Poison>0.20</Poison>
-					<Holy>0.20</Holy>
-					<Shadow>0.30</Shadow>
-					<Arcane>0.20</Arcane>
-					<Lightning>0.10</Lightning>
 				</Resistances>
 				<Evade>4</Evade>
 				<Soak>1</Soak>
