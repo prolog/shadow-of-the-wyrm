@@ -26,13 +26,14 @@ string ResistancesTranslator::create_description(const Resistances& res)
 
         if (!dequal(val, 0.00))
         {
-          ss << val << StringTable::get(cur_res->get_abrv_sid());
-
-          if (first)
+          if (!first)
           {
             ss << " ";
-            first = false;
           }
+
+          ss << val << StringTable::get(cur_res->get_abrv_sid());
+
+          first = false;
         }
       }
     }
