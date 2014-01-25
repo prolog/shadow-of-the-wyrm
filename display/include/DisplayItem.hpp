@@ -19,6 +19,9 @@ class DisplayItem
     void set_description(const std::string& new_description);
     std::string get_description() const;
 
+    void set_additional_description(const std::string& new_additional_description);
+    std::string get_additional_description() const;
+
     void set_flags(const DisplayItemFlagsVec& new_flags);
     DisplayItemFlagsVec get_flags() const;
 
@@ -31,6 +34,7 @@ class DisplayItem
     // Additional status-related items go here.
   protected:
     std::string description;
+    std::string additional_description;
     std::vector<std::pair<std::string, Colour>> flags;
     Colour colour;
     std::string id;

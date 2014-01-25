@@ -19,3 +19,10 @@ string BlindItemDescriber::describe_usage() const
 {
   return describe();
 }
+
+// Nothing shows up for the additional desc when blind.
+string BlindItemDescriber::describe_additional() const
+{
+  string no_addl_desc;
+  return no_addl_desc;
+}

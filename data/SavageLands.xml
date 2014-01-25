@@ -13090,7 +13090,7 @@
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
-					<Arcane>0.25</Arcane>
+					<Lightning>0.25</Lightning>
 				</Resistances>
 				<Evade>4</Evade>
 				<Soak>1</Soak>

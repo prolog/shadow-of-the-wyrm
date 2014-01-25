@@ -21,7 +21,7 @@ class Resistance : public ISerializable
   public:
     Resistance();
     virtual ~Resistance() {};
-    Resistance(const DamageType type, const std::string& name_sid, const double value);
+    Resistance(const DamageType type, const std::string& name_sid, const std::string& abrv_sid, const double value);
     virtual bool operator==(const Resistance& res) const;
 
     void set_type(const DamageType new_type);
@@ -29,6 +29,9 @@ class Resistance : public ISerializable
 
     void set_name_sid(const std::string& new_name_sid);
     std::string get_name_sid() const;
+
+    void set_abrv_sid(const std::string& new_abrv_sid);
+    std::string get_abrv_sid() const;
 
     void set_value(const double new_value);
     double get_value() const;
@@ -43,11 +46,14 @@ class Resistance : public ISerializable
   protected:
     DamageType type;
     std::string name_sid;
+    std::string abrv_sid;
     double value;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;
 };
+
+typedef std::shared_ptr<Resistance> ResistancePtr;
 
 // Individual resistance types
 class SlashResistance : public Resistance
@@ -180,8 +186,11 @@ class Resistances : public ISerializable
     Resistances();
     virtual bool operator==(const Resistances& resistances) const;
 
+    bool has_resistances_or_vulnerabilities() const;
+
     void set_resistance_value(const DamageType type, double value);
     void set_all_resistances_to(const double new_value);
+    ResistancePtr get_resistance(const DamageType dt) const;
     double get_resistance_value(const DamageType type) const;
 
     std::string str() const;

@@ -1,6 +1,7 @@
 #include "Conversion.hpp"
 #include "ItemDescriber.hpp"
 #include "ItemIdentifier.hpp"
+#include "ResistancesTranslator.hpp"
 #include "StringTable.hpp"
 
 using std::string;
@@ -50,3 +51,22 @@ string ItemDescriber::describe_usage() const
   return item_description;
 }
 
+string ItemDescriber::describe_additional() const
+{
+  string addl_desc;
+
+  if (item)
+  {
+    ItemIdentifier item_id;
+
+    if (item_id.get_item_identified(item->get_base_id()))
+    {
+      Resistances res = item->get_resistances();
+
+      ResistancesTranslator rt;
+      addl_desc = rt.create_description(res);
+    }
+  }
+
+  return addl_desc;
+}
