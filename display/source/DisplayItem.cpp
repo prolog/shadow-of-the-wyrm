@@ -21,6 +21,16 @@ string DisplayItem::get_description() const
   return description;
 }
 
+void DisplayItem::set_additional_description(const string& new_additional_description)
+{
+  additional_description = new_additional_description;
+}
+
+string DisplayItem::get_additional_description() const
+{
+  return additional_description;
+}
+
 void DisplayItem::set_flags(const DisplayItemFlagsVec& new_flags)
 {
   flags = new_flags;

@@ -45,6 +45,9 @@ Savage Lands v0.2.0 "Oswald"
   which are used each turn to update a creature's overall resistances, also
   taking into account race and class values.
 
+- If an item has resistances or vulnerabilties, these will be included in
+  a synopsis on the second line of the equipment screen.
+
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.  Version finalized January 3, 2014.
 

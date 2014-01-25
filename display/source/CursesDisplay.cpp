@@ -886,13 +886,13 @@ void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
   char slot_char = 'A';
   
   // Ensure that the first row of the equipment is right below the "---"
-  current_row--;
+//x  current_row--;
   
   // Display each individual slot
   for (DisplayEquipmentMap::const_iterator e_it = equipment.begin(); e_it != equipment.end(); e_it++)
   {
     // One row for item synopsis, one row for status effects
-    current_row += 2;
+    current_row += 1;
     ostringstream ss;
     
     EquipmentWornLocation worn_location = e_it->first;
@@ -918,6 +918,9 @@ void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
       wprintw(eq_window, flag_pair.first.c_str());
       disable_colour(flag_pair.second, eq_window);
     }
+
+    current_row += 1;
+    mvwprintw(eq_window, current_row, 6 + longest, display_item.get_additional_description().c_str());
 
     slot_char++;
   }
