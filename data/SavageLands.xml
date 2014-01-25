@@ -12380,30 +12380,6 @@
 	</Tiles>
 	<Items>
 		<Armours>
-			<Armour id="fencers_ring">
-				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
-				<UsageDescriptionSID>FENCERS_RING_USAGE_SID</UsageDescriptionSID>
-				<Value>5</Value>
-				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
-				<WornLocation>2</WornLocation>
-				<Material>0</Material>
-				<DangerLevel>3</DangerLevel>
-				<Evade>0</Evade>
-				<Soak>0</Soak>
-				<ToHit>15</ToHit>
-			</Armour>
-			<Armour id="barbarians_ring">
-				<DescriptionSID>BARBARIANS_RING_SID</DescriptionSID>
-				<UsageDescriptionSID>BARBARIANS_RING_USAGE_SID</UsageDescriptionSID>
-				<Value>5</Value>
-				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
-				<WornLocation>2</WornLocation>
-				<Material>0</Material>
-				<DangerLevel>3</DangerLevel>
-				<Evade>0</Evade>
-				<Soak>0</Soak>
-				<AddlDamage>10</AddlDamage>
-			</Armour>
 			<Armour id="cap">
 				<DescriptionSID>CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>CAP_USAGE_SID</UsageDescriptionSID>
@@ -12958,6 +12934,168 @@
 				<Soak>0</Soak>
 			</Armour>
 		</Armours>
+		<Rings>
+			<Ring id="fencers_ring">
+				<DescriptionSID>FENCERS_RING_SID</DescriptionSID>
+				<UsageDescriptionSID>FENCERS_RING_USAGE_SID</UsageDescriptionSID>
+				<Value>105</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>3</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>0</Soak>
+				<ToHit>15</ToHit>
+			</Ring>
+			<Ring id="barbarians_ring">
+				<DescriptionSID>BARBARIANS_RING_SID</DescriptionSID>
+				<UsageDescriptionSID>BARBARIANS_RING_USAGE_SID</UsageDescriptionSID>
+				<Value>205</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>3</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>0</Soak>
+				<AddlDamage>10</AddlDamage>
+			</Ring>
+			<Ring id="ring_flame">
+				<DescriptionSID>RING_FLAME_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_FLAME_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_FLAME_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_FLAME_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Heat>0.25</Heat>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>1</Soak>
+			</Ring>
+			<Ring id="ring_ice">
+				<DescriptionSID>RING_ICE_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_ICE_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_ICE_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_ICE_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Cold>0.25</Cold>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>1</Soak>
+			</Ring>
+			<Ring id="ring_acid">
+				<DescriptionSID>RING_ACID_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_ACID_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_ACID_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_ACID_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Acid>0.25</Acid>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>1</Soak>
+			</Ring>
+			<Ring id="ring_poison">
+				<DescriptionSID>RING_POISON_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_POISON_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_POISON_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_POISON_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Poison>0.25</Poison>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>1</Soak>
+			</Ring>
+			<Ring id="ring_holiness">
+				<DescriptionSID>RING_HOLINESS_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_HOLINESS_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_HOLINESS_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_HOLINESS_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Holy>0.25</Holy>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>1</Soak>
+			</Ring>
+			<Ring id="ring_shadows">
+				<DescriptionSID>RING_SHADOWS_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_SHADOWS_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_SHADOWS_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_SHADOWS_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Shadow>0.25</Shadow>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>1</Soak>
+			</Ring>
+			<Ring id="ring_sorcery">
+				<DescriptionSID>RING_SORCERY_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_SORCERY_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_SORCERY_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_SORCERY_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Arcane>0.25</Arcane>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>1</Soak>
+			</Ring>
+			<Ring id="ring_lightning">
+				<DescriptionSID>RING_LIGHTNING_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_RING_LIGHTNING_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>RING_LIGHTNING_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_RING_LIGHTNING_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>325</Value>
+				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
+				<WornLocation>2</WornLocation>
+				<Material>0</Material>
+				<DangerLevel>8</DangerLevel>
+				<Rarity>1</Rarity>
+				<Resistances>
+					<Arcane>0.25</Arcane>
+				</Resistances>
+				<Evade>4</Evade>
+				<Soak>1</Soak>
+			</Ring>
+		</Rings>
 		<Weapons>
 			<Weapon id="iron_hammer">
 				<DescriptionSID>IRON_HAMMER_SID</DescriptionSID>

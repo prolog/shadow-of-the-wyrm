@@ -130,6 +130,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Armours" minOccurs="0"/>
+			<xs:element ref="tns:Rings" minOccurs="0"/>
 			<xs:element name="Weapons" type="tns:Weapons" minOccurs="0"/>
 			<xs:element name="RangedWeapons" type="tns:Weapons" minOccurs="0"/>
 			<xs:element ref="tns:Ammunition" minOccurs="0"/>
@@ -371,17 +372,17 @@
 <xs:annotation><xs:documentation>Each resistance is either positive (resistance) or negative (vulnerability), and is a delta subtracted from a base value of 1.  The final resistance is a damage multiplier, so any value greater than 1 inflicts more damage, and any value less than 1 inflicts less damage (in extreme cases, values can be negative, which heal)</xs:documentation></xs:annotation>
 	<xs:complexType>
 		<xs:sequence>
-			<xs:element name="Slash" type="xs:float"/>
-			<xs:element name="Pierce" type="xs:float"/>
-			<xs:element name="Pound" type="xs:float"/>
-			<xs:element name="Heat" type="xs:float"/>
-			<xs:element name="Cold" type="xs:float"/>
-			<xs:element name="Acid" type="xs:float"/>
-			<xs:element name="Poison" type="xs:float"/>
-			<xs:element name="Holy" type="xs:float"/>
-			<xs:element name="Shadow" type="xs:float"/>
-			<xs:element name="Arcane" type="xs:float"/>
-			<xs:element name="Lightning" type="xs:float"/>
+			<xs:element name="Slash" type="xs:float" minOccurs="0"/>
+			<xs:element name="Pierce" type="xs:float" minOccurs="0"/>
+			<xs:element name="Pound" type="xs:float" minOccurs="0"/>
+			<xs:element name="Heat" type="xs:float" minOccurs="0"/>
+			<xs:element name="Cold" type="xs:float" minOccurs="0"/>
+			<xs:element name="Acid" type="xs:float" minOccurs="0"/>
+			<xs:element name="Poison" type="xs:float" minOccurs="0"/>
+			<xs:element name="Holy" type="xs:float" minOccurs="0"/>
+			<xs:element name="Shadow" type="xs:float" minOccurs="0"/>
+			<xs:element name="Arcane" type="xs:float" minOccurs="0"/>
+			<xs:element name="Lightning" type="xs:float" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -622,6 +623,13 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
+<xs:element name="Rings">
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Ring" type="tns:Ring" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
 <!-- COMPLEX TYPES -->
 <!-- The "InitialItem complex type should have a choice of
 		1. An item ID
@@ -718,6 +726,7 @@
 		<xs:element name="TextDetails" type="tns:TextDetails" minOccurs="0"/>
 		<xs:element name="DangerLevel" type="xs:integer"/>
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
+		<xs:element ref="tns:Resistances" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>
@@ -810,6 +819,12 @@
 	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Armour">
+	<xs:complexContent>
+		<xs:extension base="tns:Wearable">
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Ring">
 	<xs:complexContent>
 		<xs:extension base="tns:Wearable">
 		</xs:extension>

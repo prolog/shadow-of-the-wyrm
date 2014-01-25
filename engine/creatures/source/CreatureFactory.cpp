@@ -170,10 +170,12 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   ClassPtr char_class = classes[class_id];
   DeityPtr deity = deities[deity_id];
 
+  CreaturePtr creaturep = std::make_shared<Creature>(creature);
+
   if (race && char_class && deity)
   {
     // Statistics, HP, and AP
-    creature = set_initial_statistics(creature, race, char_class, deity);
+    set_initial_statistics(creaturep, race, char_class, deity);
 
     // Various race-based flags (boolean statistics)
     if (race->get_corporeal().get_base() == false)
@@ -184,18 +186,16 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     }
 
     // Resistances
-    creature = set_initial_resistances(creature, race, char_class);
+    set_initial_resistances(creaturep, race, char_class);
 
     // Skills
-    creature = set_initial_skills(creature, race, char_class);
+    set_initial_skills(creaturep, race, char_class);
       
     // Religion
     Religion religion = ReligionFactory::create_religion(deities);
     religion.set_active_deity_id(deity_id);
     creature.set_religion(religion);
   }
-
-  CreaturePtr creaturep = std::make_shared<Creature>(creature);
 
   // Now that everything has been set, set any calculated values.
   if (creaturep)
@@ -219,10 +219,8 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   return creaturep;
 }
 
-Creature CreatureFactory::set_initial_statistics(const Creature& current_creature, RacePtr race, ClassPtr char_class, DeityPtr deity)
+void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity)
 {
-  Creature creature = current_creature;
-
   StatisticsModifier race_sm = race->get_statistics_modifier();
   StatisticsModifier class_sm = char_class->get_statistics_modifier();
   StatisticsModifier deity_sm = deity->get_initial_statistics_modifier();
@@ -264,44 +262,40 @@ Creature CreatureFactory::set_initial_statistics(const Creature& current_creatur
 
   Statistic speed = race->get_starting_speed(); // Purely based on race
 
-  creature.set_strength(strength);
-  creature.set_dexterity(dexterity);
-  creature.set_agility(agility);
-  creature.set_health(health);
-  creature.set_intelligence(intelligence);
-  creature.set_willpower(willpower);
-  creature.set_charisma(charisma);
+  creature->set_strength(strength);
+  creature->set_dexterity(dexterity);
+  creature->set_agility(agility);
+  creature->set_health(health);
+  creature->set_intelligence(intelligence);
+  creature->set_willpower(willpower);
+  creature->set_charisma(charisma);
 
-  creature.set_speed(speed);
-  creature.set_size(race->get_size());
-  creature.get_hunger_clock_ref().set_requires_food(race->get_hungerless() == false);
+  creature->set_speed(speed);
+  creature->set_size(race->get_size());
+  creature->get_hunger_clock_ref().set_requires_food(race->get_hungerless() == false);
   
-  creature.set_hair_colour(get_random_hair_colour());
-  creature.set_eye_colour(get_random_eye_colour());
+  creature->set_hair_colour(get_random_hair_colour());
+  creature->set_eye_colour(get_random_eye_colour());
   
   AgeInfo age_info = race->get_age_info();
-  creature = set_age(creature, age_info);
+  set_age(creature, age_info);
 
-  CreaturePtr cp = std::make_shared<Creature>(creature);
   int initial_hp = RNG::dice(3, 3);
-  int hp_bonus = HitPointsCalculator::calculate_hit_points_bonus(cp);
+  int hp_bonus = HitPointsCalculator::calculate_hit_points_bonus(creature);
 
   // Calculate HP bonus:
-  creature.set_hit_points(initial_hp + hp_bonus);
+  creature->set_hit_points(initial_hp + hp_bonus);
 
   // Calculate AP bonus:
   int initial_ap = RNG::dice(2,3);
-  int ap_bonus = ArcanaPointsCalculator::calculate_arcana_points_bonus(cp);
+  int ap_bonus = ArcanaPointsCalculator::calculate_arcana_points_bonus(creature);
 
   // Calculate AP bonus:
-  creature.set_arcana_points(initial_ap + ap_bonus);
-  
-  return creature;
+  creature->set_arcana_points(initial_ap + ap_bonus);
 }
 
-Creature CreatureFactory::set_age(const Creature& current_creature, const AgeInfo& age_info)
+void CreatureFactory::set_age(CreaturePtr creature, const AgeInfo& age_info)
 {
-  Creature creature = current_creature;
   Range<uint> starting_age = age_info.get_starting_age();
   Range<uint> maximum_age = age_info.get_maximum_age();
   
@@ -313,38 +307,31 @@ Creature CreatureFactory::set_age(const Creature& current_creature, const AgeInf
   age.set_base(RNG::range(maximum_age.get_min(), maximum_age.get_max()));
   age.set_current(RNG::range(starting_age.get_min(), starting_age.get_max()));
   
-  creature.set_age(age);
-  
-  return creature;
+  creature->set_age(age);  
 }
 
 void CreatureFactory::set_default_resistances(CreaturePtr current_creature)
 {
-  Resistances resists = ResistancesCalculator::default_resistances();  
+  ResistancesCalculator rc;
+
+  Resistances resists = rc.default_resistances();  
   current_creature->set_resistances(resists);
 }
 
-Creature CreatureFactory::set_initial_resistances(const Creature& current_creature, RacePtr race, ClassPtr char_class)
+void CreatureFactory::set_initial_resistances(CreaturePtr creature, RacePtr race, ClassPtr char_class)
 {
-  Creature creature = current_creature;
+  ResistancesCalculator rc;
+  Resistances resists = rc.calculate_resistances(creature, race, char_class);
 
-  Resistances resists = ResistancesCalculator::calculate_resistances(current_creature, race, char_class);
-
-  creature.set_resistances(resists);
-
-  return creature;
+  creature->set_resistances(resists);
 }
 
-Creature CreatureFactory::set_initial_skills(const Creature& current_creature, RacePtr race, ClassPtr char_class)
+void CreatureFactory::set_initial_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class)
 {
-  Creature creature = current_creature;
-
   // Create a SkillCalculator class!
-  Skills skills = SkillsCalculator::calculate_skills(current_creature, race, char_class);
+  Skills skills = SkillsCalculator::calculate_skills(creature, race, char_class);
 
-  creature.set_skills(skills);
-
-  return creature;
+  creature->set_skills(skills);
 }
 
 HairColour CreatureFactory::get_random_hair_colour()

@@ -5,7 +5,7 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_general_skills)
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();
 
-  Creature creature;
+  CreaturePtr creature = CreaturePtr(new Creature());
 
   Skills race_skills;
   Skills class_skills;
@@ -33,7 +33,7 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_melee_weapon_skills)
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();
 
-  Creature creature;
+  CreaturePtr creature = CreaturePtr(new Creature());
 
   Skills race_skills;
   Skills class_skills;
@@ -61,7 +61,7 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_ranged_weapon_skills)
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();
 
-  Creature creature;
+  CreaturePtr creature = CreaturePtr(new Creature());
 
   Skills race_skills;
   Skills class_skills;
@@ -89,7 +89,7 @@ TEST(SL_Engine_Calculators_SkillsCalculator, calculate_magic_skills)
   RacePtr racep = std::make_shared<Race>();
   ClassPtr classp = std::make_shared<Class>();
 
-  Creature creature;
+  CreaturePtr creature = CreaturePtr(new Creature());
 
   Skills race_skills;
   Skills class_skills;

@@ -29,6 +29,15 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_items(const XMLNode& item
       items.insert(armours.first.begin(), armours.first.end());
       igv_map.insert(armours.second.begin(), armours.second.end());
     }
+
+    XMLNode rings_node = XMLUtils::get_next_element_by_local_name(items_node, "Rings");
+
+    if (!rings_node.is_null())
+    {
+      pair<ItemMap, GenerationValuesMap> rings = get_rings(rings_node);
+      items.insert(rings.first.begin(), rings.first.end());
+      igv_map.insert(rings.second.begin(), rings.second.end());
+    }
     
     XMLNode weapons_node = XMLUtils::get_next_element_by_local_name(items_node, "Weapons");
     
@@ -210,6 +219,34 @@ pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_armour(const XMLNode& arm
   armour.first = armour_map;
   armour.second = igv_map;
   return armour;
+}
+
+pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_rings(const XMLNode& rings_node)
+{
+  pair<ItemMap, GenerationValuesMap> rings;
+  ItemMap rings_map;
+  GenerationValuesMap igv_map;
+
+  if (!rings_node.is_null())
+  {
+    vector<XMLNode> ring_nodes = XMLUtils::get_elements_by_local_name(rings_node, "Ring");
+
+    for (const XMLNode& node : ring_nodes)
+    {
+      if (!node.is_null())
+      {
+        RingPtr ring = std::make_shared<Ring>();
+        GenerationValues igv;
+        ring_reader.parse(ring, igv, node);
+        rings_map.insert(make_pair(ring->get_id(), ring));
+        igv_map.insert(make_pair(ring->get_id(), igv));
+      }
+    }
+  }
+
+  rings.first = rings_map;
+  rings.second = igv_map;
+  return rings;
 }
 
 pair<ItemMap, GenerationValuesMap> XMLItemsReader::get_weapons(const XMLNode& weapons_node)

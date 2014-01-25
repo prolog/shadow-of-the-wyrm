@@ -7,7 +7,9 @@ Savage Lands v0.2.0 "Oswald"
   mammoth, black devil, hellhound, skywing, pit fiend, high wizard, 
   steel slime, Akojo, goblin elite guard, goblin impaler.
 
-- Created new items: fencer's ring, barbarian's ring.
+- Created new items: fencer's ring, barbarian's ring, ring of flames,
+  ring of ice, ring of acid, ring of poison, ring of holiness, ring of
+  shadows, ring of sorcery, ring of lightning.
 
 - Added new artifacts: Goblincrusher.
 
@@ -38,6 +40,10 @@ Savage Lands v0.2.0 "Oswald"
   bonuses of wearable items, when those values exist.  Fixed up some
   issues where the description and usage description weren't being
   properly differentiated.
+
+- All items (not just wearables) now have an associated set of resistances,
+  which are used each turn to update a creature's overall resistances, also
+  taking into account race and class values.
 
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.  Version finalized January 3, 2014.

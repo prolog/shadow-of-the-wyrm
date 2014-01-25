@@ -181,6 +181,7 @@ class Resistances : public ISerializable
     virtual bool operator==(const Resistances& resistances) const;
 
     void set_resistance_value(const DamageType type, double value);
+    void set_all_resistances_to(const double new_value);
     double get_resistance_value(const DamageType type) const;
 
     std::string str() const;

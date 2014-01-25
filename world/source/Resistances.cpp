@@ -14,6 +14,10 @@ Resistance::Resistance()
   type = DAMAGE_TYPE_NULL;
   name_sid = "";
   // By default, the multiplier should be 1.
+  // This is because creatures without a race
+  // and class will use this value, so they
+  // should have absolutely no vulnerabilities
+  // or resistances.
   value = 1.0;
 }
 
@@ -131,6 +135,14 @@ bool Resistances::operator==(const Resistances& res) const
 void Resistances::set_resistance_value(const DamageType type, double value)
 {
   resistances[type]->set_value(value);
+}
+
+void Resistances::set_all_resistances_to(const double value)
+{
+  for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
+  {
+    resistances[dt]->set_value(value);
+  }
 }
 
 bool Resistances::serialize(ostream& stream) const
