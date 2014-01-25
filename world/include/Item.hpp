@@ -9,6 +9,7 @@
 #include "ISerializable.hpp"
 #include "ItemTypes.hpp"
 #include "MaterialTypes.hpp"
+#include "Resistances.hpp"
 #include "Weight.hpp"
 
 class Effect;
@@ -106,6 +107,10 @@ class Item : public ISerializable
     virtual void set_glowing(const bool new_glowing);
     virtual bool get_glowing() const;
 
+    void set_resistances(const Resistances& new_res);
+    Resistances get_resistances() const;
+    Resistances& get_resistances_ref();
+
     virtual Item* create_with_new_id();
     virtual Item* create();
     virtual Item* clone() = 0;
@@ -144,6 +149,7 @@ class Item : public ISerializable
     EffectType effect;
     MaterialType material;
     bool glowing;
+    Resistances resistances;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

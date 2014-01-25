@@ -18,6 +18,7 @@ item_identified(false), artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colo
 identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EFFECT_TYPE_NULL), material(MATERIAL_TYPE_WOOD),
 glowing(false)
 {
+  resistances.set_all_resistances_to(0);
 }
 
 Item::~Item()
@@ -49,6 +50,7 @@ bool Item::operator==(const Item& i) const
   result = result && (effect == i.effect);
   result = result && (material == i.material);
   result = result && (glowing == i.glowing);
+  result = result && (resistances == i.resistances);
 
   return result;
 }
@@ -281,6 +283,7 @@ bool Item::matches(std::shared_ptr<Item> i)
     match = match && (material              == i->get_material_type()        );
     match = match && (effect                == i->get_effect_type()          );
     match = match && (glowing               == i->get_glowing()              );
+    match = match && (resistances           == i->get_resistances()          );
 
     // Check the concrete implementation class's attributes:
     match = match && additional_item_attributes_match(i);
@@ -314,6 +317,21 @@ void Item::set_glowing(const bool new_glowing)
 bool Item::get_glowing() const
 {
   return glowing;
+}
+
+void Item::set_resistances(const Resistances& new_resistances)
+{
+  resistances = new_resistances;
+}
+
+Resistances Item::get_resistances() const
+{
+  return resistances;
+}
+
+Resistances& Item::get_resistances_ref()
+{
+  return resistances;
 }
 
 Item* Item::create_with_new_id()
@@ -362,7 +380,9 @@ bool Item::serialize(ostream& stream) const
   Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, unidentified_usage_description_sid);
   Serialize::write_string(stream, unidentified_description_sid);
+
   weight.serialize(stream);
+
   Serialize::write_bool(stream, readable);
   Serialize::write_enum(stream, worn_location);
   Serialize::write_enum(stream, status);
@@ -377,6 +397,8 @@ bool Item::serialize(ostream& stream) const
   Serialize::write_enum(stream, material);
   Serialize::write_bool(stream, glowing);
 
+  resistances.serialize(stream);
+
   return true;
 }
 
@@ -389,7 +411,9 @@ bool Item::deserialize(istream& stream)
   Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, unidentified_usage_description_sid);
   Serialize::read_string(stream, unidentified_description_sid);
+
   weight.deserialize(stream);
+
   Serialize::read_bool(stream, readable);
   Serialize::read_enum(stream, worn_location);
   Serialize::read_enum(stream, status);
@@ -403,6 +427,8 @@ bool Item::deserialize(istream& stream)
   Serialize::read_enum(stream, effect);
   Serialize::read_enum(stream, material);
   Serialize::read_bool(stream, glowing);
+
+  resistances.deserialize(stream);
 
   return true;
 }

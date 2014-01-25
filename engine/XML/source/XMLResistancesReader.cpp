@@ -2,11 +2,11 @@
 #include "XMLDataStructures.hpp"
 #include "XMLResistancesReader.hpp"
 
-Resistances XMLResistancesReader::get_resistances(const XMLNode& node)
+Resistances XMLResistancesReader::get_resistances(const XMLNode& resistances_node)
 {
   Resistances resistances;
 
-  parse_resistances(resistances, node);
+  parse_resistances(resistances, resistances_node);
 
   return resistances;
 }

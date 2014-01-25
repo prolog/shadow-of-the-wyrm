@@ -1,4 +1,5 @@
 #include "XMLItemReader.hpp"
+#include "XMLResistancesReader.hpp"
 
 using namespace std;
 
@@ -98,6 +99,14 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     // Rarity
     Rarity rarity = static_cast<Rarity>(XMLUtils::get_child_node_int_value(item_node, "Rarity"));
     gv.set_rarity(rarity);
+
+    // Resistances
+    XMLNode resistances_node = XMLUtils::get_next_element_by_local_name(item_node, "Resistances");
+    if (!resistances_node.is_null())
+    {
+      XMLResistancesReader rr;
+      item->set_resistances(rr.get_resistances(resistances_node));
+    }
   }
 }
 

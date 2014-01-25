@@ -33,6 +33,7 @@ class XMLItemsReader
   protected:
     std::pair<ItemMap, GenerationValuesMap> get_misc_items(const XMLNode& misc_items_node);
     std::pair<ItemMap, GenerationValuesMap> get_armour(const XMLNode& armour_node);
+    std::pair<ItemMap, GenerationValuesMap> get_rings(const XMLNode& rings_node);
     std::pair<ItemMap, GenerationValuesMap> get_weapons(const XMLNode& weapons_node);
     std::pair<ItemMap, GenerationValuesMap> get_ranged_weapons(const XMLNode& ranged_weapons_node);
     std::pair<ItemMap, GenerationValuesMap> get_ammunition(const XMLNode& ammunition_node);

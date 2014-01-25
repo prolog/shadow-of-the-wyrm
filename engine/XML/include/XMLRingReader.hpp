@@ -1,11 +1,15 @@
 #pragma once
+#include "XMLWearableReader.hpp"
+#include "Ring.hpp"
 
-class XMLRingReader
+class XMLRingReader : public XMLWearableReader
 {
   public:
     XMLRingReader();
     ~XMLRingReader();
   
-  protected:
+    void parse(RingPtr ring, GenerationValues& igv, const XMLNode& ring_node);
+
+protected:
 };
 

@@ -17,11 +17,11 @@ class CreatureFactory
   protected:
     void revert_to_original_configuration_values(CreaturePtr newly_created_creature, const Creature& configuration_instance, DecisionStrategyPtr template_decision_strategy);
 
-    Creature set_age(const Creature& creature, const AgeInfo& age_info);
-    Creature set_initial_statistics(const Creature& creature, RacePtr race, ClassPtr char_class, DeityPtr deity);
-    void     set_default_resistances(CreaturePtr creature);
-    Creature set_initial_resistances(const Creature& creature, RacePtr race, ClassPtr char_class);
-    Creature set_initial_skills(const Creature& creature, RacePtr race, ClassPtr char_class);
+    void set_age(CreaturePtr creature, const AgeInfo& age_info);
+    void set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity);
+    void set_default_resistances(CreaturePtr creature);
+    void set_initial_resistances(CreaturePtr creature, RacePtr race, ClassPtr char_class);
+    void set_initial_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class);
     HairColour get_random_hair_colour();
     EyeColour get_random_eye_colour();
     
