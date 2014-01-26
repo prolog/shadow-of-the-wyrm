@@ -1,12 +1,15 @@
+Savage Lands v0.2.1 "Oslac"
+- Version declared January 26, 2014.
+
 Savage Lands v0.2.0 "Oswald"
-- Version declared January 3, 2014.
+- Version declared January 3, 2014.  Version finalized January 26, 2014.
 
 - Added new creatures: antlion, cave troll, stone jelly, fox maiden, 
   firebird, dire wolf, chaos beast, fell lord, voidling, witch king,
   black monk, virequus, golden eagle, star beast, king slime, war
   mammoth, black devil, hellhound, skywing, pit fiend, high wizard, 
-  dracospawn, tarasque, tiamat, steel slime, Akojo, goblin elite guard, 
-  goblin impaler.
+  dracospawn, tarasque, tiamat, wumpus, steel slime, Akojo, goblin elite 
+  guard, goblin impaler.
 
 - Created new items: fencer's ring, barbarian's ring, ring of flames,
   ring of ice, ring of acid, ring of poison, ring of holiness, ring of
@@ -48,6 +51,38 @@ Savage Lands v0.2.0 "Oswald"
 
 - If an item has resistances or vulnerabilties, these will be included in
   a synopsis on the second line of the equipment screen.
+
+- Updated the resistances on a number of artifacts:
+  
+  - Forger: added heat resistance.
+
+  - Two Moon Amulet: added arcane resistance.
+
+  - Faerie Shield: added heat, cold, and lightning resistance.
+
+  - Brightblade: added holy resistance.
+
+  - Staff of the Artificer: added acid and arcane resistance.
+
+  - Bugcrusher: added pound resistance.
+
+  - Jellysmasher: added poison and acid resistance.
+
+  - Goblincrusher: added slash and pierce resistance.
+
+  - Knife of the Long Hunt: added pierce resistance.
+
+  - Kithslayer: added slash resistance.
+
+  - Beastbinder: added pierce and pound resistance.
+
+  - Skyslayer: added holy and shadow resistance.
+
+  - Sunsword: added heat resistance.
+
+  - Dragonbane: added heat, cold, and acid resistance.
+
+  - Stonespear: added poison resistance.
 
 Savage Lands v0.1.9 "Osmund"
 - Version declared November 27, 2013.  Version finalized January 3, 2014.

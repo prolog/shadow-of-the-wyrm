@@ -32,8 +32,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // King of Sussex, served with Osmund, Aelfwald, and Oslac.
-  return "\"Oswald\"";
+  // King of Sussex, served with Ealdwulf and Aelfwald.
+  return "\"Oslac\"";
 }
 
 string Metadata::get_game_version_synopsis() const
