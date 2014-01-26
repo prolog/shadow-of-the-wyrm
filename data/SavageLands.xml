@@ -5362,6 +5362,131 @@
 				<Type>9</Type>
 			</Damage>
 		</Creature>
+		<Creature id="dracospawn">
+			<RaceID>_dragon</RaceID>
+			<ShortDescriptionSID>DRACOSPAWN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DRACOSPAWN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DRACOSPAWN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DRACOSPAWN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>D</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>47</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>47</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>47</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>94</NumSides>
+				<Type>5</Type>
+			</Damage>
+		</Creature>
+		<Creature id="tarasque">
+			<RaceID>_dragon</RaceID>
+			<ShortDescriptionSID>TARASQUE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TARASQUE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TARASQUE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TARASQUE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>48</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>48</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>48</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>96</NumSides>
+				<Type>6</Type>
+				<StatusAilments>
+					<Status>_para</Status>
+				</StatusAilments>
+			</Damage>
+			<Soak>6</Soak>
+		</Creature>
+		<Creature id="tiamat">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>TIAMAT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TIAMAT_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TIAMAT_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TIAMAT_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>T</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>49</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>49</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>180000</Exp>
+			</CreatureGeneration>
+			<Level>49</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>98</NumSides>
+				<Type>4</Type>
+			</Damage>
+			<Soak>9</Soak>
+		</Creature>
 		<Creature id="steel_slime">
 			<RaceID>_jelly</RaceID>
 			<BreatheType>1</BreatheType>
@@ -12602,6 +12727,18 @@
 				<Evade>-30</Evade>
 				<Soak>30</Soak>
 			</Armour>
+			<Armour id="tarasque_armour">
+				<DescriptionSID>TARASQUE_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>TARASQUE_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>80</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>7</Material>
+				<DangerLevel>35</DangerLevel>
+				<Rarity>1</Rarity>
+				<Evade>-20</Evade>
+				<Soak>35</Soak>
+			</Armour>			
 			<Armour id="robes">
 				<DescriptionSID>ROBES_SID</DescriptionSID>
 				<UsageDescriptionSID>ROBES_USAGE_SID</UsageDescriptionSID>

@@ -5,11 +5,12 @@ Savage Lands v0.2.0 "Oswald"
   firebird, dire wolf, chaos beast, fell lord, voidling, witch king,
   black monk, virequus, golden eagle, star beast, king slime, war
   mammoth, black devil, hellhound, skywing, pit fiend, high wizard, 
-  steel slime, Akojo, goblin elite guard, goblin impaler.
+  dracospawn, tarasque, tiamat, steel slime, Akojo, goblin elite guard, 
+  goblin impaler.
 
 - Created new items: fencer's ring, barbarian's ring, ring of flames,
   ring of ice, ring of acid, ring of poison, ring of holiness, ring of
-  shadows, ring of sorcery, ring of lightning.
+  shadows, ring of sorcery, ring of lightning, tarasque armour.
 
 - Added new artifacts: Goblincrusher.
 
