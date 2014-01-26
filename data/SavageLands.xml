@@ -5487,9 +5487,50 @@
 			</Damage>
 			<Soak>9</Soak>
 		</Creature>
+		<Creature id="wumpus">
+			<RaceID>_monster</RaceID>
+			<ShortDescriptionSID>WUMPUS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WUMPUS_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WUMPUS_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>WUMPUS_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>W</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>50</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>50</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>250000</Exp>
+			</CreatureGeneration>
+			<Level>50</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>150</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Soak>20</Soak>
+			<Speed>70</Speed>
+		</Creature>
 		<Creature id="steel_slime">
 			<RaceID>_jelly</RaceID>
-			<BreatheType>1</BreatheType>
 			<ShortDescriptionSID>STEEL_SLIME_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>STEEL_SLIME_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>STEEL_SLIME_TEXT_DETAILS_SID</TextDetailsSID>
@@ -8726,7 +8767,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>W</Symbol>
-				<Colour>7</Colour>
+				<Colour>8</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -10012,7 +10053,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>W</Symbol>
-				<Colour>15</Colour>
+				<Colour>7</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -11475,7 +11516,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>W</Symbol>
-				<Colour>8</Colour>
+				<Colour>12</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -12613,6 +12654,9 @@
 				<Artifact>1</Artifact>
 				<Material>6</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Arcane>0.15</Arcane>
+				</Resistances>
 				<Evade>10</Evade>
 				<Soak>4</Soak>
 			</Armour>
@@ -12902,6 +12946,11 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.10</Heat>
+					<Cold>0.10</Cold>
+					<Lightning>0.10</Lightning>
+				</Resistances>
 				<Evade>15</Evade>
 				<Soak>5</Soak>
 			</Armour>
@@ -13412,6 +13461,9 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.15</Heat>
+				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -13432,6 +13484,9 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.20</Holy>
+				</Resistances>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -13452,6 +13507,10 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Acid>0.10</Acid>
+					<Arcane>0.10</Arcane>
+				</Resistances>
 				<Skill>1005</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>47</Difficulty>
@@ -13474,6 +13533,9 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pound>0.10</Pound>
+				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -13497,6 +13559,10 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Acid>0.05</Acid>
+					<Poison>0.15</Poison>
+				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -13520,6 +13586,10 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.05</Slash>
+					<Pierce>0.05</Pierce>
+				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -13543,6 +13613,9 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pierce>0.10</Pierce>
+				</Resistances>
 				<Skill>1004</Skill>
 				<RangedSkill>2005</RangedSkill>
 				<Difficulty>40</Difficulty>
@@ -13566,6 +13639,9 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+				</Resistances>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -13589,6 +13665,10 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pierce>0.10</Pierce>
+					<Pound>0.05</Pound>
+				</Resistances>
 				<Skill>1008</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -13611,6 +13691,10 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.10</Holy>
+					<Shadow>0.10</Shadow>
+				</Resistances>
 				<Skill>1001</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>44</Difficulty>
@@ -13633,6 +13717,9 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.25</Heat>
+				</Resistances>
 				<Skill>1002</Skill>
 				<RangedSkill>2001</RangedSkill>
 				<Difficulty>46</Difficulty>
@@ -13656,6 +13743,11 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.10</Heat>
+					<Cold>0.10</Cold>
+					<Acid>0.10</Acid>
+				</Resistances>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>52</Difficulty>
@@ -13678,6 +13770,9 @@
 				<Artifact>1</Artifact>
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Poison>0.20</Poison>
+				</Resistances>
 				<Skill>1006</Skill>
 				<RangedSkill>2008</RangedSkill>
 				<Difficulty>46</Difficulty>
