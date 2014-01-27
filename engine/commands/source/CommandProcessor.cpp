@@ -172,6 +172,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.evoke(creature);
       }
+      else if (command_name == CommandKeys::SHOW_RESISTANCES)
+      {
+        int x = 1;
+      }
     }
   }
   

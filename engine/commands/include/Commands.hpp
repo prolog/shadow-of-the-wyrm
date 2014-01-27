@@ -234,3 +234,10 @@ class EvokeCommand : public Command
     EvokeCommand();
     ~EvokeCommand();
 };
+
+class ShowResistancesCommand : public Command
+{
+  public:
+    ShowResistancesCommand();
+    ~ShowResistancesCommand();
+};
