@@ -125,6 +125,7 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('B'), CommandKeys::BESTIARY));
   command_mapping.insert(make_pair(Integer::to_string('v'), CommandKeys::EVOKE));
   
+  command_mapping.insert(make_pair(Integer::to_string(KEY_F(1)), CommandKeys::SHOW_RESISTANCES));
   // JCD FIXME: When adding Unix support, update this to include whatever
   // debug flag is needed.
   #ifdef _DEBUG

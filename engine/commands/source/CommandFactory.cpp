@@ -164,6 +164,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<EvokeCommand>();
   }
+  else if (command_name == CommandKeys::SHOW_RESISTANCES)
+  {
+    command = std::make_shared<ShowResistancesCommand>();
+  }
 
   return command;
 }

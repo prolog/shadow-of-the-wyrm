@@ -337,3 +337,13 @@ EvokeCommand::EvokeCommand()
 EvokeCommand::~EvokeCommand()
 {
 }
+
+// Show the player's resists and vulns
+ShowResistancesCommand::ShowResistancesCommand()
+: Command(CommandKeys::SHOW_RESISTANCES)
+{
+}
+
+ShowResistancesCommand::~ShowResistancesCommand()
+{
+}
