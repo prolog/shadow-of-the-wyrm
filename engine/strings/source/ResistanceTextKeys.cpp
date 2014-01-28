@@ -33,3 +33,5 @@ const string ResistanceTextKeys::RESISTANCE_ARCANE         = "RESISTANCE_ARCANE"
 const string ResistanceTextKeys::RESISTANCE_ABRV_ARCANE    = "RESISTANCE_ABRV_ARCANE";
 const string ResistanceTextKeys::RESISTANCE_LIGHTNING      = "RESISTANCE_LIGHTNING";
 const string ResistanceTextKeys::RESISTANCE_ABRV_LIGHTNING = "RESISTANCE_ABRV_LIGHTNING";
+const string ResistanceTextKeys::RESISTANCES_SCREEN_TITLE  = "RESISTANCES_SCREEN_TITLE";
+const string ResistanceTextKeys::RESISTANCES_EXPLANATION   = "RESISTANCES_EXPLANATION";
