@@ -27,6 +27,9 @@ class ResistanceTextKeys
     static const std::string RESISTANCE_LIGHTNING;
     static const std::string RESISTANCE_ABRV_LIGHTNING;
 
+    static const std::string RESISTANCES_SCREEN_TITLE;
+    static const std::string RESISTANCES_EXPLANATION;
+
   protected:
     ResistanceTextKeys();
     ~ResistanceTextKeys();

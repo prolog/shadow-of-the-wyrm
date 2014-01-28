@@ -2625,7 +2625,7 @@
 				<Slash>0.0</Slash>
 				<Pierce>0.0</Pierce>
 				<Pound>0.0</Pound>
-				<Heat>0.5</Heat>
+				<Heat>0.20</Heat>
 				<Cold>0.0</Cold>
 				<Acid>0.0</Acid>
 				<Poison>0.0</Poison>
@@ -2930,7 +2930,7 @@
 				<Acid>0.0</Acid>
 				<Poison>0.0</Poison>
 				<Holy>0.0</Holy>
-				<Shadow>0.0</Shadow>
+				<Shadow>0.20</Shadow>
 				<Arcane>0.0</Arcane>
 				<Lightning>0.0</Lightning>
 			</Resistances>

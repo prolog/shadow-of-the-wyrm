@@ -97,6 +97,9 @@ class ActionManager : public ISerializable
     // Evoke/zap a wand.
     ActionCost evoke(CreaturePtr creature);
 
+    // Show a creature's (well, the player's) resistances and vulnerabilities.
+    ActionCost show_resistances(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

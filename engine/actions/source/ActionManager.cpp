@@ -28,6 +28,7 @@
 #include "QuestListAction.hpp"
 #include "ReadAction.hpp"
 #include "SearchAction.hpp"
+#include "ShowResistancesAction.hpp"
 #include "SpellcastingAction.hpp"
 #include "Serialization.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -337,6 +338,13 @@ ActionCost ActionManager::evoke(CreaturePtr creature)
   EvokeAction ea;
 
   return get_action_cost(creature, ea.evoke(creature, this));
+}
+
+ActionCost ActionManager::show_resistances(CreaturePtr creature)
+{
+  ShowResistancesAction sra;
+
+  return get_action_cost(creature, sra.show_resistances(creature));
 }
 
 // Pick up an item, doing any necessary checks first.
