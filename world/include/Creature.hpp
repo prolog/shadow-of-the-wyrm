@@ -151,6 +151,9 @@ class Creature : public ISerializable
     
     Equipment& get_equipment();
     Inventory& get_inventory();
+
+    // Does the creature have any equipped or worn items?
+    bool has_items() const;
     
     // Set/get point-based statistics
 

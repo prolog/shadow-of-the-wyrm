@@ -156,6 +156,11 @@ bool Inventory::clear()
   return true;
 }
 
+bool Inventory::has_items() const
+{
+  return (items.empty() == false);
+}
+
 ItemPtr Inventory::at(const uint index)
 {
   ItemPtr selected_item;

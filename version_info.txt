@@ -1,9 +1,14 @@
 Savage Lands v0.2.1 "Oslac"
 - Version declared January 26, 2014.
 
+- New items: scroll of enchantment.
+
 - Added a resistances and vulnerabilities screen (F1) which shows a
   creature's resistances and vulnerabilities, colour-coded to be helpful
   (well, as long as the player isn't red-green colour blind).
+
+- Added the basics of item enchantment.  Updated adventurers so that they
+  also start with a scroll of enchantment.
 
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.

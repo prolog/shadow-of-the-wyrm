@@ -555,6 +555,22 @@ Inventory& Creature::get_inventory()
   return inventory;
 }
 
+bool Creature::has_items() const
+{
+  for (EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD; ewl < EQUIPMENT_WORN_LAST; ewl++)
+  {
+    ItemPtr item = equipment.get_item(ewl);
+    if (item != nullptr) return true;
+  }
+
+  if (inventory.has_items())
+  {
+    return true;
+  }
+
+  return false;
+}
+
 void Creature::set_hit_points(const Statistic& new_hit_points)
 {
   hit_points = new_hit_points;
