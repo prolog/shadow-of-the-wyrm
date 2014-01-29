@@ -1610,6 +1610,10 @@
 						<ID>identify_scroll</ID>
 						<Quantity><Amount>1</Amount></Quantity>
 					</InitialItem>
+					<InitialItem>
+						<ID>enchanting_scroll</ID>
+						<Quantity><Amount>1</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -15247,6 +15251,22 @@
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Effect>13</Effect>				
+			</Scroll>
+			<Scroll id="enchanting_scroll">
+				<DescriptionSID>ENCHANTING_SCROLL_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_ENCHANTING_SCROLL_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>ENCHANTING_SCROLL_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_ENCHANTING_SCROLL_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>360</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>?</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>1</Rarity>
+				<Effect>15</Effect>				
 			</Scroll>
 		</Scrolls>
 		<Currencies>

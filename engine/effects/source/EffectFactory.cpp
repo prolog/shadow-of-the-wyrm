@@ -1,6 +1,7 @@
 #include "RemoveStatusEffect.hpp"
 #include "EffectFactory.hpp"
 #include "EtherEffect.hpp"
+#include "EnchantingEffect.hpp"
 #include "HasteEffect.hpp"
 #include "HealingEffect.hpp"
 #include "IdentifyEffect.hpp"
@@ -23,7 +24,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  static_assert(EFFECT_TYPE_LAST == 15, "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EFFECT_TYPE_LAST == 16, "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -70,6 +71,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_INCORPOREAL:
       effect = std::make_shared<IncorporealEffect>();
+      break;
+    case EFFECT_TYPE_ENCHANTING:
+      effect = std::make_shared<EnchantingEffect>();
       break;
     case EFFECT_TYPE_NULL:
     default:

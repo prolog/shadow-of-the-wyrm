@@ -33,6 +33,7 @@ class Inventory : public ISerializable
     
     bool clear();
     
+    bool has_items() const;
     ItemPtr at(const uint index);
     ItemPtr get_from_id(const std::string& id);
     ItemPtr get_from_base_id(const std::string& base_id);

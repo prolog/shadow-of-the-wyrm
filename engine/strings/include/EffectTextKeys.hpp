@@ -17,6 +17,8 @@ class EffectTextKeys
     static const std::string EFFECT_IDENTIFY_ALL_ITEMS;
     static const std::string EFFECT_IDENTIFY_TYPE;
     static const std::string EFFECT_RECHARGING_PLAYER_NO_WANDS;
+    static const std::string EFFECT_NO_ITEMS_TO_ENCHANT;
+    static const std::string EFFECT_ATTEMPT_ENCHANT_ARTIFACT;
     
   protected:
     EffectTextKeys();

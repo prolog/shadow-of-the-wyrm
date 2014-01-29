@@ -378,6 +378,7 @@
     <ClInclude Include="engine\description\include\TileDescription.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
+    <ClInclude Include="engine\effects\include\EnchantingEffect.hpp" />
     <ClInclude Include="engine\effects\include\HasteEffect.hpp" />
     <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp" />
@@ -1373,6 +1374,7 @@
     <ClCompile Include="engine\description\source\TileDescription.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp" />
+    <ClCompile Include="engine\effects\source\EnchantingEffect.cpp" />
     <ClCompile Include="engine\effects\source\HasteEffect.cpp" />
     <ClCompile Include="engine\effects\source\IncorporealEffect.cpp" />
     <ClCompile Include="engine\effects\source\RechargingEffect.cpp" />
