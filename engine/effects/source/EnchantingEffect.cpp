@@ -49,7 +49,7 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, c
 
   if (is_player && !creature->has_items())
   {
-    add_player_no_items_message();
+    add_message(creature, EffectTextKeys::EFFECT_NO_ITEMS_TO_ENCHANT);
     return true;
   }
 
@@ -60,15 +60,25 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, c
   {
     if (is_player && item->get_artifact())
     {
-      add_player_enchant_artifact_message();
+      add_message(creature, EffectTextKeys::EFFECT_ATTEMPT_ENCHANT_ARTIFACT);
     }
     else if (!item->get_artifact())
     {
       float enchantment_multiplier = item_status_multipliers[item_status];
 
       // JCD TODO: check the item to see if it can be enchanted.
+      bool can_enchant = item->can_enchant();
+
       // If it can't, display a message.
+      if (!can_enchant)
+      {
+        // ...
+      }
       // If it can, enchant it, and display a message.
+      else
+      {
+        item->enchant();
+      }
     }
 
     return true;
@@ -77,19 +87,9 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, c
   return false;
 }
 
-// Add a message if the player has no equipment or items.
-void EnchantingEffect::add_player_no_items_message()
+void EnchantingEffect::add_message(CreaturePtr creature, const string& msg_sid)
 {
-  IMessageManager& manager = MessageManagerFactory::instance();
-  manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_NO_ITEMS_TO_ENCHANT));
-  manager.send();
-}
-
-// Add a message if the player tries to enchant an artifact -
-// artifacts cannot be enchanted.
-void EnchantingEffect::add_player_enchant_artifact_message()
-{
-  IMessageManager& manager = MessageManagerFactory::instance();
-  manager.add_new_message(StringTable::get(EffectTextKeys::EFFECT_ATTEMPT_ENCHANT_ARTIFACT));
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  manager.add_new_message(StringTable::get(msg_sid));
   manager.send();
 }
