@@ -4,6 +4,7 @@
 #include "Item.hpp"
 #include "NullEffect.hpp"
 #include "MaterialFactory.hpp"
+#include "RNG.hpp"
 #include "Wood.hpp"
 
 #include "EffectFactory.hpp"
@@ -19,6 +20,7 @@ identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EFFECT_TYPE_NULL), 
 glowing(false)
 {
   resistances.set_all_resistances_to(0);
+  initialize_remaining_enchants();
 }
 
 Item::~Item()
@@ -51,6 +53,7 @@ bool Item::operator==(const Item& i) const
   result = result && (material == i.material);
   result = result && (glowing == i.glowing);
   result = result && (resistances == i.resistances);
+  result = result && (remaining_enchants == i.remaining_enchants);
 
   return result;
 }
@@ -284,6 +287,7 @@ bool Item::matches(std::shared_ptr<Item> i)
     match = match && (effect                == i->get_effect_type()          );
     match = match && (glowing               == i->get_glowing()              );
     match = match && (resistances           == i->get_resistances()          );
+    // Don't consider the remaining enchantments for purposes of matching...
 
     // Check the concrete implementation class's attributes:
     match = match && additional_item_attributes_match(i);
@@ -371,6 +375,46 @@ bool Item::get_item_identified() const
   return identified;
 }
 
+void Item::initialize_remaining_enchants()
+{
+  Statistic new_rem(RNG::range(6,9));
+  set_remaining_enchants(new_rem);
+}
+
+bool Item::can_enchant() const
+{
+  bool can_enchant = !get_artifact();
+
+  if (can_enchant)
+  {
+    can_enchant = (remaining_enchants.get_current() > 0);
+  }
+
+  return can_enchant;
+}
+
+bool Item::enchant()
+{
+  bool enchanted = false;
+  
+  if (can_enchant())
+  {
+    // ...
+  }
+
+  return enchanted;
+}
+
+void Item::set_remaining_enchants(const Statistic& new_remaining_enchants)
+{
+  remaining_enchants = new_remaining_enchants;
+}
+
+Statistic Item::get_remaining_enchants() const
+{
+  return remaining_enchants;
+}
+
 bool Item::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);
@@ -398,6 +442,7 @@ bool Item::serialize(ostream& stream) const
   Serialize::write_bool(stream, glowing);
 
   resistances.serialize(stream);
+  remaining_enchants.serialize(stream);
 
   return true;
 }
@@ -429,6 +474,7 @@ bool Item::deserialize(istream& stream)
   Serialize::read_bool(stream, glowing);
 
   resistances.deserialize(stream);
+  remaining_enchants.deserialize(stream);
 
   return true;
 }

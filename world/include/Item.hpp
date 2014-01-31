@@ -10,6 +10,7 @@
 #include "ItemTypes.hpp"
 #include "MaterialTypes.hpp"
 #include "Resistances.hpp"
+#include "Statistic.hpp"
 #include "Weight.hpp"
 
 class Effect;
@@ -111,6 +112,19 @@ class Item : public ISerializable
     Resistances get_resistances() const;
     Resistances& get_resistances_ref();
 
+    // Whether or not the item can be enchanted.
+    // If the item is an artifact, it cannot be enchanted.
+    // Otherwise, this function checks to see whether the maximum number
+    // of enchantments has been reached.
+    virtual bool can_enchant() const;
+
+    // Enchant the item if possible; if this is successful, reduce the
+    // number of allowable enchantments by one.
+    virtual bool enchant();
+
+    void set_remaining_enchants(const Statistic& new_remaining);
+    Statistic get_remaining_enchants() const;
+
     virtual Item* create_with_new_id();
     virtual Item* create();
     virtual Item* clone() = 0;
@@ -127,6 +141,9 @@ class Item : public ISerializable
     // created items on the current level will be correctly identified as well.
     virtual void set_item_identified(const bool new_item_identified);
     virtual bool get_item_identified() const;
+
+    // Initialize the number of remaining enchantments on item creation
+    void initialize_remaining_enchants();
     
     std::string id;
     std::string base_id;
@@ -150,6 +167,7 @@ class Item : public ISerializable
     MaterialType material;
     bool glowing;
     Resistances resistances;
+    Statistic remaining_enchants;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;

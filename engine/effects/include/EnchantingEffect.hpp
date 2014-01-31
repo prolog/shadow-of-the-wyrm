@@ -16,8 +16,8 @@ class EnchantingEffect : public Effect
     virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
 
     virtual bool enchant(std::shared_ptr<Creature> creature, ActionManager * const am, const ItemStatus item_status);
-    virtual void add_player_no_items_message();
-    virtual void add_player_enchant_artifact_message();
+    void add_message(std::shared_ptr<Creature> creature, const std::string& msg_sid);
+
     std::map<ItemStatus, float> item_status_multipliers;
 };
 
