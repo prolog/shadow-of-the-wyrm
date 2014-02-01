@@ -15,6 +15,9 @@ Savage Lands v0.2.1 "Oslac"
   - If there are no overridden rules for the item type, enchanting will
     modify resistance values.  
 
+  - Consumables (food/potions/etc) update the nutrition based on the
+    number of "points" for the enchantment.
+
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.
 

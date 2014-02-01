@@ -44,6 +44,13 @@ float Consumable::get_standard_drinks() const
   return standard_drinks;
 }
 
+// Food becomes more or less nutritious, based on whether the enchantment's BUC
+// status.
+void Consumable::do_enchant_item(const int points)
+{
+  nutrition *= points;
+}
+
 bool Consumable::serialize(ostream& stream) const
 {
   Item::serialize(stream);
