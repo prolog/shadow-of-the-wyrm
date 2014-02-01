@@ -433,7 +433,7 @@ Statistic Item::get_remaining_enchants() const
 void Item::do_enchant_item(const int points)
 {
   // Enchant between 1 and 3 resistances.
-  uint num_resists = RNG::range(1, 3);
+  int num_resists = RNG::range(1, 3);
 
   vector<DamageType> resvul_dt_vec;
   vector<DamageType> unused_dt_vec;
@@ -466,7 +466,9 @@ void Item::do_enchant_item(const int points)
 
   // Start with the initial damage types and enchant a number of them.
   uint i = 0;
-  for (; i < num_resists; i++)
+  uint unum_resists = static_cast<uint>(num_resists);
+
+  for (; i < unum_resists; i++)
   {
     if (i >= resvul_dt_vec.size())
     {
@@ -479,7 +481,7 @@ void Item::do_enchant_item(const int points)
 
   // Any carryover is applied to the unused damage types.
   uint j = 0;
-  for (; i < num_resists; i++)
+  for (; i < unum_resists; i++)
   {
     if (j >= unused_dt_vec.size())
     {

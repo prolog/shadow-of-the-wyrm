@@ -2,6 +2,9 @@
 #include "CreatureToHitCalculator.hpp"
 #include "CreatureAdditionalDamageCalculator.hpp"
 #include "EvadeCalculator.hpp"
+#include "RaceManager.hpp"
+#include "ClassManager.hpp"
+#include "ResistancesCalculator.hpp"
 #include "SoakCalculator.hpp"
 
 CreatureCalculator::CreatureCalculator()
@@ -33,5 +36,12 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
     CreatureAdditionalDamageCalculator cadc;
     int calc_addl_damage = cadc.calculate_additional_damage(c);
     c->set_addl_damage(calc_addl_damage);
+
+    // Resistances
+    RaceManager rm;
+    ClassManager cm;
+    ResistancesCalculator rc;
+    Resistances resists = rc.calculate_resistances(c, rm.get_race(c->get_race_id()), cm.get_class(c->get_class_id()));
+    c->set_resistances(resists);
   }
 }

@@ -27,7 +27,7 @@ ActionCostValue ShowResistancesAction::show_resistances(CreaturePtr creature)
     string name = cur_res->get_name_sid();
     Colour text_colour = get_resistance_text_colour(res_val);
 
-    ss << std::setprecision(2) << StringTable::get(name) << ": " << res_val;
+    ss << StringTable::get(name) << ": " << res_val;
 
     TextDisplayPair resistance_info = make_pair(text_colour, ss.str());
     resists_text.push_back(resistance_info);
