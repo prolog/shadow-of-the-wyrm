@@ -10,6 +10,11 @@ Savage Lands v0.2.1 "Oslac"
 - Added the basics of item enchantment.  Updated adventurers so that they
   also start with a scroll of enchantment.
 
+- Basic item enchantment rules:
+
+  - If there are no overridden rules for the item type, enchanting will
+    modify resistance values.  
+
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.
 
