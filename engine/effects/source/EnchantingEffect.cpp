@@ -77,7 +77,7 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, c
       // If it can, enchant it, and display a message.
       else
       {
-        item->enchant();
+        item->enchant(enchantment_multiplier);
       }
     }
 

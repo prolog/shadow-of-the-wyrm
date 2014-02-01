@@ -153,7 +153,7 @@ void Resistances::set_resistance_value(const DamageType type, double value)
 
 void Resistances::set_all_resistances_to(const double value)
 {
-  for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
+  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
   {
     resistances[dt]->set_value(value);
   }
@@ -196,7 +196,7 @@ bool Resistances::deserialize(istream& stream)
 
   for (unsigned int i = 0; i < resistances_size; i++)
   {
-    DamageType type = DAMAGE_TYPE_SLASH;
+    DamageType type = DAMAGE_TYPE_FIRST;
     Serialize::read_enum(stream, type);
 
     ClassIdentifier resistance_clid = CLASS_ID_NULL;
@@ -387,7 +387,7 @@ ClassIdentifier LightningResistance::internal_class_identifier() const
 
 bool Resistances::has_resistances_or_vulnerabilities() const
 {
-  for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
+  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
   {
     double val = get_resistance_value(dt);
 
