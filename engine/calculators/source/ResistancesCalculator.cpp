@@ -5,7 +5,7 @@ Resistances ResistancesCalculator::default_resistances()
 {
   Resistances resists;
   
-  for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
+  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
   {
     double value = DEFAULT_RESISTANCE_VALUE;
     resists.set_resistance_value(dt, value );
@@ -39,7 +39,7 @@ Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, R
   double eq_val    = 0.0;
   double total_val = 0.0;
 
-  for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
+  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
   {
     // A positive value (e.g., 0.25) means increased resistance.
     // Since the resistance is a multiplier, to increase resistance,
@@ -78,7 +78,7 @@ Resistances ResistancesCalculator::calculate_equipment_resistances(CreaturePtr c
       {
         Resistances item_res = item->get_resistances();
 
-        for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
+        for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
         {
           res.set_resistance_value(dt, res.get_resistance_value(dt) + item_res.get_resistance_value(dt));
         }

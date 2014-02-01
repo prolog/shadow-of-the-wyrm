@@ -120,7 +120,7 @@ class Item : public ISerializable
 
     // Enchant the item if possible; if this is successful, reduce the
     // number of allowable enchantments by one.
-    virtual bool enchant();
+    virtual bool enchant(const float enchant_mult);
 
     void set_remaining_enchants(const Statistic& new_remaining);
     Statistic get_remaining_enchants() const;
@@ -144,6 +144,11 @@ class Item : public ISerializable
 
     // Initialize the number of remaining enchantments on item creation
     void initialize_remaining_enchants();
+
+    // The base item class enchants by updating resistances.
+    // Other items may modify nutrition (consumables), evade/soak (wearables),
+    // etc.
+    virtual void do_enchant_item(const int points);
     
     std::string id;
     std::string base_id;

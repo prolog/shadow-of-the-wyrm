@@ -16,7 +16,7 @@ string ResistancesTranslator::create_description(const Resistances& res)
     ss << std::fixed << std::setprecision(2) << "{";
     bool first = true;
 
-    for (DamageType dt = DAMAGE_TYPE_SLASH; dt < DAMAGE_TYPE_MAX; dt++)
+    for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
     {
       ResistancePtr cur_res = res.get_resistance(dt);
 

@@ -1,6 +1,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
+#include "global_prototypes.hpp"
 #include "Item.hpp"
 #include "NullEffect.hpp"
 #include "MaterialFactory.hpp"
@@ -12,6 +13,17 @@
 #include "Serialize.hpp"
 
 using namespace std;
+
+namespace ItemEnchanting
+{
+  // Minimum/maximum number of enchantments on an item.
+  const int MIN_ENCHANTS = 6;
+  const int MAX_ENCHANTS = 9;
+
+  // Minimum/maximum number of points per enchant.
+  const int MIN_POINTS = 3;
+  const int MAX_POINTS = 6;
+};
 
 Item::Item()
 : quantity(1), readable(false), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false), 
@@ -377,7 +389,7 @@ bool Item::get_item_identified() const
 
 void Item::initialize_remaining_enchants()
 {
-  Statistic new_rem(RNG::range(6,9));
+  Statistic new_rem(RNG::range(ItemEnchanting::MIN_ENCHANTS, ItemEnchanting::MAX_ENCHANTS));
   set_remaining_enchants(new_rem);
 }
 
@@ -393,13 +405,16 @@ bool Item::can_enchant() const
   return can_enchant;
 }
 
-bool Item::enchant()
+bool Item::enchant(const float enchant_mult)
 {
-  bool enchanted = false;
+  bool enchanted = true;
   
   if (can_enchant())
   {
-    // ...
+    int points = static_cast<int>(RNG::range(ItemEnchanting::MIN_POINTS, ItemEnchanting::MAX_POINTS) * enchant_mult);
+    do_enchant_item(points);
+
+    enchanted = true;
   }
 
   return enchanted;
@@ -413,6 +428,69 @@ void Item::set_remaining_enchants(const Statistic& new_remaining_enchants)
 Statistic Item::get_remaining_enchants() const
 {
   return remaining_enchants;
+}
+
+void Item::do_enchant_item(const int points)
+{
+  // Enchant between 1 and 3 resistances.
+  uint num_resists = RNG::range(1, 3);
+
+  vector<DamageType> resvul_dt_vec;
+  vector<DamageType> unused_dt_vec;
+
+  // Get a list of resistances/vulns.
+  // For items, these are values != 0.
+  // Also track the non-zero ones, so that if there are additional "slots"
+  // to enchant, one can be selected.
+  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+  {
+    if (!dequal(resistances.get_resistance_value(dt), 0))
+    {
+      resvul_dt_vec.push_back(dt);
+    }
+    else
+    {
+      unused_dt_vec.push_back(dt);
+    }
+  }
+
+  // Randomly shuffle the already-resisted and yet-to-be-resisted damage
+  // types to determine what will be resisted.
+  random_shuffle(resvul_dt_vec.begin(), resvul_dt_vec.end(), RNG::get_generator());
+  random_shuffle(unused_dt_vec.begin(), unused_dt_vec.end(), RNG::get_generator());
+
+  // The enchantment amount is the number of points divided by the number of
+  // enchantments, int-and-then-float-ified.
+  int base_enchant_amt = points / num_resists;
+  float enchant_amt = base_enchant_amt / 100.0f;
+
+  // Start with the initial damage types and enchant a number of them.
+  uint i = 0;
+  for (; i < num_resists; i++)
+  {
+    if (i >= resvul_dt_vec.size())
+    {
+      break;
+    }
+
+    DamageType dt = resvul_dt_vec.at(i);
+    resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + enchant_amt);
+  }
+
+  // Any carryover is applied to the unused damage types.
+  uint j = 0;
+  for (; i < num_resists; i++)
+  {
+    if (j >= unused_dt_vec.size())
+    {
+      break;
+    }
+
+    DamageType dt = unused_dt_vec.at(j);
+    resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + enchant_amt);
+
+    j++;
+  }
 }
 
 bool Item::serialize(ostream& stream) const

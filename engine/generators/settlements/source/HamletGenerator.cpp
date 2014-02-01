@@ -207,7 +207,7 @@ bool HamletGenerator::potentially_generate_vegetable_garden(MapPtr map, const in
   {
     std::vector<CardinalDirection> vcd{ CARDINAL_DIRECTION_EAST, CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_SOUTH, CARDINAL_DIRECTION_WEST };
     
-    std::random_shuffle(vcd.begin(), vcd.end());
+    std::random_shuffle(vcd.begin(), vcd.end(), RNG::get_generator());
     
     int garden_height = RNG::range(GARDEN_HEIGHT_MIN, GARDEN_HEIGHT_MAX);
     int garden_width  = RNG::range(GARDEN_WIDTH_MIN, GARDEN_WIDTH_MAX);
