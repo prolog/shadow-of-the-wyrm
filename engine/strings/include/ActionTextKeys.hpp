@@ -79,4 +79,5 @@ class ActionTextKeys
     static const std::string ACTION_STUMBLE_MONSTER;
     static const std::string ACTION_ALCOHOL_POISONING_PLAYER;
     static const std::string ACTION_ALCOHOL_POISONING_MONSTER;
+    static const std::string ACTION_ENCHANT_ITEM_MAX;
 };
