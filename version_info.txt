@@ -18,6 +18,19 @@ Savage Lands v0.2.1 "Oslac"
   - Consumables (food/potions/etc) update the nutrition based on the
     number of "points" for the enchantment.
 
+  - Wands will be fully recharged, and have their maximum number of
+    charges increased.
+
+  - Weapons will enchant either to-hit, additional damage, or both, and
+    have a chance of also enchanting resistances.
+
+  - Wearables (armour, rings, amulets, etc) enchant evade, soak, or both,
+    and have a chance of also enchanting resistances.
+
+  - Spellbooks have associated difficulty modifiers - this is reduced
+    (or increased, in the case of of a cursed enchantment) based on the
+    number of points available for the enchantment.
+
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.
 

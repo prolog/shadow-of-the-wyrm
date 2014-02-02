@@ -45,6 +45,8 @@ class Wand : public Item
     bool deserialize(std::istream& stream) override;
 
   protected:
+    virtual void do_enchant_item(const int points) override;
+
     uint range;
     SpellShapeType shape;
     bool has_damage;
