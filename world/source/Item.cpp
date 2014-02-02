@@ -414,6 +414,8 @@ bool Item::enchant(const float enchant_mult)
     int points = static_cast<int>(RNG::range(ItemEnchanting::MIN_POINTS, ItemEnchanting::MAX_POINTS) * enchant_mult);
     do_enchant_item(points);
 
+    remaining_enchants.set_current(remaining_enchants.get_current() - 1);
+
     enchanted = true;
   }
 

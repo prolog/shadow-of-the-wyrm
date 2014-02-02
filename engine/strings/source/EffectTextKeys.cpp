@@ -72,6 +72,34 @@ string EffectTextKeys::get_wand_recharge_message(const string& wand_desc)
   return recharge_msg;
 }
 
+string EffectTextKeys::get_max_enchanted_message(const string& item_desc)
+{
+  string msg = StringTable::get(EffectTextKeys::EFFECT_ENCHANT_ITEM_MAX);
+  boost::replace_first(msg, "%s", item_desc);
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
+string EffectTextKeys::get_enchant_message(const string& item_desc)
+{
+  string msg = StringTable::get(EffectTextKeys::EFFECT_ENCHANT);
+  boost::replace_first(msg, "%s", item_desc);
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+
+}
+
+string EffectTextKeys::get_cursed_enchant_message(const string& item_desc)
+{
+  string msg = StringTable::get(EffectTextKeys::EFFECT_CURSED_ENCHANT);
+  boost::replace_first(msg, "%s", item_desc);
+  msg[0] = toupper(msg[0]);
+
+  return msg;
+}
+
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
 const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
@@ -89,3 +117,6 @@ const string EffectTextKeys::EFFECT_RECHARGING = "EFFECT_RECHARGING";
 const string EffectTextKeys::EFFECT_RECHARGING_ALREADY_FULL = "EFFECT_RECHARGING_ALREADY_FULL";
 const string EffectTextKeys::EFFECT_NO_ITEMS_TO_ENCHANT = "EFFECT_NO_ITEMS_TO_ENCHANT";
 const string EffectTextKeys::EFFECT_ATTEMPT_ENCHANT_ARTIFACT = "EFFECT_ATTEMPT_ENCHANT_ARTIFACT";
+const string EffectTextKeys::EFFECT_ENCHANT_ITEM_MAX = "EFFECT_ENCHANT_ITEM_MAX";
+const string EffectTextKeys::EFFECT_ENCHANT = "EFFECT_ENCHANT";
+const string EffectTextKeys::EFFECT_CURSED_ENCHANT = "EFFECT_CURSED_ENCHANT";
