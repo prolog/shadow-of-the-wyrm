@@ -40,7 +40,8 @@ class Weapon : public Wearable
     virtual bool deserialize(std::istream& stream) override;
 
   protected:
-  
+    virtual void do_enchant_item(const int points) override;
+
     int difficulty;
     int speed;
     Damage damage;

@@ -1,9 +1,19 @@
 #include <sstream>
+#include "RNG.hpp"
 #include "Serialize.hpp"
 #include "Wearable.hpp"
 
 using namespace std;
 using std::dynamic_pointer_cast;
+
+// Local enumeration for wearable to determine exactly how a wearable
+// is enchanted.
+enum EnchantWearableType
+{
+  ENCHANT_WEARABLE_EVADE = 1,
+  ENCHANT_WEARABLE_SOAK  = 2,
+  ENCHANT_WEARABLE_BOTH  = 3
+};
 
 Wearable::Wearable()
 : evade(0), soak(0), to_hit(0), addl_damage(0)
@@ -69,6 +79,30 @@ string Wearable::get_synopsis() const
   }
 
   return ss.str();
+}
+
+void Wearable::do_enchant_item(const int points)
+{
+  if (RNG::percent_chance(50))
+  {
+    Item::do_enchant_item(points);
+  }
+
+  EnchantWearableType wearable_enchant = static_cast<EnchantWearableType>(RNG::range(ENCHANT_WEARABLE_EVADE, ENCHANT_WEARABLE_BOTH));
+  
+  switch (wearable_enchant)
+  {
+    case ENCHANT_WEARABLE_EVADE:
+      set_evade(get_evade() + static_cast<int>((points * 1.5)));
+      break;
+    case ENCHANT_WEARABLE_SOAK:
+      set_soak(get_soak() + points);
+      break;
+    case ENCHANT_WEARABLE_BOTH:
+      set_evade(get_evade() + points);
+      set_soak(get_soak() + (points / 2));
+      break;
+  }
 }
 
 bool Wearable::additional_item_attributes_match(std::shared_ptr<Item> i)

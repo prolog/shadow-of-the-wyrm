@@ -141,7 +141,10 @@ void Wand::set_initial_charges()
 
 void Wand::set_charges(const Statistic& new_charges)
 {
-  charges = new_charges;
+  if (charges.get_base() >= 0)
+  {
+    charges = new_charges;
+  }
 }
 
 Statistic Wand::get_charges() const
@@ -169,6 +172,18 @@ void Wand::set_spell_colour(const Colour new_colour)
 Colour Wand::get_spell_colour() const
 {
   return spell_colour;
+}
+
+// Using enchantment on a wand restores its charges and adds more
+void Wand::do_enchant_item(const int points)
+{
+  if (RNG::percent_chance(50))
+  {
+    Item::do_enchant_item(points);
+  }
+
+  int additional_charges = points / 2;
+  set_charges(charges.get_base() + additional_charges);
 }
 
 // In most cases, create and clone do the same thing.  But for wands, creating

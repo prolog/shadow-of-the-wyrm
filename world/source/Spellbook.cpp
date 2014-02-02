@@ -49,6 +49,17 @@ int Spellbook::get_difficulty() const
   return difficulty;
 }
 
+// When spellbooks are enchanted, the difficulty is decreased/increased
+// appropriately, based on the number of points.
+//
+// In this way, spellcasters can learn particularly difficult spells...
+void Spellbook::do_enchant_item(const int points)
+{
+  int difficulty_modifier = points * 5;
+
+  set_difficulty(get_difficulty() - difficulty_modifier);
+}
+
 Item* Spellbook::clone()
 {
   return new Spellbook(*this);

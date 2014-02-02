@@ -30,6 +30,8 @@ class Wearable : public Item
     virtual bool deserialize(std::istream& stream) override;
     
   protected:
+    virtual void do_enchant_item(const int points) override;
+
     int evade, soak, to_hit, addl_damage;
 };
 

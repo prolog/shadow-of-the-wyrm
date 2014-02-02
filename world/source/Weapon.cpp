@@ -1,8 +1,17 @@
+#include "RNG.hpp"
 #include "Serialize.hpp"
 #include "Weapon.hpp"
 
 using namespace std;
 using std::dynamic_pointer_cast;
+
+// Local enumeration used only for enchanting weapons.
+enum EnchantWeaponType
+{
+  ENCHANT_WEAPON_TO_HIT = 1,
+  ENCHANT_WEAPON_DAMAGE = 2,
+  ENCHANT_WEAPON_BOTH   = 3
+};
 
 // WEAPON
 Weapon::Weapon()
@@ -115,6 +124,33 @@ bool Weapon::additional_item_attributes_match(std::shared_ptr<Item> i)
   }
   
   return match;
+}
+
+// Enchanting a weapon will enchant either its to-hit, damage,
+// or both.  It may also grant resistances.
+void Weapon::do_enchant_item(const int points)
+{
+  if (RNG::percent_chance(50))
+  {
+    Item::do_enchant_item(points);
+  }
+
+  EnchantWeaponType type_of_enchant = static_cast<EnchantWeaponType>(RNG::range(ENCHANT_WEAPON_TO_HIT, ENCHANT_WEAPON_BOTH));
+
+  switch (type_of_enchant)
+  {
+    case ENCHANT_WEAPON_TO_HIT:
+      set_to_hit(get_to_hit() + static_cast<int>(points * 1.5));
+      break;
+    case ENCHANT_WEAPON_DAMAGE:
+      set_addl_damage(get_addl_damage() + points);
+      break;
+    case ENCHANT_WEAPON_BOTH:
+      set_to_hit(get_to_hit() + points);
+      set_addl_damage(get_addl_damage() + (points / 2));
+    default:
+      break;
+  }
 }
 
 bool Weapon::serialize(ostream& stream) const
