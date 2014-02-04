@@ -95,6 +95,15 @@
 				<Friendly>1</Friendly>
 			</Placement>
 		</Creatures>
+		<Items>
+			<Placement>
+				<ID>stoneheim_history</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>30</Col>
+				</Coord>
+			</Placement>
+		</Items>
 	</InitialPlacements>
 	<Exits/>
 	<Features>
