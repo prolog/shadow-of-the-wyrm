@@ -9668,6 +9668,36 @@
 				<Type>9</Type>
 			</Damage>
 		</Creature>
+		<Creature id="iliri">
+			<RaceID>03_mountainelf</RaceID>
+			<ShortDescriptionSID>ILIRI_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ILIRI_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ILIRI_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ILIRI_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>e</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>20</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>20</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>350</Exp>
+			</CreatureGeneration>
+			<Level>20</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>40</NumSides>
+				<Type>9</Type>
+			</Damage>
+		</Creature>
 		<Creature id="mountain_elf_scholar">
 			<RaceID>03_mountainelf</RaceID>
 			<ShortDescriptionSID>MOUNTAIN_ELF_SCHOLAR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
