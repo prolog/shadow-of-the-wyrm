@@ -103,6 +103,13 @@
 					<Col>30</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>gnordvar_history</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>31</Col>
+				</Coord>
+			</Placement>
 		</Items>
 	</InitialPlacements>
 	<Exits/>

@@ -31,8 +31,8 @@ Savage Lands v0.2.1 "Oslac"
     (or increased, in the case of of a cursed enchantment) based on the
     number of points available for the enchantment.
 
-- Updated Atua-Elar to include books in the library: a history of
-  Stoneheim.
+- Updated Atua-Elar to include books in the library: histories of Stoneheim
+  and Gnordvar.
 
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.
