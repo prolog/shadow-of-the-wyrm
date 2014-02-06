@@ -117,6 +117,13 @@
 					<Col>31</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>yew_history</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>32</Col>
+				</Coord>
+			</Placement>
 		</Items>
 	</InitialPlacements>
 	<Exits/>
