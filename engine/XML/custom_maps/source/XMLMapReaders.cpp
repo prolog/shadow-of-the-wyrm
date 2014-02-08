@@ -3,6 +3,7 @@
 #include "Game.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
+#include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 #include "XMLMapCoordinateReader.hpp"
 #include "XMLMapExitReader.hpp"
@@ -71,6 +72,36 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
   return custom_map;
 }
 
+string XMLMapReader::parse_id(const XMLNode& parent_node)
+{
+  string id;
+
+  XMLNode id_node = XMLUtils::get_next_element_by_local_name(parent_node, "ID");
+  XMLNode random_ids_node = XMLUtils::get_next_element_by_local_name(parent_node, "Random");
+
+  if (!id_node.is_null())
+  {
+    id = XMLUtils::get_node_value(id_node);
+  }
+  else if (!random_ids_node.is_null())
+  {
+    vector<XMLNode> id_nodes = XMLUtils::get_elements_by_local_name(random_ids_node, "ID");
+    vector<string> rand_ids;
+
+    std::for_each(id_nodes.begin(), id_nodes.end(), [&rand_ids](const XMLNode& xn) { rand_ids.push_back(XMLUtils::get_node_value(xn)); });
+    if (!rand_ids.empty())
+    {
+      id = rand_ids.at(RNG::range(0, rand_ids.size()-1));
+    }
+  }
+  else
+  {
+    // Any additional cases should go here.
+  }
+
+  return id;
+}
+
 // Parse the rows and columns from the Dimensions element into an actual
 // Dimensions engine object.
 Dimensions XMLMapReader::parse_dimensions(const XMLNode& dimensions_node)
@@ -113,7 +144,7 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
     {
       XMLNode coord_node = XMLUtils::get_next_element_by_local_name(placement_node, "Coord");
 
-      string id = XMLUtils::get_child_node_value(placement_node, "ID");
+      string id = parse_id(placement_node);
 
       XMLNode friendly_node = XMLUtils::get_next_element_by_local_name(placement_node, "Friendly");
 
@@ -160,7 +191,7 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
 
     for (const XMLNode& item_node : placement_nodes)
     {
-      string id = XMLUtils::get_child_node_value(item_node, "ID");
+      string id = parse_id(item_node);
       XMLNode coord_node = XMLUtils::get_next_element_by_local_name(item_node, "Coord");
       int quantity = XMLUtils::get_child_node_int_value(item_node, "Quantity", 1);  
 
@@ -169,12 +200,16 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
 
       // Create the item, and set it on the specified coordinate.
       ItemPtr item = ItemManager::create_item(id);
-      item->set_quantity(quantity);
-      TilePtr tile = map->at(c);
 
-      if (item && tile)
+      if (item != nullptr)
       {
-        tile->get_items().add(item);
+        item->set_quantity(quantity);
+        TilePtr tile = map->at(c);
+
+        if (item && tile)
+        {
+          tile->get_items().add(item);
+        }
       }
     }
   }

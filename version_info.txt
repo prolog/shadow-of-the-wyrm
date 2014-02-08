@@ -36,6 +36,9 @@ Savage Lands v0.2.1 "Oslac"
 - Updated Atua-Elar to include books in the library: histories of
   Stoneheim, Gnordvar, Yew.
 
+- Added the ability to load random items on set maps.  Added random
+  spellbooks to the bookshelves of the library.
+
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.
 
