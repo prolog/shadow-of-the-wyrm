@@ -147,18 +147,18 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 , const string& deity_id
 )
 {
-  Creature creature;
+  CreaturePtr creaturep = std::make_shared<Creature>();
 
   // Set a null controller - this will be overridden later if the creature is a player, or has some
   // special circumstances.
   ControllerPtr null_controller = std::make_shared<NullKeyboardController>();
-  creature.set_is_player(false, null_controller);
+  creaturep->set_is_player(false, null_controller);
 
-  creature.set_name(creature_name);
-  creature.set_race_id(race_id);
-  creature.set_class_id(class_id);
-  creature.set_level(1);
-  creature.set_sex(creature_sex);
+  creaturep->set_name(creature_name);
+  creaturep->set_race_id(race_id);
+  creaturep->set_class_id(class_id);
+  creaturep->set_level(1);
+  creaturep->set_sex(creature_sex);
 
   Game& game = Game::instance();
 
@@ -170,8 +170,6 @@ CreaturePtr CreatureFactory::create_by_race_and_class
   ClassPtr char_class = classes[class_id];
   DeityPtr deity = deities[deity_id];
 
-  CreaturePtr creaturep = std::make_shared<Creature>(creature);
-
   if (race && char_class && deity)
   {
     // Statistics, HP, and AP
@@ -181,8 +179,8 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     if (race->get_corporeal().get_base() == false)
     {
       StatusDuration duration(-1);
-      creature.set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
-      creature.set_status_duration(StatusIdentifiers::STATUS_ID_INCORPOREAL, duration);
+      creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
+      creaturep->set_status_duration(StatusIdentifiers::STATUS_ID_INCORPOREAL, duration);
     }
 
     // Resistances
@@ -194,7 +192,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Religion
     Religion religion = ReligionFactory::create_religion(deities);
     religion.set_active_deity_id(deity_id);
-    creature.set_religion(religion);
+    creaturep->set_religion(religion);
   }
 
   // Now that everything has been set, set any calculated values.
