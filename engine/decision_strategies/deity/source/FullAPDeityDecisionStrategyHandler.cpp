@@ -21,7 +21,7 @@ bool FullAPDeityDecisionStrategyHandler::decide(CreaturePtr creature)
   return decision;
 }
 
-DeityDecisionImplications FullAPDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature)
+DeityDecisionImplications FullAPDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
   if (creature)
   {
@@ -36,7 +36,7 @@ DeityDecisionImplications FullAPDeityDecisionStrategyHandler::handle_decision(Cr
     }
   }
 
-  return get_deity_decision_implications();
+  return get_deity_decision_implications(creature, tile);
 }
 
 // Slightly less piety loss than yelling,

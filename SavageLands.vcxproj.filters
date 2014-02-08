@@ -1377,9 +1377,6 @@
     <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategyHandler.hpp">
-      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategy.hpp">
       <Filter>Header Files\engine\decision_strategies\include</Filter>
     </ClInclude>
@@ -2856,6 +2853,9 @@
     <ClInclude Include="engine\effects\include\EnchantingEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyHandler.hpp">
+      <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -3555,9 +3555,6 @@
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\FullHPDeityDecisionStrategyHandler.cpp">
-      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\decision_strategies\deity\source\IDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\source\DecisionStrategy.cpp">
@@ -5506,6 +5503,9 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\EnchantingEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyHandler.cpp">
+      <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,6 +2,7 @@
 #include "DeityDecisionImplications.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "Game.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 
 using namespace std;
@@ -34,14 +35,18 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature)
 {
   if (creature)
   {
+    Game& game = Game::instance();
+    MapPtr current_map = game.get_current_map();
+    TilePtr creature_tile = MapUtils::get_tile_for_creature(current_map, creature);
+
     DeityStatus& status = creature->get_active_deity_status_ref();
 
     // Reduce the creature's piety.
     int original_piety = status.get_piety();
 
     // Create a default (for now) dislike decision.
-    IDeityDecisionStrategyHandlerPtr deity_decision_handler = std::make_shared<DislikeDeityDecisionStrategyHandler>();
-    DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature);
+    DeityDecisionStrategyHandlerPtr deity_decision_handler = std::make_shared<DislikeDeityDecisionStrategyHandler>();
+    DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
     // This may have been updated as a result of the decision.
     int new_piety = status.get_piety();

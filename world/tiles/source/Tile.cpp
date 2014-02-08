@@ -303,6 +303,18 @@ string Tile::get_danger_confirmation_sid() const
   return empty_sid;
 }
 
+float Tile::get_piety_loss_multiplier() const
+{
+  float piety_mult = 1.0;
+
+  if (feature != nullptr)
+  {
+    piety_mult = feature->get_piety_loss_multiplier();
+  }
+
+  return piety_mult;
+}
+
 bool Tile::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, illuminated);

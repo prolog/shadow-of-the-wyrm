@@ -39,6 +39,11 @@ Savage Lands v0.2.1 "Oslac"
 - Added the ability to load random items on set maps.  Added random
   spellbooks to the bookshelves of the library.
 
+- Added the concept of "piety loss multiplication" to tiles and features.
+  Updated things so that praying from an altar (not currently possible,
+  since they're blocking) or a pew reduces the piety loss associated
+  with praying.
+
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.
 

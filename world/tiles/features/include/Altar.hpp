@@ -18,6 +18,8 @@ class Altar : public Feature
     
     virtual uchar get_symbol() const override;
 
+    virtual float get_piety_loss_multiplier() const override;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
         

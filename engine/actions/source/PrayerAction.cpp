@@ -1,6 +1,8 @@
 #include "ClassManager.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
 #include "DeityTextKeys.hpp"
+#include "Game.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PrayerAction.hpp"
 #include "ReligionManager.hpp"
@@ -20,12 +22,15 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
     // Say the prayer.
     say_prayer(creature);
     
+    Game& game = Game::instance();
+    TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
+    
     // Decide on a course of action.
     IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy();
-    IDeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision(creature);
+    DeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision(creature);
     
     // Act on that decision.
-    DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature);
+    DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
     
     // Reduce the piety and update the player on the result.
     finish_prayer(creature, decision_implications);

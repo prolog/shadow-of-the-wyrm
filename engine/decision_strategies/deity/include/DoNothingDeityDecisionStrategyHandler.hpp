@@ -1,11 +1,11 @@
 #pragma once
-#include "IDeityDecisionStrategyHandler.hpp"
+#include "DeityDecisionStrategyHandler.hpp"
 
-class DoNothingDeityDecisionStrategyHandler : public IDeityDecisionStrategyHandler
+class DoNothingDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
 {
   public:
     bool decide(CreaturePtr creature) override;
-    DeityDecisionImplications handle_decision(CreaturePtr creature) override;
+    DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) override;
 
   protected:
     int get_piety_loss() const override;

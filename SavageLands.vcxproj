@@ -345,7 +345,7 @@
     <ClInclude Include="engine\decision_strategies\deity\include\FullAPDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\FullHPDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategy.hpp" />
-    <ClInclude Include="engine\decision_strategies\deity\include\IDeityDecisionStrategyHandler.hpp" />
+    <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\RestoreStatusDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\include\AutomaticMovementDecisionStrategy.hpp" />
     <ClInclude Include="engine\decision_strategies\include\DecisionStrategy.hpp" />
@@ -1315,7 +1315,7 @@
     <ClCompile Include="engine\decision_strategies\deity\source\DoNothingDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\FullAPDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\FullHPDeityDecisionStrategyHandler.cpp" />
-    <ClCompile Include="engine\decision_strategies\deity\source\IDeityDecisionStrategyHandler.cpp" />
+    <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\RestoreStatusDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\search\source\AStarSearchStrategy.cpp" />
     <ClCompile Include="engine\decision_strategies\search\source\BreadthFirstSearchStrategy.cpp" />

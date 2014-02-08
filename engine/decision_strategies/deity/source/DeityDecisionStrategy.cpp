@@ -16,7 +16,7 @@ void DeityDecisionStrategy::initialize_decisions()
 {
   decisions.clear();
 
-  IDeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>();
+  DeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>();
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>();
@@ -32,12 +32,12 @@ void DeityDecisionStrategy::initialize_decisions()
 // Loop through the set of possible decisions.
 // The first one that meets the necessary criteria is selected.
 // If none meet their criteria, the deity does nothing.
-IDeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr creature)
+DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr creature)
 {
   // The default decision if nothing else is selected.
-  IDeityDecisionStrategyHandlerPtr do_nothing = std::make_shared<DoNothingDeityDecisionStrategyHandler>();
+  DeityDecisionStrategyHandlerPtr do_nothing = std::make_shared<DoNothingDeityDecisionStrategyHandler>();
 
-  for (IDeityDecisionStrategyHandlerPtr decision : decisions)
+  for (DeityDecisionStrategyHandlerPtr decision : decisions)
   {
     if (decision->decide(creature))
     {

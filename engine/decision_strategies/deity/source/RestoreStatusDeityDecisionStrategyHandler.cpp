@@ -53,7 +53,7 @@ bool RestoreStatusDeityDecisionStrategyHandler::decide(CreaturePtr creature)
   return false;
 }
 
-DeityDecisionImplications RestoreStatusDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature)
+DeityDecisionImplications RestoreStatusDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
   // Always reset the piety cost.
   piety_loss = 0;
@@ -82,7 +82,7 @@ DeityDecisionImplications RestoreStatusDeityDecisionStrategyHandler::handle_deci
     }
   }
 
-  return get_deity_decision_implications();
+  return get_deity_decision_implications(creature, tile);
 }
 
 // Piety loss is based on the number of statuses that were lifted by
