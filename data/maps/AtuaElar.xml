@@ -124,6 +124,46 @@
 					<Col>32</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<Random>
+					<ID>healing_word_spellbook</ID>
+					<ID>lightning_bolt_spellbook</ID>
+				</Random>
+				<Coord>
+					<Row>9</Row>
+					<Col>25</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<Random>
+					<ID>smite_spellbook</ID>
+					<ID>blind_spellbook</ID>
+				</Random>
+				<Coord>
+					<Row>10</Row>
+					<Col>25</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<Random>
+					<ID>slow_spellbook</ID>
+					<ID>stone_spellbook</ID>
+				</Random>
+				<Coord>
+					<Row>9</Row>
+					<Col>34</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<Random>
+					<ID>poison_spellbook</ID>
+					<ID>wreath_of_fire_spellbook</ID>
+				</Random>
+				<Coord>
+					<Row>10</Row>
+					<Col>34</Col>
+				</Coord>
+			</Placement>
 		</Items>
 	</InitialPlacements>
 	<Exits/>
