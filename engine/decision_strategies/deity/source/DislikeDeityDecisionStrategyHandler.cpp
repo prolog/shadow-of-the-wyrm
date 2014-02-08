@@ -22,9 +22,9 @@ bool DislikeDeityDecisionStrategyHandler::decide(CreaturePtr creature)
   return decision;
 }
 
-DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature)
+DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
-  return get_deity_decision_implications();
+  return get_deity_decision_implications(creature, tile);
 }
 
 int DislikeDeityDecisionStrategyHandler::get_piety_loss() const

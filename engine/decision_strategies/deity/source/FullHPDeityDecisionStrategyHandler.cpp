@@ -21,7 +21,7 @@ bool FullHPDeityDecisionStrategyHandler::decide(CreaturePtr creature)
   return decision;
 }
 
-DeityDecisionImplications FullHPDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature)
+DeityDecisionImplications FullHPDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
   if (creature)
   {
@@ -36,7 +36,7 @@ DeityDecisionImplications FullHPDeityDecisionStrategyHandler::handle_decision(Cr
     }
   }
 
-  return get_deity_decision_implications();
+  return get_deity_decision_implications(creature, tile);
 }
 
 int FullHPDeityDecisionStrategyHandler::get_piety_loss() const

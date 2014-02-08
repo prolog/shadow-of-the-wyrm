@@ -49,6 +49,11 @@ uchar Altar::get_symbol() const
   return '_';
 }
 
+float Altar::get_piety_loss_multiplier() const
+{
+  return 0.5f;
+}
+
 bool Altar::serialize(ostream& stream) const
 {
   Feature::serialize(stream);

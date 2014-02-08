@@ -159,6 +159,12 @@ Colour Feature::get_colour() const
   return colour;
 }
 
+// Most features don't impact piety at all.  Some (like Pews) will.
+float Feature::get_piety_loss_multiplier() const
+{
+  return 1.0f;
+}
+
 bool Feature::serialize(ostream& stream) const
 {
   if (trap)

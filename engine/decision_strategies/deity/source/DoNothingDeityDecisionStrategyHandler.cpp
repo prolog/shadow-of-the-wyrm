@@ -8,9 +8,9 @@ bool DoNothingDeityDecisionStrategyHandler::decide(CreaturePtr creature)
   return true;
 }
 
-DeityDecisionImplications DoNothingDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature)
+DeityDecisionImplications DoNothingDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
-  return get_deity_decision_implications();
+  return get_deity_decision_implications(creature, tile);
 }
 
 // You can't nag 'em forever.

@@ -71,6 +71,8 @@ class Feature : public ISerializable
     // By default, returns the empty SID.
     virtual std::string get_handle_message_sid() const;
 
+    virtual float get_piety_loss_multiplier() const;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 

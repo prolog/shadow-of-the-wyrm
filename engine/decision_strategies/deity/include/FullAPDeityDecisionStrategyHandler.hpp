@@ -1,11 +1,11 @@
 #pragma once
-#include "IDeityDecisionStrategyHandler.hpp"
+#include "DeityDecisionStrategyHandler.hpp"
 
-class FullAPDeityDecisionStrategyHandler : public IDeityDecisionStrategyHandler
+class FullAPDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
 {
   public:
     bool decide(CreaturePtr creature) override;
-    DeityDecisionImplications handle_decision(CreaturePtr creature) override;
+    DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) override;
     std::string get_message_sid() const override;
 
   protected:

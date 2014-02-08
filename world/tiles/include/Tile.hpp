@@ -90,6 +90,8 @@ class Tile : public ISerializable
     
     virtual bool get_dangerous(std::shared_ptr<Creature> creature) const;
     virtual std::string get_danger_confirmation_sid() const;
+
+    virtual float get_piety_loss_multiplier() const;
     
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

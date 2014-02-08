@@ -3,7 +3,7 @@
 #include "Creature.hpp"
 #include "DeityDecisionImplications.hpp"
 
-class IDeityDecisionStrategyHandler
+class DeityDecisionStrategyHandler
 {
   public:
     // Should this strategy be considered, based on the current state
@@ -11,13 +11,13 @@ class IDeityDecisionStrategyHandler
     virtual bool decide(CreaturePtr creature) = 0;
 
     // Returns the base piety loss as a result of handling the decision.
-    virtual DeityDecisionImplications handle_decision(CreaturePtr creature) = 0;
+    virtual DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) = 0;
     virtual std::string get_message_sid() const = 0;
 
   protected:
-    virtual DeityDecisionImplications get_deity_decision_implications() const;
+    virtual DeityDecisionImplications get_deity_decision_implications(CreaturePtr creature, TilePtr tile) const;
 
     virtual int get_piety_loss() const = 0;
 };
 
-typedef std::shared_ptr<IDeityDecisionStrategyHandler> IDeityDecisionStrategyHandlerPtr;
+typedef std::shared_ptr<DeityDecisionStrategyHandler> DeityDecisionStrategyHandlerPtr;

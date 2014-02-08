@@ -9,11 +9,11 @@ class DeityDecisionStrategy : public IDeityDecisionStrategy
 {
   public:
     DeityDecisionStrategy();
-    IDeityDecisionStrategyHandlerPtr get_decision(CreaturePtr creature) override;
+    DeityDecisionStrategyHandlerPtr get_decision(CreaturePtr creature) override;
 
   protected:
     // Should be initialized differently by deity.
     virtual void initialize_decisions();
 
-    std::vector<IDeityDecisionStrategyHandlerPtr> decisions;
+    std::vector<DeityDecisionStrategyHandlerPtr> decisions;
 };
