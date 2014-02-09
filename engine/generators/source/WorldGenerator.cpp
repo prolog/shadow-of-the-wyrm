@@ -271,6 +271,7 @@ void WorldGenerator::generate_fixed_settlements(MapPtr map)
   generate_Gnordvar(map);
   generate_Forest_of_Yew(map);
   generate_Atua_Elar(map);
+  generate_dwarf_lands(map);
 }
 
 void WorldGenerator::generate_Gnordvar(MapPtr map)
@@ -447,6 +448,56 @@ void WorldGenerator::generate_Atua_Elar(MapPtr map)
   map->insert(height - 7, 18, mountain_tile);
   mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
   map->insert(height - 7, 19, mountain_tile);
+}
+
+void WorldGenerator::generate_dwarf_lands(MapPtr map)
+{
+  generate_Wyrmeswraec(map);
+}
+
+void WorldGenerator::generate_Wyrmeswraec(MapPtr map)
+{
+  //  ^^
+  // ^o^
+  // ^^^
+  TileGenerator tg;
+
+  Dimensions dim = map->size();
+  int height = dim.get_y();
+  int width = dim.get_x();
+
+  TilePtr sea_tile;
+
+  for (int row = 4; row < 9; row++)
+  {
+    for (int col = 7; col < width - 12; col++)
+    {
+      sea_tile = tg.generate(TILE_TYPE_SEA);
+      map->insert(row, col, sea_tile);
+    }
+  }
+
+  TilePtr wyrmeswraec = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_MOUNTAINS);
+  wyrmeswraec->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_WYRMESWRAEC);
+  wyrmeswraec->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_WYRMESWRAEC);
+  map->insert(6,9, wyrmeswraec);
+
+  TilePtr mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(5, 9, mt_tile);
+  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(5, 10, mt_tile);
+
+  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(6, 8, mt_tile);
+  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(6, 10, mt_tile);
+
+  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(7, 8, mt_tile);
+  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(7, 9, mt_tile);
+  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
+  map->insert(7, 10, mt_tile);
 }
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
