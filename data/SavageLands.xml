@@ -15341,6 +15341,15 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wintersea_tombs</LockID>
 			</Tool>
+			<Tool id="wyrmeswraec_gate_key">
+				<DescriptionSID>WYRMESWRAEC_GATE_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>WYRMESWRAEC_GATE_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>40</Value>
+				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>wyrmeswraec_gate</LockID>
+			</Tool>			
 			<Tool id="sun_gem">
 				<DescriptionSID>SUN_GEM_SID</DescriptionSID>
 				<UsageDescriptionSID>SUN_GEM_USAGE_SID</UsageDescriptionSID>

@@ -20,5 +20,6 @@ const string TileCustomMapIDs::CUSTOM_MAP_ID_GNORDVAR = "gnordvar";
 const string TileCustomMapIDs::CUSTOM_MAP_ID_FOREST_OF_YEW = "forest_of_yew";
 const string TileCustomMapIDs::CUSTOM_MAP_ID_ATUA_ELAR = "atuaelar";
 const string TileCustomMapIDs::CUSTOM_MAP_ID_STONEWALL = "stonewall";
+const string TileCustomMapIDs::CUSTOM_MAP_ID_WYRMESWRAEC = "wyrmeswraec";
 
 

@@ -39,6 +39,8 @@ class WorldGenerator : public SL::Generator
     void generate_Forest_of_Yew(MapPtr map);
     void generate_Lalos_Grotto(MapPtr map);
     void generate_Atua_Elar(MapPtr map);
+    void generate_dwarf_lands(MapPtr map);
+    void generate_Wyrmeswraec(MapPtr map);
 
     void generate_fixed_settlements(MapPtr map);
     void generate_Gnordvar(MapPtr map); // Gnomish home base

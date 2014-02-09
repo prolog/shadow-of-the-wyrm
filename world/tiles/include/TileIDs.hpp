@@ -14,6 +14,7 @@ class TileCustomMapIDs
     static const std::string CUSTOM_MAP_ID_FOREST_OF_YEW;
     static const std::string CUSTOM_MAP_ID_ATUA_ELAR;
     static const std::string CUSTOM_MAP_ID_STONEWALL;
+    static const std::string CUSTOM_MAP_ID_WYRMESWRAEC;
 
   protected:
     TileCustomMapIDs();
