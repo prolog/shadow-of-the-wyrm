@@ -46,6 +46,8 @@ Savage Lands v0.2.1 "Oslac"
 
 - In the north-west part of the world, added Wyrmeswraec.
 
+- To the east of Wyrmeswraec, added Stoneheim.
+
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.
 
