@@ -3,6 +3,8 @@
 #include "Barrel.hpp"
 #include "EntranceTypes.hpp"
 #include "FeatureGenerator.hpp"
+#include "IXMLFeatureFactory.hpp"
+#include "XMLAltarFactory.hpp"
 #include "XMLMapFeatureFactory.hpp"
 
 using namespace std;
@@ -21,12 +23,15 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
 
   if (!feature_placement_node.is_null())
   {
+    IXMLFeatureFactoryPtr feature_creator;
+
     XMLNode feature_node;
 
     if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Altar")).is_null())
     {
-      feature = create_altar(feature_node);
+      feature_creator = std::make_shared<XMLAltarFactory>();
     }
+    // TODO: Fix these.
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Barrel")).is_null())
     {
       feature = create_barrel(feature_node);
@@ -46,6 +51,12 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Sarcophagus")).is_null())
     {
       feature = create_sarcophagus(feature_node);
+    }
+
+    // TODO: Once these are converted, remove the guard
+    if (feature_creator != nullptr)
+    {
+      feature = feature_creator->create(feature_node);
     }
   }
 

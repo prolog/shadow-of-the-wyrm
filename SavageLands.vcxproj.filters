@@ -646,6 +646,18 @@
     <Filter Include="Source Files\engine\serialization\source\unit_tests">
       <UniqueIdentifier>{3a3548da-15e7-48e3-a0d7-c7dd246a4b7c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\XML\custom_maps\features">
+      <UniqueIdentifier>{b4ecc6cf-4205-419b-a9e1-a90b2c28ac5b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\XML\custom_maps\features\include">
+      <UniqueIdentifier>{86c0f560-8967-4691-a211-d155119c4337}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\XML\custom_maps\features">
+      <UniqueIdentifier>{1fad7d97-c731-4e4d-839a-d5cbda8c03c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\XML\custom_maps\features\source">
+      <UniqueIdentifier>{762cf187-ff84-4163-b39d-0c1235dc236c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -2049,12 +2061,6 @@
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapCoordinateReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\XML\custom_maps\include\XMLMapFeatureReaders.hpp">
-      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\XML\custom_maps\include\XMLMapFeatureFactory.hpp">
-      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\MapProperties.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -2855,6 +2861,18 @@
     </ClInclude>
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureFactory.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\IXMLFeatureFactory.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLAltarFactory.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4538,12 +4556,6 @@
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapCoordinateReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\XML\custom_maps\source\XMLMapFeatureReaders.cpp">
-      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\XML\custom_maps\source\XMLMapFeatureFactory.cpp">
-      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\CursesConstants.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
@@ -5506,6 +5518,15 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureFactory.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureReaders.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLAltarFactory.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
