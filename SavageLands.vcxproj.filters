@@ -2868,10 +2868,13 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\XML\custom_maps\features\include\IXMLFeatureFactory.hpp">
+    <ClInclude Include="engine\XML\custom_maps\features\include\IXMLFeatureReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\XML\custom_maps\features\include\XMLAltarFactory.hpp">
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLAltarReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLBarrelReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -5525,7 +5528,10 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureReaders.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\XML\custom_maps\features\source\XMLAltarFactory.cpp">
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLAltarReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLBarrelReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>

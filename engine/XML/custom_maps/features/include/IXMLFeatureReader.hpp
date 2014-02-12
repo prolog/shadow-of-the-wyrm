@@ -5,12 +5,12 @@
 // Abstract factory to create a FeaturePtr from an XML node of the
 // appropriate type.  The concrete class is instantiated by the
 // XMLMapFeatureFactory.
-class IXMLFeatureFactory
+class IXMLFeatureReader
 {
   public:
-    virtual ~IXMLFeatureFactory() {};
+    virtual ~IXMLFeatureReader() {};
 
     virtual FeaturePtr create(const XMLNode& node) const = 0;
 };
 
-typedef std::shared_ptr<IXMLFeatureFactory> IXMLFeatureFactoryPtr;
+typedef std::shared_ptr<IXMLFeatureReader> IXMLFeatureReaderPtr;

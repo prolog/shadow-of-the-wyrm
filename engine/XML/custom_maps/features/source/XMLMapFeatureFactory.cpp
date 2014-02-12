@@ -3,8 +3,9 @@
 #include "Barrel.hpp"
 #include "EntranceTypes.hpp"
 #include "FeatureGenerator.hpp"
-#include "IXMLFeatureFactory.hpp"
-#include "XMLAltarFactory.hpp"
+#include "IXMLFeatureReader.hpp"
+#include "XMLAltarReader.hpp"
+#include "XMLBarrelReader.hpp"
 #include "XMLMapFeatureFactory.hpp"
 
 using namespace std;
@@ -23,19 +24,19 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
 
   if (!feature_placement_node.is_null())
   {
-    IXMLFeatureFactoryPtr feature_creator;
+    IXMLFeatureReaderPtr feature_creator;
 
     XMLNode feature_node;
 
     if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Altar")).is_null())
     {
-      feature_creator = std::make_shared<XMLAltarFactory>();
+      feature_creator = std::make_shared<XMLAltarReader>();
     }
-    // TODO: Fix these.
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Barrel")).is_null())
     {
-      feature = create_barrel(feature_node);
+      feature_creator = std::make_shared<XMLBarrelReader>();
     }
+    // TODO: Fix these.
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Door")).is_null())
     {
       feature = create_door(feature_node);
@@ -61,31 +62,6 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
   }
 
   return feature;
-}
-
-// Create an altar, reading in the alignment and the deity ID.
-FeaturePtr XMLMapFeatureFactory::create_altar(const XMLNode& altar_node)
-{
-  string deity_id = XMLUtils::get_child_node_value(altar_node, "DeityID");
-  AlignmentRange alignment = static_cast<AlignmentRange>(XMLUtils::get_child_node_int_value(altar_node, "Alignment", ALIGNMENT_RANGE_EVIL));
-
-  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, alignment);
-  return altar;
-}
-
-// Create a barrel, reading in the information about the liquid stored within,
-// if applicable.
-FeaturePtr XMLMapFeatureFactory::create_barrel(const XMLNode& barrel_node)
-{
-  std::shared_ptr<Barrel> barrel = std::make_shared<Barrel>();
-
-  bool tap = XMLUtils::get_child_node_bool_value(barrel_node, "Tap", barrel->get_tap());
-  barrel->set_tap(tap);
-
-  string pour_item_id = XMLUtils::get_child_node_value(barrel_node, "Pour");
-  barrel->set_pour_item_id(pour_item_id);
-
-  return barrel;
 }
 
 // Create a door, reading in its material, entrance state, key info, etc., from the XML.
