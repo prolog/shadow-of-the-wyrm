@@ -35,6 +35,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     {
       feature = create_door(feature_node);
     }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Fountain")).is_null())
+    {
+      feature = create_fountain(feature_node);
+    }
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Pew")).is_null())
     {
       feature = create_pew(feature_node);
@@ -100,6 +104,19 @@ FeaturePtr XMLMapFeatureFactory::create_door(const XMLNode& door_node)
   return door;
 }
 
+FeaturePtr XMLMapFeatureFactory::create_fountain(const XMLNode& fountain_node)
+{
+  FeaturePtr fountain = FeatureGenerator::generate_fountain();
+
+  XMLNode material_node = XMLUtils::get_next_element_by_local_name(fountain_node, "Material");
+  if (!material_node.is_null())
+  {
+    fountain->set_material_type(static_cast<MaterialType>(XMLUtils::get_node_int_value(material_node)));
+  }
+
+  return fountain;
+}
+
 // Create a pew, reading its orientation (n/s, e/w) from the XML.
 FeaturePtr XMLMapFeatureFactory::create_pew(const XMLNode& pew_node)
 {
@@ -116,7 +133,7 @@ FeaturePtr XMLMapFeatureFactory::create_sarcophagus(const XMLNode& sarcophagus_n
   XMLNode material_node = XMLUtils::get_next_element_by_local_name(sarcophagus_node, "Material");
   if (!material_node.is_null())
   {
-    material_type = static_cast<MaterialType>(XMLUtils::get_node_int_value(sarcophagus_node));
+    material_type = static_cast<MaterialType>(XMLUtils::get_node_int_value(material_node));
   }
 
   SarcophagusPtr sarcophagus = FeatureGenerator::generate_sarcophagus(material_type);

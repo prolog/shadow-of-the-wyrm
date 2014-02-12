@@ -91,6 +91,7 @@
 			<xs:element name="Altar" type="tns:Altar"/>
 			<xs:element name="Barrel" type="tns:Barrel"/>
 			<xs:element name="Door" type="tns:Door"/>
+			<xs:element name="Fountain" type="tns:Fountain"/>
 			<xs:element name="Pew" type="tns:Pew"/>
 			<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
 		</xs:choice>
@@ -116,6 +117,12 @@
 		<xs:element name="LockID" type="xs:string" minOccurs="0"/>
 		<xs:element name="Material" type="sl:MaterialType"/>
 		<xs:element name="Entrance" type="tns:Entrance" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Fountain">
+	<xs:annotation><xs:documentation>Defines a Fountain feature.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Material" type="sl:MaterialType"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Pew">
