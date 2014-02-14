@@ -31,7 +31,22 @@
 		<Col>38</Col>
 	</PlayerStart>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>skaal</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>38</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>gildi</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>72</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items/>
 	</InitialPlacements>
 	<Exits>
