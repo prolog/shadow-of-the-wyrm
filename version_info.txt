@@ -1,7 +1,8 @@
 Savage Lands v0.2.1 "Oslac"
 - Version declared January 26, 2014.
 
-- New creatures: added Iliri to the library of Atua-Elar.
+- New creatures: added Iliri to the library of Atua-Elar; Skaal, and
+  Gildi to Stoneheim.
 
 - New items: scroll of enchantment.
 

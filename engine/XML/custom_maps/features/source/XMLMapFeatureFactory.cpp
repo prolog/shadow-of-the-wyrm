@@ -1,6 +1,5 @@
 #include <string>
 #include "AlignmentEnums.hpp"
-#include "Barrel.hpp"
 #include "EntranceTypes.hpp"
 #include "FeatureGenerator.hpp"
 #include "IXMLFeatureReader.hpp"
