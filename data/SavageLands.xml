@@ -11961,6 +11961,38 @@
 				<Type>10</Type>
 			</Damage>
 		</Creature>
+		<Creature id="dwarven_bodyguard">
+			<RaceID>06_dwarf</RaceID>
+			<ShortDescriptionSID>DWARVEN_BODYGUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DWARVEN_BODYGUARD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DWARVEN_BODYGUARD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DWARVEN_BODYGUARD_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>d</Symbol>
+				<Colour>1</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>38</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>38</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>45000</Exp>
+			</CreatureGeneration>
+			<Level>38</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>76</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Evade>-5</Evade>
+			<Soak>12</Soak>
+		</Creature>
 	</Creatures>
 	<Spells>
 		<Spell id="a_01_wreath_of_fire">
