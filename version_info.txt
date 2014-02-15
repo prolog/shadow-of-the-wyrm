@@ -2,7 +2,7 @@ Savage Lands v0.2.1 "Oslac"
 - Version declared January 26, 2014.
 
 - New creatures: added Iliri to the library of Atua-Elar; Skaal, Gildi,
-  and dwarven bodyguards to Stoneheim.
+  Thengil, Tindr, and dwarven bodyguards to Stoneheim.
 
 - New items: scroll of enchantment.
 

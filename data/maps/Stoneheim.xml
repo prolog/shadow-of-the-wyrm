@@ -47,6 +47,20 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>thengil</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>16</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>tindr</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>37</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>dwarf</ID>
 				<Coord>
 					<Row>5</Row>

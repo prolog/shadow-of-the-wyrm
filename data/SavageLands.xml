@@ -11908,7 +11908,7 @@
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>d</Symbol>
-				<Colour>6</Colour>
+				<Colour>5</Colour>
 			</Text>
 			<CreatureGeneration>
 				<Max>1</Max>
@@ -11961,6 +11961,67 @@
 				<Type>10</Type>
 			</Damage>
 		</Creature>
+		<Creature id="thengil">
+			<RaceID>06_dwarf</RaceID>
+			<ShortDescriptionSID>THENGIL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>THENGIL_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>THENGIL_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>THENGIL_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>immobile</DecisionStrategy>
+			<Text>
+				<Symbol>d</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>35</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>35</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>20000</Exp>
+			</CreatureGeneration>
+			<Level>35</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>70</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Soak>10</Soak>
+		</Creature>
+		<Creature id="tindr">
+			<RaceID>06_dwarf</RaceID>
+			<ShortDescriptionSID>TINDR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>TINDR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>TINDR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>TINDR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<Max>1</Max>
+				<AllowableTerrainTypes/>
+				<Friendly>1</Friendly>
+				<DangerLevel>33</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>33</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>9500</Exp>
+			</CreatureGeneration>
+			<Level>33</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>64</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="dwarven_bodyguard">
 			<RaceID>06_dwarf</RaceID>
 			<ShortDescriptionSID>DWARVEN_BODYGUARD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
@@ -11973,7 +12034,6 @@
 				<Colour>1</Colour>
 			</Text>
 			<CreatureGeneration>
-				<Max>1</Max>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
 				<DangerLevel>38</DangerLevel>
