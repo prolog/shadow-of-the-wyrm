@@ -11960,6 +11960,7 @@
 				<NumSides>70</NumSides>
 				<Type>10</Type>
 			</Damage>
+			<ChatScript>quests/gildi.lua</ChatScript>
 		</Creature>
 		<Creature id="thengil">
 			<RaceID>06_dwarf</RaceID>
@@ -13194,7 +13195,7 @@
 				<WornLocation>7</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
-				<Evade>1</Evade>
+				<Evade>2</Evade>
 				<Soak>1</Soak>
 			</Armour>
 			<Armour id="hunters_cloak">
@@ -13205,7 +13206,7 @@
 				<WornLocation>7</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
-				<Evade>5</Evade>
+				<Evade>8</Evade>
 				<Soak>0</Soak>
 			</Armour>
 			<Armour id="heavy_cloak">
@@ -13217,6 +13218,27 @@
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
 				<Evade>0</Evade>
+				<Soak>3</Soak>
+			</Armour>
+			<Armour id="gildis_cloak">
+				<DescriptionSID>GILDIS_CLOAK_SID</DescriptionSID>
+				<UsageDescriptionSID>GILDIS_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<Value>416</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>7</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.15</Heat>
+					<Cold>0.15</Cold>
+					<Acid>0.15</Acid>
+					<Poison>0.15</Poison>
+					<Holy>0.15</Holy>
+					<Shadow>0.15</Shadow>
+					<Arcane>0.15</Arcane>
+				</Resistances>
+				<Evade>4</Evade>
 				<Soak>2</Soak>
 			</Armour>
 			<Armour id="leather_boots">
@@ -15509,10 +15531,24 @@
 				<UsageDescriptionSID>SUN_GEM_USAGE_SID</UsageDescriptionSID>
 				<Value>100</Value>
 				<Weight><Pounds>1</Pounds></Weight>
+				<Artifact>1</Artifact>
 				<Material>7</Material>
 				<TextDetails>
 					<Symbol>*</Symbol>
 					<Colour>11</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Tool>
+			<Tool id="black_orb">
+				<DescriptionSID>BLACK_ORB_SID</DescriptionSID>
+				<UsageDescriptionSID>BLACK_ORB_USAGE_SID</UsageDescriptionSID>
+				<Value>500</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Artifact>1</Artifact>
+				<Material>7</Material>
+				<TextDetails>
+					<Symbol>*</Symbol>
+					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Tool>
@@ -15912,6 +15948,18 @@
 				<Value>0</Value>
 				<Weight><Pounds>0</Pounds><Ounces>1</Ounces></Weight>
 				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="mummified_corpse">
+				<DescriptionSID>MUMMIFIED_CORPSE_SID</DescriptionSID>
+				<UsageDescriptionSID>MUMMIFIED_CORPSE_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>150</Pounds></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 		</MiscItems>

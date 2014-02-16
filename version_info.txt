@@ -4,6 +4,8 @@ Savage Lands v0.2.1 "Oslac"
 - New creatures: added Iliri to the library of Atua-Elar; Skaal, Gildi,
   Thengil, Tindr, and dwarven bodyguards to Stoneheim.
 
+- Added Gildi's first quest, to retrieve the Black Orb of Wyrmeswraec.
+
 - New items: scroll of enchantment.
 
 - Added a resistances and vulnerabilities screen (F1) which shows a
