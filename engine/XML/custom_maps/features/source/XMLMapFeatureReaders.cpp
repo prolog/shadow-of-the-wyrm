@@ -27,7 +27,7 @@ void XMLMapFeaturesReader::parse_feature_placement(const XMLNode& feature_placem
     XMLNode coord_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Coord");
 
     XMLMapCoordinateReader coord_reader;
-    Coordinate c = coord_reader.parse_coordinate(coord_node);
+    Coordinate c = coord_reader.parse_fixed_coordinate(coord_node);
 
     FeaturePtr feature = XMLMapFeatureFactory::create_feature(feature_placement_node);
     TilePtr tile = map->at(c);

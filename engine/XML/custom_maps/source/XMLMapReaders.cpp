@@ -46,7 +46,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     BOOST_ASSERT_MSG(tiles.size() == (dim.get_y() * dim.get_x()), oss.str().c_str());
 
     XMLMapCoordinateReader coord_reader;
-    Coordinate player_start_location = coord_reader.parse_coordinate(player_start_node);
+    Coordinate player_start_location = coord_reader.parse_fixed_coordinate(player_start_node);
 
     custom_map = MapPtr(new Map(dim));
     
@@ -142,8 +142,6 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
 
     for (const XMLNode& placement_node : placement_nodes)
     {
-      XMLNode coord_node = XMLUtils::get_next_element_by_local_name(placement_node, "Coord");
-
       string id = parse_id(placement_node);
 
       XMLNode friendly_node = XMLUtils::get_next_element_by_local_name(placement_node, "Friendly");
@@ -158,7 +156,7 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
       }
 
       XMLMapCoordinateReader coord_reader;
-      Coordinate coord = coord_reader.parse_coordinate(coord_node);
+      Coordinate coord = coord_reader.parse_coordinate(placement_node);
 
       // Place the specified creature on the map.
       Game& game = Game::instance();
@@ -192,11 +190,10 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
     for (const XMLNode& item_node : placement_nodes)
     {
       string id = parse_id(item_node);
-      XMLNode coord_node = XMLUtils::get_next_element_by_local_name(item_node, "Coord");
       int quantity = XMLUtils::get_child_node_int_value(item_node, "Quantity", 1);  
 
       XMLMapCoordinateReader coord_reader;
-      Coordinate c = coord_reader.parse_coordinate(coord_node);
+      Coordinate c = coord_reader.parse_coordinate(item_node);
 
       // Create the item, and set it on the specified coordinate.
       ItemPtr item = ItemManager::create_item(id);

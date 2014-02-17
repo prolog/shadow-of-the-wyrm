@@ -6,6 +6,7 @@
 #include "XMLAltarReader.hpp"
 #include "XMLBarrelReader.hpp"
 #include "XMLDoorReader.hpp"
+#include "XMLFirePillarReader.hpp"
 #include "XMLFountainReader.hpp"
 #include "XMLPewReader.hpp"
 #include "XMLSarcophagusReader.hpp"
@@ -42,6 +43,10 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Door")).is_null())
     {
       feature_creator = std::make_shared<XMLDoorReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "FirePillar")).is_null())
+    {
+      feature_creator = std::make_shared<XMLFirePillarReader>();
     }
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Fountain")).is_null())
     {

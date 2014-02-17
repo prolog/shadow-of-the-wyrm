@@ -2889,6 +2889,9 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSarcophagusReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLFirePillarReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5556,6 +5559,9 @@
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLPewReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLFirePillarReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
