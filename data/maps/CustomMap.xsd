@@ -56,7 +56,10 @@
 			<xs:element name="ID" type="xs:string"/>
 			<xs:element name="Random" type="tns:IDList"/>
 		</xs:choice>
-		<xs:element name="Coord" type="tns:Coord"/>
+		<xs:choice>
+			<xs:element name="Coord" type="tns:Coord"/>
+			<xs:element name="Random" type="tns:CoordList"/>
+		</xs:choice>
 		<!-- Used only for creatures - has no meaning for items. -->
 		<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
 		<!-- Quantity is only used for items. -->
@@ -91,52 +94,85 @@
 			<xs:element name="Altar" type="tns:Altar"/>
 			<xs:element name="Barrel" type="tns:Barrel"/>
 			<xs:element name="Door" type="tns:Door"/>
+			<xs:element name="FirePillar" type="tns:FirePillar"/>
 			<xs:element name="Fountain" type="tns:Fountain"/>
 			<xs:element name="Pew" type="tns:Pew"/>
 			<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
 		</xs:choice>
 	</xs:sequence>
 </xs:complexType>
+<xs:complexType name="Feature">
+	<xs:annotation><xs:documentation>Defines a Feature - not all fields on the cpp class can be integrated via XML currently.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Material" type="sl:MaterialType" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="Altar">
 	<xs:annotation><xs:documentation>Defines an Altar feature.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="DeityID" type="xs:string"/>
-		<xs:element name="Alignment" type="tns:AlignmentRange"/>
-	</xs:sequence>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+			<xs:sequence>
+				<xs:element name="DeityID" type="xs:string"/>
+				<xs:element name="Alignment" type="tns:AlignmentRange"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Barrel">
 	<xs:annotation><xs:documentation>Defines a Barrel feature.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Tap" type="xs:boolean" minOccurs="0"/>
-		<xs:element name="Pour" type="xs:string" minOccurs="0"/>
-	</xs:sequence>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+			<xs:sequence>
+				<xs:element name="Tap" type="xs:boolean" minOccurs="0"/>
+				<xs:element name="Pour" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Door">
 	<xs:annotation><xs:documentation>Defines a Door feature.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="LockID" type="xs:string" minOccurs="0"/>
-		<xs:element name="Material" type="sl:MaterialType"/>
-		<xs:element name="Entrance" type="tns:Entrance" minOccurs="0"/>
-	</xs:sequence>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+			<xs:sequence>
+				<xs:element name="LockID" type="xs:string" minOccurs="0"/>
+				<xs:element name="Entrance" type="tns:Entrance" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="FirePillar">
+	<xs:annotation><xs:documentation>Defines a Fire Pillar feature.</xs:documentation></xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Fountain">
 	<xs:annotation><xs:documentation>Defines a Fountain feature.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Material" type="sl:MaterialType"/>
-	</xs:sequence>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Pew">
 	<xs:annotation><xs:documentation>Defines a Pew feature.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Orientation" type="tns:OrientationType"/>
-	</xs:sequence>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+			<xs:sequence>
+				<xs:element name="Orientation" type="tns:OrientationType"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Sarcophagus">
 	<xs:annotation><xs:documentation>Defines a Sarcophagus.</xs:documentation></xs:annotation>
-	<xs:sequence>
-		<xs:element name="Material" type="sl:MaterialType"/>
-		<xs:element name="Inscription" type="xs:string" minOccurs="0"/>
-	</xs:sequence>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+			<xs:sequence>
+				<xs:element name="Inscription" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
 </xs:complexType>
 <xs:complexType name="Entrance">
 	<xs:annotation>
@@ -146,6 +182,12 @@
 	</xs:annotation>
 	<xs:sequence>
 		<xs:element name="EntranceState" type="tns:EntranceStateType"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="CoordList">
+	<xs:annotation><xs:documentation>A list of coordinates (typically used for random placement of creatures or items).</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Coord" type="tns:Coord" maxOccurs="unbounded"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="IDList">

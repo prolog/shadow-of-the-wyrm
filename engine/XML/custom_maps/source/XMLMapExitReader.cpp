@@ -27,7 +27,7 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     XMLNode coord_node = XMLUtils::get_next_element_by_local_name(exit_node, "Coord");
     
     XMLMapCoordinateReader coord_reader;
-    Coordinate c = coord_reader.parse_coordinate(coord_node);
+    Coordinate c = coord_reader.parse_fixed_coordinate(coord_node);
     Direction dir = static_cast<Direction>(XMLUtils::get_child_node_int_value(exit_node, "Direction"));
     string exit_map = XMLUtils::get_child_node_value(exit_node, "MapID");
 

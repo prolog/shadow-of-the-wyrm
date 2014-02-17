@@ -626,6 +626,7 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLAltarReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBarrelReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLDoorReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLFirePillarReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFountainReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureFactory.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp" />
@@ -1739,6 +1740,7 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLAltarReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBarrelReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDoorReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLFirePillarReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFountainReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureFactory.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureReaders.cpp" />
