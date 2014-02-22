@@ -3,8 +3,8 @@ Savage Lands v0.2.1 "Oslac"
 
 - New creatures: added Iliri to the library of Atua-Elar; Skaal, Gildi,
   Thengil, Tindr, and dwarven bodyguards to Stoneheim.  Added piercing
-  eyes, deep crawlers, stone golems, animated armours to the temple of 
-  Wyrmeswraec.
+  eyes, deep crawlers, stone golems, animated armours, iron horrors,
+  holy shades, divine avengers to the temple of Wyrmeswraec.
 
 - Added Gildi's first quest, to retrieve the Black Orb of Wyrmeswraec.
 

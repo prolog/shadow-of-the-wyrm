@@ -12184,7 +12184,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>G</Symbol>
-				<Colour>5</Colour>
+				<Colour>12</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -12214,6 +12214,127 @@
 				<NumSides>80</NumSides>
 				<Type>1</Type>
 			</Damage>
+		</Creature>
+		<Creature id="iron_horror">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>IRON_HORROR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>IRON_HORROR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>IRON_HORROR_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>IRON_HORROR_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>&amp;</Symbol>
+				<Colour>113</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>41</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>41</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>120000</Exp>
+			</CreatureGeneration>
+			<Level>41</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>82</NumSides>
+				<Type>3</Type>
+			</Damage>
+		</Creature>
+		<Creature id="holy_shade">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>HOLY_SHADE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HOLY_SHADE_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HOLY_SHADE_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HOLY_SHADE_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>&amp;</Symbol>
+				<Colour>120</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>42</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>42</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>110000</Exp>
+			</CreatureGeneration>
+			<Level>42</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>84</NumSides>
+				<Type>7</Type>
+			</Damage>
+		</Creature>
+		<Creature id="divine_avenger">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>DIVINE_AVENGER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>DIVINE_AVENGER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>DIVINE_AVENGER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>DIVINE_AVENGER_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>X</Symbol>
+				<Colour>14</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>43</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>43</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>120000</Exp>
+			</CreatureGeneration>
+			<Level>43</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>86</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Speed>35</Speed>
 		</Creature>
 	</Creatures>
 	<Spells>
