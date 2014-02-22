@@ -60,6 +60,20 @@
 					<Col>69</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>deep_crawler</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>35</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>deep_crawler</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>43</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
