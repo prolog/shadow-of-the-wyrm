@@ -40,10 +40,52 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>stone_golem</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>10</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>animated_armour</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>10</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>animated_armour</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>10</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>stone_golem</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>10</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>piercing_gaze</ID>
 				<Coord>
 					<Row>12</Row>
 					<Col>10</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>animated_armour</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>stone_golem</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>69</Col>
 				</Coord>
 			</Placement>
 			<Placement>
@@ -57,6 +99,20 @@
 				<ID>piercing_gaze</ID>
 				<Coord>
 					<Row>10</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>stone_golem</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>69</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>animated_armour</ID>
+				<Coord>
+					<Row>12</Row>
 					<Col>69</Col>
 				</Coord>
 			</Placement>

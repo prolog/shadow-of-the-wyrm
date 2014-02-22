@@ -4451,7 +4451,7 @@
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>G</Symbol>
-				<Colour>8</Colour>
+				<Colour>4</Colour>
 			</Text>
 			<CreatureGeneration>
 				<AllowableTerrainTypes>
@@ -12134,6 +12134,86 @@
 				<Type>6</Type>
 			</Damage>
 			<Speed>38</Speed>
+		</Creature>
+		<Creature id="stone_golem">
+			<RaceID>_construct</RaceID>
+			<ShortDescriptionSID>STONE_GOLEM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>STONE_GOLEM_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>STONE_GOLEM_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>8</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>39</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>39</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>75000</Exp>
+			</CreatureGeneration>
+			<Level>39</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>78</NumSides>
+				<Type>2</Type>
+			</Damage>
+			<Soak>8</Soak>
+			<Speed>63</Speed>
+		</Creature>
+		<Creature id="animated_armour">
+			<RaceID>_construct</RaceID>
+			<ShortDescriptionSID>ANIMATED_ARMOUR_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ANIMATED_ARMOUR_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ANIMATED_ARMOUR_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>G</Symbol>
+				<Colour>5</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>40</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>40</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>90000</Exp>
+			</CreatureGeneration>
+			<Level>40</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>80</NumSides>
+				<Type>1</Type>
+			</Damage>
 		</Creature>
 	</Creatures>
 	<Spells>
