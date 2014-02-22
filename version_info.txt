@@ -9,6 +9,8 @@ Savage Lands v0.2.1 "Oslac"
 
 - Added Gildi's first quest, to retrieve the Black Orb of Wyrmeswraec.
 
+- Added Skaal's quest, to investigate the destruction of Wyrmeswreac.
+
 - Added support for existing features (e.g., Fountain, Fire Pillar) via
   XML, and refactored the schema so that all the XML Feature types had
   a common base.  This is useful for setting common features such as
@@ -56,7 +58,7 @@ Savage Lands v0.2.1 "Oslac"
   with praying.
 
 - In the north-west part of the world, added Wyrmeswraec.  Added a
-  temple above the ruins.
+  temple above the ruins.  Added a lair below the ruins.
 
 - To the east of Wyrmeswraec, added Stoneheim.
 

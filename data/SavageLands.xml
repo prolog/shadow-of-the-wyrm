@@ -11930,6 +11930,7 @@
 			</Damage>
 			<Evade>11</Evade>
 			<Soak>5</Soak>
+			<ChatScript>quests/skaal.lua</ChatScript>
 		</Creature>
 		<Creature id="gildi">
 			<RaceID>06_dwarf</RaceID>
@@ -13536,8 +13537,23 @@
 					<Cold>0.10</Cold>
 					<Lightning>0.10</Lightning>
 				</Resistances>
-				<Evade>15</Evade>
+				<Evade>20</Evade>
 				<Soak>5</Soak>
+			</Armour>
+			<Armour id="wyrm_ward">
+				<DescriptionSID>WYRM_WARD_SID</DescriptionSID>
+				<UsageDescriptionSID>WYRM_WARD_USAGE_SID</UsageDescriptionSID>
+				<Value>1250</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>5</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.20</Heat>
+				</Resistances>
+				<Evade>7</Evade>
+				<Soak>10</Soak>
 			</Armour>
 			<Armour id="iron_shield">
 				<DescriptionSID>IRON_SHIELD_SID</DescriptionSID>
@@ -16356,6 +16372,14 @@
 					<Symbol>%</Symbol>
 					<Colour>7</Colour>
 				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="handful_gleaming_wyrm_scales">
+				<DescriptionSID>HANDFUL_GLEAMING_WYRM_SCALES_SID</DescriptionSID>
+				<UsageDescriptionSID>HANDFUL_GLEAMING_WYRM_SCALES_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>2</Pounds><Ounces>1</Ounces></Weight>
+				<Material>1</Material>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
 		</MiscItems>

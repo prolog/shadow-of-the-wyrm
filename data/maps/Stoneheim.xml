@@ -136,7 +136,7 @@
 				<ID>dwarven_bodyguard</ID>
 				<Coord>
 					<Row>8</Row>
-					<Col>41</Col>
+					<Col>40</Col>
 				</Coord>
 				<Friendly>1</Friendly>
 			</Placement>
