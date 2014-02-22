@@ -16,7 +16,9 @@ Savage Lands v0.2.1 "Oslac"
   a common base.  This is useful for setting common features such as
   material type.
 
-- New items: scroll of enchantment.
+- New items: scroll of enchantment, gleaming wyrm scales, the dwarven
+  shield "Wyrm-Ward" (artifact).  Tweaked the evade/soak values of the
+  Faerie Shield.
 
 - Added a resistances and vulnerabilities screen (F1) which shows a
   creature's resistances and vulnerabilities, colour-coded to be helpful
