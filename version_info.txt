@@ -64,6 +64,9 @@ Savage Lands v0.2.1 "Oslac"
 
 - To the east of Wyrmeswraec, added Stoneheim.
 
+- Added support to custom maps to set random creatures.  Set up the lair
+  in Wyrmeswraec to have a bunch of random insects/slimes/etc.
+
 Savage Lands v0.2.0 "Oswald"
 - Version declared January 3, 2014.  Version finalized January 26, 2014.
 

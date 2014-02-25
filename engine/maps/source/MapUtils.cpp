@@ -1,6 +1,9 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
+#include "CreatureFactory.hpp"
+#include "Game.hpp"
 #include "MapUtils.hpp"
+#include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 #include <boost/tokenizer.hpp>
 
@@ -68,6 +71,47 @@ Dimensions MapUtils::get_dimensions(MapPtr map, const Coordinate& coords, const 
   new_dimensions.set_x(num_cols);
   
   return new_dimensions;
+}
+
+// Add a creature randomly to the map
+bool MapUtils::place_creature_randomly(MapPtr map, const string& creature_id)
+{
+  bool creatures_generated = false;
+
+  Dimensions dim = map->size();
+  int rows = dim.get_y();
+  int cols = dim.get_x();
+
+  Game& game = Game::instance();
+  ActionManager& am = game.get_action_manager_ref();
+  CreatureFactory cf;
+
+  // Generate the creature
+  CreaturePtr creature = cf.create_by_creature_id(am, creature_id);
+
+  if (creature)
+  {
+    // Place the creature
+    for (int attempts = 0; attempts < 200; attempts++)
+    {
+      int creature_row = RNG::range(0, rows - 1);
+      int creature_col = RNG::range(0, cols - 1);
+
+      // Check to see if the spot is empty, and if a creature can be added there.
+      TilePtr tile = map->at(creature_row, creature_col);
+
+      if (MapUtils::is_tile_available_for_creature(creature, tile))
+      {
+        Coordinate coords(creature_row, creature_col);
+        MapUtils::add_or_update_location(map, creature, coords);
+        creatures_generated = true;
+
+        break;
+      }
+    }
+  }
+
+  return creatures_generated;
 }
 
 // Add the tile and its connected tiles to the Component.

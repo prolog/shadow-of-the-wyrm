@@ -129,45 +129,14 @@ bool Generator::generate_initial_set_creatures(MapPtr map)
 {
   bool creatures_generated = false;
 
-  Dimensions dim = map->size();
-  int rows = dim.get_y();
-  int cols = dim.get_x();
-
   string initial_creatures = get_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
   vector<string> creature_ids = String::create_string_vector_from_csv_string(initial_creatures);
 
   try
   {
-    Game& game = Game::instance();
-    ActionManager& am = game.get_action_manager_ref();
-    CreatureFactory cf;
-
     for (const string& creature_id : creature_ids)
     {
-      // Generate the creature
-      CreaturePtr creature = cf.create_by_creature_id(am, creature_id);
-
-      if (creature)
-      {
-        // Place the creature
-        for (int attempts = 0; attempts < 200; attempts++)
-        {
-          int creature_row = RNG::range(0, rows-1);
-          int creature_col = RNG::range(0, cols-1);
-      
-          // Check to see if the spot is empty, and if a creature can be added there.
-          TilePtr tile = map->at(creature_row, creature_col);
-
-          if (MapUtils::is_tile_available_for_creature(creature, tile))
-          {
-            Coordinate coords(creature_row, creature_col);
-            MapUtils::add_or_update_location(map, creature, coords);
-            creatures_generated = true;
-
-            break;
-          }
-        }
-      }
+      creatures_generated = MapUtils::place_creature_randomly(map, creature_id);
     }
   }
   catch(...)

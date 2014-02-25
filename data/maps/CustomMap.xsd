@@ -13,6 +13,7 @@
 			<xs:element name="Tiles" type="xs:string"/>
 			<xs:element name="PlayerStart" type="tns:Coord" minOccurs="0"/>
 			<xs:element name="InitialPlacements" type="tns:InitialPlacements" minOccurs="0"/>
+			<xs:element name="RandomPlacements" type="tns:RandomPlacements" minOccurs="0"/>
 			<xs:element name="Exits" type="tns:Exits" minOccurs="0"/>
 			<xs:element name="Features" type="tns:Features" minOccurs="0"/>
 		</xs:sequence>
@@ -43,6 +44,12 @@
 		<xs:element name="Items" type="tns:IdentifiedPlacementList" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
+<xs:complexType name="RandomPlacements">
+	<xs:annotation><xs:documentation>Random placements of creatures and items.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Creatures" type="tns:RandomPlacementList" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="IdentifiedPlacementList">
 	<xs:annotation><xs:documentation>A list of placements of a particular type (creature, item, etc).</xs:documentation></xs:annotation>
 	<xs:sequence>
@@ -64,6 +71,14 @@
 		<xs:element name="Friendly" type="xs:boolean" minOccurs="0"/>
 		<!-- Quantity is only used for items. -->
 		<xs:element name="Quantity" type="xs:unsignedInt" minOccurs="0"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="RandomPlacementList">
+	<xs:annotation><xs:documentation>A list specifying a list of potential creatures/items, and a range to generate.</xs:documentation></xs:annotation>
+	<xs:sequence>
+		<xs:element name="Min" type="xs:integer"/>
+		<xs:element name="Max" type="xs:integer"/>
+		<xs:element name="IDList" type="tns:IDList"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Exits">

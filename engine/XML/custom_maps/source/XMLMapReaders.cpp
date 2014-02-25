@@ -26,6 +26,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLNode tiles_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Tiles");
     XMLNode player_start_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "PlayerStart");
     XMLNode initial_placements_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "InitialPlacements");
+    XMLNode random_placements_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "RandomPlacements");
     XMLNode exits_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Exits");
     XMLNode features_node = XMLUtils::get_next_element_by_local_name(custom_map_node, "Features");
 
@@ -57,6 +58,7 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     custom_map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, player_start_location);
 
     parse_initial_placements(initial_placements_node, custom_map);
+    parse_random_placements(random_placements_node, custom_map);
 
     XMLMapExitReader exit_reader;
     exit_reader.parse_exits(exits_node, custom_map);
@@ -130,6 +132,15 @@ void XMLMapReader::parse_initial_placements(const XMLNode& initial_placements_no
 
     XMLNode items_node = XMLUtils::get_next_element_by_local_name(initial_placements_node, "Items");
     parse_initial_item_placements(items_node, map);
+  }
+}
+
+void XMLMapReader::parse_random_placements(const XMLNode& random_placements_node, MapPtr map)
+{
+  if (!random_placements_node.is_null())
+  {
+    XMLNode creatures_node = XMLUtils::get_next_element_by_local_name(random_placements_node, "Creatures");
+    parse_random_creature_placements(creatures_node, map);
   }
 }
 
@@ -207,6 +218,43 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
         {
           tile->get_items().add(item);
         }
+      }
+    }
+  }
+}
+
+// Parse a range <min, max> from a random placement.
+pair<int, int> XMLMapReader::parse_placement_range(const XMLNode& node)
+{
+  pair<int, int> range(0,0);
+
+  if (!node.is_null())
+  {
+    range.first = XMLUtils::get_child_node_int_value(node, "Min");
+    range.second = XMLUtils::get_child_node_int_value(node, "Max");
+  }
+
+  return range;
+}
+
+// Place a certain range of random creatures on the map
+void XMLMapReader::parse_random_creature_placements(const XMLNode& creatures_node, MapPtr map)
+{
+  if (!creatures_node.is_null() && map)
+  {
+    Dimensions dim = map->size();
+    pair<int, int> random_range = parse_placement_range(creatures_node);
+
+    int num_creatures = RNG::range(random_range.first, random_range.second);
+    XMLNode idlist_node = XMLUtils::get_next_element_by_local_name(creatures_node, "IDList");
+    vector<XMLNode> id_nodes = XMLUtils::get_elements_by_local_name(idlist_node, "ID");
+    
+    if (!id_nodes.empty())
+    {
+      for (int i = 0; i < num_creatures; i++)
+      {
+        string creature_id = XMLUtils::get_node_value(id_nodes.at(RNG::range(0, id_nodes.size() - 1)));
+        MapUtils::place_creature_randomly(map, creature_id);
       }
     }
   }
