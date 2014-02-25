@@ -27,6 +27,8 @@ class MapUtils
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
     static CreatureDirectionMap get_adjacent_creatures(const MapPtr& map, const CreaturePtr& creature);
     static bool remove_creature(const MapPtr& map, const CreaturePtr& creature);
+
+    static bool place_creature_randomly(MapPtr map, const std::string& creature_id);
     
     static bool can_exit_map(MapExitPtr map_exit);
     
