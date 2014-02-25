@@ -1,5 +1,8 @@
+Savage Lands v0.2.2 "Aelfwald"
+- Version declared February 25, 2014.
+
 Savage Lands v0.2.1 "Oslac"
-- Version declared January 26, 2014.
+- Version declared January 26, 2014.  Version finalized February 25, 2014.
 
 - New creatures: added Iliri to the library of Atua-Elar; Skaal, Gildi,
   Thengil, Tindr, and dwarven bodyguards to Stoneheim.  Added piercing
