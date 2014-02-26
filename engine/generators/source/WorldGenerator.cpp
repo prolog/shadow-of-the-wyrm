@@ -112,51 +112,6 @@ void WorldGenerator::generate_last_rock_and_far_shore(MapPtr map)
   map->insert(height-10, 0, far_shore);
 }
 
-// The island containing the only infinite, Angband-style dungeon in the game.
-void WorldGenerator::generate_infinite_dungeon_island(MapPtr map)
-{
-  // Surround the island with sea
-  Dimensions dim = map->size();
-  int height = dim.get_y();
-  int width = dim.get_x();
-
-  // Refill with sea, in case there are land features here already.
-  for (int current_height = height - 12; current_height < height-9; current_height++)
-  {
-    for (int current_width = width - 7; current_width < width; current_width++)
-    {
-      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(current_height, current_width, sea_tile);
-    }
-  }
-
-  // Create the island itself:
-  //
-  //  ~T~
-  //  T<T
-  //  ~T~
-  //
-  // First, the surrounding forest:
-  vector<Coordinate> v_trees;
-  v_trees.push_back(make_pair(height-11, width-2));
-  v_trees.push_back(make_pair(height-10, width-1));
-  v_trees.push_back(make_pair(height-10, width-3));
-  v_trees.push_back(make_pair(height-9, width-2));
-
-  for (const Coordinate& coord : v_trees)
-  {
-    TilePtr forest_tile = tg.generate(TILE_TYPE_FOREST);
-    map->insert(coord.first, coord.second, forest_tile);
-  }
-
-  // Next, the actual dungeon, setting the "impermanance" flag:
-  TilePtr inf_dungeon_tile = tg.generate(TILE_TYPE_DUNGEON_COMPLEX);
-  inf_dungeon_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, Bool::to_string(false));
-  inf_dungeon_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, Integer::to_string(numeric_limits<int>::max()));
-  inf_dungeon_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_INFINITE_DUNGEON);
-  map->insert(height-10, width-2, inf_dungeon_tile);
-}
-
 // The "last island", where Amaurosis resides.
 void WorldGenerator::generate_far_reaches(MapPtr map)
 {
@@ -490,7 +445,6 @@ void WorldGenerator::generate_Stoneheim(MapPtr map)
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
 {
-  generate_infinite_dungeon_island(map);
   generate_far_reaches(map);
   generate_last_rock_and_far_shore(map);
   generate_fixed_settlements(map);

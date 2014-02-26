@@ -8,5 +8,13 @@
 			<Row y="99" x="94">~~~~~~</Row>
 			<Script>areas/little_island.lua</Script>
 		</Area>
+		<Area id="infinite_dungeon">
+			<Row y="87" x="97">~~~</Row>
+			<Row y="88" x="97">~F~</Row>
+			<Row y="89" x="97">FdF</Row>
+			<Row y="90" x="97">~F~</Row>
+			<Row y="91" x="97">~~~</Row>
+			<Script>areas/infinite_dungeon.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>
