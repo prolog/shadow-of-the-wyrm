@@ -7,10 +7,12 @@
 #include "CreatureCoordinateCalculator.hpp"
 #include "CreatureFeatures.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "CustomAreaGenerator.hpp"
 #include "DecisionStrategySelector.hpp"
 #include "Detection.hpp"
 #include "FieldOfViewStrategy.hpp"
 #include "FieldOfViewStrategyFactory.hpp"
+#include "FileConstants.hpp"
 #include "Game.hpp"
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
@@ -177,10 +179,14 @@ CreaturePtr Game::get_current_player() const
 }
 
 // Create the new world, and set the player at the special "player's starting location" point.
+// Then, read in the XML areas, and overlay that on top.
 void Game::create_new_world(CreaturePtr creature)
 {
   WorldGenerator world_generator;
   MapPtr current_world = world_generator.generate();
+  CustomAreaGenerator cag(FileConstants::WORLD_MAP_AREAS_FILE);
+  cag.overlay_custom_areas(current_world);
+
   WorldPtr world(new World(current_world));
  
   worlds.push_back(world);

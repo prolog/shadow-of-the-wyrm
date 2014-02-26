@@ -111,6 +111,9 @@ class XMLParser
   protected:
     friend class XML;
 
+    static void create_instance();
+    static void set_null();
+
     XMLParser();
     ~XMLParser();
     void release();

@@ -2913,6 +2913,9 @@
     <ClInclude Include="engine\XML\custom_maps\include\XMLWorldMapTileMapper.hpp">
       <Filter>Header Files\engine\XML\custom_maps\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\CustomAreaGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5593,6 +5596,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\source\XMLWorldMapTileMapper.cpp">
       <Filter>Source Files\engine\XML\custom_maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\CustomAreaGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
