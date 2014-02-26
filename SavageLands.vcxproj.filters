@@ -658,6 +658,18 @@
     <Filter Include="Source Files\engine\XML\custom_maps\features\source">
       <UniqueIdentifier>{762cf187-ff84-4163-b39d-0c1235dc236c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\XML\custom_maps\world">
+      <UniqueIdentifier>{94ac0b3a-aeba-490c-8b88-77eb6d3d83ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\XML\custom_maps\world\source">
+      <UniqueIdentifier>{8dff5d52-734c-4d4d-80a8-bcc68e601e41}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\XML\custom_maps\world">
+      <UniqueIdentifier>{ec5dda71-6b97-4dfd-b0c0-18055460c26d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\XML\custom_maps\world\include">
+      <UniqueIdentifier>{b4061cd4-ec3f-43b2-b918-23f672c3ab16}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -2891,6 +2903,15 @@
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFirePillarReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\world\include\XMLWorldMapReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\include\XMLTileMapper.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\include\XMLWorldMapTileMapper.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5563,6 +5584,15 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFirePillarReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\world\source\XMLWorldMapReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\source\XMLTileMapper.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\source\XMLWorldMapTileMapper.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
