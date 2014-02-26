@@ -1,0 +1,12 @@
+<WorldMap xmlns="urn:savage_lands:maps:world_map:1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:savage_lands:maps:world_map:1.0.0 ./WorldMapAreas.xsd">
+	<Areas>
+		<Area id="isen_dun">
+			<Row y="95" x="94">~~~~~~</Row>
+			<Row y="96" x="94">~KF~~~</Row>
+			<Row y="97" x="94">~~vgT~</Row>
+			<Row y="98" x="94">~~~~d~</Row>
+			<Row y="99" x="94">~~~~~~</Row>
+			<Script>areas/IsenDun.lua</Script>
+		</Area>
+	</Areas>
+</WorldMap>
