@@ -34,5 +34,16 @@
 			<Row y="94" x="13">~~~~~~~~</Row>
 			<Script>areas/atua_elar.lua</Script>
 		</Area>
+		<Area id="dwarf_lands">
+			<Row y="4" x="7" >~~~~~~~~~~~~~~~</Row>
+			<Row y="5" x="7" >~~^^~~~~~~~~~~~</Row>
+			<Row y="6" x="7" >~^v^~~~~~~~~~~~</Row>
+			<Row y="7" x="7" >~^^^~~~~~~~~~~~</Row>
+			<Row y="8" x="7" >~~~~~~~~~^^^~~~</Row>
+			<Row y="9" x="7" >~~~~~~~~~~~^v^~</Row>
+			<Row y="10" x="7">~~~~~~~~~~~^^^~</Row>
+			<Row y="11" x="7">~~~~~~~~~~~~~~~</Row>
+			<Script>areas/dwarf_lands.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>
