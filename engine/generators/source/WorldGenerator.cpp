@@ -71,47 +71,6 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
-// Last Rock: a tiny island where an old exile lives.
-// Far Shore: an even smaller island where his sister used to live.
-void WorldGenerator::generate_last_rock_and_far_shore(MapPtr map)
-{
-  Dimensions dim = map->size();
-  int height = dim.get_y();
-  int width = dim.get_x();
-
-  // Refill last rock area with sea, in case there are land features 
-  // here already.
-  for (int current_height = height - 16; current_height < height-14; current_height++)
-  {
-    for (int current_width = width - 5; current_width < width; current_width++)
-    {
-      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(current_height, current_width, sea_tile);
-    }
-  }
-
-  TilePtr last_rock = tg.generate(TILE_TYPE_ROCKY_EARTH);
-  last_rock->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ROCK);
-  last_rock->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ROCK);
-  map->insert(height-15, width-1, last_rock);
-
-  // Refill far shore area with sea, in case there are land features 
-  // here already.
-  for (int current_height = height - 11; current_height < height-9; current_height++)
-  {
-    for (int current_width = 0; current_width < 4; current_width++)
-    {
-      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(current_height, current_width, sea_tile);
-    }
-  }
-
-  TilePtr far_shore = tg.generate(TILE_TYPE_FOREST);
-  far_shore->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_FAR_SHORE);
-  far_shore->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_FAR_SHORE);
-  map->insert(height-10, 0, far_shore);
-}
-
 void WorldGenerator::generate_fixed_settlements(MapPtr map)
 {
   generate_Gnordvar(map);
@@ -245,7 +204,6 @@ void WorldGenerator::generate_Forest_of_Yew(MapPtr map)
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
 {
-  generate_last_rock_and_far_shore(map);
   generate_fixed_settlements(map);
 
   return map;

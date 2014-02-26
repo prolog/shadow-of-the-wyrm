@@ -32,7 +32,6 @@ class WorldGenerator : public SL::Generator
     virtual void process_scrub_cell(MapPtr map, const int row, const int col, const CellValue scrub_val, const CellValue field_val);
     virtual void process_mountain_cell(MapPtr map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue field_val);
 
-    void generate_last_rock_and_far_shore(MapPtr map);
     void generate_Forest_of_Yew(MapPtr map);
     void generate_Lalos_Grotto(MapPtr map);
 
