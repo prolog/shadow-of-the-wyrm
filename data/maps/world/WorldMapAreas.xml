@@ -57,5 +57,13 @@
 			<Row y="91" x="0">~~~</Row>		
 			<Script>areas/far_shore.lua</Script>
 		</Area>
+		<Area id="forest_of_yew">
+			<Row y="60" x="79">~~~~~</Row>
+			<Row y="61" x="79">~c~F~</Row>
+			<Row y="62" x="79">~FFF~</Row>
+			<Row y="63" x="79">~~F~~</Row>
+			<Row y="64" x="79">~~~~~</Row>
+			<Script>areas/forest_of_yew.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>

@@ -66,7 +66,7 @@ int goto_level(lua_State* ls);
 int is_player(lua_State* ls);
 int map_set_custom_map_id(lua_State* ls);
 int map_set_edesc(lua_State* ls);
-int map_set_addl_prop(lua_State* ls);
+int map_set_additional_property(lua_State* ls);
 int map_add_location(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
@@ -273,7 +273,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "incr_cha", incr_cha);
   lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
   lua_register(L, "map_set_edesc", map_set_edesc);
-  lua_register(L, "map_set_addl_prop", map_set_addl_prop);
+  lua_register(L, "map_set_additional_property", map_set_additional_property);
   lua_register(L, "map_add_location", map_add_location);
 }
 
@@ -1330,7 +1330,7 @@ int map_set_edesc(lua_State* ls)
 
 // Set an additional property (k,v pair) into the given map id at the given
 // row and column.
-int map_set_addl_prop(lua_State* ls)
+int map_set_additional_property(lua_State* ls)
 {
   if (lua_gettop(ls) == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4) && lua_isstring(ls, 5))
   {
@@ -1347,7 +1347,7 @@ int map_set_addl_prop(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to map_set_addl_prop");
+    lua_pushstring(ls, "Incorrect arguments to map_set_additional_property");
     lua_error(ls);
   }
 
