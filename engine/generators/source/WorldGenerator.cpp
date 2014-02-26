@@ -74,7 +74,6 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
 void WorldGenerator::generate_fixed_settlements(MapPtr map)
 {
   generate_Gnordvar(map);
-  generate_Forest_of_Yew(map);
 }
 
 void WorldGenerator::generate_Gnordvar(MapPtr map)
@@ -124,82 +123,6 @@ void WorldGenerator::generate_Gnordvar(MapPtr map)
 
   tile = tg.generate(TILE_TYPE_FIELD);
   map->insert(height-55, width-7, tile);
-}
-
-void WorldGenerator::generate_Lalos_Grotto(MapPtr map)
-{
-  Dimensions dim = map->size();
-  int height = dim.get_y();
-  int width = dim.get_x();
-
-  TileGenerator tg;
-
-  TilePtr lalos_grotto_tile = tg.generate(TILE_TYPE_CAVERN);
-  string l14 = Integer::to_string(14);
-  lalos_grotto_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LALOS_GROTTO);
-  lalos_grotto_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH, l14);
-  lalos_grotto_tile->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, l14);
-
-  vector<string> creature_types{"skeleton", "thrall", "ghoul", "grey_glider", "lichling", "corpse_bird", "quisling"};
-  vector<string> creatures_to_generate;
-
-  for (const string& creature : creature_types)
-  {
-    int num_creature = RNG::range(9, 13);
-
-    for (int i = 0; i < num_creature; i++)
-    {
-      creatures_to_generate.push_back(creature);
-    }
-  }
-
-  creatures_to_generate.push_back("lalo");
-
-  string creature_str = String::create_csv_from_string_vector(creatures_to_generate);
-  lalos_grotto_tile->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, creature_str);
-
-  map->insert(height-39, width-20, lalos_grotto_tile);
-}
-
-void WorldGenerator::generate_Forest_of_Yew(MapPtr map)
-{
-  // o %
-  // %%%
-  //  %
-  TileGenerator tg;
-
-  Dimensions dim = map->size();
-  int height = dim.get_y();
-  int width = dim.get_x();
-
-  TilePtr sea_tile;
-
-  // Make the elfy little island by ensuring there's enough sea.
-  for (int row = height - 40; row < height - 36; row++)
-  {
-    for (int col = width - 21; col < width - 16; col++)
-    {
-      sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(row, col, sea_tile);
-    }
-  }
-
-  generate_Lalos_Grotto(map);
-
-  TilePtr forest_tile = tg.generate(TILE_TYPE_FOREST);
-  map->insert(height-39, width-18, forest_tile);
-
-  forest_tile = tg.generate(TILE_TYPE_FOREST);
-  map->insert(height-38, width-20, forest_tile);
-  TilePtr forest_of_yew = tg.generate(TILE_TYPE_FOREST);
-  forest_of_yew->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_FOREST_OF_YEW);
-  forest_of_yew->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_FOREST_OF_YEW);
-  map->insert(height-38, width-19, forest_of_yew);
-  forest_tile = tg.generate(TILE_TYPE_FOREST);
-  map->insert(height-38, width-18, forest_tile);
-
-  forest_tile = tg.generate(TILE_TYPE_FOREST);
-  map->insert(height-37, width-19, forest_tile);
 }
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)

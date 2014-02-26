@@ -12,7 +12,7 @@ function Area:new(row, col)
   obj.col = col
 
   -- Set the additional properties to an empty table.
-  obj.addl_props = {}
+  obj.additional_properties = {}
 
   -- Assume the area is placed on the world map unless we're told
   -- otherwise.
@@ -34,8 +34,8 @@ function Area:set_extra_description_sid(sid)
 end
 
 -- Set the additional properties.
-function Area:set_addl_props(addl_properties)
-  self.addl_props = addl_properties
+function Area:set_additional_properties(addl_properties)
+  self.additional_properties = addl_properties
 end
 
 -- Set the area details on the specified map
@@ -52,8 +52,8 @@ function Area:insert()
   end
 
   -- Finally, add any additional properties.
-  for k,v in pairs(self.addl_props) do
-    map_set_addl_prop(self.map_id, self.row, self.col, k, v)
+  for k,v in pairs(self.additional_properties) do
+    map_set_additional_property(self.map_id, self.row, self.col, k, v)
   end
 end
 
