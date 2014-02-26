@@ -1,0 +1,30 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="urn:savage_lands:maps:world_map:1.0.0" targetNamespace="urn:savage_lands:maps:world_map:1.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0.0.0">
+	<!-- Elements -->
+	<xs:element name="WorldMap" type="tns:WorldMapType"/>
+	<!-- Complex Types -->
+	<xs:complexType name="WorldMapType">
+		<xs:sequence>
+			<xs:element name="Areas" type="tns:AreasType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AreasType">
+		<xs:sequence>
+			<xs:element name="Area" type="tns:AreaType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AreaType">
+		<xs:sequence>
+			<xs:element name="Row" type="tns:RowType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Script" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="id" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="RowType">
+		<xs:simpleContent>
+		  <xs:extension base="xs:string">
+				<xs:attribute name="y" type="xs:integer"/>
+				<xs:attribute name="x" type="xs:integer"/>
+		  </xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+</xs:schema>
