@@ -116,7 +116,6 @@ void WorldGenerator::generate_fixed_settlements(MapPtr map)
 {
   generate_Gnordvar(map);
   generate_Forest_of_Yew(map);
-  generate_Atua_Elar(map);
   generate_dwarf_lands(map);
 }
 
@@ -243,57 +242,6 @@ void WorldGenerator::generate_Forest_of_Yew(MapPtr map)
 
   forest_tile = tg.generate(TILE_TYPE_FOREST);
   map->insert(height-37, width-19, forest_tile);
-}
-
-// Generate the home of the moutain elves, and the abandoned
-// monastery nearby.
-void WorldGenerator::generate_Atua_Elar(MapPtr map)
-{
-  // o
-  //   ^ ^
-  //   ^o^
-  //   ^^^
-  TileGenerator tg;
-  Dimensions dim = map->size();
-  int height = dim.get_y();
-
-  for (int current_height = height - 12; current_height < height - 5; current_height++)
-  {
-    for (int current_width = 13; current_width < 21; current_width++)
-    {
-      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(current_height, current_width, sea_tile);
-    }
-  }
-
-  TilePtr stonewall = tg.generate(TILE_TYPE_FIELD);
-  stonewall->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_STONEWALL);
-  stonewall->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_STONEWALL);
-  map->insert(height - 11, 15, stonewall);
-
-  TilePtr mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height - 9, 17, mountain_tile);
-
-  // Open sea between the two mountains - that's the way into the settlement.
-
-  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height - 9, 19, mountain_tile);
-
-  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height - 8, 17, mountain_tile);
-  TilePtr atua_elar = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_MOUNTAINS);
-  atua_elar->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ATUA_ELAR);
-  atua_elar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_ATUA_ELAR);
-  map->insert(height - 8, 18, atua_elar);
-  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height - 8, 19, mountain_tile);
-
-  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height - 7, 17, mountain_tile);
-  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height - 7, 18, mountain_tile);
-  mountain_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height - 7, 19, mountain_tile);
 }
 
 void WorldGenerator::generate_dwarf_lands(MapPtr map)
