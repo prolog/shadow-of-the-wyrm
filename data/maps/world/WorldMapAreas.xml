@@ -16,5 +16,13 @@
 			<Row y="91" x="97">~~~</Row>
 			<Script>areas/infinite_dungeon.lua</Script>
 		</Area>
+		<Area id="far_reaches">
+			<Row y="0" x="0">~~~~~~</Row>
+			<Row y="1" x="0">~~^^^~</Row>
+			<Row y="2" x="0">~^c^^~</Row>
+			<Row y="3" x="0">~^^^~~</Row>
+			<Row y="4" x="0">~~~~~~</Row>
+			<Script>areas/far_reaches.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>

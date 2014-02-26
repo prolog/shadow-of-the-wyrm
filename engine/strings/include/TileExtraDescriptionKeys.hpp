@@ -4,7 +4,6 @@
 class TileExtraDescriptionKeys
 {
   public:
-    static const std::string TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR;
     static const std::string TILE_EXTRA_DESCRIPTION_LAST_ROCK;
     static const std::string TILE_EXTRA_DESCRIPTION_FAR_SHORE;
     static const std::string TILE_EXTRA_DESCRIPTION_GNORDVAR;
