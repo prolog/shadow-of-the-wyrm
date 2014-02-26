@@ -71,65 +71,6 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   return result_map;
 }
 
-void WorldGenerator::generate_little_island(MapPtr map)
-{
-  Dimensions dim = map->size();
-
-  //   ..
-  //    ...
-  //      .
-
-  int height = dim.get_y();
-  int width = dim.get_x();
-
-  // Refill with sea, in case there are land features here already.
-  for (int current_height = height - 5; current_height < height; current_height++)
-  {
-    for (int current_width = width - 6; current_width < width; current_width++)
-    {
-      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(current_height, current_width, sea_tile);
-    }
-  }
-
-  // Wintersea Keep
-  TilePtr wintersea_keep = tg.generate(TILE_TYPE_KEEP, TILE_TYPE_UNDEFINED);
-  wintersea_keep->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_WINTERSEA_KEEP);
-  wintersea_keep->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_WINTERSEA_KEEP);
-  map->insert(height-4, width-5, wintersea_keep);
-
-  TilePtr forest_tile = tg.generate(TILE_TYPE_FOREST);
-  map->insert(height-4, width-4, forest_tile);
-
-  // Village of Isen Dun.
-  TilePtr isen_dun = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
-  isen_dun->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN);
-  isen_dun->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_ISEN_DUN);
-  map->insert(height-3, width-4, isen_dun);
-
-  // Define the starting location:
-  Coordinate c;
-  c.first  = height - 4;
-  c.second = width - 4;
-  map->add_or_update_location(WorldMapLocationTextKeys::STARTING_LOCATION, c);
-
-  // The Barrows
-  TilePtr isen_dun_graveyard = tg.generate(TILE_TYPE_GRAVEYARD, TILE_TYPE_UNDEFINED);
-  isen_dun_graveyard->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD);
-  isen_dun_graveyard->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_THE_BARROWS);
-  map->insert(height-3, width-3, isen_dun_graveyard);
-
-  TilePtr wild_orchard_tile = tg.generate(TILE_TYPE_WILD_ORCHARD);
-  map->insert(height-3, width-2, wild_orchard_tile);
-
-  // Siriath's Dungeons
-  TilePtr village_dungeon = tg.generate(TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED);
-  village_dungeon->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON);
-  // Sirith's dungeon is eight levels deep.
-  village_dungeon->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, Integer::to_string(8));
-  map->insert(height-2, width-2, village_dungeon);
-}
-
 // Last Rock: a tiny island where an old exile lives.
 // Far Shore: an even smaller island where his sister used to live.
 void WorldGenerator::generate_last_rock_and_far_shore(MapPtr map)
@@ -549,7 +490,6 @@ void WorldGenerator::generate_Stoneheim(MapPtr map)
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
 {
-  generate_little_island(map);
   generate_infinite_dungeon_island(map);
   generate_far_reaches(map);
   generate_last_rock_and_far_shore(map);

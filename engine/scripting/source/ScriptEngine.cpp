@@ -23,6 +23,7 @@ using namespace std;
 CreaturePtr local_creature;
 void set_local_creature(CreaturePtr creature);
 CreaturePtr get_creature(const string& creature_id);
+TilePtr get_tile(const string& map_id, const Coordinate& c);
 
 // API prototypes
 int add_message_with_pause(lua_State* ls);
@@ -63,6 +64,10 @@ int incr_cha(lua_State* ls);
 int gain_level(lua_State* ls);
 int goto_level(lua_State* ls);
 int is_player(lua_State* ls);
+int map_set_custom_map_id(lua_State* ls);
+int map_set_edesc(lua_State* ls);
+int map_set_addl_prop(lua_State* ls);
+int map_add_location(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -207,6 +212,24 @@ CreaturePtr get_creature(const string& creature_id)
   return null_creature;
 }
 
+// Get a particular tile from the given map
+TilePtr get_tile(const string& map_id, const Coordinate& c)
+{
+
+  Game& game = Game::instance();
+  MapRegistry& mr = game.get_map_registry_ref();
+  MapPtr map = mr.get_map(map_id);
+
+  TilePtr tile;
+
+  if (map)
+  {
+    tile = map->at(c);
+  }
+
+  return tile;
+}
+
 // Register all the functions available to the scripting engine.
 void ScriptEngine::register_api_functions()
 {
@@ -248,6 +271,10 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "incr_int", incr_int);
   lua_register(L, "incr_wil", incr_wil);
   lua_register(L, "incr_cha", incr_cha);
+  lua_register(L, "map_set_custom_map_id", map_set_custom_map_id);
+  lua_register(L, "map_set_edesc", map_set_edesc);
+  lua_register(L, "map_set_addl_prop", map_set_addl_prop);
+  lua_register(L, "map_add_location", map_add_location);
 }
 
 // Lua API functions:
@@ -1247,6 +1274,105 @@ int incr_cha(lua_State* ls)
   else
   {
     lua_pushstring(ls, "Incorrect arguments to incr_cha");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Set a custom map id into the given map id at the given row and col.
+int map_set_custom_map_id(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    string custom_map_id = lua_tostring(ls, 4);
+    TilePtr tile = get_tile(map_id, c);
+
+    if (tile)
+    {
+      tile->set_custom_map_id(custom_map_id);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_custom_map_id");
+    lua_error(ls);
+  }
+  
+  return 0;
+}
+
+// Set an extra description SID into the given map id at the given row and col.
+int map_set_edesc(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    string extra_desc_sid = lua_tostring(ls, 4);
+    TilePtr tile = get_tile(map_id, c);
+
+    if (tile)
+    {
+      tile->set_extra_description_sid(extra_desc_sid);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_edesc");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Set an additional property (k,v pair) into the given map id at the given
+// row and column.
+int map_set_addl_prop(lua_State* ls)
+{
+  if (lua_gettop(ls) == 5 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isstring(ls, 4) && lua_isstring(ls, 5))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    string k = lua_tostring(ls, 4);
+    string v = lua_tostring(ls, 5);
+    TilePtr tile = get_tile(map_id, c);
+
+    if (tile)
+    {
+      tile->set_additional_property(k, v);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_set_addl_prop");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+// Add a location to the given map
+int map_add_location(lua_State* ls)
+{
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    string loc = lua_tostring(ls, 2);
+    Coordinate c(lua_tointeger(ls, 3), lua_tointeger(ls, 4));
+
+    MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+    if (map)
+    {
+      map->add_or_update_location(loc, c);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_add_location");
     lua_error(ls);
   }
 

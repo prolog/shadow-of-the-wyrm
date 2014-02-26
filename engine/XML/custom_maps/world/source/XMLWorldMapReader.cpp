@@ -1,3 +1,4 @@
+#include "Game.hpp"
 #include "XMLWorldMapReader.hpp"
 
 using namespace std;
@@ -35,21 +36,30 @@ void XMLWorldMapReader::read_area(MapPtr map, const XMLNode& area_node)
   {
     vector<XMLNode> row_nodes = XMLUtils::get_elements_by_local_name(area_node, "Row");
 
+    // Read in the basic tile details.
     for (const XMLNode& row_node : row_nodes)
     {
       read_row(map, row_node);
     }
 
+    // If there is a script associated with this area, execute that script.
     string script = XMLUtils::get_child_node_value(area_node, "Script");
 
-    // Run the script:
-    // ...
+    if (!script.empty())
+    {
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      se.execute(script);
+    }
   }
 }
 
 // Read in a particular row into the map.
 void XMLWorldMapReader::read_row(MapPtr map, const XMLNode& row_node)
 {
+  Dimensions dim = map->size();
+  int y = dim.get_y();
+  int x = dim.get_x();
+
   if (!row_node.is_null())
   {
     int row = XMLUtils::get_attribute_int_value(row_node, "y");
@@ -57,14 +67,23 @@ void XMLWorldMapReader::read_row(MapPtr map, const XMLNode& row_node)
 
     string tiles = XMLUtils::get_node_value(row_node);
 
-    for (char ctile : tiles)
+    // Safety checks: ensure the user hasn't done something totally awesome,
+    // like specify that the current row is 208 in a map with 100 rows.
+    if (row < y)
     {
-      // Convert to TilePtr
-      // Insert into map
-      TilePtr tile = mapper.create_tile(ctile);
-      map->insert(row, col, tile);
+      for (char ctile : tiles)
+      {
+        // Ditto for the specified column value.
+        if (col < x)
+        {
+          // Convert to TilePtr
+          // Insert into map
+          TilePtr tile = mapper.create_tile(ctile);
+          map->insert(row, col, tile);
 
-      col++;
+          col++;
+        }
+      }
     }
   }
 }

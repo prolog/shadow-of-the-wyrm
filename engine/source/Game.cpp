@@ -184,14 +184,16 @@ void Game::create_new_world(CreaturePtr creature)
 {
   WorldGenerator world_generator;
   MapPtr current_world = world_generator.generate();
+  WorldPtr world(new World(current_world));
+  worlds.push_back(world);
+  current_world_ix = (worlds.size() - 1);
+
+  // Need to set the world map into the registry so that it's available to 
+  // any scripts called by the CustomAreaGenerator.
+  set_current_map(current_world);
+
   CustomAreaGenerator cag(FileConstants::WORLD_MAP_AREAS_FILE);
   cag.overlay_custom_areas(current_world);
-
-  WorldPtr world(new World(current_world));
- 
-  worlds.push_back(world);
-  set_current_map(current_world);  
-  current_world_ix = (worlds.size() - 1);
 
   TilePtr tile = current_world->get_tile_at_location(WorldMapLocationTextKeys::STARTING_LOCATION);
 
