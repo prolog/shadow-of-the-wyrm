@@ -33,6 +33,11 @@ function Area:set_extra_description_sid(sid)
   self.edesc_sid = sid
 end
 
+-- Set the additional properties.
+function Area:set_addl_props(addl_properties)
+  self.addl_props = addl_properties
+end
+
 -- Set the area details on the specified map
 function Area:insert()
   -- If a custom map ID has been specified, set that.
