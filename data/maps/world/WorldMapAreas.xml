@@ -24,5 +24,15 @@
 			<Row y="4" x="0">~~~~~~</Row>
 			<Script>areas/far_reaches.lua</Script>
 		</Area>
+		<Area id="atua_elar">
+			<Row y="88" x="13">~~~~~~~~</Row>
+			<Row y="89" x="13">~v~~~~~~</Row>
+			<Row y="90" x="13">~~~~~~~~</Row>
+			<Row y="91" x="13">~~~^~^~~</Row>
+			<Row y="92" x="13">~~~^v^~~</Row>
+			<Row y="93" x="13">~~~^^^~~</Row>
+			<Row y="94" x="13">~~~~~~~~</Row>
+			<Script>areas/atua_elar.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>
