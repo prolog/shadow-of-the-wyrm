@@ -112,56 +112,6 @@ void WorldGenerator::generate_last_rock_and_far_shore(MapPtr map)
   map->insert(height-10, 0, far_shore);
 }
 
-// The "last island", where Amaurosis resides.
-void WorldGenerator::generate_far_reaches(MapPtr map)
-{
-  for (int current_height = 0; current_height < 4; current_height++)
-  {
-    for (int current_width = 0; current_width < 5; current_width++)
-    {
-      TilePtr sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(current_height, current_width, sea_tile);
-    }
-  }
-
-  //    ...
-  //   .....
-  //   ...
-
-  TilePtr tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(1, 2, tile);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(1, 3, tile);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(1, 4, tile);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(2, 1, tile);
-
-  // Amaurosis' lair.
-  TilePtr lair_tile = tg.generate(TILE_TYPE_CAVERN);
-  lair_tile->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR);
-  lair_tile->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR);
-  map->insert(2, 2, lair_tile);
-  
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(2, 3, tile);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(2, 4, tile);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(3, 1, tile);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(3, 2, tile);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(3, 3, tile);
-}
-
 void WorldGenerator::generate_fixed_settlements(MapPtr map)
 {
   generate_Gnordvar(map);
@@ -445,7 +395,6 @@ void WorldGenerator::generate_Stoneheim(MapPtr map)
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
 {
-  generate_far_reaches(map);
   generate_last_rock_and_far_shore(map);
   generate_fixed_settlements(map);
 

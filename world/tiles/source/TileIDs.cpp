@@ -10,7 +10,6 @@ TileCustomMapIDs::~TileCustomMapIDs()
 {
 }
 
-const string TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ISLAND_LAIR = "last_island_lair";
 const string TileCustomMapIDs::CUSTOM_MAP_ID_LAST_ROCK = "last_rock";
 const string TileCustomMapIDs::CUSTOM_MAP_ID_FAR_SHORE = "far_shore";
 const string TileCustomMapIDs::CUSTOM_MAP_ID_GNORDVAR = "gnordvar";

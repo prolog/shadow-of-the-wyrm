@@ -11,7 +11,6 @@ TileExtraDescriptionKeys::~TileExtraDescriptionKeys()
 {
 }
 
-const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR   = "TILE_EXTRA_DESCRIPTION_LAST_ISLAND_LAIR";
 const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_LAST_ROCK          = "TILE_EXTRA_DESCRIPTION_LAST_ROCK";
 const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_FAR_SHORE          = "TILE_EXTRA_DESCRIPTION_FAR_SHORE";
 const string TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR           = "TILE_EXTRA_DESCRIPTION_GNORDVAR";
