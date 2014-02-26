@@ -16,6 +16,7 @@ void XML::initialize()
   try
   {
     XMLPlatformUtils::Initialize();
+    XMLParser::create_instance();
   }
   catch( XMLException &e )
   {
@@ -29,6 +30,8 @@ void XML::tear_down()
   try
   {
     delete XMLParser::instance();
+    XMLParser::set_null();
+
     XMLPlatformUtils::Terminate();
   }
   catch( XMLException &e )
@@ -280,9 +283,19 @@ XMLParser* XMLParser::instance()
   return parser_instance;
 }
 
+void XMLParser::create_instance()
+{
+  parser_instance = new XMLParser();
+}
+
+void XMLParser::set_null()
+{
+  parser_instance = nullptr;
+}
+
 XMLParser::XMLParser()
 {
-  internal_parser = new XercesDOMParser;
+  internal_parser = new XercesDOMParser();
   initialize_parser();
 }
 
