@@ -9,7 +9,7 @@
 	</xs:complexType>
 	<xs:complexType name="AreasType">
 		<xs:sequence>
-			<xs:element name="Area" type="tns:AreaType"/>
+			<xs:element name="Area" type="tns:AreaType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="AreaType">

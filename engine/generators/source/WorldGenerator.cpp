@@ -116,7 +116,6 @@ void WorldGenerator::generate_fixed_settlements(MapPtr map)
 {
   generate_Gnordvar(map);
   generate_Forest_of_Yew(map);
-  generate_dwarf_lands(map);
 }
 
 void WorldGenerator::generate_Gnordvar(MapPtr map)
@@ -242,103 +241,6 @@ void WorldGenerator::generate_Forest_of_Yew(MapPtr map)
 
   forest_tile = tg.generate(TILE_TYPE_FOREST);
   map->insert(height-37, width-19, forest_tile);
-}
-
-void WorldGenerator::generate_dwarf_lands(MapPtr map)
-{
-  generate_Wyrmeswraec(map);
-  generate_Stoneheim(map);
-}
-
-void WorldGenerator::generate_Wyrmeswraec(MapPtr map)
-{
-  //  ^^
-  // ^o^
-  // ^^^
-  TileGenerator tg;
-
-  Dimensions dim = map->size();
-  int height = dim.get_y();
-  int width = dim.get_x();
-
-  TilePtr sea_tile;
-
-  for (int row = 4; row < 9; row++)
-  {
-    for (int col = 7; col < width - 12; col++)
-    {
-      sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(row, col, sea_tile);
-    }
-  }
-
-  TilePtr wyrmeswraec = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_MOUNTAINS);
-  wyrmeswraec->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_WYRMESWRAEC);
-  wyrmeswraec->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_WYRMESWRAEC);
-  map->insert(6,9, wyrmeswraec);
-
-  TilePtr mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(5, 9, mt_tile);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(5, 10, mt_tile);
-
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(6, 8, mt_tile);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(6, 10, mt_tile);
-
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(7, 8, mt_tile);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(7, 9, mt_tile);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(7, 10, mt_tile);
-}
-
-void WorldGenerator::generate_Stoneheim(MapPtr map)
-{
-  // ^^^
-  //   ^o^
-  //   ^^^
-  TileGenerator tg;
-
-  Dimensions dim = map->size();
-  int height = dim.get_y();
-  int width = dim.get_x();
-
-  TilePtr sea_tile;
-
-  for (int row = 7; row < 12; row++)
-  {
-    for (int col = 15; col < 22; col++)
-    {
-      sea_tile = tg.generate(TILE_TYPE_SEA);
-      map->insert(row, col, sea_tile);
-    }
-  }
-
-  TilePtr mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(8, 16, mt_tile);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(8, 17, mt_tile);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(8, 18, mt_tile);
-
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(9, 18, mt_tile);
-  TilePtr stoneheim = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_MOUNTAINS);
-  stoneheim->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_STONEHEIM);
-  stoneheim->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_STONEHEIM);
-  map->insert(9, 19, stoneheim);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(9, 20, mt_tile);
-
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(10, 18, mt_tile);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(10, 19, mt_tile);
-  mt_tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(10, 20, mt_tile);
 }
 
 MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
