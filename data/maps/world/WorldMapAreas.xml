@@ -45,5 +45,17 @@
 			<Row y="11" x="7">~~~~~~~~~~~~~~~</Row>
 			<Script>areas/dwarf_lands.lua</Script>
 		</Area>
+		<Area id="last_rock">
+			<Row y="85" x="98">~~</Row>
+			<Row y="86" x="98">~r</Row>
+			<Row y="87" x="98">~~</Row>
+			<Script>areas/last_rock.lua</Script>
+		</Area>
+		<Area id="far_shore">
+			<Row y="89" x="0">~~~</Row>
+			<Row y="90" x="0">F~~</Row>
+			<Row y="91" x="0">~~~</Row>		
+			<Script>areas/far_shore.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>
