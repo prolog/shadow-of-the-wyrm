@@ -65,5 +65,14 @@
 			<Row y="64" x="79">~~~~~</Row>
 			<Script>areas/forest_of_yew.lua</Script>
 		</Area>
+		<Area id="gnordvar">
+			<Row y="47" x="92">~~~~</Row>
+			<Row y="48" x="92">~~^~</Row>
+			<Row y="49" x="92">~v^~</Row>
+			<Row y="50" x="92">~^M~</Row>
+			<Row y="51" x="92">~^~~</Row>
+			<Row y="52" x="92">~~~~</Row>
+			<Script>areas/gnordvar.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>

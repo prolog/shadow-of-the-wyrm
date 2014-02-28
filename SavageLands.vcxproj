@@ -584,7 +584,6 @@
     <ClInclude Include="engine\strings\include\TextMessages.hpp" />
     <ClInclude Include="engine\strings\include\TileDangerConfirmationKeys.hpp" />
     <ClInclude Include="engine\strings\include\TileDescriptionKeys.hpp" />
-    <ClInclude Include="engine\strings\include\TileExtraDescriptionKeys.hpp" />
     <ClInclude Include="engine\strings\include\TileTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\WorldMapLocationTextKeys.hpp" />
     <ClInclude Include="engine\time\include\BoatingMovementAccumulationChecker.hpp" />
@@ -1675,7 +1674,6 @@
     <ClCompile Include="engine\strings\source\TextMessages.cpp" />
     <ClCompile Include="engine\strings\source\TileDangerConfirmationKeys.cpp" />
     <ClCompile Include="engine\strings\source\TileDescriptionKeys.cpp" />
-    <ClCompile Include="engine\strings\source\TileExtraDescriptionKeys.cpp" />
     <ClCompile Include="engine\strings\source\TileTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\WorldMapLocationTextKeys.cpp" />
     <ClCompile Include="engine\time\source\BoatingMovementAccumulationChecker.cpp" />
@@ -2294,7 +2292,6 @@
     <ClCompile Include="world\tiles\source\TempleTile.cpp" />
     <ClCompile Include="world\tiles\source\Tile.cpp" />
     <ClCompile Include="world\tiles\source\TileFactory.cpp" />
-    <ClCompile Include="world\tiles\source\TileIDs.cpp" />
     <ClCompile Include="world\tiles\source\TileProperties.cpp" />
     <ClCompile Include="world\tiles\source\TreeTile.cpp" />
     <ClCompile Include="world\tiles\source\unit_tests\BarracksTile_test.cpp">

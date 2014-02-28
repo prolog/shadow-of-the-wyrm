@@ -2055,9 +2055,6 @@
     <ClInclude Include="world\tiles\include\TileProperties.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\tiles\include\TileIDs.hpp">
-      <Filter>Header Files\world\tiles\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\tiles\include\PierTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
@@ -2272,9 +2269,6 @@
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\strings\include\TileDangerConfirmationKeys.hpp">
-      <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\strings\include\TileExtraDescriptionKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\strings\include\EffectTextKeys.hpp">
@@ -2915,6 +2909,9 @@
     </ClInclude>
     <ClInclude Include="engine\generators\include\CustomAreaGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\tiles\include\TileIDs.hpp">
+      <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4571,9 +4568,6 @@
     <ClCompile Include="engine\calculators\source\DangerLevelCalculatorFactory.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
-    <ClCompile Include="world\tiles\source\TileIDs.cpp">
-      <Filter>Source Files\world\tiles\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\unit_tests\CreatureGenerationValues_test.cpp">
       <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
@@ -4896,9 +4890,6 @@
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\TileDangerConfirmationKeys.cpp">
-      <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\strings\source\TileExtraDescriptionKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\strings\source\EffectTextKeys.cpp">

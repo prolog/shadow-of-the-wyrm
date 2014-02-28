@@ -51,6 +51,10 @@ TilePtr XMLWorldMapTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TILE_TYPE_ROCKY_EARTH);
   }
+  else if (xml_tile == 'M')
+  { 
+    tile = tg.generate(TILE_TYPE_MINE);
+  }
   else
   {
     // So, the user's specified a tile that doesn't exist (I'm going to assume
