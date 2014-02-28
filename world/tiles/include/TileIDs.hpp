@@ -1,16 +1,6 @@
 #pragma once
 #include <string>
 
-class TileCustomMapIDs
-{
-  public:
-    static const std::string CUSTOM_MAP_ID_GNORDVAR;
-
-  protected:
-    TileCustomMapIDs();
-    ~TileCustomMapIDs();
-};
-
 enum TreeSpeciesID
 {
   TREE_SPECIES_ASPEN,

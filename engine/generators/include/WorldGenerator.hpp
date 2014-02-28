@@ -18,7 +18,6 @@ class WorldGenerator : public SL::Generator
 
   protected:
     virtual MapType get_map_type() const override;
-    virtual MapPtr generate_set_islands_and_continents(MapPtr map);
     virtual MapPtr generate_random_islands(MapPtr map);
     virtual void   generate_village_surroundings(MapPtr map);
 
@@ -31,9 +30,6 @@ class WorldGenerator : public SL::Generator
     virtual void process_desert_cell(MapPtr map, const int row, const int col, const CellValue desert_val, const CellValue scrub_val, const CellValue field_val);
     virtual void process_scrub_cell(MapPtr map, const int row, const int col, const CellValue scrub_val, const CellValue field_val);
     virtual void process_mountain_cell(MapPtr map, const int row, const int col, const CellValue mountains_val, const CellValue forest_val, const CellValue field_val);
-
-    void generate_fixed_settlements(MapPtr map);
-    void generate_Gnordvar(MapPtr map); // Gnomish home base
 
     void populate_race_information();
     void set_village_races(MapPtr map);

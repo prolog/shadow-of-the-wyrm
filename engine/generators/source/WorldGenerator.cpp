@@ -6,12 +6,10 @@
 #include "Game.hpp"
 #include "WorldGenerator.hpp"
 #include "TileGenerator.hpp"
-#include "TileIDs.hpp"
 #include "RNG.hpp"
 #include "CellularAutomataGenerator.hpp"
 #include "MapProperties.hpp"
 #include "Serialize.hpp"
-#include "TileExtraDescriptionKeys.hpp"
 #include "VillageTile.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
@@ -56,9 +54,6 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   // Generate the random world
   result_map = generate_random_islands(result_map);
 
-  // Generate set islands/continents.
-  result_map = generate_set_islands_and_continents(result_map);
-  
   // Generate villages and their surroundings
   populate_race_information();
   set_village_races(result_map);
@@ -69,67 +64,6 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   result_map->set_permanent(true);
 
   return result_map;
-}
-
-void WorldGenerator::generate_fixed_settlements(MapPtr map)
-{
-  generate_Gnordvar(map);
-}
-
-void WorldGenerator::generate_Gnordvar(MapPtr map)
-{
-  //  .
-  // ..
-  // ..
-  // .
-  Dimensions dim = map->size();
-  int height = dim.get_y();
-  int width = dim.get_x();
-
-  TilePtr tile = tg.generate(TILE_TYPE_FIELD);
-  map->insert(height-58, width-6, tile);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height-57, width-7, tile);
-
-  TilePtr gnordvar = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
-  gnordvar->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR);
-  gnordvar->set_custom_map_id(TileCustomMapIDs::CUSTOM_MAP_ID_GNORDVAR);
-  map->insert(height-57, width-6, gnordvar);
-
-  string l20 = Integer::to_string(20);
-  TilePtr gnordvar_mines = tg.generate(TILE_TYPE_MINE);
-  gnordvar_mines->set_extra_description_sid(TileExtraDescriptionKeys::TILE_EXTRA_DESCRIPTION_GNORDVAR_MINES);
-  gnordvar_mines->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_DEPTH, l20);
-  gnordvar_mines->set_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH, l20);
-
-  // Set up creatures for mines.
-  vector<string> creatures_to_generate;
-  creatures_to_generate.push_back("black_manticore");
-
-  int num_satyrs = RNG::range(5, 10);
-  for (int i = 0; i < num_satyrs; i++)
-  {
-    creatures_to_generate.push_back("satyr");
-  }
-
-  string creature_str = String::create_csv_from_string_vector(creatures_to_generate);
-  gnordvar_mines->set_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES, creature_str);
-
-  map->insert(height-56, width-7, gnordvar_mines);
-
-  tile = tg.generate(TILE_TYPE_MOUNTAINS);
-  map->insert(height-56, width-6, tile);
-
-  tile = tg.generate(TILE_TYPE_FIELD);
-  map->insert(height-55, width-7, tile);
-}
-
-MapPtr WorldGenerator::generate_set_islands_and_continents(MapPtr map)
-{
-  generate_fixed_settlements(map);
-
-  return map;
 }
 
 // When done, translate the cell map MapPtr.
