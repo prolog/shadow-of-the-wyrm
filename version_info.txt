@@ -16,6 +16,13 @@ Savage Lands v0.2.2 "Aelfwald"
 - The Nine can now satiate with divine manna, if the creature isn't full.
   This is lower priority than full HP/AP.
 
+- Bug fixes:
+  
+  - Fixed a bug where creatures would always confirm that they wanted to
+  move over dangerous tiles.  Changed this so that they never do, for now:
+  there should be far fewer dead mountain elves and gnomish children.
+  This will be revisited later.
+
 Savage Lands v0.2.1 "Oslac"
 - Version declared January 26, 2014.  Version finalized February 25, 2014.
 
