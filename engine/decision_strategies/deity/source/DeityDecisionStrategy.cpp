@@ -6,6 +6,7 @@
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "DoNothingDeityDecisionStrategyHandler.hpp"
 #include "RestoreStatusDeityDecisionStrategyHandler.hpp"
+#include "SatiateDeityDecisionStrategyHandler.hpp"
 
 DeityDecisionStrategy::DeityDecisionStrategy()
 {
@@ -20,6 +21,9 @@ void DeityDecisionStrategy::initialize_decisions()
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>();
+  decisions.push_back(cur_decision);
+
+  cur_decision = std::make_shared<SatiateDeityDecisionStrategyHandler>();
   decisions.push_back(cur_decision);
 
   cur_decision = std::make_shared<FullAPDeityDecisionStrategyHandler>();
