@@ -2916,6 +2916,9 @@
     <ClInclude Include="engine\decision_strategies\deity\include\SatiateDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\Conducts.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5596,6 +5599,12 @@
     </ClCompile>
     <ClCompile Include="engine\decision_strategies\deity\source\SatiateDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Conducts.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Conducts_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

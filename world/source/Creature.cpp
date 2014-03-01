@@ -108,6 +108,7 @@ Creature::Creature(const Creature& cr)
   auto_move = cr.auto_move;
   additional_properties = cr.additional_properties;
   mortuary = cr.mortuary;
+  conducts = cr.conducts;
   spell_knowledge = cr.spell_knowledge;
 }
 
@@ -188,6 +189,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (auto_move == cr.auto_move);
   result = result && (additional_properties == cr.additional_properties);
   result = result && (mortuary == cr.mortuary);
+  result = result && (conducts == cr.conducts);
   result = result && (spell_knowledge == cr.spell_knowledge);
 
   return result;
@@ -1002,6 +1004,11 @@ Mortuary& Creature::get_mortuary_ref()
   return mortuary;
 }
 
+Conducts& Creature::get_conducts_ref()
+{
+  return conducts;
+}
+
 void Creature::set_spell_knowledge(const SpellKnowledge& new_spell_knowledge)
 {
   spell_knowledge = new_spell_knowledge;
@@ -1024,7 +1031,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 872, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 880, "Unexpected sizeof Creature.");
     #else
     // Release
 	static_assert(sizeof(*this) == 872, "Unexpected sizeof Creature.");
@@ -1092,6 +1099,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->auto_move, cr.auto_move);
   std::swap(this->additional_properties, cr.additional_properties);
   std::swap(this->mortuary, cr.mortuary);
+  std::swap(this->conducts, cr.conducts);
   std::swap(this->spell_knowledge, cr.spell_knowledge);
 }
 
@@ -1216,6 +1224,7 @@ bool Creature::serialize(ostream& stream) const
   Serialize::write_string_map(stream, additional_properties);
 
   mortuary.serialize(stream);
+  conducts.serialize(stream);
   spell_knowledge.serialize(stream);
 
   return true;
@@ -1364,6 +1373,7 @@ bool Creature::deserialize(istream& stream)
   Serialize::read_string_map(stream, additional_properties);
 
   mortuary.deserialize(stream);
+  conducts.deserialize(stream);
   spell_knowledge.deserialize(stream);
 
   return true;

@@ -6,6 +6,7 @@
 #include "BoolStatistic.hpp"
 #include "common.hpp"
 #include "Colours.hpp"
+#include "Conducts.hpp"
 #include "Controller.hpp"
 #include "CreatureFeatures.hpp"
 #include "Damage.hpp"
@@ -273,6 +274,8 @@ class Creature : public ISerializable
 
     Mortuary& get_mortuary_ref();
 
+    Conducts& get_conducts_ref();
+
     void set_spell_knowledge(const SpellKnowledge& new_spell_knowledge);
     SpellKnowledge& get_spell_knowledge_ref();
 
@@ -410,6 +413,9 @@ class Creature : public ISerializable
 
     // The creature's kills.
     Mortuary mortuary;
+
+    // The creature's conducts: foodless, agnostic, etc
+    Conducts conducts;
 
     // The creature's magical knowledge.
     SpellKnowledge spell_knowledge;
