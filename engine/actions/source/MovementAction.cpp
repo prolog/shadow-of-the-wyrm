@@ -394,18 +394,21 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Til
 {
   TileMovementConfirmation tmc;
   pair<bool, string> details = tmc.get_confirmation_details(creature, creatures_old_tile, creatures_new_tile);
-  
-  if (details.first == true)
+  bool needs_confirmation = details.first;
+
+  if (needs_confirmation)
   {
+    bool confirmation = false;
     IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
     
     if (creature->get_is_player())
     { 
       manager.add_new_confirmation_message(details.second);
-    }
       
-    bool confirmation = (creature->get_decision_strategy()->get_confirmation());
-    manager.clear_if_necessary();
+      confirmation = (creature->get_decision_strategy()->get_confirmation());
+      manager.clear_if_necessary();
+    }
+
     return confirmation;      
   }
   
