@@ -8,10 +8,13 @@ Savage Lands v0.2.2 "Aelfwald"
   them on to an existing map.
 
 - Removed Isen Dun, Wyrmeswraec, Stoneheim, the Far Reaches, Last Rock,
-  the Far Shore, the infinite dungeon, Atua-Elar, and Stonewall from the
-  WorldGenerator and added XML/Lua support for generating these (also
-  deleted the corresponding map IDs/extra description SIDs within the
-  C++ code).
+  the Far Shore, the infinite dungeon, Atua-Elar, Stonewall, Gnordvar,
+  and the Gnordvar Mines from the WorldGenerator and added XML/Lua support 
+  for generating these (also deleted the corresponding map IDs/extra 
+  description SIDs within the C++ code).
+
+- The Nine can now satiate with divine manna, if the creature isn't full.
+  This is lower priority than full HP/AP.
 
 Savage Lands v0.2.1 "Oslac"
 - Version declared January 26, 2014.  Version finalized February 25, 2014.
