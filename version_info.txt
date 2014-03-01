@@ -16,6 +16,8 @@ Savage Lands v0.2.2 "Aelfwald"
 - The Nine can now satiate with divine manna, if the creature isn't full.
   This is lower priority than full HP/AP.
 
+- Added conducts to creatures.
+
 - Bug fixes:
   
   - Fixed a bug where creatures would always confirm that they wanted to
