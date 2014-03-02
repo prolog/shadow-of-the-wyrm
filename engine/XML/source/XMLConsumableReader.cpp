@@ -20,5 +20,12 @@ void XMLConsumableReader::parse(ConsumablePtr consumable, GenerationValues& gv, 
 
     float standard_drinks = XMLUtils::get_child_node_float_value(node, "StandardDrinks", consumable->get_standard_drinks());
     consumable->set_standard_drinks(standard_drinks);
+
+    XMLNode food_type_node = XMLUtils::get_next_element_by_local_name(node, "FoodType");
+    if (!food_type_node.is_null())
+    {
+      FoodType food_type = static_cast<FoodType>(XMLUtils::get_node_int_value(food_type_node, FOOD_TYPE_OTHER));
+      consumable->set_food_type(food_type);
+    }
   }
 }

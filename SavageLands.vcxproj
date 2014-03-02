@@ -690,6 +690,7 @@
     <ClInclude Include="world\include\Boat.hpp" />
     <ClInclude Include="world\include\BoolStatistic.hpp" />
     <ClInclude Include="world\include\Conducts.hpp" />
+    <ClInclude Include="world\include\ConductTypes.hpp" />
     <ClInclude Include="world\include\Spellbook.hpp" />
     <ClInclude Include="world\include\Calendar.hpp" />
     <ClInclude Include="world\include\Class.hpp" />

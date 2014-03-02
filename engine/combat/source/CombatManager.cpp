@@ -151,6 +151,12 @@ ActionCostValue CombatManager::attack(CreaturePtr attacking_creature, CreaturePt
 
 bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int d100_roll, const Damage& damage_info, const AttackType attack_type)
 {
+  WeaponManager wm;
+  if (wm.is_using_weapon(attacking_creature, attack_type))
+  {
+    attacking_creature->get_conducts_ref().break_conduct(CONDUCT_TYPE_WEAPONLESS);
+  }
+
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);
   DamageType damage_type = damage_info.get_damage_type();
   int effect_bonus = damage_info.get_effect_bonus();

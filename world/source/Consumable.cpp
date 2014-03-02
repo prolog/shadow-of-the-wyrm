@@ -4,12 +4,12 @@
 using namespace std;
 
 Consumable::Consumable()
-: nutrition(0), standard_drinks(0.0f)
+: nutrition(0), standard_drinks(0.0f), food_type(FOOD_TYPE_OTHER)
 {
 }
 
 Consumable::Consumable(const int nutr, const float std_drinks)
-: nutrition(nutr), standard_drinks(std_drinks)
+: nutrition(nutr), standard_drinks(std_drinks), food_type(FOOD_TYPE_OTHER)
 {
 }
 
@@ -20,8 +20,19 @@ bool Consumable::operator==(const Consumable& consumable) const
   result = result && Item::operator==(consumable);
   result = result && (nutrition == consumable.nutrition);
   result = result && (standard_drinks == consumable.standard_drinks);
+  result = result && (food_type == consumable.food_type);
 
   return result;
+}
+
+void Consumable::set_food_type(const FoodType new_food_type)
+{
+  food_type = new_food_type;
+}
+
+FoodType Consumable::get_food_type() const
+{
+  return food_type;
 }
 
 void Consumable::set_nutrition(const int new_nutrition)
@@ -56,6 +67,7 @@ bool Consumable::serialize(ostream& stream) const
   Item::serialize(stream);
   Serialize::write_int(stream, nutrition);
   Serialize::write_float(stream, standard_drinks);
+  Serialize::write_enum(stream, food_type);
 
   return true;
 }
@@ -65,6 +77,7 @@ bool Consumable::deserialize(istream& stream)
   Item::deserialize(stream);
   Serialize::read_int(stream, nutrition);
   Serialize::read_float(stream, standard_drinks);
+  Serialize::read_enum(stream, food_type);
 
   return true;
 }

@@ -43,6 +43,9 @@ ActionCostValue ReadAction::read(CreaturePtr creature, ActionManager * const am)
         {
           // Cast or learn the spell from the scroll/spellbook/etc.
           action_cost_value = read_strategy->read(creature, am, readable);
+
+          // Break the illiterate conduct.
+          creature->get_conducts_ref().break_conduct(CONDUCT_TYPE_ILLITERATE);
         }
       }
     }    

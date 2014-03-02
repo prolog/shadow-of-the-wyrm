@@ -16,7 +16,18 @@ Savage Lands v0.2.2 "Aelfwald"
 - The Nine can now satiate with divine manna, if the creature isn't full.
   This is lower priority than full HP/AP.
 
-- Added conducts to creatures.
+- Added conducts to creatures.  Started tracking the following conducts:
+
+  - Foodless: cannot eat food or drink potions (basically, anything that
+  gives nutrition).
+
+  - Vegetarian: cannot eat meat-based foods.
+
+  - Agnostic: never prayed or otherwise requested divine assistance.
+
+  - Weaponless: never attacked with a weapon other than bare hands.
+
+  - Illiterate: never read a scroll, spellbook, etc.
 
 - Bug fixes:
   

@@ -6,6 +6,7 @@
 class WeaponManager
 {
   public:
+    bool is_using_weapon(CreaturePtr creature, const AttackType attack_type);
     WeaponPtr get_weapon(CreaturePtr creature, const AttackType attack_type);
     std::vector<std::string> get_slays_races(CreaturePtr creature, const AttackType attack_type);
     SkillType get_skill_type(CreaturePtr creature, const AttackType attack_type);

@@ -6,6 +6,13 @@
 using namespace std;
 using std::dynamic_pointer_cast;
 
+// Check to see if the creature is using a weapon for the given
+// attack type - grab the weapon, and check if it's a nullptr.
+bool WeaponManager::is_using_weapon(CreaturePtr creature, const AttackType attack_type)
+{
+  return (get_weapon(creature, attack_type) != nullptr);
+}
+
 // Get the weapon for the given attack type.  The returned pointer
 // WILL BE NULL if there is nothing equipped in the appropriate slot.
 WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attack_type)

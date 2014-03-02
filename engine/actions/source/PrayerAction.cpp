@@ -34,6 +34,9 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
     
     // Reduce the piety and update the player on the result.
     finish_prayer(creature, decision_implications);
+
+    // Break the Agnostic conduct.
+    creature->get_conducts_ref().break_conduct(CONDUCT_TYPE_AGNOSTIC);
   }
 
   return get_action_cost_value(creature);
