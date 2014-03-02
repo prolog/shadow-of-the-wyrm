@@ -10,7 +10,7 @@ class Food : public Consumable
     ~Food();
 
     ItemType get_type() const override;
-    
+
     Item* clone() override;
 
   private:

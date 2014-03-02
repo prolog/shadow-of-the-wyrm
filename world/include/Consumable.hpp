@@ -7,7 +7,10 @@ class Consumable : public Item
     Consumable();
     Consumable(const int nutr, const float std_drinks);
     bool operator==(const Consumable& consumable) const;
-    
+
+    virtual void set_food_type(const FoodType new_food_type);
+    virtual FoodType get_food_type() const;
+
     virtual ItemType get_type() const override = 0;
     
     void set_nutrition(const int new_nutrition);
@@ -24,6 +27,7 @@ class Consumable : public Item
 
     int nutrition;
     float standard_drinks;
+    FoodType food_type;
 };
 
 typedef std::shared_ptr<Consumable> ConsumablePtr;

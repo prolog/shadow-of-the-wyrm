@@ -751,6 +751,7 @@
 					 alcoholic as well. 1 std drink = 0.6 fl oz of pure
 					 alcohol (Canada/US definition) -->
 				<xs:element name="StandardDrinks" type="xs:float" minOccurs="0"/>
+				<xs:element name="FoodType" type="tns:FoodType" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>
@@ -1405,6 +1406,13 @@
 	<xs:restriction base="xs:integer">
 		<xs:enumeration value="0"/>
 		<xs:enumeration value="1"/>
+	</xs:restriction>
+</xs:simpleType>
+<!-- See ItemTypes.hpp -->
+<xs:simpleType name="FoodType">
+	<xs:restriction base="xs:integer">
+		<xs:minInclusive value="0"/>
+		<xs:maxInclusive value="3"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>

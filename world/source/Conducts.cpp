@@ -5,7 +5,7 @@ using namespace std;
 
 Conducts::Conducts()
 {
-  cond = array<bool, 4>{{ true, true, true, true }};
+  cond = array<bool, 5>{{ true, true, true, true }};
 }
 
 bool Conducts::operator==(const Conducts& c) const
@@ -16,6 +16,12 @@ bool Conducts::operator==(const Conducts& c) const
   return result;
 }
 
+// Get all currently-valid conducts
+array<bool, CONDUCT_SIZE> Conducts::get_conducts() const
+{
+  return cond;
+}
+
 // Break a particular conduct
 void Conducts::break_conduct(const ConductType ct)
 {
@@ -24,7 +30,7 @@ void Conducts::break_conduct(const ConductType ct)
 
 bool Conducts::serialize(ostream& stream) const
 {
-  static_assert(CONDUCT_SIZE == 4, "Unexpected number of conducts");
+  static_assert(CONDUCT_SIZE == 5, "Unexpected number of conducts");
 
   for (const bool conduct : cond)
   {

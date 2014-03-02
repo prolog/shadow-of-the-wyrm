@@ -1,5 +1,26 @@
 #include "gtest/gtest.h"
 
+TEST(SL_World_Conducts, remaining_conducts)
+{
+  Conducts c;
+
+  array<bool, CONDUCT_SIZE> remaining = c.get_conducts();
+
+  for (int i = CONDUCT_TYPE_FOODLESS; i < CONDUCT_SIZE; i++)
+  {
+    EXPECT_TRUE(remaining[i] == true);
+  }
+
+  c.break_conduct(CONDUCT_TYPE_FOODLESS);
+  c.break_conduct(CONDUCT_TYPE_WEAPONLESS);
+
+  remaining = c.get_conducts();
+
+  EXPECT_TRUE(remaining[CONDUCT_TYPE_AGNOSTIC] == true);
+  EXPECT_TRUE(remaining[CONDUCT_TYPE_ILLITERATE] == true);
+  EXPECT_TRUE(remaining[CONDUCT_TYPE_FOODLESS] == false);
+  EXPECT_TRUE(remaining[CONDUCT_TYPE_WEAPONLESS] == false);
+}
 TEST(SL_World_Conducts, serialization_id)
 {
   Conducts c;

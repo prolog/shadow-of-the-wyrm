@@ -6,6 +6,7 @@ Plant::Plant()
 : Consumable(20,0)
 {
   type = ITEM_TYPE_PLANT;
+  food_type = FOOD_TYPE_VEGETABLE;
   symbol = 'w';
 }
 
@@ -13,6 +14,7 @@ Plant::Plant(const int new_nutrition)
 : Consumable(new_nutrition,0)
 {
   type = ITEM_TYPE_PLANT;
+  food_type = FOOD_TYPE_VEGETABLE;
   symbol = 'w';
 }
 

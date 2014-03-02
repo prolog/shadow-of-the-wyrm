@@ -66,3 +66,13 @@ class ItemIdKeys
     ItemIdKeys();
     ~ItemIdKeys();
 };
+
+enum FoodType
+{
+  FOOD_TYPE_VEGETABLE = 0,
+  FOOD_TYPE_CARBS = 1,
+  FOOD_TYPE_MEAT = 2,
+  FOOD_TYPE_DAIRY = 3,
+  FOOD_TYPE_OTHER = 4,
+  FOOD_TYPE_LAST = 5
+};

@@ -15259,6 +15259,7 @@
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_cherries">
 				<DescriptionSID>CHERRIES_SID</DescriptionSID>
@@ -15273,6 +15274,7 @@
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_peach">
 				<DescriptionSID>PEACH_SID</DescriptionSID>
@@ -15287,6 +15289,7 @@
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_plum">
 				<DescriptionSID>PLUM_SID</DescriptionSID>
@@ -15301,6 +15304,7 @@
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_pear">
 				<DescriptionSID>PEAR_SID</DescriptionSID>
@@ -15315,6 +15319,7 @@
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_vegetable_1">
 				<DescriptionSID>VEGETABLE1_SID</DescriptionSID>
@@ -15329,6 +15334,7 @@
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_vegetable_2">
 				<DescriptionSID>VEGETABLE2_SID</DescriptionSID>
@@ -15343,6 +15349,7 @@
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_vegetable_3">
 				<DescriptionSID>VEGETABLE3_SID</DescriptionSID>
@@ -15357,6 +15364,7 @@
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_vegetable_4">
 				<DescriptionSID>VEGETABLE4_SID</DescriptionSID>
@@ -15371,6 +15379,7 @@
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>700</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_vegetable_5">
 				<DescriptionSID>VEGETABLE5_SID</DescriptionSID>
@@ -15385,6 +15394,7 @@
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="_vegetable_6">
 				<DescriptionSID>VEGETABLE6_SID</DescriptionSID>
@@ -15399,6 +15409,7 @@
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>500</Nutrition>
+				<FoodType>0</FoodType>
 			</Food>
 			<Food id="food_ration">
 				<DescriptionSID>FOOD_RATION_SID</DescriptionSID>
@@ -15412,7 +15423,8 @@
 					<Colour>3</Colour>
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
-				<Nutrition>1440</Nutrition>	
+				<Nutrition>1440</Nutrition>
+				<FoodType>1</FoodType>
 			</Food>
 			<Food id="salted_fish">
 				<DescriptionSID>SALTED_FISH_SID</DescriptionSID>
@@ -15428,6 +15440,7 @@
 				<DangerLevel>1</DangerLevel>
 				<Rarity>1</Rarity>
 				<Nutrition>1440</Nutrition>	
+				<FoodType>2</FoodType>
 			</Food>
 		</Foodstuffs>
 		<Plants>
@@ -15446,6 +15459,7 @@
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="_wildflower_1">
 				<DescriptionSID>WILDFLOWER1_SID</DescriptionSID>
@@ -15460,6 +15474,7 @@
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="_wildflower_2">
 				<DescriptionSID>WILDFLOWER2_SID</DescriptionSID>
@@ -15474,6 +15489,7 @@
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="_wildflower_3">
 				<DescriptionSID>WILDFLOWER3_SID</DescriptionSID>
@@ -15488,6 +15504,7 @@
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="_wildflower_4">
 				<DescriptionSID>WILDFLOWER4_SID</DescriptionSID>
@@ -15502,6 +15519,7 @@
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="_wildflower_5">
 				<DescriptionSID>WILDFLOWER5_SID</DescriptionSID>
@@ -15516,6 +15534,7 @@
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="_wildflower_6">
 				<DescriptionSID>WILDFLOWER6_SID</DescriptionSID>
@@ -15530,6 +15549,7 @@
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="_fiddlehead_green">
 				<DescriptionSID>FIDDLEHEAD_GREEN_SID</DescriptionSID>
@@ -15544,6 +15564,7 @@
 				</TextDetails>				
 				<DangerLevel>1</DangerLevel>
 				<Nutrition>150</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="_fern">
 				<DescriptionSID>FERN_SID</DescriptionSID>
@@ -15558,6 +15579,7 @@
 				</TextDetails>	
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 			<Plant id="silverweed">
 				<DescriptionSID>SILVERWEED_SID</DescriptionSID>
@@ -15574,6 +15596,7 @@
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>12000</Nutrition>
+				<FoodType>0</FoodType>
 			</Plant>
 		</Plants>
 		<Boats>
