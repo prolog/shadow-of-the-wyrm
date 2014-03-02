@@ -5,7 +5,7 @@ using namespace std;
 
 Conducts::Conducts()
 {
-  cond = array<bool, 5>{{ true, true, true, true }};
+  cond = array<bool, 5>{{ true, true, true, true, true }};
 }
 
 bool Conducts::operator==(const Conducts& c) const
