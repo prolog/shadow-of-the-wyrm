@@ -7,6 +7,8 @@ class ConductTextKeys
   public:
     std::string get_conduct_message_sid(const ConductType ct);
 
+    static const std::string CONDUCT_TITLE;
+
   protected:
     ConductTextKeys();
     ~ConductTextKeys();
