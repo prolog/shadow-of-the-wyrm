@@ -2,6 +2,8 @@
 
 using namespace std;
 
+const string ConductTextKeys::CONDUCT_TITLE = "CONDUCT_TITLE";
+
 ConductTextKeys::ConductTextKeys()
 {
 }
