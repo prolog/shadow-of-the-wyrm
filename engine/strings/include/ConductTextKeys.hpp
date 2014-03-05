@@ -5,7 +5,7 @@
 class ConductTextKeys
 {
   public:
-    std::string get_conduct_message_sid(const ConductType ct);
+    static std::string get_conduct_message_sid(const ConductType ct);
 
     static const std::string CONDUCT_TITLE;
 
@@ -13,7 +13,7 @@ class ConductTextKeys
     ConductTextKeys();
     ~ConductTextKeys();
 
-    void initialize_message_sids();
-    std::vector<std::string> conduct_message_sids;
+    static void initialize_message_sids();
+    static std::vector<std::string> conduct_message_sids;
 };
 

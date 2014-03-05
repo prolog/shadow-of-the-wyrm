@@ -168,6 +168,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<ShowResistancesCommand>();
   }
+  else if (command_name == CommandKeys::SHOW_CONDUCTS)
+  {
+    command = std::make_shared<ShowConductsCommand>();
+  }
 
   return command;
 }

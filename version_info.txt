@@ -29,7 +29,8 @@ Savage Lands v0.2.2 "Aelfwald"
 
   - Illiterate: never read a scroll, spellbook, etc.
 
-- Created messages for each conduct.
+- Created messages for each conduct.  Created a Show Conducts screen
+  (F2).
 
 - Bug fixes:
   
