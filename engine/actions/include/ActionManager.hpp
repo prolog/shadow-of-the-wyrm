@@ -99,6 +99,7 @@ class ActionManager : public ISerializable
 
     // Show a creature's (well, the player's) resistances and vulnerabilities.
     ActionCost show_resistances(CreaturePtr creature);
+    ActionCost show_conducts(CreaturePtr creature);
 
     // Saves the game.
     ActionCost save(CreaturePtr creature);

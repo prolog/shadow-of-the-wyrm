@@ -241,3 +241,10 @@ class ShowResistancesCommand : public Command
     ShowResistancesCommand();
     ~ShowResistancesCommand();
 };
+
+class ShowConductsCommand : public Command
+{
+  public:
+    ShowConductsCommand();
+    ~ShowConductsCommand();
+};

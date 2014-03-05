@@ -28,6 +28,7 @@
 #include "QuestListAction.hpp"
 #include "ReadAction.hpp"
 #include "SearchAction.hpp"
+#include "ShowConductsAction.hpp"
 #include "ShowResistancesAction.hpp"
 #include "SpellcastingAction.hpp"
 #include "Serialization.hpp"
@@ -345,6 +346,13 @@ ActionCost ActionManager::show_resistances(CreaturePtr creature)
   ShowResistancesAction sra;
 
   return get_action_cost(creature, sra.show_resistances(creature));
+}
+
+ActionCost ActionManager::show_conducts(CreaturePtr creature)
+{
+  ShowConductsAction sca;
+
+  return get_action_cost(creature, sca.show_conducts(creature));
 }
 
 // Pick up an item, doing any necessary checks first.

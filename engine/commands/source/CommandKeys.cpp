@@ -49,6 +49,7 @@ const string CommandKeys::CAST_SPELL     = "CAST_SPELL";
 const string CommandKeys::BESTIARY       = "BESTIARY";
 const string CommandKeys::EVOKE          = "EVOKE";
 const string CommandKeys::SHOW_RESISTANCES = "SHOW_RESISTANCES";
+const string CommandKeys::SHOW_CONDUCTS  = "SHOW_CONDUCTS";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

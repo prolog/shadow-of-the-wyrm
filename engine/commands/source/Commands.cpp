@@ -347,3 +347,13 @@ ShowResistancesCommand::ShowResistancesCommand()
 ShowResistancesCommand::~ShowResistancesCommand()
 {
 }
+
+// Show the current conducts for the player
+ShowConductsCommand::ShowConductsCommand()
+: Command(CommandKeys::SHOW_CONDUCTS)
+{
+}
+
+ShowConductsCommand::~ShowConductsCommand()
+{
+}

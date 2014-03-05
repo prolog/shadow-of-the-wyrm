@@ -2,6 +2,8 @@
 
 using namespace std;
 
+vector<string> ConductTextKeys::conduct_message_sids;
+
 const string ConductTextKeys::CONDUCT_TITLE = "CONDUCT_TITLE";
 
 ConductTextKeys::ConductTextKeys()

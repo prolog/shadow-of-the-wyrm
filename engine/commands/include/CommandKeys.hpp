@@ -51,6 +51,7 @@ class CommandKeys
     static const std::string BESTIARY;
     static const std::string EVOKE;
     static const std::string SHOW_RESISTANCES;
+    static const std::string SHOW_CONDUCTS;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);
