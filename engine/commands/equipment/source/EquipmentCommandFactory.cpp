@@ -16,55 +16,55 @@ CommandPtr EquipmentCommandFactory::create(const int key, const std::string& com
 
   if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_HEAD)
   {
-    command = std::make_shared<WearOrRemoveHeadCommand>();
+    command = std::make_shared<WearOrRemoveHeadCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_NECK)
   {
-    command = std::make_shared<WearOrRemoveNeckCommand>();
+    command = std::make_shared<WearOrRemoveNeckCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_RIGHT_FINGER)
   {
-    command = std::make_shared<WearOrRemoveRightFingerCommand>();
+    command = std::make_shared<WearOrRemoveRightFingerCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_LEFT_FINGER)
   {
-    command = std::make_shared<WearOrRemoveLeftFingerCommand>();
+    command = std::make_shared<WearOrRemoveLeftFingerCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_WIELDED)
   {
-    command = std::make_shared<WearOrRemoveWieldedCommand>();
+    command = std::make_shared<WearOrRemoveWieldedCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_OFF_HAND)
   {
-    command = std::make_shared<WearOrRemoveOffHandCommand>();
+    command = std::make_shared<WearOrRemoveOffHandCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_BODY)
   {
-    command = std::make_shared<WearOrRemoveBodyCommand>();
+    command = std::make_shared<WearOrRemoveBodyCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_ABOUT_BODY)
   {
-    command = std::make_shared<WearOrRemoveAboutBodyCommand>();
+    command = std::make_shared<WearOrRemoveAboutBodyCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_FEET)
   {
-    command = std::make_shared<WearOrRemoveFeetCommand>();
+    command = std::make_shared<WearOrRemoveFeetCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_RANGED)
   {
-    command = std::make_shared<WearOrRemoveRangedCommand>();
+    command = std::make_shared<WearOrRemoveRangedCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_AMMUNITION)
   {
-    command = std::make_shared<WearOrRemoveAmmunitionCommand>();
+    command = std::make_shared<WearOrRemoveAmmunitionCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::YOUR_ITEMS)
   {
-    command = std::make_shared<YourItemsCommand>();
+    command = std::make_shared<YourItemsCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::EXIT_EQUIPMENT)
   {
-    command = std::make_shared<ExitEquipmentCommand>();
+    command = std::make_shared<ExitEquipmentCommand>(key);
   }
 
   return command;

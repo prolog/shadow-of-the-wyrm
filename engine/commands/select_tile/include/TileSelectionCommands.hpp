@@ -7,7 +7,7 @@
 class CursorDirectionalCommand : public Command
 {
   public:
-    CursorDirectionalCommand(const Direction d);
+    CursorDirectionalCommand(const Direction d, const int key);
     ~CursorDirectionalCommand();
 
     Direction get_direction() const;
@@ -19,14 +19,14 @@ class CursorDirectionalCommand : public Command
 class CancelTileSelectionCommand : public Command
 {
   public:
-    CancelTileSelectionCommand();
+    CancelTileSelectionCommand(int key);
     ~CancelTileSelectionCommand();
 };
 
 class TargetTileCommand : public Command
 {
   public:
-    TargetTileCommand();
+    TargetTileCommand(int key);
     ~TargetTileCommand();
 };
 

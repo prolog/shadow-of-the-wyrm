@@ -1,3 +1,4 @@
+#include "DisplayItemTypeFactory.hpp"
 #include "EdibleItemFilter.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemTypeFilter.hpp"
@@ -60,6 +61,18 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const std::list<
     it_filter.push_back(display_filter);
   }
   
+  return it_filter;
+}
+
+// Create an item type filter from a user-entered keyboard value.
+list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const int display_symbol)
+{
+  list<IItemFilterPtr> it_filter;
+  list<ItemType> it_list;
+
+  // JCD FIXME...
+  it_filter = create_item_type_filter(it_list);
+  DisplayItemTypeFactory;
   return it_filter;
 }
 

@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include "DisplayItemType.hpp"
 #include "ItemTypes.hpp"
 
@@ -109,8 +110,13 @@ class DisplayItemTypeFactory
 {
   public:
     static DisplayItemTypePtr create(const ItemType item_type);
+    static DisplayItemTypePtr create(const int item_symbol);
 
   protected:
     DisplayItemTypeFactory();
     ~DisplayItemTypeFactory();
+
+    static void initialize_map();
+
+    static std::map<ItemType, DisplayItemTypePtr> display_map;
 };

@@ -5,12 +5,7 @@
 class ItemSelectionCommand : public Command
 {
   public:
-    ItemSelectionCommand(int new_key);
-    
-    int get_key() const;
-  
-  protected:
-    int key;
+    ItemSelectionCommand(int key);
 };
 
 // Class used to indicate, "clear any existing filters; show all the
@@ -18,7 +13,7 @@ class ItemSelectionCommand : public Command
 class InventoryClearFilterCommand : public Command
 {
   public:
-    InventoryClearFilterCommand();
+    InventoryClearFilterCommand(int key);
 };
 
 // Class used to indicate, "within the current context (show all items,
@@ -26,26 +21,26 @@ class InventoryClearFilterCommand : public Command
 class InventoryFilterViewCommand : public Command
 {
   public:
-    InventoryFilterViewCommand();
+    InventoryFilterViewCommand(const int key);
 };
 
 // Class used to indicate "show the next page of items, if applicable."
 class InventoryNextPageCommand : public Command
 {
   public:
-    InventoryNextPageCommand();
+    InventoryNextPageCommand(int key);
 };
 
 // Class used to indicate "show the previous page of items, if applicable."
 class InventoryPreviousPageCommand : public Command
 {
   public:
-    InventoryPreviousPageCommand();
+    InventoryPreviousPageCommand(int key);
 };
 
 // Class used for exiting the inventory screen.
 class ExitInventoryCommand : public Command
 {
   public:
-    ExitInventoryCommand();
+    ExitInventoryCommand(int key);
 };

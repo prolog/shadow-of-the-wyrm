@@ -6,7 +6,9 @@ class Command
 {
   public:
     std::string get_name() const;
-    
+
+    virtual int get_key() const;
+
     // Most commands can just check the existence of a command_confirmation
     // string, but some will need special logic.
     virtual bool requires_confirmation() const;
@@ -14,11 +16,12 @@ class Command
 
   protected:
     friend class CommandFactory;
-    Command(const std::string& name);
-    Command(const std::string& name, const std::string& confirmation_text);
+    Command(const std::string& name, int key);
+    Command(const std::string& name, int key, const std::string& confirmation_text);
     virtual ~Command();
 
     std::string command_name;
+    int key_pressed;
     std::string command_confirmation;
 };
 

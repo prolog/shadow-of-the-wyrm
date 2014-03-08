@@ -2,13 +2,13 @@
 
 using namespace std;
 
-Command::Command(const string& name)
-: command_name(name)
+Command::Command(const string& name, const int ckey)
+: command_name(name), key_pressed(ckey)
 {
 }
 
-Command::Command(const string& name, const string& confirm)
-: command_name(name), command_confirmation(confirm)
+Command::Command(const string& name, const int ckey, const string& confirm)
+: command_name(name), key_pressed(ckey), command_confirmation(confirm)
 {
 }
 
@@ -29,4 +29,9 @@ bool Command::requires_confirmation() const
 string Command::get_confirmation_sid() const
 {
   return command_confirmation;
+}
+
+int Command::get_key() const
+{
+  return key_pressed;
 }

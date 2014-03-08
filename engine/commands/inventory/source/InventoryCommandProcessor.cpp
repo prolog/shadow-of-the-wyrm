@@ -5,9 +5,10 @@
 #include "InventoryCommandProcessor.hpp"
 #include "InventoryCommands.hpp"
 #include "InventoryManager.hpp"
+#include "ItemFilterFactory.hpp"
 #include "Log.hpp"
 
-using std::string;
+using namespace std;
 
 InventoryCommandProcessor::InventoryCommandProcessor()
 {
@@ -33,11 +34,17 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     }
     else if (command_name == InventoryCommandKeys::CLEAR_FILTER)
     {
-      // FIXME
+      list<IItemFilterPtr> display_filter = ItemFilterFactory::create_empty_filter();
+
+      game.actions.inventory(creature, creature->get_inventory(), display_filter, true);
+      process_result = false;
     }
     else if (command_name == InventoryCommandKeys::FILTER_VIEW)
     {
-      // FIXME
+      list<IItemFilterPtr> display_filter = ItemFilterFactory::create_item_type_filter(command->get_key());
+
+      game.actions.inventory(creature, creature->get_inventory(), display_filter, true);
+      process_result = false;
     }
     else if (command_name == InventoryCommandKeys::NEXT_PAGE)
     {

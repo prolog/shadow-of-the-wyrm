@@ -6,8 +6,8 @@
 using namespace std;
 
 // Quit
-QuitCommand::QuitCommand()
-: Command(CommandKeys::QUIT, TextKeys::DECISION_QUIT_GAME)
+QuitCommand::QuitCommand(const int key)
+: Command(CommandKeys::QUIT, key, TextKeys::DECISION_QUIT_GAME)
 {
 }
 
@@ -16,8 +16,8 @@ QuitCommand::~QuitCommand()
 }
 
 // Version
-VersionCommand::VersionCommand()
-: Command(CommandKeys::VERSION)
+VersionCommand::VersionCommand(const int key)
+: Command(CommandKeys::VERSION, key)
 {
 }
 
@@ -26,8 +26,8 @@ VersionCommand::~VersionCommand()
 }
 
 // Date/Time
-GameDateTimeCommand::GameDateTimeCommand()
-: Command(CommandKeys::GAME_DATE_TIME)
+GameDateTimeCommand::GameDateTimeCommand(const int key)
+: Command(CommandKeys::GAME_DATE_TIME, key)
 {
 }
 
@@ -36,8 +36,8 @@ GameDateTimeCommand::~GameDateTimeCommand()
 }
 
 // Directional
-DirectionalCommand::DirectionalCommand(const Direction d)
-: Command("") // This will be a no-op command, since the command key is empty.
+DirectionalCommand::DirectionalCommand(const Direction d, const int key)
+: Command("", key) // This will be a no-op command, since the command key is empty.
 , direction(d)
 {
 }
@@ -57,8 +57,8 @@ bool DirectionalCommand::requires_confirmation() const
 }
 
 // Movement
-MovementCommand::MovementCommand(const Direction d)
-: DirectionalCommand(d)
+MovementCommand::MovementCommand(const Direction d, const int key)
+: DirectionalCommand(d, key)
 {
   // Get the direction CommandKey based on the Direction enum
   string name  = DirectionEnum::to_string(direction);
@@ -70,8 +70,8 @@ MovementCommand::~MovementCommand()
 }
 
 // Move up or down a level
-MoveUpLevelCommand::MoveUpLevelCommand()
-: Command(CommandKeys::MOVE_UP)
+MoveUpLevelCommand::MoveUpLevelCommand(const int key)
+: Command(CommandKeys::MOVE_UP, key)
 {
 }
 
@@ -79,8 +79,8 @@ MoveUpLevelCommand::~MoveUpLevelCommand()
 {
 }
 
-MoveDownLevelCommand::MoveDownLevelCommand()
-: Command(CommandKeys::MOVE_DOWN)
+MoveDownLevelCommand::MoveDownLevelCommand(const int key)
+: Command(CommandKeys::MOVE_DOWN, key)
 {
 }
 
@@ -89,8 +89,8 @@ MoveDownLevelCommand::~MoveDownLevelCommand()
 }
 
 // Automatic movement (a.k.a. "run")
-AutomaticMovementCommand::AutomaticMovementCommand()
-: Command(CommandKeys::AUTOMATIC_MOVEMENT)
+AutomaticMovementCommand::AutomaticMovementCommand(const int key)
+: Command(CommandKeys::AUTOMATIC_MOVEMENT, key)
 {
 }
 
@@ -99,8 +99,8 @@ AutomaticMovementCommand::~AutomaticMovementCommand()
 }
 
 // Attack
-AttackCommand::AttackCommand(const Direction d)
-: DirectionalCommand(d)
+AttackCommand::AttackCommand(const Direction d, const int key)
+: DirectionalCommand(d, key)
 {
   command_name = DirectionEnum::to_attack_string(d);
 }
@@ -110,8 +110,8 @@ AttackCommand::~AttackCommand()
 }
 
 // Search
-SearchCommand::SearchCommand()
-: MovementCommand(DIRECTION_NULL)
+SearchCommand::SearchCommand(const int key)
+: MovementCommand(DIRECTION_NULL, key)
 {
 }
 
@@ -120,8 +120,8 @@ SearchCommand::~SearchCommand()
 }
 
 // Pray
-PrayCommand::PrayCommand()
-: Command(CommandKeys::PRAY)
+PrayCommand::PrayCommand(const int key)
+: Command(CommandKeys::PRAY, key)
 {
 }
 
@@ -130,8 +130,8 @@ PrayCommand::~PrayCommand()
 }
 
 // Pick up
-PickUpCommand::PickUpCommand()
-: Command(CommandKeys::PICK_UP_ITEM)
+PickUpCommand::PickUpCommand(const int key)
+: Command(CommandKeys::PICK_UP_ITEM, key)
 {
 }
 
@@ -140,8 +140,8 @@ PickUpCommand::~PickUpCommand()
 }
 
 // Drop
-DropCommand::DropCommand()
-: Command(CommandKeys::DROP_ITEM)
+DropCommand::DropCommand(const int key)
+: Command(CommandKeys::DROP_ITEM, key)
 {
 }
 
@@ -150,8 +150,8 @@ DropCommand::~DropCommand()
 }
 
 // Dump (pretty-print) the character to a file
-CharDumpCommand::CharDumpCommand()
-: Command(CommandKeys::CHAR_DUMP)
+CharDumpCommand::CharDumpCommand(const int key)
+: Command(CommandKeys::CHAR_DUMP, key)
 {
 }
 
@@ -160,8 +160,8 @@ CharDumpCommand::~CharDumpCommand()
 }
 
 // Equipment and Inventory management
-InventoryCommand::InventoryCommand()
-: Command(CommandKeys::INVENTORY)
+InventoryCommand::InventoryCommand(const int key)
+: Command(CommandKeys::INVENTORY, key)
 {
 }
 
@@ -170,8 +170,8 @@ InventoryCommand::~InventoryCommand()
 }
 
 // Melee and ranged weapon info commands
-MeleeWeaponInfoCommand::MeleeWeaponInfoCommand()
-: Command(CommandKeys::MELEE_WEAPON_INFO)
+MeleeWeaponInfoCommand::MeleeWeaponInfoCommand(const int key)
+: Command(CommandKeys::MELEE_WEAPON_INFO, key)
 {
 }
 
@@ -179,8 +179,8 @@ MeleeWeaponInfoCommand::~MeleeWeaponInfoCommand()
 {
 }
 
-RangedWeaponInfoCommand::RangedWeaponInfoCommand()
-: Command(CommandKeys::RANGED_WEAPON_INFO)
+RangedWeaponInfoCommand::RangedWeaponInfoCommand(const int key)
+: Command(CommandKeys::RANGED_WEAPON_INFO, key)
 {
 }
 
@@ -189,8 +189,8 @@ RangedWeaponInfoCommand::~RangedWeaponInfoCommand()
 }
 
 // Select Tile (aka, "Look")
-SelectTileCommand::SelectTileCommand()
-: Command(CommandKeys::SELECT_TILE)
+SelectTileCommand::SelectTileCommand(const int key)
+: Command(CommandKeys::SELECT_TILE, key)
 {
 }
 
@@ -199,8 +199,8 @@ SelectTileCommand::~SelectTileCommand()
 }
 
 // Fire currently-equipped Ammunition
-FireMissileCommand::FireMissileCommand()
-: Command(CommandKeys::FIRE_MISSILE)
+FireMissileCommand::FireMissileCommand(const int key)
+: Command(CommandKeys::FIRE_MISSILE, key)
 {
 }
 
@@ -209,8 +209,8 @@ FireMissileCommand::~FireMissileCommand()
 }
 
 // 'q'uaff a potion
-QuaffCommand::QuaffCommand()
-: Command(CommandKeys::QUAFF)
+QuaffCommand::QuaffCommand(const int key)
+: Command(CommandKeys::QUAFF, key)
 {
 }
 
@@ -219,8 +219,8 @@ QuaffCommand::~QuaffCommand()
 }
 
 // 'r'ead a scroll or spellbook
-ReadCommand::ReadCommand()
-: Command(CommandKeys::READ)
+ReadCommand::ReadCommand(const int key)
+: Command(CommandKeys::READ, key)
 {
 }
 
@@ -229,8 +229,8 @@ ReadCommand::~ReadCommand()
 }
 
 // '$': check how much currency is currently held
-CheckCurrencyCommand::CheckCurrencyCommand()
-: Command(CommandKeys::CHECK_CURRENCY)
+CheckCurrencyCommand::CheckCurrencyCommand(const int key)
+: Command(CommandKeys::CHECK_CURRENCY, key)
 {
 }
 
@@ -239,8 +239,8 @@ CheckCurrencyCommand::~CheckCurrencyCommand()
 }
 
 // 'S'ave the game
-SaveGameCommand::SaveGameCommand()
-: Command(CommandKeys::SAVE_GAME, TextKeys::DECISION_SAVE_GAME)
+SaveGameCommand::SaveGameCommand(const int key)
+: Command(CommandKeys::SAVE_GAME, key, TextKeys::DECISION_SAVE_GAME)
 {
 }
 
@@ -249,8 +249,8 @@ SaveGameCommand::~SaveGameCommand()
 }
 
 // 'e'at
-EatCommand::EatCommand()
-: Command(CommandKeys::EAT)
+EatCommand::EatCommand(const int key)
+: Command(CommandKeys::EAT, key)
 {
 }
 
@@ -259,8 +259,8 @@ EatCommand::~EatCommand()
 }
 
 // Chat with another creature
-ChatCommand::ChatCommand()
-: Command(CommandKeys::CHAT)
+ChatCommand::ChatCommand(const int key)
+: Command(CommandKeys::CHAT, key)
 {
 }
 
@@ -269,8 +269,8 @@ ChatCommand::~ChatCommand()
 }
 
 // Apply a terrain feature: open a door, etc.
-ApplyFeatureCommand::ApplyFeatureCommand()
-: Command(CommandKeys::APPLY_FEATURE)
+ApplyFeatureCommand::ApplyFeatureCommand(const int key)
+: Command(CommandKeys::APPLY_FEATURE, key)
 {
 }
 
@@ -279,8 +279,8 @@ ApplyFeatureCommand::~ApplyFeatureCommand()
 }
 
 // See the list of quests
-QuestListCommand::QuestListCommand()
-: Command(CommandKeys::QUEST_LIST)
+QuestListCommand::QuestListCommand(const int key)
+: Command(CommandKeys::QUEST_LIST, key)
 {
 }
 
@@ -289,8 +289,8 @@ QuestListCommand::~QuestListCommand()
 }
 
 // Clear the Lua state (scripts will reload)
-ReloadScriptsCommand::ReloadScriptsCommand()
-: Command(CommandKeys::RELOAD_SCRIPTS_AND_SIDS)
+ReloadScriptsCommand::ReloadScriptsCommand(const int key)
+: Command(CommandKeys::RELOAD_SCRIPTS_AND_SIDS, key)
 {
 }
 
@@ -299,8 +299,8 @@ ReloadScriptsCommand::~ReloadScriptsCommand()
 }
 
 // Run a Lua statement (debug mode only)
-RunScriptCommand::RunScriptCommand()
-: Command(CommandKeys::RUN_SCRIPT)
+RunScriptCommand::RunScriptCommand(const int key)
+: Command(CommandKeys::RUN_SCRIPT, key)
 {
 }
 
@@ -309,8 +309,8 @@ RunScriptCommand::~RunScriptCommand()
 }
 
 // 'z'ap (cast) a spell
-CastSpellCommand::CastSpellCommand()
-: Command(CommandKeys::CAST_SPELL)
+CastSpellCommand::CastSpellCommand(const int key)
+: Command(CommandKeys::CAST_SPELL, key)
 {
 }
 
@@ -319,8 +319,8 @@ CastSpellCommand::~CastSpellCommand()
 }
 
 // Beastiary (creature info)
-BestiaryCommand::BestiaryCommand()
-: Command(CommandKeys::BESTIARY)
+BestiaryCommand::BestiaryCommand(const int key)
+: Command(CommandKeys::BESTIARY, key)
 {
 }
 
@@ -329,8 +329,8 @@ BestiaryCommand::~BestiaryCommand()
 }
 
 // E'v'oke (zap) a wand
-EvokeCommand::EvokeCommand()
-: Command(CommandKeys::EVOKE)
+EvokeCommand::EvokeCommand(const int key)
+: Command(CommandKeys::EVOKE, key)
 {
 }
 
@@ -339,8 +339,8 @@ EvokeCommand::~EvokeCommand()
 }
 
 // Show the player's resists and vulns
-ShowResistancesCommand::ShowResistancesCommand()
-: Command(CommandKeys::SHOW_RESISTANCES)
+ShowResistancesCommand::ShowResistancesCommand(const int key)
+: Command(CommandKeys::SHOW_RESISTANCES, key)
 {
 }
 
@@ -349,8 +349,8 @@ ShowResistancesCommand::~ShowResistancesCommand()
 }
 
 // Show the current conducts for the player
-ShowConductsCommand::ShowConductsCommand()
-: Command(CommandKeys::SHOW_CONDUCTS)
+ShowConductsCommand::ShowConductsCommand(const int key)
+: Command(CommandKeys::SHOW_CONDUCTS, key)
 {
 }
 
