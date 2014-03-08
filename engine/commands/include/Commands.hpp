@@ -6,28 +6,28 @@
 class QuitCommand : public Command
 {
   public:
-    QuitCommand();
+    QuitCommand(int key);
     ~QuitCommand();
 };
 
 class VersionCommand : public Command
 {
   public:
-    VersionCommand();
+    VersionCommand(int key);
     ~VersionCommand();
 };
 
 class GameDateTimeCommand : public Command
 {
   public:
-    GameDateTimeCommand();
+    GameDateTimeCommand(int key);
     ~GameDateTimeCommand();
 };
 
 class DirectionalCommand : public Command
 {
   public:
-    DirectionalCommand(const Direction d);
+    DirectionalCommand(const Direction d, int key);
     virtual ~DirectionalCommand() = 0;
     virtual bool requires_confirmation() const override;
 
@@ -42,209 +42,209 @@ typedef std::shared_ptr<DirectionalCommand> DirectionalCommandPtr;
 class MovementCommand : public DirectionalCommand
 {
   public:
-    MovementCommand(const Direction direction);
+    MovementCommand(const Direction direction, int key);
     ~MovementCommand();
 };
 
 class MoveUpLevelCommand : public Command
 {
   public:
-    MoveUpLevelCommand();
+    MoveUpLevelCommand(int key);
     ~MoveUpLevelCommand();
 };
 
 class MoveDownLevelCommand : public Command
 {
   public:
-    MoveDownLevelCommand();
+    MoveDownLevelCommand(int key);
     ~MoveDownLevelCommand();
 };
 
 class AutomaticMovementCommand : public Command
 {
   public:
-    AutomaticMovementCommand();
+    AutomaticMovementCommand(int key);
     ~AutomaticMovementCommand();
 };
 
 class SearchCommand : public MovementCommand
 {
   public:
-    SearchCommand();
+    SearchCommand(int key);
     ~SearchCommand();
 };
 
 class PrayCommand : public Command
 {
   public:
-    PrayCommand();
+    PrayCommand(int key);
     ~PrayCommand();
 };
 
 class AttackCommand : public DirectionalCommand
 {
   public:
-    AttackCommand(const Direction d);
+    AttackCommand(const Direction d, int key);
     ~AttackCommand();
 };
 
 class PickUpCommand : public Command
 {
   public:
-    PickUpCommand();
+    PickUpCommand(int key);
     ~PickUpCommand();
 };
 
 class DropCommand : public Command
 {
   public:
-    DropCommand();
+    DropCommand(int key);
     ~DropCommand();
 };
 
 class CharDumpCommand : public Command
 {
   public:
-    CharDumpCommand();
+    CharDumpCommand(int key);
     ~CharDumpCommand();
 };
 
 class InventoryCommand : public Command
 {
   public:
-    InventoryCommand();
+    InventoryCommand(int key);
     ~InventoryCommand();
 };
 
 class MeleeWeaponInfoCommand : public Command
 {
   public:
-    MeleeWeaponInfoCommand();
+    MeleeWeaponInfoCommand(int key);
     ~MeleeWeaponInfoCommand();
 };
 
 class RangedWeaponInfoCommand : public Command
 {
   public:
-    RangedWeaponInfoCommand();
+    RangedWeaponInfoCommand(int key);
     ~RangedWeaponInfoCommand();
 };
 
 class SelectTileCommand : public Command
 {
   public:
-    SelectTileCommand();
+    SelectTileCommand(int key);
     ~SelectTileCommand();
 };
 
 class FireMissileCommand : public Command
 {
   public:
-    FireMissileCommand();
+    FireMissileCommand(int key);
     ~FireMissileCommand();
 };
 
 class QuaffCommand : public Command
 {
   public:
-    QuaffCommand();
+    QuaffCommand(int key);
     ~QuaffCommand();
 };
 
 class ReadCommand : public Command
 {
   public:
-    ReadCommand();
+    ReadCommand(int key);
     ~ReadCommand();
 };
 
 class CheckCurrencyCommand : public Command
 {
   public:
-    CheckCurrencyCommand();
+    CheckCurrencyCommand(int key);
     ~CheckCurrencyCommand();
 };
 
 class SaveGameCommand : public Command
 {
   public:
-    SaveGameCommand();
+    SaveGameCommand(int key);
     ~SaveGameCommand();
 };
 
 class EatCommand : public Command
 {
   public:
-    EatCommand();
+    EatCommand(int key);
     ~EatCommand();
 };
 
 class ChatCommand : public Command
 {
   public:
-    ChatCommand();
+    ChatCommand(int key);
     ~ChatCommand();
 };
 
 class ApplyFeatureCommand : public Command
 {
   public:
-    ApplyFeatureCommand();
+    ApplyFeatureCommand(int key);
     ~ApplyFeatureCommand();
 };
 
 class QuestListCommand : public Command
 {
   public:
-    QuestListCommand();
+    QuestListCommand(int key);
     ~QuestListCommand();
 };
 
 class ReloadScriptsCommand : public Command
 {
   public:
-    ReloadScriptsCommand();
+    ReloadScriptsCommand(int key);
     ~ReloadScriptsCommand();
 };
 
 class RunScriptCommand : public Command
 {
   public:
-    RunScriptCommand();
+    RunScriptCommand(int key);
     ~RunScriptCommand();
 };
 
 class CastSpellCommand : public Command
 {
   public:
-    CastSpellCommand();
+    CastSpellCommand(int key);
     ~CastSpellCommand();
 };
 
 class BestiaryCommand : public Command
 {
   public:
-    BestiaryCommand();
+    BestiaryCommand(int key);
     ~BestiaryCommand();
 };
 
 class EvokeCommand : public Command
 {
   public:
-    EvokeCommand();
+    EvokeCommand(int key);
     ~EvokeCommand();
 };
 
 class ShowResistancesCommand : public Command
 {
   public:
-    ShowResistancesCommand();
+    ShowResistancesCommand(int key);
     ~ShowResistancesCommand();
 };
 
 class ShowConductsCommand : public Command
 {
   public:
-    ShowConductsCommand();
+    ShowConductsCommand(int key);
     ~ShowConductsCommand();
 };

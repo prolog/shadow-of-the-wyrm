@@ -3,8 +3,8 @@
 
 using std::string;
 
-CursorDirectionalCommand::CursorDirectionalCommand(const Direction d)
-: Command(""), direction(d)
+CursorDirectionalCommand::CursorDirectionalCommand(const Direction d, const int key)
+: Command("", key), direction(d)
 {
   string name = DirectionEnum::to_string(direction);
   command_name = name;
@@ -20,8 +20,8 @@ Direction CursorDirectionalCommand::get_direction() const
 }
 
 // Cancel tile selection
-CancelTileSelectionCommand::CancelTileSelectionCommand()
-: Command(TileSelectionCommandKeys::CANCEL_TILE_SELECTION)
+CancelTileSelectionCommand::CancelTileSelectionCommand(const int key)
+: Command(TileSelectionCommandKeys::CANCEL_TILE_SELECTION, key)
 {
 }
 
@@ -30,8 +30,8 @@ CancelTileSelectionCommand::~CancelTileSelectionCommand()
 }
 
 // Target a particular tile
-TargetTileCommand::TargetTileCommand()
-: Command(TileSelectionCommandKeys::TARGET_TILE)
+TargetTileCommand::TargetTileCommand(const int key)
+: Command(TileSelectionCommandKeys::TARGET_TILE, key)
 {
 }
 

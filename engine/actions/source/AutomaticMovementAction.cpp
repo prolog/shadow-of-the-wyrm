@@ -52,7 +52,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
 
     if (am.get_engaged())
     {
-      base_command = std::make_shared<MovementCommand>(am.get_direction());
+      base_command = std::make_shared<MovementCommand>(am.get_direction(), -1);
     }
     else
     {

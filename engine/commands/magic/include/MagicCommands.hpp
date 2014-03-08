@@ -7,14 +7,14 @@ class SpellCommand : public Command
     int get_spell_index() const;
 
   protected:
-    SpellCommand(const int spell_idx);
+    SpellCommand(const int spell_idx, const int key);
     int spell_index;
 };
 
 class SelectSpellCommand : public SpellCommand
 {
   public:
-    SelectSpellCommand(const int spell_idx);
+    SelectSpellCommand(const int spell_idx, const int key);
     
 //    virtual EquipmentWornLocation get_equipment_worn_location() const = 0;
 };
@@ -22,18 +22,18 @@ class SelectSpellCommand : public SpellCommand
 class NextPageMagicCommand : public Command
 {
   public:
-    NextPageMagicCommand();
+    NextPageMagicCommand(int key);
 };
 
 class PreviousPageMagicCommand : public Command
 {
   public:
-    PreviousPageMagicCommand();
+    PreviousPageMagicCommand(int key);
 };
 
 class ExitMagicCommand : public Command
 {
   public:
-    ExitMagicCommand();
+    ExitMagicCommand(int key);
 };
 

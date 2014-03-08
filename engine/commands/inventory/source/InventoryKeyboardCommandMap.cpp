@@ -27,9 +27,26 @@ void InventoryKeyboardCommandMap::initialize_command_mapping()
   command_mapping.clear();
   command_mapping = KeyboardCommandMappingMap{{Integer::to_string('z'), InventoryCommandKeys::EXIT_INVENTORY},
                                               {Integer::to_string('Z'), InventoryCommandKeys::EXIT_INVENTORY},
-                                              {Integer::to_string('/'), InventoryCommandKeys::CLEAR_FILTER},
+                                              {Integer::to_string('`'), InventoryCommandKeys::CLEAR_FILTER},
                                               {Integer::to_string('.'), InventoryCommandKeys::NEXT_PAGE},
-                                              {Integer::to_string(','), InventoryCommandKeys::PREVIOUS_PAGE}};
+                                              {Integer::to_string(','), InventoryCommandKeys::PREVIOUS_PAGE},
+                                              {Integer::to_string(']'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string(')'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('['), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('!'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('"'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('?'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('\\'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('|'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('='), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('+'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('%%'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('/'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('w'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('&'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('$'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('('), InventoryCommandKeys::FILTER_VIEW},
+                                              };
 
   // Selection commands.
   // 'z'/'Z' is reserved for exit.

@@ -18,159 +18,159 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
 
   if (command_name == CommandKeys::QUIT)
   {
-    command = std::make_shared<QuitCommand>();
+    command = std::make_shared<QuitCommand>(key);
   }
   else if (command_name == CommandKeys::VERSION)
   {
-    command = std::make_shared<VersionCommand>();
+    command = std::make_shared<VersionCommand>(key);
   }
   else if (command_name == CommandKeys::GAME_DATE_TIME)
   {
-    command = std::make_shared<GameDateTimeCommand>();
+    command = std::make_shared<GameDateTimeCommand>(key);
   }
   else if (command_name == CommandKeys::MOVE_NORTHEAST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_NORTH_EAST);
+    command = std::make_shared<MovementCommand>(DIRECTION_NORTH_EAST, key);
   }
   else if (command_name == CommandKeys::MOVE_NORTH)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_NORTH);
+    command = std::make_shared<MovementCommand>(DIRECTION_NORTH, key);
   }
   else if (command_name == CommandKeys::MOVE_NORTHWEST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_NORTH_WEST);
+    command = std::make_shared<MovementCommand>(DIRECTION_NORTH_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_EAST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_EAST);
+    command = std::make_shared<MovementCommand>(DIRECTION_EAST, key);
   }
   else if (command_name == CommandKeys::SEARCH)
   {
-    command = std::make_shared<SearchCommand>();
+    command = std::make_shared<SearchCommand>(key);
   }
   else if (command_name == CommandKeys::MOVE_WEST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_WEST);
+    command = std::make_shared<MovementCommand>(DIRECTION_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTHEAST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH_EAST);
+    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH_EAST, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTH)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH);
+    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTHWEST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH_WEST);
+    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_UP)
   {
-    command = std::make_shared<MoveUpLevelCommand>();
+    command = std::make_shared<MoveUpLevelCommand>(key);
   }
   else if (command_name == CommandKeys::MOVE_DOWN)
   {
-    command = std::make_shared<MoveDownLevelCommand>();
+    command = std::make_shared<MoveDownLevelCommand>(key);
   }
   else if (command_name == CommandKeys::AUTOMATIC_MOVEMENT)
   {
-    command = std::make_shared<AutomaticMovementCommand>();
+    command = std::make_shared<AutomaticMovementCommand>(key);
   }
   else if (command_name == CommandKeys::PICK_UP_ITEM)
   {
-    command = std::make_shared<PickUpCommand>();
+    command = std::make_shared<PickUpCommand>(key);
   }
   else if (command_name == CommandKeys::DROP_ITEM)
   {
-    command = std::make_shared<DropCommand>();
+    command = std::make_shared<DropCommand>(key);
   }
   else if (command_name == CommandKeys::CHAR_DUMP)
   {
-    command = std::make_shared<CharDumpCommand>();
+    command = std::make_shared<CharDumpCommand>(key);
   }
   else if (command_name == CommandKeys::INVENTORY)
   {
-    command = std::make_shared<InventoryCommand>();
+    command = std::make_shared<InventoryCommand>(key);
   }
   else if (command_name == CommandKeys::PRAY)
   {
-    command = std::make_shared<PrayCommand>();
+    command = std::make_shared<PrayCommand>(key);
   }
   else if (command_name == CommandKeys::MELEE_WEAPON_INFO)
   {
-    command = std::make_shared<MeleeWeaponInfoCommand>();
+    command = std::make_shared<MeleeWeaponInfoCommand>(key);
   }
   else if (command_name == CommandKeys::RANGED_WEAPON_INFO)
   {
-    command = std::make_shared<RangedWeaponInfoCommand>();
+    command = std::make_shared<RangedWeaponInfoCommand>(key);
   }
   else if (command_name == CommandKeys::SELECT_TILE)
   {
-    command = std::make_shared<SelectTileCommand>();
+    command = std::make_shared<SelectTileCommand>(key);
   }
   else if (command_name == CommandKeys::FIRE_MISSILE)
   {
-    command = std::make_shared<FireMissileCommand>();
+    command = std::make_shared<FireMissileCommand>(key);
   }
   else if (command_name == CommandKeys::QUAFF)
   {
-    command = std::make_shared<QuaffCommand>();
+    command = std::make_shared<QuaffCommand>(key);
   }
   else if (command_name == CommandKeys::READ)
   {
-    command = std::make_shared<ReadCommand>();
+    command = std::make_shared<ReadCommand>(key);
   }
   else if (command_name == CommandKeys::CHECK_CURRENCY)
   {
-    command = std::make_shared<CheckCurrencyCommand>();
+    command = std::make_shared<CheckCurrencyCommand>(key);
   }
   else if (command_name == CommandKeys::SAVE_GAME)
   {
-    command = std::make_shared<SaveGameCommand>();
+    command = std::make_shared<SaveGameCommand>(key);
   }
   else if (command_name == CommandKeys::EAT)
   {
-    command = std::make_shared<EatCommand>();
+    command = std::make_shared<EatCommand>(key);
   }
   else if (command_name == CommandKeys::CHAT)
   {
-    command = std::make_shared<ChatCommand>();
+    command = std::make_shared<ChatCommand>(key);
   }
   else if (command_name == CommandKeys::APPLY_FEATURE)
   {
-    command = std::make_shared<ApplyFeatureCommand>();
+    command = std::make_shared<ApplyFeatureCommand>(key);
   }
   else if (command_name == CommandKeys::QUEST_LIST)
   {
-    command = std::make_shared<QuestListCommand>();
+    command = std::make_shared<QuestListCommand>(key);
   }
   else if (command_name == CommandKeys::RELOAD_SCRIPTS_AND_SIDS)
   {
-    command = std::make_shared<ReloadScriptsCommand>();
+    command = std::make_shared<ReloadScriptsCommand>(key);
   }
   else if (command_name == CommandKeys::RUN_SCRIPT)
   {
-    command = std::make_shared<RunScriptCommand>();
+    command = std::make_shared<RunScriptCommand>(key);
   }
   else if (command_name == CommandKeys::CAST_SPELL)
   {
-    command = std::make_shared<CastSpellCommand>();
+    command = std::make_shared<CastSpellCommand>(key);
   }
   else if (command_name == CommandKeys::BESTIARY)
   {
-    command = std::make_shared<BestiaryCommand>();
+    command = std::make_shared<BestiaryCommand>(key);
   }
   else if (command_name == CommandKeys::EVOKE)
   {
-    command = std::make_shared<EvokeCommand>();
+    command = std::make_shared<EvokeCommand>(key);
   }
   else if (command_name == CommandKeys::SHOW_RESISTANCES)
   {
-    command = std::make_shared<ShowResistancesCommand>();
+    command = std::make_shared<ShowResistancesCommand>(key);
   }
   else if (command_name == CommandKeys::SHOW_CONDUCTS)
   {
-    command = std::make_shared<ShowConductsCommand>();
+    command = std::make_shared<ShowConductsCommand>(key);
   }
 
   return command;

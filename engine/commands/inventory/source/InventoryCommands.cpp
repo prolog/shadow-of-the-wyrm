@@ -1,38 +1,33 @@
 #include "InventoryCommands.hpp"
 #include "InventoryCommandKeys.hpp"
 
-ItemSelectionCommand::ItemSelectionCommand(int new_key)
-: Command(InventoryCommandKeys::SELECT_ITEM), key(new_key)
+ItemSelectionCommand::ItemSelectionCommand(int key)
+: Command(InventoryCommandKeys::SELECT_ITEM, key)
 {
 }
 
-int ItemSelectionCommand::get_key() const
-{
-  return key;
-}
-
-InventoryClearFilterCommand::InventoryClearFilterCommand()
-: Command(InventoryCommandKeys::CLEAR_FILTER)
+InventoryClearFilterCommand::InventoryClearFilterCommand(const int key)
+: Command(InventoryCommandKeys::CLEAR_FILTER, key)
 {
 }
 
-InventoryFilterViewCommand::InventoryFilterViewCommand()
-: Command(InventoryCommandKeys::FILTER_VIEW)
+InventoryFilterViewCommand::InventoryFilterViewCommand(int key)
+: Command(InventoryCommandKeys::FILTER_VIEW, key)
 {
 }
 
-InventoryNextPageCommand::InventoryNextPageCommand()
-: Command(InventoryCommandKeys::NEXT_PAGE)
+InventoryNextPageCommand::InventoryNextPageCommand(const int key)
+: Command(InventoryCommandKeys::NEXT_PAGE, key)
 {
 }
 
-InventoryPreviousPageCommand::InventoryPreviousPageCommand()
-: Command(InventoryCommandKeys::PREVIOUS_PAGE)
+InventoryPreviousPageCommand::InventoryPreviousPageCommand(const int key)
+: Command(InventoryCommandKeys::PREVIOUS_PAGE, key)
 {
 }
 
-ExitInventoryCommand::ExitInventoryCommand()
-: Command(InventoryCommandKeys::EXIT_INVENTORY)
+ExitInventoryCommand::ExitInventoryCommand(const int key)
+: Command(InventoryCommandKeys::EXIT_INVENTORY, key)
 {
 }
 

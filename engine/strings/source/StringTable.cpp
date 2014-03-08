@@ -25,22 +25,20 @@ void StringTable::load(const string& filename)
     while (string_file.good())
     {
       getline(string_file, current_line);
-      tokenizer<char_separator<char>> tokens(current_line, separator);
 
-      tokenizer<char_separator<char>>::iterator tok_iter = tokens.begin();
-
-      if (tok_iter != tokens.end())
+      string::size_type pos;
+      pos = current_line.find('=', 0);
+      string key, value;
+      
+      if (pos != string::npos)
       {
-        key = *tok_iter;
+        key = current_line.substr(0, pos);
+        value = current_line.substr(pos + 1);
+      }
 
-        tok_iter++;
-
-        if (tok_iter != tokens.end())
-        {
-          value = *tok_iter;
-
-          string_table.insert(make_pair(key, value));
-        }
+      if (!key.empty())
+      {
+        string_table.insert(make_pair(key, value));
       }
     }
   }

@@ -2,8 +2,8 @@
 
 using std::string;
 
-DisplayItemType::DisplayItemType(const string& new_symbol, const Colour new_colour, const string& new_description)
-: symbol(new_symbol), colour(new_colour), description(new_description)
+DisplayItemType::DisplayItemType(const string& new_symbol, const Colour new_colour, const ItemType new_item_type, const string& new_description)
+: symbol(new_symbol), colour(new_colour), item_type(new_item_type), description(new_description)
 {
 }
 
@@ -29,6 +29,16 @@ void DisplayItemType::set_colour(const Colour new_colour)
 Colour DisplayItemType::get_colour() const
 {
   return colour;
+}
+
+void DisplayItemType::set_item_type(const ItemType new_item_type)
+{
+  item_type = new_item_type;
+}
+
+ItemType DisplayItemType::get_item_type() const
+{
+  return item_type;
 }
 
 void DisplayItemType::set_description(const string& new_description)
