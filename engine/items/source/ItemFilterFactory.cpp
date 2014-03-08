@@ -70,7 +70,13 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const int displa
   list<IItemFilterPtr> it_filter;
   list<ItemType> it_list;
 
-  // JCD FIXME...
+  DisplayItemTypePtr dit = DisplayItemTypeFactory::create(display_symbol);
+
+  if (dit != nullptr)
+  {
+    it_list.push_back(dit->get_item_type());
+  }
+
   it_filter = create_item_type_filter(it_list);
   DisplayItemTypeFactory;
   return it_filter;
