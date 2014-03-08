@@ -71,7 +71,7 @@ AmmunitionDisplayItemType::AmmunitionDisplayItemType()
 }
 
 PlantDisplayItemType::PlantDisplayItemType()
-: DisplayItemType("w", COLOUR_WHITE, ITEM_TYPE_PLANT, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_PLANTS))
+: DisplayItemType("#", COLOUR_WHITE, ITEM_TYPE_PLANT, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_PLANTS))
 {
 }
 
