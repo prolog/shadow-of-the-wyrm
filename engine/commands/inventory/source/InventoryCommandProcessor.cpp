@@ -36,14 +36,26 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
     {
       list<IItemFilterPtr> display_filter = ItemFilterFactory::create_empty_filter();
 
-      game.actions.inventory(creature, creature->get_inventory(), display_filter, true);
+      ItemPtr item = game.actions.inventory(creature, creature->get_inventory(), display_filter, inventory_is_read_only);
+
+      if (item != nullptr)
+      {
+        selected_item = item;
+      }
+
       process_result = false;
     }
     else if (command_name == InventoryCommandKeys::FILTER_VIEW)
     {
       list<IItemFilterPtr> display_filter = ItemFilterFactory::create_item_type_filter(command->get_key());
 
-      game.actions.inventory(creature, creature->get_inventory(), display_filter, true);
+      ItemPtr item = game.actions.inventory(creature, creature->get_inventory(), display_filter, inventory_is_read_only);
+
+      if (item != nullptr)
+      {
+        selected_item = item;
+      }
+
       process_result = false;
     }
     else if (command_name == InventoryCommandKeys::NEXT_PAGE)
