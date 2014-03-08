@@ -32,6 +32,10 @@ Savage Lands v0.2.2 "Aelfwald"
 - Created messages for each conduct.  Created a Show Conducts screen
   (F2).
 
+- Added support for filtering the inventory (either when viewing, or when
+  picking up, dropping, etc) by item type, as well as support for clearing
+  the filter and getting a full view.
+
 - Bug fixes:
   
   - Fixed a bug where creatures would always confirm that they wanted to
