@@ -34,7 +34,12 @@ Savage Lands v0.2.2 "Aelfwald"
 
 - Added support for filtering the inventory (either when viewing, or when
   picking up, dropping, etc) by item type, as well as support for clearing
-  the filter and getting a full view.
+  the filter and getting a full view.  Updated the display symbol/filtering
+  symbol for plants from 'w' to '#'.
+
+- Misc: updated the string table to split based on the first '=' instead
+  of doing full tokenization (so that text could actually contain '=' in
+  it).
 
 - Bug fixes:
   

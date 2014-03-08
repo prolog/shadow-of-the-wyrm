@@ -42,7 +42,7 @@ void InventoryKeyboardCommandMap::initialize_command_mapping()
                                               {Integer::to_string('+'), InventoryCommandKeys::FILTER_VIEW},
                                               {Integer::to_string('%'), InventoryCommandKeys::FILTER_VIEW},
                                               {Integer::to_string('/'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('w'), InventoryCommandKeys::FILTER_VIEW},
+                                              {Integer::to_string('#'), InventoryCommandKeys::FILTER_VIEW},
                                               {Integer::to_string('&'), InventoryCommandKeys::FILTER_VIEW},
                                               {Integer::to_string('$'), InventoryCommandKeys::FILTER_VIEW},
                                               {Integer::to_string('('), InventoryCommandKeys::FILTER_VIEW},
