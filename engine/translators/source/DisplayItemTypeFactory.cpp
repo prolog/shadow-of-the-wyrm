@@ -157,12 +157,21 @@ void DisplayItemTypeFactory::initialize_map()
 
 DisplayItemTypePtr DisplayItemTypeFactory::create(const int item_symbol)
 {
+  DisplayItemTypePtr display_item_type = std::make_shared<DefaultDisplayItemType>();
+
   if (display_map.empty())
   {
     initialize_map();
   }
 
-  return find_if(display_map.begin(), display_map.end(), [item_symbol] (pair<ItemType, DisplayItemTypePtr> iter) {return iter.second->get_item_type() == item_symbol;})->second;
+  auto iter = find_if(display_map.begin(), display_map.end(), [item_symbol] (pair<ItemType, DisplayItemTypePtr> iter) {return iter.second->get_symbol().at(0) == item_symbol;});
+  
+  if (iter != display_map.end())
+  {
+    display_item_type = iter->second;
+  }
+
+  return display_item_type;
 }
 
 DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
