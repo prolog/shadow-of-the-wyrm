@@ -28,6 +28,7 @@ const string TextKeys::HERSELF = "HERSELF";
 const string TextKeys::ITSELF = "ITSELF";
 const string TextKeys::TOTAL = "TOTAL";
 const string TextKeys::MORTUARY = "MORTUARY";
+const string TextKeys::STATUSES = "STATUSES";
 const string TextKeys::NPC_ESCAPES_MESSAGE = "NPC_ESCAPES_MESSAGE";
 const string TextKeys::SELECT_RACE = "SELECT_RACE";
 const string TextKeys::SELECT_CLASS = "SELECT_CLASS";
