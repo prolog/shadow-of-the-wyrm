@@ -37,6 +37,14 @@ Savage Lands v0.2.2 "Aelfwald"
   the filter and getting a full view.  Updated the display symbol/filtering
   symbol for plants from 'w' to '#'.
 
+- The character dumping functionality has long languished behind the actual
+  functionality.  Made the following improvements to align it with the
+  current codebase:
+
+  - Added item quantities to the inventory dumper 
+  
+  - Added mortuary details, conducts, spells
+
 - Misc: updated the string table to split based on the first '=' instead
   of doing full tokenization (so that text could actually contain '=' in
   it).

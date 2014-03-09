@@ -13,8 +13,7 @@ StatsDumper::StatsDumper(CreaturePtr new_creature, const uint new_max_cols)
 
 string StatsDumper::str() const
 {
-  string bad_str;
-  return bad_str;
+  return get_stats();
 }
 
 // Get the creature's stats as a string.

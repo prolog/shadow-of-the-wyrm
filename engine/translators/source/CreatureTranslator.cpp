@@ -43,7 +43,11 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
   string hit_points    = get_display_hit_points(creature);
   string arcana_points = get_display_arcana_points(creature);
   
-  string map_depth     = map->size().depth().str();
+  string map_depth;
+  if (map != nullptr)
+  {
+    map_depth = map->size().depth().str();
+  }
 
   std::vector<std::pair<std::string, Colour>> status_ailments = get_display_status_ailments(creature);
 
