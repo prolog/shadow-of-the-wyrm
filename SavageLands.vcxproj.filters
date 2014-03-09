@@ -2928,6 +2928,15 @@
     <ClInclude Include="engine\actions\include\ShowConductsAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\conversion\include\MortuaryDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\ConductsDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\conversion\include\SpellsDumper.hpp">
+      <Filter>Header Files\engine\conversion\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5620,6 +5629,15 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\ShowConductsAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\MortuaryDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\ConductsDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\conversion\source\SpellsDumper.cpp">
+      <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

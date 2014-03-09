@@ -18,6 +18,12 @@ string ItemDumper::str() const
   {
     ItemIdentifier item_id;
     ss << item_id.get_appropriate_description(item);
+
+    int quantity = item->get_quantity();
+    if (quantity > 1)
+    {
+      ss << " (" << quantity << ")" << endl;
+    }
   }
 
   // This may be empty - that's fine if we've passed in a null ItemPtr.

@@ -22,6 +22,8 @@ class TextKeys
     static const std::string HIMSELF;
     static const std::string HERSELF;
     static const std::string ITSELF;
+    static const std::string MORTUARY;
+    static const std::string TOTAL;
     static const std::string NPC_ESCAPES_MESSAGE;
     static const std::string SEX;
     static const std::string SELECT_SEX;

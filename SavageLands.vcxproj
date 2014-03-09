@@ -306,11 +306,14 @@
     <ClInclude Include="engine\commands\select_tile\include\TileSelectionKeyboardCommandMap.hpp" />
     <ClInclude Include="engine\commands\select_tile\include\TileSelectionRangeChecker.hpp" />
     <ClInclude Include="engine\conversion\include\CharacterDumper.hpp" />
+    <ClInclude Include="engine\conversion\include\ConductsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\Conversion.hpp" />
     <ClInclude Include="engine\conversion\include\EquipmentDumper.hpp" />
     <ClInclude Include="engine\conversion\include\InventoryDumper.hpp" />
     <ClInclude Include="engine\conversion\include\ItemDumper.hpp" />
+    <ClInclude Include="engine\conversion\include\MortuaryDumper.hpp" />
     <ClInclude Include="engine\conversion\include\SkillsDumper.hpp" />
+    <ClInclude Include="engine\conversion\include\SpellsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\StatsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\StringConverter.hpp" />
     <ClInclude Include="engine\creatures\include\BlindedStatusEffect.hpp" />
@@ -1278,11 +1281,14 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\conversion\source\CharacterDumper.cpp" />
+    <ClCompile Include="engine\conversion\source\ConductsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\Conversion.cpp" />
     <ClCompile Include="engine\conversion\source\EquipmentDumper.cpp" />
     <ClCompile Include="engine\conversion\source\InventoryDumper.cpp" />
     <ClCompile Include="engine\conversion\source\ItemDumper.cpp" />
+    <ClCompile Include="engine\conversion\source\MortuaryDumper.cpp" />
     <ClCompile Include="engine\conversion\source\SkillsDumper.cpp" />
+    <ClCompile Include="engine\conversion\source\SpellsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\StatsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\unit_tests\Conversion_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
