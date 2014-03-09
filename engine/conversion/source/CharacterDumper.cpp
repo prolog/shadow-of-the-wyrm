@@ -55,10 +55,10 @@ string CharacterDumper::str() const
   ss << spells_dumper.str() << endl << endl;
     
   EquipmentDumper equipment_dumper(creature, num_cols);
-  ss << equipment_dumper.str() << endl << endl;
+  ss << equipment_dumper.str();
     
   InventoryDumper inventory_dumper(creature, num_cols);
-  ss << inventory_dumper.str() << endl << endl;
+  ss << inventory_dumper.str();
 
   MortuaryDumper mortuary_dumper(creature, num_cols);
   ss << mortuary_dumper.str() << endl << endl;

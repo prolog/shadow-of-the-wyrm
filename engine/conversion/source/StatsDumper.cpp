@@ -1,5 +1,6 @@
 #include <sstream>
 #include "Conversion.hpp"
+#include "CreatureTranslator.hpp"
 #include "StatsDumper.hpp"
 #include "TextKeys.hpp"
 #include "StringTable.hpp"
@@ -31,7 +32,13 @@ string StatsDumper::get_stats() const
   string intelligence  = StringTable::get(TextKeys::INTELLIGENCE)  + ": " + Integer::to_string(creature->get_intelligence().get_current());
   string willpower     = StringTable::get(TextKeys::WILLPOWER)     + ": " + Integer::to_string(creature->get_willpower().get_current());
   string charisma      = StringTable::get(TextKeys::CHARISMA)      + ": " + Integer::to_string(creature->get_charisma().get_current());
-  
+  string statuses = StringTable::get(TextKeys::STATUSES) + ": ";
+  auto dsa = CreatureTranslator::get_display_status_ailments(creature);
+  for (auto dsa_pair : dsa)
+  {
+    statuses = statuses + dsa_pair.first + " ";
+  }
+
   // Second column
   Statistic hp         = creature->get_hit_points();
   Statistic ap         = creature->get_arcana_points(); 
@@ -74,6 +81,11 @@ string StatsDumper::get_stats() const
   
   current_line.replace(0, charisma.size(), charisma);
   ss << current_line << endl;
-  
+  String::reset_and_pad(current_line, num_cols);
+
+  current_line = statuses;
+  ss << current_line << endl;
+  String::reset_and_pad(current_line, num_cols);
+
   return ss.str();
 }
