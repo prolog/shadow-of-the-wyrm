@@ -1,29 +1,37 @@
 #include <sstream>
+#include "CurrentCreatureAbilities.hpp"
+#include "DisplayItem.hpp"
 #include "ItemDumper.hpp"
 #include "ItemIdentifier.hpp"
+#include "ItemTranslator.hpp"
 #include "StringTable.hpp"
 
 using namespace std;
 
-ItemDumper::ItemDumper(ItemPtr new_item)
-: item(new_item)
+ItemDumper::ItemDumper(CreaturePtr new_creature, ItemPtr new_item, bool show_additional_desc)
+: creature(new_creature), item(new_item), show_addl_desc(show_additional_desc)
 {
 }
 
 string ItemDumper::str() const
 {
   ostringstream ss;
+  CurrentCreatureAbilities cca;
 
   if (item)
   {
-    ItemIdentifier item_id;
-    ss << item_id.get_appropriate_description(item);
+    DisplayItem display_item = ItemTranslator::create_display_item(!cca.can_see(creature), item);
 
-    int quantity = item->get_quantity();
-    if (quantity > 1)
+    ss << display_item.get_description() << endl;
+
+    if (show_addl_desc)
     {
-      ss << " (" << quantity << ")" << endl;
+      ss << display_item.get_additional_description();
     }
+  }
+  else
+  {
+    ss << "-";
   }
 
   // This may be empty - that's fine if we've passed in a null ItemPtr.
