@@ -33,8 +33,8 @@ string InventoryDumper::get_inventory() const
     
     for (ItemPtr item : raw_items)
     {
-      ItemDumper item_dumper(item);
-      ss << item_dumper.str() << endl;
+      ItemDumper item_dumper(creature, item, false);
+      ss << item_dumper.str();
       
       if (!at_least_one_item) at_least_one_item = true;
     }
