@@ -312,6 +312,7 @@
     <ClInclude Include="engine\conversion\include\InventoryDumper.hpp" />
     <ClInclude Include="engine\conversion\include\ItemDumper.hpp" />
     <ClInclude Include="engine\conversion\include\MortuaryDumper.hpp" />
+    <ClInclude Include="engine\conversion\include\ResistancesDumper.hpp" />
     <ClInclude Include="engine\conversion\include\SkillsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\SpellsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\StatsDumper.hpp" />
@@ -1287,6 +1288,7 @@
     <ClCompile Include="engine\conversion\source\InventoryDumper.cpp" />
     <ClCompile Include="engine\conversion\source\ItemDumper.cpp" />
     <ClCompile Include="engine\conversion\source\MortuaryDumper.cpp" />
+    <ClCompile Include="engine\conversion\source\ResistancesDumper.cpp" />
     <ClCompile Include="engine\conversion\source\SkillsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\SpellsDumper.cpp" />
     <ClCompile Include="engine\conversion\source\StatsDumper.cpp" />

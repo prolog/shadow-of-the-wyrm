@@ -12,6 +12,7 @@
 #include "Metadata.hpp"
 #include "MortuaryDumper.hpp"
 #include "ReligionManager.hpp"
+#include "ResistancesDumper.hpp"
 #include "SizeTextKeys.hpp"
 #include "SkillsDumper.hpp"
 #include "SpellsDumper.hpp"
@@ -44,6 +45,9 @@ string CharacterDumper::str() const
     
   StatsDumper stats_dumper(creature, num_cols);
   ss << stats_dumper.str() << endl << endl;
+
+  ResistancesDumper res_dumper(creature, num_cols);
+  ss << res_dumper.str() << endl << endl;
 
   ConductsDumper conducts_dumper(creature, num_cols);
   ss << conducts_dumper.str() << endl << endl;

@@ -41,12 +41,14 @@ Savage Lands v0.2.2 "Aelfwald"
   functionality.  Made the following improvements to align it with the
   current codebase:
 
+  - Added the creature's current statuses to the statistics dumper.
+
   - Added item quantities to the inventory dumper.
 
   - Added item additional descriptions to equipment items, and suppressed
     this for inventory items.
   
-  - Added mortuary details, conducts, spells.
+  - Added mortuary details, conducts, spells, resistances.
 
 - Misc: updated the string table to split based on the first '=' instead
   of doing full tokenization (so that text could actually contain '=' in
