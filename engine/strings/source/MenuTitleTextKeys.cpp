@@ -12,5 +12,6 @@ MenuTitleKeys::~MenuTitleKeys()
 }
 
 const string MenuTitleKeys::MENU_TITLE_QUEST_LIST = "MENU_TITLE_QUEST_LIST";
+const string MenuTitleKeys::MENU_TITLE_COMPLETED_QUEST_LIST = "MENU_TITLE_COMPLETED_QUEST_LIST";
 const string MenuTitleKeys::MENU_TITLE_MAGIC_SPELLS = "MENU_TITLE_MAGIC_SPELLS";
 const string MenuTitleKeys::MENU_TITLE_BESTIARY = "MENU_TITLE_BESTIARY";

@@ -11,6 +11,7 @@
 #include "InventoryDumper.hpp"
 #include "Metadata.hpp"
 #include "MortuaryDumper.hpp"
+#include "QuestDumper.hpp"
 #include "ReligionManager.hpp"
 #include "ResistancesDumper.hpp"
 #include "SizeTextKeys.hpp"
@@ -57,6 +58,9 @@ string CharacterDumper::str() const
 
   SpellsDumper spells_dumper(creature, num_cols);
   ss << spells_dumper.str() << endl << endl;
+
+  QuestDumper quest_dumper(creature, num_cols);
+  ss << quest_dumper.str() << endl << endl;
     
   EquipmentDumper equipment_dumper(creature, num_cols);
   ss << equipment_dumper.str() << endl << endl;
