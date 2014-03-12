@@ -48,7 +48,8 @@ Savage Lands v0.2.2 "Aelfwald"
   - Added item additional descriptions to equipment items, and suppressed
     this for inventory items.
   
-  - Added mortuary details, conducts, spells, resistances.
+  - Added mortuary details, conducts, spells, resistances, and both
+    current and completed quests.
 
 - Misc: updated the string table to split based on the first '=' instead
   of doing full tokenization (so that text could actually contain '=' in
