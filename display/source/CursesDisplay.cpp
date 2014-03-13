@@ -20,7 +20,6 @@
 #include "TextKeys.hpp"
 
 using namespace std;
-using namespace boost;
 
 const int CURSES_NUM_BASE_COLOURS = 8;
 const int CURSES_NUM_TOTAL_COLOURS = 16;
@@ -305,12 +304,12 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
     move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
   }
 
-  char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
-  tokenizer<char_separator<char>> tokens(message, separator);
+  boost::char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
+  boost::tokenizer<boost::char_separator<char>> tokens(message, separator);
 
   enable_colour(colour, stdscr);
 
-  for (tokenizer<char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
+  for (boost::tokenizer<boost::char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
     getyx(stdscr, MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
     
@@ -557,6 +556,16 @@ string CursesDisplay::display_menu(const Menu& current_menu)
   // etc) will have this defined, while others (such as the new character-type
   // menus) will not.
   string header_text = StringTable::get(current_menu.get_title_text_sid());
+  uint num_pages = current_menu.get_num_pages();
+
+  if (num_pages > 1)
+  {
+    ostringstream ss;
+
+    ss << header_text << " (" << current_menu.get_current_page_number() << "/" << num_pages << ")";
+    header_text = ss.str();
+  }
+
   if (!header_text.empty())
   {
     display_header(header_text, menu_window, current_row);

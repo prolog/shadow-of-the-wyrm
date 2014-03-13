@@ -51,6 +51,14 @@ Savage Lands v0.2.2 "Aelfwald"
   - Added mortuary details, conducts, spells, resistances, and both
     current and completed quests.
 
+- Finally got around to working out a standard paging solution for spells,
+  inventory, etc.  
+    
+    - Added the concept of "pages" to the menu system.
+
+    - Displayed page number info in the menu title when there are multiple
+      pages.
+
 - Misc: updated the string table to split based on the first '=' instead
   of doing full tokenization (so that text could actually contain '=' in
   it).
@@ -58,12 +66,12 @@ Savage Lands v0.2.2 "Aelfwald"
 - Bug fixes:
   
   - Fixed a bug where creatures would always confirm that they wanted to
-  move over dangerous tiles.  Changed this so that they never do, for now:
-  there should be far fewer dead mountain elves and gnomish children.
-  This will be revisited later.
+    move over dangerous tiles.  Changed this so that they never do, for 
+    now: there should be far fewer dead mountain elves and gnomish 
+    children.  This will be revisited later.
 
   - Knowing a spell that didn't exist (bad spell ID, etc) caused problems,
-  so added a guard to protect against this in the spell selection screen.
+    so added a guard to protect against this in the spell selection screen.
 
 Savage Lands v0.2.1 "Oslac"
 - Version declared January 26, 2014.  Version finalized February 25, 2014.
