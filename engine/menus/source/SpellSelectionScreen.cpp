@@ -64,6 +64,16 @@ void SpellSelectionScreen::initialize()
       {
         // Using the spell ID and a SpellDescriber, create text for the 
         // option shown in the UI.
+        auto spell_it = spells.find(spell_id);
+
+        if (spell_it == spells.end())
+        {
+          // Ignore a known spell if it doensn't exist, for whatever reason -
+          // maybe it was incorrectly set by a script, doesn't exist anymore,
+          // etc.
+          continue;
+        }
+
         Spell spell = spells.find(spell_id)->second;
         IDescriberPtr describer = DescriberFactory::create_describer(creature, spell);
         string spell_desc = describer->describe();
