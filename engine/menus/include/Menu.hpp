@@ -20,6 +20,7 @@ class Menu
     virtual std::string prompt();
 
     uint get_line_increment() const;
+    uint get_cur_page_idx() const;
 
     void set_prompt(PromptPtr new_prompt);
     PromptPtr get_prompt() const;
