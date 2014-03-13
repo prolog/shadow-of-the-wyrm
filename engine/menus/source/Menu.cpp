@@ -76,8 +76,20 @@ uint Menu::get_line_increment() const
   return line_increment;
 }
 
-// Get the current page number
+// Get the current page number, internally
 uint Menu::get_cur_page_idx() const
 {
   return cur_page_idx;
+}
+
+// Get the current page number, for external use (ie, idx 0 is pg. 1)
+uint Menu::get_current_page_number() const
+{
+  return (cur_page_idx + 1);
+}
+
+// Get the total number of pages
+uint Menu::get_num_pages() const
+{
+  return components.size();
 }

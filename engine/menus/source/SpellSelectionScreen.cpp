@@ -10,7 +10,7 @@
 
 using namespace std;
 
-const int SpellSelectionScreen::SPELLS_PER_PAGE = 18;
+const int SpellSelectionScreen::SPELLS_PER_PAGE = 15;
 
 SpellSelectionScreen::SpellSelectionScreen(DisplayPtr new_display, CreaturePtr player /* should only be shown for player! */)
 : Menu(new_display), creature(player)
@@ -89,6 +89,9 @@ void SpellSelectionScreen::initialize()
         if (i == SPELLS_PER_PAGE)
         {
           spell_menu.push_back(options);
+          add_page(spell_menu);
+
+          spell_menu.clear();
           i = 0;
         }
       }

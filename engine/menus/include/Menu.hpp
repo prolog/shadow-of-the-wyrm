@@ -21,6 +21,8 @@ class Menu
 
     uint get_line_increment() const;
     uint get_cur_page_idx() const;
+    uint get_current_page_number() const;
+    uint get_num_pages() const;
 
     void set_prompt(PromptPtr new_prompt);
     PromptPtr get_prompt() const;
