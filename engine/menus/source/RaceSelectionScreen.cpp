@@ -22,6 +22,8 @@ void RaceSelectionScreen::initialize()
   Game& game_instance = Game::instance();
   RaceMap races = game_instance.get_races_ref();
 
+  vector<MenuComponentPtr> race_menu;
+
   TextComponentPtr race_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_RACE));
 
   // Each option represents a player-selectable race.
@@ -45,6 +47,8 @@ void RaceSelectionScreen::initialize()
     }
   }
 
-  components.push_back(race_selection_text);
-  components.push_back(options);
+  race_menu.push_back(race_selection_text);
+  race_menu.push_back(options);
+
+  add_page(race_menu);
 }

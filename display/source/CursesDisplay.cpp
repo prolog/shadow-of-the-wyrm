@@ -566,7 +566,7 @@ string CursesDisplay::display_menu(const Menu& current_menu)
     current_row += 2;
   }
 
-  vector<MenuComponentPtr> components = current_menu.get_components();
+  vector<MenuComponentPtr> components = current_menu.get_current_page();
   uint line_incr = current_menu.get_line_increment();
   for(MenuComponentPtr component : components)
   {

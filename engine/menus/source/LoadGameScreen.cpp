@@ -20,6 +20,8 @@ void LoadGameScreen::initialize()
 {
   Game& game = Game::instance();
 
+  vector<MenuComponentPtr> load_game_menu;
+
   menu_selection_to_filename_map.clear();
 
   TextComponentPtr game_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SAVED_GAME));
@@ -58,8 +60,10 @@ void LoadGameScreen::initialize()
   options->add_option(current_option);
   options->add_option_description("");
 
-  components.push_back(game_selection_text);
-  components.push_back(options);
+  load_game_menu.push_back(game_selection_text);
+  load_game_menu.push_back(options);
+
+  add_page(load_game_menu);
 }
 
 string LoadGameScreen::get_file_name(const string& option) const

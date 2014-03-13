@@ -18,6 +18,8 @@ DeitySelectionScreen::DeitySelectionScreen(DisplayPtr new_display, RacePtr selec
 // that we know what deities can be selected.
 void DeitySelectionScreen::initialize()
 {
+  vector<MenuComponentPtr> deity_menu;
+
   if (race)
   {
     Game& game_instance = Game::instance();
@@ -63,7 +65,9 @@ void DeitySelectionScreen::initialize()
       }
     }
     
-    components.push_back(deity_selection_text);
-    components.push_back(options);
+    deity_menu.push_back(deity_selection_text);
+    deity_menu.push_back(options);
   }
+
+  add_page(deity_menu);
 }

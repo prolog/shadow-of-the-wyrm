@@ -18,6 +18,8 @@ void WelcomeScreen::initialize()
 {
   Metadata meta;
 
+  vector<MenuComponentPtr> welcome_menu;
+
   TextComponentPtr game_version_synopsis = std::make_shared<TextComponent>(meta.get_game_version_synopsis());
   TextComponentPtr copyright_info = std::make_shared<TextComponent>(StringTable::get(TextKeys::COPYRIGHT_NOTICE));
   TextComponentPtr wanderer_excerpt = std::make_shared<TextComponent>(get_title_poem());
@@ -47,9 +49,11 @@ void WelcomeScreen::initialize()
   options->add_option(quit);
   options->add_option_description("");
 
-  components.push_back(game_version_synopsis);
-  components.push_back(copyright_info);
-  components.push_back(wanderer_excerpt);
+  welcome_menu.push_back(game_version_synopsis);
+  welcome_menu.push_back(copyright_info);
+  welcome_menu.push_back(wanderer_excerpt);
 
-  components.push_back(options);
+  welcome_menu.push_back(options);
+
+  add_page(welcome_menu);
 }

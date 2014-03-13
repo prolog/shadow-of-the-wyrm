@@ -21,6 +21,8 @@ void TextDisplayScreen::initialize(const string& title_sid)
   // Set the title text.
   title_text_sid = title_sid;
 
+  vector<MenuComponentPtr> text_menu;
+
   // Set the text components.
   for (const TextDisplayPair& line_pair : text)
   {
@@ -32,11 +34,13 @@ void TextDisplayScreen::initialize(const string& title_sid)
 
     TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
 
-    components.push_back(current_line);
+    text_menu.push_back(current_line);
   }
 
   // Set the prompt
   PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
   any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_ANY_KEY);
   user_prompt = any_key_prompt;
+
+  add_page(text_menu);
 }

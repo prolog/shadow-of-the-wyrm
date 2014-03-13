@@ -47,6 +47,9 @@ void ClassSelectionScreen::initialize()
     }
   }
 
-  components.push_back(class_selection_text);
-  components.push_back(options);
+  vector<MenuComponentPtr> cur_page;
+  cur_page.push_back(class_selection_text);
+  cur_page.push_back(options);
+
+  add_page(cur_page);
 }

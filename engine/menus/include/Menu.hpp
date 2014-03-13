@@ -24,19 +24,25 @@ class Menu
     void set_prompt(PromptPtr new_prompt);
     PromptPtr get_prompt() const;
 
-    std::vector<MenuComponentPtr> get_components() const;
+    std::vector<std::vector<MenuComponentPtr>> get_components() const;
+    std::vector<MenuComponentPtr> get_current_page() const;
 
   protected:
     virtual void initialize();
+
+    void add_page(const std::vector<MenuComponentPtr>& new_page);
 
     // The menu's title.  May be empty (and will be for things like the race/
     // class selection screens, the welcome screen, etc).  This is used for in-game
     // menus that need a title across the top.
     std::string title_text_sid;
 
-    std::vector<MenuComponentPtr> components;
     PromptPtr user_prompt;
 
     DisplayPtr game_display;
     uint line_increment;
+    uint cur_page_idx;
+
+  private:
+    std::vector<std::vector<MenuComponentPtr>> components;
 };
