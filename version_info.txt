@@ -62,6 +62,9 @@ Savage Lands v0.2.2 "Aelfwald"
   there should be far fewer dead mountain elves and gnomish children.
   This will be revisited later.
 
+  - Knowing a spell that didn't exist (bad spell ID, etc) caused problems,
+  so added a guard to protect against this in the spell selection screen.
+
 Savage Lands v0.2.1 "Oslac"
 - Version declared January 26, 2014.  Version finalized February 25, 2014.
 
