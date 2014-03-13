@@ -78,7 +78,8 @@ void SpellSelectionScreen::initialize()
 
         if (i == SPELLS_PER_PAGE)
         {
-          break;
+          spell_menu.push_back(options);
+          i = 0;
         }
       }
     }

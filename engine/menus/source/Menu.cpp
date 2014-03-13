@@ -48,11 +48,6 @@ string Menu::prompt()
 void Menu::add_page(const vector<MenuComponentPtr>& new_page)
 {
   components.push_back(new_page);
-
-  if (components.size() > 1)
-  {
-    cur_page_idx++;
-  }
 }
 
 void Menu::set_prompt(PromptPtr new_prompt)
@@ -79,4 +74,10 @@ vector<MenuComponentPtr> Menu::get_current_page() const
 uint Menu::get_line_increment() const
 {
   return line_increment;
+}
+
+// Get the current page number
+uint Menu::get_cur_page_idx() const
+{
+  return cur_page_idx;
 }
