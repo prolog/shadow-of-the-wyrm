@@ -39,6 +39,8 @@ void SpellSelectionScreen::initialize()
   // Set the menu title.
   title_text_sid = MenuTitleKeys::MENU_TITLE_MAGIC_SPELLS;
 
+  vector<MenuComponentPtr> spell_menu;
+
   // Go through the player's spells, and add them as options.
   int i = 0;
   if (creature)
@@ -81,7 +83,7 @@ void SpellSelectionScreen::initialize()
       }
     }
 
-    components.push_back(options);
+    spell_menu.push_back(options);
   }
 
   // Add the info prompt at the bottom of the screen.
@@ -90,4 +92,6 @@ void SpellSelectionScreen::initialize()
   spellcasting_prompt->set_text_sid(SpellcastingTextKeys::SPELLCASTING_SCREEN_PROMPT);
   spellcasting_prompt->set_accept_any_input(true);
   user_prompt = spellcasting_prompt;
+
+  add_page(spell_menu);
 }

@@ -14,6 +14,8 @@ void NamingScreen::initialize()
   string optional_message;
   string empty_str;
 
+  vector<MenuComponentPtr> naming_menu;
+
   if (!warning_message.empty())
   {
     optional_message = warning_message;
@@ -22,9 +24,11 @@ void NamingScreen::initialize()
   TextComponentPtr optional_warning_message = std::make_shared<TextComponent>(optional_message);
   TextComponentPtr blank_space = std::make_shared<TextComponent>(empty_str);
 
-  components.push_back(optional_warning_message);
-  components.push_back(blank_space);
+  naming_menu.push_back(optional_warning_message);
+  naming_menu.push_back(blank_space);
 
   user_prompt = std::make_shared<TextPrompt>();
   user_prompt->set_text_sid(PromptTextKeys::PROMPT_ENTER_YOUR_NAME);
+
+  add_page(naming_menu);
 }

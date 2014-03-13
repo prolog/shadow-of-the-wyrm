@@ -4,7 +4,7 @@ using namespace std;
 
 // Any base initialization for the Menu
 Menu::Menu(DisplayPtr new_display)
-: line_increment(2)
+: line_increment(2), cur_page_idx(0)
 {
   game_display = new_display;
   user_prompt = std::make_shared<NullPrompt>();
@@ -45,6 +45,16 @@ string Menu::prompt()
   return empty_str;
 }
 
+void Menu::add_page(const vector<MenuComponentPtr>& new_page)
+{
+  components.push_back(new_page);
+
+  if (components.size() > 1)
+  {
+    cur_page_idx++;
+  }
+}
+
 void Menu::set_prompt(PromptPtr new_prompt)
 {
   user_prompt = new_prompt;
@@ -55,9 +65,14 @@ PromptPtr Menu::get_prompt() const
   return user_prompt;
 }
 
-vector<MenuComponentPtr> Menu::get_components() const
+vector<vector<MenuComponentPtr>> Menu::get_components() const
 {
   return components;
+}
+
+vector<MenuComponentPtr> Menu::get_current_page() const
+{
+  return components.at(cur_page_idx);
 }
 
 // Get the line spacing.

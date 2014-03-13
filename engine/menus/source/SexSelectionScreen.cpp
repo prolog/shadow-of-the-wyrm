@@ -17,6 +17,8 @@ void SexSelectionScreen::initialize()
 {
   TextComponentPtr sex_selection_text = std::make_shared<TextComponent>(StringTable::get(TextKeys::SELECT_SEX));
 
+  vector<MenuComponentPtr> sex_menu;
+
   OptionsComponentPtr options = std::make_shared<OptionsComponent>();
   string male = StringTable::get(TextKeys::SEX_MALE);
   string female = StringTable::get(TextKeys::SEX_FEMALE);
@@ -34,6 +36,8 @@ void SexSelectionScreen::initialize()
   options->add_option(option_female);
   options->add_option_description("");
 
-  components.push_back(sex_selection_text);
-  components.push_back(options);
+  sex_menu.push_back(sex_selection_text);
+  sex_menu.push_back(options);
+
+  add_page(sex_menu);
 }
