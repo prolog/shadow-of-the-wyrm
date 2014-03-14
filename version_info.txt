@@ -59,6 +59,12 @@ Savage Lands v0.2.2 "Aelfwald"
     - Displayed page number info in the menu title when there are multiple
       pages.
 
+    - By setting the current page into the menu object, and displaying
+      the current page, the right set of spells now appears for spells, 
+      and the correct mapping is used, as spell mappings are now also
+      paged - e.g., selection 'a' might be Fire Breath on page 1, but
+      Shadow Flames on page 2, as each page has its own map.
+
 - Misc: updated the string table to split based on the first '=' instead
   of doing full tokenization (so that text could actually contain '=' in
   it).

@@ -23,8 +23,8 @@ void MagicKeyboardCommandMap::command_not_found(const string& keyboard_input)
 void MagicKeyboardCommandMap::initialize_command_mapping()
 {
   command_mapping.clear();
-  command_mapping = KeyboardCommandMappingMap{{Integer::to_string('+'), MagicCommandKeys::NEXT_PAGE},
-                                              {Integer::to_string('-'), MagicCommandKeys::PREVIOUS_PAGE},
+  command_mapping = KeyboardCommandMappingMap{{Integer::to_string('.'), MagicCommandKeys::NEXT_PAGE},
+                                              {Integer::to_string(','), MagicCommandKeys::PREVIOUS_PAGE},
                                               {Integer::to_string('z'), MagicCommandKeys::EXIT_MAGIC},
                                               {Integer::to_string('Z'), MagicCommandKeys::EXIT_MAGIC}};
 
