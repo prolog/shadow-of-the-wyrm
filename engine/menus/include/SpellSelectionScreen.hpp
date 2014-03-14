@@ -16,6 +16,6 @@ class SpellSelectionScreen : public Menu
     void initialize() override;
 
     static const int SPELLS_PER_PAGE;
-    std::map<char, std::string> menu_selection_to_spell_id_map;
+    std::vector<std::map<char, std::string>> menu_selection_to_spell_id_map;
     CreaturePtr creature;
 };

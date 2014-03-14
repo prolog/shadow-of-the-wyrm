@@ -21,6 +21,8 @@ class Menu
 
     uint get_line_increment() const;
     uint get_cur_page_idx() const;
+
+    void set_current_page_number(const uint new_page);
     uint get_current_page_number() const;
     uint get_num_pages() const;
 
@@ -41,6 +43,8 @@ class Menu
     std::string title_text_sid;
 
     PromptPtr user_prompt;
+
+    int num_menus_created;
 
     DisplayPtr game_display;
     uint line_increment;

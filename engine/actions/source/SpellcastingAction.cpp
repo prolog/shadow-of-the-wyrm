@@ -9,6 +9,7 @@
 #include "MagicCommandFactory.hpp"
 #include "MagicCommandProcessor.hpp"
 #include "MagicKeyboardCommandMap.hpp"
+#include "MagicCommandKeys.hpp"
 #include "MessageManagerFactory.hpp"
 #include "SpellBonusUpdater.hpp"
 #include "SpellcastingTextKeys.hpp"
@@ -81,14 +82,17 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
 
 pair<string, ActionCostValue> SpellcastingAction::cast_spell_on_valid_map_type(CreaturePtr creature) const
 {
+  Game& game = Game::instance();
+
   bool cast_spells = true;
   pair<string, ActionCostValue> selection_details("", 0);
+  uint spell_page = 1;
 
   if (creature->get_is_player())
   {
     while (cast_spells)
     {
-      pair<bool, pair<string, ActionCostValue>> cur_selection_details = process_spellcasting_selection(creature);
+      pair<bool, pair<string, ActionCostValue>> cur_selection_details = process_spellcasting_selection(spell_page, creature);
       cast_spells = cur_selection_details.first;
       selection_details = cur_selection_details.second;
     }
@@ -344,13 +348,14 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
 // if processing should repeat (that is, return false if a spell has been
 // selected - return true if the input does not allow exiting the Cast
 // Spell screen).
-pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasting_selection(CreaturePtr creature) const
+pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasting_selection(uint& spell_page, CreaturePtr creature) const
 {
   ActionCostValue action_cost_value = 0;
   bool cast_spells = true;
 
   Game& game = Game::instance();
   SpellSelectionScreen sss(game.get_display(), creature);
+  sss.set_current_page_number(spell_page);
 
   string display_s = sss.display();
   int input = display_s.at(0);
@@ -367,6 +372,24 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
     // Get the actual command, signalling to the decision function that
     // input has been provided (don't try to get the input twice).
     CommandPtr magic_command = decision_strategy->get_nonmap_decision(false, creature->get_id(), command_factory, kb_command_map, &input);
+
+    if (magic_command != nullptr)
+    {
+      if (magic_command->get_name() == MagicCommandKeys::PREVIOUS_PAGE)
+      {
+        if (spell_page > 1)
+        {
+          spell_page--;
+        }
+      }
+      else if (magic_command->get_name() == MagicCommandKeys::NEXT_PAGE)
+      {
+        if (spell_page < sss.get_num_pages())
+        {
+          spell_page++;
+        }
+      }
+    }
 
     action_cost_value = MagicCommandProcessor::process(creature, magic_command);
 

@@ -22,9 +22,10 @@ string SpellSelectionScreen::get_selected_spell(const char selection) const
 {
   string spell_id;
 
-  map<char, string>::const_iterator selection_map_it = menu_selection_to_spell_id_map.find(selection);
+  auto& selection_map = menu_selection_to_spell_id_map.at(get_cur_page_idx());
+  map<char, string>::const_iterator selection_map_it = selection_map.find(selection);
 
-  if (selection_map_it != menu_selection_to_spell_id_map.end())
+  if (selection_map_it != selection_map.end())
   {
     spell_id = selection_map_it->second;
   }
@@ -54,11 +55,12 @@ void SpellSelectionScreen::initialize()
     SpellKnowledge& sk = creature->get_spell_knowledge_ref();
     SpellKnowledgeMap known_spells = sk.get_known_spells();
     const SpellMap& spells = game.get_spells_ref();
+    std::map<char, std::string> selection_map;
 
     for (const SpellKnowledgeMap::value_type& spell_pair : known_spells)
     {
       string spell_id = spell_pair.first;
-      menu_selection_to_spell_id_map.insert(make_pair('a' + i, spell_id));
+      selection_map.insert(make_pair('a' + i, spell_id));
 
       if (sk.get_spell_knowledge(spell_id).get_castings() > 0)
       {
@@ -88,16 +90,21 @@ void SpellSelectionScreen::initialize()
 
         if (i == SPELLS_PER_PAGE)
         {
+          menu_selection_to_spell_id_map.push_back(selection_map);
           spell_menu.push_back(options);
           add_page(spell_menu);
 
           spell_menu.clear();
+          selection_map.clear();
+          options = std::make_shared<OptionsComponent>();
           i = 0;
         }
       }
     }
 
+    menu_selection_to_spell_id_map.push_back(selection_map);
     spell_menu.push_back(options);
+    add_page(spell_menu);
   }
 
   // Add the info prompt at the bottom of the screen.
@@ -106,6 +113,4 @@ void SpellSelectionScreen::initialize()
   spellcasting_prompt->set_text_sid(SpellcastingTextKeys::SPELLCASTING_SCREEN_PROMPT);
   spellcasting_prompt->set_accept_any_input(true);
   user_prompt = spellcasting_prompt;
-
-  add_page(spell_menu);
 }
