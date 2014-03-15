@@ -65,6 +65,12 @@ Savage Lands v0.2.2 "Aelfwald"
       paged - e.g., selection 'a' might be Fire Breath on page 1, but
       Shadow Flames on page 2, as each page has its own map.
 
+    - Created a separate command mechanism for menus (the only keys mapped
+      are those for paging), and updated Menus so that they could page
+      and clean up the display as appropriate.  This provides a common
+      paging mechanism: for spells, text displays like Quests/reading
+      books/etc.
+
 - Misc: updated the string table to split based on the first '=' instead
   of doing full tokenization (so that text could actually contain '=' in
   it).

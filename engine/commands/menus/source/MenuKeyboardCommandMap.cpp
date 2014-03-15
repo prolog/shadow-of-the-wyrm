@@ -25,8 +25,9 @@ void MenuKeyboardCommandMap::command_not_found(const string& keyboard_input)
 void MenuKeyboardCommandMap::initialize_command_mapping()
 {
   command_mapping.clear();
-  command_mapping = KeyboardCommandMappingMap{ { Integer::to_string('.'), MenuCommandKeys::NEXT_PAGE },
-  { Integer::to_string(','), MenuCommandKeys::PREVIOUS_PAGE }};
+
+  command_mapping.insert(make_pair(",", MenuCommandKeys::PREVIOUS_PAGE));
+  command_mapping.insert(make_pair(".", MenuCommandKeys::NEXT_PAGE));
 }
 
 KeyboardCommandMap* MenuKeyboardCommandMap::clone()

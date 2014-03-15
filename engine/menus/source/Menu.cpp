@@ -6,6 +6,8 @@
 
 using namespace std;
 
+int Menu::LINES_DISPLAYABLE_AREA = 18;
+
 // Any base initialization for the Menu
 Menu::Menu(DisplayPtr new_display)
 : line_increment(2), cur_page_idx(0)
@@ -40,19 +42,17 @@ string Menu::display()
 {
   bool done = false;
   string menu_selection;
-  char raw_selection = ' ';
 
   while (!done)
   {
     menu_selection = game_display->display_menu(*this);
-    raw_selection = String::to_int(menu_selection);
     done = true;
 
     if (!menu_selection.empty())
     {
       CommandFactoryPtr command_factory = std::make_shared<MenuCommandFactory>();
       KeyboardCommandMapPtr kb_command_map = std::make_shared<MenuKeyboardCommandMap>();
-      CommandPtr command = command_factory->create(raw_selection, kb_command_map->get_command_type(menu_selection));
+      CommandPtr command = command_factory->create(String::to_int(menu_selection), kb_command_map->get_command_type(menu_selection));
 
       if (command != nullptr)
       {
