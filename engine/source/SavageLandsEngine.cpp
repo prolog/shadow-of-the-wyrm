@@ -208,7 +208,8 @@ bool SavageLandsEngine::process_new_game()
   }
 
   SexSelectionScreen sex_selection(display);
-  sex = static_cast<CreatureSex>(Char::keyboard_selection_char_to_int(sex_selection.display().at(0)));
+  int keyboard_selection = Char::keyboard_selection_char_to_int(sex_selection.display().at(0));
+  sex = static_cast<CreatureSex>(keyboard_selection);
 
   RaceSelectionScreen race_selection(display);
   string race_index = race_selection.display();

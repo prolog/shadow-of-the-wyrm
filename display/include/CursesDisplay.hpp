@@ -6,9 +6,9 @@
 #endif
 #include <deque>
 #include "Display.hpp"
-#include "CursesMenuWrapper.hpp"
 #include "CursesPromptProcessor.hpp"
 #include "ISerializable.hpp"
+#include "MenuWrapper.hpp"
 #include "TextComponent.hpp"
 #include "OptionsComponent.hpp"
 
@@ -89,7 +89,7 @@ class CursesDisplay : public Display
 
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
-    CursesMenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
+    MenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
 
     // Creation/destruction methods

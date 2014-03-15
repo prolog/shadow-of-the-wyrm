@@ -23,7 +23,7 @@ class SpellcastingAction : public IActionManager
     void add_spell_bonus_increased_message(CreaturePtr creature) const;
 
     std::pair<std::string, ActionCostValue> cast_spell_on_valid_map_type(CreaturePtr creature) const;
-    std::pair<bool, std::pair<std::string, ActionCostValue>> process_spellcasting_selection(uint& current_page_number, CreaturePtr creature) const;
+    std::pair<bool, std::pair<std::string, ActionCostValue>> process_spellcasting_selection(CreaturePtr creature) const;
 
     // Helper functions for the main cast_spell function
     //

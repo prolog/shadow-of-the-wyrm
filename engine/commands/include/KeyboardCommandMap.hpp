@@ -14,6 +14,7 @@ class KeyboardCommandMap : public ISerializable
     bool operator==(const KeyboardCommandMap& kcm) const;
 
     virtual std::string get_command_type(const std::string& keyboard_input);
+    KeyboardCommandMappingMap get_internal_map();
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

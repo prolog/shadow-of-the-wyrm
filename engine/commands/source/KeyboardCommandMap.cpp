@@ -55,6 +55,16 @@ string KeyboardCommandMap::get_command_type(const string& keyboard_input)
   return mapped_command;
 }
 
+KeyboardCommandMappingMap KeyboardCommandMap::get_internal_map()
+{
+  if (command_mapping.empty())
+  {
+    initialize_command_mapping();
+  }
+
+  return command_mapping;
+}
+
 void KeyboardCommandMap::command_not_found(const string& keyboard_input)
 {
   // JCD FIXME: Does the wrong thing for function keys, etc.  Maybe use the String::clean function?
