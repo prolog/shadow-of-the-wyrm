@@ -50,6 +50,8 @@ class Menu
     uint line_increment;
     uint cur_page_idx;
 
+    static int LINES_DISPLAYABLE_AREA;
+
   private:
     std::vector<std::vector<MenuComponentPtr>> components;
 };
