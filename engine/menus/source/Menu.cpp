@@ -1,10 +1,14 @@
+#include "Conversion.hpp"
 #include "Menu.hpp"
+#include "MenuCommandFactory.hpp"
+#include "MenuCommandKeys.hpp"
+#include "MenuKeyboardCommandMap.hpp"
 
 using namespace std;
 
 // Any base initialization for the Menu
 Menu::Menu(DisplayPtr new_display)
-: num_menus_created(0), line_increment(2), cur_page_idx(0)
+: line_increment(2), cur_page_idx(0)
 {
   game_display = new_display;
   user_prompt = std::make_shared<NullPrompt>();
@@ -12,10 +16,7 @@ Menu::Menu(DisplayPtr new_display)
 
 Menu::~Menu()
 {
-  for (int i = 0; i < num_menus_created; i++)
-  {
-    game_display->clear_menu();
-  }
+  game_display->clear_menu();
 }
 
 // Do whatever work is necessary to initialize the menu
@@ -37,8 +38,47 @@ std::string Menu::get_title_text_sid() const
 // Display the contents of the Menu to the user via the DisplayPtr.
 string Menu::display()
 {
-  num_menus_created++;
-  string menu_selection = game_display->display_menu(*this);
+  bool done = false;
+  string menu_selection;
+  char raw_selection = ' ';
+
+  while (!done)
+  {
+    menu_selection = game_display->display_menu(*this);
+    raw_selection = String::to_int(menu_selection);
+    done = true;
+
+    if (!menu_selection.empty())
+    {
+      CommandFactoryPtr command_factory = std::make_shared<MenuCommandFactory>();
+      KeyboardCommandMapPtr kb_command_map = std::make_shared<MenuKeyboardCommandMap>();
+      CommandPtr command = command_factory->create(raw_selection, kb_command_map->get_command_type(menu_selection));
+
+      if (command != nullptr)
+      {
+        uint pn = get_current_page_number();
+        string name = command->get_name();
+
+        if (name == MenuCommandKeys::NEXT_PAGE)
+        {
+          set_current_page_number(pn + 1);
+        }
+        else if (name == MenuCommandKeys::PREVIOUS_PAGE)
+        {
+          set_current_page_number(pn - 1);
+        }
+
+        done = false;
+
+        // We're going to create another menu, because we've determined
+        // we need to try changing the page.
+        //
+        // Destroy the current menu.
+        game_display->clear_menu();
+      }
+    }
+  }
+
   return menu_selection;
 }
 

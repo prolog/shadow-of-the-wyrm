@@ -544,7 +544,7 @@ string CursesDisplay::display_menu(const Menu& current_menu)
   string result;
   refresh_terminal_size();
 
-  CursesMenuWrapper wrapper;
+  MenuWrapper wrapper;
   WINDOW* menu_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
 
   menus.push_back(menu_window);
@@ -669,9 +669,9 @@ pair<char, string> CursesDisplay::get_formatted_option(const int incr, const str
   return result;
 }
 
-CursesMenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
+MenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
 {
-  CursesMenuWrapper wrapper;
+  MenuWrapper wrapper;
 
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
@@ -706,8 +706,6 @@ CursesMenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* wi
 
     wrefresh(window);
   }
-
-  wrapper.set_num_items(num_options);
 
   return wrapper;
 }

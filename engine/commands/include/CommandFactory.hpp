@@ -11,7 +11,8 @@ enum CommandFactoryType
   COMMAND_FACTORY_TYPE_INVENTORY = 1,
   COMMAND_FACTORY_TYPE_EQUIPMENT = 2,
   COMMAND_FACTORY_TYPE_SELECT_TILE = 3,
-  COMMAND_FACTORY_TYPE_MAGIC
+  COMMAND_FACTORY_TYPE_MAGIC = 4,
+  COMMAND_FACTORY_TYPE_MENU = 5
 };
 
 // The base CommandFactory, used for commands on the current map.  Other classes
