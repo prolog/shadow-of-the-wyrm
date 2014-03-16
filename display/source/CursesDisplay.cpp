@@ -677,13 +677,13 @@ void CursesDisplay::format_option(const int incr, TextComponentPtr option_text, 
     if (!text.empty())
     {
       string formatted_option = "[" + Char::to_string(ascii_letter) + "] " + text.at(0).first;
+      text[0].first = formatted_option;
 
       if (show_desc && !option_desc.empty())
       {
-        formatted_option += " - " + option_desc;
+        string& last_part = text.at(text.size()-1).first;
+        last_part += " - " + option_desc;
       }
-
-      text[0].first = formatted_option;
 
       option_text->set_text(text);
     }
