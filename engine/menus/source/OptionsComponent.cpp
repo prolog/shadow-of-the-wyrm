@@ -4,13 +4,15 @@ using namespace std;
 
 // Option - an individual menu option
 Option::Option()
-: id(-1)
+: id(-1), colour(COLOUR_WHITE)
 {
+  description = std::make_shared<TextComponent>(string(""));
 }
 
 Option::Option(const int new_id, const string& new_description)
-: id(new_id), description(new_description)
+: id(new_id), colour(COLOUR_WHITE)
 {
+  description = std::make_shared<TextComponent>(string(""));
 }
 
 void Option::set_id(const int new_id)
@@ -25,12 +27,22 @@ int Option::get_id() const
 
 void Option::set_description(const string& new_description)
 {
-  description = new_description;
+  description->add_text(new_description);
 }
 
-string Option::get_description() const
+TextComponentPtr Option::get_description() const
 {
   return description;
+}
+
+void Option::set_colour(const Colour new_colour)
+{
+  colour = new_colour;
+}
+
+Colour Option::get_colour() const
+{
+  return colour;
 }
 
 // Options - a container for Option menu objects.

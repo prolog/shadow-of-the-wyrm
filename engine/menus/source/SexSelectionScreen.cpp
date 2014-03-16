@@ -1,6 +1,7 @@
 #include "CreatureFeatures.hpp"
 #include "TextComponent.hpp"
 #include "OptionsComponent.hpp"
+#include "PromptTextKeys.hpp"
 #include "SexSelectionScreen.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
@@ -40,4 +41,9 @@ void SexSelectionScreen::initialize()
   sex_menu.push_back(options);
 
   add_page(sex_menu);
+
+  // Set the prompt
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
+  user_prompt = any_key_prompt;
 }

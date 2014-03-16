@@ -1,6 +1,7 @@
 #include "global_prototypes.hpp"
 #include "Metadata.hpp"
 #include "OptionsComponent.hpp"
+#include "PromptTextKeys.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 #include "WelcomeScreen.hpp"
@@ -56,4 +57,9 @@ void WelcomeScreen::initialize()
   welcome_menu.push_back(options);
 
   add_page(welcome_menu);
+
+  // Set the prompt
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
+  user_prompt = any_key_prompt;
 }

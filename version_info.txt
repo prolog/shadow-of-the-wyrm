@@ -71,6 +71,11 @@ Savage Lands v0.2.2 "Aelfwald"
       paging mechanism: for spells, text displays like Quests/reading
       books/etc.
 
+- Refactored the equipment selection out of the Display class and into a
+  proper menu.  This allows for a more uniform approach to displaying
+  screens of information to the user, and will make it easier to implement
+  future Display classes (libtcod, sdl, etc).
+
 - Misc: updated the string table to split based on the first '=' instead
   of doing full tokenization (so that text could actually contain '=' in
   it).

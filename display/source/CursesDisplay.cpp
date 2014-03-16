@@ -577,14 +577,15 @@ string CursesDisplay::display_menu(const Menu& current_menu)
 
   vector<MenuComponentPtr> components = current_menu.get_current_page();
   uint line_incr = current_menu.get_line_increment();
-  for(MenuComponentPtr component : components)
+
+  uint csize = components.size();
+  for(uint i = 0; i < csize; i++)
   {
+    MenuComponentPtr component = components.at(i);
+
     if (component)
     {
-      Colour component_colour = component->get_colour();
       TextComponentPtr tc = dynamic_pointer_cast<TextComponent>(component);
-
-      enable_colour(component_colour, menu_window);
 
       if (tc != NULL)
       {
@@ -597,15 +598,17 @@ string CursesDisplay::display_menu(const Menu& current_menu)
         if (oc != NULL)
         {
           // Process the options...
-          wrapper = display_and_return_options_component(menu_window, &current_row, &current_col, oc);
+          display_options_component(menu_window, &current_row, &current_col, oc);
+
+          // Add them so that the prompt processor knows about the options in this set.
+          wrapper.add_options(oc);
         }
       }
 
-      disable_colour(component_colour, menu_window);
-
       // After each line, check to see if we need to throw up a prompt because
-      // of hitting the end of the screen.
-      if (current_row == (TERMINAL_MAX_ROWS - 1))
+      // of hitting the end of the screen, but only if there's still stuff to
+      // display.
+      if (current_row == (TERMINAL_MAX_ROWS - 1) && (i != csize-1))
       {
         PromptPtr prompt = current_menu.get_prompt();
         prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
@@ -642,43 +645,61 @@ void CursesDisplay::confirm(const string& confirmation_message)
 
 void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)
 {
-  string current_text = tc->get_text();
-  mvwprintw(window, *row, *col, current_text.c_str());
-  *row += line_incr;
+  int cur_col = *col;
+
+  if (tc != nullptr)
+  {
+    vector<pair<string, Colour>> current_text = tc->get_text();
+
+    for (const auto& text_line : current_text)
+    {
+      enable_colour(text_line.second, window);
+      mvwprintw(window, *row, cur_col, text_line.first.c_str());
+      disable_colour(text_line.second, window);
+
+      cur_col += text_line.first.size();
+    }
+
+    *row += line_incr;
+  }
 }
 
 // Get a somewhat nice (it's ASCII...) option.
-pair<char, string> CursesDisplay::get_formatted_option(const int incr, const string& option_name, const string& option_desc, const bool show_desc) const
+void CursesDisplay::format_option(const int incr, TextComponentPtr option_text, const string& option_desc, const bool show_desc) const
 {
-  pair<char, string> result;
-
   char ascii_letter = 'a';
   ascii_letter += incr;
 
-  result.first = ascii_letter;
-
-  string formatted_option = "[" + Char::to_string(ascii_letter) + "] " + option_name;
-
-  if (show_desc && !option_desc.empty())
+  if (option_text != nullptr)
   {
-    formatted_option += " - " + option_desc;
+    vector<pair<string, Colour>> text = option_text->get_text();
+
+    if (!text.empty())
+    {
+      string formatted_option = "[" + Char::to_string(ascii_letter) + "] " + text.at(0).first;
+
+      if (show_desc && !option_desc.empty())
+      {
+        formatted_option += " - " + option_desc;
+      }
+
+      text[0].first = formatted_option;
+
+      option_text->set_text(text);
+    }
   }
-
-  result.second = formatted_option;
-
-  return result;
 }
 
-MenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
+void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
 {
-  MenuWrapper wrapper;
-
   vector<Option> options = oc->get_options();
   vector<string> option_descriptions = oc->get_option_descriptions();
   bool show_desc = oc->get_show_option_descriptions();
 
   size_t num_options = options.size();
   size_t num_option_desc = option_descriptions.size();
+
+  int options_added = 0;
 
   if (!options.empty())
   {
@@ -687,7 +708,8 @@ MenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* window, 
     for (unsigned int i = 0; i < num_options; i++)
     {
       Option current_option = options.at(i);
-      string option_name = current_option.get_description();
+      Colour option_colour = current_option.get_colour();
+      TextComponentPtr option_text = current_option.get_description();
       string option_desc;
       
       // Only get the description if we should show one and if one has been set.
@@ -696,18 +718,19 @@ MenuWrapper CursesDisplay::display_and_return_options_component(WINDOW* window, 
         option_desc = option_descriptions.at(i);
       }
 
-      pair<char, string> option_details = get_formatted_option(current_option.get_id(), option_name, option_desc, show_desc);
-      wrapper.add_option(option_details.first);
+      format_option(current_option.get_id(), option_text, option_desc, show_desc);
 
-      mvwprintw(window, temp_row, (*col)+2, option_details.second.c_str());
+      enable_colour(option_colour, window);
+      TextComponentPtr text = current_option.get_description();
+      display_text_component(window, row, col, text, 1);
+      disable_colour(option_colour, window);
 
+      options_added++;
       temp_row++;
     }
-
-    wrefresh(window);
   }
 
-  return wrapper;
+  *row += options_added;
 }
 
 void CursesDisplay::clear_menu()
@@ -868,78 +891,6 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
   }
 }
 
-// Display the Equipment
-// JCD FIXME: break this off into its own class later.
-void CursesDisplay::display_equipment(const DisplayEquipmentMap& equipment)
-{
-  string equipment_header = StringTable::get(TextKeys::EQUIPMENT);
-
-  // Create the new window to display the equipment
-  WINDOW* eq_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
-  menus.push_back(eq_window);
-  
-  // Centre the header on the first line
-  int current_row = 0;
-  display_header(equipment_header, eq_window, current_row);
-
-  uint longest = 0;
-  for (DisplayEquipmentMap::const_iterator e_it = equipment.begin(); e_it != equipment.end(); e_it++)
-  {
-    EquipmentWornLocation worn_location = e_it->first;
-    string worn_location_name = EquipmentTextKeys::get_equipment_text_from_given_worn_location(worn_location);
-    if (worn_location_name.size() > longest) longest = worn_location_name.size() + 1;
-  }
-
-  char slot_char = 'A';
-  
-  // Ensure that the first row of the equipment is right below the "---"
-//x  current_row--;
-  
-  // Display each individual slot
-  for (DisplayEquipmentMap::const_iterator e_it = equipment.begin(); e_it != equipment.end(); e_it++)
-  {
-    // One row for item synopsis, one row for status effects
-    current_row += 1;
-    ostringstream ss;
-    
-    EquipmentWornLocation worn_location = e_it->first;
-    DisplayItem display_item            = e_it->second;
-    Colour item_colour                  = display_item.get_colour();
-    
-    string worn_location_name = EquipmentTextKeys::get_equipment_text_from_given_worn_location(worn_location);
-    string item_description   = display_item.get_description();
-    ss << slot_char << " - " <<  String::add_trailing_spaces(worn_location_name, longest) << ": ";
-
-    mvwprintw(eq_window, current_row, 0, ss.str().c_str());
-    enable_colour(item_colour, eq_window);
-    wprintw(eq_window, item_description.c_str());
-    disable_colour(item_colour, eq_window);
-
-    vector<pair<string, Colour>> flags = display_item.get_flags();
-
-    for(const TextColour& flag_pair : flags)
-    {
-      wprintw(eq_window, " ");
-      
-      enable_colour(flag_pair.second, eq_window);
-      wprintw(eq_window, flag_pair.first.c_str());
-      disable_colour(flag_pair.second, eq_window);
-    }
-
-    current_row += 1;
-    mvwprintw(eq_window, current_row, 6 + longest, display_item.get_additional_description().c_str());
-
-    slot_char++;
-  }
-  
-  string prompt_text = StringTable::get(TextKeys::EQUIPMENT_PROMPT);
-  uint prompt_col = (TERMINAL_MAX_COLS - prompt_text.size() - 1);
-  mvwprintw(eq_window, TERMINAL_MAX_ROWS-1, prompt_col, prompt_text.c_str());
-  
-  refresh();
-  wrefresh(eq_window);
-}
-
 // Display the Inventory
 // JCD FIXME: Break this off into its own class later.
 int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
@@ -1014,7 +965,7 @@ int CursesDisplay::display_inventory(const DisplayInventoryMap& inventory)
   }
 
   string prompt_text = StringTable::get(TextKeys::INVENTORY_PROMPT);
-  uint prompt_col = (TERMINAL_MAX_COLS - prompt_text.size() - 1);
+  int prompt_col = (TERMINAL_MAX_COLS - prompt_text.size() - 1);
   mvwprintw(inv_window, TERMINAL_MAX_ROWS-1, prompt_col, prompt_text.c_str());
   
   wrefresh(inv_window);
