@@ -35,8 +35,7 @@ string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu
       while (!prompt->get_accept_any_input() 
            && menu_wrapper.has_options() 
            // Is the option itself there?
-           && !menu_wrapper.is_option_in_set(prompt_entry.at(0))
-           && !menu_wrapper.is_option_in_set(String::to_int(prompt_entry)))
+           && !menu_wrapper.is_option_in_set(prompt_entry.at(0)))
       {
         prompt_entry = wgetch(window);
       }
