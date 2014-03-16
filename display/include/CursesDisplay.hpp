@@ -46,7 +46,6 @@ class CursesDisplay : public Display
 
 	  void display(const DisplayStatistics& player_stats) override;
 	  
-	  virtual void display_equipment(const DisplayEquipmentMap& equipment) override;	  
 	  virtual int display_inventory(const DisplayInventoryMap& inventory) override;
 	  
     MapDisplayArea get_map_display_area() override;
@@ -85,11 +84,11 @@ class CursesDisplay : public Display
     int clear_message_buffer();
 
     // Make the option look a little nicer.
-    std::pair<char, std::string> get_formatted_option(const int option_num, const std::string& option_name, const std::string& option_desc, const bool show_desc) const;
+    void format_option(const int option_num, TextComponentPtr option_name, const std::string& option_desc, const bool show_desc) const;
 
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
-    MenuWrapper display_and_return_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
+    void display_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
     std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
 
     // Creation/destruction methods

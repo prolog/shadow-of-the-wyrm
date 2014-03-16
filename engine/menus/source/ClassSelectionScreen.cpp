@@ -3,6 +3,7 @@
 #include "RaceSelectionScreen.hpp"
 #include "Game.hpp"
 #include "OptionsComponent.hpp"
+#include "PromptTextKeys.hpp"
 #include "TextComponent.hpp"
 #include "TextKeys.hpp"
 
@@ -52,4 +53,9 @@ void ClassSelectionScreen::initialize()
   cur_page.push_back(options);
 
   add_page(cur_page);
+
+  // Set the prompt
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
+  user_prompt = any_key_prompt;
 }

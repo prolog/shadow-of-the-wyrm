@@ -3,6 +3,7 @@
 #include "Game.hpp"
 #include "LoadGameScreen.hpp"
 #include "OptionsComponent.hpp"
+#include "PromptTextKeys.hpp"
 #include "Serialization.hpp"
 #include "StringTable.hpp"
 #include "TextComponent.hpp"
@@ -64,6 +65,11 @@ void LoadGameScreen::initialize()
   load_game_menu.push_back(options);
 
   add_page(load_game_menu);
+
+  // Set the prompt
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
+  user_prompt = any_key_prompt;
 }
 
 string LoadGameScreen::get_file_name(const string& option) const

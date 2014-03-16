@@ -32,6 +32,20 @@ bool MenuWrapper::has_options() const
   return (!options.empty());
 }
 
+void MenuWrapper::add_options(OptionsComponentPtr options)
+{
+  if (options != nullptr)
+  {
+    auto op = options->get_options();
+
+    for (auto& o : op)
+    {
+      char option = o.get_id() + 'a';
+      add_option(option);
+    }
+  }
+}
+
 void MenuWrapper::add_option(const char option)
 {
   options.insert(option);

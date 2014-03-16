@@ -2970,6 +2970,9 @@
     <ClInclude Include="display\include\MenuWrapper.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\menus\include\EquipmentScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5695,6 +5698,9 @@
     </ClCompile>
     <ClCompile Include="display\source\MenuWrapper.cpp">
       <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\EquipmentScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

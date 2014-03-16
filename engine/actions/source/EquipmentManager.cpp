@@ -2,7 +2,10 @@
 #include "EquipmentCommandProcessor.hpp"
 #include "EquipmentKeyboardCommandMap.hpp"
 #include "EquipmentManager.hpp"
+#include "EquipmentScreen.hpp"
 #include "EquipmentTranslator.hpp"
+
+using namespace std;
 
 EquipmentManager::EquipmentManager(DisplayPtr new_display, CreaturePtr new_creature)
 : display(new_display), creature(new_creature)
@@ -33,22 +36,18 @@ ActionCostValue EquipmentManager::manage_equipment()
       {
         if (display && creature->get_is_player())
         {
-          DisplayEquipmentMap dem = EquipmentTranslator::create_display_equipment(creature);
-          display->display_equipment(dem);
-          menus_created++;
-        }
-      
-        DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
-      
-        if (decision_strategy)
-        {
-          CommandPtr equipment_command = decision_strategy->get_decision(true, creature->get_id(), command_factory, kb_command_map);
-          action_cost = EquipmentCommandProcessor::process(creature, equipment_command);
-        
-          if ((action_cost > 0) && (total_action_cost == 0))
+          EquipmentScreen es(display, creature);
+          string menu_selection = es.display();
+
+          if (!menu_selection.empty())
           {
-            total_action_cost = action_cost;
-            display->clear_menu();
+            CommandPtr equipment_command = command_factory->create(menu_selection.at(0), kb_command_map->get_command_type(menu_selection));
+            action_cost = EquipmentCommandProcessor::process(creature, equipment_command);
+
+            if ((action_cost > 0) && (total_action_cost == 0))
+            {
+              total_action_cost = action_cost;
+            }
           }
         }
         else

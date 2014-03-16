@@ -2,6 +2,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "OptionsComponent.hpp"
+#include "PromptTextKeys.hpp"
 #include "TextKeys.hpp"
 
 using namespace std;
@@ -70,4 +71,9 @@ void DeitySelectionScreen::initialize()
   }
 
   add_page(deity_menu);
+
+  // Set the prompt
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
+  user_prompt = any_key_prompt;
 }
