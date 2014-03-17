@@ -681,8 +681,8 @@ void CursesDisplay::format_option(const int incr, TextComponentPtr option_text, 
 
       if (show_desc && !option_desc.empty())
       {
-        string& last_part = text.at(text.size()-1).first;
-        last_part += " - " + option_desc;
+        string option_desc_with_dash = " - " + option_desc;
+        text.push_back(make_pair(option_desc_with_dash, text.at(text.size()-1).second));
       }
 
       option_text->set_text(text);
