@@ -68,7 +68,6 @@ void EquipmentScreen::initialize()
     }
 
     current_option.set_id(current_id);
-    current_option.set_description(ss.str());
 
     options->add_option(current_option);
     options->add_option_description("");
