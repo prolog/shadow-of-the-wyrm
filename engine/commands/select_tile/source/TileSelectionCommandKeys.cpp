@@ -21,3 +21,5 @@ const string TileSelectionCommandKeys::CURSOR_MOVE_SOUTHEAST  = "MOVE_SOUTHEAST"
 const string TileSelectionCommandKeys::CANCEL_TILE_SELECTION  = "CANCEL_TILE_SELECTION";
 
 const string TileSelectionCommandKeys::TARGET_TILE            = "TARGET_TILE";
+const string TileSelectionCommandKeys::TARGET_NEXT_CREATURE   = "TARGET_NEXT_CREATURE";
+const string TileSelectionCommandKeys::TARGET_PREV_CREATURE   = "TARGET_PREV_CREATURE";

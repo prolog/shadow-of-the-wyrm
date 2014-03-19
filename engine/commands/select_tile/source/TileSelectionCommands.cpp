@@ -38,3 +38,23 @@ TargetTileCommand::TargetTileCommand(const int key)
 TargetTileCommand::~TargetTileCommand()
 {
 }
+
+// Target the next creature in the list
+TargetNextCreatureCommand::TargetNextCreatureCommand(int key)
+: Command(TileSelectionCommandKeys::TARGET_NEXT_CREATURE, key)
+{
+}
+
+TargetNextCreatureCommand::~TargetNextCreatureCommand()
+{
+}
+
+// Target the previous creature in the list
+TargetPrevCreatureCommand::TargetPrevCreatureCommand(int key)
+: Command(TileSelectionCommandKeys::TARGET_PREV_CREATURE, key)
+{
+}
+
+TargetPrevCreatureCommand::~TargetPrevCreatureCommand()
+{
+}

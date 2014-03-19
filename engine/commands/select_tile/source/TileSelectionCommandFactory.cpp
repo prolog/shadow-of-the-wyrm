@@ -57,6 +57,14 @@ CommandPtr TileSelectionCommandFactory::create(const int key, const std::string&
   {
     command = std::make_shared<TargetTileCommand>(key);
   }
+  else if (command_name == TileSelectionCommandKeys::TARGET_NEXT_CREATURE)
+  {
+    command = std::make_shared<TargetNextCreatureCommand>(key);
+  }
+  else if (command_name == TileSelectionCommandKeys::TARGET_PREV_CREATURE)
+  {
+    command = std::make_shared<TargetPrevCreatureCommand>(key);
+  }
   else if (command_name == CommandKeys::BESTIARY)
   {
     command = std::make_shared<BestiaryCommand>(key);
