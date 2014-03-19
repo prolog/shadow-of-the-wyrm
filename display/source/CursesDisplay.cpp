@@ -722,6 +722,9 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
 
       enable_colour(option_colour, window);
       TextComponentPtr text = current_option.get_description();
+
+      // JCD FIXME make 1 a constant later -
+      // there should always be a single line break between options.
       display_text_component(window, row, col, text, 1);
       disable_colour(option_colour, window);
 
@@ -730,7 +733,8 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
     }
   }
 
-  *row += options_added;
+  // No need to update *row
+  // It will have been taken care of when displaying the TextComponent.
 }
 
 void CursesDisplay::clear_menu()
