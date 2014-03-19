@@ -30,5 +30,19 @@ class TargetTileCommand : public Command
     ~TargetTileCommand();
 };
 
+class TargetNextCreatureCommand : public Command
+{
+  public:
+    TargetNextCreatureCommand(int key);
+    ~TargetNextCreatureCommand();
+};
+
+class TargetPrevCreatureCommand : public Command
+{
+  public:
+    TargetPrevCreatureCommand(int key);
+    ~TargetPrevCreatureCommand();
+};
+
 typedef std::shared_ptr<CursorDirectionalCommand> CursorDirectionalCommandPtr;
 

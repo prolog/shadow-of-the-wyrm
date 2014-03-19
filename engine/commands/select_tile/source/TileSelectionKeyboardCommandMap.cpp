@@ -52,6 +52,8 @@ void TileSelectionKeyboardCommandMap::initialize_command_mapping()
                                               {Integer::to_string('l'), TileSelectionCommandKeys::CURSOR_MOVE_EAST},
                                               {Integer::to_string('b'), TileSelectionCommandKeys::CURSOR_MOVE_SOUTHWEST},
                                               {Integer::to_string('n'), TileSelectionCommandKeys::CURSOR_MOVE_SOUTHEAST},
+                                              {Integer::to_string('+'), TileSelectionCommandKeys::TARGET_NEXT_CREATURE},
+                                              {Integer::to_string('-'), TileSelectionCommandKeys::TARGET_PREV_CREATURE},
                                               {Integer::to_string('B'), CommandKeys::BESTIARY}};
 }
 

@@ -54,6 +54,12 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
         
         // Unlike cancelling, selecting a tile should advance the turn.
       }
+      else if (command_name == TileSelectionCommandKeys::TARGET_NEXT_CREATURE)
+      {
+      }
+      else if (command_name == TileSelectionCommandKeys::TARGET_PREV_CREATURE)
+      {
+      }
     }
   }
 
