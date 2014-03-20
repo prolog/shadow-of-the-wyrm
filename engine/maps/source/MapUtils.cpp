@@ -644,9 +644,9 @@ bool MapUtils::are_coordinates_within_dimensions(const Coordinate& c, const Dime
   return (c.first >= 0 && c.first < d.get_y() && c.second >= 0 && c.second < d.get_x());
 }
 
-std::map<int, pair<string, Coordinate>> MapUtils::create_distance_map(CreaturePtr creature, MapPtr map, bool hostile_only)
+std::multimap<int, pair<string, Coordinate>> MapUtils::create_distance_map(CreaturePtr creature, MapPtr map, bool hostile_only)
 {
-  std::map<int, pair<string, Coordinate>> distance_map;
+  std::multimap<int, pair<string, Coordinate>> distance_map;
 
   if (map != nullptr && creature != nullptr)
   {
