@@ -206,6 +206,14 @@ void Map::set_tiles(const TilesContainer& new_tiles)
 bool Map::insert(int row, int col, TilePtr tile)
 {
   string key = MapUtils::convert_coordinate_to_map_key(row, col);
+  CreaturePtr creature = tile->get_creature();
+
+  // Ensure that the map's list of locations is updated with the
+  // new creature, if one exists on the tile.
+  if (creature != nullptr)
+  {
+    add_or_update_location(creature->get_id(), {row, col});
+  }
 
   tiles[key] = tile;
   return true;
