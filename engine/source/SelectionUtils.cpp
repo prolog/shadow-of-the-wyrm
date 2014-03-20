@@ -66,8 +66,17 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
     string ranged_s = Integer::to_string(ATTACK_TYPE_RANGED);
     TargetMap& target_map = creature->get_target_map_ref();
     TargetMap::iterator t_it = target_map.find(ranged_s);
-    pair<string, Coordinate>& target_details = t_it->second;
-    string target_creature_id = target_details.first;
+
+    // The target_creature_id may be empty - the creature may not have selected a
+    // target before cycling.  This can happen if, for example, the creature "L"ooks
+    // around, which focuses on the player first, and then selects "+" or "-".
+    string target_creature_id;
+
+    if (t_it != target_map.end())
+    {
+      pair<string, Coordinate>& target_details = t_it->second;
+      target_creature_id = target_details.first;
+    }
 
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
 
