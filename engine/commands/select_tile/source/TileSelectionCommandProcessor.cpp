@@ -56,9 +56,11 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_NEXT_CREATURE)
       {
+        result = process_tile_selection_by_creature(creature, SELECT_CREATURE_NEXT, tsa);
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_PREV_CREATURE)
       {
+        result = process_tile_selection_by_creature(creature, SELECT_CREATURE_PREVIOUS, tsa);
       }
     }
   }
@@ -107,6 +109,25 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selectio
   {
     Game& game = Game::instance();
     game.get_action_manager_ref().bestiary(creature, search_text);
+  }
+
+  return result;
+}
+
+// Pick the next or previous creature in the given creature's view map creature list.
+pair<bool, ActionCostValue> TileSelectionCommandProcessor::process_tile_selection_by_creature(CreaturePtr creature, const SelectCreatureType sct, TileSelectionAction* const tsa)
+{
+  pair<bool, ActionCostValue> result(false, 0);
+
+  ActionCostValue action_cost = 0;
+  Game& game = Game::instance();
+
+  if (creature)
+  {
+    action_cost = game.actions.select_tile(creature, sct, tsa);
+
+    result.first = true;
+    result.second = action_cost;
   }
 
   return result;

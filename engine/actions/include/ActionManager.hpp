@@ -9,6 +9,7 @@
 #include "MovementAction.hpp"
 #include "QuaffAction.hpp"
 #include "RangedCombatAction.hpp"
+#include "SelectTileTypes.hpp"
 #include "TileSelectionAction.hpp"
 #include "WeaponTypes.hpp"
 
@@ -53,6 +54,7 @@ class ActionManager : public ISerializable
     // for processing directional commands, cancellation, etc.
     ActionCost select_tile(CreaturePtr creature); // Examines the tiles on the current map
     ActionCostValue select_tile(CreaturePtr creature, const Direction d, TileSelectionAction* const tsa);
+    ActionCostValue select_tile(CreaturePtr creature, const SelectCreatureType sct, TileSelectionAction* const tsa);
     
     // Actions utilizing tile selection actions:
     ActionCost fire_missile(CreaturePtr creature);

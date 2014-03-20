@@ -644,6 +644,42 @@ bool MapUtils::are_coordinates_within_dimensions(const Coordinate& c, const Dime
   return (c.first >= 0 && c.first < d.get_y() && c.second >= 0 && c.second < d.get_x());
 }
 
+std::map<int, pair<string, Coordinate>> MapUtils::create_distance_map(CreaturePtr creature, MapPtr map, bool hostile_only)
+{
+  std::map<int, pair<string, Coordinate>> distance_map;
+
+  if (map != nullptr && creature != nullptr)
+  {
+    string creature_id = creature->get_id();
+    std::map<string, CreaturePtr>& creatures = map->get_creatures_ref();
+    Coordinate creature_location = map->get_location(creature->get_id());
+
+    for (std::map<string, CreaturePtr>::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+    {
+      CreaturePtr potential_target_creature = c_it->second;
+      string potential_creature_id = potential_target_creature->get_id();
+
+      // Make sure the targetted creature isn't the one doing the aiming.
+      // Targetting one's self would be unfortunate.
+      if (potential_target_creature && (potential_creature_id != creature_id))
+      {
+        // Get the potential target's coordinate from the main map, using its creature ID.
+        Coordinate c = map->get_location(c_it->first);
+
+        // Is the creature hostile towards the ranged combat creature?
+        ThreatRatings& threat_ratings = potential_target_creature->get_decision_strategy()->get_threats_ref();
+
+        if (threat_ratings.has_threat(creature_id).first || !hostile_only)
+        {
+          int distance = CoordUtils::chebyshev_distance(creature_location, c);
+          distance_map.insert(make_pair(distance, make_pair(potential_creature_id, c)));
+        }
+      }
+    }
+  }
+
+  return distance_map;
+}
 
 #ifdef UNIT_TESTS
 #include "unit_tests/Map_test.cpp"
