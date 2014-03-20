@@ -57,6 +57,9 @@ class MapUtils
 
     static bool are_coordinates_within_dimensions(const Coordinate& c, const Dimensions& d);
 
+    // Create a distance map
+    static std::map<int, std::pair<std::string, Coordinate>> create_distance_map(CreaturePtr creature, MapPtr map, bool hostile_only);
+
   protected: 
     static void add_connected_tiles_to_component(MapPtr map, const Coordinate& coord, const Dimensions& dim, const std::set<TileType>& exclusion_tiles, Component* component);
     static bool is_tile_contained_in_an_existing_component(const Coordinate&, const MapComponents& components);

@@ -1,5 +1,6 @@
 #pragma once
 #include "IActionManager.hpp"
+#include "SelectTileTypes.hpp"
 
 class TileSelectionAction : public IActionManager, ISerializable
 {
@@ -30,6 +31,7 @@ class TileSelectionAction : public IActionManager, ISerializable
     
     ActionCostValue select_tile(CreaturePtr creature, const std::string& initial_message_sid);
     ActionCostValue select_tile(CreaturePtr creature, const Direction d);
+    ActionCostValue select_tile(CreaturePtr creature, const SelectCreatureType sct);
     ActionCostValue select_tile_cancel(CreaturePtr creature);
     TilePtr get_cursor_tile();
     

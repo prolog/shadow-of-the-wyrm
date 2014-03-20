@@ -303,6 +303,7 @@
     <ClInclude Include="engine\commands\menus\include\MenuCommands.hpp" />
     <ClInclude Include="engine\commands\menus\include\MenuKeyboardCommandMap.hpp" />
     <ClInclude Include="engine\commands\select_tile\include\FireWeaponTileSelectionKeyboardCommandMap.hpp" />
+    <ClInclude Include="engine\commands\select_tile\include\SelectTileTypes.hpp" />
     <ClInclude Include="engine\commands\select_tile\include\TileSelectionCommandFactory.hpp" />
     <ClInclude Include="engine\commands\select_tile\include\TileSelectionCommandKeys.hpp" />
     <ClInclude Include="engine\commands\select_tile\include\TileSelectionCommandProcessor.hpp" />
@@ -496,6 +497,7 @@
     <ClInclude Include="engine\include\ReligionManager.hpp" />
     <ClInclude Include="engine\include\RNG.hpp" />
     <ClInclude Include="engine\include\SavageLandsEngine.hpp" />
+    <ClInclude Include="engine\include\SelectionUtils.hpp" />
     <ClInclude Include="engine\items\include\EdibleItemFilter.hpp" />
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
     <ClInclude Include="engine\items\include\InitialItemEquipper.hpp" />
@@ -1652,6 +1654,7 @@
     <ClCompile Include="engine\source\ReligionManager.cpp" />
     <ClCompile Include="engine\source\RNG.cpp" />
     <ClCompile Include="engine\source\SavageLandsEngine.cpp" />
+    <ClCompile Include="engine\source\SelectionUtils.cpp" />
     <ClCompile Include="engine\source\unit_tests\Game_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

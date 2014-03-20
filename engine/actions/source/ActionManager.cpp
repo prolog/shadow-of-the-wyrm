@@ -437,6 +437,23 @@ ActionCost ActionManager::select_tile(CreaturePtr creature)
   return get_action_cost(creature, action_cost_value);
 }
 
+ActionCostValue ActionManager::select_tile(CreaturePtr creature, const SelectCreatureType sct, TileSelectionAction* const tsa)
+{
+  ActionCostValue action_cost_value = 0;
+
+  if (creature)
+  {
+    // Ensure that we use the passed-in tile selection manager, as it may have certain properties
+    // set (to exclude parts of the overall tile description, etc).
+    if (tsa)
+    {
+      action_cost_value = tsa->select_tile(creature, sct);
+    }
+  }
+
+  return action_cost_value;
+}
+
 ActionCostValue ActionManager::select_tile(CreaturePtr creature, const Direction d, TileSelectionAction* const tsa)
 {
   ActionCostValue action_cost_value = 0;

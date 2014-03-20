@@ -5,6 +5,7 @@
 #include "KeyboardCommandMapFactory.hpp"
 #include "MapCursor.hpp"
 #include "MessageManagerFactory.hpp"
+#include "SelectionUtils.hpp"
 #include "Serialize.hpp"
 #include "TileDescription.hpp"
 #include "TileSelectionAction.hpp"
@@ -200,6 +201,18 @@ ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const Dir
     }
   }
   
+  return get_action_cost_value(creature);
+}
+
+ActionCostValue TileSelectionAction::select_tile(CreaturePtr creature, const SelectCreatureType sct)
+{
+  if (creature)
+  {
+    MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+
+    SelectionUtils::select_target_in_cycle(creature, fov_map, sct);
+  }
+
   return get_action_cost_value(creature);
 }
 
