@@ -17,7 +17,7 @@ void SelectionUtils::select_nearest_hostile_target(CreaturePtr creature, MapPtr 
 
     // Sort hostile creatures by location.  Since this is a regular map, there is only one creature allowed per
     // distance - so if there are several distance-1 creatures, only one will be chosen for the map.
-    std::map<int, pair<string, Coordinate>> hostile_creature_distance_map = MapUtils::create_distance_map(creature, fov_map, true /* hostile to creature */);
+    std::multimap<int, pair<string, Coordinate>> hostile_creature_distance_map = MapUtils::create_distance_map(creature, fov_map, true /* hostile to creature */);
 
     // We may by this point have the nearest hostile creature:
     if (!hostile_creature_distance_map.empty())
@@ -71,7 +71,7 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
 
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
 
-    std::map<int, pair<string, Coordinate>> distance_map = MapUtils::create_distance_map(creature, fov_map, false /* not hostile to creature */);
+    std::multimap<int, pair<string, Coordinate>> distance_map = MapUtils::create_distance_map(creature, fov_map, false /* not hostile to creature */);
 
     // Iterate through the distance map, updating the previous and next values.
     // Once we reach the current target, figure out what to target next, and
@@ -93,7 +93,7 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
         // If the first element is a match, "prev" is the last item.
         prev = distance_map.rbegin()->second;
         next = distance_map.begin()++->second;
-        for (std::map<int, pair<string, Coordinate>>::iterator dist_pair = distance_map.begin(); dist_pair != distance_map.end(); dist_pair++)
+        for (std::multimap<int, pair<string, Coordinate>>::iterator dist_pair = distance_map.begin(); dist_pair != distance_map.end(); dist_pair++)
         {
           string cur_target_creature_id = dist_pair->second.first;
 
