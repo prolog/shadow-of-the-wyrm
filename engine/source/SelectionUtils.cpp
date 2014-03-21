@@ -120,7 +120,8 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
             }
           }
 
-          auto potential_next = dist_pair++;
+          auto potential_next = std::next(dist_pair);
+
           if (potential_next != distance_map.end())
           {
             next = potential_next->second;
