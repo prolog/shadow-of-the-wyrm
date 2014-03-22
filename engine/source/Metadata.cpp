@@ -32,9 +32,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // King of Sussex, ruled jointly with Ealdwuld.  Witnessed one of
-  // his charters as "Aelfwald rex".
-  return "\"Aelfwald\"";
+  // Alderman of Sussex
+  return "\"Eadwine\"";
 }
 
 string Metadata::get_game_version_synopsis() const
