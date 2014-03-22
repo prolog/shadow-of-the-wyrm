@@ -76,6 +76,9 @@ Savage Lands v0.2.2 "Aelfwald"
   screens of information to the user, and will make it easier to implement
   future Display classes (libtcod, sdl, etc).
 
+- Implemented cycling between creatures in tile selection (when "L"ooking,
+  "f"iring, etc) using +/-.
+
 - Misc: updated the string table to split based on the first '=' instead
   of doing full tokenization (so that text could actually contain '=' in
   it).

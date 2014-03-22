@@ -132,7 +132,7 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
 
           // We've found a match in the creature map!
           // Set the target based on whether we want the next/prev.
-          if (cur_target_creature_id == target_creature_id)
+          if (cur_target_creature_id == target_creature_id || target_creature_id.empty())
           {
             if (sct == SELECT_CREATURE_NEXT)
             {
