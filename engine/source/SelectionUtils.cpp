@@ -1,6 +1,7 @@
 #include "AttackTypes.hpp"
 #include "CoordUtils.hpp"
 #include "Conversion.hpp"
+#include "Game.hpp"
 #include "MapCursor.hpp"
 #include "MapUtils.hpp"
 #include "SelectionUtils.hpp"
@@ -78,6 +79,8 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
       target_creature_id = target_details.first;
     }
 
+    Game& game = Game::instance();
+    MapPtr game_map = game.get_current_map();
     MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
 
     std::multimap<int, pair<string, Coordinate>> distance_map = MapUtils::create_distance_map(creature, fov_map, false /* not hostile to creature */);
@@ -95,31 +98,25 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
       {
         prev = next = distance_map.begin()->second;
 
-        set_target(creature, ATTACK_TYPE_RANGED, prev, fov_map);
+        set_target(creature, ATTACK_TYPE_RANGED, prev, game_map);
       }
       else // size must be >= 2
       {
-        // If the first element is a match, "prev" is the last item.
-        prev = distance_map.rbegin()->second;
-        next = distance_map.begin()++->second;
         for (std::multimap<int, pair<string, Coordinate>>::iterator dist_pair = distance_map.begin(); dist_pair != distance_map.end(); dist_pair++)
         {
-          string cur_target_creature_id = dist_pair->second.first;
-
-          // We've found a match in the creature map!
-          // Set the target based on whether we want the next/prev.
-          if (cur_target_creature_id == target_creature_id)
+          // Calculate the "prev" iterator.
+          //
+          // If we're at the first item, the previous creature is the last one in the list.
+          if (dist_pair == distance_map.begin())
           {
-            if (sct == SELECT_CREATURE_NEXT)
-            {
-              set_target(creature, ATTACK_TYPE_RANGED, next, fov_map);
-            }
-            else
-            {
-              set_target(creature, ATTACK_TYPE_RANGED, prev, fov_map);
-            }
+            prev = distance_map.rbegin()->second;
           }
-
+          // ...otherwise, it's the previous one from the current.
+          else
+          {
+            prev = std::prev(dist_pair)->second;
+          }
+          // Calculate the "next" iterator.
           auto potential_next = std::next(dist_pair);
 
           if (potential_next != distance_map.end())
@@ -129,6 +126,22 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
           else // end of the map - use the beginning
           {
             next = distance_map.begin()->second;
+          }
+
+          string cur_target_creature_id = dist_pair->second.first;
+
+          // We've found a match in the creature map!
+          // Set the target based on whether we want the next/prev.
+          if (cur_target_creature_id == target_creature_id)
+          {
+            if (sct == SELECT_CREATURE_NEXT)
+            {
+              set_target(creature, ATTACK_TYPE_RANGED, next, game_map);
+            }
+            else
+            {
+              set_target(creature, ATTACK_TYPE_RANGED, prev, game_map);
+            }
           }
 
           // Once the incrementing is done, "prev" will be the element that
