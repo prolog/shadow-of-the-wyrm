@@ -59,12 +59,6 @@ class Display : public ISerializable
     // Draws an animation.
     virtual void draw_animation(const Animation& animation) = 0;
 	  
-	  // Displays a window with the player's inventory (non-worn items).
-	  // The returned int value is the number of items that were able to be
-	  // displayed on the screen.  This is returned so that the engine can
-	  // know whether a given keypress/selection is in the range of items displayed.
-	  virtual int display_inventory(const DisplayInventoryMap& inventory) = 0;
-	  
 	  // Displays the player info
 	  virtual void display(const DisplayStatistics& player_stats) = 0;
 

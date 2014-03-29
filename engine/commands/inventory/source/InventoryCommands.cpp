@@ -16,16 +16,6 @@ InventoryFilterViewCommand::InventoryFilterViewCommand(int key)
 {
 }
 
-InventoryNextPageCommand::InventoryNextPageCommand(const int key)
-: Command(InventoryCommandKeys::NEXT_PAGE, key)
-{
-}
-
-InventoryPreviousPageCommand::InventoryPreviousPageCommand(const int key)
-: Command(InventoryCommandKeys::PREVIOUS_PAGE, key)
-{
-}
-
 ExitInventoryCommand::ExitInventoryCommand(const int key)
 : Command(InventoryCommandKeys::EXIT_INVENTORY, key)
 {

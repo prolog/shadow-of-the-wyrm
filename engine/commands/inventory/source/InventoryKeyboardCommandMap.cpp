@@ -25,39 +25,34 @@ void InventoryKeyboardCommandMap::command_not_found(const std::string& keyboard_
 void InventoryKeyboardCommandMap::initialize_command_mapping()
 {
   command_mapping.clear();
-  command_mapping = KeyboardCommandMappingMap{{Integer::to_string('z'), InventoryCommandKeys::EXIT_INVENTORY},
-                                              {Integer::to_string('Z'), InventoryCommandKeys::EXIT_INVENTORY},
-                                              {Integer::to_string('`'), InventoryCommandKeys::CLEAR_FILTER},
-                                              {Integer::to_string('.'), InventoryCommandKeys::NEXT_PAGE},
-                                              {Integer::to_string(','), InventoryCommandKeys::PREVIOUS_PAGE},
-                                              {Integer::to_string(']'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string(')'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('['), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('!'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('"'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('?'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('\\'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('|'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('='), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('+'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('%'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('/'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('#'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('&'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('$'), InventoryCommandKeys::FILTER_VIEW},
-                                              {Integer::to_string('('), InventoryCommandKeys::FILTER_VIEW},
+  command_mapping = KeyboardCommandMappingMap{{"z", InventoryCommandKeys::EXIT_INVENTORY},
+                                              {"Z", InventoryCommandKeys::EXIT_INVENTORY},
+                                              {"`", InventoryCommandKeys::CLEAR_FILTER},
+                                              {"]", InventoryCommandKeys::FILTER_VIEW},
+                                              {")", InventoryCommandKeys::FILTER_VIEW},
+                                              {"[", InventoryCommandKeys::FILTER_VIEW},
+                                              {"!", InventoryCommandKeys::FILTER_VIEW},
+                                              {"\"", InventoryCommandKeys::FILTER_VIEW},
+                                              {"?", InventoryCommandKeys::FILTER_VIEW},
+                                              {"\\", InventoryCommandKeys::FILTER_VIEW},
+                                              {"|", InventoryCommandKeys::FILTER_VIEW},
+                                              {"=", InventoryCommandKeys::FILTER_VIEW},
+                                              {"+", InventoryCommandKeys::FILTER_VIEW},
+                                              {"%", InventoryCommandKeys::FILTER_VIEW},
+                                              {"/", InventoryCommandKeys::FILTER_VIEW},
+                                              {"#", InventoryCommandKeys::FILTER_VIEW},
+                                              {"&", InventoryCommandKeys::FILTER_VIEW},
+                                              {"$", InventoryCommandKeys::FILTER_VIEW},
+                                              {"(", InventoryCommandKeys::FILTER_VIEW},
                                               };
 
   // Selection commands.
   // 'z'/'Z' is reserved for exit.
-  for (int i = 'a'; i <= 'y'; i++)
+  for (char i = 'a'; i <= 'y'; i++)
   {
-    command_mapping.insert(make_pair(Integer::to_string(i), InventoryCommandKeys::SELECT_ITEM));
-    command_mapping.insert(make_pair(Integer::to_string(toupper(i)), InventoryCommandKeys::SELECT_ITEM));
+    command_mapping.insert(make_pair(Char::to_string(i), InventoryCommandKeys::SELECT_ITEM));
+    command_mapping.insert(make_pair(Char::to_string(toupper(i)), InventoryCommandKeys::SELECT_ITEM));
   }
-  
-  // Apply a filter
-  // JCD FIXME DO THIS LATER
 }
 
 KeyboardCommandMap* InventoryKeyboardCommandMap::clone()

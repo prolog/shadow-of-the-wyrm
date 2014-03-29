@@ -58,14 +58,6 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
 
       process_result = false;
     }
-    else if (command_name == InventoryCommandKeys::NEXT_PAGE)
-    {
-      // FIXME
-    }
-    else if (command_name == InventoryCommandKeys::PREVIOUS_PAGE)
-    {
-      // FIXME
-    }
     else if (command_name == InventoryCommandKeys::SELECT_ITEM)
     {
       if (!inventory_is_read_only)

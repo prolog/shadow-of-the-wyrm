@@ -26,14 +26,6 @@ CommandPtr InventoryCommandFactory::create(const int key, const std::string& com
   {
     inventory_command = std::make_shared<InventoryFilterViewCommand>(key);
   }
-  else if (command_name == InventoryCommandKeys::NEXT_PAGE)
-  {
-    inventory_command = std::make_shared<InventoryNextPageCommand>(key);
-  }
-  else if (command_name == InventoryCommandKeys::PREVIOUS_PAGE)
-  {
-    inventory_command = std::make_shared<InventoryPreviousPageCommand>(key);
-  }
   else
   {
     // If the key is in the [a-y][A-Y] range, create a selection command

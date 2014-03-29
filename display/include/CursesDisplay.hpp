@@ -46,8 +46,6 @@ class CursesDisplay : public Display
 
 	  void display(const DisplayStatistics& player_stats) override;
 	  
-	  virtual int display_inventory(const DisplayInventoryMap& inventory) override;
-	  
     MapDisplayArea get_map_display_area() override;
 
 	  std::string display_menu(const Menu& current_menu) override;

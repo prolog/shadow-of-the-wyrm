@@ -3,6 +3,7 @@
 #include "InventoryCommandProcessor.hpp"
 #include "InventoryKeyboardCommandMap.hpp"
 #include "InventoryManager.hpp"
+#include "InventoryScreen.hpp"
 #include "InventoryTranslator.hpp"
 
 using namespace std;
@@ -38,20 +39,16 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
         if (display && creature->get_is_player())
         {
           display_inventory = InventoryTranslator::create_display_inventory(creature, inv, display_filter_list);
-          current_page_size = display->display_inventory(display_inventory);
-          menus_created++;
-        }
+          InventoryScreen is(display, creature, display_inventory);
+          string inv_selection = is.display();
 
-        DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
-      
-        if (decision_strategy)
-        {
-          CommandPtr inventory_command = decision_strategy->get_decision(true, creature->get_id(), command_factory, kb_command_map);
-          manage_inv = InventoryCommandProcessor::process(this, display_inventory, creature, inv, inventory_command, inventory_is_read_only, selected_item);        
-        }
-        else
-        {
-          manage_inv = false;
+          // JCD FIXME - if this is recursive, refactor so that it uses an
+          // iterative approach.
+          if (!inv_selection.empty())
+          {
+            CommandPtr inv_command = command_factory->create(inv_selection.at(0), kb_command_map->get_command_type(inv_selection));
+            manage_inv = InventoryCommandProcessor::process(this, display_inventory, creature, inv, inv_command, inventory_is_read_only, selected_item);
+          }
         }
       }
     }
@@ -60,14 +57,6 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
   {
   }
   
-  if (creature->get_is_player())
-  {
-    for (ulonglong i = 0; i < menus_created; i++)
-    {
-      display->clear_menu();
-    } 
-  }
-
   return selected_item;
 }
 

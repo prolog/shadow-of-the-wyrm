@@ -2979,6 +2979,9 @@
     <ClInclude Include="engine\include\SelectionUtils.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\menus\include\InventoryScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5710,6 +5713,9 @@
     </ClCompile>
     <ClCompile Include="engine\source\SelectionUtils.cpp">
       <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\InventoryScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
