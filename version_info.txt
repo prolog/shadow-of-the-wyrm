@@ -8,6 +8,10 @@ Savage Lands v0.2.3 "Eadwine"
   start learning the spells at a higher level, and don't get access to
   Veil of Shadows.
 
+- Refactored the Inventory display.  Instead of being displayed directly
+  by an instance of the Display interface, it will now be a regular
+  menu (like the Equipment screen).
+
 Savage Lands v0.2.2 "Aelfwald"
 - Version declared February 25, 2014.  Version finalized March 22, 2014.
 
