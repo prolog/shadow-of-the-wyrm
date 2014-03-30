@@ -1,0 +1,97 @@
+\section{Commands}
+
+\subsection{Movement and Attacking}
+
+Move using number keys, vi keys, or arrow keys.  Attempting to move into a
+creature's tile will either attack it, if the creature is hostile, or
+else prompt for confirmation.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+7, y & 8, k, $\uparrow$ & 9, u \\
+\hline
+4, h $\leftarrow$ & 5, s, . & 6, l, $\rightarrow$ \\
+\hline
+1, b & 2, j $\downarrow$ & 3, n \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{description}
+\item[w]
+Automatic movement
+\item[$\textless$] 
+Ascend on staircases, etc.
+\item[$\textgreater$] 
+Descend on staircases, etc.
+\end{description}
+
+\subsection{Actions}
+
+\begin{description}
+\item[,] 
+Pick up item.
+\item[d] 
+Drop item.
+\item[i] 
+View equipment and items.
+\item[\_] 
+Pray.
+\item[L] 
+Look at any tile currently in view.
+\item[f] 
+Fire a missile.
+\item[D] 
+Drink a potion.
+\item[r] 
+Read a scroll or a book.
+\item[\$] 
+Display number of ivory pieces currently on hand.
+\item[e] 
+Eat a comestible.
+\item[C] 
+Chat with an adjacent creature.
+\item[a] 
+Apply a nearby terrain feature.
+\item[q] 
+List current quests.
+\item[z] 
+Cast ('z'ap) a known spell.
+\item[B] 
+Display bestiary information.
+\item[v] 
+Evoke a wand.
+\end{description}
+
+\subsection{Leaving the Game}
+
+\begin{description}
+\item[S] 
+Save the game, then quit.
+\item[Q] 
+Quit the game without saving -- the current character will be lost.
+\end{description}
+
+\subsection{Miscellaneous}
+
+\begin{description}
+\item[W] 
+Melee weapon information.
+\item[R] 
+Ranged weapon information.
+\item[V] 
+Game version details.
+\item[T] 
+Current date and time in-game.
+\item[@] 
+Dump character details to disk.
+\item[F1] 
+Show current resistance information.
+\item[F2] 
+Show current conduct information.
+\item[F11] 
+Execute a Lua statement (debug only)
+\item[F12] 
+Reload Lua scripts and string identifiers.
+\end{description}
