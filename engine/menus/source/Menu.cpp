@@ -37,6 +37,40 @@ std::string Menu::get_title_text_sid() const
   return title_text_sid;
 }
 
+// Return the first option with the given option id, or a null OptionPtr
+// if none is found.  While this is a shared_ptr, the shared_ptr is just
+// used to indicate whether there is an option or not.  It points at a
+// copy of the real option, to ensure immutability.
+OptionPtr Menu::get_option(const int op_id)
+{
+  OptionPtr option;
+
+  // Iterate through the current page.
+  // Check each option component for the option_id.
+  // Return the first match.
+  auto cur_page = get_current_page();
+  for (auto comp : cur_page)
+  {
+    auto as_options = dynamic_pointer_cast<OptionsComponent>(comp);
+    
+    if (as_options != nullptr)
+    {
+      auto ops = as_options->get_options();
+
+      for (auto op : ops)
+      {
+        if (op.get_id() == op_id)
+        {
+          option = make_shared<Option>(op);
+          return option;
+        }
+      }
+    }
+  }
+
+  return option;
+}
+
 // Display the contents of the Menu to the user via the DisplayPtr.
 string Menu::display()
 {

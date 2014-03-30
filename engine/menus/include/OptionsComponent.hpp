@@ -9,13 +9,20 @@ class Option
 {
   public:
     Option();
-    Option(const int id, const std::string& option_description);
+    Option(const int id, const std::string& external_id, const std::string& option_description);
 
     void set_colour(const Colour new_colour);
     Colour get_colour() const;
 
+    // A unique identifier within the current set of options.
+    // 0, 1, 2, etc.
     void set_id(const int new_id);
     int get_id() const;
+
+    // An identifier in some other collection.  For example, an option might
+    // refer to a particular item, or creature, etc.
+    void set_external_id(const std::string& new_external_id);
+    std::string get_external_id() const;
 
     void set_description(const std::string& new_description);
     TextComponentPtr get_description() const;
@@ -24,6 +31,7 @@ class Option
     // May have to map this to another ID in another class.  But for the actual Option object, a
     // numerical value should be OK...
     int id;
+    std::string external_id;
     TextComponentPtr description;
     Colour colour;
 };
@@ -51,3 +59,4 @@ class OptionsComponent : public MenuComponent
 };
 
 typedef std::shared_ptr<OptionsComponent> OptionsComponentPtr;
+typedef std::shared_ptr<Option> OptionPtr;

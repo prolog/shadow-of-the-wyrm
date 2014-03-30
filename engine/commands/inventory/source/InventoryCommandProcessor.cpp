@@ -18,7 +18,7 @@ InventoryCommandProcessor::~InventoryCommandProcessor()
 {
 }
 
-bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, const DisplayInventoryMap& inventory_display, CreaturePtr creature, Inventory& inv, CommandPtr command, const bool inventory_is_read_only, ItemPtr& selected_item)
+bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, const DisplayInventoryMap& inventory_display, const string& item_id, CreaturePtr creature, Inventory& inv, CommandPtr command, const bool inventory_is_read_only, ItemPtr& selected_item)
 {
   bool process_result = true;
 
@@ -66,10 +66,8 @@ bool InventoryCommandProcessor::process(InventoryManager* const inv_manager, con
         
         if (selection_command)
         {
-          int key = selection_command->get_key();
-          Log::instance().log("Item selected using key " + Integer::to_string(key));
-          
-          selected_item = inv_manager->select_item(inv, inventory_display, convert_keypress_to_item_index(key));
+          int key = selection_command->get_key();       
+          selected_item = inv.get_from_id(item_id);
           
           if (!inventory_is_read_only && selected_item)
           {

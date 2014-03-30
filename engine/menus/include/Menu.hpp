@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include "TextComponent.hpp"
+#include "OptionsComponent.hpp"
 #include "Prompt.hpp"
 #include "Display.hpp"
 
@@ -25,6 +26,8 @@ class Menu
     void set_current_page_number(const uint new_page);
     uint get_current_page_number() const;
     uint get_num_pages() const;
+
+    OptionPtr get_option(const int option_id);
 
     void set_prompt(PromptPtr new_prompt);
     PromptPtr get_prompt() const;
