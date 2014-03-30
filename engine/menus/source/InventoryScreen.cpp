@@ -65,6 +65,7 @@ void InventoryScreen::initialize()
         OptionsComponentPtr options = std::make_shared<OptionsComponent>();
 
         current_option.set_id(current_id);
+        current_option.set_external_id(item.get_id());
 
         options->add_option(current_option);
         options->add_option_description("");

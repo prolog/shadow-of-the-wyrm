@@ -1,3 +1,4 @@
+#include "Conversion.hpp"
 #include "IItemFilter.hpp"
 #include "InventoryCommandFactory.hpp"
 #include "InventoryCommandProcessor.hpp"
@@ -5,6 +6,7 @@
 #include "InventoryManager.hpp"
 #include "InventoryScreen.hpp"
 #include "InventoryTranslator.hpp"
+#include "OptionsComponent.hpp"
 
 using namespace std;
 
@@ -41,13 +43,22 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
           display_inventory = InventoryTranslator::create_display_inventory(creature, inv, display_filter_list);
           InventoryScreen is(display, creature, display_inventory);
           string inv_selection = is.display();
+          string external_id;
+
+          int option_id = Char::keyboard_selection_char_to_int(inv_selection.at(0));
+          OptionPtr op = is.get_option(option_id);
+          
+          if (op != nullptr)
+          {
+            external_id = op->get_external_id();
+          }
 
           // JCD FIXME - if this is recursive, refactor so that it uses an
           // iterative approach.
           if (!inv_selection.empty())
           {
             CommandPtr inv_command = command_factory->create(inv_selection.at(0), kb_command_map->get_command_type(inv_selection));
-            manage_inv = InventoryCommandProcessor::process(this, display_inventory, creature, inv, inv_command, inventory_is_read_only, selected_item);
+            manage_inv = InventoryCommandProcessor::process(this, display_inventory, external_id, creature, inv, inv_command, inventory_is_read_only, selected_item);
           }
         }
       }
@@ -55,37 +66,6 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
   }
   catch(...)
   {
-  }
-  
-  return selected_item;
-}
-
-ItemPtr InventoryManager::select_item(Inventory& inv, const DisplayInventoryMap& inventory_display, const uint index_in_current_page)
-{
-  ItemPtr selected_item;
-  uint internal_index = 0;
-  
-  if ((index_in_current_page < current_page_size) && creature)
-  {
-    internal_index = current_page_start + index_in_current_page;
-    
-    // Get the display item
-    uint search_ix = 0;
-    for (DisplayInventoryMap::const_iterator d_it = inventory_display.begin(); d_it != inventory_display.end(); d_it++)
-    {
-      vector<DisplayItem> items = d_it->second;
-      
-      for(const DisplayItem& display_item : items)
-      {
-        if (search_ix == internal_index)
-        {
-          string id = display_item.get_id();
-          selected_item = inv.get_from_id(id);
-          return selected_item;
-        }
-        search_ix++;
-      }
-    }    
   }
   
   return selected_item;
