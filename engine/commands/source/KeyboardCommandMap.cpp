@@ -81,9 +81,6 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.clear();
 
   // MSVC bombs when I try to convert this to an initializer list. :(
-  command_mapping.insert(make_pair(Integer::to_string('Q'), CommandKeys::QUIT));
-  command_mapping.insert(make_pair(Integer::to_string('V'), CommandKeys::VERSION));
-  command_mapping.insert(make_pair(Integer::to_string('T'), CommandKeys::GAME_DATE_TIME));
   command_mapping.insert(make_pair(Integer::to_string('s'), CommandKeys::SEARCH));
   command_mapping.insert(make_pair(Integer::to_string('5'), CommandKeys::SEARCH));
   command_mapping.insert(make_pair(Integer::to_string('.'), CommandKeys::SEARCH));
@@ -111,22 +108,39 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('u'), CommandKeys::MOVE_NORTHEAST));
   // other movement-type commands
   command_mapping.insert(make_pair(Integer::to_string('w'), CommandKeys::AUTOMATIC_MOVEMENT));
-
   command_mapping.insert(make_pair(Integer::to_string('<'), CommandKeys::MOVE_UP));
   command_mapping.insert(make_pair(Integer::to_string('>'), CommandKeys::MOVE_DOWN));
+
+  // leave game
+  command_mapping.insert(make_pair(Integer::to_string('Q'), CommandKeys::QUIT));
+  command_mapping.insert(make_pair(Integer::to_string('S'), CommandKeys::SAVE_GAME));
+
+  // actions
+
+  // misc commands
+  command_mapping.insert(make_pair(Integer::to_string('V'), CommandKeys::VERSION));
+  command_mapping.insert(make_pair(Integer::to_string('T'), CommandKeys::GAME_DATE_TIME));
+  command_mapping.insert(make_pair(Integer::to_string('@'), CommandKeys::CHAR_DUMP));
+  command_mapping.insert(make_pair(Integer::to_string('W'), CommandKeys::MELEE_WEAPON_INFO));
+  command_mapping.insert(make_pair(Integer::to_string('R'), CommandKeys::RANGED_WEAPON_INFO));
+  command_mapping.insert(make_pair(Integer::to_string(KEY_F(1)), CommandKeys::SHOW_RESISTANCES));
+  command_mapping.insert(make_pair(Integer::to_string(KEY_F(2)), CommandKeys::SHOW_CONDUCTS));
+  // JCD FIXME: When adding Unix support, update this to include whatever
+  // debug flag is needed.
+  #ifdef _DEBUG
+  command_mapping.insert(make_pair(Integer::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
+  #endif
+  command_mapping.insert(make_pair(Integer::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));
+
   command_mapping.insert(make_pair(Integer::to_string(','), CommandKeys::PICK_UP_ITEM));
   command_mapping.insert(make_pair(Integer::to_string('d'), CommandKeys::DROP_ITEM));
   command_mapping.insert(make_pair(Integer::to_string('i'), CommandKeys::INVENTORY));
-  command_mapping.insert(make_pair(Integer::to_string('@'), CommandKeys::CHAR_DUMP));
   command_mapping.insert(make_pair(Integer::to_string('_'), CommandKeys::PRAY));
-  command_mapping.insert(make_pair(Integer::to_string('W'), CommandKeys::MELEE_WEAPON_INFO));
-  command_mapping.insert(make_pair(Integer::to_string('R'), CommandKeys::RANGED_WEAPON_INFO));
   command_mapping.insert(make_pair(Integer::to_string('L'), CommandKeys::SELECT_TILE));
   command_mapping.insert(make_pair(Integer::to_string('f'), CommandKeys::FIRE_MISSILE));
   command_mapping.insert(make_pair(Integer::to_string('D'), CommandKeys::QUAFF)); // need 'q' for quests.
   command_mapping.insert(make_pair(Integer::to_string('r'), CommandKeys::READ));
   command_mapping.insert(make_pair(Integer::to_string('$'), CommandKeys::CHECK_CURRENCY));
-  command_mapping.insert(make_pair(Integer::to_string('S'), CommandKeys::SAVE_GAME));
   command_mapping.insert(make_pair(Integer::to_string('e'), CommandKeys::EAT));
   command_mapping.insert(make_pair(Integer::to_string('C'), CommandKeys::CHAT));
   command_mapping.insert(make_pair(Integer::to_string('a'), CommandKeys::APPLY_FEATURE));
@@ -135,17 +149,6 @@ void KeyboardCommandMap::initialize_command_mapping()
   command_mapping.insert(make_pair(Integer::to_string('B'), CommandKeys::BESTIARY));
   command_mapping.insert(make_pair(Integer::to_string('v'), CommandKeys::EVOKE));
   
-  command_mapping.insert(make_pair(Integer::to_string(KEY_F(1)), CommandKeys::SHOW_RESISTANCES));
-  command_mapping.insert(make_pair(Integer::to_string(KEY_F(2)), CommandKeys::SHOW_CONDUCTS));
-
-  // JCD FIXME: When adding Unix support, update this to include whatever
-  // debug flag is needed.
-  #ifdef _DEBUG
-  command_mapping.insert(make_pair(Integer::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
-  #endif
-
-  // Function Keys
-  command_mapping.insert(make_pair(Integer::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses

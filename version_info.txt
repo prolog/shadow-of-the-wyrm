@@ -4,6 +4,16 @@ Savage Lands v0.2.3 "Eadwine"
 - Started work on the documentation, specifically a Nethack-esque guidebook
   explaining the game and describing the basic commands.
 
+  - Created an initial chapter on the game: a basic "why you're here".
+
+  - Created a chapter with information on races, classes, deities, skills, 
+    resistances, and so on.
+
+  - Created a command reference, and also added a separate "quick
+    reference" PDF with just command information.
+
+  - Broke out each chapter into its own TeX file.
+
 - Gave sages access to primordial spells, though they gain fewer castings,
   start learning the spells at a higher level, and don't get access to
   Veil of Shadows.
