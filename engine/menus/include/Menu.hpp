@@ -38,6 +38,12 @@ class Menu
   protected:
     virtual void initialize();
 
+    // Handle adding a component to the current menu - add it, and then if the
+    // current item count has reached the maximum, reset the count, add the
+    // current menu to the list of pages, etc.
+    void add_component(std::vector<MenuComponentPtr>& current_menu, MenuComponentPtr component, int& cnt);
+
+    // Add the current page to the list of pages for this menu.
     void add_page(const std::vector<MenuComponentPtr>& new_page);
 
     // The menu's title.  May be empty (and will be for things like the race/

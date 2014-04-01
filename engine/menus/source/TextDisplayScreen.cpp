@@ -35,16 +35,8 @@ void TextDisplayScreen::initialize(const string& title_sid)
 
     TextComponentPtr current_line = std::make_shared<TextComponent>(text, colour);
 
-    text_menu.push_back(current_line);
     cnt++;
-
-    if (cnt == LINES_DISPLAYABLE_AREA)
-    {
-      cnt = 0;
-
-      add_page(text_menu);
-      text_menu.clear();
-    }
+    add_component(text_menu, current_line, cnt);
   }
 
   add_page(text_menu);
