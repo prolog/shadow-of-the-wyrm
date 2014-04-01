@@ -123,6 +123,21 @@ string Menu::prompt()
   return empty_str;
 }
 
+// Can't increment cnt in here because the MenuComponentPtr may span
+// multiple lines - e.g., an options component with several values.
+void Menu::add_component(vector<MenuComponentPtr>& current_menu, MenuComponentPtr component, int& cnt)
+{
+  if (cnt == LINES_DISPLAYABLE_AREA)
+  {
+    cnt = 0;
+
+    add_page(current_menu);
+    current_menu.clear();
+  }
+
+  current_menu.push_back(component);
+}
+
 void Menu::add_page(const vector<MenuComponentPtr>& new_page)
 {
   components.push_back(new_page);

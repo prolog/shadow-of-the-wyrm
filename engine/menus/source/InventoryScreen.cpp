@@ -96,18 +96,3 @@ void InventoryScreen::initialize()
   line_increment = 1;
 }
 
-// JCD FIXME: Once this works, add it to Menu, test with TextDisplayScreen, etc.
-// Can't increment cnt in here because the MenuComponentPtr may span
-// multiple lines - e.g., an options component with several values.
-void InventoryScreen::add_component(vector<MenuComponentPtr>& current_menu, MenuComponentPtr component, int& cnt)
-{
-  if (cnt == LINES_DISPLAYABLE_AREA)
-  {
-    cnt = 0;
-
-    add_page(current_menu);
-    current_menu.clear();
-  }
-
-  current_menu.push_back(component);
-}
