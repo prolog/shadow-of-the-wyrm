@@ -88,16 +88,16 @@ void SpellSelectionScreen::initialize()
 
         i++;
 
-        if (i == SPELLS_PER_PAGE)
+        add_component(spell_menu, options, i);
+        options = std::make_shared<OptionsComponent>();
+
+        // If adding the component caused us to reset the page, be sure
+        // to add the menu selection, clear the selection map, and recreate
+        // the options component.
+        if (i == 0)
         {
           menu_selection_to_spell_id_map.push_back(selection_map);
-          spell_menu.push_back(options);
-          add_page(spell_menu);
-
-          spell_menu.clear();
           selection_map.clear();
-          options = std::make_shared<OptionsComponent>();
-          i = 0;
         }
       }
     }
