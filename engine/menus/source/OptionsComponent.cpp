@@ -25,6 +25,11 @@ int Option::get_id() const
   return id;
 }
 
+char Option::get_id_char() const
+{
+  return (id + 'a');
+}
+
 void Option::set_external_id(const string& new_external_id)
 {
   external_id = new_external_id;

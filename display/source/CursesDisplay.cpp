@@ -664,32 +664,6 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
   }
 }
 
-// Get a somewhat nice (it's ASCII...) option.
-void CursesDisplay::format_option(const int incr, TextComponentPtr option_text, const string& option_desc, const bool show_desc) const
-{
-  char ascii_letter = 'a';
-  ascii_letter += incr;
-
-  if (option_text != nullptr)
-  {
-    vector<pair<string, Colour>> text = option_text->get_text();
-
-    if (!text.empty())
-    {
-      string formatted_option = "[" + Char::to_string(ascii_letter) + "] " + text.at(0).first;
-      text[0].first = formatted_option;
-
-      if (show_desc && !option_desc.empty())
-      {
-        string option_desc_with_dash = " - " + option_desc;
-        text.push_back(make_pair(option_desc_with_dash, text.at(text.size()-1).second));
-      }
-
-      option_text->set_text(text);
-    }
-  }
-}
-
 void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr oc)
 {
   vector<Option> options = oc->get_options();
@@ -718,14 +692,21 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
         option_desc = option_descriptions.at(i);
       }
 
-      format_option(current_option.get_id(), option_text, option_desc, show_desc);
-
       enable_colour(option_colour, window);
+
+      ostringstream display_option;
+      display_option << "  [" << current_option.get_id_char() << "] ";
+
+      int ocol = *col;
+      mvwprintw(window, *row, ocol, display_option.str().c_str());
+      
+      getyx(window, *row, ocol);
+
       TextComponentPtr text = current_option.get_description();
 
       // JCD FIXME make 1 a constant later -
       // there should always be a single line break between options.
-      display_text_component(window, row, col, text, 1);
+      display_text_component(window, row, &ocol, text, 1);
       disable_colour(option_colour, window);
 
       options_added++;
