@@ -19,6 +19,9 @@ class Option
     void set_id(const int new_id);
     int get_id() const;
 
+    // The char to display when displaying the option in the UI - e.g., 'a', 'e'
+    char get_id_char() const;
+
     // An identifier in some other collection.  For example, an option might
     // refer to a particular item, or creature, etc.
     void set_external_id(const std::string& new_external_id);

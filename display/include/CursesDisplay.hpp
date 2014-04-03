@@ -81,9 +81,6 @@ class CursesDisplay : public Display
     // Clear the message buffer.
     int clear_message_buffer();
 
-    // Make the option look a little nicer.
-    void format_option(const int option_num, TextComponentPtr option_name, const std::string& option_desc, const bool show_desc) const;
-
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
     void display_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
