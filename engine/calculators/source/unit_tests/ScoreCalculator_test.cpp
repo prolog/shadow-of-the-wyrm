@@ -31,3 +31,15 @@ TEST(SL_Engine_Calculators_ScoreCalculator, currency_component)
   EXPECT_EQ(12345, sc.calculate_score(cp));
 }
 
+TEST(SL_Engine_Calculators_ScoreCalculator, level_component)
+{
+  Creature c;
+  CreaturePtr cp(new Creature(c));
+
+  Statistic level(36);
+  cp->set_level(level);
+
+  ScoreCalculator sc;
+
+  EXPECT_EQ(3600, sc.calculate_score(cp));
+}

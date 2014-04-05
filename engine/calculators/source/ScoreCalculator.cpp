@@ -10,6 +10,7 @@ ulonglong ScoreCalculator::calculate_score(CreaturePtr creature)
     update_score_end_boss(creature, score);
     update_score_currency(creature, score);
     update_score_experience(creature, score);
+    update_score_level(creature, score);
   }
 
   return score;
@@ -43,6 +44,17 @@ void ScoreCalculator::update_score_experience(CreaturePtr creature, ulonglong& s
   uint exp = creature->get_experience_points();
 
   // ...
+}
+
+// If the player gained levels, count that.
+void ScoreCalculator::update_score_level(CreaturePtr creature, ulonglong& score)
+{
+  uint current_level = creature->get_level().get_current();
+
+  if (current_level > 1)
+  {
+    score += (current_level * ScoreConstants::LEVEL_MULTIPLIER);
+  }
 }
 
 #ifdef UNIT_TESTS
