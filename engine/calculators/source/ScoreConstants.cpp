@@ -6,3 +6,6 @@
 // Did the player win?
 const uint ScoreConstants::END_BOSS_BONUS = 500000;
 
+// How much is each level worth?
+const uint ScoreConstants::LEVEL_MULTIPLIER = 100;
+
