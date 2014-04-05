@@ -10964,7 +10964,7 @@
 			<Evade>20</Evade>
 			<Soak>0</Soak>
 		</Creature>
-		<Creature id="amaurosis">
+		<Creature id="end_boss">
 			<RaceID>_dragon</RaceID>
 			<ShortDescriptionSID>AMAUROSIS_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>AMAUROSIS_DESCRIPTION_SID</DescriptionSID>

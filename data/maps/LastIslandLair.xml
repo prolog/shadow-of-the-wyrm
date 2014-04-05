@@ -33,7 +33,7 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
-				<ID>amaurosis</ID>
+				<ID>end_boss</ID>
 				<Coord>
 					<Row>9</Row>
 					<Col>26</Col>

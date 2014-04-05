@@ -2982,6 +2982,12 @@
     <ClInclude Include="engine\menus\include\InventoryScreen.hpp">
       <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\ScoreConstants.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5716,6 +5722,15 @@
     </ClCompile>
     <ClCompile Include="engine\menus\source\InventoryScreen.cpp">
       <Filter>Source Files\engine\menus\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ScoreCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ScoreCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\ScoreConstants.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
