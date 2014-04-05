@@ -223,6 +223,8 @@
     <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ISkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ScoreConstants.hpp" />
     <ClInclude Include="engine\calculators\include\StatusEffectCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\LightMeleeAndRangedWeaponToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\MagicalAttackSpeedCalculator.hpp" />
@@ -1035,6 +1037,8 @@
     <ClCompile Include="engine\calculators\source\RangedPhysicalDamageCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\RegularHitTypeCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ResistancesCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ScoreCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ScoreConstants.cpp" />
     <ClCompile Include="engine\calculators\source\SecondaryPhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SkillMarkerFactory.cpp" />
     <ClCompile Include="engine\calculators\source\SkillsCalculator.cpp" />
@@ -1150,6 +1154,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\ScoreCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\SkillsCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
