@@ -76,7 +76,7 @@ TEST(SL_Engine_Calculator_ScoreCalculator, artifact_component)
 
   Inventory& inv = cp->get_inventory();
   inv.add(w1);
-  inv.add(w2);
+  cp->get_equipment().set_item(w2, EQUIPMENT_WORN_WIELDED);
 
   ScoreCalculator sc;
 
@@ -107,7 +107,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
   Inventory& inv = cp->get_inventory();
   inv.add(currency);
   inv.add(w1);
-  inv.add(w2);
+  cp->get_equipment().set_item(w2, EQUIPMENT_WORN_WIELDED);
 
   // end boss
   Mortuary& m = cp->get_mortuary_ref();
