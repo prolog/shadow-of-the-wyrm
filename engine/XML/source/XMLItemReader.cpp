@@ -48,6 +48,14 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     }
     item->set_unidentified_usage_description_sid(unidentified_usage_description_sid);
 
+    XMLNode value_node = XMLUtils::get_next_element_by_local_name(item_node, "Value");
+    if (!value_node.is_null())
+    {
+      uint value = static_cast<uint>(XMLUtils::get_node_int_value(value_node, 0));
+
+      item->set_value(value);
+    }
+
     XMLNode weight_node = XMLUtils::get_next_element_by_local_name(item_node, "Weight");
     
     if (!weight_node.is_null())
