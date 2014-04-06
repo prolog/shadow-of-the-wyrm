@@ -27,6 +27,13 @@ Savage Lands v0.2.3 "Eadwine"
   This simplified the work that the CursesDisplay was doing and allowed the
   deletion of a member function.
 
+- Added a value attribute to items in-game - there was XML support for
+  this, but I apparently forgot to add it to the Item itself.
+
+- Started work on the score file.  Created a score calculator, and created
+  a score algorithm that takes into account experience points, total level,
+  any artifacts and their values, and whether the end boss was killed.
+
 - Misc bug fixes: fixed a paging issue where the option (e.g., "[a]") could
   display several times.
 
