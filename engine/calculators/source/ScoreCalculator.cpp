@@ -1,6 +1,8 @@
 #include "ScoreCalculator.hpp"
 #include "ScoreConstants.hpp"
 
+using namespace std;
+
 ulonglong ScoreCalculator::calculate_score(CreaturePtr creature)
 {
   ulonglong score = 0;
@@ -42,8 +44,63 @@ void ScoreCalculator::update_score_currency(CreaturePtr creature, ulonglong& sco
 void ScoreCalculator::update_score_experience(CreaturePtr creature, ulonglong& score)
 {
   uint exp = creature->get_experience_points();
+  uint exp_score = 0;
 
-  // ...
+  // For each tier, calculate how many experience points over that tier the
+  // player has, multiply that by the tier multiplier, and add that to the
+  // score.
+  //
+  // For example, say the player has 400000 experience points.
+  //
+  // For having over 100000 points, the player gets 0.1 pts per point
+  // over: (400000 - 100000) = 300000 * 0.2 = 30000
+  //
+  // For having over 10000 points, the player gets 0.2 pts per point
+  // over: 90000 over = 90000 * 0.2 = 18000
+  //
+  // For having over 0 points, the player gets 1 point per, so
+  // 10000.
+  //
+  // Total is 30000 + 18000 + 10000 = 58000.
+  vector<pair<uint, double>> exp_tiers = ScoreConstants::EXPERIENCE_TIER_MULTIPLIERS;
+
+  // Make sure it's in descending order, so that we look at the higher
+  // tiers first, otherwise, the algorithm below won't work.
+  sort(exp_tiers.begin(), exp_tiers.end(), greater<pair<int, double>>());
+  size_t num_tiers = exp_tiers.size();
+
+  for (uint i = 0; i < num_tiers; i++)
+  {
+    pair<uint, double> current_tier = exp_tiers.at(i);
+    int next_tier_amount = 0;
+
+    uint tier_amount = current_tier.first;
+    double exp_multiplier = current_tier.second;
+
+    if (i < (num_tiers - 1))
+    {
+      next_tier_amount = exp_tiers.at(i+1).first;
+    }
+
+    if (exp < tier_amount)
+    {
+      continue;
+    }
+
+    if (exp > tier_amount)
+    {
+      exp = exp - tier_amount;
+    }
+    else if (exp == tier_amount)
+    {
+      exp = tier_amount - next_tier_amount;
+    }
+    
+    exp_score += static_cast<int>(exp * exp_multiplier);
+    exp = tier_amount;
+  }
+
+  score += exp_score;
 }
 
 // If the player gained levels, count that.
