@@ -13,6 +13,7 @@ ulonglong ScoreCalculator::calculate_score(CreaturePtr creature)
     update_score_currency(creature, score);
     update_score_experience(creature, score);
     update_score_level(creature, score);
+    update_score_artifacts(creature, score);
   }
 
   return score;
@@ -112,6 +113,38 @@ void ScoreCalculator::update_score_level(CreaturePtr creature, ulonglong& score)
   {
     score += (current_level * ScoreConstants::LEVEL_MULTIPLIER);
   }
+}
+
+// For each artifact collected, add its value to the score.
+void ScoreCalculator::update_score_artifacts(CreaturePtr creature, ulonglong& score)
+{
+  ulonglong eq_score = 0;
+
+  Equipment& eq = creature->get_equipment();
+  Inventory& inv = creature->get_inventory();
+
+  EquipmentMap em = eq.get_equipment();
+
+  for (const auto& eq_pair : em)
+  {
+    ItemPtr item = eq_pair.second;
+
+    if (item != nullptr && item->get_artifact())
+    {
+      eq_score += item->get_value();
+    }
+  }
+
+  list<ItemPtr> items = inv.get_items_cref();
+  for (ItemPtr item : items)
+  {
+    if (item != nullptr && item->get_artifact())
+    {
+      eq_score += item->get_value();
+    }
+  }
+
+  score += eq_score;
 }
 
 #ifdef UNIT_TESTS

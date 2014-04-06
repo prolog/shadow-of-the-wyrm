@@ -50,6 +50,7 @@ bool Item::operator==(const Item& i) const
   result = result && (unidentified_usage_description_sid == i.unidentified_usage_description_sid);
   result = result && (description_sid == i.description_sid);
   result = result && (unidentified_description_sid == i.unidentified_description_sid);
+  result = result && (value == i.value);
   result = result && (weight == i.weight);
   result = result && (readable == i.readable);
   result = result && (worn_location == i.worn_location);
@@ -159,6 +160,16 @@ void Item::set_readable(const bool new_readable)
 bool Item::get_readable() const
 {
   return readable;
+}
+
+void Item::set_value(const uint new_value)
+{
+  value = new_value;
+}
+
+uint Item::get_value() const
+{
+  return value;
 }
 
 void Item::set_weight(const Weight& new_weight)
@@ -290,6 +301,7 @@ bool Item::matches(std::shared_ptr<Item> i)
     match = match && (usage_description_sid == i->get_usage_description_sid());
     match = match && (description_sid       == i->get_description_sid()      );
     match = match && (status_identified     == i->get_status_identified()    );
+    match = match && (value                 == i->get_value()                );
     match = match && (weight.get_weight()   == i->get_weight().get_weight()  );
     match = match && (worn_location         == i->get_worn_location()        );
     match = match && (status                == i->get_status()               );
@@ -506,6 +518,7 @@ bool Item::serialize(ostream& stream) const
   Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, unidentified_usage_description_sid);
   Serialize::write_string(stream, unidentified_description_sid);
+  Serialize::write_uint(stream, value);
 
   weight.serialize(stream);
 
@@ -538,6 +551,7 @@ bool Item::deserialize(istream& stream)
   Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, unidentified_usage_description_sid);
   Serialize::read_string(stream, unidentified_description_sid);
+  Serialize::read_uint(stream, value);
 
   weight.deserialize(stream);
 

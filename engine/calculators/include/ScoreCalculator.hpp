@@ -13,5 +13,6 @@ class ScoreCalculator
     void update_score_currency(CreaturePtr creature, ulonglong& score);
     void update_score_experience(CreaturePtr creature, ulonglong& score);
     void update_score_level(CreaturePtr creature, ulonglong& score);
+    void update_score_artifacts(CreaturePtr creature, ulonglong& score);
 };
 

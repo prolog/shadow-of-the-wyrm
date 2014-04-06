@@ -63,6 +63,9 @@ class Item : public ISerializable
     virtual void set_readable(const bool new_readable);
     virtual bool get_readable() const;
     
+    virtual void set_value(const uint new_value);
+    virtual uint get_value() const;
+
     virtual void set_weight(const Weight& new_weight);
     virtual Weight get_weight() const;
     
@@ -157,6 +160,7 @@ class Item : public ISerializable
     std::string description_sid; // the short description is displayed on the inventory and equipment screens.
     std::string unidentified_usage_description_sid; // the usage description seen when unidentified
     std::string unidentified_description_sid; // the description seen when the item is unidentified
+    uint value;
     Weight weight;
     bool readable;
     EquipmentWornLocation worn_location;

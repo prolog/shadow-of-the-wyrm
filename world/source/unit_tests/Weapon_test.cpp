@@ -20,6 +20,7 @@ TEST(SL_World_Weapon, saveload)
   m.set_to_hit(17);
   m.set_addl_damage(4);
   r.set_quantity(1333);
+  r.set_value(444);
   r.set_glowing(true);
 
   vector<string> slay_races;
@@ -42,4 +43,5 @@ TEST(SL_World_Weapon, saveload)
   EXPECT_TRUE(find(slay_races.begin(), slay_races.end(), "elf") != slay_races.end());
   EXPECT_EQ(17, m2.get_to_hit());
   EXPECT_EQ(4, m2.get_addl_damage());
+  EXPECT_EQ(444, r2.get_value());
 }
