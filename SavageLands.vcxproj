@@ -484,6 +484,7 @@
     <ClInclude Include="engine\include\FileWriter.hpp" />
     <ClInclude Include="engine\include\Game.hpp" />
     <ClInclude Include="engine\include\GameUtils.hpp" />
+    <ClInclude Include="engine\include\HighScoreConstants.hpp" />
     <ClInclude Include="engine\include\IMessageManager.hpp" />
     <ClInclude Include="engine\include\Log.hpp" />
     <ClInclude Include="engine\include\Message.hpp" />
@@ -499,6 +500,8 @@
     <ClInclude Include="engine\include\ReligionManager.hpp" />
     <ClInclude Include="engine\include\RNG.hpp" />
     <ClInclude Include="engine\include\SavageLandsEngine.hpp" />
+    <ClInclude Include="engine\include\ScoreFile.hpp" />
+    <ClInclude Include="engine\include\ScoreFileEntry.hpp" />
     <ClInclude Include="engine\include\SelectionUtils.hpp" />
     <ClInclude Include="engine\items\include\EdibleItemFilter.hpp" />
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
@@ -1652,6 +1655,7 @@
     <ClCompile Include="engine\source\FileWriter.cpp" />
     <ClCompile Include="engine\source\Game.cpp" />
     <ClCompile Include="engine\source\GameUtils.cpp" />
+    <ClCompile Include="engine\source\HighScoreConstants.cpp" />
     <ClCompile Include="engine\source\Log.cpp" />
     <ClCompile Include="engine\source\Message.cpp" />
     <ClCompile Include="engine\source\MessageManager.cpp" />
@@ -1665,6 +1669,8 @@
     <ClCompile Include="engine\source\ReligionManager.cpp" />
     <ClCompile Include="engine\source\RNG.cpp" />
     <ClCompile Include="engine\source\SavageLandsEngine.cpp" />
+    <ClCompile Include="engine\source\ScoreFile.cpp" />
+    <ClCompile Include="engine\source\ScoreFileEntry.cpp" />
     <ClCompile Include="engine\source\SelectionUtils.cpp" />
     <ClCompile Include="engine\source\unit_tests\Game_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1690,6 +1696,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\ScoreFileEntry_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\strings\source\ActionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ColourTextKeys.cpp" />

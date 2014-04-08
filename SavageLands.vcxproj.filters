@@ -2988,6 +2988,15 @@
     <ClInclude Include="engine\calculators\include\ScoreConstants.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\HighScoreConstants.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\ScoreFile.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\include\ScoreFileEntry.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5731,6 +5740,18 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\ScoreConstants.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\HighScoreConstants.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\ScoreFile.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\ScoreFileEntry.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\ScoreFileEntry_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
