@@ -689,6 +689,12 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       if (show_desc && (i < num_option_desc))
       {
         option_desc = option_descriptions.at(i);
+
+        if (!option_desc.empty())
+        {
+          option_text->add_text(" - ");
+          option_text->add_text(option_desc);
+        }
       }
 
       enable_colour(option_colour, window);

@@ -47,7 +47,7 @@ void Option::set_description(const string& new_description)
 
 TextComponentPtr Option::get_description() const
 {
-  return description;
+  return TextComponentPtr(description);
 }
 
 void Option::set_colour(const Colour new_colour)
