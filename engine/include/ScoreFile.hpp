@@ -17,6 +17,8 @@ class ScoreFile
 
     bool write(CreaturePtr creature);
 
+    std::string str(CreaturePtr creature) const;
+
   protected:
     bool version_ok(std::istream& stream);
     bool read_file(std::istream& stream);

@@ -77,6 +77,8 @@ class Game : public ISerializable
     void go(); // main game loop
     void stop_playing(); // end the game
     bool should_keep_playing() const; // Check to see if the "game over" flag's been set.
+    void set_check_scores(const bool new_check_scores);
+    bool should_check_scores() const;
 
     // Update the physical display
     void update_display(CreaturePtr creature, MapPtr map, MapPtr fov_sub_map, const bool reloaded_game);
@@ -142,9 +144,13 @@ class Game : public ISerializable
     
     // Process the elapsed time: update the calendar, and notify any time observers.
     void process_elapsed_time(Calendar& calendar, const ActionCost& next_action_cost);
+
+    // Update the scorefile if necessary, when leaving the game.
+    void update_score_file_if_necessary(CreaturePtr creature);
     
     bool keep_playing;
     bool reload_game_loop;
+    bool check_scores;
 
     // The races, classes, and items are not the actual in-game items;
     // they're the template upon which the in-game items are built.

@@ -1,6 +1,8 @@
 #include "CompilationDetails.hpp"
 #include "HighScoreConstants.hpp"
+#include "ScoreCalculator.hpp"
 #include "ScoreFile.hpp"
+#include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -106,6 +108,39 @@ bool ScoreFile::read_file(istream& score_file)
 // was written, false otherwise.
 bool ScoreFile::write(CreaturePtr creature)
 {
-  bool result = true;
+  bool result = false;
+
+  if (creature != nullptr)
+  {
+    auto r_iter = entries.rbegin();
+    ScoreCalculator sc;
+
+    ulonglong cr_score = sc.calculate_score(creature);
+
+    if (entries.empty() || (cr_score > r_iter->first))
+    {
+      ScoreFileEntry sfe(cr_score);
+      entries.insert(make_pair(cr_score, sfe));
+
+      if (entries.size() > HighScoreConstants::MAX_ENTRIES)
+      {
+        // We've gone over the limit - remove the last item.
+        entries.erase(boost::prior(entries.end()));
+      }
+    }
+
+    result = true;
+  }
+
   return result;
+}
+
+// Get the scores surrounding a particular creature.
+string ScoreFile::str(CreaturePtr creature) const
+{
+  ostringstream ss;
+
+  ss << ScoreTextKeys::get_farewell_text_message(creature->get_name());
+
+  return ss.str();
 }

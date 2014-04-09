@@ -25,6 +25,7 @@
 #include "MapTranslator.hpp"
 #include "DisplayStatistics.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ScoreFile.hpp"
 #include "Serialize.hpp"
 #include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
@@ -259,6 +260,8 @@ void Game::go()
   game_command_factory = std::make_shared<CommandFactory>();
   game_kb_command_map = std::make_shared<KeyboardCommandMap>();
 
+  set_check_scores(true);
+
   MapPtr current_map = get_current_map();
   CreaturePtr current_player = get_current_player();
 
@@ -355,6 +358,49 @@ void Game::go()
           reloaded_game = false;
         }
       }
+    }
+  }
+
+  // We're done - clear the display so that score information (or error
+  // information, it is me coding this, after all) can be shown.
+  display->clear_display();
+  display->redraw();
+  update_score_file_if_necessary(current_player);
+}
+
+void Game::set_check_scores(const bool new_check_scores)
+{
+  check_scores = new_check_scores;
+}
+
+bool Game::should_check_scores() const
+{
+  return check_scores;
+}
+
+// Update score files if the game is being exited but not saved
+// (e.g.: creature killed, wins, etc)
+void Game::update_score_file_if_necessary(CreaturePtr current_player)
+{
+  // Do scorefile wizardry? (is the game being exited for reasons other
+  // than saving?)
+  if (should_check_scores())
+  {
+    try
+    {
+      ScoreFile sf;
+      bool sf_updated = sf.write(current_player);
+
+      if (sf_updated)
+      {
+        string score_str = sf.str(current_player);
+
+        cout << score_str << endl;
+      }
+    }
+    catch (const std::runtime_error& e)
+    {
+      cout << e.what() << endl;
     }
   }
 }

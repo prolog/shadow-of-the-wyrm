@@ -259,7 +259,6 @@ bool CursesDisplay::create()
  ***************************************************************/
 void CursesDisplay::tear_down()
 {
-  clear_display();
   refresh();
   endwin();
 }

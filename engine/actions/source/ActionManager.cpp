@@ -498,6 +498,9 @@ ActionCost ActionManager::fire_missile(CreaturePtr creature)
 
 ActionCost ActionManager::save(CreaturePtr creature)
 {
+  Game& game = Game::instance();
+  game.set_check_scores(false);
+
   Serialization::save(creature);
   quit(creature);
   
