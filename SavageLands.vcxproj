@@ -593,6 +593,7 @@
     <ClInclude Include="engine\strings\include\PromptTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\RangedCombatTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ResistanceTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\ScoreTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SeasonTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SizeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\SkillTextKeys.hpp" />
@@ -1725,6 +1726,7 @@
     <ClCompile Include="engine\strings\source\PromptTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\RangedCombatTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ResistanceTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\ScoreTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SeasonTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SizeTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\SkillTextKeys.cpp" />

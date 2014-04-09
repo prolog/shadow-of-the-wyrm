@@ -67,8 +67,6 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
 
   if (row_length < 0 || col_length < 0)
   {
-    cout << "Ended here." << endl;
-        cout << "Row length: " << row_length << ", Col length: " << col_length << endl;
     return;
   }
   else
@@ -77,7 +75,6 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
     TilePtr tile = map->at(current_row, current_col);
     if (tile->get_tile_type() == TILE_TYPE_DUNGEON)
     {
-      cout << "Ended here!" << endl;
       return;
     }
 
@@ -90,10 +87,8 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
     {
       // North goes to east.
       case CARDINAL_DIRECTION_NORTH:
-        cout << "North" << endl;
         row_or_col_current = current_row;
         new_row_length = row_length - SPACE_BETWEEN_SPIRALS;
-        cout << "Row length: " << row_length << ", Col length: " << col_length;
         while (current <= row_length)
         {
           tile = tg.generate(TILE_TYPE_DUNGEON);
@@ -102,12 +97,10 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
           current++;
         }
 
-        cout << "Current row: " << row_or_col_current << ", Current col: " << current_col << endl;
         generate_spiral(map, row_or_col_current, current_col, CARDINAL_DIRECTION_EAST, new_row_length, col_length);
         break;
       // South goes to west.
       case CARDINAL_DIRECTION_SOUTH:
-        cout << "South" << endl;
         row_or_col_current = current_row;
         new_row_length = row_length - SPACE_BETWEEN_SPIRALS;
         while (current <= row_length)
@@ -118,12 +111,10 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
           current++;
         }
 
-        cout << "Current row: " << row_or_col_current << ", Current col: " << current_col << endl;
         generate_spiral(map, row_or_col_current, current_col, CARDINAL_DIRECTION_WEST, new_row_length, col_length);
         break;
       // East goes to south.
       case CARDINAL_DIRECTION_EAST:
-        cout << "East" << endl;
         row_or_col_current = current_col;
         new_col_length = col_length - SPACE_BETWEEN_SPIRALS;
         while (current <= col_length)
@@ -134,12 +125,10 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
           current++;
         }
 
-        cout << "Current row: " << current_row << ", Current col: " << row_or_col_current << endl;
         generate_spiral(map, current_row, row_or_col_current, CARDINAL_DIRECTION_SOUTH, row_length, new_col_length);
         break;
       // West goes to north.
       case CARDINAL_DIRECTION_WEST:
-        cout << "West" << endl;
         row_or_col_current = current_col;
         new_col_length = col_length - SPACE_BETWEEN_SPIRALS;
         while (current <= col_length)
@@ -150,7 +139,6 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
           current++;
         }
 
-        cout << "Current row: " << current_row << ", Current col: " << row_or_col_current << endl;
         generate_spiral(map, current_row, row_or_col_current, CARDINAL_DIRECTION_NORTH, row_length, new_col_length);
         break;
       default:

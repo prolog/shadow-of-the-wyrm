@@ -2997,6 +2997,9 @@
     <ClInclude Include="engine\include\ScoreFileEntry.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\strings\include\ScoreTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5752,6 +5755,9 @@
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\ScoreFileEntry_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\ScoreTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
