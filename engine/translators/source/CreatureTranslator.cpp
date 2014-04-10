@@ -1,4 +1,5 @@
 #include "Creature.hpp"
+#include "CreatureUtils.hpp"
 #include "Conversion.hpp"
 #include "DisplayStatistics.hpp"
 #include "ExperienceManager.hpp"
@@ -25,7 +26,7 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
   DisplayStatistics ds;
 
   string name          = get_display_name(creature);
-  string synopsis      = get_display_synopsis(creature);
+  string synopsis      = CreatureUtils::get_race_class_synopsis(creature);
 
   pair<string, Colour> strength      = get_display_strength(creature);
   pair<string, Colour> dexterity     = get_display_dexterity(creature);
@@ -78,30 +79,6 @@ string CreatureTranslator::get_display_name(const CreaturePtr& c)
   name = String::add_trailing_spaces(name, Naming::get_max_name_size());
 
   return name;
-}
-
-string CreatureTranslator::get_display_synopsis(const CreaturePtr& c)
-{
-  string synopsis;
-  Game& game = Game::instance();
-
-  string race_id   = c->get_race_id();
-  string class_id  = c->get_class_id();
-  RaceMap races    = game.get_races_ref();
-  ClassMap classes = game.get_classes_ref();
-
-  RacePtr race = races[race_id];
-  ClassPtr current_class = classes[class_id];
-
-  if (race && current_class)
-  {
-    synopsis = StringTable::get(race->get_race_abbreviation_sid()) + StringTable::get(current_class->get_class_abbreviation_sid());
-    synopsis = String::add_trailing_spaces(synopsis, 5);
-  }
-
-  synopsis = String::add_trailing_spaces(synopsis, 5);
-
-  return synopsis;
 }
 
 pair<string, Colour> CreatureTranslator::get_display_strength(const CreaturePtr& c)

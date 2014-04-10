@@ -3000,6 +3000,9 @@
     <ClInclude Include="engine\strings\include\ScoreTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\CreatureUtils.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5758,6 +5761,9 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\ScoreTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\CreatureUtils.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

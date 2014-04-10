@@ -1,4 +1,6 @@
+#include <boost/filesystem.hpp>
 #include "CompilationDetails.hpp"
+#include "CreatureUtils.hpp"
 #include "HighScoreConstants.hpp"
 #include "ScoreCalculator.hpp"
 #include "ScoreFile.hpp"
@@ -13,9 +15,10 @@ ScoreFile::ScoreFile()
 {
   ifstream score_file(HighScoreConstants::FILENAME);
 
-  // File may not exist - that's fine.
-  if (score_file.good())
+  if (boost::filesystem::exists(HighScoreConstants::FILENAME)) 
   {
+    ifstream score_file;
+
     score_file.open(HighScoreConstants::FILENAME, ios_base::in | ios_base::binary);
 
     if (!(score_file.is_open() && score_file.good()))
@@ -119,7 +122,7 @@ bool ScoreFile::write(CreaturePtr creature)
 
     if (entries.empty() || (cr_score > r_iter->first))
     {
-      ScoreFileEntry sfe(cr_score);
+      ScoreFileEntry sfe(cr_score, creature->get_name(), CreatureUtils::get_race_class_synopsis(creature));
       entries.insert(make_pair(cr_score, sfe));
 
       if (entries.size() > HighScoreConstants::MAX_ENTRIES)
