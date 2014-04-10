@@ -23,6 +23,6 @@ class ScoreFile
     bool version_ok(std::istream& stream);
     bool read_file(std::istream& stream);
 
-    std::multimap<ulonglong, ScoreFileEntry> entries;
+    std::vector<ScoreFileEntry> entries;
 };
 
