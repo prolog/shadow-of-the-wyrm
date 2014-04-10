@@ -1,13 +1,18 @@
+#include <boost/algorithm/string.hpp>
 #include <boost/filesystem.hpp>
 #include "CompilationDetails.hpp"
+#include "Conversion.hpp"
 #include "CreatureUtils.hpp"
 #include "HighScoreConstants.hpp"
 #include "ScoreCalculator.hpp"
 #include "ScoreFile.hpp"
 #include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
+#include "StringTable.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
+using namespace boost::algorithm;
 
 // Read the score file into the internal data structure - throw an exception
 // if the file can't be read.
@@ -60,7 +65,7 @@ ScoreFile::~ScoreFile()
   {
     if (cur_count < num_entries)
     {
-      score_entry.second.serialize(score_file);
+      score_entry.serialize(score_file);
     }
     else
     {
@@ -99,7 +104,7 @@ bool ScoreFile::read_file(istream& score_file)
     ScoreFileEntry sfe;
 
     sfe.deserialize(score_file);
-    entries.insert(make_pair(sfe.get_score(), sfe));
+    entries.push_back(sfe);
 
     cur_entry++;
   }
@@ -115,15 +120,17 @@ bool ScoreFile::write(CreaturePtr creature)
 
   if (creature != nullptr)
   {
-    auto r_iter = entries.rbegin();
     ScoreCalculator sc;
 
     ulonglong cr_score = sc.calculate_score(creature);
 
-    if (entries.empty() || (cr_score > r_iter->first))
+    if (entries.empty() || (cr_score > entries.back().get_score()))
     {
-      ScoreFileEntry sfe(cr_score, creature->get_name(), CreatureUtils::get_race_class_synopsis(creature));
-      entries.insert(make_pair(cr_score, sfe));
+      ScoreFileEntry sfe(cr_score, creature->get_name(), creature->get_level().get_current(), CreatureUtils::get_race_class_synopsis(creature));
+      entries.push_back(sfe);
+
+      // Sort descending.
+      sort(entries.rbegin(), entries.rend());
 
       if (entries.size() > HighScoreConstants::MAX_ENTRIES)
       {
@@ -143,7 +150,19 @@ string ScoreFile::str(CreaturePtr creature) const
 {
   ostringstream ss;
 
-  ss << ScoreTextKeys::get_farewell_text_message(creature->get_name());
+  ss << ScoreTextKeys::get_farewell_text_message(creature->get_name()) << endl << endl;
+
+  size_t num_entries = entries.size();
+
+  // JCD FIXME - fixed columns, etc.
+  for (uint i = 0; i < num_entries; i++)
+  {
+    ScoreFileEntry sfe = entries.at(i);
+    string race_class_abrv = sfe.get_race_class_abrv();
+    trim(race_class_abrv);
+
+    ss << (i + 1) << ". " << sfe.get_score() << ". " << sfe.get_name() << " - " << StringTable::get(TextKeys::LEVEL_ABRV) << sfe.get_level() << " " << race_class_abrv << "." << endl;
+  }
 
   return ss.str();
 }
