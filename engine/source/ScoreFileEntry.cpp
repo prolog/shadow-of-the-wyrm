@@ -10,14 +10,16 @@ ScoreFileEntry::ScoreFileEntry()
 }
 
 // Construct a score file entry with all required values.
-ScoreFileEntry::ScoreFileEntry(const ulonglong new_score)
-: score(new_score)
+ScoreFileEntry::ScoreFileEntry(const ulonglong new_score, const string& new_name, const string& new_race_class_abrv)
+: score(new_score), name(new_name), race_class_abrv(new_race_class_abrv)
 {
 }
 
 bool ScoreFileEntry::serialize(ostream& stream) const
 {
   Serialize::write_ulonglong(stream, score);
+  Serialize::write_string(stream, name);
+  Serialize::write_string(stream, race_class_abrv);
 
   return true;
 }
@@ -25,6 +27,8 @@ bool ScoreFileEntry::serialize(ostream& stream) const
 bool ScoreFileEntry::deserialize(istream& stream)
 {
   Serialize::read_ulonglong(stream, score);
+  Serialize::read_string(stream, name);
+  Serialize::read_string(stream, race_class_abrv);
 
   return true;
 }
@@ -37,6 +41,16 @@ ClassIdentifier ScoreFileEntry::internal_class_identifier() const
 ulonglong ScoreFileEntry::get_score() const
 {
   return score;
+}
+
+string ScoreFileEntry::get_name() const
+{
+  return name;
+}
+
+string ScoreFileEntry::get_race_class_abrv() const
+{
+  return race_class_abrv;
 }
 
 #ifdef UNIT_TESTS

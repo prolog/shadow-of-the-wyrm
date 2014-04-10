@@ -9,7 +9,7 @@ TEST(SL_Engine_ScoreFileEntry, serialization_id)
 
 TEST(SL_Engine_ScoreFileEntry, saveload)
 {
-  ScoreFileEntry sfe(123456);
+  ScoreFileEntry sfe(123456, "Julian", "HumanNerd");
 
   ostringstream oss;
 
@@ -22,5 +22,7 @@ TEST(SL_Engine_ScoreFileEntry, saveload)
   sfe2.deserialize(iss);
 
   EXPECT_EQ(123456, sfe2.get_score());
+  EXPECT_EQ("Julian", sfe2.get_name());
+  EXPECT_EQ("HumanNerd", sfe2.get_race_class_abrv());
 }
 
