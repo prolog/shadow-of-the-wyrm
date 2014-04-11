@@ -3003,6 +3003,9 @@
     <ClInclude Include="engine\creatures\include\CreatureUtils.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\menus\include\HighScoreScreen.hpp">
+      <Filter>Header Files\engine\menus\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5764,6 +5767,9 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\CreatureUtils.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\menus\source\HighScoreScreen.cpp">
+      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

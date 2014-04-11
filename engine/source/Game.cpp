@@ -14,6 +14,7 @@
 #include "FieldOfViewStrategyFactory.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
+#include "HighScoreScreen.hpp"
 #include "CommandProcessor.hpp"
 #include "CreatureTranslator.hpp"
 #include "ItemSerializationFactory.hpp"
@@ -26,6 +27,7 @@
 #include "DisplayStatistics.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ScoreFile.hpp"
+#include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
 #include "TextMessages.hpp"
 #include "ViewMapTranslator.hpp"
@@ -391,12 +393,13 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
       ScoreFile sf;
       bool sf_updated = sf.write(current_player);
 
-      if (sf_updated)
-      {
-        string score_str = sf.str(current_player);
+      string farewell_msg = ScoreTextKeys::get_farewell_text_message(current_player->get_name());
 
-        cout << score_str << endl;
-      }
+      Game& game = Game::instance();
+      HighScoreScreen hss(game.get_display(), sf.get_entries());
+      hss.display();
+
+      cout << farewell_msg << endl;
     }
     catch (const std::runtime_error& e)
     {
