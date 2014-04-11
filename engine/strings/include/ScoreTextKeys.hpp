@@ -7,6 +7,8 @@ class ScoreTextKeys
   public:
     static std::string get_farewell_text_message(const std::string& name);
 
+    static const std::string SCORE_HIGH_SCORES;
+
   protected:
     ScoreTextKeys();
     ~ScoreTextKeys();

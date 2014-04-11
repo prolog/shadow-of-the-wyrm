@@ -6,10 +6,7 @@
 #include "HighScoreConstants.hpp"
 #include "ScoreCalculator.hpp"
 #include "ScoreFile.hpp"
-#include "ScoreTextKeys.hpp"
 #include "Serialize.hpp"
-#include "StringTable.hpp"
-#include "TextKeys.hpp"
 
 using namespace std;
 using namespace boost::algorithm;
@@ -38,7 +35,7 @@ ScoreFile::ScoreFile()
   }
 }
 
-ScoreFile::~ScoreFile()
+void ScoreFile::save()
 {
   CompilationDetails cd;
 
@@ -83,6 +80,11 @@ bool ScoreFile::version_ok(istream& stream)
   return (version == cd.get_compilation_details_string());
 }
 
+vector<ScoreFileEntry> ScoreFile::get_entries() const
+{
+  return entries;
+}
+
 bool ScoreFile::read_file(istream& score_file)
 {
   // Sanity check - version ok?
@@ -112,8 +114,8 @@ bool ScoreFile::read_file(istream& score_file)
   return score_file.good();
 }
 
-// Write out the creature to the score file - return true if the creature
-// was written, false otherwise.
+// Write out the creature to the score file's data structure.
+// Return true if the creature was added, false if it wasn't.
 bool ScoreFile::write(CreaturePtr creature)
 {
   bool result = false;
@@ -126,7 +128,7 @@ bool ScoreFile::write(CreaturePtr creature)
 
     if (entries.empty() || (cr_score > entries.back().get_score()))
     {
-      ScoreFileEntry sfe(cr_score, creature->get_name(), creature->get_level().get_current(), CreatureUtils::get_race_class_synopsis(creature));
+      ScoreFileEntry sfe(cr_score, creature->get_name(), creature->get_is_player(), creature->get_level().get_current(), CreatureUtils::get_race_class_synopsis(creature));
       entries.push_back(sfe);
 
       // Sort descending.
@@ -143,26 +145,4 @@ bool ScoreFile::write(CreaturePtr creature)
   }
 
   return result;
-}
-
-// Get the scores surrounding a particular creature.
-string ScoreFile::str(CreaturePtr creature) const
-{
-  ostringstream ss;
-
-  ss << ScoreTextKeys::get_farewell_text_message(creature->get_name()) << endl << endl;
-
-  size_t num_entries = entries.size();
-
-  // JCD FIXME - fixed columns, etc.
-  for (uint i = 0; i < num_entries; i++)
-  {
-    ScoreFileEntry sfe = entries.at(i);
-    string race_class_abrv = sfe.get_race_class_abrv();
-    trim(race_class_abrv);
-
-    ss << (i + 1) << ". " << sfe.get_score() << ". " << sfe.get_name() << " - " << StringTable::get(TextKeys::LEVEL_ABRV) << sfe.get_level() << " " << race_class_abrv << "." << endl;
-  }
-
-  return ss.str();
 }

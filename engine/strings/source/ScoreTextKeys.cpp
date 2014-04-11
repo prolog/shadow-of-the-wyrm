@@ -4,6 +4,7 @@
 
 using namespace std;
 
+const string ScoreTextKeys::SCORE_HIGH_SCORES = "SCORE_HIGH_SCORES";
 const string ScoreTextKeys::SCORE_FAREWELL_MESSAGE = "SCORE_FAREWELL_MESSAGE";
 
 ScoreTextKeys::ScoreTextKeys()

@@ -546,6 +546,7 @@
     <ClInclude Include="engine\menus\include\ClassSelectionScreen.hpp" />
     <ClInclude Include="engine\menus\include\DeitySelectionScreen.hpp" />
     <ClInclude Include="engine\menus\include\EquipmentScreen.hpp" />
+    <ClInclude Include="engine\menus\include\HighScoreScreen.hpp" />
     <ClInclude Include="engine\menus\include\InventoryScreen.hpp" />
     <ClInclude Include="engine\menus\include\LoadGameScreen.hpp" />
     <ClInclude Include="engine\menus\include\Menu.hpp" />
@@ -1620,6 +1621,7 @@
     <ClCompile Include="engine\menus\source\ClassSelectionScreen.cpp" />
     <ClCompile Include="engine\menus\source\DeitySelectionScreen.cpp" />
     <ClCompile Include="engine\menus\source\EquipmentScreen.cpp" />
+    <ClCompile Include="engine\menus\source\HighScoreScreen.cpp" />
     <ClCompile Include="engine\menus\source\InventoryScreen.cpp" />
     <ClCompile Include="engine\menus\source\LoadGameScreen.cpp" />
     <ClCompile Include="engine\menus\source\Menu.cpp" />

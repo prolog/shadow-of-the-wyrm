@@ -7,17 +7,18 @@
 // RAII class representing the high score file.  When constructed, the
 // score file will be read (or an exception will be thrown) into a
 // data structure representing the file.  The write operation can be
-// used to attempt to write a creature to the file - it will return
-// true if it was successful, false otherwise.
+// used to attempt to write a creature to the internal data
+// structure - the function will return true if it was successful, false
+// otherwise.
 class ScoreFile
 {
   public:
     ScoreFile();
-    virtual ~ScoreFile();
 
     bool write(CreaturePtr creature);
+    std::vector<ScoreFileEntry> get_entries() const;
 
-    std::string str(CreaturePtr creature) const;
+    void save();
 
   protected:
     bool version_ok(std::istream& stream);

@@ -9,7 +9,7 @@ TEST(SL_Engine_ScoreFileEntry, serialization_id)
 
 TEST(SL_Engine_ScoreFileEntry, saveload)
 {
-  ScoreFileEntry sfe(123456, "Julian", 25, "HumanNerd");
+  ScoreFileEntry sfe(123456, "Julian", true, 25, "HumanNerd");
 
   ostringstream oss;
 
