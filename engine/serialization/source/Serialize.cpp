@@ -9,7 +9,7 @@ void Serialize::write_class_id(ostream& stream, const ClassIdentifier val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {
@@ -43,7 +43,7 @@ void Serialize::write_size_t(ostream& stream, const size_t val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {
@@ -77,7 +77,7 @@ void Serialize::write_bool(ostream& stream, const bool val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {
@@ -111,7 +111,7 @@ void Serialize::write_uchar(ostream& stream, const unsigned char val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {
@@ -145,7 +145,7 @@ void Serialize::write_uint(ostream& stream, const unsigned int val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {
@@ -179,7 +179,7 @@ void Serialize::write_int(ostream& stream, const signed int val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {
@@ -213,7 +213,7 @@ void Serialize::write_ulonglong(ostream& stream, const unsigned long long val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {
@@ -247,7 +247,7 @@ void Serialize::write_float(ostream& stream, const float val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {
@@ -281,7 +281,7 @@ void Serialize::write_double(ostream& stream, const double val)
 {
   if (stream.good())
   {
-    stream.write((char*)&val, sizeof(val));
+    stream.write(reinterpret_cast<const char*>(&val), sizeof(val));
   }
   else
   {

@@ -36,7 +36,7 @@ void ScoreFile::read_score_file()
   {
     ifstream score_file;
 
-    score_file.open(HighScoreConstants::FILENAME, ios_base::in | ios_base::binary);
+    score_file.open(HighScoreConstants::FILENAME, ios_base::binary);
 
     if (!(score_file.is_open() && score_file.good()))
     {
@@ -57,7 +57,7 @@ void ScoreFile::save()
   string version = cd.get_compilation_details_string();
   ofstream score_file;
 
-  score_file.open(HighScoreConstants::FILENAME, ios::out, ios::binary);
+  score_file.open(HighScoreConstants::FILENAME, ios::binary);
 
   if (!score_file.good())
   {
@@ -165,7 +165,7 @@ bool ScoreFile::write(CreaturePtr creature)
       if (entries.size() > HighScoreConstants::MAX_ENTRIES)
       {
         // We've gone over the limit - remove the last item.
-        entries.erase(boost::prior(entries.end()));
+        entries.pop_back();
       }
     }
 
