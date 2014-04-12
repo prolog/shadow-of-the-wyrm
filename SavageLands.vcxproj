@@ -1707,6 +1707,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\ScoreFile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\strings\source\ActionTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ColourTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\CombatTextKeys.cpp" />

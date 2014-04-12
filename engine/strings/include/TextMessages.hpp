@@ -17,6 +17,7 @@ class TextMessages
     static std::string get_action_not_found_message(const std::string& command_action);
     static std::string get_dumping_character_message(const std::string& creature_name);
     static std::string get_sex(const CreatureSex sex);
+    static std::string get_sex_abrv(const CreatureSex sex);
     static std::string get_equipment_location(const EquipmentWornLocation location);
     static std::string get_confirmation_message(const std::string& query_sid);
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);

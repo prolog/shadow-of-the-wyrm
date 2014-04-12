@@ -5771,5 +5771,8 @@
     <ClCompile Include="engine\menus\source\HighScoreScreen.cpp">
       <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\ScoreFile_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

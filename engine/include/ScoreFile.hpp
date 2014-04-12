@@ -14,6 +14,7 @@ class ScoreFile
 {
   public:
     ScoreFile();
+    ScoreFile(const bool read_score_file);
 
     bool write(CreaturePtr creature);
     std::vector<ScoreFileEntry> get_entries() const;
@@ -21,6 +22,8 @@ class ScoreFile
     void save();
 
   protected:
+    void read_score_file();
+
     bool version_ok(std::istream& stream);
     bool read_file(std::istream& stream);
 
