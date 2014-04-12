@@ -19,6 +19,7 @@ class ScoreFile
     bool write(CreaturePtr creature);
     std::vector<ScoreFileEntry> get_entries() const;
 
+    bool is_full() const;
     void save();
 
   protected:

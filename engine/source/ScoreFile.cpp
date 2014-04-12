@@ -100,6 +100,12 @@ vector<ScoreFileEntry> ScoreFile::get_entries() const
   return entries;
 }
 
+// Check to see if the score file has the maximum number of entries.
+bool ScoreFile::is_full() const
+{
+  return (entries.size() >= HighScoreConstants::MAX_ENTRIES);
+}
+
 bool ScoreFile::read_file(istream& score_file)
 {
   // Sanity check - version ok?
@@ -140,8 +146,15 @@ bool ScoreFile::write(CreaturePtr creature)
     ScoreCalculator sc;
 
     ulonglong cr_score = sc.calculate_score(creature);
+    bool sf_full = is_full();
 
-    if (entries.empty() || (cr_score > entries.back().get_score()))
+    // We can write to the score file if one of the following is true:
+    // - There are no entries
+    // - The score file is not full
+    // - The score file is full, but the current creature's score is greater
+    //   than that of the last entry (in this case, after writing the entry
+    //   and re-sorting, drop the last element).
+    if (entries.empty() || !sf_full || (sf_full && cr_score > entries.back().get_score()))
     {
       ScoreFileEntry sfe(cr_score, creature->get_name(), creature->get_sex(), creature->get_is_player(), creature->get_level().get_current(), CreatureUtils::get_race_class_synopsis(creature));
       entries.push_back(sfe);
