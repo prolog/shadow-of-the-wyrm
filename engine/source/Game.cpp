@@ -399,6 +399,8 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
       HighScoreScreen hss(game.get_display(), sf.get_entries());
       hss.display();
 
+      sf.save();
+
       cout << farewell_msg << endl;
     }
     catch (const std::runtime_error& e)

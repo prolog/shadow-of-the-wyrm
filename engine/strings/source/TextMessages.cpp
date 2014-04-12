@@ -106,6 +106,25 @@ string TextMessages::get_sex(const CreatureSex sex)
   return creature_sex;
 }
 
+string TextMessages::get_sex_abrv(const CreatureSex sex)
+{
+  string creature_sex;
+
+  switch (sex)
+  {
+    case CREATURE_SEX_MALE:
+      creature_sex = StringTable::get(TextKeys::SEX_MALE_ABRV);
+      break;
+    case CREATURE_SEX_FEMALE:
+      creature_sex = StringTable::get(TextKeys::SEX_FEMALE_ABRV);
+      break;
+    default:
+      break;
+  }
+
+  return creature_sex;
+}
+
 string TextMessages::get_equipment_location(const EquipmentWornLocation location)
 {
   string equipment_location;

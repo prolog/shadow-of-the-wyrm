@@ -15,9 +15,24 @@ using namespace boost::algorithm;
 // if the file can't be read.
 ScoreFile::ScoreFile()
 {
+  read_score_file();
+}
+
+// Generally, this constructor should only be used e.g. for unit tests where we
+// don't care about the actual score file, just the class functionality.
+ScoreFile::ScoreFile(const bool read_sf)
+{
+  if (read_sf)
+  {
+    read_score_file();
+  }
+}
+
+void ScoreFile::read_score_file()
+{
   ifstream score_file(HighScoreConstants::FILENAME);
 
-  if (boost::filesystem::exists(HighScoreConstants::FILENAME)) 
+  if (boost::filesystem::exists(HighScoreConstants::FILENAME))
   {
     ifstream score_file;
 
@@ -128,7 +143,7 @@ bool ScoreFile::write(CreaturePtr creature)
 
     if (entries.empty() || (cr_score > entries.back().get_score()))
     {
-      ScoreFileEntry sfe(cr_score, creature->get_name(), creature->get_is_player(), creature->get_level().get_current(), CreatureUtils::get_race_class_synopsis(creature));
+      ScoreFileEntry sfe(cr_score, creature->get_name(), creature->get_sex(), creature->get_is_player(), creature->get_level().get_current(), CreatureUtils::get_race_class_synopsis(creature));
       entries.push_back(sfe);
 
       // Sort descending.

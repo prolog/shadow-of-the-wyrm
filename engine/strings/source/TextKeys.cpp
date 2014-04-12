@@ -42,7 +42,9 @@ const string TextKeys::EYE_COLOUR = "EYE_COLOUR";
 const string TextKeys::RACE = "RACE";
 const string TextKeys::SELECT_SEX = "SELECT_SEX";
 const string TextKeys::SEX_MALE = "SEX_MALE";
+const string TextKeys::SEX_MALE_ABRV = "SEX_MALE_ABRV";
 const string TextKeys::SEX_FEMALE = "SEX_FEMALE";
+const string TextKeys::SEX_FEMALE_ABRV = "SEX_FEMALE_ABRV";
 
 const string TextKeys::RACE_1_NAME = "RACE_1_NAME";
 const string TextKeys::RACE_1_SHORT_DESC = "RACE_1_SHORT_DESC";

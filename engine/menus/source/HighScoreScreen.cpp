@@ -38,6 +38,8 @@ void HighScoreScreen::initialize()
     cnt++;
     add_component(score_menu, text, cnt);
 
+    TextComponentPtr separator = std::make_shared<TextComponent>("", COLOUR_WHITE);
+
     if (cnt == 0)
     {
       cur_pg++;
