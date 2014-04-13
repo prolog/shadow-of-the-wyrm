@@ -368,6 +368,9 @@ void Game::go()
   display->clear_display();
   display->redraw();
   update_score_file_if_necessary(current_player);
+
+  string farewell_msg = ScoreTextKeys::get_farewell_text_message(current_player->get_name());
+  cout << farewell_msg << endl;
 }
 
 void Game::set_check_scores(const bool new_check_scores)
@@ -393,15 +396,11 @@ void Game::update_score_file_if_necessary(CreaturePtr current_player)
       ScoreFile sf;
       bool sf_updated = sf.write(current_player);
 
-      string farewell_msg = ScoreTextKeys::get_farewell_text_message(current_player->get_name());
-
       Game& game = Game::instance();
       HighScoreScreen hss(game.get_display(), sf.get_entries());
       hss.display();
 
       sf.save();
-
-      cout << farewell_msg << endl;
     }
     catch (const std::runtime_error& e)
     {
