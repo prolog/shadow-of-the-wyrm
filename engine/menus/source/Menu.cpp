@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int Menu::LINES_DISPLAYABLE_AREA = 18;
+int Menu::LINES_DISPLAYABLE_AREA = 21;
 
 // Any base initialization for the Menu
 Menu::Menu(DisplayPtr new_display)

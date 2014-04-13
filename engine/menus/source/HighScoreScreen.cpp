@@ -7,6 +7,7 @@ using namespace std;
 HighScoreScreen::HighScoreScreen(DisplayPtr new_display, const vector<ScoreFileEntry>& new_sfe)
 : Menu(new_display), sfe(new_sfe)
 {
+  line_increment = 1;
   initialize();
 }
 
@@ -35,15 +36,19 @@ void HighScoreScreen::initialize()
 
     TextComponentPtr text = std::make_shared<TextComponent>(current_line, colour);
 
+    // When the text is displayed, it's on a new line after the previous entry,
+    // so incr count by 2.
     cnt++;
     add_component(score_menu, text, cnt);
 
     TextComponentPtr separator = std::make_shared<TextComponent>("", COLOUR_WHITE);
+    cnt++;
+    add_component(score_menu, separator, cnt);
 
     if (cnt == 0)
     {
       cur_pg++;
-    }
+    }   
 
     score_number++;
   }
