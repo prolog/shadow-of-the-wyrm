@@ -84,7 +84,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_SCL_SECURE_NO_WARNINGS;%(PreprocessorDefinitions);UNIT_TESTS</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
@@ -97,7 +97,7 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Console</SubSystem>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Lua\5.1\lib;C:\cygwin\home\Julian\gtest-1.6.0\msvc\gtest\Debug;C:\boost\boost_1_48_0\stage\lib;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Debug;C:\cygwin\home\Julian\gtest-1.6.0\msvc\gtest\Debug\gtest;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Lua\5.1\lib;C:\cygwin\home\Julian\gtest\gtest-1.7.0\msvc\gtest\Debug;C:\boost\boost_1_55_0\lib32-msvc-12.0;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Debug;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>lua51.lib;lua5.1.lib;xerces-c_3D.lib;pdcurses.lib;gtestd.lib;gtest_maind.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
