@@ -1,3 +1,4 @@
+#include <sstream>
 #include <vector>
 #include "Game.hpp"
 #include "ResistanceTextKeys.hpp"
