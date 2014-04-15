@@ -1034,7 +1034,7 @@ void Creature::assert_size() const
     static_assert(sizeof(*this) == 888, "Unexpected sizeof Creature.");
     #else
     // Release
-	static_assert(sizeof(*this) == 888, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 800, "Unexpected sizeof Creature.");
     #endif
   #else // gcc toolchain
 	static_assert(sizeof(*this) == 424, "Unexpected sizeof Creature.");

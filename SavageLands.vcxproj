@@ -104,7 +104,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <AdditionalIncludeDirectories>C:\cygwin\home\Julian\jrcpp\engine\commands\menus\include;C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\world\include;C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\features\include;C:\cygwin\home\Julian\jrcpp\engine\creatures\include;C:\cygwin\home\Julian\jrcpp\engine\generators\tile_config\include;C:\cygwin\home\Julian\jrcpp\engine\actions\read\include;C:\cygwin\home\Julian\jrcpp\engine\commands\magic\include;C:\cygwin\home\Julian\jrcpp\engine\magic\include;C:\cygwin\home\Julian\jrcpp\engine\strings\include;C:\cygwin\home\Julian\jrcpp\world\magic\include;C:\Program Files %28x86%29\Lua\5.1\include;C:\cygwin\home\Julian\jrcpp\engine\scripting\include;C:\cygwin\home\Julian\jrcpp\engine\maps\include;C:\cygwin\home\Julian\jrcpp\engine\XML\custom_maps\include;C:\cygwin\home\Julian\jrcpp\world\tiles\include;C:\cygwin\home\Julian\jrcpp\world\tiles\features\include;C:\cygwin\home\Julian\jrcpp\world\seasons\include;C:\cygwin\home\Julian\jrcpp\world\religion\include;C:\cygwin\home\Julian\jrcpp\world\materials\include;C:\cygwin\home\Julian\jrcpp\world\include;C:\cygwin\home\Julian\jrcpp\include;C:\cygwin\home\Julian\jrcpp\engine\XML\include;C:\cygwin\home\Julian\jrcpp\engine\translators\include;C:\cygwin\home\Julian\jrcpp\engine\time\include;C:\cygwin\home\Julian\jrcpp\engine\skills\include;C:\cygwin\home\Julian\jrcpp\engine\serialization\include;C:\cygwin\home\Julian\jrcpp\engine\menus\include;C:\cygwin\home\Julian\jrcpp\engine\items\include;C:\cygwin\home\Julian\jrcpp\engine\include;C:\cygwin\home\Julian\jrcpp\engine\generators\worship_sites\include;C:\cygwin\home\Julian\jrcpp\engine\generators\settlements\include;C:\cygwin\home\Julian\jrcpp\engine\generators\include;C:\cygwin\home\Julian\jrcpp\engine\generators\gardens\include;C:\cygwin\home\Julian\jrcpp\engine\field_of_view\include;C:\cygwin\home\Julian\jrcpp\engine\effects\include;C:\cygwin\home\Julian\jrcpp\engine\description\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\search\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\include;C:\cygwin\home\Julian\jrcpp\engine\decision_strategies\deity\include;C:\cygwin\home\Julian\jrcpp\engine\conversion\include;C:\cygwin\home\Julian\jrcpp\engine\commands\select_tile\include;C:\cygwin\home\Julian\jrcpp\engine\commands\inventory\include;C:\cygwin\home\Julian\jrcpp\engine\commands\include;C:\cygwin\home\Julian\jrcpp\engine\commands\equipment\include;C:\cygwin\home\Julian\jrcpp\engine\combat\include;C:\cygwin\home\Julian\jrcpp\engine\calculators\include;C:\cygwin\home\Julian\jrcpp\engine\actions\include;C:\cygwin\home\Julian\jrcpp\display\include;c:\cygwin\home\Julian\jrcpp\display\animation\include;C:\cygwin\home\Julian\jrcpp\controller\include;C:\boost\boost_1_55_0;C:\xerces\xerces-c-3.1.1\src;C:\cygwin\home\Julian\pdcurses;C:\cygwin\home\Julian\gtest\gtest-1.7.0\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -115,7 +115,7 @@
       <SubSystem>Console</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Lua\5.1\lib;C:\boost\boost_1_48_0\stage\lib;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Release;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Program Files %28x86%29\Lua\5.1\lib;C:\boost\boost_1_55_0\lib32-msvc-12.0;C:\xerces\xerces-c-3.1.1\Build\Win32\VC10\Debug;C:\cygwin\home\Julian\pdcurses;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>lua51.lib;lua5.1.lib;xerces-c_3.lib;pdcurses.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -1656,6 +1656,7 @@
     <ClCompile Include="engine\serialization\source\unit_tests\Serialize_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\skills\source\Detection.cpp" />
     <ClCompile Include="engine\skills\source\Mountaineering.cpp" />
