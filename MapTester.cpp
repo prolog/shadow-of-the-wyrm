@@ -13,6 +13,7 @@
 #include "Date.hpp"
 #include "CathedralGenerator.hpp"
 #include "CavernGenerator.hpp"
+#include "CryptGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
 #include "ForestGenerator.hpp"
@@ -85,6 +86,7 @@ string generate_cavern();
 string generate_ordered_graveyard();
 string generate_scattered_graveyard();
 string generate_keep();
+string generate_crypt();
 string generate_simple_church();
 string generate_fortified_church();
 string generate_cathedral();
@@ -319,6 +321,14 @@ string generate_keep()
   MapPtr keep_map = keep_gen->generate();
   cout << map_to_string(keep_map, false);
   return map_to_string(keep_map);
+}
+
+string generate_crypt()
+{
+  GeneratorPtr crypt_gen = std::make_shared<CryptGenerator>("");
+  MapPtr crypt_map = crypt_gen->generate();
+  cout << map_to_string(crypt_map, false);
+  return map_to_string(crypt_map);
 }
 
 string generate_simple_church()
@@ -834,7 +844,8 @@ void city_maps()
     cout << "2. Scattered Graveyard" << endl;
     cout << "3. Keep" << endl;
     cout << "4. Churches, Temples, Sites of Death" << endl;
-    cout << "5. Mine" << endl;
+    cout << "5. Crypt" << endl;
+    cout << "6. Mine" << endl;
 
     cin >> city_adjacent_map;
     
@@ -856,6 +867,10 @@ void city_maps()
         church_maps();
         break;
       case 5:
+        map = generate_crypt();
+        output_map(map, "crypt_test.html");
+        break;
+      case 6:
         map = generate_mine();
         output_map(map, "mine_test.html");
         break;
