@@ -34,7 +34,7 @@ TilePtr TileFactory::create_tile(const ClassIdentifier cl_id)
 
 void TileFactory::initialize_tile_map()
 {
-  static_assert(TILE_TYPE_LAST == 44, "Unexpected TILE_TYPE_LAST value.");
+  static_assert(TILE_TYPE_LAST == 45, "Unexpected TILE_TYPE_LAST value.");
 
   TilePtr barracks = std::make_shared<BarracksTile>();
   TilePtr barrow   = std::make_shared<BarrowTile>();
@@ -79,7 +79,8 @@ void TileFactory::initialize_tile_map()
   TilePtr evergreen = std::make_shared<EvergreenTreeTile>();
   TilePtr rocky_earth = std::make_shared<RockyEarthTile>();
   TilePtr mine     = std::make_shared<MineTile>();
-  TilePtr well = std::make_shared<WellTile>();
+  TilePtr well     = std::make_shared<WellTile>();
+  TilePtr crypt    = std::make_shared<CryptTile>();
 
   tiles_map = TileSerializationMap{{CLASS_ID_BARRACKS_TILE, barracks},
                                    {CLASS_ID_BARROW_TILE, barrow},
@@ -124,5 +125,6 @@ void TileFactory::initialize_tile_map()
                                    {CLASS_ID_EVERGREEN_TREE_TILE, evergreen},
                                    {CLASS_ID_ROCKY_EARTH_TILE, rocky_earth},
                                    {CLASS_ID_MINE_TILE, mine},
-                                   {CLASS_ID_WELL_TILE, well}};
+                                   {CLASS_ID_WELL_TILE, well},
+                                   {CLASS_ID_CRYPT_TILE, crypt}};
 }

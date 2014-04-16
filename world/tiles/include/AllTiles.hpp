@@ -8,6 +8,7 @@
 #include "CastleTile.hpp"
 #include "CavernTile.hpp"
 #include "ChurchTile.hpp"
+#include "CryptTile.hpp"
 #include "DaisTile.hpp"
 #include "DesertTile.hpp"
 #include "DungeonTile.hpp"

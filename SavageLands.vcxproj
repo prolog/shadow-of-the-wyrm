@@ -848,6 +848,7 @@
     <ClInclude Include="world\tiles\include\CastleTile.hpp" />
     <ClInclude Include="world\tiles\include\CavernTile.hpp" />
     <ClInclude Include="world\tiles\include\ChurchTile.hpp" />
+    <ClInclude Include="world\tiles\include\CryptTile.hpp" />
     <ClInclude Include="world\tiles\include\DaisTile.hpp" />
     <ClInclude Include="world\tiles\include\DesertTile.hpp" />
     <ClInclude Include="world\tiles\include\DownStaircaseTile.hpp" />
@@ -2352,6 +2353,7 @@
     <ClCompile Include="world\tiles\source\CastleTile.cpp" />
     <ClCompile Include="world\tiles\source\CavernTile.cpp" />
     <ClCompile Include="world\tiles\source\ChurchTile.cpp" />
+    <ClCompile Include="world\tiles\source\CryptTile.cpp" />
     <ClCompile Include="world\tiles\source\DaisTile.cpp" />
     <ClCompile Include="world\tiles\source\DesertTile.cpp" />
     <ClCompile Include="world\tiles\source\DownStaircaseTile.cpp" />
@@ -2425,6 +2427,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\CryptTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\DaisTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
