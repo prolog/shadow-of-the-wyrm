@@ -3009,6 +3009,9 @@
     <ClInclude Include="world\tiles\include\CryptTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\CryptGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5782,6 +5785,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\CryptTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\CryptGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

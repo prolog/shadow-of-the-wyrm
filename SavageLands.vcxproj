@@ -421,6 +421,7 @@
     <ClInclude Include="engine\generators\include\CavernGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CellularAutomataGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CellularAutomataTypes.hpp" />
+    <ClInclude Include="engine\generators\include\CryptGenerator.hpp" />
     <ClInclude Include="engine\generators\include\CustomAreaGenerator.hpp" />
     <ClInclude Include="engine\generators\include\DesertGenerator.hpp" />
     <ClInclude Include="engine\generators\include\DungeonGenerator.hpp" />
@@ -1489,6 +1490,7 @@
     <ClCompile Include="engine\generators\settlements\source\WalledSettlementGenerator.cpp" />
     <ClCompile Include="engine\generators\source\CavernGenerator.cpp" />
     <ClCompile Include="engine\generators\source\CellularAutomataGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\CryptGenerator.cpp" />
     <ClCompile Include="engine\generators\source\CustomAreaGenerator.cpp" />
     <ClCompile Include="engine\generators\source\DesertGenerator.cpp" />
     <ClCompile Include="engine\generators\source\DungeonGenerator.cpp" />
