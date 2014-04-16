@@ -38,6 +38,8 @@ Savage Lands v0.2.3 "Eadwine"
   info and highlights the player's score, if it's within the top-X.  Set
   the number of entries in the file to be 100.
 
+- Created a new tile type, crypt.
+
 - Misc bug fixes: fixed a paging issue where the option (e.g., "[a]") could
   display several times.
 

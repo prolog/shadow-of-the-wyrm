@@ -55,3 +55,4 @@ const string TileTextKeys::TILE_DESC_EVERGREEN_TREE = "TILE_DESC_EVERGREEN_TREE"
 const string TileTextKeys::TILE_DESC_ROCKY_EARTH    = "TILE_DESC_ROCKY_EARTH";
 const string TileTextKeys::TILE_DESC_MINE           = "TILE_DESC_MINE";
 const string TileTextKeys::TILE_DESC_WELL           = "TILE_DESC_WELL";
+const string TileTextKeys::TILE_DESC_CRYPT          = "TILE_DESC_CRYPT";

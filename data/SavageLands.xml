@@ -13129,6 +13129,12 @@
 				<Colour>6</Colour>
 			</Text>
 		</WellTile>
+		<CryptTile>
+			<Text>
+				<Symbol>&gt;</Symbol>
+				<Colour>1</Colour>
+			</Text>
+		</CryptTile>
 	</Tiles>
 	<Items>
 		<Armours>

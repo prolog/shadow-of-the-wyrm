@@ -78,6 +78,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TILE_TYPE_CAIRN);
   }
+  else if (xml_tile == 'c')
+  {
+    tile = tg.generate(TILE_TYPE_CRYPT);
+  }
   else if (xml_tile == '0')
   {
     tile = tg.generate(TILE_TYPE_BARROW);
