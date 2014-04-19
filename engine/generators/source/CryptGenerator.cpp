@@ -64,33 +64,43 @@ tuple<CardinalDirection, Coordinate, Coordinate> CryptGenerator::generate_centra
     }
   }
 
+  Coordinate top_left = make_pair(starty, startx);
+  Coordinate bottom_right = make_pair(endy, endx);
+  CardinalDirection stair_direction = generate_up_staircase(top_left, bottom_right, map);
+
+  // Return the boundaries of the crypt.
+  return make_tuple(stair_direction, top_left, bottom_right);
+}
+
+// Generate the staircase to the surface.
+CardinalDirection CryptGenerator::generate_up_staircase(const Coordinate& top_left, const Coordinate& bottom_right, MapPtr map)
+{
   // Generate the up-staircase.
   CardinalDirection d = static_cast<CardinalDirection>(RNG::range(CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_WEST));
-  Coordinate stair_coords(0,0);
+  Coordinate stair_coords(0, 0);
 
   switch (d)
   {
     case CARDINAL_DIRECTION_NORTH:
-      stair_coords.first = starty + 1;
-      stair_coords.second = (startx + endx) / 2;
+      stair_coords.first = top_left.first + 1;
+      stair_coords.second = (top_left.second + bottom_right.second) / 2;
       break;
     case CARDINAL_DIRECTION_SOUTH:
-      stair_coords.first = endy - 2;
-      stair_coords.second = (startx + endx) / 2;
+      stair_coords.first = bottom_right.first - 2;
+      stair_coords.second = (top_left.second + bottom_right.second) / 2;
       break;
     case CARDINAL_DIRECTION_EAST:
-      stair_coords.first = (starty + endy) / 2;
-      stair_coords.second = startx + 1;
+      stair_coords.first = (top_left.first + bottom_right.first) / 2;
+      stair_coords.second = top_left.second + 1;
       break;
     case CARDINAL_DIRECTION_WEST:
     default:
-      stair_coords.first = (starty + endy) / 2;
-      stair_coords.second = endx - 2;
+      stair_coords.first = (top_left.first + bottom_right.first) / 2;
+      stair_coords.second = bottom_right.second - 2;
       break;
   }
 
   place_staircase(map, stair_coords.first, stair_coords.second, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_CRYPT, DIRECTION_UP, get_permanence(), true);
 
-  // Return the boundaries of the crypt.
-  return make_tuple(CARDINAL_DIRECTION_NORTH, make_pair(starty, startx), make_pair(endy, endx));
+  return d;
 }
