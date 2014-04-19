@@ -17,6 +17,9 @@ class CryptGenerator : public SL::Generator
     // the crypt on which the up-staircase has been placed.
     std::tuple<CardinalDirection, Coordinate, Coordinate> generate_central_crypt(MapPtr map);
 
+    // Generate the staircase to the surface.
+    CardinalDirection generate_up_staircase(const Coordinate& top_left, const Coordinate& bottom_right, MapPtr map);
+
     virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col);
 
     TileGenerator tg;
