@@ -23,3 +23,4 @@ const string MaterialTextKeys::MATERIAL_WOOD         = "MATERIAL_WOOD";
 const string MaterialTextKeys::MATERIAL_MARBLE       = "MATERIAL_MARBLE";
 const string MaterialTextKeys::MATERIAL_ONYX         = "MATERIAL_ONYX";
 const string MaterialTextKeys::MATERIAL_IVORY        = "MATERIAL_IVORY";
+const string MaterialTextKeys::MATERIAL_BONE         = "MATERIAL_BONE";

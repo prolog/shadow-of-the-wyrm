@@ -1,4 +1,5 @@
 #include "MaterialFactory.hpp"
+#include "Bone.hpp"
 #include "Cloth.hpp"
 #include "DragonScale.hpp"
 #include "Glass.hpp"
@@ -24,6 +25,8 @@ MaterialFactory::~MaterialFactory()
 
 MaterialPtr MaterialFactory::create_material(const MaterialType type)
 {
+  static_assert(MATERIAL_TYPE_LAST == 13, "Unexpected MATERIAL_TYPE_LAST");
+
   MaterialPtr material;
 
   switch(type)
@@ -63,6 +66,9 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
       break;
     case MATERIAL_TYPE_IVORY:
       material = std::make_shared<Ivory>();
+      break;
+    case MATERIAL_TYPE_BONE:
+      material = std::make_shared<Bone>();
       break;
     default:
       material = std::make_shared<Wood>();
