@@ -16443,6 +16443,18 @@
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="_pile_of_bones">
+				<DescriptionSID>PILE_OF_BONES_SID</DescriptionSID>
+				<UsageDescriptionSID>PILE_OF_BONES_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>20</Pounds></Weight>
+				<Material>12</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="handful_gleaming_wyrm_scales">
 				<DescriptionSID>HANDFUL_GLEAMING_WYRM_SCALES_SID</DescriptionSID>
 				<UsageDescriptionSID>HANDFUL_GLEAMING_WYRM_SCALES_USAGE_SID</UsageDescriptionSID>

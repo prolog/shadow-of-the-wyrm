@@ -1,4 +1,5 @@
 #include "CryptGenerator.hpp"
+#include "ItemManager.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
@@ -14,8 +15,9 @@ MapPtr CryptGenerator::generate(const Dimensions& dim)
   MapPtr map = std::make_shared<Map>(dim);
   fill(map, TILE_TYPE_ROCK);
   
-  auto coord_pairs = generate_central_crypt(map);
-   
+  auto loc_details = generate_central_crypt(map);
+  generate_crypt_features(loc_details, map);
+
   return map;
 }
 
@@ -31,14 +33,8 @@ bool CryptGenerator::get_permanence_default() const
   return true;
 }
 
-// Create the central crypt:
-//
-// - A long room with an ascending staircase near the end
-// - Potentially, sarcophagi throughout.
-// - Either:
-//     - a central room, or
-//     - a long series of triple-doored walls (can't give the player an
-//       automatic chokepoint!)
+// Create the central crypt, a long room with an ascending staircase near 
+// the end (by one of the N/S/E/W walls)
 tuple<CardinalDirection, Coordinate, Coordinate> CryptGenerator::generate_central_crypt(MapPtr map)
 {
   Dimensions dim = map->size();
@@ -70,6 +66,46 @@ tuple<CardinalDirection, Coordinate, Coordinate> CryptGenerator::generate_centra
 
   // Return the boundaries of the crypt.
   return make_tuple(stair_direction, top_left, bottom_right);
+}
+
+// Generate the crypt features:
+// - Either:
+//     - a central room, or
+//     - a long series of triple-doored walls (can't give the player an
+//       automatic chokepoint!)
+//     - a long series of pillars
+void CryptGenerator::generate_crypt_features(const std::tuple<CardinalDirection, Coordinate, Coordinate>& loc_details, MapPtr map)
+{
+  // First, check to see if skeletons should be generated along the perimeter.
+  bool perimeter_skeletons = RNG::percent_chance(50);
+
+  if (perimeter_skeletons)
+  {
+    generate_perimeter_skeletons(loc_details, map);
+  }
+}
+
+// Generate skeletons around the perimeter of the crypt.
+void CryptGenerator::generate_perimeter_skeletons(const std::tuple<CardinalDirection, Coordinate, Coordinate>& loc_details, MapPtr map)
+{
+  Coordinate top_left = get<1>(loc_details);
+  Coordinate bottom_right = get<2>(loc_details);
+
+  // Loop to generate ...
+  /*
+  {
+    ItemPtr bones = ItemManager::create_item("_pile_of_bones");
+
+    if (bones != nullptr)
+    {
+      TilePtr tile = map->at(row, col);
+
+      if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON))
+      {
+        tile->get_items().add(bones);
+      }
+    }
+  } */
 }
 
 // Generate the staircase to the surface.

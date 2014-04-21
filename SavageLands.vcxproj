@@ -787,6 +787,7 @@
     <ClInclude Include="world\magic\include\SpellShape.hpp" />
     <ClInclude Include="world\magic\include\SpellShapeFactory.hpp" />
     <ClInclude Include="world\magic\include\SpellTypes.hpp" />
+    <ClInclude Include="world\materials\include\Bone.hpp" />
     <ClInclude Include="world\materials\include\Cloth.hpp" />
     <ClInclude Include="world\materials\include\DragonScale.hpp" />
     <ClInclude Include="world\materials\include\Glass.hpp" />
@@ -1908,6 +1909,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\materials\source\Bone.cpp" />
     <ClCompile Include="world\materials\source\Cloth.cpp" />
     <ClCompile Include="world\materials\source\DragonScale.cpp" />
     <ClCompile Include="world\materials\source\Glass.cpp" />

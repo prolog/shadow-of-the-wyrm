@@ -43,6 +43,10 @@ TilePtr XMLWorldMapTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TILE_TYPE_MOUNTAINS);
   }
+  else if (xml_tile == 'C')
+  {
+    tile = tg.generate(TILE_TYPE_CRYPT);
+  }
   else if (xml_tile == 'c')
   {
     tile = tg.generate(TILE_TYPE_CAVERN);

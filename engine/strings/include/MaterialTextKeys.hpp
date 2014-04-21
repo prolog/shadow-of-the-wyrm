@@ -16,6 +16,7 @@ class MaterialTextKeys
     static const std::string MATERIAL_MARBLE;
     static const std::string MATERIAL_ONYX;
     static const std::string MATERIAL_IVORY;
+    static const std::string MATERIAL_BONE;
     
   protected:
     MaterialTextKeys();
