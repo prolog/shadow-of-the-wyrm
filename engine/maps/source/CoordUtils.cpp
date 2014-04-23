@@ -222,6 +222,54 @@ vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& di
   return adjacent_coordinates;
 }
 
+set<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
+{
+  set<Coordinate> perimeter_coordinates;
+
+  // Top
+  for (int col = top_left.second; col <= bottom_right.second; col++)
+  {
+    perimeter_coordinates.insert(make_pair(top_left.first, col));
+  }
+
+  // Right
+  for (int row = top_left.first+1; row <= bottom_right.first; row++)
+  {
+    perimeter_coordinates.insert(make_pair(row, bottom_right.second));
+  }
+
+  // Bottom
+  for (int col = top_left.second; col <= bottom_right.second - 1; col++)
+  {
+    perimeter_coordinates.insert(make_pair(bottom_right.first, col));
+  }
+
+  // Left
+  for (int row = top_left.first + 1; row <= bottom_right.first - 1; row++)
+  {
+    perimeter_coordinates.insert(make_pair(row, top_left.second));
+  }
+
+  return perimeter_coordinates;
+}
+
+// Returns all coordinates from top left to bottom right, inclusive.
+set<Coordinate> CoordUtils::get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right)
+{
+  // JCD FIXME unit tests, and hook up to CryptGenerator.
+  set<Coordinate> coords;
+
+  for (int row = top_left.first; row <= bottom_right.first; row++)
+  {
+    for (int col = top_left.second; col <= bottom_right.second; col++)
+    {
+      coords.insert(make_pair(row, col));
+    }
+  }
+
+  return coords;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/CoordUtils_test.cpp"
 #endif
