@@ -1,3 +1,4 @@
+#include "CoordUtils.hpp"
 #include "CryptGenerator.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
@@ -50,18 +51,17 @@ tuple<CardinalDirection, Coordinate, Coordinate> CryptGenerator::generate_centra
   int starty = (rows / 2) - (height / 2);
   int endy = starty + height;
 
-  TilePtr tile;
-  for (int y = starty; y < endy; y++)
-  {
-    for (int x = startx; x < endx; x++)
-    {
-      tile = tg.generate(TILE_TYPE_DUNGEON);
-      map->insert(y, x, tile);
-    }
-  }
-
   Coordinate top_left = make_pair(starty, startx);
   Coordinate bottom_right = make_pair(endy, endx);
+
+  TilePtr tile;
+  set<Coordinate> coords = CoordUtils::get_coordinates_in_range(top_left, bottom_right);
+  for (const auto& coord : coords)
+  {
+    tile = tg.generate(TILE_TYPE_DUNGEON);
+    map->insert(coord.first, coord.second, tile);
+  }
+
   CardinalDirection stair_direction = generate_up_staircase(top_left, bottom_right, map);
 
   // Return the boundaries of the crypt.
@@ -91,21 +91,20 @@ void CryptGenerator::generate_perimeter_skeletons(const std::tuple<CardinalDirec
   Coordinate top_left = get<1>(loc_details);
   Coordinate bottom_right = get<2>(loc_details);
 
-  // Loop to generate ...
-  /*
+  set<Coordinate> coords = CoordUtils::get_perimeter_coordinates(top_left, bottom_right);
+  TilePtr tile;
+
+  for (const auto& coord : coords)
   {
+    tile = map->at(coord.first, coord.second);
+
     ItemPtr bones = ItemManager::create_item("_pile_of_bones");
 
-    if (bones != nullptr)
+    if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && (bones != nullptr))
     {
-      TilePtr tile = map->at(row, col);
-
-      if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON))
-      {
-        tile->get_items().add(bones);
-      }
+      tile->get_items().add(bones);
     }
-  } */
+  }
 }
 
 // Generate the staircase to the surface.
