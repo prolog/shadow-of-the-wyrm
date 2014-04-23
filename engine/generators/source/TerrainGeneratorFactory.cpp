@@ -1,5 +1,6 @@
 #include "CavernGenerator.hpp"
 #include "Conversion.hpp"
+#include "CryptGenerator.hpp"
 #include "DesertGenerator.hpp"
 #include "DungeonGenerator.hpp"
 #include "FieldGenerator.hpp"
@@ -38,6 +39,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
 GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
 {
+  static_assert(TILE_TYPE_LAST == 45, "Unexpected TILE_TYPE_LAST");
   GeneratorPtr generator;
   
   switch(terrain_type)
@@ -122,6 +124,9 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       generator = std::make_shared<MineGenerator>(map_exit_id);
       break;
     }
+    case TILE_TYPE_CRYPT:
+      generator = std::make_shared<CryptGenerator>(map_exit_id);
+      break;
     case TILE_TYPE_UP_STAIRCASE:
     case TILE_TYPE_DOWN_STAIRCASE:
       if (terrain_subtype != TILE_TYPE_UP_STAIRCASE && terrain_subtype != TILE_TYPE_DOWN_STAIRCASE)
