@@ -685,6 +685,18 @@
     <Filter Include="Source Files\engine\commands\menus\source\unit_tests">
       <UniqueIdentifier>{dd785392-8899-4124-8afd-fa77f1269ddb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\engine\generators\crypts">
+      <UniqueIdentifier>{27e2e177-9a65-4886-bcaa-4e8f0e49715c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\generators\crypts\include">
+      <UniqueIdentifier>{426bdb7f-e694-4a1a-88a9-307213569f3f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\crypts">
+      <UniqueIdentifier>{9377f7d3-22d0-494a-a8f2-72fd6ff803c3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\generators\crypts\source">
+      <UniqueIdentifier>{77b903c3-de35-4c8f-992d-1cba5bbc730c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3009,11 +3021,11 @@
     <ClInclude Include="world\tiles\include\CryptTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\generators\include\CryptGenerator.hpp">
-      <Filter>Header Files\engine\generators\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\materials\include\Bone.hpp">
       <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\crypts\include\CryptGenerator.hpp">
+      <Filter>Header Files\engine\generators\crypts\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -5789,11 +5801,11 @@
     <ClCompile Include="world\tiles\source\unit_tests\CryptTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\generators\source\CryptGenerator.cpp">
-      <Filter>Source Files\engine\generators\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\materials\source\Bone.cpp">
       <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\crypts\source\CryptGenerator.cpp">
+      <Filter>Source Files\engine\generators\crypts\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
