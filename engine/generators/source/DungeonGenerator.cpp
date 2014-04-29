@@ -466,20 +466,6 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     
     place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
 
-    TilePtr up_stairs = map->at(y, x);
-
-    // This may be empty, in which case, the custom map ID will be empty
-    // and terrain will be checked instead, which is the desired behaviour.
-    up_stairs->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
-    up_stairs->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
-
-    // If we're on level 1, set the custom map ID to be the original map ID.
-    if (depth.get_current() <= 1)
-    {
-      string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
-      up_stairs->set_custom_map_id(original_map_id);
-    }
-
     location_found = true;
   }
   

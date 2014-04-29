@@ -31,7 +31,7 @@ TilePtr CryptGenerator::generate_tile(MapPtr current_map, const int row, const i
 
 bool CryptGenerator::get_permanence_default() const
 {
-  return true;
+  return false;
 }
 
 // Create the central crypt, a long room with an ascending staircase near 
@@ -136,6 +136,10 @@ CardinalDirection CryptGenerator::generate_up_staircase(const Coordinate& top_le
   }
 
   place_staircase(map, stair_coords.first, stair_coords.second, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_CRYPT, DIRECTION_UP, get_permanence(), true);
-
   return d;
+}
+
+MapType CryptGenerator::get_map_type() const
+{
+  return MAP_TYPE_UNDERWORLD;
 }

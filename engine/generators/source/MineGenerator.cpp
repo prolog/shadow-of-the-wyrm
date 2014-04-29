@@ -182,22 +182,7 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
     {
       // Place the up staircase, and note that the player 
       // should be placed here.
-      place_staircase(map, y, orig_xpos, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_MINE, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
-  
-      TilePtr up_stairs = map->at(y, orig_xpos);
-      // This may be empty, in which case, the custom map ID will be empty
-      // and terrain will be checked instead, which is the desired behaviour.
-      up_stairs->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
-      up_stairs->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
-
-      Depth depth = map->size().depth();
-      
-      // If we're on level 1, set the custom map ID to be the original map ID.
-      if (depth.get_current() <= 1)
-      {
-        string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
-        up_stairs->set_custom_map_id(original_map_id);
-      }
+      place_staircase(map, y, orig_xpos, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_MINE, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);  
       stairway_placed = true;
     }
   }
