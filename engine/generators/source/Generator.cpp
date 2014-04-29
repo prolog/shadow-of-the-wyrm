@@ -406,7 +406,26 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     new_staircase_tile->set_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE, get_additional_property(MapProperties::MAP_PROPERTIES_PERMANENCE));
 
     map->insert(row, col, new_staircase_tile); 
-    
+
+    // Handle exiting to a previous map in underworld maps like dungeons,
+    // mines, crypts, etc.
+    if (get_map_type() == MAP_TYPE_UNDERWORLD && tile_type == TILE_TYPE_UP_STAIRCASE)
+    {
+      Depth depth = map->size().depth();
+
+      // This may be empty, in which case, the custom map ID will be empty
+      // and terrain will be checked instead, which is the desired behaviour.
+      new_staircase_tile->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
+      new_staircase_tile->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
+
+      // If we're on level 1, set the custom map ID to be the original map ID.
+      if (depth.get_current() <= 1)
+      {
+        string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
+        new_staircase_tile->set_custom_map_id(original_map_id);
+      }
+    }
+
     if (set_as_player_default_location)
     {
       map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);

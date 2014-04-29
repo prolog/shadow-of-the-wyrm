@@ -213,21 +213,7 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
     if (!tile) break;
     if (tile && tile->get_tile_type() == TILE_TYPE_DUNGEON)
     {
-      TilePtr new_tile = tg.generate(tile_type);
-      map->insert(c.first, c.second, new_tile);
-      
-      // Add the map exit info if necessary
-      if (!map_exit_id.empty())
-      {
-        MapExitUtils::add_exit_to_tile(new_tile, direction, map_exit_id);
-      }
-      
-      // If it's an up-staircase, default the player's position to here.
-      if (tile_type == TILE_TYPE_UP_STAIRCASE)
-      {
-        map->add_or_update_location(WorldMapLocationTextKeys::CURRENT_PLAYER_LOCATION, c);
-      }
-
+      place_staircase(map, c.first, c.second, tile_type, TILE_TYPE_CAVERN, DIRECTION_UP, get_permanence_default(), true);
       break;
     }
   }

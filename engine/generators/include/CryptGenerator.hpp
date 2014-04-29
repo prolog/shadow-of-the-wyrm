@@ -10,6 +10,7 @@ class CryptGenerator : public SL::Generator
     virtual MapPtr generate(const Dimensions& dim) override;
 
   protected:
+    virtual MapType get_map_type() const override;
     virtual bool get_permanence_default() const override;
 
     // Creates the central crypt with the up-staircase.  The two coordinates refer
