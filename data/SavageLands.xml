@@ -16006,7 +16006,16 @@
 				<Material>3</Material>
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wyrmeswraec_gate</LockID>
-			</Tool>			
+			</Tool>
+			<Tool id="crypt_key">
+				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
+				<UsageDescriptionSID>CRYPT_KEY_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID></LockID> <!-- Lock ID is set dynamically by the CryptGenerator -->
+			</Tool>
 			<Tool id="sun_gem">
 				<DescriptionSID>SUN_GEM_SID</DescriptionSID>
 				<UsageDescriptionSID>SUN_GEM_USAGE_SID</UsageDescriptionSID>
