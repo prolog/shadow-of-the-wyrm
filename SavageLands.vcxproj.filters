@@ -3027,6 +3027,15 @@
     <ClInclude Include="engine\generators\crypts\include\CryptGenerator.hpp">
       <Filter>Header Files\engine\generators\crypts\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\crypts\include\CryptLayoutTypes.hpp">
+      <Filter>Header Files\engine\generators\crypts\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\crypts\include\ICryptLayoutStrategy.hpp">
+      <Filter>Header Files\engine\generators\crypts\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\crypts\include\PillarCryptLayoutStrategy.hpp">
+      <Filter>Header Files\engine\generators\crypts\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5805,6 +5814,9 @@
       <Filter>Source Files\world\materials\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\generators\crypts\source\CryptGenerator.cpp">
+      <Filter>Source Files\engine\generators\crypts\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\crypts\source\PillarCryptLayoutStrategy.cpp">
       <Filter>Source Files\engine\generators\crypts\source</Filter>
     </ClCompile>
   </ItemGroup>
