@@ -697,6 +697,9 @@
     <Filter Include="Source Files\engine\generators\crypts\source">
       <UniqueIdentifier>{77b903c3-de35-4c8f-992d-1cba5bbc730c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\generators\crypts\source\unit_tests">
+      <UniqueIdentifier>{9a762dc7-e8a0-451d-9c4d-53fc02ca68e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -3034,6 +3037,9 @@
       <Filter>Header Files\engine\generators\crypts\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\generators\crypts\include\PillarCryptLayoutStrategy.hpp">
+      <Filter>Header Files\engine\generators\crypts\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\generators\crypts\include\CryptLayoutStrategyFactory.hpp">
       <Filter>Header Files\engine\generators\crypts\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -5818,6 +5824,12 @@
     </ClCompile>
     <ClCompile Include="engine\generators\crypts\source\PillarCryptLayoutStrategy.cpp">
       <Filter>Source Files\engine\generators\crypts\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\crypts\source\CryptLayoutStrategyFactory.cpp">
+      <Filter>Source Files\engine\generators\crypts\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\crypts\source\unit_tests\CryptLayoutStrategyFactory_test.cpp">
+      <Filter>Source Files\engine\generators\crypts\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

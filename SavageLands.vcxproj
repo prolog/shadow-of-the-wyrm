@@ -412,6 +412,7 @@
     <ClInclude Include="engine\field_of_view\include\FieldOfViewTypes.hpp" />
     <ClInclude Include="engine\field_of_view\include\RayCastingFieldOfViewStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\CryptGenerator.hpp" />
+    <ClInclude Include="engine\generators\crypts\include\CryptLayoutStrategyFactory.hpp" />
     <ClInclude Include="engine\generators\crypts\include\CryptLayoutTypes.hpp" />
     <ClInclude Include="engine\generators\crypts\include\ICryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\PillarCryptLayoutStrategy.hpp" />
@@ -1480,7 +1481,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\generators\crypts\source\CryptGenerator.cpp" />
+    <ClCompile Include="engine\generators\crypts\source\CryptLayoutStrategyFactory.cpp" />
     <ClCompile Include="engine\generators\crypts\source\PillarCryptLayoutStrategy.cpp" />
+    <ClCompile Include="engine\generators\crypts\source\unit_tests\CryptLayoutStrategyFactory_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\generators\gardens\source\GardenGenerator.cpp" />
     <ClCompile Include="engine\generators\gardens\source\GardenGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\gardens\source\RockGardenGenerator.cpp" />
