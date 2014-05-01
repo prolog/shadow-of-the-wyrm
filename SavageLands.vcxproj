@@ -436,6 +436,7 @@
     <ClInclude Include="engine\generators\include\GraveyardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\GraveyardGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\HillsGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\IPillarGenerator.hpp" />
     <ClInclude Include="engine\generators\include\KeepGenerator.hpp" />
     <ClInclude Include="engine\generators\include\KeepRuinsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MarshGenerator.hpp" />
@@ -450,6 +451,7 @@
     <ClInclude Include="engine\generators\include\SeaGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpiralDungeonGenerator.hpp" />
     <ClInclude Include="engine\generators\include\SpringsGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\SquarePillarGenerator.hpp" />
     <ClInclude Include="engine\generators\include\StreamGenerator.hpp" />
     <ClInclude Include="engine\generators\include\TerrainGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\TileGenerator.hpp" />
@@ -1527,6 +1529,7 @@
     <ClCompile Include="engine\generators\source\SeaGenerator.cpp" />
     <ClCompile Include="engine\generators\source\SpiralDungeonGenerator.cpp" />
     <ClCompile Include="engine\generators\source\SpringsGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\SquarePillarGenerator.cpp" />
     <ClCompile Include="engine\generators\source\StreamGenerator.cpp" />
     <ClCompile Include="engine\generators\source\TerrainGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\source\TileGenerator.cpp" />
