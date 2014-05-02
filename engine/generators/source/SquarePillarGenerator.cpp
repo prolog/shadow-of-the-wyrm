@@ -29,3 +29,6 @@ void SquarePillarGenerator::generate(MapPtr map, const int y_topleft, const int 
   }
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/SquarePillarGenerator_test.cpp"
+#endif
