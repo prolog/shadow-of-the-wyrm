@@ -3048,6 +3048,9 @@
     <ClInclude Include="engine\generators\include\SquarePillarGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\CrossPillarGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5839,6 +5842,15 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\SquarePillarGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\CrossPillarGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\unit_tests\CrossPillarGenerator_test.cpp">
+      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\unit_tests\SquarePillarGenerator_test.cpp">
+      <Filter>Source Files\engine\generators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

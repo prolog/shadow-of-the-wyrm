@@ -11,6 +11,6 @@ class IPillarGenerator
     virtual int get_height() const = 0;
     virtual int get_width() const = 0;
 
-    virtual void generate(MapPtr map, const int y_topleft, const int x_topleft);
+    virtual void generate(MapPtr map, const int y_topleft, const int x_topleft) = 0;
 };
 
