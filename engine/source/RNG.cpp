@@ -120,6 +120,13 @@ int RNG::range
   return (generator() % range) + minimum + additional_modifier;
 }
 
+// Useful for things like ranges of enums where you want to use FOO_LAST (which
+// doesn't refer to an actual value, just a useful end value for iteration, etc).
+int RNG::range_endexclusive(int min, int max_exclusive)
+{
+  return RNG::range(min, max_exclusive - 1);
+}
+
 bool RNG::percent_chance(const int percent_chance)
 {
   int val = RNG::range(1, 100);  

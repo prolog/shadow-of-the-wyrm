@@ -1,5 +1,6 @@
 #include "CoordUtils.hpp"
 #include "CryptGenerator.hpp"
+#include "CryptLayoutStrategyFactory.hpp"
 #include "ItemManager.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -36,7 +37,7 @@ bool CryptGenerator::get_permanence_default() const
 
 // Create the central crypt, a long room with an ascending staircase near 
 // the end (by one of the N/S/E/W walls)
-tuple<CardinalDirection, Coordinate, Coordinate> CryptGenerator::generate_central_crypt(MapPtr map)
+tuple<Coordinate, Coordinate, Coordinate> CryptGenerator::generate_central_crypt(MapPtr map)
 {
   Dimensions dim = map->size();
   int rows = dim.get_y();
@@ -62,10 +63,10 @@ tuple<CardinalDirection, Coordinate, Coordinate> CryptGenerator::generate_centra
     map->insert(coord.first, coord.second, tile);
   }
 
-  CardinalDirection stair_direction = generate_up_staircase(top_left, bottom_right, map);
+  Coordinate stair_loc = generate_up_staircase(top_left, bottom_right, map);
 
   // Return the boundaries of the crypt.
-  return make_tuple(stair_direction, top_left, bottom_right);
+  return make_tuple(stair_loc, top_left, bottom_right);
 }
 
 // Generate the crypt features:
@@ -74,7 +75,7 @@ tuple<CardinalDirection, Coordinate, Coordinate> CryptGenerator::generate_centra
 //     - a long series of triple-doored walls (can't give the player an
 //       automatic chokepoint!)
 //     - a long series of pillars
-void CryptGenerator::generate_crypt_features(const std::tuple<CardinalDirection, Coordinate, Coordinate>& loc_details, MapPtr map)
+void CryptGenerator::generate_crypt_features(const std::tuple<Coordinate, Coordinate, Coordinate>& loc_details, MapPtr map)
 {
   // First, check to see if skeletons should be generated along the perimeter.
   bool perimeter_skeletons = RNG::percent_chance(50);
@@ -83,10 +84,18 @@ void CryptGenerator::generate_crypt_features(const std::tuple<CardinalDirection,
   {
     generate_perimeter_skeletons(loc_details, map);
   }
+
+  CryptLayoutType layout_type = static_cast<CryptLayoutType>(RNG::range_endexclusive(CRYPT_LAYOUT_PILLARS, CRYPT_LAYOUT_LAST));
+  ICryptLayoutStrategyPtr layout_strategy = CryptLayoutStrategyFactory::create_layout_strategy(layout_type);
+
+  if (layout_strategy != nullptr)
+  {
+    layout_strategy->create_layout(map, loc_details);
+  }
 }
 
 // Generate skeletons around the perimeter of the crypt.
-void CryptGenerator::generate_perimeter_skeletons(const std::tuple<CardinalDirection, Coordinate, Coordinate>& loc_details, MapPtr map)
+void CryptGenerator::generate_perimeter_skeletons(const std::tuple<Coordinate, Coordinate, Coordinate>& loc_details, MapPtr map)
 {
   Coordinate top_left = get<1>(loc_details);
   Coordinate bottom_right = get<2>(loc_details);
@@ -108,7 +117,7 @@ void CryptGenerator::generate_perimeter_skeletons(const std::tuple<CardinalDirec
 }
 
 // Generate the staircase to the surface.
-CardinalDirection CryptGenerator::generate_up_staircase(const Coordinate& top_left, const Coordinate& bottom_right, MapPtr map)
+Coordinate CryptGenerator::generate_up_staircase(const Coordinate& top_left, const Coordinate& bottom_right, MapPtr map)
 {
   // Generate the up-staircase.
   CardinalDirection d = static_cast<CardinalDirection>(RNG::range(CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_WEST));
@@ -136,7 +145,7 @@ CardinalDirection CryptGenerator::generate_up_staircase(const Coordinate& top_le
   }
 
   place_staircase(map, stair_coords.first, stair_coords.second, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_CRYPT, DIRECTION_UP, get_permanence(), true);
-  return d;
+  return stair_coords;
 }
 
 MapType CryptGenerator::get_map_type() const
