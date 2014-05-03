@@ -85,7 +85,7 @@ void CryptGenerator::generate_crypt_features(const std::tuple<Coordinate, Coordi
     generate_perimeter_skeletons(loc_details, map);
   }
 
-  CryptLayoutType layout_type = static_cast<CryptLayoutType>(RNG::range_endexclusive(CRYPT_LAYOUT_PILLARS, CRYPT_LAYOUT_LAST));
+  CryptLayoutType layout_type = static_cast<CryptLayoutType>(RNG::range(CRYPT_LAYOUT_PILLARS, CRYPT_LAYOUT_LAST-1));
   ICryptLayoutStrategyPtr layout_strategy = CryptLayoutStrategyFactory::create_layout_strategy(layout_type);
 
   if (layout_strategy != nullptr)
@@ -126,21 +126,21 @@ Coordinate CryptGenerator::generate_up_staircase(const Coordinate& top_left, con
   switch (d)
   {
     case CARDINAL_DIRECTION_NORTH:
-      stair_coords.first = top_left.first + 1;
+      stair_coords.first = top_left.first;
       stair_coords.second = (top_left.second + bottom_right.second) / 2;
       break;
     case CARDINAL_DIRECTION_SOUTH:
-      stair_coords.first = bottom_right.first - 2;
+      stair_coords.first = bottom_right.first;
       stair_coords.second = (top_left.second + bottom_right.second) / 2;
       break;
     case CARDINAL_DIRECTION_EAST:
       stair_coords.first = (top_left.first + bottom_right.first) / 2;
-      stair_coords.second = top_left.second + 1;
+      stair_coords.second = top_left.second;
       break;
     case CARDINAL_DIRECTION_WEST:
     default:
       stair_coords.first = (top_left.first + bottom_right.first) / 2;
-      stair_coords.second = bottom_right.second - 2;
+      stair_coords.second = bottom_right.second;
       break;
   }
 
