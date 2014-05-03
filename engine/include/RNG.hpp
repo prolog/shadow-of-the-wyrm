@@ -11,6 +11,7 @@ class RNG
     static int dice(const Dice& dice);
 		static int dice(int num_dice, int num_sides, int additional_modifier = 0);
 		static int range(int min, int max, int additional_modifier = 0);
+    static int range_endexclusive(int min, int max_exclusive);
     static int range(double min, double max);
 		static bool percent_chance(const int percent_chance);
     static bool initialize_if_necessary();

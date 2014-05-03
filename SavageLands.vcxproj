@@ -414,6 +414,7 @@
     <ClInclude Include="engine\generators\crypts\include\CryptGenerator.hpp" />
     <ClInclude Include="engine\generators\crypts\include\CryptLayoutStrategyFactory.hpp" />
     <ClInclude Include="engine\generators\crypts\include\CryptLayoutTypes.hpp" />
+    <ClInclude Include="engine\generators\crypts\include\EmptyCryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\ICryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\PillarCryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\gardens\include\GardenGenerator.hpp" />
@@ -444,6 +445,8 @@
     <ClInclude Include="engine\generators\include\MineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MountainsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\OrderedGraveyardGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\PillarGeneratorFactory.hpp" />
+    <ClInclude Include="engine\generators\include\PillarTypes.hpp" />
     <ClInclude Include="engine\generators\include\RoadGenerator.hpp" />
     <ClInclude Include="engine\generators\include\Room.hpp" />
     <ClInclude Include="engine\generators\include\RuinsGenerator.hpp" />
@@ -1485,6 +1488,7 @@
     </ClCompile>
     <ClCompile Include="engine\generators\crypts\source\CryptGenerator.cpp" />
     <ClCompile Include="engine\generators\crypts\source\CryptLayoutStrategyFactory.cpp" />
+    <ClCompile Include="engine\generators\crypts\source\EmptyCryptLayoutStrategy.cpp" />
     <ClCompile Include="engine\generators\crypts\source\PillarCryptLayoutStrategy.cpp" />
     <ClCompile Include="engine\generators\crypts\source\unit_tests\CryptLayoutStrategyFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -1523,6 +1527,7 @@
     <ClCompile Include="engine\generators\source\MineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MountainsGenerator.cpp" />
     <ClCompile Include="engine\generators\source\OrderedGraveyardGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\PillarGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\source\RoadGenerator.cpp" />
     <ClCompile Include="engine\generators\source\Room.cpp" />
     <ClCompile Include="engine\generators\source\RuinsGenerator.cpp" />
@@ -1541,6 +1546,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\generators\source\unit_tests\CrossPillarGenerator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\unit_tests\PillarGeneratorFactory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
