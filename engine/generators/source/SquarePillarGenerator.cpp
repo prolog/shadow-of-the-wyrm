@@ -14,8 +14,8 @@ int SquarePillarGenerator::get_width() const
 // Generate a square pillar and insert it into the map.
 void SquarePillarGenerator::generate(MapPtr map, const int y_topleft, const int x_topleft)
 {
-  int end_y = y_topleft + get_height();
-  int end_x = x_topleft + get_width();
+  int end_y = y_topleft + get_height() - 1;
+  int end_x = x_topleft + get_width() - 1;
 
   TileGenerator tg;
   TilePtr tile;
