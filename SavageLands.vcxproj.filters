@@ -3060,6 +3060,9 @@
     <ClInclude Include="engine\generators\include\PillarGeneratorFactory.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\crypts\include\VaultCryptLayoutStrategy.hpp">
+      <Filter>Header Files\engine\generators\crypts\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5869,6 +5872,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\unit_tests\PillarGeneratorFactory_test.cpp">
       <Filter>Source Files\engine\generators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\crypts\source\VaultCryptLayoutStrategy.cpp">
+      <Filter>Source Files\engine\generators\crypts\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
