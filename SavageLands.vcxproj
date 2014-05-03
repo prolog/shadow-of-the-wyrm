@@ -417,6 +417,7 @@
     <ClInclude Include="engine\generators\crypts\include\EmptyCryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\ICryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\crypts\include\PillarCryptLayoutStrategy.hpp" />
+    <ClInclude Include="engine\generators\crypts\include\VaultCryptLayoutStrategy.hpp" />
     <ClInclude Include="engine\generators\gardens\include\GardenGenerator.hpp" />
     <ClInclude Include="engine\generators\gardens\include\GardenGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\gardens\include\GardenTypes.hpp" />
@@ -1495,6 +1496,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\generators\crypts\source\VaultCryptLayoutStrategy.cpp" />
     <ClCompile Include="engine\generators\gardens\source\GardenGenerator.cpp" />
     <ClCompile Include="engine\generators\gardens\source\GardenGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\gardens\source\RockGardenGenerator.cpp" />

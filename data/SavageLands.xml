@@ -16007,7 +16007,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID>wyrmeswraec_gate</LockID>
 			</Tool>
-			<Tool id="crypt_key">
+			<Tool id="_crypt_key">
 				<DescriptionSID>CRYPT_KEY_SID</DescriptionSID>
 				<UsageDescriptionSID>CRYPT_KEY_USAGE_SID</UsageDescriptionSID>
 				<Value>1</Value>

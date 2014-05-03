@@ -42,7 +42,8 @@ Savage Lands v0.2.3 "Eadwine"
 
 - Created layout strategies for crypts: pillared layouts create a
   particular type of pillar (square- or cross-shaped) and apply them
-  regularly throughout the crypt.
+  regularly throughout the crypt.  Vault crypts have a locked room in
+  the center full of dangerous creatures and useful items.
 
 - Misc bug fixes: fixed a paging issue where the option (e.g., "[a]") could
   display several times.
