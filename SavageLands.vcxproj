@@ -460,6 +460,7 @@
     <ClInclude Include="engine\generators\include\StreamGenerator.hpp" />
     <ClInclude Include="engine\generators\include\TerrainGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\TileGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\VaultPopulator.hpp" />
     <ClInclude Include="engine\generators\include\WildOrchardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\WorldGenerator.hpp" />
     <ClInclude Include="engine\generators\settlements\include\BaseSettlementGenerator.hpp" />
@@ -1567,6 +1568,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\generators\source\VaultPopulator.cpp" />
     <ClCompile Include="engine\generators\source\WildOrchardGenerator.cpp" />
     <ClCompile Include="engine\generators\source\WorldGenerator.cpp" />
     <ClCompile Include="engine\generators\tile_config\source\CairnTileConfiguration.cpp" />
