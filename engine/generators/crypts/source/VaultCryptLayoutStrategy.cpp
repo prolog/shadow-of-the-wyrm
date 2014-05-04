@@ -128,11 +128,14 @@ Coordinate VaultCryptLayoutStrategy::get_door_location(const Direction d, const 
 // Populate the vault with creatures and swag.
 void VaultCryptLayoutStrategy::populate_vault(MapPtr map, const Coordinate& v_topleft, const Coordinate& v_bottomright)
 {
-  populate_vault_creatures(map, v_topleft, v_bottomright);
-  populate_vault_items(map, v_topleft, v_bottomright);
+  // Generate the "open tiles in the vault".
+  set<Coordinate> vault_coords = CoordUtils::get_coordinates_in_range(make_pair(v_topleft.first + 1, v_topleft.second + 1), make_pair(v_bottomright.first-1, v_bottomright.second-1));
+
+  populate_vault_creatures(map, vault_coords);
+  populate_vault_items(map, vault_coords);
 }
 
-void VaultCryptLayoutStrategy::populate_vault_creatures(MapPtr map, const Coordinate& v_topleft, const Coordinate& v_bottomright)
+void VaultCryptLayoutStrategy::populate_vault_creatures(MapPtr map, const set<Coordinate>& coords)
 {
   Game& game = Game::instance();
   ActionManager& am = game.get_action_manager_ref();
@@ -140,30 +143,22 @@ void VaultCryptLayoutStrategy::populate_vault_creatures(MapPtr map, const Coordi
   // Generate creatures and swag based on the danger levels.
   int danger_level = map->get_danger() + RNG::range(MIN_OUT_OF_DEPTH_INCR, MAX_OUT_OF_DEPTH_INCR);
 
-  int vi_startrow = v_topleft.first + 1;
-  int vi_endrow = v_bottomright.first - 1;
-  int vi_startcol = v_topleft.second + 1;
-  int vi_endcol = v_bottomright.second - 1;
-
   Rarity rarity = CreationUtils::generate_rarity();
   CreatureGenerationManager cgm;
   CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(TILE_TYPE_CRYPT, danger_level, rarity);
 
   if (generation_map.size() > 0)
   {
-    for (int row = vi_startrow; row <= vi_endrow; row++)
+    for (const Coordinate& c : coords)
     {
-      for (int col = vi_startcol; col <= vi_endcol; col++)
-      {
-        TilePtr tile = map->at(row, col);
-        CreaturePtr creature = cgm.generate_creature(am, generation_map);
-        MapUtils::add_or_update_location(map, creature, make_pair(row, col));
-      }
+      TilePtr tile = map->at(c.first, c.second);
+      CreaturePtr creature = cgm.generate_creature(am, generation_map);
+      MapUtils::add_or_update_location(map, creature, c);
     }
   }
 }
 
-void VaultCryptLayoutStrategy::populate_vault_items(MapPtr map, const Coordinate& v_topleft, const Coordinate& v_bottomright)
+void VaultCryptLayoutStrategy::populate_vault_items(MapPtr map, const set<Coordinate>& coords)
 {
   // ...
 }
