@@ -24,7 +24,7 @@ void VaultCryptLayoutStrategy::create_layout(MapPtr map, const tuple<Coordinate,
   pair<Coordinate, Coordinate> vault_coords = generate_vault(map, stair_loc_and_room_boundary);
 
   // Fill the vault with creatures and items.
-  populate_vault(map, vault_coords.first, vault_coords.second);
+  populate_vault(map, TILE_TYPE_CRYPT, vault_coords.first, vault_coords.second);
 }
 
 // Create the central vault.
@@ -63,7 +63,6 @@ pair<Coordinate, Coordinate> VaultCryptLayoutStrategy::generate_vault(MapPtr map
 void VaultCryptLayoutStrategy::generate_vault_entrance(MapPtr map, const int mid_height, const int mid_width, const int vh, const int vw, const Coordinate& stair_coord)
 {
   // Create the door.
-
   Direction d = static_cast<Direction>(RNG::range(DIRECTION_NORTH, DIRECTION_WEST));
   Coordinate door_coords = get_door_location(d, mid_height, mid_width, vh, vw);
 
@@ -126,16 +125,16 @@ Coordinate VaultCryptLayoutStrategy::get_door_location(const Direction d, const 
 }
 
 // Populate the vault with creatures and swag.
-void VaultCryptLayoutStrategy::populate_vault(MapPtr map, const Coordinate& v_topleft, const Coordinate& v_bottomright)
+void VaultCryptLayoutStrategy::populate_vault(MapPtr map, const TileType tile_type, const Coordinate& v_topleft, const Coordinate& v_bottomright)
 {
   // Generate the "open tiles in the vault".
   set<Coordinate> vault_coords = CoordUtils::get_coordinates_in_range(make_pair(v_topleft.first + 1, v_topleft.second + 1), make_pair(v_bottomright.first-1, v_bottomright.second-1));
 
-  populate_vault_creatures(map, vault_coords);
+  populate_vault_creatures(map, tile_type, vault_coords);
   populate_vault_items(map, vault_coords);
 }
 
-void VaultCryptLayoutStrategy::populate_vault_creatures(MapPtr map, const set<Coordinate>& coords)
+void VaultCryptLayoutStrategy::populate_vault_creatures(MapPtr map, const TileType tile_type, const set<Coordinate>& coords)
 {
   Game& game = Game::instance();
   ActionManager& am = game.get_action_manager_ref();
@@ -145,7 +144,7 @@ void VaultCryptLayoutStrategy::populate_vault_creatures(MapPtr map, const set<Co
 
   Rarity rarity = CreationUtils::generate_rarity();
   CreatureGenerationManager cgm;
-  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(TILE_TYPE_CRYPT, danger_level, rarity);
+  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, danger_level, rarity);
 
   if (generation_map.size() > 0)
   {
