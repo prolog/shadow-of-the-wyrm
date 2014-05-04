@@ -32,7 +32,7 @@ TilePtr CryptGenerator::generate_tile(MapPtr current_map, const int row, const i
 
 bool CryptGenerator::get_permanence_default() const
 {
-  return false;
+  return true;
 }
 
 // Create the central crypt, a long room with an ascending staircase near 

@@ -32,8 +32,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // Alderman of Sussex
-  return "\"Eadwine\"";
+  // First king of Bernicia (Northumberland)
+  return "\"Esa\"";
 }
 
 string Metadata::get_game_version_synopsis() const

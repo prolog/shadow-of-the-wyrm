@@ -1,5 +1,8 @@
+Savage Lands v0.2.4 "Esa"
+- Version declared May 4, 2014.
+
 Savage Lands v0.2.3 "Eadwine"
-- Version declared March 22, 2014.
+- Version declared March 22, 2014.  Version finalized May 4, 2014.
 
 - Started work on the documentation, specifically a Nethack-esque guidebook
   explaining the game and describing the basic commands.
