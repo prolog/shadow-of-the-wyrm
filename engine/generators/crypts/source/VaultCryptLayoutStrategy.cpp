@@ -1,22 +1,16 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include <boost/uuid/uuid_io.hpp>
-#include "Conversion.hpp"
 #include "CoordUtils.hpp"
-#include "CreatureGenerationManager.hpp"
-#include "CreationUtils.hpp"
+#include "Conversion.hpp"
 #include "FeatureGenerator.hpp"
-#include "Game.hpp"
 #include "ItemManager.hpp"
-#include "MapUtils.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 #include "Tool.hpp"
 #include "VaultCryptLayoutStrategy.hpp"
+#include "VaultPopulator.hpp"
 
 using namespace std;
-
-const int VaultCryptLayoutStrategy::MIN_OUT_OF_DEPTH_INCR = 0;
-const int VaultCryptLayoutStrategy::MAX_OUT_OF_DEPTH_INCR = 10;
 
 // Create a central vault with creatures.
 void VaultCryptLayoutStrategy::create_layout(MapPtr map, const tuple<Coordinate, Coordinate, Coordinate>& stair_loc_and_room_boundary)
@@ -24,7 +18,8 @@ void VaultCryptLayoutStrategy::create_layout(MapPtr map, const tuple<Coordinate,
   pair<Coordinate, Coordinate> vault_coords = generate_vault(map, stair_loc_and_room_boundary);
 
   // Fill the vault with creatures and items.
-  populate_vault(map, TILE_TYPE_CRYPT, vault_coords.first, vault_coords.second);
+  VaultPopulator vp;
+  vp.populate_vault(map, TILE_TYPE_CRYPT, vault_coords.first, vault_coords.second);
 }
 
 // Create the central vault.
@@ -124,40 +119,3 @@ Coordinate VaultCryptLayoutStrategy::get_door_location(const Direction d, const 
   return make_pair(d_y, d_x);
 }
 
-// Populate the vault with creatures and swag.
-void VaultCryptLayoutStrategy::populate_vault(MapPtr map, const TileType tile_type, const Coordinate& v_topleft, const Coordinate& v_bottomright)
-{
-  // Generate the "open tiles in the vault".
-  set<Coordinate> vault_coords = CoordUtils::get_coordinates_in_range(make_pair(v_topleft.first + 1, v_topleft.second + 1), make_pair(v_bottomright.first-1, v_bottomright.second-1));
-
-  populate_vault_creatures(map, tile_type, vault_coords);
-  populate_vault_items(map, vault_coords);
-}
-
-void VaultCryptLayoutStrategy::populate_vault_creatures(MapPtr map, const TileType tile_type, const set<Coordinate>& coords)
-{
-  Game& game = Game::instance();
-  ActionManager& am = game.get_action_manager_ref();
-
-  // Generate creatures and swag based on the danger levels.
-  int danger_level = map->get_danger() + RNG::range(MIN_OUT_OF_DEPTH_INCR, MAX_OUT_OF_DEPTH_INCR);
-
-  Rarity rarity = CreationUtils::generate_rarity();
-  CreatureGenerationManager cgm;
-  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, danger_level, rarity);
-
-  if (generation_map.size() > 0)
-  {
-    for (const Coordinate& c : coords)
-    {
-      TilePtr tile = map->at(c.first, c.second);
-      CreaturePtr creature = cgm.generate_creature(am, generation_map);
-      MapUtils::add_or_update_location(map, creature, c);
-    }
-  }
-}
-
-void VaultCryptLayoutStrategy::populate_vault_items(MapPtr map, const set<Coordinate>& coords)
-{
-  // ...
-}
