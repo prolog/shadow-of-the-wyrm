@@ -56,7 +56,7 @@ tuple<Coordinate, Coordinate, Coordinate> CryptGenerator::generate_central_crypt
   Coordinate bottom_right = make_pair(endy, endx);
 
   TilePtr tile;
-  set<Coordinate> coords = CoordUtils::get_coordinates_in_range(top_left, bottom_right);
+  vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(top_left, bottom_right);
   for (const auto& coord : coords)
   {
     tile = tg.generate(TILE_TYPE_DUNGEON);
@@ -100,7 +100,7 @@ void CryptGenerator::generate_perimeter_skeletons(const std::tuple<Coordinate, C
   Coordinate top_left = get<1>(loc_details);
   Coordinate bottom_right = get<2>(loc_details);
 
-  set<Coordinate> coords = CoordUtils::get_perimeter_coordinates(top_left, bottom_right);
+  vector<Coordinate> coords = CoordUtils::get_perimeter_coordinates(top_left, bottom_right);
   TilePtr tile;
 
   for (const auto& coord : coords)
