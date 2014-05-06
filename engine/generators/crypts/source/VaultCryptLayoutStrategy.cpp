@@ -41,7 +41,7 @@ pair<Coordinate, Coordinate> VaultCryptLayoutStrategy::generate_vault(MapPtr map
   Coordinate v_topleft(mid_height - (vh / 2), mid_width - (vw / 2));
   Coordinate v_bottomright(mid_height + (vh / 2), mid_width + (vw / 2));
 
-  set<Coordinate> coords = CoordUtils::get_perimeter_coordinates(v_topleft, v_bottomright);
+  vector<Coordinate> coords = CoordUtils::get_perimeter_coordinates(v_topleft, v_bottomright);
 
   // Create the vault.
   TileGenerator tg;

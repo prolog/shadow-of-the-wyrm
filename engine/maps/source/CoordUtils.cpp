@@ -222,52 +222,74 @@ vector<Coordinate> CoordUtils::get_adjacent_map_coordinates(const Dimensions& di
   return adjacent_coordinates;
 }
 
-set<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
+vector<Coordinate> CoordUtils::get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right)
 {
-  set<Coordinate> perimeter_coordinates;
+  vector<Coordinate> perimeter_coordinates(get_perimeter_length(top_left, bottom_right));
 
   // Top
   for (int col = top_left.second; col <= bottom_right.second; col++)
   {
-    perimeter_coordinates.insert(make_pair(top_left.first, col));
+    perimeter_coordinates.push_back(make_pair(top_left.first, col));
   }
 
   // Right
   for (int row = top_left.first+1; row <= bottom_right.first; row++)
   {
-    perimeter_coordinates.insert(make_pair(row, bottom_right.second));
+    perimeter_coordinates.push_back(make_pair(row, bottom_right.second));
   }
 
   // Bottom
   for (int col = top_left.second; col <= bottom_right.second - 1; col++)
   {
-    perimeter_coordinates.insert(make_pair(bottom_right.first, col));
+    perimeter_coordinates.push_back(make_pair(bottom_right.first, col));
   }
 
   // Left
   for (int row = top_left.first + 1; row <= bottom_right.first - 1; row++)
   {
-    perimeter_coordinates.insert(make_pair(row, top_left.second));
+    perimeter_coordinates.push_back(make_pair(row, top_left.second));
   }
 
   return perimeter_coordinates;
 }
 
 // Returns all coordinates from top left to bottom right, inclusive.
-set<Coordinate> CoordUtils::get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right)
+vector<Coordinate> CoordUtils::get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right)
 {
-  // JCD FIXME unit tests, and hook up to CryptGenerator.
-  set<Coordinate> coords;
+  int size = ((bottom_right.first - top_left.first) * (bottom_right.second - top_left.second));
 
-  for (int row = top_left.first; row <= bottom_right.first; row++)
+  if (size > 0)
   {
-    for (int col = top_left.second; col <= bottom_right.second; col++)
+    vector<Coordinate> coords(size);
+
+    for (int row = top_left.first; row <= bottom_right.first; row++)
     {
-      coords.insert(make_pair(row, col));
+      for (int col = top_left.second; col <= bottom_right.second; col++)
+      {
+        coords.push_back(make_pair(row, col));
+      }
     }
+
+    return coords;
   }
 
-  return coords;
+  vector<Coordinate> no_coords;
+  return no_coords;
+}
+
+int CoordUtils::get_perimeter_length(const Coordinate& top_left, const Coordinate& bottom_right)
+{
+  int p = 0;
+
+  if ((top_left.first < bottom_right.first) && (top_left.second < bottom_right.second))
+  {
+    // Since this is a rectangle, P = 2(W + L)
+    int length = bottom_right.first - top_left.first;
+    int width = bottom_right.second - top_left.second;
+    p = 2 * (length + width);
+  }
+
+  return p;
 }
 
 #ifdef UNIT_TESTS

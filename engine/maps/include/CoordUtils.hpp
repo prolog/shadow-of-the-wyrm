@@ -21,11 +21,13 @@ class CoordUtils
     // Get new coordinates.  "is_valid_move" should always be called first!
     static Coordinate get_new_coordinate(const Coordinate& c, const Direction d);
 
+    static int get_perimeter_length(const Coordinate& top_left, const Coordinate& bottom_right);
+
     // Get the perimeter coordinates of a given rectangle.
-    static std::set<Coordinate> get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
+    static std::vector<Coordinate> get_perimeter_coordinates(const Coordinate& top_left, const Coordinate& bottom_right);
 
     // Get all the coordinates in the given range.
-    static std::set<Coordinate> get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right);
+    static std::vector<Coordinate> get_coordinates_in_range(const Coordinate& top_left, const Coordinate& bottom_right);
 
     // Get the direction of a move given the start and end coordinates.
     static Direction get_direction(const Coordinate& start_coord, const Coordinate& end_coord);

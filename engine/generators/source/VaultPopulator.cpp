@@ -20,13 +20,13 @@ void VaultPopulator::populate_vault(MapPtr map, const TileType tile_type, const 
   Rarity rarity = CreationUtils::generate_rarity();
 
   // Generate the "open tiles in the vault".
-  set<Coordinate> vault_coords = CoordUtils::get_coordinates_in_range(make_pair(v_topleft.first + 1, v_topleft.second + 1), make_pair(v_bottomright.first - 1, v_bottomright.second - 1));
+  vector<Coordinate> vault_coords = CoordUtils::get_coordinates_in_range(make_pair(v_topleft.first + 1, v_topleft.second + 1), make_pair(v_bottomright.first - 1, v_bottomright.second - 1));
 
   populate_vault_creatures(map, tile_type, vault_coords, danger_level, rarity);
   populate_vault_items(map, vault_coords, danger_level, rarity);
 }
 
-void VaultPopulator::populate_vault_creatures(MapPtr map, const TileType tile_type, const set<Coordinate>& coords, const int danger_level, const Rarity rarity)
+void VaultPopulator::populate_vault_creatures(MapPtr map, const TileType tile_type, const vector<Coordinate>& coords, const int danger_level, const Rarity rarity)
 {
   Game& game = Game::instance();
   ActionManager& am = game.get_action_manager_ref();
@@ -46,7 +46,7 @@ void VaultPopulator::populate_vault_creatures(MapPtr map, const TileType tile_ty
 }
 
 // Populate loot into the vault.
-void VaultPopulator::populate_vault_items(MapPtr map, const set<Coordinate>& coords, const int danger_level, const Rarity rarity)
+void VaultPopulator::populate_vault_items(MapPtr map, const vector<Coordinate>& coords, const int danger_level, const Rarity rarity)
 {
   Game& game = Game::instance();
   ActionManager& am = game.get_action_manager_ref();
