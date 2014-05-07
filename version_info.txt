@@ -2,7 +2,10 @@ Savage Lands v0.2.4 "Esa"
 - Version declared May 4, 2014.
 
 - Sped up the crypt generation a little (switched to vector<Coordinate>
-instead of set, pre-reserved sizes, etc).
+  instead of set, pre-reserved sizes, etc).
+
+- Refactored the graveyard generation code so that it would be possible to
+  generate graves over a range of values on a given map.
 
 Savage Lands v0.2.3 "Eadwine"
 - Version declared March 22, 2014.  Version finalized May 4, 2014.

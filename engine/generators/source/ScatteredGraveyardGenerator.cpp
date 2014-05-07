@@ -14,15 +14,22 @@ void ScatteredGraveyardGenerator::add_graves(MapPtr map)
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
-  int rand;
 
-  for (int row = 2; row < rows-2; row++)
+  int start_row = 2;
+  int end_row = rows - 3;
+  int start_col = 2;
+  int end_col = cols - 3;
+
+  add_graves(map, start_row, end_row, start_col, end_col);
+}
+
+void ScatteredGraveyardGenerator::add_graves(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  for (int row = start_row; row <= end_row; row++)
   {
-    for (int col = 2; col < cols-2; col++)
+    for (int col = start_col; col <= end_col; col++)
     {
-      rand = RNG::range(1, 100);
-
-      if (rand < 10)
+      if (RNG::percent_chance(10))
       {
         TilePtr grave = tg.generate(TILE_TYPE_GRAVE);
         map->insert(row, col, grave);
@@ -30,4 +37,3 @@ void ScatteredGraveyardGenerator::add_graves(MapPtr map)
     }
   }
 }
-
