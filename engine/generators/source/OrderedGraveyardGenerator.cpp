@@ -1,5 +1,7 @@
 #include "OrderedGraveyardGenerator.hpp"
 
+using namespace std;
+
 OrderedGraveyardGenerator::OrderedGraveyardGenerator(const std::string& new_map_exit_id)
 : GraveyardGenerator(new_map_exit_id)
 {
@@ -12,19 +14,29 @@ void OrderedGraveyardGenerator::add_graves(MapPtr map)
   
   int rows = dim.get_y();
   int cols = dim.get_x();
-  
-  for (int y = 2; y < rows - 2; y++)
+
+  int start_row = 2;
+  int end_row = rows - 3;
+  int start_col = 2;
+  int end_col = cols - 3;
+
+  add_graves(map, start_row, end_row, start_col, end_col);
+}
+
+void OrderedGraveyardGenerator::add_graves(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  TileGenerator tg;
+  TilePtr grave;
+
+  for (int row = start_row; row <= end_row; row++)
   {
-    for (int x = 2; x < cols - 2; x++)
+    for (int col = start_col; col <= end_col; col++)
     {
-      if ((x%5) + (y % 3) == 0)
+      if ((col % 5) + (row % 3) == 0)
       {
-        TilePtr grave = generate_tile(map, y, x);
-        map->insert(y, x, grave);
+        grave = tg.generate(TILE_TYPE_GRAVE);
+        map->insert(row, col, grave);
       }
     }
   }
 }
-
-
-

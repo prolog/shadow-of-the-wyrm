@@ -9,14 +9,15 @@ class GraveyardGenerator : public SL::Generator
     
     virtual MapPtr generate(const Dimensions& dim) override;
 
+    // This is the function that determines whether a graveyard is ordered or scattered, and
+    // must be implemented by each subclass.
+    virtual void add_graves(MapPtr map) = 0;
+    virtual void add_graves(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col) = 0;
+
   protected:
     virtual bool get_permanence_default() const override;
 
     virtual TilePtr generate_tile(MapPtr current_map, const int row, const int col);
-
-    // This is the function that determines whether a graveyard is ordered or scattered, and
-    // must be implemented by each subclass.
-    virtual void add_graves(MapPtr map) = 0;
     
     virtual void add_tomb_if_necessary(MapPtr map);
     virtual void add_tomb(MapPtr map);
