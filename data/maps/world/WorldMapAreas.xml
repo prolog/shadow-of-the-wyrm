@@ -8,6 +8,14 @@
 			<Row y="98" x="94">FCF~~~</Row>
 			<Script>areas/little_island.lua</Script>
 		</Area>
+		<Area id="aeschburh">
+			<Row y="82" x="82">~~~~~~</Row>
+			<Row y="83" x="82">~ffFf~</Row>
+			<Row y="84" x="82">~ffvf~</Row>
+			<Row y="85" x="82">~FfFf~</Row>
+			<Row y="86" x="82">~~~~~~</Row>
+			<Script>areas/aeschburh.lua</Script>
+		</Area>
 		<Area id="infinite_dungeon">
 			<Row y="87" x="97">~~~</Row>
 			<Row y="88" x="97">~F~</Row>
