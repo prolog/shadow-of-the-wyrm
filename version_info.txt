@@ -7,6 +7,10 @@ Savage Lands v0.2.4 "Esa"
 - Refactored the graveyard generation code so that it would be possible to
   generate graves over a range of values on a given map.
 
+- Began work on Aeschburh, a ruined settlement referenced in the Isen Dun
+  Chronicle.  It sits to the north-west of Isen Dun, and at night, strange
+  lights can be seen from across the water.
+
 Savage Lands v0.2.3 "Eadwine"
 - Version declared March 22, 2014.  Version finalized May 4, 2014.
 
