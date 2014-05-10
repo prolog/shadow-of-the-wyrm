@@ -1066,11 +1066,12 @@
 			9 = Marble
 			10 = Onyx
 			11 = Ivory
+			12 = Bone
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="11"/>
+		<xs:maxInclusive value="12"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="ColourType">

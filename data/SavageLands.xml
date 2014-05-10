@@ -2332,6 +2332,10 @@
 						<ID>food_ration</ID>
 						<Quantity><Amount>3</Amount></Quantity>
 					</InitialItem>
+					<InitialItem>
+						<ID>brass_knuckles</ID>
+						<Quantity><Amount>1</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
@@ -13951,6 +13955,25 @@
 			</Ring>
 		</Rings>
 		<Weapons>
+			<Weapon id="brass_knuckles">
+				<DescriptionSID>BRASS_KNUCKLES_SID</DescriptionSID>
+				<UsageDescriptionSID>BRASS_KNUCKLES_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>3</DangerLevel>
+				<Skill>1007</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>0</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>1</Modifier>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
 			<Weapon id="iron_hammer">
 				<DescriptionSID>IRON_HAMMER_SID</DescriptionSID>
 				<UsageDescriptionSID>IRON_HAMMER_USAGE_SID</UsageDescriptionSID>
