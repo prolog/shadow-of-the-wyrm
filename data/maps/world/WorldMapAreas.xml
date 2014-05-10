@@ -10,9 +10,9 @@
 		</Area>
 		<Area id="aeschburh">
 			<Row y="82" x="82">~~~~~~</Row>
-			<Row y="83" x="82">~ffFf~</Row>
-			<Row y="84" x="82">~ffvf~</Row>
-			<Row y="85" x="82">~FfFf~</Row>
+			<Row y="83" x="82">~F~~~~</Row>
+			<Row y="84" x="82">~vff~~</Row>
+			<Row y="85" x="82">~~~~~~</Row>
 			<Row y="86" x="82">~~~~~~</Row>
 			<Script>areas/aeschburh.lua</Script>
 		</Area>
