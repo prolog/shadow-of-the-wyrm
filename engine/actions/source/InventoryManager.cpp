@@ -25,7 +25,7 @@ ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilte
 {
   ItemPtr selected_item;
   bool manage_inv = true;
-  ulonglong menus_created = 0;
+  ulonglong screens_created = 0;
 
   try
   {

@@ -21,7 +21,7 @@ ActionCostValue EquipmentManager::manage_equipment()
 {
   ActionCostValue total_action_cost = 0;
   ActionCostValue action_cost = 0; // Looking at eq has no cost - adding or removing items will update this.
-  ulonglong menus_created = 0;
+  ulonglong screens_created = 0;
   
   bool manage_eq = true; // For looping
 
@@ -37,11 +37,11 @@ ActionCostValue EquipmentManager::manage_equipment()
         if (display && creature->get_is_player())
         {
           EquipmentScreen es(display, creature);
-          string menu_selection = es.display();
+          string screen_selection = es.display();
 
-          if (!menu_selection.empty())
+          if (!screen_selection.empty())
           {
-            CommandPtr equipment_command = command_factory->create(menu_selection.at(0), kb_command_map->get_command_type(menu_selection));
+            CommandPtr equipment_command = command_factory->create(screen_selection.at(0), kb_command_map->get_command_type(screen_selection));
             action_cost = EquipmentCommandProcessor::process(creature, equipment_command);
 
             if ((action_cost > 0) && (total_action_cost == 0))
@@ -70,9 +70,9 @@ ActionCostValue EquipmentManager::manage_equipment()
 
   if (creature->get_is_player())
   {
-    for (ulonglong i = 0; i < menus_created; i++)
+    for (ulonglong i = 0; i < screens_created; i++)
     {
-      display->clear_menu();
+      display->clear_screen();
     }
   }
 

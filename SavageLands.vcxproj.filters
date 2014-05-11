@@ -109,9 +109,6 @@
     <Filter Include="Header Files\engine\items">
       <UniqueIdentifier>{65f9a287-a605-4db7-8896-47525a687bba}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\menus">
-      <UniqueIdentifier>{16ab4664-e3ca-4262-8d72-60ffe6e737ec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\engine\serialization">
       <UniqueIdentifier>{fcb10ae7-d554-4bad-8d48-a0394f4c372e}</UniqueIdentifier>
     </Filter>
@@ -247,9 +244,6 @@
     <Filter Include="Header Files\engine\items\include">
       <UniqueIdentifier>{bb84e9f4-5799-4937-927f-1ce04e13615f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\menus\include">
-      <UniqueIdentifier>{5afc028a-76b5-4850-9135-ead4f12db8c0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\engine\XML\include">
       <UniqueIdentifier>{ab286ad1-d7ae-4b54-9750-8f840f319973}</UniqueIdentifier>
     </Filter>
@@ -297,9 +291,6 @@
     </Filter>
     <Filter Include="Source Files\engine\items">
       <UniqueIdentifier>{8c6b922f-f9cc-4099-abcb-f00b36f7cd9d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\menus">
-      <UniqueIdentifier>{cf7bbb43-40ff-43fb-8549-101a073590c5}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\engine\serialization">
       <UniqueIdentifier>{e9c949f8-a9f0-46a5-8cf6-0262830affed}</UniqueIdentifier>
@@ -417,9 +408,6 @@
     </Filter>
     <Filter Include="Source Files\engine\items\source\unit_tests">
       <UniqueIdentifier>{f928a8c2-7a81-406c-b41c-421c3e6c0164}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\menus\source">
-      <UniqueIdentifier>{9c3bce33-c1fb-4154-b8a5-2ab15fad47e8}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\engine\translators\source">
       <UniqueIdentifier>{520faf25-fa68-4599-a46b-f57428d6649d}</UniqueIdentifier>
@@ -670,21 +658,6 @@
     <Filter Include="Header Files\engine\XML\custom_maps\world\include">
       <UniqueIdentifier>{b4061cd4-ec3f-43b2-b918-23f672c3ab16}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\engine\commands\menus">
-      <UniqueIdentifier>{460b7e7a-c5e8-4bf5-b502-bff0cb4b7cec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\commands\menus">
-      <UniqueIdentifier>{d4a4e8e2-5065-4037-90da-2f8df489cdb0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\commands\menus\source">
-      <UniqueIdentifier>{f8a4f453-7268-438b-83e8-d1b52b17a3f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\engine\commands\menus\include">
-      <UniqueIdentifier>{938a3208-fbdc-49c6-a5f4-1e71d8330ac2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\commands\menus\source\unit_tests">
-      <UniqueIdentifier>{dd785392-8899-4124-8afd-fa77f1269ddb}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\engine\generators\crypts">
       <UniqueIdentifier>{27e2e177-9a65-4886-bcaa-4e8f0e49715c}</UniqueIdentifier>
     </Filter>
@@ -699,6 +672,33 @@
     </Filter>
     <Filter Include="Source Files\engine\generators\crypts\source\unit_tests">
       <UniqueIdentifier>{9a762dc7-e8a0-451d-9c4d-53fc02ca68e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\screens">
+      <UniqueIdentifier>{cf7bbb43-40ff-43fb-8549-101a073590c5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\screens">
+      <UniqueIdentifier>{16ab4664-e3ca-4262-8d72-60ffe6e737ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\screens\include">
+      <UniqueIdentifier>{5afc028a-76b5-4850-9135-ead4f12db8c0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\screens">
+      <UniqueIdentifier>{7be00d1d-3102-4f21-b0e1-400411e9739a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\engine\commands\screens\include">
+      <UniqueIdentifier>{d02b2b65-672f-4382-b7b2-5f379d54e483}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\screens">
+      <UniqueIdentifier>{f8bc545e-0efc-4860-bca3-0a8c43e01a63}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\screens\source">
+      <UniqueIdentifier>{46241674-48ab-4dde-afa6-48e501b1baaf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\commands\screens\source\unit_tests">
+      <UniqueIdentifier>{cfcf47be-f952-4093-8877-53bd61fe423b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\screens\source">
+      <UniqueIdentifier>{f02ccd11-e31b-4cff-9d8b-f6805048d55d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -1785,39 +1785,6 @@
     <ClInclude Include="engine\items\include\SquishyEquipWornLocationFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\menus\include\ClassSelectionScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\DeitySelectionScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\Menu.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\MenuComponent.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\NamingScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\OptionsComponent.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\Prompt.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\RaceSelectionScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\SexSelectionScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\TextComponent.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\WelcomeScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\XML\include\XMLAmuletReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
@@ -2037,9 +2004,6 @@
     <ClInclude Include="world\include\ItemSerializationFactory.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\menus\include\LoadGameScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\serialization\include\SerializationTypes.hpp">
       <Filter>Header Files\engine\serialization\include</Filter>
     </ClInclude>
@@ -2150,12 +2114,6 @@
     </ClInclude>
     <ClInclude Include="engine\description\include\QuestDescriber.hpp">
       <Filter>Header Files\engine\description\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\TextDisplayScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\TextDisplayFormatter.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
     <ClInclude Include="world\include\GenerationValues.hpp">
       <Filter>Header Files\world\include</Filter>
@@ -2313,9 +2271,6 @@
     <ClInclude Include="engine\strings\include\WorldMapLocationTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\strings\include\MenuTitleTextKeys.hpp">
-      <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\strings\include\PromptTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
@@ -2345,9 +2300,6 @@
     </ClInclude>
     <ClInclude Include="engine\strings\include\SpellcastingTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\SpellSelectionScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\commands\magic\include\MagicCommandFactory.hpp">
       <Filter>Header Files\engine\commands\magic\include</Filter>
@@ -2826,9 +2778,6 @@
     <ClInclude Include="engine\actions\read\include\TextReadStrategy.hpp">
       <Filter>Header Files\engine\actions\read\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\menus\include\TextFormatSpecifiers.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\strings\include\StatisticTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
@@ -2970,32 +2919,14 @@
     <ClInclude Include="engine\conversion\include\QuestDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\commands\menus\include\MenuKeyboardCommandMap.hpp">
-      <Filter>Header Files\engine\commands\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\commands\menus\include\MenuCommandKeys.hpp">
-      <Filter>Header Files\engine\commands\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\commands\menus\include\MenuCommands.hpp">
-      <Filter>Header Files\engine\commands\menus\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\commands\menus\include\MenuCommandFactory.hpp">
-      <Filter>Header Files\engine\commands\menus\include</Filter>
-    </ClInclude>
     <ClInclude Include="display\include\MenuWrapper.hpp">
       <Filter>Header Files\display\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\EquipmentScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\commands\select_tile\include\SelectTileTypes.hpp">
       <Filter>Header Files\engine\commands\select_tile\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\include\SelectionUtils.hpp">
       <Filter>Header Files\engine\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\InventoryScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
@@ -3017,9 +2948,6 @@
     </ClInclude>
     <ClInclude Include="engine\creatures\include\CreatureUtils.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\menus\include\HighScoreScreen.hpp">
-      <Filter>Header Files\engine\menus\include</Filter>
     </ClInclude>
     <ClInclude Include="world\tiles\include\CryptTile.hpp">
       <Filter>Header Files\world\tiles\include</Filter>
@@ -3065,6 +2993,81 @@
     </ClInclude>
     <ClInclude Include="engine\generators\include\VaultPopulator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\ClassSelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\DeitySelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\EquipmentScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\HighScoreScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\InventoryScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\LoadGameScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\NamingScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\OptionsComponent.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\Prompt.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\RaceSelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\SexSelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\SpellSelectionScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\TextComponent.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\TextDisplayFormatter.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\TextDisplayScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\TextFormatSpecifiers.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\WelcomeScreen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\Screen.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\screens\include\ScreenComponent.hpp">
+      <Filter>Header Files\engine\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\screens\include\ScreenCommandFactory.hpp">
+      <Filter>Header Files\engine\commands\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\screens\include\ScreenCommandKeys.hpp">
+      <Filter>Header Files\engine\commands\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\screens\include\ScreenCommandProcessor.hpp">
+      <Filter>Header Files\engine\commands\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\screens\include\ScreenCommands.hpp">
+      <Filter>Header Files\engine\commands\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\commands\screens\include\ScreenKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\screens\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -4064,39 +4067,6 @@
     <ClCompile Include="engine\items\source\unit_tests\InitialItemSelector_test.cpp">
       <Filter>Source Files\engine\items\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\menus\source\ClassSelectionScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\DeitySelectionScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\Menu.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\MenuComponent.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\NamingScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\OptionsComponent.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\Prompt.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\RaceSelectionScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\SexSelectionScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\TextComponent.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\WelcomeScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\translators\source\CreatureTranslator.cpp">
       <Filter>Source Files\engine\translators\source</Filter>
     </ClCompile>
@@ -4462,9 +4432,6 @@
     </ClCompile>
     <ClCompile Include="world\source\ItemSerializationFactory.cpp">
       <Filter>Source Files\world\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\LoadGameScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\Metadata.cpp">
       <Filter>Source Files\engine\source</Filter>
@@ -4856,12 +4823,6 @@
     <ClCompile Include="engine\description\source\QuestDescriber.cpp">
       <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\menus\source\TextDisplayScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\TextDisplayFormatter.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
     <ClCompile Include="world\source\GenerationValues.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
@@ -5054,9 +5015,6 @@
     <ClCompile Include="engine\strings\source\WorldMapLocationTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\strings\source\MenuTitleTextKeys.cpp">
-      <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\strings\source\PromptTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
@@ -5089,9 +5047,6 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\SpellcastingTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\SpellSelectionScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\commands\magic\source\MagicCommandFactory.cpp">
       <Filter>Source Files\engine\commands\magic\source</Filter>
@@ -5603,9 +5558,6 @@
     <ClCompile Include="engine\actions\read\source\TextReadStrategy.cpp">
       <Filter>Source Files\engine\actions\read\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\menus\source\TextFormatSpecifiers.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\strings\source\StatisticTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
@@ -5771,35 +5723,11 @@
     <ClCompile Include="engine\conversion\source\QuestDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\commands\menus\source\MenuKeyboardCommandMap.cpp">
-      <Filter>Source Files\engine\commands\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\commands\menus\source\unit_tests\MenuKeyboardCommandMap_test.cpp">
-      <Filter>Source Files\engine\commands\menus\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\commands\menus\source\MenuCommandKeys.cpp">
-      <Filter>Source Files\engine\commands\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\commands\menus\source\MenuCommands.cpp">
-      <Filter>Source Files\engine\commands\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\commands\menus\source\MenuCommandFactory.cpp">
-      <Filter>Source Files\engine\commands\menus\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\commands\menus\source\unit_tests\MenuCommandFactory_test.cpp">
-      <Filter>Source Files\engine\commands\menus\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="display\source\MenuWrapper.cpp">
       <Filter>Source Files\display\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\menus\source\EquipmentScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\source\SelectionUtils.cpp">
       <Filter>Source Files\engine\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\InventoryScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\ScoreCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
@@ -5827,9 +5755,6 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\CreatureUtils.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\menus\source\HighScoreScreen.cpp">
-      <Filter>Source Files\engine\menus\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\ScoreFile_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
@@ -5881,6 +5806,84 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\VaultPopulator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\screens\source\unit_tests\ScreenCommandFactory_test.cpp">
+      <Filter>Source Files\engine\commands\screens\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\screens\source\unit_tests\ScreenKeyboardCommandMap_test.cpp">
+      <Filter>Source Files\engine\commands\screens\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\screens\source\ScreenCommandFactory.cpp">
+      <Filter>Source Files\engine\commands\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\screens\source\ScreenCommandKeys.cpp">
+      <Filter>Source Files\engine\commands\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\screens\source\ScreenCommands.cpp">
+      <Filter>Source Files\engine\commands\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\commands\screens\source\ScreenKeyboardCommandMap.cpp">
+      <Filter>Source Files\engine\commands\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\ScreenTitleTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\ClassSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\DeitySelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\EquipmentScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\HighScoreScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\InventoryScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\LoadGameScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\NamingScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\OptionsComponent.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\Prompt.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\RaceSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\SexSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\SpellSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\TextComponent.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\TextDisplayFormatter.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\TextDisplayScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\TextFormatSpecifiers.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\WelcomeScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\Screen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\screens\source\ScreenComponent.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

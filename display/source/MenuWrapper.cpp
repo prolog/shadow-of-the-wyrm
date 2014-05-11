@@ -1,5 +1,5 @@
 #include "MenuWrapper.hpp"
-#include "MenuKeyboardCommandMap.hpp"
+#include "ScreenKeyboardCommandMap.hpp"
 #include "Conversion.hpp"
 #include "Log.hpp"
 
@@ -7,11 +7,11 @@ using namespace std;
 
 MenuWrapper::MenuWrapper()
 {
-  MenuKeyboardCommandMap mkcm;
+  ScreenKeyboardCommandMap skcm;
 
   // Automatically include the paging keyboard commands in the set -
   // these should be recognizable for all menus.
-  for (auto& map_pair : mkcm.get_internal_map())
+  for (auto& map_pair : skcm.get_internal_map())
   {
     string cmd = map_pair.first;
 

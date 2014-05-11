@@ -10,7 +10,7 @@
 #include "EquipmentTextKeys.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
-#include "Menu.hpp"
+#include "Screen.hpp"
 #include "CursesConstants.hpp"
 #include "CursesDisplay.hpp"
 #include "MapDisplayArea.hpp"
@@ -24,7 +24,7 @@ using namespace std;
 const int CURSES_NUM_BASE_COLOURS = 8;
 const int CURSES_NUM_TOTAL_COLOURS = 16;
 
-// Assumption: menus is empty (prototype object), and so this is safe.
+// Assumption: screens is empty (prototype object), and so this is safe.
 Display* CursesDisplay::clone()
 {
   return new CursesDisplay(*this);
@@ -49,16 +49,16 @@ bool CursesDisplay::operator==(const CursesDisplay& cd) const
   result = result && (FIELD_SPACE == cd.FIELD_SPACE);
   result = result && (MSG_BUFFER_LAST_Y == cd.MSG_BUFFER_LAST_Y);
   result = result && (MSG_BUFFER_LAST_X == cd.MSG_BUFFER_LAST_X);
-  result = result && (menus.size() == cd.menus.size());
+  result = result && (screens.size() == cd.screens.size());
 
   if (result)
   {
-    for (uint i = 0; i < menus.size(); i++)
+    for (uint i = 0; i < screens.size(); i++)
     {
-      WINDOW* menu = menus.at(i);
-      WINDOW* cd_menu = cd.menus.at(i);
+      WINDOW* screen = screens.at(i);
+      WINDOW* cd_screen = cd.screens.at(i);
 
-      result = result && menu && cd_menu && (memcmp(menu, cd_menu, sizeof(menu)) == 0);
+      result = result && screen && cd_screen && (memcmp(screen, cd_screen, sizeof(screen)) == 0);
     }
   }
 
@@ -74,28 +74,28 @@ unsigned int CursesDisplay::get_width() const
   return TERMINAL_MAX_COLS;
 }
 
-// Create a menu and return it.
-WINDOW* CursesDisplay::create_menu(int height, int width, int start_row, int start_col)
+// Create a screen and return it.
+WINDOW* CursesDisplay::create_screen(int height, int width, int start_row, int start_col)
 {
-  WINDOW* menu;
+  WINDOW* screen;
 
-	menu = newwin(height, width, start_row, start_col);
-	keypad(menu, TRUE);
+	screen = newwin(height, width, start_row, start_col);
+	keypad(screen, TRUE);
 
-  // Because menus don't display the player (or have any other meaningful reason to have
+  // Because screens don't display the player (or have any other meaningful reason to have
   // the cursor present), turn off the cursor.
   curs_set(0);
-	wrefresh(menu);
+	wrefresh(screen);
 
-	return menu;
+	return screen;
 }
 
 // Delete the given window.
-void CursesDisplay::destroy_menu(WINDOW *menu)
+void CursesDisplay::destroy_screen(WINDOW *screen)
 {
-  Log::instance().debug("Destroying current menu");
-	delwin(menu);
-	menu = nullptr;
+  Log::instance().debug("Destroying current screen");
+	delwin(screen);
+	screen = nullptr;
 }
 
 // Get whether the terminal can support colour.  False by
@@ -430,13 +430,13 @@ void CursesDisplay::draw(const DisplayMap& current_map)
 // Refreshes the contents of the current window.
 void CursesDisplay::redraw()
 {
-  if (menus.empty())
+  if (screens.empty())
   {
     refresh();
   }
   else
   {
-    wrefresh(menus.back());
+    wrefresh(screens.back());
   }
 }
 
@@ -535,52 +535,52 @@ MapDisplayArea CursesDisplay::get_map_display_area()
 /*!
  *****************************************************************
 
-  Draw the specified menu, full-screen.
+  Draw the specified screen, full-screen.
 
  *****************************************************************/
-string CursesDisplay::display_menu(const Menu& current_menu)
+string CursesDisplay::display_screen(const Screen& current_screen)
 {
   string result;
   refresh_terminal_size();
 
   MenuWrapper wrapper;
-  WINDOW* menu_window = create_menu(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
+  WINDOW* screen_window = create_screen(TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS, 0, 0);
 
-  menus.push_back(menu_window);
+  screens.push_back(screen_window);
 
   int current_row = 0;
   int current_col = 0;
 
-  // Display the header if the text is defined.  Some menus (like the quest list,
+  // Display the header if the text is defined.  Some screens (like the quest list,
   // etc) will have this defined, while others (such as the new character-type
-  // menus) will not.
-  string header_text = StringTable::get(current_menu.get_title_text_sid());
-  uint num_pages = current_menu.get_num_pages();
+  // screens) will not.
+  string header_text = StringTable::get(current_screen.get_title_text_sid());
+  uint num_pages = current_screen.get_num_pages();
 
   if (num_pages > 1)
   {
     ostringstream ss;
 
-    ss << header_text << " (" << current_menu.get_current_page_number() << "/" << num_pages << ")";
+    ss << header_text << " (" << current_screen.get_current_page_number() << "/" << num_pages << ")";
     header_text = ss.str();
   }
 
   if (!header_text.empty())
   {
-    display_header(header_text, menu_window, current_row);
+    display_header(header_text, screen_window, current_row);
 
     // Always allow for some space between the title and the components of the
-    // menu, regardless of what the menu has set for line spacing.
+    // screen, regardless of what the screen has set for line spacing.
     current_row += 2;
   }
 
-  vector<MenuComponentPtr> components = current_menu.get_current_page();
-  uint line_incr = current_menu.get_line_increment();
+  vector<ScreenComponentPtr> components = current_screen.get_current_page();
+  uint line_incr = current_screen.get_line_increment();
 
   uint csize = components.size();
   for(uint i = 0; i < csize; i++)
   {
-    MenuComponentPtr component = components.at(i);
+    ScreenComponentPtr component = components.at(i);
 
     if (component)
     {
@@ -588,7 +588,7 @@ string CursesDisplay::display_menu(const Menu& current_menu)
 
       if (tc != NULL)
       {
-        display_text_component(menu_window, &current_row, &current_col, tc, line_incr);
+        display_text_component(screen_window, &current_row, &current_col, tc, line_incr);
       }
       else
       {
@@ -597,7 +597,7 @@ string CursesDisplay::display_menu(const Menu& current_menu)
         if (oc != NULL)
         {
           // Process the options...
-          display_options_component(menu_window, &current_row, &current_col, oc);
+          display_options_component(screen_window, &current_row, &current_col, oc);
 
           // Add them so that the prompt processor knows about the options in this set.
           wrapper.add_options(oc);
@@ -609,29 +609,29 @@ string CursesDisplay::display_menu(const Menu& current_menu)
       // display.
       if (current_row == (TERMINAL_MAX_ROWS - 1) && (i != csize-1))
       {
-        PromptPtr prompt = current_menu.get_prompt();
-        prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
+        PromptPtr prompt = current_screen.get_prompt();
+        prompt_processor.show_prompt(screen_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
-        result = prompt_processor.get_prompt(menu_window, wrapper, prompt);
+        result = prompt_processor.get_prompt(screen_window, wrapper, prompt);
 
-        wrefresh(menu_window);
+        wrefresh(screen_window);
 
         // We've shown the prompt, the user has intervened, and so
         // now we need to clear the window, reset the current row
-        // back to 0 and keep displaying stuff from the menu.
-        wclear(menu_window);
+        // back to 0 and keep displaying stuff from the screen.
+        wclear(screen_window);
         current_row = 0;
       }
     }
   }
 
   // Done!  Add an appropriate prompt.
-  PromptPtr prompt = current_menu.get_prompt();
-  prompt_processor.show_prompt(menu_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
+  PromptPtr prompt = current_screen.get_prompt();
+  prompt_processor.show_prompt(screen_window, prompt, current_row, current_col, TERMINAL_MAX_ROWS, TERMINAL_MAX_COLS);
 
-  result = prompt_processor.get_prompt(menu_window, wrapper, prompt);
+  result = prompt_processor.get_prompt(screen_window, wrapper, prompt);
 
-  wrefresh(menu_window);
+  wrefresh(screen_window);
 
   return result;
 }
@@ -723,16 +723,16 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
   // It will have been taken care of when displaying the TextComponent.
 }
 
-void CursesDisplay::clear_menu()
+void CursesDisplay::clear_screen()
 {
-  if (!menus.empty())
+  if (!screens.empty())
   {
-    WINDOW* current_menu_window = menus.back();
-    wclear(current_menu_window);
-    wrefresh(current_menu_window);
-    destroy_menu(current_menu_window);
+    WINDOW* current_screen_window = screens.back();
+    wclear(current_screen_window);
+    wrefresh(current_screen_window);
+    destroy_screen(current_screen_window);
 
-    menus.pop_back();
+    screens.pop_back();
   }
 }
 
@@ -881,16 +881,16 @@ void CursesDisplay::display_header(const string& header_text, WINDOW* window, co
   }
 }
 
-WINDOW* CursesDisplay::get_current_menu()
+WINDOW* CursesDisplay::get_current_screen()
 {
-  WINDOW* menu = nullptr;
+  WINDOW* screen = nullptr;
 
-  if (!menus.empty())
+  if (!screens.empty())
   {
-    menu = menus.back();
+    screen = screens.back();
   }
 
-  return menu;
+  return screen;
 }
 
 bool CursesDisplay::serialize(ostream& stream) const
@@ -901,7 +901,7 @@ bool CursesDisplay::serialize(ostream& stream) const
   Serialize::write_uint(stream, MSG_BUFFER_LAST_Y);
   Serialize::write_uint(stream, MSG_BUFFER_LAST_X);
   
-  // Menus are not serialized.  Saving can only be done on the main screen,
+  // Screens are not serialized.  Saving can only be done on the main screen,
   // which will be reconstructed based on the game's map/etc data.
 
   // CursesPromptProcessor is stateless; don't write it.
@@ -919,7 +919,7 @@ bool CursesDisplay::deserialize(istream& stream)
   Serialize::read_uint(stream, MSG_BUFFER_LAST_Y);
   Serialize::read_uint(stream, MSG_BUFFER_LAST_X);
 
-  // Menus are not serialized.  Saving can only be done on the main screen,
+  // Screens are not serialized.  Saving can only be done on the main screen,
   // which will be reconstructed based on the game's map/etc data.
 
   // CursesPromptProcessor is stateless; don't load it.

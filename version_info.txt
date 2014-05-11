@@ -21,6 +21,9 @@ Savage Lands v0.2.4 "Esa"
 
 - New artifacts: the jewelled claw "Dragon's Fist".
 
+- Misc: standardized on "screen" instead of just "menu", updating lots of
+  file/class names/resource strings/filters/etc.
+
 - Bug fixes: ensured correct spacing between flags on the inventory
   screen.
 

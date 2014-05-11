@@ -2,7 +2,7 @@
 #include "Conversion.hpp"
 #include "DescriberFactory.hpp"
 #include "Game.hpp"
-#include "MenuTitleTextKeys.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "SpellsDumper.hpp"
 #include "StringTable.hpp"
 
@@ -23,7 +23,7 @@ string SpellsDumper::get_spells() const
 {
   ostringstream ss;
 
-  ss << String::centre(StringTable::get(MenuTitleKeys::MENU_TITLE_MAGIC_SPELLS), num_cols) << endl << endl;
+  ss << String::centre(StringTable::get(ScreenTitleKeys::SCREEN_TITLE_MAGIC_SPELLS), num_cols) << endl << endl;
 
   int spell_count = 0;
 
