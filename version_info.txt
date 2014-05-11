@@ -15,7 +15,12 @@ Savage Lands v0.2.4 "Esa"
   inventory.  Kept it in the inventory and kept them unarmed as a hint
   that, long term, unarmed is the better path.
 
-- Added new items: brass knuckles.
+- Increased the damage on the existing artifact weapons.
+
+- Added new items: brass knuckles, spiked glove, iron claw.
+
+- New artifacts: the jewelled claw "Dragon's Fist".
+
 Savage Lands v0.2.3 "Eadwine"
 - Version declared March 22, 2014.  Version finalized May 4, 2014.
 
