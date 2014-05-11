@@ -69,7 +69,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
   if ((action_cost_value > 0) && !spell_id.empty())
   {
     // First, re-display the contents of the map screen, since we would
-    // have selected from a menu (in a different window):
+    // have selected from a screen (in a different window):
     Game& game = Game::instance();
     game.update_display(creature, game.get_current_map(), creature->get_decision_strategy()->get_fov_map(), false);
     game.get_display()->redraw();
@@ -357,9 +357,9 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
 
   string display_s = sss.display();
   int input = display_s.at(0);
-  char menu_selection = display_s.at(0);
+  char screen_selection = display_s.at(0);
 
-  string spell_id = sss.get_selected_spell(menu_selection);
+  string spell_id = sss.get_selected_spell(screen_selection);
 
   DecisionStrategyPtr decision_strategy = creature->get_decision_strategy();
   CommandFactoryPtr command_factory    = std::make_shared<MagicCommandFactory>();
@@ -376,7 +376,7 @@ pair<bool, pair<string, ActionCostValue>> SpellcastingAction::process_spellcasti
     if (action_cost_value > 0 && !spell_id.empty())
     {
       // A spell was selected, and the command processor will have
-      // taken care of casting it.  Leave the menu and go back to
+      // taken care of casting it.  Leave the screen and go back to
       // the map.
       cast_spells = false;
     }

@@ -1,0 +1,19 @@
+#pragma once
+#include "Screen.hpp"
+#include "Colours.hpp"
+
+typedef std::pair<Colour, std::string> TextDisplayPair;
+
+// A generic screen that can be used to display text (help files, etc).
+class TextDisplayScreen : public Screen
+{
+  public:
+   TextDisplayScreen(DisplayPtr display, const std::string& new_title_text_sid, const std::vector<TextDisplayPair>& display_text);
+
+  protected:
+    void initialize(const std::string& new_title_text_sid);
+
+    // Each string in the vector represents a line to be displayed on
+    // screen.
+    std::vector<TextDisplayPair> text;
+};

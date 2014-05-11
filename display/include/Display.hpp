@@ -14,7 +14,7 @@
 #include "ISerializable.hpp"
 #include "Prompt.hpp"
 
-class Menu;
+class Screen;
 class MapDisplayArea;
 class Animation;
 
@@ -66,12 +66,12 @@ class Display : public ISerializable
     virtual MapDisplayArea get_map_display_area() = 0;
 
 	  // Return result is the response to whatever prompt is displayed
-	  virtual std::string display_menu(const Menu& current_menu) = 0;
+	  virtual std::string display_screen(const Screen& current_screen) = 0;
 	  
 	  // Show confirmation text on the display.
 	  virtual void confirm(const std::string& confirmation_message) = 0;
 
-	  virtual void clear_menu() = 0;
+	  virtual void clear_screen() = 0;
 
     // ISerializable methods
     virtual bool serialize(std::ostream& stream) const override = 0;

@@ -1,5 +1,5 @@
 #include "Game.hpp"
-#include "MenuTitleTextKeys.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "QuestListAction.hpp"
 #include "QuestDescriber.hpp"
 #include "TextDisplayFormatter.hpp"
@@ -17,7 +17,7 @@ ActionCostValue QuestListAction::quest_list() const
   Quests& quests = game.get_quests_ref();
   QuestMap in_progress_quests = quests.get_in_progress_quests();
 
-  string quest_title_sid = MenuTitleKeys::MENU_TITLE_QUEST_LIST;
+  string quest_title_sid = ScreenTitleKeys::SCREEN_TITLE_QUEST_LIST;
   vector<pair<Colour, string>> quests_text;
   string separator; // an empty line of text used to separate quests in the list.
 

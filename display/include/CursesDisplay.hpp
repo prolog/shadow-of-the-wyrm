@@ -48,16 +48,16 @@ class CursesDisplay : public Display
 	  
     MapDisplayArea get_map_display_area() override;
 
-	  std::string display_menu(const Menu& current_menu) override;
+	  std::string display_screen(const Screen& current_screen) override;
     void display_header(const std::string& header_text, WINDOW* cur_window, const int display_line = 0);
 
 	  void confirm(const std::string& confirmation_message) override;
 
-	  void clear_menu() override;
+	  void clear_screen() override;
 
     virtual Display* clone() override;
 
-    WINDOW* get_current_menu();
+    WINDOW* get_current_screen();
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
@@ -84,11 +84,11 @@ class CursesDisplay : public Display
     void refresh_terminal_size();
     void display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr text_component, const uint line_increment);
     void display_options_component(WINDOW* window, int* row, int* col, OptionsComponentPtr options_component);
-    std::string display_prompt(WINDOW* menu_window, PromptPtr prompt, int row = 0, int col = 0);
+    std::string display_prompt(WINDOW* screen_window, PromptPtr prompt, int row = 0, int col = 0);
 
     // Creation/destruction methods
-    WINDOW* create_menu(int height, int width, int start_row, int start_col);
-    void destroy_menu(WINDOW *menu);
+    WINDOW* create_screen(int height, int width, int start_row, int start_col);
+    void destroy_screen(WINDOW *screen);
 
     // Print the current display statistic at the specified row/column, unless we're in a different row than the initial one, and therefore
     // should line up the column with the next-available, previously-used column from the previous row.
@@ -105,10 +105,10 @@ class CursesDisplay : public Display
     uint MSG_BUFFER_LAST_Y;
     uint MSG_BUFFER_LAST_X;
 
-    // The display is represented as a stack of windows in ncurses; the game window is the lowest, and any menus
-    // or submenus are layered as new windows on top of that.  Each time a Menu is done, a window is popped off
+    // The display is represented as a stack of windows in ncurses; the game window is the lowest, and any screens
+    // or subscreens are layered as new windows on top of that.  Each time a screen is done, a window is popped off
     // the stack and the display is re-drawn.
-    std::deque<WINDOW*> menus;
+    std::deque<WINDOW*> screens;
 
     // Used to process the prompt
     CursesPromptProcessor prompt_processor;

@@ -5,7 +5,7 @@
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
-#include "MenuTitleTextKeys.hpp"
+#include "ScreenTitleTextKeys.hpp"
 #include "RaceManager.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
@@ -121,7 +121,7 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     Game& game = Game::instance();
     TextDisplayFormatter tdf;
 
-    string bestiary_title_sid = MenuTitleKeys::MENU_TITLE_BESTIARY;
+    string bestiary_title_sid = ScreenTitleKeys::SCREEN_TITLE_BESTIARY;
     vector<pair<Colour, string>> bestiary_text;
 
     string separator;
