@@ -59,6 +59,8 @@ void InventoryScreen::initialize()
           string flag_text = tc.first;
           Colour flag_col = tc.second;
 
+          // Include sufficient spacing between each of the flags.
+          option_text_component->add_text(" ", flag_col);
           option_text_component->add_text(flag_text, flag_col);
         }
 
