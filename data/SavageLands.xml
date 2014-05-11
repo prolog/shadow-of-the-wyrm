@@ -13962,7 +13962,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Material>3</Material>
-				<DangerLevel>3</DangerLevel>
+				<DangerLevel>1</DangerLevel>
 				<Skill>1007</Skill>
 				<RangedSkill>2009</RangedSkill>
 				<Difficulty>40</Difficulty>
@@ -13972,6 +13972,44 @@
 					<NumSides>4</NumSides>
 					<Modifier>1</Modifier>
 					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="spiked_glove">
+				<DescriptionSID>SPIKED_GLOVE_SID</DescriptionSID>
+				<UsageDescriptionSID>SPIKED_GLOVE_USAGE_SID</UsageDescriptionSID>
+				<Value>60</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>2</DangerLevel>
+				<Skill>1007</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>41</Difficulty>
+				<Speed>0</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>2</Modifier>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="iron_claw">
+				<DescriptionSID>IRON_CLAW_SID</DescriptionSID>
+				<UsageDescriptionSID>IRON_CLAW_USAGE_SID</UsageDescriptionSID>
+				<Value>80</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>3</DangerLevel>
+				<Skill>1007</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>42</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>8</NumSides>
+					<Modifier>3</Modifier>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="iron_hammer">
@@ -14162,7 +14200,7 @@
 				<Damage>
 					<NumDice>2</NumDice>
 					<NumSides>10</NumSides>
-					<Modifier>2</Modifier>
+					<Modifier>4</Modifier>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
@@ -14185,7 +14223,7 @@
 				<Damage>
 					<NumDice>4</NumDice>
 					<NumSides>12</NumSides>
-					<Modifier>0</Modifier>
+					<Modifier>12</Modifier>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>
@@ -14209,6 +14247,7 @@
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>12</NumSides>
+					<Modifier>6</Modifier>
 					<Type>2</Type>
 				</Damage>
 				<Slays>
@@ -14234,7 +14273,7 @@
 				<Damage>
 					<NumDice>4</NumDice>
 					<NumSides>6</NumSides>
-					<Modifier>4</Modifier>
+					<Modifier>14</Modifier>
 					<Type>2</Type>
 				</Damage>
 				<Slays>
@@ -14261,7 +14300,7 @@
 				<Damage>
 					<NumDice>5</NumDice>
 					<NumSides>4</NumSides>
-					<Modifier>2</Modifier>
+					<Modifier>15</Modifier>
 					<Type>2</Type>
 				</Damage>
 				<Slays>
@@ -14288,7 +14327,7 @@
 				<Damage>
 					<NumDice>2</NumDice>
 					<NumSides>10</NumSides>
-					<Modifier>3</Modifier>
+					<Modifier>10</Modifier>
 					<Type>2</Type>
 				</Damage>
 				<Slays>
@@ -14314,7 +14353,7 @@
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>4</NumSides>
-					<Modifier>3</Modifier>
+					<Modifier>12</Modifier>
 					<Type>1</Type>
 				</Damage>
 				<Slays>
@@ -14340,7 +14379,7 @@
 				<Damage>
 					<NumDice>3</NumDice>
 					<NumSides>8</NumSides>
-					<Modifier>3</Modifier>
+					<Modifier>16</Modifier>
 					<Type>0</Type>
 				</Damage>
 				<Slays>
@@ -14367,6 +14406,7 @@
 				<Damage>
 					<NumDice>7</NumDice>
 					<NumSides>4</NumSides>
+					<Modifier>11</Modifier>
 					<Type>3</Type>
 				</Damage>
 				<Slays>
@@ -14393,6 +14433,7 @@
 				<Damage>
 					<NumDice>4</NumDice>
 					<NumSides>6</NumSides>
+					<Modifier>15</Modifier>
 					<Type>0</Type>
 				</Damage>
 				<Slays>
@@ -14418,6 +14459,7 @@
 				<Damage>
 					<NumDice>4</NumDice>
 					<NumSides>6</NumSides>
+					<Modifier>18</Modifier>
 					<Type>0</Type>
 				</Damage>
 				<Slays>
@@ -14446,6 +14488,7 @@
 				<Damage>
 					<NumDice>5</NumDice>
 					<NumSides>10</NumSides>
+					<Modifier>16</Modifier>
 					<Type>1</Type>
 				</Damage>
 				<Slays>
@@ -14471,8 +14514,33 @@
 				<Damage>
 					<NumDice>4</NumDice>
 					<NumSides>10</NumSides>
-					<Modifier>5</Modifier>
+					<Modifier>12</Modifier>
 					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="dragonsfist">
+				<DescriptionSID>DRAGONSFIST_SID</DescriptionSID>
+				<UsageDescriptionSID>DRAGONSFIST_USAGE_SID</UsageDescriptionSID>
+				<Value>2200</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.10</Heat>
+					<Cold>0.10</Cold>
+					<Lightning>0.10</Lightning>
+				</Resistances>
+				<Skill>1007</Skill>
+				<RangedSkill>2009</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>7</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>15</Modifier>
+					<Type>0</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="elven_short_sword">
