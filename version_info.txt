@@ -21,6 +21,9 @@ Savage Lands v0.2.4 "Esa"
 
 - New artifacts: the jewelled claw "Dragon's Fist".
 
+- Bug fixes: ensured correct spacing between flags on the inventory
+  screen.
+
 Savage Lands v0.2.3 "Eadwine"
 - Version declared March 22, 2014.  Version finalized May 4, 2014.
 
