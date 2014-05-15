@@ -159,32 +159,37 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
 {
   TilePtr tile;
   int rand;
+
+  vector<pair<int, pair<TileType, TileType>>> field_special_types;
+  field_special_types = {{200, {TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED}},
+                         {200, {TILE_TYPE_CRYPT, TILE_TYPE_UNDEFINED}},
+                         {100, {TILE_TYPE_VILLAGE, TILE_TYPE_FIELD}}};
   
   // Always add fields.  
   if (world_val == CELL_OFF)
   {
-    // 0.5% chance of dungeon
-    rand = RNG::range(1, 200);
-    if (rand <= 1)
+    for (const auto& special_type : field_special_types)
     {
-      tile = tg.generate(TILE_TYPE_DUNGEON_COMPLEX);
-    }
-    else
-    {
-      // 1% chance of field village.
-      rand = RNG::range(1, 100);
-      Coordinate c(row, col);
+      rand = RNG::range(1, special_type.first);
 
       if (rand <= 1)
       {
-        tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
-        village_coordinates.insert(c);
+        tile = tg.generate(special_type.second.first, special_type.second.second);
+
+        if (special_type.second.first == TILE_TYPE_VILLAGE)
+        {
+          village_coordinates.insert(make_pair(row, col));
+        }
+
+        break;
       }
-      else
-      {
-        remove_village_coordinates_if_present(c);
-        tile = tg.generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED);
-      }            
+    }
+
+    // If a special field feature such as a dungeon or crypt hasn't been
+    // generated, generate a plain-jane field.
+    if (tile == nullptr)
+    {
+      tile = tg.generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED);
     }
     
     result_map->insert(row, col, tile);
@@ -317,27 +322,33 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
   TilePtr tile;
   int rand;
 
+  vector<pair<int, pair<TileType, TileType>>> field_special_types;
+  field_special_types = { { 50, { TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED } },
+                          { 50, { TILE_TYPE_CRYPT, TILE_TYPE_UNDEFINED }},
+                          { 33, { TILE_TYPE_CAVERN, TILE_TYPE_UNDEFINED }} };
+
   if (mountains_val == CELL_OFF && world_val == CELL_OFF && forest_val == CELL_ON)
   {
     // 2% chance of being a dungeon
+    // 2% chance of being a crypt
     // 3% chance of being a cavern
-    rand = RNG::range(1, 100);
-    Coordinate c(row, col);
-    
-    if (rand <= 2)
+    for (const auto& special_type : field_special_types)
     {
-      tile = tg.generate(TILE_TYPE_DUNGEON_COMPLEX);
+      rand = RNG::range(1, special_type.first);
+
+      if (rand <= 1)
+      {
+        tile = tg.generate(special_type.second.first, special_type.second.second);
+        break;
+      }
     }
-    else if (rand <= 5)
-    {
-      tile = tg.generate(TILE_TYPE_CAVERN);
-    }
-    else
+
+    if (tile == nullptr)
     {
       tile = tg.generate(TILE_TYPE_MOUNTAINS);
     }
-    
-    remove_village_coordinates_if_present(c);
+
+    remove_village_coordinates_if_present(make_pair(row, col));
     result_map->insert(row, col, tile);
   }
 }
