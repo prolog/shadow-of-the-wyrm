@@ -17,6 +17,13 @@ Savage Lands v0.2.4 "Esa"
 
 - Increased the damage on the existing artifact weapons.
 
+- Cleaned up some of the field generation code - this doesn't just generate
+  fields, but also special features like dungeons and field-based villages.
+  Updated this code to also consider generating crypts, which will generate
+  at half the probability (0.25%) of dungeons.  Crypts are ancient, long-
+  forgotten features, which is why they're scattered randomly over the
+  world instead of tied to settlements like some other features.
+
 - Added new items: brass knuckles, spiked glove, iron claw.
 
 - New artifacts: the jewelled claw "Dragon's Fist".
