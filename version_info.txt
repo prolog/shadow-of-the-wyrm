@@ -13,6 +13,9 @@ Savage Lands v0.2.4 "Esa"
 
   - Added black servants, Pirrha, and will o' the wisps.
 
+  - Created a second quest for Cynwise, to slay Pirrha in Aeschburh, the
+    reward for which is Cynehild's Shroud.
+
 - Updated pugilists so that they start with brass knuckles in their
   inventory.  Kept it in the inventory and kept them unarmed as a hint
   that, long term, unarmed is the better path.
@@ -30,7 +33,7 @@ Savage Lands v0.2.4 "Esa"
 
 - New creatures: black servant, Pirrha, will o' the wisp.
 
-- New artifacts: the jewelled claw "Dragon's Fist".
+- New artifacts: the jewelled claw "Dragon's Fist", Cynehild's Shroud.
 
 - Misc: standardized on "screen" instead of just "menu", updating lots of
   file/class names/resource strings/filters/etc.
