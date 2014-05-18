@@ -11,7 +11,7 @@ Savage Lands v0.2.4 "Esa"
   Chronicle.  It sits to the north-west of Isen Dun, and at night, strange
   lights can be seen from across the water.
 
-  - Added black servants and Pirrha.
+  - Added black servants, Pirrha, and will o' the wisps.
 
 - Updated pugilists so that they start with brass knuckles in their
   inventory.  Kept it in the inventory and kept them unarmed as a hint
@@ -28,7 +28,7 @@ Savage Lands v0.2.4 "Esa"
 
 - Added new items: brass knuckles, spiked glove, iron claw.
 
-- New creatures: black servant, Pirrha.
+- New creatures: black servant, Pirrha, will o' the wisp.
 
 - New artifacts: the jewelled claw "Dragon's Fist".
 

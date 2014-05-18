@@ -4531,6 +4531,46 @@
 			</Damage>
 			<Speed>35</Speed>
 		</Creature>
+		<Creature id="will_o_the_wisp">
+			<RaceID>_spirit</RaceID>
+			<ShortDescriptionSID>WILL_O_THE_WISP_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>WILL_O_THE_WISP_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>WILL_O_THE_WISP_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>*</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>2</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>11</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>26</Exp>
+			</CreatureGeneration>
+			<Level>11</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>22</NumSides>
+				<Type>9</Type>
+			</Damage>
+			<Evade>35</Evade>
+		</Creature>
 		<Creature id="black_servant">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>BLACK_SERVANT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

@@ -133,6 +133,41 @@
 					<Col>74</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>will_o_the_wisp</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>35</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>will_o_the_wisp</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>23</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>will_o_the_wisp</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>62</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>will_o_the_wisp</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>73</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>will_o_the_wisp</ID>
+				<Coord>
+					<Row>10</Row>
+					<Col>7</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
