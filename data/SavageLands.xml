@@ -4571,6 +4571,40 @@
 			</Damage>
 			<Evade>35</Evade>
 		</Creature>
+		<Creature id="grave_worm">
+			<RaceID>_insect</RaceID>
+			<ShortDescriptionSID>GRAVE_WORM_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>GRAVE_WORM_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>GRAVE_WORM_TEXT_DETAILS_SID</TextDetailsSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>i</Symbol>
+				<Colour>10</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>42</TileType>
+					<TileType>44</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>10</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>70</Exp>
+			</CreatureGeneration>
+			<Level>10</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>20</NumSides>
+				<Type>5</Type>
+			</Damage>
+		</Creature>
 		<Creature id="black_servant">
 			<RaceID>01_human</RaceID>
 			<ShortDescriptionSID>BLACK_SERVANT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

@@ -31,7 +31,7 @@ Savage Lands v0.2.4 "Esa"
 
 - Added new items: brass knuckles, spiked glove, iron claw.
 
-- New creatures: black servant, Pirrha, will o' the wisp.
+- New creatures: black servant, Pirrha, will o' the wisp, grave worm.
 
 - New artifacts: the jewelled claw "Dragon's Fist", Cynehild's Shroud.
 
