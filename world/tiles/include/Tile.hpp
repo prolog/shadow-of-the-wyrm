@@ -46,6 +46,7 @@ class Tile : public ISerializable
     // The generic way to set additional properties.
     virtual void set_additional_property(const std::string& property_name, const std::string& property_value);
     virtual std::string get_additional_property(const std::string& property_name) const;
+    virtual size_t remove_additional_property(const std::string& property_name);
     virtual std::map<std::string, std::string> get_additional_properties() const;
     virtual bool has_additional_property(const std::string& property_name) const;
     

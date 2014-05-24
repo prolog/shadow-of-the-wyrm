@@ -443,6 +443,7 @@
     <ClInclude Include="engine\generators\include\IPillarGenerator.hpp" />
     <ClInclude Include="engine\generators\include\KeepGenerator.hpp" />
     <ClInclude Include="engine\generators\include\KeepRuinsGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\MapCreatureGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MarshGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MineGenerator.hpp" />
     <ClInclude Include="engine\generators\include\MountainsGenerator.hpp" />
@@ -1523,6 +1524,7 @@
     <ClCompile Include="engine\generators\source\HillsGenerator.cpp" />
     <ClCompile Include="engine\generators\source\KeepGenerator.cpp" />
     <ClCompile Include="engine\generators\source\KeepRuinsGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\MapCreatureGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MarshGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MineGenerator.cpp" />
     <ClCompile Include="engine\generators\source\MountainsGenerator.cpp" />

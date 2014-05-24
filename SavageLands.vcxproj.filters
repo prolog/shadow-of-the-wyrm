@@ -3069,6 +3069,9 @@
     <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\generators\include\MapCreatureGenerator.hpp">
+      <Filter>Header Files\engine\generators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5884,6 +5887,9 @@
     </ClCompile>
     <ClCompile Include="engine\screens\source\ScreenComponent.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\generators\source\MapCreatureGenerator.cpp">
+      <Filter>Source Files\engine\generators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
