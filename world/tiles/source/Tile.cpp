@@ -126,6 +126,11 @@ string Tile::get_additional_property(const string& property_name) const
   return property_value;
 }
 
+size_t Tile::remove_additional_property(const string& property_name)
+{
+  return additional_properties.erase(property_name);
+}
+
 map<string, string> Tile::get_additional_properties() const
 {
   return additional_properties;

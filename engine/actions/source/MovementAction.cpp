@@ -7,6 +7,7 @@
 #include "FeatureAction.hpp"
 #include "Game.hpp"
 #include "Log.hpp"
+#include "MapCreatureGenerator.hpp"
 #include "MapProperties.hpp"
 #include "MapTypeQueryFactory.hpp"
 #include "MessageManagerFactory.hpp"
@@ -131,7 +132,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
       
       if (creature->get_decision_strategy()->get_confirmation())
       {
-        move_to_new_map(creatures_old_tile, map, map_exit);
+        handle_properties_and_move_to_new_map(creatures_old_tile, map, map_exit);
         movement_success = get_action_cost_value(creature);
       }
       
@@ -360,6 +361,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
         // Now that the danger level's been calculated, generate the creatures
         // and items on the new map.
         generator->create_entities(new_map, new_danger);
+        tile->remove_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
       }
     }
                 
@@ -377,7 +379,12 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     
     TilePtr new_creature_tile = new_map->at(starting_coords);
 
-    move_to_new_map(tile, map, new_map);
+    // If we're moving on to an existing map, handle any tile properties
+    // that may be present.  Don't worry about this when we're moving
+    // to a brand-new map, as tile properties will be automatically 
+    // handled during map generation, and will be removed after creating
+    // items and creatures.
+    handle_properties_and_move_to_new_map(tile, map, new_map);
                 
     manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
     add_tile_related_messages(creature, new_creature_tile);
@@ -415,6 +422,31 @@ bool MovementAction::confirm_move_to_tile_if_necessary(CreaturePtr creature, Til
   return true;  
 }
 
+ActionCostValue MovementAction::handle_properties_and_move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
+{
+  ActionCostValue acv = 0;
+  Game& game = Game::instance();
+
+  if (new_map)
+  {
+    // The map may have a set of creatures defined (e.g., a custom map with a
+    // list of creatures set programmatically by a script).  Generate these,
+    // if present.
+    if (current_tile->has_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES))
+    {
+      MapCreatureGenerator mcg;
+      mcg.generate_initial_set_creatures(new_map, current_tile->get_additional_properties());
+
+      current_tile->remove_additional_property(MapProperties::MAP_PROPERTIES_INITIAL_CREATURES);
+    }
+
+    move_to_new_map(current_tile, old_map, new_map);
+    acv = get_action_cost_value(nullptr);
+  }
+
+  return acv;
+}
+
 void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPtr new_map)
 {
   Game& game = Game::instance();
@@ -434,7 +466,7 @@ void MovementAction::move_to_new_map(TilePtr current_tile, MapPtr old_map, MapPt
   }
 }
 
-void MovementAction::move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit)
+void MovementAction::handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPtr map_exit)
 {
   Game& game = Game::instance();
   
@@ -445,7 +477,7 @@ void MovementAction::move_to_new_map(TilePtr old_tile, MapPtr old_map, MapExitPt
       string new_map_id = map_exit->get_map_id();
       MapPtr new_map = game.map_registry.get_map(new_map_id);
       
-      move_to_new_map(old_tile, old_map, new_map);
+      handle_properties_and_move_to_new_map(old_tile, old_map, new_map);
     }
     else
     {
@@ -569,21 +601,23 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
 
 ActionCostValue MovementAction::get_action_cost_value(CreaturePtr creature) const
 {
-  int stumble_chance = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
+  ActionCostValue acv = 1;
 
-  if (RNG::percent_chance(stumble_chance))
+  if (creature != nullptr)
   {
-    // Add a message about stumbling.
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-    manager.add_new_message(ActionTextKeys::get_stumble_message(creature->get_description_sid(), creature->get_is_player()));
-    manager.send();
-    return 15;
+    int stumble_chance = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
+
+    if (RNG::percent_chance(stumble_chance))
+    {
+      // Add a message about stumbling.
+      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+      manager.add_new_message(ActionTextKeys::get_stumble_message(creature->get_description_sid(), creature->get_is_player()));
+      manager.send();
+      return 15;
+    }
   }
-  else
-  {
-    // Either not drunk or didn't stumble - standard movement costs apply.
-    return 1;
-  }
+
+  return acv;
 }
 
 // If the creature is drunk, it may stumble, causing it to move slower 

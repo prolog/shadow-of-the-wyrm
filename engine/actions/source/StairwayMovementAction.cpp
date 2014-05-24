@@ -42,7 +42,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     {
       if (map_exit->is_using_map_id())
       {
-        ma->move_to_new_map(current_tile, current_map, map_exit);
+        ma->handle_properties_and_move_to_new_map(current_tile, current_map, map_exit);
         
         // If the tile we've moved to has any items, notify the player, if the creature's a player.
         MapPtr new_map = game.get_current_map();
@@ -114,7 +114,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
           {
             if (map_exit->is_using_map_id())
             {
-              ma->move_to_new_map(tile, map, map_exit);
+              ma->handle_properties_and_move_to_new_map(tile, map, map_exit);
         
               // If the tile we've moved to has any items, notify the player, if the creature's a player.
               MapPtr new_map = game.get_current_map();

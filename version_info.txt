@@ -11,7 +11,10 @@ Savage Lands v0.2.4 "Esa"
   Chronicle.  It sits to the north-west of Isen Dun, and at night, strange
   lights can be seen from across the water.
 
-  - Added black servants, Pirrha, and will o' the wisps.
+  - Added black servants, Pirrha, and will o' the wisps.  Created support
+    for generating random amounts of certain creatures on set maps,
+    similar to what is done already with generating lists of creatures on
+    maps created from a tile's terrain type.
 
   - Created a second quest for Cynwise, to slay Pirrha in Aeschburh, the
     reward for which is Cynehild's Shroud.
@@ -36,7 +39,8 @@ Savage Lands v0.2.4 "Esa"
 - New artifacts: the jewelled claw "Dragon's Fist", Cynehild's Shroud.
 
 - Misc: standardized on "screen" instead of just "menu", updating lots of
-  file/class names/resource strings/filters/etc.
+  file/class names/resource strings/filters/etc, added a new "common"
+  folder in the Lua scripts and added a "creature" module within that.
 
 - Bug fixes: ensured correct spacing between flags on the inventory
   screen.
