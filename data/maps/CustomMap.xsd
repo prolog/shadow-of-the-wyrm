@@ -6,6 +6,7 @@
 	<xs:complexType>
 		<xs:sequence>
 			<xs:element ref="tns:Dimensions"/>
+			<xs:element name="LevelRange" type="tns:LevelRange"/>
 			<xs:element name="MapType" type="tns:MapType"/>
 			<!-- This is a string of tiles, rows x cols, that represents a particular tile type.  The map is created by
 				 adding the corresponding tile to the corresponding row/col.  Whitespace is ignored, as is any
@@ -30,6 +31,12 @@
 	</xs:complexType>
 </xs:element>
 <!-- Complex Types -->
+<xs:complexType name="LevelRange">
+	<xs:sequence>
+		<xs:element name="Min" type="xs:unsignedInt"/>
+		<xs:element name="Max" type="xs:unsignedInt"/>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="Coord">
 	<xs:annotation><xs:documentation>A (y,x) coordinate.</xs:documentation></xs:annotation>
 	<xs:sequence>
