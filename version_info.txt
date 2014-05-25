@@ -32,6 +32,11 @@ Savage Lands v0.2.4 "Esa"
   forgotten features, which is why they're scattered randomly over the
   world instead of tied to settlements like some other features.
 
+- The custom maps now have level range information.  This isn't used
+  in-game (yet?), but gets used by an external Python script to help me
+  see what level ranges are reasonably well covered, and which need some
+  additional areas.
+
 - Added new items: brass knuckles, spiked glove, iron claw.
 
 - New creatures: black servant, Pirrha, will o' the wisp, grave worm.
