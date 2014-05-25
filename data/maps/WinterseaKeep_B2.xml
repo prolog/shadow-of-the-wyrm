@@ -3,6 +3,10 @@
 		<Rows>20</Rows>
 		<Columns>80</Columns>
 	</Dimensions>
+	<LevelRange>
+		<Min>10</Min>
+		<Max>20</Max>
+	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
 	################################################################################
@@ -165,8 +169,8 @@
 				<Col>24</Col>
 			</Coord>
 			<Door>
-				<LockID>wintersea_tombs</LockID>
 				<Material>3</Material>
+				<LockID>wintersea_tombs</LockID>
 				<Entrance>
 					<EntranceState>2</EntranceState>
 				</Entrance>
@@ -178,8 +182,8 @@
 				<Col>48</Col>
 			</Coord>
 			<Door>
-				<LockID>wintersea_tombs</LockID>
 				<Material>3</Material>
+				<LockID>wintersea_tombs</LockID>
 				<Entrance>
 					<EntranceState>2</EntranceState>
 				</Entrance>
@@ -191,8 +195,8 @@
 				<Col>48</Col>
 			</Coord>
 			<Door>
-		 		<LockID>wintersea_tombs</LockID>
 				<Material>3</Material>
+		 		<LockID>wintersea_tombs</LockID>
 				<Entrance>
 					<EntranceState>2</EntranceState>
 				</Entrance>
@@ -204,8 +208,8 @@
 				<Col>70</Col>
 			</Coord>
 			<Door>
-				<LockID>wintersea_tombs</LockID>
 				<Material>3</Material>
+				<LockID>wintersea_tombs</LockID>
 				<Entrance>
 					<EntranceState>2</EntranceState>
 				</Entrance>
@@ -217,8 +221,8 @@
 				<Col>43</Col>
 			</Coord>
 			<Door>
-				<LockID>wintersea_tombs</LockID>
 				<Material>3</Material>
+				<LockID>wintersea_tombs</LockID>
 				<Entrance>
 					<EntranceState>2</EntranceState>
 				</Entrance>

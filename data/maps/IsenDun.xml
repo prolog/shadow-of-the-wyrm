@@ -3,6 +3,10 @@
 		<Rows>20</Rows>
 		<Columns>80</Columns>
 	</Dimensions>
+	<LevelRange>
+		<Min>1</Min>
+		<Max>30</Max>
+	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
 	,,,,,,,,,,,,,,,,,,,,,*,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
@@ -269,8 +273,8 @@
 				<Col>65</Col>
 			</Coord>
 			<Door>
-				<LockID>isen_dun_kew</LockID>
 				<Material>3</Material>
+				<LockID>isen_dun_kew</LockID>
 				<Entrance>
 					<EntranceState>2</EntranceState>
 				</Entrance>
@@ -294,8 +298,8 @@
 				<Col>8</Col>
 			</Coord>
 			<Door>
-				<LockID>isen_dun_boathouse</LockID>
 				<Material>3</Material>
+				<LockID>isen_dun_boathouse</LockID>
 				<Entrance>
 					<EntranceState>2</EntranceState>
 				</Entrance>

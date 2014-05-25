@@ -3,6 +3,10 @@
 		<Rows>20</Rows>
 		<Columns>80</Columns>
 	</Dimensions>
+	<LevelRange>
+		<Min>5</Min>
+		<Max>35</Max>
+	</LevelRange>
 	<MapType>2</MapType>
 	<Tiles>
 	################################################################################

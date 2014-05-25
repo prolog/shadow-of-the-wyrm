@@ -3,6 +3,10 @@
 		<Rows>20</Rows>
 		<Columns>80</Columns>
 	</Dimensions>
+	<LevelRange>
+		<Min>9</Min>
+		<Max>13</Max>
+	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
 	,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,

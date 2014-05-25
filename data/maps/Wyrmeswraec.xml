@@ -3,6 +3,10 @@
 		<Rows>20</Rows>
 		<Columns>80</Columns>
 	</Dimensions>
+	<LevelRange>
+		<Min>40</Min>
+		<Max>40</Max>
+	</LevelRange>
 	<MapType>2</MapType>
 	<Tiles>
 	################################################################################
@@ -110,8 +114,8 @@
 				<Col>76</Col>
 			</Coord>
 			<Door>
-				<LockID>wyrmeswraec_gate</LockID>
 				<Material>7</Material>
+				<LockID>wyrmeswraec_gate</LockID>
 				<Entrance>
 					<EntranceState>2</EntranceState>
 				</Entrance>
