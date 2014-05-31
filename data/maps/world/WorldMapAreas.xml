@@ -82,5 +82,13 @@
 			<Row y="52" x="92">~~~~</Row>
 			<Script>areas/gnordvar.lua</Script>
 		</Area>
+		<Area id="fae_caravan">
+			<Row y="5" x="51">~~~~~</Row>
+			<Row y="6" x="51">~~O~~</Row>
+			<Row y="7" x="51">~OOO~</Row>
+			<Row y="8" x="51">~~O~~</Row>
+			<Row y="9" x="51">~~~~~</Row>
+			<Script>areas/fae_caravan.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>

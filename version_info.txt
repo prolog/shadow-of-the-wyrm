@@ -37,6 +37,9 @@ Savage Lands v0.2.4 "Esa"
   see what level ranges are reasonably well covered, and which need some
   additional areas.
 
+- Began working on the Fae Caravan, an area located on a far northern
+  island covered with fruit trees.
+
 - Added new items: brass knuckles, spiked glove, iron claw.
 
 - New creatures: black servant, Pirrha, will o' the wisp, grave worm,
