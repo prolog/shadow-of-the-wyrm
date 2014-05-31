@@ -40,10 +40,13 @@ Savage Lands v0.2.4 "Esa"
 - Began working on the Fae Caravan, an area located on a far northern
   island covered with fruit trees.
 
+  - Added the caravan master, and a number of caravan guards, fae
+    musicians, and fae travellers.
+
 - Added new items: brass knuckles, spiked glove, iron claw.
 
 - New creatures: black servant, Pirrha, will o' the wisp, grave worm,
-  caravan master.
+  caravan master, fae musician, fae traveller, caravan guard.
 
 - New artifacts: the jewelled claw "Dragon's Fist", Cynehild's Shroud.
 
