@@ -46,9 +46,11 @@ Savage Lands v0.2.4 "Esa"
 - Added new items: brass knuckles, spiked glove, iron claw.
 
 - New creatures: black servant, Pirrha, will o' the wisp, grave worm,
-  caravan master, fae musician, fae traveller, caravan guard.
+  caravan master, fae musician, fae traveller, caravan guard, black
+  summoner.
 
-- New artifacts: the jewelled claw "Dragon's Fist", Cynehild's Shroud.
+- New artifacts: the jewelled claw "Dragon's Fist", Cynehild's Shroud,
+  fae-forged sword "Erandu".
 
 - Misc: standardized on "screen" instead of just "menu", updating lots of
   file/class names/resource strings/filters/etc, added a new "common"
