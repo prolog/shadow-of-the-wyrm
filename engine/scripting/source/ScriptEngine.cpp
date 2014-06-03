@@ -54,6 +54,7 @@ int stop_playing_game(lua_State* ls);
 int set_creature_base_damage(lua_State* ls);
 int set_creature_speed(lua_State* ls);
 int get_creature_speed(lua_State* ls);
+int get_creature_yx(lua_State* ls);
 int incr_str(lua_State* ls);
 int incr_dex(lua_State* ls);
 int incr_agi(lua_State* ls);
@@ -261,6 +262,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_base_damage", set_creature_base_damage);
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
+  lua_register(L, "get_creature_yx", get_creature_yx);
   lua_register(L, "gain_level", gain_level);
   lua_register(L, "goto_level", goto_level);
   lua_register(L, "is_player", is_player);
@@ -971,6 +973,33 @@ int get_creature_speed(lua_State* ls)
 
   lua_pushnumber(ls, speed);
   return 1;
+}
+
+// Return the y and x coordinates for the given creature on the current map.
+int get_creature_yx(lua_State* ls)
+{
+  int y = -1;
+  int x = -1;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    // Find the creature in the map
+    string creature_id = lua_tostring(ls, 1);
+    Coordinate c = Game::instance().get_current_map()->get_location(creature_id);
+
+    // Set the return coordinates to the values from the lookup.
+    y = c.first;
+    x = c.second;
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_creature_yx");
+    lua_error(ls);
+  }
+
+  lua_pushnumber(ls, y);
+  lua_pushnumber(ls, x);
+  return 2;
 }
 
 int gain_level(lua_State* ls)
