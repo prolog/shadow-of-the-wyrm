@@ -56,6 +56,9 @@ Savage Lands v0.2.4 "Esa"
   file/class names/resource strings/filters/etc, added a new "common"
   folder in the Lua scripts and added a "creature" module within that.
 
+- New API functions: get_creature_yx (returns two values, a given 
+  creature's y and x coordinates in the current map).
+
 - Bug fixes: ensured correct spacing between flags on the inventory
   screen.
 
