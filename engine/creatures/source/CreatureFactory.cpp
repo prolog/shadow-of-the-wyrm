@@ -48,7 +48,7 @@ CreaturePtr CreatureFactory::create_by_creature_id
   CreatureMap::iterator c_it = creature_map.find(creature_id);
   CreatureGenerationValuesMap::iterator cgv_it = cgv_map.find(creature_id);
     
-  if (c_it != creature_map.end() && cgv_it != cgv_map.end())
+  if (!creature_id.empty() && c_it != creature_map.end() && cgv_it != cgv_map.end())
   {
     // If the current generation amount is equal to the maximum, then
     // we can't generate any more instances of that creature - return

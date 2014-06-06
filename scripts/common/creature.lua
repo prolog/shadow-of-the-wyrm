@@ -16,11 +16,7 @@ function creature.to_csv(creature_details)
       local num = RNG_range(min, max)
 
       for j = 1, num do
-        creature_csv = creature_csv .. creature_id
-
-        if j ~= num and i ~= #creature_details then
-          creature_csv = creature_csv .. ","
-        end
+        creature_csv = creature_csv .. creature_id .. ","
       end
     end
   end
