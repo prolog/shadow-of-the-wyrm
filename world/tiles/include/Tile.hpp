@@ -93,6 +93,8 @@ class Tile : public ISerializable
     virtual std::string get_danger_confirmation_sid() const;
 
     virtual float get_piety_loss_multiplier() const;
+
+    virtual void transformFrom(std::shared_ptr<Tile> original_tile);
     
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

@@ -320,6 +320,28 @@ float Tile::get_piety_loss_multiplier() const
   return piety_mult;
 }
 
+// Transform a tile from an original tile type.  The new tile (this object)
+// will be assumed to have the new tile type and subtype, but won't have
+// any of the original's required values: creature, inventory, exits,
+// certain flags, etc.  Copy those values over to this tile.
+void Tile::transformFrom(std::shared_ptr<Tile> original_tile)
+{
+  if (original_tile != nullptr)
+  {
+    // Keep the tile type and subtype.
+    // Copy everything else.
+    TileType orig_tt, orig_tst;
+    
+    orig_tt = original_tile->get_tile_type();
+    orig_tst = original_tile->get_tile_subtype();
+
+    *this = *original_tile;
+
+    tile_type = orig_tt;
+    tile_subtype = orig_tst;
+  }
+}
+
 bool Tile::serialize(ostream& stream) const
 {
   Serialize::write_bool(stream, illuminated);
