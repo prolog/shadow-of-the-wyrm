@@ -5,7 +5,7 @@ local creature = require('creature')
 -- outer island tiles.
 local caravan_locs = {{6, 53}, {8, 53}, {7, 52}, {7, 54}}
 local coords = caravan_locs[RNG_range(1, #caravan_locs)]
-local creatures_csv = "caravan_master"
+local creatures_csv = ""
 
 local creature_list = {{"caravan_guard", 7, 10},
                        {"fae_traveller", 6, 9},

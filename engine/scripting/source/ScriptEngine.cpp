@@ -16,6 +16,7 @@
 #include "StatusEffectFactory.hpp"
 #include "StringTable.hpp"
 #include "TextMessages.hpp"
+#include "TileGenerator.hpp"
 
 using namespace std;
 
@@ -55,6 +56,7 @@ int set_creature_base_damage(lua_State* ls);
 int set_creature_speed(lua_State* ls);
 int get_creature_speed(lua_State* ls);
 int get_creature_yx(lua_State* ls);
+int get_current_map_id(lua_State* ls);
 int incr_str(lua_State* ls);
 int incr_dex(lua_State* ls);
 int incr_agi(lua_State* ls);
@@ -69,6 +71,7 @@ int map_set_custom_map_id(lua_State* ls);
 int map_set_edesc(lua_State* ls);
 int map_set_additional_property(lua_State* ls);
 int map_add_location(lua_State* ls);
+int map_transform_tile(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -263,6 +266,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "set_creature_speed", set_creature_speed);
   lua_register(L, "get_creature_speed", get_creature_speed);
   lua_register(L, "get_creature_yx", get_creature_yx);
+  lua_register(L, "get_current_map_id", get_current_map_id);
   lua_register(L, "gain_level", gain_level);
   lua_register(L, "goto_level", goto_level);
   lua_register(L, "is_player", is_player);
@@ -277,6 +281,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_edesc", map_set_edesc);
   lua_register(L, "map_set_additional_property", map_set_additional_property);
   lua_register(L, "map_add_location", map_add_location);
+  lua_register(L, "map_transform_tile", map_transform_tile);
 }
 
 // Lua API functions:
@@ -1002,6 +1007,25 @@ int get_creature_yx(lua_State* ls)
   return 2;
 }
 
+// Return the ID of the current map
+int get_current_map_id(lua_State* ls)
+{
+  string map_id;
+
+  if (lua_gettop(ls) == 0)
+  {
+    map_id = Game::instance().get_current_map()->get_map_id();
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_current_map_id");
+    lua_error(ls);
+  }
+
+  lua_pushstring(ls, map_id.c_str());
+  return 1;
+}
+
 int gain_level(lua_State* ls)
 {
   if ((lua_gettop(ls) == 1) && lua_isstring(ls, 1))
@@ -1406,6 +1430,49 @@ int map_add_location(lua_State* ls)
   }
 
   return 0;
+}
+
+// Returns true if the tile was transformed, false otherwise.
+int map_transform_tile(lua_State* ls)
+{
+  int result = false;
+
+  if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 3), lua_tointeger(ls, 4));
+    int lua_tile_type = lua_tointeger(ls, 4);
+
+    if (lua_tile_type >= TILE_TYPE_FIRST && lua_tile_type < TILE_TYPE_LAST)
+    {
+      MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+      if (map != nullptr)
+      {
+        TilePtr tile = map->at(c);
+
+        if (tile != nullptr)
+        {
+          TileGenerator tg;
+
+          TileType new_tile_type = static_cast<TileType>(lua_tile_type);
+          TilePtr new_tile = tg.generate(new_tile_type);
+
+          // Copy over the common details
+          new_tile->transformFrom(tile);
+          map->insert(c.first, c.second, new_tile);
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_transform_tile");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, result);
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)

@@ -7,6 +7,15 @@ local function caravan_master_cithriel_start_fn()
   add_message_with_pause("CARAVAN_MASTER_CITHRIEL_QUEST_START3_SID")
   add_message_with_pause("CARAVAN_MASTER_CITHRIEL_QUEST_START4_SID")
   clear_and_add_message("CARAVAN_MASTER_CITHRIEL_QUEST_START5_SID")
+
+  local pl_y, pl_x = get_creature_yx("player")
+  local cur_map_id = get_current_map_id()
+  
+  -- 23 == TILE_TYPE_DOWN_STAIRCASE
+  map_transform_tile(cur_map_id, pl_y, pl_x, 23)
+
+  -- Add the necessary properties to the tile.
+  -- ...
 end
 
 local function caravan_master_cithriel_completion_condition_fn()
