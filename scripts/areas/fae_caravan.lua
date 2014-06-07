@@ -10,7 +10,7 @@ local creatures_csv = ""
 local creature_list = {{"caravan_guard", 7, 10},
                        {"fae_traveller", 6, 9},
                        {"fae_musician", 5, 7},
-                       {"caravan_master", 1, 1}}
+                       {"caravan_master"}}
 
 local creatures_csv = creature.to_csv(creature_list)
 
