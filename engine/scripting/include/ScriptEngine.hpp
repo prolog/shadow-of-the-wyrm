@@ -46,6 +46,9 @@ class ScriptEngine : public ISerializable
     // Set up the Lua state
     void initialize_state();
 
+    // Export any defines to Lua
+    void set_constants(lua_State* ls);
+
     // Preload all the appropriate modules
     void load_modules();
 

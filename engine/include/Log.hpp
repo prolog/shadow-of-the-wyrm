@@ -4,12 +4,19 @@
 
 enum LoggingLevel
 {
+  LOG_LOWEST = 0,
   LOG_TRACE = 0,
   LOG_DEBUG = 1,
   LOG_INFO  = 2,
   LOG_ERROR = 3,
-  LOG_NONE  = 4
+  LOG_NONE  = 4,
+  LOG_HIGHEST = 4
 };
+
+#define CLOG_TRACE 0
+#define CLOG_DEBUG 1
+#define CLOG_INFO 2
+#define CLOG_ERROR 3
 
 class Log
 {
@@ -20,10 +27,11 @@ class Log
       return inst;
     }
 
-    void error(const std::string& to_error);
-    void log(const std::string& to_log);
-    void trace(const std::string& to_trace);
-    void debug(const std::string& to_debug);
+    bool log_using_level(const LoggingLevel level, const std::string& log_msg);
+    bool error(const std::string& to_error);
+    bool log(const std::string& to_log);
+    bool trace(const std::string& to_trace);
+    bool debug(const std::string& to_debug);
 
   private:
     friend int main(int argc, char* argv[]);

@@ -59,7 +59,8 @@ Savage Lands v0.2.4 "Esa"
 - New API functions: get_creature_yx (returns two values, a given 
   creature's y and x coordinates in the current map), get_current_map_id
   (returns the ID of the current map), map_transform_tile (converts a tile
-  to a new tile type, preserving the various details of the old tile).
+  to a new tile type, preserving the various details of the old tile),
+  log.
 
 - Bug fixes: ensured correct spacing between flags on the inventory
   screen.
