@@ -14,6 +14,7 @@ local creature_list = {{"caravan_guard", 7, 10},
 
 local creatures_csv = creature.to_csv(creature_list)
 
+log(CLOG_ERROR, "Creatures CSV: " .. creatures_csv)
 
 local fae_caravan = Area:new(coords[1], coords[2])
 fae_caravan:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_FAE_CARAVAN")

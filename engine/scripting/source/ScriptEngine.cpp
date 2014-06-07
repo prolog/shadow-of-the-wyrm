@@ -20,6 +20,8 @@
 
 using namespace std;
 
+#define lua_exportConst(ls, name) { lua_pushnumber(ls, name); lua_setglobal(ls, #name); }
+
 // Helper functions that can be used by the Lua API.
 CreaturePtr local_creature;
 void set_local_creature(CreaturePtr creature);
@@ -72,6 +74,7 @@ int map_set_edesc(lua_State* ls);
 int map_set_additional_property(lua_State* ls);
 int map_add_location(lua_State* ls);
 int map_transform_tile(lua_State* ls);
+int log(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -111,6 +114,7 @@ void ScriptEngine::initialize_state()
 {
    L = lua_open();
    luaL_openlibs(L);
+   set_constants(L);
    load_modules();
    register_api_functions();
 }
@@ -120,6 +124,14 @@ void ScriptEngine::load_modules()
   // Update the environment so that the "/script" directory 
   // and certain subdirectories are assumed.
   luaL_dofile(L, "scripts/env.lua");
+}
+
+void ScriptEngine::set_constants(lua_State* ls)
+{
+  lua_exportConst(ls, CLOG_TRACE);
+  lua_exportConst(ls, CLOG_DEBUG);
+  lua_exportConst(ls, CLOG_INFO);
+  lua_exportConst(ls, CLOG_ERROR);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
@@ -282,6 +294,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_additional_property", map_set_additional_property);
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
+  lua_register(L, "log", log);
 }
 
 // Lua API functions:
@@ -1472,6 +1485,36 @@ int map_transform_tile(lua_State* ls)
   }
 
   lua_pushboolean(ls, result);
+  return 1;
+}
+
+// log some text in the given log level.
+// returns true if it was logged, false otherwise
+// (log is not in that level, etc)
+int log(lua_State* ls)
+{
+  int logged = false;
+
+  if (lua_gettop(ls) == 2 && lua_isnumber(ls, 1) && lua_isstring(ls, 2))
+  {
+    Log& log = Log::instance();
+
+    int log_level = lua_tointeger(ls, 1);
+    string log_msg = lua_tostring(ls, 2);
+
+    if (log_level >= LOG_LOWEST && log_level <= LOG_HIGHEST)
+    {
+      LoggingLevel ll = static_cast<LoggingLevel>(log_level);
+      logged = log.log_using_level(ll, log_msg);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to log");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, logged);
   return 1;
 }
 
