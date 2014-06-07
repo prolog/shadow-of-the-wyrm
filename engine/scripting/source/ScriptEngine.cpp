@@ -1453,7 +1453,7 @@ int map_transform_tile(lua_State* ls)
   if (lua_gettop(ls) == 4 && lua_isstring(ls, 1) && lua_isnumber(ls, 2) && lua_isnumber(ls, 3) && lua_isnumber(ls, 4))
   {
     string map_id = lua_tostring(ls, 1);
-    Coordinate c(lua_tointeger(ls, 3), lua_tointeger(ls, 4));
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
     int lua_tile_type = lua_tointeger(ls, 4);
 
     if (lua_tile_type >= TILE_TYPE_FIRST && lua_tile_type < TILE_TYPE_LAST)
@@ -1474,6 +1474,12 @@ int map_transform_tile(lua_State* ls)
           // Copy over the common details
           new_tile->transformFrom(tile);
           map->insert(c.first, c.second, new_tile);
+        }
+        else
+        {
+          ostringstream ss;
+          ss << "Null tile referenced in map_transform_tile: " << c.first << ", " << c.second;
+          Log::instance().error(ss.str());
         }
       }
     }
