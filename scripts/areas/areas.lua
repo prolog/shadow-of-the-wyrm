@@ -27,6 +27,14 @@ function Area:set_custom_map_id(id)
   self.cust_map_id = id
 end
 
+-- Set permanence as an additional property.  If the tile does not refer
+-- to a custom map, but instead generates based on a FieldGenerator or
+-- whatever, this will ensure that the permanence flag is turned on at
+-- the end.
+function Area:set_permanence(perm)
+  self.permanence = perm
+end
+
 -- Set an extra description SID, displayed on the world map when the
 -- player walks over/looks at the tile.
 function Area:set_extra_description_sid(sid)
@@ -43,6 +51,11 @@ function Area:insert()
   -- If a custom map ID has been specified, set that.
   if (self.cust_map_id ~= nil) then
     map_set_custom_map_id(self.map_id, self.row, self.col, self.cust_map_id)
+  end
+
+  -- If we need to override the permanence, do so.
+  if (self.permanence ~= nil) then
+    map_set_additional_property(self.map_id, self.row, self.col, "MAP_PROPERTIES_PERMANENCE", tostring(self.permanence))
   end
 
   -- Next, check to see if an extra description SID has been provided.
