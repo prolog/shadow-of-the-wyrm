@@ -17,9 +17,12 @@ local creatures_csv = creature.to_csv(creature_list)
 local fae_caravan = Area:new(coords[1], coords[2])
 
 -- Field-based random generators by default don't preserve permanence,
--- so turn the flag on in this case.
+-- so turn the flag on in this case.  Also set the map ID ("fae_caravan")
+-- so that the Cithriel custom map can link back to the permanent,
+-- generated map.
 fae_caravan:set_permanence(true)
 fae_caravan:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_FAE_CARAVAN")
-fae_caravan:set_additional_properties({["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv})
+fae_caravan:set_additional_properties({["MAP_PROPERTIES_INITIAL_CREATURES"] = creatures_csv, ["MAP_PROPERTIES_GENERATED_MAP_ID"] = "fae_caravan"})
 
 fae_caravan:insert()
+
