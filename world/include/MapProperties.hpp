@@ -7,6 +7,10 @@ class MapProperties
     // Can be used to override a generator's default permanence value.
     static const std::string MAP_PROPERTIES_PERMANENCE;
 
+    // Used to set the map ID of a generated map, after generation, so
+    // that other maps can create the link back as needed.
+    static const std::string MAP_PROPERTIES_GENERATED_MAP_ID;
+
     // This is a string that is actually a serialized vector, and must
     // be deserialized before it can be used!
     static const std::string MAP_PROPERTIES_INITIAL_CREATURES;

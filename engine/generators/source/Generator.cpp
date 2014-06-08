@@ -55,6 +55,13 @@ void Generator::initialize(MapPtr map, const int danger_level)
   boost::uuids::uuid id = boost::uuids::random_generator()();
   map->set_map_id(Uuid::to_string(id));
   set_map_permanence(map);
+
+  // If a generated map ID has been set, update the map ID with that.
+  string generated_map_id = get_additional_property(MapProperties::MAP_PROPERTIES_GENERATED_MAP_ID);
+  if (!generated_map_id.empty())
+  {
+    map->set_map_id(generated_map_id);
+  }
 }
 
 // Creates the initial set of entities (creatures and items) present
