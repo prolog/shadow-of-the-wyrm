@@ -166,6 +166,14 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
         hostility = (XMLUtils::get_child_node_bool_value(placement_node, "Friendly", false) == false);
       }
 
+      string name;
+      XMLNode name_node = XMLUtils::get_next_element_by_local_name(placement_node, "Name");
+
+      if (!name_node.is_null())
+      {
+        name = XMLUtils::get_node_value(name_node);
+      }
+
       XMLMapCoordinateReader coord_reader;
       Coordinate coord = coord_reader.parse_coordinate(placement_node);
 
@@ -175,6 +183,12 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
       CreatureFactory cfactory;
       cfactory.set_hostility_for_creatures(override_host, hostility);
       CreaturePtr creature = cfactory.create_by_creature_id(game.get_action_manager_ref(), id);
+      
+      // Set any additional properties
+      if (creature)
+      {
+        creature->set_name(name);
+      }
 
       TilePtr placement_tile = map->at(coord);
 

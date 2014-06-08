@@ -423,7 +423,7 @@ string CombatManager::get_appropriate_creature_description(CreaturePtr attacking
     }
     else
     {
-      desc = StringTable::get(creature->get_description_sid());
+      desc = desc + StringTable::get(creature->get_description_sid());
     }
   }
   

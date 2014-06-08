@@ -13,7 +13,12 @@
 using namespace std;
 
 CreatureDescriber::CreatureDescriber(CreaturePtr pov_creature, CreaturePtr new_creature)
-: viewing_creature(pov_creature), creature(new_creature)
+: viewing_creature(pov_creature), creature(new_creature), short_description(false)
+{
+}
+
+CreatureDescriber::CreatureDescriber(CreaturePtr pov_creature, CreaturePtr new_creature, bool s_desc)
+: viewing_creature(pov_creature), creature(new_creature), short_description(s_desc)
 {
 }
 
@@ -31,14 +36,22 @@ string CreatureDescriber::describe() const
     }
     else
     {
+      string creature_name = creature->get_name();
       creature_desc = StringTable::get(creature->get_description_sid());
+
+      if (!creature_name.empty())
+      {
+        creature_desc = creature_name + ", " + creature_desc;
+      }
     }
 
     ss << creature_desc;
     
     string status_description = describe_statuses();
 
-    if (!status_description.empty())
+    // If the "short description" option is set (basically used only for
+    // combat), don't display the additional status information.
+    if (!status_description.empty() && !short_description)
     {
       ss << " " << status_description;
     }
