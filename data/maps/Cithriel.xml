@@ -7,10 +7,10 @@
 		<Min>2</Min>
 		<Max>17</Max>
 	</LevelRange>
-	<MapType>1</MapType>
+	<MapType>2</MapType>
 	<Tiles>
 	################################################################################
-	############.###################........###.................###############..###
+	############.###################........###.................###############&lt;.###
 	#...#######...############....##........#...#######.#####.#..###.......####..###
 	###.....##.....##....##....##..............#####..........##.................###
 	###...............##....########........#...####.#####.####..................###
@@ -31,12 +31,75 @@
 	################################################################################
 	</Tiles>
 	<PlayerStart>
-		<Row>0</Row>
-		<Col>0</Col>
+		<Row>1</Row>
+		<Col>75</Col>
 	</PlayerStart>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<!-- The black sorcerors, who have corrupted Cithriel -->
+			<Placement>
+				<ID>black_sorceror</ID>
+				<Random>
+					<Coord>
+						<Row>2</Row>
+						<Col>1</Col>
+					</Coord>
+					<Coord>
+						<Row>6</Row>
+						<Col>1</Col>
+					</Coord>
+				</Random>
+				<Name>Carthos</Name>
+			</Placement>
+			<Placement>
+				<ID>black_sorceror</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>78</Col>
+				</Coord>
+				<Name>Scipa</Name>
+			</Placement>
+			<Placement>
+				<ID>black_sorceror</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>40</Col>
+				</Coord>
+				<Name>Cathar</Name>
+			</Placement>
+			<Placement>
+				<ID>black_sorceror</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>21</Col>
+				</Coord>
+				<Name>Marcus</Name>
+			</Placement>
+			<Placement>
+				<ID>black_sorceror</ID>
+				<Random>
+					<Coord>
+						<Row>3</Row>
+						<Col>50</Col>
+					</Coord>
+					<Coord>
+						<Row>3</Row>
+						<Col>55</Col>
+					</Coord>
+				</Random>
+				<Name>Pindar</Name>
+			</Placement>
+		</Creatures>
 	</InitialPlacements>
-	<Exits/>
+	<Exits>
+		<Exit>
+			<Coord>
+				<Row>1</Row>
+				<Col>75</Col>
+			</Coord>
+			<Direction>10</Direction>
+			<MapID>fae_caravan</MapID>
+		</Exit>
+	</Exits>
 	<Features/>
 </CustomMap>
