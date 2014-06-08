@@ -43,6 +43,13 @@ Savage Lands v0.2.4 "Esa"
   - Added the caravan master, and a number of caravan guards, fae
     musicians, and fae travellers.
 
+  - Created a quest from the caravan master to clear the taint from
+    Cithriel, the ancient home of the Fae.
+
+- Began work on Cithriel, accessible only from the Fae Caravan.
+
+- Names can now be set in the custom map XML.
+
 - Added new items: brass knuckles, spiked glove, iron claw.
 
 - New creatures: black servant, Pirrha, will o' the wisp, grave worm,

@@ -2,7 +2,7 @@ require('areas')
 local creature = require('creature')
 
 local creatures = {{"satyr", 6, 10},
-                   {"black_manticore", 1, 1}}
+                   {"black_manticore"}}
 local creatures_csv = creature.to_csv(creatures)
 
 -- Set the Gnordvar/mine details.
