@@ -5249,12 +5249,12 @@
 				<Type>7</Type>
 			</Damage>
 		</Creature>
-		<Creature id="cithriel_summoner">
+		<Creature id="black_summoner">
 			<RaceID>01_human</RaceID>
-			<ShortDescriptionSID>CITHRIEL_SUMMONER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>CITHRIEL_SUMMONER_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>CITHRIEL_SUMMONER_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>CITHRIEL_SUMMONER_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>BLACK_SUMMONER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>BLACK_SUMMONER_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>BLACK_SUMMONER_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>BLACK_SUMMONER_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>mobile</DecisionStrategy>
 			<Text>
 				<Symbol>S</Symbol>
