@@ -11,11 +11,10 @@ local function caravan_master_cithriel_start_fn()
   local pl_y, pl_x = get_creature_yx("player")
   local cur_map_id = get_current_map_id()
   
+  -- Add the necessary properties to the tile.
   -- 23 == TILE_TYPE_DOWN_STAIRCASE
   map_transform_tile(cur_map_id, pl_y, pl_x, 23)
-
-  -- Add the necessary properties to the tile.
-  -- ...
+  map_add_tile_exit(cur_map_id, pl_y, pl_x, CDIRECTION_DOWN, "cithriel")
 end
 
 local function caravan_master_cithriel_completion_condition_fn()

@@ -67,7 +67,7 @@ Savage Lands v0.2.4 "Esa"
   creature's y and x coordinates in the current map), get_current_map_id
   (returns the ID of the current map), map_transform_tile (converts a tile
   to a new tile type, preserving the various details of the old tile),
-  log.
+  log, map_add_tile_exit (add an exit to a custom map).
 
 - Bug fixes: ensured correct spacing between flags on the inventory
   screen.
