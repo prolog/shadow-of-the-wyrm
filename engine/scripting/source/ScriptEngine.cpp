@@ -74,6 +74,7 @@ int map_set_edesc(lua_State* ls);
 int map_set_additional_property(lua_State* ls);
 int map_add_location(lua_State* ls);
 int map_transform_tile(lua_State* ls);
+int map_add_tile_exit(lua_State* ls);
 int log(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
@@ -132,6 +133,18 @@ void ScriptEngine::set_constants(lua_State* ls)
   lua_exportConst(ls, CLOG_DEBUG);
   lua_exportConst(ls, CLOG_INFO);
   lua_exportConst(ls, CLOG_ERROR);
+
+  lua_exportConst(ls, CDIRECTION_SOUTH_WEST);
+  lua_exportConst(ls, CDIRECTION_SOUTH);
+  lua_exportConst(ls, CDIRECTION_SOUTH_EAST);
+  lua_exportConst(ls, CDIRECTION_WEST);
+  lua_exportConst(ls, CDIRECTION_NULL);
+  lua_exportConst(ls, CDIRECTION_EAST);
+  lua_exportConst(ls, CDIRECTION_NORTH_WEST);
+  lua_exportConst(ls, CDIRECTION_NORTH);
+  lua_exportConst(ls, CDIRECTION_NORTH_EAST);
+  lua_exportConst(ls, CDIRECTION_UP);
+  lua_exportConst(ls, CDIRECTION_DOWN);
 }
 
 string ScriptEngine::get_table_str(lua_State* ls, const string& key)
@@ -294,6 +307,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_set_additional_property", map_set_additional_property);
   lua_register(L, "map_add_location", map_add_location);
   lua_register(L, "map_transform_tile", map_transform_tile);
+  lua_register(L, "map_add_tile_exit", map_add_tile_exit);
   lua_register(L, "log", log);
 }
 
@@ -1494,6 +1508,51 @@ int map_transform_tile(lua_State* ls)
   return 1;
 }
 
+// Returns true if the given exit was added to the given tile, false otherwise.
+int map_add_tile_exit(lua_State* ls)
+{
+  int result = false;
+
+  if (lua_gettop(ls) == 5 
+   && lua_isstring(ls, 1) 
+   && lua_isnumber(ls, 2) 
+   && lua_isnumber(ls, 3) 
+   && lua_isnumber(ls, 4)
+   && lua_isstring(ls, 5))
+  {
+    string map_id = lua_tostring(ls, 1);
+    Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
+    int lua_direction = lua_tointeger(ls, 4);
+    string exit_map_id = lua_tostring(ls, 5);
+
+    if (lua_direction >= CDIRECTION_SOUTH_WEST && lua_direction <= CDIRECTION_DOWN)
+    {
+      MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
+
+      if (map != nullptr)
+      {
+        TilePtr tile = map->at(c);
+
+        if (tile != nullptr)
+        {
+          TileExitMap& tile_map = tile->get_tile_exit_map_ref();
+          MapExitPtr map_exit = std::make_shared<MapExit>();
+          map_exit->set_map_id(exit_map_id);
+
+          tile_map[static_cast<Direction>(lua_direction)] = map_exit;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to map_transform_tile");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, result);
+  return 1;
+}
 // log some text in the given log level.
 // returns true if it was logged, false otherwise
 // (log is not in that level, etc)
