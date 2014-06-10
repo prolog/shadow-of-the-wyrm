@@ -169,7 +169,7 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
       string name;
       XMLNode name_node = XMLUtils::get_next_element_by_local_name(placement_node, "Name");
 
-      if (!name_node.is_null() && !name.empty())
+      if (!name_node.is_null())
       {
         name = XMLUtils::get_node_value(name_node);
       }
@@ -187,7 +187,10 @@ void XMLMapReader::parse_initial_creature_placements(const XMLNode& creatures_no
       // Set any additional properties
       if (creature)
       {
-        creature->set_name(name);
+        if (!name.empty())
+        {
+          creature->set_name(name);
+        }
       }
 
       TilePtr placement_tile = map->at(coord);
