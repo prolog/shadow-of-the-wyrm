@@ -54,7 +54,7 @@ Savage Lands v0.2.4 "Esa"
 
 - New creatures: black servant, Pirrha, will o' the wisp, grave worm,
   caravan master, fae musician, fae traveller, caravan guard, black
-  summoner.
+  summoner, red lady.
 
 - New artifacts: the jewelled claw "Dragon's Fist", Cynehild's Shroud,
   fae-forged sword "Erandu".
