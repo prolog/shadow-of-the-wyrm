@@ -25,9 +25,9 @@
 	###........................................................##.###..####..#######
 	###...........................................................####.......#######
 	###...........................................................###........#######
-	###........................................................##.#..######..##....#
+	###........................................................##.#..######........#
 	####.....#.....#.....#.....#.....#.....#.....#.....#......###...#######........#
-	#####....................................................##############..##....#
+	#####....................................................##############........#
 	################################################################################
 	</Tiles>
 	<PlayerStart>
@@ -37,6 +37,7 @@
 	<InitialPlacements>
 		<Creatures>
 			<!-- The black sorcerors, who have corrupted Cithriel -->
+			<!-- Carthos has summoned an antlion, great serpent, and spectral wizard. -->
 			<Placement>
 				<ID>black_sorceror</ID>
 				<Random>
@@ -52,6 +53,28 @@
 				<Name>Carthos</Name>
 			</Placement>
 			<Placement>
+				<ID>antlion</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>2</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>great_serpent</ID>
+				<Coord>
+					<Row>2</Row>
+					<Col>2</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>spectral_wizard</ID>
+				<Coord>
+					<Row>4</Row>
+					<Col>5</Col>
+				</Coord>
+			</Placement>
+			<!-- Scipa has summoned a cave troll, stone ooze, treow, and chimera -->
+			<Placement>
 				<ID>black_sorceror</ID>
 				<Coord>
 					<Row>17</Row>
@@ -60,13 +83,71 @@
 				<Name>Scipa</Name>
 			</Placement>
 			<Placement>
+				<ID>cave_troll</ID>
+				<Coord>
+					<Row>16</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>treow</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>stone_ooze</ID>
+				<Coord>
+					<Row>17</Row>
+					<Col>76</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>chimera</ID>
+				<Coord>
+					<Row>18</Row>
+					<Col>75</Col>
+				</Coord>
+			</Placement>
+			<!-- Kathar has summoned a hydra, red lady, fox maiden, and demon lord. -->
+			<Placement>
 				<ID>black_sorceror</ID>
 				<Coord>
 					<Row>7</Row>
 					<Col>40</Col>
 				</Coord>
-				<Name>Cathar</Name>
+				<Name>Kathar</Name>
 			</Placement>
+			<Placement>
+				<ID>hydra</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>39</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>red_lady</ID>
+				<Coord>
+					<Row>7</Row>
+					<Col>41</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>fox_maiden</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>demon_lord</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<!-- Marcus has summoned a shadow beast, chaos beast, voidling, and tentacled horror -->
 			<Placement>
 				<ID>black_sorceror</ID>
 				<Coord>
@@ -75,6 +156,35 @@
 				</Coord>
 				<Name>Marcus</Name>
 			</Placement>
+			<Placement>
+				<ID>shadow_beast</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>voidling</ID>
+				<Coord>
+					<Row>13</Row>
+					<Col>23</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>chaos_beast</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>19</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>tentacled_horror</ID>
+				<Coord>
+					<Row>15</Row>
+					<Col>23</Col>
+				</Coord>
+			</Placement>
+			<!-- Pindar has summoned a skeleton king, fell lord, and witch king.  The chamber is guarded by liches -->
 			<Placement>
 				<ID>black_sorceror</ID>
 				<Random>
@@ -88,6 +198,41 @@
 					</Coord>
 				</Random>
 				<Name>Pindar</Name>
+			</Placement>
+			<Placement>
+				<ID>skeleton_king</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>48</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>fell_lord</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>52</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>witch_king</ID>
+				<Coord>
+					<Row>3</Row>
+					<Col>57</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>lich</ID>
+				<Coord>
+					<Row>1</Row>
+					<Col>51</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>lich</ID>
+				<Coord>
+					<Row>5</Row>
+					<Col>51</Col>
+				</Coord>
 			</Placement>
 		</Creatures>
 	</InitialPlacements>
