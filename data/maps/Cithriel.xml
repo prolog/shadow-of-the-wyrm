@@ -39,7 +39,7 @@
 			<!-- The black sorcerors, who have corrupted Cithriel -->
 			<!-- Carthos has summoned an antlion, great serpent, and spectral wizard. -->
 			<Placement>
-				<ID>black_sorceror</ID>
+				<ID>black_summoner</ID>
 				<Random>
 					<Coord>
 						<Row>2</Row>
@@ -75,7 +75,7 @@
 			</Placement>
 			<!-- Scipa has summoned a cave troll, stone ooze, treow, and chimera -->
 			<Placement>
-				<ID>black_sorceror</ID>
+				<ID>black_summoner</ID>
 				<Coord>
 					<Row>17</Row>
 					<Col>78</Col>
@@ -112,7 +112,7 @@
 			</Placement>
 			<!-- Kathar has summoned a hydra, red lady, fox maiden, and demon lord. -->
 			<Placement>
-				<ID>black_sorceror</ID>
+				<ID>black_summoner</ID>
 				<Coord>
 					<Row>7</Row>
 					<Col>40</Col>
@@ -149,7 +149,7 @@
 			</Placement>
 			<!-- Marcus has summoned a shadow beast, chaos beast, voidling, and tentacled horror -->
 			<Placement>
-				<ID>black_sorceror</ID>
+				<ID>black_summoner</ID>
 				<Coord>
 					<Row>14</Row>
 					<Col>21</Col>
@@ -186,7 +186,7 @@
 			</Placement>
 			<!-- Pindar has summoned a skeleton king, fell lord, and witch king.  The chamber is guarded by liches -->
 			<Placement>
-				<ID>black_sorceror</ID>
+				<ID>black_summoner</ID>
 				<Random>
 					<Coord>
 						<Row>3</Row>

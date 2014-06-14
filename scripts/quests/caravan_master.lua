@@ -1,4 +1,5 @@
 require('quest')
+local creature = require('creature')
 
 -- Quest to clear the ancient underground fortress of Cithriel.
 local function caravan_master_cithriel_start_fn()
@@ -15,6 +16,17 @@ local function caravan_master_cithriel_start_fn()
   -- 23 == TILE_TYPE_DOWN_STAIRCASE
   map_transform_tile(cur_map_id, pl_y, pl_x, 23)
   map_add_tile_exit(cur_map_id, pl_y, pl_x, CDIRECTION_DOWN, "cithriel")
+
+  -- Additional creatures should be added to Cithriel: these wander the
+  -- halls, and aren't part of the creatures surrounding each summoner.
+  local creatures = {{"voidling", 5, 9},
+                     {"tentacled_horror", 3, 6},
+                     {"demon_lord", 6, 8},
+                     {"fox_maiden", 3, 5},
+                     {"chaos_beast", 6, 8}}
+
+  local creatures_csv = creature.to_csv(creatures)
+  map_set_additional_property(cur_map_id, pl_y, pl_x, "MAP_PROPERTIES_INITIAL_CREATURES", creatures_csv)
 end
 
 local function caravan_master_cithriel_completion_condition_fn()
