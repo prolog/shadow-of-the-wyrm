@@ -48,6 +48,13 @@ Savage Lands v0.2.4 "Esa"
 
 - Began work on Cithriel, accessible only from the Fae Caravan.
 
+  - Added five named black summoners throughout the hall.
+
+  - Surrounded each by a number of creatures in the 26-35 range.
+
+  - Added additional cosmological creatures and demons randomly throughout
+    the level.
+
 - Names can now be set in the custom map XML.
 
 - Added new items: brass knuckles, spiked glove, iron claw.
