@@ -32,8 +32,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // First king of Bernicia (Northumberland)
-  return "\"Esa\"";
+  // King of Bernicia (later Northumberland)
+  return "\"Eoppa\"";
 }
 
 string Metadata::get_game_version_synopsis() const
