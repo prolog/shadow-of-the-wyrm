@@ -1,5 +1,5 @@
 Savage Lands v0.2.4 "Esa"
-- Version declared May 4, 2014.
+- Version declared May 4, 2014.  Version finalized June 15, 2014.
 
 - Sped up the crypt generation a little (switched to vector<Coordinate>
   instead of set, pre-reserved sizes, etc).

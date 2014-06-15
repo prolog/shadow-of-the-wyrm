@@ -11,9 +11,9 @@
 	<Tiles>
 	################################################################################
 	############.###################........###.................###############&lt;.###
-	#...#######...############....##........#...#######.#####.#..###.......####..###
+	#...#######...############....##........#...#############.#..###.......####..###
 	###.....##.....##....##....##..............#####..........##.................###
-	###...............##....########........#...####.#####.####..................###
+	###...............##....########........#...####.##########..................###
 	###.....##.....########.########........###.................####.......####..###
 	#...#######...#########...#########################.#######################..###
 	############.############...###########...#########.#########...##########..####
@@ -187,16 +187,10 @@
 			<!-- Pindar has summoned a skeleton king, fell lord, and witch king.  The chamber is guarded by liches -->
 			<Placement>
 				<ID>black_summoner</ID>
-				<Random>
-					<Coord>
-						<Row>3</Row>
-						<Col>50</Col>
-					</Coord>
-					<Coord>
-						<Row>3</Row>
-						<Col>55</Col>
-					</Coord>
-				</Random>
+				<Coord>
+					<Row>3</Row>
+					<Col>55</Col>
+				</Coord>
 				<Name>Pindar</Name>
 			</Placement>
 			<Placement>
@@ -246,5 +240,30 @@
 			<MapID>fae_caravan</MapID>
 		</Exit>
 	</Exits>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>2</Row>
+				<Col>57</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>48</Col>
+			</Coord>
+			<Door>
+				<Material>8</Material>
+				<Entrance>
+					<EntranceState>2</EntranceState>
+				</Entrance>
+			</Door>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>
