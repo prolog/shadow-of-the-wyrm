@@ -346,18 +346,18 @@ void Game::go()
           ac.add(action_cost, current_creature->get_id());
         }
         
-        if (reload_game_loop)
-        {
-          reload_game_loop = false;
-          break;
-        }
-
         if (current_creature->get_is_player())
         {
           // Now that we've ensured that the ActionCoordinator isn't reset,
           // and that a full window redraw has been done, we can reset the
           // reloaded_game variable so that it won't override any game logic.
           reloaded_game = false;
+        }
+
+        if (reload_game_loop)
+        {
+          reload_game_loop = false;
+          break;
         }
       }
     }
