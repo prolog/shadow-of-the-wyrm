@@ -3072,6 +3072,9 @@
     <ClInclude Include="engine\generators\include\MapCreatureGenerator.hpp">
       <Filter>Header Files\engine\generators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\Settings.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5890,6 +5893,9 @@
     </ClCompile>
     <ClCompile Include="engine\generators\source\MapCreatureGenerator.cpp">
       <Filter>Source Files\engine\generators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\Settings.cpp">
+      <Filter>Source Files\engine\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

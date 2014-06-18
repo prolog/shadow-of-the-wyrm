@@ -519,6 +519,7 @@
     <ClInclude Include="engine\include\ScoreFile.hpp" />
     <ClInclude Include="engine\include\ScoreFileEntry.hpp" />
     <ClInclude Include="engine\include\SelectionUtils.hpp" />
+    <ClInclude Include="engine\include\Settings.hpp" />
     <ClInclude Include="engine\items\include\EdibleItemFilter.hpp" />
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
     <ClInclude Include="engine\items\include\InitialItemEquipper.hpp" />
@@ -1728,6 +1729,7 @@
     <ClCompile Include="engine\source\ScoreFile.cpp" />
     <ClCompile Include="engine\source\ScoreFileEntry.cpp" />
     <ClCompile Include="engine\source\SelectionUtils.cpp" />
+    <ClCompile Include="engine\source\Settings.cpp" />
     <ClCompile Include="engine\source\unit_tests\Game_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
