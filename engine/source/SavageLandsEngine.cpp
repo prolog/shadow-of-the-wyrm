@@ -18,6 +18,7 @@
 #include "Naming.hpp"
 #include "RaceSelectionScreen.hpp"
 #include "Serialization.hpp"
+#include "Settings.hpp"
 #include "SexSelectionScreen.hpp"
 #include "TextKeys.hpp"
 #include "WelcomeScreen.hpp"
@@ -80,6 +81,7 @@ void SavageLandsEngine::initialize_game_flow_map()
 void SavageLandsEngine::start()
 {
   Game& game = Game::instance();
+  Settings& settings = Settings::instance();
 
   // JCD FIXME: Eventually make this value read from its own ini/configuration file.
   game.set_sid_ini_filename("savagelandstext_en.ini");
