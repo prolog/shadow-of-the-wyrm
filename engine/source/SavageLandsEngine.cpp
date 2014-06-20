@@ -81,10 +81,12 @@ void SavageLandsEngine::initialize_game_flow_map()
 void SavageLandsEngine::start()
 {
   Game& game = Game::instance();
-  Settings& settings = Settings::instance();
+  Settings settings(true);
 
-  // JCD FIXME: Eventually make this value read from its own ini/configuration file.
-  game.set_sid_ini_filename("savagelandstext_en.ini");
+  game.set_settings(settings);
+
+  string language_file = settings.get_setting("language_file");
+  game.set_sid_ini_filename(language_file);
   game.actions.reload_scripts_and_sids();
 
   if (state_manager.start_new_game())

@@ -1,18 +1,22 @@
 #pragma once
 #include <boost/property_tree/ptree.hpp>
+#include "ISerializable.hpp"
 
-class Settings
+class Settings : public ISerializable
 {
   public:
-    static Settings& instance()
-    {
-      static Settings settings;
-      return settings;
-    }
+    Settings(const bool read_from_disk = false);
+
+    std::string get_setting(const std::string& key) const;
+
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
 
   protected:
-    Settings();
+    boost::property_tree::ptree settings_tree;
+    static const std::string SETTINGS_FILENAME;
 
-    boost::property_tree::ptree p_tree;
+  private:
+    ClassIdentifier internal_class_identifier() const override;
 };
 

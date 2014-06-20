@@ -17,6 +17,7 @@
 #include "Quests.hpp"
 #include "Race.hpp"
 #include "ScriptEngine.hpp"
+#include "Settings.hpp"
 #include "Spell.hpp"
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
@@ -31,6 +32,9 @@ class Game : public ISerializable
       static Game game;
       return game;
     }
+
+    void set_settings(const Settings& settings);
+    Settings& get_settings_ref();
 
     void set_display(DisplayPtr display);
     DisplayPtr get_display() const;
@@ -154,6 +158,7 @@ class Game : public ISerializable
 
     // The races, classes, and items are not the actual in-game items;
     // they're the template upon which the in-game items are built.
+    Settings settings;
     DisplayPtr display;
     MapRegistry map_registry;
     DeityMap deities;
