@@ -3075,6 +3075,9 @@
     <ClInclude Include="engine\include\Settings.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\commands\include\IKeyboardCommandMap.hpp">
+      <Filter>Header Files\engine\commands\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">

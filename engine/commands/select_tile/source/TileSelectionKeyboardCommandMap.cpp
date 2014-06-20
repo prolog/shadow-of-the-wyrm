@@ -62,6 +62,11 @@ KeyboardCommandMap* TileSelectionKeyboardCommandMap::clone()
   return new TileSelectionKeyboardCommandMap(*this);
 }
 
+string TileSelectionKeyboardCommandMap::get_settings_prefix() const
+{
+  return "key_til_";
+}
+
 ClassIdentifier TileSelectionKeyboardCommandMap::internal_class_identifier() const
 {
   return CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP;

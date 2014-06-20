@@ -288,6 +288,7 @@
     <ClInclude Include="engine\commands\include\CommandKeys.hpp" />
     <ClInclude Include="engine\commands\include\CommandProcessor.hpp" />
     <ClInclude Include="engine\commands\include\Commands.hpp" />
+    <ClInclude Include="engine\commands\include\IKeyboardCommandMap.hpp" />
     <ClInclude Include="engine\commands\include\KeyboardCommandMap.hpp" />
     <ClInclude Include="engine\commands\include\KeyboardCommandMapFactory.hpp" />
     <ClInclude Include="engine\commands\inventory\include\InventoryCommandFactory.hpp" />

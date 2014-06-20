@@ -2,11 +2,12 @@
 #include <string>
 #include <map>
 #include <memory>
+#include "IKeyboardCommandMap.hpp"
 #include "ISerializable.hpp"
 
 typedef std::map<std::string, std::string> KeyboardCommandMappingMap;
 
-class KeyboardCommandMap : public ISerializable
+class KeyboardCommandMap : public ISerializable, public IKeyboardCommandMap
 {
   public:
     KeyboardCommandMap();
@@ -15,6 +16,8 @@ class KeyboardCommandMap : public ISerializable
 
     virtual std::string get_command_type(const std::string& keyboard_input);
     KeyboardCommandMappingMap get_internal_map();
+
+    std::string get_settings_prefix() const override;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

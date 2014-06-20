@@ -10,6 +10,8 @@ class MagicKeyboardCommandMap : public KeyboardCommandMap
     // Fail silently.
     virtual void command_not_found(const std::string& keyboard_input) override;
   
+    std::string get_settings_prefix() const override;
+
     // serialize/deserialize taken care of by KeyboardCommandMap
 
     virtual KeyboardCommandMap* clone() override;

@@ -41,6 +41,11 @@ KeyboardCommandMap* MagicKeyboardCommandMap::clone()
   return new MagicKeyboardCommandMap(*this);
 }
 
+string MagicKeyboardCommandMap::get_settings_prefix() const
+{
+  return "key_mag_";
+}
+
 ClassIdentifier MagicKeyboardCommandMap::internal_class_identifier() const
 {
   return CLASS_ID_MAGIC_KEYBOARD_COMMAND_MAP;
