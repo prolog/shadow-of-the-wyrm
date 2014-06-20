@@ -56,6 +56,16 @@ Game::~Game()
 {
 }
 
+void Game::set_settings(const Settings& new_settings)
+{
+  settings = new_settings;
+}
+
+Settings& Game::get_settings_ref()
+{
+  return settings;
+}
+
 void Game::set_display(DisplayPtr game_display)
 {
   display = game_display;
@@ -655,6 +665,9 @@ bool Game::serialize(ostream& stream) const
 
   // Ignore keep_playing
   Serialize::write_bool(stream, reload_game_loop);
+
+  settings.serialize(stream);
+
   // Ignore game_instance - it's a singleton, and the write/read code is already handling it
   Serialize::write_class_id(stream, display->get_class_identifier());
   display->serialize(stream);
@@ -770,6 +783,8 @@ bool Game::deserialize(istream& stream)
   Serialize::read_bool(stream, reload_game_loop);
   // Ignore game_instance - it's a singleton, and the write/read code is already handling it
   
+  settings.deserialize(stream);
+
   ClassIdentifier display_ci;
   Serialize::read_class_id(stream, display_ci);
   display = DisplayFactory::create_display_details(display_ci).first;
