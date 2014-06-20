@@ -51,6 +51,11 @@ void EquipmentKeyboardCommandMap::initialize_command_mapping()
                         {"Z", EquipmentCommandKeys::EXIT_EQUIPMENT}};
 }
 
+string EquipmentKeyboardCommandMap::get_settings_prefix() const
+{
+  return "key_eq_";
+}
+
 KeyboardCommandMap* EquipmentKeyboardCommandMap::clone()
 {
   return new EquipmentKeyboardCommandMap(*this);

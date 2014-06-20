@@ -60,6 +60,11 @@ KeyboardCommandMap* InventoryKeyboardCommandMap::clone()
   return new InventoryKeyboardCommandMap(*this);
 }
 
+string InventoryKeyboardCommandMap::get_settings_prefix() const
+{
+  return "key_inv_";
+}
+
 ClassIdentifier InventoryKeyboardCommandMap::internal_class_identifier() const
 {
   return CLASS_ID_INVENTORY_KEYBOARD_COMMAND_MAP;

@@ -35,6 +35,11 @@ KeyboardCommandMap* ScreenKeyboardCommandMap::clone()
   return new ScreenKeyboardCommandMap(*this);
 }
 
+string ScreenKeyboardCommandMap::get_settings_prefix() const
+{
+  return "key_scr_";
+}
+
 ClassIdentifier ScreenKeyboardCommandMap::internal_class_identifier() const
 {
   return CLASS_ID_SCREEN_KEYBOARD_COMMAND_MAP;

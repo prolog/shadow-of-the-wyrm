@@ -197,6 +197,11 @@ KeyboardCommandMap* KeyboardCommandMap::clone()
   return new KeyboardCommandMap(*this);
 }
 
+string KeyboardCommandMap::get_settings_prefix() const
+{
+  return "key_";
+}
+
 ClassIdentifier KeyboardCommandMap::internal_class_identifier() const
 {
   return CLASS_ID_KEYBOARD_COMMAND_MAP;
