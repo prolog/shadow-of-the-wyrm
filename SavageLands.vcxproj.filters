@@ -3078,6 +3078,9 @@
     <ClInclude Include="engine\commands\include\IKeyboardCommandMap.hpp">
       <Filter>Header Files\engine\commands\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\SettingKeybindings.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5899,6 +5902,12 @@
     </ClCompile>
     <ClCompile Include="engine\source\Settings.cpp">
       <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\SettingKeybindings.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\SettingKeybindings_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
