@@ -1,18 +1,8 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_SettingKeybindings, not_a_valid_setting)
-{
-  string setting = "foo";
-
-  SettingKeybindings sk;
-  vector<string> bindings = sk.get_keybindings(setting);
-
-  EXPECT_EQ(0, bindings.size());
-}
-
 TEST(SL_Engine_SettingKeybindings, empty_setting)
 {
-  string setting = "some_key=";
+  string setting = "";
 
   SettingKeybindings sk;
   vector<string> bindings = sk.get_keybindings(setting);
@@ -22,7 +12,7 @@ TEST(SL_Engine_SettingKeybindings, empty_setting)
 
 TEST(SL_Engine_SettingKeybindings, parse_single)
 {
-  string setting = "abc=123";
+  string setting = "123";
 
   SettingKeybindings sk;
   vector<string> bindings = sk.get_keybindings(setting);
@@ -33,7 +23,7 @@ TEST(SL_Engine_SettingKeybindings, parse_single)
 
 TEST(SL_Engine_SettingKeybindings, parse_multiple)
 {
-  string setting = "abc=123|343|1222";
+  string setting = "123|343|1222";
 
   SettingKeybindings sk;
   vector<string> bindings = sk.get_keybindings(setting);

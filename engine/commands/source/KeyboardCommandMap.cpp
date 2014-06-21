@@ -10,6 +10,7 @@
 #include "Log.hpp"
 #include "MessageManagerFactory.hpp"
 #include "Serialize.hpp"
+#include "SettingKeybindings.hpp"
 #include "TextMessages.hpp"
 
 using namespace std;
@@ -80,79 +81,82 @@ void KeyboardCommandMap::command_not_found(const string& keyboard_input)
   Log::instance().debug("Could not find mapped command for input: " + keyboard_input);
 }
 
+// Initializes the "special key" map, which maps from a string description of the key
+// e.g., "KEY_F12", to the int->string conversion of the actual value.
+void KeyboardCommandMap::initialize_special_key_mappings()
+{
+  special_key_mappings.clear();
+
+  special_key_mappings.insert(make_pair("KEY_UP", Integer::to_string(KEY_UP)));
+  special_key_mappings.insert(make_pair("KEY_DOWN", Integer::to_string(KEY_DOWN)));
+  special_key_mappings.insert(make_pair("KEY_LEFT", Integer::to_string(KEY_LEFT)));
+  special_key_mappings.insert(make_pair("KEY_RIGHT", Integer::to_string(KEY_RIGHT)));
+  special_key_mappings.insert(make_pair("KEY_F1", Integer::to_string(KEY_F(1))));
+  special_key_mappings.insert(make_pair("KEY_F2", Integer::to_string(KEY_F(2))));
+  special_key_mappings.insert(make_pair("KEY_F12", Integer::to_string(KEY_F(12))));
+}
+
 void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
   command_mapping.clear();
 
-  // MSVC bombs when I try to convert this to an initializer list. :(
-  command_mapping.insert(make_pair(Integer::to_string('s'), CommandKeys::SEARCH));
-  command_mapping.insert(make_pair(Integer::to_string('5'), CommandKeys::SEARCH));
-  command_mapping.insert(make_pair(Integer::to_string('.'), CommandKeys::SEARCH));
-  command_mapping.insert(make_pair(Integer::to_string('1'), CommandKeys::MOVE_SOUTHWEST));
-  command_mapping.insert(make_pair(Integer::to_string('2'), CommandKeys::MOVE_SOUTH));
-  command_mapping.insert(make_pair(Integer::to_string('3'), CommandKeys::MOVE_SOUTHEAST));
-  command_mapping.insert(make_pair(Integer::to_string('4'), CommandKeys::MOVE_WEST));
-  command_mapping.insert(make_pair(Integer::to_string('6'), CommandKeys::MOVE_EAST));
-  command_mapping.insert(make_pair(Integer::to_string('7'), CommandKeys::MOVE_NORTHWEST));
-  command_mapping.insert(make_pair(Integer::to_string('8'), CommandKeys::MOVE_NORTH));
-  command_mapping.insert(make_pair(Integer::to_string('9'), CommandKeys::MOVE_NORTHEAST));
-  // Curses-specific movement keys
-  command_mapping.insert(make_pair(Integer::to_string(KEY_UP), CommandKeys::MOVE_NORTH));
-  command_mapping.insert(make_pair(Integer::to_string(KEY_DOWN), CommandKeys::MOVE_SOUTH));
-  command_mapping.insert(make_pair(Integer::to_string(KEY_RIGHT), CommandKeys::MOVE_EAST));
-  command_mapping.insert(make_pair(Integer::to_string(KEY_LEFT), CommandKeys::MOVE_WEST));
-  // vi movement keys
-  command_mapping.insert(make_pair(Integer::to_string('b'), CommandKeys::MOVE_SOUTHWEST));
-  command_mapping.insert(make_pair(Integer::to_string('j'), CommandKeys::MOVE_SOUTH));
-  command_mapping.insert(make_pair(Integer::to_string('n'), CommandKeys::MOVE_SOUTHEAST));
-  command_mapping.insert(make_pair(Integer::to_string('h'), CommandKeys::MOVE_WEST));
-  command_mapping.insert(make_pair(Integer::to_string('l'), CommandKeys::MOVE_EAST));
-  command_mapping.insert(make_pair(Integer::to_string('y'), CommandKeys::MOVE_NORTHWEST));
-  command_mapping.insert(make_pair(Integer::to_string('k'), CommandKeys::MOVE_NORTH));
-  command_mapping.insert(make_pair(Integer::to_string('u'), CommandKeys::MOVE_NORTHEAST));
-  // other movement-type commands
-  command_mapping.insert(make_pair(Integer::to_string('w'), CommandKeys::AUTOMATIC_MOVEMENT));
-  command_mapping.insert(make_pair(Integer::to_string('<'), CommandKeys::MOVE_UP));
-  command_mapping.insert(make_pair(Integer::to_string('>'), CommandKeys::MOVE_DOWN));
+  initialize_special_key_mappings();
 
-  // leave game
-  command_mapping.insert(make_pair(Integer::to_string('Q'), CommandKeys::QUIT));
-  command_mapping.insert(make_pair(Integer::to_string('S'), CommandKeys::SAVE_GAME));
+  // Remappable commands
+  string prefix = get_settings_prefix();
+  vector<string> remappable_commands = 
+  { CommandKeys::SEARCH, CommandKeys::MOVE_SOUTHWEST, CommandKeys:: MOVE_SOUTH,
+    CommandKeys::MOVE_SOUTHEAST, CommandKeys::MOVE_WEST, CommandKeys::MOVE_EAST,
+    CommandKeys::MOVE_NORTHWEST, CommandKeys::MOVE_NORTH, CommandKeys::MOVE_NORTHEAST,
+    CommandKeys::MOVE_UP, CommandKeys::MOVE_DOWN, CommandKeys::AUTOMATIC_MOVEMENT,
+    CommandKeys::QUIT, CommandKeys::SAVE_GAME, CommandKeys::VERSION,
+    CommandKeys::GAME_DATE_TIME, CommandKeys::CHAR_DUMP, CommandKeys::MELEE_WEAPON_INFO,
+    CommandKeys::RANGED_WEAPON_INFO, CommandKeys::SHOW_CONDUCTS, CommandKeys::SHOW_RESISTANCES,
+    CommandKeys::PICK_UP_ITEM, CommandKeys::DROP_ITEM, CommandKeys::INVENTORY, 
+    CommandKeys::PRAY, CommandKeys::SELECT_TILE, CommandKeys::FIRE_MISSILE,
+    CommandKeys::QUAFF, CommandKeys::READ, CommandKeys::CHECK_CURRENCY,
+    CommandKeys::EAT, CommandKeys::CHAT, CommandKeys::APPLY_FEATURE,
+    CommandKeys::QUEST_LIST, CommandKeys::CAST_SPELL, CommandKeys::BESTIARY,
+    CommandKeys::EVOKE };
 
-  // actions
+  SettingKeybindings sk;
 
-  // misc commands
-  command_mapping.insert(make_pair(Integer::to_string('V'), CommandKeys::VERSION));
-  command_mapping.insert(make_pair(Integer::to_string('T'), CommandKeys::GAME_DATE_TIME));
-  command_mapping.insert(make_pair(Integer::to_string('@'), CommandKeys::CHAR_DUMP));
-  command_mapping.insert(make_pair(Integer::to_string('W'), CommandKeys::MELEE_WEAPON_INFO));
-  command_mapping.insert(make_pair(Integer::to_string('R'), CommandKeys::RANGED_WEAPON_INFO));
-  command_mapping.insert(make_pair(Integer::to_string(KEY_F(1)), CommandKeys::SHOW_RESISTANCES));
-  command_mapping.insert(make_pair(Integer::to_string(KEY_F(2)), CommandKeys::SHOW_CONDUCTS));
+  // FIXME: These are currently not being picked up.
+  // Probably it is because the command processor expects an int -> string
+  // instead of just a string...
+  for (const auto& remap_cmd : remappable_commands)
+  {
+    vector<string> keys = sk.get_keybindings(settings.get_setting(prefix + remap_cmd));
+    
+    for (const auto& key : keys)
+    {
+      // If key is length 1, it's a single character.
+      if (key.size() == 1)
+      {
+        command_mapping.insert(make_pair(Integer::to_string(key.at(0)), remap_cmd));
+      }
+      // Otherwise, it's a special key, like KEY_UP or whatever.
+      // We should already have a mapping for these, so look it up.
+      else
+      {
+        auto mapping = special_key_mappings.find(key);
+
+        if (mapping != special_key_mappings.end())
+        {
+          command_mapping.insert(make_pair(mapping->second, remap_cmd));
+        }
+      }
+    }
+  }
+
+  // Non-remappable commands
+  //
   // JCD FIXME: When adding Unix support, update this to include whatever
   // debug flag is needed.
   #ifdef _DEBUG
   command_mapping.insert(make_pair(Integer::to_string(KEY_F(11)), CommandKeys::RUN_SCRIPT));
   #endif
   command_mapping.insert(make_pair(Integer::to_string(KEY_F(12)), CommandKeys::RELOAD_SCRIPTS_AND_SIDS));
-
-  command_mapping.insert(make_pair(Integer::to_string(','), CommandKeys::PICK_UP_ITEM));
-  command_mapping.insert(make_pair(Integer::to_string('d'), CommandKeys::DROP_ITEM));
-  command_mapping.insert(make_pair(Integer::to_string('i'), CommandKeys::INVENTORY));
-  command_mapping.insert(make_pair(Integer::to_string('_'), CommandKeys::PRAY));
-  command_mapping.insert(make_pair(Integer::to_string('L'), CommandKeys::SELECT_TILE));
-  command_mapping.insert(make_pair(Integer::to_string('f'), CommandKeys::FIRE_MISSILE));
-  command_mapping.insert(make_pair(Integer::to_string('D'), CommandKeys::QUAFF)); // need 'q' for quests.
-  command_mapping.insert(make_pair(Integer::to_string('r'), CommandKeys::READ));
-  command_mapping.insert(make_pair(Integer::to_string('$'), CommandKeys::CHECK_CURRENCY));
-  command_mapping.insert(make_pair(Integer::to_string('e'), CommandKeys::EAT));
-  command_mapping.insert(make_pair(Integer::to_string('C'), CommandKeys::CHAT));
-  command_mapping.insert(make_pair(Integer::to_string('a'), CommandKeys::APPLY_FEATURE));
-  command_mapping.insert(make_pair(Integer::to_string('q'), CommandKeys::QUEST_LIST));
-  command_mapping.insert(make_pair(Integer::to_string('z'), CommandKeys::CAST_SPELL));
-  command_mapping.insert(make_pair(Integer::to_string('B'), CommandKeys::BESTIARY));
-  command_mapping.insert(make_pair(Integer::to_string('v'), CommandKeys::EVOKE));
-  
 }
 
 // Handle serialization of the keyboard/command-key map.  Any additional values added by subclasses
