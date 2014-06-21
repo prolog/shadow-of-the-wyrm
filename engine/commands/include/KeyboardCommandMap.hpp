@@ -29,7 +29,9 @@ class KeyboardCommandMap : public ISerializable, public IKeyboardCommandMap
 
     virtual void command_not_found(const std::string& keyboard_input);
     virtual void initialize_command_mapping(const Settings& settings);
+    virtual void initialize_special_key_mappings();
     KeyboardCommandMappingMap command_mapping;
+    std::map<std::string, std::string> special_key_mappings;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

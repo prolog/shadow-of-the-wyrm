@@ -5,6 +5,12 @@ Savage Lands v0.2.5 "Eoppa"
   first check for a settings file in the user's home directory.  If the
   file isn't found, it'll next check the game's directory.
 
+  - Set the default language file (savagelandstext_en.ini) in the ini
+    settings.
+
+  - Allowed redefining keybindings for commands in the main game (eating,
+    quaffing, movement, etc).
+
 - Bug fixes: fixed an issue where the ActionCoordinator would not be
   properly reset on the first turn after loading a game, to a loop being
   exited prematurely.

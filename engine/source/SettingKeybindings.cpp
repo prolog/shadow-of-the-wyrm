@@ -6,12 +6,10 @@ using namespace std;
 vector<string> SettingKeybindings::get_keybindings(const string& setting) const
 {
   vector<string> keybindings;
-  size_t pos = setting.find("=");
 
-  if (pos != string::npos && pos != setting.size()-1)
+  if (!setting.empty())
   {
-    string val = setting.substr(pos+1, string::npos);
-    boost::split(keybindings, val, boost::is_any_of("|"));
+    boost::split(keybindings, setting, boost::is_any_of("|"));
   }
 
   return keybindings;
