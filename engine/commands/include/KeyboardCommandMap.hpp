@@ -3,7 +3,7 @@
 #include <map>
 #include <memory>
 #include "IKeyboardCommandMap.hpp"
-#include "ISerializable.hpp"
+#include "Settings.hpp"
 
 typedef std::map<std::string, std::string> KeyboardCommandMappingMap;
 
@@ -28,7 +28,7 @@ class KeyboardCommandMap : public ISerializable, public IKeyboardCommandMap
     friend class SL_Engine_Commands_KeyboardCommandMapFixture;
 
     virtual void command_not_found(const std::string& keyboard_input);
-    virtual void initialize_command_mapping();
+    virtual void initialize_command_mapping(const Settings& settings);
     KeyboardCommandMappingMap command_mapping;
 
   private:

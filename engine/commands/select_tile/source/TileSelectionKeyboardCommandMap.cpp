@@ -27,7 +27,7 @@ void TileSelectionKeyboardCommandMap::command_not_found(const string& keyboard_i
   }
 }
 
-void TileSelectionKeyboardCommandMap::initialize_command_mapping()
+void TileSelectionKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
   command_mapping.clear();
   command_mapping = KeyboardCommandMappingMap{{Integer::to_string('z'), TileSelectionCommandKeys::CANCEL_TILE_SELECTION},

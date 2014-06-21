@@ -18,7 +18,7 @@ class TileSelectionKeyboardCommandMap : public KeyboardCommandMap
 
   protected:
     // Initialize the keys used to move around and select tiles
-    virtual void initialize_command_mapping() override;
+    virtual void initialize_command_mapping(const Settings& settings) override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

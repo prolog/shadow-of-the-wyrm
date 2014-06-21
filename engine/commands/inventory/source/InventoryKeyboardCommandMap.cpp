@@ -22,7 +22,8 @@ void InventoryKeyboardCommandMap::command_not_found(const std::string& keyboard_
   }
 }
 
-void InventoryKeyboardCommandMap::initialize_command_mapping()
+// Settings currently does nothing here.
+void InventoryKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
   command_mapping.clear();
   command_mapping = KeyboardCommandMappingMap{{"z", InventoryCommandKeys::EXIT_INVENTORY},

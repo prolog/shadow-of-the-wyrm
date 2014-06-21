@@ -18,7 +18,7 @@ class InventoryKeyboardCommandMap : public KeyboardCommandMap
 
   protected:
     // Command mapping for keys on the inventory screen
-    virtual void initialize_command_mapping() override;
+    virtual void initialize_command_mapping(const Settings& settings) override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

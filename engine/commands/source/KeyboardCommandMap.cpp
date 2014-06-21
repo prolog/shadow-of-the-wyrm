@@ -5,6 +5,7 @@
 #endif
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
+#include "Game.hpp"
 #include "KeyboardCommandMap.hpp"
 #include "Log.hpp"
 #include "MessageManagerFactory.hpp"
@@ -35,10 +36,11 @@ bool KeyboardCommandMap::operator==(const KeyboardCommandMap& kcm) const
 string KeyboardCommandMap::get_command_type(const string& keyboard_input)
 {
   string mapped_command;
+  Game& game = Game::instance();
 
   if (command_mapping.empty())
   {
-    initialize_command_mapping();
+    initialize_command_mapping(game.get_settings_ref());
   }
 
   map<string, string>::iterator m_it = command_mapping.find(keyboard_input);
@@ -57,9 +59,11 @@ string KeyboardCommandMap::get_command_type(const string& keyboard_input)
 
 KeyboardCommandMappingMap KeyboardCommandMap::get_internal_map()
 {
+  Game& game = Game::instance();
+
   if (command_mapping.empty())
   {
-    initialize_command_mapping();
+    initialize_command_mapping(game.get_settings_ref());
   }
 
   return command_mapping;
@@ -76,7 +80,7 @@ void KeyboardCommandMap::command_not_found(const string& keyboard_input)
   Log::instance().debug("Could not find mapped command for input: " + keyboard_input);
 }
 
-void KeyboardCommandMap::initialize_command_mapping()
+void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
   command_mapping.clear();
 

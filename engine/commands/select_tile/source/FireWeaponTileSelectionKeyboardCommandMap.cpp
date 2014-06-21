@@ -25,9 +25,9 @@ void FireWeaponTileSelectionKeyboardCommandMap::command_not_found(const string& 
   }
 }
 
-void FireWeaponTileSelectionKeyboardCommandMap::initialize_command_mapping()
+void FireWeaponTileSelectionKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
-  TileSelectionKeyboardCommandMap::initialize_command_mapping();
+  TileSelectionKeyboardCommandMap::initialize_command_mapping(settings);
 
   // fire
   command_mapping.insert(make_pair(Integer::to_string('f'), TileSelectionCommandKeys::TARGET_TILE));

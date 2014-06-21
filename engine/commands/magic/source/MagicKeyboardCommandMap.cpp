@@ -20,7 +20,8 @@ void MagicKeyboardCommandMap::command_not_found(const string& keyboard_input)
   }
 }
 
-void MagicKeyboardCommandMap::initialize_command_mapping()
+// Settings currently does nothing here.
+void MagicKeyboardCommandMap::initialize_command_mapping(const Settings& settings)
 {
   command_mapping.clear();
   command_mapping = KeyboardCommandMappingMap{{Integer::to_string('.'), MagicCommandKeys::NEXT_PAGE},
