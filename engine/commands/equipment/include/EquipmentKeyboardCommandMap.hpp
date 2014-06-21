@@ -21,7 +21,7 @@ class EquipmentKeyboardCommandMap : public KeyboardCommandMap
 
     // The equipment keys mean different things than the parent class's
     // map!
-    virtual void initialize_command_mapping() override;
+    virtual void initialize_command_mapping(const Settings& settings) override;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

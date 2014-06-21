@@ -13,5 +13,5 @@ class FireWeaponTileSelectionKeyboardCommandMap : public TileSelectionKeyboardCo
   protected:
     // Include everything from the parent class, but also a 
     // "f"ire keybinding.
-    virtual void initialize_command_mapping() override;
+    virtual void initialize_command_mapping(const Settings& settings) override;
 };
