@@ -2,6 +2,7 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <vector>
 #include "IKeyboardCommandMap.hpp"
 #include "Settings.hpp"
 
@@ -30,10 +31,13 @@ class KeyboardCommandMap : public ISerializable, public IKeyboardCommandMap
     virtual void command_not_found(const std::string& keyboard_input);
     virtual void initialize_command_mapping(const Settings& settings);
     virtual void initialize_special_key_mappings();
+    virtual void parse_keybindings(const Settings& settings, const std::vector<std::string>& remappable_commands);
+
     KeyboardCommandMappingMap command_mapping;
     std::map<std::string, std::string> special_key_mappings;
 
   private:
+    virtual std::vector<std::string> get_remappable_commands() const;
     ClassIdentifier internal_class_identifier() const override;
 };
 
