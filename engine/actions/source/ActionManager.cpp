@@ -275,12 +275,16 @@ void ActionManager::reload_scripts_and_sids()
 }
 
 // Clear the Lua state so scripts can be reloaded.
+// Reload the ini settings.
 // Reload the strings.
 ActionCost ActionManager::reload_scripts_and_sids(CreaturePtr creature)
 {
   Game& game = Game::instance();
   ScriptEngine& se = game.get_script_engine_ref();
   se.clear_state();
+
+  Settings settings(true);
+  game.set_settings(settings);
 
   StringTable::load(game.get_sid_ini_filename());
 

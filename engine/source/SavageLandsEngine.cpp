@@ -84,9 +84,6 @@ void SavageLandsEngine::start()
   Settings settings(true);
 
   game.set_settings(settings);
-
-  string language_file = settings.get_setting("language_file");
-  game.set_sid_ini_filename(language_file);
   game.actions.reload_scripts_and_sids();
 
   if (state_manager.start_new_game())

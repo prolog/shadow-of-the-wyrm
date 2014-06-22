@@ -56,9 +56,14 @@ Game::~Game()
 {
 }
 
+// Set the settings, and also update any other settings (like the language
+// file) that are derived from the settings.
 void Game::set_settings(const Settings& new_settings)
 {
   settings = new_settings;
+
+  string language_file = settings.get_setting("language_file");
+  set_sid_ini_filename(language_file);
 }
 
 Settings& Game::get_settings_ref()
