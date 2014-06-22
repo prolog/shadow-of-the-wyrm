@@ -11,6 +11,13 @@ Savage Lands v0.2.5 "Eoppa"
   - Allowed redefining keybindings for commands in the main game (eating,
     quaffing, movement, etc).
 
+  - Allowed redefinition of some of the tile selection keys (movement and
+    bestiary) to remain consistent with the redefinition of the higher-
+    level commands.
+
+- Misc: added a "player" creature that should not be generatable
+  (basically, just for the bestiary entry).
+      
 - Bug fixes: fixed an issue where the ActionCoordinator would not be
   properly reset on the first turn after loading a game, to a loop being
   exited prematurely.

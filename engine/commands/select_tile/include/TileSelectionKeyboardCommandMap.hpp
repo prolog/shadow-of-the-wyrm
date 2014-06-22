@@ -21,5 +21,6 @@ class TileSelectionKeyboardCommandMap : public KeyboardCommandMap
     virtual void initialize_command_mapping(const Settings& settings) override;
 
   private:
+    std::vector<std::string> get_remappable_commands() const override;
     ClassIdentifier internal_class_identifier() const override;
 };

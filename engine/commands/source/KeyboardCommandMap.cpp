@@ -96,28 +96,27 @@ void KeyboardCommandMap::initialize_special_key_mappings()
   special_key_mappings.insert(make_pair("KEY_F12", Integer::to_string(KEY_F(12))));
 }
 
-void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
+vector<string> KeyboardCommandMap::get_remappable_commands() const
 {
-  command_mapping.clear();
+  return 
+  { CommandKeys::SEARCH, CommandKeys::MOVE_SOUTHWEST, CommandKeys::MOVE_SOUTH,
+  CommandKeys::MOVE_SOUTHEAST, CommandKeys::MOVE_WEST, CommandKeys::MOVE_EAST,
+  CommandKeys::MOVE_NORTHWEST, CommandKeys::MOVE_NORTH, CommandKeys::MOVE_NORTHEAST,
+  CommandKeys::MOVE_UP, CommandKeys::MOVE_DOWN, CommandKeys::AUTOMATIC_MOVEMENT,
+  CommandKeys::QUIT, CommandKeys::SAVE_GAME, CommandKeys::VERSION,
+  CommandKeys::GAME_DATE_TIME, CommandKeys::CHAR_DUMP, CommandKeys::MELEE_WEAPON_INFO,
+  CommandKeys::RANGED_WEAPON_INFO, CommandKeys::SHOW_CONDUCTS, CommandKeys::SHOW_RESISTANCES,
+  CommandKeys::PICK_UP_ITEM, CommandKeys::DROP_ITEM, CommandKeys::INVENTORY,
+  CommandKeys::PRAY, CommandKeys::SELECT_TILE, CommandKeys::FIRE_MISSILE,
+  CommandKeys::QUAFF, CommandKeys::READ, CommandKeys::CHECK_CURRENCY,
+  CommandKeys::EAT, CommandKeys::CHAT, CommandKeys::APPLY_FEATURE,
+  CommandKeys::QUEST_LIST, CommandKeys::CAST_SPELL, CommandKeys::BESTIARY,
+  CommandKeys::EVOKE };
+}
 
-  initialize_special_key_mappings();
-
-  // Remappable commands
+void KeyboardCommandMap::parse_keybindings(const Settings& settings, const vector<string>& remappable_commands)
+{
   string prefix = get_settings_prefix();
-  vector<string> remappable_commands = 
-  { CommandKeys::SEARCH, CommandKeys::MOVE_SOUTHWEST, CommandKeys:: MOVE_SOUTH,
-    CommandKeys::MOVE_SOUTHEAST, CommandKeys::MOVE_WEST, CommandKeys::MOVE_EAST,
-    CommandKeys::MOVE_NORTHWEST, CommandKeys::MOVE_NORTH, CommandKeys::MOVE_NORTHEAST,
-    CommandKeys::MOVE_UP, CommandKeys::MOVE_DOWN, CommandKeys::AUTOMATIC_MOVEMENT,
-    CommandKeys::QUIT, CommandKeys::SAVE_GAME, CommandKeys::VERSION,
-    CommandKeys::GAME_DATE_TIME, CommandKeys::CHAR_DUMP, CommandKeys::MELEE_WEAPON_INFO,
-    CommandKeys::RANGED_WEAPON_INFO, CommandKeys::SHOW_CONDUCTS, CommandKeys::SHOW_RESISTANCES,
-    CommandKeys::PICK_UP_ITEM, CommandKeys::DROP_ITEM, CommandKeys::INVENTORY, 
-    CommandKeys::PRAY, CommandKeys::SELECT_TILE, CommandKeys::FIRE_MISSILE,
-    CommandKeys::QUAFF, CommandKeys::READ, CommandKeys::CHECK_CURRENCY,
-    CommandKeys::EAT, CommandKeys::CHAT, CommandKeys::APPLY_FEATURE,
-    CommandKeys::QUEST_LIST, CommandKeys::CAST_SPELL, CommandKeys::BESTIARY,
-    CommandKeys::EVOKE };
 
   SettingKeybindings sk;
 
@@ -127,7 +126,7 @@ void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
   for (const auto& remap_cmd : remappable_commands)
   {
     vector<string> keys = sk.get_keybindings(settings.get_setting(prefix + remap_cmd));
-    
+
     for (const auto& key : keys)
     {
       // If key is length 1, it's a single character.
@@ -148,6 +147,17 @@ void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
       }
     }
   }
+
+}
+
+void KeyboardCommandMap::initialize_command_mapping(const Settings& settings)
+{
+  command_mapping.clear();
+
+  initialize_special_key_mappings();
+  vector<string> remappable_commands = get_remappable_commands();
+
+  parse_keybindings(settings, remappable_commands);
 
   // Non-remappable commands
   //
