@@ -3081,6 +3081,9 @@
     <ClInclude Include="engine\include\SettingKeybindings.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\include\MessageBuffer.hpp">
+      <Filter>Header Files\engine\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5907,6 +5910,12 @@
       <Filter>Source Files\engine\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\SettingKeybindings_test.cpp">
+      <Filter>Source Files\engine\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\MessageBuffer.cpp">
+      <Filter>Source Files\engine\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\MessageBuffer_test.cpp">
       <Filter>Source Files\engine\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
