@@ -18,6 +18,9 @@ class MessageManager : public IMessageManager
 
     void set_display(DisplayPtr new_display) override;
 
+    void set_message_buffer(const MessageBuffer& new_message_buffer) override;
+    MessageBuffer get_message_buffer() const override;
+
 private:
     std::string get_count_indicator(const Message& m);
     
@@ -31,4 +34,5 @@ private:
 		Messages unread;
 		DisplayPtr user_display;
 		bool buffer_has_messages;
+    MessageBuffer message_buffer;
 };

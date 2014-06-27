@@ -164,3 +164,13 @@ string MessageManager::get_count_indicator(const Message& m)
   
   return count_indicator;
 }
+
+void MessageManager::set_message_buffer(const MessageBuffer& new_message_buffer)
+{
+  message_buffer = new_message_buffer;
+}
+
+MessageBuffer MessageManager::get_message_buffer() const
+{
+  return message_buffer;
+}

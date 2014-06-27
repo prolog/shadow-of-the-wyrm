@@ -47,3 +47,13 @@ Messages NullMessageManager::get_unread_messages_and_mark_as_read()
 void NullMessageManager::set_display(DisplayPtr display)
 {
 }
+
+void NullMessageManager::set_message_buffer(const MessageBuffer& new_message_buffer)
+{
+}
+
+MessageBuffer NullMessageManager::get_message_buffer() const
+{
+  MessageBuffer mb;
+  return mb;
+}

@@ -11,6 +11,7 @@
 #include "Game.hpp"
 #include "Log.hpp"
 #include "Metadata.hpp"
+#include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "Serialization.hpp"
 #include "Serialize.hpp"
@@ -44,8 +45,13 @@ void Serialization::save(CreaturePtr creature)
     ofstream stream(filename, ios::binary | ios::out);
         
     // Save the state and game data:
+
     // Save the metadata
     meta.serialize(stream);
+
+    // Save the message buffer
+    MessageBuffer mb = MessageManagerFactory::instance().get_message_buffer();
+    mb.serialize(stream);
 
     // Save the game and RNG data
     game.serialize(stream);
@@ -66,9 +72,11 @@ SerializationReturnCode Serialization::load(const string& filename)
   stream.open(filename, ios::in | ios::binary);
 
   Metadata meta;
+  MessageBuffer mb;
   uint rng_seed = 0;
 
   meta.deserialize(stream);
+  mb.deserialize(stream);
   game.deserialize(stream);
   Serialize::read_uint(stream, rng_seed);
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Display.hpp"
+#include "MessageBuffer.hpp"
 #include "Messages.hpp"
 
 // Defines the interface for the message managers.
@@ -21,5 +22,8 @@ class IMessageManager
 		virtual Messages get_unread_messages_and_mark_as_read() = 0;
 
     virtual void set_display(DisplayPtr new_display) = 0;
+
+    virtual void set_message_buffer(const MessageBuffer& new_message_buffer) = 0;
+    virtual MessageBuffer get_message_buffer() const = 0;
 };
 

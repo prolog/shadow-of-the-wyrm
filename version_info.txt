@@ -15,6 +15,10 @@ Savage Lands v0.2.5 "Eoppa"
     bestiary) to remain consistent with the redefinition of the higher-
     level commands.
 
+- Added a message buffer to the message manager.  Each message that goes
+  to the message manager is also added to the message buffer, up to a
+  particular maximum size.
+
 - Misc: added a "player" creature that should not be generatable
   (basically, just for the bestiary entry).
 

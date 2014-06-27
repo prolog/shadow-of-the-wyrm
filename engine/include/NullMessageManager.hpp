@@ -20,5 +20,8 @@ class NullMessageManager : public IMessageManager
 		Messages get_unread_messages_and_mark_as_read() override;
 
     void set_display(DisplayPtr new_display) override;
+
+    void set_message_buffer(const MessageBuffer& new_message_buffer) override;
+    MessageBuffer get_message_buffer() const override;
 };
 

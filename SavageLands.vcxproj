@@ -505,6 +505,7 @@
     <ClInclude Include="engine\include\IMessageManager.hpp" />
     <ClInclude Include="engine\include\Log.hpp" />
     <ClInclude Include="engine\include\Message.hpp" />
+    <ClInclude Include="engine\include\MessageBuffer.hpp" />
     <ClInclude Include="engine\include\MessageManager.hpp" />
     <ClInclude Include="engine\include\MessageManagerFactory.hpp" />
     <ClInclude Include="engine\include\Messages.hpp" />
@@ -1717,6 +1718,7 @@
     <ClCompile Include="engine\source\HighScoreConstants.cpp" />
     <ClCompile Include="engine\source\Log.cpp" />
     <ClCompile Include="engine\source\Message.cpp" />
+    <ClCompile Include="engine\source\MessageBuffer.cpp" />
     <ClCompile Include="engine\source\MessageManager.cpp" />
     <ClCompile Include="engine\source\MessageManagerFactory.cpp" />
     <ClCompile Include="engine\source\Messages.cpp" />
@@ -1737,6 +1739,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\source\unit_tests\MessageBuffer_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Messages_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
