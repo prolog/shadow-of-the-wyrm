@@ -49,13 +49,16 @@ void Serialization::save(CreaturePtr creature)
     // Save the metadata
     meta.serialize(stream);
 
-    // Save the message buffer
-    MessageBuffer mb = MessageManagerFactory::instance().get_message_buffer();
-    mb.serialize(stream);
-
     // Save the game and RNG data
     game.serialize(stream);
     Serialize::write_uint(stream, RNG::get_seed());
+
+    // Save the message buffer.  Needs to be last because the first thing
+    // the game saves is the player's name, and we need that to be the
+    // first object read after the metadata to efficiently peek at files
+    // to get the details for the list of save files.
+    MessageBuffer mb = MessageManagerFactory::instance().get_message_buffer();
+    mb.serialize(stream);
   }
   catch(...)
   {
@@ -76,12 +79,13 @@ SerializationReturnCode Serialization::load(const string& filename)
   uint rng_seed = 0;
 
   meta.deserialize(stream);
-  mb.deserialize(stream);
   game.deserialize(stream);
   Serialize::read_uint(stream, rng_seed);
 
   RNG::set_seed(rng_seed);
   RNG::reinitialize();
+
+  mb.deserialize(stream);
 
   if (stream.is_open())
   {
