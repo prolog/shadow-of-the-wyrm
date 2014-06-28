@@ -129,3 +129,5 @@ const string TextKeys::GAIN_LEVEL = "GAIN_LEVEL";
 
 const string TextKeys::UNARMED = "UNARMED";
 const string TextKeys::SOMETHING = "SOMETHING";
+
+const string TextKeys::LATEST_MESSAGES = "LATEST_MESSAGES";
