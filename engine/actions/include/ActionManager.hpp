@@ -103,6 +103,9 @@ class ActionManager : public ISerializable
     ActionCost show_resistances(CreaturePtr creature);
     ActionCost show_conducts(CreaturePtr creature);
 
+    // Display the message buffer
+    ActionCost latest_messages(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

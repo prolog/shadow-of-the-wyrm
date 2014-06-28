@@ -172,6 +172,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<ShowConductsCommand>(key);
   }
+  else if (command_name == CommandKeys::LATEST_MESSAGES)
+  {
+    command = std::make_shared<LatestMessagesCommand>(key);
+  }
 
   return command;
 }

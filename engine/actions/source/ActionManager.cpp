@@ -19,6 +19,7 @@
 #include "GameEnvTextKeys.hpp"
 #include "ItemFilterFactory.hpp"
 #include "InventoryManager.hpp"
+#include "LatestMessagesAction.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementTextKeys.hpp"
@@ -357,6 +358,13 @@ ActionCost ActionManager::show_conducts(CreaturePtr creature)
   ShowConductsAction sca;
 
   return get_action_cost(creature, sca.show_conducts(creature));
+}
+
+ActionCost ActionManager::latest_messages(CreaturePtr creature)
+{
+  LatestMessagesAction lma;
+
+  return get_action_cost(creature, lma.latest_messages(creature));
 }
 
 // Pick up an item, doing any necessary checks first.

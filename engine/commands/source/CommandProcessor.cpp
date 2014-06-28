@@ -180,6 +180,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.show_conducts(creature);
       }
+      else if (command_name == CommandKeys::LATEST_MESSAGES)
+      {
+        ac = game.actions.latest_messages(creature);
+      }
     }
   }
   

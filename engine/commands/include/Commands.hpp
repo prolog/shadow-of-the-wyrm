@@ -248,3 +248,10 @@ class ShowConductsCommand : public Command
     ShowConductsCommand(int key);
     ~ShowConductsCommand();
 };
+
+class LatestMessagesCommand : public Command
+{
+  public:
+    LatestMessagesCommand(int key);
+    ~LatestMessagesCommand();
+};
