@@ -10,6 +10,8 @@
 #include "Game.hpp"
 #include "InventoryDumper.hpp"
 #include "Metadata.hpp"
+#include "MessageBufferDumper.hpp"
+#include "MessageManagerFactory.hpp"
 #include "MortuaryDumper.hpp"
 #include "QuestDumper.hpp"
 #include "ReligionManager.hpp"
@@ -67,6 +69,9 @@ string CharacterDumper::str() const
     
   InventoryDumper inventory_dumper(creature, num_cols);
   ss << inventory_dumper.str() << endl << endl;
+
+  MessageBufferDumper mbd(MessageManagerFactory::instance(), num_cols);
+  ss << mbd.str() << endl << endl;
 
   MortuaryDumper mortuary_dumper(creature, num_cols);
   ss << mortuary_dumper.str() << endl << endl;

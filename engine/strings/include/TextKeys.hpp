@@ -126,6 +126,8 @@ class TextKeys
 
     static const std::string SOMETHING;
 
+    static const std::string LATEST_MESSAGES;
+
   protected:
     TextKeys();
     ~TextKeys();

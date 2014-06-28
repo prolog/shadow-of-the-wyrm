@@ -19,6 +19,9 @@ Savage Lands v0.2.5 "Eoppa"
   to the message manager is also added to the message buffer, up to a
   particular maximum size.
 
+  - Hooked the message manager up to the character dumper, so that the
+    latest (15 by default) are included in the dump.
+
 - Misc: added a "player" creature that should not be generatable
   (basically, just for the bestiary entry).
 
