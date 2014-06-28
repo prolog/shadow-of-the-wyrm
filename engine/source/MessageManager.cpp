@@ -89,6 +89,8 @@ bool MessageManager::add_new_message(const std::string& message_text, const Colo
 	    unread.add(message);
 	  }
 	}
+
+  message_buffer.add_message(message_text);
 	
 	return true;
 }
@@ -104,6 +106,8 @@ bool MessageManager::add_new_confirmation_message(const std::string& message_tex
 	  user_display->confirm(message_text);
 	}
 
+  message_buffer.add_message(message_text);
+
   return true;
 }
 
@@ -115,6 +119,8 @@ bool MessageManager::add_new_message_with_pause(const std::string& message_text,
   {
     user_display->confirm(message_text + " ...");
   }
+
+  message_buffer.add_message(message_text);
 
   return true;
 }
@@ -128,6 +134,8 @@ string MessageManager::add_new_message_with_prompt(const std::string& message_te
     buffer_has_messages = true;
     prompt_text = user_display->add_message_with_prompt(message_text, colour, false);
   }
+
+  message_buffer.add_message(message_text);
 
   return prompt_text;
 }
