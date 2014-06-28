@@ -111,7 +111,7 @@ vector<string> KeyboardCommandMap::get_remappable_commands() const
   CommandKeys::QUAFF, CommandKeys::READ, CommandKeys::CHECK_CURRENCY,
   CommandKeys::EAT, CommandKeys::CHAT, CommandKeys::APPLY_FEATURE,
   CommandKeys::QUEST_LIST, CommandKeys::CAST_SPELL, CommandKeys::BESTIARY,
-  CommandKeys::EVOKE };
+  CommandKeys::EVOKE, CommandKeys::LATEST_MESSAGES };
 }
 
 void KeyboardCommandMap::parse_keybindings(const Settings& settings, const vector<string>& remappable_commands)

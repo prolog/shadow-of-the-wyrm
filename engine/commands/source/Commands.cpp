@@ -357,3 +357,13 @@ ShowConductsCommand::ShowConductsCommand(const int key)
 ShowConductsCommand::~ShowConductsCommand()
 {
 }
+
+// View the message buffer
+LatestMessagesCommand::LatestMessagesCommand(const int key)
+: Command(CommandKeys::LATEST_MESSAGES, key)
+{
+}
+
+LatestMessagesCommand::~LatestMessagesCommand()
+{
+}

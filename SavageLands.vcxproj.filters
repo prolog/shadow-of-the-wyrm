@@ -3087,6 +3087,9 @@
     <ClInclude Include="engine\conversion\include\MessageBufferDumper.hpp">
       <Filter>Header Files\engine\conversion\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\LatestMessagesAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5923,6 +5926,9 @@
     </ClCompile>
     <ClCompile Include="engine\conversion\source\MessageBufferDumper.cpp">
       <Filter>Source Files\engine\conversion\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\LatestMessagesAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
