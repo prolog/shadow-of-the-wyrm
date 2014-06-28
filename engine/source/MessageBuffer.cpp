@@ -38,16 +38,21 @@ size_t MessageBuffer::capacity() const
 void MessageBuffer::add_message(const string& new_message)
 {
   // If the message buffer is at less than full capacity,
-  // add to the end.
+  // add to the front.
+  //
+  // Having it at the front makes displaying the message
+  // history easier, since the first page of the menu
+  // will be the newest info - the player shouldn't have
+  // to page as much.
   if (messages.size() < max_messages)
   {
-    messages.push_back(new_message);
+    messages.push_front(new_message);
   }
   // Otherwise, remove the oldest message, and then add the new one.
   else
   {
-    messages.pop_front();
-    messages.push_back(new_message);
+    messages.pop_back();
+    messages.push_front(new_message);
   }
 }
 
