@@ -24,14 +24,22 @@ Savage Lands v0.2.5 "Eoppa"
 
   - Added the "M" command to display in-game message history.
 
+- Started working on the Snake Lands and Zaeda's Tower:
+
+  - Created the inhabitants of the Snake Lands.
+
+  - Added the island to the far north-east corner, adding a reference in
+    the Isen Dun Chronicle.
+
 - Misc: added a "player" creature that should not be generatable
   (basically, just for the bestiary entry).
 
-- New creatures: thaumaturge.
+- New creatures: thaumaturge, snakeling assassin, snakeling conjurer.
       
 - Bug fixes: fixed an issue where the ActionCoordinator would not be
   properly reset on the first turn after loading a game, to a loop being
-  exited prematurely.
+  exited prematurely, fixed the race on quivering blob (set to jelly; was
+  snakeling).
 
 Savage Lands v0.2.4 "Esa"
 - Version declared May 4, 2014.  Version finalized June 15, 2014.
