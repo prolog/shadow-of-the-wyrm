@@ -90,5 +90,13 @@
 			<Row y="9" x="51">~~~~~</Row>
 			<Script>areas/fae_caravan.lua</Script>
 		</Area>
+		<Area id="snake_lands">
+			<Row y="2" x="93">~~~~~</Row>
+			<Row y="3" x="93">~mm~~</Row>
+			<Row y="4" x="93">~mmm~</Row>
+			<Row y="5" x="93">~~m~~</Row>
+			<Row y="6" x="93">~~~~~</Row>
+			<Script>areas/snake_lands.lua</Script>
+		</Area>
 	</Areas>
 </WorldMap>

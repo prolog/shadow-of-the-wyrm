@@ -55,6 +55,10 @@ TilePtr XMLWorldMapTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TILE_TYPE_ROCKY_EARTH);
   }
+  else if (xml_tile == 'm')
+  {
+    tile = tg.generate(TILE_TYPE_MARSH);
+  }
   else if (xml_tile == 'M')
   { 
     tile = tg.generate(TILE_TYPE_MINE);
