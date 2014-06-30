@@ -34,7 +34,8 @@ Savage Lands v0.2.5 "Eoppa"
 - Misc: added a "player" creature that should not be generatable
   (basically, just for the bestiary entry).
 
-- New creatures: thaumaturge, snakeling assassin, snakeling conjurer.
+- New creatures: thaumaturge, snakeling assassin, snakeling conjurer,
+  snakeling thief.
       
 - Bug fixes: fixed an issue where the ActionCoordinator would not be
   properly reset on the first turn after loading a game, to a loop being
