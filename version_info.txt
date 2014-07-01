@@ -31,6 +31,9 @@ Savage Lands v0.2.5 "Eoppa"
   - Added the island to the far north-east corner, adding a reference in
     the Isen Dun Chronicle.
 
+  - Created the custom map for the base of Zaeda's Tower.  The bottom and 
+    top floors are fixed, with the middle floors randomly generated.
+
 - Misc: added a "player" creature that should not be generatable
   (basically, just for the bestiary entry).
 

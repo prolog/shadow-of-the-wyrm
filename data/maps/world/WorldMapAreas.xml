@@ -94,7 +94,7 @@
 			<Row y="2" x="93">~~~~~</Row>
 			<Row y="3" x="93">~mm~~</Row>
 			<Row y="4" x="93">~mmm~</Row>
-			<Row y="5" x="93">~~m~~</Row>
+			<Row y="5" x="93">~~K~~</Row>
 			<Row y="6" x="93">~~~~~</Row>
 			<Script>areas/snake_lands.lua</Script>
 		</Area>
