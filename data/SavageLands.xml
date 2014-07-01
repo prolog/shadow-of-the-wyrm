@@ -16731,6 +16731,15 @@
 				<DangerLevel>-1</DangerLevel>
 				<LockID></LockID> <!-- Lock ID is set dynamically by the CryptGenerator -->
 			</Tool>
+			<Tool id="rune_stone">
+				<DescriptionSID>RUNE_STONE_SID</DescriptionSID>
+				<UsageDescriptionSID>RUNE_STONE_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight><Pounds>0</Pounds><Ounces>3</Ounces></Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<LockID>zaeda_tower</LockID>
+			</Tool>
 			<Tool id="sun_gem">
 				<DescriptionSID>SUN_GEM_SID</DescriptionSID>
 				<UsageDescriptionSID>SUN_GEM_USAGE_SID</UsageDescriptionSID>
