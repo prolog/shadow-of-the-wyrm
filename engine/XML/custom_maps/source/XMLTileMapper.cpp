@@ -46,6 +46,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TILE_TYPE_FIELD);
   }
+  else if (xml_tile == 'm')
+  { 
+    tile = tg.generate(TILE_TYPE_MARSH);
+  }
   else if (xml_tile == '*')
   {
     tile = tg.generate(TILE_TYPE_BUSH);
@@ -57,6 +61,18 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   else if (xml_tile == 'R')
   {
     tile = tg.generate(TILE_TYPE_ROCKY_EARTH);
+  }
+  else if (xml_tile == 'W')
+  {
+    tile = tg.generate(TILE_TYPE_WEEDS);
+  }
+  else if (xml_tile == 'B')
+  {
+    tile = tg.generate(TILE_TYPE_BUSH);
+  }
+  else if (xml_tile == 'e')
+  {
+    tile = tg.generate(TILE_TYPE_REEDS);
   }
   else if (xml_tile == 'w')
   {

@@ -24,9 +24,10 @@ Savage Lands v0.2.5 "Eoppa"
 
   - Added the "M" command to display in-game message history.
 
-- Started working on the Snake Lands and Zaeda's Tower:
+- Started working on the Snake Lands, the area containing the snakeling
+  village and Zaeda's Tower:
 
-  - Created the inhabitants of the Snake Lands.
+  - Created the inhabitants of the village of Sithrin.
 
   - Added the island to the far north-east corner, adding a reference in
     the Isen Dun Chronicle.
