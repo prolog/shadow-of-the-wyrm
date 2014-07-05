@@ -10,6 +10,7 @@ TileTextKeys::~TileTextKeys()
 {
 }
 
+const string TileTextKeys::TILE_DESC_AIR            = "TILE_DESC_AIR";
 const string TileTextKeys::TILE_DESC_BARROW         = "TILE_DESC_BARROW";
 const string TileTextKeys::TILE_DESC_BEACH          = "TILE_DESC_BEACH";
 const string TileTextKeys::TILE_DESC_BUSH           = "TILE_DESC_BUSH";

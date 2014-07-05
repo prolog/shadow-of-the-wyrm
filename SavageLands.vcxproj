@@ -861,6 +861,7 @@
     <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp" />
     <ClInclude Include="world\tiles\features\include\Trap.hpp" />
+    <ClInclude Include="world\tiles\include\AirTile.hpp" />
     <ClInclude Include="world\tiles\include\AllTiles.hpp" />
     <ClInclude Include="world\tiles\include\BarracksTile.hpp" />
     <ClInclude Include="world\tiles\include\BarrowTile.hpp" />
@@ -2409,6 +2410,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\AirTile.cpp" />
     <ClCompile Include="world\tiles\source\BarracksTile.cpp" />
     <ClCompile Include="world\tiles\source\BarrowTile.cpp" />
     <ClCompile Include="world\tiles\source\BeachTile.cpp" />
@@ -2452,6 +2454,11 @@
     <ClCompile Include="world\tiles\source\TileFactory.cpp" />
     <ClCompile Include="world\tiles\source\TileProperties.cpp" />
     <ClCompile Include="world\tiles\source\TreeTile.cpp" />
+    <ClCompile Include="world\tiles\source\unit_tests\AirTile_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\BarracksTile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

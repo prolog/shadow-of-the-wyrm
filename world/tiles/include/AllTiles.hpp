@@ -1,5 +1,6 @@
 #pragma once
 
+#include "AirTile.hpp"
 #include "BarracksTile.hpp"
 #include "BarrowTile.hpp"
 #include "BeachTile.hpp"

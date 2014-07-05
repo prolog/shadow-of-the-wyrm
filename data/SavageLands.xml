@@ -13763,6 +13763,12 @@
 				<Colour>1</Colour>
 			</Text>
 		</CryptTile>
+		<AirTile>
+			<Text>
+				<Symbol> </Symbol>
+				<Colour>110</Colour>
+			</Text>
+		</AirTile>
 	</Tiles>
 	<Items>
 		<Armours>

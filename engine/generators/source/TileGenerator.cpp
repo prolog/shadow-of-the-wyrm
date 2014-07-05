@@ -29,7 +29,7 @@ bool TileGenerator::get_generate_items() const
 TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
 {
   // To make it easier to remember what needs to be updated:
-  static_assert(TILE_TYPE_LAST == 45, "Unexpected TILE_TYPE_LAST value.");
+  static_assert(TILE_TYPE_LAST == 46, "Unexpected TILE_TYPE_LAST value.");
 
   TilePtr result_tile;
 
@@ -173,6 +173,8 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
     case TILE_TYPE_CRYPT:
       result_tile = std::make_shared<CryptTile>();
       break;
+    case TILE_TYPE_AIR:
+      result_tile = std::make_shared<AirTile>();
     default:
       break;
   }
