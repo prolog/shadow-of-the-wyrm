@@ -35,7 +35,15 @@
 		<Col>11</Col>
 	</PlayerStart>
 	<InitialPlacements>
-		<Creatures/>
+		<Creatures>
+			<Placement>
+				<ID>zaeda</ID>
+				<Coord>
+					<Row>9</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+		</Creatures>
 		<Items/>
 	</InitialPlacements>
 	<Exits>
