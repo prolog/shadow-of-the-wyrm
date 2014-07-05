@@ -102,6 +102,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TILE_TYPE_BARROW);
   }
+  else if (xml_tile == 'A')
+  {
+    tile = tg.generate(TILE_TYPE_ROCK); // change later
+  }
   else if ((xml_tile == '\'') || (xml_tile == '`'))
   {
     // Single quote indicates a regular freshwater spring.
