@@ -4,7 +4,8 @@ enum TileSuperType
 {
   TILE_SUPER_TYPE_UNDEFINED = -1,
   TILE_SUPER_TYPE_GROUND = 0,
-  TILE_SUPER_TYPE_WATER = 1
+  TILE_SUPER_TYPE_WATER = 1,
+  TILE_SUPER_TYPE_AIR = 2
 };
 
 enum TileType
@@ -56,7 +57,8 @@ enum TileType
   TILE_TYPE_MINE      = 42,
   TILE_TYPE_WELL      = 43,
   TILE_TYPE_CRYPT     = 44,
-  TILE_TYPE_LAST      = 45
+  TILE_TYPE_AIR       = 45,
+  TILE_TYPE_LAST      = 46
 };
 
 inline TileType operator--(TileType &tt, int)

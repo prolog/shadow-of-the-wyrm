@@ -104,7 +104,7 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   }
   else if (xml_tile == 'A')
   {
-    tile = tg.generate(TILE_TYPE_ROCK); // change later
+    tile = tg.generate(TILE_TYPE_AIR);
   }
   else if ((xml_tile == '\'') || (xml_tile == '`'))
   {
