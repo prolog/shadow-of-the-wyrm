@@ -211,6 +211,7 @@
     <ClInclude Include="engine\calculators\include\DisfiguredCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\EvadeCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ExposedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\FlyingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ForestCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HasteCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\HeavyWeaponToHitCalculator.hpp" />
@@ -341,6 +342,7 @@
     <ClInclude Include="engine\creatures\include\CurrentCreatureAbilities.hpp" />
     <ClInclude Include="engine\creatures\include\DisfiguredStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\ExposedStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\FlyingStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\HasteStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\IncorporealStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\ITileSafetyCondition.hpp" />
@@ -399,6 +401,7 @@
     <ClInclude Include="engine\effects\include\AdditionalEffectMessage.hpp" />
     <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\EnchantingEffect.hpp" />
+    <ClInclude Include="engine\effects\include\FlyingEffect.hpp" />
     <ClInclude Include="engine\effects\include\HasteEffect.hpp" />
     <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp" />
@@ -1039,6 +1042,7 @@
     <ClCompile Include="engine\calculators\source\DisfiguredCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\EvadeCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ExposedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\FlyingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ForestCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HasteCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\HeavyWeaponToHitCalculator.cpp" />
@@ -1376,6 +1380,7 @@
     <ClCompile Include="engine\creatures\source\CurrentCreatureAbilities.cpp" />
     <ClCompile Include="engine\creatures\source\DisfiguredStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\ExposedStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\FlyingStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\HasteStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\IncorporealStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\MutenessStatusEffect.cpp" />
@@ -1472,6 +1477,7 @@
     <ClCompile Include="engine\effects\source\AdditionalEffectMessage.cpp" />
     <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp" />
     <ClCompile Include="engine\effects\source\EnchantingEffect.cpp" />
+    <ClCompile Include="engine\effects\source\FlyingEffect.cpp" />
     <ClCompile Include="engine\effects\source\HasteEffect.cpp" />
     <ClCompile Include="engine\effects\source\IncorporealEffect.cpp" />
     <ClCompile Include="engine\effects\source\RechargingEffect.cpp" />

@@ -109,6 +109,12 @@ class StatusAilmentTextKeys
     static const std::string get_npc_drunk_message(std::shared_ptr<Creature> creature);
     static const std::string get_npc_sober_message(std::shared_ptr<Creature> creature);
 
+    static const std::string STATUS_FLYING;
+    static const std::string STATUS_MESSAGE_PLAYER_FLYING;
+    static const std::string STATUS_MESSAGE_PLAYER_FLYING_CURED;
+    static const std::string get_npc_flying_message(std::shared_ptr<Creature> creature);
+    static const std::string get_npc_undo_flying_message(std::shared_ptr<Creature> creature);
+
   protected:
     StatusAilmentTextKeys();
     ~StatusAilmentTextKeys();
@@ -156,4 +162,7 @@ class StatusAilmentTextKeys
 
     static const std::string STATUS_MESSAGE_NPC_DRUNK;
     static const std::string STATUS_MESSAGE_NPC_SOBER;
+
+    static const std::string STATUS_MESSAGE_NPC_FLYING;
+    static const std::string STATUS_MESSAGE_NPC_UNDO_FLYING;
 };

@@ -48,7 +48,7 @@ string IncorporealStatusEffect::get_player_application_message() const
 
 string IncorporealStatusEffect::get_npc_application_message(CreaturePtr creature) const
 {
-  string message = StatusAilmentTextKeys::get_npc_hasted_message(creature);
+  string message = StatusAilmentTextKeys::get_npc_incorporeal_message(creature);
 
   return message;
 }

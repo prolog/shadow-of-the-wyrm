@@ -1264,11 +1264,12 @@
 				Recharging = 13
 				Incorporeal (Wraith Form) = 14
 				Enchanting = 15
+				Flying = 16
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="15"/>
+		<xs:maxInclusive value="16"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
@@ -1402,6 +1403,7 @@
 		<xs:enumeration value="_spellb"/>
 		<xs:enumeration value="_blind"/>
 		<xs:enumeration value="_incorp"/>
+		<xs:enumeration value="_flying"/>
 	</xs:restriction>
 </xs:simpleType>
 <!-- See CreatureFeatures.hpp -->

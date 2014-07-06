@@ -50,8 +50,17 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
     switch (tst)
     {
       case TILE_SUPER_TYPE_UNDEFINED:
-      case TILE_SUPER_TYPE_AIR:
       case TILE_SUPER_TYPE_GROUND:
+        break;
+      case TILE_SUPER_TYPE_AIR:
+        if (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+        {
+          movement = MOVEMENT_TYPE_FLYING;
+        }
+        else
+        {
+          movement = MOVEMENT_TYPE_WALKING;
+        }
         break;
       case TILE_SUPER_TYPE_WATER:
       default:

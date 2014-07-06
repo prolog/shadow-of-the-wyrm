@@ -3,6 +3,7 @@
 #include "FallingMovementAccumulationChecker.hpp"
 
 using namespace std;
+
 // Falling from a great distance is insta-death.
 void FallingMovementAccumulationChecker::check(CreaturePtr creature)
 {

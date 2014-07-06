@@ -3,6 +3,7 @@
 #include "DisfiguredStatusEffect.hpp"
 #include "ExposedStatusEffect.hpp"
 #include "HasteStatusEffect.hpp"
+#include "FlyingStatusEffect.hpp"
 #include "IncorporealStatusEffect.hpp"
 #include "MutenessStatusEffect.hpp"
 #include "ParalysisStatusEffect.hpp"
@@ -116,6 +117,10 @@ StatusEffectPtr StatusEffectFactory::create_status_effect(const string& status_i
   else if (status_id == StatusIdentifiers::STATUS_ID_INCORPOREAL)
   {
     status_effect = std::make_shared<IncorporealStatusEffect>();
+  }
+  else if (status_id == StatusIdentifiers::STATUS_ID_FLYING)
+  {
+    status_effect = std::make_shared<FlyingStatusEffect>();
   }
   else
   {
