@@ -18,6 +18,8 @@ void MovementAccumulationUpdater::update(CreaturePtr creature, TilePtr new_tile)
     if (old_movement_type != new_movement_type)
     {
       movement_accumulation.reset();
+      movement_accumulation.set_tile_super_type(new_super_type);
+      movement_accumulation.set_tile_type(new_tile_type);
       movement_accumulation.set_movement_type(new_movement_type);
     }
     
@@ -53,7 +55,7 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
       case TILE_SUPER_TYPE_GROUND:
         break;
       case TILE_SUPER_TYPE_AIR:
-        if (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING))
+        if (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) || creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
         {
           movement = MOVEMENT_TYPE_FLYING;
         }
