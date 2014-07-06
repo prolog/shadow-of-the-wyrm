@@ -7,6 +7,8 @@ class FlyingStatusEffect : public StatusEffect
     FlyingStatusEffect();
 
   protected:
+    virtual void after_finalize(std::shared_ptr<Creature> creature) const override;
+
     virtual std::string get_player_application_message() const override;
     virtual std::string get_player_undo_message() const override;
     virtual std::string get_player_finalize_message() const override;
