@@ -329,6 +329,7 @@
     <ClInclude Include="engine\conversion\include\SpellsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\StatsDumper.hpp" />
     <ClInclude Include="engine\conversion\include\StringConverter.hpp" />
+    <ClInclude Include="engine\creatures\include\AirSafetyCondition.hpp" />
     <ClInclude Include="engine\creatures\include\BlindedStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\BloodiedStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\CreatureDifficulty.hpp" />
@@ -640,6 +641,7 @@
     <ClInclude Include="engine\time\include\CreatureSkillIncrementer.hpp" />
     <ClInclude Include="engine\time\include\CreatureStatuses.hpp" />
     <ClInclude Include="engine\time\include\CreatureTimeObserver.hpp" />
+    <ClInclude Include="engine\time\include\FallingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\ICreatureRegeneration.hpp" />
     <ClInclude Include="engine\time\include\ITerrainMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\ITimeObserver.hpp" />
@@ -1362,6 +1364,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\creatures\source\AirSafetyCondition.cpp" />
     <ClCompile Include="engine\creatures\source\BlindedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\BloodiedStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\CreatureDifficulty.cpp" />
@@ -1832,6 +1835,7 @@
     <ClCompile Include="engine\time\source\CreatureSkillIncrementer.cpp" />
     <ClCompile Include="engine\time\source\CreatureStatuses.cpp" />
     <ClCompile Include="engine\time\source\CreatureTimeObserver.cpp" />
+    <ClCompile Include="engine\time\source\FallingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\ITimeObserver.cpp" />
     <ClCompile Include="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\MovementAccumulationChecker.cpp" />

@@ -1,4 +1,7 @@
 #include "AirTile.hpp"
+#include "TileDangerConfirmationKeys.hpp"
+
+using namespace std;
 
 TileType AirTile::get_tile_type() const
 {
@@ -10,9 +13,20 @@ TileSuperType AirTile::get_tile_super_type() const
   return TILE_SUPER_TYPE_AIR;
 }
 
-std::string AirTile::get_tile_description_sid() const
+string AirTile::get_tile_description_sid() const
 {
   return TileTextKeys::TILE_DESC_AIR;
+}
+
+bool AirTile::get_dangerous(CreaturePtr creature) const
+{
+  // TODO: Update this to check status of Flying effect.
+  return true;
+}
+
+string AirTile::get_danger_confirmation_sid() const
+{
+  return TileDangerConfirmationKeys::TILE_DANGER_AIR;
 }
 
 Tile* AirTile::clone()

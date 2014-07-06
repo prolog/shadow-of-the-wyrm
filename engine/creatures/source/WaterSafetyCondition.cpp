@@ -2,10 +2,8 @@
 
 using namespace std;
 
-// A water tile is safe only if the creature has a boat.
-//
-// After all, some creatures can swim, some even can swim well, but there
-// are no creatures (not yet, anyway) that can swim indefinitely.
+// A water tile is safe if the creature breathes water, or the creature 
+// has a boat.
 bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
 {
   bool safe = false;

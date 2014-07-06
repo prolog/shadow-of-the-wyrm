@@ -1,3 +1,4 @@
+#include "AirSafetyCondition.hpp"
 #include "CreatureTileSafetyChecker.hpp"
 #include "WaterSafetyCondition.hpp"
 
@@ -92,5 +93,10 @@ void CreatureTileSafetyChecker::initialize_tile_super_type_safety_conditions()
   ITileSafetyConditionPtr water_condition = std::make_shared<WaterSafetyCondition>();
   water_conditions.push_back(water_condition);
 
+  vector<ITileSafetyConditionPtr> air_conditions;
+  ITileSafetyConditionPtr air_condition = std::make_shared<AirSafetyCondition>();
+  air_conditions.push_back(air_condition);
+
   tile_super_type_safety_conditions.insert(make_pair(TILE_SUPER_TYPE_WATER, water_conditions));
+  tile_super_type_safety_conditions.insert(make_pair(TILE_SUPER_TYPE_AIR, air_conditions));
 }

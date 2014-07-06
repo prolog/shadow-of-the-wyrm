@@ -50,6 +50,7 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
     switch (tst)
     {
       case TILE_SUPER_TYPE_UNDEFINED:
+      case TILE_SUPER_TYPE_AIR:
       case TILE_SUPER_TYPE_GROUND:
         break;
       case TILE_SUPER_TYPE_WATER:
