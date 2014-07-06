@@ -9,7 +9,7 @@ bool AirSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
 {
   bool safe = false;
 
-  // TODO: Checks for flying.
+  // TODO: Checks for flying and incorporeal.
 
   return safe;
 }
