@@ -12,8 +12,9 @@ pair<bool, string> TileMovementConfirmation::get_confirmation_details(CreaturePt
   pair<bool, string> confirmation_details;
   confirmation_details.first = false;
   bool is_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+  bool is_flying = creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
   
-  if (new_tile->get_dangerous(creature) && !is_incorporeal)
+  if (new_tile->get_dangerous(creature) && !is_incorporeal && !is_flying)
   {
     confirmation_details.first = true;
     confirmation_details.second = TextMessages::get_confirmation_message(new_tile->get_danger_confirmation_sid());
@@ -36,6 +37,7 @@ pair<bool, string> TileMovementConfirmation::check_for_jumping_into_water(Creatu
   pair<bool, string> details;
   details.first = false;
   bool is_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
+  bool is_flying = creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING);
   
   // If there get to be enough of these, break these out into a map or a class or something.
   // Probably should break out of MapUtils...
@@ -43,7 +45,7 @@ pair<bool, string> TileMovementConfirmation::check_for_jumping_into_water(Creatu
   {
     Inventory& inv = creature->get_inventory();
 
-    if (!(creature->get_breathes() == BREATHE_TYPE_WATER) && !is_incorporeal && !inv.has_item_type(ITEM_TYPE_BOAT))
+    if (!(creature->get_breathes() == BREATHE_TYPE_WATER) && !is_incorporeal && !is_flying && !inv.has_item_type(ITEM_TYPE_BOAT))
     {
       details.first  = true;
       details.second = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);
