@@ -13179,6 +13179,18 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="a_05_flight">
+			<NameSID>FLIGHT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>FLIGHT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>FLIGHT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<Colour>1</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>16</Effect>
+		</Spell>		
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -17020,6 +17032,23 @@
 				<Rarity>1</Rarity>
 				<SpellID>a_04_shockwave</SpellID>
 				<Difficulty>115</Difficulty>
+			</Spellbook>
+			<Spellbook id="flight_spellbook">
+				<DescriptionSID>FLIGHT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FLIGHT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FLIGHT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FLIGHT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>800</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>30</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_05_flight</SpellID>
+				<Difficulty>100</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>
