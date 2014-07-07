@@ -53,6 +53,8 @@ Savage Lands v0.2.5 "Eoppa"
   snakeling thief, Kraal, Murk, Zaeda.
 
 - New items: flying potion.
+
+- New spells: flight (Arcane).
       
 - Bug fixes: fixed an issue where the ActionCoordinator would not be
   properly reset on the first turn after loading a game, to a loop being
