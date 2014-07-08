@@ -18,6 +18,10 @@ IncorporealStatusEffect::IncorporealStatusEffect()
 
 void IncorporealStatusEffect::after_undo(CreaturePtr creature) const
 {
+  // First, check the parent class to make sure that floating down
+  // hasn't become suddenly dangerous...
+  FloatingStatusEffect::after_undo(creature);
+
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
   TilePtr tile = MapUtils::get_tile_for_creature(map, creature);

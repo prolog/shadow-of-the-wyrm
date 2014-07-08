@@ -342,6 +342,7 @@
     <ClInclude Include="engine\creatures\include\CurrentCreatureAbilities.hpp" />
     <ClInclude Include="engine\creatures\include\DisfiguredStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\ExposedStatusEffect.hpp" />
+    <ClInclude Include="engine\creatures\include\FloatingStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\FlyingStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\HasteStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\IncorporealStatusEffect.hpp" />
@@ -1380,6 +1381,7 @@
     <ClCompile Include="engine\creatures\source\CurrentCreatureAbilities.cpp" />
     <ClCompile Include="engine\creatures\source\DisfiguredStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\ExposedStatusEffect.cpp" />
+    <ClCompile Include="engine\creatures\source\FloatingStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\FlyingStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\HasteStatusEffect.cpp" />
     <ClCompile Include="engine\creatures\source\IncorporealStatusEffect.cpp" />

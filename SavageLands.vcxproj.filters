@@ -3108,6 +3108,9 @@
     <ClInclude Include="engine\effects\include\FlyingEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\creatures\include\FloatingStatusEffect.hpp">
+      <Filter>Header Files\engine\creatures\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5968,6 +5971,9 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\FlyingEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\creatures\source\FloatingStatusEffect.cpp">
+      <Filter>Source Files\engine\creatures\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

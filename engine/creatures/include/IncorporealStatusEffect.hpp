@@ -1,7 +1,7 @@
 #pragma once
-#include "StatusEffect.hpp"
+#include "FloatingStatusEffect.hpp"
 
-class IncorporealStatusEffect : public StatusEffect
+class IncorporealStatusEffect : public FloatingStatusEffect
 {
   public:
     IncorporealStatusEffect();
