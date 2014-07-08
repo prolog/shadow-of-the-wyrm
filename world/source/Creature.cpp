@@ -1,6 +1,7 @@
 #include <limits>
 #include "Creature.hpp"
 #include "DecisionStrategyFactory.hpp"
+#include "InventoryFactory.hpp"
 #include "PlayerConstants.hpp"
 #include "PlayerDecisionStrategy.hpp"
 #include "Serialize.hpp"
@@ -26,6 +27,8 @@ Creature::Creature()
 // Everything else is a string, Statistic, etc, and is not a primitive type.  These'll have their own constructors.
 // Religion defaults to atheist.
 {
+  inventory = std::make_shared<Inventory>();
+
   set_base_evade(0);
   set_base_soak(0);
   set_evade(0);
@@ -552,7 +555,7 @@ Equipment& Creature::get_equipment()
   return equipment;
 }
 
-Inventory& Creature::get_inventory()
+IInventoryPtr Creature::get_inventory()
 {
   return inventory;
 }
@@ -565,7 +568,7 @@ bool Creature::has_items() const
     if (item != nullptr) return true;
   }
 
-  if (inventory.has_items())
+  if (inventory->has_items())
   {
     return true;
   }
@@ -1021,8 +1024,8 @@ SpellKnowledge& Creature::get_spell_knowledge_ref()
 
 // Set, get, and query additional (string) properties
   // Uncomment the code below to find out the size of Creature. :)
-  // template<int s> struct creature_size;
-  // creature_size<sizeof(Creature)> creature_size;
+  //template<int s> struct creature_size;
+  //creature_size<sizeof(Creature)> creature_size;
 
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
@@ -1031,7 +1034,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 888, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 880, "Unexpected sizeof Creature.");
     #else
     // Release
     static_assert(sizeof(*this) == 800, "Unexpected sizeof Creature.");
@@ -1140,7 +1143,9 @@ bool Creature::serialize(ostream& stream) const
   damage.serialize(stream);
 
   equipment.serialize(stream);
-  inventory.serialize(stream);
+  
+  Serialize::write_class_id(stream, inventory->get_class_identifier());
+  inventory->serialize(stream);
   
   resistances.serialize(stream);
 
@@ -1267,7 +1272,12 @@ bool Creature::deserialize(istream& stream)
   damage.deserialize(stream);
 
   equipment.deserialize(stream);
-  inventory.deserialize(stream);
+
+  ClassIdentifier inv_class_id;
+  Serialize::read_class_id(stream, inv_class_id);
+
+  inventory = InventoryFactory::create_inventory(inv_class_id);
+  inventory->deserialize(stream);
   
   resistances.deserialize(stream);
 

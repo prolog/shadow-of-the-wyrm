@@ -35,7 +35,7 @@ ActionCostValue ScrollReadStrategy::read(CreaturePtr creature, ActionManager * c
       if (readable->destroy_on_read())
       {
         readable->set_quantity(readable->get_quantity() - 1);
-        if (readable->get_quantity() == 0) creature->get_inventory().remove(readable->get_id());
+        if (readable->get_quantity() == 0) creature->get_inventory()->remove(readable->get_id());
       }
 
       Spell scroll_spell = SpellFactory::create_self_targetted_item_spell();

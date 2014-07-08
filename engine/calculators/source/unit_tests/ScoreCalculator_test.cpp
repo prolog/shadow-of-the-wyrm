@@ -24,8 +24,8 @@ TEST(SL_Engine_Calculators_ScoreCalculator, currency_component)
   currency->set_base_id(ItemIdKeys::ITEM_ID_CURRENCY);
   currency->set_quantity(12345);
 
-  Inventory& inv = cp->get_inventory();
-  inv.add(currency);
+  IInventoryPtr inv = cp->get_inventory();
+  inv->add(currency);
 
   ScoreCalculator sc;
 
@@ -74,8 +74,8 @@ TEST(SL_Engine_Calculator_ScoreCalculator, artifact_component)
   w2->set_artifact(true);
   w2->set_value(445);
 
-  Inventory& inv = cp->get_inventory();
-  inv.add(w1);
+  IInventoryPtr inv = cp->get_inventory();
+  inv->add(w1);
   cp->get_equipment().set_item(w2, EQUIPMENT_WORN_WIELDED);
 
   ScoreCalculator sc;
@@ -104,9 +104,9 @@ TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
   w2->set_artifact(true);
   w2->set_value(445);
 
-  Inventory& inv = cp->get_inventory();
-  inv.add(currency);
-  inv.add(w1);
+  IInventoryPtr inv = cp->get_inventory();
+  inv->add(currency);
+  inv->add(w1);
   cp->get_equipment().set_item(w2, EQUIPMENT_WORN_WIELDED);
 
   // end boss

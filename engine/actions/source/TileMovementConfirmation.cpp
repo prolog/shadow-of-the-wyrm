@@ -43,9 +43,9 @@ pair<bool, string> TileMovementConfirmation::check_for_jumping_into_water(Creatu
   // Probably should break out of MapUtils...
   if (MapUtils::is_moving_from_land_type_tile_to_water_type_tile(old_tile, new_tile))
   {
-    Inventory& inv = creature->get_inventory();
+    IInventoryPtr inv = creature->get_inventory();
 
-    if (!(creature->get_breathes() == BREATHE_TYPE_WATER) && !is_incorporeal && !is_flying && !inv.has_item_type(ITEM_TYPE_BOAT))
+    if (!(creature->get_breathes() == BREATHE_TYPE_WATER) && !is_incorporeal && !is_flying && !inv->has_item_type(ITEM_TYPE_BOAT))
     {
       details.first  = true;
       details.second = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);

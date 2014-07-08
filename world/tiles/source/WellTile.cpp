@@ -1,4 +1,10 @@
 #include "WellTile.hpp"
+#include "NullInventory.hpp"
+
+WellTile::WellTile()
+{
+  items = std::make_shared<NullInventory>();
+}
 
 TileType WellTile::get_tile_type() const
 {

@@ -85,7 +85,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
       
       // Reduce the quantity, removing it from the inventory if necessary
       potion->set_quantity(potion->get_quantity() - 1);
-      if (potion->get_quantity() == 0) creature->get_inventory().remove(potion->get_id());
+      if (potion->get_quantity() == 0) creature->get_inventory()->remove(potion->get_id());
       
       // Process the effect using a temporary spell.  This will do any necessary 
       // updates to the creature, and will also add a status message based on

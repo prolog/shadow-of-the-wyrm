@@ -44,23 +44,23 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
     
     if (tile)
     {
-      Inventory& inv = tile->get_items();
+      IInventoryPtr inv = tile->get_items();
 
       // If there is no item, inform the user.
-      if (inv.empty())
+      if (inv->empty())
       {
         handle_empty_tile_pickup(creature);
       }
       else
       {
         // If there is one item, pick it up.
-        uint num_items = inv.size();
+        uint num_items = inv->size();
         
         ItemPtr pick_up_item;
         
         if (num_items == 1)
         {
-          pick_up_item = inv.at(0);
+          pick_up_item = inv->at(0);
         }
 
         // If there are many items, get one of them.
@@ -73,7 +73,7 @@ ActionCostValue PickupAction::handle_pickup(CreaturePtr creature, MapPtr map, Ac
         if (pick_up_item)
         {
           // Remove the item from the ground.
-          inv.remove(pick_up_item->get_id());
+          inv->remove(pick_up_item->get_id());
           
           if (!merge_into_equipment(creature, pick_up_item))
           {
@@ -150,11 +150,11 @@ bool PickupAction::merge_or_add_into_inventory(CreaturePtr creature, ItemPtr ite
 
   if (creature)
   {
-    Inventory& creature_inv = creature->get_inventory();
-    if (!creature_inv.merge(item))
+    IInventoryPtr creature_inv = creature->get_inventory();
+    if (!creature_inv->merge(item))
     {
       // Add to the end of the inventory
-      creature_inv.add(item);
+      creature_inv->add(item);
     }
     
     // Display a message if necessary

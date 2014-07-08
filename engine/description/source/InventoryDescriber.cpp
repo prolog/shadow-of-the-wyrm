@@ -5,7 +5,7 @@
 using std::list;
 using std::string;
 
-InventoryDescriber::InventoryDescriber(const bool player_blind, const Inventory& inv)
+InventoryDescriber::InventoryDescriber(const bool player_blind, const IInventoryPtr inv)
 : inventory(inv), blind(player_blind)
 {
 }
@@ -14,7 +14,7 @@ string InventoryDescriber::describe() const
 {
   string inventory_description;
 
-  const list<ItemPtr>& items = inventory.get_items_cref();
+  const list<ItemPtr>& items = inventory->get_items_cref();
 
   for (ItemPtr item : items)
   {

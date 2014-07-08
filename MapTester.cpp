@@ -144,8 +144,8 @@ string map_to_string(MapPtr map, bool use_html)
     {
       TilePtr tile = map->at(row, col);
       
-      Inventory& items = tile->get_items();
-      if (items.size() > 0)
+      IInventoryPtr items = tile->get_items();
+      if (items->size() > 0)
       {
         ItemPtr item = items.at(0);
         if (use_html) start_tag = "<font face=\"Courier\" color=\"" + convert_colour_to_hex_code(item->get_colour()) + "\">";

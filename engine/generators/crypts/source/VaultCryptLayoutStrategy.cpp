@@ -85,7 +85,7 @@ void VaultCryptLayoutStrategy::generate_vault_entrance(MapPtr map, const int mid
     door_key->set_lock_id(lock_id);
 
     TilePtr stair_tile = map->at(stair_coord);
-    stair_tile->get_items().add(door_key);
+    stair_tile->get_items()->add(door_key);
   }
 }
 

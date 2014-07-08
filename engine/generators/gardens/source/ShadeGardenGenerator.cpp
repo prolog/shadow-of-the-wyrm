@@ -76,7 +76,7 @@ void ShadeGardenGenerator::generate_plants()
       
       if (plant)
       {
-        garden_tile->get_items().add(plant);
+        garden_tile->get_items()->add(plant);
       }
     }
   }  
@@ -93,5 +93,5 @@ void ShadeGardenGenerator::generate_features()
   bench_tile->set_feature(bench);
   
   // Make sure there are no ferns, etc., generated over top of the bench.
-  bench_tile->get_items().clear();
+  bench_tile->get_items()->clear();
 }

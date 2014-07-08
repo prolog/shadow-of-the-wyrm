@@ -58,6 +58,6 @@ void VaultPopulator::populate_vault_items(MapPtr map, const vector<Coordinate>& 
   {
     ItemPtr generated_item = igm.generate_item(am, generation_vec);
     TilePtr tile = map->at(c);
-    tile->get_items().add(generated_item);
+    tile->get_items()->add(generated_item);
   }
 }

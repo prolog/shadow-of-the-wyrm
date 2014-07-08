@@ -60,7 +60,7 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
 {
   if (creature)
   {
-    const list<ItemPtr>& items = creature->get_inventory().get_items_cref();
+    const list<ItemPtr>& items = creature->get_inventory()->get_items_cref();
 
     for (ItemPtr item : items)
     {

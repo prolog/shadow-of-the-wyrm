@@ -151,7 +151,7 @@ class Creature : public ISerializable
     Damage get_base_damage() const;
     
     Equipment& get_equipment();
-    Inventory& get_inventory();
+    IInventoryPtr get_inventory();
 
     // Does the creature have any equipped or worn items?
     bool has_items() const;
@@ -334,7 +334,7 @@ class Creature : public ISerializable
     Equipment equipment;
     
     // The creature's inventory.
-    Inventory inventory;
+    IInventoryPtr inventory;
     
     // Resistances/vulns.  These act as a damage multiplier.  A value of 1.0 indicates no resistance or vulnerability.
     // 0.50 indicates half damage, 2.0 indicates double damage.

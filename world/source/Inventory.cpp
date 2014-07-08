@@ -4,26 +4,17 @@
 
 using namespace std;
 
-Inventory::Inventory()
-{
-  items.clear();
-}
-
-Inventory::~Inventory()
-{
-}
-
-bool Inventory::operator==(const Inventory& inv) const
+bool Inventory::operator==(const IInventoryPtr inv) const
 {
   bool result = true;
 
-  int num_items = items.size();
+  size_t num_items = items.size();
 
-  result = (num_items == inv.items.size());
+  result = (num_items == (inv->get_items_cref()).size());
 
   if (result)
   {
-    const list<ItemPtr>& items_b = inv.get_items_cref();
+    const list<ItemPtr>& items_b = inv->get_items_cref();
     list<ItemPtr>::const_iterator lista_it = items.begin();
     list<ItemPtr>::const_iterator listb_it = items_b.begin();
 
@@ -272,6 +263,7 @@ bool Inventory::serialize(ostream& stream) const
   return true;
 }
 
+// Assumes the class ID has already been read.
 bool Inventory::deserialize(istream& stream)
 {
   size_t items_size = 0;

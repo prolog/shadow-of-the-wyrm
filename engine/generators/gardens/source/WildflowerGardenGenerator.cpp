@@ -54,8 +54,8 @@ void WildflowerGardenGenerator::seed_flowers()
         
         if (flower)
         {
-          Inventory& inv = flower_tile->get_items();
-          inv.add(flower);
+          IInventoryPtr inv = flower_tile->get_items();
+          inv->add(flower);
         }
       }
       

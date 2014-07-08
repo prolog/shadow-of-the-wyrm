@@ -32,10 +32,10 @@ void ScoreCalculator::update_score_end_boss(CreaturePtr creature, ulonglong& sco
 // Update the score based on the number of ivory pieces accumulated.
 void ScoreCalculator::update_score_currency(CreaturePtr creature, ulonglong& score)
 {
-  Inventory& inv = creature->get_inventory();
+  IInventoryPtr inv = creature->get_inventory();
 
   // Spending ivory can help in game, but saving it helps after.
-  ItemPtr item = inv.get_from_base_id(ItemIdKeys::ITEM_ID_CURRENCY);
+  ItemPtr item = inv->get_from_base_id(ItemIdKeys::ITEM_ID_CURRENCY);
   if (item != nullptr)
   {
     score += item->get_quantity();
@@ -121,7 +121,7 @@ void ScoreCalculator::update_score_artifacts(CreaturePtr creature, ulonglong& sc
   ulonglong eq_score = 0;
 
   Equipment& eq = creature->get_equipment();
-  Inventory& inv = creature->get_inventory();
+  IInventoryPtr inv = creature->get_inventory();
 
   EquipmentMap em = eq.get_equipment();
 
@@ -135,7 +135,7 @@ void ScoreCalculator::update_score_artifacts(CreaturePtr creature, ulonglong& sc
     }
   }
 
-  list<ItemPtr> items = inv.get_items_cref();
+  list<ItemPtr> items = inv->get_items_cref();
   for (ItemPtr item : items)
   {
     if (item != nullptr && item->get_artifact())

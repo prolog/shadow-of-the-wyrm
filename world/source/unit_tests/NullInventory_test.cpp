@@ -1,17 +1,17 @@
 #include "gtest/gtest.h"
 #include "Spellbook.hpp"
 
-TEST(SL_World_Inventory, serialization_id)
+TEST(SL_World_NullInventory, serialization_id)
 {
-  Inventory inv;
+  NullInventory inv;
 
-  EXPECT_EQ(CLASS_ID_INVENTORY, inv.get_class_identifier());
+  EXPECT_EQ(CLASS_ID_NULL_INVENTORY, inv.get_class_identifier());
 }
 
-TEST(SL_World_Inventory, saveload)
+TEST(SL_World_NullInventory, saveload)
 {
-  Inventory inv;
-  std::shared_ptr<Inventory> sinv2 = std::make_shared<Inventory>();
+  NullInventory inv;
+  std::shared_ptr<NullInventory> sinv2 = std::make_shared<NullInventory>();
 
   SpellbookPtr book = SpellbookPtr(new Spellbook());
   book->set_quantity(12);

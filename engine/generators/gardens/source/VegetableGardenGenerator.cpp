@@ -54,8 +54,8 @@ void VegetableGardenGenerator::plant_vegetables()
         
         if (veg)
         {
-          Inventory& inv = field_tile->get_items();
-          inv.add(veg);
+          IInventoryPtr inv = field_tile->get_items();
+          inv->add(veg);
         }          
       }
     

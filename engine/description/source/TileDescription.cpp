@@ -63,7 +63,7 @@ string TileDescription::describe(CreaturePtr viewing_creature, TilePtr tile, boo
         if (show_items)
         {
           CurrentCreatureAbilities cca;
-          Inventory& inventory = tile->get_items();
+          IInventoryPtr inventory = tile->get_items();
           describer = DescriberFactory::create_describer(!cca.can_see(viewing_creature), inventory);
           tile_info_strings.push_back(describer->describe());
         }

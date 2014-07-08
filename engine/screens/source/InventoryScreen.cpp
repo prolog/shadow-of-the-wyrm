@@ -15,7 +15,6 @@ InventoryScreen::InventoryScreen(DisplayPtr new_display, CreaturePtr new_creatur
 
 void InventoryScreen::initialize()
 {
-  Inventory& inv = creature->get_inventory();
   vector<ScreenComponentPtr> inv_screen;
   int current_id = 0;
   int cnt = 0;
