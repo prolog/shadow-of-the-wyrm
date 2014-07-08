@@ -43,7 +43,15 @@ void MovementAccumulationUpdater::update(CreaturePtr creature, TilePtr new_tile)
 // as a method of transportation.)
 MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature, TilePtr tile)
 {
+  // Can always walk or fly.
+  //
+  // Boating is only allowed on water.
   MovementType movement = MOVEMENT_TYPE_WALKING;
+
+  if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) || creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+  {
+    movement = MOVEMENT_TYPE_FLYING;
+  }
 
   if (creature && tile)
   {
@@ -53,16 +61,7 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
     {
       case TILE_SUPER_TYPE_UNDEFINED:
       case TILE_SUPER_TYPE_GROUND:
-        break;
       case TILE_SUPER_TYPE_AIR:
-        if (creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) || creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
-        {
-          movement = MOVEMENT_TYPE_FLYING;
-        }
-        else
-        {
-          movement = MOVEMENT_TYPE_WALKING;
-        }
         break;
       case TILE_SUPER_TYPE_WATER:
       default:
