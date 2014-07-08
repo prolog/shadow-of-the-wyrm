@@ -4,6 +4,8 @@
 class RiverTile : public Tile
 {
   public:
+    RiverTile();
+
     TileType get_tile_type() const override;
     TileSuperType get_tile_super_type() const;
     

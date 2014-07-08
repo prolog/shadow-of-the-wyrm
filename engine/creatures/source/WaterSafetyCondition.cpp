@@ -16,8 +16,8 @@ bool WaterSafetyCondition::is_safe(CreaturePtr creature, TilePtr tile)
     }
     else
     {
-      Inventory& inv = creature->get_inventory();
-      const list<ItemPtr> items = inv.get_items_cref();
+      IInventoryPtr inv = creature->get_inventory();
+      const list<ItemPtr> items = inv->get_items_cref();
 
       for (ItemPtr item : items)
       {

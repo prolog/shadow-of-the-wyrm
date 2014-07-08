@@ -61,13 +61,13 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         // a single wand.
         if (need_to_remove_before_adding_or_merging)
         {
-          creature->get_inventory().remove(wand->get_id());
+          creature->get_inventory()->remove(wand->get_id());
         }
 
         // Insert the item back into the inventory.
         // This will take care of de-stacking/re-stacking and ensuring that
         // like-items are grouped together.
-        creature->get_inventory().merge_or_add(new_wand, INVENTORY_ADDITION_BACK);
+        creature->get_inventory()->merge_or_add(new_wand, INVENTORY_ADDITION_BACK);
       }
     }
   }

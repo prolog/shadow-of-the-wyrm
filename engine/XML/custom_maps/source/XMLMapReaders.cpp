@@ -233,7 +233,7 @@ void XMLMapReader::parse_initial_item_placements(const XMLNode& items_node, MapP
 
         if (item && tile)
         {
-          tile->get_items().add(item);
+          tile->get_items()->add(item);
         }
       }
     }

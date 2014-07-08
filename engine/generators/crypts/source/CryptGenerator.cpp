@@ -111,7 +111,7 @@ void CryptGenerator::generate_perimeter_skeletons(const std::tuple<Coordinate, C
 
     if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && (bones != nullptr))
     {
-      tile->get_items().add(bones);
+      tile->get_items()->add(bones);
     }
   }
 }

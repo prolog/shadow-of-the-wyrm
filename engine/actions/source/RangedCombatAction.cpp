@@ -323,9 +323,9 @@ void RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     
     if (ammunition_survival_calc.survives(creature, ammunition))
     {
-      Inventory& inv = tile->get_items();
+      IInventoryPtr inv = tile->get_items();
       
-      inv.merge_or_add(ammunition, INVENTORY_ADDITION_FRONT);
+      inv->merge_or_add(ammunition, INVENTORY_ADDITION_FRONT);
     }
   }
 }

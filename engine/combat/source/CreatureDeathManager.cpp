@@ -59,14 +59,14 @@ void CreatureDeathManager::die() const
     }
 
     // Drop inventory on to the creature's tile.
-    Inventory inv = dead_creature->get_inventory();
-    Inventory& ground = attacked_tile->get_items();
+    IInventoryPtr inv = dead_creature->get_inventory();
+    IInventoryPtr ground = attacked_tile->get_items();
     
-    while (!inv.empty())
+    while (!inv->empty())
     {
-      ItemPtr current_item = inv.at(0);
-      inv.remove(current_item->get_id());
-      ground.add_front(current_item);
+      ItemPtr current_item = inv->at(0);
+      inv->remove(current_item->get_id());
+      ground->add_front(current_item);
     }
   }
 }

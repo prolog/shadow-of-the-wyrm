@@ -3111,6 +3111,15 @@
     <ClInclude Include="engine\creatures\include\FloatingStatusEffect.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\IInventory.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\NullInventory.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\InventoryFactory.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -5974,6 +5983,15 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\FloatingStatusEffect.cpp">
       <Filter>Source Files\engine\creatures\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\NullInventory.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\NullInventory_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\InventoryFactory.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

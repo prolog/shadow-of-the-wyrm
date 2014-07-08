@@ -139,8 +139,8 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
 
       if (creatures_tile)
       {
-        Inventory& inv = creatures_tile->get_items();
-        inv.merge_or_add(new_item, INVENTORY_ADDITION_FRONT);
+        IInventoryPtr inv = creatures_tile->get_items();
+        inv->merge_or_add(new_item, INVENTORY_ADDITION_FRONT);
 
         // Display a message if appropriate.
         // If it's the player, remind the user what he or she dropped.
@@ -150,7 +150,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       // Remove it from the inventory, if the quantity is now zero.
       if (item_to_drop->get_quantity() == 0)
       {
-        creature->get_inventory().remove(item_to_drop->get_id());
+        creature->get_inventory()->remove(item_to_drop->get_id());
       }
 
       // Advance the turn

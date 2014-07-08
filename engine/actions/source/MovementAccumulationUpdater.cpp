@@ -65,7 +65,7 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
         break;
       case TILE_SUPER_TYPE_WATER:
       default:
-        if (creature->get_inventory().has_item_type(ITEM_TYPE_BOAT))
+        if (creature->get_inventory()->has_item_type(ITEM_TYPE_BOAT))
         {
           movement = MOVEMENT_TYPE_BOAT;
         }

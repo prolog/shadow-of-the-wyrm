@@ -21,7 +21,7 @@ InventoryManager::~InventoryManager()
 
 // If the inventory is read-only, the items can be viewed, but not selected.  This is for use in the "y" - View your inventory
 // mode.  If the inventory is not read-only, items can be selected.
-ItemPtr InventoryManager::manage_inventory(Inventory& inv, const list<IItemFilterPtr>& display_filter_list, const bool inventory_is_read_only)
+ItemPtr InventoryManager::manage_inventory(IInventoryPtr inv, const list<IItemFilterPtr>& display_filter_list, const bool inventory_is_read_only)
 {
   ItemPtr selected_item;
   bool manage_inv = true;

@@ -1,5 +1,6 @@
 #include "Inventory.hpp"
 #include "FeatureFactory.hpp"
+#include "InventoryFactory.hpp"
 #include "MapFactory.hpp"
 #include "Serialize.hpp"
 #include "Tile.hpp"
@@ -15,6 +16,7 @@ using namespace std;
  ******************************************************************/
 Tile::Tile()
 {
+  items = std::make_shared<Inventory>();
   set_default_properties();
   tile_type = TILE_TYPE_UNDEFINED;
   tile_subtype = TILE_TYPE_UNDEFINED;
@@ -265,7 +267,7 @@ CreaturePtr Tile::get_creature() const
   return creature;
 }
 
-Inventory& Tile::get_items()
+IInventoryPtr Tile::get_items()
 {
   return items;
 }
@@ -372,7 +374,8 @@ bool Tile::serialize(ostream& stream) const
     Serialize::write_class_id(stream, CLASS_ID_NULL);
   }
   
-  items.serialize(stream);
+  Serialize::write_class_id(stream, items->get_class_identifier());
+  items->serialize(stream);
 
   Serialize::write_size_t(stream, map_exits.size());
 
@@ -427,7 +430,11 @@ bool Tile::deserialize(istream& stream)
     set_feature(feature);
   }
 
-  items.deserialize(stream);
+  ClassIdentifier items_class_id;
+  Serialize::read_class_id(stream, items_class_id);
+
+  items = InventoryFactory::create_inventory(items_class_id);
+  items->deserialize(stream);
 
   size_t map_size;
   Serialize::read_size_t(stream, map_size);

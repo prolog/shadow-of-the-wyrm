@@ -36,8 +36,8 @@ bool RechargingEffect::has_rechargables(CreaturePtr creature)
 
   if (creature)
   {
-    Inventory& inv = creature->get_inventory();
-    const list<ItemPtr>& items = inv.get_items_cref();
+    IInventoryPtr inv = creature->get_inventory();
+    const list<ItemPtr>& items = inv->get_items_cref();
 
     for (ItemPtr item : items)
     {

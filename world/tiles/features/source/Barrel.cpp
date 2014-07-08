@@ -44,8 +44,8 @@ bool Barrel::handle(std::shared_ptr<Tile> tile, std::shared_ptr<Creature> creatu
       {
         IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
-        Inventory& inv = tile->get_items();
-        inv.add(item);
+        IInventoryPtr inv = tile->get_items();
+        inv->add(item);
 
         manager.add_new_message(ActionTextKeys::get_pour_message(creature->get_description_sid(), item->get_usage_description_sid(), creature->get_is_player()));
         manager.send();

@@ -165,7 +165,7 @@ bool Generator::generate_initial_items(MapPtr map, const int danger_level)
 
         if (MapUtils::is_tile_available_for_item(tile))
         {
-          tile->get_items().add(generated_item);
+          tile->get_items()->add(generated_item);
 
           if (!items_generated) items_generated = true;
           current_items_placed++;

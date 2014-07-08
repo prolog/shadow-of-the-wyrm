@@ -382,7 +382,7 @@ ActionCost ActionManager::drop(CreaturePtr creature)
 }
 
 // Display the inventory; potentially select something.
-ItemPtr ActionManager::inventory(CreaturePtr creature, Inventory& inv, const list<IItemFilterPtr>& display_filter_list, const bool inventory_is_read_only)
+ItemPtr ActionManager::inventory(CreaturePtr creature, IInventoryPtr inv, const list<IItemFilterPtr>& display_filter_list, const bool inventory_is_read_only)
 {
   ItemPtr selected_item;
   

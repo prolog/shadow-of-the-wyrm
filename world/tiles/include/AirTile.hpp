@@ -4,6 +4,8 @@
 class AirTile : public Tile
 {
   public:
+    AirTile();
+
     TileType get_tile_type() const override;
     TileSuperType get_tile_super_type() const;
     

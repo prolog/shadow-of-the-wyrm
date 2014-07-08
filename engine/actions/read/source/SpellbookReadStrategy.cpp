@@ -73,7 +73,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
           if (spellbook_destroyed)
           {
             spellbook->set_quantity(spellbook->get_quantity() - 1);
-            if (spellbook->get_quantity() == 0) creature->get_inventory().remove(spellbook->get_id());
+            if (spellbook->get_quantity() == 0) creature->get_inventory()->remove(spellbook->get_id());
 
             add_spellbook_destruction_message(creature, spellbook);
           }

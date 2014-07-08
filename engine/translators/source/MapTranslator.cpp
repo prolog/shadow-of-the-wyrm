@@ -120,7 +120,7 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
   if ((fov_tile && !player_blinded) || (player_blinded && fov_tile && fov_tile->get_creature() && fov_tile->get_creature()->get_is_player()))
   {
     CreaturePtr creature = actual_tile->get_creature();
-    Inventory& inv = actual_tile->get_items();
+    IInventoryPtr inv = actual_tile->get_items();
     FeaturePtr feature = actual_tile->get_feature();
 
     // If a creature exists on this tile - will be null if the ptr is not init'd.
@@ -130,9 +130,9 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
     {
       display_tile = create_display_tile_from_creature(creature);
     }
-    else if (!inv.empty() && !player_blinded) // If at least one item exists in the tile's inventory of items
+    else if (!inv->empty() && !player_blinded) // If at least one item exists in the tile's inventory of items
     {
-      ItemPtr item = inv.at(0); // Get the first item
+      ItemPtr item = inv->at(0); // Get the first item
       display_tile = create_display_tile_from_item(item);
     }
     else if (feature && !player_blinded) // There's no creature, and no items.  Is there a feature?

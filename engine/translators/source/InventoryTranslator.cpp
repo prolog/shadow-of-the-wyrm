@@ -14,12 +14,12 @@ InventoryTranslator::~InventoryTranslator()
 {
 }
 
-DisplayInventoryMap InventoryTranslator::create_display_inventory(CreaturePtr creature, Inventory& inv, const list<IItemFilterPtr>& display_filter_list)
+DisplayInventoryMap InventoryTranslator::create_display_inventory(CreaturePtr creature, IInventoryPtr inv, const list<IItemFilterPtr>& display_filter_list)
 {
   CurrentCreatureAbilities cca;
   DisplayInventoryMap display_inventory;
 
-  const list<ItemPtr>& raw_inv = inv.get_items_cref();
+  const list<ItemPtr>& raw_inv = inv->get_items_cref();
   
   for (ItemPtr item : raw_inv)
   {

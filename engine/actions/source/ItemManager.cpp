@@ -48,11 +48,11 @@ list<ItemPtr> ItemManager::get_items_by_type(const Equipment& eq, const ItemType
 }
 
 // Get all items of a certain type from a given set of inventory.
-list<ItemPtr> ItemManager::get_items_by_type(const Inventory& inv, const ItemType item_type)
+list<ItemPtr> ItemManager::get_items_by_type(const IInventoryPtr inv, const ItemType item_type)
 {
   list<ItemPtr> result_items;
 
-  const list<ItemPtr>& raw_items = inv.get_items_cref();
+  const list<ItemPtr>& raw_items = inv->get_items_cref();
 
   for(ItemPtr item : raw_items)
   {
@@ -80,7 +80,7 @@ bool ItemManager::has_item(CreaturePtr creature, const string& base_item_id)
     }
   }
 
-  const list<ItemPtr>& raw_items = creature->get_inventory().get_items_cref();
+  const list<ItemPtr>& raw_items = creature->get_inventory()->get_items_cref();
 
   for(ItemPtr item : raw_items)
   {
@@ -152,7 +152,7 @@ ItemPtr ItemManager::create_item(const std::string& item_id, const uint quantity
 bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id)
 {
   Equipment& eq  = creature->get_equipment();
-  Inventory& inv = creature->get_inventory();
+  IInventoryPtr inv = creature->get_inventory();
 
   EquipmentMap eq_map = eq.get_equipment();
 
@@ -177,14 +177,14 @@ bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string&
     }
   }
 
-  return inv.remove_by_base_id(base_item_id);
+  return inv->remove_by_base_id(base_item_id);
 
   return false;
 }
 
 // Create an item with a certain probability, and add it to the given
 // inventory.  If we don't pass the probability check, do nothing.
-void ItemManager::create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_val, Inventory& inv, const std::string& item_id, const uint quantity)
+void ItemManager::create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_val, IInventoryPtr inv, const std::string& item_id, const uint quantity)
 {
   int rand = RNG::range(1, rand_upper_val);
   if (rand <= rand_less_than_or_equal_val)
@@ -194,7 +194,7 @@ void ItemManager::create_item_with_probability(const int rand_less_than_or_equal
     // Only add the item if it was created successfully
     if (item)
     {
-      inv.merge_or_add(item, INVENTORY_ADDITION_BACK);
+      inv->merge_or_add(item, INVENTORY_ADDITION_BACK);
     }
   }
 }
@@ -205,8 +205,8 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
   
   if (creature && item)
   {
-    Inventory& inv = creature->get_inventory();
-    inv.merge_or_add(item, INVENTORY_ADDITION_BACK);
+    IInventoryPtr inv = creature->get_inventory();
+    inv->merge_or_add(item, INVENTORY_ADDITION_BACK);
 
     picked_up_item = get_action_cost_value(creature);
   }
@@ -220,9 +220,9 @@ ActionCostValue ItemManager::drop(CreaturePtr creature, ItemPtr item)
   
   if (creature && item)
   {
-    Inventory& inv = creature->get_inventory();
+    IInventoryPtr inv = creature->get_inventory();
     
-    if (inv.remove(item->get_id()))
+    if (inv->remove(item->get_id()))
     {
       dropped_item = get_action_cost_value(creature);
     }
@@ -283,7 +283,7 @@ ActionCostValue ItemManager::equip_and_remove_from_inventory(CreaturePtr creatur
       action_cost_value = get_action_cost_value(creature);
 
       string item_id = item->get_id();
-      creature->get_inventory().remove(item_id);
+      creature->get_inventory()->remove(item_id);
     }
   }
     
@@ -307,7 +307,7 @@ ActionCostValue ItemManager::equip_and_reduce_inventory_quantity(CreaturePtr cre
       item->set_quantity(quantity-1);
       uint inv_item_quantity = item->get_quantity();
       
-      if (inv_item_quantity == 0) creature->get_inventory().remove(item->get_id());
+      if (inv_item_quantity == 0) creature->get_inventory()->remove(item->get_id());
       
       action_cost_value = 1;
     }

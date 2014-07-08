@@ -31,7 +31,7 @@ IDescriberPtr DescriberFactory::create_describer(FeaturePtr feature)
   return describer;
 }
 
-IDescriberPtr DescriberFactory::create_describer(const bool blind, const Inventory& inv)
+IDescriberPtr DescriberFactory::create_describer(const bool blind, const IInventoryPtr inv)
 {
   IDescriberPtr describer = std::make_shared<InventoryDescriber>(blind, inv);
   return describer;

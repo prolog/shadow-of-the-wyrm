@@ -1,7 +1,13 @@
 #include "AirTile.hpp"
+#include "NullInventory.hpp"
 #include "TileDangerConfirmationKeys.hpp"
 
 using namespace std;
+
+AirTile::AirTile()
+{
+  items = std::make_shared<NullInventory>();
+}
 
 TileType AirTile::get_tile_type() const
 {

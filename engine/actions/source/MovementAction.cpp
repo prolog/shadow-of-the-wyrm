@@ -563,16 +563,16 @@ bool MovementAction::add_message_about_items_on_tile_if_necessary(const Creature
 
   if (creature && creature->get_is_player())
   {
-    Inventory& tile_items = tile->get_items();
+    IInventoryPtr tile_items = tile->get_items();
     
-    if (!tile_items.empty())
+    if (!tile_items->empty())
     {
       string item_message;
       
       // One item
-      if (tile_items.size() == 1)
+      if (tile_items->size() == 1)
       {
-        ItemPtr item_on_tile = tile_items.at(0);
+        ItemPtr item_on_tile = tile_items->at(0);
         
         if (item_on_tile)
         {

@@ -2,7 +2,7 @@
 #include <map>
 #include <memory>
 #include "tiles.hpp"
-#include "Inventory.hpp"
+#include "IInventory.hpp"
 #include "Creature.hpp"
 #include "Directions.hpp"
 #include "Feature.hpp"
@@ -79,7 +79,7 @@ class Tile : public ISerializable
     virtual void remove_creature();
     virtual std::shared_ptr<Creature> get_creature() const;
     
-    virtual Inventory& get_items();
+    virtual IInventoryPtr get_items();
 
     virtual TileType get_tile_type() const;
     virtual TileSuperType get_tile_super_type() const;
@@ -125,7 +125,7 @@ class Tile : public ISerializable
 
     // Each tile can have any number of items piled up on it.
     // Re-use the basic inventory data type for this purpose.
-    Inventory items;
+    IInventoryPtr items;
     
     // A tile can have exits in various directions. These lead to other maps/levels/etc.
     TileExitMap map_exits;
