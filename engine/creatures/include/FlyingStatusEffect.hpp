@@ -1,14 +1,12 @@
 #pragma once
-#include "StatusEffect.hpp"
+#include "FloatingStatusEffect.hpp"
 
-class FlyingStatusEffect : public StatusEffect
+class FlyingStatusEffect : public FloatingStatusEffect
 {
   public:
     FlyingStatusEffect();
 
   protected:
-    virtual void after_finalize(std::shared_ptr<Creature> creature) const override;
-
     virtual std::string get_player_application_message() const override;
     virtual std::string get_player_undo_message() const override;
     virtual std::string get_player_finalize_message() const override;
