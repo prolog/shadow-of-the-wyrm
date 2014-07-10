@@ -10,22 +10,22 @@ TEST(SL_World_Inventory, serialization_id)
 
 TEST(SL_World_Inventory, saveload)
 {
-  Inventory inv;
+  std::shared_ptr<Inventory> inv = std::make_shared<Inventory>();
   std::shared_ptr<Inventory> sinv2 = std::make_shared<Inventory>();
 
   SpellbookPtr book = SpellbookPtr(new Spellbook());
   book->set_quantity(12);
 
-  inv.add_front(book);
+  inv->add_front(book);
 
   ostringstream ss;
 
-  inv.serialize(ss);
+  inv->serialize(ss);
 
   istringstream iss(ss.str());
 
   sinv2->deserialize(iss);
 
-  EXPECT_TRUE(inv == sinv2);
+  EXPECT_TRUE(*inv == *sinv2);
 }
 

@@ -19,7 +19,7 @@ enum InventoryAdditionType
 class IInventory : public ISerializable
 {
   public:
-    virtual bool operator==(const std::shared_ptr<IInventory> inv) const = 0;
+    virtual bool operator==(const IInventory& inv) const = 0;
 
     virtual bool add_front(ItemPtr new_item) = 0;
     virtual bool add(ItemPtr new_item) = 0;
