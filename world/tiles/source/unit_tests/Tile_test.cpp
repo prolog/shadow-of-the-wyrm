@@ -2,6 +2,42 @@
 #include "gtest/gtest.h"
 #include "TileGenerator.hpp"
 
+TEST(SL_World_Tiles_Tile, correct_inventory_type)
+{
+  // Generally speaking, all tile super types have a usual value.
+  // Items fall away from water or air, and are kept on ground tiles.
+  std::map<TileSuperType, ClassIdentifier> default_st_value({{TILE_SUPER_TYPE_AIR, CLASS_ID_NULL_INVENTORY},
+                                                             {TILE_SUPER_TYPE_WATER, CLASS_ID_NULL_INVENTORY},
+                                                             {TILE_SUPER_TYPE_GROUND, CLASS_ID_INVENTORY},
+                                                             {TILE_SUPER_TYPE_UNDEFINED, CLASS_ID_NULL_INVENTORY}});
+
+  // But, there are exceptions.  Items fall down wells, for example.
+  std::map<TileType, ClassIdentifier> tt_exceptions({{TILE_TYPE_WELL, CLASS_ID_NULL_INVENTORY}});
+  TileGenerator tg;
+
+  for (int i = TILE_TYPE_FIRST; i < TILE_TYPE_LAST; i++)
+  {
+    TilePtr tile = tg.generate(static_cast<TileType>(i));
+
+    TileType tt = tile->get_tile_type();
+    TileSuperType tst = tile->get_tile_super_type();
+
+    auto tt_it = tt_exceptions.find(tt);
+    ClassIdentifier expected_value;
+
+    if (tt_it != tt_exceptions.end())
+    {
+      expected_value = tt_it->second;
+    }
+    else
+    {
+      expected_value = default_st_value.find(tst)->second;
+    }
+
+    EXPECT_EQ(expected_value, tile->get_items()->get_class_identifier());
+  }
+}
+
 TEST(SL_World_Tiles_Tile, set_default_properties)
 {
   DungeonTile tile;
