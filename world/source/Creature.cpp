@@ -158,7 +158,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (speed == cr.speed);
   result = result && (damage == cr.damage);
   result = result && (equipment == cr.equipment);
-  result = result && (inventory == cr.inventory);
+  result = result && (inventory && cr.inventory && (*inventory == *(cr.inventory)));
   result = result && (resistances == cr.resistances);
   result = result && (skills == cr.skills);
   result = result && (movement_accumulation == cr.movement_accumulation);

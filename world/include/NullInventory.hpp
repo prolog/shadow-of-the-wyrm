@@ -5,7 +5,7 @@
 class NullInventory : public IInventory
 {
   public:
-    bool operator==(const IInventoryPtr inv) const override;
+    bool operator==(const IInventory& inv) const override;
 
     bool add_front(ItemPtr new_item) override;
     bool add(ItemPtr new_item) override;

@@ -51,7 +51,7 @@ bool Tile::operator==(const Tile& tile) const
     result = result && (*feature == *tile.feature);
   }
 
-  result = result && (items == tile.items);
+  result = result && (items && tile.items && *items == *(tile.items));
 
   result = result && (map_exits.size() == tile.map_exits.size());
 
@@ -428,6 +428,11 @@ bool Tile::deserialize(istream& stream)
     if (!feature) return false;
     if (!feature->deserialize(stream)) return false;
     set_feature(feature);
+  }
+
+  if (get_tile_type() == TILE_TYPE_SPRINGS)
+  {
+    int x = 1;
   }
 
   ClassIdentifier items_class_id;

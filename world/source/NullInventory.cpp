@@ -4,11 +4,11 @@
 
 using namespace std;
 
-bool NullInventory::operator==(const IInventoryPtr inv) const
+bool NullInventory::operator==(const IInventory& inv) const
 {
   bool result = true;
 
-  int num_items = inv->get_items_cref().size();
+  int num_items = inv.get_items_cref().size();
   result = (num_items == 0);
 
   return result;
