@@ -1,11 +1,13 @@
 #include "SpringsTile.hpp"
 #include "Serialize.hpp"
+#include "NullInventory.hpp"
 
 using namespace std;
 
 SpringsTile::SpringsTile()
 : temperature(SPRINGS_TEMPERATURE_COOL)
 {
+  items = std::make_shared<NullInventory>();
 }
 
 bool SpringsTile::operator==(const SpringsTile& sp) const

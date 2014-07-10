@@ -4,6 +4,8 @@
 class ShoalsTile : public WorldMapTile
 {
   public:
+    ShoalsTile();
+
     TileType get_tile_type() const override;
     TileSuperType get_tile_super_type() const;
     

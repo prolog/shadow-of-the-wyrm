@@ -430,11 +430,6 @@ bool Tile::deserialize(istream& stream)
     set_feature(feature);
   }
 
-  if (get_tile_type() == TILE_TYPE_SPRINGS)
-  {
-    int x = 1;
-  }
-
   ClassIdentifier items_class_id;
   Serialize::read_class_id(stream, items_class_id);
 
