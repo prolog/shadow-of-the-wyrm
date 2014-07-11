@@ -63,3 +63,6 @@ AlignmentRange Alignment::get_alignment_range() const
   return align_range;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/Alignment_test.cpp"
+#endif

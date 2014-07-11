@@ -5993,5 +5993,8 @@
     <ClCompile Include="world\source\InventoryFactory.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Alignment_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
