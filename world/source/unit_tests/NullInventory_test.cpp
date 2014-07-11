@@ -29,3 +29,18 @@ TEST(SL_World_NullInventory, saveload)
   EXPECT_TRUE(*inv == *sinv2);
 }
 
+TEST(SL_World_NullInventory, items_are_not_persisted)
+{
+  NullInventory ni;
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  book->set_id("book");
+
+  ni.add_front(book);
+
+  EXPECT_EQ(0, ni.size());
+  EXPECT_TRUE(ni.empty());
+
+  ItemPtr item = ni.get_from_base_id("book");
+  
+  EXPECT_TRUE(item == nullptr);
+}

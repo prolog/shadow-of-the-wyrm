@@ -2108,6 +2108,11 @@
     <ClCompile Include="world\source\StatusTypes.cpp" />
     <ClCompile Include="world\source\ThreatRatings.cpp" />
     <ClCompile Include="world\source\Tool.cpp" />
+    <ClCompile Include="world\source\unit_tests\Alignment_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\source\unit_tests\Ammunition_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

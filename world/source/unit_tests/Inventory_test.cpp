@@ -1,5 +1,6 @@
 #include "gtest/gtest.h"
 #include "Spellbook.hpp"
+#include "Tool.hpp"
 
 TEST(SL_World_Inventory, serialization_id)
 {
@@ -29,3 +30,24 @@ TEST(SL_World_Inventory, saveload)
   EXPECT_TRUE(*inv == *sinv2);
 }
 
+TEST(SL_World_Inventory, items_are_persisted)
+{
+  Inventory inv;
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  book->set_id("book");
+
+  ToolPtr tool = std::make_shared<Tool>();
+  tool->set_id("tool");
+
+  inv.add(book);
+  inv.add(tool);
+
+  EXPECT_FALSE(inv.empty());
+  EXPECT_EQ(2, inv.size());
+
+  ItemPtr item = inv.get_from_id("book");
+  ItemPtr item2 = inv.get_from_id("tool");
+
+  EXPECT_TRUE(item != nullptr);
+  EXPECT_TRUE(item2 != nullptr);
+}
