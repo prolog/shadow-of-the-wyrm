@@ -50,7 +50,7 @@ Savage Lands v0.2.5 "Eoppa"
   (basically, just for the bestiary entry).
 
 - New creatures: thaumaturge, snakeling assassin, snakeling conjurer,
-  snakeling thief, Kraal, Murk, Zaeda.
+  snakeling thief, Kraal, Murk, Zaeda, abomination.
 
 - New items: flying potion.
 

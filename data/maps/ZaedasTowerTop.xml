@@ -37,9 +37,23 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>abomination</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>zaeda</ID>
 				<Coord>
 					<Row>9</Row>
+					<Col>40</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>abomination</ID>
+				<Coord>
+					<Row>13</Row>
 					<Col>40</Col>
 				</Coord>
 			</Placement>
