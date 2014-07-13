@@ -70,5 +70,42 @@
 			<MapID>zaedas_tower</MapID>
 		</Exit>
 	</Exits>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>11</Col>
+			</Coord>
+			<FirePillar>
+				<Material>9</Material>
+			</FirePillar>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>68</Col>
+			</Coord>
+			<FirePillar>
+				<Material>9</Material>
+			</FirePillar>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>15</Row>
+				<Col>11</Col>
+			</Coord>
+			<FirePillar>
+				<Material>9</Material>
+			</FirePillar>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>15</Row>
+				<Col>68</Col>
+			</Coord>
+			<FirePillar>
+				<Material>9</Material>
+			</FirePillar>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>
