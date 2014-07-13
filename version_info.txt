@@ -44,13 +44,17 @@ Savage Lands v0.2.5 "Eoppa"
   - Unless the creature has the ability to fly, the creature will plummet
     to their immediate death.
 
+  - Populated the top floor of Zaeda's Tower with Zaeda and a number of
+    creatures in the 25-30 range.
+
 - Added a Flying status effect, and a corresponding potion.
 
 - Misc: added a "player" creature that should not be generatable
   (basically, just for the bestiary entry).
 
 - New creatures: thaumaturge, snakeling assassin, snakeling conjurer,
-  snakeling thief, Kraal, Murk, Zaeda, abomination.
+  snakeling thief, Kraal, Murk, Zaeda, abomination, forerunner,
+  planewalker, stone worm.
 
 - New items: flying potion.
 
