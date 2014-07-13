@@ -37,6 +37,34 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
+				<ID>beholder</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>32</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>beholder</ID>
+				<Coord>
+					<Row>8</Row>
+					<Col>47</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>beholder</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>32</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>beholder</ID>
+				<Coord>
+					<Row>11</Row>
+					<Col>47</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<ID>stone_worm</ID>
 				<Coord>
 					<Row>5</Row>
