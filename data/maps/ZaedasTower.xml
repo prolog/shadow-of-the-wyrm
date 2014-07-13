@@ -33,28 +33,35 @@
 	<InitialPlacements>
 		<Creatures>
 			<Placement>
-				<ID>great_serpent></ID>
+				<ID>altus</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>6</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>great_serpent</ID>
 				<Coord>
 					<Row>9</Row>
 					<Col>41</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>great_serpent></ID>
+				<ID>great_serpent</ID>
 				<Coord>
 					<Row>11</Row>
 					<Col>41</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>great_serpent></ID>
+				<ID>great_serpent</ID>
 				<Coord>
 					<Row>10</Row>
 					<Col>40</Col>
 				</Coord>
 			</Placement>
 			<Placement>
-				<ID>great_serpent></ID>
+				<ID>great_serpent</ID>
 				<Coord>
 					<Row>10</Row>
 					<Col>42</Col>
