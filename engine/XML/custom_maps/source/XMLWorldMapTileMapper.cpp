@@ -2,6 +2,14 @@
 
 using namespace std;
 
+// Always suppress the potential generation of items on world map tiles.
+// This is done by ensuring that the TileGenerator belonging to the
+// parent class is set up appropriately.
+XMLWorldMapTileMapper::XMLWorldMapTileMapper()
+{
+  tg.set_generate_items(false);
+}
+
 // Maps the world map XML tile (as a character) into a new TilePtr.
 TilePtr XMLWorldMapTileMapper::create_tile(const char xml_tile)
 {

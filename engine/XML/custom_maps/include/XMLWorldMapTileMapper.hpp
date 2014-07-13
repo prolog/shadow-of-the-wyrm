@@ -10,5 +10,7 @@
 class XMLWorldMapTileMapper : public XMLTileMapper
 {
   public:
+    XMLWorldMapTileMapper();
+
     virtual TilePtr create_tile(const char xml_tile);
 };
