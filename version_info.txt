@@ -60,10 +60,15 @@ Savage Lands v0.2.5 "Eoppa"
 
 - New spells: flight (Arcane).
       
-- Bug fixes: fixed an issue where the ActionCoordinator would not be
-  properly reset on the first turn after loading a game, to a loop being
-  exited prematurely, fixed the race on quivering blob (set to jelly; was
+- Bug fixes:
+
+  - Fixed an issue where the ActionCoordinator would not be properly reset 
+  on the first turn after loading a game, to a loop being exited 
+  prematurely, fixed the race on quivering blob (set to jelly; was 
   snakeling).
+
+  - Fixed an issue where world map tiles generated from WorldMapAreas.xml
+  could potentially have items on them.
 
 Savage Lands v0.2.4 "Esa"
 - Version declared May 4, 2014.  Version finalized June 15, 2014.
