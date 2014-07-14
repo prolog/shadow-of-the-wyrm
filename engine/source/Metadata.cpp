@@ -32,8 +32,8 @@ string Metadata::get_version() const
 
 string Metadata::get_code_name() const
 {
-  // King of Bernicia (later Northumberland)
-  return "\"Eoppa\"";
+  // King of Bernicia (later Northumberland).  Son of Eoppa.
+  return "\"Ida\"";
 }
 
 string Metadata::get_game_version_synopsis() const

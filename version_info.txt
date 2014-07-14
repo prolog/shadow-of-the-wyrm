@@ -1,5 +1,8 @@
+Savage Lands v0.2.6 "Ida"
+- Version declared July 13, 2014.
+
 Savage Lands v0.2.5 "Eoppa"
-- Version declared June 15, 2014.
+- Version declared June 15, 2014.  Version finalized July 13, 2014.
 
 - Added rudimentary support for reading ini settings.  The game will now
   first check for a settings file in the user's home directory.  If the
