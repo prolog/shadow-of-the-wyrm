@@ -27,13 +27,15 @@ Savage Lands v0.2.5 "Eoppa"
 - Started working on the Snake Lands, the area containing the snakeling
   village and Zaeda's Tower:
 
-  - Created the inhabitants of the village of Sithrin.
+  - Created the inhabitants of the village of Sithrin.  Populated the
+    village - it's less of a village and more of a mini-dungeon.  There
+    are a few buildings, each of which has useful items: a spellbook;
+    poison and freezing arrows; and the rune stone.
 
   - Added the island to the far north-east corner, adding a reference in
     the Isen Dun Chronicle.
 
-  - Created the custom map for the base of Zaeda's Tower.  The bottom and 
-    top floors are fixed, with the middle floors randomly generated.
+  - Created the custom map for the base and top floors of Zaeda's Tower.
 
   - Added Altus to the base of the tower.  His quest will let the player
     know what they need to do to open the door.
@@ -59,7 +61,8 @@ Savage Lands v0.2.5 "Eoppa"
   snakeling thief, Kraal, Murk, Altus, Zaeda, abomination, forerunner,
   planewalker, stone worm.
 
-- New items: flying potion, august longbow "Lora".
+- New items: flying potion, august longbow "Lora", poison arrows, freezing
+  arrows.
 
 - New spells: flight (Arcane).
       

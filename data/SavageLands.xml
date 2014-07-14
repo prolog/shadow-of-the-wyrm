@@ -16211,6 +16211,52 @@
 					<Type>1</Type>
 				</Damage>
 			</Missile>
+			<Missile id="freezing_arrow">
+				<DescriptionSID>FREEZING_ARROW_SID</DescriptionSID>
+				<UsageDescriptionSID>FREEZING_ARROW_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight><Pounds>0</Pounds><Ounces>9</Ounces></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>
+				<DangerLevel>15</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2003</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Type>4</Type>
+				</Damage>
+			</Missile>
+			<Missile id="poison_arrow">
+				<DescriptionSID>POISON_ARROW_SID</DescriptionSID>
+				<UsageDescriptionSID>POISON_ARROW_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight><Pounds>0</Pounds><Ounces>9</Ounces></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>/</Symbol>
+					<Colour>2</Colour>
+				</TextDetails>
+				<DangerLevel>15</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2003</RangedSkill>
+				<RequiresRangedWeapon>1</RequiresRangedWeapon>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>6</NumSides>
+					<Type>6</Type>
+				</Damage>
+			</Missile>
 			<Missile id="bolt">
 				<DescriptionSID>BOLT_SID</DescriptionSID>
 				<UsageDescriptionSID>BOLT_USAGE_SID</UsageDescriptionSID>
