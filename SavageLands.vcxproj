@@ -602,6 +602,7 @@
     <ClInclude Include="engine\strings\include\ColourTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\CombatTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ConductTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\CorpseTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DateTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DeityTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\DifficultyTextKeys.hpp" />
@@ -1803,6 +1804,7 @@
     <ClCompile Include="engine\strings\source\ColourTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\CombatTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ConductTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\CorpseTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DateTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DeityTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\DifficultyTextKeys.cpp" />
