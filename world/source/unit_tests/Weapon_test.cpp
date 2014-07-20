@@ -19,6 +19,7 @@ TEST(SL_World_Weapon, saveload)
   m.set_quantity(3);
   m.set_to_hit(17);
   m.set_addl_damage(4);
+  m.set_additional_property("testprop", "testval");
   r.set_quantity(1333);
   r.set_value(444);
   r.set_glowing(true);

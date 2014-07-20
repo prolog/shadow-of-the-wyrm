@@ -1,5 +1,6 @@
 #pragma once
 #include "Item.hpp"
+#include "ConsumableConstants.hpp"
 
 class Consumable : public Item
 {

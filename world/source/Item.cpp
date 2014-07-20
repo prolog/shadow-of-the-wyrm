@@ -67,6 +67,7 @@ bool Item::operator==(const Item& i) const
   result = result && (glowing == i.glowing);
   result = result && (resistances == i.resistances);
   result = result && (remaining_enchants == i.remaining_enchants);
+  result = result && (additional_properties == i.additional_properties);
 
   return result;
 }
@@ -509,6 +510,29 @@ void Item::do_enchant_item(const int points)
   }
 }
 
+void Item::set_additional_property(const string& property_name, const string& property_value)
+{
+  additional_properties[property_name] = property_value;
+}
+
+string Item::get_additional_property(const string& property_name) const
+{
+  string value;
+
+  auto p_it = additional_properties.find(property_name);
+  if (p_it != additional_properties.end())
+  {
+    value = p_it->second;
+  }
+
+  return value;
+}
+
+bool Item::has_additional_property(const string& property_name) const
+{
+  return (additional_properties.find(property_name) != additional_properties.end());
+}
+
 bool Item::serialize(ostream& stream) const
 {
   Serialize::write_string(stream, id);
@@ -538,6 +562,8 @@ bool Item::serialize(ostream& stream) const
 
   resistances.serialize(stream);
   remaining_enchants.serialize(stream);
+
+  Serialize::write_string_map(stream, additional_properties);
 
   return true;
 }
@@ -571,6 +597,8 @@ bool Item::deserialize(istream& stream)
 
   resistances.deserialize(stream);
   remaining_enchants.deserialize(stream);
+
+  Serialize::read_string_map(stream, additional_properties);
 
   return true;
 }

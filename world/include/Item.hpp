@@ -128,6 +128,10 @@ class Item : public ISerializable
     void set_remaining_enchants(const Statistic& new_remaining);
     Statistic get_remaining_enchants() const;
 
+    void set_additional_property(const std::string& property_name, const std::string& property_value);
+    std::string get_additional_property(const std::string& property_name) const;
+    bool has_additional_property(const std::string& property_name) const;
+
     virtual Item* create_with_new_id();
     virtual Item* create();
     virtual Item* clone() = 0;
@@ -177,6 +181,7 @@ class Item : public ISerializable
     bool glowing;
     Resistances resistances;
     Statistic remaining_enchants;
+    std::map<std::string, std::string> additional_properties;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const = 0;
