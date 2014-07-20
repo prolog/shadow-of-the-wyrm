@@ -3123,6 +3123,12 @@
     <ClInclude Include="engine\strings\include\CorpseTextKeys.hpp">
       <Filter>Header Files\engine\strings\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\items\include\CorpseFactory.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\ConsumableConstants.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6001,6 +6007,12 @@
     </ClCompile>
     <ClCompile Include="engine\strings\source\CorpseTextKeys.cpp">
       <Filter>Source Files\engine\strings\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\CorpseFactory.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\ConsumableConstants.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

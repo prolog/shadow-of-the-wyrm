@@ -3,6 +3,11 @@ Savage Lands v0.2.6 "Ida"
 
 - Started working on monster corpses.
 
+  - Incorporeal monsters will drop corpses.  The weight of the corpse
+    varies based on the size of the creature, so the player will
+    (eventually, once I add proper weight tracking) not be able to 
+    lift up the corpse of a dragon or a behemoth.
+
 Savage Lands v0.2.5 "Eoppa"
 - Version declared June 15, 2014.  Version finalized July 13, 2014.
 

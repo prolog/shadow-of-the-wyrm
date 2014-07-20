@@ -1,9 +1,11 @@
 #include "CombatTextKeys.hpp"
+#include "CorpseFactory.hpp"
 #include "CreatureDeathManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 
 using std::string;
 
@@ -67,6 +69,16 @@ void CreatureDeathManager::die() const
       ItemPtr current_item = inv->at(0);
       inv->remove(current_item->get_id());
       ground->add_front(current_item);
+    }
+
+    // Potentially generate a corpse as well.
+    if (RNG::percent_chance(PCT_CHANCE_CORPSE))
+    {
+      ItemPtr corpse = CorpseFactory::create_corpse(dead_creature);
+      if (corpse != nullptr)
+      {
+        ground->add_front(corpse);
+      }
     }
   }
 }

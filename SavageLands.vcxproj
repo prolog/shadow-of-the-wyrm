@@ -530,6 +530,7 @@
     <ClInclude Include="engine\include\SelectionUtils.hpp" />
     <ClInclude Include="engine\include\SettingKeybindings.hpp" />
     <ClInclude Include="engine\include\Settings.hpp" />
+    <ClInclude Include="engine\items\include\CorpseFactory.hpp" />
     <ClInclude Include="engine\items\include\EdibleItemFilter.hpp" />
     <ClInclude Include="engine\items\include\IItemFilter.hpp" />
     <ClInclude Include="engine\items\include\InitialItemEquipper.hpp" />
@@ -742,6 +743,7 @@
     <ClInclude Include="world\include\BoolStatistic.hpp" />
     <ClInclude Include="world\include\Conducts.hpp" />
     <ClInclude Include="world\include\ConductTypes.hpp" />
+    <ClInclude Include="world\include\ConsumableConstants.hpp" />
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
@@ -1614,6 +1616,7 @@
     <ClCompile Include="engine\generators\worship_sites\source\SimpleTempleGenerator.cpp" />
     <ClCompile Include="engine\generators\worship_sites\source\SnakingTempleGenerator.cpp" />
     <ClCompile Include="engine\generators\worship_sites\source\WorshipSiteGenerator.cpp" />
+    <ClCompile Include="engine\items\source\CorpseFactory.cpp" />
     <ClCompile Include="engine\items\source\EdibleItemFilter.cpp" />
     <ClCompile Include="engine\items\source\InitialItemEquipper.cpp" />
     <ClCompile Include="engine\items\source\InitialItemSelector.cpp" />
@@ -2059,6 +2062,7 @@
     <ClCompile Include="world\source\Boat.cpp" />
     <ClCompile Include="world\source\BoolStatistic.cpp" />
     <ClCompile Include="world\source\Conducts.cpp" />
+    <ClCompile Include="world\source\ConsumableConstants.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
     <ClCompile Include="world\source\Spellbook.cpp" />

@@ -15,6 +15,8 @@ class DeathManager
     CreaturePtr attacking_creature;
     CreaturePtr dead_creature;
     MapPtr map;
+
+    static const int PCT_CHANCE_CORPSE;
 };
 
 typedef std::shared_ptr<DeathManager> DeathManagerPtr;
