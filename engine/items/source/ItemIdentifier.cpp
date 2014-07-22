@@ -1,4 +1,6 @@
 #include <sstream>
+#include "CorpseTextKeys.hpp"
+#include "ConsumableConstants.hpp"
 #include "Game.hpp"
 #include "ItemIdentifier.hpp"
 #include "ItemFilterFactory.hpp"
@@ -139,7 +141,16 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
   
   if (item)
   {
-    if (item_identified || item->get_unidentified_description_sid().empty())
+    // If the item is a corpse, always create its description from the stored
+    // creature description SID.
+    string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
+    if (!creature_desc_sid.empty())
+    {
+      desc << CorpseTextKeys::get_corpse_description(StringTable::get(creature_desc_sid));
+    }
+    // Corpses are a special case.  For all other items, check the identified
+    // status, and base the description on whether it's identified or not.
+    else if (item_identified || item->get_unidentified_description_sid().empty())
     {
       desc << StringTable::get(item->get_description_sid());
 
@@ -174,12 +185,27 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
 {
   string appropriate_usage_desc;
   string udesc_sid;
+  string full_desc;
   
   if (item)
   {
+    // If the item is a corpse, always create its description from the stored
+    // creature description SID.  Because the overall description (e.g, 
+    // "a goblin corpse") isn't a SID, leave udesc_sid empty and populate
+    // full_desc, so that the appropriate description can be populated later.
+    //
+    // The same function is called for both get_appropriate_description and
+    // get_appropriate_usage_description because the creature description SID
+    // is the value stored on the item, so it will always create items of the
+    // style "a foo corpse".
+    string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
+    if (!creature_desc_sid.empty())
+    {
+      full_desc = CorpseTextKeys::get_corpse_description(StringTable::get(creature_desc_sid));
+    }
     // If the item is identified, or if its identity is not hidden (food,
     // etc)
-    if (get_item_identified(item->get_base_id()) || item->get_unidentified_usage_description_sid().empty())
+    else if (get_item_identified(item->get_base_id()) || item->get_unidentified_usage_description_sid().empty())
     {
       udesc_sid = item->get_usage_description_sid();
     }
@@ -193,7 +219,15 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
   // screens, etc., and will contain the item synopsis.  The usage description
   // is used when picking up/dropping an item, and so this shouldn't include
   // the synopsis (otherwise the sentences will be full of unnecessary clutter).
-  appropriate_usage_desc = StringTable::get(udesc_sid);
+  if (full_desc.empty())
+  {
+    appropriate_usage_desc = StringTable::get(udesc_sid);
+  }
+  else
+  {
+    appropriate_usage_desc = full_desc;
+  }
+
   return appropriate_usage_desc;
 }
 

@@ -9,12 +9,12 @@
 class CorpseFactory
 {
   public:
-    static ItemPtr create_corpse(CreaturePtr creature);
-
-  protected:
     CorpseFactory();
     ~CorpseFactory();
 
+    ItemPtr create_corpse(CreaturePtr creature);
+
+  protected:
     void initialize_size_weight_multipliers();
 
     static std::map<CreatureSize, float> size_weight_multipliers;

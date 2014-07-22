@@ -74,7 +74,9 @@ void CreatureDeathManager::die() const
     // Potentially generate a corpse as well.
     if (RNG::percent_chance(PCT_CHANCE_CORPSE))
     {
-      ItemPtr corpse = CorpseFactory::create_corpse(dead_creature);
+      CorpseFactory cf;
+      ItemPtr corpse = cf.create_corpse(dead_creature);
+
       if (corpse != nullptr)
       {
         ground->add_front(corpse);
