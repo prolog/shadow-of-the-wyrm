@@ -9,10 +9,7 @@ map<CreatureSize, float> CorpseFactory::size_weight_multipliers;
 
 CorpseFactory::CorpseFactory()
 {
-  if (size_weight_multipliers.empty())
-  {
-    initialize_size_weight_multipliers();
-  }
+  initialize_size_weight_multipliers();
 }
 
 CorpseFactory::~CorpseFactory()
@@ -45,7 +42,7 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
 
       RacePtr race = rm.get_race(creature->get_race_id());
 
-      if (race->get_corporeal().get_current())
+      if (race && race->get_corporeal().get_current())
       {
         // All the conditions to create a corpse have been met - create the
         // corpse, setting the appropriate values so that it will be
