@@ -53,6 +53,9 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
 
         if (corpse)
         {
+          // The corpse's colour should be that of the creature's.
+          corpse->set_colour(creature->get_colour());
+
           // Adjust the weight of the corpse based on the size of the creature.
           CreatureSize size = creature->get_size();
           float weight_multiplier = size_weight_multipliers[size];
