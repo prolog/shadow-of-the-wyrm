@@ -8,6 +8,8 @@ Savage Lands v0.2.6 "Ida"
     (eventually, once I add proper weight tracking) not be able to 
     lift up the corpse of a dragon or a behemoth.
 
+  - Corpse colour is always the creature's colour.
+
 Savage Lands v0.2.5 "Eoppa"
 - Version declared June 15, 2014.  Version finalized July 13, 2014.
 
