@@ -4,12 +4,12 @@
 using namespace std;
 
 Consumable::Consumable()
-: nutrition(0), standard_drinks(0.0f), food_type(FOOD_TYPE_OTHER)
+: nutrition(0), standard_drinks(0.0f), food_type(FOOD_TYPE_OTHER), poisoned(false)
 {
 }
 
 Consumable::Consumable(const int nutr, const float std_drinks)
-: nutrition(nutr), standard_drinks(std_drinks), food_type(FOOD_TYPE_OTHER)
+: nutrition(nutr), standard_drinks(std_drinks), food_type(FOOD_TYPE_OTHER), poisoned(false)
 {
 }
 
@@ -21,6 +21,7 @@ bool Consumable::operator==(const Consumable& consumable) const
   result = result && (nutrition == consumable.nutrition);
   result = result && (standard_drinks == consumable.standard_drinks);
   result = result && (food_type == consumable.food_type);
+  result = result && (poisoned == consumable.poisoned);
 
   return result;
 }
@@ -55,11 +56,22 @@ float Consumable::get_standard_drinks() const
   return standard_drinks;
 }
 
+void Consumable::set_poisoned(const bool new_poisoned)
+{
+  poisoned = new_poisoned;
+}
+
+bool Consumable::get_poisoned() const
+{
+  return poisoned;
+}
+
 // Food becomes more or less nutritious, based on whether the enchantment's BUC
-// status.
+// status.  Any poison is also removed.
 void Consumable::do_enchant_item(const int points)
 {
   nutrition *= points;
+  poisoned = false;
 }
 
 bool Consumable::serialize(ostream& stream) const
@@ -68,6 +80,7 @@ bool Consumable::serialize(ostream& stream) const
   Serialize::write_int(stream, nutrition);
   Serialize::write_float(stream, standard_drinks);
   Serialize::write_enum(stream, food_type);
+  Serialize::write_bool(stream, poisoned);
 
   return true;
 }
@@ -78,6 +91,7 @@ bool Consumable::deserialize(istream& stream)
   Serialize::read_int(stream, nutrition);
   Serialize::read_float(stream, standard_drinks);
   Serialize::read_enum(stream, food_type);
+  Serialize::read_bool(stream, poisoned);
 
   return true;
 }

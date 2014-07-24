@@ -20,6 +20,9 @@ class Consumable : public Item
     void set_standard_drinks(const float new_standard_drinks);
     float get_standard_drinks() const;
 
+    void set_poisoned(const bool new_poisoned);
+    bool get_poisoned() const;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
@@ -29,6 +32,7 @@ class Consumable : public Item
     int nutrition;
     float standard_drinks;
     FoodType food_type;
+    bool poisoned;
 };
 
 typedef std::shared_ptr<Consumable> ConsumablePtr;
