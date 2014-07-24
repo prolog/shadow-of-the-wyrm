@@ -5,6 +5,7 @@
 #include "Food.hpp"
 #include "FoodAction.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemIdentifier.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
 
@@ -100,16 +101,22 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
 void FoodAction::add_food_message(CreaturePtr creature, ItemPtr food, const bool eat_success)
 {
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  ItemIdentifier iid;
 
   string message;
 
+  // Get the appropriate usage description - this will correctly handle if the
+  // food is "regular food" (just use the description SID), or a corpse
+  // (generate the corpse name based on the creature it represents).
+  string item_desc = iid.get_appropriate_usage_description(food);
+
   if (eat_success)
   {
-    message = ActionTextKeys::get_eat_message(creature->get_description_sid(), StringTable::get(food->get_usage_description_sid()), creature->get_is_player());
+    message = ActionTextKeys::get_eat_message(creature->get_description_sid(), item_desc, creature->get_is_player());
   }
   else
   {
-    message = ActionTextKeys::get_full_message(creature->get_description_sid(), StringTable::get(food->get_usage_description_sid()), creature->get_is_player());
+    message = ActionTextKeys::get_full_message(creature->get_description_sid(), item_desc, creature->get_is_player());
   }
 
   manager.add_new_message(message);
