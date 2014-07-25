@@ -167,6 +167,23 @@ bool Damage::is_always_zero() const
   return (num_dice == 0) || (dice_sides == 0);
 }
 
+bool Damage::contains(const DamageType dt) const
+{
+  // First check the main damage type.
+  if (damage_type == dt) return true;
+
+  // If not, check any additional damage types.
+  auto add_dmg = additional_damage;
+
+  while (add_dmg != nullptr)
+  {
+    if (add_dmg->get_damage_type() == dt) return true;
+    else add_dmg = add_dmg->get_additional_damage();
+  }
+
+  return false;
+}
+
 string Damage::str() const
 {
   ostringstream ss;

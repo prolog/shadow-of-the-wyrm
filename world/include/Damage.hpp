@@ -32,6 +32,10 @@ class Damage : public Dice
     void set_status_ailments(const StatusAilments& new_ailments);
     StatusAilments get_status_ailments() const;
 
+    // Does the damage or any of the additional damages contain
+    // a particular damage type?
+    bool contains(const DamageType dt) const;
+
     // Check to see if the damage is always zero - this is used for
     // effect spells with no damage component (blindness, etc).
     bool is_always_zero() const;

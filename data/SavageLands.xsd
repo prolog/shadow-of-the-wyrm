@@ -754,6 +754,7 @@
 					 alcohol (Canada/US definition) -->
 				<xs:element name="StandardDrinks" type="xs:float" minOccurs="0"/>
 				<xs:element name="FoodType" type="tns:FoodType" minOccurs="0"/>
+				<xs:element name="Poisoned" type="xs:boolean" minOccurs="0"/>
 			</xs:sequence>
 		</xs:extension>
 	</xs:complexContent>

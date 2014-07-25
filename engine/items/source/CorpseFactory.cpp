@@ -1,3 +1,4 @@
+#include "Consumable.hpp"
 #include "ConsumableConstants.hpp"
 #include "CorpseFactory.hpp"
 #include "ItemManager.hpp"
@@ -55,6 +56,18 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
         {
           // The corpse's colour should be that of the creature's.
           corpse->set_colour(creature->get_colour());
+
+          // If the creature's damage contains any poison component, the corpse
+          // should be poisoned as well.
+          if (creature->get_base_damage().contains(DAMAGE_TYPE_POISON))
+          {
+            ConsumablePtr c_corpse = dynamic_pointer_cast<Consumable>(corpse);
+            
+            if (c_corpse)
+            {
+              c_corpse->set_poisoned(true);
+            }
+          }
 
           // Adjust the weight of the corpse based on the size of the creature.
           CreatureSize size = creature->get_size();
