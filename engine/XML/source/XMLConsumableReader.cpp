@@ -28,7 +28,7 @@ void XMLConsumableReader::parse(ConsumablePtr consumable, GenerationValues& gv, 
       consumable->set_food_type(food_type);
     }
 
-    bool poisoned = XMLUtils::get_child_node_bool_value(node, "Poison", consumable->get_poisoned());
+    bool poisoned = XMLUtils::get_child_node_bool_value(node, "Poisoned", consumable->get_poisoned());
     consumable->set_poisoned(poisoned);
   }
 }

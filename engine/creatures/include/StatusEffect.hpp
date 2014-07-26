@@ -16,7 +16,7 @@ class StatusEffect
     virtual ~StatusEffect();
 
     // Method to check whether the status should be applied.
-    bool should_apply_change(std::shared_ptr<Creature> creature, const int effect_bonus) const;
+    bool should_apply_change(std::shared_ptr<Creature> creature, const int effect_bonus = 0) const;
 
     // Methods to handle creating, updating, removing, etc., the status change.
     // Each of these simply calls the before, do, and after methods - these three

@@ -69,7 +69,6 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
   if (food)
   {
     ConsumableAction cm;
-    bool eat_success = false;
 
     // Is the character full?  If not, eat the food.
     HungerClock& hunger = creature->get_hunger_clock_ref();
@@ -77,19 +76,24 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
 
     if (!hunger.is_stuffed())
     {
+      // First add the message about eating the food, because eating can in
+      // turn generate other messages (if the food is poisoned, or the creature
+      // gets resists, etc).
+      add_food_message(creature, food, true);
 
       food->set_quantity(food->get_quantity() - 1);
       if (food->get_quantity() == 0) creature->get_inventory()->remove(food->get_id());
 
       cm.consume(creature, item_as_consumable);
 
-      eat_success = true;
+      int hunger_after = hunger.get_hunger();
+      add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
     }
-
-    int hunger_after = hunger.get_hunger();
-
-    add_food_message(creature, food, eat_success);
-    add_hunger_level_message_if_necessary(creature, hunger_before, hunger_after);
+    else
+    {
+      // Indicate that the creature wasn't able to stuff down the food.
+      add_food_message(creature, food, false);
+    }
 
     turn_advanced = true;
   }
