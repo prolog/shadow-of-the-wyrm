@@ -253,6 +253,16 @@ BoolStatistic Race::get_corporeal() const
   return corporeal;
 }
 
+void Race::set_flying(const BoolStatistic& new_flying)
+{
+  flying = new_flying;
+}
+
+BoolStatistic Race::get_flying() const
+{
+  return flying;
+}
+
 void Race::set_experience_multiplier(const float new_experience_multiplier)
 {
   experience_multiplier = new_experience_multiplier;
