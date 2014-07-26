@@ -9178,6 +9178,38 @@
 				<Type>1</Type>
 			</Damage>
 		</Creature>
+		<Creature id="pelican">
+			<RaceID>_animal</RaceID>
+			<BreatheType>1</BreatheType>
+			<ShortDescriptionSID>PELICAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>PELICAN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>PELICAN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>PELICAN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>p</Symbol>
+				<Colour>15</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>8</TileType>
+					<TileType>9</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>3</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>3</Exp>
+			</CreatureGeneration>
+			<Level>3</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Type>1</Type>
+			</Damage>
+		</Creature>
 		<Creature id="jellyfish">
 			<RaceID>_animal</RaceID>
 			<BreatheType>1</BreatheType>
