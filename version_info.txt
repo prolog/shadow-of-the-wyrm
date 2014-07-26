@@ -10,6 +10,12 @@ Savage Lands v0.2.6 "Ida"
 
   - Corpse colour is always the creature's colour.
 
+  - Creatures with a poison component in their damage type leave a
+    poisoned corpse.  Poisoned consumables (whether food or potion) have
+    a good chance of poisoning the eater/quaffer.
+
+- New creatures: pelican.
+
 Savage Lands v0.2.5 "Eoppa"
 - Version declared June 15, 2014.  Version finalized July 13, 2014.
 
