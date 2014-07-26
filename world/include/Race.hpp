@@ -86,6 +86,9 @@ class Race
     void set_corporeal(const BoolStatistic& new_corporeal);
     BoolStatistic get_corporeal() const;
 
+    void set_flying(const BoolStatistic& new_flying);
+    BoolStatistic get_flying() const;
+
     void set_experience_multiplier(const float new_experience_multiplier);
     float get_experience_multiplier() const;
     
@@ -133,6 +136,8 @@ class Race
     Statistic starting_speed; // starting speed is set by race.
 
     BoolStatistic corporeal; // Most races are corporeal; spirits aren't.
+
+    BoolStatistic flying; // Birds can fly - the rest aren't so lucky.
     
     // Available deities on creation
     std::vector<std::string> initial_deity_ids;

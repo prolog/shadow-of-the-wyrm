@@ -152,6 +152,64 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
+			<RaceInitialDeities>
+				<DeityID>01_celeste</DeityID>
+				<DeityID>02_aurelion</DeityID>
+				<DeityID>03_thelady</DeityID>
+				<DeityID>04_vedere</DeityID>
+				<DeityID>05_voros</DeityID>
+				<DeityID>06_thetrickster</DeityID>
+				<DeityID>07_shiver</DeityID>
+				<DeityID>08_urgoth</DeityID>
+				<DeityID>09_sceadugenga</DeityID>
+			</RaceInitialDeities>
+			<Resistances>
+				<Slash>0</Slash>
+				<Pierce>0</Pierce>
+				<Pound>0</Pound>
+				<Heat>0</Heat>
+				<Cold>0</Cold>
+				<Acid>0</Acid>
+				<Poison>0</Poison>
+				<Holy>0</Holy>
+				<Shadow>0</Shadow>
+				<Arcane>0</Arcane>
+				<Lightning>0</Lightning>
+			</Resistances>
+			<Skills>
+				<GeneralSkills/>
+				<WeaponSkills/>
+				<RangedWeaponSkills/>
+			</Skills>
+			<ExperienceMultiplier>1.0</ExperienceMultiplier>		
+		</Race>		
+		<Race id="_bird" parent_id="_animal">
+			<UserPlayable>0</UserPlayable>
+			<NameSID>BIRD_RACE_NAME</NameSID>
+			<Size>2</Size>
+			<AgeInfo>
+				<StartingAge>
+					<Min>20</Min>
+					<Max>20</Max>
+				</StartingAge>
+				<MaximumAge>
+					<Min>100</Min>
+					<Max>100</Max>
+				</MaximumAge>
+			</AgeInfo>
+			<RaceInitialStatistics>
+				<Strength>10</Strength>
+				<Dexterity>10</Dexterity>
+				<Agility>10</Agility>
+				<Health>10</Health>
+				<Intelligence>10</Intelligence>
+				<Willpower>10</Willpower>
+				<Charisma>10</Charisma>
+				<Speed>50</Speed>
+			</RaceInitialStatistics>
+			<Corporeal>1</Corporeal>
+			<Flying>1</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -208,6 +266,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -264,6 +323,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -320,6 +380,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -376,6 +437,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -432,6 +494,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -488,6 +551,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -544,6 +608,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -600,6 +665,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -656,6 +722,7 @@
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -706,6 +773,7 @@
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -759,6 +827,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>0</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -811,6 +880,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -866,6 +936,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -944,6 +1015,7 @@
 				<Speed>47</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -1013,6 +1085,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
@@ -1084,6 +1157,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -1153,6 +1227,7 @@
 				<Speed>45</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
@@ -1220,6 +1295,7 @@
 				<Speed>50</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -1289,6 +1365,7 @@
 				<Speed>48</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -1359,6 +1436,7 @@
 				<Speed>53</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>07_shiver</DeityID>
 				<DeityID>08_urgoth</DeityID>
@@ -1425,6 +1503,7 @@
 				<Speed>55</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>01_celeste</DeityID>
 				<DeityID>02_aurelion</DeityID>
@@ -1492,6 +1571,7 @@
 				<Speed>48</Speed>
 			</RaceInitialStatistics>
 			<Corporeal>1</Corporeal>
+			<Flying>0</Flying>
 			<RaceInitialDeities>
 				<DeityID>04_vedere</DeityID>
 				<DeityID>05_voros</DeityID>
@@ -5387,7 +5467,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="golden_eagle">
-			<RaceID>_animal</RaceID>
+			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>GOLDEN_EAGLE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>GOLDEN_EAGLE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>GOLDEN_EAGLE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9107,7 +9187,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="kestrel">
-			<RaceID>_animal</RaceID>
+			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>KESTREL_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>KESTREL_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>KESTREL_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9179,8 +9259,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="pelican">
-			<RaceID>_animal</RaceID>
-			<BreatheType>1</BreatheType>
+			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>PELICAN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>PELICAN_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>PELICAN_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9828,7 +9907,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="rook">
-			<RaceID>_animal</RaceID>
+			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>ROOK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>ROOK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>ROOK_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9869,7 +9948,7 @@
 			<Speed>40</Speed>
 		</Creature>
 		<Creature id="shrike">
-			<RaceID>_animal</RaceID>
+			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>SHRIKE_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>SHRIKE_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>SHRIKE_TEXT_DETAILS_SID</TextDetailsSID>
@@ -9910,7 +9989,7 @@
 			<Speed>40</Speed>
 		</Creature>
 		<Creature id="falcon">
-			<RaceID>_animal</RaceID>
+			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>FALCON_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>FALCON_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>FALCON_TEXT_DETAILS_SID</TextDetailsSID>
@@ -10411,7 +10490,7 @@
 			</Damage>
 		</Creature>
 		<Creature id="corpse_bird">
-			<RaceID>_animal</RaceID>
+			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>CORPSE_BIRD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>CORPSE_BIRD_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CORPSE_BIRD_TEXT_DETAILS_SID</TextDetailsSID>
@@ -11095,7 +11174,7 @@
 			<Soak>10</Soak>
 		</Creature>
 		<Creature id="blood_hawk">
-			<RaceID>_animal</RaceID>
+			<RaceID>_bird</RaceID>
 			<ShortDescriptionSID>BLOOD_HAWK_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
 			<DescriptionSID>BLOOD_HAWK_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>BLOOD_HAWK_TEXT_DETAILS_SID</TextDetailsSID>

@@ -14,6 +14,12 @@ Savage Lands v0.2.6 "Ida"
     poisoned corpse.  Poisoned consumables (whether food or potion) have
     a good chance of poisoning the eater/quaffer.
 
+- Added support for races to be able to fly automatically.
+
+- Made water tiles safe for flying creatures.
+
+- Created a new race, Bird, and set the Flying flag.
+
 - New creatures: pelican.
 
 Savage Lands v0.2.5 "Eoppa"
