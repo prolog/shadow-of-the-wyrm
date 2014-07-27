@@ -23,6 +23,10 @@ Savage Lands v0.2.6 "Ida"
 
 - Created a new race, Bird, and set the Flying flag.
 
+- Added a new text formatter for line breaks (so that text can be broken
+  up either by line or by paragraph).  Created a poem for the library of
+  Atua-Elar.
+
 - New creatures: pelican.
 
 Savage Lands v0.2.5 "Eoppa"

@@ -63,6 +63,12 @@ void TextDisplayFormatter::process_token(const string& current_token, vector<str
 
     result.push_back(current_str);
   }
+  else if (current_token == TextFormatSpecifiers::LINE_BREAK)
+  {
+    result.push_back(current_str);
+    current_str.clear();
+    cur_pos = 0;
+  }
   else
   {
     if ((cur_pos + current_token.length()) > (width-1))
