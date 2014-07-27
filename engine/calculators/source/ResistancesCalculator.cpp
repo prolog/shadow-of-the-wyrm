@@ -17,27 +17,13 @@ Resistances ResistancesCalculator::default_resistances()
 Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, RacePtr race, ClassPtr cur_class)
 {
   Resistances resists_calculated;
-
-  Resistances resists_race;
-
-  if (race)
-  {
-    resists_race = race->get_resistances();
-  }
-
-  Resistances resists_class;
-
-  if (cur_class)
-  {
-    resists_class = cur_class->get_resistances();
-  }
-
   Resistances resists_eq = calculate_equipment_resistances(creature);
 
-  double race_val  = 0.0;
-  double class_val = 0.0;
-  double eq_val    = 0.0;
-  double total_val = 0.0;
+  double raceclass_val  = 0.0;
+  double eq_val         = 0.0;
+  double total_val      = 0.0;
+
+  Resistances resists_raceclass = calculate_race_and_class_resistances(creature, race, cur_class);
 
   for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
   {
@@ -45,11 +31,9 @@ Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, R
     // Since the resistance is a multiplier, to increase resistance,
     // we subtract the value from 1 to get a value less than 1,
     // which will in turn reduce damage.
-    race_val  = (race) ? resists_race.get_resistance_value(dt) : 0;
-    class_val = (cur_class) ? resists_class.get_resistance_value(dt) : 0;
-    eq_val    = resists_eq.get_resistance_value(dt);
-
-    total_val = 1 - (race_val + class_val + eq_val);
+    raceclass_val = resists_raceclass.get_resistance_value(dt);
+    eq_val        = resists_eq.get_resistance_value(dt);
+    total_val     = 1 - (eq_val + raceclass_val);
       
     resists_calculated.set_resistance_value(dt, total_val);
   }
@@ -57,6 +41,40 @@ Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, R
   return resists_calculated;
 }
 
+// Calculate the creature's combined race and class resistances.
+Resistances ResistancesCalculator::calculate_race_and_class_resistances(CreaturePtr creature, RacePtr race, ClassPtr cur_class)
+{
+  Resistances res;
+  res.set_all_resistances_to(0);
+
+  if (creature)
+  {
+    // Since race and class may be optional, add guards to ensure that we're
+    // only using them when defined, using 0 for each res otherwise...
+    Resistances race_res;
+    race_res.set_all_resistances_to(0);
+    
+    if (race)
+    {
+      race_res = race->get_resistances();
+    }
+
+    Resistances class_res;
+    class_res.set_all_resistances_to(0);
+
+    if (cur_class)
+    {
+      class_res = cur_class->get_resistances();
+    }
+
+    for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+    {
+      res.set_resistance_value(dt, race_res.get_resistance_value(dt) + class_res.get_resistance_value(dt));
+    }
+  }
+
+  return res;
+}
 // Calculate eq resistances.  The values returned from this function
 // represent offsets - e.g., "0.2" means "0.2 more than standard", rather than
 // "the value is actually 0.2".  This allows the other calculation functions

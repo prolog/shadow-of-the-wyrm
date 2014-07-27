@@ -14,6 +14,9 @@ Savage Lands v0.2.6 "Ida"
     poisoned corpse.  Poisoned consumables (whether food or potion) have
     a good chance of poisoning the eater/quaffer.
 
+  - When creatures die, their race/class resistances are transferred
+    to the corpse.  Vulnerabilities are not transferred.
+
 - Added support for races to be able to fly automatically.
 
 - Made water tiles safe for flying creatures.

@@ -17,6 +17,11 @@ class CorpseFactory
   protected:
     void initialize_size_weight_multipliers();
 
+    void set_display_details(CreaturePtr creature, ItemPtr corpse);
+    void set_weight(CreaturePtr creature, ItemPtr corpse);
+    void set_poisoned_if_necessary(CreaturePtr creature, ItemPtr corpse);
+    void set_resistances(CreaturePtr creature, ItemPtr corpse);
+
     static std::map<CreatureSize, float> size_weight_multipliers;
 };
 
