@@ -27,6 +27,9 @@ Savage Lands v0.2.6 "Ida"
   up either by line or by paragraph).  Created a poem for the library of
   Atua-Elar.
 
+- New items: philosophical tract "On Eternalism" (added to the Atua-Elar
+  library).
+
 - New creatures: pelican.
 
 Savage Lands v0.2.5 "Eoppa"
