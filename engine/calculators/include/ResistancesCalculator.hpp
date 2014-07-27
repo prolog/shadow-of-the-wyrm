@@ -12,6 +12,7 @@ class ResistancesCalculator
   public:
     Resistances default_resistances();
     Resistances calculate_resistances(CreaturePtr creature, RacePtr race, ClassPtr char_class);
+    Resistances calculate_race_and_class_resistances(CreaturePtr creature, RacePtr race, ClassPtr cur_class);
 
   protected:
     Resistances calculate_equipment_resistances(CreaturePtr creature);

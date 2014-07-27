@@ -1,8 +1,10 @@
+#include "ClassManager.hpp"
 #include "Consumable.hpp"
 #include "ConsumableConstants.hpp"
 #include "CorpseFactory.hpp"
 #include "ItemManager.hpp"
 #include "RaceManager.hpp"
+#include "ResistancesCalculator.hpp"
 
 using namespace std;
 
@@ -54,33 +56,21 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
 
         if (corpse)
         {
-          // The corpse's colour should be that of the creature's.
-          corpse->set_colour(creature->get_colour());
+          // Set various aspects of the display detail - name of the creature
+          // being corpseified, colour of the corpse, etc.
+          set_display_details(creature, corpse);
 
           // If the creature's damage contains any poison component, the corpse
           // should be poisoned as well.
-          if (creature->get_base_damage().contains(DAMAGE_TYPE_POISON))
-          {
-            ConsumablePtr c_corpse = dynamic_pointer_cast<Consumable>(corpse);
-            
-            if (c_corpse)
-            {
-              c_corpse->set_poisoned(true);
-            }
-          }
+          set_poisoned_if_necessary(creature, corpse);
 
           // Adjust the weight of the corpse based on the size of the creature.
-          CreatureSize size = creature->get_size();
-          float weight_multiplier = size_weight_multipliers[size];
-          Weight weight = corpse->get_weight();
-          uint weight_oz = static_cast<uint>(weight.get_weight() * weight_multiplier);
-          weight.set_weight(weight_oz);
+          set_weight(creature, corpse);
 
-          corpse->set_weight(weight);
-
-          // Set the description SID, which will be used by the appropriate
-          // item describer to print something like "a chimera corpse".
-          corpse->set_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID, creature->get_description_sid());
+          // If the creature has any resistances, transfer these to the corpse
+          // so that consuming the corpse has the potential to increase the
+          // eater's power.
+          set_resistances(creature, corpse);
         }
       }
     }
@@ -89,3 +79,69 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
   return corpse;
 }
 
+void CorpseFactory::set_display_details(CreaturePtr creature, ItemPtr corpse)
+{
+  if (corpse)
+  {
+    // The corpse's colour should be that of the creature's.
+    corpse->set_colour(creature->get_colour());
+
+    // Set the description SID, which will be used by the appropriate
+    // item describer to print something like "a chimera corpse".
+    corpse->set_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID, creature->get_description_sid());
+  }
+}
+
+void CorpseFactory::set_poisoned_if_necessary(CreaturePtr creature, ItemPtr corpse)
+{
+  if (creature->get_base_damage().contains(DAMAGE_TYPE_POISON))
+  {
+    ConsumablePtr c_corpse = dynamic_pointer_cast<Consumable>(corpse);
+
+    if (c_corpse)
+    {
+      c_corpse->set_poisoned(true);
+    }
+  }
+}
+
+void CorpseFactory::set_weight(CreaturePtr creature, ItemPtr corpse)
+{
+  if (creature && corpse)
+  {
+    CreatureSize size = creature->get_size();
+    float weight_multiplier = size_weight_multipliers[size];
+    Weight weight = corpse->get_weight();
+    uint weight_oz = static_cast<uint>(weight.get_weight() * weight_multiplier);
+    weight.set_weight(weight_oz);
+
+    corpse->set_weight(weight);
+  }
+}
+
+void CorpseFactory::set_resistances(CreaturePtr creature, ItemPtr corpse)
+{
+  if (creature && corpse)
+  {
+    RaceManager rm;
+    ClassManager cm;
+
+    Resistances& corpse_resists  = corpse->get_resistances_ref();
+
+    // Ensure that we only consider race/class resistances when creating the
+    // corpse - don't factor in equipment.
+    ResistancesCalculator rc;
+    Resistances creature_resists = rc.calculate_race_and_class_resistances(creature, rm.get_race(creature->get_race_id()), cm.get_class(creature->get_class_id()));
+
+    // Only copy in resistances - never vulnerabilities.
+    for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+    {
+      double cur_val = creature_resists.get_resistance_value(dt);
+
+      if (cur_val > 0)
+      {
+        corpse_resists.set_resistance_value(dt, cur_val);
+      }
+    }
+  }
+}
