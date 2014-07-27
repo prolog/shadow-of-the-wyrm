@@ -129,6 +129,13 @@
 				</Coord>
 			</Placement>
 			<Placement>
+				<ID>on_eternalism</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>30</Col>
+				</Coord>
+			</Placement>
+			<Placement>
 				<Random>
 					<ID>healing_word_spellbook</ID>
 					<ID>lightning_bolt_spellbook</ID>
