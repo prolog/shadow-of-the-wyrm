@@ -128,10 +128,10 @@ void CorpseFactory::set_resistances(CreaturePtr creature, ItemPtr corpse)
 
     Resistances& corpse_resists  = corpse->get_resistances_ref();
 
-    // Ensure that we only consider race/class resistances when creating the
+    // Ensure that we don't consider equipment resistances when creating the
     // corpse - don't factor in equipment.
     ResistancesCalculator rc;
-    Resistances creature_resists = rc.calculate_race_and_class_resistances(creature, rm.get_race(creature->get_race_id()), cm.get_class(creature->get_class_id()));
+    Resistances creature_resists = rc.calculate_non_equipment_resistances(creature, rm.get_race(creature->get_race_id()), cm.get_class(creature->get_class_id()));
 
     // Only copy in resistances - never vulnerabilities.
     for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
