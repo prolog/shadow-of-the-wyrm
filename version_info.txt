@@ -17,6 +17,11 @@ Savage Lands v0.2.6 "Ida"
   - When creatures die, their race/class resistances are transferred
     to the corpse.  Vulnerabilities are not transferred.
 
+  - When a corpse (or other food or drink) with resistances) is consumed,
+    the creature's race, class, and intrinsic resistances are checked.  
+    If any of the corpses's resistances are greater than the total of
+    these, the creature gets the delta added to its intrinsic resists.
+
 - Added support for races to be able to fly automatically.
 
 - Made water tiles safe for flying creatures.

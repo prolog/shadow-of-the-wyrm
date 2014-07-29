@@ -41,6 +41,8 @@ Creature::Creature()
   
   Damage dam(1, 2, 0, DAMAGE_TYPE_POUND, false, false, 0, {});
   set_base_damage(dam);
+
+  intrinsic_resistances.set_all_resistances_to(0);
 }
 
 // Need to define these because of the ControllerPtr and DecisionStrategyPtr
@@ -78,6 +80,7 @@ Creature::Creature(const Creature& cr)
   equipment = cr.equipment;
   inventory = cr.inventory;
   resistances = cr.resistances;
+  intrinsic_resistances = cr.intrinsic_resistances;
   skills = cr.skills;
   movement_accumulation = cr.movement_accumulation;
   hit_points = cr.hit_points;
@@ -160,6 +163,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (equipment == cr.equipment);
   result = result && (inventory && cr.inventory && (*inventory == *(cr.inventory)));
   result = result && (resistances == cr.resistances);
+  result = result && (intrinsic_resistances == cr.intrinsic_resistances);
   result = result && (skills == cr.skills);
   result = result && (movement_accumulation == cr.movement_accumulation);
   result = result && (hit_points == cr.hit_points);
@@ -518,6 +522,21 @@ void Creature::set_resistances(const Resistances& new_resistances)
 Resistances& Creature::get_resistances()
 {
   return resistances;
+}
+
+void Creature::set_intrinsic_resistances(const Resistances& new_intrinsic_resistances)
+{
+  intrinsic_resistances = new_intrinsic_resistances;
+}
+
+Resistances& Creature::get_intrinsic_resistances_ref()
+{
+  return intrinsic_resistances;
+}
+
+Resistances Creature::get_intrinsic_resistances() const
+{
+  return intrinsic_resistances;
 }
 
 void Creature::set_skills(const Skills& new_skills)
@@ -1034,7 +1053,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 880, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 896, "Unexpected sizeof Creature.");
     #else
     // Release
     static_assert(sizeof(*this) == 800, "Unexpected sizeof Creature.");
@@ -1077,6 +1096,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->equipment, cr.equipment);
   std::swap(this->inventory, cr.inventory);
   std::swap(this->resistances, cr.resistances);
+  std::swap(this->intrinsic_resistances, cr.intrinsic_resistances);
   std::swap(this->skills, cr.skills);
   std::swap(this->movement_accumulation, cr.movement_accumulation);
   std::swap(this->hit_points, cr.hit_points);
@@ -1148,6 +1168,7 @@ bool Creature::serialize(ostream& stream) const
   inventory->serialize(stream);
   
   resistances.serialize(stream);
+  intrinsic_resistances.serialize(stream);
 
   skills.serialize(stream);
 
@@ -1280,6 +1301,7 @@ bool Creature::deserialize(istream& stream)
   inventory->deserialize(stream);
   
   resistances.deserialize(stream);
+  intrinsic_resistances.deserialize(stream);
 
   skills.deserialize(stream);
 

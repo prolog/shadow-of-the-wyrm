@@ -19,11 +19,13 @@ Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, R
   Resistances resists_calculated;
   Resistances resists_eq = calculate_equipment_resistances(creature);
 
-  double raceclass_val  = 0.0;
-  double eq_val         = 0.0;
-  double total_val      = 0.0;
+  double noneq_val  = 0.0;
+  double eq_val     = 0.0;
+  double total_val  = 0.0;
 
-  Resistances resists_raceclass = calculate_race_and_class_resistances(creature, race, cur_class);
+  // Combines race and class resistances, along with the creature's intrinsic
+  // values (gained along the way).
+  Resistances resists_noneq = calculate_non_equipment_resistances(creature, race, cur_class);
 
   for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
   {
@@ -31,9 +33,9 @@ Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, R
     // Since the resistance is a multiplier, to increase resistance,
     // we subtract the value from 1 to get a value less than 1,
     // which will in turn reduce damage.
-    raceclass_val = resists_raceclass.get_resistance_value(dt);
-    eq_val        = resists_eq.get_resistance_value(dt);
-    total_val     = 1 - (eq_val + raceclass_val);
+    noneq_val = resists_noneq.get_resistance_value(dt);
+    eq_val    = resists_eq.get_resistance_value(dt);
+    total_val = 1 - (eq_val + noneq_val);
       
     resists_calculated.set_resistance_value(dt, total_val);
   }
@@ -41,8 +43,8 @@ Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, R
   return resists_calculated;
 }
 
-// Calculate the creature's combined race and class resistances.
-Resistances ResistancesCalculator::calculate_race_and_class_resistances(CreaturePtr creature, RacePtr race, ClassPtr cur_class)
+// Calculate the creature's combined race, class, and intrinsic resistances.
+Resistances ResistancesCalculator::calculate_non_equipment_resistances(CreaturePtr creature, RacePtr race, ClassPtr cur_class)
 {
   Resistances res;
   res.set_all_resistances_to(0);
@@ -67,9 +69,15 @@ Resistances ResistancesCalculator::calculate_race_and_class_resistances(Creature
       class_res = cur_class->get_resistances();
     }
 
+    Resistances intr_res = creature->get_intrinsic_resistances();
+
     for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
     {
-      res.set_resistance_value(dt, race_res.get_resistance_value(dt) + class_res.get_resistance_value(dt));
+      double non_eq_value = race_res.get_resistance_value(dt)
+                          + class_res.get_resistance_value(dt)
+                          + intr_res.get_resistance_value(dt);
+
+      res.set_resistance_value(dt, non_eq_value);
     }
   }
 

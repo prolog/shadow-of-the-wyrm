@@ -11,6 +11,7 @@ TEST(SL_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
 
   Resistances race_resists;
   Resistances class_resists;
+  Resistances intrinsic_resists;
 
   race_resists.set_resistance_value(DAMAGE_TYPE_SLASH, 0.15);
   race_resists.set_resistance_value(DAMAGE_TYPE_HOLY, 0.20);
@@ -22,16 +23,23 @@ TEST(SL_Engine_Calcalators_ResistancesCalculator, calculate_resistances)
   class_resists.set_resistance_value(DAMAGE_TYPE_POISON, 0.05);
   class_resists.set_resistance_value(DAMAGE_TYPE_LIGHTNING, 0.05);
 
+  intrinsic_resists.set_resistance_value(DAMAGE_TYPE_SLASH, 0.10);
+  intrinsic_resists.set_resistance_value(DAMAGE_TYPE_HOLY, 0.02);
+  intrinsic_resists.set_resistance_value(DAMAGE_TYPE_POISON, 0.04);
+  intrinsic_resists.set_resistance_value(DAMAGE_TYPE_LIGHTNING, 0.07);
+
   racep->set_resistances(race_resists);
   classp->set_resistances(class_resists);
+
+  creature->set_intrinsic_resistances(intrinsic_resists);
 
   ResistancesCalculator rc;
   Resistances calc_resists = rc.calculate_resistances(creature, racep, classp);
 
-  EXPECT_DOUBLE_EQ(0.80, calc_resists.get_resistance_value(DAMAGE_TYPE_SLASH));
-  EXPECT_DOUBLE_EQ(0.75, calc_resists.get_resistance_value(DAMAGE_TYPE_HOLY));
-  EXPECT_DOUBLE_EQ(0.85, calc_resists.get_resistance_value(DAMAGE_TYPE_POISON));
-  EXPECT_DOUBLE_EQ(0.70, calc_resists.get_resistance_value(DAMAGE_TYPE_LIGHTNING));
+  EXPECT_DOUBLE_EQ(0.70, calc_resists.get_resistance_value(DAMAGE_TYPE_SLASH));
+  EXPECT_DOUBLE_EQ(0.73, calc_resists.get_resistance_value(DAMAGE_TYPE_HOLY));
+  EXPECT_DOUBLE_EQ(0.81, calc_resists.get_resistance_value(DAMAGE_TYPE_POISON));
+  EXPECT_DOUBLE_EQ(0.63, calc_resists.get_resistance_value(DAMAGE_TYPE_LIGHTNING));
 }
 
 TEST(SL_Engine_Calcalators_ResistancesCalculator, calculate_equipment_resistances)

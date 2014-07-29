@@ -141,6 +141,10 @@ class Creature : public ISerializable
     void set_resistances(const Resistances& resistances);
     Resistances& get_resistances();
 
+    void set_intrinsic_resistances(const Resistances& new_intrinsic_resistances);
+    Resistances& get_intrinsic_resistances_ref();
+    Resistances get_intrinsic_resistances() const;
+
     void set_skills(const Skills& new_skills);
     Skills& get_skills();
     
@@ -339,6 +343,12 @@ class Creature : public ISerializable
     // Resistances/vulns.  These act as a damage multiplier.  A value of 1.0 indicates no resistance or vulnerability.
     // 0.50 indicates half damage, 2.0 indicates double damage.
     Resistances resistances;
+
+    // Intrinsic resistances.  These are used internally in calculating a
+    // creature's actual resistances, forming a component (along with race,
+    // class, and equipment) of a creature's overall resistances.  Intrinsic
+    // resistances are typically gained by eating monster corpses.
+    Resistances intrinsic_resistances;
 
     // The creature's various skills.
     Skills skills;
