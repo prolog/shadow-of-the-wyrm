@@ -11,5 +11,7 @@ class ConsumableAction : public IActionManager
     ActionCostValue consume(CreaturePtr creature, ConsumablePtr consumable);
 
   protected:
+    void gain_resistances_from_consumable(CreaturePtr creature, ConsumablePtr consumable);
+    bool add_consumable_message_if_necessary(CreaturePtr creature, ResistancePtr res, const double delta);
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

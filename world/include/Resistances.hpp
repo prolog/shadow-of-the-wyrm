@@ -21,7 +21,7 @@ class Resistance : public ISerializable
   public:
     Resistance();
     virtual ~Resistance() {};
-    Resistance(const DamageType type, const std::string& name_sid, const std::string& abrv_sid, const double value);
+    Resistance(const DamageType type, const std::string& name_sid, const std::string& abrv_sid, const std::string& gain_msg_sid, const std::string& lose_msg_sid, const double value);
     virtual bool operator==(const Resistance& res) const;
 
     void set_type(const DamageType new_type);
@@ -32,6 +32,14 @@ class Resistance : public ISerializable
 
     void set_abrv_sid(const std::string& new_abrv_sid);
     std::string get_abrv_sid() const;
+
+    std::string get_gain_or_lose_message_sid(const bool gained_resistance) const;
+
+    void set_gain_message_sid(const std::string& new_msg_sid);
+    std::string get_gain_message_sid() const;
+
+    void set_lose_message_sid(const std::string& new_msg_sid);
+    std::string get_lose_message_sid() const;
 
     void set_value(const double new_value);
     double get_value() const;
@@ -47,6 +55,8 @@ class Resistance : public ISerializable
     DamageType type;
     std::string name_sid;
     std::string abrv_sid;
+    std::string gain_message_sid;
+    std::string lose_message_sid;
     double value;
 
   private:
