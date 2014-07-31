@@ -12,7 +12,7 @@ using namespace std;
 Resistance::Resistance()
 {
   type = DAMAGE_TYPE_NULL;
-  name_sid = "";
+
   // By default, the multiplier should be 1.
   // This is because creatures without a race
   // and class will use this value, so they
@@ -28,16 +28,20 @@ bool Resistance::operator==(const Resistance& r) const
   result = result && (type == r.type);
   result = result && (name_sid == r.name_sid);
   result = result && (abrv_sid == r.abrv_sid);
+  result = result && (gain_message_sid == r.gain_message_sid);
+  result = result && (lose_message_sid == r.lose_message_sid);
   result = result && (dequal(value, r.value));
 
   return result;
 }
 
-Resistance::Resistance(const DamageType dt, const string& name, const string& abrv, const double val)
+Resistance::Resistance(const DamageType dt, const string& name, const string& abrv, const string& gain, const string& lose, const double val)
 {
   type = dt;
   name_sid = name;
   abrv_sid = abrv;
+  gain_message_sid = gain;
+  lose_message_sid = lose;
   value = val;
 }
 
@@ -71,6 +75,38 @@ string Resistance::get_abrv_sid() const
   return abrv_sid;
 }
 
+string Resistance::get_gain_or_lose_message_sid(const bool gained_resistance) const
+{
+  if (gained_resistance)
+  {
+    return gain_message_sid;
+  }
+  else
+  {
+    return lose_message_sid;
+  }
+}
+
+void Resistance::set_gain_message_sid(const string& new_msg_sid)
+{
+  gain_message_sid = new_msg_sid;
+}
+
+string Resistance::get_gain_message_sid() const
+{
+  return gain_message_sid;
+}
+
+void Resistance::set_lose_message_sid(const string& new_msg_sid)
+{
+  lose_message_sid = new_msg_sid;
+}
+
+string Resistance::get_lose_message_sid() const
+{
+  return lose_message_sid;
+}
+
 void Resistance::set_value(const double new_value)
 {
   value = new_value;
@@ -96,6 +132,8 @@ bool Resistance::serialize(ostream& stream) const
   Serialize::write_enum(stream, type);
   Serialize::write_string(stream, name_sid);
   Serialize::write_string(stream, abrv_sid);
+  Serialize::write_string(stream, gain_message_sid);
+  Serialize::write_string(stream, lose_message_sid);
   Serialize::write_double(stream, value);
 
   return true;
@@ -106,6 +144,8 @@ bool Resistance::deserialize(istream& stream)
   Serialize::read_enum(stream, type);
   Serialize::read_string(stream, name_sid);
   Serialize::read_string(stream, abrv_sid);
+  Serialize::read_string(stream, gain_message_sid);
+  Serialize::read_string(stream, lose_message_sid);
   Serialize::read_double(stream, value);
 
   return true;
@@ -221,7 +261,7 @@ ClassIdentifier Resistances::internal_class_identifier() const
 
 // Individual resistance classes
 SlashResistance::SlashResistance()
-: Resistance(DAMAGE_TYPE_SLASH, ResistanceTextKeys::RESISTANCE_SLASH, ResistanceTextKeys::RESISTANCE_ABRV_SLASH, 0.0)
+: Resistance(DAMAGE_TYPE_SLASH, ResistanceTextKeys::RESISTANCE_SLASH, ResistanceTextKeys::RESISTANCE_ABRV_SLASH, ResistanceTextKeys::RESISTANCE_GAIN_SLASH, ResistanceTextKeys::RESISTANCE_LOSE_SLASH, 0.0)
 {
 }
 
@@ -236,7 +276,7 @@ ClassIdentifier SlashResistance::internal_class_identifier() const
 }
 
 PoundResistance::PoundResistance()
-: Resistance(DAMAGE_TYPE_POUND, ResistanceTextKeys::RESISTANCE_POUND, ResistanceTextKeys::RESISTANCE_ABRV_POUND, 0.0)
+: Resistance(DAMAGE_TYPE_POUND, ResistanceTextKeys::RESISTANCE_POUND, ResistanceTextKeys::RESISTANCE_ABRV_POUND, ResistanceTextKeys::RESISTANCE_GAIN_POUND, ResistanceTextKeys::RESISTANCE_LOSE_POUND, 0.0)
 {
 }
 
@@ -251,7 +291,7 @@ ClassIdentifier PoundResistance::internal_class_identifier() const
 }
 
 PierceResistance::PierceResistance()
-: Resistance(DAMAGE_TYPE_PIERCE, ResistanceTextKeys::RESISTANCE_PIERCE, ResistanceTextKeys::RESISTANCE_ABRV_PIERCE, 0.0)
+: Resistance(DAMAGE_TYPE_PIERCE, ResistanceTextKeys::RESISTANCE_PIERCE, ResistanceTextKeys::RESISTANCE_ABRV_PIERCE, ResistanceTextKeys::RESISTANCE_GAIN_PIERCE, ResistanceTextKeys::RESISTANCE_LOSE_PIERCE, 0.0)
 {
 }
 
@@ -266,7 +306,7 @@ ClassIdentifier PierceResistance::internal_class_identifier() const
 }
 
 HeatResistance::HeatResistance()
-: Resistance(DAMAGE_TYPE_HEAT, ResistanceTextKeys::RESISTANCE_HEAT, ResistanceTextKeys::RESISTANCE_ABRV_HEAT, 0.0)
+: Resistance(DAMAGE_TYPE_HEAT, ResistanceTextKeys::RESISTANCE_HEAT, ResistanceTextKeys::RESISTANCE_ABRV_HEAT, ResistanceTextKeys::RESISTANCE_GAIN_HEAT, ResistanceTextKeys::RESISTANCE_LOSE_HEAT, 0.0)
 {
 }
 
@@ -281,7 +321,7 @@ ClassIdentifier HeatResistance::internal_class_identifier() const
 }
 
 ColdResistance::ColdResistance()
-: Resistance(DAMAGE_TYPE_COLD, ResistanceTextKeys::RESISTANCE_COLD, ResistanceTextKeys::RESISTANCE_ABRV_COLD, 0.0)
+: Resistance(DAMAGE_TYPE_COLD, ResistanceTextKeys::RESISTANCE_COLD, ResistanceTextKeys::RESISTANCE_ABRV_COLD, ResistanceTextKeys::RESISTANCE_GAIN_COLD, ResistanceTextKeys::RESISTANCE_LOSE_COLD, 0.0)
 {
 }
 
@@ -296,7 +336,7 @@ ClassIdentifier ColdResistance::internal_class_identifier() const
 }
 
 AcidResistance::AcidResistance()
-: Resistance(DAMAGE_TYPE_ACID, ResistanceTextKeys::RESISTANCE_ACID, ResistanceTextKeys::RESISTANCE_ABRV_ACID, 0.0)
+: Resistance(DAMAGE_TYPE_ACID, ResistanceTextKeys::RESISTANCE_ACID, ResistanceTextKeys::RESISTANCE_ABRV_ACID, ResistanceTextKeys::RESISTANCE_GAIN_ACID, ResistanceTextKeys::RESISTANCE_LOSE_ACID, 0.0)
 {
 }
 
@@ -311,7 +351,7 @@ ClassIdentifier AcidResistance::internal_class_identifier() const
 }
 
 PoisonResistance::PoisonResistance()
-: Resistance(DAMAGE_TYPE_POISON, ResistanceTextKeys::RESISTANCE_POISON, ResistanceTextKeys::RESISTANCE_ABRV_POISON, 0.0)
+: Resistance(DAMAGE_TYPE_POISON, ResistanceTextKeys::RESISTANCE_POISON, ResistanceTextKeys::RESISTANCE_ABRV_POISON, ResistanceTextKeys::RESISTANCE_GAIN_POISON, ResistanceTextKeys::RESISTANCE_LOSE_POISON, 0.0)
 {
 }
 
@@ -326,7 +366,7 @@ ClassIdentifier PoisonResistance::internal_class_identifier() const
 }
 
 HolyResistance::HolyResistance()
-: Resistance(DAMAGE_TYPE_HOLY, ResistanceTextKeys::RESISTANCE_HOLY, ResistanceTextKeys::RESISTANCE_ABRV_HOLY, 0.0)
+: Resistance(DAMAGE_TYPE_HOLY, ResistanceTextKeys::RESISTANCE_HOLY, ResistanceTextKeys::RESISTANCE_ABRV_HOLY, ResistanceTextKeys::RESISTANCE_GAIN_HOLY, ResistanceTextKeys::RESISTANCE_LOSE_HOLY, 0.0)
 {
 }
 
@@ -341,7 +381,7 @@ ClassIdentifier HolyResistance::internal_class_identifier() const
 }
 
 ShadowResistance::ShadowResistance()
-: Resistance(DAMAGE_TYPE_SHADOW, ResistanceTextKeys::RESISTANCE_SHADOW, ResistanceTextKeys::RESISTANCE_ABRV_SHADOW, 0.0)
+: Resistance(DAMAGE_TYPE_SHADOW, ResistanceTextKeys::RESISTANCE_SHADOW, ResistanceTextKeys::RESISTANCE_ABRV_SHADOW, ResistanceTextKeys::RESISTANCE_GAIN_SHADOW, ResistanceTextKeys::RESISTANCE_LOSE_SHADOW, 0.0)
 {
 }
 
@@ -356,7 +396,7 @@ ClassIdentifier ShadowResistance::internal_class_identifier() const
 }
 
 ArcaneResistance::ArcaneResistance()
-: Resistance(DAMAGE_TYPE_ARCANE, ResistanceTextKeys::RESISTANCE_ARCANE, ResistanceTextKeys::RESISTANCE_ABRV_ARCANE, 0.0)
+: Resistance(DAMAGE_TYPE_ARCANE, ResistanceTextKeys::RESISTANCE_ARCANE, ResistanceTextKeys::RESISTANCE_ABRV_ARCANE, ResistanceTextKeys::RESISTANCE_GAIN_ARCANE, ResistanceTextKeys::RESISTANCE_LOSE_ARCANE, 0.0)
 {
 }
 
@@ -371,7 +411,7 @@ ClassIdentifier ArcaneResistance::internal_class_identifier() const
 }
 
 LightningResistance::LightningResistance()
-: Resistance(DAMAGE_TYPE_LIGHTNING, ResistanceTextKeys::RESISTANCE_LIGHTNING, ResistanceTextKeys::RESISTANCE_ABRV_LIGHTNING, 0.0)
+: Resistance(DAMAGE_TYPE_LIGHTNING, ResistanceTextKeys::RESISTANCE_LIGHTNING, ResistanceTextKeys::RESISTANCE_ABRV_LIGHTNING, ResistanceTextKeys::RESISTANCE_GAIN_LIGHTNING, ResistanceTextKeys::RESISTANCE_LOSE_LIGHTNING, 0.0)
 {
 }
 

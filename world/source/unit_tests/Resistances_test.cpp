@@ -1,6 +1,39 @@
 #include "gtest/gtest.h"
 #include "ResistanceFactory.hpp"
 
+TEST(SL_World_Resistances, gain_and_lose_messages)
+{
+  map<DamageType, pair<std::string, std::string>> gain_lose_msgs =
+  { { DAMAGE_TYPE_SLASH, { ResistanceTextKeys::RESISTANCE_GAIN_SLASH, ResistanceTextKeys::RESISTANCE_LOSE_SLASH }},
+    { DAMAGE_TYPE_PIERCE, { ResistanceTextKeys::RESISTANCE_GAIN_PIERCE, ResistanceTextKeys::RESISTANCE_LOSE_PIERCE } }, 
+    { DAMAGE_TYPE_POUND, { ResistanceTextKeys::RESISTANCE_GAIN_POUND, ResistanceTextKeys::RESISTANCE_LOSE_POUND } }, 
+    { DAMAGE_TYPE_HEAT, { ResistanceTextKeys::RESISTANCE_GAIN_HEAT, ResistanceTextKeys::RESISTANCE_LOSE_HEAT } }, 
+    { DAMAGE_TYPE_COLD, { ResistanceTextKeys::RESISTANCE_GAIN_COLD, ResistanceTextKeys::RESISTANCE_LOSE_COLD } }, 
+    { DAMAGE_TYPE_ACID, { ResistanceTextKeys::RESISTANCE_GAIN_ACID, ResistanceTextKeys::RESISTANCE_LOSE_ACID } }, 
+    { DAMAGE_TYPE_POISON, { ResistanceTextKeys::RESISTANCE_GAIN_POISON, ResistanceTextKeys::RESISTANCE_LOSE_POISON } }, 
+    { DAMAGE_TYPE_HOLY, { ResistanceTextKeys::RESISTANCE_GAIN_HOLY, ResistanceTextKeys::RESISTANCE_LOSE_HOLY } }, 
+    { DAMAGE_TYPE_SHADOW, { ResistanceTextKeys::RESISTANCE_GAIN_SHADOW, ResistanceTextKeys::RESISTANCE_LOSE_SHADOW } }, 
+    { DAMAGE_TYPE_ARCANE, { ResistanceTextKeys::RESISTANCE_GAIN_ARCANE, ResistanceTextKeys::RESISTANCE_LOSE_ARCANE } }, 
+    { DAMAGE_TYPE_LIGHTNING, { ResistanceTextKeys::RESISTANCE_GAIN_LIGHTNING, ResistanceTextKeys::RESISTANCE_LOSE_LIGHTNING } } };
+
+  Resistances res;
+
+  for (const auto& pair : gain_lose_msgs)
+  {
+    ResistancePtr cur_res = res.get_resistance(pair.first);
+
+    string gain_msg = cur_res->get_gain_message_sid();
+    string lose_msg = cur_res->get_lose_message_sid();
+    string indirect_gain_msg = cur_res->get_gain_or_lose_message_sid(true);
+    string indirect_lose_msg = cur_res->get_gain_or_lose_message_sid(false);
+
+    EXPECT_EQ(pair.second.first, gain_msg);
+    EXPECT_EQ(pair.second.second, lose_msg);
+    EXPECT_EQ(gain_msg, indirect_gain_msg);
+    EXPECT_EQ(lose_msg, indirect_lose_msg);
+  }
+}
+
 TEST(SL_World_Resistances, serialization_id)
 {
   Resistances resistances;
