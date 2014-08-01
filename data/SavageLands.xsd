@@ -1419,7 +1419,7 @@
 <xs:simpleType name="FoodType">
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="3"/>
+		<xs:maxInclusive value="4"/>
 	</xs:restriction>
 </xs:simpleType>
 </xs:schema>
