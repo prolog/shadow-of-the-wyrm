@@ -1663,6 +1663,25 @@
 					<Spears>5</Spears>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>ADVENTURER_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>ADVENTURER_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>ADVENTURER_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>ADVENTURER_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>ADVENTURER_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
@@ -1744,6 +1763,25 @@
 					<Bludgeons>3</Bludgeons>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>APOTHECARY_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>APOTHECARY_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>APOTHECARY_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>APOTHECARY_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>APOTHECARY_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>club</ID></Wielded>

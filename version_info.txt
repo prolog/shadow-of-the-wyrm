@@ -24,6 +24,10 @@ Savage Lands v0.2.6 "Ida"
     and a message is added if the creature is the player, to indicate the
     type of resistance gained.
 
+- Support for creature titles.  These are based on class (though there is
+  also a generic "the Unknown"-type title for those cases where creatures
+  don't have classes), and are gained at levels 1, 10, 20, 30, and 45.
+
 - Added support for races to be able to fly automatically.
 
 - Made water tiles safe for flying creatures.
