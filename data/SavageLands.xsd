@@ -362,6 +362,7 @@
 			<xs:element name="APDice" type="xs:unsignedInt"/>
 			<xs:element ref="tns:Resistances"/>
 			<xs:element ref="tns:Skills"/>
+			<xs:element ref="tns:Titles"/>
 			<xs:element name="PietyCostMultiplier" type="tns:NonNegativeDecimal" minOccurs="0"/>
 			<xs:element name="PietyRegenBonus" type="xs:integer" minOccurs="0"/>
 			<xs:element name="ExperienceMultiplier" type="tns:NonNegativeDecimal"/>
@@ -507,6 +508,28 @@
 			<xs:element ref="tns:WeaponSkills" minOccurs="0"/>
 			<xs:element ref="tns:RangedWeaponSkills" minOccurs="0"/>
 			<xs:element ref="tns:MagicSkills" minOccurs="0"/>		
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Titles">
+	<xs:annotation>
+		<xs:documentation>A set of titles, attached to a particular class.  Each title is a SID.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Default" type="xs:string"/>
+			<xs:element ref="tns:Title" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Title">
+	<xs:annotation>
+		<xs:documentation>A particular title for a particular class.</xs:documentation>
+	</xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Level" type="xs:int"/>
+			<xs:element name="SID" type="xs:string"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
