@@ -1853,6 +1853,25 @@
 					<Spears>7</Spears>
 				</RangedWeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>ARCHER_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>ARCHER_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>ARCHER_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>ARCHER_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>ARCHER_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>leather_helm</ID></Head>
@@ -2041,6 +2060,25 @@
 					<Daggers>2</Daggers>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>ARTISAN_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>ARTISAN_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>ARTISAN_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>ARTISAN_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>ARTISAN_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>dagger</ID></Wielded>
@@ -2101,6 +2139,25 @@
 					<Whips>7</Whips>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>MERCHANT_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>MERCHANT_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>MERCHANT_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>MERCHANT_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>MERCHANT_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded>
@@ -2166,6 +2223,25 @@
 					<Daggers>5</Daggers>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>MINSTREL_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>MINSTREL_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>MINSTREL_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>MINSTREL_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>MINSTREL_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>dagger</ID></Wielded>
