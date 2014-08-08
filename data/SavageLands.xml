@@ -2286,6 +2286,25 @@
 				<Arcane>0.0</Arcane>
 				<Lightning>0.0</Lightning>
 			</Resistances>
+			<Titles>
+				<Default>NOBLE_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>NOBLE_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>NOBLE_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>NOBLE_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>NOBLE_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<Skills>
 				<GeneralSkills>
 					<Boating>15</Boating>
@@ -2374,6 +2393,25 @@
 					<Mystic>25</Mystic>
 				</MagicSkills>
 			</Skills>
+			<Titles>
+				<Default>ORACLE_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>ORACLE_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>ORACLE_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>ORACLE_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>ORACLE_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>cypress_rod</ID></Wielded>
@@ -2446,6 +2484,25 @@
 					<Divine>25</Divine>
 				</MagicSkills>
 			</Skills>
+			<Titles>
+				<Default>PILGRIM_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>PILGRIM_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>PILGRIM_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>PILGRIM_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>PILGRIM_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<PietyCostMultiplier>0.75</PietyCostMultiplier>
 			<PietyRegenBonus>3</PietyRegenBonus>
 			<ExperienceMultiplier>1.03</ExperienceMultiplier>
@@ -2516,6 +2573,25 @@
 					<Unarmed>7</Unarmed>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>PUGILIST_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>PUGILIST_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>PUGILIST_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>PUGILIST_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>PUGILIST_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>0.97</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
@@ -2596,6 +2672,25 @@
 					<Slings>5</Slings>
 				</RangedWeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>ROVER_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>ROVER_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>ROVER_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>ROVER_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>ROVER_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>woodsman_axe</ID></Wielded>
@@ -2662,6 +2757,25 @@
 					<Primordial>15</Primordial>
 				</MagicSkills>
 			</Skills>
+			<Titles>
+				<Default>SAGE_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>SAGE_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>SAGE_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>SAGE_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>SAGE_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>yew_staff</ID></Wielded>
@@ -2724,6 +2838,25 @@
 					<Spears>7</Spears>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>SEAFARER_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>SEAFARER_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>SEAFARER_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>SEAFARER_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>SEAFARER_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
@@ -2788,6 +2921,25 @@
 					<RodsAndStaves>5</RodsAndStaves>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>SHEPHERD_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>SHEPHERD_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>SHEPHERD_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>SHEPHERD_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>SHEPHERD_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<PietyCostMultiplier>0.40</PietyCostMultiplier>
 			<PietyRegenBonus>5</PietyRegenBonus>
 			<ExperienceMultiplier>0.9</ExperienceMultiplier>
