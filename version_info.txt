@@ -39,7 +39,7 @@ Savage Lands v0.2.6 "Ida"
   Atua-Elar.
 
 - New items: philosophical tract "On Eternalism" (added to the Atua-Elar
-  library).
+  library), lituus.
 
 - New creatures: pelican.
 
