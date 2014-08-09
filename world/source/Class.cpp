@@ -176,6 +176,16 @@ string Class::get_level_script() const
   return level_script;
 }
 
+void Class::set_titles(const map<int, string>& new_titles)
+{
+  titles = new_titles;
+}
+
+map<int, string> Class::get_titles() const
+{
+  return titles;
+}
+
 string Class::str() const
 {
   ostringstream class_details;
@@ -201,6 +211,12 @@ string Class::str() const
   class_details << skills.str() << endl;
   class_details << experience_multiplier << endl;
   class_details << piety_cost_multiplier << " " << piety_regen_bonus << endl;
+
+  for (const auto& t_pair : titles)
+  {
+    class_details << t_pair.first << ": " << t_pair.second << endl;
+  }
+
   class_details << level_script << endl;
 
   return class_details.str();
