@@ -2,6 +2,7 @@
 #include <boost/algorithm/string.hpp>
 #include "global_prototypes.hpp"
 #include "CharacterDumper.hpp"
+#include "ClassManager.hpp"
 #include "ColourTextKeys.hpp"
 #include "ConductsDumper.hpp"
 #include "Conversion.hpp"
@@ -42,7 +43,7 @@ string CharacterDumper::str() const
   Metadata meta;
   string version = meta.get_game_version_synopsis();
   ss << String::centre(version, num_cols) << endl << endl;
-  ss << String::centre(creature->get_name(), num_cols) << endl;
+  ss << String::centre(TextMessages::get_name_and_title(creature), num_cols) << endl;
   ss << get_synopsis() << endl << endl;
   ss << get_vital_statistics();
     
