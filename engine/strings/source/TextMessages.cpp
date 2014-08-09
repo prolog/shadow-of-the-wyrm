@@ -1,5 +1,6 @@
 #include <boost/algorithm/string/replace.hpp>
 #include "ActionTextKeys.hpp"
+#include "ClassManager.hpp"
 #include "Conversion.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "ItemDescriberFactory.hpp"
@@ -27,6 +28,7 @@ const string TextMessages::ITEM_PICK_UP_AND_MERGE_MESSAGE     = "ITEM_PICK_UP_AN
 const string TextMessages::ITEM_ON_GROUND_DESCRIPTION_MESSAGE = "ITEM_ON_GROUND_DESCRIPTION_MESSAGE";
 const string TextMessages::CURRENCY_MESSAGE_SINGLE            = "CURRENCY_MESSAGE_SINGLE";
 const string TextMessages::CURRENCY_MESSAGE_MULTIPLE          = "CURRENCY_MESSAGE_MULTIPLE";
+const string TextMessages::NAME_TITLE_MESSAGE                 = "NAME_TITLE_MESSAGE";
 
 string TextMessages::get_player_description(const string& player_name)
 {
@@ -349,4 +351,20 @@ string TextMessages::get_reflexive_pronoun(CreaturePtr creature)
   }
 
   return reflexive_pronoun;
+}
+
+string TextMessages::get_name_and_title(CreaturePtr creature)
+{
+  string nt;
+
+  if (creature)
+  {
+    ClassManager cm;
+
+    nt = StringTable::get(NAME_TITLE_MESSAGE);
+    boost::replace_first(nt, "%s", creature->get_name());
+    boost::replace_first(nt, "%s", cm.get_title(creature));
+  }
+
+  return nt;
 }

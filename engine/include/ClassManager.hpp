@@ -1,5 +1,5 @@
 #pragma once
-#include "Class.hpp"
+#include "Creature.hpp"
 
 class ClassManager
 {
@@ -7,4 +7,5 @@ class ClassManager
     ClassManager();
 
     ClassPtr get_class(const std::string& class_id);
+    std::string get_title(CreaturePtr creature);
 };

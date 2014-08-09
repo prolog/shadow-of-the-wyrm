@@ -18,6 +18,7 @@ class TextMessages
     static std::string get_dumping_character_message(const std::string& creature_name);
     static std::string get_sex(const CreatureSex sex);
     static std::string get_sex_abrv(const CreatureSex sex);
+    static std::string get_name_and_title(CreaturePtr creature);
     static std::string get_equipment_location(const EquipmentWornLocation location);
     static std::string get_confirmation_message(const std::string& query_sid);
     static std::string get_area_entrance_message_given_terrain_type(const TileType type);
@@ -41,4 +42,5 @@ class TextMessages
     static const std::string ITEM_ON_GROUND_DESCRIPTION_MESSAGE;
     static const std::string CURRENCY_MESSAGE_SINGLE;
     static const std::string CURRENCY_MESSAGE_MULTIPLE;
+    static const std::string NAME_TITLE_MESSAGE;
 };
