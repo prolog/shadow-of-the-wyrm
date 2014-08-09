@@ -2286,25 +2286,6 @@
 				<Arcane>0.0</Arcane>
 				<Lightning>0.0</Lightning>
 			</Resistances>
-			<Titles>
-				<Default>NOBLE_DEFAULT_TITLE</Default>
-				<Title>
-					<Level>10</Level>
-					<SID>NOBLE_L10_TITLE</SID>
-				</Title>
-				<Title>
-					<Level>20</Level>
-					<SID>NOBLE_L20_TITLE</SID>
-				</Title>
-				<Title>
-					<Level>30</Level>
-					<SID>NOBLE_L30_TITLE</SID>
-				</Title>
-				<Title>
-					<Level>45</Level>
-					<SID>NOBLE_L45_TITLE</SID>
-				</Title>
-			</Titles>
 			<Skills>
 				<GeneralSkills>
 					<Boating>15</Boating>
@@ -2327,6 +2308,25 @@
 					<Crossbows>5</Crossbows>
 				</RangedWeaponSkills>				
 			</Skills>
+			<Titles>
+				<Default>NOBLE_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>NOBLE_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>NOBLE_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>NOBLE_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>NOBLE_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.05</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>rapier</ID></Wielded>
@@ -2421,6 +2421,9 @@
 					<InitialItem>
 						<ID>food_ration</ID>
 						<Quantity><Amount>3</Amount></Quantity>
+					</InitialItem>
+					<InitialItem>
+						<ID>lituus</ID>
 					</InitialItem>
 					<InitialItem>
 						<Quantity><Amount>1</Amount></Quantity>
@@ -3005,6 +3008,25 @@
 					<Bludgeons>7</Bludgeons>
 				</WeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>SMITH_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>SMITH_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>SMITH_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>SMITH_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>SMITH_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.04</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>iron_hammer</ID></Wielded>
@@ -3073,6 +3095,25 @@
 					<Daggers>5</Daggers>
 				</RangedWeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>THIEF_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>THIEF_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>THIEF_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>THIEF_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>THIEF_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>0.92</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>cap</ID></Head>
@@ -3146,6 +3187,25 @@
 					<Rocks>5</Rocks>
 				</RangedWeaponSkills>
 			</Skills>
+			<Titles>
+				<Default>WARRIOR_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>WARRIOR_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>WARRIOR_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>WARRIOR_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>WARRIOR_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>0.95</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Head><ID>leather_helm</ID></Head>
@@ -3311,6 +3371,25 @@
 					<Primordial>20</Primordial>
 				</MagicSkills>
 			</Skills>
+			<Titles>
+				<Default>WITCHLING_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>WITCHLING_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>WITCHLING_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>WITCHLING_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>WITCHLING_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<PietyCostMultiplier>1.25</PietyCostMultiplier>
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
@@ -3378,6 +3457,25 @@
 					<Arcane>20</Arcane>
 				</MagicSkills>
 			</Skills>
+			<Titles>
+				<Default>WIZARD_DEFAULT_TITLE</Default>
+				<Title>
+					<Level>10</Level>
+					<SID>WIZARD_L10_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>20</Level>
+					<SID>WIZARD_L20_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>30</Level>
+					<SID>WIZARD_L30_TITLE</SID>
+				</Title>
+				<Title>
+					<Level>45</Level>
+					<SID>WIZARD_L45_TITLE</SID>
+				</Title>
+			</Titles>
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>dagger</ID></Wielded>
@@ -16196,6 +16294,25 @@
 				<Damage>
 					<NumDice>1</NumDice>
 					<NumSides>4</NumSides>
+					<Type>2</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="lituus">
+				<DescriptionSID>LITUUS_SID</DescriptionSID>
+				<UsageDescriptionSID>LITUUS_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>1</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>1</NumDice>
+					<NumSides>3</NumSides>
+					<Modifier>1</Modifier>
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
