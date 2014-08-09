@@ -68,9 +68,11 @@ ClassPtr XMLClassesReader::parse_class(const XMLNode& class_node)
 
     XMLNode resistances_node = XMLUtils::get_next_element_by_local_name(class_node, "Resistances");
     XMLNode skills_node = XMLUtils::get_next_element_by_local_name(class_node, "Skills");
+    XMLNode titles_node = XMLUtils::get_next_element_by_local_name(class_node, "Titles");
 
     parse_class_resistances(current_class, resistances_node);
     parse_class_skills(current_class, skills_node);
+    parse_class_titles(current_class, titles_node);
     
     float piety_cost_multiplier = XMLUtils::get_child_node_float_value(class_node, "PietyCostMultiplier", current_class->get_piety_cost_multiplier());
     current_class->set_piety_cost_multiplier(piety_cost_multiplier);
@@ -125,6 +127,27 @@ void XMLClassesReader::parse_class_skills(ClassPtr current_class, const XMLNode&
     Skills skills = skills_reader.get_skills(skills_node);
 
     current_class->set_skills(skills);
+  }
+}
+
+void XMLClassesReader::parse_class_titles(ClassPtr current_class, const XMLNode& titles_node)
+{
+  if (current_class && !titles_node.is_null())
+  {
+    string default_title = XMLUtils::get_child_node_value(titles_node, "Default");
+    vector<XMLNode> titles_nodes = XMLUtils::get_elements_by_local_name(titles_node, "Title");
+
+    map<int, string> titles{{1, default_title}};
+
+    for (const auto& title_node : titles_nodes)
+    {
+      int level = XMLUtils::get_child_node_int_value(title_node, "Level");
+      string title = XMLUtils::get_child_node_value(title_node, "SID");
+
+      titles.insert(make_pair(level, title));
+    }
+
+    current_class->set_titles(titles);
   }
 }
 

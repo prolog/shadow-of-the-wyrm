@@ -67,6 +67,9 @@ class Class
     void set_level_script(const std::string& new_level_script);
     std::string get_level_script() const;
 
+    void set_titles(const std::map<int, std::string>& new_titles);
+    std::map<int, std::string> get_titles() const;
+
     std::string str() const;
 
   protected:
@@ -99,6 +102,9 @@ class Class
     // to be somewhat interesting, rather than just a collection of
     // stats.
     std::string level_script;
+
+    // A map of levels to titles.
+    std::map<int, std::string> titles;
 };
 
 typedef std::shared_ptr<Class> ClassPtr;
