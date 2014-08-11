@@ -85,7 +85,8 @@ cynwise_aeschburh_quest = Quest:new("cynwise_aeschburh_quest",
 -- The Wintersea quest comes first, followed by Aeschburh.
 if wintersea_quest:execute() == false then
   if cynwise_aeschburh_quest:execute() == false then
-    add_message("CYNWISE_SPEECH_TEXT_SID")
+    local replace = {get_player_title()}
+    add_message("CYNWISE_SPEECH_TEXT_SID", replace)
   end
 end
 
