@@ -1,3 +1,4 @@
+#include "ClassManager.hpp"
 #include "CreatureFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "Game.hpp"
@@ -5,6 +6,7 @@
 #include "GameEnvTextKeys.hpp"
 #include "ItemManager.hpp"
 #include "Log.hpp"
+#include "LuaUtils.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PlayerConstants.hpp"
@@ -76,6 +78,7 @@ int map_add_location(lua_State* ls);
 int map_transform_tile(lua_State* ls);
 int map_add_tile_exit(lua_State* ls);
 int log(lua_State* ls);
+int get_player_title(lua_State* ls);
 
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
@@ -309,6 +312,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_transform_tile", map_transform_tile);
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
   lua_register(L, "log", log);
+  lua_register(L, "get_player_title", get_player_title);
 }
 
 // Lua API functions:
@@ -350,7 +354,7 @@ static int add_message_with_pause(lua_State* ls)
 // Argument type: string (resource SID)
 static int clear_and_add_message(lua_State* ls)
 {
-  if(lua_gettop(ls) > 0 && lua_isstring(ls, -1))
+  if(lua_gettop(ls) > 0 && lua_isstring(ls, 1))
 	{
 		string message_sid = lua_tostring(ls, 1);
 
@@ -369,16 +373,31 @@ static int clear_and_add_message(lua_State* ls)
 }
 
 // Add a new message.
-// Arguments expected: 1.
-// Argument type: string (resource SID)
+// Arguments expected: 1-2.
+// Argument types: string (resource SID, required), table of strings (opt.)
+// Assumption: table of strings is an array.
 static int add_message(lua_State* ls)
 {
-  if(lua_gettop(ls) > 0 && lua_isstring(ls, -1))
+  int num_args = lua_gettop(ls);
+  if(num_args > 0 && lua_isstring(ls, 1))
 	{
+    vector<string> replacement_sids;
 		string message_sid = lua_tostring(ls, 1);
 
+    if (num_args == 2)
+    {
+      replacement_sids = LuaUtils::get_string_array_from_table(ls, 2);
+    }
+
+    string message = StringTable::get(message_sid);
+
+    for (const auto& value : replacement_sids)
+    {
+      boost::replace_first(message, "%s", value);
+    }
+
     IMessageManager& manager = MessageManagerFactory::instance();
-    manager.add_new_message(StringTable::get(message_sid));
+    manager.add_new_message(message);
     manager.send();
 	}
   else
@@ -456,8 +475,6 @@ static int add_new_quest(lua_State* ls)
   {
     Game& game = Game::instance();
     ScriptEngine& se = game.get_script_engine_ref();
-
-    // JCD FIXME: Move the string values into a lua constants class?
 
     string quest_id = lua_tostring(ls, 1);
     string quest_title_sid = se.get_table_str(ls, "quest_title_sid");
@@ -1580,6 +1597,26 @@ int log(lua_State* ls)
   }
 
   lua_pushboolean(ls, logged);
+  return 1;
+}
+
+// No arguments expected - ignore any.
+// Returns the player's title, or an empty string if that can't be determined.
+int get_player_title(lua_State* ls)
+{
+  string title;
+
+  Game& game = Game::instance();
+  CreaturePtr player = game.get_current_player();
+
+  if (player)
+  {
+    ClassManager cm;
+
+    title = cm.get_title(player);
+  }
+
+  lua_pushstring(ls, title.c_str());
   return 1;
 }
 
