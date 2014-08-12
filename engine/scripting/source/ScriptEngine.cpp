@@ -80,6 +80,9 @@ int map_add_tile_exit(lua_State* ls);
 int log(lua_State* ls);
 int get_player_title(lua_State* ls);
 
+// helper functions for the Lua API functions.
+string read_sid_and_replace_values(lua_State* ls);
+
 // Create a new Lua state object, and open the libraries.
 ScriptEngine::ScriptEngine()
 {
@@ -315,6 +318,33 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_player_title", get_player_title);
 }
 
+// Lua API helper functions
+string read_sid_and_replace_values(lua_State* ls)
+{
+  string message;
+
+  int num_args = lua_gettop(ls);
+  if (num_args > 0 && lua_isstring(ls, 1))
+  {
+    vector<string> replacement_sids;
+    string message_sid = lua_tostring(ls, 1);
+
+    if (num_args == 2)
+    {
+      replacement_sids = LuaUtils::get_string_array_from_table(ls, 2);
+    }
+
+    message = StringTable::get(message_sid);
+
+    for (const auto& value : replacement_sids)
+    {
+      boost::replace_first(message, "%s", value);
+    }
+  }
+
+  return message;
+}
+
 // Lua API functions:
 
 // Functions callable by Lua that wrap the actual C++ functions for adding
@@ -322,15 +352,20 @@ void ScriptEngine::register_api_functions()
 
 // Clear the message manager, add a new message, and force the user to 
 // continue via a "..." type prompt.
+// 
+// Arguments are:
+// - 1: string containing the SID
+// - 2: string array containing replacement values (optional)
 static int add_message_with_pause(lua_State* ls)
 {
-  if(lua_gettop(ls) > 0 && lua_isstring(ls, -1))
+  int num_args = lua_gettop(ls);
+  if(num_args > 0 && lua_isstring(ls, 1))
 	{
-    string message_sid = lua_tostring(ls, 1);
-    
+    string message = read_sid_and_replace_values(ls);
+
     IMessageManager& manager = MessageManagerFactory::instance();
     manager.clear_if_necessary();
-    manager.add_new_message_with_pause(StringTable::get(message_sid));
+    manager.add_new_message_with_pause(message);
     manager.send();
 
     // Because this function can only be called in a quest context,
@@ -350,17 +385,20 @@ static int add_message_with_pause(lua_State* ls)
 }
 
 // Clear the message manager and add a new message.
-// Arguments expected: 1.
-// Argument type: string (resource SID)
+// Arguments expected: 1-2.
+// Argument types: 
+// - 1: string (resource SID)
+// - 2: string array, containing replacement values (optional)
 static int clear_and_add_message(lua_State* ls)
 {
-  if(lua_gettop(ls) > 0 && lua_isstring(ls, 1))
+  int num_args = lua_gettop(ls);
+  if(num_args > 0 && lua_isstring(ls, 1))
 	{
-		string message_sid = lua_tostring(ls, 1);
+    string message = read_sid_and_replace_values(ls);
 
     IMessageManager& manager = MessageManagerFactory::instance();
     manager.clear_if_necessary();
-    manager.add_new_message(StringTable::get(message_sid));
+    manager.add_new_message(message);
     manager.send();
 	}
   else
@@ -381,20 +419,7 @@ static int add_message(lua_State* ls)
   int num_args = lua_gettop(ls);
   if(num_args > 0 && lua_isstring(ls, 1))
 	{
-    vector<string> replacement_sids;
-		string message_sid = lua_tostring(ls, 1);
-
-    if (num_args == 2)
-    {
-      replacement_sids = LuaUtils::get_string_array_from_table(ls, 2);
-    }
-
-    string message = StringTable::get(message_sid);
-
-    for (const auto& value : replacement_sids)
-    {
-      boost::replace_first(message, "%s", value);
-    }
+    string message = read_sid_and_replace_values(ls);
 
     IMessageManager& manager = MessageManagerFactory::instance();
     manager.add_new_message(message);
@@ -410,17 +435,31 @@ static int add_message(lua_State* ls)
 }
 
 // Clear the message manager, and add a new message.
-// Arguments expected: 1.
-// Argument type: string (not a resource string)
-//
+// Arguments expected: 1-2
+// Argument type: 
+//    1: string (not a resource string)
+//    2: array of strings for replacement (optional)
 // The expectation is that this function should be used only for
 // debugging purposes, where strings won't be in the .ini files - use the regular 
 // "add_message" function otherwise!
 static int add_debug_message(lua_State* ls)
 {
-  if(lua_gettop(ls) > 0 && lua_isstring(ls, -1))
+  int num_args = lua_gettop(ls);
+
+  if(num_args > 0 && lua_isstring(ls, 1))
 	{
-		string debug = lua_tostring(ls, 1);
+    vector<string> replacement_sids;
+    string debug = lua_tostring(ls, 1);
+
+    if (num_args == 2)
+    {
+      replacement_sids = LuaUtils::get_string_array_from_table(ls, 2);
+    }
+
+    for (const auto& value : replacement_sids)
+    {
+      boost::replace_first(debug, "%s", value);
+    }
 
     IMessageManager& manager = MessageManagerFactory::instance();
     manager.clear_if_necessary();
@@ -443,7 +482,7 @@ static int add_confirmation_message(lua_State* ls)
 {
   bool confirm = false;
 
-  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  if ((lua_gettop(ls) > 0) && (lua_isstring(ls, 1)))
   {
     Game& game = Game::instance();
     CreaturePtr player = game.get_current_player();
