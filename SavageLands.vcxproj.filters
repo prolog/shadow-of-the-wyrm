@@ -3132,6 +3132,9 @@
     <ClInclude Include="engine\scripting\include\LuaUtils.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\scripting\include\LuaAPIFunctions.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6018,6 +6021,9 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\scripting\source\LuaUtils.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\LuaAPIFunctions.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
