@@ -1,5 +1,8 @@
+Savage Lands v0.2.7 "Glappa"
+- Version declared August 13, 2014.
+
 Savage Lands v0.2.6 "Ida"
-- Version declared July 13, 2014.
+- Version declared July 13, 2014.  Version finalized August 13, 2014.
 
 - Started working on monster corpses.
 
@@ -37,6 +40,10 @@ Savage Lands v0.2.6 "Ida"
 - Added a new text formatter for line breaks (so that text can be broken
   up either by line or by paragraph).  Created a poem for the library of
   Atua-Elar.
+
+- Lua API updates: added the ability to provide an array of replacement
+  strings to most of the "add_message"-type functions.  Refactored the
+  Lua API functions out of ScriptEngine and into their own header/source.
 
 - New items: philosophical tract "On Eternalism" (added to the Atua-Elar
   library), lituus.

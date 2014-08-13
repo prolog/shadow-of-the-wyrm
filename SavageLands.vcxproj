@@ -590,6 +590,7 @@
     <ClInclude Include="engine\screens\include\TextFormatSpecifiers.hpp" />
     <ClInclude Include="engine\screens\include\WelcomeScreen.hpp" />
     <ClInclude Include="engine\scripting\include\LevelScript.hpp" />
+    <ClInclude Include="engine\scripting\include\LuaAPIFunctions.hpp" />
     <ClInclude Include="engine\scripting\include\LuaUtils.hpp" />
     <ClInclude Include="engine\scripting\include\ScriptEngine.hpp" />
     <ClInclude Include="engine\serialization\include\Serialization.hpp" />
@@ -1715,6 +1716,7 @@
     <ClCompile Include="engine\screens\source\TextFormatSpecifiers.cpp" />
     <ClCompile Include="engine\screens\source\WelcomeScreen.cpp" />
     <ClCompile Include="engine\scripting\source\LevelScript.cpp" />
+    <ClCompile Include="engine\scripting\source\LuaAPIFunctions.cpp" />
     <ClCompile Include="engine\scripting\source\LuaUtils.cpp" />
     <ClCompile Include="engine\scripting\source\ScriptEngine.cpp" />
     <ClCompile Include="engine\scripting\source\unit_tests\ScriptEngine_test.cpp">
