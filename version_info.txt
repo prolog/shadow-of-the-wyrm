@@ -1,6 +1,11 @@
 Savage Lands v0.2.7 "Glappa"
 - Version declared August 13, 2014.
 
+- More early game quests!  Started working on a quest for Kew that uses
+  the south-east dungeon.  Kew gives a quest to slay an agent of
+  Sceadugenga, Siriath, early in the dungeon.  Siriath is found on
+  the fifth floor.
+
 Savage Lands v0.2.6 "Ida"
 - Version declared July 13, 2014.  Version finalized August 13, 2014.
 

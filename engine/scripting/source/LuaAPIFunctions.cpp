@@ -396,22 +396,29 @@ int get_num_creature_killed_global(lua_State* ls)
 }
 
 // Add an object to the player's tile.
-// Argument is the base item ID.
+// Arguments:
+// - 1: base item ID
+// - 2: quantity (optional, 1 is assumed)
 int add_object_to_player_tile(lua_State* ls)
 {
-  string object_base_id;
-  uint quantity = 1;
-  bool args_ok = false;
+  int num_args = lua_gettop(ls);
 
-  if (lua_gettop(ls) >= 1)
+  if (lua_isstring(ls, 1) && (num_args == 1 || (num_args == 2 && lua_isnumber(ls, 2))))
   {
+    string base_item_id;
+    uint quantity = 1;
+
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
     CreaturePtr player = game.get_current_player();
     TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
-    string base_item_id = lua_tostring(ls, 1);
-    uint quantity = static_cast<uint>(lua_tointeger(ls, 2));
-    if (quantity == 0) ++quantity;
+    
+    base_item_id = lua_tostring(ls, 1);
+
+    // Set the quantity if it was specified.    
+    if (num_args == 2) {
+      quantity = static_cast<uint>(lua_tointeger(ls, 2));
+    }
 
     ItemManager::create_item_with_probability(100, 100, player_tile->get_items(), base_item_id, quantity);
   }
