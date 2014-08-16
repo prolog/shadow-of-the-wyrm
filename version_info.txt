@@ -6,6 +6,9 @@ Savage Lands v0.2.7 "Glappa"
   Sceadugenga, Siriath, early in the dungeon.  Siriath is found on
   the fifth floor.
 
+  - Created a fixed map for the 5th floor, that will hook up to the
+    generated maps on the 4th and 6th.
+
 Savage Lands v0.2.6 "Ida"
 - Version declared July 13, 2014.  Version finalized August 13, 2014.
 
