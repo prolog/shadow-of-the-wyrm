@@ -416,7 +416,8 @@ int add_object_to_player_tile(lua_State* ls)
     base_item_id = lua_tostring(ls, 1);
 
     // Set the quantity if it was specified.    
-    if (num_args == 2) {
+    if (num_args == 2) 
+    {
       quantity = static_cast<uint>(lua_tointeger(ls, 2));
     }
 

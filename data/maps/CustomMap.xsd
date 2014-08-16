@@ -100,7 +100,13 @@
 	<xs:sequence>
 		<xs:element name="Coord" type="tns:Coord"/>
 		<xs:element name="Direction" type="tns:Direction"/>
-		<xs:element name="MapID" type="xs:string"/>
+		<xs:choice>
+			<xs:element name="MapID" type="xs:string"/>
+			<xs:sequence>
+				<xs:element name="TileType" type="sl:TileType"/>
+				<xs:element name="TileSubType" type="sl:TileType" minOccurs="0"/>
+			</xs:sequence>
+		</xs:choice>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Features">
