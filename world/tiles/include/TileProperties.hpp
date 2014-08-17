@@ -27,6 +27,10 @@ class TileProperties
     // Used to identify the species of the tree/bush/etc tile.
     static const std::string TILE_PROPERTY_FLORA_TILE_DESCRIPTION_SID;
 
+    // Generates the map key that identifies the custom map ID for
+    // a given depth.
+    static std::string get_depth_custom_map_id(const int depth);
+
   protected:
     TileProperties();
     ~TileProperties();

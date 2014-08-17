@@ -41,6 +41,11 @@ function Area:set_extra_description_sid(sid)
   self.edesc_sid = sid
 end
 
+-- Set a particular property on the tile.
+function Area:set_additional_property(property, value)
+  map_set_additional_property(self.map_id, self.row, self.col, property, value)
+end
+
 -- Set the additional properties.
 function Area:set_additional_properties(addl_properties)
   self.additional_properties = addl_properties

@@ -20,6 +20,8 @@ class StairwayMovementAction : public IActionManager
     StairwayMovementAction();
     ~StairwayMovementAction();
 
+    void move_to_custom_map(TilePtr current_tile, MapPtr current_map, MapExitPtr map_exit, CreaturePtr creature, Game& game, MovementAction* const ma);
+
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };
 

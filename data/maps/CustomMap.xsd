@@ -104,7 +104,6 @@
 			<xs:element name="MapID" type="xs:string"/>
 			<xs:sequence>
 				<xs:element name="TileType" type="sl:TileType"/>
-				<xs:element name="TileSubType" type="sl:TileType" minOccurs="0"/>
 			</xs:sequence>
 		</xs:choice>
 	</xs:sequence>

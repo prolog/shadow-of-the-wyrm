@@ -2691,6 +2691,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TileProperties_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\Tile_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

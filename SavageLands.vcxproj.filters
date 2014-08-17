@@ -6026,5 +6026,8 @@
     <ClCompile Include="engine\scripting\source\LuaAPIFunctions.cpp">
       <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\tiles\source\unit_tests\TileProperties_test.cpp">
+      <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

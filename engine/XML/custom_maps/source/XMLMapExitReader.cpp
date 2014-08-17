@@ -36,15 +36,27 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     // map exit.
     TilePtr tile = map->at(c);
 
-    if (tile && !exit_map.empty())
+    if (tile)
     {
       MapExitPtr map_exit = MapExitPtr(new MapExit());
-      map_exit->set_map_id(exit_map);
 
-      TileExitMap& exits = tile->get_tile_exit_map_ref();
-      exits.insert(make_pair(dir, map_exit));
+      // Handle a set map exist (to another custom map)
+      if (!exit_map.empty())
+      {
+        map_exit->set_map_id(exit_map);
+
+        TileExitMap& exits = tile->get_tile_exit_map_ref();
+        exits.insert(make_pair(dir, map_exit));
+      }
+      // Handle map exits using tile types/subtypes (terrain generation)
+      else
+      {        
+        TileType tt = TILE_TYPE_UNDEFINED;
+        tt = static_cast<TileType>(XMLUtils::get_child_node_int_value(exit_node, "TileType", tt));
+
+        map_exit->set_terrain_type(tt);
+      }
     }
-
   }
 }
 
