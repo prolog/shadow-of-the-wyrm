@@ -31,8 +31,14 @@ class TileProperties
     // a given depth.
     static std::string get_depth_custom_map_id(const int depth);
 
+    // Checks to see if a given string reprensents a depth-based
+    // custom map ID.
+    static bool is_depth_custom_map_id(const std::string& key);
+
   protected:
     TileProperties();
     ~TileProperties();
+
+    static const std::string CUSTOM_MAP_ID_PART;
 };
 
