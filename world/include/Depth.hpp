@@ -4,7 +4,7 @@
 #include "ISerializable.hpp"
 
 // Depth is used to represent the character's general location in the
-// world.  Each integer value represents 25 feet above or below ground.
+// world.  Each integer value represents 50 feet above or below ground.
 class Depth : public ISerializable
 {
   public:
