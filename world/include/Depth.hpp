@@ -20,6 +20,9 @@ class Depth : public ISerializable
 
     std::string str() const;
 
+    Depth lower() const;
+    Depth higher() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
