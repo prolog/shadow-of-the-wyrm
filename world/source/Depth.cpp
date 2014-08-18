@@ -48,6 +48,32 @@ int Depth::get_maximum() const
   return maximum;
 }
 
+// Return the "next" depth.
+Depth Depth::lower() const
+{
+  Depth d(current, maximum);
+
+  if (current > maximum)
+  {
+    d.set_current(current - 1);
+  }
+
+  return d;
+}
+
+// Return the "previous" depth.
+Depth Depth::higher() const
+{
+  Depth d(current, maximum);
+
+  if (current < maximum)
+  {
+    d.set_current(current + 1);
+  }
+
+  return d;
+}
+
 // Return the depth as a string (for the UI, etc): e.g., "[-50']", "" (if on overworld, or otherwise at 0')
 string Depth::str() const
 {

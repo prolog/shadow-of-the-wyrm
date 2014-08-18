@@ -321,12 +321,12 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
 
     map->insert(row, col, new_staircase_tile); 
 
+    Depth depth = map->size().depth();
+
     // Handle exiting to a previous map in underworld maps like dungeons,
     // mines, crypts, etc.
     if (get_map_type() == MAP_TYPE_UNDERWORLD && tile_type == TILE_TYPE_UP_STAIRCASE)
     {
-      Depth depth = map->size().depth();
-
       // This may be empty, in which case, the custom map ID will be empty
       // and terrain will be checked instead, which is the desired behaviour.
       new_staircase_tile->set_custom_map_id(get_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID));
@@ -337,6 +337,39 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
       {
         string original_map_id = get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID);
         new_staircase_tile->set_custom_map_id(original_map_id);
+      }
+    }
+    // Handle the case where we need to link the new staircase to custom levels.
+    else
+    {
+      // JCD FIXME REFACTOR!
+      Depth new_depth = depth;
+
+      if (tile_type == TILE_TYPE_UP_STAIRCASE)
+      {
+        new_depth = depth.higher();
+      }
+      else if (tile_type == TILE_TYPE_DOWN_STAIRCASE)
+      {
+        new_depth = depth.lower();
+      }
+
+      int new_d = new_depth.get_current();
+
+      string depth_key = TileProperties::get_depth_custom_map_id(new_d);
+      if (has_additional_property(depth_key))
+      {
+        // Set the value that has been specified on the generator, but only
+        // if there's no custom map ID already set (e.g., level 1 up staircase
+        // in an underworld level, which will have been mapped to point to 
+        // the overworld map.
+        string depth_map_id = get_additional_property(depth_key);
+        string existing_depth_map_id = new_staircase_tile->get_custom_map_id();
+
+        if (existing_depth_map_id.empty())
+        {
+          new_staircase_tile->set_custom_map_id(depth_map_id);
+        }
       }
     }
 
