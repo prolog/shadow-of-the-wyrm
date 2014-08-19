@@ -53,9 +53,9 @@ Depth Depth::lower() const
 {
   Depth d(current, maximum);
 
-  if (current > maximum)
+  if (current < maximum)
   {
-    d.set_current(current - 1);
+    d.set_current(current + 1);
   }
 
   return d;
@@ -66,9 +66,9 @@ Depth Depth::higher() const
 {
   Depth d(current, maximum);
 
-  if (current < maximum)
+  if (current > maximum)
   {
-    d.set_current(current + 1);
+    d.set_current(current - 1);
   }
 
   return d;

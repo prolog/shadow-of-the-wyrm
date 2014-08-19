@@ -15539,7 +15539,7 @@
 				<WornLocation>9</WornLocation>
 				<Artifact>1</Artifact>
 				<Material>8</Material>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>-1</DangerLevel>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<Difficulty>42</Difficulty>
