@@ -17,7 +17,8 @@ barrows:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ISEN_DUN_GRAVEYARD")
 
 local dungeon = Area:new(97, 98)
 dungeon:set_extra_description_sid("TILE_EXTRA_DESCRIPTION_ISEN_DUN_DUNGEON")
-dungeon:set_additional_property("-5_MAP_ID", "siriath_lair")
+dungeon:set_additional_property("5_MAP_ID", "siriath_lair")
+dungeon:set_additional_property("UNDERWORLD_STRUCTURE_MAX_DEPTH", 5)
 
 table.insert(little_island, wintersea_keep)
 table.insert(little_island, isen_dun)
