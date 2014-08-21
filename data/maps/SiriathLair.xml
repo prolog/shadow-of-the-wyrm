@@ -43,6 +43,20 @@
 					<Col>40</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>xither</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>62</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>xither</ID>
+				<Coord>
+					<Row>6</Row>
+					<Col>65</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
