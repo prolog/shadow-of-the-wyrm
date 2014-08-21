@@ -290,7 +290,7 @@ bool Generator::can_create_initial_items() const
   return false;
 }
 
-bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, bool link_to_map_exit_id, bool set_as_player_default_location)
+bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
 {
   TileGenerator tg;
   TilePtr tile = map->at(row, col);
@@ -301,19 +301,6 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     
     TilePtr new_staircase_tile = tg.generate(tile_type);
     new_staircase_tile->set_tile_subtype(tile_subtype);
-
-    if (link_to_map_exit_id)
-    {
-      if (!map_exit_id.empty())
-      {
-        MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, map_exit_id);
-      }      
-    }
-    // Otherwise, if we're not linking to a map exit ID, we should map to a tile exit.
-    else
-    {
-      MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, tile_subtype);
-    }
 
     // Allow for "infinite dungeons" by setting the permanence flag on the staircases, which will then get copied 
     // to the next generator, which will then set it on the down staircase...
@@ -339,39 +326,13 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
         new_staircase_tile->set_custom_map_id(original_map_id);
       }
     }
-    // Handle the case where we need to link the new staircase to custom levels.
     else
     {
-      // JCD FIXME REFACTOR!
-      Depth new_depth = depth;
-
-      if (tile_type == TILE_TYPE_UP_STAIRCASE)
-      {
-        new_depth = depth.higher();
-      }
-      else if (tile_type == TILE_TYPE_DOWN_STAIRCASE)
-      {
-        new_depth = depth.lower();
-      }
-
-      int new_d = new_depth.get_current();
-
-      string depth_key = TileProperties::get_depth_custom_map_id(new_d);
-      if (has_additional_property(depth_key))
-      {
-        // Set the value that has been specified on the generator, but only
-        // if there's no custom map ID already set (e.g., level 1 up staircase
-        // in an underworld level, which will have been mapped to point to 
-        // the overworld map.
-        string depth_map_id = get_additional_property(depth_key);
-        string existing_depth_map_id = new_staircase_tile->get_custom_map_id();
-
-        if (existing_depth_map_id.empty())
-        {
-          new_staircase_tile->set_custom_map_id(depth_map_id);
-        }
-      }
+      // Handle the case where we need to link the new staircase to custom levels.
+      set_custom_map_id_for_depth(new_staircase_tile, depth);
     }
+
+    add_tile_exit(new_staircase_tile, direction, link_to_map_exit_id);
 
     if (set_as_player_default_location)
     {
@@ -380,4 +341,69 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
   }  
   
   return true;
+}
+
+// Add an appropriate exit to the given tile, based on whether we should:
+//
+// - Link to the map exit ID specified on the generator
+// - Link to a custom map ID for a particular depth
+// - Or have no custom map ID, and instead generate based on tile type
+void Generator::add_tile_exit(TilePtr new_staircase_tile, const Direction direction, const bool link_to_map_id)
+{
+  string staircase_map_id = new_staircase_tile->get_custom_map_id();
+  if (link_to_map_id && !map_exit_id.empty())
+  {
+    MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, map_exit_id);
+  }
+  // Otherwise, if we're not linking to a map exit ID, we should map to a tile exit.
+  else
+  {
+    if (!staircase_map_id.empty())
+    {
+      MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, staircase_map_id);
+    }
+    else
+    {
+      MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, new_staircase_tile->get_tile_type());
+    }
+  }
+}
+
+// Get the custom map ID for a particular depth, and set it as the custom map ID
+// for the given tile.
+void Generator::set_custom_map_id_for_depth(TilePtr new_tile, const Depth& depth)
+{
+  Depth new_depth = depth;
+  TileType tile_type = new_tile->get_tile_type();
+
+  if (tile_type == TILE_TYPE_UP_STAIRCASE)
+  {
+    new_depth = depth.higher();
+  }
+  else if (tile_type == TILE_TYPE_DOWN_STAIRCASE)
+  {
+    new_depth = depth.lower();
+  }
+
+  int new_d = new_depth.get_current();
+
+  string depth_key = TileProperties::get_depth_custom_map_id(new_d);
+  if (has_additional_property(depth_key))
+  {
+    // Set the value that has been specified on the generator, but only
+    // if there's no custom map ID already set (e.g., level 1 up staircase
+    // in an underworld level, which will have been mapped to point to 
+    // the overworld map.
+    string depth_map_id = get_additional_property(depth_key);
+    string existing_depth_map_id = new_tile->get_custom_map_id();
+
+    if (existing_depth_map_id.empty())
+    {
+      new_tile->set_custom_map_id(depth_map_id);
+    }
+
+    // JCD FIXME: Need to ensure the appropriate map ID links are set
+    // on the custom map so that we can enter/exit it without any
+    // problems...
+  }
 }
