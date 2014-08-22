@@ -3135,6 +3135,9 @@
     <ClInclude Include="engine\scripting\include\LuaAPIFunctions.hpp">
       <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\maps\include\TileUtils.hpp">
+      <Filter>Header Files\engine\maps\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6028,6 +6031,12 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\TileProperties_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\TileUtils.cpp">
+      <Filter>Source Files\engine\maps\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\TileUtils_test.cpp">
+      <Filter>Source Files\engine\maps\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
