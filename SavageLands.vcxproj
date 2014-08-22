@@ -570,6 +570,7 @@
     <ClInclude Include="engine\maps\include\MapTypeQueries.hpp" />
     <ClInclude Include="engine\maps\include\MapTypeQueryFactory.hpp" />
     <ClInclude Include="engine\maps\include\MapUtils.hpp" />
+    <ClInclude Include="engine\maps\include\TileUtils.hpp" />
     <ClInclude Include="engine\screens\include\ClassSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\DeitySelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\EquipmentScreen.hpp" />
@@ -1671,6 +1672,7 @@
     <ClCompile Include="engine\maps\source\MapTypeQueries.cpp" />
     <ClCompile Include="engine\maps\source\MapTypeQueryFactory.cpp" />
     <ClCompile Include="engine\maps\source\MapUtils.cpp" />
+    <ClCompile Include="engine\maps\source\TileUtils.cpp" />
     <ClCompile Include="engine\maps\source\unit_tests\CoordUtils_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1695,6 +1697,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\TileUtils_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\screens\source\ClassSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\DeitySelectionScreen.cpp" />
