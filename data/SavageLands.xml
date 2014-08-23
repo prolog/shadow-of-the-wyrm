@@ -5155,7 +5155,7 @@
 			<DescriptionSID>CARAVAN_MASTER_DESCRIPTION_SID</DescriptionSID>
 			<TextDetailsSID>CARAVAN_MASTER_TEXT_DETAILS_SID</TextDetailsSID>
 			<SpeechTextSID>CARAVAN_MASTER_SPEECH_TEXT_SID</SpeechTextSID>
-			<DecisionStrategy>mobile</DecisionStrategy>
+			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>f</Symbol>
 				<Colour>7</Colour>

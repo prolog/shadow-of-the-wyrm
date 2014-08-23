@@ -332,7 +332,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
       set_custom_map_id_for_depth(new_staircase_tile, depth);
     }
 
-    add_tile_exit(new_staircase_tile, direction, link_to_map_exit_id);
+    add_tile_exit(map, std::make_pair(row, col), direction, link_to_map_exit_id);
 
     if (set_as_player_default_location)
     {
@@ -348,23 +348,30 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
 // - Link to the map exit ID specified on the generator
 // - Link to a custom map ID for a particular depth
 // - Or have no custom map ID, and instead generate based on tile type
-void Generator::add_tile_exit(TilePtr new_staircase_tile, const Direction direction, const bool link_to_map_id)
+void Generator::add_tile_exit(MapPtr map, const Coordinate& c, const Direction direction, const bool link_to_map_id)
 {
-  string staircase_map_id = new_staircase_tile->get_custom_map_id();
+  TilePtr tile = map->at(c);
+  string tile_map_id;
+  
+  if (tile)
+  {
+    tile_map_id = tile->get_custom_map_id();
+  }
+
   if (link_to_map_id && !map_exit_id.empty())
   {
-    MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, map_exit_id);
+    MapExitUtils::add_exit_to_tile(map, c, direction, map_exit_id);
   }
   // Otherwise, if we're not linking to a map exit ID, we should map to a tile exit.
   else
   {
-    if (!staircase_map_id.empty())
+    if (!tile_map_id.empty())
     {
-      MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, staircase_map_id);
+      MapExitUtils::add_exit_to_tile(map, c, direction, tile_map_id);
     }
     else
     {
-      MapExitUtils::add_exit_to_tile(new_staircase_tile, direction, new_staircase_tile->get_tile_type());
+      MapExitUtils::add_exit_to_tile(map, c, direction, tile->get_tile_type());
     }
   }
 }

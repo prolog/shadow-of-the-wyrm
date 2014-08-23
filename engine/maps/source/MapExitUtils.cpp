@@ -17,8 +17,10 @@ void MapExitUtils::add_exit_to_map(MapPtr map, const std::string& map_exit_id)
 }
 
 // Attach a tile-type map exit to a tile, in a particular direction.
-void MapExitUtils::add_exit_to_tile(TilePtr tile, const Direction direction, const TileType tile_type)
+void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, const TileType tile_type)
 {
+  TilePtr tile = map->at(c);
+
   if (tile)
   {
     TileExitMap& tile_exit_map = tile->get_tile_exit_map_ref();
@@ -31,8 +33,10 @@ void MapExitUtils::add_exit_to_tile(TilePtr tile, const Direction direction, con
 }
 
 // Attach a map exit to a tile, in a particular direction.
-void MapExitUtils::add_exit_to_tile(TilePtr tile, const Direction direction, const std::string& map_exit_id)
+void MapExitUtils::add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, const std::string& map_exit_id)
 {
+  TilePtr tile = map->at(c);
+
   if (tile)
   {
     TileExitMap& tile_exit_map = tile->get_tile_exit_map_ref();

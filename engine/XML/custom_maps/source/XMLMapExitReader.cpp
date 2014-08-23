@@ -35,25 +35,20 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     // JCD FIXME: Once "exit to previous map, and use some sort of tile ID" is
     // implemented, change this so that map ID isn't necessary to create a
     // map exit.
-    TilePtr tile = map->at(c);
+    MapExitPtr map_exit = MapExitPtr(new MapExit());
 
-    if (tile)
+    // Handle a set map exist (to another custom map)
+    if (!exit_map.empty())
     {
-      MapExitPtr map_exit = MapExitPtr(new MapExit());
+      MapExitUtils::add_exit_to_tile(map, c, dir, exit_map);
+    }
+    // Handle map exits using tile types/subtypes (terrain generation)
+    else
+    {        
+      TileType tt = TILE_TYPE_UNDEFINED;
+      tt = static_cast<TileType>(XMLUtils::get_child_node_int_value(exit_node, "TileType", tt));
 
-      // Handle a set map exist (to another custom map)
-      if (!exit_map.empty())
-      {
-        MapExitUtils::add_exit_to_tile(tile, dir, exit_map);
-      }
-      // Handle map exits using tile types/subtypes (terrain generation)
-      else
-      {        
-        TileType tt = TILE_TYPE_UNDEFINED;
-        tt = static_cast<TileType>(XMLUtils::get_child_node_int_value(exit_node, "TileType", tt));
-
-        MapExitUtils::add_exit_to_tile(tile, dir, tt);
-      }
+      MapExitUtils::add_exit_to_tile(map, c, dir, tt);
     }
   }
 }

@@ -20,6 +20,7 @@ class MapUtils
     
     static bool add_or_update_location(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, TilePtr creatures_old_tile = TilePtr() /* NULL by default*/);
 
+    static Coordinate get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static TileDirectionMap get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
     static TileDirectionMap get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature);
