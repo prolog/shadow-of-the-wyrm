@@ -44,11 +44,14 @@ bool GameUtils::is_creature_in_player_view_map(Game& game, const string& creatur
   {
     MapPtr view_map = player->get_decision_strategy()->get_fov_map();
 
-    // Rebuild the view map's creatures in case it is out of date - the player 
-    // might not have acted in some time...
-    std::map<string, CreaturePtr>& creatures = view_map->get_creatures_ref();
+    if (view_map)
+    {
+      // Rebuild the view map's creatures in case it is out of date - the player 
+      // might not have acted in some time...
+      std::map<string, CreaturePtr>& creatures = view_map->get_creatures_ref();
 
-    creature_in_view_map = (creatures.find(creature_id) != creatures.end());
+      creature_in_view_map = (creatures.find(creature_id) != creatures.end());
+    }
   }
 
   return creature_in_view_map;
