@@ -6038,5 +6038,8 @@
     <ClCompile Include="engine\maps\source\unit_tests\TileUtils_test.cpp">
       <Filter>Source Files\engine\maps\source\unit_tests</Filter>
     </ClCompile>
+    <ClCompile Include="engine\maps\source\unit_tests\MapExitUtils_test.cpp">
+      <Filter>Source Files\engine\maps\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

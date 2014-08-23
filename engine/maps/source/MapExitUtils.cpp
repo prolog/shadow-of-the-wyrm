@@ -63,11 +63,15 @@ void MapExitUtils::add_map_tile_exit(std::map<Direction, vector<Coordinate>>& ma
   }
   else
   {
-    vector<Coordinate> coords = m_it->second;
+    vector<Coordinate>& coords = m_it->second;
 
-    if (find(coords.begin(), coords.end(), c) != coords.end())
+    if (find(coords.begin(), coords.end(), c) == coords.end())
     {
       coords.push_back(c);
     }
   }
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/MapExitUtils_test.cpp"
+#endif
