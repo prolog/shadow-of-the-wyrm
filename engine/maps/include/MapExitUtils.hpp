@@ -9,6 +9,10 @@ class MapExitUtils
     static void add_exit_to_tile(MapPtr map, const Coordinate& c, const Direction direction, const std::string& map_exit_id);
     
   protected:
+    friend class SL_Engine_Map_MapExitUtilsFixture;
+
     MapExitUtils();
     ~MapExitUtils();
+
+    static void add_map_tile_exit(std::map<Direction, std::vector<Coordinate>>& map_tile_exits, const Direction d, const Coordinate& c);
 };
