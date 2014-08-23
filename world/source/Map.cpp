@@ -162,6 +162,16 @@ map<string, CreaturePtr>& Map::get_creatures_ref()
   return creatures;
 }
 
+map<Direction, vector<Coordinate>>& Map::get_tile_exits_ref()
+{
+  return tile_exits;
+}
+
+map<Direction, vector<Coordinate>> Map::get_tile_exits() const
+{
+  return tile_exits;
+}
+
 // Resets the creatures and the list of locations.  For the list of
 // locations, it only re-adds the creature-based ones.
 void Map::reset_creatures_and_locations()
@@ -403,6 +413,23 @@ bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
 
+  size_t num_tile_exit_directions = tile_exits.size();
+  Serialize::write_size_t(stream, num_tile_exit_directions);
+  for (auto& dir_exit_pair : tile_exits)
+  {
+    Serialize::write_enum(stream, dir_exit_pair.first);
+
+    // Write out the list of tiles with exits in that direction:
+    vector<Coordinate> coords_for_dir = dir_exit_pair.second;
+    Serialize::write_size_t(stream, coords_for_dir.size());
+
+    for (const auto& coord : coords_for_dir)
+    {
+      Serialize::write_int(stream, coord.first);
+      Serialize::write_int(stream, coord.second);
+    }
+  }
+
   // tiles
   Serialize::write_size_t(stream, tiles.size());
 
@@ -451,6 +478,33 @@ bool Map::serialize(ostream& stream) const
 
 bool Map::deserialize(istream& stream)
 {
+  // creatures - not deserialized - built up automatically
+
+  // tile map exits map
+  size_t num_tile_exit_directions = 0;
+  Serialize::read_size_t(stream, num_tile_exit_directions);
+
+  for (size_t i = 0; i < num_tile_exit_directions; i++)
+  {
+    Direction d = DIRECTION_NULL;
+    Serialize::read_enum(stream, d);
+
+    size_t vector_size = 0;
+    Serialize::read_size_t(stream, vector_size);
+    vector<Coordinate> coords_for_dir;
+
+    for (size_t j = 0; j < vector_size; j++)
+    {
+      int row = 0, col = 0;
+      Serialize::read_int(stream, row);
+      Serialize::read_int(stream, col);
+
+      coords_for_dir.push_back(make_pair(row, col));
+    }
+
+    tile_exits.insert(make_pair(d, coords_for_dir));
+  }
+
   // tiles
   size_t num_tiles;
   Serialize::read_size_t(stream, num_tiles);

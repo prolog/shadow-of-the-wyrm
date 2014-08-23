@@ -33,6 +33,10 @@ class Map : public ISerializable
 		std::shared_ptr<Creature> get_creature(const std::string& creature_id);
 		std::map<std::string, std::shared_ptr<Creature>> get_creatures();
 		std::map<std::string, std::shared_ptr<Creature>>& get_creatures_ref();
+
+    std::map<Direction, std::vector<Coordinate>>& get_tile_exits_ref();
+    std::map<Direction, std::vector<Coordinate>> get_tile_exits() const;
+
     void add_creature(std::shared_ptr<Creature> creature);
 		void remove_creature(const std::string& creature_id);
 		// Other get_creature... fns here.
@@ -97,6 +101,10 @@ class Map : public ISerializable
     // NOTE: This information is also stored at the Tile level, but since it's a shared_ptr, that's okay.
     // Ensure that when creatures are created or killed, both data structures are updated accordingly.
     std::map<std::string, std::shared_ptr<Creature>> creatures;
+
+    // These reference the versions stored at the tile level, and are kept
+    // at the map level so that quick lookup by direction is possible.
+    std::map<Direction, std::vector<Coordinate>> tile_exits;
 
     TilesContainer tiles;
     Dimensions dimensions;
