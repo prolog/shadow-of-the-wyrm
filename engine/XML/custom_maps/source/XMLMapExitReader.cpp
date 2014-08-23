@@ -1,4 +1,5 @@
 #include <vector>
+#include "MapExitUtils.hpp"
 #include "XMLMapCoordinateReader.hpp"
 #include "XMLMapExitReader.hpp"
 
@@ -43,10 +44,7 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
       // Handle a set map exist (to another custom map)
       if (!exit_map.empty())
       {
-        map_exit->set_map_id(exit_map);
-
-        TileExitMap& exits = tile->get_tile_exit_map_ref();
-        exits.insert(make_pair(dir, map_exit));
+        MapExitUtils::add_exit_to_tile(tile, dir, exit_map);
       }
       // Handle map exits using tile types/subtypes (terrain generation)
       else
@@ -54,7 +52,7 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
         TileType tt = TILE_TYPE_UNDEFINED;
         tt = static_cast<TileType>(XMLUtils::get_child_node_int_value(exit_node, "TileType", tt));
 
-        map_exit->set_terrain_type(tt);
+        MapExitUtils::add_exit_to_tile(tile, dir, tt);
       }
     }
   }

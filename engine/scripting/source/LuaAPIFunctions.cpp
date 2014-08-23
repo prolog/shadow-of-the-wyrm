@@ -7,6 +7,7 @@
 #include "Log.hpp"
 #include "LuaUtils.hpp"
 #include "ItemManager.hpp"
+#include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "PlayerConstants.hpp"
@@ -1409,11 +1410,7 @@ int map_add_tile_exit(lua_State* ls)
 
         if (tile != nullptr)
         {
-          TileExitMap& tile_map = tile->get_tile_exit_map_ref();
-          MapExitPtr map_exit = std::make_shared<MapExit>();
-          map_exit->set_map_id(exit_map_id);
-
-          tile_map[static_cast<Direction>(lua_direction)] = map_exit;
+          MapExitUtils::add_exit_to_tile(tile, static_cast<Direction>(lua_direction), exit_map_id);
         }
       }
     }
