@@ -1406,12 +1406,7 @@ int map_add_tile_exit(lua_State* ls)
 
       if (map != nullptr)
       {
-        TilePtr tile = map->at(c);
-
-        if (tile != nullptr)
-        {
-          MapExitUtils::add_exit_to_tile(tile, static_cast<Direction>(lua_direction), exit_map_id);
-        }
+        MapExitUtils::add_exit_to_tile(map, c, static_cast<Direction>(lua_direction), exit_map_id);
       }
     }
   }

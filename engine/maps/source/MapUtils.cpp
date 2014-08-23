@@ -216,6 +216,12 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
   return added_location;
 }
 
+Coordinate MapUtils::get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature)
+{
+  string creature_id = creature->get_id();
+  return map->get_location(creature_id);
+}
+
 TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature)
 {
   string creature_id = creature->get_id();
