@@ -2,6 +2,8 @@
 #include <boost/uuid/uuid_io.hpp>
 #include "Conversion.hpp"
 #include "CreationUtils.hpp"
+#include "DirectionUtils.hpp"
+#include "Log.hpp"
 #include "MapCreatureGenerator.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
@@ -329,7 +331,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     else
     {
       // Handle the case where we need to link the new staircase to custom levels.
-      set_custom_map_id_for_depth(new_staircase_tile, depth);
+      set_custom_map_id_for_depth(new_staircase_tile, direction, depth, map->get_map_id());
     }
 
     add_tile_exit(map, std::make_pair(row, col), direction, link_to_map_exit_id);
@@ -378,7 +380,7 @@ void Generator::add_tile_exit(MapPtr map, const Coordinate& c, const Direction d
 
 // Get the custom map ID for a particular depth, and set it as the custom map ID
 // for the given tile.
-void Generator::set_custom_map_id_for_depth(TilePtr new_tile, const Depth& depth)
+void Generator::set_custom_map_id_for_depth(TilePtr new_tile, const Direction exit_direction, const Depth& depth, const string& linkback_map_id)
 {
   Depth new_depth = depth;
   TileType tile_type = new_tile->get_tile_type();
@@ -409,8 +411,45 @@ void Generator::set_custom_map_id_for_depth(TilePtr new_tile, const Depth& depth
       new_tile->set_custom_map_id(depth_map_id);
     }
 
-    // JCD FIXME: Need to ensure the appropriate map ID links are set
-    // on the custom map so that we can enter/exit it without any
-    // problems...
+    link_custom_map_to_current(depth_map_id, exit_direction, linkback_map_id);
+  }
+}
+
+void Generator::link_custom_map_to_current(const string& depth_map_id, const Direction exit_direction, const string& linkback_map_id)
+{
+  Game& game = Game::instance();
+  MapRegistry& mr = game.get_map_registry_ref();
+  MapPtr depth_map = mr.get_map(depth_map_id);
+  auto direction_map = depth_map->get_tile_exits();
+  Direction depth_map_dir = DirectionUtils::get_opposite_direction(exit_direction);
+  auto exit_it = direction_map.find(depth_map_dir);
+
+  if (exit_it != direction_map.end())
+  {
+    vector<Coordinate> coords = exit_it->second;
+
+    if (coords.empty())
+    {
+      ostringstream ss;
+      ss << "Tried to link up custom map to random, but exit_direction " << exit_direction << " did not exist.";
+      Log::instance().error(ss.str());
+    }
+    else
+    {
+      // Iterate over the exits found in the requested direction.  For the
+      // first "empty" exit found, link it to the current map.
+      for (const auto& coord : coords)
+      {
+        TilePtr tile = depth_map->at(coord);
+        TileExitMap& tile_exit_map = tile->get_tile_exit_map_ref();
+        MapExitPtr exit = tile_exit_map.find(depth_map_dir)->second;
+
+        if (!exit->is_using_map_id())
+        {
+          MapExitUtils::add_exit_to_tile(depth_map, coord, depth_map_dir, linkback_map_id);
+          break;
+        }
+      }
+    }
   }
 }
