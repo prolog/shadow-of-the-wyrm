@@ -55,7 +55,8 @@ namespace SL
       virtual void fill(const MapPtr map, const TileType& tile_type);
       virtual bool place_staircase(MapPtr current_map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location);
       virtual void add_tile_exit(MapPtr map, const Coordinate& c, const Direction direction, const bool link_to_map_exit);
-      virtual void set_custom_map_id_for_depth(TilePtr tile, const Depth& depth);
+      virtual void set_custom_map_id_for_depth(TilePtr tile, const Direction exit_direction, const Depth& depth, const std::string& linkback_map_id);
+      virtual void link_custom_map_to_current(const std::string& depth_map_id, const Direction direction, const std::string& linkback_map_id);
 
       virtual bool update_creatures(MapPtr map, const int danger_level);
     
