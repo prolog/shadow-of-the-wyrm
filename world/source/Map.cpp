@@ -23,6 +23,8 @@ Map::Map(const Map& new_map)
     dimensions = new_dimensions;
     original_dimensions = new_dimensions;
     tiles = new_tiles;
+
+    map_id = new_map.map_id;
   }
 }
 

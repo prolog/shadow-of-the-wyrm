@@ -53,9 +53,6 @@ MapPtr Generator::generate_and_initialize(const int danger_level, const Dimensio
 void Generator::initialize(MapPtr map, const int danger_level)
 {
   map->set_terrain_type(map_terrain_type);
-
-  boost::uuids::uuid id = boost::uuids::random_generator()();
-  map->set_map_id(Uuid::to_string(id));
   set_map_permanence(map);
 
   // If a generated map ID has been set, update the map ID with that.
