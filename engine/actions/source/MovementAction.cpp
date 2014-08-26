@@ -276,12 +276,25 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
   return movement_success;
 }
 
+// Generate and move to the new map using the tile type and subtype present
+// on the tile, rather than a source like the map exit.
 ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const int depth_increment)
 {
   ActionCostValue action_cost_value = 0;
 
-  TileType tile_type     = tile->get_tile_type();
-  TileType tile_subtype  = tile->get_tile_subtype();
+  if (creature && tile && map)
+  {
+    return generate_and_move_to_new_map(creature, map, tile, tile->get_tile_type(), tile->get_tile_subtype(), depth_increment);
+  }
+
+  return action_cost_value;
+}
+
+// General version that can handle tile type/subtype from any source - the tile
+// itself, a map exit, etc.
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const int depth_increment)
+{
+  ActionCostValue action_cost_value = 0;
 
   // If permanent, set the previous map ID, so that if there are staircases, etc., the
   // link to the current map can be maintained.
