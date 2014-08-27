@@ -417,13 +417,9 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   string max_depth_property = get_additional_property(UnderworldProperties::UNDERWORLD_STRUCTURE_MAX_DEPTH);
   if (!max_depth_property.empty())
   {
-    Dimensions dim = map->size();
-    Depth depth = dim.depth();
-
+    Depth depth = map->size().depth();
     depth.set_maximum(String::to_int(max_depth_property));
-    dim.set_depth(depth);
-
-    map->set_size(dim);
+    map->size_ref().set_depth(depth);
   }
 
   Depth depth = map->size().depth();
