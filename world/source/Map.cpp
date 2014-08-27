@@ -261,12 +261,22 @@ Dimensions Map::size() const
   return dimensions;
 }
 
+Dimensions& Map::size_ref()
+{
+  return dimensions;
+}
+
 void Map::set_original_size(const Dimensions& new_original_dimensions)
 {
   original_dimensions = new_original_dimensions;
 }
 
 Dimensions Map::original_size() const
+{
+  return original_dimensions;
+}
+
+Dimensions& Map::original_size_ref()
 {
   return original_dimensions;
 }

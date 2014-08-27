@@ -408,15 +408,18 @@ void Generator::set_custom_map_id_for_depth(TilePtr new_tile, const Direction ex
       new_tile->set_custom_map_id(depth_map_id);
     }
 
-    link_custom_map_to_current(depth_map_id, exit_direction, linkback_map_id);
+    update_custom_map_with_current(depth_map_id, exit_direction, linkback_map_id, new_depth);
   }
 }
 
-void Generator::link_custom_map_to_current(const string& depth_map_id, const Direction exit_direction, const string& linkback_map_id)
+void Generator::update_custom_map_with_current(const string& depth_map_id, const Direction exit_direction, const string& linkback_map_id, const Depth& new_depth)
 {
   Game& game = Game::instance();
   MapRegistry& mr = game.get_map_registry_ref();
   MapPtr depth_map = mr.get_map(depth_map_id);
+  
+  depth_map->size_ref().set_depth(new_depth);
+
   auto direction_map = depth_map->get_tile_exits();
   Direction depth_map_dir = DirectionUtils::get_opposite_direction(exit_direction);
   auto exit_it = direction_map.find(depth_map_dir);
