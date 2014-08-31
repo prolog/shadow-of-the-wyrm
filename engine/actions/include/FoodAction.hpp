@@ -1,6 +1,7 @@
 #pragma once
 #include "Creature.hpp"
 #include "IActionManager.hpp"
+#include "IItemFilter.hpp"
 #include "StatusTypes.hpp"
 
 class FoodAction : public IActionManager
@@ -9,10 +10,12 @@ class FoodAction : public IActionManager
     ActionCostValue eat(CreaturePtr creature, ActionManager * const am);
     void add_hunger_level_message_if_necessary(CreaturePtr creature, const int old_hunger_level, const int new_hunger_level);
 
-protected:
+  protected:
     friend class ActionManager;
     friend class CreatureHungerTimer;
     FoodAction();
+
+    ActionCostValue eat_food_off_ground(CreaturePtr creature, const std::list<IItemFilterPtr>& display_list);
 
     bool eat_food(CreaturePtr creature, ItemPtr food);
 

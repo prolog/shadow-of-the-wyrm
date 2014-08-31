@@ -9,6 +9,7 @@ class ActionTextKeys
     static std::string get_quaff_message(const std::string& desc_sid, const std::string& potion_desc, const bool is_player);
     static std::string get_read_message(const std::string& player_read_sid, const std::string& monster_read_sid, const std::string& desc_sid, const std::string& readable_desc, const bool is_player);
     static std::string get_eat_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
+    static std::string get_eat_confirmation_message(const std::string& consumable_desc);
     static std::string get_full_message(const std::string& desc_sid, const std::string& consumable_desc, const bool is_player);
     static std::string get_spellcasting_message(const Spell& spell, const std::string& creature_desc_s, const bool is_player);
     static std::string get_spellcasting_cancelled_message(const std::string& creature_desc_sid, const bool is_player);
@@ -68,6 +69,7 @@ class ActionTextKeys
     static const std::string ACTION_QUAFF_MONSTER;
     static const std::string ACTION_EAT_PLAYER;
     static const std::string ACTION_EAT_MONSTER;
+    static const std::string ACTION_EAT_CONFIRMATION;
     static const std::string ACTION_FULL_PLAYER;
     static const std::string ACTION_FULL_MONSTER;
     static const std::string ACTION_SPELLCASTING_CANCELLED_PLAYER;

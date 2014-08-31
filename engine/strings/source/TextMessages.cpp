@@ -176,11 +176,16 @@ string TextMessages::get_equipment_location(const EquipmentWornLocation location
   return equipment_location;
 }
 
-string TextMessages::get_confirmation_message(const string& query_sid)
+string TextMessages::get_confirmation_message(const string& query_or_sid)
 {
   ostringstream ss;
-  
-  ss << StringTable::get(query_sid);
+  string query = StringTable::get(query_or_sid);
+  if (query.empty())
+  {
+    query = query_or_sid;
+  }
+
+  ss << query;
   ss << " [";
   ss << StringTable::get(TextKeys::DECISION_CONFIRM_KEY);
   ss << "/" << StringTable::get(TextKeys::DECISION_DENY_KEY);

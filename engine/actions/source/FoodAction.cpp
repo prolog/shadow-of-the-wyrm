@@ -4,10 +4,13 @@
 #include "Conversion.hpp"
 #include "Food.hpp"
 #include "FoodAction.hpp"
+#include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemIdentifier.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "StatusAilmentTextKeys.hpp"
+#include "TextMessages.hpp"
 
 using namespace std;
 
@@ -32,9 +35,12 @@ void FoodAction::initialize_hunger_message_sid_map()
                              {HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_MESSAGE_HUNGER_DYING} };
 }
 
-// Try to eat something.  First check the inventory, and warn the player
-// if there is nothing edible (this costs 0).  Otherwise, bring up the
-// inventory, and filter by items of ITEM_TYPE_FOOD and ITEM_TYPE_PLANT.
+// Try to eat something.  Before trying the inventory, check the items
+// on the ground first, prompting the player for each.  Next, check the 
+// inventory, and warn the player if there is nothing edible (this costs 
+// 0).  Otherwise, bring up the inventory, and filter by items of 
+// ITEM_TYPE_FOOD and ITEM_TYPE_PLANT.
+//
 // If the user selects nothing in this case, the action cost should still
 // be 0; otherwise, it should count as a spent action.
 ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
@@ -44,16 +50,70 @@ ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
   if (creature)
   {
     list<IItemFilterPtr> display_list = ItemFilterFactory::create_edible_filter();
-    ItemPtr selected_edible_item = am->inventory(creature, creature->get_inventory(), display_list, false);
-    
-    if (selected_edible_item)
+
+    action_cost_value = eat_food_off_ground(creature, display_list);
+
+    if (action_cost_value == 0)
     {
-      if (eat_food(creature, selected_edible_item))
+      ItemPtr selected_edible_item = am->inventory(creature, creature->get_inventory(), display_list, false);
+
+      if (selected_edible_item)
       {
-        // The item has been eaten.  Advance the turn:
-        action_cost_value = get_action_cost_value(creature);
+        if (eat_food(creature, selected_edible_item))
+        {
+          // The item has been eaten.  Advance the turn:
+          action_cost_value = get_action_cost_value(creature);
+        }
       }
-    }    
+    }
+  }
+
+  return action_cost_value;
+}
+
+ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list<IItemFilterPtr>& display_list)
+{
+  ActionCostValue action_cost_value = 0;
+  MapPtr current_map = Game::instance().get_current_map();
+  TilePtr tile = MapUtils::get_tile_for_creature(current_map, creature);
+
+  if (tile)
+  {
+    const list<ItemPtr> ground_items = tile->get_items()->get_items_cref();
+    list<ItemPtr> edible_ground;
+    back_insert_iterator<list<ItemPtr>> back_it(edible_ground);
+
+    copy_if(ground_items.begin(), ground_items.end(), back_it,
+      [display_list](ItemPtr item)
+    {
+      bool is_food = true;
+
+      for (IItemFilterPtr i : display_list)
+      {
+        is_food = is_food && i->passes_filter(item);
+      }
+
+      return is_food;
+    });
+
+    // For each item on the ground, check with the creature to see if they 
+    // want to eat it.
+    for (ItemPtr food : edible_ground)
+    {
+      ItemIdentifier iid;
+
+      string consumable_desc = iid.get_appropriate_usage_description(food);
+      IMessageManager& manager = MessageManagerFactory::instance();
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(ActionTextKeys::get_eat_confirmation_message(consumable_desc)));
+      bool confirm = creature->get_decision_strategy()->get_confirmation();
+
+      if (confirm)
+      {
+        eat_food(creature, food);
+        action_cost_value = get_action_cost_value(creature);
+        break;
+      }
+    }
   }
 
   return action_cost_value;
