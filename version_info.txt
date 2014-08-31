@@ -9,6 +9,9 @@ Savage Lands v0.2.7 "Glappa"
   - Created a fixed map for the 5th floor, that will hook up to the
     generated maps on the 4th and 6th.
 
+- Added the ability to eat items off the ground - the player no longer
+  needs to pick up an item just to eat it immediately.
+
 - New creatures: xither.
 
 - Bug fixes: many creatures were missing Cavern in their list of allowable
