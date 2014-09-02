@@ -1363,11 +1363,12 @@
 			2 = Reflective Beam
 			3 = Cone
 			4 = Ball
+			5 = Cross
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="4"/>
+		<xs:maxInclusive value="5"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="WandSpellShape">

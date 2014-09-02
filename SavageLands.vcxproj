@@ -547,6 +547,7 @@
     <ClInclude Include="engine\magic\include\BallShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\BeamShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\ConeShapeProcessor.hpp" />
+    <ClInclude Include="engine\magic\include\CrossShapeProcessor.hpp" />
     <ClInclude Include="engine\magic\include\SpellFailureConsequences.hpp" />
     <ClInclude Include="engine\magic\include\MarginalSpellFailureConsequences.hpp" />
     <ClInclude Include="engine\magic\include\ReflectiveBeamShapeProcessor.hpp" />
@@ -1640,6 +1641,7 @@
     <ClCompile Include="engine\magic\source\BallShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\BeamShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\ConeShapeProcessor.cpp" />
+    <ClCompile Include="engine\magic\source\CrossShapeProcessor.cpp" />
     <ClCompile Include="engine\magic\source\MagicalAbilityChecker.cpp" />
     <ClCompile Include="engine\magic\source\MarginalSpellFailureConsequences.cpp" />
     <ClCompile Include="engine\magic\source\ReflectiveBeamShapeProcessor.cpp" />

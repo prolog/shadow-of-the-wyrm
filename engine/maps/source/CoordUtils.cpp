@@ -84,7 +84,7 @@ bool CoordUtils::is_valid_move(const Dimensions& dim, const Coordinate& c, const
 }
 
 // Generate the next coordinate in a given direction.  Does not do correctness checking!
-Coordinate CoordUtils::get_new_coordinate(const Coordinate& c, const Direction d)
+Coordinate CoordUtils::get_new_coordinate(const Coordinate& c, const Direction d, const int offset)
 {
   Coordinate new_coord = c;
 
@@ -94,32 +94,32 @@ Coordinate CoordUtils::get_new_coordinate(const Coordinate& c, const Direction d
       new_coord = c;
       break;
     case DIRECTION_SOUTH_WEST:
-      new_coord.first++;
-      new_coord.second--;
+      new_coord.first += offset;
+      new_coord.second -= offset;
       break;
     case DIRECTION_SOUTH:
-      new_coord.first++;
+      new_coord.first += offset;
       break;
     case DIRECTION_SOUTH_EAST:
-      new_coord.first++;
-      new_coord.second++;
+      new_coord.first += offset;
+      new_coord.second += offset;
       break;
     case DIRECTION_WEST:
-      new_coord.second--;
+      new_coord.second -= offset;
       break;
     case DIRECTION_EAST:
-      new_coord.second++;
+      new_coord.second += offset;
       break;
     case DIRECTION_NORTH_WEST:
-      new_coord.first--;
-      new_coord.second--;
+      new_coord.first -= offset;
+      new_coord.second -= offset;
       break;
     case DIRECTION_NORTH:
-      new_coord.first--;
+      new_coord.first -= offset;
       break;
     case DIRECTION_NORTH_EAST:
-      new_coord.first--;
-      new_coord.second++;
+      new_coord.first -= offset;
+      new_coord.second += offset;
       break;
     case DIRECTION_UP:
     case DIRECTION_DOWN:

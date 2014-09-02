@@ -1,6 +1,7 @@
 #include "BallShapeProcessor.hpp"
 #include "BeamShapeProcessor.hpp"
 #include "ConeShapeProcessor.hpp"
+#include "CrossShapeProcessor.hpp"
 #include "ReflectiveBeamShapeProcessor.hpp"
 #include "SpellShapeProcessorFactory.hpp"
 #include "TargetSelfShapeProcessor.hpp"
@@ -32,8 +33,11 @@ SpellShapeProcessorPtr SpellShapeProcessorFactory::create_processor(const SpellS
       spell_processor = std::make_shared<ConeShapeProcessor>();
       break;
     case SPELL_SHAPE_BALL:
-    default:
       spell_processor = std::make_shared<BallShapeProcessor>();
+      break;
+    case SPELL_SHAPE_CROSS:
+    default:
+      spell_processor = std::make_shared<CrossShapeProcessor>();
       break;
   }
 
