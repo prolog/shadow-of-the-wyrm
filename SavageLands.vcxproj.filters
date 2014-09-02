@@ -3138,6 +3138,9 @@
     <ClInclude Include="engine\maps\include\TileUtils.hpp">
       <Filter>Header Files\engine\maps\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\magic\include\CrossShapeProcessor.hpp">
+      <Filter>Header Files\engine\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6043,6 +6046,9 @@
     </ClCompile>
     <ClCompile Include="engine\maps\source\unit_tests\DirectionUtils_test.cpp">
       <Filter>Source Files\engine\maps\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\magic\source\CrossShapeProcessor.cpp">
+      <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

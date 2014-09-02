@@ -19,7 +19,7 @@ class CoordUtils
     static bool is_valid_move(const Dimensions& dim, const Coordinate& c, const Direction d);
     
     // Get new coordinates.  "is_valid_move" should always be called first!
-    static Coordinate get_new_coordinate(const Coordinate& c, const Direction d);
+    static Coordinate get_new_coordinate(const Coordinate& c, const Direction d, const int offset = 1);
 
     static int get_perimeter_length(const Coordinate& top_left, const Coordinate& bottom_right);
 
