@@ -18,8 +18,9 @@ pair<vector<TilePtr>, Animation> CrossShapeProcessor::get_affected_tiles_and_ani
   vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
   DisplayTile dt('*', spell.get_colour());
   vector<Direction> directions = {DIRECTION_NORTH, DIRECTION_SOUTH, DIRECTION_EAST, DIRECTION_WEST};
-  Coordinate current_coord = caster_coord;
   int offset = 1;
+  TileMagicChecker tmc;
+  vector<Direction> stop_vec;
 
   // The cross shape is drawn so that each step i in the animation is
   // distance i from the caster.  So all the distance-1 tiles are drawn,
@@ -30,18 +31,35 @@ pair<vector<TilePtr>, Animation> CrossShapeProcessor::get_affected_tiles_and_ani
   {
     for (Direction d : directions)
     {
-      Coordinate c = CoordUtils::get_new_coordinate(current_coord, d, offset);
+      // Check to see if the spell has already run into a wall, etc,
+      // in the given direction.  If so, we should move on to the
+      // next direction, since no more spell processing in the first
+      // direction should be possible.
+      if (find(stop_vec.begin(), stop_vec.end(), d) != stop_vec.end())
+      {
+        continue;
+      }
+
+      Coordinate c = CoordUtils::get_new_coordinate(caster_coord, d, offset);
 
       TilePtr tile = map->at(c);
 
       if (tile)
       {
+        // If the tile blocks the spell, stop trying to process whatever
+        // direction we're currently working with.  This ensures that
+        // spells won't be able to go through walls, etc.
+        if (tmc.does_tile_block_spell(tile))
+        {
+          stop_vec.push_back(d);
+        }
+
         affected_tiles.push_back(tile);
-        cross_vec.push_back(current_coord);
-        movement_path.push_back(make_pair(dt, cross_vec));
+        cross_vec.push_back(c);
       }
     }
 
+    movement_path.push_back(make_pair(dt, cross_vec));
     cross_vec.clear();
     offset++;
   }
