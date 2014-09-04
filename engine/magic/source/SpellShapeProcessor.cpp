@@ -1,6 +1,10 @@
 #include "ActionManager.hpp"
+#include "AnimationTranslator.hpp"
 #include "CombatManager.hpp"
 #include "CoordUtils.hpp"
+#include "CurrentCreatureAbilities.hpp"
+#include "Game.hpp"
+#include "DisplayTile.hpp"
 #include "EffectFactory.hpp"
 #include "SpellShapeProcessor.hpp"
 
@@ -8,6 +12,21 @@ using namespace std;
 
 SpellShapeProcessor::~SpellShapeProcessor()
 {
+}
+
+// Create the affected tiles and animation for the spell shape.
+pair<vector<TilePtr>, Animation> SpellShapeProcessor::create_affected_tiles_and_animation(CreaturePtr caster, MapPtr map, const std::vector<TilePtr>& affected_tiles, const std::vector<std::pair<DisplayTile, std::vector<Coordinate>>>& movement_path)
+{
+  MapPtr fov_map = caster->get_decision_strategy()->get_fov_map();
+  Game& game = Game::instance();
+  AnimationTranslator at(game.get_display());
+  CurrentCreatureAbilities cca;
+  CreaturePtr player = game.get_current_player();
+
+  Animation animation = at.create_movement_animation(!cca.can_see(player), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, map, fov_map);
+  pair<vector<TilePtr>, Animation> affected_tiles_and_animation(affected_tiles, animation);
+
+  return affected_tiles_and_animation;
 }
 
 // Process the shape.  This is done by generating all the affected tiles,

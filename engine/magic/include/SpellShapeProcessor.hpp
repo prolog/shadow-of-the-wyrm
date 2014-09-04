@@ -4,6 +4,7 @@
 #include "Animation.hpp"
 #include "common.hpp"
 #include "Directions.hpp"
+#include "DisplayTile.hpp"
 #include "Map.hpp"
 #include "Spell.hpp"
 #include "Tile.hpp"
@@ -26,6 +27,8 @@ class SpellShapeProcessor
     virtual bool process_damage_and_effect(CreaturePtr caster, const std::vector<TilePtr>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
 
   protected:
+    virtual std::pair<std::vector<TilePtr>, Animation> create_affected_tiles_and_animation(CreaturePtr caster, MapPtr map, const std::vector<TilePtr>& affected_tiles, const std::vector<std::pair<DisplayTile, std::vector<Coordinate>>>& movement_path);
+
     virtual bool apply_damage_and_effect(CreaturePtr caster, const std::vector<TilePtr>& affected_tiles, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
     virtual bool apply_damage(CreaturePtr caster, TilePtr tile, const Spell& spell, ActionManager * const am);
     virtual bool apply_effect(CreaturePtr caster, TilePtr tile, const Spell& spell, const ItemStatus effect_status, ActionManager * const am);
