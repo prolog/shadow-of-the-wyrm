@@ -4032,6 +4032,38 @@
 				<Type>9</Type>
 			</Damage>
 		</Creature>
+		<Creature id="kalath">
+			<RaceID>_divine</RaceID>
+			<ShortDescriptionSID>KALATH_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>KALATH_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>KALATH_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>KALATH_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>k</Symbol>
+				<Colour>11</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>4</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>10</Exp>
+			</CreatureGeneration>
+			<Level>4</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>8</NumSides>
+				<Type>10</Type>
+			</Damage>
+		</Creature>
 		<Creature id="bog_spirit">
 			<RaceID>_spirit</RaceID>
 			<ShortDescriptionSID>BOG_SPIRIT_SHORT_DESCRIPTION_SID</ShortDescriptionSID>

@@ -16,7 +16,7 @@ Savage Lands v0.2.7 "Glappa"
 - Created a new effect type, Cross, and created a new arcane spell, 
   Cross of Flame, to demonstrate it.
 
-- New creatures: xither.
+- New creatures: xither, kalath.
 
 - Bug fixes: many creatures were missing Cavern in their list of allowable
   terrain types - added Cavern to those lists where appropriate (pretty
