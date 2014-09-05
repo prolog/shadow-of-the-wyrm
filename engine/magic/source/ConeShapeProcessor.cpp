@@ -82,8 +82,6 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
 
   // Create the animation.
   CreaturePtr caster = map->at(caster_coord)->get_creature();
-  auto affected_tiles_and_animation = create_affected_tiles_and_animation(caster, map, affected_tiles, movement_path);
-
-  return affected_tiles_and_animation;
+  return create_affected_tiles_and_animation(caster, map, affected_tiles, movement_path);
 }
 
