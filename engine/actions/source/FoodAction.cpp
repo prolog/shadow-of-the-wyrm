@@ -141,8 +141,17 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
       // gets resists, etc).
       add_food_message(creature, food, true);
 
+      // Reduce the quantity of food by 1; if this brings the quantity down to 0
+      // (or lower, I guess!) then remove the food from the creature's inventory.
       food->set_quantity(food->get_quantity() - 1);
-      if (food->get_quantity() == 0) creature->get_inventory()->remove(food->get_id());
+      if (food->get_quantity() <= 0) creature->get_inventory()->remove(food->get_id());
+
+      // Many deities don't appreciate cannibalism!
+      string corpse_race_id = food->get_additional_property(ConsumableConstants::CORPSE_RACE_ID);
+      if (!corpse_race_id.empty() && (corpse_race_id == creature->get_race_id()))
+      {
+        Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_CANNIBALISM);
+      }
 
       cm.consume(creature, item_as_consumable);
 

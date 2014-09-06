@@ -12,6 +12,7 @@
 			</DeityInitialModifiers>
 			<Dislikes>
 				<AttackFriendlyCreature>1</AttackFriendlyCreature>
+				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<WorshipSiteType>0</WorshipSiteType>
 		</Deity>
@@ -27,6 +28,7 @@
 			</DeityInitialModifiers>
 			<Dislikes>
 				<AttackFriendlyCreature>1</AttackFriendlyCreature>
+				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<WorshipSiteType>1</WorshipSiteType>
 		</Deity>
@@ -42,6 +44,7 @@
 			</DeityInitialModifiers>
 			<Dislikes>
 				<AttackFriendlyCreature>1</AttackFriendlyCreature>
+				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<WorshipSiteType>2</WorshipSiteType>
 		</Deity>
@@ -57,6 +60,7 @@
 			</DeityInitialModifiers>
 			<Dislikes>
 				<AttackFriendlyCreature>1</AttackFriendlyCreature>
+				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<WorshipSiteType>3</WorshipSiteType>
 		</Deity>
@@ -83,7 +87,9 @@
 			<DeityInitialModifiers>
 				<AgilityModifier>1</AgilityModifier>
 			</DeityInitialModifiers>
-			<Dislikes/>
+			<Dislikes>
+				<Cannibalism>1</Cannibalism>
+			</Dislikes>
 			<WorshipSiteType>5</WorshipSiteType>
 		</Deity>
 		<Deity id="07_shiver">

@@ -49,7 +49,8 @@ void DeityActionManager::handle_displeasing_action(CreaturePtr creature)
     DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
     // This may have been updated as a result of the decision.
-    int new_piety = status.get_piety();
+    int new_piety = original_piety - decision_implications.get_piety_loss();
+    status.set_piety(new_piety);
 
     // If the creature is the player, and if the piety was reduced
     // below zero, show the deity's anger.

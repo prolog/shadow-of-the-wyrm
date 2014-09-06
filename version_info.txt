@@ -16,11 +16,21 @@ Savage Lands v0.2.7 "Glappa"
 - Created a new effect type, Cross, and created a new arcane spell, 
   Cross of Flame, to demonstrate it.
 
+- Corpses now track the race ID of the killed creature.  Eating the corpse
+  causes the game to check for cannibalism, which then notifies the
+  creature's deity.  Some deities (particularly the good ones) disapprove
+  of cannibalism.
+
 - New creatures: xither, kalath.
 
-- Bug fixes: many creatures were missing Cavern in their list of allowable
-  terrain types - added Cavern to those lists where appropriate (pretty
-  much everywhere).
+- Bug fixes: 
+  
+  - Many creatures were missing Cavern in their list of allowable
+    terrain types - added Cavern to those lists where appropriate (pretty
+    much everywhere).  
+    
+  - Piety wasn't being updated properly for displeasing actions like
+    attacking friendly creatures or cannibalism.
 
 Savage Lands v0.2.6 "Ida"
 - Version declared July 13, 2014.  Version finalized August 13, 2014.

@@ -6,6 +6,7 @@ class CreatureActionKeys
 {
   public:
     static const std::string ACTION_ATTACK_FRIENDLY;
+    static const std::string ACTION_CANNIBALISM;
 };
 
 typedef std::map<std::string, bool> CreatureActionMap;

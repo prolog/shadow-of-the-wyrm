@@ -261,6 +261,7 @@
 <xs:complexType name="DeityDislikes">
 	<xs:sequence>
 		<xs:element name="AttackFriendlyCreature" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="Cannibalism" type="xs:boolean" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="InitialStatisticsModifiers">

@@ -56,6 +56,10 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
 
         if (corpse)
         {
+          // Set whatever internal flags are necessary for things like
+          // checking cannibalism, etc.
+          set_internal_details(creature, corpse);
+
           // Set various aspects of the display detail - name of the creature
           // being corpseified, colour of the corpse, etc.
           set_display_details(creature, corpse);
@@ -77,6 +81,16 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
   }
 
   return corpse;
+}
+
+void CorpseFactory::set_internal_details(CreaturePtr creature, ItemPtr corpse)
+{
+  if (creature && corpse)
+  {
+    // Set the corpse's race ID so that cannibalism can be punished when
+    // necessary.
+    corpse->set_additional_property(ConsumableConstants::CORPSE_RACE_ID, creature->get_race_id());
+  }
 }
 
 void CorpseFactory::set_display_details(CreaturePtr creature, ItemPtr corpse)

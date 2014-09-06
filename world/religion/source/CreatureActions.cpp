@@ -5,6 +5,7 @@ using namespace std;
 // Creature action keys
 
 const string CreatureActionKeys::ACTION_ATTACK_FRIENDLY = "ACTION_ATTACK_FRIENDLY";
+const string CreatureActionKeys::ACTION_CANNIBALISM = "ACTION_CANNIBALISM";
 
 
 // Creature Actions 
