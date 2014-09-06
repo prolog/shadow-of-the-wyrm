@@ -77,5 +77,8 @@ void XMLDeitiesReader::parse_dislikes(const XMLNode& dislikes_node, DeityPtr dei
   {
     bool attack_friendly = XMLUtils::get_child_node_bool_value(dislikes_node, "AttackFriendlyCreature");
     deity->set_dislike(CreatureActionKeys::ACTION_ATTACK_FRIENDLY, attack_friendly);
+
+    bool cannibalism = XMLUtils::get_child_node_bool_value(dislikes_node, "Cannibalism");
+    deity->set_dislike(CreatureActionKeys::ACTION_CANNIBALISM, cannibalism);
   }
 }
