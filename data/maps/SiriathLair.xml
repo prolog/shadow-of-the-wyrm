@@ -71,6 +71,20 @@
 					<Col>65</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>mirshi</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>62</Col>
+				</Coord>
+			</Placement>
+			<Placement>
+				<ID>mirshi</ID>
+				<Coord>
+					<Row>12</Row>
+					<Col>65</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items/>
 	</InitialPlacements>
