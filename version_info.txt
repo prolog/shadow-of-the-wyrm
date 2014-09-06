@@ -21,7 +21,7 @@ Savage Lands v0.2.7 "Glappa"
   creature's deity.  Some deities (particularly the good ones) disapprove
   of cannibalism.
 
-- New creatures: xither, kalath.
+- New creatures: xither, kalath, mirshi.
 
 - Bug fixes: 
   
@@ -31,6 +31,9 @@ Savage Lands v0.2.7 "Glappa"
     
   - Piety wasn't being updated properly for displeasing actions like
     attacking friendly creatures or cannibalism.
+
+  - The "B"estiary command wasn't available during tile selection after
+    the recent conversion to use user-defined mappings.
 
 Savage Lands v0.2.6 "Ida"
 - Version declared July 13, 2014.  Version finalized August 13, 2014.
