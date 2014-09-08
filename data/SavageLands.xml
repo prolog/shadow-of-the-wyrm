@@ -14,6 +14,11 @@
 				<AttackFriendlyCreature>1</AttackFriendlyCreature>
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
+			<Crowning>
+				<Artifact>sunsword</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>beastbinder</Artifact>
+			</Crowning>
 			<WorshipSiteType>0</WorshipSiteType>
 		</Deity>
 		<Deity id="02_aurelion">
@@ -30,6 +35,11 @@
 				<AttackFriendlyCreature>1</AttackFriendlyCreature>
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
+			<Crowning>
+				<Artifact>sunsword</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>beastbinder</Artifact>
+			</Crowning>
 			<WorshipSiteType>1</WorshipSiteType>
 		</Deity>
 		<Deity id="03_thelady">
@@ -46,6 +56,11 @@
 				<AttackFriendlyCreature>1</AttackFriendlyCreature>
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
+			<Crowning>
+				<Artifact>sunsword</Artifact>
+				<Artifact>dragonbane</Artifact>
+				<Artifact>beastbinder</Artifact>
+			</Crowning>
 			<WorshipSiteType>2</WorshipSiteType>
 		</Deity>
 		<Deity id="04_vedere">
@@ -62,6 +77,12 @@
 				<AttackFriendlyCreature>1</AttackFriendlyCreature>
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
+			<Crowning>
+				<Artifact>dragonsfist</Artifact>
+				<Artifact>bugcrusher</Artifact>
+				<Artifact>jellysmasher</Artifact>
+				<Artifact>long_hunt_knife</Artifact>
+			</Crowning>
 			<WorshipSiteType>3</WorshipSiteType>
 		</Deity>
 		<Deity id="05_voros">
@@ -75,6 +96,12 @@
 				<StrengthModifier>1</StrengthModifier>
 			</DeityInitialModifiers>
 			<Dislikes/>
+			<Crowning>
+				<Artifact>dragonsfist</Artifact>
+				<Artifact>bugcrusher</Artifact>
+				<Artifact>jellysmasher</Artifact>
+				<Artifact>long_hunt_knife</Artifact>
+			</Crowning>
 			<WorshipSiteType>4</WorshipSiteType>
 		</Deity>
 		<Deity id="06_thetrickster">
@@ -90,6 +117,12 @@
 			<Dislikes>
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
+			<Crowning>
+				<Artifact>dragonsfist</Artifact>
+				<Artifact>bugcrusher</Artifact>
+				<Artifact>jellysmasher</Artifact>
+				<Artifact>long_hunt_knife</Artifact>
+			</Crowning>
 			<WorshipSiteType>5</WorshipSiteType>
 		</Deity>
 		<Deity id="07_shiver">
@@ -103,6 +136,11 @@
 				<WillpowerModifier>1</WillpowerModifier>
 			</DeityInitialModifiers>
 			<Dislikes/>
+			<Crowning>
+				<Artifact>kithslayer</Artifact>
+				<Artifact>skyslayer</Artifact>
+				<Artifact>staff_artificer</Artifact>
+			</Crowning>
 			<WorshipSiteType>6</WorshipSiteType>
 		</Deity>
 		<Deity id="08_urgoth">
@@ -116,6 +154,11 @@
 				<StrengthModifier>1</StrengthModifier>
 			</DeityInitialModifiers>
 			<Dislikes/>
+			<Crowning>
+				<Artifact>kithslayer</Artifact>
+				<Artifact>skyslayer</Artifact>
+				<Artifact>staff_artificer</Artifact>
+			</Crowning>
 			<WorshipSiteType>7</WorshipSiteType>
 		</Deity>
 		<Deity id="09_sceadugenga">
@@ -129,6 +172,11 @@
 				<IntelligenceModifier>1</IntelligenceModifier>
 			</DeityInitialModifiers>
 			<Dislikes/>
+			<Crowning>
+				<Artifact>kithslayer</Artifact>
+				<Artifact>skyslayer</Artifact>
+				<Artifact>staff_artificer</Artifact>
+			</Crowning>
 			<WorshipSiteType>8</WorshipSiteType>
 		</Deity>
 	</Deities>
