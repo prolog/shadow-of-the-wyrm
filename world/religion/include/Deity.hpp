@@ -2,6 +2,7 @@
 #include <map>
 #include <string>
 #include <memory>
+#include <vector>
 #include "AlignmentEnums.hpp"
 #include "CreatureActions.hpp"
 #include "WorshipSiteTypes.hpp"
@@ -36,6 +37,9 @@ class Deity
     void set_dislike(const std::string& dislike_key, const bool val);
     bool get_dislike(const std::string& dislike_key) const;
     
+    void set_crowning_gifts(const std::vector<std::string>& new_crowning_gifts);
+    std::vector<std::string> get_crowning_gifts() const;
+
     void set_worship_site_type(const WorshipSiteType new_worship_site_type);
     WorshipSiteType get_worship_site_type() const;
     
@@ -52,6 +56,7 @@ class Deity
     std::string short_description_sid;
     std::string death_message_sid;
     AlignmentRange alignment_range;
+    std::vector<std::string> crowning_gifts;
     WorshipSiteType worship_site_type;
     StatisticsModifier initial_statistics_modifier; // only used for creature creation
     CreatureActions dislikes;
