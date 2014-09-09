@@ -1,6 +1,6 @@
 #include "Deity.hpp"
 
-using std::string;
+using namespace std;
 
 Deity::Deity()
 : alignment_range(ALIGNMENT_RANGE_NEUTRAL), worship_site_type(WORSHIP_SITE_CATHEDRAL), user_playable(false)
@@ -82,6 +82,17 @@ void Deity::set_dislike(const string& dislike, const bool value)
 bool Deity::get_dislike(const string& dislike) const
 {
   return dislikes.get_action_value(dislike);
+}
+
+// Set/get the deity's list of crowning gifts.
+void Deity::set_crowning_gifts(const vector<string>& new_crowning_gifts)
+{
+  crowning_gifts = new_crowning_gifts;
+}
+
+vector<string> Deity::get_crowning_gifts() const
+{
+  return crowning_gifts;
 }
 
 // Set/get the worship site type.
