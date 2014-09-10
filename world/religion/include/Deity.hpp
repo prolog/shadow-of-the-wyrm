@@ -5,16 +5,16 @@
 #include <vector>
 #include "AlignmentEnums.hpp"
 #include "CreatureActions.hpp"
+#include "ISerializable.hpp"
 #include "WorshipSiteTypes.hpp"
 #include "StatisticsModifier.hpp"
 
-class Deity;
-
-class Deity
+class Deity : public ISerializable
 {
   public:
     Deity();
     virtual ~Deity() {};
+    bool operator==(const Deity& d) const;
  
     void set_id(const std::string& new_id);
     std::string get_id() const;
@@ -49,6 +49,9 @@ class Deity
     void set_user_playable(const bool new_user_playable);
     bool get_user_playable() const;
 
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
+
   protected:
     std::string id;
     std::string name_sid;
@@ -61,6 +64,9 @@ class Deity
     StatisticsModifier initial_statistics_modifier; // only used for creature creation
     CreatureActions dislikes;
     bool user_playable;
+
+  private:
+    ClassIdentifier internal_class_identifier() const override;
 };
 
 typedef std::shared_ptr<Deity> DeityPtr;

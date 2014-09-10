@@ -1,10 +1,30 @@
 #include "Deity.hpp"
+#include "Serialize.hpp"
 
 using namespace std;
 
 Deity::Deity()
 : alignment_range(ALIGNMENT_RANGE_NEUTRAL), worship_site_type(WORSHIP_SITE_CATHEDRAL), user_playable(false)
 {
+}
+
+bool Deity::operator==(const Deity& d) const
+{
+  bool result = true;
+
+  result = result && id == d.id;
+  result = result && name_sid == d.name_sid;
+  result = result && description_sid == d.description_sid;
+  result = result && short_description_sid == d.short_description_sid;
+  result = result && death_message_sid == d.death_message_sid;
+  result = result && alignment_range == d.alignment_range;
+  result = result && crowning_gifts == d.crowning_gifts;
+  result = result && worship_site_type == d.worship_site_type;
+  result = result && initial_statistics_modifier == d.initial_statistics_modifier;
+  result = result && dislikes == d.dislikes;
+  result = result && user_playable == d.user_playable;
+
+  return result;
 }
 
 // Set/get the deity's internal identifier.
@@ -125,3 +145,50 @@ bool Deity::get_user_playable() const
 {
   return user_playable;
 }
+
+bool Deity::serialize(ostream& stream) const
+{
+  Serialize::write_string(stream, id);
+  Serialize::write_string(stream, name_sid);
+  Serialize::write_string(stream, description_sid);
+  Serialize::write_string(stream, short_description_sid);
+  Serialize::write_string(stream, death_message_sid);
+  Serialize::write_enum(stream, alignment_range);
+  Serialize::write_string_vector(stream, crowning_gifts);
+  Serialize::write_enum(stream, worship_site_type);
+
+  initial_statistics_modifier.serialize(stream);
+  dislikes.serialize(stream);
+
+  Serialize::write_bool(stream, user_playable);
+
+  return true;
+}
+
+bool Deity::deserialize(istream& stream)
+{
+  Serialize::read_string(stream, id);
+  Serialize::read_string(stream, name_sid);
+  Serialize::read_string(stream, description_sid);
+  Serialize::read_string(stream, short_description_sid);
+  Serialize::read_string(stream, death_message_sid);
+  Serialize::read_enum(stream, alignment_range);
+  Serialize::read_string_vector(stream, crowning_gifts);
+  Serialize::read_enum(stream, worship_site_type);
+
+  initial_statistics_modifier.deserialize(stream);
+  dislikes.deserialize(stream);
+
+  Serialize::read_bool(stream, user_playable);
+
+  return true;
+}
+
+ClassIdentifier Deity::internal_class_identifier() const
+{
+  return CLASS_ID_DEITY;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/Deity_test.cpp"
+#endif

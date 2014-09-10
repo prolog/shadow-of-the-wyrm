@@ -6050,5 +6050,14 @@
     <ClCompile Include="engine\magic\source\CrossShapeProcessor.cpp">
       <Filter>Source Files\engine\magic\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\religion\source\unit_tests\CreatureActions_test.cpp">
+      <Filter>Source Files\world\religion\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\StatisticsModifier_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\religion\source\unit_tests\Deity_test.cpp">
+      <Filter>Source Files\world\religion\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
