@@ -679,7 +679,18 @@ bool Game::serialize(ostream& stream) const
 
   map_registry.serialize(stream);
 
-  // Ignore deity map - this will be built up on startup.
+  Serialize::write_size_t(stream, deities.size());
+  for (const auto& deity_pair : deities)
+  {
+    DeityPtr deity = deity_pair.second;
+
+    if (deity)
+    {
+      Serialize::write_string(stream, deity_pair.first);
+      deity->serialize(stream);
+    }
+  }
+
   // Ignore race map - this will be built up on startup.
   // Ignore class map - this will be built up on startup.
   // Ignore creature map - this will be built up on startup.
@@ -713,7 +724,7 @@ bool Game::serialize(ostream& stream) const
     }
   }
 
-  // Item map needs to be serialized - the msater item template contain
+  // Item map needs to be serialized - the master item template contain
   // identification details that are otherwise lost when the game is saved
   // and subsequently loaded.
   Serialize::write_size_t(stream, items.size());
@@ -798,7 +809,21 @@ bool Game::deserialize(istream& stream)
 
   map_registry.deserialize(stream);
 
-  // Ignore deity map - this will be built up on startup.
+  size_t size = 0;
+  Serialize::read_size_t(stream, size);
+  deities.clear();
+
+  for (size_t i = 0; i < size; i++)
+  {
+    string deity_id;
+    DeityPtr deity = make_shared<Deity>();
+
+    Serialize::read_string(stream, deity_id);
+    deity->deserialize(stream);
+
+    deities.insert(make_pair(deity_id, deity));
+  }
+
   // Ignore race map - this will be built up on startup.
   // Ignore class map - this will be built up on startup.
   // Ignore creature map - this will be built up on startup.

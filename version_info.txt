@@ -30,6 +30,9 @@ Savage Lands v0.2.7 "Glappa"
 
   - Evil: Kithslayer, Staff of the Artificer, Skyslayer
 
+- Since deities now reference items, and items are serialized, deities are
+  now serialized as well.
+
 - New creatures: xither, kalath, mirshi.
 
 - Bug fixes: 
