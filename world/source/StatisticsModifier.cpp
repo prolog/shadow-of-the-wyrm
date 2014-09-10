@@ -1,4 +1,7 @@
 #include "StatisticsModifier.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 // Default all the modifiers to 0.
 StatisticsModifier::StatisticsModifier()
@@ -31,6 +34,21 @@ intelligence_modifier(new_intelligence_modifier),
 willpower_modifier(new_willpower_modifier),
 charisma_modifier(new_charisma_modifier)
 {
+}
+
+bool StatisticsModifier::operator==(const StatisticsModifier& sm) const
+{
+  bool result = true;
+
+  result = result && strength_modifier == sm.strength_modifier;
+  result = result && dexterity_modifier == sm.dexterity_modifier;
+  result = result && agility_modifier == sm.agility_modifier;
+  result = result && health_modifier == sm.health_modifier;
+  result = result && intelligence_modifier == sm.intelligence_modifier;
+  result = result && willpower_modifier == sm.willpower_modifier;
+  result = result && charisma_modifier == sm.charisma_modifier;
+
+  return result;
 }
 
 // Set/get each individual modifier
@@ -104,3 +122,38 @@ int StatisticsModifier::get_charisma_modifier() const
   return charisma_modifier;
 }
 
+bool StatisticsModifier::serialize(ostream& stream) const
+{
+  Serialize::write_int(stream, strength_modifier);
+  Serialize::write_int(stream, dexterity_modifier);
+  Serialize::write_int(stream, agility_modifier);
+  Serialize::write_int(stream, health_modifier);
+  Serialize::write_int(stream, intelligence_modifier);
+  Serialize::write_int(stream, willpower_modifier);
+  Serialize::write_int(stream, charisma_modifier);
+
+
+  return true;
+}
+
+bool StatisticsModifier::deserialize(istream& stream)
+{
+  Serialize::read_int(stream, strength_modifier);
+  Serialize::read_int(stream, dexterity_modifier);
+  Serialize::read_int(stream, agility_modifier);
+  Serialize::read_int(stream, health_modifier);
+  Serialize::read_int(stream, intelligence_modifier);
+  Serialize::read_int(stream, willpower_modifier);
+  Serialize::read_int(stream, charisma_modifier);
+
+  return true;
+}
+
+ClassIdentifier StatisticsModifier::internal_class_identifier() const
+{
+  return CLASS_ID_STATISTICS_MODIFIER;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/StatisticsModifier_test.cpp"
+#endif

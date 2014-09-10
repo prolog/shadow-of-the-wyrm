@@ -1,10 +1,12 @@
 #pragma once
+#include "ISerializable.hpp"
 
-class StatisticsModifier
+class StatisticsModifier : public ISerializable
 {
   public:
     StatisticsModifier();
     StatisticsModifier(const int new_strength_modifier, const int new_dexterity_modifier, const int new_agility_modifier, const int new_health_modifier, const int new_intelligence_modifier, const int new_willpower_modifier, const int new_charisma_modifier);
+    bool operator==(const StatisticsModifier& sm) const;
 
     void set_strength_modifier(const int new_strength_modifier);
     int get_strength_modifier() const;
@@ -27,6 +29,9 @@ class StatisticsModifier
     void set_charisma_modifier(const int new_charisma_modifier);
     int get_charisma_modifier() const;
 
+    bool serialize(std::ostream& stream) const override;
+    bool deserialize(std::istream& stream) override;
+
   protected:
     int strength_modifier;
     int dexterity_modifier;
@@ -35,4 +40,7 @@ class StatisticsModifier
     int intelligence_modifier;
     int willpower_modifier;
     int charisma_modifier;
+
+  private:
+    ClassIdentifier internal_class_identifier() const override;
 };
