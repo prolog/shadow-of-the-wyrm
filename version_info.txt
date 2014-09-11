@@ -24,7 +24,7 @@ Savage Lands v0.2.7 "Glappa"
 - Defined the crowning gifts for each deity.  For now, the good, neutral,
   and evil deities all, as a group, have the same crowning artifacts:
 
-  - Good: Sunsword, Dragonbane, Beastbinder
+  - Good: Sunsword, Dragonbane, Beastbinder, Alaric's mail shirt
 
   - Neutral: Dragonsfist, Bugcrusher, Jellysmasher, Knife of the Long Hunt
 
@@ -34,6 +34,8 @@ Savage Lands v0.2.7 "Glappa"
   now serialized as well.
 
 - New creatures: xither, kalath, mirshi.
+
+- New artifacts: Alaric's mail shirt.
 
 - Bug fixes: 
   

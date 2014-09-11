@@ -18,6 +18,7 @@
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
+				<Artifact>alaric_mail_shirt</Artifact>
 			</Crowning>
 			<WorshipSiteType>0</WorshipSiteType>
 		</Deity>
@@ -39,6 +40,7 @@
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
+				<Artifact>alaric_mail_shirt</Artifact>
 			</Crowning>
 			<WorshipSiteType>1</WorshipSiteType>
 		</Deity>
@@ -60,6 +62,7 @@
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
+				<Artifact>alaric_mail_shirt</Artifact>
 			</Crowning>
 			<WorshipSiteType>2</WorshipSiteType>
 		</Deity>
@@ -14972,6 +14975,23 @@
 				<Evade>6</Evade>
 				<Soak>5</Soak>
 			</Armour>
+			<Armour id="alaric_mail_shirt">
+				<DescriptionSID>ALARIC_MAIL_SHIRT_SID</DescriptionSID>
+				<UsageDescriptionSID>ALARIC_MAIL_SHIRT_USAGE_SID</UsageDescriptionSID>
+				<Value>1750</Value>
+				<Weight><Pounds>4</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.20</Slash>
+					<Pierce>0.20</Pierce>
+					<Shadow>0.15</Shadow>
+				</Resistances>
+				<Evade>17</Evade>
+				<Soak>9</Soak>
+			</Armour>
 			<Armour id="silari">
 				<DescriptionSID>SILARI_SID</DescriptionSID>
 				<UsageDescriptionSID>SILARI_USAGE_SID</UsageDescriptionSID>
@@ -14980,8 +15000,13 @@
 				<WornLocation>6</WornLocation>
 				<Material>6</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Heat>0.10</Heat>
+					<Cold>0.10</Cold>
+				</Resistances>
 				<Evade>9</Evade>
-				<Soak>9</Soak>
+				<Soak>10</Soak>
 			</Armour>
 			<Armour id="shell_armour">
 				<DescriptionSID>SHELL_ARMOUR_SID</DescriptionSID>
