@@ -16,6 +16,7 @@
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
@@ -40,6 +41,7 @@
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
@@ -64,6 +66,7 @@
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
@@ -88,6 +91,7 @@
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
@@ -109,6 +113,7 @@
 			<Dislikes/>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
@@ -132,6 +137,7 @@
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
@@ -153,6 +159,7 @@
 			<Dislikes/>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
@@ -174,6 +181,7 @@
 			<Dislikes/>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
@@ -195,6 +203,7 @@
 			<Dislikes/>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
+				<Artifact>erebus</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
@@ -16013,6 +16022,32 @@
 					<NumDice>4</NumDice>
 					<NumSides>12</NumSides>
 					<Modifier>12</Modifier>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="erebus">
+				<DescriptionSID>EREBUS_SID</DescriptionSID>
+				<UsageDescriptionSID>EREBUS_USAGE_SID</UsageDescriptionSID>
+				<Value>1300</Value>
+				<Weight><Pounds>11</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Holy>0.10</Holy>
+					<Shadow>0.10</Shadow>
+					<Arcane>0.10</Arcane>
+					<Lightning>0.10</Lightning>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>8</Modifier>
 					<Type>0</Type>
 				</Damage>
 			</Weapon>

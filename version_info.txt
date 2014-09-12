@@ -24,7 +24,7 @@ Savage Lands v0.2.7 "Glappa"
 - Defined the crowning gifts for each deity.  For now, the good, neutral,
   and evil deities all, as a group, have the same crowning artifacts:
 
-  - Common: great mace of Torasin
+  - Common: great mace of Torasin, eternal longsword "Erebus"
 
   - Good: Sunsword, Dragonbane, Beastbinder, Alaric's mail shirt
 
@@ -41,7 +41,7 @@ Savage Lands v0.2.7 "Glappa"
 
 - New artifacts: Alaric's mail shirt, smouldering black plate mail
   "Terror", dragon-leather armour of Tius, Crown of Tyranny, Helm of the
-  Heavens, great mace of Torasin
+  Heavens, great mace of Torasin, eternal longsword "Erebus"
 
 - Bug fixes: 
   
