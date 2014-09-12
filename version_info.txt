@@ -24,18 +24,24 @@ Savage Lands v0.2.7 "Glappa"
 - Defined the crowning gifts for each deity.  For now, the good, neutral,
   and evil deities all, as a group, have the same crowning artifacts:
 
+  - Common: great mace of Torasin
+
   - Good: Sunsword, Dragonbane, Beastbinder, Alaric's mail shirt
 
-  - Neutral: Dragonsfist, Bugcrusher, Jellysmasher, Knife of the Long Hunt
+  - Neutral: Dragonsfist, Bugcrusher, Jellysmasher, Knife of the Long
+    Hunt, dragon-leather armour of Tius
 
-  - Evil: Kithslayer, Staff of the Artificer, Skyslayer
+  - Evil: Kithslayer, Staff of the Artificer, Skyslayer, Terror, Crown
+    of Tyranny, Helm of the Heavens
 
 - Since deities now reference items, and items are serialized, deities are
   now serialized as well.
 
 - New creatures: xither, kalath, mirshi.
 
-- New artifacts: Alaric's mail shirt.
+- New artifacts: Alaric's mail shirt, smouldering black plate mail
+  "Terror", dragon-leather armour of Tius, Crown of Tyranny, Helm of the
+  Heavens, great mace of Torasin
 
 - Bug fixes: 
   
