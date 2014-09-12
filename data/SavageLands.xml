@@ -15,10 +15,12 @@
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
 				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>helm_of_the_heavens</Artifact>
 			</Crowning>
 			<WorshipSiteType>0</WorshipSiteType>
 		</Deity>
@@ -37,10 +39,12 @@
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
 				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>helm_of_the_heavens</Artifact>
 			</Crowning>
 			<WorshipSiteType>1</WorshipSiteType>
 		</Deity>
@@ -59,10 +63,12 @@
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
 				<Artifact>alaric_mail_shirt</Artifact>
+				<Artifact>helm_of_the_heavens</Artifact>
 			</Crowning>
 			<WorshipSiteType>2</WorshipSiteType>
 		</Deity>
@@ -81,10 +87,12 @@
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
 				<Artifact>long_hunt_knife</Artifact>
+				<Artifact>dragon_leather_tius</Artifact>
 			</Crowning>
 			<WorshipSiteType>3</WorshipSiteType>
 		</Deity>
@@ -100,10 +108,12 @@
 			</DeityInitialModifiers>
 			<Dislikes/>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
 				<Artifact>long_hunt_knife</Artifact>
+				<Artifact>dragon_leather_tius</Artifact>
 			</Crowning>
 			<WorshipSiteType>4</WorshipSiteType>
 		</Deity>
@@ -121,10 +131,12 @@
 				<Cannibalism>1</Cannibalism>
 			</Dislikes>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
 				<Artifact>long_hunt_knife</Artifact>
+				<Artifact>dragon_leather_tius</Artifact>
 			</Crowning>
 			<WorshipSiteType>5</WorshipSiteType>
 		</Deity>
@@ -140,9 +152,12 @@
 			</DeityInitialModifiers>
 			<Dislikes/>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
+				<Artifact>plate_mail_terror</Artifact>
+				<Artifact>crown_of_tyranny</Artifact>
 			</Crowning>
 			<WorshipSiteType>6</WorshipSiteType>
 		</Deity>
@@ -158,9 +173,12 @@
 			</DeityInitialModifiers>
 			<Dislikes/>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
+				<Artifact>plate_mail_terror</Artifact>
+				<Artifact>crown_of_tyranny</Artifact>
 			</Crowning>
 			<WorshipSiteType>7</WorshipSiteType>
 		</Deity>
@@ -176,9 +194,12 @@
 			</DeityInitialModifiers>
 			<Dislikes/>
 			<Crowning>
+				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
+				<Artifact>plate_mail_terror</Artifact>
+				<Artifact>crown_of_tyranny</Artifact>
 			</Crowning>
 			<WorshipSiteType>8</WorshipSiteType>
 		</Deity>
@@ -14926,6 +14947,37 @@
 				<Evade>8</Evade>
 				<Soak>5</Soak>
 			</Armour>
+			<Armour id="crown_of_tyranny">
+				<DescriptionSID>CROWN_OF_TYRANNY_SID</DescriptionSID>
+				<UsageDescriptionSID>CROWN_OF_TYRANNY_USAGE_SID</UsageDescriptionSID>
+				<Value>1580</Value>
+				<Weight><Pounds>8</Pounds></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>6</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Holy>0.15</Holy>
+				</Resistances>
+				<Evade>0</Evade>
+				<Soak>11</Soak>
+			</Armour>
+			<Armour id="helm_of_the_heavens">
+				<DescriptionSID>HELM_OF_THE_HEAVENS_SID</DescriptionSID>
+				<UsageDescriptionSID>HELM_OF_THE_HEAVENS_USAGE_SID</UsageDescriptionSID>
+				<Value>1400</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>6</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Acid>0.15</Acid>
+					<Poison>0.15</Poison>
+					<Shadow>0.15</Shadow>
+				</Resistances>
+				<Evade>5</Evade>
+				<Soak>8</Soak>
+			</Armour>
 			<Armour id="two_moon_amulet">
 				<DescriptionSID>TWO_MOON_AMULET_SID</DescriptionSID>
 				<UsageDescriptionSID>TWO_MOON_AMULET_USAGE_SID</UsageDescriptionSID>
@@ -14991,6 +15043,41 @@
 				</Resistances>
 				<Evade>17</Evade>
 				<Soak>9</Soak>
+			</Armour>
+			<Armour id="plate_mail_terror">
+				<DescriptionSID>PLATE_MAIL_TERROR_SID</DescriptionSID>
+				<UsageDescriptionSID>PLATE_MAIL_TERROR_USAGE_SID</UsageDescriptionSID>
+				<Value>2250</Value>
+				<Weight><Pounds>12</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pound>0.20</Pound>
+					<Heat>0.20</Heat>
+					<Holy>0.15</Holy>
+				</Resistances>
+				<Evade>-6</Evade>
+				<Soak>23</Soak>
+			</Armour>
+			<Armour id="dragon_leather_tius">
+				<DescriptionSID>DRAGON_LEATHER_TIUS_SID</DescriptionSID>
+				<UsageDescriptionSID>DRAGON_LEATHER_TIUS_USAGE_SID</UsageDescriptionSID>
+				<Value>1925</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.20</Heat>
+					<Cold>0.25</Cold>
+					<Arcane>0.10</Arcane>
+					<Lightning>0.20</Lightning>
+				</Resistances>
+				<Evade>22</Evade>
+				<Soak>6</Soak>
 			</Armour>
 			<Armour id="silari">
 				<DescriptionSID>SILARI_SID</DescriptionSID>
@@ -16434,6 +16521,26 @@
 					<NumSides>6</NumSides>
 					<Modifier>2</Modifier>
 					<Type>7</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="great_mace_torasin">
+				<DescriptionSID>GREAT_MACE_TORASIN_SID</DescriptionSID>
+				<UsageDescriptionSID>GREAT_MACE_TORASIN_USAGE_SID</UsageDescriptionSID>
+				<Value>1265</Value>
+				<Weight><Pounds>15</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>5</NumDice>
+					<NumSides>12</NumSides>
+					<Modifier>16</Modifier>
+					<Type>2</Type>
 				</Damage>
 			</Weapon>
 			<Weapon id="stone_hammer">
