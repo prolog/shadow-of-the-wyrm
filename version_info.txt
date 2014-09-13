@@ -1,6 +1,19 @@
 Savage Lands v0.2.8 "Adda"
 - Version declared September 13, 2014.
 
+- Created deity-specific crowning gifts to provide some additional
+  differentiation (once crowning is implemented) beyond the deity's bonus
+  to statistics at character creation.
+
+  - Celeste: celestial shortsword "Heaven's Blade"
+
+  - Aurelion: battle-armour of Aurelion
+
+  - The Lady: divine spear "Radiance"
+
+- New artifacts: celestial shortsword "Heaven's Blade", battle-armour of
+  Aurelion, divine spear "Radiance"
+
 Savage Lands v0.2.7 "Glappa"
 - Version declared August 13, 2014.  Version finalized September 13, 2014.
 

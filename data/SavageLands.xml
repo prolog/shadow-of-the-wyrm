@@ -22,6 +22,7 @@
 				<Artifact>beastbinder</Artifact>
 				<Artifact>alaric_mail_shirt</Artifact>
 				<Artifact>helm_of_the_heavens</Artifact>
+				<Artifact>heavens_blade</Artifact>
 			</Crowning>
 			<WorshipSiteType>0</WorshipSiteType>
 		</Deity>
@@ -47,6 +48,7 @@
 				<Artifact>beastbinder</Artifact>
 				<Artifact>alaric_mail_shirt</Artifact>
 				<Artifact>helm_of_the_heavens</Artifact>
+				<Artifact>battle_armour_aurelion</Artifact>
 			</Crowning>
 			<WorshipSiteType>1</WorshipSiteType>
 		</Deity>
@@ -72,6 +74,7 @@
 				<Artifact>beastbinder</Artifact>
 				<Artifact>alaric_mail_shirt</Artifact>
 				<Artifact>helm_of_the_heavens</Artifact>
+				<Artifact>radiance</Artifact>
 			</Crowning>
 			<WorshipSiteType>2</WorshipSiteType>
 		</Deity>
@@ -15070,6 +15073,24 @@
 				<Evade>-6</Evade>
 				<Soak>23</Soak>
 			</Armour>
+			<Armour id="battle_armour_aurelion">
+				<DescriptionSID>BATTLE_ARMOUR_AURELION_SID</DescriptionSID>
+				<UsageDescriptionSID>BATTLE_ARMOUR_AURELION_USAGE_SID</UsageDescriptionSID>
+				<Value>2700</Value>
+				<Weight><Pounds>30</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.20</Slash>
+					<Pierce>0.20</Pierce>
+					<Pound>0.20</Pound>
+					<Arcane>0.10</Arcane>
+				</Resistances>
+				<Evade>-10</Evade>
+				<Soak>27</Soak>
+			</Armour>
 			<Armour id="dragon_leather_tius">
 				<DescriptionSID>DRAGON_LEATHER_TIUS_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGON_LEATHER_TIUS_USAGE_SID</UsageDescriptionSID>
@@ -16315,6 +16336,36 @@
 					<Slay>_demon</Slay>
 				</Slays>
 			</Weapon>
+			<Weapon id="heavens_blade">
+				<DescriptionSID>HEAVENS_BLADE_SID</DescriptionSID>
+				<UsageDescriptionSID>HEAVENS_BLADE_USAGE_SID</UsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight><Pounds>9</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Cold>0.10</Cold>
+					<Acid>0.15</Acid>
+					<Poison>0.15</Poison>
+					<Shadow>0.20</Shadow>
+				</Resistances>
+				<Skill>1001</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>43</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>5</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>16</Modifier>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_monster</Slay>
+					<Slay>_demon</Slay>
+				</Slays>
+			</Weapon>
 			<Weapon id="dragonbane">
 				<DescriptionSID>DRAGONBANE_SID</DescriptionSID>
 				<UsageDescriptionSID>DRAGONBANE_USAGE_SID</UsageDescriptionSID>
@@ -16350,7 +16401,7 @@
 				<Weight><Pounds>15</Pounds></Weight>
 				<WornLocation>4</WornLocation>
 				<Artifact>1</Artifact>
-				<Material>3</Material>
+				<Material>7</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Poison>0.20</Poison>
@@ -16365,6 +16416,34 @@
 					<Modifier>12</Modifier>
 					<Type>1</Type>
 				</Damage>
+			</Weapon>
+			<Weapon id="radiance">
+				<DescriptionSID>RADIANCE_SID</DescriptionSID>
+				<UsageDescriptionSID>RADIANCE_USAGE_SID</UsageDescriptionSID>
+				<Value>2300</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pierce>0.20</Pierce>
+					<Shadow>0.20</Shadow>
+					<Lightning>0.20</Lightning>
+				</Resistances>
+				<Skill>1006</Skill>
+				<RangedSkill>2008</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>5</Speed>
+				<Damage>
+					<NumDice>12</NumDice>
+					<NumSides>4</NumSides>
+					<Modifier>8</Modifier>
+					<Type>7</Type>
+				</Damage>
+				<Slays>
+					<Slay>_undead</Slay>
+				</Slays>
 			</Weapon>
 			<Weapon id="dragonsfist">
 				<DescriptionSID>DRAGONSFIST_SID</DescriptionSID>
