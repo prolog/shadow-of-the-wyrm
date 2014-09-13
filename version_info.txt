@@ -11,8 +11,15 @@ Savage Lands v0.2.8 "Adda"
 
   - The Lady: divine spear "Radiance"
 
+  - Vedere: alabaster rod "Creator's Might"
+
+  - Voros: titantic battle axe "Earthcleaver"
+
+  - The Trickster: Shroud of Fate
+
 - New artifacts: celestial shortsword "Heaven's Blade", battle-armour of
-  Aurelion, divine spear "Radiance"
+  Aurelion, divine spear "Radiance", alabaster rod "Creator's Might",
+  titantic battle axe "Earthcleaver", Shroud of Fate
 
 Savage Lands v0.2.7 "Glappa"
 - Version declared August 13, 2014.  Version finalized September 13, 2014.

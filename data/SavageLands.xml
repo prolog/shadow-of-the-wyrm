@@ -100,7 +100,8 @@
 				<Artifact>jellysmasher</Artifact>
 				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
-			</Crowning>
+				<Artifact>creators_might</Artifact>
+				</Crowning>
 			<WorshipSiteType>3</WorshipSiteType>
 		</Deity>
 		<Deity id="05_voros">
@@ -122,6 +123,7 @@
 				<Artifact>jellysmasher</Artifact>
 				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
+				<Artifact>earthcleaver</Artifact>
 			</Crowning>
 			<WorshipSiteType>4</WorshipSiteType>
 		</Deity>
@@ -146,6 +148,7 @@
 				<Artifact>jellysmasher</Artifact>
 				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
+				<Artifact>shroud_fate</Artifact>
 			</Crowning>
 			<WorshipSiteType>5</WorshipSiteType>
 		</Deity>
@@ -15503,6 +15506,27 @@
 				</Resistances>
 				<Evade>5</Evade>
 			</Armour>
+			<Armour id="shroud_fate">
+				<DescriptionSID>SHROUD_FATE_SID</DescriptionSID>
+				<UsageDescriptionSID>SHROUD_FATE_USAGE_SID</UsageDescriptionSID>
+				<Value>1820</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>7</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Pierce>0.10</Pierce>
+					<Pound>0.10</Pound>
+					<Poison>0.10</Poison>
+					<Holy>0.10</Holy>
+					<Shadow>0.10</Shadow>
+					<Arcane>0.10</Arcane>
+				</Resistances>
+				<Evade>7</Evade>
+				<Soak>4</Soak>
+			</Armour>
 			<Armour id="leather_boots">
 				<DescriptionSID>LEATHER_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_BOOTS_USAGE_SID</UsageDescriptionSID>
@@ -16780,6 +16804,30 @@
 					<Type>5</Type>
 				</Damage>
 			</Weapon>			
+			<Weapon id="earthcleaver">
+				<DescriptionSID>EARTHCLEAVER_SID</DescriptionSID>
+				<UsageDescriptionSID>EARTHCLEAVER_USAGE_SID</UsageDescriptionSID>
+				<Value>2250</Value>
+				<Weight><Pounds>20</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.10</Slash>
+					<Heat>0.25</Heat>
+				</Resistances>
+				<Skill>1000</Skill>
+				<RangedSkill>2000</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>8</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>12</NumSides>
+					<Modifier>6</Modifier>
+					<Type>0</Type>
+				</Damage>
+			</Weapon>			
 			<Weapon id="spear">
 				<DescriptionSID>SPEAR_SID</DescriptionSID>
 				<UsageDescriptionSID>SPEAR_USAGE_SID</UsageDescriptionSID>
@@ -16962,6 +17010,35 @@
 					<Modifier>2</Modifier>
 					<Type>3</Type>
 				</Damage>
+			</Weapon>			
+			<Weapon id="creators_might">
+				<DescriptionSID>CREATORS_MIGHT_SID</DescriptionSID>
+				<UsageDescriptionSID>CREATORS_MIGHT_USAGE_SID</UsageDescriptionSID>
+				<Value>2150</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>9</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Heat>0.15</Heat>
+					<Cold>0.15</Cold>
+					<Lightning>0.15</Lightning>
+				</Resistances>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>44</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>9</NumDice>
+					<NumSides>6</NumSides>
+					<Modifier>6</Modifier>
+					<Type>2</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+					<Slay>_demon</Slay>
+				</Slays>
 			</Weapon>			
 			<Weapon id="leather_whip">
 				<DescriptionSID>LEATHER_WHIP_SID</DescriptionSID>
