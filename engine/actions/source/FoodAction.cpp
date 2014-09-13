@@ -59,7 +59,7 @@ ActionCostValue FoodAction::eat(CreaturePtr creature, ActionManager * const am)
 
       if (selected_edible_item)
       {
-        if (eat_food(creature, selected_edible_item))
+        if (eat_food(creature, selected_edible_item, creature->get_inventory()))
         {
           // The item has been eaten.  Advance the turn:
           action_cost_value = get_action_cost_value(creature);
@@ -109,7 +109,7 @@ ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list
 
       if (confirm)
       {
-        eat_food(creature, food);
+        eat_food(creature, food, tile->get_items());
         action_cost_value = get_action_cost_value(creature);
         break;
       }
@@ -120,7 +120,7 @@ ActionCostValue FoodAction::eat_food_off_ground(CreaturePtr creature, const list
 }
 
 // Eat the selected item.  Return true if it can be eaten, false otherwise.
-bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
+bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food, IInventoryPtr inventory_for_food)
 {
   bool turn_advanced = false;
 
@@ -144,7 +144,11 @@ bool FoodAction::eat_food(CreaturePtr creature, ItemPtr food)
       // Reduce the quantity of food by 1; if this brings the quantity down to 0
       // (or lower, I guess!) then remove the food from the creature's inventory.
       food->set_quantity(food->get_quantity() - 1);
-      if (food->get_quantity() <= 0) creature->get_inventory()->remove(food->get_id());
+
+      if (inventory_for_food)
+      {
+        if (food->get_quantity() <= 0) inventory_for_food->remove(food->get_id());
+      }
 
       // Many deities don't appreciate cannibalism!
       string corpse_race_id = food->get_additional_property(ConsumableConstants::CORPSE_RACE_ID);
