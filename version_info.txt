@@ -1,5 +1,8 @@
+Savage Lands v0.2.8 "Adda"
+- Version declared September 13, 2014.
+
 Savage Lands v0.2.7 "Glappa"
-- Version declared August 13, 2014.
+- Version declared August 13, 2014.  Version finalized September 13, 2014.
 
 - More early game quests!  Started working on a quest for Kew that uses
   the south-east dungeon.  Kew gives a quest to slay an agent of
