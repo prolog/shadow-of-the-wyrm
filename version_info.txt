@@ -21,6 +21,9 @@ Savage Lands v0.2.8 "Adda"
   Aurelion, divine spear "Radiance", alabaster rod "Creator's Might",
   titantic battle axe "Earthcleaver", Shroud of Fate
 
+- Bug fixes: eating food off the ground wasn't removing the item from the
+  tile's inventory after eating.
+
 Savage Lands v0.2.7 "Glappa"
 - Version declared August 13, 2014.  Version finalized September 13, 2014.
 
