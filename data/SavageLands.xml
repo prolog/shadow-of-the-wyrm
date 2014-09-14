@@ -171,6 +171,7 @@
 				<Artifact>staff_artificer</Artifact>
 				<Artifact>plate_mail_terror</Artifact>
 				<Artifact>crown_of_tyranny</Artifact>
+				<Artifact>athame_winter</Artifact>
 			</Crowning>
 			<WorshipSiteType>6</WorshipSiteType>
 		</Deity>
@@ -15940,6 +15941,56 @@
 					<Modifier>3</Modifier>
 					<Type>5</Type>
 				</Damage>
+			</Weapon>
+			<Weapon id="athame">
+				<DescriptionSID>ATHAME_SID</DescriptionSID>
+				<UsageDescriptionSID>ATHAME_USAGE_SID</UsageDescriptionSID>
+				<Value>90</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>4</DangerLevel>
+				<Resistances>
+					<Arcane>0.20</Arcane>
+				</Resistances>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>2</NumDice>
+					<NumSides>3</NumSides>
+					<Type>1</Type>
+				</Damage>
+			</Weapon>
+			<Weapon id="athame_winter">
+				<DescriptionSID>ATHAME_WINTER_SID</DescriptionSID>
+				<UsageDescriptionSID>ATHAME_WINTER_USAGE_SID</UsageDescriptionSID>
+				<Value>2400</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pierce>0.20</Pierce>
+					<Cold>0.30</Cold>
+					<Arcane>0.20</Arcane>
+				</Resistances>
+				<Skill>1004</Skill>
+				<RangedSkill>2005</RangedSkill>
+				<Difficulty>40</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>10</NumDice>
+					<NumSides>3</NumSides>
+					<Type>4</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+					<Slay>_divine</Slay>
+					<Slay>_demon</Slay>
+				</Slays>
 			</Weapon>
 			<Weapon id="short_sword">
 				<DescriptionSID>SHORT_SWORD_SID</DescriptionSID>

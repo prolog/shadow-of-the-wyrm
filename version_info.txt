@@ -17,9 +17,14 @@ Savage Lands v0.2.8 "Adda"
 
   - The Trickster: Shroud of Fate
 
+  - Shiver: frost-covered athame "Winter"
+
 - New artifacts: celestial shortsword "Heaven's Blade", battle-armour of
   Aurelion, divine spear "Radiance", alabaster rod "Creator's Might",
-  titantic battle axe "Earthcleaver", Shroud of Fate
+  titantic battle axe "Earthcleaver", Shroud of Fate, frost-covered athame
+  "Winter"
+
+- New items: athame.
 
 - Bug fixes: eating food off the ground wasn't removing the item from the
   tile's inventory after eating.
