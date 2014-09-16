@@ -194,6 +194,7 @@
 				<Artifact>staff_artificer</Artifact>
 				<Artifact>plate_mail_terror</Artifact>
 				<Artifact>crown_of_tyranny</Artifact>
+				<Artifact>stone_club_urgol</Artifact>
 			</Crowning>
 			<WorshipSiteType>7</WorshipSiteType>
 		</Deity>
@@ -216,6 +217,7 @@
 				<Artifact>staff_artificer</Artifact>
 				<Artifact>plate_mail_terror</Artifact>
 				<Artifact>crown_of_tyranny</Artifact>
+				<Artifact>apocalypse</Artifact>
 			</Crowning>
 			<WorshipSiteType>8</WorshipSiteType>
 		</Deity>
@@ -15984,6 +15986,7 @@
 				<Damage>
 					<NumDice>10</NumDice>
 					<NumSides>3</NumSides>
+					<Modifier>10</Modifier>
 					<Type>4</Type>
 				</Damage>
 				<Slays>
@@ -16120,6 +16123,33 @@
 					<Modifier>12</Modifier>
 					<Type>0</Type>
 				</Damage>
+			</Weapon>
+			<Weapon id="apocalypse">
+				<DescriptionSID>APOCALYPSE_SID</DescriptionSID>
+				<UsageDescriptionSID>APOCALYPSE_USAGE_SID</UsageDescriptionSID>
+				<Value>3000</Value>
+				<Weight><Pounds>13</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Shadow>0.30</Shadow>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>8</Speed>
+				<Damage>
+					<NumDice>8</NumDice>
+					<NumSides>12</NumSides>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+					<Slay>_animal</Slay>
+					<Slay>_divine</Slay>
+				</Slays>
 			</Weapon>
 			<Weapon id="erebus">
 				<DescriptionSID>EREBUS_SID</DescriptionSID>
@@ -16433,7 +16463,7 @@
 				<Damage>
 					<NumDice>5</NumDice>
 					<NumSides>4</NumSides>
-					<Modifier>16</Modifier>
+					<Modifier>20</Modifier>
 					<Type>0</Type>
 				</Damage>
 				<Slays>
@@ -16731,6 +16761,35 @@
 					<Modifier>16</Modifier>
 					<Type>2</Type>
 				</Damage>
+			</Weapon>
+			<Weapon id="stone_club_urgol">
+				<DescriptionSID>STONE_CLUB_URGOL_SID</DescriptionSID>
+				<UsageDescriptionSID>STONE_CLUB_URGOL_USAGE_SID</UsageDescriptionSID>
+				<Value>2800</Value>
+				<Weight><Pounds>32</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>7</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.20</Slash>
+					<Pound>0.20</Pound>
+					<Holy>0.20</Holy>
+				</Resistances>
+				<Skill>1003</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>47</Difficulty>
+				<Speed>7</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>12</NumSides>
+					<Modifier>14</Modifier>
+					<Type>2</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+					<Slay>_dragon</Slay>
+				</Slays>
 			</Weapon>
 			<Weapon id="stone_hammer">
 				<DescriptionSID>STONE_HAMMER_SID</DescriptionSID>
