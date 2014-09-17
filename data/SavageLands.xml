@@ -16293,6 +16293,7 @@
 				<Resistances>
 					<Slash>0.05</Slash>
 					<Pierce>0.05</Pierce>
+					<Pound>0.10</Pound>
 				</Resistances>
 				<Skill>1003</Skill>
 				<RangedSkill>2002</RangedSkill>

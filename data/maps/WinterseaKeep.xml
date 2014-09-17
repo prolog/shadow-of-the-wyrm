@@ -187,4 +187,16 @@
 			<MapID>wintersea_keep_b2</MapID>
 		</Exit>
 	</Exits>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>41</Col>
+			</Coord>
+			<Altar>
+				<DeityID>04_vedere</DeityID>
+				<Alignment>1</Alignment>
+			</Altar>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>

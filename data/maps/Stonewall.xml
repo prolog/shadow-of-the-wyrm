@@ -158,5 +158,16 @@
 		</Creatures>
 	</InitialPlacements>
 	<Exits/>
-	<Features/>
+	<Features>
+		<FeaturePlacement>
+			<Coord>
+				<Row>8</Row>
+				<Col>42</Col>
+			</Coord>
+			<Altar>
+				<DeityID>08_urgoth</DeityID>
+				<Alignment>0</Alignment>
+			</Altar>
+		</FeaturePlacement>
+	</Features>
 </CustomMap>
