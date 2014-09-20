@@ -51,6 +51,7 @@ const string CommandKeys::EVOKE          = "EVOKE";
 const string CommandKeys::SHOW_RESISTANCES = "SHOW_RESISTANCES";
 const string CommandKeys::SHOW_CONDUCTS  = "SHOW_CONDUCTS";
 const string CommandKeys::LATEST_MESSAGES = "LATEST_MESSAGES";
+const string CommandKeys::KICK           = "KICK";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

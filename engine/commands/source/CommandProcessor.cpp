@@ -184,6 +184,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.latest_messages(creature);
       }
+      else if (command_name == CommandKeys::KICK)
+      {
+        ac = game.actions.kick(creature);
+      }
     }
   }
   

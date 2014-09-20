@@ -106,6 +106,9 @@ class ActionManager : public ISerializable
     // Display the message buffer
     ActionCost latest_messages(CreaturePtr creature);
 
+    // Kick in a particular direction
+    ActionCost kick(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 
