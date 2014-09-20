@@ -377,7 +377,6 @@ bool DungeonGenerator::place_doorway(MapPtr map, int row, int col)
 bool DungeonGenerator::place_doorways(MapPtr map)
 {
   Dimensions dim = map->size();
-  int rand;
   
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -388,16 +387,21 @@ bool DungeonGenerator::place_doorways(MapPtr map)
     {
       TilePtr tile = map->at(row, col);
       
-      // 80% chance of a door
-      rand = RNG::range(1, 100);
-      if (rand < 80)
+      // Doors are always generated.  They are generated shut about half the
+      // time, unless adjacent to a special room, in which case they are always
+      // generated closed (so that zoos aren't ruined).
+      if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && tile_exists_outside_of_room(row, col, true, true) && is_tile_adjacent_to_room_tile(dim, row, col))
       {
-        if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && tile_exists_outside_of_room(row, col, true, true) && is_tile_adjacent_to_room_tile(dim, row, col))
+        DoorPtr doorway = FeatureGenerator::generate_door();
+
+        // Generate doors closed by default.
+        if (RNG::percent_chance(50))
         {
-          FeaturePtr doorway = FeatureGenerator::generate_door();
-          tile->set_feature(doorway);
-        }        
-      }
+          doorway->get_state_ref().set_state(ENTRANCE_TYPE_CLOSED);
+        }
+
+        tile->set_feature(doorway);
+      }        
     }      
   }
 
