@@ -166,6 +166,7 @@
     <ClInclude Include="engine\actions\include\InventoryManager.hpp" />
     <ClInclude Include="engine\actions\include\ItemManager.hpp" />
     <ClInclude Include="engine\actions\include\KeyManager.hpp" />
+    <ClInclude Include="engine\actions\include\KickAction.hpp" />
     <ClInclude Include="engine\actions\include\LatestMessagesAction.hpp" />
     <ClInclude Include="engine\actions\include\MovementAccumulationUpdater.hpp" />
     <ClInclude Include="engine\actions\include\MovementAction.hpp" />
@@ -995,6 +996,7 @@
     <ClCompile Include="engine\actions\source\InventoryManager.cpp" />
     <ClCompile Include="engine\actions\source\ItemManager.cpp" />
     <ClCompile Include="engine\actions\source\KeyManager.cpp" />
+    <ClCompile Include="engine\actions\source\KickAction.cpp" />
     <ClCompile Include="engine\actions\source\LatestMessagesAction.cpp" />
     <ClCompile Include="engine\actions\source\MovementAccumulationUpdater.cpp" />
     <ClCompile Include="engine\actions\source\MovementAction.cpp" />

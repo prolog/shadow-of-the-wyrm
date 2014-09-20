@@ -367,3 +367,13 @@ LatestMessagesCommand::LatestMessagesCommand(const int key)
 LatestMessagesCommand::~LatestMessagesCommand()
 {
 }
+
+// Kick
+KickCommand::KickCommand(const int key)
+: Command(CommandKeys::KICK, key)
+{
+}
+
+KickCommand::~KickCommand()
+{
+}

@@ -255,3 +255,10 @@ class LatestMessagesCommand : public Command
     LatestMessagesCommand(int key);
     ~LatestMessagesCommand();
 };
+
+class KickCommand : public Command
+{
+  public:
+    KickCommand(int key);
+    ~KickCommand();
+};

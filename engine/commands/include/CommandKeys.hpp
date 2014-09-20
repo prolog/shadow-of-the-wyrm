@@ -53,6 +53,7 @@ class CommandKeys
     static const std::string SHOW_RESISTANCES;
     static const std::string SHOW_CONDUCTS;
     static const std::string LATEST_MESSAGES;
+    static const std::string KICK;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);
