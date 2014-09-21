@@ -10,6 +10,10 @@ class KickAction : public IActionManager
   protected:
     friend class ActionManager;
     KickAction();
+
+    ActionCostValue kick_on_world_map(CreaturePtr creature, MapPtr current_map);
+    ActionCostValue kick_on_regular_map(CreaturePtr creature, MapPtr current_map);
+    ActionCostValue kick_in_direction(CreaturePtr creature, MapPtr current_map, const Direction direction);
     
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

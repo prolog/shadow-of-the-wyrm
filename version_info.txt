@@ -26,6 +26,8 @@ Savage Lands v0.2.8 "Adda"
 - Created two more guaranteed altars - a neutral altar in Wintersea Keep,
   and a chaotic altar in the ruins of Stonewall.
 
+- Added the kick command, and mapped it to "K".
+
 - New artifacts: celestial shortsword "Heaven's Blade", battle-armour of
   Aurelion, divine spear "Radiance", alabaster rod "Creator's Might",
   titantic battle axe "Earthcleaver", Shroud of Fate, frost-covered athame
