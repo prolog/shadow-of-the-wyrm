@@ -256,6 +256,18 @@ std::map<Direction, TilePtr> MapUtils::get_adjacent_tiles_to_creature(const MapP
   return result_map;
 }
 
+// Get the tile adjacent to the creature's tile in a given direction.
+// The returned tile may be null - e.g., if getting north of (0,0),
+// etc.
+TilePtr MapUtils::get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d)
+{
+  Coordinate c = map->get_location(creature->get_id());
+  Coordinate new_coord = CoordUtils::get_new_coordinate(c, d);
+  TilePtr adj_tile = map->at(new_coord);
+
+  return adj_tile;
+}
+
 // Get the adjacent tiles, plus the tile that the creature is standing on.
 TileDirectionMap MapUtils::get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature)
 {

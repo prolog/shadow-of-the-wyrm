@@ -17,6 +17,7 @@ class ActionTextKeys
     static std::string get_pour_message(const std::string& desc_sid, const std::string& item_desc_sid, const bool is_player);
     static std::string get_stumble_message(const std::string& desc_sid, const bool is_player);
     static std::string get_alcohol_poisoning_death_message(const std::string& desc_sid, const bool is_player);
+    static std::string get_kick_message(const std::string& desc_sid, const bool is_player);
 
     static const std::string ACTION_NOT_FOUND;
     static const std::string ACTION_SEARCH;
@@ -56,6 +57,7 @@ class ActionTextKeys
     static const std::string ACTION_AUTOMOVE_TOO_HUNGRY;
     static const std::string ACTION_AUTOMOVE_HOSTILE_CREATURES;
     static const std::string ACTION_KICK_WORLD_MAP;
+    static const std::string ACTION_KICK_NOTHING_TO_KICK_AT;
 
   protected:
     ActionTextKeys();
@@ -84,4 +86,6 @@ class ActionTextKeys
     static const std::string ACTION_ALCOHOL_POISONING_PLAYER;
     static const std::string ACTION_ALCOHOL_POISONING_MONSTER;
     static const std::string ACTION_ENCHANT_ITEM_MAX;
+    static const std::string ACTION_KICK_PLAYER;
+    static const std::string ACTION_KICK_MONSTER;
 };

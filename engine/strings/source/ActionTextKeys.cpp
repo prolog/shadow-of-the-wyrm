@@ -159,6 +159,11 @@ string ActionTextKeys::get_alcohol_poisoning_death_message(const string& creatur
   return get_general_message(creature_desc_sid, ActionTextKeys::ACTION_ALCOHOL_POISONING_PLAYER, ActionTextKeys::ACTION_ALCOHOL_POISONING_MONSTER, is_player);
 }
 
+string ActionTextKeys::get_kick_message(const string& desc_sid, const bool is_player)
+{
+  return get_general_message(desc_sid, ACTION_KICK_PLAYER, ACTION_KICK_MONSTER, is_player);
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_SEARCH_BLIND               = "ACTION_SEARCH_BLIND";
@@ -197,6 +202,7 @@ const string ActionTextKeys::ACTION_AUTOMOVE_WORLD_MAP         = "ACTION_AUTOMOV
 const string ActionTextKeys::ACTION_AUTOMOVE_TOO_HUNGRY        = "ACTION_AUTOMOVE_TOO_HUNGRY";
 const string ActionTextKeys::ACTION_AUTOMOVE_HOSTILE_CREATURES = "ACTION_AUTOMOVE_HOSTILE_CREATURES";
 const string ActionTextKeys::ACTION_KICK_WORLD_MAP             = "ACTION_KICK_WORLD_MAP";
+const string ActionTextKeys::ACTION_KICK_NOTHING_TO_KICK_AT    = "ACTION_KICK_NOTHING_TO_KICK_AT";
 
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
 const string ActionTextKeys::ACTION_EVOKE_MONSTER              = "ACTION_EVOKE_MONSTER";
@@ -217,3 +223,5 @@ const string ActionTextKeys::ACTION_STUMBLE_PLAYER                = "ACTION_STUM
 const string ActionTextKeys::ACTION_STUMBLE_MONSTER               = "ACTION_STUMBLE_MONSTER";
 const string ActionTextKeys::ACTION_ALCOHOL_POISONING_PLAYER      = "ACTION_ALCOHOL_POISONING_PLAYER";
 const string ActionTextKeys::ACTION_ALCOHOL_POISONING_MONSTER     = "ACTION_ALCOHOL_POISONING_MONSTER";
+const string ActionTextKeys::ACTION_KICK_PLAYER                   = "ACTION_KICK_PLAYER";
+const string ActionTextKeys::ACTION_KICK_MONSTER                  = "ACTION_KICK_MONSTER";
