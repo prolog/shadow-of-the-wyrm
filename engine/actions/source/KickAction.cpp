@@ -111,11 +111,19 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
       acv = get_action_cost_value(creature);
 
       manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
-      manager.send();
 
-      // Process the results of the kick:
-      // - Creature present?
-      // - Feature present?
+      // Creatures can't kick solid tiles, unless they're incorporeal, or can
+      // otherwise pass through such things.
+      if (kick_tile->get_movement_multiplier() == 0 && !creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+      {
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SOLID_TILE));
+      }
+      // It's not a solid tile - rock, stone, etc.
+      else
+      {
+        // Is there a creature?
+        // Is there a feature?
+      }
     }
     else
     {
@@ -125,6 +133,8 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
         manager.send();
       }
     }
+
+    manager.send();
   }
 
   return acv;
