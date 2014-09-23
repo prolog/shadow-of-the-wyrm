@@ -112,17 +112,31 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
 
       manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
 
-      // Creatures can't kick solid tiles, unless they're incorporeal, or can
-      // otherwise pass through such things.
-      if (kick_tile->get_movement_multiplier() == 0 && !creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+      // Is there a creature?
+      if (kick_tile->has_creature())
       {
-        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SOLID_TILE));
       }
-      // It's not a solid tile - rock, stone, etc.
+      // No creature to kick.  Is there a feature?
+      else if (kick_tile->has_feature())
+      {
+      }
       else
       {
-        // Is there a creature?
-        // Is there a feature?
+        // Creatures can't kick solid tiles, unless they're incorporeal, or can
+        // otherwise pass through such things.
+        if (kick_tile->get_movement_multiplier() == 0 && !creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
+        {
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SOLID_TILE));
+        }
+        // Kicking a water tile generates a message
+        else if (kick_tile->get_tile_super_type() == TILE_SUPER_TYPE_WATER)
+        {
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_WATER_TILE));
+        }
+        else
+        {
+          // ...
+        }
       }
     }
     else
