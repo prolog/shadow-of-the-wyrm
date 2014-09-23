@@ -59,6 +59,7 @@ class ActionTextKeys
     static const std::string ACTION_KICK_WORLD_MAP;
     static const std::string ACTION_KICK_NOTHING_TO_KICK_AT;
     static const std::string ACTION_KICK_SOLID_TILE;
+    static const std::string ACTION_KICK_WATER_TILE;
 
   protected:
     ActionTextKeys();
