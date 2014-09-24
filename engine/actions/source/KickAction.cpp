@@ -3,6 +3,8 @@
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "FeatureDescriberFactory.hpp"
+#include "IFeatureManipulatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "KickAction.hpp"
@@ -119,6 +121,7 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
       // No creature to kick.  Is there a feature?
       else if (kick_tile->has_feature())
       {
+        kick_feature(creature, current_map, kick_tile, kick_tile->get_feature());
       }
       else
       {
@@ -152,6 +155,35 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
   }
 
   return acv;
+}
+
+ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, FeaturePtr kick_feature)
+{
+  if (creature && current_map && kick_tile && kick_feature)
+  {
+    IFeatureManipulatorPtr manipulator = IFeatureManipulatorFactory::create_manipulator(kick_feature->get_class_identifier());
+
+    // Add a message about kicking the feature, whether it can be seen,
+    // or not.
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    CurrentCreatureAbilities cca;
+    bool creature_blind = creature->get_is_player() && !cca.can_see(creature);
+    FeatureDescriberPtr fd = FeatureDescriberFactory::create_feature_describer(creature_blind, kick_feature);
+
+    // Might be the feature, or might be "something".
+    string object_desc = fd->describe();
+    string kick_msg = ActionTextKeys::get_kick_object_message(creature->get_description_sid(), object_desc, creature->get_is_player());
+
+    manager.add_new_message(kick_msg);
+
+    if (manipulator)
+    {
+      // Do any specific logic required due to the kicking.
+      manipulator->kick(creature, current_map, kick_tile, kick_feature);
+    }
+  }
+
+  return get_action_cost_value(creature);
 }
 
 ActionCostValue KickAction::get_action_cost_value(CreaturePtr creature) const

@@ -80,11 +80,6 @@ bool Feature::can_handle(const bool feature_tile_occupied) const
   return true;
 }
 
-bool Feature::can_kick() const
-{
-  return true;
-}
-
 bool Feature::can_open() const
 {
   return false;
