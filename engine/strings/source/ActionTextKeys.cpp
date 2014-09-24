@@ -164,6 +164,25 @@ string ActionTextKeys::get_kick_message(const string& desc_sid, const bool is_pl
   return get_general_message(desc_sid, ACTION_KICK_PLAYER, ACTION_KICK_MONSTER, is_player);
 }
 
+string ActionTextKeys::get_kick_object_message(const string& desc_sid, const string& object_desc, const bool is_player)
+{
+  string kick_msg;
+
+  if (is_player)
+  {
+    kick_msg = StringTable::get(ACTION_KICK_OBJECT_PLAYER);
+    boost::replace_first(kick_msg, "%s", object_desc);
+  }
+  else
+  {
+    kick_msg = StringTable::get(ACTION_KICK_OBJECT_MONSTER);
+    boost::replace_first(kick_msg, "%s1", desc_sid);
+    boost::replace_first(kick_msg, "%s2", object_desc);
+  }
+
+  return kick_msg;
+}
+
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_SEARCH_BLIND               = "ACTION_SEARCH_BLIND";
@@ -227,3 +246,5 @@ const string ActionTextKeys::ACTION_ALCOHOL_POISONING_PLAYER      = "ACTION_ALCO
 const string ActionTextKeys::ACTION_ALCOHOL_POISONING_MONSTER     = "ACTION_ALCOHOL_POISONING_MONSTER";
 const string ActionTextKeys::ACTION_KICK_PLAYER                   = "ACTION_KICK_PLAYER";
 const string ActionTextKeys::ACTION_KICK_MONSTER                  = "ACTION_KICK_MONSTER";
+const string ActionTextKeys::ACTION_KICK_OBJECT_PLAYER            = "ACTION_KICK_OBJECT_PLAYER";
+const string ActionTextKeys::ACTION_KICK_OBJECT_MONSTER           = "ACTION_KICK_OBJECT_MONSTER";

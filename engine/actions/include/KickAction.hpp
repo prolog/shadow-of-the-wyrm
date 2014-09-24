@@ -14,6 +14,7 @@ class KickAction : public IActionManager
     ActionCostValue kick_on_world_map(CreaturePtr creature, MapPtr current_map);
     ActionCostValue kick_on_regular_map(CreaturePtr creature, MapPtr current_map);
     ActionCostValue kick_in_direction(CreaturePtr creature, MapPtr current_map, const Direction direction);
+    ActionCostValue kick_feature(CreaturePtr creature, MapPtr current_map, TilePtr kick_tile, FeaturePtr tile_feature);
     
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };

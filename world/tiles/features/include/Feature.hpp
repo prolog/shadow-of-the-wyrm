@@ -47,7 +47,6 @@ class Feature : public ISerializable
 
     virtual std::pair<std::string, std::vector<std::string>> get_description_and_replacement_sids() const;
     
-    virtual bool can_kick() const;
     virtual bool can_offer() const;
     virtual bool can_open() const;
     virtual bool can_lock() const;
