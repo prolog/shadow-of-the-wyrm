@@ -1,7 +1,4 @@
 #include "DefaultFeatureManipulator.hpp"
-#include "ActionTextKeys.hpp"
-#include "FeatureDescriber.hpp"
-#include "MessageManagerFactory.hpp"
 
 using namespace std;
 

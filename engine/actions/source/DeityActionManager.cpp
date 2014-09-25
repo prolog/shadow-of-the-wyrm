@@ -10,18 +10,37 @@ using namespace std;
 // Check to see if the deity likes or dislikes (or simply doesn't care)
 // about the action just performed, and update the creature's piety
 // accordingly.
-void DeityActionManager::notify_action(CreaturePtr creature, const string& action_key)
+void DeityActionManager::notify_action(CreaturePtr creature, const string& action_key, bool active_deity_only)
 {
   if (creature)
   {
     Game& game = Game::instance();
     Religion& religion = creature->get_religion_ref();
     DeityMap deities = game.get_deities_ref();
-    DeityPtr active_deity = deities[religion.get_active_deity_id()];
 
-    if (active_deity)
+    vector<DeityPtr> deities_to_notify;
+
+    if (active_deity_only)
     {
-      if (active_deity->get_dislike(action_key))
+      DeityPtr active_deity = deities[religion.get_active_deity_id()];
+      deities_to_notify.push_back(active_deity);
+    }
+    else
+    {
+      for (auto it = deities.begin(); it != deities.end(); it++)
+      {
+        DeityPtr cur_deity = it->second;
+        
+        if (cur_deity)
+        {
+          deities_to_notify.push_back(cur_deity);
+        }
+      }
+    }
+
+    for (DeityPtr cur_deity : deities_to_notify)
+    {
+      if (cur_deity->get_dislike(action_key))
       {
         handle_displeasing_action(creature);
       }
