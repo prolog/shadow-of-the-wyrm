@@ -11,8 +11,9 @@
 				<IntelligenceModifier>1</IntelligenceModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
-				<AttackFriendlyCreature>1</AttackFriendlyCreature>
-				<Cannibalism>1</Cannibalism>
+				<Action>AttackFriendlyCreature</Action>
+				<Action>Cannibalism</Action>
+				<Action>DesecrateLawful</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
@@ -37,8 +38,9 @@
 				<StrengthModifier>1</StrengthModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
-				<AttackFriendlyCreature>1</AttackFriendlyCreature>
-				<Cannibalism>1</Cannibalism>
+				<Action>AttackFriendlyCreature</Action>
+				<Action>Cannibalism</Action>
+				<Action>DesecrateLawful</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
@@ -63,8 +65,9 @@
 				<CharismaModifier>1</CharismaModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
-				<AttackFriendlyCreature>1</AttackFriendlyCreature>
-				<Cannibalism>1</Cannibalism>
+				<Action>AttackFriendlyCreature</Action>
+				<Action>Cannibalism</Action>
+				<Action>DesecrateLawful</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
@@ -89,8 +92,9 @@
 				<HealthModifier>1</HealthModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
-				<AttackFriendlyCreature>1</AttackFriendlyCreature>
-				<Cannibalism>1</Cannibalism>
+				<Action>AttackFriendlyCreature</Action>
+				<Action>Cannibalism</Action>
+				<Action>DesecrateNeutral</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
@@ -114,7 +118,9 @@
 			<DeityInitialModifiers>
 				<StrengthModifier>1</StrengthModifier>
 			</DeityInitialModifiers>
-			<Dislikes/>
+			<Dislikes>
+				<Action>DesecrateNeutral</Action>
+			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -138,7 +144,8 @@
 				<AgilityModifier>1</AgilityModifier>
 			</DeityInitialModifiers>
 			<Dislikes>
-				<Cannibalism>1</Cannibalism>
+				<Action>Cannibalism</Action>
+				<Action>DesecrateNeutral</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
@@ -162,7 +169,9 @@
 			<DeityInitialModifiers>
 				<WillpowerModifier>1</WillpowerModifier>
 			</DeityInitialModifiers>
-			<Dislikes/>
+			<Dislikes>
+				<Action>DesecrateEvil</Action>
+			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -185,7 +194,9 @@
 			<DeityInitialModifiers>
 				<StrengthModifier>1</StrengthModifier>
 			</DeityInitialModifiers>
-			<Dislikes/>
+			<Dislikes>
+				<Action>DesecrateEvil</Action>
+			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
@@ -208,7 +219,9 @@
 			<DeityInitialModifiers>
 				<IntelligenceModifier>1</IntelligenceModifier>
 			</DeityInitialModifiers>
-			<Dislikes/>
+			<Dislikes>
+				<Action>DesecrateEvil</Action>
+			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>

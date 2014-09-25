@@ -3171,6 +3171,9 @@
     <ClInclude Include="engine\description\include\BlindFeatureDescriber.hpp">
       <Filter>Header Files\engine\description\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\features\include\PewFeatureManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6103,6 +6106,9 @@
     </ClCompile>
     <ClCompile Include="engine\description\source\BlindFeatureDescriber.cpp">
       <Filter>Source Files\engine\description\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\PewFeatureManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

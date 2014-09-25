@@ -6,7 +6,9 @@
 class DeityActionManager
 {
   public:
-    void notify_action(CreaturePtr creature, const std::string& action_key);
+    // Notify either a single deity (by default) or all deities of a
+    // particular action.
+    void notify_action(CreaturePtr creature, const std::string& action_key, const bool active_deity_only = true);
 
   protected:
     void handle_displeasing_action(CreaturePtr creature);

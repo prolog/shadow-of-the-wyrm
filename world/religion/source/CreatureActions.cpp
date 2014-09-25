@@ -5,8 +5,11 @@ using namespace std;
 
 // Creature action keys
 
-const string CreatureActionKeys::ACTION_ATTACK_FRIENDLY = "ACTION_ATTACK_FRIENDLY";
-const string CreatureActionKeys::ACTION_CANNIBALISM = "ACTION_CANNIBALISM";
+const string CreatureActionKeys::ACTION_ATTACK_FRIENDLY = "AttackFriendlyCreature";
+const string CreatureActionKeys::ACTION_CANNIBALISM = "Cannibalism";
+const string CreatureActionKeys::ACTION_DESECRATE_LAWFUL = "DesecrateLawful";
+const string CreatureActionKeys::ACTION_DESECRATE_NEUTRAL = "DesecrateNeutral";
+const string CreatureActionKeys::ACTION_DESECRATE_EVIL = "DesecrateEvil";
 
 bool CreatureActions::operator==(const CreatureActions& ca) const
 {

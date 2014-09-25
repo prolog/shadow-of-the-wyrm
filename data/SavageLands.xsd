@@ -163,7 +163,7 @@
 			<xs:element name="DeathMessageSID" type="xs:string"/>
 			<xs:element name="Alignment" type="tns:AlignmentRange"/>
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
-			<xs:element name="Dislikes" type="tns:DeityDislikes"/>
+			<xs:element name="Dislikes" type="tns:TrackedDeityActions"/>
 			<xs:element name="Crowning" type="tns:Crowning"/>
 			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
 		</xs:sequence>
@@ -259,10 +259,9 @@
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
-<xs:complexType name="DeityDislikes">
+<xs:complexType name="TrackedDeityActions">
 	<xs:sequence>
-		<xs:element name="AttackFriendlyCreature" type="xs:boolean" minOccurs="0"/>
-		<xs:element name="Cannibalism" type="xs:boolean" minOccurs="0"/>
+		<xs:element name="Action" type="tns:TrackedDeityAction" minOccurs="0" maxOccurs="unbounded"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="Crowning">
@@ -946,6 +945,18 @@
 	</xs:sequence>
 </xs:complexType>
 <!-- SIMPLE TYPES -->
+<xs:simpleType name="TrackedDeityAction">
+	<xs:annotation>
+		<xs:documentation>Actions that deities may take an interest in, one way or the other</xs:documentation>
+	</xs:annotation>
+	<xs:restriction base="xs:string">
+		<xs:enumeration value="AttackFriendlyCreature"/>
+		<xs:enumeration value="Cannibalism"/>
+		<xs:enumeration value="DesecrateLawful"/>
+		<xs:enumeration value="DesecrateNeutral"/>
+		<xs:enumeration value="DesecrateEvil"/>
+	</xs:restriction>
+</xs:simpleType>
 <xs:simpleType name="TileType">
 	<xs:annotation>
 		<xs:documentation>See tiles.hpp for an explanation of the allowable values.</xs:documentation>

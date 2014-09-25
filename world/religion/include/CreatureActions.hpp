@@ -8,6 +8,9 @@ class CreatureActionKeys
   public:
     static const std::string ACTION_ATTACK_FRIENDLY;
     static const std::string ACTION_CANNIBALISM;
+    static const std::string ACTION_DESECRATE_LAWFUL; // Kicking pews, altars, etc.
+    static const std::string ACTION_DESECRATE_NEUTRAL;
+    static const std::string ACTION_DESECRATE_EVIL;
 };
 
 typedef std::map<std::string, bool> CreatureActionMap;

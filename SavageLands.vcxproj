@@ -421,6 +421,7 @@
     <ClInclude Include="engine\features\include\DefaultFeatureManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulatorFactory.hpp" />
+    <ClInclude Include="engine\features\include\PewFeatureManipulator.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" />
@@ -1518,6 +1519,7 @@
     </ClCompile>
     <ClCompile Include="engine\features\source\DefaultFeatureManipulator.cpp" />
     <ClCompile Include="engine\features\source\IFeatureManipulatorFactory.cpp" />
+    <ClCompile Include="engine\features\source\PewFeatureManipulator.cpp" />
     <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategy.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" />
