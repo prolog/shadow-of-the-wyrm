@@ -13,7 +13,7 @@
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
 				<Action>Cannibalism</Action>
-				<Action>DesecrateLawful</Action>
+				<Action>DesecrateGood</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
@@ -40,7 +40,7 @@
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
 				<Action>Cannibalism</Action>
-				<Action>DesecrateLawful</Action>
+				<Action>DesecrateGood</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
@@ -67,7 +67,7 @@
 			<Dislikes>
 				<Action>AttackFriendlyCreature</Action>
 				<Action>Cannibalism</Action>
-				<Action>DesecrateLawful</Action>
+				<Action>DesecrateGood</Action>
 			</Dislikes>
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
