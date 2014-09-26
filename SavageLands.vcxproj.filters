@@ -3174,6 +3174,15 @@
     <ClInclude Include="engine\features\include\PewFeatureManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\features\include\EvilAltarManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\features\include\GoodAltarManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\features\include\NeutralAltarManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6108,6 +6117,15 @@
       <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\features\source\PewFeatureManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\EvilAltarManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\GoodAltarManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\NeutralAltarManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
   </ItemGroup>

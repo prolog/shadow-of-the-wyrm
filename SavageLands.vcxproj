@@ -419,8 +419,11 @@
     <ClInclude Include="engine\effects\include\NullEffect.hpp" />
     <ClInclude Include="engine\effects\include\TeleportEffect.hpp" />
     <ClInclude Include="engine\features\include\DefaultFeatureManipulator.hpp" />
+    <ClInclude Include="engine\features\include\EvilAltarManipulator.hpp" />
+    <ClInclude Include="engine\features\include\GoodAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulatorFactory.hpp" />
+    <ClInclude Include="engine\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\PewFeatureManipulator.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
@@ -1518,7 +1521,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\features\source\DefaultFeatureManipulator.cpp" />
+    <ClCompile Include="engine\features\source\EvilAltarManipulator.cpp" />
+    <ClCompile Include="engine\features\source\GoodAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\IFeatureManipulatorFactory.cpp" />
+    <ClCompile Include="engine\features\source\NeutralAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\PewFeatureManipulator.cpp" />
     <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategy.cpp" />

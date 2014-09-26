@@ -4,8 +4,8 @@
 
 // Though this class is called "ChurchGenerator", it's actually an
 // abstract class for generating churches, templates, and sites of
-// threefold death - the names for religious places for lawful,
-// neutral, and chaotic deities, respectively.
+// threefold death - the names for religious places for good,
+// neutral, and evil deities, respectively.
 class ChurchGenerator : public SL::Generator
 {
   public:

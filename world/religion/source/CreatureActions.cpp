@@ -7,7 +7,7 @@ using namespace std;
 
 const string CreatureActionKeys::ACTION_ATTACK_FRIENDLY = "AttackFriendlyCreature";
 const string CreatureActionKeys::ACTION_CANNIBALISM = "Cannibalism";
-const string CreatureActionKeys::ACTION_DESECRATE_LAWFUL = "DesecrateLawful";
+const string CreatureActionKeys::ACTION_DESECRATE_GOOD = "DesecrateGood";
 const string CreatureActionKeys::ACTION_DESECRATE_NEUTRAL = "DesecrateNeutral";
 const string CreatureActionKeys::ACTION_DESECRATE_EVIL = "DesecrateEvil";
 
