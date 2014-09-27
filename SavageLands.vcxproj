@@ -419,6 +419,7 @@
     <ClInclude Include="engine\effects\include\NullEffect.hpp" />
     <ClInclude Include="engine\effects\include\TeleportEffect.hpp" />
     <ClInclude Include="engine\features\include\DefaultFeatureManipulator.hpp" />
+    <ClInclude Include="engine\features\include\DoorGateManipulator.hpp" />
     <ClInclude Include="engine\features\include\EvilAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\GoodAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulator.hpp" />
@@ -1521,6 +1522,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\features\source\DefaultFeatureManipulator.cpp" />
+    <ClCompile Include="engine\features\source\DoorGateManipulator.cpp" />
     <ClCompile Include="engine\features\source\EvilAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\GoodAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\IFeatureManipulatorFactory.cpp" />

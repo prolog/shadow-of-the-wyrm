@@ -4,6 +4,7 @@
 #include "GoodAltarManipulator.hpp"
 #include "NeutralAltarManipulator.hpp"
 #include "EvilAltarManipulator.hpp"
+#include "DoorGateManipulator.hpp"
 
 IFeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(const ClassIdentifier class_id)
 {
@@ -24,6 +25,10 @@ IFeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(const Clas
   else if (class_id == CLASS_ID_EVIL_ALTAR)
   {
     manipulator = std::make_shared<EvilAltarManipulator>();
+  }
+  else if (class_id == CLASS_ID_DOOR || class_id == CLASS_ID_GATE)
+  {
+    manipulator = std::make_shared<DoorGateManipulator>();
   }
   // All other features
   else
