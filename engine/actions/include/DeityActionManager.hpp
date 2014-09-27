@@ -1,5 +1,6 @@
 #pragma once
 #include "Creature.hpp"
+#include "Deity.hpp"
 
 // A class that gets informed of creature actions, and updates piety
 // accordingly.
@@ -11,7 +12,7 @@ class DeityActionManager
     void notify_action(CreaturePtr creature, const std::string& action_key, const bool active_deity_only = true);
 
   protected:
-    void handle_displeasing_action(CreaturePtr creature);
+    void handle_displeasing_action(CreaturePtr creature, DeityPtr deity);
     void add_displeasure_message(CreaturePtr creature, const std::string& displeasure_message_sid);
 };
 

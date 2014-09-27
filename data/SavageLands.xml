@@ -5,6 +5,7 @@
 			<NameSID>DEITY_1_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_1_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_1_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_1_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_1_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
 			<DeityInitialModifiers>
@@ -32,6 +33,7 @@
 			<NameSID>DEITY_2_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_2_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_2_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_2_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_2_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
 			<DeityInitialModifiers>
@@ -59,6 +61,7 @@
 			<NameSID>DEITY_3_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_3_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_3_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_3_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_3_DEATH</DeathMessageSID>
 			<Alignment>2</Alignment>
 			<DeityInitialModifiers>
@@ -86,6 +89,7 @@
 			<NameSID>DEITY_4_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_4_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_4_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_4_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_4_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
 			<DeityInitialModifiers>
@@ -113,6 +117,7 @@
 			<NameSID>DEITY_5_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_5_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_5_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_5_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_5_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
 			<DeityInitialModifiers>
@@ -138,6 +143,7 @@
 			<NameSID>DEITY_6_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_6_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_6_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_6_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_6_DEATH</DeathMessageSID>
 			<Alignment>1</Alignment>
 			<DeityInitialModifiers>
@@ -164,6 +170,7 @@
 			<NameSID>DEITY_7_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_7_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_7_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_7_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_7_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
 			<DeityInitialModifiers>
@@ -189,6 +196,7 @@
 			<NameSID>DEITY_8_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_8_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_8_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_8_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_8_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
 			<DeityInitialModifiers>
@@ -214,6 +222,7 @@
 			<NameSID>DEITY_9_NAME</NameSID>
 			<ShortDescriptionSID>DEITY_9_SHORT_DESC</ShortDescriptionSID>
 			<DescriptionSID>DEITY_9_DESC</DescriptionSID>
+			<AngerMessageSID>DEITY_9_ANGER</AngerMessageSID>
 			<DeathMessageSID>DEITY_9_DEATH</DeathMessageSID>
 			<Alignment>0</Alignment>
 			<DeityInitialModifiers>

@@ -32,6 +32,9 @@ Savage Lands v0.2.8 "Adda"
     kicking either the feature, or "something", depending on whether the
     player is blinded or not.
 
+- Each deity now has its own anger message, to add a little bit more
+  flavour.
+
 - New artifacts: celestial shortsword "Heaven's Blade", battle-armour of
   Aurelion, divine spear "Radiance", alabaster rod "Creator's Might",
   titantic battle axe "Earthcleaver", Shroud of Fate, frost-covered athame

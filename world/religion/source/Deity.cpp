@@ -16,6 +16,7 @@ bool Deity::operator==(const Deity& d) const
   result = result && name_sid == d.name_sid;
   result = result && description_sid == d.description_sid;
   result = result && short_description_sid == d.short_description_sid;
+  result = result && anger_message_sid == d.anger_message_sid;
   result = result && death_message_sid == d.death_message_sid;
   result = result && alignment_range == d.alignment_range;
   result = result && crowning_gifts == d.crowning_gifts;
@@ -69,6 +70,18 @@ void Deity::set_short_description_sid(const string& new_short_description_sid)
 string Deity::get_short_description_sid() const
 {
   return short_description_sid;
+}
+
+// Set/get the deity's anger message, used when the player
+// has misbehaved.
+void Deity::set_anger_message_sid(const string& new_anger_message_sid)
+{
+  anger_message_sid = new_anger_message_sid;
+}
+
+string Deity::get_anger_message_sid() const
+{
+  return anger_message_sid;
 }
 
 // Set/get the deity's death message.  This is displayed before "You die..."
@@ -152,6 +165,7 @@ bool Deity::serialize(ostream& stream) const
   Serialize::write_string(stream, name_sid);
   Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, short_description_sid);
+  Serialize::write_string(stream, anger_message_sid);
   Serialize::write_string(stream, death_message_sid);
   Serialize::write_enum(stream, alignment_range);
   Serialize::write_string_vector(stream, crowning_gifts);
@@ -171,6 +185,7 @@ bool Deity::deserialize(istream& stream)
   Serialize::read_string(stream, name_sid);
   Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, short_description_sid);
+  Serialize::read_string(stream, anger_message_sid);
   Serialize::read_string(stream, death_message_sid);
   Serialize::read_enum(stream, alignment_range);
   Serialize::read_string_vector(stream, crowning_gifts);

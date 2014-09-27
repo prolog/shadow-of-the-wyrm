@@ -15,6 +15,7 @@ TEST(SL_World_Religion_Deity, saveload)
   d.set_name_sid("test");
   d.set_description_sid("asdf");
   d.set_short_description_sid("short_sid");
+  d.set_anger_message_sid("anger_sid");
   d.set_death_message_sid("death_msg");
   d.set_alignment_range(ALIGNMENT_RANGE_GOOD);
 

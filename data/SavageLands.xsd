@@ -160,6 +160,7 @@
 			<xs:element name="NameSID" type="xs:string"/>
 			<xs:element name="ShortDescriptionSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
+			<xs:element name="AngerMessageSID" type="xs:string"/>
 			<xs:element name="DeathMessageSID" type="xs:string"/>
 			<xs:element name="Alignment" type="tns:AlignmentRange"/>
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
