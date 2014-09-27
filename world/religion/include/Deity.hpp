@@ -27,6 +27,9 @@ class Deity : public ISerializable
     
     void set_short_description_sid(const std::string& new_short_description_sid);
     std::string get_short_description_sid() const;
+
+    void set_anger_message_sid(const std::string& new_anger_message_sid);
+    std::string get_anger_message_sid() const;
     
     void set_death_message_sid(const std::string& new_death_message_sid);
     std::string get_death_message_sid() const;
@@ -57,6 +60,7 @@ class Deity : public ISerializable
     std::string name_sid;
     std::string description_sid;
     std::string short_description_sid;
+    std::string anger_message_sid;
     std::string death_message_sid;
     AlignmentRange alignment_range;
     std::vector<std::string> crowning_gifts;

@@ -46,6 +46,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     string name_sid  = XMLUtils::get_child_node_value(deity_node, "NameSID");
     string sdesc_id  = XMLUtils::get_child_node_value(deity_node, "ShortDescriptionSID");
     string desc_sid  = XMLUtils::get_child_node_value(deity_node, "DescriptionSID");
+    string anger_sid = XMLUtils::get_child_node_value(deity_node, "AngerMessageSID");
     string death_sid = XMLUtils::get_child_node_value(deity_node, "DeathMessageSID");
     AlignmentRange alignment = static_cast<AlignmentRange>(XMLUtils::get_child_node_int_value(deity_node, "Alignment"));
     XMLNode dislikes_node = XMLUtils::get_next_element_by_local_name(deity_node, "Dislikes");
@@ -61,6 +62,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     deity->set_name_sid(name_sid);
     deity->set_short_description_sid(sdesc_id);
     deity->set_description_sid(desc_sid);
+    deity->set_anger_message_sid(anger_sid);
     deity->set_death_message_sid(death_sid);
     deity->set_alignment_range(alignment);
     parse_dislikes(dislikes_node, deity);

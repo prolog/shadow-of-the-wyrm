@@ -3,6 +3,15 @@
 
 using std::string;
 
+DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler()
+{
+}
+
+DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler(DeityPtr new_deity)
+: deity(new_deity)
+{
+}
+
 // The Nine only dislike those with negative piety.
 //
 // They're very scientific, and it makes it easy to model.
@@ -34,6 +43,13 @@ int DislikeDeityDecisionStrategyHandler::get_piety_loss() const
 
 string DislikeDeityDecisionStrategyHandler::get_message_sid() const
 {
-  return DeityTextKeys::DEITY_ACTION_DISPLEASED;
+  if (deity != nullptr)
+  {
+    return deity->get_anger_message_sid();
+  }
+  else
+  {
+    return DeityTextKeys::DEITY_ACTION_DISPLEASED;
+  }
 }
 
