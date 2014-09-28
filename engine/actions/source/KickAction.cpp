@@ -7,6 +7,8 @@
 #include "IFeatureManipulatorFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "TextKeys.hpp"
+#include "TextMessages.hpp"
 #include "KickAction.hpp"
 
 using std::string;
@@ -113,15 +115,18 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
       acv = get_action_cost_value(creature);
 
       manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
-
+      manager.send(); // Send immediately so that things don't look weird if interrupted by a confirmation.
       // Is there a creature?
       if (kick_tile->has_creature())
       {
+        CreaturePtr kicked_creature = kick_tile->get_creature();
+        
+        acv = kick_creature(creature, kicked_creature);
       }
       // No creature to kick.  Is there a feature?
       else if (kick_tile->has_feature())
       {
-        kick_feature(creature, current_map, kick_tile, kick_tile->get_feature());
+        acv = kick_feature(creature, current_map, kick_tile, kick_tile->get_feature());
       }
       else
       {
@@ -140,6 +145,8 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
         {
           // ...
         }
+
+        acv = get_action_cost_value(creature);
       }
     }
     else
@@ -152,6 +159,31 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
     }
 
     manager.send();
+  }
+
+  return acv;
+}
+
+ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, CreaturePtr kicked_creature)
+{
+  ActionCostValue acv = get_action_cost_value(kicking_creature);
+  bool attack = true;
+
+  if (kicking_creature && kicked_creature)
+  {
+    // Check to see if the creature is friendly - if so, prompt for
+    // confirmation.
+    if (!kicked_creature->get_decision_strategy()->get_threats_ref().has_threat(kicking_creature->get_id()).first)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance(kicking_creature, kicking_creature && kicking_creature->get_is_player());
+      manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
+      attack = kicking_creature->get_decision_strategy()->get_confirmation();
+    }
+
+    if (attack)
+    {
+      // ...
+    }
   }
 
   return acv;
