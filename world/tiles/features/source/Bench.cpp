@@ -11,16 +11,6 @@ Feature* Bench::clone()
   return new Bench(*this);
 }
 
-bool Bench::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
-{
-  return true;
-}
-
-bool Bench::kick()
-{
-  return true;
-}
-
 std::string Bench::get_description_sid() const
 {
   return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BENCH;

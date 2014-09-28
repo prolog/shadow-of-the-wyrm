@@ -29,16 +29,6 @@ Feature* Sarcophagus::clone()
   return new Sarcophagus(*this);
 }
 
-bool Sarcophagus::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
-{
-  return true;
-}
-
-bool Sarcophagus::kick()
-{
-  return true;
-}
-
 uchar Sarcophagus::get_symbol() const
 {
   return 'S';

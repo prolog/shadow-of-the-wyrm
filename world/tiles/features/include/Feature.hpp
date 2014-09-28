@@ -51,20 +51,12 @@ class Feature : public ISerializable
     virtual bool can_open() const;
     virtual bool can_lock() const;
 
-    virtual bool kick() = 0;
     virtual bool offer();
     virtual bool open();
 
     // Can the feature be handled, given whether the tile it is on is
     // currently occupied?
     virtual bool can_handle(const bool feature_tile_occupied) const;
-
-    // Handling a feature can affect the tile on which the feature is present,
-    // so include that as a parameter.  Include the creature so that if a message
-    // is added (e.g., "You pour yourself a drink!" or "The goblin pours himself
-    // a drink!"), the correct message can be added based on the creature, and
-    // whether the creature is the player or not.
-    virtual bool handle(std::shared_ptr<Tile> tile, std::shared_ptr<Creature> creature) = 0;
 
     // Potential handle message for the current feature.
     // By default, returns the empty SID.

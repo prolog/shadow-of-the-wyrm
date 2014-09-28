@@ -1,9 +1,11 @@
 #pragma once
-#include "IFeatureManipulator.hpp"
+#include "AltarManipulator.hpp"
 
-class GoodAltarManipulator : public IFeatureManipulator
+class GoodAltarManipulator : public AltarManipulator
 {
   public:
-    void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature);
+    GoodAltarManipulator(FeaturePtr feature);
+
+    void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature) override;
 };
 

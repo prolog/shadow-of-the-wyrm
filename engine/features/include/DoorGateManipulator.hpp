@@ -4,6 +4,9 @@
 class DoorGateManipulator : public IFeatureManipulator
 {
   public:
-    void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature);
+    DoorGateManipulator(FeaturePtr feature);
+
+    void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature) override;
+    bool handle(TilePtr tile, CreaturePtr creature) override;
 };
 

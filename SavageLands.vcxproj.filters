@@ -3171,9 +3171,6 @@
     <ClInclude Include="engine\description\include\BlindFeatureDescriber.hpp">
       <Filter>Header Files\engine\description\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\features\include\PewFeatureManipulator.hpp">
-      <Filter>Header Files\engine\features\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\features\include\EvilAltarManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
@@ -3184,6 +3181,15 @@
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\features\include\DoorGateManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\features\include\AltarManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\features\include\BarrelManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\features\include\PewManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
   </ItemGroup>
@@ -6119,9 +6125,6 @@
     <ClCompile Include="engine\description\source\BlindFeatureDescriber.cpp">
       <Filter>Source Files\engine\description\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\features\source\PewFeatureManipulator.cpp">
-      <Filter>Source Files\engine\features\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\features\source\EvilAltarManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
@@ -6132,6 +6135,15 @@
       <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\features\source\DoorGateManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\AltarManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\BarrelManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\PewManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
   </ItemGroup>

@@ -14,16 +14,6 @@ Feature* Fountain::clone()
   return new Fountain(*this);
 }
 
-bool Fountain::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
-{
-  return true;
-}
-
-bool Fountain::kick()
-{
-  return true;
-}
-
 uchar Fountain::get_symbol() const
 {
   return '~';

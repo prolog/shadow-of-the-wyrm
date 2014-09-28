@@ -8,9 +8,6 @@ class Barrel : public Feature
 
     bool operator==(const Barrel& b) const;
 
-    virtual bool handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>) override;
-    virtual bool kick() override;
-
     virtual uchar get_symbol() const override;
 
     virtual void set_tap(const bool new_tap);

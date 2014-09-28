@@ -2,6 +2,7 @@
 #include "Commands.hpp"
 #include "FeatureAction.hpp"
 #include "Game.hpp"
+#include "IFeatureManipulatorFactory.hpp"
 #include "KeyManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -110,9 +111,9 @@ bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creatur
 
     if (feature_locked == false || creature_unlocked_lock)
     {
-      result = feature->handle(tile, creature);
+      IFeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(feature);
 
-      if (result)
+      if (feature_manipulator && feature_manipulator->handle(tile, creature))
       {
         string handle_message_sid = feature->get_handle_message_sid();
 
@@ -120,6 +121,8 @@ bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creatur
         {
           add_application_message(creature, handle_message_sid);
         }
+
+        result = true;
       }
 
       // Now that the door has been closed, check to see if

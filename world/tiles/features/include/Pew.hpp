@@ -9,9 +9,6 @@ class Pew : public Feature
     Pew();
     virtual Feature* clone() override;
 
-    virtual bool handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>) override;
-    virtual bool kick() override;
-
     virtual uchar get_symbol() const override;
     virtual float get_piety_loss_multiplier() const override;
 
