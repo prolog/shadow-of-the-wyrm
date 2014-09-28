@@ -10,8 +10,6 @@ class Altar : public Feature
 
     virtual bool can_offer() const override;
 
-    virtual bool handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>) override;
-    virtual bool kick() override;
     virtual bool offer() override;
 
     virtual std::string get_deity_id() const;

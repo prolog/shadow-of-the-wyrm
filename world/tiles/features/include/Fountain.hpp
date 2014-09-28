@@ -6,9 +6,6 @@ class Fountain : public Feature
     Fountain();
     virtual Feature* clone() override;
 
-    virtual bool handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>) override;
-    virtual bool kick() override;
-
     virtual uchar get_symbol() const override;
 
   protected:

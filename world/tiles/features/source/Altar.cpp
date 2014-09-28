@@ -27,17 +27,6 @@ bool Altar::can_offer() const
   return true;
 }
 
-bool Altar::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
-{
-  return offer();
-}
-
-bool Altar::kick()
-{
-  // Bad things happen.
-  return true;
-}
-
 bool Altar::offer()
 {
   // Good things happen.

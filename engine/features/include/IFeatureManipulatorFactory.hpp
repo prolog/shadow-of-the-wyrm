@@ -4,7 +4,7 @@
 class IFeatureManipulatorFactory
 {
   public:
-    IFeatureManipulatorPtr static create_manipulator(const ClassIdentifier class_id);
+    IFeatureManipulatorPtr static create_manipulator(FeaturePtr feature);
 
   protected:
     IFeatureManipulatorFactory() {};

@@ -13,16 +13,6 @@ Feature* FirePillar::clone()
   return new FirePillar(*this);
 }
 
-bool FirePillar::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
-{
-  return true;
-}
-
-bool FirePillar::kick()
-{
-  return true;
-}
-
 bool FirePillar::get_is_blocking() const
 {
   return true;

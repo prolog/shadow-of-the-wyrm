@@ -19,43 +19,6 @@ Feature* Door::clone()
   return new Door(*this);
 }
 
-bool Door::handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>)
-{
-  bool result = false;
-
-  LockPtr lock = get_lock();
-  EntranceState& entrance_state = get_state_ref();
-  EntranceStateType state = entrance_state.get_state();
-
-  switch (state)
-  {
-    // If the door is smashed, nothing can be done.
-    case ENTRANCE_TYPE_DESTROYED:
-      break;
-
-    case ENTRANCE_TYPE_OPEN:
-      result = close();
-      break;
-
-    case ENTRANCE_TYPE_CLOSED:
-      // If the door is closed and locked, try to unlock it.
-      // If the door is closed and unlocked, open it.
-    default:
-      result = open();
-      break;
-  }
-
-  return result;
-}
-
-bool Door::kick()
-{
-  // If the door is smashed or open, kick at the air.
-  // If the door is shut, kick it.
-  //   - Check for traps.
-  return true;
-}
-
 bool Door::get_is_blocking() const
 {
   // Only closed doors are blocking.

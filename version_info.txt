@@ -35,6 +35,12 @@ Savage Lands v0.2.8 "Adda"
 - Each deity now has its own anger message, to add a little bit more
   flavour.
 
+- Refactored the feature-handling code out of the feature and into
+  manipulator classes located in the engine.  This provides more
+  separation between engine and model, as the features in the world
+  subdirectory are intended to mostly be data structures.  Features,
+  for example, shouldn't manipulate tiles - that's the engine's job.
+
 - New artifacts: celestial shortsword "Heaven's Blade", battle-armour of
   Aurelion, divine spear "Radiance", alabaster rod "Creator's Might",
   titantic battle axe "Earthcleaver", Shroud of Fate, frost-covered athame

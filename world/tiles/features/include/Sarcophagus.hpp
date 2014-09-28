@@ -9,9 +9,6 @@ class Sarcophagus : public Feature
 
     virtual Feature* clone() override;
 
-    virtual bool handle(std::shared_ptr<Tile>, std::shared_ptr<Creature>) override;
-    virtual bool kick() override;
-
     virtual uchar get_symbol() const override;
 
     virtual std::pair<std::string, std::vector<std::string>> get_description_and_replacement_sids() const override;
