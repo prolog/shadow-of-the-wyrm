@@ -6,6 +6,7 @@
 #include "Game.hpp"
 #include "FeatureDescriberFactory.hpp"
 #include "IFeatureManipulatorFactory.hpp"
+#include "ItemDescriberFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "TextKeys.hpp"
@@ -125,6 +126,13 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
         
         acv = kick_creature(creature, kicked_creature);
       }
+      // Are there items present?
+      else if (!kick_tile->get_items()->empty())
+      {
+        // Kick the top item in the pile in the given direction.
+        TilePtr new_tile = MapUtils::get_adjacent_tile(current_map, creature, direction, 2);
+        acv = kick_item(creature, kick_tile, new_tile, direction);
+      }
       // No creature to kick.  Is there a feature?
       else if (kick_tile->has_feature())
       {
@@ -184,9 +192,7 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
 
     if (attack)
     {
-      // JCD FIXME: Add something here to force an unarmed attack
-      // to model kicking.  Right now this just does a regular
-      // attack.
+      // Do a kicking attack (force an unarmed, physical attack)
       CombatManager cm;
       acv = cm.attack(kicking_creature, kicked_creature, ATTACK_TYPE_MELEE_TERTIARY_UNARMED, true);
     }
@@ -222,6 +228,40 @@ ActionCostValue KickAction::kick_feature(CreaturePtr creature, MapPtr current_ma
   }
 
   return get_action_cost_value(creature);
+}
+
+// Kick an item in the given tile.  Kicking moves the top item over by one
+// tile, assuming that's a legal move (the new tile isn't null, etc).
+ActionCostValue KickAction::kick_item(CreaturePtr creature, TilePtr kick_tile, TilePtr new_tile, const Direction direction)
+{
+  ActionCostValue acv = get_action_cost_value(creature);
+
+  if (creature && kick_tile && !kick_tile->get_items()->empty())
+  {
+    // First, get the item.
+    ItemPtr item = kick_tile->get_items()->at(0);
+
+    CurrentCreatureAbilities cca;
+    bool creature_blind = creature->get_is_player() && !cca.can_see(creature);
+
+    // Add a message about kicking the item.
+    ItemDescriberPtr describer = ItemDescriberFactory::create_item_describer(creature_blind, item);
+    string object_desc = describer->describe_usage();
+    string kick_msg = ActionTextKeys::get_kick_object_message(creature->get_description_sid(), object_desc, creature->get_is_player());
+
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(kick_msg);
+
+    // If the new tile actually exists, add the item to its inventory
+    // and remove the item from the inventory of its original tile.
+    if (new_tile)
+    {
+      kick_tile->get_items()->remove(item->get_id());
+      new_tile->get_items()->add(item);
+    }
+  }
+
+  return acv;
 }
 
 ActionCostValue KickAction::get_action_cost_value(CreaturePtr creature) const

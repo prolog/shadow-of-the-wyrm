@@ -23,7 +23,7 @@ class MapUtils
     static Coordinate get_coordinate_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static TilePtr get_tile_for_creature(const MapPtr& map, const CreaturePtr& creature);
     static TileDirectionMap get_adjacent_tiles_to_creature(const MapPtr& map, const CreaturePtr& creature);
-    static TilePtr get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d);
+    static TilePtr get_adjacent_tile(const MapPtr& map, const CreaturePtr& creature, const Direction d, const int offset = 1);
     static TileDirectionMap get_adjacent_and_creature_tiles(const MapPtr& map, const CreaturePtr& creature);
     static TileDirectionMap get_tiles_with_features(MapPtr& map, CreaturePtr& creature);
     static uint get_num_adjacent_creatures(const TileDirectionMap& adjacency_map);
