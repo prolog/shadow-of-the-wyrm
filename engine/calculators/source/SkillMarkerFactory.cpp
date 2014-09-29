@@ -19,6 +19,7 @@ ISkillMarkerPtr SkillMarkerFactory::create_skill_marker(const AttackType attack_
   {
     case ATTACK_TYPE_MELEE_PRIMARY:
     case ATTACK_TYPE_MELEE_SECONDARY:
+    case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       skill_marker = std::make_shared<MeleeCombatSkillMarker>(attack_type);
       break;
     case ATTACK_TYPE_RANGED:

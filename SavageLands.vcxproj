@@ -262,6 +262,7 @@
     <ClInclude Include="engine\calculators\include\StoneCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\StunnedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\UnderworldMapDangerLevelCalculator.hpp" />
@@ -1113,6 +1114,7 @@
     <ClCompile Include="engine\calculators\source\StoneCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StunnedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\TertiaryUnarmedPhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\UnderworldMapDangerLevelCalculator.cpp" />

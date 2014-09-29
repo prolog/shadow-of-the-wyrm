@@ -22,6 +22,7 @@ DamageCalculatorPtr DamageCalculatorFactory::create_damage_calculator(const Atta
       break;
     case ATTACK_TYPE_MELEE_PRIMARY:
     case ATTACK_TYPE_MELEE_SECONDARY:
+    case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       calculator = std::make_shared<PhysicalDamageCalculator>(attack_type);
       break;
     case ATTACK_TYPE_MAGICAL:

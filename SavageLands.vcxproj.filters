@@ -3192,6 +3192,9 @@
     <ClInclude Include="engine\features\include\PewManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6145,6 +6148,9 @@
     </ClCompile>
     <ClCompile Include="engine\features\source\PewManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\TertiaryUnarmedPhysicalAttackSpeedCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

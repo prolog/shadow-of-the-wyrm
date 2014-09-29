@@ -32,6 +32,9 @@ Savage Lands v0.2.8 "Adda"
     kicking either the feature, or "something", depending on whether the
     player is blinded or not.
 
+  - Creatures can be kicked as well.  Kicking is an unarmed attack with
+    the same characteristics as a regular unarmed attack.
+
 - Each deity now has its own anger message, to add a little bit more
   flavour.
 
@@ -51,7 +54,8 @@ Savage Lands v0.2.8 "Adda"
 - New creatures: seagull.
 
 - Bug fixes: eating food off the ground wasn't removing the item from the
-  tile's inventory after eating.
+  tile's inventory after eating.  Unarmed attacks weren't adding the
+  appropriate bonuses for the unarmed combat skill.
 
 Savage Lands v0.2.7 "Glappa"
 - Version declared August 13, 2014.  Version finalized September 13, 2014.
