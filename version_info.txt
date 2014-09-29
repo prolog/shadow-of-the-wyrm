@@ -35,6 +35,10 @@ Savage Lands v0.2.8 "Adda"
   - Creatures can be kicked as well.  Kicking is an unarmed attack with
     the same characteristics as a regular unarmed attack.
 
+  - Kicking items moves them one tile over, assuming that's a valid move.
+    If it's not a valid move, energy is expended, but the item is not
+    moved.
+
 - Each deity now has its own anger message, to add a little bit more
   flavour.
 
