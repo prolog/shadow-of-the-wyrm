@@ -15,7 +15,11 @@ class CombatManager
     bool operator==(const CombatManager& cm) const;
     
     ActionCostValue attack(CreaturePtr creature, const Direction d);
-    ActionCostValue attack(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const AttackType = ATTACK_TYPE_MELEE_PRIMARY, const bool mark_skills = true, DamagePtr damage = DamagePtr());
+    ActionCostValue attack(CreaturePtr attacking_creature, 
+                           CreaturePtr attacked_creature, 
+                           const AttackType = ATTACK_TYPE_MELEE_PRIMARY, 
+                           const bool mark_skills = true, 
+                           DamagePtr damage = DamagePtr());
 
     void deal_damage(CreaturePtr attacking_creature, CreaturePtr attacked_creature, const int damage_dealt, const std::string combat_message = "");
     void handle_damage_effects(CreaturePtr attacked_creature, const int damage_dealt, const DamageType damage_type, const int effect_bonus, const StatusAilments& status_ailments);

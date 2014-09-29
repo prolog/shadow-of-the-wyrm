@@ -39,6 +39,7 @@ WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attac
         weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_off_handedness())));
         break;
       case ATTACK_TYPE_MAGICAL:
+      case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       default:
         break;
     }
@@ -103,6 +104,7 @@ Damage WeaponManager::get_damage(CreaturePtr creature, const AttackType attack_t
   {
     case ATTACK_TYPE_MELEE_PRIMARY:
     case ATTACK_TYPE_MELEE_SECONDARY:
+    case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       return get_melee_weapon_damage(creature, attack_type);
       break;
     case ATTACK_TYPE_RANGED:

@@ -1,4 +1,5 @@
 #include "ActionTextKeys.hpp"
+#include "CombatManager.hpp"
 #include "Commands.hpp"
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -116,6 +117,7 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
 
       manager.add_new_message(ActionTextKeys::get_kick_message(creature->get_description_sid(), creature->get_is_player()));
       manager.send(); // Send immediately so that things don't look weird if interrupted by a confirmation.
+
       // Is there a creature?
       if (kick_tile->has_creature())
       {
@@ -182,7 +184,11 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
 
     if (attack)
     {
-      // ...
+      // JCD FIXME: Add something here to force an unarmed attack
+      // to model kicking.  Right now this just does a regular
+      // attack.
+      CombatManager cm;
+      acv = cm.attack(kicking_creature, kicked_creature, ATTACK_TYPE_MELEE_TERTIARY_UNARMED, true);
     }
   }
 

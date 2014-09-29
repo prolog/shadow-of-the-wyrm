@@ -22,6 +22,7 @@ int WeaponDifficultyCalculator::calculate_base_difficulty(CreaturePtr creature, 
         weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_OFF_HAND));
         difficulty = get_difficulty_for_weapon(weapon);
         break;
+      case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       case ATTACK_TYPE_MAGICAL:
       default:
         difficulty = get_difficulty_for_weapon(weapon);

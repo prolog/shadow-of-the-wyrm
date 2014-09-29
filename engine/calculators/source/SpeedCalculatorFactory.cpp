@@ -4,6 +4,7 @@
 #include "RangedAttackSpeedCalculator.hpp"
 #include "SecondaryPhysicalAttackSpeedCalculator.hpp"
 #include "SpeedCalculatorFactory.hpp"
+#include "TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp"
 
 SpeedCalculatorFactory::SpeedCalculatorFactory()
 {
@@ -25,6 +26,9 @@ ISpeedCalculatorPtr SpeedCalculatorFactory::create_speed_calculator(const Attack
       break;
     case ATTACK_TYPE_MELEE_SECONDARY:
       speed_calculator = std::make_shared<SecondaryPhysicalAttackSpeedCalculator>();
+      break;
+    case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+      speed_calculator = std::make_shared<TertiaryUnarmedPhysicalAttackSpeedCalculator>();
       break;
     case ATTACK_TYPE_RANGED:
       speed_calculator = std::make_shared<RangedAttackSpeedCalculator>();
