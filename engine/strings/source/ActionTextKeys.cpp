@@ -225,6 +225,7 @@ const string ActionTextKeys::ACTION_KICK_NOTHING_TO_KICK_AT    = "ACTION_KICK_NO
 const string ActionTextKeys::ACTION_KICK_SOLID_TILE            = "ACTION_KICK_SOLID_TILE";
 const string ActionTextKeys::ACTION_KICK_WATER_TILE            = "ACTION_KICK_WATER_TILE";
 const string ActionTextKeys::ACTION_SACRIFICE_NO_ALTAR         = "ACTION_SACRIFICE_NO_ALTAR";
+const string ActionTextKeys::ACTION_SACRIFICE_NO_ITEMS         = "ACTION_SACRIFICE_NO_ITEMS";
 
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
 const string ActionTextKeys::ACTION_EVOKE_MONSTER              = "ACTION_EVOKE_MONSTER";
