@@ -262,3 +262,10 @@ class KickCommand : public Command
     KickCommand(int key);
     ~KickCommand();
 };
+
+class OfferCommand : public Command
+{
+  public:
+    OfferCommand(int key);
+    ~OfferCommand();
+};

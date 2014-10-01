@@ -26,6 +26,9 @@ Savage Lands v0.2.8 "Adda"
 - Created two more guaranteed altars - a neutral altar in Wintersea Keep,
   and a chaotic altar in the ruins of Stonewall.
 
+- Created a new offer command, used to offer sacrifices to one's deity,
+  and mapped it to "O".
+
 - Added the kick command, and mapped it to "K".
 
   - Features are kickable.  Kicking a feature generates a message about

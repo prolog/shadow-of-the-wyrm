@@ -109,6 +109,9 @@ class ActionManager : public ISerializable
     // Kick in a particular direction
     ActionCost kick(CreaturePtr creature);
 
+    // Offer a sacrifice
+    ActionCost offer(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 
