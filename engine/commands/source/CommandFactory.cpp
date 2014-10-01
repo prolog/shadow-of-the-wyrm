@@ -180,6 +180,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<KickCommand>(key);
   }
+  else if (command_name == CommandKeys::OFFER)
+  {
+    command = std::make_shared<OfferCommand>(key);
+  }
 
   return command;
 }

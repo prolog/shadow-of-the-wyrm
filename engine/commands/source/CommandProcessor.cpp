@@ -188,6 +188,10 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       {
         ac = game.actions.kick(creature);
       }
+      else if (command_name == CommandKeys::OFFER)
+      {
+        ac = game.actions.offer(creature);
+      }
     }
   }
   

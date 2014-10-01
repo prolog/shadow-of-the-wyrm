@@ -377,3 +377,13 @@ KickCommand::KickCommand(const int key)
 KickCommand::~KickCommand()
 {
 }
+
+// Offer
+OfferCommand::OfferCommand(int key)
+: Command(CommandKeys::OFFER, key)
+{
+}
+
+OfferCommand::~OfferCommand()
+{
+}

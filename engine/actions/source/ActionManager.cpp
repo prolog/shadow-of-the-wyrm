@@ -24,6 +24,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "MovementTextKeys.hpp"
+#include "OfferAction.hpp"
 #include "PickupAction.hpp"
 #include "PrayerAction.hpp"
 #include "PromptTextKeys.hpp"
@@ -373,6 +374,13 @@ ActionCost ActionManager::kick(CreaturePtr creature)
   KickAction ka;
 
   return get_action_cost(creature, ka.kick(creature));
+}
+
+ActionCost ActionManager::offer(CreaturePtr creature)
+{
+  OfferAction oa;
+
+  return get_action_cost(creature, oa.offer(creature));
 }
 
 // Pick up an item, doing any necessary checks first.
