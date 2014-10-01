@@ -13,7 +13,7 @@ OfferAction::OfferAction()
 // Sacrifice an item to one's deity.
 ActionCostValue OfferAction::offer(CreaturePtr creature)
 {
-  ActionCostValue acv = get_action_cost_value(creature);
+  ActionCostValue acv = 0;
 
   if (creature)
   {
@@ -26,10 +26,34 @@ ActionCostValue OfferAction::offer(CreaturePtr creature)
     // On an altar - pick an item to sacrifice
     if (tile && feature && feature->can_offer())
     {
+      acv = select_item_for_sacrifice(creature);
     }
     else
     {
       add_no_altar_message(creature);
+    }
+  }
+
+  return acv;
+}
+
+// Prompt the creature to select an item for sacrifice.
+ActionCostValue OfferAction::select_item_for_sacrifice(CreaturePtr creature)
+{
+  ActionCostValue acv = 0;
+
+  if (creature)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance();
+
+    if (creature->get_inventory()->empty() && creature->get_is_player())
+    {
+      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SACRIFICE_NO_ITEMS));
+      manager.send();
+    }
+    else
+    {
+      acv = get_action_cost_value(creature);
     }
   }
 
