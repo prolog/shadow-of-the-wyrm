@@ -636,6 +636,7 @@
     <ClInclude Include="engine\strings\include\ItemTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ItemTypeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MaterialTextKeys.hpp" />
+    <ClInclude Include="engine\strings\include\SacrificeTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\ScreenTitleTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\MovementTextKeys.hpp" />
     <ClInclude Include="engine\strings\include\PlayerConstants.hpp" />
@@ -1873,6 +1874,7 @@
     <ClCompile Include="engine\strings\source\ItemTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ItemTypeTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MaterialTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\SacrificeTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\ScreenTitleTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\MovementTextKeys.cpp" />
     <ClCompile Include="engine\strings\source\PlayerConstants.cpp" />

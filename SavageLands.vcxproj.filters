@@ -3198,6 +3198,9 @@
     <ClInclude Include="engine\actions\include\OfferAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\strings\include\SacrificeTextKeys.hpp">
+      <Filter>Header Files\engine\strings\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6157,6 +6160,9 @@
     </ClCompile>
     <ClCompile Include="engine\actions\source\OfferAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\SacrificeTextKeys.cpp">
+      <Filter>Source Files\engine\strings\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
