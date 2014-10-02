@@ -1,8 +1,8 @@
 #include "OfferAction.hpp"
-#include "ActionTextKeys.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "SacrificeTextKeys.hpp"
 
 using namespace std;
 
@@ -26,7 +26,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature)
     // On an altar - pick an item to sacrifice
     if (tile && feature && feature->can_offer())
     {
-      acv = select_item_for_sacrifice(creature);
+      acv = sacrifice_item(creature);
     }
     else
     {
@@ -38,7 +38,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature)
 }
 
 // Prompt the creature to select an item for sacrifice.
-ActionCostValue OfferAction::select_item_for_sacrifice(CreaturePtr creature)
+ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature)
 {
   ActionCostValue acv = 0;
 
@@ -48,12 +48,23 @@ ActionCostValue OfferAction::select_item_for_sacrifice(CreaturePtr creature)
 
     if (creature->get_inventory()->empty() && creature->get_is_player())
     {
-      manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SACRIFICE_NO_ITEMS));
+      manager.add_new_message(StringTable::get(SacrificeTextKeys::SACRIFICE_NO_ITEMS));
       manager.send();
     }
     else
     {
       acv = get_action_cost_value(creature);
+
+      ItemPtr item;
+
+      if (item == nullptr)
+      {
+        manager.add_new_message(StringTable::get(SacrificeTextKeys::SACRIFICE_NO_ITEM_SELECTED));
+        manager.send();
+      }
+      else
+      {
+      }
     }
   }
 
@@ -65,7 +76,7 @@ void OfferAction::add_no_altar_message(CreaturePtr creature)
   // No altar or other sacrifice-enabled feature present.
   if (creature->get_is_player())
   {
-    string no_altar_msg = StringTable::get(ActionTextKeys::ACTION_SACRIFICE_NO_ALTAR);
+    string no_altar_msg = StringTable::get(SacrificeTextKeys::SACRIFICE_NO_ALTAR);
     IMessageManager& manager = MessageManagerFactory::instance();
 
     manager.add_new_message(no_altar_msg);

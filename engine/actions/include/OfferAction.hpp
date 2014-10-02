@@ -12,7 +12,7 @@ class OfferAction : public IActionManager
     OfferAction();
     
     void add_no_altar_message(CreaturePtr creature);
-    ActionCostValue select_item_for_sacrifice(CreaturePtr creature);
+    ActionCostValue sacrifice_item(CreaturePtr creature);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };
