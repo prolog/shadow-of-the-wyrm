@@ -1,5 +1,7 @@
 #include "OfferAction.hpp"
+#include "ActionManager.hpp"
 #include "Game.hpp"
+#include "ItemFilterFactory.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "SacrificeTextKeys.hpp"
@@ -11,7 +13,7 @@ OfferAction::OfferAction()
 }
 
 // Sacrifice an item to one's deity.
-ActionCostValue OfferAction::offer(CreaturePtr creature)
+ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const am)
 {
   ActionCostValue acv = 0;
 
@@ -26,7 +28,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature)
     // On an altar - pick an item to sacrifice
     if (tile && feature && feature->can_offer())
     {
-      acv = sacrifice_item(creature);
+      acv = sacrifice_item(creature, am);
     }
     else
     {
@@ -38,7 +40,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature)
 }
 
 // Prompt the creature to select an item for sacrifice.
-ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature)
+ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, ActionManager * const am)
 {
   ActionCostValue acv = 0;
 
@@ -55,9 +57,10 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature)
     {
       acv = get_action_cost_value(creature);
 
-      ItemPtr item;
+      list<IItemFilterPtr> no_filter = ItemFilterFactory::create_empty_filter();
+      ItemPtr item_to_sac = am->inventory(creature, creature->get_inventory(), no_filter, false);
 
-      if (item == nullptr)
+      if (item_to_sac == nullptr)
       {
         manager.add_new_message(StringTable::get(SacrificeTextKeys::SACRIFICE_NO_ITEM_SELECTED));
         manager.send();
