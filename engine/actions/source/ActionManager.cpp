@@ -380,7 +380,7 @@ ActionCost ActionManager::offer(CreaturePtr creature)
 {
   OfferAction oa;
 
-  return get_action_cost(creature, oa.offer(creature));
+  return get_action_cost(creature, oa.offer(creature, this));
 }
 
 // Pick up an item, doing any necessary checks first.
