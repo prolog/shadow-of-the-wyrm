@@ -2,6 +2,7 @@
 #include "ClassManager.hpp"
 #include "CreatureFactory.hpp"
 #include "ExperienceManager.hpp"
+#include "FeatureFactory.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "Log.hpp"
@@ -88,6 +89,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "is_on_quest", is_on_quest);
   lua_register(L, "get_num_creature_killed_global", get_num_creature_killed_global);
   lua_register(L, "add_object_to_player_tile", add_object_to_player_tile);
+  lua_register(L, "add_feature_to_player_tile", add_feature_to_player_tile);
   lua_register(L, "mark_quest_completed", mark_quest_completed);
   lua_register(L, "remove_active_quest", remove_active_quest);
   lua_register(L, "is_quest_completed", is_quest_completed);
@@ -430,6 +432,33 @@ int add_object_to_player_tile(lua_State* ls)
     lua_error(ls);
   }
 
+  return 0;
+}
+
+// Add a feature (using the class ID) to the player's tile.
+int add_feature_to_player_tile(lua_State* ls)
+{
+  if ((lua_gettop(ls) == 1) && (lua_isnumber(ls, 1)))
+  {
+    ClassIdentifier class_id = static_cast<ClassIdentifier>(lua_tointeger(ls, 1));
+    FeaturePtr feature = FeatureFactory::create_feature(class_id);
+
+    if (feature != nullptr)
+    {
+      Game& game = Game::instance();
+      MapPtr map = game.get_current_map();
+      CreaturePtr player = game.get_current_player();
+      TilePtr player_tile = MapUtils::get_tile_for_creature(map, player);
+
+      player_tile->set_feature(feature);
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to add_feature_to_player_tile!");
+    lua_error(ls);
+  }
+  
   return 0;
 }
 
