@@ -1,10 +1,11 @@
 #pragma once
 #include "Feature.hpp"
+#include "AlignmentEnums.hpp"
 
 class Altar : public Feature
 {
   public:
-    Altar(const std::string& new_deity_id, const MaterialType new_material);
+    Altar(const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange alignment_range);
     virtual ~Altar() {};
     virtual bool operator==(const Altar& altar) const;
 
@@ -20,9 +21,12 @@ class Altar : public Feature
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
+
+    virtual AlignmentRange get_alignment_range() const override;
         
   protected:
     std::string deity_id;
+    AlignmentRange alignment_range;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

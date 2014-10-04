@@ -9,7 +9,7 @@ class GoodAltar : public Altar
     GoodAltar();
     GoodAltar(const std::string& new_deity_id);
     virtual Feature* clone() override;
-    
+
   protected:
     virtual std::string get_description_sid() const override;
 

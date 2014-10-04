@@ -2,6 +2,7 @@
 #include "IActionManager.hpp"
 #include "ActionManager.hpp"
 #include "Creature.hpp"
+#include "Feature.hpp"
 
 class OfferAction : public IActionManager
 {
@@ -13,7 +14,7 @@ class OfferAction : public IActionManager
     OfferAction();
     
     void add_no_altar_message(CreaturePtr creature);
-    ActionCostValue sacrifice_item(CreaturePtr creature, ActionManager * const am);
+    ActionCostValue sacrifice_item(CreaturePtr creature, FeaturePtr feature, ActionManager * const am);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };
