@@ -3,8 +3,8 @@
 
 using namespace std;
 
-Altar::Altar(const std::string& new_deity_id, const MaterialType new_material)
-: Feature(new_material), deity_id(new_deity_id)
+Altar::Altar(const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange new_alignment_range)
+: Feature(new_material), deity_id(new_deity_id), alignment_range(new_alignment_range)
 {
 }
 
@@ -43,10 +43,16 @@ float Altar::get_piety_loss_multiplier() const
   return 0.5f;
 }
 
+AlignmentRange Altar::get_alignment_range() const
+{
+  return alignment_range;
+}
+
 bool Altar::serialize(ostream& stream) const
 {
   Feature::serialize(stream);
   Serialize::write_string(stream, deity_id);
+  Serialize::write_enum(stream, alignment_range);
 
   return true;
 }
@@ -55,6 +61,7 @@ bool Altar::deserialize(istream& stream)
 {
   Feature::deserialize(stream);
   Serialize::read_string(stream, deity_id);
+  Serialize::read_enum(stream, alignment_range);
 
   return true;
 }

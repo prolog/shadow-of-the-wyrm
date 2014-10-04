@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <memory>
+#include "AlignmentEnums.hpp"
 #include "common.hpp"
 #include "Lock.hpp"
 #include "Trap.hpp"
@@ -63,6 +64,7 @@ class Feature : public ISerializable
     virtual std::string get_handle_message_sid() const;
 
     virtual float get_piety_loss_multiplier() const;
+    virtual AlignmentRange get_alignment_range() const;
 
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;

@@ -160,6 +160,12 @@ float Feature::get_piety_loss_multiplier() const
   return 1.0f;
 }
 
+// Most features don't have an alignment, and are considered neutral.
+AlignmentRange Feature::get_alignment_range() const
+{
+  return ALIGNMENT_RANGE_NEUTRAL;
+}
+
 bool Feature::serialize(ostream& stream) const
 {
   if (trap)

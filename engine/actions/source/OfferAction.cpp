@@ -1,5 +1,6 @@
 #include "OfferAction.hpp"
 #include "ActionManager.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MapUtils.hpp"
@@ -28,7 +29,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
     // On an altar - pick an item to sacrifice
     if (tile && feature && feature->can_offer())
     {
-      acv = sacrifice_item(creature, am);
+      acv = sacrifice_item(creature, feature, am);
     }
     else
     {
@@ -40,7 +41,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
 }
 
 // Prompt the creature to select an item for sacrifice.
-ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, ActionManager * const am)
+ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr feature, ActionManager * const am)
 {
   ActionCostValue acv = 0;
 
@@ -67,6 +68,21 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, ActionManager 
       }
       else
       {
+        uint quantity = item_to_sac->get_quantity();
+
+        // Item disappears.
+        CurrentCreatureAbilities cca;
+        string message = SacrificeTextKeys::get_sacrifice_message(feature->get_alignment_range(), 
+                                                                  item_to_sac, 
+                                                                  !cca.can_see(creature));
+        manager.add_new_message(message);
+        manager.send();
+
+        // Deity accepts the sacrifice, altar is converted, etc.
+        // ...
+
+        // Now that it's been dealt with, remove it from the inventory.
+        creature->get_inventory()->remove(item_to_sac->get_id());
       }
     }
   }
