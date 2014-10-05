@@ -41,6 +41,8 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
   string level         = get_display_level(creature);
   string defence       = get_display_defence(creature);
 
+  pair<string, Colour> alignment = get_display_alignment(creature);
+
   string hit_points    = get_display_hit_points(creature);
   string arcana_points = get_display_arcana_points(creature);
   
@@ -64,6 +66,7 @@ DisplayStatistics CreatureTranslator::create_display_statistics(const CreaturePt
                                  speed,
                                  level,
                                  defence,
+                                 alignment,
                                  hit_points,
                                  arcana_points,
                                  map_depth,
@@ -157,6 +160,15 @@ string CreatureTranslator::get_display_defence(const CreaturePtr& c)
 
   string defence = evade_text + "/" + soak_text + ": " + evade_value + "/" + soak_value;
   return defence;
+}
+
+pair<string, Colour> CreatureTranslator::get_display_alignment(const CreaturePtr& creature)
+{
+  pair<string, Colour> align = make_pair("?", COLOUR_WHITE); // FIXME
+
+  // ...
+
+  return align;
 }
 
 string CreatureTranslator::get_display_hit_points(const CreaturePtr& c)

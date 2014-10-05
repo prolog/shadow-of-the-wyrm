@@ -5,7 +5,7 @@
 using namespace std;
 
 RegularStatue::RegularStatue()
-: Feature(MATERIAL_TYPE_STONE)
+: Feature(MATERIAL_TYPE_STONE, ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 

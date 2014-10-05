@@ -26,7 +26,6 @@ class Altar : public Feature
         
   protected:
     std::string deity_id;
-    AlignmentRange alignment_range;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

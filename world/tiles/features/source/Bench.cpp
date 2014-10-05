@@ -2,7 +2,7 @@
 #include "FeatureDescriptionTextKeys.hpp"
 
 Bench::Bench()
-: Feature(MATERIAL_TYPE_IRON)
+: Feature(MATERIAL_TYPE_IRON, ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 

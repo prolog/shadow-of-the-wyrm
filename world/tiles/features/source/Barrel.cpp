@@ -6,7 +6,7 @@
 using namespace std;
 
 Barrel::Barrel()
-: Feature(MATERIAL_TYPE_WOOD), tap(false)
+: Feature(MATERIAL_TYPE_WOOD, ALIGNMENT_RANGE_NEUTRAL), tap(false)
 {
 }
 

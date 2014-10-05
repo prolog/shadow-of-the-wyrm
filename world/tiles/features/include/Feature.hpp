@@ -19,7 +19,7 @@ class Creature;
 class Feature : public ISerializable
 {
   public:
-    Feature(const MaterialType new_material);
+    Feature(const MaterialType new_material, const AlignmentRange new_alignment_range);
     Feature(const Feature& feature);
     Feature& operator=(const Feature& feature);
 
@@ -64,6 +64,8 @@ class Feature : public ISerializable
     virtual std::string get_handle_message_sid() const;
 
     virtual float get_piety_loss_multiplier() const;
+
+    void set_alignment_range(const AlignmentRange new_alignment_range);
     virtual AlignmentRange get_alignment_range() const;
 
     virtual bool serialize(std::ostream& stream) const override;
@@ -75,6 +77,7 @@ class Feature : public ISerializable
     TrapPtr trap;
     LockPtr lock;
     MaterialType material;
+    AlignmentRange alignment_range;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

@@ -4,7 +4,7 @@
 using namespace std;
 
 Altar::Altar(const std::string& new_deity_id, const MaterialType new_material, const AlignmentRange new_alignment_range)
-: Feature(new_material), deity_id(new_deity_id), alignment_range(new_alignment_range)
+: Feature(new_material, new_alignment_range), deity_id(new_deity_id)
 {
 }
 
@@ -52,7 +52,6 @@ bool Altar::serialize(ostream& stream) const
 {
   Feature::serialize(stream);
   Serialize::write_string(stream, deity_id);
-  Serialize::write_enum(stream, alignment_range);
 
   return true;
 }
@@ -61,7 +60,6 @@ bool Altar::deserialize(istream& stream)
 {
   Feature::deserialize(stream);
   Serialize::read_string(stream, deity_id);
-  Serialize::read_enum(stream, alignment_range);
 
   return true;
 }

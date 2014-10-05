@@ -19,6 +19,7 @@ class DisplayStatistics
                                     const std::string& speed,
                                     const std::string& level,
                                     const std::string& defence,
+                                    const std::pair<std::string, Colour>& alignment,
                                     const std::string& hit_points,
                                     const std::string& arcana_points,
                                     const std::string& map_depth,
@@ -39,6 +40,9 @@ class DisplayStatistics
     std::string get_speed() const;
     std::string get_level() const;
     std::string get_defence() const;
+
+    std::pair<std::string, Colour> get_alignment() const;
+
     std::string get_hit_points() const;
     std::string get_arcana_points() const;
 
@@ -65,6 +69,8 @@ class DisplayStatistics
     void set_level(const std::string& new_level);
     void set_defence(const std::string& new_defense);
 
+    void set_alignment(const std::pair<std::string, Colour>& new_alignment);
+
     void set_hit_points(const std::string& new_hit_points);
     void set_arcana_points(const std::string& new_arcana_points);
 
@@ -86,6 +92,8 @@ class DisplayStatistics
     std::string speed;
     std::string level;
     std::string defence; // Combination of evade and soak statistics
+
+    std::pair<std::string, Colour> alignment;
 
     std::string hit_points;
     std::string arcana_points;
