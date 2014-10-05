@@ -44,3 +44,26 @@ TEST(SL_World_Alignment, alignment_ranges)
 
   EXPECT_EQ(ALIGNMENT_RANGE_GOOD, a.get_alignment_range());
 }
+
+TEST(SL_World_Alignment, serialization_id)
+{
+  Alignment a;
+
+  EXPECT_EQ(CLASS_ID_ALIGNMENT, a.get_class_identifier());
+}
+
+TEST(SL_World_Alignment, saveload)
+{
+  Alignment a, a2;
+  a.set_alignment(1212);
+
+  ostringstream ss;
+
+  a.serialize(ss);
+
+  istringstream iss(ss.str());
+
+  a2.deserialize(iss);
+
+  EXPECT_TRUE(a == a2);
+}

@@ -51,6 +51,10 @@ Savage Lands v0.2.8 "Adda"
   subdirectory are intended to mostly be data structures.  Features,
   for example, shouldn't manipulate tiles - that's the engine's job.
 
+- Creatures didn't have alignments, before.  Deities could be selected
+  based on race, but there was no concept of alignment at the creature-
+  level.  Made Alignment a serializable class and added it to Creature.
+
 - New artifacts: celestial shortsword "Heaven's Blade", battle-armour of
   Aurelion, divine spear "Radiance", alabaster rod "Creator's Might",
   titantic battle axe "Earthcleaver", Shroud of Fate, frost-covered athame
