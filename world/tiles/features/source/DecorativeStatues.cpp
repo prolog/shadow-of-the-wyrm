@@ -5,7 +5,7 @@ using std::string;
 
 // Abstract base decorative statue class.
 DecorativeStatue::DecorativeStatue()
-: Feature(MATERIAL_TYPE_MARBLE)
+: Feature(MATERIAL_TYPE_MARBLE, ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 

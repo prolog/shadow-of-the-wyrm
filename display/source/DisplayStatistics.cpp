@@ -20,6 +20,7 @@ DisplayStatistics DisplayStatistics::create
   const string& new_speed,
   const string& new_level,
   const string& new_defence,
+  const pair<string, Colour>& new_alignment,
   const string& new_hit_points,
   const string& new_arcana_points,
   const string& new_map_depth,
@@ -40,6 +41,7 @@ DisplayStatistics DisplayStatistics::create
   ds.set_speed(new_speed);
   ds.set_level(new_level);
   ds.set_defence(new_defence);
+  ds.set_alignment(new_alignment);
   ds.set_hit_points(new_hit_points);
   ds.set_arcana_points(new_arcana_points);
   ds.set_map_depth(new_map_depth);
@@ -163,9 +165,19 @@ void DisplayStatistics::set_defence(const string& new_defence)
   defence = new_defence;
 }
 
+void DisplayStatistics::set_alignment(const pair<string, Colour>& new_alignment)
+{
+  alignment = new_alignment;
+}
+
 string DisplayStatistics::get_defence() const
 {
   return defence;
+}
+
+pair<string, Colour> DisplayStatistics::get_alignment() const
+{
+  return alignment;
 }
 
 void DisplayStatistics::set_hit_points(const string& new_hit_points)

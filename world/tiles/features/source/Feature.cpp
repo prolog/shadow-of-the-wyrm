@@ -7,8 +7,8 @@ using namespace std;
 
 // JCD FIXME NEED COPY CONSTRUCTOR FOR TRAP/LOCK PTR WHEN THIS IS COMPLETED
 
-Feature::Feature(const MaterialType new_material)
-: material(new_material)
+Feature::Feature(const MaterialType new_material, const AlignmentRange new_alignment_range)
+: material(new_material), alignment_range(new_alignment_range)
 {
 }
 
@@ -160,7 +160,11 @@ float Feature::get_piety_loss_multiplier() const
   return 1.0f;
 }
 
-// Most features don't have an alignment, and are considered neutral.
+void Feature::set_alignment_range(const AlignmentRange new_alignment_range)
+{
+  alignment_range = new_alignment_range;
+}
+
 AlignmentRange Feature::get_alignment_range() const
 {
   return ALIGNMENT_RANGE_NEUTRAL;
@@ -189,6 +193,7 @@ bool Feature::serialize(ostream& stream) const
   }
 
   Serialize::write_enum(stream, material);
+  Serialize::write_enum(stream, alignment_range);
 
   return true;
 }
@@ -214,6 +219,7 @@ bool Feature::deserialize(istream& stream)
   }
 
   Serialize::read_enum(stream, material);
+  Serialize::read_enum(stream, alignment_range);
 
   return true;
 }

@@ -6,12 +6,12 @@ using namespace std;
 
 // This constructor is only used by the serialization code
 Entrance::Entrance()
-: Feature(MATERIAL_TYPE_WOOD)
+: Feature(MATERIAL_TYPE_WOOD, ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 
 Entrance::Entrance(LockPtr new_lock, const EntranceState& new_state)
-: Feature(MATERIAL_TYPE_WOOD), state(new_state)
+: Feature(MATERIAL_TYPE_WOOD, ALIGNMENT_RANGE_NEUTRAL), state(new_state)
 {
   set_lock(new_lock);
 }

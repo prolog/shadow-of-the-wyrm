@@ -79,7 +79,7 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr fea
         manager.send();
 
         // Deity accepts the sacrifice, altar is converted, etc.
-        // ...
+        handle_sacrifice(creature, feature, item_to_sac);
 
         // Now that it's been dealt with, remove it from the inventory.
         creature->get_inventory()->remove(item_to_sac->get_id());
@@ -88,6 +88,23 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr fea
   }
 
   return acv;
+}
+
+// - If the altar is co-aligned (same status as creature), sacrifice to that
+//   creature's deity.
+//
+// - If the altar is cross-aligned (different status as creature), there is
+//   a chance, based on the value of the item, to either:
+//
+//   - Move the creature's alignment towards the altar.
+//
+//   - Convert the altar to the creature's alignment.
+void OfferAction::handle_sacrifice(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+{
+  if (creature && feature && item)
+  {
+    
+  }
 }
 
 void OfferAction::add_no_altar_message(CreaturePtr creature)

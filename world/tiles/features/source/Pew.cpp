@@ -5,7 +5,7 @@
 using std::string;
 
 Pew::Pew()
-: Feature(MATERIAL_TYPE_WOOD)
+: Feature(MATERIAL_TYPE_WOOD, ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 

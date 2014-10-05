@@ -31,6 +31,7 @@ class CreatureTranslator
     static std::string get_display_speed(const CreaturePtr& c);
     static std::string get_display_level(const CreaturePtr& c);
     static std::string get_display_defence(const CreaturePtr& c);
+    static std::pair<std::string, Colour> get_display_alignment(const CreaturePtr& c);
 
     static std::string get_display_hit_points(const CreaturePtr& c);
     static std::string get_display_arcana_points(const CreaturePtr& c);
