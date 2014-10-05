@@ -1,4 +1,7 @@
 #include "Alignment.hpp"
+#include "Serialize.hpp"
+
+using namespace std;
 
 // Static const members.  These define the maximum range for an alignment,
 // as well as the ranges for the various good/neutral/evil types.
@@ -20,6 +23,15 @@ Alignment::Alignment()
 Alignment::Alignment(const int new_alignment)
 : alignment(new_alignment)
 {
+}
+
+bool Alignment::operator==(const Alignment& a) const
+{
+  bool result = true;
+
+  result = result && alignment == a.alignment;
+
+  return result;
 }
 
 // Set/get the alignment
@@ -61,6 +73,25 @@ AlignmentRange Alignment::get_alignment_range() const
   }
 
   return align_range;
+}
+
+bool Alignment::serialize(ostream& stream) const
+{
+  Serialize::write_int(stream, alignment);
+
+  return true;
+}
+
+bool Alignment::deserialize(istream& stream)
+{
+  Serialize::read_int(stream, alignment);
+
+  return true;
+}
+
+ClassIdentifier Alignment::internal_class_identifier() const
+{
+  return CLASS_ID_ALIGNMENT;
 }
 
 #ifdef UNIT_TESTS
