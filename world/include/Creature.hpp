@@ -1,6 +1,7 @@
 #pragma once
 #include <string>
 #include <memory>
+#include "Alignment.hpp"
 #include "AutomaticMovement.hpp"
 #include "Blood.hpp"
 #include "BoolStatistic.hpp"
@@ -102,6 +103,10 @@ class Creature : public ISerializable
     void increment_grams_unabsorbed_alcohol(const float additional_grams_unabsorbed_alcohol);
     void set_grams_unabsorbed_alcohol(const float new_grams_unabsorbed_alcohol);
     float get_grams_unabsorbed_alcohol() const;
+
+    void set_alignment(const Alignment& new_alignment);
+    Alignment get_alignment() const;
+    Alignment& get_alignment_ref();
 
     // Set/Get race and class identifiers
     void set_race_id(const std::string& new_race_id);
@@ -310,6 +315,7 @@ class Creature : public ISerializable
     BreatheType breathes;
     Blood blood;
     float grams_unabsorbed_alcohol;
+    Alignment alignment;
 
     std::string short_description_sid;
     std::string description_sid;

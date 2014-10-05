@@ -63,6 +63,7 @@ Creature::Creature(const Creature& cr)
   breathes = cr.breathes;
   blood = cr.blood;
   grams_unabsorbed_alcohol = cr.grams_unabsorbed_alcohol;
+  alignment = cr.alignment;
   short_description_sid = cr.short_description_sid;
   description_sid = cr.description_sid;
   text_details_sid = cr.text_details_sid;
@@ -146,6 +147,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (breathes == cr.breathes);
   result = result && (blood == cr.blood);
   result = result && (grams_unabsorbed_alcohol == cr.grams_unabsorbed_alcohol);
+  result = result && (alignment == cr.alignment);
   result = result && (short_description_sid == cr.short_description_sid);
   result = result && (description_sid == cr.description_sid);
   result = result && (text_details_sid == cr.text_details_sid);
@@ -407,6 +409,21 @@ void Creature::set_grams_unabsorbed_alcohol(const float new_grams_unabsorbed_alc
 float Creature::get_grams_unabsorbed_alcohol() const
 {
   return grams_unabsorbed_alcohol;
+}
+
+void Creature::set_alignment(const Alignment& new_alignment)
+{
+  alignment = new_alignment;
+}
+
+Alignment Creature::get_alignment() const
+{
+  return alignment;
+}
+
+Alignment& Creature::get_alignment_ref()
+{
+  return alignment;
 }
 
 void Creature::set_race_id(const string& new_race_id)
@@ -1053,7 +1070,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 896, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 904, "Unexpected sizeof Creature.");
     #else
     // Release
     static_assert(sizeof(*this) == 800, "Unexpected sizeof Creature.");
@@ -1079,6 +1096,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->breathes, cr.breathes);
   std::swap(this->blood, cr.blood);
   std::swap(this->grams_unabsorbed_alcohol, cr.grams_unabsorbed_alcohol);
+  std::swap(this->alignment, cr.alignment);
   std::swap(this->short_description_sid, cr.short_description_sid);
   std::swap(this->description_sid, cr.description_sid);
   std::swap(this->text_details_sid, cr.text_details_sid);
@@ -1142,6 +1160,7 @@ bool Creature::serialize(ostream& stream) const
   Serialize::write_enum(stream, breathes);
   blood.serialize(stream);
   Serialize::write_float(stream, grams_unabsorbed_alcohol);
+  alignment.serialize(stream);
 
   Serialize::write_string(stream, short_description_sid);
   Serialize::write_string(stream, description_sid);
@@ -1272,6 +1291,7 @@ bool Creature::deserialize(istream& stream)
   Serialize::read_enum(stream, breathes);
   blood.deserialize(stream);
   Serialize::read_float(stream, grams_unabsorbed_alcohol);
+  alignment.deserialize(stream);
 
   Serialize::read_string(stream, short_description_sid);
   Serialize::read_string(stream, description_sid);
