@@ -2,9 +2,11 @@
 
 TEST(SL_World_Alignment, default_for_range)
 {
-  EXPECT_EQ(0, Alignment::get_default_alignment_for_range(ALIGNMENT_RANGE_NEUTRAL));
-  EXPECT_EQ(-1600, Alignment::get_default_alignment_for_range(ALIGNMENT_RANGE_EVIL));
-  EXPECT_EQ(1600, Alignment::get_default_alignment_for_range(ALIGNMENT_RANGE_GOOD));
+  Alignment a;
+
+  EXPECT_EQ(0, a.get_default_alignment_for_range(ALIGNMENT_RANGE_NEUTRAL));
+  EXPECT_EQ(-1600, a.get_default_alignment_for_range(ALIGNMENT_RANGE_EVIL));
+  EXPECT_EQ(1600, a.get_default_alignment_for_range(ALIGNMENT_RANGE_GOOD));
 }
 
 TEST(SL_World_Alignment, set_values)

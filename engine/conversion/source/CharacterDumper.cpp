@@ -139,6 +139,12 @@ string CharacterDumper::get_vital_statistics() const
   vl.at(1).replace(30, hair_colour.size(), hair_colour);
   vl.at(1).replace(60, eye_colour.size(), eye_colour);
 
+  // Third Line
+  Alignment a;
+  string alignment = StringTable::get(TextKeys::ALIGNMENT) + ": " + StringTable::get(a.get_abbreviation_sid(creature->get_alignment().get_alignment_range()));
+
+  vl.at(2).replace(0, alignment.size(), alignment);
+
   for (string& s : vl)
   {
     trim_right(s);

@@ -14,8 +14,8 @@ class Alignment : public ISerializable
     int& get_alignment_ref();
 
     AlignmentRange get_alignment_range() const;
-    
-    static int get_default_alignment_for_range(const AlignmentRange range);
+    int get_default_alignment_for_range(const AlignmentRange range);
+    std::string get_abbreviation_sid(const AlignmentRange range) const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;

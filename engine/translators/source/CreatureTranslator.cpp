@@ -164,29 +164,9 @@ string CreatureTranslator::get_display_defence(const CreaturePtr& c)
 
 pair<string, Colour> CreatureTranslator::get_display_alignment(const CreaturePtr& creature)
 {
-  pair<string, Colour> align = make_pair("?", COLOUR_WHITE); // FIXME
-
-  if (creature)
-  {
-    string align_sid;
-
-    switch (creature->get_alignment().get_alignment_range())
-    {
-      case ALIGNMENT_RANGE_EVIL:
-        align_sid = TextKeys::ALIGNMENT_EVIL_ABRV;
-        break;
-      case ALIGNMENT_RANGE_NEUTRAL:
-        align_sid = TextKeys::ALIGNMENT_NEUTRAL_ABRV;
-        break;
-      case ALIGNMENT_RANGE_GOOD:
-        align_sid = TextKeys::ALIGNMENT_GOOD_ABRV;
-        break;
-      default:
-        break;
-    }
-
-    align.first = StringTable::get(align_sid);
-  }
+  AlignmentRange range = creature->get_alignment().get_alignment_range();
+  Alignment a;
+  pair<string, Colour> align = make_pair(StringTable::get(a.get_abbreviation_sid(range)), COLOUR_WHITE);
 
   return align;
 }
