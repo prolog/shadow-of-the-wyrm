@@ -202,7 +202,7 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     creaturep->set_religion(religion);
 
     Alignment alignment;
-    alignment.set_alignment(Alignment::get_default_alignment_for_range(deity->get_alignment_range()));
+    alignment.set_alignment(alignment.get_default_alignment_for_range(deity->get_alignment_range()));
     creaturep->set_alignment(alignment);
   }
 

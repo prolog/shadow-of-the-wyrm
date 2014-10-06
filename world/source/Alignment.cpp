@@ -1,5 +1,6 @@
 #include "Alignment.hpp"
 #include "Serialize.hpp"
+#include "TextKeys.hpp"
 
 using namespace std;
 
@@ -95,6 +96,28 @@ int Alignment::get_default_alignment_for_range(const AlignmentRange range)
   }
 
   return align;
+}
+
+string Alignment::get_abbreviation_sid(const AlignmentRange range) const
+{
+  string abrv_sid;
+
+  switch (range)
+  {
+    case ALIGNMENT_RANGE_EVIL:
+      abrv_sid = TextKeys::ALIGNMENT_EVIL_ABRV;
+      break;
+    case ALIGNMENT_RANGE_NEUTRAL:
+      abrv_sid = TextKeys::ALIGNMENT_NEUTRAL_ABRV;
+      break;
+    case ALIGNMENT_RANGE_GOOD:
+      abrv_sid = TextKeys::ALIGNMENT_GOOD_ABRV;
+      break;
+    default:
+      break;
+  }
+
+  return abrv_sid;
 }
 
 bool Alignment::serialize(ostream& stream) const
