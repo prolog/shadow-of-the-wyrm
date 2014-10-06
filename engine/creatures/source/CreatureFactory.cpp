@@ -196,10 +196,14 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Skills
     set_initial_skills(creaturep, race, char_class);
       
-    // Religion
+    // Religion & Alignment
     Religion religion = ReligionFactory::create_religion(deities);
     religion.set_active_deity_id(deity_id);
     creaturep->set_religion(religion);
+
+    Alignment alignment;
+    alignment.set_alignment(Alignment::get_default_alignment_for_range(deity->get_alignment_range()));
+    creaturep->set_alignment(alignment);
   }
 
   // Now that everything has been set, set any calculated values.
