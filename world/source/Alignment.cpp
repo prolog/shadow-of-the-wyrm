@@ -75,6 +75,28 @@ AlignmentRange Alignment::get_alignment_range() const
   return align_range;
 }
 
+int Alignment::get_default_alignment_for_range(const AlignmentRange range)
+{
+  int align = 0;
+    
+  switch (range)
+  {
+    case ALIGNMENT_RANGE_EVIL:
+      align = -1600;
+      break;
+    case ALIGNMENT_RANGE_NEUTRAL:
+      align = 0;
+      break;
+    case ALIGNMENT_RANGE_GOOD:
+      align = 1600;
+      break;
+    default:
+      break;
+  }
+
+  return align;
+}
+
 bool Alignment::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, alignment);

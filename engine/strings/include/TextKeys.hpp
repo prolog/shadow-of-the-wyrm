@@ -102,6 +102,10 @@ class TextKeys
     static const std::string SOAK;
     static const std::string SOAK_ABRV;
 
+    static const std::string ALIGNMENT_GOOD_ABRV;
+    static const std::string ALIGNMENT_EVIL_ABRV;
+    static const std::string ALIGNMENT_NEUTRAL_ABRV;
+
     static const std::string LEVEL;
     static const std::string LEVEL_ABRV;
     
