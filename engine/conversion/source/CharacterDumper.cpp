@@ -141,7 +141,7 @@ string CharacterDumper::get_vital_statistics() const
 
   // Third Line
   Alignment a;
-  string alignment = StringTable::get(TextKeys::ALIGNMENT) + ": " + StringTable::get(a.get_abbreviation_sid(creature->get_alignment().get_alignment_range()));
+  string alignment = StringTable::get(TextKeys::ALIGNMENT) + ": " + StringTable::get(a.get_alignment_sid(creature->get_alignment().get_alignment_range()));
 
   vl.at(2).replace(0, alignment.size(), alignment);
 
