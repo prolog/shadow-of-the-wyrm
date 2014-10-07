@@ -98,6 +98,28 @@ int Alignment::get_default_alignment_for_range(const AlignmentRange range)
   return align;
 }
 
+string Alignment::get_alignment_sid(const AlignmentRange range) const
+{
+  string align_sid;
+
+  switch (range)
+  {
+    case ALIGNMENT_RANGE_EVIL:
+      align_sid = TextKeys::ALIGNMENT_EVIL;
+      break;
+    case ALIGNMENT_RANGE_GOOD:
+      align_sid = TextKeys::ALIGNMENT_GOOD;
+      break;
+    case ALIGNMENT_RANGE_NEUTRAL:
+      align_sid = TextKeys::ALIGNMENT_NEUTRAL;
+      break;
+    default:
+      break;
+  }
+
+  return align_sid;
+}
+
 string Alignment::get_abbreviation_sid(const AlignmentRange range) const
 {
   string abrv_sid;

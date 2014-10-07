@@ -54,6 +54,8 @@ Savage Lands v0.2.8 "Adda"
 - Creatures didn't have alignments, before.  Deities could be selected
   based on race, but there was no concept of alignment at the creature-
   level.  Made Alignment a serializable class and added it to Creature.
+  Creatures now get their alignment set based on the deity's range,
+  and alignment is included in character dumps.
 
 - New artifacts: celestial shortsword "Heaven's Blade", battle-armour of
   Aurelion, divine spear "Radiance", alabaster rod "Creator's Might",

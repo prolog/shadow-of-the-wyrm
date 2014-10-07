@@ -107,8 +107,11 @@ const string TextKeys::SOAK              = "SOAK";
 const string TextKeys::SOAK_ABRV         = "SOAK_ABRV";
 
 const string TextKeys::ALIGNMENT         = "ALIGNMENT";
+const string TextKeys::ALIGNMENT_GOOD    = "ALIGNMENT_GOOD";
 const string TextKeys::ALIGNMENT_GOOD_ABRV = "ALIGNMENT_GOOD_ABRV";
+const string TextKeys::ALIGNMENT_EVIL    = "ALIGNMENT_EVIL";
 const string TextKeys::ALIGNMENT_EVIL_ABRV = "ALIGNMENT_EVIL_ABRV";
+const string TextKeys::ALIGNMENT_NEUTRAL = "ALIGNMENT_NEUTRAL";
 const string TextKeys::ALIGNMENT_NEUTRAL_ABRV = "ALIGNMENT_NEUTRAL_ABRV";
 
 const string TextKeys::LEVEL             = "LEVEL";
