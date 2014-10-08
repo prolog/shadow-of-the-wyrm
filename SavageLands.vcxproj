@@ -227,6 +227,7 @@
     <ClInclude Include="engine\calculators\include\IPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ISkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreConstants.hpp" />
     <ClInclude Include="engine\calculators\include\StatusEffectCalculator.hpp" />
@@ -1081,6 +1082,7 @@
     <ClCompile Include="engine\calculators\source\IHitTypeFactory.cpp" />
     <ClCompile Include="engine\calculators\source\IncorporealCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\IPhysicalAttackSpeedCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ItemPietyCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\LightMeleeAndRangedWeaponToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MagicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MagicalCombatSkillMarker.cpp" />

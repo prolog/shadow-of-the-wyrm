@@ -3,6 +3,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemPietyCalculator.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "SacrificeTextKeys.hpp"
@@ -103,7 +104,41 @@ void OfferAction::handle_sacrifice(CreaturePtr creature, FeaturePtr feature, Ite
 {
   if (creature && feature && item)
   {
-    
+    AlignmentRange creature_alignment = creature->get_alignment().get_alignment_range();
+    AlignmentRange altar_alignment = feature->get_alignment_range();
+
+    if (creature_alignment == altar_alignment)
+    {
+      sacrifice_on_own_altar(creature, feature, item);
+    }
+    else
+    {
+      sacrifice_on_other_altar(creature, feature, item);
+    }
+  }
+}
+
+// Sacrifice on an altar of the creature's own alignment.  This is the simplest
+// case: the sacrifice is offered to the creature's own deity.
+void OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+{
+  if (creature && item)
+  {
+    ItemPietyCalculator ipc;
+
+    ipc.calculate_piety(item);
+  }
+}
+
+// Sacrifice on a cross-aligned altar.  This has a chance to:
+// - convert the altar
+// - draw the creature's alignment closer to the alignment of the altar,
+//   converting the creature to a random deity of that range if the creature's
+//   alignment crosses over.
+void OfferAction::sacrifice_on_other_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+{
+  if (creature && item)
+  {
   }
 }
 
