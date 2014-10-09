@@ -1,5 +1,6 @@
 #include "OfferAction.hpp"
 #include "ActionManager.hpp"
+#include "ActionTextKeys.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
@@ -80,7 +81,14 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr fea
         manager.send();
 
         // Deity accepts the sacrifice, altar is converted, etc.
-        handle_sacrifice(creature, feature, item_to_sac);
+        bool item_accepted = handle_sacrifice(creature, feature, item_to_sac);
+
+        if (!item_accepted)
+        {
+          // Nothing happened.  Add a message.
+          manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_NOTHING_HAPPENS));
+          manager.send();
+        }
 
         // Now that it's been dealt with, remove it from the inventory.
         creature->get_inventory()->remove(item_to_sac->get_id());
@@ -100,7 +108,7 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr fea
 //   - Move the creature's alignment towards the altar.
 //
 //   - Convert the altar to the creature's alignment.
-void OfferAction::handle_sacrifice(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+bool OfferAction::handle_sacrifice(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
 {
   if (creature && feature && item)
   {
@@ -109,25 +117,36 @@ void OfferAction::handle_sacrifice(CreaturePtr creature, FeaturePtr feature, Ite
 
     if (creature_alignment == altar_alignment)
     {
-      sacrifice_on_own_altar(creature, feature, item);
+      return sacrifice_on_own_altar(creature, feature, item);
     }
     else
     {
-      sacrifice_on_other_altar(creature, feature, item);
+      return sacrifice_on_other_altar(creature, feature, item);
     }
   }
+
+  return false;
 }
 
 // Sacrifice on an altar of the creature's own alignment.  This is the simplest
 // case: the sacrifice is offered to the creature's own deity.
-void OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+bool OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
 {
+  bool result = false;
+
   if (creature && item)
   {
     ItemPietyCalculator ipc;
 
-    ipc.calculate_piety(item);
+    int piety = ipc.calculate_piety(item);
+
+    if (piety > 0)
+    {
+      result = true;
+    }
   }
+
+  return result;
 }
 
 // Sacrifice on a cross-aligned altar.  This has a chance to:
@@ -135,11 +154,17 @@ void OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr featur
 // - draw the creature's alignment closer to the alignment of the altar,
 //   converting the creature to a random deity of that range if the creature's
 //   alignment crosses over.
-void OfferAction::sacrifice_on_other_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+bool OfferAction::sacrifice_on_other_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
 {
+  bool result = false;
+
   if (creature && item)
   {
+    // ...
+    result = true;
   }
+
+  return result;
 }
 
 void OfferAction::add_no_altar_message(CreaturePtr creature)
