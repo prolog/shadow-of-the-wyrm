@@ -12,5 +12,9 @@ class ItemPietyCalculator
     // The minimum piety required before calculate_piety will return a non-zero
     // value.  Deities don't like pitiful offerings.
     static const int MINIMUM_PIETY;
+
+    // The base divisor to arrive at piety - used for most items (all but
+    // corpses, which deities especially like).
+    static const int BASE_DIVISOR;
 };
 
