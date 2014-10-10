@@ -1,6 +1,6 @@
 #include "ItemPietyCalculator.hpp"
 
-const int ItemPietyCalculator::MINIMUM_PIETY = 100;
+const int ItemPietyCalculator::MINIMUM_PIETY = 50;
 
 // Calculate the piety granted for the sacrifice of a particular item.
 // - If the item's piety is less than the minimum piety, a piety of 0
@@ -25,4 +25,6 @@ int ItemPietyCalculator::calculate_piety(ItemPtr item)
   return piety;
 }
 
-// TODO: Unit tests!
+#ifdef UNIT_TESTS
+#include "unit_tests/ItemPietyCalculator_test.cpp"
+#endif
