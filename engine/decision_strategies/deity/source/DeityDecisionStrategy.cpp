@@ -6,6 +6,7 @@
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "DoNothingDeityDecisionStrategyHandler.hpp"
 #include "RestoreStatusDeityDecisionStrategyHandler.hpp"
+#include "SacrificeDeityDecisionStrategyHandler.hpp"
 #include "SatiateDeityDecisionStrategyHandler.hpp"
 
 DeityDecisionStrategy::DeityDecisionStrategy()
@@ -50,4 +51,11 @@ DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr 
   }
 
   return do_nothing;
+}
+
+DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item)
+{
+  DeityDecisionStrategyHandlerPtr sacrifice = std::make_shared<SacrificeDeityDecisionStrategyHandler>(item);
+
+  return sacrifice;
 }

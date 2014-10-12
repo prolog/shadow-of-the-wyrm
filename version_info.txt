@@ -64,7 +64,7 @@ Savage Lands v0.2.8 "Adda"
 
 - New items: athame.
 
-- New creatures: seagull.
+- New creatures: seagull, dryad.
 
 - Bug fixes: eating food off the ground wasn't removing the item from the
   tile's inventory after eating.  Unarmed attacks weren't adding the
