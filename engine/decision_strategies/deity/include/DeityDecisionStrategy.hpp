@@ -9,7 +9,9 @@ class DeityDecisionStrategy : public IDeityDecisionStrategy
 {
   public:
     DeityDecisionStrategy();
+    
     DeityDecisionStrategyHandlerPtr get_decision(CreaturePtr creature) override;
+    DeityDecisionStrategyHandlerPtr get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item) override;
 
   protected:
     // Should be initialized differently by deity.

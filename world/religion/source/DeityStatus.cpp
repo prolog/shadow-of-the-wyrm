@@ -48,19 +48,9 @@ void DeityStatus::increment_piety(const int inc_amount)
   }
 }
 
-// Decrement piety, guarding against ADOMish overflow.
 void DeityStatus::decrement_piety(const int dec_amount)
 {
-  long new_piety = piety - dec_amount;
-
-  if (new_piety >= numeric_limits<int>::min())
-  {
-    piety = new_piety;
-  }
-  else
-  {
-    piety = numeric_limits<int>::min();
-  }
+  piety = piety - dec_amount;
 }
 
 // Set/get whether the creature is a champion of the deity, and has been crowned.

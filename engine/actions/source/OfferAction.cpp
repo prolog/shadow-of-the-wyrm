@@ -1,12 +1,15 @@
 #include "OfferAction.hpp"
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "ClassManager.hpp"
 #include "CurrentCreatureAbilities.hpp"
+#include "DeityDecisionStrategyFactory.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemPietyCalculator.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ReligionManager.hpp"
 #include "SacrificeTextKeys.hpp"
 
 using namespace std;
@@ -70,8 +73,6 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr fea
       }
       else
       {
-        uint quantity = item_to_sac->get_quantity();
-
         // Item disappears.
         CurrentCreatureAbilities cca;
         string message = SacrificeTextKeys::get_sacrifice_message(feature->get_alignment_range(), 
@@ -138,12 +139,23 @@ bool OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr featur
   {
     ItemPietyCalculator ipc;
 
-    int piety = ipc.calculate_piety(item);
+    Game& game = Game::instance();
+    TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
 
+    // Does anything happen as a result?
+    IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy();
+    DeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision_for_sacrifice(creature, item);
+
+    DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
+
+    int piety = adjust_creature_piety(creature, decision_implications);
+    
     if (piety > 0)
     {
       result = true;
     }
+
+    result = true;
   }
 
   return result;
@@ -165,6 +177,34 @@ bool OfferAction::sacrifice_on_other_altar(CreaturePtr creature, FeaturePtr feat
   }
 
   return result;
+}
+
+// Alter the creature's piety as a result of the sacrifice.
+int OfferAction::adjust_creature_piety(CreaturePtr creature, const DeityDecisionImplications& decision_implications)
+{
+  // Negative piety loss = piety gain.
+  int piety_gain = decision_implications.get_piety_loss();
+
+  // Get the deity and the creature's status with that deity.
+  ReligionManager rm;
+  ClassManager cm;
+
+  Religion& religion = creature->get_religion_ref();
+  string deity_id = religion.get_active_deity_id();
+  DeityPtr creature_deity = rm.get_deity(deity_id);
+  DeityStatus status = religion.get_deity_status(deity_id);
+
+  ClassPtr cur_class = cm.get_class(creature->get_class_id());
+
+  status.decrement_piety(piety_gain);
+  religion.set_deity_status(deity_id, status);
+
+  if (creature->get_is_player())
+  {
+    // TODO: Add a message about the player's new piety...
+  }
+  
+  return piety_gain;
 }
 
 void OfferAction::add_no_altar_message(CreaturePtr creature)
