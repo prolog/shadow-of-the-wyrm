@@ -22,6 +22,11 @@ int DeityDecisionImplications::get_piety_loss() const
   return piety_loss;
 }
 
+int DeityDecisionImplications::get_piety_gain() const
+{
+  return (piety_loss * -1);
+}
+
 void DeityDecisionImplications::set_message_sid(const string& new_message_sid)
 {
   message_sid = new_message_sid;

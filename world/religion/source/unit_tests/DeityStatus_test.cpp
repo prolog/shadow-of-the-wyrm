@@ -1,5 +1,27 @@
 #include "gtest/gtest.h"
 
+TEST(SL_World_Religion_DeityStatus, decrement_piety)
+{
+  DeityStatus ds;
+
+  EXPECT_EQ(100, ds.get_piety());
+
+  ds.increment_piety(100);
+
+  EXPECT_EQ(200, ds.get_piety());
+
+  ds.decrement_piety(200);
+
+  EXPECT_EQ(0, ds.get_piety());
+
+  ds.decrement_piety(9000);
+
+  EXPECT_EQ(-7000, ds.get_piety());
+
+  ds.increment_piety(1000000);
+
+  EXPECT_EQ(25000, ds.get_piety());
+}
 TEST(SL_World_Religion_DeityStatus, serialization_id)
 {
   DeityStatus ds;
