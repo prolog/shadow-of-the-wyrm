@@ -1,5 +1,6 @@
 #include <boost/assert.hpp>
 #include "ItemDescriberFactory.hpp"
+#include "ReligionConstants.hpp"
 #include "SacrificeTextKeys.hpp"
 #include "StringTable.hpp"
 
@@ -36,6 +37,43 @@ string SacrificeTextKeys::get_sacrifice_message(const AlignmentRange align, Item
 
   return message;
 }
+
+// Get the piety indicator message that is returned when a creature sacrifices
+// an item.
+string SacrificeTextKeys::get_piety_message(const int piety)
+{
+  string message = SACRIFICE_MESSAGE_DISLIKED;
+
+  if (piety > ReligionConstants::PIETY_CROWNING)
+  {
+    message = SACRIFICE_MESSAGE_CROWNING;
+  }
+  else if (piety > ReligionConstants::PIETY_TIER_4)
+  {
+    message = SACRIFICE_MESSAGE_TIER_4;
+  }
+  else if (piety > ReligionConstants::PIETY_TIER_3)
+  {
+    message = SACRIFICE_MESSAGE_TIER_3;
+  }
+  else if (piety > ReligionConstants::PIETY_TIER_2)
+  {
+    message = SACRIFICE_MESSAGE_TIER_2;
+  }
+  else if (piety > ReligionConstants::PIETY_TIER_1)
+  {
+    message = SACRIFICE_MESSAGE_TIER_1;
+  }
+
+  return StringTable::get(message);
+}
+
+const string SacrificeTextKeys::SACRIFICE_MESSAGE_TIER_1 = "SACRIFICE_MESSAGE_TIER_1";
+const string SacrificeTextKeys::SACRIFICE_MESSAGE_TIER_2 = "SACRIFICE_MESSAGE_TIER_2";
+const string SacrificeTextKeys::SACRIFICE_MESSAGE_TIER_3 = "SACRIFICE_MESSAGE_TIER_3";
+const string SacrificeTextKeys::SACRIFICE_MESSAGE_TIER_4 = "SACRIFICE_MESSAGE_TIER_4";
+const string SacrificeTextKeys::SACRIFICE_MESSAGE_CROWNING = "SACRIFICE_MESSAGE_CROWNING";
+const string SacrificeTextKeys::SACRIFICE_MESSAGE_DISLIKED = "SACRIFICE_MESSAGE_DISLIKED";
 
 const string SacrificeTextKeys::SACRIFICE_MESSAGE_EVIL = "SACRIFICE_MESSAGE_EVIL";
 const string SacrificeTextKeys::SACRIFICE_MESSAGE_GOOD = "SACRIFICE_MESSAGE_GOOD";

@@ -29,6 +29,10 @@ Savage Lands v0.2.8 "Adda"
 - Created a new offer command, used to offer sacrifices to one's deity,
   and mapped it to "O".
 
+  - Piety is increased as creatures make offerings, and a message is
+    shown after sacrifice to give the player a general indication of 
+    their piety.
+
 - Added the kick command, and mapped it to "K".
 
   - Features are kickable.  Kicking a feature generates a message about
