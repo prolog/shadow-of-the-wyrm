@@ -10,6 +10,14 @@ class ReligionConstants
     static const int PIETY_MAX;
     static const int PIETY_MIN;
 
+    // Used by the deities to determine messages when sacrificing, when
+    // a creature is ready for crowning, etc.
+    static const int PIETY_TIER_1;
+    static const int PIETY_TIER_2;
+    static const int PIETY_TIER_3;
+    static const int PIETY_TIER_4;
+    static const int PIETY_CROWNING;
+
   protected:
     ReligionConstants();
     ~ReligionConstants();

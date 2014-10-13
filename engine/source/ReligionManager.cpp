@@ -7,6 +7,24 @@ ReligionManager::ReligionManager()
 {
 }
 
+DeityStatus ReligionManager::get_active_deity_status(CreaturePtr creature)
+{
+  Religion& religion = creature->get_religion_ref();
+  string deity_id = religion.get_active_deity_id();
+  DeityPtr creature_deity = get_deity(deity_id);
+  DeityStatus status = religion.get_deity_status(deity_id);
+
+  return status;
+}
+
+// Get the creature's piety for its active deity.
+int ReligionManager::get_piety_for_active_deity(CreaturePtr creature)
+{
+  DeityStatus status = get_active_deity_status(creature);
+
+  return status.get_piety();
+}
+
 // Get a shared pointer to the deity.
 DeityPtr ReligionManager::get_deity(const string& deity_id) const
 {

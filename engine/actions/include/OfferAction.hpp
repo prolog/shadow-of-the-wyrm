@@ -15,6 +15,8 @@ class OfferAction : public IActionManager
     OfferAction();
     
     void add_no_altar_message(CreaturePtr creature);
+    void add_piety_message_if_player(CreaturePtr creature);
+
     ActionCostValue sacrifice_item(CreaturePtr creature, FeaturePtr feature, ActionManager * const am);
     bool handle_sacrifice(CreaturePtr creature, FeaturePtr feature, ItemPtr item);
     bool sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item);
