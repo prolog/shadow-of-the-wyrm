@@ -137,8 +137,6 @@ bool OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr featur
 
   if (creature && item)
   {
-    ItemPietyCalculator ipc;
-
     Game& game = Game::instance();
     TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
 
@@ -182,8 +180,7 @@ bool OfferAction::sacrifice_on_other_altar(CreaturePtr creature, FeaturePtr feat
 // Alter the creature's piety as a result of the sacrifice.
 int OfferAction::adjust_creature_piety(CreaturePtr creature, const DeityDecisionImplications& decision_implications)
 {
-  // Negative piety loss = piety gain.
-  int piety_gain = decision_implications.get_piety_loss();
+  int piety_gain = decision_implications.get_piety_gain();
 
   // Get the deity and the creature's status with that deity.
   ReligionManager rm;
@@ -196,7 +193,7 @@ int OfferAction::adjust_creature_piety(CreaturePtr creature, const DeityDecision
 
   ClassPtr cur_class = cm.get_class(creature->get_class_id());
 
-  status.decrement_piety(piety_gain);
+  status.increment_piety(piety_gain);
   religion.set_deity_status(deity_id, status);
 
   if (creature->get_is_player())

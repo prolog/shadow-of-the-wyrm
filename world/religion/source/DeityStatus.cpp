@@ -1,5 +1,6 @@
 #include <limits>
 #include "DeityStatus.hpp"
+#include "ReligionConstants.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
@@ -33,24 +34,29 @@ int DeityStatus::get_piety() const
   return piety;
 }
 
-// Increment piety, guarding against ADOMish overflow.
+// Increment piety, guarding against ADOMish overflow
+// by using actual min/max constants.
 void DeityStatus::increment_piety(const int inc_amount)
 {
-  long new_piety = piety + inc_amount;
-  
-  if (new_piety <= numeric_limits<int>::max())
-  {
-    piety = new_piety;
-  }
-  else
-  {
-    piety = numeric_limits<int>::max();
-  }
+  decrement_piety(inc_amount * -1);
 }
 
+// Decrement piety, guarding against ADOMish overflow
+// by using actual min/max constants.
 void DeityStatus::decrement_piety(const int dec_amount)
 {
-  piety = piety - dec_amount;
+  int new_amount = piety - dec_amount;
+
+  if (new_amount < ReligionConstants::PIETY_MIN)
+  {
+    new_amount = ReligionConstants::PIETY_MIN;
+  }
+  else if (new_amount > ReligionConstants::PIETY_MAX)
+  {
+    new_amount = ReligionConstants::PIETY_MAX;
+  }
+
+  piety = new_amount;
 }
 
 // Set/get whether the creature is a champion of the deity, and has been crowned.
