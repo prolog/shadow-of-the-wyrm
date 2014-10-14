@@ -7,11 +7,20 @@ ReligionManager::ReligionManager()
 {
 }
 
-DeityStatus ReligionManager::get_active_deity_status(CreaturePtr creature)
+DeityPtr ReligionManager::get_active_deity(CreaturePtr creature)
 {
   Religion& religion = creature->get_religion_ref();
   string deity_id = religion.get_active_deity_id();
   DeityPtr creature_deity = get_deity(deity_id);
+
+  return creature_deity;
+}
+
+DeityStatus ReligionManager::get_active_deity_status(CreaturePtr creature)
+{
+  Religion& religion = creature->get_religion_ref();
+  string deity_id = religion.get_active_deity_id();
+  DeityPtr creature_deity = get_active_deity(creature);
   DeityStatus status = religion.get_deity_status(deity_id);
 
   return status;

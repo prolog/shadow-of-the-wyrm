@@ -8,7 +8,7 @@
 class DeityDecisionStrategy : public IDeityDecisionStrategy
 {
   public:
-    DeityDecisionStrategy();
+    DeityDecisionStrategy(const std::string& new_deity_id);
     
     DeityDecisionStrategyHandlerPtr get_decision(CreaturePtr creature) override;
     DeityDecisionStrategyHandlerPtr get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item) override;
@@ -18,4 +18,5 @@ class DeityDecisionStrategy : public IDeityDecisionStrategy
     virtual void initialize_decisions();
 
     std::vector<DeityDecisionStrategyHandlerPtr> decisions;
+    std::string deity_id;
 };

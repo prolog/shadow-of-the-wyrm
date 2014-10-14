@@ -23,6 +23,14 @@ Savage Lands v0.2.8 "Adda"
 
   - Sceadugenga: eldritch greatsword "Apocalypse"
 
+- Crowning will now happen after praying when the creature is uncrowned, 
+  and has a piety greater than the minimum required for crowning.  The 
+  deity will give a 10% reduction to all damage (in practical terms, -0.10 
+  to all damage types for the creature's intrinsic resistances), and grant 
+  a crowning gift.  The crowning gift will be either an artifact, or a 
+  pile of money.  The money is only generated if none of the artifacts can 
+  be generated (e.g., if they have already been generated in-game).
+
 - Created two more guaranteed altars - a neutral altar in Wintersea Keep,
   and a chaotic altar in the ruins of Stonewall.
 
@@ -72,7 +80,9 @@ Savage Lands v0.2.8 "Adda"
 
 - Bug fixes: eating food off the ground wasn't removing the item from the
   tile's inventory after eating.  Unarmed attacks weren't adding the
-  appropriate bonuses for the unarmed combat skill.
+  appropriate bonuses for the unarmed combat skill.  The clean_string
+  function would die when the character value for a particular part of
+  a string was out of range - added a fix to default the character to '?'.
 
 Savage Lands v0.2.7 "Glappa"
 - Version declared August 13, 2014.  Version finalized September 13, 2014.

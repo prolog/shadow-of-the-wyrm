@@ -4,12 +4,13 @@
 
 using std::string;
 
-SacrificeDeityDecisionStrategyHandler::SacrificeDeityDecisionStrategyHandler()
+SacrificeDeityDecisionStrategyHandler::SacrificeDeityDecisionStrategyHandler(const string& new_deity_id)
+: DeityDecisionStrategyHandler(new_deity_id)
 {
 }
 
-SacrificeDeityDecisionStrategyHandler::SacrificeDeityDecisionStrategyHandler(ItemPtr sacrificed_item)
-: sac_item(sacrificed_item)
+SacrificeDeityDecisionStrategyHandler::SacrificeDeityDecisionStrategyHandler(const string& new_deity_id, ItemPtr sacrificed_item)
+: DeityDecisionStrategyHandler(new_deity_id), sac_item(sacrificed_item)
 {
 }
 

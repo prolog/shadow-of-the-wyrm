@@ -7,8 +7,8 @@
 
 using namespace std;
 
-RestoreStatusDeityDecisionStrategyHandler::RestoreStatusDeityDecisionStrategyHandler()
-: piety_loss(0)
+RestoreStatusDeityDecisionStrategyHandler::RestoreStatusDeityDecisionStrategyHandler(const string& new_deity_id)
+: DeityDecisionStrategyHandler(new_deity_id), piety_loss(0)
 {
   initialize_watched_statuses();
 }

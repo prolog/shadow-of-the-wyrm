@@ -34,6 +34,7 @@ TEST(SL_World_Religion_DeityStatus, saveload)
   DeityStatus ds1, ds2;
 
   ds1.set_piety(1234);
+  ds1.set_champion_type(CHAMPION_TYPE_FALLEN);
 
   ostringstream ss;
 

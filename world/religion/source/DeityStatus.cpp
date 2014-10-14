@@ -6,7 +6,7 @@
 using namespace std;
 
 DeityStatus::DeityStatus()
-: piety(100), crowned(false)
+: piety(100), champion_type(CHAMPION_TYPE_UNCROWNED)
 {
 }
 
@@ -19,7 +19,7 @@ bool DeityStatus::operator==(const DeityStatus& status) const
   bool result = true;
 
   result = result && (piety == status.piety);
-  result = result && (crowned == status.crowned);
+  result = result && (champion_type == status.champion_type);
 
   return result;
 }
@@ -59,21 +59,21 @@ void DeityStatus::decrement_piety(const int dec_amount)
   piety = new_amount;
 }
 
-// Set/get whether the creature is a champion of the deity, and has been crowned.
-void DeityStatus::set_crowned(const bool new_crowned_status)
+// Set/get whether the creature is a champion of the deity
+void DeityStatus::set_champion_type(const ChampionType new_champion_type)
 {
-  crowned = new_crowned_status;
+  champion_type = new_champion_type;
 }
 
-bool DeityStatus::get_crowned() const
+ChampionType DeityStatus::get_champion_type() const
 {
-  return crowned;
+  return champion_type;
 }
 
 bool DeityStatus::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, piety);
-  Serialize::write_bool(stream, crowned);
+  Serialize::write_enum(stream, champion_type);
 
   return true;
 }
@@ -81,7 +81,7 @@ bool DeityStatus::serialize(ostream& stream) const
 bool DeityStatus::deserialize(istream& stream)
 {
   Serialize::read_int(stream, piety);
-  Serialize::read_bool(stream, crowned);
+  Serialize::read_enum(stream, champion_type);
 
   return true;
 }

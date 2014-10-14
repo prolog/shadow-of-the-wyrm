@@ -1,15 +1,20 @@
 #include "DeityDecisionConstants.hpp"
 #include "DeityDecisionStrategy.hpp"
-
+#include "CrowningDeityDecisionStrategyHandler.hpp"
 #include "FullAPDeityDecisionStrategyHandler.hpp"
 #include "FullHPDeityDecisionStrategyHandler.hpp"
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "DoNothingDeityDecisionStrategyHandler.hpp"
+#include "ReligionConstants.hpp"
+#include "ReligionManager.hpp"
 #include "RestoreStatusDeityDecisionStrategyHandler.hpp"
 #include "SacrificeDeityDecisionStrategyHandler.hpp"
 #include "SatiateDeityDecisionStrategyHandler.hpp"
 
-DeityDecisionStrategy::DeityDecisionStrategy()
+using namespace std;
+
+DeityDecisionStrategy::DeityDecisionStrategy(const string& new_deity_id)
+: deity_id(new_deity_id)
 {
   initialize_decisions();
 }
@@ -18,19 +23,22 @@ void DeityDecisionStrategy::initialize_decisions()
 {
   decisions.clear();
 
-  DeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>();
+  DeityDecisionStrategyHandlerPtr cur_decision = std::make_shared<CrowningDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
-  cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>();
+  cur_decision = std::make_shared<FullHPDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
-  cur_decision = std::make_shared<SatiateDeityDecisionStrategyHandler>();
+  cur_decision = std::make_shared<RestoreStatusDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
-  cur_decision = std::make_shared<FullAPDeityDecisionStrategyHandler>();
+  cur_decision = std::make_shared<SatiateDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 
-  cur_decision = std::make_shared<DislikeDeityDecisionStrategyHandler>();
+  cur_decision = std::make_shared<FullAPDeityDecisionStrategyHandler>(deity_id);
+  decisions.push_back(cur_decision);
+
+  cur_decision = std::make_shared<DislikeDeityDecisionStrategyHandler>(deity_id);
   decisions.push_back(cur_decision);
 }
 
@@ -40,22 +48,23 @@ void DeityDecisionStrategy::initialize_decisions()
 DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision(CreaturePtr creature)
 {
   // The default decision if nothing else is selected.
-  DeityDecisionStrategyHandlerPtr do_nothing = std::make_shared<DoNothingDeityDecisionStrategyHandler>();
+  DeityDecisionStrategyHandlerPtr decision_strategy = std::make_shared<DoNothingDeityDecisionStrategyHandler>(deity_id);
 
   for (DeityDecisionStrategyHandlerPtr decision : decisions)
   {
     if (decision->decide(creature))
     {
-      return decision;
+      decision_strategy = decision;
+      break;
     }
   }
 
-  return do_nothing;
+  return decision_strategy;
 }
 
 DeityDecisionStrategyHandlerPtr DeityDecisionStrategy::get_decision_for_sacrifice(CreaturePtr creature, ItemPtr item)
 {
-  DeityDecisionStrategyHandlerPtr sacrifice = std::make_shared<SacrificeDeityDecisionStrategyHandler>(item);
+  DeityDecisionStrategyHandlerPtr sacrifice = std::make_shared<SacrificeDeityDecisionStrategyHandler>(deity_id, item);
 
   return sacrifice;
 }

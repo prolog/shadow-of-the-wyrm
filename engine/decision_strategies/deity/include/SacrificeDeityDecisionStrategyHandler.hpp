@@ -4,8 +4,8 @@
 class SacrificeDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
 {
   public:
-    SacrificeDeityDecisionStrategyHandler();
-    SacrificeDeityDecisionStrategyHandler(ItemPtr sacrificed_item);
+    SacrificeDeityDecisionStrategyHandler(const std::string& new_deity_id);
+    SacrificeDeityDecisionStrategyHandler(const std::string& new_deity_id, ItemPtr sacrificed_item);
 
     bool decide(CreaturePtr creature) override;
     DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) override;

@@ -3,12 +3,13 @@
 
 using std::string;
 
-DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler()
+DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler(const string& new_deity_id)
+: DeityDecisionStrategyHandler(new_deity_id)
 {
 }
 
 DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler(DeityPtr new_deity)
-: deity(new_deity)
+: DeityDecisionStrategyHandler(new_deity->get_id()), deity(new_deity)
 {
 }
 

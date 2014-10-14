@@ -3,6 +3,12 @@
 
 using std::string;
 
+DoNothingDeityDecisionStrategyHandler::DoNothingDeityDecisionStrategyHandler(const string& new_deity_id)
+: DeityDecisionStrategyHandler(new_deity_id)
+{
+  deity_id = new_deity_id;
+}
+
 bool DoNothingDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   return true;

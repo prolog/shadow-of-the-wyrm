@@ -6,6 +6,8 @@
 class DeityDecisionStrategyHandler
 {
   public:
+    DeityDecisionStrategyHandler(const std::string& deity_id);
+
     // Should this strategy be considered, based on the current state
     // of the creature?
     virtual bool decide(CreaturePtr creature) = 0;
@@ -18,6 +20,8 @@ class DeityDecisionStrategyHandler
     virtual DeityDecisionImplications get_deity_decision_implications(CreaturePtr creature, TilePtr tile) const;
 
     virtual int get_piety_loss() const = 0;
+
+    std::string deity_id;
 };
 
 typedef std::shared_ptr<DeityDecisionStrategyHandler> DeityDecisionStrategyHandlerPtr;
