@@ -4,6 +4,11 @@
 
 using std::string;
 
+FullAPDeityDecisionStrategyHandler::FullAPDeityDecisionStrategyHandler(const string& new_deity_id)
+: DeityDecisionStrategyHandler(new_deity_id)
+{
+}
+
 bool FullAPDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   bool decision = false;

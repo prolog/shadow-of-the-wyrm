@@ -25,8 +25,11 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
     Game& game = Game::instance();
     TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
     
+    ReligionManager rm;
+    DeityPtr deity = rm.get_active_deity(creature);
+    
     // Decide on a course of action.
-    IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy();
+    IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy(deity->get_id());
     DeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision(creature);
     
     // Act on that decision.

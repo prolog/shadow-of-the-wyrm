@@ -141,7 +141,10 @@ bool OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr featur
     TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
 
     // Does anything happen as a result?
-    IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy();
+    ReligionManager rm;
+    DeityPtr deity = rm.get_active_deity(creature);
+
+    IDeityDecisionStrategyPtr deity_decision_strategy = DeityDecisionStrategyFactory::create_deity_decision_strategy(deity->get_id());
     DeityDecisionStrategyHandlerPtr deity_decision_handler = deity_decision_strategy->get_decision_for_sacrifice(creature, item);
 
     DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
@@ -198,11 +201,6 @@ int OfferAction::adjust_creature_piety(CreaturePtr creature, const DeityDecision
   status.increment_piety(piety_gain);
   religion.set_deity_status(deity_id, status);
 
-  if (creature->get_is_player())
-  {
-    // TODO: Add a message about the player's new piety...
-  }
-  
   return piety_gain;
 }
 

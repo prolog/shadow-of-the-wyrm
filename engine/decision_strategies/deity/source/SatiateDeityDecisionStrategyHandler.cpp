@@ -5,6 +5,11 @@
 
 using std::string;
 
+SatiateDeityDecisionStrategyHandler::SatiateDeityDecisionStrategyHandler(const string& new_deity_id)
+: DeityDecisionStrategyHandler(new_deity_id)
+{
+}
+
 bool SatiateDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 {
   bool decision = false;

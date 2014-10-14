@@ -12,6 +12,7 @@ class DeityTextKeys
     static const std::string PRAYER_FULL_AP;
     static const std::string PRAYER_SATIATE;
     static const std::string PRAYER_RESTORE_STATUS;
+    static const std::string PRAYER_CROWNING;
     static const std::string DEITY_ACTION_DISPLEASED;
     
   protected:

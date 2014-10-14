@@ -361,6 +361,7 @@
     <ClInclude Include="engine\creatures\include\StoneStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\StunnedStatusEffect.hpp" />
     <ClInclude Include="engine\creatures\include\WaterSafetyCondition.hpp" />
+    <ClInclude Include="engine\decision_strategies\deity\include\CrowningDeityDecisionStrategyHandler.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionConstants.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionImplications.hpp" />
     <ClInclude Include="engine\decision_strategies\deity\include\DeityDecisionStrategy.hpp" />
@@ -857,6 +858,7 @@
     <ClInclude Include="world\materials\include\Steel.hpp" />
     <ClInclude Include="world\materials\include\Stone.hpp" />
     <ClInclude Include="world\materials\include\Wood.hpp" />
+    <ClInclude Include="world\religion\include\ChampionTypes.hpp" />
     <ClInclude Include="world\religion\include\CreatureActions.hpp" />
     <ClInclude Include="world\religion\include\Deity.hpp" />
     <ClInclude Include="world\religion\include\DeityStatus.hpp" />
@@ -1447,6 +1449,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\creatures\source\WaterSafetyCondition.cpp" />
+    <ClCompile Include="engine\decision_strategies\deity\source\CrowningDeityDecisionStrategyHandler.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionConstants.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionImplications.cpp" />
     <ClCompile Include="engine\decision_strategies\deity\source\DeityDecisionStrategy.cpp" />

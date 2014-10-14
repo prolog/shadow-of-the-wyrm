@@ -4,6 +4,8 @@
 class FullHPDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
 {
   public:
+    FullHPDeityDecisionStrategyHandler(const std::string& new_deity_id);
+
     bool decide(CreaturePtr creature) override;
     DeityDecisionImplications handle_decision(CreaturePtr creature, TilePtr tile) override;
 

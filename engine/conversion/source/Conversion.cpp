@@ -29,7 +29,7 @@ template<class T> string Convert::to_string(const T& convert)
 // A cleaned string should have alphanumeric characters and spaces only - no backspace, no control characters, etc.
 string String::clean(const string& to_clean)
 {
-  string cleaned_string;
+  ostringstream clean;
   
   const char* c_str = to_clean.c_str();
   
@@ -37,13 +37,20 @@ string String::clean(const string& to_clean)
   {
     char c = c_str[i];
     
-    if (isalpha(c) || isdigit(c) || c >= ' ')
+    if (c > -1 && c < 255)
     {
-      cleaned_string = cleaned_string + Char::to_string(c);
+      if (isalpha(c) || isdigit(c) || c >= ' ')
+      {
+        clean << Char::to_string(c);
+      }
+    }
+    else
+    {
+      clean << '?';
     }
   }
   
-  return cleaned_string;
+  return clean.str();
 }
 
 vector<string> String::create_string_vector_from_csv_string(const string& csv_str)

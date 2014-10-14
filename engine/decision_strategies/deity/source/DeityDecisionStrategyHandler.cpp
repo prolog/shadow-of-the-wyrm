@@ -1,5 +1,12 @@
 #include "DeityDecisionStrategyHandler.hpp"
 
+using namespace std;
+
+DeityDecisionStrategyHandler::DeityDecisionStrategyHandler(const string& new_deity_id)
+: deity_id(new_deity_id)
+{
+}
+
 DeityDecisionImplications DeityDecisionStrategyHandler::get_deity_decision_implications(CreaturePtr creature, TilePtr tile) const
 {
   int piety_loss = get_piety_loss();
