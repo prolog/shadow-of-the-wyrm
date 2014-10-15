@@ -21,13 +21,6 @@ class Alignment : public ISerializable
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
-  protected:
-    // This is just an integer rather than a Statistic because there
-    // will be no spells, etc., that affect alignment - only actions
-    // will affect alignment, and these are all permanent, so no
-    // temporary/current values are needed, only the single, actual
-    // value.
-    int alignment;
     static const int ALIGNMENT_MIN;
     static const int ALIGNMENT_MAX;
     static const int EVIL_MIN;
@@ -36,6 +29,14 @@ class Alignment : public ISerializable
     static const int NEUTRAL_MAX;
     static const int GOOD_MIN;
     static const int GOOD_MAX;
+
+  protected:
+    // This is just an integer rather than a Statistic because there
+    // will be no spells, etc., that affect alignment - only actions
+    // will affect alignment, and these are all permanent, so no
+    // temporary/current values are needed, only the single, actual
+    // value.
+    int alignment;
 
     ClassIdentifier internal_class_identifier() const override;
 };
