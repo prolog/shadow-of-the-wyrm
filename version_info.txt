@@ -1,5 +1,8 @@
+SavageLands v0.2.9 "Aethelric"
+- Version declared October 15, 2014.
+
 Savage Lands v0.2.8 "Adda"
-- Version declared September 13, 2014.
+- Version declared September 13, 2014.  Version finalized October 15, 2014.
 
 - Created deity-specific crowning gifts to provide some additional
   differentiation (once crowning is implemented) beyond the deity's bonus
