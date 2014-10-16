@@ -1,6 +1,7 @@
 #include "OfferAction.hpp"
 #include "ActionManager.hpp"
 #include "ActionTextKeys.hpp"
+#include "AlignmentCalculator.hpp"
 #include "ClassManager.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
@@ -149,7 +150,12 @@ bool OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr featur
 
     DeityDecisionImplications decision_implications = deity_decision_handler->handle_decision(creature, creature_tile);
 
+    // Adjust piety and alignment.
     int piety = adjust_creature_piety(creature, decision_implications);
+
+    AlignmentCalculator ac;
+    int new_alignment = ac.calculate_alignment_for_sacrifice_on_coaligned_altar(creature->get_alignment().get_alignment(), feature->get_alignment_range());
+    creature->get_alignment_ref().set_alignment(new_alignment);
     
     if (piety > 0)
     {

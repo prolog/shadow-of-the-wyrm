@@ -3213,8 +3213,8 @@
     <ClInclude Include="engine\decision_strategies\deity\include\CrowningDeityDecisionStrategyHandler.hpp">
       <Filter>Header Files\engine\decision_strategies\deity\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\AlignmentUtils.hpp">
-      <Filter>Header Files\engine\include</Filter>
+    <ClInclude Include="engine\calculators\include\AlignmentCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6191,11 +6191,11 @@
     <ClCompile Include="engine\decision_strategies\deity\source\CrowningDeityDecisionStrategyHandler.cpp">
       <Filter>Source Files\engine\decision_strategies\deity\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\AlignmentUtils.cpp">
-      <Filter>Source Files\engine\source</Filter>
+    <ClCompile Include="engine\calculators\source\AlignmentCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\source\unit_tests\AlignmentUtils_test.cpp">
-      <Filter>Source Files\engine\source\unit_tests</Filter>
+    <ClCompile Include="engine\calculators\source\unit_tests\AlignmentCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
