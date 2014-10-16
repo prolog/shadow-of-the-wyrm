@@ -163,8 +163,6 @@ bool OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr featur
     }
 
     add_piety_message_if_player(creature);
-
-    result = true;
   }
 
   return result;

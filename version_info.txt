@@ -1,6 +1,11 @@
 SavageLands v0.2.9 "Aethelric"
 - Version declared October 15, 2014.
 
+- Sacrificing on a co-aligned altar adjusts the creature's alignment
+  very slightly: good increases alignment, evil decreases it, and neutral
+  will increase or decrease based on the creature's alignment relative to
+  0.
+
 Savage Lands v0.2.8 "Adda"
 - Version declared September 13, 2014.  Version finalized October 15, 2014.
 
