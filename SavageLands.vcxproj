@@ -194,6 +194,7 @@
     <ClInclude Include="engine\actions\read\include\SpellbookReadStrategy.hpp" />
     <ClInclude Include="engine\actions\read\include\TextReadStrategy.hpp" />
     <ClInclude Include="engine\calculators\include\AlcoholCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\AlignmentCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\AmmunitionSurvivalCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\APRegenerationCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ArcanaPointsCalculator.hpp" />
@@ -520,7 +521,6 @@
     <ClInclude Include="engine\generators\worship_sites\include\SimpleTempleGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\SnakingTempleGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\WorshipSiteGenerator.hpp" />
-    <ClInclude Include="engine\include\AlignmentUtils.hpp" />
     <ClInclude Include="engine\include\ClassManager.hpp" />
     <ClInclude Include="engine\include\CreationUtils.hpp" />
     <ClInclude Include="engine\include\Environment.hpp" />
@@ -1058,6 +1058,7 @@
     <ClCompile Include="engine\actions\source\VersionAction.cpp" />
     <ClCompile Include="engine\actions\source\WeaponInfoAction.cpp" />
     <ClCompile Include="engine\calculators\source\AlcoholCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\AlignmentCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\AmmunitionSurvivalCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\APRegenerationCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ArcanaPointsCalculator.cpp" />
@@ -1128,6 +1129,11 @@
     <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp" />
     <ClCompile Include="engine\calculators\source\UnderworldMapDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\unit_tests\AlcoholCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\AlignmentCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
@@ -1798,7 +1804,6 @@
     <ClCompile Include="engine\skills\source\Mountaineering.cpp" />
     <ClCompile Include="engine\skills\source\SkillManager.cpp" />
     <ClCompile Include="engine\skills\source\Swimming.cpp" />
-    <ClCompile Include="engine\source\AlignmentUtils.cpp" />
     <ClCompile Include="engine\source\ClassManager.cpp" />
     <ClCompile Include="engine\source\CreationUtils.cpp" />
     <ClCompile Include="engine\source\Environment.cpp" />
@@ -1825,11 +1830,6 @@
     <ClCompile Include="engine\source\SelectionUtils.cpp" />
     <ClCompile Include="engine\source\SettingKeybindings.cpp" />
     <ClCompile Include="engine\source\Settings.cpp" />
-    <ClCompile Include="engine\source\unit_tests\AlignmentUtils_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Game_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

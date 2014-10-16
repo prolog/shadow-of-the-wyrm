@@ -1,15 +1,7 @@
-#include "AlignmentUtils.hpp"
+#include "AlignmentCalculator.hpp"
 #include "Alignment.hpp"
 
-AlignmentUtils::AlignmentUtils()
-{
-}
-
-AlignmentUtils::~AlignmentUtils()
-{
-}
-
-int AlignmentUtils::get_new_alignment_for_sacrifice_on_coaligned_altar(int current_alignment, const AlignmentRange altar_alignment_range)
+int AlignmentCalculator::calculate_alignment_for_sacrifice_on_coaligned_altar(int current_alignment, const AlignmentRange altar_alignment_range)
 {
   int new_alignment = current_alignment;
   int true_neutral = (Alignment::NEUTRAL_MIN + Alignment::NEUTRAL_MAX) / 2;
@@ -40,5 +32,5 @@ int AlignmentUtils::get_new_alignment_for_sacrifice_on_coaligned_altar(int curre
 }
 
 #ifdef UNIT_TESTS
-#include "unit_tests/AlignmentUtils_test.cpp"
+#include "unit_tests/AlignmentCalculator_test.cpp"
 #endif
