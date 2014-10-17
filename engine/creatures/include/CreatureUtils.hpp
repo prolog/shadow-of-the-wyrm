@@ -9,6 +9,7 @@ class CreatureUtils
 {
   public:
     static std::string get_race_class_synopsis(CreaturePtr c);
+    static void handle_alignment_change(CreaturePtr c, const int new_alignment);
 
   protected:
     CreatureUtils();

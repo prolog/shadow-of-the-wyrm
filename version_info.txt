@@ -6,6 +6,15 @@ SavageLands v0.2.9 "Aethelric"
   will increase or decrease based on the creature's alignment relative to
   0.
 
+- Changing alignment to a different range (good -> neutral, etc) has
+  the following effects:
+
+  - If the creature was a champion, it becomes a fallen champion of all
+    deities.
+
+  - A random deity of the new alignment is selected, and the creature
+    then worships that deity.
+
 Savage Lands v0.2.8 "Adda"
 - Version declared September 13, 2014.  Version finalized October 15, 2014.
 
