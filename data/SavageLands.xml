@@ -19,6 +19,8 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>beow</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
@@ -47,6 +49,8 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>beow</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
@@ -75,6 +79,8 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>beow</Artifact>
 				<Artifact>sunsword</Artifact>
 				<Artifact>dragonbane</Artifact>
 				<Artifact>beastbinder</Artifact>
@@ -103,13 +109,15 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>light_of_battle</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
 				<Artifact>long_hunt_knife</Artifact>
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>creators_might</Artifact>
-				</Crowning>
+			</Crowning>
 			<WorshipSiteType>3</WorshipSiteType>
 		</Deity>
 		<Deity id="05_voros">
@@ -129,6 +137,8 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>light_of_battle</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
@@ -156,6 +166,8 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>light_of_battle</Artifact>
 				<Artifact>dragonsfist</Artifact>
 				<Artifact>bugcrusher</Artifact>
 				<Artifact>jellysmasher</Artifact>
@@ -182,6 +194,8 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>shadow</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
@@ -208,6 +222,8 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>pelter</Artifact>
+				<Artifact>shadow</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
@@ -234,6 +250,7 @@
 			<Crowning>
 				<Artifact>great_mace_torasin</Artifact>
 				<Artifact>erebus</Artifact>
+				<Artifact>shadow</Artifact>
 				<Artifact>kithslayer</Artifact>
 				<Artifact>skyslayer</Artifact>
 				<Artifact>staff_artificer</Artifact>
@@ -16163,6 +16180,9 @@
 				<Artifact>1</Artifact>
 				<Material>8</Material>
 				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pierce>0.10</Pierce>
+				</Resistances>
 				<Skill>1009</Skill>
 				<RangedSkill>2003</RangedSkill>
 				<Difficulty>42</Difficulty>
@@ -16172,6 +16192,9 @@
 					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>
+				<Slays>
+					<Slay>_undead</Slay>
+				</Slays>
 			</Weapon>
 			<Weapon id="forger">
 				<DescriptionSID>FORGER_SID</DescriptionSID>
@@ -16535,6 +16558,33 @@
 				<Slays>
 					<Slay>_undead</Slay>
 					<Slay>_demon</Slay>
+				</Slays>
+			</Weapon>
+			<Weapon id="beow">
+				<DescriptionSID>BEOW_SID</DescriptionSID>
+				<UsageDescriptionSID>BEOW_USAGE_SID</UsageDescriptionSID>
+				<Value>1900</Value>
+				<Weight><Pounds>14</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.20</Slash>
+					<Pierce>0.15</Pierce>
+				</Resistances>
+				<Skill>1002</Skill>
+				<RangedSkill>2001</RangedSkill>
+				<Difficulty>46</Difficulty>
+				<Speed>6</Speed>
+				<Damage>
+					<NumDice>10</NumDice>
+					<NumSides>6</NumSides>
+					<Type>0</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+					<Slay>_dragon</Slay>
 				</Slays>
 			</Weapon>
 			<Weapon id="heavens_blade">
@@ -17246,6 +17296,36 @@
 					<Slay>_demon</Slay>
 				</Slays>
 			</Weapon>			
+			<Weapon id="light_of_battle">
+				<DescriptionSID>LIGHT_OF_BATTLE_SID</DescriptionSID>
+				<UsageDescriptionSID>LIGHT_OF_BATTLE_USAGE_SID</UsageDescriptionSID>
+				<Value>2150</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>9</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Arcane>0.20</Arcane>
+				</Resistances>
+				<Skill>1005</Skill>
+				<RangedSkill>2002</RangedSkill>
+				<Difficulty>42</Difficulty>
+				<Speed>3</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Type>2</Type>
+				</Damage>
+				<Slays>
+					<Slay>_undead</Slay>
+					<Slay>_demon</Slay>
+					<Slay>_monster</Slay>
+					<Slay>_dragon</Slay>
+					<Slay>_jelly</Slay>
+					<Slay>_angelic</Slay>
+				</Slays>
+			</Weapon>			
 			<Weapon id="leather_whip">
 				<DescriptionSID>LEATHER_WHIP_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_WHIP_USAGE_SID</UsageDescriptionSID>
@@ -17447,6 +17527,33 @@
 					<Type>2</Type>
 				</Damage>
 			</Weapon>
+			<Weapon id="pelter">
+				<DescriptionSID>PELTER_SID</DescriptionSID>
+				<UsageDescriptionSID>PELTER_USAGE_SID</UsageDescriptionSID>
+				<Value>1600</Value>
+				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
+				<WornLocation>9</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Pound>0.20</Pound>
+				</Resistances>
+				<Skill>1009</Skill>
+				<RangedSkill>2007</RangedSkill>
+				<Difficulty>45</Difficulty>
+				<Speed>1</Speed>
+				<Damage>
+					<NumDice>8</NumDice>
+					<NumSides>4</NumSides>
+					<Type>2</Type>
+				</Damage>
+				<Slays>
+					<Slay>_animal</Slay>
+					<Slay>_insect</Slay>
+					<Slay>_jelly</Slay>
+				</Slays>
+			</Weapon>
 			<Weapon id="yew_bow">
 				<DescriptionSID>YEW_BOW_SID</DescriptionSID>
 				<UsageDescriptionSID>YEW_BOW_USAGE_SID</UsageDescriptionSID>
@@ -17500,6 +17607,28 @@
 					<NumSides>6</NumSides>
 					<Type>1</Type>
 				</Damage>
+			</Weapon>
+			<Weapon id="shadow">
+				<DescriptionSID>SHADOW_SID</DescriptionSID>
+				<UsageDescriptionSID>SHADOW_USAGE_SID</UsageDescriptionSID>
+				<Value>2200</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>9</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>8</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Skill>1009</Skill>
+				<RangedSkill>2004</RangedSkill>
+				<Difficulty>42</Difficulty>
+				<Speed>2</Speed>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>6</NumSides>
+					<Type>1</Type>
+				</Damage>
+				<Slays>
+					<Slay>_humanoid</Slay>
+				</Slays>
 			</Weapon>
 		</RangedWeapons>
 		<Ammunition>
