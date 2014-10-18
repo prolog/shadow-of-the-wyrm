@@ -15,6 +15,10 @@ SavageLands v0.2.9 "Aethelric"
   - A random deity of the new alignment is selected, and the creature
     then worships that deity.
 
+- New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
+  forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
+  silent sling "Pelter" (all).
+
 Savage Lands v0.2.8 "Adda"
 - Version declared September 13, 2014.  Version finalized October 15, 2014.
 
