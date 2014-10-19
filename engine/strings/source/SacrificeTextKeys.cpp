@@ -68,6 +68,16 @@ string SacrificeTextKeys::get_piety_message(const int piety)
   return StringTable::get(message);
 }
 
+string SacrificeTextKeys::get_altar_conversion_message(const string& deity_name_sid)
+{
+  string altar_conv_msg = StringTable::get(SacrificeTextKeys::SACRIFICE_MESSAGE_CONVERT_ALTAR);
+  string deity_name = StringTable::get(deity_name_sid);
+
+  boost::replace_first(altar_conv_msg, "%s", deity_name);
+
+  return altar_conv_msg;
+}
+
 const string SacrificeTextKeys::SACRIFICE_MESSAGE_TIER_1 = "SACRIFICE_MESSAGE_TIER_1";
 const string SacrificeTextKeys::SACRIFICE_MESSAGE_TIER_2 = "SACRIFICE_MESSAGE_TIER_2";
 const string SacrificeTextKeys::SACRIFICE_MESSAGE_TIER_3 = "SACRIFICE_MESSAGE_TIER_3";
@@ -78,3 +88,4 @@ const string SacrificeTextKeys::SACRIFICE_MESSAGE_DISLIKED = "SACRIFICE_MESSAGE_
 const string SacrificeTextKeys::SACRIFICE_MESSAGE_EVIL = "SACRIFICE_MESSAGE_EVIL";
 const string SacrificeTextKeys::SACRIFICE_MESSAGE_GOOD = "SACRIFICE_MESSAGE_GOOD";
 const string SacrificeTextKeys::SACRIFICE_MESSAGE_NEUTRAL = "SACRIFICE_MESSAGE_NEUTRAL";
+const string SacrificeTextKeys::SACRIFICE_MESSAGE_CONVERT_ALTAR = "SACRIFICE_MESSAGE_CONVERT_ALTAR";
