@@ -521,6 +521,7 @@
     <ClInclude Include="engine\generators\worship_sites\include\SimpleTempleGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\SnakingTempleGenerator.hpp" />
     <ClInclude Include="engine\generators\worship_sites\include\WorshipSiteGenerator.hpp" />
+    <ClInclude Include="engine\include\AlignmentUtils.hpp" />
     <ClInclude Include="engine\include\ClassManager.hpp" />
     <ClInclude Include="engine\include\CreationUtils.hpp" />
     <ClInclude Include="engine\include\Environment.hpp" />
@@ -1804,6 +1805,7 @@
     <ClCompile Include="engine\skills\source\Mountaineering.cpp" />
     <ClCompile Include="engine\skills\source\SkillManager.cpp" />
     <ClCompile Include="engine\skills\source\Swimming.cpp" />
+    <ClCompile Include="engine\source\AlignmentUtils.cpp" />
     <ClCompile Include="engine\source\ClassManager.cpp" />
     <ClCompile Include="engine\source\CreationUtils.cpp" />
     <ClCompile Include="engine\source\Environment.cpp" />
@@ -1830,6 +1832,11 @@
     <ClCompile Include="engine\source\SelectionUtils.cpp" />
     <ClCompile Include="engine\source\SettingKeybindings.cpp" />
     <ClCompile Include="engine\source\Settings.cpp" />
+    <ClCompile Include="engine\source\unit_tests\AlignmentUtils_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\source\unit_tests\Game_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
