@@ -1,5 +1,7 @@
+#include <algorithm>
 #include "AlignmentCalculator.hpp"
 #include "Alignment.hpp"
+#include "AlignmentUtils.hpp"
 
 const int AlignmentCalculator::BASE_ALIGNMENT_DELTA_COALIGNED = 10;
 const int AlignmentCalculator::BASE_ALIGNMENT_DELTA_CROSSALIGNED = 250;
@@ -52,8 +54,7 @@ int AlignmentCalculator::calculate_alignment_for_sacrifice_on_crossaligned_altar
   }
 
   // Crossing two alignment barriers causes a greater drift.
-  if ((current_alignment_range == ALIGNMENT_RANGE_GOOD && altar_alignment_range == ALIGNMENT_RANGE_EVIL) ||
-      (current_alignment_range == ALIGNMENT_RANGE_EVIL && altar_alignment_range == ALIGNMENT_RANGE_GOOD))
+  if (AlignmentUtils::are_alignments_opposites(current_alignment_range, altar_alignment_range))
   {
     multiplier *= 1.5;
   }
@@ -81,6 +82,32 @@ int AlignmentCalculator::calculate_alignment_for_sacrifice_on_crossaligned_altar
   }
 
   return new_alignment;
+}
+
+// Get the percent chance that an altar
+int AlignmentCalculator::calculate_pct_chance_for_altar_conversion(ItemPtr item, const AlignmentRange current_alignment_range, const AlignmentRange altar_alignment_range)
+{
+  int pct_chance = 0;
+  int numerator = 0;
+
+  if (item)
+  {
+    numerator = item->get_value() * item->get_quantity();
+
+    pct_chance = (numerator / 10);
+    pct_chance = std::min<int>(pct_chance, 100);
+
+    // Harder to convert an altar of a more extreme alignment.
+    if (AlignmentUtils::are_alignments_opposites(current_alignment_range, altar_alignment_range))
+    {
+      pct_chance = static_cast<int>(pct_chance * 0.75);
+    }
+
+    // There's always a slim chance to convert an altar.
+    pct_chance = std::max<int>(pct_chance, 1);
+  }
+
+  return pct_chance;
 }
 
 #ifdef UNIT_TESTS

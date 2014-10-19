@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "Amulet.hpp"
 
 TEST(SL_Engine_Calculators_AlignmentCalculator, calculate_alignment_for_sacrifice_on_coaligned_altar)
 {
@@ -68,4 +69,26 @@ TEST(SL_Engine_Calculators_AlignmentCalculator, calculate_alignment_for_sacrific
   exp_value = (-1000 + static_cast<int>(250 * 1.5));
 
   EXPECT_EQ(exp_value, ac.calculate_alignment_for_sacrifice_on_crossaligned_altar(alignment, cur_range, alt_range));
+}
+
+TEST(SL_Engine_Calculators_AlignmentCalculator, calculate_pct_chance_for_altar_conversion)
+{
+  AlignmentCalculator ac;
+
+  ItemPtr amulet = std::make_shared<Amulet>();
+
+  amulet->set_value(0);
+
+  EXPECT_EQ(1, ac.calculate_pct_chance_for_altar_conversion(amulet, ALIGNMENT_RANGE_GOOD, ALIGNMENT_RANGE_EVIL));
+
+  amulet->set_value(100);
+
+  EXPECT_EQ(10, ac.calculate_pct_chance_for_altar_conversion(amulet, ALIGNMENT_RANGE_GOOD, ALIGNMENT_RANGE_NEUTRAL));
+
+  // Reduced because of the greater distance between the alignments.
+  EXPECT_EQ(7, ac.calculate_pct_chance_for_altar_conversion(amulet, ALIGNMENT_RANGE_GOOD, ALIGNMENT_RANGE_EVIL));
+
+  amulet->set_quantity(10);
+
+  EXPECT_EQ(100, ac.calculate_pct_chance_for_altar_conversion(amulet, ALIGNMENT_RANGE_NEUTRAL, ALIGNMENT_RANGE_EVIL));
 }

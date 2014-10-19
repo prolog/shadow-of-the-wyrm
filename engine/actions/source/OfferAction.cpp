@@ -12,6 +12,7 @@
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ReligionManager.hpp"
+#include "RNG.hpp"
 #include "SacrificeTextKeys.hpp"
 
 using namespace std;
@@ -182,7 +183,20 @@ bool OfferAction::sacrifice_on_other_altar(CreaturePtr creature, FeaturePtr feat
   {
     AlignmentCalculator ac;
     int new_alignment = ac.calculate_alignment_for_sacrifice_on_crossaligned_altar(creature->get_alignment().get_alignment(), creature->get_alignment().get_alignment_range(), feature->get_alignment_range());
-    
+    int pct_chance_altar_conversion = ac.calculate_pct_chance_for_altar_conversion(item, creature->get_alignment().get_alignment_range(), feature->get_alignment_range());
+
+    if (RNG::percent_chance(pct_chance_altar_conversion))
+    {
+      AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
+      new_alignment = ac.calculate_alignment_for_sacrifice_on_coaligned_altar(creature->get_alignment().get_alignment(), feature->get_alignment_range());
+      
+      // Create new altar, add it to tile.
+      // ...
+
+      // Add a message about the altar's conversion.
+      // ...
+    }
+
     CreatureUtils::handle_alignment_change(creature, new_alignment);
 
     result = true;
