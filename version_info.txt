@@ -6,6 +6,10 @@ SavageLands v0.2.9 "Aethelric"
   will increase or decrease based on the creature's alignment relative to
   0.
 
+- Sacrificing on a cross-aligned altar has a chance to convert the altar,
+  based on the value of the item(s) sacrificed.  The creature's alignment
+  will be adjusted based on whether the altar was converted or not.
+  
 - Changing alignment to a different range (good -> neutral, etc) has
   the following effects:
 

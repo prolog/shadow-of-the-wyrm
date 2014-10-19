@@ -6,6 +6,7 @@
 #include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DeityDecisionStrategyFactory.hpp"
+#include "FeatureGenerator.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "ItemPietyCalculator.hpp"
@@ -37,7 +38,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
     // On an altar - pick an item to sacrifice
     if (tile && feature && feature->can_offer())
     {
-      acv = sacrifice_item(creature, feature, am);
+      acv = sacrifice_item(creature, tile, feature, am);
     }
     else
     {
@@ -49,7 +50,7 @@ ActionCostValue OfferAction::offer(CreaturePtr creature, ActionManager * const a
 }
 
 // Prompt the creature to select an item for sacrifice.
-ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr feature, ActionManager * const am)
+ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, TilePtr tile, FeaturePtr feature, ActionManager * const am)
 {
   ActionCostValue acv = 0;
 
@@ -85,7 +86,7 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr fea
         manager.send();
 
         // Deity accepts the sacrifice, altar is converted, etc.
-        bool item_accepted = handle_sacrifice(creature, feature, item_to_sac);
+        bool item_accepted = handle_sacrifice(creature, tile, feature, item_to_sac);
 
         if (!item_accepted)
         {
@@ -112,7 +113,7 @@ ActionCostValue OfferAction::sacrifice_item(CreaturePtr creature, FeaturePtr fea
 //   - Move the creature's alignment towards the altar.
 //
 //   - Convert the altar to the creature's alignment.
-bool OfferAction::handle_sacrifice(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+bool OfferAction::handle_sacrifice(CreaturePtr creature, TilePtr tile, FeaturePtr feature, ItemPtr item)
 {
   if (creature && feature && item)
   {
@@ -121,11 +122,11 @@ bool OfferAction::handle_sacrifice(CreaturePtr creature, FeaturePtr feature, Ite
 
     if (creature_alignment == altar_alignment)
     {
-      return sacrifice_on_own_altar(creature, feature, item);
+      return sacrifice_on_coaligned_altar(creature, feature, item);
     }
     else
     {
-      return sacrifice_on_other_altar(creature, feature, item);
+      return sacrifice_on_crossaligned_altar(creature, tile, feature, item);
     }
   }
 
@@ -134,7 +135,7 @@ bool OfferAction::handle_sacrifice(CreaturePtr creature, FeaturePtr feature, Ite
 
 // Sacrifice on an altar of the creature's own alignment.  This is the simplest
 // case: the sacrifice is offered to the creature's own deity.
-bool OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+bool OfferAction::sacrifice_on_coaligned_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
 {
   bool result = false;
 
@@ -175,7 +176,7 @@ bool OfferAction::sacrifice_on_own_altar(CreaturePtr creature, FeaturePtr featur
 // - draw the creature's alignment closer to the alignment of the altar,
 //   converting the creature to a random deity of that range if the creature's
 //   alignment crosses over.
-bool OfferAction::sacrifice_on_other_altar(CreaturePtr creature, FeaturePtr feature, ItemPtr item)
+bool OfferAction::sacrifice_on_crossaligned_altar(CreaturePtr creature, TilePtr tile, FeaturePtr feature, ItemPtr item)
 {
   bool result = false;
 
@@ -187,14 +188,22 @@ bool OfferAction::sacrifice_on_other_altar(CreaturePtr creature, FeaturePtr feat
 
     if (RNG::percent_chance(pct_chance_altar_conversion))
     {
+      ReligionManager rm;
+      DeityPtr deity = rm.get_active_deity(creature);
+
       AlignmentRange creature_range = creature->get_alignment().get_alignment_range();
       new_alignment = ac.calculate_alignment_for_sacrifice_on_coaligned_altar(creature->get_alignment().get_alignment(), feature->get_alignment_range());
       
       // Create new altar, add it to tile.
-      // ...
+      FeaturePtr new_altar = FeatureGenerator::generate_altar(deity->get_id(), creature_range);
+      tile->set_feature(new_altar);
 
       // Add a message about the altar's conversion.
-      // ...
+      IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+      string altar_conversion_msg = SacrificeTextKeys::get_altar_conversion_message(deity->get_name_sid());
+
+      manager.add_new_message(altar_conversion_msg);
+      manager.send();
     }
 
     CreatureUtils::handle_alignment_change(creature, new_alignment);

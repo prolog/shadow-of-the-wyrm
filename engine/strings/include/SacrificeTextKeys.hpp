@@ -12,6 +12,7 @@ class SacrificeTextKeys
 
     static std::string get_sacrifice_message(const AlignmentRange alignment, ItemPtr item, const bool creature_blind);
     static std::string get_piety_message(const int piety);
+    static std::string get_altar_conversion_message(const std::string& deity_name_sid);
 
   protected:
     SacrificeTextKeys();
@@ -26,5 +27,6 @@ class SacrificeTextKeys
     static const std::string SACRIFICE_MESSAGE_EVIL;
     static const std::string SACRIFICE_MESSAGE_GOOD;
     static const std::string SACRIFICE_MESSAGE_NEUTRAL;
+    static const std::string SACRIFICE_MESSAGE_CONVERT_ALTAR;
 };
 
