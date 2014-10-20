@@ -36,6 +36,7 @@ const string DeityTextKeys::PRAYER_FULL_AP          = "PRAYER_FULL_AP";
 const string DeityTextKeys::PRAYER_SATIATE          = "PRAYER_SATIATE";
 const string DeityTextKeys::PRAYER_RESTORE_STATUS   = "PRAYER_RESTORE_STATUS";
 const string DeityTextKeys::PRAYER_CROWNING         = "PRAYER_CROWNING";
+const string DeityTextKeys::PRAYER_WORLD_MAP        = "PRAYER_WORLD_MAP";
 const string DeityTextKeys::DEITY_ACTION_DISPLEASED = "DEITY_ACTION_DISPLEASED"; 
 const string DeityTextKeys::DEITY_FALLEN_CHAMPION   = "DEITY_FALLEN_CHAMPION";
 const string DeityTextKeys::DEITY_CHANGE_MESSAGE    = "DEITY_CHANGE_MESSAGE";

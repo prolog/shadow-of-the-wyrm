@@ -19,10 +19,22 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
 {
   if (creature)
   {
+    Game& game = Game::instance();
+    MapPtr map = game.get_current_map();
+
+    if (map && map->get_map_type() == MAP_TYPE_WORLD)
+    {
+      IMessageManager& manager = MessageManagerFactory::instance();
+
+      manager.add_new_message(StringTable::get(DeityTextKeys::PRAYER_WORLD_MAP));
+      manager.send();
+
+      return 0;
+    }
+
     // Say the prayer.
     say_prayer(creature);
     
-    Game& game = Game::instance();
     TilePtr creature_tile = MapUtils::get_tile_for_creature(game.get_current_map(), creature);
     
     ReligionManager rm;
