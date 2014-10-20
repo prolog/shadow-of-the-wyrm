@@ -1,5 +1,7 @@
 #include "DislikeDeityDecisionStrategyHandler.hpp"
 #include "DeityTextKeys.hpp"
+#include "Game.hpp"
+#include "ReligionManager.hpp"
 
 using std::string;
 
@@ -34,6 +36,23 @@ bool DislikeDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 
 DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(CreaturePtr creature, TilePtr tile)
 {
+  ReligionManager rm;
+  DeityPtr deity = rm.get_deity(deity_id);
+
+  if (deity)
+  {
+    int piety = rm.get_piety_for_active_deity(creature);
+
+    if (piety < -1000)
+    {
+      ScriptEngine& se = Game::instance().get_script_engine_ref();
+      string anger_script = deity->get_anger_script();
+
+      se.execute(anger_script);
+      se.call_function("anger", { "string", "string" }, { creature->get_id(), deity->get_id() }, 0);
+    }
+  }
+
   return get_deity_decision_implications(creature, tile);
 }
 

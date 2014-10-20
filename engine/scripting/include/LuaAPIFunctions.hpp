@@ -62,7 +62,12 @@ int map_transform_tile(lua_State* ls);
 int map_add_tile_exit(lua_State* ls);
 int log(lua_State* ls);
 int get_player_title(lua_State* ls);
-
+int set_creature_current_hp(lua_State* ls);
+int set_creature_current_ap(lua_State* ls);
+int destroy_creature_equipment(lua_State* ls);
+int destroy_creature_inventory(lua_State* ls);
+int get_deity_summons(lua_State* ls);
+int summon_monsters_around_creature(lua_State* ls);
 // helper functions for the Lua API functions.
 std::string read_sid_and_replace_values(lua_State* ls);
 

@@ -28,7 +28,12 @@
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>heavens_blade</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>archangel</Summon>
+				<Summon>angel</Summon>
+			</Summons>
 			<WorshipSiteType>0</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 		<Deity id="02_aurelion">
 			<UserPlayable>1</UserPlayable>
@@ -58,7 +63,12 @@
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>battle_armour_aurelion</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>titan</Summon>
+				<Summon>divine_avenger</Summon>
+			</Summons>
 			<WorshipSiteType>1</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 		<Deity id="03_thelady">
 			<UserPlayable>1</UserPlayable>
@@ -88,7 +98,12 @@
 				<Artifact>helm_of_the_heavens</Artifact>
 				<Artifact>radiance</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>air_elemental</Summon>
+				<Summon>angel</Summon>
+			</Summons>
 			<WorshipSiteType>2</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 		<Deity id="04_vedere">
 			<UserPlayable>1</UserPlayable>
@@ -118,7 +133,12 @@
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>creators_might</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>earth_elemental</Summon>
+				<Summon>air_elemental</Summon>
+			</Summons>
 			<WorshipSiteType>3</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 		<Deity id="05_voros">
 			<UserPlayable>1</UserPlayable>
@@ -146,7 +166,12 @@
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>earthcleaver</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>fire_elemental</Summon>
+				<Summon>iron_horror</Summon>
+			</Summons>
 			<WorshipSiteType>4</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 		<Deity id="06_thetrickster">
 			<UserPlayable>1</UserPlayable>
@@ -175,7 +200,12 @@
 				<Artifact>dragon_leather_tius</Artifact>
 				<Artifact>shroud_fate</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>air_elemental</Summon>
+				<Summon>planewalker</Summon>
+			</Summons>
 			<WorshipSiteType>5</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 		<Deity id="07_shiver">
 			<UserPlayable>1</UserPlayable>
@@ -203,7 +233,12 @@
 				<Artifact>crown_of_tyranny</Artifact>
 				<Artifact>athame_winter</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>water_elemental</Summon>
+				<Summon>voidling</Summon>
+			</Summons>
 			<WorshipSiteType>6</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 		<Deity id="08_urgoth">
 			<UserPlayable>1</UserPlayable>
@@ -231,7 +266,12 @@
 				<Artifact>crown_of_tyranny</Artifact>
 				<Artifact>stone_club_urgol</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>fell_lord</Summon>
+				<Summon>star_beast</Summon>
+			</Summons>
 			<WorshipSiteType>7</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 		<Deity id="09_sceadugenga">
 			<UserPlayable>1</UserPlayable>
@@ -258,7 +298,12 @@
 				<Artifact>crown_of_tyranny</Artifact>
 				<Artifact>apocalypse</Artifact>
 			</Crowning>
+			<Summons>
+				<Summon>tentacled_horror</Summon>
+				<Summon>astral_horror</Summon>
+			</Summons>
 			<WorshipSiteType>8</WorshipSiteType>
+			<AngerScript>deities/anger_common.lua</AngerScript>
 		</Deity>
 	</Deities>
 	<Races>
@@ -17323,7 +17368,7 @@
 					<Slay>_monster</Slay>
 					<Slay>_dragon</Slay>
 					<Slay>_jelly</Slay>
-					<Slay>_angelic</Slay>
+					<Slay>_divine</Slay>
 				</Slays>
 			</Weapon>			
 			<Weapon id="leather_whip">

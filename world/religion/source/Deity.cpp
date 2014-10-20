@@ -20,7 +20,9 @@ bool Deity::operator==(const Deity& d) const
   result = result && death_message_sid == d.death_message_sid;
   result = result && alignment_range == d.alignment_range;
   result = result && crowning_gifts == d.crowning_gifts;
+  result = result && summons == d.summons;
   result = result && worship_site_type == d.worship_site_type;
+  result = result && anger_script == d.anger_script;
   result = result && initial_statistics_modifier == d.initial_statistics_modifier;
   result = result && dislikes == d.dislikes;
   result = result && user_playable == d.user_playable;
@@ -128,6 +130,16 @@ vector<string> Deity::get_crowning_gifts() const
   return crowning_gifts;
 }
 
+void Deity::set_summons(const vector<string>& new_summons)
+{
+  summons = new_summons;
+}
+
+vector<string> Deity::get_summons() const
+{
+  return summons;
+}
+
 // Set/get the worship site type.
 void Deity::set_worship_site_type(const WorshipSiteType new_worship_site_type)
 {
@@ -137,6 +149,17 @@ void Deity::set_worship_site_type(const WorshipSiteType new_worship_site_type)
 WorshipSiteType Deity::get_worship_site_type() const
 {
   return worship_site_type;
+}
+
+// Set/get the Lua script invoked when the deity is angered.
+void Deity::set_anger_script(const string& new_anger_script)
+{
+  anger_script = new_anger_script;
+}
+
+string Deity::get_anger_script() const
+{
+  return anger_script;
 }
 
 void Deity::set_initial_statistics_modifier(const StatisticsModifier& new_initial_statistics_modifier)
@@ -169,7 +192,9 @@ bool Deity::serialize(ostream& stream) const
   Serialize::write_string(stream, death_message_sid);
   Serialize::write_enum(stream, alignment_range);
   Serialize::write_string_vector(stream, crowning_gifts);
+  Serialize::write_string_vector(stream, summons);
   Serialize::write_enum(stream, worship_site_type);
+  Serialize::write_string(stream, anger_script);
 
   initial_statistics_modifier.serialize(stream);
   dislikes.serialize(stream);
@@ -189,7 +214,9 @@ bool Deity::deserialize(istream& stream)
   Serialize::read_string(stream, death_message_sid);
   Serialize::read_enum(stream, alignment_range);
   Serialize::read_string_vector(stream, crowning_gifts);
+  Serialize::read_string_vector(stream, summons);
   Serialize::read_enum(stream, worship_site_type);
+  Serialize::read_string(stream, anger_script);
 
   initial_statistics_modifier.deserialize(stream);
   dislikes.deserialize(stream);

@@ -1,3 +1,4 @@
+#include "Conversion.hpp"
 #include "GameEnvTextKeys.hpp"
 #include "Log.hpp"
 #include "LuaAPIFunctions.hpp"
@@ -114,6 +115,53 @@ void ScriptEngine::run_command(const string& command)
   {
     // Error occurred! :(
     log_error();
+  }
+}
+
+// Call a function in the Lua environment.
+void ScriptEngine::call_function(const string& fn_name, const vector<string>& param_types, const vector<string>& param_values, const int n_return_vals)
+{
+  if (param_types.size() != param_values.size())
+  {
+    return;
+  }
+
+  lua_getglobal(L, fn_name.c_str());
+
+  process_function_arguments(param_types, param_values);
+
+  lua_call(L, param_types.size(), n_return_vals);
+
+  // JCD FIXME: update this whenever I need to actually use return values.
+  lua_pop(L, n_return_vals);
+}
+
+// Handle arugments to a Lua function.
+void ScriptEngine::process_function_arguments(const vector<string>& param_types, const vector<string>& param_values)
+{
+  for (uint i = 0; i < param_types.size(); i++)
+  {
+    string param_type = param_types.at(i);
+    string param_value = param_values.at(i);
+
+    if (param_type == "string")
+    {
+      lua_pushstring(L, param_value.c_str());
+    }
+    else if (param_type == "number")
+    {
+      lua_pushnumber(L, String::to_float(param_value));
+    }
+    else if (param_type == "integer")
+    {
+      lua_pushinteger(L, String::to_int(param_value));
+    }
+    else
+    {
+      Log& log = Log::instance();
+
+      log.error("ScriptEngine::process_function_arguments - Unrecognized type \"" + param_type + "\" with value \"" + param_value + "\"");
+    }
   }
 }
 
