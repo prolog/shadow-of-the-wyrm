@@ -14,6 +14,7 @@ class DeityTextKeys
     static const std::string PRAYER_SATIATE;
     static const std::string PRAYER_RESTORE_STATUS;
     static const std::string PRAYER_CROWNING;
+    static const std::string PRAYER_WORLD_MAP;
     static const std::string DEITY_ACTION_DISPLEASED;
     static const std::string DEITY_FALLEN_CHAMPION;
     static const std::string DEITY_CHANGE_MESSAGE;

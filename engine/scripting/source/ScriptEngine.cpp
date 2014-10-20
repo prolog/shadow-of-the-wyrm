@@ -130,7 +130,7 @@ void ScriptEngine::call_function(const string& fn_name, const vector<string>& pa
 
   process_function_arguments(param_types, param_values);
 
-  lua_call(L, param_types.size(), n_return_vals);
+  lua_pcall(L, param_types.size(), n_return_vals, 0);
 
   // JCD FIXME: update this whenever I need to actually use return values.
   lua_pop(L, n_return_vals);
