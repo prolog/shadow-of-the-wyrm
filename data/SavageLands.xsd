@@ -166,7 +166,9 @@
 			<xs:element name="DeityInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="Dislikes" type="tns:TrackedDeityActions"/>
 			<xs:element name="Crowning" type="tns:Crowning"/>
+			<xs:element name="Summons" type="tns:Summons"/>
 			<xs:element name="WorshipSiteType" type="tns:WorshipSiteType"/>
+			<xs:element name="AngerScript" type="xs:string"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier" use="required"/>
 	</xs:complexType>
@@ -268,6 +270,11 @@
 <xs:complexType name="Crowning">
 	<xs:sequence>
 		<xs:element name="Artifact" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Summons">
+	<xs:sequence>
+		<xs:element name="Summon" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 	</xs:sequence>
 </xs:complexType>
 <xs:complexType name="InitialStatisticsModifiers">

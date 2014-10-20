@@ -1,5 +1,6 @@
 #include "LuaAPIFunctions.hpp"
 #include "ClassManager.hpp"
+#include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
 #include "ExperienceManager.hpp"
 #include "FeatureFactory.hpp"
@@ -13,6 +14,7 @@
 #include "MessageManagerFactory.hpp"
 #include "PlayerConstants.hpp"
 #include "Quests.hpp"
+#include "ReligionManager.hpp"
 #include "RNG.hpp"
 #include "StatisticTextKeys.hpp"
 #include "StatusEffectFactory.hpp"
@@ -129,6 +131,12 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "map_add_tile_exit", map_add_tile_exit);
   lua_register(L, "log", log);
   lua_register(L, "get_player_title", get_player_title);
+  lua_register(L, "set_creature_current_hp", set_creature_current_hp);
+  lua_register(L, "set_creature_current_ap", set_creature_current_ap);
+  lua_register(L, "destroy_creature_equipment", destroy_creature_equipment);
+  lua_register(L, "destroy_creature_inventory", destroy_creature_inventory);
+  lua_register(L, "get_deity_summons", get_deity_summons);
+  lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
 }
 
 // Lua API helper functions
@@ -1496,6 +1504,190 @@ int get_player_title(lua_State* ls)
 
   lua_pushstring(ls, title.c_str());
   return 1;
+}
+
+int set_creature_current_hp(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int new_hp = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+    Statistic hp = creature->get_hit_points();
+    hp.set_current(new_hp);
+
+    creature->set_hit_points(hp);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_current_hp");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int set_creature_current_ap(lua_State* ls)
+{
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isnumber(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    int new_ap = lua_tointeger(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+    Statistic ap = creature->get_arcana_points();
+    ap.set_current(new_ap);
+
+    creature->set_arcana_points(ap);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to set_creature_current_ap");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int destroy_creature_equipment(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature)
+    {
+      Equipment& eq = creature->get_equipment();
+      for (EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD; ewl < EQUIPMENT_WORN_LAST; ewl++)
+      {
+        eq.remove_item(ewl);
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to destroy_creature_equipment");
+    lua_error(ls);
+  }
+  
+  return 0;
+}
+
+int destroy_creature_inventory(lua_State* ls)
+{
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string creature_id = lua_tostring(ls, 1);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    if (creature)
+    {
+      IInventoryPtr inv = creature->get_inventory();
+
+      if (inv)
+      {
+        inv->clear();
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to destroy_creature_inventory");
+    lua_error(ls);
+  }
+
+  return 0;
+}
+
+int get_deity_summons(lua_State* ls)
+{
+  vector<string> summons;
+  int num_return_vals = 0;
+
+  if (lua_gettop(ls) == 1 && lua_isstring(ls, 1))
+  {
+    string deity_id = lua_tostring(ls, 1);
+
+    ReligionManager rm;
+    DeityPtr deity = rm.get_deity(deity_id);
+
+    if (deity)
+    {
+      summons = deity->get_summons();
+      uint summons_size = summons.size();
+      num_return_vals = 1;
+          
+      // Create an array with n-array elements and 0 non-array elements.
+      lua_createtable(ls, summons_size, 0);
+
+      for (uint i = 0; i < summons_size; i++)
+      {
+        string cur_summon = summons.at(i);
+        lua_rawseti(ls, -2, i);
+        lua_pushstring(ls, cur_summon.c_str());
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_deity_summons");
+    lua_error(ls);
+  }
+
+  return num_return_vals;
+}
+
+int summon_monsters_around_creature(lua_State* ls)
+{
+  if (lua_gettop(ls) == 3 && lua_istable(ls, 1) && lua_isstring(ls, 2) && lua_isnumber(ls, 3))
+  {
+    vector<string> monsters = LuaUtils::get_string_array_from_table(ls, 1);
+    string creature_id = lua_tostring(ls, 2);
+    int num_to_summon = lua_tointeger(ls, 3);
+
+    if (!monsters.empty())
+    {
+      Game& game = Game::instance();
+      MapPtr current_map = game.get_current_map();
+      Coordinate creature_coord = current_map->get_location(creature_id);
+      vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(current_map->size(), creature_coord.first, creature_coord.second);
+
+      random_shuffle(adjacent_coords.begin(), adjacent_coords.end());
+
+      int cnt = 0;
+      for (const Coordinate& c : adjacent_coords)
+      {
+        if (cnt == num_to_summon)
+        {
+          break;
+        }
+
+        TilePtr tile = current_map->at(c);
+
+        if (tile && !tile->has_creature())
+        {
+          string summon_id = monsters.at(RNG::range(0, monsters.size() - 1));
+
+          CreatureFactory cf;
+          CreaturePtr creature = cf.create_by_creature_id(game.get_action_manager_ref(), summon_id);
+          GameUtils::add_new_creature_to_map(game, creature, current_map, c);
+
+          cnt++;
+        }
+      }
+    }
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to summon_monsters_around_creature");
+    lua_error(ls);
+  }
+
+  return 0;
 }
 
 int stop_playing_game(lua_State* ls)

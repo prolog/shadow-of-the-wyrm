@@ -23,6 +23,8 @@ class ScriptEngine : public ISerializable
 
     void execute(const std::string& script_file);
     void run_command(const std::string& script_command);
+    void call_function(const std::string& fn_name, const std::vector<std::string>& param_types, const std::vector<std::string>& param_values, const int n_return_vals);
+
     bool clear_state();
 
     // Get a given table value
@@ -54,6 +56,9 @@ class ScriptEngine : public ISerializable
 
     // Register the list of functions available to the Lua scripting engine.
     void register_api_functions();
+
+    // Helper function to handle arguments when calling a Lua function.
+    void process_function_arguments(const std::vector<std::string>& param_types, const std::vector<std::string>& param_values);
 
     // Log an error that occurred during execution.
     void log_error();
