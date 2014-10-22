@@ -1627,8 +1627,9 @@ int get_deity_summons(lua_State* ls)
       for (uint i = 0; i < summons_size; i++)
       {
         string cur_summon = summons.at(i);
-        lua_rawseti(ls, -2, i);
+
         lua_pushstring(ls, cur_summon.c_str());
+        lua_rawseti(ls, -2, i + 1);
       }
     }
   }
