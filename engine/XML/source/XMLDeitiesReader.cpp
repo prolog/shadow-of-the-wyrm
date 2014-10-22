@@ -99,7 +99,7 @@ void XMLDeitiesReader::parse_summons(const XMLNode& summons_node, DeityPtr deity
   if (deity && !summons_node.is_null())
   {
     vector<XMLNode> summon_nodes = XMLUtils::get_elements_by_local_name(summons_node, "Summon");
-    vector<string> summons(summon_nodes.size());
+    vector<string> summons;
 
     for (const XMLNode& node : summon_nodes)
     {
