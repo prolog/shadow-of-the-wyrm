@@ -28,6 +28,7 @@ class DungeonGenerator : public SL::Generator
     virtual bool    place_doorway(MapPtr map, int row, int col);
     virtual bool    place_doorways(MapPtr current_map);
     virtual bool    place_staircases(MapPtr current_map);
+    virtual bool    potentially_generate_room_features(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
 
     bool connect_rooms(MapPtr map, const Room& room1, const Room& room2);
     bool is_tile_adjacent_to_room_tile(const Dimensions& dim, const int row, const int col);
