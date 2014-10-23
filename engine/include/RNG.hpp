@@ -13,6 +13,7 @@ class RNG
 		static int range(int min, int max, int additional_modifier = 0);
     static int range(double min, double max);
 		static bool percent_chance(const int percent_chance);
+    static bool x_in_y_chance(const int x, const int y);
     static bool initialize_if_necessary();
     static bool reinitialize();
     static void set_seed(const uint32_t new_seed);

@@ -365,6 +365,29 @@ bool DungeonGenerator::place_room(MapPtr map, int start_row, int start_col, int 
       map->insert(y, x, tile);
     }
   }
+
+  // Small chance of generating an altar.
+  // As with nethack, chance is 1 in 60 per room.
+  bool generate_altar = RNG::x_in_y_chance(1, 60);
+
+  if (generate_altar)
+  {
+    string deity_id; // Leave empty for now.
+    AlignmentRange altar_range = static_cast<AlignmentRange>(RNG::range(ALIGNMENT_RANGE_EVIL, ALIGNMENT_RANGE_GOOD));
+
+    FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, altar_range);
+
+    // Pick a tile in the room range, and try to place it there.
+    int altar_y = RNG::range(start_row, size_y);
+    int altar_x = RNG::range(start_col, size_x);
+
+    TilePtr tile = map->at(altar_y, altar_x);
+
+    if (tile && !tile->has_feature())
+    {
+      tile->set_feature(altar);
+    }
+  }
   
   return true;
 }

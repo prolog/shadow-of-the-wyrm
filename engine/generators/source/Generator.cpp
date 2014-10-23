@@ -299,6 +299,14 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
     Coordinate c(row, col);
     
     TilePtr new_staircase_tile = tg.generate(tile_type);
+    
+    // If something's been generated on the original tile, make sure that it
+    // makes its way to the new one.
+    if (tile->has_feature())
+    {
+      new_staircase_tile->set_feature(tile->get_feature());
+    }
+
     new_staircase_tile->set_tile_subtype(tile_subtype);
 
     // Allow for "infinite dungeons" by setting the permanence flag on the staircases, which will then get copied 
