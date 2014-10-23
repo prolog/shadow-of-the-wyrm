@@ -120,6 +120,16 @@ int RNG::range
   return (generator() % range) + minimum + additional_modifier;
 }
 
+bool RNG::x_in_y_chance(const int x, const int y)
+{
+  if (x < 0 || y < 0) return false;
+  if (x > y) return true;
+
+  int val = RNG::range(1, y);
+
+  return (val <= x);
+}
+
 bool RNG::percent_chance(const int percent_chance)
 {
   int val = RNG::range(1, 100);  

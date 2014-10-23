@@ -22,7 +22,7 @@ SavageLands v0.2.9 "Aethelric"
 - Angering the Nine is now a lot more deadly: it can result in getting
   one's equipment and inventory destroyed, being lowered to 1 HP/AP,
   or having a number of high-level and generally deadly creatures
-  summoned.
+  summoned immediately adjacent.
 
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
