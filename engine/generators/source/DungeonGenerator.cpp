@@ -366,11 +366,21 @@ bool DungeonGenerator::place_room(MapPtr map, int start_row, int start_col, int 
     }
   }
 
+  potentially_generate_room_features(map, start_row, size_y, start_col, size_x);
+  
+  return true;
+}
+
+// Do the various checks necessary to decide whether room features should be
+// generated.  If yes, go and generate the features, adding them to the
+// room.
+bool DungeonGenerator::potentially_generate_room_features(MapPtr map, const int start_row, const int size_y, const int start_col, const int size_x)
+{
   // Small chance of generating an altar.
   // As with nethack, chance is 1 in 60 per room.
-  bool generate_altar = RNG::x_in_y_chance(1, 60);
+  bool generate_feature = RNG::x_in_y_chance(1, 60);
 
-  if (generate_altar)
+  if (generate_feature)
   {
     string deity_id; // Leave empty for now.
     AlignmentRange altar_range = static_cast<AlignmentRange>(RNG::range(ALIGNMENT_RANGE_EVIL, ALIGNMENT_RANGE_GOOD));
@@ -388,8 +398,8 @@ bool DungeonGenerator::place_room(MapPtr map, int start_row, int start_col, int 
       tile->set_feature(altar);
     }
   }
-  
-  return true;
+
+  return generate_feature;
 }
 
 bool DungeonGenerator::place_doorway(MapPtr map, int row, int col)

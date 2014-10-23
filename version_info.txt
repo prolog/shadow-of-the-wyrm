@@ -24,6 +24,9 @@ SavageLands v0.2.9 "Aethelric"
   or having a number of high-level and generally deadly creatures
   summoned immediately adjacent.
 
+- There is now a small chance for an altar to be generated on a given
+  dungeon level.
+
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).
