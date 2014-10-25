@@ -56,7 +56,10 @@ void VaultPopulator::populate_vault_items(MapPtr map, const vector<Coordinate>& 
 
   for (const Coordinate& c : coords)
   {
-    ItemPtr generated_item = igm.generate_item(am, generation_vec);
+    // Items in vaults are always a little better than the random crap an
+    // adventurer finds lying around a dungeon.  It's just one of those things.
+    int enchant_points = RNG::range(2, std::max<int>(2, (danger_level / 2)));
+    ItemPtr generated_item = igm.generate_item(am, generation_vec, enchant_points);
     TilePtr tile = map->at(c);
     tile->get_items()->add(generated_item);
   }

@@ -37,7 +37,7 @@ ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int 
   return generation_vec;
 }
 
-ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVec& generation_vec)
+ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVec& generation_vec, const int enchant_points)
 {
   ItemPtr generated_item;
   Game& game = Game::instance();
@@ -64,6 +64,23 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
     else if (type == ITEM_TYPE_AMMUNITION)
     {
       generated_item->set_quantity(RNG::dice(2, 12));
+    }
+
+    if (enchant_points > 0)
+    {
+      bool enchant_all_at_once = RNG::percent_chance(50);
+
+      if (enchant_all_at_once)
+      {
+        generated_item->enchant(enchant_points);
+      }
+      else
+      {
+        for (int i = 0; i < enchant_points; i++)
+        {
+          generated_item->enchant(1);
+        }
+      }
     }
   }
 

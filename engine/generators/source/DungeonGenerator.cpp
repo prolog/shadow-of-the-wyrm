@@ -387,9 +387,9 @@ bool DungeonGenerator::potentially_generate_room_features(MapPtr map, const int 
 
     FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, altar_range);
 
-    // Pick a tile in the room range, and try to place it there.
-    int altar_y = RNG::range(start_row, size_y);
-    int altar_x = RNG::range(start_col, size_x);
+    // Altars are important.  Center it in the room.
+    int altar_y = (start_row + size_y) / 2;
+    int altar_x = (start_col + size_x) / 2;
 
     TilePtr tile = map->at(altar_y, altar_x);
 

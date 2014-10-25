@@ -148,7 +148,8 @@ bool Generator::generate_initial_items(MapPtr map, const int danger_level)
 
   while ((current_items_placed < num_items_to_place) && (unsuccessful_attempts < CreationUtils::MAX_UNSUCCESSFUL_ITEM_ATTEMPTS))
   {
-    ItemPtr generated_item = igm.generate_item(am, generation_vec);
+    int enchant_points = RNG::range(0, (danger_level / 2));
+    ItemPtr generated_item = igm.generate_item(am, generation_vec, enchant_points);
 
     bool placed_item = false;
 
