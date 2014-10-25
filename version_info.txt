@@ -33,6 +33,9 @@ SavageLands v0.2.9 "Aethelric"
 
 - New creatures: oread.
 
+- Bug fixes: when descending down in dungeons, the wrong map type was
+  generated.
+
 Savage Lands v0.2.8 "Adda"
 - Version declared September 13, 2014.  Version finalized October 15, 2014.
 
