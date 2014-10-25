@@ -418,9 +418,20 @@ bool Item::can_enchant() const
   return can_enchant;
 }
 
+// Enchanting an item with a given number of points is assumed to both
+// always work, and to not take up any of the possible number of
+// enchantments an item can have.  This allows great items to be
+// generated, and to allow additional enchantments as well.
+bool Item::enchant(const int enchant_points)
+{
+  do_enchant_item(enchant_points);
+
+  return true;
+}
+
 bool Item::enchant(const float enchant_mult)
 {
-  bool enchanted = true;
+  bool enchanted = false;
   
   if (can_enchant())
   {

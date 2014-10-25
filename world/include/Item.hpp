@@ -125,6 +125,11 @@ class Item : public ISerializable
     // number of allowable enchantments by one.
     virtual bool enchant(const float enchant_mult);
 
+    // Assume an enchant_mult of 1.0 and allow a single point of enchantment.
+    // This function is used when generating better items based on the
+    // danger level of the current location.
+    bool enchant(const int enchant_points);
+
     void set_remaining_enchants(const Statistic& new_remaining);
     Statistic get_remaining_enchants() const;
 
