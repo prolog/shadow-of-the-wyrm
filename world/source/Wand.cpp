@@ -182,7 +182,8 @@ void Wand::do_enchant_item(const int points)
     Item::do_enchant_item(points);
   }
 
-  int additional_charges = points / 2;
+  // Always get at least one additional charge.
+  int additional_charges = std::min<int>(points / 2, 1);
   set_charges(charges.get_base() + additional_charges);
 }
 
