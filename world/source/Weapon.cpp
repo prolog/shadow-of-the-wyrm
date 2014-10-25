@@ -137,6 +137,12 @@ void Weapon::do_enchant_item(const int points)
 
   EnchantWeaponType type_of_enchant = static_cast<EnchantWeaponType>(RNG::range(ENCHANT_WEAPON_TO_HIT, ENCHANT_WEAPON_BOTH));
 
+  if (points == 1 && type_of_enchant == ENCHANT_WEAPON_BOTH)
+  {
+    // Too few points to do both
+    type_of_enchant = static_cast<EnchantWeaponType>(RNG::range(ENCHANT_WEAPON_TO_HIT, ENCHANT_WEAPON_BOTH));
+  }
+
   switch (type_of_enchant)
   {
     case ENCHANT_WEAPON_TO_HIT:

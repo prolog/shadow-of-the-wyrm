@@ -31,6 +31,8 @@ SavageLands v0.2.9 "Aethelric"
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).
 
+- New creatures: oread.
+
 Savage Lands v0.2.8 "Adda"
 - Version declared September 13, 2014.  Version finalized October 15, 2014.
 

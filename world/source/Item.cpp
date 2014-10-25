@@ -447,8 +447,13 @@ Statistic Item::get_remaining_enchants() const
 
 void Item::do_enchant_item(const int points)
 {
+  if (points < 1)
+  {
+    return;
+  }
+
   // Enchant between 1 and 3 resistances.
-  int num_resists = RNG::range(1, 3);
+  int num_resists = RNG::range(1, std::min<int>(points, 3));
 
   vector<DamageType> resvul_dt_vec;
   vector<DamageType> unused_dt_vec;
