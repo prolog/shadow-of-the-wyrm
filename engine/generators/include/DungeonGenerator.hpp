@@ -23,17 +23,19 @@ class DungeonGenerator : public SL::Generator
 
     // Corridor and room placement routines.  True if the attempt succeeded, false otherwise.
     virtual bool    check_range(MapPtr map, int start_row, int start_col, int size_rows, int size_cols);
-    virtual bool    generate_and_place_room(MapPtr map, int& start_y, int& start_x, int& height, int& width);
-    virtual bool    place_room(MapPtr map, int start_row, int start_col, int size_rows, int size_cols);
+    virtual std::pair<bool, std::vector<std::string>> generate_and_place_room(MapPtr map, int& start_y, int& start_x, int& height, int& width);
+    virtual std::pair<bool, std::vector<std::string>> place_room(MapPtr map, int start_row, int start_col, int size_rows, int size_cols);
     virtual bool    place_doorway(MapPtr map, int row, int col);
     virtual bool    place_doorways(MapPtr current_map);
     virtual bool    place_staircases(MapPtr current_map);
-    virtual bool    potentially_generate_room_features(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
+    virtual std::vector<std::string> potentially_generate_room_features(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
+    virtual bool    potentially_generate_altar(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
+    virtual bool    potentially_generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
 
     bool connect_rooms(MapPtr map, const Room& room1, const Room& room2);
     bool is_tile_adjacent_to_room_tile(const Dimensions& dim, const int row, const int col);
     bool tile_exists_outside_of_room(const int row, const int col, const bool check_connected, const bool check_unconnected);
-    
+
     void initialize_and_seed_cheat_vectors(const Dimensions& dim);
 
     const int DEFAULT_MIN_HEIGHT;
@@ -47,6 +49,7 @@ class DungeonGenerator : public SL::Generator
 
     std::vector<Room> unconnected_rooms;
     std::vector<Room> connected_rooms;
+    std::set<std::string> dungeon_features;
     
     // These are used to cheat the otherwise uniformly random approach:
     // By seeding them with some values, dungeons are generated that still

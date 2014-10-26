@@ -50,6 +50,7 @@ class MapUtils
     
     static bool hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
     static bool adjacent_creature_exists(CreaturePtr creature, MapPtr map);
+    static bool adjacent_creature_exists(const int row, const int col, MapPtr map);
     static bool adjacent_hostile_creature_exists(const std::string& creature_id_for_threat_check, MapPtr map);
 
     static void place_creature_on_previous_or_first_available_location(MapPtr map, CreaturePtr creature, const std::string& player_loc);

@@ -1,8 +1,10 @@
 #include "CoordUtils.hpp"
 #include "Room.hpp"
 
-Room::Room(int nid, int nx1, int nx2, int ny1, int ny2)
-: id(nid), x1(nx1), x2(nx2), y1(ny1), y2(ny2)
+using namespace std;
+
+Room::Room(const vector<string>& new_features, int nid, int nx1, int nx2, int ny1, int ny2)
+: id(nid), x1(nx1), x2(nx2), y1(ny1), y2(ny2), features(new_features)
 {
 }
 
@@ -33,6 +35,11 @@ Coordinate Room::get_centre() const
   c.second = (x1 + x2) / 2;
   
   return c;
+}
+
+bool Room::has_feature(const string& feature_name)
+{
+  return (find(features.begin(), features.end(), feature_name) != features.end());
 }
 
 bool Room::compare_rooms(const Room& r1, const Room& r2)

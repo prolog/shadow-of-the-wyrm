@@ -27,6 +27,10 @@ SavageLands v0.2.9 "Aethelric"
 - There is now a small chance for an altar to be generated on a given
   dungeon level.
 
+- Dungeons can now also contain zoos, which are rooms filled with
+  creatures suitable for the given map and danger level.  There can be
+  at most one zoo per level.
+
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).

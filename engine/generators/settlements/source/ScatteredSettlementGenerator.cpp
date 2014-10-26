@@ -3,6 +3,8 @@
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
+using namespace std;
+
 ScatteredSettlementGenerator::ScatteredSettlementGenerator(MapPtr new_base_map)
 : BaseSettlementGenerator(new_base_map)
 {
@@ -42,7 +44,8 @@ bool ScatteredSettlementGenerator::can_building_be_placed(const int row, const i
 {
   bool placement_allowed = true;
 
-  Room cur(-1, col, col+width, row, row+height);
+  vector<string> no_features;
+  Room cur(no_features, -1, col, col+width, row, row+height);
   
   for (const Room& r : current_buildings)
   {
@@ -64,6 +67,7 @@ bool ScatteredSettlementGenerator::can_building_be_placed(const int row, const i
 // buildings with all the other buildings generated so far.
 void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
 {
+  vector<string> no_features;
   Dimensions dim    = map->size();
   int rows          = dim.get_y();
   int cols          = dim.get_x();
@@ -88,7 +92,7 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
     {
       generate_building_if_possible(map, row, row+height, col, col+width, door_direction);
       
-      Room room(attempts, col, col+width, row, row+width);
+      Room room(no_features, attempts, col, col+width, row, row+width);
       current_buildings.push_back(room);
       
       buildings++;

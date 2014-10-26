@@ -7,7 +7,10 @@
 #include "FeatureGenerator.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
+#include "MapUtils.hpp"
+#include "RoomFeatures.hpp"
 #include "TileGenerator.hpp"
+#include "VaultPopulator.hpp"
 #include "RNG.hpp"
 
 using namespace std;
@@ -80,12 +83,12 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
   {
     int start_y, start_x, height, width;
     
-    bool placement_success = generate_and_place_room(map, start_y, start_x, height, width);
+    pair<bool, vector<string>> placement_success = generate_and_place_room(map, start_y, start_x, height, width);
         
-    if (placement_success)
+    if (placement_success.first)
     {
       cur_num_rooms++;
-      Room new_room(cur_num_rooms, start_x, start_x+width, start_y, start_y+height);
+      Room new_room(placement_success.second, cur_num_rooms, start_x, start_x+width, start_y, start_y+height);
       failure_counter = 0;
 
       if (cur_num_rooms > 1)
@@ -123,7 +126,7 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
   return true;
 }
 
-bool DungeonGenerator::generate_and_place_room(MapPtr map, int& start_y, int& start_x, int& height, int& width)
+pair<bool, vector<string>> DungeonGenerator::generate_and_place_room(MapPtr map, int& start_y, int& start_x, int& height, int& width)
 {
   Dimensions dim = map->size();
   int max_y = dim.get_y();
@@ -347,11 +350,11 @@ bool DungeonGenerator::check_range(MapPtr map, int start_row, int start_col, int
   return true;
 }
 
-bool DungeonGenerator::place_room(MapPtr map, int start_row, int start_col, int size_rows, int size_cols)
+pair<bool, vector<string>> DungeonGenerator::place_room(MapPtr map, int start_row, int start_col, int size_rows, int size_cols)
 {
   if (!check_range(map, start_row-2, start_col-2, size_rows+3, size_cols+3))
   {
-    return false;
+    return make_pair<bool, vector<string>>(false, {});
   }
   
   // We can place the room:  
@@ -366,15 +369,40 @@ bool DungeonGenerator::place_room(MapPtr map, int start_row, int start_col, int 
     }
   }
 
-  potentially_generate_room_features(map, start_row, size_y, start_col, size_x);
+  vector<string> room_features = potentially_generate_room_features(map, start_row, size_y, start_col, size_x);
   
-  return true;
+  return make_pair(true, room_features);
 }
 
 // Do the various checks necessary to decide whether room features should be
 // generated.  If yes, go and generate the features, adding them to the
 // room.
-bool DungeonGenerator::potentially_generate_room_features(MapPtr map, const int start_row, const int size_y, const int start_col, const int size_x)
+vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, const int start_row, const int size_y, const int start_col, const int size_x)
+{
+  vector<string> room_features;
+
+  // JCD TODO: Eventually, I need a mechanism for tracking room features
+  // so the player can know in advance...
+  if (potentially_generate_altar(map, start_row, size_y, start_col, size_x))
+  {
+    room_features.push_back(RoomFeatures::ROOM_FEATURE_ALTAR);
+    dungeon_features.insert(RoomFeatures::ROOM_FEATURE_ALTAR);
+  }
+
+  // Each floor of the dungeon can have at most one zoo.
+  if (dungeon_features.find(RoomFeatures::ROOM_FEATURE_ZOO) == dungeon_features.end())
+  {
+    if (potentially_generate_zoo(map, start_row, size_y, start_col, size_x))
+    {
+      room_features.push_back(RoomFeatures::ROOM_FEATURE_ZOO);
+      dungeon_features.insert(RoomFeatures::ROOM_FEATURE_ZOO);
+    }
+  }
+
+  return room_features;
+}
+
+bool DungeonGenerator::potentially_generate_altar(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   // Small chance of generating an altar.
   // As with nethack, chance is 1 in 60 per room.
@@ -388,8 +416,8 @@ bool DungeonGenerator::potentially_generate_room_features(MapPtr map, const int 
     FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, altar_range);
 
     // Altars are important.  Center it in the room.
-    int altar_y = (start_row + size_y) / 2;
-    int altar_x = (start_col + size_x) / 2;
+    int altar_y = (start_row + end_row-1) / 2;
+    int altar_x = (start_col + end_col-1) / 2;
 
     TilePtr tile = map->at(altar_y, altar_x);
 
@@ -397,6 +425,20 @@ bool DungeonGenerator::potentially_generate_room_features(MapPtr map, const int 
     {
       tile->set_feature(altar);
     }
+  }
+
+  return generate_feature;
+}
+
+bool DungeonGenerator::potentially_generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  bool generate_feature = RNG::x_in_y_chance(1, 60);
+
+  if (generate_feature)
+  {
+    VaultPopulator vp;
+    vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(make_pair(start_row, start_col), make_pair(end_row-1, end_col-1));
+    vp.populate_vault_creatures(map, TILE_TYPE_DUNGEON_COMPLEX, coords, danger_level, RARITY_COMMON);
   }
 
   return generate_feature;
@@ -427,8 +469,8 @@ bool DungeonGenerator::place_doorways(MapPtr map)
       {
         DoorPtr doorway = FeatureGenerator::generate_door();
 
-        // Generate doors closed by default.
-        if (RNG::percent_chance(50))
+        // Generate doors closed by default, or when there's a creature nearby
+        if (RNG::percent_chance(50) || MapUtils::adjacent_creature_exists(row, col, map))
         {
           doorway->get_state_ref().set_state(ENTRANCE_TYPE_CLOSED);
         }
@@ -492,7 +534,10 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   while (!location_found)
   {
     Room r = connected_rooms.at(RNG::range(0, connected_rooms.size()-1));
-    if (r == first_staircase_room) continue;
+    
+    // Stairs need to be in different rooms, and up staircases shouldn't be
+    // in a zoo, or else the player will get pummelled.
+    if (r == first_staircase_room || r.has_feature(RoomFeatures::ROOM_FEATURE_ZOO)) continue;
     
     y = RNG::range(r.y1+1, r.y2-2);
     x = RNG::range(r.x1+1, r.x2-2);

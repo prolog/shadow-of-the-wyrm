@@ -66,6 +66,7 @@ namespace SL
 
       std::string map_exit_id;
       TileType map_terrain_type;
+      int danger_level;
       std::map<std::string, std::string> additional_properties;
   };
 }
