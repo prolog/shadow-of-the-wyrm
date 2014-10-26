@@ -21,28 +21,33 @@ using namespace std;
 using namespace SL;
 
 Generator::Generator(const string& new_map_exit_id, const TileType new_map_terrain_type)
-: map_exit_id(new_map_exit_id), map_terrain_type(new_map_terrain_type)
+: map_exit_id(new_map_exit_id), map_terrain_type(new_map_terrain_type), danger_level(0)
 {
 }
 
 // Always calls the version with both a danger_level and dimensions, so that
 // everything is set up properly.
-MapPtr Generator::generate_and_initialize(const int danger_level)
+MapPtr Generator::generate_and_initialize(const int danger)
 {
+  danger_level = danger;
   Dimensions dim;
-  return generate_and_initialize(danger_level, dim);
+  return generate_and_initialize(danger, dim);
 }
 
-MapPtr Generator::generate_and_initialize(const int danger_level, const Depth& depth)
+MapPtr Generator::generate_and_initialize(const int danger, const Depth& depth)
 {
+  danger_level = danger;
+
   Dimensions dim;
   dim.set_depth(depth);
 
   return generate_and_initialize(danger_level, dim);
 }
 
-MapPtr Generator::generate_and_initialize(const int danger_level, const Dimensions& dim)
+MapPtr Generator::generate_and_initialize(const int danger, const Dimensions& dim)
 {
+  danger_level = danger;
+
   MapPtr map = generate(dim);
   initialize(map, danger_level);
   

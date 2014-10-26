@@ -529,6 +529,23 @@ bool MapUtils::adjacent_creature_exists(CreaturePtr creature, MapPtr map)
   return false;
 }
 
+bool MapUtils::adjacent_creature_exists(const int row, const int col, MapPtr map)
+{
+  vector<Coordinate> coords = CoordUtils::get_adjacent_map_coordinates(map->size(), row, col);
+
+  for (const auto& coord : coords)
+  {
+    TilePtr tile = map->at(coord);
+
+    if (tile && tile->has_creature())
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 // Check to see if there is a hostile creature adjacent to the creature represented by
 // the given creature ID.
 bool MapUtils::adjacent_hostile_creature_exists(const string& creature_id, MapPtr map)

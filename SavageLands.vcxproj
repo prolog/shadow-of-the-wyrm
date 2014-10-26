@@ -479,6 +479,7 @@
     <ClInclude Include="engine\generators\include\PillarTypes.hpp" />
     <ClInclude Include="engine\generators\include\RoadGenerator.hpp" />
     <ClInclude Include="engine\generators\include\Room.hpp" />
+    <ClInclude Include="engine\generators\include\RoomFeatures.hpp" />
     <ClInclude Include="engine\generators\include\RuinsGenerator.hpp" />
     <ClInclude Include="engine\generators\include\ScatteredGraveyardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\ScrubGenerator.hpp" />
@@ -1612,6 +1613,7 @@
     <ClCompile Include="engine\generators\source\PillarGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\source\RoadGenerator.cpp" />
     <ClCompile Include="engine\generators\source\Room.cpp" />
+    <ClCompile Include="engine\generators\source\RoomFeatures.cpp" />
     <ClCompile Include="engine\generators\source\RuinsGenerator.cpp" />
     <ClCompile Include="engine\generators\source\ScatteredGraveyardGenerator.cpp" />
     <ClCompile Include="engine\generators\source\ScrubGenerator.cpp" />

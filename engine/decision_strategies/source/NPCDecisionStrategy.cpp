@@ -99,48 +99,52 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
   
   Coordinate c_this   = view_map->get_location(this_creature_id);
   TilePtr this_tile   = view_map->at(c_this);
-  CreaturePtr this_cr = this_tile->get_creature();
 
-  while (t_it != threat_map.rend())
+  if (this_tile != nullptr)
   {
-    set<string> creature_ids = t_it->second;
-    
-    for (const string& threatening_creature_id : creature_ids)
+    CreaturePtr this_cr = this_tile->get_creature();
+
+    while (t_it != threat_map.rend())
     {
-      // Check the view map to see if the creature exists
-      if (view_map->has_creature(threatening_creature_id))
+      set<string> creature_ids = t_it->second;
+
+      for (const string& threatening_creature_id : creature_ids)
       {
-        // Check if adjacent to this_creature_id
-        Coordinate c_threat = view_map->get_location(threatening_creature_id);
+        // Check the view map to see if the creature exists
+        if (view_map->has_creature(threatening_creature_id))
+        {
+          // Check if adjacent to this_creature_id
+          Coordinate c_threat = view_map->get_location(threatening_creature_id);
 
-        if (CoordUtils::are_coordinates_adjacent(c_this, c_threat))
-        {
-          Direction direction = CoordUtils::get_direction(c_this, c_threat);
-          
-          // create movement command, return.
-          CommandPtr command = std::make_shared<AttackCommand>(direction, -1);
-          return command;
-        }
-        else
-        {
-          if (can_move())
+          if (CoordUtils::are_coordinates_adjacent(c_this, c_threat))
           {
-            SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST, this_cr);
-            Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
+            Direction direction = CoordUtils::get_direction(c_this, c_threat);
 
-            if (direction != DIRECTION_NULL)
+            // create movement command, return.
+            CommandPtr command = std::make_shared<AttackCommand>(direction, -1);
+            return command;
+          }
+          else
+          {
+            if (can_move())
             {
-              CommandPtr command = std::make_shared<MovementCommand>(direction, -1);
-              return command;
+              SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST, this_cr);
+              Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
+
+              if (direction != DIRECTION_NULL)
+              {
+                CommandPtr command = std::make_shared<MovementCommand>(direction, -1);
+                return command;
+              }
             }
           }
         }
       }
+
+      // Try the next threat level.
+      t_it++;
     }
-    
-    // Try the next threat level.
-    t_it++;
-  }  
+  }
   
   return no_attack;
 }

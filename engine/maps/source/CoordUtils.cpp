@@ -260,7 +260,8 @@ vector<Coordinate> CoordUtils::get_coordinates_in_range(const Coordinate& top_le
 
   if (size > 0)
   {
-    vector<Coordinate> coords(size);
+    vector<Coordinate> coords;
+    coords.reserve(size);
 
     for (int row = top_left.first; row <= bottom_right.first; row++)
     {

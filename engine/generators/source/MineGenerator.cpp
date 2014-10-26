@@ -41,6 +41,7 @@ MapType MineGenerator::get_map_type() const
 
 void MineGenerator::generate_rooms(MapPtr map)
 {
+  vector<string> no_features;
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -54,7 +55,7 @@ void MineGenerator::generate_rooms(MapPtr map)
   
     if (generate_room(map, start_y, start_x, height, width))
     {
-      Room room(i, start_x, start_x+width, start_y, start_y+height);
+      Room room(no_features, i, start_x, start_x+width, start_y, start_y+height);
       room.centre_room = main_hallway_centre;
       rooms.push_back(room);
     }
@@ -129,7 +130,8 @@ void MineGenerator::dig_floor(MapPtr map, const vector<Coordinate>& tiles_to_dig
 void MineGenerator::generate_main_mining_corridor(MapPtr map)
 {
   TileGenerator tg;
-
+  
+  vector<string> no_features;
   Dimensions dim = map->size();
   int rows = dim.get_y();
   int cols = dim.get_x();
@@ -141,7 +143,7 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
   int xpos = orig_xpos;
   int end_y = rows - RNG::range(1,2);
   int up_staircase_y = RNG::range(start_y+2, end_y-2);
-  main_hallway_centre = std::make_shared<Room>(-1 /* id doesn't matter */, start_y, end_y, orig_xpos, orig_xpos);
+  main_hallway_centre = std::make_shared<Room>(no_features, -1 /* id doesn't matter */, start_y, end_y, orig_xpos, orig_xpos);
 
   bool stairway_placed = false;
   int incr_value = 1;
