@@ -2,6 +2,7 @@
 #include "CreatureGenerationManager.hpp"
 #include "CreationUtils.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "ItemGenerationManager.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
@@ -32,7 +33,8 @@ void VaultPopulator::populate_vault_creatures(MapPtr map, const TileType tile_ty
   ActionManager& am = game.get_action_manager_ref();
 
   CreatureGenerationManager cgm;
-  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, danger_level, rarity);
+  int min_danger_level = std::max<int>(1, (danger_level/2));
+  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, min_danger_level, danger_level, rarity);
 
   if (generation_map.size() > 0)
   {
@@ -40,7 +42,7 @@ void VaultPopulator::populate_vault_creatures(MapPtr map, const TileType tile_ty
     {
       TilePtr tile = map->at(c.first, c.second);
       CreaturePtr creature = cgm.generate_creature(am, generation_map);
-      MapUtils::add_or_update_location(map, creature, c);
+      GameUtils::add_new_creature_to_map(game, creature, map, c);
     }
   }
 }

@@ -31,6 +31,10 @@ SavageLands v0.2.9 "Aethelric"
   creatures suitable for the given map and danger level.  There can be
   at most one zoo per level.
 
+- As well, dungeons can contain a treasure room, a room with a handful of 
+  out of depth creatures and an item, sort of a less dangerous version of 
+  a vault.
+
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).

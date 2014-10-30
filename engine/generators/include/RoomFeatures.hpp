@@ -9,6 +9,7 @@ class RoomFeatures
   public:
     static const std::string ROOM_FEATURE_ZOO;
     static const std::string ROOM_FEATURE_ALTAR;
+    static const std::string ROOM_FEATURE_TREASURE_ROOM;
 
   protected:
     RoomFeatures();

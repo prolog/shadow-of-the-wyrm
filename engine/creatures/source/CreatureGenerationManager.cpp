@@ -12,7 +12,7 @@ CreatureGenerationManager::CreatureGenerationManager()
 {
 }
 
-CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const int danger_level, const Rarity rarity)
+CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const int min_danger_level, const int max_danger_level, const Rarity rarity)
 {
   CreatureGenerationMap generation_map;
 
@@ -29,7 +29,7 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
     CreaturePtr creature = c_it->second;
     CreatureGenerationValues cgvals = cgv_map[creature_id];
       
-    if (does_creature_match_generation_criteria(cgvals, map_terrain_type, danger_level, rarity))
+    if (does_creature_match_generation_criteria(cgvals, map_terrain_type, min_danger_level, max_danger_level, rarity))
     {
       generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
     }
@@ -85,11 +85,14 @@ CreaturePtr CreatureGenerationManager::generate_creature(ActionManager& am, Crea
   return generated_creature;
 }
 
-bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const int danger_level, const Rarity rarity)
+bool CreatureGenerationManager::does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType terrain_type, const int min_danger_level, const int max_danger_level, const Rarity rarity)
 {
+  int cgv_danger_level = cgv.get_danger_level();
+
   if ( cgv.is_terrain_type_allowed(terrain_type)
-    && cgv.get_danger_level() >= 0 /* Exclude danger level of -1, which means "don't generate" */
-    && cgv.get_danger_level() <= danger_level
+    && cgv_danger_level >= 0 /* Exclude danger level of -1, which means "don't generate" */
+    && cgv_danger_level > min_danger_level
+    && cgv_danger_level <= max_danger_level
     && cgv.get_rarity() <= rarity )
   {
     return true;
