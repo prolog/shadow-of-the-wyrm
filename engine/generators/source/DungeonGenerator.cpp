@@ -10,6 +10,7 @@
 #include "MapUtils.hpp"
 #include "RoomFeatures.hpp"
 #include "TileGenerator.hpp"
+#include "TreasureRoomPopulator.hpp"
 #include "VaultPopulator.hpp"
 #include "RNG.hpp"
 
@@ -388,14 +389,21 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
     room_features.push_back(RoomFeatures::ROOM_FEATURE_ALTAR);
     dungeon_features.insert(RoomFeatures::ROOM_FEATURE_ALTAR);
   }
-
   // Each floor of the dungeon can have at most one zoo.
-  if (dungeon_features.find(RoomFeatures::ROOM_FEATURE_ZOO) == dungeon_features.end())
+  else if (dungeon_features.find(RoomFeatures::ROOM_FEATURE_ZOO) == dungeon_features.end())
   {
     if (potentially_generate_zoo(map, start_row, size_y, start_col, size_x))
     {
       room_features.push_back(RoomFeatures::ROOM_FEATURE_ZOO);
       dungeon_features.insert(RoomFeatures::ROOM_FEATURE_ZOO);
+    }
+  }
+  else if (dungeon_features.find(RoomFeatures::ROOM_FEATURE_TREASURE_ROOM) == dungeon_features.end())
+  {
+    if (potentially_generate_treasure_room(map, start_row, size_y, start_col, size_x))
+    {
+      room_features.push_back(RoomFeatures::ROOM_FEATURE_TREASURE_ROOM);
+      dungeon_features.insert(RoomFeatures::ROOM_FEATURE_TREASURE_ROOM);
     }
   }
 
@@ -439,6 +447,19 @@ bool DungeonGenerator::potentially_generate_zoo(MapPtr map, const int start_row,
     VaultPopulator vp;
     vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(make_pair(start_row, start_col), make_pair(end_row-1, end_col-1));
     vp.populate_vault_creatures(map, TILE_TYPE_DUNGEON_COMPLEX, coords, danger_level, RARITY_COMMON);
+  }
+
+  return generate_feature;
+}
+
+bool DungeonGenerator::potentially_generate_treasure_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
+{
+  bool generate_feature = RNG::x_in_y_chance(1, 60);
+
+  if (generate_feature)
+  {
+    TreasureRoomPopulator trp;
+    trp.populate_treasure_room(map, TILE_TYPE_DUNGEON_COMPLEX, danger_level, start_row, end_row, start_col, end_col);
   }
 
   return generate_feature;

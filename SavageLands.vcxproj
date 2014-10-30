@@ -490,6 +490,7 @@
     <ClInclude Include="engine\generators\include\StreamGenerator.hpp" />
     <ClInclude Include="engine\generators\include\TerrainGeneratorFactory.hpp" />
     <ClInclude Include="engine\generators\include\TileGenerator.hpp" />
+    <ClInclude Include="engine\generators\include\TreasureRoomPopulator.hpp" />
     <ClInclude Include="engine\generators\include\VaultPopulator.hpp" />
     <ClInclude Include="engine\generators\include\WildOrchardGenerator.hpp" />
     <ClInclude Include="engine\generators\include\WorldGenerator.hpp" />
@@ -1624,6 +1625,7 @@
     <ClCompile Include="engine\generators\source\StreamGenerator.cpp" />
     <ClCompile Include="engine\generators\source\TerrainGeneratorFactory.cpp" />
     <ClCompile Include="engine\generators\source\TileGenerator.cpp" />
+    <ClCompile Include="engine\generators\source\TreasureRoomPopulator.cpp" />
     <ClCompile Include="engine\generators\source\unit_tests\CellularAutomataGenerator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>

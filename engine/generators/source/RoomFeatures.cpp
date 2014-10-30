@@ -12,4 +12,5 @@ RoomFeatures::~RoomFeatures()
 
 const string RoomFeatures::ROOM_FEATURE_ZOO = "ROOM_FEATURE_ZOO";
 const string RoomFeatures::ROOM_FEATURE_ALTAR = "ROOM_FEATURE_ALTAR";
+const string RoomFeatures::ROOM_FEATURE_TREASURE_ROOM = "ROOM_FEATURE_TREASURE_ROOM";
 
