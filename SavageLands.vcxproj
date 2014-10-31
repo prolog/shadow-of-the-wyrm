@@ -549,6 +549,7 @@
     <ClInclude Include="engine\include\SavageLandsEngine.hpp" />
     <ClInclude Include="engine\include\ScoreFile.hpp" />
     <ClInclude Include="engine\include\ScoreFileEntry.hpp" />
+    <ClInclude Include="engine\include\ScriptConstants.hpp" />
     <ClInclude Include="engine\include\SelectionUtils.hpp" />
     <ClInclude Include="engine\include\SettingKeybindings.hpp" />
     <ClInclude Include="engine\include\Settings.hpp" />
@@ -722,6 +723,7 @@
     <ClInclude Include="engine\XML\include\XMLAmuletReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLArmourReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLBoatReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLScriptsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSpellbookReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLClassesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLConfigurationReader.hpp" />
@@ -2010,6 +2012,7 @@
     <ClCompile Include="engine\XML\source\XMLAmuletReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLArmourReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLBoatReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLScriptsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpellbookReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLClassesReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLConfigurationReader.cpp" />

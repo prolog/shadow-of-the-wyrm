@@ -640,6 +640,30 @@ string Game::get_sid_ini_filename() const
   return sid_ini_filename;
 }
 
+void Game::set_scripts(const map<string, string>& new_scripts)
+{
+  scripts = new_scripts;
+}
+
+string Game::get_script(const string& script_name)
+{
+  string script;
+
+  auto script_it = scripts.find(script_name);
+
+  if (script_it != scripts.end())
+  {
+    script = script_it->second;
+  }
+
+  return script;
+}
+
+map<string, string> Game::get_scripts() const
+{
+  return scripts;
+}
+
 WorldPtr Game::get_current_world()
 {
   WorldPtr world;

@@ -9,6 +9,7 @@
 #include "XMLRacesReader.hpp"
 #include "XMLSpellsReader.hpp"
 #include "XMLTilesReader.hpp"
+#include "XMLScriptsReader.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
 
@@ -29,6 +30,7 @@ class XMLConfigurationReader
     std::pair<CreatureMap, CreatureGenerationValuesMap> get_creatures();
     SpellMap get_spells();
     std::pair<ItemMap, GenerationValuesMap> get_items();    
+    std::map<std::string, std::string> get_scripts();
     std::vector<DisplayTile> get_tile_info();
     std::vector<MapPtr> get_custom_maps(const std::string& directory, const std::string& filename_pattern);
 
@@ -47,4 +49,5 @@ class XMLConfigurationReader
     XMLRacesReader races_reader;
     XMLSpellsReader spells_reader;
     XMLTilesReader tiles_reader;
+    XMLScriptsReader scripts_reader;
 };

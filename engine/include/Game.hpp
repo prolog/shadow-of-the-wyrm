@@ -105,6 +105,10 @@ class Game : public ISerializable
     void set_sid_ini_filename(const std::string& new_sid_ini_filename);
     std::string get_sid_ini_filename() const;
 
+    void set_scripts(const std::map<std::string, std::string>& new_scripts);
+    std::string get_script(const std::string& script_name);
+    std::map<std::string, std::string> get_scripts() const;
+
     WorldPtr get_current_world();
 
     LoadedMapDetails& get_loaded_map_details_ref();
@@ -210,6 +214,9 @@ class Game : public ISerializable
     // program runs.
     std::string sid_ini_filename;
     
+    // Scripts to be run at particular times: after character creation, etc.
+    std::map<std::string, std::string> scripts;
+
     // The command factory and keyboard map
     CommandFactoryPtr game_command_factory;
     KeyboardCommandMapPtr game_kb_command_map;
