@@ -57,6 +57,13 @@ pair<ItemMap, GenerationValuesMap> XMLConfigurationReader::get_items()
   return items;
 }
 
+map<string, string> XMLConfigurationReader::get_scripts()
+{
+  XMLNode scripts_node = XMLUtils::get_next_element_by_local_name(root, "Scripts");
+  map<string, string> scripts = scripts_reader.get_scripts(scripts_node);
+  return scripts;
+}
+
 RaceMap XMLConfigurationReader::get_races()
 {
   XMLNode races_node = XMLUtils::get_next_element_by_local_name(root, "Races");

@@ -19168,4 +19168,7 @@
 			</Item>
 		</MiscItems>
 	</Items>
+	<Scripts>
+		<SpecialDaysScript>misc/special_days.lua</SpecialDaysScript>
+	</Scripts>
 </SavageLands>

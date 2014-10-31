@@ -126,6 +126,9 @@ void SavageLandsEngine::setup_game()
   game.set_items(items.first);
   game.set_item_generation_values(items.second);
 
+  map<string, string> scripts = reader.get_scripts();
+  game.set_scripts(scripts);
+
   DeityMap deities = reader.get_deities();      
   game.set_deities(deities);
 
