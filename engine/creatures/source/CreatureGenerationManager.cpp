@@ -14,6 +14,7 @@ CreatureGenerationManager::CreatureGenerationManager()
 
 CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_map(const TileType map_terrain_type, const int min_danger_level, const int max_danger_level, const Rarity rarity)
 {
+  int min_danger = min_danger_level;
   CreatureGenerationMap generation_map;
 
   CreaturePtr generated_creature;
@@ -22,17 +23,22 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
   CreatureMap creatures = game.get_creatures_ref();
   CreatureGenerationValuesMap cgv_map = game.get_creature_generation_values_ref();
     
-  // Build the map of creatures available for generation given the danger level and rarity
-  for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
+  while (generation_map.empty() && (min_danger > 0))
   {
-    string creature_id   = c_it->first;
-    CreaturePtr creature = c_it->second;
-    CreatureGenerationValues cgvals = cgv_map[creature_id];
-      
-    if (does_creature_match_generation_criteria(cgvals, map_terrain_type, min_danger_level, max_danger_level, rarity))
+    // Build the map of creatures available for generation given the danger level and rarity
+    for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
     {
-      generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
+      string creature_id = c_it->first;
+      CreaturePtr creature = c_it->second;
+      CreatureGenerationValues cgvals = cgv_map[creature_id];
+
+      if (does_creature_match_generation_criteria(cgvals, map_terrain_type, min_danger, max_danger_level, rarity))
+      {
+        generation_map.insert(make_pair(creature_id, make_pair(creature, cgvals)));
+      }
     }
+
+    min_danger /= 2;
   }
   
   return generation_map;
