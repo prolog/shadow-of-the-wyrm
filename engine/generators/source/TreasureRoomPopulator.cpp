@@ -106,7 +106,7 @@ void TreasureRoomPopulator::generate_treasure(MapPtr current_map, const int dang
 
       // Generate an item.
       ItemGenerationManager igm;
-      ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level, RARITY_RARE);
+      ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level / 2, danger_level, RARITY_RARE);
 
       ItemPtr generated_item = igm.generate_item(am, generation_vec, RNG::range(2, 4));
 

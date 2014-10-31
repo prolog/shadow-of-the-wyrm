@@ -54,7 +54,7 @@ void VaultPopulator::populate_vault_items(MapPtr map, const vector<Coordinate>& 
   ActionManager& am = game.get_action_manager_ref();
 
   ItemGenerationManager igm;
-  ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level, rarity);
+  ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level / 2, danger_level, rarity);
 
   for (const Coordinate& c : coords)
   {

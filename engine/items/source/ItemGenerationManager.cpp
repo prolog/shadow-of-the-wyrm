@@ -11,8 +11,9 @@ ItemGenerationManager::ItemGenerationManager()
 }
 
 // Generate an item generation map for the given danger level and rarity.
-ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int danger_level, const Rarity rarity)
+ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int min_danger_level, const int max_danger_level, const Rarity rarity)
 {
+  int min_danger = min_danger_level;
   ItemGenerationVec generation_vec;
 
   ItemPtr generated_creature;
@@ -20,18 +21,23 @@ ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int 
   
   ItemMap items = game.get_items_ref();
   GenerationValuesMap igv_map = game.get_item_generation_values_ref();
-    
-  // Build the map of creatures available for generation given the danger level and rarity
-  for (ItemMap::iterator i_it = items.begin(); i_it != items.end(); i_it++)
+
+  while (generation_vec.empty() && min_danger > 0)
   {
-    string item_id          = i_it->first;
-    ItemPtr item            = i_it->second;
-    GenerationValues igvals = igv_map[item_id];
-      
-    if (does_item_match_generation_criteria(igvals, danger_level, rarity))
+    // Build the map of creatures available for generation given the danger level and rarity
+    for (ItemMap::iterator i_it = items.begin(); i_it != items.end(); i_it++)
     {
-      generation_vec.push_back(make_pair(item_id, make_pair(item, igvals)));
+      string item_id = i_it->first;
+      ItemPtr item = i_it->second;
+      GenerationValues igvals = igv_map[item_id];
+
+      if (does_item_match_generation_criteria(igvals, min_danger, max_danger_level, rarity))
+      {
+        generation_vec.push_back(make_pair(item_id, make_pair(item, igvals)));
+      }
     }
+
+    min_danger /= 2;
   }
   
   return generation_vec;
@@ -88,10 +94,13 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
 }
 
 // Check to see if the item matches the given danger level and rarity.
-bool ItemGenerationManager::does_item_match_generation_criteria(const GenerationValues& cgv, const int danger_level, const Rarity rarity)
+bool ItemGenerationManager::does_item_match_generation_criteria(const GenerationValues& cgv, const int min_danger_level, const int max_danger_level, const Rarity rarity)
 {
-  if ( cgv.get_danger_level() >= 0 /* Exclude danger level of -1, which means "don't generate" */
-    && cgv.get_danger_level() <= danger_level
+  int cgv_danger_level = cgv.get_danger_level();
+
+  if ( cgv_danger_level >= 0 /* Exclude danger level of -1, which means "don't generate" */
+    && cgv_danger_level >= min_danger_level
+    && cgv_danger_level <= max_danger_level
     && cgv.get_rarity() <= rarity )
   {
     return true;
