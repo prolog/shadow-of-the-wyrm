@@ -17,30 +17,44 @@ void TreasureRoomPopulator::populate_treasure_room(MapPtr current_map, const Til
 {
   if (current_map)
   {
-    generate_corner_pillars(current_map, start_row, end_row_wall, start_col, end_col_wall);
+    generate_corner_features(current_map, start_row, end_row_wall, start_col, end_col_wall);
     generate_creatures(current_map, tile_type, danger_level, start_row, end_row_wall, start_col, end_col_wall);
     generate_treasure(current_map, danger_level, start_row, end_row_wall, start_col, end_col_wall);
   }
 }
 
-// Generate the pillars at the edge of the room.
-void TreasureRoomPopulator::generate_corner_pillars(MapPtr current_map, const int start_row, const int end_row_wall, const int start_col, const int end_col_wall)
+// Generate pillars or fountains at the edge of the room.
+void TreasureRoomPopulator::generate_corner_features(MapPtr current_map, const int start_row, const int end_row_wall, const int start_col, const int end_col_wall)
 {
-  FeaturePtr pillar = FeatureGenerator::generate_fire_pillar();
-  TilePtr pillar_tile = current_map->at(start_row, start_col);
-  pillar_tile->set_feature(pillar);
+  FeaturePtr feat;
+  
+  if (RNG::percent_chance(33))
+  {
+     feat = FeatureGenerator::generate_fire_pillar();
+  }
+  else if (RNG::percent_chance(33))
+  {
+    feat = FeatureGenerator::generate_fountain();
+  }
+  else
+  {
+    feat = FeatureGenerator::generate_sarcophagus(MATERIAL_TYPE_STEEL);
+  }
 
-  pillar = FeatureGenerator::generate_fire_pillar();
-  pillar_tile = current_map->at(start_row, end_col_wall - 1);
-  pillar_tile->set_feature(pillar);
+  TilePtr feat_tile = current_map->at(start_row, start_col);
+  feat_tile->set_feature(feat);
+  
+  feat = FeaturePtr(feat->clone());
+  feat_tile = current_map->at(start_row, end_col_wall - 1);
+  feat_tile->set_feature(feat);
 
-  pillar = FeatureGenerator::generate_fire_pillar();
-  pillar_tile = current_map->at(end_row_wall - 1, start_col);
-  pillar_tile->set_feature(pillar);
+  feat = FeaturePtr(feat->clone());
+  feat_tile = current_map->at(end_row_wall - 1, start_col);
+  feat_tile->set_feature(feat);
 
-  pillar = FeatureGenerator::generate_fire_pillar();
-  pillar_tile = current_map->at(end_row_wall - 1, end_col_wall - 1);
-  pillar_tile->set_feature(pillar);
+  feat = FeaturePtr(feat->clone());
+  feat_tile = current_map->at(end_row_wall - 1, end_col_wall - 1);
+  feat_tile->set_feature(feat);
 }
 
 // Generate the creatures in the treasure room.
