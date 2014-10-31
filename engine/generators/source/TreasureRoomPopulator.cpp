@@ -28,6 +28,7 @@ void TreasureRoomPopulator::generate_corner_pillars(MapPtr current_map, const in
 {
   FeaturePtr pillar = FeatureGenerator::generate_fire_pillar();
   TilePtr pillar_tile = current_map->at(start_row, start_col);
+  pillar_tile->set_feature(pillar);
 
   pillar = FeatureGenerator::generate_fire_pillar();
   pillar_tile = current_map->at(start_row, end_col_wall - 1);
@@ -38,7 +39,7 @@ void TreasureRoomPopulator::generate_corner_pillars(MapPtr current_map, const in
   pillar_tile->set_feature(pillar);
 
   pillar = FeatureGenerator::generate_fire_pillar();
-  pillar_tile = current_map->at(end_row_wall - 1, end_row_wall - 1);
+  pillar_tile = current_map->at(end_row_wall - 1, end_col_wall - 1);
   pillar_tile->set_feature(pillar);
 }
 
