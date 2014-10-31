@@ -9,7 +9,7 @@ map<string, string> XMLScriptsReader::get_scripts(const XMLNode& scripts_node)
 
   if (!scripts_node.is_null())
   {
-    string special_day_script = XMLUtils::get_child_node_value(scripts_node, "SpecialDayScript");
+    string special_day_script = XMLUtils::get_child_node_value(scripts_node, "SpecialDaysScript");
     scripts[ScriptConstants::SPECIAL_DAY_SCRIPT] = special_day_script;
   }
 

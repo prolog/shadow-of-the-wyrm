@@ -35,6 +35,9 @@ SavageLands v0.2.9 "Aethelric"
   out of depth creatures and an item, sort of a less dangerous version of 
   a vault.
 
+- Characters get a bonus to all statistics when created on Creator's
+  Day (September 1).
+
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).

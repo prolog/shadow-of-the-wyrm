@@ -3228,8 +3228,8 @@
     <ClInclude Include="engine\XML\include\XMLScriptsReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\include\ScriptConstants.hpp">
-      <Filter>Header Files\engine\include</Filter>
+    <ClInclude Include="engine\scripting\include\ScriptConstants.hpp">
+      <Filter>Header Files\engine\scripting\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6226,6 +6226,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLScriptsReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\scripting\source\ScriptConstants.cpp">
+      <Filter>Source Files\engine\scripting\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -17,6 +17,7 @@
 #include "NamingScreen.hpp"
 #include "Naming.hpp"
 #include "RaceSelectionScreen.hpp"
+#include "ScriptConstants.hpp"
 #include "Serialization.hpp"
 #include "Settings.hpp"
 #include "SexSelectionScreen.hpp"
@@ -263,6 +264,9 @@ bool SavageLandsEngine::process_new_game()
     item_randomizer.randomize(game.items);
 
     game.create_new_world(player); 
+
+    // Run the "special day" script.
+    game.get_script_engine_ref().execute(game.get_script(ScriptConstants::SPECIAL_DAY_SCRIPT));
   }
 
   return true;
