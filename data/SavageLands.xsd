@@ -1327,11 +1327,12 @@
 				Incorporeal (Wraith Form) = 14
 				Enchanting = 15
 				Flying = 16
+				Gain Attributes = 17
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="16"/>
+		<xs:maxInclusive value="17"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">

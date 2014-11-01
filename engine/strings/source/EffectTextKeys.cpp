@@ -100,6 +100,11 @@ string EffectTextKeys::get_cursed_enchant_message(const string& item_desc)
   return msg;
 }
 
+string EffectTextKeys::get_gain_attributes_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_GAIN_ATTRIBUTES_PLAYER, EFFECT_GAIN_ATTRIBUTES_MONSTER);
+}
+
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
 const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
@@ -120,3 +125,5 @@ const string EffectTextKeys::EFFECT_ATTEMPT_ENCHANT_ARTIFACT = "EFFECT_ATTEMPT_E
 const string EffectTextKeys::EFFECT_ENCHANT_ITEM_MAX = "EFFECT_ENCHANT_ITEM_MAX";
 const string EffectTextKeys::EFFECT_ENCHANT = "EFFECT_ENCHANT";
 const string EffectTextKeys::EFFECT_CURSED_ENCHANT = "EFFECT_CURSED_ENCHANT";
+const string EffectTextKeys::EFFECT_GAIN_ATTRIBUTES_PLAYER = "EFFECT_GAIN_ATTRIBUTES_PLAYER";
+const string EffectTextKeys::EFFECT_GAIN_ATTRIBUTES_MONSTER = "EFFECT_GAIN_ATTRIBUTES_MONSTER";

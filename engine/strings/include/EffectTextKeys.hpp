@@ -13,6 +13,7 @@ class EffectTextKeys
     static std::string get_max_enchanted_message(const std::string& item_desc);
     static std::string get_enchant_message(const std::string& item_desc);
     static std::string get_cursed_enchant_message(const std::string& item_desc);
+    static std::string get_gain_attributes_effect_message(const std::string& monster_desc_sid, const bool is_player);
 
     static const std::string EFFECT_NULL;
     static const std::string EFFECT_SWEET_TASTE;
@@ -41,5 +42,7 @@ class EffectTextKeys
     static const std::string EFFECT_ENCHANT_ITEM_MAX;
     static const std::string EFFECT_ENCHANT;
     static const std::string EFFECT_CURSED_ENCHANT;
+    static const std::string EFFECT_GAIN_ATTRIBUTES_PLAYER;
+    static const std::string EFFECT_GAIN_ATTRIBUTES_MONSTER;
 };
 

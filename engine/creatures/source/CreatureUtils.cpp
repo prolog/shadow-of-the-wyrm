@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ReligionManager.hpp"
+#include "StatisticTextKeys.hpp"
 
 using namespace std;
 
@@ -117,5 +118,145 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
         }
       }
     }
+  }
+}
+
+void CreatureUtils::incr_str(CreaturePtr creature, const bool add_msg)
+{
+  Statistic cr_str = creature->get_strength();
+  int new_base_str = cr_str.get_base() + 1;
+
+  int cur_str = cr_str.get_current();
+
+  cr_str.set_base(new_base_str);
+  cr_str.set_current(cur_str - (cur_str - new_base_str));
+
+  creature->set_strength(cr_str);
+
+  if (add_msg)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_STRENGTH));
+    manager.send();
+  }
+}
+
+void CreatureUtils::incr_dex(CreaturePtr creature, const bool add_msg)
+{
+  Statistic cr_dex = creature->get_dexterity();
+  int new_base_dex = cr_dex.get_base() + 1;
+
+  int cur_dex = cr_dex.get_current();
+
+  cr_dex.set_base(new_base_dex);
+  cr_dex.set_current(cur_dex - (cur_dex - new_base_dex));
+
+  creature->set_dexterity(cr_dex);
+
+  if (add_msg)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_DEXTERITY));
+    manager.send();
+  }
+}
+
+void CreatureUtils::incr_agi(CreaturePtr creature, const bool add_msg)
+{
+  Statistic cr_agi = creature->get_agility();
+  int new_base_agi = cr_agi.get_base() + 1;
+
+  int cur_agi = cr_agi.get_current();
+
+  cr_agi.set_base(new_base_agi);
+  cr_agi.set_current(cur_agi - (cur_agi - new_base_agi));
+
+  creature->set_agility(cr_agi);
+
+  if (add_msg)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_AGILITY));
+    manager.send();
+  }
+}
+
+void CreatureUtils::incr_hea(CreaturePtr creature, const bool add_msg)
+{
+  Statistic cr_hea = creature->get_health();
+  int new_base_hea = cr_hea.get_base() + 1;
+
+  int cur_hea = cr_hea.get_current();
+
+  cr_hea.set_base(new_base_hea);
+  cr_hea.set_current(cur_hea - (cur_hea - new_base_hea));
+
+  creature->set_health(cr_hea);
+
+  if (add_msg)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_HEALTH));
+    manager.send();
+  }
+}
+
+void CreatureUtils::incr_int(CreaturePtr creature, const bool add_msg)
+{
+  Statistic cr_int = creature->get_intelligence();
+  int new_base_int = cr_int.get_base() + 1;
+
+  int cur_int = cr_int.get_current();
+
+  cr_int.set_base(new_base_int);
+  cr_int.set_current(cur_int - (cur_int - new_base_int));
+
+  creature->set_intelligence(cr_int);
+
+  if (add_msg)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_INTELLIGENCE));
+    manager.send();
+  }
+}
+
+void CreatureUtils::incr_wil(CreaturePtr creature, const bool add_msg)
+{
+  Statistic cr_wil = creature->get_willpower();
+  int new_base_wil = cr_wil.get_base() + 1;
+
+  int cur_wil = cr_wil.get_current();
+
+  cr_wil.set_base(new_base_wil);
+  cr_wil.set_current(cur_wil - (cur_wil - new_base_wil));
+
+  creature->set_willpower(cr_wil);
+
+  if (add_msg)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_WILLPOWER));
+    manager.send();
+  }
+}
+
+void CreatureUtils::incr_cha(CreaturePtr creature, const bool add_msg)
+{
+  Statistic cr_cha = creature->get_charisma();
+  int new_base_cha = cr_cha.get_base() + 1;
+
+  int cur_cha = cr_cha.get_current();
+
+  cr_cha.set_base(new_base_cha);
+  cr_cha.set_current(cur_cha - (cur_cha - new_base_cha));
+
+  creature->set_charisma(cr_cha);
+
+  if (add_msg)
+  {
+    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+    manager.add_new_message(StringTable::get(StatisticTextKeys::STATISTIC_GAIN_CHARISMA));
+    manager.send();
   }
 }

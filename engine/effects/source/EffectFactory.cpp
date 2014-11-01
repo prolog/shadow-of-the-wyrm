@@ -3,6 +3,7 @@
 #include "EtherEffect.hpp"
 #include "EnchantingEffect.hpp"
 #include "FlyingEffect.hpp"
+#include "GainAttributesEffect.hpp"
 #include "HasteEffect.hpp"
 #include "HealingEffect.hpp"
 #include "IdentifyEffect.hpp"
@@ -25,7 +26,7 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  static_assert(EFFECT_TYPE_LAST == 17, "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EFFECT_TYPE_LAST == 18, "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -78,6 +79,9 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
       break;
     case EFFECT_TYPE_FLYING:
       effect = std::make_shared<FlyingEffect>();
+      break;
+    case EFFECT_TYPE_GAIN_ATTRIBUTES:
+      effect = std::make_shared<GainAttributesEffect>();
       break;
     case EFFECT_TYPE_NULL:
     default:
