@@ -38,6 +38,20 @@ SavageLands v0.2.9 "Aethelric"
 - Characters get a bonus to all statistics when created on Creator's
   Day (September 1).
 
+- Items that are found in more dangerous places are more powerful,
+  receiving a random number of base enchantments (not counting against
+  the total for the item) up to half the current danger level with 
+  uniform probability.
+
+- Added a new effect, gain attributes, and created a Potion of Gain
+  Attributes.
+  
+  - Cursed: do nothing.
+
+  - Uncursed: +1 to two statistics.
+
+  - Blessed: +1 to all statistics.
+
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).

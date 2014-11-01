@@ -412,6 +412,8 @@
     <ClInclude Include="engine\effects\include\AdditionalEffectMessages.hpp" />
     <ClInclude Include="engine\effects\include\EnchantingEffect.hpp" />
     <ClInclude Include="engine\effects\include\FlyingEffect.hpp" />
+    <ClInclude Include="engine\effects\include\GainAttributesEffect.hpp" />
+    <ClInclude Include="engine\effects\include\GainAttributesTypes.hpp" />
     <ClInclude Include="engine\effects\include\HasteEffect.hpp" />
     <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp" />
@@ -1535,6 +1537,7 @@
     <ClCompile Include="engine\effects\source\AdditionalEffectMessages.cpp" />
     <ClCompile Include="engine\effects\source\EnchantingEffect.cpp" />
     <ClCompile Include="engine\effects\source\FlyingEffect.cpp" />
+    <ClCompile Include="engine\effects\source\GainAttributesEffect.cpp" />
     <ClCompile Include="engine\effects\source\HasteEffect.cpp" />
     <ClCompile Include="engine\effects\source\IncorporealEffect.cpp" />
     <ClCompile Include="engine\effects\source\RechargingEffect.cpp" />
