@@ -7,6 +7,7 @@
 #include "Colours.hpp"
 #include "Conversion.hpp"
 #include "CursesAnimationFactory.hpp"
+#include "DisplaySettings.hpp"
 #include "EquipmentTextKeys.hpp"
 #include "Log.hpp"
 #include "MapUtils.hpp"
@@ -104,7 +105,10 @@ void CursesDisplay::destroy_screen(WINDOW *screen)
 // settings, also.
 bool CursesDisplay::uses_colour() const
 {
-  return can_use_colour;
+  string colour_prop = get_property(DisplaySettings::DISPLAY_SETTING_COLOUR);
+  bool colour = String::to_bool(colour_prop);
+
+  return colour;
 }
 
 // Initialize the base ncurses colours.
@@ -898,6 +902,8 @@ WINDOW* CursesDisplay::get_current_screen()
 
 bool CursesDisplay::serialize(ostream& stream) const
 {
+  Display::serialize(stream);
+
   Serialize::write_uint(stream, TERMINAL_MAX_ROWS);
   Serialize::write_uint(stream, TERMINAL_MAX_COLS);
   Serialize::write_uint(stream, FIELD_SPACE);
@@ -916,6 +922,8 @@ bool CursesDisplay::serialize(ostream& stream) const
 
 bool CursesDisplay::deserialize(istream& stream)
 {
+  Display::deserialize(stream);
+
   Serialize::read_uint(stream, TERMINAL_MAX_ROWS);
   Serialize::read_uint(stream, TERMINAL_MAX_COLS);
   Serialize::read_uint(stream, FIELD_SPACE);

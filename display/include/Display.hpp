@@ -73,11 +73,19 @@ class Display : public ISerializable
 
 	  virtual void clear_screen() = 0;
 
+    // Property methods.
+    virtual void set_properties(const std::map<std::string, std::string>& new_properties);
+    virtual void set_property(const std::string& property, const std::string& value);
+    virtual std::string get_property(const std::string& property) const;
+
     // ISerializable methods
-    virtual bool serialize(std::ostream& stream) const override = 0;
-    virtual bool deserialize(std::istream& stream) override = 0;
+    virtual bool serialize(std::ostream& stream) const override;
+    virtual bool deserialize(std::istream& stream) override;
 
     virtual Display* clone() = 0;
+
+  protected:
+    std::map<std::string, std::string> display_properties;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override = 0;

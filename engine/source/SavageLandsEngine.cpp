@@ -6,6 +6,7 @@
 #include "Creature.hpp"
 #include "CreatureFactory.hpp"
 #include "DeitySelectionScreen.hpp"
+#include "DisplaySettings.hpp"
 #include "DisplayTile.hpp"
 #include "FileConstants.hpp"
 #include "Game.hpp"
@@ -89,6 +90,7 @@ void SavageLandsEngine::start()
 
   if (state_manager.start_new_game())
   {
+    setup_display(settings);
     setup_game();
   }
 
@@ -108,6 +110,17 @@ void SavageLandsEngine::set_controller(ControllerPtr new_controller)
 void SavageLandsEngine::set_display(DisplayPtr new_display)
 {
   display = new_display;
+}
+
+// Set up the Display based on the ini settings.
+void SavageLandsEngine::setup_display(const Settings& settings)
+{
+  if (display)
+  {
+    // Use newfangled colour?  Or traditional mono?
+    string colour = DisplaySettings::DISPLAY_SETTING_COLOUR;
+    display->set_property(colour, settings.get_setting(colour));
+  }
 }
 
 // Set up everything needed by the Game
