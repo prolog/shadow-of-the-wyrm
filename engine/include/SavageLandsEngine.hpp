@@ -1,6 +1,7 @@
 #pragma once
 #include "Controller.hpp"
 #include "Display.hpp"
+#include "Settings.hpp"
 
 enum EngineStateEnum
 {
@@ -43,7 +44,8 @@ class SavageLandsEngine
     #ifdef MAP_TESTER
     friend int main(int argc, char** argv);
     #endif
-
+    
+    void setup_display(const Settings& settings);
     void setup_game();
     void setup_player_and_world();
 

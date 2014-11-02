@@ -97,7 +97,7 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
 
   if ( cgv.is_terrain_type_allowed(terrain_type)
     && cgv_danger_level >= 0 /* Exclude danger level of -1, which means "don't generate" */
-    && cgv_danger_level > min_danger_level
+    && cgv_danger_level >= min_danger_level
     && cgv_danger_level <= max_danger_level
     && cgv.get_rarity() <= rarity )
   {
