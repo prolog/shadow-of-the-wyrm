@@ -98,6 +98,11 @@ bool NullInventory::has_item_type(const ItemType type) const
   return false;
 }
 
+bool NullInventory::has_item_with_property(const string& additional_property_name) const
+{
+  return false;
+}
+
 bool NullInventory::serialize(ostream& stream) const
 {
   return true;

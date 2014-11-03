@@ -781,6 +781,7 @@
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
+    <ClInclude Include="world\include\SmithingConstants.hpp" />
     <ClInclude Include="world\include\Spellbook.hpp" />
     <ClInclude Include="world\include\Calendar.hpp" />
     <ClInclude Include="world\include\Class.hpp" />
@@ -2174,6 +2175,7 @@
     <ClCompile Include="world\source\ConsumableConstants.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
+    <ClCompile Include="world\source\SmithingConstants.cpp" />
     <ClCompile Include="world\source\Spellbook.cpp" />
     <ClCompile Include="world\source\Calendar.cpp" />
     <ClCompile Include="world\source\Class.cpp" />

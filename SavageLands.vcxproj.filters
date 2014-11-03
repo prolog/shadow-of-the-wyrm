@@ -3249,6 +3249,9 @@
     <ClInclude Include="engine\features\include\ForgeManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\SmithingConstants.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6268,6 +6271,9 @@
     </ClCompile>
     <ClCompile Include="engine\features\source\ForgeManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\SmithingConstants.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

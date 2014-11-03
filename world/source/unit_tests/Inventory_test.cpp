@@ -1,5 +1,7 @@
 #include "gtest/gtest.h"
+#include "Conversion.hpp"
 #include "Spellbook.hpp"
+#include "SmithingConstants.hpp"
 #include "Tool.hpp"
 
 TEST(SL_World_Inventory, serialization_id)
@@ -28,6 +30,26 @@ TEST(SL_World_Inventory, saveload)
   sinv2->deserialize(iss);
 
   EXPECT_TRUE(*inv == *sinv2);
+}
+
+TEST(SL_World_Inventory, has_item_with_property)
+{
+  Inventory inv;
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  book->set_id("book");
+
+  inv.add(book);
+
+  EXPECT_FALSE(inv.has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
+
+  ToolPtr tool = std::make_shared<Tool>();
+  tool->set_id("ore");
+  tool->set_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, Integer::to_string(MATERIAL_TYPE_IRON));
+
+  inv.add(tool);
+
+  EXPECT_TRUE(inv.has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
 }
 
 TEST(SL_World_Inventory, items_are_persisted)

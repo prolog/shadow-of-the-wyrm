@@ -243,6 +243,20 @@ bool Inventory::has_item_type(const ItemType type) const
   return false;
 }
 
+// Does the inventory have at least one item with a given property?
+bool Inventory::has_item_with_property(const string& item_property) const
+{
+  for (ItemPtr item : items)
+  {
+    if (item && item->has_additional_property(item_property))
+    {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 bool Inventory::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, items.size());
