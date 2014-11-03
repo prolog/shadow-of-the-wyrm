@@ -5,6 +5,7 @@
 #include "EvilAltar.hpp"
 #include "FirePillar.hpp"
 #include "Fountain.hpp"
+#include "Forge.hpp"
 #include "Gate.hpp"
 #include "GoodAltar.hpp"
 #include "NeutralAltar.hpp"
@@ -104,4 +105,11 @@ SarcophagusPtr FeatureGenerator::generate_sarcophagus(const MaterialType materia
   SarcophagusPtr sarcophagus = std::make_shared<Sarcophagus>(material_type);
 
   return sarcophagus;
+}
+
+// Generate a forge
+FeaturePtr FeatureGenerator::generate_forge()
+{
+  FeaturePtr forge = std::make_shared<Forge>();
+  return forge;
 }

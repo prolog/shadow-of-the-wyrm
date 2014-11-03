@@ -123,6 +123,7 @@
 			<xs:element name="Barrel" type="tns:Barrel"/>
 			<xs:element name="Door" type="tns:Door"/>
 			<xs:element name="FirePillar" type="tns:FirePillar"/>
+			<xs:element name="Forge" type="tns:Forge"/>
 			<xs:element name="Fountain" type="tns:Fountain"/>
 			<xs:element name="Pew" type="tns:Pew"/>
 			<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
@@ -170,6 +171,13 @@
 </xs:complexType>
 <xs:complexType name="FirePillar">
 	<xs:annotation><xs:documentation>Defines a Fire Pillar feature.</xs:documentation></xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Forge">
+	<xs:annotation><xs:documentation>Defines a Forge feature.</xs:documentation></xs:annotation>
 	<xs:complexContent>
 		<xs:extension base="tns:Feature">
 		</xs:extension>
