@@ -115,6 +115,15 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
       XMLResistancesReader rr;
       item->set_resistances(rr.get_resistances(resistances_node));
     }
+
+    // Properties
+    XMLNode properties_node = XMLUtils::get_next_element_by_local_name(item_node, "Properties");
+    if (!properties_node.is_null())
+    {
+      map<string, string> addl_props;
+      parse_properties(addl_props, properties_node);
+      item->set_additional_properties(addl_props);
+    }
   }
 }
 

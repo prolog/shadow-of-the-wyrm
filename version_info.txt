@@ -52,11 +52,16 @@ SavageLands v0.2.9 "Aethelric"
 
   - Blessed: +1 to all statistics.
 
+- Smithing is now possible, as long as the following conditions are
+  met: Smithing skill > 0, wielding a club/hammer, ingots in inventory.
+
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).
 
 - New creatures: oread.
+
+- New items: gain attributes potion, iron ingot, steel ingot.
 
 - New features: forge.
 

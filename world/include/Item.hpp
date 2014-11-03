@@ -133,6 +133,7 @@ class Item : public ISerializable
     void set_remaining_enchants(const Statistic& new_remaining);
     Statistic get_remaining_enchants() const;
 
+    void set_additional_properties(const std::map<std::string, std::string>& additional_properties);
     void set_additional_property(const std::string& property_name, const std::string& property_value);
     std::string get_additional_property(const std::string& property_name) const;
     bool has_additional_property(const std::string& property_name) const;
