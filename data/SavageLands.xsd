@@ -689,6 +689,17 @@
 		   or
 		3. A list of string-string pairs, which represent a race/item-ID override of #1.
   -->
+<xs:complexType name="Properties">
+	<xs:sequence>
+		<xs:element name="Property" type="tns:Property" minOccurs="0" maxOccurs="unbounded"/>
+	</xs:sequence>
+</xs:complexType>
+<xs:complexType name="Property">
+	<xs:sequence>
+		<xs:element name="Name" type="xs:string"/>
+		<xs:element name="Value" type="xs:string"/>
+	</xs:sequence>
+</xs:complexType>
 <xs:complexType name="InitialItem">
 	<xs:sequence>
 		<xs:element name="ID" type="tns:Identifier" minOccurs="0"/>
@@ -778,6 +789,7 @@
 		<xs:element name="DangerLevel" type="xs:integer"/>
 		<xs:element name="Rarity" type="tns:Rarity" minOccurs="0" default="0"/>
 		<xs:element ref="tns:Resistances" minOccurs="0"/>
+		<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 	</xs:sequence>
 	<xs:attribute name="id" type="tns:Identifier"/>
 </xs:complexType>

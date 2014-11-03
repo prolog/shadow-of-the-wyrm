@@ -526,6 +526,11 @@ void Item::do_enchant_item(const int points)
   }
 }
 
+void Item::set_additional_properties(const map<string, string>& new_additional_properties)
+{
+  additional_properties = new_additional_properties;
+}
+
 void Item::set_additional_property(const string& property_name, const string& property_value)
 {
   additional_properties[property_name] = property_value;

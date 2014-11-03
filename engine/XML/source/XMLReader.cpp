@@ -65,3 +65,16 @@ void XMLReader::parse_status_ailments(StatusAilments& status_ailment, const XMLN
   status_ailment.set_ailments(ailments);
   status_ailment.set_override_defaults(true);
 }
+
+void XMLReader::parse_properties(map<string, string>& properties, const XMLNode& properties_node) const
+{
+  vector<XMLNode> property_nodes = XMLUtils::get_elements_by_local_name(properties_node, "Property");
+
+  for (const XMLNode& property_node : property_nodes)
+  {
+    string property_name = XMLUtils::get_child_node_value(property_node, "Name");
+    string property_value = XMLUtils::get_child_node_value(property_node, "Value");
+
+    properties[property_name] = property_value;
+  }
+}

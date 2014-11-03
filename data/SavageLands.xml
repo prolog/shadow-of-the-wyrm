@@ -19184,6 +19184,34 @@
 				<Material>1</Material>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="_iron_ingot">
+				<DescriptionSID>IRON_INGOT_SID</DescriptionSID>
+				<UsageDescriptionSID>IRON_INGOT_USAGE_SID</UsageDescriptionSID>
+				<Value>5</Value>
+				<Weight><Pounds>10</Pounds></Weight>
+				<Material>3</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>sm_con_mat_type</Name>
+						<Value>3</Value>
+					</Property>
+				</Properties>
+			</Item>
+			<Item id="_steel_ingot">
+				<DescriptionSID>STEEL_INGOT_SID</DescriptionSID>
+				<UsageDescriptionSID>STEEL_INGOT_USAGE_SID</UsageDescriptionSID>
+				<Value>25</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<Material>6</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>sm_con_mat_type</Name>
+						<Value>6</Value>
+					</Property>
+				</Properties>
+			</Item>
 		</MiscItems>
 	</Items>
 	<Scripts>
