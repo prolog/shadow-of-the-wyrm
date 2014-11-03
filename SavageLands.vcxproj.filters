@@ -3240,6 +3240,12 @@
     <ClInclude Include="display\include\DisplaySettings.hpp">
       <Filter>Header Files\display\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\tiles\features\include\Forge.hpp">
+      <Filter>Header Files\world\tiles\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6247,6 +6253,15 @@
     </ClCompile>
     <ClCompile Include="display\source\DisplaySettings.cpp">
       <Filter>Source Files\display\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Forge.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Forge_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLForgeReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

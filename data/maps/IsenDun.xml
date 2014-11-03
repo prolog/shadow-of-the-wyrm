@@ -323,5 +323,12 @@
 				<Orientation>0</Orientation>
 			</Pew>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>3</Row>
+				<Col>23</Col>
+			</Coord>
+			<Forge/>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>

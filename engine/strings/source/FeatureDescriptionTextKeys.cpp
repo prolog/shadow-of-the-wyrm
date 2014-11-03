@@ -26,3 +26,4 @@ const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_PETRIFIED_CORPSE_ST
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SARCOPHAGUS        = "FEATURE_DESCRIPTION_SARCOPHAGUS";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SARCOPHAGUS_NO_INSCR = "FEATURE_DESCRIPTION_SARCOPHAGUS_NO_INSCR";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BARREL             = "FEATURE_DESCRIPTION_BARREL";
+const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FORGE              = "FEATURE_DESCRIPTION_FORGE";

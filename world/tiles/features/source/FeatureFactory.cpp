@@ -16,6 +16,7 @@
 #include "Pew.hpp"
 #include "RegularStatues.hpp"
 #include "Sarcophagus.hpp"
+#include "Forge.hpp"
 
 using namespace std;
 
@@ -92,6 +93,7 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr petrified_corpse   = std::make_shared<PetrifiedCorpseStatue>();
   FeaturePtr sarcophagus        = std::make_shared<Sarcophagus>();
   FeaturePtr barrel             = std::make_shared<Barrel>();
+  FeaturePtr forge              = std::make_shared<Forge>();
 
   feature_map = FeatureSerializationMap{{CLASS_ID_GOOD_ALTAR, good_altar},
                                         {CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -111,7 +113,7 @@ void FeatureFactory::initialize_feature_map()
                                         {CLASS_ID_PEW, pew},
                                         {CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse},
                                         {CLASS_ID_SARCOPHAGUS, sarcophagus},
-                                        {CLASS_ID_BARREL, barrel}};
-  // JCD FIXME
+                                        {CLASS_ID_BARREL, barrel},
+                                        {CLASS_ID_FORGE, forge}};
 }
 

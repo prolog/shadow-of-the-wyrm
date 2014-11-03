@@ -58,6 +58,8 @@ SavageLands v0.2.9 "Aethelric"
 
 - New creatures: oread.
 
+- New features: forge.
+
 - Bug fixes: when descending down in dungeons, the wrong map type was
   generated.
 

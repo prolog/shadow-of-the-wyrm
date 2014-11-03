@@ -711,6 +711,7 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLBarrelReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLDoorReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFirePillarReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFountainReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureFactory.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp" />
@@ -895,6 +896,7 @@
     <ClInclude Include="world\tiles\features\include\FeatureFactory.hpp" />
     <ClInclude Include="world\tiles\features\include\FeatureGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\FirePillar.hpp" />
+    <ClInclude Include="world\tiles\features\include\Forge.hpp" />
     <ClInclude Include="world\tiles\features\include\Fountain.hpp" />
     <ClInclude Include="world\tiles\features\include\Gate.hpp" />
     <ClInclude Include="world\tiles\features\include\GoodAltar.hpp" />
@@ -2004,6 +2006,7 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLBarrelReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLDoorReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFirePillarReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLForgeReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFountainReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureFactory.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureReaders.cpp" />
@@ -2472,6 +2475,7 @@
     <ClCompile Include="world\tiles\features\source\FeatureFactory.cpp" />
     <ClCompile Include="world\tiles\features\source\FeatureGenerator.cpp" />
     <ClCompile Include="world\tiles\features\source\FirePillar.cpp" />
+    <ClCompile Include="world\tiles\features\source\Forge.cpp" />
     <ClCompile Include="world\tiles\features\source\Fountain.cpp" />
     <ClCompile Include="world\tiles\features\source\Gate.cpp" />
     <ClCompile Include="world\tiles\features\source\GoodAltar.cpp" />
@@ -2521,6 +2525,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Forge_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Fountain_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
