@@ -48,6 +48,7 @@ class IInventory : public ISerializable
     virtual uint size() const = 0;
 
     virtual bool has_item_type(const ItemType type) const = 0;
+    virtual bool has_item_with_property(const std::string& additional_property_name) const = 0;
 
     virtual std::list<ItemPtr>& get_items_ref() = 0;
     virtual const std::list<ItemPtr>& get_items_cref() const = 0;

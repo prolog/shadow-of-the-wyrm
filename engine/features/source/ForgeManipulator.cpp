@@ -1,6 +1,7 @@
 #include "ForgeManipulator.hpp"
 #include "ActionTextKeys.hpp"
 #include "MessageManagerFactory.hpp"
+#include "SmithingConstants.hpp"
 #include "WeaponManager.hpp"
 
 using namespace std;
@@ -49,6 +50,16 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
 
       return false;
     }
+  }
+
+  // Have a chunk of ore or something similar?
+  IInventoryPtr inv = creature->get_inventory();
+  if (!inv->has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE))
+  {
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_NO_INGOTS));
+    manager.send();
+
+    return false;
   }
 
   // The creature's got some skill in smithing, is wielding the appropriate
