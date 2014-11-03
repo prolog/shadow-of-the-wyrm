@@ -295,9 +295,6 @@
     <Filter Include="Source Files\engine\serialization">
       <UniqueIdentifier>{e9c949f8-a9f0-46a5-8cf6-0262830affed}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\engine\skills">
-      <UniqueIdentifier>{528e0612-7a65-4322-a70e-fe1c95cd1226}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\engine\source">
       <UniqueIdentifier>{07a71702-5214-421b-97d9-a13fe70d7454}</UniqueIdentifier>
     </Filter>
@@ -420,9 +417,6 @@
     </Filter>
     <Filter Include="Source Files\engine\source\unit_tests">
       <UniqueIdentifier>{66044dd9-0e96-4071-ae2e-e839c5e55250}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\engine\skills\source">
-      <UniqueIdentifier>{315aaa84-7056-40fb-812f-4c4a4934f430}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\engine\serialization\source">
       <UniqueIdentifier>{c1da6536-7541-4781-a98e-9487bce3d719}</UniqueIdentifier>
@@ -711,6 +705,12 @@
     </Filter>
     <Filter Include="Source Files\engine\features\source">
       <UniqueIdentifier>{e1822443-2569-4967-af85-77250baebc5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\skills">
+      <UniqueIdentifier>{528e0612-7a65-4322-a70e-fe1c95cd1226}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\engine\skills\source">
+      <UniqueIdentifier>{315aaa84-7056-40fb-812f-4c4a4934f430}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -3245,6 +3245,9 @@
     </ClInclude>
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\features\include\ForgeManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6262,6 +6265,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLForgeReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\ForgeManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

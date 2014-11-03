@@ -1,5 +1,6 @@
 #include "IFeatureManipulatorFactory.hpp"
 #include "DefaultFeatureManipulator.hpp"
+#include "ForgeManipulator.hpp"
 #include "PewManipulator.hpp"
 #include "GoodAltarManipulator.hpp"
 #include "NeutralAltarManipulator.hpp"
@@ -38,6 +39,10 @@ IFeatureManipulatorPtr IFeatureManipulatorFactory::create_manipulator(FeaturePtr
     else if (class_id == CLASS_ID_BARREL)
     {
       manipulator = std::make_shared<BarrelManipulator>(feature);
+    }
+    else if (class_id == CLASS_ID_FORGE)
+    {
+      manipulator = std::make_shared<ForgeManipulator>(feature);
     }
     // All other features
     else

@@ -432,6 +432,7 @@
     <ClInclude Include="engine\features\include\DefaultFeatureManipulator.hpp" />
     <ClInclude Include="engine\features\include\DoorGateManipulator.hpp" />
     <ClInclude Include="engine\features\include\EvilAltarManipulator.hpp" />
+    <ClInclude Include="engine\features\include\ForgeManipulator.hpp" />
     <ClInclude Include="engine\features\include\GoodAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulatorFactory.hpp" />
@@ -1565,6 +1566,7 @@
     <ClCompile Include="engine\features\source\DefaultFeatureManipulator.cpp" />
     <ClCompile Include="engine\features\source\DoorGateManipulator.cpp" />
     <ClCompile Include="engine\features\source\EvilAltarManipulator.cpp" />
+    <ClCompile Include="engine\features\source\ForgeManipulator.cpp" />
     <ClCompile Include="engine\features\source\GoodAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\IFeatureManipulatorFactory.cpp" />
     <ClCompile Include="engine\features\source\NeutralAltarManipulator.cpp" />
