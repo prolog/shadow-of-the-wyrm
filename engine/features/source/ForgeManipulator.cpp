@@ -1,5 +1,7 @@
 #include "ForgeManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Game.hpp"
+#include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
 #include "SmithingConstants.hpp"
 #include "WeaponManager.hpp"
@@ -53,8 +55,7 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
   }
 
   // Have a chunk of ore or something similar?
-  IInventoryPtr inv = creature->get_inventory();
-  if (!inv->has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE))
+  if (!creature->get_inventory()->has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE))
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_NO_INGOTS));
     manager.send();
@@ -64,6 +65,18 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
 
   // The creature's got some skill in smithing, is wielding the appropriate
   // weapon, and has something to smith with.
+  Game& game = Game::instance();
+  ActionManager& am = game.get_action_manager_ref();
+
+  // Empty string means no particular value required; item just has to have this
+  // property.
+  //
+  // We want to match all items that have the "smithing material property", which
+  // implies the item can be used to improve other items in smithing.
+  vector<pair<string, string>> item_property_filter = {make_pair(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, "")};
+
+  list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
+  ItemPtr selected_item = am.inventory(creature, creature->get_inventory(), display_filter_list, false);
 
   return true;
 }
