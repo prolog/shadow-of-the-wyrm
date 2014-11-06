@@ -3252,6 +3252,9 @@
     <ClInclude Include="world\include\SmithingConstants.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\items\include\ItemPropertyFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6274,6 +6277,9 @@
     </ClCompile>
     <ClCompile Include="world\source\SmithingConstants.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemPropertyFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

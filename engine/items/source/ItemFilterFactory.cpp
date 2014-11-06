@@ -1,12 +1,13 @@
 #include "DisplayItemTypeFactory.hpp"
 #include "EdibleItemFilter.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemPropertyFilter.hpp"
 #include "ItemTypeFilter.hpp"
 #include "NullItemFilter.hpp"
 #include "ReadableItemFilter.hpp"
 #include "SquishyEquipWornLocationFilter.hpp"
 
-using std::list;
+using namespace std;
 
 // Create a 1-item list that always passes - used for things like pickup,
 // drop, etc., where the initial filter is always empty.
@@ -79,6 +80,19 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const int displa
 
   it_filter = create_item_type_filter(it_list);
   DisplayItemTypeFactory;
+  return it_filter;
+}
+
+list<IItemFilterPtr> ItemFilterFactory::create_item_property_type_filter(const vector<pair<string, string>>& property_list)
+{
+  list<IItemFilterPtr> it_filter;
+
+  for (pair<string, string> prop : property_list)
+  {
+    IItemFilterPtr property_filter = std::make_shared<ItemPropertyFilter>(prop);
+    it_filter.push_back(property_filter);
+  }
+
   return it_filter;
 }
 
