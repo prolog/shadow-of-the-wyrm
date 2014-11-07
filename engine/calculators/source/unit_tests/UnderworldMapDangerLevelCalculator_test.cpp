@@ -6,14 +6,19 @@ TEST(SL_Engine_Calculators_UnderworldMapDangerLevelCalculator, calculate_danger_
   Depth depth2(13, 13);
   Dimensions dim;
   dim.set_depth(depth);
-  DungeonGenerator generator("test");
-  MapPtr map = generator.generate(dim);
+
+  MapPtr map = std::make_shared<Map>(dim);
 
   dim.set_depth(depth2);
 
-  MapPtr map2 = generator.generate(dim);
-  map->set_danger(4);
-  UnderworldMapDangerLevelCalculator calc;
+  MapPtr map2 = std::make_shared<Map>(dim);
 
-  EXPECT_EQ(7, calc.calculate(map, map2));
+  if (map && map2)
+  {
+    map->set_danger(4);
+    UnderworldMapDangerLevelCalculator calc;
+    int calculated = calc.calculate(map, map2);
+
+    EXPECT_EQ(7, calculated);
+  }
 }

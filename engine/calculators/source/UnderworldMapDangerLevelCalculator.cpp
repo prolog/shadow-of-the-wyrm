@@ -1,5 +1,7 @@
 #include "UnderworldMapDangerLevelCalculator.hpp"
 
+using namespace std;
+
 // Calculate the danger level for an underworld map.  This is the base
 // danger level, +/- the delta in depth.
 int UnderworldMapDangerLevelCalculator::calculate(MapPtr map, MapPtr new_map) const
