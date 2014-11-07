@@ -39,3 +39,7 @@ bool SquishyEquipWornLocationFilter::passes_squishy_wield_comparison(const Equip
  
   return (item_wield && squishy_wield);
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/SquishyEquipWornLocationFilter_test.cpp"
+#endif

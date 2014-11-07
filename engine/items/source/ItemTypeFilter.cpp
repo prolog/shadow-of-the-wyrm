@@ -17,3 +17,6 @@ bool ItemTypeFilter::passes_filter(ItemPtr item) const
   return passes;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/ItemTypeFilter_test.cpp"
+#endif
