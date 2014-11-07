@@ -16,3 +16,6 @@ bool EdibleItemFilter::passes_filter(ItemPtr item) const
   return false;
 }
 
+#ifdef UNIT_TESTS
+#include "unit_tests/EdibleItemFilter_test.cpp"
+#endif

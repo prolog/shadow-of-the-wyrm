@@ -7,6 +7,11 @@ ItemPropertyFilter::ItemPropertyFilter(const pair<string, string>& prop_pair)
 {
 }
 
+// The item passes the filter when the item:
+// - Is non-null
+// - Has the property, and the filter's value is empty, or
+// - Has the property, and the filter's value is not empty, and the value matches
+//   the filter value.
 bool ItemPropertyFilter::passes_filter(ItemPtr item) const
 {
   bool passes = false;
@@ -25,3 +30,8 @@ bool ItemPropertyFilter::passes_filter(ItemPtr item) const
 
   return passes;
 }
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ItemPropertyFilter_test.cpp"
+#endif
+
