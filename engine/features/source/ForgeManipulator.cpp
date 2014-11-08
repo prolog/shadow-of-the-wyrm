@@ -1,5 +1,6 @@
 #include "ForgeManipulator.hpp"
 #include "ActionTextKeys.hpp"
+#include "Conversion.hpp"
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
@@ -75,8 +76,16 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
   // implies the item can be used to improve other items in smithing.
   vector<pair<string, string>> item_property_filter = {make_pair(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, "")};
 
+  // Select an ingot-type item.
   list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_property_type_filter(item_property_filter);
-  ItemPtr selected_item = am.inventory(creature, creature->get_inventory(), display_filter_list, false);
+  ItemPtr selected_ingot = am.inventory(creature, creature->get_inventory(), display_filter_list, false);
+
+  if (selected_ingot)
+  {
+    // Select the item to smith.
+    MaterialType ingot_material = static_cast<MaterialType>(String::to_int(selected_ingot->get_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE)));
+    list<IItemFilterPtr> smithable_item_list = ItemFilterFactory::create_material_type_filter(ingot_material);
+  }
 
   return true;
 }

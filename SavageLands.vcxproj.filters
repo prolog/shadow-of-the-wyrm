@@ -3255,6 +3255,9 @@
     <ClInclude Include="engine\items\include\ItemPropertyFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\items\include\ItemMaterialFilter.hpp">
+      <Filter>Header Files\engine\items\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6297,6 +6300,12 @@
       <Filter>Source Files\engine\items\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\SquishyEquipWornLocationFilter_test.cpp">
+      <Filter>Source Files\engine\items\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\ItemMaterialFilter.cpp">
+      <Filter>Source Files\engine\items\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\ItemMaterialFilter_test.cpp">
       <Filter>Source Files\engine\items\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>

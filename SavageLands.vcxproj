@@ -566,6 +566,7 @@
     <ClInclude Include="engine\items\include\ItemFilterFactory.hpp" />
     <ClInclude Include="engine\items\include\ItemGenerationManager.hpp" />
     <ClInclude Include="engine\items\include\ItemIdentifier.hpp" />
+    <ClInclude Include="engine\items\include\ItemMaterialFilter.hpp" />
     <ClInclude Include="engine\items\include\ItemPropertyFilter.hpp" />
     <ClInclude Include="engine\items\include\ItemTypeFilter.hpp" />
     <ClInclude Include="engine\items\include\NullItemFilter.hpp" />
@@ -1697,6 +1698,7 @@
     <ClCompile Include="engine\items\source\ItemFilterFactory.cpp" />
     <ClCompile Include="engine\items\source\ItemGenerationManager.cpp" />
     <ClCompile Include="engine\items\source\ItemIdentifier.cpp" />
+    <ClCompile Include="engine\items\source\ItemMaterialFilter.cpp" />
     <ClCompile Include="engine\items\source\ItemPropertyFilter.cpp" />
     <ClCompile Include="engine\items\source\ItemTypeFilter.cpp" />
     <ClCompile Include="engine\items\source\NullItemFilter.cpp" />
@@ -1711,6 +1713,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\items\source\unit_tests\ItemMaterialFilter_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\ItemPropertyFilter_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
