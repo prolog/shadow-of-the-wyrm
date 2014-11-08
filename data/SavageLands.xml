@@ -3218,6 +3218,10 @@
 						<ID>food_ration</ID>
 						<Quantity><Amount>3</Amount></Quantity>
 					</InitialItem>
+					<InitialItem>
+						<ID>_iron_ingot</ID>
+						<Quantity><Amount>1</Amount></Quantity>
+					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
