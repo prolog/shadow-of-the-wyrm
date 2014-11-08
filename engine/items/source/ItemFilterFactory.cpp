@@ -1,6 +1,7 @@
 #include "DisplayItemTypeFactory.hpp"
 #include "EdibleItemFilter.hpp"
 #include "ItemFilterFactory.hpp"
+#include "ItemMaterialFilter.hpp"
 #include "ItemPropertyFilter.hpp"
 #include "ItemTypeFilter.hpp"
 #include "NullItemFilter.hpp"
@@ -117,4 +118,15 @@ list<IItemFilterPtr> ItemFilterFactory::create_edible_filter()
   it_filter.push_back(readable_filter);
   
   return it_filter;
+}
+
+// Create a filter by material type.
+list<IItemFilterPtr> ItemFilterFactory::create_material_type_filter(const MaterialType material)
+{
+  list<IItemFilterPtr> material_filters;
+
+  IItemFilterPtr material_filter = std::make_shared<ItemMaterialFilter>(material);
+  material_filters.push_back(material_filter);
+
+  return material_filters;
 }

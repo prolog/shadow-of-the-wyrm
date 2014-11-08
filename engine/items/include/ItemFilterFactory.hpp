@@ -13,6 +13,7 @@ class ItemFilterFactory
     static std::list<IItemFilterPtr> create_item_type_filter(const std::list<ItemType>& item_type_list);
     static std::list<IItemFilterPtr> create_item_type_filter(const int display_symbol);
     static std::list<IItemFilterPtr> create_item_property_type_filter(const std::vector<std::pair<std::string, std::string>>& property_value_pairs);
+    static std::list<IItemFilterPtr> create_material_type_filter(const MaterialType material);
     static std::list<IItemFilterPtr> create_readable_filter();
     static std::list<IItemFilterPtr> create_edible_filter();
     
