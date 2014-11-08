@@ -14,13 +14,16 @@
 
 using namespace std;
 
-namespace ItemEnchanting
+namespace ItemEnchantingSmithing
 {
   // Minimum/maximum number of enchantments on an item.
   const int MIN_ENCHANTS = 6;
   const int MAX_ENCHANTS = 9;
 
-  // Minimum/maximum number of points per enchant.
+  const int MIN_SMITHING = 2;
+  const int MAX_SMITHING = 5;
+
+  // Minimum/maximum number of points per enchant/smithing.
   const int MIN_POINTS = 3;
   const int MAX_POINTS = 6;
 };
@@ -33,6 +36,7 @@ glowing(false)
 {
   resistances.set_all_resistances_to(0);
   initialize_remaining_enchants();
+  initialize_remaining_smithings();
 }
 
 Item::~Item()
@@ -67,6 +71,7 @@ bool Item::operator==(const Item& i) const
   result = result && (glowing == i.glowing);
   result = result && (resistances == i.resistances);
   result = result && (remaining_enchants == i.remaining_enchants);
+  result = result && (remaining_smithings == i.remaining_smithings);
   result = result && (additional_properties == i.additional_properties);
 
   return result;
@@ -312,7 +317,7 @@ bool Item::matches(std::shared_ptr<Item> i)
     match = match && (effect                == i->get_effect_type()          );
     match = match && (glowing               == i->get_glowing()              );
     match = match && (resistances           == i->get_resistances()          );
-    // Don't consider the remaining enchantments for purposes of matching...
+    // Don't consider the remaining enchantments/smithings for purposes of matching...
 
     // Check the concrete implementation class's attributes:
     match = match && additional_item_attributes_match(i);
@@ -402,8 +407,14 @@ bool Item::get_item_identified() const
 
 void Item::initialize_remaining_enchants()
 {
-  Statistic new_rem(RNG::range(ItemEnchanting::MIN_ENCHANTS, ItemEnchanting::MAX_ENCHANTS));
+  Statistic new_rem(RNG::range(ItemEnchantingSmithing::MIN_ENCHANTS, ItemEnchantingSmithing::MAX_ENCHANTS));
   set_remaining_enchants(new_rem);
+}
+
+void Item::initialize_remaining_smithings()
+{
+  Statistic new_sm(RNG::range(ItemEnchantingSmithing::MIN_SMITHING, ItemEnchantingSmithing::MAX_SMITHING));
+  set_remaining_smithings(new_sm);
 }
 
 bool Item::can_enchant() const
@@ -418,6 +429,18 @@ bool Item::can_enchant() const
   return can_enchant;
 }
 
+bool Item::can_smith() const
+{
+  bool can_sm = !get_artifact();
+
+  if (can_sm)
+  {
+    can_sm = (remaining_smithings.get_current() > 0);
+  }
+
+  return can_sm;
+}
+
 // Enchanting an item with a given number of points is assumed to both
 // always work, and to not take up any of the possible number of
 // enchantments an item can have.  This allows great items to be
@@ -429,13 +452,28 @@ bool Item::enchant(const int enchant_points)
   return true;
 }
 
+bool Item::smith(const int smith_points)
+{
+  if (remaining_smithings.get_current() > 0)
+  {
+    do_smith_item(smith_points);
+    remaining_smithings.set_current(remaining_smithings.get_current() - 1);
+
+    return true;
+  }
+  else
+  {
+    return false;
+  }
+}
+
 bool Item::enchant(const float enchant_mult)
 {
   bool enchanted = false;
   
   if (can_enchant())
   {
-    int points = static_cast<int>(RNG::range(ItemEnchanting::MIN_POINTS, ItemEnchanting::MAX_POINTS) * enchant_mult);
+    int points = static_cast<int>(RNG::range(ItemEnchantingSmithing::MIN_POINTS, ItemEnchantingSmithing::MAX_POINTS) * enchant_mult);
     do_enchant_item(points);
 
     remaining_enchants.set_current(remaining_enchants.get_current() - 1);
@@ -454,6 +492,16 @@ void Item::set_remaining_enchants(const Statistic& new_remaining_enchants)
 Statistic Item::get_remaining_enchants() const
 {
   return remaining_enchants;
+}
+
+void Item::set_remaining_smithings(const Statistic& new_remaining)
+{
+  remaining_smithings = new_remaining;
+}
+
+Statistic Item::get_remaining_smithings() const
+{
+  return remaining_smithings;
 }
 
 void Item::do_enchant_item(const int points)
@@ -526,6 +574,20 @@ void Item::do_enchant_item(const int points)
   }
 }
 
+void Item::do_smith_item(const int points)
+{
+  if (points < 1)
+  {
+    return;
+  }
+
+  // Smith one of slash/pierce/pound.
+  DamageType dt = static_cast<DamageType>(RNG::range(DAMAGE_TYPE_SLASH, DAMAGE_TYPE_POUND));
+
+  float smith_amt = points / 100.0f;
+  resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + smith_amt);
+}
+
 void Item::set_additional_properties(const map<string, string>& new_additional_properties)
 {
   additional_properties = new_additional_properties;
@@ -583,6 +645,7 @@ bool Item::serialize(ostream& stream) const
 
   resistances.serialize(stream);
   remaining_enchants.serialize(stream);
+  remaining_smithings.serialize(stream);
 
   Serialize::write_string_map(stream, additional_properties);
 
@@ -618,6 +681,7 @@ bool Item::deserialize(istream& stream)
 
   resistances.deserialize(stream);
   remaining_enchants.deserialize(stream);
+  remaining_smithings.deserialize(stream);
 
   Serialize::read_string_map(stream, additional_properties);
 

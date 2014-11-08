@@ -115,23 +115,28 @@ class Item : public ISerializable
     Resistances get_resistances() const;
     Resistances& get_resistances_ref();
 
-    // Whether or not the item can be enchanted.
-    // If the item is an artifact, it cannot be enchanted.
+    // Whether or not the item can be enchanted/smithed.
+    // If the item is an artifact, it cannot be enchanted/smithed.
     // Otherwise, this function checks to see whether the maximum number
-    // of enchantments has been reached.
+    // of enchantments/smithings has been reached.
     virtual bool can_enchant() const;
+    virtual bool can_smith() const;
 
-    // Enchant the item if possible; if this is successful, reduce the
-    // number of allowable enchantments by one.
+    // Enchant/smith the item if possible; if this is successful, reduce the
+    // number of allowable enchantments/smithings by one.
     virtual bool enchant(const float enchant_mult);
-
+ 
     // Assume an enchant_mult of 1.0 and allow a single point of enchantment.
     // This function is used when generating better items based on the
     // danger level of the current location.
     bool enchant(const int enchant_points);
+    virtual bool smith(const int smith_points);
 
     void set_remaining_enchants(const Statistic& new_remaining);
     Statistic get_remaining_enchants() const;
+
+    void set_remaining_smithings(const Statistic& new_remaining);
+    Statistic get_remaining_smithings() const;
 
     void set_additional_properties(const std::map<std::string, std::string>& additional_properties);
     void set_additional_property(const std::string& property_name, const std::string& property_value);
@@ -155,13 +160,15 @@ class Item : public ISerializable
     virtual void set_item_identified(const bool new_item_identified);
     virtual bool get_item_identified() const;
 
-    // Initialize the number of remaining enchantments on item creation
+    // Initialize the number of remaining enchantments/smithings on item creation
     void initialize_remaining_enchants();
+    void initialize_remaining_smithings();
 
-    // The base item class enchants by updating resistances.
+    // The base item class enchants/smiths by updating resistances.
     // Other items may modify nutrition (consumables), evade/soak (wearables),
-    // etc.
+    // etc.  Smithing only updates physical damage types.
     virtual void do_enchant_item(const int points);
+    virtual void do_smith_item(const int points);
     
     std::string id;
     std::string base_id;
@@ -187,6 +194,7 @@ class Item : public ISerializable
     bool glowing;
     Resistances resistances;
     Statistic remaining_enchants;
+    Statistic remaining_smithings;
     std::map<std::string, std::string> additional_properties;
 
   private:
