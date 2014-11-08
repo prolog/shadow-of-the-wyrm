@@ -1,4 +1,5 @@
 #pragma once
+#include <list>
 #include "IItemFilter.hpp"
 
 // Display an item based on whether its item type matches a particular
@@ -7,8 +8,9 @@ class ItemTypeFilter : public IItemFilter
 {
   public:
     ItemTypeFilter(const ItemType it);
+    ItemTypeFilter(const std::list<ItemType>& it_list);
     bool passes_filter(ItemPtr item) const override;
 
   protected:
-    ItemType item_type;
+    std::list<ItemType> item_types;
 };

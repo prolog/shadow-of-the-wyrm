@@ -85,6 +85,17 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
     // Select the item to smith.
     MaterialType ingot_material = static_cast<MaterialType>(String::to_int(selected_ingot->get_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE)));
     list<IItemFilterPtr> smithable_item_list = ItemFilterFactory::create_material_type_filter(ingot_material);
+    list<IItemFilterPtr> weapon_or_armour_filter = ItemFilterFactory::create_item_type_filter(list<ItemType>{ITEM_TYPE_WEAPON, ITEM_TYPE_ARMOUR});
+
+    // Create a filter list that contains all weapons and armour that match the material type.
+    copy(weapon_or_armour_filter.begin(), weapon_or_armour_filter.end(), back_inserter(smithable_item_list));
+
+    ItemPtr selected_item = am.inventory(creature, creature->get_inventory(), smithable_item_list, false);
+
+    if (selected_item)
+    {
+      // ...
+    }
   }
 
   return true;
