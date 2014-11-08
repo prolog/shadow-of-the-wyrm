@@ -57,11 +57,8 @@ list<IItemFilterPtr> ItemFilterFactory::create_item_type_filter(const std::list<
 {
   list<IItemFilterPtr> it_filter;
 
-  for (const ItemType it : item_type_list)
-  {
-    IItemFilterPtr display_filter = std::make_shared<ItemTypeFilter>(it);
-    it_filter.push_back(display_filter);
-  }
+  IItemFilterPtr display_filter = std::make_shared<ItemTypeFilter>(item_type_list);
+  it_filter.push_back(display_filter);
   
   return it_filter;
 }
