@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "SmithingConstants.hpp"
 #include "WeaponManager.hpp"
 
@@ -16,7 +17,12 @@ ForgeManipulator::ForgeManipulator(FeaturePtr feature)
 
 void ForgeManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
 {
-  // JCD FIXME
+  if (creature && creature->get_is_player())
+  {
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_FORGE));
+    manager.send();
+  }
 }
 
 bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
@@ -94,7 +100,43 @@ bool ForgeManipulator::handle(TilePtr tile, CreaturePtr creature)
 
     if (selected_item)
     {
-      // ...
+      if (selected_item->get_artifact())
+      {
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_ARTIFACT_SELECTED));
+        manager.send();
+      }
+      else if (!selected_item->can_smith())
+      {
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_FULL_POTENTIAL));
+        manager.send();
+      }
+      else
+      {
+        // Use up an ingot.
+        int num_ingot = selected_ingot->get_quantity();
+        if (num_ingot > 1)
+        {
+          selected_ingot->set_quantity(num_ingot - 1);
+        }
+        else
+        {
+          creature->get_inventory()->remove(selected_ingot->get_id());
+        }
+
+        // Improve the item.
+        int num_points = RNG::range(2, 3);
+
+        // If the creature's good at smithing, there's a chance it gets an extra
+        // point to work with.
+        bool extra_point = RNG::percent_chance(creature->get_skills().get_value(SKILL_GENERAL_SMITHING));
+        if (extra_point) num_points++;
+
+        selected_item->smith(num_points);
+
+        // Let the player know the smithing was successful.
+        manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_FORGE_SUCCESSFUL));
+        manager.send();
+      }
     }
   }
 
