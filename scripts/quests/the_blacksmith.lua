@@ -25,6 +25,13 @@ local function sun_gem_completion_fn()
   add_object_to_player_tile("forger")
   remove_object_from_player("sun_gem")
   remove_active_quest("ploughman_sungem")
+
+  if creature_is_class("player", "smith") == true then
+    add_object_to_player_tile("_iron_ingot", 2)
+    add_object_to_player_tile("_steel_ingot")
+    add_message("BLACKSMITH_SUNGEM_QUEST_COMPLETE_SMITH_SID")
+  end
+
   return true
 end
 

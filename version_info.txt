@@ -59,6 +59,13 @@ SavageLands v0.2.9 "Aethelric"
 
   - Artifacts can't be improved, either by smithing or enchanting.
 
+  - There is a chance that smithing will improve a physical resistance
+    (either Slash, Pierce, or Pound).
+
+- Smiths now start with an iron ingot, and if they complete the
+  Blacksmith's quest, in addition to the usual reward, he also grants
+  a couple of iron ingots and a steel ingot.
+
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).
