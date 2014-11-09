@@ -138,6 +138,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "destroy_creature_inventory", destroy_creature_inventory);
   lua_register(L, "get_deity_summons", get_deity_summons);
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
+  lua_register(L, "creature_is_class", creature_is_class);
 }
 
 // Lua API helper functions
@@ -1592,6 +1593,31 @@ int summon_monsters_around_creature(lua_State* ls)
   }
 
   return 0;
+}
+
+// Check to see whether the given creature on the current map is a specified
+// class.
+int creature_is_class(lua_State* ls)
+{
+  bool creature_is_class = false;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string class_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    creature_is_class = (creature && creature->get_class_id() == class_id);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to is_class");
+    lua_error(ls);
+  }
+
+  lua_pushboolean(ls, creature_is_class);
+  return 1;
 }
 
 int stop_playing_game(lua_State* ls)
