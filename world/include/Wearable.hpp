@@ -31,6 +31,8 @@ class Wearable : public Item
     
   protected:
     virtual void do_enchant_item(const int points) override;
+    virtual void do_smith_item(const int smith_points) override;
+    virtual void do_improve_item(const int points);
 
     int evade, soak, to_hit, addl_damage;
 };

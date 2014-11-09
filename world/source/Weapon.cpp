@@ -5,12 +5,12 @@
 using namespace std;
 using std::dynamic_pointer_cast;
 
-// Local enumeration used only for enchanting weapons.
-enum EnchantWeaponType
+// Local enumeration used only for improving weapons.
+enum ImproveWeaponType
 {
-  ENCHANT_WEAPON_TO_HIT = 1,
-  ENCHANT_WEAPON_DAMAGE = 2,
-  ENCHANT_WEAPON_BOTH   = 3
+  IMPROVE_WEAPON_TO_HIT = 1,
+  IMPROVE_WEAPON_DAMAGE = 2,
+  IMPROVE_WEAPON_BOTH   = 3
 };
 
 // WEAPON
@@ -135,23 +135,38 @@ void Weapon::do_enchant_item(const int points)
     Item::do_enchant_item(points);
   }
 
-  EnchantWeaponType type_of_enchant = static_cast<EnchantWeaponType>(RNG::range(ENCHANT_WEAPON_TO_HIT, ENCHANT_WEAPON_BOTH));
+  do_improve_item(points);
+}
 
-  if (points == 1 && type_of_enchant == ENCHANT_WEAPON_BOTH)
+void Weapon::do_smith_item(const int points)
+{
+  if (RNG::percent_chance(25))
   {
-    // Too few points to do both
-    type_of_enchant = static_cast<EnchantWeaponType>(RNG::range(ENCHANT_WEAPON_TO_HIT, ENCHANT_WEAPON_BOTH));
+    Item::do_smith_item(points);
   }
 
-  switch (type_of_enchant)
+  do_improve_item(points);
+}
+
+void Weapon::do_improve_item(const int points)
+{
+  ImproveWeaponType type_of_improve = static_cast<ImproveWeaponType>(RNG::range(IMPROVE_WEAPON_TO_HIT, IMPROVE_WEAPON_BOTH));
+
+  if (points == 1 && type_of_improve == IMPROVE_WEAPON_BOTH)
   {
-    case ENCHANT_WEAPON_TO_HIT:
+    // Too few points to do both
+    type_of_improve = static_cast<ImproveWeaponType>(RNG::range(IMPROVE_WEAPON_TO_HIT, IMPROVE_WEAPON_BOTH));
+  }
+
+  switch (type_of_improve)
+  {
+    case IMPROVE_WEAPON_TO_HIT:
       set_to_hit(get_to_hit() + static_cast<int>(points * 1.5));
       break;
-    case ENCHANT_WEAPON_DAMAGE:
+    case IMPROVE_WEAPON_DAMAGE:
       set_addl_damage(get_addl_damage() + points);
       break;
-    case ENCHANT_WEAPON_BOTH:
+    case IMPROVE_WEAPON_BOTH:
       set_to_hit(get_to_hit() + points);
       set_addl_damage(get_addl_damage() + (points / 2));
     default:

@@ -8,11 +8,11 @@ using std::dynamic_pointer_cast;
 
 // Local enumeration for wearable to determine exactly how a wearable
 // is enchanted.
-enum EnchantWearableType
+enum ImproveWearableType
 {
-  ENCHANT_WEARABLE_EVADE = 1,
-  ENCHANT_WEARABLE_SOAK  = 2,
-  ENCHANT_WEARABLE_BOTH  = 3
+  IMPROVE_WEARABLE_EVADE = 1,
+  IMPROVE_WEARABLE_SOAK  = 2,
+  IMPROVE_WEARABLE_BOTH  = 3
 };
 
 Wearable::Wearable()
@@ -88,20 +88,36 @@ void Wearable::do_enchant_item(const int points)
     Item::do_enchant_item(points);
   }
 
-  EnchantWearableType wearable_enchant = static_cast<EnchantWearableType>(RNG::range(ENCHANT_WEARABLE_EVADE, ENCHANT_WEARABLE_BOTH));
-  
-  switch (wearable_enchant)
+  do_improve_item(points);
+}
+
+
+void Wearable::do_smith_item(const int points)
+{
+  if (RNG::percent_chance(25))
   {
-    case ENCHANT_WEARABLE_EVADE:
-      set_evade(get_evade() + static_cast<int>((points * 1.5)));
-      break;
-    case ENCHANT_WEARABLE_SOAK:
-      set_soak(get_soak() + points);
-      break;
-    case ENCHANT_WEARABLE_BOTH:
-      set_evade(get_evade() + points);
-      set_soak(get_soak() + (points / 2));
-      break;
+    Item::do_smith_item(points);
+  }
+
+  do_improve_item(points);
+}
+
+void Wearable::do_improve_item(const int points)
+{
+  ImproveWearableType wearable_improve = static_cast<ImproveWearableType>(RNG::range(IMPROVE_WEARABLE_EVADE, IMPROVE_WEARABLE_BOTH));
+
+  switch (wearable_improve)
+  {
+  case IMPROVE_WEARABLE_EVADE:
+    set_evade(get_evade() + static_cast<int>((points * 1.5)));
+    break;
+  case IMPROVE_WEARABLE_SOAK:
+    set_soak(get_soak() + points);
+    break;
+  case IMPROVE_WEARABLE_BOTH:
+    set_evade(get_evade() + points);
+    set_soak(get_soak() + (points / 2));
+    break;
   }
 }
 
