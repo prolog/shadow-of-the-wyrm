@@ -60,7 +60,9 @@ SavageLands v0.2.9 "Aethelric"
   - Artifacts can't be improved, either by smithing or enchanting.
 
   - There is a chance that smithing will improve a physical resistance
-    (either Slash, Pierce, or Pound).
+    (either Slash, Pierce, or Pound).  A weapon will always improve
+    some combination of to-hit and damage, in addition to the possibility
+    of improved resistances; and likewise for armour with evade and soak.
 
 - Smiths now start with an iron ingot, and if they complete the
   Blacksmith's quest, in addition to the usual reward, he also grants
