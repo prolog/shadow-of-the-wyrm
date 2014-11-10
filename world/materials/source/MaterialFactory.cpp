@@ -3,6 +3,7 @@
 #include "Cloth.hpp"
 #include "DragonScale.hpp"
 #include "Glass.hpp"
+#include "Gold.hpp"
 #include "Iron.hpp"
 #include "Ivory.hpp"
 #include "Leather.hpp"
@@ -25,7 +26,7 @@ MaterialFactory::~MaterialFactory()
 
 MaterialPtr MaterialFactory::create_material(const MaterialType type)
 {
-  static_assert(MATERIAL_TYPE_LAST == 13, "Unexpected MATERIAL_TYPE_LAST");
+  static_assert(MATERIAL_TYPE_LAST == 14, "Unexpected MATERIAL_TYPE_LAST");
 
   MaterialPtr material;
 
@@ -70,6 +71,9 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
     case MATERIAL_TYPE_BONE:
       material = std::make_shared<Bone>();
       break;
+    case MATERIAL_TYPE_GOLD:
+      material = std::make_shared<Gold>();
+      break;
     default:
       material = std::make_shared<Wood>();
       break;
@@ -78,8 +82,6 @@ MaterialPtr MaterialFactory::create_material(const MaterialType type)
   return material;
 }
 
-// JCD FIXME: Unit tests to ensure that the type of the
-// created material matches the input type.
 #ifdef UNIT_TESTS
 #include "unit_tests/MaterialFactory_test.cpp"
 #endif

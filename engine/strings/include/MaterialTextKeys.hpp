@@ -7,6 +7,7 @@ class MaterialTextKeys
     static const std::string MATERIAL_CLOTH;
     static const std::string MATERIAL_DRAGON_SCALE;
     static const std::string MATERIAL_GLASS;
+    static const std::string MATERIAL_GOLD;
     static const std::string MATERIAL_IRON;
     static const std::string MATERIAL_LEATHER;
     static const std::string MATERIAL_PAPER;
