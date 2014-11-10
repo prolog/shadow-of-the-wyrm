@@ -68,6 +68,9 @@ SavageLands v0.2.9 "Aethelric"
   Blacksmith's quest, in addition to the usual reward, he also grants
   a couple of iron ingots and a steel ingot.
 
+- Added a new material, gold.  All rings and amulets are now made of gold
+  instead of their previous materials.
+
 - New artifacts: rune-covered rod "Light of Battle" (neutral), giant-
   forged sword "Beow" (lawful), black hand crossbow "Shadow" (evil),
   silent sling "Pelter" (all).

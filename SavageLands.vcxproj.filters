@@ -3258,6 +3258,9 @@
     <ClInclude Include="engine\items\include\ItemMaterialFilter.hpp">
       <Filter>Header Files\engine\items\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\materials\include\Gold.hpp">
+      <Filter>Header Files\world\materials\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6307,6 +6310,9 @@
     </ClCompile>
     <ClCompile Include="engine\items\source\unit_tests\ItemMaterialFilter_test.cpp">
       <Filter>Source Files\engine\items\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\materials\source\Gold.cpp">
+      <Filter>Source Files\world\materials\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

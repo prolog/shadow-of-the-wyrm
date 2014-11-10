@@ -15206,7 +15206,7 @@
 				<Weight><Pounds>0</Pounds><Ounces>4</Ounces></Weight>
 				<WornLocation>1</WornLocation>
 				<Artifact>1</Artifact>
-				<Material>6</Material>
+				<Material>13</Material>
 				<DangerLevel>-1</DangerLevel>
 				<Resistances>
 					<Arcane>0.15</Arcane>
@@ -15829,7 +15829,7 @@
 				<Value>105</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>3</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>0</Soak>
@@ -15841,7 +15841,7 @@
 				<Value>205</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>3</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>0</Soak>
@@ -15855,7 +15855,7 @@
 				<Value>325</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
@@ -15872,7 +15872,7 @@
 				<Value>325</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
@@ -15889,7 +15889,7 @@
 				<Value>325</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
@@ -15906,7 +15906,7 @@
 				<Value>325</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
@@ -15923,7 +15923,7 @@
 				<Value>325</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
@@ -15940,7 +15940,7 @@
 				<Value>325</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
@@ -15957,7 +15957,7 @@
 				<Value>325</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>
@@ -15974,7 +15974,7 @@
 				<Value>325</Value>
 				<Weight><Pounds>0</Pounds><Ounces>2</Ounces></Weight>
 				<WornLocation>2</WornLocation>
-				<Material>0</Material>
+				<Material>13</Material>
 				<DangerLevel>8</DangerLevel>
 				<Rarity>1</Rarity>
 				<Resistances>

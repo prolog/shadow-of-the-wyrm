@@ -1142,11 +1142,12 @@
 			10 = Onyx
 			11 = Ivory
 			12 = Bone
+			13 = Gold
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="12"/>
+		<xs:maxInclusive value="13"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="ColourType">
