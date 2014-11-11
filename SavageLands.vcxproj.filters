@@ -3267,6 +3267,9 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTanneryReader.hpp">
       <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\features\include\JewelerWorkbenchManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6331,6 +6334,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLTanneryReader.cpp">
       <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\JewelerWorkbenchManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

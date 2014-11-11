@@ -436,6 +436,7 @@
     <ClInclude Include="engine\features\include\GoodAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulator.hpp" />
     <ClInclude Include="engine\features\include\IFeatureManipulatorFactory.hpp" />
+    <ClInclude Include="engine\features\include\JewelerWorkbenchManipulator.hpp" />
     <ClInclude Include="engine\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\PewManipulator.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
@@ -1575,6 +1576,7 @@
     <ClCompile Include="engine\features\source\ForgeManipulator.cpp" />
     <ClCompile Include="engine\features\source\GoodAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\IFeatureManipulatorFactory.cpp" />
+    <ClCompile Include="engine\features\source\JewelerWorkbenchManipulator.cpp" />
     <ClCompile Include="engine\features\source\NeutralAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\PewManipulator.cpp" />
     <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp" />
