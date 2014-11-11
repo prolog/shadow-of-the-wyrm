@@ -218,5 +218,25 @@
 			</Coord>
 			<JewelerWorkbench/>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>12</Col>
+			</Coord>
+			<Barrel>
+				<Tap>1</Tap>
+				<Pour>dram_whisky</Pour>
+			</Barrel>
+		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>4</Row>
+				<Col>18</Col>
+			</Coord>
+			<Barrel>
+				<Tap>1</Tap>
+				<Pour>gnomish_stout</Pour>
+			</Barrel>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>
