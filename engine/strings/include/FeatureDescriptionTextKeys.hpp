@@ -25,6 +25,8 @@ class FeatureDescriptionTextKeys
     static const std::string FEATURE_DESCRIPTION_SARCOPHAGUS_NO_INSCR;
     static const std::string FEATURE_DESCRIPTION_BARREL;
     static const std::string FEATURE_DESCRIPTION_FORGE;
+    static const std::string FEATURE_DESCRIPTION_TANNERY;
+    static const std::string FEATURE_DESCRIPTION_JEWELER_WORKBENCH;
 
   protected:
     FeatureDescriptionTextKeys();

@@ -10,13 +10,15 @@
 #include "Door.hpp"
 #include "EastWestPew.hpp"
 #include "FirePillar.hpp"
+#include "Forge.hpp"
 #include "Fountain.hpp"
 #include "Gate.hpp"
+#include "JewelerWorkbench.hpp"
 #include "Log.hpp"
 #include "Pew.hpp"
 #include "RegularStatues.hpp"
 #include "Sarcophagus.hpp"
-#include "Forge.hpp"
+#include "Tannery.hpp"
 
 using namespace std;
 
@@ -94,6 +96,8 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr sarcophagus        = std::make_shared<Sarcophagus>();
   FeaturePtr barrel             = std::make_shared<Barrel>();
   FeaturePtr forge              = std::make_shared<Forge>();
+  FeaturePtr tannery            = std::make_shared<Tannery>();
+  FeaturePtr jeweler_workbench  = std::make_shared<JewelerWorkbench>();
 
   feature_map = FeatureSerializationMap{{CLASS_ID_GOOD_ALTAR, good_altar},
                                         {CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -114,6 +118,8 @@ void FeatureFactory::initialize_feature_map()
                                         {CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse},
                                         {CLASS_ID_SARCOPHAGUS, sarcophagus},
                                         {CLASS_ID_BARREL, barrel},
-                                        {CLASS_ID_FORGE, forge}};
+                                        {CLASS_ID_FORGE, forge},
+                                        {CLASS_ID_TANNERY, tannery},
+                                        {CLASS_ID_JEWELER_WORKBENCH, jeweler_workbench}};
 }
 

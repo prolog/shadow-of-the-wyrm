@@ -9,8 +9,10 @@
 #include "XMLFirePillarReader.hpp"
 #include "XMLForgeReader.hpp"
 #include "XMLFountainReader.hpp"
+#include "XMLJewelerWorkbenchReader.hpp"
 #include "XMLPewReader.hpp"
 #include "XMLSarcophagusReader.hpp"
+#include "XMLTanneryReader.hpp"
 #include "XMLMapFeatureFactory.hpp"
 
 using namespace std;
@@ -64,6 +66,14 @@ FeaturePtr XMLMapFeatureFactory::create_feature(const XMLNode& feature_placement
     else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Forge")).is_null())
     {
       feature_creator = std::make_shared<XMLForgeReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "Tannery")).is_null())
+    {
+      feature_creator = std::make_shared<XMLTanneryReader>();
+    }
+    else if (!(feature_node = XMLUtils::get_next_element_by_local_name(feature_placement_node, "JewelerWorkbench")).is_null())
+    {
+      feature_creator = std::make_shared<XMLJewelerWorkbenchReader>();
     }
 
     assert(feature_creator != nullptr);

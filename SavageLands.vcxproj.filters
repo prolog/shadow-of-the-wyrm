@@ -3261,6 +3261,12 @@
     <ClInclude Include="world\materials\include\Gold.hpp">
       <Filter>Header Files\world\materials\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLJewelerWorkbenchReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLTanneryReader.hpp">
+      <Filter>Header Files\engine\XML\custom_maps\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6313,6 +6319,18 @@
     </ClCompile>
     <ClCompile Include="world\materials\source\Gold.cpp">
       <Filter>Source Files\world\materials\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\JewelerWorkbench.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\Tannery.cpp">
+      <Filter>Source Files\world\tiles\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLJewelerWorkbenchReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLTanneryReader.cpp">
+      <Filter>Source Files\engine\XML\custom_maps\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

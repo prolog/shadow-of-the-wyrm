@@ -211,5 +211,12 @@
 				<Orientation>1</Orientation>
 			</Pew>
 		</FeaturePlacement>
+		<FeaturePlacement>
+			<Coord>
+				<Row>14</Row>
+				<Col>73</Col>
+			</Coord>
+			<JewelerWorkbench/>
+		</FeaturePlacement>
 	</Features>
 </CustomMap>

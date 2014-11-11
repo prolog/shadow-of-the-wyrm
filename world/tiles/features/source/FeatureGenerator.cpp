@@ -8,8 +8,10 @@
 #include "Forge.hpp"
 #include "Gate.hpp"
 #include "GoodAltar.hpp"
+#include "JewelerWorkbench.hpp"
 #include "NeutralAltar.hpp"
 #include "Pew.hpp"
+#include "Tannery.hpp"
 
 FeatureGenerator::FeatureGenerator()
 {
@@ -112,4 +114,18 @@ FeaturePtr FeatureGenerator::generate_forge()
 {
   FeaturePtr forge = std::make_shared<Forge>();
   return forge;
+}
+
+// Generate a tannery
+FeaturePtr FeatureGenerator::generate_tannery()
+{
+  FeaturePtr tannery = std::make_shared<Tannery>();
+  return tannery;
+}
+
+// Generate a jeweler's workbench
+FeaturePtr FeatureGenerator::generate_jeweler_workbench()
+{
+  FeaturePtr workbench = std::make_shared<JewelerWorkbench>();
+  return workbench;
 }
