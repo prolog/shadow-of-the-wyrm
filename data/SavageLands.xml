@@ -18321,6 +18321,40 @@
 				<StandardDrinks>1</StandardDrinks>
 				<Effect>0</Effect>
 			</Potion>
+			<Potion id="dram_whisky">
+				<DescriptionSID>WHISKY_SID</DescriptionSID>
+				<UsageDescriptionSID>WHISKY_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>0</Nutrition>
+				<StandardDrinks>1</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
+			<Potion id="gnomish_stout">
+				<DescriptionSID>GNOMISH_STOUT_SID</DescriptionSID>
+				<UsageDescriptionSID>GNOMISH_STOUT_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>10</WornLocation>
+				<Material>2</Material>
+				<TextDetails>
+					<Symbol>!</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<Nutrition>400</Nutrition>
+				<StandardDrinks>1</StandardDrinks>
+				<Effect>0</Effect>
+			</Potion>
 			<Potion id="healing_potion">
 				<DescriptionSID>HEALING_POTION_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_HEALING_POTION_SID</UnidentifiedDescriptionSID>
