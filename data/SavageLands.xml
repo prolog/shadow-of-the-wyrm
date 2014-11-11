@@ -19216,6 +19216,20 @@
 					</Property>
 				</Properties>
 			</Item>
+			<Item id="_lump_gold">
+				<DescriptionSID>LUMP_GOLD_SID</DescriptionSID>
+				<UsageDescriptionSID>LUMP_GOLD_USAGE_SID</UsageDescriptionSID>
+				<Value>250</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>13</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>jewel_con_mat_type</Name>
+						<Value>13</Value>
+					</Property>
+				</Properties>
+			</Item>
 		</MiscItems>
 	</Items>
 	<Scripts>

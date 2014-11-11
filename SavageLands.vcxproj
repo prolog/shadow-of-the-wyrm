@@ -716,10 +716,12 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFirePillarReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLForgeReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLFountainReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLJewelerWorkbenchReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureFactory.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLMapFeatureReaders.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLPewReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSarcophagusReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLTanneryReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapCoordinateReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapExitReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapReaders.hpp" />
@@ -2051,10 +2053,12 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFirePillarReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLForgeReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLFountainReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLJewelerWorkbenchReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureFactory.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLMapFeatureReaders.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLPewReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSarcophagusReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLTanneryReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapCoordinateReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapExitReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapReaders.cpp" />
@@ -2524,12 +2528,14 @@
     <ClCompile Include="world\tiles\features\source\Fountain.cpp" />
     <ClCompile Include="world\tiles\features\source\Gate.cpp" />
     <ClCompile Include="world\tiles\features\source\GoodAltar.cpp" />
+    <ClCompile Include="world\tiles\features\source\JewelerWorkbench.cpp" />
     <ClCompile Include="world\tiles\features\source\Lock.cpp" />
     <ClCompile Include="world\tiles\features\source\NeutralAltar.cpp" />
     <ClCompile Include="world\tiles\features\source\Pew.cpp" />
     <ClCompile Include="world\tiles\features\source\RegularStatues.cpp" />
     <ClCompile Include="world\tiles\features\source\Sarcophagus.cpp" />
     <ClCompile Include="world\tiles\features\source\StatueGenerator.cpp" />
+    <ClCompile Include="world\tiles\features\source\Tannery.cpp" />
     <ClCompile Include="world\tiles\features\source\Trap.cpp" />
     <ClCompile Include="world\tiles\features\source\unit_tests\AllAltars_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

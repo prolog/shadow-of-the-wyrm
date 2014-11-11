@@ -22,6 +22,8 @@ class FeatureGenerator
     static FeaturePtr generate_pew(const PewDirection pew_direction = PEW_DIRECTION_NORTH_SOUTH);
     static FeaturePtr generate_bench();
     static SarcophagusPtr generate_sarcophagus(const MaterialType material_type = MATERIAL_TYPE_STONE);
+    static FeaturePtr generate_tannery();
+    static FeaturePtr generate_jeweler_workbench();
 
   protected:
     FeatureGenerator();

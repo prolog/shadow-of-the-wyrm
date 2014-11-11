@@ -27,3 +27,5 @@ const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SARCOPHAGUS        
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_SARCOPHAGUS_NO_INSCR = "FEATURE_DESCRIPTION_SARCOPHAGUS_NO_INSCR";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_BARREL             = "FEATURE_DESCRIPTION_BARREL";
 const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_FORGE              = "FEATURE_DESCRIPTION_FORGE";
+const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_TANNERY            = "FEATURE_DESCRIPTION_TANNERY";
+const string FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_JEWELER_WORKBENCH  = "FEATURE_DESCRIPTION_JEWELER_WORKBENCH";
