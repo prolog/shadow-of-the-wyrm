@@ -439,6 +439,7 @@
     <ClInclude Include="engine\features\include\JewelerWorkbenchManipulator.hpp" />
     <ClInclude Include="engine\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\PewManipulator.hpp" />
+    <ClInclude Include="engine\features\include\TanneryManipulator.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategyFactory.hpp" />
@@ -1579,6 +1580,7 @@
     <ClCompile Include="engine\features\source\JewelerWorkbenchManipulator.cpp" />
     <ClCompile Include="engine\features\source\NeutralAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\PewManipulator.cpp" />
+    <ClCompile Include="engine\features\source\TanneryManipulator.cpp" />
     <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategy.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategyFactory.cpp" />

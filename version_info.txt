@@ -7,6 +7,9 @@ SavageLands v0.3.0 "Theodric"
 - Created jeweler's workbenches.  These tile features are used to
   improve rings and amulets with gold.
 
+- The tavern in Gnordvar didn't seem to have any barrels of alcohol -
+  added some whisky and gnomish stout.
+
 - Added a tannery to Isen Dun and a jeweler's workbench to Gnordvar.
 
 SavageLands v0.2.9 "Aethelric"
