@@ -13,6 +13,8 @@ SavageLands v0.3.0 "Theodric"
 
 - Added a tannery to Isen Dun and a jeweler's workbench to Gnordvar.
 
+- New items: protective amulet, evasive amulet.
+
 SavageLands v0.2.9 "Aethelric"
 - Version declared October 15, 2014.  Version finalized November 11, 2014.
 
