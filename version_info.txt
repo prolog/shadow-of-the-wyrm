@@ -5,7 +5,8 @@ SavageLands v0.3.0 "Theodric"
   skins to make leather armour/boots.
 
 - Created jeweler's workbenches.  These tile features are used to
-  improve rings and amulets with gold.
+  improve rings and amulets with gold.  Rings and amulets follow the same
+  rules as armour for improvement by goldsmithing.
 
 - The tavern in Gnordvar didn't seem to have any barrels of alcohol -
   added some whisky and gnomish stout.

@@ -70,6 +70,7 @@ class ActionTextKeys
     static const std::string ACTION_FORGE_ARTIFACT_SELECTED;
     static const std::string ACTION_FORGE_FULL_POTENTIAL;
     static const std::string ACTION_FORGE_SUCCESSFUL;
+    static const std::string ACTION_JEWELER_WORKBENCH_NO_JEWELER_SKILL;
 
   protected:
     ActionTextKeys();
