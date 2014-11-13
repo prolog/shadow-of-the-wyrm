@@ -15214,6 +15214,28 @@
 				<Evade>10</Evade>
 				<Soak>4</Soak>
 			</Armour>
+			<Armour id="protective_amulet">
+				<DescriptionSID>PROTECTIVE_AMULET_SID</DescriptionSID>
+				<UsageDescriptionSID>PROTECTIVE_AMULET_USAGE_SID</UsageDescriptionSID>
+				<Value>200</Value>
+				<Weight><Pounds>0</Pounds><Ounces>4</Ounces></Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>6</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>6</Soak>
+			</Armour>
+			<Armour id="evasive_amulet">
+				<DescriptionSID>EVASIVE_AMULET_SID</DescriptionSID>
+				<UsageDescriptionSID>EVASIVE_AMULET_USAGE_SID</UsageDescriptionSID>
+				<Value>200</Value>
+				<Weight><Pounds>0</Pounds><Ounces>4</Ounces></Weight>
+				<WornLocation>1</WornLocation>
+				<Material>13</Material>
+				<DangerLevel>6</DangerLevel>
+				<Evade>12</Evade>
+				<Soak>0</Soak>
+			</Armour>
 			<Armour id="chain_scraps">
 				<DescriptionSID>CHAIN_SCRAPS_SID</DescriptionSID>
 				<UsageDescriptionSID>CHAIN_SCRAPS_USAGE_SID</UsageDescriptionSID>
