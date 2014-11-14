@@ -55,6 +55,7 @@ class CommandKeys
     static const std::string LATEST_MESSAGES;
     static const std::string KICK;
     static const std::string OFFER;
+    static const std::string SKIN;
 
     // Helpful public functions
     static bool is_movement_type_key(const std::string& key);

@@ -184,6 +184,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<OfferCommand>(key);
   }
+  else if (command_name == CommandKeys::SKIN)
+  {
+    command = std::make_shared<SkinCommand>(key);
+  }
 
   return command;
 }

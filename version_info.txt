@@ -8,6 +8,10 @@ SavageLands v0.3.0 "Theodric"
   improve rings and amulets with gold.  Rings and amulets follow the same
   rules as armour for improvement by goldsmithing.
 
+- Added the ability to skin a corpse (mapped by default to "/").  Skinning
+  has the chance to produce a skin, which can be used at a tannery to
+  create new armour.
+
 - The tavern in Gnordvar didn't seem to have any barrels of alcohol -
   added some whisky and gnomish stout.
 

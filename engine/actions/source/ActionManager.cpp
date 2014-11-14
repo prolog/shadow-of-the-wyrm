@@ -383,6 +383,15 @@ ActionCost ActionManager::offer(CreaturePtr creature)
   return get_action_cost(creature, oa.offer(creature, this));
 }
 
+ActionCost ActionManager::skin(CreaturePtr creature)
+{
+  // SkinAction sa;
+  // return get_action_cost(creature, sa.skin(creature, this));
+
+  ActionCost ac;
+  return ac;
+}
+
 // Pick up an item, doing any necessary checks first.
 ActionCost ActionManager::pick_up(CreaturePtr creature)
 {

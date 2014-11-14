@@ -387,3 +387,13 @@ OfferCommand::OfferCommand(int key)
 OfferCommand::~OfferCommand()
 {
 }
+
+// Skin
+SkinCommand::SkinCommand(int key)
+: Command(CommandKeys::SKIN, key)
+{
+}
+
+SkinCommand::~SkinCommand()
+{
+}
