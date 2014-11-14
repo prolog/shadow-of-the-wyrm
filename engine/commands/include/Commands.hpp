@@ -269,3 +269,10 @@ class OfferCommand : public Command
     OfferCommand(int key);
     ~OfferCommand();
 };
+
+class SkinCommand : public Command
+{
+  public:
+    SkinCommand(int key);
+    ~SkinCommand();
+};

@@ -112,6 +112,9 @@ class ActionManager : public ISerializable
     // Offer a sacrifice
     ActionCost offer(CreaturePtr creature);
 
+    // Skin a corpse - skins can be treated at tanneries to make armour.
+    ActionCost skin(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 
