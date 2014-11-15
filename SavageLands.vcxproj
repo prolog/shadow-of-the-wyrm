@@ -182,6 +182,7 @@
     <ClInclude Include="engine\actions\include\SearchAction.hpp" />
     <ClInclude Include="engine\actions\include\ShowConductsAction.hpp" />
     <ClInclude Include="engine\actions\include\ShowResistancesAction.hpp" />
+    <ClInclude Include="engine\actions\include\SkinAction.hpp" />
     <ClInclude Include="engine\actions\include\SpellcastingAction.hpp" />
     <ClInclude Include="engine\actions\include\StairwayMovementAction.hpp" />
     <ClInclude Include="engine\actions\include\TileMovementConfirmation.hpp" />
@@ -1052,6 +1053,7 @@
     <ClCompile Include="engine\actions\source\SearchAction.cpp" />
     <ClCompile Include="engine\actions\source\ShowConductsAction.cpp" />
     <ClCompile Include="engine\actions\source\ShowResistancesAction.cpp" />
+    <ClCompile Include="engine\actions\source\SkinAction.cpp" />
     <ClCompile Include="engine\actions\source\SpellcastingAction.cpp" />
     <ClCompile Include="engine\actions\source\StairwayMovementAction.cpp" />
     <ClCompile Include="engine\actions\source\TileMovementConfirmation.cpp" />

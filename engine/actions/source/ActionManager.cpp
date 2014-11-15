@@ -33,6 +33,7 @@
 #include "SearchAction.hpp"
 #include "ShowConductsAction.hpp"
 #include "ShowResistancesAction.hpp"
+#include "SkinAction.hpp"
 #include "SpellcastingAction.hpp"
 #include "Serialization.hpp"
 #include "StatusAilmentTextKeys.hpp"
@@ -385,11 +386,9 @@ ActionCost ActionManager::offer(CreaturePtr creature)
 
 ActionCost ActionManager::skin(CreaturePtr creature)
 {
-  // SkinAction sa;
-  // return get_action_cost(creature, sa.skin(creature, this));
+  SkinAction sa;
 
-  ActionCost ac;
-  return ac;
+  return get_action_cost(creature, sa.skin(creature, this));
 }
 
 // Pick up an item, doing any necessary checks first.
