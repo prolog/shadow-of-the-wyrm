@@ -3,9 +3,11 @@
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "SkinAction.hpp"
+#include "SkinCalculator.hpp"
 
-using std::string;
+using namespace std;
 
 SkinAction::SkinAction()
 {
@@ -38,11 +40,31 @@ ActionCostValue SkinAction::skin(CreaturePtr creature, const ActionManager * con
         
         if (ground_items)
         {
-          if (ground_items->has_item_with_property(ConsumableConstants::CORPSE_DESCRIPTION_SID))
-          {
-            // ...
+          int num_corpses = ground_items->count_items_with_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
+          ItemPtr selected_corpse;
 
+          if (num_corpses == 1)
+          {
             acv = get_action_cost_value(creature);
+
+            list<ItemPtr>& items = ground_items->get_items_ref();
+            
+            for (ItemPtr item : items)
+            {
+              if (item->has_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID))
+              {
+                selected_corpse = item;
+                break;
+              }
+            }
+
+            acv = attempt_skin(creature, selected_corpse, creature_tile);
+          }
+          else if (num_corpses > 1)
+          {
+            // selected_corpse = ...;
+
+            acv = attempt_skin(creature, selected_corpse, creature_tile);
           }
           else
           {
@@ -50,6 +72,24 @@ ActionCostValue SkinAction::skin(CreaturePtr creature, const ActionManager * con
           }
         }
       }
+    }
+  }
+
+  return acv;
+}
+
+ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, TilePtr tile)
+{
+  ActionCostValue acv = 0;
+
+  if (creature && item && tile)
+  {
+    SkinCalculator sc;
+    int chance_skin = sc.calculate_chance_successful_skin(creature);
+
+    if (RNG::percent_chance(chance_skin))
+    {
+      acv = get_action_cost_value(creature);
     }
   }
 

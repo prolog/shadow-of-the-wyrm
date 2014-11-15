@@ -257,6 +257,22 @@ bool Inventory::has_item_with_property(const string& item_property) const
   return false;
 }
 
+// How many items in the inventory with the given property?
+int Inventory::count_items_with_property(const string& item_property) const
+{
+  int num_items = 0;
+
+  for (ItemPtr item : items)
+  {
+    if (item && item->has_additional_property(item_property))
+    {
+      num_items++;
+    }
+  }
+
+  return num_items;
+}
+
 bool Inventory::serialize(ostream& stream) const
 {
   Serialize::write_size_t(stream, items.size());
