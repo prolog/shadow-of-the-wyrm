@@ -28,7 +28,8 @@ class Inventory : public IInventory
     
     bool has_item_type(const ItemType type) const override;
     bool has_item_with_property(const std::string& additional_property_name) const override;
-    
+    int count_items_with_property(const std::string& additional_property_name) const override;
+
     std::list<ItemPtr>& get_items_ref() override;
     const std::list<ItemPtr>& get_items_cref() const override;
 
