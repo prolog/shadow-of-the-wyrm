@@ -3273,6 +3273,9 @@
     <ClInclude Include="engine\features\include\TanneryManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\SkinAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6343,6 +6346,9 @@
     </ClCompile>
     <ClCompile Include="engine\features\source\TanneryManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\SkinAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
