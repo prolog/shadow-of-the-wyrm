@@ -617,6 +617,7 @@
     <ClInclude Include="engine\screens\include\Prompt.hpp" />
     <ClInclude Include="engine\screens\include\RaceSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\SexSelectionScreen.hpp" />
+    <ClInclude Include="engine\screens\include\SkinSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\SpellSelectionScreen.hpp" />
     <ClInclude Include="engine\screens\include\TextComponent.hpp" />
     <ClInclude Include="engine\screens\include\TextDisplayFormatter.hpp" />
@@ -789,6 +790,7 @@
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
+    <ClInclude Include="world\include\SkinningConstants.hpp" />
     <ClInclude Include="world\include\SmithingConstants.hpp" />
     <ClInclude Include="world\include\Spellbook.hpp" />
     <ClInclude Include="world\include\Calendar.hpp" />
@@ -1850,6 +1852,7 @@
     <ClCompile Include="engine\screens\source\Prompt.cpp" />
     <ClCompile Include="engine\screens\source\RaceSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\SexSelectionScreen.cpp" />
+    <ClCompile Include="engine\screens\source\SkinSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\SpellSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\TextComponent.cpp" />
     <ClCompile Include="engine\screens\source\TextDisplayFormatter.cpp" />
@@ -2233,6 +2236,7 @@
     <ClCompile Include="world\source\ConsumableConstants.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
+    <ClCompile Include="world\source\SkinningConstants.cpp" />
     <ClCompile Include="world\source\SmithingConstants.cpp" />
     <ClCompile Include="world\source\Spellbook.cpp" />
     <ClCompile Include="world\source\Calendar.cpp" />

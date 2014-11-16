@@ -19286,6 +19286,14 @@
 					</Property>
 				</Properties>
 			</Item>
+			<Item id="_skin">
+				<DescriptionSID>SKIN_SID</DescriptionSID>
+				<UsageDescriptionSID>SKIN_USAGE_SID</UsageDescriptionSID>
+				<Value>1</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 		</MiscItems>
 	</Items>
 	<Scripts>
