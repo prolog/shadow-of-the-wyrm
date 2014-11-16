@@ -32,6 +32,7 @@ class TextKeys
     static const std::string SEX_MALE_ABRV;
     static const std::string SEX_FEMALE;
     static const std::string SEX_FEMALE_ABRV;
+    static const std::string SELECT_EQUIPMENT_WORN_LOCATION;
     static const std::string AGE;
     static const std::string HAIR_COLOUR;
     static const std::string EYE_COLOUR;
@@ -120,6 +121,7 @@ class TextKeys
     static const std::string EQUIPMENT_PROMPT;
     static const std::string INVENTORY;
     static const std::string INVENTORY_PROMPT;
+    static const std::string SKIN_PROMPT;
     
     static const std::string DECISION_CONFIRM_KEY;
     static const std::string DECISION_DENY_KEY;

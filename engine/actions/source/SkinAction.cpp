@@ -1,11 +1,13 @@
 #include "global_prototypes.hpp"
 #include "ActionTextKeys.hpp"
 #include "Game.hpp"
+#include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "SkinAction.hpp"
 #include "SkinCalculator.hpp"
+#include "SkinningConstants.hpp"
 
 using namespace std;
 
@@ -81,6 +83,7 @@ ActionCostValue SkinAction::skin(CreaturePtr creature, const ActionManager * con
 ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, TilePtr tile)
 {
   ActionCostValue acv = 0;
+  Game& game = Game::instance();
 
   if (creature && item && tile)
   {
@@ -89,11 +92,48 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
 
     if (RNG::percent_chance(chance_skin))
     {
-      acv = get_action_cost_value(creature);
+      add_skin_successful_message(creature); 
+      create_skin_and_add_to_tile(creature, item, tile);
     }
+    else
+    {
+      add_mangled_corpse_skin_message(creature);
+    }
+
+    // Remove the corpse from the ground.
+    tile->get_items()->remove(item->get_id());
+
+    acv = get_action_cost_value(creature);
   }
 
   return acv;
+}
+
+// Create the skin and add it to the tile.  The skin's resistances should
+// be based off the corpse of the creature skinned.
+void SkinAction::create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corpse, TilePtr tile)
+{
+  if (corpse && tile)
+  {
+    ItemManager im;
+    uint quantity = 1;
+
+    // Chance to create a second skin based on a percentage check
+    // using the creature's skinning skill.
+    if (RNG::percent_chance(creature->get_skills().get_value(SKILL_GENERAL_SKINNING)))
+    {
+      quantity++;
+    }
+
+    ItemPtr skin = im.create_item(SkinningConstants::SKIN_ID, quantity);
+
+    // TODO: Update resistances based on corpse resistances.
+
+    if (skin)
+    {
+      tile->get_items()->add(skin);
+    }
+  }
 }
 
 // Skinning can't be done on the world map - it must be done on an overworld
@@ -112,6 +152,23 @@ void SkinAction::add_no_corpses_message(CreaturePtr creature)
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
   manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_NO_CORPSES));
+  manager.send();
+}
+
+void SkinAction::add_skin_successful_message(CreaturePtr creature)
+{
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
+  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_SUCCESSFUL));
+  manager.send();
+}
+
+// Failing to skin a corpse mangled it, and it disappears.
+void SkinAction::add_mangled_corpse_skin_message(CreaturePtr creature)
+{
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
+  manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SKIN_MANGLED_CORPSE));
   manager.send();
 }
 

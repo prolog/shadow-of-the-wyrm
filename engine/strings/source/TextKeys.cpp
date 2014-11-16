@@ -45,6 +45,7 @@ const string TextKeys::SEX_MALE = "SEX_MALE";
 const string TextKeys::SEX_MALE_ABRV = "SEX_MALE_ABRV";
 const string TextKeys::SEX_FEMALE = "SEX_FEMALE";
 const string TextKeys::SEX_FEMALE_ABRV = "SEX_FEMALE_ABRV";
+const string TextKeys::SELECT_EQUIPMENT_WORN_LOCATION = "SELECT_EQUIPMENT_WORN_LOCATION";
 
 const string TextKeys::RACE_1_NAME = "RACE_1_NAME";
 const string TextKeys::RACE_1_SHORT_DESC = "RACE_1_SHORT_DESC";
@@ -124,6 +125,7 @@ const string TextKeys::EQUIPMENT         = "EQUIPMENT";
 const string TextKeys::EQUIPMENT_PROMPT  = "EQUIPMENT_PROMPT";
 const string TextKeys::INVENTORY         = "INVENTORY";
 const string TextKeys::INVENTORY_PROMPT  = "INVENTORY_PROMPT";
+const string TextKeys::SKIN_PROMPT       = "SKIN_PROMPT";
 
 const string TextKeys::DECISION_CONFIRM_KEY = "DECISION_CONFIRM_KEY";
 const string TextKeys::DECISION_DENY_KEY    = "DECISION_DENY_KEY";

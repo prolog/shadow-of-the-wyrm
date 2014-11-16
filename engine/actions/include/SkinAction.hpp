@@ -13,8 +13,11 @@ class SkinAction : public IActionManager
 
     void add_skin_world_map_message(CreaturePtr creature);
     void add_no_corpses_message(CreaturePtr creature);
+    void add_skin_successful_message(CreaturePtr creature);
+    void add_mangled_corpse_skin_message(CreaturePtr creature);
 
     ActionCostValue attempt_skin(CreaturePtr creature, ItemPtr corpse, TilePtr tile);
+    void create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corpse, TilePtr tile);
 
     ActionCostValue get_action_cost_value(CreaturePtr creature) const override;
 };
