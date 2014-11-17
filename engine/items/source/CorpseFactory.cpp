@@ -72,8 +72,8 @@ ItemPtr CorpseFactory::create_corpse(CreaturePtr creature)
           set_weight(creature, corpse);
 
           // If the creature has any resistances, transfer these to the corpse
-          // so that consuming the corpse has the potential to increase the
-          // eater's power.
+          // so that these can be used later: for increasing the eater's
+          // resistances, or adding the resistances to a skin, etc.
           set_resistances(creature, corpse);
         }
       }
