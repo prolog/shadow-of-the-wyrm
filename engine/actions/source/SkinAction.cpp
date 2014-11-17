@@ -1,6 +1,7 @@
 #include "global_prototypes.hpp"
 #include "ActionTextKeys.hpp"
 #include "Game.hpp"
+#include "ItemFilterFactory.hpp"
 #include "ItemManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -17,7 +18,7 @@ SkinAction::SkinAction()
 
 // Attempt to skin a corpse.  If successful, this will produce a skin which
 // can be worked at a tannery to create leather armour.
-ActionCostValue SkinAction::skin(CreaturePtr creature, const ActionManager * const am)
+ActionCostValue SkinAction::skin(CreaturePtr creature, ActionManager * const am)
 {
   ActionCostValue acv = 0;
 
@@ -64,7 +65,8 @@ ActionCostValue SkinAction::skin(CreaturePtr creature, const ActionManager * con
           }
           else if (num_corpses > 1)
           {
-            // selected_corpse = ...;
+            list<IItemFilterPtr> corpse_filter = ItemFilterFactory::create_item_property_type_filter(vector<pair<string, string>>{make_pair(ConsumableConstants::CORPSE_DESCRIPTION_SID, "")});
+            selected_corpse = am->inventory(creature, ground_items, corpse_filter, false);
 
             acv = attempt_skin(creature, selected_corpse, creature_tile);
           }
