@@ -1,9 +1,10 @@
 #pragma once
 #include "Creature.hpp"
 
-class SkinCalculator
+class CorpseCalculator
 {
   public:
     int calculate_chance_successful_skin(CreaturePtr creature);
+    int calculate_chance_corpse(CreaturePtr deathblow_creature);
 };
 

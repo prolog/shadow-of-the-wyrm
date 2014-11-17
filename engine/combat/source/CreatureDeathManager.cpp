@@ -1,4 +1,5 @@
 #include "CombatTextKeys.hpp"
+#include "CorpseCalculator.hpp"
 #include "CorpseFactory.hpp"
 #include "CreatureDeathManager.hpp"
 #include "Game.hpp"
@@ -72,7 +73,8 @@ void CreatureDeathManager::die() const
     }
 
     // Potentially generate a corpse as well.
-    if (RNG::percent_chance(PCT_CHANCE_CORPSE))
+    CorpseCalculator cc;
+    if (RNG::percent_chance(cc.calculate_chance_corpse(attacking_creature)))
     {
       CorpseFactory cf;
       ItemPtr corpse = cf.create_corpse(dead_creature);

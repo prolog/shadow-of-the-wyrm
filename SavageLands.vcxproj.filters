@@ -3276,14 +3276,14 @@
     <ClInclude Include="engine\actions\include\SkinAction.hpp">
       <Filter>Header Files\engine\actions\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\calculators\include\SkinCalculator.hpp">
-      <Filter>Header Files\engine\calculators\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\screens\include\SkinSelectionScreen.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
     <ClInclude Include="world\include\SkinningConstants.hpp">
       <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\calculators\include\CorpseCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -6359,17 +6359,17 @@
     <ClCompile Include="engine\actions\source\SkinAction.cpp">
       <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
-    <ClCompile Include="engine\calculators\source\SkinCalculator.cpp">
-      <Filter>Source Files\engine\calculators\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\calculators\source\unit_tests\SkinCalculator_test.cpp">
-      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="engine\screens\source\SkinSelectionScreen.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\SkinningConstants.cpp">
       <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\CorpseCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\CorpseCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -17,6 +17,14 @@ SavageLands v0.3.0 "Theodric"
 
 - Added a tannery to Isen Dun and a jeweler's workbench to Gnordvar.
 
+- Skinning now influences:
+
+  - the chance of a successful skin attempt
+
+  - whether a "bonus" skin is created on a successful attempt
+
+- Foraging now increases the chance that a creature will drop a corpse.
+
 - New items: protective amulet, evasive amulet.
 
 SavageLands v0.2.9 "Aethelric"
