@@ -5,7 +5,6 @@ class ConsumableConstants
 {
   public:
     static const std::string CORPSE_DESCRIPTION_SID;
-    static const std::string SKIN_DESCRIPTION_SID;
     static const std::string CORPSE_RACE_ID;
     static const int FOOD_POISON_APPLICATION_BONUS;
 

@@ -9,5 +9,8 @@ class TanneryManipulator : public IFeatureManipulator
 
     void kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature) override;
     bool handle(TilePtr tile, CreaturePtr creature) override;
+
+  protected:
+    void add_no_skins_message(CreaturePtr creature);
 };
 

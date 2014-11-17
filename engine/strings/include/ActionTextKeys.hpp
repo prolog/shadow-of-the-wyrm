@@ -75,6 +75,7 @@ class ActionTextKeys
     static const std::string ACTION_SKIN_NO_CORPSES;
     static const std::string ACTION_SKIN_MANGLED_CORPSE;
     static const std::string ACTION_SKIN_SUCCESSFUL;
+    static const std::string ACTION_SKIN_NO_SKINS;
 
   protected:
     ActionTextKeys();
