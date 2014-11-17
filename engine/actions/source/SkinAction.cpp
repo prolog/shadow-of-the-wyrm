@@ -128,7 +128,7 @@ void SkinAction::create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corps
     }
 
     ItemPtr skin = im.create_item(SkinningConstants::SKIN_ID, quantity);
-    skin->set_additional_property(ConsumableConstants::SKIN_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID));
+    skin->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, corpse->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID));
 
     // Update the skin's resistances based on corpse resistances.
     Resistances res = corpse->get_resistances();
