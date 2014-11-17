@@ -7,7 +7,7 @@
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "SkinAction.hpp"
-#include "SkinCalculator.hpp"
+#include "CorpseCalculator.hpp"
 #include "SkinningConstants.hpp"
 
 using namespace std;
@@ -89,8 +89,8 @@ ActionCostValue SkinAction::attempt_skin(CreaturePtr creature, ItemPtr item, Til
 
   if (creature && item && tile)
   {
-    SkinCalculator sc;
-    int chance_skin = sc.calculate_chance_successful_skin(creature);
+    CorpseCalculator cc;
+    int chance_skin = cc.calculate_chance_successful_skin(creature);
 
     if (RNG::percent_chance(chance_skin))
     {
