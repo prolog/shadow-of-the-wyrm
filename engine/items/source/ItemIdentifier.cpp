@@ -144,9 +144,17 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
     // If the item is a corpse, always create its description from the stored
     // creature description SID.
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
+    string creature_skin_desc_sid = item->get_additional_property(ConsumableConstants::SKIN_DESCRIPTION_SID);
+
     if (!creature_desc_sid.empty())
     {
       desc << CorpseTextKeys::get_corpse_description(StringTable::get(creature_desc_sid));
+    }
+    // If the item requires creating a message with substitutions (e.g.,
+    // "red dragon skin"), handle that case:
+    else if (!creature_skin_desc_sid.empty())
+    {
+      desc << CorpseTextKeys::get_skin_description(StringTable::get(creature_skin_desc_sid));
     }
     // Corpses are a special case.  For all other items, check the identified
     // status, and base the description on whether it's identified or not.
@@ -199,10 +207,19 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     // is the value stored on the item, so it will always create items of the
     // style "a foo corpse".
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
+    string creature_skin_desc_sid = item->get_additional_property(ConsumableConstants::SKIN_DESCRIPTION_SID);
+
     if (!creature_desc_sid.empty())
     {
       full_desc = CorpseTextKeys::get_corpse_description(StringTable::get(creature_desc_sid));
     }
+    // If the item requires creating a message with substitutions (e.g.,
+    // "red dragon skin"), handle that case:
+    else if (!creature_skin_desc_sid.empty())
+    {
+      full_desc = CorpseTextKeys::get_skin_description(StringTable::get(creature_skin_desc_sid));
+    }
+    //
     // If the item is identified, or if its identity is not hidden (food,
     // etc)
     else if (get_item_identified(item->get_base_id()) || item->get_unidentified_usage_description_sid().empty())

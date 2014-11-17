@@ -14,6 +14,10 @@ ConsumableConstants::~ConsumableConstants()
 // indicate that the item is actually a corpse.
 const string ConsumableConstants::CORPSE_DESCRIPTION_SID = "CORPSE_DESCRIPTION_SID";
 
+// Used as a key in the property map for items to indicate that the
+// item is a skin.
+const string ConsumableConstants::SKIN_DESCRIPTION_SID = "SKIN_DESCRIPTION_SID";
+
 // Also used as a key in the item additional property map for corpses,
 // so that the race of the original creature can be tracked after death.
 const string ConsumableConstants::CORPSE_RACE_ID = "CORPSE_RACE_ID";

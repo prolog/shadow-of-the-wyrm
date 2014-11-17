@@ -21,8 +21,8 @@ int CorpseCalculator::calculate_chance_corpse(CreaturePtr deathblow_creature)
 
   if (deathblow_creature)
   {
-    int skin_value = deathblow_creature->get_skills().get_value(SKILL_GENERAL_FORAGING);
-    pct_chance = std::min(15 + (skin_value / 4), 100);
+    int forage_value = deathblow_creature->get_skills().get_value(SKILL_GENERAL_FORAGING);
+    pct_chance = std::min(15 + (forage_value / 4), 100);
   }
 
   return pct_chance;
