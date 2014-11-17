@@ -5,7 +5,7 @@
 class SkinAction : public IActionManager
 {
   public:
-    ActionCostValue skin(CreaturePtr creature, const ActionManager * const am);
+    ActionCostValue skin(CreaturePtr creature, ActionManager * const am);
     
   protected:
     friend class ActionManager;
