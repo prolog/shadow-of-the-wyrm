@@ -4,6 +4,10 @@ SavageLands v0.3.0 "Theodric"
 - Created tanneries.  These are tile features that can be used to treat
   skins to make leather armour/boots.
 
+  - When at a tannery, and the creature applies the tannery, they are
+    prompted to select a skin, and then an equipment slot.  An item of
+    the appropriate type is then created.
+
 - Created jeweler's workbenches.  These tile features are used to
   improve rings and amulets with gold.  Rings and amulets follow the same
   rules as armour for improvement by goldsmithing.
