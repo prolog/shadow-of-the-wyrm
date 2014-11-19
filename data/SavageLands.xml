@@ -15080,6 +15080,17 @@
 				<Evade>4</Evade>
 				<Soak>0</Soak>
 			</Armour>
+			<Armour id="_hide_cap">
+				<DescriptionSID>HIDE_CAP_SID</DescriptionSID>
+				<UsageDescriptionSID>HIDE_CAP_USAGE_SID</UsageDescriptionSID>
+				<Value>5</Value>
+				<Weight><Pounds>0</Pounds><Ounces>7</Ounces></Weight>
+				<WornLocation>0</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Evade>2</Evade>
+				<Soak>1</Soak>
+			</Armour>
 			<Armour id="thiefs_cap">
 				<DescriptionSID>THIEFS_CAP_SID</DescriptionSID>
 				<UsageDescriptionSID>THIEFS_CAP_USAGE_SID</UsageDescriptionSID>
@@ -15555,6 +15566,17 @@
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
+			<Armour id="_hide_armour">
+				<DescriptionSID>HIDE_ARMOUR_SID</DescriptionSID>
+				<UsageDescriptionSID>HIDE_ARMOUR_USAGE_SID</UsageDescriptionSID>
+				<Value>10</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>6</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>2</Soak>
+			</Armour>
 			<Armour id="buckler">
 				<DescriptionSID>BUCKLER_SID</DescriptionSID>
 				<UsageDescriptionSID>BUCKLER_USAGE_SID</UsageDescriptionSID>
@@ -15675,6 +15697,17 @@
 				<Evade>2</Evade>
 				<Soak>1</Soak>
 			</Armour>
+			<Armour id="_hide_cloak">
+				<DescriptionSID>HIDE_CLOAK_SID</DescriptionSID>
+				<UsageDescriptionSID>HIDE_CLOAK_USAGE_SID</UsageDescriptionSID>
+				<Value>2</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>7</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>1</DangerLevel>
+				<Evade>0</Evade>
+				<Soak>2</Soak>
+			</Armour>
 			<Armour id="hunters_cloak">
 				<DescriptionSID>HUNTERS_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>HUNTERS_CLOAK_USAGE_SID</UsageDescriptionSID>
@@ -15758,6 +15791,17 @@
 			<Armour id="leather_boots">
 				<DescriptionSID>LEATHER_BOOTS_SID</DescriptionSID>
 				<UsageDescriptionSID>LEATHER_BOOTS_USAGE_SID</UsageDescriptionSID>
+				<Value>50</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>8</WornLocation>
+				<Material>4</Material>
+				<DangerLevel>1</DangerLevel>
+				<Evade>3</Evade>
+				<Soak>1</Soak>
+			</Armour>
+			<Armour id="_hide_boots">
+				<DescriptionSID>HIDE_BOOTS_SID</DescriptionSID>
+				<UsageDescriptionSID>HIDE_BOOTS_USAGE_SID</UsageDescriptionSID>
 				<Value>50</Value>
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>8</WornLocation>

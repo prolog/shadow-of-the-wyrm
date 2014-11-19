@@ -155,7 +155,7 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
     // "red dragon skin"), handle that case:
     else if (!creature_skin_desc_sid.empty())
     {
-      desc << CorpseTextKeys::get_skin_description(StringTable::get(creature_skin_desc_sid));
+      desc << CorpseTextKeys::get_skin_description(StringTable::get(item->get_description_sid()), StringTable::get(creature_skin_desc_sid));
     }
     // Corpses are a special case.  For all other items, check the identified
     // status, and base the description on whether it's identified or not.
@@ -218,7 +218,7 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     // "red dragon skin"), handle that case:
     else if (!creature_skin_desc_sid.empty())
     {
-      full_desc = CorpseTextKeys::get_skin_description(StringTable::get(creature_skin_desc_sid));
+      full_desc = CorpseTextKeys::get_skin_description(StringTable::get(item->get_description_sid()), StringTable::get(creature_skin_desc_sid));
     }
     //
     // If the item is identified, or if its identity is not hidden (food,
