@@ -5,7 +5,6 @@
 using namespace std;
 
 const string CorpseTextKeys::CORPSE_MESSAGE = "CORPSE_MESSAGE";
-const string CorpseTextKeys::SKIN_MESSAGE = "SKIN_MESSAGE";
 
 CorpseTextKeys::CorpseTextKeys()
 {
@@ -27,12 +26,11 @@ string CorpseTextKeys::get_corpse_description(const string& creature_desc)
   return corpse_desc;
 }
 
-string CorpseTextKeys::get_skin_description(const string& creature_desc)
+string CorpseTextKeys::get_skin_description(const string& item_description, const string& creature_desc)
 {
-  string corpse_desc;
+  string item_desc = item_description;
 
-  corpse_desc = StringTable::get(SKIN_MESSAGE);
-  boost::replace_first(corpse_desc, "%s", creature_desc);
+  boost::replace_first(item_desc, "%s", creature_desc);
 
-  return corpse_desc;
+  return item_desc;
 }

@@ -12,5 +12,10 @@ class TanneryManipulator : public IFeatureManipulator
 
   protected:
     void add_no_skins_message(CreaturePtr creature);
+    void add_successful_armour_creation_message(CreaturePtr creature);
+
+    ItemPtr create_hide_armour(CreaturePtr creature, ItemPtr selected_skin, const EquipmentWornLocation slot);
+
+    std::map<EquipmentWornLocation, std::string> skin_items;
 };
 

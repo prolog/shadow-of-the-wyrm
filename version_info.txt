@@ -29,7 +29,8 @@ SavageLands v0.3.0 "Theodric"
 
 - Foraging now increases the chance that a creature will drop a corpse.
 
-- New items: protective amulet, evasive amulet.
+- New items: protective amulet, evasive amulet, hide armour, hide cloak,
+  hide cap, hide boots.
 
 SavageLands v0.2.9 "Aethelric"
 - Version declared October 15, 2014.  Version finalized November 11, 2014.
