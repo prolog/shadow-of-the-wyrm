@@ -159,7 +159,7 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
     }
     // Corpses are a special case.  For all other items, check the identified
     // status, and base the description on whether it's identified or not.
-    else if (!item_identified || !item->get_unidentified_description_sid().empty())
+    else if (!item_identified && !item->get_unidentified_description_sid().empty())
     {
       desc << StringTable::get(item->get_unidentified_description_sid());
     }
