@@ -212,7 +212,7 @@ string ItemIdentifier::get_appropriate_usage_description(ItemPtr item) const
     // is the value stored on the item, so it will always create items of the
     // style "a foo corpse".
     string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
-    string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID);
+    string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID);
 
     if (!creature_desc_sid.empty())
     {
