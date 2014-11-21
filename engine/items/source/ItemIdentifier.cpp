@@ -144,7 +144,7 @@ string ItemIdentifier::get_appropriate_description(ItemPtr item) const
   {
     // If the item is a corpse, always create its description from the stored
     // creature description SID.
-    string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID);
+    string creature_desc_sid = item->get_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID);
     string creature_skin_desc_sid = item->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID);
 
     if (!creature_desc_sid.empty())

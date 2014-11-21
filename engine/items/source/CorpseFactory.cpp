@@ -103,6 +103,7 @@ void CorpseFactory::set_display_details(CreaturePtr creature, ItemPtr corpse)
     // Set the description SID, which will be used by the appropriate
     // item describer to print something like "a chimera corpse".
     corpse->set_additional_property(ConsumableConstants::CORPSE_DESCRIPTION_SID, creature->get_description_sid());
+	corpse->set_additional_property(ConsumableConstants::CORPSE_SHORT_DESCRIPTION_SID, creature->get_short_description_sid());
   }
 }
 

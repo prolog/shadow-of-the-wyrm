@@ -12,5 +12,6 @@ class CorpseTextKeys
     ~CorpseTextKeys();
 
     static const std::string CORPSE_MESSAGE;
+	static const std::string SKIN_MESSAGE;
 };
 
