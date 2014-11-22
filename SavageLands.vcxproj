@@ -268,6 +268,7 @@
     <ClInclude Include="engine\calculators\include\StoneCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\StunnedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\SwimmingCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\TanningCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\TertiaryUnarmedPhysicalAttackSpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
@@ -1151,6 +1152,7 @@
     <ClCompile Include="engine\calculators\source\StoneCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\StunnedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\SwimmingCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\TanningCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\TertiaryUnarmedPhysicalAttackSpeedCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\ToHitCalculatorFactory.cpp" />
@@ -1306,6 +1308,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StunnedCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\TanningCalculator_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

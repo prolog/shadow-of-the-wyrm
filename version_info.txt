@@ -8,6 +8,9 @@ SavageLands v0.3.0 "Theodric"
     prompted to select a skin, and then an equipment slot.  An item of
     the appropriate type is then created.
 
+  - The item has a chance of having additional evade and soak based on
+    the creature's Tanning skill.
+
 - Created jeweler's workbenches.  These tile features are used to
   improve rings and amulets with gold.  Rings and amulets follow the same
   rules as armour for improvement by goldsmithing.
