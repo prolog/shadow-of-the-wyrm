@@ -32,6 +32,8 @@ SavageLands v0.3.0 "Theodric"
 
 - Foraging now increases the chance that a creature will drop a corpse.
 
+- Bug fixes: fixed an issue with item generation in treasure rooms.
+
 - New items: protective amulet, evasive amulet, hide armour, hide cloak,
   hide cap, hide boots.
 

@@ -13,7 +13,7 @@ ItemGenerationManager::ItemGenerationManager()
 // Generate an item generation map for the given danger level and rarity.
 ItemGenerationVec ItemGenerationManager::generate_item_generation_vec(const int min_danger_level, const int max_danger_level, const Rarity rarity)
 {
-  int min_danger = min_danger_level;
+  int min_danger = max(min_danger_level, 1);
   ItemGenerationVec generation_vec;
 
   ItemPtr generated_creature;

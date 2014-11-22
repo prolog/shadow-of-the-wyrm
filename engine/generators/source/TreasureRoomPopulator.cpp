@@ -106,13 +106,16 @@ void TreasureRoomPopulator::generate_treasure(MapPtr current_map, const int dang
 
       // Generate an item.
       ItemGenerationManager igm;
-      ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level / 2, danger_level, RARITY_RARE);
+      ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level / 2, RNG::range(danger_level, danger_level + 5), RARITY_RARE);
 
       ItemPtr generated_item = igm.generate_item(am, generation_vec, RNG::range(2, 4));
 
-      // Add a number of extra enchants, and then add the item to the tile.
-      generated_item->enchant(RNG::range(2,3));
-      tile->get_items()->add(generated_item);
+      if (generated_item)
+      {
+        // Add a number of extra enchants, and then add the item to the tile.
+        generated_item->enchant(RNG::range(2, 3));
+        tile->get_items()->add(generated_item);
+      }
     }
   }
 }
