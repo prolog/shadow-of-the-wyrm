@@ -5,6 +5,9 @@
 
 using std::string;
 
+const int DislikeDeityDecisionStrategyHandler::DISLIKE_DECISION_PIETY_LOSS = 750;
+const int DislikeDeityDecisionStrategyHandler::DISLIKE_DECISION_ANGER_THRESHOLD = -1000;
+
 DislikeDeityDecisionStrategyHandler::DislikeDeityDecisionStrategyHandler(const string& new_deity_id)
 : DeityDecisionStrategyHandler(new_deity_id)
 {
@@ -43,7 +46,7 @@ DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(C
   {
     int piety = rm.get_piety_for_active_deity(creature);
 
-    if (piety < -1000)
+    if (piety < DISLIKE_DECISION_ANGER_THRESHOLD)
     {
       ScriptEngine& se = Game::instance().get_script_engine_ref();
       string anger_script = deity->get_anger_script();
@@ -58,7 +61,7 @@ DeityDecisionImplications DislikeDeityDecisionStrategyHandler::handle_decision(C
 
 int DislikeDeityDecisionStrategyHandler::get_piety_loss() const
 {
-  return 750;
+  return DISLIKE_DECISION_PIETY_LOSS;
 }
 
 string DislikeDeityDecisionStrategyHandler::get_message_sid() const

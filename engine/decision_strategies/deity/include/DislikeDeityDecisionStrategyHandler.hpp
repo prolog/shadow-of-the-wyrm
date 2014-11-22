@@ -15,4 +15,7 @@ class DislikeDeityDecisionStrategyHandler : public DeityDecisionStrategyHandler
     int get_piety_loss() const override;
     std::string get_message_sid() const override;
     DeityPtr deity;
+
+    static const int DISLIKE_DECISION_PIETY_LOSS;
+    static const int DISLIKE_DECISION_ANGER_THRESHOLD;
 };
