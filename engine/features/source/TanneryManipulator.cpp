@@ -8,6 +8,8 @@
 #include "RNG.hpp"
 #include "SkinningConstants.hpp"
 #include "SkinSelectionScreen.hpp"
+#include "TanningCalculator.hpp"
+#include "Wearable.hpp"
 
 using namespace std;
 
@@ -110,14 +112,21 @@ ItemPtr TanneryManipulator::create_hide_armour(CreaturePtr creature, ItemPtr sel
 
       // Create the item.
       armour = ItemManager::create_item(item_id);
+      WearablePtr wearable = dynamic_pointer_cast<Wearable>(armour);
 
       // Set the skin details: creature description, resistances, etc.
-      if (armour)
+      // Additional evade and soak may be added if the tanner is skilled.
+      if (wearable)
       {
+        TanningCalculator tc;
+
+        wearable->set_evade(wearable->get_evade() + tc.calculate_evade_bonus(creature));
+        wearable->set_soak(wearable->get_soak() + tc.calculate_soak_bonus(creature));
+
         armour->set_resistances(selected_skin->get_resistances());
         armour->set_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_DESCRIPTION_SID));
-		armour->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));
-	  }
+    		armour->set_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID, selected_skin->get_additional_property(SkinningConstants::SKIN_USAGE_DESCRIPTION_SID));
+	    }
     }
   }
 
