@@ -17,7 +17,7 @@ const string EquipmentTextKeys::EQUIPMENT_LEFT_FINGER  = "EQUIPMENT_LEFT_FINGER"
 const string EquipmentTextKeys::EQUIPMENT_WIELDED   = "EQUIPMENT_WIELDED";
 const string EquipmentTextKeys::EQUIPMENT_OFF_HAND    = "EQUIPMENT_OFF_HAND";
 const string EquipmentTextKeys::EQUIPMENT_BODY         = "EQUIPMENT_BODY";
-const string EquipmentTextKeys::EQUIPMENT_ABOUT_BODY   = "EQUIPMENT_ABOUT_BODY";
+const string EquipmentTextKeys::EQUIPMENT_AROUND_BODY   = "EQUIPMENT_AROUND_BODY";
 const string EquipmentTextKeys::EQUIPMENT_FEET         = "EQUIPMENT_FEET";
 const string EquipmentTextKeys::EQUIPMENT_RANGED       = "EQUIPMENT_RANGED";
 const string EquipmentTextKeys::EQUIPMENT_AMMUNITION   = "EQUIPMENT_AMMUNITION";
@@ -54,8 +54,8 @@ string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const Equi
     case EQUIPMENT_WORN_BODY:
       equipment_text_sid = EQUIPMENT_BODY;
       break;
-    case EQUIPMENT_WORN_ABOUT_BODY:
-      equipment_text_sid = EQUIPMENT_ABOUT_BODY;
+    case EQUIPMENT_WORN_AROUND_BODY:
+      equipment_text_sid = EQUIPMENT_AROUND_BODY;
       break;
     case EQUIPMENT_WORN_FEET:
       equipment_text_sid = EQUIPMENT_FEET;

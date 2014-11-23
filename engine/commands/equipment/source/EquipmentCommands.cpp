@@ -104,15 +104,15 @@ EquipmentWornLocation WearOrRemoveBodyCommand::get_equipment_worn_location() con
   return EQUIPMENT_WORN_BODY;
 }
 
-// About body slot
-WearOrRemoveAboutBodyCommand::WearOrRemoveAboutBodyCommand(const int key)
-: WearOrRemoveCommand(EquipmentCommandKeys::WEAR_OR_REMOVE_ABOUT_BODY, key)
+// Around body slot
+WearOrRemoveAroundBodyCommand::WearOrRemoveAroundBodyCommand(const int key)
+: WearOrRemoveCommand(EquipmentCommandKeys::WEAR_OR_REMOVE_AROUND_BODY, key)
 {
 }
 
-EquipmentWornLocation WearOrRemoveAboutBodyCommand::get_equipment_worn_location() const
+EquipmentWornLocation WearOrRemoveAroundBodyCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_ABOUT_BODY;
+  return EQUIPMENT_WORN_AROUND_BODY;
 }
 
 // Feet slot

@@ -15,7 +15,7 @@ using namespace std;
 
 TanneryManipulator::TanneryManipulator(FeaturePtr feature)
 : IFeatureManipulator(feature),
-skin_items({ {EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EQUIPMENT_WORN_BODY, "_hide_armour"}, {EQUIPMENT_WORN_ABOUT_BODY, "_hide_cloak"}, {EQUIPMENT_WORN_FEET, "_hide_boots"} })
+skin_items({ {EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EQUIPMENT_WORN_BODY, "_hide_armour"}, {EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EQUIPMENT_WORN_FEET, "_hide_boots"} })
 {
 }
 
