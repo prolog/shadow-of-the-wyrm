@@ -2057,7 +2057,7 @@
 				<Head><ID>leather_helm</ID></Head>
 				<Wielded><ID>dagger</ID></Wielded>
 				<Body><ID>leather_armour</ID></Body>
-				<AboutBody><ID>cloak</ID></AboutBody>
+				<AroundBody><ID>cloak</ID></AroundBody>
 				<Feet><ID>leather_boots</ID></Feet>
 				<Ranged>
 					<Races>
@@ -2878,7 +2878,7 @@
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>woodsman_axe</ID></Wielded>
 				<Body><ID>leather_armour</ID></Body>
-				<AboutBody><ID>cloak</ID></AboutBody>
+				<AroundBody><ID>cloak</ID></AroundBody>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -3045,7 +3045,7 @@
 				<Head><ID>cap</ID></Head>
 				<Wielded><ID>long_spear</ID></Wielded>
 				<Body><ID>wayfarer_clothes</ID></Body>
-				<AboutBody><ID>cloak</ID></AboutBody>
+				<AroundBody><ID>cloak</ID></AroundBody>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -3130,7 +3130,7 @@
 				<Head><ID>cap</ID></Head>
 				<Wielded><ID>shepherd_crook</ID></Wielded>
 				<Body><ID>wayfarer_clothes</ID></Body>
-				<AboutBody><ID>cloak</ID></AboutBody>
+				<AroundBody><ID>cloak</ID></AroundBody>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>

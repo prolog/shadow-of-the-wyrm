@@ -154,8 +154,8 @@ string TextMessages::get_equipment_location(const EquipmentWornLocation location
     case EQUIPMENT_WORN_BODY:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_BODY);
       break;
-    case EQUIPMENT_WORN_ABOUT_BODY:
-      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_ABOUT_BODY);
+    case EQUIPMENT_WORN_AROUND_BODY:
+      equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_AROUND_BODY);
       break;
     case EQUIPMENT_WORN_FEET:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_FEET);

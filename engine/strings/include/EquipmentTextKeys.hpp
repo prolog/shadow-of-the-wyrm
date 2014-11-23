@@ -14,7 +14,7 @@ class EquipmentTextKeys
     static const std::string EQUIPMENT_WIELDED;
     static const std::string EQUIPMENT_OFF_HAND;
     static const std::string EQUIPMENT_BODY;
-    static const std::string EQUIPMENT_ABOUT_BODY;
+    static const std::string EQUIPMENT_AROUND_BODY;
     static const std::string EQUIPMENT_FEET;
     static const std::string EQUIPMENT_RANGED;
     static const std::string EQUIPMENT_AMMUNITION;

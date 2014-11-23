@@ -17,7 +17,7 @@ TEST(SL_Engine_Calculators_CreatureToHitCalculator, calculate_to_hit_bonus)
   item2->set_to_hit(7);
 
   cp->get_equipment().set_item(item1, EQUIPMENT_WORN_BODY);
-  cp->get_equipment().set_item(item2, EQUIPMENT_WORN_ABOUT_BODY);
+  cp->get_equipment().set_item(item2, EQUIPMENT_WORN_AROUND_BODY);
 
   EXPECT_EQ(11, cthc.calculate_to_hit(cp));
 }

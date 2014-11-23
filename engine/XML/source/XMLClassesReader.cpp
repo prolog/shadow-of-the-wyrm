@@ -204,10 +204,10 @@ void XMLClassesReader::parse_initial_equipment(ClassPtr current_class, const XML
     InitialItem body_item = initial_item_reader.get_initial_item(body_node);
     initial_equipment.insert(make_pair(EQUIPMENT_WORN_BODY, body_item));
     
-    // About Body
-    XMLNode about_body_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "AboutBody");
-    InitialItem about_body_item = initial_item_reader.get_initial_item(about_body_node);
-    initial_equipment.insert(make_pair(EQUIPMENT_WORN_ABOUT_BODY, about_body_item));
+    // Around Body
+    XMLNode around_body_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "AroundBody");
+    InitialItem around_body_item = initial_item_reader.get_initial_item(around_body_node);
+    initial_equipment.insert(make_pair(EQUIPMENT_WORN_AROUND_BODY, around_body_item));
     
     // Feet
     XMLNode feet_node = XMLUtils::get_next_element_by_local_name(initial_eq_node, "Feet");

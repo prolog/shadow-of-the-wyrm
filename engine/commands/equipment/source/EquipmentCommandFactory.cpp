@@ -42,9 +42,9 @@ CommandPtr EquipmentCommandFactory::create(const int key, const std::string& com
   {
     command = std::make_shared<WearOrRemoveBodyCommand>(key);
   }
-  else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_ABOUT_BODY)
+  else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_AROUND_BODY)
   {
-    command = std::make_shared<WearOrRemoveAboutBodyCommand>(key);
+    command = std::make_shared<WearOrRemoveAroundBodyCommand>(key);
   }
   else if (command_name == EquipmentCommandKeys::WEAR_OR_REMOVE_FEET)
   {

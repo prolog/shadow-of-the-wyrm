@@ -20,7 +20,7 @@ void SkinSelectionScreen::initialize()
 
   title_text_sid = TextKeys::SELECT_EQUIPMENT_WORN_LOCATION;
 
-  vector<EquipmentWornLocation> valid_skin_locations = {EQUIPMENT_WORN_HEAD, EQUIPMENT_WORN_BODY, EQUIPMENT_WORN_ABOUT_BODY, EQUIPMENT_WORN_FEET};
+  vector<EquipmentWornLocation> valid_skin_locations = {EQUIPMENT_WORN_HEAD, EQUIPMENT_WORN_BODY, EQUIPMENT_WORN_AROUND_BODY, EQUIPMENT_WORN_FEET};
 
   for (EquipmentWornLocation worn_location : valid_skin_locations)
   {

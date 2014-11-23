@@ -80,10 +80,10 @@ class WearOrRemoveBodyCommand : public WearOrRemoveCommand
     virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
 
-class WearOrRemoveAboutBodyCommand : public WearOrRemoveCommand
+class WearOrRemoveAroundBodyCommand : public WearOrRemoveCommand
 {
   public:
-    WearOrRemoveAboutBodyCommand(int key);
+    WearOrRemoveAroundBodyCommand(int key);
 
     virtual EquipmentWornLocation get_equipment_worn_location() const override;
 };
