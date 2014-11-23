@@ -2433,6 +2433,17 @@
 						<Quantity><Amount>3</Amount></Quantity>
 					</InitialItem>
 					<InitialItem><ID>_currency</ID><Quantity><Random><NumDice>10</NumDice><NumSides>10</NumSides></Random></Quantity></InitialItem>
+					<InitialItem>
+						<Quantity><Amount>1</Amount></Quantity>
+						<Random>
+							<ID>lute</ID>
+							<ID>fife</ID>
+							<ID>dulcimer</ID>
+							<ID>sackbut</ID>
+							<ID>fiddle</ID>
+							<ID>horn</ID>
+						</Random>
+					</InitialItem>
 				</InitialInventory>
 			</InitialEquipmentAndInventory>
 			<LevelScript>level/minstrel.lua</LevelScript>
@@ -18807,6 +18818,60 @@
 					<Colour>8</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
+			</Tool>
+			<Tool id="lute">
+				<DescriptionSID>LUTE_SID</DescriptionSID>
+				<UsageDescriptionSID>LUTE_USAGE_SID</UsageDescriptionSID>
+				<Value>100</Value>
+				<Weight><Pounds>5</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>4</DangerLevel>
+			</Tool>
+			<Tool id="fife">
+				<DescriptionSID>FIFE_SID</DescriptionSID>
+				<UsageDescriptionSID>FIFE_USAGE_SID</UsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>3</DangerLevel>
+			</Tool>
+			<Tool id="dulcimer">
+				<DescriptionSID>DULCIMER_SID</DescriptionSID>
+				<UsageDescriptionSID>DULCIMER_USAGE_SID</UsageDescriptionSID>
+				<Value>140</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>4</DangerLevel>
+			</Tool>
+			<Tool id="sackbut">
+				<DescriptionSID>SACKBUT_SID</DescriptionSID>
+				<UsageDescriptionSID>SACKBUT_USAGE_SID</UsageDescriptionSID>
+				<Value>60</Value>
+				<Weight><Pounds>6</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>2</DangerLevel>
+			</Tool>
+			<Tool id="fiddle">
+				<DescriptionSID>FIDDLE_SID</DescriptionSID>
+				<UsageDescriptionSID>FIDDLE_USAGE_SID</UsageDescriptionSID>
+				<Value>35</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>8</Material>
+				<DangerLevel>2</DangerLevel>
+			</Tool>
+			<Tool id="horn">
+				<DescriptionSID>HORN_SID</DescriptionSID>
+				<UsageDescriptionSID>HORN_USAGE_SID</UsageDescriptionSID>
+				<Value>55</Value>
+				<Weight><Pounds>7</Pounds></Weight>
+				<WornLocation>4</WornLocation>
+				<Material>3</Material>
+				<DangerLevel>2</DangerLevel>
 			</Tool>
 		</Tools>
 		<Wands>
