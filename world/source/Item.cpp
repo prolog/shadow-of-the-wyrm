@@ -7,7 +7,6 @@
 #include "MaterialFactory.hpp"
 #include "RNG.hpp"
 #include "Wood.hpp"
-
 #include "EffectFactory.hpp"
 #include "MaterialFactory.hpp"
 #include "Serialize.hpp"
@@ -317,7 +316,12 @@ bool Item::matches(std::shared_ptr<Item> i)
     match = match && (effect                == i->get_effect_type()          );
     match = match && (glowing               == i->get_glowing()              );
     match = match && (resistances           == i->get_resistances()          );
-    // Don't consider the remaining enchantments/smithings for purposes of matching...
+    match = match && (additional_properties == i->additional_properties      );
+
+    // Originally, I didn't want to consier remaining enchantments/smithings
+    // for purposes of matching.  But then the additional properties were used
+    // for more and more things (corpses, skins) and it made sense to have to
+    // have these match as well.
 
     // Check the concrete implementation class's attributes:
     match = match && additional_item_attributes_match(i);

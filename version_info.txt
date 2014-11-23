@@ -37,7 +37,9 @@ SavageLands v0.3.0 "Theodric"
 - Misc: renamed "About Body" to "Around Body" at the suggestion of people
   on /r/roguelikedev.
 
-- Bug fixes: fixed an issue with item generation in treasure rooms.
+- Bug fixes: fixed an issue with item generation in treasure rooms.  Fixed
+  an item stacking issue where additional properties should have been
+  considered, but weren't.
 
 - New items: protective amulet, evasive amulet, hide armour, hide cloak,
   hide cap, hide boots, lute, fife, dulcimer, sackbut, fiddle, horn.
