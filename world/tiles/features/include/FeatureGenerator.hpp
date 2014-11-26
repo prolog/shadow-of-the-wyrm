@@ -24,6 +24,7 @@ class FeatureGenerator
     static SarcophagusPtr generate_sarcophagus(const MaterialType material_type = MATERIAL_TYPE_STONE);
     static FeaturePtr generate_tannery();
     static FeaturePtr generate_jeweler_workbench();
+    static FeaturePtr generate_wheel_and_loom();
 
   protected:
     FeatureGenerator();

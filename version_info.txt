@@ -22,7 +22,11 @@ SavageLands v0.3.0 "Theodric"
 - The tavern in Gnordvar didn't seem to have any barrels of alcohol -
   added some whisky and gnomish stout.
 
-- Added a tannery to Isen Dun and a jeweler's workbench to Gnordvar.
+- Added a tile feature, Wheel and Loom, that allows the conversion of
+  natural fibres into clothing.
+
+- Added a tannery and a wheel and loom to Isen Dun and a jeweler's 
+  workbench to Gnordvar.
 
 - Skinning now influences:
 

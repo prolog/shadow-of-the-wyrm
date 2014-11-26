@@ -12,6 +12,7 @@
 #include "NeutralAltar.hpp"
 #include "Pew.hpp"
 #include "Tannery.hpp"
+#include "WheelAndLoom.hpp"
 
 FeatureGenerator::FeatureGenerator()
 {
@@ -128,4 +129,11 @@ FeaturePtr FeatureGenerator::generate_jeweler_workbench()
 {
   FeaturePtr workbench = std::make_shared<JewelerWorkbench>();
   return workbench;
+}
+
+// Generate spinning wheel and loom
+FeaturePtr FeatureGenerator::generate_wheel_and_loom()
+{
+  FeaturePtr wheel_and_loom = std::make_shared<WheelAndLoom>();
+  return wheel_and_loom;
 }

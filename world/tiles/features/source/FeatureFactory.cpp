@@ -19,6 +19,7 @@
 #include "RegularStatues.hpp"
 #include "Sarcophagus.hpp"
 #include "Tannery.hpp"
+#include "WheelAndLoom.hpp"
 
 using namespace std;
 
@@ -98,6 +99,7 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr forge              = std::make_shared<Forge>();
   FeaturePtr tannery            = std::make_shared<Tannery>();
   FeaturePtr jeweler_workbench  = std::make_shared<JewelerWorkbench>();
+  FeaturePtr wheel_and_loom     = std::make_shared<WheelAndLoom>();
 
   feature_map = FeatureSerializationMap{{CLASS_ID_GOOD_ALTAR, good_altar},
                                         {CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
@@ -120,6 +122,7 @@ void FeatureFactory::initialize_feature_map()
                                         {CLASS_ID_BARREL, barrel},
                                         {CLASS_ID_FORGE, forge},
                                         {CLASS_ID_TANNERY, tannery},
-                                        {CLASS_ID_JEWELER_WORKBENCH, jeweler_workbench}};
+                                        {CLASS_ID_JEWELER_WORKBENCH, jeweler_workbench},
+                                        {CLASS_ID_WHEEL_AND_LOOM, wheel_and_loom} };
 }
 
