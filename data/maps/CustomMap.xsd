@@ -127,6 +127,9 @@
 			<xs:element name="Fountain" type="tns:Fountain"/>
 			<xs:element name="Pew" type="tns:Pew"/>
 			<xs:element name="Sarcophagus" type="tns:Sarcophagus"/>
+			<xs:element name="Tannery" type="tns:Tannery"/>
+			<xs:element name="JewelerWorkbench" type="tns:JewelerWorkbench"/>
+			<xs:element name="WheelAndLoom" type="tns:WheelAndLoom"/>
 		</xs:choice>
 	</xs:sequence>
 </xs:complexType>
@@ -207,6 +210,27 @@
 			<xs:sequence>
 				<xs:element name="Inscription" type="xs:string" minOccurs="0"/>
 			</xs:sequence>
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="Tannery">
+	<xs:annotation><xs:documentation>Defines a Tannery feature.</xs:documentation></xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="JewelerWorkbench">
+	<xs:annotation><xs:documentation>Defines a jeweler's workbench feature.</xs:documentation></xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
+		</xs:extension>
+	</xs:complexContent>
+</xs:complexType>
+<xs:complexType name="WheelAndLoom">
+	<xs:annotation><xs:documentation>Defines a Wheel and Loom feature.</xs:documentation></xs:annotation>
+	<xs:complexContent>
+		<xs:extension base="tns:Feature">
 		</xs:extension>
 	</xs:complexContent>
 </xs:complexType>

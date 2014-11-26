@@ -728,6 +728,7 @@
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLPewReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLSarcophagusReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\features\include\XMLTanneryReader.hpp" />
+    <ClInclude Include="engine\XML\custom_maps\features\include\XMLWheelAndLoomReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapCoordinateReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapExitReader.hpp" />
     <ClInclude Include="engine\XML\custom_maps\include\XMLMapReaders.hpp" />
@@ -922,6 +923,7 @@
     <ClInclude Include="world\tiles\features\include\StatueGenerator.hpp" />
     <ClInclude Include="world\tiles\features\include\StatueTypes.hpp" />
     <ClInclude Include="world\tiles\features\include\Trap.hpp" />
+    <ClInclude Include="world\tiles\features\include\WheelAndLoom.hpp" />
     <ClInclude Include="world\tiles\include\AirTile.hpp" />
     <ClInclude Include="world\tiles\include\AllTiles.hpp" />
     <ClInclude Include="world\tiles\include\BarracksTile.hpp" />
@@ -2082,6 +2084,7 @@
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLPewReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLSarcophagusReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\features\source\XMLTanneryReader.cpp" />
+    <ClCompile Include="engine\XML\custom_maps\features\source\XMLWheelAndLoomReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapCoordinateReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapExitReader.cpp" />
     <ClCompile Include="engine\XML\custom_maps\source\XMLMapReaders.cpp" />
@@ -2636,6 +2639,12 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\WheelAndLoom_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\WheelAndLoom.cpp" />
     <ClCompile Include="world\tiles\source\AirTile.cpp" />
     <ClCompile Include="world\tiles\source\BarracksTile.cpp" />
     <ClCompile Include="world\tiles\source\BarrowTile.cpp" />
