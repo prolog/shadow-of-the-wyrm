@@ -227,6 +227,7 @@ const string ActionTextKeys::ACTION_KICK_WATER_TILE            = "ACTION_KICK_WA
 const string ActionTextKeys::ACTION_KICK_FORGE                 = "ACTION_KICK_FORGE";
 const string ActionTextKeys::ACTION_KICK_JEWELER_WORKBENCH     = "ACTION_KICK_JEWELER_WORKBENCH";
 const string ActionTextKeys::ACTION_KICK_TANNERY               = "ACTION_KICK_TANNERY";
+const string ActionTextKeys::ACTION_KICK_WHEEL_AND_LOOM        = "ACTION_KICK_WHEEL_AND_LOOM";
 const string ActionTextKeys::ACTION_FORGE_NO_SUITABLE_HAMMER   = "ACTION_FORGE_NO_SUITABLE_HAMMER";
 const string ActionTextKeys::ACTION_FORGE_NO_SMITHING_SKILL    = "ACTION_FORGE_NO_SMITHING_SKILL";
 const string ActionTextKeys::ACTION_FORGE_NO_INGOTS            = "ACTION_FORGE_NO_INGOTS";
