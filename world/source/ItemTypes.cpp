@@ -17,6 +17,7 @@ const string ItemIdKeys::ITEM_ID_ROCK             = "_rock";
 const string ItemIdKeys::ITEM_ID_KINGFLOWER       = "_kingflower";
 const string ItemIdKeys::ITEM_ID_FIDDLEHEAD_GREEN = "_fiddlehead_green";
 const string ItemIdKeys::ITEM_ID_FERN             = "_fern";
+const string ItemIdKeys::ITEM_ID_WHITEFLOWER      = "_whiteflower";
 const string ItemIdKeys::ITEM_ID_WILDFLOWER_1     = "_wildflower_1";
 const string ItemIdKeys::ITEM_ID_WILDFLOWER_2     = "_wildflower_2";
 const string ItemIdKeys::ITEM_ID_WILDFLOWER_3     = "_wildflower_3";

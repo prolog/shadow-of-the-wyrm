@@ -46,7 +46,8 @@ SavageLands v0.3.0 "Theodric"
   considered, but weren't.
 
 - New items: protective amulet, evasive amulet, hide armour, hide cloak,
-  hide cap, hide boots, lute, fife, dulcimer, sackbut, fiddle, horn.
+  hide cap, hide boots, lute, fife, dulcimer, sackbut, fiddle, horn,
+  whiteflower.
 
 SavageLands v0.2.9 "Aethelric"
 - Version declared October 15, 2014.  Version finalized November 11, 2014.
