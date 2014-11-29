@@ -184,7 +184,7 @@ bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string&
 
 // Create an item with a certain probability, and add it to the given
 // inventory.  If we don't pass the probability check, do nothing.
-void ItemManager::create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_val, IInventoryPtr inv, const std::string& item_id, const uint quantity)
+bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_val, IInventoryPtr inv, const std::string& item_id, const uint quantity)
 {
   int rand = RNG::range(1, rand_upper_val);
   if (rand <= rand_less_than_or_equal_val)
@@ -195,8 +195,12 @@ void ItemManager::create_item_with_probability(const int rand_less_than_or_equal
     if (item)
     {
       inv->merge_or_add(item, INVENTORY_ADDITION_BACK);
+
+      return true;
     }
   }
+
+  return false;
 }
 
 ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)

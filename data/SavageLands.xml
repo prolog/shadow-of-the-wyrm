@@ -18289,7 +18289,7 @@
 				<Material>8</Material>
 				<TextDetails>
 					<Symbol>w</Symbol>
-					<Colour>15</Colour>
+					<Colour>7</Colour>
 				</TextDetails>				
 				<DangerLevel>-1</DangerLevel>
 				<Nutrition>1</Nutrition>
@@ -18325,6 +18325,27 @@
 				<Nutrition>1</Nutrition>
 				<FoodType>0</FoodType>
 			</Plant>
+			<Plant id="_whiteflower">
+				<DescriptionSID>WHITEFLOWER_SID</DescriptionSID>
+				<UsageDescriptionSID>WHITEFLOWER_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>0</Pounds><Ounces>8</Ounces></Weight>
+				<WornLocation>-1</WornLocation>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>w</Symbol>
+					<Colour>15</Colour>
+				</TextDetails>	
+				<DangerLevel>-1</DangerLevel>
+				<Properties>
+					<Property>
+						<Name>sm_con_mat_type</Name>
+						<Value>0</Value>
+					</Property>
+				</Properties>
+				<Nutrition>1</Nutrition>
+				<FoodType>0</FoodType>
+			</Plant>			
 			<Plant id="silverweed">
 				<DescriptionSID>SILVERWEED_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_SILVERWEED_SID</UnidentifiedDescriptionSID>
