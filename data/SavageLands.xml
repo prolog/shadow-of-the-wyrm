@@ -1965,7 +1965,7 @@
 			<ExperienceMultiplier>1.0</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>club</ID></Wielded>
-				<Body><ID>robes</ID></Body>
+				<Body><ID>_robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -2057,7 +2057,7 @@
 				<Head><ID>leather_helm</ID></Head>
 				<Wielded><ID>dagger</ID></Wielded>
 				<Body><ID>leather_armour</ID></Body>
-				<AroundBody><ID>cloak</ID></AroundBody>
+				<AroundBody><ID>_cloak</ID></AroundBody>
 				<Feet><ID>leather_boots</ID></Feet>
 				<Ranged>
 					<Races>
@@ -2606,7 +2606,7 @@
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>cypress_rod</ID></Wielded>
-				<Body><ID>robes</ID></Body>
+				<Body><ID>_robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -2889,7 +2889,7 @@
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>woodsman_axe</ID></Wielded>
 				<Body><ID>leather_armour</ID></Body>
-				<AroundBody><ID>cloak</ID></AroundBody>
+				<AroundBody><ID>_cloak</ID></AroundBody>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -2973,7 +2973,7 @@
 			<ExperienceMultiplier>1.15</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>yew_staff</ID></Wielded>
-				<Body><ID>robes</ID></Body>
+				<Body><ID>_robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -3056,7 +3056,7 @@
 				<Head><ID>cap</ID></Head>
 				<Wielded><ID>long_spear</ID></Wielded>
 				<Body><ID>wayfarer_clothes</ID></Body>
-				<AroundBody><ID>cloak</ID></AroundBody>
+				<AroundBody><ID>_cloak</ID></AroundBody>
 				<Feet><ID>leather_boots</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -3141,7 +3141,7 @@
 				<Head><ID>cap</ID></Head>
 				<Wielded><ID>shepherd_crook</ID></Wielded>
 				<Body><ID>wayfarer_clothes</ID></Body>
-				<AroundBody><ID>cloak</ID></AroundBody>
+				<AroundBody><ID>_cloak</ID></AroundBody>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -3589,7 +3589,7 @@
 			<ExperienceMultiplier>1.08</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>leather_whip</ID></Wielded>
-				<Body><ID>robes</ID></Body>
+				<Body><ID>_robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -3674,7 +3674,7 @@
 			<ExperienceMultiplier>1.1</ExperienceMultiplier>
 			<InitialEquipmentAndInventory>
 				<Wielded><ID>dagger</ID></Wielded>
-				<Body><ID>robes</ID></Body>
+				<Body><ID>_robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
@@ -15456,7 +15456,7 @@
 				<Evade>-20</Evade>
 				<Soak>35</Soak>
 			</Armour>			
-			<Armour id="robes">
+			<Armour id="_robes">
 				<DescriptionSID>ROBES_SID</DescriptionSID>
 				<UsageDescriptionSID>ROBES_USAGE_SID</UsageDescriptionSID>
 				<Value>40</Value>
@@ -15552,7 +15552,7 @@
 				<WornLocation>6</WornLocation>
 				<Material>0</Material>
 				<DangerLevel>1</DangerLevel>
-				<Evade>1</Evade>
+				<Evade>2</Evade>
 				<Soak>0</Soak>
 			</Armour>
 			<Armour id="wayfarer_clothes">
@@ -15697,7 +15697,7 @@
 				<Evade>-5</Evade>
 				<Soak>9</Soak>
 			</Armour>			
-			<Armour id="cloak">
+			<Armour id="_cloak">
 				<DescriptionSID>CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>CLOAK_USAGE_SID</UsageDescriptionSID>
 				<Value>2</Value>
@@ -18339,7 +18339,7 @@
 				<DangerLevel>-1</DangerLevel>
 				<Properties>
 					<Property>
-						<Name>sm_con_mat_type</Name>
+						<Name>weav_con_mat_type</Name>
 						<Value>0</Value>
 					</Property>
 				</Properties>

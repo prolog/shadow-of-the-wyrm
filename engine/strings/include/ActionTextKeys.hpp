@@ -78,6 +78,8 @@ class ActionTextKeys
     static const std::string ACTION_SKIN_SUCCESSFUL;
     static const std::string ACTION_SKIN_NO_SKINS;
     static const std::string ACTION_SKIN_CREATE_ARMOUR;
+    static const std::string ACTION_WEAVE_NO_FIBRES;
+    static const std::string ACTION_WEAVE_NO_WEAVING_SKILL;
 
   protected:
     ActionTextKeys();

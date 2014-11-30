@@ -38,6 +38,9 @@ SavageLands v0.3.0 "Theodric"
 
 - Minstrels now start with a musical instrument.
 
+- Field tiles now have a small chance to generate a wildflower or
+  whiteflower in summer.
+
 - Misc: renamed "About Body" to "Around Body" at the suggestion of people
   on /r/roguelikedev.
 

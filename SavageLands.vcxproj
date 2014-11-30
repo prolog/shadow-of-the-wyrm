@@ -855,6 +855,7 @@
     <ClInclude Include="world\include\Weapon.hpp" />
     <ClInclude Include="world\include\WeaponTypes.hpp" />
     <ClInclude Include="world\include\Wearable.hpp" />
+    <ClInclude Include="world\include\WeavingConstants.hpp" />
     <ClInclude Include="world\include\Weight.hpp" />
     <ClInclude Include="world\include\World.hpp" />
     <ClInclude Include="world\include\WorldFactory.hpp" />
@@ -2537,6 +2538,7 @@
     <ClCompile Include="world\source\Wand.cpp" />
     <ClCompile Include="world\source\Weapon.cpp" />
     <ClCompile Include="world\source\Wearable.cpp" />
+    <ClCompile Include="world\source\WeavingConstants.cpp" />
     <ClCompile Include="world\source\Weight.cpp" />
     <ClCompile Include="world\source\World.cpp" />
     <ClCompile Include="world\source\WorldFactory.cpp" />
