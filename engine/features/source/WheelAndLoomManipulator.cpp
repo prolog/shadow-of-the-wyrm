@@ -4,7 +4,7 @@
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
 #include "WeavingConstants.hpp"
-#include "WeavingSelectionScreen.hpp"
+#include "WornLocationScreenFactory.hpp"
 
 using namespace std;
 
@@ -49,6 +49,7 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
       {
         // Has fibres (whiteflower, etc).  Select one, then a worn slot.
         Game& game = Game::instance();
+        DisplayPtr display = game.get_display();
         ActionManager& am = game.get_action_manager_ref();
 
         vector<pair<string, string>> item_property_filter = { make_pair(WeavingConstants::WEAVING_MATERIAL_TYPE_KEY, "") };
@@ -58,8 +59,9 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
 
         if (selected_fibre)
         {
-          WeavingSelectionScreen wss(game.get_display());
-          string slot_selection = wss.display();
+          WornLocationScreenFactory fac;
+          WornLocationSelectionScreen wlss = fac.create_weaving_screen(display);
+          string slot_selection = wlss.display();
 
           int x = 1;
         }

@@ -7,9 +7,9 @@
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "SkinningConstants.hpp"
-#include "SkinSelectionScreen.hpp"
 #include "TanningCalculator.hpp"
 #include "Wearable.hpp"
+#include "WornLocationScreenFactory.hpp"
 
 using namespace std;
 
@@ -57,8 +57,11 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
 
       if (selected_skin)
       {
-        SkinSelectionScreen sss(game.get_display());
-        string slot_selection = sss.display();
+        DisplayPtr display = game.get_display();
+
+        WornLocationScreenFactory fac;
+        WornLocationSelectionScreen wlss = fac.create_skin_screen(display);
+        string slot_selection = wlss.display();
 
         if (!slot_selection.empty())
         {
