@@ -3297,6 +3297,9 @@
     <ClInclude Include="engine\features\include\WheelAndLoomManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\include\WeavingConstants.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6400,6 +6403,9 @@
     </ClCompile>
     <ClCompile Include="engine\features\source\WheelAndLoomManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\WeavingConstants.cpp">
+      <Filter>Source Files\world\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

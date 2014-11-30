@@ -183,6 +183,7 @@ string ActionTextKeys::get_kick_object_message(const string& desc_sid, const str
   return kick_msg;
 }
 
+// Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
 const string ActionTextKeys::ACTION_SEARCH_BLIND               = "ACTION_SEARCH_BLIND";
@@ -241,7 +242,10 @@ const string ActionTextKeys::ACTION_SKIN_MANGLED_CORPSE        = "ACTION_SKIN_MA
 const string ActionTextKeys::ACTION_SKIN_SUCCESSFUL            = "ACTION_SKIN_SUCCESSFUL";
 const string ActionTextKeys::ACTION_SKIN_NO_SKINS              = "ACTION_SKIN_NO_SKINS";
 const string ActionTextKeys::ACTION_SKIN_CREATE_ARMOUR         = "ACTION_SKIN_CREATE_ARMOUR";
+const string ActionTextKeys::ACTION_WEAVE_NO_FIBRES            = "ACTION_WEAVE_NO_FIBRES";
+const string ActionTextKeys::ACTION_WEAVE_NO_WEAVING_SKILL     = "ACTION_WEAVE_NO_WEAVING_SKILL";
 
+// Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";
 const string ActionTextKeys::ACTION_EVOKE_MONSTER              = "ACTION_EVOKE_MONSTER";
 const string ActionTextKeys::ACTION_QUAFF_PLAYER               = "ACTION_QUAFF_PLAYER";
