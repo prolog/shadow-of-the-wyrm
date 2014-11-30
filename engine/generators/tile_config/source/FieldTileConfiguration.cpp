@@ -45,13 +45,13 @@ void FieldTileConfiguration::configure(TilePtr tile, const Season season) const
 
 void FieldTileConfiguration::initialize_additional_flora_map()
 {
-  vector<pair<pair<int, int>, string>> summer_p_map = { { {1, 600}, "_wildflower_1" }, 
-                                                        { {1, 600}, "_wildflower_2" }, 
-                                                        { {1, 600}, "_wildflower_3"}, 
-                                                        { {1, 600}, "_wildflower_4"}, 
-                                                        { {1, 600}, "_wildflower_5"}, 
-                                                        { {1, 600}, "_wildflower_6"},
-                                                        { {1, 820}, "_whiteflower" } };
+  vector<pair<pair<int, int>, string>> summer_p_map = { { {1, 1000}, "_wildflower_1" }, 
+                                                        { {1, 1000}, "_wildflower_2" }, 
+                                                        { {1, 1000}, "_wildflower_3"}, 
+                                                        { {1, 1000}, "_wildflower_4"}, 
+                                                        { {1, 1000}, "_wildflower_5"}, 
+                                                        { {1, 1000}, "_wildflower_6"},
+                                                        { {1, 2500}, "_whiteflower" } };
 
   flora_map = AdditionalFloraMap{ {SEASON_SUMMER, summer_p_map} };
 }
