@@ -6407,5 +6407,8 @@
     <ClCompile Include="world\source\WeavingConstants.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\screens\source\WeavingSelectionScreen.cpp">
+      <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

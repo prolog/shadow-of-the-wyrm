@@ -122,6 +122,7 @@ class TextKeys
     static const std::string INVENTORY;
     static const std::string INVENTORY_PROMPT;
     static const std::string SKIN_PROMPT;
+    static const std::string WEAVE_PROMPT;
     
     static const std::string DECISION_CONFIRM_KEY;
     static const std::string DECISION_DENY_KEY;
