@@ -1,28 +1,26 @@
 #include "TextComponent.hpp"
 #include "OptionsComponent.hpp"
 #include "PromptTextKeys.hpp"
-#include "WeavingSelectionScreen.hpp"
+#include "WornLocationSelectionScreen.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 #include "EquipmentTextKeys.hpp"
 
 using namespace std;
 
-WeavingSelectionScreen::WeavingSelectionScreen(DisplayPtr new_display)
-: Screen(new_display)
+WornLocationSelectionScreen::WornLocationSelectionScreen(DisplayPtr new_display, const vector<EquipmentWornLocation>& new_worn_locs, const string& new_prompt_text_sid)
+: Screen(new_display), worn_locs(new_worn_locs), prompt_text_sid(new_prompt_text_sid)
 {
   initialize();
 }
 
-void WeavingSelectionScreen::initialize()
+void WornLocationSelectionScreen::initialize()
 {
-  vector<ScreenComponentPtr> skin_screen;
+  vector<ScreenComponentPtr> slot_screen;
 
   title_text_sid = TextKeys::SELECT_EQUIPMENT_WORN_LOCATION;
 
-  vector<EquipmentWornLocation> valid_skin_locations = {EQUIPMENT_WORN_BODY, EQUIPMENT_WORN_AROUND_BODY};
-
-  for (EquipmentWornLocation worn_location : valid_skin_locations)
+  for (EquipmentWornLocation worn_location : worn_locs)
   {
     string worn_location_name = EquipmentTextKeys::get_equipment_text_from_given_worn_location(worn_location);
 
@@ -36,17 +34,17 @@ void WeavingSelectionScreen::initialize()
     options->add_option(current_option);
     options->add_option_description("");
 
-    skin_screen.push_back(options);
+    slot_screen.push_back(options);
   }
 
-  add_page(skin_screen);
+  add_page(slot_screen);
 
   // Set the prompt
-  PromptPtr weave_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr slot_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
 
   // Accept any input - the equipment manager will take care of sorting out
   // what's a valid command and what is not.
-  weave_prompt->set_accept_any_input(true);
-  weave_prompt->set_text_sid(TextKeys::WEAVE_PROMPT);
-  user_prompt = weave_prompt;
+  slot_prompt->set_accept_any_input(true);
+  slot_prompt->set_text_sid(prompt_text_sid);
+  user_prompt = slot_prompt;
 }
