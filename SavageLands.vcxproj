@@ -1870,6 +1870,7 @@
     <ClCompile Include="engine\screens\source\TextDisplayFormatter.cpp" />
     <ClCompile Include="engine\screens\source\TextDisplayScreen.cpp" />
     <ClCompile Include="engine\screens\source\TextFormatSpecifiers.cpp" />
+    <ClCompile Include="engine\screens\source\WeavingSelectionScreen.cpp" />
     <ClCompile Include="engine\screens\source\WelcomeScreen.cpp" />
     <ClCompile Include="engine\scripting\source\LevelScript.cpp" />
     <ClCompile Include="engine\scripting\source\LuaAPIFunctions.cpp" />

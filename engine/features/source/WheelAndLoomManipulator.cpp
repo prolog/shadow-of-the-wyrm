@@ -4,6 +4,7 @@
 #include "ItemFilterFactory.hpp"
 #include "MessageManagerFactory.hpp"
 #include "WeavingConstants.hpp"
+#include "WeavingSelectionScreen.hpp"
 
 using namespace std;
 
@@ -57,6 +58,10 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
 
         if (selected_fibre)
         {
+          WeavingSelectionScreen wss(game.get_display());
+          string slot_selection = wss.display();
+
+          int x = 1;
         }
       }
     }
