@@ -34,6 +34,13 @@ SavageLands v0.3.0 "Theodric"
 
   - whether a "bonus" skin is created on a successful attempt
 
+- Weaving now influences:
+
+  - the ability to use a wheel and loom
+
+  - the ability to create an excellent piece of clothing, with additional
+    (free) enchants based on the Weaving score
+
 - Foraging now increases the chance that a creature will drop a corpse.
 
 - Minstrels now start with a musical instrument.

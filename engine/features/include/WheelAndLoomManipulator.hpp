@@ -13,6 +13,9 @@ class WheelAndLoomManipulator : public IFeatureManipulator
   protected:
     void add_no_weaving_skill_message(CreaturePtr creature);
     void add_no_fibres_message(CreaturePtr creature);
+    void add_successful_weaving_message(CreaturePtr creature);
+
+    ItemPtr create_woven_armour(CreaturePtr creature, ItemPtr fibre, const EquipmentWornLocation worn_loc);
 
     std::map<EquipmentWornLocation, std::string> loom_map;
 };

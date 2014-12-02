@@ -14,6 +14,11 @@ WornLocationSelectionScreen::WornLocationSelectionScreen(DisplayPtr new_display,
   initialize();
 }
 
+vector<EquipmentWornLocation> WornLocationSelectionScreen::get_worn_locs()
+{
+  return worn_locs;
+}
+
 void WornLocationSelectionScreen::initialize()
 {
   vector<ScreenComponentPtr> slot_screen;

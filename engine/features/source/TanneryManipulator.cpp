@@ -61,13 +61,15 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
 
         WornLocationScreenFactory fac;
         WornLocationSelectionScreen wlss = fac.create_skin_screen(display);
+        vector<EquipmentWornLocation> worn_locs = wlss.get_worn_locs();
+
         string slot_selection = wlss.display();
 
         if (!slot_selection.empty())
         {
           char selection = slot_selection.at(0) - 'a';
 
-          if (EQUIPMENT_WORN_HEAD <= selection && selection <= EQUIPMENT_WORN_LAST)
+          if (std::find(worn_locs.begin(), worn_locs.end(), selection) != worn_locs.end())
           {
             EquipmentWornLocation slot = static_cast<EquipmentWornLocation>(selection);
 
