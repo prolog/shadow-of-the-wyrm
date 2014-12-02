@@ -3303,6 +3303,9 @@
     <ClInclude Include="engine\screens\include\WornLocationScreenFactory.hpp">
       <Filter>Header Files\engine\screens\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\calculators\include\WeavingCalculator.hpp">
+      <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6412,6 +6415,12 @@
     </ClCompile>
     <ClCompile Include="engine\screens\source\WornLocationScreenFactory.cpp">
       <Filter>Source Files\engine\screens\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\WeavingCalculator.cpp">
+      <Filter>Source Files\engine\calculators\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WeavingCalculator_test.cpp">
+      <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

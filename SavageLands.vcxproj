@@ -274,6 +274,7 @@
     <ClInclude Include="engine\calculators\include\ToHitCalculatorFactory.hpp" />
     <ClInclude Include="engine\calculators\include\UnderworldMapDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WeaponDifficultyCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\WeavingCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\WorldMapDangerLevelCalculator.hpp" />
     <ClInclude Include="engine\combat\include\AttackTypes.hpp" />
     <ClInclude Include="engine\combat\include\CombatConstants.hpp" />
@@ -1327,7 +1328,13 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="engine\calculators\source\unit_tests\WeavingCalculator_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\calculators\source\WeaponDifficultyCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\WeavingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\WorldMapDangerLevelCalculator.cpp" />
     <ClCompile Include="engine\combat\source\CombatConstants.cpp" />
     <ClCompile Include="engine\combat\source\CombatManager.cpp" />

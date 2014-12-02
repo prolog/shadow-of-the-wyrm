@@ -6,6 +6,7 @@ class WornLocationSelectionScreen : public Screen
 {
   public:
     WornLocationSelectionScreen(DisplayPtr display, const std::vector<EquipmentWornLocation>& new_worn_locs, const std::string& new_prompt_text_sid);
+    std::vector<EquipmentWornLocation> get_worn_locs();
 
   protected:
     void initialize() override;
