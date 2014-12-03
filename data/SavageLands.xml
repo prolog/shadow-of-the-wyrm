@@ -19416,6 +19416,42 @@
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
 			</Item>
+			<Item id="mum_corpse_amaur_1">
+				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_1_SID</DescriptionSID>
+				<UsageDescriptionSID>MUMMIFIED_CORPSE_AMAUR_1_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>150</Pounds></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="mum_corpse_amaur_2">
+				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_2_SID</DescriptionSID>
+				<UsageDescriptionSID>MUMMIFIED_CORPSE_AMAUR_2_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>150</Pounds></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
+			<Item id="mum_corpse_amaur_3">
+				<DescriptionSID>MUMMIFIED_CORPSE_AMAUR_3_SID</DescriptionSID>
+				<UsageDescriptionSID>MUMMIFIED_CORPSE_AMAUR_3_USAGE_SID</UsageDescriptionSID>
+				<Value>0</Value>
+				<Weight><Pounds>150</Pounds></Weight>
+				<Material>4</Material>
+				<TextDetails>
+					<Symbol>%</Symbol>
+					<Colour>7</Colour>
+				</TextDetails>
+				<DangerLevel>-1</DangerLevel>
+			</Item>
 			<Item id="_pile_of_bones">
 				<DescriptionSID>PILE_OF_BONES_SID</DescriptionSID>
 				<UsageDescriptionSID>PILE_OF_BONES_USAGE_SID</UsageDescriptionSID>

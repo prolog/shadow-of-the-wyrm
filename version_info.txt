@@ -49,6 +49,9 @@ SavageLands v0.3.0 "Theodric"
 - Field tiles now have a small chance to generate a wildflower or
   whiteflower in summer.
 
+- For a bit more descriptive flavour, added several distinctive corpses
+  to the approach to Amaurosis' lair.
+
 - Misc: renamed "About Body" to "Around Body" at the suggestion of people
   on /r/roguelikedev.
 
@@ -58,7 +61,7 @@ SavageLands v0.3.0 "Theodric"
 
 - New items: protective amulet, evasive amulet, hide armour, hide cloak,
   hide cap, hide boots, lute, fife, dulcimer, sackbut, fiddle, horn,
-  whiteflower.
+  whiteflower, three particular un-generatable corpses.
 
 - New creatures: weaver, tanner.
 
