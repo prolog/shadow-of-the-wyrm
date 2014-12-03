@@ -153,6 +153,13 @@
 					<Col>75</Col>
 				</Coord>
 			</Placement>
+			<Placement>
+				<ID>tanner</ID>
+				<Coord>
+					<Row>14</Row>
+					<Col>20</Col>
+				</Coord>
+			</Placement>
 		</Creatures>
 		<Items>
 			<Placement>
