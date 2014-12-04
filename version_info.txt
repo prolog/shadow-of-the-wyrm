@@ -26,7 +26,7 @@ SavageLands v0.3.0 "Theodric"
   natural fibres into clothing.
 
 - Added a tannery and a wheel and loom to Isen Dun and a jeweler's 
-  workbench to Gnordvar.  Added a weaver to the house with the
+  workbench to Gnordvar.  Added Hildred to the house with the
   wheel and loom.  Added a tanner to the tannery.
 
 - Skinning now influences:
@@ -63,7 +63,7 @@ SavageLands v0.3.0 "Theodric"
   hide cap, hide boots, lute, fife, dulcimer, sackbut, fiddle, horn,
   whiteflower, three particular un-generatable corpses.
 
-- New creatures: weaver, tanner.
+- New creatures: Hildred, tanner.
 
 SavageLands v0.2.9 "Aethelric"
 - Version declared October 15, 2014.  Version finalized November 11, 2014.

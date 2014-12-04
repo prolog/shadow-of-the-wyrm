@@ -13143,12 +13143,12 @@
 			<Evade>3</Evade>
 			<Soak>0</Soak>
 		</Creature>
-		<Creature id="weaver">
+		<Creature id="hildred">
 			<RaceID>01_human</RaceID>
-			<ShortDescriptionSID>WEAVER_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>WEAVER_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>WEAVER_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>WEAVER_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>HILDRED_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HILDRED_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HILDRED_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HILDRED_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -13157,21 +13157,21 @@
 			<CreatureGeneration>
 				<AllowableTerrainTypes/>
 				<Friendly>1</Friendly>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>12</DangerLevel>
 				<Rarity>0</Rarity>
 				<HP>
-					<NumDice>1</NumDice>
+					<NumDice>12</NumDice>
 					<NumSides>6</NumSides>
 				</HP>
-				<Exp>3</Exp>
+				<Exp>70</Exp>
 			</CreatureGeneration>
-			<Level>1</Level>
+			<Level>12</Level>
 			<Damage>
 				<NumDice>1</NumDice>
-				<NumSides>4</NumSides>
+				<NumSides>24</NumSides>
 				<Type>1</Type>
 			</Damage>
-			<Evade>3</Evade>
+			<Evade>7</Evade>
 			<Soak>0</Soak>
 		</Creature>
 		<Creature id="tanner">
