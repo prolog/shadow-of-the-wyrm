@@ -29,6 +29,11 @@ SavageLands v0.3.0 "Theodric"
   workbench to Gnordvar.  Added Hildred to the house with the
   wheel and loom.  Added a tanner to the tannery.
 
+- Created a quest for Hildred: she needs a good supply of whiteflower,
+  but needs the player to retrieve it for her, as her workload and the
+  danger of the outside world have made retreiving all the fibre she
+  requires a difficult proposition.
+
 - Skinning now influences:
 
   - the chance of a successful skin attempt
