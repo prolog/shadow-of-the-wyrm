@@ -13173,6 +13173,7 @@
 			</Damage>
 			<Evade>7</Evade>
 			<Soak>0</Soak>
+			<ChatScript>quests/hildred.lua</ChatScript>
 		</Creature>
 		<Creature id="tanner">
 			<RaceID>01_human</RaceID>
