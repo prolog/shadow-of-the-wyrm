@@ -266,7 +266,22 @@ int Inventory::count_items_with_property(const string& item_property) const
   {
     if (item && item->has_additional_property(item_property))
     {
-      num_items++;
+      num_items += item->get_quantity();
+    }
+  }
+
+  return num_items;
+}
+
+int Inventory::count_items(const string& item_base_id) const
+{
+  int num_items = 0;
+
+  for (ItemPtr item : items)
+  {
+    if (item && item->get_base_id() == item_base_id)
+    {
+      num_items += item->get_quantity();
     }
   }
 

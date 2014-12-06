@@ -26,13 +26,17 @@ SavageLands v0.3.0 "Theodric"
   natural fibres into clothing.
 
 - Added a tannery and a wheel and loom to Isen Dun and a jeweler's 
-  workbench to Gnordvar.  Added Hildred to the house with the
+  workbench to Gnordvar.  Added Hild to the house with the
   wheel and loom.  Added a tanner to the tannery.
 
-- Created a quest for Hildred: she needs a good supply of whiteflower,
+- Created a quest for Hild: she needs a good supply of whiteflower,
   but needs the player to retrieve it for her, as her workload and the
   danger of the outside world have made retreiving all the fibre she
   requires a difficult proposition.
+
+  - Completion of the quest increases the player's Weaving score by up
+    to 20.  If the player has greater than 80 in Weaving, Hild will
+    also present the Wintersea Mantle.
 
 - Skinning now influences:
 
@@ -68,7 +72,9 @@ SavageLands v0.3.0 "Theodric"
   hide cap, hide boots, lute, fife, dulcimer, sackbut, fiddle, horn,
   whiteflower, three particular un-generatable corpses.
 
-- New creatures: Hildred, tanner.
+- New artifacts: Mantle of Wintersea.
+
+- New creatures: Hild, tanner.
 
 SavageLands v0.2.9 "Aethelric"
 - Version declared October 15, 2014.  Version finalized November 11, 2014.

@@ -52,6 +52,55 @@ TEST(SL_World_Inventory, has_item_with_property)
   EXPECT_TRUE(inv.has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
 }
 
+TEST(SL_World_Inventory, count_items_with_property)
+{
+  Inventory inv;
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  book->set_id("book");
+
+  inv.add(book);
+
+  EXPECT_FALSE(inv.has_item_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
+
+  ToolPtr tool = std::make_shared<Tool>();
+  tool->set_id("ore");
+  tool->set_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE, Integer::to_string(MATERIAL_TYPE_IRON));
+
+  inv.add(tool);
+
+  EXPECT_EQ(1, inv.count_items_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
+
+  tool->set_quantity(3);
+
+  EXPECT_EQ(3, inv.count_items_with_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE));
+}
+
+TEST(SL_World_Inventory, count_items)
+{
+  Inventory inv;
+
+  EXPECT_EQ(0, inv.count_items("book"));
+
+  SpellbookPtr book = std::make_shared<Spellbook>();
+  book->set_base_id("book");
+  book->set_id("book");
+  book->set_quantity(4);
+
+  inv.add(book);
+
+  EXPECT_EQ(4, inv.count_items("book"));
+
+  SpellbookPtr book2 = std::make_shared<Spellbook>();
+  book2->set_base_id("book");
+  book2->set_id("book2");
+  book2->set_quantity(4);
+
+  inv.add(book2);
+  
+  EXPECT_EQ(8, inv.count_items("book"));
+}
+
 TEST(SL_World_Inventory, items_are_persisted)
 {
   Inventory inv;

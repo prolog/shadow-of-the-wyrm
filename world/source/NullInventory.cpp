@@ -108,6 +108,11 @@ int NullInventory::count_items_with_property(const string& additional_property_n
   return 0;
 }
 
+int NullInventory::count_items(const string& item_base_id) const
+{
+  return 0;
+}
+
 bool NullInventory::serialize(ostream& stream) const
 {
   return true;

@@ -139,6 +139,7 @@ void ScriptEngine::register_api_functions()
   lua_register(L, "get_deity_summons", get_deity_summons);
   lua_register(L, "summon_monsters_around_creature", summon_monsters_around_creature);
   lua_register(L, "creature_is_class", creature_is_class);
+  lua_register(L, "get_item_count", get_item_count);
 }
 
 // Lua API helper functions
@@ -1612,11 +1613,40 @@ int creature_is_class(lua_State* ls)
   }
   else
   {
-    lua_pushstring(ls, "Incorrect arguments to is_class");
+    lua_pushstring(ls, "Incorrect arguments to creature_is_class");
     lua_error(ls);
   }
 
   lua_pushboolean(ls, creature_is_class);
+  return 1;
+}
+
+// Check to see how many items (by item ID) exist in a particular creature's
+// inventory.
+//
+// Argument 1: creature ID
+// Argument 2: item ID
+int get_item_count(lua_State* ls)
+{
+  int count = 0;
+
+  if (lua_gettop(ls) == 2 && lua_isstring(ls, 1) && lua_isstring(ls, 2))
+  {
+    string creature_id = lua_tostring(ls, 1);
+    string item_id = lua_tostring(ls, 2);
+
+    CreaturePtr creature = get_creature(creature_id);
+
+    IInventoryPtr inv = creature->get_inventory();
+    count = inv->count_items(item_id);
+  }
+  else
+  {
+    lua_pushstring(ls, "Incorrect arguments to get_item_count");
+    lua_error(ls);
+  }
+
+  lua_pushinteger(ls, count);
   return 1;
 }
 
