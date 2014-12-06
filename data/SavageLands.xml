@@ -13143,12 +13143,12 @@
 			<Evade>3</Evade>
 			<Soak>0</Soak>
 		</Creature>
-		<Creature id="hildred">
+		<Creature id="hild">
 			<RaceID>01_human</RaceID>
-			<ShortDescriptionSID>HILDRED_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
-			<DescriptionSID>HILDRED_DESCRIPTION_SID</DescriptionSID>
-			<TextDetailsSID>HILDRED_TEXT_DETAILS_SID</TextDetailsSID>
-			<SpeechTextSID>HILDRED_SPEECH_TEXT_SID</SpeechTextSID>
+			<ShortDescriptionSID>HILD_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>HILD_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>HILD_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>HILD_SPEECH_TEXT_SID</SpeechTextSID>
 			<DecisionStrategy>immobile</DecisionStrategy>
 			<Text>
 				<Symbol>t</Symbol>
@@ -13173,7 +13173,7 @@
 			</Damage>
 			<Evade>7</Evade>
 			<Soak>0</Soak>
-			<ChatScript>quests/hildred.lua</ChatScript>
+			<ChatScript>quests/hild.lua</ChatScript>
 		</Creature>
 		<Creature id="tanner">
 			<RaceID>01_human</RaceID>
