@@ -15804,6 +15804,25 @@
 				<Evade>0</Evade>
 				<Soak>3</Soak>
 			</Armour>
+			<Armour id="wintersea_mantle">
+				<DescriptionSID>WINTERSEA_MANTLE_SID</DescriptionSID>
+				<UsageDescriptionSID>WINTERSEA_MANTLE_USAGE_SID</UsageDescriptionSID>
+				<Value>1260</Value>
+				<Weight><Pounds>2</Pounds></Weight>
+				<WornLocation>7</WornLocation>
+				<Artifact>1</Artifact>
+				<Material>0</Material>
+				<DangerLevel>-1</DangerLevel>
+				<Resistances>
+					<Slash>0.15</Slash>
+					<Pierce>0.15</Pierce>
+					<Pound>0.15</Pound>
+					<Heat>0.10</Heat>
+					<Cold>0.20</Cold>
+				</Resistances>
+				<Evade>7</Evade>
+				<Soak>5</Soak>
+			</Armour>
 			<Armour id="gildis_cloak">
 				<DescriptionSID>GILDIS_CLOAK_SID</DescriptionSID>
 				<UsageDescriptionSID>GILDIS_CLOAK_USAGE_SID</UsageDescriptionSID>
