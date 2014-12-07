@@ -164,7 +164,7 @@ bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string&
 
     if (item && item->get_base_id() == base_item_id)
     {
-      uint i_quantity = item->get_quantity();
+      int i_quantity = item->get_quantity();
       rem_quantity -= i_quantity;
 
       if (i_quantity <= rem_quantity)

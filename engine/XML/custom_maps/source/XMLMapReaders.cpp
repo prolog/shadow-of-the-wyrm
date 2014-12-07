@@ -66,6 +66,9 @@ MapPtr XMLMapReader::get_custom_map(const XMLNode& custom_map_node)
     XMLMapFeaturesReader features_reader;
     features_reader.parse_features(features_node, custom_map);
 
+    // Custom maps currently don't allow creature updates.
+    custom_map->set_allow_creature_updates(false);
+
     // Generate the list of creatures on the map, so that it can be accessed
     // later on.
     custom_map->create_creatures();
