@@ -1,5 +1,8 @@
-SavageLands v0.3.0 "Theodric"
-- Version declared November 11, 2014.
+Savage Lands v0.3.1 "Frithuwald"
+- Version declared December 7, 2014.
+
+Savage Lands v0.3.0 "Theodric"
+- Version declared November 11, 2014.  Version finalized December 7, 2014.
 
 - Created tanneries.  These are tile features that can be used to treat
   skins to make leather armour/boots.
@@ -76,7 +79,7 @@ SavageLands v0.3.0 "Theodric"
 
 - New creatures: Hild, tanner.
 
-SavageLands v0.2.9 "Aethelric"
+Savage Lands v0.2.9 "Aethelric"
 - Version declared October 15, 2014.  Version finalized November 11, 2014.
 
 - Sacrificing on a co-aligned altar adjusts the creature's alignment
