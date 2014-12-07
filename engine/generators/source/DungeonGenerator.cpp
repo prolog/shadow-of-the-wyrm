@@ -416,6 +416,8 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 
         room_features.push_back(feature);
         dungeon_features.insert(feature);
+
+        break;
       }
     }
   }

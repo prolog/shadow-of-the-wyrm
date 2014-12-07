@@ -1,6 +1,8 @@
 Savage Lands v0.3.1 "Frithuwald"
 - Version declared December 7, 2014.
 
+- Bug fixes: too many room features were being generated in dungeons.
+
 Savage Lands v0.3.0 "Theodric"
 - Version declared November 11, 2014.  Version finalized December 7, 2014.
 
