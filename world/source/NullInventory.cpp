@@ -38,7 +38,7 @@ bool NullInventory::remove(const string& id)
   return false;
 }
 
-bool NullInventory::remove_by_base_id(const string& base_id)
+bool NullInventory::remove_by_base_id(const string& base_id, const int quantity)
 {
   return false;
 }
