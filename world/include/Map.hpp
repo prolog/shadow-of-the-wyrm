@@ -92,6 +92,13 @@ class Map : public ISerializable
     void set_danger(const uint new_danger);
     uint get_danger() const;
 
+    // Set/get whether creature updates are allowed.  If this is true, then
+    // the engine will periodically add additional creatures to the map while
+    // this map is active.  This will generally be true of maps generated
+    // in-game, and false for maps defined in the custom XML files.
+    void set_allow_creature_updates(const bool new_allow_creature_updates);
+    bool get_allow_creature_updates() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -118,6 +125,7 @@ class Map : public ISerializable
     std::string map_id;
     bool permanent;
     uint danger;
+    bool allow_creature_updates;
 
   private:
     ClassIdentifier internal_class_identifier() const override;

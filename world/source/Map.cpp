@@ -13,7 +13,7 @@ using namespace std;
 using namespace boost;
 
 Map::Map(const Map& new_map)
-: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0)
+: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true)
 {
   if (this != &new_map)
   {
@@ -29,7 +29,7 @@ Map::Map(const Map& new_map)
 }
 
 Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
-: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0)
+: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true)
 {
   dimensions = new_dimensions;
   original_dimensions = orig_dimensions;
@@ -79,6 +79,7 @@ bool Map::operator==(const Map& map) const
   result = result && (map_id == map.map_id);
   result = result && (permanent == map.permanent);
   result = result && (danger == map.danger);
+  result = result && (allow_creature_updates == map.allow_creature_updates);
 
   return result;
 }
@@ -421,6 +422,16 @@ uint Map::get_danger() const
   return danger;
 }
 
+void Map::set_allow_creature_updates(const bool new_allow_creature_updates)
+{
+  allow_creature_updates = new_allow_creature_updates;
+}
+
+bool Map::get_allow_creature_updates() const
+{
+  return allow_creature_updates;
+}
+
 bool Map::serialize(ostream& stream) const
 {
   // creatures - not serialized.  build up after deserialization.
@@ -484,6 +495,7 @@ bool Map::serialize(ostream& stream) const
   Serialize::write_string(stream, map_id);
   Serialize::write_bool(stream, permanent);
   Serialize::write_uint(stream, danger);
+  Serialize::write_bool(stream, allow_creature_updates);
 
   return true;
 }
@@ -580,6 +592,7 @@ bool Map::deserialize(istream& stream)
   Serialize::read_string(stream, map_id);
   Serialize::read_bool(stream, permanent);
   Serialize::read_uint(stream, danger);
+  Serialize::read_bool(stream, allow_creature_updates);
 
   return true;
 }
