@@ -36,8 +36,7 @@ local function hild_weaving_completion_fn()
   end
 
   -- JCD FIXME: Remove the 20 whiteflowers.
-  -- FIXME: Ensure that having 20 more whiteflowers won't trigger the
-  -- completion condition again afterwards!
+  return true
 end
 
 hild_quest = Quest:new("hild_weaving",
