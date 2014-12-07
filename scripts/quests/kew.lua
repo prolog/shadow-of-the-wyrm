@@ -22,6 +22,8 @@ local function kew_dungeon_completion_fn()
   add_object_to_player_tile("chain_mail")
   add_object_to_player_tile("lightning_sword")
   add_object_to_player_tile("healing_potion", 2)
+
+  return true
 end
 
 -- Create Kew's quest to slay Siriath.
