@@ -33,7 +33,7 @@ string Metadata::get_version() const
 string Metadata::get_code_name() const
 {
   // King of Bernicia (later Northumberland).  Son of Ida.
-  return "\"Theodric\"";
+  return "\"Frithuwald\"";
 }
 
 string Metadata::get_game_version_synopsis() const
