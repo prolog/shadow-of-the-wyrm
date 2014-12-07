@@ -62,8 +62,9 @@ bool MapCreatureGenerator::generate_random_creatures(MapPtr map, const int dange
 
   Game& game = Game::instance();
 
+  int max_creatures = CreationUtils::random_maximum_creatures(dim.get_y(), dim.get_x());
   ActionManager am = game.get_action_manager_ref();
-  uint num_creatures_to_place = RNG::range(1, CreationUtils::random_maximum_creatures(dim.get_y(), dim.get_x()));
+  uint num_creatures_to_place = RNG::range(max_creatures / 2, max_creatures);
   uint current_creatures_placed = 0;
   uint unsuccessful_attempts = 0;
 
