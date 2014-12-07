@@ -1,6 +1,9 @@
 Savage Lands v0.3.1 "Frithuwald"
 - Version declared December 7, 2014.
 
+- Increased the minimum number of creatures that can be generated on a
+  particular map to half the maximum (previously 1, which was too few).
+
 - Bug fixes: too many room features were being generated in dungeons.
 
 Savage Lands v0.3.0 "Theodric"
