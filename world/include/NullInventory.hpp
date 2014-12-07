@@ -13,7 +13,7 @@ class NullInventory : public IInventory
     bool merge(ItemPtr new_item) override;
 
     bool remove(const std::string& id) override;
-    bool remove_by_base_id(const std::string& base_id) override;
+    bool remove_by_base_id(const std::string& base_id, const int quantity = 1) override;
 
     bool clear() override;
 

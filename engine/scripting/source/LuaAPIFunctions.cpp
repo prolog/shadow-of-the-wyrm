@@ -571,15 +571,23 @@ int player_has_item(lua_State* ls)
 // Argument is the object's base ID.
 int remove_object_from_player(lua_State* ls)
 {
-  if ((lua_gettop(ls) == 1) && (lua_isstring(ls, -1)))
+  int num_args = lua_gettop(ls);
+  int quantity = 1;
+
+  if ((num_args >= 1) && (lua_isstring(ls, 1)))
   {
     string object_base_id = lua_tostring(ls, 1);
+
+    if ((num_args == 2) && (lua_isnumber(ls, 2)))
+    {
+      quantity = lua_tointeger(ls, 2);
+    }
 
     Game& game = Game::instance();
     CreaturePtr player = game.get_current_player();
 
     ItemManager im;
-    im.remove_item_from_eq_or_inv(player, object_base_id);
+    im.remove_item_from_eq_or_inv(player, object_base_id, quantity);
   }
   else
   {

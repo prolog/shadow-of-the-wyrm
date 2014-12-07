@@ -122,18 +122,45 @@ bool Inventory::remove(const string& id)
   return false;
 }
 
-bool Inventory::remove_by_base_id(const string& base_id)
+bool Inventory::remove_by_base_id(const string& base_id, const int quantity)
 {
+  int rem_quantity = quantity;
+
   if (items.size() > 0)
   {
-    for (list<ItemPtr>::iterator item_it = items.begin(); item_it != items.end(); item_it++)
+    list<ItemPtr>::iterator item_it = items.begin();
+
+    while (item_it != items.end())
     {
+      bool erased = false;
+
       ItemPtr current_item = *item_it;
       
       if (current_item && (current_item->get_base_id() == base_id))
       {
-        items.erase(item_it);
-        return true;
+        int i_quantity = current_item->get_quantity();
+
+        if (i_quantity <= rem_quantity)
+        {
+          items.erase(item_it++);
+          erased = true;
+        }
+        else
+        {
+          current_item->set_quantity(i_quantity - rem_quantity);
+        }
+
+        rem_quantity -= i_quantity;
+
+        if (rem_quantity <= 0)
+        {
+          return true;
+        }
+      }
+
+      if (!erased)
+      { 
+        item_it++;
       }
     }    
   }

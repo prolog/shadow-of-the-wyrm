@@ -149,8 +149,10 @@ ItemPtr ItemManager::create_item(const std::string& item_id, const uint quantity
 
 // Remove an item or reduce the quantity by 1.  First check the equipment, and
 // then the inventory.
-bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id)
+bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string& base_item_id, const int quantity)
 {
+  int rem_quantity = quantity;
+
   Equipment& eq  = creature->get_equipment();
   IInventoryPtr inv = creature->get_inventory();
 
@@ -162,22 +164,32 @@ bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string&
 
     if (item && item->get_base_id() == base_item_id)
     {
-      uint quantity = item->get_quantity();
-      if (quantity > 1)
+      uint i_quantity = item->get_quantity();
+      rem_quantity -= i_quantity;
+
+      if (i_quantity <= rem_quantity)
       {
-        item->set_quantity(quantity-1);
+        // Subtract the current quantity from what's remaining, and
+        // remove the item.
+
+        // Don't transfer to inventory, and swallow the returned ItemPtr
+        remove(creature, eq_pair.first, false);
+
+        // Reduce the number of items appropriately.
+        rem_quantity -= i_quantity;
       }
       else
       {
-        // Don't transfer to inventory, and swallow the returned ItemPtr
-        remove(creature, eq_pair.first, false);
+        // There are more items than are needed for removal.
+        // Reduce the quantity accordingly.
+        item->set_quantity(i_quantity - rem_quantity);
       }
 
       return true;
     }
   }
 
-  return inv->remove_by_base_id(base_item_id);
+  return inv->remove_by_base_id(base_item_id, rem_quantity);
 
   return false;
 }

@@ -34,7 +34,7 @@ class IInventory : public ISerializable
     virtual bool merge(ItemPtr new_item) = 0;
 
     virtual bool remove(const std::string& id) = 0;
-    virtual bool remove_by_base_id(const std::string& base_id) = 0;
+    virtual bool remove_by_base_id(const std::string& base_id, const int quantity = 1) = 0;
 
     virtual bool clear() = 0;
 

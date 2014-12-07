@@ -35,7 +35,8 @@ local function hild_weaving_completion_fn()
     clear_and_add_message("HILD_WEAVING_QUEST_COMPLETE_SPECIAL3_SID") 
   end
 
-  -- JCD FIXME: Remove the 20 whiteflowers.
+  remove_object_from_player("_whiteflower", 20)
+
   return true
 end
 
