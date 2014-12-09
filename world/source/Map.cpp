@@ -429,7 +429,7 @@ void Map::set_allow_creature_updates(const bool new_allow_creature_updates)
 
 bool Map::get_allow_creature_updates() const
 {
-  return allow_creature_updates;
+  return ((map_type != MAP_TYPE_WORLD) && allow_creature_updates);
 }
 
 bool Map::serialize(ostream& stream) const
