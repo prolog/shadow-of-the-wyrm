@@ -3306,6 +3306,9 @@
     <ClInclude Include="engine\calculators\include\WeavingCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\MapTimeObserver.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6421,6 +6424,12 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\WeavingCalculator_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\MapTimeObserver.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\MapTimeObserver_test.cpp">
+      <Filter>Source Files\engine\time\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

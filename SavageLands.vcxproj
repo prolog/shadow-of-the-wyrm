@@ -694,6 +694,7 @@
     <ClInclude Include="engine\time\include\ICreatureRegeneration.hpp" />
     <ClInclude Include="engine\time\include\ITerrainMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\ITimeObserver.hpp" />
+    <ClInclude Include="engine\time\include\MapTimeObserver.hpp" />
     <ClInclude Include="engine\time\include\MountainClimbingMovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\MovementAccumulationChecker.hpp" />
     <ClInclude Include="engine\time\include\MovementAccumulator.hpp" />
@@ -2030,6 +2031,7 @@
     <ClCompile Include="engine\time\source\CreatureTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\FallingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\ITimeObserver.cpp" />
+    <ClCompile Include="engine\time\source\MapTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\MountainClimbingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\MovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\MovementAccumulator.cpp" />
@@ -2040,6 +2042,11 @@
     <ClCompile Include="engine\time\source\TerrainMovementAccumulationCheckerFactory.cpp" />
     <ClCompile Include="engine\time\source\TimeObserverFactory.cpp" />
     <ClCompile Include="engine\time\source\unit_tests\CreatureTimeObserver_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\unit_tests\MapTimeObserver_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
