@@ -41,7 +41,9 @@ namespace SL
       virtual void set_additional_properties(const std::map<std::string, std::string>& additional_properties);
       virtual bool has_additional_property(const std::string& property_name) const;
       virtual std::string get_additional_property(const std::string& property_name) const;
-    
+
+      virtual bool update_creatures(MapPtr map, const int danger_level);
+
       virtual MapType get_map_type() const;
 
   protected:
@@ -57,8 +59,6 @@ namespace SL
       virtual void add_tile_exit(MapPtr map, const Coordinate& c, const Direction direction, const bool link_to_map_exit);
       virtual void set_custom_map_id_for_depth(TilePtr tile, const Direction exit_direction, const Depth& depth, const std::string& linkback_map_id);
       virtual void update_custom_map_with_current(const std::string& depth_map_id, const Direction direction, const std::string& linkback_map_id, const Depth& new_depth);
-
-      virtual bool update_creatures(MapPtr map, const int danger_level);
     
       // Seed the initial items.  Returns true if the items were created, false otherwise.
       virtual bool generate_initial_items(MapPtr map, const int danger_level);
