@@ -14,6 +14,7 @@ class CreatureProperties
     static const std::string CREATURE_PROPERTIES_DISFIG_INT_MOD;
     static const std::string CREATURE_PROPERTIES_DISFIG_WIL_MOD;
     static const std::string CREATURE_PROPERTIES_DISFIG_CHA_MOD;
+    static const std::string CREATURE_PROPERTIES_FOLLOWS_CR_ID; // used for summoned/bound creatures
 
   protected:
     CreatureProperties();
