@@ -1,6 +1,7 @@
 #include "Conversion.hpp"
 #include "CoordUtils.hpp"
 #include "CreatureFactory.hpp"
+#include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
 #include "RNG.hpp"
@@ -229,6 +230,21 @@ TilePtr MapUtils::get_tile_for_creature(const MapPtr& map, const CreaturePtr& cr
   TilePtr creatures_tile = map->at(creature_location.first, creature_location.second);
   
   return creatures_tile;
+}
+
+uint MapUtils::get_num_following_creatures(const MapPtr& map)
+{
+  uint count = 0;
+  std::map<string, CreaturePtr> creatures = map->get_creatures();
+  for (const auto& cr_pair : creatures)
+  {
+    if (cr_pair.second && cr_pair.second->has_additional_property(CreatureProperties::CREATURE_PROPERTIES_FOLLOWS_CR_ID))
+    {
+      count++;
+    }
+  }
+
+  return count;
 }
 
 // Get the adjacent tiles to a creature by getting the adjacent coordinates,
