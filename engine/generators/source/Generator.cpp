@@ -120,21 +120,6 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
   }
 }
 
-bool Generator::update_creatures(MapPtr map, const int danger_level)
-{
-  bool creatures_updated = false;
-
-  // Only allow additional creatures if the map allows it (e.g., if this is not
-  // a pre-defined XML map).
-  if (map && map->get_allow_creature_updates())
-  {
-    MapCreatureGenerator mcg;
-    creatures_updated = mcg.generate_creatures(map, danger_level, additional_properties);
-  }
-
-  return creatures_updated;
-}
-
 // Seed the initial items.  Returns true if the items were created, false otherwise.
 // By default, no initial items are generated.  This function should be overridden
 // for generators where this is expected (dungeons, maybe villages, etc).

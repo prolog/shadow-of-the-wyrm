@@ -1,8 +1,10 @@
 #include "Game.hpp"
+#include "CreatureGenerationConstants.hpp"
+#include "MapCreatureGenerator.hpp"
 #include "MapTimeObserver.hpp"
 #include "TerrainGeneratorFactory.hpp"
 
-using std::string;
+using namespace std;
 
 MapTimeObserver::MapTimeObserver()
 {
@@ -16,24 +18,14 @@ void MapTimeObserver::notify(const ulonglong minutes_passed)
   MapPtr map = game.get_current_map();
 
   // Check to see if it can be updated with creatures
-  if (map != nullptr && map->get_allow_creature_updates())
+  if (map != nullptr && map->get_allow_creature_updates() && (map->get_creatures().size() < CreatureGenerationConstants::MIN_CREATURES_FOR_MAP_UPDATE))
   {
     // The map can be updated.
     // Create the appropriate generator and call the update function.
+    MapCreatureGenerator mcg;
 
-    // JCD FIXME work probably needs to be done later for villages, worship sites, 
-    // etc.  These require actual details from the tile - deity ID, village race
-    // info, etc.  Once I want to get these updating, there will probably need to
-    // be work done to pass the key details around in a map or something similar.
-    TileType terrain_type = map->get_terrain_type();
-    TilePtr null_tile;
-
-    GeneratorPtr generator = TerrainGeneratorFactory::create_generator(null_tile, "", terrain_type);
-
-    if (generator != nullptr)
-    {
-      generator->update_creatures(map, map->get_danger());
-    }
+    std::map<string, string> props;
+    mcg.generate_random_creatures(map, map->get_danger(), props);
   }
 }
 
