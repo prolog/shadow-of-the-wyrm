@@ -42,8 +42,6 @@ namespace SL
       virtual bool has_additional_property(const std::string& property_name) const;
       virtual std::string get_additional_property(const std::string& property_name) const;
 
-      virtual bool update_creatures(MapPtr map, const int danger_level);
-
       virtual MapType get_map_type() const;
 
   protected:
