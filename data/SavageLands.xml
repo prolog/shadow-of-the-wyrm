@@ -15778,7 +15778,7 @@
 				<Weight><Pounds>1</Pounds></Weight>
 				<WornLocation>7</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>-1</DangerLevel>
 				<Evade>0</Evade>
 				<Soak>2</Soak>
 			</Armour>
@@ -15899,7 +15899,7 @@
 				<Weight><Pounds>5</Pounds></Weight>
 				<WornLocation>8</WornLocation>
 				<Material>4</Material>
-				<DangerLevel>1</DangerLevel>
+				<DangerLevel>-1</DangerLevel>
 				<Evade>3</Evade>
 				<Soak>1</Soak>
 			</Armour>
