@@ -7,10 +7,15 @@ Savage Lands v0.3.1 "Frithuwald"
 - Increased the minimum number of creatures that can be generated on a
   particular map to half the maximum (previously 1, which was too few).
 
+- Started adding some dangerous uniques (with stats at least 3 levels 
+  higher than their danger level): Pallas.
+
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 
   generated randomly) were being generated randomly, and the "%s" was
   causing curses outputting issues.
+
+- New creatures: Pallas.
 
 Savage Lands v0.3.0 "Theodric"
 - Version declared November 11, 2014.  Version finalized December 7, 2014.
