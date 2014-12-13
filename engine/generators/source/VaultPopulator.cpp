@@ -34,7 +34,7 @@ void VaultPopulator::populate_vault_creatures(MapPtr map, const TileType tile_ty
 
   CreatureGenerationManager cgm;
   int min_danger_level = std::max<int>(1, (danger_level/2));
-  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, min_danger_level, danger_level, rarity);
+  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, map->get_permanent(), min_danger_level, danger_level, rarity);
 
   if (generation_map.size() > 0)
   {
