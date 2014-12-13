@@ -7,8 +7,9 @@ Savage Lands v0.3.1 "Frithuwald"
 - Increased the minimum number of creatures that can be generated on a
   particular map to half the maximum (previously 1, which was too few).
 
-- Started adding some dangerous uniques (with stats at least 3 levels 
-  higher than their danger level): Pallas, Grubb.
+- Started adding some dangerous uniques every 4 levels (with stats at 
+  least 3 levels higher than their danger level): Grubb, Pallas, Kith,
+  Bel, Brimman, Gilirien.
 
 - Excluded uniques from temporary maps.  This prevents the player from
   being able to leave the map and never have to face the unique again.
@@ -19,7 +20,7 @@ Savage Lands v0.3.1 "Frithuwald"
   causing curses outputting issues.  Properly consider a creature's
   maximum number when creating the creature generation maps.
 
-- New creatures: Pallas, Grubb.
+- New creatures: Pallas, Grubb, Kith, Brimman, Gilirien.
 
 Savage Lands v0.3.0 "Theodric"
 - Version declared November 11, 2014.  Version finalized December 7, 2014.
