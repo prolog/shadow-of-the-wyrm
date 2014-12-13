@@ -10,6 +10,9 @@ Savage Lands v0.3.1 "Frithuwald"
 - Started adding some dangerous uniques (with stats at least 3 levels 
   higher than their danger level): Pallas, Grubb.
 
+- Excluded uniques from temporary maps.  This prevents the player from
+  being able to leave the map and never have to face the unique again.
+
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 
   generated randomly) were being generated randomly, and the "%s" was

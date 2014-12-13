@@ -29,6 +29,7 @@ CreatureGenerationMap CreatureGenerationManager::generate_creature_generation_ma
     for (CreatureMap::iterator c_it = creatures.begin(); c_it != creatures.end(); c_it++)
     {
       string creature_id = c_it->first;
+
       CreaturePtr creature = c_it->second;
       CreatureGenerationValues cgvals = cgv_map[creature_id];
 
@@ -101,6 +102,7 @@ bool CreatureGenerationManager::does_creature_match_generation_criteria(const Cr
     && cgv_danger_level >= min_danger_level
     && cgv_danger_level <= max_danger_level
     && (cgv_maximum <= 0 || (cgv.get_current() < cgv_maximum)) // Either no max, or less than the > 0 maximum
+    && (cgv_maximum != 1 || permanent_map) // no uniques on temporary maps
     && cgv.get_rarity() <= rarity )
   {
     return true;
