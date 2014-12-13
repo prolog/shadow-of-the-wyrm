@@ -12,9 +12,9 @@ class CreatureGenerationManager
   public:
     CreatureGenerationManager();
     
-    CreatureGenerationMap generate_creature_generation_map(const TileType map_terrain_type, const int min_danger_level, const int max_danger_level, const Rarity rarity);
+    CreatureGenerationMap generate_creature_generation_map(const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity);
     std::shared_ptr<Creature> generate_creature(ActionManager& am, CreatureGenerationMap& creature_generation_map);
     
   protected:
-    bool does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType map_terrain_type, const int min_danger_level, const int max_danger_level, const Rarity rarity);
+    bool does_creature_match_generation_criteria(const CreatureGenerationValues& cgv, const TileType map_terrain_type, const bool permanent_map, const int min_danger_level, const int max_danger_level, const Rarity rarity);
 };

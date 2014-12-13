@@ -13,7 +13,8 @@ Savage Lands v0.3.1 "Frithuwald"
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 
   generated randomly) were being generated randomly, and the "%s" was
-  causing curses outputting issues.
+  causing curses outputting issues.  Properly consider a creature's
+  maximum number when creating the creature generation maps.
 
 - New creatures: Pallas, Grubb.
 
