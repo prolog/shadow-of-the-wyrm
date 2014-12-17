@@ -4971,6 +4971,49 @@
 				<Type>9</Type>
 			</Damage>
 		</Creature>
+		<Creature id="alcien">
+			<RaceID>02_woodelf</RaceID>
+			<ShortDescriptionSID>ALCIEN_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
+			<DescriptionSID>ALCIEN_DESCRIPTION_SID</DescriptionSID>
+			<TextDetailsSID>ALCIEN_TEXT_DETAILS_SID</TextDetailsSID>
+			<SpeechTextSID>ALCIEN_SPEECH_TEXT_SID</SpeechTextSID>
+			<DecisionStrategy>mobile</DecisionStrategy>
+			<Text>
+				<Symbol>@</Symbol>
+				<Colour>7</Colour>
+			</Text>
+			<CreatureGeneration>
+				<AllowableTerrainTypes>
+					<TileType>0</TileType>
+					<TileType>1</TileType>
+					<TileType>5</TileType>
+					<TileType>10</TileType>
+					<TileType>13</TileType>
+					<TileType>15</TileType>
+					<TileType>16</TileType>
+					<TileType>21</TileType>
+					<TileType>24</TileType>
+					<TileType>26</TileType>
+					<TileType>38</TileType>
+					<TileType>42</TileType>
+				</AllowableTerrainTypes>
+				<DangerLevel>50</DangerLevel>
+				<Rarity>0</Rarity>
+				<HP>
+					<NumDice>55</NumDice>
+					<NumSides>6</NumSides>
+				</HP>
+				<Exp>325000</Exp>
+			</CreatureGeneration>
+			<Level>55</Level>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>110</NumSides>
+				<Type>7</Type>
+			</Damage>
+			<Evade>15</Evade>
+			<Soak>15</Soak>
+		</Creature>
 		<Creature id="quivering_blob">
 			<RaceID>_jelly</RaceID>
 			<ShortDescriptionSID>QUIVERING_BLOB_SHORT_DESCRIPTION_SID</ShortDescriptionSID>
