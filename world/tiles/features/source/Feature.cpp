@@ -1,3 +1,4 @@
+#include "Creature.hpp"
 #include "Feature.hpp"
 #include "FeatureFactory.hpp"
 #include "MaterialFactory.hpp"
@@ -5,7 +6,7 @@
 
 using namespace std;
 
-// JCD FIXME NEED COPY CONSTRUCTOR FOR TRAP/LOCK PTR WHEN THIS IS COMPLETED
+// JCD FIXME NEED COPY CONSTRUCTOR FOR LOCK PTR WHEN THIS IS COMPLETED
 
 Feature::Feature(const MaterialType new_material, const AlignmentRange new_alignment_range)
 : material(new_material), alignment_range(new_alignment_range)
@@ -23,11 +24,6 @@ Feature& Feature::operator=(const Feature& feature)
 {
   if (this != &feature)
   {
-    if (feature.trap)
-    {
-      trap = std::make_shared<Trap>(*feature.trap);
-    }
-
     if (feature.lock)
     {
       lock = std::make_shared<Lock>(*feature.lock);
@@ -46,7 +42,6 @@ bool Feature::operator==(const Feature& feature) const
   result = result && (internal_class_identifier() == feature.internal_class_identifier());
 
   result = result && (material == feature.material);
-  result = result && ((!trap && !(feature.trap)) || (trap && feature.trap && (*trap == *(feature.trap))));
   result = result && ((!lock && !(feature.lock)) || (lock && feature.lock && (*lock == *(feature.lock))));
 
   return result;
@@ -58,21 +53,6 @@ pair<string, vector<string>> Feature::get_description_and_replacement_sids() con
   vector<string> no_replacements;
 
   return make_pair(base_description_sid, no_replacements);
-}
-
-bool Feature::has_trap() const
-{
-  return (trap != nullptr);
-}
-
-void Feature::set_trap(TrapPtr new_trap)
-{
-  trap = new_trap;
-}
-
-TrapPtr Feature::get_trap()
-{
-  return trap;
 }
 
 bool Feature::can_handle(const bool feature_tile_occupied) const
@@ -172,16 +152,6 @@ AlignmentRange Feature::get_alignment_range() const
 
 bool Feature::serialize(ostream& stream) const
 {
-  if (trap)
-  {
-    Serialize::write_class_id(stream, trap->get_class_identifier());
-    trap->serialize(stream);
-  }
-  else
-  {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
-  }
-
   if (lock)
   {
     Serialize::write_class_id(stream, lock->get_class_identifier());
@@ -200,15 +170,6 @@ bool Feature::serialize(ostream& stream) const
 
 bool Feature::deserialize(istream& stream)
 {
-  ClassIdentifier trap_clid;
-  Serialize::read_class_id(stream, trap_clid);
-
-  if (trap_clid != CLASS_ID_NULL)
-  {
-    trap = FeatureFactory::create_trap();
-    trap->deserialize(stream);
-  }
-
   ClassIdentifier lock_clid;
   Serialize::read_class_id(stream, lock_clid);
 

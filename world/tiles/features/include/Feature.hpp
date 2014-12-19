@@ -2,9 +2,9 @@
 #include <vector>
 #include <memory>
 #include "AlignmentEnums.hpp"
+#include "Creature.hpp"
 #include "common.hpp"
 #include "Lock.hpp"
-#include "Trap.hpp"
 #include "Material.hpp"
 #include "ISerializable.hpp"
 
@@ -14,8 +14,6 @@ class Creature;
 // An abstract base class representing a dungeon feature.  A feature is
 // like an item, but cannot move.  Examples include fireplaces, thrones,
 // bookshelves, levers, etc.
-//
-// Features can be trapped.
 class Feature : public ISerializable
 {
   public:
@@ -36,10 +34,6 @@ class Feature : public ISerializable
     virtual uchar get_symbol()  const = 0;
     virtual Colour get_colour() const; // by default, use the material's colour.
     
-    virtual bool has_trap() const;
-    virtual void set_trap(TrapPtr new_trap);
-    virtual TrapPtr get_trap();
-
     virtual void set_lock(LockPtr new_lock);
     virtual LockPtr get_lock();
 
@@ -74,7 +68,6 @@ class Feature : public ISerializable
   protected:
     virtual std::string get_description_sid() const = 0;
 
-    TrapPtr trap;
     LockPtr lock;
     MaterialType material;
     AlignmentRange alignment_range;
