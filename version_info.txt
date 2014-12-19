@@ -15,6 +15,11 @@ Savage Lands v0.3.1 "Frithuwald"
 - Excluded uniques from temporary maps.  This prevents the player from
   being able to leave the map and never have to face the unique again.
 
+- Separated traps from features.  Originally a feature could have a trap,
+  but I decided to make things simpler, make a trap a subclass of a 
+  feature, and just have a trap be a potential feature that could be
+  present on a tile.
+
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 
   generated randomly) were being generated randomly, and the "%s" was

@@ -28,6 +28,7 @@ class FeatureDescriptionTextKeys
     static const std::string FEATURE_DESCRIPTION_TANNERY;
     static const std::string FEATURE_DESCRIPTION_JEWELER_WORKBENCH;
     static const std::string FEATURE_DESCRIPTION_WHEEL_AND_LOOM;
+    static const std::string FEATURE_DESCRIPTION_TRAP_GENERIC;
 
   protected:
     FeatureDescriptionTextKeys();

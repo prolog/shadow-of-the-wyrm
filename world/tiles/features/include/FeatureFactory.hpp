@@ -2,6 +2,7 @@
 #include <map>
 #include "ClassIdentifiers.hpp"
 #include "Feature.hpp"
+#include "Trap.hpp"
 
 typedef std::map<ClassIdentifier, FeaturePtr> FeatureSerializationMap;
 

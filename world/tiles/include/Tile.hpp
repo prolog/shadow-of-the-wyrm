@@ -1,11 +1,11 @@
 #pragma once
 #include <map>
 #include <memory>
+#include "Feature.hpp"
 #include "tiles.hpp"
 #include "IInventory.hpp"
 #include "Creature.hpp"
 #include "Directions.hpp"
-#include "Feature.hpp"
 #include "Item.hpp"
 #include "ISerializable.hpp"
 #include "MapExit.hpp"
@@ -15,6 +15,7 @@
 typedef std::map<Direction, MapExitPtr> TileExitMap;
 
 class Creature;
+class Feature;
 
 class Tile : public ISerializable
 {
@@ -71,8 +72,8 @@ class Tile : public ISerializable
     // Features include doors, windows, thrones, fireplaces...
     virtual bool has_feature() const;
     virtual bool has_blocking_feature() const;
-    virtual void set_feature(FeaturePtr new_feature);
-    virtual FeaturePtr get_feature();
+    virtual void set_feature(std::shared_ptr<Feature> new_feature);
+    virtual std::shared_ptr<Feature> get_feature();
 
     virtual bool has_creature() const;
     virtual void set_creature(const std::shared_ptr<Creature>& new_creature);
@@ -121,7 +122,7 @@ class Tile : public ISerializable
     std::shared_ptr<Creature> creature;
     
     // Each tile can have at most one feature on it.
-    FeaturePtr feature;
+    std::shared_ptr<Feature> feature;
 
     // Each tile can have any number of items piled up on it.
     // Re-use the basic inventory data type for this purpose.
