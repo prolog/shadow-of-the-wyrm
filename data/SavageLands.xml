@@ -15743,6 +15743,7 @@
 	<Traps>
 		<Trap id="fireball">
 			<DescriptionSID>TRAP_FIREBALL_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_FIREBALL_TRIGGER_SID</TriggerMessageSID>
 			<Damage>
 				<NumDice>3</NumDice>
 				<NumSides>6</NumSides>
