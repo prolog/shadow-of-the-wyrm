@@ -78,6 +78,13 @@ vector<DisplayTile> XMLConfigurationReader::get_tile_info()
   return tile_info;
 }
 
+vector<TrapPtr> XMLConfigurationReader::get_trap_info()
+{
+  XMLNode traps_node = XMLUtils::get_next_element_by_local_name(root, "Traps");
+  vector<TrapPtr> trap_info = traps_reader.get_traps(traps_node);
+  return trap_info;
+}
+
 vector<MapPtr> XMLConfigurationReader::get_custom_maps(const string& directory, const string& filename_pattern)
 {
   vector<MapPtr> custom_maps;

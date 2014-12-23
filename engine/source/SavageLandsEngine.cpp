@@ -162,6 +162,9 @@ void SavageLandsEngine::setup_game()
   vector<DisplayTile> tile_info = reader.get_tile_info();
   game.set_tile_display_info(tile_info);
 
+  vector<TrapPtr> trap_info = reader.get_trap_info();
+  game.set_trap_info(trap_info);
+
   vector<MapPtr> custom_maps = reader.get_custom_maps(FileConstants::CUSTOM_MAPS_DIRECTORY, FileConstants::CUSTOM_MAPS_PATTERN);
   game.set_custom_maps(custom_maps);
     

@@ -770,6 +770,7 @@
     <ClInclude Include="engine\XML\include\XMLStatisticsModifierReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLToolReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLTrapsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLWandReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLWeaponsReaders.hpp" />
     <ClInclude Include="engine\XML\include\XMLWearableReader.hpp" />
@@ -2141,6 +2142,7 @@
     <ClCompile Include="engine\XML\source\XMLStatisticsModifierReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLTilesReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLToolReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLTrapsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLWandReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLWeaponsReaders.cpp" />
     <ClCompile Include="engine\XML\source\XMLWearableReader.cpp" />

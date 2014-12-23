@@ -190,6 +190,16 @@ const vector<DisplayTile>& Game::get_tile_display_info_ref() const
   return tile_info;
 }
 
+void Game::set_trap_info(const vector<TrapPtr>& game_traps)
+{
+  trap_info = game_traps;
+}
+
+const vector<TrapPtr> Game::get_trap_info_ref() const
+{
+  return trap_info;
+}
+
 CreaturePtr Game::get_current_player() const
 {
   CreaturePtr current_player = get_current_map()->get_creature(PlayerConstants::PLAYER_CREATURE_ID);
