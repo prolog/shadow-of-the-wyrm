@@ -195,7 +195,7 @@ void Game::set_trap_info(const vector<TrapPtr>& game_traps)
   trap_info = game_traps;
 }
 
-const vector<TrapPtr> Game::get_trap_info_ref() const
+const vector<TrapPtr>& Game::get_trap_info_ref() const
 {
   return trap_info;
 }
