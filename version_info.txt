@@ -20,6 +20,8 @@ Savage Lands v0.3.1 "Frithuwald"
   feature, and just have a trap be a potential feature that could be
   present on a tile.
 
+- Added damage and description SIDs to the Trap class.
+
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 
   generated randomly) were being generated randomly, and the "%s" was

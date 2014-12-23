@@ -1,5 +1,6 @@
 #include "Creature.hpp"
 #include "FeatureDescriptionTextKeys.hpp"
+#include "Serialize.hpp"
 #include "Trap.hpp"
 
 using namespace std;
@@ -11,7 +12,10 @@ Trap::Trap()
 
 bool Trap::operator==(const Trap& trap) const
 {
-  return true;
+  bool result = (description_sid == trap.description_sid);
+  result = result && (damage == trap.damage);
+
+  return result;
 }
 
 Feature* Trap::clone()
@@ -24,22 +28,50 @@ uchar Trap::get_symbol() const
   return '^';
 }
 
+void Trap::set_description_sid(const string& new_description_sid)
+{
+  description_sid = new_description_sid;
+}
+
+void Trap::set_damage(const Damage& new_damage)
+{
+  damage = new_damage;
+}
+
+Damage Trap::get_damage() const
+{
+  return damage;
+}
+
 string Trap::get_description_sid() const
 {
-  // JCD FIXME: Eventually, this should be a member variable
-  // and settable via the constructor, etc.
-  return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_TRAP_GENERIC;
+  if (description_sid.empty())
+  {
+    return FeatureDescriptionTextKeys::FEATURE_DESCRIPTION_TRAP_GENERIC;
+  }
+  else
+  {
+    return description_sid;
+  }
 }
 
 bool Trap::serialize(std::ostream& stream) const
 {
   bool result = Feature::serialize(stream);
+
+  Serialize::write_string(stream, description_sid);
+  damage.serialize(stream);
+
   return result;
 }
 
 bool Trap::deserialize(istream& stream)
 {
   bool result = Feature::deserialize(stream);
+
+  Serialize::read_string(stream, description_sid);
+  damage.deserialize(stream);
+
   return result;
 }
 
