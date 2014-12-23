@@ -16,6 +16,9 @@ class Trap : public Feature
 
     void set_description_sid(const std::string& new_description_sid);
 
+    void set_trigger_message_sid(const std::string& new_trigger_message_sid);
+    std::string get_trigger_message_sid() const;
+
     void set_damage(const Damage& new_damage);
     Damage get_damage() const;
 
@@ -26,6 +29,7 @@ class Trap : public Feature
     virtual std::string get_description_sid() const override;
 
     std::string description_sid;
+    std::string trigger_message_sid;
     Damage damage;
 
   private:
