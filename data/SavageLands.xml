@@ -15740,6 +15740,17 @@
 			</Text>
 		</AirTile>
 	</Tiles>
+	<Traps>
+		<Trap id="fireball">
+			<DescriptionSID>TRAP_FIREBALL_SID</DescriptionSID>
+			<Damage>
+				<NumDice>3</NumDice>
+				<NumSides>6</NumSides>
+				<Modifier>1</Modifier>
+				<Type>3</Type>
+			</Damage>
+		</Trap>
+	</Traps>
 	<Items>
 		<Armours>
 			<Armour id="cap">

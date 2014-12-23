@@ -19,6 +19,7 @@
 #include "ScriptEngine.hpp"
 #include "Settings.hpp"
 #include "Spell.hpp"
+#include "Trap.hpp"
 #include "World.hpp"
 #include "WorldTimeKeeper.hpp"
 
@@ -74,6 +75,9 @@ class Game : public ISerializable
 
     void set_tile_display_info(const std::vector<DisplayTile>& game_tiles);
     const std::vector<DisplayTile>& get_tile_display_info_ref() const;
+
+    void set_trap_info(const std::vector<TrapPtr>& game_traps);
+    const std::vector<TrapPtr>& get_trap_info_ref() const;
 
     CreaturePtr get_current_player() const;
 
@@ -174,6 +178,7 @@ class Game : public ISerializable
     GenerationValuesMap item_generation_values;
     ItemMap items;
     std::vector<DisplayTile> tile_info; // vector because we can get constant-time lookup by virtue of sequential tile types.
+    std::vector<TrapPtr> trap_info;
 
     // The current list of game worlds.  For a long, long time, this should always be size=1.
     std::vector<WorldPtr> worlds;

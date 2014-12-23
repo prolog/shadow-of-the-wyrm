@@ -11,6 +11,7 @@
 			<xs:element ref="tns:Creatures"/>
 			<xs:element ref="tns:Spells"/>
 			<xs:element ref="tns:Tiles"/>
+			<xs:element ref="tns:Traps"/>
 			<xs:element ref="tns:Items"/>
 			<xs:element ref="tns:Scripts"/>
 		</xs:sequence>
@@ -125,6 +126,14 @@
 			<xs:element name="WellTile" type="tns:Tile"/>
 			<xs:element name="CryptTile" type="tns:Tile"/>
 			<xs:element name="AirTile" type="tns:Tile"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:element>
+<xs:element name="Traps">
+	<xs:annotation><xs:documentation>Traps that the game can set.</xs:documentation></xs:annotation>
+	<xs:complexType>
+		<xs:sequence>
+			<xs:element name="Trap" type="tns:Trap" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -689,6 +698,13 @@
 		   or
 		3. A list of string-string pairs, which represent a race/item-ID override of #1.
   -->
+<xs:complexType name="Trap">
+	<xs:sequence>
+		<xs:element name="DescriptionSID" type="xs:string"/>
+		<xs:element name="Damage" type="tns:Damage"/>
+	</xs:sequence>
+	<xs:attribute name="id" type="tns:Identifier"/>
+</xs:complexType>
 <xs:complexType name="Properties">
 	<xs:sequence>
 		<xs:element name="Property" type="tns:Property" minOccurs="0" maxOccurs="unbounded"/>

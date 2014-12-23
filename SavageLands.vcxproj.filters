@@ -3309,6 +3309,9 @@
     <ClInclude Include="engine\time\include\MapTimeObserver.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLTrapsReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6430,6 +6433,9 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\unit_tests\MapTimeObserver_test.cpp">
       <Filter>Source Files\engine\time\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLTrapsReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

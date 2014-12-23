@@ -9,6 +9,7 @@
 #include "XMLRacesReader.hpp"
 #include "XMLSpellsReader.hpp"
 #include "XMLTilesReader.hpp"
+#include "XMLTrapsReader.hpp"
 #include "XMLScriptsReader.hpp"
 #include "Race.hpp"
 #include "Class.hpp"
@@ -32,6 +33,7 @@ class XMLConfigurationReader
     std::pair<ItemMap, GenerationValuesMap> get_items();    
     std::map<std::string, std::string> get_scripts();
     std::vector<DisplayTile> get_tile_info();
+    std::vector<TrapPtr> get_trap_info();
     std::vector<MapPtr> get_custom_maps(const std::string& directory, const std::string& filename_pattern);
 
   protected:
@@ -49,5 +51,6 @@ class XMLConfigurationReader
     XMLRacesReader races_reader;
     XMLSpellsReader spells_reader;
     XMLTilesReader tiles_reader;
+    XMLTrapsReader traps_reader;
     XMLScriptsReader scripts_reader;
 };
