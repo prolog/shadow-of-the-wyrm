@@ -1,6 +1,9 @@
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
+#include "RNG.hpp"
 #include "TileGenerator.hpp"
+
+using namespace std;
 
 // Hidden away by protected access
 GeneratorUtils::GeneratorUtils()
@@ -155,5 +158,31 @@ void GeneratorUtils::generate_fountain(const MapPtr map, const int row, const in
   if (tile)
   {
     tile->set_feature(fountain);
+  }
+}
+
+// Generate a random trap from the list and place it at the given coordinates.
+void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int col, const vector<TrapPtr>& traps)
+{
+  if (!traps.empty())
+  {
+    size_t trap_size = traps.size();
+
+    uint idx = RNG::range(0, trap_size-1);
+    TrapPtr trap = traps.at(idx);
+
+    if (trap != nullptr)
+    {
+      // Make a copy of the one provided.
+      trap = TrapPtr(trap->clone());
+
+      // Set the new copy on to the tile.
+      TilePtr tile = map->at(row, col);
+
+      if (tile != nullptr)
+      {
+        tile->set_feature(trap);
+      }
+    }
   }
 }

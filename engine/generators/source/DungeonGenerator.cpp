@@ -5,6 +5,8 @@
 #include "DungeonGenerator.hpp"
 #include "AllTiles.hpp"
 #include "FeatureGenerator.hpp"
+#include "Game.hpp"
+#include "GeneratorUtils.hpp"
 #include "MapExitUtils.hpp"
 #include "MapProperties.hpp"
 #include "MapUtils.hpp"
@@ -105,6 +107,11 @@ bool DungeonGenerator::generate_dungeon(MapPtr map)
         Room next_room = connected_rooms.at(0);
         connect_rooms(map, new_room, next_room);
         connected_rooms.push_back(new_room);
+
+        if (RNG::percent_chance(10))
+        {
+          place_traps(map, new_room);
+        }
       }
       else
       {
@@ -561,6 +568,48 @@ bool DungeonGenerator::place_staircases(MapPtr map)
   }
   
   return true;
+}
+
+// Every room that is trapped has at least one trap, and has a smaller chance
+// of having a second trap.
+bool DungeonGenerator::place_traps(MapPtr map, const Room& room)
+{
+  bool generated_trap = false;
+  int num_traps = 1;
+
+  if (RNG::percent_chance(30))
+  {
+    num_traps++;
+  }
+
+  // Generate however many traps, with about ten attempts for each trap.
+  // This should be more than enough, but if for some reason this doesn't
+  // generate the trap, then I suppose the adventurer's lucky.
+  for (int t = 0; t < num_traps; t++)
+  {
+    // Try to generate the trap, making sure not to overwrite any existing
+    // features.
+    for (int i = 0; i < 10; i++)
+    {
+      int y_val = RNG::range(room.y1, room.y2);
+      int x_val = RNG::range(room.x1, room.x2);
+
+      TilePtr tile = map->at(y_val, x_val);
+
+      if (tile != nullptr && tile->get_movement_multiplier() > 0 && !tile->has_feature())
+      {
+        Game& game = Game::instance();
+        vector<TrapPtr> traps = game.get_trap_info_ref();
+
+        GeneratorUtils::generate_trap(map, y_val, x_val, traps);
+
+        generated_trap = true;
+        break;
+      }
+    }
+  }
+
+  return generated_trap;
 }
 
 bool DungeonGenerator::get_permanence_default() const

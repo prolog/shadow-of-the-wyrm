@@ -19,7 +19,7 @@ bool Trap::operator==(const Trap& trap) const
   return result;
 }
 
-Feature* Trap::clone()
+Trap* Trap::clone()
 {
   return new Trap(*this);
 }

@@ -10,7 +10,7 @@ class Trap : public Feature
     virtual ~Trap() {};
     bool operator==(const Trap& trap) const;
     
-    Feature* clone() override;
+    Trap* clone() override;
 
     virtual uchar get_symbol() const override;
 

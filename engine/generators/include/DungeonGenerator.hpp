@@ -28,6 +28,7 @@ class DungeonGenerator : public SL::Generator
     virtual bool    place_doorway(MapPtr map, int row, int col);
     virtual bool    place_doorways(MapPtr current_map);
     virtual bool    place_staircases(MapPtr current_map);
+    virtual bool    place_traps(MapPtr map, const Room& room);
     virtual std::vector<std::string> potentially_generate_room_features(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual void    generate_altar(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
     virtual void    generate_zoo(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col);
