@@ -27,6 +27,7 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
 {
   if (!trap_node.is_null() && trap != nullptr)
   {
+    string trap_id = XMLUtils::get_attribute_value(trap_node, "id");
     string description_sid = XMLUtils::get_child_node_value(trap_node, "DescriptionSID");
     string trigger_message_sid = XMLUtils::get_child_node_value(trap_node, "TriggerMessageSID");
 
@@ -34,6 +35,7 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(trap_node, "Damage");
     parse_damage(dam, damage_node);
 
+    trap->set_id(trap_id);
     trap->set_description_sid(description_sid);
     trap->set_trigger_message_sid(trigger_message_sid);
     trap->set_damage(dam);

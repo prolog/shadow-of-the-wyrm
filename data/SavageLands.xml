@@ -15751,6 +15751,16 @@
 				<Type>3</Type>
 			</Damage>
 		</Trap>
+		<Trap id="arrow">
+			<DescriptionSID>TRAP_ARROW_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_ARROW_TRIGGER_SID</TriggerMessageSID>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>6</NumSides>
+				<Modifier>1</Modifier>
+				<Type>1</Type>
+			</Damage>
+		</Trap>
 	</Traps>
 	<Items>
 		<Armours>
