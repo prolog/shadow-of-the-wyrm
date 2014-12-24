@@ -14,6 +14,8 @@ vector<TrapPtr> XMLTrapsReader::get_traps(const XMLNode& xml_config_traps_node)
     {
       TrapPtr trap = std::make_shared<Trap>();
       parse_trap(xml_tile, trap);
+
+      traps.push_back(trap);
     }
   }
 

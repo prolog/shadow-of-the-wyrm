@@ -1,5 +1,6 @@
 #pragma once
 #include "Map.hpp"
+#include "Trap.hpp"
 
 class GeneratorUtils
 {
@@ -22,7 +23,9 @@ class GeneratorUtils
 
     // Generates a given tile type at the given coordinates.
     static void generate_tile(const MapPtr map, const int row, const int col, const TileType tile_type);
-        
+    
+    // Generates a random trap from the game at the given coordinates.
+    static void generate_trap(const MapPtr map, const int row, const int col, const std::vector<TrapPtr>& traps);
 
   protected:
     static bool position_in_range(const int min, const int max, const int actual);
