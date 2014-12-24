@@ -12,7 +12,8 @@ Trap::Trap()
 
 bool Trap::operator==(const Trap& trap) const
 {
-  bool result = (description_sid == trap.description_sid);
+  bool result = (id == trap.id);
+  result = result && (description_sid == trap.description_sid);
   result = result && (trigger_message_sid == trap.trigger_message_sid);
   result = result && (damage == trap.damage);
 
@@ -27,6 +28,19 @@ Trap* Trap::clone()
 uchar Trap::get_symbol() const
 {
   return '^';
+}
+
+// Other features (fountains, fire pillars, etc) are class-based and 
+// differentiated by their class ID. Traps are just configurations of a Trap 
+// object, and are differentiated (arrow trap, fireball trap, etc) by their ID.
+void Trap::set_id(const string& new_id)
+{
+  id = new_id;
+}
+
+string Trap::get_id() const
+{
+  return id;
 }
 
 void Trap::set_description_sid(const string& new_description_sid)
@@ -70,6 +84,7 @@ bool Trap::serialize(std::ostream& stream) const
 {
   bool result = Feature::serialize(stream);
 
+  Serialize::write_string(stream, id);
   Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, trigger_message_sid);
   damage.serialize(stream);
@@ -81,6 +96,7 @@ bool Trap::deserialize(istream& stream)
 {
   bool result = Feature::deserialize(stream);
 
+  Serialize::read_string(stream, id);
   Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, trigger_message_sid);
   damage.deserialize(stream);
