@@ -3312,6 +3312,9 @@
     <ClInclude Include="engine\XML\include\XMLTrapsReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\features\include\TrapManipulator.hpp">
+      <Filter>Header Files\engine\features\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6436,6 +6439,9 @@
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLTrapsReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\features\source\TrapManipulator.cpp">
+      <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
