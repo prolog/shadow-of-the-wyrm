@@ -444,6 +444,7 @@
     <ClInclude Include="engine\features\include\NeutralAltarManipulator.hpp" />
     <ClInclude Include="engine\features\include\PewManipulator.hpp" />
     <ClInclude Include="engine\features\include\TanneryManipulator.hpp" />
+    <ClInclude Include="engine\features\include\TrapManipulator.hpp" />
     <ClInclude Include="engine\features\include\WheelAndLoomManipulator.hpp" />
     <ClInclude Include="engine\field_of_view\include\BresenhamLine.hpp" />
     <ClInclude Include="engine\field_of_view\include\FieldOfViewStrategy.hpp" />
@@ -1613,6 +1614,7 @@
     <ClCompile Include="engine\features\source\NeutralAltarManipulator.cpp" />
     <ClCompile Include="engine\features\source\PewManipulator.cpp" />
     <ClCompile Include="engine\features\source\TanneryManipulator.cpp" />
+    <ClCompile Include="engine\features\source\TrapManipulator.cpp" />
     <ClCompile Include="engine\features\source\WheelAndLoomManipulator.cpp" />
     <ClCompile Include="engine\field_of_view\source\BresenhamLine.cpp" />
     <ClCompile Include="engine\field_of_view\source\FieldOfViewStrategy.cpp" />
