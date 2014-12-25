@@ -47,6 +47,11 @@ bool Feature::operator==(const Feature& feature) const
   return result;
 }
 
+bool Feature::apply_on_movement(std::shared_ptr<Creature> creature) const
+{
+  return false;
+}
+
 pair<string, vector<string>> Feature::get_description_and_replacement_sids() const
 {
   string base_description_sid = get_description_sid();

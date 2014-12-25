@@ -205,6 +205,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
       if (cca.can_move(creature, true))
       {
+        // JCD FIXME: Might want to update this once traps are done.
         if (confirm_move_to_tile_if_necessary(creature, creatures_old_tile, creatures_new_tile))
         {
           // Update the map info
@@ -216,6 +217,20 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
         
           add_tile_related_messages(creature, new_tile);
           movement_success = get_action_cost_value(creature);
+        }
+
+        if (creatures_new_tile->has_feature())
+        {
+          FeaturePtr feature = creatures_new_tile->get_feature();
+
+          // Some features, such as traps, are applied when moving into a tile.
+          if (feature->apply_on_movement(creature))
+          {
+            // Apply the feature, now that the creature has moved into
+            // the tile.
+            FeatureAction fa;
+            fa.handle(creatures_new_tile, feature, creature, true);
+          }
         }
       }
     }
