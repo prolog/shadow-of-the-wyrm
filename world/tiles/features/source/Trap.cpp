@@ -25,6 +25,11 @@ Trap* Trap::clone()
   return new Trap(*this);
 }
 
+bool Trap::apply_on_movement(std::shared_ptr<Creature> Creature) const
+{
+  return true;
+}
+
 uchar Trap::get_symbol() const
 {
   return '^';

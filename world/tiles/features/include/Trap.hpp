@@ -12,6 +12,8 @@ class Trap : public Feature
     
     Trap* clone() override;
 
+    virtual bool apply_on_movement(CreaturePtr creature) const override;
+
     virtual uchar get_symbol() const override;
 
     void set_id(const std::string& new_id);
