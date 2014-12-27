@@ -22,7 +22,8 @@ Savage Lands v0.3.1 "Frithuwald"
 
 - Added damage and description SIDs to the Trap class.
 
-- Added traps to dungeons.
+- Added traps to dungeons.  Traps are applied on movement when the
+  creature fails a Detection check.
 
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 

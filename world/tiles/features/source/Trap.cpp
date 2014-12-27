@@ -1,6 +1,7 @@
 #include "Creature.hpp"
 #include "FeatureDescriptionTextKeys.hpp"
 #include "Serialize.hpp"
+#include "RNG.hpp"
 #include "Trap.hpp"
 
 using namespace std;
@@ -25,9 +26,20 @@ Trap* Trap::clone()
   return new Trap(*this);
 }
 
-bool Trap::apply_on_movement(std::shared_ptr<Creature> Creature) const
+bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
-  return true;
+  bool apply_trap = true;
+
+  // When the trap has not been detected, a successful detection check
+  // is required to not trigger it.
+  int detection_value = creature->get_skills().get_value(SKILL_GENERAL_DETECTION);
+
+  if (RNG::percent_chance(detection_value))
+  {
+    apply_trap = false;
+  }
+
+  return apply_trap;
 }
 
 uchar Trap::get_symbol() const
