@@ -47,6 +47,12 @@ bool Feature::operator==(const Feature& feature) const
   return result;
 }
 
+// At the moment, only traps are hidden - everything else is visible.
+bool Feature::get_is_hidden() const
+{
+  return false;
+}
+
 bool Feature::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
   return false;

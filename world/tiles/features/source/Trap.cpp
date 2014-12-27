@@ -27,6 +27,11 @@ Trap* Trap::clone()
   return new Trap(*this);
 }
 
+bool Trap::get_is_hidden() const
+{
+  return !triggered;
+}
+
 bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
   bool apply_trap = true;

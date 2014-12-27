@@ -1,5 +1,20 @@
 #include "gtest/gtest.h"
 
+TEST(SL_World_Tiles_Features_Trap, triggered)
+{
+  Trap trap;
+
+  trap.set_triggered(false);
+
+  EXPECT_FALSE(trap.get_triggered());
+  EXPECT_TRUE(trap.get_is_hidden());
+
+  trap.set_triggered(true);
+
+  EXPECT_TRUE(trap.get_triggered());
+  EXPECT_FALSE(trap.get_is_hidden());
+}
+
 TEST(SL_World_Tiles_Features_Trap, serialization_id)
 {
   Trap trap;
