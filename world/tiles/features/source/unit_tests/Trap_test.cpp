@@ -12,6 +12,7 @@ TEST(SL_World_Tiles_Features_Trap, saveload)
   Trap t1, t2;
   Damage d1(5, 5, 7, DAMAGE_TYPE_COLD, false, false, 0, {});
 
+  t1.set_triggered(true);
   t1.set_id("foo");
   t1.set_damage(d1);
   t1.set_description_sid("abc2465");

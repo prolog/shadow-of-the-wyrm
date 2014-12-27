@@ -16,6 +16,9 @@ class Trap : public Feature
 
     virtual uchar get_symbol() const override;
 
+    void set_triggered(const bool new_triggered);
+    bool get_triggered() const;
+
     void set_id(const std::string& new_id);
     std::string get_id() const;
 
@@ -33,6 +36,7 @@ class Trap : public Feature
   protected:
     virtual std::string get_description_sid() const override;
 
+    bool triggered;
     std::string id;
     std::string description_sid;
     std::string trigger_message_sid;
