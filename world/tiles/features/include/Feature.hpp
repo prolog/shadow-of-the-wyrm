@@ -30,6 +30,10 @@ class Feature : public ISerializable
     // in its direction will stop before reaching the tile.
     virtual bool get_is_blocking() const;
 
+    // If a feature is hidden, it won't be displayed over the tile
+    // when rendering the map.
+    virtual bool get_is_hidden() const;
+
     // Does the feature apply on movement?  The creature moving
     // into the tile is passed so that skills/eq can be checked, etc.
     virtual bool apply_on_movement(std::shared_ptr<Creature> creature) const;

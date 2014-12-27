@@ -12,6 +12,8 @@ class Trap : public Feature
     
     Trap* clone() override;
 
+    virtual bool get_is_hidden() const override;
+
     virtual bool apply_on_movement(CreaturePtr creature) const override;
 
     virtual uchar get_symbol() const override;
