@@ -7,13 +7,14 @@
 using namespace std;
 
 Trap::Trap() 
-: Feature(MATERIAL_TYPE_IRON, ALIGNMENT_RANGE_NEUTRAL)
+: Feature(MATERIAL_TYPE_IRON, ALIGNMENT_RANGE_NEUTRAL), triggered(false)
 {
 }
 
 bool Trap::operator==(const Trap& trap) const
 {
-  bool result = (id == trap.id);
+  bool result = (triggered == trap.triggered);
+  result = result && (id == trap.id);
   result = result && (description_sid == trap.description_sid);
   result = result && (trigger_message_sid == trap.trigger_message_sid);
   result = result && (damage == trap.damage);
@@ -30,13 +31,20 @@ bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 {
   bool apply_trap = true;
 
-  // When the trap has not been detected, a successful detection check
-  // is required to not trigger it.
+  // A successful detection check is required to not trigger a trap.
   int detection_value = creature->get_skills().get_value(SKILL_GENERAL_DETECTION);
 
-  if (RNG::percent_chance(detection_value))
+  // If the trap has already been triggered, the creature has two
+  // attempts to not set it off on movement, since its presence is
+  // known.
+  int num_chances = triggered ? 2 : 1;
+
+  for (int i = 0; i < num_chances; i++)
   {
-    apply_trap = false;
+    if (RNG::percent_chance(detection_value))
+    {
+      apply_trap = false;
+    }
   }
 
   return apply_trap;
@@ -45,6 +53,16 @@ bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
 uchar Trap::get_symbol() const
 {
   return '^';
+}
+
+void Trap::set_triggered(const bool new_triggered)
+{
+  triggered = new_triggered;
+}
+
+bool Trap::get_triggered() const
+{
+  return triggered;
 }
 
 // Other features (fountains, fire pillars, etc) are class-based and 
@@ -101,6 +119,7 @@ bool Trap::serialize(std::ostream& stream) const
 {
   bool result = Feature::serialize(stream);
 
+  Serialize::write_bool(stream, triggered);
   Serialize::write_string(stream, id);
   Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, trigger_message_sid);
@@ -113,6 +132,7 @@ bool Trap::deserialize(istream& stream)
 {
   bool result = Feature::deserialize(stream);
 
+  Serialize::read_bool(stream, triggered);
   Serialize::read_string(stream, id);
   Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, trigger_message_sid);

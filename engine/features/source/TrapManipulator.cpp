@@ -1,4 +1,5 @@
 #include "TrapManipulator.hpp"
+#include "Trap.hpp"
 
 using namespace std;
 
@@ -14,6 +15,14 @@ void TrapManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr fea
 
 bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
 {
+  FeaturePtr feature = tile->get_feature();
+  TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
+
+  if (trap)
+  {
+    trap->set_triggered(true);
+  }
+
   return true;
 }
 
