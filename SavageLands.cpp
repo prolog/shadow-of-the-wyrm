@@ -107,9 +107,7 @@ int main(int argc, char* argv[])
       DisplayPtr display = display_details.first;
       ControllerPtr controller = display_details.second;
 
-      bool display_created = display->create();
-
-      if (display_created)
+      if (display && display->create())
       {
         SavageLandsEngine engine;
 
@@ -117,14 +115,14 @@ int main(int argc, char* argv[])
         engine.set_controller(controller);
         engine.set_display(display);
         engine.start();
-      }
 
-      display->tear_down();
+        display->tear_down();
+      }
     }
   }
   catch(...)
   {
-    Log::instance().log("Unable to run Savage Lands!");
+    Log::instance().log("main - Unable to run Savage Lands!");
   }
 
   return 0;

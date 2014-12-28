@@ -53,7 +53,7 @@ void RoadGenerator::generate_road(MapPtr map)
       }
       break;
     default:
-      Log::instance().log("Unhandled direction in road generation");
+      Log::instance().log("RoadGenerator::generate_road - Unhandled direction in road generation");
       break;
   }
 }

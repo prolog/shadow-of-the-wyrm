@@ -66,7 +66,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
   }
   else
   {
-    Log::instance().log("Trying to ascend with non-player creature.  Not supported yet.");
+    Log::instance().log("StairwayMovementAction::ascend - Trying to ascend with non-player creature.  Not supported yet.");
   }
   
   return ascend_success;
@@ -148,7 +148,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
   }
   else
   {
-    Log::instance().log("Trying to descend with non-player creature.  Not supported yet.");    
+    Log::instance().log("StairwayMovementAction::descend - Trying to descend with non-player creature.  Not supported yet.");    
   }
   
   return descend_success;

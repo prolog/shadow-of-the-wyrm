@@ -55,13 +55,13 @@ void DeitySelectionScreen::initialize()
         }
         else
         {
-          string error_msg = "Deity ID (" + deity_id + ") found, but DeityPtr is null.";
+          string error_msg = "DeitySelectionScreen::initialize - Deity ID (" + deity_id + ") found, but DeityPtr is null.";
           Log::instance().log(error_msg);
         }
       }
       else
       {
-        string error_msg = "Could not find deity_id: " + deity_id;
+        string error_msg = "DeitySelectionScreen::initialize - Could not find deity_id: " + deity_id;
         Log::instance().log(error_msg);
       }
     }

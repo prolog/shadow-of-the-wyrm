@@ -94,7 +94,7 @@ WINDOW* CursesDisplay::create_screen(int height, int width, int start_row, int s
 // Delete the given window.
 void CursesDisplay::destroy_screen(WINDOW *screen)
 {
-  Log::instance().debug("Destroying current screen");
+  Log::instance().debug("CursesDisplay::destroy_screen - destroying current screen.");
 	delwin(screen);
 	screen = nullptr;
 }

@@ -123,12 +123,12 @@ ItemPtr ItemManager::create_item(const ItemMap& items, const std::string& item_i
       }
       else
       {
-        Log::instance().debug("Tried to add item with ID " + item_id + ", but the maximum was reached.  Returning null ItemPtr.");
+        Log::instance().debug("ItemManager::create_item - tried to add item with ID " + item_id + ", but the maximum was reached.  Returning null ItemPtr.");
       }
     }  
     else
     {
-      Log::instance().error("Couldn't find item generation values for item with ID " + item_id);
+      Log::instance().error("ItemManager::create_item - Couldn't find item generation values for item with ID " + item_id);
     }
   }
   

@@ -1317,7 +1317,7 @@ int map_transform_tile(lua_State* ls)
         else
         {
           ostringstream ss;
-          ss << "Null tile referenced in map_transform_tile: " << c.first << ", " << c.second;
+          ss << "map_transform_tile - Null tile referenced in map_transform_tile: " << c.first << ", " << c.second;
           Log::instance().error(ss.str());
         }
       }

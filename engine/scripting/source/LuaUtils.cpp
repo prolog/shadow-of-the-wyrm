@@ -26,7 +26,7 @@ vector<string> LuaUtils::get_string_array_from_table(lua_State* ls, int lua_inde
 
     if (!lua_isstring(ls, -1))
     {
-      string msg = "Invalid string found in array!";
+      string msg = "LuaUtils::get_string_array_from_table - Invalid string found in array!";
       lua_pushstring(ls, msg.c_str());
       lua_error(ls);
 

@@ -41,7 +41,7 @@ bool MapCreatureGenerator::generate_initial_set_creatures(MapPtr map, const std:
   }
   catch (...)
   {
-    Log::instance().error("Attempted to generate initial set creatures, but vector could not be deserialized (this is really bad).");
+    Log::instance().error("MapCreatureGenerator::generate_initial_set_creatures - Attempted to generate initial set creatures, but vector could not be deserialized (this is really bad).");
   }
 
   return creatures_generated;
