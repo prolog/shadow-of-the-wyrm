@@ -57,13 +57,21 @@ Game::~Game()
 }
 
 // Set the settings, and also update any other settings (like the language
-// file) that are derived from the settings.
+// file, etc) that are derived from the settings.
 void Game::set_settings(const Settings& new_settings)
 {
   settings = new_settings;
 
   string language_file = settings.get_setting("language_file");
   set_sid_ini_filename(language_file);
+
+  string log_level = settings.get_setting("log_level");
+  LoggingLevel ll = static_cast<LoggingLevel>(String::to_int(log_level));
+
+  if (ll >= LOG_NONE && ll < LOG_HIGHEST)
+  {
+    Log::instance().set_log_level(ll);
+  }
 }
 
 Settings& Game::get_settings_ref()
@@ -238,7 +246,7 @@ void Game::create_new_world(CreaturePtr creature)
   }
   else
   {
-    Log::instance().log("Couldn't get player's initial starting location!");
+    Log::instance().log("Game::create_new_world - Couldn't get player's initial starting location!");
   }
 }
 

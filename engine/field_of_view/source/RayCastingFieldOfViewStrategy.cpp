@@ -98,7 +98,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr
   TilesContainer fov_tile_cont = fov_map->get_tiles();
   TilesContainer::iterator t_it;
   
-  Log::instance().log("Centre coord: " + Integer::to_string(centre_coord.first) + "," + Integer::to_string(centre_coord.second));
+  Log::instance().debug("RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts - centre coord: " + Integer::to_string(centre_coord.first) + "," + Integer::to_string(centre_coord.second));
 
   for (t_it = tile_cont.begin(); t_it != tile_cont.end(); t_it++)
   {
@@ -116,7 +116,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr
       {
         if (is_artifact_nw(fov_map, c, type))
         {
-          Log::instance().debug(tile_coords + " not in list, NW, adjacent to a lit tile.");
+          Log::instance().debug("RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts - " + tile_coords + " not in list, NW, adjacent to a lit tile.");
           add_point_to_map(fov_creature, c, view_map, fov_map);
         }
       }
@@ -125,7 +125,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr
       {
         if (is_artifact_ne(fov_map, c, type))
         {
-          Log::instance().debug(tile_coords + " not in list, NE, adjacent to a lit tile.");
+          Log::instance().debug("RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts - " + tile_coords + " not in list, NE, adjacent to a lit tile.");
           add_point_to_map(fov_creature, c, view_map, fov_map);
         }
       }
@@ -134,7 +134,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr
       {
         if (is_artifact_sw(fov_map, c, type))
         {
-          Log::instance().debug(tile_coords + " not in list, SW, adjacent to a lit tile.");
+          Log::instance().debug("RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts - " + tile_coords + " not in list, SW, adjacent to a lit tile.");
           add_point_to_map(fov_creature, c, view_map, fov_map);
         }
       }
@@ -143,7 +143,7 @@ void RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts(CreaturePtr
       {
         if (is_artifact_se(fov_map, c, type))
         {
-          Log::instance().debug(tile_coords + " not in list, SE, adjacent to a lit tile.");
+          Log::instance().debug("RayCastingFieldOfViewStrategy::post_process_to_remove_artifacts - " + tile_coords + " not in list, SE, adjacent to a lit tile.");
           add_point_to_map(fov_creature, c, view_map, fov_map);
         }
       }
@@ -159,8 +159,8 @@ bool RayCastingFieldOfViewStrategy::does_adjacent_non_blocking_tile_exist_in_fov
   if (tile)
   {
     std::ostringstream ss;
-    ss << "(" << c_dir.first << "," << c_dir.second << ")";
-    Log::instance().log(ss.str());
+    ss << "RayCastingFieldOfViewStrategy::does_adjacent_non_blocking_tile_exist_in_fov_map - (" << c_dir.first << "," << c_dir.second << ")";
+    Log::instance().debug(ss.str());
   }
   
   return (tile && (tile->get_is_blocking() == false));

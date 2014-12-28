@@ -439,7 +439,7 @@ void Generator::update_custom_map_with_current(const string& depth_map_id, const
     if (coords.empty())
     {
       ostringstream ss;
-      ss << "Tried to link up custom map to random, but exit_direction " << exit_direction << " did not exist.";
+      ss << "Generator::update_custom_map_with_current - Tried to link up custom map to random, but exit_direction " << exit_direction << " did not exist.";
       Log::instance().error(ss.str());
     }
     else

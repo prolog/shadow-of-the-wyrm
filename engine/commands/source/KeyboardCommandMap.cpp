@@ -78,7 +78,7 @@ void KeyboardCommandMap::command_not_found(const string& keyboard_input)
   manager.add_new_message(TextMessages::get_action_not_found_message(keyboard_input_as_character));
   manager.send(false /* Don't halt */, true /* Reset the cursor on the player */);
 
-  Log::instance().debug("Could not find mapped command for input: " + keyboard_input);
+  Log::instance().debug("KeyboardCommandMap::command_not_found - could not find mapped command for input: " + keyboard_input);
 }
 
 // Initializes the "special key" map, which maps from a string description of the key

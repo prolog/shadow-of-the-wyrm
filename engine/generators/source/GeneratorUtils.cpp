@@ -1,5 +1,6 @@
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
+#include "Log.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
 
@@ -182,6 +183,10 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
       if (tile != nullptr)
       {
         tile->set_feature(trap);
+
+        ostringstream ss;
+        ss << "GeneratorUtils::generate_trap - trap generated at (" << row << "," << col << ").";
+        Log::instance().debug(ss.str());
       }
     }
   }

@@ -135,7 +135,7 @@ DisplayTile MapTranslator::create_display_tile(const bool player_blinded, const 
       ItemPtr item = inv->at(0); // Get the first item
       display_tile = create_display_tile_from_item(item);
     }
-    else if (feature && !player_blinded) // There's no creature, and no items.  Is there a feature?
+    else if (feature && !feature->get_is_hidden() && !player_blinded) // There's no creature, and no items.  Is there a feature?  Can it be seen?
     {
       display_tile = create_display_tile_from_feature(feature);
     }

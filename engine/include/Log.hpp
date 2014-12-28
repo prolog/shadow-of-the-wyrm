@@ -27,6 +27,8 @@ class Log
       return inst;
     }
 
+    void set_log_level(const LoggingLevel);
+
     bool log_using_level(const LoggingLevel level, const std::string& log_msg);
     bool error(const std::string& to_error);
     bool log(const std::string& to_log);
@@ -40,8 +42,6 @@ class Log
     ~Log(); // Close generated file
     Log(const Log& log); // Do not implement.
     bool operator=(const Log& log); // Do not implement.
-
-    static void set_log_level(const LoggingLevel);
 
     std::string create_filename();
     std::string create_datetimestamp();

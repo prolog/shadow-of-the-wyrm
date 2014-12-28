@@ -36,7 +36,7 @@ TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subti
   switch(tile_type)
   {
     case TILE_TYPE_UNDEFINED:
-      Log::instance().log("Attempting to generate an undefined tile type");
+      Log::instance().log("TileGenerator::generate - Attempting to generate an undefined tile type");
       break;
     case TILE_TYPE_FIELD:
       result_tile = std::make_shared<FieldTile>();

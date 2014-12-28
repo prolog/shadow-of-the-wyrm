@@ -216,7 +216,7 @@ ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemActio
       item_manager.drop(creature, item);
       break;
     default:
-      Log::instance().log("Error: Unhandled item action!");
+      Log::instance().log("ActionManager::handle_item - Error: Unhandled item action!");
       action_cost_value = 0;
       break;
   }
