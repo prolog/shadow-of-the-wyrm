@@ -25,7 +25,7 @@ Savage Lands v0.3.1 "Frithuwald"
 - Added traps to dungeons.  Traps are applied on movement when the
   creature fails a Detection check.
 
-- Logging is now set in the ini settings.
+- Logging is now set in the ini settings, as is the display.
 
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 

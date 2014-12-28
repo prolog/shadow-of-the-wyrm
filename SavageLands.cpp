@@ -18,6 +18,7 @@
 #include "Log.hpp"
 #include "Metadata.hpp"
 #include "SavageLandsEngine.hpp"
+#include "Settings.hpp"
 #include "StringTable.hpp"
 #include "TextKeys.hpp"
 #include "XMLDataStructures.hpp"
@@ -85,9 +86,10 @@ int _tmain(int argc, _TCHAR* argv[])
 int main(int argc, char* argv[])
 #endif
 {
+  Log& log = Log::instance();
+
   try
   {
-    Log& log = Log::instance();
     log.set_log_level(LOG_ERROR);
     log.trace("main - testing");
 
@@ -99,10 +101,13 @@ int main(int argc, char* argv[])
     }
     else
     {
+      Settings settings(true);
+
+      // Set the default display and controller.  This is hard-coded, but c
       // JCD FIXME: Refactor.  This id should eventually be in a .rc
       // type file, so that each individual person can set their own
       // settings...
-      string display_id = DisplayIdentifier::DISPLAY_IDENTIFIER_CURSES;
+      string display_id = settings.get_setting("display");
       pair<DisplayPtr, ControllerPtr> display_details = DisplayFactory::create_display_details(display_id);
       DisplayPtr display = display_details.first;
       ControllerPtr controller = display_details.second;
@@ -111,18 +116,23 @@ int main(int argc, char* argv[])
       {
         SavageLandsEngine engine;
 
-        // set the display into the engine
-        engine.set_controller(controller);
+        // set the default display into the engine
         engine.set_display(display);
-        engine.start();
+        engine.set_controller(controller);
+        engine.start(settings);
 
         display->tear_down();
+      }
+      else
+      {
+        log.error("main - Could not create display!");
+        cerr << "Could not create display - exiting.";
       }
     }
   }
   catch(...)
   {
-    Log::instance().log("main - Unable to run Savage Lands!");
+    log.error("main - Unable to run Savage Lands!");
   }
 
   return 0;
