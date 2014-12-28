@@ -80,10 +80,9 @@ void SavageLandsEngine::initialize_game_flow_map()
   game_flow_functions.insert(make_pair(ENGINE_STATE_STOP, &SavageLandsEngine::process_exit_game));
 }
 
-void SavageLandsEngine::start()
+void SavageLandsEngine::start(const Settings& settings)
 {
   Game& game = Game::instance();
-  Settings settings(true);
 
   game.set_settings(settings);
   game.actions.reload_scripts_and_sids();

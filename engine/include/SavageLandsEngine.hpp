@@ -34,7 +34,7 @@ class SavageLandsEngine
   public:    
     SavageLandsEngine();
  
-    void start();
+    void start(const Settings& settings);
 
     void set_controller(ControllerPtr new_controller);
     void set_display(DisplayPtr new_display);
