@@ -7,7 +7,7 @@
 using namespace std;
 
 Trap::Trap() 
-: Feature(MATERIAL_TYPE_IRON, ALIGNMENT_RANGE_NEUTRAL), triggered(false)
+: Feature(MATERIAL_TYPE_IRON, ALIGNMENT_RANGE_NEUTRAL, 1 /* 1 use by default - will be set later */), triggered(false)
 {
 }
 
@@ -25,6 +25,34 @@ bool Trap::operator==(const Trap& trap) const
 Trap* Trap::clone()
 {
   return new Trap(*this);
+}
+
+Trap* Trap::clone_and_randomize_uses()
+{
+  Trap* trap = clone();
+
+  if (trap)
+  {
+    // Jiggle the number of uses.
+    int uses = trap->get_uses();
+
+    if (uses > 1)
+    {
+      // 20% chance of +1 use.  5% chance of -1.
+      if (RNG::percent_chance(20))
+      {
+        uses++;
+      }
+      else if (RNG::percent_chance(5))
+      {
+        uses--;
+      }
+
+      trap->set_uses(uses);
+    }
+  }
+
+  return trap;
 }
 
 bool Trap::get_is_hidden() const

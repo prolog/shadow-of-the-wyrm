@@ -20,7 +20,13 @@ Savage Lands v0.3.1 "Frithuwald"
   feature, and just have a trap be a potential feature that could be
   present on a tile.
 
-- Added damage and description SIDs to the Trap class.
+- Added damage and description SIDs to the Trap class, as well as a
+  trigger message SID.
+
+- Added a "uses" counter to features.  This is -1 for most features
+  (unlimited uses) and will be set to > 0 for traps.  When the counter
+  reaches 0, the feature is removed from the tile (the trap is spent,
+  basically).
 
 - Added traps to dungeons.  Traps are applied on movement when the
   creature fails a Detection check.

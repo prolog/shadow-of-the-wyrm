@@ -113,16 +113,31 @@ bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creatur
     {
       IFeatureManipulatorPtr feature_manipulator = IFeatureManipulatorFactory::create_manipulator(feature);
 
-      if (feature_manipulator && feature_manipulator->handle(tile, creature))
+      if (feature_manipulator)
       {
-        string handle_message_sid = feature->get_handle_message_sid();
+        int num_uses = feature->get_uses();
 
-        if (!handle_message_sid.empty())
+        if (num_uses == -1 || num_uses >= 1)
         {
-          add_application_message(creature, handle_message_sid);
-        }
+          if (feature_manipulator->handle(tile, creature))
+          {
+            string handle_message_sid = feature->get_handle_message_sid();
 
-        result = true;
+            if (!handle_message_sid.empty())
+            {
+              add_application_message(creature, handle_message_sid);
+            }
+
+            // If there was only one usage of the feature remaining, remove
+            // the feature from the tile.
+            if (num_uses == 1)
+            {
+              tile->remove_feature();
+            }
+
+            result = true;
+          }
+        }
       }
 
       // Now that the door has been closed, check to see if

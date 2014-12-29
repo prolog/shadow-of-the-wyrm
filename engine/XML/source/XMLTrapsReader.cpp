@@ -35,9 +35,12 @@ void XMLTrapsReader::parse_trap(const XMLNode& trap_node, TrapPtr trap)
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(trap_node, "Damage");
     parse_damage(dam, damage_node);
 
+    int uses = XMLUtils::get_child_node_int_value(trap_node, "Uses", 1);
+
     trap->set_id(trap_id);
     trap->set_description_sid(description_sid);
     trap->set_trigger_message_sid(trigger_message_sid);
     trap->set_damage(dam);
+    trap->set_uses(uses);
   }
 }

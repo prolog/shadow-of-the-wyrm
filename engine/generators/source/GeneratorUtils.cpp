@@ -175,7 +175,7 @@ void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int co
     if (trap != nullptr)
     {
       // Make a copy of the one provided.
-      trap = TrapPtr(trap->clone());
+      trap = TrapPtr(trap->clone_and_randomize_uses());
 
       // Set the new copy on to the tile.
       TilePtr tile = map->at(row, col);
