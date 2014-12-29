@@ -11,6 +11,7 @@ class Trap : public Feature
     bool operator==(const Trap& trap) const;
     
     Trap* clone() override;
+    Trap* clone_and_randomize_uses();
 
     virtual bool get_is_hidden() const override;
 

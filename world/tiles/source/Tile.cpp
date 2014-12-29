@@ -237,6 +237,11 @@ void Tile::set_feature(FeaturePtr new_feature)
   feature = new_feature;
 }
 
+void Tile::remove_feature()
+{
+  feature.reset();
+}
+
 FeaturePtr Tile::get_feature()
 {
   return feature;

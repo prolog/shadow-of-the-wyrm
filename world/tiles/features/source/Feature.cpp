@@ -8,8 +8,8 @@ using namespace std;
 
 // JCD FIXME NEED COPY CONSTRUCTOR FOR LOCK PTR WHEN THIS IS COMPLETED
 
-Feature::Feature(const MaterialType new_material, const AlignmentRange new_alignment_range)
-: material(new_material), alignment_range(new_alignment_range)
+Feature::Feature(const MaterialType new_material, const AlignmentRange new_alignment_range, const int new_uses)
+: material(new_material), alignment_range(new_alignment_range), uses(new_uses)
 {
 }
 
@@ -30,6 +30,8 @@ Feature& Feature::operator=(const Feature& feature)
     }
 
     material = feature.material;
+    alignment_range = feature.alignment_range;
+    uses = feature.uses;
   }
 
   return *this;
@@ -43,6 +45,8 @@ bool Feature::operator==(const Feature& feature) const
 
   result = result && (material == feature.material);
   result = result && ((!lock && !(feature.lock)) || (lock && feature.lock && (*lock == *(feature.lock))));
+  result = result && (alignment_range == feature.alignment_range);
+  result = result && (uses == feature.uses);
 
   return result;
 }
@@ -161,6 +165,16 @@ AlignmentRange Feature::get_alignment_range() const
   return ALIGNMENT_RANGE_NEUTRAL;
 }
 
+void Feature::set_uses(const int new_uses)
+{
+  uses = new_uses;
+}
+
+int Feature::get_uses() const
+{
+  return uses;
+}
+
 bool Feature::serialize(ostream& stream) const
 {
   if (lock)
@@ -175,6 +189,7 @@ bool Feature::serialize(ostream& stream) const
 
   Serialize::write_enum(stream, material);
   Serialize::write_enum(stream, alignment_range);
+  Serialize::write_enum(stream, uses);
 
   return true;
 }
@@ -192,6 +207,7 @@ bool Feature::deserialize(istream& stream)
 
   Serialize::read_enum(stream, material);
   Serialize::read_enum(stream, alignment_range);
+  Serialize::read_int(stream, uses);
 
   return true;
 }

@@ -73,6 +73,7 @@ class Tile : public ISerializable
     virtual bool has_feature() const;
     virtual bool has_blocking_feature() const;
     virtual void set_feature(std::shared_ptr<Feature> new_feature);
+    virtual void remove_feature();
     virtual std::shared_ptr<Feature> get_feature();
 
     virtual bool has_creature() const;

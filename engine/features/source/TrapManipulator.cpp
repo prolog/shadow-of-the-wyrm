@@ -1,5 +1,7 @@
 #include "TrapManipulator.hpp"
+#include "CombatManager.hpp"
 #include "MessageManagerFactory.hpp"
+#include "RNG.hpp"
 #include "Trap.hpp"
 
 using namespace std;
@@ -19,7 +21,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
   FeaturePtr feature = tile->get_feature();
   TrapPtr trap = dynamic_pointer_cast<Trap>(feature);
 
-  if (trap)
+  if (trap && creature)
   {
     string trigger_message_sid = trap->get_trigger_message_sid();
 
@@ -30,6 +32,12 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
     manager.send();
 
     trap->set_triggered(true);
+
+    Damage& damage = trap->get_damage();
+
+    // Deal the damage to the creature:
+    CombatManager cm;
+    // cm.attack(nullptr, creature, ATTACK_TYPE_MELEE_PRIMARY, false, damage);
   }
 
   return true;

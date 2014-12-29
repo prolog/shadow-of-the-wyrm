@@ -17,7 +17,7 @@ class Creature;
 class Feature : public ISerializable
 {
   public:
-    Feature(const MaterialType new_material, const AlignmentRange new_alignment_range);
+    Feature(const MaterialType new_material, const AlignmentRange new_alignment_range, const int uses = -1);
     Feature(const Feature& feature);
     Feature& operator=(const Feature& feature);
 
@@ -70,6 +70,9 @@ class Feature : public ISerializable
     void set_alignment_range(const AlignmentRange new_alignment_range);
     virtual AlignmentRange get_alignment_range() const;
 
+    void set_uses(const int new_uses);
+    int get_uses() const;
+
     virtual bool serialize(std::ostream& stream) const override;
     virtual bool deserialize(std::istream& stream) override;
 
@@ -79,6 +82,7 @@ class Feature : public ISerializable
     LockPtr lock;
     MaterialType material;
     AlignmentRange alignment_range;
+    int uses;
 
   private:
     virtual ClassIdentifier internal_class_identifier() const override;

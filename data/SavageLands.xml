@@ -15750,6 +15750,7 @@
 				<Modifier>1</Modifier>
 				<Type>3</Type>
 			</Damage>
+			<Uses>1</Uses>
 		</Trap>
 		<Trap id="arrow">
 			<DescriptionSID>TRAP_ARROW_SID</DescriptionSID>
@@ -15760,6 +15761,7 @@
 				<Modifier>1</Modifier>
 				<Type>1</Type>
 			</Damage>
+			<Uses>6</Uses>
 		</Trap>
 	</Traps>
 	<Items>
