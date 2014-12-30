@@ -134,6 +134,11 @@ bool FeatureAction::handle(TilePtr tile, FeaturePtr feature, CreaturePtr creatur
             {
               tile->remove_feature();
             }
+            else if (num_uses > 1)
+            {
+              feature->set_uses(num_uses-1);
+            }
+            // If num_uses is -1, don't decrement it.
 
             result = true;
           }
