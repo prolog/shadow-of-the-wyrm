@@ -21,7 +21,8 @@ Savage Lands v0.3.1 "Frithuwald"
   present on a tile.
 
 - Added damage and description SIDs to the Trap class, as well as a
-  trigger message SID.
+  trigger message SID, and a player damage message SID.  Traps display
+  a damage message only when the player steps on the trap.
 
 - Added a "uses" counter to features.  This is -1 for most features
   (unlimited uses) and will be set to > 0 for traps.  When the counter
@@ -30,6 +31,9 @@ Savage Lands v0.3.1 "Frithuwald"
 
 - Added traps to dungeons.  Traps are applied on movement when the
   creature fails a Detection check.
+
+- Critical hits are now more powerful, allowing only a quarter of the
+  creature's Soak score, rather than the half that was previously used.
 
 - Logging is now set in the ini settings, as is the display.
 
@@ -42,7 +46,7 @@ Savage Lands v0.3.1 "Frithuwald"
 - New creatures: Pallas, Grubb, Kith, Bel, Brimman, Gilirien, Hord,
   Filch, Myrdin, Alteus, Layal, Bagra, Alcien, Rukhala.
 
-- New traps: fireball, arrow.
+- New traps: fireball, arrow, rock.
 
 Savage Lands v0.3.0 "Theodric"
 - Version declared November 11, 2014.  Version finalized December 7, 2014.
