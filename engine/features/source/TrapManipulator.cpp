@@ -1,6 +1,8 @@
 #include "TrapManipulator.hpp"
 #include "CombatManager.hpp"
+#include "DamageCalculatorFactory.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ResistancesCalculator.hpp"
 #include "RNG.hpp"
 #include "Trap.hpp"
 
@@ -13,7 +15,7 @@ TrapManipulator::TrapManipulator(FeaturePtr feature)
 
 void TrapManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
 {
-  // JCD FIXME add a message about "narrowly setting off the trap"...
+  // JCD FIXME add a message about "narrowly avoiding setting off the trap"...
 }
 
 bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
@@ -34,10 +36,28 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
     trap->set_triggered(true);
 
     Damage& damage = trap->get_damage();
+    DamageType dt = damage.get_damage_type();
+    float soak_mult = 1.0f; // the creature's soak should use the standard multiplier.
 
     // Deal the damage to the creature:
     CombatManager cm;
-    // cm.attack(nullptr, creature, ATTACK_TYPE_MELEE_PRIMARY, false, damage);
+    const AttackType attack_type = ATTACK_TYPE_RANGED;
+    bool slays_race = false;
+    int dmg_roll = RNG::dice(damage);
+
+    string message;
+    if (creature && creature->get_is_player())
+    {
+      message = trap->get_player_damage_message_sid();
+    }
+
+    DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
+    int damage_dealt = damage_calc->calculate(creature, slays_race, damage, dmg_roll, soak_mult);
+
+    if (damage_dealt > 0)
+    { 
+      cm.deal_damage(nullptr, creature, damage_dealt, message);
+    }
   }
 
   return true;

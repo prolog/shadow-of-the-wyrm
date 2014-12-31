@@ -15744,6 +15744,7 @@
 		<Trap id="fireball">
 			<DescriptionSID>TRAP_FIREBALL_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FIREBALL_TRIGGER_SID</TriggerMessageSID>
+			<PlayerDamageMessageSID>TRAP_FIREBALL_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Damage>
 				<NumDice>3</NumDice>
 				<NumSides>6</NumSides>
@@ -15755,6 +15756,7 @@
 		<Trap id="arrow">
 			<DescriptionSID>TRAP_ARROW_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_ARROW_TRIGGER_SID</TriggerMessageSID>
+			<PlayerDamageMessageSID>TRAP_ARROW_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
