@@ -17,6 +17,7 @@ bool Trap::operator==(const Trap& trap) const
   result = result && (id == trap.id);
   result = result && (description_sid == trap.description_sid);
   result = result && (trigger_message_sid == trap.trigger_message_sid);
+  result = result && (player_damage_message_sid == trap.player_damage_message_sid);
   result = result && (damage == trap.damage);
 
   return result;
@@ -126,6 +127,16 @@ string Trap::get_trigger_message_sid() const
   return trigger_message_sid;
 }
 
+void Trap::set_player_damage_message_sid(const string& new_player_damage_message_sid)
+{
+  player_damage_message_sid = new_player_damage_message_sid;
+}
+
+string Trap::get_player_damage_message_sid() const
+{
+  return player_damage_message_sid;
+}
+
 void Trap::set_damage(const Damage& new_damage)
 {
   damage = new_damage;
@@ -156,6 +167,7 @@ bool Trap::serialize(std::ostream& stream) const
   Serialize::write_string(stream, id);
   Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, trigger_message_sid);
+  Serialize::write_string(stream, player_damage_message_sid);
   damage.serialize(stream);
 
   return result;
@@ -169,6 +181,7 @@ bool Trap::deserialize(istream& stream)
   Serialize::read_string(stream, id);
   Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, trigger_message_sid);
+  Serialize::read_string(stream, player_damage_message_sid);
   damage.deserialize(stream);
 
   return result;

@@ -32,6 +32,7 @@ TEST(SL_World_Tiles_Features_Trap, saveload)
   t1.set_damage(d1);
   t1.set_description_sid("abc2465");
   t1.set_trigger_message_sid("fdsafdsa");
+  t1.set_player_damage_message_sid("thathurt");
 
   EXPECT_FALSE(t1 == t2);
 
