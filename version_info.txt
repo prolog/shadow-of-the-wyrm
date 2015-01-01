@@ -37,6 +37,9 @@ Savage Lands v0.3.1 "Frithuwald"
 
 - Logging is now set in the ini settings, as is the display.
 
+- Added a section to the Guidebook entitled "The World", which talks
+  about the Savage Lands world, travelling, combat, quests, etc.
+
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 
   generated randomly) were being generated randomly, and the "%s" was

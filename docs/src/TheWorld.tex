@@ -1,0 +1,118 @@
+\section{The World}
+
+Each game of {\it Savage Lands} starts off on Little Island, a tiny piece
+of land at the edge of the world home to the people that populate Isen Dun
+(literally ``Iron Hill''), a village perched atop a large hill.  At the
+northern edge of the island is an old set of ruins, while an ancient stone
+stair sits at the southern tip.
+
+\subsection{Starting Out}
+
+Isen Dun is full of friendly inhabitants, and is a great place to start
+out.  The ploughman maintains a public garden in the village green for the
+needy, and there are a number of NPCs (non-player characters) that have
+quests that the player can try out.  But be careful --- some of these quests
+are much more dangerous than others! 
+
+\subsection{Non-Player Characters}
+
+NPCs fall into two categories:
+
+\begin{itemize}
+\item Those that want to kill you.
+\item Those that don't want to kill you.
+\end{itemize}
+
+Philosophers have argued this dichotomy for years, and the more Hobbesian
+believe that the second category could simply be termed ``those that don't
+want to kill you just yet.''  Debate rages.
+
+Those that want to kill you should either be avoided, or destroyed,
+depending on your preference and the general difficulty of the thing
+bearing down on you.  You can get a general feel for creature difficulty
+by using the look command (see Commands), and then hovering over another 
+creature.  In addition to telling you what the creature is, the look 
+command will give an indication of the creature's level, relative to yours.
+
+\subsection{Combat}
+
+The world is a dangerous place.  The outer lands are home to Snakelings,
+Goblins, and Ogres.  Monsters, formerly the stuff of ancient myth, have
+begun to appear once more.  And priests of the dark three stalk the world
+like shadows, snatching the weak and unwary for blood sacrifices.  What's
+an adventurer to do?
+
+Combat is a popular option.
+
+\subsubsection{General Rules}
+
+The basic internal rules for combat are:
+
+\begin{enumerate}
+\item Generate the ``target number'' - a combination of the attacker's
+weapon difficulty, weapon skill, target's evade, and other considerations.
+
+\item Roll 1d100.
+  \begin{itemize}
+  \item If the roll is 5 or less, the attack automatically misses.
+
+  \item Otherwise, if the d100 roll plus modifiers is greater than the 
+  target number, the attack is considered a hit.  
+
+  \item When the d100 roll is 96--99, the attack is a {\it mighty blow}.
+
+  \item When the d100 roll is 100, the attack is a {\it critical hit}.
+  \end{itemize}
+\item Roll damage.
+  \begin{itemize}
+  \item For a regular hit, a random value is rolled using the attack's
+  damage dice.
+
+  \item For a mighty blow, the maximum damage is taken.
+
+  \item For a critical hit, the maximum damage is taken.
+  \end{itemize}
+
+\item Consider resistances.  Multiply the damage by the creature's
+resistance to that damage type.
+
+\item If the attack is a slaying attack that affects the creature based on
+its race, double the damage.  Typically only certain artifact weapons will
+grant slaying against a race or family of races.
+
+\item Subtract the defending creature's Soak score.  For a regular hit
+or mighty blow, the full Soak is subtracted.  For a critical hit, only a
+quarter of the Soak is subtracted.
+\end{enumerate}
+
+\subsubsection{Melee Combat}
+
+Melee combat encompasses attacking barehanded, or with a hand-held
+weapon.  After rolling the d100 to hit, bonuses are added based on the
+creature's Combat score and skill in the given weapon.  Additionally, if
+the weapon is particularly heavy, a bonus is added based on the creature's
+Strength score.  If the weapon is not particularly heavy, or if the
+creature is attacking without a weapon, a bonus is added based on the 
+creature's Dexterity.
+
+\subsubsection{Ranged Combat}
+
+Ranged combat adds a bonus based on the creature's Archery skill, rather
+than Combat, adds a bonus based on the weapon skill, and then adds a 
+bonus based on Dexterity.
+
+\subsubsection{Magical Combat}
+
+Magical combat (e.g., attacking with a Wizard's or Witchling's spells)
+adds bonuses based on the Magic skill and the creature's Intelligence
+score.
+
+\subsection{Quests}
+
+But not everything in the world wants to kill you.  Some NPCs are capable 
+of granting quests.  Quests are unlocked by having the appropriate 
+pre-requisites, and then talking to a particular NPC.  Quests will show up 
+in the list of quests (see Commands).  When quests are completed, a reward 
+is typically given --- an item, skill training, etc.  Quests typically 
+provide rewards that help much more than the random items found on the 
+dungeon floor, but tend to be dangerous, and should be taken with caution.
