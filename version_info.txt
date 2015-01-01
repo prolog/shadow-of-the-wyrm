@@ -49,7 +49,7 @@ Savage Lands v0.3.1 "Frithuwald"
 - New creatures: Pallas, Grubb, Kith, Bel, Brimman, Gilirien, Hord,
   Filch, Myrdin, Alteus, Layal, Bagra, Alcien, Rukhala.
 
-- New traps: fireball, arrow, rock.
+- New traps: fireball, arrow, rock, floor spikes.
 
 Savage Lands v0.3.0 "Theodric"
 - Version declared November 11, 2014.  Version finalized December 7, 2014.

@@ -15777,6 +15777,17 @@
 			</Damage>
 			<Uses>10</Uses>
 		</Trap>
+		<Trap id="floor_spikes">
+			<DescriptionSID>TRAP_FLOOR_SPIKES_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_FLOOR_SPIKES_TRIGGER_SID</TriggerMessageSID>
+			<PlayerDamageMessageSID>TRAP_FLOOR_SPIKES_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Damage>
+				<NumDice>1</NumDice>
+				<NumSides>12</NumSides>
+				<Type>1</Type>
+			</Damage>
+			<Uses>-1</Uses>
+		</Trap>
 	</Traps>
 	<Items>
 		<Armours>
