@@ -17,7 +17,7 @@ Tile* ForestTile::clone()
 
 ClassIdentifier ForestTile::internal_class_identifier() const
 {
-  return CLASS_ID_FOREST_TILE;
+  return ClassIdentifier::CLASS_ID_FOREST_TILE;
 }
 
 #ifdef UNIT_TESTS

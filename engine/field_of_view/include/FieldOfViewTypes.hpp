@@ -1,6 +1,6 @@
 #pragma once
 
-enum FieldOfViewAlgorithmType
+enum struct FieldOfViewAlgorithmType
 {
   FOV_RAY_CASTING = 0
 };

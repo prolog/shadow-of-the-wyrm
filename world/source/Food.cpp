@@ -32,7 +32,7 @@ Item* Food::clone()
 
 ClassIdentifier Food::internal_class_identifier() const
 {
-  return CLASS_ID_FOOD;
+  return ClassIdentifier::CLASS_ID_FOOD;
 }
 
 #ifdef UNIT_TESTS

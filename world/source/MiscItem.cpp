@@ -19,7 +19,7 @@ Item* MiscItem::clone()
 
 ClassIdentifier MiscItem::internal_class_identifier() const
 {
-  return CLASS_ID_MISC_ITEM;
+  return ClassIdentifier::CLASS_ID_MISC_ITEM;
 }
 
 #ifdef UNIT_TESTS

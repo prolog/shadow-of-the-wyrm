@@ -28,7 +28,7 @@ Tile* ChurchTile::clone()
 
 ClassIdentifier ChurchTile::internal_class_identifier() const
 {
-  return CLASS_ID_CHURCH_TILE;
+  return ClassIdentifier::CLASS_ID_CHURCH_TILE;
 }
 
 #ifdef UNIT_TESTS

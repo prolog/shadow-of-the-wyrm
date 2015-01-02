@@ -24,53 +24,53 @@ std::string convert_colour_to_hex_code(const Colours colour)
   
   switch (colour)
   {
-    case COLOUR_UNDEFINED:
-    case COLOUR_BLACK:
+    case Colour::COLOUR_UNDEFINED:
+    case Colour::COLOUR_BLACK:
       hex_code = "#000000";
       break;
-    case COLOUR_RED:
+    case Colour::COLOUR_RED:
       hex_code = "#8B0000";
       break;
-    case COLOUR_GREEN:
+    case Colour::COLOUR_GREEN:
       hex_code = "#008000";
       break;
-    case COLOUR_YELLOW:
+    case Colour::COLOUR_YELLOW:
       hex_code = "#B8860B";
       break;
-    case COLOUR_BLUE:
+    case Colour::COLOUR_BLUE:
       hex_code = "#00008B";
       break;
-    case COLOUR_MAGENTA:
+    case Colour::COLOUR_MAGENTA:
       hex_code = "#8B008B";
       break;
-    case COLOUR_CYAN:
+    case Colour::COLOUR_CYAN:
       hex_code = "#00FFFF";
       break;
-    case COLOUR_WHITE:
+    case Colour::COLOUR_WHITE:
       hex_code = "#DCDCDC";
       break;
-    case COLOUR_BOLD_BLACK:
+    case Colour::COLOUR_BOLD_BLACK:
       hex_code = "#696969";
       break;
-    case COLOUR_BOLD_RED:
+    case Colour::COLOUR_BOLD_RED:
       hex_code = "#FF0000";
       break;
-    case COLOUR_BOLD_GREEN:
+    case Colour::COLOUR_BOLD_GREEN:
       hex_code = "#7CFC00";
       break;
-    case COLOUR_BOLD_YELLOW:
+    case Colour::COLOUR_BOLD_YELLOW:
       hex_code = "#FFFF00";
       break;
-    case COLOUR_BOLD_BLUE:
+    case Colour::COLOUR_BOLD_BLUE:
       hex_code = "#0000FF";
       break;
-    case COLOUR_BOLD_MAGENTA:
+    case Colour::COLOUR_BOLD_MAGENTA:
       hex_code = "#FF00FF";
       break;
-    case COLOUR_BOLD_CYAN:
+    case Colour::COLOUR_BOLD_CYAN:
       hex_code = "#E0FFFF";
       break;
-    case COLOUR_BOLD_WHITE:
+    case Colour::COLOUR_BOLD_WHITE:
       hex_code = "#F8FFFF";
       break;
     default:

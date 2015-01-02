@@ -39,7 +39,7 @@ bool ImmobileDecisionStrategy::can_move() const
 
 ClassIdentifier ImmobileDecisionStrategy::internal_class_identifier() const
 {
-  return CLASS_ID_IMMOBILE_DECISION_STRATEGY;
+  return ClassIdentifier::CLASS_ID_IMMOBILE_DECISION_STRATEGY;
 }
 
 #ifdef UNIT_TESTS

@@ -1,6 +1,6 @@
 #pragma once
 
-enum Season
+enum struct Season
 {
   SEASON_SPRING = 0,
   SEASON_SUMMER = 1,
@@ -9,7 +9,7 @@ enum Season
   SEASON_LAST = 4
 };
 
-enum Months
+enum struct Months
 {
   MONTH_1 = 0,
   MONTH_2 = 1,

@@ -17,7 +17,7 @@ Tile* LibraryTile::clone()
 
 ClassIdentifier LibraryTile::internal_class_identifier() const
 {
-  return CLASS_ID_LIBRARY_TILE;
+  return ClassIdentifier::CLASS_ID_LIBRARY_TILE;
 }
 
 #ifdef UNIT_TESTS

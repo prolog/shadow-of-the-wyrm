@@ -1,6 +1,6 @@
 #pragma once
 
-enum WorshipSiteType
+enum struct WorshipSiteType
 {
   WORSHIP_SITE_CATHEDRAL = 0,
   WORSHIP_SITE_FORTIFIED_CHURCH = 1,

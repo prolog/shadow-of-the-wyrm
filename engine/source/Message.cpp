@@ -1,8 +1,8 @@
 #include "Message.hpp"
 
 Message::Message()
-: colour(COLOUR_WHITE)
-, importance(MessageImportance_UNDEFINED)
+: colour(Colour::COLOUR_WHITE)
+, importance(MessageImportance::MessageImportance_UNDEFINED)
 , count(1)
 {
 }

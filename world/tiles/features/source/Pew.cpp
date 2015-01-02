@@ -31,7 +31,7 @@ float Pew::get_piety_loss_multiplier() const
 
 ClassIdentifier Pew::internal_class_identifier() const
 {
-  return CLASS_ID_PEW;
+  return ClassIdentifier::CLASS_ID_PEW;
 }
 
 #ifdef UNIT_TESTS

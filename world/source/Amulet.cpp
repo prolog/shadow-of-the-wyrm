@@ -19,7 +19,7 @@ Item* Amulet::clone()
 
 ClassIdentifier Amulet::internal_class_identifier() const
 {
-  return CLASS_ID_AMULET;
+  return ClassIdentifier::CLASS_ID_AMULET;
 }
 
 #ifdef UNIT_TESTS

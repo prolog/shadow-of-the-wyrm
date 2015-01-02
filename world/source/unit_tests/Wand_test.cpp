@@ -12,13 +12,13 @@ TEST(SL_World_Wand, saveload)
   Wand wand, wand2;
 
   wand.set_quantity(2);
-  wand.set_effect_type(EFFECT_TYPE_IDENTIFY);
+  wand.set_effect_type(EffectType::EFFECT_TYPE_IDENTIFY);
   wand.set_range(12);
-  wand.set_spell_shape_type(SPELL_SHAPE_REFLECTIVE_BEAM);
+  wand.set_spell_shape_type(SpellShapeType::SPELL_SHAPE_REFLECTIVE_BEAM);
   Statistic charges(8);
   charges.set_current(4);
   wand.set_charges(charges);
-  wand.set_colour(COLOUR_RED);
+  wand.set_colour(Colour::COLOUR_RED);
 
   ostringstream ss;
 

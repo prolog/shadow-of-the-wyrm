@@ -1,6 +1,6 @@
 #pragma once
 // General rarity enumeration
-enum Rarity
+enum struct Rarity
 {
   RARITY_COMMON = 0,
   RARITY_UNCOMMON = 1,

@@ -55,7 +55,7 @@ bool Conducts::deserialize(istream& stream)
 
 ClassIdentifier Conducts::internal_class_identifier() const
 {
-  return CLASS_ID_CONDUCTS;
+  return ClassIdentifier::CLASS_ID_CONDUCTS;
 }
 
 #ifdef UNIT_TESTS

@@ -174,7 +174,7 @@ bool Equipment::deserialize(istream& stream)
 
 ClassIdentifier Equipment::internal_class_identifier() const
 {
-  return CLASS_ID_EQUIPMENT;
+  return ClassIdentifier::CLASS_ID_EQUIPMENT;
 }
 
 #ifdef UNIT_TESTS

@@ -28,7 +28,7 @@ Tile* RiverTile::clone()
 
 ClassIdentifier RiverTile::internal_class_identifier() const
 {
-  return CLASS_ID_RIVER_TILE;
+  return ClassIdentifier::CLASS_ID_RIVER_TILE;
 }
 
 #ifdef UNIT_TESTS

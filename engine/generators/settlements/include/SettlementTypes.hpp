@@ -1,6 +1,6 @@
 #pragma once
 
-enum SettlementType
+enum struct SettlementType
 {
   SETTLEMENT_TYPE_ORDERLY_VILLAGE = 0,
   SETTLEMENT_TYPE_HAMLET = 1,

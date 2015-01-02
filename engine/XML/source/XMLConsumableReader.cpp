@@ -24,7 +24,7 @@ void XMLConsumableReader::parse(ConsumablePtr consumable, GenerationValues& gv, 
     XMLNode food_type_node = XMLUtils::get_next_element_by_local_name(node, "FoodType");
     if (!food_type_node.is_null())
     {
-      FoodType food_type = static_cast<FoodType>(XMLUtils::get_node_int_value(food_type_node, FOOD_TYPE_OTHER));
+      FoodType food_type = static_cast<FoodType>(XMLUtils::get_node_int_value(food_type_node, static_cast<int>(FoodType::FOOD_TYPE_OTHER)));
       consumable->set_food_type(food_type);
     }
 

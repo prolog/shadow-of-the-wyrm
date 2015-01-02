@@ -64,7 +64,7 @@ bool AutomaticMovement::deserialize(istream& stream)
 
 ClassIdentifier AutomaticMovement::internal_class_identifier() const
 {
-  return CLASS_ID_AUTOMATIC_MOVEMENT;
+  return ClassIdentifier::CLASS_ID_AUTOMATIC_MOVEMENT;
 }
 
 #ifdef UNIT_TESTS

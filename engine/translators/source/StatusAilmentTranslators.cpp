@@ -15,24 +15,24 @@ map<HungerLevel, Colour> HungerStatusAilmentTranslator::colour_map;
 void HungerStatusAilmentTranslator::initialize_text_sid_map()
 {
   text_sid_map.clear();
-  text_sid_map = map<HungerLevel, string>{{HUNGER_LEVEL_STUFFED, StatusAilmentTextKeys::STATUS_HUNGER_STUFFED},
-                                          {HUNGER_LEVEL_FULL, StatusAilmentTextKeys::STATUS_HUNGER_FULL},
-                                          {HUNGER_LEVEL_NORMAL, StatusAilmentTextKeys::STATUS_HUNGER_NORMAL},
-                                          {HUNGER_LEVEL_HUNGRY, StatusAilmentTextKeys::STATUS_HUNGER_HUNGRY},
-                                          {HUNGER_LEVEL_STARVING, StatusAilmentTextKeys::STATUS_HUNGER_STARVING},
-                                          {HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_HUNGER_DYING}};
+  text_sid_map = map<HungerLevel, string>{{HungerLevel::HUNGER_LEVEL_STUFFED, StatusAilmentTextKeys::STATUS_HUNGER_STUFFED},
+                                          {HungerLevel::HUNGER_LEVEL_FULL, StatusAilmentTextKeys::STATUS_HUNGER_FULL},
+                                          {HungerLevel::HUNGER_LEVEL_NORMAL, StatusAilmentTextKeys::STATUS_HUNGER_NORMAL},
+                                          {HungerLevel::HUNGER_LEVEL_HUNGRY, StatusAilmentTextKeys::STATUS_HUNGER_HUNGRY},
+                                          {HungerLevel::HUNGER_LEVEL_STARVING, StatusAilmentTextKeys::STATUS_HUNGER_STARVING},
+                                          {HungerLevel::HUNGER_LEVEL_DYING, StatusAilmentTextKeys::STATUS_HUNGER_DYING}};
 }
 
 // Initialize the colour mapping
 void HungerStatusAilmentTranslator::initialize_colour_map()
 {
   colour_map.clear();
-  colour_map = map<HungerLevel, Colour>{{HUNGER_LEVEL_STUFFED, COLOUR_WHITE},
-                                        {HUNGER_LEVEL_FULL, COLOUR_WHITE},
-                                        {HUNGER_LEVEL_NORMAL, COLOUR_WHITE},
-                                        {HUNGER_LEVEL_HUNGRY, COLOUR_WHITE},
-                                        {HUNGER_LEVEL_STARVING, COLOUR_BOLD_YELLOW},
-                                        {HUNGER_LEVEL_DYING, COLOUR_RED}};
+  colour_map = map<HungerLevel, Colour>{{HungerLevel::HUNGER_LEVEL_STUFFED, Colour::COLOUR_WHITE},
+                                        {HungerLevel::HUNGER_LEVEL_FULL, Colour::COLOUR_WHITE},
+                                        {HungerLevel::HUNGER_LEVEL_NORMAL, Colour::COLOUR_WHITE},
+                                        {HungerLevel::HUNGER_LEVEL_HUNGRY, Colour::COLOUR_WHITE},
+                                        {HungerLevel::HUNGER_LEVEL_STARVING, Colour::COLOUR_BOLD_YELLOW},
+                                        {HungerLevel::HUNGER_LEVEL_DYING, Colour::COLOUR_RED}};
 }
 
 // Check to see if the hunger level is anything other than normal.
@@ -69,7 +69,7 @@ string HungerStatusAilmentTranslator::get_status_ailment_text(const CreaturePtr&
 
 Colour HungerStatusAilmentTranslator::get_status_ailment_colour(const CreaturePtr& creature) const
 {
-  Colour colour = COLOUR_WHITE;
+  Colour colour = Colour::COLOUR_WHITE;
 
   if (colour_map.empty())
   {

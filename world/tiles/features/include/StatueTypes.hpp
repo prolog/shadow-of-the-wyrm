@@ -1,12 +1,12 @@
 #pragma once
 
-enum StatueType
+enum struct StatueType
 {
   STATUE_TYPE_DECORATIVE = 0,
   STATUE_TYPE_REGULAR = 1
 };
 
-enum DecorativeStatueType
+enum struct DecorativeStatueType
 {
   DECORATIVE_STATUE_TYPE_FIRST = 0,
   DECORATIVE_STATUE_TYPE_KING = 0,
@@ -18,7 +18,7 @@ enum DecorativeStatueType
   DECORATIVE_STATUE_TYPE_LAST = 5
 };
 
-enum RegularStatueType
+enum struct RegularStatueType
 {
   REGULAR_STATUE_TYPE_PETRIFIED_CORPSE = 0,
   REGULAR_STATUE_TYPE_LAST = 1

@@ -17,59 +17,59 @@ TilePtr XMLWorldMapTileMapper::create_tile(const char xml_tile)
 
   if (xml_tile == '~')
   {
-    tile = tg.generate(TILE_TYPE_SEA);
+    tile = tg.generate(TileType::TILE_TYPE_SEA);
   }
   else if (xml_tile == 'K')
   {
-    tile = tg.generate(TILE_TYPE_KEEP);
+    tile = tg.generate(TileType::TILE_TYPE_KEEP);
   }
   else if (xml_tile == 'F')
   {
-    tile = tg.generate(TILE_TYPE_FOREST);
+    tile = tg.generate(TileType::TILE_TYPE_FOREST);
   }
   else if (xml_tile == 'f')
   {
-    tile = tg.generate(TILE_TYPE_FIELD);
+    tile = tg.generate(TileType::TILE_TYPE_FIELD);
   }
   else if (xml_tile == 'O')
   {
-    tile = tg.generate(TILE_TYPE_WILD_ORCHARD);
+    tile = tg.generate(TileType::TILE_TYPE_WILD_ORCHARD);
   }
   else if (xml_tile == 'd')
   {
-    tile = tg.generate(TILE_TYPE_DUNGEON_COMPLEX);
+    tile = tg.generate(TileType::TILE_TYPE_DUNGEON_COMPLEX);
   }
   else if (xml_tile == 'g')
   {
-    tile = tg.generate(TILE_TYPE_GRAVEYARD);
+    tile = tg.generate(TileType::TILE_TYPE_GRAVEYARD);
   }
   else if (xml_tile == 'v')
   {
-    tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FIELD);
+    tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD);
   }
   else if (xml_tile == '^')
   {
-    tile = tg.generate(TILE_TYPE_MOUNTAINS);
+    tile = tg.generate(TileType::TILE_TYPE_MOUNTAINS);
   }
   else if (xml_tile == 'C')
   {
-    tile = tg.generate(TILE_TYPE_CRYPT);
+    tile = tg.generate(TileType::TILE_TYPE_CRYPT);
   }
   else if (xml_tile == 'c')
   {
-    tile = tg.generate(TILE_TYPE_CAVERN);
+    tile = tg.generate(TileType::TILE_TYPE_CAVERN);
   }
   else if (xml_tile == 'r')
   {
-    tile = tg.generate(TILE_TYPE_ROCKY_EARTH);
+    tile = tg.generate(TileType::TILE_TYPE_ROCKY_EARTH);
   }
   else if (xml_tile == 'm')
   {
-    tile = tg.generate(TILE_TYPE_MARSH);
+    tile = tg.generate(TileType::TILE_TYPE_MARSH);
   }
   else if (xml_tile == 'M')
   { 
-    tile = tg.generate(TILE_TYPE_MINE);
+    tile = tg.generate(TileType::TILE_TYPE_MINE);
   }
   else
   {

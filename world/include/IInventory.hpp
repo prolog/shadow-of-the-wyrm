@@ -4,7 +4,7 @@
 #include "Item.hpp"
 #include "ISerializable.hpp"
 
-enum InventoryAdditionType
+enum struct InventoryAdditionType
 {
   INVENTORY_ADDITION_FRONT = 0,
   INVENTORY_ADDITION_BACK = 1

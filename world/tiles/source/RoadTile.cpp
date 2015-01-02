@@ -17,7 +17,7 @@ Tile* RoadTile::clone()
 
 ClassIdentifier RoadTile::internal_class_identifier() const
 {
-  return CLASS_ID_ROAD_TILE;
+  return ClassIdentifier::CLASS_ID_ROAD_TILE;
 }
 
 #ifdef UNIT_TESTS

@@ -30,7 +30,7 @@ string FirePillar::get_description_sid() const
 
 ClassIdentifier FirePillar::internal_class_identifier() const
 {
-  return CLASS_ID_FIRE_PILLAR;
+  return ClassIdentifier::CLASS_ID_FIRE_PILLAR;
 }
 // FIXME: Still need to add lit/unlit state.
 

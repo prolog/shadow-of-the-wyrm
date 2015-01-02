@@ -30,8 +30,17 @@ class Trap : public Feature
     void set_trigger_message_sid(const std::string& new_trigger_message_sid);
     std::string get_trigger_message_sid() const;
 
+    void set_trigger_symbol(const uchar new_trigger_symbol);
+    uchar get_trigger_symbol() const;
+
     void set_player_damage_message_sid(const std::string& new_player_damage_message_sid);
     std::string get_player_damage_message_sid() const;
+
+    void set_colour(const Colour new_colour);
+    virtual Colour get_colour() const override;
+
+    void set_item_id(const std::string& new_item_id);
+    std::string get_item_id() const;
 
     void set_damage(const Damage& new_damage);
     Damage get_damage() const;
@@ -46,7 +55,10 @@ class Trap : public Feature
     std::string id;
     std::string description_sid;
     std::string trigger_message_sid;
+    uchar trigger_symbol;
     std::string player_damage_message_sid;
+    Colour colour;
+    std::string item_id;
     Damage damage;
 
   private:

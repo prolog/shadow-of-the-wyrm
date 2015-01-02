@@ -3,7 +3,7 @@
 #include "common.hpp"
 #include "Map.hpp"
 
-enum RuinsType
+enum struct RuinsType
 {
   RUINS_TYPE_SETTLEMENT = 0,
   RUINS_TYPE_KEEP = 1

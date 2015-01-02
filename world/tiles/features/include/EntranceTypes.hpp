@@ -1,7 +1,7 @@
 #pragma once
 
 // The current state of the entrance.
-enum EntranceStateType
+enum struct EntranceStateType
 {
   ENTRANCE_TYPE_DESTROYED = 0,
   ENTRANCE_TYPE_OPEN = 1,

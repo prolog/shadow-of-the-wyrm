@@ -31,7 +31,7 @@ Tile* TreeTile::clone()
 
 ClassIdentifier TreeTile::internal_class_identifier() const
 {
-  return CLASS_ID_TREE_TILE;
+  return ClassIdentifier::CLASS_ID_TREE_TILE;
 }
 
 #ifdef UNIT_TESTS

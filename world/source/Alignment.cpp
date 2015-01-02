@@ -158,7 +158,7 @@ bool Alignment::deserialize(istream& stream)
 
 ClassIdentifier Alignment::internal_class_identifier() const
 {
-  return CLASS_ID_ALIGNMENT;
+  return ClassIdentifier::CLASS_ID_ALIGNMENT;
 }
 
 #ifdef UNIT_TESTS

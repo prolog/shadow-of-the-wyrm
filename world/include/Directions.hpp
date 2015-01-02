@@ -1,7 +1,7 @@
 #pragma once
 
 // Used for player/monster movements, etc.
-enum Direction
+enum struct Direction
 {
   DIRECTION_SOUTH_WEST = 1,
   DIRECTION_SOUTH = 2,
@@ -29,7 +29,7 @@ enum Direction
 #define CDIRECTION_DOWN 11
 
 // More general - used in terrain generation, etc.
-enum CardinalDirection
+enum struct CardinalDirection
 {
   CARDINAL_DIRECTION_NORTH = 0,
   CARDINAL_DIRECTION_EAST  = 1,
@@ -37,7 +37,7 @@ enum CardinalDirection
   CARDINAL_DIRECTION_WEST  = 3
 };
 
-enum DirectionCategory
+enum struct DirectionCategory
 {
   DIRECTION_CATEGORY_NONE = 0,
   DIRECTION_CATEGORY_CARDINAL = 1,

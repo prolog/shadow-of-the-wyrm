@@ -18,5 +18,5 @@ Controller* NullKeyboardController::clone()
 
 ClassIdentifier NullKeyboardController::internal_class_identifier() const
 {
-  return CLASS_ID_NULL_KEYBOARD_CONTROLLER;
+  return ClassIdentifier::CLASS_ID_NULL_KEYBOARD_CONTROLLER;
 }

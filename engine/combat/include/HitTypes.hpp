@@ -1,6 +1,6 @@
 #pragma once
 
-enum HitTypeEnum
+enum struct HitTypeEnum
 {
   HIT_TYPE_REGULAR = 0,
   HIT_TYPE_MIGHTY = 1,

@@ -17,7 +17,7 @@ Tile* RockyEarthTile::clone()
 
 ClassIdentifier RockyEarthTile::internal_class_identifier() const
 {
-  return CLASS_ID_ROCKY_EARTH_TILE;
+  return ClassIdentifier::CLASS_ID_ROCKY_EARTH_TILE;
 }
 
 #ifdef UNIT_TESTS

@@ -68,7 +68,7 @@ string InventoryKeyboardCommandMap::get_settings_prefix() const
 
 ClassIdentifier InventoryKeyboardCommandMap::internal_class_identifier() const
 {
-  return CLASS_ID_INVENTORY_KEYBOARD_COMMAND_MAP;
+  return ClassIdentifier::CLASS_ID_INVENTORY_KEYBOARD_COMMAND_MAP;
 }
 
 #ifdef UNIT_TESTS

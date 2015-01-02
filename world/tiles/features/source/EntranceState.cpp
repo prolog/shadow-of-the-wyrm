@@ -69,7 +69,7 @@ bool EntranceState::deserialize(istream& stream)
 
 ClassIdentifier EntranceState::internal_class_identifier() const
 {
-  return CLASS_ID_ENTRANCE_STATE;
+  return ClassIdentifier::CLASS_ID_ENTRANCE_STATE;
 }
 
 #ifdef UNIT_TESTS

@@ -215,7 +215,7 @@ bool CommandFactory::deserialize(std::istream& stream)
 
 ClassIdentifier CommandFactory::internal_class_identifier() const
 {
-  return CLASS_ID_COMMAND_FACTORY;
+  return ClassIdentifier::CLASS_ID_COMMAND_FACTORY;
 }
 
 #ifdef UNIT_TESTS

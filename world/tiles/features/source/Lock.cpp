@@ -62,7 +62,7 @@ bool Lock::deserialize(istream& stream)
 
 ClassIdentifier Lock::internal_class_identifier() const
 {
-  return CLASS_ID_LOCK;
+  return ClassIdentifier::CLASS_ID_LOCK;
 }
 
 #ifdef UNIT_TESTS

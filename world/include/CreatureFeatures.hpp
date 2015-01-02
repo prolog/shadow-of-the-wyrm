@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-enum CreatureSize
+enum struct CreatureSize
 {
   CREATURE_SIZE_TINY = 0,
   CREATURE_SIZE_SMALL = 1,
@@ -12,14 +12,14 @@ enum CreatureSize
   CREATURE_SIZE_LAST = 6
 };
 
-enum CreatureSex
+enum struct CreatureSex
 {
   CREATURE_SEX_MALE = 0,
   CREATURE_SEX_FEMALE = 1,
   CREATURE_SEX_LAST = 2
 };
 
-enum HairColour
+enum struct HairColour
 {
   HAIR_COLOUR_BLACK = 0,
   HAIR_COLOUR_BROWN = 1,
@@ -29,7 +29,7 @@ enum HairColour
   HAIR_COLOUR_WHITE = 5
 };
 
-enum EyeColour
+enum struct EyeColour
 {
   EYE_COLOUR_BROWN = 0,
   EYE_COLOUR_BLUE = 1,
@@ -39,13 +39,13 @@ enum EyeColour
 };
 
 // This should always mirror the worn location enumeration!
-enum Handedness
+enum struct Handedness
 {
   RIGHT_HANDED = 4,
   LEFT_HANDED = 5
 };
 
-enum BreatheType
+enum struct BreatheType
 {
   BREATHE_TYPE_AIR = 0,
   BREATHE_TYPE_WATER = 1

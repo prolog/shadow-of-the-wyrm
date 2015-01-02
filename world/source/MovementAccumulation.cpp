@@ -105,7 +105,7 @@ bool MovementAccumulation::deserialize(istream& stream)
 
 ClassIdentifier MovementAccumulation::internal_class_identifier() const
 {
-  return CLASS_ID_MOVEMENT_ACCUMULATION;
+  return ClassIdentifier::CLASS_ID_MOVEMENT_ACCUMULATION;
 }
 
 #ifdef UNIT_TESTS

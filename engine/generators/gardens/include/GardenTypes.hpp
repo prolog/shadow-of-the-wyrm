@@ -1,6 +1,6 @@
 #pragma once
 
-enum GardenType
+enum struct GardenType
 {
   GARDEN_TYPE_FIRST = 0,
   GARDEN_TYPE_SHADE = 0,

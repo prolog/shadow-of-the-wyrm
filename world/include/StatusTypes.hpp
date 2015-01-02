@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-enum HungerLevel
+enum struct HungerLevel
 {
   HUNGER_LEVEL_STUFFED,
   HUNGER_LEVEL_FULL,

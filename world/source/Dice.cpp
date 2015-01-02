@@ -104,7 +104,7 @@ bool Dice::deserialize(istream& stream)
 
 ClassIdentifier Dice::internal_class_identifier() const
 {
-  return CLASS_ID_DICE;
+  return ClassIdentifier::CLASS_ID_DICE;
 }
 
 #ifdef UNIT_TESTS

@@ -45,8 +45,8 @@ void XMLMapExitReader::parse_exit(const XMLNode& exit_node, MapPtr map)
     // Handle map exits using tile types/subtypes (terrain generation)
     else
     {        
-      TileType tt = TILE_TYPE_UNDEFINED;
-      tt = static_cast<TileType>(XMLUtils::get_child_node_int_value(exit_node, "TileType", tt));
+      TileType tt = TileType::TILE_TYPE_UNDEFINED;
+      tt = static_cast<TileType>(XMLUtils::get_child_node_int_value(exit_node, "TileType", static_cast<int>(tt)));
 
       MapExitUtils::add_exit_to_tile(map, c, dir, tt);
     }

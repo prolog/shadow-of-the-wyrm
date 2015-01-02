@@ -21,7 +21,7 @@ ActionCostValue DropAction::drop(CreaturePtr creature, ActionManager * const am)
   
   if (creature)
   {
-    if (game.get_current_map()->get_map_type() == MAP_TYPE_WORLD)
+    if (game.get_current_map()->get_map_type() == MapType::MAP_TYPE_WORLD)
     {
       handle_world_drop(creature);
     }
@@ -140,7 +140,7 @@ ActionCostValue DropAction::do_drop(CreaturePtr creature, MapPtr current_map, It
       if (creatures_tile)
       {
         IInventoryPtr inv = creatures_tile->get_items();
-        inv->merge_or_add(new_item, INVENTORY_ADDITION_FRONT);
+        inv->merge_or_add(new_item, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
 
         // Display a message if appropriate.
         // If it's the player, remind the user what he or she dropped.

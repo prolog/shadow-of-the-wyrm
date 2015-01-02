@@ -39,7 +39,7 @@ string Barrel::get_description_sid() const
 
 ClassIdentifier Barrel::internal_class_identifier() const
 {
-  return CLASS_ID_BARREL;
+  return ClassIdentifier::CLASS_ID_BARREL;
 }
 
 void Barrel::set_tap(const bool new_tap)

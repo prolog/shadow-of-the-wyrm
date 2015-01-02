@@ -6,7 +6,7 @@ ScreenComponent::ScreenComponent()
 
 ScreenComponent::ScreenComponent(const std::string& new_text)
 {
-  text.push_back(make_pair(new_text, COLOUR_WHITE));
+  text.push_back(make_pair(new_text, Colour::COLOUR_WHITE));
 }
 
 ScreenComponent::ScreenComponent(const std::string& new_text, const Colour new_colour)
@@ -21,7 +21,7 @@ void ScreenComponent::set_text(const std::vector<std::pair<std::string, Colour>>
 
 void ScreenComponent::add_text(const std::string& new_text)
 {
-  text.push_back(make_pair(new_text, COLOUR_WHITE));
+  text.push_back(make_pair(new_text, Colour::COLOUR_WHITE));
 }
 
 void ScreenComponent::add_text(const std::string& new_text, const Colour new_colour)

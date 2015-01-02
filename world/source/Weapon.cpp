@@ -6,7 +6,7 @@ using namespace std;
 using std::dynamic_pointer_cast;
 
 // Local enumeration used only for improving weapons.
-enum ImproveWeaponType
+enum struct ImproveWeaponType
 {
   IMPROVE_WEAPON_TO_HIT = 1,
   IMPROVE_WEAPON_DAMAGE = 2,
@@ -224,7 +224,7 @@ Item* MeleeWeapon::clone()
 
 ClassIdentifier MeleeWeapon::internal_class_identifier() const
 {
-  return CLASS_ID_MELEE_WEAPON;
+  return ClassIdentifier::CLASS_ID_MELEE_WEAPON;
 }
 
 // RANGEDWEAPON
@@ -249,7 +249,7 @@ Item* RangedWeapon::clone()
 
 ClassIdentifier RangedWeapon::internal_class_identifier() const
 {
-  return CLASS_ID_RANGED_WEAPON;
+  return ClassIdentifier::CLASS_ID_RANGED_WEAPON;
 }
 
 #ifdef UNIT_TESTS

@@ -7,7 +7,7 @@ bool WorldMapTile::display_description_on_arrival() const
 
 ClassIdentifier WorldMapTile::internal_class_identifier() const
 {
-  return CLASS_ID_WORLD_MAP_TILE;
+  return ClassIdentifier::CLASS_ID_WORLD_MAP_TILE;
 }
 
 bool WorldMapLandmarkTile::display_description_on_arrival() const
@@ -17,5 +17,5 @@ bool WorldMapLandmarkTile::display_description_on_arrival() const
 
 ClassIdentifier WorldMapLandmarkTile::internal_class_identifier() const
 {
-  return CLASS_ID_WORLD_MAP_LANDMARK_TILE;
+  return ClassIdentifier::CLASS_ID_WORLD_MAP_LANDMARK_TILE;
 }

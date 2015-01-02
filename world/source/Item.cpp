@@ -28,9 +28,9 @@ namespace ItemEnchantingSmithing
 };
 
 Item::Item()
-: quantity(1), readable(false), worn_location(EQUIPMENT_WORN_NONE), status(ITEM_STATUS_UNCURSED), status_identified(false), 
-item_identified(false), artifact(false), type(ITEM_TYPE_MISC), symbol('?'), colour(COLOUR_UNDEFINED), 
-identification_type(ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EFFECT_TYPE_NULL), material(MATERIAL_TYPE_WOOD),
+: quantity(1), readable(false), worn_location(EquipmentWornLocation::EQUIPMENT_WORN_NONE), status(ItemStatus::ITEM_STATUS_UNCURSED), status_identified(false), 
+item_identified(false), artifact(false), type(ItemType::ITEM_TYPE_MISC), symbol('?'), colour(Colour::COLOUR_UNDEFINED), 
+identification_type(ItemIdentificationType::ITEM_IDENTIFY_ON_SUCCESSFUL_USE), effect(EffectType::EFFECT_TYPE_NULL), material(MaterialType::MATERIAL_TYPE_WOOD),
 glowing(false)
 {
   resistances.set_all_resistances_to(0);
@@ -266,17 +266,17 @@ Colour Item::get_colour() const
 {
   if (artifact)
   {
-    return COLOUR_BOLD_CYAN;
+    return Colour::COLOUR_BOLD_CYAN;
   }
   else
   {
     // If the colour has been overridden
-    if (colour == COLOUR_UNDEFINED)
+    if (colour == Colour::COLOUR_UNDEFINED)
     {
       MaterialPtr materialp = MaterialFactory::create_material(material);
       return materialp->get_colour();
     }
-    else if (colour != COLOUR_UNDEFINED)
+    else if (colour != Colour::COLOUR_UNDEFINED)
     {
       return colour;
     }
@@ -284,7 +284,7 @@ Colour Item::get_colour() const
 
   // If none of the previous rules match, return a bold white colour.  This should serve as an indication in the UI
   // that something is amiss (maybe!).
-  return COLOUR_BOLD_WHITE;
+  return Colour::COLOUR_BOLD_WHITE;
 }
 
 void Item::set_identification_type(const ItemIdentificationType new_identification_type)
@@ -525,7 +525,7 @@ void Item::do_enchant_item(const int points)
   // For items, these are values != 0.
   // Also track the non-zero ones, so that if there are additional "slots"
   // to enchant, one can be selected.
-  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+  for (DamageType dt = DamageType::DAMAGE_TYPE_FIRST; dt < DamageType::DAMAGE_TYPE_MAX; dt++)
   {
     if (!dequal(resistances.get_resistance_value(dt), 0))
     {
@@ -586,7 +586,7 @@ void Item::do_smith_item(const int points)
   }
 
   // Smith one of slash/pierce/pound.
-  DamageType dt = static_cast<DamageType>(RNG::range(DAMAGE_TYPE_SLASH, DAMAGE_TYPE_POUND));
+  DamageType dt = static_cast<DamageType>(RNG::range(static_cast<int>(DamageType::DAMAGE_TYPE_SLASH), static_cast<int>(DamageType::DAMAGE_TYPE_POUND)));
 
   float smith_amt = points / 100.0f;
   resistances.set_resistance_value(dt, resistances.get_resistance_value(dt) + smith_amt);

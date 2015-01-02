@@ -64,7 +64,7 @@ KeyboardCommandMap* EquipmentKeyboardCommandMap::clone()
 
 ClassIdentifier EquipmentKeyboardCommandMap::internal_class_identifier() const
 {
-  return CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP;
+  return ClassIdentifier::CLASS_ID_EQUIPMENT_KEYBOARD_COMMAND_MAP;
 }
 
 #ifdef UNIT_TESTS

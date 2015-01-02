@@ -5,7 +5,7 @@ TEST(SL_Display_CursesDisplay, serialization_id)
 {
   CursesDisplay cd;
 
-  EXPECT_EQ(CLASS_ID_CURSES_DISPLAY, cd.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CURSES_DISPLAY, cd.get_class_identifier());
 }
 
 class SL_Display_CursesDisplayFixture : public ::testing::Test

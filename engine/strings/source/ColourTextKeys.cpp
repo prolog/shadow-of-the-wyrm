@@ -17,23 +17,23 @@ string ColourTextKeys::get_colour_sid_from_hair_colour(const HairColour hair_col
   
   switch(hair_colour)
   {
-    case HAIR_COLOUR_BLACK:
-      colour_sid = COLOUR_BLACK;
+    case HairColour::HAIR_COLOUR_BLACK:
+      colour_sid = ColourTextKeys::COLOUR_BLACK;
       break;
-    case HAIR_COLOUR_BROWN:
-      colour_sid = COLOUR_BROWN;
+    case HairColour::HAIR_COLOUR_BROWN:
+      colour_sid = ColourTextKeys::COLOUR_BROWN;
       break;
-    case HAIR_COLOUR_BLONDE:
-      colour_sid = COLOUR_BLONDE;
+    case HairColour::HAIR_COLOUR_BLONDE:
+      colour_sid = ColourTextKeys::COLOUR_BLONDE;
       break;
-    case HAIR_COLOUR_RED:
-      colour_sid = COLOUR_RED;
+    case HairColour::HAIR_COLOUR_RED:
+      colour_sid = ColourTextKeys::COLOUR_RED;
       break;
-    case HAIR_COLOUR_GREY:
-      colour_sid = COLOUR_GREY;
+    case HairColour::HAIR_COLOUR_GREY:
+      colour_sid = ColourTextKeys::COLOUR_GREY;
       break;
-    case HAIR_COLOUR_WHITE:
-      colour_sid = COLOUR_WHITE;
+    case HairColour::HAIR_COLOUR_WHITE:
+      colour_sid = ColourTextKeys::COLOUR_WHITE;
       break;
     default:
       break;

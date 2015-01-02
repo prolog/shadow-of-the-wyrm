@@ -21,7 +21,7 @@ Tile* RockTile::clone()
 }
 ClassIdentifier RockTile::internal_class_identifier() const
 {
-  return CLASS_ID_ROCK_TILE;
+  return ClassIdentifier::CLASS_ID_ROCK_TILE;
 }
 
 #ifdef UNIT_TESTS

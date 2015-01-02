@@ -87,7 +87,7 @@ bool Spellbook::deserialize(istream& stream)
 
 ClassIdentifier Spellbook::internal_class_identifier() const
 {
-  return CLASS_ID_SPELLBOOK;
+  return ClassIdentifier::CLASS_ID_SPELLBOOK;
 }
 
 #ifdef UNIT_TESTS

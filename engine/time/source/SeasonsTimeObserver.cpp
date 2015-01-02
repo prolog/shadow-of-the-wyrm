@@ -45,7 +45,7 @@ ITimeObserver* SeasonsTimeObserver::clone()
 
 ClassIdentifier SeasonsTimeObserver::internal_class_identifier() const
 {
-  return CLASS_ID_SEASONS_TIME_OBSERVER;
+  return ClassIdentifier::CLASS_ID_SEASONS_TIME_OBSERVER;
 }
 
 #ifdef UNIT_TESTS

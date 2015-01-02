@@ -51,7 +51,7 @@ bool Ammunition::deserialize(istream& stream)
 
 ClassIdentifier Ammunition::internal_class_identifier() const
 {
-  return CLASS_ID_AMMUNITION;
+  return ClassIdentifier::CLASS_ID_AMMUNITION;
 }
 
 #ifdef UNIT_TESTS

@@ -1,6 +1,6 @@
 #pragma once
 
-enum GainAttributesEnum
+enum struct GainAttributesEnum
 {
   GAIN_ATTRIBUTES_STRENGTH,
   GAIN_ATTRIBUTES_DEXTERITY,

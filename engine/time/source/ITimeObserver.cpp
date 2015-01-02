@@ -46,5 +46,5 @@ bool ITimeObserver::deserialize(istream& stream)
 
 ClassIdentifier ITimeObserver::internal_class_identifier() const
 {
-  return CLASS_ID_TIME_OBSERVER;
+  return ClassIdentifier::CLASS_ID_TIME_OBSERVER;
 }

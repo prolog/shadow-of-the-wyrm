@@ -28,7 +28,7 @@ Tile* TempleTile::clone()
 
 ClassIdentifier TempleTile::internal_class_identifier() const
 {
-  return CLASS_ID_TEMPLE_TILE;
+  return ClassIdentifier::CLASS_ID_TEMPLE_TILE;
 }
 
 #ifdef UNIT_TESTS

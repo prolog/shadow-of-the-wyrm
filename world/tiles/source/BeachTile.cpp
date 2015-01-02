@@ -17,7 +17,7 @@ Tile* BeachTile::clone()
 
 ClassIdentifier BeachTile::internal_class_identifier() const
 {
-  return CLASS_ID_BEACH_TILE;
+  return ClassIdentifier::CLASS_ID_BEACH_TILE;
 }
 
 #ifdef UNIT_TESTS

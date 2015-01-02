@@ -56,7 +56,7 @@ bool StatusAilments::deserialize(istream& stream)
 
 ClassIdentifier StatusAilments::internal_class_identifier() const
 {
-  return CLASS_ID_STATUS_AILMENTS;
+  return ClassIdentifier::CLASS_ID_STATUS_AILMENTS;
 }
 
 #ifdef UNIT_TESTS

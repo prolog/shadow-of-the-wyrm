@@ -1,6 +1,6 @@
 #pragma once
 
-enum SpellShapeType
+enum struct SpellShapeType
 {
   SPELL_SHAPE_TARGET_SELF = 0,
   SPELL_SHAPE_BEAM = 1,

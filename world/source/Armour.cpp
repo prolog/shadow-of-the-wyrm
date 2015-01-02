@@ -19,7 +19,7 @@ Item* Armour::clone()
 
 ClassIdentifier Armour::internal_class_identifier() const
 {
-  return CLASS_ID_ARMOUR;
+  return ClassIdentifier::CLASS_ID_ARMOUR;
 }
 
 #ifdef UNIT_TESTS

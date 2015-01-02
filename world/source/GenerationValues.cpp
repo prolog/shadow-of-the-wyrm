@@ -101,5 +101,5 @@ bool GenerationValues::deserialize(istream& stream)
 
 ClassIdentifier GenerationValues::internal_class_identifier() const
 {
-  return CLASS_ID_GENERATION_VALUES;
+  return ClassIdentifier::CLASS_ID_GENERATION_VALUES;
 }

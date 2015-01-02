@@ -256,7 +256,7 @@ bool Resistances::deserialize(istream& stream)
 
 ClassIdentifier Resistances::internal_class_identifier() const
 {
-  return CLASS_ID_RESISTANCES;
+  return ClassIdentifier::CLASS_ID_RESISTANCES;
 }
 
 // Individual resistance classes
@@ -272,7 +272,7 @@ Resistance* SlashResistance::clone()
 
 ClassIdentifier SlashResistance::internal_class_identifier() const
 {
-  return CLASS_ID_SLASH_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_SLASH_RESISTANCE;
 }
 
 PoundResistance::PoundResistance()
@@ -287,7 +287,7 @@ Resistance* PoundResistance::clone()
 
 ClassIdentifier PoundResistance::internal_class_identifier() const
 {
-  return CLASS_ID_POUND_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_POUND_RESISTANCE;
 }
 
 PierceResistance::PierceResistance()
@@ -302,7 +302,7 @@ Resistance* PierceResistance::clone()
 
 ClassIdentifier PierceResistance::internal_class_identifier() const
 {
-  return CLASS_ID_PIERCE_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_PIERCE_RESISTANCE;
 }
 
 HeatResistance::HeatResistance()
@@ -317,7 +317,7 @@ Resistance* HeatResistance::clone()
 
 ClassIdentifier HeatResistance::internal_class_identifier() const
 {
-  return CLASS_ID_HEAT_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_HEAT_RESISTANCE;
 }
 
 ColdResistance::ColdResistance()
@@ -332,7 +332,7 @@ Resistance* ColdResistance::clone()
 
 ClassIdentifier ColdResistance::internal_class_identifier() const
 {
-  return CLASS_ID_COLD_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_COLD_RESISTANCE;
 }
 
 AcidResistance::AcidResistance()
@@ -347,7 +347,7 @@ Resistance* AcidResistance::clone()
 
 ClassIdentifier AcidResistance::internal_class_identifier() const
 {
-  return CLASS_ID_ACID_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_ACID_RESISTANCE;
 }
 
 PoisonResistance::PoisonResistance()
@@ -362,7 +362,7 @@ Resistance* PoisonResistance::clone()
 
 ClassIdentifier PoisonResistance::internal_class_identifier() const
 {
-  return CLASS_ID_POISON_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_POISON_RESISTANCE;
 }
 
 HolyResistance::HolyResistance()
@@ -377,7 +377,7 @@ Resistance* HolyResistance::clone()
 
 ClassIdentifier HolyResistance::internal_class_identifier() const
 {
-  return CLASS_ID_HOLY_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_HOLY_RESISTANCE;
 }
 
 ShadowResistance::ShadowResistance()
@@ -392,7 +392,7 @@ Resistance* ShadowResistance::clone()
 
 ClassIdentifier ShadowResistance::internal_class_identifier() const
 {
-  return CLASS_ID_SHADOW_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_SHADOW_RESISTANCE;
 }
 
 ArcaneResistance::ArcaneResistance()
@@ -407,7 +407,7 @@ Resistance* ArcaneResistance::clone()
 
 ClassIdentifier ArcaneResistance::internal_class_identifier() const
 {
-  return CLASS_ID_ARCANE_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_ARCANE_RESISTANCE;
 }
 
 LightningResistance::LightningResistance()
@@ -422,7 +422,7 @@ Resistance* LightningResistance::clone()
 
 ClassIdentifier LightningResistance::internal_class_identifier() const
 {
-  return CLASS_ID_LIGHTNING_RESISTANCE;
+  return ClassIdentifier::CLASS_ID_LIGHTNING_RESISTANCE;
 }
 
 bool Resistances::has_resistances_or_vulnerabilities() const

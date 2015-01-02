@@ -117,7 +117,7 @@ bool CreatureTimeObserver::deserialize(istream& stream)
 
 ClassIdentifier CreatureTimeObserver::internal_class_identifier() const
 {
-  return CLASS_ID_CREATURE_TIME_OBSERVER;
+  return ClassIdentifier::CLASS_ID_CREATURE_TIME_OBSERVER;
 }
 
 #ifdef UNIT_TESTS

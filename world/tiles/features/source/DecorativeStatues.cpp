@@ -21,7 +21,7 @@ uchar DecorativeStatue::get_symbol() const
 
 ClassIdentifier DecorativeStatue::internal_class_identifier() const
 {
-  return CLASS_ID_DECORATIVE_STATUE;
+  return ClassIdentifier::CLASS_ID_DECORATIVE_STATUE;
 }
 
 // King
@@ -42,7 +42,7 @@ string KingDecorativeStatue::get_description_sid() const
 
 ClassIdentifier KingDecorativeStatue::internal_class_identifier() const
 {
-  return CLASS_ID_KING_DECORATIVE_STATUE;
+  return ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE;
 }
 
 // Queen
@@ -63,7 +63,7 @@ string QueenDecorativeStatue::get_description_sid() const
 
 ClassIdentifier QueenDecorativeStatue::internal_class_identifier() const
 {
-  return CLASS_ID_QUEEN_DECORATIVE_STATUE;
+  return ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE;
 }
 
 // Warlord
@@ -84,7 +84,7 @@ string WarlordDecorativeStatue::get_description_sid() const
 
 ClassIdentifier WarlordDecorativeStatue::internal_class_identifier() const
 {
-  return CLASS_ID_WARLORD_DECORATIVE_STATUE;
+  return ClassIdentifier::CLASS_ID_WARLORD_DECORATIVE_STATUE;
 }
 
 // Knight
@@ -105,7 +105,7 @@ string KnightDecorativeStatue::get_description_sid() const
 
 ClassIdentifier KnightDecorativeStatue::internal_class_identifier() const
 {
-  return CLASS_ID_KNIGHT_DECORATIVE_STATUE;
+  return ClassIdentifier::CLASS_ID_KNIGHT_DECORATIVE_STATUE;
 }
 
 // High Priest
@@ -126,7 +126,7 @@ string HighPriestDecorativeStatue::get_description_sid() const
 
 ClassIdentifier HighPriestDecorativeStatue::internal_class_identifier() const
 {
-  return CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE;
+  return ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE;
 }
 
 // Sorceror
@@ -147,7 +147,7 @@ string SorcerorDecorativeStatue::get_description_sid() const
 
 ClassIdentifier SorcerorDecorativeStatue::internal_class_identifier() const
 {
-  return CLASS_ID_SORCEROR_DECORATIVE_STATUE;
+  return ClassIdentifier::CLASS_ID_SORCEROR_DECORATIVE_STATUE;
 }
 
 #ifdef UNIT_TESTS

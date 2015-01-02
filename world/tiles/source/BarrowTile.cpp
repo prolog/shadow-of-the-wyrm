@@ -17,7 +17,7 @@ Tile* BarrowTile::clone()
 
 ClassIdentifier BarrowTile::internal_class_identifier() const
 {
-  return CLASS_ID_BARROW_TILE;
+  return ClassIdentifier::CLASS_ID_BARROW_TILE;
 }
 
 #ifdef UNIT_TESTS

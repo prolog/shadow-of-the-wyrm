@@ -19,7 +19,7 @@ Item* Currency::clone()
 
 ClassIdentifier Currency::internal_class_identifier() const
 {
-  return CLASS_ID_CURRENCY;
+  return ClassIdentifier::CLASS_ID_CURRENCY;
 }
 
 #ifdef UNIT_TESTS

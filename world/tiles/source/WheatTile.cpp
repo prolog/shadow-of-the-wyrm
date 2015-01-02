@@ -17,7 +17,7 @@ Tile* WheatTile::clone()
 
 ClassIdentifier WheatTile::internal_class_identifier() const
 {
-  return CLASS_ID_WHEAT_TILE;
+  return ClassIdentifier::CLASS_ID_WHEAT_TILE;
 }
 
 #ifdef UNIT_TESTS

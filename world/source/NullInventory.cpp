@@ -126,7 +126,7 @@ bool NullInventory::deserialize(istream& stream)
 
 ClassIdentifier NullInventory::internal_class_identifier() const
 {
-  return CLASS_ID_NULL_INVENTORY;
+  return ClassIdentifier::CLASS_ID_NULL_INVENTORY;
 }
 
 #ifdef UNIT_TESTS

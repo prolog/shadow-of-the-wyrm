@@ -229,7 +229,7 @@ DisplayTile MapTranslator::create_unseen_and_unexplored_display_tile()
   DisplayTile display_tile;
   
   display_tile.set_symbol(' ');
-  display_tile.set_colour(COLOUR_BLACK);
+  display_tile.set_colour(Colour::COLOUR_BLACK);
   
   return display_tile;  
 }

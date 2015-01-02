@@ -144,7 +144,7 @@ bool LoadedMapDetails::deserialize(istream& stream)
 
 ClassIdentifier LoadedMapDetails::internal_class_identifier() const
 {
-  return CLASS_ID_LOADED_MAP_DETAILS;
+  return ClassIdentifier::CLASS_ID_LOADED_MAP_DETAILS;
 }
 
 #ifdef UNIT_TESTS

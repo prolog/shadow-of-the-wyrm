@@ -50,7 +50,7 @@ CommandFactory* InventoryCommandFactory::clone()
 
 ClassIdentifier InventoryCommandFactory::internal_class_identifier() const
 {
-  return CLASS_ID_INVENTORY_COMMAND_FACTORY;
+  return ClassIdentifier::CLASS_ID_INVENTORY_COMMAND_FACTORY;
 }
 
 #ifdef UNIT_TESTS

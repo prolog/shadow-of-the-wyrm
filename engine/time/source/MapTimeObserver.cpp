@@ -41,7 +41,7 @@ ITimeObserver* MapTimeObserver::clone()
 
 ClassIdentifier MapTimeObserver::internal_class_identifier() const
 {
-  return CLASS_ID_MAP_TIME_OBSERVER;
+  return ClassIdentifier::CLASS_ID_MAP_TIME_OBSERVER;
 }
 
 #ifdef UNIT_TESTS

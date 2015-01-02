@@ -51,5 +51,5 @@ bool WorshipSiteTile::deserialize(istream& stream)
 
 ClassIdentifier WorshipSiteTile::internal_class_identifier() const
 {
-  return CLASS_ID_WORSHIP_SITE_TILE;
+  return ClassIdentifier::CLASS_ID_WORSHIP_SITE_TILE;
 }

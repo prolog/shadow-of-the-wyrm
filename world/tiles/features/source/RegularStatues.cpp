@@ -21,7 +21,7 @@ uchar RegularStatue::get_symbol() const
 
 ClassIdentifier RegularStatue::internal_class_identifier() const
 {
-  return CLASS_ID_REGULAR_STATUE;
+  return ClassIdentifier::CLASS_ID_REGULAR_STATUE;
 }
 
 // Petrified corpses
@@ -102,7 +102,7 @@ string PetrifiedCorpseStatue::get_description_sid() const
 
 ClassIdentifier PetrifiedCorpseStatue::internal_class_identifier() const
 {
-  return CLASS_ID_PETRIFIED_CORPSE_STATUE;
+  return ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE;
 }
 
 #ifdef UNIT_TESTS

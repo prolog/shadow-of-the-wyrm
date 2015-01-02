@@ -52,7 +52,7 @@ ISeason* Spring::clone()
 
 ClassIdentifier Spring::internal_class_identifier() const
 {
-  return CLASS_ID_SPRING;
+  return ClassIdentifier::CLASS_ID_SPRING;
 }
 
 #ifdef UNIT_TESTS

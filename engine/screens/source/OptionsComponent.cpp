@@ -4,13 +4,13 @@ using namespace std;
 
 // Option - an individual menu option
 Option::Option()
-: id(-1), external_id(""), colour(COLOUR_WHITE)
+: id(-1), external_id(""), colour(Colour::COLOUR_WHITE)
 {
   description = std::make_shared<TextComponent>(string(""));
 }
 
 Option::Option(const int new_id, const string& new_external_id, const string& new_description)
-: id(new_id), external_id(new_external_id), colour(COLOUR_WHITE)
+: id(new_id), external_id(new_external_id), colour(Colour::COLOUR_WHITE)
 {
   description = std::make_shared<TextComponent>(string(""));
 }

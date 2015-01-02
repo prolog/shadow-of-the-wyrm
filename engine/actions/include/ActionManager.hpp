@@ -13,7 +13,7 @@
 #include "TileSelectionAction.hpp"
 #include "WeaponTypes.hpp"
 
-enum ItemAction
+enum struct ItemAction
 {
   ITEM_ACTION_EQUIP = 0,
   ITEM_ACTION_PICK_UP = 1,
@@ -62,7 +62,7 @@ class ActionManager : public ISerializable
     // Unlike pick up/drop, handle item has no checks.
     ActionCostValue remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
     ActionCostValue wear_or_remove_item(CreaturePtr creature, const EquipmentWornLocation worn_location);
-    ActionCostValue handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EQUIPMENT_WORN_NONE);
+    ActionCostValue handle_item(CreaturePtr creature, const ItemAction, ItemPtr item, const EquipmentWornLocation loc = EquipmentWornLocation::EQUIPMENT_WORN_NONE);
     
     // Use a potion
     ActionCost quaff(CreaturePtr creature);

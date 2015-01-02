@@ -31,7 +31,7 @@ void HighScoreScreen::initialize()
       cur_page_idx = cur_pg;
     }
 
-    Colour colour = entry.get_is_current_char() ? COLOUR_BOLD_WHITE : COLOUR_WHITE;
+    Colour colour = entry.get_is_current_char() ? Colour::COLOUR_BOLD_WHITE : Colour::COLOUR_WHITE;
     string current_line = entry.str(score_number);
 
     TextComponentPtr text = std::make_shared<TextComponent>(current_line, colour);
@@ -41,7 +41,7 @@ void HighScoreScreen::initialize()
     cnt++;
     add_component(score_screen, text, cnt);
 
-    TextComponentPtr separator = std::make_shared<TextComponent>("", COLOUR_WHITE);
+    TextComponentPtr separator = std::make_shared<TextComponent>("", Colour::COLOUR_WHITE);
     cnt++;
     add_component(score_screen, separator, cnt);
 

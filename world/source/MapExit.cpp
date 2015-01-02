@@ -70,7 +70,7 @@ bool MapExit::deserialize(istream& stream)
 
 ClassIdentifier MapExit::internal_class_identifier() const
 {
-  return CLASS_ID_MAP_EXIT;
+  return ClassIdentifier::CLASS_ID_MAP_EXIT;
 }
 
 #ifdef UNIT_TESTS

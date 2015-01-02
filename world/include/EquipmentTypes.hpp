@@ -1,6 +1,6 @@
 #pragma once
 
-enum EquipmentWornLocation
+enum struct EquipmentWornLocation
 {
   EQUIPMENT_WORN_NONE = -1,
   EQUIPMENT_WORN_HEAD = 0,
@@ -17,13 +17,5 @@ enum EquipmentWornLocation
   EQUIPMENT_WORN_LAST = 11
 };
 
-inline EquipmentWornLocation operator--(EquipmentWornLocation &ewl, int)
-{
-  return ewl = EquipmentWornLocation(ewl-1);
-}
 
-inline EquipmentWornLocation operator++(EquipmentWornLocation &ewl, int)
-{
-  return ewl = EquipmentWornLocation(ewl+1);
-}
 

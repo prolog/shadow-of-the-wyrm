@@ -25,5 +25,5 @@ string EvilAltar::get_description_sid() const
 
 ClassIdentifier EvilAltar::internal_class_identifier() const
 {
-  return CLASS_ID_EVIL_ALTAR;
+  return ClassIdentifier::CLASS_ID_EVIL_ALTAR;
 }

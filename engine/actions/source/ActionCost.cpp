@@ -86,7 +86,7 @@ bool ActionCost::deserialize(istream& stream)
 
 ClassIdentifier ActionCost::internal_class_identifier() const
 {
-  return CLASS_ID_ACTION_COST;
+  return ClassIdentifier::CLASS_ID_ACTION_COST;
 }
 
 #ifdef UNIT_TESTS

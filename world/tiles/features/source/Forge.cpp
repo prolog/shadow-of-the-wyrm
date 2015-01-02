@@ -27,7 +27,7 @@ string Forge::get_description_sid() const
 
 ClassIdentifier Forge::internal_class_identifier() const
 {
-  return CLASS_ID_FORGE;
+  return ClassIdentifier::CLASS_ID_FORGE;
 }
 
 #ifdef UNIT_TESTS

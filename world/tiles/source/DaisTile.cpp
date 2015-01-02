@@ -18,7 +18,7 @@ Tile* DaisTile::clone()
 
 ClassIdentifier DaisTile::internal_class_identifier() const
 {
-  return CLASS_ID_DAIS_TILE;
+  return ClassIdentifier::CLASS_ID_DAIS_TILE;
 }
 
 #ifdef UNIT_TESTS

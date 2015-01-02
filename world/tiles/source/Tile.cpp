@@ -366,7 +366,7 @@ bool Tile::serialize(ostream& stream) const
   }
   else
   {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
+    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
   }
 
   if (feature)
@@ -376,7 +376,7 @@ bool Tile::serialize(ostream& stream) const
   }
   else
   {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
+    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
   }
   
   Serialize::write_class_id(stream, items->get_class_identifier());
@@ -398,7 +398,7 @@ bool Tile::serialize(ostream& stream) const
     }
     else
     {
-      Serialize::write_class_id(stream, CLASS_ID_NULL);
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
     }
   }
 
@@ -418,7 +418,7 @@ bool Tile::deserialize(istream& stream)
   ClassIdentifier creature_clid;
   Serialize::read_class_id(stream, creature_clid);
 
-  if (creature_clid != CLASS_ID_NULL)
+  if (creature_clid != ClassIdentifier::CLASS_ID_NULL)
   {
     creature = std::make_shared<Creature>();
     creature->deserialize(stream);
@@ -427,7 +427,7 @@ bool Tile::deserialize(istream& stream)
   ClassIdentifier feature_clid;
   Serialize::read_class_id(stream, feature_clid);
 
-  if (feature_clid != CLASS_ID_NULL)
+  if (feature_clid != ClassIdentifier::CLASS_ID_NULL)
   {
     FeaturePtr feature = FeatureFactory::create_feature(feature_clid);
     if (!feature) return false;
@@ -453,7 +453,7 @@ bool Tile::deserialize(istream& stream)
 
     ClassIdentifier map_exit_clid;
     Serialize::read_class_id(stream, map_exit_clid);
-    if (map_exit_clid != CLASS_ID_NULL)
+    if (map_exit_clid != ClassIdentifier::CLASS_ID_NULL)
     {
       MapExitPtr current_dir_map_exit = MapFactory::create_map_exit();
       current_dir_map_exit->deserialize(stream);
@@ -466,7 +466,7 @@ bool Tile::deserialize(istream& stream)
 
 ClassIdentifier Tile::internal_class_identifier() const
 {
-  return CLASS_ID_TILE;
+  return ClassIdentifier::CLASS_ID_TILE;
 }
 
 #ifdef UNIT_TESTS

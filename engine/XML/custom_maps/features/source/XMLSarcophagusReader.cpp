@@ -7,7 +7,7 @@ using namespace std;
 // Sarcophagus XML node - see CustomMap.xsd for details.
 FeaturePtr XMLSarcophagusReader::create(const XMLNode& sarcophagus_node) const
 {
-  MaterialType material_type = MATERIAL_TYPE_STONE;
+  MaterialType material_type = MaterialType::MATERIAL_TYPE_STONE;
   XMLNode material_node = XMLUtils::get_next_element_by_local_name(sarcophagus_node, "Material");
   if (!material_node.is_null())
   {

@@ -134,7 +134,7 @@ bool CreatureGenerationValues::deserialize(istream& stream)
 
 ClassIdentifier CreatureGenerationValues::internal_class_identifier() const
 {
-  return CLASS_ID_CREATURE_GENERATION_VALUES;
+  return ClassIdentifier::CLASS_ID_CREATURE_GENERATION_VALUES;
 }
 
 #ifdef UNIT_TESTS

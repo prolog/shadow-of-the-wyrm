@@ -182,7 +182,7 @@ CreatureGenerationValues XMLCreaturesReader::parse_creature_generation_values(co
 
       for (const XMLNode& terrain_node : allowable_terrain_nodes)
       {
-        TileType att = static_cast<TileType>(XMLUtils::get_node_int_value(terrain_node, TILE_TYPE_UNDEFINED));
+        TileType att = static_cast<TileType>(XMLUtils::get_node_int_value(terrain_node, static_cast<int>(TileType::TILE_TYPE_UNDEFINED)));
         cgv.add_allowable_terrain_type(att);
       }
     }

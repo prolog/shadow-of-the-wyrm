@@ -27,7 +27,7 @@ ActionCostValue LatestMessagesAction::latest_messages(CreaturePtr creature)
 
     for (const string& msg_line : msg_formatted)
     {
-      TextDisplayPair msg_history_line = make_pair(COLOUR_WHITE, msg_line);
+      TextDisplayPair msg_history_line = make_pair(Colour::COLOUR_WHITE, msg_line);
       buffer_text.push_back(msg_history_line);
     }
   }

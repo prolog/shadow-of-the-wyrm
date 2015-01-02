@@ -63,7 +63,7 @@ bool World::deserialize(std::istream& stream)
 
 ClassIdentifier World::internal_class_identifier() const
 {
-  return CLASS_ID_WORLD;
+  return ClassIdentifier::CLASS_ID_WORLD;
 }
 
 #ifdef UNIT_TESTS

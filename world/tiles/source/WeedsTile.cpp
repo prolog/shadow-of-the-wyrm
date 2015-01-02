@@ -17,7 +17,7 @@ Tile* WeedsTile::clone()
 
 ClassIdentifier WeedsTile::internal_class_identifier() const
 {
-  return CLASS_ID_WEEDS_TILE;
+  return ClassIdentifier::CLASS_ID_WEEDS_TILE;
 }
 
 #ifdef UNIT_TESTS

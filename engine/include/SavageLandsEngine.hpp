@@ -3,7 +3,7 @@
 #include "Display.hpp"
 #include "Settings.hpp"
 
-enum EngineStateEnum
+enum struct EngineStateEnum
 {
   ENGINE_STATE_START_NEW_GAME = 0,
   ENGINE_STATE_LOAD_GAME = 1,

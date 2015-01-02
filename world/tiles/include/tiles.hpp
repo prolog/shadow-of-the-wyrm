@@ -1,6 +1,6 @@
 #pragma once
 
-enum TileSuperType
+enum struct TileSuperType
 {
   TILE_SUPER_TYPE_UNDEFINED = -1,
   TILE_SUPER_TYPE_GROUND = 0,
@@ -8,7 +8,7 @@ enum TileSuperType
   TILE_SUPER_TYPE_AIR = 2
 };
 
-enum TileType
+enum struct TileType
 {
   TILE_TYPE_UNDEFINED = -1,
   TILE_TYPE_FIRST     = 0,
@@ -60,13 +60,3 @@ enum TileType
   TILE_TYPE_AIR       = 45,
   TILE_TYPE_LAST      = 46
 };
-
-inline TileType operator--(TileType &tt, int)
-{
-  return tt = TileType(tt-1);
-}
-
-inline TileType operator++(TileType &tt, int)
-{
-  return tt = TileType(tt+1);
-}

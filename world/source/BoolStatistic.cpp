@@ -71,7 +71,7 @@ bool BoolStatistic::deserialize(istream& stream)
 
 ClassIdentifier BoolStatistic::internal_class_identifier() const
 {
-  return CLASS_ID_BOOL_STATISTIC;
+  return ClassIdentifier::CLASS_ID_BOOL_STATISTIC;
 }
 
 #ifdef UNIT_TESTS

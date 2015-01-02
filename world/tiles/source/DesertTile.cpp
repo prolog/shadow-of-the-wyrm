@@ -17,7 +17,7 @@ Tile* DesertTile::clone()
 
 ClassIdentifier DesertTile::internal_class_identifier() const
 {
-  return CLASS_ID_DESERT_TILE;
+  return ClassIdentifier::CLASS_ID_DESERT_TILE;
 }
 
 #ifdef UNIT_TESTS

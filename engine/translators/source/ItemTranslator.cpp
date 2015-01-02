@@ -41,7 +41,7 @@ DisplayItem ItemTranslator::create_display_item(const bool blind, const ItemPtr&
 
     if (glow)
     {
-      flags.push_back(make_pair(StringTable::get(ItemTextKeys::ITEM_GLOW), COLOUR_BOLD_YELLOW));
+      flags.push_back(make_pair(StringTable::get(ItemTextKeys::ITEM_GLOW), Colour::COLOUR_BOLD_YELLOW));
     }
 
     display_item.set_flags(flags);

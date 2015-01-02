@@ -37,5 +37,5 @@ string Door::get_description_sid() const
 
 ClassIdentifier Door::internal_class_identifier() const
 {
-  return CLASS_ID_DOOR;
+  return ClassIdentifier::CLASS_ID_DOOR;
 }

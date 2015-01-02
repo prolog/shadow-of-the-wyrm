@@ -26,7 +26,7 @@ string Fountain::get_description_sid() const
 
 ClassIdentifier Fountain::internal_class_identifier() const
 {
-  return CLASS_ID_FOUNTAIN;
+  return ClassIdentifier::CLASS_ID_FOUNTAIN;
 }
 
 #ifdef UNIT_TESTS

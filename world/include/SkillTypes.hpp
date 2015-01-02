@@ -1,6 +1,6 @@
 #pragma once
 
-enum SkillType
+enum struct SkillType
 {
   SKILL_GENERAL_BEGIN = -1,
   SKILL_GENERAL_ARCHERY = 0,
@@ -89,7 +89,7 @@ enum SkillType
   SKILL_MAGIC_LAST = 3004
 };
 
-enum SkillCategory
+enum struct SkillCategory
 {
   SKILL_CATEGORY_UNDEFINED = -1,
   SKILL_CATEGORY_GENERAL = 0,
@@ -98,12 +98,3 @@ enum SkillCategory
   SKILL_CATEGORY_MAGIC = 3
 };
 
-inline SkillType operator--(SkillType &st, int)
-{
-  return st = SkillType(st-1);
-}
-
-inline SkillType operator++(SkillType &st, int)
-{
-  return st = SkillType(st+1);
-}

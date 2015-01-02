@@ -36,5 +36,5 @@ string Gate::get_description_sid() const
 
 ClassIdentifier Gate::internal_class_identifier() const
 {
-  return CLASS_ID_GATE;
+  return ClassIdentifier::CLASS_ID_GATE;
 }

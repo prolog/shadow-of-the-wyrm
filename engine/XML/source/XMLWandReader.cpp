@@ -15,7 +15,7 @@ void XMLWandReader::parse(WandPtr wand, GenerationValues& gv, const XMLNode& wan
   {
     XMLItemReader::parse(wand, gv, wand_node);
     
-    EffectType effect_type  = static_cast<EffectType>(XMLUtils::get_child_node_int_value(wand_node, "Effect", EFFECT_TYPE_NULL));
+    EffectType effect_type  = static_cast<EffectType>(XMLUtils::get_child_node_int_value(wand_node, "Effect", static_cast<int>(EffectType::EFFECT_TYPE_NULL)));
     wand->set_effect_type(effect_type);
 
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(wand_node, "Damage");
@@ -31,10 +31,10 @@ void XMLWandReader::parse(WandPtr wand, GenerationValues& gv, const XMLNode& wan
     uint range = XMLUtils::get_child_node_int_value(wand_node, "Range");
     wand->set_range(range);
 
-    SpellShapeType spell_shape = static_cast<SpellShapeType>(XMLUtils::get_child_node_int_value(wand_node, "BeamType", SPELL_SHAPE_BEAM));
+    SpellShapeType spell_shape = static_cast<SpellShapeType>(XMLUtils::get_child_node_int_value(wand_node, "BeamType", static_cast<int>(SpellShapeType::SPELL_SHAPE_BEAM)));
     wand->set_spell_shape_type(spell_shape);
 
-    Colour spell_colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(wand_node, "Colour", COLOUR_WHITE));
+    Colour spell_colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(wand_node, "Colour", static_cast<int>(Colour::COLOUR_WHITE)));
     wand->set_spell_colour(spell_colour);
   }
 }

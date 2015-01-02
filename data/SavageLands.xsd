@@ -702,7 +702,11 @@
 	<xs:sequence>
 		<xs:element name="DescriptionSID" type="xs:string"/>
 		<xs:element name="TriggerMessageSID" type="xs:string"/>
+		<xs:element name="TriggerSymbol" type="xs:string"/>
 		<xs:element name="PlayerDamageMessageSID" type="xs:string"/>
+		<xs:element name="Colour" type="tns:ColourType"/>
+		<!-- Item is an item id, and used if the trap has a chance of generating an item (e.g, an arrow, a rock) when triggered. -->
+		<xs:element name="Item" type="tns:Identifier" minOccurs="0"/>
 		<xs:element name="Damage" type="tns:Damage"/>
 		<xs:element name="Uses" type="xs:int"/>
 	</xs:sequence>

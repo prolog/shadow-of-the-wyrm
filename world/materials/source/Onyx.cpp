@@ -35,7 +35,7 @@ bool Onyx::get_can_rust() const
 
 Colour Onyx::get_colour() const
 {
-  return COLOUR_BOLD_BLACK;
+  return Colour::COLOUR_BOLD_BLACK;
 }
 
 Material* Onyx::clone()

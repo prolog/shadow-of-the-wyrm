@@ -35,7 +35,7 @@ bool Cloth::get_can_rust() const
 
 Colour Cloth::get_colour() const
 {
-  return COLOUR_GREEN;
+  return Colour::COLOUR_GREEN;
 }
 
 Material* Cloth::clone()

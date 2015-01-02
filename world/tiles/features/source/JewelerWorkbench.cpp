@@ -27,7 +27,7 @@ string JewelerWorkbench::get_description_sid() const
 
 ClassIdentifier JewelerWorkbench::internal_class_identifier() const
 {
-  return CLASS_ID_JEWELER_WORKBENCH;
+  return ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH;
 }
 
 #ifdef UNIT_TESTS

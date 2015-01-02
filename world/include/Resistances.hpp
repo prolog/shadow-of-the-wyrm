@@ -5,16 +5,6 @@
 #include "DamageTypes.hpp"
 #include "ISerializable.hpp"
 
-inline DamageType operator--(DamageType &dt, int)
-{
-  return dt = DamageType(dt-1);
-}
-
-inline DamageType operator++(DamageType &dt, int)
-{
-  return dt = DamageType(dt+1);
-}
-
 #define DEFAULT_RESISTANCE_VALUE 1.0;
 class Resistance : public ISerializable
 {

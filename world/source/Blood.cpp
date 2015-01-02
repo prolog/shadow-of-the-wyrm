@@ -143,7 +143,7 @@ bool Blood::deserialize(istream& stream)
 
 ClassIdentifier Blood::internal_class_identifier() const
 {
-  return CLASS_ID_BLOOD;
+  return ClassIdentifier::CLASS_ID_BLOOD;
 }
 
 #ifdef UNIT_TESTS

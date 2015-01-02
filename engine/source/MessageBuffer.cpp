@@ -96,7 +96,7 @@ bool MessageBuffer::deserialize(istream& stream)
 
 ClassIdentifier MessageBuffer::internal_class_identifier() const
 {
-  return CLASS_ID_MESSAGE_BUFFER;
+  return ClassIdentifier::CLASS_ID_MESSAGE_BUFFER;
 }
 
 #ifdef UNIT_TESTS

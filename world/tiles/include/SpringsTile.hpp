@@ -1,7 +1,7 @@
 #pragma once
 #include "Tile.hpp"
 
-enum SpringsTemperature
+enum struct SpringsTemperature
 {
   SPRINGS_TEMPERATURE_COOL = 10,
   SPRINGS_TEMPERATURE_HOT = 60

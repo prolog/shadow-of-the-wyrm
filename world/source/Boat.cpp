@@ -19,7 +19,7 @@ Item* Boat::clone()
 
 ClassIdentifier Boat::internal_class_identifier() const
 {
-  return CLASS_ID_BOAT;
+  return ClassIdentifier::CLASS_ID_BOAT;
 }
 
 #ifdef UNIT_TESTS

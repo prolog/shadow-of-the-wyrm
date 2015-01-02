@@ -90,7 +90,7 @@ int main(int argc, char* argv[])
 
   try
   {
-    log.set_log_level(LOG_ERROR);
+    log.set_log_level(LoggingLevel::LOG_ERROR);
     log.trace("main - testing");
 
     print_title();

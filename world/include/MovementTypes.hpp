@@ -1,6 +1,6 @@
 #pragma once
 
-enum MovementType
+enum struct MovementType
 {
   MOVEMENT_TYPE_WALKING = 0, // Also covers swimming
   MOVEMENT_TYPE_FLYING = 1,

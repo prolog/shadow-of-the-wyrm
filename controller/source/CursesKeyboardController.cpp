@@ -44,5 +44,5 @@ Controller* CursesKeyboardController::clone()
 
 ClassIdentifier CursesKeyboardController::internal_class_identifier() const
 {
-  return CLASS_ID_CURSES_KEYBOARD_CONTROLLER;
+  return ClassIdentifier::CLASS_ID_CURSES_KEYBOARD_CONTROLLER;
 }

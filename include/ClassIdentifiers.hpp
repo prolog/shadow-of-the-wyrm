@@ -1,6 +1,6 @@
 #pragma once
 
-enum ClassIdentifier
+enum struct ClassIdentifier
 {
   CLASS_ID_NULL = 0,
   CLASS_ID_GAME,

@@ -27,7 +27,7 @@ string WheelAndLoom::get_description_sid() const
 
 ClassIdentifier WheelAndLoom::internal_class_identifier() const
 {
-  return CLASS_ID_WHEEL_AND_LOOM;
+  return ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM;
 }
 
 #ifdef UNIT_TESTS

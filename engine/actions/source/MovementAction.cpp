@@ -70,7 +70,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
         // Otherwise, move the creature, if:
         // - there are no hostile adjacent creatures
         // - there is at least one hostile adjacent creature, and a successful Escape check is made.
-        if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SKILL_GENERAL_ESCAPE))
+        if (!MapUtils::adjacent_hostile_creature_exists(creature->get_id(), map) || sm.check_skill(creature, SkillType::SKILL_GENERAL_ESCAPE))
         {
           movement_success = move_off_map(creature, map, creatures_old_tile);
         }
@@ -321,7 +321,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
   GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
 
   // Ensure that the overworld map ID is always available to the generator!
-  map->get_map_type() == MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())
+  map->get_map_type() == MapType::MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())
     : generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, tile->get_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID));
 
   Game& game = Game::instance();
@@ -380,7 +380,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
         tile->set_custom_map_id(new_map->get_map_id());
       }
 
-      if (new_map->get_map_type() != MAP_TYPE_WORLD)
+      if (new_map->get_map_type() != MapType::MAP_TYPE_WORLD)
       {
         // Set the danger level appropriately, using the OLD MAP's map type.
         uint new_danger = calc->calculate(map, new_map);
@@ -395,7 +395,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
                 
     // - Set the map's MapExitPtr to point to the previous map.
     //   But only if it's an overworld map.
-    if (new_map->get_map_type() == MAP_TYPE_OVERWORLD)
+    if (new_map->get_map_type() == MapType::MAP_TYPE_OVERWORLD)
     {
       MapExitUtils::add_exit_to_map(new_map, map->get_map_id());
     }

@@ -31,7 +31,7 @@ Tile* MountainsTile::clone()
 
 ClassIdentifier MountainsTile::internal_class_identifier() const
 {
-  return CLASS_ID_MOUNTAINS_TILE;
+  return ClassIdentifier::CLASS_ID_MOUNTAINS_TILE;
 }
 
 #ifdef UNIT_TESTS

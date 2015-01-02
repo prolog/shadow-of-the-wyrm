@@ -103,7 +103,7 @@ bool Mortuary::deserialize(istream& stream)
 
 ClassIdentifier Mortuary::internal_class_identifier() const
 {
-  return CLASS_ID_MORTUARY;
+  return ClassIdentifier::CLASS_ID_MORTUARY;
 }
 
 #ifdef UNIT_TESTS

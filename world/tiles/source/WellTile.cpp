@@ -23,7 +23,7 @@ Tile* WellTile::clone()
 
 ClassIdentifier WellTile::internal_class_identifier() const
 {
-  return CLASS_ID_WELL_TILE;
+  return ClassIdentifier::CLASS_ID_WELL_TILE;
 }
 
 #ifdef UNIT_TESTS

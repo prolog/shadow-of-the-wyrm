@@ -1,6 +1,6 @@
 #pragma once
 
-enum ConductType
+enum struct ConductType
 {
   CONDUCT_TYPE_FOODLESS = 0,
   CONDUCT_TYPE_VEGETARIAN = 1,

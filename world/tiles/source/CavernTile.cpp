@@ -17,7 +17,7 @@ Tile* CavernTile::clone()
 
 ClassIdentifier CavernTile::internal_class_identifier() const
 {
-  return CLASS_ID_CAVERN_TILE;
+  return ClassIdentifier::CLASS_ID_CAVERN_TILE;
 }
 
 #ifdef UNIT_TESTS

@@ -12,14 +12,14 @@ DisplayItemColourTranslator::DisplayItemColourTranslator()
 void DisplayItemColourTranslator::initialize_status_colours()
 {
   status_colours.clear();
-  status_colours = map<ItemStatus, Colour>{{ITEM_STATUS_BLESSED, COLOUR_BOLD_WHITE},
-                                           {ITEM_STATUS_UNCURSED, COLOUR_WHITE},
-                                           {ITEM_STATUS_CURSED, COLOUR_BOLD_RED}};
+  status_colours = map<ItemStatus, Colour>{{ItemStatus::ITEM_STATUS_BLESSED, Colour::COLOUR_BOLD_WHITE},
+  { ItemStatus::ITEM_STATUS_UNCURSED, Colour::COLOUR_WHITE },
+  { ItemStatus::ITEM_STATUS_CURSED, Colour::COLOUR_BOLD_RED }};
 }
 
 Colour DisplayItemColourTranslator::create_colour_for_display_item(ItemPtr item)
 {
-  Colour colour = COLOUR_WHITE;
+  Colour colour = Colour::COLOUR_WHITE;
 
   if (item && item->get_status_identified())
   {

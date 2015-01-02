@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-enum TreeSpeciesID
+enum struct TreeSpeciesID
 {
   TREE_SPECIES_ASPEN,
   TREE_SPECIES_MAPLE,

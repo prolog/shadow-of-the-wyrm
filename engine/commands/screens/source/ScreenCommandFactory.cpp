@@ -38,7 +38,7 @@ CommandFactory* ScreenCommandFactory::clone()
 
 ClassIdentifier ScreenCommandFactory::internal_class_identifier() const
 {
-  return CLASS_ID_SCREEN_COMMAND_FACTORY;
+  return ClassIdentifier::CLASS_ID_SCREEN_COMMAND_FACTORY;
 }
 
 #ifdef UNIT_TESTS

@@ -4,7 +4,7 @@ TEST(SL_Engine_Actions_ActionCoordinator, serialization_id)
 {
   ActionCoordinator ac;
 
-  EXPECT_EQ(CLASS_ID_ACTION_COORDINATOR, ac.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_ACTION_COORDINATOR, ac.get_class_identifier());
 }
 
 class SL_Engine_Actions_ActionCoordinatorFixture : public ::testing::Test

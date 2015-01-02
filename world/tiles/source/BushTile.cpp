@@ -17,7 +17,7 @@ Tile* BushTile::clone()
 
 ClassIdentifier BushTile::internal_class_identifier() const
 {
-  return CLASS_ID_BUSH_TILE;
+  return ClassIdentifier::CLASS_ID_BUSH_TILE;
 }
 
 #ifdef UNIT_TESTS

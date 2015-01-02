@@ -345,16 +345,16 @@ void CreatureFactory::set_initial_skills(CreaturePtr creature, RacePtr race, Cla
 
 HairColour CreatureFactory::get_random_hair_colour()
 {
-  int min = HAIR_COLOUR_BLACK;
-  int max = HAIR_COLOUR_WHITE;
+  int min = static_cast<int>(HairColour::HAIR_COLOUR_BLACK);
+  int max = static_cast<int>(HairColour::HAIR_COLOUR_WHITE);
   
   return static_cast<HairColour>(RNG::range(min, max));
 }
 
 EyeColour CreatureFactory::get_random_eye_colour()
 {
-  int min = EYE_COLOUR_BROWN;
-  int max = EYE_COLOUR_GREY;
+  int min = static_cast<int>(EyeColour::EYE_COLOUR_BROWN);
+  int max = static_cast<int>(EyeColour::EYE_COLOUR_GREY);
   
   return static_cast<EyeColour>(RNG::range(min, max));
 }

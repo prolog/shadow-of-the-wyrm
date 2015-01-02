@@ -167,7 +167,7 @@ bool ActionCoordinator::deserialize(std::istream& stream)
 
 ClassIdentifier ActionCoordinator::internal_class_identifier() const
 {
-  return CLASS_ID_ACTION_COORDINATOR;
+  return ClassIdentifier::CLASS_ID_ACTION_COORDINATOR;
 }
 
 #ifdef UNIT_TESTS

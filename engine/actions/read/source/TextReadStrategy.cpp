@@ -22,7 +22,7 @@ ActionCostValue TextReadStrategy::read(CreaturePtr creature, ActionManager * con
 
     for(const string& text_line : formatted_text)
     {
-      TextDisplayPair text_line_for_ui = make_pair(COLOUR_WHITE, text_line);
+      TextDisplayPair text_line_for_ui = make_pair(Colour::COLOUR_WHITE, text_line);
       book_text.push_back(text_line_for_ui);
     }
 

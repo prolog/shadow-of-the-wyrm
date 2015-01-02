@@ -5,7 +5,7 @@
 #include "Command.hpp"
 #include "ISerializable.hpp"
 
-enum CommandFactoryType
+enum struct CommandFactoryType
 {
   COMMAND_FACTORY_TYPE_MAP = 0,
   COMMAND_FACTORY_TYPE_INVENTORY = 1,

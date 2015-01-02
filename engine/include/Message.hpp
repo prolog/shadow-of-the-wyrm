@@ -5,7 +5,7 @@
 #include <boost/uuid/uuid_generators.hpp>
 #include "Colours.hpp"
 
-enum MessageImportance
+enum struct MessageImportance
 {
   MessageImportance_UNDEFINED = -1,
   MessageImportance_Normal = 0,

@@ -241,7 +241,7 @@ Skill* ArcherySkill::clone()
 
 ClassIdentifier ArcherySkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_ARCHERY;
+  return ClassIdentifier::CLASS_ID_SKILL_ARCHERY;
 }
 
 // Awareness
@@ -259,7 +259,7 @@ Skill* AwarenessSkill::clone()
 
 ClassIdentifier AwarenessSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_AWARENESS;
+  return ClassIdentifier::CLASS_ID_SKILL_AWARENESS;
 }
 
 // Bargaining
@@ -277,7 +277,7 @@ Skill* BargainingSkill::clone()
 
 ClassIdentifier BargainingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_BARGAINING;
+  return ClassIdentifier::CLASS_ID_SKILL_BARGAINING;
 }
 
 // Beastmastery
@@ -295,7 +295,7 @@ Skill* BeastmasterySkill::clone()
 
 ClassIdentifier BeastmasterySkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_BEASTMASTERY;
+  return ClassIdentifier::CLASS_ID_SKILL_BEASTMASTERY;
 }
 
 // Blind Fighting
@@ -313,7 +313,7 @@ Skill* BlindFightingSkill::clone()
 
 ClassIdentifier BlindFightingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_BLINDFIGHTING;
+  return ClassIdentifier::CLASS_ID_SKILL_BLINDFIGHTING;
 }
 
 // Boating
@@ -331,7 +331,7 @@ Skill* BoatingSkill::clone()
 
 ClassIdentifier BoatingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_BOATING;
+  return ClassIdentifier::CLASS_ID_SKILL_BOATING;
 }
 
 // Bowyer
@@ -349,7 +349,7 @@ Skill* BowyerSkill::clone()
 
 ClassIdentifier BowyerSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_BOWYER;
+  return ClassIdentifier::CLASS_ID_SKILL_BOWYER;
 }
 
 // Brewing
@@ -367,7 +367,7 @@ Skill* BrewingSkill::clone()
 
 ClassIdentifier BrewingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_BREWING;
+  return ClassIdentifier::CLASS_ID_SKILL_BREWING;
 }
 
 // Cantrips
@@ -385,7 +385,7 @@ Skill* CantripsSkill::clone()
 
 ClassIdentifier CantripsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_CANTRIPS;
+  return ClassIdentifier::CLASS_ID_SKILL_CANTRIPS;
 }
 
 // Carrying
@@ -403,7 +403,7 @@ Skill* CarryingSkill::clone()
 
 ClassIdentifier CarryingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_CARRYING;
+  return ClassIdentifier::CLASS_ID_SKILL_CARRYING;
 }
 
 // Combat
@@ -426,7 +426,7 @@ float CombatSkill::get_threshold_multiplier() const
 
 ClassIdentifier CombatSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_COMBAT;
+  return ClassIdentifier::CLASS_ID_SKILL_COMBAT;
 }
 
 // Crafting
@@ -444,7 +444,7 @@ Skill* CraftingSkill::clone()
 
 ClassIdentifier CraftingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_CRAFTING;
+  return ClassIdentifier::CLASS_ID_SKILL_CRAFTING;
 }
 
 // Desert Lore
@@ -462,7 +462,7 @@ Skill* DesertLoreSkill::clone()
 
 ClassIdentifier DesertLoreSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_DESERT_LORE;
+  return ClassIdentifier::CLASS_ID_SKILL_DESERT_LORE;
 }
 
 // Detection
@@ -480,7 +480,7 @@ Skill* DetectionSkill::clone()
 
 ClassIdentifier DetectionSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_DETECTION;
+  return ClassIdentifier::CLASS_ID_SKILL_DETECTION;
 }
 
 // Disarm Traps
@@ -498,7 +498,7 @@ Skill* DisarmTrapsSkill::clone()
 
 ClassIdentifier DisarmTrapsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_DISARM_TRAPS;
+  return ClassIdentifier::CLASS_ID_SKILL_DISARM_TRAPS;
 }
 
 // Dual Wield
@@ -516,7 +516,7 @@ Skill* DualWieldSkill::clone()
 
 ClassIdentifier DualWieldSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_DUAL_WIELD;
+  return ClassIdentifier::CLASS_ID_SKILL_DUAL_WIELD;
 }
 
 // Dungeoneering
@@ -534,7 +534,7 @@ Skill* DungeoneeringSkill::clone()
 
 ClassIdentifier DungeoneeringSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_DUNGEONEERING;
+  return ClassIdentifier::CLASS_ID_SKILL_DUNGEONEERING;
 }
 
 // Escape
@@ -552,7 +552,7 @@ Skill* EscapeSkill::clone()
 
 ClassIdentifier EscapeSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_ESCAPE;
+  return ClassIdentifier::CLASS_ID_SKILL_ESCAPE;
 }
 
 // Foraging
@@ -570,7 +570,7 @@ Skill* ForagingSkill::clone()
 
 ClassIdentifier ForagingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_FORAGING;
+  return ClassIdentifier::CLASS_ID_SKILL_FORAGING;
 }
 
 // Forest Lore
@@ -588,7 +588,7 @@ Skill* ForestLoreSkill::clone()
 
 ClassIdentifier ForestLoreSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_FOREST_LORE;
+  return ClassIdentifier::CLASS_ID_SKILL_FOREST_LORE;
 }
 
 // Fishing
@@ -606,7 +606,7 @@ Skill* FishingSkill::clone()
 
 ClassIdentifier FishingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_FISHING;
+  return ClassIdentifier::CLASS_ID_SKILL_FISHING;
 }
 
 // Fletchery
@@ -624,7 +624,7 @@ Skill* FletcherySkill::clone()
 
 ClassIdentifier FletcherySkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_FLETCHERY;
+  return ClassIdentifier::CLASS_ID_SKILL_FLETCHERY;
 }
 
 // Herbalism
@@ -642,7 +642,7 @@ Skill* HerbalismSkill::clone()
 
 ClassIdentifier HerbalismSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_HERBALISM;
+  return ClassIdentifier::CLASS_ID_SKILL_HERBALISM;
 }
 
 // Hiding
@@ -660,7 +660,7 @@ Skill* HidingSkill::clone()
 
 ClassIdentifier HidingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_HIDING;
+  return ClassIdentifier::CLASS_ID_SKILL_HIDING;
 }
 
 // Hunting
@@ -678,7 +678,7 @@ Skill* HuntingSkill::clone()
 
 ClassIdentifier HuntingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_HUNTING;
+  return ClassIdentifier::CLASS_ID_SKILL_HUNTING;
 }
 
 // Intimidation
@@ -696,7 +696,7 @@ Skill* IntimidationSkill::clone()
 
 ClassIdentifier IntimidationSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_INTIMIDATION;
+  return ClassIdentifier::CLASS_ID_SKILL_INTIMIDATION;
 }
 
 // Jeweler
@@ -714,7 +714,7 @@ Skill* JewelerSkill::clone()
 
 ClassIdentifier JewelerSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_JEWELER;
+  return ClassIdentifier::CLASS_ID_SKILL_JEWELER;
 }
 
 // Jumping
@@ -732,7 +732,7 @@ Skill* JumpingSkill::clone()
 
 ClassIdentifier JumpingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_JUMPING;
+  return ClassIdentifier::CLASS_ID_SKILL_JUMPING;
 }
 
 // Leadership
@@ -750,7 +750,7 @@ Skill* LeadershipSkill::clone()
 
 ClassIdentifier LeadershipSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_LEADERSHIP;
+  return ClassIdentifier::CLASS_ID_SKILL_LEADERSHIP;
 }
 
 // Literacy
@@ -768,7 +768,7 @@ Skill* LiteracySkill::clone()
 
 ClassIdentifier LiteracySkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_LITERACY;
+  return ClassIdentifier::CLASS_ID_SKILL_LITERACY;
 }
 
 // Lore
@@ -786,7 +786,7 @@ Skill* LoreSkill::clone()
 
 ClassIdentifier LoreSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_LORE;
+  return ClassIdentifier::CLASS_ID_SKILL_LORE;
 }
 
 // Magic
@@ -809,7 +809,7 @@ Skill* MagicGeneralSkill::clone()
 
 ClassIdentifier MagicGeneralSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_MAGICGENERAL;
+  return ClassIdentifier::CLASS_ID_SKILL_MAGICGENERAL;
 }
 
 // Marsh Lore
@@ -827,7 +827,7 @@ Skill* MarshLoreSkill::clone()
 
 ClassIdentifier MarshLoreSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_MARSH_LORE;
+  return ClassIdentifier::CLASS_ID_SKILL_MARSH_LORE;
 }
 
 // Medicine
@@ -845,7 +845,7 @@ Skill* MedicineSkill::clone()
 
 ClassIdentifier MedicineSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_MEDICINE;
+  return ClassIdentifier::CLASS_ID_SKILL_MEDICINE;
 }
 
 // Mountain Lore
@@ -863,7 +863,7 @@ Skill* MountainLoreSkill::clone()
 
 ClassIdentifier MountainLoreSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_MOUNTAIN_LORE;
+  return ClassIdentifier::CLASS_ID_SKILL_MOUNTAIN_LORE;
 }
 
 // Mountaineering
@@ -881,7 +881,7 @@ Skill* MountaineeringSkill::clone()
 
 ClassIdentifier MountaineeringSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_MOUNTAINEERING;
+  return ClassIdentifier::CLASS_ID_SKILL_MOUNTAINEERING;
 }
 
 // Music
@@ -899,7 +899,7 @@ Skill* MusicSkill::clone()
 
 ClassIdentifier MusicSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_MUSIC;
+  return ClassIdentifier::CLASS_ID_SKILL_MUSIC;
 }
 
 // Night Sight
@@ -917,7 +917,7 @@ Skill* NightSightSkill::clone()
 
 ClassIdentifier NightSightSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_NIGHT_SIGHT;
+  return ClassIdentifier::CLASS_ID_SKILL_NIGHT_SIGHT;
 }
 
 // Oceanography
@@ -935,7 +935,7 @@ Skill* OceanographySkill::clone()
 
 ClassIdentifier OceanographySkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_OCEANOGRAPHY;
+  return ClassIdentifier::CLASS_ID_SKILL_OCEANOGRAPHY;
 }
 
 // Papercraft
@@ -953,7 +953,7 @@ Skill* PapercraftSkill::clone()
 
 ClassIdentifier PapercraftSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_PAPERCRAFT;
+  return ClassIdentifier::CLASS_ID_SKILL_PAPERCRAFT;
 }
 
 // Religion
@@ -971,7 +971,7 @@ Skill* ReligionSkill::clone()
 
 ClassIdentifier ReligionSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_RELIGION;
+  return ClassIdentifier::CLASS_ID_SKILL_RELIGION;
 }
 
 // Scribing
@@ -989,7 +989,7 @@ Skill* ScribingSkill::clone()
 
 ClassIdentifier ScribingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_SCRIBING;
+  return ClassIdentifier::CLASS_ID_SKILL_SCRIBING;
 }
 
 // Skinning
@@ -1007,7 +1007,7 @@ Skill* SkinningSkill::clone()
 
 ClassIdentifier SkinningSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_SKINNING;
+  return ClassIdentifier::CLASS_ID_SKILL_SKINNING;
 }
 
 // Smithing
@@ -1025,7 +1025,7 @@ Skill* SmithingSkill::clone()
 
 ClassIdentifier SmithingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_SMITHING;
+  return ClassIdentifier::CLASS_ID_SKILL_SMITHING;
 }
 
 // Spelunking
@@ -1043,7 +1043,7 @@ Skill* SpelunkingSkill::clone()
 
 ClassIdentifier SpelunkingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_SPELUNKING;
+  return ClassIdentifier::CLASS_ID_SKILL_SPELUNKING;
 }
 
 // Stealth
@@ -1061,7 +1061,7 @@ Skill* StealthSkill::clone()
 
 ClassIdentifier StealthSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_STEALTH;
+  return ClassIdentifier::CLASS_ID_SKILL_STEALTH;
 }
 
 // Swimming
@@ -1079,7 +1079,7 @@ Skill* SwimmingSkill::clone()
 
 ClassIdentifier SwimmingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_SWIMMING;
+  return ClassIdentifier::CLASS_ID_SKILL_SWIMMING;
 }
 
 // Tanning
@@ -1097,7 +1097,7 @@ Skill* TanningSkill::clone()
 
 ClassIdentifier TanningSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_TANNING;
+  return ClassIdentifier::CLASS_ID_SKILL_TANNING;
 }
 
 // Thievery
@@ -1115,7 +1115,7 @@ Skill* ThieverySkill::clone()
 
 ClassIdentifier ThieverySkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_THIEVERY;
+  return ClassIdentifier::CLASS_ID_SKILL_THIEVERY;
 }
 
 // Weaving
@@ -1133,7 +1133,7 @@ Skill* WeavingSkill::clone()
 
 ClassIdentifier WeavingSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_WEAVING;
+  return ClassIdentifier::CLASS_ID_SKILL_WEAVING;
 }
 
 // MELEE WEAPON SKILLS
@@ -1153,7 +1153,7 @@ Skill* AxesSkill::clone()
 
 ClassIdentifier AxesSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_AXES;
+  return ClassIdentifier::CLASS_ID_SKILL_AXES;
 }
 
 // Short Blades
@@ -1171,7 +1171,7 @@ Skill* ShortBladesSkill::clone()
 
 ClassIdentifier ShortBladesSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_SHORT_BLADES;
+  return ClassIdentifier::CLASS_ID_SKILL_SHORT_BLADES;
 }
 
 // Long Blades
@@ -1189,7 +1189,7 @@ Skill* LongBladesSkill::clone()
 
 ClassIdentifier LongBladesSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_LONG_BLADES;
+  return ClassIdentifier::CLASS_ID_SKILL_LONG_BLADES;
 }
 
 // Bludgeons
@@ -1207,7 +1207,7 @@ Skill* BludgeonsSkill::clone()
 
 ClassIdentifier BludgeonsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_BLUDGEONS;
+  return ClassIdentifier::CLASS_ID_SKILL_BLUDGEONS;
 }
 
 // Daggers
@@ -1225,7 +1225,7 @@ Skill* DaggersSkill::clone()
 
 ClassIdentifier DaggersSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_DAGGERS;
+  return ClassIdentifier::CLASS_ID_SKILL_DAGGERS;
 }
 
 // Rods and Staves
@@ -1243,7 +1243,7 @@ Skill* RodsAndStavesSkill::clone()
 
 ClassIdentifier RodsAndStavesSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_RODS_AND_STAVES;
+  return ClassIdentifier::CLASS_ID_SKILL_RODS_AND_STAVES;
 }
 
 // Spears
@@ -1261,7 +1261,7 @@ Skill* SpearsSkill::clone()
 
 ClassIdentifier SpearsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_SPEARS;
+  return ClassIdentifier::CLASS_ID_SKILL_SPEARS;
 }
 
 // Unarmed
@@ -1279,7 +1279,7 @@ Skill* UnarmedSkill::clone()
 
 ClassIdentifier UnarmedSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_UNARMED;
+  return ClassIdentifier::CLASS_ID_SKILL_UNARMED;
 }
 
 // Whips
@@ -1297,7 +1297,7 @@ Skill* WhipsSkill::clone()
 
 ClassIdentifier WhipsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_WHIPS;
+  return ClassIdentifier::CLASS_ID_SKILL_WHIPS;
 }
 
 // Exotic
@@ -1320,7 +1320,7 @@ Skill* ExoticMeleeSkill::clone()
 
 ClassIdentifier ExoticMeleeSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_EXOTIC;
+  return ClassIdentifier::CLASS_ID_SKILL_EXOTIC;
 }
 
 // RANGED WEAPON SKILLS
@@ -1340,7 +1340,7 @@ Skill* ThrownAxesSkill::clone()
 
 ClassIdentifier ThrownAxesSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_THROWN_AXES;
+  return ClassIdentifier::CLASS_ID_SKILL_THROWN_AXES;
 }
 
 // Thrown Blades
@@ -1358,7 +1358,7 @@ Skill* ThrownBladesSkill::clone()
 
 ClassIdentifier ThrownBladesSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_THROWN_BLADES;
+  return ClassIdentifier::CLASS_ID_SKILL_THROWN_BLADES;
 }
 
 // Thrown Bludgeons
@@ -1376,7 +1376,7 @@ Skill* ThrownBludgeonsSkill::clone()
 
 ClassIdentifier ThrownBludgeonsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_THROWN_BLUDGEONS;
+  return ClassIdentifier::CLASS_ID_SKILL_THROWN_BLUDGEONS;
 }
 
 // Bows
@@ -1394,7 +1394,7 @@ Skill* BowsSkill::clone()
 
 ClassIdentifier BowsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_BOWS;
+  return ClassIdentifier::CLASS_ID_SKILL_BOWS;
 }
 
 // Crossbows
@@ -1412,7 +1412,7 @@ Skill* CrossbowsSkill::clone()
 
 ClassIdentifier CrossbowsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_CROSSBOWS;
+  return ClassIdentifier::CLASS_ID_SKILL_CROSSBOWS;
 }
 
 // Daggers
@@ -1430,7 +1430,7 @@ Skill* ThrownDaggersSkill::clone()
 
 ClassIdentifier ThrownDaggersSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_THROWN_DAGGERS;
+  return ClassIdentifier::CLASS_ID_SKILL_THROWN_DAGGERS;
 }
 
 // Rocks
@@ -1448,7 +1448,7 @@ Skill* RocksSkill::clone()
 
 ClassIdentifier RocksSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_ROCKS;
+  return ClassIdentifier::CLASS_ID_SKILL_ROCKS;
 }
 
 // Slings
@@ -1466,7 +1466,7 @@ Skill* SlingsSkill::clone()
 
 ClassIdentifier SlingsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_SLINGS;
+  return ClassIdentifier::CLASS_ID_SKILL_SLINGS;
 }
 
 // Spears
@@ -1484,7 +1484,7 @@ Skill* ThrownSpearsSkill::clone()
 
 ClassIdentifier ThrownSpearsSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_THROWN_SPEARS;
+  return ClassIdentifier::CLASS_ID_SKILL_THROWN_SPEARS;
 }
 
 // Exotic
@@ -1507,7 +1507,7 @@ Skill* ExoticRangedSkill::clone()
 
 ClassIdentifier ExoticRangedSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_THROWN_EXOTIC;
+  return ClassIdentifier::CLASS_ID_SKILL_THROWN_EXOTIC;
 }
 
 // MAGIC SKILLS
@@ -1527,7 +1527,7 @@ Skill* ArcaneMagicSkill::clone()
 
 ClassIdentifier ArcaneMagicSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_ARCANE;
+  return ClassIdentifier::CLASS_ID_SKILL_ARCANE;
 }
 
 // Divine
@@ -1545,7 +1545,7 @@ Skill* DivineMagicSkill::clone()
 
 ClassIdentifier DivineMagicSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_DIVINE;
+  return ClassIdentifier::CLASS_ID_SKILL_DIVINE;
 }
 
 // Mystic
@@ -1563,7 +1563,7 @@ Skill* MysticMagicSkill::clone()
 
 ClassIdentifier MysticMagicSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_MYSTIC;
+  return ClassIdentifier::CLASS_ID_SKILL_MYSTIC;
 }
 
 // Primordial
@@ -1581,7 +1581,7 @@ Skill* PrimordialMagicSkill::clone()
 
 ClassIdentifier PrimordialMagicSkill::internal_class_identifier() const
 {
-  return CLASS_ID_SKILL_PRIMORDIAL;
+  return ClassIdentifier::CLASS_ID_SKILL_PRIMORDIAL;
 }
 
 // Skills
@@ -1743,7 +1743,7 @@ bool Skills::deserialize(istream& stream)
 
 ClassIdentifier Skills::internal_class_identifier() const
 {
-  return CLASS_ID_SKILLS;
+  return ClassIdentifier::CLASS_ID_SKILLS;
 }
 
 // Return a reference to the skills map
