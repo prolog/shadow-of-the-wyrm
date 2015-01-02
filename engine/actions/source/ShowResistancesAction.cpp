@@ -15,9 +15,9 @@ ActionCostValue ShowResistancesAction::show_resistances(CreaturePtr creature)
   vector<TextDisplayPair> resists_text;
 
   Resistances res = creature->get_resistances();
-  TextDisplayPair separator = make_pair(COLOUR_WHITE, "");
+  TextDisplayPair separator = make_pair(Colour::COLOUR_WHITE, "");
 
-  resists_text.push_back(make_pair(COLOUR_WHITE, StringTable::get(ResistanceTextKeys::RESISTANCES_EXPLANATION)));
+  resists_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ResistanceTextKeys::RESISTANCES_EXPLANATION)));
   resists_text.push_back(separator);
 
   for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
@@ -44,17 +44,17 @@ ActionCostValue ShowResistancesAction::show_resistances(CreaturePtr creature)
 Colour ShowResistancesAction::get_resistance_text_colour(const double resist_value)
 {
   // Base (value = 1)
-  Colour text_colour = COLOUR_WHITE;
+  Colour text_colour = Colour::COLOUR_WHITE;
 
   // Vuln
   if (resist_value > 1)
   {
-    text_colour = COLOUR_BOLD_RED;
+    text_colour = Colour::COLOUR_BOLD_RED;
   }
   // Resist
   else if (resist_value < 1)
   {
-    text_colour = COLOUR_BOLD_GREEN;
+    text_colour = Colour::COLOUR_BOLD_GREEN;
   }
 
   return text_colour;

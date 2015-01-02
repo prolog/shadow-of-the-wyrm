@@ -17,7 +17,7 @@ Tile* FieldTile::clone()
 
 ClassIdentifier FieldTile::internal_class_identifier() const
 {
-  return CLASS_ID_FIELD_TILE;
+  return ClassIdentifier::CLASS_ID_FIELD_TILE;
 }
 
 #ifdef UNIT_TESTS

@@ -27,7 +27,7 @@ string Tannery::get_description_sid() const
 
 ClassIdentifier Tannery::internal_class_identifier() const
 {
-  return CLASS_ID_TANNERY;
+  return ClassIdentifier::CLASS_ID_TANNERY;
 }
 
 #ifdef UNIT_TESTS

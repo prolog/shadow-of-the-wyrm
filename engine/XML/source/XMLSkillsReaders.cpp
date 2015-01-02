@@ -74,56 +74,56 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     int thievery_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Thievery");
     int weaving_value          = XMLUtils::get_child_node_int_value(general_skills_node, "Weaving");
 
-    skills.set_value(SKILL_GENERAL_ARCHERY, archery_value);
-    skills.set_value(SKILL_GENERAL_AWARENESS, awareness_value);
-    skills.set_value(SKILL_GENERAL_BARGAINING, bargaining_value);
-    skills.set_value(SKILL_GENERAL_BEASTMASTERY, beastmastery_value);
-    skills.set_value(SKILL_GENERAL_BLIND_FIGHTING, blind_fighting_value);
-    skills.set_value(SKILL_GENERAL_BOATING, boating_value);
-    skills.set_value(SKILL_GENERAL_BOWYER, bowyer_value);
-    skills.set_value(SKILL_GENERAL_BREWING, brewing_value);
-    skills.set_value(SKILL_GENERAL_CANTRIPS, cantrips_value);
-    skills.set_value(SKILL_GENERAL_CARRYING, carrying_value);
-    skills.set_value(SKILL_GENERAL_COMBAT, combat_value);
-    skills.set_value(SKILL_GENERAL_CRAFTING, crafting_value);
-    skills.set_value(SKILL_GENERAL_DESERT_LORE, desert_lore_value);
-    skills.set_value(SKILL_GENERAL_DETECTION, detection_value);
-    skills.set_value(SKILL_GENERAL_DISARM_TRAPS, disarm_traps_value);
-    skills.set_value(SKILL_GENERAL_DUAL_WIELD, dual_wield_value);
-    skills.set_value(SKILL_GENERAL_DUNGEONEERING, dungeoneering_value);
-    skills.set_value(SKILL_GENERAL_ESCAPE, escape_value);
-    skills.set_value(SKILL_GENERAL_FISHING, fishing_value);
-    skills.set_value(SKILL_GENERAL_FLETCHERY, fletchery_value);
-    skills.set_value(SKILL_GENERAL_FORAGING, foraging_value);
-    skills.set_value(SKILL_GENERAL_FOREST_LORE, forest_lore_value);
-    skills.set_value(SKILL_GENERAL_HERBALISM, herbalism_value);
-    skills.set_value(SKILL_GENERAL_HIDING, hiding_value);
-    skills.set_value(SKILL_GENERAL_HUNTING, hunting_value);
-    skills.set_value(SKILL_GENERAL_INTIMIDATION, intimidation_value);
-    skills.set_value(SKILL_GENERAL_JEWELER, jeweler_value);
-    skills.set_value(SKILL_GENERAL_JUMPING, jumping_value);
-    skills.set_value(SKILL_GENERAL_LEADERSHIP, leadership_value);
-    skills.set_value(SKILL_GENERAL_LITERACY, literacy_value);
-    skills.set_value(SKILL_GENERAL_LORE, lore_value);
-    skills.set_value(SKILL_GENERAL_MAGIC, magic_value);
-    skills.set_value(SKILL_GENERAL_MARSH_LORE, marsh_lore_value);
-    skills.set_value(SKILL_GENERAL_MEDICINE, medicine_value);
-    skills.set_value(SKILL_GENERAL_MOUNTAIN_LORE, mountain_lore_value);
-    skills.set_value(SKILL_GENERAL_MOUNTAINEERING, mountaineering_value);
-    skills.set_value(SKILL_GENERAL_MUSIC, music_value);
-    skills.set_value(SKILL_GENERAL_NIGHT_SIGHT, night_sight_value);
-    skills.set_value(SKILL_GENERAL_OCEANOGRAPHY, oceanography_value);
-    skills.set_value(SKILL_GENERAL_PAPERCRAFT, papercraft_value);
-    skills.set_value(SKILL_GENERAL_RELIGION, religion_value);
-    skills.set_value(SKILL_GENERAL_SCRIBING, scribing_value);
-    skills.set_value(SKILL_GENERAL_SKINNING, skinning_value);
-    skills.set_value(SKILL_GENERAL_SMITHING, smithing_value);
-    skills.set_value(SKILL_GENERAL_SPELUNKING, spelunking_value);
-    skills.set_value(SKILL_GENERAL_STEALTH, stealth_value);
-    skills.set_value(SKILL_GENERAL_SWIMMING, swimming_value);
-    skills.set_value(SKILL_GENERAL_TANNING, tanning_value);
-    skills.set_value(SKILL_GENERAL_THIEVERY, thievery_value);
-    skills.set_value(SKILL_GENERAL_WEAVING, weaving_value);
+    skills.set_value(SkillType::SKILL_GENERAL_ARCHERY, archery_value);
+    skills.set_value(SkillType::SKILL_GENERAL_AWARENESS, awareness_value);
+    skills.set_value(SkillType::SKILL_GENERAL_BARGAINING, bargaining_value);
+    skills.set_value(SkillType::SKILL_GENERAL_BEASTMASTERY, beastmastery_value);
+    skills.set_value(SkillType::SKILL_GENERAL_BLIND_FIGHTING, blind_fighting_value);
+    skills.set_value(SkillType::SKILL_GENERAL_BOATING, boating_value);
+    skills.set_value(SkillType::SKILL_GENERAL_BOWYER, bowyer_value);
+    skills.set_value(SkillType::SKILL_GENERAL_BREWING, brewing_value);
+    skills.set_value(SkillType::SKILL_GENERAL_CANTRIPS, cantrips_value);
+    skills.set_value(SkillType::SKILL_GENERAL_CARRYING, carrying_value);
+    skills.set_value(SkillType::SKILL_GENERAL_COMBAT, combat_value);
+    skills.set_value(SkillType::SKILL_GENERAL_CRAFTING, crafting_value);
+    skills.set_value(SkillType::SKILL_GENERAL_DESERT_LORE, desert_lore_value);
+    skills.set_value(SkillType::SKILL_GENERAL_DETECTION, detection_value);
+    skills.set_value(SkillType::SKILL_GENERAL_DISARM_TRAPS, disarm_traps_value);
+    skills.set_value(SkillType::SKILL_GENERAL_DUAL_WIELD, dual_wield_value);
+    skills.set_value(SkillType::SKILL_GENERAL_DUNGEONEERING, dungeoneering_value);
+    skills.set_value(SkillType::SKILL_GENERAL_ESCAPE, escape_value);
+    skills.set_value(SkillType::SKILL_GENERAL_FISHING, fishing_value);
+    skills.set_value(SkillType::SKILL_GENERAL_FLETCHERY, fletchery_value);
+    skills.set_value(SkillType::SKILL_GENERAL_FORAGING, foraging_value);
+    skills.set_value(SkillType::SKILL_GENERAL_FOREST_LORE, forest_lore_value);
+    skills.set_value(SkillType::SKILL_GENERAL_HERBALISM, herbalism_value);
+    skills.set_value(SkillType::SKILL_GENERAL_HIDING, hiding_value);
+    skills.set_value(SkillType::SKILL_GENERAL_HUNTING, hunting_value);
+    skills.set_value(SkillType::SKILL_GENERAL_INTIMIDATION, intimidation_value);
+    skills.set_value(SkillType::SKILL_GENERAL_JEWELER, jeweler_value);
+    skills.set_value(SkillType::SKILL_GENERAL_JUMPING, jumping_value);
+    skills.set_value(SkillType::SKILL_GENERAL_LEADERSHIP, leadership_value);
+    skills.set_value(SkillType::SKILL_GENERAL_LITERACY, literacy_value);
+    skills.set_value(SkillType::SKILL_GENERAL_LORE, lore_value);
+    skills.set_value(SkillType::SKILL_GENERAL_MAGIC, magic_value);
+    skills.set_value(SkillType::SKILL_GENERAL_MARSH_LORE, marsh_lore_value);
+    skills.set_value(SkillType::SKILL_GENERAL_MEDICINE, medicine_value);
+    skills.set_value(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, mountain_lore_value);
+    skills.set_value(SkillType::SKILL_GENERAL_MOUNTAINEERING, mountaineering_value);
+    skills.set_value(SkillType::SKILL_GENERAL_MUSIC, music_value);
+    skills.set_value(SkillType::SKILL_GENERAL_NIGHT_SIGHT, night_sight_value);
+    skills.set_value(SkillType::SKILL_GENERAL_OCEANOGRAPHY, oceanography_value);
+    skills.set_value(SkillType::SKILL_GENERAL_PAPERCRAFT, papercraft_value);
+    skills.set_value(SkillType::SKILL_GENERAL_RELIGION, religion_value);
+    skills.set_value(SkillType::SKILL_GENERAL_SCRIBING, scribing_value);
+    skills.set_value(SkillType::SKILL_GENERAL_SKINNING, skinning_value);
+    skills.set_value(SkillType::SKILL_GENERAL_SMITHING, smithing_value);
+    skills.set_value(SkillType::SKILL_GENERAL_SPELUNKING, spelunking_value);
+    skills.set_value(SkillType::SKILL_GENERAL_STEALTH, stealth_value);
+    skills.set_value(SkillType::SKILL_GENERAL_SWIMMING, swimming_value);
+    skills.set_value(SkillType::SKILL_GENERAL_TANNING, tanning_value);
+    skills.set_value(SkillType::SKILL_GENERAL_THIEVERY, thievery_value);
+    skills.set_value(SkillType::SKILL_GENERAL_WEAVING, weaving_value);
   }
 }
 
@@ -142,15 +142,15 @@ void XMLWeaponSkillsReader::parse_weapon_skills(Skills& skills, const XMLNode& w
     int unarmed_value         = XMLUtils::get_child_node_int_value(weapon_skills_node, "Unarmed");
     int whips_value           = XMLUtils::get_child_node_int_value(weapon_skills_node, "Whips");
 
-    skills.set_value(SKILL_MELEE_AXES, axes_value);
-    skills.set_value(SKILL_MELEE_SHORT_BLADES, short_blades_value);
-    skills.set_value(SKILL_MELEE_LONG_BLADES, long_blades_value);
-    skills.set_value(SKILL_MELEE_BLUDGEONS, bludgeons_value);
-    skills.set_value(SKILL_MELEE_DAGGERS, daggers_value);
-    skills.set_value(SKILL_MELEE_RODS_AND_STAVES, rods_and_staves_value);
-    skills.set_value(SKILL_MELEE_SPEARS, spears_value);
-    skills.set_value(SKILL_MELEE_UNARMED, unarmed_value);
-    skills.set_value(SKILL_MELEE_WHIPS, whips_value);
+    skills.set_value(SkillType::SKILL_MELEE_AXES, axes_value);
+    skills.set_value(SkillType::SKILL_MELEE_SHORT_BLADES, short_blades_value);
+    skills.set_value(SkillType::SKILL_MELEE_LONG_BLADES, long_blades_value);
+    skills.set_value(SkillType::SKILL_MELEE_BLUDGEONS, bludgeons_value);
+    skills.set_value(SkillType::SKILL_MELEE_DAGGERS, daggers_value);
+    skills.set_value(SkillType::SKILL_MELEE_RODS_AND_STAVES, rods_and_staves_value);
+    skills.set_value(SkillType::SKILL_MELEE_SPEARS, spears_value);
+    skills.set_value(SkillType::SKILL_MELEE_UNARMED, unarmed_value);
+    skills.set_value(SkillType::SKILL_MELEE_WHIPS, whips_value);
   }
 }
 
@@ -169,15 +169,15 @@ void XMLRangedWeaponSkillsReader::parse_ranged_weapon_skills(Skills& skills, con
     int slings_value    = XMLUtils::get_child_node_int_value(ranged_weapon_skills_node, "Slings");
     int spears_value    = XMLUtils::get_child_node_int_value(ranged_weapon_skills_node, "Spears");
 
-    skills.set_value(SKILL_RANGED_AXES, axes_value);
-    skills.set_value(SKILL_RANGED_BLADES, blades_value);
-    skills.set_value(SKILL_RANGED_BLUDGEONS, bludgeons_value);
-    skills.set_value(SKILL_RANGED_BOWS, bows_value);
-    skills.set_value(SKILL_RANGED_CROSSBOWS, crossbows_value);
-    skills.set_value(SKILL_RANGED_DAGGERS, daggers_value);
-    skills.set_value(SKILL_RANGED_ROCKS, rocks_value);
-    skills.set_value(SKILL_RANGED_SLINGS, slings_value);
-    skills.set_value(SKILL_RANGED_SPEARS, spears_value);
+    skills.set_value(SkillType::SKILL_RANGED_AXES, axes_value);
+    skills.set_value(SkillType::SKILL_RANGED_BLADES, blades_value);
+    skills.set_value(SkillType::SKILL_RANGED_BLUDGEONS, bludgeons_value);
+    skills.set_value(SkillType::SKILL_RANGED_BOWS, bows_value);
+    skills.set_value(SkillType::SKILL_RANGED_CROSSBOWS, crossbows_value);
+    skills.set_value(SkillType::SKILL_RANGED_DAGGERS, daggers_value);
+    skills.set_value(SkillType::SKILL_RANGED_ROCKS, rocks_value);
+    skills.set_value(SkillType::SKILL_RANGED_SLINGS, slings_value);
+    skills.set_value(SkillType::SKILL_RANGED_SPEARS, spears_value);
   }
 }
 
@@ -191,10 +191,10 @@ void XMLMagicSkillsReader::parse_magic_skills(Skills& skills, const XMLNode& mag
     int mystic_value = XMLUtils::get_child_node_int_value(magic_skills_node, "Mystic");
     int primordial_value = XMLUtils::get_child_node_int_value(magic_skills_node, "Primordial");
 
-    skills.set_value(SKILL_MAGIC_ARCANE, arcane_value);
-    skills.set_value(SKILL_MAGIC_DIVINE, divine_value);
-    skills.set_value(SKILL_MAGIC_MYSTIC, mystic_value);
-    skills.set_value(SKILL_MAGIC_PRIMORDIAL, primordial_value);
+    skills.set_value(SkillType::SKILL_MAGIC_ARCANE, arcane_value);
+    skills.set_value(SkillType::SKILL_MAGIC_DIVINE, divine_value);
+    skills.set_value(SkillType::SKILL_MAGIC_MYSTIC, mystic_value);
+    skills.set_value(SkillType::SKILL_MAGIC_PRIMORDIAL, primordial_value);
   }
 }
 

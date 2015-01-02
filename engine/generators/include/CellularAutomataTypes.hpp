@@ -1,6 +1,6 @@
 #pragma once
 
-enum CellValue
+enum struct CellValue
 {
   CELL_OFF = 0,
   CELL_ON = 1

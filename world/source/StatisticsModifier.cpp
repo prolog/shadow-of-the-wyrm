@@ -151,7 +151,7 @@ bool StatisticsModifier::deserialize(istream& stream)
 
 ClassIdentifier StatisticsModifier::internal_class_identifier() const
 {
-  return CLASS_ID_STATISTICS_MODIFIER;
+  return ClassIdentifier::CLASS_ID_STATISTICS_MODIFIER;
 }
 
 #ifdef UNIT_TESTS

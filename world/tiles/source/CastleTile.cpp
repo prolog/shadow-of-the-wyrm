@@ -17,7 +17,7 @@ Tile* CastleTile::clone()
 
 ClassIdentifier CastleTile::internal_class_identifier() const
 {
-  return CLASS_ID_CASTLE_TILE;
+  return ClassIdentifier::CLASS_ID_CASTLE_TILE;
 }
 
 #ifdef UNIT_TESTS

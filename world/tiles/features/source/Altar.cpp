@@ -66,7 +66,7 @@ bool Altar::deserialize(istream& stream)
 
 ClassIdentifier Altar::internal_class_identifier() const
 {
-  return CLASS_ID_ALTAR;
+  return ClassIdentifier::CLASS_ID_ALTAR;
 }
 
 #ifdef UNIT_TESTS

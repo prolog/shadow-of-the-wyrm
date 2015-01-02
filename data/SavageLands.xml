@@ -15744,19 +15744,24 @@
 		<Trap id="fireball_trap">
 			<DescriptionSID>TRAP_FIREBALL_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FIREBALL_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_FIREBALL_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>1</Colour>
 			<Damage>
 				<NumDice>3</NumDice>
 				<NumSides>6</NumSides>
 				<Modifier>1</Modifier>
 				<Type>3</Type>
 			</Damage>
-			<Uses>1</Uses>
+			<Uses>2</Uses>
 		</Trap>
 		<Trap id="arrow_trap">
 			<DescriptionSID>TRAP_ARROW_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_ARROW_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>/</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_ARROW_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>3</Colour>
+			<Item>arrow</Item>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>6</NumSides>
@@ -15768,7 +15773,10 @@
 		<Trap id="rock_trap">
 			<DescriptionSID>TRAP_ROCK_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_ROCK_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>*</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_ROCK_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>3</Colour>
+			<Item>_rock</Item>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>4</NumSides>
@@ -15780,7 +15788,9 @@
 		<Trap id="floor_spikes">
 			<DescriptionSID>TRAP_FLOOR_SPIKES_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FLOOR_SPIKES_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>|</TriggerSymbol>
 			<PlayerDamageMessageSID>TRAP_FLOOR_SPIKES_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>7</Colour>
 			<Damage>
 				<NumDice>1</NumDice>
 				<NumSides>12</NumSides>

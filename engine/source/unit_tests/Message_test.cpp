@@ -10,7 +10,7 @@ TEST(SL_Engine_Message, MessageImportanceValues)
 
 TEST(SL_Engine_Message, Content)
 {
-  Message msg("test", COLOUR_WHITE, MessageImportance_UNDEFINED);
+  Message msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);
 
   EXPECT_EQ("test", msg.get_content());
 
@@ -21,28 +21,28 @@ TEST(SL_Engine_Message, Content)
 
 TEST(SL_Engine_Message, Colour)
 {
-  Message msg("test", COLOUR_RED, MessageImportance_UNDEFINED);
+  Message msg("test", Colour::COLOUR_RED, MessageImportance::MessageImportance_UNDEFINED);
 
-  EXPECT_EQ(COLOUR_RED, msg.get_colour());
+  EXPECT_EQ(Colour::COLOUR_RED, msg.get_colour());
 }
 
 TEST(SL_Engine_Message, Importance)
 {
-  Message msg("test", COLOUR_WHITE, MessageImportance_UNDEFINED);
+  Message msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);
 
-  EXPECT_EQ(MessageImportance_UNDEFINED, msg.get_importance());
+  EXPECT_EQ(MessageImportance::MessageImportance_UNDEFINED, msg.get_importance());
 
-  msg.set_importance(MessageImportance_Normal);
+  msg.set_importance(MessageImportance::MessageImportance_Normal);
 
-  EXPECT_EQ(MessageImportance_Normal, msg.get_importance());
+  EXPECT_EQ(MessageImportance::MessageImportance_Normal, msg.get_importance());
 
-  msg.set_importance(MessageImportance_High);
+  msg.set_importance(MessageImportance::MessageImportance_High);
 
-  EXPECT_EQ(MessageImportance_High, msg.get_importance());
+  EXPECT_EQ(MessageImportance::MessageImportance_High, msg.get_importance());
 
-  msg.set_importance(MessageImportance_Critical);
+  msg.set_importance(MessageImportance::MessageImportance_Critical);
 
-  EXPECT_EQ(MessageImportance_Critical, msg.get_importance());
+  EXPECT_EQ(MessageImportance::MessageImportance_Critical, msg.get_importance());
 }
 
 TEST(SL_Engine_Message, Id)

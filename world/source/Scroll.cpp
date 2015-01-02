@@ -25,7 +25,7 @@ Item* Scroll::clone()
 
 ClassIdentifier Scroll::internal_class_identifier() const
 {
-  return CLASS_ID_SCROLL;
+  return ClassIdentifier::CLASS_ID_SCROLL;
 }
 
 #ifdef UNIT_TESTS

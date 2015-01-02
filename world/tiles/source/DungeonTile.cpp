@@ -18,7 +18,7 @@ Tile* DungeonTile::clone()
 
 ClassIdentifier DungeonTile::internal_class_identifier() const
 {
-  return CLASS_ID_DUNGEON_TILE;
+  return ClassIdentifier::CLASS_ID_DUNGEON_TILE;
 }
 
 #ifdef UNIT_TESTS

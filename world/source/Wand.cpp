@@ -17,12 +17,12 @@ const int WandConstants::MAX_CHARGES = 7;
 
 Wand::Wand()
 {
-  type = ITEM_TYPE_WAND;
+  type = ItemType::ITEM_TYPE_WAND;
   symbol ='\\';
   range = 0;
-  shape = SPELL_SHAPE_BEAM;
+  shape = SpellShapeType::SPELL_SHAPE_BEAM;
   has_damage = false;
-  spell_colour = COLOUR_WHITE;
+  spell_colour = ColourType::COLOUR_WHITE;
   
   set_initial_charges();
 }
@@ -240,7 +240,7 @@ bool Wand::deserialize(istream& stream)
 
 ClassIdentifier Wand::internal_class_identifier() const
 {
-  return CLASS_ID_WAND;
+  return ClassIdentifier::CLASS_ID_WAND;
 }
 
 #ifdef UNIT_TESTS

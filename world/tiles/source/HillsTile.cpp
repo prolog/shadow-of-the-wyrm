@@ -17,7 +17,7 @@ Tile* HillsTile::clone()
 
 ClassIdentifier HillsTile::internal_class_identifier() const
 {
-  return CLASS_ID_HILLS_TILE;
+  return ClassIdentifier::CLASS_ID_HILLS_TILE;
 }
 
 #ifdef UNIT_TESTS

@@ -113,7 +113,7 @@ bool SpellKnowledge::deserialize(istream& stream)
 
 ClassIdentifier SpellKnowledge::internal_class_identifier() const
 {
-  return CLASS_ID_SPELL_KNOWLEDGE;
+  return ClassIdentifier::CLASS_ID_SPELL_KNOWLEDGE;
 }
 
 #ifdef UNIT_TESTS

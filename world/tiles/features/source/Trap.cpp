@@ -7,17 +7,21 @@
 using namespace std;
 
 Trap::Trap() 
-: Feature(MATERIAL_TYPE_IRON, ALIGNMENT_RANGE_NEUTRAL, 1 /* 1 use by default - will be set later */), triggered(false)
+: Feature(MaterialType::MATERIAL_TYPE_IRON, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL, 1 /* 1 use by default - will be set later */), triggered(false), trigger_symbol('?'), colour(Colour::COLOUR_WHITE)
 {
 }
 
 bool Trap::operator==(const Trap& trap) const
 {
-  bool result = (triggered == trap.triggered);
+  bool result = (Feature::operator==(trap));
+  result = result && (triggered == trap.triggered);
   result = result && (id == trap.id);
   result = result && (description_sid == trap.description_sid);
   result = result && (trigger_message_sid == trap.trigger_message_sid);
+  result = result && (trigger_symbol == trap.trigger_symbol);
   result = result && (player_damage_message_sid == trap.player_damage_message_sid);
+  result = result && (colour == trap.colour);
+  result = result && (item_id == trap.item_id);
   result = result && (damage == trap.damage);
 
   return result;
@@ -66,7 +70,7 @@ bool Trap::apply_on_movement(std::shared_ptr<Creature> creature) const
   bool apply_trap = true;
 
   // A successful detection check is required to not trigger a trap.
-  int detection_value = creature->get_skills().get_value(SKILL_GENERAL_DETECTION);
+  int detection_value = creature->get_skills().get_value(SkillType::SKILL_GENERAL_DETECTION);
 
   // If the trap has already been triggered, the creature has two
   // attempts to not set it off on movement, since its presence is
@@ -127,6 +131,16 @@ string Trap::get_trigger_message_sid() const
   return trigger_message_sid;
 }
 
+void Trap::set_trigger_symbol(const uchar new_trigger_symbol)
+{
+  trigger_symbol = new_trigger_symbol;
+}
+
+uchar Trap::get_trigger_symbol() const
+{
+  return trigger_symbol;
+}
+
 void Trap::set_player_damage_message_sid(const string& new_player_damage_message_sid)
 {
   player_damage_message_sid = new_player_damage_message_sid;
@@ -135,6 +149,26 @@ void Trap::set_player_damage_message_sid(const string& new_player_damage_message
 string Trap::get_player_damage_message_sid() const
 {
   return player_damage_message_sid;
+}
+
+void Trap::set_colour(const Colour new_colour)
+{
+  colour = new_colour;
+}
+
+Colour Trap::get_colour() const
+{
+  return colour;
+}
+
+void Trap::set_item_id(const std::string& new_item_id)
+{
+  item_id = new_item_id;
+}
+
+string Trap::get_item_id() const
+{
+  return item_id;
 }
 
 void Trap::set_damage(const Damage& new_damage)
@@ -167,7 +201,10 @@ bool Trap::serialize(std::ostream& stream) const
   Serialize::write_string(stream, id);
   Serialize::write_string(stream, description_sid);
   Serialize::write_string(stream, trigger_message_sid);
+  Serialize::write_uchar(stream, trigger_symbol);
   Serialize::write_string(stream, player_damage_message_sid);
+  Serialize::write_enum(stream, colour);
+  Serialize::write_string(stream, item_id);
   damage.serialize(stream);
 
   return result;
@@ -181,7 +218,10 @@ bool Trap::deserialize(istream& stream)
   Serialize::read_string(stream, id);
   Serialize::read_string(stream, description_sid);
   Serialize::read_string(stream, trigger_message_sid);
+  Serialize::read_uchar(stream, trigger_symbol);
   Serialize::read_string(stream, player_damage_message_sid);
+  Serialize::read_enum(stream, colour);
+  Serialize::read_string(stream, item_id);
   damage.deserialize(stream);
 
   return result;
@@ -189,7 +229,7 @@ bool Trap::deserialize(istream& stream)
 
 ClassIdentifier Trap::internal_class_identifier() const
 {
-  return CLASS_ID_TRAP;
+  return ClassIdentifier::CLASS_ID_TRAP;
 }
 
 #ifdef UNIT_TESTS

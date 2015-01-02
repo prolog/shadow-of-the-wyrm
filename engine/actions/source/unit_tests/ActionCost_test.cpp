@@ -4,7 +4,7 @@ TEST(SL_Engine_Actions_ActionCost, serialization_id)
 {
   ActionCost ac;
 
-  EXPECT_EQ(CLASS_ID_ACTION_COST, ac.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_ACTION_COST, ac.get_class_identifier());
 }
 
 class SL_Engine_Actions_ActionCostFixture : public ::testing::Test

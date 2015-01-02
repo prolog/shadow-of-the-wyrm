@@ -33,7 +33,7 @@ void InventoryScreen::initialize()
     string category_synopsis = category_desc + " - " + category_symbol;
 
     TextComponentPtr text = std::make_shared<TextComponent>(category_desc);
-    text->add_text(" - ", COLOUR_WHITE);
+    text->add_text(" - ", Colour::COLOUR_WHITE);
     text->add_text(category_symbol, category_colour);
 
     add_component(inv_screen, text, cnt);

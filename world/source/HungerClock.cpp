@@ -111,7 +111,7 @@ bool HungerClock::deserialize(istream& stream)
 
 ClassIdentifier HungerClock::internal_class_identifier() const
 {
-  return CLASS_ID_HUNGER_CLOCK;
+  return ClassIdentifier::CLASS_ID_HUNGER_CLOCK;
 }
 
 #ifdef UNIT_TESTS

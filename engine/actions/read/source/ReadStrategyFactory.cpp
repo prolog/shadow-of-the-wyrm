@@ -23,28 +23,28 @@ ReadStrategyPtr ReadStrategyFactory::create_read_strategy(const ItemType it, con
   {
     switch(it)
     {
-      case ITEM_TYPE_SCROLL:
+      case ItemType::ITEM_TYPE_SCROLL:
         read_strategy = std::make_shared<ScrollReadStrategy>();
         break;
-      case ITEM_TYPE_SPELLBOOK:
+      case ItemType::ITEM_TYPE_SPELLBOOK:
         read_strategy = std::make_shared<SpellbookReadStrategy>();
         break;
-      case ITEM_TYPE_NULL:
-      case ITEM_TYPE_MISC:
-      case ITEM_TYPE_WEAPON:
-      case ITEM_TYPE_ARMOUR:
-      case ITEM_TYPE_POTION:
-      case ITEM_TYPE_WAND:
-      case ITEM_TYPE_STAFF:
-      case ITEM_TYPE_RING:
-      case ITEM_TYPE_AMULET:
-      case ITEM_TYPE_FOOD:
-      case ITEM_TYPE_AMMUNITION:
-      case ITEM_TYPE_PLANT:
-      case ITEM_TYPE_BOAT:
-      case ITEM_TYPE_CURRENCY:
-      case ITEM_TYPE_TOOL:
-      case ITEM_TYPE_LAST:
+      case ItemType::ITEM_TYPE_NULL:
+      case ItemType::ITEM_TYPE_MISC:
+      case ItemType::ITEM_TYPE_WEAPON:
+      case ItemType::ITEM_TYPE_ARMOUR:
+      case ItemType::ITEM_TYPE_POTION:
+      case ItemType::ITEM_TYPE_WAND:
+      case ItemType::ITEM_TYPE_STAFF:
+      case ItemType::ITEM_TYPE_RING:
+      case ItemType::ITEM_TYPE_AMULET:
+      case ItemType::ITEM_TYPE_FOOD:
+      case ItemType::ITEM_TYPE_AMMUNITION:
+      case ItemType::ITEM_TYPE_PLANT:
+      case ItemType::ITEM_TYPE_BOAT:
+      case ItemType::ITEM_TYPE_CURRENCY:
+      case ItemType::ITEM_TYPE_TOOL:
+      case ItemType::ITEM_TYPE_LAST:
         read_strategy = std::make_shared<NullReadStrategy>();
         break;
     }

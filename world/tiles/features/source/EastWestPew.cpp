@@ -19,7 +19,7 @@ uchar EastWestPew::get_symbol() const
 
 ClassIdentifier EastWestPew::internal_class_identifier() const
 {
-  return CLASS_ID_EAST_WEST_PEW;
+  return ClassIdentifier::CLASS_ID_EAST_WEST_PEW;
 }
 
 #ifdef UNIT_TESTS

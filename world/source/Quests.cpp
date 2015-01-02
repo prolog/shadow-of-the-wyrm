@@ -88,7 +88,7 @@ bool Quest::deserialize(istream& stream)
 
 ClassIdentifier Quest::internal_class_identifier() const
 {
-  return CLASS_ID_QUEST;
+  return ClassIdentifier::CLASS_ID_QUEST;
 }
 
 // Quests
@@ -228,7 +228,7 @@ bool Quests::deserialize_quest_map(istream& stream, const size_t num_quests, Que
 
 ClassIdentifier Quests::internal_class_identifier() const
 {
-  return CLASS_ID_QUESTS;
+  return ClassIdentifier::CLASS_ID_QUESTS;
 }
 
 #ifdef UNIT_TESTS

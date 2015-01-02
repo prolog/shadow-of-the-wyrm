@@ -1,6 +1,6 @@
 #pragma once
 
-enum CryptLayoutType
+enum struct CryptLayoutType
 {
   CRYPT_LAYOUT_PILLARS = 0,
   CRYPT_LAYOUT_VAULT = 1,

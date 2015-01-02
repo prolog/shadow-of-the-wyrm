@@ -17,7 +17,7 @@ Tile* CryptTile::clone()
 
 ClassIdentifier CryptTile::internal_class_identifier() const
 {
-  return CLASS_ID_CRYPT_TILE;
+  return ClassIdentifier::CLASS_ID_CRYPT_TILE;
 }
 
 #ifdef UNIT_TESTS

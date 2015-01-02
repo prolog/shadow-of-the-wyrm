@@ -42,13 +42,13 @@ ActionCostValue ConsumableAction::consume(CreaturePtr creature, ConsumablePtr co
 
     if (nutrition > 0)
     {
-      creature->get_conducts_ref().break_conduct(CONDUCT_TYPE_FOODLESS);
+      creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_FOODLESS);
     }
 
     // Vegetarians can't consume meat.
-    if (consumable->get_food_type() == FOOD_TYPE_MEAT)
+    if (consumable->get_food_type() == FoodType::FOOD_TYPE_MEAT)
     {
-      creature->get_conducts_ref().break_conduct(CONDUCT_TYPE_VEGETARIAN);
+      creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_VEGETARIAN);
     }
   }
 
@@ -72,8 +72,10 @@ void ConsumableAction::gain_resistances_from_consumable(CreaturePtr creature, Co
     // For each consumable resistance greater than the creature's resistances,
     // add the delta to the creature's intrinsic resistances, and if the
     // creature is the player, add a message.
-    for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+    for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
     {
+      DamageType dt = static_cast<DamageType>(d);
+
       ResistancePtr res = consum_res.get_resistance(dt);
       double consum_val = res->get_value();
 

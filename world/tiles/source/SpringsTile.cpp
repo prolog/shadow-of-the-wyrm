@@ -74,7 +74,7 @@ bool SpringsTile::deserialize(istream& stream)
 
 ClassIdentifier SpringsTile::internal_class_identifier() const
 {
-  return CLASS_ID_SPRINGS_TILE;
+  return ClassIdentifier::CLASS_ID_SPRINGS_TILE;
 }
 
 #ifdef UNIT_TESTS

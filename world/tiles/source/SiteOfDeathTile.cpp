@@ -28,7 +28,7 @@ Tile* SiteOfDeathTile::clone()
 
 ClassIdentifier SiteOfDeathTile::internal_class_identifier() const
 {
-  return CLASS_ID_SITE_OF_DEATH_TILE;
+  return ClassIdentifier::CLASS_ID_SITE_OF_DEATH_TILE;
 }
 
 #ifdef UNIT_TESTS

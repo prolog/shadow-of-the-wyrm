@@ -223,7 +223,7 @@ string KeyboardCommandMap::get_settings_prefix() const
 
 ClassIdentifier KeyboardCommandMap::internal_class_identifier() const
 {
-  return CLASS_ID_KEYBOARD_COMMAND_MAP;
+  return ClassIdentifier::CLASS_ID_KEYBOARD_COMMAND_MAP;
 }
 
 #ifdef UNIT_TESTS

@@ -17,7 +17,7 @@ Tile* MineTile::clone()
 
 ClassIdentifier MineTile::internal_class_identifier() const
 {
-  return CLASS_ID_MINE_TILE;
+  return ClassIdentifier::CLASS_ID_MINE_TILE;
 }
 
 #ifdef UNIT_TESTS

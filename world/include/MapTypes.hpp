@@ -3,7 +3,7 @@
 #include <string>
 #include "common.hpp"
 
-enum MapType
+enum struct MapType
 {
   MAP_TYPE_WORLD = 0
 , MAP_TYPE_OVERWORLD = 1

@@ -6,11 +6,11 @@ using namespace std;
 
 vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_tiles_node)
 {
-  static_assert(TILE_TYPE_LAST == 46, "Unexpected TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(46), "Unexpected TILE_TYPE_LAST value.");
 
   vector<DisplayTile> tiles;
   vector<XMLNode> tile_nodes;
-  tiles.reserve(TILE_TYPE_LAST);
+  tiles.reserve(static_cast<int>(TileType::TILE_TYPE_LAST));
 
   if (!xml_configuration_tiles_node.is_null())
   {
@@ -100,7 +100,7 @@ void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, con
       {
         int colour = XMLUtils::get_node_int_value(colour_node, 0);
 
-        for (int i = SEASON_SPRING; i < SEASON_LAST; i++)
+        for (int i = static_cast<int>(Season::SEASON_SPRING); i < static_cast<int>(Season::SEASON_LAST); i++)
         {
           Season season = static_cast<Season>(i);
           tile_colours[season] = colour;
@@ -118,10 +118,10 @@ void XMLTilesReader::parse_tile_text_details(vector<DisplayTile>& tile_info, con
         int autumn_colour = XMLUtils::get_child_node_int_value(colours_node, "Autumn");
         int winter_colour = XMLUtils::get_child_node_int_value(colours_node, "Winter");
 
-        tile_colours[SEASON_SPRING] = spring_colour;
-        tile_colours[SEASON_SUMMER] = summer_colour;
-        tile_colours[SEASON_AUTUMN] = autumn_colour;
-        tile_colours[SEASON_WINTER] = winter_colour;
+        tile_colours[Season::SEASON_SPRING] = spring_colour;
+        tile_colours[Season::SEASON_SUMMER] = summer_colour;
+        tile_colours[Season::SEASON_AUTUMN] = autumn_colour;
+        tile_colours[Season::SEASON_WINTER] = winter_colour;
       }
 
       DisplayTile current_tile_info(symbol, tile_colours);

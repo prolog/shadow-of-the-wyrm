@@ -162,7 +162,7 @@ void ExperienceManager::level_up(CreaturePtr creature)
     if (creature->get_is_player())
     {
       string level_up_message = StringTable::get(TextKeys::GAIN_LEVEL);
-      manager.add_new_message(level_up_message, COLOUR_BOLD_YELLOW);
+      manager.add_new_message(level_up_message, Colour::COLOUR_BOLD_YELLOW);
       manager.send();
       // Should monsters' level-ups be broadcast?
     }    

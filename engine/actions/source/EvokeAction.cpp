@@ -24,7 +24,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
 
   if (cca.can_speak(creature, true))
   {
-    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ITEM_TYPE_WAND);
+    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_WAND);
     ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, false);
     
     if (selected_item)
@@ -67,7 +67,7 @@ ActionCostValue EvokeAction::evoke(CreaturePtr creature, ActionManager * const a
         // Insert the item back into the inventory.
         // This will take care of de-stacking/re-stacking and ensuring that
         // like-items are grouped together.
-        creature->get_inventory()->merge_or_add(new_wand, INVENTORY_ADDITION_BACK);
+        creature->get_inventory()->merge_or_add(new_wand, InventoryAdditionType::INVENTORY_ADDITION_BACK);
       }
     }
   }
@@ -147,8 +147,8 @@ ActionCostValue EvokeAction::get_action_cost_value(CreaturePtr creature) const
 
 pair<bool, Direction> EvokeAction::get_evocation_direction(CreaturePtr creature)
 {
-  pair<bool, Direction> evoke_direction_result(false, DIRECTION_UP);
-  Direction direction = DIRECTION_UP;
+  pair<bool, Direction> evoke_direction_result(false, Direction::DIRECTION_UP);
+  Direction direction = Direction::DIRECTION_UP;
 
   IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 

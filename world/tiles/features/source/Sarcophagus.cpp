@@ -89,7 +89,7 @@ bool Sarcophagus::deserialize(istream& stream)
 
 ClassIdentifier Sarcophagus::internal_class_identifier() const
 {
-  return CLASS_ID_SARCOPHAGUS;
+  return ClassIdentifier::CLASS_ID_SARCOPHAGUS;
 }
 
 #ifdef UNIT_TESTS

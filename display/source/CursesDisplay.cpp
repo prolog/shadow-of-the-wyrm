@@ -136,9 +136,9 @@ void CursesDisplay::enable_colour(const int selected_colour, WINDOW* window)
 {
   if (uses_colour())
   {
-    if ((selected_colour % CURSES_NUM_TOTAL_COLOURS) > COLOUR_WHITE)
+    if ((selected_colour % CURSES_NUM_TOTAL_COLOURS) > static_cast<int>(Colour::COLOUR_WHITE))
     {
-      int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
+      int actual_colour = selected_colour - static_cast<int>(Colour::COLOUR_BOLD_BLACK);
       wattron(window, COLOR_PAIR(actual_colour+1));
       wattron(window, A_BOLD);
       return;
@@ -153,9 +153,9 @@ void CursesDisplay::disable_colour(const int selected_colour, WINDOW* window)
 {
   if (uses_colour())
   {
-    if ((selected_colour % CURSES_NUM_TOTAL_COLOURS) > COLOUR_WHITE)
+    if ((selected_colour % CURSES_NUM_TOTAL_COLOURS) > static_cast<int>(Colour::COLOUR_WHITE))
     {
-      int actual_colour = selected_colour - COLOUR_BOLD_BLACK;
+      int actual_colour = selected_colour - static_cast<int>(Colour::COLOUR_BOLD_BLACK);
       wattroff(window, COLOR_PAIR(actual_colour+1));
       wattroff(window, A_BOLD);
       return;
@@ -287,7 +287,7 @@ void CursesDisplay::clear_display()
  *****************************************************************/
 void CursesDisplay::add_message(const string& message, const bool reset_cursor)
 {
-  add_message(message, COLOUR_WHITE, reset_cursor);
+  add_message(message, Colour::COLOUR_WHITE, reset_cursor);
 }
 
 void CursesDisplay::add_message(const string& message, const Colour colour, const bool reset_cursor)
@@ -310,7 +310,7 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
   boost::char_separator<char> separator(" ", " ", boost::keep_empty_tokens); // Keep the tokens!
   boost::tokenizer<boost::char_separator<char>> tokens(message, separator);
 
-  enable_colour(colour, stdscr);
+  enable_colour(static_cast<int>(colour), stdscr);
 
   for (boost::tokenizer<boost::char_separator<char>>::iterator t_iter = tokens.begin(); t_iter != tokens.end(); t_iter++)
   {
@@ -334,10 +334,10 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
       {
         move(1, TERMINAL_MAX_COLS-4);
 
-        disable_colour(colour, stdscr);
+        disable_colour(static_cast<int>(colour), stdscr);
         printw("...");
         getch();
-        enable_colour(colour, stdscr);
+        enable_colour(static_cast<int>(colour), stdscr);
 
         clear_message_buffer();
         getyx(stdscr, cur_y, cur_x);
@@ -372,7 +372,7 @@ void CursesDisplay::add_message(const string& message, const Colour colour, cons
     move(orig_curs_y, orig_curs_x);
   }
   
-  disable_colour(colour, stdscr);
+  disable_colour(static_cast<int>(colour), stdscr);
   
   //refresh();
 }
@@ -643,7 +643,7 @@ string CursesDisplay::display_screen(const Screen& current_screen)
 // Show confirmation text - use the message buffer.
 void CursesDisplay::confirm(const string& confirmation_message)
 {
-  add_message(confirmation_message, COLOUR_WHITE, false);
+  add_message(confirmation_message, Colour::COLOUR_WHITE, false);
 }
 
 void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, TextComponentPtr tc, const uint line_incr)
@@ -656,9 +656,9 @@ void CursesDisplay::display_text_component(WINDOW* window, int* row, int* col, T
 
     for (const auto& text_line : current_text)
     {
-      enable_colour(text_line.second, window);
+      enable_colour(static_cast<int>(text_line.second), window);
       mvwprintw(window, *row, cur_col, text_line.first.c_str());
-      disable_colour(text_line.second, window);
+      disable_colour(static_cast<int>(text_line.second), window);
 
       cur_col += text_line.first.size();
     }
@@ -701,7 +701,7 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
         }
       }
 
-      enable_colour(option_colour, window);
+      enable_colour(static_cast<int>(option_colour), window);
 
       ostringstream display_option;
       display_option << "  [" << current_option.get_id_char() << "] ";
@@ -716,7 +716,7 @@ void CursesDisplay::display_options_component(WINDOW* window, int* row, int* col
       // JCD FIXME make 1 a constant later -
       // there should always be a single line break between options.
       display_text_component(window, row, &ocol, text, 1);
-      disable_colour(option_colour, window);
+      disable_colour(static_cast<int>(option_colour), window);
 
       options_added++;
       temp_row++;
@@ -822,9 +822,9 @@ void CursesDisplay::display(const DisplayStatistics& player_stats)
       {
         Colour colour = status_ailment.second;
 
-        enable_colour(colour, stdscr);
+        enable_colour(static_cast<int>(colour), stdscr);
         mvprintw(current_row, current_col, status_ailment.first.c_str());
-        disable_colour(colour, stdscr);
+        disable_colour(static_cast<int>(colour), stdscr);
       }
     }
   }
@@ -834,10 +834,10 @@ bool CursesDisplay::print_display_statistic_and_update_row_and_column(const unsi
 {
   bool can_print = true;
 
-  enable_colour(print_colour, stdscr);
+  enable_colour(static_cast<int>(print_colour), stdscr);
   mvprintw(*current_row, *current_col, current_stat.c_str());
   can_print = update_synopsis_row_and_column(initial_row, current_row, current_col, current_stat, next_stat);
-  disable_colour(print_colour, stdscr);
+  disable_colour(static_cast<int>(print_colour), stdscr);
 
   return can_print;
 }
@@ -942,7 +942,7 @@ bool CursesDisplay::deserialize(istream& stream)
 
 ClassIdentifier CursesDisplay::internal_class_identifier() const
 {
-  return CLASS_ID_CURSES_DISPLAY;
+  return ClassIdentifier::CLASS_ID_CURSES_DISPLAY;
 }
 
 #ifdef UNIT_TESTS

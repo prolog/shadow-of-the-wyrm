@@ -22,7 +22,7 @@ string CursesPromptProcessor::get_prompt(WINDOW* window, const MenuWrapper& menu
     PromptType pt = prompt->get_type();
 
     // JCD FIX THIS LATER
-    if (pt == PROMPT_TYPE_TEXT)
+    if (pt == PromptType::PROMPT_TYPE_TEXT)
     {
       prompt_entry = get_user_string(window);
     }
@@ -140,7 +140,7 @@ void CursesPromptProcessor::show_prompt(WINDOW* window, PromptPtr prompt, int ro
   string prompt_text = prompt->get_text();
   PromptLocation location = prompt->get_location();
 
-  if (location == PROMPT_LOCATION_LOWER_RIGHT)
+  if (location == PromptLocation::PROMPT_LOCATION_LOWER_RIGHT)
   {
     int prompt_text_length = prompt_text.size();
     prompt_col = TERMINAL_MAX_COLS - prompt_text_length - 1;

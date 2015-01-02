@@ -1,5 +1,5 @@
 #pragma once
-enum DamageType
+enum struct DamageType
 {
   DAMAGE_TYPE_NULL = -1,
   DAMAGE_TYPE_FIRST = 0,

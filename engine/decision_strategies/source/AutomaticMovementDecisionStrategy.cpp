@@ -64,7 +64,7 @@ bool AutomaticMovementDecisionStrategy::deserialize(istream& stream)
 
 ClassIdentifier AutomaticMovementDecisionStrategy::internal_class_identifier() const
 {
-  return CLASS_ID_AUTOMATIC_MOVEMENT_DECISION_STRATEGY;
+  return ClassIdentifier::CLASS_ID_AUTOMATIC_MOVEMENT_DECISION_STRATEGY;
 }
 
 #ifdef UNIT_TESTS

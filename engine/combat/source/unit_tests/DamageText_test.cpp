@@ -11,14 +11,14 @@ TEST(SL_Engine_Combat_DamageText, get_colour)
 
   DamageText dt;
 
-  EXPECT_EQ(COLOUR_WHITE, dt.get_colour(creature));
+  EXPECT_EQ(Colour::COLOUR_WHITE, dt.get_colour(creature));
 
   creature->set_is_player(true, null_controller);
 
-  EXPECT_EQ(COLOUR_WHITE, dt.get_colour(creature));
+  EXPECT_EQ(Colour::COLOUR_WHITE, dt.get_colour(creature));
 
   hp.set_current(3);
   creature->set_hit_points(hp);
 
-  EXPECT_EQ(COLOUR_RED, dt.get_colour(creature));
+  EXPECT_EQ(Colour::COLOUR_RED, dt.get_colour(creature));
 }

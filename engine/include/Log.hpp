@@ -2,7 +2,7 @@
 #include <string>
 #include <fstream>
 
-enum LoggingLevel
+enum struct LoggingLevel
 {
   LOG_LOWEST = 0,
   LOG_TRACE = 0,

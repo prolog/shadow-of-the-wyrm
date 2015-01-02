@@ -39,7 +39,7 @@ Item* Tool::clone()
 
 ClassIdentifier Tool::internal_class_identifier() const
 {
-  return CLASS_ID_TOOL;
+  return ClassIdentifier::CLASS_ID_TOOL;
 }
 
 bool Tool::serialize(ostream& stream) const

@@ -35,7 +35,7 @@ bool DragonScale::get_can_rust() const
 
 Colour DragonScale::get_colour() const
 {
-  return COLOUR_BOLD_RED;
+  return Colour::COLOUR_BOLD_RED;
 }
 
 Material* DragonScale::clone()

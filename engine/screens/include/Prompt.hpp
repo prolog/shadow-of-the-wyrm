@@ -2,13 +2,13 @@
 #include <string>
 #include <memory>
 
-enum PromptLocation
+enum struct PromptLocation
 {
   PROMPT_LOCATION_DEFAULT = 0,
   PROMPT_LOCATION_LOWER_RIGHT = 1
 };
 
-enum PromptType
+enum struct PromptType
 {
   PROMPT_TYPE_CHARACTER = 0,
   PROMPT_TYPE_TEXT = 1,
@@ -18,7 +18,7 @@ enum PromptType
 class Prompt
 {
   public:
-    Prompt(const PromptLocation = PROMPT_LOCATION_DEFAULT);
+    Prompt(const PromptLocation = PromptLocation::PROMPT_LOCATION_DEFAULT);
 
     void set_text_sid(const std::string& new_prompt_text_sid);
     std::string get_text_sid() const;

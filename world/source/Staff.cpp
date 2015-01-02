@@ -19,7 +19,7 @@ Item* Staff::clone()
 
 ClassIdentifier Staff::internal_class_identifier() const
 {
-  return CLASS_ID_STAFF;
+  return ClassIdentifier::CLASS_ID_STAFF;
 }
 
 #ifdef UNIT_TESTS

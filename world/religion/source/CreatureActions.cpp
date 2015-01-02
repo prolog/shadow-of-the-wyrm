@@ -78,7 +78,7 @@ bool CreatureActions::deserialize(istream& stream)
 
 ClassIdentifier CreatureActions::internal_class_identifier() const
 {
-  return CLASS_ID_CREATURE_ACTIONS;
+  return ClassIdentifier::CLASS_ID_CREATURE_ACTIONS;
 }
 
 #ifdef UNIT_TESTS

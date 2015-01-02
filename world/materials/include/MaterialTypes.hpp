@@ -1,6 +1,6 @@
 #pragma once
 
-enum MaterialType
+enum struct MaterialType
 {
   MATERIAL_TYPE_CLOTH = 0,
   MATERIAL_TYPE_DRAGON_SCALE = 1,
@@ -18,14 +18,4 @@ enum MaterialType
   MATERIAL_TYPE_GOLD = 13,
   MATERIAL_TYPE_LAST = 14
 };
-
-inline MaterialType operator--(MaterialType &mt, int)
-{
-  return mt = MaterialType(mt-1);
-}
-
-inline MaterialType operator++(MaterialType &mt, int)
-{
-  return mt = MaterialType(mt+1);
-}
 

@@ -35,7 +35,7 @@ ActionCostValue KickAction::kick(CreaturePtr creature)
       MapPtr current_map = game.get_current_map();
       MapType map_type = current_map->get_map_type();
 
-      if (map_type == MAP_TYPE_WORLD)
+      if (map_type == MapType::MAP_TYPE_WORLD)
       {
         acv = kick_on_world_map(creature, current_map);
       }
@@ -147,7 +147,7 @@ ActionCostValue KickAction::kick_in_direction(CreaturePtr creature, MapPtr curre
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_SOLID_TILE));
         }
         // Kicking a water tile generates a message
-        else if (kick_tile->get_tile_super_type() == TILE_SUPER_TYPE_WATER)
+        else if (kick_tile->get_tile_super_type() == TileSuperType::TILE_SUPER_TYPE_WATER)
         {
           manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_WATER_TILE));
         }
@@ -194,7 +194,7 @@ ActionCostValue KickAction::kick_creature(CreaturePtr kicking_creature, Creature
     {
       // Do a kicking attack (force an unarmed, physical attack)
       CombatManager cm;
-      acv = cm.attack(kicking_creature, kicked_creature, ATTACK_TYPE_MELEE_TERTIARY_UNARMED, true);
+      acv = cm.attack(kicking_creature, kicked_creature, AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED, true);
     }
   }
 

@@ -17,7 +17,7 @@ class CombatManager
     ActionCostValue attack(CreaturePtr creature, const Direction d);
     ActionCostValue attack(CreaturePtr attacking_creature, 
                            CreaturePtr attacked_creature, 
-                           const AttackType = ATTACK_TYPE_MELEE_PRIMARY, 
+                           const AttackType = AttackType::ATTACK_TYPE_MELEE_PRIMARY, 
                            const bool mark_skills = true, 
                            DamagePtr damage = DamagePtr());
 

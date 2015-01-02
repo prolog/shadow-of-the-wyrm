@@ -22,7 +22,7 @@ Tile* MarshTile::clone()
 
 ClassIdentifier MarshTile::internal_class_identifier() const
 {
-  return CLASS_ID_MARSH_TILE;
+  return ClassIdentifier::CLASS_ID_MARSH_TILE;
 }
 
 

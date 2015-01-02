@@ -28,7 +28,7 @@ Tile* SeaTile::clone()
 
 ClassIdentifier SeaTile::internal_class_identifier() const
 {
-  return CLASS_ID_SEA_TILE;
+  return ClassIdentifier::CLASS_ID_SEA_TILE;
 }
 
 #ifdef UNIT_TESTS

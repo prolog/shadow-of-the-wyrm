@@ -19,7 +19,7 @@ Item* Ring::clone()
 
 ClassIdentifier Ring::internal_class_identifier() const
 {
-  return CLASS_ID_RING;
+  return ClassIdentifier::CLASS_ID_RING;
 }
 
 #ifdef UNIT_TESTS

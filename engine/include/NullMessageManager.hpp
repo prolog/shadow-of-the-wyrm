@@ -11,10 +11,10 @@ class NullMessageManager : public IMessageManager
     void send(const bool halt_afterwards = false, const bool reset_afterwards = false) override;
     void send_and_halt() override;
     
-		bool add_new_message(const std::string& message, const Colour colour = COLOUR_WHITE, const MessageImportance& importance = MessageImportance_Normal) override;
-		bool add_new_confirmation_message(const std::string& message, const Colour colour = COLOUR_WHITE, const MessageImportance& importance = MessageImportance_Normal) override;
-    bool add_new_message_with_pause(const std::string& message, const Colour colour = COLOUR_WHITE, const MessageImportance& importance = MessageImportance_Normal) override;
-    std::string add_new_message_with_prompt(const std::string& message, const Colour colour = COLOUR_WHITE, const MessageImportance& importance = MessageImportance_Normal) override;
+		bool add_new_message(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) override;
+		bool add_new_confirmation_message(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) override;
+    bool add_new_message_with_pause(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) override;
+    std::string add_new_message_with_prompt(const std::string& message, const Colour colour = Colour::COLOUR_WHITE, const MessageImportance& importance = MessageImportance::MessageImportance_Normal) override;
 		
 		Messages get_unread_messages() const override;
 		Messages get_unread_messages_and_mark_as_read() override;

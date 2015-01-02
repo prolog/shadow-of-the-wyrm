@@ -130,8 +130,8 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
     bestiary_text.push_back(make_pair(creature->get_colour(), Char::to_string(creature->get_symbol())));
 
     // Display the creature short description
-    bestiary_text.push_back(make_pair(COLOUR_WHITE, separator));
-    bestiary_text.push_back(make_pair(COLOUR_WHITE, StringTable::get(creature->get_short_description_sid())));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(creature->get_short_description_sid())));
 
     // Display race details
     string race_id = creature->get_race_id();
@@ -140,17 +140,17 @@ void BestiaryAction::display_bestiary_information(CreaturePtr creature) const
       RaceManager rm;
       RacePtr race = rm.get_race(race_id);
 
-      bestiary_text.push_back(make_pair(COLOUR_WHITE, separator));
-      bestiary_text.push_back(make_pair(COLOUR_WHITE, StringTable::get(TextKeys::RACE) + ": " + StringTable::get(race->get_race_name_sid())));
+      bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
+      bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(TextKeys::RACE) + ": " + StringTable::get(race->get_race_name_sid())));
     }
 
     // Display the creature's details.
-    bestiary_text.push_back(make_pair(COLOUR_WHITE, separator));
+    bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, separator));
     vector<string> text_details = tdf.format_text(StringTable::get(creature->get_text_details_sid()));
     
     for(const string& line_of_text : text_details)
     {
-      bestiary_text.push_back(make_pair(COLOUR_WHITE, line_of_text));
+      bestiary_text.push_back(make_pair(Colour::COLOUR_WHITE, line_of_text));
     }
 
     TextDisplayScreen tds(game.get_display(), bestiary_title_sid, bestiary_text);

@@ -25,7 +25,7 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
       {
         string spell_id = spellbook->get_spell_id();
         const SpellMap spell_map = Game::instance().get_spells_ref();
-        SkillType magic_category = SKILL_MAGIC_ARCANE;
+        SkillType magic_category = SkillType::SKILL_MAGIC_ARCANE;
         SpellMap::const_iterator s_it = spell_map.find(spell_id);
 
         if (s_it != spell_map.end())
@@ -116,7 +116,7 @@ bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature)
 {
   bool has_magic_skill = true;
 
-  SkillPtr magic_skill = creature->get_skills().get_skill(SKILL_GENERAL_MAGIC);
+  SkillPtr magic_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC);
 
   if (magic_skill->get_value() <= 0)
   {

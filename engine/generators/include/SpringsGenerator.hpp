@@ -3,7 +3,7 @@
 #include "common.hpp"
 #include "Map.hpp"
 
-enum SpringsType
+enum struct SpringsType
 {
   SPRINGS_TYPE_WIDE = 0,
   SPRINGS_TYPE_TALL = 1

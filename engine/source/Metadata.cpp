@@ -85,7 +85,7 @@ bool Metadata::deserialize(istream& stream)
 
 ClassIdentifier Metadata::internal_class_identifier() const
 {
-  return CLASS_ID_METADATA;
+  return ClassIdentifier::CLASS_ID_METADATA;
 }
 
 #ifdef UNIT_TESTS

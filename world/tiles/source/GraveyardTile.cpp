@@ -17,7 +17,7 @@ Tile* GraveyardTile::clone()
 
 ClassIdentifier GraveyardTile::internal_class_identifier() const
 {
-  return CLASS_ID_GRAVEYARD_TILE;
+  return ClassIdentifier::CLASS_ID_GRAVEYARD_TILE;
 }
 
 #ifdef UNIT_TESTS

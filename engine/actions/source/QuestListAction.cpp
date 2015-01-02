@@ -34,7 +34,7 @@ ActionCostValue QuestListAction::quest_list() const
 
     for(const string& quest_line : current_quest_formatted)
     {
-      TextDisplayPair quest_line_for_ui = make_pair(COLOUR_WHITE, quest_line);
+      TextDisplayPair quest_line_for_ui = make_pair(Colour::COLOUR_WHITE, quest_line);
       quests_text.push_back(quest_line_for_ui);
     }
   }

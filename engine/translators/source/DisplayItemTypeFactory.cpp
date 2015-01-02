@@ -6,87 +6,87 @@
 using namespace std;
 
 DefaultDisplayItemType::DefaultDisplayItemType()
-: DisplayItemType("?", COLOUR_WHITE, ITEM_TYPE_NULL, "???")
+  : DisplayItemType("?", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_NULL, "???")
 {
 }
 
 MiscDisplayItemType::MiscDisplayItemType()
-: DisplayItemType("]", COLOUR_WHITE, ITEM_TYPE_MISC, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_MISC))
+  : DisplayItemType("]", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_MISC, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_MISC))
 {
 }
 
 WeaponDisplayItemType::WeaponDisplayItemType()
-: DisplayItemType(")", COLOUR_WHITE, ITEM_TYPE_WEAPON, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_WEAPONS))
+  : DisplayItemType(")", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_WEAPON, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_WEAPONS))
 {
 }
 
 ArmourDisplayItemType::ArmourDisplayItemType()
-: DisplayItemType("[", COLOUR_WHITE, ITEM_TYPE_ARMOUR, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_ARMOURS))
+  : DisplayItemType("[", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_ARMOUR, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_ARMOURS))
 {
 }
 
 PotionDisplayItemType::PotionDisplayItemType()
-: DisplayItemType("!", COLOUR_WHITE, ITEM_TYPE_POTION, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_POTIONS))
+  : DisplayItemType("!", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_POTION, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_POTIONS))
 {
 }
 
 BookDisplayItemType::BookDisplayItemType()
-: DisplayItemType("\"", COLOUR_WHITE, ITEM_TYPE_SPELLBOOK, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_BOOKS))
+  : DisplayItemType("\"", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_SPELLBOOK, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_BOOKS))
 {
 }
 
 ScrollDisplayItemType::ScrollDisplayItemType()
-: DisplayItemType("?", COLOUR_WHITE, ITEM_TYPE_SCROLL, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_SCROLLS))
+  : DisplayItemType("?", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_SCROLL, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_SCROLLS))
 {
 }
 
 WandDisplayItemType::WandDisplayItemType()
-: DisplayItemType("\\", COLOUR_WHITE, ITEM_TYPE_WAND, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_WANDS))
+  : DisplayItemType("\\", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_WAND, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_WANDS))
 {
 }
 
 StaffDisplayItemType::StaffDisplayItemType()
-: DisplayItemType("|", COLOUR_WHITE, ITEM_TYPE_STAFF, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_STAVES))
+  : DisplayItemType("|", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_STAFF, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_STAVES))
 {
 }
 
 RingDisplayItemType::RingDisplayItemType()
-: DisplayItemType("=", COLOUR_WHITE, ITEM_TYPE_RING, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_RINGS))
+  : DisplayItemType("=", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_RING, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_RINGS))
 {
 }
 
 AmuletDisplayItemType::AmuletDisplayItemType()
-: DisplayItemType("+", COLOUR_WHITE, ITEM_TYPE_AMULET, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_AMULETS))
+  : DisplayItemType("+", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_AMULET, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_AMULETS))
 {
 }
 
 FoodDisplayItemType::FoodDisplayItemType()
-: DisplayItemType("%%", COLOUR_WHITE, ITEM_TYPE_FOOD, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_FOOD))
+  : DisplayItemType("%%", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_FOOD, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_FOOD))
 {
 }
 
 AmmunitionDisplayItemType::AmmunitionDisplayItemType()
-: DisplayItemType("/", COLOUR_WHITE, ITEM_TYPE_AMMUNITION, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_AMMUNITION))
+  : DisplayItemType("/", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_AMMUNITION, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_AMMUNITION))
 {
 }
 
 PlantDisplayItemType::PlantDisplayItemType()
-: DisplayItemType("#", COLOUR_WHITE, ITEM_TYPE_PLANT, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_PLANTS))
+  : DisplayItemType("#", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_PLANT, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_PLANTS))
 {
 }
 
 BoatDisplayItemType::BoatDisplayItemType()
-: DisplayItemType("&", COLOUR_WHITE, ITEM_TYPE_BOAT, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_BOATS))
+  : DisplayItemType("&", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_BOAT, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_BOATS))
 {
 }
 
 CurrencyDisplayItemType::CurrencyDisplayItemType()
-: DisplayItemType("$", COLOUR_BOLD_YELLOW, ITEM_TYPE_CURRENCY, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_CURRENCY))
+  : DisplayItemType("$", Colour::COLOUR_BOLD_YELLOW, ItemType::ITEM_TYPE_CURRENCY, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_CURRENCY))
 {
 }
 
 ToolsDisplayItemType::ToolsDisplayItemType()
-: DisplayItemType("(", COLOUR_WHITE, ITEM_TYPE_TOOL, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_TOOLS))
+  : DisplayItemType("(", Colour::COLOUR_WHITE, ItemType::ITEM_TYPE_TOOL, StringTable::get(ItemTypeTextKeys::ITEM_TYPE_TOOLS))
 {
 }
 

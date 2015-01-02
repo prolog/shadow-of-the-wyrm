@@ -49,12 +49,16 @@ class Serialize
     static void write_string_set(std::ostream& stream, const std::set<std::string>& val);
     static void read_string_set(std::istream& stream, std::set<std::string>& val);
 
-    template<typename T> 
-    static void write_enum(std::ostream& stream, const T enum_type)
+    static void write_enum(std::ostream& stream, const int enum_type);
+
+    template<class T>
+    static void write_enum(std::ostream& stream, T& enum_type)
     {
+      int underlying_int = static_cast<int>(T);
+
       if (stream.good())
       {
-        stream.write((char*)&enum_type, sizeof(enum_type));
+        stream.write((char*)&underlying_int, sizeof(underlying_int));
       }
       else
       {
@@ -63,7 +67,7 @@ class Serialize
       }
     }
 
-    template<typename T>
+    template<class T>
     static void read_enum(std::istream& stream, T& enum_type)
     {
       if (stream.good())
@@ -75,6 +79,6 @@ class Serialize
         SerializationException stream_error("Could not read an enum");
         throw stream_error;
       }
-    }
+    };
 };
 

@@ -56,7 +56,7 @@ bool ScoreFileEntry::deserialize(istream& stream)
 
 ClassIdentifier ScoreFileEntry::internal_class_identifier() const
 {
-  return CLASS_ID_SCORE_FILE_ENTRY;
+  return ClassIdentifier::CLASS_ID_SCORE_FILE_ENTRY;
 }
 
 ulonglong ScoreFileEntry::get_score() const

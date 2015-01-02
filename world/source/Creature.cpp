@@ -12,15 +12,15 @@ using namespace std;
 // Why did I write this in C++?
 Creature::Creature()
 : is_player(false)
-, sex(CREATURE_SEX_MALE)
-, size(CREATURE_SIZE_MEDIUM)
-, eye_colour(EYE_COLOUR_BROWN)
-, hair_colour(HAIR_COLOUR_BLACK)
-, handedness(RIGHT_HANDED)
-, breathes(BREATHE_TYPE_AIR)
+, sex(CreatureSex::CREATURE_SEX_MALE)
+, size(CreatureSize::CREATURE_SIZE_MEDIUM)
+, eye_colour(EyeColour::EYE_COLOUR_BROWN)
+, hair_colour(HairColour::HAIR_COLOUR_BLACK)
+, handedness(Handedness::RIGHT_HANDED)
+, breathes(BreatheType::BREATHE_TYPE_AIR)
 , grams_unabsorbed_alcohol(0)
 , symbol('?')
-, colour(COLOUR_WHITE)
+, colour(Colour::COLOUR_WHITE)
 , experience_value(0)
 , experience_points(0)
 , turns(0)
@@ -39,7 +39,7 @@ Creature::Creature()
   // Base speed is 50.  This needs to be set or slimes get 25 actions to your 1 (23 or 24 if you're quick!).
   set_speed(50);
   
-  Damage dam(1, 2, 0, DAMAGE_TYPE_POUND, false, false, 0, {});
+  Damage dam(1, 2, 0, DamageType::DAMAGE_TYPE_POUND, false, false, 0, {});
   set_base_damage(dam);
 
   intrinsic_resistances.set_all_resistances_to(0);
@@ -356,13 +356,13 @@ Handedness Creature::get_handedness() const
 
 Handedness Creature::get_off_handedness() const
 {
-  if (handedness == RIGHT_HANDED)
+  if (handedness == Handedness::RIGHT_HANDED)
   {
-    return LEFT_HANDED;
+    return Handedness::LEFT_HANDED;
   }
   else
   {
-    return RIGHT_HANDED;
+    return Handedness::RIGHT_HANDED;
   }
 }
 
@@ -598,7 +598,7 @@ IInventoryPtr Creature::get_inventory()
 
 bool Creature::has_items() const
 {
-  for (EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD; ewl < EQUIPMENT_WORN_LAST; ewl++)
+  for (EquipmentWornLocation ewl = EquipmentWornLocation::EQUIPMENT_WORN_HEAD; ewl < EquipmentWornLocation::EQUIPMENT_WORN_LAST; ewl++)
   {
     ItemPtr item = equipment.get_item(ewl);
     if (item != nullptr) return true;
@@ -1151,13 +1151,13 @@ bool Creature::serialize(ostream& stream) const
   Serialize::write_bool(stream, is_player);
 
   Serialize::write_string(stream, name);
-  Serialize::write_enum(stream, sex);
+  Serialize::write_enum(stream, static_cast<int>(sex));
   age.serialize(stream);
-  Serialize::write_enum(stream, size);
-  Serialize::write_enum(stream, eye_colour);
-  Serialize::write_enum(stream, hair_colour);
-  Serialize::write_enum(stream, handedness);
-  Serialize::write_enum(stream, breathes);
+  Serialize::write_enum(stream, static_cast<int>(size));
+  Serialize::write_enum(stream, static_cast<int>(eye_colour));
+  Serialize::write_enum(stream, static_cast<int>(hair_colour));
+  Serialize::write_enum(stream, static_cast<int>(handedness));
+  Serialize::write_enum(stream, static_cast<int>(breathes));
   blood.serialize(stream);
   Serialize::write_float(stream, grams_unabsorbed_alcohol);
   alignment.serialize(stream);
@@ -1205,7 +1205,7 @@ bool Creature::serialize(ostream& stream) const
   addl_damage.serialize(stream);
 
   Serialize::write_uchar(stream, symbol);
-  Serialize::write_enum(stream, colour);
+  Serialize::write_enum(stream, static_cast<int>(colour));
 
   level.serialize(stream);
 
@@ -1216,7 +1216,7 @@ bool Creature::serialize(ostream& stream) const
   }
   else
   {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
+    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
   }
 
   religion.serialize(stream);
@@ -1433,7 +1433,7 @@ bool Creature::deserialize(istream& stream)
 
 ClassIdentifier Creature::internal_class_identifier() const
 {
-  return CLASS_ID_CREATURE;
+  return ClassIdentifier::CLASS_ID_CREATURE;
 }
 
 #ifdef UNIT_TESTS

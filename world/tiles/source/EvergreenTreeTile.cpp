@@ -19,7 +19,7 @@ Tile* EvergreenTreeTile::clone()
 
 ClassIdentifier EvergreenTreeTile::internal_class_identifier() const
 {
-  return CLASS_ID_EVERGREEN_TREE_TILE;
+  return ClassIdentifier::CLASS_ID_EVERGREEN_TREE_TILE;
 }
 
 #ifdef UNIT_TESTS

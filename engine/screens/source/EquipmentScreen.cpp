@@ -79,7 +79,7 @@ void EquipmentScreen::initialize()
     string item_addl_desc;
     String::reset_and_pad(item_addl_desc, longest + 6 /* 6 = extra padding for '[a] : ' */);
     item_addl_desc += display_item.get_additional_description();
-    TextComponentPtr eq_text = std::make_shared<TextComponent>(item_addl_desc, COLOUR_BOLD_YELLOW);
+    TextComponentPtr eq_text = std::make_shared<TextComponent>(item_addl_desc, Colour::COLOUR_BOLD_YELLOW);
     eq_screen.push_back(eq_text);
   }
 

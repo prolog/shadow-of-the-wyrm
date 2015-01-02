@@ -17,7 +17,7 @@ Tile* PierTile::clone()
 
 ClassIdentifier PierTile::internal_class_identifier() const
 {
-  return CLASS_ID_PIER_TILE;
+  return ClassIdentifier::CLASS_ID_PIER_TILE;
 }
 
 #ifdef UNIT_TESTS

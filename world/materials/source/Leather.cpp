@@ -35,7 +35,7 @@ bool Leather::get_can_rust() const
 
 Colour Leather::get_colour() const
 {
-  return COLOUR_YELLOW;
+  return Colour::COLOUR_YELLOW;
 }
 
 Material* Leather::clone()

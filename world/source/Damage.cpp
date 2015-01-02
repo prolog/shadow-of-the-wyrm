@@ -275,7 +275,7 @@ bool Damage::deserialize(istream& stream)
 
 ClassIdentifier Damage::internal_class_identifier() const
 {
-  return CLASS_ID_DAMAGE;
+  return ClassIdentifier::CLASS_ID_DAMAGE;
 }
 
 #ifdef UNIT_TESTS

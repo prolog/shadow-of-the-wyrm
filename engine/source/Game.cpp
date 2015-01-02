@@ -787,7 +787,7 @@ bool Game::serialize(ostream& stream) const
     }
     else
     {
-      Serialize::write_class_id(stream, CLASS_ID_NULL);
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
     }
   }
 
@@ -930,7 +930,7 @@ bool Game::deserialize(istream& stream)
       Serialize::read_string(stream, item_id);
       Serialize::read_class_id(stream, curitem_clid);
 
-      if (curitem_clid != CLASS_ID_NULL)
+      if (curitem_clid != ClassIdentifier::CLASS_ID_NULL)
       {
         ItemPtr item = ItemSerializationFactory::create_item(curitem_clid);
         if (!item) return false;
@@ -985,7 +985,7 @@ bool Game::deserialize(istream& stream)
 
 ClassIdentifier Game::internal_class_identifier() const
 {
-  return CLASS_ID_GAME;
+  return ClassIdentifier::CLASS_ID_GAME;
 }
 
 #ifdef UNIT_TESTS

@@ -142,7 +142,7 @@ bool ThreatRatings::deserialize(istream& stream)
 
 ClassIdentifier ThreatRatings::internal_class_identifier() const
 {
-  return CLASS_ID_THREAT_RATINGS;
+  return ClassIdentifier::CLASS_ID_THREAT_RATINGS;
 }
 
 #ifdef UNIT_TESTS

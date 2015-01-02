@@ -69,5 +69,5 @@ bool Settings::deserialize(istream& stream)
 
 ClassIdentifier Settings::internal_class_identifier() const
 {
-  return CLASS_ID_SETTINGS;
+  return ClassIdentifier::CLASS_ID_SETTINGS;
 }

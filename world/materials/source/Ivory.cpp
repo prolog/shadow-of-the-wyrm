@@ -35,7 +35,7 @@ bool Ivory::get_can_rust() const
 
 Colour Ivory::get_colour() const
 {
-  return COLOUR_BOLD_WHITE;
+  return Colour::COLOUR_BOLD_WHITE;
 }
 
 Material* Ivory::clone()

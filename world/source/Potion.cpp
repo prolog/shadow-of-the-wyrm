@@ -76,7 +76,7 @@ bool Potion::deserialize(std::istream& stream)
 
 ClassIdentifier Potion::internal_class_identifier() const
 {
-  return CLASS_ID_POTION;
+  return ClassIdentifier::CLASS_ID_POTION;
 }
 
 #ifdef UNIT_TESTS

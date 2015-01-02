@@ -88,7 +88,7 @@ bool DeityStatus::deserialize(istream& stream)
 
 ClassIdentifier DeityStatus::internal_class_identifier() const
 {
-  return CLASS_ID_DEITY_STATUS;
+  return ClassIdentifier::CLASS_ID_DEITY_STATUS;
 }
 
 #ifdef UNIT_TESTS

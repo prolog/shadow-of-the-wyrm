@@ -17,7 +17,7 @@ Tile* ScrubTile::clone()
 
 ClassIdentifier ScrubTile::internal_class_identifier() const
 {
-  return CLASS_ID_SCRUB_TILE;
+  return ClassIdentifier::CLASS_ID_SCRUB_TILE;
 }
 
 #ifdef UNIT_TESTS

@@ -9,7 +9,7 @@ class RayCastingFieldOfViewStrategy : public FieldOfViewStrategy
     MapPtr calculate(CreaturePtr fov_creature, MapPtr view_map, const Coordinate& creature_coords, const int los_length) override;
     
   protected:
-    enum PassType
+    enum struct PassType
     {
       PASS_NON_CORNER_BLOCKING_TILES = 0,
       PASS_CORNER_BLOCKING_TILES = 1

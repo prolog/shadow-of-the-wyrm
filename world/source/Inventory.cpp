@@ -328,7 +328,7 @@ bool Inventory::serialize(ostream& stream) const
     }
     else
     {
-      Serialize::write_class_id(stream, CLASS_ID_NULL);
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
     }
   }
 
@@ -345,10 +345,10 @@ bool Inventory::deserialize(istream& stream)
 
   for (unsigned int i = 0; i < items_size; i++)
   {
-    ClassIdentifier item_clid = CLASS_ID_NULL;
+    ClassIdentifier item_clid = ClassIdentifier::CLASS_ID_NULL;
     Serialize::read_class_id(stream, item_clid);
 
-    if (item_clid != CLASS_ID_NULL)
+    if (item_clid != ClassIdentifier::CLASS_ID_NULL)
     {
       ItemPtr item = ItemSerializationFactory::create_item(item_clid);
       if (!item) return false;
@@ -363,7 +363,7 @@ bool Inventory::deserialize(istream& stream)
 
 ClassIdentifier Inventory::internal_class_identifier() const
 {
-  return CLASS_ID_INVENTORY;
+  return ClassIdentifier::CLASS_ID_INVENTORY;
 }
 
 #ifdef UNIT_TESTS

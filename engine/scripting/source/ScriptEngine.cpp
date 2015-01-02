@@ -221,7 +221,7 @@ bool ScriptEngine::deserialize(istream& stream)
 
 ClassIdentifier ScriptEngine::internal_class_identifier() const
 {
-  return CLASS_ID_SCRIPT_ENGINE;
+  return ClassIdentifier::CLASS_ID_SCRIPT_ENGINE;
 }
 
 #ifdef UNIT_TESTS

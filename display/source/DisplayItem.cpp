@@ -3,7 +3,7 @@
 using namespace std;
 
 DisplayItem::DisplayItem()
-: colour(COLOUR_WHITE)
+: colour(Colour::COLOUR_WHITE)
 {
 }
 

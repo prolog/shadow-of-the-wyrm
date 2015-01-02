@@ -1,7 +1,7 @@
 #pragma once
 #include <string>
 
-enum ItemType
+enum struct ItemType
 {
   ITEM_TYPE_NULL = -1,
   ITEM_TYPE_FIRST = 0,
@@ -24,14 +24,14 @@ enum ItemType
   ITEM_TYPE_LAST = 16
 };
 
-enum ItemStatus
+enum struct ItemStatus
 {
   ITEM_STATUS_UNCURSED = 0,
   ITEM_STATUS_BLESSED = 1,
   ITEM_STATUS_CURSED = 2
 };
 
-enum ItemIdentificationType
+enum struct ItemIdentificationType
 {
   ITEM_IDENTIFY_ON_GENERATION = 0,
   ITEM_IDENTIFY_ON_USE = 1,
@@ -68,7 +68,7 @@ class ItemIdKeys
     ~ItemIdKeys();
 };
 
-enum FoodType
+enum struct FoodType
 {
   FOOD_TYPE_VEGETABLE = 0,
   FOOD_TYPE_CARBS = 1,

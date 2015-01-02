@@ -86,7 +86,7 @@ CommandFactoryType TileSelectionCommandFactory::get_factory_type() const
 
 ClassIdentifier TileSelectionCommandFactory::internal_class_identifier() const
 {
-  return CLASS_ID_TILE_SELECTION_COMMAND_FACTORY;
+  return ClassIdentifier::CLASS_ID_TILE_SELECTION_COMMAND_FACTORY;
 }
 
 #ifdef UNIT_TESTS

@@ -2,7 +2,7 @@
 #include "Tile.hpp"
 #include <memory>
 
-enum StaircaseType
+enum struct StaircaseType
 {
   STAIRCASE_UP = 0,
   STAIRCASE_DOWN = 1

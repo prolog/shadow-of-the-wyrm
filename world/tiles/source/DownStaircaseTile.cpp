@@ -22,7 +22,7 @@ Tile* DownStaircaseTile::clone()
 
 ClassIdentifier DownStaircaseTile::internal_class_identifier() const
 {
-  return CLASS_ID_DOWN_STAIRCASE_TILE;
+  return ClassIdentifier::CLASS_ID_DOWN_STAIRCASE_TILE;
 }
 
 #ifdef UNIT_TESTS

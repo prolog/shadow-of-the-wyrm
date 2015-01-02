@@ -40,6 +40,11 @@ Savage Lands v0.3.1 "Frithuwald"
 - Added a section to the Guidebook entitled "The World", which talks
   about the Savage Lands world, travelling, combat, quests, etc.
 
+- After spending an hour tracking down a serialization bug related to
+  the write_enum template function, converted all instances of enums
+  (old C++-style unscoped enums) to C++11-style scoped enums, and replaced
+  the template function with a proper, statically-typed function.
+
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 
   generated randomly) were being generated randomly, and the "%s" was

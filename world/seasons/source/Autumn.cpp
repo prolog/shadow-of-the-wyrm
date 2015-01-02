@@ -52,7 +52,7 @@ ISeason* Autumn::clone()
 
 ClassIdentifier Autumn::internal_class_identifier() const
 {
-  return CLASS_ID_AUTUMN;
+  return ClassIdentifier::CLASS_ID_AUTUMN;
 }
 
 #ifdef UNIT_TESTS

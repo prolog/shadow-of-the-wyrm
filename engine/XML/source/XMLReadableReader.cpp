@@ -14,7 +14,7 @@ void XMLReadableReader::parse(ReadablePtr readable, GenerationValues& gv, const 
   {
     XMLItemReader::parse(readable, gv, node);
 
-    EffectType effect_type = static_cast<EffectType>(XMLUtils::get_child_node_int_value(node, "Effect", EFFECT_TYPE_NULL));
+    EffectType effect_type = static_cast<EffectType>(XMLUtils::get_child_node_int_value(node, "Effect", static_cast<int>(EffectType::EFFECT_TYPE_NULL)));
     readable->set_effect_type(effect_type);
 
     std::string text_sid = XMLUtils::get_child_node_value(node, "TextSID");

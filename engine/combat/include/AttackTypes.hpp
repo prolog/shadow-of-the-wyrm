@@ -1,6 +1,6 @@
 #pragma once
 
-enum AttackType
+enum struct AttackType
 {
   ATTACK_TYPE_MELEE_PRIMARY = 0,
   ATTACK_TYPE_MELEE_SECONDARY = 1,

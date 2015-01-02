@@ -1,19 +1,19 @@
 #include "DisplayTile.hpp"
 
-DisplayTile::DisplayTile() : symbol('!'), current_season(SEASON_SPRING)
+DisplayTile::DisplayTile() : symbol('!'), current_season(Season::SEASON_SPRING)
 {
 }
 
-DisplayTile::DisplayTile(const uchar sym, const int colour) : symbol(sym), current_season(SEASON_SPRING)
+DisplayTile::DisplayTile(const uchar sym, const int colour) : symbol(sym), current_season(Season::SEASON_SPRING)
 {
-  for (int i = SEASON_SPRING; i < SEASON_LAST; i++)
+  for (int i = static_cast<int>(Season::SEASON_SPRING); i < static_cast<int>(Season::SEASON_LAST); i++)
   {
     Season s = static_cast<Season>(i);
     colours[s] = colour;
   }
 }
 
-DisplayTile::DisplayTile(const uchar sym, const SeasonTileColourMap& new_map) : symbol(sym), current_season(SEASON_SPRING), colours(new_map)
+DisplayTile::DisplayTile(const uchar sym, const SeasonTileColourMap& new_map) : symbol(sym), current_season(Season::SEASON_SPRING), colours(new_map)
 {
 }
 

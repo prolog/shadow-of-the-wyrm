@@ -118,7 +118,7 @@ bool Calendar::deserialize(istream& stream)
 
 ClassIdentifier Calendar::internal_class_identifier() const
 {
-  return CLASS_ID_CALENDAR;
+  return ClassIdentifier::CLASS_ID_CALENDAR;
 }
 
 #ifdef UNIT_TESTS

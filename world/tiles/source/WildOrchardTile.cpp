@@ -17,7 +17,7 @@ Tile* WildOrchardTile::clone()
 
 ClassIdentifier WildOrchardTile::internal_class_identifier() const
 {
-  return CLASS_ID_WILD_ORCHARD_TILE;
+  return ClassIdentifier::CLASS_ID_WILD_ORCHARD_TILE;
 }
 
 #ifdef UNIT_TESTS

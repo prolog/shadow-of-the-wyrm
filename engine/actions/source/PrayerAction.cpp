@@ -22,7 +22,7 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
     Game& game = Game::instance();
     MapPtr map = game.get_current_map();
 
-    if (map && map->get_map_type() == MAP_TYPE_WORLD)
+    if (map && map->get_map_type() == MapType::MAP_TYPE_WORLD)
     {
       IMessageManager& manager = MessageManagerFactory::instance();
 
@@ -51,7 +51,7 @@ ActionCostValue PrayerAction::pray(CreaturePtr creature)
     finish_prayer(creature, decision_implications);
 
     // Break the Agnostic conduct.
-    creature->get_conducts_ref().break_conduct(CONDUCT_TYPE_AGNOSTIC);
+    creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_AGNOSTIC);
   }
 
   return get_action_cost_value(creature);

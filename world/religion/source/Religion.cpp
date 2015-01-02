@@ -127,7 +127,7 @@ bool Religion::deserialize(istream& stream)
 
 ClassIdentifier Religion::internal_class_identifier() const
 {
-  return CLASS_ID_RELIGION;
+  return ClassIdentifier::CLASS_ID_RELIGION;
 }
 
 #ifdef UNIT_TESTS

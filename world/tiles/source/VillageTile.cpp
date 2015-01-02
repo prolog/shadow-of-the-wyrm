@@ -88,7 +88,7 @@ Tile* VillageTile::clone()
 
 ClassIdentifier VillageTile::internal_class_identifier() const
 {
-  return CLASS_ID_VILLAGE_TILE;
+  return ClassIdentifier::CLASS_ID_VILLAGE_TILE;
 }
 
 #ifdef UNIT_TESTS

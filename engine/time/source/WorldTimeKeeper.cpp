@@ -169,7 +169,7 @@ bool WorldTimeKeeper::deserialize_observers(istream& stream)
 
 ClassIdentifier WorldTimeKeeper::internal_class_identifier() const
 {
-  return CLASS_ID_WORLD_TIME_KEEPER;
+  return ClassIdentifier::CLASS_ID_WORLD_TIME_KEEPER;
 }
 
 #ifdef UNIT_TESTS

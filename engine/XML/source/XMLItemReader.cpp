@@ -70,7 +70,7 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
       item->set_weight(weight);
     }
 
-    EquipmentWornLocation location = static_cast<EquipmentWornLocation>(XMLUtils::get_child_node_int_value(item_node, "WornLocation", EQUIPMENT_WORN_NONE));
+    EquipmentWornLocation location = static_cast<EquipmentWornLocation>(XMLUtils::get_child_node_int_value(item_node, "WornLocation", static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_NONE)));
     item->set_worn_location(location);
 
     ItemStatus status = static_cast<ItemStatus>(XMLUtils::get_child_node_int_value(item_node, "ItemStatus"));
@@ -82,7 +82,7 @@ void XMLItemReader::parse(ItemPtr item, GenerationValues& gv, const XMLNode& ite
     // If the item is an artifact, set the maximum to 1.
     if (is_artifact) gv.set_maximum(1);
 
-    MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", MATERIAL_TYPE_WOOD));
+    MaterialType material_type = static_cast<MaterialType>(XMLUtils::get_child_node_int_value(item_node, "Material", static_cast<int>(MaterialType::MATERIAL_TYPE_WOOD)));
     item->set_material_type(material_type);
 
     // Get whether the item is glowing (visible when blind).

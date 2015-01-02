@@ -87,7 +87,7 @@ bool Statistic::deserialize(istream& stream)
 
 ClassIdentifier Statistic::internal_class_identifier() const
 {
-  return CLASS_ID_STATISTIC;
+  return ClassIdentifier::CLASS_ID_STATISTIC;
 }
 
 #ifdef UNIT_TESTS

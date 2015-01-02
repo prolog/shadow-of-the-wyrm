@@ -324,7 +324,7 @@ bool TileSelectionAction::deserialize(std::istream& stream)
 
 ClassIdentifier TileSelectionAction::internal_class_identifier() const
 {
-  return CLASS_ID_TILE_SELECTION_ACTION;
+  return ClassIdentifier::CLASS_ID_TILE_SELECTION_ACTION;
 }
 
 #ifdef UNIT_TESTS

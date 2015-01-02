@@ -41,7 +41,7 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
     string spell_name_sid = XMLUtils::get_child_node_value(spell_node, "NameSID");
     string player_cast_sid = XMLUtils::get_child_node_value(spell_node, "PlayerCastMessageSID");
     string monster_cast_sid = XMLUtils::get_child_node_value(spell_node, "MonsterCastMessageSID");
-    SkillType magic_category = static_cast<SkillType>(XMLUtils::get_child_node_int_value(spell_node, "MagicCategory", SKILL_MAGIC_ARCANE));
+    SkillType magic_category = static_cast<SkillType>(XMLUtils::get_child_node_int_value(spell_node, "MagicCategory", static_cast<int>(SkillType::SKILL_MAGIC_ARCANE)));
     Colour spell_colour = static_cast<Colour>(XMLUtils::get_child_node_int_value(spell_node, "Colour"));
     uint ap_cost = XMLUtils::get_child_node_int_value(spell_node, "APCost");
     int speed = XMLUtils::get_child_node_int_value(spell_node, "Speed");

@@ -25,7 +25,7 @@ ActionCostValue AutomaticMovementAction::automatic_movement(CreaturePtr creature
   Game& game = Game::instance();
   MapPtr map = game.get_current_map();
 
-  if (map->get_map_type() == MAP_TYPE_WORLD)
+  if (map->get_map_type() == MapType::MAP_TYPE_WORLD)
   {
     manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_AUTOMOVE_WORLD_MAP));
     manager.send();

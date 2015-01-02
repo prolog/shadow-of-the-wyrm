@@ -44,7 +44,7 @@ string ScreenKeyboardCommandMap::get_settings_prefix() const
 
 ClassIdentifier ScreenKeyboardCommandMap::internal_class_identifier() const
 {
-  return CLASS_ID_SCREEN_KEYBOARD_COMMAND_MAP;
+  return ClassIdentifier::CLASS_ID_SCREEN_KEYBOARD_COMMAND_MAP;
 }
 
 #ifdef UNIT_TESTS

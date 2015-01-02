@@ -17,7 +17,7 @@ Tile* BarracksTile::clone()
 
 ClassIdentifier BarracksTile::internal_class_identifier() const
 {
-  return CLASS_ID_BARRACKS_TILE;
+  return ClassIdentifier::CLASS_ID_BARRACKS_TILE;
 }
 
 #ifdef UNIT_TESTS

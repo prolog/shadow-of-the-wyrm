@@ -56,7 +56,7 @@ bool IndividualSpellKnowledge::deserialize(std::istream& stream)
 
 ClassIdentifier IndividualSpellKnowledge::internal_class_identifier() const
 {
-  return CLASS_ID_INDIVIDUAL_SPELL_KNOWLEDGE;
+  return ClassIdentifier::CLASS_ID_INDIVIDUAL_SPELL_KNOWLEDGE;
 }
 
 #ifdef UNIT_TESTS

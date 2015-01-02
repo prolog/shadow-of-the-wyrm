@@ -49,7 +49,7 @@ bool StatusDuration::deserialize(istream& stream)
 
 ClassIdentifier StatusDuration::internal_class_identifier() const
 {
-  return CLASS_ID_STATUS_DURATION;
+  return ClassIdentifier::CLASS_ID_STATUS_DURATION;
 }
 
 #ifdef UNIT_TESTS

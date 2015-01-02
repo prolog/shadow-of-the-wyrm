@@ -23,7 +23,7 @@ uchar Bench::get_symbol() const
 
 ClassIdentifier Bench::internal_class_identifier() const
 {
-  return CLASS_ID_BENCH;
+  return ClassIdentifier::CLASS_ID_BENCH;
 }
 
 #ifdef UNIT_TESTS

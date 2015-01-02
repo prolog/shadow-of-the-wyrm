@@ -4,6 +4,6 @@ using namespace std;
 
 Colour Material::get_colour() const
 {
-  return COLOUR_WHITE;
+  return Colour::COLOUR_WHITE;
 }
 

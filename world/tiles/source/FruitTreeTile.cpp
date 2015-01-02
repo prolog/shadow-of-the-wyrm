@@ -19,7 +19,7 @@ Tile* FruitTreeTile::clone()
 
 ClassIdentifier FruitTreeTile::internal_class_identifier() const
 {
-  return CLASS_ID_FRUIT_TREE_TILE;
+  return ClassIdentifier::CLASS_ID_FRUIT_TREE_TILE;
 }
 
 #ifdef UNIT_TESTS

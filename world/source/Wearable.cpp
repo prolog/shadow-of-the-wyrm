@@ -8,7 +8,7 @@ using std::dynamic_pointer_cast;
 
 // Local enumeration for wearable to determine exactly how a wearable
 // is enchanted.
-enum ImproveWearableType
+enum struct ImproveWearableType
 {
   IMPROVE_WEARABLE_EVADE = 1,
   IMPROVE_WEARABLE_SOAK  = 2,

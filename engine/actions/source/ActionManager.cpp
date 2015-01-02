@@ -115,7 +115,7 @@ ActionCost ActionManager::ascend(CreaturePtr creature)
   MapPtr current_map = game.get_current_map();
   MapType map_type = current_map->get_map_type();
     
-  if (map_type == MAP_TYPE_WORLD && creature && creature->get_is_player())
+  if (map_type == MapType::MAP_TYPE_WORLD && creature && creature->get_is_player())
   {
     IMessageManager& manager = MessageManagerFactory::instance(creature, true);
     string search_message = StringTable::get(MovementTextKeys::ACTION_NO_WAY_UP_WORLD_MAP);
@@ -177,7 +177,7 @@ ActionCostValue ActionManager::wear_or_remove_item(CreaturePtr creature, const E
       // This is null if no item was selected.
       if (item_in_slot)
       {        
-        ActionCostValue item_equipped = handle_item(creature, ITEM_ACTION_EQUIP, item_in_slot, worn_location);
+        ActionCostValue item_equipped = handle_item(creature, ItemAction::ITEM_ACTION_EQUIP, item_in_slot, worn_location);
         
         // If the item was successfully equipped, remove it from the
         // inventory.
@@ -205,14 +205,14 @@ ActionCostValue ActionManager::handle_item(CreaturePtr creature, const ItemActio
   
   switch(item_action)
   {
-    case ITEM_ACTION_EQUIP:
-      if (loc != EQUIPMENT_WORN_NONE) item_manager.equip(creature, item, loc);
+    case ItemAction::ITEM_ACTION_EQUIP:
+      if (loc != EquipmentWornLocation::EQUIPMENT_WORN_NONE) item_manager.equip(creature, item, loc);
       else item_manager.equip(creature, item);
       break;
-    case ITEM_ACTION_PICK_UP:
+    case ItemAction::ITEM_ACTION_PICK_UP:
       item_manager.pick_up(creature, item);
       break;
-    case ITEM_ACTION_DROP:
+    case ItemAction::ITEM_ACTION_DROP:
       item_manager.drop(creature, item);
       break;
     default:
@@ -584,7 +584,7 @@ bool ActionManager::deserialize(std::istream& stream)
 
 ClassIdentifier ActionManager::internal_class_identifier() const
 {
-  return CLASS_ID_ACTION_MANAGER;
+  return ClassIdentifier::CLASS_ID_ACTION_MANAGER;
 }
 
 #ifdef UNIT_TESTS

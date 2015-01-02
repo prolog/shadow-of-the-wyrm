@@ -206,7 +206,7 @@ bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal
     // Only add the item if it was created successfully
     if (item)
     {
-      inv->merge_or_add(item, INVENTORY_ADDITION_BACK);
+      inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
 
       return true;
     }
@@ -222,7 +222,7 @@ ActionCostValue ItemManager::pick_up(CreaturePtr creature, ItemPtr item)
   if (creature && item)
   {
     IInventoryPtr inv = creature->get_inventory();
-    inv->merge_or_add(item, INVENTORY_ADDITION_BACK);
+    inv->merge_or_add(item, InventoryAdditionType::INVENTORY_ADDITION_BACK);
 
     picked_up_item = get_action_cost_value(creature);
   }

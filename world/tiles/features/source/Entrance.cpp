@@ -143,7 +143,7 @@ bool Entrance::deserialize(istream& stream)
 
 ClassIdentifier Entrance::internal_class_identifier() const
 {
-  return CLASS_ID_ENTRANCE;
+  return ClassIdentifier::CLASS_ID_ENTRANCE;
 }
 
 #ifdef UNIT_TESTS

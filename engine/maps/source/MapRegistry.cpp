@@ -97,7 +97,7 @@ bool MapRegistry::deserialize(istream& stream)
 
 ClassIdentifier MapRegistry::internal_class_identifier() const
 {
-  return CLASS_ID_MAP_REGISTRY;
+  return ClassIdentifier::CLASS_ID_MAP_REGISTRY;
 }
 
 #ifdef UNIT_TESTS

@@ -17,7 +17,7 @@ Tile* CairnTile::clone()
 
 ClassIdentifier CairnTile::internal_class_identifier() const
 {
-  return CLASS_ID_CAIRN_TILE;
+  return ClassIdentifier::CLASS_ID_CAIRN_TILE;
 }
 
 #ifdef UNIT_TESTS

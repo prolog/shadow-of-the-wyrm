@@ -8,7 +8,7 @@ const float DamageText::PCT_PLAYER_HP_COLOUR_CHANGE = 0.25;
 // - The creature's current HP is less than 25% of the maximum
 Colour DamageText::get_colour(CreaturePtr creature) const
 {
-  Colour damage_colour = COLOUR_WHITE;
+  Colour damage_colour = Colour::COLOUR_WHITE;
 
   if (creature && creature->get_is_player())
   {
@@ -17,7 +17,7 @@ Colour DamageText::get_colour(CreaturePtr creature) const
 
     if (creature_hp.get_current() < threshold)
     {
-      damage_colour = COLOUR_RED;
+      damage_colour = Colour::COLOUR_RED;
     }
   }
 

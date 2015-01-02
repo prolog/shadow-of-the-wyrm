@@ -74,7 +74,7 @@ bool Weight::deserialize(istream& stream)
 
 ClassIdentifier Weight::internal_class_identifier() const
 {
-  return CLASS_ID_WEIGHT;
+  return ClassIdentifier::CLASS_ID_WEIGHT;
 }
 
 #ifdef UNIT_TESTS

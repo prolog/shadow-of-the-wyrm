@@ -35,7 +35,7 @@ bool Gold::get_can_rust() const
 
 Colour Gold::get_colour() const
 {
-  return COLOUR_BOLD_YELLOW;
+  return Colour::COLOUR_BOLD_YELLOW;
 }
 
 Material* Gold::clone()

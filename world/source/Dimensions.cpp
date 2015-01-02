@@ -83,7 +83,7 @@ bool Dimensions::deserialize(istream& stream)
 
 ClassIdentifier Dimensions::internal_class_identifier() const
 {
-  return CLASS_ID_DIMENSIONS;
+  return ClassIdentifier::CLASS_ID_DIMENSIONS;
 }
 
 #ifdef UNIT_TESTS

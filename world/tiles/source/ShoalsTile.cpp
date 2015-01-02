@@ -28,7 +28,7 @@ Tile* ShoalsTile::clone()
 
 ClassIdentifier ShoalsTile::internal_class_identifier() const
 {
-  return CLASS_ID_SHOALS_TILE;
+  return ClassIdentifier::CLASS_ID_SHOALS_TILE;
 }
 
 #ifdef UNIT_TESTS

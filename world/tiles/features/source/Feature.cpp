@@ -141,7 +141,7 @@ bool Feature::get_is_blocking() const
 // Use the material's colour
 Colour Feature::get_colour() const
 {
-  Colour colour = COLOUR_WHITE;
+  Colour colour = Colour::COLOUR_WHITE;
   
   MaterialPtr materialp = MaterialFactory::create_material(material);
   colour = materialp->get_colour();
@@ -184,7 +184,7 @@ bool Feature::serialize(ostream& stream) const
   }
   else
   {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
+    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
   }
 
   Serialize::write_enum(stream, material);
@@ -199,7 +199,7 @@ bool Feature::deserialize(istream& stream)
   ClassIdentifier lock_clid;
   Serialize::read_class_id(stream, lock_clid);
 
-  if (lock_clid != CLASS_ID_NULL)
+  if (lock_clid != ClassIdentifier::CLASS_ID_NULL)
   {
     lock = FeatureFactory::create_lock();
     lock->deserialize(stream);
@@ -214,5 +214,5 @@ bool Feature::deserialize(istream& stream)
 
 ClassIdentifier Feature::internal_class_identifier() const
 {
-  return CLASS_ID_FEATURE;
+  return ClassIdentifier::CLASS_ID_FEATURE;
 }

@@ -26,5 +26,5 @@ string GoodAltar::get_description_sid() const
 
 ClassIdentifier GoodAltar::internal_class_identifier() const
 {
-  return CLASS_ID_GOOD_ALTAR;
+  return ClassIdentifier::CLASS_ID_GOOD_ALTAR;
 }

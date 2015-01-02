@@ -52,7 +52,7 @@ ISeason* Winter::clone()
 
 ClassIdentifier Winter::internal_class_identifier() const
 {
-  return CLASS_ID_WINTER;
+  return ClassIdentifier::CLASS_ID_WINTER;
 }
 
 #ifdef UNIT_TESTS

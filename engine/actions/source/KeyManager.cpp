@@ -14,7 +14,7 @@ bool KeyManager::has_key(CreaturePtr creature, LockPtr lock)
 
     if (!lock_id.empty())
     {
-      list<ItemPtr> tools = ItemManager::get_items_by_type(creature, ITEM_TYPE_TOOL);
+      list<ItemPtr> tools = ItemManager::get_items_by_type(creature, ItemType::ITEM_TYPE_TOOL);
 
       for(ItemPtr item : tools)
       {

@@ -46,11 +46,11 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
   // Can always walk or fly.
   //
   // Boating is only allowed on water.
-  MovementType movement = MOVEMENT_TYPE_WALKING;
+  MovementType movement = MovementType::MOVEMENT_TYPE_WALKING;
 
   if (creature && creature->has_status(StatusIdentifiers::STATUS_ID_FLYING) || creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL))
   {
-    movement = MOVEMENT_TYPE_FLYING;
+    movement = MovementType::MOVEMENT_TYPE_FLYING;
   }
 
   if (creature && tile)
@@ -59,15 +59,15 @@ MovementType MovementAccumulationUpdater::get_movement_type(CreaturePtr creature
     
     switch (tst)
     {
-      case TILE_SUPER_TYPE_UNDEFINED:
-      case TILE_SUPER_TYPE_GROUND:
-      case TILE_SUPER_TYPE_AIR:
+      case TileSuperType::TILE_SUPER_TYPE_UNDEFINED:
+      case TileSuperType::TILE_SUPER_TYPE_GROUND:
+      case TileSuperType::TILE_SUPER_TYPE_AIR:
         break;
-      case TILE_SUPER_TYPE_WATER:
+      case TileSuperType::TILE_SUPER_TYPE_WATER:
       default:
-        if (creature->get_inventory()->has_item_type(ITEM_TYPE_BOAT))
+        if (creature->get_inventory()->has_item_type(ItemType::ITEM_TYPE_BOAT))
         {
-          movement = MOVEMENT_TYPE_BOAT;
+          movement = MovementType::MOVEMENT_TYPE_BOAT;
         }
         break;
     }

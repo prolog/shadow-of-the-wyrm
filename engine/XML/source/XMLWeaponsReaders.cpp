@@ -17,10 +17,10 @@ void XMLWeaponsReader::parse(WeaponPtr weapon, GenerationValues& gv, const XMLNo
   {
     XMLWearableReader::parse(weapon, gv, weapon_node);
     
-    SkillType trained_skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(weapon_node, "Skill", SKILL_MELEE_EXOTIC));
+    SkillType trained_skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(weapon_node, "Skill", static_cast<int>(SkillType::SKILL_MELEE_EXOTIC)));
     weapon->set_trained_skill(trained_skill);
     
-    SkillType trained_ranged_skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(weapon_node, "RangedSkill", SKILL_RANGED_EXOTIC));
+    SkillType trained_ranged_skill = static_cast<SkillType>(XMLUtils::get_child_node_int_value(weapon_node, "RangedSkill", static_cast<int>(SkillType::SKILL_RANGED_EXOTIC)));
     weapon->set_trained_ranged_skill(trained_ranged_skill);
     
     bool requires_ranged_weapon = XMLUtils::get_child_node_bool_value(weapon_node, "RequiresRangedWeapon", false);

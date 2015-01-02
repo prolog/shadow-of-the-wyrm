@@ -67,7 +67,7 @@ string TileSelectionKeyboardCommandMap::get_settings_prefix() const
 
 ClassIdentifier TileSelectionKeyboardCommandMap::internal_class_identifier() const
 {
-  return CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP;
+  return ClassIdentifier::CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP;
 }
 
 #ifdef UNIT_TESTS

@@ -228,7 +228,7 @@ bool Deity::deserialize(istream& stream)
 
 ClassIdentifier Deity::internal_class_identifier() const
 {
-  return CLASS_ID_DEITY;
+  return ClassIdentifier::CLASS_ID_DEITY;
 }
 
 #ifdef UNIT_TESTS

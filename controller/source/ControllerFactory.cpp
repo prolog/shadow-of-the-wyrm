@@ -40,6 +40,6 @@ void ControllerFactory::initialize_controller_map()
   ControllerPtr keyboard = std::make_shared<CursesKeyboardController>();
   ControllerPtr nullcont = std::make_shared<NullKeyboardController>();
 
-  controller_map = ControllerSerializationMap{ {CLASS_ID_CURSES_KEYBOARD_CONTROLLER, keyboard}, {CLASS_ID_NULL_KEYBOARD_CONTROLLER, nullcont} };
+  controller_map = ControllerSerializationMap{ { ClassIdentifier::CLASS_ID_CURSES_KEYBOARD_CONTROLLER, keyboard }, { ClassIdentifier::CLASS_ID_NULL_KEYBOARD_CONTROLLER, nullcont } };
 }
 

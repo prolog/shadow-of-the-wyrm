@@ -27,5 +27,5 @@ string NeutralAltar::get_description_sid() const
 
 ClassIdentifier NeutralAltar::internal_class_identifier() const
 {
-  return CLASS_ID_NEUTRAL_ALTAR;
+  return ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR;
 }

@@ -489,7 +489,7 @@ bool Map::serialize(ostream& stream) const
   }
   else
   {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
+    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
   }
 
   Serialize::write_string(stream, map_id);
@@ -543,7 +543,7 @@ bool Map::deserialize(istream& stream)
     ClassIdentifier tile_clid;
     Serialize::read_class_id(stream, tile_clid);
 
-    if (tile_clid != CLASS_ID_NULL)
+    if (tile_clid != ClassIdentifier::CLASS_ID_NULL)
     {
       TilePtr tile = TileFactory::create_tile(tile_clid);
       tile->deserialize(stream);
@@ -583,7 +583,7 @@ bool Map::deserialize(istream& stream)
 
   // If the map exit wasn't null originally (e.g., map exit on overworld map),
   // then read the details.
-  if (map_exit_clid != CLASS_ID_NULL)
+  if (map_exit_clid != ClassIdentifier::CLASS_ID_NULL)
   {
     map_exit = MapFactory::create_map_exit();
     map_exit->deserialize(stream);
@@ -599,7 +599,7 @@ bool Map::deserialize(istream& stream)
 
 ClassIdentifier Map::internal_class_identifier() const
 {
-  return CLASS_ID_MAP;
+  return ClassIdentifier::CLASS_ID_MAP;
 }
 
 #ifdef UNIT_TESTS
