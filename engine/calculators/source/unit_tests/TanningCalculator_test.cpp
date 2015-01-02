@@ -30,14 +30,14 @@ TEST_F(TanningCalculatorTestFixture, calculate_evade_probabilities)
 
   EXPECT_EQ(vector<int>({ 10, 10, 10, 10, 10 }), ev_p);
 
-  skills.set_value(SKILL_GENERAL_TANNING, 105);
+  skills.set_value(SkillType::SKILL_GENERAL_TANNING, 105);
   creature->set_skills(skills);
 
   ev_p = calculate_evade_probabilities(creature);
 
   EXPECT_EQ(vector<int>({100, 95, 90, 85, 80}), ev_p);
 
-  skills.set_value(SKILL_GENERAL_TANNING, 25);
+  skills.set_value(SkillType::SKILL_GENERAL_TANNING, 25);
   creature->set_skills(skills);
 
   ev_p = calculate_evade_probabilities(creature);
@@ -54,14 +54,14 @@ TEST_F(TanningCalculatorTestFixture, calculate_soak_probabilities)
 
   EXPECT_EQ(vector<int>({ 10, 10, 10, 10, 10 }), sk_p);
 
-  skills.set_value(SKILL_GENERAL_TANNING, 105);
+  skills.set_value(SkillType::SKILL_GENERAL_TANNING, 105);
   creature->set_skills(skills);
 
   sk_p = calculate_soak_probabilities(creature);
 
   EXPECT_EQ(vector<int>({ 100, 95, 90, 85, 80 }), sk_p);
 
-  skills.set_value(SKILL_GENERAL_TANNING, 24);
+  skills.set_value(SkillType::SKILL_GENERAL_TANNING, 24);
   creature->set_skills(skills);
 
   sk_p = calculate_soak_probabilities(creature);

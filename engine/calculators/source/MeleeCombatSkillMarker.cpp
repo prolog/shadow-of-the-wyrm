@@ -13,7 +13,7 @@ MeleeCombatSkillMarker::MeleeCombatSkillMarker(const AttackType at)
 // weapon skill.
 vector<SkillType> MeleeCombatSkillMarker::get_marked_skills(CreaturePtr creature) const
 {
-  vector<SkillType> marked_skills{SKILL_GENERAL_COMBAT};
+  vector<SkillType> marked_skills{SkillType::SKILL_GENERAL_COMBAT};
   WeaponManager wm;
 
   WeaponStyle ws = wm.get_style(attack_type);  

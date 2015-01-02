@@ -17,7 +17,7 @@ void ForestCalculator::initialize_fruit_probability_map()
 {
   fruit_probability_map.clear();
 
-  fruit_probability_map.insert(make_pair(TILE_TYPE_WILD_ORCHARD, 10));
+  fruit_probability_map.insert(make_pair(TileType::TILE_TYPE_WILD_ORCHARD, 10));
 }
 
 // Get the pct chance of a particular deciduous tree being a fruit tree

@@ -11,7 +11,7 @@ ActionCostValue SecondaryPhysicalAttackSpeedCalculator::calculate_weapon_speed(C
   
   if (creature)
   {
-    WeaponPtr weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_OFF_HAND));
+    WeaponPtr weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
 
     if (weapon)
     {
@@ -26,7 +26,7 @@ bool SecondaryPhysicalAttackSpeedCalculator::has_weapon_equipped(CreaturePtr cre
 {
   if (creature)
   {
-    WeaponPtr weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_OFF_HAND));
+    WeaponPtr weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND));
 
     return (weapon != nullptr);
   }

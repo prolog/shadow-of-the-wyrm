@@ -16,7 +16,7 @@ int DisfiguredCalculator::calculate_pct_chance_effect(CreaturePtr creature) cons
   {
     int health_bonus = creature->get_health().get_current() / BASE_DISFIGURED_CHANCE_HEALTH_MODIFIER;
 
-    double acid_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_ACID));
+    double acid_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_ACID));
 
     pct_chance -= health_bonus;
     pct_chance = static_cast<int>(pct_chance * acid_multiplier);

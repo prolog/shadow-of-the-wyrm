@@ -16,13 +16,13 @@ int AlignmentCalculator::calculate_alignment_for_sacrifice_on_coaligned_altar(in
 
   switch (altar_alignment_range)
   {
-    case ALIGNMENT_RANGE_EVIL:
+    case AlignmentRange::ALIGNMENT_RANGE_EVIL:
       new_alignment -= BASE_ALIGNMENT_DELTA_COALIGNED;
       break;
-    case ALIGNMENT_RANGE_GOOD:
+    case AlignmentRange::ALIGNMENT_RANGE_GOOD:
       new_alignment += BASE_ALIGNMENT_DELTA_COALIGNED;
       break;
-    case ALIGNMENT_RANGE_NEUTRAL:
+    case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
       if (new_alignment > true_neutral)
       {
         new_alignment -= BASE_ALIGNMENT_DELTA_COALIGNED;
@@ -61,14 +61,14 @@ int AlignmentCalculator::calculate_alignment_for_sacrifice_on_crossaligned_altar
 
   switch (current_alignment_range)
   {
-    case ALIGNMENT_RANGE_GOOD:
+    case AlignmentRange::ALIGNMENT_RANGE_GOOD:
       new_alignment -= static_cast<int>(BASE_ALIGNMENT_DELTA_CROSSALIGNED * multiplier);
       break;
-    case ALIGNMENT_RANGE_EVIL:
+    case AlignmentRange::ALIGNMENT_RANGE_EVIL:
       new_alignment += static_cast<int>(BASE_ALIGNMENT_DELTA_CROSSALIGNED * multiplier);
       break;
-    case ALIGNMENT_RANGE_NEUTRAL:
-      if (altar_alignment_range == ALIGNMENT_RANGE_GOOD)
+    case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
+      if (altar_alignment_range == AlignmentRange::ALIGNMENT_RANGE_GOOD)
       {
         new_alignment += static_cast<int>(BASE_ALIGNMENT_DELTA_CROSSALIGNED * multiplier);
       }

@@ -9,7 +9,7 @@ int SwimmingCalculator::calculate_maximum_swimming_time(const int swimming_skill
   int max_swimming_time = swimming_skill_value * MAXIMUM_SWIMMING_TIME_MULTIPLIER;
 
   // Spirits and water-breathers clearly can do this for a while.
-  if (is_incorporeal || (breathes == BREATHE_TYPE_WATER))
+  if (is_incorporeal || (breathes == BreatheType::BREATHE_TYPE_WATER))
   {
     max_swimming_time = std::numeric_limits<int>::max();
   }

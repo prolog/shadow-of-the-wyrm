@@ -1,7 +1,7 @@
 #include "MagicalCombatTargetNumberCalculator.hpp"
 
 MagicalCombatTargetNumberCalculator::MagicalCombatTargetNumberCalculator()
-: CombatTargetNumberCalculator(ATTACK_TYPE_MAGICAL)
+: CombatTargetNumberCalculator(AttackType::ATTACK_TYPE_MAGICAL)
 {
 }
 
@@ -15,7 +15,7 @@ int MagicalCombatTargetNumberCalculator::calculate(CreaturePtr attacking_creatur
   if (attacking_creature && attacked_creature)
   {
     int defender_evade = attacked_creature->get_evade().get_current();
-    int attacker_magic_value = (attacking_creature->get_skills().get_skill(SKILL_GENERAL_MAGIC)->get_value() / 2);
+    int attacker_magic_value = (attacking_creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC)->get_value() / 2);
 
     target_number = defender_evade - attacker_magic_value;
 

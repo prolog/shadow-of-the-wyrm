@@ -53,7 +53,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature) const
       Game& game = Game::instance();
       MapPtr current_map = game.get_current_map();
 
-      if (current_map && current_map->get_map_type() == MAP_TYPE_WORLD)
+      if (current_map && current_map->get_map_type() == MapType::MAP_TYPE_WORLD)
       {
         add_invalid_spellcasting_location_message(creature);
       }
@@ -132,10 +132,10 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
       // and a proper direction isn't selected, this will cause the magic 
       // to fail.
       bool spellcasting_succeeded = true;
-      Direction spell_direction = DIRECTION_NORTH;
+      Direction spell_direction = Direction::DIRECTION_NORTH;
 
       // Is a direction needed?
-      if (spell.get_shape().get_direction_category() != DIRECTION_CATEGORY_NONE)
+      if (spell.get_shape().get_direction_category() != DirectionCategory::DIRECTION_CATEGORY_NONE)
       {
         pair<bool, Direction> direction_pair = get_spell_direction_from_creature(creature, spell, spell_direction);
         spellcasting_succeeded = direction_pair.first; // Can the input be converted to a dir?
@@ -167,7 +167,7 @@ ActionCostValue SpellcastingAction::cast_spell(CreaturePtr creature, const strin
           SpellcastingProcessor sp;
 
           // Spells always use the "uncursed" effect status.
-          sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ITEM_STATUS_UNCURSED);
+          sp.process(spell_processor, creature, current_map, caster_coord, spell_direction, spell, ItemStatus::ITEM_STATUS_UNCURSED);
         }
 
         // Now that the spell has been cast, update the spell bonus information
@@ -285,7 +285,7 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
   if (creature->get_is_player())
   {
     string direction_prompt_sid = ActionTextKeys::ACTION_GET_DIRECTION;
-    if (spell.get_shape().get_direction_category() == DIRECTION_CATEGORY_CARDINAL)
+    if (spell.get_shape().get_direction_category() == DirectionCategory::DIRECTION_CATEGORY_CARDINAL)
     {
       direction_prompt_sid = ActionTextKeys::ACTION_GET_CARDINAL_DIRECTION;
     }
@@ -318,12 +318,12 @@ pair<bool, Direction> SpellcastingAction::get_spell_direction_from_creature(Crea
 
         // However, some spells (beams, etc) can also be
         // ordinal.
-        if (dc == DIRECTION_CATEGORY_CARDINALORDINAL && !is_ordinal)
+        if (dc == DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL && !is_ordinal)
         {
           direction_conversion_ok = false;
         }
 
-        if (is_ordinal && dc != DIRECTION_CATEGORY_CARDINALORDINAL)
+        if (is_ordinal && dc != DirectionCategory::DIRECTION_CATEGORY_CARDINALORDINAL)
         {
           direction_conversion_ok = false;
         }

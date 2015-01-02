@@ -16,7 +16,7 @@ int StunnedCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   {
     int dexterity_bonus = creature->get_dexterity().get_current() / BASE_STUNNED_CHANCE_DEXTERITY_MODIFIER;
 
-    double pound_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_POUND));
+    double pound_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_POUND));
 
     pct_chance -= dexterity_bonus;
     pct_chance = static_cast<int>(pct_chance * pound_multiplier);

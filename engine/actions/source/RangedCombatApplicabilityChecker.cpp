@@ -52,7 +52,7 @@ bool RangedCombatApplicabilityChecker::is_current_map_type_not_world()
   Game& game = Game::instance();
   bool current_map_is_not_world = false;
 
-  current_map_is_not_world = !(game.get_current_map()->get_map_type() == MAP_TYPE_WORLD);
+  current_map_is_not_world = !(game.get_current_map()->get_map_type() == MapType::MAP_TYPE_WORLD);
   
   return current_map_is_not_world;
 }
@@ -71,8 +71,8 @@ bool RangedCombatApplicabilityChecker::is_ranged_weapon_equipped(CreaturePtr cre
   {
     Equipment& equipment = creature->get_equipment();
     
-    ItemPtr ranged_weapon = equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON);
-    ItemPtr ammunition = equipment.get_item(EQUIPMENT_WORN_AMMUNITION);
+    ItemPtr ranged_weapon = equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
+    ItemPtr ammunition = equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
     
     if (!(ranged_weapon || ammunition))
     {
@@ -97,7 +97,7 @@ bool RangedCombatApplicabilityChecker::is_ranged_weapon_and_ammunition_equipped(
   if (creature)
   {
     Equipment& equipment = creature->get_equipment();    
-    ItemPtr ammunition = equipment.get_item(EQUIPMENT_WORN_AMMUNITION);
+    ItemPtr ammunition = equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
     
     return (ammunition != nullptr);
   }
@@ -123,8 +123,8 @@ bool RangedCombatApplicabilityChecker::does_ranged_weapon_match_ammunition(Creat
   {
     Equipment& equipment = creature->get_equipment();
     
-    WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
-    ItemPtr ammo_slot_item = equipment.get_item(EQUIPMENT_WORN_AMMUNITION);
+    WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
+    ItemPtr ammo_slot_item = equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
     WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(ammo_slot_item);
     PotionPtr potion_ammo = dynamic_pointer_cast<Potion>(ammo_slot_item);
 
@@ -151,8 +151,8 @@ bool RangedCombatApplicabilityChecker::is_ranged_weapon_required_and_equipped(Cr
   if (creature)
   {
     Equipment& equipment = creature->get_equipment();
-    WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_AMMUNITION));
-    ItemPtr ranged_weapon = equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON);
+    WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
+    ItemPtr ranged_weapon = equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
 
     bool ammunition_requires_ranged_weapon = false;
 

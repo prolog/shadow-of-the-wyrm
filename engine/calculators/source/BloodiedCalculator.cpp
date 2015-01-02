@@ -17,7 +17,7 @@ int BloodiedCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   {
     int strength_bonus = creature->get_strength().get_current() / BASE_BLOODIED_CHANCE_STRENGTH_MODIFIER;
 
-    double slash_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_SLASH));
+    double slash_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_SLASH));
 
     pct_chance -= strength_bonus;
     pct_chance = static_cast<int>(pct_chance * slash_multiplier);

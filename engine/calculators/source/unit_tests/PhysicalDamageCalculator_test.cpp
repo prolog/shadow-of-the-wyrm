@@ -9,26 +9,26 @@ CreaturePtr create_creature_with_weapon_and_15_str()
 
   ItemPtr weapon_item = ItemPtr(new MeleeWeapon());
 
-  Damage damage(3,4,2,DAMAGE_TYPE_SLASH, false, false, 0, {});
+  Damage damage(3,4,2,DamageType::DAMAGE_TYPE_SLASH, false, false, 0, {});
 
   WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(weapon_item);
   weapon->set_damage(damage);
 
-  creature->get_equipment().set_item(weapon_item, EQUIPMENT_WORN_WIELDED);
+  creature->get_equipment().set_item(weapon_item, EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 
   return creature;
 }
 
 TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_object)
 {
-  PhysicalDamageCalculator pdc(ATTACK_TYPE_MELEE_PRIMARY);
+  PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY);
   CreaturePtr creature = create_creature_with_weapon_and_15_str();
   Statistic addl_creature_damage(10);
   creature->set_addl_damage(addl_creature_damage);
 
   // The base damage object should just be the weapon's damage.
   Damage base_damage = pdc.calculate_base_damage_object(creature);
-  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_WIELDED));
+  WeaponPtr weapon = std::dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED));
   Damage expected_damage = weapon->get_damage();
 
   // Should exclude the creature's add'l damage - that will be accounted for
@@ -38,7 +38,7 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_object
 
 TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_bonuses)
 {
-  PhysicalDamageCalculator pdc(ATTACK_TYPE_MELEE_PRIMARY);
+  PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY);
   CreaturePtr creature = create_creature_with_weapon_and_15_str();
   Statistic addl_creature_damage(10);
   creature->set_addl_damage(addl_creature_damage);
@@ -54,7 +54,7 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, calculate_base_damage_with_b
 // For every 5 points of Str > 10, +1 dam.
 TEST(SL_World_Calculators_PhysicalDamageCalculator, get_statistic_based_damage_modifier)
 {
-  PhysicalDamageCalculator pdc(ATTACK_TYPE_MELEE_PRIMARY);
+  PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY);
 
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_strength(3);
@@ -73,7 +73,7 @@ TEST(SL_World_Calculators_PhysicalDamageCalculator, get_statistic_based_damage_m
 // For every 0.02 BAC, +1 dam.
 TEST(SL_World_Calculators_PhysicalDamageCalculator, get_drunkenness_modifier)
 {
-  PhysicalDamageCalculator pdc(ATTACK_TYPE_MELEE_PRIMARY);
+  PhysicalDamageCalculator pdc(AttackType::ATTACK_TYPE_MELEE_PRIMARY);
   CreaturePtr creature = create_creature_with_weapon_and_15_str();
 
   Blood b;

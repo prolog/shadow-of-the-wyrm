@@ -14,8 +14,8 @@ TEST(SL_Engine_Calculators_CreatureAdditionalDamageCalculator, calculate_addl_da
   ArmourPtr item2 = ArmourPtr(new Armour());
   item2->set_addl_damage(6);
 
-  cp->get_equipment().set_item(item1, EQUIPMENT_WORN_HEAD);
-  cp->get_equipment().set_item(item2, EQUIPMENT_WORN_FEET);
+  cp->get_equipment().set_item(item1, EquipmentWornLocation::EQUIPMENT_WORN_HEAD);
+  cp->get_equipment().set_item(item2, EquipmentWornLocation::EQUIPMENT_WORN_FEET);
 
   EXPECT_EQ(9, cadc.calculate_additional_damage(cp));
 }

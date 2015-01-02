@@ -22,10 +22,10 @@ ActionCostValue WeaponInfoAction::weapon_info(CreaturePtr creature, const Weapon
   {
     switch(ws)
     {
-      case WEAPON_STYLE_MELEE:
+      case WeaponStyle::WEAPON_STYLE_MELEE:
         action_cost_value = melee_weapon_info(creature);
         break;
-      case WEAPON_STYLE_RANGED:
+      case WeaponStyle::WEAPON_STYLE_RANGED:
         action_cost_value = ranged_weapon_info(creature);
         break;
       default:
@@ -47,14 +47,14 @@ ActionCostValue WeaponInfoAction::melee_weapon_info(CreaturePtr creature) const
     Equipment& eq = creature->get_equipment();
     Damage base_damage = creature->get_base_damage();
 
-    ItemPtr wielded_item = eq.get_item(EQUIPMENT_WORN_WIELDED);
+    ItemPtr wielded_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
     WeaponPtr wielded_weapon = dynamic_pointer_cast<Weapon>(wielded_item);
 
-    ItemPtr off_hand_item = eq.get_item(EQUIPMENT_WORN_OFF_HAND);
+    ItemPtr off_hand_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND);
     WeaponPtr off_hand_weapon = dynamic_pointer_cast<Weapon>(off_hand_item);
     
-    string wielded_weapon_text = get_melee_weapon_info(creature, wielded_weapon, ATTACK_TYPE_MELEE_PRIMARY, base_damage);
-    string off_hand_weapon_text = get_melee_weapon_info(creature, off_hand_weapon, ATTACK_TYPE_MELEE_SECONDARY, base_damage);
+    string wielded_weapon_text = get_melee_weapon_info(creature, wielded_weapon, AttackType::ATTACK_TYPE_MELEE_PRIMARY, base_damage);
+    string off_hand_weapon_text = get_melee_weapon_info(creature, off_hand_weapon, AttackType::ATTACK_TYPE_MELEE_SECONDARY, base_damage);
     
     manager.add_new_message(wielded_weapon_text);
     manager.add_new_message(off_hand_weapon_text);
@@ -71,8 +71,8 @@ ActionCostValue WeaponInfoAction::ranged_weapon_info(CreaturePtr creature) const
   if (creature)
   {
     Equipment& eq = creature->get_equipment();
-    ItemPtr ranged_item = eq.get_item(EQUIPMENT_WORN_RANGED_WEAPON);
-    ItemPtr ammunition_item = eq.get_item(EQUIPMENT_WORN_AMMUNITION);
+    ItemPtr ranged_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
+    ItemPtr ammunition_item = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
     
     WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(ranged_item);
     WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(ammunition_item);
@@ -93,7 +93,7 @@ string WeaponInfoAction::get_melee_weapon_info(CreaturePtr creature, WeaponPtr w
 
   // Always display the info for the primary slot (it may not hold a weapon - that's fine, that's considered
   // unarmed).
-  if (weapon || (attack_type == ATTACK_TYPE_MELEE_PRIMARY))
+  if (weapon || (attack_type == AttackType::ATTACK_TYPE_MELEE_PRIMARY))
   {
     DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
     WeaponDifficultyCalculator wdc;
@@ -122,11 +122,11 @@ string WeaponInfoAction::get_ranged_weapon_info(CreaturePtr creature, WeaponPtr 
 
   if (ranged_weapon || ammunition)
   {
-    DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(ATTACK_TYPE_RANGED);
+    DamageCalculatorPtr damage_calculator = DamageCalculatorFactory::create_damage_calculator(AttackType::ATTACK_TYPE_RANGED);
     WeaponDifficultyCalculator wdc;
 
-    int base_difficulty = wdc.calculate_base_difficulty(creature, ATTACK_TYPE_RANGED);
-    int total_difficulty = wdc.calculate_total_difficulty_for_display(creature, ATTACK_TYPE_RANGED);
+    int base_difficulty = wdc.calculate_base_difficulty(creature, AttackType::ATTACK_TYPE_RANGED);
+    int total_difficulty = wdc.calculate_total_difficulty_for_display(creature, AttackType::ATTACK_TYPE_RANGED);
     Damage ranged_damage = damage_calculator->calculate_base_damage_with_bonuses_or_penalties(creature);
     
     RangedAttackSpeedCalculator rasc;

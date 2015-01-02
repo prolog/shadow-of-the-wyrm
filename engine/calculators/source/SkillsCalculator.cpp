@@ -27,22 +27,22 @@ Skills SkillsCalculator::calculate_skills(CreaturePtr creature, RacePtr race, Cl
 
 Skills SkillsCalculator::calculate_general_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class, const Skills& current_skills)
 {
-  return calculate_skills_in_given_range(creature, race, char_class, current_skills, SKILL_GENERAL_BEGIN+1, SKILL_GENERAL_LAST);
+  return calculate_skills_in_given_range(creature, race, char_class, current_skills, static_cast<int>(SkillType::SKILL_GENERAL_BEGIN) + 1, static_cast<int>(SkillType::SKILL_GENERAL_LAST));
 }
 
 Skills SkillsCalculator::calculate_melee_weapon_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class, const Skills& current_skills)
 {
-  return calculate_skills_in_given_range(creature, race, char_class, current_skills, SKILL_MELEE_BEGIN+1, SKILL_MELEE_LAST);
+  return calculate_skills_in_given_range(creature, race, char_class, current_skills, static_cast<int>(SkillType::SKILL_MELEE_BEGIN) + 1, static_cast<int>(SkillType::SKILL_MELEE_LAST));
 }
 
 Skills SkillsCalculator::calculate_ranged_weapon_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class, const Skills& current_skills)
 {
-  return calculate_skills_in_given_range(creature, race, char_class, current_skills, SKILL_RANGED_BEGIN+1, SKILL_RANGED_LAST);
+  return calculate_skills_in_given_range(creature, race, char_class, current_skills, static_cast<int>(SkillType::SKILL_RANGED_BEGIN) + 1, static_cast<int>(SkillType::SKILL_RANGED_LAST));
 }
 
 Skills SkillsCalculator::calculate_magic_skills(CreaturePtr creature, RacePtr race, ClassPtr char_class, const Skills& current_skills)
 {
-  return calculate_skills_in_given_range(creature, race, char_class, current_skills, SKILL_MAGIC_BEGIN+1, SKILL_MAGIC_LAST);
+  return calculate_skills_in_given_range(creature, race, char_class, current_skills, static_cast<int>(SkillType::SKILL_MAGIC_BEGIN) + 1, static_cast<int>(SkillType::SKILL_MAGIC_LAST));
 }
 
 Skills SkillsCalculator::calculate_skills_in_given_range(CreaturePtr creature, RacePtr race, ClassPtr char_class, const Skills& current_skills, const int first_skill, const int last_skill)

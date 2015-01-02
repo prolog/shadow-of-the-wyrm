@@ -4,7 +4,7 @@ TEST(SL_World_Calculator_PoisonCalculator, calc_pct_chance_poison)
 {
   CreaturePtr creature = std::make_shared<Creature>();
   creature->set_health(10);
-  creature->get_resistances().set_resistance_value(DAMAGE_TYPE_POISON, 1.0);
+  creature->get_resistances().set_resistance_value(DamageType::DAMAGE_TYPE_POISON, 1.0);
 
   PoisonCalculator pc;
 
@@ -14,7 +14,7 @@ TEST(SL_World_Calculator_PoisonCalculator, calc_pct_chance_poison)
 
   EXPECT_EQ(20, pc.calculate_pct_chance_effect(creature));
 
-  creature->get_resistances().set_resistance_value(DAMAGE_TYPE_POISON, 0.25);
+  creature->get_resistances().set_resistance_value(DamageType::DAMAGE_TYPE_POISON, 0.25);
 
   EXPECT_EQ(5, pc.calculate_pct_chance_effect(creature));
 }

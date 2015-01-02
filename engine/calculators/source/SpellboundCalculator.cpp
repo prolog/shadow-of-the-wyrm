@@ -16,7 +16,7 @@ int SpellboundCalculator::calculate_pct_chance_effect(CreaturePtr creature) cons
   {
     int willpower_bonus = creature->get_willpower().get_current() / BASE_SPELLBOUND_CHANCE_WILLPOWER_MODIFIER;
 
-    double arcane_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_ARCANE));
+    double arcane_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_ARCANE));
 
     pct_chance -= willpower_bonus;
     pct_chance = static_cast<int>(pct_chance * arcane_multiplier);

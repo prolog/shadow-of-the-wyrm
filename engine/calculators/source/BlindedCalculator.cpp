@@ -16,7 +16,7 @@ int BlindedCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   {
     int health_bonus = creature->get_health().get_current() / BASE_BLINDED_CHANCE_HEALTH_MODIFIER;
 
-    double fire_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_HEAT));
+    double fire_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_HEAT));
 
     pct_chance -= health_bonus;
     pct_chance = static_cast<int>(pct_chance * fire_multiplier);

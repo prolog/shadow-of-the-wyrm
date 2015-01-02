@@ -18,7 +18,7 @@ int ParalysisCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   if (creature)
   {
     int health_bonus = (creature->get_health().get_current() / BASE_PARALYSIS_CHANCE_HEALTH_MODIFIER);
-    double lightning_multiplier = std::max<double>(0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_LIGHTNING));
+    double lightning_multiplier = std::max<double>(0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_LIGHTNING));
 
     pct_chance -= health_bonus;
     pct_chance = static_cast<int>(pct_chance * lightning_multiplier);

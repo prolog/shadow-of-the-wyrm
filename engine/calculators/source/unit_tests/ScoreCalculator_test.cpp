@@ -76,7 +76,7 @@ TEST(SL_Engine_Calculator_ScoreCalculator, artifact_component)
 
   IInventoryPtr inv = cp->get_inventory();
   inv->add(w1);
-  cp->get_equipment().set_item(w2, EQUIPMENT_WORN_WIELDED);
+  cp->get_equipment().set_item(w2, EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 
   ScoreCalculator sc;
 
@@ -107,7 +107,7 @@ TEST(SL_Engine_Calculators_ScoreCalculator, total_score)
   IInventoryPtr inv = cp->get_inventory();
   inv->add(currency);
   inv->add(w1);
-  cp->get_equipment().set_item(w2, EQUIPMENT_WORN_WIELDED);
+  cp->get_equipment().set_item(w2, EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
 
   // end boss
   Mortuary& m = cp->get_mortuary_ref();

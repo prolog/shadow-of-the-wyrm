@@ -12,7 +12,7 @@ ActionCostValue RangedAttackSpeedCalculator::calculate(CreaturePtr creature)
   if (creature)
   {
     Equipment& eq = creature->get_equipment();
-    WeaponPtr weapon = dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
+    WeaponPtr weapon = dynamic_pointer_cast<Weapon>(eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
 
     // If a ranged weapon is equipped, the attack speed is that of the ranged weapon.
     // Otherwise, the attack speed is that of the ammunition.
@@ -24,7 +24,7 @@ ActionCostValue RangedAttackSpeedCalculator::calculate(CreaturePtr creature)
     }
     else
     {
-      WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_AMMUNITION));
+      WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
 
       if (ammunition)
       {

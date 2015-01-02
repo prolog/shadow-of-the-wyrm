@@ -7,7 +7,7 @@ using namespace std;
 // When magic is cast, mark the Magic skill, and the category of the spell last cast.
 vector<SkillType> MagicalCombatSkillMarker::get_marked_skills(CreaturePtr creature) const
 {
-  vector<SkillType> marked_skills{SKILL_GENERAL_MAGIC};
+  vector<SkillType> marked_skills{SkillType::SKILL_GENERAL_MAGIC};
 
   Game& game = Game::instance();
   string most_recent_spell = creature->get_spell_knowledge_ref().get_most_recently_cast_spell_id();

@@ -18,7 +18,7 @@ int SlownessCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   if (creature)
   {
     int agility_bonus = (creature->get_agility().get_current() / BASE_SLOWNESS_CHANCE_AGILITY_MODIFIER);
-    double cold_multiplier = std::max<double>(0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_COLD));
+    double cold_multiplier = std::max<double>(0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_COLD));
 
     pct_chance -= agility_bonus;
     pct_chance = static_cast<int>(pct_chance * cold_multiplier);

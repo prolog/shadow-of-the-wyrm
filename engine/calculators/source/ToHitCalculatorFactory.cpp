@@ -24,18 +24,18 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator(CreaturePtr 
   
   switch(attack_type)
   {
-    case ATTACK_TYPE_MELEE_PRIMARY:
-    case ATTACK_TYPE_MELEE_SECONDARY:
-    case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+    case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
+    case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
+    case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
     {
       creature_weapon = weapon_manager.get_weapon(creature, attack_type);
       calculator = create_to_hit_calculator_given_weapon(size, creature_weapon, attack_type);
       break;
     }
-    case ATTACK_TYPE_RANGED:
+    case AttackType::ATTACK_TYPE_RANGED:
       calculator = std::make_shared<LightMeleeAndRangedWeaponToHitCalculator>(attack_type);
       break;
-    case ATTACK_TYPE_MAGICAL: // fall through intentionally
+    case AttackType::ATTACK_TYPE_MAGICAL: // fall through intentionally
     default:
       calculator = std::make_shared<MagicToHitCalculator>();
       break;
@@ -76,7 +76,7 @@ ToHitCalculatorPtr ToHitCalculatorFactory::create_to_hit_calculator_given_weapon
   }
   else
   {
-    if (creature_size >= CREATURE_SIZE_HUGE)
+    if (creature_size >= CreatureSize::CREATURE_SIZE_HUGE)
     {
       calculator = std::make_shared<HeavyWeaponToHitCalculator>();
     }

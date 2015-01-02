@@ -56,7 +56,7 @@ vector<int> TanningCalculator::calculate_evade_probabilities(CreaturePtr creatur
 
   if (creature)
   {
-    int tanning_value = creature->get_skills().get_value(SKILL_GENERAL_TANNING);
+    int tanning_value = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING);
     int p = min(MAX_IMPROVEMENT_PCT, tanning_value);
 
     for (int i = 0; i < MAX_EVADE_BONUS; i += 2)
@@ -83,7 +83,7 @@ vector<int> TanningCalculator::calculate_soak_probabilities(CreaturePtr creature
 
   if (creature)
   {
-    int tanning_value = creature->get_skills().get_value(SKILL_GENERAL_TANNING);
+    int tanning_value = creature->get_skills().get_value(SkillType::SKILL_GENERAL_TANNING);
     int p = min(MAX_IMPROVEMENT_PCT, tanning_value);
 
     for (int i = 0; i < MAX_SOAK_BONUS; i++)

@@ -8,7 +8,7 @@ using namespace std;
 const int ToHitCalculator::NWP_SKILL_BONUS_DIVISOR = 5;
 
 ToHitCalculator::ToHitCalculator()
-: attack_type(ATTACK_TYPE_MELEE_PRIMARY)
+: attack_type(AttackType::ATTACK_TYPE_MELEE_PRIMARY)
 {
 }
 
@@ -27,9 +27,9 @@ int ToHitCalculator::get_weapon_bonus(CreaturePtr creature)
   SkillManager sm;
 
   // Apply the weapon modifier.
-  SkillType st = SKILL_MELEE_UNARMED;
+  SkillType st = SkillType::SKILL_MELEE_UNARMED;
   
-  if (attack_type == ATTACK_TYPE_RANGED)
+  if (attack_type == AttackType::ATTACK_TYPE_RANGED)
   {
     st = weapon->get_trained_ranged_skill();
   }

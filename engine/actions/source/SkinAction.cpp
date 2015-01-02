@@ -28,7 +28,7 @@ ActionCostValue SkinAction::skin(CreaturePtr creature, ActionManager * const am)
     MapPtr current_map = game.get_current_map();
     MapType map_type = current_map->get_map_type();
 
-    if (map_type == MAP_TYPE_WORLD)
+    if (map_type == MapType::MAP_TYPE_WORLD)
     {
       add_skin_world_map_message(creature);
     }
@@ -122,7 +122,7 @@ void SkinAction::create_skin_and_add_to_tile(CreaturePtr creature, ItemPtr corps
 
     // Chance to create a second skin based on a percentage check
     // using the creature's skinning skill.
-    if (RNG::percent_chance(creature->get_skills().get_value(SKILL_GENERAL_SKINNING)))
+    if (RNG::percent_chance(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SKINNING)))
     {
       quantity++;
     }

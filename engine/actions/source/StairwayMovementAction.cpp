@@ -29,7 +29,7 @@ ActionCostValue StairwayMovementAction::ascend(CreaturePtr creature, MovementAct
     // Otherwise, check to see if the creature is on a tile with DIRECTION_UP defined.
     TilePtr current_tile = MapUtils::get_tile_for_creature(current_map, creature);
     TileExitMap& tile_exit_map = current_tile->get_tile_exit_map_ref();
-    TileExitMap::iterator t_it = tile_exit_map.find(DIRECTION_UP);
+    TileExitMap::iterator t_it = tile_exit_map.find(Direction::DIRECTION_UP);
       
     MapExitPtr map_exit;
       
@@ -96,7 +96,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
       if (tile)
       {
         TileExitMap& exit_map = tile->get_tile_exit_map_ref();
-        TileExitMap::const_iterator t_it = exit_map.find(DIRECTION_DOWN);
+        TileExitMap::const_iterator t_it = exit_map.find(Direction::DIRECTION_DOWN);
         
         // If there is an exit in the down direction, do the appropriate action.
         if (t_it != exit_map.end())
@@ -125,7 +125,7 @@ ActionCostValue StairwayMovementAction::descend(CreaturePtr creature, MovementAc
         {
           MapType map_type = map->get_map_type();
             
-          if (map_type == MAP_TYPE_WORLD)
+          if (map_type == MapType::MAP_TYPE_WORLD)
           {
             descend_success = ma->generate_and_move_to_new_map(creature, map, tile, 1);
           }
