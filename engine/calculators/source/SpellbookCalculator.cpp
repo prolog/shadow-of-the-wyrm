@@ -15,7 +15,7 @@ void SpellbookCalculator::initialize_status_failure_levels()
   status_failure_levels.clear();
 
   // The pct chance of being destroyed after a successful reading.
-  status_failure_levels = std::map<ItemStatus, int>{{ITEM_STATUS_CURSED, 100}, {ITEM_STATUS_UNCURSED, 65}, {ITEM_STATUS_BLESSED, 45}};
+  status_failure_levels = std::map<ItemStatus, int>{{ItemStatus::ITEM_STATUS_CURSED, 100}, {ItemStatus::ITEM_STATUS_UNCURSED, 65}, {ItemStatus::ITEM_STATUS_BLESSED, 45}};
 }
 
 void SpellbookCalculator::initialize_status_casting_multipliers()
@@ -23,7 +23,7 @@ void SpellbookCalculator::initialize_status_casting_multipliers()
   status_casting_multipliers.clear();
 
   // 75% as many from a cursed book, 100% as many from an uncursed book, 120% as many from a blessed book.
-  status_casting_multipliers = std::map<ItemStatus, float>{ { ITEM_STATUS_CURSED, 0.75f }, { ITEM_STATUS_UNCURSED, 1.0f }, { ITEM_STATUS_BLESSED, 1.2f } };
+  status_casting_multipliers = std::map<ItemStatus, float>{ { ItemStatus::ITEM_STATUS_CURSED, 0.75f }, { ItemStatus::ITEM_STATUS_UNCURSED, 1.0f }, { ItemStatus::ITEM_STATUS_BLESSED, 1.2f } };
 }
 
 // Learning a spell uses the following mechanic:
@@ -45,7 +45,7 @@ pair<bool, int> SpellbookCalculator::learn_spell(CreaturePtr creature, const Ski
     Skills& skills = creature->get_skills();
 
     int rand = RNG::dice(1, 100);
-    int magic_general_skill = skills.get_skill(SKILL_GENERAL_MAGIC)->get_value();
+    int magic_general_skill = skills.get_skill(SkillType::SKILL_GENERAL_MAGIC)->get_value();
     int magic_category_skill_raw = skills.get_skill(magic_category)->get_value();
     int magic_category_skill = (magic_category_skill_raw > 0) ? magic_category_skill_raw 
                                                               : SpellConstants::NO_CATEGORY_SKILL_SPELL_LEARNING_PENALTY;
@@ -88,7 +88,7 @@ int SpellbookCalculator::get_num_castings(CreaturePtr creature, const SkillType 
   Skills& skills = creature->get_skills();
   int int_score = creature->get_intelligence().get_current();
   int will_score = creature->get_willpower().get_current();
-  int magic_general_score = skills.get_skill(SKILL_GENERAL_MAGIC)->get_value();
+  int magic_general_score = skills.get_skill(SkillType::SKILL_GENERAL_MAGIC)->get_value();
   int magic_category_score = skills.get_skill(magic_category)->get_value();
   int random_factor = RNG::range(SpellConstants::BASE_MIN_CASTINGS, SpellConstants::BASE_MAX_CASTINGS);
 

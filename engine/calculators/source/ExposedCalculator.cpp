@@ -16,7 +16,7 @@ int ExposedCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   {
     int agility_bonus = creature->get_agility().get_current() / BASE_EXPOSED_CHANCE_AGILITY_MODIFIER;
 
-    double pierce_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_PIERCE));
+    double pierce_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_PIERCE));
 
     pct_chance -= agility_bonus;
     pct_chance = static_cast<int>(pct_chance * pierce_multiplier);

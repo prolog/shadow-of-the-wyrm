@@ -23,7 +23,7 @@ int PoisonCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   if (creature)
   {
     int health_modifier = creature->get_health().get_current() / BASE_POISON_CHANCE_HEALTH_MODIFIER;
-    double poison_multiplier = std::max<double>(0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_POISON));
+    double poison_multiplier = std::max<double>(0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_POISON));
 
     pct_chance -= health_modifier;
     pct_chance = static_cast<int>(pct_chance * poison_multiplier);

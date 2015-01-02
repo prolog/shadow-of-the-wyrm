@@ -26,7 +26,7 @@ ActionCostValue QuaffAction::quaff(CreaturePtr creature, ActionManager * const a
   
   if (creature)
   {
-    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ITEM_TYPE_POTION);
+    list<IItemFilterPtr> display_filter_list = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_POTION);
     ItemPtr selected_item = am->inventory(creature, creature->get_inventory(), display_filter_list, false);
     
     if (selected_item)
@@ -100,7 +100,7 @@ void QuaffAction::quaff_potion(CreaturePtr creature, PotionPtr potion, CreatureP
         // Use the generic spell processor, which is also used for "regular"
         // spellcasting.
         SpellcastingProcessor sp;
-        effect_identified = sp.process(spell_processor, caster, map, caster_coord, DIRECTION_NULL, potion_spell, potion->get_status());
+        effect_identified = sp.process(spell_processor, caster, map, caster_coord, Direction::DIRECTION_NULL, potion_spell, potion->get_status());
       }
 
       // Was the item identified?

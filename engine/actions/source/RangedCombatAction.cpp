@@ -83,7 +83,7 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
   {
     MapPtr current_map = game.get_current_map();
 
-    if (!SelectionUtils::has_target(creature, ATTACK_TYPE_RANGED))
+    if (!SelectionUtils::has_target(creature, AttackType::ATTACK_TYPE_RANGED))
     {
       SelectionUtils::select_nearest_hostile_target(creature, current_map);
     }
@@ -102,7 +102,7 @@ ActionCostValue RangedCombatAction::get_selected_tile(CreaturePtr creature)
   tsm.set_show_item_descriptions(false);
   // Show only the creature.
   
-  tsm.set_selection_key(Integer::to_string(ATTACK_TYPE_RANGED));
+  tsm.set_selection_key(Integer::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED)));
   
   action_cost_value = tsm.select_tile(creature, ActionTextKeys::ACTION_FIRE);  
   return action_cost_value;
@@ -123,8 +123,8 @@ void RangedCombatAction::fire_weapon_at_tile(CreaturePtr creature)
   {
     TargetMap& tile_map = creature->get_target_map_ref();
     
-    TargetMap::iterator t_it = tile_map.find(Integer::to_string(ATTACK_TYPE_RANGED));
-    DisplayTile projectile_disp = MapTranslator::create_display_tile_from_item(creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION));
+    TargetMap::iterator t_it = tile_map.find(Integer::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED)));
+    DisplayTile projectile_disp = MapTranslator::create_display_tile_from_item(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
     
     if (t_it != tile_map.end())
     {
@@ -227,7 +227,7 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
   {
     CombatManager cm;
 
-    PotionPtr potion = dynamic_pointer_cast<Potion>(creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION));
+    PotionPtr potion = dynamic_pointer_cast<Potion>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
 
     if (potion)
     {
@@ -239,7 +239,7 @@ void RangedCombatAction::fire_at_given_coordinates(CreaturePtr creature, MapPtr 
     }
     else
     {
-      cm.attack(creature, target_creature, ATTACK_TYPE_RANGED);
+      cm.attack(creature, target_creature, AttackType::ATTACK_TYPE_RANGED);
     }
   }
 
@@ -260,8 +260,8 @@ void RangedCombatAction::add_ranged_combat_message(CreaturePtr creature, Creatur
     target_creature_desc_sid = target_creature->get_description_sid();
   }
   
-  ItemPtr ranged = creature->get_equipment().get_item(EQUIPMENT_WORN_RANGED_WEAPON);
-  ItemPtr item = creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION);
+  ItemPtr ranged = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON);
+  ItemPtr item = creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
   
   // This is mostly a sanity check.  Ammunition can only be fired if there's ammunition!
   if (item)
@@ -301,7 +301,7 @@ void RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     // Check to see if there is a quantity of ammunition > 1; if so, reduce the quantity by
     // 1, but don't remove it.
     Equipment& eq = creature->get_equipment();
-    ItemPtr ammunition = eq.get_item(EQUIPMENT_WORN_AMMUNITION);
+    ItemPtr ammunition = eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
     
     if (ammunition->get_quantity() > 1)
     {
@@ -316,7 +316,7 @@ void RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     else
     {
       // Last ammunition - remove it from the equipment.
-      ammunition = im.remove(creature, EQUIPMENT_WORN_AMMUNITION, false);
+      ammunition = im.remove(creature, EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION, false);
     }
     
     AmmunitionSurvivalCalculator ammunition_survival_calc;
@@ -325,7 +325,7 @@ void RangedCombatAction::destroy_ammunition_or_drop_on_tile(CreaturePtr creature
     {
       IInventoryPtr inv = tile->get_items();
       
-      inv->merge_or_add(ammunition, INVENTORY_ADDITION_FRONT);
+      inv->merge_or_add(ammunition, InventoryAdditionType::INVENTORY_ADDITION_FRONT);
     }
   }
 }

@@ -43,7 +43,7 @@ int ItemPietyCalculator::get_base_value(ItemPtr item)
 
   if (item)
   {
-    if (item->get_type() == ITEM_TYPE_FOOD || item->get_type() == ITEM_TYPE_PLANT)
+    if (item->get_type() == ItemType::ITEM_TYPE_FOOD || item->get_type() == ItemType::ITEM_TYPE_PLANT)
     {
       ConsumablePtr consumable = std::dynamic_pointer_cast<Consumable>(item);
 

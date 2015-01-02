@@ -38,14 +38,14 @@ int LightMeleeAndRangedWeaponToHitCalculator::calculate(CreaturePtr creature)
 int LightMeleeAndRangedWeaponToHitCalculator::get_combat_or_archery_bonus(CreaturePtr creature) const
 {
   int bonus = 0;
-  SkillType skill = SKILL_GENERAL_COMBAT;
+  SkillType skill = SkillType::SKILL_GENERAL_COMBAT;
   
-  if (attack_type == ATTACK_TYPE_RANGED)
+  if (attack_type == AttackType::ATTACK_TYPE_RANGED)
   {
-    skill = SKILL_GENERAL_ARCHERY;
+    skill = SkillType::SKILL_GENERAL_ARCHERY;
   }
   
-  bonus = skill / NWP_SKILL_BONUS_DIVISOR;
+  bonus = static_cast<int>(skill) / NWP_SKILL_BONUS_DIVISOR;
   
   return bonus;
 }

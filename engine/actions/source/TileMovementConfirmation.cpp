@@ -45,7 +45,7 @@ pair<bool, string> TileMovementConfirmation::check_for_jumping_into_water(Creatu
   {
     IInventoryPtr inv = creature->get_inventory();
 
-    if (!(creature->get_breathes() == BREATHE_TYPE_WATER) && !is_incorporeal && !is_flying && !inv->has_item_type(ITEM_TYPE_BOAT))
+    if (!(creature->get_breathes() == BreatheType::BREATHE_TYPE_WATER) && !is_incorporeal && !is_flying && !inv->has_item_type(ItemType::ITEM_TYPE_BOAT))
     {
       details.first  = true;
       details.second = TextMessages::get_confirmation_message(TextKeys::DECISION_JUMP_INTO_WATER);

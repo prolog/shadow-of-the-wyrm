@@ -20,8 +20,9 @@ ActionCostValue ShowResistancesAction::show_resistances(CreaturePtr creature)
   resists_text.push_back(make_pair(Colour::COLOUR_WHITE, StringTable::get(ResistanceTextKeys::RESISTANCES_EXPLANATION)));
   resists_text.push_back(separator);
 
-  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
+    DamageType dt = static_cast<DamageType>(d);
     ostringstream ss;
     ResistancePtr cur_res = res.get_resistance(dt);
     double res_val = cur_res->get_value();

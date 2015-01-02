@@ -2,7 +2,7 @@
 #include "SkillManager.hpp"
 
 MagicToHitCalculator::MagicToHitCalculator()
-: ToHitCalculator(ATTACK_TYPE_MAGICAL)
+: ToHitCalculator(AttackType::ATTACK_TYPE_MAGICAL)
 {
 }
 
@@ -19,7 +19,7 @@ int MagicToHitCalculator::calculate(CreaturePtr creature)
     // Have you ever tried directing a fireball while drunk?
     // It's not easy!
     int bac_modifier = static_cast<int>(creature->get_blood().get_blood_alcohol_content() * 100);
-    int magic_bonus  = sm.get_skill_value(creature, SKILL_GENERAL_MAGIC) / NWP_SKILL_BONUS_DIVISOR;
+    int magic_bonus  = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_MAGIC) / NWP_SKILL_BONUS_DIVISOR;
     int intelligence = creature->get_intelligence().get_current();
     
     to_hit += magic_bonus;

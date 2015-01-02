@@ -18,7 +18,7 @@ int MutenessCalculator::calculate_pct_chance_effect(CreaturePtr creature) const
   if (creature)
   {
     int charisma_bonus = creature->get_charisma().get_current() / BASE_MUTENESS_CHANCE_CHARISMA_MODIFIER;
-    double holiness_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DAMAGE_TYPE_HOLY));
+    double holiness_multiplier = std::max<double>(0.0, creature->get_resistances().get_resistance_value(DamageType::DAMAGE_TYPE_HOLY));
 
     pct_chance -= charisma_bonus;
     pct_chance = static_cast<int>(pct_chance * holiness_multiplier);

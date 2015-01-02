@@ -21,19 +21,19 @@ ISpeedCalculatorPtr SpeedCalculatorFactory::create_speed_calculator(const Attack
 
   switch(attack_type)
   {
-    case ATTACK_TYPE_MELEE_PRIMARY:
+  case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
       speed_calculator = std::make_shared<PrimaryPhysicalAttackSpeedCalculator>();
       break;
-    case ATTACK_TYPE_MELEE_SECONDARY:
+    case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
       speed_calculator = std::make_shared<SecondaryPhysicalAttackSpeedCalculator>();
       break;
-    case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+    case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       speed_calculator = std::make_shared<TertiaryUnarmedPhysicalAttackSpeedCalculator>();
       break;
-    case ATTACK_TYPE_RANGED:
+    case AttackType::ATTACK_TYPE_RANGED:
       speed_calculator = std::make_shared<RangedAttackSpeedCalculator>();
       break;
-    case ATTACK_TYPE_MAGICAL:
+    case AttackType::ATTACK_TYPE_MAGICAL:
     default:
       speed_calculator = std::make_shared<MagicalAttackSpeedCalculator>();
       break;

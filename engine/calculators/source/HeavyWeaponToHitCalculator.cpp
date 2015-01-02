@@ -20,7 +20,7 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
 
     SkillManager sm;
     
-    int combat   = sm.get_skill_value(creature, SKILL_GENERAL_COMBAT);
+    int combat   = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_COMBAT);
     int strength = creature->get_strength().get_current();
     int weapon   = get_weapon_bonus(creature);
     int status   = get_status_bonus(creature);

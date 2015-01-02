@@ -16,7 +16,7 @@ ActionCostValue ShowConductsAction::show_conducts(CreaturePtr creature)
   array<bool, static_cast<size_t>(ConductType::CONDUCT_SIZE)> cond = conducts.get_conducts();
   TextDisplayPair separator = make_pair(Colour::COLOUR_WHITE, "");
 
-  for (int ct = CONDUCT_TYPE_FOODLESS; ct < CONDUCT_SIZE; ct++)
+  for (int ct = static_cast<int>(ConductType::CONDUCT_TYPE_FOODLESS); ct < static_cast<int>(ConductType::CONDUCT_SIZE); ct++)
   {
     if (cond[ct] == true)
     {

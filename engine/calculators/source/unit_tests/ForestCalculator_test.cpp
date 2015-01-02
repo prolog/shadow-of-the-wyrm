@@ -4,9 +4,9 @@ TEST(SL_Engine_Calculators_ForestCalculator, pct_chance_fruit)
 {
   ForestCalculator fc;
 
-  EXPECT_EQ(10, fc.calculate_pct_chance_fruit(TILE_TYPE_WILD_ORCHARD));
-  EXPECT_EQ(0, fc.calculate_pct_chance_fruit(TILE_TYPE_FOREST));
-  EXPECT_EQ(0, fc.calculate_pct_chance_fruit(TILE_TYPE_DUNGEON_COMPLEX));
+  EXPECT_EQ(10, fc.calculate_pct_chance_fruit(TileType::TILE_TYPE_WILD_ORCHARD));
+  EXPECT_EQ(0, fc.calculate_pct_chance_fruit(TileType::TILE_TYPE_FOREST));
+  EXPECT_EQ(0, fc.calculate_pct_chance_fruit(TileType::TILE_TYPE_DUNGEON_COMPLEX));
 }
 
 TEST(SL_Engine_Calculators_ForestCalculator, pct_chance_evergreen)

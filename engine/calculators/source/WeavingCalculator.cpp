@@ -6,7 +6,7 @@ int WeavingCalculator::calculate_min_enchant_points(CreaturePtr creature)
 
   if (creature)
   {
-    int weaving_skill = creature->get_skills().get_value(SKILL_GENERAL_WEAVING);
+    int weaving_skill = creature->get_skills().get_value(SkillType::SKILL_GENERAL_WEAVING);
     min_points = (weaving_skill / 20);
   }
 
@@ -19,7 +19,7 @@ int WeavingCalculator::calculate_max_enchant_points(CreaturePtr creature)
 
   if (creature)
   {
-    int weaving_skill = creature->get_skills().get_value(SKILL_GENERAL_WEAVING);
+    int weaving_skill = creature->get_skills().get_value(SkillType::SKILL_GENERAL_WEAVING);
     max_points = (weaving_skill / 10);
   }
 

@@ -10,6 +10,6 @@ class SL_Engine_Actions_TileSelectionAction : public ::testing::Test
 
 TEST_F(SL_Engine_Actions_TileSelectionAction, serialization_id)
 {
-  EXPECT_EQ(CLASS_ID_TILE_SELECTION_ACTION, get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_TILE_SELECTION_ACTION, get_class_identifier());
 }
 

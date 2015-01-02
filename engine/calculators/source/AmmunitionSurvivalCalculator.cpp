@@ -31,7 +31,7 @@ bool AmmunitionSurvivalCalculator::survives(CreaturePtr creature, ItemPtr ammuni
       // The chance for an item to survive is based on a base survival percentage, plus modifiers
       // due to skill in archery and how heavy the item is.
       int chance_survive = BASE_PCT_CHANCE_SURVIVAL
-                         + (creature->get_skills().get_skill(SKILL_GENERAL_ARCHERY)->get_value() / ARCHERY_SKILL_SURVIVAL_DIVISOR)
+                         + (creature->get_skills().get_skill(SkillType::SKILL_GENERAL_ARCHERY)->get_value() / ARCHERY_SKILL_SURVIVAL_DIVISOR)
                          + (ammunition->get_weight().get_weight() / ITEM_WEIGHT_SURVIVAL_DIVISOR);
                          
       if (rand > chance_survive)

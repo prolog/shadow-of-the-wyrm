@@ -56,8 +56,9 @@ void CreatureDeathManager::die() const
     MapUtils::remove_creature(map, dead_creature);
 
     // Remove all equipment.
-    for (int worn_slot = EQUIPMENT_WORN_HEAD; worn_slot < EQUIPMENT_WORN_LAST; worn_slot++)
+    for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
     {
+      EquipmentWornLocation worn_slot = static_cast<EquipmentWornLocation>(e);
       game.actions.remove_item(dead_creature, static_cast<EquipmentWornLocation>(worn_slot));
     }
 

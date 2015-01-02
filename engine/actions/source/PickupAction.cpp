@@ -21,7 +21,7 @@ ActionCostValue PickupAction::pick_up(CreaturePtr creature, ActionManager * cons
   {
     MapPtr map = game.get_current_map();
     
-    if (map->get_map_type() == MAP_TYPE_WORLD)
+    if (map->get_map_type() == MapType::MAP_TYPE_WORLD)
     {
       handle_world_map_pickup(creature);
     }

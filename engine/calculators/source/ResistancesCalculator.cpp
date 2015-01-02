@@ -5,10 +5,11 @@ Resistances ResistancesCalculator::default_resistances()
 {
   Resistances resists;
   
-  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
+    DamageType dt = static_cast<DamageType>(d);
     double value = DEFAULT_RESISTANCE_VALUE;
-    resists.set_resistance_value(dt, value );
+    resists.set_resistance_value(dt, value);
   }
   
   return resists;
@@ -27,8 +28,10 @@ Resistances ResistancesCalculator::calculate_resistances(CreaturePtr creature, R
   // values (gained along the way).
   Resistances resists_noneq = calculate_non_equipment_resistances(creature, race, cur_class);
 
-  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
+    DamageType dt = static_cast<DamageType>(d);
+
     // A positive value (e.g., 0.25) means increased resistance.
     // Since the resistance is a multiplier, to increase resistance,
     // we subtract the value from 1 to get a value less than 1,
@@ -71,8 +74,10 @@ Resistances ResistancesCalculator::calculate_non_equipment_resistances(CreatureP
 
     Resistances intr_res = creature->get_intrinsic_resistances();
 
-    for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+    for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
     {
+      DamageType dt = static_cast<DamageType>(d);
+
       double non_eq_value = race_res.get_resistance_value(dt)
                           + class_res.get_resistance_value(dt)
                           + intr_res.get_resistance_value(dt);
@@ -96,16 +101,19 @@ Resistances ResistancesCalculator::calculate_equipment_resistances(CreaturePtr c
   {
     Equipment& eq = creature->get_equipment();
   
-    for (EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD; ewl < EQUIPMENT_WORN_LAST; ewl++)
+    for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
     {
+      EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
+
       ItemPtr item = eq.get_item(ewl);
 
       if (item)
       {
         Resistances item_res = item->get_resistances();
 
-        for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+        for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
         {
+          DamageType dt = static_cast<DamageType>(d);
           res.set_resistance_value(dt, res.get_resistance_value(dt) + item_res.get_resistance_value(dt));
         }
       }

@@ -2,7 +2,7 @@
 #include "MagicalDamageCalculator.hpp"
 
 MagicalDamageCalculator::MagicalDamageCalculator()
-: DamageCalculator(ATTACK_TYPE_MAGICAL)
+: DamageCalculator(AttackType::ATTACK_TYPE_MAGICAL)
 {
 }
 
