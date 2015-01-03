@@ -324,8 +324,8 @@ void SnakingTempleGenerator::generate_statues(MapPtr map)
   {
     if (col % 2 == 0)
     {
-      FeaturePtr statue_1 = StatueGenerator::generate_decorative_statue(static_cast<DecorativeStatueType>(RNG::range(DECORATIVE_STATUE_TYPE_FIRST, DECORATIVE_STATUE_TYPE_LAST)));
-      FeaturePtr statue_2 = StatueGenerator::generate_decorative_statue(static_cast<DecorativeStatueType>(RNG::range(DECORATIVE_STATUE_TYPE_FIRST, DECORATIVE_STATUE_TYPE_LAST)));
+      FeaturePtr statue_1 = StatueGenerator::generate_decorative_statue(static_cast<DecorativeStatueType>(RNG::range(DecorativeStatueType::DECORATIVE_STATUE_TYPE_FIRST, DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST)));
+      FeaturePtr statue_2 = StatueGenerator::generate_decorative_statue(static_cast<DecorativeStatueType>(RNG::range(DecorativeStatueType::DECORATIVE_STATUE_TYPE_FIRST, DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST)));
       TilePtr tile_top    = map->at(temple_middle_start_row+1, col);
       TilePtr tile_bottom = map->at(temple_middle_end_row-2, col);
       

@@ -26,14 +26,14 @@ bool TileGenerator::get_generate_items() const
   return generate_items;
 }
 
-TilePtr TileGenerator::generate(const TileType& TileType::TILE_TYPE, const TileType& subtile_type)
+TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
 {
   // To make it easier to remember what needs to be updated:
-  static_assert(TileType::TILE_TYPE_LAST == 46, "Unexpected TileType::TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(46), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   TilePtr result_tile;
 
-  switch(TileType::TILE_TYPE)
+  switch(tile_type)
   {
     case TileType::TILE_TYPE_UNDEFINED:
       Log::instance().log("TileGenerator::generate - Attempting to generate an undefined tile type");
@@ -192,7 +192,7 @@ TilePtr TileGenerator::generate(const TileType& TileType::TILE_TYPE, const TileT
 
 void TileGenerator::configure_tile(TilePtr result_tile)
 {
-  Season season = SEASON_SUMMER;
+  Season season = Season::SEASON_SUMMER;
   Game& game = Game::instance();
   WorldPtr world = game.get_current_world();
 
@@ -232,13 +232,13 @@ WorshipSiteTilePtr TileGenerator::generate_worship_site_tile(const AlignmentRang
   {
     // JCD FIXME: At some point, it'll be worth making the tile subtype
     // a variable.  But for now, I just want a pretty world.
-    case ALIGNMENT_RANGE_EVIL:
+    case AlignmentRange::ALIGNMENT_RANGE_EVIL:
       worship_site = std::make_shared<SiteOfDeathTile>(TileType::TILE_TYPE_FIELD);
       break;
-    case ALIGNMENT_RANGE_GOOD:
+    case AlignmentRange::ALIGNMENT_RANGE_GOOD:
       worship_site = std::make_shared<ChurchTile>(TileType::TILE_TYPE_FIELD);
       break;
-    case ALIGNMENT_RANGE_NEUTRAL:
+    case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
     default:
       worship_site = std::make_shared<TempleTile>(TileType::TILE_TYPE_FIELD);
       break;
@@ -259,10 +259,10 @@ StaircaseTilePtr TileGenerator::generate_staircase(const StaircaseType& staircas
 
   switch(staircase_type)
   {
-    case STAIRCASE_UP:
+    case StaircaseType::STAIRCASE_UP:
       result_tile = std::make_shared<UpStaircaseTile>();
       break;
-    case STAIRCASE_DOWN:
+    case StaircaseType::STAIRCASE_DOWN:
       result_tile = std::make_shared<DownStaircaseTile>();
       break;
     default:

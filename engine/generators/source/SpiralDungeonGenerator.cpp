@@ -47,13 +47,13 @@ MapPtr SpiralDungeonGenerator::place_staircases(MapPtr map, const bool place_up_
 
   if (place_up_stairs)
   {
-    StaircaseTilePtr up_staircase = tg.generate_staircase(STAIRCASE_UP);
+    StaircaseTilePtr up_staircase = tg.generate_staircase(StaircaseType::STAIRCASE_UP);
     result_map = place_random_staircase(map, up_staircase);
   }
 
   if (place_down_stairs)
   {
-    StaircaseTilePtr down_staircase = tg.generate_staircase(STAIRCASE_DOWN);
+    StaircaseTilePtr down_staircase = tg.generate_staircase(StaircaseType::STAIRCASE_DOWN);
     result_map = place_random_staircase(result_map, down_staircase);
   }
 
@@ -86,7 +86,7 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
     switch (direction)
     {
       // North goes to east.
-      case CARDINAL_DIRECTION_NORTH:
+      case CardinalDirection::CARDINAL_DIRECTION_NORTH:
         row_or_col_current = current_row;
         new_row_length = row_length - SPACE_BETWEEN_SPIRALS;
         while (current <= row_length)
@@ -97,10 +97,10 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
           current++;
         }
 
-        generate_spiral(map, row_or_col_current, current_col, CARDINAL_DIRECTION_EAST, new_row_length, col_length);
+        generate_spiral(map, row_or_col_current, current_col, CardinalDirection::CARDINAL_DIRECTION_EAST, new_row_length, col_length);
         break;
       // South goes to west.
-      case CARDINAL_DIRECTION_SOUTH:
+      case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
         row_or_col_current = current_row;
         new_row_length = row_length - SPACE_BETWEEN_SPIRALS;
         while (current <= row_length)
@@ -111,10 +111,10 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
           current++;
         }
 
-        generate_spiral(map, row_or_col_current, current_col, CARDINAL_DIRECTION_WEST, new_row_length, col_length);
+        generate_spiral(map, row_or_col_current, current_col, CardinalDirection::CARDINAL_DIRECTION_WEST, new_row_length, col_length);
         break;
       // East goes to south.
-      case CARDINAL_DIRECTION_EAST:
+      case CardinalDirection::CARDINAL_DIRECTION_EAST:
         row_or_col_current = current_col;
         new_col_length = col_length - SPACE_BETWEEN_SPIRALS;
         while (current <= col_length)
@@ -125,10 +125,10 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
           current++;
         }
 
-        generate_spiral(map, current_row, row_or_col_current, CARDINAL_DIRECTION_SOUTH, row_length, new_col_length);
+        generate_spiral(map, current_row, row_or_col_current, CardinalDirection::CARDINAL_DIRECTION_SOUTH, row_length, new_col_length);
         break;
       // West goes to north.
-      case CARDINAL_DIRECTION_WEST:
+      case CardinalDirection::CARDINAL_DIRECTION_WEST:
         row_or_col_current = current_col;
         new_col_length = col_length - SPACE_BETWEEN_SPIRALS;
         while (current <= col_length)
@@ -139,7 +139,7 @@ void SpiralDungeonGenerator::generate_spiral(MapPtr map, const int current_row, 
           current++;
         }
 
-        generate_spiral(map, current_row, row_or_col_current, CARDINAL_DIRECTION_NORTH, row_length, new_col_length);
+        generate_spiral(map, current_row, row_or_col_current, CardinalDirection::CARDINAL_DIRECTION_NORTH, row_length, new_col_length);
         break;
       default:
         return;
@@ -161,7 +161,7 @@ MapPtr SpiralDungeonGenerator::generate_spiral_dungeon(MapPtr map)
   int row_length  = current_row - SPACE_BETWEEN_SPIRALS;
   int col_length  = current_col - SPACE_BETWEEN_SPIRALS;
 
-  generate_spiral(result_map, current_row, current_col, CARDINAL_DIRECTION_WEST, row_length, col_length);
+  generate_spiral(result_map, current_row, current_col, CardinalDirection::CARDINAL_DIRECTION_WEST, row_length, col_length);
 
   return result_map;
 }
@@ -174,7 +174,7 @@ MapPtr SpiralDungeonGenerator::generate(const Dimensions& dimensions)
   result_map = generate_spiral_dungeon(result_map);
  // result_map = place_staircases(result_map);
  
-  result_map->set_map_type(MAP_TYPE_UNDERWORLD);
+  result_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
 
   return result_map;
 }

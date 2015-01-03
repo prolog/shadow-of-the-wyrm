@@ -27,30 +27,30 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
       
       if (rand < 3)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_TREE;
+        tile_type = TileType::TILE_TYPE_TREE;
       }
       else if (rand < 5)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_WEEDS;
+        tile_type = TileType::TILE_TYPE_WEEDS;
       }
       else if (rand < 6)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_BUSH;
+        tile_type = TileType::TILE_TYPE_BUSH;
       }
       else if (rand < 39)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_CAIRN;
+        tile_type = TileType::TILE_TYPE_CAIRN;
       }
       else if (rand < 53)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_SCRUB;
+       tile_type = TileType::TILE_TYPE_SCRUB;
       }
       else
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_FIELD;
+        tile_type = TileType::TILE_TYPE_FIELD;
       }
       
-      tile = tg.generate(TileType::TILE_TYPE);
+      tile = tg.generate(tile_type);
       result_map->insert(row, col, tile);
     }
   }

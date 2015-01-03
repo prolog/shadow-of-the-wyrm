@@ -22,17 +22,17 @@ void TreeTileConfiguration::clear_tree_species_details()
 
 void TreeTileConfiguration::initialize_tree_species_details()
 {
-  tree_species_ids = { TREE_SPECIES_ASPEN, TREE_SPECIES_MAPLE, TREE_SPECIES_YEW, TREE_SPECIES_OAK, TREE_SPECIES_MOUNTAIN_ASH, TREE_SPECIES_ASH, TREE_SPECIES_BIRCH, TREE_SPECIES_CYPRESS, TREE_SPECIES_WALNUT };
+  tree_species_ids = { TreeSpeciesID::TREE_SPECIES_ASPEN, TreeSpeciesID::TREE_SPECIES_MAPLE, TreeSpeciesID::TREE_SPECIES_YEW, TreeSpeciesID::TREE_SPECIES_OAK, TreeSpeciesID::TREE_SPECIES_MOUNTAIN_ASH, TreeSpeciesID::TREE_SPECIES_ASH, TreeSpeciesID::TREE_SPECIES_BIRCH, TreeSpeciesID::TREE_SPECIES_CYPRESS, TreeSpeciesID::TREE_SPECIES_WALNUT };
 
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_ASPEN, TileDescriptionKeys::FLORA_TILE_DESC_ASPEN));
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_MAPLE, TileDescriptionKeys::FLORA_TILE_DESC_MAPLE));
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_YEW, TileDescriptionKeys::FLORA_TILE_DESC_YEW));
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_OAK, TileDescriptionKeys::FLORA_TILE_DESC_OAK));
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_MOUNTAIN_ASH, TileDescriptionKeys::FLORA_TILE_DESC_MOUNTAIN_ASH));
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_ASH, TileDescriptionKeys::FLORA_TILE_DESC_ASH));
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_BIRCH, TileDescriptionKeys::FLORA_TILE_DESC_BIRCH));
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_CYPRESS, TileDescriptionKeys::FLORA_TILE_DESC_CYPRESS));
-  tree_species_description_sids.insert(make_pair(TREE_SPECIES_WALNUT, TileDescriptionKeys::FLORA_TILE_DESC_WALNUT));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_ASPEN, TileDescriptionKeys::FLORA_TILE_DESC_ASPEN));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_MAPLE, TileDescriptionKeys::FLORA_TILE_DESC_MAPLE));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_YEW, TileDescriptionKeys::FLORA_TILE_DESC_YEW));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_OAK, TileDescriptionKeys::FLORA_TILE_DESC_OAK));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_MOUNTAIN_ASH, TileDescriptionKeys::FLORA_TILE_DESC_MOUNTAIN_ASH));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_ASH, TileDescriptionKeys::FLORA_TILE_DESC_ASH));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_BIRCH, TileDescriptionKeys::FLORA_TILE_DESC_BIRCH));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_CYPRESS, TileDescriptionKeys::FLORA_TILE_DESC_CYPRESS));
+  tree_species_description_sids.insert(make_pair(TreeSpeciesID::TREE_SPECIES_WALNUT, TileDescriptionKeys::FLORA_TILE_DESC_WALNUT));
 }
 
 TreeSpeciesID TreeTileConfiguration::get_random_species() const

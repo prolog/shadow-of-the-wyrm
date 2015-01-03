@@ -59,7 +59,7 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   set_village_races(result_map);
   generate_village_surroundings(result_map);  
   
-  result_map->set_map_type(MAP_TYPE_WORLD);
+  result_map->set_map_type(MapType::MAP_TYPE_WORLD);
   result_map->set_map_id("overworld");
   result_map->set_permanent(true);
 
@@ -119,37 +119,37 @@ void WorldGenerator::populate_terrain_cell_maps
 )
 {
   // Field-Islands
-  CellularAutomataSettings cas(55, 50000, 4, 54, CELL_OFF);
+  CellularAutomataSettings cas(55, 50000, 4, 54, CellValue::CELL_OFF);
   CellularAutomataGenerator cag(cas, dimensions);
   field_cell_map = cag.generate();
 
   // Forests
-  CellularAutomataSettings cas_forest(52, 50000, 4, 54, CELL_OFF);
+  CellularAutomataSettings cas_forest(52, 50000, 4, 54, CellValue::CELL_OFF);
   CellularAutomataGenerator cag_forest(cas_forest, dimensions);
   forest_cell_map = cag_forest.generate();
   
   // Hills
-  CellularAutomataSettings cas_hills(51, 50000, 4, 54, CELL_OFF);
+  CellularAutomataSettings cas_hills(51, 50000, 4, 54, CellValue::CELL_OFF);
   CellularAutomataGenerator cag_hills(cas_hills, dimensions);
   hills_cell_map = cag_hills.generate();
 
   // Mountains
-  CellularAutomataSettings cas_mountains(45, 50000, 4, 45, CELL_ON);
+  CellularAutomataSettings cas_mountains(45, 50000, 4, 45, CellValue::CELL_ON);
   CellularAutomataGenerator cag_mountains(cas_mountains, dimensions);
   mountains_cell_map = cag_mountains.generate();
 
   // Scrubland
-  CellularAutomataSettings cas_scrub(53, 50000, 4, 53, CELL_OFF);
+  CellularAutomataSettings cas_scrub(53, 50000, 4, 53, CellValue::CELL_OFF);
   CellularAutomataGenerator cag_scrub(cas_scrub, dimensions);
   scrub_cell_map = cag_scrub.generate();
   
   // Marshes
-  CellularAutomataSettings cas_marsh(20, 100, 4, 20, CELL_OFF);
+  CellularAutomataSettings cas_marsh(20, 100, 4, 20, CellValue::CELL_OFF);
   CellularAutomataGenerator cag_marsh(cas_marsh, dimensions);
   marsh_cell_map = cag_marsh.generate();
   
   // Desert
-  CellularAutomataSettings cas_desert(20, 100, 4, 20, CELL_OFF);
+  CellularAutomataSettings cas_desert(20, 100, 4, 20, CellValue::CELL_OFF);
   CellularAutomataGenerator cag_desert(cas_desert, dimensions);
   desert_cell_map = cag_desert.generate();
 }
@@ -161,12 +161,12 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
   int rand;
 
   vector<pair<int, pair<TileType, TileType>>> field_special_types;
-  field_special_types = {{200, {TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
-                         {200, {TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED}},
-                         {100, {TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
+  field_special_types = {{200, {TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
+                         {200, {TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED}},
+                         {100, {TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
   
   // Always add fields.  
-  if (world_val == CELL_OFF)
+  if (world_val == CellValue::CELL_OFF)
   {
     for (const auto& special_type : field_special_types)
     {
@@ -198,7 +198,7 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
 
 void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const int col, const CellValue hills_val, const CellValue world_val)
 {
-  if (hills_val == CELL_OFF && world_val == CELL_OFF)
+  if (hills_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
     TilePtr tile;
     int rand;
@@ -227,7 +227,7 @@ void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const 
   TilePtr tile;
   int rand;
   
-  if (marsh_val == CELL_OFF && world_val == CELL_OFF)
+  if (marsh_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
     // 0.5% chance of marsh village
     rand = RNG::range(1, 200);
@@ -253,7 +253,7 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
   TilePtr tile;
   int rand;
   
-  if (forest_val == CELL_OFF && world_val == CELL_OFF)
+  if (forest_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
     // 1% chance of forest village, and 1% chance of a wild orchard.
     rand = RNG::range(1, 100);
@@ -284,7 +284,7 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
   TilePtr tile;
   int rand;
   
-  if (scrub_val == CELL_OFF && world_val == CELL_OFF)
+  if (scrub_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF)
   {
     // 0.5% chance of scrub village.
     rand = RNG::range(1, 200);
@@ -310,7 +310,7 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   TilePtr tile;
   
   // Deserts should only appear in naturally dry areas.
-  if (desert_val == CELL_OFF && world_val == CELL_OFF && scrub_val == CELL_OFF)
+  if (desert_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && scrub_val == CellValue::CELL_OFF)
   {
     tile = tg.generate(TileType::TILE_TYPE_DESERT);
     result_map->insert(row, col, tile);
@@ -327,7 +327,7 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
                           { 50, { TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED }},
                           { 33, { TileType::TILE_TYPE_CAVERN, TileType::TILE_TYPE_UNDEFINED }} };
 
-  if (mountains_val == CELL_OFF && world_val == CELL_OFF && forest_val == CELL_ON)
+  if (mountains_val == CellValue::CELL_OFF && world_val == CellValue::CELL_OFF && forest_val == CellValue::CELL_ON)
   {
     // 2% chance of being a dungeon
     // 2% chance of being a crypt

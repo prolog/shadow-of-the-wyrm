@@ -58,7 +58,7 @@ pair<Coordinate, Coordinate> VaultCryptLayoutStrategy::generate_vault(MapPtr map
 void VaultCryptLayoutStrategy::generate_vault_entrance(MapPtr map, const int mid_height, const int mid_width, const int vh, const int vw, const Coordinate& stair_coord)
 {
   // Create the door.
-  Direction d = static_cast<Direction>(RNG::range(DIRECTION_NORTH, DIRECTION_WEST));
+  Direction d = static_cast<Direction>(RNG::range(static_cast<int>(Direction::DIRECTION_NORTH), static_cast<int>(Direction::DIRECTION_WEST)));
   Coordinate door_coords = get_door_location(d, mid_height, mid_width, vh, vw);
 
   // Change the associated tile to TileType::TILE_TYPE_DUNGEON, and add a door.
@@ -70,7 +70,7 @@ void VaultCryptLayoutStrategy::generate_vault_entrance(MapPtr map, const int mid
   DoorPtr door = FeatureGenerator::generate_door();
   LockPtr lock = std::make_shared<Lock>(lock_id, true);
   door->set_lock(lock);
-  EntranceStateType entrance_state = ENTRANCE_TYPE_CLOSED;
+  EntranceStateType entrance_state = EntranceStateType::ENTRANCE_TYPE_CLOSED;
   door->get_state_ref().set_state(entrance_state);
 
   door_tile->set_feature(door);
@@ -97,19 +97,19 @@ Coordinate VaultCryptLayoutStrategy::get_door_location(const Direction d, const 
 
   switch (d)
   {
-    case DIRECTION_NORTH:
+    case Direction::DIRECTION_NORTH:
       d_y = mid_height - (vh / 2);
       d_x = mid_width;
       break;
-    case DIRECTION_SOUTH:
+    case Direction::DIRECTION_SOUTH:
       d_y = mid_height + (vh / 2);
       d_x = mid_width;
       break;
-    case DIRECTION_EAST:
+    case Direction::DIRECTION_EAST:
       d_y = mid_height;
       d_x = mid_width + (vw / 2);
       break;
-    case DIRECTION_WEST:
+    case Direction::DIRECTION_WEST:
     default:
       d_y = mid_height;
       d_x = mid_width - (vw / 2);

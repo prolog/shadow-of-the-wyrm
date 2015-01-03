@@ -39,7 +39,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
 GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
 {
-  static_assert(TileType::TILE_TYPE_LAST == 46, "Unexpected TileType::TILE_TYPE_LAST");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(46), "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
   
   switch(terrain_type)
@@ -79,7 +79,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
       MapPtr base_map = base_generator->generate();
       
-      SettlementType settlement_type = SETTLEMENT_TYPE_ORDERLY_VILLAGE;
+      SettlementType settlement_type = SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE;
       
       VillageTilePtr village_tile = dynamic_pointer_cast<VillageTile>(tile);
       

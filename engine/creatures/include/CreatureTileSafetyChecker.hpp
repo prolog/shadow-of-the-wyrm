@@ -18,14 +18,14 @@ class CreatureTileSafetyChecker
   protected:
     bool are_safety_conditions_satisfied(CreaturePtr creature, TilePtr tile, const std::vector<ITileSafetyConditionPtr>& safety_conditions);
 
-    std::vector<ITileSafetyConditionPtr> get_safety_conditions(const TileType TileType::TILE_TYPE);
-    std::vector<ITileSafetyConditionPtr> get_safety_conditions(const TileSuperType TileType::TILE_TYPE);
+    std::vector<ITileSafetyConditionPtr> get_safety_conditions(const TileType tile_type);
+    std::vector<ITileSafetyConditionPtr> get_safety_conditions(const TileSuperType tile_super_type);
 
     void initialize_tile_safety_conditions();
     void initialize_tile_type_safety_conditions();
     void initialize_tile_super_type_safety_conditions();
 
-    TileTypeSafetyConditionsMap TileType::TILE_TYPE_safety_conditions;
+    TileTypeSafetyConditionsMap tile_type_safety_conditions;
     TileSuperTypeSafetyConditionsMap tile_super_type_safety_conditions;
 };
 

@@ -86,7 +86,7 @@ void ScatteredSettlementGenerator::generate_scattered_settlement(MapPtr map)
     width  = RNG::range(5, 7);
     row    = RNG::range(1, rows - height - 2);
     col    = RNG::range(1, cols - width - 2);
-    door_direction = static_cast<CardinalDirection>(RNG::range(CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_WEST));
+    door_direction = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
     
     if (can_building_be_placed(row, col, height, width))
     {

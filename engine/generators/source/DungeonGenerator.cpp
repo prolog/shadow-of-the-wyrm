@@ -58,7 +58,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
     
     if (!success) continue;
     
-    result_map->set_map_type(MAP_TYPE_UNDERWORLD); 
+    result_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD); 
     return result_map;
   }
 
@@ -435,7 +435,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
 void DungeonGenerator::generate_altar(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   string deity_id; // Leave empty for now.
-  AlignmentRange altar_range = static_cast<AlignmentRange>(RNG::range(ALIGNMENT_RANGE_EVIL, ALIGNMENT_RANGE_GOOD));
+  AlignmentRange altar_range = static_cast<AlignmentRange>(RNG::range(static_cast<int>(AlignmentRange::ALIGNMENT_RANGE_EVIL), static_cast<int>(AlignmentRange::ALIGNMENT_RANGE_GOOD)));
 
   FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, altar_range);
 
@@ -455,7 +455,7 @@ void DungeonGenerator::generate_zoo(MapPtr map, const int start_row, const int e
 {
   VaultPopulator vp;
   vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(make_pair(start_row, start_col), make_pair(end_row-1, end_col-1));
-  vp.populate_vault_creatures(map, TileType::TILE_TYPE_DUNGEON_COMPLEX, coords, danger_level, RARITY_COMMON);
+  vp.populate_vault_creatures(map, TileType::TILE_TYPE_DUNGEON_COMPLEX, coords, danger_level, Rarity::RARITY_COMMON);
 }
 
 void DungeonGenerator::generate_treasure_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
@@ -492,7 +492,7 @@ bool DungeonGenerator::place_doorways(MapPtr map)
         // Generate doors closed by default, or when there's a creature nearby
         if (RNG::percent_chance(50) || MapUtils::adjacent_creature_exists(row, col, map))
         {
-          doorway->get_state_ref().set_state(ENTRANCE_TYPE_CLOSED);
+          doorway->get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
         }
 
         tile->set_feature(doorway);
@@ -535,7 +535,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
       y = RNG::range(r.y1+1, r.y2-2);
       x = RNG::range(r.x1+1, r.x2-2);
     
-      place_staircase(map, y, x, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_DOWN, false, place_player_on_down_staircase);
+      place_staircase(map, y, x, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_DOWN, false, place_player_on_down_staircase);
 
       // Ensure that the original map ID is set on the down staircase.  This will
       // allow it to be set on future maps.  In a fully randomized dungeon, this
@@ -562,7 +562,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     y = RNG::range(r.y1+1, r.y2-2);
     x = RNG::range(r.x1+1, r.x2-2);
     
-    place_staircase(map, y, x, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
+    place_staircase(map, y, x, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
 
     location_found = true;
   }

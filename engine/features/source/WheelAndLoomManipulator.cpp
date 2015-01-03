@@ -69,8 +69,9 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
           if (!slot_selection.empty())
           {
             char selection = slot_selection.at(0) - 'a';
+            EquipmentWornLocation selection_loc = static_cast<EquipmentWornLocation>(selection);
 
-            if (std::find(worn_locs.begin(), worn_locs.end(), selection) != worn_locs.end())
+            if (std::find(worn_locs.begin(), worn_locs.end(), selection_loc) != worn_locs.end())
             {
               EquipmentWornLocation slot = static_cast<EquipmentWornLocation>(selection);
 

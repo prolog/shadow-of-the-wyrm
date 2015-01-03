@@ -7,7 +7,7 @@ class GeneratorUtils
   public:
     // Generates a circle of a particular tile type using
     // Bresenham's circle algorithm.
-    static void generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType TileType::TILE_TYPE);
+    static void generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType tile_type);
 
     // Generates a building: walls are TileType::TILE_TYPE_ROCK, floor is TileType::TILE_TYPE_DUNGEON.
     static void generate_building(const MapPtr map, const int start_row, const int start_col, const int height, const int width);
@@ -22,7 +22,7 @@ class GeneratorUtils
     static void generate_fountain(const MapPtr map, const int row, const int col);
 
     // Generates a given tile type at the given coordinates.
-    static void generate_tile(const MapPtr map, const int row, const int col, const TileType TileType::TILE_TYPE);
+    static void generate_tile(const MapPtr map, const int row, const int col, const TileType tile_type);
     
     // Generates a random trap from the game at the given coordinates.
     static void generate_trap(const MapPtr map, const int row, const int col, const std::vector<TrapPtr>& traps);

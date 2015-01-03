@@ -4,7 +4,7 @@
 
 RoadGenerator::RoadGenerator(const int width)
 : ROAD_WIDTH(width)
-, ROAD_DIRECTION( CARDINAL_DIRECTION_SOUTH )
+, ROAD_DIRECTION( CardinalDirection::CARDINAL_DIRECTION_SOUTH )
 {
 }
 
@@ -26,8 +26,8 @@ void RoadGenerator::generate_road(MapPtr map)
 
   switch( ROAD_DIRECTION )
   {
-    case CARDINAL_DIRECTION_NORTH:
-    case CARDINAL_DIRECTION_SOUTH:
+    case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+    case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
       col_start = ((max_cols / 2) - (ROAD_WIDTH / 2));
       col_end = col_start + ROAD_WIDTH;
       for (int current_col = col_start; current_col < col_end; current_col++)
@@ -39,8 +39,8 @@ void RoadGenerator::generate_road(MapPtr map)
         }
       }
       break;
-    case CARDINAL_DIRECTION_EAST:
-    case CARDINAL_DIRECTION_WEST:
+    case CardinalDirection::CARDINAL_DIRECTION_EAST:
+    case CardinalDirection::CARDINAL_DIRECTION_WEST:
       row_start = ((max_rows / 2) - (ROAD_WIDTH / 2));
       row_end = row_start + ROAD_WIDTH;
       for (int current_row = row_start; current_row < row_end; current_row++)

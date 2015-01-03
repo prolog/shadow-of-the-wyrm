@@ -144,11 +144,11 @@ MapPtr ForestGenerator::add_random_springs(MapPtr map)
   int start_y      = RNG::range(1, (dim.get_y() - springs_size - 1));
   int start_x      = RNG::range(1, (dim.get_x() - springs_size - 1));
   int rand_type    = RNG::dice(1, 2);
-  SpringsType springs_type = SPRINGS_TYPE_TALL;
+  SpringsType springs_type = SpringsType::SPRINGS_TYPE_TALL;
 
   if (rand_type == 2)
   {
-    springs_type = SPRINGS_TYPE_WIDE;
+    springs_type = SpringsType::SPRINGS_TYPE_WIDE;
   }
 
   result_map = SpringsGenerator::generate(result_map, start_y, start_x, springs_size, springs_type);
