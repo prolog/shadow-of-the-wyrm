@@ -2,7 +2,7 @@
 
 TileType BushTile::get_tile_type() const
 {
-  return TILE_TYPE_BUSH;
+  return TileType::TILE_TYPE_BUSH;
 }
 
 std::string BushTile::get_tile_description_sid() const

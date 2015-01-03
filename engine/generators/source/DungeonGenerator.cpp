@@ -20,7 +20,7 @@ using namespace std;
 
 // Dungeon Generator
 DungeonGenerator::DungeonGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_DUNGEON)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_DUNGEON)
 , DEFAULT_MIN_HEIGHT(4)
 , DEFAULT_MAX_HEIGHT(7)
 , DEFAULT_MIN_WIDTH(5)
@@ -53,7 +53,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
   {
     MapPtr result_map = std::make_shared<Map>(dimensions);
 
-    fill(result_map, TILE_TYPE_ROCK);
+    fill(result_map, TileType::TILE_TYPE_ROCK);
     success = generate_dungeon(result_map);
     
     if (!success) continue;
@@ -67,7 +67,7 @@ MapPtr DungeonGenerator::generate(const Dimensions& dimensions)
 
 TilePtr DungeonGenerator::generate_tile(MapPtr current_map, const int row, const int col)
 {
-  TilePtr result_tile = tg.generate(TILE_TYPE_DUNGEON);
+  TilePtr result_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
   return result_tile;
 }
 
@@ -212,7 +212,7 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   int start_row = 0;
   for (start_row = r1_c_first; start_row != r2_c_first; start_row += row_inc)
   {
-    TilePtr floor_tile = tg.generate(TILE_TYPE_DUNGEON);
+    TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
 
     map->insert(start_row, r1_c_second, floor_tile);
     
@@ -234,7 +234,7 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
     }
   }
 
-  TilePtr extra_floor_tile = tg.generate(TILE_TYPE_DUNGEON);  
+  TilePtr extra_floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);  
   if (start_row == (room1.y1-1))
   {
     map->insert(start_row, r1_c_second, extra_floor_tile);
@@ -250,7 +250,7 @@ bool DungeonGenerator::connect_rooms(MapPtr map, const Room& room1, const Room& 
   int start_col = 0;
   for (start_col = r1_c_second; start_col != r2_c_second; start_col+=col_inc)
   {
-    TilePtr floor_tile = tg.generate(TILE_TYPE_DUNGEON);
+    TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
 
     map->insert(start_row, start_col, floor_tile);
 
@@ -348,7 +348,7 @@ bool DungeonGenerator::check_range(MapPtr map, int start_row, int start_col, int
     for (int col = start_col; col < size_x; col++)
     {
       TilePtr tile = map->at(row, col);
-      if (tile && tile->get_tile_type() != TILE_TYPE_ROCK)
+      if (tile && tile->get_tile_type() != TileType::TILE_TYPE_ROCK)
       {
         return false;
       }
@@ -372,7 +372,7 @@ pair<bool, vector<string>> DungeonGenerator::place_room(MapPtr map, int start_ro
   {
     for (int x = start_col; x < size_x; x++)
     {
-      TilePtr tile = tg.generate(TILE_TYPE_DUNGEON);
+      TilePtr tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
       map->insert(y, x, tile);
     }
   }
@@ -455,13 +455,13 @@ void DungeonGenerator::generate_zoo(MapPtr map, const int start_row, const int e
 {
   VaultPopulator vp;
   vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(make_pair(start_row, start_col), make_pair(end_row-1, end_col-1));
-  vp.populate_vault_creatures(map, TILE_TYPE_DUNGEON_COMPLEX, coords, danger_level, RARITY_COMMON);
+  vp.populate_vault_creatures(map, TileType::TILE_TYPE_DUNGEON_COMPLEX, coords, danger_level, RARITY_COMMON);
 }
 
 void DungeonGenerator::generate_treasure_room(MapPtr map, const int start_row, const int end_row, const int start_col, const int end_col)
 {
   TreasureRoomPopulator trp;
-  trp.populate_treasure_room(map, TILE_TYPE_DUNGEON_COMPLEX, danger_level, start_row, end_row, start_col, end_col);
+  trp.populate_treasure_room(map, TileType::TILE_TYPE_DUNGEON_COMPLEX, danger_level, start_row, end_row, start_col, end_col);
 }
 
 bool DungeonGenerator::place_doorway(MapPtr map, int row, int col)
@@ -485,7 +485,7 @@ bool DungeonGenerator::place_doorways(MapPtr map)
       // Doors are always generated.  They are generated shut about half the
       // time, unless adjacent to a special room, in which case they are always
       // generated closed (so that zoos aren't ruined).
-      if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && tile_exists_outside_of_room(row, col, true, true) && is_tile_adjacent_to_room_tile(dim, row, col))
+      if (tile && (tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON) && tile_exists_outside_of_room(row, col, true, true) && is_tile_adjacent_to_room_tile(dim, row, col))
       {
         DoorPtr doorway = FeatureGenerator::generate_door();
 
@@ -535,7 +535,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
       y = RNG::range(r.y1+1, r.y2-2);
       x = RNG::range(r.x1+1, r.x2-2);
     
-      place_staircase(map, y, x, TILE_TYPE_DOWN_STAIRCASE, TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_DOWN, false, place_player_on_down_staircase);
+      place_staircase(map, y, x, TileType::TILE_TYPE_DOWN_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_DOWN, false, place_player_on_down_staircase);
 
       // Ensure that the original map ID is set on the down staircase.  This will
       // allow it to be set on future maps.  In a fully randomized dungeon, this
@@ -562,7 +562,7 @@ bool DungeonGenerator::place_staircases(MapPtr map)
     y = RNG::range(r.y1+1, r.y2-2);
     x = RNG::range(r.x1+1, r.x2-2);
     
-    place_staircase(map, y, x, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
+    place_staircase(map, y, x, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_DUNGEON_COMPLEX, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);
 
     location_found = true;
   }
@@ -619,7 +619,7 @@ bool DungeonGenerator::get_permanence_default() const
 
 MapType DungeonGenerator::get_map_type() const
 {
-  return MAP_TYPE_UNDERWORLD;
+  return MapType::MAP_TYPE_UNDERWORLD;
 }
 
 

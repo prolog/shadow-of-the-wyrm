@@ -22,7 +22,7 @@ TileConfigurationFactory::TileConfigurationFactory()
 // types.
 void TileConfigurationFactory::initialize_tile_configuration_map()
 {
-  static_assert(TILE_TYPE_LAST == 46, "Unexpected TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == 46, "Unexpected TileType::TILE_TYPE_LAST value.");
 
   ITileConfigurationPtr field_config = std::make_shared<FieldTileConfiguration>(); 
   tile_configurations[TILE_TYPE_FIELD] = field_config;
@@ -47,7 +47,7 @@ void TileConfigurationFactory::initialize_tile_configuration_map()
 
   // Now that the configurations have been created, loop over them
   // and initialize them.
-  for (TileType t = TILE_TYPE_FIRST; t < TILE_TYPE_LAST; t++)
+  for (TileType t = TileType::TILE_TYPE_FIRST; t < TileType::TILE_TYPE_LAST; t++)
   {
     ITileConfigurationPtr tile_config = tile_configurations[t];
     
@@ -62,7 +62,7 @@ void TileConfigurationFactory::initialize_tile_configuration_map()
 // If no configuration pointer exists in the map, create a default
 // configuration, and insert it into the map for next time for faster
 // lookup.
-ITileConfigurationPtr TileConfigurationFactory::create_tile_configuration(const TileType tile_type)
+ITileConfigurationPtr TileConfigurationFactory::create_tile_configuration(const TileType TileType::TILE_TYPE)
 {
   ITileConfigurationPtr tile_config;
 

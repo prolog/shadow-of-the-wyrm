@@ -34,7 +34,7 @@ TilePtr TileFactory::create_tile(const ClassIdentifier cl_id)
 
 void TileFactory::initialize_tile_map()
 {
-  static_assert(TILE_TYPE_LAST == 46, "Unexpected TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == 46, "Unexpected TileType::TILE_TYPE_LAST value.");
 
   TilePtr barracks = std::make_shared<BarracksTile>();
   TilePtr barrow   = std::make_shared<BarrowTile>();

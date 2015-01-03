@@ -8,7 +8,7 @@ SeaTile::SeaTile()
 
 TileType SeaTile::get_tile_type() const
 {
-  return TILE_TYPE_SEA;
+  return TileType::TILE_TYPE_SEA;
 }
 
 TileSuperType SeaTile::get_tile_super_type() const

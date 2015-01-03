@@ -3,7 +3,7 @@
 // Individual raised floor tiles
 TileType DaisTile::get_tile_type() const
 {
-  return TILE_TYPE_DAIS;
+  return TileType::TILE_TYPE_DAIS;
 }
 
 std::string DaisTile::get_tile_description_sid() const

@@ -10,7 +10,7 @@ using std::pair;
 using std::make_pair;
 
 BaseSettlementGenerator::BaseSettlementGenerator(MapPtr new_base_map)
-: Generator(new_base_map->get_map_exit_id(), TILE_TYPE_VILLAGE),
+: Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_VILLAGE),
 base_map(new_base_map), growth_rate(100)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)
@@ -22,7 +22,7 @@ base_map(new_base_map), growth_rate(100)
 }
 
 BaseSettlementGenerator::BaseSettlementGenerator(MapPtr new_base_map, const int new_growth_rate)
-: Generator(new_base_map->get_map_exit_id(), TILE_TYPE_VILLAGE),
+: Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_VILLAGE),
 base_map(new_base_map), growth_rate(new_growth_rate)
 , PROBABILITY_DECREMENT(30)
 , BUILDING_PROBABILITY(80)
@@ -73,7 +73,7 @@ bool BaseSettlementGenerator::does_tile_overlap(MapPtr map, const int row, const
     TilePtr tile  = map->at(row, col);
     TileType type = tile->get_tile_type();
 
-    if (type == TILE_TYPE_ROAD || type == TILE_TYPE_ROCK || type == TILE_TYPE_DUNGEON)
+    if (type == TileType::TILE_TYPE_ROAD || type == TileType::TILE_TYPE_ROCK || type == TileType::TILE_TYPE_DUNGEON)
     {
       tile_overlaps = true;
     }
@@ -178,11 +178,11 @@ bool BaseSettlementGenerator::generate_building_if_possible(MapPtr map, const in
         {
           if (cur_row == start_row || cur_row == end_row || cur_col == start_col || cur_col == end_col)
           {
-            current_tile = tg.generate(TILE_TYPE_ROCK);
+            current_tile = tg.generate(TileType::TILE_TYPE_ROCK);
           }
           else
           {
-            current_tile = tg.generate(TILE_TYPE_DUNGEON);
+            current_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
           }
 
           map->insert(cur_row, cur_col, current_tile);
@@ -192,7 +192,7 @@ bool BaseSettlementGenerator::generate_building_if_possible(MapPtr map, const in
 
     // Create door
     pair<int, int> door_location = get_door_location(start_row, end_row, start_col, end_col, door_direction);
-    TilePtr door_tile = tg.generate(TILE_TYPE_DUNGEON);
+    TilePtr door_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
 
     FeaturePtr door = FeatureGenerator::generate_door();
     door_tile->set_feature(door);
@@ -269,7 +269,7 @@ void BaseSettlementGenerator::generate_road_north(MapPtr map, const int start_ro
       {
         if (!does_tile_overlap(map, current_row, start_col) || (probability == 100))
         {
-          TilePtr road_tile = tg.generate(TILE_TYPE_ROAD);
+          TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(current_row, start_col, road_tile);
         }
         else
@@ -352,7 +352,7 @@ void BaseSettlementGenerator::generate_road_south(MapPtr map, const int start_ro
       {
         if (!does_tile_overlap(map, current_row, start_col) || (probability == 100))
         {
-          TilePtr road_tile = tg.generate(TILE_TYPE_ROAD);
+          TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(current_row, start_col, road_tile);
         }
         else
@@ -441,7 +441,7 @@ void BaseSettlementGenerator::generate_road_east(MapPtr map, const int start_row
       {
         if (!does_tile_overlap(map, start_row, current_col) || (probability == 100))
         {
-          TilePtr road_tile = tg.generate(TILE_TYPE_ROAD);
+          TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(start_row, current_col, road_tile);
         }
         else
@@ -528,7 +528,7 @@ void BaseSettlementGenerator::generate_road_west(MapPtr map, const int start_row
       {
         if (!does_tile_overlap(map, start_row, current_col) || (probability == 100))
         {
-          TilePtr road_tile = tg.generate(TILE_TYPE_ROAD);
+          TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(start_row, current_col, road_tile);
         }
         else

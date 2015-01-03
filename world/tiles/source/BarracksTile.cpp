@@ -2,7 +2,7 @@
 
 TileType BarracksTile::get_tile_type() const
 {
-  return TILE_TYPE_BARRACKS;
+  return TileType::TILE_TYPE_BARRACKS;
 }
 
 std::string BarracksTile::get_tile_description_sid() const

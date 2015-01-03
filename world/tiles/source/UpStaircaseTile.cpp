@@ -2,7 +2,7 @@
 
 TileType UpStaircaseTile::get_tile_type() const
 {
-  return TILE_TYPE_UP_STAIRCASE;
+  return TileType::TILE_TYPE_UP_STAIRCASE;
 }
 
 StaircaseType UpStaircaseTile::get_staircase_type() const

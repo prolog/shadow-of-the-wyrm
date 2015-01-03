@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_WildOrchardTile, type_is_TILE_TYPE_WILD_ORCHARD)
 {
   WildOrchardTile wild_orchard_tile;
 
-  EXPECT_EQ(TILE_TYPE_WILD_ORCHARD, wild_orchard_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_WILD_ORCHARD, wild_orchard_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_WildOrchardTile, serialization_id)

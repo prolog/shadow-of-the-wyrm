@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_WheatTile, type_is_TILE_TYPE_WHEAT)
 {
   WheatTile wheat_tile;
 
-  EXPECT_EQ(TILE_TYPE_WHEAT, wheat_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_WHEAT, wheat_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_WheatTile, serialization_id)

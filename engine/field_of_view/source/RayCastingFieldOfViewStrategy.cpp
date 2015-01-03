@@ -55,10 +55,10 @@ MapPtr RayCastingFieldOfViewStrategy::calculate(CreaturePtr fov_creature, MapPtr
   }
   
   // Pass 1: regular walls/blocking tiles
-  post_process_to_remove_artifacts(fov_creature, centre_coord, view_map, fov_map, PASS_NON_CORNER_BLOCKING_TILES);
+  post_process_to_remove_artifacts(fov_creature, centre_coord, view_map, fov_map, PassType::PASS_NON_CORNER_BLOCKING_TILES);
   
   // Pass 2: corner walls/blocking tiles
-  post_process_to_remove_artifacts(fov_creature, centre_coord, view_map, fov_map, PASS_CORNER_BLOCKING_TILES);
+  post_process_to_remove_artifacts(fov_creature, centre_coord, view_map, fov_map, PassType::PASS_CORNER_BLOCKING_TILES);
   
   return fov_map;
 }
@@ -178,10 +178,10 @@ bool RayCastingFieldOfViewStrategy::is_artifact_nw(MapPtr fov_map, const Coordin
 {
   switch(type)
   {
-    case PASS_NON_CORNER_BLOCKING_TILES:
-      return (is_non_corner_blocking_tile(fov_map, c, DIRECTION_SOUTH, DIRECTION_EAST));
-    case PASS_CORNER_BLOCKING_TILES:
-      return (is_corner_blocking_tile(fov_map, c, DIRECTION_SOUTH, DIRECTION_EAST, DIRECTION_SOUTH_EAST));
+    case PassType::PASS_NON_CORNER_BLOCKING_TILES:
+      return (is_non_corner_blocking_tile(fov_map, c, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST));
+    case PassType::PASS_CORNER_BLOCKING_TILES:
+      return (is_corner_blocking_tile(fov_map, c, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_SOUTH_EAST));
     default: return false;
   }
   
@@ -192,10 +192,10 @@ bool RayCastingFieldOfViewStrategy::is_artifact_ne(MapPtr fov_map, const Coordin
 {
   switch(type)
   {
-    case PASS_NON_CORNER_BLOCKING_TILES:
-      return (is_non_corner_blocking_tile(fov_map, c, DIRECTION_SOUTH, DIRECTION_WEST));
-    case PASS_CORNER_BLOCKING_TILES:
-      return (is_corner_blocking_tile(fov_map, c, DIRECTION_SOUTH, DIRECTION_WEST, DIRECTION_SOUTH_WEST));
+    case PassType::PASS_NON_CORNER_BLOCKING_TILES:
+      return (is_non_corner_blocking_tile(fov_map, c, Direction::DIRECTION_SOUTH, Direction::DIRECTION_WEST));
+    case PassType::PASS_CORNER_BLOCKING_TILES:
+      return (is_corner_blocking_tile(fov_map, c, Direction::DIRECTION_SOUTH, Direction::DIRECTION_WEST, Direction::DIRECTION_SOUTH_WEST));
     default: return false;
   }
   
@@ -206,10 +206,10 @@ bool RayCastingFieldOfViewStrategy::is_artifact_sw(MapPtr fov_map, const Coordin
 {
   switch(type)
   {
-    case PASS_NON_CORNER_BLOCKING_TILES:
-      return (is_non_corner_blocking_tile(fov_map, c, DIRECTION_NORTH, DIRECTION_EAST));
-    case PASS_CORNER_BLOCKING_TILES:
-      return (is_corner_blocking_tile(fov_map, c, DIRECTION_NORTH, DIRECTION_EAST, DIRECTION_NORTH_EAST));
+    case PassType::PASS_NON_CORNER_BLOCKING_TILES:
+      return (is_non_corner_blocking_tile(fov_map, c, Direction::DIRECTION_NORTH, Direction::DIRECTION_EAST));
+    case PassType::PASS_CORNER_BLOCKING_TILES:
+      return (is_corner_blocking_tile(fov_map, c, Direction::DIRECTION_NORTH, Direction::DIRECTION_EAST, Direction::DIRECTION_NORTH_EAST));
     default: return false;
   }
   
@@ -220,10 +220,10 @@ bool RayCastingFieldOfViewStrategy::is_artifact_se(MapPtr fov_map, const Coordin
 {
   switch(type)
   {
-    case PASS_NON_CORNER_BLOCKING_TILES:
-      return (is_non_corner_blocking_tile(fov_map, c, DIRECTION_NORTH, DIRECTION_WEST));
-    case PASS_CORNER_BLOCKING_TILES:
-      return (is_corner_blocking_tile(fov_map, c, DIRECTION_NORTH, DIRECTION_WEST, DIRECTION_NORTH_WEST));
+    case PassType::PASS_NON_CORNER_BLOCKING_TILES:
+      return (is_non_corner_blocking_tile(fov_map, c, Direction::DIRECTION_NORTH, Direction::DIRECTION_WEST));
+    case PassType::PASS_CORNER_BLOCKING_TILES:
+      return (is_corner_blocking_tile(fov_map, c, Direction::DIRECTION_NORTH, Direction::DIRECTION_WEST, Direction::DIRECTION_NORTH_WEST));
     default: return false;
   }
   

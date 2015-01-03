@@ -3,7 +3,7 @@
 #include "TileGenerator.hpp"
 
 MountainsGenerator::MountainsGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_MOUNTAINS)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_MOUNTAINS)
 {
 }
 
@@ -27,30 +27,30 @@ MapPtr MountainsGenerator::generate(const Dimensions& dimensions)
       
       if (rand < 3)
       {
-        tile_type = TILE_TYPE_TREE;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_TREE;
       }
       else if (rand < 5)
       {
-        tile_type = TILE_TYPE_WEEDS;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_WEEDS;
       }
       else if (rand < 6)
       {
-        tile_type = TILE_TYPE_BUSH;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_BUSH;
       }
       else if (rand < 39)
       {
-        tile_type = TILE_TYPE_CAIRN;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_CAIRN;
       }
       else if (rand < 53)
       {
-        tile_type = TILE_TYPE_SCRUB;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_SCRUB;
       }
       else
       {
-        tile_type = TILE_TYPE_FIELD;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_FIELD;
       }
       
-      tile = tg.generate(tile_type);
+      tile = tg.generate(TileType::TILE_TYPE);
       result_map->insert(row, col, tile);
     }
   }

@@ -10,7 +10,7 @@ void SwimmingMovementAccumulationChecker::check(CreaturePtr creature)
   {
     SwimmingCalculator sc;
     
-    ulonglong max_swimming_time = static_cast<ulonglong>(sc.calculate_maximum_swimming_time(sm.get_skill_value(creature, SKILL_GENERAL_SWIMMING), creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL), creature->get_breathes()));
+    ulonglong max_swimming_time = static_cast<ulonglong>(sc.calculate_maximum_swimming_time(sm.get_skill_value(creature, SkillType::SKILL_GENERAL_SWIMMING), creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL), creature->get_breathes()));
     MovementAccumulation& movement_accumulation = creature->get_movement_accumulation_ref();
     ulonglong time_in_water = movement_accumulation.get_minutes_on_super_type_given_movement();
 
@@ -22,7 +22,7 @@ void SwimmingMovementAccumulationChecker::check(CreaturePtr creature)
     {
       if (RNG::percent_chance(10))
       {
-        sm.check_skill(creature, SKILL_GENERAL_SWIMMING);
+        sm.check_skill(creature, SkillType::SKILL_GENERAL_SWIMMING);
       }
     }
   }

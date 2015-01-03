@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_MineTile, type_is_TILE_TYPE_MINE)
 {
   MineTile mine_tile;
 
-  EXPECT_EQ(TILE_TYPE_MINE, mine_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_MINE, mine_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_MineTile, tile_description_sid)

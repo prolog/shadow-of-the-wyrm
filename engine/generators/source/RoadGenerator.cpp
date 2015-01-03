@@ -34,7 +34,7 @@ void RoadGenerator::generate_road(MapPtr map)
       {
         for (int current_row = 0; current_row < max_rows; current_row++)
         {
-          tile = tg.generate(TILE_TYPE_ROAD);
+          tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(current_row, current_col, tile);
         }
       }
@@ -47,7 +47,7 @@ void RoadGenerator::generate_road(MapPtr map)
       {
         for (int current_col = 0; current_col < max_cols; current_col++)
         {
-          tile = tg.generate(TILE_TYPE_ROAD);
+          tile = tg.generate(TileType::TILE_TYPE_ROAD);
           map->insert(current_row, current_col, tile);
         }
       }

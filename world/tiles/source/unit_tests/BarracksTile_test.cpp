@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_BarracksTile, type_is_TILE_TYPE_BARRACKS)
 {
   BarracksTile barracks_tile;
 
-  EXPECT_EQ(TILE_TYPE_BARRACKS, barracks_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_BARRACKS, barracks_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_BarracksTile, tile_description_sid)

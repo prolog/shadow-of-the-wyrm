@@ -2,7 +2,7 @@
 
 TileType RoadTile::get_tile_type() const
 {
-  return TILE_TYPE_ROAD;
+  return TileType::TILE_TYPE_ROAD;
 }
 
 std::string RoadTile::get_tile_description_sid() const

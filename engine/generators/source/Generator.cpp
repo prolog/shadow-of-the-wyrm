@@ -102,7 +102,7 @@ TileType Generator::get_terrain_type() const
   return map_terrain_type;
 }
 
-void Generator::fill(const MapPtr map, const TileType& tile_type)
+void Generator::fill(const MapPtr map, const TileType& TileType::TILE_TYPE)
 {
   TileGenerator tg;
   Dimensions dim = map->size();
@@ -114,7 +114,7 @@ void Generator::fill(const MapPtr map, const TileType& tile_type)
   {
     for (int col = 0; col < cols; col++)
     {
-      TilePtr current_tile = tg.generate(tile_type);
+      TilePtr current_tile = tg.generate(TileType::TILE_TYPE);
       map->insert(row, col, current_tile);
     }
   }
@@ -225,7 +225,7 @@ void Generator::update_map_permanence_from_additional_properties(MapPtr map)
 // By default, overworld.  Override as necessary.
 MapType Generator::get_map_type() const
 {
-  return MAP_TYPE_OVERWORLD;
+  return MapType::MAP_TYPE_OVERWORLD;
 }
 
 // Clear, set, and get additional properties.
@@ -289,7 +289,7 @@ bool Generator::can_create_initial_items() const
   return false;
 }
 
-bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType tile_type, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
+bool Generator::place_staircase(MapPtr map, const int row, const int col, const TileType TileType::TILE_TYPE, const TileType tile_subtype, const Direction direction, const bool link_to_map_exit_id, const bool set_as_player_default_location)
 {
   TileGenerator tg;
   TilePtr tile = map->at(row, col);
@@ -298,7 +298,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
   {
     Coordinate c(row, col);
     
-    TilePtr new_staircase_tile = tg.generate(tile_type);
+    TilePtr new_staircase_tile = tg.generate(TileType::TILE_TYPE);
     
     // If something's been generated on the original tile, make sure that it
     // makes its way to the new one.
@@ -319,7 +319,7 @@ bool Generator::place_staircase(MapPtr map, const int row, const int col, const 
 
     // Handle exiting to a previous map in underworld maps like dungeons,
     // mines, crypts, etc.
-    if (get_map_type() == MAP_TYPE_UNDERWORLD && tile_type == TILE_TYPE_UP_STAIRCASE)
+    if (get_map_type() == MapType::MAP_TYPE_UNDERWORLD && TileType::TILE_TYPE == TileType::TILE_TYPE_UP_STAIRCASE)
     {
       // This may be empty, in which case, the custom map ID will be empty
       // and terrain will be checked instead, which is the desired behaviour.
@@ -388,13 +388,13 @@ void Generator::add_tile_exit(MapPtr map, const Coordinate& c, const Direction d
 void Generator::set_custom_map_id_for_depth(TilePtr new_tile, const Direction exit_direction, const Depth& depth, const string& linkback_map_id)
 {
   Depth new_depth = depth;
-  TileType tile_type = new_tile->get_tile_type();
+  TileType TileType::TILE_TYPE = new_tile->get_tile_type();
 
-  if (tile_type == TILE_TYPE_UP_STAIRCASE)
+  if (TileType::TILE_TYPE == TileType::TILE_TYPE_UP_STAIRCASE)
   {
     new_depth = depth.higher();
   }
-  else if (tile_type == TILE_TYPE_DOWN_STAIRCASE)
+  else if (TileType::TILE_TYPE == TileType::TILE_TYPE_DOWN_STAIRCASE)
   {
     new_depth = depth.lower();
   }

@@ -8,7 +8,7 @@ WellTile::WellTile()
 
 TileType WellTile::get_tile_type() const
 {
-  return TILE_TYPE_WELL;
+  return TileType::TILE_TYPE_WELL;
 }
 
 std::string WellTile::get_tile_description_sid() const

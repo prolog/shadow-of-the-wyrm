@@ -6,7 +6,7 @@ using namespace std;
 VillageTile::VillageTile()
 {
   // Default, can be overridden later.
-  tile_subtype = TILE_TYPE_FIELD;
+  tile_subtype = TileType::TILE_TYPE_FIELD;
   settlement_type = SETTLEMENT_TYPE_ORDERLY_VILLAGE;
 }
 
@@ -33,7 +33,7 @@ bool VillageTile::display_description_on_arrival() const
 
 TileType VillageTile::get_tile_type() const
 {
-  return TILE_TYPE_VILLAGE;
+  return TileType::TILE_TYPE_VILLAGE;
 }
 
 string VillageTile::get_tile_description_sid() const

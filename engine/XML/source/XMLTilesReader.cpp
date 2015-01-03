@@ -6,7 +6,7 @@ using namespace std;
 
 vector<DisplayTile> XMLTilesReader::get_tiles(const XMLNode& xml_configuration_tiles_node)
 {
-  static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(46), "Unexpected TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == static_cast<TileType>(46), "Unexpected TileType::TILE_TYPE_LAST value.");
 
   vector<DisplayTile> tiles;
   vector<XMLNode> tile_nodes;

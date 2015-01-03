@@ -17,7 +17,7 @@ GeneratorUtils::~GeneratorUtils()
 
 // Create a circle.  Check to ensure that the radius won't take us off
 // the boundaries.
-void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType tile_type)
+void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int col_centre, const int radius, const TileType TileType::TILE_TYPE)
 {
   Dimensions dim = map->size();
   int rows = dim.get_y();
@@ -47,10 +47,10 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
     int x = 0;
     int y = radius;
     
-    generate_tile(map, y0+radius, x0, tile_type);
-    generate_tile(map, y0-radius, x0, tile_type);
-    generate_tile(map, y0, x0+radius, tile_type);
-    generate_tile(map, y0, x0-radius, tile_type);
+    generate_tile(map, y0+radius, x0, TileType::TILE_TYPE);
+    generate_tile(map, y0-radius, x0, TileType::TILE_TYPE);
+    generate_tile(map, y0, x0+radius, TileType::TILE_TYPE);
+    generate_tile(map, y0, x0-radius, TileType::TILE_TYPE);
     
     while (x < y)
     {
@@ -68,14 +68,14 @@ void GeneratorUtils::generate_circle(MapPtr map, const int row_centre, const int
       ddF_x += 2;
       f += ddF_x;
       
-      generate_tile(map, y0 + y, x0 + x, tile_type);
-      generate_tile(map, y0 + y, x0 - x, tile_type);
-      generate_tile(map, y0 - y, x0 + x, tile_type);
-      generate_tile(map, y0 - y, x0 - x, tile_type);
-      generate_tile(map, y0 + x, x0 + y, tile_type);
-      generate_tile(map, y0 + x, x0 - y, tile_type);
-      generate_tile(map, y0 - x, x0 + y, tile_type);
-      generate_tile(map, y0 - x, x0 - y, tile_type);
+      generate_tile(map, y0 + y, x0 + x, TileType::TILE_TYPE);
+      generate_tile(map, y0 + y, x0 - x, TileType::TILE_TYPE);
+      generate_tile(map, y0 - y, x0 + x, TileType::TILE_TYPE);
+      generate_tile(map, y0 - y, x0 - x, TileType::TILE_TYPE);
+      generate_tile(map, y0 + x, x0 + y, TileType::TILE_TYPE);
+      generate_tile(map, y0 + x, x0 - y, TileType::TILE_TYPE);
+      generate_tile(map, y0 - x, x0 + y, TileType::TILE_TYPE);
+      generate_tile(map, y0 - x, x0 - y, TileType::TILE_TYPE);
     }
   }
 }
@@ -103,11 +103,11 @@ void GeneratorUtils::generate_building(const MapPtr map, const int start_row, co
       if ((row == start_row) || (row == (end_row - 1))
         ||(col == start_col) || (col == (end_col - 1)))
       {
-        current_tile = tg.generate(TILE_TYPE_ROCK);
+        current_tile = tg.generate(TileType::TILE_TYPE_ROCK);
       }
       else
       {
-        current_tile = tg.generate(TILE_TYPE_DUNGEON);
+        current_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
       }
 
       map->insert(row, col, current_tile);
@@ -119,7 +119,7 @@ void GeneratorUtils::generate_door(const MapPtr map, const int row, const int co
 {
   TileGenerator tg;
 
-  TilePtr floor   = tg.generate(TILE_TYPE_DUNGEON);
+  TilePtr floor   = tg.generate(TileType::TILE_TYPE_DUNGEON);
   FeaturePtr door = FeatureGenerator::generate_door();
 
   if (floor && map)
@@ -130,10 +130,10 @@ void GeneratorUtils::generate_door(const MapPtr map, const int row, const int co
 }
 
 // Generate a tile of a given type at a given location on a given map (that's a given).
-void GeneratorUtils::generate_tile(const MapPtr map, const int row, const int col, const TileType tile_type)
+void GeneratorUtils::generate_tile(const MapPtr map, const int row, const int col, const TileType TileType::TILE_TYPE)
 {
   TileGenerator tg;
-  TilePtr tile = tg.generate(tile_type);
+  TilePtr tile = tg.generate(TileType::TILE_TYPE);
   if (tile && map)
   {
     map->insert(row, col, tile);

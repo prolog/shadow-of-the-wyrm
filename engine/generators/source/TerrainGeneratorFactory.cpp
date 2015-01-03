@@ -39,42 +39,42 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
 GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
 {
-  static_assert(TILE_TYPE_LAST == 46, "Unexpected TILE_TYPE_LAST");
+  static_assert(TileType::TILE_TYPE_LAST == 46, "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
   
   switch(terrain_type)
   {
-    case TILE_TYPE_FIELD:
+    case TileType::TILE_TYPE_FIELD:
       generator = std::make_shared<FieldGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_SEA:
+    case TileType::TILE_TYPE_SEA:
       generator = std::make_shared<SeaGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_MARSH:
+    case TileType::TILE_TYPE_MARSH:
       generator = std::make_shared<MarshGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_MOUNTAINS:
+    case TileType::TILE_TYPE_MOUNTAINS:
       generator = std::make_shared<MountainsGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_HILLS:
+    case TileType::TILE_TYPE_HILLS:
       generator = std::make_shared<HillsGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_WILD_ORCHARD:
+    case TileType::TILE_TYPE_WILD_ORCHARD:
       generator = std::make_shared<WildOrchardGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_FOREST:
+    case TileType::TILE_TYPE_FOREST:
       generator = std::make_shared<ForestGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_CAVERN:
+    case TileType::TILE_TYPE_CAVERN:
       generator = std::make_shared<CavernGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_DESERT:
+    case TileType::TILE_TYPE_DESERT:
       generator = std::make_shared<DesertGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_SCRUB:
+    case TileType::TILE_TYPE_SCRUB:
       generator = std::make_shared<ScrubGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_VILLAGE:
+    case TileType::TILE_TYPE_VILLAGE:
     {      
       GeneratorPtr base_generator = create_generator(tile, map_exit_id, terrain_subtype);
       MapPtr base_map = base_generator->generate();
@@ -97,16 +97,16 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
       generator = SettlementGeneratorFactory::create_settlement_generator(settlement_type, base_map);
     }
       break;
-    case TILE_TYPE_GRAVEYARD:
+    case TileType::TILE_TYPE_GRAVEYARD:
       generator = GraveyardGeneratorFactory::create_scattered_graveyard_generator(map_exit_id, true);
       break;
-    case TILE_TYPE_DUNGEON_COMPLEX:
+    case TileType::TILE_TYPE_DUNGEON_COMPLEX:
       generator = std::make_shared<DungeonGenerator>(map_exit_id);
       break;
     // All three worship sites use the same process:
-    case TILE_TYPE_CHURCH:
-    case TILE_TYPE_SITE_OF_DEATH:
-    case TILE_TYPE_TEMPLE:
+    case TileType::TILE_TYPE_CHURCH:
+    case TileType::TILE_TYPE_SITE_OF_DEATH:
+    case TileType::TILE_TYPE_TEMPLE:
     {
       WorshipSiteTilePtr worship_site_tile = dynamic_pointer_cast<WorshipSiteTile>(tile);
       
@@ -119,17 +119,17 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
 
       break;      
     }
-    case TILE_TYPE_MINE:
+    case TileType::TILE_TYPE_MINE:
     {
       generator = std::make_shared<MineGenerator>(map_exit_id);
       break;
     }
-    case TILE_TYPE_CRYPT:
+    case TileType::TILE_TYPE_CRYPT:
       generator = std::make_shared<CryptGenerator>(map_exit_id);
       break;
-    case TILE_TYPE_UP_STAIRCASE:
-    case TILE_TYPE_DOWN_STAIRCASE:
-      if (terrain_subtype != TILE_TYPE_UP_STAIRCASE && terrain_subtype != TILE_TYPE_DOWN_STAIRCASE)
+    case TileType::TILE_TYPE_UP_STAIRCASE:
+    case TileType::TILE_TYPE_DOWN_STAIRCASE:
+      if (terrain_subtype != TileType::TILE_TYPE_UP_STAIRCASE && terrain_subtype != TileType::TILE_TYPE_DOWN_STAIRCASE)
       {
         // The subtype will function as the terrain type.  The idea is that if we have a set of stairs,
         // the subtype can be dungeon, cavern, etc., and guide the generation process.
@@ -138,31 +138,31 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
 
       break;
 
-    case TILE_TYPE_UNDEFINED:
-    case TILE_TYPE_WHEAT:
-    case TILE_TYPE_CAIRN:
-    case TILE_TYPE_TREE:
-    case TILE_TYPE_FRUIT_TREE:
-    case TILE_TYPE_EVERGREEN_TREE:
-    case TILE_TYPE_ROAD:
-    case TILE_TYPE_RIVER:
-    case TILE_TYPE_SHOALS:
-    case TILE_TYPE_DUNGEON:
-    case TILE_TYPE_ROCK:
-    case TILE_TYPE_BARROW:
-    case TILE_TYPE_GRAVE:
-    case TILE_TYPE_REEDS:
-    case TILE_TYPE_BEACH:
-    case TILE_TYPE_BUSH:
-    case TILE_TYPE_WEEDS:
-    case TILE_TYPE_SPRINGS:
-    case TILE_TYPE_BARRACKS:
-    case TILE_TYPE_CASTLE:
-    case TILE_TYPE_KEEP:
-    case TILE_TYPE_LIBRARY:
-    case TILE_TYPE_DAIS:
-    case TILE_TYPE_PIER:
-    case TILE_TYPE_AIR:
+    case TileType::TILE_TYPE_UNDEFINED:
+    case TileType::TILE_TYPE_WHEAT:
+    case TileType::TILE_TYPE_CAIRN:
+    case TileType::TILE_TYPE_TREE:
+    case TileType::TILE_TYPE_FRUIT_TREE:
+    case TileType::TILE_TYPE_EVERGREEN_TREE:
+    case TileType::TILE_TYPE_ROAD:
+    case TileType::TILE_TYPE_RIVER:
+    case TileType::TILE_TYPE_SHOALS:
+    case TileType::TILE_TYPE_DUNGEON:
+    case TileType::TILE_TYPE_ROCK:
+    case TileType::TILE_TYPE_BARROW:
+    case TileType::TILE_TYPE_GRAVE:
+    case TileType::TILE_TYPE_REEDS:
+    case TileType::TILE_TYPE_BEACH:
+    case TileType::TILE_TYPE_BUSH:
+    case TileType::TILE_TYPE_WEEDS:
+    case TileType::TILE_TYPE_SPRINGS:
+    case TileType::TILE_TYPE_BARRACKS:
+    case TileType::TILE_TYPE_CASTLE:
+    case TileType::TILE_TYPE_KEEP:
+    case TileType::TILE_TYPE_LIBRARY:
+    case TileType::TILE_TYPE_DAIS:
+    case TileType::TILE_TYPE_PIER:
+    case TileType::TILE_TYPE_AIR:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.
       generator = std::make_shared<FieldGenerator>(map_exit_id);

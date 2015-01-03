@@ -44,7 +44,7 @@ void VegetableGardenGenerator::plant_vegetables()
     // Spaces needed between vegetables to ensure that things grow.
     for (int row = window_start_row; row <= window_start_row + window_height; row++)
     {
-      TilePtr field_tile = tg.generate(TILE_TYPE_FIELD);
+      TilePtr field_tile = tg.generate(TileType::TILE_TYPE_FIELD);
       
       // Every other column should be empty.
       if ((col % 3 == 0) && (row % 2 == 0))

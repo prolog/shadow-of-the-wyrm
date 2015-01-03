@@ -26,64 +26,64 @@ EffectFactory::~EffectFactory()
 
 EffectPtr EffectFactory::create_effect(const EffectType effect_type)
 {
-  static_assert(EFFECT_TYPE_LAST == 18, "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(18), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
   switch(effect_type)
   {
-    case EFFECT_TYPE_HEALING:
+    case EffectType::EFFECT_TYPE_HEALING:
       effect = std::make_shared<HealingEffect>();
       break;
-    case EFFECT_TYPE_IDENTIFY:
+    case EffectType::EFFECT_TYPE_IDENTIFY:
       effect = std::make_shared<IdentifyEffect>();
       break;
-    case EFFECT_TYPE_ETHER:
+    case EffectType::EFFECT_TYPE_ETHER:
       effect = std::make_shared<EtherEffect>();
       break;
-    case EFFECT_TYPE_FRUIT_JUICE:
+    case EffectType::EFFECT_TYPE_FRUIT_JUICE:
       effect = std::make_shared<FruitJuiceEffect>();
       break;
-    case EFFECT_TYPE_TELEPORT:
+    case EffectType::EFFECT_TYPE_TELEPORT:
       effect = std::make_shared<TeleportEffect>();
       break;
-    case EFFECT_TYPE_ANTIDOTE:
+    case EffectType::EFFECT_TYPE_ANTIDOTE:
       effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_POISON);
       break;
-    case EFFECT_TYPE_AMUT:
+    case EffectType::EFFECT_TYPE_AMUT:
       effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_MUTE);
       break;
-    case EFFECT_TYPE_SPEED:
+    case EffectType::EFFECT_TYPE_SPEED:
       effect = std::make_shared<HasteEffect>();
       break;
-    case EFFECT_TYPE_UNSTONING:
+    case EffectType::EFFECT_TYPE_UNSTONING:
       effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_STONE);
       break;
-    case EFFECT_TYPE_UNBINDING:
+    case EffectType::EFFECT_TYPE_UNBINDING:
       effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_SPELLBOUND);
       break;
-    case EFFECT_TYPE_RESTORE_STATISTICS:
+    case EffectType::EFFECT_TYPE_RESTORE_STATISTICS:
       effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_DISFIGURED);
       break;
-    case EFFECT_TYPE_UNBLINDING:
+    case EffectType::EFFECT_TYPE_UNBLINDING:
       effect = std::make_shared<RemoveStatusEffect>(StatusIdentifiers::STATUS_ID_BLINDED);
       break;
-    case EFFECT_TYPE_RECHARGING:
+    case EffectType::EFFECT_TYPE_RECHARGING:
       effect = std::make_shared<RechargingEffect>();
       break;
-    case EFFECT_TYPE_INCORPOREAL:
+    case EffectType::EFFECT_TYPE_INCORPOREAL:
       effect = std::make_shared<IncorporealEffect>();
       break;
-    case EFFECT_TYPE_ENCHANTING:
+    case EffectType::EFFECT_TYPE_ENCHANTING:
       effect = std::make_shared<EnchantingEffect>();
       break;
-    case EFFECT_TYPE_FLYING:
+    case EffectType::EFFECT_TYPE_FLYING:
       effect = std::make_shared<FlyingEffect>();
       break;
-    case EFFECT_TYPE_GAIN_ATTRIBUTES:
+    case EffectType::EFFECT_TYPE_GAIN_ATTRIBUTES:
       effect = std::make_shared<GainAttributesEffect>();
       break;
-    case EFFECT_TYPE_NULL:
+    case EffectType::EFFECT_TYPE_NULL:
     default:
       effect = std::make_shared<NullEffect>();
       break;

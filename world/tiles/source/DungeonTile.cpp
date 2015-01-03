@@ -3,7 +3,7 @@
 // Individual floor tiles
 TileType DungeonTile::get_tile_type() const
 {
-  return TILE_TYPE_DUNGEON;
+  return TileType::TILE_TYPE_DUNGEON;
 }
 
 std::string DungeonTile::get_tile_description_sid() const

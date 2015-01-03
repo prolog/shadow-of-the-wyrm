@@ -7,7 +7,7 @@
 using std::string;
 
 IslandSacrificeSiteGenerator::IslandSacrificeSiteGenerator(const string& new_deity_id, const MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH)
+: ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_CHURCH)
 {
 }
 
@@ -52,7 +52,7 @@ void IslandSacrificeSiteGenerator::generate_island(MapPtr map)
   int building_size = rows / 4;
   
   // Generate the island
-  GeneratorUtils::generate_circle(map, centre_row, centre_col, moat_size, TILE_TYPE_RIVER);
+  GeneratorUtils::generate_circle(map, centre_row, centre_col, moat_size, TileType::TILE_TYPE_RIVER);
   
   // Generate the small building
   GeneratorUtils::generate_building(map, centre_row - building_size / 2, centre_col - building_size / 2, building_size, building_size);
@@ -63,9 +63,9 @@ void IslandSacrificeSiteGenerator::generate_island(MapPtr map)
   {
     TilePtr current_tile = map->at(i, centre_col);
     
-    if (current_tile->get_tile_type() == TILE_TYPE_RIVER)
+    if (current_tile->get_tile_type() == TileType::TILE_TYPE_RIVER)
     {
-      TilePtr new_tile = tg.generate(TILE_TYPE_FIELD);
+      TilePtr new_tile = tg.generate(TileType::TILE_TYPE_FIELD);
       map->insert(i, centre_col, new_tile);
     }
   }

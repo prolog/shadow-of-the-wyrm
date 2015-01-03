@@ -15,11 +15,11 @@ IMapTypeQueryPtr MapTypeQueryFactory::create_map_type_query(const MapType map_ty
 
   switch(map_type)
   {
-    case MAP_TYPE_UNDERWORLD:
+    case MapType::MAP_TYPE_UNDERWORLD:
       mtq = std::make_shared<UnderworldMapTypeQuery>();
       break;
-    case MAP_TYPE_WORLD:
-    case MAP_TYPE_OVERWORLD:
+    case MapType::MAP_TYPE_WORLD:
+    case MapType::MAP_TYPE_OVERWORLD:
     default:
       mtq = std::make_shared<OverworldMapTypeQuery>();
       break;

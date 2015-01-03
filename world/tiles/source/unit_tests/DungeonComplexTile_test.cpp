@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_DungeonComplexTile, type_is_TILE_TYPE_DUNGEON_COMPLEX)
 {
   DungeonComplexTile dungeon_complex_tile;
 
-  EXPECT_EQ(TILE_TYPE_DUNGEON_COMPLEX, dungeon_complex_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_DUNGEON_COMPLEX, dungeon_complex_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_DungeonComplexTile, tile_description_sid)

@@ -15,11 +15,11 @@ TEST(SL_Engine_DecisionStrategy_AutomaticMovementDecisionStrategy, saveload)
   AutomaticMovement am;
   ControllerPtr nullp;
 
-  am.set_direction(DIRECTION_NORTH);
+  am.set_direction(Direction::DIRECTION_NORTH);
 
   AutomaticMovementDecisionStrategy ds(am, nullp);
 
-  am.set_direction(DIRECTION_SOUTH);
+  am.set_direction(Direction::DIRECTION_SOUTH);
 
   AutomaticMovementDecisionStrategy ds2(am, nullp);
 

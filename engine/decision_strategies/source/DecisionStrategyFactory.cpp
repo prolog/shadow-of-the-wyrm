@@ -70,7 +70,7 @@ DecisionStrategyPtr DecisionStrategyFactory::create_decision_strategy(const stri
 void DecisionStrategyFactory::initialize_type_mappings()
 {
   class_id_type_mappings.clear();
-  class_id_type_mappings = map<ClassIdentifier, string>{{CLASS_ID_MOBILE_DECISION_STRATEGY, DecisionStrategyID::DECISION_STRATEGY_MOBILE},
-                                                        {CLASS_ID_IMMOBILE_DECISION_STRATEGY, DecisionStrategyID::DECISION_STRATEGY_IMMOBILE},
-                                                        {CLASS_ID_PLAYER_DECISION_STRATEGY, DecisionStrategyID::DECISION_STRATEGY_PLAYER}};
+  class_id_type_mappings = map<ClassIdentifier, string>{{ClassIdentifier::CLASS_ID_MOBILE_DECISION_STRATEGY, DecisionStrategyID::DECISION_STRATEGY_MOBILE},
+                                                        {ClassIdentifier::CLASS_ID_IMMOBILE_DECISION_STRATEGY, DecisionStrategyID::DECISION_STRATEGY_IMMOBILE},
+                                                        {ClassIdentifier::CLASS_ID_PLAYER_DECISION_STRATEGY, DecisionStrategyID::DECISION_STRATEGY_PLAYER}};
 }

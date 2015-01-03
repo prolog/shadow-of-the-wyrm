@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_RiverTile, type_is_TILE_TYPE_RIVER)
 {
   RiverTile river_tile;
 
-  EXPECT_EQ(TILE_TYPE_RIVER, river_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_RIVER, river_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_RiverTile, tile_super_type)

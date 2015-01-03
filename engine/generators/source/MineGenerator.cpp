@@ -12,7 +12,7 @@ const int MineGenerator::MINE_MIN_ROOM_HEIGHT = 4;
 const int MineGenerator::MINE_MAX_ROOM_HEIGHT = 7;
 
 MineGenerator::MineGenerator(const std::string& map_exit_id)
-: Generator(map_exit_id, TILE_TYPE_MINE)
+: Generator(map_exit_id, TileType::TILE_TYPE_MINE)
 {
 }
 
@@ -22,7 +22,7 @@ MapPtr MineGenerator::generate(const Dimensions& dim)
 {
   MapPtr result_map = std::make_shared<Map>(dim);
 
-  fill(result_map, TILE_TYPE_ROCK);
+  fill(result_map, TileType::TILE_TYPE_ROCK);
 
   generate_main_mining_corridor(result_map);
   generate_rooms(result_map);
@@ -36,7 +36,7 @@ MapPtr MineGenerator::generate(const Dimensions& dim)
 
 MapType MineGenerator::get_map_type() const
 {
-  return MAP_TYPE_UNDERWORLD;
+  return MapType::MAP_TYPE_UNDERWORLD;
 }
 
 void MineGenerator::generate_rooms(MapPtr map)
@@ -119,10 +119,10 @@ void MineGenerator::dig_floor(MapPtr map, const vector<Coordinate>& tiles_to_dig
     if (existing_tile)
     {
       TileType tt = existing_tile->get_tile_type();
-      if (tt == TILE_TYPE_UP_STAIRCASE || tt == TILE_TYPE_DOWN_STAIRCASE) break;
+      if (tt == TileType::TILE_TYPE_UP_STAIRCASE || tt == TileType::TILE_TYPE_DOWN_STAIRCASE) break;
     }
 
-    TilePtr floor_tile = tg.generate(TILE_TYPE_DUNGEON);
+    TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
     map->insert(c.first, c.second, floor_tile);
   }
 }
@@ -155,7 +155,7 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
   {
     for (int x = xpos-1; x <= xpos+1; x++)
     {
-      TilePtr tile = tg.generate(TILE_TYPE_DUNGEON);
+      TilePtr tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
       map->insert(y, x, tile);
     }
 
@@ -184,7 +184,7 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
     {
       // Place the up staircase, and note that the player 
       // should be placed here.
-      place_staircase(map, y, orig_xpos, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_MINE, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);  
+      place_staircase(map, y, orig_xpos, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_MINE, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);  
       stairway_placed = true;
     }
   }
@@ -221,7 +221,7 @@ bool MineGenerator::generate_room(MapPtr map, const int start_y, const int start
       for (int x = start_x; x < endpos_x; x++)
       {
         TilePtr tile = map->at(y, x);
-        if (tile && (tile->get_tile_type() != TILE_TYPE_ROCK))
+        if (tile && (tile->get_tile_type() != TileType::TILE_TYPE_ROCK))
         {
           room_fits = false;
           break;
@@ -236,7 +236,7 @@ bool MineGenerator::generate_room(MapPtr map, const int start_y, const int start
     {
       for (int x = start_x; x < endpos_x; x++)
       {
-        TilePtr tile = tg.generate(TILE_TYPE_DUNGEON);
+        TilePtr tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
         map->insert(y, x, tile);
       }
     }

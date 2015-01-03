@@ -245,7 +245,7 @@ bool Damage::serialize(ostream& stream) const
   }
   else
   {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
+    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
   }
 
   return true;
@@ -261,10 +261,10 @@ bool Damage::deserialize(istream& stream)
 
   status_ailments.deserialize(stream);
 
-  ClassIdentifier ci = CLASS_ID_NULL;
+  ClassIdentifier ci = ClassIdentifier::CLASS_ID_NULL;
   Serialize::read_class_id(stream, ci);
 
-  if (ci != CLASS_ID_NULL)
+  if (ci != ClassIdentifier::CLASS_ID_NULL)
   {
     additional_damage = std::make_shared<Damage>();
     additional_damage->deserialize(stream);

@@ -22,5 +22,5 @@ class CavernGenerator : public SL::Generator
     void connect_caverns(MapPtr map, const Coordinate& first, const Coordinate& second);
     void reset_cavern_edges(MapPtr map);
     void generate_staircases(MapPtr map);
-    void generate_staircase(MapPtr map, const TileType tile_type, const Direction direction);
+    void generate_staircase(MapPtr map, const TileType TileType::TILE_TYPE, const Direction direction);
 };

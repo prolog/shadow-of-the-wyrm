@@ -2,7 +2,7 @@
 
 TileType CavernTile::get_tile_type() const
 {
-  return TILE_TYPE_CAVERN;
+  return TileType::TILE_TYPE_CAVERN;
 }
 
 std::string CavernTile::get_tile_description_sid() const

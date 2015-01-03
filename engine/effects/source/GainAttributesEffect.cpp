@@ -36,25 +36,25 @@ bool GainAttributesEffect::gain_attributes(CreaturePtr creature, const vector<Ga
     {
       switch (a)
       {
-        case GAIN_ATTRIBUTES_STRENGTH:
+        case GainAttributesEnum::GAIN_ATTRIBUTES_STRENGTH:
           CreatureUtils::incr_str(creature, true);
           break;
-        case GAIN_ATTRIBUTES_DEXTERITY:
+        case GainAttributesEnum::GAIN_ATTRIBUTES_DEXTERITY:
           CreatureUtils::incr_dex(creature, true);
           break;
-        case GAIN_ATTRIBUTES_AGILITY:
+        case GainAttributesEnum::GAIN_ATTRIBUTES_AGILITY:
           CreatureUtils::incr_agi(creature, true);
           break;
-        case GAIN_ATTRIBUTES_HEALTH:
+        case GainAttributesEnum::GAIN_ATTRIBUTES_HEALTH:
           CreatureUtils::incr_hea(creature, true);
           break;
-        case GAIN_ATTRIBUTES_INTELLIGENCE:
+        case GainAttributesEnum::GAIN_ATTRIBUTES_INTELLIGENCE:
           CreatureUtils::incr_int(creature, true);
           break;
-        case GAIN_ATTRIBUTES_WILLPOWER:
+        case GainAttributesEnum::GAIN_ATTRIBUTES_WILLPOWER:
           CreatureUtils::incr_wil(creature, true);
           break;
-        case GAIN_ATTRIBUTES_CHARISMA:
+        case GainAttributesEnum::GAIN_ATTRIBUTES_CHARISMA:
           CreatureUtils::incr_cha(creature, true);
         default:
           break;
@@ -67,13 +67,13 @@ bool GainAttributesEffect::gain_attributes(CreaturePtr creature, const vector<Ga
 
 bool GainAttributesEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am)
 {
-  vector<GainAttributesEnum> to_gain = {GAIN_ATTRIBUTES_STRENGTH, GAIN_ATTRIBUTES_DEXTERITY, GAIN_ATTRIBUTES_AGILITY, GAIN_ATTRIBUTES_HEALTH, GAIN_ATTRIBUTES_INTELLIGENCE, GAIN_ATTRIBUTES_WILLPOWER, GAIN_ATTRIBUTES_CHARISMA};
+  vector<GainAttributesEnum> to_gain = {GainAttributesEnum::GAIN_ATTRIBUTES_STRENGTH, GainAttributesEnum::GAIN_ATTRIBUTES_DEXTERITY, GainAttributesEnum::GAIN_ATTRIBUTES_AGILITY, GainAttributesEnum::GAIN_ATTRIBUTES_HEALTH, GainAttributesEnum::GAIN_ATTRIBUTES_INTELLIGENCE, GainAttributesEnum::GAIN_ATTRIBUTES_WILLPOWER, GainAttributesEnum::GAIN_ATTRIBUTES_CHARISMA};
   return gain_attributes(creature, to_gain);
 }
 
 bool GainAttributesEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
 {
-  vector<GainAttributesEnum> to_gain = { GAIN_ATTRIBUTES_STRENGTH, GAIN_ATTRIBUTES_DEXTERITY, GAIN_ATTRIBUTES_AGILITY, GAIN_ATTRIBUTES_HEALTH, GAIN_ATTRIBUTES_INTELLIGENCE, GAIN_ATTRIBUTES_WILLPOWER, GAIN_ATTRIBUTES_CHARISMA };
+  vector<GainAttributesEnum> to_gain = { GainAttributesEnum::GAIN_ATTRIBUTES_STRENGTH, GainAttributesEnum::GAIN_ATTRIBUTES_DEXTERITY, GainAttributesEnum::GAIN_ATTRIBUTES_AGILITY, GainAttributesEnum::GAIN_ATTRIBUTES_HEALTH, GainAttributesEnum::GAIN_ATTRIBUTES_INTELLIGENCE, GainAttributesEnum::GAIN_ATTRIBUTES_WILLPOWER, GainAttributesEnum::GAIN_ATTRIBUTES_CHARISMA };
 
   // Shuffle the stats.  Get rid of 4-5 stats so that there are 2-3 left to gain.
   random_shuffle(to_gain.begin(), to_gain.end());

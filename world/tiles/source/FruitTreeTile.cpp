@@ -4,7 +4,7 @@ using namespace std;
 
 TileType FruitTreeTile::get_tile_type() const
 {
-  return TILE_TYPE_FRUIT_TREE;
+  return TileType::TILE_TYPE_FRUIT_TREE;
 }
 
 string FruitTreeTile::get_default_tree_tile_description_sid() const

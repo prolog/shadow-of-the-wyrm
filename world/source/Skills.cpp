@@ -57,7 +57,7 @@ Skill::Skill(const Skill& skill)
 
 void Skill::initialize()
 {
-  category = SKILL_CATEGORY_UNDEFINED;
+  category = SkillType::SKILL_CATEGORY_UNDEFINED;
   value = 0;
   marks = 0;
   threshold = 0;
@@ -1706,7 +1706,7 @@ bool Skills::serialize(ostream& stream) const
     }
     else
     {
-      Serialize::write_class_id(stream, CLASS_ID_NULL);
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
     }
   }
 
@@ -1722,13 +1722,13 @@ bool Skills::deserialize(istream& stream)
 
   for (unsigned int i = 0; i < skills_size; i++)
   {
-    SkillType skill_type = SKILL_GENERAL_ARCHERY;
+    SkillType skill_type = SkillType::SKILL_GENERAL_ARCHERY;
     Serialize::read_enum(stream, skill_type);
 
-    ClassIdentifier skill_ci = CLASS_ID_NULL;
+    ClassIdentifier skill_ci = ClassIdentifier::CLASS_ID_NULL;
     Serialize::read_class_id(stream, skill_ci);
 
-    if (skill_ci != CLASS_ID_NULL)
+    if (skill_ci != ClassIdentifier::CLASS_ID_NULL)
     {
       SkillPtr skill = SkillFactory::create_skill(skill_ci);
       if (!skill) return false;

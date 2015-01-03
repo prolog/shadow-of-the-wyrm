@@ -9,7 +9,7 @@ class TileConfigurationFactory
   public:
     TileConfigurationFactory();
 
-    ITileConfigurationPtr create_tile_configuration(const TileType tile_type);
+    ITileConfigurationPtr create_tile_configuration(const TileType TileType::TILE_TYPE);
 
   protected:
     void initialize_tile_configuration_map();

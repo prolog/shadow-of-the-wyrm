@@ -9,7 +9,7 @@
 using namespace std;
 
 CavernGenerator::CavernGenerator(const string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_CAVERN)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_CAVERN)
 {
 }
 
@@ -19,7 +19,7 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
-  fill(result_map, TILE_TYPE_ROCK);
+  fill(result_map, TileType::TILE_TYPE_ROCK);
 
   generate_cavern(result_map);
   reset_cavern_edges(result_map);
@@ -56,7 +56,7 @@ void CavernGenerator::generate_cavern(MapPtr map)
 
       if (cavern_val == CELL_OFF)
       {
-        tile = tg.generate(TILE_TYPE_DUNGEON);
+        tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
         map->insert(row, col, tile);
       }
     }
@@ -68,7 +68,7 @@ MapComponents CavernGenerator::get_cavern_components(MapPtr map)
   MapComponents result;
   set<TileType> exclusion_tiles;
 
-  exclusion_tiles.insert(TILE_TYPE_ROCK);
+  exclusion_tiles.insert(TileType::TILE_TYPE_ROCK);
   result = MapUtils::get_map_components(map, exclusion_tiles);
 
   return result;
@@ -98,7 +98,7 @@ void CavernGenerator::connect_caverns(MapPtr map, const Coordinate& start, const
 
   while (current_y != end_y || current_x != end_x)
   {
-    TilePtr tile = tg.generate(TILE_TYPE_DUNGEON);
+    TilePtr tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
     map->insert(current_y, current_x, tile);
 
     if (current_y != end_y)
@@ -163,19 +163,19 @@ void CavernGenerator::reset_cavern_edges(MapPtr map)
 
   for (int row = 0; row < max_rows; row++)
   {
-    TilePtr rock = tg.generate(TILE_TYPE_ROCK);
+    TilePtr rock = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(row, 0, rock);
     
-    rock = tg.generate(TILE_TYPE_ROCK);
+    rock = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(row, max_cols-1, rock);
   }
 
   for (int col = 0; col < max_cols; col++)
   {
-    TilePtr rock = tg.generate(TILE_TYPE_ROCK);
+    TilePtr rock = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(0, col, rock);
     
-    rock = tg.generate(TILE_TYPE_ROCK);
+    rock = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(max_rows-1, col, rock);
   }
 }
@@ -185,14 +185,14 @@ void CavernGenerator::reset_cavern_edges(MapPtr map)
 void CavernGenerator::generate_staircases(MapPtr map)
 {
   // Up Staircase
-  generate_staircase(map, TILE_TYPE_UP_STAIRCASE, DIRECTION_UP);
+  generate_staircase(map, TileType::TILE_TYPE_UP_STAIRCASE, DIRECTION_UP);
     
   // Down staircase
-  generate_staircase(map, TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN);
+  generate_staircase(map, TileType::TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN);
 }
 
 // Generate a particular staircase
-void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, const Direction direction)
+void CavernGenerator::generate_staircase(MapPtr map, const TileType TileType::TILE_TYPE, const Direction direction)
 {
   TileGenerator tg;
   Dimensions dimensions = map->size();
@@ -211,9 +211,9 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
     TilePtr tile = map->at(c);
     
     if (!tile) break;
-    if (tile && tile->get_tile_type() == TILE_TYPE_DUNGEON)
+    if (tile && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
     {
-      place_staircase(map, c.first, c.second, tile_type, TILE_TYPE_CAVERN, DIRECTION_UP, get_permanence_default(), true);
+      place_staircase(map, c.first, c.second, TileType::TILE_TYPE, TileType::TILE_TYPE_CAVERN, DIRECTION_UP, get_permanence_default(), true);
       break;
     }
   }
@@ -221,7 +221,7 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
 
 MapType CavernGenerator::get_map_type() const
 {
-  return MAP_TYPE_UNDERWORLD;
+  return MapType::MAP_TYPE_UNDERWORLD;
 }
 
 bool CavernGenerator::get_permanence_default() const

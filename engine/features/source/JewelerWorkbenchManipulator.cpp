@@ -71,7 +71,7 @@ ItemPtr JewelerWorkbenchManipulator::get_selected_item(CreaturePtr creature, Ite
 {
   MaterialType ingot_material = static_cast<MaterialType>(String::to_int(ingot->get_additional_property(SmithingConstants::SMITHING_CONSTANTS_JEWELRY_MATERIAL_TYPE)));
   list<IItemFilterPtr> smithable_item_list = ItemFilterFactory::create_material_type_filter(ingot_material);
-  list<IItemFilterPtr> ring_or_amulet_filter = ItemFilterFactory::create_item_type_filter(list<ItemType>{ITEM_TYPE_RING, ITEM_TYPE_AMULET});
+  list<IItemFilterPtr> ring_or_amulet_filter = ItemFilterFactory::create_item_type_filter(list<ItemType>{ItemType::ITEM_TYPE_RING, ItemType::ITEM_TYPE_AMULET});
 
   // Create a filter list that contains all weapons and armour that match the material type.
   copy(ring_or_amulet_filter.begin(), ring_or_amulet_filter.end(), back_inserter(smithable_item_list));
@@ -86,7 +86,7 @@ bool JewelerWorkbenchManipulator::check_creature_has_jewelry_skill(CreaturePtr c
   bool knows_jewelry = true;
 
   SkillPtr jeweler_skill;
-  if (creature && (jeweler_skill = creature->get_skills().get_skill(SKILL_GENERAL_JEWELER)) != nullptr)
+  if (creature && (jeweler_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_JEWELER)) != nullptr)
   {
     if (jeweler_skill->get_value() <= 0)
     {

@@ -13,7 +13,7 @@ using namespace std;
 using namespace boost;
 
 Map::Map(const Map& new_map)
-: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true)
+: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true)
 {
   if (this != &new_map)
   {
@@ -29,7 +29,7 @@ Map::Map(const Map& new_map)
 }
 
 Map::Map(const Dimensions& new_dimensions, const Dimensions& orig_dimensions)
-: terrain_type(TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true)
+: terrain_type(TileType::TILE_TYPE_UNDEFINED), map_type(MAP_TYPE_OVERWORLD), permanent(false), danger(0), allow_creature_updates(true)
 {
   dimensions = new_dimensions;
   original_dimensions = orig_dimensions;
@@ -429,7 +429,7 @@ void Map::set_allow_creature_updates(const bool new_allow_creature_updates)
 
 bool Map::get_allow_creature_updates() const
 {
-  return ((map_type != MAP_TYPE_WORLD) && allow_creature_updates);
+  return ((map_type != MapType::MAP_TYPE_WORLD) && allow_creature_updates);
 }
 
 bool Map::serialize(ostream& stream) const

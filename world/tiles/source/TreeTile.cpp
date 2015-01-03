@@ -4,7 +4,7 @@ using namespace std;
 
 TileType TreeTile::get_tile_type() const
 {
-  return TILE_TYPE_TREE;
+  return TileType::TILE_TYPE_TREE;
 }
 
 std::string TreeTile::get_tile_description_sid() const

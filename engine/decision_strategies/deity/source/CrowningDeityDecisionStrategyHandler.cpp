@@ -23,7 +23,7 @@ bool CrowningDeityDecisionStrategyHandler::decide(CreaturePtr creature)
 
     // Only uncrowned creatures can become crowned - fallen champions
     // cannot return to their deity's grace.
-    if (status.get_champion_type() == CHAMPION_TYPE_UNCROWNED &&
+    if (status.get_champion_type() == ChampionType::CHAMPION_TYPE_UNCROWNED &&
       (status.get_piety() >= ReligionConstants::PIETY_CROWNING))
     {
       return true;
@@ -49,7 +49,7 @@ void CrowningDeityDecisionStrategyHandler::crown_champion(CreaturePtr creature)
   Religion& religion = creature->get_religion_ref();
   DeityStatus status = rm.get_active_deity_status(creature);
 
-  status.set_champion_type(CHAMPION_TYPE_CROWNED);
+  status.set_champion_type(ChampionType::CHAMPION_TYPE_CROWNED);
   religion.set_deity_status(deity_id, status);
 }
 
@@ -58,8 +58,10 @@ void CrowningDeityDecisionStrategyHandler::fortify_champion(CreaturePtr creature
 {
   Resistances& intrinsics = creature->get_intrinsic_resistances_ref();
 
-  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
+    DamageType dt = static_cast<DamageType>(d);
+
     ResistancePtr cur_res = intrinsics.get_resistance(dt);
 
     if (cur_res)

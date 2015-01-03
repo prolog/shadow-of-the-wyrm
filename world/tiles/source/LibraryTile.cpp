@@ -2,7 +2,7 @@
 
 TileType LibraryTile::get_tile_type() const
 {
-  return TILE_TYPE_LIBRARY;
+  return TileType::TILE_TYPE_LIBRARY;
 }
 
 std::string LibraryTile::get_tile_description_sid() const

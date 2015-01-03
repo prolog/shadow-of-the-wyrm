@@ -6,7 +6,7 @@
 using std::string;
 
 RockySacrificeSiteGenerator::RockySacrificeSiteGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_SITE_OF_DEATH)
+: ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_SITE_OF_DEATH)
 {
 }
 
@@ -37,7 +37,7 @@ void RockySacrificeSiteGenerator::generate_stones(MapPtr map)
 {
   Dimensions dim = map->size();
   int radius = RNG::range(6, 8);
-  GeneratorUtils::generate_circle(map, dim.get_y() / 2, dim.get_x() / 2, radius, TILE_TYPE_CAIRN);  
+  GeneratorUtils::generate_circle(map, dim.get_y() / 2, dim.get_x() / 2, radius, TileType::TILE_TYPE_CAIRN);  
 }
 
 void RockySacrificeSiteGenerator::generate_features(MapPtr map)

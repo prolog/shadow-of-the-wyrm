@@ -2,7 +2,7 @@
 
 TileType WeedsTile::get_tile_type() const
 {
-  return TILE_TYPE_WEEDS;
+  return TileType::TILE_TYPE_WEEDS;
 }
 
 std::string WeedsTile::get_default_tree_tile_description_sid() const

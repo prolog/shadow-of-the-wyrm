@@ -42,16 +42,16 @@ CommandPtr NPCDecisionStrategy::get_decision(const bool reprompt_on_cmd_not_foun
   
   switch(factory_type)
   {
-    case COMMAND_FACTORY_TYPE_MAP:
+    case CommandFactoryType::COMMAND_FACTORY_TYPE_MAP:
       command = get_decision_for_map(this_creature_id, command_factory, keyboard_commands, view_map);
       break;
-    case COMMAND_FACTORY_TYPE_INVENTORY:
+    case CommandFactoryType::COMMAND_FACTORY_TYPE_INVENTORY:
       command = get_decision_for_inventory(command_factory, keyboard_commands);
       break;
-    case COMMAND_FACTORY_TYPE_EQUIPMENT:
+    case CommandFactoryType::COMMAND_FACTORY_TYPE_EQUIPMENT:
       command = get_decision_for_equipment(command_factory, keyboard_commands);
       break;
-    case COMMAND_FACTORY_TYPE_SELECT_TILE:
+    case CommandFactoryType::COMMAND_FACTORY_TYPE_SELECT_TILE:
       command = get_decision_for_tile_selection(command_factory, keyboard_commands);
       break;
     default:
@@ -128,10 +128,10 @@ CommandPtr NPCDecisionStrategy::get_attack_decision(const string& this_creature_
           {
             if (can_move())
             {
-              SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SEARCH_TYPE_BREADTH_FIRST, this_cr);
-              Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat));
+              SearchStrategyPtr ss = SearchStrategyFactory::create_search_strategy(SearchType::SEARCH_TYPE_UNIFORM_COST, this_cr); // JCD FIXME WAS BFS...
+              Direction direction = CoordUtils::get_direction(c_this, ss->search(view_map, c_this, c_threat)); 
 
-              if (direction != DIRECTION_NULL)
+              if (direction != Direction::DIRECTION_NULL)
               {
                 CommandPtr command = std::make_shared<MovementCommand>(direction, -1);
                 return command;

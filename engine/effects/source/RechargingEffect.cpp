@@ -41,7 +41,7 @@ bool RechargingEffect::has_rechargables(CreaturePtr creature)
 
     for (ItemPtr item : items)
     {
-      if (item && item->get_type() == ITEM_TYPE_WAND)
+      if (item && item->get_type() == ItemType::ITEM_TYPE_WAND)
       {
         return true;
       }
@@ -53,17 +53,17 @@ bool RechargingEffect::has_rechargables(CreaturePtr creature)
 
 bool RechargingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
 {
-  return recharge(creature, am, ITEM_STATUS_BLESSED);
+  return recharge(creature, am, ItemStatus::ITEM_STATUS_BLESSED);
 }
 
 bool RechargingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
 {
-  return recharge(creature, am, ITEM_STATUS_UNCURSED);
+  return recharge(creature, am, ItemStatus::ITEM_STATUS_UNCURSED);
 }
 
 bool RechargingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
 {
-  return recharge(creature, am, ITEM_STATUS_CURSED);
+  return recharge(creature, am, ItemStatus::ITEM_STATUS_CURSED);
 }
 
 bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, const ItemStatus item_status)
@@ -78,7 +78,7 @@ bool RechargingEffect::recharge(CreaturePtr creature, ActionManager * const am, 
   }
   else
   {
-    list<IItemFilterPtr> wand_filter = ItemFilterFactory::create_item_type_filter(ITEM_TYPE_WAND);
+    list<IItemFilterPtr> wand_filter = ItemFilterFactory::create_item_type_filter(ItemType::ITEM_TYPE_WAND);
 
     ItemPtr item = am->inventory(creature, creature->get_inventory(), wand_filter, false);
     WandPtr wand = std::dynamic_pointer_cast<Wand>(item);
@@ -148,15 +148,15 @@ pair<int, int> RechargingEffect::get_charges_range(const ItemStatus item_status)
 
   switch(item_status)
   {
-    case ITEM_STATUS_CURSED:
+    case ItemStatus::ITEM_STATUS_CURSED:
       charge_range.first = 1;
       charge_range.second = 2;
       break;
-    case ITEM_STATUS_UNCURSED:
+    case ItemStatus::ITEM_STATUS_UNCURSED:
       charge_range.first = 1;
       charge_range.second = 4;
       break;
-    case ITEM_STATUS_BLESSED:
+    case ItemStatus::ITEM_STATUS_BLESSED:
       charge_range.first = 2;
       charge_range.second = 5;
     default:

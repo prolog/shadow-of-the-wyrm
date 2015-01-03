@@ -2,7 +2,7 @@
 
 TileType DesertTile::get_tile_type() const
 {
-  return TILE_TYPE_DESERT;
+  return TileType::TILE_TYPE_DESERT;
 }
 
 std::string DesertTile::get_tile_description_sid() const

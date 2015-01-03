@@ -118,7 +118,7 @@ bool CreatureGenerationValues::deserialize(istream& stream)
 
     for (unsigned int i = 0; i < terrain_types_size; i++)
     {
-      TileType allowable_type = TILE_TYPE_UNDEFINED;
+      TileType allowable_type = TileType::TILE_TYPE_UNDEFINED;
       Serialize::read_enum(stream, allowable_type);
 
       allowable_terrain_types.insert(allowable_type);

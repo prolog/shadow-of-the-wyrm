@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_RockyEarthTile, type_is_TILE_TYPE_ROCKY_EARTH)
 {
   RockyEarthTile rocky_tile;
 
-  EXPECT_EQ(TILE_TYPE_ROCKY_EARTH, rocky_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_ROCKY_EARTH, rocky_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_RockyEarthTile, serialization_id)

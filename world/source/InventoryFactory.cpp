@@ -6,11 +6,11 @@ IInventoryPtr InventoryFactory::create_inventory(ClassIdentifier cl_id)
 {
   IInventoryPtr inv;
 
-  if (cl_id == CLASS_ID_INVENTORY)
+  if (cl_id == ClassIdentifier::CLASS_ID_INVENTORY)
   {
     inv = std::make_shared<Inventory>();
   }
-  else if (cl_id == CLASS_ID_NULL_INVENTORY)
+  else if (cl_id == ClassIdentifier::CLASS_ID_NULL_INVENTORY)
   {
     inv = std::make_shared<NullInventory>();
   }

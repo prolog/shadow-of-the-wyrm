@@ -44,7 +44,7 @@ void WildflowerGardenGenerator::seed_flowers()
     for (int col = window_start_col; col <= window_start_col + window_width; col++)
     {
       // Generate the field tile, and then "plant" the flower on top.
-      flower_tile = tg.generate(TILE_TYPE_FIELD);
+      flower_tile = tg.generate(TileType::TILE_TYPE_FIELD);
 
       if (RNG::percent_chance(75))
       {

@@ -19,7 +19,7 @@ void VaultCryptLayoutStrategy::create_layout(MapPtr map, const tuple<Coordinate,
 
   // Fill the vault with creatures and items.
   VaultPopulator vp;
-  vp.populate_vault(map, TILE_TYPE_CRYPT, vault_coords.first, vault_coords.second);
+  vp.populate_vault(map, TileType::TILE_TYPE_CRYPT, vault_coords.first, vault_coords.second);
 }
 
 // Create the central vault.
@@ -47,7 +47,7 @@ pair<Coordinate, Coordinate> VaultCryptLayoutStrategy::generate_vault(MapPtr map
   TileGenerator tg;
   for (const Coordinate& c : coords)
   {
-    TilePtr tile = tg.generate(TILE_TYPE_ROCK);
+    TilePtr tile = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(c.first, c.second, tile);
   }
 
@@ -61,12 +61,12 @@ void VaultCryptLayoutStrategy::generate_vault_entrance(MapPtr map, const int mid
   Direction d = static_cast<Direction>(RNG::range(DIRECTION_NORTH, DIRECTION_WEST));
   Coordinate door_coords = get_door_location(d, mid_height, mid_width, vh, vw);
 
-  // Change the associated tile to TILE_TYPE_DUNGEON, and add a door.
+  // Change the associated tile to TileType::TILE_TYPE_DUNGEON, and add a door.
   TileGenerator tg;
 
   boost::uuids::uuid id = boost::uuids::random_generator()();
   std::string lock_id = Uuid::to_string(id);
-  TilePtr door_tile = tg.generate(TILE_TYPE_DUNGEON);
+  TilePtr door_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
   DoorPtr door = FeatureGenerator::generate_door();
   LockPtr lock = std::make_shared<Lock>(lock_id, true);
   door->set_lock(lock);

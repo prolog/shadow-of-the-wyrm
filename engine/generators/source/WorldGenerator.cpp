@@ -22,12 +22,12 @@ using std::dynamic_pointer_cast;
 // The tile generator should not generate any random items on the world map!
 // Those items cannot be picked up.
 WorldGenerator::WorldGenerator()
-: Generator("", TILE_TYPE_UNDEFINED), tg(false)
+: Generator("", TileType::TILE_TYPE_UNDEFINED), tg(false)
 {
 }
 
 WorldGenerator::WorldGenerator(const string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_UNDEFINED)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_UNDEFINED)
 {
   // Worlds don't do anything with the map exit id.
 }
@@ -49,7 +49,7 @@ MapPtr WorldGenerator::generate(const Dimensions& dimensions)
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
   // Fill the world with water.
-  fill(result_map, TILE_TYPE_SEA);
+  fill(result_map, TileType::TILE_TYPE_SEA);
 
   // Generate the random world
   result_map = generate_random_islands(result_map);
@@ -161,9 +161,9 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
   int rand;
 
   vector<pair<int, pair<TileType, TileType>>> field_special_types;
-  field_special_types = {{200, {TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED}},
-                         {200, {TILE_TYPE_CRYPT, TILE_TYPE_UNDEFINED}},
-                         {100, {TILE_TYPE_VILLAGE, TILE_TYPE_FIELD}}};
+  field_special_types = {{200, {TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED}},
+                         {200, {TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED}},
+                         {100, {TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FIELD}}};
   
   // Always add fields.  
   if (world_val == CELL_OFF)
@@ -176,7 +176,7 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
       {
         tile = tg.generate(special_type.second.first, special_type.second.second);
 
-        if (special_type.second.first == TILE_TYPE_VILLAGE)
+        if (special_type.second.first == TileType::TILE_TYPE_VILLAGE)
         {
           village_coordinates.insert(make_pair(row, col));
         }
@@ -189,7 +189,7 @@ void WorldGenerator::process_field_cell(MapPtr result_map, const int row, const 
     // generated, generate a plain-jane field.
     if (tile == nullptr)
     {
-      tile = tg.generate(TILE_TYPE_FIELD, TILE_TYPE_UNDEFINED);
+      tile = tg.generate(TileType::TILE_TYPE_FIELD, TileType::TILE_TYPE_UNDEFINED);
     }
     
     result_map->insert(row, col, tile);
@@ -209,13 +209,13 @@ void WorldGenerator::process_hill_cell(MapPtr result_map, const int row, const i
     
     if (rand <= 1)
     {
-      tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_HILLS);
+      tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_HILLS);
       village_coordinates.insert(c);
     }
     else
     {
       remove_village_coordinates_if_present(c);
-      tile = tg.generate(TILE_TYPE_HILLS);      
+      tile = tg.generate(TileType::TILE_TYPE_HILLS);      
     }
     
     result_map->insert(row, col, tile);
@@ -235,13 +235,13 @@ void WorldGenerator::process_marsh_cell(MapPtr result_map, const int row, const 
     
     if (rand <= 1)
     {
-      tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_MARSH);
+      tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_MARSH);
       village_coordinates.insert(c);
     }
     else
     {
       remove_village_coordinates_if_present(c);
-      tile = tg.generate(TILE_TYPE_MARSH);
+      tile = tg.generate(TileType::TILE_TYPE_MARSH);
     }
 
     result_map->insert(row, col, tile);
@@ -261,18 +261,18 @@ void WorldGenerator::process_forest_cell(MapPtr result_map, const int row, const
 
     if (rand <= 1)
     {
-      tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_FOREST);      
+      tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_FOREST);      
       village_coordinates.insert(c);
     }
     else if (rand <= 2)
     {
       remove_village_coordinates_if_present(c);
-      tile = tg.generate(TILE_TYPE_WILD_ORCHARD);
+      tile = tg.generate(TileType::TILE_TYPE_WILD_ORCHARD);
     }
     else
     {
       remove_village_coordinates_if_present(c);
-      tile = tg.generate(TILE_TYPE_FOREST);
+      tile = tg.generate(TileType::TILE_TYPE_FOREST);
     }
     
     result_map->insert(row, col, tile);
@@ -292,13 +292,13 @@ void WorldGenerator::process_scrub_cell(MapPtr result_map, const int row, const 
     
     if (rand <= 1)
     {
-      tile = tg.generate(TILE_TYPE_VILLAGE, TILE_TYPE_SCRUB);
+      tile = tg.generate(TileType::TILE_TYPE_VILLAGE, TileType::TILE_TYPE_SCRUB);
       village_coordinates.insert(c);
     }
     else
     {
       remove_village_coordinates_if_present(c);
-      tile = tg.generate(TILE_TYPE_SCRUB);          
+      tile = tg.generate(TileType::TILE_TYPE_SCRUB);          
     }
 
     result_map->insert(row, col, tile);
@@ -312,7 +312,7 @@ void WorldGenerator::process_desert_cell(MapPtr result_map, const int row, const
   // Deserts should only appear in naturally dry areas.
   if (desert_val == CELL_OFF && world_val == CELL_OFF && scrub_val == CELL_OFF)
   {
-    tile = tg.generate(TILE_TYPE_DESERT);
+    tile = tg.generate(TileType::TILE_TYPE_DESERT);
     result_map->insert(row, col, tile);
   }
 }
@@ -323,9 +323,9 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
   int rand;
 
   vector<pair<int, pair<TileType, TileType>>> field_special_types;
-  field_special_types = { { 50, { TILE_TYPE_DUNGEON_COMPLEX, TILE_TYPE_UNDEFINED } },
-                          { 50, { TILE_TYPE_CRYPT, TILE_TYPE_UNDEFINED }},
-                          { 33, { TILE_TYPE_CAVERN, TILE_TYPE_UNDEFINED }} };
+  field_special_types = { { 50, { TileType::TILE_TYPE_DUNGEON_COMPLEX, TileType::TILE_TYPE_UNDEFINED } },
+                          { 50, { TileType::TILE_TYPE_CRYPT, TileType::TILE_TYPE_UNDEFINED }},
+                          { 33, { TileType::TILE_TYPE_CAVERN, TileType::TILE_TYPE_UNDEFINED }} };
 
   if (mountains_val == CELL_OFF && world_val == CELL_OFF && forest_val == CELL_ON)
   {
@@ -345,7 +345,7 @@ void WorldGenerator::process_mountain_cell(MapPtr result_map, const int row, con
 
     if (tile == nullptr)
     {
-      tile = tg.generate(TILE_TYPE_MOUNTAINS);
+      tile = tg.generate(TileType::TILE_TYPE_MOUNTAINS);
     }
 
     remove_village_coordinates_if_present(make_pair(row, col));
@@ -479,7 +479,7 @@ void WorldGenerator::generate_village_surroundings(MapPtr map)
         TilePtr adjacent_village_tile = map->at(adjacent_row, adjacent_col);
         TileType adjacent_type = adjacent_village_tile->get_tile_type();
           
-        if (adjacent_type != TILE_TYPE_SEA && adjacent_type != TILE_TYPE_VILLAGE)
+        if (adjacent_type != TileType::TILE_TYPE_SEA && adjacent_type != TileType::TILE_TYPE_VILLAGE)
         {
           // 20% chance of a worship site.  Generate a site based on a randomly
           // selected deity allowable for the village's race.
@@ -514,5 +514,5 @@ void WorldGenerator::remove_village_coordinates_if_present(const Coordinate& c)
 
 MapType WorldGenerator::get_map_type() const
 {
-  return MAP_TYPE_WORLD;
+  return MapType::MAP_TYPE_WORLD;
 }

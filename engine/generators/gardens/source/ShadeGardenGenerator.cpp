@@ -25,19 +25,19 @@ void ShadeGardenGenerator::generate_tree_cover()
 
   for (int row = window_start_row; row <= window_end_row_inc; row++)
   {
-    tree_tile = tg.generate(TILE_TYPE_TREE);
+    tree_tile = tg.generate(TileType::TILE_TYPE_TREE);
     map->insert(row, window_start_col, tree_tile);
 
-    tree_tile = tg.generate(TILE_TYPE_TREE);
+    tree_tile = tg.generate(TileType::TILE_TYPE_TREE);
     map->insert(row, window_end_col_inc, tree_tile);
   }
 
   for (int col = window_start_col; col <= window_end_col_inc; col++)
   {
-    tree_tile = tg.generate(TILE_TYPE_TREE);
+    tree_tile = tg.generate(TileType::TILE_TYPE_TREE);
     map->insert(window_start_row, col, tree_tile);
 
-    tree_tile = tg.generate(TILE_TYPE_TREE);
+    tree_tile = tg.generate(TileType::TILE_TYPE_TREE);
     map->insert(window_end_row_inc, col, tree_tile);
   }
 }
@@ -54,7 +54,7 @@ void ShadeGardenGenerator::generate_plants()
   {
     for (int col = window_start_col+1; col < window_end_col_inc; col++)
     {
-      garden_tile = tg.generate(TILE_TYPE_FIELD);
+      garden_tile = tg.generate(TileType::TILE_TYPE_FIELD);
       map->insert(row, col, garden_tile);
       
       rand = RNG::range(1, 6);

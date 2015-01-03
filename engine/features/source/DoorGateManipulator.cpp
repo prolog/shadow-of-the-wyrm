@@ -26,20 +26,20 @@ bool DoorGateManipulator::handle(TilePtr tile, CreaturePtr creature)
 
     switch (state)
     {
-      // If the door is smashed, nothing can be done.
-    case ENTRANCE_TYPE_DESTROYED:
-      break;
+        // If the door is smashed, nothing can be done.
+      case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
+        break;
 
-    case ENTRANCE_TYPE_OPEN:
-      result = door->close();
-      break;
+      case EntranceStateType::ENTRANCE_TYPE_OPEN:
+        result = door->close();
+        break;
 
-    case ENTRANCE_TYPE_CLOSED:
-      // If the door is closed and locked, try to unlock it.
-      // If the door is closed and unlocked, open it.
-    default:
-      result = door->open();
-      break;
+      case EntranceStateType::ENTRANCE_TYPE_CLOSED:
+        // If the door is closed and locked, try to unlock it.
+        // If the door is closed and unlocked, open it.
+      default:
+        result = door->open();
+        break;
     }
   }
 
