@@ -46,12 +46,12 @@ bool CreatureTileSafetyChecker::are_safety_conditions_satisfied(CreaturePtr crea
 }
 
 // Get the safety conditions for a particular tile type
-vector<ITileSafetyConditionPtr> CreatureTileSafetyChecker::get_safety_conditions(const TileType TileType::TILE_TYPE)
+vector<ITileSafetyConditionPtr> CreatureTileSafetyChecker::get_safety_conditions(const TileType tile_type)
 {
   vector<ITileSafetyConditionPtr> safety_conditions;
 
-  TileTypeSafetyConditionsMap::iterator t_it = TileType::TILE_TYPE_safety_conditions.find(TileType::TILE_TYPE);
-  if (t_it != TileType::TILE_TYPE_safety_conditions.end())
+  TileTypeSafetyConditionsMap::iterator t_it = tile_type_safety_conditions.find(tile_type);
+  if (t_it != tile_type_safety_conditions.end())
   {
     safety_conditions = t_it->second;
   }

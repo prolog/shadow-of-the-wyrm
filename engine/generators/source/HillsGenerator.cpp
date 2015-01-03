@@ -29,26 +29,26 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
 
       if (rand < 2)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_WEEDS;
+        tile_type = TileType::TILE_TYPE_WEEDS;
       }
       else if (rand < 5)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_SCRUB;
+        tile_type = TileType::TILE_TYPE_SCRUB;
       }
       else if (rand < 6)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_CAIRN;
+        tile_type = TileType::TILE_TYPE_CAIRN;
       }
       else if (rand < 7)
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_BUSH;
+        tile_type = TileType::TILE_TYPE_BUSH;
       }
       else
       {
-        TileType::TILE_TYPE = TileType::TILE_TYPE_FIELD;
+        tile_type = TileType::TILE_TYPE_FIELD;
       }
 
-      tile = tg.generate(TileType::TILE_TYPE);
+      tile = tg.generate(tile_type);
       result_map->insert(row, col, tile);
     }
   }

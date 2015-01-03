@@ -13,7 +13,7 @@ enum struct RuinsType
 class RuinsGenerator
 {
   public:
-    static MapPtr generate(MapPtr map, const RuinsType& = RUINS_TYPE_SETTLEMENT);
+    static MapPtr generate(MapPtr map, const RuinsType& = RuinsType::RUINS_TYPE_SETTLEMENT);
 
   protected:
     static MapPtr generate_ruined_settlement(MapPtr map);

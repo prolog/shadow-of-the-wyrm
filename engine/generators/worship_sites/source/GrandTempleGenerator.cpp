@@ -109,7 +109,7 @@ void GrandTempleGenerator::generate_fountains(MapPtr map)
 void GrandTempleGenerator::generate_altar(MapPtr map)
 {  
   TilePtr altar_tile = map->at(centre_row, centre_col); 
-  FeaturePtr altar   = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_NEUTRAL);
+  FeaturePtr altar   = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
   altar_tile->set_feature(altar);
 }
 

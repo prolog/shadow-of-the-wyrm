@@ -82,7 +82,7 @@ void CathedralGenerator::generate_dais_and_altar(MapPtr map, const int dais_star
   int altar_col = dais_start_col + (dais_width/2);
   dais_tile = map->at(altar_row, altar_col);
   
-  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_GOOD);
+  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_GOOD);
   dais_tile->set_feature(altar);
 }
 
@@ -111,7 +111,7 @@ void CathedralGenerator::generate_pews(MapPtr map, const int pew_end_row, const 
       // Space the pews nicely.
       else if (pew_col % 2 == 0)
       {
-        FeaturePtr pew = FeatureGenerator::generate_pew(PEW_DIRECTION_EAST_WEST);
+        FeaturePtr pew = FeatureGenerator::generate_pew(PewDirection::PEW_DIRECTION_EAST_WEST);
         TilePtr current_tile = map->at(pew_row, pew_col);
         current_tile->set_feature(pew);
       }

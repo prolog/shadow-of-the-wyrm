@@ -9,11 +9,11 @@ class TileConfigurationFactory
   public:
     TileConfigurationFactory();
 
-    ITileConfigurationPtr create_tile_configuration(const TileType TileType::TILE_TYPE);
+    ITileConfigurationPtr create_tile_configuration(const TileType tile_type);
 
   protected:
     void initialize_tile_configuration_map();
 
-    static ITileConfigurationPtr tile_configurations[TILE_TYPE_LAST];
+    static ITileConfigurationPtr tile_configurations[static_cast<size_t>(TileType::TILE_TYPE_LAST)];
     static bool tile_configurations_initialized;
 };

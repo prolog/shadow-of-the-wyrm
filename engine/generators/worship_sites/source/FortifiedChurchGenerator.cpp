@@ -81,9 +81,9 @@ void FortifiedChurchGenerator::create_parapet(MapPtr map, const int parapet_star
 
         if (current_tile)
         {
-          TileType TileType::TILE_TYPE = current_tile->get_tile_type();
+          TileType tile_type = current_tile->get_tile_type();
                     
-          if (TileType::TILE_TYPE != TileType::TILE_TYPE_DUNGEON)
+          if (tile_type != TileType::TILE_TYPE_DUNGEON)
           {
             TilePtr new_tile;
             new_tile = tg.generate(TileType::TILE_TYPE_ROCK);
@@ -123,7 +123,7 @@ void FortifiedChurchGenerator::generate_altar(MapPtr map)
   altar_row = start_row + 2;
   altar_col = start_col + (church_width / 2);
   TilePtr centre_tile = map->at(altar_row, altar_col);
-  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_GOOD);
+  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_GOOD);
   centre_tile->set_feature(altar);
 }
 
@@ -137,12 +137,12 @@ void FortifiedChurchGenerator::generate_statues(MapPtr map)
   {
     if (cur_row % 2 == 0)
     {
-      statue_type = DECORATIVE_STATUE_TYPE_KNIGHT;
+      statue_type = DecorativeStatueType::DECORATIVE_STATUE_TYPE_KNIGHT;
       
       int val = RNG::range(1, 100);
       if (val < 50)
       {
-        statue_type = DECORATIVE_STATUE_TYPE_WARLORD;
+        statue_type = DecorativeStatueType::DECORATIVE_STATUE_TYPE_WARLORD;
       }
       
       FeaturePtr west_statue = StatueGenerator::generate_decorative_statue(statue_type);

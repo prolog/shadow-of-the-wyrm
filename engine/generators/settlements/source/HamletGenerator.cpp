@@ -107,7 +107,7 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   int start_col = circle_col - (width / 2);
   int end_col   = circle_col + (width / 2);
   
-  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CARDINAL_DIRECTION_SOUTH))
+  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_SOUTH))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -119,7 +119,7 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   end_row   = circle_row + hamlet_size + 1 + height;
   // start_col, end_col the same for North and South
   
-  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CARDINAL_DIRECTION_NORTH))
+  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_NORTH))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -132,7 +132,7 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   start_col = circle_col + hamlet_size + 1;
   end_col   = circle_col + hamlet_size + width + 1;
   
-  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CARDINAL_DIRECTION_WEST))
+  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_WEST))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -144,7 +144,7 @@ void HamletGenerator::generate_core_hamlet_buildings(MapPtr map, const int circl
   start_col = circle_col - hamlet_size - width - 1;
   end_col   = circle_col - hamlet_size - 1;
   
-  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CARDINAL_DIRECTION_EAST))
+  if (generate_building_if_possible(map, start_row, end_row, start_col, end_col, CardinalDirection::CARDINAL_DIRECTION_EAST))
   {
     potentially_generate_vegetable_garden(map, start_row, end_row, start_col, end_col, 50);
   }
@@ -173,14 +173,14 @@ void HamletGenerator::generate_additional_random_buildings(MapPtr map, const int
     if (!does_building_overlap(map, row, row+height, col, col+width))
     {
       GeneratorUtils::generate_building(map, row, col, height, width);
-      CardinalDirection cd = static_cast<CardinalDirection>(RNG::range(CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_WEST));
+      CardinalDirection cd = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
       
       // If the building is beyond the road, use an east/west boundary.
       // Otherwise, it's above or below the road, so use north/south.
-      if (col > road_col && col > road_end_col) cd = CARDINAL_DIRECTION_WEST;
-      else if (col < road_col && col < road_end_col) cd = CARDINAL_DIRECTION_EAST;
-      else if (row + height < road_row) cd = CARDINAL_DIRECTION_SOUTH;
-      else cd = CARDINAL_DIRECTION_NORTH;
+      if (col > road_col && col > road_end_col) cd = CardinalDirection::CARDINAL_DIRECTION_WEST;
+      else if (col < road_col && col < road_end_col) cd = CardinalDirection::CARDINAL_DIRECTION_EAST;
+      else if (row + height < road_row) cd = CardinalDirection::CARDINAL_DIRECTION_SOUTH;
+      else cd = CardinalDirection::CARDINAL_DIRECTION_NORTH;
       
       Coordinate door_coords = get_door_location(row, row+height-1, col, col+width-1, cd);
       GeneratorUtils::generate_door(map, door_coords.first, door_coords.second);
@@ -205,7 +205,7 @@ bool HamletGenerator::potentially_generate_vegetable_garden(MapPtr map, const in
   
   if (RNG::percent_chance(probability))
   {
-    std::vector<CardinalDirection> vcd{ CARDINAL_DIRECTION_EAST, CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_SOUTH, CARDINAL_DIRECTION_WEST };
+    std::vector<CardinalDirection> vcd{ CardinalDirection::CARDINAL_DIRECTION_EAST, CardinalDirection::CARDINAL_DIRECTION_NORTH, CardinalDirection::CARDINAL_DIRECTION_SOUTH, CardinalDirection::CARDINAL_DIRECTION_WEST };
     
     std::random_shuffle(vcd.begin(), vcd.end(), RNG::get_generator());
     
@@ -219,18 +219,18 @@ bool HamletGenerator::potentially_generate_vegetable_garden(MapPtr map, const in
       
       switch(direction)
       {
-        case CARDINAL_DIRECTION_NORTH:
-          garden_generated = generate_garden_if_possible(map, GARDEN_TYPE_VEGETABLE, start_row - garden_height - 1, start_row - 1, start_col, start_col + garden_width);
+        case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+          garden_generated = generate_garden_if_possible(map, GardenType::GARDEN_TYPE_VEGETABLE, start_row - garden_height - 1, start_row - 1, start_col, start_col + garden_width);
           break;
-        case CARDINAL_DIRECTION_SOUTH:
-          garden_generated = generate_garden_if_possible(map, GARDEN_TYPE_VEGETABLE, end_row+1, end_row + garden_height, start_col, start_col + garden_width);
+        case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+          garden_generated = generate_garden_if_possible(map, GardenType::GARDEN_TYPE_VEGETABLE, end_row+1, end_row + garden_height, start_col, start_col + garden_width);
           break;
-        case CARDINAL_DIRECTION_WEST:
-          garden_generated = generate_garden_if_possible(map, GARDEN_TYPE_VEGETABLE, start_row, start_row + garden_height, start_col - 1 - garden_width, start_col - 1);
+        case CardinalDirection::CARDINAL_DIRECTION_WEST:
+          garden_generated = generate_garden_if_possible(map, GardenType::GARDEN_TYPE_VEGETABLE, start_row, start_row + garden_height, start_col - 1 - garden_width, start_col - 1);
           break;
-        case CARDINAL_DIRECTION_EAST:
+        case CardinalDirection::CARDINAL_DIRECTION_EAST:
         default:
-          garden_generated = generate_garden_if_possible(map, GARDEN_TYPE_VEGETABLE, start_row, start_row + garden_height, end_col + 1, end_col + 1 + garden_width);
+          garden_generated = generate_garden_if_possible(map, GardenType::GARDEN_TYPE_VEGETABLE, start_row, start_row + garden_height, end_col + 1, end_col + 1 + garden_width);
           break;
       }
       

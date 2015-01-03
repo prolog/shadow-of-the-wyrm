@@ -14,7 +14,7 @@ class TileGenerator
     void set_generate_items(const bool new_generate_items);
     bool get_generate_items() const;
 
-    TilePtr generate(const TileType& TileType::TILE_TYPE, const TileType& subtile_type = TileType::TILE_TYPE_UNDEFINED);
+    TilePtr generate(const TileType& tile_type, const TileType& subtile_type = TileType::TILE_TYPE_UNDEFINED);
     WorshipSiteTilePtr generate_worship_site_tile(const AlignmentRange alignment, const std::string& deity_id, const WorshipSiteType worship_site_type);
     StaircaseTilePtr generate_staircase(const StaircaseType& stairs_type);
 

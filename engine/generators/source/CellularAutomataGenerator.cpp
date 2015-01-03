@@ -11,7 +11,7 @@ CellularAutomataSettings::CellularAutomataSettings()
 , iterations(0)
 , neighbour_threshold(0)
 , seed_p_close_cell(0)
-, flip_value(CELL_OFF)
+, flip_value(CellValue::CELL_OFF)
 {
 }
 
@@ -89,8 +89,8 @@ CellularAutomataGenerator::CellularAutomataGenerator()
 , ITERATIONS(0)
 , NEIGHBOUR_THRESHOLD(0)
 , SEED_P_CLOSE_CELL(0)
-, flip_value(CELL_OFF)
-, inverse_flip_value(CELL_ON)
+, flip_value(CellValue::CELL_OFF)
+, inverse_flip_value(CellValue::CELL_ON)
 {
 }
 
@@ -103,13 +103,13 @@ CellularAutomataGenerator::CellularAutomataGenerator(const CellularAutomataSetti
 , SEED_P_CLOSE_CELL(cas.get_seed_p_close_cell())
 , flip_value(cas.get_flip_value())
 {
-  if (flip_value == CELL_ON)
+  if (flip_value == CellValue::CELL_ON)
   {
-    inverse_flip_value = CELL_OFF;
+    inverse_flip_value = CellValue::CELL_OFF;
   }
   else
   {
-    inverse_flip_value = CELL_ON;
+    inverse_flip_value = CellValue::CELL_ON;
   }
 }
 
@@ -138,17 +138,17 @@ CellMap CellularAutomataGenerator::generate()
 
     if (close_cell < P_CLOSE_CELL)
     {
-      cell_map[rand_cell_y][rand_cell_x] = CELL_OFF;
+      cell_map[rand_cell_y][rand_cell_x] = CellValue::CELL_OFF;
     }
 
     num_closed_neighbours = get_number_closed_neighbours(cell_map, dimensions, rand_cell_y, rand_cell_x);
     if (num_closed_neighbours > NEIGHBOUR_THRESHOLD)
     {
-      cell_map[rand_cell_y][rand_cell_x] = CELL_OFF;
+      cell_map[rand_cell_y][rand_cell_x] = CellValue::CELL_OFF;
     }
     else
     {
-      cell_map[rand_cell_y][rand_cell_x] = CELL_ON;
+      cell_map[rand_cell_y][rand_cell_x] = CellValue::CELL_ON;
     }
   }
 
@@ -196,7 +196,7 @@ int CellularAutomataGenerator::get_number_closed_neighbours(const CellMap& cell_
   {
     CellValue cell_val = cell_map[n_it->first][n_it->second];
     
-    if (cell_val == CELL_OFF)
+    if (cell_val == CellValue::CELL_OFF)
     {
       num_closed++;
     }

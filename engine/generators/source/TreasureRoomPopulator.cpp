@@ -13,12 +13,12 @@ using namespace std;
 // - Fire pillars in the room corners
 // - 2-4 creatures between the danger level and 5 levels higher
 // - Item with additional base enchants in the centre
-void TreasureRoomPopulator::populate_treasure_room(MapPtr current_map, const TileType TileType::TILE_TYPE, const int danger_level, const int start_row, const int end_row_wall, const int start_col, const int end_col_wall)
+void TreasureRoomPopulator::populate_treasure_room(MapPtr current_map, const TileType tile_type, const int danger_level, const int start_row, const int end_row_wall, const int start_col, const int end_col_wall)
 {
   if (current_map)
   {
     generate_corner_features(current_map, start_row, end_row_wall, start_col, end_col_wall);
-    generate_creatures(current_map, TileType::TILE_TYPE, danger_level, start_row, end_row_wall, start_col, end_col_wall);
+    generate_creatures(current_map, tile_type, danger_level, start_row, end_row_wall, start_col, end_col_wall);
     generate_treasure(current_map, danger_level, start_row, end_row_wall, start_col, end_col_wall);
   }
 }
@@ -38,7 +38,7 @@ void TreasureRoomPopulator::generate_corner_features(MapPtr current_map, const i
   }
   else
   {
-    feat = FeatureGenerator::generate_sarcophagus(MATERIAL_TYPE_STEEL);
+    feat = FeatureGenerator::generate_sarcophagus(MaterialType::MATERIAL_TYPE_STEEL);
   }
 
   TilePtr feat_tile = current_map->at(start_row, start_col);
@@ -58,14 +58,14 @@ void TreasureRoomPopulator::generate_corner_features(MapPtr current_map, const i
 }
 
 // Generate the creatures in the treasure room.
-void TreasureRoomPopulator::generate_creatures(MapPtr current_map, const TileType TileType::TILE_TYPE, const int danger_level, const int start_row, const int end_row_wall, const int start_col, const int end_col_wall)
+void TreasureRoomPopulator::generate_creatures(MapPtr current_map, const TileType tile_type, const int danger_level, const int start_row, const int end_row_wall, const int start_col, const int end_col_wall)
 {
   Game& game = Game::instance();
   ActionManager& am = game.get_action_manager_ref();
 
   vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(make_pair(start_row, start_col), make_pair(end_row_wall - 1, end_col_wall - 1));
   CreatureGenerationManager cgm;
-  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(TileType::TILE_TYPE, current_map->get_permanent(), danger_level, danger_level + 5, RARITY_RARE);
+  CreatureGenerationMap generation_map = cgm.generate_creature_generation_map(tile_type, current_map->get_permanent(), danger_level, danger_level + 5, Rarity::RARITY_RARE);
 
   // Generate a few creatures, and place them in random positions throughout the room.
   int num_creatures = RNG::range(2, 4);
@@ -106,7 +106,7 @@ void TreasureRoomPopulator::generate_treasure(MapPtr current_map, const int dang
 
       // Generate an item.
       ItemGenerationManager igm;
-      ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level / 2, RNG::range(danger_level, danger_level + 5), RARITY_RARE);
+      ItemGenerationVec generation_vec = igm.generate_item_generation_vec(danger_level / 2, RNG::range(danger_level, danger_level + 5), Rarity::RARITY_RARE);
 
       ItemPtr generated_item = igm.generate_item(am, generation_vec, RNG::range(2, 4));
 

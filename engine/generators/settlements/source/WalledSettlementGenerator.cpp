@@ -88,19 +88,19 @@ void WalledSettlementGenerator::generate_walls(MapPtr map)
 void WalledSettlementGenerator::generate_gate(MapPtr map)
 {
   TileGenerator tg;
-  int rand = RNG::range(CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_SOUTH);
+  CardinalDirection rand = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_SOUTH)));
   
   switch(rand)
   {
-    case CARDINAL_DIRECTION_WEST:
-    case CARDINAL_DIRECTION_NORTH:
-      gate_wall = CARDINAL_DIRECTION_NORTH;
+    case CardinalDirection::CARDINAL_DIRECTION_WEST:
+    case CardinalDirection::CARDINAL_DIRECTION_NORTH:
+      gate_wall = CardinalDirection::CARDINAL_DIRECTION_NORTH;
       gate_row  = north_wall;
       gate_col  = (east_wall + west_wall) / 2;
       break;
-    case CARDINAL_DIRECTION_EAST:
-    case CARDINAL_DIRECTION_SOUTH:
-      gate_wall = CARDINAL_DIRECTION_SOUTH;
+    case CardinalDirection::CARDINAL_DIRECTION_EAST:
+    case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
+      gate_wall = CardinalDirection::CARDINAL_DIRECTION_SOUTH;
       gate_row  = south_wall;
       gate_col  = (east_wall + west_wall) / 2;
       break;
@@ -118,12 +118,12 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
 {
   switch(gate_wall)
   {
-    case CARDINAL_DIRECTION_WEST:
-    case CARDINAL_DIRECTION_NORTH:
+    case CardinalDirection::CARDINAL_DIRECTION_WEST:
+    case CardinalDirection::CARDINAL_DIRECTION_NORTH:
       generate_road_south(map, gate_row+1, gate_col, south_wall - north_wall - 1, growth_rate, 0, false);
       break;
-    case CARDINAL_DIRECTION_EAST:
-    case CARDINAL_DIRECTION_SOUTH:
+    case CardinalDirection::CARDINAL_DIRECTION_EAST:
+    case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
       generate_road_north(map, gate_row-1, gate_col, south_wall - north_wall - 1, growth_rate, 0, false);
       break;
     default: 
@@ -147,7 +147,7 @@ void WalledSettlementGenerator::generate_inner_settlement(MapPtr map)
     col    = RNG::range(west_wall+2, east_wall-2);
     height = RNG::range(std::min(5, gap_height), std::min(7, gap_height));
     width  = RNG::range(std::min(5, gap_width), std::min(9, gap_width));
-    dir    = static_cast<CardinalDirection>(RNG::range(CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_WEST));
+    dir = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
     
     if (!does_building_overlap(map, row, row+height+1, col, col+width+1, offset_extra))
     {

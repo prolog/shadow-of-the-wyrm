@@ -184,7 +184,7 @@ void MineGenerator::generate_main_mining_corridor(MapPtr map)
     {
       // Place the up staircase, and note that the player 
       // should be placed here.
-      place_staircase(map, y, orig_xpos, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_MINE, DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);  
+      place_staircase(map, y, orig_xpos, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_MINE, Direction::DIRECTION_UP, get_permanence(), !place_player_on_down_staircase);  
       stairway_placed = true;
     }
   }

@@ -10,7 +10,7 @@ MapPtr RuinsGenerator::generate(MapPtr map, const RuinsType& ruins_type)
 {
   MapPtr result_map;
 
-  if (ruins_type == RUINS_TYPE_SETTLEMENT)
+  if (ruins_type == RuinsType::RUINS_TYPE_SETTLEMENT)
   {
     SettlementRuinsGenerator srg(map);
     result_map = srg.generate();

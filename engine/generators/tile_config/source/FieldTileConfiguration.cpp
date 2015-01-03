@@ -53,5 +53,5 @@ void FieldTileConfiguration::initialize_additional_flora_map()
                                                         { {1, 1000}, "_wildflower_6"},
                                                         { {1, 2500}, "_whiteflower" } };
 
-  flora_map = AdditionalFloraMap{ {SEASON_SUMMER, summer_p_map} };
+  flora_map = AdditionalFloraMap{ {Season::SEASON_SUMMER, summer_p_map} };
 }

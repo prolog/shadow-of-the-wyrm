@@ -13,26 +13,26 @@ FeaturePtr StatueGenerator::generate_decorative_statue(const DecorativeStatueTyp
 {
   FeaturePtr statue;
 
-  static_assert(DECORATIVE_STATUE_TYPE_LAST == 5, "Unexpected DECORATIVE_STATUE_TYPE_LAST value.");
+  static_assert(DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST == 5, "Unexpected DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST value.");
 
   switch(type)
   {
-    case DECORATIVE_STATUE_TYPE_KING:
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_KING:
       statue = std::make_shared<KingDecorativeStatue>();
       break;
-    case DECORATIVE_STATUE_TYPE_QUEEN:
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_QUEEN:
       statue = std::make_shared<QueenDecorativeStatue>();
       break;
-    case DECORATIVE_STATUE_TYPE_WARLORD:
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_WARLORD:
       statue = std::make_shared<WarlordDecorativeStatue>();
       break;
-    case DECORATIVE_STATUE_TYPE_KNIGHT:
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_KNIGHT:
       statue = std::make_shared<KnightDecorativeStatue>();
       break;
-    case DECORATIVE_STATUE_TYPE_HIGH_PRIEST:
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_HIGH_PRIEST:
       statue = std::make_shared<HighPriestDecorativeStatue>();
       break;
-    case DECORATIVE_STATUE_TYPE_SORCEROR:
+    case DecorativeStatueType::DECORATIVE_STATUE_TYPE_SORCEROR:
       statue = std::make_shared<SorcerorDecorativeStatue>();
       break;
     default:

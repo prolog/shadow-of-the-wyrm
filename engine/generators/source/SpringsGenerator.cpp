@@ -6,11 +6,11 @@ MapPtr SpringsGenerator::generate(MapPtr map, const int start_row, const int sta
 {
   MapPtr result_map = std::make_shared<Map>(*map);
 
-  if (type == SPRINGS_TYPE_WIDE)
+  if (type == SpringsType::SPRINGS_TYPE_WIDE)
   {
     result_map = generate_wide(result_map, start_row, start_col, springs_size);
   }
-  else if (type == SPRINGS_TYPE_TALL)
+  else if (type == SpringsType::SPRINGS_TYPE_TALL)
   {
     result_map = generate_tall(result_map, start_row, start_col, springs_size);
   }

@@ -27,7 +27,7 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   connect_cavern_components(result_map, cc);
   generate_staircases(result_map);
   
-  result_map->set_map_type(MAP_TYPE_UNDERWORLD);
+  result_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
   
   return result_map;
 }
@@ -40,7 +40,7 @@ void CavernGenerator::generate_cavern(MapPtr map)
 
   int num_iterations = RNG::range(1000, 5000);
 
-  CellularAutomataSettings cas(70, num_iterations, 4, 70, CELL_OFF);
+  CellularAutomataSettings cas(70, num_iterations, 4, 70, CellValue::CELL_OFF);
   CellularAutomataGenerator cag(cas, dimensions);
   CellMap cavern_map = cag.generate();
 
@@ -54,7 +54,7 @@ void CavernGenerator::generate_cavern(MapPtr map)
     {
       cavern_val = cavern_map[row][col];
 
-      if (cavern_val == CELL_OFF)
+      if (cavern_val == CellValue::CELL_OFF)
       {
         tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
         map->insert(row, col, tile);
@@ -185,14 +185,14 @@ void CavernGenerator::reset_cavern_edges(MapPtr map)
 void CavernGenerator::generate_staircases(MapPtr map)
 {
   // Up Staircase
-  generate_staircase(map, TileType::TILE_TYPE_UP_STAIRCASE, DIRECTION_UP);
+  generate_staircase(map, TileType::TILE_TYPE_UP_STAIRCASE, Direction::DIRECTION_UP);
     
   // Down staircase
-  generate_staircase(map, TileType::TILE_TYPE_DOWN_STAIRCASE, DIRECTION_DOWN);
+  generate_staircase(map, TileType::TILE_TYPE_DOWN_STAIRCASE, Direction::DIRECTION_DOWN);
 }
 
 // Generate a particular staircase
-void CavernGenerator::generate_staircase(MapPtr map, const TileType TileType::TILE_TYPE, const Direction direction)
+void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, const Direction direction)
 {
   TileGenerator tg;
   Dimensions dimensions = map->size();
@@ -213,7 +213,7 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType TileType::TI
     if (!tile) break;
     if (tile && tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON)
     {
-      place_staircase(map, c.first, c.second, TileType::TILE_TYPE, TileType::TILE_TYPE_CAVERN, DIRECTION_UP, get_permanence_default(), true);
+      place_staircase(map, c.first, c.second, tile_type, TileType::TILE_TYPE_CAVERN, Direction::DIRECTION_UP, get_permanence_default(), true);
       break;
     }
   }

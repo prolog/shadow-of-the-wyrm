@@ -7,7 +7,7 @@ using namespace std;
 void PillarCryptLayoutStrategy::create_layout(MapPtr map, const tuple<Coordinate, Coordinate, Coordinate>& stair_loc_and_room_boundary)
 {
   // Select a pillar type.
-  PillarType pt = static_cast<PillarType>(RNG::range(PILLAR_TYPE_SQUARE, PILLAR_TYPE_LAST-1));
+  PillarType pt = static_cast<PillarType>(RNG::range(static_cast<int>(PillarType::PILLAR_TYPE_SQUARE), static_cast<int>(PillarType::PILLAR_TYPE_LAST)-1));
   IPillarGeneratorPtr p_gen = PillarGeneratorFactory::create_generator(pt);
 
   if (p_gen != nullptr)
