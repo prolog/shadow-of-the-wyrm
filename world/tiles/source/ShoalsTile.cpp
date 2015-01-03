@@ -8,7 +8,7 @@ ShoalsTile::ShoalsTile()
 
 TileType ShoalsTile::get_tile_type() const
 {
-  return TILE_TYPE_SHOALS;
+  return TileType::TILE_TYPE_SHOALS;
 }
 
 TileSuperType ShoalsTile::get_tile_super_type() const

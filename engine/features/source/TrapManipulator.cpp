@@ -41,7 +41,7 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
 
     // Deal the damage to the creature:
     CombatManager cm;
-    const AttackType attack_type = ATTACK_TYPE_RANGED;
+    const AttackType attack_type = AttackType::ATTACK_TYPE_RANGED;
     bool slays_race = false;
     int dmg_roll = RNG::dice(damage);
 

@@ -1,14 +1,14 @@
 #include "gtest/gtest.h"
 
-TEST(SL_Engine_Generators_TileGenerators, tile_types_correct)
+TEST(SL_Engine_Generators_TileGenerators, TileType::TILE_TYPEs_correct)
 {
   TilePtr tile;
   TileGenerator tg;
 
-  for (TileType tile_type = TILE_TYPE_FIRST; tile_type < TILE_TYPE_LAST; tile_type++)
+  for (TileType TileType::TILE_TYPE = TileType::TILE_TYPE_FIRST; TileType::TILE_TYPE < TileType::TILE_TYPE_LAST; TileType::TILE_TYPE++)
   {
-    tile = tg.generate(tile_type);
+    tile = tg.generate(TileType::TILE_TYPE);
 
-    EXPECT_EQ(tile_type, tile->get_tile_type());
+    EXPECT_EQ(TileType::TILE_TYPE, tile->get_tile_type());
   }
 }

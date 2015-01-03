@@ -3,7 +3,7 @@
 // Needed for boost's serialization library
 TempleTile::TempleTile()
 {
-  tile_subtype = TILE_TYPE_UNDEFINED;
+  tile_subtype = TileType::TILE_TYPE_UNDEFINED;
 }
  
 TempleTile::TempleTile(const TileType subtype)
@@ -13,7 +13,7 @@ TempleTile::TempleTile(const TileType subtype)
 
 TileType TempleTile::get_tile_type() const
 {
-  return TILE_TYPE_TEMPLE;
+  return TileType::TILE_TYPE_TEMPLE;
 }
 
 std::string TempleTile::get_tile_description_sid() const

@@ -169,79 +169,79 @@ string map_to_string(MapPtr map, bool use_html)
         tile_ascii = html_encode(ss.str());
 /*        switch(type)
         {
-          case TILE_TYPE_DAIS:
+          case TileType::TILE_TYPE_DAIS:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#848484\">";
             tile_ascii = ".";
             break;
-          case TILE_TYPE_FIELD:
+          case TileType::TILE_TYPE_FIELD:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
             tile_ascii = ".";
             break;
-          case TILE_TYPE_BUSH:
+          case TileType::TILE_TYPE_BUSH:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
             tile_ascii = "\"";
             break;
-          case TILE_TYPE_WEEDS:
+          case TileType::TILE_TYPE_WEEDS:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#008000\">";
             tile_ascii = "\"";
             break;
-          case TILE_TYPE_FOREST:
+          case TileType::TILE_TYPE_FOREST:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
             tile_ascii = "&";
             break;
-          case TILE_TYPE_MOUNTAINS:
+          case TileType::TILE_TYPE_MOUNTAINS:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
             tile_ascii = "^";
             break;
-          case TILE_TYPE_TREE:
+          case TileType::TILE_TYPE_TREE:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FF00\">";
             tile_ascii = "T";
             break;
-          case TILE_TYPE_CAIRN:
+          case TileType::TILE_TYPE_CAIRN:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
             tile_ascii = "*";
             break;
-          case TILE_TYPE_SPRINGS:
+          case TileType::TILE_TYPE_SPRINGS:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#00FFFF\">";
             tile_ascii = "v";
             break;
-          case TILE_TYPE_RIVER:
+          case TileType::TILE_TYPE_RIVER:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
             tile_ascii = "~";
             break;
-          case TILE_TYPE_DUNGEON:
+          case TileType::TILE_TYPE_DUNGEON:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
             tile_ascii = ".";
             break;
-          case TILE_TYPE_ROCK:
+          case TileType::TILE_TYPE_ROCK:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#808080\">";
             tile_ascii = "#";
             break;
-          case TILE_TYPE_SCRUB:
+          case TileType::TILE_TYPE_SCRUB:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#CCFF00\">";
             tile_ascii = ".";
             break;
-          case TILE_TYPE_ROAD:
+          case TileType::TILE_TYPE_ROAD:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
             tile_ascii = ".";
             break;
-          case TILE_TYPE_MARSH:
+          case TileType::TILE_TYPE_MARSH:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"008000\">";
             tile_ascii = "~";
             break;
-          case TILE_TYPE_REEDS:
+          case TileType::TILE_TYPE_REEDS:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#A52A2A\">";
             tile_ascii = "|";
             break;
-          case TILE_TYPE_SEA:
+          case TileType::TILE_TYPE_SEA:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"#0000FF\">";
             tile_ascii = "~";
             break;
-          case TILE_TYPE_GRAVE:
+          case TileType::TILE_TYPE_GRAVE:
             if (use_html) start_tag = "<font face=\"Courier\" color=\"C0C0C0\">";
             tile_ascii = "+";
             break;
-          case TILE_TYPE_UP_STAIRCASE:
+          case TileType::TILE_TYPE_UP_STAIRCASE:
             if (use_html)
             {
               start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";
@@ -250,7 +250,7 @@ string map_to_string(MapPtr map, bool use_html)
             } 
             else tile_ascii = "<";
             break;
-          case TILE_TYPE_DOWN_STAIRCASE:
+          case TileType::TILE_TYPE_DOWN_STAIRCASE:
             if (use_html)
             {
               start_tag = "<font face=\"Courier\" color=\"#C0C0C0\">";

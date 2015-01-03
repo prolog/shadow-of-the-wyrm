@@ -2,7 +2,7 @@
 
 TileType GraveTile::get_tile_type() const
 {
-  return TILE_TYPE_GRAVE;
+  return TileType::TILE_TYPE_GRAVE;
 }
 
 std::string GraveTile::get_tile_description_sid() const

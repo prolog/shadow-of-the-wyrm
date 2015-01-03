@@ -8,7 +8,7 @@
 using namespace std;
 
 EnchantingEffect::EnchantingEffect()
-: item_status_multipliers({{ ITEM_STATUS_BLESSED, 1.5f }, {ITEM_STATUS_UNCURSED, 1.0f}, {ITEM_STATUS_CURSED, -1.0f}})
+: item_status_multipliers({ { ItemStatus::ITEM_STATUS_BLESSED, 1.5f }, { ItemStatus::ITEM_STATUS_UNCURSED, 1.0f }, { ItemStatus::ITEM_STATUS_CURSED, -1.0f } })
 {
 }
 
@@ -30,17 +30,17 @@ Effect* EnchantingEffect::clone()
 
 bool EnchantingEffect::effect_blessed(CreaturePtr creature, ActionManager * const am)
 {
-  return enchant(creature, am, ITEM_STATUS_BLESSED);
+  return enchant(creature, am, ItemStatus::ITEM_STATUS_BLESSED);
 }
 
 bool EnchantingEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
 {
-  return enchant(creature, am, ITEM_STATUS_UNCURSED);
+  return enchant(creature, am, ItemStatus::ITEM_STATUS_UNCURSED);
 }
 
 bool EnchantingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
 {
-  return enchant(creature, am, ITEM_STATUS_CURSED);
+  return enchant(creature, am, ItemStatus::ITEM_STATUS_CURSED);
 }
 
 // Select an item to enchant.
@@ -79,7 +79,7 @@ bool EnchantingEffect::enchant(CreaturePtr creature, ActionManager * const am, c
       {
         item->enchant(enchantment_multiplier);
 
-        if (item_status == ITEM_STATUS_CURSED)
+        if (item_status == ItemStatus::ITEM_STATUS_CURSED)
         {
           add_message(creature, EffectTextKeys::get_cursed_enchant_message(iid.get_appropriate_usage_description(item)));
         }

@@ -8,14 +8,14 @@
 using namespace std;
 
 CryptGenerator::CryptGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_CRYPT)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_CRYPT)
 {
 }
 
 MapPtr CryptGenerator::generate(const Dimensions& dim)
 {
   MapPtr map = std::make_shared<Map>(dim);
-  fill(map, TILE_TYPE_ROCK);
+  fill(map, TileType::TILE_TYPE_ROCK);
   
   auto loc_details = generate_central_crypt(map);
   generate_crypt_features(loc_details, map);
@@ -25,7 +25,7 @@ MapPtr CryptGenerator::generate(const Dimensions& dim)
 
 TilePtr CryptGenerator::generate_tile(MapPtr current_map, const int row, const int col)
 {
-  TilePtr grave_tile = tg.generate(TILE_TYPE_CRYPT);
+  TilePtr grave_tile = tg.generate(TileType::TILE_TYPE_CRYPT);
 
   return grave_tile;
 }
@@ -59,7 +59,7 @@ tuple<Coordinate, Coordinate, Coordinate> CryptGenerator::generate_central_crypt
   vector<Coordinate> coords = CoordUtils::get_coordinates_in_range(top_left, bottom_right);
   for (const auto& coord : coords)
   {
-    tile = tg.generate(TILE_TYPE_DUNGEON);
+    tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
     map->insert(coord.first, coord.second, tile);
   }
 
@@ -85,7 +85,7 @@ void CryptGenerator::generate_crypt_features(const std::tuple<Coordinate, Coordi
     generate_perimeter_skeletons(loc_details, map);
   }
 
-  CryptLayoutType layout_type = static_cast<CryptLayoutType>(RNG::range(CRYPT_LAYOUT_PILLARS, CRYPT_LAYOUT_LAST-1));
+  CryptLayoutType layout_type = static_cast<CryptLayoutType>(RNG::range(static_cast<int>(CryptLayoutType::CRYPT_LAYOUT_PILLARS), static_cast<int>(CryptLayoutType::CRYPT_LAYOUT_LAST)-1));
   ICryptLayoutStrategyPtr layout_strategy = CryptLayoutStrategyFactory::create_layout_strategy(layout_type);
 
   if (layout_strategy != nullptr)
@@ -109,7 +109,7 @@ void CryptGenerator::generate_perimeter_skeletons(const std::tuple<Coordinate, C
 
     ItemPtr bones = ItemManager::create_item("_pile_of_bones");
 
-    if (tile && (tile->get_tile_type() == TILE_TYPE_DUNGEON) && (bones != nullptr))
+    if (tile && (tile->get_tile_type() == TileType::TILE_TYPE_DUNGEON) && (bones != nullptr))
     {
       tile->get_items()->add(bones);
     }
@@ -120,35 +120,35 @@ void CryptGenerator::generate_perimeter_skeletons(const std::tuple<Coordinate, C
 Coordinate CryptGenerator::generate_up_staircase(const Coordinate& top_left, const Coordinate& bottom_right, MapPtr map)
 {
   // Generate the up-staircase.
-  CardinalDirection d = static_cast<CardinalDirection>(RNG::range(CARDINAL_DIRECTION_NORTH, CARDINAL_DIRECTION_WEST));
+  CardinalDirection d = static_cast<CardinalDirection>(RNG::range(static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_NORTH), static_cast<int>(CardinalDirection::CARDINAL_DIRECTION_WEST)));
   Coordinate stair_coords(0, 0);
 
   switch (d)
   {
-    case CARDINAL_DIRECTION_NORTH:
+    case CardinalDirection::CARDINAL_DIRECTION_NORTH:
       stair_coords.first = top_left.first;
       stair_coords.second = (top_left.second + bottom_right.second) / 2;
       break;
-    case CARDINAL_DIRECTION_SOUTH:
+    case CardinalDirection::CARDINAL_DIRECTION_SOUTH:
       stair_coords.first = bottom_right.first;
       stair_coords.second = (top_left.second + bottom_right.second) / 2;
       break;
-    case CARDINAL_DIRECTION_EAST:
+    case CardinalDirection::CARDINAL_DIRECTION_EAST:
       stair_coords.first = (top_left.first + bottom_right.first) / 2;
       stair_coords.second = top_left.second;
       break;
-    case CARDINAL_DIRECTION_WEST:
+    case CardinalDirection::CARDINAL_DIRECTION_WEST:
     default:
       stair_coords.first = (top_left.first + bottom_right.first) / 2;
       stair_coords.second = bottom_right.second;
       break;
   }
 
-  place_staircase(map, stair_coords.first, stair_coords.second, TILE_TYPE_UP_STAIRCASE, TILE_TYPE_CRYPT, DIRECTION_UP, get_permanence(), true);
+  place_staircase(map, stair_coords.first, stair_coords.second, TileType::TILE_TYPE_UP_STAIRCASE, TileType::TILE_TYPE_CRYPT, Direction::DIRECTION_UP, get_permanence(), true);
   return stair_coords;
 }
 
 MapType CryptGenerator::get_map_type() const
 {
-  return MAP_TYPE_UNDERWORLD;
+  return MapType::MAP_TYPE_UNDERWORLD;
 }

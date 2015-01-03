@@ -67,20 +67,20 @@ void WalledSettlementGenerator::generate_walls(MapPtr map)
   TilePtr wall_tile;
   for (int col = west_wall; col <= east_wall; col++)
   {
-    wall_tile = tg.generate(TILE_TYPE_ROCK);
+    wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(north_wall, col, wall_tile);
     
-    wall_tile = tg.generate(TILE_TYPE_ROCK);
+    wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(south_wall, col, wall_tile);
   }
     
   // East, west wall
   for (int row = north_wall; row < south_wall; row++)
   {
-    wall_tile = tg.generate(TILE_TYPE_ROCK);
+    wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(row, east_wall, wall_tile);
     
-    wall_tile = tg.generate(TILE_TYPE_ROCK);
+    wall_tile = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(row, west_wall, wall_tile);
   }
 }
@@ -108,7 +108,7 @@ void WalledSettlementGenerator::generate_gate(MapPtr map)
       break;
   }
   
-  TilePtr tile    = tg.generate(TILE_TYPE_DUNGEON);
+  TilePtr tile    = tg.generate(TileType::TILE_TYPE_DUNGEON);
   FeaturePtr gate = FeatureGenerator::generate_gate();
   tile->set_feature(gate);
   map->insert(gate_row, gate_col, tile); 

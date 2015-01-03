@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_LibraryTile, type_is_TILE_TYPE_LIBRARY)
 {
   LibraryTile library_tile;
 
-  EXPECT_EQ(TILE_TYPE_LIBRARY, library_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_LIBRARY, library_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_LibraryTile, tile_description_sid)

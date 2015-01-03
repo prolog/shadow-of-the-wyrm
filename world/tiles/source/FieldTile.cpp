@@ -2,7 +2,7 @@
 
 TileType FieldTile::get_tile_type() const
 {
-  return TILE_TYPE_FIELD;
+  return TileType::TILE_TYPE_FIELD;
 }
 
 std::string FieldTile::get_tile_description_sid() const

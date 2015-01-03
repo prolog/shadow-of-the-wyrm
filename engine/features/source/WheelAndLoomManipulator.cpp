@@ -13,7 +13,7 @@ using namespace std;
 
 WheelAndLoomManipulator::WheelAndLoomManipulator(FeaturePtr feature)
 : IFeatureManipulator(feature),
-loom_map({ {EQUIPMENT_WORN_AROUND_BODY, "_cloak"}, {EQUIPMENT_WORN_BODY, "_robes"} })
+loom_map({ {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_robes"} })
 {
 }
 
@@ -36,7 +36,7 @@ bool WheelAndLoomManipulator::handle(TilePtr tile, CreaturePtr creature)
   if (tile && creature)
   {
     // Check for weaving skill.
-    if (creature->get_skills().get_value(SKILL_GENERAL_WEAVING) <= 0)
+    if (creature->get_skills().get_value(SkillType::SKILL_GENERAL_WEAVING) <= 0)
     {
       add_no_weaving_skill_message(creature);
     }

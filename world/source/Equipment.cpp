@@ -134,7 +134,7 @@ bool Equipment::serialize(ostream& stream) const
     }
     else
     {
-      Serialize::write_class_id(stream, CLASS_ID_NULL);
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
     }
   }
 
@@ -154,10 +154,10 @@ bool Equipment::deserialize(istream& stream)
     ItemPtr item;
     Serialize::read_enum(stream, ewl);
 
-    ClassIdentifier eq_clid = CLASS_ID_NULL;
+    ClassIdentifier eq_clid = ClassIdentifier::CLASS_ID_NULL;
     Serialize::read_class_id(stream, eq_clid);
 
-    if (eq_clid != CLASS_ID_NULL)
+    if (eq_clid != ClassIdentifier::CLASS_ID_NULL)
     {
       item = ItemSerializationFactory::create_item(eq_clid);
       if (!item) return false;

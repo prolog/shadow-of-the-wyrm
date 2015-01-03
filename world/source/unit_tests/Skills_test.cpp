@@ -253,7 +253,7 @@ void serialize_test_skills(ClassIdentifier skill_ci)
 
 TEST(SL_World_Skills, saveload_general_skills)
 {
-  for(int i = CLASS_ID_SKILL_ARCHERY; i <= CLASS_ID_SKILL_WEAVING; i++)
+  for(int i = ClassIdentifier::CLASS_ID_SKILL_ARCHERY; i <= ClassIdentifier::CLASS_ID_SKILL_WEAVING; i++)
   {
     ClassIdentifier skill_ci = static_cast<ClassIdentifier>(i);
   
@@ -263,7 +263,7 @@ TEST(SL_World_Skills, saveload_general_skills)
 
 TEST(SL_World_Skills, saveload_melee_skills)
 {
-  for(int i = CLASS_ID_SKILL_AXES; i <= CLASS_ID_SKILL_EXOTIC; i++)
+  for(int i = ClassIdentifier::CLASS_ID_SKILL_AXES; i <= ClassIdentifier::CLASS_ID_SKILL_EXOTIC; i++)
   {
     ClassIdentifier skill_ci = static_cast<ClassIdentifier>(i);
   
@@ -273,7 +273,7 @@ TEST(SL_World_Skills, saveload_melee_skills)
 
 TEST(SL_World_Skills, saveload_ranged_skills)
 {
-  for(int i = CLASS_ID_SKILL_THROWN_AXES; i <= CLASS_ID_SKILL_THROWN_EXOTIC; i++)
+  for(int i = ClassIdentifier::CLASS_ID_SKILL_THROWN_AXES; i <= ClassIdentifier::CLASS_ID_SKILL_THROWN_EXOTIC; i++)
   {
     ClassIdentifier skill_ci = static_cast<ClassIdentifier>(i);
   
@@ -283,7 +283,7 @@ TEST(SL_World_Skills, saveload_ranged_skills)
 
 TEST(SL_World_Skills, saveload_magic_skills)
 {
-  for(int i = CLASS_ID_SKILL_ARCANE; i <= CLASS_ID_SKILL_PRIMORDIAL; i++)
+  for(int i = ClassIdentifier::CLASS_ID_SKILL_ARCANE; i <= ClassIdentifier::CLASS_ID_SKILL_PRIMORDIAL; i++)
   {
     ClassIdentifier skill_ci = static_cast<ClassIdentifier>(i);
   

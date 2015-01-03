@@ -2,7 +2,7 @@
 
 TileType BarrowTile::get_tile_type() const
 {
-  return TILE_TYPE_BARROW;
+  return TileType::TILE_TYPE_BARROW;
 }
 
 std::string BarrowTile::get_tile_description_sid() const

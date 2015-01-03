@@ -4,7 +4,7 @@ using namespace std;
 
 TileType EvergreenTreeTile::get_tile_type() const
 {
-  return TILE_TYPE_EVERGREEN_TREE;
+  return TileType::TILE_TYPE_EVERGREEN_TREE;
 }
 
 string EvergreenTreeTile::get_default_tree_tile_description_sid() const

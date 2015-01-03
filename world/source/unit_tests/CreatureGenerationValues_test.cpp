@@ -18,9 +18,9 @@ TEST(SL_World_CreatureGenerationValues, saveload)
   cgv.set_danger_level(22);
   cgv.set_rarity(Rarity(10));
 
-  cgv.add_allowable_terrain_type(TILE_TYPE_BARRACKS);
-  cgv.add_allowable_terrain_type(TILE_TYPE_MARSH);
-  cgv.add_allowable_terrain_type(TILE_TYPE_PIER);
+  cgv.add_allowable_terrain_type(TileType::TILE_TYPE_BARRACKS);
+  cgv.add_allowable_terrain_type(TileType::TILE_TYPE_MARSH);
+  cgv.add_allowable_terrain_type(TileType::TILE_TYPE_PIER);
 
   Dice hp(5, 6, 7);
   cgv.set_initial_hit_points(hp);

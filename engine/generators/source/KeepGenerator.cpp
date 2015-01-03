@@ -6,7 +6,7 @@
 using std::string;
 
 KeepGenerator::KeepGenerator(MapPtr new_base_map, const int chance_decay)
-: Generator(new_base_map->get_map_exit_id(), TILE_TYPE_KEEP)
+: Generator(new_base_map->get_map_exit_id(), TileType::TILE_TYPE_KEEP)
 , base_map(new_base_map)
 , PCT_CHANCE_DECAY(chance_decay)
 {
@@ -67,13 +67,13 @@ void KeepGenerator::create_keep(MapPtr result_map, const int start_row, const in
         // If it's at a boundary, draw a wall.
         if (y == start_row || (y == (start_row+height)) || (x == start_col) || (x == (start_col+width)))
         {
-          tile = tg.generate(TILE_TYPE_ROCK);
+          tile = tg.generate(TileType::TILE_TYPE_ROCK);
           result_map->insert(y, x, tile);
         }
         // Else, draw a floor.
         else
         {
-          tile = tg.generate(TILE_TYPE_DUNGEON);
+          tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
           result_map->insert(y, x, tile);
         }
       }
@@ -98,7 +98,7 @@ void KeepGenerator::populate_keep(MapPtr result_map, const int start_row, const 
     if (counter == counter_stop && (dug_rooms < num_rooms-1))
     {
       // Draw the wall upwards.
-      tile = tg.generate(TILE_TYPE_ROCK);
+      tile = tg.generate(TileType::TILE_TYPE_ROCK);
 
       for (int current_row = wall_row; current_row >= start_row; current_row--)
       {
@@ -117,11 +117,11 @@ void KeepGenerator::populate_keep(MapPtr result_map, const int start_row, const 
         {
           if (new_row == door_row)
           {
-            tile = tg.generate(TILE_TYPE_DUNGEON);
+            tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
           }
           else
           {
-            tile = tg.generate(TILE_TYPE_ROCK);
+            tile = tg.generate(TileType::TILE_TYPE_ROCK);
           }
 
           result_map->insert(new_row, wall_col, tile);
@@ -130,7 +130,7 @@ void KeepGenerator::populate_keep(MapPtr result_map, const int start_row, const 
     }
     else if (counter == door_hole)
     {
-      tile = tg.generate(TILE_TYPE_DUNGEON);
+      tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
       
       if (PCT_CHANCE_DECAY == 0)
       {
@@ -140,7 +140,7 @@ void KeepGenerator::populate_keep(MapPtr result_map, const int start_row, const 
     }
     else
     {
-      tile = tg.generate(TILE_TYPE_ROCK);
+      tile = tg.generate(TileType::TILE_TYPE_ROCK);
     }
 
     result_map->insert(wall_row, wall_col, tile);
@@ -157,7 +157,7 @@ void KeepGenerator::create_entrance(MapPtr result_map, const int start_row, cons
 
   for (int col = (start_col+width/2)-1; col < (start_col+width/2)+2; col++)
   {
-    tile = tg.generate(TILE_TYPE_DUNGEON);      
+    tile = tg.generate(TileType::TILE_TYPE_DUNGEON);      
     
     if (PCT_CHANCE_DECAY == 0) // If we haven't begun to decay, add the door
     {

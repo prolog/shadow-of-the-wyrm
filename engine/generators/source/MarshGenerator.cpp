@@ -6,7 +6,7 @@
 using namespace std;
 
 MarshGenerator::MarshGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_MARSH)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_MARSH)
 {
 }
 
@@ -14,7 +14,7 @@ MapPtr MarshGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
-  fill(result_map, TILE_TYPE_MARSH);
+  fill(result_map, TileType::TILE_TYPE_MARSH);
   result_map = add_random_trees_bushes_weeds_and_reeds(result_map);
 
   return result_map;
@@ -28,19 +28,19 @@ TilePtr MarshGenerator::generate_tile(MapPtr current_map, const int row, const i
 
   if (rand <= 3)
   {
-    result_tile = tg.generate(TILE_TYPE_WEEDS);
+    result_tile = tg.generate(TileType::TILE_TYPE_WEEDS);
   }
   else if (rand <= 4)
   {
-    result_tile = tg.generate(TILE_TYPE_BUSH);
+    result_tile = tg.generate(TileType::TILE_TYPE_BUSH);
   }
   else if (rand <= 10)
   {
-    result_tile = tg.generate(TILE_TYPE_TREE);
+    result_tile = tg.generate(TileType::TILE_TYPE_TREE);
   }
   else if (rand <= 28)
   {
-    result_tile = tg.generate(TILE_TYPE_REEDS);
+    result_tile = tg.generate(TileType::TILE_TYPE_REEDS);
   }
 
   return result_tile;

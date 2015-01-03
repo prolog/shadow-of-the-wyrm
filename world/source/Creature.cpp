@@ -1343,10 +1343,10 @@ bool Creature::deserialize(istream& stream)
 
   level.deserialize(stream);
 
-  ClassIdentifier dc_clid = CLASS_ID_NULL;
+  ClassIdentifier dc_clid = ClassIdentifier::CLASS_ID_NULL;
   Serialize::read_class_id(stream, dc_clid);
 
-  if (dc_clid != CLASS_ID_NULL)
+  if (dc_clid != ClassIdentifier::CLASS_ID_NULL)
   {
     decision_strategy = DecisionStrategyFactory::create_decision_strategy(dc_clid);
     if (!decision_strategy) return false;

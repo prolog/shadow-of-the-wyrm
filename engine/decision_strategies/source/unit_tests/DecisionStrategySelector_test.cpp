@@ -9,7 +9,7 @@ TEST(SL_Engine_DecisionStrategies_DecisionStrategySelector, select_decision_stra
 
   AutomaticMovement& am = c->get_automatic_movement_ref();
   am.set_engaged(false);
-  am.set_direction(DIRECTION_NORTH);
+  am.set_direction(Direction::DIRECTION_NORTH);
 
   DecisionStrategyPtr dec = std::make_shared<AutomaticMovementDecisionStrategy>(am, nullc);
   c->set_decision_strategy(dec);

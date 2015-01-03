@@ -1295,7 +1295,7 @@ int map_transform_tile(lua_State* ls)
     Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
     int lua_tile_type = lua_tointeger(ls, 4);
 
-    if (lua_tile_type >= TILE_TYPE_FIRST && lua_tile_type < TILE_TYPE_LAST)
+    if (lua_tile_type >= TileType::TILE_TYPE_FIRST && lua_tile_type < TileType::TILE_TYPE_LAST)
     {
       MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
 

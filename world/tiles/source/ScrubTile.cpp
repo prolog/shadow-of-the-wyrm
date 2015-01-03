@@ -2,7 +2,7 @@
 
 TileType ScrubTile::get_tile_type() const
 {
-  return TILE_TYPE_SCRUB;
+  return TileType::TILE_TYPE_SCRUB;
 }
 
 std::string ScrubTile::get_tile_description_sid() const

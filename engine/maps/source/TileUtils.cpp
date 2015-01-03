@@ -14,13 +14,13 @@ TileUtils::~TileUtils()
 // provided as a parameter.
 TileType TileUtils::get_opposite_tile_type(const TileType tt)
 {
-  if (tt == TILE_TYPE_UP_STAIRCASE)
+  if (tt == TileType::TILE_TYPE_UP_STAIRCASE)
   {
-    return TILE_TYPE_DOWN_STAIRCASE;
+    return TileType::TILE_TYPE_DOWN_STAIRCASE;
   }
-  else if (tt == TILE_TYPE_DOWN_STAIRCASE)
+  else if (tt == TileType::TILE_TYPE_DOWN_STAIRCASE)
   {
-    return TILE_TYPE_UP_STAIRCASE;
+    return TileType::TILE_TYPE_UP_STAIRCASE;
   }
 
   return tt;

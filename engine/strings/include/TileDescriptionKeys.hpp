@@ -2,11 +2,11 @@
 #include <string>
 
 // Keys for tile descriptions - used for when a single tile type (e.g.,
-// TILE_TYPE_TREE) can have different descriptions.
+// TileType::TILE_TYPE_TREE) can have different descriptions.
 class TileDescriptionKeys
 {
   public:
-    // Used by TILE_TYPE_TREE:
+    // Used by TileType::TILE_TYPE_TREE:
     static const std::string FLORA_TILE_DESC_ASPEN;
     static const std::string FLORA_TILE_DESC_MAPLE;
     static const std::string FLORA_TILE_DESC_YEW;
@@ -17,20 +17,20 @@ class TileDescriptionKeys
     static const std::string FLORA_TILE_DESC_CYPRESS;
     static const std::string FLORA_TILE_DESC_WALNUT;
 
-    // Used by TILE_TYPE_EVERGREEN_TREE:
+    // Used by TileType::TILE_TYPE_EVERGREEN_TREE:
     static const std::string FLORA_TILE_DESC_FIR;
     static const std::string FLORA_TILE_DESC_CEDAR;
     static const std::string FLORA_TILE_DESC_PINE;
     static const std::string FLORA_TILE_DESC_SPRUCE;
 
-    // Used by TILE_TYPE_FRUIT_TREE:
+    // Used by TileType::TILE_TYPE_FRUIT_TREE:
     static const std::string FLORA_TILE_DESC_APPLE;
     static const std::string FLORA_TILE_DESC_CHERRY;
     static const std::string FLORA_TILE_DESC_PEACH;
     static const std::string FLORA_TILE_DESC_PLUM;
     static const std::string FLORA_TILE_DESC_PEAR;
 
-    // Used by TILE_TYPE_WEED:
+    // Used by TileType::TILE_TYPE_WEED:
     static const std::string FLORA_TILE_DESC_WEED1;
     static const std::string FLORA_TILE_DESC_WEED2;
     static const std::string FLORA_TILE_DESC_WEED3;

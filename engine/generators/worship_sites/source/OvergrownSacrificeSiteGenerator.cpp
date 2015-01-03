@@ -6,7 +6,7 @@
 using std::string;
 
 OvergrownSacrificeSiteGenerator::OvergrownSacrificeSiteGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_SITE_OF_DEATH)
+: ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_SITE_OF_DEATH)
 {
 }
 
@@ -50,14 +50,14 @@ void OvergrownSacrificeSiteGenerator::generate_additional_brush(MapPtr map)
     
     if (RNG::percent_chance(50))
     {
-      tile_type = TILE_TYPE_TREE;
+      TileType::TILE_TYPE = TileType::TILE_TYPE_TREE;
     }
     else
     {
-      tile_type = TILE_TYPE_WEEDS;
+      TileType::TILE_TYPE = TileType::TILE_TYPE_WEEDS;
     }
     
-    GeneratorUtils::generate_tile(map, rand_y, rand_x, tile_type);
+    GeneratorUtils::generate_tile(map, rand_y, rand_x, TileType::TILE_TYPE);
   }
 }
 

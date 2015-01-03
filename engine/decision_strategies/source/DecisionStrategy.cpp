@@ -73,7 +73,7 @@ bool DecisionStrategy::serialize(ostream& stream) const
   }
   else
   {
-    Serialize::write_class_id(stream, CLASS_ID_NULL);
+    Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
   }
 
   return true;
@@ -83,10 +83,10 @@ bool DecisionStrategy::deserialize(istream& stream)
 {
   threat_ratings.deserialize(stream);
 
-  ClassIdentifier cl_id = CLASS_ID_NULL;
+  ClassIdentifier cl_id = ClassIdentifier::CLASS_ID_NULL;
   Serialize::read_class_id(stream, cl_id);
 
-  if (cl_id != CLASS_ID_NULL)
+  if (cl_id != ClassIdentifier::CLASS_ID_NULL)
   {
     controller = ControllerFactory::create_controller(cl_id);
     if (!controller) return false;

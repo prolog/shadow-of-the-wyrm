@@ -12,14 +12,14 @@
 using namespace std;
 
 ForestGenerator::ForestGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_FOREST)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_FOREST)
 , PCT_CHANCE_FOREST_STREAM(50)
 , PCT_CHANCE_FOREST_SPRINGS(50)
 {
 }
 
 ForestGenerator::ForestGenerator(const int pct_chance_stream, const int pct_chance_springs)
-: Generator("", TILE_TYPE_FOREST) 
+: Generator("", TileType::TILE_TYPE_FOREST) 
 , PCT_CHANCE_FOREST_STREAM(pct_chance_stream)
 , PCT_CHANCE_FOREST_SPRINGS(pct_chance_springs)
 {
@@ -37,7 +37,7 @@ MapPtr ForestGenerator::generate(const Dimensions& dimensions)
 {
   MapPtr result_map = std::make_shared<Map>(dimensions);
 
-  fill(result_map, TILE_TYPE_FIELD);
+  fill(result_map, TileType::TILE_TYPE_FIELD);
 
   result_map = add_random_bushes_and_weeds (result_map);
 //  result_map = apply_conway_rules(result_map);
@@ -76,12 +76,12 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
 
       if (shrub < 3)
       {
-        current_tile = tg.generate(TILE_TYPE_BUSH);
+        current_tile = tg.generate(TileType::TILE_TYPE_BUSH);
         result_map->insert(row, col, current_tile);
       }
       else if (shrub < 5)
       {
-        current_tile = tg.generate(TILE_TYPE_WEEDS);
+        current_tile = tg.generate(TileType::TILE_TYPE_WEEDS);
         result_map->insert(row, col, current_tile);
       }
       else if (shrub < 50)
@@ -98,14 +98,14 @@ MapPtr ForestGenerator::add_random_bushes_and_weeds(MapPtr map)
 TilePtr ForestGenerator::generate_tree_based_on_world_location(const int world_map_height, const Coordinate& world_coords, const int pct_chance_evergreen)
 {
   TileGenerator tg;
-  TileType tree_type = TILE_TYPE_TREE;
+  TileType tree_type = TileType::TILE_TYPE_TREE;
 
   // Check to see what type of tile (well, tree tile) should be generated,
   // based on the world map location.  Locations further north/south will have
   // a greater proportion of evergreen trees.
   if (RNG::percent_chance(pct_chance_evergreen))
   {
-    tree_type = TILE_TYPE_EVERGREEN_TREE;
+    tree_type = TileType::TILE_TYPE_EVERGREEN_TREE;
   }  
 
   TilePtr tile = tg.generate(tree_type);

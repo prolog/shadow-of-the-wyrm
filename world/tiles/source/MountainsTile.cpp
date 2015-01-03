@@ -5,7 +5,7 @@ using std::string;
 
 TileType MountainsTile::get_tile_type() const
 {
-  return TILE_TYPE_MOUNTAINS;
+  return TileType::TILE_TYPE_MOUNTAINS;
 }
 
 std::string MountainsTile::get_tile_description_sid() const

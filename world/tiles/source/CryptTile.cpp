@@ -2,7 +2,7 @@
 
 TileType CryptTile::get_tile_type() const
 {
-  return TILE_TYPE_CRYPT;
+  return TileType::TILE_TYPE_CRYPT;
 }
 
 std::string CryptTile::get_tile_description_sid() const

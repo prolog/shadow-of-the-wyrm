@@ -2,7 +2,7 @@
 
 TileType PierTile::get_tile_type() const
 {
-  return TILE_TYPE_PIER;
+  return TileType::TILE_TYPE_PIER;
 }
 
 std::string PierTile::get_tile_description_sid() const

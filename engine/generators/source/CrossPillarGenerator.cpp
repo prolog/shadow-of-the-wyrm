@@ -26,7 +26,7 @@ void CrossPillarGenerator::generate(MapPtr map, const int y_topleft, const int x
   
   for (const Coordinate& c : pillar_points)
   {
-    pillar_tile = tg.generate(TILE_TYPE_ROCK);
+    pillar_tile = tg.generate(TileType::TILE_TYPE_ROCK);
     map->insert(c.first, c.second, pillar_tile);
   }
 }

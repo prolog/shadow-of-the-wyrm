@@ -31,7 +31,7 @@ void ScatteredGraveyardGenerator::add_graves(MapPtr map, const int start_row, co
     {
       if (RNG::percent_chance(10))
       {
-        TilePtr grave = tg.generate(TILE_TYPE_GRAVE);
+        TilePtr grave = tg.generate(TileType::TILE_TYPE_GRAVE);
         map->insert(row, col, grave);
       }
     }

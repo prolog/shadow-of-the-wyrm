@@ -51,7 +51,7 @@ void HamletGenerator::generate_road(MapPtr map, const int start_col, const int e
 
   while (cur_col != end_col)
   {
-    TilePtr road_tile = tg.generate(TILE_TYPE_ROAD);
+    TilePtr road_tile = tg.generate(TileType::TILE_TYPE_ROAD);
     map->insert(row, cur_col, road_tile);
     
     cur_col += increment;
@@ -68,7 +68,7 @@ void HamletGenerator::generate_circular_hamlet(MapPtr map)
   int hamlet_size = RNG::range(rows/7, rows/5);
   int circle_row = rows / 2;
   int circle_col = RNG::range(2 + hamlet_size, cols - 2 - hamlet_size);
-  GeneratorUtils::generate_circle(map, circle_row, circle_col, hamlet_size, TILE_TYPE_ROAD);
+  GeneratorUtils::generate_circle(map, circle_row, circle_col, hamlet_size, TileType::TILE_TYPE_ROAD);
   
   // Generate a road east or west depending which is the furthest.
   int road_start_col;

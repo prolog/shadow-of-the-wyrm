@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_SpringsTile, type_is_TILE_TYPE_SPRINGS)
 {
   SpringsTile springs_tile;
 
-  EXPECT_EQ(TILE_TYPE_SPRINGS, springs_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_SPRINGS, springs_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_SpringsTile, different_description_SID_for_hot_springs)

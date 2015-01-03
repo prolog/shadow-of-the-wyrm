@@ -222,7 +222,7 @@ bool Resistances::serialize(ostream& stream) const
     }
     else
     {
-      Serialize::write_class_id(stream, CLASS_ID_NULL);
+      Serialize::write_class_id(stream, ClassIdentifier::CLASS_ID_NULL);
     }
   }
 
@@ -239,10 +239,10 @@ bool Resistances::deserialize(istream& stream)
     DamageType type = DAMAGE_TYPE_FIRST;
     Serialize::read_enum(stream, type);
 
-    ClassIdentifier resistance_clid = CLASS_ID_NULL;
+    ClassIdentifier resistance_clid = ClassIdentifier::CLASS_ID_NULL;
     Serialize::read_class_id(stream, resistance_clid);
 
-    if (resistance_clid != CLASS_ID_NULL)
+    if (resistance_clid != ClassIdentifier::CLASS_ID_NULL)
     {
       std::shared_ptr<Resistance> resistance = ResistanceFactory::create_resistance(resistance_clid);
       if (!resistance) return false;

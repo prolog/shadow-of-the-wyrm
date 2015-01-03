@@ -2,7 +2,7 @@
 
 TileType WheatTile::get_tile_type() const
 {
-  return TILE_TYPE_WHEAT;
+  return TileType::TILE_TYPE_WHEAT;
 }
 
 std::string WheatTile::get_tile_description_sid() const

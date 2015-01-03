@@ -74,7 +74,7 @@ DeityDecisionImplications RestoreStatusDeityDecisionStrategyHandler::handle_deci
         // Remove the status using the standard methods to ensure that for more
         // complex statuses, like slowness, things are restored properly.
         RemoveStatusEffect deity_decision(status);
-        deity_decision.effect(creature, &am, ITEM_STATUS_UNCURSED);
+        deity_decision.effect(creature, &am, ItemStatus::ITEM_STATUS_UNCURSED);
 
         piety_loss += current_piety_loss;
         current_piety_loss /= 2;

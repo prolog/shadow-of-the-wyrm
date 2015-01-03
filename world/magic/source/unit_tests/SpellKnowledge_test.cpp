@@ -17,7 +17,7 @@ TEST(SL_World_Magic_SpellKnowledge, serialization_id)
 {
   SpellKnowledge sk;
 
-  EXPECT_TRUE(sk.get_class_identifier() == CLASS_ID_SPELL_KNOWLEDGE);
+  EXPECT_TRUE(sk.get_class_identifier() == ClassIdentifier::CLASS_ID_SPELL_KNOWLEDGE);
 }
 
 TEST(SL_World_Magic_SpellKnowledge, saveload)

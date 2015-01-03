@@ -2,7 +2,7 @@
 
 TileType GraveyardTile::get_tile_type() const
 {
-  return TILE_TYPE_GRAVEYARD;
+  return TileType::TILE_TYPE_GRAVEYARD;
 }
 
 std::string GraveyardTile::get_tile_description_sid() const

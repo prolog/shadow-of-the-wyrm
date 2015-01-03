@@ -200,81 +200,81 @@ string TextMessages::get_area_entrance_message_given_terrain_type(const TileType
   
   switch(type)
   {
-    case TILE_TYPE_FIELD:
+    case TileType::TILE_TYPE_FIELD:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_FIELD);
       break;
-    case TILE_TYPE_SCRUB:
+    case TileType::TILE_TYPE_SCRUB:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_SCRUB);
       break;
-    case TILE_TYPE_DESERT:
+    case TileType::TILE_TYPE_DESERT:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_DESERT);
       break;
-    case TILE_TYPE_MOUNTAINS:
+    case TileType::TILE_TYPE_MOUNTAINS:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_MOUNTAINS);
       break;
-    case TILE_TYPE_SEA:
+    case TileType::TILE_TYPE_SEA:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_SEA);
       break;
-    case TILE_TYPE_FOREST:
+    case TileType::TILE_TYPE_FOREST:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_FOREST);
       break;
-    case TILE_TYPE_MARSH:
+    case TileType::TILE_TYPE_MARSH:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_MARSH);
       break;
-    case TILE_TYPE_HILLS:
+    case TileType::TILE_TYPE_HILLS:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_HILLS);
       break;
-    case TILE_TYPE_CAVERN:
+    case TileType::TILE_TYPE_CAVERN:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_CAVERN);
       break;
-    case TILE_TYPE_VILLAGE:
+    case TileType::TILE_TYPE_VILLAGE:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_VILLAGE);
       break;
-    case TILE_TYPE_DUNGEON_COMPLEX:
+    case TileType::TILE_TYPE_DUNGEON_COMPLEX:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_DUNGEON_COMPLEX);
       break;
-    case TILE_TYPE_BARRACKS:
+    case TileType::TILE_TYPE_BARRACKS:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_BARRACKS);
       break;
-    case TILE_TYPE_CASTLE:
+    case TileType::TILE_TYPE_CASTLE:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_CASTLE);
       break;
-    case TILE_TYPE_CHURCH:
+    case TileType::TILE_TYPE_CHURCH:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_CHURCH);
       break;
-    case TILE_TYPE_GRAVEYARD:
+    case TileType::TILE_TYPE_GRAVEYARD:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_GRAVEYARD);
       break;
-    case TILE_TYPE_KEEP:
+    case TileType::TILE_TYPE_KEEP:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_KEEP);
       break;
-    case TILE_TYPE_LIBRARY:
+    case TileType::TILE_TYPE_LIBRARY:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_LIBRARY);
       break;
-    case TILE_TYPE_SITE_OF_DEATH:
+    case TileType::TILE_TYPE_SITE_OF_DEATH:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_SITE_OF_DEATH);
       break;
-    case TILE_TYPE_TEMPLE:
+    case TileType::TILE_TYPE_TEMPLE:
       entrance_message = StringTable::get(EntranceTextKeys::ENTRANCE_TEMPLE);
       break;
-    case TILE_TYPE_UNDEFINED:
-    case TILE_TYPE_WHEAT:
-    case TILE_TYPE_CAIRN:
-    case TILE_TYPE_TREE:
-    case TILE_TYPE_ROAD:
-    case TILE_TYPE_RIVER:
-    case TILE_TYPE_SHOALS:
-    case TILE_TYPE_DUNGEON:
-    case TILE_TYPE_ROCK:
-    case TILE_TYPE_GRAVE:
-    case TILE_TYPE_REEDS:
-    case TILE_TYPE_BEACH:
-    case TILE_TYPE_BUSH:
-    case TILE_TYPE_WEEDS:
-    case TILE_TYPE_SPRINGS:
-    case TILE_TYPE_DAIS:
-    case TILE_TYPE_UP_STAIRCASE:
-    case TILE_TYPE_DOWN_STAIRCASE:
+    case TileType::TILE_TYPE_UNDEFINED:
+    case TileType::TILE_TYPE_WHEAT:
+    case TileType::TILE_TYPE_CAIRN:
+    case TileType::TILE_TYPE_TREE:
+    case TileType::TILE_TYPE_ROAD:
+    case TileType::TILE_TYPE_RIVER:
+    case TileType::TILE_TYPE_SHOALS:
+    case TileType::TILE_TYPE_DUNGEON:
+    case TileType::TILE_TYPE_ROCK:
+    case TileType::TILE_TYPE_GRAVE:
+    case TileType::TILE_TYPE_REEDS:
+    case TileType::TILE_TYPE_BEACH:
+    case TileType::TILE_TYPE_BUSH:
+    case TileType::TILE_TYPE_WEEDS:
+    case TileType::TILE_TYPE_SPRINGS:
+    case TileType::TILE_TYPE_DAIS:
+    case TileType::TILE_TYPE_UP_STAIRCASE:
+    case TileType::TILE_TYPE_DOWN_STAIRCASE:
     default:
       break;
   }

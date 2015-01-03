@@ -6,7 +6,7 @@
 using std::string;
 
 SimpleTempleGenerator::SimpleTempleGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_TEMPLE)
+: ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_TEMPLE)
 {
 }
 
@@ -48,7 +48,7 @@ void SimpleTempleGenerator::generate_temple(MapPtr map)
   {
     for (int col = dais_start_col; col < (dais_start_col + dais_size); col++)
     {
-      dais_tile = tg.generate(TILE_TYPE_DAIS);
+      dais_tile = tg.generate(TileType::TILE_TYPE_DAIS);
       map->insert(row, col, dais_tile);
     }
   }

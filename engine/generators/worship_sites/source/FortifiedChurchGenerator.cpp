@@ -8,7 +8,7 @@
 using std::string;
 
 FortifiedChurchGenerator::FortifiedChurchGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH),
+: ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_CHURCH),
 start_row(0), start_col(0), church_height(0), church_width(0), altar_row(0), altar_col(0)
 {
 }
@@ -81,12 +81,12 @@ void FortifiedChurchGenerator::create_parapet(MapPtr map, const int parapet_star
 
         if (current_tile)
         {
-          TileType tile_type = current_tile->get_tile_type();
+          TileType TileType::TILE_TYPE = current_tile->get_tile_type();
                     
-          if (tile_type != TILE_TYPE_DUNGEON)
+          if (TileType::TILE_TYPE != TileType::TILE_TYPE_DUNGEON)
           {
             TilePtr new_tile;
-            new_tile = tg.generate(TILE_TYPE_ROCK);
+            new_tile = tg.generate(TileType::TILE_TYPE_ROCK);
             map->insert(row, col, new_tile);
           }
         }
@@ -95,9 +95,9 @@ void FortifiedChurchGenerator::create_parapet(MapPtr map, const int parapet_star
       {
         // If there's a non-floor tile here, replace it.
         TilePtr current_tile = map->at(row, col);
-        if (current_tile && current_tile->get_tile_type() != TILE_TYPE_DUNGEON)
+        if (current_tile && current_tile->get_tile_type() != TileType::TILE_TYPE_DUNGEON)
         {
-          TilePtr new_floor_tile = tg.generate(TILE_TYPE_DUNGEON);
+          TilePtr new_floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
           map->insert(row, col, new_floor_tile);
         }
       }
@@ -161,8 +161,8 @@ void FortifiedChurchGenerator::generate_doors(MapPtr map)
 {
   TileGenerator tg;
 
-  TilePtr first_door_tile  = tg.generate(TILE_TYPE_DUNGEON);
-  TilePtr second_door_tile = tg.generate(TILE_TYPE_DUNGEON);
+  TilePtr first_door_tile  = tg.generate(TileType::TILE_TYPE_DUNGEON);
+  TilePtr second_door_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
   FeaturePtr first_door    = FeatureGenerator::generate_door();
   FeaturePtr second_door   = FeatureGenerator::generate_door();
   first_door_tile->set_feature(first_door);

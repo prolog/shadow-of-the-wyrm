@@ -2,7 +2,7 @@
 
 TileType RockTile::get_tile_type() const
 {
-  return TILE_TYPE_ROCK;
+  return TileType::TILE_TYPE_ROCK;
 }
 
 std::string RockTile::get_tile_description_sid() const

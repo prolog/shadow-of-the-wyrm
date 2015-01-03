@@ -3,7 +3,7 @@
 
 TEST(SL_Engine_DecisionStrategy_MobileDecisionStrategy, serialization_id)
 {
-  ControllerPtr null_controller = ControllerFactory::create_controller(CLASS_ID_NULL_KEYBOARD_CONTROLLER);
+  ControllerPtr null_controller = ControllerFactory::create_controller(ClassIdentifier::CLASS_ID_NULL_KEYBOARD_CONTROLLER);
   
   MobileDecisionStrategy mds(null_controller);
 

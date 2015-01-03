@@ -23,7 +23,7 @@ void SquarePillarGenerator::generate(MapPtr map, const int y_topleft, const int 
   {
     for (int x = x_topleft; x <= end_x; x++)
     {
-      tile = tg.generate(TILE_TYPE_ROCK);
+      tile = tg.generate(TileType::TILE_TYPE_ROCK);
       map->insert(y, x, tile);
     }
   }

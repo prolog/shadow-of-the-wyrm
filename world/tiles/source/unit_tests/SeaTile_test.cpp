@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_SeaTile, type_is_TILE_TYPE_SEA)
 {
   SeaTile sea_tile;
 
-  EXPECT_EQ(TILE_TYPE_SEA, sea_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_SEA, sea_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_SeaTile, tile_super_type)

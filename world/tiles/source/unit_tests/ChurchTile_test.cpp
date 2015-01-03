@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_ChurchTile, type_is_TILE_TYPE_CHURCH)
 {
   ChurchTile church_tile;
 
-  EXPECT_EQ(TILE_TYPE_CHURCH, church_tile.get_tile_type());
+  EXPECT_EQ(TileType::TILE_TYPE_CHURCH, church_tile.get_tile_type());
 }
 
 TEST(SL_World_Tiles_ChurchTile, tile_description_sid)

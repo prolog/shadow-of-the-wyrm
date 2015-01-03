@@ -3,7 +3,7 @@
 #include "RNG.hpp"
 
 ScrubGenerator::ScrubGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_SCRUB)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_SCRUB)
 {
 }
 
@@ -35,11 +35,11 @@ TilePtr ScrubGenerator::generate_tile(MapPtr result_map, const int row, const in
 
   if (rand < 98)
   {
-    generated_tile = tg.generate(TILE_TYPE_SCRUB);
+    generated_tile = tg.generate(TileType::TILE_TYPE_SCRUB);
   }
   else
   {
-    generated_tile = tg.generate(TILE_TYPE_BUSH);
+    generated_tile = tg.generate(TileType::TILE_TYPE_BUSH);
   }
 
   return generated_tile;

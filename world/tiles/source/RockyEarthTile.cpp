@@ -2,7 +2,7 @@
 
 TileType RockyEarthTile::get_tile_type() const
 {
-  return TILE_TYPE_ROCKY_EARTH;
+  return TileType::TILE_TYPE_ROCKY_EARTH;
 }
 
 std::string RockyEarthTile::get_tile_description_sid() const

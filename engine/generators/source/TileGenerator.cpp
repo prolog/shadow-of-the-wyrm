@@ -26,154 +26,154 @@ bool TileGenerator::get_generate_items() const
   return generate_items;
 }
 
-TilePtr TileGenerator::generate(const TileType& tile_type, const TileType& subtile_type)
+TilePtr TileGenerator::generate(const TileType& TileType::TILE_TYPE, const TileType& subtile_type)
 {
   // To make it easier to remember what needs to be updated:
-  static_assert(TILE_TYPE_LAST == 46, "Unexpected TILE_TYPE_LAST value.");
+  static_assert(TileType::TILE_TYPE_LAST == 46, "Unexpected TileType::TILE_TYPE_LAST value.");
 
   TilePtr result_tile;
 
-  switch(tile_type)
+  switch(TileType::TILE_TYPE)
   {
-    case TILE_TYPE_UNDEFINED:
+    case TileType::TILE_TYPE_UNDEFINED:
       Log::instance().log("TileGenerator::generate - Attempting to generate an undefined tile type");
       break;
-    case TILE_TYPE_FIELD:
+    case TileType::TILE_TYPE_FIELD:
       result_tile = std::make_shared<FieldTile>();
       break;
-    case TILE_TYPE_SCRUB:
+    case TileType::TILE_TYPE_SCRUB:
       result_tile = std::make_shared<ScrubTile>();
       break;
-    case TILE_TYPE_WHEAT:
+    case TileType::TILE_TYPE_WHEAT:
       result_tile = std::make_shared<WheatTile>();
       break;
-    case TILE_TYPE_CAIRN:
+    case TileType::TILE_TYPE_CAIRN:
       result_tile = std::make_shared<CairnTile>();
       break;
-    case TILE_TYPE_TREE:
+    case TileType::TILE_TYPE_TREE:
       result_tile = std::make_shared<TreeTile>();
       break;      
-    case TILE_TYPE_DESERT:
+    case TileType::TILE_TYPE_DESERT:
       result_tile = std::make_shared<DesertTile>();
       break;
-    case TILE_TYPE_ROAD:
+    case TileType::TILE_TYPE_ROAD:
       result_tile = std::make_shared<RoadTile>();
       break;
-    case TILE_TYPE_RIVER:
+    case TileType::TILE_TYPE_RIVER:
       result_tile = std::make_shared<RiverTile>();
       break;
-    case TILE_TYPE_SEA:
+    case TileType::TILE_TYPE_SEA:
       result_tile = std::make_shared<SeaTile>();
       break;
-    case TILE_TYPE_SHOALS:
+    case TileType::TILE_TYPE_SHOALS:
       result_tile = std::make_shared<ShoalsTile>();
       break;
-    case TILE_TYPE_DUNGEON:
+    case TileType::TILE_TYPE_DUNGEON:
       result_tile = std::make_shared<DungeonTile>();
       break;
-    case TILE_TYPE_ROCK:
+    case TileType::TILE_TYPE_ROCK:
       result_tile = std::make_shared<RockTile>();
       break;
-    case TILE_TYPE_BARROW:
+    case TileType::TILE_TYPE_BARROW:
       result_tile = std::make_shared<BarrowTile>();
       break;
-    case TILE_TYPE_GRAVE:
+    case TileType::TILE_TYPE_GRAVE:
       result_tile = std::make_shared<GraveTile>();
       break;
-    case TILE_TYPE_MARSH:
+    case TileType::TILE_TYPE_MARSH:
       result_tile = std::make_shared<MarshTile>();
       break;
-    case TILE_TYPE_REEDS:
+    case TileType::TILE_TYPE_REEDS:
       result_tile = std::make_shared<ReedsTile>();
       break;
-    case TILE_TYPE_HILLS:
+    case TileType::TILE_TYPE_HILLS:
       result_tile = std::make_shared<HillsTile>();
       break;
-    case TILE_TYPE_MOUNTAINS:
+    case TileType::TILE_TYPE_MOUNTAINS:
       result_tile = std::make_shared<MountainsTile>();
       break;
-    case TILE_TYPE_BEACH:
+    case TileType::TILE_TYPE_BEACH:
       result_tile = std::make_shared<BeachTile>();
       break;
-    case TILE_TYPE_BUSH:
+    case TileType::TILE_TYPE_BUSH:
       result_tile = std::make_shared<BushTile>();
       break;
-    case TILE_TYPE_WEEDS:
+    case TileType::TILE_TYPE_WEEDS:
       result_tile = std::make_shared<WeedsTile>();
       break;
-    case TILE_TYPE_SPRINGS:
+    case TileType::TILE_TYPE_SPRINGS:
       result_tile = std::make_shared<SpringsTile>();
       break;
-    case TILE_TYPE_FOREST:
+    case TileType::TILE_TYPE_FOREST:
       result_tile = std::make_shared<ForestTile>();
       break;
-    case TILE_TYPE_UP_STAIRCASE:
+    case TileType::TILE_TYPE_UP_STAIRCASE:
       result_tile = std::make_shared<UpStaircaseTile>();
       break;
-    case TILE_TYPE_DOWN_STAIRCASE:
+    case TileType::TILE_TYPE_DOWN_STAIRCASE:
       result_tile = std::make_shared<DownStaircaseTile>();
       break;
-    case TILE_TYPE_CAVERN:
+    case TileType::TILE_TYPE_CAVERN:
       result_tile = std::make_shared<CavernTile>();
       break;
-    case TILE_TYPE_VILLAGE:
+    case TileType::TILE_TYPE_VILLAGE:
       result_tile = std::make_shared<VillageTile>(subtile_type);
       break;
-    case TILE_TYPE_DUNGEON_COMPLEX:
+    case TileType::TILE_TYPE_DUNGEON_COMPLEX:
       result_tile = std::make_shared<DungeonComplexTile>();
       break;
-    case TILE_TYPE_BARRACKS:
+    case TileType::TILE_TYPE_BARRACKS:
       result_tile = std::make_shared<BarracksTile>();
       break;
-    case TILE_TYPE_CASTLE:
+    case TileType::TILE_TYPE_CASTLE:
       result_tile = std::make_shared<CastleTile>();
       break;
-    case TILE_TYPE_CHURCH:
+    case TileType::TILE_TYPE_CHURCH:
       result_tile = std::make_shared<ChurchTile>(subtile_type);
       break;
-    case TILE_TYPE_GRAVEYARD:
+    case TileType::TILE_TYPE_GRAVEYARD:
       result_tile = std::make_shared<GraveyardTile>();
       break;
-    case TILE_TYPE_KEEP:
+    case TileType::TILE_TYPE_KEEP:
       result_tile = std::make_shared<KeepTile>();
       break;
-    case TILE_TYPE_LIBRARY:
+    case TileType::TILE_TYPE_LIBRARY:
       result_tile = std::make_shared<LibraryTile>();
       break;
-    case TILE_TYPE_SITE_OF_DEATH:
+    case TileType::TILE_TYPE_SITE_OF_DEATH:
       result_tile = std::make_shared<SiteOfDeathTile>(subtile_type);
       break;
-    case TILE_TYPE_TEMPLE:
+    case TileType::TILE_TYPE_TEMPLE:
       result_tile = std::make_shared<TempleTile>(subtile_type);
       break;
-    case TILE_TYPE_DAIS:
+    case TileType::TILE_TYPE_DAIS:
       result_tile = std::make_shared<DaisTile>();
       break;
-    case TILE_TYPE_PIER:
+    case TileType::TILE_TYPE_PIER:
       result_tile = std::make_shared<PierTile>();
       break;
-    case TILE_TYPE_WILD_ORCHARD:
+    case TileType::TILE_TYPE_WILD_ORCHARD:
       result_tile = std::make_shared<WildOrchardTile>();
       break;
-    case TILE_TYPE_FRUIT_TREE:
+    case TileType::TILE_TYPE_FRUIT_TREE:
       result_tile = std::make_shared<FruitTreeTile>();
       break;
-    case TILE_TYPE_EVERGREEN_TREE:
+    case TileType::TILE_TYPE_EVERGREEN_TREE:
       result_tile = std::make_shared<EvergreenTreeTile>();
       break;
-    case TILE_TYPE_ROCKY_EARTH:
+    case TileType::TILE_TYPE_ROCKY_EARTH:
       result_tile = std::make_shared<RockyEarthTile>();
       break;
-    case TILE_TYPE_MINE:
+    case TileType::TILE_TYPE_MINE:
       result_tile = std::make_shared<MineTile>();
       break;
-    case TILE_TYPE_WELL:
+    case TileType::TILE_TYPE_WELL:
       result_tile = std::make_shared<WellTile>();
       break;
-    case TILE_TYPE_CRYPT:
+    case TileType::TILE_TYPE_CRYPT:
       result_tile = std::make_shared<CryptTile>();
       break;
-    case TILE_TYPE_AIR:
+    case TileType::TILE_TYPE_AIR:
       result_tile = std::make_shared<AirTile>();
     default:
       break;
@@ -233,14 +233,14 @@ WorshipSiteTilePtr TileGenerator::generate_worship_site_tile(const AlignmentRang
     // JCD FIXME: At some point, it'll be worth making the tile subtype
     // a variable.  But for now, I just want a pretty world.
     case ALIGNMENT_RANGE_EVIL:
-      worship_site = std::make_shared<SiteOfDeathTile>(TILE_TYPE_FIELD);
+      worship_site = std::make_shared<SiteOfDeathTile>(TileType::TILE_TYPE_FIELD);
       break;
     case ALIGNMENT_RANGE_GOOD:
-      worship_site = std::make_shared<ChurchTile>(TILE_TYPE_FIELD);
+      worship_site = std::make_shared<ChurchTile>(TileType::TILE_TYPE_FIELD);
       break;
     case ALIGNMENT_RANGE_NEUTRAL:
     default:
-      worship_site = std::make_shared<TempleTile>(TILE_TYPE_FIELD);
+      worship_site = std::make_shared<TempleTile>(TileType::TILE_TYPE_FIELD);
       break;
   }
   

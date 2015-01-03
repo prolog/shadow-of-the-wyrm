@@ -11,7 +11,7 @@ AirTile::AirTile()
 
 TileType AirTile::get_tile_type() const
 {
-  return TILE_TYPE_AIR;
+  return TileType::TILE_TYPE_AIR;
 }
 
 TileSuperType AirTile::get_tile_super_type() const

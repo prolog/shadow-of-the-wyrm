@@ -8,7 +8,7 @@
 using namespace std;
 
 FieldGenerator::FieldGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_FIELD)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_FIELD)
 {
 }
 
@@ -43,7 +43,7 @@ TilePtr FieldGenerator::generate_tile(MapPtr map, int row, int col)
   // Ensure the first row is reachable.
   if ( row == 0 )
   {
-    generated_tile = tg.generate(TILE_TYPE_FIELD);
+    generated_tile = tg.generate(TileType::TILE_TYPE_FIELD);
   }
   else
   {
@@ -51,19 +51,19 @@ TilePtr FieldGenerator::generate_tile(MapPtr map, int row, int col)
 
     if (rand < 96)
     {
-      generated_tile = tg.generate(TILE_TYPE_FIELD);
+      generated_tile = tg.generate(TileType::TILE_TYPE_FIELD);
     }
     else if (rand < 97)
     {
-      generated_tile = tg.generate(TILE_TYPE_BUSH);
+      generated_tile = tg.generate(TileType::TILE_TYPE_BUSH);
     }
     else if (rand < 98)
     {
-      generated_tile = tg.generate(TILE_TYPE_WEEDS);
+      generated_tile = tg.generate(TileType::TILE_TYPE_WEEDS);
     }
     else
     {
-      generated_tile = tg.generate(TILE_TYPE_TREE);
+      generated_tile = tg.generate(TileType::TILE_TYPE_TREE);
     }
   }
 

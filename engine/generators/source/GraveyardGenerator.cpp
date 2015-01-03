@@ -3,7 +3,7 @@
 #include "TileGenerator.hpp"
 
 GraveyardGenerator::GraveyardGenerator(const std::string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_GRAVEYARD)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_GRAVEYARD)
 , TOMB_MIN_SIZE(7)
 , TOMB_MAX_SIZE(7)
 {
@@ -12,7 +12,7 @@ GraveyardGenerator::GraveyardGenerator(const std::string& new_map_exit_id)
 MapPtr GraveyardGenerator::generate(const Dimensions& dim)
 {
   MapPtr map = std::make_shared<Map>(dim);
-  fill(map, TILE_TYPE_FIELD);
+  fill(map, TileType::TILE_TYPE_FIELD);
   
   add_graves(map);
   add_framing_trees(map);
@@ -26,7 +26,7 @@ MapPtr GraveyardGenerator::generate(const Dimensions& dim)
 
 TilePtr GraveyardGenerator::generate_tile(MapPtr current_map, const int row, const int col)
 {
-  TilePtr grave_tile = tg.generate(TILE_TYPE_GRAVE);
+  TilePtr grave_tile = tg.generate(TileType::TILE_TYPE_GRAVE);
 
   return grave_tile;
 }
@@ -61,7 +61,7 @@ void GraveyardGenerator::add_tomb(MapPtr map)
   {
     for (int col = start_col; col < end_col; col++)
     {
-      TilePtr rock_tile = tg.generate(TILE_TYPE_ROCK);
+      TilePtr rock_tile = tg.generate(TileType::TILE_TYPE_ROCK);
       map->insert(row, col, rock_tile);
     }
   }
@@ -71,7 +71,7 @@ void GraveyardGenerator::add_tomb(MapPtr map)
   {
     for (int col = start_col+1; col < end_col-1; col++)
     {
-      TilePtr floor_tile = tg.generate(TILE_TYPE_DUNGEON);
+      TilePtr floor_tile = tg.generate(TileType::TILE_TYPE_DUNGEON);
       map->insert(row, col, floor_tile);
     }
   }
@@ -90,30 +90,30 @@ void GraveyardGenerator::add_framing_trees(MapPtr map)
   
   // Top left
   y = x = 0;
-  map->insert(y, x, tg.generate(TILE_TYPE_TREE));
-  map->insert(y+1, x, tg.generate(TILE_TYPE_TREE));
-  map->insert(y, x+1, tg.generate(TILE_TYPE_TREE));
+  map->insert(y, x, tg.generate(TileType::TILE_TYPE_TREE));
+  map->insert(y+1, x, tg.generate(TileType::TILE_TYPE_TREE));
+  map->insert(y, x+1, tg.generate(TileType::TILE_TYPE_TREE));
   
   // Top right
   x = dim.get_x()-1;
   y = 0;
-  map->insert(y, x, tg.generate(TILE_TYPE_TREE));
-  map->insert(y+1, x, tg.generate(TILE_TYPE_TREE));
-  map->insert(y, x-1, tg.generate(TILE_TYPE_TREE));
+  map->insert(y, x, tg.generate(TileType::TILE_TYPE_TREE));
+  map->insert(y+1, x, tg.generate(TileType::TILE_TYPE_TREE));
+  map->insert(y, x-1, tg.generate(TileType::TILE_TYPE_TREE));
   
   // Bottom left
   y = max_y-1;
   x = 0;
-  map->insert(y, x, tg.generate(TILE_TYPE_TREE));
-  map->insert(y-1, x, tg.generate(TILE_TYPE_TREE));
-  map->insert(y, x+1, tg.generate(TILE_TYPE_TREE));
+  map->insert(y, x, tg.generate(TileType::TILE_TYPE_TREE));
+  map->insert(y-1, x, tg.generate(TileType::TILE_TYPE_TREE));
+  map->insert(y, x+1, tg.generate(TileType::TILE_TYPE_TREE));
   
   // Bottom right
   y = max_y-1;
   x = max_x-1;
-  map->insert(y, x, tg.generate(TILE_TYPE_TREE));
-  map->insert(y-1, x, tg.generate(TILE_TYPE_TREE));
-  map->insert(y, x-1, tg.generate(TILE_TYPE_TREE));
+  map->insert(y, x, tg.generate(TileType::TILE_TYPE_TREE));
+  map->insert(y-1, x, tg.generate(TileType::TILE_TYPE_TREE));
+  map->insert(y, x-1, tg.generate(TileType::TILE_TYPE_TREE));
 
 }
 
@@ -127,7 +127,7 @@ void GraveyardGenerator::add_random_foliage(MapPtr map)
     int x = RNG::range(2, dim.get_x()-2);
     
     TilePtr tile = map->at(y, x);
-    if (tile && tile->get_tile_type() != TILE_TYPE_GRAVE)
+    if (tile && tile->get_tile_type() != TileType::TILE_TYPE_GRAVE)
     {
       int rand = RNG::range(1, 100);
       
@@ -135,15 +135,15 @@ void GraveyardGenerator::add_random_foliage(MapPtr map)
 
       if (rand < 35) // Bush
       {
-        new_tile = tg.generate(TILE_TYPE_BUSH);
+        new_tile = tg.generate(TileType::TILE_TYPE_BUSH);
       }
       else if (rand < 45) // Weeds
       {
-        new_tile = tg.generate(TILE_TYPE_WEEDS);
+        new_tile = tg.generate(TileType::TILE_TYPE_WEEDS);
       }
       else // Tree
       {
-        new_tile = tg.generate(TILE_TYPE_TREE);
+        new_tile = tg.generate(TileType::TILE_TYPE_TREE);
       }
       
       map->insert(y, x, new_tile);

@@ -7,7 +7,7 @@ void BoatingMovementAccumulationChecker::check(CreaturePtr creature)
   {
     if (RNG::percent_chance(10))
     {
-      sm.check_skill(creature, SKILL_GENERAL_BOATING);
+      sm.check_skill(creature, SkillType::SKILL_GENERAL_BOATING);
     }
   }
 }

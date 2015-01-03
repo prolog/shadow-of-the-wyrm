@@ -15,7 +15,7 @@ using namespace std;
 
 TanneryManipulator::TanneryManipulator(FeaturePtr feature)
 : IFeatureManipulator(feature),
-skin_items({ {EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EQUIPMENT_WORN_BODY, "_hide_armour"}, {EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EQUIPMENT_WORN_FEET, "_hide_boots"} })
+skin_items({ {EquipmentWornLocation::EQUIPMENT_WORN_HEAD, "_hide_cap"}, {EquipmentWornLocation::EQUIPMENT_WORN_BODY, "_hide_armour"}, {EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY, "_hide_cloak"}, {EquipmentWornLocation::EQUIPMENT_WORN_FEET, "_hide_boots"} })
 {
 }
 
@@ -68,8 +68,9 @@ bool TanneryManipulator::handle(TilePtr tile, CreaturePtr creature)
         if (!slot_selection.empty())
         {
           char selection = slot_selection.at(0) - 'a';
+          EquipmentWornLocation selection_loc = static_cast<EquipmentWornLocation>(selection);
 
-          if (std::find(worn_locs.begin(), worn_locs.end(), selection) != worn_locs.end())
+          if (std::find(worn_locs.begin(), worn_locs.end(), selection_loc) != worn_locs.end())
           {
             EquipmentWornLocation slot = static_cast<EquipmentWornLocation>(selection);
 

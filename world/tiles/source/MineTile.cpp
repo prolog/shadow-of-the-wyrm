@@ -2,7 +2,7 @@
 
 TileType MineTile::get_tile_type() const
 {
-  return TILE_TYPE_MINE;
+  return TileType::TILE_TYPE_MINE;
 }
 
 std::string MineTile::get_tile_description_sid() const

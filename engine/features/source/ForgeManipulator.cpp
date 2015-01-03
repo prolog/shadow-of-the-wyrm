@@ -99,7 +99,7 @@ bool ForgeManipulator::check_creature_knows_smithing(CreaturePtr creature)
 
   // Does the creature know anything about smithing?
   SkillPtr smithing_skill;
-  if (creature && (smithing_skill = creature->get_skills().get_skill(SKILL_GENERAL_SMITHING)) != nullptr)
+  if (creature && (smithing_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_SMITHING)) != nullptr)
   {
     if (smithing_skill->get_value() <= 0)
     {
@@ -123,11 +123,11 @@ bool ForgeManipulator::check_creature_wielding_hammer(CreaturePtr creature)
   // Either weapon a club/hammer?
   // Is the creature wielding something suitably hammer-y?
   WeaponManager wm;
-  WeaponPtr weapon1 = wm.get_weapon(creature, ATTACK_TYPE_MELEE_PRIMARY);
-  WeaponPtr weapon2 = wm.get_weapon(creature, ATTACK_TYPE_MELEE_SECONDARY);
+  WeaponPtr weapon1 = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_PRIMARY);
+  WeaponPtr weapon2 = wm.get_weapon(creature, AttackType::ATTACK_TYPE_MELEE_SECONDARY);
 
-  if (!((weapon1 && weapon1->get_trained_skill() == SKILL_MELEE_BLUDGEONS) ||
-    (weapon2 && weapon2->get_trained_skill() == SKILL_MELEE_BLUDGEONS)))
+  if (!((weapon1 && weapon1->get_trained_skill() == SkillType::SKILL_MELEE_BLUDGEONS) ||
+    (weapon2 && weapon2->get_trained_skill() == SkillType::SKILL_MELEE_BLUDGEONS)))
   {
     IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
 
@@ -181,7 +181,7 @@ ItemPtr ForgeManipulator::get_selected_item(CreaturePtr creature, ItemPtr select
   // Select the item to smith.
   MaterialType ingot_material = static_cast<MaterialType>(String::to_int(selected_ingot->get_additional_property(SmithingConstants::SMITHING_CONSTANTS_MATERIAL_TYPE)));
   list<IItemFilterPtr> smithable_item_list = ItemFilterFactory::create_material_type_filter(ingot_material);
-  list<IItemFilterPtr> weapon_or_armour_filter = ItemFilterFactory::create_item_type_filter(list<ItemType>{ITEM_TYPE_WEAPON, ITEM_TYPE_ARMOUR});
+  list<IItemFilterPtr> weapon_or_armour_filter = ItemFilterFactory::create_item_type_filter(list<ItemType>{ItemType::ITEM_TYPE_WEAPON, ItemType::ITEM_TYPE_ARMOUR});
 
   // Create a filter list that contains all weapons and armour that match the material type.
   copy(weapon_or_armour_filter.begin(), weapon_or_armour_filter.end(), back_inserter(smithable_item_list));
@@ -211,7 +211,7 @@ void ForgeManipulator::improve_item(CreaturePtr creature, ItemPtr selected_item,
 
   // If the creature's good at smithing, there's a chance it gets an extra
   // point to work with.
-  bool extra_point = RNG::percent_chance(creature->get_skills().get_value(SKILL_GENERAL_SMITHING));
+  bool extra_point = RNG::percent_chance(creature->get_skills().get_value(SkillType::SKILL_GENERAL_SMITHING));
   if (extra_point) num_points++;
 
   selected_item->smith(num_points);

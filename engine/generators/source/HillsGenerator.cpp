@@ -5,7 +5,7 @@
 using std::string;
 
 HillsGenerator::HillsGenerator(const string& new_map_exit_id)
-: Generator(new_map_exit_id, TILE_TYPE_HILLS)
+: Generator(new_map_exit_id, TileType::TILE_TYPE_HILLS)
 {
 }
 
@@ -29,26 +29,26 @@ MapPtr HillsGenerator::generate(const Dimensions& dim)
 
       if (rand < 2)
       {
-        tile_type = TILE_TYPE_WEEDS;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_WEEDS;
       }
       else if (rand < 5)
       {
-        tile_type = TILE_TYPE_SCRUB;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_SCRUB;
       }
       else if (rand < 6)
       {
-        tile_type = TILE_TYPE_CAIRN;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_CAIRN;
       }
       else if (rand < 7)
       {
-        tile_type = TILE_TYPE_BUSH;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_BUSH;
       }
       else
       {
-        tile_type = TILE_TYPE_FIELD;
+        TileType::TILE_TYPE = TileType::TILE_TYPE_FIELD;
       }
 
-      tile = tg.generate(tile_type);
+      tile = tg.generate(TileType::TILE_TYPE);
       result_map->insert(row, col, tile);
     }
   }

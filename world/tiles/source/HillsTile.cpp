@@ -2,7 +2,7 @@
 
 TileType HillsTile::get_tile_type() const
 {
-  return TILE_TYPE_HILLS;
+  return TileType::TILE_TYPE_HILLS;
 }
 
 std::string HillsTile::get_tile_description_sid() const

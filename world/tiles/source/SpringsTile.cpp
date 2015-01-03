@@ -21,7 +21,7 @@ bool SpringsTile::operator==(const SpringsTile& sp) const
 
 TileType SpringsTile::get_tile_type() const
 {
-  return TILE_TYPE_SPRINGS;
+  return TileType::TILE_TYPE_SPRINGS;
 }
 
 TileSuperType SpringsTile::get_tile_super_type() const

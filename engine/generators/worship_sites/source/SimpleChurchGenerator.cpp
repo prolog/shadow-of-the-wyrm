@@ -7,7 +7,7 @@
 using std::string;
 
 SimpleChurchGenerator::SimpleChurchGenerator(const string& new_deity_id, MapPtr new_base_map)
-: ChurchGenerator(new_deity_id, new_base_map, TILE_TYPE_CHURCH),
+: ChurchGenerator(new_deity_id, new_base_map, TileType::TILE_TYPE_CHURCH),
 start_row(0), start_col(0), church_height(0), church_width(0), altar_row(0)
 {
 }
@@ -94,7 +94,7 @@ void SimpleChurchGenerator::generate_door(MapPtr map)
   TileGenerator tg;
 
   FeaturePtr doorway = FeatureGenerator::generate_door();
-  TilePtr door_entryway = tg.generate(TILE_TYPE_DUNGEON); // Ensure that the doorway is situated on a floor.
+  TilePtr door_entryway = tg.generate(TileType::TILE_TYPE_DUNGEON); // Ensure that the doorway is situated on a floor.
   door_entryway->set_feature(doorway);
   map->insert(start_row + church_height - 1, start_col + (church_width / 2), door_entryway);
 }

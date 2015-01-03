@@ -307,7 +307,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
 
 // General version that can handle tile type/subtype from any source - the tile
 // itself, a map exit, etc.
-ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const int depth_increment)
+ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType TileType::TILE_TYPE, const TileType tile_subtype, const int depth_increment)
 {
   ActionCostValue action_cost_value = 0;
 
@@ -318,7 +318,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     tile->set_additional_property(TileProperties::TILE_PROPERTY_PREVIOUS_MAP_ID, map->get_map_id());
   }
 
-  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), tile_type, tile_subtype);
+  GeneratorPtr generator = TerrainGeneratorFactory::create_generator(tile, map->get_map_id(), TileType::TILE_TYPE, tile_subtype);
 
   // Ensure that the overworld map ID is always available to the generator!
   map->get_map_type() == MapType::MAP_TYPE_WORLD ? generator->set_additional_property(TileProperties::TILE_PROPERTY_ORIGINAL_MAP_ID, map->get_map_id())
@@ -414,7 +414,7 @@ ActionCostValue MovementAction::generate_and_move_to_new_map(CreaturePtr creatur
     // items and creatures.
     handle_properties_and_move_to_new_map(tile, map, new_map);
                 
-    manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(tile_type));
+    manager.add_new_message(TextMessages::get_area_entrance_message_given_terrain_type(TileType::TILE_TYPE));
     add_tile_related_messages(creature, new_creature_tile);
     manager.send();
                 

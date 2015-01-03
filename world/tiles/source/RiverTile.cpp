@@ -8,7 +8,7 @@ RiverTile::RiverTile()
 
 TileType RiverTile::get_tile_type() const
 {
-  return TILE_TYPE_RIVER;
+  return TileType::TILE_TYPE_RIVER;
 }
 
 TileSuperType RiverTile::get_tile_super_type() const

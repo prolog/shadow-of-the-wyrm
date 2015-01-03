@@ -14,13 +14,13 @@ bool Effect::effect(std::shared_ptr<Creature> creature, ActionManager * const am
 
   switch(item_status)
   {
-    case ITEM_STATUS_BLESSED:
+    case ItemStatus::ITEM_STATUS_BLESSED:
       effect_identified = effect_blessed(creature, am);
       break;
-    case ITEM_STATUS_CURSED:
+    case ItemStatus::ITEM_STATUS_CURSED:
       effect_identified = effect_cursed(creature, am);
       break;
-    case ITEM_STATUS_UNCURSED:
+    case ItemStatus::ITEM_STATUS_UNCURSED:
     default:
       effect_identified = effect_uncursed(creature, am);
       break;
