@@ -11,5 +11,5 @@ TEST(SL_World_Tiles_RoadTile, serialization_id)
 {
   RoadTile road_tile;
 
-  EXPECT_EQ(CLASS_ID_ROAD_TILE, road_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_ROAD_TILE, road_tile.get_class_identifier());
 }

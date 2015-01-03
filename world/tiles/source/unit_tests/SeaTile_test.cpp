@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_SeaTile, serialization_id)
 {
   SeaTile sea_tile;
 
-  EXPECT_EQ(CLASS_ID_SEA_TILE, sea_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SEA_TILE, sea_tile.get_class_identifier());
 }
 

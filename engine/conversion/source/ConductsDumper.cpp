@@ -25,7 +25,7 @@ string ConductsDumper::get_conducts() const
   ss << String::centre(StringTable::get(ConductTextKeys::CONDUCT_TITLE), num_cols) << endl << endl;
   Conducts cond = creature->get_conducts_ref();
 
-  array<bool, CONDUCT_SIZE> all_cond = cond.get_conducts();
+  auto all_cond = cond.get_conducts();
   int num_conducts = 0;
 
   for (uint i = 0; i < all_cond.size(); i++)

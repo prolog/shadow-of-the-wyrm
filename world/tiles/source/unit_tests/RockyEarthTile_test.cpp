@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_RockyEarthTile, serialization_id)
 {
   RockyEarthTile rocky_tile;
 
-  EXPECT_EQ(CLASS_ID_ROCKY_EARTH_TILE, rocky_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_ROCKY_EARTH_TILE, rocky_tile.get_class_identifier());
 }
 

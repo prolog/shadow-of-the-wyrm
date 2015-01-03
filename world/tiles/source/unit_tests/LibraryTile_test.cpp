@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_LibraryTile, serialization_id)
 {
   LibraryTile library_tile;
 
-  EXPECT_EQ(CLASS_ID_LIBRARY_TILE, library_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_LIBRARY_TILE, library_tile.get_class_identifier());
 }
 

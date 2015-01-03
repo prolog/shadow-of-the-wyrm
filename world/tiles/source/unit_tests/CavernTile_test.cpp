@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_CavernTile, serialization_id)
 {
   CavernTile cavern_tile;
 
-  EXPECT_EQ(CLASS_ID_CAVERN_TILE, cavern_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CAVERN_TILE, cavern_tile.get_class_identifier());
 }
 

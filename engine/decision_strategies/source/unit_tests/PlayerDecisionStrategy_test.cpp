@@ -7,6 +7,6 @@ TEST(SL_Engine_DecisionStrategy_PlayerDecisionStrategy, serialization_id)
   
   PlayerDecisionStrategy pds(null_controller);
 
-  EXPECT_EQ(CLASS_ID_PLAYER_DECISION_STRATEGY, pds.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_PLAYER_DECISION_STRATEGY, pds.get_class_identifier());
 }
 

@@ -111,7 +111,7 @@ AttackCommand::~AttackCommand()
 
 // Search
 SearchCommand::SearchCommand(const int key)
-: MovementCommand(DIRECTION_NULL, key)
+: MovementCommand(Direction::DIRECTION_NULL, key)
 {
 }
 

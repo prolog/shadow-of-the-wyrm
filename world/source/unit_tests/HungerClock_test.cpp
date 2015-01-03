@@ -84,7 +84,7 @@ TEST(SL_World_HungerClock, serialization_id)
 {
   HungerClock hc;
 
-  EXPECT_EQ(CLASS_ID_HUNGER_CLOCK, hc.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_HUNGER_CLOCK, hc.get_class_identifier());
 }
 
 TEST(SL_World_HungerClock, saveload)

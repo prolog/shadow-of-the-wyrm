@@ -162,7 +162,7 @@ TEST(SL_Engine_Maps_LoadedMapDetails, serialization_id)
 {
   LoadedMapDetails lmd;
 
-  EXPECT_EQ(CLASS_ID_LOADED_MAP_DETAILS, lmd.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_LOADED_MAP_DETAILS, lmd.get_class_identifier());
 }
 
 TEST(SL_Engine_Maps_LoadedMapDetails, saveload)

@@ -154,7 +154,7 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   WeaponManager wm;
   if (wm.is_using_weapon(attacking_creature, attack_type))
   {
-    attacking_creature->get_conducts_ref().break_conduct(CONDUCT_TYPE_WEAPONLESS);
+    attacking_creature->get_conducts_ref().break_conduct(ConductType::CONDUCT_TYPE_WEAPONLESS);
   }
 
   string attacked_creature_desc = get_appropriate_creature_description(attacking_creature, attacked_creature);

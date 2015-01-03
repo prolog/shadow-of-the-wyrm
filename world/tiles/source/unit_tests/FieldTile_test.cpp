@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_FieldTile, serialization_id)
 {
   FieldTile field_tile;
 
-  EXPECT_EQ(CLASS_ID_FIELD_TILE, field_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_FIELD_TILE, field_tile.get_class_identifier());
 }
 

@@ -4,7 +4,7 @@ TEST(SL_World_StatusAilments, serialization_id)
 {
   StatusAilments sa;
 
-  EXPECT_EQ(CLASS_ID_STATUS_AILMENTS, sa.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_STATUS_AILMENTS, sa.get_class_identifier());
 }
 
 TEST(SL_World_StatusAilments, saveload)

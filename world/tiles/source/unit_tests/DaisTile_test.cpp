@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_DaisTile, serialization_id)
 {
   DaisTile dais_tile;
 
-  EXPECT_EQ(CLASS_ID_DAIS_TILE, dais_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DAIS_TILE, dais_tile.get_class_identifier());
 }
 

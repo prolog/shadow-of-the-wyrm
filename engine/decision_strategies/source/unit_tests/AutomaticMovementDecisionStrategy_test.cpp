@@ -7,7 +7,7 @@ TEST(SL_Engine_DecisionStrategy_AutomaticMovementDecisionStrategy, serialization
   AutomaticMovement am;
   AutomaticMovementDecisionStrategy ds(am, nullp);
 
-  EXPECT_EQ(CLASS_ID_AUTOMATIC_MOVEMENT_DECISION_STRATEGY, ds.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_AUTOMATIC_MOVEMENT_DECISION_STRATEGY, ds.get_class_identifier());
 }
 
 TEST(SL_Engine_DecisionStrategy_AutomaticMovementDecisionStrategy, saveload)

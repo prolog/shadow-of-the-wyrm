@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_MarshTile, serialization_id)
 {
   MarshTile marsh_tile;
 
-  EXPECT_EQ(CLASS_ID_MARSH_TILE, marsh_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_MARSH_TILE, marsh_tile.get_class_identifier());
 }
 

@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_CairnTile, serialization_id)
 {
   CairnTile cairn_tile;
 
-  EXPECT_EQ(CLASS_ID_CAIRN_TILE, cairn_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CAIRN_TILE, cairn_tile.get_class_identifier());
 }
 

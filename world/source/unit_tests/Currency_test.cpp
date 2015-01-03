@@ -4,7 +4,7 @@ TEST(SL_World_Currency, serialization_id)
 {
   Currency currency;
 
-  EXPECT_EQ(CLASS_ID_CURRENCY, currency.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CURRENCY, currency.get_class_identifier());
 }
 
 TEST(SL_World_Currency, saveload)

@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_Features_RegularStatues, serialization_ids)
 {
   PetrifiedCorpseStatue pet;
 
-  EXPECT_EQ(CLASS_ID_PETRIFIED_CORPSE_STATUE, pet.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE, pet.get_class_identifier());
 }
 
 TEST(SL_World_Tiles_Features_RegularStatues, saveload)

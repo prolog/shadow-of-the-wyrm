@@ -18,7 +18,7 @@ TEST(SL_World_Tiles_MineTile, serialization_id)
 {
   MineTile mine_tile;
 
-  EXPECT_EQ(CLASS_ID_MINE_TILE, mine_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_MINE_TILE, mine_tile.get_class_identifier());
 }
 
 

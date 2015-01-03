@@ -40,7 +40,7 @@ CommandPtr InventoryCommandFactory::create(const int key, const std::string& com
 
 CommandFactoryType InventoryCommandFactory::get_factory_type() const
 {
-  return COMMAND_FACTORY_TYPE_INVENTORY;
+  return CommandFactoryType::COMMAND_FACTORY_TYPE_INVENTORY;
 }
 
 CommandFactory* InventoryCommandFactory::clone()

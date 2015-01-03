@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_CryptTile, serialization_id)
 {
   CryptTile crypt_tile;
 
-  EXPECT_EQ(CLASS_ID_CRYPT_TILE, crypt_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CRYPT_TILE, crypt_tile.get_class_identifier());
 }
 

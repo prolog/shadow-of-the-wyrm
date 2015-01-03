@@ -32,7 +32,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
     {
       if (command_name == TileSelectionCommandKeys::CANCEL_TILE_SELECTION)
       {
-        tsa->remove_target(creature, ATTACK_TYPE_RANGED);
+        tsa->remove_target(creature, AttackType::ATTACK_TYPE_RANGED);
       }
       else if (command_name == CommandKeys::BESTIARY)
       {
@@ -40,7 +40,7 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_TILE)
       {
-        AttackType JCD_FIXME_ATTACK_TYPE = ATTACK_TYPE_RANGED;
+        AttackType JCD_FIXME_ATTACK_TYPE = AttackType::ATTACK_TYPE_RANGED;
         if (tsa->is_tile_in_range_and_add_message_if_not(creature, JCD_FIXME_ATTACK_TYPE))
         {
           // Stop selecting, advance turn.
@@ -56,11 +56,11 @@ pair<bool, ActionCostValue> TileSelectionCommandProcessor::process(CreaturePtr c
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_NEXT_CREATURE)
       {
-        result = process_tile_selection_by_creature(creature, SELECT_CREATURE_NEXT, tsa);
+        result = process_tile_selection_by_creature(creature, SelectCreatureType::SELECT_CREATURE_NEXT, tsa);
       }
       else if (command_name == TileSelectionCommandKeys::TARGET_PREV_CREATURE)
       {
-        result = process_tile_selection_by_creature(creature, SELECT_CREATURE_PREVIOUS, tsa);
+        result = process_tile_selection_by_creature(creature, SelectCreatureType::SELECT_CREATURE_PREVIOUS, tsa);
       }
     }
   }

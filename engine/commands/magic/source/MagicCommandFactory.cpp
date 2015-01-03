@@ -39,7 +39,7 @@ CommandPtr MagicCommandFactory::create(const int key, const std::string& command
 
 CommandFactoryType MagicCommandFactory::get_factory_type() const
 {
-  return COMMAND_FACTORY_TYPE_MAGIC;
+  return CommandFactoryType::COMMAND_FACTORY_TYPE_MAGIC;
 }
 
 CommandFactory* MagicCommandFactory::clone()

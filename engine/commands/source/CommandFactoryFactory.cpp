@@ -43,8 +43,8 @@ void CommandFactoryFactory::initialize_command_factory_map()
   CommandFactoryPtr inv_cf = std::make_shared<InventoryCommandFactory>();
   CommandFactoryPtr ts_cf = std::make_shared<TileSelectionCommandFactory>();
 
-  command_factory_map = CommandFactorySerializationMap{{CLASS_ID_COMMAND_FACTORY, cf},
-                                                       {CLASS_ID_EQUIPMENT_COMMAND_FACTORY, eq_cf},
-                                                       {CLASS_ID_INVENTORY_COMMAND_FACTORY, inv_cf},
-                                                       {CLASS_ID_TILE_SELECTION_COMMAND_FACTORY, ts_cf}};
+  command_factory_map = CommandFactorySerializationMap{{ClassIdentifier::CLASS_ID_COMMAND_FACTORY, cf},
+                                                       {ClassIdentifier::CLASS_ID_EQUIPMENT_COMMAND_FACTORY, eq_cf},
+                                                       {ClassIdentifier::CLASS_ID_INVENTORY_COMMAND_FACTORY, inv_cf},
+                                                       {ClassIdentifier::CLASS_ID_TILE_SELECTION_COMMAND_FACTORY, ts_cf}};
 }

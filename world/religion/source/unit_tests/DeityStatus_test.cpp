@@ -26,7 +26,7 @@ TEST(SL_World_Religion_DeityStatus, serialization_id)
 {
   DeityStatus ds;
 
-  EXPECT_EQ(CLASS_ID_DEITY_STATUS, ds.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DEITY_STATUS, ds.get_class_identifier());
 }
 
 TEST(SL_World_Religion_DeityStatus, saveload)

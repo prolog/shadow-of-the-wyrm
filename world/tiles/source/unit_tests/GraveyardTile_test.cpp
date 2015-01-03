@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_GraveyardTile, serialization_id)
 {
   GraveyardTile graveyard_tile;
 
-  EXPECT_EQ(CLASS_ID_GRAVEYARD_TILE, graveyard_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_GRAVEYARD_TILE, graveyard_tile.get_class_identifier());
 }
 

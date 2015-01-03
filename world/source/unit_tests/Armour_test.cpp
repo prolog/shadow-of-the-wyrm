@@ -4,7 +4,7 @@ TEST(SL_World_Armour, serialization_id)
 {
   Armour armour;
 
-  EXPECT_EQ(CLASS_ID_ARMOUR, armour.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_ARMOUR, armour.get_class_identifier());
 }
 
 TEST(SL_World_Armour, saveload)

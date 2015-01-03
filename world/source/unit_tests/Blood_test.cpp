@@ -3,7 +3,7 @@
 TEST(SL_World_Blood, serialization_id)
 {
   Blood b;
-  EXPECT_EQ(CLASS_ID_BLOOD, b.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_BLOOD, b.get_class_identifier());
 }
 
 TEST(SL_World_Blood, saveload)

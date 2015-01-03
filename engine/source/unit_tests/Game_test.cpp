@@ -10,6 +10,6 @@ class SL_Engine_Game : public ::testing::Test
 
 TEST_F(SL_Engine_Game, serialization_id)
 {
-  EXPECT_EQ(CLASS_ID_GAME, get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_GAME, get_class_identifier());
 }
 

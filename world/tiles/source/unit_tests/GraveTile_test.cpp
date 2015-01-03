@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_GraveTile, serialization_id)
 {
   GraveTile grave_tile;
 
-  EXPECT_EQ(CLASS_ID_GRAVE_TILE, grave_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_GRAVE_TILE, grave_tile.get_class_identifier());
 }
 

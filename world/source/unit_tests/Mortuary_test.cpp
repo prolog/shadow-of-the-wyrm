@@ -28,7 +28,7 @@ TEST(SL_World_Mortuary, serialization_id)
 {
   Mortuary m;
 
-  EXPECT_EQ(CLASS_ID_MORTUARY, m.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_MORTUARY, m.get_class_identifier());
 }
 
 TEST(SL_World_Mortuary, saveload)

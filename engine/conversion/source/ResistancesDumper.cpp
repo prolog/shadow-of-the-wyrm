@@ -27,8 +27,10 @@ string ResistancesDumper::get_resistances() const
 
   Resistances res = creature->get_resistances();
 
-  for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
+    DamageType dt = static_cast<DamageType>(d);
+
     ResistancePtr cur_res = res.get_resistance(dt);
     double res_val = cur_res->get_value();
     string name_sid = cur_res->get_name_sid();

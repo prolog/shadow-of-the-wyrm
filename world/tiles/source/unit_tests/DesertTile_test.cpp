@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_DesertTile, serialization_id)
 {
   DesertTile desert_tile;
 
-  EXPECT_EQ(CLASS_ID_DESERT_TILE, desert_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DESERT_TILE, desert_tile.get_class_identifier());
 }
 

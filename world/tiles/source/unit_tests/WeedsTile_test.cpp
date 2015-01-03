@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_WeedsTile, serialization_id)
 {
   WeedsTile weeds_tile;
 
-  EXPECT_EQ(CLASS_ID_WEEDS_TILE, weeds_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_WEEDS_TILE, weeds_tile.get_class_identifier());
 }
 

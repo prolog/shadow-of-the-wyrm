@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_WildOrchardTile, serialization_id)
 {
   WildOrchardTile wild_orchard_tile;
 
-  EXPECT_EQ(CLASS_ID_WILD_ORCHARD_TILE, wild_orchard_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_WILD_ORCHARD_TILE, wild_orchard_tile.get_class_identifier());
 }
 

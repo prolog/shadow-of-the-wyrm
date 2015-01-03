@@ -4,7 +4,7 @@ TEST(SL_World_Spellbook, serialization_id)
 {
   Spellbook book;
 
-  EXPECT_EQ(CLASS_ID_SPELLBOOK, book.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SPELLBOOK, book.get_class_identifier());
 }
 
 TEST(SL_World_Spellbook, saveload)

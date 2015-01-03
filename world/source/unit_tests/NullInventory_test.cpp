@@ -5,7 +5,7 @@ TEST(SL_World_NullInventory, serialization_id)
 {
   NullInventory inv;
 
-  EXPECT_EQ(CLASS_ID_NULL_INVENTORY, inv.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_NULL_INVENTORY, inv.get_class_identifier());
 }
 
 TEST(SL_World_NullInventory, saveload)

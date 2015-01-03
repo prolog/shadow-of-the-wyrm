@@ -72,7 +72,7 @@ CommandPtr EquipmentCommandFactory::create(const int key, const std::string& com
 
 CommandFactoryType EquipmentCommandFactory::get_factory_type() const
 {
-  return COMMAND_FACTORY_TYPE_EQUIPMENT;
+  return CommandFactoryType::COMMAND_FACTORY_TYPE_EQUIPMENT;
 }
 
 CommandFactory* EquipmentCommandFactory::clone()

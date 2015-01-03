@@ -23,23 +23,23 @@ WeaponPtr WeaponManager::get_weapon(CreaturePtr creature, const AttackType attac
   {
     switch(attack_type)
     {
-      case ATTACK_TYPE_RANGED:
-        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_RANGED_WEAPON));
+      case AttackType::ATTACK_TYPE_RANGED:
+        weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
 
         // Check to see if it's ranged combat with ammo only (thrown daggers, etc)
         if (!weapon)
         {
-          weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EQUIPMENT_WORN_AMMUNITION));
+          weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
         }
         break;
-      case ATTACK_TYPE_MELEE_PRIMARY:
+      case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
         weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_handedness())));
         break;
-      case ATTACK_TYPE_MELEE_SECONDARY:
+      case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
         weapon = dynamic_pointer_cast<Weapon>(creature->get_equipment().get_item(static_cast<EquipmentWornLocation>(creature->get_off_handedness())));
         break;
-      case ATTACK_TYPE_MAGICAL:
-      case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+      case AttackType::ATTACK_TYPE_MAGICAL:
+      case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       default:
         break;
     }
@@ -55,8 +55,8 @@ vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const Attack
 
   switch(attack_type)
   {
-    case ATTACK_TYPE_MELEE_PRIMARY:
-    case ATTACK_TYPE_MELEE_SECONDARY:
+    case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
+    case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
     {
       WeaponPtr attack_weapon = get_weapon(creature, attack_type);
 
@@ -67,11 +67,11 @@ vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const Attack
 
       break;
     }
-    case ATTACK_TYPE_RANGED:
+    case AttackType::ATTACK_TYPE_RANGED:
     {
       Equipment& eq = creature->get_equipment();
-      WeaponPtr ranged_weapon = std::dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
-      WeaponPtr ammunition = std::dynamic_pointer_cast<Weapon>(eq.get_item(EQUIPMENT_WORN_AMMUNITION));
+      WeaponPtr ranged_weapon = std::dynamic_pointer_cast<Weapon>(eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
+      WeaponPtr ammunition = std::dynamic_pointer_cast<Weapon>(eq.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
 
       if (ranged_weapon)
       {
@@ -87,7 +87,7 @@ vector<string> WeaponManager::get_slays_races(CreaturePtr creature, const Attack
 
       break;
     }
-    case ATTACK_TYPE_MAGICAL:
+    case AttackType::ATTACK_TYPE_MAGICAL:
     default:
       break;
   }
@@ -102,15 +102,15 @@ Damage WeaponManager::get_damage(CreaturePtr creature, const AttackType attack_t
   
   switch(attack_type)
   {
-    case ATTACK_TYPE_MELEE_PRIMARY:
-    case ATTACK_TYPE_MELEE_SECONDARY:
-    case ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
+    case AttackType::ATTACK_TYPE_MELEE_PRIMARY:
+    case AttackType::ATTACK_TYPE_MELEE_SECONDARY:
+    case AttackType::ATTACK_TYPE_MELEE_TERTIARY_UNARMED:
       return get_melee_weapon_damage(creature, attack_type);
       break;
-    case ATTACK_TYPE_RANGED:
+    case AttackType::ATTACK_TYPE_RANGED:
       return get_ranged_weapon_damage(creature);
       break;
-    case ATTACK_TYPE_MAGICAL:
+    case AttackType::ATTACK_TYPE_MAGICAL:
     default:
       break;
   }
@@ -137,8 +137,8 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
   Damage d;
   
   Equipment& equipment = creature->get_equipment();
-  WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_RANGED_WEAPON));
-  WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EQUIPMENT_WORN_AMMUNITION));
+  WeaponPtr ranged_weapon = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON));
+  WeaponPtr ammunition = dynamic_pointer_cast<Weapon>(equipment.get_item(EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
   
   if (ranged_weapon)
   {
@@ -166,12 +166,12 @@ Damage WeaponManager::get_ranged_weapon_damage(CreaturePtr creature)
 
 WeaponStyle WeaponManager::get_style(const AttackType attack_type)
 {
-  if (attack_type == ATTACK_TYPE_RANGED)
+  if (attack_type == AttackType::ATTACK_TYPE_RANGED)
   {
-    return WEAPON_STYLE_RANGED;
+    return WeaponStyle::WEAPON_STYLE_RANGED;
   }
   
-  return WEAPON_STYLE_MELEE;
+  return WeaponStyle::WEAPON_STYLE_MELEE;
 }
 
 int WeaponManager::get_difficulty(WeaponPtr weapon)
@@ -199,11 +199,11 @@ DamageType WeaponManager::get_damage_type(CreaturePtr creature, const AttackType
 // Get the trained skill from the weapon based on the type of attack being done (ranged or not)
 SkillType WeaponManager::get_appropriate_trained_skill(WeaponPtr weapon, const AttackType attack_type)
 {
-  SkillType skill = SKILL_MELEE_UNARMED;
+  SkillType skill = SkillType::SKILL_MELEE_UNARMED;
   
   if (weapon)
   {
-    if (attack_type == ATTACK_TYPE_RANGED)
+    if (attack_type == AttackType::ATTACK_TYPE_RANGED)
     {
       skill = weapon->get_trained_ranged_skill();
     }
@@ -252,7 +252,7 @@ bool WeaponManager::do_trained_ranged_skills_match(WeaponPtr ranged_weapon, Weap
     SkillType ranged_trained_skill = ranged_weapon->get_trained_ranged_skill();
     SkillType ammo_trained_skill = ammunition->get_trained_ranged_skill();
     
-    return (((ammo_trained_skill == SKILL_RANGED_ROCKS) && (ranged_trained_skill == SKILL_RANGED_SLINGS))
+    return (((ammo_trained_skill == SkillType::SKILL_RANGED_ROCKS) && (ranged_trained_skill == SkillType::SKILL_RANGED_SLINGS))
       || (ammo_trained_skill == ranged_trained_skill));
   }
   

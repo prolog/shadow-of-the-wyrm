@@ -4,7 +4,7 @@ TEST(SL_Engine_Commands_Magic_MagicKeyboardCommandMap, serialization_id)
 {
   MagicKeyboardCommandMap mkcm;
 
-  EXPECT_EQ(CLASS_ID_MAGIC_KEYBOARD_COMMAND_MAP, mkcm.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_MAGIC_KEYBOARD_COMMAND_MAP, mkcm.get_class_identifier());
 }
 
 class SL_Engine_Commands_Magic_MagicKeyboardCommandMapFixture : public SL_Engine_Commands_KeyboardCommandMapFixture

@@ -30,19 +30,19 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   }
   else if (command_name == CommandKeys::MOVE_NORTHEAST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_NORTH_EAST, key);
+    command = std::make_shared<MovementCommand>(Direction::DIRECTION_NORTH_EAST, key);
   }
   else if (command_name == CommandKeys::MOVE_NORTH)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_NORTH, key);
+    command = std::make_shared<MovementCommand>(Direction::DIRECTION_NORTH, key);
   }
   else if (command_name == CommandKeys::MOVE_NORTHWEST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_NORTH_WEST, key);
+    command = std::make_shared<MovementCommand>(Direction::DIRECTION_NORTH_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_EAST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_EAST, key);
+    command = std::make_shared<MovementCommand>(Direction::DIRECTION_EAST, key);
   }
   else if (command_name == CommandKeys::SEARCH)
   {
@@ -50,19 +50,19 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   }
   else if (command_name == CommandKeys::MOVE_WEST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_WEST, key);
+    command = std::make_shared<MovementCommand>(Direction::DIRECTION_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTHEAST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH_EAST, key);
+    command = std::make_shared<MovementCommand>(Direction::DIRECTION_SOUTH_EAST, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTH)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH, key);
+    command = std::make_shared<MovementCommand>(Direction::DIRECTION_SOUTH, key);
   }
   else if (command_name == CommandKeys::MOVE_SOUTHWEST)
   {
-    command = std::make_shared<MovementCommand>(DIRECTION_SOUTH_WEST, key);
+    command = std::make_shared<MovementCommand>(Direction::DIRECTION_SOUTH_WEST, key);
   }
   else if (command_name == CommandKeys::MOVE_UP)
   {
@@ -194,7 +194,7 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
 
 CommandFactoryType CommandFactory::get_factory_type() const
 {
-  return COMMAND_FACTORY_TYPE_MAP;
+  return CommandFactoryType::COMMAND_FACTORY_TYPE_MAP;
 }
 
 CommandFactory* CommandFactory::clone()

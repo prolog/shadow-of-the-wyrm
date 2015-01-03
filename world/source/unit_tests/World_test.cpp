@@ -4,7 +4,7 @@ TEST(SL_World_World, serialization_id)
 {
   World world;
 
-  EXPECT_EQ(CLASS_ID_WORLD, world.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_WORLD, world.get_class_identifier());
 }
 
 TEST(SL_World_World, saveload)

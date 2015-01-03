@@ -7,7 +7,7 @@ TEST(SL_World_Equipment, serialization_id)
 {
   Equipment eq;
 
-  EXPECT_EQ(CLASS_ID_EQUIPMENT, eq.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_EQUIPMENT, eq.get_class_identifier());
 }
 
 TEST(SL_World_Equipment, saveload)

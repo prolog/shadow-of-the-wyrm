@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_AirTile, serialization_id)
 {
   AirTile air_tile;
 
-  EXPECT_EQ(CLASS_ID_AIR_TILE, air_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_AIR_TILE, air_tile.get_class_identifier());
 }
 

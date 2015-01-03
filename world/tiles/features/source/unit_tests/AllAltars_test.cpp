@@ -40,8 +40,8 @@ TEST(SL_World_Tiles_Feature_Altar, serialization_id)
   NeutralAltar neutral("test2");
   EvilAltar evil("test3");
 
-  EXPECT_EQ(CLASS_ID_GOOD_ALTAR, good.get_class_identifier());
-  EXPECT_EQ(CLASS_ID_NEUTRAL_ALTAR, neutral.get_class_identifier());
-  EXPECT_EQ(CLASS_ID_EVIL_ALTAR, evil.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_GOOD_ALTAR, good.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_EVIL_ALTAR, evil.get_class_identifier());
 }
 

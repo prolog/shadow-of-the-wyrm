@@ -4,7 +4,7 @@ TEST(SL_World_Amulet, serialization_id)
 {
   Amulet amulet;
 
-  EXPECT_EQ(CLASS_ID_AMULET, amulet.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_AMULET, amulet.get_class_identifier());
 }
 
 TEST(SL_World_Amulet, saveload)

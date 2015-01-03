@@ -12,5 +12,5 @@ TEST(SL_World_Tiles_ScrubTile, serialization_id)
 {
   ScrubTile scrub_tile;
 
-  EXPECT_EQ(CLASS_ID_SCRUB_TILE, scrub_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SCRUB_TILE, scrub_tile.get_class_identifier());
 }

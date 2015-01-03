@@ -19,7 +19,7 @@ TEST(SL_World_Dice, serialization_id)
 {
   Dice dice;
 
-  EXPECT_EQ(CLASS_ID_DICE, dice.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DICE, dice.get_class_identifier());
 }
 
 TEST(SL_World_Dice, saveload)

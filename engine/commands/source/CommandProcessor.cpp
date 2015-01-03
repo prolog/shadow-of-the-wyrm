@@ -27,7 +27,7 @@ ActionCost CommandProcessor::process(CreaturePtr creature, CommandPtr command, D
 
     DirectionalCommand* d_command = dynamic_cast<DirectionalCommand*>(raw_command);
 
-    if (d_command && !(d_command->get_direction() == DIRECTION_NULL) /* search is a special case */)
+    if (d_command && !(d_command->get_direction() == Direction::DIRECTION_NULL) /* search is a special case */)
     {
       return process_directional_command(creature, d_command, display);
     } 
@@ -105,11 +105,11 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::MELEE_WEAPON_INFO)
       {
-        ac = game.actions.weapon_info(creature, WEAPON_STYLE_MELEE);
+        ac = game.actions.weapon_info(creature, WeaponStyle::WEAPON_STYLE_MELEE);
       }
       else if (command_name == CommandKeys::RANGED_WEAPON_INFO)
       {
-        ac = game.actions.weapon_info(creature, WEAPON_STYLE_RANGED);
+        ac = game.actions.weapon_info(creature, WeaponStyle::WEAPON_STYLE_RANGED);
       }
       else if (command_name == CommandKeys::SELECT_TILE)
       {
@@ -222,7 +222,7 @@ ActionCost CommandProcessor::process_directional_command(CreaturePtr creature, D
       // its decided direction.
       if (RNG::percent_chance(75))
       {
-        direction = static_cast<Direction>(RNG::range(DIRECTION_SOUTH_WEST, DIRECTION_NORTH_EAST));
+        direction = static_cast<Direction>(RNG::range(static_cast<int>(Direction::DIRECTION_SOUTH_WEST), static_cast<int>(Direction::DIRECTION_NORTH_EAST)));
       }
     }
 
