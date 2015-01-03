@@ -4,7 +4,7 @@ TEST(SL_Engine_Scripting_ScriptEngine, serialization_id)
 {
   ScriptEngine se;
 
-  EXPECT_EQ(CLASS_ID_SCRIPT_ENGINE, se.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SCRIPT_ENGINE, se.get_class_identifier());
 }
 
 TEST(SL_engine_Scripting_ScriptEngine, saveload)

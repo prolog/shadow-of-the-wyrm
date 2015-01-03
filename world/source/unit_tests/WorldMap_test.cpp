@@ -6,7 +6,7 @@ TEST(SL_World_Map, serialization_id)
   Dimensions d;
   Map map(d);
 
-  EXPECT_EQ(CLASS_ID_MAP, map.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_MAP, map.get_class_identifier());
 }
 
 TEST(SL_World_Map, saveload)

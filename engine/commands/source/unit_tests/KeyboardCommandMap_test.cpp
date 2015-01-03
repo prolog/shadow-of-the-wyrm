@@ -4,7 +4,7 @@ TEST(SL_Engine_Commands_KeyboardCommandMap, serialization_id)
 {
   KeyboardCommandMap kcm;
 
-  EXPECT_EQ(CLASS_ID_KEYBOARD_COMMAND_MAP, kcm.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_KEYBOARD_COMMAND_MAP, kcm.get_class_identifier());
 }
 
 // Definitions for the test fixture

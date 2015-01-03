@@ -88,6 +88,6 @@ TEST_F(SL_Engine_Map, map_type_allows_updates)
 
 TEST_F(SL_Engine_Map, serialization_id)
 {
-  EXPECT_EQ(CLASS_ID_MAP, get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_MAP, get_class_identifier());
 }
 

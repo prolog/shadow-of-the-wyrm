@@ -37,7 +37,7 @@ TEST(SL_World_Depth, serialization_id)
 {
   Depth depth;
 
-  EXPECT_EQ(CLASS_ID_DEPTH, depth.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DEPTH, depth.get_class_identifier());
 }
 
 TEST(SL_World_Depth, saveload)

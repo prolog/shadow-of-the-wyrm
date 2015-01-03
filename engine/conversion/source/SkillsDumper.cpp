@@ -45,7 +45,7 @@ string SkillsDumper::get_general_skills_header() const
 
 string SkillsDumper::get_general_skills() const
 {
-  string general_skills = get_skills_by_category(SKILL_CATEGORY_GENERAL);
+  string general_skills = get_skills_by_category(SkillCategory::SKILL_CATEGORY_GENERAL);
   return general_skills;
 }
 
@@ -93,7 +93,7 @@ string SkillsDumper::get_weapon_skills_header() const
 
 string SkillsDumper::get_melee_weapon_skills() const
 {
-  string melee_weapon_skills = get_skills_by_category(SKILL_CATEGORY_MELEE);  
+  string melee_weapon_skills = get_skills_by_category(SkillCategory::SKILL_CATEGORY_MELEE);  
   return melee_weapon_skills;
 }
 
@@ -105,7 +105,7 @@ string SkillsDumper::get_ranged_weapon_skills_header() const
 
 string SkillsDumper::get_ranged_weapon_skills() const
 {
-  string ranged_weapon_skills = get_skills_by_category(SKILL_CATEGORY_RANGED);
+  string ranged_weapon_skills = get_skills_by_category(SkillCategory::SKILL_CATEGORY_RANGED);
   return ranged_weapon_skills;
 }
 
@@ -117,7 +117,7 @@ string SkillsDumper::get_magical_skills_header() const
 
 string SkillsDumper::get_magical_skills() const
 {
-  string magical_skills = get_skills_by_category(SKILL_CATEGORY_MAGIC);
+  string magical_skills = get_skills_by_category(SkillCategory::SKILL_CATEGORY_MAGIC);
   return magical_skills;
 }
 

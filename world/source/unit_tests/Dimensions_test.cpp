@@ -29,6 +29,6 @@ TEST(SL_World_Dimensions, serialization_id)
 {
   Dimensions dim;
 
-  EXPECT_EQ(CLASS_ID_DIMENSIONS, dim.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DIMENSIONS, dim.get_class_identifier());
 }
 

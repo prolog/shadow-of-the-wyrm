@@ -5,15 +5,15 @@ HitTypeEnum HitTypeEnumConverter::from_successful_to_hit_roll(const int to_hit_r
 {
   if (to_hit_roll >= CombatConstants::CRITICAL_DIFFICULTY)
   {
-    return HIT_TYPE_CRITICAL;
+    return HitTypeEnum::HIT_TYPE_CRITICAL;
   }
   else if (to_hit_roll < CombatConstants::CRITICAL_DIFFICULTY && to_hit_roll >= CombatConstants::MIGHTY_BLOW_DIFFICULTY)
   {
-    return HIT_TYPE_MIGHTY;
+    return HitTypeEnum::HIT_TYPE_MIGHTY;
   }
   else
   {
-    return HIT_TYPE_REGULAR;
+    return HitTypeEnum::HIT_TYPE_REGULAR;
   }
 }
 

@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_DungeonTile, serialization_id)
 {
   DungeonTile dungeon_tile;
 
-  EXPECT_EQ(CLASS_ID_DUNGEON_TILE, dungeon_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DUNGEON_TILE, dungeon_tile.get_class_identifier());
 }
 

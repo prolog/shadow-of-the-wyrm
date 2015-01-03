@@ -4,7 +4,7 @@ TEST(SL_Engine_Commands_SelectTile_TileSelectionKeyboardCommandMap, serializatio
 {
   TileSelectionKeyboardCommandMap tskcm;
 
-  EXPECT_EQ(CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP, tskcm.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_TILE_SELECTION_KEYBOARD_COMMAND_MAP, tskcm.get_class_identifier());
 }
 
 class SL_Engine_Commands_SelectTile_TileSelectionKeyboardCommandMapFixture : public SL_Engine_Commands_KeyboardCommandMapFixture

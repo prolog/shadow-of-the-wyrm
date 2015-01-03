@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_SiteOfDeathTile, serialization_id)
 {
   SiteOfDeathTile site_of_death_tile;
 
-  EXPECT_EQ(CLASS_ID_SITE_OF_DEATH_TILE, site_of_death_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SITE_OF_DEATH_TILE, site_of_death_tile.get_class_identifier());
 }
 

@@ -21,7 +21,7 @@ TEST(SL_World_Tiles_SpringsTile, serialization_id)
 {
   SpringsTile springs_tile;
 
-  EXPECT_EQ(CLASS_ID_SPRINGS_TILE, springs_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SPRINGS_TILE, springs_tile.get_class_identifier());
 }
 
 TEST(SL_World_Tiles_SpringsTile, saveload)

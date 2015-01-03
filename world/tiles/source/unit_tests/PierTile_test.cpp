@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_PierTile, serialization_id)
 {
   PierTile pier_tile;
 
-  EXPECT_EQ(CLASS_ID_PIER_TILE, pier_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_PIER_TILE, pier_tile.get_class_identifier());
 }
 

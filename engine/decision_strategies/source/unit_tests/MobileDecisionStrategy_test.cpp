@@ -7,5 +7,5 @@ TEST(SL_Engine_DecisionStrategy_MobileDecisionStrategy, serialization_id)
   
   MobileDecisionStrategy mds(null_controller);
 
-  EXPECT_EQ(CLASS_ID_MOBILE_DECISION_STRATEGY, mds.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_MOBILE_DECISION_STRATEGY, mds.get_class_identifier());
 }

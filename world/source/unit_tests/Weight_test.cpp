@@ -4,7 +4,7 @@ TEST(SL_World_Weight, serialization_id)
 {
   Weight weight;
 
-  EXPECT_EQ(CLASS_ID_WEIGHT, weight.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_WEIGHT, weight.get_class_identifier());
 }
 
 TEST(SL_World_Weight, saveload)

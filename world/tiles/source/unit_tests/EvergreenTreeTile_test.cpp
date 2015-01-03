@@ -11,5 +11,5 @@ TEST(SL_World_Tiles_EvergreenTreeTile, serialization_id)
 {
   EvergreenTreeTile evergreen_tree_tile;
 
-  EXPECT_EQ(CLASS_ID_EVERGREEN_TREE_TILE, evergreen_tree_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_EVERGREEN_TREE_TILE, evergreen_tree_tile.get_class_identifier());
 }

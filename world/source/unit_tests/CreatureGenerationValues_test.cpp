@@ -4,7 +4,7 @@ TEST(SL_World_CreatureGenerationValues, serialization_id)
 {
   CreatureGenerationValues cgv;
 
-  EXPECT_EQ(CLASS_ID_CREATURE_GENERATION_VALUES, cgv.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CREATURE_GENERATION_VALUES, cgv.get_class_identifier());
 }
 
 TEST(SL_World_CreatureGenerationValues, saveload)

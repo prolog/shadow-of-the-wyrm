@@ -76,7 +76,7 @@ TEST(SL_World_Alignment, serialization_id)
 {
   Alignment a;
 
-  EXPECT_EQ(CLASS_ID_ALIGNMENT, a.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_ALIGNMENT, a.get_class_identifier());
 }
 
 TEST(SL_World_Alignment, saveload)

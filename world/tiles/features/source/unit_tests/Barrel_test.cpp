@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_Features_Barrel, serialization_id)
 {
   Barrel barrel;
 
-  EXPECT_EQ(CLASS_ID_BARREL, barrel.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_BARREL, barrel.get_class_identifier());
 }
 
 TEST(SL_World_Tiles_Features_Barrel, saveload)

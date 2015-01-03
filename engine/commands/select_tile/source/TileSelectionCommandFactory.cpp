@@ -19,35 +19,35 @@ CommandPtr TileSelectionCommandFactory::create(const int key, const std::string&
   
   if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_NORTHWEST)
   {
-    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH_WEST, key);
+    command = std::make_shared<CursorDirectionalCommand>(Direction::DIRECTION_NORTH_WEST, key);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_NORTH)
   {
-    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH, key);
+    command = std::make_shared<CursorDirectionalCommand>(Direction::DIRECTION_NORTH, key);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_NORTHEAST)
   {
-    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_NORTH_EAST, key);
+    command = std::make_shared<CursorDirectionalCommand>(Direction::DIRECTION_NORTH_EAST, key);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_WEST)
   {
-    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_WEST, key);
+    command = std::make_shared<CursorDirectionalCommand>(Direction::DIRECTION_WEST, key);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_EAST)
   {
-    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_EAST, key);
+    command = std::make_shared<CursorDirectionalCommand>(Direction::DIRECTION_EAST, key);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_SOUTHWEST)
   {
-    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH_WEST, key);
+    command = std::make_shared<CursorDirectionalCommand>(Direction::DIRECTION_SOUTH_WEST, key);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_SOUTH)
   {
-    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH, key);
+    command = std::make_shared<CursorDirectionalCommand>(Direction::DIRECTION_SOUTH, key);
   }
   else if (command_name == TileSelectionCommandKeys::CURSOR_MOVE_SOUTHEAST)
   {
-    command = std::make_shared<CursorDirectionalCommand>(DIRECTION_SOUTH_EAST, key);
+    command = std::make_shared<CursorDirectionalCommand>(Direction::DIRECTION_SOUTH_EAST, key);
   }
   else if (command_name == TileSelectionCommandKeys::CANCEL_TILE_SELECTION)
   {
@@ -81,7 +81,7 @@ CommandFactory* TileSelectionCommandFactory::clone()
 
 CommandFactoryType TileSelectionCommandFactory::get_factory_type() const
 {
-  return COMMAND_FACTORY_TYPE_SELECT_TILE;
+  return CommandFactoryType::COMMAND_FACTORY_TYPE_SELECT_TILE;
 }
 
 ClassIdentifier TileSelectionCommandFactory::internal_class_identifier() const

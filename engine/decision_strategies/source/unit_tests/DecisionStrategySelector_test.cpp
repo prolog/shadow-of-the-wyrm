@@ -19,13 +19,13 @@ TEST(SL_Engine_DecisionStrategies_DecisionStrategySelector, select_decision_stra
   // Setting the creature to be a player resets to a non-automatic-
   // movement decision strategy, the PlayerDecisionStrategy.
   dec = DecisionStrategySelector::select_decision_strategy(c);
-  EXPECT_EQ(CLASS_ID_PLAYER_DECISION_STRATEGY, dec->get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_PLAYER_DECISION_STRATEGY, dec->get_class_identifier());
 
   am.set_engaged(true);
 
   // Setting automatic movement correctly should return an instance of an
   // AutomaticMovementDecisionStrategy.
   dec = DecisionStrategySelector::select_decision_strategy(c);
-  EXPECT_EQ(CLASS_ID_AUTOMATIC_MOVEMENT_DECISION_STRATEGY, dec->get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_AUTOMATIC_MOVEMENT_DECISION_STRATEGY, dec->get_class_identifier());
 }
 

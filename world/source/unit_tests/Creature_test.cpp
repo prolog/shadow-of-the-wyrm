@@ -42,7 +42,7 @@ TEST(SL_World_Creature, serialization_id)
 {
   Creature c;
 
-  EXPECT_EQ(CLASS_ID_CREATURE, c.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CREATURE, c.get_class_identifier());
 }
 
 TEST(SL_World_Creature, saveload)

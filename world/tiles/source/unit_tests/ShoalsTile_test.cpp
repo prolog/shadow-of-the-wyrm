@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_ShoalsTile, serialization_id)
 {
   ShoalsTile shoals_tile;
 
-  EXPECT_EQ(CLASS_ID_SHOALS_TILE, shoals_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SHOALS_TILE, shoals_tile.get_class_identifier());
 }
 

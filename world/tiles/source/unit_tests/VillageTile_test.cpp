@@ -33,6 +33,6 @@ TEST(SL_World_Tiles_VillageTile, serialization_id)
 {
   VillageTile village_tile;
 
-  EXPECT_EQ(CLASS_ID_VILLAGE_TILE, village_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_VILLAGE_TILE, village_tile.get_class_identifier());
 }
 

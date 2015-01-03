@@ -28,7 +28,7 @@ CommandPtr ScreenCommandFactory::create(const int key, const std::string& comman
 
 CommandFactoryType ScreenCommandFactory::get_factory_type() const
 {
-  return COMMAND_FACTORY_TYPE_SCREEN;
+  return CommandFactoryType::COMMAND_FACTORY_TYPE_SCREEN;
 }
 
 CommandFactory* ScreenCommandFactory::clone()

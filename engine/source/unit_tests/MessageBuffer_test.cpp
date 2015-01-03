@@ -25,7 +25,7 @@ TEST(SL_Engine_MessageBuffer, insertion)
 TEST(SL_Engine_MessageBuffer, serialization_id)
 {
   MessageBuffer mb;
-  EXPECT_EQ(CLASS_ID_MESSAGE_BUFFER, mb.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_MESSAGE_BUFFER, mb.get_class_identifier());
 }
 
 TEST(SL_Engine_MessageBuffer, saveload)

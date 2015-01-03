@@ -24,7 +24,7 @@ TEST(SL_World_Conducts, remaining_conducts)
 TEST(SL_World_Conducts, serialization_id)
 {
   Conducts c;
-  EXPECT_EQ(CLASS_ID_CONDUCTS, c.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CONDUCTS, c.get_class_identifier());
 }
 
 TEST(SL_World_Conducts, saveload)

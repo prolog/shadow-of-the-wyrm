@@ -28,7 +28,7 @@ TEST(SL_World_Damage, serialization_id)
 {
   Damage damage;
 
-  EXPECT_EQ(CLASS_ID_DAMAGE, damage.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DAMAGE, damage.get_class_identifier());
 }
 
 TEST(SL_World_Damage, saveload)

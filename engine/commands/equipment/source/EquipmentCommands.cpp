@@ -35,7 +35,7 @@ WearOrRemoveHeadCommand::WearOrRemoveHeadCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveHeadCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_HEAD;
+  return EquipmentWornLocation::EQUIPMENT_WORN_HEAD;
 }
 
 // Neck slot
@@ -46,7 +46,7 @@ WearOrRemoveNeckCommand::WearOrRemoveNeckCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveNeckCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_NECK;
+  return EquipmentWornLocation::EQUIPMENT_WORN_NECK;
 }
 
 // Right ring slot
@@ -57,7 +57,7 @@ WearOrRemoveRightFingerCommand::WearOrRemoveRightFingerCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveRightFingerCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_RIGHT_FINGER;
+  return EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER;
 }
 
 // Left finger slot
@@ -68,7 +68,7 @@ WearOrRemoveLeftFingerCommand::WearOrRemoveLeftFingerCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveLeftFingerCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_LEFT_FINGER;
+  return EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER;
 }
 
 // Wielded slot
@@ -79,7 +79,7 @@ WearOrRemoveWieldedCommand::WearOrRemoveWieldedCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveWieldedCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_WIELDED;
+  return EquipmentWornLocation::EQUIPMENT_WORN_WIELDED;
 }
 
 // Off hand slot
@@ -90,7 +90,7 @@ WearOrRemoveOffHandCommand::WearOrRemoveOffHandCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveOffHandCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_OFF_HAND;
+  return EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND;
 }
 
 // Body slot
@@ -101,7 +101,7 @@ WearOrRemoveBodyCommand::WearOrRemoveBodyCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveBodyCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_BODY;
+  return EquipmentWornLocation::EQUIPMENT_WORN_BODY;
 }
 
 // Around body slot
@@ -112,7 +112,7 @@ WearOrRemoveAroundBodyCommand::WearOrRemoveAroundBodyCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveAroundBodyCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_AROUND_BODY;
+  return EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY;
 }
 
 // Feet slot
@@ -123,7 +123,7 @@ WearOrRemoveFeetCommand::WearOrRemoveFeetCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveFeetCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_FEET;
+  return EquipmentWornLocation::EQUIPMENT_WORN_FEET;
 }
 
 // Ranged slot
@@ -134,7 +134,7 @@ WearOrRemoveRangedCommand::WearOrRemoveRangedCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveRangedCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_RANGED_WEAPON;
+  return EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON;
 }
 
 // Ammunition slot
@@ -145,7 +145,7 @@ WearOrRemoveAmmunitionCommand::WearOrRemoveAmmunitionCommand(const int key)
 
 EquipmentWornLocation WearOrRemoveAmmunitionCommand::get_equipment_worn_location() const
 {
-  return EQUIPMENT_WORN_AMMUNITION;
+  return EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION;
 }
 
 // View inventory

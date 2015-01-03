@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_BarracksTile, serialization_id)
 {
   BarracksTile barracks_tile;
 
-  EXPECT_EQ(CLASS_ID_BARRACKS_TILE, barracks_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_BARRACKS_TILE, barracks_tile.get_class_identifier());
 }
 

@@ -29,6 +29,6 @@ TEST(SL_World_Tiles_ChurchTile, serialization_id)
 {
   ChurchTile church_tile;
 
-  EXPECT_EQ(CLASS_ID_CHURCH_TILE, church_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CHURCH_TILE, church_tile.get_class_identifier());
 }
 

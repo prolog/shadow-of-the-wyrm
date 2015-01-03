@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_Features_Lock, serialization_id)
 {
   Lock lock;
 
-  EXPECT_EQ(CLASS_ID_LOCK, lock.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_LOCK, lock.get_class_identifier());
 }
 
 TEST(SL_World_Tiles_Features_Lock, saveload)

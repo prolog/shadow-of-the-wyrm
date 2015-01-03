@@ -65,7 +65,7 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
       DeityPtr active_deity = rm.get_active_deity(creature);
       DeityStatus status = rm.get_active_deity_status(creature);
 
-      if (status.get_champion_type() == CHAMPION_TYPE_CROWNED)
+      if (status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED)
       {
         // The creature is hereby a fallen champion of all deities.
         for (auto deity_pair : deities)
@@ -73,7 +73,7 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
           string deity_id = deity_pair.second->get_id();
 
           DeityStatus cur_status = religion.get_deity_status(deity_id);
-          cur_status.set_champion_type(CHAMPION_TYPE_FALLEN);
+          cur_status.set_champion_type(ChampionType::CHAMPION_TYPE_FALLEN);
 
           religion.set_deity_status(deity_id, cur_status);
         }

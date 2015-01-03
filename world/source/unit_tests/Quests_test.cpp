@@ -4,7 +4,7 @@ TEST(SL_World_Quest, serialization_id)
 {
   Quest q;
 
-  EXPECT_EQ(CLASS_ID_QUEST, q.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_QUEST, q.get_class_identifier());
 }
 
 TEST(SL_World_Quest, saveload)
@@ -52,7 +52,7 @@ TEST(SL_World_Quests, serialization_id)
 {
   Quests q;
 
-  EXPECT_EQ(CLASS_ID_QUESTS, q.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_QUESTS, q.get_class_identifier());
 }
 
 TEST(SL_World_Quests, saveload)

@@ -4,7 +4,7 @@ TEST(SL_World_Magic_IndividualSpellKnowledge, serialization_id)
 {
   IndividualSpellKnowledge isk;
 
-  EXPECT_EQ(CLASS_ID_INDIVIDUAL_SPELL_KNOWLEDGE, isk.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_INDIVIDUAL_SPELL_KNOWLEDGE, isk.get_class_identifier());
 }
 
 TEST(SL_World_Magic_IndividualSpellKnowledge, saveload)

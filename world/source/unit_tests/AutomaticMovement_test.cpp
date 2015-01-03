@@ -34,7 +34,7 @@ TEST(SL_World_AutomaticMovement, serialization_id)
 {
   AutomaticMovement auto_move;
 
-  EXPECT_EQ(CLASS_ID_AUTOMATIC_MOVEMENT, auto_move.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_AUTOMATIC_MOVEMENT, auto_move.get_class_identifier());
 }
 
 TEST(SL_World_AutomaticMovement, saveload)

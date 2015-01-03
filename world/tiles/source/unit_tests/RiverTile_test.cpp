@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_RiverTile, serialization_id)
 {
   RiverTile river_tile;
 
-  EXPECT_EQ(CLASS_ID_RIVER_TILE, river_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_RIVER_TILE, river_tile.get_class_identifier());
 }
 

@@ -152,35 +152,35 @@ string DirectionEnum::to_string(const Direction d)
 
   switch(d)
   {
-    case DIRECTION_NULL:
+    case Direction::DIRECTION_NULL:
       command_key_direction = CommandKeys::SEARCH;
       break;
-    case DIRECTION_SOUTH_WEST:
+    case Direction::DIRECTION_SOUTH_WEST:
       command_key_direction = CommandKeys::MOVE_SOUTHWEST;
       break;
-    case DIRECTION_SOUTH:
+    case Direction::DIRECTION_SOUTH:
       command_key_direction = CommandKeys::MOVE_SOUTH;
       break;
-    case DIRECTION_SOUTH_EAST:
+    case Direction::DIRECTION_SOUTH_EAST:
       command_key_direction = CommandKeys::MOVE_SOUTHEAST;
       break;
-    case DIRECTION_WEST:
+    case Direction::DIRECTION_WEST:
       command_key_direction = CommandKeys::MOVE_WEST;
       break;
-    case DIRECTION_EAST:
+    case Direction::DIRECTION_EAST:
       command_key_direction = CommandKeys::MOVE_EAST;
       break;
-    case DIRECTION_NORTH_WEST:
+    case Direction::DIRECTION_NORTH_WEST:
       command_key_direction = CommandKeys::MOVE_NORTHWEST;
       break;
-    case DIRECTION_NORTH:
+    case Direction::DIRECTION_NORTH:
       command_key_direction = CommandKeys::MOVE_NORTH;
       break;
-    case DIRECTION_NORTH_EAST:
+    case Direction::DIRECTION_NORTH_EAST:
       command_key_direction = CommandKeys::MOVE_NORTHEAST;
       break;
-    case DIRECTION_UP:
-    case DIRECTION_DOWN:
+    case Direction::DIRECTION_UP:
+    case Direction::DIRECTION_DOWN:
     default:
       break;
   }
@@ -194,35 +194,35 @@ string DirectionEnum::to_attack_string(const Direction d)
 
   switch(d)
   {
-    case DIRECTION_NULL:
+    case Direction::DIRECTION_NULL:
       command_key_direction = CommandKeys::SEARCH;
       break;
-    case DIRECTION_SOUTH_WEST:
+    case Direction::DIRECTION_SOUTH_WEST:
       command_key_direction = CommandKeys::ATTACK_SOUTHWEST;
       break;
-    case DIRECTION_SOUTH:
+    case Direction::DIRECTION_SOUTH:
       command_key_direction = CommandKeys::ATTACK_SOUTH;
       break;
-    case DIRECTION_SOUTH_EAST:
+    case Direction::DIRECTION_SOUTH_EAST:
       command_key_direction = CommandKeys::ATTACK_SOUTHEAST;
       break;
-    case DIRECTION_WEST:
+    case Direction::DIRECTION_WEST:
       command_key_direction = CommandKeys::ATTACK_WEST;
       break;
-    case DIRECTION_EAST:
+    case Direction::DIRECTION_EAST:
       command_key_direction = CommandKeys::ATTACK_EAST;
       break;
-    case DIRECTION_NORTH_WEST:
+    case Direction::DIRECTION_NORTH_WEST:
       command_key_direction = CommandKeys::ATTACK_NORTHWEST;
       break;
-    case DIRECTION_NORTH:
+    case Direction::DIRECTION_NORTH:
       command_key_direction = CommandKeys::ATTACK_NORTH;
       break;
-    case DIRECTION_NORTH_EAST:
+    case Direction::DIRECTION_NORTH_EAST:
       command_key_direction = CommandKeys::ATTACK_NORTHEAST;
       break;
-    case DIRECTION_UP:
-    case DIRECTION_DOWN:
+    case Direction::DIRECTION_UP:
+    case Direction::DIRECTION_DOWN:
     default:
       break;
   }
@@ -363,7 +363,7 @@ double ActionCostConverter::to_seconds(const ActionCostValue action_cost_value, 
 {
   double seconds = 0.0;
   
-  if (map_type == MAP_TYPE_WORLD)
+  if (map_type == MapType::MAP_TYPE_WORLD)
   {
     seconds = ActionCostConverter::to_seconds_on_world_map(action_cost_value);
   }
@@ -407,27 +407,27 @@ HungerLevelConverter::~HungerLevelConverter()
 
 HungerLevel HungerLevelConverter::to_hunger_level(const int hunger)
 {
-  HungerLevel hunger_level = HUNGER_LEVEL_NORMAL;
+  HungerLevel hunger_level = HungerLevel::HUNGER_LEVEL_NORMAL;
 
   if (hunger > INT_HUNGER_LEVEL_FULL)
   {
-    hunger_level = HUNGER_LEVEL_STUFFED;
+    hunger_level = HungerLevel::HUNGER_LEVEL_STUFFED;
   }
   else if (hunger <= INT_HUNGER_LEVEL_FULL && hunger > INT_HUNGER_LEVEL_NORMAL)
   {
-    hunger_level = HUNGER_LEVEL_FULL;
+    hunger_level = HungerLevel::HUNGER_LEVEL_FULL;
   }
   else if (hunger <= INT_HUNGER_LEVEL_HUNGRY && hunger > INT_HUNGER_LEVEL_STARVING)
   {
-    hunger_level = HUNGER_LEVEL_HUNGRY;
+    hunger_level = HungerLevel::HUNGER_LEVEL_HUNGRY;
   }
   else if (hunger <= INT_HUNGER_LEVEL_STARVING && hunger > INT_HUNGER_LEVEL_DYING)
   {
-    hunger_level = HUNGER_LEVEL_STARVING;
+    hunger_level = HungerLevel::HUNGER_LEVEL_STARVING;
   }
   else if (hunger <= INT_HUNGER_LEVEL_DYING)
   {
-    hunger_level = HUNGER_LEVEL_DYING;
+    hunger_level = HungerLevel::HUNGER_LEVEL_DYING;
   }
 
   return hunger_level;

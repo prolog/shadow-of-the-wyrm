@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_UpStaircaseTile, serialization_id)
 {
   UpStaircaseTile ust;
 
-  EXPECT_EQ(CLASS_ID_UP_STAIRCASE_TILE, ust.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_UP_STAIRCASE_TILE, ust.get_class_identifier());
 }
 

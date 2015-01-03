@@ -11,5 +11,5 @@ TEST(SL_World_Tiles_BeachTile, serialization_id)
 {
   BeachTile beach_tile;
 
-  EXPECT_EQ(CLASS_ID_BEACH_TILE, beach_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_BEACH_TILE, beach_tile.get_class_identifier());
 }

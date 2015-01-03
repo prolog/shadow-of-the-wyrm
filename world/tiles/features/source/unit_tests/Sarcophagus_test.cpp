@@ -4,7 +4,7 @@ TEST(SL_World_Tiles_Features_Sarcophagus, serialization_id)
 {
   Sarcophagus sar;
 
-  EXPECT_EQ(CLASS_ID_SARCOPHAGUS, sar.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SARCOPHAGUS, sar.get_class_identifier());
 }
 
 TEST(SL_World_Tiles_Features_Sarcophagus, saveload)

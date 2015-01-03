@@ -7,6 +7,6 @@ TEST(SL_Engine_DecisionStrategy_ImmobileDecisionStrategy, serialization_id)
 
   ImmobileDecisionStrategy ids(null_controller);
 
-  EXPECT_EQ(CLASS_ID_IMMOBILE_DECISION_STRATEGY, ids.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_IMMOBILE_DECISION_STRATEGY, ids.get_class_identifier());
 }
 

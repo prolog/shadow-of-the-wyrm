@@ -11,5 +11,5 @@ TEST(SL_World_Tiles_ReedsTile, serialization_id)
 {
   ReedsTile reeds_tile;
 
-  EXPECT_EQ(CLASS_ID_REEDS_TILE, reeds_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_REEDS_TILE, reeds_tile.get_class_identifier());
 }

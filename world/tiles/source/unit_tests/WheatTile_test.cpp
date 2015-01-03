@@ -11,6 +11,6 @@ TEST(SL_World_Tiles_WheatTile, serialization_id)
 {
   WheatTile wheat_tile;
 
-  EXPECT_EQ(CLASS_ID_WHEAT_TILE, wheat_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_WHEAT_TILE, wheat_tile.get_class_identifier());
 }
 

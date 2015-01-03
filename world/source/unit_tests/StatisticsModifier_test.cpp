@@ -4,7 +4,7 @@ TEST(SL_World_StatisticsModifier, serialization_id)
 {
   StatisticsModifier sm;
 
-  EXPECT_EQ(CLASS_ID_STATISTICS_MODIFIER, sm.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_STATISTICS_MODIFIER, sm.get_class_identifier());
 }
 
 TEST(SL_World_StatisticsModifier, saveload)

@@ -38,7 +38,7 @@ TEST(SL_World_Statistic, serialization_id)
 {
   Statistic stat;
 
-  EXPECT_EQ(CLASS_ID_STATISTIC, stat.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_STATISTIC, stat.get_class_identifier());
 }
 
 TEST(SL_World_Statistic, saveload)

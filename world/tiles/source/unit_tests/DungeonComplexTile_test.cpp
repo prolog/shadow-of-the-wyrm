@@ -18,7 +18,7 @@ TEST(SL_World_Tiles_DungeonComplexTile, serialization_id)
 {
   DungeonComplexTile dungeon_complex_tile;
 
-  EXPECT_EQ(CLASS_ID_DUNGEON_COMPLEX_TILE, dungeon_complex_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_DUNGEON_COMPLEX_TILE, dungeon_complex_tile.get_class_identifier());
 }
 
 

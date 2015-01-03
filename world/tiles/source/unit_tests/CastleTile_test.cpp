@@ -18,6 +18,6 @@ TEST(SL_World_Tiles_CastleTile, serialization_id)
 {
   CastleTile castle_tile;
 
-  EXPECT_EQ(CLASS_ID_CASTLE_TILE, castle_tile.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_CASTLE_TILE, castle_tile.get_class_identifier());
 }
 

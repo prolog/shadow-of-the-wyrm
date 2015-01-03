@@ -80,14 +80,14 @@ TEST(SL_Engine_ConversionRoutines, vector_to_csv)
 
 TEST(SL_Engine_ConversionRoutines, direction_to_string)
 {
-  EXPECT_EQ(CommandKeys::MOVE_SOUTHEAST, DirectionEnum::to_string(DIRECTION_SOUTH_EAST));
-  EXPECT_EQ(CommandKeys::MOVE_SOUTH, DirectionEnum::to_string(DIRECTION_SOUTH));
-  EXPECT_EQ(CommandKeys::MOVE_SOUTHWEST, DirectionEnum::to_string(DIRECTION_SOUTH_WEST));
-  EXPECT_EQ(CommandKeys::MOVE_EAST, DirectionEnum::to_string(DIRECTION_EAST));
-  EXPECT_EQ(CommandKeys::MOVE_WEST, DirectionEnum::to_string(DIRECTION_WEST));
-  EXPECT_EQ(CommandKeys::MOVE_NORTHWEST, DirectionEnum::to_string(DIRECTION_NORTH_WEST));
-  EXPECT_EQ(CommandKeys::MOVE_NORTH, DirectionEnum::to_string(DIRECTION_NORTH));
-  EXPECT_EQ(CommandKeys::MOVE_NORTHEAST, DirectionEnum::to_string(DIRECTION_NORTH_EAST));
+  EXPECT_EQ(CommandKeys::MOVE_SOUTHEAST, DirectionEnum::to_string(Direction::DIRECTION_SOUTH_EAST));
+  EXPECT_EQ(CommandKeys::MOVE_SOUTH, DirectionEnum::to_string(Direction::DIRECTION_SOUTH));
+  EXPECT_EQ(CommandKeys::MOVE_SOUTHWEST, DirectionEnum::to_string(Direction::DIRECTION_SOUTH_WEST));
+  EXPECT_EQ(CommandKeys::MOVE_EAST, DirectionEnum::to_string(Direction::DIRECTION_EAST));
+  EXPECT_EQ(CommandKeys::MOVE_WEST, DirectionEnum::to_string(Direction::DIRECTION_WEST));
+  EXPECT_EQ(CommandKeys::MOVE_NORTHWEST, DirectionEnum::to_string(Direction::DIRECTION_NORTH_WEST));
+  EXPECT_EQ(CommandKeys::MOVE_NORTH, DirectionEnum::to_string(Direction::DIRECTION_NORTH));
+  EXPECT_EQ(CommandKeys::MOVE_NORTHEAST, DirectionEnum::to_string(Direction::DIRECTION_NORTH_EAST));
 }
 
 TEST(SL_Engine_ConversionRoutines, int_to_string)
@@ -113,12 +113,12 @@ TEST(SL_Engine_ConversionRoutines, int_to_string)
 
 TEST(SL_Engine_ConversionRoutines, raw_hunger_to_hunger_level)
 {
-  EXPECT_EQ(HUNGER_LEVEL_STUFFED, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_STUFFED));
-  EXPECT_EQ(HUNGER_LEVEL_FULL, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_FULL));
-  EXPECT_EQ(HUNGER_LEVEL_NORMAL, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL));
-  EXPECT_EQ(HUNGER_LEVEL_HUNGRY, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_HUNGRY));
-  EXPECT_EQ(HUNGER_LEVEL_STARVING, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_STARVING));
-  EXPECT_EQ(HUNGER_LEVEL_DYING, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_DYING));
+  EXPECT_EQ(HungerLevel::HUNGER_LEVEL_STUFFED, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_STUFFED));
+  EXPECT_EQ(HungerLevel::HUNGER_LEVEL_FULL, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_FULL));
+  EXPECT_EQ(HungerLevel::HUNGER_LEVEL_NORMAL, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_NORMAL));
+  EXPECT_EQ(HungerLevel::HUNGER_LEVEL_HUNGRY, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_HUNGRY));
+  EXPECT_EQ(HungerLevel::HUNGER_LEVEL_STARVING, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_STARVING));
+  EXPECT_EQ(HungerLevel::HUNGER_LEVEL_DYING, HungerLevelConverter::to_hunger_level(HungerLevelConverter::INT_HUNGER_LEVEL_DYING));
 }
 
 TEST(SL_Engine_ConversionRoutines, grams_per_standard_drink)

@@ -4,7 +4,7 @@ TEST(SL_Engine_Commands_Screens_ScreenKeyboardCommandMap, serialization_id)
 {
   ScreenKeyboardCommandMap skcm;
 
-  EXPECT_EQ(CLASS_ID_SCREEN_KEYBOARD_COMMAND_MAP, skcm.get_class_identifier());
+  EXPECT_EQ(ClassIdentifier::CLASS_ID_SCREEN_KEYBOARD_COMMAND_MAP, skcm.get_class_identifier());
 }
 
 class SL_Engine_Commands_Screens_ScreenKeyboardCommandMapFixture : public SL_Engine_Commands_KeyboardCommandMapFixture
