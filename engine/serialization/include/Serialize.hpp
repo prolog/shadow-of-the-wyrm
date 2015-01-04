@@ -49,8 +49,6 @@ class Serialize
     static void write_string_set(std::ostream& stream, const std::set<std::string>& val);
     static void read_string_set(std::istream& stream, std::set<std::string>& val);
 
-    static void write_enum(std::ostream& stream, const int enum_type);
-
     template<class T>
     static void write_enum(std::ostream& stream, T& enum_type)
     {
