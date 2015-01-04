@@ -1152,13 +1152,13 @@ bool Creature::serialize(ostream& stream) const
   Serialize::write_bool(stream, is_player);
 
   Serialize::write_string(stream, name);
-  Serialize::write_enum(stream, static_cast<int>(sex));
+  Serialize::write_enum(stream, sex);
   age.serialize(stream);
-  Serialize::write_enum(stream, static_cast<int>(size));
-  Serialize::write_enum(stream, static_cast<int>(eye_colour));
-  Serialize::write_enum(stream, static_cast<int>(hair_colour));
-  Serialize::write_enum(stream, static_cast<int>(handedness));
-  Serialize::write_enum(stream, static_cast<int>(breathes));
+  Serialize::write_enum(stream, size);
+  Serialize::write_enum(stream, eye_colour);
+  Serialize::write_enum(stream, hair_colour);
+  Serialize::write_enum(stream, handedness);
+  Serialize::write_enum(stream, breathes);
   blood.serialize(stream);
   Serialize::write_float(stream, grams_unabsorbed_alcohol);
   alignment.serialize(stream);
@@ -1206,7 +1206,7 @@ bool Creature::serialize(ostream& stream) const
   addl_damage.serialize(stream);
 
   Serialize::write_uchar(stream, symbol);
-  Serialize::write_enum(stream, static_cast<int>(colour));
+  Serialize::write_enum(stream, colour);
 
   level.serialize(stream);
 
