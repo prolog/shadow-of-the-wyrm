@@ -17,7 +17,7 @@ void SL_Engine_Maps_MapExitUtilsFixture::add_map_tile_exit(map<Direction, vector
 TEST_F(SL_Engine_Maps_MapExitUtilsFixture, map_tile_exit_added_new_dir)
 {
   Coordinate tile_coord(3,4);
-  Direction direction = DIRECTION_SOUTH;
+  Direction direction = Direction::DIRECTION_SOUTH;
   map<Direction, vector<Coordinate>> tile_exits;
 
   add_map_tile_exit(tile_exits, direction, tile_coord);
@@ -41,7 +41,7 @@ TEST_F(SL_Engine_Maps_MapExitUtilsFixture, map_tile_exit_added_new_dir)
 TEST_F(SL_Engine_Maps_MapExitUtilsFixture, map_tile_exit_added_to_existing)
 {
   Coordinate tile_coord(3,2);
-  Direction direction = DIRECTION_SOUTH_EAST;
+  Direction direction = Direction::DIRECTION_SOUTH_EAST;
   map<Direction, vector<Coordinate>> tile_exits;
   tile_exits.insert(make_pair(direction, vector<Coordinate>{tile_coord}));
 

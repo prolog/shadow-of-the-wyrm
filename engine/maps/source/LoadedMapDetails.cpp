@@ -8,7 +8,7 @@ LoadedMapDetails::LoadedMapDetails()
 : prev_engine_coord(0,0), cur_engine_coord(0,0),
   prev_display_coord(0,0), cur_display_coord(0,0),
   prev_blind_status(false), cur_blind_status(false),
-  prev_season(SEASON_WINTER), cur_season(SEASON_WINTER)
+  prev_season(Season::SEASON_WINTER), cur_season(Season::SEASON_WINTER)
 {
 }
 

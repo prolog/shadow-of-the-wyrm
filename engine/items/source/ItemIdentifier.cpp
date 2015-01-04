@@ -95,7 +95,7 @@ void ItemIdentifier::set_inventory_identified(CreaturePtr creature, const list<I
 // Identify a particular type of item.
 void ItemIdentifier::set_possessions_identified_by_type(CreaturePtr creature, const ItemType item_type)
 {
-  if (item_type != ITEM_TYPE_NULL)
+  if (item_type != ItemType::ITEM_TYPE_NULL)
   {
     list<IItemFilterPtr> item_filter = ItemFilterFactory::create_item_type_filter(item_type);
     set_possessions_identified(creature, &item_filter);

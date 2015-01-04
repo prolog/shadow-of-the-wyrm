@@ -109,7 +109,7 @@ void SpellSelectionScreen::initialize()
 
   // Add the info prompt at the bottom of the screen.
   // Set the prompt
-  PromptPtr spellcasting_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr spellcasting_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   spellcasting_prompt->set_text_sid(SpellcastingTextKeys::SPELLCASTING_SCREEN_PROMPT);
   spellcasting_prompt->set_accept_any_input(true);
   user_prompt = spellcasting_prompt;

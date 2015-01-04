@@ -48,8 +48,8 @@ void TimeObserverFactory::initialize_time_observer_map()
   ITimeObserverPtr seasons = std::make_shared<SeasonsTimeObserver>();
   ITimeObserverPtr map_observer = std::make_shared<MapTimeObserver>();
 
-  time_observer_map = TimeObserverSerializationMap{{CLASS_ID_CREATURE_TIME_OBSERVER, creature},
-                                                   {CLASS_ID_MAP_TIME_OBSERVER, map_observer},
-                                                   {CLASS_ID_SEASONS_TIME_OBSERVER, seasons}};
+  time_observer_map = TimeObserverSerializationMap{{ClassIdentifier::CLASS_ID_CREATURE_TIME_OBSERVER, creature},
+                                                   {ClassIdentifier::CLASS_ID_MAP_TIME_OBSERVER, map_observer},
+                                                   {ClassIdentifier::CLASS_ID_SEASONS_TIME_OBSERVER, seasons}};
 }
 

@@ -16,8 +16,8 @@ pair<vector<TilePtr>, Animation> CrossShapeProcessor::get_affected_tiles_and_ani
 
   uint range = spell.get_range();
   vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
-  DisplayTile dt('*', spell.get_colour());
-  vector<Direction> directions = {DIRECTION_NORTH, DIRECTION_SOUTH, DIRECTION_EAST, DIRECTION_WEST};
+  DisplayTile dt('*', static_cast<int>(spell.get_colour()));
+  vector<Direction> directions = {Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH, Direction::DIRECTION_EAST, Direction::DIRECTION_WEST};
   int offset = 1;
   TileMagicChecker tmc;
   vector<Direction> stop_vec;

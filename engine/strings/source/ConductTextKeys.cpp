@@ -16,14 +16,14 @@ ConductTextKeys::~ConductTextKeys()
 
 string ConductTextKeys::get_conduct_message_sid(const ConductType ct)
 {
-  static_assert(CONDUCT_SIZE == 5, "Unexpected number of conducts.");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(5), "Unexpected number of conducts.");
 
   if (conduct_message_sids.empty())
   {
     initialize_message_sids();
   }
 
-  return conduct_message_sids.at(ct);
+  return conduct_message_sids.at(static_cast<int>(ct));
 }
 
 void ConductTextKeys::initialize_message_sids()

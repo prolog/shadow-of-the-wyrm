@@ -19,7 +19,7 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
   int frontier_size = 0;
   uint spell_range = spell.get_range();
 
-  DisplayTile dt('*', spell.get_colour());
+  DisplayTile dt('*', static_cast<int>(spell.get_colour()));
 
   Coordinate prev_coord = caster_coord;
   vector<Coordinate> previous_frame;
@@ -38,7 +38,7 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
   for (uint i = 0; i < spell_range; i++)
   {
     // N, S
-    if (d == DIRECTION_NORTH || d == DIRECTION_SOUTH)
+    if (d == Direction::DIRECTION_NORTH || d == Direction::DIRECTION_SOUTH)
     {
       for (int col = (centre_coord.second - frontier_size); col <= (centre_coord.second + frontier_size); col++)
       {
@@ -53,7 +53,7 @@ pair<vector<TilePtr>, Animation> ConeShapeProcessor::get_affected_tiles_and_anim
       }
     }
     // E, W
-    else if (d == DIRECTION_EAST || d == DIRECTION_WEST)
+    else if (d == Direction::DIRECTION_EAST || d == Direction::DIRECTION_WEST)
     {
       for (int row = (centre_coord.first - frontier_size); row <= (centre_coord.first + frontier_size); row++)
       {

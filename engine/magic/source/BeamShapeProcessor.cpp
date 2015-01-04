@@ -31,10 +31,10 @@ void BeamShapeProcessor::initialize_reflection_maps()
 // Set up the reflection directions when striking a corner tile.
 void BeamShapeProcessor::initialize_cardinal_reflection_map()
 {
-  cardinal_reflection_map = std::map<Direction, Direction>{{DIRECTION_NORTH, DIRECTION_SOUTH},
-                                                           {DIRECTION_EAST, DIRECTION_WEST},
-                                                           {DIRECTION_WEST, DIRECTION_EAST},
-                                                           {DIRECTION_SOUTH, DIRECTION_NORTH}};
+  cardinal_reflection_map = std::map<Direction, Direction>{{Direction::DIRECTION_NORTH, Direction::DIRECTION_SOUTH},
+                                                           {Direction::DIRECTION_EAST, Direction::DIRECTION_WEST},
+                                                           {Direction::DIRECTION_WEST, Direction::DIRECTION_EAST},
+                                                           {Direction::DIRECTION_SOUTH, Direction::DIRECTION_NORTH}};
 }
 
 pair<vector<TilePtr>, Animation> BeamShapeProcessor::get_affected_tiles_and_animation_for_spell(MapPtr map, const Coordinate& caster_coord, const Direction d, const Spell& spell)
@@ -125,19 +125,19 @@ Direction BeamShapeProcessor::get_new_beam_direction_after_impact(const Directio
 
   // It's not cardinal, so we're dealing with an ordinal direction
   // (NW, SE, etc).  Figure out the correct reflection direction.
-  if (old_direction == DIRECTION_NORTH_EAST)
+  if (old_direction == Direction::DIRECTION_NORTH_EAST)
   {
     return get_ne_reflection(current_coord, map);
   }
-  else if (old_direction == DIRECTION_NORTH_WEST)
+  else if (old_direction == Direction::DIRECTION_NORTH_WEST)
   {
     return get_nw_reflection(current_coord, map);
   }
-  else if (old_direction == DIRECTION_SOUTH_EAST)
+  else if (old_direction == Direction::DIRECTION_SOUTH_EAST)
   {
     return get_se_reflection(current_coord, map);
   }
-  else if (old_direction == DIRECTION_SOUTH_WEST)
+  else if (old_direction == Direction::DIRECTION_SOUTH_WEST)
   {
     return get_sw_reflection(current_coord, map);
   }
@@ -153,22 +153,22 @@ Direction BeamShapeProcessor::get_ne_reflection(const Coordinate& current_coord,
   Direction reflection;
 
   // Inside/outside the corner
-  if (MapUtils::is_corner(current_coord, DIRECTION_NORTH_EAST, map) || (MapUtils::is_corner(current_coord, DIRECTION_SOUTH_WEST, map)))
+  if (MapUtils::is_corner(current_coord, Direction::DIRECTION_NORTH_EAST, map) || (MapUtils::is_corner(current_coord, Direction::DIRECTION_SOUTH_WEST, map)))
   {
-    reflection = DIRECTION_SOUTH_WEST;
+    reflection = Direction::DIRECTION_SOUTH_WEST;
   }
   else
   {
     // Are we firing at a northern wall?  Reflect south-east.
-    TilePtr north_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, DIRECTION_WEST));
+    TilePtr north_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_WEST));
 
     if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile))
     {
-      reflection = DIRECTION_SOUTH_EAST;
+      reflection = Direction::DIRECTION_SOUTH_EAST;
     }
     else
     {
-      reflection = DIRECTION_NORTH_WEST; 
+      reflection = Direction::DIRECTION_NORTH_WEST;
     }
   }
 
@@ -182,22 +182,22 @@ Direction BeamShapeProcessor::get_nw_reflection(const Coordinate& current_coord,
   Direction reflection;
 
   // Inside/outside the corner
-  if (MapUtils::is_corner(current_coord, DIRECTION_NORTH_WEST, map) || MapUtils::is_corner(current_coord, DIRECTION_SOUTH_EAST, map))
+  if (MapUtils::is_corner(current_coord, Direction::DIRECTION_NORTH_WEST, map) || MapUtils::is_corner(current_coord, Direction::DIRECTION_SOUTH_EAST, map))
   {
-    reflection = DIRECTION_SOUTH_EAST;
+    reflection = Direction::DIRECTION_SOUTH_EAST;
   }
   else
   {
     // Are we firing at a northern wall?  Reflect south-west.
-    TilePtr north_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, DIRECTION_EAST));
+    TilePtr north_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_EAST));
 
     if (north_wall_tile && tmc.does_tile_block_spell(north_wall_tile))
     {
-      reflection = DIRECTION_SOUTH_WEST;
+      reflection = Direction::DIRECTION_SOUTH_WEST;
     }
     else
     {
-      reflection = DIRECTION_NORTH_EAST; 
+      reflection = Direction::DIRECTION_NORTH_EAST;
     }
   }
 
@@ -211,22 +211,22 @@ Direction BeamShapeProcessor::get_se_reflection(const Coordinate& current_coord,
   Direction reflection;
 
   // Inside/outside the corner
-  if (MapUtils::is_corner(current_coord, DIRECTION_SOUTH_EAST, map) || MapUtils::is_corner(current_coord, DIRECTION_NORTH_WEST, map))
+  if (MapUtils::is_corner(current_coord, Direction::DIRECTION_SOUTH_EAST, map) || MapUtils::is_corner(current_coord, Direction::DIRECTION_NORTH_WEST, map))
   {
-    reflection = DIRECTION_NORTH_WEST;
+    reflection = Direction::DIRECTION_NORTH_WEST;
   }
   else
   {
     // Are we firing at a southern wall?  Reflect north-east.
-    TilePtr south_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, DIRECTION_WEST));
+    TilePtr south_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_WEST));
 
     if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile))
     {
-      reflection = DIRECTION_NORTH_EAST;
+      reflection = Direction::DIRECTION_NORTH_EAST;
     }
     else
     {
-      reflection = DIRECTION_SOUTH_WEST;
+      reflection = Direction::DIRECTION_SOUTH_WEST;
     }
   }
 
@@ -240,22 +240,22 @@ Direction BeamShapeProcessor::get_sw_reflection(const Coordinate& current_coord,
   Direction reflection;
 
   // Inside or outside the corner
-  if (MapUtils::is_corner(current_coord, DIRECTION_SOUTH_WEST, map) || MapUtils::is_corner(current_coord, DIRECTION_NORTH_EAST, map))
+  if (MapUtils::is_corner(current_coord, Direction::DIRECTION_SOUTH_WEST, map) || MapUtils::is_corner(current_coord, Direction::DIRECTION_NORTH_EAST, map))
   {
-    reflection = DIRECTION_NORTH_EAST;
+    reflection = Direction::DIRECTION_NORTH_EAST;
   }
   else
   {
     // Are we firing at a southern wall?  Reflect north-east.
-    TilePtr south_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, DIRECTION_EAST));
+    TilePtr south_wall_tile = map->at(CoordUtils::get_new_coordinate(current_coord, Direction::DIRECTION_EAST));
 
     if (south_wall_tile && tmc.does_tile_block_spell(south_wall_tile))
     {
-      reflection = DIRECTION_NORTH_WEST;
+      reflection = Direction::DIRECTION_NORTH_WEST;
     }
     else
     {
-      reflection = DIRECTION_SOUTH_EAST;
+      reflection = Direction::DIRECTION_SOUTH_EAST;
     }
   }
 

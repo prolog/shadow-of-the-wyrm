@@ -87,7 +87,7 @@ void InventoryScreen::initialize()
   add_page(inv_screen);
 
   // Set the prompt
-  PromptPtr inv_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr inv_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
 
   // Accept any input to the inventory manager will take care of sorting out
   // what's a valid command and what is not.

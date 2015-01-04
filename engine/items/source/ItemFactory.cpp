@@ -31,15 +31,15 @@ void ItemFactory::randomize_item_status(ItemPtr item)
 
   if (pct <= 5)
   {
-    status = ITEM_STATUS_CURSED;
+    status = ItemStatus::ITEM_STATUS_CURSED;
   }
   else if (pct <= 93)
   {
-    status = ITEM_STATUS_UNCURSED;
+    status = ItemStatus::ITEM_STATUS_UNCURSED;
   }
   else
   {
-    status = ITEM_STATUS_BLESSED;
+    status = ItemStatus::ITEM_STATUS_BLESSED;
   }
 
   item->set_status(status);

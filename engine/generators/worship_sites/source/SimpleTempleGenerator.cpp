@@ -60,7 +60,7 @@ void SimpleTempleGenerator::generate_temple(MapPtr map)
 void SimpleTempleGenerator::generate_temple_features(MapPtr map, const int dais_start_row, const int dais_start_col, const int dais_size)
 {
   // Altar
-  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_NEUTRAL);
+  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
   TilePtr altar_tile = map->at((dais_start_row + (dais_start_row + dais_size)) / 2, (dais_start_col + (dais_start_col + dais_size)) / 2);
   altar_tile->set_feature(altar);
 

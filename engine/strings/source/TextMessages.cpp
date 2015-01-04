@@ -94,10 +94,10 @@ string TextMessages::get_sex(const CreatureSex sex)
   
   switch(sex)
   {
-    case CREATURE_SEX_MALE:
+    case CreatureSex::CREATURE_SEX_MALE:
       creature_sex = StringTable::get(TextKeys::SEX_MALE);
       break;
-    case CREATURE_SEX_FEMALE:
+    case CreatureSex::CREATURE_SEX_FEMALE:
       creature_sex = StringTable::get(TextKeys::SEX_FEMALE);
       break;
     default:
@@ -114,10 +114,10 @@ string TextMessages::get_sex_abrv(const CreatureSex sex)
 
   switch (sex)
   {
-    case CREATURE_SEX_MALE:
+    case CreatureSex::CREATURE_SEX_MALE:
       creature_sex = StringTable::get(TextKeys::SEX_MALE_ABRV);
       break;
-    case CREATURE_SEX_FEMALE:
+    case CreatureSex::CREATURE_SEX_FEMALE:
       creature_sex = StringTable::get(TextKeys::SEX_FEMALE_ABRV);
       break;
     default:
@@ -133,41 +133,41 @@ string TextMessages::get_equipment_location(const EquipmentWornLocation location
   
   switch(location)
   {
-    case EQUIPMENT_WORN_HEAD:
+    case EquipmentWornLocation::EQUIPMENT_WORN_HEAD:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_HEAD);
       break;
-    case EQUIPMENT_WORN_NECK:
+    case EquipmentWornLocation::EQUIPMENT_WORN_NECK:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_NECK);
       break;
-    case EQUIPMENT_WORN_RIGHT_FINGER:
+    case EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_RIGHT_FINGER);
       break;
-    case EQUIPMENT_WORN_LEFT_FINGER:
+    case EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_LEFT_FINGER);
       break;
-    case EQUIPMENT_WORN_WIELDED:
+    case EquipmentWornLocation::EQUIPMENT_WORN_WIELDED:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_WIELDED);
       break;
-    case EQUIPMENT_WORN_OFF_HAND:
+    case EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_OFF_HAND);
       break;
-    case EQUIPMENT_WORN_BODY:
+    case EquipmentWornLocation::EQUIPMENT_WORN_BODY:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_BODY);
       break;
-    case EQUIPMENT_WORN_AROUND_BODY:
+    case EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_AROUND_BODY);
       break;
-    case EQUIPMENT_WORN_FEET:
+    case EquipmentWornLocation::EQUIPMENT_WORN_FEET:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_FEET);
       break;
-    case EQUIPMENT_WORN_RANGED_WEAPON:
+    case EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_RANGED);
       break;
-    case EQUIPMENT_WORN_AMMUNITION:
+    case EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION:
       equipment_location = StringTable::get(EquipmentTextKeys::EQUIPMENT_AMMUNITION);
       break;
-    case EQUIPMENT_WORN_NONE:
-    case EQUIPMENT_WORN_LAST:
+    case EquipmentWornLocation::EQUIPMENT_WORN_NONE:
+    case EquipmentWornLocation::EQUIPMENT_WORN_LAST:
     default:
       equipment_location = "?";
       break;
@@ -344,7 +344,7 @@ string TextMessages::get_reflexive_pronoun(CreaturePtr creature)
     }
     else
     {
-      if (creature->get_sex() == CREATURE_SEX_MALE)
+      if (creature->get_sex() == CreatureSex::CREATURE_SEX_MALE)
       {
         reflexive_pronoun = StringTable::get(TextKeys::HIMSELF);
       }

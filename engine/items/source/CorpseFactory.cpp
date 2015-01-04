@@ -22,12 +22,12 @@ CorpseFactory::~CorpseFactory()
 void CorpseFactory::initialize_size_weight_multipliers()
 {
   size_weight_multipliers = map<CreatureSize, float>
-                            {{CREATURE_SIZE_TINY, 0.05f},
-                             {CREATURE_SIZE_SMALL, 0.4f},
-                             {CREATURE_SIZE_MEDIUM, 1.0f},
-                             {CREATURE_SIZE_LARGE, 4.0f},
-                             {CREATURE_SIZE_HUGE, 10.0f},
-                             {CREATURE_SIZE_BEHEMOTH, 100.0f}};
+                            {{CreatureSize::CREATURE_SIZE_TINY, 0.05f},
+                             {CreatureSize::CREATURE_SIZE_SMALL, 0.4f},
+                             {CreatureSize::CREATURE_SIZE_MEDIUM, 1.0f},
+                             {CreatureSize::CREATURE_SIZE_LARGE, 4.0f},
+                             {CreatureSize::CREATURE_SIZE_HUGE, 10.0f},
+                             {CreatureSize::CREATURE_SIZE_BEHEMOTH, 100.0f}};
 }
 
 // Creates a corpse.  Checks:
@@ -109,7 +109,7 @@ void CorpseFactory::set_display_details(CreaturePtr creature, ItemPtr corpse)
 
 void CorpseFactory::set_poisoned_if_necessary(CreaturePtr creature, ItemPtr corpse)
 {
-  if (creature->get_base_damage().contains(DAMAGE_TYPE_POISON))
+  if (creature->get_base_damage().contains(DamageType::DAMAGE_TYPE_POISON))
   {
     ConsumablePtr c_corpse = dynamic_pointer_cast<Consumable>(corpse);
 
@@ -149,8 +149,9 @@ void CorpseFactory::set_resistances(CreaturePtr creature, ItemPtr corpse)
     Resistances creature_resists = rc.calculate_non_equipment_resistances(creature, rm.get_race(creature->get_race_id()), cm.get_class(creature->get_class_id()));
 
     // Only copy in resistances - never vulnerabilities.
-    for (DamageType dt = DAMAGE_TYPE_FIRST; dt < DAMAGE_TYPE_MAX; dt++)
+    for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
     {
+      DamageType dt = static_cast<DamageType>(d);
       double cur_val = creature_resists.get_resistance_value(dt);
 
       if (cur_val > 0)

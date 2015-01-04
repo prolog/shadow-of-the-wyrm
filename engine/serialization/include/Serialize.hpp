@@ -54,7 +54,7 @@ class Serialize
     template<class T>
     static void write_enum(std::ostream& stream, T& enum_type)
     {
-      int underlying_int = static_cast<int>(T);
+      int underlying_int = static_cast<int>(enum_type);
 
       if (stream.good())
       {

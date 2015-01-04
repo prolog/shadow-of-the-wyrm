@@ -34,7 +34,7 @@ void WornLocationSelectionScreen::initialize()
     TextComponentPtr option_text_component = current_option.get_description();
     option_text_component->add_text(worn_location_name);
 
-    current_option.set_id(worn_location);
+    current_option.set_id(static_cast<int>(worn_location));
 
     options->add_option(current_option);
     options->add_option_description("");
@@ -45,7 +45,7 @@ void WornLocationSelectionScreen::initialize()
   add_page(slot_screen);
 
   // Set the prompt
-  PromptPtr slot_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr slot_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
 
   // Accept any input - the equipment manager will take care of sorting out
   // what's a valid command and what is not.

@@ -10,7 +10,7 @@ AlignmentUtils::~AlignmentUtils()
 
 bool AlignmentUtils::are_alignments_opposites(const AlignmentRange a1, const AlignmentRange a2)
 {
-  return ((a1 == ALIGNMENT_RANGE_GOOD && a2 == ALIGNMENT_RANGE_EVIL) || (a1 == ALIGNMENT_RANGE_EVIL && a2 == ALIGNMENT_RANGE_GOOD));
+  return ((a1 == AlignmentRange::ALIGNMENT_RANGE_GOOD && a2 == AlignmentRange::ALIGNMENT_RANGE_EVIL) || (a1 == AlignmentRange::ALIGNMENT_RANGE_EVIL && a2 == AlignmentRange::ALIGNMENT_RANGE_GOOD));
 }
 
 #ifdef UNIT_TESTS

@@ -25,11 +25,11 @@ void SexSelectionScreen::initialize()
   string female = StringTable::get(TextKeys::SEX_FEMALE);
 
   Option option_male;
-  option_male.set_id(CREATURE_SEX_MALE);
+  option_male.set_id(static_cast<int>(CreatureSex::CREATURE_SEX_MALE));
   option_male.set_description(male);
 
   Option option_female;
-  option_female.set_id(CREATURE_SEX_FEMALE);
+  option_female.set_id(static_cast<int>(CreatureSex::CREATURE_SEX_FEMALE));
   option_female.set_description(female);
 
   options->add_option(option_male);
@@ -43,7 +43,7 @@ void SexSelectionScreen::initialize()
   add_page(sex_screen);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
   user_prompt = any_key_prompt;
 }

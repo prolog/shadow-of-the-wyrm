@@ -3,7 +3,7 @@
 TEST(SL_Engine_Messages, Add)
 {
   Messages messages;
-  Message  msg("test", COLOUR_WHITE, MessageImportance_UNDEFINED);
+  Message  msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);
 
   messages.add(msg);
   messages.add(msg);
@@ -16,7 +16,7 @@ TEST(SL_Engine_Messages, Add)
 TEST(SL_Engine_Messages, Clear)
 {
   Messages messages;
-  Message  msg("test", COLOUR_WHITE, MessageImportance_UNDEFINED);
+  Message  msg("test", Colour::COLOUR_WHITE, MessageImportance::MessageImportance_UNDEFINED);
 
   messages.add(msg);
   messages.add(msg);

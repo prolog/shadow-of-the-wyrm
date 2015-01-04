@@ -25,8 +25,8 @@ bool SquishyEquipWornLocationFilter::passes_slot_equality(const EquipmentWornLoc
 // Check to see if the two worn locations are both ring slots.
 bool SquishyEquipWornLocationFilter::passes_squishy_ring_comparison(const EquipmentWornLocation ewl) const
 {
-  bool squishy_ring  = ((slot_location == EQUIPMENT_WORN_RIGHT_FINGER) || (slot_location == EQUIPMENT_WORN_LEFT_FINGER));
-  bool item_ring     = ((ewl == EQUIPMENT_WORN_RIGHT_FINGER) || (ewl == EQUIPMENT_WORN_LEFT_FINGER));
+  bool squishy_ring = ((slot_location == EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER) || (slot_location == EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER));
+  bool item_ring = ((ewl == EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER) || (ewl == EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER));
   
   return (squishy_ring && item_ring);
 }
@@ -34,8 +34,8 @@ bool SquishyEquipWornLocationFilter::passes_squishy_ring_comparison(const Equipm
 // Check to see if the two worn locations are both wield slots.
 bool SquishyEquipWornLocationFilter::passes_squishy_wield_comparison(const EquipmentWornLocation ewl) const
 {
-  bool squishy_wield = ((slot_location == EQUIPMENT_WORN_WIELDED) || (slot_location == EQUIPMENT_WORN_OFF_HAND) || (slot_location == EQUIPMENT_WORN_AMMUNITION));
-  bool item_wield    = ((ewl == EQUIPMENT_WORN_WIELDED) || (ewl == EQUIPMENT_WORN_OFF_HAND) || (ewl == EQUIPMENT_WORN_AMMUNITION));
+  bool squishy_wield = ((slot_location == EquipmentWornLocation::EQUIPMENT_WORN_WIELDED) || (slot_location == EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND) || (slot_location == EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
+  bool item_wield = ((ewl == EquipmentWornLocation::EQUIPMENT_WORN_WIELDED) || (ewl == EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND) || (ewl == EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION));
  
   return (item_wield && squishy_wield);
 }

@@ -19,17 +19,17 @@ BeamSpellTranslator::BeamSpellTranslator()
 void BeamSpellTranslator::initialize_beam_symbols()
 {
   beam_symbols.clear();
-  beam_symbols = map<Direction, uchar>{{DIRECTION_NORTH_WEST, '\\'},
-                                       {DIRECTION_NORTH, '|'},
-                                       {DIRECTION_NORTH_EAST, '/'},
-                                       {DIRECTION_WEST, '-'},
-                                       {DIRECTION_NULL, '*'},
-                                       {DIRECTION_EAST, '-'},
-                                       {DIRECTION_SOUTH_WEST, '/'},
-                                       {DIRECTION_SOUTH, '|'},
-                                       {DIRECTION_SOUTH_EAST, '\\'},
-                                       {DIRECTION_UP, '<'},
-                                       {DIRECTION_DOWN, '>'}};
+  beam_symbols = map<Direction, uchar>{{Direction::DIRECTION_NORTH_WEST, '\\'},
+                                       {Direction::DIRECTION_NORTH, '|'},
+                                       {Direction::DIRECTION_NORTH_EAST, '/'},
+                                       {Direction::DIRECTION_WEST, '-'},
+                                       {Direction::DIRECTION_NULL, '*'},
+                                       {Direction::DIRECTION_EAST, '-'},
+                                       {Direction::DIRECTION_SOUTH_WEST, '/'},
+                                       {Direction::DIRECTION_SOUTH, '|'},
+                                       {Direction::DIRECTION_SOUTH_EAST, '\\'},
+                                       {Direction::DIRECTION_UP, '<'},
+                                       {Direction::DIRECTION_DOWN, '>'}};
 }
 
 DisplayTile BeamSpellTranslator::create_display_tile(const uint spell_burst_range, const Direction beam_direction, const Colour colour)
@@ -41,7 +41,7 @@ DisplayTile BeamSpellTranslator::create_display_tile(const uint spell_burst_rang
     beam_symbol = SpellConstants::BEAM_BURST_SYMBOL;
   }
 
-  DisplayTile dt(beam_symbol, colour);
+  DisplayTile dt(beam_symbol, static_cast<int>(colour));
   return dt;
 }
 

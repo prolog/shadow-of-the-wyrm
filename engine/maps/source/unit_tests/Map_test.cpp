@@ -66,18 +66,18 @@ TEST_F(SL_Engine_Map, key_to_coordinate)
 TEST_F(SL_Engine_Map, map_type_allows_updates)
 {
   MapPtr map = make_map();
-  map->set_map_type(MAP_TYPE_UNDERWORLD);
+  map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
 
   // By default, all maps should allow updates.
   EXPECT_TRUE(map->get_allow_creature_updates());
 
   // World maps don't, however!
-  map->set_map_type(MAP_TYPE_WORLD);
+  map->set_map_type(MapType::MAP_TYPE_WORLD);
 
   EXPECT_FALSE(map->get_allow_creature_updates());
 
   // Switch back to overworld.  Should be fine again.
-  map->set_map_type(MAP_TYPE_OVERWORLD);
+  map->set_map_type(MapType::MAP_TYPE_OVERWORLD);
 
   EXPECT_TRUE(map->get_allow_creature_updates());
 

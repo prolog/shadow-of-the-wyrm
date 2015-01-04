@@ -16,14 +16,14 @@ ItemDescriptionRandomizer::ItemDescriptionRandomizer(const vector<ItemType>& ran
 
 void ItemDescriptionRandomizer::randomize(ItemMap& items)
 {
-  bool type_inclusion[ITEM_TYPE_LAST] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
+  bool type_inclusion[static_cast<int>(ItemType::ITEM_TYPE_LAST)] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
   RandomizedDescriptionMap randomized_entries;
 
   // For each type to randomize, mark the appropriate location in the lookup
   // array as true, and add an entry to the map of randomized entries.
   for(const ItemType random_type : types_to_randomize)
   {
-    type_inclusion[random_type] = true;
+    type_inclusion[static_cast<int>(random_type)] = true;
 
     vector<details_tuple> randomized_item_descriptions;
     randomized_entries.insert(make_pair(random_type, randomized_item_descriptions));
@@ -42,8 +42,9 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
     if (item)
     {
       ItemType item_type = item->get_type();
+      int i_item_type = static_cast<int>(item_type);
 
-      if ((type_inclusion[item_type] == true) && (!ii.get_item_identified(item->get_base_id())))
+      if ((type_inclusion[i_item_type] == true) && (!ii.get_item_identified(item->get_base_id())))
       {
         details_tuple unidentified_desc_sids_and_colour = make_tuple(item->get_unidentified_description_sid(), item->get_unidentified_usage_description_sid(), item->get_colour());
         vector<details_tuple>& item_type_descs = randomized_entries[item_type];
@@ -72,8 +73,9 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
     if (item)
     {
       ItemType item_type = item->get_type();
+      int i_item_type = static_cast<int>(item_type);
 
-      if ((type_inclusion[item_type] == true) && (!ii.get_item_identified(item->get_base_id())))
+      if ((type_inclusion[i_item_type] == true) && (!ii.get_item_identified(item->get_base_id())))
       {
         vector<details_tuple>& item_type_descs_and_colour = randomized_entries[item_type];
         details_tuple item_descs_and_colour = item_type_descs_and_colour.back();

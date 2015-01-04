@@ -18,25 +18,25 @@ ITerrainMovementAccumulationCheckerPtr TerrainMovementAccumulationCheckerFactory
   ITerrainMovementAccumulationCheckerPtr checker;
 
   TileSuperType super_type = accumulation.get_tile_super_type();
-  TileType TileType::TILE_TYPE = accumulation.get_tile_type();
+  TileType tile_type = accumulation.get_tile_type();
   MovementType movement = accumulation.get_movement_type();
   
-  if (super_type == TILE_SUPER_TYPE_WATER)
+  if (super_type == TileSuperType::TILE_SUPER_TYPE_WATER)
   {
-    if (movement == MOVEMENT_TYPE_WALKING)
+    if (movement == MovementType::MOVEMENT_TYPE_WALKING)
     {
       checker = std::make_shared<SwimmingMovementAccumulationChecker>();
     }
-    else if (movement == MOVEMENT_TYPE_BOAT)
+    else if (movement == MovementType::MOVEMENT_TYPE_BOAT)
     {
       checker = std::make_shared<BoatingMovementAccumulationChecker>();
     }
   }
-  else if (super_type == TILE_SUPER_TYPE_AIR && movement == MOVEMENT_TYPE_WALKING)
+  else if (super_type == TileSuperType::TILE_SUPER_TYPE_AIR && movement == MovementType::MOVEMENT_TYPE_WALKING)
   {
     checker = std::make_shared<FallingMovementAccumulationChecker>();
   }
-  else if (TileType::TILE_TYPE == TileType::TILE_TYPE_MOUNTAINS && (movement == MOVEMENT_TYPE_WALKING))
+  else if (tile_type == TileType::TILE_TYPE_MOUNTAINS && (movement == MovementType::MOVEMENT_TYPE_WALKING))
   {
     checker = std::make_shared<MountainClimbingMovementAccumulationChecker>();
   }
