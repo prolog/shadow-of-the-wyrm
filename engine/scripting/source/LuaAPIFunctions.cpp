@@ -1295,7 +1295,7 @@ int map_transform_tile(lua_State* ls)
     Coordinate c(lua_tointeger(ls, 2), lua_tointeger(ls, 3));
     int lua_tile_type = lua_tointeger(ls, 4);
 
-    if (lua_tile_type >= TileType::TILE_TYPE_FIRST && lua_tile_type < TileType::TILE_TYPE_LAST)
+    if (lua_tile_type >= static_cast<int>(TileType::TILE_TYPE_FIRST) && lua_tile_type < static_cast<int>(TileType::TILE_TYPE_LAST))
     {
       MapPtr map = Game::instance().get_map_registry_ref().get_map(map_id);
 
@@ -1383,7 +1383,7 @@ int log(lua_State* ls)
     int log_level = lua_tointeger(ls, 1);
     string log_msg = lua_tostring(ls, 2);
 
-    if (log_level >= LOG_LOWEST && log_level <= LOG_HIGHEST)
+    if (log_level >= static_cast<int>(LoggingLevel::LOG_LOWEST) && log_level <= static_cast<int>(LoggingLevel::LOG_HIGHEST))
     {
       LoggingLevel ll = static_cast<LoggingLevel>(log_level);
       logged = log.log_using_level(ll, log_msg);
@@ -1474,8 +1474,9 @@ int destroy_creature_equipment(lua_State* ls)
     if (creature)
     {
       Equipment& eq = creature->get_equipment();
-      for (EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD; ewl < EQUIPMENT_WORN_LAST; ewl++)
+      for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
       {
+        EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
         eq.remove_item(ewl);
       }
     }

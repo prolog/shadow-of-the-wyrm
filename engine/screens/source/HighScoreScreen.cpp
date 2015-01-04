@@ -56,7 +56,7 @@ void HighScoreScreen::initialize()
   add_page(score_screen);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   any_key_prompt->set_accept_any_input(true);
   any_key_prompt->set_text_sid(PromptTextKeys::get_appropriate_prompt_sid(get_num_pages()));
   user_prompt = any_key_prompt;

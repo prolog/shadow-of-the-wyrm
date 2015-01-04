@@ -12,7 +12,7 @@ pair<vector<TilePtr>, Animation> BallShapeProcessor::get_affected_tiles_and_anim
   vector<TilePtr> affected_tiles;
   uint spell_range = spell.get_range();
 
-  DisplayTile dt('*', spell.get_colour());
+  DisplayTile dt('*', static_cast<int>(spell.get_colour()));
 
   vector<Coordinate> prev_coords;
   vector<Coordinate> current_coords;

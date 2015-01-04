@@ -5,7 +5,7 @@
 using namespace std;
 
 Prompt::Prompt(const PromptLocation prompt_location)
-: type(PROMPT_TYPE_CHARACTER), location(prompt_location), accept_any_input(false)
+: type(PromptType::PROMPT_TYPE_CHARACTER), location(prompt_location), accept_any_input(false)
 {
   initialize();
 }
@@ -63,7 +63,7 @@ bool Prompt::get_accept_any_input() const
 
 // AnyKeyPrompt
 
-AnyKeyPrompt::AnyKeyPrompt() : Prompt(PROMPT_LOCATION_LOWER_RIGHT)
+AnyKeyPrompt::AnyKeyPrompt() : Prompt(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT)
 {
   initialize();
 }
@@ -74,7 +74,7 @@ void AnyKeyPrompt::initialize()
 }
 
 // NullPrompt
-NullPrompt::NullPrompt() : Prompt(PROMPT_LOCATION_LOWER_RIGHT)
+NullPrompt::NullPrompt() : Prompt(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT)
 {
   initialize();
 }
@@ -86,9 +86,9 @@ void NullPrompt::initialize()
 
 // TextPrompt
 
-TextPrompt::TextPrompt() : Prompt(PROMPT_LOCATION_DEFAULT)
+TextPrompt::TextPrompt() : Prompt(PromptLocation::PROMPT_LOCATION_DEFAULT)
 {
-  type = PROMPT_TYPE_TEXT;
+  type = PromptType::PROMPT_TYPE_TEXT;
 }
 
 void TextPrompt::initialize()

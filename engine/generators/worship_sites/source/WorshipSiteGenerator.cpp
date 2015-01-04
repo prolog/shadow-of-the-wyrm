@@ -27,31 +27,31 @@ ChurchGeneratorPtr WorshipSiteGenerator::generate_worship_site(const WorshipSite
 
   switch(site_type)
   {
-    case WORSHIP_SITE_CATHEDRAL:
+    case WorshipSiteType::WORSHIP_SITE_CATHEDRAL:
       site_gen = std::make_shared<CathedralGenerator>(deity_id, base_map);
       break;
-    case WORSHIP_SITE_FORTIFIED_CHURCH:
+    case WorshipSiteType::WORSHIP_SITE_FORTIFIED_CHURCH:
       site_gen = std::make_shared<FortifiedChurchGenerator>(deity_id, base_map);
       break;
-    case WORSHIP_SITE_SIMPLE_CHURCH:
+    case WorshipSiteType::WORSHIP_SITE_SIMPLE_CHURCH:
       site_gen = std::make_shared<SimpleChurchGenerator>(deity_id, base_map);
       break;
-    case WORSHIP_SITE_GRAND_TEMPLE:
+    case WorshipSiteType::WORSHIP_SITE_GRAND_TEMPLE:
       site_gen = std::make_shared<GrandTempleGenerator>(deity_id, base_map);
       break;
-    case WORSHIP_SITE_SNAKING_TEMPLE:
+    case WorshipSiteType::WORSHIP_SITE_SNAKING_TEMPLE:
       site_gen = std::make_shared<SnakingTempleGenerator>(deity_id, base_map);
       break;
-    case WORSHIP_SITE_SIMPLE_TEMPLE:
+    case WorshipSiteType::WORSHIP_SITE_SIMPLE_TEMPLE:
       site_gen = std::make_shared<SimpleTempleGenerator>(deity_id, base_map);
       break;
-    case WORSHIP_SITE_ISLAND_SACRIFICE_SITE:
+    case WorshipSiteType::WORSHIP_SITE_ISLAND_SACRIFICE_SITE:
       site_gen = std::make_shared<IslandSacrificeSiteGenerator>(deity_id, base_map);
       break;
-    case WORSHIP_SITE_ROCKY_SACRIFICE_SITE:
+    case WorshipSiteType::WORSHIP_SITE_ROCKY_SACRIFICE_SITE:
       site_gen = std::make_shared<RockySacrificeSiteGenerator>(deity_id, base_map);
       break;
-    case WORSHIP_SITE_OVERGROWN_SACRIFICE_SITE:      
+    case WorshipSiteType::WORSHIP_SITE_OVERGROWN_SACRIFICE_SITE:
     default:
       site_gen = std::make_shared<OvergrownSacrificeSiteGenerator>(deity_id, base_map);
       break;

@@ -67,7 +67,7 @@ void RockySacrificeSiteGenerator::generate_altar(MapPtr map)
   int rows = dim.get_y();
   int cols = dim.get_x();
   
-  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_EVIL);
+  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_EVIL);
   TilePtr centre_tile = map->at(rows/2, cols/2);
   
   if (centre_tile)

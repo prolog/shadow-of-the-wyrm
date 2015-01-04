@@ -81,51 +81,51 @@ TEST(SL_Engine_Maps_CoordUtils, perimeter_length)
 TEST(SL_Engine_Maps_CoordUtils, get_new_coordinate)
 {
   Coordinate c(10, 10);
-  Coordinate c_new = CoordUtils::get_new_coordinate(c, DIRECTION_NORTH_WEST);
+  Coordinate c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH_WEST);
   EXPECT_EQ(make_pair(9, 9), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_NORTH_WEST, 2);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH_WEST, 2);
   EXPECT_EQ(make_pair(8, 8), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_NORTH);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH);
   EXPECT_EQ(make_pair(9, 10), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_NORTH, 3);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH, 3);
   EXPECT_EQ(make_pair(7, 10), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_NORTH_EAST);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH_EAST);
   EXPECT_EQ(make_pair(9, 11), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_NORTH_EAST, 4);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH_EAST, 4);
   EXPECT_EQ(make_pair(6, 14), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_WEST);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_WEST);
   EXPECT_EQ(make_pair(10, 9), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_WEST, 5);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_WEST, 5);
   EXPECT_EQ(make_pair(10, 5), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_EAST);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_EAST);
   EXPECT_EQ(make_pair(10, 11), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_EAST, 6);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_EAST, 6);
   EXPECT_EQ(make_pair(10, 16), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH_WEST);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH_WEST);
   EXPECT_EQ(make_pair(11, 9), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH_WEST, 2);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH_WEST, 2);
   EXPECT_EQ(make_pair(12, 8), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH);
   EXPECT_EQ(make_pair(11, 10), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH, 8);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH, 8);
   EXPECT_EQ(make_pair(18, 10), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH_EAST);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH_EAST);
   EXPECT_EQ(make_pair(11, 11), c_new);
 
-  c_new = CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH_EAST, 7);
+  c_new = CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH_EAST, 7);
   EXPECT_EQ(make_pair(17, 17), c_new);
 }

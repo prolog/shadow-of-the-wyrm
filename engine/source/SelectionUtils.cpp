@@ -24,7 +24,7 @@ void SelectionUtils::select_nearest_hostile_target(CreaturePtr creature, MapPtr 
     if (!hostile_creature_distance_map.empty())
     {
       pair<string, Coordinate> target_creature_details = hostile_creature_distance_map.begin()->second;
-      set_target(creature, ATTACK_TYPE_RANGED, target_creature_details, map);
+      set_target(creature, AttackType::ATTACK_TYPE_RANGED, target_creature_details, map);
     }
   }
 }
@@ -34,10 +34,10 @@ void SelectionUtils::select_nearest_hostile_target(CreaturePtr creature, MapPtr 
 // map.
 void SelectionUtils::select_existing_target(CreaturePtr creature, MapPtr map)
 {
-  if (creature && map && has_target(creature, ATTACK_TYPE_RANGED))
+  if (creature && map && has_target(creature, AttackType::ATTACK_TYPE_RANGED))
   {
     // Set the target:
-    string ranged_s = Integer::to_string(ATTACK_TYPE_RANGED);
+    string ranged_s = Integer::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED));
     TargetMap& target_map = creature->get_target_map_ref();
     TargetMap::iterator t_it = target_map.find(ranged_s);
     pair<string, Coordinate>& target_details = t_it->second;
@@ -64,7 +64,7 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
 {
   if (creature != nullptr)
   {
-    string ranged_s = Integer::to_string(ATTACK_TYPE_RANGED);
+    string ranged_s = Integer::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED));
     TargetMap& target_map = creature->get_target_map_ref();
     TargetMap::iterator t_it = target_map.find(ranged_s);
 
@@ -98,7 +98,7 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
       {
         prev = next = distance_map.begin()->second;
 
-        set_target(creature, ATTACK_TYPE_RANGED, prev, game_map);
+        set_target(creature, AttackType::ATTACK_TYPE_RANGED, prev, game_map);
       }
       else // size must be >= 2
       {
@@ -134,13 +134,13 @@ void SelectionUtils::select_target_in_cycle(CreaturePtr creature, MapPtr map, co
           // Set the target based on whether we want the next/prev.
           if (cur_target_creature_id == target_creature_id || target_creature_id.empty())
           {
-            if (sct == SELECT_CREATURE_NEXT)
+            if (sct == SelectCreatureType::SELECT_CREATURE_NEXT)
             {
-              set_target(creature, ATTACK_TYPE_RANGED, next, game_map);
+              set_target(creature, AttackType::ATTACK_TYPE_RANGED, next, game_map);
             }
             else
             {
-              set_target(creature, ATTACK_TYPE_RANGED, prev, game_map);
+              set_target(creature, AttackType::ATTACK_TYPE_RANGED, prev, game_map);
             }
           }
 
@@ -161,7 +161,7 @@ bool SelectionUtils::has_target(CreaturePtr creature, const AttackType attack_ty
   if (creature)
   {
     TargetMap tmap = creature->get_target_map();
-    return (tmap.find(Integer::to_string(attack_type)) != tmap.end());
+    return (tmap.find(Integer::to_string(static_cast<int>(attack_type))) != tmap.end());
   }
 
   return has_target;
@@ -174,7 +174,7 @@ void SelectionUtils::set_target(CreaturePtr creature, const AttackType attack_ty
 
   // Set it in the targetting map attached to the creature:
   TargetMap& target_map = creature->get_target_map_ref();
-  target_map[Integer::to_string(ATTACK_TYPE_RANGED)] = target_pair;
+  target_map[Integer::to_string(static_cast<int>(AttackType::ATTACK_TYPE_RANGED))] = target_pair;
 
   // Set it on the actual map:
   MapCursor mc;

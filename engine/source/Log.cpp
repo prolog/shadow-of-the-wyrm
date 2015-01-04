@@ -8,7 +8,7 @@ using namespace std;
 using namespace boost;
 using namespace boost::posix_time;
 
-LoggingLevel Log::level = LOG_NONE; // Logging is off by default.
+LoggingLevel Log::level = LoggingLevel::LOG_NONE; // Logging is off by default.
 int Log::counter = 0;
 
 Log::Log()
@@ -33,16 +33,16 @@ bool Log::log_using_level(const LoggingLevel log_level, const string& log_msg)
 
   switch (log_level)
   {
-    case LOG_TRACE:
+    case LoggingLevel::LOG_TRACE:
       logged = trace(log_msg);
       break;
-    case LOG_DEBUG:
+    case LoggingLevel::LOG_DEBUG:
       logged = debug(log_msg);
       break;
-    case LOG_INFO:
+    case LoggingLevel::LOG_INFO:
       logged = log(log_msg);
       break;
-    case LOG_ERROR:
+    case LoggingLevel::LOG_ERROR:
       logged = error(log_msg);
       break;
     default:
@@ -56,7 +56,7 @@ bool Log::error(const string& to_error)
 {
   bool logged = false;
 
-  if (level <= LOG_ERROR)
+  if (level <= LoggingLevel::LOG_ERROR)
   {
     sl_log << create_datetimestamp() << "\t" << to_error << endl;
     logged = true;
@@ -69,7 +69,7 @@ bool Log::log(const string& to_log)
 {
   bool logged = false;
 
-  if (level <= LOG_INFO)
+  if (level <= LoggingLevel::LOG_INFO)
   {
     sl_log << create_datetimestamp() << "\t" << to_log << endl;
     logged = true;
@@ -82,7 +82,7 @@ bool Log::trace(const string& to_trace)
 {
   bool logged = false;
 
-  if (level <= LOG_TRACE)
+  if (level <= LoggingLevel::LOG_TRACE)
   {
     sl_log << create_datetimestamp() << "\t" << to_trace << endl;
     logged = true;
@@ -95,7 +95,7 @@ bool Log::debug(const string& to_debug)
 {
   bool logged = false;
 
-  if (level <= LOG_DEBUG)
+  if (level <= LoggingLevel::LOG_DEBUG)
   {
     sl_log << create_datetimestamp() << "\t" << to_debug << endl;
     logged = true;

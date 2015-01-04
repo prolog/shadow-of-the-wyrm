@@ -66,7 +66,7 @@ void SimpleChurchGenerator::generate_features(MapPtr map)
 
 void SimpleChurchGenerator::generate_altar(MapPtr map)
 {
-  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_GOOD);
+  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_GOOD);
   altar_row = start_row + 2;
   TilePtr altar_tile = map->at(start_row+2, start_col + (church_width / 2));
   altar_tile->set_feature(altar);  

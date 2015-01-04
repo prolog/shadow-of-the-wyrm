@@ -50,14 +50,14 @@ void OvergrownSacrificeSiteGenerator::generate_additional_brush(MapPtr map)
     
     if (RNG::percent_chance(50))
     {
-      TileType::TILE_TYPE = TileType::TILE_TYPE_TREE;
+      tile_type = TileType::TILE_TYPE_TREE;
     }
     else
     {
-      TileType::TILE_TYPE = TileType::TILE_TYPE_WEEDS;
+      tile_type = TileType::TILE_TYPE_WEEDS;
     }
     
-    GeneratorUtils::generate_tile(map, rand_y, rand_x, TileType::TILE_TYPE);
+    GeneratorUtils::generate_tile(map, rand_y, rand_x, tile_type);
   }
 }
 
@@ -67,6 +67,6 @@ void OvergrownSacrificeSiteGenerator::generate_altar(MapPtr map)
   Dimensions dim = map->size();
   
   TilePtr centre_tile = map->at(dim.get_y()/2, dim.get_x()/2);
-  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_EVIL);
+  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_EVIL);
   centre_tile->set_feature(altar);
 }

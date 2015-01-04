@@ -33,41 +33,41 @@ string EquipmentTextKeys::get_equipment_text_from_given_worn_location(const Equi
   
   switch(worn_location)
   {
-    case EQUIPMENT_WORN_HEAD:
+    case EquipmentWornLocation::EQUIPMENT_WORN_HEAD:
       equipment_text_sid = EQUIPMENT_HEAD;
       break;
-    case EQUIPMENT_WORN_NECK:
+    case EquipmentWornLocation::EQUIPMENT_WORN_NECK:
       equipment_text_sid = EQUIPMENT_NECK;
       break;
-    case EQUIPMENT_WORN_RIGHT_FINGER:
+    case EquipmentWornLocation::EQUIPMENT_WORN_RIGHT_FINGER:
       equipment_text_sid = EQUIPMENT_RIGHT_FINGER;
       break;
-    case EQUIPMENT_WORN_LEFT_FINGER:
+    case EquipmentWornLocation::EQUIPMENT_WORN_LEFT_FINGER:
       equipment_text_sid = EQUIPMENT_LEFT_FINGER;
       break;
-    case EQUIPMENT_WORN_WIELDED:
+    case EquipmentWornLocation::EQUIPMENT_WORN_WIELDED:
       equipment_text_sid = EQUIPMENT_WIELDED;
       break;
-    case EQUIPMENT_WORN_OFF_HAND:
+    case EquipmentWornLocation::EQUIPMENT_WORN_OFF_HAND:
       equipment_text_sid = EQUIPMENT_OFF_HAND;
       break;
-    case EQUIPMENT_WORN_BODY:
+    case EquipmentWornLocation::EQUIPMENT_WORN_BODY:
       equipment_text_sid = EQUIPMENT_BODY;
       break;
-    case EQUIPMENT_WORN_AROUND_BODY:
+    case EquipmentWornLocation::EQUIPMENT_WORN_AROUND_BODY:
       equipment_text_sid = EQUIPMENT_AROUND_BODY;
       break;
-    case EQUIPMENT_WORN_FEET:
+    case EquipmentWornLocation::EQUIPMENT_WORN_FEET:
       equipment_text_sid = EQUIPMENT_FEET;
       break;
-    case EQUIPMENT_WORN_RANGED_WEAPON:
+    case EquipmentWornLocation::EQUIPMENT_WORN_RANGED_WEAPON:
       equipment_text_sid = EQUIPMENT_RANGED;
       break;
-    case EQUIPMENT_WORN_AMMUNITION:
+    case EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION:
       equipment_text_sid = EQUIPMENT_AMMUNITION;
       break;
-    case EQUIPMENT_WORN_NONE:
-    case EQUIPMENT_WORN_LAST:
+    case EquipmentWornLocation::EQUIPMENT_WORN_NONE:
+    case EquipmentWornLocation::EQUIPMENT_WORN_LAST:
     default:
       break;
   }
@@ -115,11 +115,11 @@ string EquipmentTextKeys::get_melee_weapon_synopsis(const AttackType attack_type
 {
   string synopsis;
   
-  if (attack_type == ATTACK_TYPE_MELEE_PRIMARY)
+  if (attack_type == AttackType::ATTACK_TYPE_MELEE_PRIMARY)
   {
     synopsis = StringTable::get(EQUIPMENT_PRIMARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
   }
-  else if (attack_type == ATTACK_TYPE_MELEE_SECONDARY)
+  else if (attack_type == AttackType::ATTACK_TYPE_MELEE_SECONDARY)
   {
     synopsis = StringTable::get(EQUIPMENT_SECONDARY_MELEE_DIFFICULTY_SPEED_AND_DAMAGE_SYNOPSIS);
   }

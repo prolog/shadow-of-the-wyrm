@@ -16,13 +16,13 @@ string SacrificeTextKeys::get_sacrifice_message(const AlignmentRange align, Item
 
   switch (align)
   {
-    case ALIGNMENT_RANGE_EVIL:
+    case AlignmentRange::ALIGNMENT_RANGE_EVIL:
       message = SACRIFICE_MESSAGE_EVIL;
       break;
-    case ALIGNMENT_RANGE_NEUTRAL:
+    case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
       message = SACRIFICE_MESSAGE_NEUTRAL;
       break;
-    case ALIGNMENT_RANGE_GOOD:
+    case AlignmentRange::ALIGNMENT_RANGE_GOOD:
       message = SACRIFICE_MESSAGE_GOOD;
       break;
     default:

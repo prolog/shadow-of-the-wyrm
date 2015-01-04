@@ -48,19 +48,19 @@ string ColourTextKeys::get_colour_sid_from_eye_colour(const EyeColour eye_colour
   
   switch(eye_colour)
   {
-    case EYE_COLOUR_BROWN:
+    case EyeColour::EYE_COLOUR_BROWN:
       colour_sid = COLOUR_BROWN;
       break;
-    case EYE_COLOUR_BLUE:
+    case EyeColour::EYE_COLOUR_BLUE:
       colour_sid = COLOUR_BLUE;
       break;
-    case EYE_COLOUR_GREEN:
+    case EyeColour::EYE_COLOUR_GREEN:
       colour_sid = COLOUR_GREEN;
       break;
-    case EYE_COLOUR_HAZEL:
+    case EyeColour::EYE_COLOUR_HAZEL:
       colour_sid = COLOUR_HAZEL;
       break;
-    case EYE_COLOUR_GREY:
+    case EyeColour::EYE_COLOUR_GREY:
       colour_sid = COLOUR_GREY;
       break;
     default:

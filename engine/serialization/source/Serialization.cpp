@@ -92,7 +92,7 @@ SerializationReturnCode Serialization::load(const string& filename)
     stream.close();
   }
 
-  return SERIALIZATION_OK;
+  return SerializationReturnCode::SERIALIZATION_OK;
 }
 
 bool Serialization::delete_savefile(const string& filename)

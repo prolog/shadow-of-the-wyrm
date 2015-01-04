@@ -71,7 +71,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
 
     if (spell.get_allows_bonus())
     {
-      cm.attack(caster, tile_creature, ATTACK_TYPE_MAGICAL, true);
+      cm.attack(caster, tile_creature, AttackType::ATTACK_TYPE_MAGICAL, true);
     }
     else
     {
@@ -79,7 +79,7 @@ bool SpellShapeProcessor::apply_damage(CreaturePtr caster, TilePtr tile, const S
       // in the game's list, and so the magical damage calculator isn't
       // appropriate.  Pass the damage directly to the combat manager.
       DamagePtr dmg = std::make_shared<Damage>(spell.get_damage());
-      cm.attack(caster, tile_creature, ATTACK_TYPE_MAGICAL, false, dmg);
+      cm.attack(caster, tile_creature, AttackType::ATTACK_TYPE_MAGICAL, false, dmg);
     }
 
 

@@ -32,14 +32,14 @@ Rarity CreationUtils::generate_rarity()
 
   if (rand < 90)
   {
-    return RARITY_COMMON;
+    return Rarity::RARITY_COMMON;
   }
   else if (rand < 99)
   {
-    return RARITY_UNCOMMON;
+    return Rarity::RARITY_UNCOMMON;
   }
   else 
   {
-    return RARITY_RARE;
+    return Rarity::RARITY_RARE;
   }
 }

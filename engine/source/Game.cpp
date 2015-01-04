@@ -68,7 +68,7 @@ void Game::set_settings(const Settings& new_settings)
   string log_level = settings.get_setting("log_level");
   LoggingLevel ll = static_cast<LoggingLevel>(String::to_int(log_level));
 
-  if (ll >= LOG_NONE && ll < LOG_HIGHEST)
+  if (ll >= LoggingLevel::LOG_NONE && ll < LoggingLevel::LOG_HIGHEST)
   {
     Log::instance().set_log_level(ll);
   }

@@ -7,7 +7,7 @@ bool EdibleItemFilter::passes_filter(ItemPtr item) const
   {
     ItemType type = item->get_type();
     
-    if (type == ITEM_TYPE_FOOD || type == ITEM_TYPE_PLANT)
+    if (type == ItemType::ITEM_TYPE_FOOD || type == ItemType::ITEM_TYPE_PLANT)
     {
       return true;
     }

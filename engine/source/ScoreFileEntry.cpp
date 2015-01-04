@@ -10,7 +10,7 @@ using namespace std;
 
 // Default constructor
 ScoreFileEntry::ScoreFileEntry()
-: score(0), sex(CREATURE_SEX_MALE), is_current_char(false), level(0)
+: score(0), sex(CreatureSex::CREATURE_SEX_MALE), is_current_char(false), level(0)
 {
 }
 

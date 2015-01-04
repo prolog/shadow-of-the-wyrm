@@ -18,7 +18,7 @@ void CreaturePietyRegeneration::tick(CreaturePtr creature, const ulonglong minut
     DeityStatus deity_status = religion.get_deity_status(deity_id);
     int piety = deity_status.get_piety();
     int new_piety = piety;
-    bool crowned = (deity_status.get_champion_type() == CHAMPION_TYPE_CROWNED);
+    bool crowned = (deity_status.get_champion_type() == ChampionType::CHAMPION_TYPE_CROWNED);
     
     ClassPtr cur_class = cm.get_class(creature->get_class_id());
     

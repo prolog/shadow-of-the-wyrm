@@ -17,22 +17,22 @@ string SizeTextKeys::get_size_sid_from_creature_size(const CreatureSize size)
   
   switch(size)
   {
-    case CREATURE_SIZE_TINY:
+    case CreatureSize::CREATURE_SIZE_TINY:
       size_sid = SIZE_TINY;
       break;
-    case CREATURE_SIZE_SMALL:
+    case CreatureSize::CREATURE_SIZE_SMALL:
       size_sid = SIZE_SMALL;
       break;
-    case CREATURE_SIZE_MEDIUM:
+    case CreatureSize::CREATURE_SIZE_MEDIUM:
       size_sid = SIZE_MEDIUM;
       break;
-    case CREATURE_SIZE_LARGE:
+    case CreatureSize::CREATURE_SIZE_LARGE:
       size_sid = SIZE_LARGE;
       break;
-    case CREATURE_SIZE_HUGE:
+    case CreatureSize::CREATURE_SIZE_HUGE:
       size_sid = SIZE_HUGE;
       break;
-    case CREATURE_SIZE_BEHEMOTH: 
+    case CreatureSize::CREATURE_SIZE_BEHEMOTH:
       size_sid = SIZE_BEHEMOTH;
       break;
     default:

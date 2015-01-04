@@ -38,7 +38,7 @@ void InitialItemEquipper::equip(CreaturePtr creature, ActionManager& am)
             item->set_quantity(1); 
           }
           
-          am.handle_item(creature, ITEM_ACTION_EQUIP, item);
+          am.handle_item(creature, ItemAction::ITEM_ACTION_EQUIP, item);
         }
       }
     }  
@@ -67,7 +67,7 @@ void InitialItemEquipper::add_inventory_items(CreaturePtr creature, ActionManage
         
         if (!item_id.empty())
         {
-          am.handle_item(creature, ITEM_ACTION_PICK_UP, ItemManager::create_item(item_id, item_quantity));
+          am.handle_item(creature, ItemAction::ITEM_ACTION_PICK_UP, ItemManager::create_item(item_id, item_quantity));
         }
       }
     }

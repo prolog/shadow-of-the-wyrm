@@ -63,11 +63,11 @@ ItemPtr ItemGenerationManager::generate_item(ActionManager& am, ItemGenerationVe
     // If this is ammunition, generate a little less.
     ItemType type = generated_item->get_type();
 
-    if (type == ITEM_TYPE_CURRENCY)
+    if (type == ItemType::ITEM_TYPE_CURRENCY)
     {
       generated_item->set_quantity(RNG::dice(3, 12));
     }
-    else if (type == ITEM_TYPE_AMMUNITION)
+    else if (type == ItemType::ITEM_TYPE_AMMUNITION)
     {
       generated_item->set_quantity(RNG::dice(2, 12));
     }

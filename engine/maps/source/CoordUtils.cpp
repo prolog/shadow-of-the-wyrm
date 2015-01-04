@@ -90,39 +90,39 @@ Coordinate CoordUtils::get_new_coordinate(const Coordinate& c, const Direction d
 
   switch(d)
   {
-    case DIRECTION_NULL:
+    case Direction::DIRECTION_NULL:
       new_coord = c;
       break;
-    case DIRECTION_SOUTH_WEST:
+    case Direction::DIRECTION_SOUTH_WEST:
       new_coord.first += offset;
       new_coord.second -= offset;
       break;
-    case DIRECTION_SOUTH:
+    case Direction::DIRECTION_SOUTH:
       new_coord.first += offset;
       break;
-    case DIRECTION_SOUTH_EAST:
+    case Direction::DIRECTION_SOUTH_EAST:
       new_coord.first += offset;
       new_coord.second += offset;
       break;
-    case DIRECTION_WEST:
+    case Direction::DIRECTION_WEST:
       new_coord.second -= offset;
       break;
-    case DIRECTION_EAST:
+    case Direction::DIRECTION_EAST:
       new_coord.second += offset;
       break;
-    case DIRECTION_NORTH_WEST:
+    case Direction::DIRECTION_NORTH_WEST:
       new_coord.first -= offset;
       new_coord.second -= offset;
       break;
-    case DIRECTION_NORTH:
+    case Direction::DIRECTION_NORTH:
       new_coord.first -= offset;
       break;
-    case DIRECTION_NORTH_EAST:
+    case Direction::DIRECTION_NORTH_EAST:
       new_coord.first -= offset;
       new_coord.second += offset;
       break;
-    case DIRECTION_UP:
-    case DIRECTION_DOWN:
+    case Direction::DIRECTION_UP:
+    case Direction::DIRECTION_DOWN:
     default:
       break;
   }
@@ -136,7 +136,7 @@ Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& e
   if ((start == end) ||
       ((end.first == -1) && (end.second == -1)))
   {
-    return DIRECTION_NULL;
+    return Direction::DIRECTION_NULL;
   }
   
   Direction d;
@@ -152,15 +152,15 @@ Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& e
   {
     if (x1 < x2)
     {
-      d = DIRECTION_NORTH_EAST;
+      d = Direction::DIRECTION_NORTH_EAST;
     }
     else if (x1 == x2)
     {
-      d = DIRECTION_NORTH;
+      d = Direction::DIRECTION_NORTH;
     }
     else
     {
-      d = DIRECTION_NORTH_WEST;
+      d = Direction::DIRECTION_NORTH_WEST;
     }
   }
   // Start row = end row - heading east or west
@@ -168,11 +168,11 @@ Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& e
   {
     if (x1 < x2)
     {
-      d = DIRECTION_EAST;
+      d = Direction::DIRECTION_EAST;
     }
     else
     {
-      d = DIRECTION_WEST;
+      d = Direction::DIRECTION_WEST;
     }
   }
   // Start row > end row - heading north
@@ -180,15 +180,15 @@ Direction CoordUtils::get_direction(const Coordinate& start, const Coordinate& e
   {
     if (x1 < x2)
     {
-      d = DIRECTION_SOUTH_EAST;
+      d = Direction::DIRECTION_SOUTH_EAST;
     }
     else if (x1 == x2)
     {
-      d = DIRECTION_SOUTH;
+      d = Direction::DIRECTION_SOUTH;
     }
     else
     {
-      d = DIRECTION_SOUTH_WEST;
+      d = Direction::DIRECTION_SOUTH_WEST;
     }
   }
   

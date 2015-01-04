@@ -34,8 +34,8 @@ void test_set_various_values(LoadedMapDetails& lmd)
   lmd.update_blind_status(false);
   lmd.update_blind_status(true);
 
-  lmd.update_season(SEASON_WINTER);
-  lmd.update_season(SEASON_SPRING);
+  lmd.update_season(Season::SEASON_WINTER);
+  lmd.update_season(Season::SEASON_SPRING);
 }
 
 void LoadedMapDetailsTester::test_update_map_id()
@@ -104,15 +104,15 @@ void LoadedMapDetailsTester::test_update_season()
 {
   EXPECT_TRUE(lmd == lmd_def);
 
-  lmd.update_season(SEASON_AUTUMN);
+  lmd.update_season(Season::SEASON_AUTUMN);
 
   EXPECT_FALSE(lmd == lmd_def);
-  EXPECT_TRUE(lmd.cur_season == SEASON_AUTUMN);
+  EXPECT_TRUE(lmd.cur_season == Season::SEASON_AUTUMN);
 
-  lmd.update_season(SEASON_WINTER);
+  lmd.update_season(Season::SEASON_WINTER);
 
-  EXPECT_TRUE(lmd.prev_season == SEASON_AUTUMN);
-  EXPECT_TRUE(lmd.cur_season == SEASON_WINTER);
+  EXPECT_TRUE(lmd.prev_season == Season::SEASON_AUTUMN);
+  EXPECT_TRUE(lmd.cur_season == Season::SEASON_WINTER);
 }
 
 void LoadedMapDetailsTester::test_requires_full_redraw()

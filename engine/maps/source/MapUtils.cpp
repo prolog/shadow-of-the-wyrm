@@ -289,7 +289,7 @@ TileDirectionMap MapUtils::get_adjacent_and_creature_tiles(const MapPtr& map, co
 {
   TileDirectionMap direction_map = get_adjacent_tiles_to_creature(map, creature);
   TilePtr creature_tile = get_tile_for_creature(map, creature);
-  direction_map.insert(make_pair(DIRECTION_NULL, creature_tile));
+  direction_map.insert(make_pair(Direction::DIRECTION_NULL, creature_tile));
 
   return direction_map;
 }
@@ -496,7 +496,7 @@ bool MapUtils::is_moving_from_land_type_tile_to_water_type_tile(TilePtr old_tile
     TileSuperType old_st = old_tile->get_tile_super_type();
     TileSuperType new_st = new_tile->get_tile_super_type();
     
-    moving_from_land_to_water = (old_st == TILE_SUPER_TYPE_GROUND) && (new_st == TILE_SUPER_TYPE_WATER);    
+    moving_from_land_to_water = (old_st == TileSuperType::TILE_SUPER_TYPE_GROUND) && (new_st == TileSuperType::TILE_SUPER_TYPE_WATER);    
   }
   
   return moving_from_land_to_water;
@@ -639,29 +639,29 @@ bool MapUtils::is_corner(const Coordinate& c, const Direction d, MapPtr map)
 
   corner_tiles.push_back(c_tile);
 
-  if (d == DIRECTION_NORTH_WEST)
+  if (d == Direction::DIRECTION_NORTH_WEST)
   {
     // Check the coordinates east and south
-    c1_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_EAST));
-    c2_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH));
+    c1_tile = map->at(CoordUtils::get_new_coordinate(c, Direction::DIRECTION_EAST));
+    c2_tile = map->at(CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH));
   }
-  else if (d == DIRECTION_NORTH_EAST)
+  else if (d == Direction::DIRECTION_NORTH_EAST)
   {
     // Check the coordinates west and south
-    c1_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_WEST));
-    c2_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_SOUTH));
+    c1_tile = map->at(CoordUtils::get_new_coordinate(c, Direction::DIRECTION_WEST));
+    c2_tile = map->at(CoordUtils::get_new_coordinate(c, Direction::DIRECTION_SOUTH));
   }
-  else if (d == DIRECTION_SOUTH_WEST)
+  else if (d == Direction::DIRECTION_SOUTH_WEST)
   {
     // Check the coordinates east and north
-    c1_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_EAST));
-    c2_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_NORTH));
+    c1_tile = map->at(CoordUtils::get_new_coordinate(c, Direction::DIRECTION_EAST));
+    c2_tile = map->at(CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH));
   }
-  else if (d == DIRECTION_SOUTH_EAST)
+  else if (d == Direction::DIRECTION_SOUTH_EAST)
   {
     // Check the coordinates west and north
-    c1_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_WEST));
-    c2_tile = map->at(CoordUtils::get_new_coordinate(c, DIRECTION_NORTH));
+    c1_tile = map->at(CoordUtils::get_new_coordinate(c, Direction::DIRECTION_WEST));
+    c2_tile = map->at(CoordUtils::get_new_coordinate(c, Direction::DIRECTION_NORTH));
   }
 
   if (c_tile && c1_tile && c2_tile)

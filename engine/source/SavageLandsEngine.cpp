@@ -30,7 +30,7 @@ using namespace std;
 // State manager functionality.
 EngineStateManager::EngineStateManager()
 {
-  current_state = ENGINE_STATE_START_NEW_GAME;
+  current_state = EngineStateEnum::ENGINE_STATE_START_NEW_GAME;
 }
 
 void EngineStateManager::set_state(const EngineStateEnum new_state)
@@ -45,17 +45,17 @@ EngineStateEnum EngineStateManager::get_state() const
 
 bool EngineStateManager::start_new_game() const
 {
-  return (current_state == ENGINE_STATE_START_NEW_GAME);
+  return (current_state == EngineStateEnum::ENGINE_STATE_START_NEW_GAME);
 }
 
 bool EngineStateManager::load_existing_game() const
 {
-  return (current_state == ENGINE_STATE_LOAD_GAME);
+  return (current_state == EngineStateEnum::ENGINE_STATE_LOAD_GAME);
 }
 
 bool EngineStateManager::exit() const
 {
-  return (current_state == ENGINE_STATE_STOP);
+  return (current_state == EngineStateEnum::ENGINE_STATE_STOP);
 }
 
 // Core engine functionality
@@ -68,16 +68,16 @@ SavageLandsEngine::SavageLandsEngine()
 
 void SavageLandsEngine::initialize_game_option_map()
 {
-  game_option_map = GameOptionMap{{"a", ENGINE_STATE_START_NEW_GAME},
-                                  {"b", ENGINE_STATE_LOAD_GAME},
-                                  {"z", ENGINE_STATE_STOP}};
+  game_option_map = GameOptionMap{ { "a", EngineStateEnum::ENGINE_STATE_START_NEW_GAME },
+                                  {"b", EngineStateEnum::ENGINE_STATE_LOAD_GAME},
+                                  {"z", EngineStateEnum::ENGINE_STATE_STOP}};
 }
 
 void SavageLandsEngine::initialize_game_flow_map()
 {
-  game_flow_functions.insert(make_pair(ENGINE_STATE_START_NEW_GAME, &SavageLandsEngine::process_new_game));
-  game_flow_functions.insert(make_pair(ENGINE_STATE_LOAD_GAME, &SavageLandsEngine::process_load_game));
-  game_flow_functions.insert(make_pair(ENGINE_STATE_STOP, &SavageLandsEngine::process_exit_game));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_START_NEW_GAME, &SavageLandsEngine::process_new_game));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_LOAD_GAME, &SavageLandsEngine::process_load_game));
+  game_flow_functions.insert(make_pair(EngineStateEnum::ENGINE_STATE_STOP, &SavageLandsEngine::process_exit_game));
 }
 
 void SavageLandsEngine::start(const Settings& settings)
@@ -202,7 +202,7 @@ bool SavageLandsEngine::process_new_game()
   Game& game = Game::instance();
 
   string name;
-  CreatureSex sex = CREATURE_SEX_MALE;
+  CreatureSex sex = CreatureSex::CREATURE_SEX_MALE;
     
   DeityMap deities = game.get_deities_ref();
   RaceMap  races   = game.get_races_ref();
@@ -271,10 +271,10 @@ bool SavageLandsEngine::process_new_game()
     for (const EquipmentMap::value_type& eq_pair : eq_map)
     {
       ItemPtr item = eq_pair.second;
-      if (item && item->get_status() == ITEM_STATUS_CURSED) item->set_status(ITEM_STATUS_UNCURSED);
+      if (item && item->get_status() == ItemStatus::ITEM_STATUS_CURSED) item->set_status(ItemStatus::ITEM_STATUS_UNCURSED);
     }
 
-    vector<ItemType> item_types{ITEM_TYPE_SCROLL, ITEM_TYPE_WAND, ITEM_TYPE_STAFF, ITEM_TYPE_SPELLBOOK, ITEM_TYPE_RING, ITEM_TYPE_POTION, ITEM_TYPE_AMULET};
+    vector<ItemType> item_types{ ItemType::ITEM_TYPE_SCROLL, ItemType::ITEM_TYPE_WAND, ItemType::ITEM_TYPE_STAFF, ItemType::ITEM_TYPE_SPELLBOOK, ItemType::ITEM_TYPE_RING, ItemType::ITEM_TYPE_POTION, ItemType::ITEM_TYPE_AMULET };
     ItemDescriptionRandomizer item_randomizer(item_types);
     item_randomizer.randomize(game.items);
 
@@ -301,7 +301,7 @@ bool SavageLandsEngine::process_load_game()
   {
     SerializationReturnCode src = Serialization::load(filename);
 
-    if (src == SERIALIZATION_OK)
+    if (src == SerializationReturnCode::SERIALIZATION_OK)
     {
       Serialization::delete_savefile(filename);
       result = true;

@@ -55,7 +55,7 @@ void ClassSelectionScreen::initialize()
   add_page(cur_page);
 
   // Set the prompt
-  PromptPtr any_key_prompt = std::make_shared<Prompt>(PROMPT_LOCATION_LOWER_RIGHT);
+  PromptPtr any_key_prompt = std::make_shared<Prompt>(PromptLocation::PROMPT_LOCATION_LOWER_RIGHT);
   any_key_prompt->set_text_sid(PromptTextKeys::PROMPT_SELECT_AN_OPTION);
   user_prompt = any_key_prompt;
 }

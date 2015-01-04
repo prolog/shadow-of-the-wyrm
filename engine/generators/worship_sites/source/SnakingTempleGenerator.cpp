@@ -203,7 +203,7 @@ void SnakingTempleGenerator::generate_pews(MapPtr map)
         if (row != centre_row)
         {
           TilePtr current_tile = map->at(row, col);
-          FeaturePtr pew = FeatureGenerator::generate_pew(PEW_DIRECTION_EAST_WEST);
+          FeaturePtr pew = FeatureGenerator::generate_pew(PewDirection::PEW_DIRECTION_EAST_WEST);
           current_tile->set_feature(pew);
         }
       }
@@ -233,7 +233,7 @@ void SnakingTempleGenerator::generate_dais(MapPtr map, const int dais_row, const
 void SnakingTempleGenerator::generate_altar(MapPtr map, const int dais_row, const int dais_col)
 {
   TilePtr centre_dais_tile = map->at(dais_row, dais_col);
-  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, ALIGNMENT_RANGE_NEUTRAL);
+  FeaturePtr altar = FeatureGenerator::generate_altar(deity_id, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL);
   centre_dais_tile->set_feature(altar);  
 }
 
@@ -324,8 +324,8 @@ void SnakingTempleGenerator::generate_statues(MapPtr map)
   {
     if (col % 2 == 0)
     {
-      FeaturePtr statue_1 = StatueGenerator::generate_decorative_statue(static_cast<DecorativeStatueType>(RNG::range(DecorativeStatueType::DECORATIVE_STATUE_TYPE_FIRST, DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST)));
-      FeaturePtr statue_2 = StatueGenerator::generate_decorative_statue(static_cast<DecorativeStatueType>(RNG::range(DecorativeStatueType::DECORATIVE_STATUE_TYPE_FIRST, DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST)));
+      FeaturePtr statue_1 = StatueGenerator::generate_decorative_statue(static_cast<DecorativeStatueType>(RNG::range(static_cast<int>(DecorativeStatueType::DECORATIVE_STATUE_TYPE_FIRST), static_cast<int>(DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST))));
+      FeaturePtr statue_2 = StatueGenerator::generate_decorative_statue(static_cast<DecorativeStatueType>(RNG::range(static_cast<int>(DecorativeStatueType::DECORATIVE_STATUE_TYPE_FIRST), static_cast<int>(DecorativeStatueType::DECORATIVE_STATUE_TYPE_LAST))));
       TilePtr tile_top    = map->at(temple_middle_start_row+1, col);
       TilePtr tile_bottom = map->at(temple_middle_end_row-2, col);
       
