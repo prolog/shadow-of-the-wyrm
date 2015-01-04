@@ -6,16 +6,16 @@ TEST(SL_World_Tiles_Tile, correct_inventory_type)
 {
   // Generally speaking, all tile super types have a usual value.
   // Items fall away from water or air, and are kept on ground tiles.
-  std::map<TileSuperType, ClassIdentifier> default_st_value({{TILE_SUPER_TYPE_AIR, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
-                                                             {TILE_SUPER_TYPE_WATER, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
-                                                             {TILE_SUPER_TYPE_GROUND, ClassIdentifier::CLASS_ID_INVENTORY},
-                                                             {TILE_SUPER_TYPE_UNDEFINED, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
+  std::map<TileSuperType, ClassIdentifier> default_st_value({{TileSuperType::TILE_SUPER_TYPE_AIR, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
+                                                             {TileSuperType::TILE_SUPER_TYPE_WATER, ClassIdentifier::CLASS_ID_NULL_INVENTORY},
+                                                             {TileSuperType::TILE_SUPER_TYPE_GROUND, ClassIdentifier::CLASS_ID_INVENTORY},
+                                                             {TileSuperType::TILE_SUPER_TYPE_UNDEFINED, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
 
   // But, there are exceptions.  Items fall down wells, for example.
-  std::map<TileType, ClassIdentifier> tt_exceptions({{TILE_TYPE_WELL, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
+  std::map<TileType, ClassIdentifier> tt_exceptions({{TileType::TILE_TYPE_WELL, ClassIdentifier::CLASS_ID_NULL_INVENTORY}});
   TileGenerator tg;
 
-  for (int i = TileType::TILE_TYPE_FIRST; i < TileType::TILE_TYPE_LAST; i++)
+  for (int i = static_cast<int>(TileType::TILE_TYPE_FIRST); i < static_cast<int>(TileType::TILE_TYPE_LAST); i++)
   {
     TilePtr tile = tg.generate(static_cast<TileType>(i));
 
@@ -80,13 +80,13 @@ TEST(SL_World_Tiles_Tile, saveload)
 {
   TileGenerator tg;
 
-  for (int i = TileType::TILE_TYPE_FIRST; i < TileType::TILE_TYPE_LAST; i++)
+  for (int i = static_cast<int>(TileType::TILE_TYPE_FIRST); i < static_cast<int>(TileType::TILE_TYPE_LAST); i++)
   {
     TilePtr tp = tg.generate(static_cast<TileType>(i));
     MapExitPtr me = MapFactory::create_map_exit();
     me->set_map_id("foobar");
     TileExitMap& tem = tp->get_tile_exit_map_ref();
-    tem[DIRECTION_UP] = me;
+    tem[Direction::DIRECTION_UP] = me;
 
     TilePtr tp2 = tg.generate(static_cast<TileType>(i));
 

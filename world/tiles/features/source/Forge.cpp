@@ -6,7 +6,7 @@
 using namespace std;
 
 Forge::Forge()
-: Feature(MATERIAL_TYPE_STONE, ALIGNMENT_RANGE_NEUTRAL)
+: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 

@@ -62,15 +62,15 @@ AlignmentRange Alignment::get_alignment_range() const
 
   if (alignment >= EVIL_MIN && alignment <= EVIL_MAX)
   {
-    align_range = ALIGNMENT_RANGE_EVIL;
+    align_range = AlignmentRange::ALIGNMENT_RANGE_EVIL;
   }
   else if (alignment >= GOOD_MIN && alignment <= GOOD_MAX)
   {
-    align_range = ALIGNMENT_RANGE_GOOD;
+    align_range = AlignmentRange::ALIGNMENT_RANGE_GOOD;
   }
   else
   {
-    align_range = ALIGNMENT_RANGE_NEUTRAL;
+    align_range = AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
   }
 
   return align_range;
@@ -82,13 +82,13 @@ int Alignment::get_default_alignment_for_range(const AlignmentRange range)
     
   switch (range)
   {
-    case ALIGNMENT_RANGE_EVIL:
+    case AlignmentRange::ALIGNMENT_RANGE_EVIL:
       align = -1600;
       break;
-    case ALIGNMENT_RANGE_NEUTRAL:
+    case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
       align = 0;
       break;
-    case ALIGNMENT_RANGE_GOOD:
+    case AlignmentRange::ALIGNMENT_RANGE_GOOD:
       align = 1600;
       break;
     default:
@@ -104,13 +104,13 @@ string Alignment::get_alignment_sid(const AlignmentRange range) const
 
   switch (range)
   {
-    case ALIGNMENT_RANGE_EVIL:
+    case AlignmentRange::ALIGNMENT_RANGE_EVIL:
       align_sid = TextKeys::ALIGNMENT_EVIL;
       break;
-    case ALIGNMENT_RANGE_GOOD:
+    case AlignmentRange::ALIGNMENT_RANGE_GOOD:
       align_sid = TextKeys::ALIGNMENT_GOOD;
       break;
-    case ALIGNMENT_RANGE_NEUTRAL:
+    case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
       align_sid = TextKeys::ALIGNMENT_NEUTRAL;
       break;
     default:
@@ -126,13 +126,13 @@ string Alignment::get_abbreviation_sid(const AlignmentRange range) const
 
   switch (range)
   {
-    case ALIGNMENT_RANGE_EVIL:
+    case AlignmentRange::ALIGNMENT_RANGE_EVIL:
       abrv_sid = TextKeys::ALIGNMENT_EVIL_ABRV;
       break;
-    case ALIGNMENT_RANGE_NEUTRAL:
+    case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
       abrv_sid = TextKeys::ALIGNMENT_NEUTRAL_ABRV;
       break;
-    case ALIGNMENT_RANGE_GOOD:
+    case AlignmentRange::ALIGNMENT_RANGE_GOOD:
       abrv_sid = TextKeys::ALIGNMENT_GOOD_ABRV;
       break;
     default:

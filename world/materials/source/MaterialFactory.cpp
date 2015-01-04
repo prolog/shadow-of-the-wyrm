@@ -26,52 +26,52 @@ MaterialFactory::~MaterialFactory()
 
 MaterialPtr MaterialFactory::create_material(const MaterialType type)
 {
-  static_assert(MATERIAL_TYPE_LAST == 14, "Unexpected MATERIAL_TYPE_LAST");
+  static_assert(MaterialType::MATERIAL_TYPE_LAST == MaterialType(14), "Unexpected MATERIAL_TYPE_LAST");
 
   MaterialPtr material;
 
   switch(type)
   {
-    case MATERIAL_TYPE_CLOTH:
+    case MaterialType::MATERIAL_TYPE_CLOTH:
       material = std::make_shared<Cloth>();
       break;
-    case MATERIAL_TYPE_DRAGON_SCALE:
+    case MaterialType::MATERIAL_TYPE_DRAGON_SCALE:
       material = std::make_shared<DragonScale>();
       break;
-    case MATERIAL_TYPE_GLASS:
+    case MaterialType::MATERIAL_TYPE_GLASS:
       material = std::make_shared<Glass>();
       break;
-    case MATERIAL_TYPE_IRON:
+    case MaterialType::MATERIAL_TYPE_IRON:
       material = std::make_shared<Iron>();
       break;
-    case MATERIAL_TYPE_LEATHER:
+    case MaterialType::MATERIAL_TYPE_LEATHER:
       material = std::make_shared<Leather>();
       break;
-    case MATERIAL_TYPE_PAPER:
+    case MaterialType::MATERIAL_TYPE_PAPER:
       material = std::make_shared<Paper>();
       break;
-    case MATERIAL_TYPE_STEEL:
+    case MaterialType::MATERIAL_TYPE_STEEL:
       material = std::make_shared<Steel>();
       break;
-    case MATERIAL_TYPE_STONE:
+    case MaterialType::MATERIAL_TYPE_STONE:
       material = std::make_shared<Stone>();
       break;
-    case MATERIAL_TYPE_WOOD:
+    case MaterialType::MATERIAL_TYPE_WOOD:
       material = std::make_shared<Wood>();
       break;
-    case MATERIAL_TYPE_MARBLE:
+    case MaterialType::MATERIAL_TYPE_MARBLE:
       material = std::make_shared<Marble>();
       break;
-    case MATERIAL_TYPE_ONYX:
+    case MaterialType::MATERIAL_TYPE_ONYX:
       material = std::make_shared<Onyx>();
       break;
-    case MATERIAL_TYPE_IVORY:
+    case MaterialType::MATERIAL_TYPE_IVORY:
       material = std::make_shared<Ivory>();
       break;
-    case MATERIAL_TYPE_BONE:
+    case MaterialType::MATERIAL_TYPE_BONE:
       material = std::make_shared<Bone>();
       break;
-    case MATERIAL_TYPE_GOLD:
+    case MaterialType::MATERIAL_TYPE_GOLD:
       material = std::make_shared<Gold>();
       break;
     default:

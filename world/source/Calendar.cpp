@@ -9,7 +9,7 @@ Calendar::Calendar()
 : seconds(12960000), STARTING_YEAR(832)
 {
   // Set a default season.
-  season = SeasonFactory::create_season(SEASON_WINTER);
+  season = SeasonFactory::create_season(Season::SEASON_WINTER);
 
   // Overwrite the default season, if the current date is out of synch.
   update_season_if_necessary();

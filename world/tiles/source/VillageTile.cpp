@@ -7,7 +7,7 @@ VillageTile::VillageTile()
 {
   // Default, can be overridden later.
   tile_subtype = TileType::TILE_TYPE_FIELD;
-  settlement_type = SETTLEMENT_TYPE_ORDERLY_VILLAGE;
+  settlement_type = SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE;
 }
 
 VillageTile::VillageTile(const TileType new_tile_subtype)

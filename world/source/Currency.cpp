@@ -4,7 +4,7 @@ using namespace std;
 
 Currency::Currency()
 {
-  type = ITEM_TYPE_CURRENCY;
+  type = ItemType::ITEM_TYPE_CURRENCY;
   symbol = '$';
 }
 

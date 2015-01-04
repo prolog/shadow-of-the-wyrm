@@ -4,17 +4,17 @@
 TEST(SL_World_Resistances, gain_and_lose_messages)
 {
   map<DamageType, pair<std::string, std::string>> gain_lose_msgs =
-  { { DAMAGE_TYPE_SLASH, { ResistanceTextKeys::RESISTANCE_GAIN_SLASH, ResistanceTextKeys::RESISTANCE_LOSE_SLASH }},
-    { DAMAGE_TYPE_PIERCE, { ResistanceTextKeys::RESISTANCE_GAIN_PIERCE, ResistanceTextKeys::RESISTANCE_LOSE_PIERCE } }, 
-    { DAMAGE_TYPE_POUND, { ResistanceTextKeys::RESISTANCE_GAIN_POUND, ResistanceTextKeys::RESISTANCE_LOSE_POUND } }, 
-    { DAMAGE_TYPE_HEAT, { ResistanceTextKeys::RESISTANCE_GAIN_HEAT, ResistanceTextKeys::RESISTANCE_LOSE_HEAT } }, 
-    { DAMAGE_TYPE_COLD, { ResistanceTextKeys::RESISTANCE_GAIN_COLD, ResistanceTextKeys::RESISTANCE_LOSE_COLD } }, 
-    { DAMAGE_TYPE_ACID, { ResistanceTextKeys::RESISTANCE_GAIN_ACID, ResistanceTextKeys::RESISTANCE_LOSE_ACID } }, 
-    { DAMAGE_TYPE_POISON, { ResistanceTextKeys::RESISTANCE_GAIN_POISON, ResistanceTextKeys::RESISTANCE_LOSE_POISON } }, 
-    { DAMAGE_TYPE_HOLY, { ResistanceTextKeys::RESISTANCE_GAIN_HOLY, ResistanceTextKeys::RESISTANCE_LOSE_HOLY } }, 
-    { DAMAGE_TYPE_SHADOW, { ResistanceTextKeys::RESISTANCE_GAIN_SHADOW, ResistanceTextKeys::RESISTANCE_LOSE_SHADOW } }, 
-    { DAMAGE_TYPE_ARCANE, { ResistanceTextKeys::RESISTANCE_GAIN_ARCANE, ResistanceTextKeys::RESISTANCE_LOSE_ARCANE } }, 
-    { DAMAGE_TYPE_LIGHTNING, { ResistanceTextKeys::RESISTANCE_GAIN_LIGHTNING, ResistanceTextKeys::RESISTANCE_LOSE_LIGHTNING } } };
+  { { DamageType::DAMAGE_TYPE_SLASH, { ResistanceTextKeys::RESISTANCE_GAIN_SLASH, ResistanceTextKeys::RESISTANCE_LOSE_SLASH } },
+    { DamageType::DAMAGE_TYPE_PIERCE, { ResistanceTextKeys::RESISTANCE_GAIN_PIERCE, ResistanceTextKeys::RESISTANCE_LOSE_PIERCE } }, 
+    { DamageType::DAMAGE_TYPE_POUND, { ResistanceTextKeys::RESISTANCE_GAIN_POUND, ResistanceTextKeys::RESISTANCE_LOSE_POUND } },
+    { DamageType::DAMAGE_TYPE_HEAT, { ResistanceTextKeys::RESISTANCE_GAIN_HEAT, ResistanceTextKeys::RESISTANCE_LOSE_HEAT } },
+    { DamageType::DAMAGE_TYPE_COLD, { ResistanceTextKeys::RESISTANCE_GAIN_COLD, ResistanceTextKeys::RESISTANCE_LOSE_COLD } },
+    { DamageType::DAMAGE_TYPE_ACID, { ResistanceTextKeys::RESISTANCE_GAIN_ACID, ResistanceTextKeys::RESISTANCE_LOSE_ACID } },
+    { DamageType::DAMAGE_TYPE_POISON, { ResistanceTextKeys::RESISTANCE_GAIN_POISON, ResistanceTextKeys::RESISTANCE_LOSE_POISON } },
+    { DamageType::DAMAGE_TYPE_HOLY, { ResistanceTextKeys::RESISTANCE_GAIN_HOLY, ResistanceTextKeys::RESISTANCE_LOSE_HOLY } },
+    { DamageType::DAMAGE_TYPE_SHADOW, { ResistanceTextKeys::RESISTANCE_GAIN_SHADOW, ResistanceTextKeys::RESISTANCE_LOSE_SHADOW } },
+    { DamageType::DAMAGE_TYPE_ARCANE, { ResistanceTextKeys::RESISTANCE_GAIN_ARCANE, ResistanceTextKeys::RESISTANCE_LOSE_ARCANE } },
+    { DamageType::DAMAGE_TYPE_LIGHTNING, { ResistanceTextKeys::RESISTANCE_GAIN_LIGHTNING, ResistanceTextKeys::RESISTANCE_LOSE_LIGHTNING } } };
 
   Resistances res;
 
@@ -70,7 +70,7 @@ TEST(SL_World_Resistances, serialization_ids_for_individual_types)
 
 TEST(SL_World_Resistances, saveload)
 {
-  for (int i = ClassIdentifier::CLASS_ID_SLASH_RESISTANCE; i <= ClassIdentifier::CLASS_ID_LIGHTNING_RESISTANCE; i++)
+  for (int i = static_cast<int>(ClassIdentifier::CLASS_ID_SLASH_RESISTANCE); i <= static_cast<int>(ClassIdentifier::CLASS_ID_LIGHTNING_RESISTANCE); i++)
   {
     std::shared_ptr<Resistance> res1, res2;
     res1 = ResistanceFactory::create_resistance(static_cast<ClassIdentifier>(i));

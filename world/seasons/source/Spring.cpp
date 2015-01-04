@@ -15,14 +15,14 @@ void Spring::initialize_months()
     months_in_season.clear();
   }
 
-  months_in_season.insert(MONTH_3);
-  months_in_season.insert(MONTH_4);
-  months_in_season.insert(MONTH_5);
+  months_in_season.insert(Months::MONTH_3);
+  months_in_season.insert(Months::MONTH_4);
+  months_in_season.insert(Months::MONTH_5);
 }
 
 Season Spring::get_season() const
 {
-  return SEASON_SPRING;
+  return Season::SEASON_SPRING;
 }
 
 string Spring::get_description_sid() const
@@ -37,12 +37,12 @@ string Spring::get_new_season_message_sid() const
 
 Season Spring::get_previous_season() const
 {
-  return SEASON_WINTER;
+  return Season::SEASON_WINTER;
 }
 
 Season Spring::get_next_season() const
 {
-  return SEASON_SUMMER;
+  return Season::SEASON_SUMMER;
 }
 
 ISeason* Spring::clone()

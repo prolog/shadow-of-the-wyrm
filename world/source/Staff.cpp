@@ -4,7 +4,7 @@ using namespace std;
 
 Staff::Staff()
 {
-  type = ITEM_TYPE_STAFF;
+  type = ItemType::ITEM_TYPE_STAFF;
   symbol = '|';
 }
 

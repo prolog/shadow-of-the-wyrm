@@ -4,7 +4,7 @@
 using namespace std;
 
 Deity::Deity()
-: alignment_range(ALIGNMENT_RANGE_NEUTRAL), worship_site_type(WORSHIP_SITE_CATHEDRAL), user_playable(false)
+: alignment_range(AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), worship_site_type(WorshipSiteType::WORSHIP_SITE_CATHEDRAL), user_playable(false)
 {
 }
 

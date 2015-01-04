@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Leather::get_type() const
 {
-  return MATERIAL_TYPE_LEATHER;
+  return MaterialType::MATERIAL_TYPE_LEATHER;
 }
 
 string Leather::get_name_sid() const

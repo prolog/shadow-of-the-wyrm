@@ -12,7 +12,7 @@ Spell SpellFactory::create_self_targetted_item_spell()
 
   spell.set_has_damage(false);
   spell.set_range(0);
-  spell.set_shape(SpellShapeFactory::create_spell_shape(SPELL_SHAPE_TARGET_SELF));
+  spell.set_shape(SpellShapeFactory::create_spell_shape(SpellShapeType::SPELL_SHAPE_TARGET_SELF));
   spell.set_allows_bonus(false);
 
   return spell;

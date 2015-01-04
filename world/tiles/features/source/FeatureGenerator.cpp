@@ -29,13 +29,13 @@ FeaturePtr FeatureGenerator::generate_altar(const std::string& deity_id, const A
   
   switch(alignment)
   {
-    case ALIGNMENT_RANGE_EVIL:
+    case AlignmentRange::ALIGNMENT_RANGE_EVIL:
       altar = std::make_shared<EvilAltar>(deity_id);
       break;
-    case ALIGNMENT_RANGE_NEUTRAL:
+    case AlignmentRange::ALIGNMENT_RANGE_NEUTRAL:
       altar = std::make_shared<NeutralAltar>(deity_id);
       break;
-    case ALIGNMENT_RANGE_GOOD:
+    case AlignmentRange::ALIGNMENT_RANGE_GOOD:
     default:
       altar = std::make_shared<GoodAltar>(deity_id);
       break;    
@@ -83,10 +83,10 @@ FeaturePtr FeatureGenerator::generate_pew(const PewDirection pew_direction)
   
   switch(pew_direction)
   {
-    case PEW_DIRECTION_NORTH_SOUTH:
+    case PewDirection::PEW_DIRECTION_NORTH_SOUTH:
       pew = std::make_shared<Pew>();
       break;
-    case PEW_DIRECTION_EAST_WEST:
+    case PewDirection::PEW_DIRECTION_EAST_WEST:
     default:
       pew = std::make_shared<EastWestPew>();
       break;

@@ -18,7 +18,7 @@ Tile::Tile()
 {
   items = std::make_shared<Inventory>();
   set_default_properties();
-  TileType::TILE_TYPE = TileType::TILE_TYPE_UNDEFINED;
+  tile_type = TileType::TILE_TYPE_UNDEFINED;
   tile_subtype = TileType::TILE_TYPE_UNDEFINED;
 }
 
@@ -33,7 +33,7 @@ bool Tile::operator==(const Tile& tile) const
   result = result && (illuminated == tile.illuminated);
   result = result && (explored == tile.explored);
   result = result && (viewed == tile.viewed);
-  result = result && (TileType::TILE_TYPE == tile.tile_type);
+  result = result && (tile_type == tile.tile_type);
   result = result && (tile_subtype == tile.tile_subtype);
   result = result && ((creature && tile.creature) || (!creature && !tile.creature));
 
@@ -280,13 +280,13 @@ IInventoryPtr Tile::get_items()
 
 TileType Tile::get_tile_type() const
 {
-  return TileType::TILE_TYPE;
+  return tile_type;
 }
 
 // All tiles are assumed to be ground tiles, unless the derived class declares otherwise.
 TileSuperType Tile::get_tile_super_type() const
 {
-  return TILE_SUPER_TYPE_GROUND;
+  return TileSuperType::TILE_SUPER_TYPE_GROUND;
 }
 
 void Tile::set_tile_subtype(const TileType new_tile_subtype)
@@ -344,7 +344,7 @@ void Tile::transformFrom(std::shared_ptr<Tile> original_tile)
 
     *this = *original_tile;
 
-    TileType::TILE_TYPE = orig_tt;
+    tile_type = orig_tt;
     tile_subtype = orig_tst;
   }
 }
@@ -354,7 +354,7 @@ bool Tile::serialize(ostream& stream) const
   Serialize::write_bool(stream, illuminated);
   Serialize::write_bool(stream, explored);
   Serialize::write_bool(stream, viewed);
-  Serialize::write_enum(stream, TileType::TILE_TYPE);
+  Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, tile_subtype);
 
   Serialize::write_string_map(stream, additional_properties);
@@ -410,7 +410,7 @@ bool Tile::deserialize(istream& stream)
   Serialize::read_bool(stream, illuminated);
   Serialize::read_bool(stream, explored);
   Serialize::read_bool(stream, viewed);
-  Serialize::read_enum(stream, TileType::TILE_TYPE);
+  Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, tile_subtype);
 
   Serialize::read_string_map(stream, additional_properties);
@@ -448,7 +448,7 @@ bool Tile::deserialize(istream& stream)
 
   for (unsigned int i = 0; i < map_size; i++)
   {
-    Direction d = DIRECTION_NORTH; // just a random default value - otherwise, compiler warnings.
+    Direction d = Direction::DIRECTION_NORTH; // just a random default value - otherwise, compiler warnings.
     Serialize::read_enum(stream, d);
 
     ClassIdentifier map_exit_clid;

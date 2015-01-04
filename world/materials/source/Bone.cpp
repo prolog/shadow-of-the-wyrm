@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Bone::get_type() const
 {
-  return MATERIAL_TYPE_BONE;
+  return MaterialType::MATERIAL_TYPE_BONE;
 }
 
 string Bone::get_name_sid() const

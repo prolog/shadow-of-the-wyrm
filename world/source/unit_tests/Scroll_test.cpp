@@ -11,7 +11,7 @@ TEST(SL_World_Scroll, saveload)
 {
   Scroll scroll, scroll2;
 
-  scroll.set_material_type(MATERIAL_TYPE_IVORY);
+  scroll.set_material_type(MaterialType::MATERIAL_TYPE_IVORY);
 
   ostringstream ss;
 

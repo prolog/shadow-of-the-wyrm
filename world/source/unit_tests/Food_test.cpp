@@ -11,9 +11,9 @@ TEST(SL_World_Food, saveload)
 {
   Food food, food2;
 
-  food.set_material_type(MATERIAL_TYPE_PAPER); // Well...whatever.
+  food.set_material_type(MaterialType::MATERIAL_TYPE_PAPER); // Well...whatever.
   food.set_standard_drinks(3.1415f);
-  food.set_food_type(FOOD_TYPE_VEGETABLE);
+  food.set_food_type(FoodType::FOOD_TYPE_VEGETABLE);
   food.set_poisoned(true);
 
   ostringstream ss;

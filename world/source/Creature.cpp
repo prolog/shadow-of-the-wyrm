@@ -598,8 +598,9 @@ IInventoryPtr Creature::get_inventory()
 
 bool Creature::has_items() const
 {
-  for (EquipmentWornLocation ewl = EquipmentWornLocation::EQUIPMENT_WORN_HEAD; ewl < EquipmentWornLocation::EQUIPMENT_WORN_LAST; ewl++)
+  for (int e = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); e < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); e++)
   {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(e);
     ItemPtr item = equipment.get_item(ewl);
     if (item != nullptr) return true;
   }

@@ -4,23 +4,24 @@ TEST(SL_World_Conducts, remaining_conducts)
 {
   Conducts c;
 
-  array<bool, CONDUCT_SIZE> remaining = c.get_conducts();
+  auto remaining = c.get_conducts();
 
-  for (int i = CONDUCT_TYPE_FOODLESS; i < CONDUCT_SIZE; i++)
+  for (int i = static_cast<int>(ConductType::CONDUCT_TYPE_FOODLESS); i < static_cast<int>(ConductType::CONDUCT_SIZE); i++)
   {
     EXPECT_TRUE(remaining[i] == true);
   }
 
-  c.break_conduct(CONDUCT_TYPE_FOODLESS);
-  c.break_conduct(CONDUCT_TYPE_WEAPONLESS);
+  c.break_conduct(ConductType::CONDUCT_TYPE_FOODLESS);
+  c.break_conduct(ConductType::CONDUCT_TYPE_WEAPONLESS);
 
   remaining = c.get_conducts();
 
-  EXPECT_TRUE(remaining[CONDUCT_TYPE_AGNOSTIC] == true);
-  EXPECT_TRUE(remaining[CONDUCT_TYPE_ILLITERATE] == true);
-  EXPECT_TRUE(remaining[CONDUCT_TYPE_FOODLESS] == false);
-  EXPECT_TRUE(remaining[CONDUCT_TYPE_WEAPONLESS] == false);
+  EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_AGNOSTIC)] == true);
+  EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_ILLITERATE)] == true);
+  EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_FOODLESS)] == false);
+  EXPECT_TRUE(remaining[static_cast<int>(ConductType::CONDUCT_TYPE_WEAPONLESS)] == false);
 }
+
 TEST(SL_World_Conducts, serialization_id)
 {
   Conducts c;
@@ -31,7 +32,7 @@ TEST(SL_World_Conducts, saveload)
 {
   Conducts c;
   
-  c.break_conduct(CONDUCT_TYPE_FOODLESS);
+  c.break_conduct(ConductType::CONDUCT_TYPE_FOODLESS);
 
   Conducts c2;
 

@@ -11,7 +11,7 @@ TEST(SL_World_Tiles_VillageTile, settlement_type)
 {
   VillageTile village_tile;
 
-  for (int i = SETTLEMENT_TYPE_ORDERLY_VILLAGE; i < SETTLEMENT_TYPE_MAX; i++)
+  for (int i = static_cast<int>(SettlementType::SETTLEMENT_TYPE_ORDERLY_VILLAGE); i < static_cast<int>(SettlementType::SETTLEMENT_TYPE_MAX); i++)
   {
     SettlementType st = static_cast<SettlementType>(i);
     village_tile.set_settlement_type(st);

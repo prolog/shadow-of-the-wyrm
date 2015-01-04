@@ -52,7 +52,7 @@ FeaturePtr FeatureFactory::create_feature(const ClassIdentifier ci)
   {
     // This is a problem, and likely means I've forgotten to update
     // the class ID map!
-    string s_cl_id = Integer::to_string(ci);
+    string s_cl_id = Integer::to_string(static_cast<int>(ci));
     string msg = "FeatureFactory::create_feature - Could not instantiate feature with class_id " + s_cl_id;
     Log::instance().error(msg);
     BOOST_ASSERT_MSG(false, msg.c_str());
@@ -101,28 +101,28 @@ void FeatureFactory::initialize_feature_map()
   FeaturePtr jeweler_workbench  = std::make_shared<JewelerWorkbench>();
   FeaturePtr wheel_and_loom     = std::make_shared<WheelAndLoom>();
 
-  feature_map = FeatureSerializationMap{{CLASS_ID_GOOD_ALTAR, good_altar},
-                                        {CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
-                                        {CLASS_ID_EVIL_ALTAR, evil_altar},
-                                        {CLASS_ID_KING_DECORATIVE_STATUE, king_statue},
-                                        {CLASS_ID_QUEEN_DECORATIVE_STATUE, queen_statue},
-                                        {CLASS_ID_WARLORD_DECORATIVE_STATUE, warlord_statue},
-                                        {CLASS_ID_KNIGHT_DECORATIVE_STATUE, knight_statue},
-                                        {CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE, high_priest_statue},
-                                        {CLASS_ID_SORCEROR_DECORATIVE_STATUE, sorceror_statue},
-                                        {CLASS_ID_BENCH, bench},
-                                        {CLASS_ID_DOOR, door},
-                                        {CLASS_ID_EAST_WEST_PEW, ew_pew},
-                                        {CLASS_ID_FIRE_PILLAR, fire_pillar},
-                                        {CLASS_ID_FOUNTAIN, fountain},
-                                        {CLASS_ID_GATE, gate},
-                                        {CLASS_ID_PEW, pew},
-                                        {CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse},
-                                        {CLASS_ID_SARCOPHAGUS, sarcophagus},
-                                        {CLASS_ID_BARREL, barrel},
-                                        {CLASS_ID_FORGE, forge},
-                                        {CLASS_ID_TANNERY, tannery},
-                                        {CLASS_ID_JEWELER_WORKBENCH, jeweler_workbench},
-                                        {CLASS_ID_WHEEL_AND_LOOM, wheel_and_loom} };
+  feature_map = FeatureSerializationMap{{ClassIdentifier::CLASS_ID_GOOD_ALTAR, good_altar},
+                                        {ClassIdentifier::CLASS_ID_NEUTRAL_ALTAR, neutral_altar},
+                                        {ClassIdentifier::CLASS_ID_EVIL_ALTAR, evil_altar},
+                                        {ClassIdentifier::CLASS_ID_KING_DECORATIVE_STATUE, king_statue},
+                                        {ClassIdentifier::CLASS_ID_QUEEN_DECORATIVE_STATUE, queen_statue},
+                                        {ClassIdentifier::CLASS_ID_WARLORD_DECORATIVE_STATUE, warlord_statue},
+                                        {ClassIdentifier::CLASS_ID_KNIGHT_DECORATIVE_STATUE, knight_statue},
+                                        {ClassIdentifier::CLASS_ID_HIGH_PRIEST_DECORATIVE_STATUE, high_priest_statue},
+                                        {ClassIdentifier::CLASS_ID_SORCEROR_DECORATIVE_STATUE, sorceror_statue},
+                                        {ClassIdentifier::CLASS_ID_BENCH, bench},
+                                        {ClassIdentifier::CLASS_ID_DOOR, door},
+                                        {ClassIdentifier::CLASS_ID_EAST_WEST_PEW, ew_pew},
+                                        {ClassIdentifier::CLASS_ID_FIRE_PILLAR, fire_pillar},
+                                        {ClassIdentifier::CLASS_ID_FOUNTAIN, fountain},
+                                        {ClassIdentifier::CLASS_ID_GATE, gate},
+                                        {ClassIdentifier::CLASS_ID_PEW, pew},
+                                        {ClassIdentifier::CLASS_ID_PETRIFIED_CORPSE_STATUE, petrified_corpse},
+                                        {ClassIdentifier::CLASS_ID_SARCOPHAGUS, sarcophagus},
+                                        {ClassIdentifier::CLASS_ID_BARREL, barrel},
+                                        {ClassIdentifier::CLASS_ID_FORGE, forge},
+                                        {ClassIdentifier::CLASS_ID_TANNERY, tannery},
+                                        {ClassIdentifier::CLASS_ID_JEWELER_WORKBENCH, jeweler_workbench},
+                                        {ClassIdentifier::CLASS_ID_WHEEL_AND_LOOM, wheel_and_loom} };
 }
 

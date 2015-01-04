@@ -12,7 +12,7 @@ TEST(SL_World_Boat, saveload)
   Boat boat, boat2;
 
   // Not the greatest boat, really.
-  boat.set_material_type(MATERIAL_TYPE_STONE);
+  boat.set_material_type(MaterialType::MATERIAL_TYPE_STONE);
 
   ostringstream ss;
 

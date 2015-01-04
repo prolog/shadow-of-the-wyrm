@@ -13,7 +13,7 @@ TileType RiverTile::get_tile_type() const
 
 TileSuperType RiverTile::get_tile_super_type() const
 {
-  return TILE_SUPER_TYPE_WATER;
+  return TileSuperType::TILE_SUPER_TYPE_WATER;
 }
 
 std::string RiverTile::get_tile_description_sid() const

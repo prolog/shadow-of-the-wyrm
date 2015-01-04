@@ -4,7 +4,7 @@ using namespace std;
 
 Amulet::Amulet()
 {
-  type = ITEM_TYPE_AMULET;
+  type = ItemType::ITEM_TYPE_AMULET;
   symbol = '\"';
 }
 

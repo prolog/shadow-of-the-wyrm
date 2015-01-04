@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Wood::get_type() const
 {
-  return MATERIAL_TYPE_WOOD;
+  return MaterialType::MATERIAL_TYPE_WOOD;
 }
 
 string Wood::get_name_sid() const

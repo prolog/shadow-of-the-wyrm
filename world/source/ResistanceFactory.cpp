@@ -47,15 +47,15 @@ void ResistanceFactory::initialize_resistances_map()
   std::shared_ptr<Resistance> arcane    = std::make_shared<ArcaneResistance>();
   std::shared_ptr<Resistance> lightning = std::make_shared<LightningResistance>();
 
-  resistances_map = ResistancesSerializationMap{{CLASS_ID_SLASH_RESISTANCE, slash},
-                                                {CLASS_ID_PIERCE_RESISTANCE, pierce},
-                                                {CLASS_ID_POUND_RESISTANCE, pound},
-                                                {CLASS_ID_HEAT_RESISTANCE, heat},
-                                                {CLASS_ID_COLD_RESISTANCE, cold},
-                                                {CLASS_ID_ACID_RESISTANCE, acid},
-                                                {CLASS_ID_POISON_RESISTANCE, poison},
-                                                {CLASS_ID_HOLY_RESISTANCE, holy},
-                                                {CLASS_ID_SHADOW_RESISTANCE, shadow},
-                                                {CLASS_ID_ARCANE_RESISTANCE, arcane},
-                                                {CLASS_ID_LIGHTNING_RESISTANCE, lightning}};
+  resistances_map = ResistancesSerializationMap{{ClassIdentifier::CLASS_ID_SLASH_RESISTANCE, slash},
+                                                {ClassIdentifier::CLASS_ID_PIERCE_RESISTANCE, pierce},
+                                                {ClassIdentifier::CLASS_ID_POUND_RESISTANCE, pound},
+                                                {ClassIdentifier::CLASS_ID_HEAT_RESISTANCE, heat},
+                                                {ClassIdentifier::CLASS_ID_COLD_RESISTANCE, cold},
+                                                {ClassIdentifier::CLASS_ID_ACID_RESISTANCE, acid},
+                                                {ClassIdentifier::CLASS_ID_POISON_RESISTANCE, poison},
+                                                {ClassIdentifier::CLASS_ID_HOLY_RESISTANCE, holy},
+                                                {ClassIdentifier::CLASS_ID_SHADOW_RESISTANCE, shadow},
+                                                {ClassIdentifier::CLASS_ID_ARCANE_RESISTANCE, arcane},
+                                                {ClassIdentifier::CLASS_ID_LIGHTNING_RESISTANCE, lightning}};
 }

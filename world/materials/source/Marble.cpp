@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Marble::get_type() const
 {
-  return MATERIAL_TYPE_MARBLE;
+  return MaterialType::MATERIAL_TYPE_MARBLE;
 }
 
 string Marble::get_name_sid() const

@@ -5,7 +5,7 @@
 using std::string;
 
 Fountain::Fountain()
-: Feature(MATERIAL_TYPE_MARBLE, ALIGNMENT_RANGE_NEUTRAL)
+: Feature(MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 

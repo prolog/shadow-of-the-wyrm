@@ -5,16 +5,16 @@ using namespace std;
 Plant::Plant()
 : Consumable(20,0)
 {
-  type = ITEM_TYPE_PLANT;
-  food_type = FOOD_TYPE_VEGETABLE;
+  type = ItemType::ITEM_TYPE_PLANT;
+  food_type = FoodType::FOOD_TYPE_VEGETABLE;
   symbol = 'w';
 }
 
 Plant::Plant(const int new_nutrition)
 : Consumable(new_nutrition,0)
 {
-  type = ITEM_TYPE_PLANT;
-  food_type = FOOD_TYPE_VEGETABLE;
+  type = ItemType::ITEM_TYPE_PLANT;
+  food_type = FoodType::FOOD_TYPE_VEGETABLE;
   symbol = 'w';
 }
 
@@ -24,7 +24,7 @@ Plant::~Plant()
 
 ItemType Plant::get_type() const
 {
-  return ITEM_TYPE_PLANT;
+  return ItemType::ITEM_TYPE_PLANT;
 }
 
 Item* Plant::clone()

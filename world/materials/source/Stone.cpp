@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Stone::get_type() const
 {
-  return MATERIAL_TYPE_STONE;
+  return MaterialType::MATERIAL_TYPE_STONE;
 }
 
 string Stone::get_name_sid() const

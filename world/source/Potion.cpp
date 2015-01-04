@@ -8,7 +8,7 @@ using namespace std;
 Potion::Potion()
 : Consumable(50,0), has_damage(false)
 {
-  type = ITEM_TYPE_POTION;
+  type = ItemType::ITEM_TYPE_POTION;
   symbol = '!';
 }
 
@@ -28,7 +28,7 @@ bool Potion::operator==(const Potion& p) const
 
 ItemType Potion::get_type() const
 {
-  return ITEM_TYPE_POTION;
+  return ItemType::ITEM_TYPE_POTION;
 }
 
 Item* Potion::clone()

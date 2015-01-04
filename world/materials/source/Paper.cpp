@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Paper::get_type() const
 {
-  return MATERIAL_TYPE_PAPER;
+  return MaterialType::MATERIAL_TYPE_PAPER;
 }
 
 string Paper::get_name_sid() const

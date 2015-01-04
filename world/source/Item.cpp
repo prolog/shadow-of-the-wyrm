@@ -525,8 +525,10 @@ void Item::do_enchant_item(const int points)
   // For items, these are values != 0.
   // Also track the non-zero ones, so that if there are additional "slots"
   // to enchant, one can be selected.
-  for (DamageType dt = DamageType::DAMAGE_TYPE_FIRST; dt < DamageType::DAMAGE_TYPE_MAX; dt++)
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
+    DamageType dt = static_cast<DamageType>(d);
+
     if (!dequal(resistances.get_resistance_value(dt), 0))
     {
       resvul_dt_vec.push_back(dt);

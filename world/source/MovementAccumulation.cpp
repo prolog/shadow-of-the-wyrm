@@ -15,7 +15,7 @@ bool MovementAccumulation::operator==(const MovementAccumulation& movement) cons
   result = result && (minutes_on_super_type_given_movement == movement.minutes_on_super_type_given_movement);
   result = result && (tile_super_type == movement.tile_super_type);
   result = result && (minutes_on_tile_type_given_movement == movement.minutes_on_tile_type_given_movement);
-  result = result && (TileType::TILE_TYPE == movement.tile_type);
+  result = result && (tile_type == movement.tile_type);
   result = result && (movement_type == movement.movement_type);
 
   return result;
@@ -26,9 +26,9 @@ void MovementAccumulation::reset()
 {
   minutes_on_super_type_given_movement = 0;
   minutes_on_tile_type_given_movement = 0;
-  TileType::TILE_TYPE = TileType::TILE_TYPE_UNDEFINED;
-  tile_super_type = TILE_SUPER_TYPE_UNDEFINED;
-  movement_type = MOVEMENT_TYPE_WALKING;
+  tile_type = TileType::TILE_TYPE_UNDEFINED;
+  tile_super_type = TileSuperType::TILE_SUPER_TYPE_UNDEFINED;
+  movement_type = MovementType::MOVEMENT_TYPE_WALKING;
 }
 
 void MovementAccumulation::set_minutes_on_super_type_given_movement(const ulonglong new_minutes)
@@ -63,12 +63,12 @@ ulonglong MovementAccumulation::get_minutes_on_tile_type_given_movement() const
 
 void MovementAccumulation::set_tile_type(const TileType new_type)
 {
-  TileType::TILE_TYPE = new_type;
+  tile_type = new_type;
 }
 
 TileType MovementAccumulation::get_tile_type() const
 {
-  return TileType::TILE_TYPE;
+  return tile_type;
 }
 
 void MovementAccumulation::set_movement_type(const MovementType new_type)
@@ -86,7 +86,7 @@ bool MovementAccumulation::serialize(ostream& stream) const
   Serialize::write_ulonglong(stream, minutes_on_super_type_given_movement);
   Serialize::write_enum(stream, tile_super_type);
   Serialize::write_ulonglong(stream, minutes_on_tile_type_given_movement);
-  Serialize::write_enum(stream, TileType::TILE_TYPE);
+  Serialize::write_enum(stream, tile_type);
   Serialize::write_enum(stream, movement_type);
 
   return true;
@@ -97,7 +97,7 @@ bool MovementAccumulation::deserialize(istream& stream)
   Serialize::read_ulonglong(stream, minutes_on_super_type_given_movement);
   Serialize::read_enum(stream, tile_super_type);
   Serialize::read_ulonglong(stream, minutes_on_tile_type_given_movement);
-  Serialize::read_enum(stream, TileType::TILE_TYPE);
+  Serialize::read_enum(stream, tile_type);
   Serialize::read_enum(stream, movement_type);
 
   return true;

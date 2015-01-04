@@ -76,22 +76,22 @@ void ItemSerializationFactory::initialize_item_map()
   ItemPtr ranged = std::make_shared<RangedWeapon>();
   ItemPtr tool = std::make_shared<Tool>();
 
-  item_map = ItemSerializationMap{{CLASS_ID_AMMUNITION, ammo},
-                                  {CLASS_ID_AMULET, amulet},
-                                  {CLASS_ID_ARMOUR, armour},
-                                  {CLASS_ID_BOAT, boat},
-                                  {CLASS_ID_SPELLBOOK, book},
-                                  {CLASS_ID_CURRENCY, cash},
-                                  {CLASS_ID_FOOD, food},
-                                  {CLASS_ID_MISC_ITEM, misc},
-                                  {CLASS_ID_PLANT, plant},
-                                  {CLASS_ID_POTION, potion},
-                                  {CLASS_ID_RING, ring},
-                                  {CLASS_ID_SCROLL, scroll},
-                                  {CLASS_ID_STAFF, staff},
-                                  {CLASS_ID_WAND, wand},
-                                  {CLASS_ID_MELEE_WEAPON, melee},
-                                  {CLASS_ID_RANGED_WEAPON, ranged},
-                                  {CLASS_ID_TOOL, tool}};
+  item_map = ItemSerializationMap{{ClassIdentifier::CLASS_ID_AMMUNITION, ammo},
+                                  {ClassIdentifier::CLASS_ID_AMULET, amulet},
+                                  {ClassIdentifier::CLASS_ID_ARMOUR, armour},
+                                  {ClassIdentifier::CLASS_ID_BOAT, boat},
+                                  {ClassIdentifier::CLASS_ID_SPELLBOOK, book},
+                                  {ClassIdentifier::CLASS_ID_CURRENCY, cash},
+                                  {ClassIdentifier::CLASS_ID_FOOD, food},
+                                  {ClassIdentifier::CLASS_ID_MISC_ITEM, misc},
+                                  {ClassIdentifier::CLASS_ID_PLANT, plant},
+                                  {ClassIdentifier::CLASS_ID_POTION, potion},
+                                  {ClassIdentifier::CLASS_ID_RING, ring},
+                                  {ClassIdentifier::CLASS_ID_SCROLL, scroll},
+                                  {ClassIdentifier::CLASS_ID_STAFF, staff},
+                                  {ClassIdentifier::CLASS_ID_WAND, wand},
+                                  {ClassIdentifier::CLASS_ID_MELEE_WEAPON, melee},
+                                  {ClassIdentifier::CLASS_ID_RANGED_WEAPON, ranged},
+                                  {ClassIdentifier::CLASS_ID_TOOL, tool}};
 }
 

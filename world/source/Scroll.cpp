@@ -4,7 +4,7 @@ using namespace std;
 
 Scroll::Scroll()
 {
-  type = ITEM_TYPE_SCROLL;
+  type = ItemType::ITEM_TYPE_SCROLL;
   symbol = '?';
 }
 

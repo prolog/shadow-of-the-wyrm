@@ -6,7 +6,7 @@
 using namespace std;
 
 DeityStatus::DeityStatus()
-: piety(100), champion_type(CHAMPION_TYPE_UNCROWNED)
+: piety(100), champion_type(ChampionType::CHAMPION_TYPE_UNCROWNED)
 {
 }
 

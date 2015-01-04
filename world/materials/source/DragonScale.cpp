@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType DragonScale::get_type() const
 {
-  return MATERIAL_TYPE_DRAGON_SCALE;
+  return MaterialType::MATERIAL_TYPE_DRAGON_SCALE;
 }
 
 string DragonScale::get_name_sid() const

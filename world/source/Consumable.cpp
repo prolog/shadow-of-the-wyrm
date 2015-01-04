@@ -4,12 +4,12 @@
 using namespace std;
 
 Consumable::Consumable()
-: nutrition(0), standard_drinks(0.0f), food_type(FOOD_TYPE_OTHER), poisoned(false)
+: nutrition(0), standard_drinks(0.0f), food_type(FoodType::FOOD_TYPE_OTHER), poisoned(false)
 {
 }
 
 Consumable::Consumable(const int nutr, const float std_drinks)
-: nutrition(nutr), standard_drinks(std_drinks), food_type(FOOD_TYPE_OTHER), poisoned(false)
+: nutrition(nutr), standard_drinks(std_drinks), food_type(FoodType::FOOD_TYPE_OTHER), poisoned(false)
 {
 }
 

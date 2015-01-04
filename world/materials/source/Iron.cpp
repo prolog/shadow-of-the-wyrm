@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Iron::get_type() const
 {
-  return MATERIAL_TYPE_IRON;
+  return MaterialType::MATERIAL_TYPE_IRON;
 }
 
 string Iron::get_name_sid() const

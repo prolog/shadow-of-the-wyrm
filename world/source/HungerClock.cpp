@@ -47,38 +47,38 @@ int HungerClock::get_hunger() const
 // they're naturally a lot slower, too.
 bool HungerClock::is_stuffed() const
 {
-  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_STUFFED);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HungerLevel::HUNGER_LEVEL_STUFFED);
 }
 
 // Check to see if the creature is full.  Creatures that are full are a
 // little slower than others.
 bool HungerClock::is_full() const
 {
-  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_FULL);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HungerLevel::HUNGER_LEVEL_FULL);
 }
 
 // Is everything peachy?
 bool HungerClock::is_normal() const
 {
-  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_NORMAL);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HungerLevel::HUNGER_LEVEL_NORMAL);
 }
 
 // Check to see if the character is hungry.
 bool HungerClock::is_hungry() const
 {
-  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_HUNGRY);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HungerLevel::HUNGER_LEVEL_HUNGRY);
 }
 
 // Check to see if the character is starving (near death!)
 bool HungerClock::is_starving() const
 {
-  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_STARVING);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HungerLevel::HUNGER_LEVEL_STARVING);
 }
 
 // Uh oh!
 bool HungerClock::is_dying() const
 {
-  return (HungerLevelConverter::to_hunger_level(hunger) == HUNGER_LEVEL_DYING);
+  return (HungerLevelConverter::to_hunger_level(hunger) == HungerLevel::HUNGER_LEVEL_DYING);
 }
 
 // Is the character normal, hungry, starving, etc?
@@ -86,10 +86,10 @@ bool HungerClock::is_normal_or_worse() const
 {
   HungerLevel hunger_l = HungerLevelConverter::to_hunger_level(hunger);
 
-  return (hunger_l == HUNGER_LEVEL_NORMAL 
-       || hunger_l == HUNGER_LEVEL_HUNGRY
-       || hunger_l == HUNGER_LEVEL_STARVING
-       || hunger_l == HUNGER_LEVEL_DYING);
+  return (hunger_l == HungerLevel::HUNGER_LEVEL_NORMAL
+       || hunger_l == HungerLevel::HUNGER_LEVEL_HUNGRY
+       || hunger_l == HungerLevel::HUNGER_LEVEL_STARVING
+       || hunger_l == HungerLevel::HUNGER_LEVEL_DYING);
 }
 
 // Serialization details

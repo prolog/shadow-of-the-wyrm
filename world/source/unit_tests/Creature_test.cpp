@@ -22,7 +22,7 @@ TEST(SL_World_Creature, age)
 TEST(SL_World_Creature, size)
 {
   Creature c;
-  CreatureSize size = CREATURE_SIZE_LARGE;
+  CreatureSize size = CreatureSize::CREATURE_SIZE_LARGE;
   c.set_size(size);
 
   EXPECT_EQ(size, c.get_size());
@@ -66,7 +66,7 @@ TEST(SL_World_Creature, saveload)
   c.set_charisma(cha);
 
   AutomaticMovement& am = c.get_automatic_movement_ref();
-  am.set_direction(DIRECTION_SOUTH);
+  am.set_direction(Direction::DIRECTION_SOUTH);
   am.set_engaged(true);
 
   Blood b;

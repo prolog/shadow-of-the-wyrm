@@ -3,7 +3,7 @@
 // This constructor shouldn't really be used - it should only be used to construct
 // a default object, and the actual SpellShape should be set into the object later.
 SpellShape::SpellShape()
-: spell_shape_type(SPELL_SHAPE_TARGET_SELF), direction_category(DIRECTION_CATEGORY_NONE)
+: spell_shape_type(SpellShapeType::SPELL_SHAPE_TARGET_SELF), direction_category(DirectionCategory::DIRECTION_CATEGORY_NONE)
 {
 }
 

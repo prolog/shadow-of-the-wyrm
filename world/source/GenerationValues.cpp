@@ -6,7 +6,7 @@ using namespace std;
 GenerationValues::GenerationValues()
 : current(0),
 maximum(-1),
-rarity(RARITY_COMMON), 
+rarity(Rarity::RARITY_COMMON), 
 danger_level(0)
 {
 }
