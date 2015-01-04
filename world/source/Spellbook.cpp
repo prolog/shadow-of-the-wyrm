@@ -6,7 +6,7 @@ using namespace std;
 Spellbook::Spellbook()
 : difficulty(0)
 {
-  type = ITEM_TYPE_SPELLBOOK;
+  type = ItemType::ITEM_TYPE_SPELLBOOK;
   symbol = '\"';
 }
 

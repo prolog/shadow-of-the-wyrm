@@ -11,7 +11,7 @@ TEST(SL_World_Tiles_RiverTile, tile_super_type)
 {
   RiverTile river_tile;
 
-  EXPECT_EQ(TILE_SUPER_TYPE_WATER, river_tile.get_tile_super_type());
+  EXPECT_EQ(TileSuperType::TILE_SUPER_TYPE_WATER, river_tile.get_tile_super_type());
 }
 
 TEST(SL_World_Tiles_RiverTile, serialization_id)

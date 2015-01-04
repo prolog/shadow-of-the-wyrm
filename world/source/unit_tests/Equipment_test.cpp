@@ -25,9 +25,9 @@ TEST(SL_World_Equipment, saveload)
 
   body_armour->set_description_sid("test3");
 
-  e.set_item(weapon, EQUIPMENT_WORN_WIELDED);
-  e.set_item(body_armour, EQUIPMENT_WORN_BODY);
-  e.set_item(amulet, EQUIPMENT_WORN_NECK);
+  e.set_item(weapon, EquipmentWornLocation::EQUIPMENT_WORN_WIELDED);
+  e.set_item(body_armour, EquipmentWornLocation::EQUIPMENT_WORN_BODY);
+  e.set_item(amulet, EquipmentWornLocation::EQUIPMENT_WORN_NECK);
 
   ostringstream ss;
 

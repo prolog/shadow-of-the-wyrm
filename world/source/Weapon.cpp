@@ -15,9 +15,9 @@ enum struct ImproveWeaponType
 
 // WEAPON
 Weapon::Weapon()
-: difficulty(0), speed(0), trained_skill(SKILL_MELEE_EXOTIC), trained_ranged_skill(SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
+: difficulty(0), speed(0), trained_skill(SkillType::SKILL_MELEE_EXOTIC), trained_ranged_skill(SkillType::SKILL_MELEE_EXOTIC), requires_ranged_weapon(false)
 {
-  type = ITEM_TYPE_WEAPON;
+  type = ItemType::ITEM_TYPE_WEAPON;
   symbol = ')';
 }
 
@@ -150,23 +150,23 @@ void Weapon::do_smith_item(const int points)
 
 void Weapon::do_improve_item(const int points)
 {
-  ImproveWeaponType type_of_improve = static_cast<ImproveWeaponType>(RNG::range(IMPROVE_WEAPON_TO_HIT, IMPROVE_WEAPON_BOTH));
+  ImproveWeaponType type_of_improve = static_cast<ImproveWeaponType>(RNG::range(static_cast<int>(ImproveWeaponType::IMPROVE_WEAPON_TO_HIT), static_cast<int>(ImproveWeaponType::IMPROVE_WEAPON_BOTH)));
 
-  if (points == 1 && type_of_improve == IMPROVE_WEAPON_BOTH)
+  if (points == 1 && type_of_improve == ImproveWeaponType::IMPROVE_WEAPON_BOTH)
   {
     // Too few points to do both
-    type_of_improve = static_cast<ImproveWeaponType>(RNG::range(IMPROVE_WEAPON_TO_HIT, IMPROVE_WEAPON_BOTH));
+    type_of_improve = static_cast<ImproveWeaponType>(RNG::range(static_cast<int>(ImproveWeaponType::IMPROVE_WEAPON_TO_HIT), static_cast<int>(ImproveWeaponType::IMPROVE_WEAPON_BOTH)));
   }
 
   switch (type_of_improve)
   {
-    case IMPROVE_WEAPON_TO_HIT:
+    case ImproveWeaponType::IMPROVE_WEAPON_TO_HIT:
       set_to_hit(get_to_hit() + static_cast<int>(points * 1.5));
       break;
-    case IMPROVE_WEAPON_DAMAGE:
+    case ImproveWeaponType::IMPROVE_WEAPON_DAMAGE:
       set_addl_damage(get_addl_damage() + points);
       break;
-    case IMPROVE_WEAPON_BOTH:
+    case ImproveWeaponType::IMPROVE_WEAPON_BOTH:
       set_to_hit(get_to_hit() + points);
       set_addl_damage(get_addl_damage() + (points / 2));
     default:
@@ -214,7 +214,7 @@ MeleeWeapon::~MeleeWeapon()
 
 WeaponStyle MeleeWeapon::get_style() const
 {
-  return WEAPON_STYLE_MELEE;
+  return WeaponStyle::WEAPON_STYLE_MELEE;
 }
 
 Item* MeleeWeapon::clone()
@@ -239,7 +239,7 @@ RangedWeapon::~RangedWeapon()
 
 WeaponStyle RangedWeapon::get_style() const
 {
-  return WEAPON_STYLE_RANGED;
+  return WeaponStyle::WEAPON_STYLE_RANGED;
 }
 
 Item* RangedWeapon::clone()

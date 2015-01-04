@@ -22,7 +22,7 @@ Wand::Wand()
   range = 0;
   shape = SpellShapeType::SPELL_SHAPE_BEAM;
   has_damage = false;
-  spell_colour = ColourType::COLOUR_WHITE;
+  spell_colour = Colour::COLOUR_WHITE;
   
   set_initial_charges();
 }
@@ -160,7 +160,7 @@ EffectType Wand::get_effect_type() const
   }
   else
   {
-    return EFFECT_TYPE_NULL;
+    return EffectType::EFFECT_TYPE_NULL;
   }
 }
 

@@ -106,53 +106,53 @@ void DisplayItemTypeFactory::initialize_map()
   display_map.clear();
 
   DisplayItemTypePtr di = std::make_shared<MiscDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_NULL, di));
-  display_map.insert(make_pair(ITEM_TYPE_MISC, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_NULL, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_MISC, di));
 
   di = std::make_shared<WeaponDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_WEAPON, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_WEAPON, di));
 
   di = std::make_shared<ArmourDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_ARMOUR, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_ARMOUR, di));
 
   di = std::make_shared<PotionDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_POTION, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_POTION, di));
 
   di = std::make_shared<BookDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_SPELLBOOK, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_SPELLBOOK, di));
 
   di = std::make_shared<ScrollDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_SCROLL, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_SCROLL, di));
 
   di = std::make_shared<WandDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_WAND, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_WAND, di));
 
   di = std::make_shared<StaffDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_STAFF, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_STAFF, di));
 
   di = std::make_shared<RingDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_RING, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_RING, di));
 
   di = std::make_shared<AmuletDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_AMULET, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_AMULET, di));
 
   di = std::make_shared<FoodDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_FOOD, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_FOOD, di));
 
   di = std::make_shared<AmmunitionDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_AMMUNITION, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_AMMUNITION, di));
 
   di = std::make_shared<PlantDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_PLANT, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_PLANT, di));
 
   di = std::make_shared<BoatDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_BOAT, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_BOAT, di));
 
   di = std::make_shared<CurrencyDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_CURRENCY, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_CURRENCY, di));
 
   di = std::make_shared<ToolsDisplayItemType>();
-  display_map.insert(make_pair(ITEM_TYPE_TOOL, di));
+  display_map.insert(make_pair(ItemType::ITEM_TYPE_TOOL, di));
 }
 
 DisplayItemTypePtr DisplayItemTypeFactory::create(const int item_symbol)
@@ -176,7 +176,7 @@ DisplayItemTypePtr DisplayItemTypeFactory::create(const int item_symbol)
 
 DisplayItemTypePtr DisplayItemTypeFactory::create(const ItemType item_type)
 {
-  static_assert(ITEM_TYPE_LAST == 16, "Unexpected final item type - update mapping in DisplayItemTypeFactory.");
+  static_assert(ItemType::ITEM_TYPE_LAST == ItemType(16), "Unexpected final item type - update mapping in DisplayItemTypeFactory.");
   if (display_map.empty())
   {
     initialize_map();

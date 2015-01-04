@@ -6,12 +6,12 @@
 using namespace std;
 
 Sarcophagus::Sarcophagus()
-: Feature(MATERIAL_TYPE_STONE, ALIGNMENT_RANGE_NEUTRAL)
+: Feature(MaterialType::MATERIAL_TYPE_STONE, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 
 Sarcophagus::Sarcophagus(const MaterialType material_type)
-: Feature(material_type, ALIGNMENT_RANGE_NEUTRAL)
+: Feature(material_type, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 

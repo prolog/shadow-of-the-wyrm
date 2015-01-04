@@ -194,7 +194,7 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile)
 
   // Make a copy of the prototype tile off the game.
   vector<DisplayTile> tiles_info = game.get_tile_display_info_ref();
-  DisplayTile tile_info = tiles_info.at(tile->get_tile_type());
+  DisplayTile tile_info = tiles_info.at(static_cast<int>(tile->get_tile_type()));
   display_tile = tile_info;
 
   size_t foo = display_tile.get_colours().size();
@@ -204,7 +204,7 @@ DisplayTile MapTranslator::create_display_tile_from_tile(const TilePtr& tile)
 
 DisplayTile MapTranslator::create_display_tile_from_symbol_and_colour(const uchar symbol, const Colour colour)
 {
-  DisplayTile display_tile(symbol, colour);
+  DisplayTile display_tile(symbol, static_cast<int>(colour));
   
   return display_tile;  
 }
@@ -229,7 +229,7 @@ DisplayTile MapTranslator::create_unseen_and_unexplored_display_tile()
   DisplayTile display_tile;
   
   display_tile.set_symbol(' ');
-  display_tile.set_colour(Colour::COLOUR_BLACK);
+  display_tile.set_colour(static_cast<int>(Colour::COLOUR_BLACK));
   
   return display_tile;  
 }

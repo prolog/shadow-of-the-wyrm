@@ -16,12 +16,12 @@ Feature* Gate::clone()
 Gate::Gate(LockPtr new_lock, const EntranceState& new_state)
 : Entrance(new_lock, new_state)
 {
-  set_material_type(MATERIAL_TYPE_IRON);
+  set_material_type(MaterialType::MATERIAL_TYPE_IRON);
 }
 
 bool Gate::get_is_blocking() const
 {
-  return (state.get_state() == ENTRANCE_TYPE_CLOSED);
+  return (state.get_state() == EntranceStateType::ENTRANCE_TYPE_CLOSED);
 }
 
 uchar Gate::get_symbol() const

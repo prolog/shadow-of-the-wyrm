@@ -5,7 +5,7 @@
 using namespace std;
 
 SpringsTile::SpringsTile()
-: temperature(SPRINGS_TEMPERATURE_COOL)
+: temperature(static_cast<int>(SpringsTemperature::SPRINGS_TEMPERATURE_COOL))
 {
   items = std::make_shared<NullInventory>();
 }
@@ -26,12 +26,12 @@ TileType SpringsTile::get_tile_type() const
 
 TileSuperType SpringsTile::get_tile_super_type() const
 {
-  return TILE_SUPER_TYPE_WATER;
+  return TileSuperType::TILE_SUPER_TYPE_WATER;
 }
 
 std::string SpringsTile::get_tile_description_sid() const
 {
-  if (temperature >= SPRINGS_TEMPERATURE_HOT)
+  if (temperature >= static_cast<int>(SpringsTemperature::SPRINGS_TEMPERATURE_HOT))
   {
     return TileTextKeys::TILE_DESC_HOT_SPRINGS;
   }

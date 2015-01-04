@@ -17,7 +17,7 @@ bool Conducts::operator==(const Conducts& c) const
 }
 
 // Get all currently-valid conducts
-array<bool, CONDUCT_SIZE> Conducts::get_conducts() const
+array<bool, static_cast<size_t>(ConductType::CONDUCT_SIZE)> Conducts::get_conducts() const
 {
   return cond;
 }
@@ -25,12 +25,12 @@ array<bool, CONDUCT_SIZE> Conducts::get_conducts() const
 // Break a particular conduct
 void Conducts::break_conduct(const ConductType ct)
 {
-  cond[ct] = false;
+  cond[static_cast<int>(ct)] = false;
 }
 
 bool Conducts::serialize(ostream& stream) const
 {
-  static_assert(CONDUCT_SIZE == 5, "Unexpected number of conducts");
+  static_assert(ConductType::CONDUCT_SIZE == ConductType(5), "Unexpected number of conducts");
 
   for (const bool conduct : cond)
   {
@@ -42,7 +42,7 @@ bool Conducts::serialize(ostream& stream) const
 
 bool Conducts::deserialize(istream& stream)
 {
-  for (int i = 0; i < CONDUCT_SIZE; i++)
+  for (int i = 0; i < static_cast<int>(ConductType::CONDUCT_SIZE); i++)
   {
     bool conduct = false;
     Serialize::read_bool(stream, conduct);

@@ -29,9 +29,9 @@ TEST(SL_World_Tiles_Feature_Altar, material)
   NeutralAltar neutral("test2");
   EvilAltar evil("test3");
 
-  EXPECT_EQ(MATERIAL_TYPE_MARBLE, good.get_material_type());
-  EXPECT_EQ(MATERIAL_TYPE_STONE, neutral.get_material_type());
-  EXPECT_EQ(MATERIAL_TYPE_ONYX, evil.get_material_type());
+  EXPECT_EQ(MaterialType::MATERIAL_TYPE_MARBLE, good.get_material_type());
+  EXPECT_EQ(MaterialType::MATERIAL_TYPE_STONE, neutral.get_material_type());
+  EXPECT_EQ(MaterialType::MATERIAL_TYPE_ONYX, evil.get_material_type());
 }
 
 TEST(SL_World_Tiles_Feature_Altar, serialization_id)

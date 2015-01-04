@@ -5,12 +5,12 @@ using std::string;
 
 // This constructor is only used by the serialization code.
 GoodAltar::GoodAltar()
-: Altar("", MATERIAL_TYPE_MARBLE, ALIGNMENT_RANGE_GOOD)
+: Altar("", MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_GOOD)
 {
 }
 
 GoodAltar::GoodAltar(const std::string& new_deity_id)
-: Altar(new_deity_id, MATERIAL_TYPE_MARBLE, ALIGNMENT_RANGE_GOOD)
+: Altar(new_deity_id, MaterialType::MATERIAL_TYPE_MARBLE, AlignmentRange::ALIGNMENT_RANGE_GOOD)
 {
 }
 

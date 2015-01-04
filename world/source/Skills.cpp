@@ -57,7 +57,7 @@ Skill::Skill(const Skill& skill)
 
 void Skill::initialize()
 {
-  category = SkillType::SKILL_CATEGORY_UNDEFINED;
+  category = SkillCategory::SKILL_CATEGORY_UNDEFINED;
   value = 0;
   marks = 0;
   threshold = 0;
@@ -190,12 +190,12 @@ bool Skill::deserialize(istream& stream)
 }
 
 // GeneralSkill
-GeneralSkill::GeneralSkill() : Skill(SKILL_CATEGORY_GENERAL)
+GeneralSkill::GeneralSkill() : Skill(SkillCategory::SKILL_CATEGORY_GENERAL)
 {
 }
 
 // WeaponSkill
-WeaponSkill::WeaponSkill() : Skill(SKILL_CATEGORY_MELEE)
+WeaponSkill::WeaponSkill() : Skill(SkillCategory::SKILL_CATEGORY_MELEE)
 {
 }
 
@@ -210,7 +210,7 @@ bool WeaponSkill::can_train_from_unlearned() const
 }
 
 // RangedWeaponSkill
-RangedWeaponSkill::RangedWeaponSkill() : Skill(SKILL_CATEGORY_RANGED)
+RangedWeaponSkill::RangedWeaponSkill() : Skill(SkillCategory::SKILL_CATEGORY_RANGED)
 {
 }
 
@@ -220,7 +220,7 @@ bool RangedWeaponSkill::can_train_from_unlearned() const
 }
 
 // MagicSkill
-MagicSkill::MagicSkill() : Skill(SKILL_CATEGORY_MAGIC)
+MagicSkill::MagicSkill() : Skill(SkillCategory::SKILL_CATEGORY_MAGIC)
 {
 }
 
@@ -1815,56 +1815,56 @@ void Skills::initialize_general_skills()
   std::shared_ptr<ThieverySkill> thievery = std::make_shared<ThieverySkill>();
   std::shared_ptr<WeavingSkill> weaving = std::make_shared<WeavingSkill>();
 
-  skills.insert(make_pair(SKILL_GENERAL_ARCHERY, archery));
-  skills.insert(make_pair(SKILL_GENERAL_AWARENESS, awareness));
-  skills.insert(make_pair(SKILL_GENERAL_BARGAINING, bargaining));
-  skills.insert(make_pair(SKILL_GENERAL_BEASTMASTERY, beastmastery));
-  skills.insert(make_pair(SKILL_GENERAL_BLIND_FIGHTING, blind_fighting));
-  skills.insert(make_pair(SKILL_GENERAL_BOATING, boating));
-  skills.insert(make_pair(SKILL_GENERAL_BOWYER, bowyer));
-  skills.insert(make_pair(SKILL_GENERAL_BREWING, brewing));
-  skills.insert(make_pair(SKILL_GENERAL_CANTRIPS, cantrips));
-  skills.insert(make_pair(SKILL_GENERAL_CARRYING, carrying));
-  skills.insert(make_pair(SKILL_GENERAL_COMBAT, combat));
-  skills.insert(make_pair(SKILL_GENERAL_CRAFTING, crafting));
-  skills.insert(make_pair(SKILL_GENERAL_DESERT_LORE, desert_lore));
-  skills.insert(make_pair(SKILL_GENERAL_DETECTION, detection));
-  skills.insert(make_pair(SKILL_GENERAL_DISARM_TRAPS, disarm_traps));
-  skills.insert(make_pair(SKILL_GENERAL_DUAL_WIELD, dual_wield));
-  skills.insert(make_pair(SKILL_GENERAL_DUNGEONEERING, dungeoneering));
-  skills.insert(make_pair(SKILL_GENERAL_ESCAPE, escape));
-  skills.insert(make_pair(SKILL_GENERAL_FISHING, fishing));
-  skills.insert(make_pair(SKILL_GENERAL_FLETCHERY, fletchery));
-  skills.insert(make_pair(SKILL_GENERAL_FORAGING, foraging));
-  skills.insert(make_pair(SKILL_GENERAL_FOREST_LORE, forest_lore));
-  skills.insert(make_pair(SKILL_GENERAL_HERBALISM, herbalism));
-  skills.insert(make_pair(SKILL_GENERAL_HIDING, hiding));
-  skills.insert(make_pair(SKILL_GENERAL_HUNTING, hunting));
-  skills.insert(make_pair(SKILL_GENERAL_INTIMIDATION, intimidation));
-  skills.insert(make_pair(SKILL_GENERAL_JEWELER, jeweler));
-  skills.insert(make_pair(SKILL_GENERAL_JUMPING, jumping));
-  skills.insert(make_pair(SKILL_GENERAL_LEADERSHIP, leadership));
-  skills.insert(make_pair(SKILL_GENERAL_LITERACY, literacy));
-  skills.insert(make_pair(SKILL_GENERAL_LORE, lore));
-  skills.insert(make_pair(SKILL_GENERAL_MAGIC, magic));
-  skills.insert(make_pair(SKILL_GENERAL_MARSH_LORE, marsh_lore));
-  skills.insert(make_pair(SKILL_GENERAL_MEDICINE, medicine));
-  skills.insert(make_pair(SKILL_GENERAL_MOUNTAIN_LORE, mountain_lore));
-  skills.insert(make_pair(SKILL_GENERAL_MOUNTAINEERING, mountaineering));
-  skills.insert(make_pair(SKILL_GENERAL_MUSIC, music));
-  skills.insert(make_pair(SKILL_GENERAL_NIGHT_SIGHT, night_sight));
-  skills.insert(make_pair(SKILL_GENERAL_OCEANOGRAPHY, oceanography));
-  skills.insert(make_pair(SKILL_GENERAL_PAPERCRAFT, papercraft));
-  skills.insert(make_pair(SKILL_GENERAL_RELIGION, religion));
-  skills.insert(make_pair(SKILL_GENERAL_SCRIBING, scribing));
-  skills.insert(make_pair(SKILL_GENERAL_SKINNING, skinning));
-  skills.insert(make_pair(SKILL_GENERAL_SMITHING, smithing));
-  skills.insert(make_pair(SKILL_GENERAL_SPELUNKING, spelunking));
-  skills.insert(make_pair(SKILL_GENERAL_STEALTH, stealth));
-  skills.insert(make_pair(SKILL_GENERAL_SWIMMING, swimming));
-  skills.insert(make_pair(SKILL_GENERAL_TANNING, tanning));
-  skills.insert(make_pair(SKILL_GENERAL_THIEVERY, thievery));
-  skills.insert(make_pair(SKILL_GENERAL_WEAVING, weaving));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_ARCHERY, archery));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_AWARENESS, awareness));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BARGAINING, bargaining));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BEASTMASTERY, beastmastery));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BLIND_FIGHTING, blind_fighting));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BOATING, boating));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BOWYER, bowyer));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_BREWING, brewing));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_CANTRIPS, cantrips));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_CARRYING, carrying));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_COMBAT, combat));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_CRAFTING, crafting));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DESERT_LORE, desert_lore));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DETECTION, detection));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DISARM_TRAPS, disarm_traps));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DUAL_WIELD, dual_wield));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_DUNGEONEERING, dungeoneering));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_ESCAPE, escape));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_FISHING, fishing));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_FLETCHERY, fletchery));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_FORAGING, foraging));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_FOREST_LORE, forest_lore));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_HERBALISM, herbalism));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_HIDING, hiding));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_HUNTING, hunting));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_INTIMIDATION, intimidation));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_JEWELER, jeweler));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_JUMPING, jumping));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_LEADERSHIP, leadership));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_LITERACY, literacy));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_LORE, lore));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MAGIC, magic));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MARSH_LORE, marsh_lore));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MEDICINE, medicine));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAIN_LORE, mountain_lore));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MOUNTAINEERING, mountaineering));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_MUSIC, music));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_NIGHT_SIGHT, night_sight));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_OCEANOGRAPHY, oceanography));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_PAPERCRAFT, papercraft));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_RELIGION, religion));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SCRIBING, scribing));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SKINNING, skinning));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SMITHING, smithing));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SPELUNKING, spelunking));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_STEALTH, stealth));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_SWIMMING, swimming));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_TANNING, tanning));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_THIEVERY, thievery));
+  skills.insert(make_pair(SkillType::SKILL_GENERAL_WEAVING, weaving));
 }
 
 // Initialize all the melee skills.
@@ -1881,16 +1881,16 @@ void Skills::initialize_melee_skills()
   std::shared_ptr<WhipsSkill> whips = std::make_shared<WhipsSkill>();
   std::shared_ptr<ExoticMeleeSkill> exotic = std::make_shared<ExoticMeleeSkill>();
 
-  skills.insert(make_pair(SKILL_MELEE_AXES, axes));
-  skills.insert(make_pair(SKILL_MELEE_SHORT_BLADES, short_blades));
-  skills.insert(make_pair(SKILL_MELEE_LONG_BLADES, long_blades));
-  skills.insert(make_pair(SKILL_MELEE_BLUDGEONS, bludgeons));
-  skills.insert(make_pair(SKILL_MELEE_DAGGERS, daggers));
-  skills.insert(make_pair(SKILL_MELEE_RODS_AND_STAVES, rods_and_staves));
-  skills.insert(make_pair(SKILL_MELEE_SPEARS, spears));
-  skills.insert(make_pair(SKILL_MELEE_UNARMED, unarmed));
-  skills.insert(make_pair(SKILL_MELEE_WHIPS, whips));
-  skills.insert(make_pair(SKILL_MELEE_EXOTIC, exotic));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_AXES, axes));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_SHORT_BLADES, short_blades));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_LONG_BLADES, long_blades));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_BLUDGEONS, bludgeons));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_DAGGERS, daggers));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_RODS_AND_STAVES, rods_and_staves));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_SPEARS, spears));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_UNARMED, unarmed));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_WHIPS, whips));
+  skills.insert(make_pair(SkillType::SKILL_MELEE_EXOTIC, exotic));
 }
 
 // Initialize all the ranged weapon skills.
@@ -1907,16 +1907,16 @@ void Skills::initialize_ranged_skills()
   std::shared_ptr<ThrownSpearsSkill> spears = std::make_shared<ThrownSpearsSkill>();
   std::shared_ptr<ExoticRangedSkill> exotic = std::make_shared<ExoticRangedSkill>();
 
-  skills.insert(make_pair(SKILL_RANGED_AXES, axes));
-  skills.insert(make_pair(SKILL_RANGED_BLADES, blades));
-  skills.insert(make_pair(SKILL_RANGED_BLUDGEONS, bludgeons));
-  skills.insert(make_pair(SKILL_RANGED_BOWS, bows));
-  skills.insert(make_pair(SKILL_RANGED_CROSSBOWS, crossbows));
-  skills.insert(make_pair(SKILL_RANGED_DAGGERS, daggers));
-  skills.insert(make_pair(SKILL_RANGED_ROCKS, rocks));
-  skills.insert(make_pair(SKILL_RANGED_SLINGS, slings));
-  skills.insert(make_pair(SKILL_RANGED_SPEARS, spears));
-  skills.insert(make_pair(SKILL_RANGED_EXOTIC, exotic));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_AXES, axes));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_BLADES, blades));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_BLUDGEONS, bludgeons));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_BOWS, bows));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_CROSSBOWS, crossbows));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_DAGGERS, daggers));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_ROCKS, rocks));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_SLINGS, slings));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_SPEARS, spears));
+  skills.insert(make_pair(SkillType::SKILL_RANGED_EXOTIC, exotic));
 }
 
 // Initialize all the magic skills.
@@ -1927,10 +1927,10 @@ void Skills::initialize_magic_skills()
   std::shared_ptr<MysticMagicSkill> mystic = std::make_shared<MysticMagicSkill>();
   std::shared_ptr<PrimordialMagicSkill> primordial = std::make_shared<PrimordialMagicSkill>();
 
-  skills.insert(make_pair(SKILL_MAGIC_ARCANE, arcane));
-  skills.insert(make_pair(SKILL_MAGIC_DIVINE, divine));
-  skills.insert(make_pair(SKILL_MAGIC_MYSTIC, mystic));
-  skills.insert(make_pair(SKILL_MAGIC_PRIMORDIAL, primordial));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_ARCANE, arcane));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_DIVINE, divine));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_MYSTIC, mystic));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_PRIMORDIAL, primordial));
 }
 
 #ifdef UNIT_TESTS

@@ -8,7 +8,7 @@
 using namespace std;
 
 Damage::Damage()
-: Dice(0, 0, 0), damage_type(DAMAGE_TYPE_SLASH), chaotic(false), piercing(false), effect_bonus(0)
+: Dice(0, 0, 0), damage_type(DamageType::DAMAGE_TYPE_SLASH), chaotic(false), piercing(false), effect_bonus(0)
 {
 }
 
@@ -103,7 +103,7 @@ DamageType Damage::get_damage_type() const
   }
   else
   {
-    return static_cast<DamageType>(RNG::range(DAMAGE_TYPE_SLASH, DAMAGE_TYPE_MAX-1));
+    return static_cast<DamageType>(RNG::range(static_cast<int>(DamageType::DAMAGE_TYPE_SLASH), static_cast<int>(DamageType::DAMAGE_TYPE_MAX)-1));
   }
 }
 

@@ -11,7 +11,7 @@ TEST(SL_World_Tiles_DownStaircaseTile, staircase_type)
 {
   DownStaircaseTile dst;
 
-  EXPECT_EQ(STAIRCASE_DOWN, dst.get_staircase_type());
+  EXPECT_EQ(StaircaseType::STAIRCASE_DOWN, dst.get_staircase_type());
 }
 
 TEST(SL_World_Tiles_DownStaircaseTile, serialization_id)

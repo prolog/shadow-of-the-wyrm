@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Glass::get_type() const
 {
-  return MATERIAL_TYPE_GLASS;
+  return MaterialType::MATERIAL_TYPE_GLASS;
 }
 
 string Glass::get_name_sid() const

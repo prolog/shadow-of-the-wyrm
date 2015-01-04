@@ -510,7 +510,7 @@ bool Map::deserialize(istream& stream)
 
   for (size_t i = 0; i < num_tile_exit_directions; i++)
   {
-    Direction d = DIRECTION_NULL;
+    Direction d = Direction::DIRECTION_NULL;
     Serialize::read_enum(stream, d);
 
     size_t vector_size = 0;

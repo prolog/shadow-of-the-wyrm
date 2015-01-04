@@ -11,7 +11,7 @@ TEST(SL_World_Tiles_SeaTile, tile_super_type)
 {
   SeaTile sea_tile;
 
-  EXPECT_EQ(TILE_SUPER_TYPE_WATER, sea_tile.get_tile_super_type());
+  EXPECT_EQ(TileSuperType::TILE_SUPER_TYPE_WATER, sea_tile.get_tile_super_type());
 }
 
 TEST(SL_World_Tiles_SeaTile, serialization_id)

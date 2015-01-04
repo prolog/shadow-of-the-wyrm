@@ -22,16 +22,16 @@ ISeasonPtr SeasonFactory::create_season(const Season season)
 
   switch(season)
   {
-    case SEASON_SPRING:
+    case Season::SEASON_SPRING:
       new_season = std::make_shared<Spring>();
       break;
-    case SEASON_SUMMER:
+    case Season::SEASON_SUMMER:
       new_season = std::make_shared<Summer>();
       break;
-    case SEASON_AUTUMN:
+    case Season::SEASON_AUTUMN:
       new_season = std::make_shared<Autumn>();
       break;
-    case SEASON_WINTER:
+    case Season::SEASON_WINTER:
     default:
       new_season = std::make_shared<Winter>();
       break;
@@ -68,8 +68,8 @@ void SeasonFactory::initialize_season_map()
   ISeasonPtr autumn = std::make_shared<Autumn>();
   ISeasonPtr winter = std::make_shared<Winter>();
 
-  season_map = SeasonSerializationMap{{CLASS_ID_SPRING, spring},
-                                      {CLASS_ID_SUMMER, summer},
-                                      {CLASS_ID_AUTUMN, autumn},
-                                      {CLASS_ID_WINTER, winter}};
+  season_map = SeasonSerializationMap{{ClassIdentifier::CLASS_ID_SPRING, spring},
+                                      {ClassIdentifier::CLASS_ID_SUMMER, summer},
+                                      {ClassIdentifier::CLASS_ID_AUTUMN, autumn},
+                                      {ClassIdentifier::CLASS_ID_WINTER, winter}};
 }

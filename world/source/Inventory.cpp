@@ -73,10 +73,10 @@ void Inventory::merge_or_add(ItemPtr item, const InventoryAdditionType inv_add_l
   {
     switch(inv_add_loc)
     {
-      case INVENTORY_ADDITION_FRONT:
+      case InventoryAdditionType::INVENTORY_ADDITION_FRONT:
         add_front(item);
         break;
-      case INVENTORY_ADDITION_BACK:
+      case InventoryAdditionType::INVENTORY_ADDITION_BACK:
       default:
         add(item);
         break;

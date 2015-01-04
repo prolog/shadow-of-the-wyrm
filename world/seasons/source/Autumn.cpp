@@ -15,14 +15,14 @@ void Autumn::initialize_months()
     months_in_season.clear();
   }
 
-  months_in_season.insert(MONTH_9);
-  months_in_season.insert(MONTH_10);
-  months_in_season.insert(MONTH_11);
+  months_in_season.insert(Months::MONTH_9);
+  months_in_season.insert(Months::MONTH_10);
+  months_in_season.insert(Months::MONTH_11);
 }
 
 Season Autumn::get_season() const
 {
-  return SEASON_AUTUMN;
+  return Season::SEASON_AUTUMN;
 }
 
 string Autumn::get_description_sid() const
@@ -37,12 +37,12 @@ string Autumn::get_new_season_message_sid() const
 
 Season Autumn::get_previous_season() const
 {
-  return SEASON_SUMMER;
+  return Season::SEASON_SUMMER;
 }
 
 Season Autumn::get_next_season() const
 {
-  return SEASON_WINTER;
+  return Season::SEASON_WINTER;
 }
 
 ISeason* Autumn::clone()

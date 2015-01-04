@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Onyx::get_type() const
 {
-  return MATERIAL_TYPE_ONYX;
+  return MaterialType::MATERIAL_TYPE_ONYX;
 }
 
 string Onyx::get_name_sid() const

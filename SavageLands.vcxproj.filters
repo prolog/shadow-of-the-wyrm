@@ -6443,5 +6443,11 @@
     <ClCompile Include="engine\features\source\TrapManipulator.cpp">
       <Filter>Source Files\engine\features\source</Filter>
     </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\JewelerWorkbench_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\tiles\features\source\unit_tests\Tannery_test.cpp">
+      <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

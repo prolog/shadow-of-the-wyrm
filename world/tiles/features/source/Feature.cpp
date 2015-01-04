@@ -162,7 +162,7 @@ void Feature::set_alignment_range(const AlignmentRange new_alignment_range)
 
 AlignmentRange Feature::get_alignment_range() const
 {
-  return ALIGNMENT_RANGE_NEUTRAL;
+  return AlignmentRange::ALIGNMENT_RANGE_NEUTRAL;
 }
 
 void Feature::set_uses(const int new_uses)

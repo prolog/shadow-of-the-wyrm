@@ -4,7 +4,7 @@
 using namespace std;
 
 EntranceState::EntranceState()
-: state(ENTRANCE_TYPE_OPEN)
+: state(EntranceStateType::ENTRANCE_TYPE_OPEN)
 {
 }
 
@@ -38,13 +38,13 @@ uchar EntranceState::get_symbol() const
   
   switch(state)
   {
-    case ENTRANCE_TYPE_DESTROYED:
+    case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
       symbol = '.';
       break;
-    case ENTRANCE_TYPE_OPEN:
+    case EntranceStateType::ENTRANCE_TYPE_OPEN:
       symbol = '`';
       break;
-    case ENTRANCE_TYPE_CLOSED:
+    case EntranceStateType::ENTRANCE_TYPE_CLOSED:
     default:
       symbol = '+';
       break;

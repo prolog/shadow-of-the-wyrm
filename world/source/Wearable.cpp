@@ -104,20 +104,20 @@ void Wearable::do_smith_item(const int points)
 
 void Wearable::do_improve_item(const int points)
 {
-  ImproveWearableType wearable_improve = static_cast<ImproveWearableType>(RNG::range(IMPROVE_WEARABLE_EVADE, IMPROVE_WEARABLE_BOTH));
+  ImproveWearableType wearable_improve = static_cast<ImproveWearableType>(RNG::range(static_cast<int>(ImproveWearableType::IMPROVE_WEARABLE_EVADE), static_cast<int>(ImproveWearableType::IMPROVE_WEARABLE_BOTH)));
 
   switch (wearable_improve)
   {
-  case IMPROVE_WEARABLE_EVADE:
-    set_evade(get_evade() + static_cast<int>((points * 1.5)));
-    break;
-  case IMPROVE_WEARABLE_SOAK:
-    set_soak(get_soak() + points);
-    break;
-  case IMPROVE_WEARABLE_BOTH:
-    set_evade(get_evade() + points);
-    set_soak(get_soak() + (points / 2));
-    break;
+    case ImproveWearableType::IMPROVE_WEARABLE_EVADE:
+      set_evade(get_evade() + static_cast<int>((points * 1.5)));
+      break;
+    case ImproveWearableType::IMPROVE_WEARABLE_SOAK:
+      set_soak(get_soak() + points);
+      break;
+    case ImproveWearableType::IMPROVE_WEARABLE_BOTH:
+      set_evade(get_evade() + points);
+      set_soak(get_soak() + (points / 2));
+      break;
   }
 }
 

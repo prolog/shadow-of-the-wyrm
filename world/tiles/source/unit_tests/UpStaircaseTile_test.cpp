@@ -11,7 +11,7 @@ TEST(SL_World_Tiles_UpStaircaseTile, staircase_type)
 {
   UpStaircaseTile ust;
 
-  EXPECT_EQ(STAIRCASE_UP, ust.get_staircase_type());
+  EXPECT_EQ(StaircaseType::STAIRCASE_UP, ust.get_staircase_type());
 }
 
 TEST(SL_World_Tiles_UpStaircaseTile, serialization_id)

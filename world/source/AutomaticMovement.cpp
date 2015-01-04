@@ -4,7 +4,7 @@
 using namespace std;
 
 AutomaticMovement::AutomaticMovement()
-: direction(DIRECTION_NULL), engaged(false)
+: direction(Direction::DIRECTION_NULL), engaged(false)
 {
 }
 
@@ -41,9 +41,9 @@ void AutomaticMovement::set_engaged(const bool new_engaged)
 bool AutomaticMovement::get_engaged() const
 {
   return (engaged &&
-          direction != DIRECTION_NULL &&
-          direction != DIRECTION_UP &&
-          direction != DIRECTION_DOWN);
+          direction != Direction::DIRECTION_NULL &&
+          direction != Direction::DIRECTION_UP &&
+          direction != Direction::DIRECTION_DOWN);
 }
 
 bool AutomaticMovement::serialize(ostream& stream) const

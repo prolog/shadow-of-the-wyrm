@@ -4,12 +4,12 @@
 using std::string;
 
 EvilAltar::EvilAltar()
-: Altar("", MATERIAL_TYPE_ONYX, ALIGNMENT_RANGE_EVIL)
+: Altar("", MaterialType::MATERIAL_TYPE_ONYX, AlignmentRange::ALIGNMENT_RANGE_EVIL)
 {
 }
 
 EvilAltar::EvilAltar(const std::string& new_deity_id)
-: Altar(new_deity_id, MATERIAL_TYPE_ONYX, ALIGNMENT_RANGE_EVIL)
+: Altar(new_deity_id, MaterialType::MATERIAL_TYPE_ONYX, AlignmentRange::ALIGNMENT_RANGE_EVIL)
 {
 }
 

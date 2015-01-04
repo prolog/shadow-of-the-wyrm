@@ -44,7 +44,7 @@ bool HungerStatusAilmentTranslator::has_ailment(const CreaturePtr& creature) con
   {
     HungerClock clock = creature->get_hunger_clock();
 
-    ailment = (HungerLevelConverter::to_hunger_level(clock.get_hunger()) != HUNGER_LEVEL_NORMAL);
+    ailment = (HungerLevelConverter::to_hunger_level(clock.get_hunger()) != HungerLevel::HUNGER_LEVEL_NORMAL);
   }
 
   return ailment;

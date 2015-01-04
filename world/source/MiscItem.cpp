@@ -4,7 +4,7 @@ using namespace std;
 
 MiscItem::MiscItem()
 {
-  type = ITEM_TYPE_MISC;
+  type = ItemType::ITEM_TYPE_MISC;
   symbol = ']';
 }
 

@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Gold::get_type() const
 {
-  return MATERIAL_TYPE_GOLD;
+  return MaterialType::MATERIAL_TYPE_GOLD;
 }
 
 string Gold::get_name_sid() const

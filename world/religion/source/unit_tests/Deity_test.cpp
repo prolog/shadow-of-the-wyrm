@@ -17,7 +17,7 @@ TEST(SL_World_Religion_Deity, saveload)
   d.set_short_description_sid("short_sid");
   d.set_anger_message_sid("anger_sid");
   d.set_death_message_sid("death_msg");
-  d.set_alignment_range(ALIGNMENT_RANGE_GOOD);
+  d.set_alignment_range(AlignmentRange::ALIGNMENT_RANGE_GOOD);
 
   vector<string> crowning_gifts;
   crowning_gifts.push_back("big_club");

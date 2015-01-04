@@ -15,14 +15,14 @@ void Winter::initialize_months()
     months_in_season.clear();
   }
 
-  months_in_season.insert(MONTH_1);
-  months_in_season.insert(MONTH_2);
-  months_in_season.insert(MONTH_12);
+  months_in_season.insert(Months::MONTH_1);
+  months_in_season.insert(Months::MONTH_2);
+  months_in_season.insert(Months::MONTH_12);
 }
 
 Season Winter::get_season() const
 {
-  return SEASON_WINTER;
+  return Season::SEASON_WINTER;
 }
 
 string Winter::get_description_sid() const
@@ -37,12 +37,12 @@ string Winter::get_new_season_message_sid() const
 
 Season Winter::get_previous_season() const
 {
-  return SEASON_AUTUMN;
+  return Season::SEASON_AUTUMN;
 }
 
 Season Winter::get_next_season() const
 {
-  return SEASON_SPRING;
+  return Season::SEASON_SPRING;
 }
 
 ISeason* Winter::clone()

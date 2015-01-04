@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Ivory::get_type() const
 {
-  return MATERIAL_TYPE_IVORY;
+  return MaterialType::MATERIAL_TYPE_IVORY;
 }
 
 string Ivory::get_name_sid() const

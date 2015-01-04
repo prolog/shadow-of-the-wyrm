@@ -12,7 +12,7 @@ TEST(SL_World_Tiles_SpringsTile, different_description_SID_for_hot_springs)
   SpringsTile springs;
   SpringsTile hot_springs;
 
-  hot_springs.set_temperature(SPRINGS_TEMPERATURE_HOT);
+  hot_springs.set_temperature(static_cast<int>(SpringsTemperature::SPRINGS_TEMPERATURE_HOT));
 
   EXPECT_FALSE(springs.get_tile_description_sid() == hot_springs.get_tile_description_sid());
 }

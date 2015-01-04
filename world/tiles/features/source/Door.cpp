@@ -22,7 +22,7 @@ Feature* Door::clone()
 bool Door::get_is_blocking() const
 {
   // Only closed doors are blocking.
-  return (state.get_state() == ENTRANCE_TYPE_CLOSED);
+  return (state.get_state() == EntranceStateType::ENTRANCE_TYPE_CLOSED);
 }
 
 uchar Door::get_symbol() const

@@ -4,7 +4,7 @@ TEST(SL_World_AutomaticMovement, engaged_status)
 {
   AutomaticMovement am;
 
-  am.set_direction(DIRECTION_NORTH);
+  am.set_direction(Direction::DIRECTION_NORTH);
   am.set_engaged(false);
 
   EXPECT_FALSE(am.get_engaged());
@@ -13,19 +13,19 @@ TEST(SL_World_AutomaticMovement, engaged_status)
 
   EXPECT_TRUE(am.get_engaged());
 
-  am.set_direction(DIRECTION_NULL);
+  am.set_direction(Direction::DIRECTION_NULL);
 
   EXPECT_FALSE(am.get_engaged());
 
-  am.set_direction(DIRECTION_UP);
+  am.set_direction(Direction::DIRECTION_UP);
 
   EXPECT_FALSE(am.get_engaged());
 
-  am.set_direction(DIRECTION_DOWN);
+  am.set_direction(Direction::DIRECTION_DOWN);
 
   EXPECT_FALSE(am.get_engaged());
 
-  am.set_direction(DIRECTION_NORTH_WEST);
+  am.set_direction(Direction::DIRECTION_NORTH_WEST);
 
   EXPECT_TRUE(am.get_engaged());
 }
@@ -42,7 +42,7 @@ TEST(SL_World_AutomaticMovement, saveload)
   AutomaticMovement am, am2;
 
   am.set_engaged(true);
-  am.set_direction(DIRECTION_SOUTH_WEST);
+  am.set_direction(Direction::DIRECTION_SOUTH_WEST);
 
   ostringstream oss;
 

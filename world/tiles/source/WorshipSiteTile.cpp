@@ -5,7 +5,7 @@ using namespace std;
 
 WorshipSiteTile::WorshipSiteTile()
 : WorldMapLandmarkTile()
-, site_type(WORSHIP_SITE_CATHEDRAL)
+, site_type(WorshipSiteType::WORSHIP_SITE_CATHEDRAL)
 {
 }
 

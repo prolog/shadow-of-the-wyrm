@@ -5,7 +5,7 @@ using namespace std;
 
 Ammunition::Ammunition()
 {
-  type = ITEM_TYPE_AMMUNITION;
+  type = ItemType::ITEM_TYPE_AMMUNITION;
   symbol = '/';
 }
 
@@ -25,7 +25,7 @@ bool Ammunition::operator==(const Ammunition& ammo) const
 
 EquipmentWornLocation Ammunition::get_worn_location() const
 {
-  return EQUIPMENT_WORN_AMMUNITION;
+  return EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION;
 }
 
 Item* Ammunition::clone()

@@ -6,12 +6,12 @@ using namespace std;
 
 // This constructor is only used by the serialization code
 Entrance::Entrance()
-: Feature(MATERIAL_TYPE_WOOD, ALIGNMENT_RANGE_NEUTRAL)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL)
 {
 }
 
 Entrance::Entrance(LockPtr new_lock, const EntranceState& new_state)
-: Feature(MATERIAL_TYPE_WOOD, ALIGNMENT_RANGE_NEUTRAL), state(new_state)
+: Feature(MaterialType::MATERIAL_TYPE_WOOD, AlignmentRange::ALIGNMENT_RANGE_NEUTRAL), state(new_state)
 {
   set_lock(new_lock);
 }
@@ -73,9 +73,9 @@ bool Entrance::open()
 
   EntranceState& state = get_state_ref();
 
-  if (state.get_state() == ENTRANCE_TYPE_CLOSED)
+  if (state.get_state() == EntranceStateType::ENTRANCE_TYPE_CLOSED)
   {
-    state.set_state(ENTRANCE_TYPE_OPEN);
+    state.set_state(EntranceStateType::ENTRANCE_TYPE_OPEN);
     result = true;
   }
 
@@ -88,9 +88,9 @@ bool Entrance::close()
 
   EntranceState& state = get_state_ref();
 
-  if (state.get_state() == ENTRANCE_TYPE_OPEN)
+  if (state.get_state() == EntranceStateType::ENTRANCE_TYPE_OPEN)
   {
-    state.set_state(ENTRANCE_TYPE_CLOSED);
+    state.set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
     result = true;
   }
 
@@ -104,13 +104,13 @@ string Entrance::get_handle_message_sid() const
 
   switch (entrance_state)
   {
-    case ENTRANCE_TYPE_DESTROYED:
+    case EntranceStateType::ENTRANCE_TYPE_DESTROYED:
       handle_message_sid = ActionTextKeys::ACTION_DOOR_DESTROYED;
       break;
-    case ENTRANCE_TYPE_OPEN:
+    case EntranceStateType::ENTRANCE_TYPE_OPEN:
       handle_message_sid = ActionTextKeys::ACTION_OPEN_DOOR;
       break;
-    case ENTRANCE_TYPE_CLOSED:
+    case EntranceStateType::ENTRANCE_TYPE_CLOSED:
     default:
       handle_message_sid = ActionTextKeys::ACTION_CLOSE_DOOR;
       break;

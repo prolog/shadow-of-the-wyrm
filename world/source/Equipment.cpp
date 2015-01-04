@@ -17,7 +17,7 @@ bool Equipment::operator==(const Equipment& e) const
 {
   bool result = true;
 
-  for (int i = EQUIPMENT_WORN_HEAD; i < EQUIPMENT_WORN_LAST; i++)
+  for (int i = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); i < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); i++)
   {
     EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(i);
 
@@ -81,23 +81,26 @@ void Equipment::initialize()
 {
   equipment.clear();
   
-  for (EquipmentWornLocation worn_location = EQUIPMENT_WORN_HEAD; worn_location < EQUIPMENT_WORN_LAST; worn_location++)
+  for (int i = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); i < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); i++)
   {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(i);
     ItemPtr no_item;
-    equipment[worn_location] = no_item;
+    equipment[ewl] = no_item;
   }
 }
 
 // Check to see if a heap of items can be equipped
 bool Equipment::can_equip_multiple_items(const EquipmentWornLocation ewl) const
 {
-  return (ewl == EQUIPMENT_WORN_AMMUNITION);
+  return (ewl == EquipmentWornLocation::EQUIPMENT_WORN_AMMUNITION);
 }
 
 bool Equipment::merge(ItemPtr item)
 {
-  for (EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD; ewl < EQUIPMENT_WORN_LAST; ewl++)
+  for (int i = static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_HEAD); i < static_cast<int>(EquipmentWornLocation::EQUIPMENT_WORN_LAST); i++)
   {
+    EquipmentWornLocation ewl = static_cast<EquipmentWornLocation>(i);
+
     ItemPtr slot_item = get_item(ewl);
     
     if (slot_item && slot_item->matches(item))
@@ -150,7 +153,7 @@ bool Equipment::deserialize(istream& stream)
   // want.  Use operator[] instead of insert() to ensure that the values are updated.
   for (unsigned int i = 0; i < equipment_size; i++)
   {
-    EquipmentWornLocation ewl = EQUIPMENT_WORN_HEAD;
+    EquipmentWornLocation ewl = EquipmentWornLocation::EQUIPMENT_WORN_HEAD;
     ItemPtr item;
     Serialize::read_enum(stream, ewl);
 

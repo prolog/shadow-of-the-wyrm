@@ -5,7 +5,7 @@ using namespace std;
 
 MaterialType Cloth::get_type() const
 {
-  return MATERIAL_TYPE_CLOTH;
+  return MaterialType::MATERIAL_TYPE_CLOTH;
 }
 
 string Cloth::get_name_sid() const

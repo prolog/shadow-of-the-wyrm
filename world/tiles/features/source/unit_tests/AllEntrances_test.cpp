@@ -12,12 +12,12 @@ TEST(SL_World_Tiles_Feature_Entrances, saveload)
 
   ostringstream ss, ss2;
 
-  door.get_state_ref().set_state(ENTRANCE_TYPE_OPEN);
-  door.set_maximum_size(CREATURE_SIZE_SMALL);
+  door.get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_OPEN);
+  door.set_maximum_size(CreatureSize::CREATURE_SIZE_SMALL);
   door.set_lock(lock);
 
-  gate.get_state_ref().set_state(ENTRANCE_TYPE_CLOSED);
-  gate.set_maximum_size(CREATURE_SIZE_LARGE);
+  gate.get_state_ref().set_state(EntranceStateType::ENTRANCE_TYPE_CLOSED);
+  gate.set_maximum_size(CreatureSize::CREATURE_SIZE_LARGE);
 
   door.serialize(ss);
   gate.serialize(ss2);
