@@ -1,6 +1,7 @@
 #include "TrapManipulator.hpp"
 #include "CombatManager.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "ItemManager.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ResistancesCalculator.hpp"
 #include "RNG.hpp"
@@ -58,6 +59,11 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
     { 
       cm.deal_damage(nullptr, creature, damage_dealt, message);
     }
+
+    // Generate an item, if applicable.
+    ItemManager im;
+    IInventoryPtr inv = tile->get_items();
+    im.create_item_with_probability(50, 100, inv, trap->get_item_id());
   }
 
   return true;

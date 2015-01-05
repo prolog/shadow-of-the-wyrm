@@ -22,7 +22,9 @@ Savage Lands v0.3.1 "Frithuwald"
 
 - Added damage and description SIDs to the Trap class, as well as a
   trigger message SID, and a player damage message SID.  Traps display
-  a damage message only when the player steps on the trap.
+  a damage message only when the player steps on the trap.  Added colours
+  so that traps can be differentiated on the map at a glance (fireball
+  is red, spiked floor is white, etc).
 
 - Added a "uses" counter to features.  This is -1 for most features
   (unlimited uses) and will be set to > 0 for traps.  When the counter
@@ -30,7 +32,8 @@ Savage Lands v0.3.1 "Frithuwald"
   basically).
 
 - Added traps to dungeons.  Traps are applied on movement when the
-  creature fails a Detection check.
+  creature fails a Detection check.  Some traps (arrow and rock, for now)
+  have a chance to generate items when triggered.
 
 - Critical hits are now more powerful, allowing only a quarter of the
   creature's Soak score, rather than the half that was previously used.
@@ -44,6 +47,7 @@ Savage Lands v0.3.1 "Frithuwald"
   the write_enum template function, converted all instances of enums
   (old C++-style unscoped enums) to C++11-style scoped enums, and replaced
   the template function with a proper, statically-typed function.
+  This...took a while.
 
 - Bug fixes: too many room features were being generated in dungeons.
   Hide items with dynamic descriptions (which weren't supposed to be 

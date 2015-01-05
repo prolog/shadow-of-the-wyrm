@@ -198,6 +198,13 @@ bool ItemManager::remove_item_from_eq_or_inv(CreaturePtr creature, const string&
 // inventory.  If we don't pass the probability check, do nothing.
 bool ItemManager::create_item_with_probability(const int rand_less_than_or_equal_val, const int rand_upper_val, IInventoryPtr inv, const std::string& item_id, const uint quantity)
 {
+  // For safety's sake, always do nothing and return false when the item id
+  // is empty.
+  if (item_id.empty())
+  {
+    return false;
+  }
+
   int rand = RNG::range(1, rand_upper_val);
   if (rand <= rand_less_than_or_equal_val)
   {
