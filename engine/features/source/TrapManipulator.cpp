@@ -1,11 +1,14 @@
 #include "TrapManipulator.hpp"
+#include "AnimationTranslator.hpp"
 #include "CombatManager.hpp"
+#include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
+#include "Game.hpp"
 #include "ItemManager.hpp"
+#include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "ResistancesCalculator.hpp"
 #include "RNG.hpp"
-#include "Trap.hpp"
 
 using namespace std;
 
@@ -26,46 +29,81 @@ bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
 
   if (trap && creature)
   {
-    string trigger_message_sid = trap->get_trigger_message_sid();
-
-    // Traps only affect the creature on the exact tile (the creature passed
-    // as an argument to this function).
-    IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
-    manager.add_new_message(StringTable::get(trigger_message_sid));
-    manager.send();
-
-    trap->set_triggered(true);
-
-    Damage& damage = trap->get_damage();
-    DamageType dt = damage.get_damage_type();
-    float soak_mult = 1.0f; // the creature's soak should use the standard multiplier.
-
-    // Deal the damage to the creature:
-    CombatManager cm;
-    const AttackType attack_type = AttackType::ATTACK_TYPE_RANGED;
-    bool slays_race = false;
-    int dmg_roll = RNG::dice(damage);
-
-    string message;
-    if (creature && creature->get_is_player())
-    {
-      message = trap->get_player_damage_message_sid();
-    }
-
-    DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
-    int damage_dealt = damage_calc->calculate(creature, slays_race, damage, dmg_roll, soak_mult);
-
-    if (damage_dealt > 0)
-    { 
-      cm.deal_damage(nullptr, creature, damage_dealt, message);
-    }
-
-    // Generate an item, if applicable.
-    ItemManager im;
-    IInventoryPtr inv = tile->get_items();
-    im.create_item_with_probability(50, 100, inv, trap->get_item_id());
+    trigger_trap(trap, creature);
+    apply_effects_to_creature(trap, creature);
+    create_item_if_necessary(tile, trap);
+    create_and_draw_animation(trap, creature);
   }
 
   return true;
 }
 
+void TrapManipulator::trigger_trap(TrapPtr trap, CreaturePtr creature)
+{
+  string trigger_message_sid = trap->get_trigger_message_sid();
+
+  // Traps only affect the creature on the exact tile (the creature passed
+  // as an argument to this function).
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+  manager.add_new_message(StringTable::get(trigger_message_sid));
+  manager.send();
+
+  trap->set_triggered(true);
+}
+
+void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creature)
+{
+  Damage& damage = trap->get_damage();
+  DamageType dt = damage.get_damage_type();
+  float soak_mult = 1.0f; // the creature's soak should use the standard multiplier.
+
+  // Deal the damage to the creature:
+  CombatManager cm;
+  const AttackType attack_type = AttackType::ATTACK_TYPE_RANGED;
+  bool slays_race = false;
+  int dmg_roll = RNG::dice(damage);
+
+  string message;
+  if (creature && creature->get_is_player())
+  {
+    message = trap->get_player_damage_message_sid();
+  }
+
+  DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
+  int damage_dealt = damage_calc->calculate(creature, slays_race, damage, dmg_roll, soak_mult);
+
+  if (damage_dealt > 0)
+  {
+    cm.deal_damage(nullptr, creature, damage_dealt, message);
+  }
+}
+
+void TrapManipulator::create_item_if_necessary(TilePtr tile, TrapPtr trap)
+{
+  // Generate an item, if applicable.
+  ItemManager im;
+  IInventoryPtr inv = tile->get_items();
+  im.create_item_with_probability(50, 100, inv, trap->get_item_id());
+}
+
+void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature)
+{
+  // Create the animation
+  Game& game = Game::instance();
+  CurrentCreatureAbilities cca;
+  AnimationTranslator at(game.get_display());
+  MapPtr current_map = game.get_current_map();
+  MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+  Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
+  DisplayTile display_tile(trap->get_trigger_symbol(), static_cast<int>(trap->get_colour()));
+  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
+  vector<Coordinate> coords = { creature_coord };
+
+  movement_path.push_back(make_pair(display_tile, coords));
+
+  Animation animation = at.create_movement_animation(!cca.can_see(creature), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
+
+  // Draw the animation.
+  DisplayPtr display = game.get_display();
+  display->draw_animation(animation);
+}

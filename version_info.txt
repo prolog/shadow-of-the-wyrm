@@ -26,6 +26,9 @@ Savage Lands v0.3.1 "Frithuwald"
   so that traps can be differentiated on the map at a glance (fireball
   is red, spiked floor is white, etc).
 
+- Traps also have simple animations when triggered, in addition to
+  messages.
+
 - Added a "uses" counter to features.  This is -1 for most features
   (unlimited uses) and will be set to > 0 for traps.  When the counter
   reaches 0, the feature is removed from the tile (the trap is spent,
