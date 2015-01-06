@@ -188,7 +188,6 @@ int CursesDisplay::clear_message_buffer()
   
   // Reset cursor to original position
   move(MSG_BUFFER_LAST_Y, MSG_BUFFER_LAST_X);
-//  refresh();
 
   return return_val;
 }
