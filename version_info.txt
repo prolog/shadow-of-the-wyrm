@@ -38,6 +38,8 @@ Savage Lands v0.3.1 "Frithuwald"
   creature fails a Detection check.  Some traps (arrow and rock, for now)
   have a chance to generate items when triggered.
 
+- Kick messages for barrels and traps.
+
 - Critical hits are now more powerful, allowing only a quarter of the
   creature's Soak score, rather than the half that was previously used.
 

@@ -13,7 +13,12 @@ BarrelManipulator::BarrelManipulator(FeaturePtr feature)
 
 void BarrelManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
 {
-  // JCD FIXME: shatter barrel on kick?
+  if (creature && creature->get_is_player())
+  {
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_BARREL));
+    manager.send();
+  }
 }
 
 // Check to see if the barrel has a tap (if so, it can pour a drink).
