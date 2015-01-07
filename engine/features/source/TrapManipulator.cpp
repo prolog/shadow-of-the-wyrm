@@ -1,4 +1,5 @@
 #include "TrapManipulator.hpp"
+#include "ActionTextKeys.hpp"
 #include "AnimationTranslator.hpp"
 #include "CombatManager.hpp"
 #include "CurrentCreatureAbilities.hpp"
@@ -19,7 +20,12 @@ TrapManipulator::TrapManipulator(FeaturePtr feature)
 
 void TrapManipulator::kick(CreaturePtr creature, MapPtr current_map, TilePtr feature_tile, FeaturePtr feature)
 {
-  // JCD FIXME add a message about "narrowly avoiding setting off the trap"...
+  if (creature && creature->get_is_player())
+  {
+    IMessageManager& manager = MessageManagerFactory::instance();
+    manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_KICK_TRAP));
+    manager.send();
+  }
 }
 
 bool TrapManipulator::handle(TilePtr tile, CreaturePtr creature)
