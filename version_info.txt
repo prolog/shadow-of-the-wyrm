@@ -34,9 +34,9 @@ Savage Lands v0.3.1 "Frithuwald"
   reaches 0, the feature is removed from the tile (the trap is spent,
   basically).
 
-- Added traps to dungeons.  Traps are applied on movement when the
-  creature fails a Detection check.  Some traps (arrow and rock, for now)
-  have a chance to generate items when triggered.
+- Added traps to dungeons and caverns.  Traps are applied on movement 
+  when the creature fails a Detection check.  Some traps (arrow and rock, 
+  for now) have a chance to generate items when triggered.
 
 - Kick messages for barrels and traps.
 
