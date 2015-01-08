@@ -575,6 +575,9 @@ bool DungeonGenerator::place_staircases(MapPtr map)
 bool DungeonGenerator::place_traps(MapPtr map, const Room& room)
 {
   bool generated_trap = false;
+  Game& game = Game::instance();
+  vector<TrapPtr> traps = game.get_trap_info_ref();
+
   int num_traps = 1;
 
   if (RNG::percent_chance(30))
@@ -598,9 +601,6 @@ bool DungeonGenerator::place_traps(MapPtr map, const Room& room)
 
       if (tile != nullptr && tile->get_movement_multiplier() > 0 && !tile->has_feature())
       {
-        Game& game = Game::instance();
-        vector<TrapPtr> traps = game.get_trap_info_ref();
-
         GeneratorUtils::generate_trap(map, y_val, x_val, traps);
 
         generated_trap = true;

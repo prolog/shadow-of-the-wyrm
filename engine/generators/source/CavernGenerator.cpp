@@ -1,12 +1,17 @@
 #include <set>
 #include "CavernGenerator.hpp"
 #include "CellularAutomataGenerator.hpp"
+#include "Game.hpp"
+#include "GeneratorUtils.hpp"
 #include "MapExitUtils.hpp"
 #include "TileGenerator.hpp"
 #include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 
 using namespace std;
+
+int CavernGenerator::MIN_NUM_TRAPS = 0;
+int CavernGenerator::MAX_NUM_TRAPS = 6;
 
 CavernGenerator::CavernGenerator(const string& new_map_exit_id)
 : Generator(new_map_exit_id, TileType::TILE_TYPE_CAVERN)
@@ -25,6 +30,7 @@ MapPtr CavernGenerator::generate(const Dimensions& dimensions)
   reset_cavern_edges(result_map);
   MapComponents cc = get_cavern_components(result_map);
   connect_cavern_components(result_map, cc);
+  generate_traps(result_map);
   generate_staircases(result_map);
   
   result_map->set_map_type(MapType::MAP_TYPE_UNDERWORLD);
@@ -215,6 +221,40 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
     {
       place_staircase(map, c.first, c.second, tile_type, TileType::TILE_TYPE_CAVERN, Direction::DIRECTION_UP, get_permanence_default(), true);
       break;
+    }
+  }
+}
+
+// Goblins and other tricksy things that live underground can set traps 
+// almost anywhere.  Instead of generating them in rooms, like dungeons,
+// generate them in any accessible tile.
+void CavernGenerator::generate_traps(MapPtr map)
+{
+  int num_traps = RNG::range(MIN_NUM_TRAPS, MAX_NUM_TRAPS);
+  int trap_y, trap_x;
+
+  Game& game = Game::instance();
+  vector<TrapPtr> traps = game.get_trap_info_ref();
+
+  Dimensions dim = map->size();
+  int max_y = dim.get_y() - 1;
+  int max_x = dim.get_x() - 1;
+
+  for (int i = 0; i < num_traps; i++)
+  {
+    // Try a few attempts each
+    for (int j = 0; j < 2; j++)
+    {
+      trap_y = RNG::range(0, max_y);
+      trap_x = RNG::range(0, max_x);
+
+      TilePtr tile = map->at(trap_y, trap_x);
+
+      if ((tile != nullptr) && (tile->get_movement_multiplier() > 0) && !tile->has_feature())
+      {
+        GeneratorUtils::generate_trap(map, trap_y, trap_x, traps);
+        break;
+      }
     }
   }
 }
