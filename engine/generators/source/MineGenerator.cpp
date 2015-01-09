@@ -1,5 +1,6 @@
 #include "BresenhamLine.hpp"
 #include "CoordUtils.hpp"
+#include "GeneratorUtils.hpp"
 #include "MineGenerator.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -10,6 +11,8 @@ const int MineGenerator::MINE_MIN_ROOM_WIDTH = 4;
 const int MineGenerator::MINE_MAX_ROOM_WIDTH = 7;
 const int MineGenerator::MINE_MIN_ROOM_HEIGHT = 4;
 const int MineGenerator::MINE_MAX_ROOM_HEIGHT = 7;
+const int MineGenerator::MINE_MIN_TRAPS = 0;
+const int MineGenerator::MINE_MAX_TRAPS = 4;
 
 MineGenerator::MineGenerator(const std::string& map_exit_id)
 : Generator(map_exit_id, TileType::TILE_TYPE_MINE)
@@ -27,6 +30,7 @@ MapPtr MineGenerator::generate(const Dimensions& dim)
   generate_main_mining_corridor(result_map);
   generate_rooms(result_map);
   connect_rooms(result_map);
+  generate_traps(result_map);
 
   rooms.clear();
   main_hallway_centre.reset();
@@ -259,3 +263,9 @@ bool MineGenerator::get_permanence_default() const
   return true;
 }
 
+// Generate a few traps throughout the mines.
+void MineGenerator::generate_traps(MapPtr map)
+{
+  int num_traps = RNG::range(MINE_MIN_TRAPS, MINE_MAX_TRAPS);
+  GeneratorUtils::generate_traps(map, num_traps);
+}

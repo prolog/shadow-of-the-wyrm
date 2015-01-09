@@ -231,32 +231,7 @@ void CavernGenerator::generate_staircase(MapPtr map, const TileType tile_type, c
 void CavernGenerator::generate_traps(MapPtr map)
 {
   int num_traps = RNG::range(MIN_NUM_TRAPS, MAX_NUM_TRAPS);
-  int trap_y, trap_x;
-
-  Game& game = Game::instance();
-  vector<TrapPtr> traps = game.get_trap_info_ref();
-
-  Dimensions dim = map->size();
-  int max_y = dim.get_y() - 1;
-  int max_x = dim.get_x() - 1;
-
-  for (int i = 0; i < num_traps; i++)
-  {
-    // Try a few attempts each
-    for (int j = 0; j < 2; j++)
-    {
-      trap_y = RNG::range(0, max_y);
-      trap_x = RNG::range(0, max_x);
-
-      TilePtr tile = map->at(trap_y, trap_x);
-
-      if ((tile != nullptr) && (tile->get_movement_multiplier() > 0) && !tile->has_feature())
-      {
-        GeneratorUtils::generate_trap(map, trap_y, trap_x, traps);
-        break;
-      }
-    }
-  }
+  GeneratorUtils::generate_traps(map, num_traps);
 }
 
 MapType CavernGenerator::get_map_type() const
