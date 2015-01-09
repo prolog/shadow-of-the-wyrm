@@ -16,6 +16,7 @@ class MineGenerator : public SL::Generator
     void dig_floor(MapPtr map, const std::vector<Coordinate>& tiles_to_dig);
     void generate_rooms(MapPtr result_map);
     void connect_rooms(MapPtr result_map);
+    void generate_traps(MapPtr result_map);
     // Returns true if the room was able to be generated.
     bool generate_room(MapPtr map, const int start_y, const int start_x, const int height, const int width);
 
@@ -26,6 +27,8 @@ class MineGenerator : public SL::Generator
     static const int MINE_MAX_ROOM_WIDTH;
     static const int MINE_MIN_ROOM_HEIGHT;
     static const int MINE_MAX_ROOM_HEIGHT;
+    static const int MINE_MIN_TRAPS;
+    static const int MINE_MAX_TRAPS;
 
     std::vector<Room> rooms;
     std::shared_ptr<Room> main_hallway_centre;

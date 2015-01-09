@@ -1,5 +1,6 @@
 #include "FeatureGenerator.hpp"
 #include "GeneratorUtils.hpp"
+#include "Game.hpp"
 #include "Log.hpp"
 #include "RNG.hpp"
 #include "TileGenerator.hpp"
@@ -162,6 +163,42 @@ void GeneratorUtils::generate_fountain(const MapPtr map, const int row, const in
   }
 }
 
+// Generate a number of random traps.  Only consider tiles that do not already
+// have a feature, and exclude those tiles with movement multipliers of 0.
+// Return value is the number of traps generated.
+int GeneratorUtils::generate_traps(const MapPtr map, const int num_traps)
+{
+  int num_gen = 0;
+
+  int trap_y = 0, trap_x = 0;
+
+  Game& game = Game::instance();
+  vector<TrapPtr> traps = game.get_trap_info_ref();
+
+  Dimensions dim = map->size();
+  int max_y = dim.get_y() - 1;
+  int max_x = dim.get_x() - 1;
+
+  for (int i = 0; i < num_traps; i++)
+  {
+    // Try a few attempts each
+    for (int j = 0; j < 2; j++)
+    {
+      trap_y = RNG::range(0, max_y);
+      trap_x = RNG::range(0, max_x);
+
+      TilePtr tile = map->at(trap_y, trap_x);
+
+      if ((tile != nullptr) && (tile->get_movement_multiplier() > 0) && !tile->has_feature())
+      {
+        GeneratorUtils::generate_trap(map, trap_y, trap_x, traps);
+        break;
+      }
+    }
+  }
+
+  return num_gen;
+}
 // Generate a random trap from the list and place it at the given coordinates.
 void GeneratorUtils::generate_trap(const MapPtr map, const int row, const int col, const vector<TrapPtr>& traps)
 {

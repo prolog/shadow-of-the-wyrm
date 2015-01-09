@@ -24,6 +24,10 @@ class GeneratorUtils
     // Generates a given tile type at the given coordinates.
     static void generate_tile(const MapPtr map, const int row, const int col, const TileType tile_type);
     
+    // Generates a number of random traps over the map.
+    // Return value is number of traps generated.
+    static int generate_traps(const MapPtr map, const int num_traps);
+
     // Generates a random trap from the game at the given coordinates.
     static void generate_trap(const MapPtr map, const int row, const int col, const std::vector<TrapPtr>& traps);
 
