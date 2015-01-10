@@ -15740,7 +15740,7 @@
 			</Text>
 		</AirTile>
 	</Tiles>
-	<Traps><!--
+	<Traps>
 		<Trap id="fireball_trap">
 			<DescriptionSID>TRAP_FIREBALL_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FIREBALL_TRIGGER_SID</TriggerMessageSID>
@@ -15797,7 +15797,7 @@
 				<Type>1</Type>
 			</Damage>
 			<Uses>-1</Uses>
-		</Trap> -->
+		</Trap> 
 		<Trap id="flash_trap">
 			<DescriptionSID>TRAP_FLASH_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FLASH_TRIGGER_SID</TriggerMessageSID>
