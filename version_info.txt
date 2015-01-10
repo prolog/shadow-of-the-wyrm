@@ -1,5 +1,8 @@
+Savage Lands v0.3.2 "Hussa"
+- Version declared January 10, 2015.
+
 Savage Lands v0.3.1 "Frithuwald"
-- Version declared December 7, 2014.
+- Version declared December 7, 2014.  Version finalized January 10, 2015.
 
 - Updated the engine so that maps could get creature updates periodically.
   Custom maps (in XML files, etc) don't allow creature updates.
@@ -54,16 +57,26 @@ Savage Lands v0.3.1 "Frithuwald"
   the template function with a proper, statically-typed function.
   This...took a while.
 
-- Bug fixes: too many room features were being generated in dungeons.
-  Hide items with dynamic descriptions (which weren't supposed to be 
+- Bug fixes: 
+  
+  - Too many room features were being generated in dungeons.
+  
+  - Hide items with dynamic descriptions (which weren't supposed to be 
   generated randomly) were being generated randomly, and the "%s" was
-  causing curses outputting issues.  Properly consider a creature's
-  maximum number when creating the creature generation maps.
+  causing curses outputting issues.
+  
+  - Properly considered a creature's maximum number when creating the 
+  creature generation maps.
+
+  - Updated the code to apply pierce-effects at the DamageCalculatorPtr
+  level instead of in combat manager, so that when damage is applied
+  outside of combat (e.g. traps) and is piercing, the piercing flag is
+  properly handled.
 
 - New creatures: Pallas, Grubb, Kith, Bel, Brimman, Gilirien, Hord,
   Filch, Myrdin, Alteus, Layal, Bagra, Alcien, Rukhala.
 
-- New traps: fireball, arrow, rock, floor spikes.
+- New traps: fireball, arrow, rock, floor spikes, flash.
 
 Savage Lands v0.3.0 "Theodric"
 - Version declared November 11, 2014.  Version finalized December 7, 2014.

@@ -15740,7 +15740,7 @@
 			</Text>
 		</AirTile>
 	</Tiles>
-	<Traps>
+	<Traps><!--
 		<Trap id="fireball_trap">
 			<DescriptionSID>TRAP_FIREBALL_SID</DescriptionSID>
 			<TriggerMessageSID>TRAP_FIREBALL_TRIGGER_SID</TriggerMessageSID>
@@ -15795,6 +15795,23 @@
 				<NumDice>1</NumDice>
 				<NumSides>12</NumSides>
 				<Type>1</Type>
+			</Damage>
+			<Uses>-1</Uses>
+		</Trap> -->
+		<Trap id="flash_trap">
+			<DescriptionSID>TRAP_FLASH_SID</DescriptionSID>
+			<TriggerMessageSID>TRAP_FLASH_TRIGGER_SID</TriggerMessageSID>
+			<TriggerSymbol>*</TriggerSymbol>
+			<PlayerDamageMessageSID>TRAP_FLASH_PLAYER_DAMAGE_SID</PlayerDamageMessageSID>
+			<Colour>11</Colour>
+			<Damage piercing="1">
+				<NumDice>1</NumDice>
+				<NumSides>4</NumSides>
+				<Type>1</Type>
+				<EffectBonus>50</EffectBonus>
+				<StatusAilments>
+					<Status>_blind</Status>
+				</StatusAilments>
 			</Damage>
 			<Uses>-1</Uses>
 		</Trap>

@@ -170,16 +170,6 @@ bool CombatManager::hit(CreaturePtr attacking_creature, CreaturePtr attacked_cre
   string hit_specific_msg = hit_calculator->get_combat_message();
   bool piercing = damage_info.get_piercing();
 
-  if (piercing == true)
-  {
-    // Ignore soak when the damage is piercing.
-    soak_multiplier = 0;
-  }
-  else
-  {
-    soak_multiplier = hit_calculator->get_soak_multiplier();
-  }
-
   base_damage = hit_calculator->get_base_damage(damage_info);
 
   if (!hit_specific_msg.empty())

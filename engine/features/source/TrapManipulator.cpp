@@ -61,6 +61,8 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
 {
   Damage& damage = trap->get_damage();
   DamageType dt = damage.get_damage_type();
+  int effect_bonus = damage.get_effect_bonus();
+  StatusAilments status_ailments = damage.get_status_ailments();
   float soak_mult = 1.0f; // the creature's soak should use the standard multiplier.
 
   // Deal the damage to the creature:
@@ -78,9 +80,11 @@ void TrapManipulator::apply_effects_to_creature(TrapPtr trap, CreaturePtr creatu
   DamageCalculatorPtr damage_calc = DamageCalculatorFactory::create_damage_calculator(attack_type);
   int damage_dealt = damage_calc->calculate(creature, slays_race, damage, dmg_roll, soak_mult);
 
+  // Only apply the effect if there is damage to be dealt.
   if (damage_dealt > 0)
   {
     cm.deal_damage(nullptr, creature, damage_dealt, message);
+    cm.handle_damage_effects(creature, damage_dealt, dt, effect_bonus, status_ailments);
   }
 }
 

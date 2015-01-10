@@ -22,6 +22,7 @@ PhysicalDamageCalculator::PhysicalDamageCalculator(const AttackType new_attack_t
 int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bool slays_creatures_race, const Damage& physical_damage, const int base_damage, const float soak_multiplier)
 {
   int damage = 0;
+  float soak_mult = soak_multiplier;
 
   if (defending_creature)
   {
@@ -30,10 +31,15 @@ int PhysicalDamageCalculator::calculate(CreaturePtr defending_creature, const bo
     
     if (resisted_damage > 0)
     {
+      if (physical_damage.get_piercing())
+      {
+        soak_mult = 0;
+      }
+
       // Apply soak if damage is not negative.
       // Negative damage is permitted in extreme cases - it allows things like gaining HP from
       // fire damage, etc.
-      double total_soak = defending_creature->get_soak().get_current() * soak_multiplier;
+      double total_soak = defending_creature->get_soak().get_current() * soak_mult;
 
       if (slays_creatures_race)
       {
