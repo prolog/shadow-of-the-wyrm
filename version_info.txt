@@ -1,6 +1,8 @@
 Savage Lands v0.3.2 "Hussa"
 - Version declared January 10, 2015.
 
+- New traps: poison dart.
+
 Savage Lands v0.3.1 "Frithuwald"
 - Version declared December 7, 2014.  Version finalized January 10, 2015.
 
