@@ -11,7 +11,9 @@ agility_modifier(0),
 health_modifier(0),
 intelligence_modifier(0),
 willpower_modifier(0),
-charisma_modifier(0)
+charisma_modifier(0),
+evade_modifier(0),
+soak_modifier(0)
 {
 }
 
@@ -47,6 +49,8 @@ bool StatisticsModifier::operator==(const StatisticsModifier& sm) const
   result = result && intelligence_modifier == sm.intelligence_modifier;
   result = result && willpower_modifier == sm.willpower_modifier;
   result = result && charisma_modifier == sm.charisma_modifier;
+  result = result && evade_modifier == sm.evade_modifier;
+  result = result && soak_modifier == sm.soak_modifier;
 
   return result;
 }
@@ -122,6 +126,26 @@ int StatisticsModifier::get_charisma_modifier() const
   return charisma_modifier;
 }
 
+void StatisticsModifier::set_evade_modifier(const int new_evade_modifier)
+{
+  evade_modifier = new_evade_modifier;
+}
+
+int StatisticsModifier::get_evade_modifier() const
+{
+  return evade_modifier;
+}
+
+void StatisticsModifier::set_soak_modifier(const int new_soak_modifier)
+{
+  soak_modifier = new_soak_modifier;
+}
+
+int StatisticsModifier::get_soak_modifier() const
+{
+  return soak_modifier;
+}
+
 bool StatisticsModifier::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, strength_modifier);
@@ -131,7 +155,8 @@ bool StatisticsModifier::serialize(ostream& stream) const
   Serialize::write_int(stream, intelligence_modifier);
   Serialize::write_int(stream, willpower_modifier);
   Serialize::write_int(stream, charisma_modifier);
-
+  Serialize::write_int(stream, evade_modifier);
+  Serialize::write_int(stream, soak_modifier);
 
   return true;
 }
@@ -145,6 +170,8 @@ bool StatisticsModifier::deserialize(istream& stream)
   Serialize::read_int(stream, intelligence_modifier);
   Serialize::read_int(stream, willpower_modifier);
   Serialize::read_int(stream, charisma_modifier);
+  Serialize::read_int(stream, evade_modifier);
+  Serialize::read_int(stream, soak_modifier);
 
   return true;
 }

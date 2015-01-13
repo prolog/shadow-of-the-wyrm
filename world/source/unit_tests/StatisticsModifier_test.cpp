@@ -10,6 +10,9 @@ TEST(SL_World_StatisticsModifier, serialization_id)
 TEST(SL_World_StatisticsModifier, saveload)
 {
   StatisticsModifier sm(1,2,3,4,5,6,7);
+  sm.set_evade_modifier(3);
+  sm.set_soak_modifier(4);
+
   StatisticsModifier sm2;
 
   EXPECT_FALSE(sm == sm2);

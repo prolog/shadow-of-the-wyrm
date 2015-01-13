@@ -29,6 +29,12 @@ class StatisticsModifier : public ISerializable
     void set_charisma_modifier(const int new_charisma_modifier);
     int get_charisma_modifier() const;
 
+    void set_evade_modifier(const int new_evade_modifier);
+    int get_evade_modifier() const;
+
+    void set_soak_modifier(const int new_soak_modifier);
+    int get_soak_modifier() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 
@@ -40,6 +46,9 @@ class StatisticsModifier : public ISerializable
     int intelligence_modifier;
     int willpower_modifier;
     int charisma_modifier;
+
+    int evade_modifier;
+    int soak_modifier;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
