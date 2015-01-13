@@ -689,6 +689,7 @@
     <ClInclude Include="engine\time\include\CreatureHungerTimer.hpp" />
     <ClInclude Include="engine\time\include\CreaturePietyRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureSkillIncrementer.hpp" />
+    <ClInclude Include="engine\time\include\CreatureStatisticsModifiers.hpp" />
     <ClInclude Include="engine\time\include\CreatureStatuses.hpp" />
     <ClInclude Include="engine\time\include\CreatureTimeObserver.hpp" />
     <ClInclude Include="engine\time\include\FallingMovementAccumulationChecker.hpp" />
@@ -2030,6 +2031,7 @@
     <ClCompile Include="engine\time\source\CreatureHungerTimer.cpp" />
     <ClCompile Include="engine\time\source\CreaturePietyRegeneration.cpp" />
     <ClCompile Include="engine\time\source\CreatureSkillIncrementer.cpp" />
+    <ClCompile Include="engine\time\source\CreatureStatisticsModifiers.cpp" />
     <ClCompile Include="engine\time\source\CreatureStatuses.cpp" />
     <ClCompile Include="engine\time\source\CreatureTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\FallingMovementAccumulationChecker.cpp" />

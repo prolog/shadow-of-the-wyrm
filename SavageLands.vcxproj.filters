@@ -3315,6 +3315,9 @@
     <ClInclude Include="engine\features\include\TrapManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureStatisticsModifiers.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6448,6 +6451,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\features\source\unit_tests\Tannery_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureStatisticsModifiers.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
