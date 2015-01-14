@@ -15169,6 +15169,42 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="d_04_divine_wind">
+			<NameSID>DIVINE_WIND_SID</NameSID>
+			<PlayerCastMessageSID>DIVINE_WIND_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>DIVINE_WIND_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<Colour>15</Colour>
+			<APCost>6</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>0</Shape>
+			<Effect>18</Effect>
+			<Properties>
+				<Property>
+					<Name>STATISTIC_MODIFIER_EVADE</Name>
+					<Value>22</Value>
+				</Property>
+			</Properties>
+		</Spell>
+		<Spell id="d_04_divine_shield">
+			<NameSID>DIVINE_SHIELD_SID</NameSID>
+			<PlayerCastMessageSID>DIVINE_SHIELD_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>DIVINE_SHIELD_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<Colour>15</Colour>
+			<APCost>8</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>0</Shape>
+			<Effect>18</Effect>
+			<Properties>
+				<Property>
+					<Name>STATISTIC_MODIFIER_SOAK</Name>
+					<Value>7</Value>
+				</Property>
+			</Properties>
+		</Spell>
 		<Spell id="m_01_wraith_form">
 			<NameSID>WRAITH_FORM_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WRAITH_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
