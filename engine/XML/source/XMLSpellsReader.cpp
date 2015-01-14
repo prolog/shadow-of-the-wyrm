@@ -5,6 +5,17 @@
 
 using namespace std;
 
+class SpellAdditionalPropertiesNames
+{
+  public:
+    static std::string PROPERTY_STATISTIC_MODIFIER_EVADE;
+    static std::string PROPERTY_STATISTIC_MODIFIER_SOAK;
+};
+
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_EVADE = "STATISTIC_MODIFIER_EVADE";
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_SOAK = "STATISTIC_MODIFIER_SOAK";
+
+
 XMLSpellsReader::XMLSpellsReader()
 {
 }

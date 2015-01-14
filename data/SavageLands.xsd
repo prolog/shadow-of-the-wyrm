@@ -72,6 +72,7 @@
 			<xs:element name="Shape" type="tns:SpellShape"/>
 			<xs:element name="Damage" type="tns:Damage" minOccurs="0"/>
 			<xs:element name="Effect" type="tns:EffectType"/>
+			<xs:element name="Properties" type="tns:Properties" minOccurs="0"/>
 		</xs:sequence>
 		<xs:attribute name="id" type="tns:Identifier"/>
 	</xs:complexType>
@@ -1364,11 +1365,12 @@
 				Enchanting = 15
 				Flying = 16
 				Gain Attributes = 17
+				Modify Statistics = 18
 		</xs:documentation>
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="17"/>
+		<xs:maxInclusive value="18"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="DamageType">
