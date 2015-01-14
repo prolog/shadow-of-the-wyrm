@@ -117,6 +117,7 @@ Creature::Creature(const Creature& cr)
   mortuary = cr.mortuary;
   conducts = cr.conducts;
   spell_knowledge = cr.spell_knowledge;
+  statistics_modifiers = cr.statistics_modifiers;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -200,6 +201,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (mortuary == cr.mortuary);
   result = result && (conducts == cr.conducts);
   result = result && (spell_knowledge == cr.spell_knowledge);
+  result = result && (statistics_modifiers == cr.statistics_modifiers);
 
   return result;
 }
@@ -1059,10 +1061,20 @@ SpellKnowledge& Creature::get_spell_knowledge_ref()
   return spell_knowledge;
 }
 
+void Creature::set_statistics_modifiers(const map<ulonglong, vector<StatisticsModifier>>& new_statistics_modifiers)
+{
+  statistics_modifiers = new_statistics_modifiers;
+}
+
+map<ulonglong, vector<StatisticsModifier>>& Creature::get_statistics_modifiers_ref()
+{
+  return statistics_modifiers;
+}
+
 // Set, get, and query additional (string) properties
-  // Uncomment the code below to find out the size of Creature. :)
-  //template<int s> struct creature_size;
-  //creature_size<sizeof(Creature)> creature_size;
+// Uncomment the code below to find out the size of Creature. :)
+//  template<int s> struct creature_size;
+//  creature_size<sizeof(Creature)> creature_size;
 
 // Ensure that I haven't missed anything in the copy constructor, IO, etc!
 void Creature::assert_size() const
@@ -1071,7 +1083,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 904, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 912, "Unexpected sizeof Creature.");
     #else
     // Release
     static_assert(sizeof(*this) == 800, "Unexpected sizeof Creature.");
@@ -1143,6 +1155,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->mortuary, cr.mortuary);
   std::swap(this->conducts, cr.conducts);
   std::swap(this->spell_knowledge, cr.spell_knowledge);
+  std::swap(this->statistics_modifiers, cr.statistics_modifiers);
 }
 
 bool Creature::serialize(ostream& stream) const
@@ -1272,6 +1285,19 @@ bool Creature::serialize(ostream& stream) const
   mortuary.serialize(stream);
   conducts.serialize(stream);
   spell_knowledge.serialize(stream);
+
+  size_t sm_size = statistics_modifiers.size();
+  Serialize::write_size_t(stream, sm_size);
+  for (auto& sm_pair : statistics_modifiers)
+  {
+    Serialize::write_ulonglong(stream, sm_pair.first);
+
+    Serialize::write_size_t(stream, sm_pair.second.size());
+    for (auto& sm_element : sm_pair.second)
+    {
+      sm_element.serialize(stream);
+    }
+  }
 
   return true;
 }
@@ -1428,6 +1454,28 @@ bool Creature::deserialize(istream& stream)
   mortuary.deserialize(stream);
   conducts.deserialize(stream);
   spell_knowledge.deserialize(stream);
+
+  size_t sm_size = 0;
+  Serialize::read_size_t(stream, sm_size);
+  for (size_t i = 0; i < sm_size; i++)
+  {
+    ulonglong elapsed = 0;
+    Serialize::read_ulonglong(stream, elapsed);
+
+    size_t vec_size = 0;
+    vector<StatisticsModifier> sm_vec;
+    Serialize::read_size_t(stream, vec_size);
+
+    for (size_t j = 0; j < vec_size; j++)
+    {
+      StatisticsModifier sm;
+      sm.deserialize(stream);
+
+      sm_vec.push_back(sm);
+    }
+
+    statistics_modifiers.insert(make_pair(elapsed, sm_vec));
+  }
 
   return true;
 }
