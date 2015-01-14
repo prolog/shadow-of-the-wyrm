@@ -272,6 +272,9 @@ class Creature : public ISerializable
     void set_automatic_movement(const AutomaticMovement& new_auto);
     AutomaticMovement& get_automatic_movement_ref();
 
+    void set_statistics_modifiers(const std::map<ulonglong, std::vector<StatisticsModifier>>& new_statistics_modifiers);
+    std::map<ulonglong, std::vector<StatisticsModifier>>& get_statistics_modifiers_ref();
+
     // Additional traits not all creatures will have, so a bit of space is saved
     // by using a map.
     bool has_additional_property(const std::string& property_name) const;
@@ -435,6 +438,9 @@ class Creature : public ISerializable
 
     // The creature's magical knowledge.
     SpellKnowledge spell_knowledge;
+
+    // The list of statistics modifiers currently in place (e.g., as a result of spells)
+    std::map<ulonglong, std::vector<StatisticsModifier>> statistics_modifiers;
 };
 
 typedef std::shared_ptr<Creature> CreaturePtr;
