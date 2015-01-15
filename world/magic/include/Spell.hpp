@@ -9,6 +9,7 @@
 #include "SkillTypes.hpp"
 #include "SpellTypes.hpp"
 #include "SpellShape.hpp"
+#include "StatisticsModifier.hpp"
 
 class Spell
 {
@@ -61,6 +62,9 @@ class Spell
     void set_effect(const EffectType new_effect);
     EffectType get_effect() const;
 
+    void set_statistics_modifier(const StatisticsModifier& new_statistics_modifier);
+    StatisticsModifier get_statistics_modifier() const;
+
   protected:
     std::string spell_id;
     std::string spell_name_sid;
@@ -78,6 +82,7 @@ class Spell
     // If the spell has damage associated with it, and what that damage is.
     bool has_damage;
     Damage damage;
+    StatisticsModifier statistics_modifier;
 };
 
 typedef std::map<std::string, Spell> SpellMap;

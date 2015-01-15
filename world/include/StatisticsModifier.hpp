@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include "ISerializable.hpp"
 
 class StatisticsModifier : public ISerializable
@@ -6,6 +7,7 @@ class StatisticsModifier : public ISerializable
   public:
     StatisticsModifier();
     StatisticsModifier(const int new_strength_modifier, const int new_dexterity_modifier, const int new_agility_modifier, const int new_health_modifier, const int new_intelligence_modifier, const int new_willpower_modifier, const int new_charisma_modifier);
+    StatisticsModifier(const std::vector<int>& args);
     bool operator==(const StatisticsModifier& sm) const;
 
     void set_strength_modifier(const int new_strength_modifier);
