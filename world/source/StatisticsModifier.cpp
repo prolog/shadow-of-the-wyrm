@@ -34,8 +34,52 @@ agility_modifier(new_agility_modifier),
 health_modifier(new_health_modifier),
 intelligence_modifier(new_intelligence_modifier),
 willpower_modifier(new_willpower_modifier),
-charisma_modifier(new_charisma_modifier)
+charisma_modifier(new_charisma_modifier),
+evade_modifier(0),
+soak_modifier(0)
 {
+}
+
+// Version called by the XML reader.
+StatisticsModifier::StatisticsModifier(const vector<int>& args)
+: strength_modifier(0),
+dexterity_modifier(0),
+agility_modifier(0),
+health_modifier(0),
+intelligence_modifier(0),
+willpower_modifier(0),
+charisma_modifier(0),
+evade_modifier(0),
+soak_modifier(0)
+{
+  int size = args.size();
+
+  // Fall through is intentional to allow setting all values from a given
+  // size of the vector.
+  switch (size)
+  {
+    default:
+    case 9:
+      soak_modifier = args.at(8);
+    case 8:
+      evade_modifier = args.at(7);
+    case 7:
+      charisma_modifier = args.at(6);
+    case 6:
+      willpower_modifier = args.at(5);
+    case 5:
+      intelligence_modifier = args.at(4);
+    case 4:
+      health_modifier = args.at(3);
+    case 3:
+      agility_modifier = args.at(2);
+    case 2:
+      dexterity_modifier = args.at(1);
+    case 1:
+      strength_modifier = args.at(0);
+    case 0:
+      break;
+  }
 }
 
 bool StatisticsModifier::operator==(const StatisticsModifier& sm) const

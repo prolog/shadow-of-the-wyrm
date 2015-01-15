@@ -1,5 +1,7 @@
 #include <vector>
+#include "Conversion.hpp"
 #include "SpellShapeFactory.hpp"
+#include "StatisticsModifier.hpp"
 #include "XMLSpellsReader.hpp"
 #include "XMLDataStructures.hpp"
 
@@ -8,13 +10,26 @@ using namespace std;
 class SpellAdditionalPropertiesNames
 {
   public:
+    static std::string PROPERTY_STATISTIC_MODIFIER_STR;
+    static std::string PROPERTY_STATISTIC_MODIFIER_DEX;
+    static std::string PROPERTY_STATISTIC_MODIFIER_AGI;
+    static std::string PROPERTY_STATISTIC_MODIFIER_HEA;
+    static std::string PROPERTY_STATISTIC_MODIFIER_INT;
+    static std::string PROPERTY_STATISTIC_MODIFIER_WIL;
+    static std::string PROPERTY_STATISTIC_MODIFIER_CHA;
     static std::string PROPERTY_STATISTIC_MODIFIER_EVADE;
     static std::string PROPERTY_STATISTIC_MODIFIER_SOAK;
 };
 
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_STR = "STATISTIC_MODIFIER_STR";
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_DEX = "STATISTIC_MODIFIER_DEX";
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_AGI = "STATISTIC_MODIFIER_AGI";
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_HEA = "STATISTIC_MODIFIER_HEA";
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_INT = "STATISTIC_MODIFIER_INT";
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_WIL = "STATISTIC_MODIFIER_WIL";
+string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_CHA = "STATISTIC_MODIFIER_CHA";
 string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_EVADE = "STATISTIC_MODIFIER_EVADE";
 string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_SOAK = "STATISTIC_MODIFIER_SOAK";
-
 
 XMLSpellsReader::XMLSpellsReader()
 {
@@ -61,6 +76,8 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
     SpellShape spell_shape = SpellShapeFactory::create_spell_shape(shape_type);
     XMLNode damage_node = XMLUtils::get_next_element_by_local_name(spell_node, "Damage");
     EffectType effect = static_cast<EffectType>(XMLUtils::get_child_node_int_value(spell_node, "Effect"));
+    XMLNode properties_node = XMLUtils::get_next_element_by_local_name(spell_node, "Properties");
+    map<string, string> properties;
 
     spell.set_spell_id(spell_id);
     spell.set_spell_name_sid(spell_name_sid);
@@ -82,8 +99,56 @@ Spell XMLSpellsReader::parse(const XMLNode& spell_node)
       spell.set_damage(dmg);
     }
 
+    parse_spell_properties(properties_node, spell, properties);
+
     spell.set_effect(effect);
   }
 
   return spell;
+}
+
+void XMLSpellsReader::parse_spell_properties(const XMLNode& properties_node, Spell& spell, map<string, string>& properties)
+{
+  if (!properties_node.is_null())
+  {
+    parse_properties(properties, properties_node);
+    create_statistics_modifiers_if_necessary(spell, properties);
+  }
+}
+
+void XMLSpellsReader::create_statistics_modifiers_if_necessary(Spell& spell, const map<string, string>& properties)
+{
+  bool create_statistics_modifier = false;
+  vector<int> sm_constructor_arg;
+
+  vector<string> keys = { SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_STR,
+                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_DEX,
+                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_AGI,
+                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_HEA,
+                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_INT,
+                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_WIL,
+                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_CHA,
+                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_EVADE,
+                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_SOAK };
+
+  for (const auto& key : keys)
+  {
+    auto prop_it = properties.find(key);
+
+    if (prop_it != properties.end())
+    {
+      create_statistics_modifier = true;
+      sm_constructor_arg.push_back(String::to_int(prop_it->second));
+    }
+    else
+    {
+      sm_constructor_arg.push_back(0);
+    }
+  }
+
+  if (create_statistics_modifier)
+  {
+    StatisticsModifier sm(sm_constructor_arg);
+    spell.set_statistics_modifier(sm);
+  }
 }
