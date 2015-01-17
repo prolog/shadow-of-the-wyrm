@@ -2,6 +2,8 @@
 #include <vector>
 #include "ISerializable.hpp"
 
+// When adding new values to this class, be sure to update the constructor
+// and get_raw_values() function!
 class StatisticsModifier : public ISerializable
 {
   public:
@@ -36,6 +38,8 @@ class StatisticsModifier : public ISerializable
 
     void set_soak_modifier(const int new_soak_modifier);
     int get_soak_modifier() const;
+
+    std::vector<int> get_raw_values() const;
 
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
