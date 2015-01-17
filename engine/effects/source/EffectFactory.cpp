@@ -8,6 +8,7 @@
 #include "HealingEffect.hpp"
 #include "IdentifyEffect.hpp"
 #include "IncorporealEffect.hpp"
+#include "ModifyStatisticsEffect.hpp"
 #include "NullEffect.hpp"
 #include "FruitJuiceEffect.hpp"
 #include "RechargingEffect.hpp"
@@ -24,9 +25,9 @@ EffectFactory::~EffectFactory()
 {
 }
 
-EffectPtr EffectFactory::create_effect(const EffectType effect_type)
+EffectPtr EffectFactory::create_effect(const EffectType effect_type, StatisticsModifier sm)
 {
-  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(18), "Unexpected EFFECT_TYPE_LAST value.");
+  static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(19), "Unexpected EFFECT_TYPE_LAST value.");
 
   EffectPtr effect;
 
@@ -83,6 +84,14 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type)
     case EffectType::EFFECT_TYPE_GAIN_ATTRIBUTES:
       effect = std::make_shared<GainAttributesEffect>();
       break;
+    case EffectType::EFFECT_TYPE_MODIFY_STATISTICS:
+    {
+      shared_ptr<ModifyStatisticsEffect> ms_effect = std::make_shared<ModifyStatisticsEffect>();
+      ms_effect->set_statistics_modifier(sm);
+
+      effect = ms_effect;
+      break;
+    }
     case EffectType::EFFECT_TYPE_NULL:
     default:
       effect = std::make_shared<NullEffect>();

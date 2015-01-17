@@ -190,6 +190,19 @@ int StatisticsModifier::get_soak_modifier() const
   return soak_modifier;
 }
 
+vector<int> StatisticsModifier::get_raw_values() const
+{
+  return {strength_modifier, 
+          dexterity_modifier, 
+          agility_modifier, 
+          health_modifier, 
+          intelligence_modifier, 
+          willpower_modifier, 
+          charisma_modifier, 
+          evade_modifier, 
+          soak_modifier};
+}
+
 bool StatisticsModifier::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, strength_modifier);

@@ -105,6 +105,11 @@ string EffectTextKeys::get_gain_attributes_effect_message(const string& monster_
   return get_general_effect_message(monster_desc_sid, is_player, EFFECT_GAIN_ATTRIBUTES_PLAYER, EFFECT_GAIN_ATTRIBUTES_MONSTER);
 }
 
+string EffectTextKeys::get_modify_statistics_effect_message(const string& monster_desc_sid, const bool is_player)
+{
+  return get_general_effect_message(monster_desc_sid, is_player, EFFECT_MODIFY_STATISTICS_PLAYER, EFFECT_MODIFY_STATISTICS_MONSTER);
+}
+
 const string EffectTextKeys::EFFECT_HEALING_PLAYER = "EFFECT_HEALING_PLAYER";
 const string EffectTextKeys::EFFECT_HEALING_MONSTER = "EFFECT_HEALING_MONSTER";
 const string EffectTextKeys::EFFECT_NULL = "EFFECT_NULL";
@@ -127,3 +132,5 @@ const string EffectTextKeys::EFFECT_ENCHANT = "EFFECT_ENCHANT";
 const string EffectTextKeys::EFFECT_CURSED_ENCHANT = "EFFECT_CURSED_ENCHANT";
 const string EffectTextKeys::EFFECT_GAIN_ATTRIBUTES_PLAYER = "EFFECT_GAIN_ATTRIBUTES_PLAYER";
 const string EffectTextKeys::EFFECT_GAIN_ATTRIBUTES_MONSTER = "EFFECT_GAIN_ATTRIBUTES_MONSTER";
+const string EffectTextKeys::EFFECT_MODIFY_STATISTICS_PLAYER = "EFFECT_MODIFY_STATISTICS_PLAYER";
+const string EffectTextKeys::EFFECT_MODIFY_STATISTICS_MONSTER = "EFFECT_MODIFY_STATISTICS_MONSTER";

@@ -3318,6 +3318,9 @@
     <ClInclude Include="engine\time\include\CreatureStatisticsModifiers.hpp">
       <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\effects\include\ModifyStatisticsEffect.hpp">
+      <Filter>Header Files\engine\effects\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6454,6 +6457,9 @@
     </ClCompile>
     <ClCompile Include="engine\time\source\CreatureStatisticsModifiers.cpp">
       <Filter>Source Files\engine\time\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\effects\source\ModifyStatisticsEffect.cpp">
+      <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

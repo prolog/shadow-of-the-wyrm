@@ -421,6 +421,7 @@
     <ClInclude Include="engine\effects\include\GainAttributesTypes.hpp" />
     <ClInclude Include="engine\effects\include\HasteEffect.hpp" />
     <ClInclude Include="engine\effects\include\IncorporealEffect.hpp" />
+    <ClInclude Include="engine\effects\include\ModifyStatisticsEffect.hpp" />
     <ClInclude Include="engine\effects\include\RechargingEffect.hpp" />
     <ClInclude Include="engine\effects\include\RemoveStatusEffect.hpp" />
     <ClInclude Include="engine\effects\include\Effect.hpp" />
@@ -1588,6 +1589,7 @@
     <ClCompile Include="engine\effects\source\GainAttributesEffect.cpp" />
     <ClCompile Include="engine\effects\source\HasteEffect.cpp" />
     <ClCompile Include="engine\effects\source\IncorporealEffect.cpp" />
+    <ClCompile Include="engine\effects\source\ModifyStatisticsEffect.cpp" />
     <ClCompile Include="engine\effects\source\RechargingEffect.cpp" />
     <ClCompile Include="engine\effects\source\RemoveStatusEffect.cpp" />
     <ClCompile Include="engine\effects\source\Effect.cpp" />
