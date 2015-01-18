@@ -1,5 +1,8 @@
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
+#include "ModifyStatisticsCalculator.hpp"
 #include "ModifyStatisticsEffect.hpp"
 
 using namespace std;
@@ -37,6 +40,27 @@ bool ModifyStatisticsEffect::apply_statistics_modifiers(CreaturePtr creature, co
 {
   if (creature)
   {
+    Game& game = Game::instance();
+    double seconds = GameUtils::get_seconds(game);
+
+    ModifyStatisticsCalculator msc;
+    double duration_end = seconds + (msc.calculate_duration() * 60);
+
+    // Get the statistics modifiers.
+    auto& cr_sm = creature->get_statistics_modifiers_ref();
+
+    // Are there any other modifiers set for a particular duration?
+    vector<StatisticsModifier> v_sm;
+    auto cr_sm_it = cr_sm.find(duration_end);
+
+    if (cr_sm_it != cr_sm.end())
+    {
+      v_sm = cr_sm_it->second;
+    }
+
+    // Add the statistics modifier to the current list, and add to the creature.
+    v_sm.push_back(sm);
+    cr_sm[duration_end] = v_sm;
   }
 
   return true;

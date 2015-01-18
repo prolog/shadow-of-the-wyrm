@@ -231,6 +231,7 @@
     <ClInclude Include="engine\calculators\include\ISkillMarker.hpp" />
     <ClInclude Include="engine\calculators\include\ISpeedCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ItemPietyCalculator.hpp" />
+    <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreCalculator.hpp" />
     <ClInclude Include="engine\calculators\include\ScoreConstants.hpp" />
     <ClInclude Include="engine\calculators\include\CorpseCalculator.hpp" />
@@ -1135,6 +1136,7 @@
     <ClCompile Include="engine\calculators\source\MeleeAndRangedCombatTargetNumberCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MeleeCombatSkillMarker.cpp" />
     <ClCompile Include="engine\calculators\source\MightyHitTypeCalculator.cpp" />
+    <ClCompile Include="engine\calculators\source\ModifyStatisticsCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MountainClimbingCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\MutenessCalculator.cpp" />
     <ClCompile Include="engine\calculators\source\NullSpeedCalculator.cpp" />

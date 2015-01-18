@@ -1061,12 +1061,12 @@ SpellKnowledge& Creature::get_spell_knowledge_ref()
   return spell_knowledge;
 }
 
-void Creature::set_statistics_modifiers(const map<ulonglong, vector<StatisticsModifier>>& new_statistics_modifiers)
+void Creature::set_statistics_modifiers(const map<double, vector<StatisticsModifier>>& new_statistics_modifiers)
 {
   statistics_modifiers = new_statistics_modifiers;
 }
 
-map<ulonglong, vector<StatisticsModifier>>& Creature::get_statistics_modifiers_ref()
+map<double, vector<StatisticsModifier>>& Creature::get_statistics_modifiers_ref()
 {
   return statistics_modifiers;
 }
@@ -1290,7 +1290,7 @@ bool Creature::serialize(ostream& stream) const
   Serialize::write_size_t(stream, sm_size);
   for (auto& sm_pair : statistics_modifiers)
   {
-    Serialize::write_ulonglong(stream, sm_pair.first);
+    Serialize::write_double(stream, sm_pair.first);
 
     Serialize::write_size_t(stream, sm_pair.second.size());
     for (auto& sm_element : sm_pair.second)
@@ -1459,8 +1459,8 @@ bool Creature::deserialize(istream& stream)
   Serialize::read_size_t(stream, sm_size);
   for (size_t i = 0; i < sm_size; i++)
   {
-    ulonglong elapsed = 0;
-    Serialize::read_ulonglong(stream, elapsed);
+    double elapsed = 0;
+    Serialize::read_double(stream, elapsed);
 
     size_t vec_size = 0;
     vector<StatisticsModifier> sm_vec;
