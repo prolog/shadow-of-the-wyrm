@@ -1,4 +1,6 @@
 #include "CreatureStatisticsModifiers.hpp"
+#include "Game.hpp"
+#include "GameUtils.hpp"
 
 using namespace std;
 
@@ -10,9 +12,12 @@ void CreatureStatisticsModifiers::tick(CreaturePtr creature, const ulonglong min
 
     for (auto& m_it = creature_modifiers.begin(); m_it != creature_modifiers.end(); )
     {
-      double modifier_expiry = m_it->first;
+      Game& game = Game::instance();
 
-      if (modifier_expiry <= total_minutes_elapsed)
+      double modifier_expiry = m_it->first;
+      double current_seconds = GameUtils::get_seconds(game);
+
+      if (modifier_expiry <= current_seconds)
       {
         creature_modifiers.erase(m_it++);
       }
