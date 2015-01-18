@@ -4,6 +4,12 @@ Savage Lands v0.3.2 "Hussa"
 - Added a new effect type, "modify statistics", that can be used for
   buff and debuff type spells.
 
+- Updated creatures to maintain a map of statistic modifiers.  These
+  are keyed by the expiry time.
+
+- Added a calculator for statistic modifiers, to calculate the length
+  of the effect (the mean is twenty minutes).
+
 - New spells: divine wind (Divine), divine shield (Divine).
 
 - New traps: poison dart.
