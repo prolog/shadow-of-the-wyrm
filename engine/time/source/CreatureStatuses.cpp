@@ -1,5 +1,6 @@
 #include "CreatureStatuses.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "StatusEffectFactory.hpp"
 
 using namespace std;
@@ -9,7 +10,7 @@ void CreatureStatuses::tick(CreaturePtr creature, const ulonglong minutes_this_t
   if (creature)
   {
     Game& game = Game::instance();
-    double current_seconds = game.get_current_world()->get_calendar().get_seconds();
+    double current_seconds = GameUtils::get_seconds(game);
 
     CreatureStatusMap statuses = creature->get_statuses();
     StatusDurationMap durations = creature->get_status_durations();

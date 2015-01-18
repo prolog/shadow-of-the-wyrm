@@ -15187,7 +15187,7 @@
 				</Property>
 			</Properties>
 		</Spell>
-		<Spell id="d_04_divine_shield">
+		<Spell id="d_05_divine_shield">
 			<NameSID>DIVINE_SHIELD_SID</NameSID>
 			<PlayerCastMessageSID>DIVINE_SHIELD_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>DIVINE_SHIELD_MONSTER_CAST_SID</MonsterCastMessageSID>

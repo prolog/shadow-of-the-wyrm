@@ -75,7 +75,7 @@ TEST(SL_World_Creature, saveload)
 
   c.set_blood(b);
 
-  map<ulonglong, vector<StatisticsModifier>> cr_sm_map;
+  map<double, vector<StatisticsModifier>> cr_sm_map;
 
   StatisticsModifier sm1(1, 2, 3, 4, 5, 6, 7);
   StatisticsModifier sm2(2, 3, 4, 5, 6, 7, 8);
@@ -83,8 +83,8 @@ TEST(SL_World_Creature, saveload)
   sm2.set_soak_modifier(-5);
 
   vector<StatisticsModifier> vsm1{ sm1 }, vsm2{ sm2 };
-  cr_sm_map.insert(make_pair(17456, vsm1));
-  cr_sm_map.insert(make_pair(55555, vsm2));
+  cr_sm_map.insert(make_pair(17456.0, vsm1));
+  cr_sm_map.insert(make_pair(55555.0, vsm2));
   c.set_statistics_modifiers(cr_sm_map);
 
   ostringstream ss;

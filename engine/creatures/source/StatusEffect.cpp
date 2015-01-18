@@ -2,6 +2,7 @@
 #include "CurrentCreatureAbilities.hpp"
 #include "DefaultStatusEffectCalculator.hpp"
 #include "Game.hpp"
+#include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
@@ -64,7 +65,7 @@ bool StatusEffect::apply(CreaturePtr creature) const
     Game& game = Game::instance();
     string status_identifier = get_status_identifier();
 
-    double current_seconds_since_game_start = game.get_current_world()->get_calendar().get_seconds();
+    double current_seconds_since_game_start = GameUtils::get_seconds(game);
     int duration = status_calc->calculate_duration_in_minutes(creature);
 
     StatusDuration effect_duration(current_seconds_since_game_start + (duration * 60.0));

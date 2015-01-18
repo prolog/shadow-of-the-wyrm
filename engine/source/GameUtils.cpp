@@ -79,3 +79,9 @@ bool GameUtils::is_player_among_creatures(CreaturePtr creature1, CreaturePtr cre
 {
   return ((creature1 && creature1->get_is_player()) || (creature2 && creature2->get_is_player()));
 }
+
+// How many seconds since the game started?
+double GameUtils::get_seconds(Game& game)
+{
+  return game.get_current_world()->get_calendar().get_seconds();
+}
