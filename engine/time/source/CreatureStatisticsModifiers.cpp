@@ -8,7 +8,7 @@ void CreatureStatisticsModifiers::tick(CreaturePtr creature, const ulonglong min
 {
   if (creature)
   {
-    map<double, vector<StatisticsModifier>>& creature_modifiers = creature->get_statistics_modifiers_ref();
+    map<double, vector<pair<string, StatisticsModifier>>>& creature_modifiers = creature->get_statistics_modifiers_ref();
 
     for (auto& m_it = creature_modifiers.begin(); m_it != creature_modifiers.end(); )
     {

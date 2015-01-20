@@ -17,6 +17,16 @@ StatisticsModifier ModifyStatisticsEffect::get_statistics_modifier() const
   return sm;
 }
 
+void ModifyStatisticsEffect::set_spell_id(const string& new_spell_id)
+{
+  spell_id = new_spell_id;
+}
+
+string ModifyStatisticsEffect::get_spell_id() const
+{
+  return spell_id;
+}
+
 string ModifyStatisticsEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
 {
   string creature_desc_sid;
@@ -38,7 +48,11 @@ Effect* ModifyStatisticsEffect::clone()
 
 bool ModifyStatisticsEffect::apply_statistics_modifiers(CreaturePtr creature, const StatisticsModifier& sm) const
 {
-  if (creature)
+  bool result = false;
+
+  // The statistic modifiers can't be applied over and over!
+  // This isn't Final Fantasy with RUSE.
+  if (creature && !creature->is_affected_by_modifier_spell(spell_id))
   {
     Game& game = Game::instance();
     double seconds = GameUtils::get_seconds(game);
@@ -50,7 +64,7 @@ bool ModifyStatisticsEffect::apply_statistics_modifiers(CreaturePtr creature, co
     auto& cr_sm = creature->get_statistics_modifiers_ref();
 
     // Are there any other modifiers set for a particular duration?
-    vector<StatisticsModifier> v_sm;
+    vector<pair<string, StatisticsModifier>> v_sm;
     auto cr_sm_it = cr_sm.find(duration_end);
 
     if (cr_sm_it != cr_sm.end())
@@ -59,11 +73,13 @@ bool ModifyStatisticsEffect::apply_statistics_modifiers(CreaturePtr creature, co
     }
 
     // Add the statistics modifier to the current list, and add to the creature.
-    v_sm.push_back(sm);
+    v_sm.push_back(make_pair(spell_id, sm));
     cr_sm[duration_end] = v_sm;
+
+    result = true;
   }
 
-  return true;
+  return result;
 }
 
 bool ModifyStatisticsEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am)

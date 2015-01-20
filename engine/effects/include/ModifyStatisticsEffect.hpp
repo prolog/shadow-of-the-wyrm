@@ -11,6 +11,9 @@ class ModifyStatisticsEffect : public Effect
     void set_statistics_modifier(const StatisticsModifier& new_sm);
     StatisticsModifier get_statistics_modifier() const;
 
+    void set_spell_id(const std::string& new_spell_id);
+    std::string get_spell_id() const;
+
   protected:
     virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
     virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
@@ -19,5 +22,6 @@ class ModifyStatisticsEffect : public Effect
     virtual bool apply_statistics_modifiers(std::shared_ptr<Creature>, const StatisticsModifier& sm) const;
 
     StatisticsModifier sm;
+    std::string spell_id;
 };
 

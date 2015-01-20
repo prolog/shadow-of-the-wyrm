@@ -1061,14 +1061,30 @@ SpellKnowledge& Creature::get_spell_knowledge_ref()
   return spell_knowledge;
 }
 
-void Creature::set_statistics_modifiers(const map<double, vector<StatisticsModifier>>& new_statistics_modifiers)
+void Creature::set_statistics_modifiers(const map<double, vector<pair<string, StatisticsModifier>>>& new_statistics_modifiers)
 {
   statistics_modifiers = new_statistics_modifiers;
 }
 
-map<double, vector<StatisticsModifier>>& Creature::get_statistics_modifiers_ref()
+map<double, vector<pair<string, StatisticsModifier>>>& Creature::get_statistics_modifiers_ref()
 {
   return statistics_modifiers;
+}
+
+bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
+{
+  for (const auto& pair : statistics_modifiers)
+  {
+    for (const auto& spells : pair.second)
+    {
+      if (spells.first == spell_id)
+      {
+        return true;
+      }
+    }
+  }
+
+  return false;
 }
 
 // Set, get, and query additional (string) properties
@@ -1295,7 +1311,8 @@ bool Creature::serialize(ostream& stream) const
     Serialize::write_size_t(stream, sm_pair.second.size());
     for (auto& sm_element : sm_pair.second)
     {
-      sm_element.serialize(stream);
+      Serialize::write_string(stream, sm_element.first);
+      sm_element.second.serialize(stream);
     }
   }
 
@@ -1463,15 +1480,18 @@ bool Creature::deserialize(istream& stream)
     Serialize::read_double(stream, elapsed);
 
     size_t vec_size = 0;
-    vector<StatisticsModifier> sm_vec;
+    vector<pair<string, StatisticsModifier>> sm_vec;
     Serialize::read_size_t(stream, vec_size);
 
     for (size_t j = 0; j < vec_size; j++)
     {
+      string spell_id;
+      Serialize::read_string(stream, spell_id);
+
       StatisticsModifier sm;
       sm.deserialize(stream);
 
-      sm_vec.push_back(sm);
+      sm_vec.push_back(make_pair(spell_id, sm));
     }
 
     statistics_modifiers.insert(make_pair(elapsed, sm_vec));
