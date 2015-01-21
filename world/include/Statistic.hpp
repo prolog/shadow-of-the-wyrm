@@ -15,6 +15,8 @@ class Statistic : public ISerializable
     void set_current(int new_current);
     int  get_current() const;
 
+    int get_lowest() const;
+
     bool serialize(std::ostream& stream) const override;
     bool deserialize(std::istream& stream) override;
 

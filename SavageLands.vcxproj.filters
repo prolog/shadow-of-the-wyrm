@@ -6467,5 +6467,8 @@
     <ClCompile Include="engine\calculators\source\ModifyStatisticsCalculator.cpp">
       <Filter>Source Files\engine\calculators\source</Filter>
     </ClCompile>
+    <ClCompile Include="engine\effects\source\unit_tests\ModifyStatisticsEffect_test.cpp">
+      <Filter>Source Files\engine\effects\source\unit_tests</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

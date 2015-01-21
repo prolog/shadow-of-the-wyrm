@@ -15,11 +15,16 @@ class ModifyStatisticsEffect : public Effect
     std::string get_spell_id() const;
 
   protected:
+    friend class SL_Engine_Effects_ModifyStatisticsEffect;
+
     virtual bool effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
     virtual bool effect_uncursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
     virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
 
+    virtual StatisticsModifier adjust_negative_statistics_modifiers(std::shared_ptr<Creature> creature, const StatisticsModifier& sm) const;
     virtual bool apply_statistics_modifiers(std::shared_ptr<Creature>, const StatisticsModifier& sm) const;
+
+    virtual int get_primary_statistic_modifier(int stat_score, int stat_modifier) const;
 
     StatisticsModifier sm;
     std::string spell_id;

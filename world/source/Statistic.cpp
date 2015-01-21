@@ -69,6 +69,18 @@ int Statistic::get_current() const
 	return current;
 }
 
+int Statistic::get_lowest() const
+{
+  if (current < base)
+  {
+    return current;
+  }
+  else
+  {
+    return base;
+  }
+}
+
 bool Statistic::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, base);
