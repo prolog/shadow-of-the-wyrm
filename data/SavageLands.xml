@@ -15352,6 +15352,52 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>		
+		<Spell id="m_09_curse">
+			<NameSID>CURSE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>CURSE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>CURSE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3002</MagicCategory>
+			<Colour>4</Colour>
+			<APCost>15</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>1</Shape>
+			<Effect>18</Effect>
+			<Properties>
+				<Property>
+					<Name>STATISTIC_MODIFIER_STR</Name>
+					<Value>-10</Value>
+				</Property>
+				<Property>
+					<Name>STATISTIC_MODIFIER_DEX</Name>
+					<Value>-10</Value>
+				</Property>
+				<Property>
+					<Name>STATISTIC_MODIFIER_AGI</Name>
+					<Value>-10</Value>
+				</Property>
+				<Property>
+					<Name>STATISTIC_MODIFIER_HEA</Name>
+					<Value>-10</Value>
+				</Property>
+				<Property>
+					<Name>STATISTIC_MODIFIER_INT</Name>
+					<Value>-10</Value>
+				</Property>
+				<Property>
+					<Name>STATISTIC_MODIFIER_WIL</Name>
+					<Value>-10</Value>
+				</Property>
+				<Property>
+					<Name>STATISTIC_MODIFIER_CHA</Name>
+					<Value>-10</Value>
+				</Property>
+				<Property>
+					<Name>STATISTIC_MODIFIER_EVADE</Name>
+					<Value>-10</Value>
+				</Property>
+			</Properties>
+		</Spell>		
 		<Spell id="p_01_shadow_flame">
 			<NameSID>SHADOW_FLAME_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SHADOW_FLAME_PLAYER_CAST_SID</PlayerCastMessageSID>
