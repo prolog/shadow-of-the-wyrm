@@ -8,6 +8,19 @@ TEST(SL_World_Statistic, InitialValueIs1)
   EXPECT_EQ(1, stat.get_current());
 }
 
+TEST(SL_World_Statistic, Lowest)
+{
+  Statistic stat(30);
+  stat.set_current(33);
+
+  EXPECT_EQ(30, stat.get_lowest());
+
+  Statistic stat2(25);
+  stat2.set_current(15);
+
+  EXPECT_EQ(15, stat2.get_lowest());
+}
+
 TEST(SL_World_Statistic, BaseValue)
 {
   Statistic stat;

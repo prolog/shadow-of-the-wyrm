@@ -127,4 +127,79 @@ bool ModifyStatisticsEffect::effect_cursed(CreaturePtr creature, ActionManager *
   return apply_statistics_modifiers(creature, blessed_sm);
 }
 
+// Adjust negative statistics modifiers so that creature stats cannot
+// go below 1.
+StatisticsModifier ModifyStatisticsEffect::adjust_negative_statistics_modifiers(CreaturePtr creature, const StatisticsModifier& sm) const
+{
+  StatisticsModifier new_sm = sm;
 
+  if (creature)
+  {
+    // Get the primary statistic modifiers, for checking.  Adding these to the lowest
+    // statistic value (base or current) should not bring the stat below 0.
+    int str = creature->get_strength().get_lowest();
+    int str_mod = new_sm.get_strength_modifier();
+
+    int dex = creature->get_dexterity().get_lowest();
+    int dex_mod = new_sm.get_dexterity_modifier();
+
+    int agi = creature->get_agility().get_lowest();
+    int agi_mod = new_sm.get_agility_modifier();
+
+    int hea = creature->get_health().get_lowest();
+    int hea_mod = new_sm.get_health_modifier();
+
+    int itl = creature->get_intelligence().get_lowest();
+    int itl_mod = new_sm.get_intelligence_modifier();
+
+    int wil = creature->get_willpower().get_lowest();
+    int wil_mod = new_sm.get_willpower_modifier();
+
+    int cha = creature->get_charisma().get_lowest();
+    int cha_mod = new_sm.get_charisma_modifier();
+
+    // Evade, soak can be < 0.  But get the values so that new modifiers
+    // can be constructed using the vector constructor.
+    int evade_mod = new_sm.get_evade_modifier();
+    int soak_mod = new_sm.get_soak_modifier();
+
+    vector<pair<int, int>> pri_stats = { { str, str_mod }, { dex, dex_mod }, { agi, agi_mod }, { hea, hea_mod }, { itl, itl_mod }, { wil, wil_mod }, { cha, cha_mod } };
+    vector<int> trans_mods;
+
+    for (const auto& pair : pri_stats)
+    {
+      trans_mods.push_back(get_primary_statistic_modifier(pair.first, pair.second));
+    }
+
+    trans_mods.push_back(evade_mod);
+    trans_mods.push_back(soak_mod);
+
+    StatisticsModifier transformed(trans_mods);
+    new_sm = transformed;
+  }
+
+  return new_sm;
+}
+
+// For primary statistics (str, dex, etc) the score can't go above 99 or below 1.
+// So calculate the new value for the modifier, given current lowest of the stat's
+// base/current.
+int ModifyStatisticsEffect::get_primary_statistic_modifier(const int stat_score, const int stat_modifier) const
+{
+  int modifier = stat_modifier;
+
+  if (stat_score + modifier > 99)
+  {
+    modifier = 99 - stat_score;
+  }
+  else if (stat_score + stat_modifier < 1)
+  {
+    modifier = (stat_score - 1) * -1;
+  }
+
+  return modifier;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/ModifyStatisticsEffect_test.cpp"
+#endif
