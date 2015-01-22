@@ -20052,6 +20052,40 @@
 				<SpellID>d_03_holy</SpellID>
 				<Difficulty>120</Difficulty>
 			</Spellbook>
+			<Spellbook id="divine_wind_spellbook">
+				<DescriptionSID>DIVINE_WIND_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DIVINE_WIND_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DIVINE_WIND_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DIVINE_WIND_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>405</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>32</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>d_04_divine_wind</SpellID>
+				<Difficulty>70</Difficulty>
+			</Spellbook>
+			<Spellbook id="divine_shield_spellbook">
+				<DescriptionSID>DIVINE_SHIELD_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_DIVINE_SHIELD_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>DIVINE_SHIELD_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_DIVINE_SHIELD_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>405</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>32</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>d_05_divine_shield</SpellID>
+				<Difficulty>75</Difficulty>
+			</Spellbook>			
 			<Spellbook id="wraith_form_spellbook">
 				<DescriptionSID>WRAITH_FORM_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WRAITH_FORM_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -20187,6 +20221,23 @@
 				<Rarity>1</Rarity>
 				<SpellID>m_08_stone</SpellID>
 				<Difficulty>115</Difficulty>
+			</Spellbook>
+			<Spellbook id="curse_spellbook">
+				<DescriptionSID>CURSE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CURSE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>CURSE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_CURSE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>300</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>m_09_curse</SpellID>
+				<Difficulty>70</Difficulty>
 			</Spellbook>
 		</Spellbooks>
 		<MiscItems>
