@@ -15185,6 +15185,10 @@
 					<Name>STATISTIC_MODIFIER_EVADE</Name>
 					<Value>22</Value>
 				</Property>
+				<Property>
+					<Name>SPELL_WEAR_OFF_SID</Name>
+					<Value>DIVINE_WIND_WEAR_OFF_SID</Value>
+				</Property>
 			</Properties>
 		</Spell>
 		<Spell id="d_05_divine_shield">
@@ -15202,6 +15206,10 @@
 				<Property>
 					<Name>STATISTIC_MODIFIER_SOAK</Name>
 					<Value>7</Value>
+				</Property>
+				<Property>
+					<Name>SPELL_WEAR_OFF_SID</Name>
+					<Value>DIVINE_SHIELD_WEAR_OFF_SID</Value>
 				</Property>
 			</Properties>
 		</Spell>
@@ -15395,6 +15403,10 @@
 				<Property>
 					<Name>STATISTIC_MODIFIER_EVADE</Name>
 					<Value>-10</Value>
+				</Property>
+				<Property>
+					<Name>SPELL_WEAR_OFF_SID</Name>
+					<Value>CURSE_WEAR_OFF_SID</Value>
 				</Property>
 			</Properties>
 		</Spell>		
