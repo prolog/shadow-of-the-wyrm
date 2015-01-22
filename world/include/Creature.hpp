@@ -272,8 +272,8 @@ class Creature : public ISerializable
     void set_automatic_movement(const AutomaticMovement& new_auto);
     AutomaticMovement& get_automatic_movement_ref();
 
-    void set_statistics_modifiers(const std::map<double, std::vector<std::pair<std::string, StatisticsModifier>>>& new_statistics_modifiers);
-    std::map<double, std::vector<std::pair<std::string, StatisticsModifier>>>& get_statistics_modifiers_ref();
+    void set_modifiers(const std::map<double, std::vector<std::pair<std::string, Modifier>>>& new_modifiers);
+    std::map<double, std::vector<std::pair<std::string, Modifier>>>& get_modifiers_ref();
     bool is_affected_by_modifier_spell(const std::string& spell_id) const;
 
     // Additional traits not all creatures will have, so a bit of space is saved
@@ -441,7 +441,7 @@ class Creature : public ISerializable
     SpellKnowledge spell_knowledge;
 
     // The list of statistics modifiers currently in place (e.g., as a result of spells)
-    std::map<double, std::vector<std::pair<std::string, StatisticsModifier>>> statistics_modifiers;
+    std::map<double, std::vector<std::pair<std::string, Modifier>>> modifiers;
 };
 
 typedef std::shared_ptr<Creature> CreaturePtr;

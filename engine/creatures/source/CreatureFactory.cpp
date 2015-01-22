@@ -230,43 +230,43 @@ CreaturePtr CreatureFactory::create_by_race_and_class
 
 void CreatureFactory::set_initial_statistics(CreaturePtr creature, RacePtr race, ClassPtr char_class, DeityPtr deity)
 {
-  StatisticsModifier race_sm = race->get_statistics_modifier();
-  StatisticsModifier class_sm = char_class->get_statistics_modifier();
-  StatisticsModifier deity_sm = deity->get_initial_statistics_modifier();
+  Modifier race_m = race->get_modifier();
+  Modifier class_m = char_class->get_modifier();
+  Modifier deity_m = deity->get_initial_modifier();
   
   Statistic strength     = race->get_starting_strength().get_base()     
-                         + class_sm.get_strength_modifier()
-                         + deity_sm.get_strength_modifier() 
+                         + class_m.get_strength_modifier()
+                         + deity_m.get_strength_modifier() 
                          + (RNG::range(0,3));
                          
   Statistic dexterity    = race->get_starting_dexterity().get_base()
-                         + class_sm.get_dexterity_modifier()
-                         + deity_sm.get_dexterity_modifier() 
+                         + class_m.get_dexterity_modifier()
+                         + deity_m.get_dexterity_modifier() 
                          + (RNG::range(0,3));
                          
   Statistic agility      = race->get_starting_agility().get_base()
-                         + class_sm.get_agility_modifier()
-                         + deity_sm.get_agility_modifier() 
+                         + class_m.get_agility_modifier()
+                         + deity_m.get_agility_modifier() 
                          + (RNG::range(0,3));
                          
   Statistic health       = race->get_starting_health().get_base()
-                         + class_sm.get_health_modifier()
-                         + deity_sm.get_health_modifier()
+                         + class_m.get_health_modifier()
+                         + deity_m.get_health_modifier()
                          + (RNG::range(0,3));
                          
   Statistic intelligence = race->get_starting_intelligence().get_base()
-                         + class_sm.get_intelligence_modifier()
-                         + deity_sm.get_intelligence_modifier()
+                         + class_m.get_intelligence_modifier()
+                         + deity_m.get_intelligence_modifier()
                          + (RNG::range(0,3));
                          
   Statistic willpower    = race->get_starting_willpower().get_base()
-                         + class_sm.get_willpower_modifier()
-                         + deity_sm.get_willpower_modifier()
+                         + class_m.get_willpower_modifier()
+                         + deity_m.get_willpower_modifier()
                          + (RNG::range(0,3));
                          
   Statistic charisma     = race->get_starting_charisma().get_base()
-                         + class_sm.get_charisma_modifier()
-                         + deity_sm.get_charisma_modifier()
+                         + class_m.get_charisma_modifier()
+                         + deity_m.get_charisma_modifier()
                          + (RNG::range(0,3));
 
   Statistic speed = race->get_starting_speed(); // Purely based on race

@@ -8,7 +8,7 @@
 #include "Resistances.hpp"
 #include "Skills.hpp"
 #include "Statistic.hpp"
-#include "StatisticsModifier.hpp"
+#include "Modifier.hpp"
 
 class Class
 {
@@ -28,8 +28,8 @@ class Class
     void set_class_abbreviation_sid(const std::string& new_class_abbreviation_sid);
     std::string get_class_abbreviation_sid() const;
 
-    void set_statistics_modifier(const StatisticsModifier& new_modifier);
-    StatisticsModifier get_statistics_modifier() const;
+    void set_modifier(const Modifier& new_modifier);
+    Modifier get_modifier() const;
 
     void set_resistances(const Resistances& resistances);
     Resistances get_resistances() const;
@@ -79,7 +79,7 @@ class Class
     std::string class_description_sid;
     std::string class_abbreviation_sid;
 
-    StatisticsModifier statistics_modifier;
+    Modifier modifier;
 
     Resistances resistances;
     Skills skills;

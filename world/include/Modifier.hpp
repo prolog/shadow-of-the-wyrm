@@ -4,13 +4,13 @@
 
 // When adding new values to this class, be sure to update the constructor
 // and get_raw_values() function!
-class StatisticsModifier : public ISerializable
+class Modifier : public ISerializable
 {
   public:
-    StatisticsModifier();
-    StatisticsModifier(const int new_strength_modifier, const int new_dexterity_modifier, const int new_agility_modifier, const int new_health_modifier, const int new_intelligence_modifier, const int new_willpower_modifier, const int new_charisma_modifier);
-    StatisticsModifier(const std::vector<int>& args);
-    bool operator==(const StatisticsModifier& sm) const;
+    Modifier();
+    Modifier(const int new_strength_modifier, const int new_dexterity_modifier, const int new_agility_modifier, const int new_health_modifier, const int new_intelligence_modifier, const int new_willpower_modifier, const int new_charisma_modifier);
+    Modifier(const std::vector<int>& args);
+    bool operator==(const Modifier& m) const;
 
     void set_strength_modifier(const int new_strength_modifier);
     int get_strength_modifier() const;

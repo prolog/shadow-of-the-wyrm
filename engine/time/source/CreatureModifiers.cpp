@@ -1,14 +1,15 @@
-#include "CreatureStatisticsModifiers.hpp"
+#include "CreatureModifiers.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "MessageManagerFactory.hpp"
 
 using namespace std;
 
-void CreatureStatisticsModifiers::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
+void CreatureModifiers::tick(CreaturePtr creature, const ulonglong minutes_this_tick, const ulonglong total_minutes_elapsed)
 {
   if (creature)
   {
-    map<double, vector<pair<string, StatisticsModifier>>>& creature_modifiers = creature->get_statistics_modifiers_ref();
+    map<double, vector<pair<string, Modifier>>>& creature_modifiers = creature->get_modifiers_ref();
 
     for (auto& m_it = creature_modifiers.begin(); m_it != creature_modifiers.end(); )
     {
@@ -19,6 +20,7 @@ void CreatureStatisticsModifiers::tick(CreaturePtr creature, const ulonglong min
 
       if (modifier_expiry <= current_seconds)
       {
+        add_removal_message(creature);
         creature_modifiers.erase(m_it++);
       }
       else
@@ -31,3 +33,14 @@ void CreatureStatisticsModifiers::tick(CreaturePtr creature, const ulonglong min
   }
 }
 
+void CreatureModifiers::add_removal_message(CreaturePtr creature)
+{
+  if (creature)
+  {
+    string creature_id = creature->get_id();
+
+    // Check to see if the creature is the player, or in view of the player.
+
+    // Add the appropriate message.
+  }
+}

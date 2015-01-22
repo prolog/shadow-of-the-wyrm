@@ -7,14 +7,14 @@
 
 using namespace std;
 
-void ModifyStatisticsEffect::set_statistics_modifier(const StatisticsModifier& new_sm)
+void ModifyStatisticsEffect::set_modifier(const Modifier& new_m)
 {
-  sm = new_sm;
+  m = new_m;
 }
 
-StatisticsModifier ModifyStatisticsEffect::get_statistics_modifier() const
+Modifier ModifyStatisticsEffect::get_modifier() const
 {
-  return sm;
+  return m;
 }
 
 void ModifyStatisticsEffect::set_spell_id(const string& new_spell_id)
@@ -46,7 +46,7 @@ Effect* ModifyStatisticsEffect::clone()
   return new ModifyStatisticsEffect(*this);
 }
 
-bool ModifyStatisticsEffect::apply_statistics_modifiers(CreaturePtr creature, const StatisticsModifier& sm) const
+bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifier& m) const
 {
   bool result = false;
 
@@ -61,20 +61,20 @@ bool ModifyStatisticsEffect::apply_statistics_modifiers(CreaturePtr creature, co
     double duration_end = seconds + (msc.calculate_duration() * 60);
 
     // Get the statistics modifiers.
-    auto& cr_sm = creature->get_statistics_modifiers_ref();
+    auto& cr_sm = creature->get_modifiers_ref();
 
     // Are there any other modifiers set for a particular duration?
-    vector<pair<string, StatisticsModifier>> v_sm;
+    vector<pair<string, Modifier>> v_m;
     auto cr_sm_it = cr_sm.find(duration_end);
 
     if (cr_sm_it != cr_sm.end())
     {
-      v_sm = cr_sm_it->second;
+      v_m = cr_sm_it->second;
     }
 
     // Add the statistics modifier to the current list, and add to the creature.
-    v_sm.push_back(make_pair(spell_id, sm));
-    cr_sm[duration_end] = v_sm;
+    v_m.push_back(make_pair(spell_id, m));
+    cr_sm[duration_end] = v_m;
 
     result = true;
   }
@@ -84,7 +84,7 @@ bool ModifyStatisticsEffect::apply_statistics_modifiers(CreaturePtr creature, co
 
 bool ModifyStatisticsEffect::effect_blessed(std::shared_ptr<Creature> creature, ActionManager * const am)
 {
-  vector<int> blessed_sm_v = sm.get_raw_values();
+  vector<int> blessed_sm_v = m.get_raw_values();
   std::transform(blessed_sm_v.begin(), blessed_sm_v.end(), blessed_sm_v.begin(), 
   [](int a)
     {
@@ -98,18 +98,18 @@ bool ModifyStatisticsEffect::effect_blessed(std::shared_ptr<Creature> creature, 
       }
   });
 
-  StatisticsModifier blessed_sm(blessed_sm_v);
-  return apply_statistics_modifiers(creature, blessed_sm);
+  Modifier blessed_m(blessed_sm_v);
+  return apply_modifiers(creature, blessed_m);
 }
 
 bool ModifyStatisticsEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
 {
-  return apply_statistics_modifiers(creature, sm);
+  return apply_modifiers(creature, m);
 }
 
 bool ModifyStatisticsEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
 {
-  vector<int> blessed_sm_v = sm.get_raw_values();
+  vector<int> blessed_sm_v = m.get_raw_values();
   std::transform(blessed_sm_v.begin(), blessed_sm_v.end(), blessed_sm_v.begin(),
   [](int a)
   {
@@ -123,45 +123,45 @@ bool ModifyStatisticsEffect::effect_cursed(CreaturePtr creature, ActionManager *
     }
   });
 
-  StatisticsModifier blessed_sm(blessed_sm_v);
-  return apply_statistics_modifiers(creature, blessed_sm);
+  Modifier blessed_m(blessed_sm_v);
+  return apply_modifiers(creature, blessed_m);
 }
 
 // Adjust negative statistics modifiers so that creature stats cannot
 // go below 1.
-StatisticsModifier ModifyStatisticsEffect::adjust_negative_statistics_modifiers(CreaturePtr creature, const StatisticsModifier& sm) const
+Modifier ModifyStatisticsEffect::adjust_negative_modifiers(CreaturePtr creature, const Modifier& m) const
 {
-  StatisticsModifier new_sm = sm;
+  Modifier new_m = m;
 
   if (creature)
   {
     // Get the primary statistic modifiers, for checking.  Adding these to the lowest
     // statistic value (base or current) should not bring the stat below 0.
     int str = creature->get_strength().get_lowest();
-    int str_mod = new_sm.get_strength_modifier();
+    int str_mod = new_m.get_strength_modifier();
 
     int dex = creature->get_dexterity().get_lowest();
-    int dex_mod = new_sm.get_dexterity_modifier();
+    int dex_mod = new_m.get_dexterity_modifier();
 
     int agi = creature->get_agility().get_lowest();
-    int agi_mod = new_sm.get_agility_modifier();
+    int agi_mod = new_m.get_agility_modifier();
 
     int hea = creature->get_health().get_lowest();
-    int hea_mod = new_sm.get_health_modifier();
+    int hea_mod = new_m.get_health_modifier();
 
     int itl = creature->get_intelligence().get_lowest();
-    int itl_mod = new_sm.get_intelligence_modifier();
+    int itl_mod = new_m.get_intelligence_modifier();
 
     int wil = creature->get_willpower().get_lowest();
-    int wil_mod = new_sm.get_willpower_modifier();
+    int wil_mod = new_m.get_willpower_modifier();
 
     int cha = creature->get_charisma().get_lowest();
-    int cha_mod = new_sm.get_charisma_modifier();
+    int cha_mod = new_m.get_charisma_modifier();
 
     // Evade, soak can be < 0.  But get the values so that new modifiers
     // can be constructed using the vector constructor.
-    int evade_mod = new_sm.get_evade_modifier();
-    int soak_mod = new_sm.get_soak_modifier();
+    int evade_mod = new_m.get_evade_modifier();
+    int soak_mod = new_m.get_soak_modifier();
 
     vector<pair<int, int>> pri_stats = { { str, str_mod }, { dex, dex_mod }, { agi, agi_mod }, { hea, hea_mod }, { itl, itl_mod }, { wil, wil_mod }, { cha, cha_mod } };
     vector<int> trans_mods;
@@ -174,11 +174,11 @@ StatisticsModifier ModifyStatisticsEffect::adjust_negative_statistics_modifiers(
     trans_mods.push_back(evade_mod);
     trans_mods.push_back(soak_mod);
 
-    StatisticsModifier transformed(trans_mods);
-    new_sm = transformed;
+    Modifier transformed(trans_mods);
+    new_m = transformed;
   }
 
-  return new_sm;
+  return new_m;
 }
 
 // For primary statistics (str, dex, etc) the score can't go above 99 or below 1.

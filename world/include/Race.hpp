@@ -10,7 +10,7 @@
 #include "CreatureFeatures.hpp"
 #include "Resistances.hpp"
 #include "SettlementTypes.hpp"
-#include "StatisticsModifier.hpp"
+#include "Modifier.hpp"
 #include "tiles.hpp"
 
 class Race
@@ -77,8 +77,8 @@ class Race
     void set_starting_charisma(const Statistic& new_starting_charisma);
     Statistic get_starting_charisma() const;
 
-    void set_statistics_modifier(const StatisticsModifier& new_statistics_modifier);
-    StatisticsModifier get_statistics_modifier() const;
+    void set_modifier(const Modifier& new_modifier);
+    Modifier get_modifier() const;
 
     void set_starting_speed(const Statistic& new_starting_speed);
     Statistic get_starting_speed() const;
@@ -132,7 +132,7 @@ class Race
     Statistic starting_charisma;
 
     // Initial secondary statistics or their modifiers
-    StatisticsModifier statistics_modifier; 
+    Modifier modifier; 
     Statistic starting_speed; // starting speed is set by race.
 
     BoolStatistic corporeal; // Most races are corporeal; spirits aren't.

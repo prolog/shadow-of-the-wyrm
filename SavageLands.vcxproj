@@ -689,9 +689,9 @@
     <ClInclude Include="engine\time\include\CreatureAPRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureHPRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureHungerTimer.hpp" />
+    <ClInclude Include="engine\time\include\CreatureModifiers.hpp" />
     <ClInclude Include="engine\time\include\CreaturePietyRegeneration.hpp" />
     <ClInclude Include="engine\time\include\CreatureSkillIncrementer.hpp" />
-    <ClInclude Include="engine\time\include\CreatureStatisticsModifiers.hpp" />
     <ClInclude Include="engine\time\include\CreatureStatuses.hpp" />
     <ClInclude Include="engine\time\include\CreatureTimeObserver.hpp" />
     <ClInclude Include="engine\time\include\FallingMovementAccumulationChecker.hpp" />
@@ -747,6 +747,7 @@
     <ClInclude Include="engine\XML\include\XMLAmuletReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLArmourReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLBoatReader.hpp" />
+    <ClInclude Include="engine\XML\include\XMLModifierReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLScriptsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLSpellbookReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLClassesReader.hpp" />
@@ -771,7 +772,6 @@
     <ClInclude Include="engine\XML\include\XMLSkillsReaders.hpp" />
     <ClInclude Include="engine\XML\include\XMLSpellsReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLStaffReader.hpp" />
-    <ClInclude Include="engine\XML\include\XMLStatisticsModifierReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLToolReader.hpp" />
     <ClInclude Include="engine\XML\include\XMLTrapsReader.hpp" />
@@ -800,6 +800,7 @@
     <ClInclude Include="world\include\ConsumableConstants.hpp" />
     <ClInclude Include="world\include\IInventory.hpp" />
     <ClInclude Include="world\include\InventoryFactory.hpp" />
+    <ClInclude Include="world\include\Modifier.hpp" />
     <ClInclude Include="world\include\NullInventory.hpp" />
     <ClInclude Include="world\include\SkinningConstants.hpp" />
     <ClInclude Include="world\include\SmithingConstants.hpp" />
@@ -853,7 +854,6 @@
     <ClInclude Include="world\include\SkillTypes.hpp" />
     <ClInclude Include="world\include\Staff.hpp" />
     <ClInclude Include="world\include\Statistic.hpp" />
-    <ClInclude Include="world\include\StatisticsModifier.hpp" />
     <ClInclude Include="world\include\StatusAilments.hpp" />
     <ClInclude Include="world\include\StatusDuration.hpp" />
     <ClInclude Include="world\include\StatusTypes.hpp" />
@@ -2038,9 +2038,9 @@
     <ClCompile Include="engine\time\source\CreatureAPRegeneration.cpp" />
     <ClCompile Include="engine\time\source\CreatureHPRegeneration.cpp" />
     <ClCompile Include="engine\time\source\CreatureHungerTimer.cpp" />
+    <ClCompile Include="engine\time\source\CreatureModifiers.cpp" />
     <ClCompile Include="engine\time\source\CreaturePietyRegeneration.cpp" />
     <ClCompile Include="engine\time\source\CreatureSkillIncrementer.cpp" />
-    <ClCompile Include="engine\time\source\CreatureStatisticsModifiers.cpp" />
     <ClCompile Include="engine\time\source\CreatureStatuses.cpp" />
     <ClCompile Include="engine\time\source\CreatureTimeObserver.cpp" />
     <ClCompile Include="engine\time\source\FallingMovementAccumulationChecker.cpp" />
@@ -2128,6 +2128,7 @@
     <ClCompile Include="engine\XML\source\XMLAmuletReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLArmourReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLBoatReader.cpp" />
+    <ClCompile Include="engine\XML\source\XMLModifierReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLScriptsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpellbookReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLClassesReader.cpp" />
@@ -2152,7 +2153,6 @@
     <ClCompile Include="engine\XML\source\XMLSkillsReaders.cpp" />
     <ClCompile Include="engine\XML\source\XMLSpellsReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLStaffReader.cpp" />
-    <ClCompile Include="engine\XML\source\XMLStatisticsModifierReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLTilesReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLToolReader.cpp" />
     <ClCompile Include="engine\XML\source\XMLTrapsReader.cpp" />
@@ -2279,6 +2279,7 @@
     <ClCompile Include="world\source\Conducts.cpp" />
     <ClCompile Include="world\source\ConsumableConstants.cpp" />
     <ClCompile Include="world\source\InventoryFactory.cpp" />
+    <ClCompile Include="world\source\Modifier.cpp" />
     <ClCompile Include="world\source\NullInventory.cpp" />
     <ClCompile Include="world\source\SkinningConstants.cpp" />
     <ClCompile Include="world\source\SmithingConstants.cpp" />
@@ -2325,7 +2326,6 @@
     <ClCompile Include="world\source\Skills.cpp" />
     <ClCompile Include="world\source\Staff.cpp" />
     <ClCompile Include="world\source\Statistic.cpp" />
-    <ClCompile Include="world\source\StatisticsModifier.cpp" />
     <ClCompile Include="world\source\StatusAilments.cpp" />
     <ClCompile Include="world\source\StatusDuration.cpp" />
     <ClCompile Include="world\source\StatusTypes.cpp" />
@@ -2375,6 +2375,11 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Modifier_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\NullInventory_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -2450,11 +2455,6 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="world\source\unit_tests\StatisticsModifier_test.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="world\source\unit_tests\StatusAilments_test.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>

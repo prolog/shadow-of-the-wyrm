@@ -1,7 +1,7 @@
 #include <vector>
 #include "XMLDataStructures.hpp"
 #include "XMLDeitiesReader.hpp"
-#include "XMLStatisticsModifierReader.hpp"
+#include "XMLModifierReader.hpp"
 
 using namespace std;
 
@@ -55,9 +55,9 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     WorshipSiteType worship_site_type = static_cast<WorshipSiteType>(XMLUtils::get_child_node_int_value(deity_node, "WorshipSiteType"));
     string anger_script = XMLUtils::get_child_node_value(deity_node, "AngerScript");
 
-    XMLStatisticsModifierReader smr;
-    XMLNode statistics_modifier_node = XMLUtils::get_next_element_by_local_name(deity_node, "DeityInitialModifiers");
-    StatisticsModifier sm = smr.get_statistics_modifier(statistics_modifier_node);
+    XMLModifierReader mr;
+    XMLNode modifier_node = XMLUtils::get_next_element_by_local_name(deity_node, "DeityInitialModifiers");
+    Modifier m = mr.get_modifier(modifier_node);
     
     deity->set_user_playable(playable);
     deity->set_id(deity_id);
@@ -72,7 +72,7 @@ DeityPtr XMLDeitiesReader::parse_deity(const XMLNode& deity_node)
     parse_summons(summons_node, deity);
     deity->set_worship_site_type(worship_site_type);
     deity->set_anger_script(anger_script);
-    deity->set_initial_statistics_modifier(sm);
+    deity->set_initial_modifier(m);
   }
   
   return deity;
