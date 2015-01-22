@@ -95,6 +95,7 @@ bool Modifier::operator==(const Modifier& m) const
   result = result && charisma_modifier == m.charisma_modifier;
   result = result && evade_modifier == m.evade_modifier;
   result = result && soak_modifier == m.soak_modifier;
+  result = result && statuses == m.statuses;
 
   return result;
 }
@@ -190,6 +191,32 @@ int Modifier::get_soak_modifier() const
   return soak_modifier;
 }
 
+void Modifier::set_status(const string& status, const bool value)
+{
+  statuses[status] = value;
+}
+
+bool Modifier::has_status(const string& status_id) const
+{
+  auto s_it = statuses.find(status_id);
+
+  return (s_it != statuses.end());
+}
+
+bool Modifier::get_status(const string& status_id) const
+{
+  bool val = false;
+
+  auto s_it = statuses.find(status_id);
+
+  if (s_it != statuses.end())
+  {
+    val = s_it->second;
+  }
+
+  return val;
+}
+
 vector<int> Modifier::get_raw_values() const
 {
   return {strength_modifier, 
@@ -215,6 +242,14 @@ bool Modifier::serialize(ostream& stream) const
   Serialize::write_int(stream, evade_modifier);
   Serialize::write_int(stream, soak_modifier);
 
+  size_t statuses_size = statuses.size();
+  Serialize::write_size_t(stream, statuses_size);
+  for (const auto& s_pair : statuses)
+  {
+    Serialize::write_string(stream, s_pair.first);
+    Serialize::write_bool(stream, s_pair.second);
+  }
+
   return true;
 }
 
@@ -229,6 +264,20 @@ bool Modifier::deserialize(istream& stream)
   Serialize::read_int(stream, charisma_modifier);
   Serialize::read_int(stream, evade_modifier);
   Serialize::read_int(stream, soak_modifier);
+
+  size_t statuses_size = 0;
+  Serialize::read_size_t(stream, statuses_size);
+
+  for (size_t i = 0; i < statuses_size; i++)
+  {
+    string status;
+    bool value = false;
+
+    Serialize::read_string(stream, status);
+    Serialize::read_bool(stream, value);
+
+    statuses.insert(make_pair(status, value));
+  }
 
   return true;
 }

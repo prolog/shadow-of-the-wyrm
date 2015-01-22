@@ -1,4 +1,5 @@
 #pragma once
+#include <map>
 #include <vector>
 #include "ISerializable.hpp"
 
@@ -39,6 +40,10 @@ class Modifier : public ISerializable
     void set_soak_modifier(const int new_soak_modifier);
     int get_soak_modifier() const;
 
+    void set_status(const std::string& status_id, const bool value);
+    bool has_status(const std::string& status_id) const;
+    bool get_status(const std::string& status_id) const;
+
     std::vector<int> get_raw_values() const;
 
     bool serialize(std::ostream& stream) const override;
@@ -55,6 +60,8 @@ class Modifier : public ISerializable
 
     int evade_modifier;
     int soak_modifier;
+
+    std::map<std::string, bool> statuses;
 
   private:
     ClassIdentifier internal_class_identifier() const override;
