@@ -1,6 +1,23 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_StatisticsModifier, serialization_id)
+TEST(SL_World_Modifier, statuses)
+{
+  Modifier m;
+  
+  m.set_status("fdsa", true);
+  m.set_status("asdf", false);
+
+  EXPECT_EQ(true, m.get_status("fdsa"));
+  EXPECT_EQ(true, m.has_status("fdsa"));
+
+  EXPECT_EQ(false, m.get_status("asdf"));
+  EXPECT_EQ(true, m.has_status("asdf"));
+
+  EXPECT_EQ(false, m.get_status("abab"));
+  EXPECT_EQ(false, m.has_status("abab"));
+}
+
+TEST(SL_World_Modifier, serialization_id)
 {
   Modifier m;
 
@@ -19,6 +36,8 @@ TEST(SL_World_Modifier, saveload)
   Modifier m(1,2,3,4,5,6,7);
   m.set_evade_modifier(3);
   m.set_soak_modifier(4);
+
+  m.set_status("asdf", true);
 
   Modifier m2;
 
