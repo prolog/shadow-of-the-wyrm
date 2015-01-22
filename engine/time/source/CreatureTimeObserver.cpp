@@ -4,7 +4,7 @@
 #include "CreatureHungerTimer.hpp"
 #include "CreaturePietyRegeneration.hpp"
 #include "CreatureSkillIncrementer.hpp"
-#include "CreatureStatisticsModifiers.hpp"
+#include "CreatureModifiers.hpp"
 #include "CreatureStatuses.hpp"
 #include "CreatureTimeObserver.hpp"
 #include "Game.hpp"
@@ -45,7 +45,7 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   // Every half an hour to an hour, do alcohol absorption and metabolism.
   ICreatureRegenerationPtr alcohol_chkr = std::make_shared<CreatureAlcoholTimer>();
   // Every minute, check to see if the creature has spell statistics modifiers that should be removed.
-  ICreatureRegenerationPtr sp_stat_chkr = std::make_shared<CreatureStatisticsModifiers>();
+  ICreatureRegenerationPtr sp_stat_chkr = std::make_shared<CreatureModifiers>();
 
   regen.push_back(hp_regen    );
   regen.push_back(ap_regen    );

@@ -223,14 +223,14 @@ Statistic Race::get_starting_charisma() const
   return starting_charisma;
 }
 
-void Race::set_statistics_modifier(const StatisticsModifier& new_statistics_modifier)
+void Race::set_modifier(const Modifier& new_modifier)
 {
-  statistics_modifier = new_statistics_modifier;
+  modifier = new_modifier;
 }
 
-StatisticsModifier Race::get_statistics_modifier() const
+Modifier Race::get_modifier() const
 {
-  return statistics_modifier;
+  return modifier;
 }
 
 void Race::set_starting_speed(const Statistic& new_starting_speed)

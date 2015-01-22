@@ -19,8 +19,8 @@ TEST(SL_World_Magic_Spell, equality_operator)
   sp.set_has_damage(true);
   sp.set_effect(EffectType::EFFECT_TYPE_HEALING);
 
-  StatisticsModifier sm({ 1, 2, 3, 4, 5 });
-  sp.set_statistics_modifier(sm);
+  Modifier m({ 1, 2, 3, 4, 5 });
+  sp.set_modifier(m);
 
   Damage damage(1,5,3,DamageType::DAMAGE_TYPE_ARCANE, false, false, 0, {});
 

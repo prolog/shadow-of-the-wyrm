@@ -23,7 +23,7 @@ bool Deity::operator==(const Deity& d) const
   result = result && summons == d.summons;
   result = result && worship_site_type == d.worship_site_type;
   result = result && anger_script == d.anger_script;
-  result = result && initial_statistics_modifier == d.initial_statistics_modifier;
+  result = result && initial_modifier == d.initial_modifier;
   result = result && dislikes == d.dislikes;
   result = result && user_playable == d.user_playable;
 
@@ -162,14 +162,14 @@ string Deity::get_anger_script() const
   return anger_script;
 }
 
-void Deity::set_initial_statistics_modifier(const StatisticsModifier& new_initial_statistics_modifier)
+void Deity::set_initial_modifier(const Modifier& new_initial_modifier)
 {
-  initial_statistics_modifier = new_initial_statistics_modifier;
+  initial_modifier = new_initial_modifier;
 }
 
-StatisticsModifier Deity::get_initial_statistics_modifier() const
+Modifier Deity::get_initial_modifier() const
 {
-  return initial_statistics_modifier;
+  return initial_modifier;
 }
 
 void Deity::set_user_playable(const bool new_user_playable)
@@ -196,7 +196,7 @@ bool Deity::serialize(ostream& stream) const
   Serialize::write_enum(stream, worship_site_type);
   Serialize::write_string(stream, anger_script);
 
-  initial_statistics_modifier.serialize(stream);
+  initial_modifier.serialize(stream);
   dislikes.serialize(stream);
 
   Serialize::write_bool(stream, user_playable);
@@ -218,7 +218,7 @@ bool Deity::deserialize(istream& stream)
   Serialize::read_enum(stream, worship_site_type);
   Serialize::read_string(stream, anger_script);
 
-  initial_statistics_modifier.deserialize(stream);
+  initial_modifier.deserialize(stream);
   dislikes.deserialize(stream);
 
   Serialize::read_bool(stream, user_playable);

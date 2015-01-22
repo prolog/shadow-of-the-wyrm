@@ -5,7 +5,7 @@
 #include "XMLDataStructures.hpp"
 #include "XMLResistancesReader.hpp"
 #include "XMLSkillsReaders.hpp"
-#include "XMLStatisticsModifierReader.hpp"
+#include "XMLModifierReader.hpp"
 
 using namespace std;
 
@@ -156,10 +156,10 @@ void XMLRacesReader::parse_race_initial_modifiers(RacePtr race, const XMLNode& i
 {
   if (race && !initial_modifiers_node.is_null())
   {
-    XMLStatisticsModifierReader stat_modifier_reader;
+    XMLModifierReader modifier_reader;
     
-    StatisticsModifier sm = stat_modifier_reader.get_statistics_modifier(initial_modifiers_node);
-    race->set_statistics_modifier(sm);
+    Modifier m = modifier_reader.get_modifier(initial_modifiers_node);
+    race->set_modifier(m);
   }
 }
 

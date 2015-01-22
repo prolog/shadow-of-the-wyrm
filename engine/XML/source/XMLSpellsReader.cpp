@@ -1,7 +1,7 @@
 #include <vector>
 #include "Conversion.hpp"
 #include "SpellShapeFactory.hpp"
-#include "StatisticsModifier.hpp"
+#include "Modifier.hpp"
 #include "XMLSpellsReader.hpp"
 #include "XMLDataStructures.hpp"
 
@@ -112,13 +112,13 @@ void XMLSpellsReader::parse_spell_properties(const XMLNode& properties_node, Spe
   if (!properties_node.is_null())
   {
     parse_properties(properties, properties_node);
-    create_statistics_modifiers_if_necessary(spell, properties);
+    create_modifiers_if_necessary(spell, properties);
   }
 }
 
-void XMLSpellsReader::create_statistics_modifiers_if_necessary(Spell& spell, const map<string, string>& properties)
+void XMLSpellsReader::create_modifiers_if_necessary(Spell& spell, const map<string, string>& properties)
 {
-  bool create_statistics_modifier = false;
+  bool create_modifier = false;
   vector<int> sm_constructor_arg;
 
   vector<string> keys = { SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_STR,
@@ -137,7 +137,7 @@ void XMLSpellsReader::create_statistics_modifiers_if_necessary(Spell& spell, con
 
     if (prop_it != properties.end())
     {
-      create_statistics_modifier = true;
+      create_modifier = true;
       sm_constructor_arg.push_back(String::to_int(prop_it->second));
     }
     else
@@ -146,9 +146,9 @@ void XMLSpellsReader::create_statistics_modifiers_if_necessary(Spell& spell, con
     }
   }
 
-  if (create_statistics_modifier)
+  if (create_modifier)
   {
-    StatisticsModifier sm(sm_constructor_arg);
-    spell.set_statistics_modifier(sm);
+    Modifier m(sm_constructor_arg);
+    spell.set_modifier(m);
   }
 }

@@ -1,10 +1,10 @@
-#include "StatisticsModifier.hpp"
+#include "Modifier.hpp"
 #include "Serialize.hpp"
 
 using namespace std;
 
 // Default all the modifiers to 0.
-StatisticsModifier::StatisticsModifier()
+Modifier::Modifier()
 : strength_modifier(0),
 dexterity_modifier(0),
 agility_modifier(0),
@@ -18,7 +18,7 @@ soak_modifier(0)
 }
 
 // Set actual values for the modifiers
-StatisticsModifier::StatisticsModifier
+Modifier::Modifier
 (
   const int new_strength_modifier,
   const int new_dexterity_modifier,
@@ -41,7 +41,7 @@ soak_modifier(0)
 }
 
 // Version called by the XML reader.
-StatisticsModifier::StatisticsModifier(const vector<int>& args)
+Modifier::Modifier(const vector<int>& args)
 : strength_modifier(0),
 dexterity_modifier(0),
 agility_modifier(0),
@@ -82,115 +82,115 @@ soak_modifier(0)
   }
 }
 
-bool StatisticsModifier::operator==(const StatisticsModifier& sm) const
+bool Modifier::operator==(const Modifier& m) const
 {
   bool result = true;
 
-  result = result && strength_modifier == sm.strength_modifier;
-  result = result && dexterity_modifier == sm.dexterity_modifier;
-  result = result && agility_modifier == sm.agility_modifier;
-  result = result && health_modifier == sm.health_modifier;
-  result = result && intelligence_modifier == sm.intelligence_modifier;
-  result = result && willpower_modifier == sm.willpower_modifier;
-  result = result && charisma_modifier == sm.charisma_modifier;
-  result = result && evade_modifier == sm.evade_modifier;
-  result = result && soak_modifier == sm.soak_modifier;
+  result = result && strength_modifier == m.strength_modifier;
+  result = result && dexterity_modifier == m.dexterity_modifier;
+  result = result && agility_modifier == m.agility_modifier;
+  result = result && health_modifier == m.health_modifier;
+  result = result && intelligence_modifier == m.intelligence_modifier;
+  result = result && willpower_modifier == m.willpower_modifier;
+  result = result && charisma_modifier == m.charisma_modifier;
+  result = result && evade_modifier == m.evade_modifier;
+  result = result && soak_modifier == m.soak_modifier;
 
   return result;
 }
 
 // Set/get each individual modifier
-void StatisticsModifier::set_strength_modifier(const int new_strength_modifier)
+void Modifier::set_strength_modifier(const int new_strength_modifier)
 {
   strength_modifier = new_strength_modifier;
 }
 
-int StatisticsModifier::get_strength_modifier() const
+int Modifier::get_strength_modifier() const
 {
   return strength_modifier;
 }
 
-void StatisticsModifier::set_dexterity_modifier(const int new_dexterity_modifier)
+void Modifier::set_dexterity_modifier(const int new_dexterity_modifier)
 {
   dexterity_modifier = new_dexterity_modifier;
 }
 
-int StatisticsModifier::get_dexterity_modifier() const
+int Modifier::get_dexterity_modifier() const
 {
   return dexterity_modifier;
 }
 
-void StatisticsModifier::set_agility_modifier(const int new_agility_modifier)
+void Modifier::set_agility_modifier(const int new_agility_modifier)
 {
   agility_modifier = new_agility_modifier;
 }
 
-int StatisticsModifier::get_agility_modifier() const
+int Modifier::get_agility_modifier() const
 {
   return agility_modifier;
 }
 
-void StatisticsModifier::set_health_modifier(const int new_health_modifier)
+void Modifier::set_health_modifier(const int new_health_modifier)
 {
   health_modifier = new_health_modifier;
 }
 
-int StatisticsModifier::get_health_modifier() const
+int Modifier::get_health_modifier() const
 {
   return health_modifier;
 }
 
-void StatisticsModifier::set_intelligence_modifier(const int new_intelligence_modifier)
+void Modifier::set_intelligence_modifier(const int new_intelligence_modifier)
 {
   intelligence_modifier = new_intelligence_modifier;
 }
 
-int StatisticsModifier::get_intelligence_modifier() const
+int Modifier::get_intelligence_modifier() const
 {
   return intelligence_modifier;
 }
 
-void StatisticsModifier::set_willpower_modifier(const int new_willpower_modifier)
+void Modifier::set_willpower_modifier(const int new_willpower_modifier)
 {
   willpower_modifier = new_willpower_modifier;
 }
 
-int StatisticsModifier::get_willpower_modifier() const
+int Modifier::get_willpower_modifier() const
 {
   return willpower_modifier;
 }
 
-void StatisticsModifier::set_charisma_modifier(const int new_charisma_modifier)
+void Modifier::set_charisma_modifier(const int new_charisma_modifier)
 {
   charisma_modifier = new_charisma_modifier;
 }
 
-int StatisticsModifier::get_charisma_modifier() const
+int Modifier::get_charisma_modifier() const
 {
   return charisma_modifier;
 }
 
-void StatisticsModifier::set_evade_modifier(const int new_evade_modifier)
+void Modifier::set_evade_modifier(const int new_evade_modifier)
 {
   evade_modifier = new_evade_modifier;
 }
 
-int StatisticsModifier::get_evade_modifier() const
+int Modifier::get_evade_modifier() const
 {
   return evade_modifier;
 }
 
-void StatisticsModifier::set_soak_modifier(const int new_soak_modifier)
+void Modifier::set_soak_modifier(const int new_soak_modifier)
 {
   soak_modifier = new_soak_modifier;
 }
 
-int StatisticsModifier::get_soak_modifier() const
+int Modifier::get_soak_modifier() const
 {
   return soak_modifier;
 }
 
-vector<int> StatisticsModifier::get_raw_values() const
+vector<int> Modifier::get_raw_values() const
 {
   return {strength_modifier, 
           dexterity_modifier, 
@@ -203,7 +203,7 @@ vector<int> StatisticsModifier::get_raw_values() const
           soak_modifier};
 }
 
-bool StatisticsModifier::serialize(ostream& stream) const
+bool Modifier::serialize(ostream& stream) const
 {
   Serialize::write_int(stream, strength_modifier);
   Serialize::write_int(stream, dexterity_modifier);
@@ -218,7 +218,7 @@ bool StatisticsModifier::serialize(ostream& stream) const
   return true;
 }
 
-bool StatisticsModifier::deserialize(istream& stream)
+bool Modifier::deserialize(istream& stream)
 {
   Serialize::read_int(stream, strength_modifier);
   Serialize::read_int(stream, dexterity_modifier);
@@ -233,11 +233,11 @@ bool StatisticsModifier::deserialize(istream& stream)
   return true;
 }
 
-ClassIdentifier StatisticsModifier::internal_class_identifier() const
+ClassIdentifier Modifier::internal_class_identifier() const
 {
-  return ClassIdentifier::CLASS_ID_STATISTICS_MODIFIER;
+  return ClassIdentifier::CLASS_ID_MODIFIER;
 }
 
 #ifdef UNIT_TESTS
-#include "unit_tests/StatisticsModifier_test.cpp"
+#include "unit_tests/Modifier_test.cpp"
 #endif

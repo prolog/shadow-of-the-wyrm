@@ -864,9 +864,6 @@
     <ClInclude Include="world\include\Statistic.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\include\StatisticsModifier.hpp">
-      <Filter>Header Files\world\include</Filter>
-    </ClInclude>
     <ClInclude Include="world\include\ThreatRatings.hpp">
       <Filter>Header Files\world\include</Filter>
     </ClInclude>
@@ -1867,9 +1864,6 @@
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLStaffReader.hpp">
-      <Filter>Header Files\engine\XML\include</Filter>
-    </ClInclude>
-    <ClInclude Include="engine\XML\include\XMLStatisticsModifierReader.hpp">
       <Filter>Header Files\engine\XML\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\XML\include\XMLTilesReader.hpp">
@@ -3315,14 +3309,20 @@
     <ClInclude Include="engine\features\include\TrapManipulator.hpp">
       <Filter>Header Files\engine\features\include</Filter>
     </ClInclude>
-    <ClInclude Include="engine\time\include\CreatureStatisticsModifiers.hpp">
-      <Filter>Header Files\engine\time\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\effects\include\ModifyStatisticsEffect.hpp">
       <Filter>Header Files\engine\effects\include</Filter>
     </ClInclude>
     <ClInclude Include="engine\calculators\include\ModifyStatisticsCalculator.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
+    </ClInclude>
+    <ClInclude Include="world\include\Modifier.hpp">
+      <Filter>Header Files\world\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\XML\include\XMLModifierReader.hpp">
+      <Filter>Header Files\engine\XML\include</Filter>
+    </ClInclude>
+    <ClInclude Include="engine\time\include\CreatureModifiers.hpp">
+      <Filter>Header Files\engine\time\include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -3516,9 +3516,6 @@
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\Statistic.cpp">
-      <Filter>Source Files\world\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\StatisticsModifier.cpp">
       <Filter>Source Files\world\source</Filter>
     </ClCompile>
     <ClCompile Include="world\source\ThreatRatings.cpp">
@@ -4530,9 +4527,6 @@
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLStaffReader.cpp">
-      <Filter>Source Files\engine\XML\source</Filter>
-    </ClCompile>
-    <ClCompile Include="engine\XML\source\XMLStatisticsModifierReader.cpp">
       <Filter>Source Files\engine\XML\source</Filter>
     </ClCompile>
     <ClCompile Include="engine\XML\source\XMLTilesReader.cpp">
@@ -6236,9 +6230,6 @@
     <ClCompile Include="world\religion\source\unit_tests\CreatureActions_test.cpp">
       <Filter>Source Files\world\religion\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="world\source\unit_tests\StatisticsModifier_test.cpp">
-      <Filter>Source Files\world\source\unit_tests</Filter>
-    </ClCompile>
     <ClCompile Include="world\religion\source\unit_tests\Deity_test.cpp">
       <Filter>Source Files\world\religion\source\unit_tests</Filter>
     </ClCompile>
@@ -6458,9 +6449,6 @@
     <ClCompile Include="world\tiles\features\source\unit_tests\Tannery_test.cpp">
       <Filter>Source Files\world\tiles\features\source\unit_tests</Filter>
     </ClCompile>
-    <ClCompile Include="engine\time\source\CreatureStatisticsModifiers.cpp">
-      <Filter>Source Files\engine\time\source</Filter>
-    </ClCompile>
     <ClCompile Include="engine\effects\source\ModifyStatisticsEffect.cpp">
       <Filter>Source Files\engine\effects\source</Filter>
     </ClCompile>
@@ -6469,6 +6457,18 @@
     </ClCompile>
     <ClCompile Include="engine\effects\source\unit_tests\ModifyStatisticsEffect_test.cpp">
       <Filter>Source Files\engine\effects\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\Modifier.cpp">
+      <Filter>Source Files\world\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\XML\source\XMLModifierReader.cpp">
+      <Filter>Source Files\engine\XML\source</Filter>
+    </ClCompile>
+    <ClCompile Include="world\source\unit_tests\Modifier_test.cpp">
+      <Filter>Source Files\world\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\time\source\CreatureModifiers.cpp">
+      <Filter>Source Files\engine\time\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -26,8 +26,8 @@ TEST(SL_World_Religion_Deity, saveload)
 
   d.set_dislike("cats", true);
   
-  StatisticsModifier initial(1,2,3,4,5,6,7);
-  d.set_initial_statistics_modifier(initial);
+  Modifier initial(1,2,3,4,5,6,7);
+  d.set_initial_modifier(initial);
 
   d.set_user_playable(true);
 

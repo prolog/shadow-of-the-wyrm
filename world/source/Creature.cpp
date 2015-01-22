@@ -117,7 +117,7 @@ Creature::Creature(const Creature& cr)
   mortuary = cr.mortuary;
   conducts = cr.conducts;
   spell_knowledge = cr.spell_knowledge;
-  statistics_modifiers = cr.statistics_modifiers;
+  modifiers = cr.modifiers;
 }
 
 Creature& Creature::operator=(const Creature& cr)
@@ -201,7 +201,7 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (mortuary == cr.mortuary);
   result = result && (conducts == cr.conducts);
   result = result && (spell_knowledge == cr.spell_knowledge);
-  result = result && (statistics_modifiers == cr.statistics_modifiers);
+  result = result && (modifiers == cr.modifiers);
 
   return result;
 }
@@ -1061,19 +1061,19 @@ SpellKnowledge& Creature::get_spell_knowledge_ref()
   return spell_knowledge;
 }
 
-void Creature::set_statistics_modifiers(const map<double, vector<pair<string, StatisticsModifier>>>& new_statistics_modifiers)
+void Creature::set_modifiers(const map<double, vector<pair<string, Modifier>>>& new_modifiers)
 {
-  statistics_modifiers = new_statistics_modifiers;
+  modifiers = new_modifiers;
 }
 
-map<double, vector<pair<string, StatisticsModifier>>>& Creature::get_statistics_modifiers_ref()
+map<double, vector<pair<string, Modifier>>>& Creature::get_modifiers_ref()
 {
-  return statistics_modifiers;
+  return modifiers;
 }
 
 bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
 {
-  for (const auto& pair : statistics_modifiers)
+  for (const auto& pair : modifiers)
   {
     for (const auto& spells : pair.second)
     {
@@ -1171,7 +1171,7 @@ void Creature::swap(Creature &cr) throw ()
   std::swap(this->mortuary, cr.mortuary);
   std::swap(this->conducts, cr.conducts);
   std::swap(this->spell_knowledge, cr.spell_knowledge);
-  std::swap(this->statistics_modifiers, cr.statistics_modifiers);
+  std::swap(this->modifiers, cr.modifiers);
 }
 
 bool Creature::serialize(ostream& stream) const
@@ -1302,17 +1302,17 @@ bool Creature::serialize(ostream& stream) const
   conducts.serialize(stream);
   spell_knowledge.serialize(stream);
 
-  size_t sm_size = statistics_modifiers.size();
-  Serialize::write_size_t(stream, sm_size);
-  for (auto& sm_pair : statistics_modifiers)
+  size_t m_size = modifiers.size();
+  Serialize::write_size_t(stream, m_size);
+  for (auto& m_pair : modifiers)
   {
-    Serialize::write_double(stream, sm_pair.first);
+    Serialize::write_double(stream, m_pair.first);
 
-    Serialize::write_size_t(stream, sm_pair.second.size());
-    for (auto& sm_element : sm_pair.second)
+    Serialize::write_size_t(stream, m_pair.second.size());
+    for (auto& m_element : m_pair.second)
     {
-      Serialize::write_string(stream, sm_element.first);
-      sm_element.second.serialize(stream);
+      Serialize::write_string(stream, m_element.first);
+      m_element.second.serialize(stream);
     }
   }
 
@@ -1480,7 +1480,7 @@ bool Creature::deserialize(istream& stream)
     Serialize::read_double(stream, elapsed);
 
     size_t vec_size = 0;
-    vector<pair<string, StatisticsModifier>> sm_vec;
+    vector<pair<string, Modifier>> m_vec;
     Serialize::read_size_t(stream, vec_size);
 
     for (size_t j = 0; j < vec_size; j++)
@@ -1488,13 +1488,13 @@ bool Creature::deserialize(istream& stream)
       string spell_id;
       Serialize::read_string(stream, spell_id);
 
-      StatisticsModifier sm;
-      sm.deserialize(stream);
+      Modifier m;
+      m.deserialize(stream);
 
-      sm_vec.push_back(make_pair(spell_id, sm));
+      m_vec.push_back(make_pair(spell_id, m));
     }
 
-    statistics_modifiers.insert(make_pair(elapsed, sm_vec));
+    modifiers.insert(make_pair(elapsed, m_vec));
   }
 
   return true;

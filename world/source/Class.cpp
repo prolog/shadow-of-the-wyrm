@@ -56,14 +56,14 @@ string Class::get_class_abbreviation_sid() const
   return class_abbreviation_sid;
 }
 
-void Class::set_statistics_modifier(const StatisticsModifier& new_statistics_modifier)
+void Class::set_modifier(const Modifier& new_modifier)
 {
-  statistics_modifier = new_statistics_modifier;
+  modifier = new_modifier;
 }
 
-StatisticsModifier Class::get_statistics_modifier() const
+Modifier Class::get_modifier() const
 {
-  return statistics_modifier;
+  return modifier;
 }
 
 void Class::set_resistances(const Resistances& new_resistances)
@@ -196,13 +196,13 @@ string Class::str() const
 
   class_details << class_id << endl;
   class_details << hit_dice << " " << ap_dice << endl;
-  class_details << statistics_modifier.get_strength_modifier() << " " 
-                << statistics_modifier.get_dexterity_modifier() << " " 
-                << statistics_modifier.get_agility_modifier() << " " 
-                << statistics_modifier.get_health_modifier() << " "
-                << statistics_modifier.get_intelligence_modifier() << " " 
-                << statistics_modifier.get_willpower_modifier() << " " 
-                << statistics_modifier.get_charisma_modifier() 
+  class_details << modifier.get_strength_modifier() << " " 
+                << modifier.get_dexterity_modifier() << " " 
+                << modifier.get_agility_modifier() << " " 
+                << modifier.get_health_modifier() << " "
+                << modifier.get_intelligence_modifier() << " " 
+                << modifier.get_willpower_modifier() << " " 
+                << modifier.get_charisma_modifier() 
                 << endl;
   class_details << class_name_value << endl;
   class_details << class_abrv_value << endl;

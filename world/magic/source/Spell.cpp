@@ -32,7 +32,7 @@ bool Spell::operator==(const Spell& spell) const
   result = result && (damage == spell.damage);
   result = result && (allows_bonus == spell.allows_bonus);
   result = result && (effect == spell.effect);
-  result = result && (statistics_modifier == spell.statistics_modifier);
+  result = result && (modifier == spell.modifier);
 
   return result;
 }
@@ -177,14 +177,14 @@ EffectType Spell::get_effect() const
   return effect;
 }
 
-void Spell::set_statistics_modifier(const StatisticsModifier& new_statistics_modifier)
+void Spell::set_modifier(const Modifier& new_modifier)
 {
-  statistics_modifier = new_statistics_modifier;
+  modifier = new_modifier;
 }
 
-StatisticsModifier Spell::get_statistics_modifier() const
+Modifier Spell::get_modifier() const
 {
-  return statistics_modifier;
+  return modifier;
 }
 
 #ifdef UNIT_TESTS

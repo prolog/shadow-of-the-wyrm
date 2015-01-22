@@ -25,7 +25,7 @@ EffectFactory::~EffectFactory()
 {
 }
 
-EffectPtr EffectFactory::create_effect(const EffectType effect_type, StatisticsModifier sm, string spell_id)
+EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m, string spell_id)
 {
   static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(19), "Unexpected EFFECT_TYPE_LAST value.");
 
@@ -87,7 +87,7 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, StatisticsM
     case EffectType::EFFECT_TYPE_MODIFY_STATISTICS:
     {
       shared_ptr<ModifyStatisticsEffect> ms_effect = std::make_shared<ModifyStatisticsEffect>();
-      ms_effect->set_statistics_modifier(sm);
+      ms_effect->set_modifier(m);
       ms_effect->set_spell_id(spell_id);
 
       effect = ms_effect;

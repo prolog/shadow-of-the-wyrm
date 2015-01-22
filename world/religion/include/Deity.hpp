@@ -7,7 +7,7 @@
 #include "CreatureActions.hpp"
 #include "ISerializable.hpp"
 #include "WorshipSiteTypes.hpp"
-#include "StatisticsModifier.hpp"
+#include "Modifier.hpp"
 
 class Deity : public ISerializable
 {
@@ -52,8 +52,8 @@ class Deity : public ISerializable
     void set_anger_script(const std::string& new_anger_script);
     std::string get_anger_script() const;
     
-    void set_initial_statistics_modifier(const StatisticsModifier& new_initial_statistics_modifier);
-    StatisticsModifier get_initial_statistics_modifier() const;
+    void set_initial_modifier(const Modifier& new_initial_modifier);
+    Modifier get_initial_modifier() const;
 
     void set_user_playable(const bool new_user_playable);
     bool get_user_playable() const;
@@ -73,7 +73,7 @@ class Deity : public ISerializable
     std::vector<std::string> summons;
     WorshipSiteType worship_site_type;
     std::string anger_script;
-    StatisticsModifier initial_statistics_modifier; // only used for creature creation
+    Modifier initial_modifier; // only used for creature creation
     CreatureActions dislikes;
     bool user_playable;
 
