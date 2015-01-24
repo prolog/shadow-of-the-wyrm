@@ -28,12 +28,6 @@ class StatusEffect
     // By default, nothing happens each tick.  Subclasses should override
     // this behaviour as necessary.
     virtual void tick(std::shared_ptr<Creature> creature) const;
-
-    // Status Effects can change a character's to-hit, etc.  Exposing these
-    // allows a variety of status effects to affect various calculations
-    // without hard-coding the status effect lookups into the calculators.
-    virtual int get_to_hit_bonus(std::shared_ptr<Creature> creature) const;
-
   protected:
     // Returns a modifier with any statistic changes, etc, that should be
     // applied as a part of this status effect.

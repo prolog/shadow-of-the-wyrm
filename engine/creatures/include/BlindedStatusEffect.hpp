@@ -6,8 +6,6 @@ class BlindedStatusEffect : public StatusEffect
   public:
     BlindedStatusEffect();
   
-    virtual int get_to_hit_bonus(std::shared_ptr<Creature> creature) const override;
-
   protected:
     virtual Modifier get_base_modifier() const override;
 

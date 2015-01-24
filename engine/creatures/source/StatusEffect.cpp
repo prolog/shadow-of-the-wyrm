@@ -264,11 +264,6 @@ void StatusEffect::tick(CreaturePtr creature) const
 {
 }
 
-int StatusEffect::get_to_hit_bonus(CreaturePtr creature) const
-{
-  return 0;
-}
-
 Modifier StatusEffect::get_base_modifier() const
 {
   Modifier m;

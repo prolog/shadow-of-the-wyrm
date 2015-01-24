@@ -43,7 +43,7 @@ TEST(SL_World_Modifier, serialization_id)
 
 TEST(SL_World_Modifier, export_raw)
 {
-  vector<int> raw_values{ 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+  vector<int> raw_values{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
   Modifier m(raw_values);
   EXPECT_EQ(raw_values, m.get_raw_values());
 }
@@ -53,6 +53,7 @@ TEST(SL_World_Modifier, saveload)
   Modifier m(1,2,3,4,5,6,7);
   m.set_evade_modifier(3);
   m.set_soak_modifier(4);
+  m.set_to_hit_modifier(-12);
 
   m.set_status("asdf", true);
 

@@ -12,7 +12,7 @@ class ToHitCalculator
     
   protected:
     virtual int get_weapon_bonus(CreaturePtr creature);
-    virtual int get_status_bonus(CreaturePtr creature);
+    virtual int get_modifier_bonus(CreaturePtr creature);
     
     AttackType attack_type;
     static const int NWP_SKILL_BONUS_DIVISOR;
