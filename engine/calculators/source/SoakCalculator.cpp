@@ -1,7 +1,7 @@
 #include "SoakCalculator.hpp"
 #include "Wearable.hpp"
 
-using std::dynamic_pointer_cast;
+using namespace std;
 
 SoakCalculator::SoakCalculator()
 {
@@ -30,6 +30,7 @@ int SoakCalculator::calculate_soak(const CreaturePtr& c)
     }
 
     soak += get_equipment_bonus(c);
+    soak += get_modifier_bonus(c);
     soak += health_bonus;
   }
 
@@ -55,6 +56,27 @@ int SoakCalculator::get_equipment_bonus(const CreaturePtr& c)
   
   return equipment_evade_bonus;
 }
+
+int SoakCalculator::get_modifier_bonus(const CreaturePtr& c)
+{
+  int mod_bonus = 0;
+
+  if (c)
+  {
+    const map<double, vector<pair<string, Modifier>>>& modifiers = c->get_modifiers_ref();
+
+    for (const auto& mod_pair : modifiers)
+    {
+      for (const auto& current_mod_pair : mod_pair.second)
+      {
+        mod_bonus += current_mod_pair.second.get_soak_modifier();
+      }
+    }
+  }
+
+  return mod_bonus;
+}
+
 
 #ifdef UNIT_TESTS
 #include "unit_tests/SoakCalculator_test.cpp"

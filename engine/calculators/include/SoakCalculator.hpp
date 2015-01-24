@@ -8,6 +8,7 @@ class SoakCalculator
 
   protected:
     static int get_equipment_bonus(const CreaturePtr& c);
+    static int get_modifier_bonus(const CreaturePtr& c);
     
     SoakCalculator();
     ~SoakCalculator();

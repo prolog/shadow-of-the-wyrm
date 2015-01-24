@@ -19,6 +19,16 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
 {
   if (c)
   {
+    // TODO: create calculators for:
+    // Strength
+    // Dexterity
+    // Agility
+    // Health
+    // Intelligence
+    // Willpower
+    // Charisma
+    // Update Disfiguration to use regular modifiers
+
     // Evade
     int calc_evade = EvadeCalculator::calculate_evade(c);
     c->set_evade(calc_evade);
@@ -27,16 +37,19 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
     int calc_soak = SoakCalculator::calculate_soak(c);
     c->set_soak(calc_soak);
 
+    // TODO: If to-hit is ever added to Modifier, update this.
     // To-Hit from additional sources
     CreatureToHitCalculator cthc;
     int calc_to_hit = cthc.calculate_to_hit(c);
     c->set_to_hit(calc_to_hit);
 
+    // TODO: If additional damage is ever added to Modifier, update this.
     // Damage from additional sources
     CreatureAdditionalDamageCalculator cadc;
     int calc_addl_damage = cadc.calculate_additional_damage(c);
     c->set_addl_damage(calc_addl_damage);
 
+    // TODO: If resistances are ever added to Modifier, update this.
     // Resistances
     RaceManager rm;
     ClassManager cm;
