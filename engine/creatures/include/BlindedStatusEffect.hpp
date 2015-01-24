@@ -7,9 +7,10 @@ class BlindedStatusEffect : public StatusEffect
     BlindedStatusEffect();
   
     virtual int get_to_hit_bonus(std::shared_ptr<Creature> creature) const override;
-    virtual int get_evade_bonus(std::shared_ptr<Creature> creature) const override;
 
   protected:
+    virtual Modifier get_base_modifier() const override;
+
     virtual bool after_apply(std::shared_ptr<Creature> creature) const override;
     virtual void after_undo(std::shared_ptr<Creature> creature) const override;
 

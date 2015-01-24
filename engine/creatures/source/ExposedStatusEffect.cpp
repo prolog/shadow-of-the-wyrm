@@ -35,9 +35,13 @@ string ExposedStatusEffect::get_npc_undo_message(CreaturePtr creature) const
   return message;
 }
 
-int ExposedStatusEffect::get_evade_bonus(CreaturePtr creature) const
+Modifier ExposedStatusEffect::get_base_modifier() const
 {
-  return EXPOSED_EVADE_PENALTY;
+  Modifier m;
+
+  m.set_evade_modifier(EXPOSED_EVADE_PENALTY);
+
+  return m;
 }
 
 string ExposedStatusEffect::get_status_identifier() const

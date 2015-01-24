@@ -69,7 +69,7 @@ bool StatusEffect::apply(CreaturePtr creature) const
     double current_seconds_since_game_start = GameUtils::get_seconds(game);
     int duration = status_calc->calculate_duration_in_minutes(creature);
 
-    Modifier modifier;
+    Modifier modifier = get_base_modifier();
     modifier.set_status(status_identifier, true);
 
     ModifyStatisticsEffect mse;
@@ -269,9 +269,10 @@ int StatusEffect::get_to_hit_bonus(CreaturePtr creature) const
   return 0;
 }
 
-int StatusEffect::get_evade_bonus(CreaturePtr creature) const
+Modifier StatusEffect::get_base_modifier() const
 {
-  return 0;
+  Modifier m;
+  return m;
 }
 
 string StatusEffect::get_status_identifier() const
