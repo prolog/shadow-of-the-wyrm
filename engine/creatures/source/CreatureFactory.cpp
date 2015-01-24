@@ -178,16 +178,12 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Various race-based flags (boolean statistics)
     if (race->get_corporeal().get_base() == false)
     {
-      StatusDuration duration(-1);
       creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
-      creaturep->set_status_duration(StatusIdentifiers::STATUS_ID_INCORPOREAL, duration);
     }
 
     if (race->get_flying().get_base() == true)
     {
-      StatusDuration duration(-1);
       creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
-      creaturep->set_status_duration(StatusIdentifiers::STATUS_ID_FLYING, duration);
     }
 
     // Resistances

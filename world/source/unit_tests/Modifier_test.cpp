@@ -17,6 +17,23 @@ TEST(SL_World_Modifier, statuses)
   EXPECT_EQ(false, m.has_status("abab"));
 }
 
+TEST(SL_World_Modifier, get_affected_statuses)
+{
+  Modifier m;
+
+  vector<string> statuses = { "bad_teeth", "low_self_esteem", "rabies" };
+  
+  for (const auto& status : statuses)
+  {
+    m.set_status(status, true);
+  }
+
+  m.set_status("talks_out_loud_all_day_while_I_try_to_work", false);
+  m.set_status("slurps_coffee_and_then_burps_constantly", false);
+
+  EXPECT_EQ(statuses, m.get_affected_status_keys());
+}
+
 TEST(SL_World_Modifier, serialization_id)
 {
   Modifier m;

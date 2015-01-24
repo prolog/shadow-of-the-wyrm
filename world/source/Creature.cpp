@@ -110,7 +110,6 @@ Creature::Creature(const Creature& cr)
   targets = cr.targets;  
   hunger = cr.hunger;
   statuses = cr.statuses;
-  status_durations = cr.status_durations;
   event_scripts = cr.event_scripts;
   auto_move = cr.auto_move;
   additional_properties = cr.additional_properties;
@@ -194,7 +193,6 @@ bool Creature::operator==(const Creature& cr) const
   result = result && (targets == cr.targets);
   result = result && (hunger == cr.hunger);
   result = result && (statuses == cr.statuses);
-  result = result && (status_durations == cr.status_durations);
   result = result && (event_scripts == cr.event_scripts);
   result = result && (auto_move == cr.auto_move);
   result = result && (additional_properties == cr.additional_properties);
@@ -872,7 +870,6 @@ void Creature::set_status(const string& status_id, const bool affected)
 void Creature::remove_status(const string& status_id)
 {
   statuses.erase(status_id);
-  status_durations.erase(status_id);
 }
 
 bool Creature::has_status(const string& status_id) const
@@ -892,29 +889,6 @@ bool Creature::has_status(const string& status_id) const
 CreatureStatusMap Creature::get_statuses() const
 {
   return statuses;
-}
-
-void Creature::set_status_duration(const string& status_id, const StatusDuration duration)
-{
-  status_durations[status_id] = duration;
-}
-
-StatusDuration Creature::get_status_duration(const string& status_id) const
-{
-  StatusDuration duration;
-
-  StatusDurationMap::const_iterator s_it = status_durations.find(status_id);
-  if (s_it != status_durations.end())
-  {
-    duration = s_it->second;
-  }
-
-  return duration;
-}
-
-StatusDurationMap Creature::get_status_durations() const
-{
-  return status_durations;
 }
 
 void Creature::clear_event_scripts()
@@ -1073,6 +1047,13 @@ map<double, vector<pair<string, Modifier>>>& Creature::get_modifiers_ref()
 
 bool Creature::is_affected_by_modifier_spell(const std::string& spell_id) const
 {
+  // If there's no spell ID (ie, if it's just a status effect like poison,
+  // etc) return false.
+  if (spell_id.empty())
+  {
+    return false;
+  }
+
   for (const auto& pair : modifiers)
   {
     for (const auto& spells : pair.second)
@@ -1099,7 +1080,7 @@ void Creature::assert_size() const
   #ifdef _MSC_VER
     #ifdef _DEBUG
     // Debug
-    static_assert(sizeof(*this) == 912, "Unexpected sizeof Creature.");
+    static_assert(sizeof(*this) == 904, "Unexpected sizeof Creature.");
     #else
     // Release
     static_assert(sizeof(*this) == 800, "Unexpected sizeof Creature.");
@@ -1281,17 +1262,6 @@ bool Creature::serialize(ostream& stream) const
     }
   }
 
-  Serialize::write_size_t(stream, status_durations.size());
-
-  if (!status_durations.empty())
-  {
-    for (const StatusDurationMap::value_type& status_duration : status_durations)
-    {
-      Serialize::write_string(stream, status_duration.first);
-      status_duration.second.serialize(stream);
-    }
-  }
-
   Serialize::write_string_map(stream, event_scripts);
 
   auto_move.serialize(stream);
@@ -1440,25 +1410,6 @@ bool Creature::deserialize(istream& stream)
       Serialize::read_bool(stream, creature_affected);
 
       statuses.insert(make_pair(c_status_id, creature_affected));
-    }
-  }
-
-  size_t status_durations_size = 0;
-  Serialize::read_size_t(stream, status_durations_size);
-
-  if (status_durations_size > 0)
-  {
-    status_durations.clear();
-
-    for (uint i = 0; i < status_durations_size; i++)
-    {
-      string status_id;
-      Serialize::read_string(stream, status_id);
-
-      StatusDuration sd;
-      sd.deserialize(stream);
-
-      status_durations.insert(make_pair(status_id, sd));
     }
   }
 

@@ -217,6 +217,21 @@ bool Modifier::get_status(const string& status_id) const
   return val;
 }
 
+vector<string> Modifier::get_affected_status_keys() const
+{
+  vector<string> status_keys;
+
+  for (const auto& map_pair : statuses)
+  {
+    if (map_pair.second == true)
+    {
+      status_keys.push_back(map_pair.first);
+    }
+  }
+
+  return status_keys;
+}
+
 vector<int> Modifier::get_raw_values() const
 {
   return {strength_modifier, 

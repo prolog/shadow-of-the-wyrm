@@ -38,14 +38,14 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   ICreatureRegenerationPtr move_checkr  = std::make_shared<MovementAccumulationChecker>();
   // Every day, increment the creature's skills if they have been used enough.
   ICreatureRegenerationPtr skill_checkr = std::make_shared<CreatureSkillIncrementer>(1440);
+  // Every minute, check to see if the creature has modifiers that should be removed.
+  ICreatureRegenerationPtr mod_chkr = std::make_shared<CreatureModifiers>();
   // Every minute, reduce the player's hunger clock...
   ICreatureRegenerationPtr hungr_checkr = std::make_shared<CreatureHungerTimer>();
   // Every minute, call the tick() function for each status the creature has.
   ICreatureRegenerationPtr status_chekr = std::make_shared<CreatureStatuses>();
   // Every half an hour to an hour, do alcohol absorption and metabolism.
   ICreatureRegenerationPtr alcohol_chkr = std::make_shared<CreatureAlcoholTimer>();
-  // Every minute, check to see if the creature has spell statistics modifiers that should be removed.
-  ICreatureRegenerationPtr sp_stat_chkr = std::make_shared<CreatureModifiers>();
 
   regen.push_back(hp_regen    );
   regen.push_back(ap_regen    );
@@ -53,10 +53,10 @@ void CreatureTimeObserver::initialize_regeneration_helpers()
   regen.push_back(move_accum  );
   regen.push_back(move_checkr );
   regen.push_back(skill_checkr);
+  regen.push_back(mod_chkr    );
   regen.push_back(hungr_checkr);
   regen.push_back(status_chekr);
   regen.push_back(alcohol_chkr);
-  regen.push_back(sp_stat_chkr);
 }
 
 void CreatureTimeObserver::notify(const ulonglong minutes_this_tick)

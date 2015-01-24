@@ -2523,9 +2523,6 @@
     <ClInclude Include="engine\creatures\include\CreatureGenerationManager.hpp">
       <Filter>Header Files\engine\creatures\include</Filter>
     </ClInclude>
-    <ClInclude Include="world\include\StatusDuration.hpp">
-      <Filter>Header Files\world\include</Filter>
-    </ClInclude>
     <ClInclude Include="engine\include\Random.hpp">
       <Filter>Header Files\engine\include</Filter>
     </ClInclude>
@@ -5545,12 +5542,6 @@
     </ClCompile>
     <ClCompile Include="engine\creatures\source\unit_tests\CreatureFactory_test.cpp">
       <Filter>Source Files\engine\creatures\source\unit_tests</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\StatusDuration.cpp">
-      <Filter>Source Files\world\source</Filter>
-    </ClCompile>
-    <ClCompile Include="world\source\unit_tests\StatusDuration_test.cpp">
-      <Filter>Source Files\world\source\unit_tests</Filter>
     </ClCompile>
     <ClCompile Include="world\source\StatusTypes.cpp">
       <Filter>Source Files\world\source</Filter>
