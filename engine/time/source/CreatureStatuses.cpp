@@ -13,24 +13,16 @@ void CreatureStatuses::tick(CreaturePtr creature, const ulonglong minutes_this_t
     double current_seconds = GameUtils::get_seconds(game);
 
     CreatureStatusMap statuses = creature->get_statuses();
-    StatusDurationMap durations = creature->get_status_durations();
 
+    // For each status, apply a "tick" - poisoned creatures take damage, etc.
+    // This class is purely responsible for iterating over the statuses and
+    // ticking - removal of statuses is handled in CreatureModifiers.
     for (const CreatureStatusMap::value_type& status : statuses)
     {
       string status_id = status.first;
       StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id);
-      StatusDuration cur_duration = durations[status_id];
-      double end = cur_duration.get_end();
 
-      // A value of -1 indicates permanence.
-      if ((current_seconds > end) && (end >= 0))
-      {
-        status_effect->finalize_change(creature);
-      }
-      else
-      {
-        status_effect->tick(creature);
-      }
+      status_effect->tick(creature);
     }
   }
 }

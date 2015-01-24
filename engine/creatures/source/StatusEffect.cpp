@@ -4,6 +4,7 @@
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "ModifyStatisticsEffect.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
 #include "StatusEffect.hpp"
@@ -68,10 +69,14 @@ bool StatusEffect::apply(CreaturePtr creature) const
     double current_seconds_since_game_start = GameUtils::get_seconds(game);
     int duration = status_calc->calculate_duration_in_minutes(creature);
 
-    StatusDuration effect_duration(current_seconds_since_game_start + (duration * 60.0));
+    Modifier modifier;
+    modifier.set_status(status_identifier, true);
 
-    creature->set_status(status_identifier, true);
-    creature->set_status_duration(status_identifier, effect_duration);
+    ModifyStatisticsEffect mse;
+    // JCD FIXME - need to add duration.
+    bool status_added = mse.apply_modifiers(creature, modifier);
+
+    // ... JCD FIXME add the modifier.
   }
 
   return true;

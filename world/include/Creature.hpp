@@ -26,7 +26,6 @@
 #include "Skills.hpp"
 #include "SpellKnowledge.hpp"
 #include "Statistic.hpp"
-#include "StatusDuration.hpp"
 #include "StatusTypes.hpp"
 
 // Forward declarations.
@@ -35,7 +34,6 @@ class DecisionStrategy;
 typedef std::map<std::string, std::pair<std::string, Coordinate>> TargetMap;
 typedef std::map<std::string, std::string> EventScriptsMap;
 typedef std::map<std::string, bool> CreatureStatusMap;
-typedef std::map<std::string, StatusDuration> StatusDurationMap;
 
 class Creature : public ISerializable
 {
@@ -251,11 +249,6 @@ class Creature : public ISerializable
     bool has_status(const std::string& status_id) const;
     CreatureStatusMap get_statuses() const;
 
-    // Set the duration lengths for various status buffs/ailments.
-    void set_status_duration(const std::string& status_id, const StatusDuration duration);
-    StatusDuration get_status_duration(const std::string& status_id) const;
-    StatusDurationMap get_status_durations() const;
-
     void clear_event_scripts();
     void set_event_scripts(const EventScriptsMap& esm);
     EventScriptsMap get_event_scripts() const;
@@ -416,9 +409,6 @@ class Creature : public ISerializable
 
     // Whether the creature is poisoned, silenced, etc.
     CreatureStatusMap statuses;
-
-    // The length of time for which a creature is poisoned, silenced, etc.
-    StatusDurationMap status_durations;
 
     // Event scripts - used to look up engine or user-defined Lua scripts
     // that should run when the event occurs.

@@ -43,6 +43,7 @@ class Modifier : public ISerializable
     void set_status(const std::string& status_id, const bool value);
     bool has_status(const std::string& status_id) const;
     bool get_status(const std::string& status_id) const;
+    std::vector<std::string> get_affected_status_keys() const; // returns all statuses whose value is true
 
     std::vector<int> get_raw_values() const;
 

@@ -19,6 +19,13 @@ class SpellAdditionalPropertiesNames
     static std::string PROPERTY_STATISTIC_MODIFIER_CHA;
     static std::string PROPERTY_STATISTIC_MODIFIER_EVADE;
     static std::string PROPERTY_STATISTIC_MODIFIER_SOAK;
+
+    // Note that status effects are intentionally not included here.
+    // Even though in the game status effects are modelled as a Modifier
+    // that has a list of status effects, it isn't intended that spells
+    // set status effects directly - rather, they should set status effects
+    // by doing the appropriate type of damage, or by doing damage with a
+    // certain list of effects.
 };
 
 string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_STR = "STATISTIC_MODIFIER_STR";

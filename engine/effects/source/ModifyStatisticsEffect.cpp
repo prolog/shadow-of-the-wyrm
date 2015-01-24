@@ -1,4 +1,5 @@
 #include "Creature.hpp"
+#include "CreatureCalculator.hpp"
 #include "EffectTextKeys.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
@@ -75,6 +76,17 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
     // Add the statistics modifier to the current list, and add to the creature.
     v_m.push_back(make_pair(spell_id, m));
     cr_sm[duration_end] = v_m;
+
+    // Add any statuses on the modifier to the creature
+    vector<string> status_ids = m.get_affected_status_keys();
+
+    for (const auto& status_id : status_ids)
+    {
+      creature->set_status(status_id, true);
+    }
+
+    // Update the creature's calculated values.
+    CreatureCalculator::update_calculated_values(creature);
 
     result = true;
   }

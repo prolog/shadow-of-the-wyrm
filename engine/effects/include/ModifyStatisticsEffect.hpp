@@ -14,6 +14,8 @@ class ModifyStatisticsEffect : public Effect
     void set_spell_id(const std::string& new_spell_id);
     std::string get_spell_id() const;
 
+    virtual bool apply_modifiers(std::shared_ptr<Creature>, const Modifier& m) const;
+
   protected:
     friend class SL_Engine_Effects_ModifyStatisticsEffect;
 
@@ -22,7 +24,6 @@ class ModifyStatisticsEffect : public Effect
     virtual bool effect_cursed(std::shared_ptr<Creature> creature, ActionManager * const am) override;
 
     virtual Modifier adjust_negative_modifiers(std::shared_ptr<Creature> creature, const Modifier& m) const;
-    virtual bool apply_modifiers(std::shared_ptr<Creature>, const Modifier& m) const;
 
     virtual int get_primary_statistic_modifier(int stat_score, int stat_modifier) const;
 
