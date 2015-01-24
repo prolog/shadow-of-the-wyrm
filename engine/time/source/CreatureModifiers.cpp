@@ -26,25 +26,13 @@ void CreatureModifiers::tick(CreaturePtr creature, const ulonglong minutes_this_
 
       if (modifier_expiry <= current_seconds)
       {
-        for (const auto& mod_pair : modifiers)
-        {
-          Modifier m = mod_pair.second;
-          vector<string> statuses = m.get_affected_status_keys();
-
-          for (const auto& status : statuses)
-          {
-            StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status);
-
-            if (status_p && creature->has_status(status))
-            {
-              status_p->finalize_change(creature);
-            }
-          }
-        }
+        process_current_modifiers(creature, modifiers);
 
         add_removal_message(creature);
         creature_modifiers.erase(m_it++);
 
+        // Removed at least one entry - we need to update the creature's
+        // calculated values.
         removed = true;
       }
       else
@@ -58,6 +46,27 @@ void CreatureModifiers::tick(CreaturePtr creature, const ulonglong minutes_this_
     if (removed)
     {
       CreatureCalculator::update_calculated_values(creature);
+    }
+  }
+}
+
+// Process the current set of modifiers for the given second.
+// Basically, if there are any status
+void CreatureModifiers::process_current_modifiers(CreaturePtr creature, const vector<pair<string, Modifier>>& modifiers)
+{
+  for (const auto& mod_pair : modifiers)
+  {
+    Modifier m = mod_pair.second;
+    vector<string> statuses = m.get_affected_status_keys();
+
+    for (const auto& status : statuses)
+    {
+      StatusEffectPtr status_p = StatusEffectFactory::create_status_effect(status);
+
+      if (status_p && creature->has_status(status))
+      {
+        status_p->finalize_change(creature);
+      }
     }
   }
 }
