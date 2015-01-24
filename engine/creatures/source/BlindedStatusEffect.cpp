@@ -19,9 +19,13 @@ int BlindedStatusEffect::get_to_hit_bonus(CreaturePtr creature) const
   return BLINDED_TO_HIT_PENALTY;
 }
 
-int BlindedStatusEffect::get_evade_bonus(CreaturePtr creature) const
+Modifier BlindedStatusEffect::get_base_modifier() const
 {
-  return BLINDED_EVADE_PENALTY;
+  Modifier m;
+
+  m.set_evade_modifier(BLINDED_EVADE_PENALTY);
+
+  return m;
 }
 
 bool BlindedStatusEffect::after_apply(CreaturePtr creature) const

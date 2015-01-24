@@ -33,9 +33,12 @@ class StatusEffect
     // allows a variety of status effects to affect various calculations
     // without hard-coding the status effect lookups into the calculators.
     virtual int get_to_hit_bonus(std::shared_ptr<Creature> creature) const;
-    virtual int get_evade_bonus(std::shared_ptr<Creature> creature) const;
 
   protected:
+    // Returns a modifier with any statistic changes, etc, that should be
+    // applied as a part of this status effect.
+    virtual Modifier get_base_modifier() const;
+
     // These functions are boolean to indicate whether or not the status was
     // actually applied.  The status will be applied in almost all cases, but
     // there are times when it may not be (e.g., trying to apply haste when

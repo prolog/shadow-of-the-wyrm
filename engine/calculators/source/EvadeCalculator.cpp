@@ -15,7 +15,7 @@ EvadeCalculator::~EvadeCalculator()
 // Evade = equipment bonuses/penalties
 //       + 1 point for every two points of Agility over 10
 //       - 1 point for every two points of Agility under 10
-//       + any bonuses or penalties from status ailments
+//       + any bonuses or penalties from modifiers
 int EvadeCalculator::calculate_evade(const CreaturePtr& c)
 {
   int evade = 0;
@@ -26,12 +26,10 @@ int EvadeCalculator::calculate_evade(const CreaturePtr& c)
     
     int agility = c->get_agility().get_current();
     int agility_bonus = (agility - 10) / 2;
-    int status_bonus = get_status_bonus(c);
     
     evade += get_equipment_bonus(c);
     evade += get_modifier_bonus(c);
     evade += agility_bonus;
-    evade += status_bonus;
   }
   
   return evade;
@@ -75,27 +73,6 @@ int EvadeCalculator::get_modifier_bonus(const CreaturePtr& c)
   }
 
   return mod_bonus;
-}
-
-int EvadeCalculator::get_status_bonus(const CreaturePtr& c)
-{
-  int status_bonus = 0;
-
-  CreatureStatusMap status = c->get_statuses();
-
-  for(const CreatureStatusMap::value_type& status_pair : status)
-  {
-    string status_id = status_pair.first;
-    bool status_applied = status_pair.second;
-
-    if (status_applied)
-    {
-      StatusEffectPtr status_effect = StatusEffectFactory::create_status_effect(status_id);
-      status_bonus += status_effect->get_evade_bonus(c);
-    }
-  }
-
-  return status_bonus;
 }
 
 #ifdef UNIT_TESTS
