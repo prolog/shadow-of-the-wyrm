@@ -38,9 +38,13 @@ string BloodiedStatusEffect::get_npc_undo_message(CreaturePtr creature) const
   return message;
 }
 
-int BloodiedStatusEffect::get_to_hit_bonus(CreaturePtr creature) const
+Modifier BloodiedStatusEffect::get_base_modifier() const
 {
-  return BLOODIED_TO_HIT_PENALTY;
+  Modifier m;
+
+  m.set_to_hit_modifier(BLOODIED_TO_HIT_PENALTY);
+
+  return m;
 }
 
 string BloodiedStatusEffect::get_status_identifier() const

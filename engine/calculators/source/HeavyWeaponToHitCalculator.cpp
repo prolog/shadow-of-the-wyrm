@@ -23,7 +23,7 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     int combat   = sm.get_skill_value(creature, SkillType::SKILL_GENERAL_COMBAT);
     int strength = creature->get_strength().get_current();
     int weapon   = get_weapon_bonus(creature);
-    int status   = get_status_bonus(creature);
+    int modifier = get_modifier_bonus(creature);
 
     // There is no BAC penalty for heavy weapons - unlike light and ranged
     // weapons, which rely on finesse, heavy weapons rely more on strength,
@@ -33,7 +33,7 @@ int HeavyWeaponToHitCalculator::calculate(CreaturePtr creature)
     to_hit += combat / NWP_SKILL_BONUS_DIVISOR;
     to_hit += (strength - 10) / 4;
     to_hit += weapon;
-    to_hit += status;
+    to_hit += modifier;
   }
 
   return to_hit;

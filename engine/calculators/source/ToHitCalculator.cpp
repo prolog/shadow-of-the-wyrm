@@ -45,23 +45,23 @@ int ToHitCalculator::get_weapon_bonus(CreaturePtr creature)
   return weapon_bonus;
 }
 
-int ToHitCalculator::get_status_bonus(CreaturePtr creature)
+int ToHitCalculator::get_modifier_bonus(CreaturePtr creature)
 {
-  int status_bonus = 0;
+  int to_hit_bonus = 0;
 
-  // Apply any status modifiers.
-  CreatureStatusMap statuses = creature->get_statuses();
-  for(const CreatureStatusMap::value_type& status_pair : statuses)
+  if (creature != nullptr)
   {
-    string status_id = status_pair.first;
-    bool status_applied = status_pair.second;
+    const map<double, vector<pair<string, Modifier>>>& modifiers = creature->get_modifiers_ref();
 
-    if (status_applied)
+    for (const auto& mod_pair : modifiers)
     {
-      StatusEffectPtr status = StatusEffectFactory::create_status_effect(status_id);
-      status_bonus += status->get_to_hit_bonus(creature);
+      for (const auto& current_mod_pair : mod_pair.second)
+      {
+        to_hit_bonus += current_mod_pair.second.get_to_hit_modifier();
+      }
     }
   }
 
-  return status_bonus;
+  return to_hit_bonus;
 }
+

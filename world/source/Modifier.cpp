@@ -13,7 +13,8 @@ intelligence_modifier(0),
 willpower_modifier(0),
 charisma_modifier(0),
 evade_modifier(0),
-soak_modifier(0)
+soak_modifier(0),
+to_hit_modifier(0)
 {
 }
 
@@ -36,7 +37,8 @@ intelligence_modifier(new_intelligence_modifier),
 willpower_modifier(new_willpower_modifier),
 charisma_modifier(new_charisma_modifier),
 evade_modifier(0),
-soak_modifier(0)
+soak_modifier(0),
+to_hit_modifier(0)
 {
 }
 
@@ -50,7 +52,8 @@ intelligence_modifier(0),
 willpower_modifier(0),
 charisma_modifier(0),
 evade_modifier(0),
-soak_modifier(0)
+soak_modifier(0),
+to_hit_modifier(0)
 {
   int size = args.size();
 
@@ -59,6 +62,8 @@ soak_modifier(0)
   switch (size)
   {
     default:
+    case 10:
+      to_hit_modifier = args.at(9);
     case 9:
       soak_modifier = args.at(8);
     case 8:
@@ -95,6 +100,7 @@ bool Modifier::operator==(const Modifier& m) const
   result = result && charisma_modifier == m.charisma_modifier;
   result = result && evade_modifier == m.evade_modifier;
   result = result && soak_modifier == m.soak_modifier;
+  result = result && to_hit_modifier == m.to_hit_modifier;
   result = result && statuses == m.statuses;
 
   return result;
@@ -191,6 +197,16 @@ int Modifier::get_soak_modifier() const
   return soak_modifier;
 }
 
+void Modifier::set_to_hit_modifier(const int new_to_hit_modifier)
+{
+  to_hit_modifier = new_to_hit_modifier;
+}
+
+int Modifier::get_to_hit_modifier() const
+{
+  return to_hit_modifier;
+}
+
 void Modifier::set_status(const string& status, const bool value)
 {
   statuses[status] = value;
@@ -242,7 +258,8 @@ vector<int> Modifier::get_raw_values() const
           willpower_modifier, 
           charisma_modifier, 
           evade_modifier, 
-          soak_modifier};
+          soak_modifier,
+          to_hit_modifier};
 }
 
 bool Modifier::serialize(ostream& stream) const
@@ -256,6 +273,7 @@ bool Modifier::serialize(ostream& stream) const
   Serialize::write_int(stream, charisma_modifier);
   Serialize::write_int(stream, evade_modifier);
   Serialize::write_int(stream, soak_modifier);
+  Serialize::write_int(stream, to_hit_modifier);
 
   size_t statuses_size = statuses.size();
   Serialize::write_size_t(stream, statuses_size);
@@ -279,6 +297,7 @@ bool Modifier::deserialize(istream& stream)
   Serialize::read_int(stream, charisma_modifier);
   Serialize::read_int(stream, evade_modifier);
   Serialize::read_int(stream, soak_modifier);
+  Serialize::read_int(stream, to_hit_modifier);
 
   size_t statuses_size = 0;
   Serialize::read_size_t(stream, statuses_size);

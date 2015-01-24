@@ -14,16 +14,12 @@ BlindedStatusEffect::BlindedStatusEffect()
   status_calc = std::make_shared<BlindedCalculator>();
 }
 
-int BlindedStatusEffect::get_to_hit_bonus(CreaturePtr creature) const
-{
-  return BLINDED_TO_HIT_PENALTY;
-}
-
 Modifier BlindedStatusEffect::get_base_modifier() const
 {
   Modifier m;
 
   m.set_evade_modifier(BLINDED_EVADE_PENALTY);
+  m.set_to_hit_modifier(BLINDED_TO_HIT_PENALTY);
 
   return m;
 }
