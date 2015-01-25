@@ -7,7 +7,7 @@ class BlindedStatusEffect : public StatusEffect
     BlindedStatusEffect();
   
   protected:
-    virtual Modifier get_base_modifier() const override;
+    virtual Modifier get_base_modifier(CreaturePtr creature) const override;
 
     virtual bool after_apply(std::shared_ptr<Creature> creature) const override;
     virtual void after_undo(std::shared_ptr<Creature> creature) const override;

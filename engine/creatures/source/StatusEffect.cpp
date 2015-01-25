@@ -68,15 +68,13 @@ bool StatusEffect::apply(CreaturePtr creature) const
 
     double current_seconds_since_game_start = GameUtils::get_seconds(game);
     int duration = status_calc->calculate_duration_in_minutes(creature);
+    double eff_dur_sec = current_seconds_since_game_start + (duration * 60);
 
-    Modifier modifier = get_base_modifier();
+    Modifier modifier = get_base_modifier(creature);
     modifier.set_status(status_identifier, true);
 
     ModifyStatisticsEffect mse;
-    // JCD FIXME - need to add duration.
-    bool status_added = mse.apply_modifiers(creature, modifier);
-
-    // ... JCD FIXME add the modifier.
+    bool status_added = mse.apply_modifiers(creature, modifier, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, eff_dur_sec);
   }
 
   return true;
@@ -264,7 +262,7 @@ void StatusEffect::tick(CreaturePtr creature) const
 {
 }
 
-Modifier StatusEffect::get_base_modifier() const
+Modifier StatusEffect::get_base_modifier(CreaturePtr creature) const
 {
   Modifier m;
   return m;

@@ -14,7 +14,7 @@ BlindedStatusEffect::BlindedStatusEffect()
   status_calc = std::make_shared<BlindedCalculator>();
 }
 
-Modifier BlindedStatusEffect::get_base_modifier() const
+Modifier BlindedStatusEffect::get_base_modifier(CreaturePtr creature) const
 {
   Modifier m;
 

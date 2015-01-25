@@ -24,7 +24,7 @@ void CreatureModifiers::tick(CreaturePtr creature, const ulonglong minutes_this_
 
       vector<pair<string, Modifier>> modifiers = m_it->second;
 
-      if (modifier_expiry <= current_seconds)
+      if ((modifier_expiry > 0) && (modifier_expiry <= current_seconds))
       {
         process_current_modifiers(creature, modifiers);
 

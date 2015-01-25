@@ -35,7 +35,7 @@ string ExposedStatusEffect::get_npc_undo_message(CreaturePtr creature) const
   return message;
 }
 
-Modifier ExposedStatusEffect::get_base_modifier() const
+Modifier ExposedStatusEffect::get_base_modifier(CreaturePtr creature) const
 {
   Modifier m;
 

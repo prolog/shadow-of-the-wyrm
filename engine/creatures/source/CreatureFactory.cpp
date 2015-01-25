@@ -18,6 +18,7 @@
 #include "RNG.hpp"
 #include "NullKeyboardController.hpp"
 #include "PlayerConstants.hpp"
+#include "ModifyStatisticsEffect.hpp"
 
 using namespace std;
 
@@ -175,15 +176,23 @@ CreaturePtr CreatureFactory::create_by_race_and_class
     // Statistics, HP, and AP
     set_initial_statistics(creaturep, race, char_class, deity);
 
+    ModifyStatisticsEffect mse;
+
     // Various race-based flags (boolean statistics)
     if (race->get_corporeal().get_base() == false)
     {
+      Modifier m;
       creaturep->set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
+      m.set_status(StatusIdentifiers::STATUS_ID_INCORPOREAL, true);
+      mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
 
     if (race->get_flying().get_base() == true)
     {
+      Modifier m;
       creaturep->set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
+      m.set_status(StatusIdentifiers::STATUS_ID_FLYING, true);
+      mse.apply_modifiers(creaturep, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_PRESET, -1);
     }
 
     // Resistances

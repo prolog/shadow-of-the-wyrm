@@ -47,7 +47,7 @@ Effect* ModifyStatisticsEffect::clone()
   return new ModifyStatisticsEffect(*this);
 }
 
-bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifier& m) const
+bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifier& m, const ModifyStatisticsDuration msd, const double preset_duration) const
 {
   bool result = false;
 
@@ -55,11 +55,17 @@ bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifie
   // This isn't Final Fantasy with RUSE.
   if (creature && !creature->is_affected_by_modifier_spell(spell_id))
   {
-    Game& game = Game::instance();
-    double seconds = GameUtils::get_seconds(game);
-
     ModifyStatisticsCalculator msc;
-    double duration_end = seconds + (msc.calculate_duration() * 60);
+
+    double duration_end = preset_duration;
+
+    if (msd == ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_CALCULATE)
+    {
+      Game& game = Game::instance();
+      double seconds = GameUtils::get_seconds(game);
+
+      duration_end = seconds + (msc.calculate_duration() * 60);
+    }
 
     // Get the statistics modifiers.
     auto& cr_sm = creature->get_modifiers_ref();
@@ -111,12 +117,12 @@ bool ModifyStatisticsEffect::effect_blessed(std::shared_ptr<Creature> creature, 
   });
 
   Modifier blessed_m(blessed_sm_v);
-  return apply_modifiers(creature, blessed_m);
+  return apply_modifiers(creature, blessed_m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_CALCULATE);
 }
 
 bool ModifyStatisticsEffect::effect_uncursed(CreaturePtr creature, ActionManager * const am)
 {
-  return apply_modifiers(creature, m);
+  return apply_modifiers(creature, m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_CALCULATE);
 }
 
 bool ModifyStatisticsEffect::effect_cursed(CreaturePtr creature, ActionManager * const am)
@@ -136,7 +142,7 @@ bool ModifyStatisticsEffect::effect_cursed(CreaturePtr creature, ActionManager *
   });
 
   Modifier blessed_m(blessed_sm_v);
-  return apply_modifiers(creature, blessed_m);
+  return apply_modifiers(creature, blessed_m, ModifyStatisticsDuration::MODIFY_STATISTICS_DURATION_CALCULATE);
 }
 
 // Adjust negative statistics modifiers so that creature stats cannot

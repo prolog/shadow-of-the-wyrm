@@ -12,6 +12,9 @@ Savage Lands v0.3.2 "Hussa"
   ModifyStatisticEffect to update the modifiers to reflect that the
   lowest a stat can be is 1, and the highest 99.
 
+- Refactored the status effects to use Modifiers instead of special
+  code to handle things like statistic modification.
+
 - New spells, with associated spellbooks: divine wind (Divine), divine 
   shield (Divine), curse (Mystic).
 

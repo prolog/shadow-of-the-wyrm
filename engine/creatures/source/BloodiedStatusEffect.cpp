@@ -38,7 +38,7 @@ string BloodiedStatusEffect::get_npc_undo_message(CreaturePtr creature) const
   return message;
 }
 
-Modifier BloodiedStatusEffect::get_base_modifier() const
+Modifier BloodiedStatusEffect::get_base_modifier(CreaturePtr creature) const
 {
   Modifier m;
 

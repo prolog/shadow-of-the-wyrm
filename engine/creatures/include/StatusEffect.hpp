@@ -31,7 +31,7 @@ class StatusEffect
   protected:
     // Returns a modifier with any statistic changes, etc, that should be
     // applied as a part of this status effect.
-    virtual Modifier get_base_modifier() const;
+    virtual Modifier get_base_modifier(std::shared_ptr<Creature> creature) const;
 
     // These functions are boolean to indicate whether or not the status was
     // actually applied.  The status will be applied in almost all cases, but
