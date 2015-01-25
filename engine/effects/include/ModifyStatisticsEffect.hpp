@@ -2,6 +2,12 @@
 #include "Effect.hpp"
 #include "Modifier.hpp"
 
+enum class ModifyStatisticsDuration
+{
+  MODIFY_STATISTICS_DURATION_PRESET = 0,
+  MODIFY_STATISTICS_DURATION_CALCULATE = 1
+};
+
 class ModifyStatisticsEffect : public Effect
 {
   public:
@@ -14,7 +20,7 @@ class ModifyStatisticsEffect : public Effect
     void set_spell_id(const std::string& new_spell_id);
     std::string get_spell_id() const;
 
-    virtual bool apply_modifiers(std::shared_ptr<Creature>, const Modifier& m) const;
+    virtual bool apply_modifiers(std::shared_ptr<Creature>, const Modifier& m, const ModifyStatisticsDuration msd, const double duration = -1) const;
 
   protected:
     friend class SL_Engine_Effects_ModifyStatisticsEffect;
