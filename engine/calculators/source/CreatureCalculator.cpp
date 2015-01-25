@@ -6,6 +6,7 @@
 #include "ClassManager.hpp"
 #include "ResistancesCalculator.hpp"
 #include "SoakCalculator.hpp"
+#include "StatisticsCalculators.hpp"
 
 CreatureCalculator::CreatureCalculator()
 {
@@ -19,16 +20,48 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
 {
   if (c)
   {
-    // TODO: create calculators for:
     // Strength
-    // Dexterity
-    // Agility
-    // Health
-    // Intelligence
-    // Willpower
-    // Charisma
-    // Update Disfiguration to use regular modifiers
+    StrengthCalculator sc;
+    Statistic str = c->get_strength();
+    str.set_current(sc.calculate_current(c));
+    c->set_strength(str);
 
+    // Dexterity
+    DexterityCalculator dc;
+    Statistic dex = c->get_dexterity();
+    dex.set_current(dc.calculate_current(c));
+    c->set_dexterity(dex);
+
+    // Agility
+    AgilityCalculator ac;
+    Statistic agi = c->get_agility();
+    agi.set_current(ac.calculate_current(c));
+    c->set_agility(agi);
+
+    // Health
+    HealthCalculator hc;
+    Statistic hea = c->get_health();
+    hea.set_current(hc.calculate_current(c));
+    c->set_health(hea);
+
+    // Intelligence
+    IntelligenceCalculator ic;
+    Statistic itl = c->get_intelligence();
+    itl.set_current(ic.calculate_current(c));
+    c->set_intelligence(itl);
+
+    // Willpower
+    WillpowerCalculator wc;
+    Statistic wil = c->get_willpower();
+    wil.set_current(wc.calculate_current(c));
+    c->set_willpower(wil);
+
+    // Charisma
+    CharismaCalculator cc;
+    Statistic cha = c->get_charisma();
+    cha.set_current(cc.calculate_current(c));
+    c->set_charisma(cha);
+ 
     // Evade
     int calc_evade = EvadeCalculator::calculate_evade(c);
     c->set_evade(calc_evade);
@@ -37,7 +70,6 @@ void CreatureCalculator::update_calculated_values(const CreaturePtr& c)
     int calc_soak = SoakCalculator::calculate_soak(c);
     c->set_soak(calc_soak);
 
-    // TODO: If to-hit is ever added to Modifier, update this.
     // To-Hit from additional sources
     CreatureToHitCalculator cthc;
     int calc_to_hit = cthc.calculate_to_hit(c);
