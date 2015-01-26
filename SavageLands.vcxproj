@@ -870,6 +870,7 @@
     <ClInclude Include="world\magic\include\EffectTypes.hpp" />
     <ClInclude Include="world\magic\include\IndividualSpellKnowledge.hpp" />
     <ClInclude Include="world\magic\include\Spell.hpp" />
+    <ClInclude Include="world\magic\include\SpellAdditionalProperties.hpp" />
     <ClInclude Include="world\magic\include\SpellConstants.hpp" />
     <ClInclude Include="world\magic\include\SpellFactory.hpp" />
     <ClInclude Include="world\magic\include\SpellKnowledge.hpp" />
@@ -2175,6 +2176,7 @@
     </ClCompile>
     <ClCompile Include="world\magic\source\IndividualSpellKnowledge.cpp" />
     <ClCompile Include="world\magic\source\Spell.cpp" />
+    <ClCompile Include="world\magic\source\SpellAdditionalProperties.cpp" />
     <ClCompile Include="world\magic\source\SpellConstants.cpp" />
     <ClCompile Include="world\magic\source\SpellFactory.cpp" />
     <ClCompile Include="world\magic\source\SpellKnowledge.cpp" />

@@ -27,8 +27,6 @@ void CreatureModifiers::tick(CreaturePtr creature, const ulonglong minutes_this_
       if ((modifier_expiry > 0) && (modifier_expiry <= current_seconds))
       {
         process_current_modifiers(creature, modifiers);
-
-        add_removal_message(creature);
         creature_modifiers.erase(m_it++);
 
         // Removed at least one entry - we need to update the creature's
@@ -56,8 +54,11 @@ void CreatureModifiers::process_current_modifiers(CreaturePtr creature, const ve
 {
   for (const auto& mod_pair : modifiers)
   {
+    string spell_id = mod_pair.first;
     Modifier m = mod_pair.second;
     vector<string> statuses = m.get_affected_status_keys();
+
+    add_removal_message(creature, spell_id);
 
     for (const auto& status : statuses)
     {
@@ -71,14 +72,23 @@ void CreatureModifiers::process_current_modifiers(CreaturePtr creature, const ve
   }
 }
 
-void CreatureModifiers::add_removal_message(CreaturePtr creature)
+void CreatureModifiers::add_removal_message(CreaturePtr creature, const string& spell_id)
 {
-  if (creature)
+  if (!spell_id.empty() && creature != nullptr)
   {
+    Game& game = Game::instance();
     string creature_id = creature->get_id();
 
-    // Check to see if the creature is the player, or in view of the player.
+    const SpellMap& spells = game.get_spells_ref();
+    auto spell_it = spells.find(spell_id);
 
-    // Add the appropriate message.
+    if (spell_it != spells.end())
+    {
+      Spell spell = spell_it->second;
+
+      // Check to see if the creature is the player, or in view of the player.
+
+      // Add the appropriate message.
+    }
   }
 }
