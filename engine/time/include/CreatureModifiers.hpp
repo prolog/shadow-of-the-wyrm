@@ -8,5 +8,5 @@ class CreatureModifiers : public ICreatureRegeneration
 
   protected:
     void process_current_modifiers(CreaturePtr creature, const std::vector<std::pair<std::string, Modifier>>& current_modifiers);
-    void add_removal_message(CreaturePtr creature);
+    void add_removal_message(CreaturePtr creature, const std::string& spell_id);
 };

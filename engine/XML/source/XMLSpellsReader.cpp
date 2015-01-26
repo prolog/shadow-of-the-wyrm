@@ -2,41 +2,11 @@
 #include "Conversion.hpp"
 #include "SpellShapeFactory.hpp"
 #include "Modifier.hpp"
+#include "SpellAdditionalProperties.hpp"
 #include "XMLSpellsReader.hpp"
 #include "XMLDataStructures.hpp"
 
 using namespace std;
-
-class SpellAdditionalPropertiesNames
-{
-  public:
-    static std::string PROPERTY_STATISTIC_MODIFIER_STR;
-    static std::string PROPERTY_STATISTIC_MODIFIER_DEX;
-    static std::string PROPERTY_STATISTIC_MODIFIER_AGI;
-    static std::string PROPERTY_STATISTIC_MODIFIER_HEA;
-    static std::string PROPERTY_STATISTIC_MODIFIER_INT;
-    static std::string PROPERTY_STATISTIC_MODIFIER_WIL;
-    static std::string PROPERTY_STATISTIC_MODIFIER_CHA;
-    static std::string PROPERTY_STATISTIC_MODIFIER_EVADE;
-    static std::string PROPERTY_STATISTIC_MODIFIER_SOAK;
-
-    // Note that status effects are intentionally not included here.
-    // Even though in the game status effects are modelled as a Modifier
-    // that has a list of status effects, it isn't intended that spells
-    // set status effects directly - rather, they should set status effects
-    // by doing the appropriate type of damage, or by doing damage with a
-    // certain list of effects.
-};
-
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_STR = "STATISTIC_MODIFIER_STR";
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_DEX = "STATISTIC_MODIFIER_DEX";
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_AGI = "STATISTIC_MODIFIER_AGI";
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_HEA = "STATISTIC_MODIFIER_HEA";
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_INT = "STATISTIC_MODIFIER_INT";
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_WIL = "STATISTIC_MODIFIER_WIL";
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_CHA = "STATISTIC_MODIFIER_CHA";
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_EVADE = "STATISTIC_MODIFIER_EVADE";
-string SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_SOAK = "STATISTIC_MODIFIER_SOAK";
 
 XMLSpellsReader::XMLSpellsReader()
 {
@@ -128,15 +98,15 @@ void XMLSpellsReader::create_modifiers_if_necessary(Spell& spell, const map<stri
   bool create_modifier = false;
   vector<int> sm_constructor_arg;
 
-  vector<string> keys = { SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_STR,
-                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_DEX,
-                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_AGI,
-                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_HEA,
-                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_INT,
-                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_WIL,
-                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_CHA,
-                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_EVADE,
-                          SpellAdditionalPropertiesNames::PROPERTY_STATISTIC_MODIFIER_SOAK };
+  vector<string> keys = { SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_STR,
+                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_DEX,
+                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_AGI,
+                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_HEA,
+                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_INT,
+                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WIL,
+                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_CHA,
+                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_EVADE,
+                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_SOAK };
 
   for (const auto& key : keys)
   {

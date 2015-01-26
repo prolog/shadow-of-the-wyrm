@@ -3324,6 +3324,9 @@
     <ClInclude Include="engine\calculators\include\StatisticsCalculators.hpp">
       <Filter>Header Files\engine\calculators\include</Filter>
     </ClInclude>
+    <ClInclude Include="world\magic\include\SpellAdditionalProperties.hpp">
+      <Filter>Header Files\world\magic\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6469,6 +6472,9 @@
     </ClCompile>
     <ClCompile Include="engine\calculators\source\unit_tests\StatisticsCalculators_test.cpp">
       <Filter>Source Files\engine\calculators\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="world\magic\source\SpellAdditionalProperties.cpp">
+      <Filter>Source Files\world\magic\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
