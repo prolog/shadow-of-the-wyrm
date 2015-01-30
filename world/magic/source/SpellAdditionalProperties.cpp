@@ -12,4 +12,6 @@ const string SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_CHA = "STATI
 const string SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_EVADE = "STATISTIC_MODIFIER_EVADE";
 const string SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_SOAK = "STATISTIC_MODIFIER_SOAK";
 
+const string SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WEAR_OFF_SID = "SPELL_WEAR_OFF_SID";
+
 

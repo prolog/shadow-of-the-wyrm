@@ -1,5 +1,6 @@
 #include "CreatureCalculator.hpp"
 #include "CreatureModifiers.hpp"
+#include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
@@ -85,10 +86,15 @@ void CreatureModifiers::add_removal_message(CreaturePtr creature, const string& 
     if (spell_it != spells.end())
     {
       Spell spell = spell_it->second;
+      string spell_wear_off_sid; // = ...;
 
       // Check to see if the creature is the player, or in view of the player.
+      bool affects_player = CreatureUtils::is_player_or_in_los(creature);
 
-      // Add the appropriate message.
+      // Get the appropriate message manager and set the appropriate message.
+      // If the creature is the player, use the spell wear off sid.
+      // Otherwise, use the generic spell wear off message for creatures.
+      IMessageManager& manager = MessageManagerFactory::instance(creature, affects_player);
     }
   }
 }

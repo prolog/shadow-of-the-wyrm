@@ -3,6 +3,7 @@
 #include "DeityTextKeys.hpp"
 #include "Game.hpp"
 #include "MessageManagerFactory.hpp"
+#include "PlayerConstants.hpp"
 #include "ReligionManager.hpp"
 #include "StatisticTextKeys.hpp"
 
@@ -119,6 +120,36 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
       }
     }
   }
+}
+
+// Is the creature the player, or in the player's line of sight?
+bool CreatureUtils::is_player_or_in_los(CreaturePtr creature)
+{
+  bool result = false;
+
+  if (creature != nullptr)
+  {
+    string creature_id = creature->get_id();
+
+    if (creature_id == PlayerConstants::PLAYER_CREATURE_ID)
+    {
+      result = true;
+    }
+    else
+    {
+      Game& game = Game::instance();
+      CreaturePtr player = game.get_current_player();
+      MapPtr view_map = player->get_decision_strategy()->get_fov_map();
+      map<string, CreaturePtr> view_creatures = view_map->get_creatures();
+
+      if (view_creatures.find(creature_id) != view_creatures.end())
+      {
+        result = true;
+      }
+    }
+  }
+
+  return result;
 }
 
 void CreatureUtils::incr_str(CreaturePtr creature, const bool add_msg)
