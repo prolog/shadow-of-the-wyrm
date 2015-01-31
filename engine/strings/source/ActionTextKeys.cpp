@@ -183,6 +183,16 @@ string ActionTextKeys::get_kick_object_message(const string& desc_sid, const str
   return kick_msg;
 }
 
+string ActionTextKeys::get_generic_wear_off_message(const string& desc_sid)
+{
+  string msg;
+
+  msg = StringTable::get(ACTION_SPELL_WEAR_OFF_MONSTER);
+  boost::replace_first(msg, "%s", desc_sid);
+
+  return msg;
+}
+
 // Public
 const string ActionTextKeys::ACTION_NOT_FOUND                  = "ACTION_NOT_FOUND";
 const string ActionTextKeys::ACTION_SEARCH                     = "ACTION_SEARCH";
@@ -272,3 +282,4 @@ const string ActionTextKeys::ACTION_KICK_PLAYER                   = "ACTION_KICK
 const string ActionTextKeys::ACTION_KICK_MONSTER                  = "ACTION_KICK_MONSTER";
 const string ActionTextKeys::ACTION_KICK_OBJECT_PLAYER            = "ACTION_KICK_OBJECT_PLAYER";
 const string ActionTextKeys::ACTION_KICK_OBJECT_MONSTER           = "ACTION_KICK_OBJECT_MONSTER";
+const string ActionTextKeys::ACTION_SPELL_WEAR_OFF_MONSTER        = "ACTION_SPELL_WEAR_OFF_MONSTER";
