@@ -22,8 +22,11 @@ Savage Lands v0.3.2 "Hussa"
 - Spells with net negative modifiers now trigger hostility towards
   the caster.
 
+- Moved Cantrips out of the General skills section and into the magical.
+  Added some new cantrips with associated spellbooks.
+
 - New spells, with associated spellbooks: divine wind (Divine), divine 
-  shield (Divine), curse (Mystic).
+  shield (Divine), curse (Mystic), minor healing (Cantrips).
 
 - New traps: poison dart.
 

@@ -439,7 +439,6 @@
 			<xs:element name="Boating" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Bowyer" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Brewing" type="tns:PercentageStatistic" minOccurs="0"/>
-			<xs:element name="Cantrips" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Carrying" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Combat" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Crafting" type="tns:PercentageStatistic" minOccurs="0"/>
@@ -530,6 +529,7 @@
 			<xs:element name="Divine" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Mystic" type="tns:PercentageStatistic" minOccurs="0"/>
 			<xs:element name="Primordial" type="tns:PercentageStatistic" minOccurs="0"/>
+			<xs:element name="Cantrips" type="tns:PercentageStatistic" minOccurs="0"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>

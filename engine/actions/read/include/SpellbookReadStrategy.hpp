@@ -18,7 +18,7 @@ class SpellbookReadStrategy : public ReadStrategy
 
     // Check to see if the creature has any skill in magic - required to be
     // able to learn spells from spellbooks.
-    bool check_magic_skill(CreaturePtr creature);
+    bool check_magic_skill(CreaturePtr creature, SkillType magic_category);
 
     // Confirm whether to continue reading, if necessary - this is automatic
     // when the creature has skill in the category, but requires prompting

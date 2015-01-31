@@ -21,18 +21,18 @@ ActionCostValue SpellbookReadStrategy::read(CreaturePtr creature, ActionManager 
 
     if (spellbook)
     {
-      if (check_magic_skill(creature))
+      string spell_id = spellbook->get_spell_id();
+      const SpellMap spell_map = Game::instance().get_spells_ref();
+      SkillType magic_category = SkillType::SKILL_MAGIC_ARCANE;
+      SpellMap::const_iterator s_it = spell_map.find(spell_id);
+
+      if (s_it != spell_map.end())
       {
-        string spell_id = spellbook->get_spell_id();
-        const SpellMap spell_map = Game::instance().get_spells_ref();
-        SkillType magic_category = SkillType::SKILL_MAGIC_ARCANE;
-        SpellMap::const_iterator s_it = spell_map.find(spell_id);
+        magic_category = s_it->second.get_magic_category();
+      }
 
-        if (s_it != spell_map.end())
-        {
-          magic_category = s_it->second.get_magic_category();
-        }
-
+      if (check_magic_skill(creature, magic_category))
+      {
         if (confirm_reading_if_necessary(creature, magic_category))
         {
           ItemIdentifier item_id;
@@ -112,13 +112,14 @@ void SpellbookReadStrategy::learn_spell_from_spellbook(CreaturePtr creature, Spe
 }
 
 // Check to see if the creature can actually read the runes on the page.
-bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature)
+bool SpellbookReadStrategy::check_magic_skill(CreaturePtr creature, SkillType magic_category)
 {
   bool has_magic_skill = true;
 
   SkillPtr magic_skill = creature->get_skills().get_skill(SkillType::SKILL_GENERAL_MAGIC);
 
-  if (magic_skill->get_value() <= 0)
+  // Cantrips don't need a magic check - they're not written in Old Runic.
+  if (magic_skill->get_value() <= 0 && magic_category != SkillType::SKILL_MAGIC_CANTRIPS)
   {
     if (creature->get_is_player())
     {
