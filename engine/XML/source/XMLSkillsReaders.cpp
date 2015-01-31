@@ -31,7 +31,6 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     int boating_value          = XMLUtils::get_child_node_int_value(general_skills_node, "Boating");
     int bowyer_value           = XMLUtils::get_child_node_int_value(general_skills_node, "Bowyer");
     int brewing_value          = XMLUtils::get_child_node_int_value(general_skills_node, "Brewing");
-    int cantrips_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Cantrips");
     int carrying_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Carrying");
     int combat_value           = XMLUtils::get_child_node_int_value(general_skills_node, "Combat");
     int crafting_value         = XMLUtils::get_child_node_int_value(general_skills_node, "Crafting");
@@ -82,7 +81,6 @@ void XMLGeneralSkillsReader::parse_general_skills(Skills& skills, const XMLNode&
     skills.set_value(SkillType::SKILL_GENERAL_BOATING, boating_value);
     skills.set_value(SkillType::SKILL_GENERAL_BOWYER, bowyer_value);
     skills.set_value(SkillType::SKILL_GENERAL_BREWING, brewing_value);
-    skills.set_value(SkillType::SKILL_GENERAL_CANTRIPS, cantrips_value);
     skills.set_value(SkillType::SKILL_GENERAL_CARRYING, carrying_value);
     skills.set_value(SkillType::SKILL_GENERAL_COMBAT, combat_value);
     skills.set_value(SkillType::SKILL_GENERAL_CRAFTING, crafting_value);
@@ -190,11 +188,13 @@ void XMLMagicSkillsReader::parse_magic_skills(Skills& skills, const XMLNode& mag
     int divine_value = XMLUtils::get_child_node_int_value(magic_skills_node, "Divine");
     int mystic_value = XMLUtils::get_child_node_int_value(magic_skills_node, "Mystic");
     int primordial_value = XMLUtils::get_child_node_int_value(magic_skills_node, "Primordial");
+    int cantrips_value = XMLUtils::get_child_node_int_value(magic_skills_node, "Cantrips");
 
     skills.set_value(SkillType::SKILL_MAGIC_ARCANE, arcane_value);
     skills.set_value(SkillType::SKILL_MAGIC_DIVINE, divine_value);
     skills.set_value(SkillType::SKILL_MAGIC_MYSTIC, mystic_value);
     skills.set_value(SkillType::SKILL_MAGIC_PRIMORDIAL, primordial_value);
+    skills.set_value(SkillType::SKILL_MAGIC_CANTRIPS, cantrips_value);
   }
 }
 

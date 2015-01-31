@@ -1931,7 +1931,6 @@
 				<GeneralSkills>
 					<Bargaining>10</Bargaining>
 					<Brewing>20</Brewing>
-					<Cantrips>15</Cantrips>
 					<Carrying>10</Carrying>
 					<Herbalism>15</Herbalism>
 					<Literacy>10</Literacy>
@@ -1942,6 +1941,9 @@
 				<WeaponSkills>
 					<Bludgeons>3</Bludgeons>
 				</WeaponSkills>
+				<MagicSkills>
+					<Cantrips>15</Cantrips>
+				</MagicSkills>
 			</Skills>
 			<Titles>
 				<Default>APOTHECARY_DEFAULT_TITLE</Default>
@@ -2307,7 +2309,6 @@
 				<GeneralSkills>
 					<Awareness>15</Awareness>
 					<Bargaining>25</Bargaining>
-					<Cantrips>10</Cantrips>
 					<Carrying>15</Carrying>
 					<Detection>15</Detection>
 					<Herbalism>10</Herbalism>
@@ -2318,6 +2319,9 @@
 					<Bludgeons>5</Bludgeons>
 					<Whips>7</Whips>
 				</WeaponSkills>
+				<MagicSkills>
+					<Cantrips>10</Cantrips>
+				</MagicSkills>
 			</Skills>
 			<Titles>
 				<Default>MERCHANT_DEFAULT_TITLE</Default>
@@ -2568,7 +2572,6 @@
 				<GeneralSkills>
 					<Awareness>15</Awareness>
 					<BlindFighting>15</BlindFighting>
-					<Cantrips>10</Cantrips>
 					<Detection>15</Detection>
 					<Literacy>20</Literacy>
 					<Magic>20</Magic>
@@ -2582,6 +2585,7 @@
 				</WeaponSkills>
 				<MagicSkills>
 					<Mystic>25</Mystic>
+					<Cantrips>10</Cantrips>
 				</MagicSkills>
 			</Skills>
 			<Titles>
@@ -2933,7 +2937,6 @@
 			<Skills>
 				<GeneralSkills>
 					<Brewing>15</Brewing>
-					<Cantrips>10</Cantrips>
 					<Detection>15</Detection>
 					<Herbalism>20</Herbalism>
 					<Literacy>15</Literacy>
@@ -2949,6 +2952,7 @@
 					<Divine>15</Divine>
 					<Mystic>15</Mystic>
 					<Primordial>15</Primordial>
+					<Cantrips>10</Cantrips>
 				</MagicSkills>
 			</Skills>
 			<Titles>
@@ -3547,7 +3551,6 @@
 				<GeneralSkills>
 					<Awareness>20</Awareness>
 					<Brewing>15</Brewing>
-					<Cantrips>15</Cantrips>
 					<Detection>10</Detection>
 					<Foraging>10</Foraging>
 					<ForestLore>15</ForestLore>
@@ -3564,6 +3567,7 @@
 				</WeaponSkills>
 				<MagicSkills>
 					<Primordial>20</Primordial>
+					<Cantrips>15</Cantrips>
 				</MagicSkills>
 			</Skills>
 			<Titles>
@@ -3635,7 +3639,6 @@
 				<GeneralSkills>
 					<Awareness>15</Awareness>
 					<Brewing>20</Brewing>
-					<Cantrips>10</Cantrips>
 					<Detection>10</Detection>
 					<Herbalism>20</Herbalism>
 					<Literacy>20</Literacy>
@@ -3650,6 +3653,7 @@
 				</WeaponSkills>
 				<MagicSkills>
 					<Arcane>20</Arcane>
+					<Cantrips>10</Cantrips>
 				</MagicSkills>
 			</Skills>
 			<Titles>
@@ -15022,6 +15026,18 @@
 		</Creature>
 	</Creatures>
 	<Spells>
+		<Spell id="c_01_minor_healing">
+			<NameSID>MINOR_HEALING_NAME_SID</NameSID>
+			<PlayerCastMessageSID>MINOR_HEALING_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>MINOR_HEALING_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<Colour>15</Colour>
+			<APCost>15</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>1</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -19910,6 +19926,23 @@
 				<TextSID>YEW_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
+			</Spellbook>
+			<Spellbook id="minor_healing_spellbook">
+				<DescriptionSID>MINOR_HEALING_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_MINOR_HEALING_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>MINOR_HEALING_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_MINOR_HEALING_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>20</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>1</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>c_01_minor_healing</SpellID>
+				<Difficulty>30</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>

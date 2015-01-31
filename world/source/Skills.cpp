@@ -1772,7 +1772,6 @@ void Skills::initialize_general_skills()
   std::shared_ptr<BoatingSkill> boating = std::make_shared<BoatingSkill>();
   std::shared_ptr<BowyerSkill> bowyer = std::make_shared<BowyerSkill>();
   std::shared_ptr<BrewingSkill> brewing = std::make_shared<BrewingSkill>();
-  std::shared_ptr<CantripsSkill> cantrips = std::make_shared<CantripsSkill>();
   std::shared_ptr<CarryingSkill> carrying = std::make_shared<CarryingSkill>();
   std::shared_ptr<CombatSkill> combat = std::make_shared<CombatSkill>();
   std::shared_ptr<CraftingSkill> crafting = std::make_shared<CraftingSkill>();
@@ -1823,7 +1822,6 @@ void Skills::initialize_general_skills()
   skills.insert(make_pair(SkillType::SKILL_GENERAL_BOATING, boating));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_BOWYER, bowyer));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_BREWING, brewing));
-  skills.insert(make_pair(SkillType::SKILL_GENERAL_CANTRIPS, cantrips));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_CARRYING, carrying));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_COMBAT, combat));
   skills.insert(make_pair(SkillType::SKILL_GENERAL_CRAFTING, crafting));
@@ -1926,11 +1924,13 @@ void Skills::initialize_magic_skills()
   std::shared_ptr<DivineMagicSkill> divine = std::make_shared<DivineMagicSkill>();
   std::shared_ptr<MysticMagicSkill> mystic = std::make_shared<MysticMagicSkill>();
   std::shared_ptr<PrimordialMagicSkill> primordial = std::make_shared<PrimordialMagicSkill>();
+  std::shared_ptr<CantripsSkill> cantrips = std::make_shared<CantripsSkill>();
 
   skills.insert(make_pair(SkillType::SKILL_MAGIC_ARCANE, arcane));
   skills.insert(make_pair(SkillType::SKILL_MAGIC_DIVINE, divine));
   skills.insert(make_pair(SkillType::SKILL_MAGIC_MYSTIC, mystic));
   skills.insert(make_pair(SkillType::SKILL_MAGIC_PRIMORDIAL, primordial));
+  skills.insert(make_pair(SkillType::SKILL_MAGIC_CANTRIPS, cantrips));
 }
 
 #ifdef UNIT_TESTS
