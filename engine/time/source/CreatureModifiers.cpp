@@ -1,9 +1,11 @@
+#include "ActionTextKeys.hpp"
 #include "CreatureCalculator.hpp"
 #include "CreatureModifiers.hpp"
 #include "CreatureUtils.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
 #include "MessageManagerFactory.hpp"
+#include "SpellAdditionalProperties.hpp"
 #include "StatusEffectFactory.hpp"
 
 using namespace std;
@@ -86,7 +88,7 @@ void CreatureModifiers::add_removal_message(CreaturePtr creature, const string& 
     if (spell_it != spells.end())
     {
       Spell spell = spell_it->second;
-      string spell_wear_off_sid; // = ...;
+      string spell_wear_off_sid = spell.get_property(SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WEAR_OFF_SID);
 
       // Check to see if the creature is the player, or in view of the player.
       bool affects_player = CreatureUtils::is_player_or_in_los(creature);
@@ -95,6 +97,17 @@ void CreatureModifiers::add_removal_message(CreaturePtr creature, const string& 
       // If the creature is the player, use the spell wear off sid.
       // Otherwise, use the generic spell wear off message for creatures.
       IMessageManager& manager = MessageManagerFactory::instance(creature, affects_player);
+
+      if (creature->get_is_player())
+      {
+        manager.add_new_message(StringTable::get(spell_wear_off_sid));
+      }
+      else
+      {
+        manager.add_new_message(ActionTextKeys::get_generic_wear_off_message(StringTable::get(creature->get_description_sid())));
+      }
+
+      manager.send();
     }
   }
 }
