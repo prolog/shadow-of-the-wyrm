@@ -98,6 +98,19 @@ void XMLSpellsReader::create_modifiers_if_necessary(Spell& spell, const map<stri
   bool create_modifier = false;
   vector<int> sm_constructor_arg;
 
+  // Check for general properties
+  vector<string> general_properties = { SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WEAR_OFF_SID };
+
+  for (const auto& k : general_properties)
+  {
+    auto w_it = properties.find(k);
+    if (w_it != properties.end())
+    {
+      spell.set_property(k, w_it->second);
+    }
+  }
+
+  // Create the statistics modifier
   vector<string> keys = { SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_STR,
                           SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_DEX,
                           SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_AGI,
