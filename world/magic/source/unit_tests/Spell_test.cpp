@@ -1,6 +1,20 @@
 #include "gtest/gtest.h"
 #include "SpellShapeFactory.hpp"
 
+TEST(SL_World_Magic_Spell, properties)
+{
+  Spell sp;
+  string key = "abc";
+  string value = "123";
+
+  EXPECT_FALSE(sp.has_property(key));
+
+  sp.set_property(key, value);
+
+  EXPECT_TRUE(sp.has_property(key));
+  EXPECT_EQ(value, sp.get_property(key));
+}
+
 TEST(SL_World_Magic_Spell, equality_operator)
 {
   Spell sp, sp2;
@@ -12,6 +26,7 @@ TEST(SL_World_Magic_Spell, equality_operator)
   sp.set_colour(Colour::COLOUR_GREEN);
   sp.set_magic_category(SkillType::SKILL_MAGIC_PRIMORDIAL);
   sp.set_ap_cost(5);
+  sp.set_property("abc123", "fdsafdsafdsa");
   sp.set_speed(4);
   sp.set_range(1);
   SpellShape shape = SpellShapeFactory::create_spell_shape(SpellShapeType::SPELL_SHAPE_BALL);

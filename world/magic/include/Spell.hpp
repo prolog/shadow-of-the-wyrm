@@ -65,6 +65,10 @@ class Spell
     void set_modifier(const Modifier& new_modifier);
     Modifier get_modifier() const;
 
+    void set_property(const std::string& key, const std::string& value);
+    bool has_property(const std::string& key) const;
+    std::string get_property(const std::string& key) const;
+
   protected:
     std::string spell_id;
     std::string spell_name_sid;
@@ -83,6 +87,8 @@ class Spell
     bool has_damage;
     Damage damage;
     Modifier modifier;
+
+    std::map<std::string, std::string> properties;
 };
 
 typedef std::map<std::string, Spell> SpellMap;

@@ -33,6 +33,7 @@ bool Spell::operator==(const Spell& spell) const
   result = result && (allows_bonus == spell.allows_bonus);
   result = result && (effect == spell.effect);
   result = result && (modifier == spell.modifier);
+  result = result && (properties == spell.properties);
 
   return result;
 }
@@ -185,6 +186,31 @@ void Spell::set_modifier(const Modifier& new_modifier)
 Modifier Spell::get_modifier() const
 {
   return modifier;
+}
+
+void Spell::set_property(const string& key, const string& value)
+{
+  properties[key] = value;
+}
+
+bool Spell::has_property(const string& key) const
+{
+  auto p_it = properties.find(key);
+
+  return (p_it != properties.end());
+}
+
+string Spell::get_property(const string& key) const
+{
+  string prop;
+
+  auto p_it = properties.find(key);
+  if (p_it != properties.end())
+  {
+    prop = p_it->second;
+  }
+
+  return prop;
 }
 
 #ifdef UNIT_TESTS
