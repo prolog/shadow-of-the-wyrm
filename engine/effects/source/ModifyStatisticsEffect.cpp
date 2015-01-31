@@ -47,6 +47,11 @@ Effect* ModifyStatisticsEffect::clone()
   return new ModifyStatisticsEffect(*this);
 }
 
+bool ModifyStatisticsEffect::is_negative_effect() const
+{
+  return m.is_negative();
+}
+
 bool ModifyStatisticsEffect::apply_modifiers(CreaturePtr creature, const Modifier& m, const ModifyStatisticsDuration msd, const double preset_duration) const
 {
   bool result = false;

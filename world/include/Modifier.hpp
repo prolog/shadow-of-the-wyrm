@@ -43,6 +43,9 @@ class Modifier : public ISerializable
     void set_to_hit_modifier(const int new_to_hit_modifier);
     int get_to_hit_modifier() const;
 
+    // Is this, overall, a negative modifier?
+    bool is_negative() const;
+
     void set_status(const std::string& status_id, const bool value);
     bool has_status(const std::string& status_id) const;
     bool get_status(const std::string& status_id) const;

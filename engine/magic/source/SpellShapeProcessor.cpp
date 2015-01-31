@@ -4,6 +4,7 @@
 #include "CoordUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "Game.hpp"
+#include "HostilityManager.hpp"
 #include "DisplayTile.hpp"
 #include "EffectFactory.hpp"
 #include "SpellShapeProcessor.hpp"
@@ -101,6 +102,14 @@ bool SpellShapeProcessor::apply_effect(CreaturePtr caster, TilePtr tile, const S
 
     if (effect && creature)
     {
+      bool negative_effect = effect->is_negative_effect();
+
+      if (negative_effect)
+      {
+        HostilityManager hm;
+        hm.set_hostility_to_creature(creature, caster->get_id());
+      }
+
       return effect->effect(creature, am, effect_status);
     }
   }
