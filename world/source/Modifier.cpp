@@ -207,6 +207,24 @@ int Modifier::get_to_hit_modifier() const
   return to_hit_modifier;
 }
 
+bool Modifier::is_negative() const
+{
+  int sum;
+
+  sum = strength_modifier
+      + dexterity_modifier
+      + agility_modifier
+      + health_modifier
+      + intelligence_modifier 
+      + willpower_modifier
+      + charisma_modifier
+      + evade_modifier
+      + soak_modifier
+      + to_hit_modifier;
+
+  return (sum < 0);
+}
+
 void Modifier::set_status(const string& status, const bool value)
 {
   statuses[status] = value;

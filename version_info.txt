@@ -15,6 +15,13 @@ Savage Lands v0.3.2 "Hussa"
 - Refactored the status effects to use Modifiers instead of special
   code to handle things like statistic modification.
 
+- Added spell-specific wear off messages (for the player, who experiences
+  them directly) and a generic wear-off message that the player sees when
+  a monster in the player's FOV has an effect wear off.
+
+- Spells with net negative modifiers now trigger hostility towards
+  the caster.
+
 - New spells, with associated spellbooks: divine wind (Divine), divine 
   shield (Divine), curse (Mystic).
 

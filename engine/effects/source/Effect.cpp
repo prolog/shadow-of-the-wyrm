@@ -94,3 +94,7 @@ void Effect::add_additional_effect_messages(CreaturePtr creature) const
   }
 }
 
+bool Effect::is_negative_effect() const
+{
+  return false;
+}

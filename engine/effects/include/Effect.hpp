@@ -22,6 +22,9 @@ class Effect
 
     virtual std::string get_effect_identification_message(std::shared_ptr<Creature> creature) const = 0;
 
+    // Is this a negative effect?  Would a create be upset if it were applied?
+    virtual bool is_negative_effect() const;
+
     // Create an exact copy
     virtual Effect* clone() = 0;
 

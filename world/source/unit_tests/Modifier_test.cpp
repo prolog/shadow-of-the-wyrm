@@ -1,5 +1,22 @@
 #include "gtest/gtest.h"
 
+TEST(SL_World_Modifier, is_negative)
+{
+  Modifier m;
+
+  m.set_soak_modifier(-10);
+
+  EXPECT_TRUE(m.is_negative());
+
+  m.set_strength_modifier(5);
+  
+  EXPECT_TRUE(m.is_negative());
+
+  m.set_agility_modifier(5);
+
+  EXPECT_FALSE(m.is_negative());
+}
+
 TEST(SL_World_Modifier, statuses)
 {
   Modifier m;
