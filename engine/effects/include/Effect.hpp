@@ -25,6 +25,10 @@ class Effect
     // Is this a negative effect?  Would a create be upset if it were applied?
     virtual bool is_negative_effect() const;
 
+    // Additional properties are read in from a map.  These can be used to set
+    // values from spells, like healing amounts.
+    virtual void read_properties(const std::map<std::string, std::string>& properties);
+
     // Create an exact copy
     virtual Effect* clone() = 0;
 

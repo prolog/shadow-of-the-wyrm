@@ -15,5 +15,5 @@ class XMLSpellsReader : public XMLReader
   protected:
     Spell parse(const XMLNode& spell_node);
     void parse_spell_properties(const XMLNode& properties_node, Spell& spell, std::map<std::string, std::string>& properties);
-    void create_modifiers_if_necessary(Spell& spell, const std::map<std::string, std::string>& properties);
+    void create_modifiers_if_necessary(Spell& spell, std::map<std::string, std::string>& properties);
 };

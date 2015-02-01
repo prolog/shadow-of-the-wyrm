@@ -5,7 +5,7 @@
 class EffectFactory
 {
   public:
-    static EffectPtr create_effect(const EffectType effect_type, Modifier m = Modifier(), std::string spell_id = "");
+    static EffectPtr create_effect(const EffectType effect_type, Modifier m = Modifier(), std::map<std::string, std::string> = {}, std::string spell_id = "");
 
   protected:
     EffectFactory();

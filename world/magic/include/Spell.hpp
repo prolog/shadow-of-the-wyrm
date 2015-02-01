@@ -68,6 +68,7 @@ class Spell
     void set_property(const std::string& key, const std::string& value);
     bool has_property(const std::string& key) const;
     std::string get_property(const std::string& key) const;
+    std::map<std::string, std::string> get_properties() const;
 
   protected:
     std::string spell_id;

@@ -1,5 +1,7 @@
+#include "Conversion.hpp"
 #include "Creature.hpp"
 #include "EffectTextKeys.hpp"
+#include "Log.hpp"
 #include "HealingEffect.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
@@ -11,6 +13,13 @@ const double HealingEffect::UNCURSED_MULTIPLIER = 1.0;
 const double HealingEffect::CURSED_MULTIPLIER = 0.5;
 const int HealingEffect::BASE_MIN_HP = 5;
 const int HealingEffect::BASE_MAX_HP = 30;
+const string HealingEffect::HEALING_MIN = "HEALING_MIN";
+const string HealingEffect::HEALING_MAX = "HEALING_MAX";
+
+HealingEffect::HealingEffect()
+  : min_hp(BASE_MIN_HP), max_hp(BASE_MAX_HP)
+{
+}
 
 string HealingEffect::get_effect_identification_message(std::shared_ptr<Creature> creature) const
 {
@@ -74,6 +83,35 @@ bool HealingEffect::effect_cursed(CreaturePtr creature, ActionManager * const am
 
 int HealingEffect::get_random_healing_amount() const
 {
-  return RNG::range(BASE_MIN_HP, BASE_MAX_HP);
+  return RNG::range(min_hp, max_hp);
 }
 
+void HealingEffect::read_properties(const map<string, string>& properties)
+{
+  auto p_it_min = properties.find(HEALING_MIN);
+  auto p_it_max = properties.find(HEALING_MAX);
+
+  if (p_it_min != properties.end())
+  {
+    try
+    {
+      min_hp = String::to_int(p_it_min->second);
+    }
+    catch (...)
+    {
+      Log::instance().error("Could not convert min healing value!");
+    }
+  }
+
+  if (p_it_max != properties.end())
+  {
+    try
+    {
+      max_hp = String::to_int(p_it_max->second);
+    }
+    catch (...)
+    {
+      Log::instance().error("Could not convert max healing value!");
+    }
+  }
+}

@@ -213,6 +213,11 @@ string Spell::get_property(const string& key) const
   return prop;
 }
 
+map<string, string> Spell::get_properties() const
+{
+  return properties;
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/Spell_test.cpp"
 #endif

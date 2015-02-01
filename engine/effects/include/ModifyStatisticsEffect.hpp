@@ -21,7 +21,7 @@ class ModifyStatisticsEffect : public Effect
     std::string get_spell_id() const;
 
     virtual bool apply_modifiers(std::shared_ptr<Creature>, const Modifier& m, const ModifyStatisticsDuration msd, const double duration = -1) const;
-    virtual bool is_negative_effect() const;
+    virtual bool is_negative_effect() const override;
 
   protected:
     friend class SL_Engine_Effects_ModifyStatisticsEffect;

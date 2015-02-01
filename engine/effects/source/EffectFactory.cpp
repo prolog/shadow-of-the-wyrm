@@ -25,7 +25,7 @@ EffectFactory::~EffectFactory()
 {
 }
 
-EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m, string spell_id)
+EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m, map<string, string> properties, string spell_id)
 {
   static_assert(EffectType::EFFECT_TYPE_LAST == EffectType(19), "Unexpected EFFECT_TYPE_LAST value.");
 
@@ -97,6 +97,11 @@ EffectPtr EffectFactory::create_effect(const EffectType effect_type, Modifier m,
     default:
       effect = std::make_shared<NullEffect>();
       break;
+  }
+
+  if (effect != nullptr)
+  {
+    effect->read_properties(properties);
   }
 
   return effect;
