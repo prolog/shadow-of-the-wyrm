@@ -1427,6 +1427,7 @@
 		<xs:enumeration value="3001"/>
 		<xs:enumeration value="3002"/>
 		<xs:enumeration value="3003"/>
+		<xs:enumeration value="3004"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="SpellShape">

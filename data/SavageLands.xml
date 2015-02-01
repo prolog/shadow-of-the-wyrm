@@ -15032,11 +15032,21 @@
 			<MonsterCastMessageSID>MINOR_HEALING_MONSTER_CAST_SID</MonsterCastMessageSID>
 			<MagicCategory>3004</MagicCategory>
 			<Colour>15</Colour>
-			<APCost>15</APCost>
+			<APCost>7</APCost>
 			<Speed>1</Speed>
 			<Range>0</Range>
 			<Shape>0</Shape>
 			<Effect>1</Effect>
+			<Properties>
+				<Property>
+					<Name>HEALING_MIN</Name>
+					<Value>3</Value>
+				</Property>
+				<Property>
+					<Name>HEALING_MAX</Name>
+					<Value>12</Value>
+				</Property>
+			</Properties>
 		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>

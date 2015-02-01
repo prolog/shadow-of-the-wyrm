@@ -89,26 +89,22 @@ void XMLSpellsReader::parse_spell_properties(const XMLNode& properties_node, Spe
   if (!properties_node.is_null())
   {
     parse_properties(properties, properties_node);
+
     create_modifiers_if_necessary(spell, properties);
+
+    // Once the modifiers have been created, read the rest of the properties
+    // into the spell properties.
+    for (const auto& p_it : properties)
+    {
+        spell.set_property(p_it.first, p_it.second);
+    }
   }
 }
 
-void XMLSpellsReader::create_modifiers_if_necessary(Spell& spell, const map<string, string>& properties)
+void XMLSpellsReader::create_modifiers_if_necessary(Spell& spell, map<string, string>& properties)
 {
   bool create_modifier = false;
   vector<int> sm_constructor_arg;
-
-  // Check for general properties
-  vector<string> general_properties = { SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WEAR_OFF_SID };
-
-  for (const auto& k : general_properties)
-  {
-    auto w_it = properties.find(k);
-    if (w_it != properties.end())
-    {
-      spell.set_property(k, w_it->second);
-    }
-  }
 
   // Create the statistics modifier
   vector<string> keys = { SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_STR,
@@ -134,6 +130,12 @@ void XMLSpellsReader::create_modifiers_if_necessary(Spell& spell, const map<stri
     {
       sm_constructor_arg.push_back(0);
     }
+  }
+
+  // Remove the modifier keys from the map, since they're not needed anymore.
+  for (const auto& key : keys)
+  {
+    properties.erase(key);
   }
 
   if (create_modifier)
