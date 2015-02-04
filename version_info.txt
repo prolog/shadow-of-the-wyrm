@@ -32,7 +32,7 @@ Savage Lands v0.3.2 "Hussa"
 
 - New spells, with associated spellbooks: divine wind (Divine), divine 
   shield (Divine), curse (Mystic), minor healing (Cantrips), flame dart
-  (Cantrips).
+  (Cantrips), steel wind (Cantrips).
 
 - New traps: poison dart.
 

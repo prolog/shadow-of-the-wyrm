@@ -15065,6 +15065,32 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="c_03_steel_wind">
+			<NameSID>STEEL_WIND_NAME_SID</NameSID>
+			<PlayerCastMessageSID>STEEL_WIND_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>STEEL_WIND_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<Colour>1</Colour>
+			<APCost>6</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>18</Effect>
+			<Properties>
+				<Property>
+					<Name>STATISTIC_MODIFIER_EVADE</Name>
+					<Value>10</Value>
+				</Property>
+				<Property>
+					<Name>STATISTIC_MODIFIER_SOAK</Name>
+					<Value>4</Value>
+				</Property>
+				<Property>
+					<Name>SPELL_WEAR_OFF_SID</Name>
+					<Value>STEEL_WIND_WEAR_OFF_SID</Value>
+				</Property>
+			</Properties>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -19987,6 +20013,23 @@
 				<Rarity>1</Rarity>
 				<SpellID>c_02_flame_dart</SpellID>
 				<Difficulty>30</Difficulty>
+			</Spellbook>
+			<Spellbook id="steel_wind_spellbook">
+				<DescriptionSID>STEEL_WIND_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_STEEL_WIND_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>STEEL_WIND_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_STEEL_WIND_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>25</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>c_03_steel_wind</SpellID>
+				<Difficulty>35</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
