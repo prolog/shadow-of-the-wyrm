@@ -1571,7 +1571,7 @@ int summon_monsters_around_creature(lua_State* ls)
       Coordinate creature_coord = current_map->get_location(creature_id);
       vector<Coordinate> adjacent_coords = CoordUtils::get_adjacent_map_coordinates(current_map->size(), creature_coord.first, creature_coord.second);
 
-      random_shuffle(adjacent_coords.begin(), adjacent_coords.end());
+      shuffle(adjacent_coords.begin(), adjacent_coords.end(), RNG::get_engine());
 
       int cnt = 0;
       for (const Coordinate& c : adjacent_coords)

@@ -76,7 +76,7 @@ bool GainAttributesEffect::effect_uncursed(CreaturePtr creature, ActionManager *
   vector<GainAttributesEnum> to_gain = { GainAttributesEnum::GAIN_ATTRIBUTES_STRENGTH, GainAttributesEnum::GAIN_ATTRIBUTES_DEXTERITY, GainAttributesEnum::GAIN_ATTRIBUTES_AGILITY, GainAttributesEnum::GAIN_ATTRIBUTES_HEALTH, GainAttributesEnum::GAIN_ATTRIBUTES_INTELLIGENCE, GainAttributesEnum::GAIN_ATTRIBUTES_WILLPOWER, GainAttributesEnum::GAIN_ATTRIBUTES_CHARISMA };
 
   // Shuffle the stats.  Get rid of 4-5 stats so that there are 2-3 left to gain.
-  random_shuffle(to_gain.begin(), to_gain.end());
+  shuffle(to_gain.begin(), to_gain.end(), RNG::get_engine());
   int to_remove = RNG::range(4, 5);
   for (int i = 0; i < to_remove; i++)
   {

@@ -69,7 +69,7 @@ void TreasureRoomPopulator::generate_creatures(MapPtr current_map, const TileTyp
 
   // Generate a few creatures, and place them in random positions throughout the room.
   int num_creatures = RNG::range(2, 4);
-  random_shuffle(coords.begin(), coords.end());
+  shuffle(coords.begin(), coords.end(), RNG::get_engine());
 
   for (int i = 0; i < num_creatures; i++)
   {

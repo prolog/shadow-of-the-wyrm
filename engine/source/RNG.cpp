@@ -141,6 +141,11 @@ boost::variate_generator<RNGType, boost::uniform_int<>> RNG::get_generator()
   return generator;
 }
 
+RNGType RNG::get_engine()
+{
+  return generator.engine();
+}
+
 #ifdef UNIT_TESTS
 #include "unit_tests/RNG_test.cpp"
 #endif

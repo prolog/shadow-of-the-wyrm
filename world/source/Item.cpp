@@ -541,8 +541,8 @@ void Item::do_enchant_item(const int points)
 
   // Randomly shuffle the already-resisted and yet-to-be-resisted damage
   // types to determine what will be resisted.
-  random_shuffle(resvul_dt_vec.begin(), resvul_dt_vec.end(), RNG::get_generator());
-  random_shuffle(unused_dt_vec.begin(), unused_dt_vec.end(), RNG::get_generator());
+  shuffle(resvul_dt_vec.begin(), resvul_dt_vec.end(), RNG::get_engine());
+  shuffle(unused_dt_vec.begin(), unused_dt_vec.end(), RNG::get_engine());
 
   // The enchantment amount is the number of points divided by the number of
   // enchantments, int-and-then-float-ified.

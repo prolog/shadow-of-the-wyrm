@@ -5,6 +5,7 @@
 #include "MessageManagerFactory.hpp"
 #include "PlayerConstants.hpp"
 #include "ReligionManager.hpp"
+#include "RNG.hpp"
 #include "StatisticTextKeys.hpp"
 
 using namespace std;
@@ -105,7 +106,7 @@ void CreatureUtils::handle_alignment_change(CreaturePtr creature, const int new_
       if (!potential_deities.empty())
       {
         // Pick one randomly.
-        random_shuffle(potential_deities.begin(), potential_deities.end());
+        std::shuffle(potential_deities.begin(), potential_deities.end(), RNG::get_engine());
 
         // Make this the active deity for the creature.
         DeityPtr new_deity = potential_deities.at(0);

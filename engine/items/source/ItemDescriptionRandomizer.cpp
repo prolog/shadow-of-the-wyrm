@@ -59,7 +59,7 @@ void ItemDescriptionRandomizer::randomize(ItemMap& items)
   {
     vector<details_tuple>& randomized_descs = rmap_pair.second;
     
-    random_shuffle(randomized_descs.begin(), randomized_descs.end(), RNG::get_generator());
+    shuffle(randomized_descs.begin(), randomized_descs.end(), RNG::get_engine());
   }
 
   // Second pass through ItemMap:
