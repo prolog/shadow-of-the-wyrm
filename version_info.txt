@@ -34,6 +34,9 @@ Savage Lands v0.3.2 "Hussa"
   shield (Divine), curse (Mystic), minor healing (Cantrips), flame dart
   (Cantrips), steel wind (Cantrips).
 
+- std::random_shuffle is going away in C++14.  Rewrote instances to use
+  std::shuffle instead.
+
 - New traps: poison dart.
 
 Savage Lands v0.3.1 "Frithuwald"

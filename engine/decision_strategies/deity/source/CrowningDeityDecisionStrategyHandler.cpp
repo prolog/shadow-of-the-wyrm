@@ -3,6 +3,7 @@
 #include "ItemManager.hpp"
 #include "ReligionConstants.hpp"
 #include "ReligionManager.hpp"
+#include "RNG.hpp"
 
 using namespace std;
 
@@ -85,7 +86,7 @@ void CrowningDeityDecisionStrategyHandler::add_crowning_gift(CreaturePtr creatur
   if (deity && tile)
   {
     vector<string> gifts = deity->get_crowning_gifts();
-    random_shuffle(gifts.begin(), gifts.end());
+    shuffle(gifts.begin(), gifts.end(), RNG::get_engine());
 
     for (const string& gift : gifts)
     {

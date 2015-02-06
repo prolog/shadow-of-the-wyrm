@@ -1,7 +1,8 @@
 #pragma once
+#include <random>
 #include <boost/random.hpp>
 
-typedef boost::mt19937 RNGType;
+typedef std::mt19937 RNGType;
 
 class Dice;
 
@@ -19,6 +20,7 @@ class RNG
     static void set_seed(const uint32_t new_seed);
     static uint32_t get_seed();
     static boost::variate_generator<RNGType, boost::uniform_int<>> get_generator();
+    static RNGType get_engine();
 
 	protected:
     RNG();

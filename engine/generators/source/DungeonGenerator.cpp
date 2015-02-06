@@ -397,7 +397,7 @@ vector<string> DungeonGenerator::potentially_generate_room_features(MapPtr map, 
                                       RoomFeatures::ROOM_FEATURE_TREASURE_ROOM, 
                                       RoomFeatures::ROOM_FEATURE_ZOO};
 
-    random_shuffle(feature_choices.begin(), feature_choices.end());
+    shuffle(feature_choices.begin(), feature_choices.end(), RNG::get_engine());
 
     // JCD TODO: Eventually, I need a mechanism for tracking room features
     // so the player can know in advance...
