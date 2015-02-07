@@ -83,7 +83,7 @@ SerializationReturnCode Serialization::load(const string& filename)
   Serialize::read_uint(stream, rng_seed);
 
   RNG::set_seed(rng_seed);
-  RNG::reinitialize();
+  RNG::initialize();
 
   mb.deserialize(stream);
 
