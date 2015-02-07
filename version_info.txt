@@ -30,15 +30,16 @@ Savage Lands v0.3.2 "Hussa"
   properties, so that weaker/stronger healing effects can be specified.
   Updated Minor Healing to be weaker.
 
-- New spells, with associated spellbooks: divine wind (Divine), divine 
-  shield (Divine), curse (Mystic), minor healing (Cantrips), flame dart
-  (Cantrips), steel wind (Cantrips).
-
 - std::random_shuffle is going away in C++14.  Rewrote instances to use
   std::shuffle instead.
 
 - Replaced the boost-heavy sections of RNG with standard C++11
   functionality (std::mt19937 and std::uniform_int_distrbution).
+
+- New spells, with associated spellbooks: divine wind (Divine), divine 
+  shield (Divine), curse (Mystic), minor healing (Cantrips), flame dart
+  (Cantrips), steel wind (Cantrips), blink (Cantrips), spirit bolt
+  (Cantrips).
 
 - New traps: poison dart.
 

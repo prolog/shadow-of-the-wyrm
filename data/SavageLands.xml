@@ -15091,7 +15091,25 @@
 				</Property>
 			</Properties>
 		</Spell>
-		<Spell id="c_04_spirit_bolt">
+		<Spell id="c_04_blink">
+			<NameSID>BLINK_NAME_SID</NameSID>
+			<PlayerCastMessageSID>BLINK_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>BLINK_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<Colour>1</Colour>
+			<APCost>3</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>5</Effect>
+			<Properties>
+				<Property>
+					<Name>TELEPORT_BLINK</Name>
+					<Value>1</Value>
+				</Property>
+			</Properties>
+		</Spell>
+		<Spell id="c_05_spirit_bolt">
 			<NameSID>SPIRIT_BOLT_NAME_SID</NameSID>
 			<PlayerCastMessageSID>SPIRIT_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>SPIRIT_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
@@ -20048,6 +20066,23 @@
 				<SpellID>c_03_steel_wind</SpellID>
 				<Difficulty>35</Difficulty>
 			</Spellbook>
+			<Spellbook id="blink_spellbook">
+				<DescriptionSID>BLINK_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_BLINK_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>BLINK_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_BLINK_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>60</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>c_04_blink</SpellID>
+				<Difficulty>40</Difficulty>
+			</Spellbook>
 			<Spellbook id="spirit_bolt_spellbook">
 				<DescriptionSID>SPIRIT_BOLT_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_SPIRIT_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -20062,7 +20097,7 @@
 				</TextDetails>
 				<DangerLevel>7</DangerLevel>
 				<Rarity>1</Rarity>
-				<SpellID>c_04_spirit_bolt</SpellID>
+				<SpellID>c_05_spirit_bolt</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
