@@ -37,6 +37,9 @@ Savage Lands v0.3.2 "Hussa"
 - std::random_shuffle is going away in C++14.  Rewrote instances to use
   std::shuffle instead.
 
+- Replaced the boost-heavy sections of RNG with standard C++11
+  functionality (std::mt19937 and std::uniform_int_distrbution).
+
 - New traps: poison dart.
 
 Savage Lands v0.3.1 "Frithuwald"

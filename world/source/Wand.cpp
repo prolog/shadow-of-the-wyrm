@@ -1,3 +1,5 @@
+#include <algorithm>
+#include <sstream>
 #include "Wand.hpp"
 #include "RNG.hpp"
 #include "Serialize.hpp"
