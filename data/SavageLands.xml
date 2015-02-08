@@ -15126,6 +15126,18 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="c_06_purify">
+			<NameSID>PURIFY_NAME_SID</NameSID>
+			<PlayerCastMessageSID>PURIFY_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>PURIFY_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3004</MagicCategory>
+			<Colour>15</Colour>
+			<APCost>8</APCost>
+			<Speed>6</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>6</Effect>
+		</Spell>
 		<Spell id="a_01_wreath_of_fire">
 			<NameSID>WREATH_OF_FIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WREATH_OF_FIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -15316,6 +15328,18 @@
 					<Value>DIVINE_SHIELD_WEAR_OFF_SID</Value>
 				</Property>
 			</Properties>
+		</Spell>
+		<Spell id="d_06_cure">
+			<NameSID>CURE_NAME_SID</NameSID>
+			<PlayerCastMessageSID>CURE_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>CURE_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<Colour>15</Colour>
+			<APCost>3</APCost>
+			<Speed>1</Speed>
+			<Range>1</Range>
+			<Shape>0</Shape>
+			<Effect>6</Effect>
 		</Spell>
 		<Spell id="m_01_wraith_form">
 			<NameSID>WRAITH_FORM_NAME_SID</NameSID>
@@ -20100,6 +20124,23 @@
 				<SpellID>c_05_spirit_bolt</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
+			<Spellbook id="purify_spellbook">
+				<DescriptionSID>PURIFY_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_PURIFY_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>PURIFY_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_PURIFY_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>60</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>c_06_purify</SpellID>
+				<Difficulty>40</Difficulty>
+			</Spellbook>
 			<Spellbook id="wreath_of_fire_spellbook">
 				<DescriptionSID>WREATH_OF_FIRE_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_WREATH_OF_FIRE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
@@ -20265,7 +20306,7 @@
 					<Symbol>"</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>32</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<SpellID>d_04_divine_wind</SpellID>
 				<Difficulty>70</Difficulty>
@@ -20282,10 +20323,27 @@
 					<Symbol>"</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>32</DangerLevel>
+				<DangerLevel>5</DangerLevel>
 				<Rarity>1</Rarity>
 				<SpellID>d_05_divine_shield</SpellID>
 				<Difficulty>75</Difficulty>
+			</Spellbook>			
+			<Spellbook id="cure_spellbook">
+				<DescriptionSID>CURE_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_CURE_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>CURE_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_CURE_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>50</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>2</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>d_06_cure</SpellID>
+				<Difficulty>60</Difficulty>
 			</Spellbook>			
 			<Spellbook id="wraith_form_spellbook">
 				<DescriptionSID>WRAITH_FORM_SPELLBOOK_SID</DescriptionSID>
