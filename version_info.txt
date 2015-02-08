@@ -1,5 +1,8 @@
+Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
+- Version declared February 8, 2015.
+
 Savage Lands v0.3.2 "Hussa"
-- Version declared January 10, 2015.
+- Version declared January 10, 2015.  Version finalized February 8, 2015.
 
 - Added a new effect type, "modify statistics", that can be used for
   buff and debuff type spells.
