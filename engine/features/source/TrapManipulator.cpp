@@ -2,6 +2,7 @@
 #include "ActionTextKeys.hpp"
 #include "AnimationTranslator.hpp"
 #include "CombatManager.hpp"
+#include "CreatureUtils.hpp"
 #include "CurrentCreatureAbilities.hpp"
 #include "DamageCalculatorFactory.hpp"
 #include "Game.hpp"
@@ -98,22 +99,26 @@ void TrapManipulator::create_item_if_necessary(TilePtr tile, TrapPtr trap)
 
 void TrapManipulator::create_and_draw_animation(TrapPtr trap, CreaturePtr creature)
 {
-  // Create the animation
-  Game& game = Game::instance();
-  CurrentCreatureAbilities cca;
-  AnimationTranslator at(game.get_display());
-  MapPtr current_map = game.get_current_map();
-  MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
-  Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
-  DisplayTile display_tile(trap->get_trigger_symbol(), static_cast<int>(trap->get_colour()));
-  vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
-  vector<Coordinate> coords = { creature_coord };
+  if (CreatureUtils::is_player_or_in_los(creature))
+  {
+    // Create the animation
+    Game& game = Game::instance();
+    CurrentCreatureAbilities cca;
+    AnimationTranslator at(game.get_display());
+    MapPtr current_map = game.get_current_map();
+    MapPtr fov_map = creature->get_decision_strategy()->get_fov_map();
+    Coordinate creature_coord = MapUtils::get_coordinate_for_creature(current_map, creature);
+    DisplayTile display_tile(trap->get_trigger_symbol(), static_cast<int>(trap->get_colour()));
+    vector<pair<DisplayTile, vector<Coordinate>>> movement_path;
+    vector<Coordinate> coords = { creature_coord };
 
-  movement_path.push_back(make_pair(display_tile, coords));
+    movement_path.push_back(make_pair(display_tile, coords));
 
-  Animation animation = at.create_movement_animation(!cca.can_see(creature), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
+    Animation animation = at.create_movement_animation(!cca.can_see(creature), game.get_current_world()->get_calendar().get_season()->get_season(), movement_path, false, current_map, fov_map);
 
-  // Draw the animation.
-  DisplayPtr display = game.get_display();
-  display->draw_animation(animation);
+    // Draw the animation.
+    DisplayPtr display = game.get_display();
+    display->draw_animation(animation);
+
+  }
 }
