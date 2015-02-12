@@ -8,6 +8,8 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
     led to problems like trap animations being shown even if the trap
     was behind a closed door.
 
+- New spells and associated spellbooks: benediction (Divine).
+
 Savage Lands v0.3.2 "Hussa"
 - Version declared January 10, 2015.  Version finalized February 8, 2015.
 
