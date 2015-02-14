@@ -40,6 +40,8 @@ class MapUtils
     
     static bool is_tile_available_for_creature(CreaturePtr creature, TilePtr tile);
     static bool is_tile_available_for_item(TilePtr tile);
+
+    static void swap_places(MapPtr map, CreaturePtr c1, CreaturePtr c2);
     
     static Dimensions get_dimensions(MapPtr map, const Coordinate& coords, const int size);
     

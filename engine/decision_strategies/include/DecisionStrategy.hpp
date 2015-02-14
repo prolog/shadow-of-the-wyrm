@@ -31,6 +31,8 @@ class DecisionStrategy : public ISerializable
 
     virtual ControllerPtr get_controller();
 
+    virtual bool can_move() const;
+
     virtual DecisionStrategy* copy() = 0;
 
     virtual bool serialize(std::ostream& stream) const override;

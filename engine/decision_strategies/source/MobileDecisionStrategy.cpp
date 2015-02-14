@@ -32,11 +32,6 @@ CommandPtr MobileDecisionStrategy::get_decision_for_tile_selection(CommandFactor
   return null;
 }
 
-bool MobileDecisionStrategy::can_move() const
-{
-  return true;
-}
-
 ClassIdentifier MobileDecisionStrategy::internal_class_identifier() const
 {
   return ClassIdentifier::CLASS_ID_MOBILE_DECISION_STRATEGY;

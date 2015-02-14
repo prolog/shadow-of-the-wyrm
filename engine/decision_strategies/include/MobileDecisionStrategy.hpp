@@ -15,8 +15,6 @@ class MobileDecisionStrategy : public NPCDecisionStrategy
     virtual CommandPtr get_decision_for_equipment(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) override;
     virtual CommandPtr get_decision_for_tile_selection(CommandFactoryPtr command_factory, KeyboardCommandMapPtr keyboard_commands) override;
     
-    virtual bool can_move() const override;
-
   private:
     virtual ClassIdentifier internal_class_identifier() const override;
 };
