@@ -62,6 +62,11 @@ ControllerPtr DecisionStrategy::get_controller()
   return controller;
 }
 
+bool DecisionStrategy::can_move() const
+{
+  return true;
+}
+
 bool DecisionStrategy::serialize(ostream& stream) const
 {
   threat_ratings.serialize(stream);

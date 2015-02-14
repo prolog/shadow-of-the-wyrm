@@ -204,9 +204,3 @@ vector<Coordinate> NPCDecisionStrategy::get_adjacent_safe_coordinates_without_cr
   return coords_without_creatures;
 }
 
-// Most creatures can move.  Those that can't should have a different decision strategy,
-// and override this function.
-bool NPCDecisionStrategy::can_move() const
-{
-  return true;
-}

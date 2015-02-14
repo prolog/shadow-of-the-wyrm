@@ -37,7 +37,7 @@ class MovementAction : public IActionManager
     ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const int depth_increment = 0);
 
     // Handle attempting to move on to a tile where there is a creature present.
-    ActionCostValue handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile);
+    ActionCostValue handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map);
     
     void add_tile_related_messages(const CreaturePtr& creature, TilePtr tile);
     bool add_message_about_tile_if_necessary(const CreaturePtr& creature, TilePtr tile);

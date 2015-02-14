@@ -31,6 +31,22 @@ bool MapUtils::is_tile_available_for_item(TilePtr tile)
   return (!tile->get_is_blocking());
 }
 
+// Swap two creatures on their tiles.
+void MapUtils::swap_places(MapPtr map, CreaturePtr creature, CreaturePtr adjacent_creature)
+{
+  // Get the location info.
+  Coordinate cr_loc = map->get_location(creature->get_id());
+  Coordinate adj_loc = map->get_location(adjacent_creature->get_id());
+  TilePtr creatures_current_tile = map->at(cr_loc);
+
+  // Remove the creatures, then add them in the new location.
+  MapUtils::remove_creature(map, creature);
+  MapUtils::remove_creature(map, adjacent_creature);
+
+  MapUtils::add_or_update_location(map, creature, adj_loc);
+  MapUtils::add_or_update_location(map, adjacent_creature, cr_loc);
+}
+
 // Get the dimensions for a new map based on the current map, the coords, and the size.
 // If it's a large map and the coordinates are in the centre, the dimensions will likely
 // be size x size.  In other cases, the dimensions will be smaller, particularly if the
