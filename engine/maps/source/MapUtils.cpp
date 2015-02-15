@@ -47,6 +47,35 @@ void MapUtils::swap_places(MapPtr map, CreaturePtr creature, CreaturePtr adjacen
   MapUtils::add_or_update_location(map, adjacent_creature, cr_loc);
 }
 
+// Check to see if the creature can squeeze by into the next tile.
+bool MapUtils::can_squeeze_by(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, const Direction d)
+{
+  Coordinate potential_squeeze_coords = CoordUtils::get_new_coordinate(new_coords, d, 1);
+  TilePtr potential_squeeze_tile = map->at(potential_squeeze_coords);
+
+  return ((potential_squeeze_tile != nullptr) && MapUtils::is_tile_available_for_creature(creature, potential_squeeze_tile));
+}
+
+// If there's a creature adjacent to the current one, but the next
+// spot over is free, the creature can squeeze by the adjacent one
+// and into the next tile.
+bool MapUtils::squeeze_by(MapPtr map, CreaturePtr creature, const Coordinate& new_coords, const Direction d)
+{
+  bool movement_success = false;
+
+  Coordinate potential_squeeze_coords = CoordUtils::get_new_coordinate(new_coords, d, 1);
+  TilePtr potential_squeeze_tile = map->at(potential_squeeze_coords);
+
+  if (potential_squeeze_tile != nullptr && MapUtils::is_tile_available_for_creature(creature, potential_squeeze_tile))
+  {
+    MapUtils::remove_creature(map, creature);
+    MapUtils::add_or_update_location(map, creature, potential_squeeze_coords);
+    movement_success = true;
+  }
+
+  return movement_success;
+}
+
 // Get the dimensions for a new map based on the current map, the coords, and the size.
 // If it's a large map and the coordinates are in the centre, the dimensions will likely
 // be size x size.  In other cases, the dimensions will be smaller, particularly if the

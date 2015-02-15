@@ -17,6 +17,7 @@
 #include "MapExitUtils.hpp"
 #include "MapUtils.hpp"
 #include "MovementTextKeys.hpp"
+#include "MovementTypes.hpp"
 #include "RNG.hpp"
 #include "SkillManager.hpp"
 #include "TerrainGeneratorFactory.hpp"
@@ -90,7 +91,7 @@ ActionCostValue MovementAction::move(CreaturePtr creature, const Direction direc
       Coordinate new_coords = CoordUtils::get_new_coordinate(creature_location, direction);
       TilePtr creatures_new_tile = map->at(new_coords.first, new_coords.second);
       
-      movement_success = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords);
+      movement_success = move_within_map(creature, map, creatures_old_tile, creatures_new_tile, new_coords, direction);
     }
 
     // Update the loaded map details with the player's new coordinate,
@@ -157,7 +158,7 @@ ActionCostValue MovementAction::move_off_map(CreaturePtr creature, MapPtr map, T
   return movement_success;
 }
 
-ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords)
+ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d)
 {
   ActionCostValue movement_success = 0;
   bool creature_incorporeal = creature && creature->has_status(StatusIdentifiers::STATUS_ID_INCORPOREAL);
@@ -188,7 +189,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
     }
     else if (MapUtils::is_creature_present(creatures_new_tile))
     {
-      movement_success = handle_movement_into_occupied_tile(creature, creatures_new_tile, map);
+      movement_success = handle_movement_into_occupied_tile(creature, creatures_new_tile, map, new_coords, d);
     }
     else if (creatures_new_tile->get_is_blocking(creature) && !creature_incorporeal)
     {
@@ -241,7 +242,7 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
 
 // Handle movement into an occupied tile.  First, check to see whether the
 // creature will attack the occupying creature.  If so, attack the creature.
-ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map)
+ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map, const Coordinate& new_coords, const Direction d)
 {
   ActionCostValue movement_success = 0;
 
@@ -255,66 +256,126 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
   {
     if (creature->get_is_player())
     {
-      bool switch_places = false;
-      bool attack = true;
+      MovementThroughTileType mtt = MovementThroughTileType::MOVEMENT_ATTACK;
       
       CurrentCreatureAbilities cca;
-
-      // When prompting for switching, we need to consider that immobile creatures don't want
-      // to move, and the moving creature will need to find another way around.
-      bool adjacent_creature_can_move = adjacent_creature->get_decision_strategy()->can_move();
 
       // Only allow the creature to select whether to switch/attack if the creature
       // is not stunned - if the creature is stunned, then they should stagger
       // into the other creature and attack indiscriminately.
       if (cca.can_select_movement_direction(creature))
       {
-        // Maybe the creature just wants to switch?
-        IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+        mtt = get_movement_through_tile_type(creature, adjacent_creature);
+      }
 
-        if (adjacent_creature_can_move)
+      switch (mtt)
+      {
+        case MovementThroughTileType::MOVEMENT_ATTACK:
         {
-          manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SWITCH_FRIENDLY_CREATURE));
-          switch_places = creature->get_decision_strategy()->get_confirmation();
+          // Fall through to the end of the function where we'll attack.
+          break;
         }
-
-        // If we need to switch, don't prompt to attack.
-        if (!switch_places)
+        case MovementThroughTileType::MOVEMENT_SQUEEZE:
         {
-          manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
-          attack = creature->get_decision_strategy()->get_confirmation();
+          TilePtr current_tile = MapUtils::get_tile_for_creature(map, creature);
+          Coordinate potential_squeeze_coords = CoordUtils::get_new_coordinate(new_coords, d, 1);
+          TilePtr potential_squeeze_tile = map->at(potential_squeeze_coords);
+          bool confirm = (MapUtils::can_squeeze_by(map, creature, new_coords, d) 
+                      && confirm_move_to_tile_if_necessary(creature, current_tile, potential_squeeze_tile));
+
+          if (confirm)
+          {
+            MapUtils::squeeze_by(map, creature, new_coords, d);
+
+            // Squeezing past should cost roughly twice as much as a single
+            // move, since two squares are being traversed in a turn.
+            movement_success = creature->get_speed().get_current();
+          }
+          else
+          {
+            // Couldn't squeeze by, either due a monster being there, no
+            // tile, the tile not allowing a creature on it, etc.
+            IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+            manager.add_new_message(StringTable::get(ActionTextKeys::ACTION_SQUEEZE_FAILURE));
+            manager.send();
+          }
+
+          return movement_success;
         }
-      }
+        case MovementThroughTileType::MOVEMENT_SWITCH:
+        {
+          MapUtils::swap_places(map, creature, adjacent_creature);
 
-      if (!attack && !switch_places)
-      {
-        return movement_success;
-      }
-      // else, try switching
-      else if (switch_places)
-      {
-        MapUtils::swap_places(map, creature, adjacent_creature);
-
-        movement_success = 1;
-        return movement_success;
-      }
-      // otherwise, fight.
-      else
-      {
-        // Not all deities approve of attacking friendlies...
-        Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+          movement_success = 1;
+          return movement_success;
+        }
+        default:
+        case MovementThroughTileType::MOVEMENT_NONE:
+        {
+          return movement_success;
+        }
       }
     }
   }
-      
-  // Sanity check
-  if (adjacent_creature)
+
+  if (adjacent_creature != nullptr)
   {
+    // Not all deities approve of attacking friendlies...
+    Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
+
     CombatManager cm;
     movement_success = cm.attack(creature, adjacent_creature);
   }
 
   return movement_success;
+}
+
+// Figure out what the creature wants to do in terms of getting through the occupied tile.
+MovementThroughTileType MovementAction::get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature)
+{
+  MovementThroughTileType mtt = MovementThroughTileType::MOVEMENT_ATTACK;
+
+  // When prompting for switching, we need to consider that immobile creatures don't want
+  // to move, and the moving creature will need to find another way around.
+  bool adjacent_creature_can_move = adjacent_creature->get_decision_strategy()->can_move();
+
+  // Maybe the creature just wants to switch?
+  IMessageManager& manager = MessageManagerFactory::instance(creature, creature && creature->get_is_player());
+
+  if (adjacent_creature_can_move)
+  {
+    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SWITCH_FRIENDLY_CREATURE));
+    bool switch_places = creature->get_decision_strategy()->get_confirmation();
+
+    if (switch_places)
+    {
+      mtt = MovementThroughTileType::MOVEMENT_SWITCH;
+    }
+  }
+  else
+  {
+    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_SQUEEZE_FRIENDLY_CREATURE));
+    bool squeeze_past = creature->get_decision_strategy()->get_confirmation();
+
+    if (squeeze_past)
+    {
+      mtt = MovementThroughTileType::MOVEMENT_SQUEEZE;
+    }
+  }
+
+  // If we need to switch, don't prompt to attack.
+  if (mtt == MovementThroughTileType::MOVEMENT_ATTACK)
+  {
+    manager.add_new_confirmation_message(TextMessages::get_confirmation_message(TextKeys::DECISION_ATTACK_FRIENDLY_CREATURE));
+    bool attack = creature->get_decision_strategy()->get_confirmation();
+
+    if (!attack)
+    {
+      mtt = MovementThroughTileType::MOVEMENT_NONE;
+    }
+  }
+
+  return mtt;
 }
 
 // Generate and move to the new map using the tile type and subtype present

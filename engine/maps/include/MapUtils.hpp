@@ -42,6 +42,9 @@ class MapUtils
     static bool is_tile_available_for_item(TilePtr tile);
 
     static void swap_places(MapPtr map, CreaturePtr c1, CreaturePtr c2);
+
+    static bool can_squeeze_by(MapPtr map, CreaturePtr c1, const Coordinate& adjacent_creature_coords, const Direction d);
+    static bool squeeze_by(MapPtr map, CreaturePtr c1, const Coordinate& adjacent_creature_coords, const Direction d);
     
     static Dimensions get_dimensions(MapPtr map, const Coordinate& coords, const int size);
     
