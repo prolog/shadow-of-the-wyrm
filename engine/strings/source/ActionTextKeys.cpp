@@ -257,6 +257,7 @@ const string ActionTextKeys::ACTION_SKIN_CREATE_ARMOUR         = "ACTION_SKIN_CR
 const string ActionTextKeys::ACTION_WEAVE_NO_FIBRES            = "ACTION_WEAVE_NO_FIBRES";
 const string ActionTextKeys::ACTION_WEAVE_NO_WEAVING_SKILL     = "ACTION_WEAVE_NO_WEAVING_SKILL";
 const string ActionTextKeys::ACTION_WEAVE_SUCCESSFUL           = "ACTION_WEAVE_SUCCESSFUL";
+const string ActionTextKeys::ACTION_SQUEEZE_FAILURE            = "ACTION_SQUEEZE_FAILURE";
 
 // Protected
 const string ActionTextKeys::ACTION_EVOKE_PLAYER               = "ACTION_EVOKE_PLAYER";

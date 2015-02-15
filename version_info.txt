@@ -1,8 +1,14 @@
 Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 - Version declared February 8, 2015.
 
-- Creatures can now switch places with other non-hostile creatures,
-  instead of having to attack.
+- Creatures can now switch places with other non-hostile (mobile)
+  creatures, instead of having to attack.
+
+- Creatures can now also "squeeze past" friendly creatures that are
+  immobile.  This is a pretty heavy action, in terms of cost, because
+  the creature is essentially making two moves in a turn: one into the
+  tile with the creature, and one into the free tile.  So, it makes sense
+  that this action should cost twice as much as a "regular" one.
 
 - Bug fixes: 
 

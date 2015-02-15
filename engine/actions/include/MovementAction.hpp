@@ -4,6 +4,7 @@
 #include "IActionManager.hpp"
 #include "MapExit.hpp"
 #include "Map.hpp"
+#include "MovementTypes.hpp"
 
 class MovementAction : public IActionManager
 {
@@ -28,7 +29,7 @@ class MovementAction : public IActionManager
     // Move off the edge of a map - fields, forests, etc.
     ActionCostValue move_off_map(CreaturePtr creature, MapPtr map, TilePtr old_tile);
     // A standard move within a map.
-    ActionCostValue move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords);
+    ActionCostValue move_within_map(CreaturePtr creature, MapPtr map, TilePtr creatures_old_tile, TilePtr creatures_new_tile, const Coordinate& new_coords, const Direction d);
     // With an existing map, handle the properties on the tile, and then
     // move on to the map.
     ActionCostValue handle_properties_and_move_to_new_map(TilePtr old_tile, MapPtr old_map, MapPtr new_map);
@@ -37,8 +38,9 @@ class MovementAction : public IActionManager
     ActionCostValue generate_and_move_to_new_map(CreaturePtr creature, MapPtr map, TilePtr tile, const TileType tile_type, const TileType tile_subtype, const int depth_increment = 0);
 
     // Handle attempting to move on to a tile where there is a creature present.
-    ActionCostValue handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map);
-    
+    ActionCostValue handle_movement_into_occupied_tile(CreaturePtr creature, TilePtr creatures_new_tile, MapPtr map, const Coordinate& new_coords, const Direction d);
+    MovementThroughTileType get_movement_through_tile_type(CreaturePtr creature, CreaturePtr adjacent_creature);
+
     void add_tile_related_messages(const CreaturePtr& creature, TilePtr tile);
     bool add_message_about_tile_if_necessary(const CreaturePtr& creature, TilePtr tile);
     bool add_message_about_items_on_tile_if_necessary(const CreaturePtr& creature, TilePtr tile);
