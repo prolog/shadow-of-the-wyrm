@@ -10,12 +10,21 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
   tile with the creature, and one into the free tile.  So, it makes sense
   that this action should cost twice as much as a "regular" one.
 
+- Reduced the danger level on flame/frost wands to 4.
+
 - Bug fixes: 
 
   - When traps were firing, there weren't any checks to see if the trap 
     and the creature that triggered it were in the player's LOS.  This
     led to problems like trap animations being shown even if the trap
     was behind a closed door.
+
+  - Movement accumulation updaters/checkers weren't always firing after
+    movement, so creatures could do things like move into the open air
+    tiles in the Tower while not flying, and still be able to move back
+    safely, instead of falling to their death.
+
+- New items: lightning wand.
 
 - New spells and associated spellbooks: benediction (Divine).
 

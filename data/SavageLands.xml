@@ -19957,7 +19957,7 @@
 					<Symbol>\</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>4</NumDice>
@@ -19980,12 +19980,35 @@
 					<Symbol>\</Symbol>
 					<Colour>3</Colour>
 				</TextDetails>
-				<DangerLevel>8</DangerLevel>
+				<DangerLevel>4</DangerLevel>
 				<Rarity>1</Rarity>
 				<Damage>
 					<NumDice>5</NumDice>
 					<NumSides>10</NumSides>
 					<Type>3</Type>
+				</Damage>
+				<BeamType>1</BeamType>
+				<Range>4</Range>
+				<Colour>1</Colour>
+			</Wand>
+			<Wand id="lightning_wand">
+				<DescriptionSID>LIGHTNING_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_LIGHTNING_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>LIGHTNING_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_LIGHTNING_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>350</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>4</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>6</NumDice>
+					<NumSides>8</NumSides>
+					<Type>10</Type>
 				</Damage>
 				<BeamType>1</BeamType>
 				<Range>4</Range>
