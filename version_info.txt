@@ -24,9 +24,10 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
     tiles in the Tower while not flying, and still be able to move back
     safely, instead of falling to their death.
 
-- New items: lightning wand.
+- New items: lightning wand, fireball wand.
 
-- New spells and associated spellbooks: benediction (Divine).
+- New spells and associated spellbooks: benediction (Divine), fireball
+  (Arcane).
 
 Savage Lands v0.3.2 "Hussa"
 - Version declared January 10, 2015.  Version finalized February 8, 2015.

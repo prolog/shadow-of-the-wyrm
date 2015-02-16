@@ -15235,6 +15235,23 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
+		<Spell id="a_07_fireball">
+			<NameSID>FIREBALL_NAME_SID</NameSID>
+			<PlayerCastMessageSID>FIREBALL_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>FIREBALL_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<Colour>9</Colour>
+			<APCost>15</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>4</Shape>
+			<Damage>
+				<NumDice>15</NumDice>
+				<NumSides>4</NumSides>
+				<Type>3</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -20010,8 +20027,31 @@
 					<NumSides>8</NumSides>
 					<Type>10</Type>
 				</Damage>
-				<BeamType>1</BeamType>
+				<BeamType>2</BeamType>
 				<Range>4</Range>
+				<Colour>11</Colour>
+			</Wand>
+			<Wand id="fireball_wand">
+				<DescriptionSID>FIREBALL_WAND_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FIREBALL_WAND_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FIREBALL_WAND_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FIREBALL_WAND_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>500</Value>
+				<Weight><Pounds>1</Pounds></Weight>
+				<Material>8</Material>
+				<TextDetails>
+					<Symbol>\</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>1</Rarity>
+				<Damage>
+					<NumDice>12</NumDice>
+					<NumSides>4</NumSides>
+					<Type>3</Type>
+				</Damage>
+				<BeamType>4</BeamType>
+				<Range>3</Range>
 				<Colour>1</Colour>
 			</Wand>
 		</Wands>
@@ -20298,6 +20338,23 @@
 				<DangerLevel>6</DangerLevel>
 				<Rarity>1</Rarity>
 				<SpellID>a_06_cross_of_flame</SpellID>
+				<Difficulty>125</Difficulty>
+			</Spellbook>
+			<Spellbook id="fireball_spellbook">
+				<DescriptionSID>FIREBALL_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FIREBALL_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FIREBALL_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FIREBALL_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>1000</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>1</Rarity>
+				<SpellID>a_07_fireball</SpellID>
 				<Difficulty>125</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">

@@ -91,8 +91,14 @@ ActionCostValue EvokeAction::evoke_wand(CreaturePtr creature, ActionManager * co
       bool wand_originally_identified = item_id.get_item_identified(wand_base_id);
 
       // Get the wand's direction.
-      pair<bool, Direction> evoke_result = get_evocation_direction(creature);
-      bool evoke_successful = evoke_result.first;
+      bool evoke_successful = true;
+      pair<bool, Direction> evoke_result = { true, Direction::DIRECTION_NULL };
+
+      if (wand->get_spell_shape_type() != SpellShapeType::SPELL_SHAPE_BALL)
+      {
+        evoke_result = get_evocation_direction(creature);
+        evoke_successful = evoke_result.first;
+      }
 
       if (evoke_successful)
       {
