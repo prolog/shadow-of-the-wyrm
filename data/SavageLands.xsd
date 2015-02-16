@@ -1449,10 +1449,10 @@
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="WandSpellShape">
-	<xs:annotation><xs:documentation>Wands can only be beam-type shapes.</xs:documentation></xs:annotation>
+	<xs:annotation><xs:documentation>Wands can't self-target.</xs:documentation></xs:annotation>
 	<xs:restriction base="tns:SpellShape">
-		<xs:enumeration value="1"/>
-		<xs:enumeration value="2"/>
+		<xs:minInclusive value="1"/>
+		<xs:maxInclusive value="4"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="TrainedWeaponSkill">
