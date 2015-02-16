@@ -4,6 +4,8 @@
 #include "CreatureProperties.hpp"
 #include "Game.hpp"
 #include "MapUtils.hpp"
+#include "MovementAccumulationChecker.hpp"
+#include "MovementAccumulationUpdater.hpp"
 #include "RNG.hpp"
 #include "WorldMapLocationTextKeys.hpp"
 #include <boost/tokenizer.hpp>
@@ -258,6 +260,14 @@ bool MapUtils::add_or_update_location(MapPtr map, CreaturePtr creature, const Co
       map->add_creature(creature);
     }
   }
+
+  // Run the movement accumulation checker, in case the creature moved into a
+  // dangerous/special tile.
+  MovementAccumulationUpdater mau;
+  mau.update(creature, creatures_new_tile);
+
+  ICreatureRegenerationPtr move_checker = std::make_shared<MovementAccumulationChecker>();
+  move_checker->tick(creature, 0, 0);
   
   return added_location;
 }

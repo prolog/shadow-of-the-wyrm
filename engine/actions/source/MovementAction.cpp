@@ -11,7 +11,6 @@
 #include "MapProperties.hpp"
 #include "MapTypeQueryFactory.hpp"
 #include "MessageManagerFactory.hpp"
-#include "MovementAccumulationUpdater.hpp"
 #include "MovementAction.hpp"
 #include "StairwayMovementAction.hpp"
 #include "MapExitUtils.hpp"
@@ -212,9 +211,6 @@ ActionCostValue MovementAction::move_within_map(CreaturePtr creature, MapPtr map
           // Update the map info
           MapUtils::add_or_update_location(map, creature, new_coords, creatures_old_tile);
           TilePtr new_tile = MapUtils::get_tile_for_creature(map, creature);
-        
-          MovementAccumulationUpdater mau;
-          mau.update(creature, new_tile);
         
           add_tile_related_messages(creature, new_tile);
           movement_success = get_action_cost_value(creature);
