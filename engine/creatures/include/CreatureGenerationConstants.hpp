@@ -7,6 +7,7 @@ class CreatureGenerationConstants
     static const float BASE_EXPERIENCE_LOWER_MULTIPLIER;
     static const float BASE_EXPERIENCE_UPPER_MULTIPLIER;
     static const uint MIN_CREATURES_FOR_MAP_UPDATE;
+    static const int CREATURE_DROP_RATE;
 
   protected:
     CreatureGenerationConstants();

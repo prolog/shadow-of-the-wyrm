@@ -316,9 +316,6 @@ ActionCostValue MovementAction::handle_movement_into_occupied_tile(CreaturePtr c
 
   if (adjacent_creature != nullptr)
   {
-    // Not all deities approve of attacking friendlies...
-    Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
-
     CombatManager cm;
     movement_success = cm.attack(creature, adjacent_creature);
   }
@@ -368,6 +365,11 @@ MovementThroughTileType MovementAction::get_movement_through_tile_type(CreatureP
     if (!attack)
     {
       mtt = MovementThroughTileType::MOVEMENT_NONE;
+    }
+    else
+    {
+      // Not all deities approve of attacking friendlies...
+      Game::instance().get_deity_action_manager_ref().notify_action(creature, CreatureActionKeys::ACTION_ATTACK_FRIENDLY);
     }
   }
 
