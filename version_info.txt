@@ -12,6 +12,9 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 
 - Reduced the danger level on flame/frost wands to 4.
 
+- When a creature dies, it can now potentially drop an item.  This is
+  relatively rare (5% chance).
+
 - Bug fixes: 
 
   - When traps were firing, there weren't any checks to see if the trap 

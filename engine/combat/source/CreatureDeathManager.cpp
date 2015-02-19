@@ -1,9 +1,12 @@
 #include "CombatTextKeys.hpp"
 #include "CorpseCalculator.hpp"
 #include "CorpseFactory.hpp"
+#include "CreationUtils.hpp"
+#include "CreatureGenerationConstants.hpp"
 #include "CreatureDeathManager.hpp"
 #include "Game.hpp"
 #include "GameUtils.hpp"
+#include "ItemGenerationManager.hpp"
 #include "MapUtils.hpp"
 #include "MessageManagerFactory.hpp"
 #include "RNG.hpp"
@@ -65,12 +68,29 @@ void CreatureDeathManager::die() const
     // Drop inventory on to the creature's tile.
     IInventoryPtr inv = dead_creature->get_inventory();
     IInventoryPtr ground = attacked_tile->get_items();
-    
+
     while (!inv->empty())
     {
       ItemPtr current_item = inv->at(0);
       inv->remove(current_item->get_id());
       ground->add_front(current_item);
+    }
+
+    // When a creature dies, there is a small chance it will drop an item.
+    if (RNG::percent_chance(CreatureGenerationConstants::CREATURE_DROP_RATE))
+    {
+      Rarity rarity = CreationUtils::generate_rarity();
+      int danger_level = dead_creature->get_level().get_current();
+      ItemGenerationManager igm;
+      ItemGenerationVec generation_vec = igm.generate_item_generation_vec(1, danger_level, rarity);
+
+      int enchant_points = RNG::range(0, (danger_level / 2));
+      ItemPtr generated_item = igm.generate_item(game.get_action_manager_ref(), generation_vec, enchant_points);
+
+      if (generated_item != nullptr)
+      {
+        ground->add_front(generated_item);
+      }
     }
 
     // Potentially generate a corpse as well.
