@@ -309,24 +309,6 @@
 		<xs:element name="CharismaModifier" type="tns:StatisticModifier" minOccurs="0"/>
 	</xs:sequence>
 </xs:complexType>
-<xs:element name="ClassInitialModifiers">
-<xs:annotation><xs:documentation>Races have a set of modifiers for certain statistics.</xs:documentation></xs:annotation>
-	<xs:complexType>
-		<xs:complexContent>
-			<xs:restriction base="tns:InitialStatisticsModifiers">
-				<xs:sequence>
-					<xs:element name="StrengthModifier" type="tns:StatisticModifier" minOccurs="0"/>
-					<xs:element name="DexterityModifier" type="tns:StatisticModifier" minOccurs="0"/>
-					<xs:element name="AgilityModifier" type="tns:StatisticModifier" minOccurs="0"/>
-					<xs:element name="HealthModifier" type="tns:StatisticModifier" minOccurs="0"/>
-					<xs:element name="IntelligenceModifier" type="tns:StatisticModifier" minOccurs="0"/>
-					<xs:element name="WillpowerModifier" type="tns:StatisticModifier" minOccurs="0"/>
-					<xs:element name="CharismaModifier" type="tns:StatisticModifier" minOccurs="0"/>
-				</xs:sequence>
-			</xs:restriction>
-		</xs:complexContent>
-	</xs:complexType>
-</xs:element>
 <xs:element name="RaceInitialDeities">
 <xs:annotation><xs:documentation>The deities that can be selected when creating a creature of a particular race</xs:documentation></xs:annotation>
 	<xs:complexType>
@@ -392,7 +374,7 @@
 			<xs:element name="NameSID" type="xs:string"/>
 			<xs:element name="DescriptionSID" type="xs:string"/>
 			<xs:element name="DisplayAbbreviationSID" type="xs:string"/>
-			<xs:element ref="tns:ClassInitialModifiers"/>
+			<xs:element name="ClassInitialModifiers" type="tns:InitialStatisticsModifiers"/>
 			<xs:element name="HitDice" type="xs:unsignedInt"/>
 			<xs:element name="APDice" type="xs:unsignedInt"/>
 			<xs:element ref="tns:Resistances"/>
