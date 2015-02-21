@@ -16,6 +16,7 @@ evade_modifier(0),
 soak_modifier(0),
 to_hit_modifier(0)
 {
+  resistances.set_all_resistances_to(0);
 }
 
 // Set actual values for the modifiers
@@ -40,6 +41,7 @@ evade_modifier(0),
 soak_modifier(0),
 to_hit_modifier(0)
 {
+  resistances.set_all_resistances_to(0);
 }
 
 // Version called by the XML reader.
@@ -61,6 +63,7 @@ to_hit_modifier(0)
   // size of the vector.
   switch (size)
   {
+    // Resistances can't be set this way.  Must be set using set_resistances()
     default:
     case 10:
       to_hit_modifier = args.at(9);
@@ -207,22 +210,52 @@ int Modifier::get_to_hit_modifier() const
   return to_hit_modifier;
 }
 
+void Modifier::set_resistances(const Resistances& new_resistances)
+{
+  resistances = new_resistances;
+}
+
+Resistances Modifier::get_resistances() const
+{
+  return resistances;
+}
+
 bool Modifier::is_negative() const
+{
+  bool neg = is_statistics_part_negative() || is_resistances_part_negative();
+
+  return neg;
+}
+
+bool Modifier::is_statistics_part_negative() const
 {
   int sum;
 
   sum = strength_modifier
-      + dexterity_modifier
-      + agility_modifier
-      + health_modifier
-      + intelligence_modifier 
-      + willpower_modifier
-      + charisma_modifier
-      + evade_modifier
-      + soak_modifier
-      + to_hit_modifier;
+    + dexterity_modifier
+    + agility_modifier
+    + health_modifier
+    + intelligence_modifier
+    + willpower_modifier
+    + charisma_modifier
+    + evade_modifier
+    + soak_modifier
+    + to_hit_modifier;
 
   return (sum < 0);
+}
+
+bool Modifier::is_resistances_part_negative() const
+{
+  double total = 0.0;
+
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
+  {
+    DamageType dt = static_cast<DamageType>(d);
+    total += resistances.get_resistance_value(dt);
+  }
+
+  return (total < 0);
 }
 
 void Modifier::set_status(const string& status, const bool value)
@@ -301,6 +334,8 @@ bool Modifier::serialize(ostream& stream) const
     Serialize::write_bool(stream, s_pair.second);
   }
 
+  resistances.serialize(stream);
+
   return true;
 }
 
@@ -330,6 +365,8 @@ bool Modifier::deserialize(istream& stream)
 
     statuses.insert(make_pair(status, value));
   }
+
+  resistances.deserialize(stream);
 
   return true;
 }

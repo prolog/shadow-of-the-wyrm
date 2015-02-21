@@ -1,20 +1,64 @@
 #include "gtest/gtest.h"
 
-TEST(SL_World_Modifier, is_negative)
+TEST(SL_World_Modifier, is_negative_stats)
 {
   Modifier m;
+
+  EXPECT_FALSE(m.is_negative());
 
   m.set_soak_modifier(-10);
 
   EXPECT_TRUE(m.is_negative());
 
   m.set_strength_modifier(5);
-  
+
   EXPECT_TRUE(m.is_negative());
 
   m.set_agility_modifier(5);
 
   EXPECT_FALSE(m.is_negative());
+}
+
+TEST(SL_World_Modifier, is_negative_resists)
+{
+  Modifier m2;
+
+  Resistances r;
+  r.set_all_resistances_to(0);
+  r.set_resistance_value(DamageType::DAMAGE_TYPE_SLASH, 0.10);
+  r.set_resistance_value(DamageType::DAMAGE_TYPE_POUND, -0.05);
+  
+  m2.set_resistances(r);
+
+  EXPECT_FALSE(m2.is_negative());
+
+  r.set_resistance_value(DamageType::DAMAGE_TYPE_COLD, -0.25);
+  m2.set_resistances(r);
+
+  EXPECT_TRUE(m2.is_negative());
+}
+
+TEST(SL_World_Modifier, is_negative_both)
+{
+  Modifier m3;
+  Resistances r;
+  r.set_all_resistances_to(1);
+
+  m3.set_agility_modifier(-10);
+
+  m3.set_resistances(r);
+
+  EXPECT_TRUE(m3.is_negative());
+
+  m3.set_agility_modifier(5);
+  m3.set_resistances(r);
+
+  EXPECT_FALSE(m3.is_negative());
+
+  r.set_all_resistances_to(-0.01);
+  m3.set_resistances(r);
+
+  EXPECT_TRUE(m3.is_negative());
 }
 
 TEST(SL_World_Modifier, statuses)
