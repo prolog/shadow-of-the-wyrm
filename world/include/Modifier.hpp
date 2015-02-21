@@ -2,6 +2,7 @@
 #include <map>
 #include <vector>
 #include "ISerializable.hpp"
+#include "Resistances.hpp"
 
 // When adding new values to this class, be sure to update the constructor
 // and get_raw_values() function!
@@ -43,6 +44,9 @@ class Modifier : public ISerializable
     void set_to_hit_modifier(const int new_to_hit_modifier);
     int get_to_hit_modifier() const;
 
+    void set_resistances(const Resistances& new_resistances);
+    Resistances get_resistances() const;
+
     // Is this, overall, a negative modifier?
     bool is_negative() const;
 
@@ -57,6 +61,9 @@ class Modifier : public ISerializable
     bool deserialize(std::istream& stream) override;
 
   protected:
+    bool is_statistics_part_negative() const;
+    bool is_resistances_part_negative() const;
+
     int strength_modifier;
     int dexterity_modifier;
     int agility_modifier;
@@ -69,6 +76,8 @@ class Modifier : public ISerializable
     int soak_modifier;
 
     int to_hit_modifier;
+
+    Resistances resistances;
 
     std::map<std::string, bool> statuses;
 
