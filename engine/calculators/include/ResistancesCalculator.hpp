@@ -16,4 +16,5 @@ class ResistancesCalculator
 
   protected:
     Resistances calculate_equipment_resistances(CreaturePtr creature);
+    Resistances calculate_modifier_resistances(CreaturePtr creature);
 };

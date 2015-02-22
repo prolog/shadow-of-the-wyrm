@@ -15392,6 +15392,32 @@
 				</Property>
 			</Properties>
 		</Spell>
+		<Spell id="d_09_heavenly_hand">
+			<NameSID>HEAVENLY_HAND_NAME_SID</NameSID>
+			<PlayerCastMessageSID>HEAVENLY_HAND_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>HEAVENLY_HAND_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3001</MagicCategory>
+			<Colour>15</Colour>
+			<APCost>10</APCost>
+			<Speed>1</Speed>
+			<Range>0</Range>
+			<Shape>0</Shape>
+			<Effect>18</Effect>
+			<Properties>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_SLASH</Name>
+					<Value>0.25</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_PIERCE</Name>
+					<Value>0.25</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_POUND</Name>
+					<Value>0.25</Value>
+				</Property>
+			</Properties>
+		</Spell>
 		<Spell id="m_01_wraith_form">
 			<NameSID>WRAITH_FORM_NAME_SID</NameSID>
 			<PlayerCastMessageSID>WRAITH_FORM_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -20079,7 +20105,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<TextSID>ISEN_DUN_CHRONICLE_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -20095,7 +20121,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<TextSID>ON_ETERNALISM_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -20111,7 +20137,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<TextSID>STONEHEIM_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -20127,7 +20153,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<TextSID>GNORDVAR_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -20143,7 +20169,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>-1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<TextSID>YEW_HISTORY_TEXT_SID</TextSID>
 				<SpellID/>
 				<Difficulty>0</Difficulty>
@@ -20161,7 +20187,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>c_01_minor_healing</SpellID>
 				<Difficulty>30</Difficulty>
 			</Spellbook>
@@ -20178,7 +20204,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>c_02_flame_dart</SpellID>
 				<Difficulty>30</Difficulty>
 			</Spellbook>
@@ -20195,7 +20221,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>c_03_steel_wind</SpellID>
 				<Difficulty>35</Difficulty>
 			</Spellbook>
@@ -20212,7 +20238,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>c_04_blink</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -20229,7 +20255,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>7</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>c_05_spirit_bolt</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -20246,7 +20272,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>c_06_purify</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -20263,7 +20289,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>a_01_wreath_of_fire</SpellID>
 				<Difficulty>110</Difficulty>
 			</Spellbook>
@@ -20280,7 +20306,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>a_03_lightning_bolt</SpellID>
 				<Difficulty>75</Difficulty>
 			</Spellbook>
@@ -20297,7 +20323,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>12</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>a_02_dragon_breath</SpellID>
 				<Difficulty>100</Difficulty>
 			</Spellbook>
@@ -20314,7 +20340,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>18</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>a_04_shockwave</SpellID>
 				<Difficulty>115</Difficulty>
 			</Spellbook>
@@ -20331,7 +20357,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>30</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>a_05_flight</SpellID>
 				<Difficulty>100</Difficulty>
 			</Spellbook>
@@ -20348,7 +20374,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>a_06_cross_of_flame</SpellID>
 				<Difficulty>125</Difficulty>
 			</Spellbook>
@@ -20365,7 +20391,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>6</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>a_07_fireball</SpellID>
 				<Difficulty>125</Difficulty>
 			</Spellbook>
@@ -20382,7 +20408,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>d_01_healing_word</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -20399,7 +20425,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>d_02_smite</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -20416,7 +20442,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>32</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>d_03_holy</SpellID>
 				<Difficulty>120</Difficulty>
 			</Spellbook>
@@ -20433,7 +20459,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>d_04_divine_wind</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>
@@ -20450,7 +20476,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>5</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>d_05_divine_shield</SpellID>
 				<Difficulty>75</Difficulty>
 			</Spellbook>			
@@ -20467,7 +20493,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>2</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>d_06_cure</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>			
@@ -20484,16 +20510,16 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>d_07_soften</SpellID>
 				<Difficulty>70</Difficulty>
-			</Spellbook>			
+			</Spellbook>
 			<Spellbook id="benediction_spellbook">
 				<DescriptionSID>BENEDICTION_SPELLBOOK_SID</DescriptionSID>
 				<UnidentifiedDescriptionSID>UNID_BENEDICTION_SPELLBOOK_SID</UnidentifiedDescriptionSID>
 				<UsageDescriptionSID>BENEDICTION_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
 				<UnidentifiedUsageDescriptionSID>UNID_BENEDICTION_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
-				<Value>90</Value>
+				<Value>200</Value>
 				<Weight><Pounds>3</Pounds></Weight>
 				<Material>5</Material>
 				<TextDetails>
@@ -20501,9 +20527,26 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>18</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>d_08_benediction</SpellID>
 				<Difficulty>130</Difficulty>
+			</Spellbook>			
+			<Spellbook id="heavenly_hand_spellbook">
+				<DescriptionSID>HEAVENLY_HAND_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_HEAVENLY_HAND_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>HEAVENLY_HAND_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_HEAVENLY_HAND_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>140</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>6</DangerLevel>
+				<Rarity>0</Rarity>
+				<SpellID>d_09_heavenly_hand</SpellID>
+				<Difficulty>80</Difficulty>
 			</Spellbook>			
 			<Spellbook id="wraith_form_spellbook">
 				<DescriptionSID>WRAITH_FORM_SPELLBOOK_SID</DescriptionSID>
@@ -20518,7 +20561,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>30</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_01_wraith_form</SpellID>
 				<Difficulty>130</Difficulty>
 			</Spellbook>
@@ -20535,7 +20578,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_02_poison</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -20552,7 +20595,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>3</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_03_blind</SpellID>
 				<Difficulty>50</Difficulty>
 			</Spellbook>
@@ -20569,7 +20612,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_04_mute</SpellID>
 				<Difficulty>40</Difficulty>
 			</Spellbook>
@@ -20586,7 +20629,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>4</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_05_spellbind</SpellID>
 				<Difficulty>65</Difficulty>
 			</Spellbook>
@@ -20603,7 +20646,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_06_haste</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -20620,7 +20663,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_07_slow</SpellID>
 				<Difficulty>60</Difficulty>
 			</Spellbook>
@@ -20637,7 +20680,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_08_stone</SpellID>
 				<Difficulty>115</Difficulty>
 			</Spellbook>
@@ -20654,7 +20697,7 @@
 					<Colour>3</Colour>
 				</TextDetails>
 				<DangerLevel>1</DangerLevel>
-				<Rarity>1</Rarity>
+				<Rarity>0</Rarity>
 				<SpellID>m_09_curse</SpellID>
 				<Difficulty>70</Difficulty>
 			</Spellbook>

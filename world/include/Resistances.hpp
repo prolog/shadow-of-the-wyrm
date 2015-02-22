@@ -186,6 +186,9 @@ class Resistances : public ISerializable
     Resistances();
     virtual bool operator==(const Resistances& resistances) const;
 
+    // Add the values from the given resistances to the current set of resistances.
+    virtual void add(const Resistances& res);
+
     bool has_resistances_or_vulnerabilities() const;
 
     void set_resistance_value(const DamageType type, double value);
