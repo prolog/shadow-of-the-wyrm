@@ -15,6 +15,12 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 - When a creature dies, it can now potentially drop an item.  This is
   relatively rare (5% chance).
 
+- Added Resistances to the Modifier class, and added XML support, so that
+  resistance modifiers could be specified as spell properties and spells
+  could add resistances/vulnerabilities.
+
+- The Mystic spell "Curse" now sets a number of vulnerabilities.
+
 - Bug fixes: 
 
   - When traps were firing, there weren't any checks to see if the trap 

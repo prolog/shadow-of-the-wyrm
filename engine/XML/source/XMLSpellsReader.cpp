@@ -105,19 +105,35 @@ void XMLSpellsReader::create_modifiers_if_necessary(Spell& spell, map<string, st
 {
   bool create_modifier = false;
   vector<int> sm_constructor_arg;
+  Resistances resists;
+  resists.set_all_resistances_to(0);
 
+  parse_statistic_modifiers(create_modifier, sm_constructor_arg, properties);
+  parse_resistance_modifiers(create_modifier, resists, properties);
+
+  if (create_modifier)
+  {
+    Modifier m(sm_constructor_arg);
+    m.set_resistances(resists);
+
+    spell.set_modifier(m);
+  }
+}
+
+void XMLSpellsReader::parse_statistic_modifiers(bool& create_modifier, vector<int>& sm_constructor_arg, map<string, string>& properties)
+{
   // Create the statistics modifier
-  vector<string> keys = { SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_STR,
-                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_DEX,
-                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_AGI,
-                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_HEA,
-                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_INT,
-                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WIL,
-                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_CHA,
-                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_EVADE,
-                          SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_SOAK };
+  vector<string> stat_keys = { SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_STR,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_DEX,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_AGI,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_HEA,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_INT,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_WIL,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_CHA,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_EVADE,
+                               SpellAdditionalProperties::PROPERTY_STATISTIC_MODIFIER_SOAK };
 
-  for (const auto& key : keys)
+  for (const auto& key : stat_keys)
   {
     auto prop_it = properties.find(key);
 
@@ -125,22 +141,47 @@ void XMLSpellsReader::create_modifiers_if_necessary(Spell& spell, map<string, st
     {
       create_modifier = true;
       sm_constructor_arg.push_back(String::to_int(prop_it->second));
+
+      // Remove the statistic modifier key from the map, since it's not needed anymore.
+      properties.erase(key);
     }
     else
     {
       sm_constructor_arg.push_back(0);
     }
   }
+}
 
-  // Remove the modifier keys from the map, since they're not needed anymore.
-  for (const auto& key : keys)
-  {
-    properties.erase(key);
-  }
+void XMLSpellsReader::parse_resistance_modifiers(bool& create_modifier, Resistances& resists, map<string, string>& properties)
+{
+  map<string, DamageType> resist_map =  { { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_SLASH, DamageType::DAMAGE_TYPE_SLASH },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_PIERCE, DamageType::DAMAGE_TYPE_PIERCE },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_POUND, DamageType::DAMAGE_TYPE_POUND },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_HEAT, DamageType::DAMAGE_TYPE_HEAT },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_COLD, DamageType::DAMAGE_TYPE_COLD },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_ACID, DamageType::DAMAGE_TYPE_ACID },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_POISON, DamageType::DAMAGE_TYPE_POISON },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_HOLY, DamageType::DAMAGE_TYPE_HOLY },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_SHADOW, DamageType::DAMAGE_TYPE_SHADOW },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_ARCANE, DamageType::DAMAGE_TYPE_ARCANE },
+                                          { SpellAdditionalProperties::PROPERTY_RESISTANCE_MODIFIER_LIGHTNING, DamageType::DAMAGE_TYPE_LIGHTNING } };
 
-  if (create_modifier)
+  for (const auto& pair : resist_map)
   {
-    Modifier m(sm_constructor_arg);
-    spell.set_modifier(m);
+    string key = pair.first;
+    auto prop_it = properties.find(key);
+
+    if (prop_it != properties.end())
+    {
+      create_modifier = true;
+      
+      DamageType dt = pair.second;
+      double resist_value = static_cast<double>(String::to_double(prop_it->second));
+
+      resists.set_resistance_value(dt, resist_value);
+
+      // Remove the resistance modifier key from the map, since it's not needed anymore.
+      properties.erase(key);
+    }
   }
 }

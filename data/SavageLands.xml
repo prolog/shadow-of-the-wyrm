@@ -15584,6 +15584,18 @@
 					<Value>-10</Value>
 				</Property>
 				<Property>
+					<Name>RESISTANCE_MODIFIER_SLASH</Name>
+					<Value>-0.10</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_PIERCE</Name>
+					<Value>-0.10</Value>
+				</Property>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_POUND</Name>
+					<Value>-0.10</Value>
+				</Property>
+				<Property>
 					<Name>SPELL_WEAR_OFF_SID</Name>
 					<Value>CURSE_WEAR_OFF_SID</Value>
 				</Property>
