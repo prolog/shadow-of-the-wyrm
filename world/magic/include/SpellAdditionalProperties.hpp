@@ -16,6 +16,18 @@ class SpellAdditionalProperties
     static const std::string PROPERTY_STATISTIC_MODIFIER_EVADE;
     static const std::string PROPERTY_STATISTIC_MODIFIER_SOAK;
 
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_SLASH;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_PIERCE;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_POUND;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_HEAT;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_COLD;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_ACID;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_POISON;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_HOLY;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_SHADOW;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_ARCANE;
+    static const std::string PROPERTY_RESISTANCE_MODIFIER_LIGHTNING;
+
     // Note that status effects are intentionally not included here.
     // Even though in the game status effects are modelled as a Modifier
     // that has a list of status effects, it isn't intended that spells

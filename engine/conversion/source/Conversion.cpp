@@ -250,6 +250,12 @@ float String::to_float(const string& convert)
   return converted_string;
 }
 
+double String::to_double(const string& convert)
+{
+  double converted_string = Convert::from_string<double>(convert);
+  return converted_string;
+}
+
 string String::add_trailing_spaces(const string& str, const uint max_size)
 {
   string result = str;
