@@ -186,6 +186,15 @@ bool Resistances::operator==(const Resistances& res) const
   return result;
 }
 
+void Resistances::add(const Resistances& res)
+{
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
+  {
+    DamageType dt = static_cast<DamageType>(d);
+    set_resistance_value(dt, res.get_resistance_value(dt));
+  }
+}
+
 void Resistances::set_resistance_value(const DamageType type, double value)
 {
   resistances[type]->set_value(value);

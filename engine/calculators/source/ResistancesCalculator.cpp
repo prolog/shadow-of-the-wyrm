@@ -1,6 +1,8 @@
 #include "Resistances.hpp"
 #include "ResistancesCalculator.hpp"
 
+using namespace std;
+
 Resistances ResistancesCalculator::default_resistances()
 {
   Resistances resists;
@@ -72,6 +74,10 @@ Resistances ResistancesCalculator::calculate_non_equipment_resistances(CreatureP
       class_res = cur_class->get_resistances();
     }
 
+    // Spells may contain resistance modifiers.
+    Resistances modifier_res = calculate_modifier_resistances(creature);
+
+    // Any intrinsics?
     Resistances intr_res = creature->get_intrinsic_resistances();
 
     for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
@@ -80,6 +86,7 @@ Resistances ResistancesCalculator::calculate_non_equipment_resistances(CreatureP
 
       double non_eq_value = race_res.get_resistance_value(dt)
                           + class_res.get_resistance_value(dt)
+                          + modifier_res.get_resistance_value(dt)
                           + intr_res.get_resistance_value(dt);
 
       res.set_resistance_value(dt, non_eq_value);
@@ -116,6 +123,27 @@ Resistances ResistancesCalculator::calculate_equipment_resistances(CreaturePtr c
           DamageType dt = static_cast<DamageType>(d);
           res.set_resistance_value(dt, res.get_resistance_value(dt) + item_res.get_resistance_value(dt));
         }
+      }
+    }
+  }
+
+  return res;
+}
+
+Resistances ResistancesCalculator::calculate_modifier_resistances(CreaturePtr creature)
+{
+  Resistances res;
+  res.set_all_resistances_to(0);
+
+  if (creature != nullptr)
+  {
+    const map<double, vector<pair<string, Modifier>>>& modifiers = creature->get_modifiers_ref();
+
+    for (const auto& mod_pair : modifiers)
+    {
+      for (const auto& current_mod_pair : mod_pair.second)
+      {
+        res.add(current_mod_pair.second.get_resistances());
       }
     }
   }

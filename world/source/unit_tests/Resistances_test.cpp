@@ -1,5 +1,21 @@
 #include "gtest/gtest.h"
 #include "ResistanceFactory.hpp"
+TEST(SL_World_Resistances, add)
+{
+  Resistances r1;
+  r1.set_all_resistances_to(0.45);
+
+  Resistances r2;
+  r1.set_all_resistances_to(0.07);
+
+  r1.add(r2);
+
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
+  {
+    DamageType dt = static_cast<DamageType>(d);
+    EXPECT_DOUBLE_EQ(0.52, r2.get_resistance_value(dt));
+  }
+}
 
 TEST(SL_World_Resistances, gain_and_lose_messages)
 {
