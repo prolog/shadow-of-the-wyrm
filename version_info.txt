@@ -26,6 +26,11 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 - Witchlings get a new "Curse of Shadows" spell that adds vulnerability
   to shadow.  Sages do not get this spell.
 
+- Wizards now start with a spellbook of wreath of flame or flame dart.
+
+- Sages now start with a spellbook of wreath of flame, flame dart, blind,
+  or healing word, in addition to always getting shadow flame.
+
 - Bug fixes: 
 
   - When traps were firing, there weren't any checks to see if the trap 

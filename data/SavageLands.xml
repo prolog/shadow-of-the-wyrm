@@ -2981,6 +2981,15 @@
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
 					<InitialItem>
+						<Quantity><Amount>1</Amount></Quantity>
+						<Random>
+							<ID>wreath_of_fire_spellbook</ID>
+							<ID>blind_spellbook</ID>
+							<ID>flame_dart_spellbook</ID>
+							<ID>healing_word_spellbook</ID>
+						</Random>
+					</InitialItem>
+					<InitialItem>
 						<ID>food_ration</ID>
 						<Quantity><Amount>3</Amount></Quantity>
 					</InitialItem>
@@ -3681,6 +3690,10 @@
 				<Body><ID>_robes</ID></Body>
 				<Feet><ID>shoes</ID></Feet>
 				<InitialInventory>
+					<InitialItem>
+						<ID>wreath_of_fire_spellbook</ID>
+						<Quantity><Amount>1</Amount></Quantity>
+					</InitialItem>
 					<InitialItem>
 						<ID>food_ration</ID>
 						<Quantity><Amount>3</Amount></Quantity>
