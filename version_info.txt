@@ -23,6 +23,9 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 
 - Spellbooks are now common and should be easier to find.
 
+- Witchlings get a new "Curse of Shadows" spell that adds vulnerability
+  to shadow.  Sages do not get this spell.
+
 - Bug fixes: 
 
   - When traps were firing, there weren't any checks to see if the trap 
@@ -39,7 +42,7 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 
 - New spells and associated spellbooks: benediction (Divine), fireball
   (Arcane), heavenly hand (Divine), elemental mastery (Arcane), antimagic
-  shield (Cantrips).
+  shield (Cantrips), curse of shadows (Primordial).
 
 Savage Lands v0.3.2 "Hussa"
 - Version declared January 10, 2015.  Version finalized February 8, 2015.

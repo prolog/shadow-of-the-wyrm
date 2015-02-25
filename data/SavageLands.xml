@@ -15692,7 +15692,29 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
-		<Spell id="p_02_nether_bolt">
+		<Spell id="p_02_curse_of_shadows">
+			<NameSID>CURSE_OF_SHADOWS_NAME_SID</NameSID>
+			<PlayerCastMessageSID>CURSE_OF_SHADOWS_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>CURSE_OF_SHADOWS_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3003</MagicCategory>
+			<Colour>4</Colour>
+			<APCost>2</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>1</Shape>
+			<Effect>18</Effect>
+			<Properties>
+				<Property>
+					<Name>RESISTANCE_MODIFIER_SHADOW</Name>
+					<Value>-0.20</Value>
+				</Property>
+				<Property>
+					<Name>SPELL_WEAR_OFF_SID</Name>
+					<Value>CURSE_OF_SHADOWS_WEAR_OFF_SID</Value>
+				</Property>
+			</Properties>
+		</Spell>
+		<Spell id="p_03_nether_bolt">
 			<NameSID>NETHER_BOLT_NAME_SID</NameSID>
 			<PlayerCastMessageSID>NETHER_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>NETHER_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
@@ -15709,7 +15731,7 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
-		<Spell id="p_03_chaos_aura">
+		<Spell id="p_04_chaos_aura">
 			<NameSID>CHAOS_AURA_NAME_SID</NameSID>
 			<PlayerCastMessageSID>CHAOS_AURA_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>CHAOS_AURA_MONSTER_CAST_SID</MonsterCastMessageSID>
@@ -15726,7 +15748,7 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
-		<Spell id="p_04_nightfire">
+		<Spell id="p_05_nightfire">
 			<NameSID>NIGHTFIRE_NAME_SID</NameSID>
 			<PlayerCastMessageSID>NIGHTFIRE_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>NIGHTFIRE_MONSTER_CAST_SID</MonsterCastMessageSID>
@@ -15743,7 +15765,7 @@
 			</Damage>
 			<Effect>0</Effect>
 		</Spell>
-		<Spell id="p_05_veil_of_shadows">
+		<Spell id="p_06_veil_of_shadows">
 			<NameSID>VEIL_OF_SHADOWS_NAME_SID</NameSID>
 			<PlayerCastMessageSID>VEIL_OF_SHADOWS_PLAYER_CAST_SID</PlayerCastMessageSID>
 			<MonsterCastMessageSID>VEIL_OF_SHADOWS_MONSTER_CAST_SID</MonsterCastMessageSID>
