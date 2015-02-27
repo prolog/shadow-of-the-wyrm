@@ -188,6 +188,10 @@ CommandPtr CommandFactory::create(const int key, const string& command_name)
   {
     command = std::make_shared<SkinCommand>(key);
   }
+  else if (command_name == CommandKeys::PIETY)
+  {
+    command = std::make_shared<PietyCommand>(key);
+  }
 
   return command;
 }
