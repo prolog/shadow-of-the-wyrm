@@ -276,3 +276,10 @@ class SkinCommand : public Command
     SkinCommand(int key);
     ~SkinCommand();
 };
+
+class PietyCommand : public Command
+{
+  public:
+    PietyCommand(int key);
+    ~PietyCommand();
+};

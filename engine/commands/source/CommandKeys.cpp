@@ -54,6 +54,7 @@ const string CommandKeys::LATEST_MESSAGES = "LATEST_MESSAGES";
 const string CommandKeys::KICK           = "KICK";
 const string CommandKeys::OFFER          = "OFFER";
 const string CommandKeys::SKIN           = "SKIN";
+const string CommandKeys::PIETY          = "PIETY";
 
 const string CommandKeys::ATTACK_NORTHWEST = "ATTACK_NORTHWEST";
 const string CommandKeys::ATTACK_NORTH     = "ATTACK_NORTH";

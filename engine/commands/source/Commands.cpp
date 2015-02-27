@@ -397,3 +397,13 @@ SkinCommand::SkinCommand(int key)
 SkinCommand::~SkinCommand()
 {
 }
+
+// Piety
+PietyCommand::PietyCommand(int key)
+  : Command(CommandKeys::PIETY, key)
+{
+}
+
+PietyCommand::~PietyCommand()
+{
+}
