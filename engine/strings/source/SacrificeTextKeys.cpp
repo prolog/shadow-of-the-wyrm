@@ -64,6 +64,10 @@ string SacrificeTextKeys::get_piety_message(const int piety)
   {
     message = SACRIFICE_MESSAGE_TIER_1;
   }
+  else
+  {
+    message = SACRIFICE_MESSAGE_DISLIKED;
+  }
 
   return StringTable::get(message);
 }

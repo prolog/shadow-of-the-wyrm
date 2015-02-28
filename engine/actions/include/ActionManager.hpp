@@ -115,6 +115,9 @@ class ActionManager : public ISerializable
     // Skin a corpse - skins can be treated at tanneries to make armour.
     ActionCost skin(CreaturePtr creature);
 
+    // Determine the player's piety.
+    ActionCost piety(CreaturePtr creature);
+
     // Saves the game.
     ActionCost save(CreaturePtr creature);
 

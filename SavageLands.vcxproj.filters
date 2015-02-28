@@ -3327,6 +3327,9 @@
     <ClInclude Include="world\magic\include\SpellAdditionalProperties.hpp">
       <Filter>Header Files\world\magic\include</Filter>
     </ClInclude>
+    <ClInclude Include="engine\actions\include\PietyAction.hpp">
+      <Filter>Header Files\engine\actions\include</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="world\religion\source\Deity.cpp">
@@ -6475,6 +6478,9 @@
     </ClCompile>
     <ClCompile Include="world\magic\source\SpellAdditionalProperties.cpp">
       <Filter>Source Files\world\magic\source</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\actions\source\PietyAction.cpp">
+      <Filter>Source Files\engine\actions\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

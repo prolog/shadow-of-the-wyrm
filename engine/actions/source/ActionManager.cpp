@@ -26,6 +26,7 @@
 #include "MovementTextKeys.hpp"
 #include "OfferAction.hpp"
 #include "PickupAction.hpp"
+#include "PietyAction.hpp"
 #include "PrayerAction.hpp"
 #include "PromptTextKeys.hpp"
 #include "QuestListAction.hpp"
@@ -389,6 +390,12 @@ ActionCost ActionManager::skin(CreaturePtr creature)
   SkinAction sa;
 
   return get_action_cost(creature, sa.skin(creature, this));
+}
+
+ActionCost ActionManager::piety(CreaturePtr creature)
+{
+  PietyAction pa;
+  return get_action_cost(creature, pa.piety(creature, this));
 }
 
 // Pick up an item, doing any necessary checks first.

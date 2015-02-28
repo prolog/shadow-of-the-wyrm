@@ -173,6 +173,7 @@
     <ClInclude Include="engine\actions\include\MovementAction.hpp" />
     <ClInclude Include="engine\actions\include\OfferAction.hpp" />
     <ClInclude Include="engine\actions\include\PickupAction.hpp" />
+    <ClInclude Include="engine\actions\include\PietyAction.hpp" />
     <ClInclude Include="engine\actions\include\PrayerAction.hpp" />
     <ClInclude Include="engine\actions\include\QuaffAction.hpp" />
     <ClInclude Include="engine\actions\include\QuestListAction.hpp" />
@@ -1061,6 +1062,7 @@
     <ClCompile Include="engine\actions\source\MovementAction.cpp" />
     <ClCompile Include="engine\actions\source\OfferAction.cpp" />
     <ClCompile Include="engine\actions\source\PickupAction.cpp" />
+    <ClCompile Include="engine\actions\source\PietyAction.cpp" />
     <ClCompile Include="engine\actions\source\PrayerAction.cpp" />
     <ClCompile Include="engine\actions\source\QuaffAction.cpp" />
     <ClCompile Include="engine\actions\source\QuestListAction.cpp" />
