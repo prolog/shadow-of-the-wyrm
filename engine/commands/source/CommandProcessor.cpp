@@ -198,8 +198,7 @@ ActionCost CommandProcessor::process_command(CreaturePtr creature, Command* comm
       }
       else if (command_name == CommandKeys::PIETY)
       {
-        int x = 1;
-        // JCD FIXME
+        ac = game.actions.piety(creature);
       }
     }
   }
