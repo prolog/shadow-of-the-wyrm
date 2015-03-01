@@ -15,6 +15,17 @@ TEST(SL_World_Resistances, add)
     DamageType dt = static_cast<DamageType>(d);
     EXPECT_DOUBLE_EQ(0.52, r1.get_resistance_value(dt));
   }
+
+  Resistances r3;
+  r3.set_all_resistances_to(0.03);
+
+  r1.add(r3);
+
+  for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
+  {
+    DamageType dt = static_cast<DamageType>(d);
+    EXPECT_DOUBLE_EQ(0.55, r1.get_resistance_value(dt));
+  }
 }
 
 TEST(SL_World_Resistances, gain_and_lose_messages)
