@@ -39,7 +39,7 @@ TerrainGeneratorFactory::~TerrainGeneratorFactory()
 // reeds, etc).  Any unsupported tile for terrain generation will get a null GeneratorPtr back.
 GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const string& map_exit_id, const TileType terrain_type, const TileType terrain_subtype)
 {
-  static_assert(TileType::TILE_TYPE_LAST == TileType(46), "Unexpected TileType::TILE_TYPE_LAST");
+  static_assert(TileType::TILE_TYPE_LAST == TileType(47), "Unexpected TileType::TILE_TYPE_LAST");
   GeneratorPtr generator;
   
   switch(terrain_type)
@@ -163,6 +163,7 @@ GeneratorPtr TerrainGeneratorFactory::create_generator(TilePtr tile, const strin
     case TileType::TILE_TYPE_DAIS:
     case TileType::TILE_TYPE_PIER:
     case TileType::TILE_TYPE_AIR:
+    case TileType::TILE_TYPE_EARTH:
     default:
       // Right now, everything generates a field.  Change this once testing is complete.
       generator = std::make_shared<FieldGenerator>(map_exit_id);

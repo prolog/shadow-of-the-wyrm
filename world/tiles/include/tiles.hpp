@@ -58,5 +58,6 @@ enum struct TileType
   TILE_TYPE_WELL      = 43,
   TILE_TYPE_CRYPT     = 44,
   TILE_TYPE_AIR       = 45,
-  TILE_TYPE_LAST      = 46
+  TILE_TYPE_EARTH     = 46,
+  TILE_TYPE_LAST      = 47
 };

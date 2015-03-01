@@ -9,26 +9,26 @@
 	</LevelRange>
 	<MapType>1</MapType>
 	<Tiles>
-	################################################################################
-	################################################################################
-	################################################################################
-	##############################.....................#############################
-	#############################..##...............##..############################
-	#############################..##...............##..############################
-	#############################.......................############################
-	#############################.......................############################
-	#############################.......................############################
-	#############################.......................############################
-	#############################.......................############################
-	#############################.......................############################
-	#############################.......................############################
-	#############################.......................############################
-	#############################..##...............##..############################
-	#############################..##........&lt;......##..############################
-	##############################.....................#############################
-	################################################################################
-	################################################################################
-	################################################################################
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE.....................EEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE..EE...............EE..EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE..EE...............EE..EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE.......................EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE.......................EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE.......................EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE.......................EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE.......................EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE.......................EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE.......................EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE.......................EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE..EE...............EE..EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEE..EE........&lt;......EE..EEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEE.....................EEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
+	EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE
 	</Tiles>
 	<PlayerStart>
 		<Row>15</Row>

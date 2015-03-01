@@ -74,6 +74,10 @@ TilePtr XMLTileMapper::create_tile(const char xml_tile)
   {
     tile = tg.generate(TileType::TILE_TYPE_REEDS);
   }
+  else if (xml_tile == 'E')
+  {
+    tile = tg.generate(TileType::TILE_TYPE_EARTH);
+  }
   else if (xml_tile == 'w')
   {
     tile = tg.generate(TileType::TILE_TYPE_WELL);
