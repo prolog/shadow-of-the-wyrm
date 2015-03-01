@@ -34,6 +34,11 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 - New "P"iety command so that the player can easily get an indication of
   their current piety.
 
+- Added a new "Earth" tile type, that represents packed earth.  Right now
+  this has the exact same properties as Rock tiles, but eventually (once
+  I implement digging) will be easier to dig.  Update the dug-out 
+  basement at Wintersea to use Earth.
+
 - Bug fixes: 
 
   - When traps were firing, there weren't any checks to see if the trap 

@@ -16172,6 +16172,12 @@
 				<Colour>110</Colour>
 			</Text>
 		</AirTile>
+		<EarthTile>
+			<Text>
+				<Symbol>#</Symbol>
+				<Colour>3</Colour>
+			</Text>
+		</EarthTile>
 	</Tiles>
 	<Traps>
 		<Trap id="fireball_trap">

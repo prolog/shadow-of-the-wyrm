@@ -127,6 +127,7 @@
 			<xs:element name="WellTile" type="tns:Tile"/>
 			<xs:element name="CryptTile" type="tns:Tile"/>
 			<xs:element name="AirTile" type="tns:Tile"/>
+			<xs:element name="EarthTile" type="tns:Tile"/>
 		</xs:sequence>
 	</xs:complexType>
 </xs:element>
@@ -1000,7 +1001,7 @@
 	</xs:annotation>
 	<xs:restriction base="xs:integer">
 		<xs:minInclusive value="0"/>
-		<xs:maxInclusive value="45"/>
+		<xs:maxInclusive value="46"/>
 	</xs:restriction>
 </xs:simpleType>
 <xs:simpleType name="Rarity">

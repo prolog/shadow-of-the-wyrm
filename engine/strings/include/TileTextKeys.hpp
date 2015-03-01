@@ -51,6 +51,7 @@ class TileTextKeys
     static const std::string TILE_DESC_MINE;
     static const std::string TILE_DESC_WELL;
     static const std::string TILE_DESC_CRYPT;
+    static const std::string TILE_DESC_EARTH;
 
   protected:
     TileTextKeys();
