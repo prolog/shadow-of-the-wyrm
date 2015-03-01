@@ -15309,6 +15309,23 @@
 				</Property>
 			</Properties>
 		</Spell>
+		<Spell id="a_09_frost_bolt">
+			<NameSID>FROST_BOLT_NAME_SID</NameSID>
+			<PlayerCastMessageSID>FROST_BOLT_PLAYER_CAST_SID</PlayerCastMessageSID>
+			<MonsterCastMessageSID>FROST_BOLT_MONSTER_CAST_SID</MonsterCastMessageSID>
+			<MagicCategory>3000</MagicCategory>
+			<Colour>9</Colour>
+			<APCost>6</APCost>
+			<Speed>1</Speed>
+			<Range>4</Range>
+			<Shape>1</Shape>
+			<Damage>
+				<NumDice>10</NumDice>
+				<NumSides>4</NumSides>
+				<Type>4</Type>
+			</Damage>
+			<Effect>0</Effect>
+		</Spell>
 		<Spell id="d_01_healing_word">
 			<NameSID>HEALING_WORD_NAME_SID</NameSID>
 			<PlayerCastMessageSID>HEALING_WORD_PLAYER_CAST_SID</PlayerCastMessageSID>
@@ -20533,6 +20550,23 @@
 				<Rarity>0</Rarity>
 				<SpellID>a_08_elemental_mastery</SpellID>
 				<Difficulty>85</Difficulty>
+			</Spellbook>
+			<Spellbook id="frost_bolt_spellbook">
+				<DescriptionSID>FROST_BOLT_SPELLBOOK_SID</DescriptionSID>
+				<UnidentifiedDescriptionSID>UNID_FROST_BOLT_SPELLBOOK_SID</UnidentifiedDescriptionSID>
+				<UsageDescriptionSID>FROST_BOLT_SPELLBOOK_USAGE_SID</UsageDescriptionSID>
+				<UnidentifiedUsageDescriptionSID>UNID_FROST_BOLT_SPELLBOOK_USAGE_SID</UnidentifiedUsageDescriptionSID>
+				<Value>220</Value>
+				<Weight><Pounds>3</Pounds></Weight>
+				<Material>5</Material>
+				<TextDetails>
+					<Symbol>"</Symbol>
+					<Colour>3</Colour>
+				</TextDetails>
+				<DangerLevel>3</DangerLevel>
+				<Rarity>0</Rarity>
+				<SpellID>a_09_frost_bolt</SpellID>
+				<Difficulty>70</Difficulty>
 			</Spellbook>
 			<Spellbook id="healing_word_spellbook">
 				<DescriptionSID>HEALING_WORD_SPELLBOOK_SID</DescriptionSID>

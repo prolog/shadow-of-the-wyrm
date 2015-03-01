@@ -191,7 +191,8 @@ void Resistances::add(const Resistances& res)
   for (int d = static_cast<int>(DamageType::DAMAGE_TYPE_FIRST); d < static_cast<int>(DamageType::DAMAGE_TYPE_MAX); d++)
   {
     DamageType dt = static_cast<DamageType>(d);
-    set_resistance_value(dt, res.get_resistance_value(dt));
+    double new_resistance_value = get_resistance_value(dt) + res.get_resistance_value(dt);
+    set_resistance_value(dt, new_resistance_value);
   }
 }
 
