@@ -56,5 +56,60 @@ string StringTable::get(const string& key)
     result = table_it->second;
   }
 
+  if (is_external_file(result))
+  {
+    // ...
+  }
+
   return result;
 }
+
+// Check to see if the result is a file, which it will be if its first
+// two characters are '[' and last two are ']' (after trimming).
+// This differentiates a file reference from an in-game prompt.
+bool StringTable::is_external_file(const string& value)
+{
+  bool is_file = false;
+
+  string val_trim = value;
+  trim(val_trim);
+  size_t val_trim_size = val_trim.size();
+
+  if (val_trim_size >= 4)
+  {
+    char first_char = val_trim.at(0);
+    char last_char = val_trim.at(val_trim_size - 1);
+
+    if (val_trim.at(0) == '[' && 
+        val_trim.at(1) == '[' &&
+        val_trim.at(val_trim_size-1) == ']' &&
+        val_trim.at(val_trim_size-2) == ']')
+    {
+      is_file = true;
+    }
+  }
+
+  return is_file;
+}
+
+// Parse the file name out of a file reference.
+string StringTable::parse_file_name(const string& file_ref_value)
+{
+  string file_name = file_ref_value;
+  size_t file_ref_val_size = file_ref_value.size();
+
+  if (is_external_file(file_ref_value))
+  {
+    if (file_ref_val_size > 4)
+    {
+      // Parse off the '[' and ']'.
+      file_name = file_ref_value.substr(2, file_ref_val_size - 4);
+    }
+  }
+
+  return file_name;
+}
+
+#ifdef UNIT_TESTS
+#include "unit_tests/StringTable_test.cpp"
+#endif
