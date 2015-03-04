@@ -2042,6 +2042,11 @@
     <ClCompile Include="engine\strings\source\TileDangerConfirmationKeys.cpp" />
     <ClCompile Include="engine\strings\source\TileDescriptionKeys.cpp" />
     <ClCompile Include="engine\strings\source\TileTextKeys.cpp" />
+    <ClCompile Include="engine\strings\source\unit_tests\StringTable_test.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='MapTester|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
     <ClCompile Include="engine\strings\source\WorldMapLocationTextKeys.cpp" />
     <ClCompile Include="engine\time\source\BoatingMovementAccumulationChecker.cpp" />
     <ClCompile Include="engine\time\source\CreatureAlcoholTimer.cpp" />

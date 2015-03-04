@@ -39,6 +39,10 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
   I implement digging) will be easier to dig.  Update the dug-out 
   basement at Wintersea to use Earth.
 
+- Resource strings can now be specified in external files.  This is
+  handled by placing the filename in square brackets, e.g.,
+  [text/some_file_en.txt].
+
 - Bug fixes: 
 
   - When traps were firing, there weren't any checks to see if the trap 

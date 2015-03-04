@@ -712,6 +712,9 @@
     <Filter Include="Source Files\engine\skills\source">
       <UniqueIdentifier>{315aaa84-7056-40fb-812f-4c4a4934f430}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\engine\strings\source\unit_tests">
+      <UniqueIdentifier>{0164df80-77b5-4870-a4af-4258b38a97be}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\buildinfo.hpp">
@@ -6490,6 +6493,9 @@
     </ClCompile>
     <ClCompile Include="world\tiles\source\unit_tests\EarthTile_test.cpp">
       <Filter>Source Files\world\tiles\source\unit_tests</Filter>
+    </ClCompile>
+    <ClCompile Include="engine\strings\source\unit_tests\StringTable_test.cpp">
+      <Filter>Source Files\engine\strings\source\unit_tests</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
