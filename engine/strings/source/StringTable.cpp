@@ -2,6 +2,7 @@
 #include <boost/tokenizer.hpp>
 #include <iostream>
 #include <fstream>
+#include "Conversion.hpp"
 
 using namespace std;
 using namespace boost;
@@ -58,7 +59,7 @@ string StringTable::get(const string& key)
 
   if (is_external_file(result))
   {
-    // ...
+    result = File::to_resource_string(parse_file_name(result));
   }
 
   return result;
