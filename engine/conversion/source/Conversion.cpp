@@ -4,6 +4,7 @@
 #include <boost/uuid/uuid_io.hpp>
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
+#include "Log.hpp"
 
 using namespace std;
 
@@ -329,6 +330,38 @@ bool String::is_whitespace(const std::string& str)
   return is_space;
 }
 
+File::File()
+{
+}
+
+File::~File()
+{
+}
+
+string File::to_string(const string& filename)
+{
+  try
+  {
+    ifstream t(filename);
+    string str((istreambuf_iterator<char>(t)), istreambuf_iterator<char>());
+
+    return str;
+  }
+  catch (...)
+  {
+    Log::instance().error("Could not write contents of file to str: " + filename);
+  }
+
+  return "";
+}
+
+string File::to_resource_string(const string& filename)
+{
+  string str = to_string(filename);
+  str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
+
+  return str;
+}
 
 Integer::Integer()
 {

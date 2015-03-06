@@ -87,6 +87,20 @@ class String
     ~String();
 };
 
+class File
+{
+  public:
+    // Converts the contents of a text file to a string, newlines and all.
+    static std::string to_string(const std::string& filename);
+
+    // Converts the contents of a text file to a string, removing any newlines.
+    static std::string to_resource_string(const std::string& filename);
+
+  protected:
+    File();
+    ~File();
+};
+
 class Integer
 {
   public:
