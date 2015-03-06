@@ -43,6 +43,9 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
   handled by placing the filename in square brackets, e.g.,
   [text/some_file_en.txt].
 
+  - Converted the histories of Yew, Stoneheim, Gnordvar, and Atua-Elar
+    to external files, as well as "On Eternalism".
+
 - Bug fixes: 
 
   - When traps were firing, there weren't any checks to see if the trap 
