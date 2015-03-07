@@ -15,6 +15,7 @@ class SpellAdditionalProperties
     static const std::string PROPERTY_STATISTIC_MODIFIER_CHA;
     static const std::string PROPERTY_STATISTIC_MODIFIER_EVADE;
     static const std::string PROPERTY_STATISTIC_MODIFIER_SOAK;
+    static const std::string PROPERTY_STATISTIC_MODIFIER_TO_HIT;
 
     static const std::string PROPERTY_RESISTANCE_MODIFIER_SLASH;
     static const std::string PROPERTY_RESISTANCE_MODIFIER_PIERCE;

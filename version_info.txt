@@ -67,7 +67,7 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
 - New spells and associated spellbooks: benediction (Divine), fireball
   (Arcane), heavenly hand (Divine), elemental mastery (Arcane), antimagic
   shield (Cantrips), curse of shadows (Primordial), cloak of shadows
-  (Primordial), frost bolt (Arcane).
+  (Primordial), frost bolt (Arcane), aim (Mystic).
 
 Savage Lands v0.3.2 "Hussa"
 - Version declared January 10, 2015.  Version finalized February 8, 2015.
