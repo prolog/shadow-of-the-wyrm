@@ -58,6 +58,10 @@ Savage Lands v0.3.3 "Dyens" (switching version names to guitar composers)
     tiles in the Tower while not flying, and still be able to move back
     safely, instead of falling to their death.
 
+  - When parsing file-based resource strings, spaces are now added to
+    the end of all text format specifiers to ensure that the tokenizer
+    picks them up properly.
+
 - New items: lightning wand, fireball wand.
 
 - New spells and associated spellbooks: benediction (Divine), fireball

@@ -5,6 +5,7 @@
 #include "CommandKeys.hpp"
 #include "Conversion.hpp"
 #include "Log.hpp"
+#include "TextFormatSpecifiers.hpp"
 
 using namespace std;
 
@@ -357,10 +358,31 @@ string File::to_string(const string& filename)
 
 string File::to_resource_string(const string& filename)
 {
+
   string str = to_string(filename);
   str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
+  str = update_text_format_specifiers(str);
 
   return str;
+}
+
+// Update the resource string so any occurrence of a text format specifier
+// within the string is always followed by a space.  This ensures that the
+// tokenization functions used for resource strings works properly.
+string File::update_text_format_specifiers(const string& unproc_res_str)
+{
+  string proc_res_str = unproc_res_str;
+
+  vector<string> text_format_specifiers = { TextFormatSpecifiers::LINE_BREAK, TextFormatSpecifiers::NEW_PARAGRAPH };
+
+  for (const string& specifier : text_format_specifiers)
+  {
+    // Add a space at the end so that the resource string tokenizer will work
+    // properly.
+    boost::replace_all(proc_res_str, specifier, specifier + " ");
+  }
+
+  return proc_res_str;
 }
 
 Integer::Integer()
